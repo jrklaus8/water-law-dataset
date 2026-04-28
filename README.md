@@ -1,5 +1,9 @@
 # Water Law Judicial Decisions Dataset
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19836413.svg)](https://doi.org/10.5281/zenodo.19836413)
+[![PyPI version](https://badge.fury.io/py/water-law-dataset.svg)](https://pypi.org/project/water-law-dataset/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A collection of scrapers for building a comparative dataset of water law judicial decisions across Brazil (27 state courts), Canada (federal + provincial courts via CanLII), and the Netherlands (Raad van State + CBb via Rechtspraak.nl).
 
 **Scope:** 2016–2026 | **Cases collected:** 8,368 Brazilian decisions (8 courts) + Netherlands
