@@ -21,6 +21,7 @@ COLORS = {
     'Brazil':      {'bg': 'DDEEFF', 'header': '1A5276'},  # blue
     'Canada':      {'bg': 'FEF9E7', 'header': '7D6608'},  # amber
     'Netherlands': {'bg': 'EAFAF1', 'header': '1E8449'},  # green
+    'Brazil-Historical': {'bg': 'F5EEF8', 'header': '6C3483'},  # purple (TJSP 1997-2015)
 }
 
 # ── Unified fieldnames ────────────────────────────────────────────────────────
@@ -131,6 +132,50 @@ def load_canada():
     print(f'  canada_water_law_2016_2026.json: {len(cases)} cases')
     return cases
 
+def normalize_tjsp_transformation(c):
+    """Normalize TJSP Transformation Analysis 2021 record (1997-2015 historical cases)."""
+    return {
+        'country':    'Brazil',
+        'tribunal':   'TJSP',
+        'court_name': 'Tribunal de Justiça de São Paulo',
+        'case_id':    str(c.get('case_id', '')),
+        'title':      c.get('title', ''),
+        'date':       c.get('date', ''),
+        'year':       str(c.get('year', '')),
+        'case_type':  c.get('case_type', ''),
+        'chamber':    c.get('chamber', ''),
+        'judge':      c.get('judge', ''),
+        'legal_area': c.get('legal_area', ''),
+        'summary':    c.get('summary', '')[:3000],
+        'url':        c.get('url', ''),
+        # pass-through qualitative fields for the historical sheet
+        '_municipality':         c.get('municipality', ''),
+        '_plaintiff':            c.get('plaintiff', ''),
+        '_defendant':            c.get('defendant', ''),
+        '_key_topic':            c.get('key_topic', ''),
+        '_key_legislation':      c.get('key_legislation', ''),
+        '_hr_language':          c.get('hr_language'),
+        '_sust_language':        c.get('sust_language'),
+        '_collective_claim':     c.get('collective_claim'),
+        '_mp_involved':          c.get('mp_involved'),
+        '_win':                  c.get('win'),
+        '_mixed_result':         c.get('mixed_result'),
+        '_governance_category':  c.get('governance_category', ''),
+        '_language_category':    c.get('language_category', ''),
+        '_notes':                c.get('notes', ''),
+    }
+
+def load_tjsp_transformation():
+    fpath = DL / 'tjsp_transformation_analysis.json'
+    if not fpath.exists():
+        print('  (not available: tjsp_transformation_analysis.json)')
+        return []
+    with open(fpath, encoding='utf-8') as f:
+        data = json.load(f)
+    cases = [normalize_tjsp_transformation(c) for c in data]
+    print(f'  tjsp_transformation_analysis.json: {len(cases)} cases (TJSP 1997-2015)')
+    return cases
+
 def load_netherlands():
     nl_files = [
         'netherlands_water_law_2016_2026.json',     # RvS + CBb + GHARL + HR (overnight scraper)
@@ -164,13 +209,16 @@ def load_netherlands():
 print('Loading Brazil...')
 brazil_cases = load_brazil()
 
+print('Loading TJSP Transformation Analysis (historical 1997-2015)...')
+tjsp_hist_cases = load_tjsp_transformation()
+
 print('Loading Canada...')
 canada_cases = load_canada()
 
 print('Loading Netherlands...')
 nl_cases = load_netherlands()
 
-all_cases = brazil_cases + canada_cases + nl_cases
+all_cases = brazil_cases + tjsp_hist_cases + canada_cases + nl_cases
 # Sort by country then date descending
 all_cases.sort(key=lambda x: (x['country'], x['date'] or ''), reverse=False)
 
@@ -265,6 +313,33 @@ try:
                 ws.cell(row=ws.max_row, column=col).fill = fill
         freeze_and_filter(ws)
 
+    # ── TJSP Historical sheet (1997-2015) with rich qualitative fields ────────
+    if tjsp_hist_cases:
+        HIST_FIELDS = FIELDS + [
+            '_municipality', '_plaintiff', '_defendant', '_key_topic',
+            '_key_legislation', '_hr_language', '_sust_language',
+            '_collective_claim', '_mp_involved', '_win', '_mixed_result',
+            '_governance_category', '_language_category', '_notes',
+        ]
+        HIST_HEADERS = HUMAN_HEADERS + [
+            'Municipality', 'Plaintiff', 'Defendant', 'Key Topic',
+            'Key Legislation', 'HR Language', 'Sust. Language',
+            'Collective Claim', 'MP Involved', 'Win', 'Mixed Result',
+            'Governance Category', 'Language Category', 'Notes',
+        ]
+        ws_h = wb.create_sheet('TJSP Historical (1997-2015)')
+        ws_h.append(HIST_HEADERS)
+        style_header_row(ws_h, len(HIST_FIELDS), COLORS['Brazil-Historical']['header'])
+        hist_widths = COL_WIDTHS + [18, 22, 22, 40, 30, 10, 10, 14, 10, 6, 10, 28, 22, 40]
+        set_col_widths(ws_h, hist_widths)
+        hist_fill = PatternFill('solid', fgColor=COLORS['Brazil-Historical']['bg'])
+        for row in tjsp_hist_cases:
+            vals = [row.get(f, '') for f in HIST_FIELDS]
+            ws_h.append(vals)
+            for col in range(1, len(HIST_FIELDS) + 1):
+                ws_h.cell(row=ws_h.max_row, column=col).fill = hist_fill
+        freeze_and_filter(ws_h)
+
     # ── Summary sheet ─────────────────────────────────────────────────────────
     ws_sum = wb.create_sheet('Summary')
     ws_sum.column_dimensions['A'].width = 16
@@ -286,14 +361,25 @@ try:
         c.alignment = Alignment(horizontal='center')
 
     total = len(all_cases)
-    for country, cases in country_groups.items():
+    summary_groups = {
+        'Brazil (2016-2026)':      brazil_cases,
+        'Brazil Historical TJSP':  tjsp_hist_cases,
+        'Canada':                  canada_cases,
+        'Netherlands':             nl_cases,
+    }
+    fill_map = {
+        'Brazil (2016-2026)':      country_fills['Brazil'],
+        'Brazil Historical TJSP':  PatternFill('solid', fgColor=COLORS['Brazil-Historical']['bg']),
+        'Canada':                  country_fills['Canada'],
+        'Netherlands':             country_fills['Netherlands'],
+    }
+    for label, cases in summary_groups.items():
         n = len(cases)
         pct = f'{n/total*100:.1f}%' if total else '0%'
-        ws_sum.append([country, n, pct])
+        ws_sum.append([label, n, pct])
         row_idx = ws_sum.max_row
-        fill = country_fills[country]
         for col in range(1, 4):
-            ws_sum.cell(row=row_idx, column=col).fill = fill
+            ws_sum.cell(row=row_idx, column=col).fill = fill_map[label]
 
     ws_sum.append([])
     ws_sum.append(['TOTAL', total, '100%'])
@@ -305,28 +391,42 @@ try:
     # Year × Country pivot
     ws_sum.append([])
     ws_sum.append([])
-    all_years = sorted(set(int(c['year']) for c in all_cases if c.get('year') and c['year'].isdigit()))
-    ws_sum.append(['Year', 'Brazil', 'Canada', 'Netherlands', 'Total'])
+    all_years = sorted(set(int(c['year']) for c in all_cases if c.get('year') and str(c['year']).isdigit()))
+    ws_sum.append(['Year', 'Brazil 2016+', 'Brazil Hist.', 'Canada', 'Netherlands', 'Total'])
     header_row = ws_sum.max_row
-    for col in range(1, 6):
+    for col in range(1, 7):
         c = ws_sum.cell(row=header_row, column=col)
         c.font = Font(bold=True, color='FFFFFF')
         c.fill = PatternFill('solid', fgColor='2C3E50')
         c.alignment = Alignment(horizontal='center')
     ws_sum.column_dimensions['D'].width = 14
-    ws_sum.column_dimensions['E'].width = 10
+    ws_sum.column_dimensions['E'].width = 14
+    ws_sum.column_dimensions['F'].width = 10
 
-    year_country = defaultdict(Counter)
-    for case in all_cases:
+    # Track Brazil modern vs historical separately by source
+    year_br_mod  = Counter()
+    year_br_hist = Counter()
+    year_ca      = Counter()
+    year_nl      = Counter()
+    for case in brazil_cases:
         yr = case.get('year', '')
-        if yr and str(yr).isdigit():
-            year_country[int(yr)][case['country']] += 1
+        if yr and str(yr).isdigit(): year_br_mod[int(yr)] += 1
+    for case in tjsp_hist_cases:
+        yr = case.get('year', '')
+        if yr and str(yr).isdigit(): year_br_hist[int(yr)] += 1
+    for case in canada_cases:
+        yr = case.get('year', '')
+        if yr and str(yr).isdigit(): year_ca[int(yr)] += 1
+    for case in nl_cases:
+        yr = case.get('year', '')
+        if yr and str(yr).isdigit(): year_nl[int(yr)] += 1
 
     for yr in all_years:
-        br = year_country[yr].get('Brazil', 0)
-        ca = year_country[yr].get('Canada', 0)
-        nl = year_country[yr].get('Netherlands', 0)
-        ws_sum.append([yr, br, ca, nl, br + ca + nl])
+        br  = year_br_mod.get(yr, 0)
+        brh = year_br_hist.get(yr, 0)
+        ca  = year_ca.get(yr, 0)
+        nl  = year_nl.get(yr, 0)
+        ws_sum.append([yr, br, brh, ca, nl, br + brh + ca + nl])
 
     # Move Summary to front
     wb.move_sheet('Summary', offset=-(len(wb.sheetnames)-1))
@@ -343,9 +443,15 @@ except Exception as e:
 print('\n' + '='*55)
 print(f'{"GLOBAL WATER LAW DATASET":^55}')
 print('='*55)
-for country, cases in country_groups.items():
-    print(f'\n{country}: {len(cases)} cases')
-    yr_count = Counter(c['year'] for c in cases if c.get('year'))
+all_groups = {
+    'Brazil (2016-2026)':             brazil_cases,
+    'Brazil Historical TJSP (1997-2015)': tjsp_hist_cases,
+    'Canada':                         canada_cases,
+    'Netherlands':                    nl_cases,
+}
+for label, cases in all_groups.items():
+    print(f'\n{label}: {len(cases)} cases')
+    yr_count = Counter(str(c['year']) for c in cases if c.get('year'))
     for yr in sorted(yr_count):
         bar = '█' * min(yr_count[yr] // 10, 40)
         print(f'  {yr}: {yr_count[yr]:4d} {bar}')
