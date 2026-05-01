@@ -67,7 +67,7 @@ HDRS = {
 # Matched against case title + keywords metadata.
 # Covers services, contamination, rights, statutes, infrastructure, and more.
 WATER_KEYWORDS = [
-    # Core water services
+    # ── English: core water services ──────────────────────────────────────────
     'water supply', 'water service', 'water utility', 'water rate',
     'water meter', 'water bill', 'water connection', 'water disconnection',
     'drinking water', 'potable water', 'water treatment', 'water distribution',
@@ -86,21 +86,55 @@ WATER_KEYWORDS = [
     'source water', 'source water protection',
     'water conservation', 'water shortage', 'drought',
     'irrigation', 'water district', 'water board',
-    # Flood / dams
-    'flood', 'dam', 'reservoir', 'floodplain', 'riparian',
+    # Flood / dams (note: bare 'dam' handled via whole-word regex below)
+    'flood', 'reservoir', 'floodplain', 'riparian', 'hydroelectric',
     # Named Canadian statutes / agencies
     'Canada Water Act', 'Safe Drinking Water', 'Clean Water Act',
     'Water Act', 'Water Resources Act', 'Water Security Agency',
-    'water authority',
+    'water authority', 'Fisheries Act', 'fisheries', 'Navigation Protection',
     # Indigenous
     'Indigenous water', 'First Nations water', 'treaty water',
+
+    # ── French: eau / services d'eau ──────────────────────────────────────────
+    # (Quebec Court of Appeal cases are in French — 'water' never appears in title)
+    "eau potable", "eau souterraine", "eaux usées", "eaux de surface",
+    "distribution d'eau", "service d'eau", "approvisionnement en eau",
+    "réseau d'eau", "alimentation en eau", "qualité de l'eau",
+    "contamination de l'eau", "pollution de l'eau",
+    "aqueducs", "aqueduc", "égout", "égouts", "assainissement",
+    "inondation", "inondations", "barrage", "barrages",
+    # NOTE: "crue" (flood) handled via whole-word regex — "crue" in "cruelty"/"McRuer" etc.
+    "nappe phréatique", "cours d'eau", "bassin versant",
+    "droits sur l'eau", "ressources hydriques", "ressources en eau",
+    "loi sur les ressources en eau", "gestion des eaux",
+    "eaux pluviales", "zone inondable", "ripicole",
+    # French statutes / agencies
+    "Loi sur les pêches", "pêcheries", "Loi sur la protection de la navigation",
+    "Loi sur l'eau", "régie des eaux", "Office des eaux",
+    # Indigenous (French)
+    "droits de l'eau", "eau des Premières Nations",
 ]
 
 WATER_KW_LOWER = [k.lower() for k in WATER_KEYWORDS]
 
+# Whole-word patterns for ambiguous short terms (avoids 'dam' in 'Adam', 'random', etc.)
+import re as _re
+WATER_WORD_PATTERNS = [
+    _re.compile(r'\bdam\b', _re.I),
+    _re.compile(r'\bdams\b', _re.I),
+    _re.compile(r'\blevee\b', _re.I),
+    _re.compile(r'\bdike\b', _re.I),
+    _re.compile(r'\bdyke\b', _re.I),
+    _re.compile(r'\bcrue\b', _re.I),   # French: crue (flood/high water) — avoid "cruelty"/"McRuer"
+    _re.compile(r'\bcrues\b', _re.I),  # plural
+]
+
 def is_water_case(title, keywords):
     haystack = (title + ' ' + keywords).lower()
-    return any(kw in haystack for kw in WATER_KW_LOWER)
+    if any(kw in haystack for kw in WATER_KW_LOWER):
+        return True
+    full = title + ' ' + keywords
+    return any(p.search(full) for p in WATER_WORD_PATTERNS)
 
 # ── TRIBUNAL DISCOVERY KEYWORDS ───────────────────────────────────────────────
 # Database names matching these are auto-included as Tier 3.
@@ -118,10 +152,10 @@ def is_water_tribunal(db_name):
 
 # ── TIER 1: Always browse all cases, then keyword-filter ─────────────────────
 TIER1_IDS = {
-    # Federal
+    # Federal (correct CanLII IDs — fca-caf/fct-cf are wrong, real IDs are fca/fct)
     'csc-scc': 'Supreme Court of Canada',
-    'fca-caf': 'Federal Court of Appeal',
-    'fct-cf':  'Federal Court',
+    'fca':     'Federal Court of Appeal',
+    'fct':     'Federal Court',
     # Provincial / territorial courts of appeal
     'bcca':  'Court of Appeal for British Columbia',
     'abca':  'Court of Appeal of Alberta',
@@ -140,19 +174,22 @@ TIER1_IDS = {
 
 # ── TIER 2: Browse + keyword filter ─────────────────────────────────────────
 TIER2_IDS = {
-    'bcsc':  'Supreme Court of British Columbia',
-    'abkb':  "Court of King's Bench of Alberta",
-    'skqb':  "Court of King's Bench for Saskatchewan",
-    'mbqb':  "Court of King's Bench of Manitoba",
-    'onsc':  'Superior Court of Justice (Ontario)',
-    'qccs':  'Superior Court (Quebec)',
-    'nbkb':  "Court of King's Bench of New Brunswick",
-    'nssc':  'Supreme Court of Nova Scotia',
-    'peisc': 'Supreme Court of Prince Edward Island',
-    'nlsc':  'Supreme Court of Newfoundland and Labrador',
-    'yksc':  'Supreme Court of Yukon',
-    'nwtsc': 'Supreme Court of Northwest Territories',
-    'nucj':  'Nunavut Court of Justice',
+    'bcsc':    'Supreme Court of British Columbia',
+    'abkb':    "Court of King's Bench of Alberta",
+    'skqb':    "Court of King's Bench for Saskatchewan",
+    'mbqb':    "Court of King's Bench of Manitoba",
+    'onsc':    'Superior Court of Justice (Ontario)',
+    'qccs':    'Superior Court (Quebec)',
+    'nbkb':    "Court of King's Bench of New Brunswick",
+    'nssc':    'Supreme Court of Nova Scotia',
+    'peisc':   'Supreme Court of Prince Edward Island',
+    'nlsc':    'Supreme Court of Newfoundland and Labrador',
+    'yksc':    'Supreme Court of Yukon',
+    'nwtsc':   'Supreme Court of Northwest Territories',
+    'nucj':    'Nunavut Court of Justice',
+    # Federal special courts — Indigenous water rights, treaty claims
+    'sct-trp': 'Specific Claims Tribunal Canada',
+    'cart-crac': 'Canada Agricultural Review Tribunal',
 }
 
 # ── REQUEST COUNTER ───────────────────────────────────────────────────────────
