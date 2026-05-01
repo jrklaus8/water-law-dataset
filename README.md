@@ -4,9 +4,9 @@
 [![PyPI version](https://badge.fury.io/py/water-law-dataset.svg)](https://pypi.org/project/water-law-dataset/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A collection of scrapers for building a comparative dataset of water law judicial decisions across Brazil (27 state courts), Canada (federal + provincial courts via CanLII), and the Netherlands (Raad van State + CBb via Rechtspraak.nl).
+A collection of scrapers for building a comparative dataset of water law judicial decisions across Brazil (27 state courts), Canada (federal + provincial courts via CanLII), and the Netherlands (Raad van State + all 11 district courts via Rechtspraak.nl).
 
-**Scope:** 2016–2026 | **Cases collected:** 8,368 Brazilian decisions (8 courts) + Netherlands
+**Scope:** 2016–2026 | **Cases collected:** 30,678+ decisions across Brazil, Canada, and Netherlands
 
 ---
 
@@ -24,9 +24,12 @@ water-law-dataset/
 │   │   ├── tjsc_scraper.py   (TJSC – Santa Catarina, ESAJ AJAX)
 │   │   └── tjto_scraper.py   (TJTO – Tocantins,   PHP+Solr GET)
 │   ├── canada/
-│   │   └── canlii_scraper.py  (CanLII REST API — requires free API key)
+│   │   ├── canlii_scraper.py          (CanLII REST API — requires free API key)
+│   │   ├── canada_canlii_extra.py     (113 extra CanLII databases not in main scraper)
+│   │   └── canada_ldh_scraper.py      (Legal Data Hunter semantic search — requires API key)
 │   └── netherlands/
-│       └── rechtspraak_scraper.py  (Rechtspraak Open Data — no auth)
+│       ├── rechtspraak_scraper.py     (Rechtspraak Open Data — no auth)
+│       └── rechtspraak_expanded.py   (RvS/CBb/GHARL/HR extended crawl)
 ├── utils/
 │   ├── merge_national.py      # Merges per-court JSON files into national CSV/XLSX
 │   └── make_progress_charts.py
@@ -71,7 +74,17 @@ Output is written to `$OUTPUT_DIR/<court>_cases_2016_2026.json`.
 ```bash
 # Register free at https://developer.canlii.org/
 export CANLII_API_KEY=your_key_here
-python scrapers/canada/canlii_scraper.py
+python scrapers/canada/canlii_scraper.py       # main CanLII keyword search
+python scrapers/canada/canada_canlii_extra.py  # 113 additional CanLII databases
+```
+
+### 4. Legal Data Hunter (Canada, semantic search) — requires API key
+
+The `canada_ldh_scraper.py` uses [Legal Data Hunter](https://legaldatahunter.com) to run semantic and keyword searches across the full CanLII corpus (94,502+ Canadian legal documents). This supplements the title-based CanLII API by surfacing cases where water law is the substance of the decision, not just the title.
+
+```bash
+export LDH_API_KEY=your_key_here
+python scrapers/canada/canada_ldh_scraper.py
 ```
 
 ### 4. Merge into national dataset
@@ -153,6 +166,20 @@ Each case record contains:
 ## Legal Note
 
 These scrapers query publicly accessible jurisprudência portals. All decisions are public court records. This dataset is intended for academic comparative law research.
+
+---
+
+## Acknowledgements
+
+**[Legal Data Hunter](https://legaldatahunter.com)** — semantic legal search across 18M+ decisions from 110+ countries. An outstanding tool for comparative legal research that goes well beyond keyword matching. The Canadian component of this dataset was significantly enriched through LDH's semantic search over the full CanLII corpus. If you're building a legal dataset or doing cross-jurisdictional research, Legal Data Hunter is genuinely worth checking out.
+
+**[CanLII](https://www.canlii.org)** — the Canadian Legal Information Institute, whose free public API made systematic collection of Canadian case law possible.
+
+**[Rechtspraak.nl](https://www.rechtspraak.nl)** — the Dutch courts' open data portal, which provides structured XML access to published decisions.
+
+This dataset was built as part of doctoral research on comparative water law at [UNIARP](https://uniarp.edu.br). If you use it in your own work, please cite the Zenodo record:
+
+> Klaus, C. (2026). *Global Water Law Judicial Decisions Dataset* (v1.0). Zenodo. https://doi.org/10.5281/zenodo.19836413
 
 ---
 
