@@ -122,15 +122,35 @@ def load_brazil():
     return brazil
 
 def load_canada():
-    fpath = DL / 'canada_water_law_2016_2026.json'
-    if not fpath.exists():
-        print('  MISSING: canada_water_law_2016_2026.json (run ldh_canada_scraper.py first)')
-        return []
-    with open(fpath, encoding='utf-8') as f:
-        data = json.load(f)
-    cases = [normalize_canada(c) for c in data]
-    print(f'  canada_water_law_2016_2026.json: {len(cases)} cases')
-    return cases
+    all_cases = []
+    seen_ids = set()
+
+    for fname in [
+        'canada_water_law_2016_2026.json',       # main CanLII (228 clean cases)
+        'canada_canlii_extra_2016_2026.json',    # extra CanLII databases (157 cases)
+        'canada_ldh_2016_2026.json',             # LDH semantic search (if available)
+    ]:
+        fpath = DL / fname
+        if not fpath.exists():
+            print(f'  (not yet available: {fname})')
+            continue
+        with open(fpath, encoding='utf-8') as f:
+            data = json.load(f)
+        if not data:
+            print(f'  (empty: {fname})')
+            continue
+        cases = []
+        for c in data:
+            uid = str(c.get('case_id') or c.get('citation') or '').strip().lower()
+            if uid and uid in seen_ids:
+                continue
+            if uid:
+                seen_ids.add(uid)
+            cases.append(normalize_canada(c))
+        print(f'  {fname}: {len(cases)} cases (deduped)')
+        all_cases.extend(cases)
+
+    return all_cases
 
 def normalize_tjsp_transformation(c):
     """Normalize TJSP Transformation Analysis 2021 record (1997-2015 historical cases)."""
