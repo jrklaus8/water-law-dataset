@@ -126,9 +126,10 @@ def load_canada():
     seen_ids = set()
 
     for fname in [
-        'canada_water_law_2016_2026.json',       # main CanLII (228 clean cases)
-        'canada_canlii_extra_2016_2026.json',    # extra CanLII databases (157 cases)
-        'canada_ldh_2016_2026.json',             # LDH semantic search (if available)
+        'canada_water_law_2016_2026.json',            # main CanLII (228 clean cases)
+        'canada_canlii_extra_2016_2026.json',         # extra CanLII databases (157 cases)
+        'canada_superior_expanded_2016_2026.json',    # expanded keyword run on superior courts (2833 cases)
+        'canada_ldh_2016_2026.json',                  # LDH semantic search (if available)
     ]:
         fpath = DL / fname
         if not fpath.exists():
