@@ -177,7 +177,7 @@ These scrapers query publicly accessible jurisprudência portals. All decisions 
 
 **[Rechtspraak.nl](https://www.rechtspraak.nl)** — the Dutch courts' open data portal, which provides structured XML access to published decisions.
 
-This dataset was built as part of doctoral research on comparative water law at [UNIARP](https://uniarp.edu.br). If you use it in your own work, please cite the Zenodo record:
+If you use it in your own work, please cite the Zenodo record:
 
 > Klaus, C. (2026). *Global Water Law Judicial Decisions Dataset* (v1.0). Zenodo. https://doi.org/10.5281/zenodo.19836413
 
