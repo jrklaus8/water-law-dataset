@@ -9,7 +9,7 @@
 
 A collection of scrapers for building a comparative dataset of water law judicial decisions across Brazil (27 state courts), Canada (federal + provincial courts via CanLII), and the Netherlands (Raad van State + all 11 district courts via Rechtspraak.nl).
 
-**Scope:** 2016–2026 | **Cases collected:** 83,596+ decisions across Brazil, Canada, and Netherlands
+**Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
 ---
 
@@ -113,6 +113,7 @@ python utils/make_progress_charts.py
 | TO | TJTO | 17 | PHP+Solr GET | ✅ Done |
 | DF | TJDFT | 8,421 | Elasticsearch REST | ✅ Done |
 | RJ | TJRJ | 1,219 | ASP.NET WebForms | ✅ Done |
+| SP | TJSP (1997–2015) | 200 | Hand-coded historical | ✅ Done |
 | MG | TJMG | — | DWR + CAPTCHA | ❌ Blocked |
 | BA | TJBA | — | GraphQL (server 500) | ❌ Blocked |
 | PR | TJPR | — | Full-text too broad (334K results) | ❌ Blocked |
@@ -133,7 +134,13 @@ python utils/make_progress_charts.py
 | AL | TJAL | — | Timeout/DNS | ❌ Blocked |
 | MA | TJMA | — | No jurisprudência endpoint | ❌ Blocked |
 
-**Total collected:** 11,524 cases from 8 courts (TJSP + TJSC + TJDFT + TJRJ + TJRR + TJAC + TJPI + TJTO) · plus 200 TJSP historical 1997–2015
+**Total collected:** 11,724 Brazilian cases — 11,524 from 8 courts (TJSP + TJSC + TJDFT + TJRJ + TJRR + TJAC + TJPI + TJTO) + 200 TJSP historical 1997–2015
+
+**Netherlands total:** 68,654 cases — 50,871 appellate (RvS + CBb + GHARL, via rechtspraak_expanded.py) + 17,783 district courts (all 11 Rechtbanken, via rechtspraak_scraper.py)
+
+**Canada total:** 3,218 cases — CanLII keyword search + CanLII extra databases + Legal Data Hunter semantic search + superior/appellate courts
+
+**Grand total: 83,596 decisions**
 
 ---
 
