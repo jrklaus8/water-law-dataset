@@ -298,58 +298,155 @@ def code_governance(text):
 # ════════════════════════════════════════════════════════════════════════════════
 # 4. WIN/LOSS — who prevailed
 # ════════════════════════════════════════════════════════════════════════════════
-# Proxy: did the user/plaintiff win (utility ordered to provide/reconnect/compensate)?
-# Only reliable for Brazil (ementa usually states the outcome)
-WIN_USER_PATTERNS = [
-    # Portuguese — user wins
+# Three tiers of pattern strength:
+#   Tier 1 — UNAMBIGUOUS: outcome is structurally determined regardless of who
+#            filed the appeal (cobranÃ§a indevida, restabelecimento, corte indevido).
+#            Safe to apply to all Brazilian courts.
+#   Tier 2 — CONTEXTUAL: outcome word co-occurs with water keyword (provido +
+#            água, procedente + água). Works for TJSC/TJRJ/TJSP where ementas
+#            are tightly structured.
+#   Tier 3 — TJDFT-LENIENT: procedente/improcedente with CAESB or water context
+#            in the summary text. TJDFT is pre-filtered to water disputes so
+#            bare procedente is reliable; used only when tribunal == TJDFT.
+
+# ── Tier 1: unambiguous (all courts) ──────────────────────────────────────────
+WIN_USER_T1 = [
+    # Charge ruled improper → user wins regardless of appeal direction
+    r'\bcobran[çc]a indevida\b', r'\bcobran[çc]a abusiva\b',
+    r'\bcobran[çc]a irregular\b',
+    r'\bvalor indevido.*?[aáàâã]gua\b', r'\b[aáàâã]gua.*?valor indevido\b',
+    # Service restoration ordered → utility was in the wrong
+    r'\brestabelec\w+.*?fornecimento\b', r'\brestabelec\w+.*?[aáàâã]gua\b',
+    r'\bfornecimento.*?restabelecid\w+\b',
+    # Illegal / improper disconnection confirmed as such
+    r'\bcorte.*?indevid\b', r'\bcorte.*?ileg[ií]t\b',
+    r'\bsuspens[aã]o.*?indevida\b', r'\bsuspens[aã]o.*?ileg[ií]tima\b',
+    r'\binterrup[çc][aã]o.*?indevida\b', r'\bdesligamento.*?indevido\b',
+    # Utility explicitly condemned to pay/act
+    r'\bcaebs.*?condenada?\b', r'\bcondenada?.*?caesb\b',
+    r'\bconcession[aá]ria.*?condenada?\b', r'\bcondenada?.*?fornec\w+\b',
+    r'\bdano moral.*?configurado.*?[aáàâã]gua\b',
+    r'\b[aáàâã]gua.*?dano moral.*?configurado\b',
+    r'\bdano moral.*?caesb\b.*?\bconfigurado\b',
+    # Connection/supply ordered (obligation to connect)
+    r'\bobriga[çc][aã]o de fazer.*?fornecer [aáàâã]gua\b',
+    r'\bfornecer [aáàâã]gua.*?obriga[çc][aã]o de fazer\b',
+    r'\bliga[çc][aã]o.*?deferida\b', r'\breliga[çc][aã]o.*?determinada\b',
+    r'\bordem.*?ligar.*?[aáàâã]gua\b', r'\bliga[çc][aã]o predial.*?deferida\b',
+    # English
+    r'\bmandatory.*?water.*?connection\b', r'\bwater.*?reconnect\w+.*?order\w*\b',
+]
+WIN_UTIL_T1 = [
+    # Charge ruled proper → utility wins
+    r'\bcobran[çc]a devida\b', r'\bcobran[çc]a leg[ií]tima\b',
+    r'\bcobran[çc]a regular\b',
+    # Legal / legitimate disconnection confirmed
+    r'\bcorte.*?leg[ií]tim\b', r'\bsuspens[aã]o.*?leg[ií]tima\b',
+    r'\binterrup[çc][aã]o.*?leg[ií]tima\b',
+    r'\bcorte.*?devido\b', r'\bsuspens[aã]o.*?devida\b',
+    # Debt confirmed (consumer owes, utility may disconnect)
+    r'\bd[eé]bito.*?devido.*?[aáàâã]gua\b', r'\b[aáàâã]gua.*?d[eé]bito.*?devido\b',
+    # English
+    r'\bwater.*?disconnect.*?lawful\b', r'\butility.*?prevail\w*\b',
+]
+
+# ── Tier 2: contextual (all courts, outcome + água word) ──────────────────────
+WIN_USER_T2 = [
     r'\bprovido\b.*\bdireito [aáàâã] [aáàâã]gua\b',
     r'\bdireito [aáàâã] [aáàâã]gua\b.*\bprovido\b',
     r'\bdireito [aáàâã] [aáàâã]gua\b.*\bprocedente\b',
     r'\bprocedente\b.*\b[aáàâã]gua\b',
-    r'\bobriga[çc][aã]o de fazer.*?fornecer [aáàâã]gua\b',
-    r'\bfornecer [aáàâã]gua.*?obriga[çc][aã]o de fazer\b',
-    r'\bliga[çc][aã]o.*?deferida\b',
-    r'\breliga[çc][aã]o.*?determinada\b',
-    r'\brestabelecer.*?fornecimento\b',
+    r'\bliga[çc][aã]o.*?[aáàâã]gua.*?deferida\b',
     r'\bresponsabilidade.*?empresa.*?[aáàâã]gua\b',
     r'\bdano moral.*?[aáàâã]gua.*?provid\w+\b',
     r'\bpedido.*?procedente.*?[aáàâã]gua\b',
-    # English
-    r'\border\w*.*?prov\w+.*?water\b',
-    r'\bwater.*?order\w*.*?prov\w+\b',
-    r'\bmandatory.*?water.*?connection\b',
-    r'\bwater.*?reconnect\w+.*?order\w*\b',
+    r'\b[aáàâã]gua.*?pedido.*?procedente\b',
+    r'\border\w*.*?prov\w+.*?water\b', r'\bwater.*?order\w*.*?prov\w+\b',
+    r'\bdismiss\w+.*?water\b',  # EN: challenge dismissed → utility approach won
 ]
-WIN_UTILITY_PATTERNS = [
-    # Portuguese — utility wins
-    r'\bimprovido\b.*\b[aáàâã]gua\b',
-    r'\b[aáàâã]gua\b.*\bimprovido\b',
-    r'\bimprocedente\b.*\b[aáàâã]gua\b',
-    r'\b[aáàâã]gua\b.*\bimprocedente\b',
-    r'\bcorte.*?[aáàâã]gua.*?leg[ií]timo\b',
+WIN_UTIL_T2 = [
+    r'\bimprovido\b.*\b[aáàâã]gua\b', r'\b[aáàâã]gua\b.*\bimprovido\b',
+    r'\bimprocedente\b.*\b[aáàâã]gua\b', r'\b[aáàâã]gua\b.*\bimprocedente\b',
+    r'\bcorte.*?[aáàâã]gua.*?leg[ií]tim\b',
     r'\bsuspens[aã]o.*?leg[ií]tima.*?[aáàâã]gua\b',
-    r'\bdébito.*?[aáàâã]gua.*?prov\w+\b',
-    # English
-    r'\butility.*?prevail\w*\b',
-    r'\bwater.*?disconnect.*?lawful\b',
-    r'\bdismiss\w+.*?water\b',
+    r'\bd[eé]bito.*?[aáàâã]gua.*?prov\w+\b',
     r'\bwater.*?claim.*?dismiss\w+\b',
 ]
 
-WIN_USER_RE = [re.compile(p, re.I | re.DOTALL) for p in WIN_USER_PATTERNS]
-WIN_UTIL_RE = [re.compile(p, re.I | re.DOTALL) for p in WIN_UTILITY_PATTERNS]
+# ── Tier 3: TJDFT-lenient (only when tribunal == TJDFT) ───────────────────────
+# TJDFT data is pre-filtered to water disputes — bare procedente/improcedente
+# reliably identifies the outcome for the water claim.
+WIN_USER_T3 = [
+    r'\bprocedente\b',
+    r'\bdar provimento\b', r'\bdou provimento\b', r'\bprovimento dado\b',
+    r'\bsentença reformada.*?favor\w*\b',
+]
+WIN_UTIL_T3 = [
+    r'\bimprocedente\b',
+    r'\bnegar provimento\b', r'\bnegado provimento\b', r'\bprovimento negado\b',
+    r'\bnego provimento\b',
+]
 
-def code_win_loss(text, country):
+MIXED_PATTERNS = [
+    r'\bparcialmente provido\b', r'\bprovimento parcial\b',
+    r'\bparcialmente procedente\b', r'\bprovido em parte\b',
+    r'\bparcial provimento\b', r'\bapela[çc][aã]o parcialmente\b',
+]
+
+WIN_USER_RE_T1 = [re.compile(p, re.I | re.DOTALL) for p in WIN_USER_T1]
+WIN_UTIL_RE_T1 = [re.compile(p, re.I | re.DOTALL) for p in WIN_UTIL_T1]
+WIN_USER_RE_T2 = [re.compile(p, re.I | re.DOTALL) for p in WIN_USER_T2]
+WIN_UTIL_RE_T2 = [re.compile(p, re.I | re.DOTALL) for p in WIN_UTIL_T2]
+WIN_USER_RE_T3 = [re.compile(p, re.I | re.DOTALL) for p in WIN_USER_T3]
+WIN_UTIL_RE_T3 = [re.compile(p, re.I | re.DOTALL) for p in WIN_UTIL_T3]
+MIXED_RE       = [re.compile(p, re.I | re.DOTALL) for p in MIXED_PATTERNS]
+
+def code_win_loss(text, country, tribunal=''):
     if country not in ('Brazil', 'BR'):
         return 'not_coded'
-    user_wins = any(r.search(text) for r in WIN_USER_RE)
-    util_wins = any(r.search(text) for r in WIN_UTIL_RE)
-    if user_wins and not util_wins:
-        return 'user_wins'
-    if util_wins and not user_wins:
-        return 'utility_wins'
-    if user_wins and util_wins:
+
+    # Mixed check first (applies to all courts)
+    if any(r.search(text) for r in MIXED_RE):
         return 'mixed'
+
+    # Tier 1 — unambiguous (all courts)
+    u1 = any(r.search(text) for r in WIN_USER_RE_T1)
+    v1 = any(r.search(text) for r in WIN_UTIL_RE_T1)
+    if u1 and not v1: return 'user_wins'
+    if v1 and not u1: return 'utility_wins'
+    if u1 and v1:     return 'mixed'
+
+    # Tier 2 — contextual (all courts)
+    u2 = any(r.search(text) for r in WIN_USER_RE_T2)
+    v2 = any(r.search(text) for r in WIN_UTIL_RE_T2)
+    if u2 and not v2: return 'user_wins'
+    if v2 and not u2: return 'utility_wins'
+    if u2 and v2:     return 'mixed'
+
+    # Tier 3 — TJDFT-lenient: only apply when there is actual water-utility context
+    # in the summary text. Guards against false-positive TJDFT records (real estate,
+    # electricity, pension cases that incidentally matched water search keywords).
+    # T3 guard: require explicit water-utility context — CAESB, or water service
+    # billing/supply language. This filters out false-positive TJDFT records
+    # (criminal, real estate, pension cases that incidentally mention "água").
+    T3_GUARD = re.compile(
+        r'caesb'
+        r'|companhia de saneamento'
+        r'|concession[aá]ria.*?[aáàâã]gua|[aáàâã]gua.*?concession[aá]ria'
+        r'|fatura.*?[aáàâã]gua|conta de [aáàâã]gua|tarifa.*?[aáàâã]gua'
+        r'|fornecimento.*?[aáàâã]gua|[aáàâã]gua.*?fornecimento'
+        r'|cobran[çc]a.*?[aáàâã]gua|[aáàâã]gua.*?cobran[çc]a'
+        r'|medidor.*?[aáàâã]gua|hidr[oô]metro'
+        r'|liga[çc][aã]o.*?[aáàâã]gua|[aáàâã]gua.*?esgoto',
+        re.I
+    )
+    if 'TJDFT' in str(tribunal).upper() and T3_GUARD.search(text):
+        u3 = any(r.search(text) for r in WIN_USER_RE_T3)
+        v3 = any(r.search(text) for r in WIN_UTIL_RE_T3)
+        if u3 and not v3: return 'user_wins'
+        if v3 and not u3: return 'utility_wins'
+        if u3 and v3:     return 'mixed'
+
     return 'unclear'
 
 # ════════════════════════════════════════════════════════════════════════════════
@@ -421,17 +518,18 @@ country_col = 'country' if 'country' in df.columns else 'pais'
 
 texts     = df['_text'].tolist()       # all fields — for governance
 texts_sub = df['_text_sub'].tolist()   # body text only — for HR/sust
-countries = df[country_col].fillna('').tolist() if country_col in df.columns else [''] * len(df)
+countries  = df[country_col].fillna('').tolist() if country_col in df.columns else [''] * len(df)
+tribunals  = df['tribunal'].fillna('').tolist() if 'tribunal' in df.columns else [''] * len(df)
 
 hr, sust, gov, wl, mp, ind, pub = [], [], [], [], [], [], []
 
-for i, (text, text_sub, country) in enumerate(zip(texts, texts_sub, countries)):
+for i, (text, text_sub, country, tribunal) in enumerate(zip(texts, texts_sub, countries, tribunals)):
     if i % 5000 == 0:
         print(f'  {i:,}/{len(df):,}...', flush=True)
-    hr.append(code_hr(text_sub))          # substantive text only — avoids metadata FP
-    sust.append(code_sust(text_sub))      # substantive text only
-    gov.append(code_governance(text))     # full text helps classify dispute type
-    wl.append(code_win_loss(text_sub, country))
+    hr.append(code_hr(text_sub))
+    sust.append(code_sust(text_sub))
+    gov.append(code_governance(text))
+    wl.append(code_win_loss(text_sub, country, tribunal))
     mp.append(code_mp(text_sub, country))
     ind.append(code_indigenous(text_sub))
     pub.append(code_public(text_sub))
