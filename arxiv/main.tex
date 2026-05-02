@@ -1,0 +1,325 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{authblk}
+\usepackage{abstract}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  citecolor=blue
+}
+
+\title{\textbf{Global Water Law Judicial Decisions Dataset}:\\
+A Comparative Corpus of 83,596 Decisions from Brazil, Canada, and the Netherlands (2016--2026)}
+
+\author{Claudio Klaus Junior}
+
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present the Global Water Law Judicial Decisions Dataset, a collection of 83,596 judicial decisions concerning water law and water governance from three jurisdictions: Brazil (11,724 decisions from 8 state courts, 2016--2026), Canada (3,218 decisions from federal and provincial courts via CanLII, 2016--2026), and the Netherlands (68,654 decisions from appellate and district courts via Rechtspraak.nl, 2016--2026). The dataset includes a unified schema with 13 core fields and 7 jurimetric variables coded via a multilingual regex engine covering Portuguese, English, Dutch, and French. Jurimetric variables capture: human rights and right-to-water framing, sustainability language, governance dispute category (12 categories), litigation outcome, Ministério Público involvement, Indigenous water rights, and collective/public interest framing. The dataset is designed to support the Legal Last Mile thesis—the study of administrative law as a structural gatekeeper that transforms physical access to water and sanitation into conditional legal status. Key empirical findings: Brazil shows 48\% tariff disputes and fewer than 1\% informal settlement cases, consistent with an ``Administrative Ghost'' pattern in which excluded populations cannot appear as plaintiffs; the Netherlands shows near-zero household connection disputes, consistent with a pre-litigation absorption model; Canada shows a fragmented, jurisdictionally opaque intermediate pattern. The dataset is openly deposited at Zenodo (\href{https://doi.org/10.5281/zenodo.19836413}{10.5281/zenodo.19836413}), Harvard Dataverse (\href{https://doi.org/10.7910/DVN/C9PEFS}{10.7910/DVN/C9PEFS}), DANS Data Station SSH (\href{https://doi.org/10.17026/SS/RVDBUF}{10.17026/SS/RVDBUF}), and OSF (\href{https://osf.io/admrq}{osf.io/admrq}). Scrapers and coding engine are released at \href{https://github.com/jrklaus8/water-law-dataset}{github.com/jrklaus8/water-law-dataset}.
+\end{abstract}
+
+\textbf{Keywords:} water law; judicial decisions; jurimetrics; Brazil; Canada; Netherlands; comparative law; legal datasets; open data; administrative law
+
+\tableofcontents
+\newpage
+
+%------------------------------------------------------------------
+\section{Introduction}
+%------------------------------------------------------------------
+
+Access to water and sanitation is constitutionally or legislatively recognized in over 100 jurisdictions, yet hundreds of millions of people remain without reliable household service. The gap between formal legal recognition and material access is not explained only by infrastructure deficits or political will. It is also shaped by administrative law: the procedural, jurisdictional, and institutional architecture that determines who can claim a right, how, and before which institution.
+
+The \emph{Legal Last Mile} thesis frames this gap as a structural problem of legal architecture. Physical pipes may reach a neighbourhood without the residents of that neighbourhood acquiring the legal standing to claim service—because they lack a formal address, a registered property title, or a utility contract that would give them documentary standing before a court or administrative body. Courts, then, adjudicate water disputes predominantly among already-connected populations, while excluded populations remain invisible as litigants.
+
+Testing this thesis empirically requires systematic data on who appears in water law litigation, over what disputes, and with what outcomes—across jurisdictions with different administrative architectures. The Global Water Law Judicial Decisions Dataset was built precisely for this purpose: a comparative corpus enabling jurimetric analysis of water governance as it plays out in actual judicial decisions.
+
+This paper documents the dataset's construction, coverage, schema, jurimetric coding engine, and key descriptive findings.
+
+%------------------------------------------------------------------
+\section{Theoretical Motivation: The Legal Last Mile}
+%------------------------------------------------------------------
+
+The Legal Last Mile thesis draws on three complementary literatures:
+
+\paragraph{Judicialization of social rights.} A substantial comparative literature examines whether courts enforce social and economic rights, finding that litigation access itself is stratified: the users of courts are disproportionately middle-class, organized, and formally documented \citep{gauri2008,hirschl2004}. In Brazil, water litigation has been shown to reproduce rather than correct service inequalities \citep{haglund2014,haglund2019}.
+
+\paragraph{Administrative law and access.} The administrative preconditions for claiming a right—legal address, formal service contract, documentary proof of residence—function as a pre-litigation filter. Where these preconditions are embedded in regulatory design, informal settlement residents are systematically excluded before any court can reach the merits of their claim \citep{tokman2001,varley2013}.
+
+\paragraph{Comparative water governance.} Different administrative architectures generate different patterns of exclusion. Welfare-state models with universal service obligations and robust administrative review (such as the Netherlands) resolve most household disputes before litigation; market-oriented or fragmented models (such as Canada's provincially-segmented system) produce opacity and unmet legal need; hybrid models with strong constitutional rights but weak administrative delivery (such as Brazil) produce a paradox in which right-to-water rhetoric coexists with systematic exclusion \citep{castro2004,bakker2007}.
+
+The dataset was designed to make this comparative architecture visible in actual court records.
+
+%------------------------------------------------------------------
+\section{Data Collection}
+%------------------------------------------------------------------
+
+\subsection{Brazil}
+
+Brazilian judicial decisions are available through individual state court (Tribunal de Justiça, TJ) portals. Each court operates an independent jurisprudência search interface, typically based on ESAJ, Elasticsearch, ASP.NET WebForms, or custom REST/GraphQL endpoints. There is no unified national portal for state court decisions; federal superior court decisions (STJ, STF) are separately accessible but were excluded from this collection as they represent a qualitatively different tier of adjudication.
+
+\subsubsection{Accessible courts}
+
+Eight state courts were accessible to automated scraping: TJDFT (Brasília, Elasticsearch REST: 8,421 cases), TJSC (Santa Catarina, ESAJ AJAX: 1,224), TJRJ (Rio de Janeiro, ASP.NET WebForms: 1,219), TJSP (São Paulo, ESAJ POST: 574), and four smaller courts (TJRR, TJAC, TJPI, TJTO: 86 combined). An additional 200 hand-coded TJSP decisions from 1997--2015 were incorporated from an existing qualitative dataset \citep{haglund2019}.
+
+\subsubsection{Blocked courts}
+
+Nineteen state courts were inaccessible due to: CAPTCHA protection (TJMG, TJSE, TJCE), CAS/SSO authentication (TJAM), SPA/JavaScript-only rendering without public API (TJGO, TJRO, TJMT), Cloudflare or HTTP-layer blocks (TJPB, TJAP, TJRN), server errors (TJBA), DNS/timeout failures (TJPE, TJPA, TJAL, TJRS, TJMS), and the absence of a jurisprudência endpoint (TJMA). The exclusion of these courts, particularly TJMG (Minas Gerais, the second-largest state by population), limits coverage in the Southeast and Northeast.
+
+\subsubsection{Search queries}
+
+Three keyword query groups were used:
+\begin{itemize}[noitemsep]
+  \item \emph{Primary:} \texttt{água abastecimento fornecimento saneamento}
+  \item \emph{Secondary:} \texttt{corte suspensão fornecimento água}
+  \item \emph{Tertiary:} \texttt{proteção manancial recursos hídricos ambiental}
+\end{itemize}
+
+\subsection{Canada}
+
+Canadian decisions were collected via the CanLII REST API (Canadian Legal Information Institute), which provides free programmatic access to a database of 94,502+ legal documents from federal and provincial courts, tribunals, and administrative bodies. Three collection methods were used:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{CanLII keyword search} across all available databases: 228 cases
+  \item \textbf{113 additional CanLII databases} not covered in the main search endpoint: 157 cases
+  \item \textbf{Superior/appellate court expanded run}: 2,833 cases
+  \item \textbf{Legal Data Hunter semantic search} across the full CanLII corpus: additional cases surfacing water law by substance rather than title keyword
+\end{enumerate}
+
+A key methodological note: CanLII's \texttt{caseBrowse} endpoint does not return \texttt{decisionDate}; year was extracted from the citation string using a regex pattern matching the four-digit year following the jurisdiction code.
+
+\subsection{Netherlands}
+
+Dutch judicial decisions are published as structured XML via the Rechtspraak Open Data API (\url{https://data.rechtspraak.nl/}), a fully open, authentication-free service. Two scrapers were used:
+
+\begin{enumerate}[noitemsep]
+  \item \textbf{Base scraper} (\texttt{rechtspraak\_scraper.py}): targeted the Raad van State (RvS, the supreme administrative court) and all 11 district courts (Rechtbanken), yielding 17,783 district court decisions (2016--2026).
+  \item \textbf{Expanded scraper} (\texttt{rechtspraak\_expanded.py}): targeted RvS (100,221 total decisions all years), CBb (College van Beroep voor het bedrijfsleven: 17,768), and GHARL (Gerechtshof Arnhem-Leeuwarden: 480), filtered to 2016--2026 yielding 50,871 decisions.
+\end{enumerate}
+
+The two NL datasets were combined with ECLI-based deduplication, yielding 68,654 unique decisions.
+
+%------------------------------------------------------------------
+\section{Dataset Schema}
+%------------------------------------------------------------------
+
+\subsection{Core fields (all countries)}
+
+\begin{longtable}{@{}lll@{}}
+\toprule
+Field & Type & Description \\
+\midrule
+\texttt{country} & string & Brazil / Canada / Netherlands \\
+\texttt{tribunal} & string & Court code (e.g., TJDFT, ONCA, RvS) \\
+\texttt{court\_name} & string & Full court name \\
+\texttt{case\_id} & string & Unique case identifier (process number or ECLI) \\
+\texttt{title} & string & Case title or ementa header \\
+\texttt{date} & string & Decision date (YYYY-MM-DD) \\
+\texttt{year} & integer & Decision year \\
+\texttt{case\_type} & string & Procedural class (e.g., Apelação Cível) \\
+\texttt{chamber} & string & Chamber or division \\
+\texttt{judge} & string & Reporting judge \\
+\texttt{legal\_area} & string & Legal area or rechtsgebied \\
+\texttt{summary} & string & Decision summary (ementa / inhoudsindicatie) \\
+\texttt{url} & string & Source URL \\
+\bottomrule
+\end{longtable}
+
+\subsection{Jurimetric variables}
+
+Seven binary or categorical variables were coded via the jurimetric engine (see Section~\ref{sec:coding}):
+
+\begin{longtable}{@{}lll@{}}
+\toprule
+Variable & Type & Description \\
+\midrule
+\texttt{hr\_language} & binary & Human rights / right-to-water framing \\
+\texttt{sust\_language} & binary & Sustainability / environmental framing \\
+\texttt{governance\_cat} & categorical & Dispute type (12 categories) \\
+\texttt{win\_loss} & categorical & user\_wins / utility\_wins / mixed / unclear \\
+\texttt{mp\_involvement} & binary & Ministério Público as litigant (Brazil only) \\
+\texttt{indigenous\_water} & binary & Indigenous / First Nations water rights \\
+\texttt{public\_interest} & binary & Collective action / diffuse rights framing \\
+\bottomrule
+\end{longtable}
+
+%------------------------------------------------------------------
+\section{Jurimetric Coding Engine}
+\label{sec:coding}
+%------------------------------------------------------------------
+
+The jurimetric coding engine (\texttt{utils/jurimetric\_coding.py}) applies approximately 120 regex patterns across four languages (Portuguese, English, Dutch, French) to classify each decision.
+
+\subsection{Human rights and sustainability language}
+
+\texttt{hr\_language} is set to 1 if the decision summary (not the full text) contains explicit human rights or right-to-water framing—phrases such as \emph{direito humano à água}, \emph{right to water}, \emph{mensenrecht op water}, or \emph{droit à l'eau}. The restriction to summary-only text was adopted after early tests showed a 98\%+ false positive rate when the full record was searched, due to the legal\_area field containing ``Direito à Água / Saneamento'' as a classification label.
+
+\texttt{sust\_language} is set to 1 if the summary contains sustainability, environmental protection, or intergenerational equity language.
+
+\subsection{Governance categories}
+
+\texttt{governance\_cat} assigns each case to one of 12 categories based on keyword patterns applied to all text fields. Categories were derived inductively from pilot coding of 500 Brazilian decisions and refined to produce mutually exclusive, exhaustive coverage. The \texttt{other\_water} category serves as a residual.
+
+\subsection{Win/loss}
+
+\texttt{win\_loss} is coded from outcome language in the summary: phrases indicating the user's claim succeeded (\emph{provimento}, \emph{procedente}), the utility prevailed (\emph{improvimento}, \emph{improcedente}), or mixed outcomes. The high \texttt{unclear} count (9,108) reflects the TJDFT Elasticsearch output, which often provides only a brief excerpt of the decision rather than a full ementa with outcome language.
+
+%------------------------------------------------------------------
+\section{Coverage and Limitations}
+%------------------------------------------------------------------
+
+\subsection{Brazil}
+Coverage is limited to 8 of 27 state courts. The 19 inaccessible courts include several of the most populous states (Minas Gerais, Paraná, Ceará, Pernambuco), which likely contain a disproportionate share of water law litigation. The dataset therefore underrepresents Brazil's Northeast and Interior, which also have the highest rates of precarious water access—precisely the regions where Legal Last Mile dynamics would be most acute. Results for Brazil should be interpreted as a partial view weighted toward the South, Southeast (minus MG), and Centre-West (TJDFT).
+
+\subsection{Canada}
+Canada's CanLII API returns decisions where water law appears in the title or keywords. Substantive water law decisions where water is one issue among many may be missed. The semantic search supplement (Legal Data Hunter) partially addresses this but does not achieve exhaustive coverage. First Nations water rights cases are almost certainly undercounted: many disputes are resolved through negotiation, administrative channels, or the specific Indigenous rights framework of the Canadian courts, and may not appear in the general CanLII corpus with keyword matches.
+
+\subsection{Netherlands}
+The Rechtspraak Open Data API is comprehensive: all published decisions are available as structured XML. Coverage should approach the universe of published water law decisions. The primary limitation is that Netherlands courts have a general low publication rate for lower-instance decisions (not all rechtbank decisions are published), meaning the district court data likely undercounts total litigation volume.
+
+%------------------------------------------------------------------
+\section{Empirical Findings}
+%------------------------------------------------------------------
+
+\subsection{Brazil}
+
+Table~\ref{tab:brazil} presents the governance category distribution for Brazil's 11,724 decisions.
+
+\begin{table}[h]
+\centering
+\caption{Brazil governance categories (11,724 cases, 2016--2026)}
+\label{tab:brazil}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Category & Count & \% \\
+\midrule
+Tariff dispute & 5,634 & 48.1\% \\
+Other water & 4,252 & 36.3\% \\
+Connection refusal & 1,160 & 9.9\% \\
+Sanitation/sewage & 265 & 2.3\% \\
+Riparian/waterway & 47 & 0.4\% \\
+Informal settlement & 96 & 0.8\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The near-absence of informal settlement cases (0.8\%) is the dataset's most theoretically significant finding. In Brazil, 12--15\% of the urban population lives in informal settlements (\emph{favelas}, \emph{loteamentos irregulares}) without formal utility contracts. If litigation were distributed proportionally, informal settlement disputes would represent a substantial fraction of the docket. Their near-absence is consistent with the Administrative Ghost hypothesis: these populations lack the documentary prerequisites—formal address, registered utility contract, property title—required to establish legal standing as water users in the first instance.
+
+By contrast, tariff disputes (48.1\%) require an existing formal service contract to bring, structurally selecting for already-connected populations who can litigate the \emph{terms} of their service.
+
+Win/loss outcomes show utilities prevailing in approximately 70\% of resolved cases (1,476 utility wins vs. 629 user wins), with 511 mixed outcomes. Human rights language appears in only 1.9\% of Brazilian decisions (226 of 11,724), despite Brazil's constitutional right to sanitation (Art. 6, CF/1988, as amended).
+
+\subsection{Netherlands}
+
+The Netherlands' 68,654 decisions show near-zero household-level disputes (Table~\ref{tab:nl}). This reflects the pre-litigation absorption model: universal service obligations, mandatory administrative review (\emph{bezwaar}/\emph{beroep}), and Ombudsman mechanisms resolve household disputes before they reach courts. Published decisions address systemic water governance—permits, water board decisions, environmental regulation—not household access.
+
+\begin{table}[h]
+\centering
+\caption{Netherlands governance categories (68,654 cases, 2016--2026)}
+\label{tab:nl}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Category & Count & \% \\
+\midrule
+Other water & 68,110 & 99.2\% \\
+Irrigation/agricultural & 170 & 0.2\% \\
+Regulatory/permit & 97 & 0.1\% \\
+Flooding/drainage & 72 & 0.1\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+No Netherlands decision in the dataset invokes human rights or right-to-water framing. This is not evidence that the Netherlands lacks effective water rights—the opposite is true—but rather that water access is institutionally settled in the Netherlands to a degree that never requires rights-based judicial mobilization.
+
+\subsection{Canada}
+
+Canada's 3,218 decisions show an intermediate pattern (Table~\ref{tab:canada}): dominated by general water decisions (95.7\%), with small proportions of hydroelectric/dam and irrigation/agricultural disputes. The near-absence of connection refusal and tariff disputes, combined with the structural fragmentation of Canadian water governance across provincial, federal, and First Nations jurisdictions, is consistent with a model of fragmented opacity: household disputes may exist but are absorbed or deflected by jurisdictional complexity before reaching courts.
+
+\begin{table}[h]
+\centering
+\caption{Canada governance categories (3,218 cases, 2016--2026)}
+\label{tab:canada}
+\begin{tabular}{@{}lrr@{}}
+\toprule
+Category & Count & \% \\
+\midrule
+Other water & 3,080 & 95.7\% \\
+Hydroelectric/dam & 44 & 1.4\% \\
+Irrigation/agricultural & 40 & 1.2\% \\
+Sanitation/sewage & 18 & 0.6\% \\
+Flooding & 11 & 0.3\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The dataset contains only 1 case coded as \texttt{indigenous\_water}—almost certainly a severe undercount given the scale of First Nations water crises in Canada, and consistent with the argument that Indigenous water disputes are resolved (or suppressed) through channels other than the general court system.
+
+\subsection{Comparative summary}
+
+\begin{table}[h]
+\centering
+\caption{Comparative jurimetric summary}
+\label{tab:comparative}
+\begin{tabular}{@{}llll@{}}
+\toprule
+Dimension & Brazil & Canada & Netherlands \\
+\midrule
+Total decisions & 11,724 & 3,218 & 68,654 \\
+Dominant dispute & Tariff (48\%) & General (96\%) & General (99\%) \\
+Connection refusal & 9.9\% & $<$0.1\% & $<$0.1\% \\
+Informal settlement & 0.8\% & 0\% & 0\% \\
+HR language & 1.9\% & 0\% & 0\% \\
+Utility win rate & $\sim$70\% & N/A & N/A \\
+Pre-litigation absorption & Low & Medium & High \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%------------------------------------------------------------------
+\section{AI Disclosure}
+%------------------------------------------------------------------
+
+This dataset was built with the assistance of Claude (Anthropic), an AI assistant. Claude assisted with: scraper development (web scrapers for Brazilian state courts, CanLII, and Rechtspraak.nl, including pagination logic and authentication handling); data pipeline (merge, deduplication, and normalization scripts); jurimetric coding engine (regex patterns across four languages); and repository deposit workflows (Zenodo, Harvard Dataverse, DANS, OSF). All research design decisions, methodological choices, variable definitions, and intellectual interpretations are those of the human researcher.
+
+%------------------------------------------------------------------
+\section{Acknowledgements}
+%------------------------------------------------------------------
+
+This research is inspired by the work of Professor LaDawn Haglund on comparative water law, water governance, and the judicialization of water and sanitation in Brazil. The Canadian collection was significantly enriched through the Legal Data Hunter platform (\url{https://legaldatahunter.com}), which provides semantic search across 18M+ legal documents. CanLII (\url{https://www.canlii.org}) and Rechtspraak.nl (\url{https://www.rechtspraak.nl}) provided the public APIs that made systematic collection possible.
+
+%------------------------------------------------------------------
+\section{Data Availability}
+%------------------------------------------------------------------
+
+The dataset is permanently archived and freely accessible at:
+
+\begin{itemize}[noitemsep]
+  \item \textbf{Zenodo} (primary archive): \url{https://doi.org/10.5281/zenodo.19836413}
+  \item \textbf{Harvard Dataverse}: \url{https://doi.org/10.7910/DVN/C9PEFS}
+  \item \textbf{DANS Data Station SSH}: \url{https://doi.org/10.17026/SS/RVDBUF}
+  \item \textbf{OSF}: \url{https://osf.io/admrq}
+\end{itemize}
+
+Scrapers, coding engine, and documentation: \url{https://github.com/jrklaus8/water-law-dataset}
+
+%------------------------------------------------------------------
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}
