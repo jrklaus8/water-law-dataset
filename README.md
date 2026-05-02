@@ -171,6 +171,23 @@ These scrapers query publicly accessible jurisprudência portals. All decisions 
 
 ## Acknowledgements
 
+### Scholarly Inspiration
+
+I would like to acknowledge that this research is inspired by the work of **Professor LaDawn Haglund** in the fields of comparative water law, water governance, and the judicialization of water and sanitation. Her scholarship, including *Water Governance and Social Justice in São Paulo, Brazil* and her broader work on human rights and urban water systems, has been central in shaping how I understand the relationship between law, policy, and access to essential resources.
+
+I had the privilege of working with her as a research assistant some years ago, and that experience played an important role in directing my interest toward this area. I am especially grateful for her early encouragement to study water law in Brazil and to approach these challenges from a comparative and global perspective.
+
+Her research and publications remain essential references for this project. I strongly recommend her work to anyone interested in water law, governance, and the role of legal institutions in addressing complex social and environmental challenges.
+
+Selected publications:
+- Haglund, L. (2014). [Water Governance and Social Justice in São Paulo, Brazil](https://ui.adsabs.harvard.edu/abs/2014WaPol..16S..78H/abstract). *Water Policy*, 16(S2), 78–97.
+- Haglund, L. (2019). [Can Human Rights Challenge Neoliberal Logics? Evidence from Water and Sanitation Rulings in São Paulo, Brazil](https://www.cambridge.org/core/books/abs/economic-and-social-rights-in-a-neoliberal-world/can-human-rights-challenge-neoliberal-logics-evidence-from-water-and-sanitation-rulings-in-sao-paulo-brazil/CA46C96661D045816C8173F6CC6116DC). In *Economic and Social Rights in a Neoliberal World*. Cambridge University Press.
+- Haglund, L. (2019). [Sustainable Urban Water Governance and Human Rights](https://www.mdpi.com/2071-1050/11/19/5314). *Sustainability*, 11(19), 5314.
+
+---
+
+### Tools and Platforms
+
 **[Legal Data Hunter](https://legaldatahunter.com)** — semantic legal search across 18M+ decisions from 110+ countries. An outstanding tool for comparative legal research that goes well beyond keyword matching. The Canadian component of this dataset was significantly enriched through LDH's semantic search over the full CanLII corpus. If you're building a legal dataset or doing cross-jurisdictional research, Legal Data Hunter is genuinely worth checking out.
 
 **[CanLII](https://www.canlii.org)** — the Canadian Legal Information Institute, whose free public API made systematic collection of Canadian case law possible.
