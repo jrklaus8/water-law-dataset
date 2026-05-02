@@ -1,12 +1,15 @@
 # Water Law Judicial Decisions Dataset
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19836413.svg)](https://doi.org/10.5281/zenodo.19836413)
+[![Harvard Dataverse](https://img.shields.io/badge/Harvard%20Dataverse-doi%3A10.7910%2FDVN%2FC9PEFS-blue)](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C9PEFS)
+[![DANS](https://img.shields.io/badge/DANS%20SSH-doi%3A10.17026%2FSS%2FRVDBUF-orange)](https://ssh.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/SS/RVDBUF)
+[![OSF](https://img.shields.io/badge/OSF-osf.io%2Fadmrq-teal)](https://osf.io/admrq)
 [![PyPI version](https://badge.fury.io/py/water-law-dataset.svg)](https://pypi.org/project/water-law-dataset/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A collection of scrapers for building a comparative dataset of water law judicial decisions across Brazil (27 state courts), Canada (federal + provincial courts via CanLII), and the Netherlands (Raad van State + all 11 district courts via Rechtspraak.nl).
 
-**Scope:** 2016–2026 | **Cases collected:** 30,678+ decisions across Brazil, Canada, and Netherlands
+**Scope:** 2016–2026 | **Cases collected:** 33,511 decisions across Brazil, Canada, and Netherlands
 
 ---
 
@@ -194,9 +197,14 @@ Selected publications:
 
 **[Rechtspraak.nl](https://www.rechtspraak.nl)** — the Dutch courts' open data portal, which provides structured XML access to published decisions.
 
-If you use it in your own work, please cite the Zenodo record:
+If you use it in your own work, please cite:
 
 > Klaus, C. (2026). *Global Water Law Judicial Decisions Dataset* (v1.0). Zenodo. https://doi.org/10.5281/zenodo.19836413
+
+Also archived at:
+- Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C9PEFS
+- DANS Data Station SSH: https://ssh.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/SS/RVDBUF
+- OSF: https://osf.io/admrq
 
 ---
 
