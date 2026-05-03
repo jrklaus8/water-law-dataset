@@ -34,8 +34,11 @@ water-law-dataset/
 │       ├── rechtspraak_scraper.py     (Rechtspraak Open Data — no auth)
 │       └── rechtspraak_expanded.py   (RvS/CBb/GHARL/HR extended crawl)
 ├── utils/
-│   ├── merge_national.py      # Merges per-court JSON files into national CSV/XLSX
-│   └── make_progress_charts.py
+│   ├── merge_national.py           # Merges per-court JSON files into national CSV/XLSX
+│   ├── make_progress_charts.py
+│   ├── jurimetric_coding.py        # Regex-based coding engine (21 categories, 4 languages)
+│   ├── build_report.py             # Generate comparative DOCX report + 6 charts from coded CSV
+│   └── integrate_dissertation.py   # Integrate dataset findings into a DOCX dissertation
 ├── data/                      # Output directory (gitignored — add your JSON/CSV here)
 ├── .env.example
 ├── requirements.txt
