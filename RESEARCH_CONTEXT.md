@@ -39,7 +39,7 @@ Individuals physically present and need-bearing but legally invisible to the adm
 
 This repository contains the scrapers and data for the jurimetric backbone of the dissertation: **12,310+ judicial decisions** from Brazil and the Netherlands (Canada in progress), coded via regex on decision summaries to test the Legal Last Mile theory.
 
-### Published Findings (UNIARP 2026 Conference)
+### Published Findings (2026 Conference)
 
 **Brazil (11,524 decisions):**
 

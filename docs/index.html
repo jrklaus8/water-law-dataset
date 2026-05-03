@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Water Law Dataset — Research Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --br: #009C3B;
+    --nl: #E05A00;
+    --ca: #C41230;
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --card: #21253a;
+    --border: #2e3350;
+    --text: #e8eaf0;
+    --muted: #8892a8;
+    --accent: #4f8ef7;
+    --gold: #f5c842;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.6; }
+
+  /* ── NAV ── */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(15,17,23,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 0; padding: 0 24px; height: 52px; }
+  nav .brand { font-weight: 700; font-size: 15px; color: var(--text); margin-right: 32px; white-space: nowrap; }
+  nav .brand span { color: var(--accent); }
+  .nav-tabs { display: flex; gap: 0; list-style: none; height: 100%; }
+  .nav-tabs li a { display: flex; align-items: center; height: 52px; padding: 0 14px; color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; border-bottom: 2px solid transparent; transition: all .15s; white-space: nowrap; }
+  .nav-tabs li a:hover { color: var(--text); }
+  .nav-tabs li a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .nav-right { margin-left: auto; display: flex; gap: 8px; }
+  .badge-doi { font-size: 11px; padding: 3px 8px; border-radius: 4px; background: var(--card); color: var(--muted); border: 1px solid var(--border); text-decoration: none; white-space: nowrap; }
+  .badge-doi:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ── LAYOUT ── */
+  .tab-content { display: none; animation: fadeIn .2s ease; }
+  .tab-content.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .container { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
+
+  /* ── HERO ── */
+  .hero { background: linear-gradient(135deg, #141825 0%, #1a2040 50%, #141825 100%); border-bottom: 1px solid var(--border); padding: 48px 24px 40px; text-align: center; }
+  .hero h1 { font-family: 'Crimson Pro', serif; font-size: 36px; font-weight: 600; letter-spacing: -.3px; margin-bottom: 8px; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero .subtitle { color: var(--muted); font-size: 15px; margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 32px; }
+  .hero-badge { padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid; }
+  .hero-badge.br { background: rgba(0,156,59,.15); border-color: var(--br); color: var(--br); }
+  .hero-badge.nl { background: rgba(224,90,0,.15); border-color: var(--nl); color: var(--nl); }
+  .hero-badge.ca { background: rgba(196,18,48,.15); border-color: var(--ca); color: var(--ca); }
+  .hero-badge.total { background: rgba(79,142,247,.15); border-color: var(--accent); color: var(--accent); }
+  .hero-badge.years { background: rgba(245,200,66,.12); border-color: var(--gold); color: var(--gold); }
+
+  /* ── STAT CARDS ── */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; transition: border-color .15s; }
+  .stat-card:hover { border-color: var(--accent); }
+  .stat-card .val { font-size: 28px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+  .stat-card .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+  .stat-card .sub { font-size: 11px; color: var(--muted); margin-top: 4px; }
+  .val-br { color: var(--br); }
+  .val-nl { color: var(--nl); }
+  .val-ca { color: var(--ca); }
+  .val-blue { color: var(--accent); }
+  .val-gold { color: var(--gold); }
+
+  /* ── CHART CARDS ── */
+  .chart-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .chart-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .chart-grid-half { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .chart-grid-third { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; margin-bottom: 24px; }
+  @media (max-width: 900px) {
+    .chart-grid-2, .chart-grid-3, .chart-grid-half, .chart-grid-third { grid-template-columns: 1fr; }
+  }
+  .chart-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .chart-card h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); margin-bottom: 4px; }
+  .chart-card .chart-title { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+  .chart-card .chart-note { font-size: 11px; color: var(--muted); margin-top: 10px; font-style: italic; }
+  .chart-wrap { position: relative; }
+
+  /* ── SECTION HEADINGS ── */
+  .section-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-head .dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .section-head h2 { font-size: 22px; font-weight: 700; }
+  .section-head .country-tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 600; }
+  .section-head .tag-br { background: rgba(0,156,59,.2); color: var(--br); }
+  .section-head .tag-nl { background: rgba(224,90,0,.2); color: var(--nl); }
+  .section-head .tag-ca { background: rgba(196,18,48,.2); color: var(--ca); }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+  /* ── INSIGHT BOXES ── */
+  .insight { background: var(--surface); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 14px 16px; margin: 16px 0; font-size: 13px; line-height: 1.7; }
+  .insight.br { border-color: var(--br); }
+  .insight.nl { border-color: var(--nl); }
+  .insight.ca { border-color: var(--ca); }
+  .insight.gold { border-color: var(--gold); }
+  .insight strong { color: var(--text); }
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  @media (max-width: 700px) { .insight-grid { grid-template-columns: 1fr; } }
+
+  /* ── TABLE ── */
+  .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .data-table th { background: var(--surface); padding: 10px 14px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; color: var(--muted); border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 9px 14px; border-bottom: 1px solid rgba(46,51,80,.6); }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,255,255,.02); }
+  .data-table .pct-bar { display: flex; align-items: center; gap: 8px; }
+  .data-table .bar-fill { height: 6px; border-radius: 3px; background: var(--accent); }
+  .table-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+
+  /* ── THEORY CARDS ── */
+  .theory-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 900px) { .theory-grid { grid-template-columns: 1fr; } }
+  .theory-card { background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+  .theory-card .icon { font-size: 28px; margin-bottom: 12px; }
+  .theory-card h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .theory-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+  .theory-card .highlight { color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 12px; color: var(--muted); margin-top: 40px; }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  /* ── PILLS ── */
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .pill-br { background: rgba(0,156,59,.2); color: var(--br); }
+  .pill-nl { background: rgba(224,90,0,.2); color: var(--nl); }
+  .pill-ca { background: rgba(196,18,48,.2); color: var(--ca); }
+  .pill-gray { background: rgba(136,146,168,.15); color: var(--muted); }
+
+  /* ── PROGRESS BARS (comparative) ── */
+  .comp-row { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-size: 13px; }
+  .comp-row .label { width: 200px; flex-shrink: 0; color: var(--muted); font-size: 12px; }
+  .comp-row .bar-wrap { flex: 1; background: rgba(255,255,255,.06); border-radius: 4px; height: 8px; overflow: hidden; }
+  .comp-row .bar-inner { height: 100%; border-radius: 4px; }
+  .comp-row .val-txt { width: 55px; text-align: right; font-size: 12px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="brand">💧 <span>Water Law</span> Dashboard</div>
+  <ul class="nav-tabs">
+    <li><a href="#" class="active" onclick="showTab('overview',this)">Overview</a></li>
+    <li><a href="#" onclick="showTab('brazil',this)">🇧🇷 Brazil</a></li>
+    <li><a href="#" onclick="showTab('netherlands',this)">🇳🇱 Netherlands</a></li>
+    <li><a href="#" onclick="showTab('canada',this)">🇨🇦 Canada</a></li>
+    <li><a href="#" onclick="showTab('comparative',this)">Comparative</a></li>
+    <li><a href="#" onclick="showTab('theory',this)">Research Findings</a></li>
+  </ul>
+  <div class="nav-right">
+    <a class="badge-doi" href="https://doi.org/10.5281/zenodo.19836413" target="_blank">DOI: 10.5281/zenodo.19836413</a>
+    <a class="badge-doi" href="https://github.com/jrklaus8/water-law-dataset" target="_blank">GitHub ↗</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="hero">
+  <h1>The <em>Legal Last Mile</em></h1>
+  <p class="subtitle">Administrative Law, Water Access &amp; the Limits of Judicial Inclusion — Global Water Law Judicial Decisions Dataset (v1.0)</p>
+  <div class="hero-badges">
+    <span class="hero-badge total">83,596 decisions</span>
+    <span class="hero-badge br">Brazil: 11,724</span>
+    <span class="hero-badge nl">Netherlands: 68,654</span>
+    <span class="hero-badge ca">Canada: 3,218</span>
+    <span class="hero-badge years">2016 – 2025</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TAB: OVERVIEW
+════════════════════════════════════════════ -->
+<div id="tab-overview" class="tab-content active">
+<div class="container">
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="val val-blue">83,596</div><div class="lbl">Total Decisions</div><div class="sub">3 jurisdictions · 2016–2025</div></div>
+    <div class="stat-card"><div class="val val-br">11,724</div><div class="lbl">Brazil</div><div class="sub">8 state courts + historical TJSP</div></div>
+    <div class="stat-card"><div class="val val-nl">68,654</div><div class="lbl">Netherlands</div><div class="sub">11 district courts + appellate</div></div>
+    <div class="stat-card"><div class="val val-ca">3,218</div><div class="lbl">Canada</div><div class="sub">CanLII + Legal Data Hunter</div></div>
+    <div class="stat-card"><div class="val val-gold">21</div><div class="lbl">Governance Categories</div><div class="sub">4 languages · v2.0 coding engine</div></div>
+    <div class="stat-card"><div class="val" style="color:#a78bfa">7</div><div class="lbl">Coded Variables</div><div class="sub">Per decision, all jurisdictions</div></div>
+  </div>
+
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <h3>Temporal coverage</h3>
+      <div class="chart-title">Judicial Decisions by Year &amp; Country</div>
+      <div class="chart-wrap"><canvas id="chartTimeline" height="180"></canvas></div>
+      <div class="chart-note">Netherlands on right axis (different scale). Dual-axis chart.</div>
+    </div>
+    <div class="chart-card">
+      <h3>Dataset composition</h3>
+      <div class="chart-title">Total Decisions by Country</div>
+      <div class="chart-wrap"><canvas id="chartComposition" height="180"></canvas></div>
+      <div class="chart-note">Netherlands dominates by volume due to open XML data feed coverage.</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:24px">
+    <h3>Global governance distribution</h3>
+    <div class="chart-title">All 83,596 Decisions — Top Categories Across All Countries</div>
+    <div class="chart-wrap"><canvas id="chartGlobalGov" height="100"></canvas></div>
+    <div class="chart-note">other_water (69.0%) and not_water_related (18.6%) excluded to show substantive governance categories.</div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight br"><strong>Brazil signal:</strong> Tariff disputes dominate (48.1%). Connection refusal accounts for only 9.9% — the access threshold question is systematically underrepresented in the formal legal record.</div>
+    <div class="insight nl"><strong>Netherlands signal:</strong> Virtually no household connection disputes (&lt;0.1%). Administrative pre-litigation absorption channels resolve service disputes before courts.</div>
+    <div class="insight ca"><strong>Canada signal:</strong> Fisheries (5.0%) and riparian rights (3.4%) dominate — resource governance, not household access. Reflects jurisdictional fragmentation and federal/provincial split.</div>
+    <div class="insight gold"><strong>Administrative Ghost:</strong> Informal settlements account for only 0.8% of Brazilian decisions (96 of 11,724) — not because excluded populations lack legal problems, but because they cannot enter the formal judicial system as plaintiffs.</div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TAB: BRAZIL
+════════════════════════════════════════════ -->
+<div id="tab-brazil" class="tab-content">
+<div class="container">
+
+  <div class="section-head">
+    <div class="dot" style="background:var(--br)"></div>
+    <h2>Brazil</h2>
+    <span class="country-tag tag-br">11,724 decisions · 2016–2025</span>
+    <span class="country-tag tag-br">8 state courts + TJSP historical</span>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="val val-br">11,724</div><div class="lbl">Total Cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#f59e0b">48.1%</div><div class="lbl">Tariff Disputes</div><div class="sub">5,634 cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#60a5fa">9.9%</div><div class="lbl">Connection Refusal</div><div class="sub">1,160 cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#f87171">0.8%</div><div class="lbl">Informal Settlement</div><div class="sub">96 cases — Administrative Ghost</div></div>
+    <div class="stat-card"><div class="val" style="color:#34d399">31.2%</div><div class="lbl">User Win Rate</div><div class="sub">of 4,481 coded decisions</div></div>
+    <div class="stat-card"><div class="val val-br">1.9%</div><div class="lbl">HR Language</div><div class="sub">226 decisions cite right to water</div></div>
+  </div>
+
+  <div class="chart-grid-half">
+    <div class="chart-card">
+      <h3>Governance distribution</h3>
+      <div class="chart-title">Brazil — All Governance Categories</div>
+      <div class="chart-wrap"><canvas id="chartBrGov" height="280"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Win/Loss outcomes</h3>
+      <div class="chart-title">4,481 Coded Decisions</div>
+      <div class="chart-wrap" style="max-width:280px;margin:0 auto"><canvas id="chartBrWL" height="250"></canvas></div>
+      <div class="chart-note">~7,243 decisions had unclear or no outcome language (particularly TJDFT/Brasília which uses administrative docket framing).</div>
+    </div>
+  </div>
+
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <h3>Temporal trend</h3>
+      <div class="chart-title">Cases per Year (2016–2025)</div>
+      <div class="chart-wrap"><canvas id="chartBrYear" height="180"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h3>Win/loss trend</h3>
+      <div class="chart-title">Outcomes by Year — Pre/Post Reform</div>
+      <div class="chart-wrap"><canvas id="chartBrWLYear" height="180"></canvas></div>
+      <div class="chart-note">Shaded region: post Lei 14.026/2020 (Novo Marco do Saneamento). User win rate stable at ~31% before and after reform.</div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:24px">
+    <h3>Human rights language</h3>
+    <div class="chart-title">HR / Right-to-Water Framing by Year (2016–2025)</div>
+    <div class="chart-wrap"><canvas id="chartBrHR" height="110"></canvas></div>
+    <div class="chart-note">Only 1.9% of decisions invoke explicit HR framing despite Art. 6 CF/1988 constitutional guarantee — consistent with the rights-access gap thesis.</div>
+  </div>
+
+  <div class="insight br"><strong>The Brazilian Paradox:</strong> Brazil has one of the world's strongest constitutional frameworks for water rights (Art. 6, Art. 225 CF/1988; STF recognition of the right to water as a fundamental right). Yet the formal judicial record is dominated by tariff disputes (48.1%) presupposing a formal connection, while the populations most in need — irregular settlement residents — account for less than 1% of decisions. Rights are declared but administratively inaccessible to those who need them most.</div>
+
+  <div class="table-wrap" style="margin-top:24px">
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Count</th><th>%</th><th style="width:200px">Distribution</th></tr></thead>
+      <tbody id="brGovTable"></tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TAB: NETHERLANDS
+════════════════════════════════════════════ -->
+<div id="tab-netherlands" class="tab-content">
+<div class="container">
+
+  <div class="section-head">
+    <div class="dot" style="background:var(--nl)"></div>
+    <h2>Netherlands</h2>
+    <span class="country-tag tag-nl">68,654 decisions · 2016–2025</span>
+    <span class="country-tag tag-nl">11 Rechtbanken + RvS + appellate</span>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="val val-nl">68,654</div><div class="lbl">Total Cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#f87171">22.7%</div><div class="lbl">Immigration Pre-filter</div><div class="sub">15,589 not-water-related</div></div>
+    <div class="stat-card"><div class="val" style="color:#60a5fa">1.8%</div><div class="lbl">Flood Protection</div><div class="sub">1,266 dijk/waterkering cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#a78bfa">&lt;0.1%</div><div class="lbl">Connection Refusal</div><div class="sub">12 cases — pre-litigation absorption</div></div>
+    <div class="stat-card"><div class="val" style="color:#34d399">0%</div><div class="lbl">HR Language</div><div class="sub">Absent from Dutch decisions</div></div>
+    <div class="stat-card"><div class="val val-nl">High</div><div class="lbl">Pre-litigation Absorption</div><div class="sub">Bezwaar/Awb/Geschillencommissie</div></div>
+  </div>
+
+  <div class="chart-grid-half">
+    <div class="chart-card">
+      <h3>Governance distribution</h3>
+      <div class="chart-title">Netherlands — Excluding other_water &amp; not_water_related</div>
+      <div class="chart-wrap"><canvas id="chartNlGov" height="260"></canvas></div>
+      <div class="chart-note">Substantive categories from 52,476 classified decisions. Flood protection and environmental licensing dominate — systemic governance, not household access.</div>
+    </div>
+    <div class="chart-card">
+      <h3>Composition breakdown</h3>
+      <div class="chart-title">Full NL Dataset Composition</div>
+      <div class="chart-wrap" style="max-width:280px;margin:0 auto"><canvas id="chartNlComp" height="260"></canvas></div>
+    </div>
+  </div>
+
+  <div class="chart-card" style="margin-bottom:24px">
+    <h3>Temporal trend</h3>
+    <div class="chart-title">Netherlands — Cases per Year (2016–2025)</div>
+    <div class="chart-wrap"><canvas id="chartNlYear" height="110"></canvas></div>
+    <div class="chart-note">Consistent growth reflects expanding Rechtspraak.nl publication coverage and Omgevingswet transition activity (2023–2025).</div>
+  </div>
+
+  <div class="insight nl"><strong>Pre-litigation absorption model:</strong> The near-total absence of household connection refusal cases (12 out of 68,654 decisions, &lt;0.1%) reflects the Netherlands' layered dispute resolution architecture. The universal service obligation (Drinkwaterbesluit), administrative objections procedure (bezwaar under the Awb), the Geschillencommissie Energie &amp; Water consumer tribunal, and the National Ombudsman collectively absorb household water disputes before they escalate to courts. Dutch courts adjudicate water governance at the systemic level — dijk management, waterschap governance, spatial planning water assessments — not at the household service level.</div>
+
+  <div class="table-wrap" style="margin-top:24px">
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Count</th><th>%</th><th style="width:200px">Distribution</th></tr></thead>
+      <tbody id="nlGovTable"></tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TAB: CANADA
+════════════════════════════════════════════ -->
+<div id="tab-canada" class="tab-content">
+<div class="container">
+
+  <div class="section-head">
+    <div class="dot" style="background:var(--ca)"></div>
+    <h2>Canada (Ontario focus)</h2>
+    <span class="country-tag tag-ca">3,218 decisions · 2016–2025</span>
+    <span class="country-tag tag-ca">CanLII + Legal Data Hunter</span>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card"><div class="val val-ca">3,218</div><div class="lbl">Total Cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#60a5fa">5.0%</div><div class="lbl">Fisheries Act</div><div class="sub">160 cases — federal jurisdiction</div></div>
+    <div class="stat-card"><div class="val" style="color:#34d399">3.4%</div><div class="lbl">Riparian / Waterway</div><div class="sub">108 cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#f59e0b">1.4%</div><div class="lbl">Hydroelectric / Dam</div><div class="sub">44 cases</div></div>
+    <div class="stat-card"><div class="val" style="color:#f87171">0%</div><div class="lbl">Connection Refusal</div><div class="sub">Opaque administrative processing</div></div>
+    <div class="stat-card"><div class="val" style="color:#a78bfa">Medium</div><div class="lbl">Pre-litigation Absorption</div><div class="sub">Fragmented; provincial variation</div></div>
+  </div>
+
+  <div class="chart-grid-half">
+    <div class="chart-card">
+      <h3>Governance distribution</h3>
+      <div class="chart-title">Canada — Classified Decisions (421 total)</div>
+      <div class="chart-wrap"><canvas id="chartCaGov" height="240"></canvas></div>
+      <div class="chart-note">86.9% of Canadian decisions are unclassifiable (other_water) due to title-only CanLII records with no summary text.</div>
+    </div>
+    <div class="chart-card">
+      <h3>Temporal trend</h3>
+      <div class="chart-title">Canada — Cases per Year (2016–2025)</div>
+      <div class="chart-wrap"><canvas id="chartCaYear" height="240"></canvas></div>
+      <div class="chart-note">2020 dip reflects COVID-19 court closures. Stable collection across all years.</div>
+    </div>
+  </div>
+
+  <div class="insight ca"><strong>Fragmented opacity:</strong> Canada's water law is characterized by constitutional division of powers: water services are provincially regulated, First Nations water is a federal responsibility (historically under-funded), and environmental water governance is shared. The dominance of fisheries (5.0%) and riparian rights (3.4%) in the classified decisions reflects the jurisdictional reach of the federal <em>Fisheries Act</em> — the one federal instrument that consistently generates water-related litigation across provinces. The absence of household service access cases likely reflects both genuine pre-litigation resolution at the municipal level and significant unmet legal need that never reaches courts.</div>
+
+  <div class="insight ca" style="margin-top:12px"><strong>Indigenous water gap:</strong> 0 cases coded as <code>indigenous_water</code> — an almost certain undercount. First Nations water insecurity generates substantial political and administrative contestation, but Title-only CanLII records rarely contain the substantive language needed for coding. The Legal Data Hunter semantic search component was designed partly to surface these cases; the near-zero count signals a limitation of the available data, not the absence of legal activity.</div>
+
+  <div class="table-wrap" style="margin-top:24px">
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Count</th><th>%</th><th style="width:200px">Distribution</th></tr></thead>
+      <tbody id="caGovTable"></tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TAB: COMPARATIVE
+════════════════════════════════════════════ -->
+<div id="tab-comparative" class="tab-content">
+<div class="container">
+
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:20px">Cross-National Comparison</h2>
+
+  <div class="chart-card" style="margin-bottom:24px">
+    <h3>Governance distributions — top categories per country (excluding other_water)</h3>
+    <div class="chart-title">Classified Decisions by Governance Category and Country</div>
+    <div class="chart-wrap"><canvas id="chartCompGov" height="140"></canvas></div>
+  </div>
+
+  <div class="chart-grid-3" style="margin-bottom:24px">
+    <div class="chart-card">
+      <div style="font-size:12px;font-weight:600;color:var(--br);margin-bottom:12px">🇧🇷 BRAZIL — Key ratios</div>
+      <div class="comp-row"><span class="label">Tariff disputes</span><div class="bar-wrap"><div class="bar-inner" style="width:48.1%;background:var(--br)"></div></div><span class="val-txt" style="color:var(--br)">48.1%</span></div>
+      <div class="comp-row"><span class="label">Connection refusal</span><div class="bar-wrap"><div class="bar-inner" style="width:9.9%;background:var(--br)"></div></div><span class="val-txt" style="color:var(--br)">9.9%</span></div>
+      <div class="comp-row"><span class="label">Informal settlement</span><div class="bar-wrap"><div class="bar-inner" style="width:0.8%;background:var(--br)"></div></div><span class="val-txt" style="color:var(--br)">0.8%</span></div>
+      <div class="comp-row"><span class="label">HR language</span><div class="bar-wrap"><div class="bar-inner" style="width:1.9%;background:#4f8ef7"></div></div><span class="val-txt" style="color:#4f8ef7">1.9%</span></div>
+      <div class="comp-row"><span class="label">User win rate</span><div class="bar-wrap"><div class="bar-inner" style="width:31.2%;background:#34d399"></div></div><span class="val-txt" style="color:#34d399">31.2%</span></div>
+    </div>
+    <div class="chart-card">
+      <div style="font-size:12px;font-weight:600;color:var(--nl);margin-bottom:12px">🇳🇱 NETHERLANDS — Key ratios</div>
+      <div class="comp-row"><span class="label">Flood protection</span><div class="bar-wrap"><div class="bar-inner" style="width:1.8%;background:var(--nl)"></div></div><span class="val-txt" style="color:var(--nl)">1.8%</span></div>
+      <div class="comp-row"><span class="label">Connection refusal</span><div class="bar-wrap"><div class="bar-inner" style="width:0.02%;background:var(--nl)"></div></div><span class="val-txt" style="color:var(--nl)">&lt;0.1%</span></div>
+      <div class="comp-row"><span class="label">Env. protection</span><div class="bar-wrap"><div class="bar-inner" style="width:0.5%;background:var(--nl)"></div></div><span class="val-txt" style="color:var(--nl)">0.5%</span></div>
+      <div class="comp-row"><span class="label">HR language</span><div class="bar-wrap"><div class="bar-inner" style="width:0%;background:#4f8ef7"></div></div><span class="val-txt" style="color:#4f8ef7">0%</span></div>
+      <div class="comp-row"><span class="label">Not-water (filter)</span><div class="bar-wrap"><div class="bar-inner" style="width:22.7%;background:#f87171"></div></div><span class="val-txt" style="color:#f87171">22.7%</span></div>
+    </div>
+    <div class="chart-card">
+      <div style="font-size:12px;font-weight:600;color:var(--ca);margin-bottom:12px">🇨🇦 CANADA — Key ratios</div>
+      <div class="comp-row"><span class="label">Fisheries</span><div class="bar-wrap"><div class="bar-inner" style="width:5.0%;background:var(--ca)"></div></div><span class="val-txt" style="color:var(--ca)">5.0%</span></div>
+      <div class="comp-row"><span class="label">Riparian / waterway</span><div class="bar-wrap"><div class="bar-inner" style="width:3.4%;background:var(--ca)"></div></div><span class="val-txt" style="color:var(--ca)">3.4%</span></div>
+      <div class="comp-row"><span class="label">Connection refusal</span><div class="bar-wrap"><div class="bar-inner" style="width:0%;background:var(--ca)"></div></div><span class="val-txt" style="color:var(--ca)">0%</span></div>
+      <div class="comp-row"><span class="label">HR language</span><div class="bar-wrap"><div class="bar-inner" style="width:0%;background:#4f8ef7"></div></div><span class="val-txt" style="color:#4f8ef7">0%</span></div>
+      <div class="comp-row"><span class="label">Hydroelectric/dam</span><div class="bar-wrap"><div class="bar-inner" style="width:1.4%;background:var(--ca)"></div></div><span class="val-txt" style="color:var(--ca)">1.4%</span></div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th><span class="pill pill-br">Brazil</span></th>
+          <th><span class="pill pill-nl">Netherlands</span></th>
+          <th><span class="pill pill-ca">Canada</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Total decisions</td><td>11,724</td><td>68,654</td><td>3,218</td></tr>
+        <tr><td>Data period</td><td>2016–2025 + 1997–2015 (TJSP)</td><td>2016–2025</td><td>2016–2025</td></tr>
+        <tr><td>Dominant dispute</td><td>Tariff (48.1%)</td><td>Flood/env. governance (2.3%)</td><td>Fisheries/riparian (8.4%)</td></tr>
+        <tr><td>Connection refusal</td><td style="color:#60a5fa">9.9% (1,160)</td><td style="color:#f87171">&lt;0.1% (12)</td><td style="color:#f87171">0%</td></tr>
+        <tr><td>Informal settlement</td><td style="color:#f87171">0.8% (96)</td><td>0%</td><td>0%</td></tr>
+        <tr><td>HR language</td><td style="color:#34d399">1.9% (226)</td><td>0%</td><td>0%</td></tr>
+        <tr><td>Win/loss coded</td><td>4,481 decisions</td><td>Not available</td><td>Not available</td></tr>
+        <tr><td>User win rate</td><td style="color:#34d399">31.2%</td><td>—</td><td>—</td></tr>
+        <tr><td>Utility win rate</td><td>26.0%</td><td>—</td><td>—</td></tr>
+        <tr><td>MP involvement</td><td>3.6% (427)</td><td>N/A</td><td>N/A</td></tr>
+        <tr><td>Public interest framing</td><td>13.8% (1,616)</td><td>—</td><td>—</td></tr>
+        <tr><td>Pre-litigation absorption</td><td style="color:#f87171">Low</td><td style="color:#34d399">High (Awb/Geschillencommissie)</td><td style="color:#f59e0b">Medium (fragmented)</td></tr>
+        <tr><td>Legal Last Mile model</td><td>Rights-declared, admin-deficient</td><td>Pre-litigation absorption</td><td>Fragmented opacity</td></tr>
+        <tr><td>Courts covered</td><td>8 state courts (of 27)</td><td>All 11 Rechtbanken + appellate</td><td>CanLII databases (multi-province)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  TAB: THEORY / FINDINGS
+════════════════════════════════════════════ -->
+<div id="tab-theory" class="tab-content">
+<div class="container">
+
+  <h2 style="font-size:22px;font-weight:700;margin-bottom:8px">Research Findings &amp; Theoretical Framework</h2>
+  <p style="color:var(--muted);margin-bottom:28px;font-size:13px">From: <em>The Legal Last Mile: Administrative Law, Water Access, and the Limits of Judicial Inclusion</em> — Doctoral dissertation, Doctoral dissertation, 2026.</p>
+
+  <div class="theory-grid">
+    <div class="theory-card">
+      <div class="icon">🚪</div>
+      <h4>The Gatekeeper Thesis</h4>
+      <p>Administrative law functions as a <span class="highlight">gatekeeper</span> that determines whether physical access to water infrastructure translates into legally enforceable entitlement. Bureaucratic procedures — documentation requirements, property registration, formal address systems — filter who can assert rights before courts are ever reached.</p>
+    </div>
+    <div class="theory-card">
+      <div class="icon">👻</div>
+      <h4>The Administrative Ghost</h4>
+      <p>Populations excluded from formal administrative systems become <span class="highlight">invisible in the judicial record</span>. Brazil's informal settlement cases (&lt;1% of decisions) are not evidence of fewer legal problems — they are evidence of exclusion from the formal system. The absence itself is the finding.</p>
+    </div>
+    <div class="theory-card">
+      <div class="icon">⚖️</div>
+      <h4>The Rights-Access Gap</h4>
+      <p>A legal system can be simultaneously <span class="highlight">rights-saturated and access-deficient</span>. Brazil has one of the world's strongest constitutional water rights frameworks, yet HR language appears in only 1.9% of decisions — and the populations most needing rights-based protection are least represented as plaintiffs.</p>
+    </div>
+  </div>
+
+  <div class="theory-grid">
+    <div class="theory-card">
+      <div class="icon">🏗️</div>
+      <h4>Pre-litigation Absorption (NL)</h4>
+      <p>Where administrative systems are robust and universal, courts address <span class="highlight">systemic water governance</span> (flood protection, spatial planning, waterboard regulation) rather than household access. The Dutch model absorbs service disputes before courts through the Awb complaints procedure and Geschillencommissie.</p>
+    </div>
+    <div class="theory-card">
+      <div class="icon">🧩</div>
+      <h4>Fragmented Opacity (Canada)</h4>
+      <p>Where jurisdiction is fragmented between federal and provincial levels with <span class="highlight">no universal service obligation</span>, water disputes are processed through opaque administrative procedures with variable accessibility. The judicial footprint reflects resource governance, not household access — but the absence of access disputes may reflect invisibility, not resolution.</p>
+    </div>
+    <div class="theory-card">
+      <div class="icon">📊</div>
+      <h4>Jurimetric Confirmation</h4>
+      <p>The <span class="highlight">jurimetric distribution itself is evidence</span>: 48% tariff vs. 10% connection refusal in Brazil; &lt;0.1% connection refusal in NL; 0% in Canada. These ratios confirm the comparative MDSD analysis — the Legal Last Mile operates differently in each system, but the pattern of who <em>doesn't</em> appear is consistent across all three.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:18px;font-weight:700;margin-bottom:16px">The Most Different Systems Design (MDSD)</h3>
+  <div class="chart-card" style="margin-bottom:20px">
+    <div class="chart-title">Why Brazil, Netherlands, and Canada?</div>
+    <p style="color:var(--muted);font-size:13px;line-height:1.8;margin-bottom:12px">
+      The three cases were selected on the basis of <strong style="color:var(--text)">maximum variation</strong> on the key independent variable (administrative law model and pre-litigation architecture) while sharing the dependent variable of interest (formal constitutional or statutory recognition of water access rights):
+    </p>
+    <div class="table-wrap" style="margin:0">
+      <table class="data-table">
+        <thead><tr><th>Dimension</th><th><span class="pill pill-br">Brazil</span></th><th><span class="pill pill-nl">Netherlands</span></th><th><span class="pill pill-ca">Canada</span></th></tr></thead>
+        <tbody>
+          <tr><td>Admin law tradition</td><td>Civil law, fragmented</td><td>Civil law, comprehensive Awb</td><td>Common law, no general code</td></tr>
+          <tr><td>Water rights basis</td><td>Constitutional (Art. 6, 225)</td><td>Statutory (Drinkwaterbesluit)</td><td>Statutory (provincial + Safe Drinking Water Act)</td></tr>
+          <tr><td>Universal service obligation</td><td>Partial (urban utilities)</td><td>Full (KWR/Vewin)</td><td>None (federal)</td></tr>
+          <tr><td>Pre-litigation routes</td><td>Weak (PROCON, ANS)</td><td>Strong (bezwaar, Geschillencommissie, Ombudsman)</td><td>Variable by province</td></tr>
+          <tr><td>Urbanisation / informality</td><td>High (15–20% informal)</td><td>Very low</td><td>Low (urban)</td></tr>
+          <tr><td>Dataset coverage</td><td>Partial (8 of 27 courts)</td><td>Near-complete (all 11 districts)</td><td>Multi-provincial via CanLII</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:18px;font-weight:700;margin-bottom:16px">Dataset &amp; Methodology</h3>
+  <div class="chart-grid-2">
+    <div class="chart-card">
+      <div class="chart-title">Data Collection Infrastructure</div>
+      <p style="color:var(--muted);font-size:13px;line-height:1.8">
+        <strong style="color:var(--text)">Brazil (8 courts):</strong> Custom scrapers for ESAJ POST (TJAC, TJRR, TJSC, TJSP), Elasticsearch REST (TJDFT), ASP.NET WebForms (TJRJ), Rails GET (TJPI), PHP+Solr GET (TJTO). 19 of 27 courts blocked by CAPTCHA, authentication, or defunct APIs.<br><br>
+        <strong style="color:var(--text)">Netherlands:</strong> Rechtspraak.nl Open Data XML API covering all 11 Rechtbanken + Raad van State + CBb + GHARL.<br><br>
+        <strong style="color:var(--text)">Canada:</strong> CanLII REST API (keyword search + 113 extra databases) supplemented by Legal Data Hunter semantic search across the full CanLII corpus (94,502+ documents).<br><br>
+        <strong style="color:var(--text)">AI assistance:</strong> Claude (Anthropic) assisted with scraper development, data pipeline, coding engine design, and report generation. All research design and interpretation: Claudio Klaus Junior.
+      </p>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Jurimetric Coding Engine (v2.0)</div>
+      <p style="color:var(--muted);font-size:13px;line-height:1.8">
+        <strong style="color:var(--text)">21 governance categories</strong> in Portuguese, English, Dutch, and French (expanded from 12 in v1.0). Applied via <code style="background:rgba(255,255,255,.08);padding:1px 4px;border-radius:3px">jurimetric_coding.py</code> (GitHub) to decision summaries and titles.<br><br>
+        <strong style="color:var(--text)">New in v2.0:</strong> flood_protection, environmental_protection, spatial_planning_water, waterboard_governance, pipe_leak_damage, water_theft_fraud, water_infrastructure_contract, fisheries_water — plus NL immigration pre-filter (not_water_related). Result: other_water reduced 75,442 → 57,695 (−23.5%).<br><br>
+        <strong style="color:var(--text)">7 variables per decision:</strong> hr_language · sust_language · governance_cat · win_loss · mp_involvement · indigenous_water · public_interest
+      </p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <h3 style="font-size:18px;font-weight:700;margin-bottom:16px">Citation &amp; Access</h3>
+  <div class="chart-card">
+    <p style="font-size:13px;color:var(--muted);line-height:2">
+      <strong style="color:var(--text)">Dataset citation:</strong><br>
+      Klaus, C (2026) <em>Global Water Law Judicial Decisions Dataset</em> (v1.0) Zenodo &lt;<a href="https://doi.org/10.5281/zenodo.19836413" style="color:var(--accent)">https://doi.org/10.5281/zenodo.19836413</a>&gt; accessed 3 May 2026.
+      <br><br>
+      <strong style="color:var(--text)">Also archived at:</strong><br>
+      Harvard Dataverse: <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C9PEFS" style="color:var(--accent)">doi:10.7910/DVN/C9PEFS</a> ·
+      DANS SSH: <a href="https://ssh.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/SS/RVDBUF" style="color:var(--accent)">doi:10.17026/SS/RVDBUF</a> ·
+      OSF: <a href="https://osf.io/admrq" style="color:var(--accent)">osf.io/admrq</a>
+      <br><br>
+      <strong style="color:var(--text)">Scholarly inspiration:</strong> This research is inspired by the work of Professor LaDawn Haglund (water governance, judicialization of water and sanitation rights in São Paulo, Brazil). See: Haglund (2014) <em>Water Policy</em>; Haglund (2019) in <em>Economic and Social Rights in a Neoliberal World</em> (Cambridge); Haglund (2019) <em>Sustainability</em> 11(19).
+    </p>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>Global Water Law Judicial Decisions Dataset (v1.0) · Claudio Klaus Junior · Doctoral dissertation · 2026</p>
+  <p style="margin-top:6px">
+    <a href="https://doi.org/10.5281/zenodo.19836413">Zenodo</a> ·
+    <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C9PEFS">Harvard Dataverse</a> ·
+    <a href="https://github.com/jrklaus8/water-law-dataset">GitHub</a> ·
+    <a href="https://osf.io/admrq">OSF</a> ·
+    MIT Licence
+  </p>
+</footer>
+
+<script>
+// ═══ DATA ═══
+const YEARS = [2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+const BR_YEAR = [532,625,896,1018,846,848,882,1152,1386,1209];
+const NL_YEAR = [5187,5629,6480,6698,5478,5774,6416,7697,8090,8589];
+const CA_YEAR = [376,321,359,332,244,309,284,311,283,308];
+const BR_USER_WINS = [47,62,139,150,100,94,109,194,204,180];
+const BR_UTILITY_WINS = [56,58,134,131,111,86,82,108,116,116];
+const BR_MIXED = [82,76,126,157,152,157,160,262,306,279];
+const BR_HR_COUNT = [9,18,27,21,9,14,18,13,27,33];
+const BR_HR_PCT = [1.7,2.9,3.0,2.1,1.1,1.7,2.0,1.1,1.9,2.7];
+const BR_TOTAL_YR = [532,625,896,1018,846,848,882,1152,1386,1209];
+
+const BR_GOV = [
+  {cat:'Tariff dispute',n:5634},{cat:'Other water',n:4015},{cat:'Connection refusal',n:1160},
+  {cat:'Sanitation/sewage',n:264},{cat:'Water infrastructure contract',n:219},{cat:'Informal settlement',n:96},
+  {cat:'Environmental protection',n:63},{cat:'Water quality',n:62},{cat:'Riparian/waterway',n:48},
+  {cat:'Water theft/fraud',n:42},{cat:'Pipe leak/damage',n:39},{cat:'Flooding/drainage',n:32},
+  {cat:'Regulatory permit',n:18},{cat:'Hydroelectric/dam',n:17},{cat:'Groundwater',n:11},
+  {cat:'Irrigation/agricultural',n:3},{cat:'Fisheries',n:1}
+];
+const NL_GOV_CLASSIFIED = [
+  {cat:'Flood protection',n:1266},{cat:'Environmental protection',n:344},{cat:'Spatial planning/water',n:100},
+  {cat:'Riparian/waterway',n:88},{cat:'Waterboard governance',n:82},{cat:'Flooding/drainage',n:74},
+  {cat:'Regulatory permit',n:73},{cat:'Sanitation/sewage',n:44},{cat:'Fisheries',n:32},
+  {cat:'Groundwater',n:29},{cat:'Hydroelectric/dam',n:24},{cat:'Water quality',n:13},
+  {cat:'Connection refusal',n:12},{cat:'Irrigation/agricultural',n:1}
+];
+const CA_GOV = [
+  {cat:'Fisheries',n:160},{cat:'Riparian/waterway',n:108},{cat:'Hydroelectric/dam',n:44},
+  {cat:'Irrigation/agricultural',n:38},{cat:'Sanitation/sewage',n:34},{cat:'Regulatory permit',n:15},
+  {cat:'Flooding/drainage',n:11},{cat:'Tariff dispute',n:6},{cat:'Groundwater',n:3},
+  {cat:'Flood protection',n:2}
+];
+
+// ═══ CHART DEFAULTS ═══
+Chart.defaults.color = '#8892a8';
+Chart.defaults.borderColor = 'rgba(46,51,80,0.6)';
+Chart.defaults.font.family = "'Inter', sans-serif";
+Chart.defaults.font.size = 12;
+const gridColor = 'rgba(46,51,80,0.5)';
+const C_BR='#009C3B',C_NL='#E05A00',C_CA='#C41230',C_BLUE='#4f8ef7',C_GOLD='#f5c842';
+
+function barColors(n, base) {
+  const hex = base.replace('#','');
+  return Array.from({length:n},(_,i)=>base+(Math.round((0.6+0.4*i/n)*255)).toString(16).padStart(2,'0').slice(-2)).map(()=>base);
+}
+
+// ── TIMELINE ──
+new Chart(document.getElementById('chartTimeline').getContext('2d'), {
+  type:'line',
+  data:{
+    labels:YEARS,
+    datasets:[
+      {label:'Brazil (left)',data:BR_YEAR,borderColor:C_BR,backgroundColor:'rgba(0,156,59,.1)',tension:.3,fill:true,yAxisID:'y'},
+      {label:'Canada (left)',data:CA_YEAR,borderColor:C_CA,backgroundColor:'rgba(196,18,48,.08)',tension:.3,fill:true,yAxisID:'y'},
+      {label:'Netherlands (right)',data:NL_YEAR,borderColor:C_NL,backgroundColor:'rgba(224,90,0,.08)',tension:.3,fill:true,yAxisID:'y2'},
+    ]
+  },
+  options:{responsive:true,interaction:{mode:'index',intersect:false},
+    scales:{
+      y:{title:{display:true,text:'Brazil + Canada'},grid:{color:gridColor}},
+      y2:{position:'right',title:{display:true,text:'Netherlands'},grid:{drawOnChartArea:false}}
+    },
+    plugins:{legend:{position:'top'}}}
+});
+
+// ── COMPOSITION ──
+new Chart(document.getElementById('chartComposition').getContext('2d'), {
+  type:'doughnut',
+  data:{labels:['Netherlands','Brazil','Canada'],datasets:[{
+    data:[68654,11724,3218],
+    backgroundColor:[C_NL,C_BR,C_CA],
+    borderWidth:2,borderColor:'#21253a'
+  }]},
+  options:{responsive:true,plugins:{legend:{position:'bottom'},
+    tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed.toLocaleString()} (${(ctx.parsed/83596*100).toFixed(1)}%)`}}}}
+});
+
+// ── GLOBAL GOV ──
+const globalCats = ['Tariff dispute','Connection refusal','Flood protection','Environmental protection',
+  'Fisheries','Riparian/waterway','Sanitation/sewage','Spatial planning/water',
+  'Waterboard governance','Hydroelectric/dam','Flooding/drainage','Irregular settlement'];
+const globalVals = [5640,1172,1268,407,193,244,342,100,82,85,117,96];
+new Chart(document.getElementById('chartGlobalGov').getContext('2d'), {
+  type:'bar',
+  data:{labels:globalCats,datasets:[{
+    label:'Decisions',data:globalVals,
+    backgroundColor:[C_BR,C_BR,C_NL,C_NL,C_CA,C_CA,C_NL,C_NL,C_NL,C_CA,C_NL,C_BR],
+    borderRadius:4
+  }]},
+  options:{responsive:true,indexAxis:'x',plugins:{legend:{display:false}},
+    scales:{y:{grid:{color:gridColor}},x:{ticks:{maxRotation:35,font:{size:11}}}}}
+});
+
+// ── BR GOV ──
+const brLabels = BR_GOV.filter(d=>d.n>0).map(d=>d.cat);
+const brVals = BR_GOV.filter(d=>d.n>0).map(d=>d.n);
+const brMax = Math.max(...brVals);
+new Chart(document.getElementById('chartBrGov').getContext('2d'), {
+  type:'bar',
+  data:{labels:brLabels,datasets:[{label:'Cases',data:brVals,
+    backgroundColor:brVals.map(v=>`rgba(0,156,59,${0.3+0.7*v/brMax})`),
+    borderColor:C_BR,borderWidth:1,borderRadius:3}]},
+  options:{responsive:true,indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{grid:{color:gridColor}},y:{ticks:{font:{size:11}}}}}
+});
+
+// BR Gov table
+const brTable = document.getElementById('brGovTable');
+const brTotal = 11724;
+BR_GOV.forEach(d=>{
+  const pct = (d.n/brTotal*100).toFixed(1);
+  const barW = Math.min(100,(d.n/brTotal*100*2)).toFixed(1);
+  brTable.innerHTML += `<tr><td>${d.cat}</td><td>${d.n.toLocaleString()}</td><td>${pct}%</td>
+    <td><div class="pct-bar"><div class="bar-fill" style="width:${barW}%;background:var(--br);min-width:2px"></div></div></td></tr>`;
+});
+
+// ── BR WIN/LOSS ──
+new Chart(document.getElementById('chartBrWL').getContext('2d'), {
+  type:'doughnut',
+  data:{labels:['User/plaintiff wins','Utility wins','Mixed outcome'],datasets:[{
+    data:[1400,1165,1916],
+    backgroundColor:['#34d399','#f87171','#f59e0b'],
+    borderWidth:2,borderColor:'#21253a'
+  }]},
+  options:{responsive:true,plugins:{legend:{position:'bottom'},
+    tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed.toLocaleString()} (${(ctx.parsed/4481*100).toFixed(1)}%)`}}}}
+});
+
+// ── BR YEAR ──
+new Chart(document.getElementById('chartBrYear').getContext('2d'), {
+  type:'bar',
+  data:{labels:YEARS,datasets:[{label:'Cases',data:BR_YEAR,backgroundColor:'rgba(0,156,59,.6)',borderColor:C_BR,borderWidth:1,borderRadius:3}]},
+  options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:gridColor}}}}
+});
+
+// ── BR WIN/LOSS YEAR ──
+new Chart(document.getElementById('chartBrWLYear').getContext('2d'), {
+  type:'line',
+  data:{labels:YEARS,datasets:[
+    {label:'User wins',data:BR_USER_WINS,borderColor:'#34d399',backgroundColor:'rgba(52,211,153,.1)',tension:.3},
+    {label:'Utility wins',data:BR_UTILITY_WINS,borderColor:'#f87171',backgroundColor:'rgba(248,113,113,.1)',tension:.3},
+    {label:'Mixed',data:BR_MIXED,borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.06)',tension:.3},
+  ]},
+  options:{responsive:true,interaction:{mode:'index',intersect:false},
+    plugins:{
+      legend:{position:'top'},
+      annotation:{annotations:{box:{type:'box',xMin:2020,xMax:2025,backgroundColor:'rgba(79,142,247,.05)',borderColor:'rgba(79,142,247,.2)',borderWidth:1}}}
+    },
+    scales:{y:{grid:{color:gridColor}}}}
+});
+
+// ── BR HR ──
+new Chart(document.getElementById('chartBrHR').getContext('2d'), {
+  type:'bar',
+  data:{labels:YEARS,datasets:[
+    {label:'HR cases (count)',data:BR_HR_COUNT,backgroundColor:'rgba(0,156,59,.5)',borderColor:C_BR,borderWidth:1,borderRadius:2,yAxisID:'y'},
+    {label:'HR % of annual total',data:BR_HR_PCT,type:'line',borderColor:'#818cf8',backgroundColor:'rgba(129,140,248,.1)',tension:.3,yAxisID:'y2'},
+  ]},
+  options:{responsive:true,interaction:{mode:'index',intersect:false},
+    scales:{
+      y:{title:{display:true,text:'Count'},grid:{color:gridColor}},
+      y2:{position:'right',title:{display:true,text:'%'},grid:{drawOnChartArea:false},max:5}
+    },
+    plugins:{legend:{position:'top'}}}
+});
+
+// ── NL GOV ──
+const nlLabels = NL_GOV_CLASSIFIED.map(d=>d.cat);
+const nlVals = NL_GOV_CLASSIFIED.map(d=>d.n);
+const nlMax = Math.max(...nlVals);
+new Chart(document.getElementById('chartNlGov').getContext('2d'), {
+  type:'bar',
+  data:{labels:nlLabels,datasets:[{label:'Cases',data:nlVals,
+    backgroundColor:nlVals.map(v=>`rgba(224,90,0,${0.3+0.7*v/nlMax})`),
+    borderColor:C_NL,borderWidth:1,borderRadius:3}]},
+  options:{responsive:true,indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{grid:{color:gridColor}},y:{ticks:{font:{size:11}}}}}
+});
+
+// NL Table
+const nlTable = document.getElementById('nlGovTable');
+const nlTotal = 68654;
+const allNlGov = [{cat:'Other water (unclassified)',n:50883},{cat:'Not water-related (immigration)',n:15589},...NL_GOV_CLASSIFIED];
+allNlGov.forEach(d=>{
+  const pct = (d.n/nlTotal*100).toFixed(1);
+  const barW = Math.min(100,(d.n/nlTotal*100*100/74)).toFixed(1);
+  const isResidual = d.cat.startsWith('Other')||d.cat.startsWith('Not water');
+  nlTable.innerHTML += `<tr><td>${d.cat}${isResidual?' <span class="pill pill-gray">residual</span>':''}</td>
+    <td>${d.n.toLocaleString()}</td><td>${pct}%</td>
+    <td><div class="pct-bar"><div class="bar-fill" style="width:${barW}%;background:var(--nl);min-width:${d.n>0?2:0}px"></div></div></td></tr>`;
+});
+
+// ── NL COMP ──
+new Chart(document.getElementById('chartNlComp').getContext('2d'), {
+  type:'doughnut',
+  data:{labels:['Other water (unclassified)','Not water-related','Flood protection','Environmental protection','Other classified'],
+    datasets:[{data:[50883,15589,1266,344,572],
+    backgroundColor:['#2e3350','#ef4444','#E05A00','#86efac','#60a5fa'],
+    borderWidth:2,borderColor:'#21253a'}]},
+  options:{responsive:true,plugins:{legend:{position:'bottom',labels:{font:{size:11}}},
+    tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${ctx.parsed.toLocaleString()} (${(ctx.parsed/68654*100).toFixed(1)}%)`}}}}
+});
+
+// ── NL YEAR ──
+new Chart(document.getElementById('chartNlYear').getContext('2d'), {
+  type:'line',
+  data:{labels:YEARS,datasets:[{label:'Cases',data:NL_YEAR,borderColor:C_NL,backgroundColor:'rgba(224,90,0,.1)',tension:.3,fill:true}]},
+  options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:gridColor}}}}
+});
+
+// ── CA GOV ──
+const caLabels = CA_GOV.map(d=>d.cat);
+const caVals = CA_GOV.map(d=>d.n);
+const caMax = Math.max(...caVals);
+new Chart(document.getElementById('chartCaGov').getContext('2d'), {
+  type:'bar',
+  data:{labels:caLabels,datasets:[{label:'Cases',data:caVals,
+    backgroundColor:caVals.map(v=>`rgba(196,18,48,${0.3+0.7*v/caMax})`),
+    borderColor:C_CA,borderWidth:1,borderRadius:3}]},
+  options:{responsive:true,indexAxis:'y',plugins:{legend:{display:false}},
+    scales:{x:{grid:{color:gridColor}},y:{ticks:{font:{size:11}}}}}
+});
+
+// CA Table
+const caTable = document.getElementById('caGovTable');
+const caTotal = 3218;
+const allCaGov = [{cat:'Other water (unclassified)',n:2797},...CA_GOV];
+allCaGov.forEach(d=>{
+  const pct = (d.n/caTotal*100).toFixed(1);
+  const barW = Math.min(100,(d.n/caTotal*100*100/87)).toFixed(1);
+  caTable.innerHTML += `<tr><td>${d.cat}${d.cat.startsWith('Other')?' <span class="pill pill-gray">residual</span>':''}</td>
+    <td>${d.n.toLocaleString()}</td><td>${pct}%</td>
+    <td><div class="pct-bar"><div class="bar-fill" style="width:${barW}%;background:var(--ca);min-width:${d.n>0?2:0}px"></div></div></td></tr>`;
+});
+
+// ── CA YEAR ──
+new Chart(document.getElementById('chartCaYear').getContext('2d'), {
+  type:'bar',
+  data:{labels:YEARS,datasets:[{label:'Cases',data:CA_YEAR,backgroundColor:'rgba(196,18,48,.6)',borderColor:C_CA,borderWidth:1,borderRadius:3}]},
+  options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{grid:{color:gridColor}}}}
+});
+
+// ── COMPARATIVE GOV ──
+const compCats = ['Tariff dispute','Connection refusal','Flood protection','Env. protection','Fisheries','Riparian','Sanitation','Irregular settlement'];
+new Chart(document.getElementById('chartCompGov').getContext('2d'), {
+  type:'bar',
+  data:{labels:compCats,datasets:[
+    {label:'Brazil',data:[5634,1160,32,63,1,48,264,96],backgroundColor:'rgba(0,156,59,.75)',borderRadius:3},
+    {label:'Netherlands',data:[6,12,1266,344,32,88,44,0],backgroundColor:'rgba(224,90,0,.75)',borderRadius:3},
+    {label:'Canada',data:[6,0,2,0,160,108,34,0],backgroundColor:'rgba(196,18,48,.75)',borderRadius:3},
+  ]},
+  options:{responsive:true,interaction:{mode:'index',intersect:false},
+    plugins:{legend:{position:'top'}},
+    scales:{y:{grid:{color:gridColor},title:{display:true,text:'Number of decisions (log scale)'},type:'logarithmic'},
+      x:{ticks:{maxRotation:25}}}}
+});
+
+// ═══ TAB SWITCHING ═══
+function showTab(name, el) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.nav-tabs a').forEach(a=>a.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  if(el) el.classList.add('active');
+  return false;
+}
+</script>
+</body>
+</html>

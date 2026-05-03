@@ -6,10 +6,15 @@
 [![OSF](https://img.shields.io/badge/OSF-osf.io%2Fadmrq-teal)](https://osf.io/admrq)
 [![PyPI version](https://badge.fury.io/py/water-law-dataset.svg)](https://pypi.org/project/water-law-dataset/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Dashboard](https://img.shields.io/badge/Dashboard-Live%20Visualization-blueviolet)](https://jrklaus8.github.io/water-law-dataset/)
 
 A collection of scrapers for building a comparative dataset of water law judicial decisions across Brazil (27 state courts), Canada (federal + provincial courts via CanLII), and the Netherlands (Raad van State + all 11 district courts via Rechtspraak.nl).
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
+
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Dissertation PDF](docs/The_Legal_Last_Mile.pdf)
+
+> **The Legal Last Mile** — Doctoral dissertation examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
 ---
 
