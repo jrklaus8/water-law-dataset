@@ -172,6 +172,12 @@ GOV_CATS = [
         r'\bconsumo.*?[aáàâã]gua\b', r'\b[aáàâã]gua.*?consum\w+\b',
         r'\bleitura.*?[aáàâã]gua\b', r'\breclama[çc][aã]o.*?[aáàâã]gua\b',
         r'\bclassifica[çc][aã]o.*?economi\w+\b',
+        # Quebec FR: aqueduct billing, water supply authority
+        r'\baqueduc\b', r'\bréseau d\'eau\b', r'\beau potable\b',
+        r'\bapprovisionn\w+.*?eau\b', r'\brégied\'aqueduc\b',
+        r'\brégie.*?aqueduc\b', r'\baqueduc.*?régie\b',
+        r'\bservice.*?eau\b', r'\beau.*?service\b',
+        r'\btaux.*?eau\b', r'\bfacturation.*?eau\b',
     ]),
     # ── Connection refusal / access denial ───────────────────────────────────
     ('connection_refusal', [
@@ -190,6 +196,11 @@ GOV_CATS = [
         r'\bfornecimento de [aáàâã]gua\b', r'\b[aáàâã]gua e esgoto\b',
         r'\bliga[çc][aã]o predial\b', r'\breliga[çc][aã]o\b',
         r'\bnegativa.*?fornecimento\b', r'\binterrup[çc][aã]o.*?[aáàâã]gua\b',
+        # Quebec FR / Canada EN: supply refusal, water service access
+        r'\balimentation en eau\b', r'\bapprovisionnement en eau\b',
+        r'\bbranchement.*?eau\b', r'\beau.*?branchement\b',
+        r'\bwater service.*?refus\w*\b', r'\bwater.*?cut.?off\b',
+        r'\bdisconnect.*?water service\b',
     ]),
     # ── Water quality / contamination ────────────────────────────────────────
     ('water_quality', [
@@ -226,7 +237,9 @@ GOV_CATS = [
         r'\bgrondwater\b', r'\bwaterwinning\b',
         r'\beau souterraine\b', r'\bnappe phréatique\b',
     ]),
-    # ── Flooding / flood damage ──────────────────────────────────────────────
+    # ── Flooding / flood damage claims ───────────────────────────────────────
+    # Damage claims and liability from flooding events.
+    # flood_protection (above) = infrastructure/defence; this = the damage side.
     ('flooding', [
         r'\binunda[çc][aã]o\b', r'\benchente\b', r'\balagamento\b',
         r'\bdano.*?chuva\b', r'\bdano.*?inunda[çc][aã]o\b',
@@ -235,6 +248,9 @@ GOV_CATS = [
         r'\binondation\b', r'\bdommage.*?inondation\b',
         r'\boverstromings?\b', r'\bwateroverlast\b',
         r'\bzone inondable\b',
+        r'\bwaterschade\b',
+        r'\bschadevergoeding.*?wateroverlast\b',
+        r'\bstormwater.*?damage\b', r'\bfloodwater.*?damage\b',
     ]),
     # ── Riparian / waterway / navigation ─────────────────────────────────────
     ('riparian_waterway', [
@@ -245,15 +261,22 @@ GOV_CATS = [
         r'\briverbank\b', r'\bwaterway\b', r'\bshoreline\b',
         r'\bwatergang\b', r'\bwaterloop\b', r'\bwaterscheiding\b',
         r'\bcours d[\'e]? ?eau\b', r'\bnavigabilité\b',
+        # Quebec: lac (lake) access and boundary disputes
+        r'\bassociation du lac\b', r'\bassociation.*\blac\b',
+        r'\blac\b.*\b(?:riverain|riveraine|droit|pollution|accès|propri[eé]t)\b',
+        r'\bniveau du lac\b', r'\blac\b.*\b(?:municipalit[eé]|ville)\b',
+        r'\brive\b.*\beau\b', r'\beau\b.*\brive\b',
+        r'\blittoral\b', r'\bberge\b',
+        r'\bstream\b', r'\bcreek\b', r'\briver.*right\b',
     ]),
     # ── Irrigation / agricultural water ──────────────────────────────────────
     ('irrigation_agricultural', [
         r'\birriga[çc][aã]o\b', r'\b[aáàâã]gua.*?agr[ií]cola\b',
         r'\bagr[ií]cola.*?[aáàâã]gua\b', r'\bperímetro irrigado\b',
         r'\bdistrito de irriga[çc][aã]o\b',
-        r'\birrigation\b', r'\bwater district\b', r'\birrigation district\b',
+        r'\birrigation\b', r'\birrigation district\b',
         r'\bagricultural water\b', r'\bwater licence.*?farm\b',
-        r'\birrigatie\b', r'\bwaterschap\b',
+        r'\birrigatie\b',
         r'\birrigati\w+.*?eau\b',
     ]),
     # ── Sanitation / sewage / wastewater ─────────────────────────────────────
@@ -261,11 +284,167 @@ GOV_CATS = [
         r'\bsaneamento b[aá]sico\b', r'\besgoto\b', r'\bfossa\b',
         r'\btratamento.*?[aáàâã]gua\b', r'\b[aáàâã]gua.*?tratamento\b',
         r'\besta[çc][aã]o de tratamento\b', r'\beta\b',
-        r'\bwastewater\b', r'\bsewage\b', r'\bsewer\b',
+        r'\bwastewater\b', r'\bsewage\b', r'\bsewer\w*\b',
         r'\bsanitation\b', r'\bwaste water treatment\b',
+        r'\bdrainage district\b', r'\bsewerage district\b',
+        r'\bstorm sewer\b', r'\bcombined sewer\b',
         r'\briolering\b', r'\bafvalwater\b', r'\bwaterzuivering\b',
         r'\beaux usées\b', r'\bassainissement\b',
+        r'\bdrains\b.*?\bwater\b', r'\bwater.*?\bdrains\b',
+        r'\bégout\w*\b', r'\bstation d\'épuration\b',
     ]),
+    # ── Environmental protection / natural resource management ───────────────
+    # Distinct from water_quality (which covers contamination/potability);
+    # this captures APA/manancial protection, wetlands, natura 2000, ecological
+    # conservation where water is the protected resource.
+    ('environmental_protection', [
+        # Brazil: APA, manancial, mata ciliar
+        r'\bárea de prote[çc][aã]o ambiental\b',
+        r'\bmanancial\b',
+        r'\bmata ciliar\b',
+        r'\bzona de prote[çc][aã]o.*[aáàâã]gua\b',
+        r'\b[aáàâã]gua.*zona de prote[çc][aã]o\b',
+        r'\bdano ambiental.*[aáàâã]gua\b',
+        r'\b[aáàâã]gua.*dano ambiental\b',
+        r'\bprote[çc][aã]o.*manancial\b', r'\bmanancial.*prote[çc][aã]o\b',
+        r'\breserva hídrica\b', r'\brecurso hídrico.*prote[çc][aã]o\b',
+        r'\bzona ripária\b', r'\bapp\b.*\b[aáàâã]gua\b',   # Área de Preservação Permanente
+        # EN: wetland, aquatic habitat (Canada/NL)
+        r'\bwetland\b', r'\baquatic habitat\b', r'\bfish habitat\b',
+        r'\briparian.*protect\b', r'\baquifer protection\b',
+        # NL: natura 2000, waterbergingsgebied, ecological water
+        r'\bnatura\s*2000\b', r'\bwaterbergingsgebied\b',
+        r'\bwaterbeheer.*ecolog\b', r'\becolog.*water\b',
+        r'\bbeekherstel\b', r'\bwaternatuur\b',
+        r'\bkaderrichtlijn water\b',   # EU Water Framework Directive (NL)
+        # FR
+        r'\bzone humide\b', r'\bmilieu aquatique\b',
+    ]),
+
+    # ── Flood protection infrastructure ───────────────────────────────────────
+    # Different from 'flooding' (which = flood damage claims).
+    # This captures disputes about dikes, levees, flood barriers — the
+    # construction, maintenance, legal status of flood defence works.
+    # Dominant in Netherlands (RvS dijk/kade decisions).
+    ('flood_protection', [
+        r'\bdijk\w*\b', r'\bkade\w*\b', r'\bwaterkering\w*\b',
+        r'\bhoogwaterbescherming\b', r'\bprimaire waterkering\b',
+        r'\bdijkversterking\b', r'\bdijkverbetering\b',
+        r'\bwaterwet\b', r'\bwaterstaatswet\b',
+        r'\bveiligheidsnorm.*waterkering\b', r'\bwaterkering.*toetsing\b',
+        r'\blevee\b', r'\bseawall\b', r'\bflood barrier\b',
+        r'\bflood defence\b', r'\bflood protection.*infrastructure\b',
+        r'\bdigue\b', r'\bdike\b',
+    ]),
+
+    # ── Spatial planning / land-use permits with water dimension ──────────────
+    # Captures NL omgevingsvergunning / bestemmingsplan decisions where water
+    # management (drainage, flood risk, watertoets) is a core element.
+    # The watertoets (water test) is a mandatory assessment in Dutch planning.
+    ('spatial_planning_water', [
+        r'\bwatertoets\b',
+        r'\bwaterparagraaf\b',
+        r'\bwaterbergingsfunctie\b',
+        r'\bomgevingsvergunning\b.*\b(?:water|riolering|afwater|overstromingsrisico)\b',
+        r'\b(?:water|riolering|afwater|overstromingsrisico)\b.*\bomgevingsvergunning\b',
+        r'\bbestemmingsplan\b.*\b(?:water|riolering|overstromingsrisico|waterberging|natte zone)\b',
+        r'\b(?:riolering|overstromingsrisico|waterberging)\b.*\bbestemmingsplan\b',
+        r'\bhemelwaterberging\b',   # stormwater retention in planning
+        r'\bafkoppeling.*riolering\b',  # disconnection from sewer in development
+        r'\bstormwater.*zoning\b', r'\bflood risk.*planning\b',
+        r'\bfloodplain.*zoning\b', r'\bfloodplain.*bylaw\b',
+        r'\bstormwater.*bylaw\b',
+    ]),
+
+    # ── Waterboard / drainage district governance ─────────────────────────────
+    # NL waterschap (water board) authority decisions: levies, keur (by-law),
+    # peilbesluiten (water level decisions), drainage enforcement.
+    ('waterboard_governance', [
+        r'\bwaterschap\b',
+        r'\bwaterschapsbelasting\b', r'\bzuiveringsheffing\b',
+        r'\bwaterschapskeur\b', r'\bkeur\b.*\bwaterschap\b',
+        r'\bpeilbesluit\b', r'\bwaterpeil\b',
+        r'\bafwaterings\w+\b', r'\bpeilgebied\b',
+        r'\bpoldergemaal\b', r'\bgemaal\b.*\bwater\b',
+        r'\birrigation district\b.*\b(?:levy|rate|tax|decision|bylaw)\b',
+        r'\bwater board\b.*\b(?:levy|rate|tax|decision|bylaw)\b',
+        r'\bwater authority\b.*\b(?:levy|rate|tax|charge)\b',
+        r'\bwater district.*tax\b',
+    ]),
+
+    # ── Pipe leak / infrastructure damage liability ────────────────────────────
+    # Civil liability for burst mains, leaks from water utility infrastructure.
+    # Dominant in Brazil (SABESP/CAESB pipe damage to property).
+    ('pipe_leak_damage', [
+        r'\bvazamento.*tubula[çc][aã]o\b', r'\btubula[çc][aã]o.*vazamento\b',
+        r'\bvazamento.*cano\b', r'\bcano.*vazamento\b',
+        r'\brompimento.*cano\b', r'\brompimento.*rede\b',
+        r'\bruptura.*tubula[çc][aã]o\b', r'\bruptura.*rede.*[aáàâã]gua\b',
+        r'\binfiltração.*[aáàâã]gua.*dano\b',
+        r'\bdano.*vazamento.*[aáàâã]gua\b', r'\bvazamento.*dano\b',
+        r'\bresponsabilidade civil.*sabesp\b', r'\bsabesp.*responsabilidade civil\b',
+        r'\bresponsabilidade civil.*caesb\b', r'\bcaesb.*responsabilidade civil\b',
+        r'\bresponsabilidade.*concession[aá]ria.*dano.*[aáàâã]gua\b',
+        r'\bdano.*rede.*distribui[çc][aã]o.*[aáàâã]gua\b',
+        r'\bwater main break\b', r'\bpipe burst\b',
+        r'\bwater leak.*property damage\b', r'\bdamage.*burst.*water\b',
+        r'\bwaterleiding.*schade\b',
+    ]),
+
+    # ── Water theft / fraud / meter tampering ────────────────────────────────
+    # Criminal/civil cases involving illegal water connections, meter fraud,
+    # clandestine abstraction. Mainly Brazil (furto de água).
+    ('water_theft_fraud', [
+        r'\bfurto.*[aáàâã]gua\b', r'\b[aáàâã]gua.*furto\b',
+        r'\bfurto.*hidr[oô]metro\b', r'\bhidr[oô]metro.*furto\b',
+        r'\badultera[çc][aã]o.*medidor\b', r'\bmedidor.*adultera[çc][aã]o\b',
+        r'\bliga[çc][aã]o clandestina\b',
+        r'\bfraude.*consumo.*[aáàâã]gua\b',
+        r'\bdesvio.*[aáàâã]gua\b', r'\b[aáàâã]gua.*clandestina\b',
+        r'\bwater theft\b', r'\bwater meter.*tamper\b',
+        r'\billegal.*connection.*water\b', r'\billegal.*water.*abstract\b',
+        r'\bongeoorloofde.*wateronttrekking\b',
+    ]),
+
+    # ── Public procurement / concession contracts for water works ─────────────
+    # Disputes about tenders, contracts, PPPs for water/sanitation infrastructure.
+    # Distinct from tariff_dispute (which = individual billing); this = B2G/B2B.
+    ('water_infrastructure_contract', [
+        r'\blicita[çc][aã]o.*saneamento\b', r'\bsaneamento.*licita[çc][aã]o\b',
+        r'\blicita[çc][aã]o.*[aáàâã]gua\b', r'\b[aáàâã]gua.*licita[çc][aã]o\b',
+        r'\bconcorrência.*saneamento\b', r'\bobra.*saneamento\b',
+        r'\bconcess[aã]o.*saneamento\b', r'\bsaneamento.*concess[aã]o\b',
+        r'\bprivati[sz]a[çc][aã]o.*saneamento\b',
+        r'\bcontrato.*abastecimento.*[aáàâã]gua\b',
+        r'\bempresa.*saneamento.*contrat\b',
+        r'\bppp.*[aáàâã]gua\b', r'\b[aáàâã]gua.*ppp\b',
+        r'\bwater.*procurement\b', r'\bwater.*concession.*contract\b',
+        r'\bpublic.*contract.*water.*service\b',
+        r'\bwaterwerk.*aanbesteding\b', r'\baanbesteding.*waterwerk\b',
+        r'\bmarché.*eau\b', r'\bcontrat.*eau\b',
+    ]),
+
+    # ── Fisheries / aquaculture water rights ─────────────────────────────────
+    # Water law intersecting with fisheries management, aquaculture licensing.
+    # Canada dominant (BC/AB fisheries, recreational fishing licence decisions).
+    # Note: patterns do NOT require "water" as second term — Canadian case titles
+    # name the decision-maker ("Regional Manager, Recreational Fisheries & Wildlife")
+    # without repeating "water" even when the substance is water-based.
+    ('fisheries_water', [
+        r'\bfisheries act\b',
+        r'\brecreational fish\w+\b',    # Recreational Fisheries & Wildlife Programs
+        r'\bfish\w*.*habitat\b', r'\bhabitat.*fish\w*\b',
+        r'\bfisheries.*water\b', r'\bwater.*fisheries\b',
+        r'\bfishery\b',
+        r'\baquaculture\b',
+        r'\bfishing.*licen\w+\b', r'\bfishing.*permit\b',
+        r'\bdepartment of fisheries\b', r'\bDFO\b',
+        r'\bfish.*pass\b',              # fish passage on dams
+        r'\bpiscicultura\b', r'\baquicultura\b',
+        r'\bpêcheries\b', r'\bpêche.*eau\b', r'\beau.*pêche\b',
+        r'\bvisserij\b', r'\bwatervisserij\b',
+    ]),
+
     # ── Hydroelectric / dam / reservoir ──────────────────────────────────────
     ('hydroelectric_dam', [
         r'\bhidroel[eé]trica\b', r'\busina.*?[aáàâã]gua\b',
@@ -281,14 +460,47 @@ GOV_CATS = [
         r'\boutorga.*?[aáàâã]gua\b', r'\blicen[çc]a.*?[aáàâã]gua\b',
         r'\bpermiss[aã]o.*?[aáàâã]gua\b', r'\bconcess[aã]o.*?[aáàâã]gua\b',
         r'\bregula[çc][aã]o.*?[aáàâã]gua\b',
-        r'\bwater licence\b', r'\bwater permit\b', r'\bwater allocation\b',
+        r'\bwater licen\w+\b', r'\bwater permit\b', r'\bwater allocation\b',
         r'\bwater rights\b', r'\bwater taking\b',
         r'\bwatervergunning\b', r'\bonttrekking\b',
         r'\bpermis.*?eau\b', r'\bautorisati\w+.*?eau\b',
+        # Canada: provincial Water Acts and water approval processes
+        r'\bwater act\b',               # Alberta/BC/NWT Water Act
+        r'\bclean water act\b',
+        r'\bsafe drinking water act\b',
+        r'\bwater resources act\b',
+        r'\bwater sustainability act\b',
+        r'\bwater approval\b', r'\bwater licence.*director\b',
+        r'\bdirector.*water\b.*\b(?:act|licence|approval)\b',
+        r'\benvironment.*water.*approv\w+\b',
+        # Quebec FR: water management permits
+        r'\bautorisation.*eau\b', r'\bpermis.*eau\b',
+        r'\bgestion.*eau\b', r'\bloi sur l\'eau\b',
+        r'\bprotection des eaux\b',
     ]),
 ]
 
 def code_governance(text):
+    # Pre-filter: NL immigration/asylum false positives.
+    # The RvS handles both immigration appeals and water/planning appeals;
+    # if a case is about immigration with no water-infrastructure content,
+    # it is a false positive from the broad Rechtspraak keyword search.
+    _IMMIGRATION_RE = re.compile(
+        r'vreemdelingenrecht|verblijfsvergunning|asielverzoek|asielzoeker'
+        r'|ongewenstverklaring|uitzetting.*vreemdeling|vreemdeling.*uitzetting'
+        r'|asielrecht|mvv\b|verblijfsrecht',
+        re.I
+    )
+    _WATER_CORE_RE = re.compile(
+        r'\bwater(?:schap|leiding|kering|winning|onttrekking|toets|berging|peil|beheer)?\b'
+        r'|\bdrinkwater\b|\bgrondwater\b|\briolering\b|\bwateroverlast\b'
+        r'|\b[aáàâã]gua\b|\bfornecimento\b|\bsaneamento\b|\bcaesb\b|\bsabesp\b'
+        r'|\beau\b|\bhydraulic\b|\baquifer\b|\birrigat\b|\bwetland\b',
+        re.I
+    )
+    if _IMMIGRATION_RE.search(text) and not _WATER_CORE_RE.search(text):
+        return 'not_water_related'
+
     for cat, patterns in GOV_CATS:
         for p in patterns:
             if re.search(p, text, re.I):
