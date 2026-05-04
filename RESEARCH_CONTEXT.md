@@ -1,13 +1,13 @@
 # Research Context — The Legal Last Mile
 
-## Dissertation
+## Preliminary Research
 
 **Title:** The Legal Last Mile: Administrative Law as a Mechanism of Connectivity and Exclusion in Sanitation Governance  
 **Author:** Claudio Klaus  
 **Citation style:** OSCOLA  
 **Method:** Most Different Systems Design (MDSD) — Netherlands · Canada (Ontario) · Brazil
 
-This dissertation investigates how administrative law frameworks condition access to sanitation infrastructure at the *point of connection* across three jurisdictions that diverge profoundly in legal tradition and institutional architecture yet converge on a shared outcome: the administrative exclusion of marginalized households from services that are, in physical terms, within reach.
+This preliminary research investigates how administrative law frameworks condition access to sanitation infrastructure at the *point of connection* across three jurisdictions that diverge profoundly in legal tradition and institutional architecture yet converge on a shared outcome: the administrative exclusion of marginalized households from services that are, in physical terms, within reach.
 
 ---
 
@@ -37,7 +37,7 @@ Individuals physically present and need-bearing but legally invisible to the adm
 
 ## The Dataset as Empirical Instrument
 
-This repository contains the scrapers and data for the jurimetric backbone of the dissertation: **12,310+ judicial decisions** from Brazil and the Netherlands (Canada in progress), coded via regex on decision summaries to test the Legal Last Mile theory.
+This repository contains the scrapers and data for the jurimetric backbone of the preliminary research: **12,310+ judicial decisions** from Brazil and the Netherlands (Canada in progress), coded via regex on decision summaries to test the Legal Last Mile theory.
 
 ### Published Findings (2026 Conference)
 
@@ -135,7 +135,7 @@ Unified schema across all jurisdictions (`water_law_global.csv`):
 
 ---
 
-## AI Methodology Statement (final — for thesis)
+## AI Methodology Statement (final — for preliminary research)
 
 This study integrates Claude (Anthropic), a large language model, as a technical tool within the empirical data collection and processing pipeline. Its role was clearly defined and limited to verifiable computational tasks, while all substantive legal analysis remained the responsibility of the author. The purpose of using AI in this context was to enable the construction and handling of a large, cross-jurisdictional dataset in a consistent and replicable manner.
 

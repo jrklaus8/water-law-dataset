@@ -12,9 +12,9 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
-### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Dissertation PDF](docs/The_Legal_Last_Mile.pdf)
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile.pdf)
 
-> **The Legal Last Mile** — Doctoral dissertation examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
+> **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
 ---
 
@@ -43,7 +43,7 @@ water-law-dataset/
 │   ├── make_progress_charts.py
 │   ├── jurimetric_coding.py        # Regex-based coding engine (21 categories, 4 languages)
 │   ├── build_report.py             # Generate comparative DOCX report + 6 charts from coded CSV
-│   └── integrate_dissertation.py   # Integrate dataset findings into a DOCX dissertation
+│   └── integrate_dissertation.py   # Integrate dataset findings into a DOCX preliminary research
 ├── data/                      # Output directory (gitignored — add your JSON/CSV here)
 ├── .env.example
 ├── requirements.txt

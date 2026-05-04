@@ -1,7 +1,7 @@
 """
 Jurimetric regex coding for the Global Water Law Judicial Decisions Dataset
 ============================================================================
-Applies coded variables to water_law_global.csv for dissertation analysis.
+Applies coded variables to water_law_global.csv for preliminary research analysis.
 
 Variables coded per case:
   hr_language       — human rights / right-to-water framing

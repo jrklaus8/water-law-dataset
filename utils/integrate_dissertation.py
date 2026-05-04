@@ -1,5 +1,5 @@
 """
-integrate_dissertation.py
+integrate_preliminary research.py
 Integrates Global Water Law Dataset findings into "April 2026 - THE LEGAL LAST MILE.docx"
 Inserts:
   - Chapter 4.4: new data source paragraph (Global Water Law Dataset)
@@ -212,7 +212,7 @@ def insert_elems_after(anchor_para, elements):
         ref.addnext(elem)
 
 # ── LOAD DISSERTATION ─────────────────────────────────────────────────────
-print(f"\nOpening dissertation: {DISS_IN.name} …")
+print(f"\nOpening preliminary research: {DISS_IN.name} …")
 doc = Document(str(DISS_IN))
 paras = list(doc.paragraphs)  # build ONCE, reuse everywhere
 print(f"  {len(paras)} paragraphs loaded")
@@ -252,7 +252,7 @@ if anchor_45:
 
     body_text = (
         f'In addition to the four doctrinal and qualitative source categories above, this '
-        f'dissertation draws on the Global Water Law Judicial Decisions Dataset (v1.0) '
+        f'preliminary research draws on the Global Water Law Judicial Decisions Dataset (v1.0) '
         f'(Klaus, 2026), an original comparative jurimetric dataset assembled specifically '
         f'for this research. The dataset comprises {n_total:,} judicial decisions spanning '
         f'three jurisdictions — Brazil ({n_br:,} decisions, 2016–2025), the Netherlands '
@@ -324,7 +324,7 @@ if anchor_46:
         'across three national datasets; (iii) designing and implementing the jurimetric '
         'coding engine (jurimetric_coding.py v2.0) for all seven variables across four '
         'languages; (iv) automating data deposits to Zenodo, Harvard Dataverse, DANS, and OSF; '
-        'and (v) generating the statistical report and charts presented in this dissertation.'
+        'and (v) generating the statistical report and charts presented in this preliminary research.'
     ).format(n_total=n_total)
     new_paras_45.append(make_paragraph_elem(doc, ai_text))
 
@@ -493,7 +493,7 @@ if anchor_76:
         f'rights framework permeates even routine tariff and service quality disputes. '
         f'The prevalence of human rights framing in Brazilian decisions — substantially '
         f'higher than in Dutch or Canadian decisions, where such language is rare — '
-        f'illustrates what this dissertation calls the "rights-access gap": the formal '
+        f'illustrates what this preliminary research calls the "rights-access gap": the formal '
         f'legal architecture is rights-saturated, yet the populations most dependent on '
         f'rights-based adjudication are least able to access it.'
     )
@@ -539,7 +539,7 @@ if anchor_83:
 
     ch8_text1 = (
         f'The comparative governance distribution across the three jurisdictions illustrates '
-        f'the systemic differences identified in this dissertation\'s analytical chapters. '
+        f'the systemic differences identified in this preliminary research\'s analytical chapters. '
         f'In Brazil, tariff and service quality disputes dominate the judicial record '
         f'({pct_tariff:.1f}% of classified cases), while connection refusal — the access '
         f'threshold question — accounts for only {pct_conn_br:.1f}%. In the Netherlands, '
