@@ -191,11 +191,7 @@ These scrapers query publicly accessible jurisprudência portals. All decisions 
 
 ### Scholarly Inspiration
 
-I would like to acknowledge that this research is inspired by the work of **Professor LaDawn Haglund** in the fields of comparative water law, water governance, and the judicialization of water and sanitation. Her scholarship, including *Water Governance and Social Justice in São Paulo, Brazil* and her broader work on human rights and urban water systems, has been central in shaping how I understand the relationship between law, policy, and access to essential resources.
-
-I had the privilege of working with her as a research assistant some years ago, and that experience played an important role in directing my interest toward this area. I am especially grateful for her early encouragement to study water law in Brazil and to approach these challenges from a comparative and global perspective.
-
-Her research and publications remain essential references for this project. I strongly recommend her work to anyone interested in water law, governance, and the role of legal institutions in addressing complex social and environmental challenges.
+I would like to acknowledge that this research was inspired by the work of LaDawn Haglund in comparative water law, water governance, and the judicialization of water and sanitation. Her scholarship, particularly Water Governance and Social Justice in São Paulo, Brazil, has shaped my understanding of the relationship between law, policy, and access to essential resources. Having had the opportunity to work with her as a research assistant, I remain especially grateful for her encouragement to study water law in Brazil through a comparative and global lens. Her research continues to serve as an important foundation and reference for this project
 
 Selected publications:
 - Haglund, L. (2014). [Water Governance and Social Justice in São Paulo, Brazil](https://ui.adsabs.harvard.edu/abs/2014WaPol..16S..78H/abstract). *Water Policy*, 16(S2), 78–97.
