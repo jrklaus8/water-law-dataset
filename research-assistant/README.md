@@ -56,8 +56,6 @@ streamlit run app.py
 
 - **Claudio Klaus** — Legal Last Mile theory and Global Water Law Dataset
 - **Claude (Anthropic)** — AI research analysis engine
-- **Larissa Meredith-Flister** — Persuasive Legal Writing skill (writing discipline)
-- **Bryan A. Garner** — Plain-language method applied to all documentation
 
 ## License
 
