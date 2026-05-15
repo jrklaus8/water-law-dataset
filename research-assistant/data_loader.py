@@ -184,3 +184,37 @@ def build_context(df, question: str, stats: dict) -> str:
         )
 
     return "\n\n".join(country_stats_block) + "\n\n---\n\nRelevant cases:\n\n" + "\n\n".join(case_block)
+
+
+def get_case_links(df, question: str, countries: list[str], n: int = 6) -> list[dict]:
+    """Return up to n relevant cases that have a valid URL, for display as citations."""
+    cases = get_relevant_cases(df, question, countries, n=n * 3)
+    results = []
+    for _, row in cases.iterrows():
+        url = str(row.get("url", "")).strip()
+        results.append({
+            "title":    str(row.get("title", "Untitled")),
+            "url":      url if url and url.lower() not in ("nan", "none", "") else "",
+            "country":  str(row.get("country", "")),
+            "year":     str(row.get("year", "")),
+            "category": GOVERNANCE_LABELS.get(str(row.get("governance_cat", "")), str(row.get("governance_cat", ""))),
+            "win_loss": str(row.get("win_loss", "not_coded")),
+        })
+        if len(results) >= n:
+            break
+    return results
+
+
+def get_year_trend(df, countries: list[str]) -> "pd.DataFrame":
+    """Return a DataFrame of case counts per year per country (year as index)."""
+    sub = df[df["country"].isin(countries)].copy()
+    sub = sub.dropna(subset=["year"])
+    sub["year"] = sub["year"].astype(int)
+    pivot = (
+        sub.groupby(["year", "country"])
+        .size()
+        .unstack(fill_value=0)
+        .reindex(columns=countries, fill_value=0)
+    )
+    pivot = pivot[(pivot.index >= 2000) & (pivot.index <= 2026)]
+    return pivot
