@@ -233,6 +233,26 @@ All research design decisions, methodological choices, variable definitions, and
 
 ---
 
+## Known Limitations
+
+### Outcome Coding Gap — Netherlands (68,654 cases)
+
+The Netherlands sub-dataset classifies dispute *type* across 21 jurimetric categories but does not carry outcome coding. We know what was litigated; we do not know who won.
+
+This means that claims about whether administrative litigation in the Netherlands *expands* water and sanitation access, *delays* it, or merely *reshuffles* permits among institutional and corporate actors remain inferential. The near-zero connection-refusal litigation finding (12 cases of 68,654) tells us the Dutch Awb absorbs disputes pre-litigation — but it does not tell us whether the small number of cases that do reach the Raad van State are decided in favour of access-seekers or incumbents.
+
+**Future researchers:** see [`FUTURE_WORK.md`](./FUTURE_WORK.md) for a full methodological roadmap for adding outcome coding to this dataset, including decision-text retrieval via the Dutch rechtspraak.nl API and a validated regex + LLM classification protocol.
+
+### Brazil Outcome Coding Audit
+
+The Brazil sub-dataset carries outcome coding, but the coding was AI-assisted and has not been validated against a random manual sample large enough to confirm accuracy in the `informal_settlement` and `connection_refusal` subcategories (combined n < 200). A 10% stratified manual validation of those two categories is recommended before downstream causal inference.
+
+### Canada Coverage
+
+The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII and does not include unreported Environmental Review Tribunal or Ontario Licence Appeal Tribunal decisions, which may carry a disproportionate share of access-to-water disputes.
+
+---
+
 ## License
 
 MIT
