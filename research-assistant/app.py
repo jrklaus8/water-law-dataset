@@ -1,7 +1,10 @@
 import os
+from pathlib import Path
 import streamlit as st
 from dotenv import load_dotenv
 import anthropic
+
+load_dotenv(Path(__file__).parent / ".env")
 
 from data_loader import (
     load_dataset,
@@ -12,8 +15,6 @@ from data_loader import (
     GOVERNANCE_LABELS,
 )
 from agents import run_pipeline
-
-load_dotenv()
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
 

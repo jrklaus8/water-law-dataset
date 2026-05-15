@@ -4,7 +4,7 @@ import streamlit as st
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(Path(__file__).parent / ".env")
 
 _env_path = os.getenv("DATASET_PATH")
 DATASET_PATH = (
