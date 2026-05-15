@@ -1,8 +1,17 @@
+import os
 import pandas as pd
 import streamlit as st
 from pathlib import Path
+from dotenv import load_dotenv
 
-DATASET_PATH = Path(r"C:\Users\junio\OneDrive\Área de Trabalho\Legal Last Mile - Water Law Dataset\Dataset\water_law_global_coded.csv")
+load_dotenv()
+
+_env_path = os.getenv("DATASET_PATH")
+DATASET_PATH = (
+    Path(_env_path)
+    if _env_path
+    else Path(r"C:\Users\junio\OneDrive\Área de Trabalho\Legal Last Mile - Water Law Dataset\Dataset\water_law_global_coded.csv")
+)
 
 GOVERNANCE_LABELS = {
     "tariff_dispute": "Tariff Disputes",
