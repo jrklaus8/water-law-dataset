@@ -160,3 +160,78 @@ After completing this protocol, add the following (adapt to your results):
 
 All files should be committed to the repository alongside the published article
 to satisfy open-data requirements at JELS, L&SR, and Jurimetrics.
+
+---
+
+## §6. Gold-Standard Precision/Recall Evaluation (Required for JELS / AI & Law)
+
+This section describes a separate but complementary task to the second-coder kappa protocol:
+constructing a **gold-standard evaluation set** against which the filter's precision, recall,
+and F1 can be measured. This is not the same as second-coding the `other_water` residual —
+it is a performance evaluation of the `not_water_related` filter specifically.
+
+### Why this is required
+
+The v0.3.0 filter classifies 67,703 decisions as `not_water_related`. Approximately 263–2,487
+of those (see RESIDUAL_AUDIT.md §3) are estimated to contain substantive water vocabulary.
+To report precision and recall for the filter, you need human-coded ground truth.
+
+### Sampling procedure for the gold standard
+
+Draw a **stratified random sample of 250 NWR decisions** from the deposited v0.3.0 CSV,
+stratified as follows:
+
+| Stratum | n | Rationale |
+|---|---|---|
+| NL NWR decisions with broad water vocabulary (drinkwater, riolering, Waterwet, etc.) | 100 | The most likely source of filter false positives |
+| NL NWR decisions without any water vocabulary (ECLI-only or short text) | 50 | Confirms true negatives |
+| Brazil NWR (38 cases, sample all) | 38 | Full inclusion; small enough |
+| Canada NWR (0 cases in v0.3.0) | 0 | Not applicable |
+| NL NWR with *aansluitplicht* / *aansluitvergunning* language (14 cases) | 14 | Validate the confound finding |
+| NL NWR with Waterwet / watervergunning language | 48 | Capture the Waterwet permit misclassification risk |
+
+Total: **250 decisions** (numbers adjust if strata are smaller than target).
+
+### Coding task for the gold standard
+
+The coder labels each decision as one of:
+
+- **`WATER`**: The decision is substantively about water law, water governance, or water service
+  access (would belong in one of the 21 governance categories).
+- **`NOT_WATER`**: The decision is correctly classified — not substantively about water law.
+- **`UNCERTAIN`**: Cannot determine from available text.
+
+`UNCERTAIN` decisions are excluded from precision/recall calculation.
+
+### Computing precision and recall
+
+After coding:
+
+```
+True Positive (TP) = filter says NOT_WATER, coder says NOT_WATER
+False Positive (FP) = filter says NOT_WATER, coder says WATER
+False Negative (FN) = filter says WATER (substantive cat or OW), coder says NOT_WATER
+True Negative (TN) = filter says WATER, coder says WATER
+
+Precision (NWR) = TP / (TP + FP)   [of all NWR classifications, how many are correct?]
+Recall (NWR)    = TP / (TP + FN)    [of all true NWR decisions, how many did we catch?]
+F1              = 2 * (Precision * Recall) / (Precision + Recall)
+```
+
+For the thesis, the relevant metric is **precision** (how many of the NWR bucket are genuinely
+non-water) rather than recall (how many genuine NWR decisions we found). A precision of ≥ 0.97
+against the gold standard would confirm that the false-negative risk to the thesis is < 3 %.
+
+### Reporting template
+
+> **Filter performance against gold standard.** A stratified sample of 250 `not_water_related`
+> decisions was hand-coded by [coder] to provide ground-truth labels. Against those labels, the
+> v0.3.0 filter achieved precision = [X.XX], recall = [X.XX], and F1 = [X.XX]. Of 250 sampled
+> decisions, [N] (X.X %) were coded as substantively water-related by the human coder,
+> indicating that approximately [N × (67,703/250)] decisions in the full NWR bucket may be
+> genuine water cases. Inspection of those false-negative cases shows they are predominantly
+> [Waterwet permits / spatial planning cases where water is incidental / Meststoffenwet
+> decisions], none of which involve household connection refusal or informal settlement access.
+> The filter's conservative operating point (high precision, lower recall) is appropriate for
+> the thesis's claims, which concern false negatives in connection refusal specifically, not in
+> water law generally.

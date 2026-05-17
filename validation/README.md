@@ -13,12 +13,21 @@ Ghost thesis claims are absent?
 
 ## The Answer (Short Version)
 
-No. The residual is dominated by false positives — non-water court decisions
-that entered the dataset from the broad keyword scrape. 97.9% of residual
-decisions contain no substantive water vocabulary. Of the 818 Brazil residual
-cases that *do* contain water vocabulary, only 36 are plausible connection-refusal
-cases and 8 are plausible informal-settlement cases — quantities too small to
-materially alter the core findings.
+Mostly no — but the picture is more nuanced than v0.2.x documentation implied.
+The `other_water` residual was dominated by false positives from the broad keyword scrape.
+The v0.3.0 filter reclassifies 67,703 decisions to `not_water_related`, reducing the genuine
+residual from 89.2% → 8.3%. However:
+
+1. **Reconciliation gap:** The full reconciliation (§2 of the audit) accounts for the ~17,120
+   NL decisions that appear in `not_water_related` beyond the vocabulary-audit count — they
+   comprise 15,589 from the pre-existing immigration filter and 1,531 from old classified
+   categories that failed the v0.3.0 vocabulary check.
+2. **NWR is not a clean dustbin:** Approximately 263 confirmed (and up to ~2,487 in full text)
+   NL NWR decisions contain substantive water vocabulary, predominantly Waterwet permits and
+   spatial planning cases. The filter privileges precision over recall (documented in §5).
+3. **The *aansluitplicht* confound:** A search for Dutch connection-obligation vocabulary in NWR
+   returns 14 cases — all electricity/heat network, zero water/sanitation. This is an
+   affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
 
 **Full analysis:** [`RESIDUAL_AUDIT.md`](RESIDUAL_AUDIT.md)
 
@@ -26,11 +35,12 @@ materially alter the core findings.
 
 | File | Purpose |
 |---|---|
-| `RESIDUAL_AUDIT.md` | Full audit report with tables and thesis robustness check |
+| `RESIDUAL_AUDIT.md` | Full audit — reconciliation table, NWR purity, *aansluitplicht* confound, thesis robustness |
 | `residual_audit.py` | Reproduces the audit from any coded CSV |
-| `second_coder_protocol.md` | Route B: second-coder validation and kappa protocol |
+| `second_coder_protocol.md` | Route B: second-coder kappa protocol + §6 gold-standard precision/recall evaluation |
 | `kappa_calculator.py` | Cohen's kappa + bootstrap CI + per-category agreement |
 | `transformer_classifier.py` | Route A: XLM-RoBERTa fine-tuning and residual classification |
+| `METHODS_NOTE_aansluitplicht.md` | Standalone methods note: cross-utility lexical confounds in Dutch administrative law |
 
 ## Quick Start
 
