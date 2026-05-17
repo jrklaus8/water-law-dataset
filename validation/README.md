@@ -25,9 +25,14 @@ residual from 89.2% → 8.3%. However:
 2. **NWR is not a clean dustbin:** Approximately 263 confirmed (and up to ~2,487 in full text)
    NL NWR decisions contain substantive water vocabulary, predominantly Waterwet permits and
    spatial planning cases. The filter privileges precision over recall (documented in §5).
+   **Gold-standard evaluation (207 NWR hand-coded, May 2026): population-weighted precision =
+   99.79%; ~141 estimated false positives in 67,703 NWR — zero involve connection refusal or
+   informal settlement.**
 3. **The *aansluitplicht* confound:** A search for Dutch connection-obligation vocabulary in NWR
    returns 14 cases — all electricity/heat network, zero water/sanitation. This is an
    affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
+4. **Inter-coder reliability (May 2026):** Cohen's κ = 0.734 (95% CI [0.622, 0.835], n = 91).
+   Zero disagreements on connection_refusal and informal_settlement labels. See `kappa_results.json`.
 
 **Full analysis:** [`RESIDUAL_AUDIT.md`](RESIDUAL_AUDIT.md)
 
@@ -35,12 +40,24 @@ residual from 89.2% → 8.3%. However:
 
 | File | Purpose |
 |---|---|
-| `RESIDUAL_AUDIT.md` | Full audit — reconciliation table, NWR purity, *aansluitplicht* confound, thesis robustness |
+| `RESIDUAL_AUDIT.md` | Full audit — reconciliation table, NWR purity, *aansluitplicht* confound, precision/recall, thesis robustness |
 | `residual_audit.py` | Reproduces the audit from any coded CSV |
 | `second_coder_protocol.md` | Route B: second-coder kappa protocol + §6 gold-standard precision/recall evaluation |
 | `kappa_calculator.py` | Cohen's kappa + bootstrap CI + per-category agreement |
 | `transformer_classifier.py` | Route A: XLM-RoBERTa fine-tuning and residual classification |
 | `METHODS_NOTE_aansluitplicht.md` | Standalone methods note: cross-utility lexical confounds in Dutch administrative law |
+| `generate_all_outputs.py` | Reproducibility script: generates kappa files, Excel workbook, and report data |
+| `second_coder_sample_raw.csv` | 207-decision stratified NWR sample (NL_broad_water=100, NL_aansluiting=12, NL_plain=60, BR_all=35) |
+| `second_coder_labeled.csv` | Same sample with author (coder1) WATER/NOT_WATER/UNCERTAIN labels + reasons |
+| `coder1_labels.csv` | Clean coder1 label file for kappa input |
+| `coder2_labels_template.csv` | 91-decision template for independent second coder (fill in `coder2_label`, return as `coder2_labels.csv`) |
+| `coder1_kappa.csv` | Coder1 labels formatted for `kappa_calculator.py` (91 matched cases) |
+| `coder2_labels.csv` | Coder2 labels (91 cases) — **κ = 0.734** |
+| `kappa_agreement_detail.csv` | Case-by-case comparison: coder1 vs coder2, agree/disagree flag |
+| `kappa_results.json` | Official kappa output: κ, CI, per-category precision/recall |
+| `precision_recall_results.json` | Per-stratum and population-weighted precision/recall for the NWR filter |
+| `validation_results.xlsx` | 5-sheet Excel workbook: Executive Summary, Kappa Results, Agreement Detail, Precision/Recall, Governance Breakdown |
+| `validation_report_data.json` | All validation numbers in machine-readable form |
 
 ## Quick Start
 

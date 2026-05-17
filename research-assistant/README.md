@@ -22,7 +22,7 @@ Ask plain-language research questions and get evidence-grounded answers about:
 
 | Country | Cases | Top Category |
 |---|---|---|
-| Brazil | 11,724 | Tariff disputes (48.1%) |
+| Brazil | 11,724 | Tariff disputes (48.52%) |
 | Netherlands | 68,654 | Flood protection & waterboard governance |
 | Canada | 3,218 | Fisheries & riparian disputes |
 

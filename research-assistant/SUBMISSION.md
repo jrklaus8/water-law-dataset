@@ -38,7 +38,7 @@ This architecture applies the principle that smaller, focused agent contexts pro
 
 ## Why It Matters
 
-Water access is a human right recognised by the UN General Assembly in 2010. Yet in Brazil alone, this dataset shows 9.9% of water law cases involve connection refusals — utilities or municipalities denying physical connection to the water network. Only 0.8% of cases involve informal settlements, suggesting that the most vulnerable households are largely invisible to the courts that could protect them. The Netherlands, by contrast, shows only 12 connection refusal cases out of 68,654 — suggesting that pre-litigation administrative mechanisms absorb disputes before they reach courts.
+Water access is a human right recognised by the UN General Assembly in 2010. Yet in Brazil alone, this dataset shows 10.88% of water law cases involve connection refusals — utilities or municipalities denying physical connection to the water network. Only 0.75% of cases involve informal settlements, and that category records zero user wins across 88 decisions — the quantitative signature of the Administrative Ghost. The Netherlands, by contrast, shows only 8 connection refusal cases out of 68,654 — suggesting that pre-litigation administrative mechanisms absorb disputes before they reach courts.
 
 The Legal Last Mile Research Assistant makes these patterns accessible to researchers, advocates, and policymakers without requiring them to process 83,596 decisions in four languages. The dataset is open, the code is open, and every answer the tool produces shows the cases and statistics that generated it.
 

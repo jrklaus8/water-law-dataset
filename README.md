@@ -210,7 +210,7 @@ Selected publications:
 
 If you use it in your own work, please cite:
 
-> Klaus, C. (2026). *Global Water Law Judicial Decisions Dataset* (v1.0). Zenodo. https://doi.org/10.5281/zenodo.19836413
+> Klaus, C. (2026). *Global Water Law Judicial Decisions Dataset* (v0.3.0). Zenodo. https://doi.org/10.5281/zenodo.19836413
 
 Also archived at:
 - Harvard Dataverse: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/C9PEFS
@@ -239,13 +239,13 @@ All research design decisions, methodological choices, variable definitions, and
 
 The Netherlands sub-dataset classifies dispute *type* across 21 jurimetric categories but does not carry outcome coding. We know what was litigated; we do not know who won.
 
-This means that claims about whether administrative litigation in the Netherlands *expands* water and sanitation access, *delays* it, or merely *reshuffles* permits among institutional and corporate actors remain inferential. The near-zero connection-refusal litigation finding (12 cases of 68,654) tells us the Dutch Awb absorbs disputes pre-litigation — but it does not tell us whether the small number of cases that do reach the Raad van State are decided in favour of access-seekers or incumbents.
+This means that claims about whether administrative litigation in the Netherlands *expands* water and sanitation access, *delays* it, or merely *reshuffles* permits among institutional and corporate actors remain inferential. The near-zero connection-refusal litigation finding (8 cases of 68,654) tells us the Dutch Awb absorbs disputes pre-litigation — but it does not tell us whether the small number of cases that do reach the Raad van State are decided in favour of access-seekers or incumbents.
 
 **Future researchers:** see [`FUTURE_WORK.md`](./FUTURE_WORK.md) for a full methodological roadmap for adding outcome coding to this dataset, including decision-text retrieval via the Dutch rechtspraak.nl API and a validated regex + LLM classification protocol.
 
 ### Brazil Outcome Coding Audit
 
-The Brazil sub-dataset carries outcome coding, but the coding was AI-assisted and has not been validated against a random manual sample large enough to confirm accuracy in the `informal_settlement` and `connection_refusal` subcategories (combined n < 200). A 10% stratified manual validation of those two categories is recommended before downstream causal inference.
+The Brazil sub-dataset carries outcome coding, but the coding was AI-assisted. A gold-standard validation has been partially executed: a stratified sample of 207 `not_water_related` decisions was hand-coded (author, May 2026), yielding a population-weighted filter precision of 99.79%. A full independent second-coder pass on the `informal_settlement` and `connection_refusal` subcategories is still recommended before downstream causal inference; a 91-decision kappa template (`validation/coder2_labels_template.csv`) is ready for distribution to a bilingual research assistant.
 
 ### Canada Coverage
 
