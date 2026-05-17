@@ -300,43 +300,72 @@ See `validation/second_coder_protocol.md` §6 for the full gold-standard samplin
 
 ### 5.2 Inter-coder reliability — κ results and sensitivity analysis (May 2026)
 
-A 91-decision sub-sample was coded by a second independent coder using the same three-label
-scheme (WATER / NOT_WATER / UNCERTAIN). Results are in `validation/kappa_results.json`.
+A 91-decision stratified sub-sample was coded by a second independent coder using the same
+three-label scheme (WATER / NOT_WATER / UNCERTAIN). The second coder applied labels
+independently for all 91 decisions based solely on case content. Results are in
+`validation/kappa_results.json` and `validation/kappa_agreement_detail.csv`.
 
 **Primary kappa result (three-label scheme):**
 
 | Metric | Value |
 |---|---|
 | N cases | 91 |
-| Observed agreement | 82.4 % (75/91) |
-| Cohen's κ | **0.734** |
-| 95 % CI (bootstrap, 5,000 iterations) | [0.612, 0.847] |
+| Observed agreement | 71.4 % (65/91) |
+| Cohen's κ | **0.568** |
+| 95 % CI (bootstrap, 5,000 iterations) | [0.436, 0.695] |
 
 **Sensitivity analysis — three specifications:**
 
 | Specification | N | κ | 95 % CI | p_o |
 |---|---|---|---|---|
-| Three-label (WATER/NOT_WATER/UNCERTAIN) — full sample | 91 | **0.734** | [0.612, 0.847] | 82.4 % |
-| Exclude-UNCERTAIN: cases where *neither* coder said UNCERTAIN (binary WATER/NOT_WATER) | 60 | **0.932** | [0.829, 1.000] | 96.7 % |
-| Coder1-confident: cases where *coder1* gave a non-UNCERTAIN label | 63 | **0.847** | [0.713, 0.968] | 92.1 % |
+| Three-label (WATER/NOT_WATER/UNCERTAIN) — full sample | 91 | **0.568** | [0.436, 0.695] | 71.4 % |
+| Exclude-UNCERTAIN: cases where *neither* coder said UNCERTAIN (binary WATER/NOT_WATER) | 59 | **0.932** | [0.830, 1.000] | 96.6 % |
+| Coder1-confident: cases where *coder1* gave a non-UNCERTAIN label | 63 | **0.821** | [0.686, 0.938] | 90.5 % |
 
-The three-label kappa (0.734) falls marginally below the conventional 0.75 publication threshold.
-The threshold gap is entirely attributable to the UNCERTAIN category: when cases where either
-coder expressed uncertainty are excluded, the binary WATER/NOT_WATER kappa rises to 0.932.
-This is the operationally relevant specification for the thesis, because the downstream
-governance analysis (§6–§7) uses only substantive WATER/NOT_WATER decisions — UNCERTAIN
-labels result in exclusion, not classification. Reporting both specifications is the most
-transparent approach.
+The three-label kappa (0.568) falls in the "moderate" range. The binary WATER/NOT_WATER kappa
+(0.932, n = 59) substantially exceeds the 0.75 publication threshold and is the operationally
+relevant specification: downstream governance analysis uses only substantive labels — UNCERTAIN
+results in exclusion, not classification.
 
-**Brazil stratum — coder calibration difference:** All 8 Brazil disagreements (of 20 Brazil
-cases) are coder1 = UNCERTAIN vs coder2 = substantive label (5× WATER, 3× NOT_WATER). No
-Brazil cases show coder1 giving a substantive label that coder2 disagreed with. The pattern
-is consistent with coder1 applying a stricter UNCERTAIN threshold on the Brazilian sub-corpus —
-likely because familiarity with the engine's taxonomic edge cases produced greater caution on
-ambiguous summaries. The binary collapse (Spec 2) resolves this, as these 8 cases are excluded
-from the binary specification. **For the methods note, this should be framed as a calibration
-difference rather than a reliability failure, and the binary kappa should be the headline
-number.**
+**Disagreement breakdown (26 total disagreements):**
+
+| Coder1 label | Coder2 label | Count | Interpretation |
+|---|---|---|---|
+| UNCERTAIN | WATER | 19 | Brazil mananciais ambiguity (see below) |
+| WATER | UNCERTAIN | 3 | Coder2 more cautious on borderline NL cases |
+| NOT_WATER | WATER | 2 | Genuine content disagreements |
+| NOT_WATER | UNCERTAIN | 1 | Borderline NL case |
+| UNCERTAIN | NOT_WATER | 1 | Borderline NL case |
+
+**Agreement by stratum:**
+
+| Stratum | N | Agreement |
+|---|---|---|
+| NL_plain | 22 | 95.5 % |
+| NL_broad_water | 45 | 86.7 % |
+| NL_aansluiting | 4 | 100.0 % |
+| BR_all | 20 | 5.0 % |
+
+**Brazil stratum — methodological ambiguity, not reliability failure:** The Brazil stratum
+shows only 5 % agreement (1/20 cases) — the dominant source of three-label disagreement.
+All 19 Brazil disagreements follow the same pattern: coder1 = UNCERTAIN, coder2 = WATER.
+The Brazilian sample consists entirely of São Paulo state court cases involving construction
+and regularisation in *áreas de proteção de mananciais* (watershed protection areas). Coder1
+(the author) coded these as UNCERTAIN because they are primarily environmental/demolition-law
+cases — they protect water sources but do not directly adjudicate water service access, tariff
+disputes, or connection refusals. Coder2 labelled them WATER based on their direct involvement
+with protected water sources.
+
+This disagreement surfaces a genuine methodological question: should watershed-protection
+enforcement cases (where water is the protected object) be classified as water law cases
+for Legal Last Mile purposes? This is a coding-protocol question, not a coder-reliability
+failure. The binary kappa (Spec 2) resolves the ambiguity by excluding all UNCERTAIN labels,
+showing that when both coders are confident the agreement is 96.6 %. The NOT_WATER precision
+for both coders is 97 %, confirming very strong agreement on what is *clearly* not water law.
+
+Importantly, the two genuine content disagreements (coder1 = NOT_WATER, coder2 = WATER) are
+in the NL_broad_water stratum — minor framing differences on borderline Dutch environmental
+cases — and do not affect any thesis-critical category.
 
 **What this kappa validates — and does not validate:** The reliability exercise uses three
 labels (WATER/NOT_WATER/UNCERTAIN) to validate the upstream filter: does the NWR classification
@@ -350,12 +379,15 @@ rather than left for reviewers to discover.
 
 > Inter-coder reliability was assessed on a 91-decision stratified sub-sample using a three-label
 > scheme (WATER / NOT_WATER / UNCERTAIN). Cohen's kappa for the three-label scheme was
-> κ = 0.734 (95 % CI: [0.612, 0.847]; observed agreement 82.4 %). Excluding cases where either
+> κ = 0.568 (95 % CI: [0.436, 0.695]; observed agreement 71.4 %). Excluding cases where either
 > coder expressed uncertainty — the operational specification for downstream analysis, where
-> UNCERTAIN labels result in exclusion — the binary kappa was κ = 0.932 (n = 60, 95 % CI:
-> [0.829, 1.000]). The three-label kappa falls marginally below the conventional 0.75 threshold
-> because of borderline calls coded as UNCERTAIN; the binary kappa, which corresponds to the
-> actual classification used in the governance analysis, substantially exceeds it. The reliability
+> UNCERTAIN labels result in exclusion — the binary kappa was κ = 0.932 (n = 59, 95 % CI:
+> [0.830, 1.000]). The dominant source of three-label disagreement is the Brazilian sub-sample
+> (19/26 disagreements), where coder1 systematically coded watershed-protection enforcement
+> cases as UNCERTAIN (these are environmental-demolition cases that protect water sources but
+> do not directly adjudicate water service access). The NL sub-sample shows 90.5 % agreement
+> across 71 cases. The binary kappa substantially exceeds the 0.75 publication threshold and
+> corresponds to the actual classification used in the governance analysis. The reliability
 > exercise validates the upstream water/not-water filter; validation of the downstream 21-category
 > governance scheme is noted as future work.
 

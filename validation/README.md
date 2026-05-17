@@ -31,8 +31,11 @@ residual from 89.2% → 8.3%. However:
 3. **The *aansluitplicht* confound:** A search for Dutch connection-obligation vocabulary in NWR
    returns 14 cases — all electricity/heat network, zero water/sanitation. This is an
    affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
-4. **Inter-coder reliability (May 2026):** Cohen's κ = 0.734 (95% CI [0.612, 0.847], n = 91);
-   binary WATER/NOT_WATER kappa (exclude-UNCERTAIN cases) κ = 0.932 (n = 60, 95% CI [0.829, 1.000]).
+4. **Inter-coder reliability (May 2026):** Cohen's κ = 0.568 (95% CI [0.436, 0.695], n = 91,
+   three-label). Binary WATER/NOT_WATER kappa (exclude-UNCERTAIN) κ = 0.932 (n = 59,
+   95% CI [0.830, 1.000]). Three-label gap driven by Brazil stratum: 19/20 Brazil cases coded
+   WATER by coder2 vs UNCERTAIN by coder1 (watershed-protection cases — methodological question,
+   not reliability failure). NL strata: 95.5% plain, 86.7% broad_water, 100% aansluiting.
    The reliability exercise validates the upstream water/not-water filter; validation of the
    downstream 21-category governance scheme is future work. See `kappa_results.json`.
 
