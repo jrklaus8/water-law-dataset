@@ -289,19 +289,77 @@ appropriate: the false-negative risk for the Administrative Ghost thesis is less
 0.21 % of the NWR bucket, and zero cases in the coded sample were connection-refusal or
 informal-settlement decisions.
 
-**Status of second-coder kappa:** A 91-decision kappa template (`coder2_labels_template.csv`)
-has been prepared for an independent second coder, with balanced labels across WATER /
-NOT_WATER / UNCERTAIN strata. Once a second coder returns labels, run:
-
-```bash
-python validation/kappa_calculator.py \
-    --coder1 validation/coder1_labels.csv \
-    --coder2 validation/coder2_labels.csv
-```
-
-For κ interpretation thresholds and reporting template see `second_coder_protocol.md`.
+**Limitation — single-coder ground truth:** The 207-decision precision/recall evaluation was
+coded exclusively by the author (coder1). The 91-case kappa exercise (§5.2) validates 91 of
+those 207 decisions against a second coder, but the remaining 116 decisions remain single-coder
+ground truth. This ceiling is acknowledged explicitly: the population-weighted precision of
+99.79 % rests on coder1 labels for the majority of the sample. A full independent second-coder
+pass would resolve this limitation.
 
 See `validation/second_coder_protocol.md` §6 for the full gold-standard sampling procedure.
+
+### 5.2 Inter-coder reliability — κ results and sensitivity analysis (May 2026)
+
+A 91-decision sub-sample was coded by a second independent coder using the same three-label
+scheme (WATER / NOT_WATER / UNCERTAIN). Results are in `validation/kappa_results.json`.
+
+**Primary kappa result (three-label scheme):**
+
+| Metric | Value |
+|---|---|
+| N cases | 91 |
+| Observed agreement | 82.4 % (75/91) |
+| Cohen's κ | **0.734** |
+| 95 % CI (bootstrap, 5,000 iterations) | [0.612, 0.847] |
+
+**Sensitivity analysis — three specifications:**
+
+| Specification | N | κ | 95 % CI | p_o |
+|---|---|---|---|---|
+| Three-label (WATER/NOT_WATER/UNCERTAIN) — full sample | 91 | **0.734** | [0.612, 0.847] | 82.4 % |
+| Exclude-UNCERTAIN: cases where *neither* coder said UNCERTAIN (binary WATER/NOT_WATER) | 60 | **0.932** | [0.829, 1.000] | 96.7 % |
+| Coder1-confident: cases where *coder1* gave a non-UNCERTAIN label | 63 | **0.847** | [0.713, 0.968] | 92.1 % |
+
+The three-label kappa (0.734) falls marginally below the conventional 0.75 publication threshold.
+The threshold gap is entirely attributable to the UNCERTAIN category: when cases where either
+coder expressed uncertainty are excluded, the binary WATER/NOT_WATER kappa rises to 0.932.
+This is the operationally relevant specification for the thesis, because the downstream
+governance analysis (§6–§7) uses only substantive WATER/NOT_WATER decisions — UNCERTAIN
+labels result in exclusion, not classification. Reporting both specifications is the most
+transparent approach.
+
+**Brazil stratum — coder calibration difference:** All 8 Brazil disagreements (of 20 Brazil
+cases) are coder1 = UNCERTAIN vs coder2 = substantive label (5× WATER, 3× NOT_WATER). No
+Brazil cases show coder1 giving a substantive label that coder2 disagreed with. The pattern
+is consistent with coder1 applying a stricter UNCERTAIN threshold on the Brazilian sub-corpus —
+likely because familiarity with the engine's taxonomic edge cases produced greater caution on
+ambiguous summaries. The binary collapse (Spec 2) resolves this, as these 8 cases are excluded
+from the binary specification. **For the methods note, this should be framed as a calibration
+difference rather than a reliability failure, and the binary kappa should be the headline
+number.**
+
+**What this kappa validates — and does not validate:** The reliability exercise uses three
+labels (WATER/NOT_WATER/UNCERTAIN) to validate the upstream filter: does the NWR classification
+correctly exclude non-water decisions? It does not validate the downstream 21-category governance
+scheme that generates the thesis-critical figures (tariff_dispute, connection_refusal,
+informal_settlement). Validation of the 21-category scheme is future work and the natural next
+step for a follow-up paper. This should be stated explicitly in the published methods section
+rather than left for reviewers to discover.
+
+**Recommended methods text (all three specifications):**
+
+> Inter-coder reliability was assessed on a 91-decision stratified sub-sample using a three-label
+> scheme (WATER / NOT_WATER / UNCERTAIN). Cohen's kappa for the three-label scheme was
+> κ = 0.734 (95 % CI: [0.612, 0.847]; observed agreement 82.4 %). Excluding cases where either
+> coder expressed uncertainty — the operational specification for downstream analysis, where
+> UNCERTAIN labels result in exclusion — the binary kappa was κ = 0.932 (n = 60, 95 % CI:
+> [0.829, 1.000]). The three-label kappa falls marginally below the conventional 0.75 threshold
+> because of borderline calls coded as UNCERTAIN; the binary kappa, which corresponds to the
+> actual classification used in the governance analysis, substantially exceeds it. The reliability
+> exercise validates the upstream water/not-water filter; validation of the downstream 21-category
+> governance scheme is noted as future work.
+
+See `second_coder_protocol.md` for the full protocol and interpretation thresholds.
 
 ---
 

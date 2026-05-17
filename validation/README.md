@@ -31,8 +31,10 @@ residual from 89.2% → 8.3%. However:
 3. **The *aansluitplicht* confound:** A search for Dutch connection-obligation vocabulary in NWR
    returns 14 cases — all electricity/heat network, zero water/sanitation. This is an
    affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
-4. **Inter-coder reliability (May 2026):** Cohen's κ = 0.734 (95% CI [0.622, 0.835], n = 91).
-   Zero disagreements on connection_refusal and informal_settlement labels. See `kappa_results.json`.
+4. **Inter-coder reliability (May 2026):** Cohen's κ = 0.734 (95% CI [0.612, 0.847], n = 91);
+   binary WATER/NOT_WATER kappa (exclude-UNCERTAIN cases) κ = 0.932 (n = 60, 95% CI [0.829, 1.000]).
+   The reliability exercise validates the upstream water/not-water filter; validation of the
+   downstream 21-category governance scheme is future work. See `kappa_results.json`.
 
 **Full analysis:** [`RESIDUAL_AUDIT.md`](RESIDUAL_AUDIT.md)
 

@@ -202,7 +202,7 @@ const doc = new Document({
       ...spacer(1),
       para([bold("Key results:")]),
       bullet("Population-weighted NWR filter precision: 99.79% (~141 false positives in 67,703 NWR)"),
-      bullet("Cohen's kappa: κ = 0.734 (95% CI [0.622, 0.835], n = 91); zero disagreements on thesis-critical labels (connection_refusal, informal_settlement)"),
+      bullet("Cohen's kappa (three-label): κ = 0.734 (95% CI [0.612, 0.847], n = 91); binary WATER/NOT_WATER kappa (exclude-UNCERTAIN): κ = 0.932 (n = 60). Validates upstream filter; downstream 21-category validation is future work."),
       bullet("Brazil informal settlement: 88 decisions, 0 user wins, 0 HR language — the starkest quantitative expression of the Administrative Ghost thesis"),
       bullet("Netherlands: 8 connection-refusal decisions of 68,654 total (0.012%); all 14 aansluitplicht NWR hits are electricity/heat, zero water"),
       ...spacer(1),
@@ -296,12 +296,12 @@ const doc = new Document({
         tableRow([["UNCERTAIN",2400,null],["17",1200,null],["3",1200,null],["11",1200,null],["0.85",1560,null],["0.61",1800,ORANGE]]),
       ]),
       ...spacer(1),
-      hdr("5.3  Interpretation", 2),
-      para(["κ = 0.734 falls in the 'moderate to substantial' range under Landis & Koch (1977). Two contextual qualifications are essential for the thesis defence:"]),
+      hdr("5.3  Interpretation and Scope", 2),
+      para(["κ = 0.734 falls in the 'moderate to substantial' range under Landis & Koch (1977). Three contextual points are essential for the thesis defence:"]),
       ...spacer(1),
-      bullet(bold("The disagreement is concentrated in UNCERTAIN cases.") + " Of the 16 disagreements (out of 91), the majority involve cases one coder labelled UNCERTAIN and the other labelled NOT_WATER or WATER. This is expected: UNCERTAIN is definitionally a borderline category, and disagreement here signals appropriate calibration, not classification failure. NOT_WATER precision = 0.85, recall = 1.00; WATER precision = 0.78, recall = 0.83 — both figures are consistent with substantial agreement."),
-      bullet(bold("Zero disagreements on thesis-critical labels.") + " The kappa calculator reports zero disagreements on connection_refusal and zero on informal_settlement. Since the entire Administrative Ghost argument turns on the rarity and near-invisibility of these case types, the fact that both coders independently agree on their identification is the most directly relevant reliability finding for the thesis."),
-      bullet("The 95% CI [0.622, 0.835] is wide because n = 91. A full second-coder pass on 200 decisions would tighten this to approximately [κ ±0.08]. The current CI overlaps the 0.75 threshold. The reported kappa is conservative."),
+      bullet(bold("The binary kappa substantially exceeds the 0.75 threshold.") + " Excluding cases where either coder expressed uncertainty (UNCERTAIN), the binary WATER/NOT_WATER kappa rises to κ = 0.932 (n = 60, 95% CI [0.829, 1.000]). This is the operationally relevant specification: downstream governance analysis uses only substantive labels — UNCERTAIN results in exclusion, not classification. The three-label kappa falls marginally below 0.75 exclusively because of borderline UNCERTAIN-category disagreements, which is the expected pattern."),
+      bullet(bold("Brazil disagreements reflect coder calibration, not classification failure.") + " All 8 Brazil disagreements (of 20 Brazil cases) are coder1 = UNCERTAIN vs coder2 = substantive label. No Brazil case shows coder1 giving a substantive label that coder2 disagreed with. This pattern is consistent with coder1 applying a stricter UNCERTAIN threshold on the home-jurisdiction sub-corpus. The binary collapse (Spec 2) resolves this, as these 8 cases are excluded. The appropriate framing is a calibration difference, not a reliability failure."),
+      bullet(bold("The reliability exercise validates the upstream filter only.") + " The kappa uses three labels (WATER / NOT_WATER / UNCERTAIN) to validate whether the NWR classification correctly excludes non-water decisions. It does not validate the downstream 21-category governance scheme that generates the thesis-critical figures (tariff_dispute, connection_refusal, informal_settlement). Validation of the 21-category scheme is future work and the natural next step for a follow-up paper."),
 
       // ══════════════════════════════════════════════════
       // AANSLUITPLICHT
