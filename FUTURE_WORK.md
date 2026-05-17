@@ -269,6 +269,89 @@ tariff sample for Ontario and improve the Canada/Netherlands comparison.
 
 ---
 
+### Priority 3A — A2AJ Canadian Legal Data as a Primary Data Source
+
+The most significant structural limitation of the Canada sub-dataset is text
+depth: 86.9% of the 3,218 CanLII records are title-only entries — the full
+decision text and summary were not available through the CanLII API at the
+time of collection. This means the jurimetric coding engine was applied to
+titles rather than substantive summaries, substantially limiting the
+reliability of the Canadian thematic classifications.
+
+A promising solution for future iterations is the **A2AJ Canadian Legal Data**
+project, maintained by Access to Algorithmic Justice (A2AJ), a research
+initiative co-hosted by York University's Osgoode Hall Law School and Toronto
+Metropolitan University's Lincoln Alexander School of Law, with funding from
+the Law Foundation of Ontario and the Social Sciences and Humanities Research
+Council of Canada and computational support from the Digital Research Alliance
+of Canada:
+
+> Sean Rehaag and Simon Wallace, 'A2AJ Canadian Legal Data' (2025)
+> \<https://github.com/a2aj-ca/canadian-legal-data\> accessed 17 May 2026.
+
+The project provides:
+
+- **Public API** — `https://github.com/a2aj-ca/a2aj-api-public`
+- **MCP server** (Model Context Protocol) — `https://mcp.a2aj.ca/mcp`,
+  enabling direct integration with AI-assisted research pipelines of the kind
+  used in this project
+- Structured access to Canadian legal decisions with richer text than CanLII's
+  summary-only API responses
+
+**Why this matters for the Legal Last Mile thesis:** The Canada arm of the MDSD
+is currently the weakest empirically. The 3,218 decisions are dominated by
+fisheries (5.0%) and riparian rights (3.4%) — resource-governance disputes
+rather than household-access disputes. Whether the absence of connection-refusal
+or informal-settlement cases from the Canadian record reflects genuine
+pre-litigation absorption (as in the Netherlands) or simply incomplete data
+collection cannot be determined without full-text retrieval. The A2AJ dataset
+and API would allow the water-vocabulary filter and 21-category coding engine to
+be applied to full decision texts rather than titles, making the Canadian arm
+meaningfully comparable to Brazil and the Netherlands.
+
+**Practical integration path:**
+
+```python
+# Illustrative — check a2aj-api-public for current authentication and endpoint docs
+import requests
+
+A2AJ_BASE = "https://api.a2aj.ca"  # confirm current endpoint from repo
+
+def query_a2aj(query: str, jurisdiction: str = "ON", date_from: str = "2016-01-01") -> list:
+    """Query A2AJ Canadian Legal Data API for water-law decisions."""
+    params = {
+        "q": query,
+        "jurisdiction": jurisdiction,
+        "date_from": date_from,
+        "limit": 100,
+    }
+    r = requests.get(f"{A2AJ_BASE}/search", params=params, timeout=30)
+    r.raise_for_status()
+    return r.json().get("results", [])
+
+# Key water-law search terms for Ontario
+WATER_QUERIES = [
+    "water connection refuse",
+    "Safe Drinking Water Act",
+    "Ontario Water Resources Act",
+    "municipal water service disconnection",
+    "Indigenous water rights",
+    "Environmental Review Tribunal water",
+]
+```
+
+The A2AJ MCP server additionally enables integration with Claude-assisted
+coding workflows directly, without intermediate API calls — the same pattern
+used by the `research-assistant/` tool in this repository.
+
+**Citation for dataset use:** If the A2AJ dataset is used to extend or replicate
+this research, cite as:
+
+> Sean Rehaag and Simon Wallace, 'A2AJ Canadian Legal Data' (2025)
+> \<https://github.com/a2aj-ca/canadian-legal-data\> accessed [date].
+
+---
+
 ## Contributing
 
 If you extend the dataset with outcome coding or additional cases, please:

@@ -90,8 +90,10 @@ TEMAS_NL = {
 }
 ```
 
-### Canada / Ontario (to be applied when CanLII data available)
-Key themes to look for: connection refusal, Indigenous water rights, municipal utility disconnection, environmental tribunal decisions, Safe Drinking Water Act (Ontario), Ontario Water Resources Act.
+### Canada / Ontario (applied — CanLII API + Legal Data Hunter, v0.3.0)
+Key themes identified in the 3,218-decision sub-dataset: fisheries and riparian rights (federal resource governance), municipal water service, Safe Drinking Water Act (Ontario), Ontario Water Resources Act. Connection-refusal cases are absent from the coded record — whether this reflects pre-litigation absorption or incomplete text retrieval (86.9% of records are title-only) cannot be determined from current data.
+
+**Future data source:** The **A2AJ Canadian Legal Data** project (Sean Rehaag and Simon Wallace, 2025, \<https://github.com/a2aj-ca/canadian-legal-data\>; API: \<https://github.com/a2aj-ca/a2aj-api-public\>; MCP server: \<https://mcp.a2aj.ca/mcp\>), maintained by Access to Algorithmic Justice (A2AJ) at York University's Osgoode Hall Law School and Toronto Metropolitan University's Lincoln Alexander School of Law (funded by the Law Foundation of Ontario and SSHRC), would allow the 21-category coding engine to be applied to full Canadian decision texts rather than titles. This is the recommended first step for any researcher seeking to extend the Canadian arm of the MDSD into household-access disputes. See `FUTURE_WORK.md` Priority 3A for full implementation notes.
 
 ---
 

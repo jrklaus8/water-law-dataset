@@ -448,7 +448,20 @@ where rights-based framing would be most legally relevant.
 2. **Netherlands outcome coding:** 68,654 NL decisions carry no win/loss outcome data.
    Full-text retrieval from Rechtspraak.nl (see `FUTURE_WORK.md` Priority 1) is feasible.
 
-3. **Canada text depth:** 86.9 % of Canadian decisions are title-only CanLII records.
+3. **Canada text depth:** 86.9 % of Canadian decisions are title-only CanLII records. The
+   jurimetric coding engine was therefore applied to titles rather than substantive summaries,
+   substantially limiting the reliability of Canadian thematic classifications and making it
+   impossible to distinguish genuine absence of connection-refusal cases from false negatives
+   caused by insufficient text. The **A2AJ Canadian Legal Data** project — Sean Rehaag and
+   Simon Wallace, 'A2AJ Canadian Legal Data' (2025)
+   \<https://github.com/a2aj-ca/canadian-legal-data\>; API:
+   \<https://github.com/a2aj-ca/a2aj-api-public\>; MCP: \<https://mcp.a2aj.ca/mcp\>;
+   maintained by Access to Algorithmic Justice (A2AJ), co-hosted by York University's Osgoode
+   Hall Law School and Toronto Metropolitan University's Lincoln Alexander School of Law,
+   supported by the Law Foundation of Ontario and the Social Sciences and Humanities Research
+   Council of Canada — offers full-text retrieval and a structured API that would allow the
+   coding engine to be applied to complete decision texts. This is the recommended first
+   extension for future iterations of the Canada arm. See `FUTURE_WORK.md` Priority 3A.
 
 4. **Gold-standard precision/recall:** ✅ **Computed (May 2026).** Population-weighted
    precision = 99.79 %; ~141 estimated false positives in full NWR. See §5.1 above and
