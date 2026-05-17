@@ -481,26 +481,73 @@ GOV_CATS = [
 ]
 
 def code_governance(text):
-    # Pre-filter: NL immigration/asylum false positives.
-    # The RvS handles both immigration appeals and water/planning appeals;
-    # if a case is about immigration with no water-infrastructure content,
-    # it is a false positive from the broad Rechtspraak keyword search.
-    _IMMIGRATION_RE = re.compile(
-        r'vreemdelingenrecht|verblijfsvergunning|asielverzoek|asielzoeker'
-        r'|ongewenstverklaring|uitzetting.*vreemdeling|vreemdeling.*uitzetting'
-        r'|asielrecht|mvv\b|verblijfsrecht',
-        re.I
-    )
+    # ── Water core vocabulary ─────────────────────────────────────────────────
+    # Used by two filters below. Must contain at least one substantive
+    # water-law term to be treated as a genuine water case.
     _WATER_CORE_RE = re.compile(
-        r'\bwater(?:schap|leiding|kering|winning|onttrekking|toets|berging|peil|beheer)?\b'
+        r'\bwater(?:schap|leiding|kering|winning|onttrekking|toets|berging|peil'
+        r'|beheer|overlast|schade|staat|taak|gang|werk)?\b'
         r'|\bdrinkwater\b|\bgrondwater\b|\briolering\b|\bwateroverlast\b'
-        r'|\b[aáàâã]gua\b|\bfornecimento\b|\bsaneamento\b|\bcaesb\b|\bsabesp\b'
-        r'|\beau\b|\bhydraulic\b|\baquifer\b|\birrigat\b|\bwetland\b',
+        r'|\bwaterschade\b|\bdijk\b|\bkade\b|\bpeilbesluit\b|\bwatergang\b'
+        r'|\b[aáàâã]gua\b|\bfornecimento\b|\bsaneamento\b'
+        r'|\bcaesb\b|\bsabesp\b|\bcasan\b|\bcaema\b|\bcagece\b'
+        r'|\beau\b|\bhydraulic\b|\baquifer\b|\birrigat\b|\bwetland\b'
+        r'|\bdrinkbaar\b|\bwaterkering\b',
         re.I
     )
-    if _IMMIGRATION_RE.search(text) and not _WATER_CORE_RE.search(text):
+
+    # ── Broad false-positive filter ───────────────────────────────────────────
+    # Any decision with NO water core vocabulary in its searchable text is
+    # almost certainly a false positive from the broad keyword scrape and
+    # should not be classified as a water-law case at all.
+    # Validated by residual audit (validation/RESIDUAL_AUDIT.md):
+    # 97.9% of the other_water residual had no water vocabulary; of the
+    # Netherlands residual 99.3% had none. This filter reclassifies 56,488
+    # decisions to not_water_related.
+    if not _WATER_CORE_RE.search(text):
         return 'not_water_related'
 
+    # ── Brazil rescue patterns ────────────────────────────────────────────────
+    # Patterns for cases confirmed by residual audit to be genuine water
+    # disputes that the main GOV_CATS regex missed.
+
+    # Tariff rescue: debt declaratory actions and overcharge claims with
+    # CAESB/CASAN/SABESP that don't contain the standard billing keywords.
+    _TARIFF_RESCUE = re.compile(
+        r'(?:d[eé]bito|cobran[çc]a|fatura).*?(?:caesb|sabesp|casan|caema|cagece)'
+        r'|(?:caesb|sabesp|casan|caema|cagece).*?(?:d[eé]bito|cobran[çc]a|fatura)'
+        r'|inexist[eê]ncia.*?d[eé]bito.*?[aáàâã]gua'
+        r'|excesso.*?cobran[çc]a.*?faturas.*?[aáàâã]gua'
+        r'|precatório.*?(?:caesb|sabesp|casan)',
+        re.I
+    )
+
+    # Connection rescue: obligation-to-supply framing without "recusa/corte/suspensão"
+    _CONNECTION_RESCUE = re.compile(
+        r'obriga[çc][aã]o de fazer.*?abastecimento.*?[aáàâã]gua'
+        r'|abastecimento.*?[aáàâã]gua.*?ausên'
+        r'|implanta[çc][aã]o.*?rede.*?[aáàâã]gua'
+        r'|extens[aã]o.*?rede.*?(?:[aáàâã]gua|saneamento)'
+        r'|acesso.*?rede.*?[aáàâã]gua',
+        re.I
+    )
+
+    # Pipe damage rescue: damage claims where "água" and "dano" co-occur without
+    # the standard "vazamento/ruptura/rompimento" keyword.
+    _PIPE_RESCUE = re.compile(
+        r'dano.*?[aáàâã]gua.*?(?:infiltra[çc][aã]o|transbordamento|afundamento)'
+        r'|[aáàâã]gua.*?dano.*?(?:calçada|m[uú]ro|piso|im[oó]vel|propriedade)',
+        re.I
+    )
+
+    if _TARIFF_RESCUE.search(text):
+        return 'tariff_dispute'
+    if _CONNECTION_RESCUE.search(text):
+        return 'connection_refusal'
+    if _PIPE_RESCUE.search(text):
+        return 'pipe_leak_damage'
+
+    # ── Main category matching ─────────────────────────────────────────────────
     for cat, patterns in GOV_CATS:
         for p in patterns:
             if re.search(p, text, re.I):
