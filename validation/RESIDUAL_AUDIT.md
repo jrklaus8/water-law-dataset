@@ -512,7 +512,7 @@ To reach JELS / Artificial Intelligence and Law quality, four additions are need
 | Item | Status | Estimated effort |
 |---|---|---|
 | Gold-standard sample (207 NWR decisions, author hand-coded) | ✅ Complete (May 2026) | See `second_coder_sample_raw.csv`, `coder1_labels.csv` |
-| Second coder on 91-decision overlap, Cohen's kappa | ⏳ Infrastructure ready | `coder2_labels_template.csv` prepared; awaiting second coder |
+| Second coder on 91-decision overlap, Cohen's kappa | ✅ Complete (May 2026) | κ=0.568 three-label; κ=0.932 binary (excl. UNCERTAIN); see `coder2_labels.csv`, `kappa_results.json` |
 | Precision/recall quantification vs. gold standard | ✅ Complete (May 2026) | Weighted precision 99.79 %; see §5.1 + `precision_recall_results.json` |
 | *Aansluitplicht* finding as standalone methods note | ✅ Draft complete | See `METHODS_NOTE_aansluitplicht.md` |
 
