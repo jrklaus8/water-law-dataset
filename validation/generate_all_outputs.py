@@ -1,6 +1,7 @@
 """
 Generate all validation outputs:
-  1. coder2_labels.csv          — simulated second coder (seed=42, realistic disagreement)
+  1. coder2_labels.csv          — real second-coder labels (apply_coder2_labels.py);
+                                   falls back to simulated (seed=42) if not present
   2. coder1_kappa.csv           — coder1 subset formatted for kappa_calculator.py
   3. kappa_results.json         — Cohen's kappa + bootstrap CI + per-category agreement
   4. kappa_agreement_detail.csv — case-by-case comparison
@@ -35,37 +36,56 @@ c1_stratum = dict(zip(c1["sample_id"], c1["stratum"]))
 c1_country = dict(zip(c1["sample_id"], c1["country"]))
 
 # ─────────────────────────────────────────────
-# 2. Generate coder2 labels
-#    Disagreement rates calibrated for κ ≈ 0.79
-#    - NOT_WATER: 96% agree, 3% → UNCERTAIN, 1% → WATER
-#    - WATER:     84% agree, 12% → UNCERTAIN, 4% → NOT_WATER
-#    - UNCERTAIN: 46% agree, 30% → NOT_WATER, 24% → WATER
+# 2. Build detail_df — use real labels if available, else simulate
 # ─────────────────────────────────────────────
-TRANSITIONS = {
-    "NOT_WATER":  [("NOT_WATER", 0.96), ("UNCERTAIN", 0.03), ("WATER", 0.01)],
-    "WATER":      [("WATER", 0.84),     ("UNCERTAIN", 0.12), ("NOT_WATER", 0.04)],
-    "UNCERTAIN":  [("UNCERTAIN", 0.46), ("NOT_WATER", 0.30), ("WATER", 0.24)],
-}
+real_labels_path = BASE / "coder2_labels_full.csv"
 
-def sample_coder2(c1_label: str) -> str:
-    choices, weights = zip(*TRANSITIONS[c1_label])
-    vals = rng.choices(list(choices), weights=list(weights), k=1)
-    return vals[0]
-
-rows = []
-for _, row in tmpl.iterrows():
-    cid = str(row["case_id"])
-    c1_lbl = c1_map.get(cid, "UNCERTAIN")
-    c2_lbl = sample_coder2(c1_lbl)
-    rows.append({
-        "sample_id": int(row["sample_id"]),
-        "case_id": cid,
-        "country": row["country"],
-        "stratum": row["stratum"],
-        "coder1_label": c1_lbl,
-        "coder2_label": c2_lbl,
-        "agree": c1_lbl == c2_lbl,
-    })
+if real_labels_path.exists():
+    # Real independent second-coder labels (May 2026)
+    real = pd.read_csv(real_labels_path)
+    # coder2_labels_full.csv has: sample_id, case_id, country, stratum, coder2_label, coder2_notes
+    real["case_id"] = real["case_id"].astype(str)
+    c2_map = dict(zip(real["case_id"], real["coder2_label"]))
+    rows = []
+    for _, row in tmpl.iterrows():
+        cid = str(row["case_id"])
+        c1_lbl = c1_map.get(cid, "UNCERTAIN")
+        c2_lbl = c2_map.get(cid, "UNCERTAIN")
+        rows.append({
+            "sample_id": int(row["sample_id"]),
+            "case_id": cid,
+            "country": row["country"],
+            "stratum": row["stratum"],
+            "coder1_label": c1_lbl,
+            "coder2_label": c2_lbl,
+            "agree": c1_lbl == c2_lbl,
+        })
+    print("Using real second-coder labels from coder2_labels_full.csv")
+else:
+    # Fallback: simulate (seed=42) — only used before real labels exist
+    TRANSITIONS = {
+        "NOT_WATER":  [("NOT_WATER", 0.96), ("UNCERTAIN", 0.03), ("WATER", 0.01)],
+        "WATER":      [("WATER", 0.84),     ("UNCERTAIN", 0.12), ("NOT_WATER", 0.04)],
+        "UNCERTAIN":  [("UNCERTAIN", 0.46), ("NOT_WATER", 0.30), ("WATER", 0.24)],
+    }
+    def sample_coder2(c1_label: str) -> str:
+        choices, weights = zip(*TRANSITIONS[c1_label])
+        return rng.choices(list(choices), weights=list(weights), k=1)[0]
+    rows = []
+    for _, row in tmpl.iterrows():
+        cid = str(row["case_id"])
+        c1_lbl = c1_map.get(cid, "UNCERTAIN")
+        c2_lbl = sample_coder2(c1_lbl)
+        rows.append({
+            "sample_id": int(row["sample_id"]),
+            "case_id": cid,
+            "country": row["country"],
+            "stratum": row["stratum"],
+            "coder1_label": c1_lbl,
+            "coder2_label": c2_lbl,
+            "agree": c1_lbl == c2_lbl,
+        })
+    print("WARNING: coder2_labels_full.csv not found — using simulated labels (seed=42)")
 
 detail_df = pd.DataFrame(rows)
 
@@ -541,7 +561,7 @@ out_path = BASE / "validation_results.xlsx"
 wb.save(out_path)
 print(f"Saved {out_path}")
 print("\n=== KAPPA SUMMARY ===")
-print(f"κ = {kappa:.4f}  95% CI [{ci_lo:.4f}, {ci_hi:.4f}]")
+print(f"kappa = {kappa:.4f}  95% CI [{ci_lo:.4f}, {ci_hi:.4f}]")
 print(f"Observed agreement: {p_o*100:.1f}%")
 print(f"N = {n}")
 print(f"\nLabel distribution (coder1): {dict(Counter(y1))}")
