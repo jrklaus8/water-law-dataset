@@ -221,15 +221,16 @@ Also archived at:
 
 ## AI Disclosure
 
-This dataset was built with the assistance of **Claude** (Anthropic), an AI assistant. Specifically, Claude assisted with:
+This dataset was built with the assistance of **Claude** (Anthropic) and **Antigravity** (Google DeepMind), which served as AI assistants. Specifically, they assisted with:
 
-- **Scraper development** — writing and debugging the web scrapers for Brazilian state courts (TJDFT, TJRJ, and others), CanLII (Canada), and Rechtspraak.nl (Netherlands), including handling authentication challenges, pagination logic, and anti-scraping measures
-- **Data pipeline** — developing the merge, deduplication, and normalization scripts (`merge_national.py`, `merge_all_countries.py`)
-- **Jurimetric coding engine** — designing and implementing the regex-based coding engine (`jurimetric_coding.py`) for all seven variables across four languages (Portuguese, English, Dutch, French)
-- **Repository and deposit workflows** — automating deposits to Zenodo, Harvard Dataverse, DANS, and OSF via their respective APIs
-- **Quality control** — identifying and filing issues with upstream legal data sources (worldwidelaw/legal-sources issues #74–77)
+- **Scraper development** — writing and debugging the web scrapers for Brazilian state courts (TJDFT, TJRJ, and others), CanLII (Canada), and Rechtspraak.nl (Netherlands), including handling authentication challenges, pagination logic, and anti-scraping measures (Claude)
+- **Data pipeline** — developing the merge, deduplication, and normalization scripts (`merge_national.py`, `merge_all_countries.py`) (Claude)
+- **Jurimetric coding engine** — designing and implementing the regex-based coding engine (`jurimetric_coding.py`) for all seven variables across four languages (Portuguese, English, Dutch, French) (Claude)
+- **Repository and deposit workflows** — automating deposits to Zenodo, Harvard Dataverse, DANS, and OSF via their respective APIs (Claude)
+- **Quality control** — identifying and filing issues with upstream legal data sources (worldwidelaw/legal-sources issues #74–77) (Claude)
+- **Dataset Consistency** — performing an audit of possible contradictions and stale data in the repository, and correcting documentation discrepancies (Antigravity)
 
-All research design decisions, methodological choices, variable definitions, and intellectual interpretations are those of the human researcher (Claudio Klaus Junior). Claude served as a technical research infrastructure tool throughout the data collection phase.
+All research design decisions, methodological choices, variable definitions, and intellectual interpretations are those of the human researcher (Claudio Klaus Junior). Claude and Antigravity served as technical research infrastructure tools throughout the data collection and auditing phases.
 
 ---
 

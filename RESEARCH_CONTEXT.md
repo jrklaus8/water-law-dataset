@@ -37,25 +37,22 @@ Individuals physically present and need-bearing but legally invisible to the adm
 
 ## The Dataset as Empirical Instrument
 
-This repository contains the scrapers and data for the jurimetric backbone of the preliminary research: **12,310+ judicial decisions** from Brazil and the Netherlands (Canada in progress), coded via regex on decision summaries to test the Legal Last Mile theory.
+This repository contains the scrapers and data for the jurimetric backbone of the preliminary research: **83,596 judicial decisions** from Brazil, the Netherlands, and Canada, coded via regex on decision summaries to test the Legal Last Mile theory.
 
-### Published Findings (2026 Conference)
+### Preliminary Findings
 
-**Brazil (11,524 decisions):**
+**Brazil (11,724 decisions):**
 
 | Theme | Share |
 |---|---|
-| Tariffs / billing disputes | 59% |
-| Moral and material damages | 41% |
-| Service interruptions | 31% |
-| Connection refusal | 9% |
-| Irregular settlements / favelas | 1.3% |
-| Urgency injunctions granted | 29% |
+| Tariffs / billing disputes | 48.52% |
+| Connection refusal | 10.88% |
+| Irregular settlements / favelas | 0.75% |
 
-Courts process the *symptoms* of exclusion; the root matrix of ineligibility is almost never litigated. This validates the Administrative Ghost: the 1.3% irregular settlement rate and 9% connection-refusal rate reveal the tip of a much larger excluded population that never reaches courts at all.
+Courts process the *symptoms* of exclusion; the root matrix of ineligibility is almost never litigated. This validates the Administrative Ghost: the 0.75% irregular settlement rate and 10.88% connection-refusal rate reveal the tip of a much larger excluded population that never reaches courts at all.
 
-**Netherlands (786 decisions, Raad van State):**  
-The RvS concentrates on macro-level permits (zoning, construction, water management). Household-level connection disputes are virtually absent — confirming the pre-litigation absorption model.
+**Netherlands (68,654 decisions):**  
+The vast majority of cases (98.56%) were absorbed before litigation. The court concentrates on macro-level permits (zoning, construction, water management), with only 989 genuine water decisions and merely 8 connection refusal cases (0.012%). Household-level connection disputes are virtually absent — confirming the pre-litigation absorption model.
 
 ---
 
@@ -139,7 +136,7 @@ Unified schema across all jurisdictions (`water_law_global.csv`):
 
 ## AI Methodology Statement (final — for preliminary research)
 
-This study integrates Claude (Anthropic), a large language model, as a technical tool within the empirical data collection and processing pipeline. Its role was clearly defined and limited to verifiable computational tasks, while all substantive legal analysis remained the responsibility of the author. The purpose of using AI in this context was to enable the construction and handling of a large, cross-jurisdictional dataset in a consistent and replicable manner.
+This study integrates Claude (Anthropic) and Antigravity (Google DeepMind) as technical tools within the empirical data collection and processing pipeline. Their roles were clearly defined and limited to verifiable computational tasks, while all substantive legal analysis remained the responsibility of the author. The purpose of using AI in this context was to enable the construction and handling of a large, cross-jurisdictional dataset in a consistent and replicable manner. Antigravity additionally performed a comprehensive repository audit to identify and resolve data contradictions, maintaining dataset consistency.
 
 Claude was primarily used to support the design, implementation, debugging, and iterative refinement of Python-based web scrapers used to collect judicial decisions across Brazil, the Netherlands, and Canada. In Brazil, data collection required interaction with eight State Courts of Justice operating on different technological infrastructures. These included ESAJ systems (São Paulo, Santa Catarina, Acre, and Roraima), Elasticsearch and Angular-based systems (TJDFT), ASP.NET WebForms (TJRJ), PHP and Solr architectures (TJTO), and Rails-based platforms (TJPI). Because documentation was often incomplete or inconsistent, each system required reverse engineering of API endpoints, request parameters, and pagination structures. Across these eight courts, the scraping process produced a total of approximately 8,368 judicial decisions, all related to water law disputes within the defined temporal scope of the study.
 
