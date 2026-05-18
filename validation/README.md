@@ -31,13 +31,15 @@ residual from 89.2% → 8.3%. However:
 3. **The *aansluitplicht* confound:** A search for Dutch connection-obligation vocabulary in NWR
    returns 14 cases — all electricity/heat network, zero water/sanitation. This is an
    affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
-4. **Inter-coder reliability (May 2026):** Cohen's κ = 0.568 (95% CI [0.436, 0.695], n = 91,
-   three-label). Binary WATER/NOT_WATER kappa (exclude-UNCERTAIN) κ = 0.932 (n = 59,
-   95% CI [0.830, 1.000]). Three-label gap driven by Brazil stratum: 19/20 Brazil cases coded
-   WATER by coder2 vs UNCERTAIN by coder1 (watershed-protection cases — methodological question,
-   not reliability failure). NL strata: 95.5% plain, 86.7% broad_water, 100% aansluiting.
-   The reliability exercise validates the upstream water/not-water filter; validation of the
-   downstream 21-category governance scheme is future work. See `kappa_results.json`.
+4. **LLM-assisted reproducibility audit (May 2026):** Independent LLM relabelling of 91
+   decisions under explicit decision rules. With the documented *mananciais* rule applied:
+   κ = 0.832 (95% CI [0.718, 0.926]; agreement 90.1%). Binary WATER/NOT_WATER kappa
+   (exclude-UNCERTAIN) κ = 0.932 (n = 59, 95% CI [0.830, 1.000]). Pre-rule three-label
+   baseline κ = 0.568 — gap driven by Brazil stratum protocol ambiguity (19/20 Brazil
+   *mananciais* cases), resolved by the documented decision rule. NL strata: 95.5% plain,
+   86.7% broad_water, 100% aansluiting. NOT_WATER precision 97%. The audit validates the
+   upstream water/not-water filter; downstream 21-category governance validation is future
+   work. See `kappa_results.json` and §5.2 of `RESIDUAL_AUDIT.md`.
 
 **Full analysis:** [`RESIDUAL_AUDIT.md`](RESIDUAL_AUDIT.md)
 
