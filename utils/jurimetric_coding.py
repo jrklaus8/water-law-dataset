@@ -220,7 +220,8 @@ GOV_CATS = [
     ]),
     # ── Informal settlement / irregular access ───────────────────────────────
     ('informal_settlement', [
-        r'\bassentamento.*?irregular\b', r'\bloteamento.*?irregular\b',
+        r'\bassentamento.*?irregular\b', r'\bassentamento.*?informal\b',
+        r'\bloteamento.*?irregular\b',
         r'\b[aáàâã]rea.*?irregular.*?[aáàâã]gua\b',
         r'\b[aáàâã]gua.*?[aáàâã]rea.*?irregular\b',
         r'\bocupa[çc][aã]o.*?irregular.*?[aáàâã]gua\b',
