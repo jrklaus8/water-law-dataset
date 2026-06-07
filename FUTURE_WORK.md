@@ -29,13 +29,43 @@ Without outcome coding, none of these can be distinguished empirically.
 
 ---
 
+### Ready-to-Run Implementation
+
+`utils/nl_outcome_coding.py` consolidates Steps 1–5 below into a single
+checkpointed pipeline:
+
+```bash
+export DATA_DIR=./data
+export ANTHROPIC_API_KEY=...        # only needed for the LLM fallback pass
+python utils/nl_outcome_coding.py [--skip-llm] [--limit N]
+```
+
+It retrieves each NL decision's XML, extracts the Beslissing section, applies
+the regex classifier, falls back to an LLM for UNCLASSIFIED residue, and
+writes the resulting `outcome` column back into `water_law_global_coded.csv`.
+Progress checkpoints to `<DATA_DIR>/nl_outcome_TEMP.json` every 250 ECLIs, so
+the ~2-hour run is safe to interrupt and resume. `--limit N` runs a smoke test
+on the first *N* ECLIs before committing to the full retrieval.
+
+**One schema correction worth noting:** this section originally assumed a
+dedicated `ecli` column. The actual `merge_national.py` schema
+(`normalize_netherlands`) stores the ECLI in `case_id` (and duplicates it into
+`title`) — there is no separate `ecli` column. `nl_outcome_coding.py` checks
+`ecli`, then `case_id`, then `title`, so it works against the schema that
+actually exists; if you add a dedicated `ecli` column upstream, it will be
+picked up automatically.
+
 ### How to Add Outcome Coding — Step by Step
+
+The steps below are the methodology `nl_outcome_coding.py` implements; they
+remain here as a reference for adapting the approach (e.g. to a different
+court system or a partial re-run).
 
 #### Step 1 — Retrieve full decision texts
 
 Every Dutch decision has an ECLI identifier already present in the dataset
-(`ecli` column). The rechtspraak.nl API returns the full XML decision text
-for any ECLI:
+(`ecli`/`case_id` column — see the schema note above). The rechtspraak.nl API
+returns the full XML decision text for any ECLI:
 
 ```python
 import requests
@@ -465,6 +495,63 @@ in hand. Flag any newly-matched cases for a manual spot-check (a 10% sample is
 consistent with the validation protocol already used for the
 `connection_refusal` category — see `validation/second_coder_protocol.md`).
 
+### Partial Real-Data Verification Already Done
+
+A spot-check against ~315 real TJSP ementas (pulled directly from the live
+`water_law_global` / `water_law_global_coded` sheets) found:
+
+- The new REURB patterns surface **genuinely new** `informal_settlement`
+  matches that the pre-782c409 pattern set missed — e.g. two real ementas
+  matched only by the new `loteamento.*?clandestino\b` pattern (one involving
+  SABESP infrastructure obligations toward a "loteamento clandestino", the
+  other an indemnity claim over land "invadido por terceiros e transformado em
+  loteamento clandestino").
+- Re-coding the **same** 124 already-coded real rows with the current engine
+  (built with the exact `_text` concatenation `code_governance` uses — all of
+  `case_type`/`legal_area`/`court_name`/`chamber`/`summary`, not just the
+  ementa) changes only 8/124 (6.5%) labels, all between adjacent categories
+  (`tariff_dispute` ↔ `connection_refusal` ↔ `pipe_leak_damage`). The engine
+  is broadly stable release-to-release; the REURB patterns are additive, not
+  disruptive.
+
+### A Second, Related Issue Found During This Check: Category-Priority Shadowing
+
+One of those 124 real rows is a textbook informal-settlement water-access
+case:
+
+> *"...IMPLANTAÇÃO DE REDES DE ABASTECIMENTO DE ÁGUA E DE CAPTAÇÃO DE ESGOTO.
+> **Loteamento irregular** pendente de regularização. Moradores que utilizam
+> **água imprópria** para o consumo, ocasionando doenças de pele, diarreia e
+> vômitos..."*
+> — (residents of an irregular subdivision drinking unsafe water, causing skin
+> disease, diarrhoea and vomiting)
+
+This ementa matches `informal_settlement` (`loteamento.*?irregular`) **and**
+`water_quality` (`água.*?imprópria`) — exactly the categories you would want
+it coded as. But `code_governance` returns the *first* matching category in
+`GOV_CATS` order, and `tariff_dispute` is checked first and matches via its
+broad, context-free `consumo.*?água` / `água.*?consum\w+` patterns (added to
+catch billing-chamber language). The case is coded `tariff_dispute` instead.
+
+**This is likely not an isolated case.** Brazilian informal-settlement water
+disputes routinely co-occur with consumption/billing vocabulary (residents are
+often suing *over* irregular billing for substandard service), so the current
+`GOV_CATS` order may be systematically routing a slice of genuine
+`informal_settlement`/`water_quality` cases into `tariff_dispute`.
+
+**Recommended fix — needs a validation-aware human decision, not a
+unilateral reorder:** either (a) move `informal_settlement` and
+`water_quality` ahead of `tariff_dispute` in `GOV_CATS`, or (b) tighten
+`tariff_dispute`'s `consumo`/`fatura`/`leitura` patterns to require explicit
+billing-dispute context (e.g. `cobrança`, `débito`, `repetição de indébito`)
+so they stop firing on consumption mentions inside substantively different
+disputes. Either change would shift `governance_cat` for a non-trivial slice
+of the ~12,310-row corpus and would need to be re-validated against the
+existing gold-standard sample (`validation/coder1_labels.csv` /
+`coder2_labels_full.csv`, kappa = 0.832) before being treated as authoritative
+— a reorder that improves `informal_settlement` recall could simultaneously
+degrade validated `tariff_dispute` precision.
+
 ---
 
 ## Priority 6 — Pre/Post Marco Legal do Saneamento Analysis (Lei 14.026/2020)
@@ -495,21 +582,25 @@ silently mis-parses the ISO rows.
 
 ### What's Left
 
-Re-run the engine to populate the column, then cross-tabulate
-`connection_refusal` (and `informal_settlement`) rates against
-`post_marco_legal` for Brazil:
+Re-run `utils/jurimetric_coding.py` to populate the column (it now does so
+automatically), then run the cross-tabulation:
 
-```python
-import pandas as pd
-
-br = df[df['country'].isin(['Brazil', 'BR'])].dropna(subset=['post_marco_legal'])
-xt = (
-    br.groupby('post_marco_legal')['governance_cat']
-      .value_counts(normalize=True)
-      .unstack(fill_value=0)
-)
-print(xt[['connection_refusal', 'informal_settlement']])
+```bash
+export DATA_DIR=./data
+python utils/post_marco_legal_analysis.py
 ```
+
+`utils/post_marco_legal_analysis.py` filters to Brazilian rows with a
+parseable decision date, prints the `governance_cat` distribution split
+pre/post 2020-07-15, the percentage-point shift for the categories most
+relevant to the gatekeeper thesis (`connection_refusal`,
+`informal_settlement`, `tariff_dispute`, `sanitation_sewage`,
+`water_infrastructure_contract`), and — if `win_loss` is coded — the
+user-win-rate shift for the two "critical rows" this section flags
+(`connection_refusal`, `informal_settlement`). A flat-or-rising
+connection-refusal/informal-settlement share *and* a falling user-win-rate
+after the reform date would be direct empirical evidence for the gatekeeper
+thesis; the reform was explicitly framed as a push toward *universalização*.
 
 **Targeted search terms for post-reform-specific cases** (useful when
 re-querying TJ portals for cases the original keyword list may have missed):
