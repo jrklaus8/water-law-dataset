@@ -12,6 +12,9 @@ Variables coded per case:
   indigenous_water  — Indigenous / First Nations water rights (Canada/intl)
   informal_settle   — irregular settlement / informal housing context
   public_interest   — public interest / collective action framing
+  post_marco_legal  — Brazil only: 1 if decided on/after 15 Jul 2020
+                      (Lei 14.026/2020, Marco Legal do Saneamento), 0 if
+                      before, None for non-Brazilian rows or unparseable dates
 
 All patterns are applied to the combined text field (ementa/title/snippet).
 Each variable is a binary flag (1/0) or categorical string.
@@ -227,6 +230,18 @@ GOV_CATS = [
         r'\bsquatter.*?water\b',
         r'\bunauthori[sz]ed.*?water\b',
         r'\billegal.*?connection.*?water\b',
+        # Post-Lei 13.465/2017 (REURB — Regularização Fundiária Urbana)
+        # terminology: decisions from 2017 onward increasingly use these terms
+        # in place of the pre-REURB vocabulary above.
+        r'\bn[uú]cleo[s]? urbano[s]? informal(?:is)?\b',
+        r'\breurb\b', r'\bregulariza[çc][aã]o fundi[aá]ria urbana\b',
+        r'\bregulariza[çc][aã]o fundi[aá]ria.*?[aáàâã]gua\b',
+        r'\b[aáàâã]gua.*?regulariza[çc][aã]o fundi[aá]ria\b',
+        r'\bparcelamento.*?clandestino\b', r'\bloteamento.*?clandestino\b',
+        r'\b[aáàâã]rea.*?subnormal.*?[aáàâã]gua\b',
+        r'\b[aáàâã]gua.*?[aáàâã]rea.*?subnormal\b',
+        r'\bmoradia.*?irregular.*?saneamento\b',
+        r'\bsaneamento.*?moradia.*?irregular\b',
     ]),
     # ── Groundwater / aquifer ────────────────────────────────────────────────
     ('groundwater', [
@@ -770,6 +785,47 @@ def code_public(text):
     return int(any(r.search(text) for r in PUB_RE))
 
 # ════════════════════════════════════════════════════════════════════════════════
+# 8. POST-MARCO LEGAL DO SANEAMENTO FLAG (Brazil only — Lei 14.026/2020)
+# ════════════════════════════════════════════════════════════════════════════════
+# Lei 14.026/2020 (the "Marco Legal do Saneamento Básico", sanctioned 15 July
+# 2020) restructured the eligibility landscape: pre-reform decisions sit under
+# the old CESB-obligation framework, while post-reform decisions sit under the
+# new ANA rulemaking authority and privatization framework. A simple date split
+# lets the dataset compare connection-refusal rates either side of the reform
+# without any new scraping — see FUTURE_WORK.md for the analysis this enables.
+#
+# The merged `date` column mixes ISO (YYYY-MM-DD, e.g. TJSP/TJDFT/Netherlands)
+# and Brazilian (DD/MM/YYYY, e.g. TJAC's "Data do julgamento" regex extraction)
+# formats. pandas.to_datetime(..., dayfirst=True) silently mis-parses the ISO
+# rows (e.g. "2021-01-05" -> 5 Jan becomes 1 May), so both formats are matched
+# explicitly instead.
+MARCO_LEGAL_DATE = pd.Timestamp('2020-07-15')
+_ISO_DATE_RE = re.compile(r'^(\d{4})-(\d{2})-(\d{2})')
+_BR_DATE_RE  = re.compile(r'^(\d{2})/(\d{2})/(\d{4})')
+
+def _parse_decision_date(date_val):
+    s = str(date_val).strip()
+    for rx, order in ((_ISO_DATE_RE, ('y', 'mo', 'd')), (_BR_DATE_RE, ('d', 'mo', 'y'))):
+        m = rx.match(s)
+        if m:
+            parts = dict(zip(order, (int(g) for g in m.groups())))
+            try:
+                return pd.Timestamp(year=parts['y'], month=parts['mo'], day=parts['d'])
+            except ValueError:
+                return pd.NaT
+    return pd.NaT
+
+def code_post_marco_legal(date_val, country):
+    """Return 1/0 for Brazilian decisions on/after the Marco Legal do
+    Saneamento (15 Jul 2020); None for non-Brazilian rows or unparseable dates."""
+    if country not in ('Brazil', 'BR'):
+        return None
+    ts = _parse_decision_date(date_val)
+    if pd.isna(ts):
+        return None
+    return int(ts >= MARCO_LEGAL_DATE)
+
+# ════════════════════════════════════════════════════════════════════════════════
 # APPLY CODING
 # ════════════════════════════════════════════════════════════════════════════════
 print('\nApplying jurimetric coding...')
@@ -779,10 +835,11 @@ texts     = df['_text'].tolist()       # all fields — for governance
 texts_sub = df['_text_sub'].tolist()   # body text only — for HR/sust
 countries  = df[country_col].fillna('').tolist() if country_col in df.columns else [''] * len(df)
 tribunals  = df['tribunal'].fillna('').tolist() if 'tribunal' in df.columns else [''] * len(df)
+dates      = df['date'].tolist() if 'date' in df.columns else [None] * len(df)
 
-hr, sust, gov, wl, mp, ind, pub = [], [], [], [], [], [], []
+hr, sust, gov, wl, mp, ind, pub, pml = [], [], [], [], [], [], [], []
 
-for i, (text, text_sub, country, tribunal) in enumerate(zip(texts, texts_sub, countries, tribunals)):
+for i, (text, text_sub, country, tribunal, date_val) in enumerate(zip(texts, texts_sub, countries, tribunals, dates)):
     if i % 5000 == 0:
         print(f'  {i:,}/{len(df):,}...', flush=True)
     hr.append(code_hr(text_sub))
@@ -792,6 +849,7 @@ for i, (text, text_sub, country, tribunal) in enumerate(zip(texts, texts_sub, co
     mp.append(code_mp(text_sub, country))
     ind.append(code_indigenous(text_sub))
     pub.append(code_public(text_sub))
+    pml.append(code_post_marco_legal(date_val, country))
 
 df['hr_language']      = hr
 df['sust_language']    = sust
@@ -800,6 +858,7 @@ df['win_loss']         = wl
 df['mp_involvement']   = mp
 df['indigenous_water'] = ind
 df['public_interest']  = pub
+df['post_marco_legal'] = pml
 
 # Drop working columns
 df.drop(columns=['_text', '_text_sub'], inplace=True)
@@ -849,6 +908,12 @@ if br_mask.any():
     wl_counts = df.loc[br_mask, 'win_loss'].value_counts()
     for outcome, n in wl_counts.items():
         print(f'  {outcome:<15} {n:>5,}')
+
+    coded_pml = df.loc[br_mask, 'post_marco_legal'].dropna()
+    if len(coded_pml):
+        print(f'\nPost-Marco Legal split (Lei 14.026/2020, BR, n={len(coded_pml):,} dated):')
+        print(f'  Pre-reform  (< 15 Jul 2020): {(coded_pml == 0).sum():>5,}')
+        print(f'  Post-reform (>= 15 Jul 2020): {(coded_pml == 1).sum():>5,}')
 
 # Cross-tab: HR language by country
 if country_col in df.columns:
