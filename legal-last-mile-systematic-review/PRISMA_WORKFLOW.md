@@ -10,10 +10,10 @@ conduct manual — the conduct steps below are this project's own procedure.
 | Phase | Task | Status |
 |---|---|---|
 | 1 | Develop protocol | **Done** — `PROTOCOL.md` |
-| 2 | Preregister (OSF Generalized Systematic Review — see `PROTOCOL.md` §11) | Not started |
-| 3 | Database searching | Not started — strings ready in `01_search/database_strategies/` |
-| 4 | Deduplication | Not started |
-| 5 | Title and abstract screening (two reviewers where feasible) | Not started |
+| 2 | Preregister (OSF Generalized Systematic Review — see `PROTOCOL.md` §11) | Draft ready — `00_admin/preregistration/osf_preregistration_draft.md`; not yet submitted (no OSF account access from this environment) |
+| 3 | Database searching | **Blocked** — strings ready in `01_search/database_strategies/`, but this environment has no credentials for Scopus, Web of Science, HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts, CanLII, or Rechtspraak.nl. Requires a human researcher (or a tool run with the appropriate access) to execute the searches and deposit raw exports in `01_search/raw_exports/`. |
+| 4 | Deduplication | Tooling ready — `code/search/deduplicate.py` (DOI-match + title/year-similarity match, full merge log for auditability), tested against synthetic data, not yet run on real exports since none exist. Expects input normalized to a common schema (see the script's docstring); per-database raw-export adapters are still future work, to be written once real exports exist to develop against. |
+| 5 | Title and abstract screening (two reviewers where feasible) | Tooling ready — `code/screening/init_screening_db.py` merges deduplicated records into the persistent screening database without ever overwriting an existing reviewer decision; tested and idempotent. Actual screening not started (no records to screen yet). |
 | 6 | Full-text screening, standardized exclusion reason per record | Not started |
 | 7 | Pilot extraction (~10 studies) | Not started |
 | 8 | Full extraction | Not started |
@@ -26,11 +26,16 @@ conduct manual — the conduct steps below are this project's own procedure.
 | 15 | Publication bias assessment where appropriate | Not started |
 | 16 | PRISMA reporting | Not started |
 
-**Current phase: 1–2 (repository/documentation scaffolding complete;
-preregistration and search execution are next).** No phase past 2 can begin
-without either database access this environment does not currently have, or
-a human researcher running the searches in `01_search/database_strategies/`
-and depositing raw exports in `01_search/raw_exports/`.
+**Current phase: 1–2 complete; 4–5 tooling built ahead of need; 3 is the
+hard blocker.** Repository/documentation scaffolding is complete, the OSF
+preregistration is drafted (not submitted), and the deduplication and
+screening-ingest scripts are written and tested against synthetic data.
+None of Phases 3, 6–16 can begin without either database access this
+environment does not currently have, or a human researcher running the
+searches in `01_search/database_strategies/` and depositing raw exports in
+`01_search/raw_exports/`. Building tooling ahead of Phase 3 is deliberate —
+it means the moment real exports exist, deduplication and screening can
+start immediately — but it does not substitute for the search itself.
 
 ## Screening database schema
 

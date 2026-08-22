@@ -9,6 +9,26 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-08-22 (later) — PR opened; preregistration draft + Phase 4/5 tooling
+
+- Opened PR #3 (`claude/legal-last-mile-review-spec-8ri0zs` → `main`) on the
+  jrklaus8/water-law-dataset repository.
+- Drafted the OSF Generalized Systematic Review preregistration text
+  (`00_admin/preregistration/osf_preregistration_draft.md`) — not
+  submitted; this environment has no OSF account access.
+- Wrote and tested `code/search/deduplicate.py` (DOI-match and
+  title/year-similarity-match deduplication, with a full merge log for
+  auditability) against synthetic data — not yet run on real data, since
+  none exists. Documents that it expects input already normalized to a
+  common schema; per-database raw-export adapters remain future work to be
+  developed against real exports once Phase 3 produces any.
+- Wrote and tested `code/screening/init_screening_db.py` (idempotent merge
+  of newly deduplicated records into the persistent screening database,
+  never overwriting an existing reviewer decision) against synthetic data.
+- Updated `PRISMA_WORKFLOW.md` and `README.md` status tables accordingly.
+  Phase 3 (database searching) remains the hard blocker — no credentials
+  exist in this environment for any Tier 1 database.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture

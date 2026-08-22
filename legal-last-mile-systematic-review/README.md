@@ -78,6 +78,12 @@ code/                search / screening / extraction / analysis / figures / tabl
 ## Current status
 
 **Phase 1 (repository setup) and Phase 2 (source verification) are complete.**
+The OSF preregistration is drafted but not submitted
+([`00_admin/preregistration/osf_preregistration_draft.md`](00_admin/preregistration/osf_preregistration_draft.md)).
+Deduplication and screening-ingest tooling ([`code/search/deduplicate.py`](code/search/deduplicate.py),
+[`code/screening/init_screening_db.py`](code/screening/init_screening_db.py)) is written and tested
+against synthetic data, ready to run the moment real search exports exist.
+
 No database search has been executed. All CSV templates in this tree carry
 headers only — there is no fabricated data anywhere in this project. See
 [`06_outputs/supplementary/preliminary_results.md`](06_outputs/supplementary/preliminary_results.md)
