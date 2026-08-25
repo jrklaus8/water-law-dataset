@@ -200,16 +200,28 @@ ready to run by a researcher (or a tool run with the appropriate access) —
 running them and logging the results per §6 is still the way Phase 3
 actually gets done.
 
-**What *was* done:** an explicitly non-systematic, exploratory pilot using
-Claude's `WebSearch` tool (a first-party search capability that, unlike
-`WebFetch`, is not subject to the same egress block) — six queries drawn
-from this protocol's terms, logged as `SEARCH_003`–`SEARCH_008` in
-`01_search/search_logs/search_log.csv`, yielding 25 candidate records now
-sitting in `02_screening/title_abstract/screening_database.csv` with no
-screening decision made yet. This is not a substitute for Phase 3 and must
-never be described as one in any manuscript output: it has weaker recall
-than a platform-native search, no guaranteed stable/reproducible result
-set, and no full-text access to verify anything beyond what a search
-snippet shows. See the `notes` field on each of those search-log rows for
-the full caveat, restated on every row so it survives independent of this
-paragraph.
+**What *was* done:** three rounds of an explicitly non-systematic,
+exploratory pilot using Claude's `WebSearch` tool (a first-party search
+capability that, unlike `WebFetch`, is not subject to the same egress
+block) — queries drawn from this protocol's terms plus an approximated
+backward-citation search on the exemplar papers, logged as
+`SEARCH_003`–`SEARCH_017` in `01_search/search_logs/search_log.csv`,
+yielding 37 candidate records now sitting in
+`02_screening/title_abstract/screening_database.csv` with no screening
+decision made yet. This is not a substitute for Phase 3 and must never be
+described as one in any manuscript output: it has weaker recall than a
+platform-native search, no guaranteed stable/reproducible result set, and
+(so far) no full-text or abstract access to verify anything beyond what a
+search snippet shows. See the `notes` field on each of those search-log
+rows for the full caveat, restated on every row so it survives independent
+of this paragraph.
+
+## 8. Running a real search
+
+If you have working institutional database access, see
+[`01_search/EXECUTION_CHECKLIST.md`](01_search/EXECUTION_CHECKLIST.md) for
+a literal, step-by-step "what to actually click" guide per database,
+written so it can be followed without the rest of this repo's context —
+including export settings (get abstracts, not just citations, wherever the
+platform allows it) and exactly how to get the resulting file back into
+this pipeline.

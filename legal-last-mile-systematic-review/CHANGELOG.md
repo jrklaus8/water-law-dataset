@@ -132,6 +132,29 @@ been reached.
 - Updated `06_outputs/supplementary/title_only_triage_memo.md` for the 6
   new records.
 
+## 2026-08-25 (latest) — Execution checklist for real institutional access
+
+- The researcher confirmed a working EUR (Erasmus University Rotterdam)
+  institutional research account, which should give real access to
+  Scopus, Web of Science, HeinOnline, Westlaw, Lexis, and ProQuest.
+- Added `01_search/EXECUTION_CHECKLIST.md`: a literal, step-by-step
+  "what to actually click" guide per database — access route (via the
+  library, not the database directly), where to paste each search string,
+  export format/field selection (emphasizing abstracts, not just
+  citations, since every candidate identified so far has been title-only),
+  file-naming convention, and exactly what to hand back to Claude. Written
+  to be followable without the rest of this repo's context, since the
+  researcher intends to execute it via a separate tool (Claude Cowork).
+- This does not touch credentials at all: Claude does not have and will
+  not request the researcher's institutional login. Two independent
+  reasons this has to be human-executed rather than automated from this
+  environment: (1) network egress from this environment is blocked for
+  every external domain tested, regardless of credentials; (2)
+  institutional SSO logins involve MFA/interactive flows a script can't
+  drive, and most of these platforms' license terms prohibit automated or
+  bulk retrieval even by authorized users.
+- Cross-linked from `README.md` and `SEARCH_PROTOCOL.md` §8.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture

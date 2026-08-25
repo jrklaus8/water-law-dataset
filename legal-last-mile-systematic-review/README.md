@@ -85,7 +85,12 @@ The OSF preregistration is drafted but not submitted
 this environment cannot reach any of them (subscription databases need
 credentials it doesn't have; even the free ones, like PubMed, Google
 Scholar, CanLII, and Rechtspraak.nl, are blocked by this environment's
-network egress policy). Deduplication and screening-ingest tooling
+network egress policy). **If you have working institutional access,
+[`01_search/EXECUTION_CHECKLIST.md`](01_search/EXECUTION_CHECKLIST.md) is a
+literal "what to actually click" guide** for running one real search per
+database and getting the export back into this pipeline — this is the
+single highest-value thing that can happen to this project right now.
+Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
 [`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
 has now been run for real, on 37 candidate records surfaced by three rounds of
