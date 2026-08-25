@@ -91,6 +91,47 @@ been reached.
   recurring pattern for the eventual reviewer: three law-review articles
   whose doctrinal-vs-empirical status can't be resolved from the title.
 
+## 2026-08-25 (later still) — Third pilot round targeting gaps; exemplars added to pipeline; PubMed adapter
+
+- Ran a third WebSearch round targeting gaps identified in the first two:
+  Family B (bureaucratic assistance/political coordination + water),
+  Dutch-language empirical studies specifically, Brazilian ANA/SNIS
+  regulatory-data studies, and WHO/UNICEF JMP grey literature. Logged as
+  `SEARCH_014`-`SEARCH_017`.
+- Found a likely duplicate-publication pair: an earlier working-paper
+  title appears to be a pre-publication version of the Gaikwad & Thomas
+  2026 exemplar. Logged both per `REPRODUCIBILITY.md` §6 (identify, don't
+  silently merge) rather than dropping the earlier one.
+- Second Dutch-language query in a row surfaced zero empirical studies
+  (only primary legal/regulatory sources) — logged as a preliminary,
+  WebSearch-only pattern, explicitly caveated as far too thin a basis to
+  draw any conclusion about the Dutch empirical literature.
+- WHO/UNICEF JMP 2025 report deliberately excluded from the candidate pool:
+  relevant background, but per its own summary it doesn't treat legal/
+  administrative barriers as a distinct topic, failing inclusion
+  criterion 2 — a scope-discipline exclusion, not a search failure.
+- **Found and fixed a real gap**: 3 of the 4 substantive exemplar studies
+  in `SOURCES.md` (Lubeck-Schricker et al. 2023, Gaikwad & Thomas 2026,
+  Apio/Thiam/Dinar 2025) had been cited as methodological context but
+  never actually entered the screening pipeline, meaning they'd never be
+  formally screened like everything else. Added them with their
+  already-verified DOIs. The 4th exemplar, Halling & Bækgaard 2024,
+  deliberately was not added — it's administrative-burden methodological
+  literature with no water/sanitation content, failing inclusion
+  criterion 1; it remains a `SOURCES.md`-only methodological reference.
+- Total candidate pool now 37 records, still 0 duplicates found by the
+  automated dedup script (the 2 likely-duplicate pairs identified above
+  differ enough in title that automated matching correctly can't catch
+  them — exactly why they were logged manually instead).
+- Added `code/search/adapters/pubmed_adapter.py`: normalizes PubMed's
+  documented CSV export format to the project's common schema. Explicitly
+  marked **unvalidated against a real export** (PubMed is unreachable from
+  this environment) — tested against a synthetic file matching the
+  documented format (works) and a deliberately wrong format (correctly
+  refuses to guess rather than producing silently-wrong output).
+- Updated `06_outputs/supplementary/title_only_triage_memo.md` for the 6
+  new records.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture

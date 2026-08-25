@@ -88,15 +88,18 @@ Scholar, CanLII, and Rechtspraak.nl, are blocked by this environment's
 network egress policy). Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
 [`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
-has now been run for real, on 31 candidate records surfaced by two rounds of
+has now been run for real, on 37 candidate records surfaced by three rounds of
 an explicitly non-systematic exploratory pilot using Claude's `WebSearch`
-tool (logged as `SEARCH_003`–`SEARCH_013`, including an approximated
-backward-citation search on the 4 exemplar papers) — **not** a substitute
-for the actual protocol search, and never to be described as one. Those 31
+tool (logged as `SEARCH_003`–`SEARCH_017`, including an approximated
+backward-citation search and, finally, 3 of the 4 `SOURCES.md` exemplars
+themselves entered into the pipeline) — **not** a substitute
+for the actual protocol search, and never to be described as one. Those 37
 records sit in the screening database with no screening decision made on
 any of them yet; a non-binding title-only triage memo
 ([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md))
-exists to help a future reviewer prioritize. A schema-validation script
+exists to help a future reviewer prioritize. An unvalidated PubMed export
+adapter ([`code/search/adapters/pubmed_adapter.py`](code/search/adapters/pubmed_adapter.py))
+is ready but untested against a live export. A schema-validation script
 ([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
 confirms every project CSV currently matches its documented schema.
 

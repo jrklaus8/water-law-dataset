@@ -1,7 +1,7 @@
 # Title-Only Triage Memo (Non-Binding)
 
 Status: **not a screening decision.** This memo is a title/URL-only read of
-the 31 candidate records currently in
+the 37 candidate records currently in
 `02_screening/title_abstract/screening_database.csv`, produced because this
 environment cannot fetch full text or even an abstract for any of them
 (network egress is blocked — `SEARCH_PROTOCOL.md` §7). It exists purely to
@@ -60,11 +60,17 @@ more than "check this isn't being excluded by mistake."
 | R0029 | Turning Off the Tap: water service delivery and global administrative law (EJIL) | LIKELY INCLUDE | — | Administrative-law framing with reported comparative fieldwork (6 countries per the search snippet) |
 | R0030 | Lien In: municipalities' discriminatory water practices (Harvard CRCL) | UNCERTAIN | E01/E05 (possible) | Law journal article — check for empirical/case content vs. pure legal argument |
 | R0031 | Turning Participation Into Power: a water justice case study (George Mason Law Review) | UNCERTAIN | E01/E05 (possible) | "Case study" suggests possible empirical content, but law-review venue raises the same doctrinal-vs-empirical question as R0021/R0030 |
+| R0032 | Bureaucratic Hurdles, Political Resistance, and Public Service Access (working paper) | LIKELY INCLUDE, flag duplicate | E08 (possible, pending verification) | Appears to be an earlier version of the Gaikwad & Thomas 2026 exemplar (R0036) — verify at full-text stage per `REPRODUCIBILITY.md` §6 before extracting both as independent studies |
+| R0033 | Pesquisa Saneamento Básico em Áreas Irregulares — full report | LIKELY INCLUDE | — | Full underlying report behind R0011 (press-release summary of the same study) — prefer this record for extraction, treat R0011 as a companion source |
+| R0034 | Desafios do saneamento em SP e alternativas à privatização | UNCERTAIN | — | Governance/privatization framing plausible but title doesn't clearly name a household-level access outcome or a specific legal/administrative mechanism; check |
+| R0035 | Divided infrastructure: legal exclusion and water inequality, Mumbai (Lubeck-Schricker et al. 2023) | LIKELY INCLUDE | — | Verified exemplar (`SOURCES.md`); strong Family A candidate — genuinely needs the same screening as every other record, not an informal pre-approval |
+| R0036 | Getting on the grid (Gaikwad & Thomas 2026) | LIKELY INCLUDE | — | Verified exemplar; strong Family B candidate; note likely duplicate-publication link to R0032 |
+| R0037 | A Meta-Analysis of Water Institutions and Their Performance (Apio, Thiam & Dinar 2025) | LIKELY INCLUDE, flag as secondary synthesis | — | Verified exemplar; this is itself a meta-analysis — classify `study_design_class = systematic_review_secondary` and appraise with AMSTAR 2 if included, same treatment as R0027 |
 
 ## Summary
 
-- LIKELY INCLUDE: 18
-- UNCERTAIN: 12
+- LIKELY INCLUDE: 23 (2 of which carry a duplicate-publication flag, 1 a secondary-synthesis flag)
+- UNCERTAIN: 14
 - (No record was confident enough to tentatively exclude outright from a
   title alone — that determination is deliberately left to the actual
   screener; several "UNCERTAIN" rows carry a plausible exclusion code as a

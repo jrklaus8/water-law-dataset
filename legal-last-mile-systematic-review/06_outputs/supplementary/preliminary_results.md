@@ -14,19 +14,24 @@ evidence of anything.
   independent web sources (`SOURCES.md`) — this is source verification, not
   a review finding, and none of these eight sources have been screened or
   extracted as part of the review itself.
-- Two rounds of an explicitly non-systematic exploratory pilot (Claude
+- Three rounds of an explicitly non-systematic exploratory pilot (Claude
   `WebSearch` tool, not any Tier 1/2 or legal-repository database's native
-  search — see `SEARCH_PROTOCOL.md` §7) surfaced **31 candidate records**,
-  now sitting in `02_screening/title_abstract/screening_database.csv`. This
-  is raw, unscreened input, not a result: none of these 31 records have a
+  search — see `SEARCH_PROTOCOL.md` §7) surfaced **37 candidate records**,
+  now sitting in `02_screening/title_abstract/screening_database.csv` —
+  including 3 of the 4 substantive `SOURCES.md` exemplars, which had
+  previously been cited as methodological context but never actually
+  entered the screening pipeline (fixed 2026-08-25). This is raw,
+  unscreened input, not a result: none of these 37 records have a
   title/abstract decision, none have been read in full text, none have been
   extracted, and none have been risk-of-bias-appraised. A non-binding,
   title-only triage read (`06_outputs/supplementary/title_only_triage_memo.md`)
-  flagged roughly a third as uncertain — several law-review articles among
+  flagged over a third as uncertain — several law-review articles among
   them may turn out to be doctrinal commentary rather than empirical
-  studies once actually read, and several Dutch-legislation hits (logged
-  under `SEARCH_006`) were primary legal sources, not studies, and were not
-  added to the screening database at all.
+  studies once actually read; two Dutch-language queries in a row (under
+  `SEARCH_006` and `SEARCH_015`) surfaced only primary legal sources, not
+  studies, and contributed nothing to the screening database; and 2 pairs
+  of records were flagged as likely duplicate publications for a human to
+  resolve at full-text stage.
 - A schema-validation script (`code/analysis/validate_schemas.py`) confirms
   every project CSV's header currently matches its documented schema.
 
