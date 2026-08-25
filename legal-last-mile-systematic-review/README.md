@@ -88,12 +88,17 @@ Scholar, CanLII, and Rechtspraak.nl, are blocked by this environment's
 network egress policy). Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
 [`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
-has now been run for real, on 25 candidate records surfaced by an
-explicitly non-systematic exploratory pilot using Claude's `WebSearch`
-tool (logged as `SEARCH_003`–`SEARCH_008`) — **not** a substitute for the
-actual protocol search, and never to be described as one. Those 25 records
-sit in the screening database with no screening decision made on any of
-them yet.
+has now been run for real, on 31 candidate records surfaced by two rounds of
+an explicitly non-systematic exploratory pilot using Claude's `WebSearch`
+tool (logged as `SEARCH_003`–`SEARCH_013`, including an approximated
+backward-citation search on the 4 exemplar papers) — **not** a substitute
+for the actual protocol search, and never to be described as one. Those 31
+records sit in the screening database with no screening decision made on
+any of them yet; a non-binding title-only triage memo
+([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md))
+exists to help a future reviewer prioritize. A schema-validation script
+([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
+confirms every project CSV currently matches its documented schema.
 
 All other CSV templates in this tree still carry headers only — there is
 no fabricated data anywhere in this project. See

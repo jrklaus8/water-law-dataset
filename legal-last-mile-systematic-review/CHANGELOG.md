@@ -65,6 +65,32 @@ been reached.
   operate on and so genuine (if low-recall) candidate studies are already
   identified once real screening capacity exists.
 
+## 2026-08-25 (later) — Second pilot round, schema-validation tooling, triage memo
+
+- Added `code/analysis/validate_schemas.py`: checks every project CSV's
+  actual header against its documented (or script-generated) schema.
+  Verified it catches real drift with a synthetic test, then confirmed all
+  8 checked files are currently consistent — useful given the schema has
+  already changed once (the `url` field).
+- Ran a second WebSearch pilot round: an approximated backward-citation
+  search on all 4 exemplar papers from `SOURCES.md` (WebSearch has no real
+  citation-graph capability, so this is a keyword approximation, logged as
+  such), plus a World Bank/UN-Habitat grey-literature query and a
+  connection/service-refusal query. Logged as `SEARCH_009`–`SEARCH_013`,
+  including two searches that found nothing new (Gaikwad/Thomas citations,
+  too recent for a citation index; Halling/Bækgaard citations, real hits
+  but out of this review's water/sanitation scope — logged as a scope
+  demonstration, not a failure).
+- Added 6 new genuine candidates from this round to
+  `01_search/raw_exports/SEARCH_009-013_CITATION_GREYLIT_PILOT_2026-08-25.csv`;
+  total candidate pool now 31 records, still 0 duplicates.
+- Added `06_outputs/supplementary/title_only_triage_memo.md`: a title/URL-only,
+  explicitly non-binding read of all 31 candidates against
+  `INCLUSION_EXCLUSION.md`, since this environment cannot fetch abstracts.
+  Does not populate `title_abstract_decision` for any record. Flagged a
+  recurring pattern for the eventual reviewer: three law-review articles
+  whose doctrinal-vs-empirical status can't be resolved from the title.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture
