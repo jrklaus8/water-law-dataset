@@ -44,7 +44,7 @@ import sys
 from pathlib import Path
 
 SCHEMA = [
-    "record_id", "database", "title", "authors", "year", "doi",
+    "record_id", "database", "title", "authors", "year", "doi", "url",
     "duplicate", "title_abstract_decision", "full_text_decision",
     "exclusion_reason", "reviewer_1", "reviewer_2", "conflict", "final_decision",
 ]

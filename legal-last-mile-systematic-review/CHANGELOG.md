@@ -29,6 +29,42 @@ been reached.
   Phase 3 (database searching) remains the hard blocker — no credentials
   exist in this environment for any Tier 1 database.
 
+## 2026-08-25 — Confirmed network egress is blocked; ran exploratory WebSearch pilot
+
+- Tested direct access to PubMed's API (`curl`) and to PubMed, Google
+  Scholar, CanLII, Rechtspraak.nl, and SSRN (`WebFetch`) — every one was
+  denied by this environment's network egress policy (confirmed via
+  `/root/.ccr/agentproxy/status`, a genuine policy denial rather than a
+  transient failure, per that tool's own guidance not to retry). This
+  environment therefore cannot reach any database, free or paid, by direct
+  fetch or API call — only Claude's first-party `WebSearch` tool works.
+- Amended the screening-database schema to add a `url` field alongside
+  `doi` (`02_screening/title_abstract/screening_database.csv`,
+  `code/search/deduplicate.py`, `code/screening/init_screening_db.py`,
+  `DATA_DICTIONARY.md`, `PRISMA_WORKFLOW.md`) — real candidate records,
+  especially grey literature, routinely have no DOI, and a URL is the only
+  way to relocate them.
+- Ran six explicitly non-systematic `WebSearch` queries drawn from
+  `SEARCH_PROTOCOL.md`'s terms, logged as `SEARCH_003`–`SEARCH_008` in
+  `01_search/search_logs/search_log.csv` with the pilot's method and
+  limitations stated on every row. Extracted only title + URL from
+  WebSearch's structured result data (never from its prose summary, which
+  is itself an LLM paraphrase and risks introducing unverified specifics)
+  into `01_search/raw_exports/SEARCH_003-008_WEBSEARCH_PILOT_2026-08-25.csv`
+  — 25 candidate records, no fabricated authors/years/DOIs (left blank
+  where not directly legible from the search result itself).
+- Ran `code/search/deduplicate.py` and `code/screening/init_screening_db.py`
+  on this real data for the first time (previously only synthetic-data
+  tested) — 0 duplicates within the batch, 25 records now in
+  `02_screening/title_abstract/screening_database.csv` with no screening
+  decision made on any of them.
+- Updated `SEARCH_PROTOCOL.md`, `PRISMA_WORKFLOW.md`, `README.md`, and
+  `06_outputs/supplementary/preliminary_results.md` to state clearly, in
+  each place, that this pilot is not Phase 3 and does not substitute for
+  it — it exists so the deduplication/screening tooling has real data to
+  operate on and so genuine (if low-recall) candidate studies are already
+  identified once real screening capacity exists.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture

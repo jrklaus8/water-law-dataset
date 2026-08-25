@@ -80,12 +80,23 @@ code/                search / screening / extraction / analysis / figures / tabl
 **Phase 1 (repository setup) and Phase 2 (source verification) are complete.**
 The OSF preregistration is drafted but not submitted
 ([`00_admin/preregistration/osf_preregistration_draft.md`](00_admin/preregistration/osf_preregistration_draft.md)).
-Deduplication and screening-ingest tooling ([`code/search/deduplicate.py`](code/search/deduplicate.py),
-[`code/screening/init_screening_db.py`](code/screening/init_screening_db.py)) is written and tested
-against synthetic data, ready to run the moment real search exports exist.
 
-No database search has been executed. All CSV templates in this tree carry
-headers only — there is no fabricated data anywhere in this project. See
+**No Tier 1/2 or legal-repository database has been searched natively** —
+this environment cannot reach any of them (subscription databases need
+credentials it doesn't have; even the free ones, like PubMed, Google
+Scholar, CanLII, and Rechtspraak.nl, are blocked by this environment's
+network egress policy). Deduplication and screening-ingest tooling
+([`code/search/deduplicate.py`](code/search/deduplicate.py),
+[`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
+has now been run for real, on 25 candidate records surfaced by an
+explicitly non-systematic exploratory pilot using Claude's `WebSearch`
+tool (logged as `SEARCH_003`–`SEARCH_008`) — **not** a substitute for the
+actual protocol search, and never to be described as one. Those 25 records
+sit in the screening database with no screening decision made on any of
+them yet.
+
+All other CSV templates in this tree still carry headers only — there is
+no fabricated data anywhere in this project. See
 [`06_outputs/supplementary/preliminary_results.md`](06_outputs/supplementary/preliminary_results.md)
 for the explicit current-evidence status and
 [`PRISMA_WORKFLOW.md`](PRISMA_WORKFLOW.md) for what phase comes next and what

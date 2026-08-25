@@ -187,9 +187,29 @@ Never overwrite an original search export. File naming convention:
 
 ## 7. Current status
 
-No search has been executed in this environment: it has no credentials or
-network access to Scopus, Web of Science, HeinOnline, Westlaw, Lexis,
-ProQuest, Sociological Abstracts, CanLII, or Rechtspraak.nl. The strings in
-`01_search/database_strategies/` are ready to run by a researcher (or a tool
-run with the appropriate access) — running them and logging the results
-per §6 is the next concrete step (`PRISMA_WORKFLOW.md` Phase 3/5).
+**No Tier 1/Tier 2/legal-repository database has been searched natively.**
+This environment has no credentials for Scopus, Web of Science, HeinOnline,
+Westlaw, Lexis, ProQuest, or Sociological Abstracts — and, as of 2026-08-25,
+it turns out it also cannot directly reach PubMed, Google Scholar, SSRN,
+CanLII, or Rechtspraak.nl either: this environment's outbound network
+egress policy blocks essentially all direct HTTP(S) access to the open web
+(confirmed by testing `WebFetch` and a direct API call against a wide,
+representative sample of these domains — every one was denied by the
+egress proxy). The strings in `01_search/database_strategies/` remain
+ready to run by a researcher (or a tool run with the appropriate access) —
+running them and logging the results per §6 is still the way Phase 3
+actually gets done.
+
+**What *was* done:** an explicitly non-systematic, exploratory pilot using
+Claude's `WebSearch` tool (a first-party search capability that, unlike
+`WebFetch`, is not subject to the same egress block) — six queries drawn
+from this protocol's terms, logged as `SEARCH_003`–`SEARCH_008` in
+`01_search/search_logs/search_log.csv`, yielding 25 candidate records now
+sitting in `02_screening/title_abstract/screening_database.csv` with no
+screening decision made yet. This is not a substitute for Phase 3 and must
+never be described as one in any manuscript output: it has weaker recall
+than a platform-native search, no guaranteed stable/reproducible result
+set, and no full-text access to verify anything beyond what a search
+snippet shows. See the `notes` field on each of those search-log rows for
+the full caveat, restated on every row so it survives independent of this
+paragraph.

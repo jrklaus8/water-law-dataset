@@ -19,11 +19,13 @@ rules (PROJECT_SPEC.md S14) forbid inventing structure it hasn't verified.
 It instead expects each input file already normalized to a common minimal
 schema, one row per record:
 
-    title, authors, year, doi, database, search_id
+    title, authors, year, doi, url, database, search_id
 
-Writing the per-database "raw export -> normalized" adapters is future
-work, to be done once real raw exports exist to develop against
-(01_search/raw_exports/ is currently empty).
+`url` matters as much as `doi` in practice: much grey literature and many
+non-indexed sources carry no DOI at all, and without a URL such a record
+cannot be relocated later. Writing the per-database "raw export ->
+normalized" adapters for the Tier 1 platforms is still future work, to be
+done once real exports exist to develop against.
 
 OUTPUT
 ------
@@ -55,9 +57,9 @@ import re
 import sys
 from pathlib import Path
 
-NORMALIZED_FIELDS = ["title", "authors", "year", "doi", "database", "search_id"]
+NORMALIZED_FIELDS = ["title", "authors", "year", "doi", "url", "database", "search_id"]
 OUTPUT_FIELDS = [
-    "record_id", "database", "title", "authors", "year", "doi",
+    "record_id", "database", "title", "authors", "year", "doi", "url",
     "duplicate", "title_abstract_decision", "full_text_decision",
     "exclusion_reason", "reviewer_1", "reviewer_2", "conflict", "final_decision",
 ]
@@ -160,6 +162,7 @@ def write_output(kept: list[dict], merge_log: list[dict], output_dir: Path) -> N
                 "authors": rec.get("authors", ""),
                 "year": rec.get("year", ""),
                 "doi": rec.get("doi", ""),
+                "url": rec.get("url", ""),
                 "duplicate": "false",
                 "title_abstract_decision": "",
                 "full_text_decision": "",

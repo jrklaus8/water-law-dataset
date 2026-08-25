@@ -1,10 +1,10 @@
 # Preliminary Results
 
-**There are no results yet.** This file exists as a placeholder required by
-the project's expected-outputs list (`PROJECT_SPEC.md` §"expected first
-outputs") and is updated only when a phase of `PRISMA_WORKFLOW.md` actually
-produces a result — never pre-filled with an anticipated or illustrative
-finding.
+**There are still no review findings.** This file is updated only when a
+phase of `PRISMA_WORKFLOW.md` actually produces a result — never pre-filled
+with an anticipated or illustrative finding. A pool of unscreened candidate
+records is not a finding; it is listed below for transparency, not as
+evidence of anything.
 
 ## What has actually been done
 
@@ -14,11 +14,23 @@ finding.
   independent web sources (`SOURCES.md`) — this is source verification, not
   a review finding, and none of these eight sources have been screened or
   extracted as part of the review itself.
+- An explicitly non-systematic exploratory pilot (Claude `WebSearch` tool,
+  not any Tier 1/2 or legal-repository database's native search — see
+  `SEARCH_PROTOCOL.md` §7) surfaced **25 candidate records**, now sitting in
+  `02_screening/title_abstract/screening_database.csv`. This is raw,
+  unscreened input, not a result: none of these 25 records have a
+  title/abstract decision, none have been read in full text, none have been
+  extracted, and none have been risk-of-bias-appraised. Several are
+  primary legal/regulatory documents rather than empirical studies and are
+  expected to be excluded at screening (E05, no empirical evidence) once
+  someone actually screens them.
 
 ## What has not been done
 
-- No database has been searched (`SEARCH_PROTOCOL.md` §7).
-- No records have been screened.
+- **No Tier 1/Tier 2/legal-repository database has been searched natively**
+  (`SEARCH_PROTOCOL.md` §7) — this remains the actual Phase 3 requirement,
+  unmet.
+- No screening decision has been made on any record.
 - No study has been included or excluded from the review.
 - No data has been extracted.
 - No risk-of-bias appraisal has been performed.
