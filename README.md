@@ -254,6 +254,12 @@ The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII 
 
 ---
 
+## Companion Project: Systematic Review
+
+[`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/) is a separate, companion research project in this repository: a systematic review (with contingent, restricted meta-analysis) of the *household-level* empirical literature on legal and administrative barriers to water and sanitation access. It is deliberately **not** merged with the judicial dataset above — litigation is a selected pathway, not a representative sample of administrative exclusion, so the two evidence bases are kept separate and only triangulated. See its [`README.md`](legal-last-mile-systematic-review/README.md) for details; as of this writing it is a methodological scaffold with no search yet executed.
+
+---
+
 ## License
 
 MIT
