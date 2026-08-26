@@ -31,3 +31,17 @@ bibliographic metadata CSVs are not copyrighted content and are the
 project's actual raw search-export data, so they're kept here instead of
 being lost when those branches/PDFs were removed. See `CHANGELOG.md`
 2026-08-26 for the full account.
+
+## Full-text PDFs (removed from git, not lost)
+
+43 full-text journal-article PDFs were uploaded across three separate
+GitHub actions on 2026-08-26 (10 to jrklaus8-patch-1 / PR #4, 13 to
+jrklaus8-patch-2 / PR #5, and 20 directly to this branch). All 43 were
+removed from every branch — see `CHANGELOG.md` 2026-08-26 — and sent
+directly to the researcher via file transfer instead, for them to store
+privately (their own cloud drive, local disk) rather than on a public
+repository. None of the 43 are in this repository in any form. If any of
+them turn out, after real screening, to be included studies, their
+bibliographic record should already be among the 500 in
+`SEARCH_018_SCOPUS_2026-08-26_native.csv` above — re-locate by title/DOI
+rather than by filename.

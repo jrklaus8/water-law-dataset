@@ -195,6 +195,33 @@ been reached.
   Scopus's bulk-export UI appears to cap a single CSV well below the full
   result count) or narrowing the query.
 
+## 2026-08-26 (later) — Removed all 43 copyrighted PDFs from every branch
+
+- 43 full-text journal-article PDFs (Nature, Springer, BMC/BioMed Central)
+  had accumulated across three separate uploads: 10 on `jrklaus8-patch-1`
+  (PR #4), 13 on `jrklaus8-patch-2` (PR #5), and 20 directly on this
+  review branch. Flagged to the researcher as a copyright/redistribution
+  concern independent of the research use itself.
+- Closed PR #4 and PR #5 without merging.
+- Removed the 10 and 13 PDFs from `jrklaus8-patch-1`/`jrklaus8-patch-2` via
+  a direct git push updating each branch (GitHub's file-delete API choked
+  on the large binaries; branch *deletion* was blocked by the same
+  ruleset that blocked branch creation earlier in this project, but a
+  normal branch *update* was not).
+- Removed the 20 PDFs from this branch the same way.
+- Before removing anything, recovered all 43 from git history and sent
+  them directly to the researcher (not through GitHub) for them to store
+  privately, per their request — see
+  `01_search/raw_exports/native/README.md` for the accounting. None of
+  the 43 remain in this repository in any form; their bibliographic
+  metadata (for the 10+13 that came from the Scopus session) is preserved
+  in `01_search/raw_exports/native/SEARCH_018_SCOPUS_2026-08-26_native.csv`.
+- Confirmed via `git ls-tree` on both upload branches after the push that
+  no PDF remains reachable from either branch tip. Noted as a caveat to
+  the researcher: this doesn't purge the blobs from git's object history
+  (recoverable by anyone with the old commit SHA) — a harder guarantee
+  would need branch deletion (blocked here) or a GitHub-side history purge.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture
