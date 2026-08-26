@@ -60,6 +60,15 @@ take it, even if it makes the file bigger.
    `SEARCH_PROTOCOL.md` §6 — and Claude will need it to log the search
    properly rather than treating the file as anonymous data.
 
+## Scopus — batch plan for the remaining ~4,944 records
+
+The first Scopus run (`SEARCH_018`, 2026-08-26) only captured 500 of the
+~5,444 total matching records, and missed the Abstract field. See
+[`scopus_batch_plan_2026-08-26.md`](scopus_batch_plan_2026-08-26.md) for
+16 ready-to-paste batch queries (split by year, sized against the real
+result distribution) to get the rest — start there instead of the section
+below if you're returning to finish Scopus specifically.
+
 ## Scopus (recommended first)
 
 - Library route: EUR library database list → "Scopus."

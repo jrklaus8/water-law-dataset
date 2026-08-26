@@ -222,6 +222,21 @@ been reached.
   (recoverable by anyone with the old commit SHA) — a harder guarantee
   would need branch deletion (blocked here) or a GitHub-side history purge.
 
+## 2026-08-26 (latest) — Scopus batch export plan
+
+- Added `01_search/scopus_batch_plan_2026-08-26.md`: 16 ready-to-paste
+  batch queries to capture the remaining ~4,944 of ~5,444 total matching
+  Scopus records, computed from the real year-by-year breakdown (not a
+  guess) so each batch stays comfortably under the 500-record ceiling the
+  first export hit. Flags that 2026 and 2025 alone (619 and 583 records)
+  exceed that ceiling even as single years and need a further
+  `DOCTYPE`-based split.
+- Cross-linked from `EXECUTION_CHECKLIST.md`. Every batch still needs
+  Abstract selected explicitly in the export field picker — the one gap
+  that actually blocks real screening, and the main reason to finish
+  Scopus before moving to a second database.
+- Not yet executed — this is a plan, not new data.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture
