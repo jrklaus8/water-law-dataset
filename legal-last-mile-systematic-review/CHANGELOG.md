@@ -155,6 +155,46 @@ been reached.
   bulk retrieval even by authorized users.
 - Cross-linked from `README.md` and `SEARCH_PROTOCOL.md` §8.
 
+## 2026-08-26 — First real Tier 1 database data (Scopus)
+
+- The researcher ran the pilot Scopus string for real via EUR institutional
+  access (Claude Cowork assisted) and uploaded the results as two GitHub
+  PRs (#4, #5) containing PDFs and CSVs. **Flagged immediately: PR #4/#5
+  contain 24 copyrighted journal-article PDFs (Nature, Springer, BMC)
+  pushed to public branches — a likely redistribution problem independent
+  of this project. Recommended deleting those branches/files rather than
+  merging; only bibliographic metadata belongs in this repo.**
+- Of the uploaded files, one was actually usable as review data:
+  `export_d3841da0-...csv`, a genuine 500-record Scopus export (Authors,
+  Title, Year, Source title, DOI, Link, Document Type, etc. — confirmed
+  real Scopus export header). `Scopus-200-Analyze-Year.csv` was not a
+  document-level export at all — it's Scopus's "Analyze results by Year"
+  aggregate count feature, useful only for reconstructing the *total* hit
+  count (summed to ~5,443 for the unrefined pilot string) and not ingested
+  as data.
+- Wrote and ran `code/search/adapters/scopus_adapter.py` — **validated
+  against a real export**, unlike the still-unvalidated PubMed adapter.
+  Normalized 500 records into `01_search/raw_exports/SEARCH_018_SCOPUS_2026-08-26.csv`,
+  logged as `SEARCH_018` with the real query, the ~5,443 total count, and
+  the gaps (no abstracts in this export; only 500 of ~5,443 exported).
+- Ran the full pipeline on the combined pool (37 WebSearch-pilot + 500
+  Scopus records): `deduplicate.py` found **1 real cross-source
+  duplicate** — the Gaikwad & Thomas 2026 exemplar, independently added
+  earlier from `SOURCES.md`, also appeared in the live Scopus results,
+  correctly matched by DOI. This is the first real validation of the
+  dedup logic against two independent real sources, not synthetic test
+  data. Screening database now has **536 unique records**.
+- Spot-checked the first 15 Scopus titles: a healthy mix of clearly
+  on-topic hits and expected noise from a broad, sensitive Boolean string
+  (corona-discharge hardware, blockchain, coastal-ecosystem valuation) —
+  normal at this stage; screening exists to filter exactly this.
+- Two follow-ups flagged for the researcher: (1) re-export with the
+  Abstract field explicitly selected — none of these 500 records have one;
+  (2) only ~9% of the total ~5,443 matching documents were exported —
+  getting the rest needs either batching (e.g. by year range, since
+  Scopus's bulk-export UI appears to cap a single CSV well below the full
+  result count) or narrowing the query.
+
 ## 2026-08-22 — Initial scaffold
 
 - Repository structure created per the eleven-phase folder architecture

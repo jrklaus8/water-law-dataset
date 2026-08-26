@@ -81,30 +81,32 @@ code/                search / screening / extraction / analysis / figures / tabl
 The OSF preregistration is drafted but not submitted
 ([`00_admin/preregistration/osf_preregistration_draft.md`](00_admin/preregistration/osf_preregistration_draft.md)).
 
-**No Tier 1/2 or legal-repository database has been searched natively** —
-this environment cannot reach any of them (subscription databases need
-credentials it doesn't have; even the free ones, like PubMed, Google
-Scholar, CanLII, and Rechtspraak.nl, are blocked by this environment's
-network egress policy). **If you have working institutional access,
+**Scopus is the first Tier 1 database actually searched for real** — the
+researcher ran the pilot string via EUR institutional access on 2026-08-26
+(`SEARCH_018`), and 500 of the ~5,443 total matching records have been
+exported and ingested (see `CHANGELOG.md` 2026-08-26). Still outstanding:
+the rest of that result set (batched export), abstracts (missed in this
+export's field selection), and every other Tier 1/2/legal-repository
+database. **If you have working institutional access,
 [`01_search/EXECUTION_CHECKLIST.md`](01_search/EXECUTION_CHECKLIST.md) is a
-literal "what to actually click" guide** for running one real search per
-database and getting the export back into this pipeline — this is the
+literal "what to actually click" guide** for the rest — this is the
 single highest-value thing that can happen to this project right now.
+
 Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
 [`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
-has now been run for real, on 37 candidate records surfaced by three rounds of
-an explicitly non-systematic exploratory pilot using Claude's `WebSearch`
-tool (logged as `SEARCH_003`–`SEARCH_017`, including an approximated
-backward-citation search and, finally, 3 of the 4 `SOURCES.md` exemplars
-themselves entered into the pipeline) — **not** a substitute
-for the actual protocol search, and never to be described as one. Those 37
-records sit in the screening database with no screening decision made on
-any of them yet; a non-binding title-only triage memo
-([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md))
-exists to help a future reviewer prioritize. An unvalidated PubMed export
-adapter ([`code/search/adapters/pubmed_adapter.py`](code/search/adapters/pubmed_adapter.py))
-is ready but untested against a live export. A schema-validation script
+has processed all of this together: 37 candidates from three rounds of an
+explicitly non-systematic `WebSearch` pilot (logged `SEARCH_003`–`SEARCH_017`,
+**not** a substitute for the real search and never to be described as one)
+plus the 500 real Scopus records — deduplication caught **1 real
+cross-source duplicate** (the Gaikwad & Thomas 2026 exemplar, matched by
+DOI), leaving **536 unique candidate records**, none yet screened.
+A non-binding title-only triage memo
+([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md),
+currently covering the original 37) exists to help a future reviewer
+prioritize. Export adapters exist for PubMed (unvalidated — no live PubMed
+export exists to test against) and Scopus (**validated against the real
+2026-08-26 export**) in `code/search/adapters/`. A schema-validation script
 ([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
 confirms every project CSV currently matches its documented schema.
 

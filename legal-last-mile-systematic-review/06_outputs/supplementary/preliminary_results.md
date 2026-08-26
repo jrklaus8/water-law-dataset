@@ -34,11 +34,25 @@ evidence of anything.
   resolve at full-text stage.
 - A schema-validation script (`code/analysis/validate_schemas.py`) confirms
   every project CSV's header currently matches its documented schema.
+- **2026-08-26: the pilot Scopus string was run for real**, via the
+  researcher's EUR institutional access, and 500 of the ~5,443 total
+  matching records were exported and ingested (`SEARCH_018` — see
+  `CHANGELOG.md`). This is still not screening, extraction, or a review
+  finding — it's 500 more unscreened title/author/year/DOI records, with
+  the same limitations as the WebSearch pilot (no abstracts in this
+  export) plus new ones of its own (only ~9% of the matching set exported
+  so far). Deduplication against the existing 37 caught 1 real duplicate
+  (the Gaikwad & Thomas 2026 exemplar). Total unscreened pool: **536
+  records**. The title-only triage memo has not yet been extended to cover
+  these 500 — it still only covers the original 37.
 
 ## What has not been done
 
-- **No Tier 1/Tier 2/legal-repository database has been searched natively**
-  (`SEARCH_PROTOCOL.md` §7) — this remains the actual Phase 3 requirement,
+- **No database has been fully searched, and only Scopus has been
+  searched at all, partially** (`SEARCH_PROTOCOL.md` §7–8) — Web of
+  Science, HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts,
+  CanLII, and Rechtspraak.nl remain entirely unsearched, and Scopus itself
+  is ~91% unexported. This remains the actual Phase 3 requirement, largely
   unmet.
 - No screening decision has been made on any record.
 - No study has been included or excluded from the review.
