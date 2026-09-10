@@ -48,26 +48,26 @@ Scopus Advanced Search. Save each export as
 
 | search_id | Years | Est. n | Year clause to AND onto the base string | Status |
 |---|---|---|---|---|
-| SEARCH_019 | 2027 | ~1 | `PUBYEAR = 2027` | Not run |
-| SEARCH_020a | 2026, articles+reviews only | ~? | `PUBYEAR = 2026 AND DOCTYPE(ar OR re)` — see note below | Not run |
-| SEARCH_020b | 2026, everything else | ~? | `PUBYEAR = 2026 AND NOT DOCTYPE(ar OR re)` | Not run |
-| SEARCH_021a | 2025, articles+reviews only | ~? | `PUBYEAR = 2025 AND DOCTYPE(ar OR re)` | Not run |
+| SEARCH_019 | 2027 | ~1 | `PUBYEAR = 2027` | **Done 2026-09-10** — 2 records, with abstracts, ingested |
+| SEARCH_020a | 2026, articles+reviews only | ~? | `PUBYEAR = 2026 AND DOCTYPE(ar OR re)` — see note below | **Done 2026-09-10** — 556 records, with abstracts, ingested |
+| SEARCH_020b | 2026, everything else | ~? | `PUBYEAR = 2026 AND NOT DOCTYPE(ar OR re)` | **Done 2026-09-10** — 100 records, with abstracts, ingested |
+| SEARCH_021a | 2025, articles+reviews only | ~? | `PUBYEAR = 2025 AND DOCTYPE(ar OR re)` | **Done 2026-09-10** — 477 records, with abstracts, ingested |
 | SEARCH_021b | 2025, everything else | 106 (actual) | `PUBYEAR = 2025 AND NOT DOCTYPE(ar OR re)` | **Done 2026-09-10** — 106 records, with abstracts, ingested |
-| SEARCH_022 | 2024 | ~391 | `PUBYEAR = 2024` | Not run |
-| SEARCH_023 | 2023 | ~337 | `PUBYEAR = 2023` | Not run |
-| SEARCH_024 | 2022 | ~326 | `PUBYEAR = 2022` | Not run |
-| SEARCH_025 | 2021 | ~324 | `PUBYEAR = 2021` | Not run |
-| SEARCH_026 | 2020 | ~273 | `PUBYEAR = 2020` | Not run |
-| SEARCH_027 | 2019 | ~254 | `PUBYEAR = 2019` | Not run |
-| SEARCH_028 | 2018 | ~241 | `PUBYEAR = 2018` | Not run |
-| SEARCH_029 | 2016–2017 | ~375 | `PUBYEAR > 2015 AND PUBYEAR < 2018` | Not run |
-| SEARCH_030 | 2014–2015 | ~315 | `PUBYEAR > 2013 AND PUBYEAR < 2016` | Not run |
-| SEARCH_031 | 2012–2013 | ~293 | `PUBYEAR > 2011 AND PUBYEAR < 2014` | Not run |
-| SEARCH_032 | 2009–2011 | ~367 | `PUBYEAR > 2008 AND PUBYEAR < 2012` | Not run |
-| SEARCH_033 | 2003–2008 | ~388 | `PUBYEAR > 2002 AND PUBYEAR < 2009` | Not run |
-| SEARCH_034 | 1928–2002 (everything older) | ~357 | `PUBYEAR > 1927 AND PUBYEAR < 2003` | Not run |
+| SEARCH_022 | 2024 | ~391 | `PUBYEAR = 2024` | **Done 2026-09-10** — 392 records, with abstracts, ingested |
+| SEARCH_023 | 2023 | ~337 | `PUBYEAR = 2023` | **Done 2026-09-10** — 337 records, with abstracts, ingested |
+| SEARCH_024 | 2022 | ~326 | `PUBYEAR = 2022` | **Done 2026-09-10** — 326 records, with abstracts, ingested |
+| SEARCH_025 | 2021 | ~324 | `PUBYEAR = 2021` | **Done 2026-09-10** — 324 records, with abstracts, ingested |
+| SEARCH_026 | 2020 | ~273 | `PUBYEAR = 2020` | **Run but not yet ingested** — researcher's run log records 274 results shown/exported (`SEARCH_026_SCOPUS_2026-09-10.csv`), but that export file has not been sent to Claude yet. Logged nowhere else until the file arrives. |
+| SEARCH_027 | 2019 | ~254 | `PUBYEAR = 2019` | **Done 2026-09-10** — 254 records, with abstracts, ingested |
+| SEARCH_028 | 2018 | ~241 | `PUBYEAR = 2018` | **Done 2026-09-10** — 241 records, with abstracts, ingested |
+| SEARCH_029 | 2016–2017 | ~375 | `PUBYEAR > 2015 AND PUBYEAR < 2018` | **Done 2026-09-10** — 375 records, with abstracts, ingested |
+| SEARCH_030 | 2014–2015 | ~315 | `PUBYEAR > 2013 AND PUBYEAR < 2016` | **Done 2026-09-10** — 315 records, with abstracts, ingested |
+| SEARCH_031 | 2012–2013 | ~293 | `PUBYEAR > 2011 AND PUBYEAR < 2014` | **Done 2026-09-10** — 293 records, with abstracts, ingested |
+| SEARCH_032 | 2009–2011 | ~367 | `PUBYEAR > 2008 AND PUBYEAR < 2012` | **Done 2026-09-10** — 367 records, with abstracts, ingested |
+| SEARCH_033 | 2003–2008 | ~388 | `PUBYEAR > 2002 AND PUBYEAR < 2009` | **Done 2026-09-10** — 388 records, with abstracts, ingested |
+| SEARCH_034 | 1928–2002 (everything older) | ~357 | `PUBYEAR > 1927 AND PUBYEAR < 2003` | **Done 2026-09-10** — 357 records, with abstracts, ingested |
 
-**1 of 18 batches done (SEARCH_021b, 2026-09-10).**
+**17 of 18 batches done (all but SEARCH_026, as of 2026-09-10).** SEARCH_026 was run by the researcher (per `scopus_batch_run_log_20260910.csv`) but its export CSV has not yet been uploaded — this is the one remaining gap.
 
 **Note on 2026 and 2025 (`SEARCH_020`/`SEARCH_021`):** these two years
 alone (619 and 583 records) exceed the 500-record ceiling even as single
@@ -101,9 +101,12 @@ number of unscreened records.
 
 ## Status
 
-1 of 18 batches executed as of 2026-09-10: `SEARCH_021b` (2025,
-non-article/review types, 106 records, **with abstracts** — the first
-abstract-bearing data in this project). `SEARCH_018` (the original 500,
-no abstracts) is separate from this plan. 17 batches remain, including
-`SEARCH_021a` (2025 articles+reviews — the substantive half of the year
-this batch's sibling only covered the "everything else" side of).
+17 of 18 batches executed as of 2026-09-10: every batch in this plan
+except `SEARCH_026` (2020, ~274 records per the researcher's own run log
+`scopus_batch_run_log_20260910.csv`, run but its export CSV not yet
+uploaded to Claude). All 17 completed batches were exported **with
+abstracts** (Author Keywords and Index Keywords too), the same as the
+first batch, `SEARCH_021b`. `SEARCH_018` (the original 500, no abstracts)
+is separate from this plan. Once `SEARCH_026`'s export file arrives, all
+18 batches will be complete and Scopus itself fully searched per this
+plan's design.

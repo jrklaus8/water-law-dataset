@@ -268,6 +268,64 @@ been reached.
   (articles + reviews) is where the more substantive primary research is
   expected to land.
 
+## 2026-09-10 (later) — 17 of 18 Scopus batches ingested
+
+- Received and processed the remaining 16 batches of
+  `scopus_batch_plan_2026-08-26.md` in one round: `SEARCH_019` (2027, 2),
+  `SEARCH_020a` (2026 articles+reviews, 556), `SEARCH_020b` (2026
+  everything else, 100), `SEARCH_021a` (2025 articles+reviews, 477),
+  `SEARCH_022` (2024, 392), `SEARCH_023` (2023, 337), `SEARCH_024` (2022,
+  326), `SEARCH_025` (2021, 324), `SEARCH_027` (2019, 254), `SEARCH_028`
+  (2018, 241), `SEARCH_029` (2016–2017, 375), `SEARCH_030` (2014–2015,
+  315), `SEARCH_031` (2012–2013, 293), `SEARCH_032` (2009–2011, 367),
+  `SEARCH_033` (2003–2008, 388), `SEARCH_034` (1928–2002, 357). All 16
+  were exported with Abstract, Author Keywords, and Index Keywords, same
+  as `SEARCH_021b`. Every native file preserved untouched in
+  `01_search/raw_exports/native/`; every normalized file in
+  `01_search/raw_exports/`; every batch logged as its own row in
+  `search_log.csv`, built from the researcher's own authoritative run log
+  (`scopus_batch_run_log_20260910.csv`) rather than reconstructed — every
+  exported-record count cross-checked against that log and against an
+  independent row count of each raw file, all matching exactly. Confirms
+  `SEARCH_020a`/`SEARCH_021a`'s earlier finding that there is no hard
+  500-record export ceiling when signed in via EUR proxy — both
+  oversized DOCTYPE halves (556 and 477 records) exported whole.
+- 17 of the 18 planned batches are now done. `SEARCH_026` (2020, ~274
+  records per the run log) was run by the researcher but its export CSV
+  has not been uploaded to this project yet — flagged in
+  `scopus_batch_plan_2026-08-26.md` as the one remaining gap.
+- Re-ran `code/search/deduplicate.py` across the full accumulated corpus
+  (all `01_search/raw_exports/*.csv`): **5,208 unique records kept, 539
+  duplicates merged** (mostly by DOI match; several backfilled a missing
+  abstract from the surviving record's duplicate per the existing
+  backfill rule). Re-ran `code/screening/init_screening_db.py`: 4,659 new
+  records appended, 501 existing records backfilled with an abstract they
+  previously lacked.
+- **Found and fixed a latent record_id collision bug** surfaced by this
+  round's scale: `deduplicate.py` assigns `record_id` positionally
+  (`R0001`, `R0002`, ...) by file-processing order across
+  `01_search/raw_exports/`. Adding 16 new files shifted that ordering
+  enough that 13 IDs in the new dedup run collided with unrelated,
+  already-screened-pool records from earlier rounds (same ID, different
+  title/DOI). `init_screening_db.py`'s existing safety check correctly
+  refused to overwrite the 13 old rows (so nothing was corrupted), but
+  also silently skipped appending the 13 legitimately-new records under
+  those colliding IDs — a real (if narrow) data-loss risk, not a
+  duplicate. Manually verified all 13 were genuinely different
+  title+DOI pairs, then appended them under 13 fresh unused IDs
+  (`R5748`–`R5760`). **This is a structural limitation of the current
+  positional ID scheme, not a one-off bug** — it will recur any time a
+  new file is added whose sort position is before existing files' tail
+  end and the corpus is large enough for a same-position collision;
+  a content-hash-based `record_id` would eliminate it, but that is a
+  larger migration (it would need to remap 5,300+ existing IDs) and is
+  left as a known follow-up rather than done inline here.
+- Screening database now has **5,314 unique records, 5,279 of which have
+  a real abstract**. `code/analysis/validate_schemas.py` confirms all 8
+  checked project CSVs still match their documented schema after this
+  round. No screening decision has been made on any of them — this is
+  still search, not screening.
+
 ## 2026-08-26 (latest) — Scopus batch export plan
 
 - Added `01_search/scopus_batch_plan_2026-08-26.md`: 16 ready-to-paste

@@ -57,21 +57,43 @@ evidence of anything.
   still not screening: `title_abstract_decision` remains blank on all 642,
   including the 106 with abstracts — nothing has been screened yet, only
   the precondition for real screening (an actual abstract to read) now
-  exists for a subset. Note `SEARCH_021b` is specifically the
-  non-article/non-review half of 2025 (book chapters, an erratum, etc.);
-  `SEARCH_021a` (articles and reviews) has not been run yet and is where
-  more substantive primary research is expected.
+  exists for a subset.
+- **2026-09-10 (later): 16 more batches of `scopus_batch_plan_2026-08-26.md`
+  were run and ingested — 17 of 18 planned batches now done, all with real
+  abstracts.** This includes `SEARCH_021a` (2025 articles+reviews, 477
+  records — the substantive sibling `SEARCH_021b` didn't cover) plus every
+  other year/year-range from 2027 back to 1928. Confirmed there is no hard
+  500-record Scopus export ceiling when signed in: both oversized DOCTYPE
+  halves (`SEARCH_020a`, 556 records; `SEARCH_021a`, 477 records) exported
+  whole. Every batch's exported-record count was cross-checked against the
+  researcher's own authoritative run log
+  (`scopus_batch_run_log_20260910.csv`) and an independent row count of
+  each raw file — all matching exactly, no truncation or data loss. The
+  full corpus (5,747 raw records across 18 Scopus exports plus the earlier
+  WebSearch pilot and exemplars) was re-deduplicated as one pool: 539
+  duplicates merged. Total unscreened pool is now **5,314 records, of
+  which 5,279 have a real abstract** — still zero screening decisions
+  made on any of them. Processing this round also surfaced and fixed a
+  latent bug in how `deduplicate.py` assigns record IDs (positional, so
+  vulnerable to collision as new files are added across rounds); 13
+  affected records were recovered under fresh IDs rather than lost — see
+  `CHANGELOG.md` 2026-09-10 (later) for the full account and the
+  follow-up this leaves open. `SEARCH_026` (2020, ~274 records per the
+  run log) was run by the researcher but its export file has not been
+  uploaded to this project yet — the one remaining gap in the 18-batch
+  plan.
 
 ## What has not been done
 
 - **No database has been fully searched, and only Scopus has been
-  searched at all, partially** (`SEARCH_PROTOCOL.md` §7–8) — Web of
-  Science, HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts,
-  CanLII, and Rechtspraak.nl remain entirely unsearched, and Scopus itself
-  is still well under half exported (606 of ~5,443+, 17 of 18 planned
-  batches remaining). This remains the actual Phase 3 requirement, largely
-  unmet.
-- No screening decision has been made on any record — not even the 106
+  searched at all** (`SEARCH_PROTOCOL.md` §7–8) — Web of Science,
+  HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts, CanLII,
+  and Rechtspraak.nl remain entirely unsearched. Scopus itself is nearly
+  complete (5,247 of ~5,443+ exported, 17 of 18 planned batches done,
+  only `SEARCH_026`'s export file outstanding), but that is one database
+  out of the full `SEARCH_PROTOCOL.md` list. This remains the actual
+  Phase 3 requirement, still largely unmet.
+- No screening decision has been made on any record — not even the 5,279
   that now have a real abstract and could technically be screened.
 - No study has been included or excluded from the review.
 - No data has been extracted.
