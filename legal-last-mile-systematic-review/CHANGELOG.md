@@ -9,7 +9,52 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-10 (final) — First-pass AI title/abstract screening, all 5,173 abstract-bearing records
+## 2026-09-10 (final) — Reviewer 2 prep packet, PRISMA flow diagram, RIS adapter
+
+- **Built the reviewer_2 handoff.** `02_screening/title_abstract/
+  reviewer_2_queue.csv`: every `include`/`unsure` record from the AI
+  first pass (1,608 rows), with title/abstract/authors/year/doi/url and
+  the first-pass rationale attached, so a human second reviewer works
+  from one file instead of filtering a 5,208-row database by hand.
+  `exclude_spotcheck_sample.csv`: a random, fixed-seed (`20260910`,
+  reproducible) 100-record sample of the 3,565 first-pass excludes, for
+  false-negative spot-checking rather than a full second pass over every
+  exclude — standard systematic-review QA practice. `REVIEWER_2_README.md`
+  explains how to use both and is explicit that screening only these
+  1,608 does not by itself satisfy `PROTOCOL.md`'s two-reviewer
+  requirement for the whole title/abstract stage. Both new CSVs added to
+  `validate_schemas.py` and `DATA_DICTIONARY.md`.
+- **Populated `06_outputs/prisma/prisma_flow.md`** (previously an
+  all-placeholder stub) with real counts through the title/abstract
+  screening stage: 5,710 records identified from Scopus, 37 from the
+  WebSearch pilot/exemplars, 539 duplicates removed, 5,173 screened (35
+  left unscreened — no abstract), 3,565 excluded (full E01–E12 code
+  breakdown), 1,608 carried forward. Everything from "reports sought for
+  retrieval" onward is left genuinely blank — that work hasn't started —
+  and every screening-stage number is explicitly flagged provisional
+  (reviewer_1/AI only, no `reviewer_2` yet).
+- **Added `code/search/adapters/ris_adapter.py`**: one shared,
+  **unvalidated** adapter for the RIS citation-export format, covering
+  HeinOnline, ProQuest, Sociological Abstracts, JSTOR, and SSRN — all of
+  which offer RIS export per their `database_strategies/*.md` files.
+  Grounded in the RIS format itself (a real, long-published standard),
+  not a guessed platform-specific CSV layout, which is why one adapter
+  can responsibly cover five platforms at once. Handles multiple authors,
+  wrapped/continuation lines, and both common tag variants per field
+  (TI/T1, PY/Y1, AB/N2, UR/L1/L2) — tested against synthetic RIS data
+  covering all of that plus a missing-title record and a not-actually-RIS
+  file, both of which fail cleanly rather than silently producing
+  garbage.
+- **Deliberately did not** build adapters for Westlaw/Lexis (neither
+  platform offers a standard bulk export to build against without
+  guessing — `PROJECT_SPEC.md` §14) or for CanLII/Rechtspraak.nl/
+  Brazilian court portals/ANA-SNIS (these feed the doctrinal/jurimetric
+  strand of the project, not this screening pipeline — merging their
+  hits through this pipeline would be wrong, not just premature). Each
+  `database_strategies/*.md` file now says so explicitly rather than
+  leaving the absence unexplained.
+
+## 2026-09-10 (earlier) — First-pass AI title/abstract screening, all 5,173 abstract-bearing records
 
 - **Real title/abstract screening against `INCLUSION_EXCLUSION.md` has now
   actually happened**, for the first time in this project, on every

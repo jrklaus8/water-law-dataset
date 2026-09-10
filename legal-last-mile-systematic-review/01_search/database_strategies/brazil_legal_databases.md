@@ -43,4 +43,8 @@ candidate **grey-literature / administrative-record sources**:
   specific service (water supply vs. sewage vs. drainage vs. waste) a given
   source actually addresses, per the scope-discipline rule
   (`PROJECT_SPEC.md` §2).
-- Status: **not yet executed.**
+- Status: **not yet executed.** No adapter exists, deliberately — same
+  reason as `canlii.md`/`rechtspraak.md` for the court portals; ANA/SNIS
+  are administrative datasets, not a literature search, and any figure
+  pulled from them is hand-extracted grey-literature data rather than
+  something a search-export adapter would parse.

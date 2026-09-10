@@ -44,4 +44,7 @@ exclusion OR inclusion OR "service delivery"
   recognition", "regularização fundiária", "aansluitplicht") combined with
   "water" OR "sanitation", to surface doctrinal/legal-scholarship pieces
   that a full-text search would bury.
-- Status: **not yet executed.**
+- Status: **not yet executed.** An adapter (`code/search/adapters/ris_adapter.py`,
+  shared with ProQuest/Sociological Abstracts/JSTOR/SSRN since it parses
+  the RIS format itself rather than a platform-specific CSV) is written
+  and ready — **unvalidated** against a real HeinOnline export.

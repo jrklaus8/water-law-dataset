@@ -55,4 +55,11 @@ exclusion OR inclusion OR "service delivery")
   results, fall back to `/s` "document contains all three clause sets"
   behavior via the platform's full-text AND, and log which connector was
   actually used.
-- Status: **not yet executed.**
+- Status: **not yet executed.** No adapter exists for either platform yet,
+  deliberately — unlike Scopus/WoS/PubMed/HeinOnline/ProQuest/JSTOR/SSRN,
+  Westlaw and Lexis don't offer a standard bulk CSV/RIS export to build
+  against without guessing (`PROJECT_SPEC.md` §14 forbids inventing
+  structure that hasn't been verified). Whatever export format the
+  researcher's actual access produces (likely a Word/RTF/PDF citation
+  list rather than structured data) will need an adapter built against
+  that real file once it exists.

@@ -35,4 +35,6 @@ inschrijving OR BRP OR BSN) AND (drinkwater OR aansluiting OR riolering)
   registration) — do not treat a registration-system dispute as a direct
   water-connection eligibility dispute without checking which of the three
   it actually is.
-- Status: **not yet executed.**
+- Status: **not yet executed.** No adapter exists, deliberately — same
+  reason as `canlii.md`: these hits feed the doctrinal/jurimetric strand,
+  not the household-level empirical screening pipeline.

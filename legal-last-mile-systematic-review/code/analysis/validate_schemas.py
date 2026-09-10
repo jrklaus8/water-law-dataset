@@ -57,6 +57,14 @@ HARDCODED_SCHEMAS = {
     "02_screening/title_abstract/ai_first_pass_rationale.csv": [
         "record_id", "title_abstract_decision", "exclusion_reason", "rationale",
     ],
+    "02_screening/title_abstract/reviewer_2_queue.csv": [
+        "record_id", "title_abstract_decision", "year", "authors", "title",
+        "doi", "url", "abstract", "ai_rationale",
+    ],
+    "02_screening/title_abstract/exclude_spotcheck_sample.csv": [
+        "record_id", "exclusion_reason", "year", "authors", "title",
+        "doi", "url", "abstract", "ai_rationale",
+    ],
     "03_extraction/extracted_data/extraction_database.csv": [
         "study_id", "citation", "doi", "publication_year", "publication_type",
         "language", "database_source", "peer_reviewed", "country",

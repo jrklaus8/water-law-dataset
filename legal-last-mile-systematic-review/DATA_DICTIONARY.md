@@ -56,6 +56,20 @@ first pass) can see *why* without re-reading every abstract from scratch.
 | exclusion_reason | string | E01–E12 if excluded, blank otherwise |
 | rationale | text | one short sentence, free text |
 
+## `02_screening/title_abstract/reviewer_2_queue.csv` and `exclude_spotcheck_sample.csv`
+
+Generated 2026-09-10 from `screening_database.csv` (see
+`REVIEWER_2_README.md` for how to use them) — working copies for the human
+`reviewer_2` pass, not authoritative on their own. `reviewer_2_queue.csv`
+is every `include`/`unsure` record from the first pass (1,608 rows);
+`exclude_spotcheck_sample.csv` is a random, fixed-seed (`20260910`) 100-row
+sample of the 3,565 first-pass excludes, for false-negative QA rather than
+full review. Both carry the same bibliographic fields as
+`screening_database.csv` plus `ai_rationale` (from
+`ai_first_pass_rationale.csv`) for context. Neither file's `reviewer_2`
+input feeds back into these CSVs automatically — write the actual second
+decision into `screening_database.csv`'s own `reviewer_2` column.
+
 ## `03_extraction/extracted_data/extraction_database.csv`
 
 All fields follow `CODEBOOK.md` §1–12 exactly, in the same order as the CSV

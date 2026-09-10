@@ -39,4 +39,9 @@ strand, kept distinct per the jurisdictional-discipline rule in
   as a legal-institutional evidence source per `RISK_OF_BIAS.md`) must be
   recorded with its own `study_id`, distinct from its row in the judicial
   dataset — the two datasets are never merged (`PROJECT_SPEC.md` §9).
-- Status: **not yet executed.**
+- Status: **not yet executed.** No adapter exists, deliberately: hits
+  from this search feed the doctrinal/jurimetric strand, not
+  `02_screening/title_abstract/screening_database.csv` (see the note
+  above) — building a normalize-into-common-schema adapter for the
+  Scopus/WoS-style pipeline would actively route these records to the
+  wrong place, not just be premature.

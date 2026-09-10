@@ -33,4 +33,8 @@ exclusion OR inclusion OR inequality OR inequity OR "service delivery")
   "administrative agencies") to catch records indexed on subject rather than
   keyword — log this as a second `search_id` in the search log rather than
   merging it into the main string.
-- Status: **not yet executed.**
+- Status: **not yet executed.** An adapter (`code/search/adapters/ris_adapter.py`,
+  shared with HeinOnline/JSTOR/SSRN) is written and ready if exporting as
+  RIS — **unvalidated** against a real ProQuest/Sociological Abstracts
+  export. If exporting as CSV instead, a separate adapter would need to
+  be built against that real file's actual column names.

@@ -65,4 +65,8 @@ barrier" OR "regulatory governance" OR "land tenure")
   supplement, not replace, the Tier 1 database searches, and are
   particularly useful for grey/working-paper versions of studies later
   published in Tier 1 venues.
-- Status: **not yet executed.**
+- Status: **not yet executed.** For JSTOR and SSRN (not Google Scholar,
+  which has no bulk export at all — see above): an adapter
+  (`code/search/adapters/ris_adapter.py`, shared with HeinOnline/ProQuest)
+  is written and ready if exporting as RIS — **unvalidated** against a
+  real export from either.
