@@ -71,17 +71,52 @@ evidence of anything.
   each raw file — all matching exactly, no truncation or data loss. The
   full corpus (5,747 raw records across 18 Scopus exports plus the earlier
   WebSearch pilot and exemplars) was re-deduplicated as one pool: 539
-  duplicates merged. Total unscreened pool is now **5,314 records, of
+  duplicates merged. Total pool at that point: **5,314 records, of
   which 5,279 have a real abstract** — still zero screening decisions
-  made on any of them. Processing this round also surfaced and fixed a
-  latent bug in how `deduplicate.py` assigns record IDs (positional, so
-  vulnerable to collision as new files are added across rounds); 13
-  affected records were recovered under fresh IDs rather than lost — see
-  `CHANGELOG.md` 2026-09-10 (later) for the full account and the
-  follow-up this leaves open. `SEARCH_026` (2020, ~274 records per the
-  run log) was run by the researcher but its export file has not been
-  uploaded to this project yet — the one remaining gap in the 18-batch
-  plan.
+  made on any of them. Processing this round also surfaced a latent bug
+  in how `deduplicate.py` assigns record IDs (positional, so vulnerable
+  to collision as new files are added across rounds); 13 affected records
+  were recovered under fresh IDs rather than lost. `SEARCH_026` (2020,
+  ~274 records per the run log) was run by the researcher but its export
+  file has not been uploaded to this project yet — the one remaining gap
+  in the 18-batch plan.
+- **2026-09-10 (later still): the record_id bug above was actually fixed**,
+  not just patched around — `record_id` is now a stable content hash
+  (normalized DOI, or title+year) rather than a positional index, so it
+  can never again collide just because new files shifted the sort order.
+  Regenerating everything under the new scheme (from the same raw data,
+  verified zero data loss against the previous 5,314-row state) landed on
+  **5,208 unique records, 5,173 with a real abstract** — the 106-record
+  drop is genuine duplicates the old positional-ID incremental matching
+  had missed across earlier rounds, not lost data. Also added an
+  unvalidated Web of Science adapter (`code/search/adapters/wos_adapter.py`)
+  so that search is ready to ingest instantly once run.
+- **2026-09-10 (final): real title/abstract screening has now actually
+  happened, for the first time in this project.** All 5,173 abstract-bearing
+  records were screened against `INCLUSION_EXCLUSION.md` by Claude, acting
+  as a first-pass AI reviewer — the researcher was explicitly asked
+  whether an AI first pass should count toward this project's two-reviewer
+  process, per `PROJECT_SPEC.md` §14.18, and authorized it. Screening ran
+  as 15 independently-validated batches (~350 records each): every
+  batch's output was checked for exact record coverage/order, valid
+  decision values, and a code on every exclusion before being merged — no
+  already-decided record was ever at risk of being overwritten.
+  **Result: 1,436 include, 3,565 exclude, 172 unsure** (35 records
+  without a real abstract were left undecided, consistent with this
+  project's non-binding-triage convention for title-only records).
+  Exclusion codes, most to least common: E01 wrong topic (1,555), E06
+  engineering only (780), E05 no empirical evidence (487), E07 wrong
+  service (320), E04 wrong outcome (255), E03 water-quality-only (65),
+  E09 insufficient information (63), E02 wrong population (21), E08
+  duplicate (18), E11 wrong jurisdiction/context (1) — consistent with
+  this being a deliberately broad, high-recall Boolean search expected to
+  surface a lot of engineering/hydrology noise. **This is not a final
+  decision on any record.** No human `reviewer_2` pass or conflict
+  resolution has happened; `unsure` records should be treated the same as
+  `include` for full-text-screening purposes (a first-pass reviewer's
+  genuine uncertainty, not a rejection). Full-text screening (Phase 6) is
+  not yet possible at scale on this pool until a human second reviewer's
+  pass exists to reconcile against this one.
 
 ## What has not been done
 
@@ -93,9 +128,15 @@ evidence of anything.
   only `SEARCH_026`'s export file outstanding), but that is one database
   out of the full `SEARCH_PROTOCOL.md` list. This remains the actual
   Phase 3 requirement, still largely unmet.
-- No screening decision has been made on any record — not even the 5,279
-  that now have a real abstract and could technically be screened.
-- No study has been included or excluded from the review.
+- **A human `reviewer_2` title/abstract pass has not been done, and no
+  conflict resolution has happened** — the 1,436 include / 172 unsure
+  records from Claude's first-pass screening are candidates, not settled
+  inclusions. `PROTOCOL.md`'s two-reviewer process is only half-done.
+- No study has been finally included or excluded from the review — the
+  3,565 first-pass excludes and 1,436 first-pass includes are both
+  provisional until a second reviewer's pass exists to check them
+  against.
+- No full-text screening has happened on any record.
 - No data has been extracted.
 - No risk-of-bias appraisal has been performed.
 - No quantitative-feasibility determination has been made for any candidate

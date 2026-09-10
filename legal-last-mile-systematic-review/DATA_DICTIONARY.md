@@ -40,6 +40,22 @@ the actual CSV headers.
 | conflict | boolean | true if reviewer_1 ≠ reviewer_2 decision |
 | final_decision | enum | `include` / `exclude`, after conflict resolution |
 
+## `02_screening/title_abstract/ai_first_pass_rationale.csv`
+
+Supplementary audit trail for Claude's `reviewer_1` first pass (added
+2026-09-10) — not a schema field of `screening_database.csv` itself, and
+not consulted by any script. One row per screened record, giving the
+short (<25 word) rationale behind that record's `title_abstract_decision`
+and `exclusion_reason`, so a human `reviewer_2` (or anyone auditing the
+first pass) can see *why* without re-reading every abstract from scratch.
+
+| Field | Type | Notes |
+|---|---|---|
+| record_id | string | matches `screening_database.csv` |
+| title_abstract_decision | enum | `include` / `exclude` / `unsure`, must match `screening_database.csv` for this record_id |
+| exclusion_reason | string | E01–E12 if excluded, blank otherwise |
+| rationale | text | one short sentence, free text |
+
 ## `03_extraction/extracted_data/extraction_database.csv`
 
 All fields follow `CODEBOOK.md` §1–12 exactly, in the same order as the CSV

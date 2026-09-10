@@ -9,6 +9,60 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-10 (final) — First-pass AI title/abstract screening, all 5,173 abstract-bearing records
+
+- **Real title/abstract screening against `INCLUSION_EXCLUSION.md` has now
+  actually happened**, for the first time in this project, on every
+  record with a real abstract. This is a first pass by Claude, explicitly
+  authorized by the researcher as an AI reviewer (`reviewer_1`) — per
+  `PROTOCOL.md` §"Selection process" ("two reviewers where feasible") and
+  `PROJECT_SPEC.md` §14.18 ("ask for human confirmation when a major
+  methodological choice is genuinely ambiguous"), this was surfaced to
+  the researcher as a choice rather than decided unilaterally, then
+  proceeded on explicit instruction. **`reviewer_2` (a human) and
+  conflict resolution have not happened — these decisions are
+  provisional, not final**, exactly like any single reviewer's pass in a
+  real dual-review PRISMA process.
+- Method: the 5,173 records with a real abstract were split into 15
+  batches of ~350 and screened independently by subagents, each reading
+  `INCLUSION_EXCLUSION.md` directly and applying its 9 inclusion criteria,
+  11 exclusion criteria, and E01–E12 exclusion-code table. Every batch's
+  output was validated before merging: exact record_id order and coverage
+  match against its input, every `exclude` decision carries exactly one
+  valid E01–E12 code, no `include`/`unsure` row carries a stray code, no
+  duplicate record_ids across batches, and no already-decided row was
+  ever touched (the merge script refuses outright on any of these). The
+  35 records without a real abstract (grey literature / older exports)
+  were deliberately left undecided — this project's own convention (see
+  `title_only_triage_memo.md`) is that title-only triage is non-binding,
+  never a substitute for reading an abstract.
+- **Results: 1,436 include / 3,565 exclude / 172 unsure**, out of 5,173
+  screened (35 of 5,208 total records left undecided, no abstract).
+  Exclusion code breakdown: E01 wrong topic 1,555; E06 engineering only
+  780; E05 no empirical evidence 487; E04 wrong outcome 255; E07 wrong
+  service 320; E03 water-quality-only 65; E09 insufficient information
+  63; E02 wrong population 21; E08 duplicate 18; E11 wrong
+  jurisdiction/context 1. Consistent with the batch plan's own
+  expectation (`scopus_batch_plan_2026-08-26.md`, `EXECUTION_CHECKLIST.md`)
+  that this broad, high-recall OR-heavy Boolean search would surface a
+  lot of engineering/hydrology/water-quality noise alongside the
+  genuinely on-topic records.
+- `reviewer_1` is set to `Claude-AI-1stpass-2026-09-10` on every screened
+  row, so it's always traceable which decisions came from this pass
+  versus a human reviewer. `title_abstract_decision` of `unsure` should
+  be treated the same as `include` for full-text-stage purposes (proceed
+  to read it) — these are records the first-pass reviewer explicitly
+  could not confidently resolve from title+abstract alone, not a
+  rejection.
+- **What this is not**: not a final inclusion/exclusion decision (needs
+  `reviewer_2` and conflict resolution per `PROTOCOL.md`), not full-text
+  screening, not data extraction, not risk-of-bias appraisal. The 1,436
+  (+172 unsure = up to 1,608) candidate records are the pool that Phase 6
+  (full-text screening) will actually work from once a human reviewer's
+  pass exists to compare against.
+- `code/analysis/validate_schemas.py` confirms all 8 checked project CSVs
+  still match their documented schema after this round.
+
 ## 2026-09-10 (later still) — Stable record_id migration; Web of Science adapter
 
 - **Replaced positional `record_id` assignment with a stable content

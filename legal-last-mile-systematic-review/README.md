@@ -104,10 +104,21 @@ explicitly non-systematic `WebSearch` pilot (logged `SEARCH_003`–`SEARCH_017`,
 files — the 2026-09-10 full re-run of the deduplication script caught
 **539 duplicates** (mostly DOI matches, on top of the 1 earlier
 cross-source duplicate, the Gaikwad & Thomas 2026 exemplar), leaving
-**5,314 unique candidate records, 5,279 of which have a real abstract**.
-None have a screening decision yet — real title/abstract screening
-against `INCLUSION_EXCLUSION.md` is technically possible on nearly the
-whole pool now, but hasn't been done.
+**5,208 unique candidate records, 5,173 of which have a real abstract**.
+`record_id` is now a stable content hash rather than a positional index
+(`CHANGELOG.md` 2026-09-10, later still), closing a collision risk found
+the same day.
+
+**All 5,173 abstract-bearing records have now been screened** against
+`INCLUSION_EXCLUSION.md` by Claude acting as a first-pass AI reviewer —
+explicitly authorized by the researcher as a methodological choice, per
+`PROJECT_SPEC.md` §14.18 — with results independently validated batch by
+batch before merging (`CHANGELOG.md` 2026-09-10, final). **Result: 1,436
+include / 3,565 exclude / 172 unsure.** This is a **provisional first
+pass only**: no human `reviewer_2` or conflict resolution has happened
+yet, so no record's inclusion is final — real dual-review PRISMA
+screening still needs a second, human pass before Phase 6 (full-text
+screening) can treat this pool as settled.
 A non-binding title-only triage memo
 ([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md),
 still only covering the original 37) exists to help a future reviewer
