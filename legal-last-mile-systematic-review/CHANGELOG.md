@@ -222,6 +222,52 @@ been reached.
   (recoverable by anyone with the old commit SHA) — a harder guarantee
   would need branch deletion (blocked here) or a GitHub-side history purge.
 
+## 2026-09-10 — First abstracts; SEARCH_021b ingested
+
+- Received the first batch from `scopus_batch_plan_2026-08-26.md`:
+  `SEARCH_021b` (2025, non-article/non-review document types — the
+  "everything else" half of the 2025 split; `SEARCH_021a`, articles and
+  reviews, has not been run yet), 106 records. **This export includes
+  Abstract, Author Keywords, and Index Keywords** — the first real
+  abstract-bearing data in this project.
+- Amended the project schema to actually carry this through, since
+  neither the adapter nor the screening database had an `abstract` field
+  before now:
+  - `code/search/deduplicate.py`: added `abstract` as an *optional*
+    normalized field (not required — older files without it still load).
+    Also fixed a latent correctness bug this surfaced: when two sources
+    describe the same record and only one has an abstract, the dedup
+    logic was keeping whichever file sorted first alphabetically and
+    discarding the other's abstract along with the duplicate. Now the
+    kept record is backfilled with the abstract if it was missing one —
+    verified with a synthetic test using filenames ordered the way they
+    actually appear in production (abstract-less source sorting first),
+    which is the case that would have silently failed before.
+  - `code/screening/init_screening_db.py`: same backfill logic for a
+    record already sitting in the screening database from an earlier,
+    abstract-less run — the one narrow exception to "never touch an
+    existing row," since backfilling a blank abstract isn't touching a
+    decision field.
+  - `code/search/adapters/scopus_adapter.py`: now maps the Abstract
+    column through when present (previously just warned that it existed
+    and dropped it).
+  - Migrated all 536 existing `screening_database.csv` rows to the new
+    16-field schema (blank `abstract`) rather than leaving them on an
+    incompatible header.
+- Ran the full pipeline on the combined pool: 0 new duplicates from this
+  batch specifically (the one duplicate in the log is the pre-existing
+  Gaikwad & Thomas exemplar match from 2026-08-26). Screening database now
+  has **642 unique records, 106 of which have a real abstract** for the
+  first time — real title/abstract screening against
+  `INCLUSION_EXCLUSION.md` is now possible on that subset, though it
+  hasn't been done yet.
+- Note on this specific batch's composition: because `SEARCH_021b` is
+  deliberately the non-article/review half of 2025 (book chapters,
+  conference papers, an erratum, etc. — see the batch plan), it is not
+  representative of Scopus's 2025 output as a whole; `SEARCH_021a`
+  (articles + reviews) is where the more substantive primary research is
+  expected to land.
+
 ## 2026-08-26 (latest) — Scopus batch export plan
 
 - Added `01_search/scopus_batch_plan_2026-08-26.md`: 16 ready-to-paste

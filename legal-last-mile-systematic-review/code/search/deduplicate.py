@@ -21,6 +21,15 @@ schema, one row per record:
 
     title, authors, year, doi, url, database, search_id
 
+plus one optional field, `abstract` -- present when the source export
+included it (added 2026-09-10, once the first Scopus batch with Abstract
+selected in the field picker arrived), blank otherwise. `abstract` is not
+part of the required-columns check below, so files from before this field
+existed still load fine; it is carried through to the output when present
+because real title/abstract screening (INCLUSION_EXCLUSION.md) is not
+possible without it -- everything ingested before 2026-09-10 is title-only
+and was screened, or awaits screening, on that weaker basis.
+
 `url` matters as much as `doi` in practice: much grey literature and many
 non-indexed sources carry no DOI at all, and without a URL such a record
 cannot be relocated later. Writing the per-database "raw export ->
@@ -58,8 +67,9 @@ import sys
 from pathlib import Path
 
 NORMALIZED_FIELDS = ["title", "authors", "year", "doi", "url", "database", "search_id"]
+OPTIONAL_FIELDS = ["abstract"]  # carried through when present; never required
 OUTPUT_FIELDS = [
-    "record_id", "database", "title", "authors", "year", "doi", "url",
+    "record_id", "database", "title", "authors", "year", "doi", "url", "abstract",
     "duplicate", "title_abstract_decision", "full_text_decision",
     "exclusion_reason", "reviewer_1", "reviewer_2", "conflict", "final_decision",
 ]
@@ -130,10 +140,19 @@ def deduplicate(records: list[dict]) -> tuple[list[dict], list[dict]]:
                     break
 
         if match_idx is not None:
+            # Never let a merge silently discard a richer record's abstract.
+            # File processing order (alphabetical by filename) has no
+            # relationship to data quality -- an older, title-only source
+            # can easily be "kept" over a newer duplicate that has an
+            # abstract. Backfill rather than drop it.
+            upgraded_abstract = False
+            if not (kept[match_idx].get("abstract") or "").strip() and (rec.get("abstract") or "").strip():
+                kept[match_idx]["abstract"] = rec["abstract"]
+                upgraded_abstract = True
             merge_log.append({
                 "dropped_record_id": rec["record_id"],
                 "kept_record_id": kept[match_idx]["record_id"],
-                "match_rule": match_rule,
+                "match_rule": match_rule + ("+abstract_backfilled" if upgraded_abstract else ""),
                 "dropped_title": rec.get("title", ""),
                 "kept_title": kept[match_idx].get("title", ""),
             })
@@ -163,6 +182,7 @@ def write_output(kept: list[dict], merge_log: list[dict], output_dir: Path) -> N
                 "year": rec.get("year", ""),
                 "doi": rec.get("doi", ""),
                 "url": rec.get("url", ""),
+                "abstract": rec.get("abstract", ""),
                 "duplicate": "false",
                 "title_abstract_decision": "",
                 "full_text_decision": "",

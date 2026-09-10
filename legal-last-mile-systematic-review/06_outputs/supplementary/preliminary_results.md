@@ -42,9 +42,25 @@ evidence of anything.
   the same limitations as the WebSearch pilot (no abstracts in this
   export) plus new ones of its own (only ~9% of the matching set exported
   so far). Deduplication against the existing 37 caught 1 real duplicate
-  (the Gaikwad & Thomas 2026 exemplar). Total unscreened pool: **536
-  records**. The title-only triage memo has not yet been extended to cover
-  these 500 — it still only covers the original 37.
+  (the Gaikwad & Thomas 2026 exemplar). Total unscreened pool at that
+  point: 536 records. The title-only triage memo has not yet been
+  extended to cover these 500 — it still only covers the original 37.
+- **2026-09-10: the first batch of `scopus_batch_plan_2026-08-26.md` was
+  run — `SEARCH_021b`, 106 records — and it includes real abstracts.**
+  This is the first time abstract text has entered this project. The
+  schema was amended project-wide to carry it through (see
+  `CHANGELOG.md`), including migrating the 536 pre-existing screening-
+  database rows and fixing a dedup bug the change surfaced (a duplicate's
+  abstract could have been silently discarded depending on file-processing
+  order — fixed and verified with a synthetic test). Total unscreened
+  pool: **642 records, of which 106 now have a real abstract**. This is
+  still not screening: `title_abstract_decision` remains blank on all 642,
+  including the 106 with abstracts — nothing has been screened yet, only
+  the precondition for real screening (an actual abstract to read) now
+  exists for a subset. Note `SEARCH_021b` is specifically the
+  non-article/non-review half of 2025 (book chapters, an erratum, etc.);
+  `SEARCH_021a` (articles and reviews) has not been run yet and is where
+  more substantive primary research is expected.
 
 ## What has not been done
 
@@ -52,9 +68,11 @@ evidence of anything.
   searched at all, partially** (`SEARCH_PROTOCOL.md` §7–8) — Web of
   Science, HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts,
   CanLII, and Rechtspraak.nl remain entirely unsearched, and Scopus itself
-  is ~91% unexported. This remains the actual Phase 3 requirement, largely
+  is still well under half exported (606 of ~5,443+, 17 of 18 planned
+  batches remaining). This remains the actual Phase 3 requirement, largely
   unmet.
-- No screening decision has been made on any record.
+- No screening decision has been made on any record — not even the 106
+  that now have a real abstract and could technically be screened.
 - No study has been included or excluded from the review.
 - No data has been extracted.
 - No risk-of-bias appraisal has been performed.

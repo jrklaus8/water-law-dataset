@@ -15,7 +15,7 @@ INPUT
 -----
 --dedup-file : path to a deduplicated_records.csv produced by
                ../search/deduplicate.py (schema: record_id, database,
-               title, authors, year, doi, duplicate,
+               title, authors, year, doi, url, abstract, duplicate,
                title_abstract_decision, full_text_decision,
                exclusion_reason, reviewer_1, reviewer_2, conflict,
                final_decision)
@@ -26,7 +26,11 @@ BEHAVIOR
 --------
 - A record_id already present in the screening database is left untouched,
   even if its title/doi has changed upstream -- report the mismatch instead
-  of resolving it silently.
+  of resolving it silently. The one narrow exception: if the existing row
+  has a blank `abstract` and the incoming one doesn't, the abstract is
+  backfilled in place -- this is enrichment, not a decision field, and
+  withholding an available abstract from a record already waiting on
+  screening serves no one. No other field is ever touched this way.
 - A record_id not yet present is appended with blank decision fields.
 - Nothing is deleted. Nothing already decided is modified.
 
@@ -44,7 +48,7 @@ import sys
 from pathlib import Path
 
 SCHEMA = [
-    "record_id", "database", "title", "authors", "year", "doi", "url",
+    "record_id", "database", "title", "authors", "year", "doi", "url", "abstract",
     "duplicate", "title_abstract_decision", "full_text_decision",
     "exclusion_reason", "reviewer_1", "reviewer_2", "conflict", "final_decision",
 ]
@@ -73,6 +77,7 @@ def main() -> int:
     existing_by_id = {r["record_id"]: r for r in existing_records}
 
     appended = 0
+    enriched = 0
     mismatched = []
 
     for rec in new_records:
@@ -81,7 +86,11 @@ def main() -> int:
             prior = existing_by_id[rid]
             if prior.get("title", "") != rec.get("title", "") or prior.get("doi", "") != rec.get("doi", ""):
                 mismatched.append(rid)
-            continue  # never overwrite an existing row, decided or not
+                continue
+            if not (prior.get("abstract") or "").strip() and (rec.get("abstract") or "").strip():
+                prior["abstract"] = rec["abstract"]
+                enriched += 1
+            continue  # every other field on an existing row is left untouched
         existing_records.append({field: rec.get(field, "") for field in SCHEMA})
         appended += 1
 
@@ -92,6 +101,8 @@ def main() -> int:
         writer.writerows(existing_records)
 
     print(f"Appended {appended} new record(s) to {args.screening_db}")
+    if enriched:
+        print(f"Backfilled abstract on {enriched} existing record(s) that previously had none.")
     print(f"Screening database now has {len(existing_records)} total record(s).")
     if mismatched:
         print(f"WARNING: {len(mismatched)} record_id(s) already present with different "

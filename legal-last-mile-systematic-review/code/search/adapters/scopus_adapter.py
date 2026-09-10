@@ -10,12 +10,14 @@ CSV header is:
     Volume, Issue, Art. No., Page start, Page end, Cited by, DOI, Link,
     Document Type, Publication Stage, Open Access, Source, EID
 
-Note: this export did NOT include an Abstract column -- the Scopus export
-field-picker apparently needs Abstract selected explicitly and separately
-from the default citation fields (see EXECUTION_CHECKLIST.md's emphasis on
-this). If a future export does include one, this adapter should be
-extended to map it through rather than silently dropping it -- check the
-header for an "Abstract" column before assuming it's absent.
+Note: the first export this adapter was validated against (SEARCH_018,
+2026-08-26) did NOT include an Abstract column -- the Scopus export
+field-picker needs Abstract selected explicitly, separate from the
+default citation fields (see EXECUTION_CHECKLIST.md). As of 2026-09-10
+(SEARCH_021b), an export with Abstract present has been seen for real,
+and this adapter now maps it through -- when the column is absent (older
+exports, or a future one where it was missed again), `abstract` is just
+left blank rather than treated as an error.
 
 Standard library only, consistent with this repository's existing
 scrapers (see ../../../../README.md).
@@ -41,7 +43,7 @@ import csv
 import sys
 from pathlib import Path
 
-OUTPUT_FIELDS = ["title", "authors", "year", "doi", "url", "database", "search_id"]
+OUTPUT_FIELDS = ["title", "authors", "year", "doi", "url", "abstract", "database", "search_id"]
 REQUIRED_COLUMNS = ["Authors", "Title", "Year", "DOI", "Link"]
 
 
@@ -67,10 +69,10 @@ def main() -> int:
             return 1
 
         has_abstract = "Abstract" in header
-        if has_abstract:
-            print("NOTE: this export includes an Abstract column, but this adapter does not yet "
-                  "map it through (see module docstring) -- extend it before relying on this run "
-                  "for real title/abstract screening.", file=sys.stderr)
+        if not has_abstract:
+            print("WARNING: this export has no Abstract column -- these records will be "
+                  "title-only in the screening database, same limitation as SEARCH_018. "
+                  "Check the Scopus export field picker (EXECUTION_CHECKLIST.md).", file=sys.stderr)
 
         rows = []
         for record in reader:
@@ -80,6 +82,7 @@ def main() -> int:
                 "year": record.get("Year", "").strip(),
                 "doi": record.get("DOI", "").strip(),
                 "url": record.get("Link", "").strip(),
+                "abstract": record.get("Abstract", "").strip() if has_abstract else "",
                 "database": "Scopus",
                 "search_id": args.search_id,
             })

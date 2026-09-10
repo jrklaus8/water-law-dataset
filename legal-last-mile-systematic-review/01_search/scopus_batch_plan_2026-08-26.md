@@ -46,26 +46,28 @@ Paste the base string above, **AND**ed with the year clause shown, into
 Scopus Advanced Search. Save each export as
 `SEARCH_0NN_SCOPUS_2026-08-26.csv` using the search_id shown.
 
-| search_id | Years | Est. n | Year clause to AND onto the base string |
-|---|---|---|---|
-| SEARCH_019 | 2027 | ~1 | `PUBYEAR = 2027` |
-| SEARCH_020a | 2026, articles+reviews only | ~? | `PUBYEAR = 2026 AND DOCTYPE(ar OR re)` — see note below |
-| SEARCH_020b | 2026, everything else | ~? | `PUBYEAR = 2026 AND NOT DOCTYPE(ar OR re)` |
-| SEARCH_021a | 2025, articles+reviews only | ~? | `PUBYEAR = 2025 AND DOCTYPE(ar OR re)` |
-| SEARCH_021b | 2025, everything else | ~? | `PUBYEAR = 2025 AND NOT DOCTYPE(ar OR re)` |
-| SEARCH_022 | 2024 | ~391 | `PUBYEAR = 2024` |
-| SEARCH_023 | 2023 | ~337 | `PUBYEAR = 2023` |
-| SEARCH_024 | 2022 | ~326 | `PUBYEAR = 2022` |
-| SEARCH_025 | 2021 | ~324 | `PUBYEAR = 2021` |
-| SEARCH_026 | 2020 | ~273 | `PUBYEAR = 2020` |
-| SEARCH_027 | 2019 | ~254 | `PUBYEAR = 2019` |
-| SEARCH_028 | 2018 | ~241 | `PUBYEAR = 2018` |
-| SEARCH_029 | 2016–2017 | ~375 | `PUBYEAR > 2015 AND PUBYEAR < 2018` |
-| SEARCH_030 | 2014–2015 | ~315 | `PUBYEAR > 2013 AND PUBYEAR < 2016` |
-| SEARCH_031 | 2012–2013 | ~293 | `PUBYEAR > 2011 AND PUBYEAR < 2014` |
-| SEARCH_032 | 2009–2011 | ~367 | `PUBYEAR > 2008 AND PUBYEAR < 2012` |
-| SEARCH_033 | 2003–2008 | ~388 | `PUBYEAR > 2002 AND PUBYEAR < 2009` |
-| SEARCH_034 | 1928–2002 (everything older) | ~357 | `PUBYEAR > 1927 AND PUBYEAR < 2003` |
+| search_id | Years | Est. n | Year clause to AND onto the base string | Status |
+|---|---|---|---|---|
+| SEARCH_019 | 2027 | ~1 | `PUBYEAR = 2027` | Not run |
+| SEARCH_020a | 2026, articles+reviews only | ~? | `PUBYEAR = 2026 AND DOCTYPE(ar OR re)` — see note below | Not run |
+| SEARCH_020b | 2026, everything else | ~? | `PUBYEAR = 2026 AND NOT DOCTYPE(ar OR re)` | Not run |
+| SEARCH_021a | 2025, articles+reviews only | ~? | `PUBYEAR = 2025 AND DOCTYPE(ar OR re)` | Not run |
+| SEARCH_021b | 2025, everything else | 106 (actual) | `PUBYEAR = 2025 AND NOT DOCTYPE(ar OR re)` | **Done 2026-09-10** — 106 records, with abstracts, ingested |
+| SEARCH_022 | 2024 | ~391 | `PUBYEAR = 2024` | Not run |
+| SEARCH_023 | 2023 | ~337 | `PUBYEAR = 2023` | Not run |
+| SEARCH_024 | 2022 | ~326 | `PUBYEAR = 2022` | Not run |
+| SEARCH_025 | 2021 | ~324 | `PUBYEAR = 2021` | Not run |
+| SEARCH_026 | 2020 | ~273 | `PUBYEAR = 2020` | Not run |
+| SEARCH_027 | 2019 | ~254 | `PUBYEAR = 2019` | Not run |
+| SEARCH_028 | 2018 | ~241 | `PUBYEAR = 2018` | Not run |
+| SEARCH_029 | 2016–2017 | ~375 | `PUBYEAR > 2015 AND PUBYEAR < 2018` | Not run |
+| SEARCH_030 | 2014–2015 | ~315 | `PUBYEAR > 2013 AND PUBYEAR < 2016` | Not run |
+| SEARCH_031 | 2012–2013 | ~293 | `PUBYEAR > 2011 AND PUBYEAR < 2014` | Not run |
+| SEARCH_032 | 2009–2011 | ~367 | `PUBYEAR > 2008 AND PUBYEAR < 2012` | Not run |
+| SEARCH_033 | 2003–2008 | ~388 | `PUBYEAR > 2002 AND PUBYEAR < 2009` | Not run |
+| SEARCH_034 | 1928–2002 (everything older) | ~357 | `PUBYEAR > 1927 AND PUBYEAR < 2003` | Not run |
+
+**1 of 18 batches done (SEARCH_021b, 2026-09-10).**
 
 **Note on 2026 and 2025 (`SEARCH_020`/`SEARCH_021`):** these two years
 alone (619 and 583 records) exceed the 500-record ceiling even as single
@@ -99,5 +101,9 @@ number of unscreened records.
 
 ## Status
 
-Not yet executed. `SEARCH_018` (the first 500, no abstracts) remains the
-only Scopus data actually in the pipeline as of 2026-08-26.
+1 of 18 batches executed as of 2026-09-10: `SEARCH_021b` (2025,
+non-article/review types, 106 records, **with abstracts** — the first
+abstract-bearing data in this project). `SEARCH_018` (the original 500,
+no abstracts) is separate from this plan. 17 batches remain, including
+`SEARCH_021a` (2025 articles+reviews — the substantive half of the year
+this batch's sibling only covered the "everything else" side of).

@@ -81,32 +81,38 @@ code/                search / screening / extraction / analysis / figures / tabl
 The OSF preregistration is drafted but not submitted
 ([`00_admin/preregistration/osf_preregistration_draft.md`](00_admin/preregistration/osf_preregistration_draft.md)).
 
-**Scopus is the first Tier 1 database actually searched for real** — the
+**Scopus is the first Tier 1 database actually searched for real, and as
+of 2026-09-10 the first batch with real abstracts has landed** — the
 researcher ran the pilot string via EUR institutional access on 2026-08-26
-(`SEARCH_018`), and 500 of the ~5,443 total matching records have been
-exported and ingested (see `CHANGELOG.md` 2026-08-26). Still outstanding:
-the rest of that result set (batched export), abstracts (missed in this
-export's field selection), and every other Tier 1/2/legal-repository
-database. **If you have working institutional access,
-[`01_search/EXECUTION_CHECKLIST.md`](01_search/EXECUTION_CHECKLIST.md) is a
-literal "what to actually click" guide** for the rest — this is the
-single highest-value thing that can happen to this project right now.
+(`SEARCH_018`, 500 records, no abstracts) and the first batch of
+[`01_search/scopus_batch_plan_2026-08-26.md`](01_search/scopus_batch_plan_2026-08-26.md)
+on 2026-09-10 (`SEARCH_021b`, 106 records, **with** Abstract/Author
+Keywords/Index Keywords — see `CHANGELOG.md` 2026-09-10). 606 of ~5,443+
+total matching Scopus records so far, 17 of 18 planned batches still to
+go — see [`01_search/scopus_batch_plan_2026-08-26.md`](01_search/scopus_batch_plan_2026-08-26.md)
+for the rest, or [`01_search/EXECUTION_CHECKLIST.md`](01_search/EXECUTION_CHECKLIST.md)
+for the other databases — plus every other Tier 1/2/legal-repository
+database not yet touched at all.
 
 Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
 [`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
 has processed all of this together: 37 candidates from three rounds of an
 explicitly non-systematic `WebSearch` pilot (logged `SEARCH_003`–`SEARCH_017`,
-**not** a substitute for the real search and never to be described as one)
-plus the 500 real Scopus records — deduplication caught **1 real
-cross-source duplicate** (the Gaikwad & Thomas 2026 exemplar, matched by
-DOI), leaving **536 unique candidate records**, none yet screened.
+**not** a substitute for the real search and never to be described as one),
+3 `SOURCES.md` exemplars, and 606 real Scopus records across two batches —
+deduplication caught **1 real cross-source duplicate** (the Gaikwad &
+Thomas 2026 exemplar, matched by DOI), leaving **642 unique candidate
+records, 106 of which have a real abstract**. None have a screening
+decision yet — real title/abstract screening against
+`INCLUSION_EXCLUSION.md` is technically possible on those 106 for the
+first time in this project, but hasn't been done.
 A non-binding title-only triage memo
 ([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md),
-currently covering the original 37) exists to help a future reviewer
+still only covering the original 37) exists to help a future reviewer
 prioritize. Export adapters exist for PubMed (unvalidated — no live PubMed
-export exists to test against) and Scopus (**validated against the real
-2026-08-26 export**) in `code/search/adapters/`. A schema-validation script
+export exists to test against) and Scopus (**validated against two real
+exports**) in `code/search/adapters/`. A schema-validation script
 ([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
 confirms every project CSV currently matches its documented schema.
 

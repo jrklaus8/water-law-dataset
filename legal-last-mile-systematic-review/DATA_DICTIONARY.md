@@ -31,6 +31,7 @@ the actual CSV headers.
 | database | string | source database of this record |
 | title, authors, year, doi | — | bibliographic metadata |
 | url | string | source URL; required when doi is blank (grey literature and many non-indexed sources have no DOI) — added 2026-08-25, see `CHANGELOG.md` |
+| abstract | text | optional — present only when the source export included it; blank for anything ingested before 2026-09-10. Real title/abstract screening (`INCLUSION_EXCLUSION.md`) is not possible on a record with a blank abstract — see `CHANGELOG.md` 2026-09-10 |
 | duplicate | boolean | true if merged with another record_id (link in notes) |
 | title_abstract_decision | enum | `include` / `exclude` / `unsure` |
 | full_text_decision | enum | `include` / `exclude` / `not_applicable` |
