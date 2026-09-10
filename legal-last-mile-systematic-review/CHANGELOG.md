@@ -9,6 +9,43 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-10 (later still) — Stable record_id migration; Web of Science adapter
+
+- **Replaced positional `record_id` assignment with a stable content
+  hash**, closing the follow-up flagged in the previous entry.
+  `code/search/deduplicate.py`'s `compute_record_id()` now keys on the
+  normalized DOI when present, else normalized title+year — the same
+  fields the duplicate matcher itself already uses — so a record's ID no
+  longer depends on which files happen to be present or what order they
+  sort in. Collision-checked: three genuine content collisions surfaced
+  during the full re-run (two different generic-titled records sharing a
+  normalized title+year, e.g. a recurring report-series title), correctly
+  disambiguated with a `-1` suffix rather than silently merged.
+- Did this migration now specifically because it was still safe to:
+  confirmed **zero rows** in `screening_database.csv` had any decision
+  field set (`title_abstract_decision`, `full_text_decision`,
+  `reviewer_1`, `reviewer_2`, `final_decision`) before touching a single
+  ID. Regenerated `deduplicated_records.csv` and
+  `screening_database.csv` in full from a fresh re-run across all of
+  `01_search/raw_exports/` under the new scheme, then verified **zero
+  orphans**: every one of the previous 5,314 rows matches (by DOI or
+  normalized title+year) something in the new 5,208-row output. The
+  106-row reduction is not data loss — it's genuine duplicates that had
+  slipped past the old positional-ID incremental matching across earlier
+  rounds, now correctly collapsed by one clean full-corpus dedup pass.
+  Remapped the 37 `record_id`s referenced in
+  `06_outputs/supplementary/title_only_triage_memo.md` to match.
+- Added `code/search/adapters/wos_adapter.py`: **unvalidated** (no real
+  Web of Science export exists in this project yet, same status
+  `pubmed_adapter.py` carried before SEARCH_018), written ahead of time so
+  ingestion is instant once the researcher runs
+  `database_strategies/wos.md`. Handles both CSV shapes Web of Science's
+  UI can produce (full-word "Export → Excel" headers, and the classic
+  two-letter Core Collection field tags), tested against synthetic data
+  covering both plus a missing-required-column failure case.
+- `code/analysis/validate_schemas.py` confirms all 8 checked project CSVs
+  still match their documented schema after the migration.
+
 ## 2026-08-22 (later) — PR opened; preregistration draft + Phase 4/5 tooling
 
 - Opened PR #3 (`claude/legal-last-mile-review-spec-8ri0zs` → `main`) on the

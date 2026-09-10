@@ -62,6 +62,7 @@ from __future__ import annotations
 import argparse
 import csv
 import difflib
+import hashlib
 import re
 import sys
 from pathlib import Path
@@ -91,6 +92,29 @@ def normalize_title(title: str) -> str:
     return title
 
 
+def compute_record_id(rec: dict) -> str:
+    """Stable content-hash ID -- same record always gets the same ID, regardless
+    of which files are present or what order they're processed in.
+
+    Positional IDs (R0001, R0002, ... by file-processing order) were used
+    until 2026-09-10, when adding 16 new files shifted enough positions to
+    collide with unrelated existing IDs in the screening database (see
+    CHANGELOG.md 2026-09-10 (later)) -- a structural flaw, not a one-off
+    bug, since it recurs any time new files change the sort order. A
+    record's identity should depend on its own content, not on what else
+    happens to be in the input directory that run.
+
+    Keyed on the normalized DOI when present (the most reliable identity);
+    falls back to normalized title + year, the same fields the duplicate
+    matcher itself uses, so anything the matcher considers "the same
+    record" collapses to the same ID before the hash is even taken.
+    """
+    doi = normalize_doi(rec.get("doi", ""))
+    key = f"doi:{doi}" if doi else f"title_year:{normalize_title(rec.get('title', ''))}|{rec.get('year', '')}"
+    digest = hashlib.sha1(key.encode("utf-8")).hexdigest()
+    return f"R{digest[:12].upper()}"
+
+
 def load_records(input_dir: Path) -> list[dict]:
     records = []
     csv_files = sorted(input_dir.glob("*.csv"))
@@ -117,9 +141,23 @@ def deduplicate(records: list[dict]) -> tuple[list[dict], list[dict]]:
     kept_doi_index: dict[str, int] = {}
     kept_title_norm: list[str] = []
     merge_log: list[dict] = []
+    seen_ids: dict[str, str] = {}  # record_id -> a representative title, to detect true hash collisions
 
-    for i, rec in enumerate(records, start=1):
-        rec["record_id"] = f"R{i:04d}"
+    for rec in records:
+        rec["record_id"] = compute_record_id(rec)
+        prior_title = seen_ids.get(rec["record_id"])
+        if prior_title is not None and normalize_title(prior_title) != normalize_title(rec.get("title", "")):
+            # Two genuinely different records hashed to the same ID -- vanishingly
+            # unlikely at this corpus size, but never silently drop or merge on
+            # a coincidence. Disambiguate deterministically rather than crash.
+            suffix = 1
+            base_id = rec["record_id"]
+            while f"{base_id}-{suffix}" in seen_ids:
+                suffix += 1
+            rec["record_id"] = f"{base_id}-{suffix}"
+            print(f"WARNING: hash collision on {base_id} between unrelated records "
+                  f"-- reassigned to {rec['record_id']}: {rec.get('title', '')[:80]!r}")
+        seen_ids[rec["record_id"]] = rec.get("title", "")
         doi = normalize_doi(rec.get("doi", ""))
         title_norm = normalize_title(rec.get("title", ""))
 

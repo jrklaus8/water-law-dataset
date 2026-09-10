@@ -111,9 +111,10 @@ whole pool now, but hasn't been done.
 A non-binding title-only triage memo
 ([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md),
 still only covering the original 37) exists to help a future reviewer
-prioritize. Export adapters exist for PubMed (unvalidated — no live PubMed
-export exists to test against) and Scopus (**validated against 18 real
-exports**) in `code/search/adapters/`. A schema-validation script
+prioritize. Export adapters exist for PubMed and Web of Science
+(both unvalidated — no live export from either exists to test against)
+and Scopus (**validated against 18 real exports**) in
+`code/search/adapters/`. A schema-validation script
 ([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
 confirms every project CSV currently matches its documented schema.
 

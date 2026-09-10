@@ -37,4 +37,7 @@ TS=(
 - Restrict to Web of Science Core Collection indexes (SCI-EXPANDED,
   SSCI, A&HCI, ESCI) explicitly and record which in the search log `filters`
   field — different index combinations return different results.
-- Status: **not yet executed.**
+- Status: **not yet executed.** An adapter (`code/search/adapters/wos_adapter.py`)
+  is written and ready to normalize whatever CSV export comes back —
+  **unvalidated**, since no real Web of Science export has existed in this
+  project yet, same caveat as `pubmed_adapter.py` carried until SEARCH_018.
