@@ -1,80 +1,93 @@
 # PRISMA 2020 Flow Diagram — Data
 
 Status: **Identification and title/abstract screening (first pass only)
-are populated with real counts as of 2026-09-11, now that Scopus's own
-18-batch plan is fully executed and Web of Science's first batch has
-landed. Everything from "Reports sought for retrieval" onward is still
-genuinely unfilled — that work has not started.** Per `PROJECT_SPEC.md`
-§14, no number below is estimated, illustrative, or a placeholder dressed
-as data; every filled count traces to `01_search/raw_exports/`,
-`01_search/deduplicated/`, or
+are populated with real counts as of 2026-09-11, now that the search
+phase has closed by researcher decision** (candidate pool judged large
+enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
+`PRISMA_WORKFLOW.md` Phase 3). **Everything from "Reports sought for
+retrieval" onward is still genuinely unfilled — that work has not
+started.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
+illustrative, or a placeholder dressed as data; every filled count traces
+to `01_search/raw_exports/`, `01_search/deduplicated/`, or
 `02_screening/title_abstract/screening_database.csv` as of this date, and
 is annotated as provisional wherever it is.
 
 **Two things this diagram is not, yet:**
 
-1. **Only two Tier 1 databases have actually been searched.** Scopus is
-   complete per its own plan (`01_search/scopus_batch_plan_2026-08-26.md`,
-   all 18 batches done). Web of Science has only its first batch in
-   (`SEARCH_035`, 4,058 records) — whether that's the platform's full
-   result set or more batches remain hasn't been confirmed by the
-   researcher yet. Every other Tier 1/2/legal-repository database in
-   `SEARCH_PROTOCOL.md` remains untouched. Every count below undercounts
-   what a completed Phase 3 search across all planned databases will
-   produce.
-2. **Title/abstract screening below is a first pass by one AI reviewer
-   (`reviewer_1`, `Claude-AI-1stpass-2026-09-10`) only.** `PROTOCOL.md`'s
-   two-reviewer process needs a human `reviewer_2` and conflict
-   resolution before any inclusion/exclusion at this stage is final — see
+1. **The search phase closed with real, documented gaps.** Databases
+   actually searched: Scopus (18/18 planned batches), Web of Science
+   (`SEARCH_035`), HeinOnline (`SEARCH_036`-`SEARCH_038`, minimal real
+   yield), ProQuest (`SEARCH_039`, full account-based export) and
+   ProQuest/Sociological Abstracts (`SEARCH_040`), and JSTOR (`SEARCH_041`,
+   50 of 356 identified results). SSRN (`SEARCH_042`) and Westlaw/Lexis
+   (`SEARCH_043`) were never searched at all — the phase was closed before
+   either was reached; see `SEARCH_PROTOCOL.md` §7 for the full account.
+   This is a real, disclosed limitation of this review's search strategy,
+   not a placeholder gap awaiting completion.
+2. **Title/abstract screening below is a first pass by one AI reviewer**
+   (`reviewer_1`, tags `Claude-AI-1stpass-2026-09-10` and
+   `Claude-AI-1stpass-2026-09-11`) **only.** `PROTOCOL.md`'s two-reviewer
+   process needs a human `reviewer_2` and conflict resolution before any
+   inclusion/exclusion at this stage is final — see
    `02_screening/title_abstract/REVIEWER_2_README.md`. Treat every number
    under "Screening" as provisional.
 
 ```
 Identification
-  Records identified from databases (n = 10,042)
-    [Scopus: SEARCH_018 (500, 2026-08-26) + all 18 planned batches from
-    scopus_batch_plan_2026-08-26.md (5,484, 2026-09-10/11) = 5,984.
-    Web of Science: SEARCH_035, first batch only (4,058, 2026-09-11) --
-    completeness of the WoS result set unconfirmed. No other Tier 1/2
-    database has been searched.]
+  Records identified from databases (n = 34,557)
+    [Scopus: SEARCH_018 (500) + all 18 planned batches (5,484) = 5,984.
+    Web of Science: SEARCH_035, 4,058 (5 export batches). HeinOnline:
+    SEARCH_037, 1 (SEARCH_036 was count-only, no export mechanism at
+    71,226 hits; SEARCH_038's 3 records were never delivered). ProQuest:
+    SEARCH_039, 7,728 (full account-based export). ProQuest/Sociological
+    Abstracts: SEARCH_040, 16,736. JSTOR: SEARCH_041, 50 (of 356
+    identified; the remaining 306 were never exported before the search
+    phase closed). SSRN and Westlaw/Lexis were never searched -- see
+    SEARCH_PROTOCOL.md S7.]
   Records identified from grey literature / registers (n = 37)
     [34 from an explicitly non-systematic Claude WebSearch pilot
     (SEARCH_003-017, 2026-08-25 -- SEARCH_PROTOCOL.md S7, not a
     substitute for a real database search) + 3 SOURCES.md exemplars
     added directly to the pipeline.]
   Records removed before screening:
-    Duplicate records removed (n = 3,475)
+    Duplicate records removed (n = 7,113)
       [code/search/deduplicate.py, DOI-match + title/year-similarity
       match, full merge log in 01_search/deduplicated/merge_log.csv.
-      2,934 of these are Scopus/Web-of-Science cross-database overlap
-      (expected -- both index a lot of the same journal literature),
-      541 within-Scopus, plus record_id is a stable content hash -- see
+      Heavy Scopus/WoS/ProQuest cross-database overlap is expected --
+      several major academic databases index much of the same journal
+      literature. record_id is a stable content hash -- see
       CHANGELOG.md.]
     Records marked ineligible by automation tools (n = 0)
     Records removed for other reasons (n = 0)
 
 Screening  [reviewer_1 (AI) first pass only -- see caveat above]
-  Records screened (n = 7,109)
-    [Of 7,145 unique records, 36 have no real abstract (pre-2026-09-10
-    exports or grey-lit records lacking one) and were deliberately left
-    unscreened rather than judged on title alone -- see
+  Records screened (n = 26,222)
+    [Of 27,481 unique records, 1,259 have no real abstract (pre-2026-09-10
+    exports or grey-lit/JSTOR records lacking one) and were deliberately
+    left unscreened rather than judged on title alone -- see
     title_only_triage_memo.md for why title-only judgments are
     non-binding in this project.]
-  Records excluded at title/abstract (n = 5,151, PROVISIONAL)
+  Records excluded at title/abstract (n = 22,557, PROVISIONAL)
     [reviewer_1 only. Breakdown by code, all provisional:
-      E01 wrong topic (n = 2,326)
-      E02 wrong population (n = 24)
-      E03 wrong exposure / water-quality-only (n = 78)
-      E04 wrong outcome (n = 462)
-      E05 no empirical evidence (n = 573)
-      E06 engineering only (n = 1,201)
-      E07 wrong service (n = 390)
+      E01 wrong topic (n = 16,667)
+      E02 wrong population (n = 51)
+      E03 wrong exposure / water-quality-only (n = 263)
+      E04 wrong outcome (n = 1,000)
+      E05 no empirical evidence (n = 1,510)
+      E06 engineering only (n = 1,617)
+      E07 wrong service (n = 1,039)
       E08 duplicate (n = 26)
-      E09 insufficient information (n = 70)
+      E09 insufficient information (n = 208)
       E10 inaccessible full text (n = 0)
       E11 wrong jurisdiction/context (n = 1)
-      E12 wrong study design (n = 0)
-    248 further records marked "unsure" by reviewer_1 are NOT counted
+      E12 wrong study design (n = 175)
+    E01's large share reflects the ProQuest/Sociological Abstracts
+    round's much broader, noisier search (wire-service press releases,
+    medical conference proceedings, a large general sociology-of-
+    bureaucracy literature pulled in by thesaurus-term matching) rather
+    than a screening-quality issue -- see search_log.csv's SEARCH_039/040
+    notes and REVIEWER_2_README.md.
+    603 further records marked "unsure" by reviewer_1 are NOT counted
     as excluded here -- they carry forward with the includes pending
     full-text review; see below.]
   Reports sought for retrieval (n = )
@@ -101,8 +114,8 @@ Included
 ```
 
 **Provisional pool carried forward** (not a PRISMA box on its own, but the
-number that matters for planning Phase 6): 1,958 records are currently
-either `include` (1,710) or `unsure` (248) after the reviewer_1 pass —
+number that matters for planning Phase 6): 3,665 records are currently
+either `include` (3,062) or `unsure` (603) after the reviewer_1 pass —
 see `02_screening/title_abstract/reviewer_2_queue.csv`. This is the upper
 bound of what full-text screening will need to retrieve, pending
 `reviewer_2` narrowing it.

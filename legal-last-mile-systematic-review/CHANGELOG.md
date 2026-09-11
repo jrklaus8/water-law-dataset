@@ -9,7 +9,71 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-11 (latest) — ProQuest and JSTOR: two methodological decisions
+## 2026-09-11 (latest) — Search phase closed; full corpus screened; corruption caught and fixed
+
+Six real events, in order:
+
+1. **ProQuest full export delivered and ingested** — `SEARCH_039`, 7,728
+   records via the researcher's new "My Research" account, superseding
+   the earlier 100-record guest-mode sample (confirmed 97% redundant by
+   title overlap, not separately ingested).
+2. **ProQuest/Sociological Abstracts delivered and ingested** —
+   `SEARCH_040`, 16,736 records, a broader thesaurus-term pull with a
+   correspondingly wider topical spread (documented, not treated as a
+   search-string defect).
+3. **Search phase closed by researcher decision** — candidate pool
+   (34,594 raw records at that point) judged large enough to move to
+   screening. `search_log.csv` and `SEARCH_PROTOCOL.md` §7 updated to
+   document this honestly, including the real gap it leaves: SSRN and
+   Westlaw/Lexis were never searched at all (`SEARCH_042`/`SEARCH_043`
+   stub rows record this rather than omitting it).
+4. **JSTOR's 4 outstanding delivery files finally arrived** —
+   `SEARCH_041`'s 50-record export, closing out a three-round "reported
+   but never delivered" gap. A 100-record ProQuest file delivered
+   alongside it was checked for overlap (97% redundant with SEARCH_039)
+   and not separately ingested.
+5. **First-pass AI screening of all 19,085 newly-added records, with a
+   real data-corruption incident caught and fixed mid-round.** Screening
+   19,085 records required 39 parallel ~500-record agent batches. The
+   first attempt used a shared output directory across all 39 agents;
+   validation afterward found several "completed" batches missing
+   hundreds of rows each, with one agent's own report describing a
+   helper script silently overwritten and its output redirected into a
+   different batch's file — a genuine multi-agent file collision, not a
+   screening-quality problem. All 39 batches were discarded and redone
+   from isolated per-batch scratch directories, then validated
+   record-for-record against their source files (exact record_id-set
+   match, no duplicates, no foreign IDs) before merging. Final result:
+   1,351 include / 17,379 exclude / 355 unsure across the 19,085 records.
+6. **A second, independent gap caught during PRISMA-number
+   reconciliation**: `SEARCH_041`'s 50 JSTOR records had been written to
+   `raw_exports/` but never actually run through
+   `deduplicate.py`/`init_screening_db.py` — caught because the raw-file
+   total didn't match the dedup-output total. Re-ran the full-corpus
+   dedup (34,594 raw → 27,481 unique, 7,113 merged) and screened the 28
+   newly-surfaced abstract-bearing records directly: 1 include, 27
+   exclude.
+
+**Final state**: `screening_database.csv` holds 27,481 unique records,
+26,222 screened (1,259 undecided for lack of an abstract) — **3,062
+include / 22,557 exclude / 603 unsure**. `reviewer_2_queue.csv`
+regenerated at 3,665 rows; `exclude_spotcheck_sample.csv` regenerated
+(same fixed seed, 120 rows) against the corrected exclude population.
+`PRISMA_WORKFLOW.md` and `06_outputs/prisma/prisma_flow.md` updated with
+these final numbers and the Phase 3 closure. All 11 tracked schemas
+validated clean throughout.
+
+Two real code bugs found and fixed along the way, both now standing
+protections for any future large export: (a) `csv.field_size_limit`
+wasn't raised in `deduplicate.py`, `init_screening_db.py`, or
+`validate_schemas.py`, which would have crashed on the two ProQuest
+conference-abstract-supplement records carrying a single 600K+ character
+abstract field (genuine platform behavior, not a parsing error — verified
+against the raw RIS by line number); (b) the multi-agent shared-directory
+corruption above, now avoided by confining each parallel screening agent
+to its own scratch subdirectory.
+
+## 2026-09-11 (later) — ProQuest and JSTOR: two methodological decisions
 
 Cowork's next round surfaced two real, platform-forced compromises that
 needed a decision from the researcher rather than being resolved
@@ -39,7 +103,7 @@ detail; the decisions themselves:
   exporting — no bulk "select all" exists on JSTOR, so this is manual,
   per-item selection across roughly 15 pages.
 
-## 2026-09-11 (later still) — HeinOnline begins; a SEARCH_035 integrity scare, resolved
+## 2026-09-11 (earlier still) — HeinOnline begins; a SEARCH_035 integrity scare, resolved
 
 - **`SEARCH_037` (HeinOnline, Title-restricted secondary search per
   `heinonline.md`)** ingested: 1 record ("Hear Their Voices: Australia's
@@ -84,7 +148,7 @@ detail; the decisions themselves:
     code, dialog closing normally) is not sufficient on its own for
     this platform — confirm against the actual file on disk.
 
-## 2026-09-11 (later) — SEARCH_035 ingested: first Web of Science batch, second Tier 1 database
+## 2026-09-11 (earlier) — SEARCH_035 ingested: first Web of Science batch, second Tier 1 database
 
 - **Web of Science is the second Tier 1 database actually searched for
   real** (`SEARCH_035`, 2026-09-11) — sent as 5 sequential tab-delimited
