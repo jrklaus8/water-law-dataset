@@ -98,9 +98,12 @@ were exported last round as a proof-of-concept sample.
   GUID-filename caveat as last time — these won't have a normal
   filename) — confirm TY/ER record counts match what you selected before
   trusting the export and moving on.
-- No abstract field will be present in any of these exports — already
-  confirmed absent from JSTOR's RIS format entirely, not worth
-  re-checking each batch for.
+- ~~No abstract field will be present in any of these exports~~ —
+  **correction, added after this instruction was first sent**: that was
+  wrong, based on two small test exports that happened to be
+  abstract-less by chance. Full-page exports show abstracts present on
+  most (not all) records — depends on the individual record's era and
+  content type. Don't assume either way; check each batch.
 - Once all ~15 batches are done, you should have all 356 records total
   (minus the 7 already delivered, if you're resuming rather than
   restarting — check for that overlap by accession/stable-URL before
