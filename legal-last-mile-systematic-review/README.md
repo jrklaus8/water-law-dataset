@@ -82,17 +82,17 @@ The OSF preregistration is drafted but not submitted
 ([`00_admin/preregistration/osf_preregistration_draft.md`](00_admin/preregistration/osf_preregistration_draft.md)).
 
 **Scopus is the first Tier 1 database actually searched for real, and as
-of 2026-09-10, 17 of 18 planned batches are done, all with real
+of 2026-09-11, all 18 planned batches are done, every one with real
 abstracts** — the researcher ran the pilot string via EUR institutional
 access on 2026-08-26 (`SEARCH_018`, 500 records, no abstracts) and then,
-on 2026-09-10, every batch of
+on 2026-09-10–11, every batch of
 [`01_search/scopus_batch_plan_2026-08-26.md`](01_search/scopus_batch_plan_2026-08-26.md)
-except `SEARCH_026` (**with** Abstract/Author Keywords/Index Keywords —
-see `CHANGELOG.md` 2026-09-10, two entries). 5,247 of ~5,443+ total
-matching Scopus records exported so far — `SEARCH_026` was run by the
-researcher but its export file has not been uploaded yet, see the batch
-plan's Status section — plus every other Tier 1/2/legal-repository
-database not yet touched at all.
+(**with** Abstract/Author Keywords/Index Keywords — see `CHANGELOG.md`
+2026-09-10 and 2026-09-11). **5,984 of ~5,443+ originally estimated
+matching Scopus records exported** (the estimate was always approximate —
+see `scopus_batch_plan_2026-08-26.md`) — Scopus is now fully searched per
+this plan's design — plus every other Tier 1/2/legal-repository database
+not yet touched at all.
 
 Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
@@ -100,32 +100,38 @@ Deduplication and screening-ingest tooling
 has processed all of this together: 37 candidates from three rounds of an
 explicitly non-systematic `WebSearch` pilot (logged `SEARCH_003`–`SEARCH_017`,
 **not** a substitute for the real search and never to be described as one),
-3 `SOURCES.md` exemplars, and 5,247 real Scopus records across 18 export
-files — the 2026-09-10 full re-run of the deduplication script caught
-**539 duplicates** (mostly DOI matches, on top of the 1 earlier
-cross-source duplicate, the Gaikwad & Thomas 2026 exemplar), leaving
-**5,208 unique candidate records, 5,173 of which have a real abstract**.
-`record_id` is now a stable content hash rather than a positional index
-(`CHANGELOG.md` 2026-09-10, later still), closing a collision risk found
-the same day.
+3 `SOURCES.md` exemplars, and 5,984 real Scopus records (500 from
+`SEARCH_018` plus 5,484 across all 18 planned batches) — the 2026-09-11
+full re-run of the deduplication script caught **541 duplicates** (mostly
+DOI matches,
+on top of the 1 earlier cross-source duplicate, the Gaikwad & Thomas 2026
+exemplar), leaving **5,480 unique candidate records, 5,445 of which have
+a real abstract**. `record_id` is a stable content hash rather than a
+positional index (`CHANGELOG.md` 2026-09-10, later still).
 
-**All 5,173 abstract-bearing records have now been screened** against
+**All 5,445 abstract-bearing records have now been screened** against
 `INCLUSION_EXCLUSION.md` by Claude acting as a first-pass AI reviewer —
 explicitly authorized by the researcher as a methodological choice, per
 `PROJECT_SPEC.md` §14.18 — with results independently validated batch by
-batch before merging (`CHANGELOG.md` 2026-09-10, final). **Result: 1,436
-include / 3,565 exclude / 172 unsure.** This is a **provisional first
-pass only**: no human `reviewer_2` or conflict resolution has happened
-yet, so no record's inclusion is final — real dual-review PRISMA
-screening still needs a second, human pass before Phase 6 (full-text
-screening) can treat this pool as settled.
+batch before merging (`CHANGELOG.md` 2026-09-10, final, and 2026-09-11).
+**Result: 1,509 include / 3,747 exclude / 189 unsure.** This is a
+**provisional first pass only**: no human `reviewer_2` or conflict
+resolution has happened yet, so no record's inclusion is final — real
+dual-review PRISMA screening still needs a second, human pass before
+Phase 6 (full-text screening) can treat this pool as settled. A
+ready-to-use handoff for that pass exists:
+[`02_screening/title_abstract/reviewer_2_queue.csv`](02_screening/title_abstract/reviewer_2_queue.csv)
+(1,698 include+unsure records) and `exclude_spotcheck_sample.csv` (a
+100-record random QA sample of the excludes) — see
+[`REVIEWER_2_README.md`](02_screening/title_abstract/REVIEWER_2_README.md).
 A non-binding title-only triage memo
 ([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md),
 still only covering the original 37) exists to help a future reviewer
-prioritize. Export adapters exist for PubMed and Web of Science
-(both unvalidated — no live export from either exists to test against)
-and Scopus (**validated against 18 real exports**) in
-`code/search/adapters/`. A schema-validation script
+prioritize. Export adapters exist for PubMed, Web of Science, and a
+shared RIS format covering HeinOnline/ProQuest/Sociological
+Abstracts/JSTOR/SSRN (all unvalidated — no live export from any of these
+exists to test against) and Scopus (**validated against all 18 real
+exports**) in `code/search/adapters/`. A schema-validation script
 ([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
 confirms every project CSV currently matches its documented schema.
 

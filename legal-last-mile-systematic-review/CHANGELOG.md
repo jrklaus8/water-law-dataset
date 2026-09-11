@@ -9,6 +9,41 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-11 — SEARCH_026 ingested: Scopus batch plan complete (18 of 18)
+
+- Received and ingested `SEARCH_026` (2020, 274 records) — the one
+  outstanding gap from `scopus_batch_plan_2026-08-26.md` flagged in the
+  previous entry. Record count cross-checked against the researcher's run
+  log (`scopus_batch_run_log_20260910.csv`, 274 shown/exported) and an
+  independent file row count, both matching exactly. **All 18 planned
+  Scopus batches are now done.**
+- Full-corpus re-dedup (5,747 → 6,021 raw records, +274 from SEARCH_026) found 541 duplicates
+  (2 more than the previous round), leaving **5,480 unique records**. One
+  of the 2 new duplicates is worth noting: the same DOI appeared in both
+  `SEARCH_026` (PUBYEAR=2020) and `SEARCH_027` (PUBYEAR=2019) with a
+  trivial title-capitalization difference and a one-year metadata
+  discrepancy — a Scopus indexing quirk (same paper, inconsistent
+  year field across two of Scopus's own query contexts), not a data
+  error on this project's side. Correctly DOI-matched and merged;
+  `init_screening_db.py`'s existing safety check flagged the resulting
+  text mismatch against the already-screened `SEARCH_027` copy rather
+  than silently overwriting it — verified benign and left as-is, no
+  action needed since the underlying study was already screened
+  (`title_abstract_decision = include`) under its existing `record_id`.
+- Screened the 272 newly-added records (batch 16, following the same
+  15-batch method and validation as the previous round) against
+  `INCLUSION_EXCLUSION.md`: **73 include / 182 exclude / 17 unsure**.
+  Screening database now has **5,480 total records, 5,445 with a real
+  abstract, all 5,445 screened** (35 records still lack an abstract and
+  remain deliberately undecided). Cumulative first-pass screening
+  totals: **1,509 include / 3,747 exclude / 189 unsure.**
+- Refreshed `reviewer_2_queue.csv` (now 1,698 rows) and
+  `exclude_spotcheck_sample.csv` (regenerated fresh over the full 3,747
+  excludes, seed `20260911`) to cover the complete corpus; appended
+  `SEARCH_026`'s rationale to `ai_first_pass_rationale.csv` (now 5,445
+  rows). `code/analysis/validate_schemas.py` confirms all 11 checked
+  project CSVs still match their documented schema.
+
 ## 2026-09-10 (final) — Reviewer 2 prep packet, PRISMA flow diagram, RIS adapter
 
 - **Built the reviewer_2 handoff.** `02_screening/title_abstract/

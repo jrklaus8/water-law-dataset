@@ -57,7 +57,7 @@ Scopus Advanced Search. Save each export as
 | SEARCH_023 | 2023 | ~337 | `PUBYEAR = 2023` | **Done 2026-09-10** — 337 records, with abstracts, ingested |
 | SEARCH_024 | 2022 | ~326 | `PUBYEAR = 2022` | **Done 2026-09-10** — 326 records, with abstracts, ingested |
 | SEARCH_025 | 2021 | ~324 | `PUBYEAR = 2021` | **Done 2026-09-10** — 324 records, with abstracts, ingested |
-| SEARCH_026 | 2020 | ~273 | `PUBYEAR = 2020` | **Run but not yet ingested** — researcher's run log records 274 results shown/exported (`SEARCH_026_SCOPUS_2026-09-10.csv`), but that export file has not been sent to Claude yet. Logged nowhere else until the file arrives. |
+| SEARCH_026 | 2020 | ~273 | `PUBYEAR = 2020` | **Done 2026-09-11** — 274 records, with abstracts, ingested and screened |
 | SEARCH_027 | 2019 | ~254 | `PUBYEAR = 2019` | **Done 2026-09-10** — 254 records, with abstracts, ingested |
 | SEARCH_028 | 2018 | ~241 | `PUBYEAR = 2018` | **Done 2026-09-10** — 241 records, with abstracts, ingested |
 | SEARCH_029 | 2016–2017 | ~375 | `PUBYEAR > 2015 AND PUBYEAR < 2018` | **Done 2026-09-10** — 375 records, with abstracts, ingested |
@@ -67,7 +67,7 @@ Scopus Advanced Search. Save each export as
 | SEARCH_033 | 2003–2008 | ~388 | `PUBYEAR > 2002 AND PUBYEAR < 2009` | **Done 2026-09-10** — 388 records, with abstracts, ingested |
 | SEARCH_034 | 1928–2002 (everything older) | ~357 | `PUBYEAR > 1927 AND PUBYEAR < 2003` | **Done 2026-09-10** — 357 records, with abstracts, ingested |
 
-**17 of 18 batches done (all but SEARCH_026, as of 2026-09-10).** SEARCH_026 was run by the researcher (per `scopus_batch_run_log_20260910.csv`) but its export CSV has not yet been uploaded — this is the one remaining gap.
+**18 of 18 batches done, as of 2026-09-11.** Scopus is now fully searched per this plan's design.
 
 **Note on 2026 and 2025 (`SEARCH_020`/`SEARCH_021`):** these two years
 alone (619 and 583 records) exceed the 500-record ceiling even as single
@@ -101,12 +101,10 @@ number of unscreened records.
 
 ## Status
 
-17 of 18 batches executed as of 2026-09-10: every batch in this plan
-except `SEARCH_026` (2020, ~274 records per the researcher's own run log
-`scopus_batch_run_log_20260910.csv`, run but its export CSV not yet
-uploaded to Claude). All 17 completed batches were exported **with
-abstracts** (Author Keywords and Index Keywords too), the same as the
-first batch, `SEARCH_021b`. `SEARCH_018` (the original 500, no abstracts)
-is separate from this plan. Once `SEARCH_026`'s export file arrives, all
-18 batches will be complete and Scopus itself fully searched per this
-plan's design.
+**All 18 batches executed, as of 2026-09-11** — `SEARCH_026` (2020, 274
+records), the last gap, was uploaded and ingested 2026-09-11. Every batch
+in this plan was exported **with abstracts** (Author Keywords and Index
+Keywords too). `SEARCH_018` (the original 500, no abstracts) is separate
+from this plan. Scopus is now fully searched per this plan's design —
+every batch has also been through Claude's first-pass title/abstract
+screening (`CHANGELOG.md` 2026-09-11).

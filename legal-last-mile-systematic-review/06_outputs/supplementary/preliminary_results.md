@@ -117,23 +117,44 @@ evidence of anything.
   genuine uncertainty, not a rejection). Full-text screening (Phase 6) is
   not yet possible at scale on this pool until a human second reviewer's
   pass exists to reconcile against this one.
+- **2026-09-10 (final)/2026-09-11: built a reviewer_2 handoff, populated
+  the PRISMA flow diagram, added a shared RIS adapter, and closed the
+  last gap in the Scopus plan.** `reviewer_2_queue.csv` and
+  `exclude_spotcheck_sample.csv` give a human second reviewer a ready
+  starting point instead of filtering the full screening database by
+  hand (`REVIEWER_2_README.md`). `06_outputs/prisma/prisma_flow.md`,
+  previously an all-placeholder stub, now carries real, explicitly
+  provisional counts through the title/abstract stage.
+  `code/search/adapters/ris_adapter.py` (unvalidated) covers HeinOnline/
+  ProQuest/Sociological Abstracts/JSTOR/SSRN via the shared RIS export
+  format; Westlaw/Lexis and the doctrinal/jurimetric-strand databases
+  (CanLII, Rechtspraak.nl, Brazilian courts, ANA/SNIS) were deliberately
+  left uncovered, with each `database_strategies/*.md` file now
+  explaining why. `SEARCH_026` (2020, 274 records) — the one remaining
+  gap in `scopus_batch_plan_2026-08-26.md` — arrived and was ingested on
+  2026-09-11: **all 18 planned Scopus batches are now done**, Scopus is
+  fully searched per this plan's design, and its 274 records went
+  through the same first-pass screening as everything else. **Cumulative
+  totals: 5,480 unique records, 5,445 with a real abstract, all 5,445
+  screened — 1,509 include, 3,747 exclude, 189 unsure.** Still a
+  provisional first pass only; still no human `reviewer_2`.
 
 ## What has not been done
 
-- **No database has been fully searched, and only Scopus has been
-  searched at all** (`SEARCH_PROTOCOL.md` §7–8) — Web of Science,
+- **Only Scopus has been searched, and every other database remains
+  entirely unsearched** (`SEARCH_PROTOCOL.md` §7–8) — Web of Science,
   HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts, CanLII,
-  and Rechtspraak.nl remain entirely unsearched. Scopus itself is nearly
-  complete (5,247 of ~5,443+ exported, 17 of 18 planned batches done,
-  only `SEARCH_026`'s export file outstanding), but that is one database
-  out of the full `SEARCH_PROTOCOL.md` list. This remains the actual
+  and Rechtspraak.nl are all still untouched. Scopus itself is now fully
+  searched per its own plan (5,984 of ~5,443+ originally estimated, all
+  18 planned batches done), but that is one database out of the full
+  `SEARCH_PROTOCOL.md` list. This remains the actual
   Phase 3 requirement, still largely unmet.
 - **A human `reviewer_2` title/abstract pass has not been done, and no
-  conflict resolution has happened** — the 1,436 include / 172 unsure
+  conflict resolution has happened** — the 1,509 include / 189 unsure
   records from Claude's first-pass screening are candidates, not settled
   inclusions. `PROTOCOL.md`'s two-reviewer process is only half-done.
 - No study has been finally included or excluded from the review — the
-  3,565 first-pass excludes and 1,436 first-pass includes are both
+  3,747 first-pass excludes and 1,509 first-pass includes are both
   provisional until a second reviewer's pass exists to check them
   against.
 - No full-text screening has happened on any record.
