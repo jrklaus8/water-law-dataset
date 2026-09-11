@@ -1,7 +1,8 @@
 # Search Protocol
 
-Status: **strategy defined; no search executed.** Every string below is a
-starting strategy to be adapted, piloted, and logged — not a final query.
+Status: **search phase closed 2026-09-11** — see §7 for what was and
+wasn't actually searched. Every string below was a starting strategy to
+be adapted, piloted, and logged — not a final query.
 Every actual execution must be recorded in
 `01_search/search_logs/search_log.csv` with the fields listed in §6, and its
 raw export preserved, unedited, in `01_search/raw_exports/` (never
@@ -187,18 +188,41 @@ Never overwrite an original search export. File naming convention:
 
 ## 7. Current status
 
-**No Tier 1/Tier 2/legal-repository database has been searched natively.**
-This environment has no credentials for Scopus, Web of Science, HeinOnline,
-Westlaw, Lexis, ProQuest, or Sociological Abstracts — and, as of 2026-08-25,
-it turns out it also cannot directly reach PubMed, Google Scholar, SSRN,
-CanLII, or Rechtspraak.nl either: this environment's outbound network
-egress policy blocks essentially all direct HTTP(S) access to the open web
-(confirmed by testing `WebFetch` and a direct API call against a wide,
-representative sample of these domains — every one was denied by the
-egress proxy). The strings in `01_search/database_strategies/` remain
-ready to run by a researcher (or a tool run with the appropriate access) —
-running them and logging the results per §6 is still the way Phase 3
-actually gets done.
+**Search phase closed 2026-09-11, by researcher decision.** This
+environment itself has no credentials for any of these platforms and, as
+of 2026-08-25, cannot directly reach any of them either — outbound network
+egress is blocked for essentially all direct HTTP(S) access to the open
+web (confirmed by testing `WebFetch` and a direct API call against a
+wide, representative sample of these domains). All real searching was
+done by the researcher via EUR institutional access, largely relayed
+through a separate browser-capable Claude Cowork session, with raw
+exports handed back to this pipeline for normalization and screening.
+
+**Databases actually searched, per `search_log.csv`:** Scopus (18/18
+planned batches, `SEARCH_018`–`SEARCH_034`), Web of Science (`SEARCH_035`,
+5 export batches), HeinOnline (`SEARCH_036`–`SEARCH_038`, though only 1 of
+`SEARCH_037`/`SEARCH_038`'s handful of records ever reached this pipeline
+as a file), ProQuest (`SEARCH_039`, full account-based export, 7,728
+records) and ProQuest/Sociological Abstracts (`SEARCH_040`, 16,736
+records), and JSTOR (`SEARCH_041`, identified 356 Subject:Law-filtered
+results but only 50 were ever exported and none reached this pipeline).
+
+**Databases never searched at all:** SSRN (`SEARCH_042`) and Westlaw/Lexis
+(`SEARCH_043`, not even the planned format-reconnaissance step) — the
+search phase was closed before either was reached. This is a real,
+intentional gap in this review's search strategy, not an oversight, and
+must be reported as such in any manuscript output per PRISMA's search-
+strategy transparency requirement, not silently omitted. CanLII,
+Rechtspraak.nl, and the Brazilian legal/regulatory databases were never in
+scope for this pipeline in the first place — they feed the doctrinal/
+jurimetric strand (`PROJECT_SPEC.md` §9), not this household-level
+empirical screening database.
+
+The strings in `01_search/database_strategies/` for the never-run
+databases remain available if a future round of this project (or a
+follow-up study) decides to extend the search — nothing about closing
+Phase 3 here prevents that, it just means this review's own results rest
+on the coverage actually achieved.
 
 **What *was* done:** three rounds of an explicitly non-systematic,
 exploratory pilot using Claude's `WebSearch` tool (a first-party search
