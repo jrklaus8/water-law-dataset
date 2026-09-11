@@ -109,6 +109,9 @@ TITLE-ABS-KEY(
 
 ## Web of Science
 
+- **Ready-to-paste, self-contained instructions for Claude Cowork:**
+  [`cowork_instructions_2026-09-11_wos_heinonline.md`](cowork_instructions_2026-09-11_wos_heinonline.md)
+  (covers both Web of Science and HeinOnline below).
 - Library route: EUR library database list → "Web of Science."
 - Search interface: Advanced Search, using `TS=` (Topic) field.
 - String: `database_strategies/wos.md` (same three concept blocks, `TS=`
