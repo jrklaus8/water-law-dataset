@@ -67,6 +67,11 @@ import re
 import sys
 from pathlib import Path
 
+# ProQuest conference-abstract-supplement records can carry a single
+# concatenated abstract field past Python's default 131072-char csv limit
+# (e.g. an entire journal supplement issue indexed as one record).
+csv.field_size_limit(sys.maxsize)
+
 NORMALIZED_FIELDS = ["title", "authors", "year", "doi", "url", "database", "search_id"]
 OPTIONAL_FIELDS = ["abstract"]  # carried through when present; never required
 OUTPUT_FIELDS = [
