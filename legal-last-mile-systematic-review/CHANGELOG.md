@@ -9,7 +9,37 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-11 (latest) — HeinOnline begins; a SEARCH_035 integrity scare, resolved
+## 2026-09-11 (latest) — ProQuest and JSTOR: two methodological decisions
+
+Cowork's next round surfaced two real, platform-forced compromises that
+needed a decision from the researcher rather than being resolved
+unilaterally (`PROJECT_SPEC.md` §14.18) — both logged in
+`search_log.csv` (`SEARCH_039`, `SEARCH_041`) alongside the technical
+detail; the decisions themselves:
+
+- **ProQuest** (`SEARCH_039`, 8,137 total hits): guest/no-account export
+  works mechanically but caps at roughly 100–200 records per session
+  before a login-required error, and saves under an unrecoverable random
+  filename. **Decision: the researcher will create a personal ProQuest
+  "My Research" account**, which unlocks a documented 20,000-record bulk
+  export — Cowork cannot create the account or enter a password on the
+  researcher's behalf. Full ProQuest export is pending that account.
+- **JSTOR** (`SEARCH_041`): the full search string is rejected outright
+  as "too long," forcing a trim to ~9 terms across 3 clauses (a
+  materially smaller vocabulary than every other database in this
+  project), and even that returned 5,217 hits until an ad-hoc
+  "Subject: Law" filter narrowed it to a workable 356 — excluding
+  whatever JSTOR classifies under Development Studies, Public Policy,
+  Urban Studies, etc. **Decision: accept the narrower, Subject:Law-only
+  JSTOR search as a supplementary source** (consistent with
+  `SEARCH_PROTOCOL.md` §1's own Tier 2 framing for JSTOR/SSRN/Google
+  Scholar — supplementing, not matching, Tier 1 recall) rather than
+  running further subject-filtered sub-searches to widen it. The full
+  356 (not just the 7-record sample already pulled) still needs
+  exporting — no bulk "select all" exists on JSTOR, so this is manual,
+  per-item selection across roughly 15 pages.
+
+## 2026-09-11 (later still) — HeinOnline begins; a SEARCH_035 integrity scare, resolved
 
 - **`SEARCH_037` (HeinOnline, Title-restricted secondary search per
   `heinonline.md`)** ingested: 1 record ("Hear Their Voices: Australia's
