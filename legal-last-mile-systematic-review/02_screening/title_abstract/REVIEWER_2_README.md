@@ -9,10 +9,10 @@ Claude's first-pass screening (`reviewer_1`, tags `Claude-AI-1stpass-
 
 ## `reviewer_2_queue.csv` — the actual work
 
-Every record `reviewer_1` marked `include` (3,061) or `unsure` (603) —
-3,664 rows, `include` first then `unsure`, most recent year first within
+Every record `reviewer_1` marked `include` (3,062) or `unsure` (603) —
+3,665 rows, `include` first then `unsure`, most recent year first within
 each. This is a large jump from the prior 1,958-row queue, reflecting the
-27,433-record corpus now being fully screened (up from 7,145) after the
+27,481-record corpus now being fully screened (up from 7,145) after the
 ProQuest/Sociological Abstracts/JSTOR rounds closed out the search phase.
 For each: read the title + abstract (both included in the row, no need to
 go back to `screening_database.csv`), form your own independent
@@ -37,7 +37,7 @@ highest-value subset to prioritize.
 
 ## `exclude_spotcheck_sample.csv` — a false-negative check, not full review
 
-A **random** sample of 120 of the 22,530 records `reviewer_1` excluded
+A **random** sample of 120 of the 22,557 records `reviewer_1` excluded
 (~0.5% now, down from ~2.3% at the last exclude-population size), same
 fixed seed `20260911035` for reproducibility (anyone can regenerate the
 identical sample from the current `screening_database.csv`). This is
