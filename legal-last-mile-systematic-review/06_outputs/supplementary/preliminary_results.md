@@ -138,23 +138,50 @@ evidence of anything.
   totals: 5,480 unique records, 5,445 with a real abstract, all 5,445
   screened — 1,509 include, 3,747 exclude, 189 unsure.** Still a
   provisional first pass only; still no human `reviewer_2`.
+- **2026-09-11 (later): Web of Science — the second Tier 1 database —
+  searched for real.** `SEARCH_035` (4,058 records, with abstracts)
+  arrived as 5 sequential export batches (Web of Science's native
+  1,000-record export cap), zero overlap between batches verified.
+  Processing it surfaced and fixed two real bugs in the previously-
+  speculative `wos_adapter.py`: it only handled single CSV files
+  (fixed — now merges multiple tab-delimited files in one call), and a
+  genuine data-corruption bug where WoS's unescaped tab-delimited format
+  confused Python's default CSV quote-handling whenever an abstract
+  contained a literal double-quote, silently merging or corrupting
+  records (caught by comparing raw physical line counts against parsed
+  row counts, fixed by disabling quote interpretation entirely — correct
+  for this format). The adapter is now validated against a real export,
+  not just written speculatively. Full re-dedup across the combined
+  10,079-record raw pool found **3,475 duplicates — 2,934 of them from
+  heavy Scopus/Web-of-Science overlap alone**, exactly the kind of
+  cross-database redundancy a working dedup pipeline should catch,
+  leaving **7,145 unique records, 7,109 with a real abstract**. The
+  1,664 newly-unique records were screened the same way as every prior
+  batch: **201 include, 1,404 exclude, 59 unsure** — a notably lower
+  yield (~13%) than Scopus's ~25-30%, expected since this batch is only
+  the WoS-unique residue left after cross-database dedup already removed
+  everything WoS shared with Scopus. **Cumulative totals: 7,145 unique
+  records, 7,109 with a real abstract, all 7,109 screened — 1,710
+  include, 5,151 exclude, 248 unsure.** Still a provisional first pass
+  only; still no human `reviewer_2`.
 
 ## What has not been done
 
-- **Only Scopus has been searched, and every other database remains
-  entirely unsearched** (`SEARCH_PROTOCOL.md` §7–8) — Web of Science,
-  HeinOnline, Westlaw, Lexis, ProQuest, Sociological Abstracts, CanLII,
-  and Rechtspraak.nl are all still untouched. Scopus itself is now fully
-  searched per its own plan (5,984 of ~5,443+ originally estimated, all
-  18 planned batches done), but that is one database out of the full
-  `SEARCH_PROTOCOL.md` list. This remains the actual
-  Phase 3 requirement, still largely unmet.
+- **Only two of nine planned databases have been searched at all**
+  (`SEARCH_PROTOCOL.md` §7–8) — HeinOnline, Westlaw, Lexis, ProQuest,
+  Sociological Abstracts, CanLII, and Rechtspraak.nl are all still
+  untouched. Scopus is now fully searched per its own plan (5,984 of
+  ~5,443+ originally estimated, all 18 planned batches done); Web of
+  Science has only its first batch in (4,058 records) — whether that's
+  the platform's complete result set or more batches remain hasn't been
+  confirmed. This remains the actual Phase 3 requirement, still largely
+  unmet.
 - **A human `reviewer_2` title/abstract pass has not been done, and no
-  conflict resolution has happened** — the 1,509 include / 189 unsure
+  conflict resolution has happened** — the 1,710 include / 248 unsure
   records from Claude's first-pass screening are candidates, not settled
   inclusions. `PROTOCOL.md`'s two-reviewer process is only half-done.
 - No study has been finally included or excluded from the review — the
-  3,747 first-pass excludes and 1,509 first-pass includes are both
+  5,151 first-pass excludes and 1,710 first-pass includes are both
   provisional until a second reviewer's pass exists to check them
   against.
 - No full-text screening has happened on any record.

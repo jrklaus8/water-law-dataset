@@ -9,6 +9,66 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-11 (later) — SEARCH_035 ingested: first Web of Science batch, second Tier 1 database
+
+- **Web of Science is the second Tier 1 database actually searched for
+  real** (`SEARCH_035`, 2026-09-11) — sent as 5 sequential tab-delimited
+  `savedrecs.txt`-style export batches (WoS's native 1,000-record export
+  cap; the researcher used `cowork_instructions_2026-09-11_wos_heinonline.md`
+  to run it), zero overlap between batches confirmed via UT/accession
+  number comparison, totaling 4,058 records after removing one exact
+  internal repeat.
+- **Found and fixed two real bugs in `wos_adapter.py`, previously
+  unvalidated speculative code, while processing this batch:**
+  1. It only handled a single CSV file; added tab-delimited
+     auto-detection (comparing tab vs. comma counts in the header line)
+     and multi-file merging (`--input` now takes one or more files).
+  2. **A real data-corruption bug**: WoS's tab-delimited export has no
+     quote-escaping at all, so a literal double-quote inside an abstract
+     (common — quoting a term) was being misread by Python's csv module
+     under its default quoting mode as *opening* a quoted field, which
+     then silently swallowed every subsequent tab and newline as literal
+     text until some *later* stray quote happened to close it —
+     corrupting or merging an unpredictable number of downstream records.
+     Caught by comparing each file's raw physical line count (1,000)
+     against its parsed row count (as low as 988 before the fix) rather
+     than assuming a clean parse; fixed by switching to
+     `csv.QUOTE_NONE` for the tab-delimited path, which is actually
+     correct for this format. Re-verified exact 1,000/1,000 parsing
+     after the fix, then spot-checked field alignment on real records.
+     `wos_adapter.py` is now genuinely validated against a real export,
+     not just written speculatively.
+- Full-corpus re-dedup (10,079 raw records now that WoS is in) found
+  **2,934 duplicates** — far more than any prior round, as expected:
+  Scopus and Web of Science index a lot of the same journal literature,
+  so heavy cross-database overlap is exactly what a working dedup should
+  catch. Leaves **7,145 unique records, 7,109 with a real abstract**.
+  Same benign `record_id` flag as the previous round (`R36A2B99DC8AD`,
+  the SEARCH_026/SEARCH_027 Scopus year-metadata quirk) recurred and was
+  left untouched, as before — not a new issue.
+- Screened the 1,664 newly-unique records (5 more batches, same
+  independent-validation method as every prior round) against
+  `INCLUSION_EXCLUSION.md`: **201 include / 1,404 exclude / 59 unsure**.
+  Notably lower yield than the Scopus batches (~13% include/unsure vs.
+  ~25-30%) — expected, not a screening-quality problem: `TS=` is broader
+  than Scopus's `TITLE-ABS-KEY` (also searches Keywords Plus), and this
+  batch is only the WoS-unique residue *after* cross-database dedup
+  already removed everything WoS shared with Scopus, so it's
+  disproportionately the noise Scopus's narrower field didn't also catch.
+- Screening database now has **7,145 total records, 7,109 screened**
+  (36 still lack a real abstract and remain deliberately undecided).
+  Cumulative first-pass totals: **1,710 include / 5,151 exclude / 248
+  unsure.** Refreshed `reviewer_2_queue.csv` (1,958 rows) and
+  `exclude_spotcheck_sample.csv` (120-row sample, seed `20260911035`,
+  regenerated fresh over the full exclude population) accordingly.
+  `code/analysis/validate_schemas.py` confirms all 11 checked project
+  CSVs still match their documented schema.
+- `search_log.csv`'s `SEARCH_035` row documents what's confirmed (exact
+  query string, per-batch counts, zero-overlap verification) and flags
+  what wasn't reported back (Core Collection index selection, the
+  platform's own on-screen total count) rather than guessing either —
+  worth the researcher confirming for the record.
+
 ## 2026-09-11 — SEARCH_026 ingested: Scopus batch plan complete (18 of 18)
 
 - Received and ingested `SEARCH_026` (2020, 274 records) — the one

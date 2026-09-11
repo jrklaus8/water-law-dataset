@@ -37,7 +37,18 @@ TS=(
 - Restrict to Web of Science Core Collection indexes (SCI-EXPANDED,
   SSCI, A&HCI, ESCI) explicitly and record which in the search log `filters`
   field — different index combinations return different results.
-- Status: **not yet executed.** An adapter (`code/search/adapters/wos_adapter.py`)
-  is written and ready to normalize whatever CSV export comes back —
-  **unvalidated**, since no real Web of Science export has existed in this
-  project yet, same caveat as `pubmed_adapter.py` carried until SEARCH_018.
+- Status: **executed 2026-09-11 (`SEARCH_035`)** — 4,058 records across 5
+  export batches (WoS's native 1,000-record export cap), all with
+  abstracts. Core Collection index selection actually used was not
+  reported back to the pipeline — flagged in `search_log.csv`'s `filters`
+  field as unconfirmed rather than guessed; worth double-checking with
+  whoever ran it. `code/search/adapters/wos_adapter.py` is now
+  **validated against this real export** (it wasn't when first written —
+  found and fixed two real bugs in the process: no tab-delimited support
+  initially, and a quote-escaping parsing bug that was silently
+  corrupting ~1-2% of records before the fix; see `CHANGELOG.md`
+  2026-09-11 (later)). This batch's include/unsure rate after screening
+  (~13%) came in well below the ~25-30% seen in Scopus batches — expected,
+  since `TS=` is broader than Scopus's `TITLE-ABS-KEY` and this batch is
+  only the WoS-unique residue after cross-database dedup against Scopus
+  removed the overlap.
