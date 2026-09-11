@@ -9,6 +9,51 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-11 (latest) — HeinOnline begins; a SEARCH_035 integrity scare, resolved
+
+- **`SEARCH_037` (HeinOnline, Title-restricted secondary search per
+  `heinonline.md`)** ingested: 1 record ("Hear Their Voices: Australia's
+  First Nations Women and the Legal Recognition of Their Rights to
+  Water," O'Bryan & Harriden 2023). No structured abstract available
+  from HeinOnline for this record — left blank, not fabricated; gets
+  title-only triage like other abstract-less records.
+- **`SEARCH_036` (HeinOnline, main three-clause full-text search)**
+  logged as **count-only**: 71,226 hits, far too many to hand-compile
+  and no bulk results-list export exists on HeinOnline at that volume.
+  Per `REPRODUCIBILITY.md`, a real search that ran and produced a real
+  total is logged even when it yields no exportable records — no records
+  added under this `search_id`.
+- **A serious, since-resolved integrity question on `SEARCH_035`.** A
+  run log received the same day claimed the Web of Science export
+  ingested in the previous round had never actually succeeded ("no
+  download was ever produced... confirmed nothing in Downloads"),
+  directly contradicting the 4,058 real-looking records already screened
+  and pushed. Flagged to the researcher rather than resolved
+  unilaterally either way (`PROJECT_SPEC.md` §14.18); a technical
+  read at the time (realistic WOS accession-number entropy, correct
+  journal/ISSN/publisher metadata, WoS-internal ResearcherID/GA-code
+  fields very hard to fabricate at scale) suggested the data was
+  genuine, but this was not independently verifiable from this
+  environment.
+  - **Conclusively resolved**: checked directly on the researcher's
+    machine, file by file. The 5 files exist under Windows' standard
+    duplicate-naming convention (`savedrecs.txt`, `savedrecs (1).txt`,
+    `savedrecs (2).txt`, `savedrecs (3).txt`) rather than the 4 distinct
+    names originally assumed — 1000+1000+1000+58 = 4,058 records, zero
+    WOS-ID overlap, timestamped 03:52–03:57 UTC, predating the later
+    session that logged the HTTP 500 failures. **The originally-ingested
+    4,058 records are genuine and stand as final — nothing in this
+    project's data was ever wrong.**
+  - **A second, smaller instance of the same failure mode surfaced
+    during the resolution itself**: the later session's own retry
+    produced a `savedrecs (4).txt` that returned HTTP 200 (apparent
+    success) but was a byte-for-byte duplicate of the first batch — no
+    new file actually written despite the "successful" network
+    response. Worth carrying forward as a standing caution for future
+    rounds: a Cowork session's own claim of export success (status
+    code, dialog closing normally) is not sufficient on its own for
+    this platform — confirm against the actual file on disk.
+
 ## 2026-09-11 (later) — SEARCH_035 ingested: first Web of Science batch, second Tier 1 database
 
 - **Web of Science is the second Tier 1 database actually searched for

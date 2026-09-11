@@ -22,6 +22,18 @@ screening per `INCLUSION_EXCLUSION.md`. If a field-selection screen offers
 a checkbox for "Abstract," "Abstract & Keywords," or "Complete record,"
 take it, even if it makes the file bigger.
 
+## The second thing that matters: verify an export against the file, not the network
+
+Added 2026-09-11 after a real incident (`CHANGELOG.md` 2026-09-11
+(latest)): a Web of Science export attempt returned a normal-looking
+network response (HTTP 200, export dialog closing as expected) but no
+file was actually written to disk — twice, on two separate attempts. The
+only thing that settled it was checking the Downloads folder directly,
+file by file, including timestamps. **Before reporting a batch as
+"exported successfully," confirm the file actually exists on disk with a
+plausible size and record count — a closing dialog or a 200 response is
+not proof by itself**, at least not on Web of Science's export backend.
+
 ## General pattern (applies to every database below)
 
 1. Go in through **EUR's library database list**, not the database's own
