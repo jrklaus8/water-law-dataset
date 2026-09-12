@@ -9,6 +9,67 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 5) — Phases 12-16 scaffolding built (meta-analysis through PRISMA reporting)
+
+At the researcher's request ("keep scaffolding further downstream
+phases... regardless"), built shells for every remaining phase, with an
+explicit disclosure this time that matters more than in prior rounds:
+**none of the R code below has actually been executed** — no R
+interpreter was available in the environment that wrote it (checked:
+`which R` / `which Rscript` both came back empty). This is a materially
+different situation from every stdlib-Python script built earlier this
+project, which were tested directly. Brace/parenthesis balance was
+sanity-checked mechanically as a minimal safety net, but that is not the
+same as a real run.
+
+- **`08_code/R/01_meta_analysis.R`** (Phase 12): random-effects model per
+  candidate synthesis family (`ANALYSIS_PLAN.md` §5), heterogeneity +
+  prediction interval (§6), subgroup analysis gated on a minimum study
+  count (§7), meta-regression gated at the ~10-studies-per-moderator
+  threshold (§8). Flags rather than silently pools when a study
+  contributes more than one effect to a family (`CODEBOOK.md` §12's
+  dependence-modeling requirement). Joins `extraction_database.csv` in
+  for moderator/subgroup fields, since `effect_sizes.csv` itself has none
+  — and explicitly does NOT invent a clean mapping between
+  `ANALYSIS_PLAN.md`'s colloquial moderator names ("jurisdiction",
+  "decentralization") and `extraction_database.csv`'s actual column names
+  (`country`, `regulatory_model`), since no such 1:1 mapping currently
+  exists in this project's own schema.
+- **`08_code/R/02_sensitivity_analysis.R`** (Phase 14): the five specific
+  checks `ANALYSIS_PLAN.md` §10 names, each reported as run or explicitly
+  skipped (never silently omitted) depending on what fields are actually
+  available for a given family.
+- **`08_code/R/03_publication_bias.R`** (Phase 15): funnel plot, Egger,
+  Begg — **refuses to run below `ANALYSIS_PLAN.md` §9's ~10-studies-per-
+  family threshold** rather than producing an uninterpretable plot, same
+  discipline as `code/extraction/select_pilot_sample.py`'s refusal logic.
+  Prints the "asymmetry is not proof of publication bias" caveat
+  alongside every result it does produce.
+- **`06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`** (Phase 13):
+  structural template for families the decision tree routes away from
+  meta-analysis — explicitly does not reproduce SWiM's own reporting
+  checklist verbatim, same unverified-citation caveat as the
+  risk-of-bias tools.
+- **`06_outputs/prisma/PRISMA_2020_CHECKLIST.md`** (Phase 16): all 27
+  items mapped to where each is already substantively addressed in this
+  repository (most of them, well before any manuscript gets drafted) —
+  two items (funding, competing interests) flagged as having no home yet
+  since they're disclosures the researcher supplies, not pipeline
+  outputs. Item wording reconstructed from well-established knowledge of
+  PRISMA 2020's structure, not a live fetch against the publisher — flag
+  to verify against the official checklist before submission.
+- Fixed a stale `ANALYSIS_PLAN.md` §13 status line still blaming the
+  (long-closed) search phase; the real current blocker is Phase 6 not
+  having produced full-text decisions yet.
+- `PRISMA_WORKFLOW.md` Phase 12-16 rows and current-phase summary updated
+  accordingly, each carrying the "not yet run" caveat explicitly rather
+  than only in `08_code/R/README.md`.
+
+No new CSV schemas, so `validate_schemas.py` needed no updates. No
+analysis has actually been run on real data — templates only, and
+honestly labeled as untested where that's genuinely true (unlike this
+project's Python tooling, which has been run and verified throughout).
+
 ## 2026-09-12 (latest, cont. 4) — Phase 10 (evidence classification) tooling built; Phase 11 deliberately left unscaffolded
 
 At the researcher's request ("go on"), built `code/analysis/

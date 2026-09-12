@@ -163,7 +163,15 @@ not actually require. See `REPRODUCIBILITY.md`.
 
 ## 13. Status
 
-**No data has been extracted.** This plan is pre-specified against a search
-that has not yet been executed (`SEARCH_PROTOCOL.md` §7); `05_analysis/` is
-currently empty except CSV templates and `.gitkeep` files. Nothing in this
-document should be read as describing an analysis that has been run.
+**No data has been extracted, so no analysis in this document has
+actually been run.** The search phase itself closed 2026-09-11
+(`SEARCH_PROTOCOL.md` §7) — that is no longer what's blocking this
+document. The real current blocker is upstream: full-text screening
+(Phase 6) hasn't produced real decisions yet, so extraction (Phase 8) and
+therefore evidence classification (Phase 10) and quantitative feasibility
+(Phase 11) haven't started either. `08_code/R/` (Phases 12/14/15) and
+`06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md` (Phase 13) hold
+templates written directly against this plan's own specification, but
+**none of that code has actually been run** — see `08_code/R/README.md`'s
+"Status" section. `05_analysis/` still holds only CSV schemas/templates
+and `.gitkeep` files where actual results will go.

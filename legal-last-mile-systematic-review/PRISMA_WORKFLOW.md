@@ -40,13 +40,13 @@ covering the original 37). |
 | 9 | Risk of bias | **Process scaffolding built 2026-09-12, blocked on extraction (Phase 8) producing studies to appraise.** `04_quality/appraisal_forms/APPRAISAL_FORM.md` documents the process (classify design → obtain the current official tool from `SOURCES.md` §9–13 → complete it → save the filled checklist → record the result in `extraction_database.csv`) and explicitly does **not** reproduce any of the six validated tools' own checklist items (publishers revise them; this project hasn't independently re-verified their citations against the publisher — see `SOURCES.md`). A fully worked fillable form exists for the one project-owned instrument, the Legal Institutional Evidence Appraisal Framework (`legal_institutional_evidence_appraisal_framework_form.md`, all 13 domains from `RISK_OF_BIAS.md` §2). `04_quality/risk_of_bias/EVIDENCE_LIMITATIONS_TEMPLATE.md` gives the shell for the end-of-phase cross-cutting narrative `RISK_OF_BIAS.md` §3 requires. No study has actually been appraised yet. |
 | 10 | Evidence classification | **Tooling built 2026-09-12, blocked on extraction (Phase 8) producing studies to classify.** `code/analysis/build_evidence_map.py` derives what can safely be derived mechanically into `evidence_map.csv` (`study_design_class` from `risk_of_bias_tool`, `mechanism_family` from the four top-level mechanism booleans, `legal_context`/`institutional_context` copied from already-extracted fields) and leaves everything requiring real judgment blank with an explicit warning — most notably `outcome_family`, since `PROJECT_SPEC.md` §7 itself lists "approval/refusal" under both the primary and a secondary outcome category, so it cannot be mechanically resolved. Tested against a synthetic extraction database (correct tool→design mapping, correct MULTIPLE handling, correct idempotent no-op on rerun) before being run against the real, currently-empty `extraction_database.csv`. See `05_analysis/descriptive/EVIDENCE_MAP_README.md`. |
 | 11 | Quantitative feasibility assessment | Not started — and deliberately has no speculative tooling built ahead of it. `ANALYSIS_PLAN.md` §2's decision tree is a corpus-level methodological judgment applied per candidate synthesis family (`PROJECT_SPEC.md` §8), not a per-study mechanical fact; the decision tree itself already **is** the complete process, so there is nothing safe to automate the way Phase 10's `build_evidence_map.py` helps with mechanical fields. See `05_analysis/descriptive/EVIDENCE_MAP_README.md`'s closing section. |
-| 12 | Meta-analysis where justified | Not started |
-| 13 | Structured quantitative synthesis of unpoolable evidence (SWiM) | Not started |
-| 14 | Sensitivity analysis | Not started |
-| 15 | Publication bias assessment where appropriate | Not started |
-| 16 | PRISMA reporting | Not started |
+| 12 | Meta-analysis where justified | **R template built 2026-09-12** (`08_code/R/01_meta_analysis.R`) implementing `ANALYSIS_PLAN.md` §§5–8 (random effects, heterogeneity + prediction interval, subgroup analysis gated on a minimum study count, meta-regression gated at the ~10-studies-per-moderator threshold). **Not yet run against real data — no R interpreter was available in the environment that wrote it** (see `08_code/R/README.md`'s "Status" section); validate it before trusting any output. Blocked on Phase 11 actually judging a synthesis family eligible. |
+| 13 | Structured quantitative synthesis of unpoolable evidence (SWiM) | **Template built 2026-09-12** (`06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`) — deliberately does not reproduce SWiM's own reporting-guideline checklist verbatim (unverified against the publisher, same caveat as the risk-of-bias tools); check the official guideline directly. Blocked on Phase 11 routing a family here instead of to meta-analysis. |
+| 14 | Sensitivity analysis | **R template built 2026-09-12** (`08_code/R/02_sensitivity_analysis.R`), implementing the five specific checks `ANALYSIS_PLAN.md` §10 names. Same untested-in-this-environment caveat as Phase 12. |
+| 15 | Publication bias assessment where appropriate | **R template built 2026-09-12** (`08_code/R/03_publication_bias.R`), enforcing `ANALYSIS_PLAN.md` §9's ~10-studies-per-family threshold as a hard refusal rather than a suggestion. Same untested-in-this-environment caveat as Phase 12. |
+| 16 | PRISMA reporting | **Checklist built 2026-09-12** (`06_outputs/prisma/PRISMA_2020_CHECKLIST.md`) — all 27 items mapped to where each is already substantively addressed in this repository, so manuscript drafting is writing up what's recorded, not starting blank. Two items (funding, competing interests) have no home yet and need the researcher's actual disclosures. Exact item wording should be checked against the official PRISMA 2020 checklist before final submission. |
 
-**Current phase: 1–5 complete, Phase 6, 7, 9, and 10 scaffolding built.** Phase 3 closed by researcher decision,
+**Current phase: 1–5 complete, Phases 6, 7, 9, 10, and 12–16 scaffolding built.** Phase 3 closed by researcher decision,
 with documented gaps (SSRN and Westlaw/Lexis never searched). Phase 5's
 human `reviewer_2` pass is done — see the flagged caveat on its near-total
 agreement rate with reviewer_1 in the Phase 5 row above, which any
@@ -87,7 +87,13 @@ classification) has a working derivation script tested against synthetic
 data; Phase 11 (quantitative feasibility) is deliberately left without
 speculative tooling, since its decision tree is a corpus-level judgment
 call that already **is** the complete process — see the Phase 10/11 rows
-above.
+above. Phases 12, 14, and 15 have R analysis templates
+(`08_code/R/`) implementing `ANALYSIS_PLAN.md`'s already-specified models
+and thresholds, explicitly marked **not yet run** (no R interpreter was
+available to test them); Phase 13 has a SWiM synthesis template; Phase 16
+has the full PRISMA 2020 checklist pre-mapped to where each item is
+already addressed in this repository. All of Phases 12–16 remain blocked
+on real evidence existing to run them against.
 
 ## Screening database schema
 
