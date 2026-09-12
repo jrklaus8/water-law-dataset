@@ -9,6 +9,29 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 10) — Full-text reviewer_2 handoff tooling; final_decision normalization
+
+Built `code/screening/build_full_text_reviewer2_queue.py`, mirroring the
+title/abstract stage's queue mechanism, so a human `reviewer_2` for Phase
+6 (full-text screening) can start immediately whenever the researcher
+assigns one rather than needing tooling built first. Generated the queue
+for real: `02_screening/full_text/full_text_reviewer_2_queue.csv`, 175
+rows (85 include / 90 exclude), plus
+`02_screening/full_text/REVIEWER_2_README.md` documenting how to use it
+and — unlike the title/abstract stage — the added wrinkle that Phase 8
+extraction has already run on every include, so a reviewer_2 override on
+an include also means removing/flagging the corresponding
+`extraction_database.csv`/`evidence_map.csv` row.
+
+While building this, found that 18 full-text records had `final_decision`
+already populated (mirroring `reviewer_1`'s decision) despite no human
+reviewer_2 pass ever having happened for this phase — an inconsistency
+from recent batches, not intentional. Blanked `final_decision` back out
+on all 18, consistent with this project's own stated rule (`final_decision`
+is set only after conflict resolution between two independent reviewers).
+This did not affect any Phase 8 extraction or Phase 10 evidence-map
+work, both of which key off `full_text_decision`, not `final_decision`.
+
 ## 2026-09-12 (latest, cont. 9) — QA spot-check of the 120-record exclude sample; pipeline consistency audit
 
 Manually reviewed all 120 records in `exclude_spotcheck_sample.csv`
