@@ -8,10 +8,10 @@ Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Kla
 
 Project status (2026-09-12): **Search closed, deduplicated, and double-screened
 at title/abstract (Phases 1–5 complete). Full-text screening (Phase 6) is
-live and ongoing — 135 of 3,659 records assessed so far. Full extraction
-(Phase 8) is essentially caught up with screening — 65 of 67 current
+live and ongoing — 145 of 3,659 records assessed so far. Full extraction
+(Phase 8) is essentially caught up with screening — 69 of 71 current
 includes fully extracted. Evidence classification (Phase 10) is populated
-for all 65. Risk-of-bias rating (Phase 9) and quantitative-feasibility
+for all 69. Risk-of-bias rating (Phase 9) and quantitative-feasibility
 assessment (Phase 11) are deliberately not yet started — see below for why.**
 
 ---
@@ -252,9 +252,9 @@ the number.
 
 **Phase 6 (full-text screening) is live.**
 [`02_screening/full_text/full_text_screening_database.csv`](02_screening/full_text/full_text_screening_database.csv)
-holds all 3,659 title/abstract includes; **135 have been assessed so far
-(67 include / 68 exclude)**, with exclusions broken down by E01–E12 reason in
-`PRISMA_WORKFLOW.md` Phase 6. The remaining 3,524 await the researcher
+holds all 3,659 title/abstract includes; **145 have been assessed so far
+(71 include / 74 exclude)**, with exclusions broken down by E01–E12 reason in
+`PRISMA_WORKFLOW.md` Phase 6. The remaining 3,514 await the researcher
 supplying full text, expected to continue for roughly a month.
 
 **Phase 7 (pilot extraction) was superseded** by the researcher's explicit
@@ -263,7 +263,7 @@ rather than drawing a separate ~10-study pilot subsample first.
 
 **Phase 8 (full extraction) is caught up with screening.**
 [`03_extraction/extracted_data/extraction_database.csv`](03_extraction/extracted_data/extraction_database.csv)
-holds **65 fully-extracted studies (S001–S065)** of the 67 current
+holds **69 fully-extracted studies (S001–S069)** of the 71 current
 full-text includes — the only gap is 2 studies with no cached full text
 available in the working session, flagged for re-upload rather than
 extracted from memory (see §5 above).
@@ -272,7 +272,7 @@ extracted from memory (see §5 above).
 extracted studies — see §6 above for why that is a disclosed limitation, not
 an oversight.
 
-**Phase 10 (evidence classification) is populated for all 65 extracted
+**Phase 10 (evidence classification) is populated for all 69 extracted
 studies** — [`05_analysis/descriptive/evidence_map.csv`](05_analysis/descriptive/evidence_map.csv),
 26 of which are currently judged eligible for quantitative synthesis, all 65
 for qualitative synthesis.
