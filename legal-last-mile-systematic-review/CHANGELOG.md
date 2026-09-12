@@ -9,6 +9,31 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 9) — QA spot-check of the 120-record exclude sample; pipeline consistency audit
+
+Manually reviewed all 120 records in `exclude_spotcheck_sample.csv`
+(fixed-seed random sample of title/abstract-stage excludes, previously
+unreviewed) against `INCLUSION_EXCLUSION.md`. 119 of 120 exclusion
+decisions and their stated rationale checked out. One discrepancy found:
+`R88194172BEF6` (a Sicilian wastewater-reservoir bacterial-removal
+modeling study for agricultural irrigation reuse) carried a stored
+`ai_rationale` ("Oncology biomarker study; unrelated to water/sanitation")
+that plainly did not match its title/abstract — a mismatch that survived
+into both `screening_database.csv` and the QA sample, most likely from
+the 39-parallel-batch merge process. The `exclude` decision itself was
+still correct; only the `exclusion_reason` code was off (`E01` instead of
+`E07`, since the actual content is agricultural/irrigation water reuse,
+not an unrelated topic). Corrected the code and rationale in both files
+and the affected title/abstract exclusion-code breakdown in
+`prisma_flow.md` (E01 16,667→16,666; E07 1,039→1,040) — see
+`PRISMA_WORKFLOW.md` Phase 5 for the full note.
+
+Also ran a pipeline consistency audit: no duplicate DOIs among the 85
+full-text includes, no invalid/missing `exclusion_reason` codes among the
+90 full-text excludes, and every include reconciles to an extraction row
+except the two records already known to be awaiting full-text re-upload
+(Lubeck-Schricker et al.; Gaikwad & Thomas) — no hidden extraction gaps.
+
 ## 2026-09-12 (latest, cont. 8) — Added companion bibliometric manuscript as SOURCES.md exemplar
 
 Added Klaus (2026), "The Evolution of Basic Sanitation Research in

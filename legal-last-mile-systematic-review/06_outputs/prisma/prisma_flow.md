@@ -81,13 +81,13 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     non-binding in this project.]
   Records excluded at title/abstract (n = 22,557, PROVISIONAL)
     [reviewer_1 only. Breakdown by code, all provisional:
-      E01 wrong topic (n = 16,667)
+      E01 wrong topic (n = 16,666)
       E02 wrong population (n = 51)
       E03 wrong exposure / water-quality-only (n = 263)
       E04 wrong outcome (n = 1,000)
       E05 no empirical evidence (n = 1,510)
       E06 engineering only (n = 1,617)
-      E07 wrong service (n = 1,039)
+      E07 wrong service (n = 1,040)
       E08 duplicate (n = 26)
       E09 insufficient information (n = 208)
       E10 inaccessible full text (n = 0)

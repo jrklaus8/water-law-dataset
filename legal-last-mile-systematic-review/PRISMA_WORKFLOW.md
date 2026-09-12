@@ -28,12 +28,24 @@ before merging (not merged silently) — the researcher confirmed proceeding
 with the file as delivered. `final_decision` is populated for all 3,665
 records on this basis; treat this as the recorded second-reviewer pass,
 with the caveat above on the record for anyone assessing this review's
-rigor. `exclude_spotcheck_sample.csv` (120-record random QA sample, fixed
-seed) has not yet been reviewed and remains available if the researcher
-wants an independent check on the exclude population. The 1,259 records
-without a real abstract were deliberately left undecided (title-only
-triage remains non-binding per `title_only_triage_memo.md`, still only
-covering the original 37). |
+rigor. **`exclude_spotcheck_sample.csv` (120-record random QA sample,
+fixed seed) has now been manually reviewed (2026-09-12)** — 119 of 120
+exclusions checked out as correctly reasoned; 1 (`R88194172BEF6`, a
+Sicilian wastewater-reservoir bacterial-removal modeling study for
+agricultural irrigation reuse) had a stored `ai_rationale` that did not
+match its actual title/abstract (it read "Oncology biomarker study;
+unrelated to water/sanitation," evidently misaligned during the
+39-parallel-batch merge) and an inaccurate `exclusion_reason` (`E01`
+instead of `E07`, since the actual content is an irrigation/agricultural
+water-reuse study, not an unrelated topic). The `exclude` decision itself
+was still correct — corrected the code and rationale in both
+`screening_database.csv` and `exclude_spotcheck_sample.csv`, and updated
+the title/abstract exclusion-reason breakdown in `prisma_flow.md`
+accordingly (E01: 16,667→16,666; E07: 1,039→1,040). No other discrepancy
+was found in the 120-record sample. The 1,259 records without a real
+abstract were deliberately left undecided (title-only triage remains
+non-binding per `title_only_triage_memo.md`, still only covering the
+original 37). |
 | 6 | Full-text screening, standardized exclusion reason per record | **In progress, live.** `02_screening/full_text/full_text_screening_database.csv` holds all **3,659** Phase-5 includes. The researcher supplies full-text PDFs via chat upload on a rolling basis (expected to continue for over a month); each is converted (`pdftotext -layout`), screened by Claude as `reviewer_1` (`Claude-AI-fulltext-2026-09-12`) against `INCLUSION_EXCLUSION.md`'s E01–E12 codes, recorded via `code/screening/update_full_text_record.py`, and any exclusion is also logged to `02_screening/exclusion_log/exclusion_log.csv`. As of this update: **175 of 3,659 records decided (85 include / 90 exclude)**; exclusion-reason breakdown so far: E02 (wrong population) 29, E04 (wrong outcome) 16, E01 (wrong topic) 19, E05 (no empirical evidence) 10, E06 (engineering only) 8, E07 (wrong service) 4, E09 (insufficient information) 1, E03 (wrong exposure) 1, E08 (duplicate) 2. `reviewer_2` (human) has not yet been assigned for this phase — open question for the researcher. Retrieval remains researcher-driven (institutional/personal access); this environment has no outbound access to fetch full texts itself. |
 | 7 | Pilot extraction (~10 studies) | **Superseded by full extraction (Phase 8) proceeding directly** — the researcher explicitly authorized starting extraction on all full-text includes as they clear Phase 6, rather than waiting to draw a separate ~10-study pilot subsample first (`CHANGELOG.md`). `EXTRACTION_FORM.md` and `CODEBOOK.md` are being applied directly per Phase 8 below. `select_pilot_sample.py` and `PILOT_EXTRACTION.md` remain available if a formal pilot-disagreement check is wanted later. |
 | 8 | Full extraction | **In progress, live, essentially caught up with Phase 6.** `03_extraction/extracted_data/extraction_database.csv` holds **83 fully-extracted studies (S001–S083)**, all 92 `CODEBOOK.md` fields populated per study, out of **85** current full-text includes — the only gap is **2 studies flagged with no cached full text available in this session** (Lubeck-Schricker et al.; Gaikwad) that were explicitly *not* extracted from memory, consistent with the standing rule against fabricating data — they await re-upload. Every new full-text include is now extracted in the same session it clears Phase 6, rather than accumulating in a backlog. `reviewer_1` for all 83 is `Claude-AI-fulltext-2026-09-12`; `reviewer_2`/`final_decision` are blank pending a second extraction pass (see Phase 9 note on the same open reviewer_2 question). Four of the 83 (S015, S019, S027, S052) are themselves secondary systematic reviews, and a fifth (S079) is a secondary focused review, all flagged `study_design_class = systematic_review_secondary`, never to be pooled as an independent primary effect. |
