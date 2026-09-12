@@ -9,9 +9,9 @@ Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Kla
 Project status (2026-09-12): **Search closed, deduplicated, and double-screened
 at title/abstract (Phases 1–5 complete). Full-text screening (Phase 6) is
 live and ongoing — 175 of 3,659 records assessed so far. Full extraction
-(Phase 8) is essentially caught up with screening — 83 of 85 current
-includes fully extracted. Evidence classification (Phase 10) is populated
-for all 83. Risk-of-bias rating (Phase 9) and quantitative-feasibility
+(Phase 8) is fully caught up with screening — all 85 current
+includes extracted, no outstanding gap. Evidence classification (Phase 10) is populated
+for all 85. Risk-of-bias rating (Phase 9) and quantitative-feasibility
 assessment (Phase 11) are deliberately not yet started — see below for why.**
 
 ---
@@ -261,20 +261,22 @@ supplying full text, expected to continue for roughly a month.
 decision to extract every full-text include directly as it clears screening,
 rather than drawing a separate ~10-study pilot subsample first.
 
-**Phase 8 (full extraction) is caught up with screening.**
+**Phase 8 (full extraction) is fully caught up with screening.**
 [`03_extraction/extracted_data/extraction_database.csv`](03_extraction/extracted_data/extraction_database.csv)
-holds **83 fully-extracted studies (S001–S083)** of the 85 current
-full-text includes — the only gap is 2 studies with no cached full text
-available in the working session, flagged for re-upload rather than
-extracted from memory (see §5 above).
+holds **all 85 fully-extracted studies (S001–S085)**, matching the 85 current
+full-text includes with no outstanding gap. (The last two, S084–S085, had
+been flagged for re-upload as having no cached full text available in the
+working session; their PDFs turned out to already be present in the
+session's upload store and were converted/extracted 2026-09-12 — see
+`CHANGELOG.md`.)
 
-**Phase 9 (risk of bias) is deliberately not yet applied** to any of the 83
+**Phase 9 (risk of bias) is deliberately not yet applied** to any of the 85
 extracted studies — see §6 above for why that is a disclosed limitation, not
 an oversight.
 
-**Phase 10 (evidence classification) is populated for all 83 extracted
+**Phase 10 (evidence classification) is populated for all 85 extracted
 studies** — [`05_analysis/descriptive/evidence_map.csv`](05_analysis/descriptive/evidence_map.csv),
-35 of which are currently judged eligible for quantitative synthesis, all 83
+37 of which are currently judged eligible for quantitative synthesis, all 85
 for qualitative synthesis.
 
 **Phase 11 (quantitative feasibility) has not started** — see §8 above.
