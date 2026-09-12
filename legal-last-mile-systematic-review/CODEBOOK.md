@@ -1,9 +1,12 @@
 # Extraction Codebook
 
 Governs `03_extraction/extracted_data/extraction_database.csv`. Piloted on
-~10 studies before full extraction (`PRISMA_WORKFLOW.md` Phase 7). Every
-field below maps to a column in that CSV — see `DATA_DICTIONARY.md` for
-type/format detail per field.
+~10 studies before full extraction (`PRISMA_WORKFLOW.md` Phase 7) — see
+`03_extraction/extraction_form/EXTRACTION_FORM.md` for this codebook
+turned into an ordered, fillable checklist, and
+`03_extraction/extraction_form/PILOT_EXTRACTION.md` for how the pilot
+sample is drawn and used. Every field below maps to a column in that CSV
+— see `DATA_DICTIONARY.md` for type/format detail per field.
 
 ## 1. Identification
 

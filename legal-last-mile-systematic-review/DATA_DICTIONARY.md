@@ -128,6 +128,21 @@ full review. Both carry the same bibliographic fields as
 input feeds back into these CSVs automatically — write the actual second
 decision into `screening_database.csv`'s own `reviewer_2` column.
 
+## `03_extraction/extraction_form/pilot_sample.csv`
+
+Not yet generated as of this writing — will be created by
+`code/extraction/select_pilot_sample.py` (schema in that script's own
+`OUTPUT_FIELDS`, add to `validate_schemas.py`'s generated schemas once it
+actually exists) once enough `full_text_screening_database.csv` records
+carry `final_decision == "include"` to draw the ~10-study pilot required
+by `PROTOCOL.md` §6. Disposable working list, not consulted downstream —
+see `03_extraction/extraction_form/PILOT_EXTRACTION.md`.
+
+| Field | Type | Notes |
+|---|---|---|
+| record_id, title, authors, year, doi, url | — | as in `screening_database.csv`/`full_text_screening_database.csv` |
+| database | string | source database, looked up from `screening_database.csv` |
+
 ## `03_extraction/extracted_data/extraction_database.csv`
 
 All fields follow `CODEBOOK.md` §1–12 exactly, in the same order as the CSV

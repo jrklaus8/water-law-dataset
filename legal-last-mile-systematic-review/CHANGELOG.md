@@ -9,6 +9,54 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 2) — Phase 7 (pilot extraction) scaffolding built
+
+At the researcher's request ("go on to the next"), scaffolded Phase 7
+ahead of Phase 6 actually producing any full-text decisions — the same
+build-ahead pattern used for Phase 6 itself:
+
+- **`03_extraction/extraction_form/EXTRACTION_FORM.md`** (new):
+  operationalizes `CODEBOOK.md`'s 12 sections into an ordered, fillable
+  checklist for extracting one study into `extraction_database.csv` --
+  explicitly flags the unit-of-analysis decision (`PROJECT_SPEC.md` §4)
+  as something to nail down before extracting a single number, and the
+  one-effect-per-study-and-outcome-family default (`CODEBOOK.md` §12)
+  before extracting statistics from a multi-effect study.
+- **`code/extraction/select_pilot_sample.py`** (new): draws the ~10-study
+  pilot sample `PROTOCOL.md` §6 requires, stratified proportionally by
+  source database (largest-remainder apportionment) with a fixed seed for
+  reproducibility -- same practice as `exclude_spotcheck_sample.csv`.
+  **Correctly refuses to run right now**: 0 of `full_text_screening_
+  database.csv`'s 3,659 seeded records currently carry `final_decision ==
+  "include"` (Phase 6 retrieval/screening hasn't started), so drawing a
+  10-study sample from an empty pool would be meaningless. Verified the
+  refusal path, and separately verified the actual stratification logic
+  against a synthetic 30-record pool (15/10/5 split across three fake
+  databases correctly yielded a 5/3/2 pilot draw) -- synthetic test files
+  deleted after verification, nothing real touched.
+- **`03_extraction/extraction_form/PILOT_EXTRACTION.md`** (new):
+  documents why the pilot can't run yet, how to run it once it can, and
+  -- the actual point of piloting -- that a disagreement between two
+  independent pilot extractions should prompt asking whether `CODEBOOK.md`
+  itself needs revision, not just resolving that one study's numbers; any
+  such revision is a protocol amendment to log in this changelog per
+  `PROTOCOL.md` §12.
+- `PRISMA_WORKFLOW.md` Phase 7 row and current-phase summary, `CODEBOOK.md`'s
+  opening paragraph, and `DATA_DICTIONARY.md` (a new entry for
+  `pilot_sample.csv`, explicitly marked not-yet-generated) all updated to
+  point at this tooling.
+
+`pilot_sample.csv`'s schema is intentionally **not yet** added to
+`validate_schemas.py` -- the file cannot legitimately exist until the
+script actually runs for real, and adding a schema entry for a file that
+doesn't exist yet would turn `validate_schemas.py`'s otherwise-clean
+report into a false "MISSING" failure. Add it once Phase 6 has enough
+real includes and the pilot is actually drawn.
+
+No study has been extracted and no pilot has been drawn -- this is
+scaffolding only, ready to use the moment Phase 6 produces enough
+full-text includes.
+
 ## 2026-09-12 (latest, cont.) — Phase 6 retrieval tooling added
 
 Following the scaffolding entry directly below, added three small
