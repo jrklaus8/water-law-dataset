@@ -4,11 +4,15 @@ Status: **Identification and title/abstract screening (first pass only)
 are populated with real counts as of 2026-09-11, now that the search
 phase has closed by researcher decision** (candidate pool judged large
 enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
-`PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" now has a
+`PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
-Phase 6 was seeded with — everything from "Reports not retrieved" onward
-is still genuinely unfilled, since no actual retrieval or full-text
-screening work has started yet.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
+Phase 6 was seeded with. Full-text screening is now live and ongoing
+(updated 2026-09-12): of 3,659, 126 have been assessed (62 include / 64
+exclude), with "Reports not retrieved" still at 0 since every record
+reaching this pipeline so far has arrived with full text already in hand
+via researcher chat upload — the remaining 3,533 are simply not yet
+reached, not confirmed unretrievable. This is expected to keep growing
+over roughly a month as the researcher continues supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
 illustrative, or a placeholder dressed as data; every filled count traces
 to `01_search/raw_exports/`, `01_search/deduplicated/`, or
 `02_screening/title_abstract/screening_database.csv` as of this date, and
@@ -105,24 +109,41 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     is the population now in scope for retrieval, not yet the count
     actually retrieved. See the reviewer_2 agreement-rate caveat above
     before treating 3,659 as settled without qualification.]
-  Reports not retrieved (n = )
-  Reports assessed for eligibility (n = )
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md):
-    E01 wrong topic (n = )
-    E02 wrong population (n = )
-    E03 wrong exposure (n = )
-    E04 wrong outcome (n = )
-    E05 no empirical evidence (n = )
-    E06 engineering only (n = )
-    E07 wrong service (n = )
-    E08 duplicate (n = )
-    E09 insufficient information (n = )
-    E10 inaccessible full text (n = )
-    E11 wrong jurisdiction/context (n = )
-    E12 wrong study design (n = )
+  Reports not retrieved (n = 0)
+    [Not a claim that the remaining 3,533 are all retrievable -- it means
+    none has yet been confirmed unretrievable. Every record reaching
+    full-text screening so far arrived via researcher chat upload with
+    full text already in hand, so "not retrieved" has not yet had reason
+    to be used; expect this to change as retrieval of the full pool
+    continues.]
+  Reports assessed for eligibility (n = 126, PROVISIONAL AND GROWING)
+    [02_screening/full_text/full_text_screening_database.csv, updated
+    2026-09-12. Full-text screening is ongoing, not complete -- 3,533 of
+    3,659 records have not yet been reached.]
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 64 total, PROVISIONAL):
+    E01 wrong topic (n = 6)
+    E02 wrong population (n = 25)
+    E03 wrong exposure (n = 0)
+    E04 wrong outcome (n = 12)
+    E05 no empirical evidence (n = 9)
+    E06 engineering only (n = 7)
+    E07 wrong service (n = 4)
+    E08 duplicate (n = 0)
+    E09 insufficient information (n = 1)
+    E10 inaccessible full text (n = 0)
+    E11 wrong jurisdiction/context (n = 0)
+    E12 wrong study design (n = 0)
 
 Included
-  Studies included in systematic review (n = )
+  Studies included in systematic review (n = 62, PROVISIONAL AND GROWING)
+    [Full-text include count as of 2026-09-12; full-text screening is
+    still ongoing across the remaining 3,533 unreached records.]
+  Studies included in full extraction so far (n = 42)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S042.
+    20 of the 62 full-text includes are queued for extraction; 2 more
+    are flagged as awaiting full-text re-upload (no cached text
+    available in this session) and were deliberately not extracted from
+    memory.]
   Studies included in quantitative evidence synthesis (n = )
   Studies included in restricted meta-analysis, by family (n = ), if any
 ```

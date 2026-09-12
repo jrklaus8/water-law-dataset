@@ -9,6 +9,68 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 7) — Live full-text screening, full extraction, and evidence classification underway
+
+Phase 6 (full-text screening) went from scaffolding to live, ongoing work
+once the researcher began supplying full-text PDFs via chat upload —
+expected to continue over roughly a month. Each PDF is converted with
+`pdftotext -layout`, screened by Claude as `reviewer_1`
+(`Claude-AI-fulltext-2026-09-12`) against `INCLUSION_EXCLUSION.md`, and
+recorded via `update_full_text_record.py`; every exclusion is also logged
+to `exclusion_log.csv`. As of this entry: **126 of 3,659 records decided
+(62 include / 64 exclude)** — see `PRISMA_WORKFLOW.md` Phase 6 for the
+exclusion-reason breakdown. `reviewer_2` for this phase has not yet been
+assigned; open question for the researcher.
+
+At the researcher's explicit instruction ("go ahead and start an
+extraction for the 44 included papers... I'm accompanying you every step
+of the way"), Phase 8 (full extraction) began directly rather than first
+drawing a separate ~10-study Phase 7 pilot sample — Phase 7 is marked
+superseded in `PRISMA_WORKFLOW.md` rather than completed. **42 studies
+(S001-S042) are now fully extracted** into `extraction_database.csv`
+against `CODEBOOK.md`'s complete 92-field schema, in six batches of
+seven. Two studies with no cached full text available in this session
+(Lubeck-Schricker et al.; Gaikwad) were explicitly *not* extracted from
+memory and are flagged for re-upload — extraction accuracy takes priority
+over completeness. Three of the 42 (Basnet & Sherchan; Ilangovan et al.;
+Fanaian et al.) are themselves secondary systematic reviews, flagged
+`study_design_class = systematic_review_secondary` and never to be pooled
+as an independent primary effect, per `RISK_OF_BIAS.md` §1.
+
+**Every one of the 42 extracted rows has `risk_of_bias_rating` left
+deliberately blank.** `RISK_OF_BIAS.md` is explicit that none of the six
+validated appraisal tools (RoB 2, ROBINS-I, the two JBI checklists, CASP,
+MMAT) or AMSTAR 2 may be reconstructed from memory — the current official
+version must be obtained before appraising a study with it. Each row
+correctly identifies `risk_of_bias_tool` (design-matched, or the
+project's own Legal Institutional Evidence Appraisal Framework where no
+conventional tool fits) and carries an `extraction_note` deferring the
+actual rating to a follow-up pass with the official instrument in hand.
+This is a disclosed limitation of the review's current state, to be
+reported as such in any manuscript output, not an oversight to be quietly
+fixed later.
+
+`code/analysis/build_evidence_map.py` was run against the real
+extraction database for the first time, then the judgment-call fields it
+deliberately leaves blank were filled by hand for all 42 studies:
+`study_design_class` for the six studies using the Legal Institutional
+Evidence Appraisal Framework (resolved doctrinal vs. jurimetric per
+study — the tool name alone can't distinguish them), `outcome_family`
+mapped to `PROJECT_SPEC.md` §7's hierarchy based on each study's actual
+central/tested outcome rather than a mechanical restatement of the
+outcome booleans, `evidence_level` written as prose per
+`DATA_DICTIONARY.md`'s instruction that it is a narrative tier rather
+than a score, and `quantitative_synthesis_eligible`/
+`qualitative_synthesis_eligible` set per study (18 of 42 have a genuine,
+study-generated, calculable effect estimate; all 42 are eligible for
+qualitative/thematic synthesis, consistent with this project's standing
+protection of qualitative socio-legal evidence as first-class rather than
+a fallback). See `05_analysis/descriptive/EVIDENCE_MAP_README.md`.
+
+`PRISMA_WORKFLOW.md` and `06_outputs/prisma/prisma_flow.md` updated
+throughout to replace stale "not started"/"blocked" language for Phases
+6-10 with the real, live counts above.
+
 ## 2026-09-12 (latest, cont. 6) — Cowork full-text retrieval instructions and bulk-import tooling
 
 At the researcher's request, built the missing piece to actually
