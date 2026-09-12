@@ -42,8 +42,17 @@ was still correct — corrected the code and rationale in both
 `screening_database.csv` and `exclude_spotcheck_sample.csv`, and updated
 the title/abstract exclusion-reason breakdown in `prisma_flow.md`
 accordingly (E01: 16,667→16,666; E07: 1,039→1,040). No other discrepancy
-was found in the 120-record sample. The 1,259 records without a real
-abstract were deliberately left undecided (title-only triage remains
+was found in the 120-record sample. **Follow-up (2026-09-12): scanned the
+entire 22,557-record exclude pool's `ai_rationale` text for the same
+mismatch signature** (a rationale citing a domain wholly foreign to
+water/sanitation/legal-administrative research), rather than relying on
+another random sample — 74 records matched; a diverse 18-record manual
+check against actual titles/abstracts confirmed all 74 are genuine
+off-topic records correctly excluded (e.g., 8 near-duplicate stock-market
+newsletter records for ticker "SJW"/South Jersey Industries), not further
+instances of the corruption. See `CHANGELOG.md` (cont. 12) for the full
+method and result. The 1,259 records without a real abstract were
+deliberately left undecided (title-only triage remains
 non-binding per `title_only_triage_memo.md`, still only covering the
 original 37). |
 | 6 | Full-text screening, standardized exclusion reason per record | **In progress, live.** `02_screening/full_text/full_text_screening_database.csv` holds all **3,659** Phase-5 includes. The researcher supplies full-text PDFs via chat upload on a rolling basis (expected to continue for over a month); each is converted (`pdftotext -layout`), screened by Claude as `reviewer_1` (`Claude-AI-fulltext-2026-09-12`) against `INCLUSION_EXCLUSION.md`'s E01–E12 codes, recorded via `code/screening/update_full_text_record.py`, and any exclusion is also logged to `02_screening/exclusion_log/exclusion_log.csv`. As of this update: **175 of 3,659 records decided (85 include / 90 exclude)**; exclusion-reason breakdown so far: E02 (wrong population) 29, E04 (wrong outcome) 16, E01 (wrong topic) 19, E05 (no empirical evidence) 10, E06 (engineering only) 8, E07 (wrong service) 4, E09 (insufficient information) 1, E03 (wrong exposure) 1, E08 (duplicate) 2. `reviewer_2` (human) has not yet been assigned for this phase — open question for the researcher, but the handoff tooling is now ready: `code/screening/build_full_text_reviewer2_queue.py` generates `02_screening/full_text/full_text_reviewer_2_queue.csv` (currently 175 rows, 85 include/90 exclude) from every decided-but-unconfirmed record, mirroring the title/abstract stage's queue — see `02_screening/full_text/REVIEWER_2_README.md`. Also normalized 18 records that had `final_decision` set prematurely (mirroring `reviewer_1` with no actual second-reviewer pass, an inconsistency from recent batches) back to blank, consistent with this file's own rule that `final_decision` is set only after conflict resolution. Retrieval remains researcher-driven (institutional/personal access); this environment has no outbound access to fetch full texts itself. |

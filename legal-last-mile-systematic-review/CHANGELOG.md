@@ -9,6 +9,36 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 12) — Corpus-wide scan for the R88194172BEF6 corruption pattern: no further instances found
+
+The earlier QA spot-check (cont. 9) found one exclude record
+(`R88194172BEF6`) whose stored `ai_rationale` was completely mismatched to
+its actual title/abstract — an oncology rationale attached to a Sicilian
+wastewater-reuse paper, attributed to the 39-parallel-batch merge process.
+A 120-record random sample only samples ~0.5% of the 22,557-record exclude
+pool, so rather than drawing another random batch, scanned the **entire**
+pool's `ai_rationale` text (`ai_first_pass_rationale.csv`) for the same
+failure signature: a rationale citing a domain wholly foreign to
+water/sanitation/legal-administrative research (oncology, cardiovascular,
+psychiatric, blockchain, cryptocurrency, semiconductor, stock-market
+trading, etc.) — the kind of mismatch a corrupted merge would produce.
+74 records matched at least one such term. Manually verified a diverse
+sample of 18 against their actual `screening_database.csv` title/abstract
+(spanning every matched term at least once, including the ones read in
+full above): all 18 rationales accurately described their real paper —
+these are genuine off-topic records correctly swept up and excluded by
+the broad keyword search (e.g., 8 near-duplicate stock-market newsletter
+records for ticker "SJW" — South Jersey Industries, a water utility
+holding company — correctly excluded as wrong-topic noise; a 1990 case
+study of a semiconductor company's drinking-water contamination correctly
+excluded as historical/policy commentary rather than a water-access
+study). **No further instance of the R88194172BEF6 corruption pattern was
+found.** This is a stronger result than another random sample would give
+for this specific failure mode, since it covers the whole pool rather than
+estimating a rate from ~0.5% of it; it does not rule out other, differently
+-shaped errors the same merge process might have introduced, which the
+120-record random sample (cont. 9) remains the relevant check for.
+
 ## 2026-09-12 (latest, cont. 11) — Closed the last extraction gap: S084/S085
 
 While the researcher was mid-download on a fresh PDF batch, audited the
