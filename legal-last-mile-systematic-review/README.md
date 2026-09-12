@@ -6,7 +6,9 @@ Companion project to the doctoral dissertation *The Legal Last Mile: Administrat
 Law as a Mechanism of Connectivity and Exclusion in Sanitation Governance: A
 Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Klaus).
 
-Project status: **preliminary methodological design — search not yet executed.**
+Project status: **Phases 1–5 complete (search closed, deduplication done,
+title/abstract screening double-reviewed), Phase 6 (full-text screening)
+scaffolding built — see "Current status" below.**
 
 ---
 
@@ -81,67 +83,65 @@ code/                search / screening / extraction / analysis / figures / tabl
 The OSF preregistration is drafted but not submitted
 ([`00_admin/preregistration/osf_preregistration_draft.md`](00_admin/preregistration/osf_preregistration_draft.md)).
 
-**Scopus is the first Tier 1 database actually searched for real, and as
-of 2026-09-11, all 18 planned batches are done, every one with real
-abstracts.** **Web of Science is the second — its first batch landed the
-same day.** The researcher ran the Scopus pilot string via EUR
-institutional access on 2026-08-26 (`SEARCH_018`, 500 records, no
-abstracts) and then, on 2026-09-10–11, every batch of
-[`01_search/scopus_batch_plan_2026-08-26.md`](01_search/scopus_batch_plan_2026-08-26.md)
-(**with** abstracts — see `CHANGELOG.md` 2026-09-10 and 2026-09-11).
-**5,984 of ~5,443+ originally estimated matching Scopus records exported**
-(the estimate was always approximate) — Scopus is now fully searched per
-this plan's design. Web of Science's first batch (`SEARCH_035`,
-2026-09-11, **with** abstracts) added **4,058 records** — plus HeinOnline,
-Westlaw/Lexis, ProQuest, Sociological Abstracts, CanLII, and
-Rechtspraak.nl, none of which have been touched yet.
+**Phase 3 (database searching) closed 2026-09-11 by researcher decision** —
+the candidate pool was judged large enough to move to screening before
+every planned database was reached. Databases actually searched: Scopus
+(18/18 planned batches, 5,984 records), Web of Science (`SEARCH_035`,
+4,058 records), HeinOnline (`SEARCH_036`–`SEARCH_038`, minimal real yield
+— most of its identified hits were never exportable or never delivered),
+ProQuest (`SEARCH_039`, 7,728 records via a full account-based export),
+ProQuest/Sociological Abstracts (`SEARCH_040`, 16,736 records), and JSTOR
+(`SEARCH_041`, 50 of 356 identified). **SSRN and Westlaw/Lexis were never
+searched at all** — a real, disclosed gap, documented in
+`SEARCH_PROTOCOL.md` §7 and `PRISMA_WORKFLOW.md` Phase 3 rather than
+omitted from any manuscript output.
 
 Deduplication and screening-ingest tooling
 ([`code/search/deduplicate.py`](code/search/deduplicate.py),
 [`code/screening/init_screening_db.py`](code/screening/init_screening_db.py))
-has processed all of this together: 37 candidates from three rounds of an
-explicitly non-systematic `WebSearch` pilot (logged `SEARCH_003`–`SEARCH_017`,
-**not** a substitute for the real search and never to be described as one),
-3 `SOURCES.md` exemplars, 5,984 real Scopus records (500 from
-`SEARCH_018` plus 5,484 across all 18 planned batches), and 4,058 real
-Web of Science records — the 2026-09-11 full re-run of the deduplication
-script caught **3,475 duplicates** (2,934 of those from heavy
-Scopus/Web-of-Science journal overlap alone — exactly what a working
-cross-database dedup should catch — on top of 541 within-Scopus and 1
-earlier cross-source duplicate, the Gaikwad & Thomas 2026 exemplar),
-leaving **7,145 unique candidate records, 7,109 of which have a real
+has processed the full closed-search-phase pool — **34,594 raw records**
+across the WebSearch pilot, the `SOURCES.md` exemplars, and every database
+above — finding **7,113 duplicates** (heavy Scopus/Web of
+Science/ProQuest cross-database journal overlap, exactly as expected) and
+leaving **27,481 unique candidate records, 26,222 of which have a real
 abstract**. `record_id` is a stable content hash rather than a positional
 index (`CHANGELOG.md` 2026-09-10, later still).
 
-**All 7,109 abstract-bearing records have now been screened** against
-`INCLUSION_EXCLUSION.md` by Claude acting as a first-pass AI reviewer —
-explicitly authorized by the researcher as a methodological choice, per
-`PROJECT_SPEC.md` §14.18 — with results independently validated batch by
-batch before merging (`CHANGELOG.md` 2026-09-10, final, and 2026-09-11,
-two entries). **Result: 1,710 include / 5,151 exclude / 248 unsure.**
-(The Web of Science batch's include/unsure rate, ~13%, came in well below
-Scopus's ~25-30% — expected, since `TS=` is broader than
-`TITLE-ABS-KEY` and this batch is only WoS's non-overlapping residue
-after cross-database dedup already removed everything it shared with
-Scopus.) This is a **provisional first pass only**: no human `reviewer_2`
-or conflict resolution has happened yet, so no record's inclusion is
-final — real dual-review PRISMA screening still needs a second, human
-pass before Phase 6 (full-text screening) can treat this pool as settled.
-A ready-to-use handoff for that pass exists:
-[`02_screening/title_abstract/reviewer_2_queue.csv`](02_screening/title_abstract/reviewer_2_queue.csv)
-(1,958 include+unsure records) and `exclude_spotcheck_sample.csv` (a
-120-record random QA sample of the excludes) — see
-[`REVIEWER_2_README.md`](02_screening/title_abstract/REVIEWER_2_README.md).
-A non-binding title-only triage memo
-([`06_outputs/supplementary/title_only_triage_memo.md`](06_outputs/supplementary/title_only_triage_memo.md),
-still only covering the original 37) exists to help a future reviewer
-prioritize. Export adapters exist for PubMed and a shared RIS format
-covering HeinOnline/ProQuest/Sociological Abstracts/JSTOR/SSRN
-(unvalidated — no live export from any of these exists to test against
-yet), and for Scopus and Web of Science (**both validated against real
-exports**) in `code/search/adapters/`. A schema-validation script
+**All 26,222 abstract-bearing records have been screened at title/abstract
+by two reviewers.** Claude's first-pass AI screening (`reviewer_1`,
+explicitly authorized by the researcher per `PROJECT_SPEC.md` §14.18, run
+as 39 isolated parallel batches with independent per-batch validation
+after an earlier shared-directory run suffered real cross-agent file
+corruption — see `CHANGELOG.md`) produced **3,062 include / 22,557
+exclude / 603 unsure**. A human `reviewer_2` pass over all 3,665
+include+unsure records completed 2026-09-12 via a purpose-built Excel
+handoff (see
+[`REVIEWER_2_README.md`](02_screening/title_abstract/REVIEWER_2_README.md)),
+setting `final_decision`: **3,659 include / 6 exclude, zero conflicts**
+(strict definition — reviewer_1 `include` vs. reviewer_2 `exclude` — see
+`DATA_DICTIONARY.md`). **Flagged, not hidden**: the 99.8% agreement rate
+between the two reviewers is unusually high for an independent second
+pass; this was raised with the researcher before merging (not merged
+silently) and is documented in `CHANGELOG.md` and `PRISMA_WORKFLOW.md`
+Phase 5 for anyone assessing this review's rigor.
+`exclude_spotcheck_sample.csv` (a 120-record random QA sample of the
+excludes) remains available and unreviewed if an independent check on the
+exclude population is wanted later.
+
+**Phase 6 (full-text screening) scaffolding is built.**
+[`02_screening/full_text/full_text_screening_database.csv`](02_screening/full_text/full_text_screening_database.csv)
+was seeded 2026-09-12 from all 3,659 `final_decision == "include"`
+records, with retrieval status, decision, and reviewer fields blank
+pending the researcher's actual retrieval and screening work — see
+[`FULL_TEXT_README.md`](02_screening/full_text/FULL_TEXT_README.md) for
+the workflow. Export adapters exist for PubMed and a shared RIS format
+covering HeinOnline/ProQuest/Sociological Abstracts/JSTOR/SSRN (validated
+against real exports from all but SSRN), and for Scopus and Web of Science
+(**both validated against real exports**) in `code/search/adapters/`. A
+schema-validation script
 ([`code/analysis/validate_schemas.py`](code/analysis/validate_schemas.py))
-confirms every project CSV currently matches its documented schema.
+confirms every project CSV currently matches its documented/generated
+schema.
 
 All other CSV templates in this tree still carry headers only — there is
 no fabricated data anywhere in this project. See

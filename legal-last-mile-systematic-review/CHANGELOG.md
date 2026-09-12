@@ -9,6 +9,60 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest) — Phase 6 (full-text screening) scaffolding built
+
+At the researcher's request, built the infrastructure for full-text
+screening without doing any actual retrieval or screening work yet:
+
+- **`code/screening/init_full_text_db.py`**: new idempotent, append-only
+  seeding script mirroring `init_screening_db.py`'s design one stage
+  later. Reads `screening_database.csv`, takes every record with
+  `final_decision == "include"`, and appends any not already present to
+  `02_screening/full_text/full_text_screening_database.csv` — never
+  overwrites an existing row's retrieval status or decision, never
+  silently resolves a record_id collision, warns (rather than deletes)
+  if a record already in the full-text database no longer shows
+  `final_decision == "include"` upstream.
+- Ran it: seeded **3,659 records** (exactly the `final_decision ==
+  "include"` count from the reviewer_2 merge above), all retrieval/
+  decision/reviewer fields blank.
+- **Deliberate design choice**: full-text tracking lives in this
+  entirely separate file rather than reusing `screening_database.csv`'s
+  existing-but-unused `full_text_decision`/`reviewer_1`/`reviewer_2`/
+  `conflict` columns — reusing them would overwrite the title/abstract
+  stage's own audit trail and gives full-text screening nowhere to put
+  fields that stage never needed (retrieval status, file location).
+  `screening_database.csv`'s own `full_text_decision` and reviewer
+  columns are now unused/superseded; documented as such in
+  `DATA_DICTIONARY.md`.
+- `code/analysis/validate_schemas.py` updated to import the new file's
+  schema from `init_full_text_db.py.SCHEMA`, matching how
+  `screening_database.csv`'s schema is sourced from
+  `init_screening_db.py` — no hand-duplicated schema declarations. All
+  **12** tracked files (up from 11) validate clean.
+- New `02_screening/full_text/FULL_TEXT_README.md` written for the
+  researcher: how to record retrieval status (`sought`/`retrieved`/
+  `not_retrievable`), where to log a retrieved file's location, how to
+  apply E01–E12 exclusion codes at the full-text stage with page/section-
+  level detail now possible, the same two-reviewer/conflict process as
+  Phase 5, and a note that a possible future independent re-review of
+  Phase 5 (raised separately by the researcher, not yet requested) would
+  flow through to this file automatically via the same idempotent
+  re-run, without disturbing any full-text work already logged.
+- `DATA_DICTIONARY.md`, `PRISMA_WORKFLOW.md` (Phase 6 row and schema
+  block), and `06_outputs/prisma/prisma_flow.md` ("Reports sought for
+  retrieval" line, now n = 3,659) all updated to reflect this.
+- `README.md`'s "Current status" section and top status line, both
+  several rounds stale (still describing the pre-ProQuest/JSTOR search
+  state and an unreviewed first-pass-only screening result), rewritten
+  to match the actual current state through this Phase 6 scaffolding
+  step — including carrying the reviewer_2 agreement-rate caveat
+  forward rather than only having it live in `PRISMA_WORKFLOW.md`.
+
+No full-text retrieval or screening has actually happened — this is
+scaffolding only, ready for the researcher (or a future reviewer) to
+start filling in.
+
 ## 2026-09-12 — Human reviewer_2 pass completed, with a flagged caveat
 
 The researcher was sent a purpose-built Excel worksheet covering all

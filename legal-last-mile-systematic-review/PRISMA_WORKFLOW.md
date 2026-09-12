@@ -34,7 +34,7 @@ wants an independent check on the exclude population. The 1,259 records
 without a real abstract were deliberately left undecided (title-only
 triage remains non-binding per `title_only_triage_memo.md`, still only
 covering the original 37). |
-| 6 | Full-text screening, standardized exclusion reason per record | Not started |
+| 6 | Full-text screening, standardized exclusion reason per record | **Scaffolding built 2026-09-12.** `02_screening/full_text/full_text_screening_database.csv` is a new, dedicated tracking file (separate from `screening_database.csv`, see below) seeded via `code/screening/init_full_text_db.py` with all **3,659 records** carrying `final_decision == "include"` from Phase 5 — retrieval status, decision, and reviewer fields all blank, awaiting the researcher's actual full-text retrieval and screening work. See `02_screening/full_text/FULL_TEXT_README.md` for the workflow (retrieval status tracking, E01–E12 exclusion codes, two-reviewer/conflict process mirroring Phase 5). Schema wired into `code/analysis/validate_schemas.py` and documented in `DATA_DICTIONARY.md`, which also now flags `screening_database.csv`'s own unused `full_text_decision`/reviewer columns as superseded by this file. |
 | 7 | Pilot extraction (~10 studies) | Not started |
 | 8 | Full extraction | Not started |
 | 9 | Risk of bias | Not started |
@@ -46,7 +46,7 @@ covering the original 37). |
 | 15 | Publication bias assessment where appropriate | Not started |
 | 16 | PRISMA reporting | Not started |
 
-**Current phase: 1–5 complete.** Phase 3 closed by researcher decision,
+**Current phase: 1–5 complete, Phase 6 scaffolding built.** Phase 3 closed by researcher decision,
 with documented gaps (SSRN and Westlaw/Lexis never searched). Phase 5's
 human `reviewer_2` pass is done — see the flagged caveat on its near-total
 agreement rate with reviewer_1 in the Phase 5 row above, which any
@@ -97,6 +97,18 @@ date. See `CHANGELOG.md` for both amendments.)
 
 Standardized exclusion codes: `INCLUSION_EXCLUSION.md` §"Standardized
 exclusion codes" (E01–E12).
+
+`02_screening/full_text/full_text_screening_database.csv` (Phase 6, a
+separate file — see `DATA_DICTIONARY.md` and `FULL_TEXT_README.md` for why
+`screening_database.csv`'s own `full_text_decision`/reviewer columns are
+not reused):
+
+```
+record_id, title, authors, year, doi, url, full_text_status,
+full_text_location, full_text_decision, exclusion_reason,
+exclusion_reason_detail, reviewer_1, reviewer_2, conflict, final_decision,
+notes
+```
 
 ## Evidence classification matrix
 

@@ -34,11 +34,11 @@ the actual CSV headers.
 | abstract | text | optional — present only when the source export included it; blank for anything ingested before 2026-09-10. Real title/abstract screening (`INCLUSION_EXCLUSION.md`) is not possible on a record with a blank abstract — see `CHANGELOG.md` 2026-09-10 |
 | duplicate | boolean | true if merged with another record_id (link in notes) |
 | title_abstract_decision | enum | `include` / `exclude` / `unsure` |
-| full_text_decision | enum | `include` / `exclude` / `not_applicable` |
-| exclusion_reason | string | E01–E12, see `INCLUSION_EXCLUSION.md` |
-| reviewer_1, reviewer_2 | string | reviewer IDs |
+| full_text_decision | enum | **unused/superseded 2026-09-12** — full-text screening is tracked in the separate `02_screening/full_text/full_text_screening_database.csv` instead; see that file's section below and `FULL_TEXT_README.md` for why |
+| exclusion_reason | string | E01–E12, see `INCLUSION_EXCLUSION.md` (title/abstract stage only) |
+| reviewer_1, reviewer_2 | string | reviewer IDs (title/abstract stage only — full-text has its own independent pair, see below) |
 | conflict | boolean | true if reviewer_1 ≠ reviewer_2 on a record where reviewer_1 made a firm `include`/`exclude` call (see note below) |
-| final_decision | enum | `include` / `exclude`, after conflict resolution |
+| final_decision | enum | `include` / `exclude`, after conflict resolution (title/abstract stage) |
 
 **How `conflict` treats `unsure`**: a `title_abstract_decision` of `unsure` from
 reviewer_1 is not a firm decision to compare against, it's a request for
@@ -49,6 +49,37 @@ reserved for the one case PROTOCOL.md's "conflicts resolved by discussion or a
 third reviewer" actually describes: reviewer_1 said `include` (a firm call)
 and reviewer_2 said `exclude` — a genuine disagreement, where `final_decision`
 is left blank pending that resolution rather than picked automatically.
+
+## `02_screening/full_text/full_text_screening_database.csv`
+
+Seeded 2026-09-12 by `code/screening/init_full_text_db.py` (schema
+generated there, not hand-declared — see that script's `SCHEMA` constant)
+from every `screening_database.csv` record with `final_decision ==
+"include"` (3,659 at seed time). See `FULL_TEXT_README.md` for the
+workflow.
+
+| Field | Type | Notes |
+|---|---|---|
+| record_id | string | matches `screening_database.csv` |
+| title, authors, year, doi, url | — | bibliographic metadata, copied from `screening_database.csv` at seed time |
+| full_text_status | enum | `` / `sought` / `retrieved` / `not_retrievable` |
+| full_text_location | string | file path or URL where the retrieved full text can be found again |
+| full_text_decision | enum | `` / `include` / `exclude` |
+| exclusion_reason | string | E01–E12, see `INCLUSION_EXCLUSION.md`; blank if included or not yet decided |
+| exclusion_reason_detail | text | unlike the title/abstract stage, can cite an exact page/section/passage now that the full text is available |
+| reviewer_1, reviewer_2 | string | reviewer IDs for the full-text stage — **independent of and not shared with** `screening_database.csv`'s reviewer columns |
+| conflict | boolean | same rule as `screening_database.csv`: true only when reviewer_1 made a firm `include`/`exclude` call that reviewer_2 then contradicted |
+| final_decision | enum | `` / `include` / `exclude`, after conflict resolution |
+| notes | text | free text |
+
+**Relationship to `screening_database.csv`**: that file's own
+`full_text_decision`/`reviewer_1`/`reviewer_2`/`conflict` columns predate
+this file and are now **unused and superseded** — they were never
+populated for the full-text stage and won't be going forward. This file is
+the single source of truth for Phase 6, kept separate rather than reusing
+those columns so the title/abstract stage's own audit trail is never
+overwritten and so full-text-only fields (retrieval status, file location)
+have somewhere to live. See `FULL_TEXT_README.md` for the full reasoning.
 
 ## `02_screening/title_abstract/ai_first_pass_rationale.csv`
 

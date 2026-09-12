@@ -4,9 +4,11 @@ Status: **Identification and title/abstract screening (first pass only)
 are populated with real counts as of 2026-09-11, now that the search
 phase has closed by researcher decision** (candidate pool judged large
 enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
-`PRISMA_WORKFLOW.md` Phase 3). **Everything from "Reports sought for
-retrieval" onward is still genuinely unfilled — that work has not
-started.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
+`PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" now has a
+real count (n = 3,659) as of 2026-09-12, the size of the tracking file
+Phase 6 was seeded with — everything from "Reports not retrieved" onward
+is still genuinely unfilled, since no actual retrieval or full-text
+screening work has started yet.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
 illustrative, or a placeholder dressed as data; every filled count traces
 to `01_search/raw_exports/`, `01_search/deduplicated/`, or
 `02_screening/title_abstract/screening_database.csv` as of this date, and
@@ -96,7 +98,13 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     603 further records marked "unsure" by reviewer_1 are NOT counted
     as excluded here -- they carry forward with the includes pending
     full-text review; see below.]
-  Reports sought for retrieval (n = )
+  Reports sought for retrieval (n = 3,659)
+    [02_screening/full_text/full_text_screening_database.csv seeded
+    2026-09-12 by code/screening/init_full_text_db.py from every
+    screening_database.csv record with final_decision == "include" -- this
+    is the population now in scope for retrieval, not yet the count
+    actually retrieved. See the reviewer_2 agreement-rate caveat above
+    before treating 3,659 as settled without qualification.]
   Reports not retrieved (n = )
   Reports assessed for eligibility (n = )
   Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md):
