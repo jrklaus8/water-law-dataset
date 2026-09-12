@@ -9,6 +9,62 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 4) — Phase 10 (evidence classification) tooling built; Phase 11 deliberately left unscaffolded
+
+At the researcher's request ("go on"), built `code/analysis/
+build_evidence_map.py`: an idempotent, append-only script (same design
+as `init_screening_db.py`/`init_full_text_db.py`) that fills
+`evidence_map.csv` with whatever can be safely derived from
+`extraction_database.csv` and leaves the rest blank with an explicit
+warning rather than guessing:
+
+- **Derived mechanically** (safe, because each is either already a
+  closed-form fact recorded during extraction, or a direct application
+  of a mapping this project's own docs already commit to):
+  `study_design_class` (inverts `RISK_OF_BIAS.md` §1's design↔tool
+  table), `mechanism_family` (from the four top-level mechanism
+  booleans, `MULTIPLE` when more than one is true), `legal_context`/
+  `institutional_context` (copied straight from already-extracted
+  fields).
+- **Left blank on purpose, with a printed warning**: `study_design_class`
+  when the tool was the project's own Legal Institutional Evidence
+  Appraisal Framework (covers both doctrinal and jurimetric studies,
+  RISK_OF_BIAS.md §2 — the tool name alone can't disambiguate);
+  `mechanism_family` when no top-level boolean came through true (a
+  data-quality flag); `evidence_level` (a narrative tier per
+  `DATA_DICTIONARY.md`, never a formula); and **`outcome_family`, every
+  time** — `PROJECT_SPEC.md` §7's own outcome hierarchy lists
+  "approval/refusal" under both the primary outcome and a secondary
+  "administrative outcomes" category, so a study coded with
+  `application_success`/`refusal`/`delay_outcome` genuinely cannot be
+  mechanically resolved to one family without reading which specific
+  approval/refusal the study actually measured. Guessing here would risk
+  the "manufactured comparability" `PROJECT_SPEC.md` §3 exists to
+  prevent, since outcome family gates what can ever be pooled together.
+
+Tested against a synthetic four-study extraction database before
+touching real data: correct tool→design-class mapping across RoB 2/
+ROBINS-I/JBI/the project's own framework, correct single-vs-`MULTIPLE`
+mechanism handling, correct warnings on the deliberately-blank fields,
+and a verified no-op/no-duplicate on a second run (idempotency check).
+Then run against the real `extraction_database.csv` — currently empty,
+so a correct zero-row no-op.
+
+`05_analysis/descriptive/EVIDENCE_MAP_README.md` (new) documents both
+what the script does and, in its closing section, **why Phase 11
+(quantitative feasibility assessment) gets no equivalent tooling**:
+`ANALYSIS_PLAN.md` §2's decision tree is a corpus-level methodological
+judgment applied per candidate synthesis family, not a per-study
+mechanical fact — the decision tree itself already *is* the complete
+process, so there's nothing safe left to automate ahead of real evidence
+the way Phase 10's script helps with mechanical fields. `PRISMA_WORKFLOW.md`
+Phase 10/11 rows and current-phase summary updated accordingly.
+
+No new CSV schemas (evidence_map.csv's header is unchanged), so
+`validate_schemas.py` needed no updates. No study has actually been
+classified — tooling only, and honest about where tooling stops being
+appropriate.
+
 ## 2026-09-12 (latest, cont. 3) — Phase 9 (risk of bias) process scaffolding built
 
 At the researcher's request ("keep going"), scaffolded Phase 9 ahead of

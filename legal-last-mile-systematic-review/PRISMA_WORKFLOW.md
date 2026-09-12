@@ -38,15 +38,15 @@ covering the original 37). |
 | 7 | Pilot extraction (~10 studies) | **Scaffolding built 2026-09-12, blocked on Phase 6 producing real includes.** `03_extraction/extraction_form/EXTRACTION_FORM.md` operationalizes `CODEBOOK.md` into an ordered, fillable checklist for extracting one study into `extraction_database.csv`. `code/extraction/select_pilot_sample.py` draws the fixed-seed, database-stratified ~10-study pilot sample once Phase 6 has enough `final_decision == "include"` records — currently 0, so the script correctly refuses to run rather than silently sampling from too small a pool (tested against a synthetic 30-record pool: correct proportional stratification, 5 kept for tests only, deleted afterward). `03_extraction/extraction_form/PILOT_EXTRACTION.md` documents the pilot process, including that a pilot disagreement should prompt asking whether the codebook itself needs revision, not just resolving that one study's numbers (log any such revision in `CHANGELOG.md` per `PROTOCOL.md` §12). |
 | 8 | Full extraction | Not started |
 | 9 | Risk of bias | **Process scaffolding built 2026-09-12, blocked on extraction (Phase 8) producing studies to appraise.** `04_quality/appraisal_forms/APPRAISAL_FORM.md` documents the process (classify design → obtain the current official tool from `SOURCES.md` §9–13 → complete it → save the filled checklist → record the result in `extraction_database.csv`) and explicitly does **not** reproduce any of the six validated tools' own checklist items (publishers revise them; this project hasn't independently re-verified their citations against the publisher — see `SOURCES.md`). A fully worked fillable form exists for the one project-owned instrument, the Legal Institutional Evidence Appraisal Framework (`legal_institutional_evidence_appraisal_framework_form.md`, all 13 domains from `RISK_OF_BIAS.md` §2). `04_quality/risk_of_bias/EVIDENCE_LIMITATIONS_TEMPLATE.md` gives the shell for the end-of-phase cross-cutting narrative `RISK_OF_BIAS.md` §3 requires. No study has actually been appraised yet. |
-| 10 | Evidence classification | Not started |
-| 11 | Quantitative feasibility assessment | Not started |
+| 10 | Evidence classification | **Tooling built 2026-09-12, blocked on extraction (Phase 8) producing studies to classify.** `code/analysis/build_evidence_map.py` derives what can safely be derived mechanically into `evidence_map.csv` (`study_design_class` from `risk_of_bias_tool`, `mechanism_family` from the four top-level mechanism booleans, `legal_context`/`institutional_context` copied from already-extracted fields) and leaves everything requiring real judgment blank with an explicit warning — most notably `outcome_family`, since `PROJECT_SPEC.md` §7 itself lists "approval/refusal" under both the primary and a secondary outcome category, so it cannot be mechanically resolved. Tested against a synthetic extraction database (correct tool→design mapping, correct MULTIPLE handling, correct idempotent no-op on rerun) before being run against the real, currently-empty `extraction_database.csv`. See `05_analysis/descriptive/EVIDENCE_MAP_README.md`. |
+| 11 | Quantitative feasibility assessment | Not started — and deliberately has no speculative tooling built ahead of it. `ANALYSIS_PLAN.md` §2's decision tree is a corpus-level methodological judgment applied per candidate synthesis family (`PROJECT_SPEC.md` §8), not a per-study mechanical fact; the decision tree itself already **is** the complete process, so there is nothing safe to automate the way Phase 10's `build_evidence_map.py` helps with mechanical fields. See `05_analysis/descriptive/EVIDENCE_MAP_README.md`'s closing section. |
 | 12 | Meta-analysis where justified | Not started |
 | 13 | Structured quantitative synthesis of unpoolable evidence (SWiM) | Not started |
 | 14 | Sensitivity analysis | Not started |
 | 15 | Publication bias assessment where appropriate | Not started |
 | 16 | PRISMA reporting | Not started |
 
-**Current phase: 1–5 complete, Phase 6, 7, and 9 scaffolding built.** Phase 3 closed by researcher decision,
+**Current phase: 1–5 complete, Phase 6, 7, 9, and 10 scaffolding built.** Phase 3 closed by researcher decision,
 with documented gaps (SSRN and Westlaw/Lexis never searched). Phase 5's
 human `reviewer_2` pass is done — see the flagged caveat on its near-total
 agreement rate with reviewer_1 in the Phase 5 row above, which any
@@ -82,7 +82,12 @@ producing decisions — the extraction form and pilot-sample selection
 tooling are ready to use the moment enough studies clear full-text
 screening (`03_extraction/extraction_form/PILOT_EXTRACTION.md`). Phase 9
 (risk of bias) process scaffolding is built too, ahead of any study
-reaching that stage — see the Phase 9 row above.
+reaching that stage — see the Phase 9 row above. Phase 10 (evidence
+classification) has a working derivation script tested against synthetic
+data; Phase 11 (quantitative feasibility) is deliberately left without
+speculative tooling, since its decision tree is a corpus-level judgment
+call that already **is** the complete process — see the Phase 10/11 rows
+above.
 
 ## Screening database schema
 
