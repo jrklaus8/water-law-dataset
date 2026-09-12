@@ -9,6 +9,20 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 8) — Added companion bibliometric manuscript as SOURCES.md exemplar
+
+Added Klaus (2026), "The Evolution of Basic Sanitation Research in
+Brazil: A Bibliometric Analysis (1987 to 2026)" — this review's own
+author's unpublished scientometric manuscript — as `SOURCES.md` entry 14
+and a corresponding `sources.bib` entry, at the researcher's request.
+This manuscript was supplied via chat upload but is not part of the
+search-derived corpus (no `record_id` in
+`02_screening/full_text/full_text_screening_database.csv`), so it was
+deliberately not forced through Phase 6 full-text screening; it is cited
+as background/methodological context on the state of Brazilian
+sanitation-law scholarship, not as a candidate primary study for this
+review's evidence base.
+
 ## 2026-09-12 (latest, cont. 7) — Live full-text screening, full extraction, and evidence classification underway
 
 Phase 6 (full-text screening) went from scaffolding to live, ongoing work

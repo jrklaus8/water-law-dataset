@@ -226,6 +226,32 @@ widely cited, confirm directly before manuscript use. Used for mixed
 methods studies (`RISK_OF_BIAS.md` §1); this project does not reproduce
 MMAT's own criteria here.
 
+## 14. Klaus 2026 — Bibliometric analysis of Brazilian basic sanitation research
+
+> Klaus, C. (2026). The Evolution of Basic Sanitation Research in Brazil: A
+> Bibliometric Analysis (1987 to 2026). Unpublished manuscript.
+
+**Verification status:** author-supplied manuscript (this review's own
+author, Claudio Klaus); not a third-party-indexed publication, so no DOI or
+independent web verification applies. Uses `bibliometrix`/VOSviewer network
+analysis on 1,405 Master's/Doctoral works (1987–2026) indexed in the
+CAPES Catalogue of Theses and Dissertations and BDTD (Biblioteca Digital
+Brasileira de Teses e Dissertações), following PRISMA's four-phase
+identification/screening/eligibility/inclusion structure.
+
+**Why it matters:** a companion scientometric study, not a candidate
+primary study for this review's evidence base — it maps patterns in
+*academic knowledge production* about Brazilian basic sanitation (shifting
+disciplinary focus from engineering toward law/economics after the 2007
+National Guidelines and 2020 New Legal Framework; heavy reliance on
+international references; fragmented interaction between legal and
+environmental research strands) rather than reporting a primary empirical
+finding about a legal/administrative mechanism and a household-level
+water/sanitation outcome. Cited here as context on the state of Brazilian
+sanitation-law scholarship, not screened against `INCLUSION_EXCLUSION.md`
+(it did not surface through `SEARCH_PROTOCOL.md` and is out of scope for
+Phase 5/6 screening on that basis, not on topical grounds).
+
 ## Core methodological principles drawn from this literature
 
 1. Systematic review does not require meta-analysis.
@@ -238,7 +264,7 @@ MMAT's own criteria here.
 
 ## Status
 
-This is a preliminary source list of eight methodological/exemplar
+This is a preliminary source list of 14 methodological/exemplar
 references, not a bibliography of the review's evidence base. The
 evidence-base bibliography does not exist yet — it is built during Phase 3
 onward of `PRISMA_WORKFLOW.md`.
