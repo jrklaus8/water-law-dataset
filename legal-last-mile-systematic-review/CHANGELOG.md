@@ -9,6 +9,39 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 13) — OSF preregistration draft brought to submission-ready state, with an explicit retrospective-registration disclosure
+
+At the researcher's request, prepared the OSF Generalized Systematic
+Review draft (`00_admin/preregistration/osf_preregistration_draft.md`)
+for actual submission. This environment has no OSF account, so the
+submission click itself remains the researcher's to do. Two substantive
+changes, not just formatting:
+
+1. Added an explicit "Disclosure: this is a retrospective registration,
+   not a fully a priori one" section. The protocol's *content* (research
+   question, `INCLUSION_EXCLUSION.md`, `CODEBOOK.md`, `RISK_OF_BIAS.md`
+   tool assignments, `ANALYSIS_PLAN.md`) was fixed 2026-08-22, before any
+   database was searched, and has not been revised since in response to
+   what the search/screening turned up. But the *registration itself* is
+   only being submitted now (2026-09-12), roughly three weeks after
+   search execution began and after search closed, title/abstract
+   screening completed, and full-text screening/extraction were already
+   underway. Both dates need to be stated on OSF itself, not left
+   implicit — a registration that reads as fully a priori when it isn't
+   would undercut the entire point of registering.
+2. Filled in "Existing data / prior work" and "Anticipated timeline" with
+   the actual realized dates from this changelog (search closed
+   2026-09-11; title/abstract screening complete 2026-09-12; full-text
+   screening/extraction live) rather than leaving them at their
+   2026-08-22 draft state or blank.
+
+Confirmed PROSPERO remains the wrong registry (health/welfare-outcome
+scope; also does not accept registration once extraction has begun,
+which this review's already has) — OSF stays the plan. Submission
+checklist updated accordingly, including a step to cross-link the
+eventual OSF DOI with any Zenodo archival DOI via each platform's
+related-identifiers field.
+
 ## 2026-09-12 (latest, cont. 12) — Corpus-wide scan for the R88194172BEF6 corruption pattern: no further instances found
 
 The earlier QA spot-check (cont. 9) found one exclude record
