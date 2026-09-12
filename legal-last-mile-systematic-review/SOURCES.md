@@ -152,6 +152,80 @@ internally consistent with its well-known form. Used strictly as a
 secondary-review appraisal tool (`RISK_OF_BIAS.md` §1) — explicitly not as
 the primary-study risk-of-bias instrument.
 
+## 9. RoB 2
+
+> Sterne, J. A. C., Savović, J., Page, M. J., Elbers, R. G., Blencowe, N.
+> S., Boutron, I., et al. (2019). RoB 2: a revised tool for assessing risk
+> of bias in randomised trials. *BMJ*, 366, l4898.
+> https://doi.org/10.1136/bmj.l4898
+
+**Verification status:** **not independently re-confirmed in this
+session**, for the same access-blocked reason as PRISMA-P and AMSTAR 2
+above (§6, §8); this is a very widely cited, standard instrument and the
+citation is internally consistent with its well-known form, but a
+researcher with working publisher access should confirm it directly
+before it appears in the manuscript's reference list. Used for
+randomized studies (`RISK_OF_BIAS.md` §1) — this project does not
+reproduce RoB 2's own signaling questions anywhere in this repository;
+obtain the current official tool directly from its source before
+appraising any study with it.
+
+## 10. ROBINS-I
+
+> Sterne, J. A., Hernán, M. A., Reeves, B. C., Savović, J., Berkman, N.
+> D., Viswanathan, M., et al. (2016). ROBINS-I: a tool for assessing risk
+> of bias in non-randomised studies of interventions. *BMJ*, 355, i4919.
+> https://doi.org/10.1136/bmj.i4919
+
+**Verification status:** same caveat as RoB 2 above — not independently
+re-confirmed this session, standard and widely cited, confirm before
+manuscript use. Used for non-randomized intervention studies
+(`RISK_OF_BIAS.md` §1); same note on not reproducing the tool's own
+content here.
+
+## 11. JBI Critical Appraisal Tools
+
+> Moola, S., Munn, Z., Tufanaru, C., Aromataris, E., Sears, K., Sfetcu,
+> R., Currie, M., Qureshi, R., Mattis, P., Lisy, K., & Mu, P.-F. (2020).
+> Chapter 7: Systematic reviews of etiology and risk. In E. Aromataris &
+> Z. Munn (Eds.), *JBI Manual for Evidence Synthesis*. JBI.
+> https://synthesismanual.jbi.global
+
+**Verification status:** not independently re-confirmed this session
+(publisher/JBI access blocked); this is the standard reference for the
+JBI critical appraisal checklist family, including the Cross Sectional
+Studies and Cohort Studies checklists named in `RISK_OF_BIAS.md` §1.
+Confirm the specific checklist version against JBI's current published
+tools before appraising any study — JBI periodically revises its
+checklists, and this project does not reproduce checklist items here.
+
+## 12. CASP Qualitative Checklist
+
+> Critical Appraisal Skills Programme. (2018). *CASP Qualitative Studies
+> Checklist*. CASP UK. https://casp-uk.net/checklists-tool/qualitative-studies-checklist/
+
+**Verification status:** not independently re-confirmed this session
+(CASP's website was not reachable from this environment); this is a
+tool/checklist rather than a journal article, so there is no DOI to
+resolve — confirm against CASP's current published checklist directly
+before use, since CASP has revised this checklist's exact wording across
+versions. Used for qualitative studies (`RISK_OF_BIAS.md` §1).
+
+## 13. MMAT (Mixed Methods Appraisal Tool)
+
+> Hong, Q. N., Fàbregues, S., Bartlett, G., Boardman, F., Cargo, M.,
+> Dagenais, P., Gagnon, M. P., Griffiths, F., Nicolau, B., O'Cathain, A.,
+> Rousseau, M. C., & Vedel, I. (2018). The Mixed Methods Appraisal Tool
+> (MMAT) version 2018 for information professionals and researchers.
+> *Education for Information*, 34(4), 285–291.
+> https://doi.org/10.3233/EFI-180221
+
+**Verification status:** not independently re-confirmed this session
+(publisher access blocked, same as RoB 2/ROBINS-I above); standard and
+widely cited, confirm directly before manuscript use. Used for mixed
+methods studies (`RISK_OF_BIAS.md` §1); this project does not reproduce
+MMAT's own criteria here.
+
 ## Core methodological principles drawn from this literature
 
 1. Systematic review does not require meta-analysis.

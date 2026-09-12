@@ -9,6 +9,49 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 3) — Phase 9 (risk of bias) process scaffolding built
+
+At the researcher's request ("keep going"), scaffolded Phase 9 ahead of
+any study actually reaching the appraisal stage:
+
+- **`04_quality/appraisal_forms/APPRAISAL_FORM.md`** (new): the process
+  guide — classify design, obtain the current official tool, complete it,
+  save the filled checklist alongside a provenance-style filename
+  (`<study_id>_<tool>.<ext>`), record the result into
+  `extraction_database.csv`'s quality fields. **Deliberately does not
+  reproduce any of the six validated tools' (RoB 2, ROBINS-I, two JBI
+  checklists, CASP, MMAT) own checklist items or signaling questions
+  anywhere in this repository** — those are living instruments their
+  publishers revise, and this project has not independently re-verified
+  their citations against the publisher (network access to publisher
+  domains stays blocked from this environment).
+- **`SOURCES.md`** §9–13: added citations for all six standard tools
+  named in `RISK_OF_BIAS.md` §1 that had never been logged there, using
+  the exact same honest hedge already established for PRISMA-P and
+  AMSTAR 2 in that file — "not independently re-confirmed this session,
+  standard and internally consistent with its well-known form, confirm
+  before manuscript use." No citation is presented as more verified than
+  it actually is.
+- **`legal_institutional_evidence_appraisal_framework_form.md`** (new):
+  a fully worked fillable form for the one instrument this project
+  actually authored (`RISK_OF_BIAS.md` §2's 13 domains) — safe to
+  reproduce in full since it's this project's own content, unlike the six
+  validated tools above.
+- **`04_quality/risk_of_bias/EVIDENCE_LIMITATIONS_TEMPLATE.md`** (new):
+  shell for the end-of-phase cross-cutting narrative `RISK_OF_BIAS.md`
+  §3 already calls for but never had a template for.
+- Fixed a stale line in **`RISK_OF_BIAS.md`** §4 that still said "the
+  search has not been executed" as the reason no study has been
+  appraised — the search closed 2026-09-11; the real current blocker is
+  that extraction (Phase 8) hasn't started yet, since Phase 6 (full-text
+  screening) hasn't produced real decisions.
+- `PRISMA_WORKFLOW.md` Phase 9 row and current-phase summary updated to
+  match.
+
+No new CSV files were created and no schema changed, so
+`validate_schemas.py` needed no updates for this round. No study has
+actually been appraised — process scaffolding only.
+
 ## 2026-09-12 (latest, cont. 2) — Phase 7 (pilot extraction) scaffolding built
 
 At the researcher's request ("go on to the next"), scaffolded Phase 7

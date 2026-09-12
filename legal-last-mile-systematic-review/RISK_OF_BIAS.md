@@ -64,6 +64,15 @@ directly into the Discussion/Limitations sections of `PUBLICATION_PLAN.md`.
 
 ## 4. Status
 
-No study has yet been appraised — the search has not been executed
-(`SEARCH_PROTOCOL.md` §7). `04_quality/appraisal_forms/` and
-`04_quality/risk_of_bias/` are currently empty except for `.gitkeep`.
+No study has yet been appraised — appraisal happens as part of extraction
+(`CODEBOOK.md` §8), and extraction has not started: full-text screening
+(Phase 6) and pilot extraction (Phase 7) are both scaffolded but not yet
+run against real decisions, see `PRISMA_WORKFLOW.md`. The search phase
+itself closed 2026-09-11 (`SEARCH_PROTOCOL.md` §7) — that is no longer
+what's blocking this phase. `04_quality/appraisal_forms/` now has
+`APPRAISAL_FORM.md` (the general process guide — see there for how each
+tool's rating is recorded into `extraction_database.csv`) and a fillable
+form for this project's own Legal Institutional Evidence Appraisal
+Framework; `04_quality/risk_of_bias/` now has a template for the
+end-of-phase cross-cutting narrative in §3 above. Neither directory has
+any actual completed appraisal yet.

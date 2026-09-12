@@ -37,7 +37,7 @@ covering the original 37). |
 | 6 | Full-text screening, standardized exclusion reason per record | **Scaffolding built 2026-09-12.** `02_screening/full_text/full_text_screening_database.csv` is a new, dedicated tracking file (separate from `screening_database.csv`, see below) seeded via `code/screening/init_full_text_db.py` with all **3,659 records** carrying `final_decision == "include"` from Phase 5 — retrieval status, decision, and reviewer fields all blank, awaiting the researcher's actual full-text retrieval and screening work. See `02_screening/full_text/FULL_TEXT_README.md` for the workflow (retrieval status tracking, E01–E12 exclusion codes, two-reviewer/conflict process mirroring Phase 5). Schema wired into `code/analysis/validate_schemas.py` and documented in `DATA_DICTIONARY.md`, which also now flags `screening_database.csv`'s own unused `full_text_decision`/reviewer columns as superseded by this file. |
 | 7 | Pilot extraction (~10 studies) | **Scaffolding built 2026-09-12, blocked on Phase 6 producing real includes.** `03_extraction/extraction_form/EXTRACTION_FORM.md` operationalizes `CODEBOOK.md` into an ordered, fillable checklist for extracting one study into `extraction_database.csv`. `code/extraction/select_pilot_sample.py` draws the fixed-seed, database-stratified ~10-study pilot sample once Phase 6 has enough `final_decision == "include"` records — currently 0, so the script correctly refuses to run rather than silently sampling from too small a pool (tested against a synthetic 30-record pool: correct proportional stratification, 5 kept for tests only, deleted afterward). `03_extraction/extraction_form/PILOT_EXTRACTION.md` documents the pilot process, including that a pilot disagreement should prompt asking whether the codebook itself needs revision, not just resolving that one study's numbers (log any such revision in `CHANGELOG.md` per `PROTOCOL.md` §12). |
 | 8 | Full extraction | Not started |
-| 9 | Risk of bias | Not started |
+| 9 | Risk of bias | **Process scaffolding built 2026-09-12, blocked on extraction (Phase 8) producing studies to appraise.** `04_quality/appraisal_forms/APPRAISAL_FORM.md` documents the process (classify design → obtain the current official tool from `SOURCES.md` §9–13 → complete it → save the filled checklist → record the result in `extraction_database.csv`) and explicitly does **not** reproduce any of the six validated tools' own checklist items (publishers revise them; this project hasn't independently re-verified their citations against the publisher — see `SOURCES.md`). A fully worked fillable form exists for the one project-owned instrument, the Legal Institutional Evidence Appraisal Framework (`legal_institutional_evidence_appraisal_framework_form.md`, all 13 domains from `RISK_OF_BIAS.md` §2). `04_quality/risk_of_bias/EVIDENCE_LIMITATIONS_TEMPLATE.md` gives the shell for the end-of-phase cross-cutting narrative `RISK_OF_BIAS.md` §3 requires. No study has actually been appraised yet. |
 | 10 | Evidence classification | Not started |
 | 11 | Quantitative feasibility assessment | Not started |
 | 12 | Meta-analysis where justified | Not started |
@@ -46,7 +46,7 @@ covering the original 37). |
 | 15 | Publication bias assessment where appropriate | Not started |
 | 16 | PRISMA reporting | Not started |
 
-**Current phase: 1–5 complete, Phase 6 and Phase 7 scaffolding built.** Phase 3 closed by researcher decision,
+**Current phase: 1–5 complete, Phase 6, 7, and 9 scaffolding built.** Phase 3 closed by researcher decision,
 with documented gaps (SSRN and Westlaw/Lexis never searched). Phase 5's
 human `reviewer_2` pass is done — see the flagged caveat on its near-total
 agreement rate with reviewer_1 in the Phase 5 row above, which any
@@ -80,7 +80,9 @@ screening) can now begin on the 3,659-record included set. Phase 7
 (pilot extraction) scaffolding is also built ahead of Phase 6 actually
 producing decisions — the extraction form and pilot-sample selection
 tooling are ready to use the moment enough studies clear full-text
-screening (`03_extraction/extraction_form/PILOT_EXTRACTION.md`).
+screening (`03_extraction/extraction_form/PILOT_EXTRACTION.md`). Phase 9
+(risk of bias) process scaffolding is built too, ahead of any study
+reaching that stage — see the Phase 9 row above.
 
 ## Screening database schema
 
