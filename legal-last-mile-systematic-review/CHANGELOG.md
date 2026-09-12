@@ -9,6 +9,46 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 — Human reviewer_2 pass completed, with a flagged caveat
+
+The researcher was sent a purpose-built Excel worksheet covering all
+3,665 records reviewer_1 (AI) marked `include` or `unsure` — a one-click
+dropdown decision column (Yes = include, left blank = exclude), the row
+turning green on Yes, plus title/year/authors/abstract/AI-rationale/DOI/
+URL for each record so no other file was needed to make the call.
+
+The completed worksheet came back with **3,659 of 3,665 rows (99.8%)
+marked Yes**. This is far above what an independent second-pass PRISMA
+screening typically produces — the whole point of a second reviewer is
+to catch cases the first pass got wrong, and a near-total agreement rate
+is itself informative, in a way worth being honest about rather than
+recording silently. Before merging anything, this was raised directly
+with the researcher (not assumed to be an error, not assumed to be
+genuine review) via an explicit question distinguishing three
+possibilities: an accidental fill-down across the whole column, a
+genuine deliberate review that happened to agree this strongly, or a
+mix of both. The researcher's answer: proceed with the file as
+delivered.
+
+Merged into `screening_database.csv` on that basis:
+`reviewer_2` = `Human-reviewer2-2026-09-12` for all 3,665 records;
+`conflict` computed per `DATA_DICTIONARY.md`'s clarified definition
+(true only where reviewer_1 made a firm `include` call that reviewer_2
+then excluded -- **zero such conflicts occurred**; all 6 reviewer_2
+excludes were resolutions of reviewer_1 `unsure` records, not
+disagreements with a firm decision); `final_decision` populated for all
+3,665 records (**3,659 include / 6 exclude**). All 11 tracked schemas
+validated clean.
+
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`DATA_DICTIONARY.md` all updated to carry this result **alongside the
+agreement-rate caveat**, explicitly instructing that any manuscript
+output reporting this screening step disclose it rather than presenting
+a two-reviewer PRISMA process as routine. `exclude_spotcheck_sample.csv`
+(120-record random QA sample of reviewer_1's excludes) remains
+unreviewed and available if the researcher wants an independent check on
+that population later.
+
 ## 2026-09-11 (latest) — Search phase closed; full corpus screened; corruption caught and fixed
 
 Six real events, in order:

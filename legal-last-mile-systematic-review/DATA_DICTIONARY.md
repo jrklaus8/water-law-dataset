@@ -37,8 +37,18 @@ the actual CSV headers.
 | full_text_decision | enum | `include` / `exclude` / `not_applicable` |
 | exclusion_reason | string | E01–E12, see `INCLUSION_EXCLUSION.md` |
 | reviewer_1, reviewer_2 | string | reviewer IDs |
-| conflict | boolean | true if reviewer_1 ≠ reviewer_2 decision |
+| conflict | boolean | true if reviewer_1 ≠ reviewer_2 on a record where reviewer_1 made a firm `include`/`exclude` call (see note below) |
 | final_decision | enum | `include` / `exclude`, after conflict resolution |
+
+**How `conflict` treats `unsure`**: a `title_abstract_decision` of `unsure` from
+reviewer_1 is not a firm decision to compare against, it's a request for
+reviewer_2 to resolve the uncertainty — so an `unsure`-then-resolved record is
+never marked `conflict = true` regardless of which way reviewer_2 resolves it,
+and `final_decision` is simply set to reviewer_2's call. `conflict = true` is
+reserved for the one case PROTOCOL.md's "conflicts resolved by discussion or a
+third reviewer" actually describes: reviewer_1 said `include` (a firm call)
+and reviewer_2 said `exclude` — a genuine disagreement, where `final_decision`
+is left blank pending that resolution rather than picked automatically.
 
 ## `02_screening/title_abstract/ai_first_pass_rationale.csv`
 

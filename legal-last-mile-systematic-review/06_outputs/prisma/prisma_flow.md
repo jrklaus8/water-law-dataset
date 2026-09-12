@@ -24,13 +24,19 @@ is annotated as provisional wherever it is.
    either was reached; see `SEARCH_PROTOCOL.md` §7 for the full account.
    This is a real, disclosed limitation of this review's search strategy,
    not a placeholder gap awaiting completion.
-2. **Title/abstract screening below is a first pass by one AI reviewer**
-   (`reviewer_1`, tags `Claude-AI-1stpass-2026-09-10` and
-   `Claude-AI-1stpass-2026-09-11`) **only.** `PROTOCOL.md`'s two-reviewer
-   process needs a human `reviewer_2` and conflict resolution before any
-   inclusion/exclusion at this stage is final — see
-   `02_screening/title_abstract/REVIEWER_2_README.md`. Treat every number
-   under "Screening" as provisional.
+2. **Title/abstract screening below shows reviewer_1 (AI) numbers only —
+   a human `reviewer_2` pass has since completed (2026-09-12) but is not
+   yet reflected in the boxes below**, which this file derives strictly
+   from `screening_database.csv`'s `title_abstract_decision` (reviewer_1)
+   field per its own re-derivation rule. The real post-reviewer_2 result:
+   3,659 include / 6 exclude / 0 conflicts out of the 3,665 include+unsure
+   records — see `PRISMA_WORKFLOW.md` Phase 5 and `CHANGELOG.md` for the
+   number **and** an important caveat that must travel with it: the
+   agreement rate between the two reviewers was unusually high (99.8%)
+   for genuinely independent screening, flagged to and confirmed by the
+   researcher before being recorded rather than treated as routine. Any
+   manuscript reporting this step should disclose that caveat alongside
+   the number.
 
 ```
 Identification
@@ -113,12 +119,14 @@ Included
   Studies included in restricted meta-analysis, by family (n = ), if any
 ```
 
-**Provisional pool carried forward** (not a PRISMA box on its own, but the
-number that matters for planning Phase 6): 3,665 records are currently
-either `include` (3,062) or `unsure` (603) after the reviewer_1 pass —
-see `02_screening/title_abstract/reviewer_2_queue.csv`. This is the upper
-bound of what full-text screening will need to retrieve, pending
-`reviewer_2` narrowing it.
+**Pool carried forward to Phase 6** (not a PRISMA box on its own, but the
+number that matters for planning full-text screening): reviewer_1 marked
+3,665 records `include` (3,062) or `unsure` (603) — see
+`02_screening/title_abstract/reviewer_2_queue.csv`. reviewer_2 has since
+reviewed all 3,665 and set `final_decision`: **3,659 include / 6 exclude**,
+zero conflicts. **3,659 records** are the actual set Phase 6 should
+retrieve full text for — see the reviewer_2 agreement-rate caveat above
+before treating this number as settled without qualification.
 
 Source data for these counts is
 `02_screening/title_abstract/screening_database.csv` and
