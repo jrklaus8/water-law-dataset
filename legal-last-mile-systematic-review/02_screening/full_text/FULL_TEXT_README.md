@@ -8,9 +8,19 @@ fields blank. This is a separate file from the title/abstract stage's
 `screening_database.csv` on purpose — see "Why a separate file" below —
 and it is the single source of truth for Phase 6 going forward.
 
+## Retrieving at scale via Cowork
+
+Actually retrieving 3,659 full texts is a lot of manual browser work.
+`COWORK_RETRIEVAL_INSTRUCTIONS.md` in this same folder is a ready-to-paste
+instruction set for a browser-capable Claude Cowork session — the same
+approach used for this project's original database searches — to work
+through batches of `full_text_retrieval_queue.csv`, retrieve PDFs via EUR
+institutional access, and hand back a results file that
+`bulk_import_full_text_results.py` (below) applies safely in one shot.
+
 ## Tools to make this easier
 
-Three small scripts in `code/screening/` support the workflow below —
+Four small scripts in `code/screening/` support the workflow below —
 none of them retrieve a PDF for you (this environment has no outbound
 network access; that part is still on you or your institutional access),
 but they take the error-prone parts of *recording* what you did off your
@@ -54,6 +64,16 @@ plate:
   ```
   python3 code/screening/full_text_progress.py \
       --full-text-db 02_screening/full_text/full_text_screening_database.csv
+  ```
+- **`bulk_import_full_text_results.py`** — applies a whole batch of
+  retrieval or screening results (e.g. from a Cowork retrieval session,
+  see `COWORK_RETRIEVAL_INSTRUCTIONS.md`) in one atomic write. Rejects
+  the *entire* batch if any row is invalid, rather than partially
+  applying good rows and bad ones — always run with `--dry-run` first.
+  ```
+  python3 code/screening/bulk_import_full_text_results.py \
+      --full-text-db 02_screening/full_text/full_text_screening_database.csv \
+      --results <results_file>.csv --dry-run
   ```
 
 ## What to do, per record

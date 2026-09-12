@@ -9,6 +9,47 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 6) — Cowork full-text retrieval instructions and bulk-import tooling
+
+At the researcher's request, built the missing piece to actually
+unblock Phase 6 rather than more scaffolding downstream of it:
+
+- **`code/screening/bulk_import_full_text_results.py`** (new): applies a
+  whole batch of retrieval (or screening) results to
+  `full_text_screening_database.csv` in one atomic write. Reuses
+  `init_full_text_db.py`'s own `SCHEMA`/`VALID_STATUS`/`VALID_DECISION`
+  constants (loaded dynamically, same pattern as `validate_schemas.py`)
+  rather than redeclaring them. **Rejects the entire batch if any row is
+  invalid** -- a typo in row 400 of 500 can never leave 399 good rows
+  applied and one silently wrong; nothing is written until every row
+  passes. Never overwrites a record that already has a `final_decision`,
+  and never auto-adds an unrecognized `record_id`. Tested against a
+  synthetic copy of the real database before ever touching it for real:
+  a valid two-row batch applied correctly (plus an unknown record_id
+  correctly skipped and reported), an invalid-enum batch correctly
+  rejected the whole import with zero writes, and an already-decided
+  record was correctly left untouched by a later batch that tried to
+  touch it.
+- **`02_screening/full_text/COWORK_RETRIEVAL_INSTRUCTIONS.md`** (new): a
+  ready-to-paste instruction set for a browser-capable Claude Cowork
+  session, mirroring how this project's original database searches were
+  actually done (Cowork does the browser work, reports results back as a
+  file, the main session applies them). Scopes the task explicitly to
+  *retrieval only* (never full-text screening/inclusion decisions,
+  which stay a separate, later, judgment-heavy step); works in
+  small per-database batches rather than all 3,659 at once; explicitly
+  tells Cowork **not** to commit retrieved PDFs into this git
+  repository (publisher copyright, repo bloat) and to record only a
+  location/link instead; specifies the exact 4-column results-file
+  format `bulk_import_full_text_results.py` expects; and carries the
+  same "never guess or fabricate a retrieval outcome" discipline used
+  throughout this project's screening tools.
+- `FULL_TEXT_README.md` updated to reference both.
+
+This is the one piece of work this session that actually has a path to
+unblocking Phases 6 onward, rather than more scaffolding ahead of data
+that still can't run until real full texts exist.
+
 ## 2026-09-12 (latest, cont. 5) — Phases 12-16 scaffolding built (meta-analysis through PRISMA reporting)
 
 At the researcher's request ("keep scaffolding further downstream
