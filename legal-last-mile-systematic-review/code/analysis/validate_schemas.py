@@ -115,11 +115,13 @@ def get_generated_schemas(root: Path) -> dict[str, list[str]]:
     dedup_mod = load_module(root / "code/search/deduplicate.py", "deduplicate")
     ingest_mod = load_module(root / "code/screening/init_screening_db.py", "init_screening_db")
     full_text_mod = load_module(root / "code/screening/init_full_text_db.py", "init_full_text_db")
+    queue_mod = load_module(root / "code/screening/build_full_text_queue.py", "build_full_text_queue")
     return {
         "01_search/deduplicated/deduplicated_records.csv": dedup_mod.OUTPUT_FIELDS,
         "01_search/deduplicated/merge_log.csv": dedup_mod.MERGE_LOG_FIELDS,
         "02_screening/title_abstract/screening_database.csv": ingest_mod.SCHEMA,
         "02_screening/full_text/full_text_screening_database.csv": full_text_mod.SCHEMA,
+        "02_screening/full_text/full_text_retrieval_queue.csv": queue_mod.OUTPUT_FIELDS,
     }
 
 

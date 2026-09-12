@@ -8,6 +8,54 @@ fields blank. This is a separate file from the title/abstract stage's
 `screening_database.csv` on purpose — see "Why a separate file" below —
 and it is the single source of truth for Phase 6 going forward.
 
+## Tools to make this easier
+
+Three small scripts in `code/screening/` support the workflow below —
+none of them retrieve a PDF for you (this environment has no outbound
+network access; that part is still on you or your institutional access),
+but they take the error-prone parts of *recording* what you did off your
+plate:
+
+- **`build_full_text_queue.py`** — regenerates
+  `full_text_retrieval_queue.csv`, a working list of every record that
+  still has no `final_decision`, sorted by source database then year
+  (newest first) so you can batch retrieval one platform at a time
+  instead of context-switching every row. Fully disposable — rerun it any
+  time to get a fresh, up-to-date list; it never writes to
+  `full_text_screening_database.csv` itself.
+  ```
+  python3 code/screening/build_full_text_queue.py \
+      --full-text-db 02_screening/full_text/full_text_screening_database.csv \
+      --screening-db 02_screening/title_abstract/screening_database.csv \
+      --queue-out 02_screening/full_text/full_text_retrieval_queue.csv
+  ```
+- **`update_full_text_record.py`** — the safe way to record a status or
+  decision for one record, instead of hand-editing the CSV (which risks
+  breaking quoting on titles/authors with commas, or typo'ing an enum
+  value that no other tool would catch). Validates every value, only
+  touches the fields you pass, writes atomically.
+  ```
+  # mark retrieved, note where the file is
+  python3 code/screening/update_full_text_record.py \
+      --full-text-db 02_screening/full_text/full_text_screening_database.csv \
+      --record-id <id> --status retrieved --location "/path/to/paper.pdf"
+
+  # record a full-text decision
+  python3 code/screening/update_full_text_record.py \
+      --full-text-db 02_screening/full_text/full_text_screening_database.csv \
+      --record-id <id> --decision exclude --exclusion-reason E01 \
+      --exclusion-detail "p.4: engineering only, no legal/administrative mechanism" \
+      --reviewer-1 "Your name"
+  ```
+- **`full_text_progress.py`** — prints current counts (retrieval status,
+  decisions, exclusions by E01–E12, any unresolved conflicts) and the
+  exact numbers `PRISMA_WORKFLOW.md`/`prisma_flow.md` need for their
+  "Reports sought/not retrieved/assessed" lines — read-only, never writes.
+  ```
+  python3 code/screening/full_text_progress.py \
+      --full-text-db 02_screening/full_text/full_text_screening_database.csv
+  ```
+
 ## What to do, per record
 
 1. **Try to retrieve the full text**, then set `full_text_status`:

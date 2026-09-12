@@ -81,6 +81,23 @@ those columns so the title/abstract stage's own audit trail is never
 overwritten and so full-text-only fields (retrieval status, file location)
 have somewhere to live. See `FULL_TEXT_README.md` for the full reasoning.
 
+## `02_screening/full_text/full_text_retrieval_queue.csv`
+
+Generated (repeatedly, on demand) by `code/screening/build_full_text_queue.py`
+(schema generated there, not hand-declared) from `full_text_screening_database.csv`
+joined against `screening_database.csv` for the `database` field — a
+disposable working copy for the retrieval/screening loop, not authoritative
+on its own. Contains only records with no `final_decision` yet, sorted by
+`database` then `year` descending. Never write a decision into this file —
+record it via `update_full_text_record.py` against
+`full_text_screening_database.csv`, then regenerate this queue.
+
+| Field | Type | Notes |
+|---|---|---|
+| record_id, title, authors, year, doi, url | — | as in `full_text_screening_database.csv` |
+| database | string | source database, looked up from `screening_database.csv` |
+| full_text_status, full_text_location, notes | — | current values from `full_text_screening_database.csv`, for context while working |
+
 ## `02_screening/title_abstract/ai_first_pass_rationale.csv`
 
 Supplementary audit trail for Claude's `reviewer_1` first pass (added

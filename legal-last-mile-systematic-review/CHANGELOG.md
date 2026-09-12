@@ -9,6 +9,48 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont.) — Phase 6 retrieval tooling added
+
+Following the scaffolding entry directly below, added three small
+`code/screening/` scripts to support the actual retrieval/screening loop
+the researcher (or a future full-text reviewer) will run repeatedly —
+none of them retrieve anything themselves (still no outbound network
+access from this environment), but they take the error-prone parts of
+*recording* progress off the researcher:
+
+- **`build_full_text_queue.py`**: regenerates a disposable
+  `full_text_retrieval_queue.csv` from `full_text_screening_database.csv`
+  joined against `screening_database.csv` for the `database` field —
+  every still-open record (no `final_decision` yet), sorted by database
+  then year descending, so retrieval can be batched one platform at a
+  time instead of context-switching every row. Never writes to the
+  authoritative file.
+- **`update_full_text_record.py`**: the safe way to record one record's
+  status or decision, instead of hand-editing the CSV (real risk: broken
+  quoting on titles/authors with commas, or a typo'd enum value nothing
+  else would catch). Validates every field against the same enums as
+  `init_full_text_db.py`, touches only the fields passed, writes
+  atomically (`tempfile.mkstemp()` + `os.replace()`) so a crash mid-write
+  can't corrupt the file. Tested: happy-path update, an invalid `--status`
+  value (correctly rejected by argparse before any write), and an unknown
+  `--record-id` (correctly refused with no write) — all verified against
+  a backup copy of the real database, which was restored and
+  re-validated clean afterward.
+- **`full_text_progress.py`**: read-only progress report — counts by
+  retrieval status, by decision, by exclusion reason (E01–E12), any
+  unresolved conflicts, and the exact numbers `PRISMA_WORKFLOW.md`/
+  `prisma_flow.md` need for their "Reports sought/not retrieved/assessed"
+  lines.
+
+`full_text_retrieval_queue.csv`'s schema (`build_full_text_queue.py`'s own
+`OUTPUT_FIELDS`) added to `validate_schemas.py` the same way as the other
+generated schemas — no hand-duplicated declaration. All **13** tracked
+files (up from 12) validate clean. `FULL_TEXT_README.md` and
+`DATA_DICTIONARY.md` updated with usage and the new file's schema.
+
+No full-text retrieval or screening has actually happened yet — this
+remains tooling only, ready to use.
+
 ## 2026-09-12 (latest) — Phase 6 (full-text screening) scaffolding built
 
 At the researcher's request, built the infrastructure for full-text
