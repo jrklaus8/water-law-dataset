@@ -225,29 +225,30 @@ evidence of anything.
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
-- **2026-09-12: Phase 8 (full extraction) is running in lockstep with
-  Phase 6**, at the researcher's explicit instruction to extract every
-  full-text include directly rather than drawing a separate pilot
-  subsample first (Phase 7 is marked superseded, not completed). **83
-  studies (S001–S083) are now fully extracted** into
-  `extraction_database.csv` against `CODEBOOK.md`'s complete 92-field
-  schema. Two studies with no cached full text available in this session
-  (Lubeck-Schricker et al.; Gaikwad & Thomas) were explicitly *not*
-  extracted from memory and remain flagged for re-upload — this accounts
-  for the entire gap between 85 full-text includes and 83 extracted
-  studies. Five of the 83 are themselves secondary reviews (four
-  systematic, one focused/narrative), flagged
+- **2026-09-12: Phase 8 (full extraction) is fully caught up with Phase
+  6 — no outstanding gap.** At the researcher's explicit instruction to
+  extract every full-text include directly rather than drawing a separate
+  pilot subsample first (Phase 7 is marked superseded, not completed),
+  **all 85 current full-text includes (S001–S085) are now fully
+  extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
+  complete 92-field schema. The last two (S084 Lubeck-Schricker et al.
+  2023; S085 Gaikwad & Thomas 2026) had been flagged as having no cached
+  full text; on closer check their PDFs were already sitting in the
+  session's upload store from the same 2026-09-12 batch, just never
+  converted or extracted — found and closed out the same day, so no
+  re-upload was actually needed. Five of the 85 are themselves secondary
+  reviews (four systematic, one focused/narrative), flagged
   `study_design_class = systematic_review_secondary` and never to be
   pooled as an independent primary effect.
 - **2026-09-12: Phase 10 (evidence classification) has been run against
-  all 83 extracted studies.** `build_evidence_map.py` derived what can
+  all 85 extracted studies.** `build_evidence_map.py` derived what can
   safely be derived mechanically; the remaining judgment-call fields
   (`outcome_family`, `evidence_level`, `study_design_class` for the 19
   studies using the project's own Legal Institutional Evidence Appraisal
   Framework, and the two synthesis-eligibility flags) were filled by hand
-  per study. **35 of the 83 extracted studies have a genuine,
+  per study. **37 of the 85 extracted studies have a genuine,
   study-generated, calculable effect estimate and are judged eligible for
-  quantitative synthesis; all 83 are qualitative-synthesis eligible.**
+  quantitative synthesis; all 85 are qualitative-synthesis eligible.**
   This is a per-study eligibility judgment, not a corpus-level decision
   that pooling is warranted for any family — that is Phase 11, which has
   not started.
@@ -273,10 +274,9 @@ evidence of anything.
   Phase-5 includes have been assessed; 3,484 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening but not complete for
-  the same reason — 83 of 85 current full-text includes are extracted;
-  2 await full-text re-upload.
-- **No risk-of-bias rating has been performed on any of the 83 extracted
+- Extraction (Phase 8) is caught up with screening completely — all 85
+  current full-text includes are extracted, no outstanding gap.
+- **No risk-of-bias rating has been performed on any of the 85 extracted
   studies** — `risk_of_bias_tool` is identified per study, but
   `risk_of_bias_rating` is deliberately left blank pending the official
   version of each appraisal instrument (`RISK_OF_BIAS.md`'s explicit

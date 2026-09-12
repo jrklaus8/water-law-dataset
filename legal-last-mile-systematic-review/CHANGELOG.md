@@ -9,6 +9,40 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 11) — Closed the last extraction gap: S084/S085
+
+While the researcher was mid-download on a fresh PDF batch, audited the
+extraction pipeline for other work available without new uploads. Found
+that both PDFs behind the two long-flagged "no cached full text" records
+(Lubeck-Schricker et al. 2023; Gaikwad & Thomas 2026) were already present
+in the session's upload store — uploaded 2026-09-12 alongside that day's
+main batch — but had never been converted to text or extracted, apparently
+missed in the earlier batch pass rather than genuinely absent. Converted
+both (`pdftotext -layout`), read them in full, and extracted them as S084
+and S085 following the same `CODEBOOK.md`/`EXTRACTION_FORM.md` process used
+for the other 83 studies, then populated `evidence_map.csv` for both
+(mechanical fields via `code/analysis/build_evidence_map.py`, judgment-call
+fields — `outcome_family`, `evidence_level`,
+`quantitative_synthesis_eligible`/`qualitative_synthesis_eligible` — by
+hand). `extraction_database.csv` now holds all 85 current full-text
+includes with zero gap. S085 (Gaikwad & Thomas) is a genuine
+cluster-randomized field experiment (`mechanism_certainty=4`), the
+strongest-design study extracted so far, and a clean empirical instance of
+`PROJECT_SPEC.md` §8's candidate Family B (bureaucratic assistance →
+connection/application success) — though its own finding is that the
+mechanism only operates jointly with political coordination, a genuine
+complication for treating Family B as a simple main effect. Also
+separately fixed a hardcoded, author-machine-specific Windows path
+fallback in the (out-of-scope but same-repo) judicial-decisions-dataset
+project's `research-assistant/data_loader.py`, and a stale κ figure plus a
+broken copy-pasteable command in that project's `validation/README.md` and
+`validation/kappa_calculator.py` — flagged separately to the researcher
+since they fall outside this systematic review's own scope. Ran
+`code/analysis/validate_schemas.py` after every write; all 13 tracked
+files matched schema throughout. Updated `PRISMA_WORKFLOW.md` Phases 8 and
+10 to reflect 85/85 extraction with no outstanding gap (up from 83/85 with
+2 studies flagged as awaiting re-upload that were never actually needed).
+
 ## 2026-09-12 (latest, cont. 10) — Full-text reviewer_2 handoff tooling; final_decision normalization
 
 Built `code/screening/build_full_text_reviewer2_queue.py`, mirroring the
