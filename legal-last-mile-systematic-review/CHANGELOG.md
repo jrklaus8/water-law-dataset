@@ -9,6 +9,33 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-12 (latest, cont. 14) — CITATION.cff added for a standalone Zenodo deposit; abstract-redistribution question raised and resolved by researcher decision
+
+Preparing a standalone Zenodo deposit of this `legal-last-mile-systematic-review/`
+subdirectory (separate from the repository's existing dataset-scoped DOI,
+`10.5281/zenodo.19836413`, whose own title/citation history is being left
+untouched). Added `CITATION.cff` scoped to the review itself, since
+Zenodo's automatic GitHub-release integration reads the repo root's
+existing `CITATION.cff` (dataset-scoped) and a manual, subdirectory-only
+deposit needs its own.
+
+Also raised, and the researcher explicitly resolved, a real question: the
+review's screening-stage CSVs (`deduplicated_records.csv`,
+`screening_database.csv`, `reviewer_2_queue.csv`,
+`exclude_spotcheck_sample.csv`) carry ~38MB / 26,222 verbatim abstracts
+bulk-exported from Scopus/Web of Science, the same category of
+copyright/redistribution concern already caught once for full-text PDFs
+(2026-08-26 entry above). Flagged before creating any public deposit,
+including the note that this is separately a Scopus/WoS license
+(contract) question independent of copyright fair-use analysis, and that
+EU text-and-data-mining exceptions (relevant given the researcher's
+Erasmus University Rotterdam affiliation) are narrower than US fair use
+and generally cover the mining/analysis itself, not public republication
+of the underlying text. **Researcher decision: include the abstracts as-is,
+accepting the redistribution risk.** Logged here per this project's
+standing "flagged, not hidden" practice — this is a disclosed,
+researcher-owned risk decision, not an oversight.
+
 ## 2026-09-12 (latest, cont. 13) — OSF preregistration draft brought to submission-ready state, with an explicit retrospective-registration disclosure
 
 At the researcher's request, prepared the OSF Generalized Systematic
