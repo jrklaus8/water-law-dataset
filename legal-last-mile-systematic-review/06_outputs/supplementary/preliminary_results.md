@@ -165,40 +165,147 @@ evidence of anything.
   include, 5,151 exclude, 248 unsure.** Still a provisional first pass
   only; still no human `reviewer_2`.
 
+- **2026-09-11 (later still)/2026-09-12: the search phase closed, by
+  researcher decision, with documented gaps.** Beyond Scopus (fully
+  searched) and Web of Science (`SEARCH_035`, 4,058 records), the
+  researcher's institutional access also reached HeinOnline
+  (`SEARCH_036`–`SEARCH_038`) but with a mostly-lost real yield:
+  `SEARCH_036` found 71,226 hits with no bulk-export mechanism at that
+  volume (count-only, 0 ingested), `SEARCH_037` yielded exactly 1
+  ingested record, and `SEARCH_038`'s 3 records were reported but their
+  export file never reached this pipeline. ProQuest (`SEARCH_039`,
+  7,728 records via a full account-based export) and ProQuest/
+  Sociological Abstracts (`SEARCH_040`, 16,736 records) were both
+  searched in full. JSTOR (`SEARCH_041`) identified 356 records but only
+  a partial export of 50 was ever produced before the search phase
+  closed. **SSRN and Westlaw/Lexis were never searched at all** — the
+  phase was closed, by explicit researcher decision, before either was
+  reached (the candidate pool was judged large enough to move to
+  screening); this is a real, disclosed limitation of this review's
+  search strategy, not an oversight, and must be reported as such in any
+  manuscript output (`SEARCH_PROTOCOL.md` §7). Final deduplication
+  across every source run against this closed pool (WebSearch pilot,
+  `SOURCES.md` exemplars, all 18 Scopus batches, Web of Science,
+  HeinOnline, ProQuest, ProQuest/Sociological Abstracts, JSTOR) landed
+  on **27,481 unique records, 7,113 duplicates merged** — heavy
+  Scopus/WoS/ProQuest cross-database journal overlap, as expected.
+- **2026-09-10/2026-09-11: first-pass AI title/abstract screening
+  completed on the full closed-search-phase pool.** Of the 27,481 unique
+  records, 26,222 have a real abstract; all 26,222 were screened by
+  Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`, explicitly
+  authorized by the researcher per `PROJECT_SPEC.md` §14.18 — **3,062
+  include / 22,557 exclude / 603 unsure**. The 1,259 records without a
+  real abstract were deliberately left undecided (non-binding title-only
+  triage only, per `title_only_triage_memo.md`).
+- **2026-09-12: a human `reviewer_2` pass was completed** on all 3,665
+  reviewer_1 include+unsure records, via a purpose-built Excel worksheet
+  handoff (`REVIEWER_2_README.md`) — **3,659 `include` / 6 `exclude`,
+  zero recorded conflicts** by the strict reviewer_1-vs-reviewer_2
+  disagreement definition in `DATA_DICTIONARY.md` (all 6 reviewer_2
+  excludes resolved a reviewer_1 `unsure`, none overturned a firm
+  reviewer_1 `include`). **Flagged plainly, not treated as routine:** a
+  99.8% agreement rate between two independent reviewers is unusually
+  high for genuine independent screening, and the full worksheet came
+  back faster than reading ~3,700 abstracts individually would take —
+  this was raised directly with the researcher before merging, who
+  confirmed proceeding with the file as delivered; this caveat should
+  travel with the number in any manuscript reporting it. `final_decision`
+  is now populated for all 3,665 records on this basis. The 120-record
+  `exclude_spotcheck_sample.csv` QA sample remains unreviewed and
+  available if an independent check on the exclude population is wanted.
+- **2026-09-12: Phase 6 (full-text screening) went live and is ongoing.**
+  `02_screening/full_text/full_text_screening_database.csv` was seeded
+  with all 3,659 Phase-5 includes. The researcher supplies full-text
+  PDFs via chat upload on a rolling basis, expected to continue for
+  roughly a month; each is converted (`pdftotext -layout`), screened by
+  Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
+  codes, and recorded via `update_full_text_record.py`, with every
+  exclusion also logged to `exclusion_log.csv`. As of this entry:
+  **175 of 3,659 records decided (85 include / 90 exclude)** — see
+  `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
+  human `reviewer_2` for this phase has not yet been assigned — open
+  question for the researcher.
+- **2026-09-12: Phase 8 (full extraction) is running in lockstep with
+  Phase 6**, at the researcher's explicit instruction to extract every
+  full-text include directly rather than drawing a separate pilot
+  subsample first (Phase 7 is marked superseded, not completed). **83
+  studies (S001–S083) are now fully extracted** into
+  `extraction_database.csv` against `CODEBOOK.md`'s complete 92-field
+  schema. Two studies with no cached full text available in this session
+  (Lubeck-Schricker et al.; Gaikwad & Thomas) were explicitly *not*
+  extracted from memory and remain flagged for re-upload — this accounts
+  for the entire gap between 85 full-text includes and 83 extracted
+  studies. Five of the 83 are themselves secondary reviews (four
+  systematic, one focused/narrative), flagged
+  `study_design_class = systematic_review_secondary` and never to be
+  pooled as an independent primary effect.
+- **2026-09-12: Phase 10 (evidence classification) has been run against
+  all 83 extracted studies.** `build_evidence_map.py` derived what can
+  safely be derived mechanically; the remaining judgment-call fields
+  (`outcome_family`, `evidence_level`, `study_design_class` for the 19
+  studies using the project's own Legal Institutional Evidence Appraisal
+  Framework, and the two synthesis-eligibility flags) were filled by hand
+  per study. **35 of the 83 extracted studies have a genuine,
+  study-generated, calculable effect estimate and are judged eligible for
+  quantitative synthesis; all 83 are qualitative-synthesis eligible.**
+  This is a per-study eligibility judgment, not a corpus-level decision
+  that pooling is warranted for any family — that is Phase 11, which has
+  not started.
+
 ## What has not been done
 
-- **Only two of nine planned databases have been searched at all**
-  (`SEARCH_PROTOCOL.md` §7–8) — HeinOnline, Westlaw, Lexis, ProQuest,
-  Sociological Abstracts, CanLII, and Rechtspraak.nl are all still
-  untouched. Scopus is now fully searched per its own plan (5,984 of
-  ~5,443+ originally estimated, all 18 planned batches done); Web of
-  Science has only its first batch in (4,058 records) — whether that's
-  the platform's complete result set or more batches remain hasn't been
-  confirmed. This remains the actual Phase 3 requirement, still largely
-  unmet.
-- **A human `reviewer_2` title/abstract pass has not been done, and no
-  conflict resolution has happened** — the 1,710 include / 248 unsure
-  records from Claude's first-pass screening are candidates, not settled
-  inclusions. `PROTOCOL.md`'s two-reviewer process is only half-done.
-- No study has been finally included or excluded from the review — the
-  5,151 first-pass excludes and 1,710 first-pass includes are both
-  provisional until a second reviewer's pass exists to check them
-  against.
-- No full-text screening has happened on any record.
-- No data has been extracted.
-- No risk-of-bias appraisal has been performed.
-- No quantitative-feasibility determination has been made for any candidate
-  synthesis family.
-- No effect size, pooled or otherwise, exists in this project.
+- **Only five of the databases named in `SEARCH_PROTOCOL.md` were
+  searched, and two planned searches never ran at all.** Scopus (fully
+  searched, 18/18 planned batches) and Web of Science (`SEARCH_035`) are
+  the two Tier 1 databases actually covered; HeinOnline, ProQuest,
+  ProQuest/Sociological Abstracts, and JSTOR were also reached but with
+  real, disclosed gaps in each (see above). **SSRN and Westlaw/Lexis were
+  never searched at all** — the search phase was closed by researcher
+  decision before either was reached. CanLII, Rechtspraak.nl, and
+  Brazilian court/regulatory portals (feeding the doctrinal/jurimetric
+  strand rather than this empirical-evidence pipeline) also remain
+  untouched. This is the review's single largest disclosed limitation and
+  must be reported as such in any manuscript output.
+- A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
+  been assigned — open question for the researcher, distinct from the
+  title/abstract `reviewer_2` pass, which is complete.
+- Full-text screening itself is far from complete: 175 of the 3,659
+  Phase-5 includes have been assessed; 3,484 records have not yet been
+  reached, not confirmed unretrievable, since retrieval depends entirely
+  on the researcher supplying full-text PDFs.
+- Extraction (Phase 8) is caught up with screening but not complete for
+  the same reason — 83 of 85 current full-text includes are extracted;
+  2 await full-text re-upload.
+- **No risk-of-bias rating has been performed on any of the 83 extracted
+  studies** — `risk_of_bias_tool` is identified per study, but
+  `risk_of_bias_rating` is deliberately left blank pending the official
+  version of each appraisal instrument (`RISK_OF_BIAS.md`'s explicit
+  prohibition on reconstructing a validated tool from memory). This is a
+  real, reportable limitation at this stage, not an oversight.
+- **No quantitative-feasibility determination (Phase 11) has been made
+  for any candidate synthesis family** — 35 studies being individually
+  eligible for quantitative synthesis is not the same as any family
+  clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
+  substantively comparable estimand → enough independent, non-secondary
+  studies). That corpus-level judgment has not been made for any family.
+- No effect size, pooled or otherwise, exists in this project. Phases
+  12–16 (meta-analysis, SWiM synthesis, sensitivity analysis, publication
+  bias, PRISMA reporting) have R-script/template scaffolding built but
+  are all blocked on Phase 11 and have not been run against real data.
 
-## Why this file exists in its current, empty form
+## Why this file is still preliminary, not a results section
 
 `PROJECT_SPEC.md` §14 (operating instructions) prohibits inventing
 literature, results, sample sizes, effect sizes, or confidence intervals,
 and prohibits claiming an exhaustive search that was not actually
-performed. Populating this file with plausible-sounding preliminary
-findings before the search is run would violate that rule regardless of how
-carefully hedged the language was. The next entry in this file should be
-written only once `01_search/raw_exports/` contains real, logged search
-exports (`SEARCH_PROTOCOL.md` §6) and `02_screening/` contains real
-screening decisions.
+performed, or a synthesis judgment that has not actually been made. This
+file now reports real screening and extraction progress — because that
+progress is real, logged, and reproducible from the CSVs it cites — but it
+still contains **no finding about any legal/administrative mechanism's
+relationship to any household-level water/sanitation outcome**, because no
+such finding has been produced yet: Phase 9 (risk of bias) and Phase 11
+(quantitative feasibility) both remain undone, and nothing in
+`05_analysis/` or `08_code/R/` has been run against this project's real
+data. The next entry in this file that reports an actual finding should be
+written only once a synthesis family has cleared Phase 11's decision tree
+and a corresponding Phase 12/13 output exists.
