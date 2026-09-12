@@ -138,12 +138,11 @@ Included
   Studies included in systematic review (n = 62, PROVISIONAL AND GROWING)
     [Full-text include count as of 2026-09-12; full-text screening is
     still ongoing across the remaining 3,533 unreached records.]
-  Studies included in full extraction so far (n = 42)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S042.
-    20 of the 62 full-text includes are queued for extraction; 2 more
-    are flagged as awaiting full-text re-upload (no cached text
-    available in this session) and were deliberately not extracted from
-    memory.]
+  Studies included in full extraction so far (n = 60)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S060.
+    Only 2 of the 62 full-text includes remain unextracted, flagged as
+    awaiting full-text re-upload (no cached text available in this
+    session) and deliberately not extracted from memory.]
   Studies included in quantitative evidence synthesis (n = )
   Studies included in restricted meta-analysis, by family (n = ), if any
 ```
