@@ -10,20 +10,26 @@ Draft of 2026-09-13
 
 > **Status of this document.** This is a **preliminary, in-progress working
 > draft**, not a completed manuscript. It reports the pre-specified protocol
-> and framework (fixed 2026-08-22, before any database was searched) and the
+> and framework (fixed 2026-08-22, before any database was searched), the
 > **actual, current, provisional** state of search, screening, and
-> extraction. It contains **no Results, Discussion, or Conclusion section**,
-> and it draws no inference about whether the "Legal Last Mile" framework is
-> supported, qualified, or rejected by the evidence. That is a deliberate
-> choice, not an omission: only 175 of the 3,659 records that passed
-> title/abstract screening have been assessed at full text (≈4.8%), risk-of-
-> bias appraisal has not started for any of the 85 studies extracted so far,
-> and the quantitative-synthesis feasibility decision tree
-> (`ANALYSIS_PLAN.md` §2) has not been run. Writing conclusions ahead of that
-> work is exactly what this project's own governing principle forbids (see
-> §7 below). Every number in this document should be treated as provisional
-> and expected to change — often substantially — as screening continues.
-> Source data: `legal-last-mile-systematic-review/` in
+> extraction, and — at the researcher's explicit request — an **exploratory
+> sketch** of Results, Discussion, and Conclusion (§6–8 below).
+>
+> **Read that sketch as a sketch, not a finding.** Only 175 of the 3,659
+> records that passed title/abstract screening have been assessed at full
+> text (≈4.8%); risk-of-bias appraisal has not started for any of the 85
+> studies extracted so far; and the quantitative-synthesis feasibility
+> decision tree (`ANALYSIS_PLAN.md` §2) has not been run. The 85 studies
+> behind §6–8 are whichever PDFs the researcher happened to supply and
+> screen first, not a random or representative sample of the 3,659-record
+> pool — the pattern described there is expected to change, plausibly
+> reverse, and should not be cited, quoted, or relied upon as this
+> project's actual finding. §9–11 restate this project's own rule for why a
+> non-exploratory version of these sections cannot yet be written, and
+> explain what is still missing before it can be.
+>
+> Every number in this document should be treated as provisional. Source
+> data: `legal-last-mile-systematic-review/` in
 > `github.com/jrklaus8/water-law-dataset`.
 
 ---
@@ -58,10 +64,21 @@ screening; full-text screening 175/3,659 complete (85 include / 90
 exclude); all 85 current full-text includes fully extracted, spanning 36
 countries/territories across six world regions, publication years
 2021–2026. No risk-of-bias ratings assigned. No quantitative-synthesis
-feasibility determination made. No pooled or narrative findings are
-reported here.
+feasibility determination made.
 
-**This is a methods-and-status report, not a findings report.**
+**Exploratory sketch (§6–8, not a finding).** Of the 85 extracted studies,
+only a small minority — roughly six — report a comparison that actually
+isolates a legal or administrative mechanism against an access outcome;
+the rest report descriptive access/service statistics without a
+legal-status contrast. The few mechanism-isolating studies identified so
+far point in a direction consistent with the Legal Last Mile hypothesis,
+but this is six non-random studies out of an eventual pool that has
+barely begun to be assembled, with no risk-of-bias screen applied to any
+of them. No pooled effect is estimated or implied anywhere in this
+document.
+
+**This is a methods-and-status report with an explicitly exploratory,
+non-representative sketch attached — not a findings report.**
 
 ---
 
@@ -403,7 +420,145 @@ how representative this window is of the full field.
 
 ---
 
-## 6. Current Status by PRISMA Phase
+## 6. Preliminary Results (Exploratory, Non-Representative)
+
+> **Read this section as a sketch, not a finding.** It exists because the
+> researcher explicitly asked for one, not because the evidence base is
+> ready to support it. The 85 studies behind it are ≈4.8% of the pool still
+> to be screened, are not a random or representative draw from that pool,
+> and have not been risk-of-bias appraised. Nothing below is a pooled
+> estimate, and nothing below should be cited as this project's finding.
+
+### 6.1 What the 85 studies collectively look like
+
+The mechanism-family × outcome-family pattern already reported
+descriptively in §5.4–5.5 is the closest thing to a "result" that can
+honestly be drawn from a set this size and this incidentally assembled:
+64 of 85 studies implicate more than one mechanism family at once, and the
+outcome mix leans slightly toward effective-access measures (35) over
+primary connection (34), with economic access (11) and administrative
+outcomes (5) less represented. That is a description of *what has been
+coded so far*, not a synthesized effect.
+
+### 6.2 Studies that isolate a legal/administrative mechanism
+
+Of the 37 studies flagged quantitative-synthesis-eligible at the
+individual-study level (§3.7), most report descriptive access or service
+statistics (coverage rates, water quantities, expenditure shares) without
+a comparison that isolates a *legal or administrative* condition as the
+exposure — they document that access is unequal or partial, not why in
+mechanism terms this review is coding for. Reading through all 37
+(`03_extraction/extracted_data/extraction_database.csv`), a much smaller
+number — six — report a comparison that actually varies a legal or
+administrative condition against an access outcome:
+
+| Study | Mechanism | Comparison | Reported result |
+|---|---|---|---|
+| Lubeck-Schricker et al. 2023 (S084) | Eligibility (legal notification) | Notified vs. non-notified households, same Mumbai slum | Non-notified households used 37.3% less water per capita/day (adjusted, p<0.001) |
+| Gaikwad & Thomas 2026 (S085) | Burden × Discretion/Accommodation | Bureaucratic assistance alone vs. combined with political coordination (cluster-RCT) | Combined treatment raised full formalization by 19 percentage points (p=.001); the underlying interaction term was significant at p=.04. Assistance alone raised application submission but not full formalization |
+| Filčák & Škobla 2021 (S078) | Discretion/Accommodation | Potential vs. actual service uptake, Roma settlements, Slovakia | 76% had potential water access but only 59% actually connected; 51% potential sewerage access vs. 35% actual |
+| Kozole et al. 2023 (S057) | Burden (subsidy easing eligibility cost) | Subsidy-eligible vs. ineligible households (cluster-RCT), rural Cambodia | Subsidy offer raised latrine-purchase likelihood by 32 percentage points |
+| dos Santos Alves Romanato et al. 2025 (S021) | Enforcement | Complaints filed vs. resolved within regulatory timeframe, Natal, Brazil | 67% of water-shortage complaints unresolved within the regulatory window |
+| Rajput & Pu 2025 (S029) | Eligibility/Burden | Utility-reported connections vs. independent household survey, Bodh Gaya, India | Utility reported 3,900/6,000 targeted connections; independent survey found only 9.4% of households actually piped |
+
+All six point in the direction this review's framework would predict —
+legal or administrative status/process shaping access net of physical
+proximity — but they are six studies, in six different countries, using
+six different designs and outcome measures, extracted from a pool that is
+currently 4.8% screened. This is not a synthesis; it is a list of the
+current evidence base's most mechanism-relevant examples, assembled by
+hand-reading extraction notes, not by a pre-specified selection rule.
+
+### 6.3 Candidate synthesis families, revisited against actual counts
+
+`PROJECT_SPEC.md` §8 pre-specified three candidate families to test for
+poolability. Against the studies actually in hand:
+
+- **Family A** (legal recognition → access): one clearly on-point study
+  (S084). Not poolable by any standard — a single study has no basis for
+  a pooled estimate.
+- **Family B** (bureaucratic assistance → connection): one clearly
+  on-point study (S085), possibly a second if S029's utility-vs-independent-
+  survey discrepancy is read as an assistance/administrative-capacity
+  story. Same conclusion: not poolable yet.
+- **Family C** (legal/administrative barriers → unequal access): the
+  broadest and most heterogeneous of the three, plausibly touched by all
+  six studies above plus much of the "multiple mechanisms" majority (§6.1)
+  — but heterogeneous enough in outcome and design that `ANALYSIS_PLAN.md`
+  §2's own decision tree would very likely route it to structured
+  narrative synthesis (SWiM) rather than meta-analysis even once screening
+  is complete.
+
+Running `ANALYSIS_PLAN.md`'s decision tree formally (Phase 11) against the
+*current* 85 studies would almost certainly conclude "insufficient
+independent studies" for Families A and B and "excessive heterogeneity"
+for Family C. That is an expected, not a discouraging, result at 4.8%
+screening progress — it says more about how early this snapshot is than
+about whether pooling will ultimately be justified.
+
+## 7. Preliminary Discussion (Exploratory)
+
+> Same caveat as §6: exploratory reading of a small, non-representative,
+> risk-of-bias-unscreened sample. Treat as hypothesis-generating, not
+> hypothesis-confirming.
+
+The pattern in §6.2, thin as it is, is at least *consistent with* the
+Legal Last Mile framework: in every one of the six mechanism-isolating
+studies found so far, a legal or administrative condition — notification
+status, combined bureaucratic/political pressure, actual vs. nominal
+service entitlement, subsidy eligibility, complaint enforcement, or the
+gap between utility records and household-reported connection — tracked
+with the access outcome in the predicted direction. None of the six
+studies found so far contradicts the framework. That is a weak form of
+support: absence of disconfirming evidence in six hand-selected studies is
+a long way from evidence the framework survives serious testing.
+
+Two patterns are worth flagging as things to watch as screening continues,
+without treating either as established:
+
+1. **Mechanisms may bundle rather than operate independently.** Gaikwad &
+   Thomas (2026) find bureaucratic assistance alone insufficient — only the
+   combination with political coordination produced an effect — and 64 of
+   85 studies overall (§5.4, §6.1) code more than one mechanism family
+   simultaneously. If this holds up as screening continues, it would argue
+   against treating `ELIGIBILITY`, `BURDEN`, `DISCRETION_ACCOMMODATION`,
+   and `ENFORCEMENT` as separable exposures in eventual synthesis, and
+   toward modeling them as an interacting bundle — a genuinely open
+   question for `ANALYSIS_PLAN.md`, not something the current data settles.
+2. **The gap between nominal and actual access recurs.** Filčák & Škobla
+   (Roma settlements) and Rajput & Pu (Bodh Gaya) both document large gaps
+   between what records/policy say should be connected and what
+   independent observation finds actually is. If this recurs as more
+   studies are added, it would suggest administrative *implementation*
+   gaps — not just formal eligibility rules — deserve their own place in
+   the mechanism framework, distinct from `DISCRETION_ACCOMMODATION` as
+   currently coded.
+
+Both observations are drawn from a handful of studies and could easily
+not replicate as the other 3,484 unscreened records are assessed. They are
+recorded here as things to watch, not as conclusions.
+
+## 8. Preliminary Conclusion (Exploratory, Highly Provisional)
+
+At this very early stage — 4.8% of full-text screening complete, zero
+risk-of-bias appraisals performed, and no formal synthesis-feasibility
+determination made — the assembled evidence has not contradicted the
+Legal Last Mile framework and includes a small number of studies whose
+results are consistent with it. That is the entire honest content of this
+"preliminary conclusion." It is not evidence the framework is correct, it
+is not a basis for policy or legal argument, and it should not be quoted
+or cited as this review's finding: a review that is 4.8% through its
+full-text pool cannot yet say whether the framework is supported,
+qualified, or rejected, and asserting otherwise would be exactly the
+premature conclusion `PROJECT_SPEC.md` §1 was written to prevent. The
+actual conclusion — the one worth relying on — depends on completing
+full-text screening, applying risk-of-bias appraisal, and running the
+quantitative-feasibility decision tree against the completed evidence
+base, none of which has happened yet.
+
+---
+
+## 9. Current Status by PRISMA Phase
 
 | Phase | Status |
 |---|---|
@@ -418,7 +573,7 @@ how representative this window is of the full field.
 
 ---
 
-## 7. Why This Report Stops Here
+## 10. Why §6–8 Are Sketches, Not the Review's Findings
 
 This project's governing methodological commitment
 (`PROJECT_SPEC.md` §1) is: *first determine what the existing evidence
@@ -427,15 +582,20 @@ justified* — not the reverse. `07_manuscript/draft/manuscript_outline.md`
 correspondingly marks Results, Discussion, Comparative Findings, and
 Conclusion as sections that "may not be drafted from assumption,
 illustration, or the preliminary source papers alone," pending the
-corresponding phase of work. That constraint is not a formality here: with
-risk-of-bias appraisal unrun and only 4.8% of the full-text pool assessed,
-any Results or Discussion section written today would necessarily be
-either empty or an illustration dressed up as a finding — precisely the
-outcome the project's anti-confirmation-bias rule exists to prevent. This
-report therefore ends at the descriptive status the evidence currently
-supports.
+corresponding phase of work. §6–8 above exist only because the researcher
+explicitly asked for a labeled exploratory version despite that rule, and
+they are written to make the rule's logic visible rather than to quietly
+sidestep it: with risk-of-bias appraisal unrun and only 4.8% of the
+full-text pool assessed, a Results/Discussion/Conclusion written today can
+only ever be an illustration, never a finding. The version of §6–8 that
+actually counts — the one this project's own rules permit treating as a
+result — requires full-text screening to close, risk-of-bias appraisal to
+run against the official instruments, and `ANALYSIS_PLAN.md`'s
+feasibility decision tree to be applied to the completed evidence base.
+None of that has happened. Until it has, §6–8 should be read exactly as
+labeled: a sketch.
 
-## 8. Limitations of This Interim Report Itself
+## 11. Limitations of This Interim Report Itself
 
 - **Coverage is partial and search access was constrained.** SSRN and
   Westlaw/Lexis were never searched; CanLII and Rechtspraak.nl were not
@@ -453,6 +613,18 @@ supports.
 - **No synthesis feasibility determination has been made.** The 37/85
   "quantitative-synthesis eligible" flag is a per-study data property, not
   a decision that pooling any family is warranted.
+- **The §6 "six mechanism-isolating studies" are a hand-read list, not a
+  pre-specified or systematic selection.** They were identified by reading
+  extraction notes for comparisons that isolate a legal/administrative
+  exposure, not by a documented inclusion rule — a different reader could
+  reasonably draw the boundary differently, and the list should be
+  regenerated with an explicit rule once screening is further along.
+- **Selection into "which 85 studies exist yet" is not random.** These are
+  whichever full-text PDFs the researcher happened to supply and the
+  reviewer happened to screen first; nothing about the order guarantees
+  representativeness of the eventual 3,659-record pool, and the §6–8
+  exploratory pattern could look entirely different once more of that pool
+  is screened.
 - **This document itself has not been peer reviewed** and is not a
   substitute for the eventual registered, completed systematic review.
 

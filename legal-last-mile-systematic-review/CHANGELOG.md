@@ -9,7 +9,36 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-13 — Preliminary protocol + interim descriptive report drafted
+## 2026-09-13 (latest) — Exploratory Results/Discussion/Conclusion added to the preliminary report, explicitly labeled as a sketch
+
+At the researcher's explicit, repeated request (after an initial version
+of this report deliberately omitted these sections per
+`manuscript_outline.md`'s own rule), added §6–8 to
+`07_manuscript/draft/preliminary_report_2026-09-13.md`: "Preliminary
+Results (Exploratory, Non-Representative)," "Preliminary Discussion
+(Exploratory)," and "Preliminary Conclusion (Exploratory, Highly
+Provisional)." Given a choice between a bare placeholder skeleton, a
+labeled exploratory sketch, and a full unhedged synthesis, the researcher
+chose the labeled exploratory sketch.
+
+Content is grounded entirely in real extracted data — no fabrication.
+Read through all 37 studies flagged `quantitative_synthesis_eligible` and
+found that most report descriptive access statistics without a
+comparison that isolates a legal/administrative exposure; six
+(Lubeck-Schricker et al. 2023 [S084], Gaikwad & Thomas 2026 [S085],
+Filčák & Škobla 2021 [S078], Kozole et al. 2023 [S057], dos Santos Alves
+Romanato et al. 2025 [S021], Rajput & Pu 2025 [S029]) do isolate such a
+comparison and are reported by name with their actual effect estimates.
+All six point in the direction the Legal Last Mile framework predicts;
+this is stated as weak, non-representative, hand-selected support, not a
+finding — the document says so at the top (revised status callout),
+before §6, in §7, in §8, and again in a new §10 ("Why §6–8 Are Sketches,
+Not the Review's Findings," renumbered from the original §7 "Why This
+Report Stops Here") and §11's expanded Limitations. Existing §6–8
+(PRISMA-phase status, stopping rationale, limitations) renumbered to
+§9–11 without other content changes. Re-generated the matching `.docx`.
+
+## 2026-09-13 (earlier) — Preliminary protocol + interim descriptive report drafted
 
 At the researcher's request for "a preliminary paper," wrote
 `07_manuscript/draft/preliminary_report_2026-09-13.md`: a
