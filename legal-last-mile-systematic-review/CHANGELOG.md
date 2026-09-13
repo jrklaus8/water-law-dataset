@@ -9,7 +9,36 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-13 (latest) — Full-text screening: Acey "Hybrid Governance and the Human Right to Water" excluded (E05)
+## 2026-09-13 (latest) — Full-text screening: Schnegg, Bollig & Linke (Namibia) included and extracted as S092
+
+Screened Schnegg, Bollig & Linke (2016), "Moral equality and success of
+common-pool water governance in Namibia" (Ambio 45:581-590). **Included**:
+a mixed-methods study (60-community comparative survey + ethnographic
+fieldwork + calibrated agent-based simulation) examining how Namibia's
+decentralization of rural water-point management from the state to
+community Water Point Associations shapes the cost/benefit-sharing rule
+communities adopt (flat "numerical equality" fee vs. usage-based
+"proportional equality"), and how that institutional choice produces
+measurable affordability-burden and wealth-inequality consequences.
+Classified BURDEN=TRUE (flat per-household fee disproportionately
+burdens low-livestock households relative to actual water usage) and
+DISCRETION_ACCOMMODATION=TRUE (state/NGO officials exercise discretion
+in how actively they intervene to support poorer households against
+wealthier residents' bargaining power — documented in a named
+Ministry-official/community vignette). Extracted as **S092** with full
+92-field data; `mechanism_certainty=2` (statistically significant
+cross-community correlations plus named ethnographic vignettes, but an
+observational/cross-sectional rather than quasi-experimental design).
+
+Extraction database and evidence map now hold **92 fully extracted
+studies (S001–S092)**. Full-text screening stands at **193 of 3,659
+records decided (92 include / 101 exclude)**. Refreshed
+`PRISMA_WORKFLOW.md`, `README.md`, `prisma_flow.md`, and
+`preliminary_results.md` with these totals (also caught and fixed two
+stale leftover counts in `prisma_flow.md` from an earlier round); all 13
+tracked schemas re-validated clean.
+
+## 2026-09-13 — Full-text screening: Acey "Hybrid Governance and the Human Right to Water" excluded (E05)
 
 Screened Acey (2016), "Hybrid Governance and the Human Right to Water"
 (Berkeley Planning Journal 28(1)). Excluded **E05 (no empirical
