@@ -9,6 +9,32 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
+## 2026-09-13 — Preliminary protocol + interim descriptive report drafted
+
+At the researcher's request for "a preliminary paper," wrote
+`07_manuscript/draft/preliminary_report_2026-09-13.md`: a
+methods-and-status document, not a findings paper. It contains the
+pre-specified conceptual framework and methods (unchanged since
+2026-08-22), the actual current PRISMA flow (27,481 unique records →
+3,659 past title/abstract screening → 175/3,659 full-text screened,
+85 include/90 exclude → 85/85 extracted), and purely descriptive
+characteristics of the 85 extracted studies (region, legal system, study
+design, mechanism family, outcome family, publication years) plus a full
+alphabetical reference list of those 85 studies as Appendix A.
+
+**Deliberately excludes Results, Discussion, Comparative Findings, and
+Conclusion sections** — consistent with `manuscript_outline.md`'s own
+rule that those sections may not be drafted from illustration or the
+preliminary source papers alone, and with `PROJECT_SPEC.md` §1's
+governing principle (determine what the evidence allows before deciding
+on synthesis, not the reverse). With full-text screening at ≈4.8%
+complete and risk-of-bias appraisal and the quantitative-feasibility
+decision tree (Phases 9 and 11) both unrun, writing those sections now
+would produce either an empty section or an illustration presented as a
+finding — exactly what the anti-confirmation-bias rule exists to
+prevent. The document says this explicitly in its own §7 rather than
+silently omitting the sections.
+
 ## 2026-09-12 (latest, cont. 14) — CITATION.cff added for a standalone Zenodo deposit; abstract-redistribution question raised and resolved by researcher decision
 
 Preparing a standalone Zenodo deposit of this `legal-last-mile-systematic-review/`
