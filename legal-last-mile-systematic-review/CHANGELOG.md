@@ -9,7 +9,28 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-13 (latest) — Full-text screening batch: 10 more records decided, 5 new includes extracted (S087–S091)
+## 2026-09-13 (latest) — Full-text screening: Acey "Hybrid Governance and the Human Right to Water" excluded (E05)
+
+Screened Acey (2016), "Hybrid Governance and the Human Right to Water"
+(Berkeley Planning Journal 28(1)). Excluded **E05 (no empirical
+evidence)**: the paper is a narrative/doctrinal literature review and
+policy essay on the international human-right-to-water framework
+(normative content, progressive realization, third-party/non-state-actor
+duty-bearer theory, a comparative table of countries' legal recognition
+mechanisms compiled from the ESCR-Net/Global Health and Human Rights
+Databases). The author explicitly frames the method as "a review of the
+literature on human rights implementation and gathering data on how
+countries have been implementing the right to water" — no defined
+systematic search/synthesis methodology and no primary empirical
+fieldwork of its own; every empirical claim in the piece is attributed to
+other cited studies.
+
+Full-text screening now stands at **192 of 3,659 records decided (91
+include / 101 exclude)**. Updated `PRISMA_WORKFLOW.md`, `README.md`,
+`prisma_flow.md`, and `preliminary_results.md` with these totals; all 13
+tracked schemas re-validated clean.
+
+## 2026-09-13 — Full-text screening batch: 10 more records decided, 5 new includes extracted (S087–S091)
 
 Continued Phase 6 full-text screening on a rolling batch of researcher-
 supplied PDFs, processed via the standard pipeline (convert →
