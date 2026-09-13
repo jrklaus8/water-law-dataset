@@ -9,7 +9,49 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-13 (latest) — Exploratory Results/Discussion/Conclusion added to the preliminary report, explicitly labeled as a sketch
+## 2026-09-13 (latest) — Full-text screening batch: 10 more records decided, 5 new includes extracted (S087–S091)
+
+Continued Phase 6 full-text screening on a rolling batch of researcher-
+supplied PDFs, processed via the standard pipeline (convert →
+`pdftotext -layout` → screen against `INCLUSION_EXCLUSION.md`'s E01–E12
+codes → record via `code/screening/update_full_text_record.py` → log any
+exclusion to `exclusion_log.csv` → extract into
+`extraction_database.csv` and `evidence_map.csv` for every include →
+`validate_schemas.py`).
+
+**10 records decided this batch:**
+- **Include (5):** S087 Grönwall (Ghana, mixed-methods, tenure/PURC/WRC/
+  CWSA regulatory fragmentation); S088 Otsuki 2016 (Kibera, Kenya —
+  Tosha Network CBO certification, chief's-permission bottleneck to
+  connect a bio-centre to the city water grid); S089 Tutu & Stoler 2016
+  (Accra, Ghana — tenure-based denial of formal water supply in two
+  informal settlements); S090 Awunyo-Akaba et al. 2016 (Ghana — tenure/
+  land-rights status shaping sanitation investment across three
+  comparative communities); S091 Rodina & Harris 2016 (Khayelitsha, Cape
+  Town — RDP housing-formalisation process gating individual in-house
+  water/sanitation connection vs. communal-tap access, plus differential
+  councillor responsiveness to formalized vs. informal residents'
+  grievances).
+- **Exclude (5):** Wilhelm-Solomon 2016 (E01 — eviction/urban
+  regeneration, not service access); Ojha 2021 (Nepal water policy —
+  included as S086, logged separately); Liddle et al. 2016 (Ndola,
+  Zambia informal water supply — E06, core contribution is technical/
+  engineering: well protection, smart hand pumps, not a legal-
+  administrative access mechanism); Kanyamurwa 2016 (Uganda — E04,
+  quantitative survey of political interference/accountability in
+  utility governance, not household-level access/exclusion tied to a
+  legal-administrative mechanism).
+
+`extraction_database.csv` and `evidence_map.csv` now hold **91 fully
+extracted studies (S001–S091)**. Full-text screening stands at **191 of
+3,659 records decided (91 include / 100 exclude)**. All 13 tracked
+schemas re-validated clean after every write. Updated `PRISMA_WORKFLOW.md`,
+`README.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md` with these totals —
+the already-published `preliminary_report_2026-09-13.md`/`.docx` is left
+as a dated historical snapshot and not retroactively edited.
+
+## 2026-09-13 — Exploratory Results/Discussion/Conclusion added to the preliminary report, explicitly labeled as a sketch
 
 At the researcher's explicit, repeated request (after an initial version
 of this report deliberately omitted these sections per
