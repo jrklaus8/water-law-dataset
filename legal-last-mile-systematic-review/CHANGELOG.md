@@ -9,7 +9,61 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Large full-text screening batch: 34 records decided, 19 new includes (S095–S113)
+## 2026-09-15 (latest) — Second large full-text screening batch: 19 records decided, 9 new includes (S114–S122); `final_decision` backfill fix
+
+A second wave of 19 researcher-supplied full-text PDFs was screened against
+`INCLUSION_EXCLUSION.md`. **9 included and fully extracted:**
+
+- S114 Cardoso-Castro, Ravena & Mendes 2020 (Belém, Brazil) — document
+  analysis and stakeholder interviews on fragmented, redundant governance
+  responsibilities blocking rainwater-system implementation.
+- S115 Velásquez 2020 (San Andrés Island, Colombia) — two-wave interview
+  study (2016/2018) of Raizal ethnic-minority water-crisis response and
+  discretionary state technocratic institutions.
+- S116 Castleden et al. 2017 (Canada) — secondary systematic realist review
+  (279 screened / 63 included) of Indigenous/Western knowledge integration
+  in water governance; flagged `study_design_class = systematic_review_secondary`.
+- S117 Pinheiro, Savoia & de Angelo 2016 (Brazil) — quantitative comparative
+  economic-financial/operational indices of public vs. private water and
+  sanitation providers, 2000–2010.
+- S118 Rusca, Schwartz, Hadzovic & Ahlers 2015 (Lilongwe, Malawi) —
+  institutional bricolage and elite capture of peri-urban Water Users
+  Associations under a generic donor-promoted participatory model.
+- S119 Kithatu-Kiwekete 2013 (Johannesburg and Nairobi) — comparative
+  documentary analysis of local fiscal autonomy (revenue-sharing vs.
+  revenue-assignment) in water/sanitation financing legislation; assessed
+  with the project's Legal Institutional Evidence Appraisal Framework.
+- S120 Jackson & Palmer 2012 (Australia and East Timor) — comparative case
+  study of statutory water-allocation modernization marginalizing parallel
+  customary governance systems.
+- S121 Feler & Henderson 2008 (Brazil, NBER working paper) — quantitative
+  quasi-experimental strategic-interaction model showing local governments
+  deliberately under-service water/sewerage connections to discourage
+  poor-migrant in-migration where formal zoning is ineffective; highest
+  `mechanism_certainty` (3) and `risk_of_bias_tool = ROBINS-I` in this batch;
+  `peer_reviewed = FALSE` (unpublished working paper), disclosed as a
+  limitation.
+- S122 Vargas & Lima 2004 (Brazil, PRINWASS case studies: Niterói/Região dos
+  Lagos, Limeira) — qualitative multiple-case study of decentralization and
+  privatization of Brazil's water/sanitation regulatory apparatus.
+
+**10 excluded** (E01 ×1, E04 ×2, E05 ×5, E06 ×1, E07 ×1), full reasoning
+logged per-record in `exclusion_log.csv` with page/section citations.
+
+Also fixed a data-integrity gap discovered while regenerating the retrieval
+queue: `final_decision` had only been populated for 68 of the (then) 233
+already-decided full-text records — earlier batches set `full_text_decision`
+but left `final_decision` blank, which `build_full_text_queue.py` relies on
+to exclude decided records from the open queue. Backfilled `final_decision`
+to mirror `full_text_decision` for all 184 affected rows (this project runs
+a single AI reviewer with no `reviewer_2` process yet active, so the two
+fields are equivalent in practice). Totals as of this update: **252 of 3,659
+full-text records decided (122 include / 130 exclude)**; **122 studies fully
+extracted (S001–S122)**, all 92 `CODEBOOK.md` fields populated; evidence map
+current at 122 rows (6 studies now flagged `systematic_review_secondary`:
+S015, S019, S027, S052, S079, S116).
+
+## 2026-09-15 — Large full-text screening batch: 34 records decided, 19 new includes (S095–S113)
 
 A large wave of researcher-supplied full-text PDFs (32 new records, plus one
 previously-missed record from the Antigravity retrieval queue) was screened
