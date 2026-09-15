@@ -7,7 +7,7 @@ enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
 `PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
 Phase 6 was seeded with. Full-text screening is now live and ongoing
-(updated 2026-09-15): of 3,659, 281 have been assessed (136 include / 145
+(updated 2026-09-15): of 3,659, 296 have been assessed (140 include / 156
 exclude), with "Reports not retrieved" still at 0 since every record
 reaching this pipeline so far has arrived with full text already in hand
 via researcher chat upload — the remaining 3,426 are simply not yet
@@ -116,7 +116,7 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     full text already in hand, so "not retrieved" has not yet had reason
     to be used; expect this to change as retrieval of the full pool
     continues.]
-  Reports assessed for eligibility (n = 281, PROVISIONAL AND GROWING)
+  Reports assessed for eligibility (n = 296, PROVISIONAL AND GROWING)
     [02_screening/full_text/full_text_screening_database.csv, updated
     2026-09-15. Full-text screening is ongoing, not complete -- 3,426 of
     3,659 records have not yet been reached.]
@@ -139,7 +139,7 @@ Included
     [Full-text include count as of 2026-09-15; full-text screening is
     still ongoing across the remaining 3,426 unreached records.]
   Studies included in full extraction so far (n = 113)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S136.
+    [03_extraction/extracted_data/extraction_database.csv, S001-S140.
     Fully caught up with the full-text include count as of 2026-09-15 --
     no outstanding gap.]
   Studies included in quantitative evidence synthesis (n = )

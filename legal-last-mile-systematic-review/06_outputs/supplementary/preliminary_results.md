@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **281 of 3,659 records decided (136 include / 145 exclude)** — see
+  **296 of 3,659 records decided (140 include / 156 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,7 +229,7 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 136 current full-text includes (S001–S136) are now fully
+  **all 140 current full-text includes (S001–S140) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
   complete 92-field schema. Five of the 113 are themselves secondary
   reviews (four systematic, one focused/narrative), flagged
@@ -265,7 +265,7 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 281 of the 3,659
+- Full-text screening itself is far from complete: 296 of the 3,659
   Phase-5 includes have been assessed; 3,426 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.

@@ -9,7 +9,43 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Third full-text screening batch: 29 records decided, 14 new includes (S123–S136)
+## 2026-09-15 (latest) — Fourth full-text screening batch: 15 records decided, 4 new includes (S137–S140)
+
+A fourth wave of 15 researcher-supplied full-text PDFs was screened against
+`INCLUSION_EXCLUSION.md`. **4 included and fully extracted:**
+
+- S137 Mndzebele & Onatu 2026 (Lerato Park, Kimberley, South Africa) —
+  qualitative case study of a ~3,500-household informal settlement's
+  statutory exclusion from municipal planning instruments (IDP, SDF,
+  MTREF) driving reliance on illegal water connections and severely
+  inadequate shared bucket-toilet sanitation.
+- S138 Ribeiro & Galizoni 2003 (Jequitinhonha Valley, Brazil) — ethnographic
+  study (22 communities, 188 families, 1999–2002) documenting the absence
+  of small/customary water consumers from the formation of Brazil's formal
+  water-scarcity legislation and river-basin management agencies; a
+  companion, non-duplicate study to S125 (cross-referenced).
+- S139 Moss 2008 (Eastern Germany) — documentary case study of how
+  post-reunification demographic decline produced chronic water/wastewater
+  infrastructure overcapacity, driving utility governance responses
+  ("splintering urbanism") that intensify spatial disparities in service
+  quality and pricing.
+- S140 Jacob & Kotzebue 2026 (Bamboo Settlement #3, Trinidad and Tobago) —
+  mixed-methods household survey (n=31) evaluating a government land-title
+  regularization/upgrading program against the UN's five SDG 11.1
+  informal-settlement dimensions, including water and sanitation access.
+
+**11 excluded** (E01 ×2, E05 ×4, E06 ×3, E07 ×2), full reasoning logged
+per-record in `exclusion_log.csv`. Notably, two papers on Brazilian river-basin-committee
+formation (Abers & Jorge 2005; Jacobi & Monteiro 2006), despite using real
+survey/documentary data, were excluded as E07 (wrong service): they examine
+water-*resources*-management governance-institution formation, not
+household or community water/sanitation *service* access.
+
+Totals as of this update: **296 of 3,659 full-text records decided (140
+include / 156 exclude)**; **140 studies fully extracted (S001–S140)**, all
+92 `CODEBOOK.md` fields populated; evidence map current at 140 rows.
+
+## 2026-09-15 — Third full-text screening batch: 29 records decided, 14 new includes (S123–S136)
 
 A third wave of 29 researcher-supplied full-text PDFs was screened against
 `INCLUSION_EXCLUSION.md`. **14 included and fully extracted:**
