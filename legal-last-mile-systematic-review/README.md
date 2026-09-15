@@ -8,10 +8,10 @@ Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Kla
 
 Project status (2026-09-15): **Search closed, deduplicated, and double-screened
 at title/abstract (Phases 1–5 complete). Full-text screening (Phase 6) is
-live and ongoing — 454 of 3,659 records assessed so far. Full extraction
-(Phase 8) is fully caught up with screening — all 222 current
+live and ongoing — 506 of 3,659 records assessed so far. Full extraction
+(Phase 8) is fully caught up with screening — all 249 current
 includes extracted, no outstanding gap. Evidence classification (Phase 10) is populated
-for all 222. Risk-of-bias rating (Phase 9) and quantitative-feasibility
+for all 249. Risk-of-bias rating (Phase 9) and quantitative-feasibility
 assessment (Phase 11) are deliberately not yet started — see below for why.**
 
 ---
@@ -252,9 +252,9 @@ the number.
 
 **Phase 6 (full-text screening) is live.**
 [`02_screening/full_text/full_text_screening_database.csv`](02_screening/full_text/full_text_screening_database.csv)
-holds all 3,659 title/abstract includes; **454 have been assessed so far
-(222 include / 232 exclude)**, with exclusions broken down by E01–E12 reason in
-`PRISMA_WORKFLOW.md` Phase 6. The remaining 3,205 await the researcher
+holds all 3,659 title/abstract includes; **506 have been assessed so far
+(249 include / 257 exclude)**, with exclusions broken down by E01–E12 reason in
+`PRISMA_WORKFLOW.md` Phase 6. The remaining 3,153 await the researcher
 supplying full text, expected to continue for roughly a month.
 
 **Phase 7 (pilot extraction) was superseded** by the researcher's explicit
@@ -263,16 +263,16 @@ rather than drawing a separate ~10-study pilot subsample first.
 
 **Phase 8 (full extraction) is fully caught up with screening.**
 [`03_extraction/extracted_data/extraction_database.csv`](03_extraction/extracted_data/extraction_database.csv)
-holds **all 222 fully-extracted studies (S001–S222)**, matching the 222 current
+holds **all 249 fully-extracted studies (S001–S249)**, matching the 249 current
 full-text includes with no outstanding gap.
 
-**Phase 9 (risk of bias) is deliberately not yet applied** to any of the 222
+**Phase 9 (risk of bias) is deliberately not yet applied** to any of the 249
 extracted studies — see §6 above for why that is a disclosed limitation, not
 an oversight.
 
-**Phase 10 (evidence classification) is populated for all 222 extracted
+**Phase 10 (evidence classification) is populated for all 249 extracted
 studies** — [`05_analysis/descriptive/evidence_map.csv`](05_analysis/descriptive/evidence_map.csv),
-83 of which are currently judged eligible for quantitative synthesis, 197
+96 of which are currently judged eligible for quantitative synthesis, 218
 for qualitative synthesis.
 
 **Phase 11 (quantitative feasibility) has not started** — see §8 above.

@@ -9,7 +9,107 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Eighth full-text screening batch: 57 records decided from second Drive-folder sweep, 26 new includes (S197–S222)
+## 2026-09-15 (latest) — Ninth full-text screening batch: 52 records decided from second Drive-folder ("folder 2"), 27 new includes (S223–S249), 3 independently-reverified content-mismatch findings
+
+Processed all 52 files from a second Google Drive folder ("folder 2",
+subfolder of `1Wouws6UtI2bMXwJVSHV5J3ILZ0OsEycV`, folder id
+`14kIEZBIkeEyKnVr0NQs1nFDh7ncK5Vcl`).
+
+**Data-integrity note on this batch's process:** the screening judgments
+for this batch were first made in a conversation segment that was
+summarized before the decisions were written to any script or CSV. On
+resuming, the prior segment's conclusions existed only as an unpersisted
+summary — no decision had actually reached durable storage. Rather than
+transcribe the summary's claims from memory, every one of the 52 files
+was re-read and re-screened from the source PDF content in this segment,
+including an independent re-verification (a fresh, isolated re-read of
+each fileId) of the three files the prior segment had flagged as
+content-mismatched, before any exclusion decision was recorded.
+
+**27 included and fully extracted** (S223–S249): studies on
+cooperative/state water-and-sanitation provision and regulatory-subsidy
+asymmetry (Santa Fe and Buenos Aires provinces, Argentina); urban-rural
+drinking-water disparities and water justice (Lilongwe, Malawi);
+wastewater-plant siting and "sacrifice zone" household access
+(Zapopan, Mexico); water-distribution centralization and environmental
+injustice (Valle de Mexico); community-based water management filling
+gaps in formal supply (rural Mexico); informal-settlement water access
+(Valparaiso, Chile); decentralized rural water-service governance
+information flows (Uganda); water-access public-policy implementation
+and socio-spatial segregation (Aguas-Lindas, Brazil); comparative
+national drinking-water-coverage regulatory gaps (Panama vs. Costa
+Rica); informal-settlement sanitation management (San Jose, Costa
+Rica); peri-urban municipal-service-capacity lag (Makhado, South
+Africa); cross-national water/governance/human-development indicator
+analysis; differential urban-rural regulatory schemes for water supply
+(Colombia); county-level water policy and devolved governance (Kitui,
+Kenya); developmental local government and service-delivery obstacles
+(South Africa); racialized/colonial continuum of sanitation deprivation
+(Brazil); comparative First Nation vs. non-First Nation drinking-water
+systems (Ontario, Canada); rural water-supply-sustainability
+determinants (Quang Ninh, Vietnam); comparative water/sewage
+concession-contract analysis (Brazil); community-based governance and
+equitable access for the urban poor (India); institutional-capacity
+gaps for rural sanitation (Eastern Cape, South Africa); national
+water/sanitation regulatory-framework analysis (Malawi); a universal-
+WSS-access governance-model project (Minas Gerais, Brazil);
+institutional causes of insufficient water supply, incl. a legal
+land-tenure eligibility gate on piped-water connection (Tegucigalpa,
+Honduras); an unregulated joint community-corporate water-supply
+partnership (Cameroon); and historical-institutionalist path-dependency
+analysis of Brazil's national sanitation regulatory-regime formation.
+
+**25 excluded**: E01 wrong topic ×9 (broad IWRM/water-resource-policy
+reviews, ICT/technology-management studies, groundwater-banking supply-
+side infrastructure, SDG macro-indicator tracking, network-alignment
+methodology papers, environmental-services/watershed-conservation legal
+instruments, and a broad urban-planning/social-class-conflict theory
+paper mentioning sanitation only in passing); E03 wrong exposure ×1
+(endocrine-disruptor chemical/regulatory screening); E05 no empirical
+evidence ×2 (two GIS/triangulation policy-landscape review papers by
+the same author pair, explicitly preliminary with "data...remains
+sketchy"); E06 engineering only ×3 (anaerobic-baffled-reactor
+wastewater-treatment review; surface-stream-water engineering
+assessment; urban-design/GIS drought-vulnerability mapping); E12 wrong
+study design ×2 (two secondary systematic reviews/meta-analyses); E10
+inaccessible/mismatched full text ×8 — 5 genuine bot-block/empty-file
+cases (Anubis and Incapsula challenge pages, one empty file) plus 3
+content-mismatch cases, each independently re-verified by a fresh,
+isolated re-read of the same fileId: a fileId expected to contain a
+water-institutional paper instead contained an unrelated cross-sectional
+survey on rural latrine use (Tamilarasan et al., Perambalur District,
+India); a fileId expected to contain a journal article instead
+contained the "New Jersey Water Supply Plan 2017-2022" (a 484-page
+NJDEP planning document); and a fileId expected to contain a
+water-institutional paper instead contained an unrelated microbiology
+paper on lantibiotic production by *Bacillus licheniformis*. None of
+the three mismatched contents self-identified as belonging to another
+record tracked in this batch, so no secondary decision was fabricated
+from any of them — each was recorded solely as an E10 exclusion of the
+record it was expected to represent.
+
+Ran `code/analysis/build_evidence_map.py` to mechanically derive
+`study_design_class` (7 studies using the project's own Legal
+Institutional Evidence Appraisal Framework tool required manual
+`jurimetric` classification, since the tool name alone can't
+distinguish doctrinal from jurimetric per `RISK_OF_BIAS.md` §2) and
+`mechanism_family` (3 studies needed manual classification where only
+non-core institutional-process fields, not the 4 core mechanism
+booleans, had been set); filled `outcome_family`,
+`quantitative_synthesis_eligible`, and `qualitative_synthesis_eligible`
+by hand for all 27 new studies. Regenerated
+`full_text_retrieval_queue.csv` (3,153 open records) and reran
+`validate_schemas.py` — all 13 checked files still match their
+documented/generated schema. Updated `PRISMA_WORKFLOW.md`, `README.md`,
+`06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md` with the new totals,
+derived programmatically from the CSVs rather than hand-computed, and
+opportunistically corrected several pre-existing stale figures in the
+same files left over from before this batch (e.g. a stray "196
+extracted studies" Phase 9/10 reference and a stray "222" reference
+that predated this batch's renumbering).
+
+## 2026-09-15 — Eighth full-text screening batch: 57 records decided from second Drive-folder sweep, 26 new includes (S197–S222)
 
 Processed the remaining 57 not-yet-decided files in the first Google Drive
 folder (`1q_H3SrhYEGwQR-04WZP7Nqxex7CtpyF1`, files 43-100 of its 100-file
