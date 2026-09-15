@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **199 of 3,659 records decided (94 include / 105 exclude)** — see
+  **233 of 3,659 records decided (113 include / 120 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,21 +229,21 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 94 current full-text includes (S001–S094) are now fully
+  **all 113 current full-text includes (S001–S113) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
-  complete 92-field schema. Five of the 94 are themselves secondary
+  complete 92-field schema. Five of the 113 are themselves secondary
   reviews (four systematic, one focused/narrative), flagged
   `study_design_class = systematic_review_secondary` and never to be
   pooled as an independent primary effect.
 - **2026-09-15: Phase 10 (evidence classification) has been run against
-  all 94 extracted studies.** `build_evidence_map.py` derived what can
+  all 113 extracted studies.** `build_evidence_map.py` derived what can
   safely be derived mechanically; the remaining judgment-call fields
   (`outcome_family`, `evidence_level`, `study_design_class` for the
   studies using the project's own Legal Institutional Evidence Appraisal
   Framework, and the two synthesis-eligibility flags) were filled by hand
-  per study. **39 of the 94 extracted studies have a genuine,
+  per study. **40 of the 113 extracted studies have a genuine,
   study-generated, calculable effect estimate and are judged eligible for
-  quantitative synthesis; all 94 are qualitative-synthesis eligible.**
+  quantitative synthesis; 112 of 113 are qualitative-synthesis eligible.**
   This is a per-study eligibility judgment, not a corpus-level decision
   that pooling is warranted for any family — that is Phase 11, which has
   not started.
@@ -265,20 +265,20 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 199 of the 3,659
-  Phase-5 includes have been assessed; 3,460 records have not yet been
+- Full-text screening itself is far from complete: 233 of the 3,659
+  Phase-5 includes have been assessed; 3,426 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 94
+- Extraction (Phase 8) is caught up with screening completely — all 113
   current full-text includes are extracted, no outstanding gap.
-- **No risk-of-bias rating has been performed on any of the 94 extracted
+- **No risk-of-bias rating has been performed on any of the 113 extracted
   studies** — `risk_of_bias_tool` is identified per study, but
   `risk_of_bias_rating` is deliberately left blank pending the official
   version of each appraisal instrument (`RISK_OF_BIAS.md`'s explicit
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 39 studies being individually
+  for any candidate synthesis family** — 40 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary

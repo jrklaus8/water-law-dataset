@@ -9,7 +9,90 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — First externally-retrieved full-text batch (Antigravity/Gemini): 6 records screened, 2 new includes (S093–S094)
+## 2026-09-15 (latest) — Large full-text screening batch: 34 records decided, 19 new includes (S095–S113)
+
+A large wave of researcher-supplied full-text PDFs (32 new records, plus one
+previously-missed record from the Antigravity retrieval queue) was screened
+against `INCLUSION_EXCLUSION.md`. **19 included and fully extracted:**
+
+- S095 Wagner, Koehler & Hope 2025 (Mali) — contract-theory case study of
+  professional rural water service delivery, contract incompleteness and
+  renegotiation, tariff-burden and demand-enforcement mechanisms.
+- S096 Tshona, Lungisa & Mgweba 2025 (South Africa, Amathole) — municipal
+  governance obstacles to rural water provision.
+- S097/S098 Mwale et al. 2025 (Zambia, George Compound, Lusaka) — two
+  companion papers from the same fieldwork: stakeholder-perceived sanitation
+  mitigation measures (household pit-latrine registration for scheduled
+  desludging) and gendered exclusion in on-site sanitation.
+- S099 Bolados García, Undurraga & Ibarra 2025 (Chile, Aconcagua) —
+  constitutionally-grounded water-rights-holder eligibility mechanism
+  historically excluding rural drinking-water associations, and the 2022
+  Water Code reform's shift toward collaborative governance.
+- S100 Abubakari 2025 (Ghana, Wa West) — community borehole-use rules
+  (age-based eligibility restriction, enforcement via locking/hygiene
+  prohibition) and women's substantive role in rule formulation.
+- S101 Jeppesen 2025 (Kenya, Nairobi) — formal connection not equalling
+  reliable access; water rights "concretized" through relationships with
+  infrastructurally powerful actors rather than legal entitlement alone.
+- S102 Alvaredo 2025 (Portugal, Barreiro) — historical-institutional case
+  study (mid-20th century to early 1990s) of compulsory water-tariff
+  payment creating new economic dependence.
+- S103 Perry Lavado 2024 (Peru) — formal sanitation-sector complaints
+  process as a regulatory-oversight mechanism, against national connection
+  statistics (3.3M without water network, 6.4M without sewerage).
+- S104 Thomas-Possee et al. 2024 (Zambia) — quantitative multilevel
+  cross-sectional analysis (n=3,047 households linked to utility/regulator
+  data) of piped-water intermittency; home ownership, provider, and
+  utility-level GDP per capita as significant risk/protective factors
+  (genuine calculable odds ratios).
+- S105 Meetei 2024 (India, Manipur) — government universal tap-water
+  scheme implementation gap and unenforced illegal-mining regulation.
+- S106 Fernandes 2023 (India, Chennai/Bengaluru) — the Tamil Nadu
+  Groundwater Act 2003's segregated regulation of city vs. hinterland
+  groundwater, empirically linked to rural-to-urban middle-class water
+  extraction and documented community resistance.
+- S107 Hutete & Sibanda 2022 (South Africa) — procedural vs. distributive
+  equity imbalance in rural municipal water governance.
+- S108 Pillay & Mutereko 2022 (South Africa, eThekwini) — the municipal
+  indigent policy's income-eligibility/registration mechanism and its
+  implementation failure, disproportionately affecting informally-housed
+  residents.
+- S109 Rocha Neto 2022 (Brazil) — constitutionally fragmented federal
+  sanitation competence and inspection-agency penalization (rather than
+  accommodation) of smaller municipalities' technical/financial weakness.
+- S110 Alba & Bruns 2022 (Ghana, Accra) — plot-owner-mediated informal
+  ("bricolage") water access for unconnected kiosk-compound tenants within
+  a formally well-served neighborhood.
+- S111 Valenciano-Hernández 2021 (Costa Rica) — state-led inter-community
+  water reallocation conflict; participatory governance activated only
+  once conflict escalates.
+- S112 Besana & Fernández Bouzo 2020 (Argentina, Buenos Aires) — 32-year
+  case study of informal-settlement residents' intermediary-mediated,
+  self-organized burden in securing potable-water network extension.
+- S113 Kemp & Vyas-Doorgapersad 2020 (South Africa, Protea Glen) —
+  multi-service municipal governance study with separately-documented
+  water/sanitation access findings tied to institutional coordination gaps.
+
+**15 excluded**, spanning E01 (wrong topic: GIS/MCDA vulnerability
+indices, World Water Forum discourse analysis, Slovak housing policy,
+Galápagos ecological conflicts, US-Mexico transboundary governance), E03
+(water pollution/environmental injustice, wrong exposure), E04 (wrong
+outcome: WSMT governance-participation quality, OECD investment-climate
+scorecards, infrastructure project-financing performance, emotional
+response to water scarcity, general corruption/service-delivery studies),
+E05 (conceptual/policy-review papers without primary data collection),
+and E06 (EU wastewater-directive technical compliance, utility
+infrastructure-delivery engineering barriers).
+
+Extraction database and evidence map now hold **113 fully extracted
+studies (S001–S113)**. Full-text screening stands at **233 of 3,659
+records decided (113 include / 120 exclude)**. Refreshed
+`PRISMA_WORKFLOW.md`, `README.md`, `prisma_flow.md`, and
+`preliminary_results.md` with these totals, and regenerated
+`full_text_retrieval_queue.csv` (3,610 records still open). All 13
+tracked schemas re-validated clean.
+
+## 2026-09-15 — First externally-retrieved full-text batch (Antigravity/Gemini): 6 records screened, 2 new includes (S093–S094)
 
 The researcher enlisted a separate agentic AI tool (Google Antigravity,
 running Gemini) to help close the full-text retrieval backlog, using a
