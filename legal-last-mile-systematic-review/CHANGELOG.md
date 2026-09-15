@@ -9,7 +9,78 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Second large full-text screening batch: 19 records decided, 9 new includes (S114–S122); `final_decision` backfill fix
+## 2026-09-15 (latest) — Third full-text screening batch: 29 records decided, 14 new includes (S123–S136)
+
+A third wave of 29 researcher-supplied full-text PDFs was screened against
+`INCLUSION_EXCLUSION.md`. **14 included and fully extracted:**
+
+- S123 Del Grande, Galvão, Miranda & Guerra Sobrinho 2016 (Campina Grande,
+  Brazil) — qualitative case study of income- and location-differentiated
+  household capacity to absorb the burden of a 2014–2015 municipal water
+  rationing crisis, against a backdrop of federal/state jurisdictional
+  fragmentation over the Açude Boqueirão reservoir.
+- S124 Paludo & Borba 2013 (Indaial vs. Itapema, Santa Catarina, Brazil) —
+  comparative documentary case study of shared/co-managed vs. privatized
+  water-utility models, including social-tariff exemptions and disconnection
+  rates.
+- S125 Galizoni & Ribeiro 2011 (Minas Gerais, Brazil) — 18-community
+  ethnographic study (2002–2009) of customary water-commons norms and their
+  collision with formal state conservation law/enforcement (IEF fines).
+- S126 Murphy, Corston-Pine, Post & McBean 2015 (Ontario/British Columbia,
+  Canada) — mixed-methods study of First Nations drinking-water operators
+  documenting Band Council budget-approval discretion over operational
+  purchases (including a denied chlorine-purchase request) and a structural
+  80:20 federal/community funding-split burden.
+- S127 McCullough & Farahbakhsh 2012 (Ontario, Canada) — qualitative
+  grounded-theory study of the rigid federal Major Capital Works approval
+  process governing First Nations drinking-water infrastructure funding.
+- S128 Giatti & Cutolo 2012 (Amazônia Legal, Brazil) — mixed-methods
+  macro-statistical and multi-case study documenting a political "estratégia
+  da escassez" and 250,000 Manaus residents with zero access to the public
+  water network.
+- S129 Bichir 2009 (São Paulo, Brazil) — quantitative CHAID multivariate
+  analysis of historical municipal investment patterns as a determinant of
+  differential infrastructure access among the poorest 40% of the city's
+  population.
+- S130 Boelens et al. 2012 (Colombia/Ecuador/Peru) — comparative qualitative
+  action-research study of formal water-rights allocation systems enabling
+  large-scale hydropower/drinking-water/agribusiness encroachment on
+  Indigenous collective water territories.
+- S131 Ojeda et al. 2015 (Montes de María, Colombia) — 18-month ethnographic
+  study documenting land/water title legalization used to formalize violent
+  dispossession ("del rifle y el título").
+- S132 Varela 2016 (Santa Cruz, Cabo Verde) — household survey (n=286) on
+  water-tariff affordability far exceeding OECD/national benchmarks and a
+  three-unpaid-bill disconnection policy.
+- S133 Soriano et al. 2016 (São Paulo, Brazil) — documentary/hydrological
+  case study of the 2014–2015 Cantareira System water crisis, including a
+  utility regulatory-grant-condition breach and government denial of
+  rationing contradicted by its own regulator.
+- S134 Britto, Formiga-Johnsson & Carneiro 2016 (Rio de Janeiro, Brazil) —
+  documentary/interview case study of "hydrosocial scarcity" showing how a
+  centralized, monopolistic utility management model (not bulk-water
+  scarcity alone) produces intermittent or absent supply in peripheral
+  metropolitan districts.
+- S135 Gasteyer, Lai, Tucker, Carrera & Moss 2016 (United States) —
+  county-level ecological regression finding a statistically significant
+  racial disparity in access to complete plumbing facilities, situated
+  alongside the Flint/Detroit water crises.
+- S136 Murtha, Castro & Heller 2015 (Brazil) — historical-archival analysis
+  of colonial-era water/sanitation policy formation, documenting that
+  nominally free public fountains still required enslaved labor for
+  practical household water access.
+
+**15 excluded** (E01 ×2, E03 ×2, E04 ×3, E05 ×5, E06 ×2, E07 ×1, E08 ×1;
+the R7B0F55DA7FE0 Schnegg 2016 "Lost in Translation" paper was excluded as a
+duplicate of the same underlying LINGS-project dataset/analysis already
+extracted as S092, per `REPRODUCIBILITY.md` §6), full reasoning logged
+per-record in `exclusion_log.csv`.
+
+Totals as of this update: **281 of 3,659 full-text records decided (136
+include / 145 exclude)**; **136 studies fully extracted (S001–S136)**, all
+92 `CODEBOOK.md` fields populated; evidence map current at 136 rows.
+
+## 2026-09-15 — Second large full-text screening batch: 19 records decided, 9 new includes (S114–S122); `final_decision` backfill fix
 
 A second wave of 19 researcher-supplied full-text PDFs was screened against
 `INCLUSION_EXCLUSION.md`. **9 included and fully extracted:**
