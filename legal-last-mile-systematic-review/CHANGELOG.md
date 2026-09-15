@@ -9,7 +9,57 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Sixth full-text screening batch: first Google Drive bulk retrieval, 24 records decided, 17 new includes (S170–S186)
+## 2026-09-15 (latest) — Seventh full-text screening batch: 16 more records decided, 10 new includes (S187–S196), first content-mismatch data-integrity finding
+
+Continued through the same Google Drive folder (records 27-42 of the
+first 100-file batch). **10 included and fully extracted** (S187–S196):
+community-based rural water/sanitation management studies in Ghana
+(Braimah et al.; Kumasi), a cluster-RCT-linked process evaluation of a
+government sanitation campaign in Orissa, India showing an 8%-to-66%
+latrine-coverage increase, a documentary analysis of Brazilian federal
+sanitation-investment policy, a private social-enterprise water/health
+service study in conflict-affected DRC showing fee-based affordability
+as the dominant access barrier, a stratified community-leader survey on
+land-regularisation and social-tariff barriers in irregular Brazilian
+settlements, an institutional case study of groundwater-licence
+allocation producing spatial access disparities in peri-urban Bangladesh,
+a public-private sanitation-delegation programme evaluation in
+Ouagadougou (6.1%→17% access increase), an ASPIRE-toolkit slum-upgrading
+sustainability assessment in Dhaka, and a doctrinal case-docket analysis
+of judicial enforcement (or non-enforcement) of Brazilian public civil
+actions ordering sanitation provision.
+
+**6 excluded** (E01 wrong topic ×2, E04 wrong outcome ×1, E10
+inaccessible full text ×2, E12 wrong study design ×1). One exclusion (a
+Roman-law legal-history article on ancient water rights) was judged E01
+as outside the review's contemporary-service-access scope rather than
+E11, since no jurisdiction match was even attempted.
+
+**First content-mismatch data-integrity finding this session**: the file
+stored under one record's expected filename (`R512107239D86_dapaah_2017.pdf`,
+a tiny 4,935-byte file) did not actually contain that record's content —
+reading it returned the full text of an entirely different, unrelated
+article (which, by its own title/DOI, was independently verified against
+`screening_database.csv` to be the paper belonging to a *different*
+record already in this batch, `R65D5267860B3`, Pu et al.'s systematic
+review). Rather than fabricate an extraction for the Dapaah record from
+content that is not actually its own, `R512107239D86` was excluded E10
+(full text genuinely inaccessible/misdirected in this environment) and
+`R65D5267860B3` was independently excluded E12 on the strength of the
+title/abstract/DOI evidence recovered from the misdirected file, cross-
+referenced against the title/abstract screening database. This is most
+likely an artifact of the researcher's Unpaywall bulk-fetch pipeline
+(the fetch step resolving to the wrong PDF for one DOI), not something
+introduced by this session's processing, and is flagged here rather than
+silently worked around.
+
+`full_text_screening_database.csv` now stands at 397 of 3,659 decided
+(196 include / 201 exclude); `extraction_database.csv` and
+`evidence_map.csv` both hold 196 fully-extracted studies (S001–S196),
+with schema validation (`validate_schemas.py`) passing for all 13
+tracked files and the retrieval queue regenerated (3,262 open records).
+
+## 2026-09-15 — Sixth full-text screening batch: first Google Drive bulk retrieval, 24 records decided, 17 new includes (S170–S186)
 
 The researcher, in response to the operational burden of chat-uploading PDFs
 five at a time, switched to a bulk-retrieval workflow: after running the
