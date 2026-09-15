@@ -9,7 +9,46 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Fourth full-text screening batch: 15 records decided, 4 new includes (S137–S140)
+## 2026-09-15 (latest) — Fifth full-text screening batch: 61 records decided, 29 new includes (S141–S169)
+
+A fifth, much larger wave of 61 researcher-supplied full-text PDFs was
+screened against `INCLUSION_EXCLUSION.md`. **29 included and fully
+extracted** (S141–S169), spanning informal/hybrid governance mechanisms in
+Nairobi and Cape Town informal settlements (S141, S147, S153, S154, S165),
+municipal-incorporation and jurisdictional eligibility barriers to
+infrastructure connection (S142), a quasi-experimental before/after Water
+Safety Plan evaluation in Uganda (S143), regulatory/institutional analyses
+of sanitation and water governance in South Africa, Indonesia, Brazil,
+Chile, and Zambia (S144–S146, S159, S161), doctrinal legal-historical
+studies of water-sector privatisation/remunicipalisation in Hungary and
+France (S148, S162), a propensity-score-matched study of women's
+participation in Village Water and Sanitation Committees in Odisha, India
+(S149), caste-based exclusion from water/sanitation access for Harijan
+communities in Bangladesh (S151), documentary/jurimetric policy analyses of
+national water-financing and affordability schemes in India, Brazil, and
+Mexico (S152, S156, S158, S164, S166), and several affordability/tariff-
+fairness and institutional-capacity studies (S150, S160, S163, S167–S169).
+
+**32 excluded** (E01 wrong topic ×11, E02 wrong population ×2, E04 wrong
+outcome ×5, E05 no empirical evidence ×1, E06 engineering/technical ×4, E07
+wrong service ×3, E12 wrong study design ×6), full reasoning logged
+per-record in `exclusion_log.csv`. The E12 code (six systematic/narrative
+reviews and one primary government policy document masquerading as a
+study) was used for the first time this session; several water-resources-
+management and multi-service "broad governance" papers (e.g., local-
+government-autonomy and decentralization-efficiency studies naming water as
+one of several services) were excluded E01 for lacking a dedicated
+water/sanitation-service-access analytical focus, consistent with prior E07
+precedent for water-*resources* (as opposed to water-*service*) governance
+studies.
+
+`full_text_screening_database.csv` now stands at 357 of 3,659 decided (169
+include / 188 exclude); `extraction_database.csv` and `evidence_map.csv`
+both hold 169 fully-extracted studies (S001–S169), with schema validation
+(`validate_schemas.py`) passing for all 13 tracked files and the retrieval
+queue regenerated (3,302 open records).
+
+## 2026-09-15 — Fourth full-text screening batch: 15 records decided, 4 new includes (S137–S140)
 
 A fourth wave of 15 researcher-supplied full-text PDFs was screened against
 `INCLUSION_EXCLUSION.md`. **4 included and fully extracted:**

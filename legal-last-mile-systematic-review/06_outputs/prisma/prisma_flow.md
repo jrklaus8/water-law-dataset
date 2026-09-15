@@ -7,10 +7,10 @@ enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
 `PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
 Phase 6 was seeded with. Full-text screening is now live and ongoing
-(updated 2026-09-15): of 3,659, 296 have been assessed (140 include / 156
+(updated 2026-09-15): of 3,659, 357 have been assessed (169 include / 188
 exclude), with "Reports not retrieved" still at 0 since every record
 reaching this pipeline so far has arrived with full text already in hand
-via researcher chat upload — the remaining 3,426 are simply not yet
+via researcher chat upload — the remaining 3,302 are simply not yet
 reached, not confirmed unretrievable. This is expected to keep growing
 over roughly a month as the researcher continues supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
 illustrative, or a placeholder dressed as data; every filled count traces
@@ -110,15 +110,15 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     actually retrieved. See the reviewer_2 agreement-rate caveat above
     before treating 3,659 as settled without qualification.]
   Reports not retrieved (n = 0)
-    [Not a claim that the remaining 3,426 are all retrievable -- it means
+    [Not a claim that the remaining 3,302 are all retrievable -- it means
     none has yet been confirmed unretrievable. Every record reaching
     full-text screening so far arrived via researcher chat upload with
     full text already in hand, so "not retrieved" has not yet had reason
     to be used; expect this to change as retrieval of the full pool
     continues.]
-  Reports assessed for eligibility (n = 296, PROVISIONAL AND GROWING)
+  Reports assessed for eligibility (n = 357, PROVISIONAL AND GROWING)
     [02_screening/full_text/full_text_screening_database.csv, updated
-    2026-09-15. Full-text screening is ongoing, not complete -- 3,426 of
+    2026-09-15. Full-text screening is ongoing, not complete -- 3,302 of
     3,659 records have not yet been reached.]
   Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 120 total, PROVISIONAL):
     E01 wrong topic (n = 28)
@@ -137,9 +137,9 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
 Included
   Studies included in systematic review (n = 113, PROVISIONAL AND GROWING)
     [Full-text include count as of 2026-09-15; full-text screening is
-    still ongoing across the remaining 3,426 unreached records.]
+    still ongoing across the remaining 3,302 unreached records.]
   Studies included in full extraction so far (n = 113)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S140.
+    [03_extraction/extracted_data/extraction_database.csv, S001-S169.
     Fully caught up with the full-text include count as of 2026-09-15 --
     no outstanding gap.]
   Studies included in quantitative evidence synthesis (n = )
