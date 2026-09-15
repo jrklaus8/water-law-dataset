@@ -9,7 +9,56 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-13 (latest) — Full-text screening: Schnegg, Bollig & Linke (Namibia) included and extracted as S092
+## 2026-09-15 (latest) — First externally-retrieved full-text batch (Antigravity/Gemini): 6 records screened, 2 new includes (S093–S094)
+
+The researcher enlisted a separate agentic AI tool (Google Antigravity,
+running Gemini) to help close the full-text retrieval backlog, using a
+comprehensive handoff prompt drafted in this session (mirroring
+`COWORK_RETRIEVAL_INSTRUCTIONS.md`'s conventions: open-access-first
+retrieval, honest `not_retrievable` outcomes, no PDFs committed to the
+repo, results handed back as a `record_id,full_text_status,
+full_text_location,notes` CSV). Applied its first batch
+(`full_text_retrieval_results_ProQuest_20260915.csv`, 30 ProQuest-sourced
+records) via `bulk_import_full_text_results.py`: **8 retrieved via
+legitimate open-access routes (Unpaywall/publisher-OA/repository copies),
+22 not_retrievable** (no OA copy found, or a 403 on the OA link found).
+
+Of the 8 retrieved, the researcher uploaded 6 PDFs to this session for
+full-text screening (2 remain retrieved-but-unscreened pending upload —
+Grisaffi/R3858447F3CCC and Dewi/R844EAC3AEE12):
+
+- **Include (2):** S093 Gonçalves, Paiva Júnior & Cerqueira 2026
+  (Cadernos de Gestão Pública e Cidadania) — qualitative IAD-framework
+  case study of Brazil's São Francisco river transposition (PISF) water
+  governance, documenting differential water access privileging
+  wealthier/better-infrastructure localities and weak enforcement of
+  access-limiting rules, with indigenous (Pipipã) and quilombola
+  community fieldwork; S094 Mora González & Wing Ching Díaz 2026
+  (Ciencia y Sociedad) — 32-year (1990–2022) sociohistorical case study
+  of persistent drinking-water access/quality/sustainability deficiencies
+  in the Bribri indigenous community of Amubri, Talamanca, Costa Rica,
+  attributed to centralized state water governance (AyA) applied without
+  adequate intercultural negotiation.
+- **Exclude (4):** Mathumbu & Tafeni 2026 (KSD Municipality, South
+  Africa) — E07, the paper's own stated limitation confirms it is
+  primarily an electrification study with water/sanitation only
+  incidental; Alrowais et al. 2026 (Scientific Reports) — E05, an
+  illustrative indicator-scoring framework built on secondary data and
+  expert judgment, explicitly not "confirmatory empirical measurement";
+  Clerc et al. 2026 (Global Sustainability) — E05, a "Concepts and
+  Perspectives" conceptual framework paper with no data collection;
+  Tekeli 2026 (Actual Problems of Economics and Law) — E05, doctrinal
+  statutory-interpretation analysis of Slovak water-tariff regulation.
+
+Extraction database and evidence map now hold **94 fully extracted
+studies (S001–S094)**. Full-text screening stands at **199 of 3,659
+records decided (94 include / 105 exclude)**. Refreshed
+`PRISMA_WORKFLOW.md`, `README.md`, `prisma_flow.md`, and
+`preliminary_results.md` with these totals, and regenerated
+`full_text_retrieval_queue.csv` (3,644 records still open). All 13
+tracked schemas re-validated clean.
+
+## 2026-09-13 — Full-text screening: Schnegg, Bollig & Linke (Namibia) included and extracted as S092
 
 Screened Schnegg, Bollig & Linke (2016), "Moral equality and success of
 common-pool water governance in Namibia" (Ambio 45:581-590). **Included**:
