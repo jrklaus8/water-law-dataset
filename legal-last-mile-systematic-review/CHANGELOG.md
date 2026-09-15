@@ -9,7 +9,169 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Ninth full-text screening batch: 52 records decided from second Drive-folder ("folder 2"), 27 new includes (S223–S249), 3 independently-reverified content-mismatch findings
+## 2026-09-15 (latest) — Tenth full-text screening batch: 213 records decided from a third Drive folder, 68 new includes (S250–S317), byte-size cluster-sampling methodology and repository-landing-page-abstract policy formalized
+
+Processed all 213 files from a third Google Drive folder (folder id
+`1JxeuCz3dm4HWtkdZ1zpeMXU4R4WDBwY8`).
+
+**Screening methodology for this batch, disclosed for transparency:**
+109 of the 213 files were under 20KB. Rather than reading each
+individually, one fileId per exact-byte-size cluster was read to
+verify the cluster's content, and the verified classification was then
+applied to every other file sharing that exact byte size. This
+identified 10 distinct patterns — empty files (14), a Radware/IOP Bot
+Manager captcha block (6, all exactly 14,371 bytes), a UBC "sorry for
+the inconvenience" block (2, 4,935 bytes), an Anubis bot-challenge page
+across four size variants (9), a Project MUSE "verification required"
+page (1), a listed-size-vs-actual-empty mismatch (1), a JavaScript-
+required app shell (1), a "client challenge...JavaScript is disabled"
+page (1), and a "Redirecting..." placeholder page spanning a ~2,680–
+3,050-byte range verified via roughly ten independent spot-checks
+across the cluster (73) — none of which are actual paper content, so
+all 108 of these files (one further file in this size range, see next
+paragraph, was excluded from the E10 bulk-classification) were recorded
+as E10 without individual reads. The remaining 104 files (≥20KB) were
+each read and screened individually against the project's E01–E12
+criteria.
+
+**Repository-landing-page-abstract policy (new, applies to all future
+batches):** one of the byte-size-cluster files initially flagged as a
+likely bot-block/placeholder turned out, on inspection, to be a
+publisher/repository landing page carrying a genuine, correctly-
+matched abstract but no full-text PDF body. Several more files in the
+individually-screened 104 turned out to be the same kind of landing
+page. Rather than continue treating "no full-text body retrieved" as
+automatic E10, a policy is now in force: a landing page with a
+genuine, identifiably-correct abstract is screened for inclusion like
+any other abstract, and if included is extracted at abstract-level
+granularity only (country, legal system, population, the four
+mechanism booleans, a paraphrased effect estimate, and study
+design/risk-of-bias tool where inferable from the abstract), with an
+`extraction_note` explicitly disclosing "extracted from published
+abstract/repository metadata only; full PDF text not retrieved via
+fetch." E10 is now reserved strictly for bot-blocks, empty files,
+placeholder/redirect-only pages, or content that is not identifiably
+the correct paper. This reverses the ad hoc treatment used for a small
+number of similar cases in earlier batches and was applied
+retroactively within this batch once formalized (one file,
+`schwartz_2023`, was provisionally bucketed into the size-cluster E10
+sweep before the policy was finalized and was pulled out and given a
+real INCLUDE judgment under the new policy).
+
+**68 included and fully extracted** (S250–S317): studies span utility
+managerial decision-making on prepaid water technology for low-income
+areas (Kenya); village health/sanitation/nutrition committee
+functioning and contextual barriers to participation (India);
+century-long historical-institutional water/sewerage governance
+regimes — state monopoly, private concession, re-nationalization
+(Buenos Aires); environmental-health-literacy barriers to navigating
+water-quality law on Tribal lands (USA); gram panchayat organisation-
+development and local-government service delivery (Karnataka, India);
+water-rationing politics during drought crisis (São Paulo, twice, plus
+a third paper on the same crisis); customary/local water-rights
+formalization and its double-edged effects on marginalized-group water
+security (Peru, twice); school WASH facility management and gendered
+maintenance burden (Ghana); water-access exclusion from formal
+governance decision-making and maternal health (rural Malawi); climate-
+resilience institutional gaps in small-town water utilities (Ethiopia);
+national SDG 6 progress review (Nigeria); informal water-vendor market
+structure and its linkages to formal utility revenue (Lodwar, Kenya);
+historical water/sanitation policy stages and universalization
+challenges (Argentina, two papers); comparative formal/informal water-
+delivery configurations methodology (Peru and Ghana); water
+re-allocation as distributive/recognitional/participatory justice
+(India); sanitation-law regional coverage disparities (Brazil); rural
+drinking-water tap-connection-coverage-vs-functionality gap (Satara,
+India); governance failure, corruption, and "hydraulic apartheid"
+(South Africa); geodemographic water-management-modality analysis
+(Oaxaca, Mexico); WASH institutional-capacity gaps in a refugee-crisis
+context (Cox's Bazar, Bangladesh); rural water/sanitation project-
+management-model legal-compliance evaluation (Colombia); urban-poor
+sanitation-programme mismatch across four cities; technocratic vs
+participatory water-crisis governance (Brazil); a sanitation human-
+vulnerability index (Paraíba, Brazil); IWRM operationalization and
+inequitable access (Karnataka, India, two papers via different
+frameworks); socio-spatial water-supply/consumption inequality
+(Tijuana, Mexico); peri-urban/rural water-supply inefficiencies
+(Colombia); legal-economic affordability of water-access rights
+(Puerto Vallarta, Mexico); urban water-supply trend/change-point
+dynamics vs stagnant household access (Gondar, Ethiopia); territorial
+water-vulnerability indexing (Gran Valparaíso, Chile); handpump-payment
+institutional models (rural Kenya); household water-source choice and
+gendered collection-time burden (Madagascar); gender/social-inclusion
+gaps in WASH institutional structures (Nepal); multilevel-governance
+water-supply public-private partnerships (Indonesia); a stratified-
+sampling methodology for measuring human-right-to-water access
+disparities; informal-settlement infrastructure co-construction and
+rights-claiming (Belo Horizonte, Brazil); sachet-water consumption
+driven by municipal rationing (Accra, Ghana); unregulated urban sprawl
+and public-service strain (Baghdad); comparative municipal public-
+health-service governance (Chennai vs Delhi); informal privatisation of
+community taps (rural Nepal); water-security/infrastructure-age gaps
+(Guwahati, India); citizen-participation dilemmas in water governance
+(Kumasi, Ghana); a cluster-RCT of a WASH intervention's null health
+effect but positive local-institution effect (rural DR Congo); social-
+tariff coverage/incidence variation in basic sanitation (Brazil);
+citywide pit-emptying/transport sanitation-service tariff-setting
+(Kenya and Zambia); a critical-institutionalism/political-economy
+framework for rural water institutional change; colonial-to-post-
+colonial water/sanitation service history (Mombasa); doctrinal legal
+analysis of water-service consumer/user rights (Argentina) and of the
+UN Special Rapporteur mandate on the human rights to water and
+sanitation; indigenous water-rights struggle against an irrigation
+project (Peru); rural water-policy design across Africa and Asia;
+community water-quality perception over time (El Salvador); denial of
+shelter/water/sanitation access to homeless Roma EU migrants (Sweden);
+sanitation public-private partnership coverage gains (Esteio, Brazil);
+customer-attrition mitigation in container-based sanitation
+organizations; collective self-organization for informal water
+distribution (Xochimilco, Mexico City); human-right-to-water rural
+access monitoring methodology (Nicaragua); pro-poor rural water/
+sanitation policy implementation under decentralization (Tanzania, two
+papers); COVID-19-era water-shutoff-moratorium adoption predictors
+(USA); school drinking-water-access compliance-audit gaps (Massachusetts,
+USA); peri-urban waterscape planning-policy blind spots (Ghaziabad,
+India); comparative drinking-water-quality governance (Brazil/Ecuador/
+Malawi); and a global urban-water-tariff survey (308 cities, 102
+countries).
+
+**145 excluded**: E10 inaccessible/mismatched full text ×120 (108 via
+the verified byte-size-cluster sweep described above, plus 12 further
+individually-confirmed bot-blocks, empty-content responses, or
+metadata-only landing pages lacking any abstract text among the 104
+individually-screened files); E01 wrong topic ×17 (agricultural/
+irrigation water-rights and water-grabbing studies, marine-protected-
+area/fisheries management, tourist-facility infrastructure, broad
+natural-resource-access frameworks bundling water with land/grazing/
+forest, macro water-resource governance/coordination studies, a
+development-cooperation/foreign-aid mapping study, and other papers
+whose empirical focus lay outside last-mile household/community access
+governance); E12 wrong study type ×2 (a narrative literature review and
+a multi-chapter edited book, neither extractable as a single primary
+study); E04 wrong outcome ×1 (access disparity used only as a COVID-19
+epidemiological-risk covariate); E03 wrong exposure ×3 (water-quality/
+environmental-health or groundwater-contamination studies where access
+governance was not the analytic focus); E06 engineering only ×1
+(wastewater-treatment-technology adoption survey); E08 duplicate ×1 (a
+Portuguese-language SciELO republication of an already-included
+English-language paper on colonial environmental racism in Brazilian
+sanitation, S239/batch-nine).
+
+Ran `code/analysis/build_evidence_map.py` to mechanically derive
+`study_design_class` (13 studies using the project's Legal
+Institutional Evidence Appraisal Framework tool required manual
+`doctrinal`/`jurimetric` classification per `RISK_OF_BIAS.md` §2 — 11
+doctrinal, 2 jurimetric) and `mechanism_family`; filled `outcome_family`,
+`quantitative_synthesis_eligible`, and `qualitative_synthesis_eligible`
+by hand for all 68 new studies. Regenerated
+`full_text_retrieval_queue.csv` (2,940 open records) and reran
+`validate_schemas.py` — all 13 checked files still match their
+documented/generated schema. Updated `PRISMA_WORKFLOW.md`, `README.md`,
+`06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md` with the new totals,
+derived programmatically from the CSVs rather than hand-computed.
+
+## 2026-09-15 — Ninth full-text screening batch: 52 records decided from second Drive-folder ("folder 2"), 27 new includes (S223–S249), 3 independently-reverified content-mismatch findings
 
 Processed all 52 files from a second Google Drive folder ("folder 2",
 subfolder of `1Wouws6UtI2bMXwJVSHV5J3ILZ0OsEycV`, folder id
