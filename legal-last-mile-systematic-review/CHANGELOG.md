@@ -9,7 +9,52 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Fifth full-text screening batch: 61 records decided, 29 new includes (S141–S169)
+## 2026-09-15 (latest) — Sixth full-text screening batch: first Google Drive bulk retrieval, 24 records decided, 17 new includes (S170–S186)
+
+The researcher, in response to the operational burden of chat-uploading PDFs
+five at a time, switched to a bulk-retrieval workflow: after running the
+open records through the Unpaywall API (confirming 282 of the 3,278
+remaining records have an open-access PDF available, with the rest behind
+hard publisher paywalls), the researcher shared a Google Drive folder
+containing the successfully-retrieved PDFs for direct access via the
+Drive connector, rather than continuing one-by-one chat uploads. This
+first folder contains 100 files; 24 were screened this round (3 duplicated
+records already decided in earlier batches were skipped; the remaining
+~73 and a second, still-uploading folder are queued for the next round).
+
+**17 included and fully extracted** (S170–S186), spanning groundwater and
+urban water governance studies (Kenya, India, Hyderabad), institutional-
+capacity/regulatory analyses of sanitation universalization (Brazil,
+including a national multivariate regression on institutional capacity
+and access indicators), a large adjusted logistic-regression study of WASH
+access and Water Safety Plan programming in conflict-affected southern
+Syria (mOR 24.16, 95% CI 5.93–98.5), qualitative institutional-governance
+case studies (Uganda, Switzerland, South Africa, Costa Rica), a corruption
+agent-based model of water service delivery (Kenya/Ghana), an fsQCA study
+of water-committee governance conditions, and a documentary "infrastructural
+violence" analysis of exclusionary water policy/legislation/planning in
+Delhi.
+
+**7 excluded** (E01 wrong topic ×2, E06 engineering only ×1, E05 no
+empirical evidence ×1, E10 inaccessible full text ×3), full reasoning
+logged per-record in `exclusion_log.csv`. The E10 code (inaccessible full
+text) was used for the first time this session: three Unpaywall-sourced
+files turned out, on inspection, to be a zero-byte PDF, an empty-content
+extraction, and a bot-verification challenge page respectively, rather
+than the actual article — a genuine Unpaywall/open-access retrieval
+failure distinct from the researcher's own upload process. A cluster of
+other files in the same folder shared suspiciously identical small byte
+sizes (e.g., exactly 14,371 bytes across eight differently-named files);
+these are queued for a similar accessibility check before being screened
+as content.
+
+`full_text_screening_database.csv` now stands at 381 of 3,659 decided (186
+include / 195 exclude); `extraction_database.csv` and `evidence_map.csv`
+both hold 186 fully-extracted studies (S001–S186), with schema validation
+(`validate_schemas.py`) passing for all 13 tracked files and the retrieval
+queue regenerated (3,278 open records).
+
+## 2026-09-15 — Fifth full-text screening batch: 61 records decided, 29 new includes (S141–S169)
 
 A fifth, much larger wave of 61 researcher-supplied full-text PDFs was
 screened against `INCLUSION_EXCLUSION.md`. **29 included and fully
