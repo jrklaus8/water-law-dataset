@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **397 of 3,659 records decided (196 include / 201 exclude)** — see
+  **454 of 3,659 records decided (222 include / 232 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,9 +229,9 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 140 current full-text includes (S001–S196) are now fully
+  **all 222 current full-text includes (S001–S222) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
-  complete 92-field schema. Five of the 196 are themselves secondary
+  complete 92-field schema. Five of the 222 are themselves secondary
   reviews (four systematic, one focused/narrative), flagged
   `study_design_class = systematic_review_secondary` and never to be
   pooled as an independent primary effect.
@@ -265,11 +265,11 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 397 of the 3,659
-  Phase-5 includes have been assessed; 3,262 records have not yet been
+- Full-text screening itself is far from complete: 454 of the 3,659
+  Phase-5 includes have been assessed; 3,205 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 196
+- Extraction (Phase 8) is caught up with screening completely — all 222
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on any of the 196 extracted
   studies** — `risk_of_bias_tool` is identified per study, but

@@ -9,7 +9,62 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Seventh full-text screening batch: 16 more records decided, 10 new includes (S187–S196), first content-mismatch data-integrity finding
+## 2026-09-15 (latest) — Eighth full-text screening batch: 57 records decided from second Drive-folder sweep, 26 new includes (S197–S222)
+
+Processed the remaining 57 not-yet-decided files in the first Google Drive
+folder (`1q_H3SrhYEGwQR-04WZP7Nqxex7CtpyF1`, files 43-100 of its 100-file
+listing; the other 43 were duplicates of records already decided in
+earlier local-upload or Drive batches).
+
+**26 included and fully extracted** (S197–S222): studies on state-NGO
+service-delivery partnerships (Pakistan), human-rights/legal analyses of
+sanitation and water-affordability protection (Alabama, Spain x2),
+decentralized-sanitation regulatory-framework analysis (Brazil x3, one
+covering the 2020 national WSS-sector reform), decentralized/self-supply
+water-governance case studies (Namibia, South Africa x2), a feminist
+political-ecology food/water-security study (Nicaragua), collaborative
+water-governance network resilience (Ecuador), a cross-national
+household-infrastructure-access index (Africa), Free Basic Sanitation
+policy-implementation studies (South Africa, Malawi), a sanitation
+Technological-Innovation-System case study (Nairobi), CLTS adoption among
+tribal communities (India, Swachh Bharat Mission), a social-accountability
+before/after water-governance evaluation (Uganda), a municipal
+water-food-governance nexus household survey (Zimbabwe), municipal
+water/sanitation institutional diagnostics (Senegal, Cameroon), unequal
+socio-spatial drinking-water-infrastructure outcomes (rural Bihar, India),
+a theoretical-plus-empirical study of political interference in
+sanitation-tariff regulation (Brazil), an ethnographic study of urban
+sanitation-governance deficits and "slumification" (Uganda), a
+political-ecology comparison of water-contamination governance responses
+(Ireland), and a qualitative study of sanitation-access barriers for
+disabled individuals despite formal legal accommodation entitlements
+(Uganda).
+
+**31 excluded**: 17 as E10 (inaccessible full text) and 14 for
+substantive reasons (E01 wrong topic ×4, E04 wrong outcome ×3, E06
+engineering only ×3, E12 wrong study design ×2, E01/E12 mix as detailed
+in `exclusion_log.csv`). The E10 group includes two newly-confirmed
+Unpaywall-failure byte-size signatures beyond the ones already documented
+in the sixth-batch entry below: 8 files at exactly 14,371 bytes all
+independently verified (4 of 8 read directly, remaining 4 pattern-matched
+on the identical byte count) as the same IOP Publishing "Radware Bot
+Manager Captcha" page, and 2 files at exactly 751 bytes both verified as
+a bare "DSpace" repository placeholder page; plus one genuinely 0-byte
+file, four distinct bot-verification/access-block pages (Anubis "Making
+sure you're not a bot!" ×2, a "High Load - Verifying Browser" holding
+page, and a BunkerWeb block page), and two bare redirect/download-holding
+stub pages ("Redirecting" and "Preparing to download...") with no
+retrievable content.
+
+Regenerated `full_text_retrieval_queue.csv` (3,205 open records),
+re-ran `validate_schemas.py` (all 13 files pass), and updated
+`PRISMA_WORKFLOW.md`, `README.md`, `06_outputs/prisma/prisma_flow.md`,
+and `06_outputs/supplementary/preliminary_results.md` with the new
+totals: 454 of 3,659 full-text records decided (222 include / 232
+exclude); 222 studies fully extracted (S001–S222); 83 of 222 judged
+eligible for quantitative synthesis, 197 for qualitative synthesis.
+
+## 2026-09-15 — Seventh full-text screening batch: 16 more records decided, 10 new includes (S187–S196), first content-mismatch data-integrity finding
 
 Continued through the same Google Drive folder (records 27-42 of the
 first 100-file batch). **10 included and fully extracted** (S187–S196):
