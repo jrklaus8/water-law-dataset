@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **829 of 3,659 records decided (397 include / 432 exclude)** — see
+  **831 of 3,659 records decided (398 include / 433 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,9 +229,9 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 397 current full-text includes (S001–S399, S227 a documented duplicate-removal gap) are now fully
+  **all 398 current full-text includes (S001–S400, S227 and S399 documented duplicate-removal gaps) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
-  complete 92-field schema. Nineteen of the 397 are themselves secondary
+  complete 92-field schema. Nineteen of the 398 are themselves secondary
   systematic reviews, flagged
   `study_design_class = systematic_review_secondary` and never to be
   pooled as an independent primary effect; S356, S364, and S376 are
@@ -242,14 +242,14 @@ evidence of anything.
   framework and classified by hand as `jurimetric` (see the duplicate-
   merge note in `CHANGELOG.md` 2026-09-16).
 - **2026-09-16: Phase 10 (evidence classification) has been run against
-  all 397 extracted studies.** `build_evidence_map.py` derived what can
+  all 398 extracted studies.** `build_evidence_map.py` derived what can
   safely be derived mechanically; the remaining judgment-call fields
   (`outcome_family`, `evidence_level`, `study_design_class` for the
   studies using the project's own Legal Institutional Evidence Appraisal
   Framework, and the two synthesis-eligibility flags) were filled by hand
-  per study. **144 of the 397 extracted studies have a genuine,
+  per study. **145 of the 398 extracted studies have a genuine,
   study-generated, calculable effect estimate and are judged eligible for
-  quantitative synthesis; 334 of 397 are qualitative-synthesis eligible.**
+  quantitative synthesis; 335 of 398 are qualitative-synthesis eligible.**
   This is a per-study eligibility judgment, not a corpus-level decision
   that pooling is warranted for any family — that is Phase 11, which has
   not started.
@@ -298,6 +298,19 @@ evidence of anything.
   `CHANGELOG.md` alongside a process note about a request-limit PDF-read
   truncation that was caught and corrected before it could affect any
   screening decision.
+- **2026-09-16 (still later the same day): single-record screening —
+  Carré & Deroubaix 2009 excluded (E04, wrong outcome — utility
+  revenue-model/tariff-sustainability focus, not household access/
+  exclusion), Tsanga Tabi 2009 included (S400).** Full detail in
+  `CHANGELOG.md`. Tsanga Tabi's mixed-methods case study (Vannes municipal
+  utility and a Loiret private-concession department) documents France's
+  LEMA (2006) article 1 disconnection-prohibition provision, several
+  municipal anti-disconnection arretes later annulled by administrative
+  tribunals as exceeding municipal competence, and case-study data on
+  water-disconnection counts and solidarity-aid-scheme take-up. `S399`
+  remains a permanent gap in the `study_id` sequence (like `S227`) — see
+  the duplicate-merge note above; S400 continues the sequence from S398
+  rather than reusing it.
 
 ## What has not been done
 
@@ -316,14 +329,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 829 of the 3,659
-  Phase-5 includes have been assessed; 2,830 records have not yet been
+- Full-text screening itself is far from complete: 831 of the 3,659
+  Phase-5 includes have been assessed; 2,828 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 397
+- Extraction (Phase 8) is caught up with screening completely — all 398
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  397 extracted studies** (a first 12-study partial pilot batch was
+  398 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -332,7 +345,7 @@ evidence of anything.
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 144 studies being individually
+  for any candidate synthesis family** — 145 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary

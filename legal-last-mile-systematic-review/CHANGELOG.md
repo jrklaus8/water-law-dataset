@@ -4,7 +4,40 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-16 (latest) — Google Drive batch: 19 PDFs (18 new + 1 duplicate) via Antigravity retrieval, 11 new includes (S389-S399), 1 genuine duplicate caught and merged
+## 2026-09-16 (latest) — Single-record screening: Tsanga Tabi 2009, French water-disconnection/social-vulnerability case study (S400)
+
+Researcher supplied 2 more PDFs directly. **1 excluded**: Carre &
+Deroubaix 2009 (E04, Flux 76-77, domestic rainwater-harvesting practices
+in Paris-suburb municipalities; real empirical interviews and LEMA-law
+regulatory context, but the actual outcome studied is utility revenue-
+model/tariff-sustainability tension under declining consumption and user
+attitudes toward the service, not a household-level access/connection/
+exclusion outcome — wrong outcome). **1 included** and fully extracted as
+S400: Tsanga Tabi 2009 (Flux 76-77), a mixed-methods case study (Vannes
+municipal utility and Loiret private-concession department, plus national
+disconnection statistics) of France's water-disconnection legal framework
+— LEMA (2006) article 1 prohibiting disconnection of FSL-aid recipients,
+municipal anti-disconnection arretes (several annulled by administrative
+tribunals on prefectoral referral for exceeding municipal competence),
+and departmental "Solidarite Eau" partnership aid schemes, with real
+administrative data (120,000 national disconnections in 2003; Loiret aid
+take-up rates of 50.5%/47%, average aid EUR93-98/household).
+
+`S399` remains a permanent gap in the study_id sequence (like `S227`): it
+was assigned earlier the same day to a PDF that the duplicate-detection
+audit found was the same article as the already-extracted S102, and was
+merged into S102 rather than kept as its own row — see the
+"Google Drive batch" entry below. S400 continues the sequence from S398,
+not S399, to avoid reusing a number that was briefly live.
+
+Regenerated `full_text_retrieval_queue.csv`, re-ran the duplicate audit
+(clean against the resulting 398-study corpus), and validated all 13
+tracked schemas. Net: 829 → 831 decided, 397 → 398 include, 432 → 433
+exclude, 2830 → 2828 open. `evidence_map.csv` quantitative_synthesis_
+eligible now 145/398 (was 144/397), qualitative_synthesis_eligible now
+335/398 (was 334/397).
+
+## 2026-09-16 — Google Drive batch: 19 PDFs (18 new + 1 duplicate) via Antigravity retrieval, 11 new includes (S389-S399), 1 genuine duplicate caught and merged
 
 Researcher shared a new Google Drive folder of Antigravity-retrieved PDFs.
 Downloaded all 19 files via the Google Drive MCP connector (base64,
