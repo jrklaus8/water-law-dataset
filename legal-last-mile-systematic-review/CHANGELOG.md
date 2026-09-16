@@ -4,7 +4,32 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-16 (latest) — Single-record screening: Li, McManus & Cronk 2025, Liberia water-point functionality (S388), extended into effect_sizes.csv
+## 2026-09-16 (latest) — Cowork Scopus retrieval status merged into full_text_screening_database.csv
+
+Merged a researcher-supplied `full_text_status`/`full_text_location`/
+`notes` update covering all 1,139 previously-open Scopus records (the CSV
+sent to the researcher earlier the same day for the Cowork retrieval
+prompt) into `full_text_screening_database.csv`. **This is a status/
+triage update, not a completed retrieval round**: of the 1,139 records,
+only 1 (`RB334FC53A1A9`, Glavanits & Fenyes 2026) was actually retrieved
+as a PDF — and that one had already been separately supplied by the
+researcher and screened as S387 earlier the same day, so no new screening
+resulted from this merge. The remaining 1,138 break down as: 713
+`not_retrievable` (paywalled, no OA copy per Unpaywall), 168
+`oa_pdf_candidate` (a direct OA PDF URL was located but not yet
+downloaded), 138 `no_oa_copy_found` (no DOI or no OA match), 105
+`oa_page_candidate` (an OA landing page was located, no direct PDF link,
+not yet downloaded), and 14 `pending` (DOI not indexed by Unpaywall, needs
+manual/title search). The 168 + 105 = 273 `oa_pdf_candidate`/
+`oa_page_candidate` records are genuine near-term retrieval opportunities
+— Cowork has already identified a legitimate open-access location for
+each, but the file itself still needs to be fetched and supplied. `final_
+decision` was left untouched for every record (no full-text screening
+occurred in this merge). Regenerated `full_text_retrieval_queue.csv`
+(counts unchanged: 811 decided, 2,848 open, since no `final_decision`
+changed) and validated all 13 tracked schemas.
+
+## 2026-09-16 — Single-record screening: Li, McManus & Cronk 2025, Liberia water-point functionality (S388), extended into effect_sizes.csv
 
 Researcher supplied one more PDF directly; identified via DOI/title match
 as record `R897B0E5CB3C7`, confirmed genuinely open. **Included** and
