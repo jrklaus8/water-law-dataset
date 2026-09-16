@@ -7,7 +7,7 @@ enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
 `PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
 Phase 6 was seeded with. Full-text screening is now live and ongoing
-(updated 2026-09-15): of 3,659, 757 have been assessed (351 include / 406
+(updated 2026-09-15): of 3,659, 757 have been assessed (350 include / 407
 exclude), with "Reports not retrieved" still at 0 since every record
 reaching this pipeline so far has arrived with full text already in hand
 via researcher chat upload — the remaining 2,902 are simply not yet
@@ -120,7 +120,7 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     [02_screening/full_text/full_text_screening_database.csv, updated
     2026-09-16. Full-text screening is ongoing, not complete -- 2,902 of
     3,659 records have not yet been reached.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 406 total, PROVISIONAL):
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 407 total, PROVISIONAL):
     E01 wrong topic (n = 87)
     E02 wrong population (n = 32)
     E03 wrong exposure (n = 9)
@@ -128,20 +128,20 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E05 no empirical evidence (n = 38)
     E06 engineering only (n = 31)
     E07 wrong service (n = 13)
-    E08 duplicate (n = 4)
+    E08 duplicate (n = 5)
     E09 insufficient information (n = 1)
     E10 inaccessible full text (n = 151)
     E11 wrong jurisdiction/context (n = 0)
     E12 wrong study design (n = 2)
 
 Included
-  Studies included in systematic review (n = 351, PROVISIONAL AND GROWING)
+  Studies included in systematic review (n = 350, PROVISIONAL AND GROWING)
     [Full-text include count as of 2026-09-16; full-text screening is
     still ongoing across the remaining 2,902 unreached records.]
-  Studies included in full extraction so far (n = 351)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S351.
-    Fully caught up with the full-text include count as of 2026-09-16 --
-    no outstanding gap.]
+  Studies included in full extraction so far (n = 350)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S351 (S227
+    a documented post-hoc-duplicate gap, see CHANGELOG.md). Fully caught up
+    with the full-text include count as of 2026-09-16 -- no outstanding gap.]
   Studies included in quantitative evidence synthesis (n = )
   Studies included in restricted meta-analysis, by family (n = ), if any
 ```

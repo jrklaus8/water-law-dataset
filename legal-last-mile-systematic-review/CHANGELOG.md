@@ -9,7 +9,38 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Fourteenth full-text screening batch: 7 records via direct chat upload, 4 new includes (S348–S351)
+## 2026-09-16 (latest) — Post-hoc duplicate-detection audit: one true duplicate found and removed (S227)
+
+While waiting on further PDFs, ran a full duplicate audit across all 351
+included studies: exact-DOI matching, exact-normalized-title matching,
+fuzzy-title similarity (difflib ratio > 0.85), and duplicate-record_id
+matching (all extraction_note "record_id" references, using a corrected
+regex — the first attempt missed 8 early studies, S076–S083, whose notes
+predate the standardized "record_id X." phrasing).
+
+Found exactly one genuine duplicate: **S063 and S227** were independent
+extractions of the same underlying paper (Pastrana-Miranda & Gonzalez-Caamal
+2022, same DOI `10.12804/revistas.urosario.edu.co/territorios/a.9931`)
+ingested into the search corpus under two different record_ids
+(`RF043AAD78E8E` and `R7EECD84CD3AA`) that the original deduplication script
+(`code/search/deduplicate.py`) failed to merge, and which were then
+independently screened and extracted without either pass detecting the
+overlap. S063 is the fuller extraction (documents specific 2015 INEGI
+census statistics and both `DISCRETION_ACCOMMODATION`/institutional-
+fragmentation mechanisms); S227 duplicated the same content at lower detail
+and has been removed. `R7EECD84CD3AA`'s decision was changed from `include`
+to `exclude` (E08, duplicate of `RF043AAD78E8E`), and its rows removed from
+`extraction_database.csv` and `evidence_map.csv`. **`S227` is now a
+permanent gap in the study_id sequence** (not renumbered, to avoid
+disturbing every cross-reference to S228–S351 already committed across
+prior batches) — this is intentional, not a data error.
+
+No other duplicates (exact or fuzzy) were found across the remaining 350
+studies.
+
+Net: 351 → 350 includes, 406 → 407 excludes; decided count unchanged (757).
+
+## 2026-09-16 — Fourteenth full-text screening batch: 7 records via direct chat upload, 4 new includes (S348–S351)
 
 Seven PDFs supplied directly via chat upload (no record_id in filename this
 round — matched to `full_text_screening_database.csv` by title instead).
