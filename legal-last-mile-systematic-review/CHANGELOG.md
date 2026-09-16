@@ -4,7 +4,33 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-16 (latest) — Seventeenth full-text screening batch: 15 records via researcher-supplied PDFs, 13 new includes (S374-S386)
+## 2026-09-16 (latest) — Single-record screening: Glavanits & Fenyes 2026, "Beyond Potty Parity" (S387)
+
+Researcher supplied one more PDF directly (no `record_id` in the filename
+this time), identified via DOI/title match against
+`full_text_screening_database.csv` as record `RB334FC53A1A9`, confirmed
+genuinely open. **Included** and fully extracted as S387: Glavanits &
+Fenyes 2026 (Laws 15(3):55), a mixed-methods study (97-respondent
+questionnaire, 56-user chronometric time-measurement observation, and
+qualitative thematic coding) of gendered waiting-time disparities in
+public-toilet access in Hungary, framed against EU Council Directive
+2004/113/EC's indirect-discrimination standard and a comparative review of
+public-toilet regulatory philosophies across 6 jurisdictions (a
+"quantitative"/fixture-ratio model, US "potty parity," UK performance-based
+BS 6465, and German qualitative-functional ASR/DIN standards). Not added
+to `effect_sizes.csv`: the paper's real regression/ANOVA findings use
+gender as the exposure variable, not an institutional/legal exposure with
+a genuine comparator (e.g. different regulatory regimes with matched
+outcome data), so per the S135 precedent this is recorded as
+quantitative_synthesis_eligible = TRUE in `evidence_map.csv` without
+forcing an effect_sizes.csv entry.
+
+Regenerated `full_text_retrieval_queue.csv`, re-ran the duplicate audit
+(clean against the resulting 386-study corpus), and validated all 13
+tracked schemas. Net: 809 → 810 decided, 385 → 386 include, 2850 → 2849
+open.
+
+## 2026-09-16 — Seventeenth full-text screening batch: 15 records via researcher-supplied PDFs, 13 new includes (S374-S386)
 
 Screened 15 more full-text PDFs supplied directly by the researcher (a
 continuation of the same-day retrieval round; the first 13 PDFs of this
