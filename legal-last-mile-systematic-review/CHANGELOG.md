@@ -9,7 +9,44 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — First population of `effect_sizes.csv`: 11 rows from the 124 quantitative-synthesis-eligible studies
+## 2026-09-16 (latest) — Preliminary cross-cutting evidence-limitations narrative; fixed 11 studies' mis-assigned risk_of_bias_tool
+
+Third item of the user-approved non-PDF-dependent work plan: wrote
+`04_quality/risk_of_bias/2026-09-16_evidence_limitations.md`, following the
+structure of `EVIDENCE_LIMITATIONS_TEMPLATE.md`. `RISK_OF_BIAS.md` §3
+specifies this narrative should be written only once every included study
+has an individual appraisal rating — which has not happened (Phase 9 has
+not been applied to any study). The file is explicitly labeled
+preliminary/pre-appraisal: it covers only what corpus-composition fields
+already support without a rating (design-class mix, mechanism_certainty
+distribution, country/legal-system coverage, mechanism-family coverage,
+abstract-only-extraction rate, use of the non-validated Legal Institutional
+Evidence Appraisal Framework) and leaves "Overall confidence in the body
+of evidence" as an explicit placeholder pending real Phase 9 ratings.
+
+Headline findings: only 12 of 350 studies (3%) use a quasi-experimental or
+experimental design, and mechanism_certainty confirms only 26 of 350 (7%)
+reach "quasi-experimental" or "experimental" evidence directly — the
+evidence base overwhelmingly documents association, not causation. 16% of
+studies (57/350) were abstract-only extractions. Brazil/India/South Africa
+account for 30% of country coverage. Common law and civil law systems are
+close to evenly represented (140 vs. 138 of 350), with 43 mixed/hybrid/
+customary-overlay and 28 with a blank `legal_system` field (a real,
+unaddressed extraction gap).
+
+While compiling the narrative, found and fixed a real data bug: of the 17
+studies flagged `study_design_class = systematic_review_secondary` (for
+which `RISK_OF_BIAS.md` specifies AMSTAR 2 is the correct instrument),
+11 (S319–S329, added in the 2026-09-16 E12-policy-amendment batch) had
+been left with `risk_of_bias_tool = CASP` — an apparent carry-over default
+from that batch's extraction script. Corrected all 11 to the same
+AMSTAR-2 label used for the other 6 systematic-review studies
+(S015, S019, S027, S052, S079, S116), with each row's `extraction_note`
+recording the correction. `study_design_class` was already correct for
+all 17 and did not need to change. `validate_schemas.py` confirms all 13
+checked files still match their documented schema after this fix.
+
+## 2026-09-16 — First population of `effect_sizes.csv`: 11 rows from the 124 quantitative-synthesis-eligible studies
 
 With no new PDFs pending, worked through the user-approved plan's second
 item: populating `05_analysis/effect_sizes/effect_sizes.csv` (previously
