@@ -106,7 +106,7 @@ evidence of anything.
   project's non-binding-triage convention for title-only records).
   Exclusion codes, most to least common: E01 wrong topic (1,555), E06
   engineering only (780), E05 no empirical evidence (487), E07 wrong
-  service (320), E04 wrong outcome (255), E03 water-quality-only (65),
+  service (327), E04 wrong outcome (255), E03 water-quality-only (65),
   E09 insufficient information (63), E02 wrong population (21), E08
   duplicate (18), E11 wrong jurisdiction/context (1) — consistent with
   this being a deliberately broad, high-recall Boolean search expected to
@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **794 of 3,659 records decided (372 include / 422 exclude)** — see
+  **809 of 3,659 records decided (385 include / 424 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,9 +229,9 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 372 current full-text includes (S001–S373, S227 a documented duplicate-removal gap) are now fully
+  **all 385 current full-text includes (S001–S386, S227 a documented duplicate-removal gap) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
-  complete 92-field schema. Nineteen of the 372 are themselves secondary
+  complete 92-field schema. Nineteen of the 385 are themselves secondary
   systematic reviews, flagged
   `study_design_class = systematic_review_secondary` and never to be
   pooled as an independent primary effect; two more (S356, S364) are
@@ -239,14 +239,14 @@ evidence of anything.
   Institutional Evidence Appraisal Framework rather than AMSTAR 2, since
   neither documents a formal systematic-review search methodology.
 - **2026-09-16: Phase 10 (evidence classification) has been run against
-  all 372 extracted studies.** `build_evidence_map.py` derived what can
+  all 385 extracted studies.** `build_evidence_map.py` derived what can
   safely be derived mechanically; the remaining judgment-call fields
   (`outcome_family`, `evidence_level`, `study_design_class` for the
   studies using the project's own Legal Institutional Evidence Appraisal
   Framework, and the two synthesis-eligibility flags) were filled by hand
-  per study. **132 of the 372 extracted studies have a genuine,
+  per study. **138 of the 385 extracted studies have a genuine,
   study-generated, calculable effect estimate and are judged eligible for
-  quantitative synthesis; 320 of 372 are qualitative-synthesis eligible.**
+  quantitative synthesis; 327 of 385 are qualitative-synthesis eligible.**
   This is a per-study eligibility judgment, not a corpus-level decision
   that pooling is warranted for any family — that is Phase 11, which has
   not started.
@@ -261,7 +261,24 @@ evidence of anything.
   an unassessed unknown, distinguishing these from the earlier 17-study
   "Not ratable" AMSTAR 2 batch. A corpus-wide duplicate audit re-run
   afterwards (4 independent methods) came back clean against the resulting
-  372-study corpus.
+  385-study corpus.
+- **2026-09-16 (still later the same day): seventeenth full-text screening
+  batch — 15 more researcher-supplied PDFs (13 genuinely new), 13 new
+  includes (S374–S386).** Full detail in `CHANGELOG.md`. Notable additions:
+  Martellet et al. 2024's regulatory-audit-indicator evaluation of Brazil's
+  Novo Marco Regulatorio was appraised with the project's own Legal
+  Institutional Evidence Appraisal Framework and classified by hand as
+  `jurimetric`; Shekhar & Dwivedi 2021 (India) and Ayanlola et al. 2025
+  (Nigeria) both contribute real regression coefficients quantifying a
+  legal/institutional mechanism's effect on a sanitation-access outcome
+  (wealth-index inequality in toilet-technology access; weak sanitation-law
+  enforcement's effect on open defecation, beta=0.47, p=0.002); and Rojas
+  Rivera 2026 (Colombia) is a genuine natural-institutional-variation
+  panel-data study of decentralization's effects on municipal water/
+  sewerage coverage, flagged as a strong future `effect_sizes.csv`
+  candidate once its full regression-results table is retrieved. A
+  corpus-wide duplicate audit re-run afterwards came back clean against the
+  resulting 385-study corpus.
 
 ## What has not been done
 
@@ -280,14 +297,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 794 of the 3,659
-  Phase-5 includes have been assessed; 2,865 records have not yet been
+- Full-text screening itself is far from complete: 809 of the 3,659
+  Phase-5 includes have been assessed; 2,850 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 372
+- Extraction (Phase 8) is caught up with screening completely — all 385
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  372 extracted studies** (a first 12-study partial pilot batch was
+  385 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -296,7 +313,7 @@ evidence of anything.
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 132 studies being individually
+  for any candidate synthesis family** — 138 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary

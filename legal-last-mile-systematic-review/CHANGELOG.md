@@ -4,12 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-09-16 (latest) — Seventeenth full-text screening batch: 15 records via researcher-supplied PDFs, 13 new includes (S374-S386)
+
+Screened 15 more full-text PDFs supplied directly by the researcher (a
+continuation of the same-day retrieval round; the first 13 PDFs of this
+upload wave duplicated records already screened and pushed earlier the
+same day — confirmed via record_id lookup against
+`full_text_screening_database.csv` before any re-processing, so no
+duplicate decisions were recorded). Recorded via `record_batch19.py`.
+
+**2 excluded**: Meng et al. 2026 (E06, Hainan rural sewage-facility
+GIS/spatial-statistics study, engineering/spatial-planning only, no
+legal/institutional access-barrier analysis); Prieto 2016 (E07, Chilean
+Atacameno water-RIGHTS-MARKET and indigenous-identity study, concerns
+agricultural/mining/multi-use water-resource-rights transactions, not
+household drinking-water/sanitation service access).
+
+**13 included and fully extracted** (`extract_s374_s386.py`,
+`build_evidence_map.py` + `fill_evidence_map_s374_s386.py`): Inha & Hukka
+2019 (Seattle water-service institutional resilience); Farmer 2017 (16-
+month Cairo ethnography of tariff/payment-system resistance in an informal
+settlement); Martellet et al. 2024 (Rio Branco, Brazil, ACERTAR regulatory-
+audit indicator evaluation of Brazil's Novo Marco Regulatorio — appraised
+with the project's own Legal Institutional Evidence Appraisal Framework as
+`jurimetric`, a real judgment call resolved by hand since
+`build_evidence_map.py` cannot mechanically distinguish doctrinal from
+jurimetric); Tamboura, Baron & Kabore 2024 (Ouagadougou bottom-up water
+innovation in legally-unrecognized "non loti" neighborhoods); Shekhar &
+Dwivedi 2021 (India, NFHS-4 wealth-index regression showing ~200x odds-
+ratio inequality in sanitation-technology access, institutional-
+fragmentation framing); Morales-Juarez & Mendez-Garcia 2021 (Oaxaca,
+Mexico, independent community water systems unrecognized in national water
+law); Baron & Maillefert 2011 (comparative institutionalist analysis of
+drinking-water governance across francophone West Africa — abstract-only,
+only 2 pages were retrievable from the supplied PDF); Bradshaw & Huby 2013
+(England and Wales water-poverty trend analysis); Malima & Pindihama 2022
+(Vhembe District, South Africa, rural potable-water-security household
+survey); Aguirre-Osuna 2026 (Cabo San Lucas, Mexico, mixed-methods study of
+unequal water access and concentrated national water-concession
+ownership); Ayanlola et al. 2025 (South-West Nigeria, regression-identified
+determinants of open defecation including weak sanitation-law enforcement,
+beta=0.47, p=0.002); Rojas Rivera 2026 (Colombia, Hausman-Taylor panel-data
+study of fiscal/political/administrative decentralization's effects on
+municipal water/sewerage coverage — flagged as a strong future
+`effect_sizes.csv` candidate once its full regression-results table, not
+yet retrieved in this pass, is read); Esteban et al. 2025 (Las Vigas,
+Guerrero, Mexico, mixed-methods study finding payment-conditioned water
+distribution and fragmented institutional oversight driving unequal
+access).
+
+Regenerated `full_text_retrieval_queue.csv`, re-ran the corpus-wide
+duplicate-detection audit (4 independent methods) against the resulting
+385-study corpus (clean), and validated all 13 tracked schemas.
+
+Net (across both batches processed today, 2026-09-16): 781 → 809 decided,
+366 → 385 include, 415 → 424 exclude, 2878 → 2850 open.
+`evidence_map.csv` quantitative_synthesis_eligible now 138/385 (was
+130/366), qualitative_synthesis_eligible now 327/385 (was 316/366).
+`effect_sizes.csv` unchanged at 13 rows (S385 flagged as a strong
+candidate pending fuller-text retrieval, consistent with the discipline of
+never forcing an entry without the full effect-estimate table in hand).
+
+**`04_quality/risk_of_bias/2026-09-16_evidence_limitations.md` is now
+stale by 19 studies (366→385, 5.2%)** — its percentage breakdowns still
+reflect the 366-study corpus; not recomputed in this round for the same
+reason given in the previous entry (small relative corpus change versus
+the effort of a full re-derivation), flagged rather than silently left
+inconsistent.
+
 ## [Unreleased]
 
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Sixteenth full-text screening batch: 13 records via researcher-supplied PDFs, 6 new includes (S368-S373)
+## 2026-09-16 — Sixteenth full-text screening batch: 13 records via researcher-supplied PDFs, 6 new includes (S368-S373)
 
 Screened 13 full-text PDFs supplied directly by the researcher (retrieved via
 the "Antigravity" agent's Unpaywall-based retrieval pass, per the retrieval

@@ -33,6 +33,23 @@ included studies was performed — 1 mixed-methods SWOT-AHP case study
 entry. None of these 6 changes the corpus's overall design-mix skew toward
 observational/qualitative evidence described below.
 
+**2026-09-16 (still later the same day) second addendum — now 19 studies
+stale (366→385, +5.2%), not yet re-recomputed.** A seventeenth full-text
+screening batch (15 more researcher-supplied PDFs) added 13 further
+includes (S374–S386, see `CHANGELOG.md`). Every count and percentage in the
+body of this file below still reflects the 366-study corpus; still not
+recomputed, for the same reason given in the addendum above, though the
+cumulative staleness (5.2% of the corpus) is now large enough that the
+recomputation should not be deferred indefinitely. For reference, what
+these 13 add: 6 quantitative cross-sectional/panel studies (S378, S381,
+S382, S383, S384, S385 — `JBI`/`MMAT`/`ROBINS-I`), 6 qualitative case
+studies (S374, S375, S377, S379, S380, S386 — `CASP`/`MMAT`), and 1
+regulatory-audit-indicator study (S376) appraised with the project's own
+Legal Institutional Evidence Appraisal Framework and classified by hand as
+`jurimetric` — the first `jurimetric`-classified study in the corpus to
+date. None of these 13 changes the corpus's overall design-mix skew toward
+observational/qualitative evidence described below.
+
 `RISK_OF_BIAS.md` §3 instructs that this narrative be written **once every
 included study has been individually appraised**
 (`04_quality/appraisal_forms/APPRAISAL_FORM.md`). That has not happened:
