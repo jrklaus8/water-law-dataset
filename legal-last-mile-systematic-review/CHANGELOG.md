@@ -9,7 +9,52 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Cross-cutting evidence-limitations narrative recomputed against 366-study corpus
+## 2026-09-16 (latest) — AMSTAR 2 appraisal batch: all 17 systematic-review-secondary studies, all "Not ratable"
+
+Continued Phase 9 appraisal to the next tool group after the RoB 2/
+ROBINS-I pilot: the 17 studies flagged `study_design_class =
+systematic_review_secondary` (S015, S019, S027, S052, S079, S116,
+S319–S329), for which `RISK_OF_BIAS.md` specifies AMSTAR 2.
+
+Obtained AMSTAR 2's tool structure via WebSearch (`WebFetch` to amstar.ca
+and every publisher domain tried again returned `EGRESS_BLOCKED`, same
+environment limitation as the RoB 2/ROBINS-I batch) — but this time, unlike
+that batch, the tool text itself came back reasonably complete: all 16
+items with verbatim/near-verbatim wording, the 7 critical items (2, 4, 7,
+9, 11, 13, 15), and the confidence-rating algorithm, cross-checked across
+multiple independent search results.
+
+**The blocker this time was different: study-extraction depth, not tool
+completeness.** All 17 of these systematic reviews were extracted at
+citation/DOI/one-sentence-summary level, not from their own full Methods
+sections — several explicitly flagged "abstract/repository metadata only"
+in their `extraction_note`. AMSTAR 2 appraises what a review's own report
+describes; not knowing whether a review reports something (e.g. protocol
+registration, duplicate screening) is different from confirming it does
+not, so every item lacking extracted evidence was marked "Not assessable"
+rather than scored "No" — a deliberately more conservative reading than
+AMSTAR 2's own default convention. Result: **6 of 17 studies (S015, S019,
+S027, S052, S079, S116) have at least one genuinely assessable item**
+(mostly item 1, PICO-scope specificity, and item 8, description of
+included studies, inferable from richer extraction notes); the other 11
+(S319–S329) have none. **S015 is the only study with a confirmed answer on
+any critical item**: its `extraction_note` states it is OSF-registered
+(https://osf.io/w94yr/), a genuine "Yes" on critical item 2 (prospective
+protocol). Every one of the 17 studies' overall rating is **"Not
+ratable"** — AMSTAR 2's High/Moderate/Low/Critically-Low algorithm
+requires a defensible answer to all 7 critical items, and at most 1 of 7 is
+answered for any study here. 17 appraisal-form files added to
+`04_quality/appraisal_forms/` (`<study_id>_AMSTAR2.md`).
+
+This is itself a disclosed finding, not just a process note: **a real
+AMSTAR 2 appraisal of these 17 systematic reviews is not possible without
+first retrieving and extracting each one's full Methods section** — a
+prerequisite this project has not yet met for any of them. `extraction_note`
+on each of the 17 rows now records that the appraisal was attempted and
+why it could not be completed. `code/analysis/validate_schemas.py`
+confirms all 13 checked files still match their documented schema.
+
+## 2026-09-16 — Cross-cutting evidence-limitations narrative recomputed against 366-study corpus
 
 The preliminary RoB narrative written earlier the same day (`04_quality/
 risk_of_bias/2026-09-16_evidence_limitations.md`) explicitly flagged that
