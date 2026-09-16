@@ -9,7 +9,67 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Preliminary cross-cutting evidence-limitations narrative; fixed 11 studies' mis-assigned risk_of_bias_tool
+## 2026-09-16 (latest) — First risk-of-bias appraisal pilot batch (12 studies): RoB 2 (3) and ROBINS-I (9), partial and explicitly flagged
+
+Began item 4 of the user-approved work plan: per-study appraisal against the
+official validated tools. Started with the two smallest `risk_of_bias_tool`
+groups (RoB 2: S057, S085, S294; ROBINS-I: S037, S121, S142, S143, S169,
+S189, S213, S219, S235) as a manageable pilot before the much larger CASP
+(151 studies) and MMAT (68) groups.
+
+**Real environment blocker hit and disclosed to the researcher:** `WebFetch`
+returned `EGRESS_BLOCKED` for every domain tried that hosts the actual
+official checklists — `unisa.edu.au`, `bristol.ac.uk`, `cochrane.de`,
+`methods.cochrane.org`, `training.cochrane.org`, `riskofbias.info`,
+`corates.org`, `arxiv.org`, `strataresearch.net`, `pmc.ncbi.nlm.nih.gov`,
+`en.wikipedia.org` — an organization egress-policy restriction, not
+something to route around. `WebSearch` still worked and returned real,
+citable excerpts. The researcher was asked directly (`AskUserQuestion`) how
+to proceed and chose to continue on WebSearch snippets alone.
+
+**Second, more specific tension surfaced and also put to the researcher:**
+`04_quality/appraisal_forms/APPRAISAL_FORM.md` (written earlier in this
+project, anticipating this exact blocked-network scenario) explicitly says
+not to reconstruct a checklist from memory or partial sources, precisely
+because an incomplete or approximated tool "produces a rating that means
+nothing." WebSearch recovered RoB 2's Domains 1/2/4 reasonably completely
+but only the general purpose of Domains 3/5; for ROBINS-I it recovered
+solid signalling-question detail only for the Confounding domain, and only
+domain *names* for the other six. Asked again, the researcher chose to
+proceed with what could be recovered, explicitly marking incomplete domains
+"not assessable — incomplete tool text obtained in this environment"
+rather than guessing, and disclosing the limitation prominently rather than
+presenting a partial appraisal as equivalent to a full one.
+
+**What was produced:** 12 appraisal-form files in
+`04_quality/appraisal_forms/` (`<study_id>_RoB2.md` /
+`<study_id>_ROBINS-I.md`), each with a domain-by-domain table, real
+citations to the extracted study text backing every judgement actually
+made, and an explicit "Source of tool structure" section naming exactly
+what WebSearch did and did not recover. `extraction_database.csv`'s
+`risk_of_bias_rating` for all 12 is written as a partial/lower-bound value
+(e.g. "Some concerns (partial pilot appraisal...)" / "at least Serious
+(...)") rather than a bare tool-scale label, so it cannot be mistaken for a
+complete official-tool rating; `selection_bias`/`measurement_bias`/
+`confounding`/`attrition`/`reporting_bias` were filled from genuine
+extracted evidence where available (e.g. S085's real 61.5% endline-
+recontact/balance-test and pre-registration/Benjamini-Hochberg detail) and
+marked not-assessable otherwise.
+
+**One more finding surfaced in passing:** S235 (Dondeynaz et al. 2012,
+WatSan4Dev cross-national indicator-database/factor-analysis study) does
+not fit ROBINS-I's intervention-effect framing at all — it develops a
+governance/WASH indicator database via factor analysis, not an
+intervention evaluation. Flagged in its appraisal form as a likely
+`risk_of_bias_tool` mis-assignment from an earlier extraction pass, but
+**not corrected unilaterally** here since the appropriate alternative
+tool/`study_design_class` was not re-derived from the source text in this
+pass.
+
+`code/analysis/validate_schemas.py` confirms all 13 checked files still
+match their documented schema after these 12 rows were filled.
+
+## 2026-09-16 — Preliminary cross-cutting evidence-limitations narrative; fixed 11 studies' mis-assigned risk_of_bias_tool
 
 Third item of the user-approved non-PDF-dependent work plan: wrote
 `04_quality/risk_of_bias/2026-09-16_evidence_limitations.md`, following the
