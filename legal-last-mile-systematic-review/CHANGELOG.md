@@ -9,7 +9,33 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Eleventh full-text screening batch (107 records from an external OA-retrieval mission's Drive delivery), data-integrity correction, and E12 (secondary/systematic review) policy amendment
+## 2026-09-16 (latest) — Twelfth and thirteenth full-text screening batches: 26 records decided (18 new includes, S330–S347), from direct chat upload and a Drive "proxy_downloads" folder
+
+Two records supplied directly via chat upload were screened first
+(R3A70FDFC6D73, a Peru academic specialization thesis with real
+mixed-methods primary data — 120 households plus institutional
+interviews — diagnosing sanitation-coverage and institutional-coordination
+determinants of child diarrheal-disease risk, included as S330 despite its
+health-outcome framing, given the genuine institutional/access data;
+R7FB99A985F04, a systematic review of climate-resilient infrastructure in
+informal settlements broadly — flooding, drainage, green infrastructure,
+energy systems — excluded E01 as out of this review's water/sanitation
+access-governance scope even though water/sanitation appears as one of
+several intervention types it covers).
+
+The researcher then pointed to a new Drive folder ("proxy_downloads")
+delivering 24 further PDFs, 2 of which duplicated the just-uploaded pair.
+Before screening the remaining 22, every one of the 24 record_ids was
+verified against `full_text_screening_database.csv`'s real
+`full_text_status`/`final_decision` columns (the exact check that was
+missing in the earlier TEST ZIP mistake) — confirming all 22 were
+genuinely open, not decided elsewhere. Of the 22: 17 included (S331–S347)
+and 5 excluded (E01×3, E04×1, E06×1).
+
+Net effect: full-text decided count 724 → 750; includes 329 → 347;
+excludes 395 → 403; extraction database 329 → 347 studies (S330–S347).
+
+## 2026-09-15 — Eleventh full-text screening batch (107 records from an external OA-retrieval mission's Drive delivery), data-integrity correction, and E12 (secondary/systematic review) policy amendment
 
 A researcher-run external tool ("Antigravity") independently executed an
 Unpaywall/OpenAlex open-access retrieval mission against the review's full
