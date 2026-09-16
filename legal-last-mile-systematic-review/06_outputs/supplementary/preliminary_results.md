@@ -106,7 +106,7 @@ evidence of anything.
   project's non-binding-triage convention for title-only records).
   Exclusion codes, most to least common: E01 wrong topic (1,555), E06
   engineering only (780), E05 no empirical evidence (487), E07 wrong
-  service (328), E04 wrong outcome (255), E03 water-quality-only (65),
+  service (334), E04 wrong outcome (255), E03 water-quality-only (65),
   E09 insufficient information (63), E02 wrong population (21), E08
   duplicate (18), E11 wrong jurisdiction/context (1) — consistent with
   this being a deliberately broad, high-recall Boolean search expected to
@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **811 of 3,659 records decided (387 include / 424 exclude)** — see
+  **829 of 3,659 records decided (397 include / 432 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,24 +229,27 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 387 current full-text includes (S001–S388, S227 a documented duplicate-removal gap) are now fully
+  **all 397 current full-text includes (S001–S399, S227 a documented duplicate-removal gap) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
-  complete 92-field schema. Nineteen of the 387 are themselves secondary
+  complete 92-field schema. Nineteen of the 397 are themselves secondary
   systematic reviews, flagged
   `study_design_class = systematic_review_secondary` and never to be
-  pooled as an independent primary effect; two more (S356, S364) are
-  documentary/policy syntheses appraised with the project's own Legal
-  Institutional Evidence Appraisal Framework rather than AMSTAR 2, since
-  neither documents a formal systematic-review search methodology.
+  pooled as an independent primary effect; S356, S364, and S376 are
+  documentary/policy/regulatory-audit studies appraised with the project's
+  own Legal Institutional Evidence Appraisal Framework rather than AMSTAR
+  2, since none documents a formal systematic-review search methodology;
+  S102 and S399's underlying record were also appraised with this
+  framework and classified by hand as `jurimetric` (see the duplicate-
+  merge note in `CHANGELOG.md` 2026-09-16).
 - **2026-09-16: Phase 10 (evidence classification) has been run against
-  all 387 extracted studies.** `build_evidence_map.py` derived what can
+  all 397 extracted studies.** `build_evidence_map.py` derived what can
   safely be derived mechanically; the remaining judgment-call fields
   (`outcome_family`, `evidence_level`, `study_design_class` for the
   studies using the project's own Legal Institutional Evidence Appraisal
   Framework, and the two synthesis-eligibility flags) were filled by hand
-  per study. **140 of the 387 extracted studies have a genuine,
+  per study. **144 of the 397 extracted studies have a genuine,
   study-generated, calculable effect estimate and are judged eligible for
-  quantitative synthesis; 328 of 387 are qualitative-synthesis eligible.**
+  quantitative synthesis; 334 of 397 are qualitative-synthesis eligible.**
   This is a per-study eligibility judgment, not a corpus-level decision
   that pooling is warranted for any family — that is Phase 11, which has
   not started.
@@ -261,7 +264,7 @@ evidence of anything.
   an unassessed unknown, distinguishing these from the earlier 17-study
   "Not ratable" AMSTAR 2 batch. A corpus-wide duplicate audit re-run
   afterwards (4 independent methods) came back clean against the resulting
-  387-study corpus.
+  372-study corpus.
 - **2026-09-16 (still later the same day): seventeenth full-text screening
   batch — 15 more researcher-supplied PDFs (13 genuinely new), 13 new
   includes (S374–S386).** Full detail in `CHANGELOG.md`. Notable additions:
@@ -278,7 +281,23 @@ evidence of anything.
   sewerage coverage, flagged as a strong future `effect_sizes.csv`
   candidate once its full regression-results table is retrieved. A
   corpus-wide duplicate audit re-run afterwards came back clean against the
-  resulting 387-study corpus.
+  resulting 385-study corpus.
+- **2026-09-16 (still later the same day): single-record screening
+  (S387, S388), a Cowork Scopus-retrieval status merge (no new decisions),
+  then an 18-PDF Google Drive batch, 11 new includes (S389–S399).** Full
+  detail in `CHANGELOG.md`. Notably: a genuine quasi-experimental
+  difference-in-differences study (S398, dos Santos Nascimento Sobrinho &
+  da Mota Silveira Neto 2025, Recife's ZEIS zoning-law intervention) was
+  added to `effect_sizes.csv`; and the corpus-wide duplicate audit caught
+  a genuine duplicate this round — Alvaredo 2025 (Barreiro water-network
+  history) had already been extracted as S102 from abstract-only text on
+  2026-09-15, and reached the pipeline a second time this round under a
+  differently-formatted title. Rather than keep both, the fuller full-text
+  extraction obtained this round was merged into S102's row and the
+  duplicate record was corrected to exclude/E08, disclosed in full in
+  `CHANGELOG.md` alongside a process note about a request-limit PDF-read
+  truncation that was caught and corrected before it could affect any
+  screening decision.
 
 ## What has not been done
 
@@ -297,14 +316,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 811 of the 3,659
-  Phase-5 includes have been assessed; 2,848 records have not yet been
+- Full-text screening itself is far from complete: 829 of the 3,659
+  Phase-5 includes have been assessed; 2,830 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 387
+- Extraction (Phase 8) is caught up with screening completely — all 397
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  387 extracted studies** (a first 12-study partial pilot batch was
+  397 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -313,7 +332,7 @@ evidence of anything.
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 140 studies being individually
+  for any candidate synthesis family** — 144 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary
@@ -328,13 +347,17 @@ evidence of anything.
   functionality -- a genuine institutional-management exposure/comparator
   with a real adjusted OR, but left without a synthesis_family assignment
   since it does not cleanly fit Family A/B/C), bringing
-  the total to 14 (9 fit Families A/B/C, 5 do not).** Every row has
+  the total to 14 (9 fit Families A/B/C, 5 do not), then 1 more (S398,
+  dos Santos Nascimento Sobrinho & da Mota Silveira Neto 2025, a genuine
+  quasi-experimental difference-in-differences evaluation of Recife's
+  ZEIS zoning-law intervention, Family A), bringing the total to 15 (10
+  fit Families A/B/C, 5 do not).** Every row has
   `included_in_pooled_estimate = FALSE` — no pooling decision has been
   made for any family, and no family yet has more than one study sharing
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-16 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 14 studies in `effect_sizes.csv` (added
+- Effect sizes now exist for 15 studies in `effect_sizes.csv` (added
   2026-09-16), but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template

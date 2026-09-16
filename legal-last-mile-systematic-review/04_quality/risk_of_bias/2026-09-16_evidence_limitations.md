@@ -50,6 +50,19 @@ Legal Institutional Evidence Appraisal Framework and classified by hand as
 date. None of these 13 changes the corpus's overall design-mix skew toward
 observational/qualitative evidence described below.
 
+**2026-09-16 (still later the same day) third addendum — now 31 studies
+stale (366→397, +8.5%), not yet re-recomputed.** Three further screening
+rounds the same day (S387, S388, and an 18-PDF Google Drive batch,
+S389–S399, minus one genuine duplicate merged into the already-counted
+S102 — see `CHANGELOG.md`) brought the corpus to 397. The cumulative
+staleness is now large enough (8.5% of the corpus) that a full
+recomputation is genuinely owed rather than deferred with a fourth
+addendum — flagged here as a concrete follow-up commitment, not deferred
+indefinitely again. None of these 11 net-new studies is expected to shift
+the corpus's overall design-mix skew toward observational/qualitative
+evidence materially, but that expectation itself has not been verified
+against a fresh computation and should not be treated as equivalent to one.
+
 `RISK_OF_BIAS.md` §3 instructs that this narrative be written **once every
 included study has been individually appraised**
 (`04_quality/appraisal_forms/APPRAISAL_FORM.md`). That has not happened:

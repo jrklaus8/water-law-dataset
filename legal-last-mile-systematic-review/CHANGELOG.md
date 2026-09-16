@@ -4,7 +4,94 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-16 (latest) — Cowork Scopus retrieval status merged into full_text_screening_database.csv
+## 2026-09-16 (latest) — Google Drive batch: 19 PDFs (18 new + 1 duplicate) via Antigravity retrieval, 11 new includes (S389-S399), 1 genuine duplicate caught and merged
+
+Researcher shared a new Google Drive folder of Antigravity-retrieved PDFs.
+Downloaded all 19 files via the Google Drive MCP connector (base64,
+decoded locally); 1 (`RB334FC53A1A9`, Glavanits & Fenyes 2026) duplicated a
+record already screened and included as S387 earlier the same day and was
+skipped without re-processing. The remaining 18 were screened.
+
+**Process note, disclosed rather than papered over**: the first parallel
+`Read` batch of 5 PDFs, and 4 PDFs from a second parallel batch of 5,
+returned only extraction-confirmation text with no visible page images
+(a request-limit truncation), meaning the resulting screening decisions
+were initially made without actually seeing those 9 PDFs' content — a
+direct violation of this project's "never fabricate data" rule. Caught
+this before extraction began, and re-read all 9 individually (Wall 2004,
+Barnes 2006, Whelan & Willis 2007, Goncalves 2014, Umunna 2010, Fracalanza
+et al. 2013, Suharyanto et al. 2018, Nurbaiti & Bambang 2018, Minaverry
+2017) against real page images. All 9 original decisions were confirmed
+correct on re-verification, so no decisions changed, but this is recorded
+here because the near-miss is itself worth disclosing.
+
+**7 excluded**: Wall 2004 (E05, CSIR technical note/feasibility discussion,
+no primary population/exposure/outcome data of its own); Barnes et al. 2006
+(E01, an engineering-education curriculum-design paper, wrong topic);
+Umunna 2010 (E05, a "Letter to the Editor" opinion piece citing secondary
+WHO statistics, no primary methodology); Fracalanza, Jacob & Eca 2013 (E05,
+a theoretical/conceptual essay on environmental-justice water governance,
+no primary data collection); Nurbaiti & Bambang 2018 (E05, self-described
+as a non-systematic "literature study," no primary data collection of its
+own); Jauhari, Soesilo & Priadi 2021 (E06, a Life Cycle Cost
+engineering-costing exercise, consistent with the Tseng et al. 2020
+precedent); Leite, Carmo & Correia 2026 (E01, a corporate Balanced-Scorecard
+management-tool case study, no household-level access analysis).
+
+**11 included and fully extracted** (`extract_s389_s399.py`,
+`build_evidence_map.py` + `fill_evidence_map_s389_s399.py`): Whelan &
+Willis 2007 (rural Tasmania, statutory Public Health Act compliance burden
+and disconnection-liability tensions, 12 interviews); Goncalves 2014
+(Portugal, ERSAR social-tariff income-eligibility impact analysis, 278
+municipalities); Suharyanto et al. 2018 (Salatiga, Indonesia,
+Rapfish/MDS institutional-dimension sustainability scoring of 4 community
+water-supply schemes); Minaverry 2017 (Argentina, jurimetric legal analysis
+of 2 court cases prohibiting water disconnection for non-payment as a
+human-right-to-water violation — appraised with the project's own Legal
+Institutional Evidence Appraisal Framework); Curtis 2019 (BMJ Global
+Health, 17 interviews on institutional behaviour change driving India's
+Swachh Bharat sanitation-coverage transformation); Salom & Khumalo 2022
+(Namibia, Ohangwena Region, a legal-framework transition gap undermining
+rural water management); Lutfia et al. 2024 (Indonesia, Jambon Village
+SPAMDes institutional-dimension characterization); Gouveia,
+Formiga-Johnsson & Britto 2026 (Sao Goncalo, Brazil, "invisible"
+hydrosocial scarcity among nominally-connected households); de Araujo,
+de Morais & de Almeida 2025 (Brazil, 853-municipality panel study of
+institutional-capacity determinants of legally-mandated sanitation-policy
+adoption — flagged as a strong future `effect_sizes.csv` candidate pending
+its full regression table); dos Santos Nascimento Sobrinho & da Mota
+Silveira Neto 2025 (Recife, Brazil, a genuine quasi-experimental
+difference-in-differences evaluation of the ZEIS zoning-law intervention,
+with a real ~23-percentage-point effect on household sewage-network
+access — **added to `effect_sizes.csv`**, Family A); and Alvaredo 2025
+(Barreiro, Portugal, historical archival case study of a mandatory-
+connection/minimum-tariff legal regime, 1930s-1980s).
+
+**Genuine duplicate caught and resolved**: the corpus-wide duplicate audit
+(re-run after extraction, as always) found Alvaredo 2025 already existed
+in the corpus as S102 (`record_id` `R34A26DC79A8B`, extracted 2026-09-15
+from abstract-only text) — a second copy of the same DOI
+(10.15847/cct.36875) reached the pipeline this round under a differently-
+formatted title that produced a distinct content-hash `record_id`
+(`R21CAA5C1809C`), missing the earlier DOI-based dedup pass. Rather than
+keep both, merged this round's fuller full-text extraction (archival
+tariff tables, specific decree citations, year-by-year unpaid-bill
+percentages) into S102's row, corrected `R21CAA5C1809C` from `include` to
+`exclude`/E08 in `full_text_screening_database.csv`, logged it to
+`exclusion_log.csv`, and updated S102's `evidence_map.csv` row (mechanism_
+family MULTIPLE, `study_design_class` reclassified from `doctrinal` to
+`jurimetric` given the fuller archival-empirical-data picture now
+available). Net new studies from this round: 11 include, not 12.
+
+Regenerated `full_text_retrieval_queue.csv`, re-ran the corpus-wide
+duplicate-detection audit a second time after the S102/S399 fix (clean
+against the resulting 397-study corpus), and validated all 13 tracked
+schemas. Net: 811 → 829 decided, 387 → 397 include, 424 → 432 exclude,
+2848 → 2830 open. `evidence_map.csv` quantitative_synthesis_eligible now
+144/397 (was 140/387), qualitative_synthesis_eligible now 334/397 (was
+328/387). `effect_sizes.csv` 14 → 15 rows.
+
+## 2026-09-16 — Cowork Scopus retrieval status merged into full_text_screening_database.csv
 
 Merged a researcher-supplied `full_text_status`/`full_text_location`/
 `notes` update covering all 1,139 previously-open Scopus records (the CSV
