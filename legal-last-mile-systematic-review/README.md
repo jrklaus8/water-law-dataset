@@ -6,13 +6,14 @@ Companion project to the doctoral dissertation *The Legal Last Mile: Administrat
 Law as a Mechanism of Connectivity and Exclusion in Sanitation Governance: A
 Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Klaus).
 
-Project status (2026-09-15): **Search closed, deduplicated, and double-screened
+Project status (2026-09-16): **Search closed, deduplicated, and double-screened
 at title/abstract (Phases 1–5 complete). Full-text screening (Phase 6) is
-live and ongoing — 757 of 3,659 records assessed so far. Full extraction
-(Phase 8) is fully caught up with screening — all 350 current
+live and ongoing — 781 of 3,659 records assessed so far. Full extraction
+(Phase 8) is fully caught up with screening — all 366 current
 includes extracted, no outstanding gap. Evidence classification (Phase 10) is populated
-for all 350. Risk-of-bias rating (Phase 9) and quantitative-feasibility
-assessment (Phase 11) are deliberately not yet started — see below for why.**
+for all 366. Risk-of-bias rating (Phase 9) has a first 12-study partial
+pilot batch appraised; the rest, and quantitative-feasibility
+assessment (Phase 11) at the corpus level, are not yet done — see below for why.**
 
 ---
 
@@ -252,9 +253,9 @@ the number.
 
 **Phase 6 (full-text screening) is live.**
 [`02_screening/full_text/full_text_screening_database.csv`](02_screening/full_text/full_text_screening_database.csv)
-holds all 3,659 title/abstract includes; **757 have been assessed so far
-(350 include / 407 exclude)**, with exclusions broken down by E01–E12 reason in
-`PRISMA_WORKFLOW.md` Phase 6. The remaining 2,902 await the researcher
+holds all 3,659 title/abstract includes; **781 have been assessed so far
+(366 include / 415 exclude)**, with exclusions broken down by E01–E12 reason in
+`PRISMA_WORKFLOW.md` Phase 6. The remaining 2,878 await the researcher
 supplying full text, expected to continue for roughly a month.
 
 **Phase 7 (pilot extraction) was superseded** by the researcher's explicit
@@ -263,11 +264,12 @@ rather than drawing a separate ~10-study pilot subsample first.
 
 **Phase 8 (full extraction) is fully caught up with screening.**
 [`03_extraction/extracted_data/extraction_database.csv`](03_extraction/extracted_data/extraction_database.csv)
-holds **all 350 fully-extracted studies (S001–S351, with S227 a documented post-hoc-duplicate gap)**, matching the 350 current
+holds **all 366 fully-extracted studies (S001–S367, with S227 a documented post-hoc-duplicate gap)**, matching the 366 current
 full-text includes with no outstanding gap.
 
-**Phase 9 (risk of bias) is deliberately not yet applied** to any of the 350
-extracted studies — see §6 above for why that is a disclosed limitation, not
+**Phase 9 (risk of bias) has a first 12-study partial pilot batch appraised
+(2026-09-16); the rest of the 366**
+extracted studies remain unappraised — see §6 above for why that is a disclosed limitation, not
 an oversight.
 
 **Phase 10 (evidence classification) is populated for all 350 extracted

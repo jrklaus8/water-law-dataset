@@ -9,7 +9,83 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — First risk-of-bias appraisal pilot batch (12 studies): RoB 2 (3) and ROBINS-I (9), partial and explicitly flagged
+## 2026-09-16 (latest) — Fifteenth full-text screening batch: 25 records via Zotero-sourced Drive folder, 16 new includes (S352–S367)
+
+Researcher shared a new Drive folder of PDFs retrieved via Zotero. Of 34
+files in the folder, 9 duplicated already-screened records (Muller 2007,
+Hailu Tesfaye et al. 2026, Andrews et al. 2025, Hanjabam 2018, Abdulhadi et
+al. 2024, Mottelson & Venerandi 2020, Nastar et al. 2019 — all decided in
+earlier batches this session) and were skipped after verifying their
+`final_decision` was already set (per the corrected column-verification
+methodology from the TEST-ZIP incident). The remaining 25 were matched by
+title/author to their pre-seeded `record_id` in
+`full_text_screening_database.csv` and screened.
+
+**One file/title mismatch found, not screened, flagged for the
+researcher:** the Drive file named "Singh S. and Singh B. — 2024 —
+Building Political Capabilities through Participation for Environmental
+Justice in Informal Housing" actually contains two chapters from an
+unrelated book, *Environmental Justice in Nepal* (Sherpa and Awale, on
+climate-change adaptation and a Kavre water-scarcity case study) — a
+keyword search of the full downloaded text confirmed no trace of "Singh,"
+"political capabilities," or "informal housing" anywhere in it. Record
+`R81549C4709FC` (the pre-seeded queue entry for the real Singh & Singh
+paper) is left unscreened rather than screening the wrong content under
+the right title, or the right title under wrong content.
+
+16 included (S352–S367): Wamuchiru 2017 (Dar es Salaam grassroots water
+citizenship); Marcillo, Krometis & Krometis 2021 (Virginia SDWA violations
+by ownership/demographics, adjusted ORs); Crow & Odaba 2010 (Nairobi slum
+water access and institutional learning); Singh et al. 2022 (Kampala fecal
+sludge business models); Trémolet & Smith 2026 (OECD economic-regulation
+synthesis); Hove et al. 2021 (South African rural water stakeholder
+participation); Williams et al. 2025 (Arizona groundwater decline/
+contamination by race and Tribal oversight, adjusted ORs); Doyle et al.
+2018 (Crow Reservation tribal water utility jurisdictional/regulatory
+gaps); Galway 2016 (First Nations Ontario drinking-water advisories);
+Atigaku et al. 2026 (Togo community water governance, connection-cost
+data); Khangale, Madumo & Tshiyoyo 2023 (South African intergovernmental
+water-service relations); Sofiyah, Aji et al. 2025 (Jakarta sanitation
+participation); Sylvester, Hutchings & Mdee 2023 (England/Wales water-
+poverty systematic documentary review); Kharmylliem & Kipgen 2021
+(Shillong formal/informal water-governance institutions); Quattrochi et
+al. 2021 (BMJ Global Health — companion infrastructure/access/governance
+outcomes paper to the same DRC VEA cluster-RCT already in the corpus as
+S294, which reports diarrhea/growth/institutions outcomes; included as a
+distinct-outcomes companion paper, not a duplicate, per standard PRISMA
+practice for multi-outcome trial publications); Atem et al. 2026 (Foumbot,
+Cameroon water-resource-management barriers, chi-square test on
+water-source distribution, p=0.0001388).
+
+9 excluded: Ramachandraiah 2011 (E01, flood-disaster response, water/
+sanitation a secondary topic); Howard et al. 2020 (E05, WaSH/COVID-19
+narrative review, no study-specific empirical data); Jabari et al. 2020
+(E06, water-security risk-index engineering methodology); Willetts et al.
+2022 (E01, climate-adaptation planning process, not access barriers);
+Mashingaidze 2013 (E07, Kariba Dam displacement — excluded resources are
+fishery/tourism/hydropower/wildlife, not household water/sanitation
+service); Nagheeby et al. 2026 (E05, conceptual "capitalist Black Hole"
+research note, no identifiable study-level population/exposure/outcome);
+Inam 2025 (E01, earthquake-zone women's psychosocial-health interviews,
+hygiene a minor secondary topic); Gomes et al. 2018 (E04, simulation-
+gaming capacity-building workshop evaluation, outcome is participant
+learning, not access/connection/service).
+
+While fixing 9 extraction-database rows' mismatched core mechanism
+booleans against their own detailed sub-codes (e.g. `fees=TRUE` recorded
+without the parent `burden=TRUE`, `discretion=TRUE` without
+`discretion_accommodation=TRUE`) — an internal-consistency check run
+before populating `evidence_map.csv`'s `mechanism_family` — 9 of the 16
+new rows needed a core-boolean correction; none required data invention,
+only aligning the core boolean with sub-codes already recorded in the same
+row.
+
+Net: 757 → 781 decided, 350 → 366 include, 407 → 415 exclude, 2902 → 2878
+open. Extraction and evidence_map fully caught up (366/366, no gap beyond
+the existing documented S227 gap). `code/analysis/validate_schemas.py`
+confirms all 13 checked files match their documented schema.
+
+## 2026-09-16 — First risk-of-bias appraisal pilot batch (12 studies): RoB 2 (3) and ROBINS-I (9), partial and explicitly flagged
 
 Began item 4 of the user-approved work plan: per-study appraisal against the
 official validated tools. Started with the two smallest `risk_of_bias_tool`

@@ -2,6 +2,17 @@
 
 ## Status of this note
 
+**Corpus-composition figures below (design mix, jurisdiction coverage,
+etc.) are computed against the 350-study corpus as it stood earlier on
+2026-09-16, before a same-day batch of 16 further includes (S352–S367,
+see `CHANGELOG.md`) brought the total to 366.** The percentages and
+patterns described are not expected to shift materially with 16 more
+studies, but the exact counts below should not be quoted as the corpus's
+current total — check `evidence_map.csv` directly for that. This note was
+not recomputed against the 366-study corpus because doing so was outside
+the scope of the PDF-screening batch that added those 16 studies; a full
+recomputation is still owed before this note is treated as final.
+
 `RISK_OF_BIAS.md` §3 instructs that this narrative be written **once every
 included study has been individually appraised**
 (`04_quality/appraisal_forms/APPRAISAL_FORM.md`). That has not happened:

@@ -7,12 +7,13 @@ enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
 `PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
 Phase 6 was seeded with. Full-text screening is now live and ongoing
-(updated 2026-09-15): of 3,659, 757 have been assessed (350 include / 407
+(updated 2026-09-16): of 3,659, 781 have been assessed (366 include / 415
 exclude), with "Reports not retrieved" still at 0 since every record
 reaching this pipeline so far has arrived with full text already in hand
-via researcher chat upload — the remaining 2,902 are simply not yet
-reached, not confirmed unretrievable. This is expected to keep growing
-over roughly a month as the researcher continues supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
+via researcher chat upload or Drive-shared Zotero export — the remaining
+2,878 are simply not yet reached, not confirmed unretrievable. This is
+expected to keep growing over roughly a month as the researcher continues
+supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
 illustrative, or a placeholder dressed as data; every filled count traces
 to `01_search/raw_exports/`, `01_search/deduplicated/`, or
 `02_screening/title_abstract/screening_database.csv` as of this date, and
@@ -110,24 +111,24 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     actually retrieved. See the reviewer_2 agreement-rate caveat above
     before treating 3,659 as settled without qualification.]
   Reports not retrieved (n = 0)
-    [Not a claim that the remaining 2,902 are all retrievable -- it means
+    [Not a claim that the remaining 2,878 are all retrievable -- it means
     none has yet been confirmed unretrievable. Every record reaching
-    full-text screening so far arrived via researcher chat upload with
-    full text already in hand, so "not retrieved" has not yet had reason
-    to be used; expect this to change as retrieval of the full pool
-    continues.]
-  Reports assessed for eligibility (n = 757, PROVISIONAL AND GROWING)
+    full-text screening so far arrived via researcher chat upload or
+    Drive-shared Zotero export with full text already in hand, so "not
+    retrieved" has not yet had reason to be used; expect this to change as
+    retrieval of the full pool continues.]
+  Reports assessed for eligibility (n = 781, PROVISIONAL AND GROWING)
     [02_screening/full_text/full_text_screening_database.csv, updated
-    2026-09-16. Full-text screening is ongoing, not complete -- 2,902 of
+    2026-09-16. Full-text screening is ongoing, not complete -- 2,878 of
     3,659 records have not yet been reached.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 407 total, PROVISIONAL):
-    E01 wrong topic (n = 87)
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 415 total, PROVISIONAL):
+    E01 wrong topic (n = 90)
     E02 wrong population (n = 32)
     E03 wrong exposure (n = 9)
-    E04 wrong outcome (n = 38)
-    E05 no empirical evidence (n = 38)
-    E06 engineering only (n = 31)
-    E07 wrong service (n = 13)
+    E04 wrong outcome (n = 39)
+    E05 no empirical evidence (n = 40)
+    E06 engineering only (n = 32)
+    E07 wrong service (n = 14)
     E08 duplicate (n = 5)
     E09 insufficient information (n = 1)
     E10 inaccessible full text (n = 151)
@@ -135,11 +136,11 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E12 wrong study design (n = 2)
 
 Included
-  Studies included in systematic review (n = 350, PROVISIONAL AND GROWING)
+  Studies included in systematic review (n = 366, PROVISIONAL AND GROWING)
     [Full-text include count as of 2026-09-16; full-text screening is
-    still ongoing across the remaining 2,902 unreached records.]
-  Studies included in full extraction so far (n = 350)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S351 (S227
+    still ongoing across the remaining 2,878 unreached records.]
+  Studies included in full extraction so far (n = 366)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S367 (S227
     a documented post-hoc-duplicate gap, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-16 -- no outstanding gap.]
   Studies included in quantitative evidence synthesis (n = 11, PROVISIONAL AND GROWING)
