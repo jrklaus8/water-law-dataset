@@ -9,7 +9,26 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Twelfth and thirteenth full-text screening batches: 26 records decided (18 new includes, S330–S347), from direct chat upload and a Drive "proxy_downloads" folder
+## 2026-09-16 (latest) — Fourteenth full-text screening batch: 7 records via direct chat upload, 4 new includes (S348–S351)
+
+Seven PDFs supplied directly via chat upload (no record_id in filename this
+round — matched to `full_text_screening_database.csv` by title instead).
+Four included: Andrews, Beynon & Baafi (2025, Ghanaian local-government
+infrastructure access and governance quality, S348); Hanjabam (2018,
+community-managed 24x7 rural water supply model, Manipur, India, S349);
+Abdulhadi, Bailey & Van Noorloos (2024, PRISMA scoping review of WASH/housing
+access inequalities in LMIC slums, S350, reinstated per the E12
+secondary-review policy); Nastar, Isoke, Kulabako & Silvestri (2019, politics
+of land tenure and water access, Kampala, Uganda, S351). Three excluded: a
+2007 conceptual/policy essay on macro-scale climate-adaptation financing with
+no empirical last-mile data (E05); a mixed-methods study of sanitation
+*workers'* occupational PPE use rather than household access (E02, wrong
+population); and an urban-morphology/spatial-form study where water/sanitation
+access was only a minor secondary household-survey variable (E01).
+
+Net: 347 → 351 includes, 403 → 406 excludes, 750 → 757 decided.
+
+## 2026-09-16 — Twelfth and thirteenth full-text screening batches: 26 records decided (18 new includes, S330–S347), from direct chat upload and a Drive "proxy_downloads" folder
 
 Two records supplied directly via chat upload were screened first
 (R3A70FDFC6D73, a Peru academic specialization thesis with real
