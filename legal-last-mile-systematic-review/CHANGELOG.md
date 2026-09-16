@@ -4,7 +4,34 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-16 (latest) — Single-record screening: Glavanits & Fenyes 2026, "Beyond Potty Parity" (S387)
+## 2026-09-16 (latest) — Single-record screening: Li, McManus & Cronk 2025, Liberia water-point functionality (S388), extended into effect_sizes.csv
+
+Researcher supplied one more PDF directly; identified via DOI/title match
+as record `R897B0E5CB3C7`, confirmed genuinely open. **Included** and
+fully extracted as S388: a large-sample (n=11,065 Afridev hand pumps)
+quantitative study of Liberian water-point functionality, with a genuine
+institutional/governance exposure (maintainer type — no management, local
+authority, institutional organization, or WASH committee) and a real,
+locatable adjusted-OR effect estimate (Local vs No Management: adjusted
+OR=3.733, 95% CI 2.993–4.657, p<0.0001).
+
+**Added to `effect_sizes.csv`** (14th row) — the strongest new candidate
+since the last extension: a genuine institutional-management
+exposure-vs-comparator contrast from a large administrative census, with a
+real adjusted OR and CI, not a fabricated or forced fit. `synthesis_family`
+left blank rather than assigned to Family A/B/C: the exposure (who is
+institutionally responsible for a water point's maintenance) doesn't
+cleanly match legal recognition/tenure (Family A), application-process
+bureaucratic assistance (Family B), or an access-restricting barrier
+(Family C) — a real judgment call flagged for the manuscript stage rather
+than guessed, per `PROJECT_SPEC.md` §8.
+
+Regenerated `full_text_retrieval_queue.csv`, re-ran the duplicate audit
+(clean against the resulting 387-study corpus), and validated all 13
+tracked schemas. Net: 810 → 811 decided, 386 → 387 include, 2849 → 2848
+open; `effect_sizes.csv` 13 → 14 rows.
+
+## 2026-09-16 — Single-record screening: Glavanits & Fenyes 2026, "Beyond Potty Parity" (S387)
 
 Researcher supplied one more PDF directly (no `record_id` in the filename
 this time), identified via DOI/title match against
