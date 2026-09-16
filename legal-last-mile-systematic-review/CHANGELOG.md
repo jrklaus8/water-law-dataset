@@ -9,7 +9,53 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Fifteenth full-text screening batch: 25 records via Zotero-sourced Drive folder, 16 new includes (S352–S367)
+## 2026-09-16 (latest) — Duplicate audit re-run on 366-study corpus (clean); effect_sizes.csv extended with 2 more studies (S353, S358)
+
+Two follow-up items after the Zotero-batch screening round, both requested
+directly by the researcher.
+
+**Duplicate-detection audit re-run** across the full 366-study corpus
+using the same four methods as the earlier post-hoc audit (exact DOI
+match, exact normalized-title match, fuzzy-title similarity via
+`difflib.SequenceMatcher` ratio > 0.85 with a length-difference
+pre-filter, and duplicate-`record_id` detection via regex over
+`extraction_note`). **Result: clean — zero duplicates found** by any
+method across all 366 studies. One incidental, non-duplicate finding:
+8 early studies (S076–S083) have no `record_id` recorded in their
+`extraction_note` at all — not a regex-matching failure (confirmed by
+direct substring search), a genuine traceability gap from an early
+extraction batch that predates the "record_id X." note convention. Flagged
+for the researcher's awareness; not fixed in this pass since it does not
+affect data correctness or introduce a duplication risk, only limits how
+easily those 8 rows can be cross-referenced back to their screening
+record.
+
+**`effect_sizes.csv` extended from 11 to 13 rows**, reviewing the two
+studies from the 2026-09-16 Zotero batch with real, calculable effect
+estimates: **S353** (Marcillo, Krometis & Krometis 2021 — private vs.
+public utility ownership, adjusted OR=1.899 [95% CI 1.455–2.478] for SDWA
+monitoring/reporting violations) and **S358** (Williams et al. 2025 —
+Tribal oversight/primacy regulatory jurisdiction vs. state-primacy,
+adjusted OR=0.62, p<0.001, for groundwater-decline risk). Both were
+checked against `ANALYSIS_PLAN.md` §2's decision tree the same way as the
+original 11: S358's Tribal-oversight exposure is assigned Family A (legal/
+jurisdictional recognition), flagged as a looser fit than S084/S085/S142
+since it operates at the level of environmental-regulatory authority
+rather than household tenure/eligibility. S353's ownership-type exposure
+does not match any of Families A/B/C and is recorded without a family
+assignment, same treatment as S149/S178/S312 in the original batch. Both
+studies also report real race-based effects (e.g. S358's OR=2.01 for
+higher-Black-population communities) that were deliberately **not** used
+as the primary extracted effect, for the same reason S135 was excluded
+from this file entirely in the original pass — population demographic
+composition is not itself a legal/institutional exposure. Both new rows
+have `included_in_pooled_estimate = FALSE` with a decision-tree-cited
+reason, consistent with every other row in the file.
+
+`code/analysis/validate_schemas.py` confirms all 13 checked files still
+match their documented schema.
+
+## 2026-09-16 — Fifteenth full-text screening batch: 25 records via Zotero-sourced Drive folder, 16 new includes (S352–S367)
 
 Researcher shared a new Drive folder of PDFs retrieved via Zotero. Of 34
 files in the folder, 9 duplicated already-screened records (Muller 2007,

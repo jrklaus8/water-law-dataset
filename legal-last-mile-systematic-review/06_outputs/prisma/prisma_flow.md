@@ -143,14 +143,15 @@ Included
     [03_extraction/extracted_data/extraction_database.csv, S001-S367 (S227
     a documented post-hoc-duplicate gap, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-16 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 11, PROVISIONAL AND GROWING)
-    [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16.
-    These are the studies with a genuine, non-fabricated exposure-vs-
-    comparator contrast and a locatable effect estimate -- a much smaller,
-    stricter subset than the 124 studies evidence_map.csv flags
-    quantitative_synthesis_eligible = TRUE, most of which are single-group
-    descriptive statistics with no defined comparator. See CHANGELOG.md
-    2026-09-16 for the full study list and exclusion rationale.]
+  Studies included in quantitative evidence synthesis (n = 13, PROVISIONAL AND GROWING)
+    [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16,
+    extended same day with 2 more studies (S353, S358) from the Zotero
+    Drive-folder batch. These are the studies with a genuine, non-fabricated
+    exposure-vs-comparator contrast and a locatable effect estimate -- a
+    much smaller, stricter subset than the 130 studies evidence_map.csv
+    flags quantitative_synthesis_eligible = TRUE, most of which are
+    single-group descriptive statistics with no defined comparator. See
+    CHANGELOG.md 2026-09-16 for the full study list and exclusion rationale.]
   Studies included in restricted meta-analysis, by family (n = 0)
     [No pooling has occurred -- every effect_sizes.csv row has
     included_in_pooled_estimate = FALSE at this stage (project is still

@@ -292,7 +292,9 @@ evidence of anything.
   effect_sizes.csv` found only 11 of those 124 studies have a genuine,
   non-fabricated exposure-vs-comparator contrast and a locatable effect
   estimate** (8 fit `PROJECT_SPEC.md` §8's Families A/B/C; 3 do not match
-  any existing family's exposure/outcome definitions). Every row has
+  any existing family's exposure/outcome definitions). **Extended the same
+  day with 2 more studies (S353, S358) from a later PDF batch, bringing
+  the total to 13 (9 fit Families A/B/C, 4 do not).** Every row has
   `included_in_pooled_estimate = FALSE` — no pooling decision has been
   made for any family, and no family yet has more than one study sharing
   a genuinely comparable exposure-comparator definition, so none is close
