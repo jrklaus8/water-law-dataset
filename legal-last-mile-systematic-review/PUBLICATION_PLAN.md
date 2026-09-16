@@ -96,3 +96,31 @@ No manuscript drafting has begun beyond the outline. No journal has been
 selected. This plan is written ahead of the search precisely so that
 publication-shape decisions (journal fit, structure) do not retroactively
 pressure the evidence synthesis.
+
+## 7. Post-publication idea: agentifying the review's methodology
+
+**Not actionable now — noted here so it isn't lost by the time it is.**
+Once this review is published, its codebase (deduplication, screening,
+extraction, and evidence-classification scripts under `code/`, run against
+`CODEBOOK.md`'s 92-field schema and `INCLUSION_EXCLUSION.md`'s E01–E12
+criteria) is a plausible candidate for Paper2Agent-style "agentification"
+(Miao, Davis, Zhang, Pritchard & Zou, "Reimagining research papers as
+interactive and reliable AI agents," *Nature*, 2026,
+[github.com/jmiao24/Paper2Agent](https://github.com/jmiao24/Paper2Agent)).
+Unlike most legal scholarship, this review has a real, reproducible,
+scripted methodology rather than only a narrative account of one — which is
+the specific precondition Paper2Agent's tool-extraction pipeline requires.
+
+The resulting agent could let another researcher point it at their own
+full-text corpus and have it apply this review's eligibility screen,
+92-field extraction schema, and mechanism/outcome evidence-classification
+logic to their own jurisdiction or service sector — making the
+methodology reusable, not just reported. Even the non-code parts (the
+conceptual framework, the codebook, the risk-of-bias appraisal framework)
+could be exposed as queryable MCP resources. This would be citable
+directly against the Paper2Agent paper in the dissertation's contribution
+or future-research discussion.
+
+This is deliberately deferred: the review is still mid-screening, has no
+manuscript yet, and Paper2Agent operates on a published paper plus its
+codebase — both preconditions this project doesn't yet meet.
