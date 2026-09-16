@@ -9,7 +9,94 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — AMSTAR 2 appraisal batch: all 17 systematic-review-secondary studies, all "Not ratable"
+## 2026-09-16 (latest) — Sixteenth full-text screening batch: 13 records via researcher-supplied PDFs, 6 new includes (S368-S373)
+
+Screened 13 full-text PDFs supplied directly by the researcher (retrieved via
+the "Antigravity" agent's Unpaywall-based retrieval pass, per the retrieval
+prompt drafted earlier this session), all confirmed genuinely open
+(`final_decision` blank) in `full_text_screening_database.csv` before
+screening. Recorded via `record_batch18.py`.
+
+**7 excluded**: Marques 2008 (E01, Portuguese utility TFP/efficiency study,
+no legal/institutional access mechanism); de Wit et al. 2024 (E01, WASH-
+sector historiography, meta-level not empirical); Félix-López et al. 2023
+(E07, reclaimed-water market economics, wrong service); Kireitseva et al.
+2025 (E03, Ukraine water-resource SWOT/index, access percentages are index
+inputs not a legal/institutional exposure); Sinharoy et al. 2022 (E05, ARISE
+scales protocol with no results yet reported); Weets & Katz 2024 (E04,
+global WASH-AMR policy mapping, outcome is AMR risk not access); Tseng et
+al. 2020 (E06, ingredients-based WASH-in-healthcare-facilities costing
+study, engineering/cost-estimation only).
+
+**6 included and fully extracted** (`extract_s368_s373.py`,
+`build_evidence_map.py` + `fill_evidence_map_s368_s373.py`):
+
+- **S368** — Makalela & Molepo 2025 (Lepelle-Nkumpi Municipality, South
+  Africa; n=449 household survey; chi-square/correlation analysis of
+  COVID-19 and municipal water/sanitation/electricity/refuse service-
+  delivery adequacy). Note: the source paper's own Statement-B1-B4 item
+  labels in its prose narrative do not consistently match its own Table 1
+  row order — reported as the source itself narrates it, flagged in
+  `extraction_note` rather than silently resolved by guessing.
+- **S369** — Hove et al. 2019, "Water is life" (BMJ Global Health), a
+  qualitative PAR/Photovoice study in 3 Agincourt HDSS villages, Mpumalanga,
+  South Africa. **Companion paper to S357** (Hove et al. 2021, Global Health
+  Action, same VAPAR programme and study area) under this review's
+  established companion-paper precedent (distinct reported findings, not a
+  duplicate) — and, because full text was read here (unlike S357's
+  abstract-only extraction), the fuller of the pair.
+- **S370** — Macura et al. 2023 (BMJ Global Health), a systematic mapping
+  review of gender equality and social inclusion (GESI) in WASH
+  interventions (463 studies/499 publications, 62 LMICs). Because full text
+  was available, this study's `risk_of_bias_rating` could be **positively
+  determined as Critically Low** (not "Not ratable") — the review authors
+  themselves explicitly state no critical appraisal of individual included
+  studies was conducted, a directly confirmed AMSTAR 2 item-9 critical
+  weakness, distinguishing this from the earlier 17-study AMSTAR 2 batch
+  where the limiting factor was insufficient extraction depth rather than a
+  confirmed fact.
+- **S371** — Nurmaningtyas, Hamzah & Aprianti 2026, a sequential mixed-
+  methods SWOT-AHP study of Tobati Village, Jayapura, Indonesia — an
+  indigenous coastal water-based settlement with institutional dualism
+  between customary (Ondoafi/tribal-chief) and formal government authority.
+- **S372** — Nelson et al. 2021 (BMJ Open), a realist review of how
+  community participation shapes WASH availability, behaviour-change, and
+  infrastructure-longevity outcomes across 73 primary studies (29 LMICs).
+  Same confirmed-not-guessed **Critically Low** AMSTAR 2 rating logic as
+  S370 applies here (authors explicitly state formal appraisal of
+  individual included papers was not carried out, citing realist-review
+  convention).
+- **S373** — Burt, Ercümen, Billava & Ray 2018 (World Development), a
+  genuine quasi-experimental matched-cohort study (genetic matching, 8
+  continuous-water-supply pilot wards vs. 8 matched intermittent-supply
+  control wards, Hubli-Dharwad, India) of a tariff/service-level reform's
+  effects on household costs, time savings, and equity. Flagged in
+  `extraction_note` as a strong future `effect_sizes.csv` candidate once the
+  paper's full regression-output table (not yet read in this pass) is
+  retrieved — not added this round because only headline point estimates
+  from the results narrative, not the full coefficient/CI table, were
+  available.
+
+Re-ran the corpus-wide duplicate-detection audit (4 independent methods)
+against the resulting 372-study corpus: clean, no new duplicates.
+
+Net: 781 → 794 decided, 366 → 372 include, 415 → 422 exclude, 2878 → 2865
+open. Extraction and evidence_map fully caught up (372/372, no gap beyond
+the pre-existing S227). `evidence_map.csv` quantitative_synthesis_eligible
+now 132/372 (was 130/366), qualitative_synthesis_eligible now 320/372 (was
+316/366). `effect_sizes.csv` unchanged at 13 rows this round (S373 flagged
+as a candidate, not added, per the discipline in `ANALYSIS_PLAN.md` §2 of
+never forcing an entry without the full effect-estimate table in hand).
+
+**Note on `04_quality/risk_of_bias/2026-09-16_evidence_limitations.md`**:
+that narrative's design-mix/jurisdiction/mechanism-family percentage
+breakdowns were computed against the 366-study corpus earlier the same day
+and are now stale by these 6 studies (1.6% of the corpus) — flagged rather
+than silently left inconsistent; a full recomputation is still owed as a
+follow-up, not done in this round given the small magnitude of the change
+relative to the effort of re-deriving every percentage in that document.
+
+## 2026-09-16 — AMSTAR 2 appraisal batch: all 17 systematic-review-secondary studies, all "Not ratable"
 
 Continued Phase 9 appraisal to the next tool group after the RoB 2/
 ROBINS-I pilot: the 17 studies flagged `study_design_class =

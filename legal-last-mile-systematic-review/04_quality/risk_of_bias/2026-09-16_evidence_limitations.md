@@ -11,6 +11,28 @@ but every count and percentage in this version is a fresh computation
 against `extraction_database.csv`/`evidence_map.csv` as of 366 studies —
 none carried over unchanged from the prior version.
 
+**2026-09-16 (still later the same day) addendum — now 6 studies stale,
+not yet re-recomputed.** A sixteenth full-text screening batch (13
+researcher-supplied PDFs) added 6 further includes (S368–S373, see
+`CHANGELOG.md`), growing the corpus from 366 to 372 studies (+1.6%). Every
+count and percentage in the body of this file below still reflects the
+366-study corpus and has **not** been recomputed for this small addendum —
+flagged here rather than silently left stale, per this project's usual
+practice, but a full recomputation was judged not worth the effort for a
+1.6% corpus change and is still owed as a follow-up before this note is
+treated as current. For reference, what the 6 new studies add to the
+picture: 1 quantitative cross-sectional survey (S368, `JBI`), 1 qualitative
+PAR/Photovoice study (S369, `CASP`) that is a companion paper to the
+already-included S357, 2 secondary systematic/realist reviews (S370, S372,
+`AMSTAR2`) — both of which, unusually, received a **positively-determined**
+Critically Low rating rather than joining the "Not ratable" 17-study group,
+because their own full text explicitly confirms no critical appraisal of
+included studies was performed — 1 mixed-methods SWOT-AHP case study
+(S371, `MMAT`), and 1 quasi-experimental matched-cohort study (S373,
+`ROBINS-I`) that is a strong candidate for a future `effect_sizes.csv`
+entry. None of these 6 changes the corpus's overall design-mix skew toward
+observational/qualitative evidence described below.
+
 `RISK_OF_BIAS.md` §3 instructs that this narrative be written **once every
 included study has been individually appraised**
 (`04_quality/appraisal_forms/APPRAISAL_FORM.md`). That has not happened:
