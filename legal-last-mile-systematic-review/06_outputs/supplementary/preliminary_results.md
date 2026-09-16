@@ -278,15 +278,27 @@ evidence of anything.
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 40 studies being individually
+  for any candidate synthesis family** — 124 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary
   studies). That corpus-level judgment has not been made for any family.
-- No effect size, pooled or otherwise, exists in this project. Phases
-  12–16 (meta-analysis, SWiM synthesis, sensitivity analysis, publication
-  bias, PRISMA reporting) have R-script/template scaffolding built but
-  are all blocked on Phase 11 and have not been run against real data.
+  **2026-09-16: a stricter first pass through `05_analysis/effect_sizes/
+  effect_sizes.csv` found only 11 of those 124 studies have a genuine,
+  non-fabricated exposure-vs-comparator contrast and a locatable effect
+  estimate** (8 fit `PROJECT_SPEC.md` §8's Families A/B/C; 3 do not match
+  any existing family's exposure/outcome definitions). Every row has
+  `included_in_pooled_estimate = FALSE` — no pooling decision has been
+  made for any family, and no family yet has more than one study sharing
+  a genuinely comparable exposure-comparator definition, so none is close
+  to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-16 for the
+  full list and exclusion rationale.
+- Effect sizes now exist for 11 studies in `effect_sizes.csv` (added
+  2026-09-16), but none is pooled, and no family-level meta-analysis has
+  been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
+  analysis, publication bias, PRISMA reporting) have R-script/template
+  scaffolding built but are all blocked on Phase 11 and have not been run
+  against real data.
 
 ## Why this file is still preliminary, not a results section
 

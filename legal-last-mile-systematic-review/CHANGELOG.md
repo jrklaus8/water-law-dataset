@@ -9,7 +9,70 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Post-hoc duplicate-detection audit: one true duplicate found and removed (S227)
+## 2026-09-16 (latest) — First population of `effect_sizes.csv`: 11 rows from the 124 quantitative-synthesis-eligible studies
+
+With no new PDFs pending, worked through the user-approved plan's second
+item: populating `05_analysis/effect_sizes/effect_sizes.csv` (previously
+header-only). Per `DATA_DICTIONARY.md` and
+`03_extraction/extraction_form/EXTRACTION_FORM.md`, this file is **not** a
+mirror of every `evidence_map.csv` row flagged
+`quantitative_synthesis_eligible = TRUE` — it records only effects that are
+actually judged eligible for quantitative synthesis per
+`ANALYSIS_PLAN.md` §2's decision tree (a clearly defined exposure, a
+meaningful comparator, a clearly defined and in-scope outcome, and an
+available or defensibly calculable effect estimate).
+
+Reviewed all 124 quant-eligible studies' full extracted effect data
+(`extraction_database.csv`'s `effect_measure`/`effect_estimate`/CI/SE/
+`p_value`/`model_type`/`study_design` fields). The large majority are
+single-group descriptive statistics with no defined comparator and were
+correctly left out. Identified **11 studies** with a genuine,
+non-fabricated exposure-vs-comparator contrast and a locatable numeric or
+faithfully-summarized effect: **S037, S057, S084, S085, S104, S142, S149,
+S174, S178, S294, S312**. Also re-checked three studies that looked
+superficially promising and excluded them because the exposure or outcome
+did not match a legal/institutional exposure or an access-outcome in
+`PROJECT_SPEC.md` §8's scope: **S006** (real OR=18.12 but for a
+"management-strategy effectiveness" outcome, not access), **S039** (no
+defined legal/institutional exposure-comparator, purely descriptive), and
+**S135** (racial composition, not a legal/administrative exposure, drives
+the model). A follow-up keyword/CI sweep across the remaining 110
+quant-eligible studies not in the original 14-study working list turned up
+11 more regression-bearing candidates (S060, S062, S070, S075, S081, S143,
+S189, S213, S219, S282, S348); each was checked and excluded for the same
+reasons (before/after with no comparator, non-legal exposure, or no
+locatable numeric effect) — none added.
+
+Of the 11 rows added: **4 assigned to `PROJECT_SPEC.md` §8 Family A**
+(legal recognition/eligibility → access: S037, S057, S084, S142; S104 also
+tagged Family A but flagged with a caveat that its tenure exposure is one
+covariate among several, not a dedicated test), **2 to Family B**
+(administrative assistance → connection/formalization: S085, S294), **1 to
+Family C** (institutional capacity as an administrative-barrier proxy:
+S174), and **3 left with no family** (S149, S178, S312) because their
+exposure or outcome does not match any of the three existing families'
+definitions as written — per `DATA_DICTIONARY.md`'s allowance for "a newly
+identified family," but a single study each does not justify formally
+defining one yet. S312's case also surfaced a coding issue worth flagging
+without unilaterally fixing it: `evidence_map.csv` codes its outcome as
+`effective_access`, but the actual outcome is jurisdiction-level policy
+adoption (a shutoff moratorium), not household access — noted in the new
+row's `provenance_note` rather than silently pooled or silently corrected.
+
+Every row has `included_in_pooled_estimate = FALSE`, since no actual
+meta-analytic pooling has occurred in this project (still pre-Phase-12);
+each `exclusion_from_pooling_reason` cites the specific
+`ANALYSIS_PLAN.md` §2 decision-tree branch responsible (most commonly:
+single study per exposure-comparator definition, or a numeric effect size
+not locatable in the extracted abstract text without re-extracting the
+full source PDF, which was not done rather than approximated, per
+`PROJECT_SPEC.md` §14).
+
+`code/analysis/validate_schemas.py` confirms `effect_sizes.csv` (17
+fields) still matches its documented schema; all 13 checked project CSVs
+pass. No other file changed.
+
+## 2026-09-16 — Post-hoc duplicate-detection audit: one true duplicate found and removed (S227)
 
 While waiting on further PDFs, ran a full duplicate audit across all 351
 included studies: exact-DOI matching, exact-normalized-title matching,
