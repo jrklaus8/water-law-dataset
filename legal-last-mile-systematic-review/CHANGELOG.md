@@ -9,7 +9,32 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-16 (latest) — Duplicate audit re-run on 366-study corpus (clean); effect_sizes.csv extended with 2 more studies (S353, S358)
+## 2026-09-16 (latest) — Cross-cutting evidence-limitations narrative recomputed against 366-study corpus
+
+The preliminary RoB narrative written earlier the same day (`04_quality/
+risk_of_bias/2026-09-16_evidence_limitations.md`) explicitly flagged that
+its corpus-composition figures were computed against 350 studies, before
+that day's Zotero-batch screening round brought the total to 366, and
+that "a full recomputation is still owed." Recomputed every figure in the
+file directly from `extraction_database.csv`/`evidence_map.csv` at 366
+studies: design mix (qualitative 39%, mixed-methods 20%, quasi-
+experimental/experimental only 4% combined), mechanism_certainty (7%
+reach quasi-experimental/experimental levels 3-4), country/legal-system
+coverage (Brazil/India/South Africa 29% of corpus; common law 41%/civil
+law 39%/mixed 13%), abstract-only-extraction rate (rose from 57/350, 16%,
+to 69/366, 19%, once both disclosure-sentence phrasings used across
+different extraction batches were searched for), mechanism-family
+coverage, and Legal Institutional Evidence Appraisal Framework usage (73
+of 366, 20%, now also covering S356/S364's cross-country regulatory
+syntheses). None of the underlying patterns shifted materially with the
+16 additional studies, as anticipated, but every number in the file is
+now a fresh computation rather than a carried-over stale figure. Also
+folded in the AMSTAR-2/CASP tool-assignment fix's continued consistency
+check and the 8-study record_id traceability gap found during the same-
+day duplicate audit. "Overall confidence" remains deliberately blank
+pending real Phase 9 ratings.
+
+## 2026-09-16 — Duplicate audit re-run on 366-study corpus (clean); effect_sizes.csv extended with 2 more studies (S353, S358)
 
 Two follow-up items after the Zotero-batch screening round, both requested
 directly by the researcher.
