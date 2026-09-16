@@ -9,7 +9,90 @@ amendments in particular must be logged here with rationale).
 Nothing yet — no phase past repository setup and source verification has
 been reached.
 
-## 2026-09-15 (latest) — Tenth full-text screening batch: 213 records decided from a third Drive folder, 68 new includes (S250–S317), byte-size cluster-sampling methodology and repository-landing-page-abstract policy formalized
+## 2026-09-15 (latest) — Eleventh full-text screening batch (107 records from an external OA-retrieval mission's Drive delivery), data-integrity correction, and E12 (secondary/systematic review) policy amendment
+
+A researcher-run external tool ("Antigravity") independently executed an
+Unpaywall/OpenAlex open-access retrieval mission against the review's full
+record pool and pushed its tracking CSVs directly to this branch as commit
+`bed36a4` (74 `full_text_retrieval_results_*.csv` files in
+`02_screening/full_text/retrieval_results/` + one empty SSRN raw-export
+file). Per this project's standing convention, the retrieved PDFs
+themselves were deliberately kept out of the git repository (stored only
+on the researcher's local machine); only the CSV tracking files were
+committed. The commit was independently verified (`git fetch` + `git show
+--stat`) before being merged — it was purely additive and touched no
+existing tracked file.
+
+Cross-referencing the 541 `retrieved` record_ids in those CSVs against
+`full_text_screening_database.csv` found 322 corresponding to
+still-open-queue records; of those, 107 were reachable to this AI session
+via a Google Drive folder ("TEST ZIP") the researcher subsequently shared,
+containing the actual retrieved PDFs for that subset. The remaining ~215
+retrieved-but-unreachable PDFs stay on the researcher's local machine,
+outside this session's access, pending the researcher supplying them via
+chat or Drive in a future batch.
+
+**Data-integrity bug and correction (disclosed for transparency and
+reproducibility):** an initial cross-reference script used to classify the
+107 "TEST ZIP" record_ids as open-vs-decided checked a non-existent
+`screening_decision` column instead of `final_decision`, so it wrongly
+reported all 107 as unscreened. On that false premise, all 107 were
+re-screened, re-extracted (as S318–S372) and pushed into
+`evidence_map.csv`. A direct count against the committed baseline exposed
+the error (decided-record counts barely moved despite 107 "new" decisions
+having ostensibly been recorded), and a full audit against the
+pre-batch committed state found: **5** record_ids were genuinely new
+(never previously decided); **48** were already-`include` duplicates
+(already extracted under an earlier S-number — S318–S372 duplicated 48
+existing studies); **41** were already-`exclude` duplicates; and **13**
+had a re-judgment that *conflicted* with the original decision. All
+duplicate/erroneous `full_text_screening_database.csv` rows,
+`exclusion_log.csv` entries, `extraction_database.csv` rows and
+`evidence_map.csv` rows were reverted to their pre-batch state; the 13
+conflicts were surfaced to the researcher rather than resolved
+unilaterally. Net legitimate result of the 107-file batch: **1 new
+include** (S318, Shrestha et al. 2023, Nepal WASH status review) and 4 new
+excludes (E01×1, E04×1, E06×1, E10×1) from the 5 genuinely-open records;
+plus 21 records independently confirmed as E10 bot-block/placeholder
+artifacts via the established byte-size cluster-sampling method.
+
+**Root-cause lesson for all future batches:** before treating any record
+as "open" for screening, cross-reference scripts must read the exact
+existing column names (`full_text_status`, `full_text_decision`,
+`final_decision`) from `full_text_screening_database.csv` — never assume a
+column name without confirming it against the file's actual header first.
+
+**E12 (wrong study design) policy amendment, applied retroactively
+project-wide:** of the 13 conflicting re-judgments, the researcher
+confirmed that 3 stemmed from E12 having been applied to secondary/
+systematic literature reviews on the basis that they are "not primary
+empirical research" — but `CODEBOOK.md` lists `systematic_review_secondary`
+as a valid `study_design_class`, so review-type studies are legitimate
+evidence for this review, not automatically out of scope. Searching the
+full `exclusion_log.csv` for the same rationale found 11 records
+project-wide (not just the 3 from this batch) excluded on that same
+"secondary review, not primary research" basis; the researcher confirmed
+the amendment should apply to all 11 for consistency. All 11 were flipped
+to `include`, reinstated in `extraction_database.csv` (S319–S329) as
+`study_design_class = systematic_review_secondary`, and their
+`exclusion_log.csv` entries removed. Two other E12 exclusions with a
+*different* rationale (a government white paper with no original
+empirical data, and a multi-chapter edited volume not extractable as a
+single study) were left excluded — the amendment applies specifically to
+the "it's a review, not primary research" rationale, not to E12 generally.
+The remaining 10 of the original 13 conflicts (abstract-only re-judgments
+disagreeing with an earlier abstract-only decision, neither grounded in
+verified full text) were left at their original decision per researcher
+instruction, since nothing more authoritative than the original judgment
+was established.
+
+Net effect on the database from this whole batch: full-text decided count
+719 → 724 (+5 genuinely new); includes 317 → 329 (+1 new TEST ZIP include,
++11 E12-policy reinstatements); excludes 402 → 395 (net -7, reflecting the
+11 E12 reinstatements against +4 new TEST ZIP excludes); extraction
+database 317 → 329 studies (S318–S329).
+
+## 2026-09-15 — Tenth full-text screening batch: 213 records decided from a third Drive folder, 68 new includes (S250–S317), byte-size cluster-sampling methodology and repository-landing-page-abstract policy formalized
 
 Processed all 213 files from a third Google Drive folder (folder id
 `1JxeuCz3dm4HWtkdZ1zpeMXU4R4WDBwY8`).
