@@ -14,14 +14,14 @@ of reading the package files by hand.
 
 ## Layout
 
-- `direito-saneamento-sustentabilidade-paper/` — the built Paper2Skill package:
+- `direito-saneamento-sustentabilidade-paper/`: the built Paper2Skill package,
   `SKILL.md`, `references/{index.md,paper.md,supplement.md}`, and
   `assets/{figure,supp_figs,table,supp_table}/`. All 205 pages were reviewed page-by-page
   against the source PDF; every numeric/text discrepancy flagged by the build's automated
   verification was individually checked against the visible source and adjudicated (see
   Limitations below). Final verification status: `reviewed_with_limitations`.
-- `mcp/server.py` — a `FastMCP` server exposing the package as resources and tools.
-- `mcp/test_server.py` — a smoke test that exercises the server against the built package.
+- `mcp/server.py`: a `FastMCP` server exposing the package as resources and tools.
+- `mcp/test_server.py`: a smoke test that exercises the server against the built package.
 
 ## Running the server
 
@@ -67,20 +67,20 @@ config at that command exactly as shown above for Claude Code.
 ## What the server exposes
 
 Resources:
-- `thesis://full-text` — the complete reviewed thesis, Markdown formatted (Portuguese).
-- `thesis://citation` — citation metadata (author, title, institution, recommended citation).
+- `thesis://full-text`: the complete reviewed thesis, Markdown formatted (Portuguese).
+- `thesis://citation`: citation metadata (author, title, institution, recommended citation).
 
 Tools:
-- `list_sections()` — every heading in document order; call this first to see the thesis's
+- `list_sections()`: every heading in document order; call this first to see the thesis's
   structure (introduction, ODS 6/11 framework, Santa Catarina and Ontario case studies,
   intervention proposal, etc.).
-- `get_section(heading)` — full text of one section, matched by heading (case-insensitive,
+- `get_section(heading)`: full text of one section, matched by heading (case-insensitive,
   partial match allowed).
-- `search_thesis(query, max_results=8)` — keyword/substring search across sections, with a
+- `search_thesis(query, max_results=8)`: keyword/substring search across sections, with a
   short snippet per hit.
-- `list_tables()` — every extracted data table (municipal sanitation statistics, funding
+- `list_tables()`: every extracted data table (municipal sanitation statistics, funding
   figures, SDG indicators), with column headers.
-- `get_table(asset_name)` — full rows of one table by its asset name (e.g. `table-5`).
+- `get_table(asset_name)`: full rows of one table by its asset name (e.g. `table-5`).
 
 Example prompts once connected: "List the sections of the dissertation," "What does the
 thesis say about OCWA?," "Show me table 9," "Search the thesis for Kashechewan."
