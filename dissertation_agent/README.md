@@ -50,23 +50,39 @@ The thesis text, argument, case studies, and citations in this folder are unchan
 the version I defended on 14 August 2023. Nothing in that scholarly record was reworded,
 reinterpreted, or extended by AI.
 
-What AI did produce, in September 2026, is the conversion layer: everything in this
-folder was built by [Claude Code](https://claude.com/claude-code) (Anthropic), running
-the Paper2Agent methodology, under my direction. Concretely, that means:
+What AI did produce, starting September 2026, is everything else in this folder, built by
+[Claude Code](https://claude.com/claude-code) (Anthropic) under my direction, across two
+distinct kinds of work with two different levels of reliability. I'd rather over-explain
+this than have anyone assume more rigor than actually happened.
 
-- Extracting the source PDF page by page and reviewing all 205 pages against it for
-  reading order, headings, and transcription accuracy.
-- Running the build's automated numeric cross-check, then individually verifying and
-  resolving every discrepancy it flagged, recorded in
-  [`review-adjudications.json`](review-adjudications.json) with the reasoning for each one.
-  One genuine transcription error (a dropped hyphen in a citation identifier) was found
-  this way and corrected.
-- Writing the MCP server code in `mcp/`, its test, and this documentation.
+**1. The digitization (high confidence).** Claude Code ran the Paper2Agent methodology to
+convert the PDF into this package: extracting it page by page, reviewing all 205 pages
+against the source for reading order, headings, and transcription accuracy, then running
+the build's automated numeric cross-check and individually verifying and resolving every
+discrepancy it flagged, recorded in [`review-adjudications.json`](review-adjudications.json)
+with the reasoning for each one. This is a mechanical, checkable claim: does the digitized
+text match what is printed in the PDF. One genuine transcription error (a dropped hyphen
+in a citation identifier) was found and corrected this way. It also wrote the MCP server
+code in `mcp/` and this documentation.
 
-Nothing here should be read as the AI verifying the thesis's substantive legal claims,
-only that the digitized text and tables match what is printed in the original PDF. The
-full commit history is public, and the session that did this work is linked from the
-commit trailers if you want to see exactly what was generated and when.
+**2. The currency check (lower confidence, and said so on purpose).** Separately,
+[`currency-notes.json`](currency-notes.json) checks whether specific claims, statutes, and
+figures in the *thesis itself* still hold, a different and much less mechanical question.
+This layer was built by Claude Code running web searches and querying a third-party legal
+database (Legal Data Hunter), i.e. AI-conducted secondary-source research, not primary
+legal research and not equivalent to a professional citator service (Shepard's, KeyCite,
+or a lawyer actually pulling the statute). Every entry names its source and the date it
+was checked so it can be independently re-verified, and that is exactly what happened with
+the most significant single finding in the file: a real citation error (Lei nº 17.717/2019
+misattributed as Santa Catarina's sanitation policy law) was caught by me checking the
+state legislature's own portal directly, not by the AI on its own. The AI corroborated it
+afterward and found the correct citation. Treat every "checked via web search" entry as a
+lead worth five minutes of your own verification before you rely on it for anything that
+matters, not as settled fact.
+
+The full commit history is public, and the session that did each piece of work is linked
+from the commit trailers if you want to see exactly what was generated, by which method,
+and when.
 
 ## Why agentify a law thesis
 
