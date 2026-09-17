@@ -4,7 +4,59 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-17 (latest) — Second Antigravity Drive batch: 34 PDFs, 18 new includes (S401-S418), 1 retrieval mismatch flagged
+## 2026-09-17 (latest) — Nineteenth full-text screening batch: 5 researcher-supplied PDFs, 4 new includes (S419-S422)
+
+Researcher supplied 5 more PDFs directly via chat upload. **4 included, 1
+excluded**:
+
+- **Excluded**: Haapala & White 2018 (E04, wrong outcome — institutional-
+  bricolage study of rural water project implementation *staff* in Nepal;
+  population and outcome are staff motivation/authority, not household
+  access).
+- **S419** (Kobes 2016, eastern Slovakia): qualitative ethnographic case
+  study (1999-2014) of a Roma settlement denied extension of the standard
+  municipal water network on the grounds of disputed/unclear land tenure,
+  instead connected to a lower-quality parallel system and billed a fixed
+  quarterly fee despite no meters being installed.
+- **S420** (Helgegren 2020, Bolivia PhD thesis, Chalmers University):
+  multi-paper thesis on the Kanata metropolitan region's co-existing
+  municipal/community/individual water-sanitation regimes. **Duplicate-
+  overlap handling**: this thesis's Paper II reports the same findings
+  already captured as study S410 (Helgegren, McConville, Landaeta & Rauch
+  2020, a separately-published journal article extracted in yesterday's
+  batch) — Paper II's content was deliberately *not* re-extracted here to
+  avoid double-counting; S420 captures only the genuinely additional
+  regime-analysis findings (Paper I, real population/service-coverage data
+  by regime and municipality) plus a summary of Papers III/IV.
+- **S421** (Agade, Anderson, Lugusa & Awino 2022, Kenya): mixed-methods
+  study of Water Resource Users' Associations (WRUAs, Kenya's Water Act
+  2002/2016) alongside indigenous Maasai institutions (Olosho councils,
+  Laibon) in the Narok County rangelands — WRUA corruption/elite capture
+  and enforcement gaps ("who one knows" determines irrigation access)
+  documented via 80 interviews plus a full 12-month police-occurrence-book
+  conflict log (14 documented incidents) and the independent ACLED
+  database.
+- **S422** (OECD 2021, *Water Governance in Asia-Pacific*): cross-national
+  survey of 48 Asia-Pacific countries' water governance frameworks
+  (regulatory-body mandates, abstraction/pollution charges, monitoring),
+  with a dedicated section empirically cross-tabulating governance-
+  mechanism adoption against the Asian Development Bank's household/urban
+  water-security index scores.
+
+A corpus-wide duplicate audit re-run afterwards (4 independent methods)
+came back clean against the resulting 420-study corpus — confirming the
+S410/S420 overlap was correctly handled by selective extraction rather than
+needing a full duplicate-merge (the two records capture genuinely different,
+non-overlapping content from the same underlying PhD research programme).
+
+Updated figures: 869/3,659 full-text records decided (420 include / 449
+exclude), 2,790 open. `extraction_database.csv` and `evidence_map.csv` now
+at 420 rows (156 quantitative-synthesis-eligible, 354 qualitative-
+synthesis-eligible); `effect_sizes.csv` unchanged at 16 rows (none of this
+batch's 4 includes had a clean single exposure-comparator effect estimate
+with a locatable confidence interval).
+
+## 2026-09-17 — Second Antigravity Drive batch: 34 PDFs, 18 new includes (S401-S418), 1 retrieval mismatch flagged
 
 Antigravity (Gemini) delivered a second batch of 34 open-access PDFs to
 the shared Google Drive folder, named by `record_id` per the retrieval
