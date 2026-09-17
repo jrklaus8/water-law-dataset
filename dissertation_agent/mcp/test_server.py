@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # /// script
 # requires-python = ">=3.11"
-# dependencies = []
+# dependencies = ["mcp[cli]>=1.2.0,<2"]
 # ///
 """Lightweight tests for the thesis MCP server's helper functions.
 

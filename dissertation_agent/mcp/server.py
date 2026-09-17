@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["mcp[cli]>=1.2.0"]
+# dependencies = ["mcp[cli]>=1.2.0,<2"]
 # ///
 """MCP server exposing Klaus Junior (2023) "Direito, Saneamento e Sustentabilidade"
 (UNIARP master's thesis) as agent-readable resources and retrieval tools.

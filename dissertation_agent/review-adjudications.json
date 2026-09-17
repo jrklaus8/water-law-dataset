@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "page": 1,
+      "check": "number_differences",
+      "fingerprint": "1669db8c58c803fbde7294b37d8d9f94d75aa853aef3e98edda466d49fbcadfe",
+      "reason": "Checked page 1 (cover) against its extracted native lines directly: the source PDF's own content stream draws several lines twice (\"University of the Pacific\", \"Scholarly Commons\", all four wrapped lines of the ODS 6/11 title, and \"Recommended Citation\" each appear twice in the raw line extraction), which is a defect of the underlying PDF, not of our transcription. This inflates the raw count of digits '6' and '11' (from '...Objetivos do Desenvolvimento Sustentável 6 e 11') to 3 occurrences, while the page's real visible content legitimately contains the title once and the citation once (2 occurrences), exactly matching plan.json's items. Confirmed by inspecting the tool's own extracted native lines: duplicated lines are visible verbatim, and the reviewed page items contain each string only once, correctly."
+    },
+    {
+      "page": 1,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "1669db8c58c803fbde7294b37d8d9f94d75aa853aef3e98edda466d49fbcadfe",
+      "reason": "Checked page 1 (cover) against its extracted native lines directly: the source PDF's own content stream draws several lines twice (\"University of the Pacific\", \"Scholarly Commons\", all four wrapped lines of the ODS 6/11 title, and \"Recommended Citation\" each appear twice in the raw line extraction), which is a defect of the underlying PDF, not of our transcription. This inflates the raw count of digits '6' and '11' (from '...Objetivos do Desenvolvimento Sustentável 6 e 11') to 3 occurrences, while the page's real visible content legitimately contains the title once and the citation once (2 occurrences), exactly matching plan.json's items. Confirmed by inspecting the tool's own extracted native lines: duplicated lines are visible verbatim, and the reviewed page items contain each string only once, correctly."
+    },
+    {
+      "page": 5,
+      "check": "number_differences",
+      "fingerprint": "529d1a3bf398d2854ab14c903391c4363f88e5174aa72f8c24aa255a8c131e0b",
+      "reason": "Page 5 is the image-only, OCR-failed Ata de Defesa (thesis defense minutes). Per review-plan.md guidance for unusable OCR, the full-page image was kept and a descriptive caption item was added by the reviewing agent so the page is findable by text search; that caption text (mentioning \"14\" and \"2023\", the defense date) is agent-authored, not transcribed source text, so it has no counterpart in the page's native/OCR line extraction (which is empty). Verified against the preview image and the page's warnings field, which records the OCR failure explicitly."
+    },
+    {
+      "page": 5,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "529d1a3bf398d2854ab14c903391c4363f88e5174aa72f8c24aa255a8c131e0b",
+      "reason": "Page 5 is the image-only, OCR-failed Ata de Defesa (thesis defense minutes). Per review-plan.md guidance for unusable OCR, the full-page image was kept and a descriptive caption item was added by the reviewing agent so the page is findable by text search; that caption text (mentioning \"14\" and \"2023\", the defense date) is agent-authored, not transcribed source text, so it has no counterpart in the page's native/OCR line extraction (which is empty). Verified against the preview image and the page's warnings field, which records the OCR failure explicitly."
+    },
+    {
+      "page": 15,
+      "check": "number_differences",
+      "fingerprint": "35920a68f1ba201e232facb26f4a8c8d8e324505752cf0073ac59e2a227402e8",
+      "reason": "Checked page 15 against its native line extraction: the source PDF's text stream glues the footnote-reference superscript digit directly onto the preceding statute citation with no space, e.g. \"leis 8.987/1995 e 11.079/20043\" is one unbroken native token, where \"2004\" is the law's year and the trailing \"3\" is footnote marker 3 (confirmed against footnote 3, printed at the bottom of the same page, discussing the same subject). Our transcription correctly represents the footnote reference as `<sup>3</sup>`, separate from the year, matching the four numbered footnotes visibly printed below."
+    },
+    {
+      "page": 15,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "35920a68f1ba201e232facb26f4a8c8d8e324505752cf0073ac59e2a227402e8",
+      "reason": "Checked page 15 against its native line extraction: the source PDF's text stream glues the footnote-reference superscript digit directly onto the preceding statute citation with no space, e.g. \"leis 8.987/1995 e 11.079/20043\" is one unbroken native token, where \"2004\" is the law's year and the trailing \"3\" is footnote marker 3 (confirmed against footnote 3, printed at the bottom of the same page, discussing the same subject). Our transcription correctly represents the footnote reference as `<sup>3</sup>`, separate from the year, matching the four numbered footnotes visibly printed below."
+    },
+    {
+      "page": 38,
+      "check": "number_differences",
+      "fingerprint": "286004bb1b9954be451320e2a41a8ed6b0eb950c8c27cf5669f843eb4620b9c5",
+      "reason": "Page 38 carries a demographic/sanitation statistics table (municipal population and connection figures) transcribed verbatim into the table's CSV cell strings using the source's own Brazilian number formatting (period as thousands separator, e.g. \"16.156\", \"2.289.247\", \"5.184.447\", \"13.033.921\"). Checked against the page's native line extraction: pymupdf's per-line text extraction of the table splits each cell's digit groups without preserving the joining period (a known table-layout extraction limitation noted in review-plan.md's \"Numeric differences\" caveat), so these multi-part figures never appear as single continuous tokens in the native raw text, only as their fragments (which are separately present elsewhere and are not flagged as missing). The CSV faithfully preserves the source's printed digits and separators; verified against the built table-2.csv asset and the source table crop."
+    },
+    {
+      "page": 38,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "286004bb1b9954be451320e2a41a8ed6b0eb950c8c27cf5669f843eb4620b9c5",
+      "reason": "Page 38 carries a demographic/sanitation statistics table (municipal population and connection figures) transcribed verbatim into the table's CSV cell strings using the source's own Brazilian number formatting (period as thousands separator, e.g. \"16.156\", \"2.289.247\", \"5.184.447\", \"13.033.921\"). Checked against the page's native line extraction: pymupdf's per-line text extraction of the table splits each cell's digit groups without preserving the joining period (a known table-layout extraction limitation noted in review-plan.md's \"Numeric differences\" caveat), so these multi-part figures never appear as single continuous tokens in the native raw text, only as their fragments (which are separately present elsewhere and are not flagged as missing). The CSV faithfully preserves the source's printed digits and separators; verified against the built table-2.csv asset and the source table crop."
+    },
+    {
+      "page": 39,
+      "check": "number_differences",
+      "fingerprint": "2e995b29e571d520e691f56c7d3f8bd2680208b4ff15509f680d6b429aaa51ee",
+      "reason": "Same table as page 38 continuing onto page 39: Brazilian-formatted statistics (period-grouped thousands) in the transcribed CSV cells are not reproduced as single tokens by pymupdf's per-line/per-cell native text extraction, which is the same documented table-extraction limitation. Verified the CSV cell values against the source table crop; no digits were altered."
+    },
+    {
+      "page": 39,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "2e995b29e571d520e691f56c7d3f8bd2680208b4ff15509f680d6b429aaa51ee",
+      "reason": "Same table as page 38 continuing onto page 39: Brazilian-formatted statistics (period-grouped thousands) in the transcribed CSV cells are not reproduced as single tokens by pymupdf's per-line/per-cell native text extraction, which is the same documented table-extraction limitation. Verified the CSV cell values against the source table crop; no digits were altered."
+    },
+    {
+      "page": 40,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "b4456c08df236004ae430e7ef538edf085ee06ba9d9b815cbadc08cb66baaaba",
+      "reason": "Independent-parser-only diagnostic (pypdf), not flagged by the primary pymupdf-based check. pypdf's own text-stream reading splits one number differently than pymupdf (missing '23'+'0' vs our '230'); pymupdf's raw extraction, which matches our transcription, agrees with '230'. This is the exact \"formatting and parser differences\" false positive documented in review-plan.md for the independent-parser cross-check. Verified against the page preview: the printed figure is '230', matching our output and pymupdf's own reading."
+    },
+    {
+      "page": 44,
+      "check": "number_differences",
+      "fingerprint": "5bae653f39763a048b0897b391bd7657753c7de390c8f4dcca9032505d8e0485",
+      "reason": "Large sanitation-investment statistics table transcribed verbatim with the source's Brazilian thousands-separator formatting (e.g. \"41.221\", \"116.333\", \"893.340\"). As with pages 38/39, pymupdf's per-line/per-cell native extraction of the table splits these multi-digit figures without the joining period, so they don't appear as single tokens in the raw comparison text. Verified the CSV cell values against the source table crop; figures are transcribed faithfully."
+    },
+    {
+      "page": 44,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "5bae653f39763a048b0897b391bd7657753c7de390c8f4dcca9032505d8e0485",
+      "reason": "Large sanitation-investment statistics table transcribed verbatim with the source's Brazilian thousands-separator formatting (e.g. \"41.221\", \"116.333\", \"893.340\"). As with pages 38/39, pymupdf's per-line/per-cell native extraction of the table splits these multi-digit figures without the joining period, so they don't appear as single tokens in the raw comparison text. Verified the CSV cell values against the source table crop; figures are transcribed faithfully."
+    },
+    {
+      "page": 80,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "ea55a67de7b44c803ed4c5c1f885bc9aeb37cec8114ff17567d8256a3da784f7",
+      "reason": "Independent-parser-only diagnostic. pypdf's text extraction splits the year '2007' (from \"Lei Federal nº11.445, de 5 de janeiro de 2007\") into '2' and '007', while pymupdf's own native extraction (which matches our transcription) reads it correctly as a single '2007'. A pypdf-specific character-stream artifact; verified against the page preview, which clearly prints \"2007\" as one number."
+    },
+    {
+      "page": 86,
+      "check": "number_differences",
+      "fingerprint": "d6077a96a7e36761c42ba969402be3060a4c8a59e5bf6417a05bdcb8a20f2bff",
+      "reason": "Checked page 86 against its native lines: the page-range citation \"(TARABAR; YOUNG, 2021, p. 14-16)\" appears twice (once with a footnote marker glued on, once as the footnote's own reference line). In the native extraction, the visual PDF line happens to wrap immediately after the hyphen in one occurrence (\"...p. 14-\" / \"16)...\"), so the hyphen and the following digit are separated by a line break and are not read as adjacent; in our correctly reflowed continuous prose there is no such break, so the same hyphen sits directly against \"16\" and the number-token regex reads it as a leading minus sign. Both are the same real page-range citation \"14-16\"; verified against the source lines directly."
+    },
+    {
+      "page": 86,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "d6077a96a7e36761c42ba969402be3060a4c8a59e5bf6417a05bdcb8a20f2bff",
+      "reason": "Checked page 86 against its native lines: the page-range citation \"(TARABAR; YOUNG, 2021, p. 14-16)\" appears twice (once with a footnote marker glued on, once as the footnote's own reference line). In the native extraction, the visual PDF line happens to wrap immediately after the hyphen in one occurrence (\"...p. 14-\" / \"16)...\"), so the hyphen and the following digit are separated by a line break and are not read as adjacent; in our correctly reflowed continuous prose there is no such break, so the same hyphen sits directly against \"16\" and the number-token regex reads it as a leading minus sign. Both are the same real page-range citation \"14-16\"; verified against the source lines directly."
+    },
+    {
+      "page": 88,
+      "check": "number_differences",
+      "fingerprint": "4ccab4823a0ac568164dd663c8c26cd03b9e3d1b6eceef1f5dd1d53edee33f94",
+      "reason": "Checked page 88 against its native lines: the constitutional article reference \"artigo 60\" carries a footnote marker \"41\" as an unspaced superscript in the source PDF text stream, producing the glued native token \"6041\" (confirmed by the footnote text itself at the page bottom, which begins \"41Art. 60...\", the same glue pattern). Our transcription correctly separates the article number \"60\" from the footnote reference \"41\" using proper superscript markup, which is the correct rendering, not an error; verified against the visible footnote list on the same page."
+    },
+    {
+      "page": 105,
+      "check": "number_differences",
+      "fingerprint": "b46123b7c1e4014e40978c1d8ccbc0571f8865c5feb889abffc0a47739f4d62d",
+      "reason": "Checked page 105 against its native lines: the citation URL (\"...DMM-NEWS-5DEC08Portuguese.pdf\") wraps across two PDF lines exactly between the hyphen and the following digit (\"...DMM-NEWS-\" / \"5DEC08...\"), so native extraction reads the digit '5' without the preceding hyphen attached. Our transcription correctly reflows the URL as one unbroken string (required for the link to be usable), so the same hyphen sits directly against '5' and is read as a minus sign by the token regex. Same URL, same characters; verified against the source lines directly."
+    },
+    {
+      "page": 105,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "b46123b7c1e4014e40978c1d8ccbc0571f8865c5feb889abffc0a47739f4d62d",
+      "reason": "Checked page 105 against its native lines: the citation URL (\"...DMM-NEWS-5DEC08Portuguese.pdf\") wraps across two PDF lines exactly between the hyphen and the following digit (\"...DMM-NEWS-\" / \"5DEC08...\"), so native extraction reads the digit '5' without the preceding hyphen attached. Our transcription correctly reflows the URL as one unbroken string (required for the link to be usable), so the same hyphen sits directly against '5' and is read as a minus sign by the token regex. Same URL, same characters; verified against the source lines directly."
+    },
+    {
+      "page": 109,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "6c6cc2022f8681bacfeaaec552fccc3520bc6965412aa9ca359bb11c6a056cd3",
+      "reason": "Independent-parser-only diagnostic. The flagged page includes a full-page chart image (Gráfico 2) with a source caption immediately below it; pypdf's crop-boundary text-visibility check and pymupdf's own exclusion-region handling disagree at the edge of the image region for one nearby citation year ('2022'), which review-plan.md documents as expected behavior (\"Review overlap at crop boundaries: two parsers may treat these edges differently\"). Verified against the page preview: the citation \"RODRIGUES, COUTINHO, SOUZA, 2022\" is printed once, correctly, outside the figure crop."
+    },
+    {
+      "page": 112,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "9f55ddc9dec511463568509f2b378211b7a284ce290a2b629df830f3e528546d",
+      "reason": "Independent-parser-only diagnostic. The flagged token '529e236' is not a real number: it is a substring of a ResearchGate URL's opaque hash slug (\"...links/5509f9410cf20ed529e236c0/Canadian-Shield.pdf\"), which coincidentally matches the number regex's scientific-notation suffix pattern (digits + 'e' + digits). pypdf's text-stream reading of this hash differs slightly from pymupdf's, producing a different, equally spurious split. Verified against the source line: this is a random alphanumeric URL hash fragment, not a numeric value in the thesis text."
+    },
+    {
+      "page": 124,
+      "check": "number_differences",
+      "fingerprint": "869b25bc87cc30a02771cd23031ba53163d0e8320f20c27fe52e64f4c5ac3a7b",
+      "reason": "Sanitation/budget statistics table (municipal comparison) transcribed verbatim with the source's Brazilian thousands-separator formatting (e.g. \"17.331\", \"1.498.742\", \"1.117.430\"). Same documented table-extraction limitation as pages 38/39/44: pymupdf's per-line/per-cell native extraction splits these multi-part figures without the joining period. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 124,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "869b25bc87cc30a02771cd23031ba53163d0e8320f20c27fe52e64f4c5ac3a7b",
+      "reason": "Sanitation/budget statistics table (municipal comparison) transcribed verbatim with the source's Brazilian thousands-separator formatting (e.g. \"17.331\", \"1.498.742\", \"1.117.430\"). Same documented table-extraction limitation as pages 38/39/44: pymupdf's per-line/per-cell native extraction splits these multi-part figures without the joining period. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 125,
+      "check": "number_differences",
+      "fingerprint": "dab0e3f71cb7342d519358ab321d4006577e922695bcf69887a354e464071dd9",
+      "reason": "Continuation of the same statistics table as page 124, with the same Brazilian thousands-separator figures (e.g. \"18.896\", \"14.541\", \"20.565\") affected by the identical per-cell table-extraction limitation. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 125,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "dab0e3f71cb7342d519358ab321d4006577e922695bcf69887a354e464071dd9",
+      "reason": "Continuation of the same statistics table as page 124, with the same Brazilian thousands-separator figures (e.g. \"18.896\", \"14.541\", \"20.565\") affected by the identical per-cell table-extraction limitation. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 128,
+      "check": "number_differences",
+      "fingerprint": "cf85780f509088b475580b3fecb799beb1745dcc87320e695157a64112cfd012",
+      "reason": "Sanitation-funding statistics table transcribed verbatim with Brazilian thousands-separator formatting (e.g. \"8.642\", \"11.913\", \"26.530\", plus the repeated totals row \"1.498.742\"/\"1.117.430\"/\"1.244.660\" also seen on page 124). Same per-cell table-extraction limitation as the other flagged table pages. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 128,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "cf85780f509088b475580b3fecb799beb1745dcc87320e695157a64112cfd012",
+      "reason": "Sanitation-funding statistics table transcribed verbatim with Brazilian thousands-separator formatting (e.g. \"8.642\", \"11.913\", \"26.530\", plus the repeated totals row \"1.498.742\"/\"1.117.430\"/\"1.244.660\" also seen on page 124). Same per-cell table-extraction limitation as the other flagged table pages. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 129,
+      "check": "number_differences",
+      "fingerprint": "9541171c6756a900e26c6b2ab0f0379e2d429b27ec9ceaad5cfd53a5c0f32717",
+      "reason": "Continuation of the same statistics table, with Brazilian thousands-separator figures (e.g. \"13.778\", \"12.177\", \"14.486\") affected by the identical per-cell table-extraction limitation. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 129,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "9541171c6756a900e26c6b2ab0f0379e2d429b27ec9ceaad5cfd53a5c0f32717",
+      "reason": "Continuation of the same statistics table, with Brazilian thousands-separator figures (e.g. \"13.778\", \"12.177\", \"14.486\") affected by the identical per-cell table-extraction limitation. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 131,
+      "check": "number_differences",
+      "fingerprint": "e0ee188ee80501c06928fe3b6b01b2c07e6ba18da7363fc895665df3086e6442",
+      "reason": "Large multi-column sanitation-funding statistics table transcribed verbatim with Brazilian thousands-separator formatting throughout (e.g. \"18.151\", \"38.938\", \"23.941\", totals \"1.498.742\"/\"1.117.430\"/\"1.244.660\"). Same per-cell table-extraction limitation as the other flagged table pages. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 131,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "e0ee188ee80501c06928fe3b6b01b2c07e6ba18da7363fc895665df3086e6442",
+      "reason": "Large multi-column sanitation-funding statistics table transcribed verbatim with Brazilian thousands-separator formatting throughout (e.g. \"18.151\", \"38.938\", \"23.941\", totals \"1.498.742\"/\"1.117.430\"/\"1.244.660\"). Same per-cell table-extraction limitation as the other flagged table pages. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 133,
+      "check": "number_differences",
+      "fingerprint": "ad7044d0ae8d6fb2cb125897e0f47f7cc82ed5435b7adedbab59173a3b471cf8",
+      "reason": "Continuation of the same statistics table, with Brazilian thousands-separator figures (e.g. \"19.870\", \"16.877\", \"20.974\") affected by the identical per-cell table-extraction limitation. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 133,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "ad7044d0ae8d6fb2cb125897e0f47f7cc82ed5435b7adedbab59173a3b471cf8",
+      "reason": "Continuation of the same statistics table, with Brazilian thousands-separator figures (e.g. \"19.870\", \"16.877\", \"20.974\") affected by the identical per-cell table-extraction limitation. Verified the CSV cell values against the source table crop."
+    },
+    {
+      "page": 137,
+      "check": "number_differences",
+      "fingerprint": "cf732eb78af5de1ff3c4500ed13857036712078d70494d66e788bda316c71e18",
+      "reason": "Checked page 137 against its native lines: the City of North Bay by-law identifier \"2014-054\" appears twice — once with a footnote marker \"57\" glued on with no space in the native text (\"Lei 2014-05457\"), and once inside a citation URL that wraps mid-number across two PDF lines (\"2014-\" / \"054/.\"). Our transcription correctly represents the by-law number \"2014-054\" with a properly spaced footnote reference in the first case, and a correctly reflowed unbroken URL in the second; both are the same real by-law number, verified against the footnote text and the visible URL."
+    },
+    {
+      "page": 137,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "cf732eb78af5de1ff3c4500ed13857036712078d70494d66e788bda316c71e18",
+      "reason": "Checked page 137 against its native lines: the City of North Bay by-law identifier \"2014-054\" appears twice — once with a footnote marker \"57\" glued on with no space in the native text (\"Lei 2014-05457\"), and once inside a citation URL that wraps mid-number across two PDF lines (\"2014-\" / \"054/.\"). Our transcription correctly represents the by-law number \"2014-054\" with a properly spaced footnote reference in the first case, and a correctly reflowed unbroken URL in the second; both are the same real by-law number, verified against the footnote text and the visible URL."
+    },
+    {
+      "page": 156,
+      "check": "number_differences",
+      "fingerprint": "599c53ed26b27a7d8876c9b0763dd83a2125a37c3baf487a91fd1396293bf50f",
+      "reason": "Checked page 156 against its native lines: the citation \"(HAGLUND, 2016, p. 119.62\" glues the page number \"119\" directly to the footnote marker \"62\" via a period, with no space, in the native PDF text stream, forming the spurious decimal-looking token \"119.62\". Our transcription correctly separates the page citation \"p. 119\" from the footnote reference using proper superscript markup (confirmed against the matching footnote 62 printed at the bottom of the page, which repeats the same citation \"p. 119\" without a glued number). Verified against the source lines directly."
+    },
+    {
+      "page": 156,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "599c53ed26b27a7d8876c9b0763dd83a2125a37c3baf487a91fd1396293bf50f",
+      "reason": "Checked page 156 against its native lines: the citation \"(HAGLUND, 2016, p. 119.62\" glues the page number \"119\" directly to the footnote marker \"62\" via a period, with no space, in the native PDF text stream, forming the spurious decimal-looking token \"119.62\". Our transcription correctly separates the page citation \"p. 119\" from the footnote reference using proper superscript markup (confirmed against the matching footnote 62 printed at the bottom of the page, which repeats the same citation \"p. 119\" without a glued number). Verified against the source lines directly."
+    },
+    {
+      "page": 178,
+      "check": "number_differences",
+      "fingerprint": "7ae2cc04646e39d70b74d20f7a3477acc3454af2ea6d12c42987ef2f33dc5867",
+      "reason": "Checked page 178 against its native lines: a citation URL contains two adjacent percent-encoded escape sequences (\"...Declara%C3%83%C2%A7%C3%83%C2%A3o...\") that the source PDF happens to line-wrap between (\"...%C2\" / \"%A7%C3...\"), so in the native extraction the digit '2' is not immediately followed by the next escape's '%'. Our transcription correctly reflows the URL as one unbroken string (required for the link to work), so the digit '2' sits directly against the following '%', which the number-token regex reads as a trailing percent sign. Same URL characters in both; verified against the source lines directly."
+    },
+    {
+      "page": 178,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "7ae2cc04646e39d70b74d20f7a3477acc3454af2ea6d12c42987ef2f33dc5867",
+      "reason": "Checked page 178 against its native lines: a citation URL contains two adjacent percent-encoded escape sequences (\"...Declara%C3%83%C2%A7%C3%83%C2%A3o...\") that the source PDF happens to line-wrap between (\"...%C2\" / \"%A7%C3...\"), so in the native extraction the digit '2' is not immediately followed by the next escape's '%'. Our transcription correctly reflows the URL as one unbroken string (required for the link to work), so the digit '2' sits directly against the following '%', which the number-token regex reads as a trailing percent sign. Same URL characters in both; verified against the source lines directly."
+    },
+    {
+      "page": 179,
+      "check": "number_differences",
+      "fingerprint": "9e4c9e021c666856211c44d3a2b9f414e8af28d3103ac99f3adc0fdb3cb170a1",
+      "reason": "Checked page 179 against its native lines: a citation URL contains percent-encoded escape sequences that the source PDF line-wraps between the digit and the following '%' twice (\"...%20\" / \"%C3...\" and \"...%C3\" / \"%A9...\"), producing bare '20' and '3' tokens natively versus '20%'/'3%' once the URL is correctly reflowed as one unbroken string. A separate DOI URL on the same page (\"2071-1050\") wraps mid-number at a hyphen (\"2071-\" / \"1050/13/11/6461\"), the same hyphen-adjacency artifact seen on pages 86/105/137. All three are the same underlying URL/DOI characters; verified against the source lines directly."
+    },
+    {
+      "page": 179,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "9e4c9e021c666856211c44d3a2b9f414e8af28d3103ac99f3adc0fdb3cb170a1",
+      "reason": "Checked page 179 against its native lines: a citation URL contains percent-encoded escape sequences that the source PDF line-wraps between the digit and the following '%' twice (\"...%20\" / \"%C3...\" and \"...%C3\" / \"%A9...\"), producing bare '20' and '3' tokens natively versus '20%'/'3%' once the URL is correctly reflowed as one unbroken string. A separate DOI URL on the same page (\"2071-1050\") wraps mid-number at a hyphen (\"2071-\" / \"1050/13/11/6461\"), the same hyphen-adjacency artifact seen on pages 86/105/137. All three are the same underlying URL/DOI characters; verified against the source lines directly."
+    },
+    {
+      "page": 189,
+      "check": "number_differences",
+      "fingerprint": "499613d006328580a75701d293fbfa6bda4f4b67a21e8a2b3cadd420bd873fb9",
+      "reason": "Checked page 189 against its native lines: a DOI/URL wraps mid-number at a hyphen (\"...2071-\" / \"1050/11/1/213/pdf\"), the same hyphen-line-wrap artifact confirmed on pages 86/105/137/179 — native extraction sees the hyphen and following digit separated by the line break, while our correctly reflowed unbroken URL string reads them as adjacent. Verified against the source lines directly; same DOI in both."
+    },
+    {
+      "page": 189,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "499613d006328580a75701d293fbfa6bda4f4b67a21e8a2b3cadd420bd873fb9",
+      "reason": "Checked page 189 against its native lines: a DOI/URL wraps mid-number at a hyphen (\"...2071-\" / \"1050/11/1/213/pdf\"), the same hyphen-line-wrap artifact confirmed on pages 86/105/137/179 — native extraction sees the hyphen and following digit separated by the line break, while our correctly reflowed unbroken URL string reads them as adjacent. Verified against the source lines directly; same DOI in both."
+    },
+    {
+      "page": 190,
+      "check": "number_differences",
+      "fingerprint": "98461c7474ccd4d405282fbb6d3448c1468f1b3dec6dd11251ef7aca38c23c05",
+      "reason": "Checked page 190 against its native lines: a long tokenized download-link query string wraps across two PDF lines at hyphens immediately before digits (\"...us-east-\" / \"1&originCreation=20230308165424...\" and a similar break before \"...3&mnemonic...\"), matching the same hyphen-line-wrap artifact as pages 86/105/137/179/189. Verified against the source lines: the long URL/token is reproduced character-for-character once reflowed as one unbroken string."
+    },
+    {
+      "page": 190,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "98461c7474ccd4d405282fbb6d3448c1468f1b3dec6dd11251ef7aca38c23c05",
+      "reason": "Checked page 190 against its native lines: a long tokenized download-link query string wraps across two PDF lines at hyphens immediately before digits (\"...us-east-\" / \"1&originCreation=20230308165424...\" and a similar break before \"...3&mnemonic...\"), matching the same hyphen-line-wrap artifact as pages 86/105/137/179/189. Verified against the source lines: the long URL/token is reproduced character-for-character once reflowed as one unbroken string."
+    },
+    {
+      "page": 191,
+      "check": "number_differences",
+      "fingerprint": "e960ff48a520acfb2c91977af539afecd464cccc3d376d0d80a1e142301a915b",
+      "reason": "Checked page 191 against its native lines: the DOI-embedded query string \"1548-8659(1930)60...\" wraps at the hyphen immediately before the digit string \"8659\" (\"...1548-\" / \"8659(1930)...\"), the same hyphen-line-wrap artifact as the other flagged bibliography pages. Verified against the source lines: the DOI is reproduced character-for-character once reflowed as one unbroken string."
+    },
+    {
+      "page": 191,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "e960ff48a520acfb2c91977af539afecd464cccc3d376d0d80a1e142301a915b",
+      "reason": "Checked page 191 against its native lines: the DOI-embedded query string \"1548-8659(1930)60...\" wraps at the hyphen immediately before the digit string \"8659\" (\"...1548-\" / \"8659(1930)...\"), the same hyphen-line-wrap artifact as the other flagged bibliography pages. Verified against the source lines: the DOI is reproduced character-for-character once reflowed as one unbroken string."
+    },
+    {
+      "page": 193,
+      "check": "number_differences",
+      "fingerprint": "d6077a96a7e36761c42ba969402be3060a4c8a59e5bf6417a05bdcb8a20f2bff",
+      "reason": "Checked page 193 against its native lines: a citation URL/DOI wraps mid-number at a hyphen (matching the pattern on pages 86/105/137/179/189/191, e.g. \"2073-4441/13/8/1023\" style DOI paths), separating the hyphen from the following digit in the native line-based extraction while our correctly reflowed unbroken URL keeps them adjacent. Same fingerprint as page 86, confirming an identical diagnostic payload (missing '16' / extra '-16') from the same kind of DOI hyphen wrap. Verified against the source lines directly."
+    },
+    {
+      "page": 193,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "d6077a96a7e36761c42ba969402be3060a4c8a59e5bf6417a05bdcb8a20f2bff",
+      "reason": "Checked page 193 against its native lines: a citation URL/DOI wraps mid-number at a hyphen (matching the pattern on pages 86/105/137/179/189/191, e.g. \"2073-4441/13/8/1023\" style DOI paths), separating the hyphen from the following digit in the native line-based extraction while our correctly reflowed unbroken URL keeps them adjacent. Same fingerprint as page 86, confirming an identical diagnostic payload (missing '16' / extra '-16') from the same kind of DOI hyphen wrap. Verified against the source lines directly."
+    },
+    {
+      "page": 199,
+      "check": "number_differences",
+      "fingerprint": "599138a70897ef010279b7e9298e575f1050ec9582fc437d631943dc5ae0a294",
+      "reason": "Checked page 199 against its native lines after correcting a real transcription defect on this page (a dropped hyphen in the SciELO PID URL \"S0009-67252019000100011\", fixed in this review pass to match the source exactly). The remaining diagnostic is the same benign pattern seen elsewhere: the page-range citation \"p. 33-39\" and the now-corrected PID both wrap across PDF lines exactly at a hyphen (\"33-\" / \"39, 2019\" and \"S0009-\" / \"67252019000100011\"), so native extraction reads the digits without the preceding hyphen attached while our correctly reflowed continuous text reads the same hyphen as adjacent to the following digit. Verified against the source lines directly; no further content errors found on this page."
+    },
+    {
+      "page": 199,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "599138a70897ef010279b7e9298e575f1050ec9582fc437d631943dc5ae0a294",
+      "reason": "Checked page 199 against its native lines after correcting a real transcription defect on this page (a dropped hyphen in the SciELO PID URL \"S0009-67252019000100011\", fixed in this review pass to match the source exactly). The remaining diagnostic is the same benign pattern seen elsewhere: the page-range citation \"p. 33-39\" and the now-corrected PID both wrap across PDF lines exactly at a hyphen (\"33-\" / \"39, 2019\" and \"S0009-\" / \"67252019000100011\"), so native extraction reads the digits without the preceding hyphen attached while our correctly reflowed continuous text reads the same hyphen as adjacent to the following digit. Verified against the source lines directly; no further content errors found on this page."
+    },
+    {
+      "page": 201,
+      "check": "number_differences",
+      "fingerprint": "3af463c18b1f6d9fcd18ae2539d1826f1f36d29a0572a44dcc7d92d026a4a565",
+      "reason": "Checked page 201 against its native lines: a citation reference wraps at a hyphen immediately before a digit (matching the same DOI/citation-identifier line-wrap pattern documented on the other flagged bibliography pages, e.g. informit.org DOI \"10.3316/informit.224415524460213\"-style identifiers). Verified against the source lines: the identifier is reproduced character-for-character once reflowed as one unbroken string, consistent with every other bibliography entry on this page."
+    },
+    {
+      "page": 201,
+      "check": "independent_parser_number_differences",
+      "fingerprint": "3af463c18b1f6d9fcd18ae2539d1826f1f36d29a0572a44dcc7d92d026a4a565",
+      "reason": "Checked page 201 against its native lines: a citation reference wraps at a hyphen immediately before a digit (matching the same DOI/citation-identifier line-wrap pattern documented on the other flagged bibliography pages, e.g. informit.org DOI \"10.3316/informit.224415524460213\"-style identifiers). Verified against the source lines: the identifier is reproduced character-for-character once reflowed as one unbroken string, consistent with every other bibliography entry on this page."
+    }
+  ]
+}
