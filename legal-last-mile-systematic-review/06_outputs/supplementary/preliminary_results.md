@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **831 of 3,659 records decided (398 include / 433 exclude)** — see
+  **864 of 3,659 records decided (416 include / 448 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -229,9 +229,9 @@ evidence of anything.
   6 — no outstanding gap.** At the researcher's explicit instruction to
   extract every full-text include directly rather than drawing a separate
   pilot subsample first (Phase 7 is marked superseded, not completed),
-  **all 398 current full-text includes (S001–S400, S227 and S399 documented duplicate-removal gaps) are now fully
+  **all 416 current full-text includes (S001–S418, S227 and S399 documented duplicate-removal gaps) are now fully
   extracted** into `extraction_database.csv` against `CODEBOOK.md`'s
-  complete 92-field schema. Nineteen of the 398 are themselves secondary
+  complete 92-field schema. Nineteen of the 416 (plus S418, a secondary review) are themselves secondary
   systematic reviews, flagged
   `study_design_class = systematic_review_secondary` and never to be
   pooled as an independent primary effect; S356, S364, and S376 are
@@ -242,14 +242,14 @@ evidence of anything.
   framework and classified by hand as `jurimetric` (see the duplicate-
   merge note in `CHANGELOG.md` 2026-09-16).
 - **2026-09-16: Phase 10 (evidence classification) has been run against
-  all 398 extracted studies.** `build_evidence_map.py` derived what can
+  all 416 extracted studies.** `build_evidence_map.py` derived what can
   safely be derived mechanically; the remaining judgment-call fields
   (`outcome_family`, `evidence_level`, `study_design_class` for the
   studies using the project's own Legal Institutional Evidence Appraisal
   Framework, and the two synthesis-eligibility flags) were filled by hand
-  per study. **145 of the 398 extracted studies have a genuine,
+  per study. **154 of the 416 extracted studies have a genuine,
   study-generated, calculable effect estimate and are judged eligible for
-  quantitative synthesis; 335 of 398 are qualitative-synthesis eligible.**
+  quantitative synthesis; 351 of 416 are qualitative-synthesis eligible.**
   This is a per-study eligibility judgment, not a corpus-level decision
   that pooling is warranted for any family — that is Phase 11, which has
   not started.
@@ -311,6 +311,26 @@ evidence of anything.
   remains a permanent gap in the `study_id` sequence (like `S227`) — see
   the duplicate-merge note above; S400 continues the sequence from S398
   rather than reusing it.
+- **2026-09-17: second Antigravity Drive batch — 34 PDFs, 18 new includes
+  (S401–S418), 1 retrieval mismatch flagged.** Full detail in
+  `CHANGELOG.md`. Before screening, one delivered PDF (`R81549C4709FC`)
+  was found to contain the wrong book chapters entirely (chs.19-20 of a
+  Handbook of Climate Justice instead of the requested ch.18) — caught by
+  checking the PDF's visible chapter titles against the screening
+  database before making any judgment; left open, flagged
+  `wrong_file_retrieved`, not screened. Of the 18 new includes, S404
+  (Mwaura et al. 2021, Kenya) contributes a genuine quasi-experimental
+  effect estimate (WRUA legal-membership status reducing water poverty by
+  14-32% across three independent estimators) added to
+  `effect_sizes.csv`; S412 (Ranganathan & Balazs 2015) and S416 (Roy 2013)
+  are direct empirical instances of the review's core administrative-
+  exclusion thesis (municipal-jurisdiction and slum-notification-status
+  exclusion from water connection); S418 (Brown et al. 2023, *Lancet
+  Global Health*) is a documented-search-strategy secondary review of
+  racism/exclusion mechanisms in high-income-country water/sanitation
+  access, flagged `study_design_class = systematic_review_secondary`. A
+  corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 416-study corpus.
 
 ## What has not been done
 
@@ -329,14 +349,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 831 of the 3,659
-  Phase-5 includes have been assessed; 2,828 records have not yet been
+- Full-text screening itself is far from complete: 864 of the 3,659
+  Phase-5 includes have been assessed; 2,795 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 398
+- Extraction (Phase 8) is caught up with screening completely — all 416
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  398 extracted studies** (a first 12-study partial pilot batch was
+  416 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -345,7 +365,7 @@ evidence of anything.
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 145 studies being individually
+  for any candidate synthesis family** — 154 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary
@@ -364,14 +384,17 @@ evidence of anything.
   dos Santos Nascimento Sobrinho & da Mota Silveira Neto 2025, a genuine
   quasi-experimental difference-in-differences evaluation of Recife's
   ZEIS zoning-law intervention, Family A), bringing the total to 15 (10
-  fit Families A/B/C, 5 do not).** Every row has
+  fit Families A/B/C, 5 do not), then 1 more (S404, Mwaura et al. 2021, a
+  genuine quasi-experimental estimate of WRUA legal-membership status'
+  effect on water poverty, Family A), bringing the total to 16 (11 fit
+  Families A/B/C, 5 do not).** Every row has
   `included_in_pooled_estimate = FALSE` — no pooling decision has been
   made for any family, and no family yet has more than one study sharing
   a genuinely comparable exposure-comparator definition, so none is close
-  to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-16 for the
+  to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 15 studies in `effect_sizes.csv` (added
-  2026-09-16), but none is pooled, and no family-level meta-analysis has
+- Effect sizes now exist for 16 studies in `effect_sizes.csv` (added
+  2026-09-16, extended 2026-09-17), but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template
   scaffolding built but are all blocked on Phase 11 and have not been run

@@ -4,7 +4,98 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-16 (latest) — Single-record screening: Tsanga Tabi 2009, French water-disconnection/social-vulnerability case study (S400)
+## 2026-09-17 (latest) — Second Antigravity Drive batch: 34 PDFs, 18 new includes (S401-S418), 1 retrieval mismatch flagged
+
+Antigravity (Gemini) delivered a second batch of 34 open-access PDFs to
+the shared Google Drive folder, named by `record_id` per the retrieval
+prompt. All 34 were confirmed genuinely open in
+`full_text_screening_database.csv` before screening (no re-screened
+records). Full-text screened against `INCLUSION_EXCLUSION.md`: **18
+included (S401-S418), 15 excluded, 1 flagged as a retrieval mismatch and
+left open** (not screened).
+
+**Retrieval mismatch caught before screening**: `R81549C4709FC`'s actual
+target record is "Building Political Capabilities through Participation
+for Environmental Justice in Informal Housing in Kathmandu" (Singh &
+Singh, ch.18 of a Handbook of Climate Justice, DOI
+10.4324/9781003371175-24), but the PDF delivered contains chapters 19-20
+of the same edited volume instead (Sherpa's Nepal climate-policy chapter;
+Awale's Kavre women/water chapter) — a wrong-chapter retrieval, not a
+content match. This was identified by cross-checking the PDF's visible
+title/chapter numbers against the record's title in the screening
+database before making a screening judgment, per the project's "never
+fabricate data" discipline. The record's `full_text_status` was set to
+`wrong_file_retrieved` with a note describing the mismatch; it remains
+open, awaiting a correct re-retrieval of chapter 18, not screened as
+include or exclude.
+
+**18 new includes (S401-S418)** span a strong cluster of studies directly
+on the review's core administrative/legal-mechanism framework:
+- **Eligibility mechanisms**: S404 (Mwaura et al. 2021, Kenya) — WRUA
+  legal membership under the Water Act 2002/2016 reducing water poverty
+  by 14-32% (ATT, three independent quasi-experimental estimators:
+  endogenous switching probit, propensity score matching, inverse
+  probability weighting) — added to `effect_sizes.csv` (Family A); S412
+  (Ranganathan & Balazs 2015) — Tooleville (California) and Bommanahalli
+  (Bangalore) both excluded from municipal water networks by
+  unincorporated/peri-urban jurisdictional status rather than physical
+  distance, a direct empirical instance of the review's core thesis; S416
+  (Roy 2013) — Delhi's Kathputli Colony, where the Slum Areas Act 1956
+  notification status and a 2002 Supreme Court Article 21 ruling leave
+  slum residents' water access as an exceptional grant rather than an
+  enforceable right ("claims of the poor... never become rights").
+- **Discretion/accommodation and enforcement**: S415 (Ward et al. 2026) —
+  37 interviews across 11 US water utilities documenting "street-level
+  discretion" (bending rules, expediting CAP enrollments, waiving fees)
+  and a three-camp typology (Traditionalist/Balancer/Benevolence-Led)
+  explaining why most utilities' customer-assistance programs lack
+  recognition-justice design; S403 (Zaunda et al. 2018, Malawi) — disabled
+  children's primary-school WASH access undermined because Malawi's
+  Disability Act does not make inclusive WASH provision legally binding,
+  with zero of 10 surveyed schools having accessible facilities; S402
+  (Sakaya et al. 2025, Uganda) — overlapping/fragmented legal mandates
+  across three ministries explaining a 65%-vs-40% safely-managed-access
+  gap between two towns.
+- **Systematic review**: S418 (Brown et al. 2023, *Lancet Global Health*)
+  — a documented-search-strategy review of racism/exclusion mechanisms in
+  high-income-country water/sanitation access, including a North Carolina
+  case (Irongate Drive) excluded from municipal service for decades by
+  racial municipal underbounding, only annexed and connected in 2020;
+  flagged `study_design_class = systematic_review_secondary`,
+  `risk_of_bias_tool = AMSTAR 2`.
+- Also included: S401 (Gondar, Ethiopia UGI governance study), S405
+  (Soweto Free Basic Water implementation), S406 and S408 (Cameroon and
+  Senegal rural water-governance-transfer case studies, both flagged
+  `study_design_class = jurimetric`), S407 (Archibong 2018, Nigeria
+  historical federal/local service-inequality panel study), S409
+  (Ethiopia Wolaita Zone water-point coverage/governance study), S410
+  (Cochabamba, Bolivia community-managed systems and legal-entity
+  status), S411 (Oosterwold, Netherlands wastewater self-organization
+  legal mismatch, `study_design_class = jurimetric`), S413 (Minas Gerais,
+  Brazil COPASA privatization/coverage study), S414 (Waterberg, South
+  Africa private-water regulatory-exemption case study), and S417
+  (Hacker et al. 2025, US unsheltered-individuals WASH-access study).
+
+**15 exclusions**, all reasoned against `INCLUSION_EXCLUSION.md`: E01
+wrong topic (public-acceptance-of-technology and financialization-theory
+papers), E03 wrong exposure (hydrological/engineering modelling, water-
+quality/arsenic-mitigation-technology and cistern-contamination-risk
+studies), E04 wrong outcome (utility regulatory-compliance, infrastructure-
+lifecycle-management, and willingness-to-pay/satisfaction studies whose
+outcome is not access/connection/exclusion), E05 no empirical evidence
+(corporate/policy essays and narrative commentary without a defined
+study design) E06 engineering only. Full per-record rationale in
+`02_screening/exclusion_log/exclusion_log.csv`.
+
+A corpus-wide duplicate audit re-run afterwards (4 independent methods)
+came back clean against the resulting 416-study corpus.
+
+Updated figures: 864/3,659 full-text records decided (416 include / 448
+exclude), 2,795 open. `extraction_database.csv` and `evidence_map.csv` now
+at 416 rows (154 quantitative-synthesis-eligible, 351 qualitative-
+synthesis-eligible); `effect_sizes.csv` now at 16 rows.
+
+## 2026-09-16 — Single-record screening: Tsanga Tabi 2009, French water-disconnection/social-vulnerability case study (S400)
 
 Researcher supplied 2 more PDFs directly. **1 excluded**: Carre &
 Deroubaix 2009 (E04, Flux 76-77, domestic rainwater-harvesting practices
