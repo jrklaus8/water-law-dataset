@@ -21,6 +21,7 @@ MCP client.
 from __future__ import annotations
 
 import csv
+import json
 import re
 from pathlib import Path
 
@@ -30,6 +31,7 @@ SKILL_DIR = Path(__file__).resolve().parent.parent / "direito-saneamento-sustent
 REFERENCES_DIR = SKILL_DIR / "references"
 ASSETS_DIR = SKILL_DIR / "assets"
 PAPER_MD = REFERENCES_DIR / "paper.md"
+CURRENCY_NOTES_PATH = Path(__file__).resolve().parent.parent / "currency-notes.json"
 
 CITATION = {
     "author": "Cláudio Antônio Klaus Júnior",
@@ -211,6 +213,47 @@ def get_table(asset_name: str) -> dict:
             return {"asset_name": asset_name, "rows": rows}
     available = [t["asset_name"] for t in list_tables()]
     return {"error": f"No table named '{asset_name}'.", "available": available}
+
+
+def _load_currency_notes() -> dict:
+    if not CURRENCY_NOTES_PATH.exists():
+        return {"entries": [], "not_yet_checked": []}
+    return json.loads(CURRENCY_NOTES_PATH.read_text(encoding="utf-8"))
+
+
+@mcp.tool()
+def list_currency_notes(status: str | None = None) -> list[dict]:
+    """List currency notes: dated checks of whether a thesis claim, citation, or figure
+    still reflects reality, separate from the original 2023 text.
+
+    This is not part of Paper2Skill's own verification (which only checks that the
+    digitized text matches the source PDF). It is a distinct annotation layer added
+    afterward, checking whether the *content* is still current, similar in spirit to a
+    citator flagging whether a cited authority is still good law.
+
+    Args:
+        status: optional filter, one of "superseded", "resolved", "still_current",
+            "needs_further_check". Omit to return all checked entries.
+
+    Returns entries with a page reference, what the thesis claims, its current status,
+    and the source used to check it. Call list_uncheckable_claims() for claims flagged
+    as worth checking but not yet verified.
+    """
+    notes = _load_currency_notes()
+    entries = notes.get("entries", [])
+    if status:
+        entries = [e for e in entries if e.get("status") == status]
+    return entries
+
+
+@mcp.tool()
+def list_uncheckable_claims() -> list[dict]:
+    """List thesis claims flagged as checkable for currency but not yet verified.
+
+    Use this to see what still needs a currency check, as opposed to
+    list_currency_notes() which returns claims already checked.
+    """
+    return _load_currency_notes().get("not_yet_checked", [])
 
 
 if __name__ == "__main__":

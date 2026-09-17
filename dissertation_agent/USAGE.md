@@ -81,9 +81,31 @@ Tools:
 - `list_tables()`: every extracted data table (municipal sanitation statistics, funding
   figures, SDG indicators), with column headers.
 - `get_table(asset_name)`: full rows of one table by its asset name (e.g. `table-5`).
+- `list_currency_notes(status=None)`: dated checks of whether a thesis claim, citation,
+  statute, or figure still reflects reality as of the check date, separate from the
+  original 2023 text. Filter by `status` ("superseded", "resolved", "still_current",
+  "needs_further_check"). See [`currency-notes.json`](currency-notes.json) and "Currency
+  notes" below.
+- `list_uncheckable_claims()`: claims flagged as worth a currency check but not yet
+  verified.
 
 Example prompts once connected: "List the sections of the dissertation," "What does the
-thesis say about OCWA?," "Show me table 9," "Search the thesis for Kashechewan."
+thesis say about OCWA?," "Show me table 9," "Search the thesis for Kashechewan," "What in
+this thesis is now out of date?"
+
+## Currency notes
+
+Paper2Skill's own verification only checks that the digitized text matches the source
+PDF; it says nothing about whether the PDF's claims still hold. `currency-notes.json` is a
+separate, dated annotation layer for that second question, checking specific statutes,
+court rulings, agency names, and statistics against their current status, the same idea as
+a citator flagging whether a cited case is still good law, applied to the thesis's own
+citations and figures.
+
+As of the 2026-09-17 check: 16 claims were verified (11 superseded, 3 still current, 1
+resolved before the thesis was even defended, 1 needing a live-data recheck), and 7 more
+are flagged as worth checking but not yet verified. Nothing in the original thesis text
+was changed; see each entry for its source and reasoning.
 
 ## Limitations
 

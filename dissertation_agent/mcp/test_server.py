@@ -73,6 +73,22 @@ def main() -> int:
         bool(cite.get("author")) and bool(cite.get("title")) and cite.get("year") == 2023,
     )
 
+    notes = server.list_currency_notes()
+    failures += not check("list_currency_notes returns entries", len(notes) > 0, str(len(notes)))
+    failures += not check(
+        "currency notes have page/status/current_status",
+        all({"page", "status", "current_status"} <= set(n) for n in notes),
+    )
+
+    superseded = server.list_currency_notes(status="superseded")
+    failures += not check(
+        "list_currency_notes filters by status",
+        len(superseded) > 0 and all(n["status"] == "superseded" for n in superseded),
+    )
+
+    uncheckable = server.list_uncheckable_claims()
+    failures += not check("list_uncheckable_claims returns entries", len(uncheckable) > 0)
+
     print(f"\n{'ALL PASS' if failures == 0 else f'{failures} FAILURE(S)'}")
     return 1 if failures else 0
 

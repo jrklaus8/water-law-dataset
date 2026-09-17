@@ -110,6 +110,7 @@ systems, not just readers. An agentified dissertation is a small, concrete answe
 - [`direito-saneamento-sustentabilidade-paper/`](direito-saneamento-sustentabilidade-paper/): the built Paper2Skill package, full text, tables, and figures, reviewed page by page against the source PDF.
 - [`mcp/server.py`](mcp/server.py): the MCP server exposing the package as searchable tools and resources.
 - [`review-adjudications.json`](review-adjudications.json): the record of every discrepancy the automated verification flagged during conversion, and how each was checked and resolved.
+- [`currency-notes.json`](currency-notes.json): a separate, dated layer checking whether specific claims, citations, and figures in the thesis still hold, not whether the digitization is accurate (that is what `review-adjudications.json` is for).
 - [`USAGE.md`](USAGE.md): how to run the server and connect it to Claude Code or another MCP client.
 
 ## Limitations, stated plainly
@@ -119,3 +120,16 @@ text; it is preserved as an image with a descriptive caption rather than a trans
 Table figures keep the source's own Brazilian number formatting. Everything else is
 verified against the source PDF; see `USAGE.md` for the full account, including the one
 real transcription error found and corrected during review.
+
+## Is this still accurate today
+
+A 2023 legal thesis making empirical claims does not stay accurate forever, and pretending
+otherwise would be dishonest. [`currency-notes.json`](currency-notes.json) checks specific
+statutes, a constitutional challenge, agency names, and population/investment figures
+against their current status, without rewriting the original argument. As of the last
+check: the STF had already resolved the constitutional question the thesis frames as
+pending before the thesis was even defended; two of the regulatory decrees it cites as
+current were repealed weeks before the defense; the national data source behind most of
+its tables (SNIS) has been discontinued and replaced; and the empirical core of the
+Brazilian case studies rests on 2000/2010 census data that Brazil's 2022 census has since
+superseded. See `USAGE.md` for the full breakdown and what has not been checked yet.
