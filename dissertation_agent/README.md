@@ -44,6 +44,30 @@ comparison with Canadian municipalities, using a qualitative and descriptive met
 grounded in literature review, legal documents, and quantitative data on potable water and
 sewage disposal.
 
+## AI assistance disclosure
+
+The thesis text, argument, case studies, and citations in this folder are unchanged from
+the version I defended on 14 August 2023. Nothing in that scholarly record was reworded,
+reinterpreted, or extended by AI.
+
+What AI did produce, in September 2026, is the conversion layer: everything in this
+folder was built by [Claude Code](https://claude.com/claude-code) (Anthropic), running
+the Paper2Agent methodology, under my direction. Concretely, that means:
+
+- Extracting the source PDF page by page and reviewing all 205 pages against it for
+  reading order, headings, and transcription accuracy.
+- Running the build's automated numeric cross-check, then individually verifying and
+  resolving every discrepancy it flagged, recorded in
+  [`review-adjudications.json`](review-adjudications.json) with the reasoning for each one.
+  One genuine transcription error (a dropped hyphen in a citation identifier) was found
+  this way and corrected.
+- Writing the MCP server code in `mcp/`, its test, and this documentation.
+
+Nothing here should be read as the AI verifying the thesis's substantive legal claims,
+only that the digitized text and tables match what is printed in the original PDF. The
+full commit history is public, and the session that did this work is linked from the
+commit trailers if you want to see exactly what was generated and when.
+
 ## Why agentify a law thesis
 
 Paper2Agent was built for papers with a code repository: genomics tools, single-cell
