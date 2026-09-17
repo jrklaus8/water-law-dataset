@@ -102,10 +102,10 @@ court rulings, agency names, and statistics against their current status, the sa
 a citator flagging whether a cited case is still good law, applied to the thesis's own
 citations and figures.
 
-As of the 2026-09-17 check: 21 claims were verified (11 superseded, 6 still current, 2
+As of the 2026-09-18 check: 23 claims were verified (11 superseded, 7 still current, 2
 resolved, including a constitutional challenge the STF had already decided before the
-thesis was defended, and 2 needing a live-data recheck), and 2 more (both Santa Catarina
-state statutes) are flagged as worth checking but not yet verified. Nothing in the original thesis text
+thesis was defended, 2 needing a live-data recheck, and 1 confirmed citation error). Every
+originally-flagged candidate has now been checked. Nothing in the original thesis text
 was changed; see each entry for its source and reasoning.
 
 ## Limitations

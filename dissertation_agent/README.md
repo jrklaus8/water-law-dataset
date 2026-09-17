@@ -130,6 +130,11 @@ against their current status, without rewriting the original argument. As of the
 check: the STF had already resolved the constitutional question the thesis frames as
 pending before the thesis was even defended; two of the regulatory decrees it cites as
 current were repealed weeks before the defense; the national data source behind most of
-its tables (SNIS) has been discontinued and replaced; and the empirical core of the
-Brazilian case studies rests on 2000/2010 census data that Brazil's 2022 census has since
-superseded. See `USAGE.md` for the full breakdown and what has not been checked yet.
+its tables (SNIS) has been discontinued and replaced; one citation is confirmed wrong (a
+law numbered as the source of Santa Catarina's sanitation policy is actually an unrelated
+fire-safety-council amendment, verified directly against the state's own legislation
+portal); and all three Brazilian case-study cities have since restructured their water and
+sewage services in three different ways (two into private concessions, one into a new
+municipal authority) with real coverage numbers now far more specific, and in places far
+starker, than the 2000/2010 data the thesis had to work with. See `USAGE.md` for the full
+breakdown.

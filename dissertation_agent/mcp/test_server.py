@@ -87,7 +87,14 @@ def main() -> int:
     )
 
     uncheckable = server.list_uncheckable_claims()
-    failures += not check("list_uncheckable_claims returns entries", len(uncheckable) > 0)
+    failures += not check("list_uncheckable_claims returns a list", isinstance(uncheckable, list))
+
+    citation_errors = server.list_currency_notes(status="citation_error")
+    failures += not check(
+        "list_currency_notes surfaces confirmed citation errors",
+        len(citation_errors) > 0,
+        str(len(citation_errors)),
+    )
 
     print(f"\n{'ALL PASS' if failures == 0 else f'{failures} FAILURE(S)'}")
     return 1 if failures else 0
