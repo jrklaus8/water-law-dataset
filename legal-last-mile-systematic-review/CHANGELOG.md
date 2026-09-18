@@ -4,7 +4,51 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-fifth full-text screening batch: 5 researcher-supplied PDFs, 1 duplicate skipped, 1 exclude + 3 new includes (S512-S514)
+## 2026-09-18 (latest) — Forty-sixth full-text screening batch: 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new excludes
+
+The researcher uploaded four more PDFs directly via chat. Two were
+duplicate re-uploads of already-decided records, both independently
+re-confirmed against fresh reads before being skipped without
+reprocessing:
+
+- **R86610BDFBD5E** (Roy 2013, *Urban Water Journal*, "Negotiating
+  marginalities: right to water in Delhi"): already extracted as
+  **S416** (Kathputli Colony legally-notified-slum case study).
+- **R1A33C22EDA73** (Baird, Summers & Plummer 2013, *Canadian Water
+  Resources Journal*, "Cisterns and safe drinking water in Canada"):
+  already excluded **E03** — a fragmented, province-by-province
+  regulatory-gap review of private-cistern drinking-water-quality risk
+  (legal responsibility resting with the private owner/user), not a
+  formal-connection eligibility/burden/discretion/enforcement study.
+
+**New excludes (both E01, wrong topic):**
+
+- **R87DEE5B78284** (Johnston, Hug, Inauen, Khan, Mosler & Yang 2014,
+  *Science of the Total Environment*, "Enhancing arsenic mitigation in
+  Bangladesh: Findings from institutional, psychological, and technical
+  investigations"): a synthesis of institutional-stakeholder preference
+  surveys, RANAS-model psychological drivers of arsenic-safe
+  water-technology adoption, and technical/geochemical evaluation of
+  deep-tubewell water quality — a technology-preference/behavior-change
+  and technical-geochemistry study with no household-level
+  legal-administrative mechanism content.
+- **RE5DB6996E04E** (Okeola & Sule 2012, *Journal of King Saud
+  University – Engineering Sciences*, "Evaluation of management
+  alternatives for urban water supply system using Multicriteria
+  Decision Analysis"): an Analytic Hierarchy Process (AHP) exercise
+  selecting among hypothetical public/private ownership-operation
+  models for Offa, Nigeria's urban water works, based on a
+  questionnaire-elicited hypothetical Decision Making Group — an
+  abstract institutional-ownership decision-methodology paper with no
+  empirical household-level legal-administrative mechanism content.
+
+No new includes this batch. Duplicate audit (exact-DOI and
+record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,634 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-fifth full-text screening batch: 5 researcher-supplied PDFs, 1 duplicate skipped, 1 exclude + 3 new includes (S512-S514)
 
 The researcher uploaded five more PDFs directly via chat. One was a
 duplicate re-upload of an already-decided, already-extracted record:

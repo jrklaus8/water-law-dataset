@@ -925,6 +925,25 @@ evidence of anything.
   inferential exposure-comparator estimate in any). A corpus-wide
   duplicate audit re-run afterwards came back clean against the
   resulting 512-study corpus.
+- **2026-09-18 (later the same day): forty-sixth full-text screening
+  batch — 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new
+  excludes.** Full detail in `CHANGELOG.md`. Two items were duplicate
+  re-uploads of already-decided records, both independently
+  re-confirmed against fresh reads before being skipped without
+  reprocessing: Roy 2013 ("Negotiating marginalities: right to water in
+  Delhi," Kathputli Colony case study, already extracted as S416); and
+  Baird, Summers & Plummer 2013 ("Cisterns and safe drinking water in
+  Canada," already excluded E03 — a fragmented-regulation review of
+  private-cistern water-quality risk, not a formal-connection
+  eligibility/burden/discretion/enforcement study). New excludes (both
+  E01): Johnston et al. 2014, a synthesis of institutional-stakeholder,
+  psychological (RANAS-model), and technical-geochemical research on
+  arsenic-mitigation technology adoption in Bangladesh; and Okeola &
+  Sule 2012, an Analytic Hierarchy Process decision-analysis exercise
+  selecting among hypothetical public/private ownership models for a
+  Nigerian urban water works. No new includes this batch. A corpus-wide
+  duplicate audit re-run afterwards came back clean against the
+  resulting 512-study corpus.
 
 ## What has not been done
 
@@ -943,8 +962,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,023 of the 3,659
-  Phase-5 includes have been assessed; 2,636 records have not yet been
+- Full-text screening itself is far from complete: 1,025 of the 3,659
+  Phase-5 includes have been assessed; 2,634 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 512
