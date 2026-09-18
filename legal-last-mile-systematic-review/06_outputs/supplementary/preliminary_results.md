@@ -944,6 +944,31 @@ evidence of anything.
   Nigerian urban water works. No new includes this batch. A corpus-wide
   duplicate audit re-run afterwards came back clean against the
   resulting 512-study corpus.
+- **2026-09-18 (later the same day): forty-seventh full-text screening
+  batch — 5 researcher-supplied PDFs, 1 duplicate skipped, 2 excludes +
+  2 new includes (S515-S516).** Full detail in `CHANGELOG.md`. One item
+  was a duplicate re-upload of an already-decided record (Milton, Hore,
+  Hossain & Rahman 2012, Bangladesh arsenic-mitigation-programme review,
+  already excluded E03) and was skipped. Excludes (both E01): Babah,
+  Deida, Blake & Froelich 2012, a household-survey and water-quality
+  study of Nouakchott, Mauritania's terminal-fountain distribution
+  system; and Iribarnegaray & Seghezzo 2012, a Sustainable Water
+  Governance Index (SWGI) methodology paper applied to Salta, Argentina.
+  Includes: S515 (Ioris 2012, *Geoforum*), a 54-interview political-
+  ecology case study of Lima, Peru documenting the 1961 law that
+  legalized existing barriadas without resolving service exclusion, and
+  residents' rejection of a low-cost condominial connection system as
+  discriminatory; and S516 (Subbaraman et al. 2012, *Environment and
+  Urbanization*), a four-year mixed-methods study of Kaula Bandar, a
+  non-notified Mumbai slum, documenting the No Objection Certificate
+  mechanism blocking service extension onto central-government land,
+  criminalization of residents' informal water/sanitation coping
+  strategies, and a 37-times-smaller disaster-compensation payout
+  relative to a notified slum. Neither new include was added to
+  `effect_sizes.csv` (qualitative case study and descriptive comparative
+  statistics respectively, no inferential exposure-comparator estimate).
+  A corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 514-study corpus.
 
 ## What has not been done
 
@@ -962,14 +987,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,025 of the 3,659
-  Phase-5 includes have been assessed; 2,634 records have not yet been
+- Full-text screening itself is far from complete: 1,029 of the 3,659
+  Phase-5 includes have been assessed; 2,630 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 512
+- Extraction (Phase 8) is caught up with screening completely — all 514
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  512 extracted studies** (a first 12-study partial pilot batch was
+  514 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

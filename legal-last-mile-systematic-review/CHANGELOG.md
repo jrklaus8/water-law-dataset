@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-sixth full-text screening batch: 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new excludes
+## 2026-09-18 (latest) — Forty-seventh full-text screening batch: 5 researcher-supplied PDFs, 1 duplicate skipped, 2 excludes + 2 new includes (S515-S516)
+
+The researcher uploaded five more PDFs directly via chat. One was a
+duplicate re-upload of an already-decided record: Milton, Hore, Hossain
+& Rahman (2012, *Emerging Health Threats Journal*, "Bangladesh arsenic
+mitigation programs: lessons from the past," already excluded E03) and
+was skipped without reprocessing.
+
+**Excludes (both E01, wrong topic):**
+
+- **RB45F57F659FC** (Babah, Deida, Blake & Froelich 2012, *Procedia
+  Engineering*, "Fresh water distribution problematic in Nouakchott"): a
+  215-household survey and physico-chemical/bacteriological water-
+  quality study of Nouakchott, Mauritania's informal terminal-fountain
+  distribution system, with no legal-administrative mechanism content.
+- **R4DC2A9DD9226** (Iribarnegaray & Seghezzo 2012, *Sustainability*,
+  "Governance, Sustainability and Decision Making in Water and
+  Sanitation Management Systems"): develops and applies a Sustainable
+  Water Governance Index (SWGI) methodology to Salta, Argentina — a
+  governance-index framework paper, not an empirical legal-administrative
+  mechanism study.
+
+**Includes:**
+
+- **RF464DBEDC353** (Ioris 2012, *Geoforum*, "The geography of multiple
+  scarcities: Urban development and water problems in Lima, Peru"): a
+  54-interview political-ecology case study (a distinct companion paper
+  to the already-included S304, Ioris 2012 in *Singapore Journal of
+  Tropical Geography*, on the same broader Lima fieldwork) documenting
+  the 1961 law that defined the legal status of Lima's barriadas and
+  provided a legal framework for their integration into the city, and
+  SEDAPAL's rejected low-cost condominial connection system, perceived
+  by residents as "a second-class solution... intrinsically
+  discriminatory as it was only adopted in the periphery of the city."
+  Extracted as **S515** (`risk_of_bias_tool = CASP`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `outcome_family = primary_connection`).
+- **RD49DE850A4CE** (Subbaraman, O'Brien, Shitole, Shitole, Sawant,
+  Bloom & Patil-Deshmukh 2012, *Environment and Urbanization*, "Off the
+  map: the health and social implications of being a non-notified slum
+  in India"): a four-year mixed-methods PUKAR-Harvard-NYU research
+  collaboration in Kaula Bandar, Mumbai (a distinct companion paper to
+  the already-included S084, Lubeck-Schricker et al. 2023, on the same
+  broader non-notified-slum research programme) documenting a 1995
+  addendum to the Maharashtra Slum Areas Act 1971 conditioning basic-
+  amenity entitlement on pre-1995 residency proof, a No Objection
+  Certificate mechanism by which the central-government land-owning
+  agency (Mumbai Port Trust) blocks state service extension, routine
+  police fines for informal water-tanker use and open defecation, and a
+  disaster-compensation payout 37 times smaller per household than a
+  comparable notified slum received after an equivalent fire. Extracted
+  as **S516** (`risk_of_bias_tool = MMAT`, `mechanism_family = MULTIPLE`
+  — `eligibility`, `burden`, `enforcement`, `outcome_family =
+  primary_connection`).
+
+Neither new include was added to `effect_sizes.csv` (qualitative
+case study and descriptive comparative statistics respectively, no
+inferential exposure-comparator estimate). Duplicate audit (exact-DOI
+and record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,630 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-sixth full-text screening batch: 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new excludes
 
 The researcher uploaded four more PDFs directly via chat. Two were
 duplicate re-uploads of already-decided records, both independently
