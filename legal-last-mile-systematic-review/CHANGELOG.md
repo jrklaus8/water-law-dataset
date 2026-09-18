@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-third full-text screening batch: 5 researcher-supplied PDFs, 4 excludes + 1 new include (S491)
+## 2026-09-18 (latest) — Thirty-fourth full-text screening batch: 4 researcher-supplied PDFs, 1 exclude + 3 new includes (S492-S494)
+
+The researcher uploaded four more PDFs directly via chat.
+
+**Exclude:**
+
+- **RC062A42C92E7** (Dobbin & Fencl 2021, *Utilities Policy*, "Institutional
+  diversity and safe drinking water provision in the United States"), **E03
+  wrong exposure/water-quality-only**: a Bayesian mixed-effects regression
+  study of 2,867 California community water systems examining Safe
+  Drinking Water Act health-based violation counts (a water quality
+  compliance outcome) by institutional/governance type. No content on
+  household-level legal-administrative eligibility, burden, discretion, or
+  enforcement mechanisms governing service connection/access.
+
+**Includes:**
+
+- **R2BEEDB854704** (Millington & Scheba 2020, *International Journal of
+  Urban and Regional Research*, "Day Zero and The Infrastructures of
+  Climate Change: Water Governance, Inequality, and Infrastructural
+  Politics in Cape Town's Water Crisis"): a qualitative political-ecology
+  case study (4 official interviews plus civil-society respondents,
+  participant observation, discourse analysis) of Cape Town's 2015-2018
+  water crisis. Documents the withdrawal of universal Free Basic Water
+  (FBW) provision, an arduous indigent-registration eligibility process
+  ("almost impossible" for informal-economy workers), Water Management
+  Device (WMD/prepaid meter) installation that automatically cuts supply
+  once the FBW allocation is exhausted (declared legal following the
+  Constitutional Court's Mazibuko ruling), and revised stepped tariff
+  structures. Extracted as **S492** (`risk_of_bias_tool = CASP`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  effective_access`). Not added to `effect_sizes.csv` (qualitative case
+  study, no inferential exposure-comparator estimate).
+- **R8228B92EF766** (Giner & Pavon 2021, *Environmental Challenges*, "A
+  retrospective analysis of program outcomes and lessons learned on
+  implementing first-time wastewater infrastructure in underserved
+  communities in Texas from 1995 through 2017"): a mixed-methods
+  retrospective program evaluation (GWR spatial regression on $626 million
+  in funding across 31 Texas border counties plus 100+ interviews) of
+  first-time wastewater service to colonias. Documents the pre-1989
+  absence of county land-use enforcement that enabled colonia formation
+  without infrastructure, subsequent Model Subdivision Rules legislation
+  requiring counties to adopt land-use regulation, household-connection-
+  cost subsidy design within grants, and onsite-system permit/biennial-
+  inspection requirements. Wastewater coverage grew from under 20% (1995)
+  to 77% (2018). Extracted as **S493** (`risk_of_bias_tool = MMAT`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  primary_connection`). Not added to `effect_sizes.csv` (county-level GWR
+  standardized residuals, not an individual exposure-comparator estimate
+  meeting the strict effect-size bar).
+- **RF3C4D16222DD** (Rahmasary, Koop & van Leeuwen 2021, *Integrated
+  Environmental Assessment and Management*, "Assessing Bandung's
+  Governance Challenges of Water, Waste, and Climate Change: Lessons from
+  Urban Indonesia"): a City Blueprint Approach diagnostic governance-
+  capacity assessment of Bandung, Indonesia, including discussion of the
+  city's slum-area legalization policy providing informal-settlement
+  residents legal tenure security and access to basic infrastructure, and
+  governance-capacity gaps in wastewater statutory compliance/enforcement.
+  Included for consistency with the same research group's companion City
+  Blueprint paper already in the corpus (S172, Rahmasary et al. 2019, 11
+  Asian cities). Extracted as **S494** (`risk_of_bias_tool = MMAT`,
+  `mechanism_family = MULTIPLE` — `discretion_accommodation`,
+  `enforcement`, `outcome_family = administrative_outcome`,
+  `mechanism_certainty = 1`). Not added to `effect_sizes.csv` (standardized
+  diagnostic indicator scores, not an inferential exposure-comparator
+  estimate).
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,676 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-third full-text screening batch: 5 researcher-supplied PDFs, 4 excludes + 1 new include (S491)
 
 The researcher uploaded five more PDFs directly via chat.
 

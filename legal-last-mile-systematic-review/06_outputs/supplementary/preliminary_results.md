@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **979 of 3,659 records decided (489 include / 490 exclude)** — see
+  **983 of 3,659 records decided (492 include / 491 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -664,6 +664,33 @@ evidence of anything.
   estimate tied directly to the disconnection-moratorium enforcement
   mechanism. A corpus-wide duplicate audit re-run afterwards came back
   clean against the resulting 489-study corpus.
+- **2026-09-18 (later the same day): thirty-fourth full-text screening
+  batch — 4 researcher-supplied PDFs, 1 exclude + 3 new includes
+  (S492-S494).** Full detail in `CHANGELOG.md`. Exclude: a Bayesian
+  mixed-effects regression study of 2,867 California water systems
+  examining SDWA health-based violation counts (water quality) by
+  institutional/governance type — no household-level legal-administrative
+  eligibility/burden/discretion/enforcement content (E03). Includes: S492
+  (Millington & Scheba 2020), a qualitative Cape Town "Day Zero" case
+  study documenting an arduous indigent-registration process for Free
+  Basic Water eligibility and prepaid Water Management Devices that
+  automatically cut supply once the allocation is exhausted (legalized by
+  the Constitutional Court's Mazibuko ruling); S493 (Giner & Pavon 2021),
+  a mixed-methods program evaluation of first-time wastewater service to
+  Texas colonias documenting the pre-1989 absence of county land-use
+  enforcement that enabled colonia formation and subsequent Model
+  Subdivision Rules legislation, with wastewater coverage growing from
+  under 20% (1995) to 77% (2018); and S494 (Rahmasary et al. 2021), a City
+  Blueprint governance-capacity diagnostic of Bandung, Indonesia,
+  documenting slum-area legalization providing legal tenure security and
+  infrastructure access, included for consistency with a companion City
+  Blueprint paper already in the corpus (S172). None of the three new
+  includes was added to `effect_sizes.csv` (qualitative case study;
+  county-level GWR standardized residuals rather than an individual
+  exposure-comparator estimate; and standardized diagnostic indicator
+  scores, respectively — none meets the strict effect-size bar). A
+  corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 492-study corpus.
 
 ## What has not been done
 
@@ -682,14 +709,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 979 of the 3,659
-  Phase-5 includes have been assessed; 2,680 records have not yet been
+- Full-text screening itself is far from complete: 983 of the 3,659
+  Phase-5 includes have been assessed; 2,676 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 489
+- Extraction (Phase 8) is caught up with screening completely — all 492
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  489 extracted studies** (a first 12-study partial pilot batch was
+  492 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
