@@ -969,6 +969,40 @@ evidence of anything.
   statistics respectively, no inferential exposure-comparator estimate).
   A corpus-wide duplicate audit re-run afterwards came back clean against
   the resulting 514-study corpus.
+- **2026-09-18 (later the same day): single-record screening — 1
+  researcher-supplied PDF, 1 new include (S517), explicitly flagged by
+  the researcher as a key/high-priority reference.** ★ **Morgan, B.
+  (2006), "Turning off the tap: Urban water service delivery and the
+  social construction of global administrative law," *European Journal
+  of International Law* 17(1):215-246 — flagged by the researcher on
+  2026-09-18 as a study to keep in mind as very high importance for the
+  dissertation.** A comparative doctrinal/qualitative case study
+  (Argentina and South Africa, part of a six-country research project)
+  analyzing the Vivendi/Aguas del Aconquija v. Argentina ICSID
+  investment-arbitration dispute arising from the Tucuman water
+  concession (including the provincial Ombudsman's dispute-resolution
+  interventions and five consecutive judges' refusal of jurisdiction
+  over a collective non-payment lawsuit), and South Africa's shift from
+  a "political" to a "transactional" water-tariff/disconnection
+  regulatory model, alongside constitutional case law on disconnection
+  due process (*Residents of Bon Vista Mansions*, *Manqele v Durban*)
+  and cross-subsidy equality (*Pretoria City Council v Walker*). The
+  paper's central finding is that "global administrative law" in urban
+  water service delivery is constituted through iterative interaction
+  between formal legal processes and informal political modes (protest,
+  negotiation, media), with end-users and foreign water-service
+  providers holding sharply asymmetric capacity to switch between
+  domestic and international levels of governance — directly engaging
+  the review's core administrative-law-as-mechanism-of-exclusion frame.
+  Extracted as **S517** (`risk_of_bias_tool = CASP`, `mechanism_family =
+  MULTIPLE` — `burden`, `discretion_accommodation`, `enforcement`,
+  `outcome_family = administrative_outcome`; see
+  `extraction_database.csv` `regulatory_model` and `evidence_map.csv`
+  `evidence_level` for the full high-priority flag and rationale). Not
+  added to `effect_sizes.csv` (doctrinal/qualitative case study, no
+  inferential exposure-comparator estimate). A corpus-wide duplicate
+  audit re-run afterwards came back clean against the resulting
+  515-study corpus.
 
 ## What has not been done
 
@@ -987,14 +1021,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,029 of the 3,659
-  Phase-5 includes have been assessed; 2,630 records have not yet been
+- Full-text screening itself is far from complete: 1,030 of the 3,659
+  Phase-5 includes have been assessed; 2,629 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 514
+- Extraction (Phase 8) is caught up with screening completely — all 515
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  514 extracted studies** (a first 12-study partial pilot batch was
+  515 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

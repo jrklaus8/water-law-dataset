@@ -4,7 +4,52 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-seventh full-text screening batch: 5 researcher-supplied PDFs, 1 duplicate skipped, 2 excludes + 2 new includes (S515-S516)
+## 2026-09-18 (latest) — Single-record screening: 1 new include (S517), flagged HIGH PRIORITY by the researcher
+
+★ **The researcher explicitly flagged this record as a key, high-priority
+reference for the dissertation** — this is noted here, in `S517`'s
+`extraction_note`/`regulatory_model` field in `extraction_database.csv`,
+and in `evidence_level` in `evidence_map.csv`, so it stays visible to
+anyone reviewing the corpus. There is no dedicated "priority" field in
+`CODEBOOK.md`'s fixed 92-field schema, so the flag is carried as a
+prominent, clearly-marked prefix in the relevant free-text fields rather
+than as a new column.
+
+**Include:**
+
+- **R73C643F91689** (Morgan 2006, *European Journal of International
+  Law*, "Turning off the tap: Urban water service delivery and the
+  social construction of global administrative law"): a comparative
+  doctrinal/qualitative case study of Argentina and South Africa (part
+  of a six-country research project) analyzing the Vivendi/Aguas del
+  Aconquija v. Argentina ICSID investment-arbitration dispute arising
+  from the Tucuman water concession — including the provincial
+  Ombudsman's dispute-resolution interventions and five consecutive
+  judges' refusal of jurisdiction over a collective non-payment
+  lawsuit — and South Africa's shift from a "political" to a
+  "transactional" water-tariff/disconnection regulatory model, alongside
+  constitutional case law on disconnection due process (*Residents of
+  Bon Vista Mansions v Southern Metropolitan Local Council*; *Manqele v
+  Durban Transitional Metropolitan Council*) and cross-subsidy equality
+  (*Pretoria City Council v Walker*, decided 5-4). The paper's central
+  analytical finding: "global administrative law" in urban water
+  service delivery is constituted through iterative interaction between
+  formal legal processes and informal political modes (protest,
+  negotiation, media), with end-users and foreign water-service
+  providers holding sharply asymmetric capacity to switch between
+  domestic and international levels of governance. Extracted as **S517**
+  (`risk_of_bias_tool = CASP`, `mechanism_family = MULTIPLE` — `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  administrative_outcome`).
+
+Not added to `effect_sizes.csv` (doctrinal/qualitative case study, no
+inferential exposure-comparator estimate). Duplicate audit (exact-DOI
+and record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,629 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-seventh full-text screening batch: 5 researcher-supplied PDFs, 1 duplicate skipped, 2 excludes + 2 new includes (S515-S516)
 
 The researcher uploaded five more PDFs directly via chat. One was a
 duplicate re-upload of an already-decided record: Milton, Hore, Hossain
