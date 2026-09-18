@@ -1045,6 +1045,36 @@ evidence of anything.
   (comparative case-study/scenario-model figures, no inferential
   exposure-comparator estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 516-study corpus.
+- **2026-09-18 (later the same day): fiftieth full-text screening
+  batch — 9 researcher-supplied PDFs across two uploads, 3 duplicates
+  skipped, 1 new include (S519).** Full detail in `CHANGELOG.md`. Three
+  items were skipped without reprocessing, deferring to their existing
+  decisions: Chambolle (1999, already excluded E05); Busari (2002,
+  already excluded E01); and Lee & Floris (2003, already included as
+  S518) — all re-uploaded a second time. Five new excludes: Mia, Parvin
+  & Islam (2026, Faridpur City, Bangladesh, E01 — phenomenological
+  gender/water-insecurity study lacking legal-administrative mechanism
+  content); a Catalonia climate-change/water-quality conference abstract
+  (Carranza et al. 2025, E09 — abstract-only, insufficient information);
+  Mueller, Bosch, Gupta & Karg (2026, *Water Policy*, E07 — a
+  comparative legal analysis of water-USE-PERMIT/property-rights systems
+  across 110 Global South countries, but focused on resource-allocation
+  permits rather than household service-connection access); Stiegler
+  (2004, *Journal AWWA*, E05 — a brief "law & water" case-note column
+  summarizing two US appellate decisions, including a Rhode Island
+  zoning/building-permit dispute, with no defined empirical study
+  design); and Kamga et al. (2026, *GeoJournal*, Fokoué Subdivision,
+  West Cameroon, E06 — a GIS-based spatial-accessibility/infrastructure-
+  compliance study with no legal-administrative mechanism analysis).
+  Include: S519 (Birkinshaw 2026, *Urban Geography*, "Smart water?
+  Corporate experiments and hybrid hydraulics in India"), a 21-month
+  ethnographic study of the Malviya Nagar Water Services PPP in Delhi
+  showing settlement-type-dependent access to metered connections and
+  24/7 supply across the city's 8 legally differentiated settlement
+  categories. Not added to `effect_sizes.csv` (ethnographic qualitative
+  study, no locatable quantitative effect estimate). A corpus-wide
+  duplicate audit re-run afterwards came back clean against the
+  resulting 517-study corpus.
 
 ## What has not been done
 
@@ -1063,14 +1093,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,033 of the 3,659
-  Phase-5 includes have been assessed; 2,626 records have not yet been
+- Full-text screening itself is far from complete: 1,039 of the 3,659
+  Phase-5 includes have been assessed; 2,620 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 516
+- Extraction (Phase 8) is caught up with screening completely — all 517
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  516 extracted studies** (a first 12-study partial pilot batch was
+  517 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

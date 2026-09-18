@@ -4,7 +4,101 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-ninth full-text screening batch: 3 researcher-supplied PDFs, 2 duplicates skipped, 1 new include (S518)
+## 2026-09-18 (latest) — Fiftieth full-text screening batch: 9 researcher-supplied PDFs across two uploads, 3 duplicates skipped, 1 new include (S519)
+
+The researcher uploaded 9 more PDFs across two chat messages (one arriving
+mid-turn while the first batch was still being analyzed). Three were
+duplicate re-uploads of already-decided records, all deferred to without
+reprocessing:
+
+- **REA305644CBB3** (Chambolle 1999, "De l'eau pour tous?"): already
+  excluded **E05**.
+- **R4266AA2DF8F3** (Busari 2002, "Millennial Policies... Southern African
+  Example"): already excluded **E05** (note: `full_text_screening_database.csv`
+  records this as E05, not E01 as a prior summary stated — the exclusion
+  detail text reads "no identifiable empirical study design", i.e. E05's
+  code, matching its own `exclusion_reason_detail`).
+- **RF5EE990F4D41** (Lee & Floris 2003, *Natural Resources Forum*):
+  already included as **S518**.
+
+Six records were screened fresh:
+
+- **R50E028EACDD8** — Birkinshaw M. (2026). "Smart water? Corporate
+  experiments and hybrid hydraulics in India." *Urban Geography*
+  47(5):1027-1048. **INCLUDE.** A 21-month embedded ethnographic study
+  (2012-2025 fieldwork; 30+30 interviews plus 12 months living in an
+  urban village and 9 months in an unauthorized colony) of the Malviya
+  Nagar Water Services (MNWS) "smart water" PPP in Delhi (Suez + SPML
+  Infra). Documents how Delhi's 8 legally differentiated settlement-type
+  categories (jhuggi-jhompri hut clusters, recognized slums, resettlement
+  colonies, planning-exempt rural/urban villages, unauthorized colonies,
+  regularized unauthorized colonies, planned colonies — after Bhan 2013)
+  structure settlement-type-dependent access to metered connections and
+  24/7 supply pilots: recognized slums and 3 wealthy planned colonies got
+  good service, while urban villages and unauthorized colonies were left
+  with contaminated "hybrid hydraulic" supply and self-built connections
+  treated as illegal under Water Board engineering norms despite being
+  built out of necessity. Extracted as **S519**. Not added to
+  `effect_sizes.csv` (ethnographic qualitative study, no locatable
+  quantitative effect estimate).
+- **R4DE47C45D5E7** — Mia, Md. Sakib; Parvin, Mehnaz; Islam, Md Jahidul
+  (2026). "Unplanned urbanisation and drinking water insecurity in
+  Faridpur City, Bangladesh." *Development in Practice* 36(2):295-310.
+  **EXCLUDE E01.** Interpretative Phenomenological Analysis (20
+  semi-structured interviews) of water scarcity, time burden, unsafe
+  storage, harassment/safety risk during collection, domestic conflict,
+  and social humiliation tied to private tube-well ownership disputes;
+  Socio-Ecological Systems framework. A social/gender/psychological
+  water-insecurity study; governance-failure language appears only in
+  passing with no concrete eligibility/documentation/fee/enforcement
+  mechanism content.
+- **RAB6AA06D8E9D** — Carranza, L.A.; Verdura, N.C.; Gargallo, J.R.
+  (2025). "Socioeconomic impacts derived from the effects of climate
+  change on water quality in Catalonia (Spain)..." Conference abstract
+  ckaf180.144, *European Journal of Public Health* 35(Suppl 6). **EXCLUDE
+  E09.** Conference-abstract-only record (8 semi-structured stakeholder
+  interviews, QUEEN project); insufficient methodological detail to
+  assess design, sample, or extractable outcomes.
+- **R981381DE4EDB** — Mueller, A.B.; Bosch, H.J.; Gupta, J.; Karg, A.
+  (2026). "Mapping water property rights through water use permits and
+  the implications for water (re)allocation: a global south overview."
+  *Water Policy* 28(7):927-947. **EXCLUDE E07.** Comparative legal
+  analysis of water-use-permit quasi-property-rights systems (duration,
+  renewal, transfer, compensation, dispute settlement, suspension/
+  revocation) across 110 Global South countries. Rich legal-institutional
+  mechanism content, but the unit of analysis is water-RESOURCE
+  allocation permits (irrigation, industrial, agricultural, groundwater/
+  surface abstraction), not household/community drinking-water or
+  sanitation SERVICE connection access — wrong service, consistent with
+  prior E07 precedent for water-rights/permit-market studies.
+- **RA2ACB8D17124** — Stiegler, M.H. (2004). "Requiring Water Supply
+  Connection Is Within Town's Police Power" (plus a companion case note),
+  *Journal AWWA* 96(10):36. **EXCLUDE E05.** Brief "law & water"
+  practitioner case-note column summarizing two US appellate decisions
+  (a Nebraska water-appropriation nonuse cancellation; a Rhode Island
+  case on a town's police power to require public-water-system
+  connection for a building permit). No defined empirical study design;
+  the Rhode Island case concerns a real-estate developer's zoning
+  entitlement, not household/low-income service-access exclusion.
+- **R20286B7A363F** — Kamga, M.A.; Tsayo Kenzo, S.; Toussoumna, E.;
+  Nodem Fomene, R.; Letah Nzouebet, W.A.; Suya, R.G. (2026). "Spatial
+  analysis of socio-collective infrastructure and territorial
+  inequalities in a rural context: evidence from Fokoué Subdivision
+  (West Cameroon)." *GeoJournal* 91:101. **EXCLUDE E06.** GIS-based
+  spatial-accessibility and technical-standards-compliance assessment of
+  water, health, and education infrastructure (distance-to-standpipe,
+  population-per-tap, slope, flood-exposure compliance against WHO/
+  MINEDUB thresholds). Pure spatial/technical infrastructure-siting and
+  standards-compliance study; no eligibility, documentation, fee,
+  discretion, or enforcement mechanism analysis.
+
+A corpus-wide duplicate audit (exact-DOI + record_id-in-extraction_note
+methods) came back clean against the resulting 517-study corpus.
+`full_text_retrieval_queue.csv` regenerated (2,620 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-ninth full-text screening batch: 3 researcher-supplied PDFs, 2 duplicates skipped, 1 new include (S518)
 
 The researcher uploaded three more PDFs directly via chat. Two were
 duplicate re-uploads of already-decided records, both deferred to
