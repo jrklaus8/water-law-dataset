@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-eighth full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 1 new include (S503)
+## 2026-09-18 (latest) — Thirty-ninth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 2 new includes (S504-S505) — 1,001 records screened
+
+The researcher uploaded five more PDFs directly via chat. This batch's
+first decision (Enqvist & Ziervogel, S504) brings full-text screening
+past **1,001 of 3,659 records decided** for the first time. One item was
+a duplicate re-upload of an already-decided, already-extracted record
+(Wright-Contreras 2019, "A Transnational Urban Political Ecology of Water
+Infrastructures... Hanoi," already included as S441, 2026-09-17) and was
+skipped.
+
+**Excludes:**
+
+- **R2A746B07BB89** (Wescoat, Shah, Singh & Murty 2019, *Journal of
+  Water, Sanitation and Hygiene for Development*, "Habitations, villages,
+  and gram panchayats: local drinking water planning in rural India with
+  a Pune district case study"), **E01 wrong topic**: a technical GIS/
+  data-integration methodology paper on coordinating administrative
+  planning-data levels for rural water planning in India, not focused on
+  household-level legal-administrative eligibility/burden/discretion/
+  enforcement mechanisms.
+- **REA69A46FD418** (Kang 2019, *Water Policy*, "Challenges for water
+  infrastructure asset management in South Korea"), **E06 engineering
+  only**: an infrastructure engineering/asset-management study of aging
+  water/sewage/dam infrastructure deterioration rates and maintenance
+  budgets in a near-universally-connected system (98.9% access), no
+  household-level access/exclusion mechanism content.
+
+**Includes:**
+
+- **R4C0AB373567F** (Enqvist & Ziervogel 2019, *WIREs Water*, "Water
+  governance and justice in Cape Town: An overview"): a narrative
+  overview/literature-synthesis of Cape Town's water governance across
+  the 2015-2018 drought, documenting the Free Basic Water indigent-
+  registration policy, Water Management Devices installed without free/
+  prior/informed consent from some residents (with bypassing described as
+  "breaking a legal agreement"), regressive block tariffs, and the City's
+  three-phase Critical Water Shortages Disaster Plan. Extracted as
+  **S504** (`risk_of_bias_tool = Legal Institutional Evidence Appraisal
+  Framework`, `study_design_class = doctrinal`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = effective_access`). Complements the
+  Cape Town "Day Zero" papers already in the corpus (S492 Millington &
+  Scheba; R79DCFD4D36F2 Dugard).
+- **R90A7B7F95F14** (Adank, Godfrey, Butterworth & Defere 2019, *Water
+  Policy*, "Small town water services sustainability checks: development
+  and application in Ethiopia"): a mixed-methods diagnostic sustainability
+  assessment of 7 Ethiopian small towns finding all 7 Town Water Utilities
+  scored below benchmark (25/100) on "urban poor get affordable water,"
+  with 6 of 7 utilities making no provision for shared yard connections
+  allowing compound-housing residents to jointly apply for service, and
+  Ethiopia scoring 0/100 on having any urban water regulatory agency.
+  Extracted as **S505** (`risk_of_bias_tool = MMAT`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = economic_access`).
+
+Neither new include was added to `effect_sizes.csv` (narrative review and
+descriptive diagnostic indicator scores, no inferential exposure-
+comparator estimate). Duplicate audit (exact-DOI and
+record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,658 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-eighth full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 1 new include (S503)
 
 The researcher uploaded four more PDFs directly via chat. One was a
 duplicate re-upload of an already-decided record (Scruggs, Pratesi &
