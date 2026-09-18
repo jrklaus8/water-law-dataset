@@ -4,7 +4,73 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-second full-text screening batch: 5 researcher-supplied PDFs, 2 new includes (S509-S510)
+## 2026-09-18 (latest) — Forty-third full-text screening batch: 5 researcher-supplied PDFs, 4 excludes + 1 new include (S511)
+
+The researcher uploaded five more PDFs directly via chat.
+
+**Excludes (all E01, wrong topic):**
+
+- **RF4D94533DCB2** (Arimah 2017, *Procedia Engineering*, "Infrastructure
+  as a Catalyst for the Prosperity of African Cities"): a UN-Habitat
+  Expert Opinion Survey study of water supply, road network, and
+  telecommunications infrastructure's aggregate, city-level contribution
+  to "urban prosperity" across 14 African cities; no household-level
+  legal-administrative eligibility/burden/discretion/enforcement content.
+- **R3945222BBF31** (Garn, Sclar, Freeman, Penakalapati, Alexander,
+  Brooks, Rehfuess, Boisson, Medlicott & Clasen 2017, *International
+  Journal of Hygiene and Environmental Health*, "The impact of
+  sanitation interventions on latrine coverage and latrine use: A
+  systematic review and meta-analysis"): a WHO-commissioned systematic
+  review/meta-analysis (64 studies) of sanitation intervention-type
+  effectiveness (CLTS, subsidy/provision, education, sewerage, Total
+  Sanitation Campaign) on latrine coverage and use — a technical
+  public-health intervention-effectiveness review, not a legal-
+  administrative mechanism study.
+- **R60BD629D7DFF** (Manda & Wanda 2017, *Environment and Urbanization*,
+  "Understanding the nature and scale of risks in Karonga, Malawi"): a
+  380-household survey and hospital-records study of disaster and
+  everyday risks (flooding, earthquakes, droughts, traffic accidents,
+  political violence, disease, unsafe water/sanitation) in a
+  disaster-risk-reduction framework; water/sanitation is only one of
+  several everyday-risk categories, with no legal-administrative
+  eligibility/burden/discretion/enforcement analysis.
+- **R812164425DA7** (Whaley & Cleaver 2017, *Water Resources and Rural
+  Development*, "Can 'functionality' save the community management
+  model of rural water supply?"): a literature review of the
+  Community-Based Management (CBM) and water point committee (WPC)
+  "functionality" literature for rural handpump water supply in
+  Sub-Saharan Africa, engaging with committee governance and
+  socio-technical functionality theory rather than the review's
+  legal-administrative mechanism framework.
+
+**Include:**
+
+- **R7477260689CE** (Poupeau & Hardy 2017, *Water International*, "The
+  social conditions of self-organized utilities: water cooperatives in
+  La Paz and El Alto, Bolivia"): a mixed-methods study (GIS mapping,
+  550-household questionnaire, interviews, and a monographic case study
+  of the Las Nieves cooperative) documenting Bolivia's legal requirement
+  that Alternative Service Delivery (ASD) water cooperatives register
+  with the Ministry for Water and Environment (rarely done "due to the
+  complicated and costly bureaucratic steps required"), the formal
+  utility EPSAS's legal exclusion of "non-constructible" (natural-hazard)
+  zones from its service area, the La Paz municipal government's
+  largely absent formal recognition of cooperatives, and detailed
+  comparative tariff/connection-fee data (EPSAS BOB 1.9-2.6/m3; ASD
+  average BOB 10/month per World Bank survey; Las Nieves cooperative BOB
+  5/month plus a BOB 500 connection fee). Extracted as **S511**
+  (`risk_of_bias_tool = MMAT`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `burden`, `discretion_accommodation`,
+  `outcome_family = formal_connection`).
+
+S511 was not added to `effect_sizes.csv` (descriptive case-study/survey
+tariff comparison, no inferential exposure-comparator estimate).
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods)
+came back clean. `full_text_retrieval_queue.csv` regenerated (2,643 open
+records). `validate_schemas.py` reports all 13 checked files match
+their documented/generated schema.
+
+## 2026-09-18 — Forty-second full-text screening batch: 5 researcher-supplied PDFs, 2 new includes (S509-S510)
 
 The researcher uploaded five more PDFs directly via chat. Three were
 duplicate re-uploads of already-decided, already-extracted records
