@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **944 of 3,659 records decided (477 include / 467 exclude)** — see
+  **953 of 3,659 records decided (479 include / 474 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -533,6 +533,31 @@ evidence of anything.
   added to `effect_sizes.csv` (no locatable inferential exposure-comparator
   estimate in either). A corpus-wide duplicate audit re-run afterwards
   came back clean against the resulting 477-study corpus.
+- **2026-09-18 (later the same day): twenty-eighth full-text screening
+  batch — 10 researcher-supplied PDFs, 7 excludes + 2 new includes
+  (S480-S481).** Full detail in `CHANGELOG.md`. One item was a duplicate
+  re-upload of an already-decided record (Brown et al. 2023 *Lancet Global
+  Health* review on racism/exclusion in HIC water and sanitation access,
+  already S418) and was skipped. All 7 excludes were E01 (wrong topic):
+  a Harare, Zimbabwe WEF-nexus reliability/governance-perception survey; a
+  97-country tax-expenditure/SDG fiscal simulation; a South African
+  treatment-plant-worker institutional-capacity study; a Utah utility
+  water-supply-reliability definitional study; an Ecuadorian utility
+  technical-efficiency benchmarking study; an Iranian agricultural/
+  irrigation water-scarcity vulnerability study; and a Brazilian WSS
+  utility-regionalization financial-feasibility study. Includes: S480
+  (Maxcy-Brown et al. 2024), an NPDES compliance-data analysis across 59
+  Alabama Black Belt wastewater facilities (37.3% average noncompliance)
+  combined with a legal review of homeowner on-site-system permitting
+  responsibility and funding programs favoring utilities over households;
+  and S481 (Machado et al. 2023), an 11-specialist Delphi expert panel on
+  legal/institutional strategies for rural community-managed water supply
+  in Brazil, covering national sanitation law, municipal-community legal
+  instruments, and payment-capacity-based tariffs with default-driven
+  service cuts. Neither new include was added to `effect_sizes.csv` (no
+  locatable inferential exposure-comparator estimate in either). A
+  corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 479-study corpus.
 
 ## What has not been done
 
@@ -551,14 +576,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 944 of the 3,659
-  Phase-5 includes have been assessed; 2,715 records have not yet been
+- Full-text screening itself is far from complete: 953 of the 3,659
+  Phase-5 includes have been assessed; 2,706 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 477
+- Extraction (Phase 8) is caught up with screening completely — all 479
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  477 extracted studies** (a first 12-study partial pilot batch was
+  479 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

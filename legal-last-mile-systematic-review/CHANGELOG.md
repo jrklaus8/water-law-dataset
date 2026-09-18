@@ -4,7 +4,86 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-seventh full-text screening batch: 7 researcher-supplied PDFs, 2 excludes + 2 new includes (S478-S479)
+## 2026-09-18 (latest) — Twenty-eighth full-text screening batch: 10 researcher-supplied PDFs, 7 excludes + 2 new includes (S480-S481)
+
+The researcher uploaded ten more PDFs directly via chat. One was a duplicate
+re-upload of an already-decided record (Brown et al. 2023, *Lancet Global
+Health*, "The effects of racism, social exclusion, and discrimination on
+achieving universal safe water and sanitation in high-income countries" —
+already S418, extracted 2026-09-17) and was skipped without reprocessing.
+
+**Excludes (all E01, wrong topic):**
+
+- **RF88313EC8B9F** (Gandidzanwa, Togo & Mawonde 2024, *Water Supply*,
+  "Water–energy network provisioning services in Harare, Zimbabwe"): a
+  314-household WEF-nexus reliability/governance-perception survey framed
+  through collective-action theory, no legal/administrative connection-
+  mechanism content.
+- **REF486158BFC4** (Masiya, Hall, Murray, Etter-Phoya, Hannah & O'Hare
+  2024, *Sustainable Development*, "Tax expenditures and progress to the
+  Sustainable Development Goals"): a 97-country macro fiscal-policy
+  simulation, no household-level or institutional legal-mechanism analysis.
+- **RDD3426650476** (Mabadahanye, Dalu, Munyai, Dondofema & Dalu 2024,
+  *Sustainability*, "Institutional Arrangements and Roles within Water and
+  Wastewater Treatments in the Vhembe District, South Africa"): a
+  plant-worker/utility-operations institutional-capacity study.
+- **RFD88555FDAE3** (Hopkins & Sowby 2024, *Water*, "A Qualitative
+  Definition of Reliable Water Supply for Public Water Systems"): a
+  utility-level water-supply-reliability planning-definition study.
+- **R9426D15C50ED** (Cabrera Barbecho & Sarmiento 2023, *Sustainability*,
+  "Exploring Technical Efficiency in Water Supply Evidence from Ecuador"):
+  a DEA double-bootstrap utility technical-efficiency benchmarking study.
+- **R9625C2C2538C** (Zarepour Moshizi, Yousefi, Amini & Shojaei 2023,
+  *GeoJournal*, "Rural vulnerability to water scarcity in Iran"): an
+  agricultural/irrigation water-scarcity vulnerability study, not household
+  drinking-water/sanitation service access.
+- **R96D0E77D69DF** (Narzetti, Pinto, Narzetti & Cetrulo 2023, *Water*,
+  "Reaching Universal Coverage of Water and Sanitation Services: Is
+  Regionalization a Sustainable Path for Developing Countries?"): a WSS
+  utility-regionalization financial-feasibility study (Santa Catarina,
+  Brazil); household affordability appears only as a top-down financial-
+  model projection metric, not an empirical household-level finding.
+
+**Includes:**
+
+- **R95B9BD41525A** (Maxcy-Brown, Wilson, Chai, McCaskill, Bakchan,
+  Christian, Barnett, Elliott & White 2024, *J. Sustainable Water in the
+  Built Environment*, "The Past, Present, and Future of Wastewater
+  Management in Alabama's Black Belt"): NPDES compliance-data analysis
+  across 59 facilities (37.3% average noncompliance) combined with a legal/
+  policy review of homeowner OWTS-permitting responsibility, regulatory
+  enforcement history (consent decrees, court actions), and federal
+  funding programs structurally favoring utilities over individual
+  households. Extracted as **S480** (`risk_of_bias_tool = AMSTAR2`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`, `enforcement`,
+  `outcome_family = effective_access`). Not added to `effect_sizes.csv`
+  (descriptive compliance-rate analysis, no inferential exposure-comparator
+  estimate).
+- **R86567443C17D** (Machado, Oliveira, Matos & Santos 2023, *Water*,
+  "Strategies for Achieving Sustainability of Water Supply Systems in Rural
+  Environments with Community Management in Brazil"): an 11-specialist
+  Delphi-style expert-panel evaluation of legal/institutional strategies
+  for rural community-managed water supply, covering national legal
+  frameworks (Laws 11.445 and 14.026), municipal-community legal
+  instruments, and payment-capacity-based tariffs with default-driven
+  service cuts. Extracted as **S481** (`risk_of_bias_tool = MMAT`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`, `discretion_
+  accommodation`, `enforcement`, `outcome_family = effective_access`). Not
+  added to `effect_sizes.csv` (descriptive expert-panel voting counts, no
+  inferential exposure-comparator estimate).
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,706
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 953/3,659 full-text
+screened (479 include / 474 exclude), 2,706 open, 479 studies fully
+extracted (S001-S481, S227/S399 documented gaps), 182 quantitative- / 396
+qualitative-synthesis-eligible in `evidence_map.csv`, 22 rows in
+`effect_sizes.csv` (unchanged this batch).
+
+## 2026-09-18 — Twenty-seventh full-text screening batch: 7 researcher-supplied PDFs, 2 excludes + 2 new includes (S478-S479)
 
 The researcher uploaded seven more PDFs directly via chat. Three were
 duplicate re-uploads or wrong-file retrievals of already-decided records
