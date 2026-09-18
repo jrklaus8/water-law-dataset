@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **940 of 3,659 records decided (475 include / 465 exclude)** — see
+  **944 of 3,659 records decided (477 include / 467 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -511,6 +511,28 @@ evidence of anything.
   p-value with no effect-size magnitude; S477 is a qualitative case study
   with descriptive counts only). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 475-study corpus.
+- **2026-09-18 (later the same day): twenty-seventh full-text screening
+  batch — 7 researcher-supplied PDFs, 2 excludes + 2 new includes
+  (S478-S479).** Full detail in `CHANGELOG.md`. Three items were skipped
+  without reprocessing: two duplicate re-uploads of already-decided
+  records (D'Odorico et al.'s water-grabbing paper, already excluded E01;
+  Sisay et al.'s Addis Ababa FSM/sanitation-safety study, already S463),
+  and a third failed retrieval of the wrong chapter for the still-open
+  Singh & Singh Kathmandu record. Excludes: a conceptual dynamical-systems
+  model of utility-level institutional friction in stylized Phoenix Metro
+  cities (E01), and a bottled-water-consumption/tap-water-trust review
+  whose affordability content is a boxed aside rather than its own focal
+  contribution (E04). Includes: S478 (Albright, Coleman Flowers, Kramer &
+  Weinthal 2024), a 294-household Lowndes County, Alabama survey
+  documenting septic-system enforcement (fines/arrests since 2002) against
+  a 2023 US DOJ/HHS interim agreement requiring sanitation access
+  regardless of ability to pay; and S479 (Dobbin et al. 2024), a narrative
+  review of unregulated-water-user regulation and assistance-program
+  eligibility barriers (including a USDA owner-occupancy rule excluding
+  renters) across 7 Southwestern US jurisdictions. Neither new include was
+  added to `effect_sizes.csv` (no locatable inferential exposure-comparator
+  estimate in either). A corpus-wide duplicate audit re-run afterwards
+  came back clean against the resulting 477-study corpus.
 
 ## What has not been done
 
@@ -529,14 +551,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 940 of the 3,659
-  Phase-5 includes have been assessed; 2,719 records have not yet been
+- Full-text screening itself is far from complete: 944 of the 3,659
+  Phase-5 includes have been assessed; 2,715 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 475
+- Extraction (Phase 8) is caught up with screening completely — all 477
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  475 extracted studies** (a first 12-study partial pilot batch was
+  477 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

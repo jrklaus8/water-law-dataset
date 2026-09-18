@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-sixth full-text screening batch: 9 researcher-supplied items, 7 excludes + 2 new includes (S476-S477)
+## 2026-09-18 (latest) — Twenty-seventh full-text screening batch: 7 researcher-supplied PDFs, 2 excludes + 2 new includes (S478-S479)
+
+The researcher uploaded seven more PDFs directly via chat. Three were
+duplicate re-uploads or wrong-file retrievals of already-decided records
+and were skipped without reprocessing: D'Odorico, Dell'Angelo & Rulli's
+"Appropriation pathways of water grabbing" (already excluded E01,
+2026-09-17), Sisay, Gari & Ambelu's Addis Ababa fecal-sludge/sanitation-
+safety study (already S463, 2026-09-17), and a third delivery of the wrong
+chapter for record R81549C4709FC (Singh & Singh, ch.18, "Building
+Political Capabilities... Kathmandu") — confirmed via full-text read as the
+same Sherpa/Awale chapters already documented in that record's
+`wrong_file_retrieved` note; still open pending correct retrieval.
+
+**Excludes:**
+
+- **R3E54D7DA6A1A** (Wiechman, Alonso Vicario, Anderies, Garcia, Azizi &
+  Hornberger 2024, *Water Resources Research*, "Institutional Dynamics
+  Impact the Response of Urban Socio-Hydrologic Systems to Supply
+  Challenges"): a conceptual dynamical-systems model (UWIIM) of utility-
+  level investment/rate-setting/curtailment institutional friction in
+  three stylized Phoenix Metro cities, explicitly not intended to predict
+  real-city outcomes. Excluded **E01 (wrong topic)**.
+- **R6F531D59E896** (Jaffee 2024, *WIREs Water*, "Unequal trust: Bottled
+  water consumption, distrust in tap water, and economic and racial
+  inequality in the United States"): a focus-article review of bottled-
+  water consumption/trust patterns by race and income. Excluded **E04
+  (wrong outcome)**: the article's own focal contribution is bottled-water
+  consumption/trust perception, not formal connection/effective access/
+  economic access/administrative outcomes; its Box 1 on water-affordability
+  and shutoffs is a boxed aside summarizing other cited studies, not this
+  paper's own empirical content.
+
+**Includes:**
+
+- **RCA5D7CE8A750** (Albright, Coleman Flowers, Kramer & Weinthal 2024,
+  *Local Environment*, "Failing septic systems in Lowndes County, Alabama:
+  citizen participation, science, and community knowledge"): a 294-
+  household survey documenting legal enforcement (fines/arrests under
+  Alabama's sanitation code since 2002 for failing septic systems in a
+  county with impermeable clay soils), prohibitive installation costs
+  ($6,000-$30,000), and a 2023 US DOJ/HHS interim environmental-justice
+  agreement requiring sanitation access regardless of ability to pay and
+  suspending punitive enforcement. Extracted as **S478**
+  (`risk_of_bias_tool = JBI`, `mechanism_family = MULTIPLE` — `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  effective_access`). Not added to `effect_sizes.csv`: a descriptive survey
+  and legal/institutional case narrative, no inferential exposure-
+  comparator estimate.
+- **R0B3058C4EC24** (Dobbin, Hernandez, Bostic, Harrison, Singhal, Barnett,
+  Vasquez-Rodriguez, Pierce & Sawyer 2024, *WIREs Water*, "Making a vicious
+  cycle virtuous: A research and policy agenda for advancing the water
+  security of unregulated users in the Southwestern U.S."): a narrative
+  review of the regulatory/assistance-program landscape for ~2.5 million
+  federally unregulated water users (domestic wells, very small systems,
+  hauled water) across 7 Southwestern US jurisdictions, documenting
+  inconsistent statutory definitions, a USDA owner-occupancy eligibility
+  rule excluding renters, and Navajo Nation watering-point fees suspended
+  under IHS CARES Act funding. Extracted as **S479**
+  (`risk_of_bias_tool = AMSTAR2`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `burden`, `outcome_family = effective_access`). Not added
+  to `effect_sizes.csv`: a narrative policy-landscape review, no single
+  quantitative exposure-comparator estimate.
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,715
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 944/3,659 full-text
+screened (477 include / 467 exclude), 2,715 open, 477 studies fully
+extracted (S001-S479, S227/S399 documented gaps), 182 quantitative- / 394
+qualitative-synthesis-eligible in `evidence_map.csv`, 22 rows in
+`effect_sizes.csv` (unchanged this batch).
+
+## 2026-09-18 — Twenty-sixth full-text screening batch: 9 researcher-supplied items, 7 excludes + 2 new includes (S476-S477)
 
 The researcher uploaded nine more items directly via chat (eight PDFs plus
 one Google Drive-shared PDF), all matching open records by exact title
