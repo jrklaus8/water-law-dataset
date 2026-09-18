@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-ninth full-text screening batch: 8 researcher-supplied PDFs, 5 excludes + 2 new includes (S482-S483)
+## 2026-09-18 (latest) — Thirtieth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 3 new includes (S484-S486)
+
+The researcher uploaded five more PDFs directly via chat, all matching open
+records by exact title:
+
+**Excludes (both E01, wrong topic):**
+
+- **R00625C11FB19** (Munene & Hall 2022, *Environmental Health Insights*,
+  "Proximity of Water Wells to Public Water Testing Facilities in Alberta
+  Using Drive Times"): a GIS drive-time service-area analysis of 5,872
+  private wells and 107 voluntary public water-quality testing facilities.
+  Concerns access to a voluntary testing service, not water/sanitation
+  service connection; does not satisfy inclusion criterion 1.
+- **RECC0531CE044** (Mukwarami & Fakoya 2022, *Journal of Governance and
+  Regulation*, "Causality relationship between sustainability factors and
+  water management"): a Granger-causality panel study (8 South African
+  metropolitan municipalities) of social/environmental/governance/economic
+  determinants of municipal water investment. Macro municipal financial/
+  governance econometrics, not a household-level legal-mechanism study.
+
+**Includes:**
+
+- **R570145F5F20F** (Monyai, Chivanga, Monyai & Ndlovu 2022, *Journal of
+  Governance and Regulation*, "The Role of Communities in Innovative Water
+  Management: Sustainability Governance in the Emerging Country"): a
+  117-participant qualitative study (Mbizana and Ngwathe municipalities,
+  South Africa) documenting weak enforcement of municipal by-laws against
+  illegal water connections due to political complicity, nominal/top-down
+  participation processes, and uncompensated pipeline-easement land
+  disputes. Extracted as **S484** (`risk_of_bias_tool = CASP`,
+  `mechanism_family = MULTIPLE` — `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = effective_access`).
+- **R394E198B902C** (Dektar, McConnell & Kasekende 2022, *Water Policy*,
+  "Exploratory assessment of challenges and issues with private water
+  operators in rural water supply and service delivery: a case study of
+  the Karamoja region, Uganda"): a qualitative case study across 4 rural
+  schemes documenting weak enforcement of tariff/regulatory policy,
+  bureaucratic tariff-approval delays, and risky payment-in-kind/loan
+  tariff arrangements. Extracted as **S485** (`risk_of_bias_tool = CASP`,
+  `mechanism_family = MULTIPLE` — `burden`, `enforcement`, `outcome_family
+  = effective_access`).
+- **R9860C906C24C** (Calderón-Villarreal et al. 2022, *Social Science &
+  Medicine*, "Deported, homeless, and into the canal: Environmental
+  structural violence in the binational Tijuana River"): a binational
+  mixed-methods study (85-respondent survey, ethnography, water testing)
+  of deported/homeless residents of the Tijuana River canal, documenting
+  ID/documentation-based hospital-eligibility barriers, fee-conditioned
+  private sanitation access, and police raids forcing contact with
+  contaminated water. Extracted as **S486** (`risk_of_bias_tool = MMAT`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`, `enforcement`,
+  `outcome_family = effective_access`).
+
+Neither S484, S485 nor S486 was added to `effect_sizes.csv`: S484 and S485
+are qualitative case studies with no inferential exposure-comparator
+estimate; S486 reports a real OR (skin infection ~ river-water contact,
+OR=2.3, 95% CI 1.2-5.3) but this is a health-outcome epidemiological
+finding, not an estimate tied to a legal/administrative access mechanism,
+so it falls outside this review's effect-size scope.
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,694
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 965/3,659 full-text
+screened (484 include / 481 exclude), 2,694 open, 484 studies fully
+extracted (S001-S486, S227/S399 documented gaps), 184 quantitative- / 400
+qualitative-synthesis-eligible in `evidence_map.csv`, 23 rows in
+`effect_sizes.csv` (unchanged this batch).
+
+## 2026-09-18 — Twenty-ninth full-text screening batch: 8 researcher-supplied PDFs, 5 excludes + 2 new includes (S482-S483)
 
 The researcher uploaded eight more PDFs directly via chat. One was a
 duplicate re-upload of an already-decided record (Beyene, Adam & Minale
