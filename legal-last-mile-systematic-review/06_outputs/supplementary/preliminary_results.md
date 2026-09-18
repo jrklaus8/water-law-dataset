@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **970 of 3,659 records decided (486 include / 484 exclude)** — see
+  **974 of 3,659 records decided (488 include / 486 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -624,6 +624,26 @@ evidence of anything.
   (qualitative analyses with no inferential exposure-comparator
   estimate). A corpus-wide duplicate audit re-run afterwards came back
   clean against the resulting 486-study corpus.
+- **2026-09-18 (later the same day): thirty-second full-text screening
+  batch — 5 researcher-supplied PDFs, 2 excludes + 2 new includes
+  (S489-S490).** Full detail in `CHANGELOG.md`. One item was a duplicate
+  re-upload of an already-decided record (Hove et al. 2022 South Africa
+  PHC/water-governance narrative review, already excluded E04) and was
+  skipped. Both excludes were E01 (wrong topic): a global composite SDG6
+  index built across 232 countries from aggregate statistics, and a
+  15-interview Ghana gender-empowerment-in-WASH study whose connection-
+  disparity mention was incidental to its own focal contribution.
+  Includes: S489 (Koehler et al. 2021), a 1,215-household Kwale County,
+  Kenya study finding households who consider their water supply costly
+  have roughly half the odds of committing to a professional maintenance
+  contract (OR=0.532, p=0.015); and S490 (Aliyev 2021), an Oxfam
+  practitioner case study of rural Tajikistan documenting a blurred
+  regulatory boundary between two government water-sector bodies, over 50
+  detected illegal connections, and 74-349% operational-cost increases
+  driving tariff rises across 3 Water User Associations. S489 was **added
+  to `effect_sizes.csv`** as a genuine exposure-comparator estimate with
+  an odds ratio, SE, p-value and N. A corpus-wide duplicate audit re-run
+  afterwards came back clean against the resulting 488-study corpus.
 
 ## What has not been done
 
@@ -642,14 +662,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 970 of the 3,659
-  Phase-5 includes have been assessed; 2,689 records have not yet been
+- Full-text screening itself is far from complete: 974 of the 3,659
+  Phase-5 includes have been assessed; 2,685 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 486
+- Extraction (Phase 8) is caught up with screening completely — all 488
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  486 extracted studies** (a first 12-study partial pilot batch was
+  488 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

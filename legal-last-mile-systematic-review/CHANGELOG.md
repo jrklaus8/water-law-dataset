@@ -4,7 +4,74 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-first full-text screening batch: 5 researcher-supplied PDFs, 3 excludes + 2 new includes (S487-S488)
+## 2026-09-18 (latest) — Thirty-second full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 2 new includes (S489-S490)
+
+The researcher uploaded five more PDFs directly via chat. One was a
+duplicate re-upload of an already-decided record (Hove et al. 2022,
+"Lessons from community participation in primary health care and water
+resource governance in South Africa: a narrative review" — already excluded
+E04, 2026-09-17) and was skipped without reprocessing.
+
+**Excludes (both E01, wrong topic):**
+
+- **R234D49848D7B** (Cai, Zhao & Varis 2021, *Journal of Cleaner
+  Production*, "Match words with deeds: Curbing water risk with the
+  Sustainable Development Goal 6 index"): a global composite SDG6 index
+  constructed across 232 countries/territories using secondary aggregate
+  national statistics. A macro cross-country index-construction/
+  benchmarking exercise, no household-level legal-administrative mechanism
+  content.
+- **R7B70065EDFE6** (Dery, Bisung, Dickin & Atengdem 2021, *H2Open
+  Journal*, "'They will listen to women who speak but it ends there':
+  examining empowerment in the context of water and sanitation
+  interventions in Ghana"): a 15-KII qualitative study of gender
+  empowerment in WASH using Kabeer's empowerment framework. Focused on
+  gender/social-norms dynamics; a single participant quote on rich-vs-poor
+  connection disparity is incidental, not the paper's own focal
+  contribution.
+
+**Includes:**
+
+- **R77DEA3810C24** (Koehler, Thomson, Goodall, Katuva & Hope 2021, *World
+  Development*, "Institutional pluralism and water user behavior in rural
+  Africa"): a 1,215-household/254-waterpoint multivariate logistic
+  regression study (Kwale County, Kenya) finding households who consider
+  their existing water supply costly have roughly half the odds of
+  intending to contract a professional maintenance service provider
+  (OR=0.532, SE=0.138, p=0.015), with regular payment systems, drinking
+  use, and distance to the next handpump as further significant
+  predictors. Extracted as **S489** (`risk_of_bias_tool = JBI`,
+  `mechanism_family = MULTIPLE` — `burden`, `discretion_accommodation`,
+  `outcome_family = economic_access`). **Added to `effect_sizes.csv`**: a
+  genuine exposure-comparator (cost-concern) with OR, SE, p-value and N —
+  meets the strict effect-size bar.
+- **R3A151FC152B0** (Aliyev 2021, in *Resilience of Water Supply in
+  Practice*, Ch. 9, "Economic resilience in water supply service in rural
+  Tajikistan: A case study from Oxfam"): a practitioner case study
+  documenting Tajikistan's Law on Drinking Water and Wastewater (N1633,
+  2019), a blurred MEWR/SUE KMK regulatory boundary, cost-recovery
+  tariff-setting through the Anti-Monopoly Agency, over 50 detected
+  illegal connections, 74-349% operational-cost increases (2016-2020)
+  across 3 Water User Associations, and unofficial district-government
+  dismissal of WUA chairmen. Extracted as **S490**
+  (`risk_of_bias_tool = MMAT`, `mechanism_family = MULTIPLE` — `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  effective_access`). Not added to `effect_sizes.csv` (descriptive
+  programme-monitoring KPI trends, no inferential exposure-comparator
+  estimate).
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,685
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 974/3,659 full-text
+screened (488 include / 486 exclude), 2,685 open, 488 studies fully
+extracted (S001-S490, S227/S399 documented gaps), 186 quantitative- / 403
+qualitative-synthesis-eligible in `evidence_map.csv`, 24 rows in
+`effect_sizes.csv`.
+
+## 2026-09-18 — Thirty-first full-text screening batch: 5 researcher-supplied PDFs, 3 excludes + 2 new includes (S487-S488)
 
 The researcher uploaded five more PDFs directly via chat, all matching open
 records by exact title:
