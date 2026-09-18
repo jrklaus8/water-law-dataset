@@ -1003,6 +1003,24 @@ evidence of anything.
   inferential exposure-comparator estimate). A corpus-wide duplicate
   audit re-run afterwards came back clean against the resulting
   515-study corpus.
+- **2026-09-18 (later the same day): forty-eighth full-text screening
+  batch — 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new
+  excludes.** Full detail in `CHANGELOG.md`. Two items were skipped
+  without reprocessing: a re-upload of Morgan (2006, "Turning off the
+  tap"), already extracted as S517 in the immediately preceding batch;
+  and Acero et al. (2026, Alaska critical-infrastructure lifecycle
+  study), already excluded E01. New excludes (both E01): Karmaksh &
+  Kumar (2026), a 62-paper systematic review of urban development's
+  relationship with water bodies in Indian cities spanning hydrology,
+  urban planning, and governance broadly rather than household-level
+  legal-administrative mechanisms; and Levin et al. (2002), a broad
+  review of US drinking-water infrastructure challenges (pricing,
+  consolidation, ownership, climate change, waterborne disease, SDWA
+  regulatory history) focused on technical/public-health infrastructure
+  for the already-connected population rather than connection-access
+  barriers. No new includes this batch. A corpus-wide duplicate audit
+  re-run afterwards came back clean against the resulting 515-study
+  corpus.
 
 ## What has not been done
 
@@ -1021,8 +1039,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,030 of the 3,659
-  Phase-5 includes have been assessed; 2,629 records have not yet been
+- Full-text screening itself is far from complete: 1,032 of the 3,659
+  Phase-5 includes have been assessed; 2,627 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 515

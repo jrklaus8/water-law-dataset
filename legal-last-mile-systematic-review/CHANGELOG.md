@@ -4,7 +4,45 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Single-record screening: 1 new include (S517), flagged HIGH PRIORITY by the researcher
+## 2026-09-18 (latest) — Forty-eighth full-text screening batch: 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new excludes
+
+The researcher uploaded four more PDFs directly via chat. Two were
+duplicate re-uploads of already-decided records and were skipped
+without reprocessing: Morgan (2006, "Turning off the tap"), already
+extracted as **S517** in the immediately preceding batch; and Acero,
+Safarpour, Faust, Lin, Albertson, Stephens & Spearing (2026, *Environ.
+Res. Commun.*, "Cross-sector lifecycle challenges impacting Alaska's
+critical infrastructure systems"), already excluded E01.
+
+**New excludes (both E01, wrong topic):**
+
+- **R4B98C5717E00** (Karmaksh & Kumar 2026, *Water Policy*, "Urban
+  development and water bodies in Indian cities: a systematic review of
+  reciprocal relationships"): a 62-paper PRISMA-style systematic review
+  synthesizing broad thematic literature on urban water in Indian
+  cities (supply/efficiency reforms, peri-urban/informal water systems,
+  wastewater reuse, governance/equity/resilience, sustainable
+  practices, water insecurities) spanning hydrology, urban planning,
+  GIS, and governance generally, not focused on household-level
+  legal-administrative eligibility/burden/discretion/enforcement
+  mechanisms.
+- **REDD845E73CF8** (Levin, Epstein, Ford, Harrington, Olson & Reichard
+  2002, *Environmental Health Perspectives*, "U.S. Drinking Water
+  Challenges in the Twenty-First Century"): a broad review of US public
+  drinking-water infrastructure challenges (pricing, utility
+  consolidation, public/private ownership, climate change, waterborne
+  disease, land use, groundwater/surface water, SDWA regulatory
+  history) focused on technical/public-health infrastructure and
+  water-quality regulation for the already-connected population, not
+  household-level legal-administrative access-barrier mechanisms.
+
+No new includes this batch. Duplicate audit (exact-DOI and
+record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,627 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Single-record screening: 1 new include (S517), flagged HIGH PRIORITY by the researcher
 
 ★ **The researcher explicitly flagged this record as a key, high-priority
 reference for the dissertation** — this is noted here, in `S517`'s
