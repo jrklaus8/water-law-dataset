@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **986 of 3,659 records decided (493 include / 493 exclude)** — see
+  **989 of 3,659 records decided (496 include / 493 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -710,6 +710,29 @@ evidence of anything.
   (descriptive secondary data and qualitative interviews, no inferential
   exposure-comparator estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 493-study corpus.
+- **2026-09-18 (later the same day): thirty-sixth full-text screening
+  batch — 5 researcher-supplied PDFs, 3 new includes (S496-S498).** Full
+  detail in `CHANGELOG.md`. Two items were duplicate re-uploads of
+  already-decided records (Venkataramanan et al. 2020 coping-strategies
+  review, already excluded E01 earlier this same day; and Zvobgo & Do 2020
+  "Safe Hands" Chitungwiza study, already included as S461) and were
+  skipped. Includes: S496 (Komakech, Kwezi & Ali 2020), a mixed-methods
+  multi-case study of three Tanzanian prepaid-water-technology schemes
+  documenting cost-based exclusion from prepaid water tags and CBWSO
+  discretion in identifying "vulnerable households" for free water credit;
+  S497 (Shah & Badiger 2020), a qualitative institutional case study of
+  Darjeeling, India documenting a formal water-connection process
+  requiring three legal land/residency documents plus a tiered connection
+  fee (USD250-520), and municipal discretion over public-standpipe
+  approval requests; and S498 (Shrestha, Joshi & Roth 2020), a 74-interview
+  qualitative case study of caste-based exclusion of Dalit households from
+  a registered water-user committee in peri-urban Kathmandu Valley, Nepal,
+  despite prior-use rights and Nepal's mandatory-representation policy.
+  None of the three new includes was added to `effect_sizes.csv`
+  (descriptive household-survey percentages and qualitative case studies,
+  no inferential exposure-comparator estimate). A corpus-wide duplicate
+  audit re-run afterwards came back clean against the resulting
+  496-study corpus.
 
 ## What has not been done
 
@@ -728,14 +751,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 986 of the 3,659
-  Phase-5 includes have been assessed; 2,673 records have not yet been
+- Full-text screening itself is far from complete: 989 of the 3,659
+  Phase-5 includes have been assessed; 2,670 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 493
+- Extraction (Phase 8) is caught up with screening completely — all 496
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  493 extracted studies** (a first 12-study partial pilot batch was
+  496 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

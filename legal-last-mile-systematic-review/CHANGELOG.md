@@ -4,7 +4,66 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-fifth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 1 new include (S495)
+## 2026-09-18 (latest) — Thirty-sixth full-text screening batch: 5 researcher-supplied PDFs, 3 new includes (S496-S498)
+
+The researcher uploaded five more PDFs directly via chat. Two were duplicate
+re-uploads of already-decided, already-extracted records and were skipped
+without reprocessing: Venkataramanan et al. 2020 ("Coping strategies for
+individual and household-level water insecurity," already excluded E01
+earlier this same day) and Zvobgo & Do 2020 ("COVID-19 and the call for
+'Safe Hands'... Chitungwiza municipality, Zimbabwe," already included as
+S461, 2026-09-17).
+
+**Includes:**
+
+- **RCB86A4946CD4** (Komakech, Kwezi & Ali 2020, *Water Policy*, "Why
+  prepaid technologies are not a panacea for inclusive and sustainable
+  rural water services in Tanzania?"): a mixed-methods multi-case study
+  (1,785-household survey, 101 interviews, 3 districts) documenting
+  cost-based exclusion from prepaid water tags/cards ("the current mode of
+  exclusion arises from the cost of buying the water tags"), CBWSO
+  discretion in identifying "vulnerable households" eligible for free
+  water credit, and tariff-setting political struggles under Tanzania's
+  2019 Water and Sanitation Act. Extracted as **S496**
+  (`risk_of_bias_tool = MMAT`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `burden`, `discretion_accommodation`, `outcome_family =
+  economic_access`). Not added to `effect_sizes.csv` (descriptive
+  household-survey percentages, no regression-based exposure-comparator
+  estimate).
+- **RAA1E9DFFD38D** (Shah & Badiger 2020, *Water Policy*, "Conundrum or
+  paradox: deconstructing the spurious case of water scarcity in the
+  Himalayan Region through an institutional economics narrative"): a
+  qualitative institutional case study of Darjeeling, India, documenting a
+  formal water-connection process requiring three legal land/residency
+  documents (Khatian, land registration, municipal mutation document) plus
+  a tiered connection fee (USD250-520), municipal discretion over
+  approving informal community requests for public standpipes, and
+  political/institutional fragmentation across 5 government bodies.
+  Extracted as **S497** (`risk_of_bias_tool = CASP`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `outcome_family = formal_connection`). Not added to `effect_sizes.csv`
+  (qualitative case study, no inferential exposure-comparator estimate).
+- **R1DE5B8602164** (Shrestha, Joshi & Roth 2020, *Contemporary South
+  Asia*, "The hydro-social dynamics of exclusion and water insecurity of
+  Dalits in peri-urban Kathmandu Valley, Nepal"): a 74-interview
+  qualitative case study documenting caste-based exclusion of Dalit
+  households from a formally registered water-user committee (denied
+  membership despite prior-use rights, later required to "pay the same
+  rate as new migrants"), Community Forest User Group membership
+  requirements tied to land ownership for spring access, and merely
+  symbolic Dalit representation on governance committees despite Nepal's
+  mandatory-representation policy. Extracted as **S498**
+  (`risk_of_bias_tool = CASP`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `burden`, `discretion_accommodation`, `enforcement`,
+  `outcome_family = effective_access`). Not added to `effect_sizes.csv`
+  (qualitative case study, no inferential exposure-comparator estimate).
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,670 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-fifth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 1 new include (S495)
 
 The researcher uploaded five more PDFs directly via chat. Two were duplicate
 re-uploads of already-decided, already-extracted records and were skipped
