@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirtieth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 3 new includes (S484-S486)
+## 2026-09-18 (latest) — Thirty-first full-text screening batch: 5 researcher-supplied PDFs, 3 excludes + 2 new includes (S487-S488)
+
+The researcher uploaded five more PDFs directly via chat, all matching open
+records by exact title:
+
+**Excludes (all E01, wrong topic):**
+
+- **R07C7E4C10649** (Bruns, Meisch, Ahmed, Meissner & Romero-Lankao 2022,
+  *Geoforum*, "Nexus disrupted: Lived realities and the water-energy-food
+  nexus from an infrastructure perspective"): a theoretical Political
+  Ecology paper introducing a "heterogeneous infrastructure configuration"
+  framework for the WEF-nexus, illustrated with 3 Sub-Saharan African
+  vignettes spanning water+energy+food broadly; water/sanitation
+  service-access legal-administrative content is incidental, not focal.
+- **R9B3445F82EB1** (Pugel, Javernick-Will, Peabody et al. 2022, *Science
+  of the Total Environment*, "Pathways for collaboratively strengthening
+  water and sanitation systems"): an fsQCA of 11 donor/NGO/government
+  collaborative WASH-program cases in Eastern Africa, identifying
+  institutional/organizational conditions for program progress. A
+  meta-level collaborative-governance program-design study, not a
+  household-level legal-administrative connection-mechanism study.
+- **RBADD83B9D09A** (Joshua, Tompkins, Schreckenberg, Ngongondo, Gondwe &
+  Chiotha 2022, *Physics and Chemistry of the Earth*, "Water policy and
+  resilience of potable water infrastructure to climate risks in rural
+  Malawi"): a climate-resilience/infrastructure-vulnerability and
+  rainfall-trend-analysis study evaluating water-policy effectiveness
+  against flood/drought disaster preparedness; a single incidental
+  borehole-fee/non-payment mention is not the paper's own focal
+  legal-administrative-mechanism contribution.
+
+**Includes:**
+
+- **R9532479BE24C** (Kusi-Appiah & Mkandawire 2022, *Wellbeing, Space and
+  Society*, "Political ecology of household water security among the
+  urban poor in Malawi"): a 52-participant qualitative study (Mzuzu)
+  finding exorbitant NRWB tariffs exclude/tenuously connect most poor
+  residents, documenting service disconnection for late/non-payment,
+  per-container fees at community water points, and government
+  non-recognition of informal settlements as a structural connection-
+  eligibility barrier, forcing reliance on exclusionary kinship/church
+  networks for substitute access. Extracted as **S487**
+  (`risk_of_bias_tool = CASP`, `mechanism_family = MULTIPLE` — `eligibility`,
+  `burden`, `enforcement`, `outcome_family = economic_access`). Not added
+  to `effect_sizes.csv` (qualitative thematic analysis with descriptive
+  percentages only, no inferential exposure-comparator estimate).
+- **R25608A5994D3** (Ahabwe, Batega, Ssewaya & Niwagaba 2022, *Journal of
+  Water and Climate Change*, "Governance conundrum in pursuit of the
+  human right to water and sanitation: tracking the progress of the
+  leave-no-one-behind principle in Uganda"): a cross-sectional qualitative
+  governance study (multi-category key-informant interviews plus
+  structured legal/policy review) documenting Uganda's Constitution,
+  Water Act Cap 152, Penal Code Act and NWSC pro-poor pre-paid-meter
+  tariff structure against persistent implementation gaps — unregulated,
+  "exorbitantly high" faecal-sludge fees outside Kampala, only 15% of key
+  informants confirming poverty-based subsidies, and an unimplemented
+  2015 World Bank tariff-overhaul recommendation. Extracted as **S488**
+  (`risk_of_bias_tool = CASP`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `burden`, `discretion_accommodation`, `enforcement`,
+  `outcome_family = effective_access`). Not added to `effect_sizes.csv`
+  (qualitative content analysis and policy review, no inferential
+  exposure-comparator estimate).
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,689
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 970/3,659 full-text
+screened (486 include / 484 exclude), 2,689 open, 486 studies fully
+extracted (S001-S488, S227/S399 documented gaps), 184 quantitative- / 402
+qualitative-synthesis-eligible in `evidence_map.csv`, 23 rows in
+`effect_sizes.csv` (unchanged this batch).
+
+## 2026-09-18 — Thirtieth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 3 new includes (S484-S486)
 
 The researcher uploaded five more PDFs directly via chat, all matching open
 records by exact title:

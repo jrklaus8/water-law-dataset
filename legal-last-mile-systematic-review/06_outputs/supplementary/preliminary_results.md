@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **965 of 3,659 records decided (484 include / 481 exclude)** — see
+  **970 of 3,659 records decided (486 include / 484 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -602,6 +602,28 @@ evidence of anything.
   health outcome, not a legal-mechanism access estimate). A corpus-wide
   duplicate audit re-run afterwards came back clean against the resulting
   484-study corpus.
+- **2026-09-18 (later the same day): thirty-first full-text screening
+  batch — 5 researcher-supplied PDFs, 3 excludes + 2 new includes
+  (S487-S488).** Full detail in `CHANGELOG.md`. All 3 excludes were E01
+  (wrong topic): a theoretical Political Ecology water-energy-food nexus
+  paper with only incidental water-service content; an fsQCA of 11
+  donor/NGO/government collaborative WASH-program cases identifying
+  program-design conditions rather than household-level access
+  mechanisms; and a Malawi climate-resilience/rainfall-trend study
+  evaluating water-policy effectiveness against flood/drought
+  preparedness, with only an incidental borehole-fee mention. Includes:
+  S487 (Kusi-Appiah & Mkandawire 2022), a 52-participant Mzuzu, Malawi
+  study finding exorbitant utility tariffs exclude the poor from formal
+  connection, disconnection for non-payment, and government non-
+  recognition of informal settlements barring connection eligibility;
+  and S488 (Ahabwe et al. 2022), a Uganda governance study documenting
+  the constitutional/statutory right-to-water framework against
+  persistent gaps — unregulated, "exorbitantly high" faecal-sludge fees
+  outside Kampala and an unimplemented 2015 World Bank tariff-overhaul
+  recommendation. Neither new include was added to `effect_sizes.csv`
+  (qualitative analyses with no inferential exposure-comparator
+  estimate). A corpus-wide duplicate audit re-run afterwards came back
+  clean against the resulting 486-study corpus.
 
 ## What has not been done
 
@@ -620,14 +642,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 965 of the 3,659
-  Phase-5 includes have been assessed; 2,694 records have not yet been
+- Full-text screening itself is far from complete: 970 of the 3,659
+  Phase-5 includes have been assessed; 2,689 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 484
+- Extraction (Phase 8) is caught up with screening completely — all 486
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  484 extracted studies** (a first 12-study partial pilot batch was
+  486 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
