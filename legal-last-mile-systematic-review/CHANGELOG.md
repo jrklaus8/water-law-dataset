@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-sixth full-text screening batch: 5 researcher-supplied PDFs, 3 new includes (S496-S498)
+## 2026-09-18 (latest) — Thirty-seventh full-text screening batch: 5 researcher-supplied PDFs, 1 exclude + 4 new includes (S499-S502) — 500 studies extracted
+
+The researcher uploaded five more PDFs directly via chat. This batch's
+fourth include (Chidambaram 2020, S502) brings full extraction to
+**500 studies**.
+
+**Exclude:**
+
+- **R76F882DBFBC5** (Díaz-Caravantes, Zuniga-Teran, Martín, Bernabeu,
+  Stoker & Scott 2020, *Environment & Urbanization*, "Urban water
+  security: a comparative study of cities in the arid Americas"), **E01
+  wrong topic**: a comparative secondary-literature study (SETEG
+  framework) of three arid-region cities focused on aquifer
+  overexploitation, riparian-ecosystem health, and agricultural-vs-urban
+  water competition. No household-level legal-administrative
+  eligibility/burden/discretion/enforcement content.
+
+**Includes:**
+
+- **R00DA63CC6F36** (Ekane, Kjellén, Westlund, Ntakarutimana & Mwesige
+  2020, *Development Policy Review*, "Linking sanitation policy to
+  service delivery in Rwanda and Uganda: From words to action"): a
+  17-interview qualitative comparative study documenting Rwanda's Organic
+  Law (2005) open-defecation/waste-dumping penalties and Uganda's Public
+  Health Act (1964/2000) provision that dwellings without proper
+  sanitation facilities may be "closed down and or its owner prosecuted,"
+  set against weak enforcement capacity and institutional fragmentation
+  in both countries. Extracted as **S499** (`risk_of_bias_tool = CASP`,
+  `mechanism_family = MULTIPLE` — `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = administrative_outcome`).
+- **R0B762667B98F** (Mitlin & Walnycki 2020, *The Journal of Development
+  Studies*, "Informality as Experimentation: Water Utilities' Strategies
+  for Cost Recovery and their Consequences for Universal Access"): a
+  mixed-methods study across four sub-Saharan African cities (Blantyre,
+  Dar es Salaam, Harare, Windhoek) drawing on large SDI-affiliate
+  household surveys, finding six-person households can face water costs
+  up to 112% of income (Blantyre) and that 30% of Blantyre's piped
+  connections had been disconnected at least once for unpaid bills in the
+  prior 5 years, alongside Windhoek's "development levels" legal
+  framework for low-income migrant access to communal water points.
+  Extracted as **S500** (`risk_of_bias_tool = MMAT`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = economic_access`).
+- **R7180E92CAB54** (Sharma, Namchu, Nyima, Luitel, Singh & Goodrich 2020,
+  *Water Policy*, "Water management systems of two towns in the Eastern
+  Himalaya: case studies of Singtam in Sikkim and Kalimpong in West Bengal
+  states of India"): a mixed-methods comparative case study documenting a
+  PHED connection-eligibility rule barring hotels/restaurants from
+  household water connections, unequal multi-connection allocation to
+  elite households, and fragmented GTA/state-government governance in
+  Kalimpong versus more coordinated governance in Singtam. Extracted as
+  **S501** (`risk_of_bias_tool = MMAT`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `burden`, `discretion_accommodation`, `enforcement`,
+  `outcome_family = effective_access`).
+- **R96B6919F9E31** (Chidambaram 2020, *World Development*, "How do
+  institutions and infrastructure affect mobilization around public
+  toilets vs. piped water? Examining intra-slum patterns of collective
+  action in Delhi, India"): a qualitative ethnographic study of four Delhi
+  Jhuggi Jhopri Clusters documenting India's notified/non-notified slum
+  legal classification (only notified slums are officially entitled to
+  individual household piped-water connections), informal "quasi-legal"
+  negotiated DJB pipe connections, and the enforcement risk of "illegal
+  construction" destruction for unauthorized private toilet connections
+  amid DUSIB/DJB/land-owning-agency jurisdictional fragmentation.
+  Extracted as **S502** (`risk_of_bias_tool = CASP`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = formal_connection`).
+
+None of the four new includes was added to `effect_sizes.csv`
+(descriptive household-survey percentages or qualitative case studies,
+no regression-based exposure-comparator estimate meeting the strict
+bar). Duplicate audit (exact-DOI and record_id-in-extraction_note
+methods) came back clean. `full_text_retrieval_queue.csv` regenerated
+(2,665 open records). `validate_schemas.py` reports all 13 checked files
+match their documented/generated schema.
+
+## 2026-09-18 — Thirty-sixth full-text screening batch: 5 researcher-supplied PDFs, 3 new includes (S496-S498)
 
 The researcher uploaded five more PDFs directly via chat. Two were duplicate
 re-uploads of already-decided, already-extracted records and were skipped
