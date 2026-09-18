@@ -894,6 +894,37 @@ evidence of anything.
   score-card. No new includes this batch. A corpus-wide duplicate audit
   re-run afterwards came back clean against the resulting 509-study
   corpus.
+- **2026-09-18 (later the same day): forty-fifth full-text screening
+  batch — 5 researcher-supplied PDFs, 1 duplicate skipped, 1 exclude +
+  3 new includes (S512-S514).** Full detail in `CHANGELOG.md`. One item
+  was a duplicate re-upload of an already-decided record (Majuru,
+  Suhrcke & Hunter 2016, a systematic review of household coping
+  strategies for unreliable water supplies, already extracted as S438)
+  and was skipped without reprocessing. Exclude: Ferro & Mercadier 2016,
+  a stochastic-frontier-analysis econometric study of technical
+  efficiency across 18 Chilean water/sewerage providers (E01, no
+  household-level legal-administrative mechanism content). Includes:
+  S512 (Dobbin & Sarathy 2015), a 3-ASADA comparative case study of
+  Costa Rica's community water co-management model finding that the
+  low-performing ASADA (Hatillo) operated in "blatant disregard" of ICAA
+  regulations despite its board president being the most knowledgeable
+  of all three about ICAA law, with no official sanctions imposed on any
+  ASADA for regulatory violations; S513 (McGranahan 2015), a conceptual
+  synthesis on sanitation access in deprived urban communities
+  documenting that utilities "may not be allowed" to serve settlements
+  until formally recognized by government, and that tenure insecurity
+  can cut either way on landlords'/tenants' incentive to invest in
+  sanitation improvements; and S514 (Chowns 2015), a mixed-methods study
+  (679 water points, 276 users/managers) finding Malawian community
+  water-point committees' Maintenance Fund savings averaged just 2% of
+  the amount they should hold, against a national water-sector budget
+  marginalized to 1-3% of government spending and a water ministry
+  downgraded out of ministerial status. None of the three new includes
+  was added to `effect_sizes.csv` (descriptive case-study, conceptual
+  synthesis, and descriptive mixed-methods statistics, respectively — no
+  inferential exposure-comparator estimate in any). A corpus-wide
+  duplicate audit re-run afterwards came back clean against the
+  resulting 512-study corpus.
 
 ## What has not been done
 
@@ -912,14 +943,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,019 of the 3,659
-  Phase-5 includes have been assessed; 2,640 records have not yet been
+- Full-text screening itself is far from complete: 1,023 of the 3,659
+  Phase-5 includes have been assessed; 2,636 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 509
+- Extraction (Phase 8) is caught up with screening completely — all 512
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  509 extracted studies** (a first 12-study partial pilot batch was
+  512 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
