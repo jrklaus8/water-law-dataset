@@ -4,7 +4,50 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-first full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 1 new include (S508)
+## 2026-09-18 (latest) — Forty-second full-text screening batch: 5 researcher-supplied PDFs, 2 new includes (S509-S510)
+
+The researcher uploaded five more PDFs directly via chat. Three were
+duplicate re-uploads of already-decided, already-extracted records
+(Zaunda et al. 2018 disability-friendly school WASH facilities, already
+S403; Monney & Antwi-Agyei 2018 Ghana MDG water-target review, just
+excluded E01 earlier this same batch; Wang & Li 2018 rural China
+infrastructure governance/finance study, already S439) and were skipped.
+
+**Includes:**
+
+- **R7142E0CB4FAE** (Akwataghibe, Wegelin, Postma, Fajemisin, Banda, Khan,
+  Jurji & Toonen 2018, *Journal of Water, Sanitation and Hygiene for
+  Development*, "Exploring equity focus of the SHAWN WASH programme in
+  Nigeria"): a mixed-methods programme evaluation (2,105-household
+  survey, 294-household disability sub-survey, 62 IDIs, 60 FGDs)
+  documenting needs/commitment-based LGA selection scoring, hardship-
+  based eligibility criteria for latrine-construction support (lack or
+  disability of a male household head), WASHCOM gender-quota selection
+  discretion, and political interference in water-point siting producing
+  skewed distribution. Extracted as **S509** (`risk_of_bias_tool = MMAT`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`,
+  `discretion_accommodation`, `outcome_family = economic_access`).
+- **R546A1803D994** (Adams & Smiley 2018, *Natural Resources Forum*,
+  "Urban-rural water access inequalities in Malawi: implications for
+  monitoring the Sustainable Development Goals"): a mixed-methods
+  comparative household-survey study (645 peri-urban, 139 rural
+  households) documenting Malawi's 1995 Water Works Act establishing the
+  legal basis for parastatal water boards, Water User Association
+  partnerships extending service to underserved peri-urban areas, and
+  detailed comparative connection-cost/payment data across urban/rural
+  contexts (household tap connection ~US$56 vs. private rural well
+  construction ~US$1,200). Extracted as **S510** (`risk_of_bias_tool =
+  MMAT`, `mechanism_family = MULTIPLE` — `burden`,
+  `discretion_accommodation`, `outcome_family = economic_access`).
+
+Neither new include was added to `effect_sizes.csv` (descriptive
+household-survey statistics, no inferential exposure-comparator
+estimate). Duplicate audit (exact-DOI and record_id-in-extraction_note
+methods) came back clean. `full_text_retrieval_queue.csv` regenerated
+(2,648 open records). `validate_schemas.py` reports all 13 checked files
+match their documented/generated schema.
+
+## 2026-09-18 — Forty-first full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 1 new include (S508)
 
 The researcher uploaded five more PDFs directly via chat. Two were
 duplicate re-uploads of already-decided, already-extracted records
