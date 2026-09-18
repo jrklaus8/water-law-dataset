@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **1,001 of 3,659 records decided (503 include / 498 exclude)** — see
+  **1,006 of 3,659 records decided (505 include / 501 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -798,6 +798,29 @@ evidence of anything.
   (narrative review and descriptive diagnostic scores, no inferential
   exposure-comparator estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 503-study corpus.
+- **2026-09-18 (later the same day): fortieth full-text screening batch —
+  5 researcher-supplied PDFs, 3 excludes + 2 new includes (S506-S507),
+  passing 1,006 records decided.** Full detail in `CHANGELOG.md`. This
+  batch resolved a long-standing `wrong_file_retrieved` flag: the
+  DuChanois et al. 2019 record had twice received only a 2-page erratum
+  on prior delivery attempts; this delivery finally contained the actual
+  substantive article, enabling a real decision — excluded E01 (technical/
+  financial predictors of water service continuity, a reliability outcome
+  rather than legal-administrative eligibility/burden/discretion/
+  enforcement mechanisms). Two further excludes: a food-safety
+  microbiological study of fish vendors in Malawi (E01), and a systematic
+  climate-resilience review of urban-poor flood/drought/cholera
+  vulnerability in sub-Saharan Africa (E01). Includes: S506 (Hoque et al.
+  2019), a 2,103-household Bangladesh study with a complete tubewell
+  infrastructure audit documenting elite-influenced public-tubewell
+  allocation and a failed formal water-vending system undermined by
+  political promises of free water; and S507 (Appiah-Effah et al. 2019),
+  a Ghana sanitation policy review documenting a novel property-tax
+  sanitation surcharge and the shift of sanitation financing
+  responsibility onto households. Neither added to `effect_sizes.csv`
+  (descriptive statistics and narrative policy review, no inferential
+  exposure-comparator estimate). A corpus-wide duplicate audit re-run
+  afterwards came back clean against the resulting 505-study corpus.
 
 ## What has not been done
 
@@ -816,14 +839,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,001 of the 3,659
-  Phase-5 includes have been assessed; 2,658 records have not yet been
+- Full-text screening itself is far from complete: 1,006 of the 3,659
+  Phase-5 includes have been assessed; 2,653 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 503
+- Extraction (Phase 8) is caught up with screening completely — all 505
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  503 extracted studies** (a first 12-study partial pilot batch was
+  505 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

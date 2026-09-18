@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-ninth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 2 new includes (S504-S505) — 1,001 records screened
+## 2026-09-18 (latest) — Fortieth full-text screening batch: 5 researcher-supplied PDFs, 3 excludes + 2 new includes (S506-S507) — 1,006 records screened
+
+The researcher uploaded five more PDFs directly via chat. This batch
+resolves a long-standing `wrong_file_retrieved` flag: the DuChanois et
+al. 2019 record (`R5725BF04FB9F`) had twice received only a 2-page
+erratum notice on prior delivery attempts; this delivery finally
+contained the actual 9-page substantive article, allowing a real
+screening decision.
+
+**Excludes:**
+
+- **R5725BF04FB9F** (DuChanois, Liddle, Fenner, Jeuland, Evans, Cumming,
+  Zaman, Mujica-Pereira, Ross, Gribble & Brown 2019, *Environmental
+  Science & Technology*, "Factors Associated with Water Service Continuity
+  for the Rural Populations of Bangladesh, Pakistan, Ethiopia, and
+  Mozambique"), **E01 wrong topic**: a 4,786-household multi-country
+  fractional-logistic-regression study of technical/financial predictors
+  of water service continuity (a reliability outcome), not household-level
+  legal-administrative eligibility/burden/discretion/enforcement
+  mechanisms.
+- **R84CEA3C0917E** (Lazaro, Kapute & Holm 2019, *Food Science &
+  Nutrition*, "Food safety policies and practices in public spaces...
+  Mzuzu, Malawi"), **E01 wrong topic**: a food-safety microbiological
+  study (E. coli/Salmonella testing on fish) with regulatory gaps as
+  secondary content; core exposure/outcome is foodborne-disease risk, not
+  household water/sanitation access.
+- **RD2FC36DF2664** (Grasham, Korzenevica & Charles 2019, *WIREs Water*,
+  "On considering climate resilience in urban water security... urban
+  poor in sub-Saharan Africa"), **E01 wrong topic**: a systematic review
+  of urban-poor climate-shock vulnerability (floods, droughts, cholera),
+  with colonial-legacy/permit-eligibility content appearing only as
+  secondary supporting evidence within a much broader climate-resilience
+  review.
+
+**Includes:**
+
+- **R7DE9B0E11BE0** (Hoque, Hope, Arif, Akhter, Naz & Salehin 2019,
+  *Science of the Total Environment*, "A social-ecological analysis of
+  drinking water risks in coastal Bangladesh"): a 2,103-household
+  mixed-methods study with a complete 2,805-tubewell infrastructure audit
+  documenting elite-influenced allocation of public tubewells, a failed
+  formal water-vending tariff system undermined by political promises of
+  "free water for all," absence of regulation for the now-dominant
+  private self-supply market (78% of tubewells), and cross-jurisdictional
+  boundary effects excluding one union from government arrangements.
+  Extracted as **S506** (`risk_of_bias_tool = MMAT`, `mechanism_family =
+  MULTIPLE` — `burden`, `discretion_accommodation`, `enforcement`,
+  `outcome_family = effective_access`).
+- **R6C5C0454C690** (Appiah-Effah, Duku, Azangbego, Aduafo Aggrey,
+  Gyapong-Korsah & Nyarko 2019, *Journal of Water, Sanitation and Hygiene
+  for Development*, "Ghana's post-MDGs sanitation situation: an
+  overview"): a policy review documenting the Local Government Act's
+  MMDA sanitation mandate, the National Environmental Sanitation Policy's
+  shift of financing responsibility onto households (improved facilities
+  costing up to 66% of annual income for the poorest quintiles), and a
+  novel 10% property-tax sanitation surcharge piloted in Ga West
+  Municipal Assembly. Extracted as **S507** (`risk_of_bias_tool = Legal
+  Institutional Evidence Appraisal Framework`, `study_design_class =
+  doctrinal`, `mechanism_family = MULTIPLE` — `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  administrative_outcome`).
+
+Neither new include was added to `effect_sizes.csv` (descriptive
+statistics and narrative policy review, no inferential exposure-
+comparator estimate). Duplicate audit (exact-DOI and
+record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,653 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-ninth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 2 new includes (S504-S505) — 1,001 records screened
 
 The researcher uploaded five more PDFs directly via chat. This batch's
 first decision (Enqvist & Ziervogel, S504) brings full-text screening
