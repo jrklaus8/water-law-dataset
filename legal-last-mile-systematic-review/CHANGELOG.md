@@ -4,7 +4,53 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Fortieth full-text screening batch: 5 researcher-supplied PDFs, 3 excludes + 2 new includes (S506-S507) — 1,006 records screened
+## 2026-09-18 (latest) — Forty-first full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 1 new include (S508)
+
+The researcher uploaded five more PDFs directly via chat. Two were
+duplicate re-uploads of already-decided, already-extracted records
+(Zaunda, Holm, Itimu-Phiri, Malota & White 2018, disability-friendly
+school WASH facilities in Rumphi, Malawi, already included as S403;
+Wang & Li 2018, rural China community/social-development infrastructure
+governance/finance study, already included as S439) and were skipped.
+
+**Excludes (both E01, wrong topic):**
+
+- **RA397C02E9861** (van Welie & Romijn 2018, *Environmental Science &
+  Policy*, "NGOs fostering transitions towards sustainable urban
+  sanitation in low-income countries"): a Transition Management-framework
+  case study of a Dutch NGO's sanitation-chain project in Kisumu, Kenya.
+  Core analytical focus is NGO coalition-building/capacity-building
+  processes; legal/regulatory gaps appear only incidentally.
+- **R20B75DEA6614** (Monney & Antwi-Agyei 2018, *Journal of Water,
+  Sanitation and Hygiene for Development*, "Beyond the MDG water target to
+  universal water coverage in Ghana"): a broad national policy review of
+  Ghana's water-sector institutional framework, financing, and
+  environmental/climate issues, with tariff-regulation content appearing
+  only secondarily within a much broader review.
+
+**Include:**
+
+- **RAE45D86D7434** (Domínguez Serrano & Castillo Pérez 2018, *Estudios
+  Demográficos y Urbanos*, "Las organizaciones comunitarias del agua en el
+  estado de Veracruz"): a qualitative case study of Veracruz, Mexico
+  community water organizations (patronatos) documenting the absence of
+  formal legal recognition for community water organizations in Mexico —
+  unlike Chile, Ecuador, and several Central American countries — and the
+  "municipal exclusivity" legal argument used to deny recognition, annual
+  renewal instability for rural water committees, and CAEV's direct
+  administration of rural systems where municipal institutional capacity
+  is absent. Extracted as **S508** (`risk_of_bias_tool = CASP`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = administrative_outcome`). Not added to
+  `effect_sizes.csv` (qualitative case study, no inferential
+  exposure-comparator estimate).
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,650 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Fortieth full-text screening batch: 5 researcher-supplied PDFs, 3 excludes + 2 new includes (S506-S507) — 1,006 records screened
 
 The researcher uploaded five more PDFs directly via chat. This batch
 resolves a long-standing `wrong_file_retrieved` flag: the DuChanois et

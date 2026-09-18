@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **1,006 of 3,659 records decided (505 include / 501 exclude)** — see
+  **1,009 of 3,659 records decided (506 include / 503 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -821,6 +821,25 @@ evidence of anything.
   (descriptive statistics and narrative policy review, no inferential
   exposure-comparator estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 505-study corpus.
+- **2026-09-18 (later the same day): forty-first full-text screening
+  batch — 5 researcher-supplied PDFs, 2 excludes + 1 new include
+  (S508).** Full detail in `CHANGELOG.md`. Two items were duplicate
+  re-uploads of already-decided, already-extracted records (Zaunda et al.
+  2018 disability-friendly school WASH facilities in Rumphi, Malawi,
+  already S403; Wang & Li 2018 rural China infrastructure governance/
+  finance study, already S439) and were skipped. Both excludes were E01
+  (wrong topic): a Transition Management-framework NGO case study focused
+  on coalition-building processes in Kisumu, Kenya, and a broad Ghana
+  national water-sector policy review with tariff content appearing only
+  secondarily. Include: S508 (Domínguez Serrano & Castillo Pérez 2018), a
+  qualitative case study of Veracruz, Mexico community water organizations
+  documenting the absence of formal legal recognition for community water
+  committees in Mexico (unlike Chile, Ecuador, and Central American
+  peers) and the "municipal exclusivity" legal argument used to deny
+  recognition. Not added to `effect_sizes.csv` (qualitative case study, no
+  inferential exposure-comparator estimate). A corpus-wide duplicate audit
+  re-run afterwards came back clean against the resulting 506-study
+  corpus.
 
 ## What has not been done
 
@@ -839,14 +858,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,006 of the 3,659
-  Phase-5 includes have been assessed; 2,653 records have not yet been
+- Full-text screening itself is far from complete: 1,009 of the 3,659
+  Phase-5 includes have been assessed; 2,650 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 505
+- Extraction (Phase 8) is caught up with screening completely — all 506
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  505 extracted studies** (a first 12-study partial pilot batch was
+  506 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
