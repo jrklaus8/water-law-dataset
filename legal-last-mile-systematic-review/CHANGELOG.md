@@ -4,7 +4,56 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-seventh full-text screening batch: 5 researcher-supplied PDFs, 1 exclude + 4 new includes (S499-S502) — 500 studies extracted
+## 2026-09-18 (latest) — Thirty-eighth full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 1 new include (S503)
+
+The researcher uploaded four more PDFs directly via chat. One was a
+duplicate re-upload of an already-decided record (Scruggs, Pratesi &
+Fleck 2020, "Direct potable water reuse in five arid inland communities,"
+already excluded E01, 2026-09-17) and was skipped.
+
+**Excludes (both E01, wrong topic):**
+
+- **R2F5B70B881D1** (Bayu, Kim & Oki 2020, *Water Resources Research*,
+  "Water Governance Contribution to Water and Sanitation Access Equality
+  in Developing Countries"): a macro cross-country PCA/regression analysis
+  (82 countries) correlating aggregate national governance indicators
+  (World Bank WGI, UN-Water GLAAS) with GINI-based access-inequality
+  indices. An aggregate governance-index correlational study, not focused
+  on household-level legal-administrative mechanisms.
+- **R9F1B737223A9** (Robina-Ramírez, Sañudo-Fontaneda & McCallum 2020,
+  *Transactions of the Royal Society of South Africa*, "Human dignity as
+  a mediator effect for the rights and duties of accessing water and
+  sanitation"): a structural equation modeling (SEM-PLS) survey study of
+  483 informal Doornkop (Soweto) dwellers measuring psychological/ethical
+  constructs (human dignity, governance principles) as predictors of a
+  2-item access-perception scale. A psychometric attitudes study, not
+  empirical documentation of actual legal-administrative mechanisms.
+
+**Include:**
+
+- **R41F032E11DB1** (Fischer, Hope, Manandhar, Hoque, Foster, Hakim, Islam
+  & Bradley 2020, *Global Environmental Change*, "Risky responsibilities
+  for rural drinking water institutions: The case of unregulated
+  self-supply in Bangladesh"): a mixed-methods infrastructure-audit study
+  (blanket water-point inventories, Bayesian growth modeling, secondary
+  DPHE cost-archive analysis) documenting the historical DPHE group-
+  application eligibility requirement (ten-or-more-household applications,
+  formal tender, water-quality testing) for publicly funded tubewells, and
+  the complete regulatory vacuum (no drilling permits, registration, or
+  quality testing) now governing the private self-supply market that
+  installs forty-five tubewells for every one publicly funded tubewell.
+  Extracted as **S503** (`risk_of_bias_tool = MMAT`, `mechanism_family =
+  MULTIPLE` — `eligibility`, `burden`, `discretion_accommodation`,
+  `enforcement`, `outcome_family = effective_access`). Not added to
+  `effect_sizes.csv` (growth-trend modeling, no individual exposure-
+  comparator estimate meeting the strict bar).
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,662 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-seventh full-text screening batch: 5 researcher-supplied PDFs, 1 exclude + 4 new includes (S499-S502) — 500 studies extracted
 
 The researcher uploaded five more PDFs directly via chat. This batch's
 fourth include (Chidambaram 2020, S502) brings full extraction to
