@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **931 of 3,659 records decided (473 include / 458 exclude)** — see
+  **940 of 3,659 records decided (475 include / 465 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -484,6 +484,33 @@ evidence of anything.
   heterogeneous sources, not a single quantitative exposure-comparator
   estimate). A corpus-wide duplicate audit re-run afterwards came back
   clean against the resulting 473-study corpus.
+- **2026-09-18 (later the same day): twenty-sixth full-text screening
+  batch — 9 researcher-supplied items (8 PDFs + 1 Google Drive share), 7
+  excludes + 2 new includes (S476-S477).** Full detail in `CHANGELOG.md`.
+  Two items were duplicate re-uploads of already-decided/extracted records
+  (Beker & Kansal 2023 Ethiopia, already S449; Araújo et al. 2024 Federal
+  District of Brazil, already S462) and were skipped without reprocessing.
+  Excludes: an Aba, Nigeria drinking-water quality/health-risk assessment
+  (E03); a Visakhapatnam, India trust-in-government/participation survey
+  (E01); a Kyrgyz Republic water-sector workforce-training proposal (E01);
+  a Cameroon non-revenue-water engineering assessment (E06); a cross-country
+  macro-econometric water-poverty-cycle study (E01); a Canadian Indigenous
+  water-insecurity review explicitly restricted by its own authors to
+  microbiological/technical issues (E03); and a Blue Pacific WASH/climate/
+  gender civil-society-coalition scoping review (E01). Includes: S476 (Khan
+  & Fenner 2024), a Bangladesh household survey finding a private operator's
+  5,000 BDT upfront connection fee and shutdown of nearby community tap
+  points drove low-income households toward unsafe water sources; and S477
+  (Ouma, Njoroge & Weru, in Di Giovanni & Bercovich eds. 2025, *Legal
+  Empowerment in Informal Settlements*), a Mukuru, Nairobi case study of a
+  Special Planning Area co-producing simplified-sewer/prepaid-water
+  infrastructure after documenting a "poverty penalty" of 172% higher
+  per-m³ water costs, with a KES 5,000 connection fee found prohibitive
+  enough to require a dedicated micro-loan facility. Neither new include
+  was added to `effect_sizes.csv` (S476's reported statistic is a bare
+  p-value with no effect-size magnitude; S477 is a qualitative case study
+  with descriptive counts only). A corpus-wide duplicate audit re-run
+  afterwards came back clean against the resulting 475-study corpus.
 
 ## What has not been done
 
@@ -502,14 +529,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 931 of the 3,659
-  Phase-5 includes have been assessed; 2,728 records have not yet been
+- Full-text screening itself is far from complete: 940 of the 3,659
+  Phase-5 includes have been assessed; 2,719 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 473
+- Extraction (Phase 8) is caught up with screening completely — all 475
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  473 extracted studies** (a first 12-study partial pilot batch was
+  475 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

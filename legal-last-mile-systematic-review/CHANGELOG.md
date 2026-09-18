@@ -4,7 +4,107 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-fifth full-text screening batch: 1 researcher-supplied PDF, 1 new include (S475)
+## 2026-09-18 (latest) — Twenty-sixth full-text screening batch: 9 researcher-supplied items, 7 excludes + 2 new includes (S476-S477)
+
+The researcher uploaded nine more items directly via chat (eight PDFs plus
+one Google Drive-shared PDF), all matching open records by exact title
+(two were duplicate re-uploads of already-decided/extracted records —
+Beker & Kansal 2023 Ethiopia UDWS, already S449, and Araújo et al. 2024
+Federal District of Brazil water-equity study, already S462 — both
+verified by title/DOI match and skipped without reprocessing):
+
+**Excludes:**
+
+- **RA87C32E58A64** (Ijioma, Ijioma & Herd 2025, *Water Practice &
+  Technology*, "Assessment of quality and health risks in drinking water
+  sources in Aba, Nigeria"): Water Safety Plan chemical/bacteriological
+  risk assessment. Excluded **E03 (wrong exposure)**: water-quality/health-
+  risk focus, no household-level legal-administrative connection mechanism
+  content despite a general discussion of environmental-law enforcement.
+- **RA9D46FF2372C** (Ati, Satpathy & Saxena 2024, *Water Policy*,
+  "Perceived public service performance, trust in the government, and
+  citizens' willingness to participate: Evidence from water governance in
+  Visakhapatnam, India"): household survey on trust/participation among
+  already-connected households. Excluded **E01 (wrong topic)**: a
+  political-trust/civic-participation study, not focused on legal/
+  administrative connection eligibility, burden, discretion or enforcement.
+- **RAEA95650888A** (Zhalil & Duishebaeva 2024, *BIO Web of Conferences*,
+  "Strengthening the human resource potential as a basis for the
+  development of the potable water supply and disposal sector of the
+  Kyrgyz Republic"): a vocational-training program proposal for utility
+  workers. Excluded **E01 (wrong topic)**: no household-level empirical
+  legal-administrative access-mechanism content.
+- **RD59389822173** (Nono, Mvongo & Defo 2024, *Water Supply*, "Assessment
+  of non-revenue water in the urban water distribution system network in
+  Cameroon"): IWA-methodology water-loss/leak-detection engineering
+  assessment. Excluded **E06 (engineering only)**.
+- **R0C221D09D4AD** (García-López, Cuadrado-Quesada & Montano 2024,
+  *Sustainable Development*, "Untangling the vicious cycle around water and
+  poverty"): cross-country 2SLS econometric analysis of water access, GDP
+  and human capital using aggregate JMP/FAO/World Bank statistics. Excluded
+  **E01 (wrong topic)**: macro development-economics study, no household-
+  level or institutional legal-mechanism analysis.
+- **R561806D16CAB** (Zambrano-Alvarado & Uyaguari-Diaz 2024, *PeerJ*,
+  "Insights into water insecurity in Indigenous communities in Canada:
+  assessing microbial risks and innovative solutions, a multifaceted
+  review"): a microbiology/water-treatment technology review. Excluded
+  **E03 (wrong exposure)**: the authors explicitly restrict their own
+  review's scope to "technical and microbiological issues," acknowledging
+  but excluding legal/governance analysis.
+- **R6D780116D575** (Grant & Willetts 2024, *Water*, "Locally Led
+  Opportunities for Water, Sanitation and Hygiene, Climate Change and
+  Gender Equality Partnerships in the Blue Pacific"): a systematic scoping
+  review of WASH/climate/gender civil-society coalitions and localism
+  discourse. Excluded **E01 (wrong topic)**: no legal/administrative
+  connection-mechanism content.
+
+**Includes:**
+
+- **RBB6F3EAC4B2C** (Khan & Fenner 2024, *Water*, "Socio-Demographic
+  Factors Driving the Choice of Alternative Safe Water Sources and Their
+  Implications for Public Health: Lessons from Goalmari, Bangladesh"): a
+  220/415-household baseline/endline survey finding that Veolia's 5,000 BDT
+  upfront internal-connection fee, combined with the shutdown of nearby
+  community tap points to consolidate demand, drove low-income households
+  toward unsafe alternative water sources (ANOVA p=0.0004057). Extracted as
+  **S476** (`risk_of_bias_tool = JBI`, `mechanism_family = BURDEN`,
+  `outcome_family = economic_access`). Not added to `effect_sizes.csv`: the
+  reported statistic is a bare ANOVA p-value with no coefficient/OR/
+  correlation magnitude or CI, below the strict effect-size bar.
+- **R63EA69FC6367** (Di Giovanni & Bercovich, eds., 2025, *Legal
+  Empowerment in Informal Settlements: Grassroots Experiences in the Global
+  South*, Routledge, retrieved via Google Drive share): a 12-chapter,
+  10-country edited volume of grassroots legal-empowerment case studies.
+  Extraction centers on Chapter 5 (Ouma, Njoroge & Weru, "Innovating
+  participation to expand water and sanitation access under a special
+  planning area in Mukuru informal settlements, Nairobi"), the volume's
+  most directly on-topic and quantified case: Mukuru's 2017 declaration as
+  a Special Planning Area under Kenya's Physical Planning Act, a documented
+  "poverty penalty" (172% more per m³ for water than formal Nairobi
+  estates), and co-produced simplified-sewer/prepaid-water-dispenser
+  infrastructure reaching ~12,000 households, with a KES 5,000 connection
+  fee found prohibitive and requiring a micro-loan facility. Extracted as
+  **S477** (`risk_of_bias_tool = CASP`, `mechanism_family = MULTIPLE` —
+  `burden` and `discretion_accommodation`, `outcome_family =
+  effective_access`). Not added to `effect_sizes.csv`: a qualitative case
+  study with descriptive settlement-level counts, no inferential
+  exposure-comparator estimate. Other chapters of the volume (housing/
+  tenure/eviction case studies in Delhi, Accra, Rio, Buenos Aires,
+  Karachi, Dhaka, Manila and South Africa) were not separately extracted,
+  as noted in the `extraction_note`.
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,719
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 940/3,659 full-text
+screened (475 include / 465 exclude), 2,719 open, 475 studies fully
+extracted (S001-S477, S227/S399 documented gaps), 182 quantitative- / 392
+qualitative-synthesis-eligible in `evidence_map.csv`, 22 rows in
+`effect_sizes.csv` (unchanged this batch).
+
+## 2026-09-18 — Twenty-fifth full-text screening batch: 1 researcher-supplied PDF, 1 new include (S475)
 
 The researcher uploaded one more PDF directly via chat, matching an open
 record by exact title, read in full (35 pages):
