@@ -4,7 +4,96 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-17 (latest) — Nineteenth full-text screening batch: 5 researcher-supplied PDFs, 4 new includes (S419-S422)
+## 2026-09-17 (latest) — Twentieth full-text screening batch: Google Drive Zotero-storage batch 3, 45 new includes (S423-S467)
+
+Continuation of the Google Drive Zotero attachment-storage retrieval effort
+(51 confirmed record_id <-> Drive-fileId matches, plus content-based
+identification of 15 additional ambiguous-filename Google Docs). **45
+included, 4 excluded, 2 flagged `wrong_file_retrieved`** (left open).
+
+**Retrieval notes**: 44 items downloaded as PDF via `download_file_content`
+(base64); 2 items (`RA18CACA8BA7C`, a >10MB PDF that failed direct download,
+and `RA1089E59F308`, whose PDF download consistently hit a transient MCP
+session-expiry error) were instead retrieved as natural-language text via
+Drive's `read_file_content`. One record (`R4B40A3139B39`, a 156MB PDF,
+Medeiros et al., Brazilian rural-school WASH) could not be downloaded
+directly and `read_file_content` returned empty content for it — but the
+*same study's* full text was independently located, in Portuguese, among
+the 15 ambiguous-filename Google Docs (Zotero-assigned filename
+`dTC6gXGV9Ymz8xYpNLHgMvD`, SciELO/Cadernos de Saude Publica DOI
+10.1590/0102-311XPT128025, a trilingual PT/EN/ES companion snapshot of the
+same paper) and used as the retrieval source instead, avoiding an
+`oversized_file_undeliverable` outcome.
+
+**15 ambiguous-filename Google Docs**: all 15 were downloaded and content-
+identified. 13 turned out to be duplicate Zotero web-snapshots of records
+already among the 51 confirmed matches (e.g. two independent "pad" and two
+independent "wp.2025" snapshots of the same two underlying papers) and
+required no separate action; 1 (`25741292.2025`) was a blank/unusable
+snapshot ("Reader environment loading", the page had not finished loading
+when Zotero saved it); 1 (`dTC6gXGV9Ymz8xYpNLHgMvD`) supplied genuine
+substitute full-text content for the oversized `R4B40A3139B39` PDF, as
+above. None resolved to a genuinely new, previously-unmatched open record.
+
+**`wrong_file_retrieved` (2, left open)**:
+- `R5725BF04FB9F`: the delivered PDF is only a 2-page ACS "Addition/
+  Correction" erratum notice (DOI 10.1021/acs.est.9b03482) for DuChanois et
+  al. 2019's water-service-continuity article — no methods/results content,
+  the substantive article itself was not retrieved.
+- `R81549C4709FC`: this record was already flagged `wrong_file_retrieved`
+  in an earlier batch. The new retrieval attempt again delivered the wrong
+  file — a 12-page book chapter, "Climate Change in Nepal through an
+  Indigenous Environmental Justice Lens" (Sherpa), confirmed via full-text
+  search to contain no mention of "Singh" or "Political Capabilities"
+  anywhere — so the flag remains in place rather than being cleared.
+
+**4 excluded** (all E03 wrong-exposure except one E01 wrong-topic):
+Alzahrani & Tawfik (Saudi urban water *consumption* drivers — "institutional
+factors" reduced to a single narrow desalinated-water-access variable, not
+a legal/administrative exposure); Choque-Quispe et al. (Peru, a water-
+*quality* deterministic/probabilistic health-risk study, governance only
+incidental background); Nunbogu, Harter & Mosler (Ghana latrine completion
+via the RANAS *behavioural* model, not a legal/institutional exposure);
+and D'Odorico, Dell'Angelo & Rulli ("Appropriation pathways of water
+grabbing" — zero mentions of "household"/"drinking water"/"domestic water",
+examines macro-level agricultural/mining/hydropower water-resource
+appropriation, not household/community service access; E01).
+
+**45 includes** span sanitation-policy compliance (Kenya, Mexico), legal
+pluralism/decentralisation (Uganda), slum legal-notification status
+(Ludhiana, India), correctional-facility menstrual hygiene, water-board
+electoral accountability (California — IRR=1.23, p<0.001 for jurisdictional
+fragmentation predicting uncontested elections; uncontested elections
+associated with bill-assistance-adoption probability falling from 0.31 to
+0.12), intermunicipal cooperation and WWS performance (Brazil, panel fixed-
+effects), Human Right to Water/Sanitation affordability and disconnections
+(Portugal, Nairobi), heritage water infrastructure policy (Indian
+Himalayan Region), and a national school-census logistic-regression study
+of WASH-in-schools funding-formula disadvantage (Brazil, ORs up to 6.40,
+p<0.001) — full list and mechanism coding in `extraction_database.csv`
+(study_id S423-S467).
+
+4 of the includes had a clean, locatable, non-fabricated single exposure-
+comparator effect estimate and were added to `effect_sizes.csv` (S434 mining
+proximity/water security; S435 uncontested elections/bill-assistance
+adoption; S445 regional funding-formula disadvantage/water-absence odds
+ratios; S448 intermunicipal cooperation/financial performance) — all
+recorded without a synthesis-family assignment and without pooling, each
+being the only study yet sharing its specific exposure-comparator
+operationalization, per `ANALYSIS_PLAN.md` §2's decision tree.
+
+A corpus-wide duplicate audit re-run afterwards (4 independent methods:
+exact DOI, exact normalized title, fuzzy title ratio>0.85, duplicate
+record_id in `extraction_note`) came back clean (0 groups) against the
+resulting 465-study corpus.
+
+Updated figures: 918/3,659 full-text records decided (465 include / 453
+exclude), 2,741 open (`full_text_retrieval_queue.csv` regenerated to
+match). `extraction_database.csv` and `evidence_map.csv` now at 465 rows
+(177 quantitative-synthesis-eligible, 385 qualitative-synthesis-eligible);
+`effect_sizes.csv` now at 20 rows (+4).
+
+## 2026-09-17 — Nineteenth full-text screening batch: 5 researcher-supplied PDFs, 4 new includes (S419-S422)
 
 Researcher supplied 5 more PDFs directly via chat upload. **4 included, 1
 excluded**:

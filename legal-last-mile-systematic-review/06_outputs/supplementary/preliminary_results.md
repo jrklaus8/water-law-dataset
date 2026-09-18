@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **869 of 3,659 records decided (420 include / 449 exclude)** — see
+  **918 of 3,659 records decided (465 include / 453 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -349,6 +349,32 @@ evidence of anything.
   empirically linking water-governance mechanisms to household/urban
   water-security outcomes. A corpus-wide duplicate audit re-run afterwards
   came back clean against the resulting 420-study corpus.
+- **2026-09-17 (later the same day): twentieth full-text screening batch —
+  Google Drive Zotero-storage batch 3, 45 new includes (S423–S467), 4
+  excluded, 2 flagged `wrong_file_retrieved`.** Full detail in
+  `CHANGELOG.md`. Retrieved 51 confirmed record_id/Drive-fileId matches
+  plus content-identified 15 further ambiguous-filename Google Docs (13 of
+  which turned out to be duplicate Zotero web-snapshots of already-matched
+  records, 1 was a blank/unloaded snapshot, and 1 supplied genuine
+  substitute full-text content — in Portuguese, via SciELO — for a 156MB
+  PDF, S445/`R4B40A3139B39`, that could not otherwise be downloaded).
+  Notable includes: S435 (Allaire & Ignacio 2026), a quasi-experimental
+  panel study finding California water-district electoral fragmentation
+  predicts uncontested board elections (IRR=1.23, p<0.001) which in turn
+  predict lower adoption of low-income bill-assistance programs (predicted
+  probability 0.31→0.12); S448 (Ribeiro et al. 2026), a panel-regression
+  study of Brazilian intermunicipal water/wastewater cooperation with a
+  locatable, signed coefficient (-7.253, SE=3.721, p<0.10) on financial
+  performance; and S445, a national Brazilian school-census logistic-
+  regression study finding regional/indigenous-land/school-size odds
+  ratios up to 6.40 (p<0.001) for lacking school water supply. Two records
+  were flagged `wrong_file_retrieved` and left open rather than screened:
+  `R5725BF04FB9F` (only a 2-page erratum notice was delivered, not the
+  substantive article) and `R81549C4709FC` (a *second* wrong-file
+  delivery — a different book chapter than the one previously flagged).
+  4 studies were added to `effect_sizes.csv` (S434, S435, S445, S448). A
+  corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 465-study corpus.
 
 ## What has not been done
 
@@ -367,14 +393,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 869 of the 3,659
-  Phase-5 includes have been assessed; 2,790 records have not yet been
+- Full-text screening itself is far from complete: 918 of the 3,659
+  Phase-5 includes have been assessed; 2,741 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 420
+- Extraction (Phase 8) is caught up with screening completely — all 465
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  420 extracted studies** (a first 12-study partial pilot batch was
+  465 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -383,7 +409,7 @@ evidence of anything.
   prohibition on reconstructing a validated tool from memory). This is a
   real, reportable limitation at this stage, not an oversight.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 156 studies being individually
+  for any candidate synthesis family** — 177 studies being individually
   eligible for quantitative synthesis is not the same as any family
   clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
   substantively comparable estimand → enough independent, non-secondary
@@ -405,13 +431,19 @@ evidence of anything.
   fit Families A/B/C, 5 do not), then 1 more (S404, Mwaura et al. 2021, a
   genuine quasi-experimental estimate of WRUA legal-membership status'
   effect on water poverty, Family A), bringing the total to 16 (11 fit
-  Families A/B/C, 5 do not).** Every row has
+  Families A/B/C, 5 do not), then 4 more from Google Drive batch 3 (S434
+  mining-proximity/water-security IV estimate; S435 water-board-election
+  competitiveness/bill-assistance-adoption marginal effect; S445 school-
+  census regional funding-formula-disadvantage odds ratios; S448
+  intermunicipal-cooperation/financial-performance panel coefficient; none
+  fit Families A/B/C), bringing the total to 20 (11 fit Families A/B/C, 9
+  do not).** Every row has
   `included_in_pooled_estimate = FALSE` — no pooling decision has been
   made for any family, and no family yet has more than one study sharing
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 16 studies in `effect_sizes.csv` (added
+- Effect sizes now exist for 20 studies in `effect_sizes.csv` (added
   2026-09-16, extended 2026-09-17), but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template
