@@ -4,7 +4,55 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-fourth full-text screening batch: 4 researcher-supplied PDFs, 1 exclude + 3 new includes (S492-S494)
+## 2026-09-18 (latest) — Thirty-fifth full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 1 new include (S495)
+
+The researcher uploaded five more PDFs directly via chat. Two were duplicate
+re-uploads of already-decided, already-extracted records and were skipped
+without reprocessing: Cooper et al. 2021 ("Environmental health conditions
+in the transitional stage of forcible displacement," already included as
+S427, 2026-09-17) and Schramm & Ibrahim 2021 ("Hacking the pipes:
+Hydro-political currents in a Nairobi housing estate," already included as
+S460, 2026-09-17).
+
+**Excludes (both E01, wrong topic):**
+
+- **R1EF0C58DFF30** (Bisung & Dickin 2021, *Journal of Water, Sanitation
+  and Hygiene for Development*, "Who does what and why? Examining
+  intra-household water and sanitation decision-making and autonomy in
+  Asutifi North, Ghana"): a 600-respondent intra-household gender
+  decision-making autonomy survey (Relative Autonomy Index/self-
+  determination theory). Focused on gendered household decision-making
+  psychology, not legal-administrative connection/access mechanisms.
+- **R0EE420F57BE6** (Venkataramanan et al. 2020, *WIREs Water*, "Coping
+  strategies for individual and household-level water insecurity: A
+  systematic review"): a systematic review of 173 studies on informal
+  household coping behaviors (diversifying sources, storage, purchasing,
+  treatment, relocation) for water insecurity. No legal-administrative
+  eligibility/burden/discretion/enforcement mechanism content.
+
+**Include:**
+
+- **R71F4B6CD0DF4** (Samuel, Agbola & Olojede 2021, *Local Economy*,
+  "Local governance and the crisis of water and sanitation provision in
+  medium-sized urban centres: Evidence from three cities in Nigeria"): a
+  mixed-methods case study (secondary National Urban Water Sector Reform
+  Project data plus 6 official interviews) documenting institutional
+  fragmentation across federal/state/local/NGO/donor water-point
+  providers (45.8% of 606 facilities non-functional), unregulated private
+  water vendors, absence of a dedicated local WSS department, and local
+  government fiscal-autonomy constraints under Nigeria's federal system.
+  Extracted as **S495** (`risk_of_bias_tool = MMAT`, `mechanism_family =
+  MULTIPLE` — `discretion_accommodation`, `enforcement`, `outcome_family =
+  administrative_outcome`). Not added to `effect_sizes.csv` (descriptive
+  secondary data and qualitative interviews, no inferential
+  exposure-comparator estimate).
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,673 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-fourth full-text screening batch: 4 researcher-supplied PDFs, 1 exclude + 3 new includes (S492-S494)
 
 The researcher uploaded four more PDFs directly via chat.
 
