@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-fourth full-text screening batch: 5 researcher-supplied PDFs, 2 duplicates skipped, 3 excludes
+## 2026-09-18 (latest) — Forty-fifth full-text screening batch: 5 researcher-supplied PDFs, 1 duplicate skipped, 1 exclude + 3 new includes (S512-S514)
+
+The researcher uploaded five more PDFs directly via chat. One was a
+duplicate re-upload of an already-decided, already-extracted record:
+Majuru, Suhrcke & Hunter (2016, *IJERPH*, "How Do Households Respond to
+Unreliable Water Supplies? A Systematic Review," a systematic review of
+28 studies on household coping strategies — storing, drilling wells,
+purchasing water, treating water — for unreliable water, already
+extracted as **S438**) and was skipped without reprocessing.
+
+**Exclude (E01, wrong topic):**
+
+- **RFB194B660A78** (Ferro & Mercadier 2016, *Utilities Policy*,
+  "Technical efficiency in Chile's water and sanitation providers"): a
+  stochastic-frontier-analysis (SFA) econometric study estimating the
+  comparative technical efficiency of 18 Chilean water/sewerage
+  providers (2005-2013), focused on Non-Revenue Water reduction and
+  X-Factor/K-Factor tariff-regulation design — a utility technical/
+  economic efficiency benchmarking study with no household-level
+  legal-administrative mechanism content.
+
+**Includes:**
+
+- **RA617D33E8893** (Dobbin & Sarathy 2015, *Society & Natural
+  Resources*, "Solving Rural Water Exclusion: Challenges and Limits to
+  Co-Management in Costa Rica"): a mixed-methods 3-ASADA comparative
+  case study finding that despite an identical formal ICAA delegation
+  agreement and regulatory framework across all three community water
+  associations, the low-performing ASADA (Hatillo) operated in "blatant
+  disregard" of ICAA regulations (no water meters, below-recommended
+  tariffs, unchlorinated water averaging 218.25 E. coli/100ml) despite
+  its board president being the most knowledgeable of all three about
+  ICAA law — and that violations led to no official sanctions in any of
+  the three communities, exposing incapacities in the state-oversight
+  framework for both high- and low-performing co-management alike.
+  Extracted as **S512** (`risk_of_bias_tool = MMAT`, `mechanism_family =
+  MULTIPLE` — `burden`, `discretion_accommodation`, `enforcement`,
+  `outcome_family = effective_access`).
+- **RA0D30B3E8C1C** (McGranahan 2015, *World Development*, "Realizing
+  the Right to Sanitation in Deprived Urban Communities: Meeting the
+  Challenges of Collective Action, Coproduction, Affordability, and
+  Housing Tenure"): a conceptual/narrative synthesis (illustrated by the
+  Orangi Pilot Project, Karachi, and the Alliance in Mumbai/Pune)
+  documenting that utilities "may not be allowed" to serve settlements
+  "until the settlement has been recognized by the government," and
+  that tenure insecurity can cut either way on landlords'/tenants'
+  incentive to invest in sanitation improvements. Extracted as **S513**
+  (`risk_of_bias_tool = Legal Institutional Evidence Appraisal
+  Framework`, `study_design_class` resolved by hand as `doctrinal`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`,
+  `discretion_accommodation`, `outcome_family = primary_connection`).
+- **RCE4DA02A6859** (Chowns 2015, *Public Administration and
+  Development*, "Is Community Management an Efficient and Effective
+  Model of Public Service Delivery? Lessons from the Rural Water Supply
+  Sector in Malawi"): a mixed-methods study (679 water points, 276
+  users/managers, 26 key-informant interviews, ~50,000-case national
+  database) finding Water Point Committee Maintenance Fund savings
+  averaged just 2% of the amount they should hold, against a national
+  water-sector budget marginalized to 1-3% of government spending
+  (versus 16% each for education and health) and a water ministry
+  downgraded out of ministerial status — concluding community management
+  persists because it "works" for the state and donors as a means of
+  offloading responsibility, not because it delivers the promised
+  technical/financial benefits. Extracted as **S514**
+  (`risk_of_bias_tool = MMAT`, `mechanism_family = MULTIPLE` — `burden`,
+  `outcome_family = effective_access`).
+
+None of the three new includes was added to `effect_sizes.csv`
+(descriptive multi-case comparison, conceptual synthesis, and
+descriptive mixed-methods statistics respectively — no inferential
+exposure-comparator estimate in any). Duplicate audit (exact-DOI and
+record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,636 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-fourth full-text screening batch: 5 researcher-supplied PDFs, 2 duplicates skipped, 3 excludes
 
 The researcher uploaded five more PDFs directly via chat. Two were
 duplicate re-uploads of already-decided, already-extracted records and
