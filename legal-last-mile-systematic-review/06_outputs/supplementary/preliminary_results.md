@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **926 of 3,659 records decided (470 include / 456 exclude)** — see
+  **930 of 3,659 records decided (472 include / 458 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -444,6 +444,30 @@ evidence of anything.
   (qualitative design, no statistical effect estimate). A corpus-wide
   duplicate audit re-run afterwards came back clean against the resulting
   470-study corpus.
+- **2026-09-18 (later the same day): twenty-fourth full-text screening
+  batch — 4 researcher-supplied PDFs, 2 excludes + 2 new includes
+  (S473–S474).** Full detail in `CHANGELOG.md`. Excludes: Bolatova et al.
+  2025's Kazakhstan rural household water-quality-satisfaction survey (E03,
+  wrong exposure — water-quality/satisfaction-only, no legal/administrative
+  connection-mechanism content) and Omalanga & Onyari 2025's broad
+  systematic review of Water Resources Management in South Africa (E01,
+  wrong topic — general resource-management review, not focused on
+  household/community service-access mechanisms). Includes: S473 (Nyambwe
+  et al. 2025), a 655-household Bukavu (DR Congo) survey finding distance
+  from city center significantly predicts drinking-water coverage
+  (r=-0.42, p<0.05) and land tenure insecurity (29.74% of households
+  lacking formal titles) concentrates poor REGIDESO connection in informal
+  peripheral neighborhoods; and S474 (Kehinde et al. 2025), a mixed-methods
+  study finding Canada's federal government invested CA$598 million across
+  149 First Nations drinking-water infrastructure projects (2016-2022) yet
+  38 Long-Term Drinking Water Advisories remained active in 30 communities
+  as of July 2025, with under 0.1% of funding combined going to operator
+  training and source-water protection. Neither new include was added to
+  `effect_sizes.csv` (S473's findings are geographic/correlational rather
+  than a legal-mechanism exposure-comparator; S474 is descriptive
+  government-expenditure data with no inferential test). A corpus-wide
+  duplicate audit re-run afterwards came back clean against the resulting
+  472-study corpus.
 
 ## What has not been done
 
@@ -462,14 +486,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 926 of the 3,659
-  Phase-5 includes have been assessed; 2,733 records have not yet been
+- Full-text screening itself is far from complete: 930 of the 3,659
+  Phase-5 includes have been assessed; 2,729 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 470
+- Extraction (Phase 8) is caught up with screening completely — all 472
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  470 extracted studies** (a first 12-study partial pilot batch was
+  472 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

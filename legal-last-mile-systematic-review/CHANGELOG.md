@@ -4,7 +4,72 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-third full-text screening batch: 3 researcher-supplied PDFs, 1 duplicate re-upload, 1 exclude, 1 new include (S472)
+## 2026-09-18 (latest) — Twenty-fourth full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 2 new includes (S473-S474)
+
+The researcher uploaded four more PDFs directly via chat, all matching
+existing open records by exact title, all read in full:
+
+**Excludes:**
+
+- **R647969B935A4** (Bolatova, Sharapatova, Kanagat, Kabiyev, Berndtsson &
+  Tussupova 2025, *Sustainability*, "Household Satisfaction and Drinking
+  Water Quality in Rural Areas: A Comparison with Official Access Data"):
+  multinomial logistic regression (n=1,361, 86 villages, Atyrau Region,
+  Kazakhstan) identifying predictors of household satisfaction with
+  drinking water QUALITY (turbidity, taste, odor, supply interruptions),
+  also comparing official vs. field-reported connection statistics.
+  Excluded **E03 (wrong exposure)**: core outcome is water-quality
+  satisfaction/perception, not the legal/administrative mechanisms of
+  connection eligibility, burden, discretion, or enforcement this review
+  targets — no discussion of land tenure, connection fees, eligibility
+  criteria, or service-provider governance barriers.
+- **R0FD21DF7787A** (Omalanga & Onyari 2025, *Limnol. Rev.*, "Management of
+  Water Resources in South Africa: A Systematic Review"): a systematic
+  review of 60 articles (2011-2025) spanning agricultural/industrial water
+  allocation, climate change, urbanization, funding, water quality/
+  biostability, and technological innovation. Excluded **E01 (wrong
+  topic)**: a general water-RESOURCE-management review, not focused on the
+  legal/administrative mechanisms of household/community water-SERVICE
+  access this review targets.
+
+**New includes:**
+
+- **S473** (`R262744119C0D`, Nyambwe, Kulimushi Matabaro, Mulengezi
+  Mushegerha, Kashinzwe Kibekenge, Bukenya & Nzukizi Mudumbi 2025, *Urban
+  Science*, "Urban Sprawl and Drinking Water Services in an African City:
+  The Case of Bukavu in DR Congo"): 655-household survey plus diachronic
+  GIS analysis (1984-2024) finding distance from city center significantly
+  negatively correlates with drinking-water coverage (r=-0.42, p<0.05) and
+  very strongly correlates with collection time (r=0.963); land tenure
+  insecurity (29.74% of households lack formal titles) concentrates poor
+  REGIDESO connection in informal peripheral neighborhoods (74% title-less
+  vs. 68% citywide periphery), with tenants reporting disconnection
+  disputes over unpaid water bills. Not added to `effect_sizes.csv` — the
+  correlational findings are geographic/spatial (distance-based) rather
+  than a clean legal/institutional exposure-comparator contrast.
+- **S474** (`R8750FBD0FA97`, Kehinde, Schuster-Wallace, Fowler & Bharadwaj
+  2025, *J. Water Health*, "Weaving knowledge systems to eradicate drinking
+  water crises in First Nations across Canada"): mixed-methods study of
+  Canada's federal Long-Term Drinking Water Advisory (LTDWA) response —
+  CA$598 million invested across 149 infrastructure projects (2016-2022,
+  55% concentrated in Ontario alone), yet 38 LTDWAs remained in 30 First
+  Nations as of July 2025 (some over two decades old). Finds the federal
+  risk-based funding formula (CFMP) prioritizes infrastructure technology
+  while allocating under 0.1% combined to operator training and
+  source-water protection, and qualitative interviews document
+  jurisdictional fragmentation, inconsistent operator-certification access
+  across provinces, and exclusion of First Nations water principles and
+  self-determination from the funding design. Not added to
+  `effect_sizes.csv` — descriptive government-expenditure data with no
+  inferential statistical test or exposure-comparator contrast.
+
+Full-text screening now stands at 930/3,659 (472 include / 458 exclude),
+2,729 open in the regenerated retrieval queue. `extraction_database.csv`
+and `evidence_map.csv` both grew to 472 rows; `effect_sizes.csv` unchanged
+at 22 rows. Duplicate audit (exact DOI, record_id-in-extraction_note) came
+back clean. `validate_schemas.py` passes all 13 checked files.
+
+## 2026-09-18 — Twenty-third full-text screening batch: 3 researcher-supplied PDFs, 1 duplicate re-upload, 1 exclude, 1 new include (S472)
 
 The researcher uploaded three more PDFs directly via chat. One
 (Frempong et al. 2025, mining activities and water security in Ghana) was a
