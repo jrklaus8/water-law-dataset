@@ -4,7 +4,96 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Fiftieth full-text screening batch: 9 researcher-supplied PDFs across two uploads, 3 duplicates skipped, 1 new include (S519)
+## 2026-09-18 (latest) — Fifty-first full-text screening batch: 7 researcher-supplied PDFs across two uploads, 2 new includes (S520-S521)
+
+The researcher uploaded 7 more PDFs across two chat messages (arriving
+mid-turn while documentation for the previous batch was still being
+updated). All 7 were newly-decided records (no duplicates this round).
+
+Five new excludes:
+
+- **R278169A3D0E0** — Mungekar, N.; Holscher, K.; Janssen, A.; Loorbach,
+  D. (2025). "Repairing urban water governance through informality:
+  comparing governance capacities for reparation in Indian cities."
+  *Water Policy* 27(4):521. **EXCLUDE E01.** Comparative ethnographic
+  case study (64 semi-structured interviews plus observation notes
+  across Bhuj and Bhopal, India) of "consolidative" and "jugaadu"
+  informal-governance capacities for reparative water-sensitive urban
+  governance. Documents real informal institutions (Ward/Mohalla
+  Samitis, councillor-mediated intermediation, NGO cost-sharing funding,
+  standalone-tank/RWH interventions), but the analytic focus and
+  reported outcome are the governance-capacity/reparation theoretical
+  framework itself, not a specific household-level access mechanism
+  tied to a measured connection/service outcome.
+- **R83113184DA6F** — Hoang, P.D.; Tran, N.T. (2025). "Applying
+  nontraditional security management to address critical local water
+  challenges: the case of Hanoi, Vietnam." *Water Policy* 27(4):400.
+  **EXCLUDE E01.** Qualitative assessment rating Hanoi's water-security
+  management effectiveness across coarse city-wide dimensions
+  (technical, policy/legislation, social, economic, awareness) using a
+  3-level scale; a broad city-wide governance-effectiveness framework,
+  not household-level legal-administrative mechanism analysis.
+- **R228B6D79BA63** — KC, S. et al. (2025). "Nexus governance in
+  practice: a stakeholder-driven framework for groundwater
+  sustainability in Barahathawa Municipality, Madhesh Province."
+  *Sustainability Nexus Forum* 33:20. **EXCLUDE E01.** A 32-indicator
+  Groundwater Governance Index (technical, legal/institutional,
+  cross-sector, operational dimensions) assessed via expert/community
+  surveys for a groundwater resource used predominantly for irrigation
+  (85%), with domestic hand-pump supply a minor secondary use; a broad
+  water-RESOURCE governance-index study, not household drinking-water/
+  sanitation SERVICE access focused.
+- **RC88A6B7A249D** — Thommandru, A.; Turdialiev, M.A.; Mone, V. (2025).
+  "Hydro-hegemony in the Anthropocene: Neoliberal Paradigms and Global
+  South Marginalization in Water Scarcity Governance." *Journal of
+  Developing Societies* 41(3):383-405. **EXCLUDE E05.** Conceptual/
+  narrative essay on hydro-hegemony and neoliberalism illustrated with
+  secondary-source case vignettes (Nile/Jordan River disputes,
+  Cochabamba, Mumbai "Water for All", Indian watershed-restoration
+  examples); no defined empirical study design or original data
+  collection.
+- **REC9732CB9945** — Vignesh, K. (2025). "Water Pricing, Tariff, and
+  Conflicts: The Dynamics of Political Economy, Fairness, and Cost
+  Recovery." *Peace Review* 37(4):670-692. **EXCLUDE E05.**
+  Self-described "qualitative and integrative" case-based narrative
+  synthesis with conceptual theorization, drawing on the Pacific
+  Institute's Water Conflict Chronology and news archives for
+  illustrative case vignettes (Cochabamba, Ireland, Johannesburg/Durban,
+  Detroit, Manila, Jakarta); no defined case-selection methodology or
+  systematic-review search protocol.
+
+Two new includes:
+
+- **RE68DB735F2D8** — Kharmylliem, B.; Kipgen, N. (2025). "Village
+  councils, social capital and sustainability: a study of urban water
+  management of Shillong in Meghalaya, India." *Water Policy*
+  27(3):301. **INCLUDE.** Qualitative case study (semi-structured
+  interviews) of clan-based property control over springs/borewells and
+  village-council (*dorbar shnong*) governance of household water
+  distribution in Shillong, contrasting commercialized and communal
+  distribution models and documenting locality-based disparities in
+  connection access and scarcity. Extracted as **S520**.
+- **R5104D5ACF77A** — Fono, M.A. et al. (2025). "Aboriginal and Torres
+  Strait Islander Perspectives in Drinking Water Policy: A Realist
+  Review." *Australian Journal of Social Issues* 60:602-620.
+  **INCLUDE.** PRISMA-documented realist systematic review (5
+  peer-reviewed studies + 33 grey-literature sources, JBI critical
+  appraisal, context-mechanism-outcome analysis) of Aboriginal and
+  Torres Strait Islander peoples' engagement in Australian drinking-
+  water policy at macro/meso/micro system levels, finding fragmented
+  and inconsistent engagement and 400+ remote/regional communities
+  lacking safe drinking-water access. Extracted as **S521** (flagged
+  `study_design_class = systematic_review_secondary`, AMSTAR 2).
+
+Neither new include was added to `effect_sizes.csv` (qualitative case
+study and realist review; no locatable quantitative effect estimate). A
+corpus-wide duplicate audit (exact-DOI + record_id-in-extraction_note
+methods) came back clean against the resulting 519-study corpus.
+`full_text_retrieval_queue.csv` regenerated (2,613 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-18 — Fiftieth full-text screening batch: 9 researcher-supplied PDFs across two uploads, 3 duplicates skipped, 1 new include (S519)
 
 The researcher uploaded 9 more PDFs across two chat messages (one arriving
 mid-turn while the first batch was still being analyzed). Three were

@@ -1075,6 +1075,39 @@ evidence of anything.
   study, no locatable quantitative effect estimate). A corpus-wide
   duplicate audit re-run afterwards came back clean against the
   resulting 517-study corpus.
+- **2026-09-18 (later the same day): fifty-first full-text screening
+  batch — 7 researcher-supplied PDFs across two uploads, 2 new
+  includes (S520-S521).** Full detail in `CHANGELOG.md`. Five new
+  excludes, all E01/E05: Mungekar et al. (2025, Bhuj/Bhopal India
+  informal-governance-capacity ethnography, E01 — a governance-theory
+  case study, not a household-level access-mechanism analysis); Hoang
+  & Tran (2025, Hanoi nontraditional-security water-management
+  framework, E01 — a broad city-wide governance-effectiveness rating,
+  not household-level mechanism analysis); KC et al. (2025, Barahathawa
+  Municipality, Nepal, groundwater-governance-index framework, E01 — a
+  water-RESOURCE governance index dominated by irrigation use, not
+  household drinking-water/sanitation SERVICE access); Thommandru et
+  al. (2025, "Hydro-hegemony in the Anthropocene," E05 — a conceptual
+  essay with no defined empirical study design); and Vignesh (2025,
+  "Water Pricing, Tariff, and Conflicts," E05 — a case-based narrative
+  synthesis with no defined case-selection methodology). Includes:
+  S520 (Kharmylliem & Kipgen 2025, *Water Policy*, "Village councils,
+  social capital and sustainability... Shillong"), a qualitative case
+  study of clan-based property control over springs/borewells and
+  village-council (dorbar shnong) governance producing locality-based
+  disparities in water-connection access and scarcity; and S521 (Fono
+  et al. 2025, *Australian Journal of Social Issues*, "Aboriginal and
+  Torres Strait Islander Perspectives in Drinking Water Policy: A
+  Realist Review"), a PRISMA-documented realist systematic review
+  (5 peer-reviewed studies + 33 grey-literature sources) finding
+  fragmented, inconsistent engagement of Aboriginal and Torres Strait
+  Islander peoples in Australian drinking-water policy across
+  national/state/local levels, with 400+ remote/regional communities
+  lacking safe drinking-water access. Neither added to
+  `effect_sizes.csv` (qualitative case study and realist review, no
+  locatable quantitative effect estimate). A corpus-wide duplicate
+  audit re-run afterwards came back clean against the resulting
+  519-study corpus.
 
 ## What has not been done
 
@@ -1093,14 +1126,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,039 of the 3,659
-  Phase-5 includes have been assessed; 2,620 records have not yet been
+- Full-text screening itself is far from complete: 1,046 of the 3,659
+  Phase-5 includes have been assessed; 2,613 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 517
+- Extraction (Phase 8) is caught up with screening completely — all 519
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  517 extracted studies** (a first 12-study partial pilot batch was
+  519 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
