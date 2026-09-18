@@ -4,7 +4,51 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-second full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 2 new includes (S470-S471)
+## 2026-09-18 (latest) — Twenty-third full-text screening batch: 3 researcher-supplied PDFs, 1 duplicate re-upload, 1 exclude, 1 new include (S472)
+
+The researcher uploaded three more PDFs directly via chat. One
+(Frempong et al. 2025, mining activities and water security in Ghana) was a
+redundant re-upload of a record already screened, included, and extracted
+as S434 in an earlier batch (verified by title/authors match against
+`full_text_screening_database.csv` and `extraction_database.csv` before
+taking any action) — no reprocessing needed. The other two matched open
+records and were read in full:
+
+- **R3A98EF381592** (Vij & Narain 2025, *WIREs Water*, "Neglected Spaces or
+  Potential Grounds? Water (In)security and Climate Adaptation in
+  Peri-Urban Asia and Africa"): a systematic literature review (57
+  articles) of peri-urban climate-change adaptation and water (in)security,
+  thematically organized around vulnerability of peri-urban agriculture,
+  barriers/enablers to adaptation planning, and disaster/climate justice.
+  Excluded **E01 (wrong topic)**: a water-resource/climate-security review
+  unrelated to household or community water/sanitation SERVICE
+  connection, eligibility, or access (`INCLUSION_EXCLUSION.md` exclusion
+  criterion 7) — the review's scope is climate vulnerability and adaptation
+  broadly (agriculture, land, disaster governance), not the legal/
+  administrative mechanisms of service access this review targets.
+- **R01D34FC853D2** (Lopez, Ofori, Mdee & Llaxacondor 2025, *J. Water
+  Sanitation Hyg. Dev.*, "Does container-based sanitation align with
+  sanitation sectoral planning in Lima?"): **included as S472.** Qualitative
+  case study (26 interviews) of container-based sanitation (CBS) in
+  Pamplona Alta, an informal settlement complex in Lima, Peru, where 92% of
+  ~12,300 households lack a sewer connection. Finds that Lima's fragmented
+  sanitation sectoral regime (SEDAPAL, SUNASS, municipalities, MVCS) and a
+  legal prohibition (Legislative Decree No. 1280) barring ecological-
+  sanitation organizations from providing sewerage, wastewater treatment,
+  or sanitary disposal services obstructs scaling CBS despite high social
+  acceptability among ~7,000 users; state service delivery is formally
+  conditioned on legal title deeds, structurally excluding informal
+  residents; CBS is treated by all parties as a temporary stopgap pending
+  conventional sewerage that may never arrive. Not eligible for
+  `effect_sizes.csv` (qualitative design, no statistical effect estimate).
+
+Full-text screening now stands at 926/3,659 (470 include / 456 exclude),
+2,733 open in the regenerated retrieval queue. `extraction_database.csv`
+and `evidence_map.csv` both grew to 470 rows; `effect_sizes.csv` unchanged
+at 22 rows. Duplicate audit (exact DOI, record_id-in-extraction_note) came
+back clean. `validate_schemas.py` passes all 13 checked files.
+
+## 2026-09-18 — Twenty-second full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 2 new includes (S470-S471)
 
 The researcher uploaded four PDFs directly via chat over the course of this
 batch. All four matched existing open records in
