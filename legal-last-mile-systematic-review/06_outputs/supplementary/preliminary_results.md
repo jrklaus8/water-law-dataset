@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **974 of 3,659 records decided (488 include / 486 exclude)** — see
+  **979 of 3,659 records decided (489 include / 490 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -644,6 +644,26 @@ evidence of anything.
   to `effect_sizes.csv`** as a genuine exposure-comparator estimate with
   an odds ratio, SE, p-value and N. A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 488-study corpus.
+- **2026-09-18 (later the same day): thirty-third full-text screening
+  batch — 5 researcher-supplied PDFs, 4 excludes + 1 new include
+  (S491).** Full detail in `CHANGELOG.md`. Excludes: a 167-article SDG6
+  status review spanning all SSA countries and all SDG6 targets, with
+  household-level access only one of many sections (E01); a corporate
+  CSR/water-use-management study of flower firms in Naivasha, Kenya (E01);
+  a narrative synthesis of Indonesia's historical water-coverage
+  statistics with no defined empirical study design (E05); and a
+  scenario-based life-cycle cost assessment methodology paper for a
+  school sanitation facility in rural India (E06, engineering only).
+  Include: S491 (Sempewo et al. 2021), a 1,639-household Uganda survey
+  finding 67% of households unwilling to pay for water during the
+  March-June 2020 COVID-19 lockdown, set against a presidential directive
+  suspending water disconnections nationwide; households without an
+  existing formal payment relationship had roughly double the odds of
+  unwillingness to pay (OR=2.125, 95% CI 1.581-2.857, p<0.001). S491 was
+  **added to `effect_sizes.csv`** as a genuine exposure-comparator
+  estimate tied directly to the disconnection-moratorium enforcement
+  mechanism. A corpus-wide duplicate audit re-run afterwards came back
+  clean against the resulting 489-study corpus.
 
 ## What has not been done
 
@@ -662,14 +682,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 974 of the 3,659
-  Phase-5 includes have been assessed; 2,685 records have not yet been
+- Full-text screening itself is far from complete: 979 of the 3,659
+  Phase-5 includes have been assessed; 2,680 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 488
+- Extraction (Phase 8) is caught up with screening completely — all 489
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  488 extracted studies** (a first 12-study partial pilot batch was
+  489 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

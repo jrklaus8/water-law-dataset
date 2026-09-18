@@ -4,7 +4,74 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Thirty-second full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 2 new includes (S489-S490)
+## 2026-09-18 (latest) — Thirty-third full-text screening batch: 5 researcher-supplied PDFs, 4 excludes + 1 new include (S491)
+
+The researcher uploaded five more PDFs directly via chat.
+
+**Excludes:**
+
+- **R033F9B44E40D** (Nkiaka, Bryant, Okumah & Gomo 2021, *WIREs Water*,
+  "Water security in sub-Saharan Africa: Understanding the status of
+  sustainable development goal 6"), **E01 wrong topic**: a 167-article
+  systematic review assessing the status of ALL SDG6 targets (water
+  quality, water stress, IWRM/transboundary management, ecosystems,
+  climate change, conflict/migration, urbanization) across all 48 SSA
+  countries; household-level water/sanitation access (§3.1) is only one of
+  many sections, and the paper is not focused on the review's
+  household-level legal-administrative connection/access mechanisms.
+- **R5FC9426CBC4C** (Amayi 2021, *Environmental Challenges*, "Flower
+  growing firms' contribution to community water use management in
+  Naivasha Sub County, Kenya"), **E01 wrong topic**: a corporate
+  social-responsibility/water-use-management study examining flower-firm
+  water abstraction, waste-water disposal, and CSR frameworks relative to
+  resident communities; no household-level legal-administrative
+  service-connection mechanism content.
+- **R4E01960E4669** (Sutomo, Sagala, Sutomo, Wrinarti & Sanjaya 2021,
+  *Kesmas*, "Accelerating the provision of safe water supply in urban and
+  rural areas of Indonesia"), **E05 no empirical evidence**: a narrative
+  synthesis of Indonesia's historical water-coverage statistics and a
+  "good water management" framework (content/institutional/communication
+  layers), including slow-sand-filter engineering technology
+  recommendations; no defined empirical study design, sample, or
+  data-collection methodology.
+- **R93A5FB34B8B7** (Koseoglu, Ellis & Biswas 2021, *Journal of Water,
+  Sanitation and Hygiene for Development*, "Scenario-based life-cycle cost
+  assessment to support sustainable investment in rural communal
+  sanitation facilities: application to a school-based sanitation
+  facility"), **E06 engineering only**: a scenario-based life-cycle cost
+  assessment (LCCA) methodology paper modeling material/labour/energy
+  costs for a school sanitation facility in rural India across
+  valuation-capacity-external-support scenarios; an infrastructure
+  cost-engineering methodology, not household-level legal-administrative
+  eligibility/burden/discretion/enforcement mechanisms.
+
+**Include:**
+
+- **R2EE333D81F87** (Sempewo, Kisaakye, Mushomi, Tumutungire & Ekyalimpa
+  2021, *Social Sciences & Humanities Open*, "Assessing willingness to pay
+  for water during the COVID-19 crisis in Ugandan households"): a
+  1,639-household binary logistic regression survey (40 small towns, 4
+  regions of Uganda) set against Uganda's March 2020 presidential
+  directive suspending all water disconnections for non-payment during the
+  COVID-19 lockdown. 67% of households were not willing to pay for water
+  during the lockdown; households without an existing formal
+  payment relationship with the utility had roughly double the odds of
+  unwillingness to pay (OR=2.125, 95% CI 1.581-2.857, p<0.001), with
+  region, water-source location, and handwashing frequency as further
+  significant predictors. Extracted as **S491** (`risk_of_bias_tool =
+  JBI`, `mechanism_family = MULTIPLE` — `burden`,
+  `discretion_accommodation`, `enforcement`, `outcome_family =
+  economic_access`). **Added to `effect_sizes.csv`**: a genuine
+  exposure-comparator (formal payment relationship vs. none) with OR, CI,
+  p-value and N, tied directly to the disconnection-moratorium enforcement
+  mechanism — meets the strict effect-size bar.
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,680 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Thirty-second full-text screening batch: 5 researcher-supplied PDFs, 2 excludes + 2 new includes (S489-S490)
 
 The researcher uploaded five more PDFs directly via chat. One was a
 duplicate re-upload of an already-decided record (Hove et al. 2022,
