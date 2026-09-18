@@ -4,7 +4,48 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-third full-text screening batch: 5 researcher-supplied PDFs, 4 excludes + 1 new include (S511)
+## 2026-09-18 (latest) — Forty-fourth full-text screening batch: 5 researcher-supplied PDFs, 2 duplicates skipped, 3 excludes
+
+The researcher uploaded five more PDFs directly via chat. Two were
+duplicate re-uploads of already-decided, already-extracted records and
+were skipped without reprocessing: Muia Mutua, Agwata & Anyango (2017,
+Mavoko Municipality, Machakos County, Kenya sanitation-policy-instrument
+effectiveness study), already extracted as **S423**; and Saraswat, Mishra
+& Kumar (2017, Kathmandu Valley WEAP integrated urban water management
+scenario modeling), already excluded E06 — both re-reads independently
+confirmed the same decisions already on record (include and exclude E06
+respectively) before being skipped.
+
+**Excludes (all E01, wrong topic):**
+
+- **REB85F9212C3F** (Schramm & Wright-Contreras 2017, *Geoforum*, "Beyond
+  passive consumption: Dis/ordering water supply and sanitation at
+  Hanoi's urban edge"): an urban-infrastructure-studies/STS analysis of
+  periurban and new-urban-area residents' socio-technical practices for
+  accessing water/sanitation beyond centralized networks (private wells,
+  housing cooperatives), focused on infrastructure planning history and
+  financing/corporatization dynamics rather than household-level legal-
+  administrative eligibility/burden/discretion/enforcement mechanisms.
+- **R35688D83A3FB** (Hutchings, Parker & Jeffrey 2016, *Journal of Rural
+  Studies*, "The political risks of technological determinism in rural
+  water supply: A case study from Bihar, India"): a discourse-analysis
+  study contrasting India's National Water Policy with a traditionalist
+  grassroots movement's storylines about handpump vs. open-well
+  technology, examining technological-determinism discourse and policy
+  framing rather than legal-administrative access-barrier mechanisms.
+- **R27783A9D443D** (Aadnesgaard & Willows 2016, *Corporate Ownership &
+  Control*, "Audit outcomes and the level of service delivery within
+  local government municipalities in South Africa"): a 52-municipality
+  correlational study of financial audit outcomes versus a composite
+  service-delivery score-card, using aggregate municipal-level statistics
+  with no household-level legal-administrative mechanism content.
+
+Duplicate audit (exact-DOI and record_id-in-extraction_note methods) came
+back clean. `full_text_retrieval_queue.csv` regenerated (2,640 open
+records). `validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-third full-text screening batch: 5 researcher-supplied PDFs, 4 excludes + 1 new include (S511)
 
 The researcher uploaded five more PDFs directly via chat.
 

@@ -876,6 +876,24 @@ evidence of anything.
   (descriptive case-study/survey tariff comparison, no inferential
   exposure-comparator estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 509-study corpus.
+- **2026-09-18 (later the same day): forty-fourth full-text screening
+  batch — 5 researcher-supplied PDFs, 2 duplicates skipped, 3 excludes.**
+  Full detail in `CHANGELOG.md`. Two items were duplicate re-uploads of
+  already-decided records (Muia Mutua, Agwata & Anyango 2017, Mavoko
+  Municipality Kenya sanitation-policy-effectiveness study, already
+  extracted as S423; Saraswat, Mishra & Kumar 2017, Kathmandu Valley WEAP
+  scenario-modeling study, already excluded E06 — both re-reads
+  independently confirmed the same decisions already on record) and were
+  skipped without reprocessing. Excludes (all E01): Schramm &
+  Wright-Contreras 2017, an urban-infrastructure-studies/STS analysis of
+  socio-technical water/sanitation access practices at Hanoi's urban
+  edge; Hutchings, Parker & Jeffrey 2016, a discourse-analysis study of
+  technological-determinism framing in Bihar, India rural water policy;
+  and Aadnesgaard & Willows 2016, a 52-municipality correlational study
+  of South African audit outcomes versus a composite service-delivery
+  score-card. No new includes this batch. A corpus-wide duplicate audit
+  re-run afterwards came back clean against the resulting 509-study
+  corpus.
 
 ## What has not been done
 
@@ -894,8 +912,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,016 of the 3,659
-  Phase-5 includes have been assessed; 2,643 records have not yet been
+- Full-text screening itself is far from complete: 1,019 of the 3,659
+  Phase-5 includes have been assessed; 2,640 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 509
