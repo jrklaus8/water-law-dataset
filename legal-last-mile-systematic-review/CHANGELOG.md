@@ -4,7 +4,47 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-fourth full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 2 new includes (S473-S474)
+## 2026-09-18 (latest) — Twenty-fifth full-text screening batch: 1 researcher-supplied PDF, 1 new include (S475)
+
+The researcher uploaded one more PDF directly via chat, matching an open
+record by exact title, read in full (35 pages):
+
+- **RA6A88199324A** (Murebwayire, Nilsson, Nhapi & Wali 2025, *Sustainability*
+  17(17):7588, "A Systematic Review of Households' Fecal Sludge Management
+  Situation to Identify Gaps and Improve Services: A Case of Kigali City,
+  Rwanda"): **Included.** A PRISMA 2020 systematic review of 73 publications
+  (36 scientific studies + 32 government/policy documents) on household-level
+  fecal sludge management in Kigali, organized around four themes (access to
+  sanitation, FSM services, public health, sanitation governance). Directly
+  reviews 23 government publications (laws, national strategies, regulations,
+  policies, standards, guidelines) and documents institutional fragmentation
+  across overlapping mandates (national ministries, WASAC, City of
+  Kigali/district authorities, private FSM operators), regulatory/building-law
+  approval requirements for on-site sanitation that are seldom enforced in
+  practice, authorities prioritizing sanctions over supportive regulatory
+  mechanisms, and recurring tenant-landlord disputes over pit-latrine
+  construction/maintenance responsibility, against a documented USD 316
+  million annual WASH-sector funding gap (only ~7% of budget to sanitation).
+  Extracted as **S475**, `risk_of_bias_tool = AMSTAR2` (systematic review,
+  design-matched per `RISK_OF_BIAS.md` §1; `study_design_class` mechanically
+  derives to `systematic_review_secondary`), `mechanism_family = MULTIPLE`
+  (`burden`, `discretion_accommodation`, `enforcement` all TRUE),
+  `outcome_family = effective_access`. Not added to `effect_sizes.csv`: a
+  thematic/narrative secondary synthesis across 73 heterogeneous sources, not
+  a single exposure-vs-comparator quantitative estimate.
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note` groups):
+clean, no duplicates found. Retrieval queue regenerated (2,728 open records).
+`validate_schemas.py`: all 13 checked files match their documented/generated
+schema. Running totals updated in `README.md`, `PRISMA_WORKFLOW.md`,
+`06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 931/3,659 full-text
+screened (473 include / 458 exclude), 2,728 open, 473 studies fully
+extracted (S001-S475, S227/S399 documented gaps), 181 quantitative- /
+390 qualitative-synthesis-eligible in `evidence_map.csv`, 22 rows in
+`effect_sizes.csv` (unchanged this batch).
+
+## 2026-09-18 — Twenty-fourth full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 2 new includes (S473-S474)
 
 The researcher uploaded four more PDFs directly via chat, all matching
 existing open records by exact title, all read in full:
