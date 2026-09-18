@@ -1021,6 +1021,30 @@ evidence of anything.
   barriers. No new includes this batch. A corpus-wide duplicate audit
   re-run afterwards came back clean against the resulting 515-study
   corpus.
+- **2026-09-18 (later the same day): forty-ninth full-text screening
+  batch — 3 researcher-supplied PDFs, 2 duplicates skipped, 1 new
+  include (S518).** Full detail in `CHANGELOG.md`. Two items were
+  skipped without reprocessing, deferring to their existing decisions:
+  Busari (2002, Swaziland rural water-sector policy review, already
+  excluded E01, matching an independent fresh read); and Chambolle
+  (1999, "De l'eau pour tous?", a Suez Lyonnaise des Eaux corporate
+  research synthesis on underprivileged-district water service,
+  already excluded E05 for lacking a defined empirical study design —
+  deferred to despite this batch's fresh read leaning toward inclusion
+  given its institutional-exclusion content, per the project's standing
+  rule never to re-litigate an already-decided record). Include: S518
+  (Lee & Floris 2003, *Natural Resources Forum*), a four-country
+  comparative policy analysis of private-sector water-utility
+  participation documenting Buenos Aires's renegotiated obligation to
+  extend service to suburban shanty towns and its universal-service
+  cross-subsidy fee, La Paz/El Alto's labour-discounted connection fees
+  and a proof-of-land-title requirement for new connections that was
+  "reinstated at the insistence of the municipality" after being
+  considered for waiver, and a welfare-loss counterfactual analysis of
+  Lima's failed SEDAPAL privatization. Not added to `effect_sizes.csv`
+  (comparative case-study/scenario-model figures, no inferential
+  exposure-comparator estimate). A corpus-wide duplicate audit re-run
+  afterwards came back clean against the resulting 516-study corpus.
 
 ## What has not been done
 
@@ -1039,14 +1063,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,032 of the 3,659
-  Phase-5 includes have been assessed; 2,627 records have not yet been
+- Full-text screening itself is far from complete: 1,033 of the 3,659
+  Phase-5 includes have been assessed; 2,626 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 515
+- Extraction (Phase 8) is caught up with screening completely — all 516
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  515 extracted studies** (a first 12-study partial pilot batch was
+  516 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

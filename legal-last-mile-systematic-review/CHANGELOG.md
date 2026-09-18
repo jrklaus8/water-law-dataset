@@ -4,7 +4,64 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Forty-eighth full-text screening batch: 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new excludes
+## 2026-09-18 (latest) — Forty-ninth full-text screening batch: 3 researcher-supplied PDFs, 2 duplicates skipped, 1 new include (S518)
+
+The researcher uploaded three more PDFs directly via chat. Two were
+duplicate re-uploads of already-decided records, both deferred to
+despite the fresh reads, per the project's standing rule against
+re-litigating already-decided records:
+
+- **R4266AA2DF8F3** (Busari 2002, *Canadian Water Resources Journal*,
+  "Millennial Policies and Strategies for Promoting Household Water
+  Security: A Southern African Example"): already excluded **E01** — a
+  Swaziland rural water-sector policy/institutional-capacity review
+  (planning/coordination, financial, technical, social issues), not
+  focused on household-level legal-administrative access mechanisms.
+  This independent re-read reached the same conclusion.
+- **REA305644CBB3** (Chambolle 1999, *La Houille Blanche*, "De l'eau
+  pour tous?"): already excluded **E05** — a Suez Lyonnaise des Eaux
+  corporate research synthesis (1997 internal project) on serving
+  underprivileged districts across multiple concession contracts
+  (Argentina, La Paz, Manila, Jakarta, Casablanca), documenting
+  authorities' reluctance to "legalize" informal settlements and
+  thereby avoid conferring official recognition, and Durban's
+  three-tier alternative service-delivery system. This fresh read
+  leaned toward inclusion given its rich institutional-exclusion
+  content, but the existing E05 rationale (no defined empirical study
+  design, sample, or data-collection methodology) is a defensible call
+  on a genuinely different axis (methodological rigor rather than
+  topical relevance) and was not re-litigated.
+
+**Include:**
+
+- **RF5EE990F4D41** (Lee & Floris 2003, *Natural Resources Forum*,
+  "Universal access to water and sanitation: Why the private sector
+  must participate"): a four-country comparative policy analysis
+  (Argentina, Chile, Bolivia, Peru) of private-sector water-utility
+  participation. Documents Buenos Aires's contract renegotiation
+  obliging service extension to suburban shanty towns and a universal
+  service and environmental improvement fee (SUMA) cross-subsidizing
+  new-connection costs; La Paz/El Alto's connection-fee tiers reduced
+  for households supplying labour (Table 3) and a proof-of-land-title
+  requirement for new connections that the utility considered waiving
+  but which was "reinstated at the insistence of the municipality";
+  and a welfare-loss counterfactual analysis estimating Lima's failure
+  to privatize SEDAPAL cost US$557.80 million in domestic benefits
+  (1995-2004 NPV) while leaving over 1.7 million people unconnected.
+  Extracted as **S518** (`risk_of_bias_tool = Legal Institutional
+  Evidence Appraisal Framework`, `study_design_class` resolved by hand
+  as `jurimetric`, `mechanism_family = MULTIPLE` — `eligibility`,
+  `burden`, `discretion_accommodation`, `outcome_family =
+  primary_connection`).
+
+Not added to `effect_sizes.csv` (comparative case-study/scenario-model
+figures, no inferential exposure-comparator estimate). Duplicate audit
+(exact-DOI and record_id-in-extraction_note methods) came back clean.
+`full_text_retrieval_queue.csv` regenerated (2,626 open records).
+`validate_schemas.py` reports all 13 checked files match their
+documented/generated schema.
+
+## 2026-09-18 — Forty-eighth full-text screening batch: 4 researcher-supplied PDFs, 2 duplicates skipped, 2 new excludes
 
 The researcher uploaded four more PDFs directly via chat. Two were
 duplicate re-uploads of already-decided records and were skipped
