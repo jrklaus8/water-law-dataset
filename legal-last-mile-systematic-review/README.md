@@ -8,10 +8,10 @@ Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Kla
 
 Project status (2026-09-18): **Search closed, deduplicated, and double-screened
 at title/abstract (Phases 1–5 complete). Full-text screening (Phase 6) is
-live and ongoing — 920 of 3,659 records assessed so far. Full extraction
-(Phase 8) is fully caught up with screening — all 467 current
+live and ongoing — 924 of 3,659 records assessed so far. Full extraction
+(Phase 8) is fully caught up with screening — all 469 current
 includes extracted, no outstanding gap. Evidence classification (Phase 10) is populated
-for all 467. Risk-of-bias rating (Phase 9) has a first 12-study partial
+for all 469. Risk-of-bias rating (Phase 9) has a first 12-study partial
 pilot batch appraised plus 2 studies with a positively-determined AMSTAR 2
 rating; the rest, and quantitative-feasibility
 assessment (Phase 11) at the corpus level, are not yet done — see below for why.**
@@ -254,9 +254,9 @@ the number.
 
 **Phase 6 (full-text screening) is live.**
 [`02_screening/full_text/full_text_screening_database.csv`](02_screening/full_text/full_text_screening_database.csv)
-holds all 3,659 title/abstract includes; **920 have been assessed so far
-(467 include / 453 exclude)**, with exclusions broken down by E01–E12 reason in
-`PRISMA_WORKFLOW.md` Phase 6. The remaining 2,739 await the researcher
+holds all 3,659 title/abstract includes; **924 have been assessed so far
+(469 include / 455 exclude)**, with exclusions broken down by E01–E12 reason in
+`PRISMA_WORKFLOW.md` Phase 6. The remaining 2,735 await the researcher
 supplying full text, expected to continue for roughly a month.
 
 **Phase 7 (pilot extraction) was superseded** by the researcher's explicit
@@ -265,18 +265,18 @@ rather than drawing a separate ~10-study pilot subsample first.
 
 **Phase 8 (full extraction) is fully caught up with screening.**
 [`03_extraction/extracted_data/extraction_database.csv`](03_extraction/extracted_data/extraction_database.csv)
-holds **all 465 fully-extracted studies (S001–S467, with S227 and S399 documented post-hoc-duplicate gaps)**, matching the 465 current
+holds **all 469 fully-extracted studies (S001–S471, with S227 and S399 documented post-hoc-duplicate gaps)**, matching the 469 current
 full-text includes with no outstanding gap.
 
 **Phase 9 (risk of bias) has a first 12-study partial pilot batch appraised
 (2026-09-16), plus 2 studies (S370, S372) with a positively-determined
-AMSTAR 2 rating of Critically Low; the rest of the 465**
+AMSTAR 2 rating of Critically Low; the rest of the 469**
 extracted studies remain unappraised — see §6 above for why that is a disclosed limitation, not
 an oversight.
 
-**Phase 10 (evidence classification) is populated for all 465 extracted
+**Phase 10 (evidence classification) is populated for all 469 extracted
 studies** — [`05_analysis/descriptive/evidence_map.csv`](05_analysis/descriptive/evidence_map.csv),
-177 of which are currently judged eligible for quantitative synthesis, 385
+180 of which are currently judged eligible for quantitative synthesis, 387
 for qualitative synthesis.
 
 **Phase 11 (quantitative feasibility) has not started** — see §8 above.

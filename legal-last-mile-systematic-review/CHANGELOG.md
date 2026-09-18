@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-first full-text screening batch: Google Drive Zotero-storage re-sync (batch 5), 2 new includes (S468-S469)
+## 2026-09-18 (latest) — Twenty-second full-text screening batch: 4 researcher-supplied PDFs, 2 excludes + 2 new includes (S470-S471)
+
+The researcher uploaded four PDFs directly via chat over the course of this
+batch. All four matched existing open records in
+`full_text_screening_database.csv` by exact title, all four were read in
+full; two were excluded and two were included and extracted.
+
+**Excludes:**
+
+- **R4590CBC940E4** (Garrett, Mok, Brown, Schaider, Powers, Fitzstevens,
+  Amico, Osimo, Cordner & Carignan 2025, *J. Environ. Stud. Sci.*,
+  "REACHing for PFAS solutions: how two communities responded to drinking
+  water contamination"): qualitative CBPR case-study comparison of two US
+  communities (Hyannis, MA and Pease Tradeport, Portsmouth, NH) discovering
+  PFAS drinking-water contamination, covering community activism, blood
+  testing, and government/legal response (state and federal MCL adoption,
+  a 3M-v.-NH-DES lawsuit, DoD immunity claims in PFAS litigation,
+  insurance-coverage legislation). Excluded **E03 (wrong exposure)**: the
+  paper's focus is water-quality contamination discovery and response, not
+  the legal/administrative mechanisms of household connection, eligibility,
+  or service access this review targets — a water-quality-only study,
+  consistent with the project's established E03 pattern.
+- **R4DB61161A41A** (Kwame, Siiba, Apatinga & Owusu 2025, *Nurs. Rep.*,
+  "Water (In)Accessibility, Healthcare Delivery, and Patients' Health
+  Outcomes in Ghana: Perspectives from the Yendi Hospital"): ethnographic
+  qualitative study (43 interviews + participant observation + 1 focus
+  group) of how intermittent institutional water supply at one Ghanaian
+  hospital affects missed medical reviews, admission refusal, and
+  nurse-patient-caregiver relationship quality. Excluded **E02 (wrong
+  population)**: the population/setting is institutional healthcare-facility
+  water provision (patients, caregivers, and nurses within a single
+  hospital), not household/community water or sanitation service access —
+  directly analogous to the prior E02 exclusion of Ayalew et al. 2025
+  ("Beyond access: assessing WASH service delivery models in healthcare
+  facilities...", `RF2AF386D1E6D`).
+
+**New includes:**
+
+- **S470** (`RE42F8D320487`, Amorim, Resende, Miranda & Freistadt 2025,
+  *Water Policy* 27(11):1153-1174, "The effect of the regulation and
+  regulatory enforcement on the implementation of the social tariff in the
+  water sector: empirical evidence from Brazil"): panel-data study of 572
+  Minas Gerais municipalities (Copasa-MG service area) testing whether a
+  2021 regulatory norm and periodic inspections by the state economic
+  regulator (Arsae-MG) increased implementation of an income-eligibility
+  social tariff, measured via a Degree of Implementation of the Social
+  Tariff (DIST) Index. Random-effects panel regression finds a ~19
+  percentage-point increase in implementation associated with regulatory
+  enforcement (p<0.01, all 3 model specifications), corroborated by
+  Wilcoxon signed-rank tests significant in all 11 macro-regions; a
+  robustness-check panel extended back to 2018 finds a smaller but still
+  significant ~13 percentage-point effect. A genuine quasi-experimental
+  before/after estimate (no counterfactual group exists, since the
+  regulatory change was statewide) — added to `effect_sizes.csv`.
+- **S471** (`R90BA49D542B6`, Hughes, Kirchhoff, Lee & Switzer 2025, *AWWA
+  Water Science* 7(1):e70014, "Understanding the Cost of Basic Drinking
+  Water Services in the United States: A National Assessment"): national
+  cross-sectional OLS study (2,119 US municipalities, state fixed effects)
+  of the fiscal, community, organizational, and environmental drivers of
+  the household cost of 6,000 gallons/month of municipal drinking water.
+  Mayor-led (vs. manager/council-led) municipal government form is
+  associated with $1.58/month lower cost in the organizational-structure
+  model (p<0.05), attenuating to a non-significant $1.03 once other
+  covariates are added; utilities that purchase water wholesale charge
+  $2.86/month more (p<0.05). Added to `effect_sizes.csv` (form-of-government
+  coefficient recorded as the primary institutional/governance effect per
+  CODEBOOK.md §12's one-effect-per-study default).
+
+Full-text screening now stands at 924/3,659 (469 include / 455 exclude),
+2,735 open in the regenerated retrieval queue. `extraction_database.csv`
+and `evidence_map.csv` both grew to 469 rows; `effect_sizes.csv` grew from
+20 to 22 rows. Duplicate audit (exact DOI, record_id-in-extraction_note)
+came back clean. `validate_schemas.py` passes all 13 checked files.
+
+## 2026-09-18 — Twenty-first full-text screening batch: Google Drive Zotero-storage re-sync (batch 5), 2 new includes (S468-S469)
 
 The researcher shared a new Google Drive folder that turned out to be a
 fresh full re-sync of his Zotero attachment-storage library, not a small
