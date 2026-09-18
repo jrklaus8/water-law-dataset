@@ -4,7 +4,76 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-17 (latest) — Twentieth full-text screening batch: Google Drive Zotero-storage batch 3, 45 new includes (S423-S467)
+## 2026-09-18 (latest) — Twenty-first full-text screening batch: Google Drive Zotero-storage re-sync (batch 5), 2 new includes (S468-S469)
+
+The researcher shared a new Google Drive folder that turned out to be a
+fresh full re-sync of his Zotero attachment-storage library, not a small
+delta: 111 storage-key subfolders were enumerated (matching the batches-1-3
+pattern of many recurring keys, e.g. `35R6JBMX`, `XD2GTAMW`, `ZA6F5UCY`,
+`577RP5MF`, `883TJUZ7`), containing 110 real attachments (PDFs and
+Google-Doc web snapshots; the 111th folder held only the researcher's own
+Zotero-master-spreadsheet export, not a screening target) plus 8
+`.zotero-ft-cache` files (ignored, as always).
+
+**Matching method**: token-overlap (Jaccard) scoring of normalized,
+stopword-stripped titles against all 3,659 `full_text_screening_database.csv`
+titles, top-3 candidates inspected by eye rather than trusting the top score
+blindly. 100 of 110 items matched confidently and unambiguously on the
+first pass. A further 8 had meaningless Zotero-assigned filenames (`pad`
+×2, `wp.2025`, `ws.2025`, `home`, `anti`, `discovery`, bare DOI-suffix
+strings like `25741292.2025`, `07352166.2026`, `S0957178726001657`) and
+required downloading and reading the actual content before they could be
+matched at all.
+
+**Result of matching**: 108 of the 110 real attachments resolved to
+already-decided `record_id`s (skipped, not re-processed — most were
+literal duplicate copies of PDFs/web-snapshots already screened in this
+session's earlier batches 1-3, now living under a second, different
+Zotero storage key in the re-synced folder). 2 resolved to already-flagged
+`wrong_file_retrieved` records (`R81549C4709FC`, `R5725BF04FB9F`) — both
+re-downloaded and re-read in full to confirm the mismatch still holds on
+this third retrieval attempt (same wrong book chapter; same 2-page erratum
+notice, respectively); the flags remain in place, both records still open.
+Genuinely open and newly matched: **2 records, both included**.
+
+**S468** (Santos, Ferreira, Lanzinha & Collado 2025, *Urban Science*):
+qualitative phenomenological case study (6 semi-structured interviews, 3
+institutional actors + 3 community leaders) of WASH-service sustainability
+in Beira, Mozambique, finding persistent institutional fragmentation
+across four overlapping agencies (SASB, AdRC, AIAS, CMB), an informally
+tolerated community-self-managed standpipe system in one neighbourhood
+(Ponta Gêa) contrasted with no such recognition elsewhere, and a
+social-tariff mechanism that does not cover operating costs.
+
+**S469** (Alam, Rahat, Neeher, Tabassum, Nawaz, Evans & Hutchings 2025,
+*J. Water Sanitation Hyg. Dev.*): 384-household matched-pair mixed-methods
+study of barriers to sewer connection in Dhaka, Bangladesh — a
+$84-342 USD connection fee against a ~$270 USD average monthly salary,
+multi-year delay despite full compliance, and DWASA's undocumented
+discretionary inaction on completed applications, which two of ten IDI
+respondents responded to by self-connecting without authorization and
+being fined by police for unauthorised road-cutting.
+
+Neither new include had a genuine, non-fabricated single exposure-
+comparator effect estimate with a locatable confidence interval (Alam et
+al.'s statistical tests treat sewer-connection status as the *outcome*
+being compared across groups on various barrier/belief variables, not as
+an outcome produced by a defined legal-mechanism exposure), so
+`effect_sizes.csv` is unchanged at 20 rows.
+
+A corpus-wide duplicate audit re-run afterwards (4 independent methods:
+exact DOI, exact normalized title, fuzzy title ratio>0.85, duplicate
+record_id in `extraction_note`) came back clean (0 groups) against the
+resulting 467-study corpus. Schema validation
+(`code/analysis/validate_schemas.py`) passes on all 13 checked files.
+
+Updated figures: 920/3,659 full-text records decided (467 include / 453
+exclude), 2,739 open (`full_text_retrieval_queue.csv` regenerated to
+match). `extraction_database.csv` and `evidence_map.csv` now at 467 rows
+(178 quantitative-synthesis-eligible, 387 qualitative-synthesis-eligible);
+`effect_sizes.csv` unchanged at 20 rows.
+
+## 2026-09-17 — Twentieth full-text screening batch: Google Drive Zotero-storage batch 3, 45 new includes (S423-S467)
 
 Continuation of the Google Drive Zotero attachment-storage retrieval effort
 (51 confirmed record_id <-> Drive-fileId matches, plus content-based
