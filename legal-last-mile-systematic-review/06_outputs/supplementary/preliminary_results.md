@@ -221,7 +221,7 @@ evidence of anything.
   Claude as `reviewer_1` against `INCLUSION_EXCLUSION.md`'s E01–E12
   codes, and recorded via `update_full_text_record.py`, with every
   exclusion also logged to `exclusion_log.csv`. As of this entry:
-  **953 of 3,659 records decided (479 include / 474 exclude)** — see
+  **960 of 3,659 records decided (481 include / 479 exclude)** — see
   `PRISMA_WORKFLOW.md` Phase 6 for the exclusion-reason breakdown. A
   human `reviewer_2` for this phase has not yet been assigned — open
   question for the researcher.
@@ -558,6 +558,29 @@ evidence of anything.
   locatable inferential exposure-comparator estimate in either). A
   corpus-wide duplicate audit re-run afterwards came back clean against
   the resulting 479-study corpus.
+- **2026-09-18 (later the same day): twenty-ninth full-text screening
+  batch — 8 researcher-supplied PDFs, 5 excludes + 2 new includes
+  (S482-S483).** Full detail in `CHANGELOG.md`. One item was a duplicate
+  re-upload of an already-decided record (Beyene et al. 2023 Gondar urban
+  governance index study, already S401) and was skipped. All 5 excludes
+  were E01 (wrong topic): a Kinshasa school WASH/hand-hygiene-behavior
+  study; an Arctic water-security scoping review whose own protocol
+  explicitly excludes governance/law/policy-perspective studies; a
+  cross-country Sanitation Coverage Index benchmarking study; a
+  20-municipality South African panel econometric study of social/
+  political determinants of water investment; and a gender-differentiated
+  Water Poverty Index study in peri-urban Dhaka. Includes: S482 (Meehan et
+  al. 2023), a conceptual synthesis on how private-home-based water/
+  sanitation provision structurally excludes unhoused people, citing named
+  UK anti-homeless statutes criminalizing resulting public urination/
+  defecation; and S483 (Mutono et al. 2022), an 11-year Nairobi utility
+  panel study finding high-income residents six times more likely to
+  receive sufficient water than low-income residents (rate ratio 5.78,
+  95% CI 5.34-6.25, p<0.001), tied to connection-type and tenure-security
+  disparities. S483 was **added to `effect_sizes.csv`** as a genuine
+  exposure-comparator estimate with rate ratios, CIs, p-values and N. A
+  corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 481-study corpus.
 
 ## What has not been done
 
@@ -576,14 +599,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 953 of the 3,659
-  Phase-5 includes have been assessed; 2,706 records have not yet been
+- Full-text screening itself is far from complete: 960 of the 3,659
+  Phase-5 includes have been assessed; 2,699 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 479
+- Extraction (Phase 8) is caught up with screening completely — all 481
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  479 extracted studies** (a first 12-study partial pilot batch was
+  481 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

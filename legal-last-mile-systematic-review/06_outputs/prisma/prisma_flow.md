@@ -7,11 +7,11 @@ enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
 `PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
 Phase 6 was seeded with. Full-text screening is now live and ongoing
-(updated 2026-09-18): of 3,659, 953 have been assessed (479 include / 474
+(updated 2026-09-18): of 3,659, 960 have been assessed (481 include / 479
 exclude), with "Reports not retrieved" still at 0 since every record
 reaching this pipeline so far has arrived with full text already in hand
 via researcher chat upload or Drive-shared Zotero export — the remaining
-2,706 are simply not yet reached, not confirmed unretrievable. This is
+2,699 are simply not yet reached, not confirmed unretrievable. This is
 expected to keep growing over roughly a month as the researcher continues
 supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
 illustrative, or a placeholder dressed as data; every filled count traces
@@ -117,12 +117,12 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     Drive-shared Zotero export with full text already in hand, so "not
     retrieved" has not yet had reason to be used; expect this to change as
     retrieval of the full pool continues.]
-  Reports assessed for eligibility (n = 953, PROVISIONAL AND GROWING)
+  Reports assessed for eligibility (n = 960, PROVISIONAL AND GROWING)
     [02_screening/full_text/full_text_screening_database.csv, updated
-    2026-09-18. Full-text screening is ongoing, not complete -- 2,706 of
+    2026-09-18. Full-text screening is ongoing, not complete -- 2,699 of
     3,659 records have not yet been reached.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 474 total, PROVISIONAL):
-    E01 wrong topic (n = 111)
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 479 total, PROVISIONAL):
+    E01 wrong topic (n = 116)
     E02 wrong population (n = 33)
     E03 wrong exposure (n = 20)
     E04 wrong outcome (n = 47)
@@ -136,14 +136,14 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E12 wrong study design (n = 2)
 
 Included
-  Studies included in systematic review (n = 479, PROVISIONAL AND GROWING)
+  Studies included in systematic review (n = 481, PROVISIONAL AND GROWING)
     [Full-text include count as of 2026-09-18; full-text screening is
-    still ongoing across the remaining 2,706 unreached records.]
-  Studies included in full extraction so far (n = 479)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S481 (S227
+    still ongoing across the remaining 2,699 unreached records.]
+  Studies included in full extraction so far (n = 481)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S483 (S227
     and S399 documented post-hoc-duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-18 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 22, PROVISIONAL AND GROWING)
+  Studies included in quantitative evidence synthesis (n = 23, PROVISIONAL AND GROWING)
     [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16,
     extended same day with 2 more studies (S353, S358) from the Zotero
     Drive-folder batch, then 1 more (S388, Li/McManus/Cronk 2025, Liberia
@@ -157,10 +157,12 @@ Included
     performance) from the 2026-09-17 Google Drive batch 3, then 2 more
     (S470 Arsae-MG regulatory enforcement/social-tariff implementation in
     Brazil; S471 municipal form-of-government/drinking-water affordability
-    in the US) from researcher chat uploads. These are the studies with a
+    in the US) from researcher chat uploads, then 1 more (S483, Mutono et
+    al. 2022, Nairobi residential-income-category water-sufficiency rate
+    ratios). These are the studies with a
     genuine, non-fabricated exposure-vs-comparator contrast and a
     locatable effect estimate -- a much smaller, stricter subset than the
-    181 studies evidence_map.csv flags
+    183 studies evidence_map.csv flags
     quantitative_synthesis_eligible = TRUE, most of
     which are single-group descriptive statistics with no defined
     comparator. See CHANGELOG.md 2026-09-17 for the full study list and

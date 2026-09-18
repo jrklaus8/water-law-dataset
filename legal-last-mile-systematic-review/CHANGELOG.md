@@ -4,7 +4,86 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Twenty-eighth full-text screening batch: 10 researcher-supplied PDFs, 7 excludes + 2 new includes (S480-S481)
+## 2026-09-18 (latest) — Twenty-ninth full-text screening batch: 8 researcher-supplied PDFs, 5 excludes + 2 new includes (S482-S483)
+
+The researcher uploaded eight more PDFs directly via chat. One was a
+duplicate re-upload of an already-decided record (Beyene, Adam & Minale
+2023, "Examining the practice of urban governance using UN-Habitat urban
+governance index in Gondar city, North West Ethiopia" — already S401,
+extracted 2026-09-17) and was skipped without reprocessing.
+
+**Excludes (all E01, wrong topic):**
+
+- **RCDD2A6F242AA** (Nlunda, Matumona, Numbi, Kapenga & Mbela 2023, *J.
+  Water, Sanitation and Hygiene for Development*, "Peri-urban schools of
+  Kinshasa before and during COVID-19"): a school WASH-infrastructure/
+  hand-hygiene-behavior evaluation among adolescent girls, no legal/
+  administrative connection-mechanism content.
+- **R0AFD77B3C677** (Cassivi, Covey, Rodriguez & Guilherme 2023,
+  *International Journal of Hygiene and Environmental Health*, "Domestic
+  water security in the Arctic: A scoping review"): the review's own
+  PRISMA-ScR eligibility criteria explicitly exclude "studies addressing
+  water-related issues from a governance, law or policy perspective" —
+  precisely this review's target content.
+- **RF37B79776186** (Bankole, James, Odjegba, Bankole, Emmanuel, Fiore, Pu
+  & Moruzzi 2023, *Water Policy*, "Factors affecting sanitation coverage in
+  three income levels and potential toward achieving SDG 6.2"): a
+  cross-country Sanitation Coverage Index benchmarking study; Nigeria's
+  funding/institutional-responsibility narrative is background context, not
+  the paper's own empirical household-level finding.
+- **R924147005E03** (Mukwarami & van der Poll 2023, *J. Governance and
+  Regulation*, "Analysis of the relationship between social factors and
+  water services delivery in the public sector"): a 20-municipality panel
+  econometric study of social/political determinants of aggregate water
+  investment/access rate in South Africa.
+- **R48E6D809E739** (Jaren, Leya & Mondal 2022, *Water*, "Investigation of
+  Gender-Differentiated Impacts of Water Poverty on Different Livelihood
+  Groups in Peri-Urban Areas around Dhaka, Bangladesh"): a gender-
+  differentiated Water Poverty Index study focused on socioeconomic/
+  physical/gender barriers (distance, time burden, capacity), not a
+  specific legal/administrative connection-eligibility, burden, discretion
+  or enforcement mechanism.
+
+**Includes:**
+
+- **R97CEDDF99259** (Meehan, Beresford, Amador Cid, Avelar Portillo, Marin,
+  Odetola & Pacheco-Vega 2023, *WIREs Water*, "Homelessness and water
+  insecurity in the Global North: Trapped in the dwelling paradox"): a
+  conceptual synthesis on how private-home-based water/sanitation
+  provision structurally excludes unhoused people, citing named UK
+  anti-homeless statutes (Anti-Social Behaviour, Crime and Policing Act
+  2014; Police, Crime, Sentencing and Courts Act 2022) criminalizing the
+  resulting public urination/defecation and encampments. Extracted as
+  **S482** (`risk_of_bias_tool = AMSTAR2`, `mechanism_family = MULTIPLE` —
+  `eligibility`, `discretion_accommodation`, `enforcement`, `outcome_family
+  = effective_access`). Not added to `effect_sizes.csv` (conceptual
+  synthesis, no quantitative exposure-comparator estimate).
+- **R8FA145CC6D69** (Mutono, Wright, Mutembei & Thumbi 2022, *Habitat
+  International*, "Spatio-temporal patterns of domestic water distribution,
+  consumption and sufficiency: Neighbourhood inequalities in Nairobi,
+  Kenya"): an 11-year utility panel study (2,380 water-distribution
+  itineraries) finding residents of high-income Nairobi areas six times more
+  likely to receive sufficient water than low-income residents (rate ratio
+  5.78, 95% CI 5.34-6.25, p<0.001), tied to connection-type disparities
+  (inhouse piped vs. shared taps/water kiosks) and a tenure-security gap
+  (85% vs. 58%). Extracted as **S483** (`risk_of_bias_tool = ROBINS-I`,
+  `mechanism_family = MULTIPLE` — `eligibility`, `burden`, `outcome_family
+  = effective_access`). **Added to `effect_sizes.csv`**: a genuine
+  exposure-comparator (residential income category) with rate ratios, 95%
+  CIs, p-values and N — meets the strict effect-size bar.
+
+Duplicate audit (exact-DOI groups, `record_id`-in-`extraction_note`
+groups): clean, no duplicates found. Retrieval queue regenerated (2,699
+open records). `validate_schemas.py`: all 13 checked files match their
+documented/generated schema. Running totals updated in `README.md`,
+`PRISMA_WORKFLOW.md`, `06_outputs/prisma/prisma_flow.md`, and
+`06_outputs/supplementary/preliminary_results.md`: 960/3,659 full-text
+screened (481 include / 479 exclude), 2,699 open, 481 studies fully
+extracted (S001-S483, S227/S399 documented gaps), 183 quantitative- / 397
+qualitative-synthesis-eligible in `evidence_map.csv`, 23 rows in
+`effect_sizes.csv`.
+
+## 2026-09-18 — Twenty-eighth full-text screening batch: 10 researcher-supplied PDFs, 7 excludes + 2 new includes (S480-S481)
 
 The researcher uploaded ten more PDFs directly via chat. One was a duplicate
 re-upload of an already-decided record (Brown et al. 2023, *Lancet Global
