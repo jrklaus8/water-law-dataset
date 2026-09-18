@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Fifty-first full-text screening batch: 7 researcher-supplied PDFs across two uploads, 2 new includes (S520-S521)
+## 2026-09-18 (latest) — Fifty-second full-text screening batch: 6 researcher-supplied PDFs, 2 duplicates skipped, 3 new includes (S522-S524)
+
+The researcher uploaded 6 more PDFs. Two were duplicate re-uploads of
+already-decided records, both deferred to without reprocessing:
+
+- **R5104D5ACF77A** (Fono et al. 2025, "Aboriginal and Torres Strait
+  Islander Perspectives in Drinking Water Policy: A Realist Review"):
+  already included as **S521**.
+- **R30B01FDAF470** (Shoko 2025, "Structural Determinants of Conflicts
+  and Cooperation in Rural Water Management"): already excluded
+  **E05**.
+
+One new exclude:
+
+- **R5C25784E85C8** — Bae, J.; Kang, S.; Lynch, M.J. (2025). "Drinking
+  Water Injustice: Racial Disparity in Regulatory Enforcement of Safe
+  Drinking Water Act Violations." *Race and Justice* 15(3):335-355.
+  **EXCLUDE E04.** OLS regression (n=1,860 community water systems,
+  EPA SDWIS data, robust SEs) finding that SDWA noncompliance-duration
+  length is longer for water systems in counties with higher Black/
+  Hispanic populations and shorter for counties with higher White
+  populations; poverty/income were not statistically significant. The
+  outcome is state/federal regulatory-enforcement duration for water-
+  QUALITY violations at the utility/system level, not household-level
+  legal-administrative eligibility/burden/discretion/enforcement
+  mechanisms governing service CONNECTION or exclusion — the same
+  category as prior E03/E04 exclusions for SDWA-compliance studies
+  (Dobbin & Fencl 2021; Anica 2022).
+
+Three new includes:
+
+- **RAD821298C663** — Aizannon, G.S.; Akueson, G.H.A.; Moumouni-Moussa,
+  I. (2025). "Does the Emergence of Private Actors in the Potable
+  Water Market Reduce Inequalities and Improve Access? A Critical
+  Analysis Based on a Case Study in Selected Municipalities of Benin."
+  *International Journal of Research and Innovation in Social
+  Science* 8(12):2620-2636. **INCLUDE.** Mixed-methods case study
+  (2023 interviews with local producers/consumers plus a descriptive
+  survey across four Beninese communes) finding 63.10% of surveyed
+  consumers rely on private operators, 52% of surveyed producers lack
+  a formal water safety plan, and rural coverage (~60%) trails urban
+  coverage (~85%), amid an acknowledged absence of a robust regulatory
+  framework governing private operators. Extracted as **S522**
+  (MMAT).
+- **RC61AA453D176** — Rempel, J.L.; Dobbin, K.B. (2025). "When
+  'symbolic' policy is anything but: Policy design and feedbacks from
+  California's human right to water law." *Policy Studies Journal*
+  53(3):701-722. **INCLUDE.** Qualitative case study (23 interviews
+  plus archival/document analysis) of California's AB 685 (2012)
+  human-right-to-water law, tracing a decade of indirect resource
+  effects: the SB-200 SAFER program (up to $1.4 billion for low-income
+  drinking-water needs), a COVID-19 shutoff moratorium followed by
+  over $1 billion in household water-debt credit relief, and SB-88's
+  state-mandated consolidation of local water systems persistently
+  failing low-income populations. Extracted as **S523** (CASP).
+- **R6A776E9F321E** — Hernando-Arrese, M.; Ibarra, M.I. (2025).
+  "Waters of resistance: decolonising perspectives on women's
+  territorial r-existence in southern Chile." *Gender & Development*
+  33(1):189-213. **INCLUDE.** Ethnographic case study (8 interviews
+  plus a 14-person focus group) of gendered water-rights and
+  connection-access disparities among Rural Drinking Water Committees/
+  Cooperatives (APRs) in the Toltén hydrosocial territory, Chile,
+  documenting that 47.2% of the rural population lacks formal potable-
+  water access and that APRs/Indigenous communities hold only 3.7% of
+  regionally granted water rights versus 23% for 16 individuals/private
+  companies. Extracted as **S524** (CASP).
+
+None of the three new includes was added to `effect_sizes.csv`
+(descriptive mixed-methods percentages and qualitative case studies,
+no locatable inferential exposure-comparator effect estimate). A
+corpus-wide duplicate audit (exact-DOI + record_id-in-extraction_note
+methods) came back clean against the resulting 522-study corpus.
+`full_text_retrieval_queue.csv` regenerated (2,609 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-18 — Fifty-first full-text screening batch: 7 researcher-supplied PDFs across two uploads, 2 new includes (S520-S521)
 
 The researcher uploaded 7 more PDFs across two chat messages (arriving
 mid-turn while documentation for the previous batch was still being
