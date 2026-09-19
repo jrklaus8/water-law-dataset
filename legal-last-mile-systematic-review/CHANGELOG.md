@@ -4,7 +4,47 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-19 (latest) — Fifty-third full-text screening batch: 2 researcher-supplied PDFs, 2 new includes (S525-S526), first effect_sizes.csv addition since 2026-09-17
+## 2026-09-19 (latest) — Fifty-fourth full-text screening batch: 2 researcher-supplied PDFs, 1 new include (S527)
+
+The researcher uploaded 2 more PDFs. One new exclude, one new include:
+
+- **R53BA195BE952** — Suyeno, S.; Sumartono, S.; Haryono, B.S.; Amin, F.
+  (2024). "Water governance puzzle in Riau Province: uncovering key
+  actors and interactions." *Water Policy* 26(1):60. **EXCLUDE E01.**
+  Textual Network Analysis (TNA) of government policy/regulatory
+  documents mapping actor networks (central/provincial/local government
+  agencies) in Durolis regional water-supply-system governance across
+  three Riau Province regencies, Indonesia. A governance-network/
+  stakeholder-mapping study using document text-mining; no household-
+  level eligibility, documentation, fee, discretion, or enforcement
+  mechanism content, and no household/community population or access/
+  connection/affordability outcome examined.
+- **R73F67667C714** — Khadam, N.; Bukhtawer, N.; Iqbal, Z.; Qayyum, H.;
+  Khan, Z.F.; Razzaq, M.; Idrees, F. (2024). "Gender inequality, water
+  rights and policy implications: learning from the experience of
+  experts working in water sector." *Cogent Social Sciences*
+  10(1):2334109. **INCLUDE.** Qualitative expert-panel study (6
+  water-sector experts, six-stage Braun & Clarke thematic analysis)
+  documenting that formal, documented water connections in Pakistan are
+  legally tied to property ownership (departing from the Easement Act
+  1882 only with Punjab's 2019 Water Act), automatically excluding
+  landless households -- disproportionately headed/represented by
+  women, since only 36 of 1000 women in Punjab own land -- from formal
+  supply. Also reviews Sindh's 2018 Water Management Ordinance
+  amendment introducing a gender quota for water-governance bodies and
+  the Local Government Ordinance 2001's women's council-seat
+  reservations (15-33% by province), only ~19.6% of which were actually
+  filled in the 2013/2015 elections. Extracted as **S527** (CASP).
+
+Not added to `effect_sizes.csv` (qualitative expert-panel study, no
+locatable inferential exposure-comparator effect estimate). A
+corpus-wide duplicate audit (exact-DOI + record_id-in-extraction_note
+methods) came back clean against the resulting 525-study corpus.
+`full_text_retrieval_queue.csv` regenerated (2,605 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-19 — Fifty-third full-text screening batch: 2 researcher-supplied PDFs, 2 new includes (S525-S526), first effect_sizes.csv addition since 2026-09-17
 
 The researcher uploaded 2 more PDFs. Both were newly-decided records
 (no duplicates this round):
