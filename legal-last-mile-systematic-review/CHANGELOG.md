@@ -4,7 +4,53 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-19 (latest) — Fifty-fourth full-text screening batch: 2 researcher-supplied PDFs, 1 new include (S527)
+## 2026-09-19 (latest) — Fifty-fifth full-text screening batch: 3 researcher-supplied PDFs, 1 new include (S528)
+
+The researcher uploaded 3 more PDFs. Two new excludes, one new include:
+
+- **R2C4C322911D6** — Sibley, M.; Peach, K.; Leon-Corwin, M.; Selvakumar,
+  P.P.; Diodosio, K.; Fox, A.; Spurlock, C.; Olofsson, K. (2024).
+  "Exploring risk-scapes in Oklahoma: institutional trust, environmental
+  justice, climate change, and infrastructure." *Safer Communities*
+  23(2):152-170. **EXCLUDE E04.** Nested regression models (n=2,687
+  Oklahoma adults, M-SISNet survey) predicting institutional trust,
+  environmental-justice perceptions, and climate-change risk
+  perceptions, with "concern for water infrastructure" (a subjective
+  3-item perception/attitude index) as an outcome. The outcome measured
+  is subjective concern, not an objective water-service access,
+  connection, or exclusion outcome; no legal/administrative mechanism
+  content.
+- **R4FCD4A37638A** — Rodrigues, P.M.; Goncalves, J.; Marques, R.C.
+  (2024). "Public policies on human rights to water in informal
+  settlements: a bibliometric analysis." *Water Policy* 26(7):718.
+  **EXCLUDE E05.** Bibliometric/scientometric meta-analysis (citation-
+  network, keyword co-occurrence, thematic mapping of 1,702
+  publications, 1978-2023). Contains no primary or synthesized
+  empirical findings about actual household/community water-access
+  outcomes -- studies publication metadata, not water access itself.
+- **R91862C6D9F43** — Santos, J.G.; Ioris, A.A.R. (2024). "Water
+  Conflicts and Socioterritorial Dynamics: The Hydrosocial Cycle After
+  the Sao Francisco River Transposition Project in the Northeast of
+  Brazil." *Land* 13(12):2032. **INCLUDE.** Ethnographic study (48
+  interviews in 2019 + 12 follow-up interviews in 2024 with resettled
+  rural families, plus federal institutional-actor interviews) of
+  Brazil's largest water-infrastructure project (PISF), finding that
+  845 directly-affected families resettled across 18 rural villages
+  are not guaranteed access to or use of the transposed water despite
+  living in its immediate surroundings, and that popular participation
+  is excluded from the project's formal governance Management Board
+  (only formal institutional actors participate). Extracted as **S528**
+  (CASP).
+
+Not added to `effect_sizes.csv` (ethnographic case study, no locatable
+inferential exposure-comparator effect estimate). A corpus-wide
+duplicate audit (exact-DOI + record_id-in-extraction_note methods) came
+back clean against the resulting 526-study corpus.
+`full_text_retrieval_queue.csv` regenerated (2,602 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-19 — Fifty-fourth full-text screening batch: 2 researcher-supplied PDFs, 1 new include (S527)
 
 The researcher uploaded 2 more PDFs. One new exclude, one new include:
 
