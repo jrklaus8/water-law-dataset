@@ -1138,6 +1138,29 @@ evidence of anything.
   qualitative case studies, no locatable inferential exposure-
   comparator effect estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 522-study corpus.
+- **2026-09-19: fifty-third full-text screening batch — 2 researcher-
+  supplied PDFs, 2 new includes (S525-S526).** Full detail in
+  `CHANGELOG.md`. Both were newly-decided records with no duplicates.
+  S525 (Kachenje 2025, *IJRISS*, "Institutional Coordination Challenges
+  in Service Delivery... Dar Es Salaam, Tanzania") is a qualitative
+  case study finding that new water-connection application processing
+  took a maximum of 30 days under the public (DAWASA) scheme versus 3
+  days (private) and 6 days (community-based), and that most private
+  water providers operate unregistered amid weak enforcement of
+  Tanzania's water-sector regulatory instruments. S526 (Switzer &
+  Teodoro 2025, *Policy Studies Journal*, "Public enterprise pricing as
+  redistributive policy") is a cross-sectional OLS regression of 1,183
+  US water utilities finding that local income inequality correlates
+  positively and significantly with water-rate progressivity for
+  government-owned utilities (p=0.005), while private/investor-owned
+  ownership independently predicts more regressive pricing (p<0.001);
+  the ownership-inequality interaction was directionally consistent but
+  not statistically significant (p=0.387). S526's ownership-type effect
+  estimate was added to `effect_sizes.csv` (Family C) as a genuine
+  exposure-comparator regression result; S525 was not added
+  (qualitative case study, no locatable inferential effect estimate). A
+  corpus-wide duplicate audit re-run afterwards came back clean against
+  the resulting 524-study corpus.
 
 ## What has not been done
 
@@ -1156,14 +1179,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,050 of the 3,659
-  Phase-5 includes have been assessed; 2,609 records have not yet been
+- Full-text screening itself is far from complete: 1,052 of the 3,659
+  Phase-5 includes have been assessed; 2,607 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 522
+- Extraction (Phase 8) is caught up with screening completely — all 524
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  522 extracted studies** (a first 12-study partial pilot batch was
+  524 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -1206,8 +1229,11 @@ evidence of anything.
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 20 studies in `effect_sizes.csv` (added
-  2026-09-16, extended 2026-09-17), but none is pooled, and no family-level meta-analysis has
+- Effect sizes now exist for 26 studies in `effect_sizes.csv` (added
+  2026-09-16, extended 2026-09-17 and in later full-text-screening
+  batches through 2026-09-19, most recently S526 -- Switzer & Teodoro's
+  public-enterprise-pricing ownership-type effect estimate, Family C),
+  but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template
   scaffolding built but are all blocked on Phase 11 and have not been run

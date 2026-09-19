@@ -4,7 +4,58 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-18 (latest) — Fifty-second full-text screening batch: 6 researcher-supplied PDFs, 2 duplicates skipped, 3 new includes (S522-S524)
+## 2026-09-19 (latest) — Fifty-third full-text screening batch: 2 researcher-supplied PDFs, 2 new includes (S525-S526), first effect_sizes.csv addition since 2026-09-17
+
+The researcher uploaded 2 more PDFs. Both were newly-decided records
+(no duplicates this round):
+
+- **RC2CB18536B31** — Kachenje, Y.E. (2025). "Institutional Coordination
+  Challenges in Service Delivery the Case of Water Supply in Dar Es
+  Salaam, Tanzania." *International Journal of Research and Innovation
+  in Social Science* 8(12):2087-2103. **INCLUDE.** Qualitative case
+  study (key informant interviews, focus group discussions, household
+  interviews, document analysis) comparing one public (DAWASA), one
+  private, and one community-based water-supply scheme in Dar es
+  Salaam. Table 1 reports processing time for new water-connection
+  applications: a maximum of 30 days (public) vs. 3 days (private) vs.
+  6 days (community-based), involving 5, 2, and 3 key actors
+  respectively. Most private providers are found to be unregistered as
+  formal service providers, recognized only informally by residents,
+  reflecting weak enforcement of the Water Supply and Sanitation Act
+  2019, the EWURA Act, and the Water Resources Management Act.
+  Extracted as **S525** (CASP).
+- **R09A594443F58** — Switzer, D.; Teodoro, M.P. (2025). "Public
+  enterprise pricing as redistributive policy." *Policy Studies
+  Journal* 53(2):365-387. **INCLUDE.** Cross-sectional OLS regression
+  (n=1,183-1,189 US water utilities serving 40,000+ residents, 2019
+  rate data + 2017 ACS income data) testing whether local income
+  inequality (mean-to-median income ratio) predicts water-rate
+  progressivity (unit price ratio), and whether the relationship
+  differs between local-government-owned utilities (rates set by
+  elected officials) and investor-owned utilities (rates set by state
+  Public Utilities Commissions). Finds income inequality correlates
+  positively and significantly with price progressivity (coefficient
+  0.310, p=0.005), while private/investor-owned ownership
+  independently predicts more regressive pricing (coefficient -0.167,
+  p<0.001); the Private x Inequality interaction term was in the
+  expected (weaker-for-private) direction but not statistically
+  significant (-0.209, p=0.387). Extracted as **S526** (JBI Critical
+  Appraisal Checklist for Analytical Cross Sectional Studies).
+
+S526's ownership-type effect estimate was added to
+`05_analysis/effect_sizes/effect_sizes.csv` as a genuine, non-fabricated
+exposure-comparator regression result (Family C — administrative/legal
+barriers and access inequality, per `PROJECT_SPEC.md` §8), bringing the
+tracked-studies-with-a-real-effect-estimate total to 26. S525 was not
+added (qualitative case study; the processing-time figures reported are
+single-case descriptive comparisons, not a locatable inferential
+exposure-comparator estimate). A corpus-wide duplicate audit (exact-DOI
++ record_id-in-extraction_note methods) came back clean against the
+resulting 524-study corpus. `full_text_retrieval_queue.csv` regenerated
+(2,607 open records). `validate_schemas.py` confirms all 13 tracked
+files still match their documented/generated schema.
+
+## 2026-09-18 — Fifty-second full-text screening batch: 6 researcher-supplied PDFs, 2 duplicates skipped, 3 new includes (S522-S524)
 
 The researcher uploaded 6 more PDFs. Two were duplicate re-uploads of
 already-decided records, both deferred to without reprocessing:
