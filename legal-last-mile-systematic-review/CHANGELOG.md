@@ -4,7 +4,58 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-sixth full-text screening batch (6 Drive-retrieved PDFs: 3 excludes, 3 new includes S554-S556)
+## 2026-09-21 (latest) — Seventy-seventh full-text screening batch (2 Drive-retrieved PDFs: 2 new includes S557-S558)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-sixth batch below:
+
+- **RE7ECD35103C3** — Kim E (2014). "Conceptual practice of 'rural
+  wellbeing' in Uzbekistan: Contradictions and implications for gender
+  equality." *Rural Society* 23(3):243-256. doi
+  10.1080/10371656.2014.11082068. **INCLUDE.** A qualitative institutional
+  ethnographic case study (40 in-depth interviews with women peasant
+  farmers plus 65 additional stakeholder interviews, participant
+  observation, and ~400-document institutional text analysis, 2011
+  fieldwork) of a foreign-funded participatory Water User Association
+  (WUA) project in rural Uzbekistan. Documents genuine legal-institutional
+  content: the Uzbek government's institutionalization of WUAs to organize
+  village-level water management after decollectivization; 1994
+  formalization of individual household peasant-farm land rights; private
+  farmers' long-term state lease contracts with cotton/wheat quotas and
+  fines for shortfall; and "community mobiliser" selection criteria that
+  discursively and structurally excluded women -- the majority of
+  household farmers -- from the project despite their extensive
+  unrecognized water-access labor and self-organized (but never
+  institutionally recognized) water-user groups. Extracted as **S557**
+  (CASP, qualitative).
+- **RC61ECDAD14A5** — Selfa T, Bain C, Moreno R (2014). "Depoliticizing
+  land and water 'grabs' in Colombia: the limits of Bonsucro certification
+  for enhancing sustainable biofuel practices." *Agriculture and Human
+  Values* 31:455-468. doi 10.1007/s10460-014-9509-3. **INCLUDE.** A
+  qualitative case study (14 in-depth exploratory interviews with
+  sugarcane/ethanol industry stakeholders plus additional interviews with
+  an agricultural researcher and displaced rural residents, June-August
+  2012) of land and water access under Bonsucro biofuel certification in
+  the Valle del Cauca, Colombia. Documents genuine legal-institutional
+  content: Colombia's water-concession regulatory regime (Decree 1541/78,
+  Agreement 042/2010) administered by the Cauca Valley Corporation,
+  described by interviewees as captured by the sugar industry; the sugar
+  industry holding 64%/88% of surface/underground water concessions
+  versus 26%/2% for household use; industry lobbying to reclassify
+  potable groundwater as non-potable to free it for irrigation; and
+  Bonsucro's "obey the law" certification standard legitimizing this
+  disproportionate access without addressing underlying inequitable
+  distribution or historical dispossession. Extracted as **S558** (CASP,
+  qualitative).
+
+`evidence_map.csv` updated for S557-S558. `full_text_retrieval_queue.csv`
+regenerated (2,541 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,118/3,659 screened
+(556 include/562 exclude), 2,541 open, 556 extracted studies, 27
+effect_sizes rows (unchanged -- neither new include has a genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-sixth full-text screening batch (6 Drive-retrieved PDFs: 3 excludes, 3 new includes S554-S556)
 
 Six further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-fifth batch below:

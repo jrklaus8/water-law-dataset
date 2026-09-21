@@ -1786,6 +1786,33 @@ evidence of anything.
   FSM exclusions. `evidence_map.csv` updated for S554-S556;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
   validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-seventh full-text screening batch —
+  2 Drive-retrieved PDFs, 2 new includes (S557-S558).** Kim (2014), on
+  gendered exclusion from a participatory Water User Association project
+  in rural Uzbekistan, is a strong include: a qualitative institutional
+  ethnographic case study (40 in-depth interviews with women peasant
+  farmers plus 65 additional stakeholder interviews, participant
+  observation, and ~400-document institutional text analysis) documenting
+  the Uzbek government's WUA institutionalization, 1994 household
+  peasant-farm land-rights formalization, state lease-contract cotton/wheat
+  quotas, and "community mobiliser" selection criteria that discursively
+  excluded women -- the majority of household farmers -- despite their
+  extensive unrecognized water-access labor. Extracted as **S557** (CASP,
+  qualitative). Selfa, Bain & Moreno (2014), on Bonsucro biofuel
+  certification in the Valle del Cauca, Colombia, is a strong include: a
+  qualitative case study (14 in-depth interviews with sugarcane/ethanol
+  industry stakeholders plus additional interviews with displaced rural
+  residents), documenting Colombia's water-concession regulatory regime
+  administered by a regulator interviewees describe as captured by the
+  sugar industry (which holds 64%/88% of surface/underground water
+  concessions versus 26%/2% for household use), industry lobbying to
+  reclassify potable groundwater as non-potable to free it for irrigation,
+  and Bonsucro's "obey the law" certification standard legitimizing this
+  disproportionate access without addressing underlying inequitable
+  distribution. Extracted as **S558** (CASP, qualitative).
+  `evidence_map.csv` updated for S557-S558; `full_text_retrieval_queue.csv`
+  regenerated; duplicate audit and schema validation re-run clean. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1804,14 +1831,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,116 of the 3,659
-  Phase-5 includes have been assessed; 2,543 records have not yet been
+- Full-text screening itself is far from complete: 1,118 of the 3,659
+  Phase-5 includes have been assessed; 2,541 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 554
+- Extraction (Phase 8) is caught up with screening completely — all 556
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  554 extracted studies** (a first 12-study partial pilot batch was
+  556 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
