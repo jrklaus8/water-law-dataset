@@ -4,7 +4,59 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Fifty-seventh full-text screening batch: 2 researcher-supplied PDFs, 0 new includes
+## 2026-09-21 (latest) — Fifty-eighth full-text screening batch: 3 researcher-supplied PDFs, 2 new includes (S529-S530)
+
+The researcher uploaded 3 more PDFs. One new exclude, two new includes:
+
+- **R30DF179C3488** — Martín Velasco, M.J.; Calderón, G.; Lima, M.L.;
+  Matencón, C.L.; Massone, H.E. (2023). "Water governance challenges at
+  a local level: implementation of the OECD Water Governance Indicator
+  Framework in the General Pueyrredon Municipality, Buenos Aires
+  Province, Argentina." *Water Policy* 25(7):623-638. **EXCLUDE E01.**
+  Qualitative governance-assessment study (OECD traffic-light
+  framework, expert panel plus OSSE/ADA official interviews) evaluating
+  water-resources governance broadly across 12 principles (capacity,
+  financing, regulatory frameworks, stakeholder engagement, basin
+  coordination). A brief social-rate/affordability mention appears
+  under Principle 11, but the paper's core focus is a general
+  water-resources governance-capacity diagnostic, not household-level
+  service-connection mechanisms.
+- **R9E6D4A706EE3** — Wagle, P. (2024). "Water access disparity in
+  Mumbai, India: Using spatial and structural attributes as formal
+  conditionalities." *Journal of Urban Affairs* 46(4):831-844.
+  **INCLUDE.** Qualitative document/interview study (64 interviews with
+  municipal engineers, experts, and activists) documenting MCGM's
+  two-tier water-connection entitlement system: a shared standpost
+  connection (45 LPCD) for "slum" dwellings vs. an individual
+  house-service connection (135 LPCD) for "other-than-slum" dwellings,
+  with the full entitlement contingent on spatial/structural
+  documentation conditionalities (Commencement Certificate, No-
+  Objection-Certificate, Occupation/Building-Completion Certificate,
+  Hydraulic Engineer Remarks) that render informal dwellings formally
+  ineligible. Extracted as **S529** (CASP).
+- **RFFE87AAC2802** — Hofstetter, M.; Bolding, A.; Boelens, R. (2023).
+  "Rooted Water Collectives in a Modernist and Neoliberal Imaginary:
+  Threats and Perspectives for Rural Water Commons." *Water*
+  15(21):3736. **INCLUDE.** Qualitative comparative case study
+  (100+ interviews across extended action-research engagement) of
+  three rural user-owned water collectives (two in South Africa, one
+  in Switzerland), documenting how South Africa's Water Services Act
+  1997 and Municipal Systems Act 2000 rendered most community-based
+  water schemes "technically illegal" as unlicensed service providers,
+  leaving their formal status contingent on municipal discretion in a
+  legal grey zone, and how Swiss subsidy conditions pressured a
+  60-year-old cooperative toward forced merger. Extracted as **S530**
+  (CASP).
+
+Neither new include was added to `effect_sizes.csv` (qualitative case
+studies, no locatable inferential exposure-comparator effect estimate).
+A corpus-wide duplicate audit (exact-DOI + record_id-in-extraction_note
+methods) came back clean against the resulting 528-study corpus.
+`full_text_retrieval_queue.csv` regenerated (2,594 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-21 — Fifty-seventh full-text screening batch: 2 researcher-supplied PDFs, 0 new includes
 
 The researcher uploaded 2 more PDFs. Both were excluded:
 

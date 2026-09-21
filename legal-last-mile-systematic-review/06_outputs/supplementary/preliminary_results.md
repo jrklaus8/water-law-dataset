@@ -1234,6 +1234,30 @@ evidence of anything.
   traditional Iranian groundwater property-rights doctrine from the
   Sassanid Empire to 1906, with no primary empirical data collection).
   No extraction, evidence_map, or effect_sizes changes this batch.
+- **2026-09-21 (later the same day): fifty-eighth full-text screening
+  batch — 3 researcher-supplied PDFs, 2 new includes (S529-S530).**
+  Full detail in `CHANGELOG.md`. One new exclude: Martín Velasco et
+  al. (2023, *Water Policy*, OECD Water Governance Indicator Framework
+  applied to General Pueyrredon Municipality, Argentina, E01 — a broad
+  water-resources governance-capacity diagnostic, not focused on
+  household-level service-connection mechanisms). Two new includes:
+  S529 (Wagle 2024, *Journal of Urban Affairs*, "Water access
+  disparity in Mumbai, India..."), documenting MCGM's two-tier water-
+  connection entitlement system (45 LPCD standpost vs. 135 LPCD
+  house-service connection) and the spatial/structural documentation
+  conditionalities that render informal dwellings ineligible for the
+  full entitlement; and S530 (Hofstetter, Bolding & Boelens 2023,
+  *Water*, "Rooted Water Collectives in a Modernist and Neoliberal
+  Imaginary..."), a comparative case study of three rural user-owned
+  water collectives in South Africa and Switzerland, documenting how
+  South Africa's Water Services Act 1997/Municipal Systems Act 2000
+  rendered most community-based water schemes "technically illegal"
+  absent formal recognition, leaving them in a legal grey zone
+  dependent on municipal discretion. Neither new include was added to
+  `effect_sizes.csv` (qualitative case studies, no locatable
+  inferential exposure-comparator effect estimate). A corpus-wide
+  duplicate audit re-run afterwards came back clean against the
+  resulting 528-study corpus.
 
 ## What has not been done
 
@@ -1252,14 +1276,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,062 of the 3,659
-  Phase-5 includes have been assessed; 2,597 records have not yet been
+- Full-text screening itself is far from complete: 1,065 of the 3,659
+  Phase-5 includes have been assessed; 2,594 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 526
+- Extraction (Phase 8) is caught up with screening completely — all 528
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  526 extracted studies** (a first 12-study partial pilot batch was
+  528 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
