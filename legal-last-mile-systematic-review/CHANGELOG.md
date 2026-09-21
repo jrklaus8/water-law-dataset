@@ -4,7 +4,84 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixtieth full-text screening batch (3 Drive-retrieved PDFs, 1 new include S531) + S469 data-gap fix
+## 2026-09-21 (latest) — Sixty-first full-text screening batch (8 Drive-retrieved PDFs, 4 excludes + 4 new includes S532-S535) + self-caught screening/extraction mismatch fix
+
+A further batch of 8 PDFs surfaced in the Google Drive retrieval inbox.
+Four excludes:
+
+- **R33EDCF0902FE** — Arctic community wastewater-treatment engineering
+  study. **EXCLUDE E01.** No legal-administrative access dimension;
+  purely a treatment-technology engineering study.
+- **RD1D7FB8C4689** — children's-participation urban-planning study.
+  **EXCLUDE E01.** General participatory-planning literature, no
+  water-access mechanism examined.
+- **RE6A753BADE5C** — Nigeria conflict/cholera commentary piece.
+  **EXCLUDE E01.** Commentary, not empirical evidence of a
+  legal-administrative access mechanism.
+- **R844EAC3AEE12** — Dewi et al., slum-participation study. **EXCLUDE
+  E01.** General participatory-planning discussion of informal
+  settlements; no specific connection/eligibility/enforcement mechanism
+  analyzed. (Note: this file arrived in the inbox mislabeled with
+  record_id `RB8BD27638F17` — see retrieval-script bug note below — and
+  was correctly re-matched by title against
+  `full_text_screening_database.csv` before being screened under its
+  true record_id, R844EAC3AEE12.)
+
+Four new includes:
+
+- **RB8BD27638F17** — Murray, Meyer & Fourie (2023). "Workshopping Water
+  Justice: linking struggles from the Cape Flats to the rest of the
+  Continent." *Globalisation, Societies and Education* 21(5):705-719.
+  doi 10.1080/14767724.2023.2165478. **INCLUDE.** Extracted as **S532**
+  (CASP).
+- **R589F244C9832** — Ghertner (2023). "Infrastructures of Overlordship:
+  Law, Labor Camps, and the Material Geographies of Servitude." *Annals
+  of the American Association of Geographers* 113(6):1483-1500. doi
+  10.1080/24694452.2023.2187340. **INCLUDE.** Extracted as **S533**
+  (Legal Institutional Evidence Appraisal Framework, per the convention
+  used for doctrinal/jurimetric legal-case-analysis studies).
+- **RE955C8795F4F** — Saha & Chakma (2026). "Co-producing household
+  water insecurity: environmental constraints, socio-economic
+  inequalities, and local water governance in rural Puruliya, Eastern
+  India." *SN Social Sciences* 6:371. doi 10.1007/s43545-026-01660-w.
+  **INCLUDE.** Extracted as **S534** (MMAT).
+- **R3858447F3CCC** — Grisaffi, Leinster, Sipuma, Owako & Parker (2026).
+  "New definitions for good practice: Regulators as activists for urban
+  road-transported sanitation in eastern and southern Africa." *PLOS
+  Water* 5(1):e0000385. doi 10.1371/journal.pwat.0000385. **INCLUDE.**
+  Extracted as **S535** (CASP).
+
+**Self-caught process error (for the audit trail):** the four S532-S535
+extraction rows were initially added to `extraction_database.csv`
+without recording the corresponding `full_text_decision`/
+`final_decision` = "include" in `full_text_screening_database.csv` in
+the same step. This produced a transient mismatch (529 include vs. 533
+extracted rows), caught immediately by the routine
+include-count-vs-extraction-row-count cross-check run before finalizing
+this batch's documentation. Fixed by explicitly recording the four
+missing include decisions, each individually verified as still-open
+before being set. No decision was revisited or re-litigated — this was
+purely a missed bookkeeping step, corrected before commit.
+
+**Retrieval-script mislabeling — recurrence noted.** The Dewi et al.
+PDF (true record_id R844EAC3AEE12, excluded E01 above) arrived in the
+inbox labeled with record_id `RB8BD27638F17`, which actually belongs to
+a separate, correctly-labeled file already in the inbox ("Workshopping
+Water Justice," extracted as S532 above). This is a new instance of the
+same DOI-mislabeling bug class the researcher's local session reported
+fixing on 2026-09-21 (see the sixtieth-batch entry below) — either that
+fix is incomplete or this file predates/postdates the local session's
+18-PDF re-test sample. Flagged for the researcher/local session; the
+file was screened correctly under its true record_id via title-match
+against the screening database before any decision was recorded.
+
+`evidence_map.csv` updated for S532-S535. `full_text_retrieval_queue.csv`
+regenerated (2,579 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean after the mismatch fix. Running
+totals: 1,080/3,659 screened (533 include/547 exclude), 2,579 open, 533
+extracted studies, 26 effect_sizes rows.
+
+## 2026-09-21 — Sixtieth full-text screening batch (3 Drive-retrieved PDFs, 1 new include S531) + S469 data-gap fix
 
 A further batch of PDFs surfaced in the Google Drive retrieval inbox
 (beyond the 7 already handled in the enrichment pass below). Three were

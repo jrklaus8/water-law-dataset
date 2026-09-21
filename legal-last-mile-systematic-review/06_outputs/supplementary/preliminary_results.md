@@ -1334,6 +1334,42 @@ evidence of anything.
   researcher's local session fixed the matcher and removed the
   duplicates. `evidence_map.csv` updated for S531; duplicate audit and
   schema validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still, same day): sixty-first full-text screening
+  batch — 8 Drive-retrieved PDFs, 4 excludes + 4 new includes
+  (S532-S535).** Four excludes: an Arctic community wastewater-treatment
+  engineering study (E01, no legal-administrative access dimension); a
+  children's-participation urban-planning study (E01, no water-access
+  mechanism); a Nigeria conflict/cholera commentary piece (E01, no
+  empirical access-mechanism evidence); and a slum-participation study
+  from an author surnamed Dewi (E01, general participatory-planning
+  discussion, not a specific connection/eligibility/enforcement
+  mechanism). Four new includes: S532 (Murray, Meyer & Fourie 2023,
+  *Globalisation, Societies and Education*, "Workshopping Water Justice,"
+  Cape Flats water-justice organizing linked to broader African
+  water-rights struggles, CASP-appraised qualitative study); S533
+  (Ghertner 2023, *Annals of the American Association of Geographers*,
+  "Infrastructures of Overlordship," law/labor-camp material geographies
+  of water servitude, appraised with the Legal Institutional Evidence
+  Appraisal Framework used for doctrinal/jurimetric legal-case-analysis
+  studies); S534 (Saha & Chakma 2026, *SN Social Sciences*, household
+  water insecurity co-produced by environmental constraints,
+  socio-economic inequality, and local water governance in rural
+  Puruliya, India, MMAT-appraised mixed-methods study); and S535
+  (Grisaffi, Leinster, Sipuma, Owako & Parker 2026, *PLOS Water*,
+  regulator-as-activist practices for urban road-transported sanitation
+  in eastern and southern Africa, CASP-appraised qualitative study). A
+  self-caught process error is worth recording for the audit trail: the
+  four new extraction rows were initially added to
+  `extraction_database.csv` without their corresponding
+  `full_text_decision`/`final_decision` = "include" being recorded in
+  `full_text_screening_database.csv` in the same step, producing a
+  transient mismatch (529 include vs. 533 extracted rows) that was
+  caught immediately by the routine include-count-vs-extraction-row-count
+  cross-check run before finalizing this batch, and fixed by explicitly
+  recording the four missing include decisions (verified individually as
+  still-open before being set). `evidence_map.csv` updated for all four;
+  duplicate audit and schema validation re-run clean afterwards. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1352,14 +1388,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,072 of the 3,659
-  Phase-5 includes have been assessed; 2,587 records have not yet been
+- Full-text screening itself is far from complete: 1,080 of the 3,659
+  Phase-5 includes have been assessed; 2,579 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 529
+- Extraction (Phase 8) is caught up with screening completely — all 533
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  529 extracted studies** (a first 12-study partial pilot batch was
+  533 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
