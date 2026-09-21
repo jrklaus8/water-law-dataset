@@ -1220,6 +1220,20 @@ evidence of anything.
   governance study of Ghana's Water Resources Commission and basin
   management boards). No extraction, evidence_map, or effect_sizes
   changes this batch.
+- **2026-09-21 (later the same day): fifty-seventh full-text screening
+  batch — 2 researcher-supplied PDFs, 0 new includes.** Full detail in
+  `CHANGELOG.md`. Both were excluded: Walling (2024, *Territory,
+  Politics, Governance*, "Governing infrastructure, development and
+  inequality around deindustrialized US cities," E01 — a comparative
+  Scranton/Providence social-network-analysis study of institutional
+  governance networks and water-utility rate-setting authority
+  location, with no household-level population or access/connection
+  outcome data); and Hosseini & Yadav (2024, *LEAD Journal*, "The
+  Significance of Traditional Legal Framework in Regulating
+  Groundwater Rights in Iran," E05 — a doctrinal/historical analysis of
+  traditional Iranian groundwater property-rights doctrine from the
+  Sassanid Empire to 1906, with no primary empirical data collection).
+  No extraction, evidence_map, or effect_sizes changes this batch.
 
 ## What has not been done
 
@@ -1238,8 +1252,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,060 of the 3,659
-  Phase-5 includes have been assessed; 2,599 records have not yet been
+- Full-text screening itself is far from complete: 1,062 of the 3,659
+  Phase-5 includes have been assessed; 2,597 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 526

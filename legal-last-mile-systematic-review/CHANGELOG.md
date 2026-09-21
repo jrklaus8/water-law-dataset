@@ -4,7 +4,39 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Fifty-sixth full-text screening batch: 3 researcher-supplied PDFs, 0 new includes
+## 2026-09-21 (latest) — Fifty-seventh full-text screening batch: 2 researcher-supplied PDFs, 0 new includes
+
+The researcher uploaded 2 more PDFs. Both were excluded:
+
+- **R4F91395D4663** — Walling, D. (2024). "Governing infrastructure,
+  development and inequality around deindustrialized US cities."
+  *Territory, Politics, Governance* 12(6):725-745. **EXCLUDE E01.**
+  Comparative case study (Scranton, PA vs. Providence, RI) using social
+  network analysis of institutional governance relationships across
+  economic-development and drinking-water infrastructure systems,
+  examining rate-setting authority location (state Public Utility
+  Commission oversight of Scranton's privately-owned water utility vs.
+  city-controlled Providence Water). Unit of analysis is institutional/
+  organizational networks and regional economic-development governance
+  structure, not households; no household-level eligibility,
+  documentation, connection, or access/affordability outcome data.
+- **R98DAA4FFBC8B** — Hosseini, S.; Yadav, P. (2024). "The Significance
+  of Traditional Legal Framework in Regulating Groundwater Rights in
+  Iran." *LEAD Journal* 20(1):1-15. **EXCLUDE E05.** Doctrinal/
+  historical legal analysis (literature review of historical,
+  religious, and legal texts from the Sassanid Empire, 224 CE, to the
+  1906 Iranian Constitution) of traditional Iranian groundwater
+  property-rights doctrine using Schlager & Ostrom's common-pool-
+  resource framework. No primary data collection or defined empirical
+  study design -- pure doctrinal commentary without empirical access
+  evidence.
+
+No new extractions, evidence_map, or effect_sizes changes this batch.
+`full_text_retrieval_queue.csv` regenerated (2,597 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-21 — Fifty-sixth full-text screening batch: 3 researcher-supplied PDFs, 0 new includes
 
 The researcher uploaded 3 more PDFs. All three were excluded:
 
