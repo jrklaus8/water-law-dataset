@@ -1306,6 +1306,34 @@ evidence of anything.
   were considered but judged not to be direct legal-administrative
   connection-access mechanisms). Duplicate audit and schema validation
   re-run clean afterwards. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later the same day): sixtieth full-text screening batch —
+  3 Drive-retrieved PDFs, 1 new include (S531) — plus an S469
+  data-gap fix.** Two new excludes (both E01): Fonta, Gordon & Toumpakari
+  (2025, *International Journal of Health Governance*, cross-national DHS
+  child-poverty comparison between Francophone/Anglophone sub-Saharan
+  African states — a macro comparative-epidemiology study, not a specific
+  legal-administrative access mechanism; the water-poverty dimension shows
+  no significant colonial-origin difference); and Luyaba, Mbhele, Moyo,
+  Nsubuga & Mafunda (2025, *Water Policy*, DEA-based infrastructure-
+  efficiency/creditworthiness benchmarking of 144 South African municipal
+  water authorities — utility-level, not household-level access). One new
+  include: S531 (Aigbavboa, Addo, Ebekozien, Thwala & Arthur-Aidoo 2025,
+  *Journal of Facilities Management*, "Appraising institutional management
+  of urban water supply in Ghana"), documenting a real household water-
+  connection procedure (site plan, affidavit "in some situations", letter
+  to the district manager, ~2-week survey/estimate, payment before
+  connection, assembly permit for individual connections). Separately,
+  S469 (Alam et al. 2025, Dhaka sewer-connection barriers, extracted
+  2026-09-18) was found to have blank `effect_measure`/`effect_estimate`
+  fields despite 88 of 92 other fields being populated -- a genuine
+  extraction oversight, now fixed from the full-text PDF with real
+  barrier percentages and significance tests. Also: 4 inbox files this
+  round turned out to be duplicate copies of already-decided records,
+  mislabeled by a bug in the researcher's local retrieval script (DOIs
+  pulled from a PDF's own reference list rather than its metadata); the
+  researcher's local session fixed the matcher and removed the
+  duplicates. `evidence_map.csv` updated for S531; duplicate audit and
+  schema validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1324,14 +1352,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,069 of the 3,659
-  Phase-5 includes have been assessed; 2,590 records have not yet been
+- Full-text screening itself is far from complete: 1,072 of the 3,659
+  Phase-5 includes have been assessed; 2,587 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 528
+- Extraction (Phase 8) is caught up with screening completely — all 529
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  528 extracted studies** (a first 12-study partial pilot batch was
+  529 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

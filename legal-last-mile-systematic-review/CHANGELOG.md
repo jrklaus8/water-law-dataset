@@ -4,7 +4,75 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Full-text enrichment pass: 7 previously abstract-only extractions upgraded
+## 2026-09-21 (latest) — Sixtieth full-text screening batch (3 Drive-retrieved PDFs, 1 new include S531) + S469 data-gap fix
+
+A further batch of PDFs surfaced in the Google Drive retrieval inbox
+(beyond the 7 already handled in the enrichment pass below). Three were
+genuinely new, still-open screening records (the other apparent "new"
+files in the inbox turned out to be duplicate copies of already-decided
+records, mislabeled by a since-fixed bug in the researcher's local
+retrieval script — see note below):
+
+- **R0B87CA1C5270** — Fonta, Gordon & Toumpakari (2025). "A
+  cross-comparative analysis of child poverty across sub-Saharan Africa:
+  the case of Francophone and Anglophone African states." *International
+  Journal of Health Governance* 30(1):44-58. **EXCLUDE E01.** Cross-national
+  DHS-survey (945,487 children, 22 countries) ANOVA/risk-ratio comparison
+  of multidimensional child-poverty outcomes between Francophone and
+  Anglophone colonial-legacy groupings; the water-poverty dimension itself
+  shows no significant colonial-origin difference (RR=1.00). A macro
+  cross-national comparative epidemiology study, not an analysis of a
+  specific household-level legal-administrative access mechanism.
+- **R6C87B9274F13** — Aigbavboa, Addo, Ebekozien, Thwala & Arthur-Aidoo
+  (2025). "Appraising institutional management of urban water supply in
+  Ghana: the role of the stakeholders." *Journal of Facilities Management*
+  23(2):269-288. **INCLUDE.** Sequential exploratory mixed-methods study
+  (19 KIIs + 521-respondent survey, Greater Accra) documenting a real
+  household water-connection procedure: submit a site plan (affidavit
+  required "in some situations"), write to the district manager, GWCL
+  survey/cost estimate (~2 weeks), payment before connection; individual
+  applicants are first redirected to the district assembly for a permit.
+  Extracted as **S531** (MMAT).
+- **R8D17337BEC6A** — Luyaba, Mbhele, Moyo, Nsubuga & Mafunda (2025).
+  "Benchmarking efficiency to support a transition to financial
+  sustainability in the South African municipal water sector." *Water
+  Policy* 27(11):1270-1290. **EXCLUDE E01.** DEA-based infrastructure-
+  management-efficiency and creditworthiness benchmarking across 144
+  South African water-services-authority municipalities; a utility-level
+  financial/infrastructure-efficiency study, no household-level
+  connection-access mechanism examined.
+
+**Data-integrity fix, S469** (Alam et al. 2025, "Barriers to sewer
+connection in urban Dhaka," extracted 2026-09-18): `effect_measure` and
+`effect_estimate` were found blank despite all other 88 fields being
+populated — an extraction oversight, not an abstract-only gap. Fixed using
+the now-retrieved full-text PDF: 384 matched connected/not-connected
+households, with cost (33%), lack of space (16%), legal issues (9%) and
+lack of awareness (8%, p=0.002) cited as connection barriers, plus
+significant duration-of-settlement, water/sewer-bill, and
+years-connected differences between groups (full detail in
+`extraction_database.csv`).
+
+**Local retrieval-script bug (now fixed by the researcher's local
+session):** the local watcher's DOI matcher pulled DOIs from anywhere in
+a PDF's body text (including its own reference list), so a PDF could be
+mislabeled with a record it merely cited. This affected 4 inbox files
+this round (R0206140E81E4, R6103D8CFE42F, R7220865B32E6, RF78C62C99387),
+each a duplicate copy of a PDF already correctly present in the inbox
+under its true record_id. The researcher's local session fixed the
+matcher (metadata-only DOI extraction, falling back to title matching)
+and deleted the 4 mislabelled duplicates after checksum-confirming each
+had an identical correctly-labelled copy; R0206140E81E4 (a genuine,
+still-open, never-actually-retrieved record — Abrams et al. 2021, South
+African WASH vulnerability) was returned to the retrieval queue for real.
+
+`evidence_map.csv` updated for S531. `full_text_retrieval_queue.csv`
+regenerated (2,587 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,072/3,659 screened
+(529 include/543 exclude), 2,587 open, 529 extracted studies, 26
+effect_sizes rows.
+
+## 2026-09-21 — Full-text enrichment pass: 7 previously abstract-only extractions upgraded
 
 Via the new Google Drive retrieval pipeline (local watcher script depositing
 retrieved PDFs into a shared Drive inbox folder for this session to read),
