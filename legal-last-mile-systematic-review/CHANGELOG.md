@@ -4,7 +4,47 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-ninth full-text screening batch (2 Drive-retrieved PDFs, both new includes S542-S543)
+## 2026-09-21 (latest) — Seventieth full-text screening batch (1 Drive-retrieved PDF, new include S544)
+
+One further PDF surfaced in the Google Drive retrieval inbox after the
+sixty-ninth batch below:
+
+- **R05E6A40917AB** — Turley B, Caretta MA (2020). "Household Water
+  Security: An Analysis of Water Affect in the Context of Hydraulic
+  Fracturing in West Virginia, Appalachia." *Water* 12(1):147. doi
+  10.3390/w12010147. **INCLUDE.** A qualitative case study (30
+  semi-structured in-depth interviews with mineral owners, surface
+  owners, and concerned citizens across 8 northwestern West Virginia
+  counties) documenting a genuine legal-administrative regime governing
+  household groundwater security around hydraulic fracturing. WV code
+  22-6A-18's "presumed liability" statute (2013 Natural Gas Horizontal
+  Well Control Act) conditions legal protection for well-water
+  contamination on a 1500-foot distance and 6-month time threshold from
+  drilling, both set by government/industry compromise rather than
+  public-health science; the mandated baseline and post-drill water
+  testing is conducted by contractors hired by the oil and gas companies
+  themselves (not an independent regulator), producing delayed and
+  contested results -- one resident learned via a FOIA request, after
+  drinking the water unknowingly for six months, that a test had already
+  found E. coli contamination; oil and gas wastewater is exempt from the
+  federal Safe Drinking Water Act ("the Halliburton Loophole"); and a
+  Natural Resources Defense Council report found the WV Department of
+  Environmental Protection failed to enforce Underground Injection
+  Control requirements (wastewater injected under expired permits, over
+  half of wells abandoned unplugged). Non-disclosure agreements
+  accompanying company buyouts/remediation suppress residents' ability
+  to discuss confirmed contamination, and loss of usable water can
+  render a home unsellable. Extracted as **S544** (CASP Qualitative
+  Studies Checklist).
+
+`evidence_map.csv` updated for S544. `full_text_retrieval_queue.csv`
+regenerated (2,564 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,095/3,659 screened
+(542 include/553 exclude), 2,564 open, 542 extracted studies, 27
+effect_sizes rows (unchanged -- qualitative case study with no
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Sixty-ninth full-text screening batch (2 Drive-retrieved PDFs, both new includes S542-S543)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox after the
 sixty-eighth batch below:

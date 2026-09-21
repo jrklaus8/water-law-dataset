@@ -1543,6 +1543,29 @@ evidence of anything.
   **S543** (MMAT). `evidence_map.csv` updated for both;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and
   schema validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventieth full-text screening batch — 1
+  Drive-retrieved PDF, new include (S544).** Turley & Caretta (2020),
+  *Water*, "Household Water Security: An Analysis of Water Affect in the
+  Context of Hydraulic Fracturing in West Virginia, Appalachia," is a
+  strong include: 30 in-depth semi-structured interviews with mineral
+  owners, surface owners, and concerned citizens across 8 northwestern
+  West Virginia counties, documenting a genuine legal-administrative
+  regime around household groundwater security. WV code 22-6A-18's
+  "presumed liability" statute conditions legal protection for
+  well-water contamination on a 1500-foot distance and 6-month time
+  threshold, both set by government/industry compromise rather than
+  public-health science; the mandated baseline and post-drill water
+  testing is conducted by contractors hired by the oil and gas companies
+  themselves, producing delayed and contested results -- one resident
+  learned via a FOIA request, after months of unknowingly drinking
+  E. coli-contaminated water, that a positive test had been withheld;
+  oil and gas wastewater is exempt from the federal Safe Drinking Water
+  Act ("the Halliburton Loophole"); and a Natural Resources Defense
+  Council report found the WV Department of Environmental Protection
+  failed to enforce Underground Injection Control requirements.
+  Extracted as **S544** (CASP, qualitative). `evidence_map.csv` updated;
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and
+  schema validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1561,14 +1584,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,094 of the 3,659
-  Phase-5 includes have been assessed; 2,565 records have not yet been
+- Full-text screening itself is far from complete: 1,095 of the 3,659
+  Phase-5 includes have been assessed; 2,564 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 541
+- Extraction (Phase 8) is caught up with screening completely — all 542
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  541 extracted studies** (a first 12-study partial pilot batch was
+  542 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
