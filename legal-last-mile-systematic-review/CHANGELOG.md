@@ -4,7 +4,36 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-sixth full-text screening batch (4 Drive-retrieved PDFs, 1 new include S540 + 3 excludes)
+## 2026-09-21 (latest) — Sixty-seventh full-text screening batch (1 Drive-retrieved PDF, exclude)
+
+One further PDF surfaced in the Google Drive retrieval inbox after the
+sixty-sixth batch below:
+
+- **R8821B3A63A95** — Nithammer CM, Mahabir J, Dikgang J (2022).
+  "Efficiency of South African water utilities: a double bootstrap DEA
+  analysis." *Applied Economics* 54(26):3055-3073. doi
+  10.1080/00036846.2021.2002802. **EXCLUDE E04.** A rigorous
+  double-bootstrap data envelopment analysis (DEA) benchmarking the
+  technical/operational efficiency of 144 South African Water Services
+  Authorities (77-utility panel, 2010-2014), with institutional
+  determinants tested in a second-stage truncated regression (WSA
+  status, water-board use, outsourcing to a private provider, political
+  competition/majority-vote-share, urban vs. rural location, municipal
+  election-cycle effects). However, the outcome variable throughout is a
+  DEA efficiency/inefficiency score -- utility-level input-output
+  productivity (inputs: operating cost, length of mains; outputs:
+  authorized consumption, water quality) -- not a household/applicant
+  access, connection, affordability, or service-reliability outcome as
+  defined by this review's scope. No household- or applicant-level
+  legal-administrative access mechanism is examined.
+
+`full_text_retrieval_queue.csv` regenerated (2,568 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,091/3,659 screened (538 include/553 exclude), 2,568
+open, 538 extracted studies (unchanged -- exclude only), 27
+effect_sizes rows (unchanged).
+
+## 2026-09-21 — Sixty-sixth full-text screening batch (4 Drive-retrieved PDFs, 1 new include S540 + 3 excludes)
 
 Four further PDFs surfaced in the Google Drive retrieval inbox after the
 sixty-fifth batch below:

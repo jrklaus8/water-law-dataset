@@ -1481,6 +1481,21 @@ evidence of anything.
   `evidence_map.csv` updated; `full_text_retrieval_queue.csv`
   regenerated; duplicate audit and schema validation re-run clean. Full
   detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-seventh full-text screening batch — 1
+  Drive-retrieved PDF, exclude.** Nithammer, Mahabir & Dikgang (2022),
+  *Applied Economics*, "Efficiency of South African water utilities: a
+  double bootstrap DEA analysis," excluded E04. This is a rigorous
+  double-bootstrap data envelopment analysis (DEA) benchmarking the
+  technical/operational efficiency of 144 South African water utilities
+  (2010-2014 panel), with institutional determinants (WSA status,
+  water-board use, outsourcing, political competition). However, the
+  outcome measured is a DEA efficiency/inefficiency score -- utility-level
+  input-output productivity (operating cost, length of mains vs.
+  authorized consumption, water quality) -- not any household/applicant
+  access, connection, affordability, or reliability outcome within this
+  review's scope. `full_text_retrieval_queue.csv` regenerated; duplicate
+  audit and schema validation re-run clean. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1499,8 +1514,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,090 of the 3,659
-  Phase-5 includes have been assessed; 2,569 records have not yet been
+- Full-text screening itself is far from complete: 1,091 of the 3,659
+  Phase-5 includes have been assessed; 2,568 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 538
