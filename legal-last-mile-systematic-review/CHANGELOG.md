@@ -4,7 +4,46 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Fifty-eighth full-text screening batch: 3 researcher-supplied PDFs, 2 new includes (S529-S530)
+## 2026-09-21 (latest) — Fifty-ninth full-text screening batch: 4 researcher-supplied PDFs, 0 new includes
+
+The researcher uploaded 4 more PDFs. All four were excluded, all E01
+(wrong topic):
+
+- **R2042942EE2E9** — Gbekley, E.H. et al. (2023). "Urban Governance
+  and Sanitation in the Peri-Urban Commune of Agoe-Nyve 6 in Togo:
+  Diagnosis of the Sanitation System in Adetikope." *Water* 15(18):3306.
+  Cross-sectional descriptive KAP survey (5256 households) of household
+  wastewater/excreta management practices (latrine types/condition,
+  discharge points, TDE-utility satisfaction); no eligibility,
+  documentation, fee, discretion, or enforcement mechanism content.
+- **R178B38D4B00E** — Tangworachai, S.; Wong, W.-K.; Lo, F.-Y. (2023).
+  "Determinants of water consumption in Thailand: sustainable
+  development of water resources." *Studies in Economics and Finance*
+  40(5):950-970. ARDL econometric time-series analysis of aggregate
+  regional water-consumption determinants (price, income, climate) at
+  the MWA/PWA utility level; no household-level access mechanism.
+- **R713FCE4485F0** — Adeoti, O.S.; Kandasamy, J.; Vigneswaran, S.
+  (2023). "Water infrastructure sustainability in Nigeria: a systematic
+  review of challenges and sustainable solutions." *Water Policy*
+  25(11):1094. PRISMA systematic review (15 studies) of technical,
+  financial, environmental, social, political, and institutional
+  factors in Nigerian water-infrastructure failure; broad infrastructure
+  sustainability, not household-level service-connection mechanisms.
+- **R52422EAFB872** — Hellberg, S. (2023). "What constitutes the social
+  in (social) sustainability? Community, society and equity in South
+  African water governance." *Local Environment* 28(4):459-475.
+  Governmentality-theory study (18 expert interviews plus policy-
+  document analysis) theorizing "the social" in social sustainability;
+  a theoretical/conceptual study, not an empirical analysis of a
+  specific legal-administrative access mechanism's effect on household
+  outcomes.
+
+No new extractions, evidence_map, or effect_sizes changes this batch.
+`full_text_retrieval_queue.csv` regenerated (2,590 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-21 — Fifty-eighth full-text screening batch: 3 researcher-supplied PDFs, 2 new includes (S529-S530)
 
 The researcher uploaded 3 more PDFs. One new exclude, two new includes:
 

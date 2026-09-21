@@ -1258,6 +1258,25 @@ evidence of anything.
   inferential exposure-comparator effect estimate). A corpus-wide
   duplicate audit re-run afterwards came back clean against the
   resulting 528-study corpus.
+- **2026-09-21 (later the same day): fifty-ninth full-text screening
+  batch — 4 researcher-supplied PDFs, 0 new includes.** Full detail in
+  `CHANGELOG.md`. All four were excluded, all E01 (wrong topic): Gbekley
+  et al. (2023, *Water*, Togo sanitation KAP descriptive survey —
+  household wastewater/excreta practices, no legal-administrative
+  access-mechanism content); Tangworachai, Wong & Lo (2023, *Studies in
+  Economics and Finance*, ARDL econometric analysis of Thailand's
+  aggregate regional water-consumption determinants — a macro price-
+  elasticity/demand study at the utility level, not household-level
+  access); Adeoti, Kandasamy & Vigneswaran (2023, *Water Policy*, a
+  PRISMA systematic review of 15 studies on Nigerian water-
+  infrastructure-failure causes — technical/financial/environmental/
+  social/political/institutional factors broadly, not focused on
+  household service-connection mechanisms); and Hellberg (2023, *Local
+  Environment*, a governmentality-theory study of "the social" in
+  South African water-governance social sustainability — a theoretical/
+  conceptual expert-interview study, not an empirical analysis of a
+  specific access mechanism's effect on household outcomes). No
+  extraction, evidence_map, or effect_sizes changes this batch.
 
 ## What has not been done
 
@@ -1276,8 +1295,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,065 of the 3,659
-  Phase-5 includes have been assessed; 2,594 records have not yet been
+- Full-text screening itself is far from complete: 1,069 of the 3,659
+  Phase-5 includes have been assessed; 2,590 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 528
