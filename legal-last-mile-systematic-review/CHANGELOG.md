@@ -4,7 +4,64 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Fifty-ninth full-text screening batch: 4 researcher-supplied PDFs, 0 new includes
+## 2026-09-21 (latest) — Full-text enrichment pass: 7 previously abstract-only extractions upgraded
+
+Via the new Google Drive retrieval pipeline (local watcher script depositing
+retrieved PDFs into a shared Drive inbox folder for this session to read),
+actual full-text PDFs were retrieved for 7 studies that had been extracted
+from abstract-only content on 2026-09-17 pending full text: **S430**
+(Ogunbode, Nigeria SDG 6 review), **S431** (Tantoh, Kamerounay, McKay &
+Leonard, Bambili Cameroon rural water governance), **S433** (Kadiri, Toxic
+waters, Hyderabad informal settlement), **S452** (Mazingisa, Wiysonge &
+Kgware, eThekwini school WASH), **S455** (Yanquiling, Dressler & Smith,
+colonial cholera/water infrastructure Philippines), **S458** (Dhaundiyal,
+Indian Himalayan Region heritage water architecture policy), and **S467**
+(Opdyke et al., post-conflict Marawi displacement/WASH).
+
+This is an **enrichment pass, not a new-include batch** — all 7 studies were
+already counted in prior running totals (528 include / 541 exclude, 528
+extracted studies); no include/exclude decisions were revisited, per the
+project's standing duplicate-defer rule. Each study's full text was read in
+full and cross-checked against its existing extraction row:
+
+- **S430, S455, S458** — full text confirmed the existing abstract-based
+  extraction was already substantively accurate and complete; no field
+  changes beyond an `extraction_note` verification stamp.
+- **S433** — added `eligibility=TRUE` and `documentation=TRUE`; the full
+  text reveals a concrete documentation-based service-qualification barrier
+  (Aadhaar cards, residency certificates) that formally disqualifies many
+  households in Film Nagar Basti's 18 informally settled colonies from
+  municipal water regardless of need, plus markedly uneven municipal
+  responsiveness by settlement-recognition status. `regulatory_model` and
+  `effect_estimate` enriched accordingly.
+- **S431** — added `fees=TRUE`; the full text reveals a direct conflict of
+  interest (4 of 7 private mini-water schemes are owned by Bambili Water
+  Authority Board of Directors members who approved their own schemes and
+  can charge non-participating households for connection) plus specific
+  household cash/in-kind contribution and O&M fee schedules. `effect_estimate`
+  enriched accordingly.
+- **S452, S467** — `citation` fields (previously generic placeholders
+  pending full-text bibliographic detail) and `doi` fields completed:
+  S452 → *Sustainability* 18(11):5333, doi 10.3390/su18115333; S467 →
+  *International Journal of Disaster Resilience in the Built Environment*
+  17(2):297-313, doi 10.1108/IJDRBE-06-2025-0069.
+
+`evidence_map.csv` judgment-call fields (mechanism_family, outcome_family,
+study_design_class) reviewed against full text for all 7 studies and found
+already accurate; no changes required. No new `effect_sizes.csv` rows added
+this pass — candidate quantitative contrasts in S452 (gender-differentiated
+Hygiene Access Index, p=0.008) and S467 (housing-damage/satisfaction
+correlations) were considered but not added, as neither is a direct
+legal-administrative connection-access mechanism within this review's
+strict effect-size eligibility criteria.
+
+Duplicate audit (DOI + record_id-in-extraction_note) re-run after these
+edits: no duplicates introduced. `validate_schemas.py` confirms all 13
+tracked files still match their documented/generated schema. Totals
+unchanged: 1,069/3,659 screened (528 include/541 exclude), 2,590 open,
+528 extracted studies, 26 effect_sizes rows.
+
+## 2026-09-21 — Fifty-ninth full-text screening batch: 4 researcher-supplied PDFs, 0 new includes
 
 The researcher uploaded 4 more PDFs. All four were excluded, all E01
 (wrong topic):

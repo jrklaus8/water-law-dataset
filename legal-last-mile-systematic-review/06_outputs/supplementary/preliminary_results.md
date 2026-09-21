@@ -1277,6 +1277,35 @@ evidence of anything.
   conceptual expert-interview study, not an empirical analysis of a
   specific access mechanism's effect on household outcomes). No
   extraction, evidence_map, or effect_sizes changes this batch.
+- **2026-09-21 (later the same day): full-text enrichment pass — 7
+  previously abstract-only extractions upgraded to full text, 0 new
+  includes/excludes.** A new local-to-remote retrieval pipeline (a local
+  watcher script depositing retrieved PDFs into a shared Google Drive
+  inbox folder) surfaced actual full-text PDFs for 7 studies extracted
+  from abstract-only content on 2026-09-17: S430 (Ogunbode, Nigeria SDG
+  6 review), S431 (Tantoh, McKay & Leonard, Bambili Cameroon rural water
+  governance), S433 (Kadiri, Hyderabad informal-settlement "hydraulic
+  citizenship"), S452 (Mazingisa, Wiysonge & Kgware, eThekwini school
+  WASH), S455 (Yanquiling, Dressler & Smith, colonial cholera/water
+  infrastructure Philippines), S458 (Dhaundiyal, Indian Himalayan Region
+  heritage water architecture policy), and S467 (Opdyke et al.,
+  post-conflict Marawi displacement/WASH). This was an enrichment pass,
+  not a new-include batch -- all 7 were already counted in prior running
+  totals, and no include/exclude decision was revisited. Full text
+  confirmed S430, S455 and S458's existing extractions were already
+  substantively accurate; S433 was enriched with a documentation-based
+  eligibility barrier (Aadhaar card/residency certificate requirements
+  formally disqualifying many informal-settlement households from
+  municipal water); S431 was enriched with a direct conflict-of-interest
+  finding (4 of 7 private water schemes owned by the water authority's
+  own board members, who approved their own schemes and charge
+  non-participants for connection) and household fee/contribution detail;
+  S452 and S467 had their generic placeholder `citation`/`doi` fields
+  completed with full bibliographic detail. No new `effect_sizes.csv`
+  rows were added (candidate quantitative contrasts in S452 and S467
+  were considered but judged not to be direct legal-administrative
+  connection-access mechanisms). Duplicate audit and schema validation
+  re-run clean afterwards. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
