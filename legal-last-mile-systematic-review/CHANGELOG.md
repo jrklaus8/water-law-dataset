@@ -4,6 +4,97 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-09-21 (latest) — Seventy-ninth full-text screening batch (7 Drive-retrieved PDFs: 1 exclude, 4 new includes S561-S564, 2 wrong-file-retrieved left open)
+
+Seven further PDFs surfaced in the Google Drive retrieval inbox:
+
+- **R9FA1C1004C69** — Dwipayanti NMU et al. (2022). "Inclusive WASH and
+  sustainable tourism in Labuan Bajo, Indonesia: needs and opportunities."
+  *Journal of Water, Sanitation and Hygiene for Development* 12(5):417-431.
+  doi 10.2166/washdev.2022.222. **INCLUDE.** A qualitative case study (20
+  semi-structured interviews, 6 focus groups, 2020 fieldwork) of Inclusive
+  WASH access in a "super-premium" tourism destination. Documents genuine
+  legal-institutional content: the municipal utility PDAM's intermittent
+  (twice-weekly) supply amid a 10 L/s deficit; Indonesia's Ministry of
+  Public Works minimum water-requirement service standard; a tiered
+  hotel/household tariff structure with documented preferential-delivery
+  effects; and the POKJA AMPL multi-stakeholder governance working group.
+  Extracted as **S561** (CASP, qualitative).
+- **R07131CF3EAEE** — Akpabio EM, Ozoh SI (2026). "Household access to
+  water, sanitation, and hygiene services in Cross River State, Nigeria:
+  patterns, challenges, and community participation." *Water Policy*
+  28(4):651-674. doi 10.2166/wp.2026.005. **INCLUDE.** A mixed-methods
+  cross-sectional study (800-household survey, 751 retrieved/93.9%
+  response rate, plus key-informant interviews) across three ecological
+  zones. Documents genuine legal-institutional content: Cross River
+  State's new 2025 Water Supply and Sanitation Law establishing a
+  statutory WaSH-access guarantee; a newly inaugurated WaSH regulatory
+  department; the 2025 WaSH Policy's financing/accountability-dashboard
+  mechanisms; and institutionalized community task groups. Extracted as
+  **S562** (MMAT, mixed methods).
+- **RC1E784D9D197** — Nkolola BN, Phiri A (2024). "From fetchers to
+  decision-makers: exploring the gender dynamics of water access and
+  governance in resource-poor communities of Mbala, Zambia." *Journal of
+  Water, Sanitation and Hygiene for Development* 14(12):1291-1304. doi
+  10.2166/washdev.2024.214. **INCLUDE.** A mixed-methods study (122
+  mWater-tool interviews, Empowerment in WASH Index survey, 2023-2024
+  fieldwork) of Water Point Committee (WPC) governance. Documents genuine
+  legal-institutional content: WPCs as the community water-governance
+  institution with formal membership eligibility criteria and election
+  cycles, but lacking enforceable financial-contribution mechanisms;
+  EWI-quantified finding that gendered exclusion is not the primary
+  sustainability barrier (women scored higher on the index than men),
+  contribution-enforcement failure is. Extracted as **S563** (MMAT, mixed
+  methods).
+- **R8FFC351CC113** — Mandara CG, Butijn C, Niehof A (2013). "Community
+  management and sustainability of rural water facilities in Tanzania."
+  *Water Policy* 15(S2):79-100. doi 10.2166/wp.2013.014. **INCLUDE.** A
+  mixed-methods study (221-household survey, 6 FGDs, official interviews,
+  2 detailed village case studies, national-policy document review,
+  2011-2012 fieldwork). Documents extensive genuine legal-institutional
+  content: Tanzania's 2002 NAWAPO and 2008 NWSDS national water-policy
+  frameworks and their failure to define Village Water Committee (VWC)
+  roles; the subsidiarity-principle cost-recovery devolution to user fees;
+  District Water Department staffing deficits (41-50% below required);
+  private-operator tender processes without district legal-unit
+  oversight; and VWC gender-parity composition requirements. Extracted as
+  **S564** (MMAT, mixed methods).
+- **RC1CB10DA729E** — Schiedek L et al. (2021). "Assessing national WaSH
+  targets through a water governance lens: a case study of the Sanitation
+  and Water for All partnership commitments." *Journal of Water,
+  Sanitation and Hygiene for Development* 11(5):805-813. doi
+  10.2166/washdev.2021.049. **EXCLUDE (E01, wrong topic).** A deductive
+  content analysis of 291 voluntary policy-commitment texts submitted to a
+  global partnership's online database, coded against a governance-framework
+  taxonomy. No original household/community-level data collection and no
+  examination of any specific country's legal-administrative water-access
+  mechanisms — the unit of analysis is international-partnership
+  commitment-text quality, not a primary empirical study of household-level
+  legal-administrative access, the same macro/cross-national rationale
+  applied to the earlier Nkiaka, Shadabi & Ward, and Laitinen exclusions.
+- **RDA537B7BBB17** and **R22849E39FE23** — both **remain open**, fourth
+  and first-time wrong-file deliveries respectively. RDA537B7BBB17's
+  target is "Fecal sludge management (FSM): Analytical tools for
+  assessing FSM in cities," but the file delivered was Agbo, Jeffrey &
+  Sule (2025), a systematic review of urban WSS failings in Sub-Saharan
+  Africa (doi 10.2166/washdev.2025.267) — a different paper entirely.
+  R22849E39FE23's target is "Community engagement and capacity building
+  as determinants of rural water supply functionality... Malawi," but the
+  file delivered was Suleiman (2011), "Civil society: a revived mantra in
+  the development discourse" (Accra water-utility privatisation
+  governance, doi 10.2166/wp.2010.087). Both records' `full_text_status`
+  updated to `wrong_file_retrieved` with notes documenting the mismatch;
+  both left open pending correct retrieval.
+
+`evidence_map.csv` updated for S561-S564. `exclusion_log.csv` updated for
+the 1 new exclude (565 rows, unchanged net since the R81549C4709FC
+correction two batches prior). `full_text_retrieval_queue.csv`
+regenerated (2,532 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,127/3,659 screened
+(562 include/565 exclude), 2,532 open, 562 extracted studies, 27
+effect_sizes rows (unchanged -- none of the new includes has a genuine
+exposure-vs-comparator quantitative contrast).
+
 ## 2026-09-21 (latest) — Seventy-eighth full-text screening batch (5 Drive-retrieved PDFs: 2 excludes, 2 new includes S559-S560, 1 wrong-file-retrieved left open)
 
 Five further PDFs surfaced in the Google Drive retrieval inbox after the

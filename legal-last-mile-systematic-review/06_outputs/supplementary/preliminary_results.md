@@ -1859,6 +1859,54 @@ evidence of anything.
   qualitative). `evidence_map.csv` updated for S559-S560;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
   validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-ninth full-text screening batch —
+  7 Drive-retrieved PDFs, 1 exclude, 4 new includes (S561-S564), 2
+  wrong-file-retrieved left open.** Dwipayanti et al. (2022), on
+  Inclusive WASH in the tourism destination of Labuan Bajo, Indonesia, is
+  a strong include: a qualitative case study (20 interviews, 6 focus
+  groups) documenting the municipal utility PDAM's intermittent supply
+  amid a 10 L/s deficit, Indonesia's minimum water-requirement service
+  standard, a tiered hotel/household tariff with documented preferential-
+  delivery effects, and the POKJA AMPL governance working group.
+  Extracted as **S561** (CASP, qualitative). Akpabio & Ozoh (2026), on
+  household WaSH access in Cross River State, Nigeria, is a strong
+  include: a mixed-methods 800-household cross-sectional survey (751
+  retrieved, 93.9% response rate) documenting the State's new 2025 Water
+  Supply and Sanitation Law, a newly inaugurated WaSH regulatory
+  department, and the 2025 WaSH Policy's financing/accountability-
+  dashboard mechanisms. Extracted as **S562** (MMAT, mixed methods).
+  Nkolola & Phiri (2024), on gender dynamics in Water Point Committee
+  governance in rural Mbala, Zambia, is a strong include: a mixed-methods
+  study (122 mWater-tool interviews, Empowerment in WASH Index survey)
+  documenting WPC membership eligibility criteria and election cycles,
+  with an EWI-quantified finding that lack of enforced financial
+  contribution -- not gendered exclusion -- is the primary barrier to
+  water-point sustainability. Extracted as **S563** (MMAT, mixed
+  methods). Mandara, Butijn & Niehof (2013), on community management of
+  rural water facilities in Kondoa and Mpwapwa districts, Tanzania, is a
+  strong include: a mixed-methods study (221-household survey, 6 FGDs, 2
+  village case studies) documenting Tanzania's 2002 NAWAPO and 2008
+  NWSDS national water-policy frameworks, subsidiarity-principle
+  cost-recovery devolution, District Water Department staffing deficits
+  (41-50% below required), and Village Water Committee gender-parity
+  requirements. Extracted as **S564** (MMAT, mixed methods). Schiedek et
+  al. (2021), a deductive content analysis of 291 Sanitation and Water
+  for All partnership commitment texts submitted to a global online
+  database, was **excluded E01** (wrong topic): the unit of analysis is
+  international-partnership commitment-text quality, not a primary
+  empirical study of household-level legal-administrative water access,
+  the same macro/cross-national rationale as the earlier Nkiaka, Shadabi
+  & Ward, and Laitinen exclusions. Two further PDFs were confirmed as
+  wrong-file deliveries and left open: RDA537B7BBB17 (target: "Fecal
+  sludge management (FSM): Analytical tools for assessing FSM in
+  cities"; delivered: Agbo, Jeffrey & Sule 2025, a Sub-Saharan Africa WSS
+  systematic review) and R22849E39FE23 (target: "Community engagement
+  and capacity building... Malawi"; delivered: Suleiman 2011, an Accra
+  water-utility-privatisation governance case study) -- both records'
+  `full_text_status` updated to `wrong_file_retrieved` with notes
+  documenting the mismatch. `evidence_map.csv` updated for S561-S564;
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
+  validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1877,14 +1925,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,122 of the 3,659
-  Phase-5 includes have been assessed; 2,537 records have not yet been
+- Full-text screening itself is far from complete: 1,127 of the 3,659
+  Phase-5 includes have been assessed; 2,532 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 558
+- Extraction (Phase 8) is caught up with screening completely — all 562
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  558 extracted studies** (a first 12-study partial pilot batch was
+  562 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
