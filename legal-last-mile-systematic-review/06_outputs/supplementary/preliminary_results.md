@@ -1415,6 +1415,23 @@ evidence of anything.
   matching S356/S364/S504/S507/S513/S517/S518/S533). `evidence_map.csv`
   updated; duplicate audit and schema validation re-run clean. Full
   detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-fourth full-text screening batch — 2
+  Drive-retrieved PDFs, both excludes (E01).** Nkiaka (2022), *Water
+  Policy*, "Exploring the socioeconomic determinants of water security in
+  developing regions" — a macro cross-national econometric study (117
+  countries) correlating a composite Water Security Index against GDP
+  per capita, a cross-national governance-quality index, ODA-WSS, and
+  female education, with no examination of any specific household- or
+  applicant-level legal-administrative access mechanism. Laitinen,
+  Katko, Hukka, Juuti & Juuti (2022), *Water*, "Governance and Practices
+  for Achieving Sustainable and Resilient Urban Water Services" — a
+  PESTEL/SWOT strategic-planning synthesis of Finnish urban water
+  utility governance and infrastructure investment, again with no
+  specific access-exclusion mechanism examined (Finland has
+  near-universal water access). Both excluded E01 (wrong topic/wrong
+  unit of analysis for this review's household/applicant-level scope).
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and
+  schema validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1433,8 +1450,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,083 of the 3,659
-  Phase-5 includes have been assessed; 2,576 records have not yet been
+- Full-text screening itself is far from complete: 1,085 of the 3,659
+  Phase-5 includes have been assessed; 2,574 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 536

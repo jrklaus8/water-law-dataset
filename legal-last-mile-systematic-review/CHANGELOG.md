@@ -4,7 +4,45 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-third full-text screening batch (1 Drive-retrieved PDF, new include S538)
+## 2026-09-21 (latest) — Sixty-fourth full-text screening batch (2 Drive-retrieved PDFs, both excludes E01)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox after the
+sixty-third batch below — both genuinely new, still-open screening
+records, both excluded:
+
+- **RD864629E91F7** — Nkiaka E (2022). "Exploring the socioeconomic
+  determinants of water security in developing regions." *Water Policy*
+  24(4):608-625. doi 10.2166/wp.2022.149. **EXCLUDE E01.** A macro
+  cross-national econometric study across 117 countries (Africa,
+  Asia-Pacific, Latin America and the Caribbean) developing a composite
+  Water Security Index (biophysical + socioeconomic sub-indices) and
+  regressing it against GDP per capita, the Government Effectiveness
+  Index (a cross-national governance-quality composite, not a specific
+  administrative-law mechanism), ODA-WSS, female primary-school
+  completion, and urban population share. No household- or
+  applicant-level legal-administrative access mechanism (eligibility,
+  documentation, fees, connection procedure, enforcement) is examined;
+  wrong unit of analysis (country) and wrong topic (macro development
+  econometrics) for this review's scope.
+- **R2C5270DE77D8** — Laitinen J, Katko TS, Hukka JJ, Juuti P, Juuti R
+  (2022). "Governance and Practices for Achieving Sustainable and
+  Resilient Urban Water Services." *Water* 14(13):2009. doi
+  10.3390/w14132009. **EXCLUDE E01.** A sequential PESTEL/SWOT
+  strategic-planning synthesis of Finnish urban water utility
+  governance, infrastructure investment, and institutional framework,
+  built from prior literature and expert-workshop notes on a country
+  with near-universal water access. No specific access-exclusion
+  mechanism at household or applicant level is examined — this is a
+  generic utility-governance/sustainability-planning discussion, not
+  empirical access-mechanism evidence.
+
+`full_text_retrieval_queue.csv` regenerated (2,574 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,085/3,659 screened (536 include/549 exclude), 2,574
+open, 536 extracted studies, 26 effect_sizes rows. E01 exclusion count:
+168 -> 170.
+
+## 2026-09-21 — Sixty-third full-text screening batch (1 Drive-retrieved PDF, new include S538)
 
 One further PDF surfaced in the Google Drive retrieval inbox after the
 sixty-second batch below — a genuinely new, still-open screening record:
