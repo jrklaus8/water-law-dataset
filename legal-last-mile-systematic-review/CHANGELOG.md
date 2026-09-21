@@ -4,7 +4,92 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-fifth full-text screening batch (5 Drive-retrieved PDFs: 2 excludes, 3 new includes S551-S553)
+## 2026-09-21 (latest) — Seventy-sixth full-text screening batch (6 Drive-retrieved PDFs: 3 excludes, 3 new includes S554-S556)
+
+Six further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-fifth batch below:
+
+- **RB51DE5CBDEE4** — Cole S, Browne M (2015). "Tourism and Water Inequity
+  in Bali: A Social-Ecological Systems Analysis." *Human Ecology*
+  43:439-450. doi 10.1007/s10745-015-9739-z. **INCLUDE.** A mixed-methods
+  case study (39 interviews, 2 focus groups, 110 tourist surveys, 2010
+  fieldwork) of tourism-driven water inequity in Canggu, Bali, using
+  Ostrom's SES framework. Documents genuine legal-institutional content:
+  11 fragmented, poorly coordinated government departments sharing water
+  responsibility; Bali's 1999 regency-level decentralization producing
+  inter-Regency competition; the traditional subak irrigation-governance
+  system; widespread non-enforcement of building-coverage and
+  water-metering/tariff regulations against the tourism industry (which
+  consumes 65% of water); and up to 5,000 households in Denpasar on a
+  waitlist for a public connection, paying unlicensed private-vendor water
+  at prices up to Rp50,000 (~US$5.80)/gallon. Extracted as **S554** (MMAT).
+- **RF78C62C99387** — Palta M, du Bray MV, Stotts R, Wolf A, Wutich A
+  (2016). "Ecosystem Services and Disservices for a Vulnerable Population:
+  Findings from Urban Waterways and Wetlands in an American Desert City."
+  *Human Ecology* 44:463-478. doi 10.1007/s10745-016-9843-8. **INCLUDE.**
+  A mixed-methods ethnographic study (155 participant-observation site
+  visits, 10 informal interviews, 7 semi-structured interviews,
+  water-quality monitoring at 5 sites, 2012-2013) of ecosystem services and
+  disservices accessed by people experiencing homelessness via informal
+  urban waterways along the Salt River in Phoenix, Arizona. Documents
+  genuine legal-institutional content: Phoenix's 2004 anti-camping
+  ordinances criminalizing public water access; public water
+  fountains/bathrooms locked at night; the Phoenix Heat Relief Network's
+  insufficient capacity; and the illegality of accessing state/federal
+  wetlands, exposing users to Park Ranger enforcement and threatened
+  arrest -- an extra-legal informal water-access strategy for a legally
+  excluded vulnerable population, alongside a serious documented
+  health-risk trade-off (E. coli exceeding EPA drinking standards in
+  21-100% of measurements). Extracted as **S555** (MMAT).
+- **R3D2D360577A3** — Ghertner DA (2017). "When Is the State? Topology,
+  Temporality, and the Navigation of Everyday State Space in Delhi."
+  *Annals of the American Association of Geographers* 107(3):731-750. doi
+  10.1080/24694452.2016.1261680. **INCLUDE.** A qualitative ethnographic
+  case study (24 months of fieldwork, 2006-2014) of everyday negotiation of
+  water, electricity, and building-permission access in Delhi's informal
+  slum settlements and unauthorized colonies. Documents genuine
+  legal-institutional content directly on point for the review's "legal
+  last mile" framework: illegal electricity/water reconnection via direct
+  personal negotiation with low-level bureaucrats; unauthorized colonies
+  (20%+ of Delhi's population) categorically barred from official
+  municipal water/sewerage connections despite valid property-transaction
+  documentation; Delhi Jal Board officials operating at least 15
+  unregistered borewells in direct violation of a 2010 state drilling ban,
+  financed via an MLA's discretionary fund rather than official channels;
+  and Resident Welfare Associations as state-recognized but formally
+  non-state intermediaries controlling informal water-delivery and
+  construction-approval access. Extracted as **S556** (CASP, qualitative).
+- **RA1EBB350D5D3** — a doctrinal/legal-theoretical analysis of Australian
+  water law and Indigenous water rights (Burdon, Drew, Stubbs, Webster &
+  Barber, *Settler Colonial Studies* 2015), drawing on historical records,
+  case law, and existing scholarship with no original empirical data
+  collection. **EXCLUDE (E05, no empirical evidence)**, the same rationale
+  applied to the earlier Viljoen doctrinal-commentary exclusion.
+- **RBE33CDE5272C** — a discrete-choice-experiment survey-methodology paper
+  (Lanz & Provins, *Journal of Regulatory Economics* 2015) examining
+  whether "status quo" choices in willingness-to-pay surveys reflect
+  genuine consumer preferences for a regulated English water utility's
+  investment planning. **EXCLUDE (E01, wrong topic)** -- the paper's actual
+  contribution is survey-methodology validity, not a primary empirical
+  study of legal-administrative water access.
+- **R23EE2449CF6B** — a theoretical incomplete-contracts economic model of
+  public-private-partnership water-utility contract design (Nakhla,
+  *European Journal of Law and Economics* 2016), illustrated with secondary
+  published performance statistics from Senegalese and Burkinabe water
+  utilities. **EXCLUDE (E04, wrong outcome)** -- the outcome variables
+  (network yield, connection counts, staff productivity) are
+  utility/company-level performance metrics, not household-level access,
+  the same rationale applied to the prior DEA, PDAM, and Thai FSM
+  exclusions.
+
+`evidence_map.csv` updated for S554-S556. `full_text_retrieval_queue.csv`
+regenerated (2,543 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,116/3,659 screened
+(554 include/562 exclude), 2,543 open, 554 extracted studies, 27
+effect_sizes rows (unchanged -- none of the three new includes has a
+genuine exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-fifth full-text screening batch (5 Drive-retrieved PDFs: 2 excludes, 3 new includes S551-S553)
 
 Five further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-fourth batch below:

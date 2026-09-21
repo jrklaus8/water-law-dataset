@@ -1736,6 +1736,56 @@ evidence of anything.
   `evidence_map.csv` updated for S551-S553; `full_text_retrieval_queue.csv`
   regenerated; duplicate audit and schema validation re-run clean. Full
   detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-sixth full-text screening batch — 6
+  Drive-retrieved PDFs, 3 excludes and 3 new includes (S554-S556).** Cole &
+  Browne (2015), "Tourism and Water Inequity in Bali," is a strong include:
+  a mixed-methods case study (39 interviews, 2 focus groups, 110 tourist
+  surveys) using Ostrom's SES framework to document 11 fragmented, poorly
+  coordinated Balinese government departments sharing water responsibility,
+  the subak irrigation-governance system, and widespread non-enforcement of
+  water-metering/tariff regulations against the tourism industry, leaving
+  local households on multi-year waitlists for connections and paying
+  unlicensed vendors up to Rp50,000/gallon. Extracted as **S554** (MMAT).
+  Palta, du Bray, Stotts, Wolf & Wutich (2016), on ecosystem services and
+  disservices for people experiencing homelessness in Phoenix, Arizona, is
+  a mixed-methods ethnographic study (155 site visits, 17 interviews,
+  water-quality monitoring at 5 sites) documenting Phoenix's 2004
+  anti-camping ordinances criminalizing public water access, locked public
+  facilities at night, and the illegality of accessing state/federal
+  wetlands used as an extra-legal water-access strategy by this excluded
+  population -- alongside a serious documented health-risk trade-off (E.
+  coli exceeding EPA drinking standards in up to 100% of monsoon-season
+  measurements). Extracted as **S555** (MMAT). Ghertner (2017), "When Is
+  the State?", is a strong include: a qualitative ethnographic case study
+  (24 months of fieldwork, 2006-2014) of everyday negotiation of water,
+  electricity, and building-permission access in Delhi's informal slum
+  settlements and unauthorized colonies, documenting illegal utility
+  reconnection via direct bureaucratic negotiation, unauthorized colonies
+  categorically barred from formal water connections despite valid
+  property documentation, Jal Board officials operating unregistered
+  borewells in violation of a state drilling ban (financed via an MLA's
+  discretionary fund), and Resident Welfare Associations as informal
+  intermediaries controlling water-delivery and construction-approval
+  access. Extracted as **S556** (CASP, qualitative). A doctrinal
+  legal-theoretical analysis of Australian Indigenous water rights
+  (Burdon, Drew, Stubbs, Webster & Barber, *Settler Colonial Studies*
+  2015), drawing only on existing scholarship and case law with no
+  original empirical data collection, was **excluded E05** (no empirical
+  evidence). A discrete-choice-experiment survey-methodology paper on
+  status-quo bias in English water-utility price regulation (Lanz &
+  Provins, *Journal of Regulatory Economics* 2015) was **excluded E01**
+  (wrong topic): its actual contribution is survey-methodology validity,
+  not a primary empirical study of legal-administrative water access. A
+  theoretical incomplete-contracts economic model of PPP water-utility
+  contract design in Senegal and Burkina Faso (Nakhla, *European Journal
+  of Law and Economics* 2016), illustrated with secondary published
+  utility-performance statistics, was **excluded E04** (wrong outcome):
+  network yield, connection counts, and staff productivity are
+  utility-level performance metrics, not a household-level access
+  outcome, the same rationale applied to the earlier DEA, PDAM, and Thai
+  FSM exclusions. `evidence_map.csv` updated for S554-S556;
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
+  validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1754,14 +1804,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,110 of the 3,659
-  Phase-5 includes have been assessed; 2,549 records have not yet been
+- Full-text screening itself is far from complete: 1,116 of the 3,659
+  Phase-5 includes have been assessed; 2,543 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 551
+- Extraction (Phase 8) is caught up with screening completely — all 554
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  551 extracted studies** (a first 12-study partial pilot batch was
+  554 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
