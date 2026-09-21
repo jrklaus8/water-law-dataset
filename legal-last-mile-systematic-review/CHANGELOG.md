@@ -4,7 +4,66 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-first full-text screening batch (8 Drive-retrieved PDFs, 4 excludes + 4 new includes S532-S535) + self-caught screening/extraction mismatch fix
+## 2026-09-21 (latest) — Sixty-second full-text screening batch (2 Drive-retrieved PDFs, both new includes S536-S537)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox after the
+sixty-first batch below — both genuinely new, still-open screening
+records, not mislabeled duplicates:
+
+- **R0206140E81E4** — Abrams, Carden, Teta & Wagsaether (2021). "Water,
+  Sanitation, and Hygiene Vulnerability among Rural Areas and Small
+  Towns in South Africa: Exploring the Role of Climate Change,
+  Marginalization, and Inequality." *Water* 13(20):2810. doi
+  10.3390/w13202810. **INCLUDE.** Qualitative climate-risk-and-
+  vulnerability case-study comparison (transdisciplinary CRVA) of WASH
+  access in rural HaSinari (Limpopo) and small-town Prince Albert
+  (Western Cape), South Africa. Genuine legal-administrative content:
+  Prince Albert's "leiwater" irrigation-furrow water allocation, managed
+  by the Kweekvallei Irrigation Board, is restricted to residents
+  holding allocation rights recorded in historical (Apartheid-era) title
+  deeds, structurally excluding North-End (predominantly Colored)
+  residents while South-End (historically white-favored) residents
+  retain access; in HaSinari the formal municipal water department has
+  effectively ceased functioning and been replaced by elected,
+  fee-funded community Water Committees that collect monthly household
+  contributions to fund diesel for borehole pumps. Extracted as **S536**
+  (CASP).
+- **REA101C40B5BB** — Alam, Rahat, Nawaz, Neeher, Tabassum, Upoma, Kamal,
+  Evans & Hutchings (2025). "Behaviour change interventions to promote
+  household connectivity to sewer: a scoping review." *Global Health
+  Action* 18(1):2476335. doi 10.1080/16549716.2025.2476335. **INCLUDE.**
+  PRISMA-ScR scoping review synthesizing 11 sewer-connection
+  behaviour-change-intervention case studies across 8 countries
+  (Ecuador, Colombia, Bolivia, Brazil, Kenya, Morocco, India, Pakistan).
+  Directly synthesizes legal-administrative mechanisms: mandatory-
+  connection legal provisions (Tamil Nadu's regulatory 100-meter
+  connection mandate, Sao Paulo's 2002 municipal connection law,
+  Salvador's Law 7307/1998), indirect financial subsidies (free
+  connections), fees, and penalty/legal-action provisions for
+  non-connection or illegal discharge. Finds programmes combining free
+  connection with community engagement (Colombia 75%, Morocco 80%,
+  Kenya 76%, Bolivia 81%) substantially outperform legal-mandate
+  messaging or promotion alone without a financial subsidy (Tamil Nadu
+  40%; Sao Paulo 19% despite free connection, attributed to a
+  concurrent water crisis). Extracted as **S537**
+  (`systematic_review_secondary`, AMSTAR 2).
+
+Both included studies satisfy `INCLUSION_EXCLUSION.md` criteria 1-2
+(water/sanitation access examined alongside a legal/administrative/
+governance factor) on genuine, non-trivial institutional grounds, not a
+generic development-studies framing. Neither contains a fabricated or
+genuine single-study exposure-vs-comparator statistical contrast meeting
+`effect_sizes.csv`'s strict eligibility bar (S537's pre/post connection-
+rate percentages are programme-level scoping-review syntheses without a
+defined comparator group, consistent with how other included systematic
+reviews, e.g. S319, have been excluded from `effect_sizes.csv`), so
+neither was added there. `evidence_map.csv` updated for both.
+`full_text_retrieval_queue.csv` regenerated (2,577 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,082/3,659 screened (535 include/547 exclude), 2,577
+open, 535 extracted studies, 26 effect_sizes rows.
+
+## 2026-09-21 — Sixty-first full-text screening batch (8 Drive-retrieved PDFs, 4 excludes + 4 new includes S532-S535) + self-caught screening/extraction mismatch fix
 
 A further batch of 8 PDFs surfaced in the Google Drive retrieval inbox.
 Four excludes:

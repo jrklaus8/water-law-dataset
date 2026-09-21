@@ -1370,6 +1370,32 @@ evidence of anything.
   still-open before being set). `evidence_map.csv` updated for all four;
   duplicate audit and schema validation re-run clean afterwards. Full
   detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-second full-text screening batch — 2
+  Drive-retrieved PDFs, both new includes (S536-S537).** Two more PDFs
+  appeared in the Drive inbox after the sixty-first batch above; both
+  were genuinely new, still-open records rather than mislabeled
+  duplicates. S536: Abrams, Carden, Teta & Wagsaether (2021), *Water*,
+  a qualitative climate-risk-and-vulnerability case-study comparison of
+  WASH access in rural HaSinari (Limpopo) and small-town Prince Albert
+  (Western Cape), South Africa. Genuine legal-administrative content:
+  Prince Albert's "leiwater" irrigation-furrow water allocation is
+  restricted to residents holding allocation rights recorded in
+  historical Apartheid-era title deeds, structurally excluding
+  North-End residents; in HaSinari the formal municipal water
+  department has effectively ceased functioning and been replaced by
+  elected, fee-funded community Water Committees. CASP-appraised
+  (qualitative). S537: Alam, Rahat, Nawaz et al. (2025), *Global
+  Health Action*, a PRISMA-ScR scoping review of 11 sewer-connection
+  behaviour-change-intervention case studies across 8 countries.
+  Synthesizes legal-administrative mechanisms directly: mandatory-
+  connection legal provisions (e.g., Tamil Nadu's 100-meter connection
+  mandate, Salvador's Law 7307/1998), indirect financial subsidies
+  (free connections), and penalty provisions for non-connection;
+  finds subsidy-plus-community-engagement packages substantially
+  outperform legal mandates or promotion alone. AMSTAR2-flagged
+  (`systematic_review_secondary`). `evidence_map.csv` updated for
+  both; duplicate audit and schema validation re-run clean. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1388,14 +1414,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,080 of the 3,659
-  Phase-5 includes have been assessed; 2,579 records have not yet been
+- Full-text screening itself is far from complete: 1,082 of the 3,659
+  Phase-5 includes have been assessed; 2,577 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 533
+- Extraction (Phase 8) is caught up with screening completely — all 535
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  533 extracted studies** (a first 12-study partial pilot batch was
+  535 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
