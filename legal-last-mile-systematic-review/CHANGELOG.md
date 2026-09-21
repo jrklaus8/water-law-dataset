@@ -4,7 +4,7 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-eighth full-text screening batch (5 Drive-retrieved PDFs: 3 excludes, 2 new includes S559-S560)
+## 2026-09-21 (latest) — Seventy-eighth full-text screening batch (5 Drive-retrieved PDFs: 2 excludes, 2 new includes S559-S560, 1 wrong-file-retrieved left open)
 
 Five further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-seventh batch below:
@@ -24,16 +24,26 @@ seventy-seventh batch below:
   sources with no original empirical data collection on households; the
   exposure examined is a different unit of analysis than household-level
   legal-administrative water access.
-- **R81549C4709FC** — Two book chapters (Sherpa, "Climate Change in Nepal
-  through an Indigenous Environmental Justice Lens," and Awale, "Women,
-  Water, and Weather: Kavre Villages Adapt to the Increasing Impacts of
-  the Climate Crisis") from an edited volume's Climate Justice section.
-  **EXCLUDE (E01, wrong topic).** Both are ethnographic/qualitative
-  studies of climate-change adaptation, Indigenous Environmental Justice
-  framing, and gendered climate-driven water-scarcity coping strategies in
-  Nepal; neither examines legal-administrative water access (no
-  water-rights law, permitting, connection, tariff, or institutional
-  service-delivery content for households).
+- **R81549C4709FC** — target record is "Building Political Capabilities
+  through Participation for Environmental Justice in Informal Housing in
+  Kathmandu" (Singh S., Singh B. 2024, doi 10.4324/9781003371175-24), but
+  this is a **fourth consecutive wrong-file delivery** (`full_text_status`
+  was already `wrong_file_retrieved` from three prior attempts, documented
+  in this record's `notes`) — the PDF actually delivered was again chs.
+  19-20 of the same edited volume (Sherpa; Awale, on Nepal climate-change
+  adaptation and Indigenous Environmental Justice), confirmed via full-text
+  read. **A first pass this session mistakenly recorded this record as
+  EXCLUDE (E01) based on the wrongly-delivered file's content, without
+  first checking the record's prior `full_text_status`/`notes` history.**
+  This was caught and reverted the same session: `full_text_decision`,
+  `final_decision`, `reviewer_1`, `exclusion_reason`, and
+  `exclusion_reason_detail` were all cleared back to blank, the erroneous
+  row was removed from `exclusion_log.csv`, and `notes` was updated to
+  record the fourth wrong-file attempt. The record **remains open**
+  pending correct retrieval of the Singh & Singh chapter; the wrongly
+  delivered Drive file was still moved to the Processed folder (consistent
+  with how the three prior wrong-file deliveries for this record were
+  handled) so it does not keep re-surfacing in the inbox.
 - **RD1E30397691A** — Boucher-Hedenström J, Rutherford D (2010).
   "Services d'eau et d'assainissement et dispersion « urbaine » dans le
   comté de Stockholm." *Flux* 2010/1-2 (n°79-80):54-68. doi
@@ -67,10 +77,11 @@ seventy-seventh batch below:
   **S560** (CASP, qualitative).
 
 `evidence_map.csv` updated for S559-S560. `exclusion_log.csv` updated for
-the 3 new excludes (566 rows). `full_text_retrieval_queue.csv`
-regenerated (2,536 open records). Duplicate audit (DOI + record_id) and
-`validate_schemas.py` both clean. Running totals: 1,123/3,659 screened
-(558 include/565 exclude), 2,536 open, 558 extracted studies, 27
+the 2 new excludes, net (564 rows: 3 added then 1 removed on correction).
+`full_text_retrieval_queue.csv` regenerated (2,537 open records, including
+R81549C4709FC restored to open). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,122/3,659 screened
+(558 include/564 exclude), 2,537 open, 558 extracted studies, 27
 effect_sizes rows (unchanged -- neither new include has a genuine
 exposure-vs-comparator quantitative contrast).
 

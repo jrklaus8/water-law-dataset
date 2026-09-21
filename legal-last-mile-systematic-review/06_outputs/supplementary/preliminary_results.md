@@ -1814,18 +1814,29 @@ evidence of anything.
   regenerated; duplicate audit and schema validation re-run clean. Full
   detail in `CHANGELOG.md`.
 - **2026-09-21 (later still): seventy-eighth full-text screening batch —
-  5 Drive-retrieved PDFs, 3 excludes, 2 new includes (S559-S560).** Three
-  studies were excluded, all E01 (wrong topic): a study of small NGOs'
-  access to geological/hydrogeological data for water-point siting in
-  eastern Africa (Wagaba et al.), a different unit of analysis and
-  concept of "access" (practitioner/NGO access to technical data, not
-  household-level legal-administrative access); a policy/hydrological-
-  geography analysis of South Africa's 1998 National Water Act "Reserve"
+  5 Drive-retrieved PDFs, 2 excludes, 2 new includes (S559-S560), 1
+  wrong-file-retrieved left open.** Two studies were excluded, both E01
+  (wrong topic): a study of small NGOs' access to geological/
+  hydrogeological data for water-point siting in eastern Africa (Wagaba et
+  al.), a different unit of analysis and concept of "access"
+  (practitioner/NGO access to technical data, not household-level
+  legal-administrative access); and a policy/hydrological-geography
+  analysis of South Africa's 1998 National Water Act "Reserve"
   environmental-flow mechanism (Blanchon), drawn from government reports
   and secondary sources with no original household-level empirical data
-  collection; and two book chapters on climate-change adaptation and
-  Indigenous Environmental Justice in Nepal (Sherpa; Awale), neither of
-  which examines legal-administrative water access. Boucher-Hedenström &
+  collection. The fifth PDF (R81549C4709FC) was a **fourth consecutive
+  wrong-file delivery**: the target record is Singh & Singh (2024),
+  "Building Political Capabilities through Participation for
+  Environmental Justice in Informal Housing in Kathmandu," but the file
+  delivered was again two book chapters on climate-change adaptation and
+  Indigenous Environmental Justice in Nepal (Sherpa; Awale) from a
+  different part of the same edited volume. A first pass this session
+  mistakenly recorded this record as excluded E01 based on the
+  wrongly-delivered content, without checking the record's prior
+  `wrong_file_retrieved` history first; this was caught and reverted the
+  same session (decision fields cleared, the erroneous exclusion_log row
+  removed, and `notes` updated) — the record remains open pending correct
+  retrieval, per `CHANGELOG.md`. Boucher-Hedenström &
   Rutherford (2010), on municipal water/sanitation service configuration
   amid urban sprawl in Stockholm County, Sweden, is a strong include: a
   qualitative case study (interviews with named municipal/regional
@@ -1866,8 +1877,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,123 of the 3,659
-  Phase-5 includes have been assessed; 2,536 records have not yet been
+- Full-text screening itself is far from complete: 1,122 of the 3,659
+  Phase-5 includes have been assessed; 2,537 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 558
