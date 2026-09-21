@@ -4,7 +4,93 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-fourth full-text screening batch (2 Drive-retrieved PDFs: 1 exclude, 1 new include S550)
+## 2026-09-21 (latest) — Seventy-fifth full-text screening batch (5 Drive-retrieved PDFs: 2 excludes, 3 new includes S551-S553)
+
+Five further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-fourth batch below:
+
+- **R5AB0C14E4E11** — Harris LM, Kooy M, Rusca M, et al. (2017). "Gendered
+  lives, gendered waters: the differentiated access, uses, knowledges, and
+  governance of water in urban Ghana and South Africa." **INCLUDE.** A
+  mixed-methods statistical study (487-household survey across four
+  underserved settlements: Ashaiman and Teshie in Accra, Ghana; Khayelitsha
+  and Philippi in Cape Town, South Africa) of gender-differentiated water
+  access, uses, knowledges, governance, and experiences. Documents genuine
+  legal-institutional content: Ghana's GWCL urban piped-supply mandate and
+  the AVRL private-consortium management period (2006-2011); South
+  Africa's Constitutional right to water and sanitation, the Free Basic
+  Water policy (6kl/household/month regardless of household size), and
+  apartheid-era racial/class-differentiated water infrastructure still
+  shaping access via the ongoing RDP housing-formalization process.
+  Extracted as **S551** (JBI Analytical Cross Sectional Studies).
+- **R169602E7BE36** — Romano ST (2017). "Democratic Decentralization and
+  Community-Based Water Governance: The Case of Nicaragua's Water
+  Committees (CAPS)." **INCLUDE.** A qualitative case study (18
+  semi-structured interviews with rural water committees plus NGO/
+  multilateral/government staff interviews, 12 months of fieldwork
+  2007-2010, plus 2014 follow-up) of the "organic empowerment" of
+  Nicaragua's community-based water committees. Documents genuine
+  legal-institutional content: the Special Law of Potable Water and
+  Sanitation Committees (Law 722, 2010) that formally recognized over
+  5,000 previously unrecognized CAPS serving more than 1 million rural
+  residents; the prior General Water Law (Law 620, 2007) that excluded
+  CAPS; CAPS' lack of personeria juridica (legal personality) preventing
+  legal receipt of constructed water systems; user-fee collection
+  ($0.23-$2.85/household/month) with informally negotiated non-enforcement
+  of shutoff rules for seasonal-labor households; and legal-gray-area
+  negotiation of land/water-source access with private landowners.
+  Extracted as **S552** (CASP Qualitative Studies Checklist).
+- **R17B052404210** — Forster T, Downsborough L, Chomba MJ (2017).
+  "Improving Accountability and Governance: The Establishment of a Water
+  User Association in the Groot Marico Catchment, South Africa."
+  **INCLUDE.** A qualitative case study (48 semi-structured and
+  focus-group interviews with commercial farmers, emerging farmers, and
+  local community members, plus document analysis, fieldwork 2011 and
+  2015) of power asymmetries in the establishment of a Water User
+  Association (WUA). Documents genuine legal-institutional content: the
+  National Water Act 1998's definition and establishment guidelines for
+  WUAs as the local collaborative-governance vehicle for redressing
+  apartheid-era water-access inequality; the "existing lawful use"
+  provision tying commercial-farmer water entitlements to land ownership
+  from the 1996-1998 baseline period, continuing to advantage the white
+  minority of commercial irrigation farmers despite the NWA's stated
+  intent to separate water rights from land ownership; and a documented
+  WUA-establishment meeting from which black rural community members and
+  emerging farmers were functionally excluded via short notice, an
+  inaccessible venue, and English-only proceedings, resulting in
+  commercial farmers dominating the vote on WUA leadership and a
+  pre-drafted constitution. Extracted as **S553** (CASP Qualitative
+  Studies Checklist).
+- **R8A34FFD0A52F** — a "Defining Moments" reflective essay (*Health
+  Communication* journal's personal-narrative/vignette section) about
+  lived experience of water access in southeastern Ohio. **EXCLUDE (E12,
+  wrong study design).** Built around unstructured focus-group anecdotes,
+  analyzed through communication/narrative theory (liminality, otherness)
+  rather than legal-institutional mechanism analysis, with no described
+  sample size, sampling method, or systematic coding protocol -- the piece
+  does not meet the review's standard for an appraisable empirical study
+  design.
+- **RC47ECBF4C9AF** — a quantitative study (multiple regression analysis of
+  data from 160 Thai municipalities) of technical, financial, social, and
+  institutional factors influencing faecal sludge management (FSM) service
+  performance. **EXCLUDE (E04, wrong outcome).** The outcome variables
+  (operational efficiency, service performance/complaint-rate, and
+  treatment feasibility indicators) are municipality-level
+  service-performance metrics, not household- or applicant-level access,
+  connection, affordability, or reliability outcomes -- the same
+  institutional/organizational-performance exclusion rationale applied to
+  the prior DEA and PDAM-performance studies (R8821B3A63A95,
+  REA26B447CC9E). Also concerns fecal sludge/septic management rather than
+  water supply access.
+
+`evidence_map.csv` updated for S551-S553. `full_text_retrieval_queue.csv`
+regenerated (2,549 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,110/3,659 screened
+(551 include/559 exclude), 2,549 open, 551 extracted studies, 27
+effect_sizes rows (unchanged -- none of the three new includes has a
+genuine exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-fourth full-text screening batch (2 Drive-retrieved PDFs: 1 exclude, 1 new include S550)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-third batch below:

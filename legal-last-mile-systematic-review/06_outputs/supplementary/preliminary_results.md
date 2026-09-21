@@ -1690,6 +1690,52 @@ evidence of anything.
   earlier DEA exclusion. `evidence_map.csv` updated for S550;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
   validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-fifth full-text screening batch — 5
+  Drive-retrieved PDFs, 2 excludes and 3 new includes (S551-S553).** Harris,
+  Kooy, Rusca et al. (2017), "Gendered lives, gendered waters," is a strong
+  include: a mixed-methods statistical study (487-household survey across
+  Ashaiman/Teshie in Accra, Ghana and Khayelitsha/Philippi in Cape Town,
+  South Africa) documenting Ghana's GWCL urban piped-supply mandate and the
+  AVRL private-consortium management period (2006-2011), and South
+  Africa's Constitutional right to water and sanitation, the Free Basic
+  Water policy (6kl/household/month regardless of household size), and
+  apartheid-era infrastructure siting still shaping access via the ongoing
+  RDP housing-formalization process. Extracted as **S551** (JBI Analytical
+  Cross Sectional Studies). Romano (2017), on Nicaragua's community-based
+  water committees (CAPS), is a qualitative case study (18 committee
+  interviews plus NGO/multilateral/government staff interviews, 2007-2010
+  fieldwork plus a 2014 follow-up) documenting the Special Law of Potable
+  Water and Sanitation Committees (Law 722, 2010) that formally recognized
+  over 5,000 previously unrecognized CAPS serving more than 1 million rural
+  residents, superseding the exclusionary General Water Law (Law 620,
+  2007); CAPS' lack of personeria juridica preventing legal receipt of
+  constructed water systems; informally negotiated non-enforcement of
+  shutoff rules for seasonal-labor households; and legal-gray-area land/
+  water-source access negotiation with private landowners. Extracted as
+  **S552** (CASP, qualitative). Forster, Downsborough & Chomba (2017), on
+  Water User Association establishment in South Africa's Groot Marico
+  catchment, is a qualitative case study (48 interviews, fieldwork 2011 and
+  2015) documenting the National Water Act 1998's WUA-establishment
+  guidelines and its "existing lawful use" provision continuing to
+  advantage the white minority of commercial irrigation farmers, and a
+  documented WUA-establishment meeting from which Black rural community
+  members and emerging farmers were functionally excluded via short
+  notice, an inaccessible venue, and English-only proceedings. Extracted as
+  **S553** (CASP, qualitative). A "Defining Moments" reflective essay
+  (*Health Communication* journal) about water access in southeastern Ohio
+  -- built around unstructured focus-group anecdotes with no described
+  sample size, sampling method, or systematic coding protocol, analyzed
+  through communication/narrative theory rather than legal-institutional
+  mechanism analysis -- was **excluded E12** (wrong study design). A
+  multiple-regression study of technical/financial/social/institutional
+  factors influencing faecal sludge management service performance across
+  160 Thai municipalities was **excluded E04** (wrong outcome): a
+  municipality-level service-performance metric, not a household- or
+  applicant-level access outcome, the same institutional/organizational-
+  performance rationale applied to the earlier DEA and PDAM exclusions.
+  `evidence_map.csv` updated for S551-S553; `full_text_retrieval_queue.csv`
+  regenerated; duplicate audit and schema validation re-run clean. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1708,14 +1754,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,105 of the 3,659
-  Phase-5 includes have been assessed; 2,554 records have not yet been
+- Full-text screening itself is far from complete: 1,110 of the 3,659
+  Phase-5 includes have been assessed; 2,549 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 548
+- Extraction (Phase 8) is caught up with screening completely — all 551
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  548 extracted studies** (a first 12-study partial pilot batch was
+  551 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
