@@ -4,7 +4,44 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-second full-text screening batch (2 Drive-retrieved PDFs, both new includes S536-S537)
+## 2026-09-21 (latest) — Sixty-third full-text screening batch (1 Drive-retrieved PDF, new include S538)
+
+One further PDF surfaced in the Google Drive retrieval inbox after the
+sixty-second batch below — a genuinely new, still-open screening record:
+
+- **R0482B6E724C6** — Dallasheh L (2022). "Would the United States Come
+  to Nazareth's Aid? Local and International Contests over the City's
+  Water." *Journal of Palestine Studies* 51(4):24-44. doi
+  10.1080/0377919X.2022.2131458. **INCLUDE.** A rigorous archival
+  historical case study (primary sources: Israeli State Archives,
+  Nazareth Municipal Archives, US National Archives, Knesset records,
+  contemporary press), not doctrinal commentary — satisfies
+  `INCLUSION_EXCLUSION.md` on strong legal-administrative grounds.
+  Nazareth's elected municipal council formally held water-infrastructure
+  decision authority under the Mandate-era Municipal Corporations
+  Ordinance of 1934, but every step (funding, equipment import,
+  foreign-currency access) required Israeli military-government
+  authorization throughout 1948-1966 martial law. Mekorot, the national
+  quasi-official water utility, ultimately secured control of the
+  municipality-owned well as a precondition of connecting the city to
+  the national grid (1955), and in 1966 cut off Nazareth's entire water
+  supply over an unpaid municipal debt, explicitly wielded as political
+  leverage to force the resignation of an elected mayor. Extracted as
+  **S538** using the Legal Institutional Evidence Appraisal Framework —
+  the convention already established for doctrinal/archival
+  legal-institutional case studies (S356, S364, S504, S507, S513, S517,
+  S518, S533), resolved by hand as `doctrinal` in `evidence_map.csv`.
+
+No genuine single-study statistical contrast meeting `effect_sizes.csv`'s
+strict eligibility bar, so not added there (an archival historical
+narrative, like the project's other doctrinal/jurimetric studies, is not
+eligible for that file). `evidence_map.csv` updated.
+`full_text_retrieval_queue.csv` regenerated (2,576 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,083/3,659 screened (536 include/547 exclude), 2,576
+open, 536 extracted studies, 26 effect_sizes rows.
+
+## 2026-09-21 — Sixty-second full-text screening batch (2 Drive-retrieved PDFs, both new includes S536-S537)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox after the
 sixty-first batch below — both genuinely new, still-open screening

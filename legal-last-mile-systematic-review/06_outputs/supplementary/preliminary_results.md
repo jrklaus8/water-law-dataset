@@ -1396,6 +1396,25 @@ evidence of anything.
   (`systematic_review_secondary`). `evidence_map.csv` updated for
   both; duplicate audit and schema validation re-run clean. Full
   detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-third full-text screening batch — 1
+  Drive-retrieved PDF, 1 new include (S538).** Dallasheh (2022), *Journal
+  of Palestine Studies*, "Would the United States Come to Nazareth's Aid?
+  Local and International Contests over the City's Water" — a rigorous
+  archival historical case study, not a doctrinal commentary, documenting
+  a specific legal-administrative contest: Nazareth's elected municipal
+  council formally held water-infrastructure authority under the
+  Mandate-era Municipal Corporations Ordinance of 1934, but every step —
+  funding, equipment import, foreign-currency access — required Israeli
+  military-government authorization during 1948-1966 martial law. The
+  national water utility (Mekorot) ultimately secured control of the
+  municipal well as a precondition of network connection (1955), and in
+  1966 cut off the city's entire water supply over an unpaid debt,
+  explicitly as political leverage against an elected mayor. Extracted
+  as S538 using the Legal Institutional Evidence Appraisal Framework
+  (the convention for doctrinal/archival legal-institutional studies,
+  matching S356/S364/S504/S507/S513/S517/S518/S533). `evidence_map.csv`
+  updated; duplicate audit and schema validation re-run clean. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1414,14 +1433,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,082 of the 3,659
-  Phase-5 includes have been assessed; 2,577 records have not yet been
+- Full-text screening itself is far from complete: 1,083 of the 3,659
+  Phase-5 includes have been assessed; 2,576 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 535
+- Extraction (Phase 8) is caught up with screening completely — all 536
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  535 extracted studies** (a first 12-study partial pilot batch was
+  536 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
