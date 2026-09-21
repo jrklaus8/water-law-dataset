@@ -4,7 +4,66 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-first full-text screening batch (1 Drive-retrieved PDF, new include S545)
+## 2026-09-21 (latest) — Seventy-second full-text screening batch (3 Drive-retrieved PDFs: 1 exclude, 2 new includes S546-S547)
+
+Three further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-first batch below:
+
+- **RC6B24320D282** — Morena Y et al. (2019). "The analysis of health
+  aspects in housing type 45, Panorama Indah residence, Pekanbaru." *MATEC
+  Web of Conferences* 276:06032. doi 10.1051/matecconf/201927606032.
+  **EXCLUDE (E06, engineering only).** A single-house (N=1) building-code
+  compliance survey assessed against the Indonesian Directorate General of
+  Human Settlements 1986 housing-health standard, with water supply one of
+  six inspected physical criteria (lighting, ventilation, water supply,
+  wastewater disposal, humidity, air pollution). A single-dwelling
+  engineering/health-code inspection, not a legal-administrative
+  water-access mechanism study.
+- **R55F012C376B7** — Singh S, Shrestha K, Hamal M, Prakash A (2020).
+  "Perform or wither: role of water users' associations in municipalities
+  of Nepal." *Water Policy* 22(S1):90-106. doi 10.2166/wp.2019.051.
+  **INCLUDE.** A mixed-methods study (350-household survey across Damauli
+  and Tansen municipalities, plus focus group discussions) of Water
+  Users' Associations (WUAs) under Nepal's Water Resource Act 1992,
+  Water Resource Regulation 1993, and Drinking Water Regulation 1998.
+  Documents concrete household-level access/burden mechanisms: new tap
+  connections costing NPR 50,000 (~USD 440) with waits up to 11 years,
+  a two-tier informal-payment mechanism (NPR 100,000 for faster
+  connection), WUA-committee/private-repair-agency collusion and
+  political capture, gendered exclusion (taps registered only to male
+  household heads despite women bearing 6-7 hrs/day of water-collection
+  burden), tanker-water costs (~Rs 357/1,000L), and inequitable WUA
+  spring-water pricing (NPR 20 to 80 per 6,000L). Extracted as **S546**
+  (MMAT).
+- **REB0B1F68FC00** — Sarrazin C, Gautier E, Hollé A, Grancher D, de
+  Bélizal E, Hadmoko DS (2019). "Resilience of socio-ecological systems
+  in volcano risk-prone areas, but how much longer? Assessment of
+  adaptive water governance in Merapi volcano, Central Java, Indonesia."
+  *GeoJournal* 84:183-213. doi 10.1007/s10708-018-9856-5. **INCLUDE.** A
+  mixed-methods case study (73 stakeholder interviews, including 42
+  household-level, across 7 villages/dusun; 1-month 2013 fieldwork) of
+  adaptive water governance on Merapi's southern slopes. Documents
+  genuine Indonesian legal-institutional content: the 1987 irrigation
+  reforms and 1998/1999 decentralization framework's "Turnover Program"
+  transferring irrigation governance from customary Ulu-Ulu
+  rights-holders to formal Water Users Associations (WUA) and WUA
+  Federations; institutional pluralism across the Ministry of Public
+  Works, Ministry of Agriculture & Environment, regional water agencies,
+  the Irrigation Committee, and residual informal Ulu-Ulu authority,
+  producing an undelivered 2013 government subvention payment owed to
+  WUAs; and post-2010-eruption lahar damage to sabo-dams/irrigation
+  canals causing drinking- and irrigation-water crises, met by unequal
+  government emergency water-tank distribution and informal Gotong
+  Royong mutual-aid canal repair. Extracted as **S547** (MMAT).
+
+`evidence_map.csv` updated for S546-S547. `full_text_retrieval_queue.csv`
+regenerated (2,560 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,099/3,659 screened
+(545 include/554 exclude), 2,560 open, 545 extracted studies, 27
+effect_sizes rows (unchanged -- neither new include has a genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-first full-text screening batch (1 Drive-retrieved PDF, new include S545)
 
 One further PDF surfaced in the Google Drive retrieval inbox after the
 seventieth batch below:

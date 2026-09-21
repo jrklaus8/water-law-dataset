@@ -1590,6 +1590,43 @@ evidence of anything.
   qualitative). `evidence_map.csv` updated; `full_text_retrieval_queue.csv`
   regenerated; duplicate audit and schema validation re-run clean. Full
   detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-second full-text screening batch — 3
+  Drive-retrieved PDFs, 1 exclude and 2 new includes (S546-S547).** Morena
+  et al. (2019), *MATEC Web of Conferences*, "The analysis of health
+  aspects in housing type 45, Panorama Indah residence, Pekanbaru," is a
+  single-house (N=1) building-code compliance survey against Indonesia's
+  1986 housing-health standard -- water supply is one of six inspected
+  physical criteria, and no legal-administrative access mechanism or
+  population beyond a single dwelling is examined -- **excluded E06**
+  (engineering only). Singh, Shrestha, Hamal & Prakash (2020), *Water
+  Policy*, "Perform or wither: role of water users' associations in
+  municipalities of Nepal," is a strong include: a 350-household survey
+  (208 Damauli, 142 Tansen) plus focus group discussions documenting
+  Nepal's water-law framework (Water Resource Act 1992, Water Resource
+  Regulation 1993, Drinking Water Regulation 1998) and concrete
+  access/burden mechanisms -- NPR 50,000 (~USD 440) new-connection costs
+  with waits up to 11 years, a two-tier informal-payment pathway (NPR
+  100,000 for faster connection), WUA-committee/private-repair-agency
+  collusion and political capture, gendered exclusion via male-only tap
+  registration despite women bearing 6-7 hrs/day of water-collection
+  burden, tanker-water costs (~Rs 357/1,000L), and inequitable WUA
+  spring-water pricing (NPR 20 to 80 per 6,000L). Extracted as **S546**
+  (MMAT). Sarrazin, Gautier, Hollé, Grancher, de Bélizal & Hadmoko (2019),
+  *GeoJournal*, "Resilience of socio-ecological systems in volcano
+  risk-prone areas, but how much longer? Assessment of adaptive water
+  governance in Merapi volcano, Central Java, Indonesia," is a strong
+  include: 73 stakeholder interviews (42 household-level) across 7
+  villages/dusun documenting Indonesia's irrigation-reform and
+  decentralization framework, the "Turnover Program" transferring
+  irrigation governance from customary Ulu-Ulu rights-holders to formal
+  Water Users Associations, institutional pluralism across multiple
+  government agencies producing an undelivered 2013 WUA subvention
+  payment, and post-2010-eruption lahar damage causing drinking- and
+  irrigation-water crises met by unequal government emergency-water-tank
+  distribution and informal Gotong Royong mutual-aid canal repair.
+  Extracted as **S547** (MMAT). `evidence_map.csv` updated for both;
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and
+  schema validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1608,14 +1645,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,096 of the 3,659
-  Phase-5 includes have been assessed; 2,563 records have not yet been
+- Full-text screening itself is far from complete: 1,099 of the 3,659
+  Phase-5 includes have been assessed; 2,560 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 543
+- Extraction (Phase 8) is caught up with screening completely — all 545
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  543 extracted studies** (a first 12-study partial pilot batch was
+  545 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
