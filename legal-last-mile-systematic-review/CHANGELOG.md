@@ -4,7 +4,58 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-eighth full-text screening batch (1 Drive-retrieved PDF, new include S541)
+## 2026-09-21 (latest) — Sixty-ninth full-text screening batch (2 Drive-retrieved PDFs, both new includes S542-S543)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox after the
+sixty-eighth batch below:
+
+- **RB432D9F6004C** — Singh S, Hassan SMT, Hassan M, Bharti N (2020).
+  "Urbanisation and water insecurity in the Hindu Kush Himalaya: Insights
+  from Bangladesh, India, Nepal and Pakistan." *Water Policy*
+  22(S1):9-32. doi 10.2166/wp.2019.215. **INCLUDE.** A companion paper
+  to S541 in the same special issue, covering Bangladesh, India, Nepal
+  and Pakistan with its own quantitative supply/demand data table
+  (Table 9, 13 cities: e.g. Kathmandu Valley KUKL service area faces a
+  178 MLD deficit, Quetta 64 MLD, Rawalpindi 59 MLD) and distinct
+  legal-administrative content: despite clear departmental mandates,
+  the forest department in Darjeeling could not extend its mandate to
+  artificial recharge outside protected areas, blocking spring
+  rejuvenation; a water-augmentation project (lifting water from the
+  Balasun river) stalled and its cost escalated from INR 400 million to
+  INR 560 million due to irreconcilable design/implementation
+  disagreements between the municipality, hill council and World Bank;
+  and private-tanker pricing that varies by distance documented as
+  restricting the water quantity purchased by poorer households.
+  Extracted as **S542** using the Legal Institutional Evidence
+  Appraisal Framework (not a systematic review -- no described search
+  protocol).
+- **R0312B751BEAE** — Twum KO, Abubakari M (2020). "Drops in the city:
+  the puzzle of water privatization and consumption deficiencies in
+  urban Ghana." *Water Policy* 22(3):417-434. doi
+  10.2166/wp.2020.175. **INCLUDE.** A mixed-methods study (26
+  semi-structured interviews across Accra, Kumasi, Sekondi-Takoradi and
+  Tamale, plus secondary data and GIS spatial mapping) documenting a
+  genuine legal-administrative access mechanism: the informal nature of
+  living arrangements in low-income neighborhoods prevents residents
+  from acquiring the legal documentation required for household pipe
+  connections, categorically barring them from formal Ghana Water
+  Company Ltd (GWCL) service and forcing reliance on private/informal
+  vendors at markedly higher prices ($0.10/bucket from private wells,
+  $0.18/gallon from tankers, $10-20 for untreated hand-dug-well water in
+  poor neighborhoods) in a weak/unregulated private-vendor market. GWCL
+  itself supplies only 41% of the urban population, with only 30% of
+  urban Ghanaians having piped-water access. Extracted as **S543**
+  (MMAT, mixed methods).
+
+`evidence_map.csv` updated for S542 and S543. `full_text_retrieval_queue.csv`
+regenerated (2,565 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,094/3,659 screened
+(541 include/553 exclude), 2,565 open, 541 extracted studies, 27
+effect_sizes rows (unchanged -- no defined exposure-vs-comparator
+contrast with a locatable effect estimate in either narrative
+synthesis).
+
+## 2026-09-21 — Sixty-eighth full-text screening batch (1 Drive-retrieved PDF, new include S541)
 
 One further PDF surfaced in the Google Drive retrieval inbox after the
 sixty-seventh batch below:

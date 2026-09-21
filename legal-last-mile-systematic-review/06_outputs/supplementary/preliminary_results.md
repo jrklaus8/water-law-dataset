@@ -1517,6 +1517,32 @@ evidence of anything.
   systematic review (no described search protocol). `evidence_map.csv`
   updated; `full_text_retrieval_queue.csv` regenerated; duplicate audit
   and schema validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-ninth full-text screening batch — 2
+  Drive-retrieved PDFs, both new includes (S542-S543).** Singh, Hassan,
+  Hassan & Bharti (2020), *Water Policy*, "Urbanisation and water
+  insecurity in the Hindu Kush Himalaya: Insights from Bangladesh, India,
+  Nepal and Pakistan," is a companion paper to S541 in the same special
+  issue, covering a different 4-country subset with its own supply-demand
+  data table (13 cities) and distinct legal-administrative content:
+  departmental jurisdictional mandate limitations blocking spring/recharge
+  protection in Darjeeling, multi-party institutional coordination
+  failures that delayed and inflated the cost of a water-augmentation
+  project (INR 400M to 560M), and tanker-pricing burdens restricting
+  water quantity purchased by poorer households. Extracted as **S542**
+  using the Legal Institutional Evidence Appraisal Framework. Twum &
+  Abubakari (2020), *Water Policy*, "Drops in the city: the puzzle of
+  water privatization and consumption deficiencies in urban Ghana," is a
+  mixed-methods study (26 semi-structured interviews across Accra,
+  Kumasi, Sekondi-Takoradi and Tamale, plus secondary data and GIS
+  mapping) documenting a genuine legal-administrative access mechanism:
+  informal-settlement residents lack the legal documentation required
+  for formal household pipe connections, categorically barring them from
+  formal service and forcing reliance on private vendors at markedly
+  higher prices ($0.10/bucket, $0.18/gallon tanker, $10-20 for untreated
+  well water) in a weak/unregulated private-vendor market. Extracted as
+  **S543** (MMAT). `evidence_map.csv` updated for both;
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and
+  schema validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1535,14 +1561,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,092 of the 3,659
-  Phase-5 includes have been assessed; 2,567 records have not yet been
+- Full-text screening itself is far from complete: 1,094 of the 3,659
+  Phase-5 includes have been assessed; 2,565 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 539
+- Extraction (Phase 8) is caught up with screening completely — all 541
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  539 extracted studies** (a first 12-study partial pilot batch was
+  541 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
