@@ -4,7 +4,45 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventieth full-text screening batch (1 Drive-retrieved PDF, new include S544)
+## 2026-09-21 (latest) — Seventy-first full-text screening batch (1 Drive-retrieved PDF, new include S545)
+
+One further PDF surfaced in the Google Drive retrieval inbox after the
+seventieth batch below:
+
+- **RC85926098F35** — Dobbin KB (2020). "'Good Luck Fixing the
+  Problem': Small Low-Income Community Participation in Collaborative
+  Groundwater Governance and Implications for Drinking Water Source
+  Protection." *Society & Natural Resources* 33(12):1468-1485. doi
+  10.1080/08941920.2020.1772925. **INCLUDE.** A qualitative case study
+  (27 semi-structured interviews with 35 individuals across 23 small
+  low-income communities in California's San Joaquin Valley) documenting
+  a genuine legal-administrative participation regime under California's
+  Sustainable Groundwater Management Act (SGMA, 2014). SGMA statutorily
+  lists Disadvantaged Communities and domestic well owners among 11
+  mandatory beneficial-user categories that local Groundwater
+  Sustainability Agencies (GSAs) must involve, but leaves the specific
+  form of representation to GSA discretion; in this study, privately
+  owned water systems and domestic-well communities never achieved
+  formal voting representation, while formal voting seats typically
+  required a financial contribution (one community saved $8,000 by
+  choosing non-voting status). Interviewees with advisory/stakeholder
+  positions repeatedly described having "voice but not vote";
+  transparency failures were common (non-Brown-Act-compliant meetings,
+  one community first notified about SGMA three years after it took
+  effect); and drinking-water/water-quality considerations were reported
+  as largely absent from resulting Groundwater Sustainability Plans, with
+  25% of interviewees explicitly expecting SGMA's net effect on their
+  community to be negative. Extracted as **S545** (CASP Qualitative
+  Studies Checklist).
+
+`evidence_map.csv` updated for S545. `full_text_retrieval_queue.csv`
+regenerated (2,563 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,096/3,659 screened
+(543 include/553 exclude), 2,563 open, 543 extracted studies, 27
+effect_sizes rows (unchanged -- qualitative case study with no
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventieth full-text screening batch (1 Drive-retrieved PDF, new include S544)
 
 One further PDF surfaced in the Google Drive retrieval inbox after the
 sixty-ninth batch below:

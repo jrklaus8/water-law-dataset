@@ -1566,6 +1566,30 @@ evidence of anything.
   Extracted as **S544** (CASP, qualitative). `evidence_map.csv` updated;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and
   schema validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-first full-text screening batch — 1
+  Drive-retrieved PDF, new include (S545).** Dobbin (2020), *Society &
+  Natural Resources*, "'Good Luck Fixing the Problem': Small Low-Income
+  Community Participation in Collaborative Groundwater Governance and
+  Implications for Drinking Water Source Protection," is a strong
+  include: 27 semi-structured interviews with 35 individuals across 23
+  small low-income San Joaquin Valley communities documenting a genuine
+  legal-administrative participation regime under California's
+  Sustainable Groundwater Management Act (SGMA). SGMA statutorily lists
+  Disadvantaged Communities and domestic well owners among 11 mandatory
+  beneficial-user categories in local Groundwater Sustainability
+  Agencies (GSAs), but leaves the form of representation to GSA
+  discretion; in this study, privately-owned water systems and
+  domestic-well communities never achieved formal voting representation,
+  formal voting seats typically required a financial contribution (one
+  community saved $8,000 by choosing non-voting status), and
+  transparency failures (non-Brown-Act-compliant meetings, one community
+  notified three years after enactment) compounded exclusion. Drinking-
+  water needs were largely absent from resulting Groundwater
+  Sustainability Plans, and 25% of interviewees expected SGMA's net
+  effect on their community to be negative. Extracted as **S545** (CASP,
+  qualitative). `evidence_map.csv` updated; `full_text_retrieval_queue.csv`
+  regenerated; duplicate audit and schema validation re-run clean. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1584,14 +1608,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,095 of the 3,659
-  Phase-5 includes have been assessed; 2,564 records have not yet been
+- Full-text screening itself is far from complete: 1,096 of the 3,659
+  Phase-5 includes have been assessed; 2,563 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 542
+- Extraction (Phase 8) is caught up with screening completely — all 543
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  542 extracted studies** (a first 12-study partial pilot batch was
+  543 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
