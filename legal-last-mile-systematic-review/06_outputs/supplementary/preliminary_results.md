@@ -1203,6 +1203,23 @@ evidence of anything.
   `effect_sizes.csv` (ethnographic case study, no locatable
   quantitative effect estimate). A corpus-wide duplicate audit re-run
   afterwards came back clean against the resulting 526-study corpus.
+- **2026-09-21: fifty-sixth full-text screening batch — 3 researcher-
+  supplied PDFs, 0 new includes.** Full detail in `CHANGELOG.md`. All
+  three were excluded: Rivera-Nuñez et al. (2024, *Social Sciences*,
+  "The Types of Water Conflicts in an Irrigation System in Northern
+  Mexico," E07 — a social-network-analysis study whose dominant focus
+  is irrigation-water resource governance among farmers, with only a
+  secondary sub-theme on domestic-water self-management); Milligan et
+  al. (2024, *Territory, Politics, Governance*, "The hydro-racial fix
+  in infrastructural regions: Atlanta's situation in a regional water
+  governance conflict," E07 — a racial-capitalism analysis of the
+  interstate Apalachicola-Chattahoochee-Flint regional water-allocation
+  dispute, not household-level service access); and Eduful (2024,
+  *Natural Resources Forum*, "Toward good governance in water resources
+  management in Ghana," E01 — a broad IWRM institutional/regulatory
+  governance study of Ghana's Water Resources Commission and basin
+  management boards). No extraction, evidence_map, or effect_sizes
+  changes this batch.
 
 ## What has not been done
 
@@ -1221,8 +1238,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,057 of the 3,659
-  Phase-5 includes have been assessed; 2,602 records have not yet been
+- Full-text screening itself is far from complete: 1,060 of the 3,659
+  Phase-5 includes have been assessed; 2,599 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 526

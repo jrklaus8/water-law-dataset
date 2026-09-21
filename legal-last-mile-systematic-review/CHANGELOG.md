@@ -4,7 +4,52 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-19 (latest) — Fifty-fifth full-text screening batch: 3 researcher-supplied PDFs, 1 new include (S528)
+## 2026-09-21 (latest) — Fifty-sixth full-text screening batch: 3 researcher-supplied PDFs, 0 new includes
+
+The researcher uploaded 3 more PDFs. All three were excluded:
+
+- **R1E7614BBAC9B** — Rivera-Nunez, I.M.; Luque Agraz, D.; Murphy, A.D.;
+  Jones, E.C.; Flores-Cuamea, M.A. (2024). "The Types of Water Conflicts
+  in an Irrigation System in Northern Mexico: Conflict as a Negative
+  Link in Social Network Analysis." *Social Sciences* 13(6):312.
+  **EXCLUDE E07.** Social network analysis (118 structured interviews +
+  6 key-informant interviews + ethnography) of conflicts among users
+  and institutional actors in the Rio Mayo Irrigation District, Sonora.
+  The paper's core focus, title, and majority of empirical content
+  (Conflict Types 1-2, ~31 of 45 non-structural-remnant users) concern
+  irrigation-water resource governance among farmers (agrotitanes,
+  land-rental blocks, irrigation-module hydrocracy). Conflict Type 3
+  (14 users) touches genuine domestic/household water content (OOMAPAS
+  utility poor service/high fees driving self-managed community/
+  artisanal wells), but this is a secondary sub-theme within a study
+  whose dominant focus is irrigation-water resource governance --
+  wrong service.
+- **RA86420433D1C** — Milligan, R.; Adams, E.A.; Wheeler, C.;
+  Raulerson, S.; Vermillion, N. (2024). "The hydro-racial fix in
+  infrastructural regions: Atlanta's situation in a regional water
+  governance conflict." *Territory, Politics, Governance* 12(6):866-883.
+  **EXCLUDE E07.** Qualitative study (10 years participant observation +
+  20 semi-structured interviews) applying racial-capitalism theory to
+  the interstate Apalachicola-Chattahoochee-Flint water dispute between
+  Georgia, Florida and Alabama over regional water-resource allocation.
+  Core empirical focus is interstate/regional water-RESOURCE allocation
+  governance, not household-level service-connection mechanisms.
+- **R683C9C404D89** — Eduful, M. (2024). "Toward good governance in
+  water resources management in Ghana." *Natural Resources Forum*
+  48(3):485-507. **EXCLUDE E01.** Qualitative study (31 semi-structured
+  interviews) examining Ghana's IWRM institutional framework (Water
+  Resources Commission, Densu River Basin Management Board) and
+  regulatory mechanisms (water-use permits/charges, environmental
+  permitting, buffer-zone policy). A broad water-RESOURCES governance-
+  institution study, not focused on household-level drinking-water/
+  sanitation SERVICE connection-access mechanisms.
+
+No new extractions, evidence_map, or effect_sizes changes this batch.
+`full_text_retrieval_queue.csv` regenerated (2,599 open records).
+`validate_schemas.py` confirms all 13 tracked files still match their
+documented/generated schema.
+
+## 2026-09-19 — Fifty-fifth full-text screening batch: 3 researcher-supplied PDFs, 1 new include (S528)
 
 The researcher uploaded 3 more PDFs. Two new excludes, one new include:
 
