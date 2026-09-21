@@ -4,7 +4,52 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-third full-text screening batch (4 Drive-retrieved PDFs: 2 excludes, 2 new includes S548-S549)
+## 2026-09-21 (latest) — Seventy-fourth full-text screening batch (2 Drive-retrieved PDFs: 1 exclude, 1 new include S550)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-third batch below:
+
+- **R9BAE8BE9ADB8** — Nastar M, Abbas S, Aponte Rivero C, Jenkins S, Kooy M
+  (2018). "The emancipatory promise of participatory water governance for
+  the urban poor: Reflections on the transition management approach in the
+  cities of Dodowa, Ghana and Arusha, Tanzania." *African Studies*
+  77(4):504-525. doi 10.1080/00020184.2018.1459287. **INCLUDE.** A
+  mixed-methods comparative case study (104 household interviews in
+  Dodowa, 56 household interviews plus 120 water-point interviews in
+  Arusha) of power dynamics in participatory groundwater governance.
+  Documents genuine legal-administrative content across two countries:
+  Ghana's Community Water and Sanitation Agency Act/WATSAN committee
+  structure and GWCL connection process, alongside a roughly 10x informal
+  resale-price markup for tank-resold water versus the regulated GWCL
+  tariff; Tanzania's Water Resource Management Act assigning the Pangani
+  Basin Water Board groundwater-permitting authority, undermined by an
+  unfunded monitoring capacity leaving many boreholes unregistered, and
+  Arusha City Council land permits issued in designated groundwater
+  recharge areas confirmed by a National Environment Management Council
+  official to be illegal under the Act; and household-level exclusion from
+  community water governance in both cities tied to tenure status
+  (renters), kinship ties, and land ownership. Extracted as **S550**
+  (MMAT).
+- **REA26B447CC9E** — Nohong M (2018). "The moderating effect of efficiency
+  and non-market capability in relationship between government involvement
+  and resources to performance of water supply companies (PDAM) in
+  Sulawesi, Indonesia." *International Journal of Law and Management*
+  60(2):402-412. doi 10.1108/IJLMA-11-2016-0117. **EXCLUDE (E04, wrong
+  outcome).** An explanatory PLS-SEM survey study (60 PDAM managing
+  directors) of company-level "Performance" as a function of government
+  involvement, resources, efficiency, and non-market capability -- the
+  same technical/organizational-efficiency exclusion rationale applied to
+  the prior DEA study (R8821B3A63A95); no household- or applicant-level
+  access outcome is examined.
+
+`evidence_map.csv` updated for S550. `full_text_retrieval_queue.csv`
+regenerated (2,554 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,105/3,659 screened
+(548 include/557 exclude), 2,554 open, 548 extracted studies, 27
+effect_sizes rows (unchanged -- the new include has no genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-third full-text screening batch (4 Drive-retrieved PDFs: 2 excludes, 2 new includes S548-S549)
 
 Four further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-second batch below:

@@ -1667,6 +1667,29 @@ evidence of anything.
   for both includes; `full_text_retrieval_queue.csv` regenerated;
   duplicate audit and schema validation re-run clean. Full detail in
   `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-fourth full-text screening batch — 2
+  Drive-retrieved PDFs, 1 exclude and 1 new include (S550).** Nastar,
+  Abbas, Aponte Rivero, Jenkins & Kooy (2018), *African Studies*, "The
+  emancipatory promise of participatory water governance for the urban
+  poor... Dodowa, Ghana and Arusha, Tanzania," is a strong include: a
+  mixed-methods comparative case study (104 household interviews in
+  Dodowa, 56 household interviews plus 120 water-point interviews in
+  Arusha) documenting Ghana's Community Water and Sanitation Agency Act/
+  WATSAN committee structure and GWCL connection process (with tank-resold
+  water priced roughly 10x the regulated tariff), and Tanzania's Water
+  Resource Management Act framework for groundwater regulation undermined
+  by an unfunded Pangani Basin Water Board and by Arusha City Council land
+  permits issued illegally in groundwater recharge areas -- alongside
+  tenure-, kinship-, and land-ownership-based exclusion from community
+  water governance in both cities. Extracted as **S550** (MMAT). Nohong
+  (2018), *International Journal of Law and Management*, "The moderating
+  effect of efficiency and non-market capability... performance of water
+  supply companies (PDAM) in Sulawesi, Indonesia," is a PLS-SEM survey
+  study of company-level performance -- **excluded E04** (wrong outcome),
+  the same technical/organizational-efficiency rationale applied to the
+  earlier DEA exclusion. `evidence_map.csv` updated for S550;
+  `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
+  validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1685,14 +1708,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,103 of the 3,659
-  Phase-5 includes have been assessed; 2,556 records have not yet been
+- Full-text screening itself is far from complete: 1,105 of the 3,659
+  Phase-5 includes have been assessed; 2,554 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 547
+- Extraction (Phase 8) is caught up with screening completely — all 548
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  547 extracted studies** (a first 12-study partial pilot batch was
+  548 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
