@@ -1496,6 +1496,27 @@ evidence of anything.
   review's scope. `full_text_retrieval_queue.csv` regenerated; duplicate
   audit and schema validation re-run clean. Full detail in
   `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-eighth full-text screening batch — 1
+  Drive-retrieved PDF, new include (S541).** Singh & Pandey (2020),
+  *Water Policy*, "Urban water resilience in Hindu Kush Himalaya: issues,
+  challenges and way forward," is a genuine include: a narrative policy
+  synthesis across 8 named cities in Afghanistan, Pakistan, India, Nepal,
+  China and Bhutan, combining a quantitative supply-demand data table
+  with author field observations from the HI-AWARE research consortium.
+  Documents real legal-administrative access mechanisms -- groundwater
+  abstraction bye-laws that exist in multiple towns (Quetta, Kabul,
+  Dehradun, Haldwani) but are seldom enforced, partly due to the
+  political influence of informal water-tanker operators; absence of
+  metering and differential pricing; institutional fragmentation across
+  water-supply departments operating in silos; and inequitable "zero
+  day" water cutoffs disproportionately affecting socio-economically
+  weaker areas, with unaffordable tanker-water pricing (e.g. $0.36/unit
+  in Kabul) as the de facto supply mechanism where formal municipal
+  supply is deficient. Extracted as **S541** using the Legal
+  Institutional Evidence Appraisal Framework, since the paper is not a
+  systematic review (no described search protocol). `evidence_map.csv`
+  updated; `full_text_retrieval_queue.csv` regenerated; duplicate audit
+  and schema validation re-run clean. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1514,14 +1535,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,091 of the 3,659
-  Phase-5 includes have been assessed; 2,568 records have not yet been
+- Full-text screening itself is far from complete: 1,092 of the 3,659
+  Phase-5 includes have been assessed; 2,567 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 538
+- Extraction (Phase 8) is caught up with screening completely — all 539
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  538 extracted studies** (a first 12-study partial pilot batch was
+  539 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

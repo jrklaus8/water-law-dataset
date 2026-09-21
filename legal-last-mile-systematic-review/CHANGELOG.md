@@ -4,7 +4,43 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-seventh full-text screening batch (1 Drive-retrieved PDF, exclude)
+## 2026-09-21 (latest) — Sixty-eighth full-text screening batch (1 Drive-retrieved PDF, new include S541)
+
+One further PDF surfaced in the Google Drive retrieval inbox after the
+sixty-seventh batch below:
+
+- **R08C74B34D928** — Singh V, Pandey A (2020). "Urban water resilience
+  in Hindu Kush Himalaya: issues, challenges and way forward." *Water
+  Policy* 22(S1):33-45. doi 10.2166/wp.2019.329. **INCLUDE.** A
+  narrative policy synthesis (not a systematic review -- no described
+  search protocol) across 8 named cities in the Hindu Kush Himalaya
+  region (Kabul, Quetta, Shimla, Mussoorie, Nainital, Kathmandu, Xining,
+  Thimphu) spanning Afghanistan, Pakistan, India, Nepal, China and
+  Bhutan, combining a quantitative supply/demand data table (Table 1)
+  with field observations from the HI-AWARE research consortium.
+  Documents genuine legal-administrative access mechanisms: groundwater
+  abstraction bye-laws exist in multiple towns (Quetta, Kabul, Dehradun,
+  Haldwani) but are "seldom followed," attributed partly to the
+  political clout of informal water-tanker operators ("tanker mafia");
+  absence of water metering and differential pricing across most towns;
+  institutional fragmentation across multiple water-supply
+  departments/agencies operating in silos; and inequitable "zero day"
+  water cutoffs disproportionately affecting socio-economically weaker
+  areas even where aggregate scarcity is not severe, with unaffordable
+  tanker-water pricing (Kabul residents pay $0.36/unit) as the de facto
+  supply mechanism where formal municipal supply is deficient (Kabul
+  supplies only ~20% of its population; Kathmandu Valley faces a ~70%
+  shortfall). Extracted as **S541** using the project's own Legal
+  Institutional Evidence Appraisal Framework.
+
+`evidence_map.csv` updated for S541. `full_text_retrieval_queue.csv`
+regenerated (2,567 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,092/3,659 screened
+(539 include/553 exclude), 2,567 open, 539 extracted studies, 27
+effect_sizes rows (unchanged -- no defined exposure-vs-comparator
+contrast in a narrative multi-city synthesis).
+
+## 2026-09-21 — Sixty-seventh full-text screening batch (1 Drive-retrieved PDF, exclude)
 
 One further PDF surfaced in the Google Drive retrieval inbox after the
 sixty-sixth batch below:
