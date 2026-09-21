@@ -4,7 +4,58 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-fifth full-text screening batch (2 Drive-retrieved PDFs, 1 already-decided duplicate + 1 new include S539)
+## 2026-09-21 (latest) — Sixty-sixth full-text screening batch (4 Drive-retrieved PDFs, 1 new include S540 + 3 excludes)
+
+Four further PDFs surfaced in the Google Drive retrieval inbox after the
+sixty-fifth batch below:
+
+- **R9FFEBB4E1EFA** — Silva-Novoa Sanchez LM, Bossenbroek L, Schilling J,
+  Berger C (2022). "Governance and Sustainability Challenges in the
+  Water Policy of Morocco 1995-2020." *Water* 14(18):2932. doi
+  10.3390/w14182932. **INCLUDE.** Content analysis of Moroccan water
+  policy (Law 10-95 and its 2016 successor, Law 36-15) combined with 37
+  semi-structured interviews with farmers, local officials, and water
+  administrators in the Sais plain and Souss-Massa region. Documents
+  genuine legal-administrative access mechanisms: well-digging permits
+  reportedly requiring informal payments/bribery to obtain;
+  drip-irrigation subsidy eligibility contingent on a tribal land-use
+  certificate that itself requires a digging permit, a circular
+  bureaucratic bind excluding tenure-insecure farmers; institutional
+  fragmentation across the Ministries of Agriculture (subsidies), Water
+  (permits), and Interior/caidat (land certification); unequal Kharouba
+  water-rights share allocation (1/8, 1/4 shares) among farmers; and
+  unconnected/intermittent rural drinking-water households. Extracted
+  as **S540** (CASP Qualitative Studies Checklist).
+- **R397656949E83** — Viljoen S (Water Wheel / South African water-law
+  journal). A doctrinal commentary on South African water-law property
+  paradigms. **EXCLUDE E05.** Pure doctrinal/theoretical discussion of
+  property-law frameworks with no empirical access-outcome evidence —
+  distinguished from doctrinal includes (e.g. S538 Dallasheh, S533
+  Ghertner) which document a concrete, operating legal-administrative
+  access mechanism rather than abstract legal theory.
+- **R98A0DCEA5699** — Mamokhere J et al. A paper on municipal service
+  partnerships/PPP governance. **EXCLUDE E07.** Self-described
+  non-empirical conceptual paper synthesizing secondary literature, no
+  primary data collection; generic multi-service municipal governance
+  topic, not water-specific.
+- **R1BF978DC83F1** — Shadabi L, Ward FA. "Predictors of safe drinking
+  water access." **EXCLUDE E01.** A rigorous macro cross-national
+  econometric study of national-level governance-quality composite
+  indices (GDP, Gini, corruption-avoidance index, government-
+  effectiveness index, civil-liberties index) as predictors of
+  aggregate national safe-drinking-water access rates — the wrong unit
+  of analysis for this review's household/applicant-level
+  legal-administrative access scope, the same rationale applied to the
+  earlier Nkiaka exclusion (sixty-fourth batch above).
+
+`evidence_map.csv` updated for S540. `full_text_retrieval_queue.csv`
+regenerated (2,569 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,090/3,659 screened
+(538 include/552 exclude), 2,569 open, 538 extracted studies, 27
+effect_sizes rows (unchanged this batch — none of the 4 records met the
+strict effect_sizes eligibility bar).
+
+## 2026-09-21 — Sixty-fifth full-text screening batch (2 Drive-retrieved PDFs, 1 already-decided duplicate + 1 new include S539)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox after the
 sixty-fourth batch below:

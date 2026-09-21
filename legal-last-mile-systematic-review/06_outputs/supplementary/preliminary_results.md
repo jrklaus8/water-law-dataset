@@ -1455,6 +1455,32 @@ evidence of anything.
   pricing-effect study alongside S526. `evidence_map.csv` updated;
   duplicate audit and schema validation re-run clean. Full detail in
   `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-sixth full-text screening batch — 4
+  Drive-retrieved PDFs, 1 new include (S540) + 3 excludes.** Silva-Novoa
+  Sanchez, Bossenbroek, Schilling & Berger (2022), *Water*, "Governance
+  and Sustainability Challenges in the Water Policy of Morocco
+  1995-2020," is a strong include: content analysis of Moroccan water
+  policy plus 37 semi-structured interviews document real
+  legal-administrative access mechanisms — well-digging permits
+  reportedly requiring bribery, drip-irrigation subsidy eligibility
+  contingent on a tribal land-use certificate that itself requires a
+  digging permit (a circular exclusion of tenure-insecure farmers),
+  institutional fragmentation across the Ministries of Agriculture,
+  Water, and Interior, and unequal Kharouba water-rights share
+  allocation among farmers. Extracted as **S540** (CASP). Three genuine
+  excludes: Viljoen's South African water-law property-paradigm article
+  is pure doctrinal commentary without empirical access evidence (E05);
+  Mamokhere et al.'s municipal service-partnerships paper is a
+  self-described non-empirical conceptual/secondary-literature synthesis
+  and not water-specific (E07); Shadabi & Ward's predictors-of-safe-
+  drinking-water-access study is a rigorous macro cross-national
+  regression on national governance-quality indices (GDP, Gini,
+  corruption, government effectiveness, civil liberties) — the wrong
+  unit of analysis for this review's household/applicant-level scope,
+  the same rationale as the earlier Nkiaka exclusion (E01).
+  `evidence_map.csv` updated; `full_text_retrieval_queue.csv`
+  regenerated; duplicate audit and schema validation re-run clean. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1473,14 +1499,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,086 of the 3,659
-  Phase-5 includes have been assessed; 2,573 records have not yet been
+- Full-text screening itself is far from complete: 1,090 of the 3,659
+  Phase-5 includes have been assessed; 2,569 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 537
+- Extraction (Phase 8) is caught up with screening completely — all 538
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  537 extracted studies** (a first 12-study partial pilot batch was
+  538 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
