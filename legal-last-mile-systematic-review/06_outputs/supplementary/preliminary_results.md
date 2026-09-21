@@ -1907,6 +1907,58 @@ evidence of anything.
   documenting the mismatch. `evidence_map.csv` updated for S561-S564;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and schema
   validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): eightieth full-text screening batch —
+  10 Drive-retrieved PDFs, 4 excludes, 6 new includes (S565-S570), all
+  title/content-verified against target records, no wrong-file
+  deliveries.** Six strong includes: Mbiza et al. (2026), a mixed-methods
+  150-household study developing the Greywater Service Innovation Ladder
+  governance-maturity framework for decentralised greywater services in
+  Southlea Park, Harare, Zimbabwe, documenting Zimbabwe's greywater
+  policy vacuum, RDC/ward-committee gate-decision authority, and the
+  Equity Safeguard Ratio affordability mechanism (S565, MMAT). Abawari et
+  al. (2026), a qualitative photovoice study of school WASH governance
+  gaps in two Ethiopian primary schools (20 core participants, 75-
+  participant advocacy event), documenting weak inter-agency
+  accountability and the advocacy event's bureaucratic-gap-bridging role
+  (S566, CASP). Gashaw et al. (2025), a mixed-methods 400-household
+  survey of rural water-scheme functionality/sustainability governance in
+  Gursum District, Ethiopia, documenting WASHCO tariff authority and
+  government-dominated technology selection despite nominal community
+  ownership (S567, MMAT). Azupogo, Dassah & Bisung (2023), a
+  participatory concept-mapping study (22 stakeholders) of inclusive
+  school WASH strategies for students with physical disabilities in
+  Ghana, documenting the CRPD normative baseline and an unimplemented
+  Inclusive Education Policy (S568, MMAT). Karim et al. (2024), a
+  mixed-methods 150-household study applying SFD/CSDA/SWOT analysis to
+  citywide sanitation governance in Noakhali Pourashava, Bangladesh,
+  documenting Bangladesh's national sanitation strategy's silence on
+  fecal sludge management and CSDA-scored institutional gaps (S569,
+  MMAT). Coultas et al. (2022), a qualitative multi-case study (31
+  combined key-informant interviews) of sub-national government
+  sanitation-leadership mechanisms across Kenya, Rwanda, and Uganda,
+  documenting each country's decentralisation architecture, a governor's
+  signed financial-commitment letter, and mandatory livelihood-benefit/
+  toilet-use conditionality (S570, CASP). Four excludes: R65E0D0F26A0A
+  (Celume, Donoso et al., a 63-study PRISMA-style systematic review plus
+  comparative legal-text analysis of Chile's 2022 Water Code reform) —
+  **excluded E05**, extending the Viljoen/Burdon doctrinal-commentary
+  precedent to systematic reviews of secondary legal literature.
+  R73C7494E55DD (Gidion, a network-DEA efficiency-benchmarking study of
+  40 Tanzanian urban water utilities) — **excluded E04**, utility-level
+  performance ranking, matching the established DEA-exclusion precedent.
+  R96593F742647 (Satpathy & Jha, Indian intermittent-water-supply
+  social-relations analysis) — **excluded E05**, the authors' own stated
+  reliance on literature review with no original household-level data
+  collection. R3BF9C93DC6A9 (Saadi & Johns, "Governing smart water
+  cities," a Canadian policy framework) — **excluded E05**, explicitly
+  self-described as a policy-oriented scoping review of 51 secondary
+  sources with no original empirical data collection. `evidence_map.csv`
+  updated for S565-S570; `exclusion_log.csv` updated (569 rows total);
+  `full_text_retrieval_queue.csv` regenerated (2,522 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,137/3,659 screened (568 include/569 exclude), 2,522 open, 568
+  extracted studies, 27 effect_sizes rows (unchanged). Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1925,14 +1977,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,127 of the 3,659
-  Phase-5 includes have been assessed; 2,532 records have not yet been
+- Full-text screening itself is far from complete: 1,137 of the 3,659
+  Phase-5 includes have been assessed; 2,522 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 562
+- Extraction (Phase 8) is caught up with screening completely — all 568
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  562 extracted studies** (a first 12-study partial pilot batch was
+  568 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

@@ -4,7 +4,127 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-ninth full-text screening batch (7 Drive-retrieved PDFs: 1 exclude, 4 new includes S561-S564, 2 wrong-file-retrieved left open)
+## 2026-09-21 (latest) — Eightieth full-text screening batch (10 Drive-retrieved PDFs: 4 excludes, 6 new includes S565-S570)
+
+Ten further PDFs surfaced in the Google Drive retrieval inbox, all
+title/content-verified against their target records prior to screening
+(no wrong-file deliveries this batch):
+
+- **R3B336474D5A8** — Mbiza H et al. (2026). "Service innovation and
+  governance models for decentralised greywater systems in pro-poor
+  urban settlements: evidence from Southlea Park, Zimbabwe." *Water
+  Policy* 28(3):520-539. doi 10.2166/wp.2026.168. **INCLUDE.** A
+  mixed-methods case study (150-household survey, environmental spot
+  measurements, policy document review) developing and applying the
+  Greywater Service Innovation Ladder (GSIL) governance-maturity
+  framework. Documents genuine legal-institutional content: Zimbabwe's
+  National Water Policy greywater-governance vacuum; RDC/ward-committee
+  gate-decision authority over service-progression thresholds; and the
+  Equity Safeguard Ratio affordability-threshold mechanism. Extracted as
+  **S565** (MMAT, mixed methods).
+- **RA1815DB6A8FD** — Abawari MJ et al. (2026). "Seeing sanitation: using
+  photovoice for research and advocacy on WASH challenges in two
+  Ethiopian urban primary schools." *Journal of Water, Sanitation and
+  Hygiene for Development* 16(5):409-425. doi 10.2166/washdev.2026.250.
+  **INCLUDE.** A qualitative participatory photovoice study (10 teachers,
+  10 students, 6 facilitated group discussions, 75-participant advocacy
+  event). Documents genuine institutional-governance content: weak
+  monitoring/supervision and unclear inter-agency responsibility for
+  school WASH maintenance; absence of facility-deterioration reporting
+  channels; and the advocacy event's role in bridging vertical
+  bureaucratic-accountability gaps between school communities and local
+  officials. Extracted as **S566** (CASP, qualitative).
+- **R19F2163297EB** — Gashaw Y et al. (2025). "Rural community water
+  supply schemes: functionality status, sustainability, and associated
+  factors in eastern Ethiopia: a mixed-methods study." *Journal of Water,
+  Sanitation and Hygiene for Development* 15(8):683-696. doi
+  10.2166/washdev.2025.053. **INCLUDE.** A mixed-methods cross-sectional
+  study (400-household survey across 120 water points, technician/
+  engineer/committee interviews). Documents genuine legal-institutional
+  content: WASHCO tariff-setting and fee-collection authority;
+  government-dominated technology selection (85.8%) despite nominal
+  community ownership (73.3%); and District Water Office/NGO
+  institutional-support structures. Extracted as **S567** (MMAT, mixed
+  methods).
+- **R2A9D36D4B43E** — Azupogo UW, Dassah E, Bisung E (2023). "Promoting
+  safe and inclusive water and sanitation services for students with
+  physical disabilities in primary schools: a concept mapping study in
+  Ghana." *Journal of Water, Sanitation and Hygiene for Development*
+  13(6):453-463. doi 10.2166/washdev.2023.029. **INCLUDE.** A
+  participatory mixed-methods concept-mapping study (22 stakeholders
+  across policy, NGO, water, education, disability-advocacy, and student
+  sectors). Documents genuine legal-institutional content: the UN CRPD
+  normative baseline; Ghana's Inclusive Education Policy implementation-
+  resource gap per stakeholder testimony; and a proposed accountability/
+  sanction roadmap for authorities denying disability access to WASH
+  facilities. Extracted as **S568** (MMAT, mixed methods).
+- **RF35F2E5A319B** — Karim F et al. (2024). "Holistic citywide sanitation
+  for an urban area in the Global South: A case study of the Noakhali
+  Pourashava of Bangladesh." *Journal of Water, Sanitation and Hygiene
+  for Development* 14(7):572-582. doi 10.2166/washdev.2024.169.
+  **INCLUDE.** A mixed-methods case study (150-household survey, 7
+  key-informant interviews, 4 focus group discussions) applying shit flow
+  diagram (SFD), city service delivery assessment (CSDA), and SWOT
+  analysis. Documents genuine legal-institutional content: Bangladesh's
+  National Strategy for Water Supply and Sanitation's silence on fecal
+  sludge management; CSDA-scored institutional/regulatory gaps by
+  sanitation domain; and named institutional actors' (WASA, DPHE,
+  Pourashava, UNDP) statutory responsibility gaps. Extracted as **S569**
+  (MMAT, mixed methods).
+- **R78F5B66C5C9F** — Coultas M et al. (2022). "Galvanising and fostering
+  sub-national government leadership for area-wide sanitation
+  programming." *H2Open Journal* 5(1):1-10. doi 10.2166/h2oj.2022.022.
+  **INCLUDE.** A qualitative multi-case study (documentary review, 31
+  combined key-informant interviews across Kenya, Rwanda, and Uganda,
+  three participatory cross-case analysis workshops). Documents genuine
+  legal-institutional content: each country's constitutional/statutory
+  decentralisation architecture assigning sanitation mandates to
+  sub-national tiers; a governor's signed financial-commitment letter
+  binding budget allocation to sanitation; and mandatory livelihood-
+  benefit/toilet-use conditionality. Extracted as **S570** (CASP,
+  qualitative).
+- **R65E0D0F26A0A** — Celume, Donoso et al. "Reform of the Chilean water
+  code in 2022: shift from a neoliberal model to a more public interest
+  model." **EXCLUDE (E05, no original empirical evidence).** A
+  PRISMA-style systematic review of 63 existing secondary legal-critique
+  studies plus comparative legal-text analysis of Law No. 21,435 versus
+  the 1981 Water Code. No original household-level empirical data
+  collection — matches the Viljoen/Burdon doctrinal-commentary precedent,
+  extended to systematic reviews of secondary legal literature.
+- **R73C7494E55DD** — Gidion. "Ranking water utilities in a competitive
+  scenario using two years of information and data envelopment
+  analysis." *Water Practice & Technology* 20(2):436-448. **EXCLUDE (E04,
+  wrong outcome).** A network-DEA efficiency-benchmarking study of 40
+  Tanzanian urban water utilities on inputs (non-revenue water, personnel
+  expenditure, staffing) versus outputs (population served, hours of
+  service, metered customers). Utility-level performance ranking, not
+  household/applicant-level access — matches the established DEA-exclusion
+  precedent from R8821B3A63A95, REA26B447CC9E, RC47ECBF4C9AF,
+  R23EE2449CF6B.
+- **R96593F742647** — Satpathy S, Jha R. "Intermittent water supply in
+  Indian cities: considering the intermittency beyond demand and
+  supply." *AQUA — Water Infrastructure, Ecosystems and Society*
+  71(12):1395-1407. **EXCLUDE (E05, no original empirical evidence).**
+  Explicitly self-described by the authors as relying "mostly... on the
+  review of literature," using only existing government/utility
+  statistics with no original household-level data collection.
+- **R3BF9C93DC6A9** — Saadi S, Johns C. "Governing smart water cities for
+  urban water resilience: international lessons and a Canadian policy
+  framework." *Water Policy* (2026). **EXCLUDE (E05, no original
+  empirical evidence).** Explicitly self-described as a "policy-oriented
+  scoping review" synthesizing 51 secondary academic and policy sources
+  across five international and five Canadian case examples; no original
+  empirical data collection.
+
+`evidence_map.csv` updated for S565-S570. `exclusion_log.csv` updated for
+the 4 new excludes (569 rows). `full_text_retrieval_queue.csv`
+regenerated (2,522 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,137/3,659 screened
+(568 include/569 exclude), 2,522 open, 568 extracted studies, 27
+effect_sizes rows (unchanged — none of the new includes has a genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-ninth full-text screening batch (7 Drive-retrieved PDFs: 1 exclude, 4 new includes S561-S564, 2 wrong-file-retrieved left open)
 
 Seven further PDFs surfaced in the Google Drive retrieval inbox:
 
