@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-seventh full-text screening batch (2 Drive-retrieved PDFs: 2 new includes S557-S558)
+## 2026-09-21 (latest) — Seventy-eighth full-text screening batch (5 Drive-retrieved PDFs: 3 excludes, 2 new includes S559-S560)
+
+Five further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-seventh batch below:
+
+- **RBEBE0BACCD18** — Wagaba et al., study of small NGOs' access to
+  geological/hydrogeological data for water-point siting and planning
+  purposes in eastern Africa. **EXCLUDE (E01, wrong topic).** The unit of
+  analysis is a practitioner/NGO organization's access to technical
+  scientific data (borehole records, aquifer maps), an entirely different
+  exposure and population than this review's target of household- or
+  applicant-level legal-administrative access to water services.
+- **RE8D979932979** — Blanchon, analysis of South Africa's 1998 National
+  Water Act "Reserve" mechanism (statutory environmental-flow allocation),
+  with an Orange River case study. **EXCLUDE (E01, wrong topic).** A
+  policy/hydrological-geography analysis of environmental-flow and
+  river-basin allocation law, drawn from government reports and secondary
+  sources with no original empirical data collection on households; the
+  exposure examined is a different unit of analysis than household-level
+  legal-administrative water access.
+- **R81549C4709FC** — Two book chapters (Sherpa, "Climate Change in Nepal
+  through an Indigenous Environmental Justice Lens," and Awale, "Women,
+  Water, and Weather: Kavre Villages Adapt to the Increasing Impacts of
+  the Climate Crisis") from an edited volume's Climate Justice section.
+  **EXCLUDE (E01, wrong topic).** Both are ethnographic/qualitative
+  studies of climate-change adaptation, Indigenous Environmental Justice
+  framing, and gendered climate-driven water-scarcity coping strategies in
+  Nepal; neither examines legal-administrative water access (no
+  water-rights law, permitting, connection, tariff, or institutional
+  service-delivery content for households).
+- **RD1E30397691A** — Boucher-Hedenström J, Rutherford D (2010).
+  "Services d'eau et d'assainissement et dispersion « urbaine » dans le
+  comté de Stockholm." *Flux* 2010/1-2 (n°79-80):54-68. doi
+  10.3917/flux.079.0054. **INCLUDE.** A qualitative case study (interviews
+  with named municipal/regional officials, combined with regulatory
+  analysis) of water/sanitation service configuration amid urban sprawl in
+  Stockholm County, Sweden, with a Norrtälje case study. Documents genuine
+  legal-institutional content: Sweden's 2007 Water Services Act municipal
+  responsibility and cost-price tariff principle; four service-
+  configuration types A-D; ~90,000 households on alternative
+  (non-municipal) solutions; municipal permit/connection requirements and
+  enforcement authority over substandard individual installations; and a
+  mini-network (samfällighet) unanimous-consent connection model.
+  Extracted as **S559** (CASP, qualitative).
+- **R1197785426F6** — Baron C, Bonnassieux A (2013). "Gouvernance hybride,
+  participation et accès à l'eau potable: Le cas des associations
+  d'usagers de l'eau (AUE) au Burkina Faso." *Annales de géographie*
+  2013/5 (n°693):525-548. doi 10.3917/ag.693.0525. **INCLUDE.** A
+  qualitative case study (field studies conducted 2011-2014 under the ANR
+  Sud II APPI research project) of hybrid water governance and the
+  legal-institutional role of Water Users' Associations (AUE) in rural/
+  semi-urban Burkina Faso. Documents genuine legal-institutional content:
+  the 2001 Water Law right to water; the 2009 decentralization decree
+  transferring infrastructure competence to communes; AUE legal
+  homologation/licensing criteria (30-80 members, gender parity, youth
+  quotas, elected 6-member bureau); AUE's formal role fixing water
+  tariffs, controlling point-of-service operators, and mediating
+  conflicts; delegation of AEPS management to private or associative
+  operators via affermage contracts; and documented gendered exclusion
+  within this formal participatory governance structure. Extracted as
+  **S560** (CASP, qualitative).
+
+`evidence_map.csv` updated for S559-S560. `exclusion_log.csv` updated for
+the 3 new excludes (566 rows). `full_text_retrieval_queue.csv`
+regenerated (2,536 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,123/3,659 screened
+(558 include/565 exclude), 2,536 open, 558 extracted studies, 27
+effect_sizes rows (unchanged -- neither new include has a genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-seventh full-text screening batch (2 Drive-retrieved PDFs: 2 new includes S557-S558)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-sixth batch below:
