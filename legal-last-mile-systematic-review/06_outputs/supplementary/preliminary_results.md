@@ -1627,6 +1627,46 @@ evidence of anything.
   Extracted as **S547** (MMAT). `evidence_map.csv` updated for both;
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and
   schema validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): seventy-third full-text screening batch — 4
+  Drive-retrieved PDFs, 2 excludes and 2 new includes (S548-S549).**
+  Nyamwanza (2018), *International Journal of Climate Change Strategies
+  and Management*, "Local institutional adaptation for sustainable water
+  management... A case in the mid-Zambezi Valley, Zimbabwe," is a strong
+  include: a qualitative case study (34 semi-structured interviews, 3
+  community workshops, key informant interviews) documenting that
+  Zimbabwe's statutorily mandated Catchment/Sub-Catchment Councils and
+  ZINWA are functionally absent in rural Mbire District (over 90% of
+  residents had no knowledge of them), leaving the Rural District Council,
+  Environmental Management Agency, traditional authorities, and community
+  Borehole Water Committees as the institutions actually governing access
+  -- including a contested streambank-cultivation by-law later modified
+  through local negotiation, and chronic borehole shortage (up to 2,000
+  people per functioning borehole against a 250-person government
+  recommendation). Extracted as **S548** (CASP, qualitative). Bartels,
+  Bruns & Alba (2018), *Local Environment*, "The production of uneven
+  access to land and water in peri-urban spaces: de facto privatisation in
+  greater Accra," is a strong include: a mixed-methods study (62 household
+  interviews, transect walks, photo diaries) documenting unlicensed de
+  facto private control of groundwater bypassing Ghana's Water Resources
+  Commission Act 1996 permit requirement, private-vendor water pricing
+  3-20x the official GWCL rate, customary land tenure exploited via a
+  20-year chieftaincy dispute enabling multiple sale of the same land
+  plots, and an extra-legal "digging fee" required before construction.
+  Extracted as **S549** (MMAT). Post, Agnihotri & Hyun (2018), *Studies in
+  Comparative International Development*, "Using Crowd-Sourced Data to
+  Study Public Services: Lessons from Urban India," is a research-methods
+  paper (water-intermittency data from Bangalore illustrates a broader
+  toolkit for political-science crowd-sourced-data research) --
+  **excluded E01** (wrong topic), since its actual contribution is
+  methodological rather than a primary empirical study of
+  legal-administrative water access. Silva Rodríguez de San Miguel (2018),
+  *Management of Environmental Quality*, "Gender and water management in
+  Mexico," self-labeled "Paper type: General review," is a narrative
+  literature survey with no original empirical data collection of its own
+  -- **excluded E05** (no empirical evidence). `evidence_map.csv` updated
+  for both includes; `full_text_retrieval_queue.csv` regenerated;
+  duplicate audit and schema validation re-run clean. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1645,14 +1685,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,099 of the 3,659
-  Phase-5 includes have been assessed; 2,560 records have not yet been
+- Full-text screening itself is far from complete: 1,103 of the 3,659
+  Phase-5 includes have been assessed; 2,556 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 545
+- Extraction (Phase 8) is caught up with screening completely — all 547
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  545 extracted studies** (a first 12-study partial pilot batch was
+  547 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

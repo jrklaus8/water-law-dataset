@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Seventy-second full-text screening batch (3 Drive-retrieved PDFs: 1 exclude, 2 new includes S546-S547)
+## 2026-09-21 (latest) — Seventy-third full-text screening batch (4 Drive-retrieved PDFs: 2 excludes, 2 new includes S548-S549)
+
+Four further PDFs surfaced in the Google Drive retrieval inbox after the
+seventy-second batch below:
+
+- **RACFFE4F7F72C** — Nyamwanza AM (2018). "Local institutional adaptation
+  for sustainable water management under increasing climatic variability and
+  change: A case in the mid-Zambezi Valley, Zimbabwe." *International
+  Journal of Climate Change Strategies and Management* 10(3):453-471. doi
+  10.1108/IJCCSM-03-2017-0078. **INCLUDE.** A qualitative case study (34
+  semi-structured interviews, 3 community workshops, key informant
+  interviews, documentary review) of local water-related institutional
+  adaptation in Mbire District. Documents genuine legal-institutional
+  content under Zimbabwe's Water Act 1998, ZINWA Act 1998, Environmental
+  Management Act 2002, and Rural District Councils Act 1996: the
+  statutorily mandated Catchment/Sub-Catchment Councils and ZINWA are
+  functionally absent in this rural district (over 90% of residents had no
+  knowledge of them), leaving the RDC, EMA, traditional authorities, and
+  community Borehole Water Committees as the institutions actually
+  governing access; RDC enforcement of a national streambank-cultivation
+  by-law produced sustained conflict with EMA and residents, resolved via a
+  locally negotiated accommodation not fully accepted inter-institutionally;
+  and borehole access is severely strained, with most wards far exceeding
+  the government's recommended 250-persons-per-borehole maximum (up to
+  2,000 in the worst-affected ward) after the post-2000 collapse of
+  donor-funded drilling/maintenance support. Extracted as **S548** (CASP
+  Qualitative Studies Checklist).
+- **RCC0D2A422FD2** — Bartels LE, Bruns A, Alba R (2018). "The production of
+  uneven access to land and water in peri-urban spaces: de facto
+  privatisation in greater Accra." *Local Environment* 23(12):1172-1189.
+  doi 10.1080/13549839.2018.1533932. **INCLUDE.** A mixed-methods case
+  study (62 semi-structured household interviews, transect walks, photo
+  diaries, expert/stakeholder interviews) of de facto privatisation and
+  uneven access to land and water in peri-urban Greater Accra. Documents
+  genuine legal-administrative access mechanisms under Ghana's Water
+  Resources Commission Act 1996 and Water Use Regulations 2001: unlicensed,
+  unregistered de facto private control of groundwater by landowners
+  despite the legal permit requirement; private water-vendor pricing 3-20x
+  the official GWCL rate, stratified by income between bulk-tanker and
+  neighbourhood-vendor purchase; customary allodial-title land tenure
+  exploited via an unresolved 20-year chieftaincy dispute enabling multiple
+  sale of the same plots; formal land-title registration under the Title
+  Registration Act 1986 functionally inaccessible to most residents; and an
+  extra-legal "digging fee"/asafo-money payment required before
+  construction can begin. Extracted as **S549** (MMAT).
+- **R8AD13170998A** — Post AE, Agnihotri A, Hyun C (2018). "Using
+  Crowd-Sourced Data to Study Public Services: Lessons from Urban India."
+  *Studies in Comparative International Development* 53:324-342. doi
+  10.1007/s12116-018-9271-4. **EXCLUDE (E01, wrong topic).** A methods
+  paper on using crowd-sourced data in political science research (the
+  authors' NextDrop water-intermittency project in Bangalore is one
+  illustration among several suggested applications -- protest politics,
+  corruption, public opinion, law and order). The paper's actual
+  contribution is methodological (groundtruthing, selection-bias
+  correction, cluster-randomization causal inference, research
+  partnerships), not a primary empirical study of legal-administrative
+  water-access mechanisms.
+- **RFAED90B6DD97** — Silva Rodríguez de San Miguel JA (2018). "Gender and
+  water management in Mexico." *Management of Environmental Quality*
+  29(5):842-858. doi 10.1108/MEQ-10-2017-0112. **EXCLUDE (E05, no empirical
+  evidence).** Explicitly self-labeled "Paper type: General review" -- a
+  narrative literature survey (JSTOR/EBSCOhost database search, hand-coded
+  themes) with no original empirical data collection of its own; the author
+  states future research will add the case studies and fieldwork
+  observations this review lacks.
+
+`evidence_map.csv` updated for S548-S549. `full_text_retrieval_queue.csv`
+regenerated (2,556 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,103/3,659 screened
+(547 include/556 exclude), 2,556 open, 547 extracted studies, 27
+effect_sizes rows (unchanged -- neither new include has a genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Seventy-second full-text screening batch (3 Drive-retrieved PDFs: 1 exclude, 2 new includes S546-S547)
 
 Three further PDFs surfaced in the Google Drive retrieval inbox after the
 seventy-first batch below:
