@@ -4,7 +4,50 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Sixty-fourth full-text screening batch (2 Drive-retrieved PDFs, both excludes E01)
+## 2026-09-21 (latest) — Sixty-fifth full-text screening batch (2 Drive-retrieved PDFs, 1 already-decided duplicate + 1 new include S539)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox after the
+sixty-fourth batch below:
+
+- **R844EAC3AEE12** — a correctly-relabeled re-upload of the Dewi,
+  Kusumoarto & Rejoni (2026) slum-participation study already excluded
+  E01 in the sixty-first batch (2026-09-21 earlier). Per the project's
+  standing duplicate-defer rule, an already-decided record_id is never
+  re-litigated on a fresh upload; the existing exclude decision stands
+  unchanged, and the file was moved straight to the Drive `Processed/`
+  folder without further screening.
+- **RA0FB2C52085F** — Zhang X, Gonzalez Rivas M, Grant M, Warner ME
+  (2022). "Water pricing and affordability in the US: public vs.
+  private ownership." *Water Policy* 24(3):500-516. doi
+  10.2166/wp.2022.283. **INCLUDE.** OLS regression across the 500
+  largest US community water systems (321 government-owned, 121
+  cooperative, 58 investor-owned). Private ownership is associated with
+  a $144.04 higher annual water bill (std. coeff 0.35, p<0.01) and a
+  1.55-percentage-point higher share of lowest-quintile household
+  income spent on water (std. coeff 0.26, p<0.01), controlling for
+  regulation, water supply, infrastructure age, and community
+  demographics. Separately, state regulation favorable to private
+  providers -- New Jersey and Pennsylvania's "fair value" legislation
+  (enabling private acquisition of municipal systems at inflated
+  valuations recoverable through rates) and Distribution System
+  Improvement Charge (DSIC) surcharges (passing capital costs to
+  ratepayers between formal rate cases) -- is associated with a further
+  $88.64 higher annual bill (p<0.01). Real legal-administrative
+  mechanisms (state Public Utility Commission rate regulation,
+  fair-value legislation, DSIC surcharges) with a genuine,
+  non-fabricated exposure-vs-comparator contrast and clean effect
+  estimates. Extracted as **S539** (JBI Critical Appraisal Checklist
+  for Analytical Cross Sectional Studies) and added to
+  `effect_sizes.csv` -- the review's second ownership/regulation
+  pricing-effect study, alongside S526 (Switzer & Teodoro 2025).
+
+`evidence_map.csv` updated for S539. `full_text_retrieval_queue.csv`
+regenerated (2,573 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,086/3,659 screened
+(537 include/549 exclude), 2,573 open, 537 extracted studies, 27
+effect_sizes rows.
+
+## 2026-09-21 — Sixty-fourth full-text screening batch (2 Drive-retrieved PDFs, both excludes E01)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox after the
 sixty-third batch below — both genuinely new, still-open screening

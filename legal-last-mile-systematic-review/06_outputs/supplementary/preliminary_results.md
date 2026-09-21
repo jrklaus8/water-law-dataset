@@ -1432,6 +1432,29 @@ evidence of anything.
   unit of analysis for this review's household/applicant-level scope).
   `full_text_retrieval_queue.csv` regenerated; duplicate audit and
   schema validation re-run clean. Full detail in `CHANGELOG.md`.
+- **2026-09-21 (later still): sixty-fifth full-text screening batch — 2
+  Drive-retrieved PDFs, 1 already-decided duplicate + 1 new include
+  (S539).** R844EAC3AEE12 turned out to be a correctly-relabeled
+  re-upload of the already-excluded Dewi et al. slum-participation
+  study (see the sixty-first batch above) — per the standing
+  duplicate-defer rule, the existing exclude decision was not
+  re-litigated; the file was simply moved to Processed. The genuinely
+  new record, Zhang, Gonzalez Rivas, Grant & Warner (2022), *Water
+  Policy*, "Water pricing and affordability in the US: public vs.
+  private ownership," is a strong include: an OLS regression across
+  the 500 largest US community water systems finds private ownership
+  associated with a $144 higher annual water bill and a 1.55-point
+  higher share of low-income household income spent on water (both
+  p<0.01), and state regulation favorable to private providers
+  (NJ/PA "fair value" legislation, Distribution System Improvement
+  Charge surcharges) associated with a further $89 higher bill. Real
+  legal-administrative mechanisms (PUC rate regulation, fair-value
+  legislation) with clean, non-fabricated effect estimates — extracted
+  as **S539** (JBI Analytical Cross Sectional) and added to
+  `effect_sizes.csv` as the review's second ownership/regulation
+  pricing-effect study alongside S526. `evidence_map.csv` updated;
+  duplicate audit and schema validation re-run clean. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1450,14 +1473,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,085 of the 3,659
-  Phase-5 includes have been assessed; 2,574 records have not yet been
+- Full-text screening itself is far from complete: 1,086 of the 3,659
+  Phase-5 includes have been assessed; 2,573 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 536
+- Extraction (Phase 8) is caught up with screening completely — all 537
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  536 extracted studies** (a first 12-study partial pilot batch was
+  537 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
