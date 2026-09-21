@@ -15,17 +15,20 @@ sixty-fifth batch below:
   10.3390/w14182932. **INCLUDE.** Content analysis of Moroccan water
   policy (Law 10-95 and its 2016 successor, Law 36-15) combined with 37
   semi-structured interviews with farmers, local officials, and water
-  administrators in the Sais plain and Souss-Massa region. Documents
-  genuine legal-administrative access mechanisms: well-digging permits
-  reportedly requiring informal payments/bribery to obtain;
-  drip-irrigation subsidy eligibility contingent on a tribal land-use
-  certificate that itself requires a digging permit, a circular
-  bureaucratic bind excluding tenure-insecure farmers; institutional
-  fragmentation across the Ministries of Agriculture (subsidies), Water
-  (permits), and Interior/caidat (land certification); unequal Kharouba
-  water-rights share allocation (1/8, 1/4 shares) among farmers; and
-  unconnected/intermittent rural drinking-water households. Extracted
-  as **S540** (CASP Qualitative Studies Checklist).
+  administrators in the Middle Draa Valley (MDV), Zagora province, south
+  Morocco. Documents genuine legal-administrative access mechanisms:
+  well-digging permits reportedly requiring informal payments/bribery to
+  obtain; a circular institutional bind where drip-irrigation subsidies
+  require an existing well (officials do not check for a digging permit)
+  while some tribes require farmers to first work the land -- which
+  requires water/a well -- before granting the land-use certificate that
+  a digging permit itself requires; institutional fragmentation across
+  the Ministries of Agriculture (subsidies), Water/River Basin Agency
+  (well-digging permits), and Interior/caidat (tribal land
+  certification); unequal Kharouba/1-8/1-4 water-rights share allocation
+  among farmers inside oases; and unconnected/intermittent rural
+  drinking-water households. Extracted as **S540** (CASP Qualitative
+  Studies Checklist).
 - **R397656949E83** — Viljoen S (Water Wheel / South African water-law
   journal). A doctrinal commentary on South African water-law property
   paradigms. **EXCLUDE E05.** Pure doctrinal/theoretical discussion of
