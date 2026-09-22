@@ -4,7 +4,49 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twenty-second full-text screening batch (1 Drive-retrieved PDF: 1 include S671)
+## 2026-09-22 (latest) — Hundred-twenty-third full-text screening batch (2 Drive-retrieved PDFs: 2 includes S672-S673)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R0C5195EA94D6** (Gondo & Kolawole 2020, *Sustainable Water Resources
+  Management*, "Institutional factors engendering dissonance between
+  customary and statutory institutions in water access in the Okavango
+  Delta, Botswana"). **INCLUDE.** Mixed-methods institutional case
+  study documenting dissonance between customary water-governance
+  institutions and Botswana's real statutory framework (Water
+  Utilities Corporation Act 1970, 2008 water-sector reform, shift to
+  cost-recovery tariffs), with a large-N primary sample (455 household
+  heads, 44 community elders, 17 government officials across 3 rural
+  villages) combining household interview schedules, key-informant
+  interviews, FGDs and inferential statistics. Extracted as **S672**.
+  Not effect_sizes eligible (reported inferential statistics are
+  demographic/distance correlations, not a regression-based estimate
+  isolating the institutional mechanism).
+- **RBFA4A3198454** (Tantoh, Simatele, Ebhuoma, Donkor & McKay 2021,
+  *GeoJournal*, "Towards a pro-community-based water resource
+  management system in Northwest Cameroon: practical evidence and
+  lessons of best practices"). **INCLUDE.** Mixed-methods institutional
+  case study of community-based water management sustainability across
+  six rural Cameroonian villages, documenting Cameroon's decentralization
+  policy (ministerial decree Articles 3(11)/3(16)) and traditional-
+  authority governance structures against a real 156-household
+  systematic-sample survey (26 households/village across 6 villages)
+  plus key-informant interviews on water-project outcomes. Extracted as
+  **S673**. Not effect_sizes eligible (descriptive/qualitative
+  mixed-methods design).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S672-S673, 669 →
+671 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+unchanged (no new excludes). Duplicate audit found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,339 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,320/3,659 screened (671 include/649 exclude), 2,339
+open, 671 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twenty-second full-text screening batch (1 Drive-retrieved PDF: 1 include S671)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
