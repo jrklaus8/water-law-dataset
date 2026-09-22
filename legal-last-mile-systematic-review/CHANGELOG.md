@@ -4,7 +4,73 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-sixth full-text screening batch (2 Drive-retrieved PDFs: 1 include S633, 1 exclude)
+## 2026-09-22 (latest) — Hundred-seventh full-text screening batch (15 Drive-retrieved PDFs: 9 includes S634-S642, 6 excludes, 1 new effect_sizes candidate)
+
+Fifteen PDFs surfaced in the Google Drive retrieval inbox -- the largest batch
+this segment. All 15 target record_ids confirmed open with no prior
+`wrong_file_retrieved` history; titles and authors verified against delivered
+PDFs before screening.
+
+- **R27F9C76B923F** (Oteng-Ababio 2014, Accra Ghana, 520-household survey
+  documenting GWCL's tenure-based connection refusal and illegal pan-latrine
+  status against cholera-incidence data). **INCLUDE** (S634).
+- **RFD53F5AA1272** (McMillan, Spronk & Caswell 2014, Caracas Venezuela,
+  qualitative case study of legally-institutionalized technical water
+  committees under the 2006 Organic Law on Communal Councils). **INCLUDE**
+  (S635).
+- **R2DA99A1B268E** (Lewis 2014, Indonesia, propensity-score-matched
+  quasi-experimental evaluation of the Water Hibah intergovernmental
+  performance-grant program against household water connections).
+  **INCLUDE** (S636). **EFFECT_SIZES ELIGIBLE** -- second new effect_sizes
+  candidate found this segment (same author as S631); added to
+  `effect_sizes.csv`.
+- **R561E9B9BB1CD** (McClanahan 2014, theoretical green-criminology essay on
+  water-privatization/greywater criminalization, secondary sources only).
+  **EXCLUDE E05.**
+- **RA16A47881570** (Yerian et al. 2014, Marsabit Kenya, qualitative study of
+  statutory Water Management Committees under the 2002 Water Act). **INCLUDE**
+  (S637).
+- **R8A95684C4716** (Akinboade, Mokwena & Kinfack 2014, Sedibeng South
+  Africa, 1,000-respondent protest-participation survey bundling water into
+  9 service categories). **EXCLUDE E01.**
+- **R127F98538C60** (Pandey 2015, India, municipal-finance book chapter
+  bundling water into a 7-point inclusive-habitat charter). **EXCLUDE E01.**
+- **RDC37E0771C28** (van Dijk & Blokland 2016, editorial introduction to a
+  special journal issue, no original data of its own). **EXCLUDE E05.**
+- **R3C12B6E203E7** (Hossain & Ahmed 2015, Dhaka Bangladesh, NGO-facilitated
+  non-conventional PPP overcoming a tenure-based DWASA connection barrier,
+  intervention/control slum comparison). **INCLUDE** (S638).
+- **R4C4BF3B533F6** (Bell 2015, colonial Lima Peru, historical archival
+  analysis of the Cabildo's water-connection licensing system 1578-1700).
+  **INCLUDE** (S639).
+- **R5252E45E9BD7** (Sutherland, Scott & Hordijk 2015, Durban South Africa,
+  126-interview case study of the Free Basic Water Policy/Urban Development
+  Line across 4 settlements with contrasting tenure status). **INCLUDE**
+  (S640).
+- **R180FA98A1842** (Seward, Xu & Turton 2015, South Africa, desk-based
+  backcasting analysis of national groundwater-resource governance, no
+  household-level data). **EXCLUDE E01.**
+- **RC0A0303230CB** (Alexander et al. 2015, rural Ethiopia, regression
+  analysis of water-committee governance characteristics against scheme
+  functionality). **INCLUDE** (S641).
+- **RD190F3A11A59** (De & Nag 2016, Kolkata India, 541-household survey of
+  notified/non-notified slum status and political clientelism). **INCLUDE**
+  (S642).
+- **R8134515D9626** (Favaro et al. 2016, Sao Paulo metropolitan region,
+  municipal-level water-as-environmental-service study, no household-level
+  access data). **EXCLUDE E01.**
+
+`extraction_database.csv`/`evidence_map.csv` updated (S634-S642, 631 → 640
+rows each). `effect_sizes.csv` updated (32 → 33 rows; S636 added).
+`exclusion_log.csv` updated (626 rows total; E01 206 → 210, E05 69 → 71).
+`full_text_retrieval_queue.csv` regenerated (2,393 open records). Duplicate
+audit clean (no DOI or record_id duplicates). `validate_schemas.py` confirms
+all 13 tracked files OK.
+
+Running totals: 1,266/3,659 screened (640 include/626 exclude), 2,393 open,
+640 extracted studies, 33 effect_sizes rows.
+
+## 2026-09-22 — Hundred-sixth full-text screening batch (2 Drive-retrieved PDFs: 1 include S633, 1 exclude)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
