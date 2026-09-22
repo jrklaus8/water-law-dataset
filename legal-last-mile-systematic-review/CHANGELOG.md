@@ -4,7 +4,32 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-fourteenth full-text screening batch (3 Drive-retrieved PDFs: 1 include S658, 2 excludes)
+## 2026-09-22 (latest) — Hundred-fifteenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox (previously flagged
+`not_retrievable`/paywalled). Target record_id confirmed open with no
+prior `wrong_file_retrieved` history; title and authors verified against
+the delivered PDF before screening.
+
+- **R0186AD905238** (Gurría 2009, *Water International*, "Sustainably
+  managing water: challenges and responses"). **EXCLUDE E05.**
+  Policy-commentary essay by the OECD Secretary-General summarizing
+  global water-governance/financing challenges using only secondary
+  macro-level statistics (WHO-UNICEF, OECD reports); no original
+  empirical data collection, no methodology, no household-level analysis
+  of a specific legal/institutional mechanism -- same rationale as the
+  McClanahan/van Dijk & Blokland policy-essay exclusions.
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes). `effect_sizes.csv` unchanged. `exclusion_log.csv` updated
+(636 rows total; E05 71 → 72). `full_text_retrieval_queue.csv`
+regenerated (2,367 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,292/3,659 screened (656 include/636 exclude), 2,367
+open, 656 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-fourteenth full-text screening batch (3 Drive-retrieved PDFs: 1 include S658, 2 excludes)
 
 Three PDFs surfaced in the Google Drive retrieval inbox (all previously
 flagged `not_retrievable`/paywalled). All three target record_ids

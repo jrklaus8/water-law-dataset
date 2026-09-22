@@ -2893,6 +2893,19 @@ evidence of anything.
   records); schema validation re-run clean. Running totals: 1,291/3,659
   screened (656 include/635 exclude), 2,368 open, 656 extracted studies,
   34 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-fifteenth full-text screening batch — 1 Drive-
+  retrieved PDF, 1 exclude.** Gurría (2009, OECD Secretary-General
+  policy-commentary essay on global water-governance/financing
+  challenges, *Water International*) — **excluded E05**, no original
+  empirical data collection, secondary macro-level statistics only, same
+  rationale as the McClanahan/van Dijk & Blokland policy-essay
+  exclusions. `extraction_database.csv`/`evidence_map.csv` unchanged (no
+  new includes); `effect_sizes.csv` unchanged; `exclusion_log.csv`
+  updated (636 rows total; E05 71 → 72); `full_text_retrieval_queue.csv`
+  regenerated (2,367 open records); schema validation re-run clean.
+  Running totals: 1,292/3,659 screened (656 include/636 exclude), 2,367
+  open, 656 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2911,10 +2924,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,291 of the 3,659
-  Phase-5 includes have been assessed; 2,368 records have not yet been
+- Full-text screening itself is far from complete: 1,292 of the 3,659
+  Phase-5 includes have been assessed; 2,367 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,368
+  on the researcher supplying full-text PDFs. Six of those 2,367
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
