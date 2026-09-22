@@ -4,7 +4,36 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twentieth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S668-S669, 1 exclude)
+## 2026-09-22 (latest) — Hundred-twenty-first full-text screening batch (1 Drive-retrieved PDF: 1 include S670)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **RFAAFF404B38C** (Dosu, Hanrahan, Johnston & Spaling 2022, *Water
+  International*, "Assessing the capacity gaps of decentralized rural
+  water management: qualitative evidence from Ghana"). **INCLUDE.**
+  Qualitative institutional case study of decentralized rural water
+  management capacity gaps across three rural Ghanaian communities
+  (Esereso, Wabrease, Wioso) and multi-level water management agencies,
+  documenting the real regulatory/institutional framework (National
+  Community Water and Sanitation Programme, CWSA design/coverage
+  standards, district assemblies as legal owners of communal
+  infrastructure, WATSAN committee formation rules) via household/
+  informant interviews and focus group discussions. Extracted as
+  **S670**. Not effect_sizes eligible (qualitative thematic-analysis
+  design).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S670, 667 → 668
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+unchanged (no new excludes). Duplicate audit found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,342 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,317/3,659 screened (668 include/649 exclude), 2,342
+open, 668 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twentieth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S668-S669, 1 exclude)
 
 Three PDFs surfaced in the Google Drive retrieval inbox. All target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
