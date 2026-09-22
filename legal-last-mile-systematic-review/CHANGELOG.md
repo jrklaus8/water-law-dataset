@@ -4,7 +4,45 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-fifth full-text screening batch (3 Drive-retrieved PDFs: 3 includes S630-S632, 1 new effect_sizes candidate)
+## 2026-09-22 (latest) — Hundred-sixth full-text screening batch (2 Drive-retrieved PDFs: 1 include S633, 1 exclude)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RF63F0202ABB5** (Padowski, Carrera & Jawitz 2016, *Water Resources
+  Management*, "Overcoming Urban Water Insecurity with Infrastructure
+  and Institutions"). **EXCLUDE E01.** Macro/city-level comparative
+  analysis of urban water availability and a 12-metric Institutional
+  Complexity Assessment (ICA) index across 108 large cities (US n=50,
+  Africa n=58); outcome variable is total city-wide hydrologic+captured
+  water volume (liters per capita daily) versus GDP and ICA score, not
+  household- or individual-level access/connection/affordability data
+  -- following the established macro/city-level governance-index
+  exclusion precedent.
+- **RC0FCB69ED597** (Kasri, Wirutomo, Kusnoputranto & Moersidik 2017,
+  *International Journal of Development Issues*, "Citizen engagement to
+  sustaining community-based rural water supply in Indonesia").
+  **INCLUDE.** Qualitative comparative case study of 4 Pamsimas rural
+  water-supply villages (in-depth interviews, focus group discussions),
+  documenting village-government decrees, BPSPAMS community-body legal
+  status (explicitly absent in one collapsed village), and program
+  governance as institutional determinants of service-delivery
+  sustainability, against real village-level tracked access outcomes.
+  Extracted as **S633**. Not effect_sizes eligible (qualitative
+  multi-case comparison, no quantitative effect estimate).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S633, 630 → 631
+rows each). `effect_sizes.csv` unchanged (32 rows; no new candidates).
+`exclusion_log.csv` updated (620 rows total; E01 205 → 206).
+`full_text_retrieval_queue.csv` regenerated (2,408 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,251/3,659 screened (631 include/620 exclude), 2,408
+open, 631 extracted studies, 32 effect_sizes rows.
+
+## 2026-09-22 — Hundred-fifth full-text screening batch (3 Drive-retrieved PDFs: 3 includes S630-S632, 1 new effect_sizes candidate)
 
 Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
