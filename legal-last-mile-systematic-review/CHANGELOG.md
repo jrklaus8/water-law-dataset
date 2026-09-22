@@ -4,7 +4,86 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-first full-text screening batch (15 Drive-retrieved PDFs: 10 excludes, 5 new includes S571-S575)
+## 2026-09-22 (latest) — Eighty-second full-text screening batch (6 Drive-retrieved PDFs: 2 excludes, 4 new includes S576-S579)
+
+Six further PDFs surfaced in the Google Drive retrieval inbox on the
+immediately following inbox check. All six were open with no prior
+`wrong_file_retrieved` history and no duplicates to defer:
+
+- **R70028D9094A5** — Mallory A, Omoga L, Kiogora D, Riungu J, Kagendi D,
+  Parker A (2021). "Understanding the role of informal pit emptiers in
+  sanitation in Nairobi through case studies in Mukuru and Kibera
+  settlements." *Journal of Water, Sanitation and Hygiene for
+  Development* 11(1):51-59. doi 10.2166/washdev.2020.193. **INCLUDE.** A
+  qualitative study (53 semi-structured interviews with pit emptiers,
+  residents, entrepreneurs, and officials). Documents genuine
+  household/informal-worker-level legal-institutional content: Kenya's
+  Water Act 2016 devolving sanitation to counties; the absence of
+  licencing or legal recognition for informal pit emptiers; NEMA-backed
+  enforcement threats; cartel violence; and Sanergy's private
+  transfer-station formalisation model. Extracted as **S576**
+  (qualitative).
+- **R6EE7062C2464** — de Menezes Fraga CI, de Maria Albuquerque Alves C
+  (2025). "Subsidies and affordability: a social approach to water supply
+  tariffs." *Journal of Water, Sanitation and Hygiene for Development*
+  15(1):75-83. doi 10.2166/washdev.2024.253. **INCLUDE.** A quantitative
+  study (tariff/consumption microdata across 35 Federal District, Brazil
+  service areas, plus a binary logistic regression) identifying
+  demographic predictors of water-poverty risk (female household head
+  OR=2.78; brown race OR=2.84; children OR=1.49) against Brazil's 2020 New
+  Legal Framework for Basic Sanitation (Law 14,026/2020). Extracted as
+  **S577** (quantitative).
+- **R5BAA92844EB0** — Maiello A, de Paiva Britto ALN, Quintslr S (2021).
+  "The spotted zebra: Cohabitation between informal solutions and
+  public-owned infrastructures for water supply in the Rio de Janeiro
+  Metropolitan Region." *Water Policy* 23(1):187-204. doi
+  10.2166/wp.2020.115. **INCLUDE.** A mixed-methods case study (90-
+  respondent survey + 9 semi-structured interviews) in Queimados, Rio de
+  Janeiro Metropolitan Region. Documents genuine legal-institutional
+  content: CEDAE's 30-year water-supply concession contract; clientelist-
+  politics dynamics shaping infrastructure siting; and complete
+  institutional non-recognition of grassroots natural-spring sources.
+  Extracted as **S578** (mixed methods).
+- **R0A9549D920CD** — Fallon Grasham C, Neville G (2021). "Socio-political
+  processes must be emphasised alongside climate change and urbanisation
+  as key drivers of urban water insecurity." *Water Policy* 23(1):36-57.
+  doi 10.2166/wp.2020.333. **INCLUDE.** A mixed-methods comparative case
+  study (household surveys n=95/96; interviews n=90+90+19) across three
+  Ethiopian cities. Documents genuine household-level legal-institutional
+  content: Ethiopia's WASH Implementation Framework/One WASH National
+  Programme; a nationally illegal informal water-vending sector; a formal
+  Addis Ababa rationing policy; and the 2013 National Guideline for Urban
+  Water Utilities Tariff Setting, with quantified financial-burden ratios
+  (informal water up to 20x, bottled water up to 76x the formal tariff).
+  Extracted as **S579** (mixed methods).
+- **R4BFAEC61E31D** — Armah MK, Rodrigues MAV (2026). "The determinants of
+  performance in water service delivery: an analysis of municipalities in
+  Ghana." *Water Practice & Technology* 21(2):467-486. doi
+  10.2166/wpt.2026.189. **EXCLUDE (E04, wrong outcome).** A data
+  envelopment analysis (DEA) of 23 Ghanaian water utilities measuring
+  technical/scale efficiency and revenue/OPEX slack from utility-level
+  financial data — matches the established utility/company-performance
+  outcome precedent (Gidion et al. and related DEA studies).
+- **R90EB686B9582** — Porse E, Kerner M, Shinneman J, Kaplan J, Stone S,
+  Cadenasso ML (2022). "Stormwater utility fees and household
+  affordability of urban water services." *Water Policy* 24(6):998-1013.
+  doi 10.2166/wp.2022.024. **EXCLUDE (E01, wrong topic).** A GIS/parcel-
+  level methodological/simulation paper presenting a generalizable
+  approach to estimate stormwater-fee affordability impacts, not an
+  empirical examination of a legal-administrative access mechanism —
+  matches the established methodological-contribution sub-precedent.
+
+`evidence_map.csv` updated for S576-S579. `exclusion_log.csv` updated for
+the 2 new excludes (581 rows). `full_text_retrieval_queue.csv`
+regenerated (2,501 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,158/3,659 screened
+(577 include/581 exclude), 2,501 open, 577 extracted studies, 27
+effect_sizes rows (unchanged — none of the new includes has a genuine
+exposure-vs-comparator quantitative contrast; S577's logistic-regression
+odds ratios are demographic predictors of water-poverty risk, not a
+legal-institutional exposure-vs-comparator effect).
+
+## 2026-09-22 — Eighty-first full-text screening batch (15 Drive-retrieved PDFs: 10 excludes, 5 new includes S571-S575)
 
 Fifteen further PDFs surfaced in the Google Drive retrieval inbox (3
 already-decided duplicates from the same inbox check — RD864629E91F7,
