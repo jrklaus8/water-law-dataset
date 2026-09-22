@@ -4,7 +4,135 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-seventeenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-22 (latest) — Hundred-eighteenth full-text screening batch (13 Drive-retrieved PDFs: 6 includes S662-S667, 7 excludes)
+
+Thirteen PDFs surfaced in the Google Drive retrieval inbox. All target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against each delivered PDF before screening.
+
+- **R2621601881E4** (Hoko, Mapenzauswa, Toto, Kerith & Nhapi 2024,
+  *Sustainable Water Resources Management*, "Analysis of operation and
+  maintenance arrangements for water supply in urban areas in
+  Zimbabwe"). **INCLUDE.** Institutional/legal water-governance study
+  explicitly examining "legal provision for O&M" under the Urban
+  Councils Act (Chapter 29:15), Water Policy 2012, and ZINWA Act
+  (Chapter 20:25) as a core parameter, with primary mixed-methods data
+  across 11 urban local authorities tied to real WSS-status outcomes.
+  Extracted as **S662**. Not effect_sizes eligible (Chi-squared
+  association testing, no regression-based causal estimate; also found
+  no significant association).
+- **RCFD40D935BC2** (Chen, Chen & Mitchell 2024, *Public Management
+  Review*, "The rise and fall of an NPM-style reform in China: a
+  longitudinal case study of sanitation service delivery in
+  Guangzhou"). **EXCLUDE E01.** Institutional-governance-process case
+  study of municipal sanitation service-delivery-mode organizational
+  change analyzed through public-administration/NPM theory; no
+  household-level access outcome measured, extending the established
+  service-delivery-mode E01 sub-pattern (cf. Hushie/Soublière-Cloutier/
+  Kimbugwe/Larson Makassar precedent).
+- **RB22F274A2711** (Ahmed 2025, *Environment, Development and
+  Sustainability*, "Urban water-energy-food nexus in the kitchen and
+  social practices of diet and cooking: implications for household
+  sustainability"). **EXCLUDE E01.** Qualitative study of kitchen
+  social practices, diet, and cooking under a WEF-nexus-in-the-kitchen
+  lens; household water-rationing/connection-cost content is one
+  descriptive background paragraph with no legal/institutional
+  analysis of water governance, following the Green & Blinkhorn
+  incidental-topic precedent.
+- **RADD54B6C65E2** (Wutich, Brewis, Thomson, Beresford, White & the
+  Arizona Water for All Consortium 2025, *Human Organization*,
+  "Ethical challenges of managed retreat from centralized water
+  systems"). **EXCLUDE E05.** Opinion editorial (explicitly labeled
+  "OPINION EDITORIAL") proposing an ethical framework for managed
+  retreat to decentralized water systems; no original empirical data
+  collection of its own, following the established policy-commentary-
+  essay E05 precedent.
+- **R8D85A846848A** (Muridzo, Hungwe & Chadambuka 2025, *Disability &
+  Society*, "Access to water, sanitation and hygiene facilities by
+  women with disabilities in Zimbabwe's Harare Metropolitan Province
+  during COVID-19"). **INCLUDE.** Primary qualitative study (104
+  purposively sampled women with disabilities via structured
+  interviews/FGDs, plus 7 key-informant interviews) documenting
+  implementation gaps in Zimbabwe's National Disability Policy and
+  constitutional WASH-access provisions, with real household/
+  individual-level discrimination and access-barrier outcomes at
+  community boreholes. Extracted as **S663**. Not effect_sizes
+  eligible (qualitative thematic-analysis design).
+- **R85301EA43953** (Gebeyaw, Gashaw, Kasseye & Adamek 2026, *Journal
+  of Aging & Social Policy*, "'Everything is Awful:' Experiences of
+  Internally Displaced Older Adults During the Armed Conflict in
+  Ethiopia"). **EXCLUDE E01.** Qualitative gerontology/social-work
+  study of internally displaced older adults' overall crisis
+  experience; water/sanitation is one incidental hardship among many
+  (food, shelter, health, family disintegration) with no legal/
+  institutional water-governance analysis.
+- **R4FB843E4946A** (Lewis & Miller 1987, *Health Policy and
+  Planning*, "Public-private partnership in water supply and
+  sanitation in sub-Saharan Africa"). **INCLUDE.** Comparative
+  institutional/legal review of public-private water-supply
+  partnerships (SODECI concession, Kenya kiosks, vendor licensing)
+  with real population-level coverage data and a primary household-
+  level water-vendor consumption/pricing survey (Zaroff & Okun 1984)
+  across multiple Sub-Saharan African communities. Extracted as
+  **S664**. Not effect_sizes eligible (comparative descriptive
+  review).
+- **R8D44D087F7A0** (Chenoweth 2004, *Water International*, "Changing
+  ownership structures in the water supply and sanitation sector").
+  **INCLUDE.** Comparative institutional/legal analysis of water-
+  sector ownership transitions across four countries (England/Wales,
+  Argentina, Cote d'Ivoire, Israel) with real household-level
+  connection/coverage data tied explicitly to legal/regulatory
+  frameworks. Extracted as **S665**. Not effect_sizes eligible
+  (comparative descriptive case-study design).
+- **RC8B757CEFEBF** (Seneviratne 2000, *International Journal of Water
+  Resources Development*, "Challenges to urban water management in
+  Sri Lanka"). **INCLUDE.** Institutional/legal analysis of Sri
+  Lankan urban water governance (Municipal Councils legislation,
+  NWSDB statutory mandate) with real household-level connection/
+  coverage/tariff data and explicit cross-subsidy policy for the
+  urban poor. Extracted as **S666**. Not effect_sizes eligible
+  (descriptive administrative case-study design).
+- **R3A1A4F6F0CF5** (Gyau-Boakye & Ampomah 2003, *Water International*,
+  "Water Pricing and Water Sector Reforms Information Study in
+  Ghana"). **INCLUDE.** Institutional/legal analysis of Ghana's
+  water-sector reforms under named Acts of Parliament (GWSC Act 310/
+  1965, WRC Act 522/1996, PURC Act 538/1997) with real longitudinal
+  national coverage/tariff data and explicit vulnerable-group access
+  provisions. Extracted as **S667**. Not effect_sizes eligible
+  (descriptive administrative case-study design).
+- **RC14288578517** (Bajracharya 2003, *International Journal of
+  Environmental Health Research*, "Myanmar experiences in sanitation
+  and hygiene promotion: Lessons learned and future directions").
+  **EXCLUDE E01.** UNICEF-sponsored social-mobilization/behavior-
+  change program evaluation; public-health promotion program report
+  with no legal/institutional water-access analysis.
+- **R9477DF8E814D** (Sikor 2004, *Environmental Management*, "The
+  commons in transition: Agrarian and environmental change in Central
+  and Eastern Europe"). **EXCLUDE E01.** Framing paper for a special
+  issue on postsocialist agrarian/environmental commons governance
+  (property-rights reform covering water AND landscape/agricultural
+  resources); primary topic is general commons governance, not
+  household water/sanitation access.
+- **R7A0CEC6E8A80** (Fonchingong & Ngwa 2005, *Canadian Journal of
+  Development Studies*, "Grassroots Participation for Infrastructural
+  Provisioning in Northwest Cameroon: Are Village Development
+  Associations the Panacea?"). **EXCLUDE E01.** Study of gender
+  dimensions of grassroots participation in Village Development
+  Associations across diverse infrastructure projects; water supply
+  is one of several infrastructure types with no dedicated legal/
+  institutional water-governance analysis.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S662-S667, 659 →
+665 rows). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (646 rows total; E01 220 → 226, E05 73 → 74). Duplicate audit
+(exact-DOI + record_id-in-extraction_note Counter methods) found no
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,348 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,311/3,659 screened (665 include/646 exclude), 2,348
+open, 665 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-seventeenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox (previously flagged
 `not_retrievable`/paywalled). Target record_id confirmed open with no

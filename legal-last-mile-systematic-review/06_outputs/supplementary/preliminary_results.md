@@ -2940,6 +2940,34 @@ evidence of anything.
   Running totals: 1,298/3,659 screened (659 include/639 exclude), 2,361
   open, 659 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: hundred-eighteenth full-text screening batch — 13
+  Drive-retrieved PDFs, 6 includes, 7 excludes.** Includes: Hoko et al.
+  (2024, Zimbabwe urban O&M legal-provision institutional study, 11
+  local authorities, S662); Muridzo, Hungwe & Chadambuka (2025, Zimbabwe
+  disability WASH-access National Disability Policy implementation-gap
+  study, 104 women with disabilities, S663); Lewis & Miller (1987,
+  Sub-Saharan Africa public-private water-partnership comparative
+  institutional review with a primary household-vendor survey, S664);
+  Chenoweth (2004, four-country comparative water-ownership-structure
+  legal/institutional analysis, S665); Seneviratne (2000, Sri Lanka
+  urban water-governance institutional case study, S666); Gyau-Boakye &
+  Ampomah (2003, Ghana water-pricing/sector-reform legal-institutional
+  case study, S667). Excludes: Chen, Chen & Mitchell (2024, Guangzhou
+  NPM sanitation-delivery-mode reform) **E01**; Ahmed (2025, Ghana
+  kitchen WEF-nexus diet/cooking study) **E01**; Wutich et al. (2025,
+  managed-retreat opinion editorial) **E05**; Gebeyaw et al. (2026,
+  Ethiopia IDP elders' crisis-experience study) **E01**; Bajracharya
+  (2003, Myanmar sanitation behavior-change program evaluation) **E01**;
+  Sikor (2004, Central/Eastern Europe agrarian commons framing paper)
+  **E01**; Fonchingong & Ngwa (2005, Cameroon VDA gender-participation
+  study) **E01**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S662-S667, 659 →
+  665 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (646 rows total; E01 220 → 226, E05 73 → 74); duplicate audit
+  found no duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,348 open records); schema validation re-run clean. Running totals:
+  1,311/3,659 screened (665 include/646 exclude), 2,348 open, 665
+  extracted studies, 34 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2958,17 +2986,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,298 of the 3,659
-  Phase-5 includes have been assessed; 2,361 records have not yet been
+- Full-text screening itself is far from complete: 1,311 of the 3,659
+  Phase-5 includes have been assessed; 2,348 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,361
+  on the researcher supplying full-text PDFs. Six of those 2,348
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 659
+- Extraction (Phase 8) is caught up with screening completely — all 665
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  659 extracted studies** (a first 12-study partial pilot batch was
+  665 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
