@@ -4,7 +4,88 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-eleventh full-text screening batch (10 Drive-retrieved PDFs: 8 includes S646-S653, 2 excludes)
+## 2026-09-22 (latest) — Hundred-twelfth full-text screening batch (7 Drive-retrieved PDFs: 3 includes S654-S656, 3 excludes, 1 wrong_file_retrieved)
+
+Seven PDFs surfaced in the Google Drive retrieval inbox (all previously
+flagged `not_retrievable`/paywalled; the researcher has now supplied the
+PDFs). All seven target record_ids confirmed open with no prior
+`wrong_file_retrieved` history; titles and authors verified against the
+delivered PDFs before screening.
+
+- **R29856BE0CB68** (Hatton MacDonald, Morrison & Barnes 2010, *Water
+  Resources Management*, "Willingness to Pay and Willingness to Accept
+  Compensation for Changes in Urban Water Customer Service Standards").
+  **EXCLUDE E01.** Fundamentally a choice-modelling methodological
+  comparison (WTP vs. WTA elicitation techniques) using hypothetical
+  service-standard scenarios, Adelaide, Australia; General Service Level
+  Agreements are background regulatory context only, not tested as an
+  exposure -- same rationale as the Lanz & Provins survey-methodology
+  exclusion.
+- **R1CC50D5011B9** (Zagonari 2011, *Environmental Management*, "An
+  Optimization Model for Integrated Urban Planning: Development and
+  Application to Algeria's Reghaïa and Heraoua Municipalities").
+  **EXCLUDE E01.** Mathematical optimization/GIS modeling paper for
+  municipal land-use planning; no legal/institutional factor tested as
+  exposure, no household-level access data -- same rationale as the Porse
+  et al./Nakhla modeling-methodology exclusions.
+- **RD175F8091708** (Maclean, Boar & Lugo 2011, *Environmental
+  Management*, "A Review of the Relative Merits of Conserving, Using, or
+  Draining Papyrus Swamps"). **EXCLUDE E01.** Wetland-ecosystem economic-
+  valuation review of African wetland conservation vs. agricultural
+  drainage -- not household water/sanitation service access at all.
+- **RCFD849FB0013** (Packialakshmi, Ambujam & Nelliyat 2011,
+  *Environment, Development and Sustainability*, "Groundwater market and
+  its implications on water resources and agriculture in the southern
+  peri-urban interface, Chennai, India"). **INCLUDE.** Real regulatory
+  framework (Indian Easements Act 1882; Chennai Metropolitan Area Ground
+  Water (Regulation) Act 1987/2002, including a documented tanker-seizure
+  enforcement episode) weakly enforced against an informal groundwater
+  market, with real household-level survey evidence (68 households,
+  Perumbakkam) of income-based water-access bifurcation. Extracted as
+  **S654**. Not effect_sizes eligible (descriptive mixed-methods study).
+- **R762608282964** (Tshishonga & Mafema 2011, *Agenda*, "The impact of
+  neo-liberalism on water and sanitation provision in the informal
+  settlements: Towards the re-enforcement of gendered roles or democratic
+  emancipation?"). **INCLUDE.** Qualitative comparative case study (15
+  interviews, Banana City Durban and Endlovini Cape Town) documenting a
+  real tenure-based legal struggle (successful human-rights-lawyer-led
+  eviction defense, Banana City) and Cape Town's landowner-consent
+  requirement barring service extension, against real settlement-level
+  infrastructure data. Extracted as **S655**. Not effect_sizes eligible
+  (qualitative comparative case study).
+- **R58E83E4193E6** (Cahill-Ripley 2011, Routledge, *The Human Right to
+  Water and its Application in the Occupied Palestinian Territories*).
+  **Remains open -- flagged `wrong_file_retrieved`.** Title/author
+  confirmed matching, but the delivered PDF's extracted text (117K
+  characters) contains only front matter/Introduction and the full
+  Bibliography/List of Treaties -- Chapters 1-7, including the book's
+  entire empirical Chapter 6 case study (45 semi-structured interviews,
+  southern West Bank), are missing, with zero page markers anywhere in
+  the extraction (unlike every other PDF read this session). Same
+  handling as the R33E4CEE682AC (Mabiza dissertation) precedent: pending
+  a complete re-retrieval, not moved to Processed.
+- **R3551E4A62FAE** (Mudege & Zulu 2011, *Global Public Health*,
+  "Discourses of illegality and exclusion: When water access matters").
+  **INCLUDE.** Kenya's Water Act No. 8 of 2002 and tenure-based illegality
+  barring statutory NCWSC connection, documented against a large household
+  survey (23,344 households, NUHDSS) plus 36 FGDs (256 participants), with
+  two real enforcement episodes (2006 mass disconnections; 2007
+  riot-police response to a Kibera water protest) directly evidencing the
+  institutional-exclusion mechanism. Extracted as **S656**. Not
+  effect_sizes eligible (qualitative/descriptive mixed-methods study).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S654-S656, 651 →
+654 rows). `effect_sizes.csv` unchanged (34 rows; none of this batch's
+includes are regression-based). `exclusion_log.csv` updated (633 rows
+total; E01 214 → 217). Duplicate audit (exact-DOI and
+record_id-in-extraction_note Counter methods) found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,372 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,287/3,659 screened (654 include/633 exclude), 2,372
+open, 654 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-eleventh full-text screening batch (10 Drive-retrieved PDFs: 8 includes S646-S653, 2 excludes)
 
 Ten PDFs surfaced in the Google Drive retrieval inbox. All ten target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

@@ -2823,6 +2823,37 @@ evidence of anything.
   (2,378 open records); schema validation re-run clean. Running totals:
   1,281/3,659 screened (651 include/630 exclude), 2,378 open, 651
   extracted studies, 34 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-twelfth full-text screening batch — 7 Drive-
+  retrieved PDFs, 3 includes (S654-S656), 3 excludes, 1 wrong_file_retrieved.**
+  Hatton MacDonald, Morrison & Barnes (2010, Adelaide WTP/WTA choice-
+  modelling methodological comparison for water customer service
+  standards) **excluded E01** (methodological contribution, not a
+  legal-administrative access-mechanism study); Zagonari (2011, Algeria
+  integrated urban-planning optimization model) **excluded E01**
+  (technical modeling methodology, no household data); Maclean, Boar &
+  Lugo (2011, papyrus-swamp conservation economic-valuation review)
+  **excluded E01** (wrong topic, not water/sanitation service access);
+  Packialakshmi, Ambujam & Nelliyat (2011, Chennai peri-urban informal
+  groundwater market documenting a weakly-enforced regulatory licensing
+  regime against household income-based access-bifurcation survey data,
+  S654); Tshishonga & Mafema (2011, gendered water/sanitation access in
+  two South African informal settlements documenting tenure-based
+  institutional barriers and a successful legal tenure-defense case,
+  S655); Cahill-Ripley (2011, *The Human Right to Water and its
+  Application in the Occupied Palestinian Territories*) **remains open,
+  flagged `wrong_file_retrieved`** — correct title/author match but the
+  delivered PDF's extraction is missing all substantive chapters
+  including the empirical Chapter 6 case study; Mudege & Zulu (2011,
+  Nairobi slum water-access discourses documenting Kenya's Water Act
+  No. 8/2002 tenure-based exclusion and real disconnection-enforcement
+  episodes against a 23,344-household survey and 36 FGDs, S656).
+  `extraction_database.csv`/`evidence_map.csv` updated (S654-S656, 651 →
+  654 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (633 rows total; E01 214 → 217); duplicate audit found no
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,372 open
+  records); schema validation re-run clean. Running totals: 1,287/3,659
+  screened (654 include/633 exclude), 2,372 open, 654 extracted studies,
+  34 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2841,17 +2872,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,281 of the 3,659
-  Phase-5 includes have been assessed; 2,378 records have not yet been
+- Full-text screening itself is far from complete: 1,287 of the 3,659
+  Phase-5 includes have been assessed; 2,372 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Five of those 2,378
+  on the researcher supplying full-text PDFs. Six of those 2,372
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 651
+- Extraction (Phase 8) is caught up with screening completely — all 654
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  651 extracted studies** (a first 12-study partial pilot batch was
+  654 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
