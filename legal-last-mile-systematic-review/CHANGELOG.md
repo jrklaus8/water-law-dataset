@@ -4,7 +4,76 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-third full-text screening batch (6 Drive-retrieved PDFs: 4 includes S605-S608, 2 excludes)
+## 2026-09-22 (latest) — Ninety-fourth full-text screening batch (4 Drive-retrieved PDFs: 3 includes S609-S611, 1 exclude)
+
+Four PDFs surfaced in the Google Drive retrieval inbox. All 4 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RE081EB767D08** (Jana, Sarkar, Thomas, Krishna Priya, Bandyopadhyay,
+  Crosbie, Abi Ghanem, Waller, Pillai & Newbury-Birch 2021, *Clean
+  Technologies and Environmental Policy*, "Rethinking water policy in
+  India with the scope of metering towards sustainable water future").
+  **INCLUDE.** Documentary/institutional policy analysis of 12 Indian
+  national water supply policies (1949-2012), chronologically assessed
+  against 20 SDG-6 sustainability indicators, with real government
+  service-level benchmark data (household piped-water coverage, cost
+  recovery, metering extent across 6 cities), tariff/subsidy structures,
+  and willingness-to-pay case studies. Genuine legal/institutional
+  exposure (National Water Policy 1987/2002/2012, tariff/metering
+  regulatory gaps) against household water-access/affordability outcomes.
+  Included via the Legal Institutional Evidence Appraisal Framework,
+  consistent with the Rout & Kattumuri India book and Theodory Tanzania
+  precedent. Extracted as **S609**. Not effect_sizes eligible (narrative
+  indicator-based policy review, no regression-based effect estimate).
+- **R4D207458780C** (Sohns, Ford, Adamowski & Robinson 2021, *Environmental
+  Management*, "Participatory Modeling of Water Vulnerability in Remote
+  Alaskan Households Using Causal Loop Diagrams"). **INCLUDE.** Qualitative
+  participatory-modeling study: 14 water-policy stakeholders individually
+  interviewed to construct causal loop diagrams of household water
+  vulnerability in rural Alaska, merged into a validated collective model.
+  Genuine legal/institutional exposure (water quality regulations, water
+  rights permits, operations-and-maintenance funding policy) directly
+  examined against household water access/availability/affordability,
+  corroborated by real rate/consumption/hospitalization data. Extracted
+  as **S610**. Not effect_sizes eligible (qualitative causal-loop-diagram
+  synthesis, no quantitative exposure-comparator regression).
+- **RAFE7B383AF05** (Gordon & Byron 2021, *Cultural Studies*, "Sweeping
+  the city: infrastructure, informality, and the politics of
+  maintenance"). **EXCLUDE (E01, wrong topic).** A cultural-studies/
+  urban-theory essay on homeless-encampment "sweeps" and infrastructure-
+  maintenance politics in Toronto and San Francisco. Though it references
+  "the right to sanitation" and a UN report on water/sanitation rights in
+  passing, the actual empirical focus and outcome measured (encampment
+  removal/dispossession) is homelessness/housing policing, not
+  water/sanitation service access.
+- **R0F2F1A4CDE94** (Gonzalez Rivas 2023, *International Planning
+  Studies*, "Addressing the impossible triad -- high inequality,
+  decentralized policy and low local capacity -- challenges for drinking
+  water policy in Mexico"). **INCLUDE.** Mixed-methods institutional
+  analysis combining 2,450-municipality Mexican census data
+  (1950-2010) with 15 official interviews (2011-2013) and document
+  analysis of the 1972 centralized Federal Waters Law vs. the
+  1976-1980s decentralization reform and CONAGUA/PROII funding-programme
+  permit requirements. Genuine legal/institutional exposure
+  (decentralization, 17-requirement municipal funding-proposal process)
+  cross-tabulated against household water-connection outcomes by
+  municipality. Included via the Legal Institutional Evidence Appraisal
+  Framework. Extracted as **S611**. Not effect_sizes eligible (author
+  explicitly disclaims a causal-driver interpretation of the descriptive
+  cross-tabulation).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S609-S611, 606 →
+609 rows each). `effect_sizes.csv` unchanged (31 rows; no new candidates
+this batch). `exclusion_log.csv` updated (608 rows total; E01 200 → 201).
+`full_text_retrieval_queue.csv` regenerated (2,442 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,217/3,659 screened (609 include/608 exclude), 2,442
+open, 609 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-third full-text screening batch (6 Drive-retrieved PDFs: 4 includes S605-S608, 2 excludes)
 
 Six PDFs surfaced in the Google Drive retrieval inbox. All 6 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

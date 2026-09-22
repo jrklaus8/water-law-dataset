@@ -2399,6 +2399,31 @@ evidence of anything.
   duplicate audit and schema validation re-run clean. Running totals:
   1,213/3,659 screened (606 include/607 exclude), 2,446 open, 606
   extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: ninety-fourth full-text screening batch — 4 Drive-retrieved
+  PDFs, 3 includes (S609-S611), 1 exclude.** Jana et al. (2021), a
+  documentary/institutional policy analysis of 12 Indian national water
+  policies (1949-2012) against 20 SDG-6 sustainability indicators, with
+  real city-level coverage/tariff/metering benchmark data, finding no
+  policy has ever explicitly addressed water metering — **included**
+  (S609). Sohns et al. (2021), a 14-stakeholder participatory causal-loop-
+  diagram study of household water vulnerability in rural Alaska,
+  documenting regulatory/funding mechanisms constraining access — **
+  included** (S610). Gordon & Byron (2021), a cultural-studies essay on
+  homeless-encampment "sweeps" and infrastructure-maintenance politics in
+  Toronto/San Francisco — **excluded E01**, homelessness/housing policing
+  topic, no household water/sanitation access outcome examined. Gonzalez
+  Rivas (2023), a mixed-methods analysis of 2,450 Mexican municipalities
+  (1950-2010 census) plus 15 official interviews, finding decentralized
+  water-policy funding requirements concentrate low household water-
+  connection rates among low-technical-capacity municipalities —
+  **included** (S611). `extraction_database.csv`/`evidence_map.csv`
+  updated (S609-S611, 606 → 609 rows each); `effect_sizes.csv` unchanged
+  (31 rows; no new candidates); `exclusion_log.csv` updated (608 rows
+  total; E01 200 → 201); `full_text_retrieval_queue.csv` regenerated
+  (2,442 open records); duplicate audit and schema validation re-run
+  clean. Running totals: 1,217/3,659 screened (609 include/608 exclude),
+  2,442 open, 609 extracted studies, 31 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2417,16 +2442,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,213 of the 3,659
-  Phase-5 includes have been assessed; 2,446 records have not yet been
+- Full-text screening itself is far from complete: 1,217 of the 3,659
+  Phase-5 includes have been assessed; 2,442 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,446
+  on the researcher supplying full-text PDFs. Four of those 2,442
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 606
+- Extraction (Phase 8) is caught up with screening completely — all 609
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  606 extracted studies** (a first 12-study partial pilot batch was
+  609 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
