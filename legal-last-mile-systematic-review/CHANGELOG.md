@@ -4,7 +4,51 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-thirteenth full-text screening batch (1 Drive-retrieved PDF: 1 include S657)
+## 2026-09-22 (latest) — Hundred-fourteenth full-text screening batch (3 Drive-retrieved PDFs: 1 include S658, 2 excludes)
+
+Three PDFs surfaced in the Google Drive retrieval inbox (all previously
+flagged `not_retrievable`/paywalled). All three target record_ids
+confirmed open with no prior `wrong_file_retrieved` history; titles and
+authors verified against the delivered PDFs before screening.
+
+- **R110426752017** (Jepson 2012, *Annals of the Association of American
+  Geographers*, "Claiming Space, Claiming Water: Contested Legal
+  Geographies of Water in South Texas"). **INCLUDE.** Legal-geography
+  case study examining two companion 1971-1976 federal legal cases
+  (Jimenez v. Hidalgo WCID 2 et al.; Fonseca v. Hidalgo WCID 2 et al.)
+  documenting farmer-controlled Water Control and Improvement Districts'
+  territorial exclusion of colonias from district boundaries under a
+  1971 Texas statute, denying residents voting rights and political
+  standing to redirect district operations from irrigation to domestic
+  water supply, against real population-level access-deficiency data
+  (238,000 people in 1,350+ colonias, 119,000 facing water/sanitation
+  deficiencies; 1971 exclusion of 39 subdivisions/2,950 lots, 325 houses
+  without domestic water service). Extracted as **S658**. Not
+  effect_sizes eligible (documentary/legal case-study design).
+- **RFF03643FADFA** (Rasmussen, Svenstrup Petersen, Thompson, Flower &
+  Ahmed 2009, *Hydrobiologia*, "Hydrodynamic-ecological model analyses of
+  the water quality of Lake Manzala (Nile Delta, Northern Egypt)").
+  **EXCLUDE E01.** Hydrodynamic-ecological modeling study of nutrient
+  loading/eutrophication in an Egyptian coastal lake; no legal/
+  institutional factor, no household-level water/sanitation access data.
+- **R48AC741E5758** (Green & Blinkhorn 2010, *International Journal of
+  Health Promotion and Education*, "How can inequalities in the Oral
+  Health of Australian Aboriginal people be addressed?"). **EXCLUDE
+  E01.** Discussion paper on Aboriginal oral/dental health disparities;
+  water fluoridation appears only as a health-intervention input, not a
+  water/sanitation service-access outcome, and the paper is a
+  non-empirical discussion piece synthesizing secondary statistics.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S658, 655 → 656
+rows). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (635 rows total; E01 217 → 219). Duplicate audit found no
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,368 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,291/3,659 screened (656 include/635 exclude), 2,368
+open, 656 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-thirteenth full-text screening batch (1 Drive-retrieved PDF: 1 include S657)
 
 One PDF surfaced in the Google Drive retrieval inbox (previously flagged
 `not_retrievable`/paywalled). Target record_id confirmed open with no

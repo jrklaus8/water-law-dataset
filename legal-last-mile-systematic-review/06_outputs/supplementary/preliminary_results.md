@@ -2873,6 +2873,26 @@ evidence of anything.
   Running totals: 1,288/3,659 screened (655 include/633 exclude), 2,371
   open, 655 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: hundred-fourteenth full-text screening batch — 3 Drive-
+  retrieved PDFs, 1 include, 2 excludes.** Jepson (2012, legal-geography
+  case study of two companion 1971-1976 federal legal cases -- Jimenez
+  and Fonseca v. Hidalgo WCID 2 et al. -- documenting farmer-controlled
+  water-district territorial exclusion of south Texas colonias, denying
+  voting rights and political standing over water-service provision,
+  against real population-level access-deficiency data for 238,000
+  colonias residents, S658); Rasmussen et al. (2009, Lake Manzala
+  hydrodynamic-ecological water-quality model, Egypt) **excluded E01**
+  (environmental hydrology, no legal/institutional factor); Green &
+  Blinkhorn (2010, discussion paper on Aboriginal oral-health
+  inequalities, Australia) **excluded E01** (wrong topic, water
+  fluoridation is a dental-health input, not a service-access outcome).
+  `extraction_database.csv`/`evidence_map.csv` updated (S658, 655 → 656
+  rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (635 rows total; E01 217 → 219); duplicate audit found no
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,368 open
+  records); schema validation re-run clean. Running totals: 1,291/3,659
+  screened (656 include/635 exclude), 2,368 open, 656 extracted studies,
+  34 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2891,17 +2911,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,288 of the 3,659
-  Phase-5 includes have been assessed; 2,371 records have not yet been
+- Full-text screening itself is far from complete: 1,291 of the 3,659
+  Phase-5 includes have been assessed; 2,368 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,371
+  on the researcher supplying full-text PDFs. Six of those 2,368
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 655
+- Extraction (Phase 8) is caught up with screening completely — all 656
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  655 extracted studies** (a first 12-study partial pilot batch was
+  656 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
