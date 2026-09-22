@@ -2968,6 +2968,24 @@ evidence of anything.
   (2,348 open records); schema validation re-run clean. Running totals:
   1,311/3,659 screened (665 include/646 exclude), 2,348 open, 665
   extracted studies, 34 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-nineteenth full-text screening batch — 2
+  Drive-retrieved PDFs, 2 excludes.** Foster & Gathu (2024, "VIEWPOINT"
+  article synthesizing secondary published surveys on urban groundwater
+  use across six tropical African cities) — **excluded E05**, no
+  original empirical data collection, same rationale as the Gurria/
+  Moretto policy-essay exclusions. Lee (2000, watershed/drinking-
+  water-source environmental-protection institutional-failure case
+  study, Tegucigalpa, Honduras) — **excluded E01**, measured outcome is
+  watershed/environmental degradation and treatment cost, not
+  household-level water access, same rationale as the environmental/
+  ecological-hydrology wrong-topic precedent.
+  `extraction_database.csv`/`evidence_map.csv` unchanged (no new
+  includes); `effect_sizes.csv` unchanged; `exclusion_log.csv` updated
+  (648 rows total; E01 226 → 227, E05 74 → 75); `full_text_retrieval_queue.csv`
+  regenerated (2,346 open records); schema validation re-run clean.
+  Running totals: 1,313/3,659 screened (665 include/648 exclude), 2,346
+  open, 665 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2986,10 +3004,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,311 of the 3,659
-  Phase-5 includes have been assessed; 2,348 records have not yet been
+- Full-text screening itself is far from complete: 1,313 of the 3,659
+  Phase-5 includes have been assessed; 2,346 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,348
+  on the researcher supplying full-text PDFs. Six of those 2,346
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.

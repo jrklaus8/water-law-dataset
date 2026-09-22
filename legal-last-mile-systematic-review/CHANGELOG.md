@@ -4,7 +4,41 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-eighteenth full-text screening batch (13 Drive-retrieved PDFs: 6 includes S662-S667, 7 excludes)
+## 2026-09-22 (latest) — Hundred-nineteenth full-text screening batch (2 Drive-retrieved PDFs: 2 excludes)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R67ED91FDC3BF** (Foster & Gathu 2024, *Water International*,
+  "Groundwater use for urban water security in tropical Africa —
+  operational situation and institutional perspectives"). **EXCLUDE
+  E05.** Explicitly labeled "VIEWPOINT" article providing an overview/
+  synthesis of urban groundwater use across six African cities drawing
+  entirely on secondary published surveys and prior studies (AICD
+  surveys, the authors' own earlier publications); no original
+  empirical data collection of its own, following the established
+  policy-commentary/viewpoint-essay E05 precedent (Gurria/Moretto).
+- **RD151A942294B** (Lee 2000, *Water International*, "Watershed
+  Protection Challenges in Rapidly Urbanizing Regions: The Case of
+  Tegucigalpa, Honduras"). **EXCLUDE E01.** Case study of watershed/
+  drinking-water-source environmental-protection institutional failure
+  (sedimentation, turbidity, water-quality degradation); the measured
+  outcome is watershed/environmental degradation and treatment cost,
+  not household-level water access, connection, or affordability,
+  following the established environmental/ecological-hydrology
+  wrong-topic precedent.
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes). `effect_sizes.csv` unchanged. `exclusion_log.csv` updated
+(648 rows total; E01 226 → 227, E05 74 → 75). `full_text_retrieval_queue.csv`
+regenerated (2,346 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,313/3,659 screened (665 include/648 exclude), 2,346
+open, 665 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-eighteenth full-text screening batch (13 Drive-retrieved PDFs: 6 includes S662-S667, 7 excludes)
 
 Thirteen PDFs surfaced in the Google Drive retrieval inbox. All target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
