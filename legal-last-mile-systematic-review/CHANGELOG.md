@@ -4,7 +4,56 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-seventh full-text screening batch (2 Drive-retrieved PDFs: 1 include S616, 1 exclude)
+## 2026-09-22 (latest) — Ninety-eighth full-text screening batch (4 Drive-retrieved PDFs: 1 include S617, 3 excludes)
+
+Four PDFs surfaced in the Google Drive retrieval inbox. All 4 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RD0DFF88DB422** (Foster, McSorley & Willetts 2019, *Hydrogeology
+  Journal*, "Comparative performance evaluation of handpump water-supply
+  technologies in northern Kenya and The Gambia"). **EXCLUDE (E06,
+  engineering only).** Rigorous field regression comparing handpump
+  technology types (BluePump vs Afridev/India Mark II/PB Mark II) against
+  functionality/breakdown outcomes; the exposure is mechanical design,
+  not a legal/institutional factor.
+- **R488CB489640F** (Venugopal, Foord & Singaram 2020, book chapter,
+  "Lifting the Lid Off the Toilet -- Understanding the Indian Context and
+  A Case on Samagra Empowerment Foundation"). **EXCLUDE (E12, wrong study
+  design).** An explicitly structured MBA-style business teaching case
+  (teaching note, assignment questions, class-process table) profiling a
+  single company's self-reported impact metrics, with no described
+  sampling method or research methodology.
+- **REFA4001EDBED** (Ahmed 2020, *Water International*, "Does state
+  capacity matter for foreign aid effectiveness? Panel data evidence on
+  water from 87 countries"). **EXCLUDE (E01, wrong topic).** Macro
+  87-country panel-data regression testing state capacity as a mediator
+  of aid effectiveness on aggregate national water-access percentages;
+  both exposure and outcome are at the country level, same macro
+  cross-national governance-index rationale as prior exclusions.
+- **RE06ED02A63C7** (Shuaib & Rana 2020, *Management of Environmental
+  Quality*, "Assessing water supply for the urban poor in Rajshahi City,
+  Bangladesh"). **INCLUDE.** Questionnaire survey (100 households, 10
+  slums, 3 zones) using a 6-dimension performance framework including an
+  institutional dimension, documenting unrecognized-settlement legal
+  status barring formal connection applications, informal/illegal
+  connections, sporadic monitoring, and connection-installation bribery
+  (BDT 2000-3000), against household-level water access/quantity/
+  reliability/affordability outcomes. Extracted as **S617**. Not
+  effect_sizes eligible (descriptive composite performance indices, no
+  regression).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S617, 614 → 615
+rows each). `effect_sizes.csv` unchanged (31 rows; no new candidates).
+`exclusion_log.csv` updated (613 rows total; E01 202 → 203, E06 46 → 47,
+E12 3 → 4). `full_text_retrieval_queue.csv` regenerated (2,431 open
+records). Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,228/3,659 screened (615 include/613 exclude), 2,431
+open, 615 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-seventh full-text screening batch (2 Drive-retrieved PDFs: 1 include S616, 1 exclude)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
