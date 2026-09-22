@@ -2783,6 +2783,20 @@ evidence of anything.
   re-run clean. Running totals: 1,270/3,659 screened (643 include/627
   exclude), 2,389 open, 643 extracted studies, 33 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-tenth full-text screening batch — 1 Drive-
+  retrieved PDF, 1 exclude.** Larson, Alexander, Djalante & Kirono (2013),
+  a social-network analysis of formal, informal and "ideal" inter-agency
+  governance networks among 6 Makassar, Indonesia water-management
+  agencies plus NGO/university collaborators — **excluded E01**,
+  institutional-level network-centrality outcome, no household-level water
+  access data, same rationale as the Hushie/Soublière-Cloutier/Kimbugwe
+  exclusion precedent. `extraction_database.csv`/`evidence_map.csv`
+  unchanged (no new includes); `effect_sizes.csv` unchanged (33 rows);
+  `exclusion_log.csv` updated (628 rows total; E01 211 → 212);
+  `full_text_retrieval_queue.csv` regenerated (2,388 open records);
+  schema validation re-run clean. Running totals: 1,271/3,659 screened
+  (643 include/628 exclude), 2,388 open, 643 extracted studies, 33
+  effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2801,10 +2815,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,270 of the 3,659
-  Phase-5 includes have been assessed; 2,389 records have not yet been
+- Full-text screening itself is far from complete: 1,271 of the 3,659
+  Phase-5 includes have been assessed; 2,388 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Five of those 2,389
+  on the researcher supplying full-text PDFs. Five of those 2,388
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.

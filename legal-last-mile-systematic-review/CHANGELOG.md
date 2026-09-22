@@ -4,7 +4,32 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-ninth full-text screening batch (1 Drive-retrieved PDF: 1 include S645)
+## 2026-09-22 (latest) — Hundred-tenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **RA53C02DDB780** (Larson, Alexander, Djalante & Kirono 2013, *Water
+  Resources Management*, "The Added Value of Understanding Informal Social
+  Networks in an Adaptive Capacity Assessment: Explorations of an Urban
+  Water Management System in Indonesia"). **EXCLUDE E01.** Social-network
+  analysis of formal/informal/"ideal" inter-agency governance networks
+  among 6 Makassar government water-management agencies plus NGO/
+  university collaborators; outcome measured is network centrality among
+  organizations, no household-level water/sanitation access data -- same
+  institutional-governance-process rationale as the Hushie/Soublière-
+  Cloutier/Kimbugwe exclusion precedent.
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new includes).
+`effect_sizes.csv` unchanged. `exclusion_log.csv` updated (628 rows
+total; E01 211 → 212). `full_text_retrieval_queue.csv` regenerated (2,388
+open records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,271/3,659 screened (643 include/628 exclude), 2,388
+open, 643 extracted studies, 33 effect_sizes rows.
+
+## 2026-09-22 — Hundred-ninth full-text screening batch (1 Drive-retrieved PDF: 1 include S645)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
