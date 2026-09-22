@@ -4,7 +4,55 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-nineteenth full-text screening batch (2 Drive-retrieved PDFs: 2 excludes)
+## 2026-09-22 (latest) — Hundred-twentieth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S668-S669, 1 exclude)
+
+Three PDFs surfaced in the Google Drive retrieval inbox. All target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R512A2C899B40** (Dakyaga, Ahmed & Sillim 2021, *Urban Forum*,
+  "Governing Ourselves for Sustainability: Everyday Ingenuities in the
+  Governance of Water Infrastructure in the Informal Settlements of Dar
+  es Salaam"). **INCLUDE.** Qualitative institutional case study of
+  informal/non-state water governance across three Dar es Salaam
+  informal settlements, with primary data from 35 water-service-provider
+  interviews plus key-informant interviews (municipal water engineer,
+  ward leaders, ward health officer), documenting the formal/informal
+  rules governing water pricing, distribution and access alongside the
+  statutory utility DAWASA's limited capacity, tied to real
+  settlement-level household/income data. Extracted as **S668**. Not
+  effect_sizes eligible (qualitative thematic-analysis design).
+- **R84E44162269B** (Brown-Luthango & Arendse 2023, *Development
+  Southern Africa*, "Co-production to reframe state practices in
+  informal settlements: Lessons from Malawi Kamp and Klipheuwel in Cape
+  Town, South Africa"). **INCLUDE.** Qualitative comparative case study
+  of co-production between the City of Cape Town and two informal
+  settlements, documenting a real municipal Water & Sanitation
+  Department regulation barring communal-toilet/tap relocation and the
+  negotiated institutional workaround (community 'Water Saving
+  Ambassadors'), tied to real settlement-level water/sanitation
+  infrastructure outcomes. Extracted as **S669**. Not effect_sizes
+  eligible (qualitative comparative case-study design).
+- **R77892B64F9F0** (Sun, Gu, Chen, Xia & Chen 2022, *Natural
+  Hazards*, "Spatiotemporal differentiation and influencing factors of
+  urban water supply system resilience in the Yangtze River Delta urban
+  agglomeration"). **EXCLUDE E01.** Macro/city-level composite-index
+  panel-regression study of urban water supply system resilience using
+  12 indicators (GDP per capita, public financial resources, a
+  public-regulation index, etc.); no household-level access data or
+  specific legal/administrative mechanism examined, same rationale as
+  the Nkiaka/Schiel/Laitinen/Padowski macro-governance-index exclusions.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S668-S669, 665 →
+667 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+updated (649 rows total; E01 227 → 228); duplicate audit found no
+duplicates; `full_text_retrieval_queue.csv` regenerated (2,343 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,316/3,659 screened (667 include/649 exclude), 2,343
+open, 667 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-nineteenth full-text screening batch (2 Drive-retrieved PDFs: 2 excludes)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
