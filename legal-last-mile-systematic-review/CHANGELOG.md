@@ -4,7 +4,45 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-sixth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S614-S615, 1 exclude)
+## 2026-09-22 (latest) — Ninety-seventh full-text screening batch (2 Drive-retrieved PDFs: 1 include S616, 1 exclude)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **R7DF720007123** (Reniko & Kolawole 2020, *South African Geographical
+  Journal*, "'They don't read metres, they only bring bills': Issues
+  surrounding the installation of prepaid water metres in Karoi town,
+  Zimbabwe"). **INCLUDE.** Qualitative case study: 35 resident interviews/
+  FGDs across 5 high-density residential areas, plus KTC/ZINWA official
+  interviews, examining a proposed prepaid water meter (PWM) policy
+  framed by residents and officials as violating the Zimbabwean
+  Constitution's right to water via automatic disconnection, against
+  household-level access/affordability/disconnection-risk outcomes and
+  real revenue-collection data (only 8.2% of possible monthly revenue
+  collected under the existing post-paid system, 2018). Extracted as
+  **S616**. Not effect_sizes eligible (PWMs not yet implemented at time
+  of study, no exposure-comparator outcome regression).
+- **R77FE93587FBF** (Grigg 2020, *Water International*, "Smart water
+  management: can it improve accessibility and affordability of water
+  for everyone?"). **EXCLUDE (E05, no empirical evidence).** A
+  conceptual/theoretical discussion paper examining how smart-water-
+  management technologies could hypothetically improve utility access
+  and affordability; the paper's own central demonstration is explicitly
+  conceptual/illustrative, not an original empirical study with real
+  data collection.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S616, 613 → 614
+rows each). `effect_sizes.csv` unchanged (31 rows; no new candidates).
+`exclusion_log.csv` updated (610 rows total; E05 67 → 68).
+`full_text_retrieval_queue.csv` regenerated (2,435 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,224/3,659 screened (614 include/610 exclude), 2,435
+open, 614 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-sixth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S614-S615, 1 exclude)
 
 Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

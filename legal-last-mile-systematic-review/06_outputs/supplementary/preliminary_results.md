@@ -2466,6 +2466,24 @@ evidence of anything.
   duplicate audit and schema validation re-run clean. Running totals:
   1,222/3,659 screened (613 include/609 exclude), 2,437 open, 613
   extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: ninety-seventh full-text screening batch — 2 Drive-
+  retrieved PDFs, 1 include (S616), 1 exclude.** Reniko & Kolawole
+  (2020), a 35-resident qualitative case study of a proposed prepaid
+  water meter (PWM) policy in Karoi, Zimbabwe, framed by residents and
+  officials as violating the Zimbabwean Constitution's right to water via
+  automatic disconnection, with real revenue-collection data (only 8.2%
+  of possible monthly revenue collected under the existing post-paid
+  system) — **included** (S616). Grigg (2020), a conceptual/theoretical
+  discussion paper on smart water management technologies, with an
+  explicitly illustrative (non-empirical) demonstration scenario —
+  **excluded E05**, no original empirical data collection.
+  `extraction_database.csv`/`evidence_map.csv` updated (S616, 613 → 614
+  rows each); `effect_sizes.csv` unchanged (31 rows; no new candidates);
+  `exclusion_log.csv` updated (610 rows total; E05 67 → 68);
+  `full_text_retrieval_queue.csv` regenerated (2,435 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,224/3,659 screened (614 include/610 exclude), 2,435 open, 614
+  extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2484,16 +2502,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,222 of the 3,659
-  Phase-5 includes have been assessed; 2,437 records have not yet been
+- Full-text screening itself is far from complete: 1,224 of the 3,659
+  Phase-5 includes have been assessed; 2,435 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,437
+  on the researcher supplying full-text PDFs. Four of those 2,435
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 613
+- Extraction (Phase 8) is caught up with screening completely — all 614
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  613 extracted studies** (a first 12-study partial pilot batch was
+  614 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
