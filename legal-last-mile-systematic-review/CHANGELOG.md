@@ -4,7 +4,51 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-fourth full-text screening batch (4 Drive-retrieved PDFs: 3 includes S627-S629, 1 exclude)
+## 2026-09-22 (latest) — Hundred-fifth full-text screening batch (3 Drive-retrieved PDFs: 3 includes S630-S632, 1 new effect_sizes candidate)
+
+Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **R43A5C339BB4D** (Button 2017, *Gender & Development*, "Domesticating
+  water supplies through rainwater harvesting in Mumbai"). **INCLUDE.**
+  Qualitative case study (22 buildings, 52 interviewees) documenting
+  Mumbai's mandatory rainwater-harvesting ordinance shifting formal
+  water-provision responsibility to households, against real household/
+  servant-level access disparities. Extracted as **S630**. Not
+  effect_sizes eligible (qualitative case study).
+- **R1CA3290F50A5** (Lewis 2017, *Journal of Urban Affairs*, "Does
+  local government proliferation improve public service delivery?
+  Evidence from Indonesia"). **INCLUDE.** Quasi-experimental panel
+  study (generalized DiD + dynamic GMM, 336 districts, 2,714 district-
+  year observations) exploiting the exogenous timing of local-
+  government proliferation (*pemekaran*) to identify its causal effect
+  on household water/sanitation access: new-district creation reduces
+  access by ~1.35 percentage points short-run (long-run ~1.75%,
+  p=.023) relative to original districts. Extracted as **S631**.
+  **EFFECT_SIZES ELIGIBLE** (Family C) — first new effect_sizes
+  candidate found in this segment; added to `effect_sizes.csv`.
+- **RD67971FB4FB1** (Fonjong & Fokum 2017, *Society & Natural
+  Resources*, "Water Crisis and Options for Effective Water Provision
+  in Urban and Peri-Urban Areas in Cameroon"). **INCLUDE.** Mixed-
+  methods study (49 household + 15 official interviews across 5
+  municipalities) documenting Cameroon's 2005 water-sector
+  privatization as running contrary to Law 98/005's state-
+  responsibility mandate, against real household access-percentage and
+  privatization-perception survey data. Extracted as **S632**. Not
+  effect_sizes eligible (descriptive survey tables).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S630-S632, 627 →
+630 rows each). `effect_sizes.csv` updated (31 → 32 rows; S631 added).
+`exclusion_log.csv` unchanged (619 rows total; no excludes this
+batch). `full_text_retrieval_queue.csv` regenerated (2,410 open
+records). Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,249/3,659 screened (630 include/619 exclude), 2,410
+open, 630 extracted studies, 32 effect_sizes rows.
+
+## 2026-09-22 — Hundred-fourth full-text screening batch (4 Drive-retrieved PDFs: 3 includes S627-S629, 1 exclude)
 
 Four PDFs surfaced in the Google Drive retrieval inbox. All 4 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
