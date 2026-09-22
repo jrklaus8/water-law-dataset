@@ -12,9 +12,16 @@ from pathlib import Path
 from collections import Counter
 sys.stdout.reconfigure(encoding='utf-8')
 
+# TLS verification is ON by default. Some Brazilian court portals serve an
+# incomplete certificate chain; if you hit an SSL error on one of them, set
+# INSECURE_TLS=1 for that run rather than editing this file. Disabling
+# verification silently in committed code is how it stays disabled forever.
 ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+if os.getenv('INSECURE_TLS') == '1':
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    print('WARNING: TLS certificate verification DISABLED (INSECURE_TLS=1). '
+          'Responses cannot be authenticated.', file=sys.stderr)
 
 BASE    = 'https://www3.tjrj.jus.br/ejuris/ConsultarJurisprudencia.aspx'
 PROC    = 'https://www3.tjrj.jus.br/EJURIS/ProcessarConsJurisES.aspx'

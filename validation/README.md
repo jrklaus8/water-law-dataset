@@ -31,6 +31,17 @@ residual from 89.2% → 8.3%. However:
 3. **The *aansluitplicht* confound:** A search for Dutch connection-obligation vocabulary in NWR
    returns 14 cases — all electricity/heat network, zero water/sanitation. This is an
    affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
+> **Reproducibility note (added with `apply_decision_rules.py`).** The κ = 0.832
+> headline below was recorded as prose: the *mananciais* decision rule that
+> produces it was never written down in runnable form, and `kappa_results.json`
+> holds the pre-rule baseline of 0.5684. The rule is now implemented explicitly
+> in [`apply_decision_rules.py`](apply_decision_rules.py), which reproduces the
+> baseline (0.5684) and the binary figure (0.9321, n=59) exactly, and brackets
+> the three-label figure at 0.7975 / 0.8145 / 0.8506 for the narrow, standard
+> and broad scopes of the rule. 0.832 lies inside that range but is not
+> reproducible from any committed artefact. **Report a variant by name and the
+> kappa it produces.** See [`../CODEBOOK.md`](../CODEBOOK.md) §5.
+
 4. **LLM-assisted reproducibility audit (May 2026):** Independent LLM relabelling of 91
    decisions under explicit decision rules. With the documented *mananciais* rule applied:
    κ = 0.832 (95% CI [0.718, 0.926]; agreement 90.1%). Binary WATER/NOT_WATER kappa
@@ -61,7 +72,9 @@ residual from 89.2% → 8.3%. However:
 | `coder1_kappa.csv` | Coder1 labels formatted for `kappa_calculator.py` (91 matched cases) |
 | `coder2_labels.csv` | Coder2 labels (91 cases) — **κ = 0.734** |
 | `kappa_agreement_detail.csv` | Case-by-case comparison: coder1 vs coder2, agree/disagree flag |
-| `kappa_results.json` | Official kappa output: κ, CI, per-category precision/recall |
+| `kappa_results.json` | Pre-rule baseline kappa: κ = 0.5684, CI, per-category precision/recall |
+| `apply_decision_rules.py` | Reproducible kappa under stated decision rules, with sensitivity across rule scopes |
+| `kappa_results_ruled.json` | Output of the above: baseline, all rule variants, binary, and the rule definition |
 | `precision_recall_results.json` | Per-stratum and population-weighted precision/recall for the NWR filter |
 | `validation_results.xlsx` | 5-sheet Excel workbook: Executive Summary, Kappa Results, Agreement Detail, Precision/Recall, Governance Breakdown |
 | `validation_report_data.json` | All validation numbers in machine-readable form |

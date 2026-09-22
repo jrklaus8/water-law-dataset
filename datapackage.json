@@ -1,0 +1,387 @@
+{
+  "$schema": "https://datapackage.org/profiles/2.0/datapackage.json",
+  "name": "water-law-dataset",
+  "title": "Global Water Law Judicial Decisions Dataset",
+  "version": "0.3.0",
+  "description": "Comparative dataset of water law judicial decisions across Brazil, Canada and the Netherlands, 2016-2026. Records carry court-published headnotes and metadata, not full judgment text; see DATA_ACCESS.md.",
+  "id": "https://doi.org/10.5281/zenodo.19836413",
+  "homepage": "https://github.com/jrklaus8/water-law-dataset",
+  "licenses": [
+    {
+      "name": "MIT",
+      "path": "https://opensource.org/licenses/MIT",
+      "title": "MIT License"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Claudio Klaus Junior",
+      "role": "author"
+    }
+  ],
+  "keywords": [
+    "water law",
+    "judicial decisions",
+    "comparative law",
+    "Brazil",
+    "Canada",
+    "Netherlands",
+    "jurimetrics",
+    "legal informatics",
+    "sanitation"
+  ],
+  "created": "2026-05-15",
+  "resources": [
+    {
+      "name": "water-law-global",
+      "path": "water_law_global.csv",
+      "profile": "tabular-data-resource",
+      "title": "Merged decisions, all jurisdictions",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8-sig",
+      "description": "Output of utils/merge_national.py. 83,596 rows.",
+      "schema": {
+        "fields": [
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Jurisdiction.",
+            "constraints": {
+              "enum": [
+                "Brazil",
+                "Canada",
+                "Netherlands"
+              ]
+            }
+          },
+          {
+            "name": "tribunal",
+            "type": "string",
+            "description": "Court abbreviation, e.g. TJSP, RvS, CBb.",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "court_name",
+            "type": "string",
+            "description": "Full court name where the source supplies one."
+          },
+          {
+            "name": "case_id",
+            "type": "string",
+            "description": "Court identifier: ECLI (NL), CNJ process number or ESAJ key (BR), citation (CA).",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Case title or style of cause."
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "description": "Date of judgment as published.",
+            "format": "%Y-%m-%d"
+          },
+          {
+            "name": "year",
+            "type": "integer",
+            "description": "Year of judgment.",
+            "constraints": {
+              "minimum": 1997,
+              "maximum": 2026
+            }
+          },
+          {
+            "name": "case_type",
+            "type": "string",
+            "description": "Procedural class."
+          },
+          {
+            "name": "chamber",
+            "type": "string",
+            "description": "Chamber, panel or division."
+          },
+          {
+            "name": "judge",
+            "type": "string",
+            "description": "Reporting judge (relator) where published."
+          },
+          {
+            "name": "legal_area",
+            "type": "string",
+            "description": "The court's own subject classification."
+          },
+          {
+            "name": "summary",
+            "type": "string",
+            "description": "The court's own headnote: ementa (BR), inhoudsindicatie (NL), digest (CA). NOT the full judgment."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "Address captured at scrape time; may rot. Prefer permalink.",
+            "format": "uri"
+          }
+        ],
+        "primaryKey": [
+          "country",
+          "case_id"
+        ],
+        "missingValues": [
+          "",
+          "NA",
+          "nan"
+        ]
+      }
+    },
+    {
+      "name": "water-law-global-coded",
+      "path": "water_law_global_coded.csv",
+      "profile": "tabular-data-resource",
+      "title": "Merged decisions with jurimetric coding",
+      "format": "csv",
+      "mediatype": "text/csv",
+      "encoding": "utf-8-sig",
+      "description": "Output of utils/jurimetric_coding.py: the source columns plus coded variables and the audit trail. Every coded variable is regex-derived from the headnote, not hand-coded; see CODEBOOK.md 5 for validation status.",
+      "schema": {
+        "fields": [
+          {
+            "name": "country",
+            "type": "string",
+            "description": "Jurisdiction.",
+            "constraints": {
+              "enum": [
+                "Brazil",
+                "Canada",
+                "Netherlands"
+              ]
+            }
+          },
+          {
+            "name": "tribunal",
+            "type": "string",
+            "description": "Court abbreviation, e.g. TJSP, RvS, CBb.",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "court_name",
+            "type": "string",
+            "description": "Full court name where the source supplies one."
+          },
+          {
+            "name": "case_id",
+            "type": "string",
+            "description": "Court identifier: ECLI (NL), CNJ process number or ESAJ key (BR), citation (CA).",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "description": "Case title or style of cause."
+          },
+          {
+            "name": "date",
+            "type": "date",
+            "description": "Date of judgment as published.",
+            "format": "%Y-%m-%d"
+          },
+          {
+            "name": "year",
+            "type": "integer",
+            "description": "Year of judgment.",
+            "constraints": {
+              "minimum": 1997,
+              "maximum": 2026
+            }
+          },
+          {
+            "name": "case_type",
+            "type": "string",
+            "description": "Procedural class."
+          },
+          {
+            "name": "chamber",
+            "type": "string",
+            "description": "Chamber, panel or division."
+          },
+          {
+            "name": "judge",
+            "type": "string",
+            "description": "Reporting judge (relator) where published."
+          },
+          {
+            "name": "legal_area",
+            "type": "string",
+            "description": "The court's own subject classification."
+          },
+          {
+            "name": "summary",
+            "type": "string",
+            "description": "The court's own headnote: ementa (BR), inhoudsindicatie (NL), digest (CA). NOT the full judgment."
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "description": "Address captured at scrape time; may rot. Prefer permalink.",
+            "format": "uri"
+          },
+          {
+            "name": "governance_cat",
+            "type": "string",
+            "description": "Type of dispute. Priority-ordered, first match wins; see CODEBOOK.md 2.1.",
+            "constraints": {
+              "enum": [
+                "tariff_dispute",
+                "connection_refusal",
+                "water_quality",
+                "informal_settlement",
+                "groundwater",
+                "flooding",
+                "riparian_waterway",
+                "irrigation_agricultural",
+                "sanitation_sewage",
+                "environmental_protection",
+                "flood_protection",
+                "spatial_planning_water",
+                "waterboard_governance",
+                "pipe_leak_damage",
+                "water_theft_fraud",
+                "water_infrastructure_contract",
+                "fisheries_water",
+                "hydroelectric_dam",
+                "regulatory_permit",
+                "other_water",
+                "not_water_related"
+              ]
+            }
+          },
+          {
+            "name": "win_loss",
+            "type": "string",
+            "description": "Who prevailed. Brazil only; not_coded elsewhere.",
+            "constraints": {
+              "enum": [
+                "user_wins",
+                "utility_wins",
+                "mixed",
+                "unclear",
+                "not_coded"
+              ]
+            }
+          },
+          {
+            "name": "hr_language",
+            "type": "integer",
+            "description": "1 if the headnote uses human-rights or right-to-water framing.",
+            "constraints": {
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "sust_language",
+            "type": "integer",
+            "description": "1 if the headnote uses sustainability or environmental framing.",
+            "constraints": {
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "mp_involvement",
+            "type": "integer",
+            "description": "1 if the Ministerio Publico appears. Brazil only.",
+            "constraints": {
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "indigenous_water",
+            "type": "integer",
+            "description": "1 if Indigenous or First Nations water rights are engaged.",
+            "constraints": {
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "public_interest",
+            "type": "integer",
+            "description": "1 if public-interest or collective-action framing is present.",
+            "constraints": {
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "gov_matched_rule",
+            "type": "string",
+            "description": "Rule that assigned governance_cat: FILTER:*, RESCUE:*, GOV_CATS:<cat>#<n>, FALLBACK:*."
+          },
+          {
+            "name": "gov_matched_span",
+            "type": "string",
+            "description": "Substring the rule matched, max 300 chars. Empty for rules that fire on absence."
+          }
+        ],
+        "primaryKey": [
+          "country",
+          "case_id"
+        ],
+        "missingValues": [
+          "",
+          "NA",
+          "nan"
+        ]
+      }
+    }
+  ],
+  "sources": [
+    {
+      "title": "Rechtspraak.nl Open Data",
+      "path": "https://data.rechtspraak.nl/"
+    },
+    {
+      "title": "CanLII API",
+      "path": "https://developer.canlii.org/"
+    },
+    {
+      "title": "Brazilian Tribunais de Justica jurisprudence portals",
+      "path": "https://www.cnj.jus.br/"
+    }
+  ],
+  "x-documentation": {
+    "codebook": "CODEBOOK.md",
+    "data_access": "DATA_ACCESS.md",
+    "verification": "VERIFICATION.md",
+    "contributing": "CONTRIBUTING.md",
+    "validation": "validation/README.md"
+  },
+  "x-known-limitations": [
+    "Records carry court headnotes, not full judgment text.",
+    "The Dutch water-vocabulary gate cannot match compound nouns; not_water_related is over-inclusive for the Netherlands. See CODEBOOK.md 4.1.",
+    "win_loss is coded for Brazil only.",
+    "Brazil covers 8 of 27 state courts and is a convenience sample, not a census.",
+    "Only the upstream water/not-water gate has been validated; the 21 categories have not."
+  ]
+}

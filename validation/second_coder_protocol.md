@@ -61,6 +61,7 @@ The second coder assigns ONE of the following labels to each decision:
 | `GRD` | groundwater | Aquifer, well, groundwater abstraction |
 | `SAN` | sanitation_sewage | Sewage, wastewater, ETE, drainage |
 | `FLD` | flooding | Flood damage claims, waterlogging |
+| `FPR` | flood_protection | Dikes, *waterkering*, flood defence works |
 | `RIP` | riparian_waterway | Watercourse, riverbank, navigation rights |
 | `ENV` | environmental_protection | Manancial, mata ciliar, APA, wetland protection |
 | `PLN` | spatial_planning_water | Planning permits with drainage/flood-risk dimension |
@@ -71,10 +72,16 @@ The second coder assigns ONE of the following labels to each decision:
 | `HYD` | hydroelectric_dam | Dam, reservoir, hydroelectric |
 | `IRR` | irrigation_agricultural | Irrigation, agricultural water use |
 | `FSH` | fisheries_water | Fisheries, aquaculture |
-| `INF` | water_infrastructure_contract | Procurement, concession, PPP |
+| `ICT` | water_infrastructure_contract | Procurement, concession, PPP |
 | `FP`  | not_water_related | False positive — not a water law case |
 | `OTH` | other_water | Genuine water case, does not fit any category |
 | `UNK` | unclear | Cannot determine from available text |
+
+> **Correction (v0.3.1).** Earlier versions of this table assigned the code
+> `INF` to both `informal_settlement` and `water_infrastructure_contract`, and
+> omitted `flood_protection` altogether. `water_infrastructure_contract` is now
+> `ICT` and `flood_protection` is `FPR`. If you coded from an earlier sheet,
+> re-check every `INF` you assigned. See `CODEBOOK.md` §4.2.
 
 **Decision rule:** When in doubt between two substantive categories, apply the
 one that best describes the PRIMARY legal dispute (the claim or ground of appeal),

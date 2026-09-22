@@ -5,6 +5,7 @@
 [![DANS](https://img.shields.io/badge/DANS%20SSH-doi%3A10.17026%2FSS%2FRVDBUF-orange)](https://ssh.datastations.nl/dataset.xhtml?persistentId=doi:10.17026/SS/RVDBUF)
 [![OSF](https://img.shields.io/badge/OSF-osf.io%2Fadmrq-teal)](https://osf.io/admrq)
 [![PyPI version](https://badge.fury.io/py/water-law-dataset.svg)](https://pypi.org/project/water-law-dataset/)
+[![Tests](https://github.com/jrklaus8/water-law-dataset/actions/workflows/tests.yml/badge.svg)](https://github.com/jrklaus8/water-law-dataset/actions/workflows/tests.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Dashboard](https://img.shields.io/badge/Dashboard-Live%20Visualization-blueviolet)](https://jrklaus8.github.io/water-law-dataset/)
 
@@ -28,9 +29,13 @@ output folder and is intentionally empty.
 | You want | Go to |
 |---|---|
 | The dataset (CSV + XLSX, all 83,596 decisions) | [Zenodo 10.5281/zenodo.19836413](https://doi.org/10.5281/zenodo.19836413) |
+| **What a variable means** | [CODEBOOK.md](./CODEBOOK.md) — authoritative |
 | The text of a particular decision | `python utils/resolve_case.py <case_id>` — see [DATA_ACCESS.md](./DATA_ACCESS.md) |
 | To check how a decision was classified | [VERIFICATION.md](./VERIFICATION.md), Level 2 |
 | To replicate from source | [VERIFICATION.md](./VERIFICATION.md), Level 3 |
+| To load it programmatically | [datapackage.json](./datapackage.json) (Frictionless schema) |
+| To add a court, a jurisdiction or a fix | [CONTRIBUTING.md](./CONTRIBUTING.md) |
+| What has and has not been validated | [CODEBOOK.md §5](./CODEBOOK.md), [validation/](./validation/) |
 
 Two things to know before citing:
 
@@ -50,8 +55,16 @@ python utils/jurimetric_coding.py                           # codes + emits the 
 python utils/audit_trail.py --csv data/water_law_global_coded.csv
 ```
 
-Known limits on auditability, including a false-negative mechanism affecting the
-Netherlands sub-dataset, are set out in [DATA_ACCESS.md §6](./DATA_ACCESS.md).
+Known defects are documented rather than hidden, in
+[CODEBOOK.md §4](./CODEBOOK.md). The most consequential: the Dutch
+water-vocabulary gate uses `\b` word boundaries, which Dutch compounding
+defeats, so `not_water_related` is over-inclusive for the Netherlands. The
+regression suite marks the affected cases `xfail`, so whoever fixes it will
+see the tests flip rather than discover the problem by accident.
+
+```bash
+python -m pytest tests/ -q          # 59 passed, 12 xfailed (the known defect)
+```
 
 ---
 
@@ -85,9 +98,14 @@ water-law-dataset/
 │   ├── resolve_case.py             # Stable permalink per decision (ECLI / CNJ / CanLII)
 │   └── audit_trail.py              # Per-case coding audit bundle + diagnostics
 ├── validation/                # Inter-coder reliability, residual audit, kappa
+│   └── apply_decision_rules.py # Reproducible kappa under stated decision rules
+├── tests/                     # Regression suite pinning classifier behaviour
 ├── data/                      # Output directory (gitignored — see DATA_ACCESS.md)
+├── CODEBOOK.md                # Every variable, category and known defect (authoritative)
 ├── DATA_ACCESS.md             # Where the data is, what it contains, how to reach the text
 ├── VERIFICATION.md            # Three-level recipe for checking this dataset
+├── CONTRIBUTING.md            # How to add a court, a jurisdiction, or a fix
+├── datapackage.json           # Machine-readable schema (Frictionless)
 ├── .env.example
 ├── requirements.txt
 └── README.md
@@ -287,13 +305,51 @@ This means that claims about whether administrative litigation in the Netherland
 
 **Future researchers:** see [`FUTURE_WORK.md`](./FUTURE_WORK.md) for a full methodological roadmap for adding outcome coding to this dataset, including decision-text retrieval via the Dutch rechtspraak.nl API and a validated regex + LLM classification protocol.
 
-### Brazil Outcome Coding Audit
+### What Has Been Validated, and What Has Not
 
-The Brazil sub-dataset carries outcome coding, but the coding was AI-assisted. A gold-standard validation has been partially executed: a stratified sample of 207 `not_water_related` decisions was hand-coded (author, May 2026), yielding a population-weighted filter precision of 99.79%. A full independent second-coder pass on the `informal_settlement` and `connection_refusal` subcategories is still recommended before downstream causal inference; a 91-decision kappa template (`validation/coder2_labels_template.csv`) is ready for distribution to a bilingual research assistant.
+Only the upstream water / not-water filter has been validated. **The 21
+governance categories have not been independently validated at all.**
+
+A stratified sample of 207 `not_water_related` decisions was hand-coded (author,
+May 2026) and a second coder relabelled 91 of them. Results, all reproducible
+via `python validation/apply_decision_rules.py`:
+
+| Measure | Value | Note |
+|---|---:|---|
+| Population-weighted filter precision | 99.79% | Mass sits in the `NL_plain` stratum |
+| Precision where water vocabulary is present | 35.79% | Cite this alongside the number above, or neither |
+| Cohen's κ, three-label baseline | 0.5684 | n=91 |
+| Cohen's κ, *mananciais* rule applied | 0.7975–0.8506 | Depends on rule scope; report the variant |
+| Cohen's κ, binary, `UNCERTAIN` dropped | 0.9321 | n=59 |
+
+`validation/README.md` reports a headline of 0.832. That figure lies inside the
+rule-variant spread but was never produced by any committed script, because the
+decision rule was recorded only as prose. `validation/apply_decision_rules.py`
+now implements the rule explicitly and prints its sensitivity. See
+[CODEBOOK.md §5](./CODEBOOK.md).
+
+### Classification Defect — Netherlands
+
+The water-vocabulary gate uses `\b` word boundaries, which Dutch compounding
+defeats: `\bwater\b` does not match `waterwet` or `watervergunning`. Affected
+decisions are returned `not_water_related` before any category is considered, so
+**`not_water_related` is over-inclusive for the Netherlands**. Measured and
+corroborated by the human coder; see [CODEBOOK.md §4.1](./CODEBOOK.md) and
+`CONTRIBUTING.md` §4 for the fix.
+
+### Brazil Coverage
+
+Eight of twenty-seven *Tribunais de Justiça* are present. The other nineteen
+were inaccessible (status table above), and the accessible eight are those with
+modern search infrastructure, which correlates with state wealth. **The
+Brazilian subset is a convenience sample, not a national census.**
 
 ### Canada Coverage
 
-The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII and does not include unreported Environmental Review Tribunal or Ontario Licence Appeal Tribunal decisions, which may carry a disproportionate share of access-to-water disputes.
+The Canadian sub-dataset (3,218 cases) draws on reported decisions from CanLII
+across federal and provincial courts. It does not include unreported
+Environmental Review Tribunal or Ontario Licence Appeal Tribunal decisions,
+which may carry a disproportionate share of access-to-water disputes.
 
 ---
 

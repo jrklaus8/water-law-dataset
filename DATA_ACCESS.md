@@ -8,6 +8,11 @@ citing, replicating or auditing the dataset.
 the archival deposits listed below. What is in this repository is the code that
 produced them, the validation material, and the tooling to audit the coding.
 
+For what each variable *means*, see [`CODEBOOK.md`](./CODEBOOK.md), which is
+authoritative. For how to check any of it, see
+[`VERIFICATION.md`](./VERIFICATION.md). To extend the dataset, see
+[`CONTRIBUTING.md`](./CONTRIBUTING.md).
+
 ---
 
 ## 1. Where the data is
@@ -199,9 +204,16 @@ Stated plainly, because a reviewer will find them anyway.
    mass sits in the `NL_plain` stratum, where precision is 1.0. Where water
    vocabulary is present, precision is 0.3579. Cite both numbers or neither.
 
-4. **Cohen's kappa is 0.5684** (95% CI 0.4441–0.6908, n=91), which is moderate
-   agreement, not strong. Per-category recall for `UNCERTAIN` is 0.2857.
-   See `validation/kappa_results.json`.
+4. **Inter-coder agreement depends on which decision rule you apply, and the
+   figure most often quoted is not reproducible.** The raw three-label baseline
+   is κ = 0.5684 (n=91), moderate agreement. Resolving the *mananciais* protocol
+   ambiguity lifts it to between 0.7975 and 0.8506 depending on how broadly the
+   rule is scoped; `validation/README.md` reports 0.832, which sits inside that
+   range but was never produced by any committed script. The binary
+   WATER/NOT_WATER figure, κ = 0.9321 (n=59), is exact.
+   `python validation/apply_decision_rules.py` reproduces all of them and prints
+   the sensitivity. Cite a variant by name, or cite the baseline; do not cite
+   0.832 without saying which rule produced it. See `CODEBOOK.md` §5.
 
 5. **Netherlands decisions carry no outcome coding.** Dispute type is coded;
    who won is not. See `FUTURE_WORK.md` and section 4.2.
