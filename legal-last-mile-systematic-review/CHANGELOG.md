@@ -4,7 +4,35 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twenty-fourth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-22 (latest) — Hundred-twenty-fifth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **RD44ED5F07FED** (Rashid & Pandit 2018, *Environmental Management*,
+  "Determination of Appropriate Service Delivery Level for Quantitative
+  Attributes of Household Toilets in Rural Settlements of India from
+  Users' Perspective"). **EXCLUDE E06.** Technical service-quality/
+  design-standard benchmarking study using psychometric scaling
+  (successive interval scaling, zone of tolerance, user satisfaction
+  level) to determine appropriate quantitative construction attributes
+  (area, door, number) of subsidized rural household toilets from
+  user-perception surveys; no legal/institutional access-barrier
+  mechanism examined, following the established single-dwelling
+  engineering/construction-standard E06 precedent (Morena et al. 2019
+  Pekanbaru).
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes). `effect_sizes.csv` unchanged. `exclusion_log.csv` updated
+(651 rows total; E06 49 → 50). `full_text_retrieval_queue.csv`
+regenerated (2,337 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,322/3,659 screened (671 include/651 exclude), 2,337
+open, 671 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twenty-fourth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
