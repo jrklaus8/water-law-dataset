@@ -2129,6 +2129,24 @@ evidence of anything.
   Running totals: 1,168/3,659 screened (580 include/588 exclude), 2,491
   open, 580 extracted studies, 27 effect_sizes rows (unchanged). Full
   detail in `CHANGELOG.md`.
+- **2026-09-22: eighty-fifth full-text screening batch — 2
+  Drive-retrieved PDFs, 2 excludes.** Both open with no prior
+  `wrong_file_retrieved` history, no duplicates to defer: Hushie (2018), a
+  qualitative study (24 interviews, 16 CSO-District Assembly
+  collaborations) of state-civil-society partnership dynamics for W&S
+  service delivery in the Northern region of Ghana — **excluded E01**,
+  institutional-level governance-process/partnership-dynamics study, not
+  a household-level access mechanism. Soublière & Cloutier (2015), a
+  qualitative ethnographic study of power/control dynamics between
+  Malawian District Councils and rural-water-supply development partners
+  — **excluded E01**, the studied outcome is the level of
+  local-government involvement in service delivery, an institutional
+  governance-process outcome, same rationale as the Hushie exclusion.
+  `exclusion_log.csv` updated (590 rows total); `full_text_retrieval_queue.csv`
+  regenerated (2,489 open records); duplicate audit and schema validation
+  re-run clean. Running totals: 1,170/3,659 screened (580 include/590
+  exclude), 2,489 open, 580 extracted studies, 27 effect_sizes rows
+  (unchanged). Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2147,8 +2165,8 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,168 of the 3,659
-  Phase-5 includes have been assessed; 2,491 records have not yet been
+- Full-text screening itself is far from complete: 1,170 of the 3,659
+  Phase-5 includes have been assessed; 2,489 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
 - Extraction (Phase 8) is caught up with screening completely — all 580

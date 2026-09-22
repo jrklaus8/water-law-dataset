@@ -4,7 +4,40 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-fourth full-text screening batch (1 Drive-retrieved PDF: 1 new include S582)
+## 2026-09-22 (latest) — Eighty-fifth full-text screening batch (2 Drive-retrieved PDFs: 2 excludes)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox on the next
+recurring 10-minute inbox check. Both open with no prior
+`wrong_file_retrieved` history, no duplicates to defer:
+
+- **RFE07661F24F1** — Hushie M (2018). "State-civil society partnerships
+  for improving safe water and sanitation coverage in the Northern
+  region of Ghana: An exploratory qualitative study." *Cogent Social
+  Sciences* 4(1):1508626. doi 10.1080/23311886.2018.1508626. **EXCLUDE
+  (E01, wrong topic).** A qualitative study (24 interviews, 16 CSO-
+  District Assembly collaborations) of state-civil-society partnership
+  dynamics for W&S service delivery; the studied outcome is partnership
+  drivers/nature/successes/challenges at the institutional level, not a
+  household-level legal-administrative access mechanism — matches the
+  established governance-process/partnership-dynamics precedent.
+- **R46ADCD34A830** — Soublière J-F, Cloutier C (2015). "Explaining
+  Levels of Local Government Involvement in Service Delivery: The
+  Dynamics of Cross-Sector Partnerships in Malawi." *Public
+  Administration and Development* 35:192-205. doi 10.1002/pad.1715.
+  **EXCLUDE (E01, wrong topic).** A qualitative ethnographic study of
+  power/control dynamics between Malawian District Councils and
+  development partners in rural water supply; the studied outcome is the
+  level of local-government involvement in service delivery, an
+  institutional governance-process outcome, not household-level water
+  access — same rationale as the Hushie exclusion.
+
+`exclusion_log.csv` updated (590 rows total). `full_text_retrieval_queue.csv`
+regenerated (2,489 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,170/3,659 screened
+(580 include/590 exclude), 2,489 open, 580 extracted studies, 27
+effect_sizes rows (unchanged).
+
+## 2026-09-22 — Eighty-fourth full-text screening batch (1 Drive-retrieved PDF: 1 new include S582)
 
 One further PDF surfaced in the Google Drive retrieval inbox on the
 immediately following inbox check (a recurring 10-minute inbox check was
