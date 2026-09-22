@@ -4,7 +4,52 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundredth full-text screening batch (2 Drive-retrieved PDFs: 1 include S619, 1 exclude)
+## 2026-09-22 (latest) — Hundred-first full-text screening batch (2 Drive-retrieved PDFs: 2 includes S620-S621)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RD7BE4A2810FC** (Poonia & Punia 2019, *Urban Water Journal*,
+  "Associates and determinants of drinking water supply: a case study
+  along urban-rural continuum of semi-arid cities in India").
+  **INCLUDE.** 280-household survey (chi-square + seven-predictor
+  logistic regression) along the urban-rural continuum of two Rajasthan
+  cities. "Payment per month for water" is explicitly interpreted by the
+  authors as a proxy for institutional (municipal) vs. private
+  water-supply arrangement, with real odds ratios (54-180 Rs OR=7.355,
+  95% CI 2.787-19.413) against a dichotomous household water-access
+  outcome; location along the urban-rural continuum (differential
+  municipal coverage) is also significant. Extracted as **S620**. Not
+  effect_sizes eligible (institutional-arrangement variable is an
+  indirect payment-amount proxy embedded among socioeconomic covariates,
+  not a directly-coded single legal/institutional exposure).
+- **RBF205A6C9F47** (Reddy 2018, *International Journal of Water
+  Resources Development*, "Techno-institutional models for managing
+  water quality in rural areas: case studies from Andhra Pradesh,
+  India"). **INCLUDE.** Mixed-methods comparative case study (FGDs,
+  240-household survey across 8 villages) examining public-private-
+  community institutional partnership models (panchayat resolutions,
+  tripartite agreements, village development councils) for water
+  treatment service delivery, with real coverage-by-socioeconomic-group
+  (18-43%) and financial-viability outcome data. Goes beyond
+  water-quality-only framing to examine institutional governance of
+  service coverage/affordability/inclusiveness. Extracted as **S621**.
+  Not effect_sizes eligible (descriptive comparative case-study design
+  across 8 villages, no regression isolating institutional-arrangement
+  effects on access).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S620-S621, 617 →
+619 rows each). `effect_sizes.csv` unchanged (31 rows; no new
+candidates). `exclusion_log.csv` unchanged (616 rows total; no excludes
+this batch). `full_text_retrieval_queue.csv` regenerated (2,424 open
+records). Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,235/3,659 screened (619 include/616 exclude), 2,424
+open, 619 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Hundredth full-text screening batch (2 Drive-retrieved PDFs: 1 include S619, 1 exclude)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
