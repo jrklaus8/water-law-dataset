@@ -18,6 +18,43 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 ---
 
+## Accessing the Decisions
+
+**The 83,596 decisions are not in this repository.** They are in the archival
+deposits below. This repository holds the code that produced them, the
+validation material, and the tooling to audit the coding. `data/` is a working
+output folder and is intentionally empty.
+
+| You want | Go to |
+|---|---|
+| The dataset (CSV + XLSX, all 83,596 decisions) | [Zenodo 10.5281/zenodo.19836413](https://doi.org/10.5281/zenodo.19836413) |
+| The text of a particular decision | `python utils/resolve_case.py <case_id>` — see [DATA_ACCESS.md](./DATA_ACCESS.md) |
+| To check how a decision was classified | [VERIFICATION.md](./VERIFICATION.md), Level 2 |
+| To replicate from source | [VERIFICATION.md](./VERIFICATION.md), Level 3 |
+
+Two things to know before citing:
+
+1. **The dataset carries court headnotes, not full judgments.** `summary` is the
+   Brazilian *ementa* or the Dutch *inhoudsindicatie*. Full decision text is not
+   redistributed, for reasons that differ by jurisdiction
+   ([DATA_ACCESS.md §3](./DATA_ACCESS.md)). The classifier never saw full text
+   either, so the deposited string is the auditable unit.
+
+2. **Classification is auditable case by case.** Every decision carries
+   `gov_matched_rule` (the rule that assigned its category) and
+   `gov_matched_span` (the text that rule matched).
+
+```bash
+export DATA_DIR=./data                                      # holds water_law_global.csv
+python utils/jurimetric_coding.py                           # codes + emits the audit columns
+python utils/audit_trail.py --csv data/water_law_global_coded.csv
+```
+
+Known limits on auditability, including a false-negative mechanism affecting the
+Netherlands sub-dataset, are set out in [DATA_ACCESS.md §6](./DATA_ACCESS.md).
+
+---
+
 ## Repository Structure
 
 ```
@@ -37,14 +74,20 @@ water-law-dataset/
 │   │   └── canada_ldh_scraper.py      (Legal Data Hunter semantic search — requires API key)
 │   └── netherlands/
 │       ├── rechtspraak_scraper.py     (Rechtspraak Open Data — no auth)
-│       └── rechtspraak_expanded.py   (RvS/CBb/GHARL/HR extended crawl)
+│       ├── rechtspraak_expanded.py    (RvS/CBb/GHARL/HR extended crawl)
+│       └── rechtspraak_fulltext.py    (Full decision bodies by ECLI — open data)
 ├── utils/
 │   ├── merge_national.py           # Merges per-court JSON files into national CSV/XLSX
 │   ├── make_progress_charts.py
 │   ├── jurimetric_coding.py        # Regex-based coding engine (21 categories, 4 languages)
 │   ├── build_report.py             # Generate comparative DOCX report + 6 charts from coded CSV
 │   └── integrate_dissertation.py   # Integrate dataset findings into a DOCX preliminary research
-├── data/                      # Output directory (gitignored — add your JSON/CSV here)
+│   ├── resolve_case.py             # Stable permalink per decision (ECLI / CNJ / CanLII)
+│   └── audit_trail.py              # Per-case coding audit bundle + diagnostics
+├── validation/                # Inter-coder reliability, residual audit, kappa
+├── data/                      # Output directory (gitignored — see DATA_ACCESS.md)
+├── DATA_ACCESS.md             # Where the data is, what it contains, how to reach the text
+├── VERIFICATION.md            # Three-level recipe for checking this dataset
 ├── .env.example
 ├── requirements.txt
 └── README.md

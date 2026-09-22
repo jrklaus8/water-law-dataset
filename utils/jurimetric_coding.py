@@ -27,11 +27,19 @@ try:
 except ImportError:
     raise SystemExit('pip install pandas openpyxl')
 
-DL  = Path(r'C:\Users\junio\Downloads')
-CSV = DL / 'water_law_global.csv'
+# ── Input / output location ───────────────────────────────────────────────────
+# An external reviewer downloads the deposited CSV (see DATA_ACCESS.md) and
+# points DATA_DIR at the folder holding it. Falls back to ./data.
+import os
+DL  = Path(os.environ.get('DATA_DIR', './data')).expanduser()
+CSV = Path(os.environ.get('INPUT_CSV', DL / 'water_law_global.csv')).expanduser()
 
 if not CSV.exists():
-    raise SystemExit(f'Not found: {CSV}\nRun merge_all_countries.py first.')
+    raise SystemExit(
+        f'Not found: {CSV}\n'
+        f'Set DATA_DIR to the folder holding water_law_global.csv, or set\n'
+        f'INPUT_CSV to the file directly. See DATA_ACCESS.md for the download.'
+    )
 
 print('Loading dataset...')
 df = pd.read_csv(CSV, low_memory=False, encoding='utf-8-sig')
@@ -480,22 +488,88 @@ GOV_CATS = [
     ]),
 ]
 
-def code_governance(text):
-    # ── Water core vocabulary ─────────────────────────────────────────────────
-    # Used by two filters below. Must contain at least one substantive
-    # water-law term to be treated as a genuine water case.
-    _WATER_CORE_RE = re.compile(
-        r'\bwater(?:schap|leiding|kering|winning|onttrekking|toets|berging|peil'
-        r'|beheer|overlast|schade|staat|taak|gang|werk)?\b'
-        r'|\bdrinkwater\b|\bgrondwater\b|\briolering\b|\bwateroverlast\b'
-        r'|\bwaterschade\b|\bdijk\b|\bkade\b|\bpeilbesluit\b|\bwatergang\b'
-        r'|\b[aáàâã]gua\b|\bfornecimento\b|\bsaneamento\b'
-        r'|\bcaesb\b|\bsabesp\b|\bcasan\b|\bcaema\b|\bcagece\b'
-        r'|\beau\b|\bhydraulic\b|\baquifer\b|\birrigat\b|\bwetland\b'
-        r'|\bdrinkbaar\b|\bwaterkering\b',
-        re.I
-    )
+# ── Water core vocabulary ─────────────────────────────────────────────────────
+# Used by the broad false-positive filter below. A decision must contain at
+# least one substantive water-law term to be treated as a genuine water case.
+_WATER_CORE_RE = re.compile(
+    r'\bwater(?:schap|leiding|kering|winning|onttrekking|toets|berging|peil'
+    r'|beheer|overlast|schade|staat|taak|gang|werk)?\b'
+    r'|\bdrinkwater\b|\bgrondwater\b|\briolering\b|\bwateroverlast\b'
+    r'|\bwaterschade\b|\bdijk\b|\bkade\b|\bpeilbesluit\b|\bwatergang\b'
+    r'|\b[aáàâã]gua\b|\bfornecimento\b|\bsaneamento\b'
+    r'|\bcaesb\b|\bsabesp\b|\bcasan\b|\bcaema\b|\bcagece\b'
+    r'|\beau\b|\bhydraulic\b|\baquifer\b|\birrigat\b|\bwetland\b'
+    r'|\bdrinkbaar\b|\bwaterkering\b',
+    re.I
+)
 
+# ── Brazil rescue patterns ────────────────────────────────────────────────────
+# Patterns for cases confirmed by residual audit to be genuine water disputes
+# that the main GOV_CATS regex missed.
+
+# Tariff rescue: debt declaratory actions and overcharge claims with
+# CAESB/CASAN/SABESP that don't contain the standard billing keywords.
+_TARIFF_RESCUE = re.compile(
+    r'(?:d[eé]bito|cobran[çc]a|fatura).*?(?:caesb|sabesp|casan|caema|cagece)'
+    r'|(?:caesb|sabesp|casan|caema|cagece).*?(?:d[eé]bito|cobran[çc]a|fatura)'
+    r'|inexist[eê]ncia.*?d[eé]bito.*?[aáàâã]gua'
+    r'|excesso.*?cobran[çc]a.*?faturas.*?[aáàâã]gua'
+    r'|precatório.*?(?:caesb|sabesp|casan)',
+    re.I
+)
+
+# Connection rescue: obligation-to-supply framing without "recusa/corte/suspensão"
+_CONNECTION_RESCUE = re.compile(
+    r'obriga[çc][aã]o de fazer.*?abastecimento.*?[aáàâã]gua'
+    r'|abastecimento.*?[aáàâã]gua.*?ausên'
+    r'|implanta[çc][aã]o.*?rede.*?[aáàâã]gua'
+    r'|extens[aã]o.*?rede.*?(?:[aáàâã]gua|saneamento)'
+    r'|acesso.*?rede.*?[aáàâã]gua',
+    re.I
+)
+
+# Pipe damage rescue: damage claims where "água" and "dano" co-occur without
+# the standard "vazamento/ruptura/rompimento" keyword.
+_PIPE_RESCUE = re.compile(
+    r'dano.*?[aáàâã]gua.*?(?:infiltra[çc][aã]o|transbordamento|afundamento)'
+    r'|[aáàâã]gua.*?dano.*?(?:calçada|m[uú]ro|piso|im[oó]vel|propriedade)',
+    re.I
+)
+
+# Maximum characters of matched evidence kept in the audit trail. Long enough
+# to be readable in a spreadsheet cell, short enough that publishing the span
+# is a quotation of the court's own headnote, not a reproduction of it.
+AUDIT_SPAN_MAX = 300
+
+
+def _span(m, text):
+    """Readable evidence for a regex match, trimmed to AUDIT_SPAN_MAX chars.
+
+    Rescue patterns use `.*?` bridges that can span hundreds of characters
+    between the two terms that actually matter, so a raw m.group(0) is often
+    unreadable. We keep the head and tail of the match with an ellipsis so a
+    reviewer can see both anchors.
+    """
+    s = ' '.join((m.group(0) or '').split())
+    if len(s) <= AUDIT_SPAN_MAX:
+        return s
+    keep = (AUDIT_SPAN_MAX - 5) // 2
+    return s[:keep] + ' ... ' + s[-keep:]
+
+
+def explain_governance(text):
+    """Classify a decision AND return the evidence for the classification.
+
+    Returns (category, rule, span):
+      category — the governance_cat assigned
+      rule     — an identifier for the decision rule that fired, e.g.
+                 'GOV_CATS:tariff_dispute#3' or 'FILTER:no_water_vocabulary'
+      span     — the substring of the searchable text that the rule matched
+
+    This is the single source of truth for governance classification.
+    `code_governance` delegates to it, so the audit trail can never drift
+    from the labels actually assigned.
+    """
     # ── Broad false-positive filter ───────────────────────────────────────────
     # Any decision with NO water core vocabulary in its searchable text is
     # almost certainly a false positive from the broad keyword scrape and
@@ -505,54 +579,29 @@ def code_governance(text):
     # Netherlands residual 99.3% had none. This filter reclassifies 56,488
     # decisions to not_water_related.
     if not _WATER_CORE_RE.search(text):
-        return 'not_water_related'
+        return 'not_water_related', 'FILTER:no_water_vocabulary', ''
 
-    # ── Brazil rescue patterns ────────────────────────────────────────────────
-    # Patterns for cases confirmed by residual audit to be genuine water
-    # disputes that the main GOV_CATS regex missed.
-
-    # Tariff rescue: debt declaratory actions and overcharge claims with
-    # CAESB/CASAN/SABESP that don't contain the standard billing keywords.
-    _TARIFF_RESCUE = re.compile(
-        r'(?:d[eé]bito|cobran[çc]a|fatura).*?(?:caesb|sabesp|casan|caema|cagece)'
-        r'|(?:caesb|sabesp|casan|caema|cagece).*?(?:d[eé]bito|cobran[çc]a|fatura)'
-        r'|inexist[eê]ncia.*?d[eé]bito.*?[aáàâã]gua'
-        r'|excesso.*?cobran[çc]a.*?faturas.*?[aáàâã]gua'
-        r'|precatório.*?(?:caesb|sabesp|casan)',
-        re.I
-    )
-
-    # Connection rescue: obligation-to-supply framing without "recusa/corte/suspensão"
-    _CONNECTION_RESCUE = re.compile(
-        r'obriga[çc][aã]o de fazer.*?abastecimento.*?[aáàâã]gua'
-        r'|abastecimento.*?[aáàâã]gua.*?ausên'
-        r'|implanta[çc][aã]o.*?rede.*?[aáàâã]gua'
-        r'|extens[aã]o.*?rede.*?(?:[aáàâã]gua|saneamento)'
-        r'|acesso.*?rede.*?[aáàâã]gua',
-        re.I
-    )
-
-    # Pipe damage rescue: damage claims where "água" and "dano" co-occur without
-    # the standard "vazamento/ruptura/rompimento" keyword.
-    _PIPE_RESCUE = re.compile(
-        r'dano.*?[aáàâã]gua.*?(?:infiltra[çc][aã]o|transbordamento|afundamento)'
-        r'|[aáàâã]gua.*?dano.*?(?:calçada|m[uú]ro|piso|im[oó]vel|propriedade)',
-        re.I
-    )
-
-    if _TARIFF_RESCUE.search(text):
-        return 'tariff_dispute'
-    if _CONNECTION_RESCUE.search(text):
-        return 'connection_refusal'
-    if _PIPE_RESCUE.search(text):
-        return 'pipe_leak_damage'
+    for rescue_re, cat, rule in (
+        (_TARIFF_RESCUE,     'tariff_dispute',     'RESCUE:tariff'),
+        (_CONNECTION_RESCUE, 'connection_refusal', 'RESCUE:connection'),
+        (_PIPE_RESCUE,       'pipe_leak_damage',   'RESCUE:pipe_damage'),
+    ):
+        m = rescue_re.search(text)
+        if m:
+            return cat, rule, _span(m, text)
 
     # ── Main category matching ─────────────────────────────────────────────────
     for cat, patterns in GOV_CATS:
-        for p in patterns:
-            if re.search(p, text, re.I):
-                return cat
-    return 'other_water'
+        for idx, p in enumerate(patterns):
+            m = re.search(p, text, re.I)
+            if m:
+                return cat, f'GOV_CATS:{cat}#{idx}', _span(m, text)
+
+    return 'other_water', 'FALLBACK:water_vocab_no_category', ''
+
+
+def code_governance(text):
+    return explain_governance(text)[0]
 
 # ════════════════════════════════════════════════════════════════════════════════
 # 4. WIN/LOSS — who prevailed
@@ -781,13 +830,17 @@ countries  = df[country_col].fillna('').tolist() if country_col in df.columns el
 tribunals  = df['tribunal'].fillna('').tolist() if 'tribunal' in df.columns else [''] * len(df)
 
 hr, sust, gov, wl, mp, ind, pub = [], [], [], [], [], [], []
+gov_rule, gov_span = [], []   # audit trail: why each governance_cat was assigned
 
 for i, (text, text_sub, country, tribunal) in enumerate(zip(texts, texts_sub, countries, tribunals)):
     if i % 5000 == 0:
         print(f'  {i:,}/{len(df):,}...', flush=True)
     hr.append(code_hr(text_sub))
     sust.append(code_sust(text_sub))
-    gov.append(code_governance(text))
+    g_cat, g_rule, g_span = explain_governance(text)
+    gov.append(g_cat)
+    gov_rule.append(g_rule)
+    gov_span.append(g_span)
     wl.append(code_win_loss(text_sub, country, tribunal))
     mp.append(code_mp(text_sub, country))
     ind.append(code_indigenous(text_sub))
@@ -796,6 +849,8 @@ for i, (text, text_sub, country, tribunal) in enumerate(zip(texts, texts_sub, co
 df['hr_language']      = hr
 df['sust_language']    = sust
 df['governance_cat']   = gov
+df['gov_matched_rule'] = gov_rule
+df['gov_matched_span'] = gov_span
 df['win_loss']         = wl
 df['mp_involvement']   = mp
 df['indigenous_water'] = ind
@@ -807,8 +862,10 @@ df.drop(columns=['_text', '_text_sub'], inplace=True)
 # ════════════════════════════════════════════════════════════════════════════════
 # SAVE
 # ════════════════════════════════════════════════════════════════════════════════
-OUT_CSV  = DL / 'water_law_global_coded.csv'
-OUT_XLSX = DL / 'water_law_global_coded.xlsx'
+OUT_DIR  = Path(os.environ.get('OUTPUT_DIR', CSV.parent)).expanduser()
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+OUT_CSV  = OUT_DIR / 'water_law_global_coded.csv'
+OUT_XLSX = OUT_DIR / 'water_law_global_coded.xlsx'
 
 print('\nSaving...')
 df.to_csv(OUT_CSV, index=False, encoding='utf-8-sig')
