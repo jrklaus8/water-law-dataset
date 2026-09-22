@@ -2767,6 +2767,22 @@ evidence of anything.
   totals: 1,269/3,659 screened (642 include/627 exclude), 2,390 open,
   642 extracted studies, 33 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: hundred-ninth full-text screening batch — 1 Drive-
+  retrieved PDF, 1 include.** Mugambe, Tumwesigye & Larkan (2013), a
+  qualitative study (6 focus group discussions/49 participants, 12
+  key-informant interviews) of WASH access barriers among people living
+  with HIV/AIDS in Gomba and Mpigi districts, Uganda, documenting
+  flat-rate public-facility fee structures lacking pro-poor/vulnerability
+  accommodation and exclusion of PLWHA from water-user-committee
+  governance, alongside financial/social/physical barriers — **included**
+  (S645, not effect_sizes eligible). `extraction_database.csv`/
+  `evidence_map.csv` updated (S645, 642 → 643 rows each); `effect_sizes.csv`
+  unchanged (33 rows; no new candidates); `exclusion_log.csv` unchanged
+  (627 rows total; no excludes this batch); `full_text_retrieval_queue.csv`
+  regenerated (2,389 open records); duplicate audit and schema validation
+  re-run clean. Running totals: 1,270/3,659 screened (643 include/627
+  exclude), 2,389 open, 643 extracted studies, 33 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2785,17 +2801,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,269 of the 3,659
-  Phase-5 includes have been assessed; 2,390 records have not yet been
+- Full-text screening itself is far from complete: 1,270 of the 3,659
+  Phase-5 includes have been assessed; 2,389 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Five of those 2,390
+  on the researcher supplying full-text PDFs. Five of those 2,389
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 642
+- Extraction (Phase 8) is caught up with screening completely — all 643
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  642 extracted studies** (a first 12-study partial pilot batch was
+  643 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

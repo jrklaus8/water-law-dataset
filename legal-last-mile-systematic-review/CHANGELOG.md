@@ -4,7 +4,33 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-eighth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S643-S644, 1 exclude)
+## 2026-09-22 (latest) — Hundred-ninth full-text screening batch (1 Drive-retrieved PDF: 1 include S645)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **R221EA3C5B171** (Mugambe, Tumwesigye & Larkan 2013, *Journal of Public
+  Health*, "Barriers to accessing water, sanitation and hygiene among
+  people living with HIV/AIDS in Gomba and Mpigi districts in Uganda: a
+  qualitative study"). **INCLUDE.** 6 focus group discussions (49
+  participants) plus 12 key-informant interviews documenting flat-rate
+  public-facility fee structures lacking pro-poor/vulnerability
+  accommodation and exclusion of PLWHA from water-user-committee
+  governance, alongside financial/social/physical barriers. Extracted as
+  **S645**. Not effect_sizes eligible (qualitative FGD/KII study).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S645, 642 → 643
+rows each). `effect_sizes.csv` unchanged (33 rows; no new candidates).
+`exclusion_log.csv` unchanged (627 rows total; no excludes this batch).
+`full_text_retrieval_queue.csv` regenerated (2,389 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,270/3,659 screened (643 include/627 exclude), 2,389
+open, 643 extracted studies, 33 effect_sizes rows.
+
+## 2026-09-22 — Hundred-eighth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S643-S644, 1 exclude)
 
 Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
