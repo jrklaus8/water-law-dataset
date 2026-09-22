@@ -2926,6 +2926,20 @@ evidence of anything.
   (2,362 open records); schema validation re-run clean. Running totals:
   1,297/3,659 screened (659 include/638 exclude), 2,362 open, 659
   extracted studies, 34 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-seventeenth full-text screening batch — 1
+  Drive-retrieved PDF, 1 exclude.** Arnell & Delaney (2006, utility-level
+  supply-side climate-adaptation study of privatized water companies'
+  organizational strategy and Ofwat's regulatory investment-review
+  process, England and Wales) — **excluded E01**, no household-level
+  access, connection, affordability, or exclusion outcome data, same
+  rationale as the utility-level-benchmarking exclusion precedent.
+  `extraction_database.csv`/`evidence_map.csv` unchanged (no new
+  includes); `effect_sizes.csv` unchanged; `exclusion_log.csv` updated
+  (639 rows total; E01 219 → 220); `full_text_retrieval_queue.csv`
+  regenerated (2,361 open records); schema validation re-run clean.
+  Running totals: 1,298/3,659 screened (659 include/639 exclude), 2,361
+  open, 659 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2944,10 +2958,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,297 of the 3,659
-  Phase-5 includes have been assessed; 2,362 records have not yet been
+- Full-text screening itself is far from complete: 1,298 of the 3,659
+  Phase-5 includes have been assessed; 2,361 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,362
+  on the researcher supplying full-text PDFs. Six of those 2,361
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.

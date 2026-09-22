@@ -4,7 +4,32 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-sixteenth full-text screening batch (5 Drive-retrieved PDFs: 3 includes S659-S661, 2 excludes)
+## 2026-09-22 (latest) — Hundred-seventeenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox (previously flagged
+`not_retrievable`/paywalled). Target record_id confirmed open with no
+prior `wrong_file_retrieved` history; title and authors verified against
+the delivered PDF before screening.
+
+- **RA54757489129** (Arnell & Delaney 2006, *Climatic Change*, "Adapting
+  to climate change: Public water supply in England and Wales").
+  **EXCLUDE E01.** Utility-level supply-side climate-adaptation study
+  examining privatized water companies' organizational adaptation
+  strategy and Ofwat's regulatory investment-review process in response
+  to climate-change-driven supply-reliability risk; no household-level
+  access, connection, affordability, or exclusion outcome data -- same
+  rationale as the utility-level-benchmarking exclusion precedent.
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes). `effect_sizes.csv` unchanged. `exclusion_log.csv` updated
+(639 rows total; E01 219 → 220). `full_text_retrieval_queue.csv`
+regenerated (2,361 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,298/3,659 screened (659 include/639 exclude), 2,361
+open, 659 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-sixteenth full-text screening batch (5 Drive-retrieved PDFs: 3 includes S659-S661, 2 excludes)
 
 Five PDFs surfaced in the Google Drive retrieval inbox (all previously
 flagged `not_retrievable`/paywalled). All five target record_ids
