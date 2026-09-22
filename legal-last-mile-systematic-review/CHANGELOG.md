@@ -4,7 +4,53 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-ninth full-text screening batch (3 Drive-retrieved PDFs: 1 include S618, 2 excludes)
+## 2026-09-22 (latest) — Hundredth full-text screening batch (2 Drive-retrieved PDFs: 1 include S619, 1 exclude)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RAFC08D21DB57** (Robina Ramirez, De Clercq & Jackson 2019, book
+  chapter in *New Paths of Entrepreneurship Development*, "Human Water
+  Governance: A Social Innovation Model to Reduce the Inequalities of
+  Water Services in South African Informal Settlements"). **INCLUDE.**
+  PLS-SEM survey of 124 randomly-selected informal dwellers in Kayamandi
+  and Enkanini, Stellenbosch Municipality, South Africa, documenting
+  genuine legal/institutional exposures -- the Municipality's
+  application-based connection requirement under its Credit Control and
+  Debt Collection By-laws, the National Water Act/Water Services Act
+  free-basic-water entitlement, legally-required community participation
+  under the Municipal Systems Act, and Enkanini's contested
+  illegal-settlement status (2006 eviction court order never enforced) --
+  against household-level communal-tap vs. individual-connection service
+  type, service parity, and affordability outcomes. Reports PLS path
+  coefficients (Principles of Water Governance -> Human Water Management,
+  beta=0.265, p<0.001). Extracted as **S619**. Not effect_sizes eligible
+  (exposure and outcome are multi-item composite SEM latent constructs,
+  not a single identifiable legal-mechanism-vs-access-outcome
+  regression).
+- **RE370E2BDE97A** (Sengupta, Misra, Chaudhary & Prakash 2019,
+  ICEGOV2019 conference proceedings, "Role of Technology in Success of
+  Rural Sanitation Revolution in India"). **EXCLUDE (E06, engineering
+  only).** Self-described "experience paper" describing ICT/e-Governance
+  tools (web portal, mobile geotagging apps, GIS dashboards, social
+  media) used to implement India's Swachh Bharat Mission-Gramin rural
+  sanitation programme; central exposure is technology/engineering
+  infrastructure, not a legal/administrative access mechanism, same
+  rationale as the Foster/McSorley/Willetts and Jimenez/Perez-Foguet
+  exclusions.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S619, 616 → 617
+rows each). `effect_sizes.csv` unchanged (31 rows; no new candidates).
+`exclusion_log.csv` updated (616 rows total; E06 47 → 48).
+`full_text_retrieval_queue.csv` regenerated (2,426 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,233/3,659 screened (617 include/616 exclude), 2,426
+open, 617 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-ninth full-text screening batch (3 Drive-retrieved PDFs: 1 include S618, 2 excludes)
 
 Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
