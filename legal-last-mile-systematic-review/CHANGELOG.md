@@ -4,7 +4,36 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twenty-first full-text screening batch (1 Drive-retrieved PDF: 1 include S670)
+## 2026-09-22 (latest) — Hundred-twenty-second full-text screening batch (1 Drive-retrieved PDF: 1 include S671)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **R8C898DA2D09A** (Drew, Deepika, Jyotishi & Suripeddi 2021, *Water
+  International*, "Water insecurity and patchwork adaptability in
+  Bangalore's low-income neighbourhoods"). **INCLUDE.** Qualitative
+  ethnographic case study of household water insecurity across three
+  unplanned-settlement neighbourhood enclaves in south-eastern
+  Bangalore, documenting the municipality's resource-governance
+  failure and the settlements' exclusion from the formal municipal
+  piped-water grid (including a documented BWSSB per-m2 connection fee
+  of US$1340-2680), with real primary fieldwork (30-household
+  questionnaires plus interviews/focus groups, January-August 2018)
+  tied to real household-level coping-strategy outcomes. Extracted as
+  **S671**. Not effect_sizes eligible (qualitative ethnographic
+  design).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S671, 668 → 669
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+unchanged (no new excludes). Duplicate audit found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,341 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,318/3,659 screened (669 include/649 exclude), 2,341
+open, 669 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twenty-first full-text screening batch (1 Drive-retrieved PDF: 1 include S670)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
