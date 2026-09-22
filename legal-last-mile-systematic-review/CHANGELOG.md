@@ -4,7 +4,111 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-first full-text screening batch (7 Drive-retrieved PDFs: 6 includes S593-S598, 1 exclude)
+## 2026-09-22 (latest) — Ninety-second full-text screening batch (8 Drive-retrieved PDFs: 6 includes S599-S604, 2 excludes)
+
+Eight PDFs surfaced in the Google Drive retrieval inbox. All 8 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+title/authors verified against `full_text_screening_database.csv` before
+reading.
+
+- **RD6A4E2B98389** — Theodory TF (2022). "Emerging and persistent
+  challenges in water resources governance in rural Tanzania: The Mgeta
+  subcatchment of the Upper Ruvu Basin." *Norsk Geografisk Tidsskrift*
+  76(2):110-124. doi 10.1080/00291951.2022.2048067. **INCLUDE.**
+  Mixed-methods study (129-household survey + 6 FGDs + 18 KIIs, 3
+  villages) comparing water access/satisfaction by presence vs. absence of
+  a registered Community Based Water Supply Organisation (COBWSO) under
+  Tanzania's Water Resources Management Act 2009/Rural Water Supply and
+  Sanitation Act 2019 framework: 58% improved-access/72% satisfaction in
+  the COBWSO village vs. under 3% improved-access/over 80% dissatisfaction
+  in the 2 villages without one. Extracted as **S599**.
+- **R68EEE02D1AF5** — Rout S, Kattumuri R (2022). *Urban Water Supply and
+  Governance in India*. Springer. doi 10.1007/978-981-16-3819-0.
+  **INCLUDE.** Book-length household survey (n=3,714) across Ahmedabad,
+  Bengaluru, Hyderabad and Kochi examining domestic water access/
+  expenditure plus a one-way ANOVA comparing utility efficiency/
+  effectiveness/customer-satisfaction scores by institutional-arrangement
+  type (departmental/parastatal/corporatized). Only the preface, table of
+  contents, introduction and references were read in full given the
+  book's length (~300 pages); Chapters 5-9's complete body text was not
+  read, so specific numeric findings are flagged provisional pending a
+  fuller read. Extracted as **S600**.
+- **R805217DA7537** — Twani N, Soyapi CB (2022). "The legal accountability
+  of local government in South Africa for the failure to deliver
+  sanitation services." *South African Journal on Human Rights*
+  38(1-2):92-111. doi 10.1080/02587203.2022.2115397. **INCLUDE.**
+  Jurimetric case-law analysis of 4 decided South African cases
+  (Nokotyana 2010, Beja 2011, Kenton 2017, Msunduzi/Mshengu 2019) showing
+  an escalating judicial remedy pattern for municipal sanitation-delivery
+  failures, from budgetary-constraint deference to enforced structural
+  interdicts (e.g. Beja: court ordered enclosure of 1,316 toilets in
+  Khayelitsha's Silvertown project). Extracted as **S601**.
+- **R6103D8CFE42F** — Aluko OO, Esan OT, Agboola UA, Ajibade AA, John OM,
+  Obadina OD, Afolabi OT (2022). "How secured and safe is the sanitation
+  and hygiene services in a maximum-security correctional facility in
+  Southwest Nigeria." *International Journal of Environmental Health
+  Research* 32(10):2200-2217. doi 10.1080/09603123.2021.1949438.
+  **EXCLUDE (E01, wrong topic).** Cross-sectional study of 420 prison
+  inmates; institutional (non-household) unit of analysis, same rationale
+  as prior WASH-in-healthcare-facility/WASH-in-school exclusions.
+- **R97E03B20C00D** — Sullivan Lemaitre A, Stoler J (2023).
+  "Socio-political barriers to sustainable urban water governance: the
+  case of Cartagena, Colombia." *Water International* 48(6):783-803. doi
+  10.1080/02508060.2023.2256643. **INCLUDE.** Narrative (non-systematic)
+  review applying an urban water security territory framework to
+  Cartagena's 1991-2019 water governance history, documenting how the
+  2001 land-use zoning law (POT), never formally updated across 11 mayors
+  in 9 years, systematically excludes informal settlements from official
+  service-coverage zones, masking an estimated 25,898-70,000 unserviced
+  residents behind official coverage rates up to 99.91%. Extracted as
+  **S602**.
+- **R4B1669E987E0** — Dakyaga F, Schramm S, Kyessi AG (2023). "Between
+  self-help and emerging water markets: self-governance, everyday
+  practices and the spatiality of water access in Dar es Salaam." *Urban
+  Geography* 44(7):1369-1393. doi 10.1080/02723638.2022.2106054.
+  **INCLUDE.** Mixed-methods case study (292-household survey + 45
+  water-operator interviews, 3 peri-urban settlements) examining Section
+  11(3) of Tanzania's Water Resources Management Act 2009 (permit-free
+  domestic-well exemption vs. unenforced commercial-extraction permit
+  requirement), linked to sharp income-stratified disparities in water
+  price, reliability, and self-reported typhoid (48.7%)/diarrhoea (21.3%)
+  prevalence. Extracted as **S603**.
+- **RF0B06784A547** — Wang Y, Man C, Xu A, Shi Q (2022). "Spatial
+  transformation and Chinese environmental governance innovation from an
+  urban political ecology perspective: An analysis of Shenzhen's evolving
+  waterscape." *Progress in Geography* 41(9):1755-1769 (Chinese-language;
+  read and evaluated in the original Chinese, per
+  `INCLUSION_EXCLUSION.md` criterion 10). **EXCLUDE (E01, wrong topic).**
+  Urban-political-ecology documentary analysis of Shenzhen's city-scale
+  water-resource commodification/governance evolution; outcomes examined
+  are aggregate city-level water-consumption/wastewater-discharge/
+  river-water-quality statistics, a macro/city-level water-resources
+  outcome, not a household or population-level water-service-access
+  outcome — same rationale as prior Nkiaka/Nigeria-OECD macro-governance
+  exclusions.
+- **R7E87780D0891** — Mariwah S (2022). "Decentralization and Resource
+  Capacity for Sustainable Sanitation Services Delivery in Ghana." In:
+  Adjei POW, Adu-Gyamfi S (eds) *Democratic Decentralization, Local
+  Governance and Sustainable Development*, Springer, pp. 193-208. doi
+  10.1007/978-3-031-12378-8_11. **INCLUDE.** Rapid review plus the
+  author's own facilitator/verification-team observations, documenting
+  Ghana's 'institutional dilemma' (overlapping MSWR/MLGRD ministerial
+  responsibility) and an estimated 80% of MMDA sanitation by-laws
+  remaining ungazetted/unenforceable, alongside real tracked outcome data
+  (national access rose only 6%→18%, 1990-2017; a World-Bank-funded GAMA
+  project completed 21,091 household toilets across 12 MMDAs ahead of
+  schedule). Extracted as **S604**.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S599-S604, 596 →
+602 rows each). `effect_sizes.csv` unchanged (30 rows; no new study in
+this batch had a clean exposure-comparator design meeting the strict
+eligibility bar). `exclusion_log.csv` updated (605 rows total; E01 196 →
+198). `full_text_retrieval_queue.csv` regenerated (2,452 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,207/3,659 screened (602 include/605 exclude), 2,452
+open, 602 extracted studies, 30 effect_sizes rows (unchanged).
+
+## 2026-09-22 — Ninety-first full-text screening batch (7 Drive-retrieved PDFs: 6 includes S593-S598, 1 exclude)
 
 Seven PDFs surfaced in the Google Drive retrieval inbox. All 7 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

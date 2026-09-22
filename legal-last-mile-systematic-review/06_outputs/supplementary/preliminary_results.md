@@ -2327,6 +2327,47 @@ evidence of anything.
   1,199/3,659 screened (596 include/603 exclude), 2,460 open, 596
   extracted studies, 30 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: ninety-second full-text screening batch — 8 Drive-retrieved
+  PDFs, 6 includes (S599-S604), 2 excludes.** Theodory (2022), a
+  mixed-methods Tanzania study finding 58% improved-water access/72%
+  satisfaction in a village with a functioning Community Based Water
+  Supply Organisation (COBWSO) vs. under 3% access/over 80%
+  dissatisfaction in 2 villages without one — **included** (S599). Rout &
+  Kattumuri (2022), a book-length 3,714-household survey across 4 Indian
+  cities with an institutional-arrangement-type ANOVA on utility
+  performance (preface/TOC/intro read in full; Chapters 5-9 body text not
+  completely read, so numeric findings flagged provisional) — **included**
+  (S600). Twani & Soyapi (2022), a jurimetric analysis of 4 South African
+  cases showing an escalating judicial remedy pattern for sanitation
+  failures, from deference (Nokotyana) to enforced structural interdicts
+  (Beja: 1,316 toilets ordered enclosed; Msunduzi: VIP-toilet construction
+  ordered for named farm-occupier households) — **included** (S601). Aluko
+  et al. (2022), a 420-inmate Nigerian prison sanitation study —
+  **excluded E01**, institutional (non-household) unit of analysis, same
+  rationale as prior healthcare-facility/school WASH exclusions. Sullivan
+  Lemaitre & Stoler (2023), a narrative review finding Cartagena,
+  Colombia's 2001 land-use zoning law (never updated across 11 mayors in 9
+  years) masks an estimated 25,898-70,000 unserviced residents behind
+  official coverage rates up to 99.91% — **included** (S602). Dakyaga,
+  Schramm & Kyessi (2023), a 292-household Dar es Salaam study finding an
+  unenforced statutory groundwater-extraction-permit regime linked to
+  sharp income-stratified water-price/reliability/health disparities —
+  **included** (S603). Wang et al. (2022, Chinese-language, read and
+  evaluated in the original Chinese), a Shenzhen urban-political-ecology
+  study — **excluded E01**, macro/city-level water-resources governance
+  outcome (aggregate consumption/discharge/river-quality), not a
+  household-level water-service-access outcome. Mariwah (2022), a rapid
+  review of Ghana's sanitation decentralization finding a 6%→18% national
+  access increase over 1990-2017 despite an ~80% ungazetted-by-law
+  enforcement gap, alongside a GAMA World Bank project completing 21,091
+  household toilets ahead of schedule — **included** (S604).
+  `extraction_database.csv`/`evidence_map.csv` updated (S599-S604, 596 →
+  602 rows each); `effect_sizes.csv` unchanged (30 rows); `exclusion_log.csv`
+  updated (605 rows total; E01 196 → 198); `full_text_retrieval_queue.csv`
+  regenerated (2,452 open records); duplicate audit and schema validation
+  re-run clean. Running totals: 1,207/3,659 screened (602 include/605
+  exclude), 2,452 open, 602 extracted studies, 30 effect_sizes rows
+  (unchanged). Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2345,16 +2386,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,199 of the 3,659
-  Phase-5 includes have been assessed; 2,460 records have not yet been
+- Full-text screening itself is far from complete: 1,207 of the 3,659
+  Phase-5 includes have been assessed; 2,452 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,460
+  on the researcher supplying full-text PDFs. Four of those 2,452
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 596
+- Extraction (Phase 8) is caught up with screening completely — all 602
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  596 extracted studies** (a first 12-study partial pilot batch was
+  602 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
