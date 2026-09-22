@@ -4,7 +4,37 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-third full-text screening batch (9 Drive-retrieved PDFs: 7 excludes, 2 new includes S580-S581)
+## 2026-09-22 (latest) — Eighty-fourth full-text screening batch (1 Drive-retrieved PDF: 1 new include S582)
+
+One further PDF surfaced in the Google Drive retrieval inbox on the
+immediately following inbox check (a recurring 10-minute inbox check was
+scheduled per researcher request). Open with no prior
+`wrong_file_retrieved` history, no duplicate to defer:
+
+- **RE48029A5D3C0** — Jambadu L, Pilo' F, Monstadt J (2024). "Co-producing
+  maintenance and repair: hybrid labor relations in water supply in
+  Accra, Ghana." *Urban Research & Practice* 17(2):280-302. doi
+  10.1080/17535069.2023.2180325. **INCLUDE.** A qualitative comparative
+  case study (48 semi-structured interviews plus field observations,
+  2018-2020) across Nima (informal settlement) and Dodowa (peri-urban),
+  Accra. Documents genuine household-level legal-institutional content:
+  GWCL's PURC/WRC-regulated maintenance mandate; the legality/illegality
+  distinction for private and illegal water connections and informal
+  self-repair (residents hiring private plumbers to repair public-network
+  leaks, GWCL employees moonlighting as private plumbers); household
+  maintenance obligations under national water-sector policy; and Ghana's
+  decentralized CWSA/Water and Sanitation Management Team framework for
+  peri-urban community water-system maintenance. Extracted as **S582**
+  (qualitative).
+
+`evidence_map.csv` updated for S582. `full_text_retrieval_queue.csv`
+regenerated (2,491 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,168/3,659 screened
+(580 include/588 exclude), 2,491 open, 580 extracted studies, 27
+effect_sizes rows (unchanged — S582 is qualitative with no quantitative
+effect estimate).
+
+## 2026-09-22 — Eighty-third full-text screening batch (9 Drive-retrieved PDFs: 7 excludes, 2 new includes S580-S581)
 
 Nine further PDFs surfaced in the Google Drive retrieval inbox on the
 immediately following inbox check. All nine were open with no prior

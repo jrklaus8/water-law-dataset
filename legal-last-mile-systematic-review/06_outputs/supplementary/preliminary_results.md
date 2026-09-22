@@ -2111,6 +2111,24 @@ evidence of anything.
   re-run clean. Running totals: 1,167/3,659 screened (579 include/588
   exclude), 2,492 open, 579 extracted studies, 27 effect_sizes rows
   (unchanged). Full detail in `CHANGELOG.md`.
+- **2026-09-22: eighty-fourth full-text screening batch — 1
+  Drive-retrieved PDF, 1 new include (S582).** A recurring 10-minute
+  Drive-inbox check was scheduled per researcher request; this PDF
+  surfaced on the first such check. Open with no prior
+  `wrong_file_retrieved` history, no duplicate to defer: Jambadu, Pilo' &
+  Monstadt (2024), a qualitative comparative case study (48 interviews
+  plus field observations, 2018-2020) of hybrid public/private
+  maintenance-and-repair labor relations in water supply across Nima
+  (informal settlement) and Dodowa (peri-urban), Accra, Ghana, documenting
+  GWCL's PURC/WRC-regulated maintenance mandate, the legality/illegality
+  distinction for private and illegal water connections and informal
+  self-repair, and Ghana's decentralized CWSA/Water and Sanitation
+  Management Team framework (S582, CASP qualitative). `evidence_map.csv`
+  updated for S582; `full_text_retrieval_queue.csv` regenerated (2,491
+  open records); duplicate audit and schema validation re-run clean.
+  Running totals: 1,168/3,659 screened (580 include/588 exclude), 2,491
+  open, 580 extracted studies, 27 effect_sizes rows (unchanged). Full
+  detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2129,14 +2147,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,167 of the 3,659
-  Phase-5 includes have been assessed; 2,492 records have not yet been
+- Full-text screening itself is far from complete: 1,168 of the 3,659
+  Phase-5 includes have been assessed; 2,491 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 579
+- Extraction (Phase 8) is caught up with screening completely — all 580
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  579 extracted studies** (a first 12-study partial pilot batch was
+  580 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
