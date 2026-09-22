@@ -8,7 +8,7 @@ Comparative Study of the Netherlands, Canada (Ontario), and Brazil* (Claudio Kla
 
 Project status (2026-09-22): **Search closed, deduplicated, and double-screened
 at title/abstract (Phases 1–5 complete). Full-text screening (Phase 6) is
-live and ongoing — 1,320 of 3,659 records assessed so far. Full extraction
+live and ongoing — 1,321 of 3,659 records assessed so far. Full extraction
 (Phase 8) is fully caught up with screening — all 671 current
 includes extracted, no outstanding gap. Evidence classification (Phase 10) is populated
 for all 671. Risk-of-bias rating (Phase 9) has a first 12-study partial
@@ -254,9 +254,9 @@ the number.
 
 **Phase 6 (full-text screening) is live.**
 [`02_screening/full_text/full_text_screening_database.csv`](02_screening/full_text/full_text_screening_database.csv)
-holds all 3,659 title/abstract includes; **1,320 have been assessed so far
-(671 include / 649 exclude)**, with exclusions broken down by E01–E12 reason in
-`PRISMA_WORKFLOW.md` Phase 6. The remaining 2,339 await the researcher
+holds all 3,659 title/abstract includes; **1,321 have been assessed so far
+(671 include / 650 exclude)**, with exclusions broken down by E01–E12 reason in
+`PRISMA_WORKFLOW.md` Phase 6. The remaining 2,338 await the researcher
 supplying full text, expected to continue for roughly a month.
 
 **Phase 7 (pilot extraction) was superseded** by the researcher's explicit

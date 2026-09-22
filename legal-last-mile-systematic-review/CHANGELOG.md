@@ -4,7 +4,38 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twenty-third full-text screening batch (2 Drive-retrieved PDFs: 2 includes S672-S673)
+## 2026-09-22 (latest) — Hundred-twenty-fourth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **R83FD4293023F** (Silva Rodríguez de San Miguel, Lambarry-Vilchis &
+  Trujillo Flores 2019, *Management of Environmental Quality*,
+  "Integral drinking water management model in Iztapalapa, Mexico
+  City"). **EXCLUDE E01.** Confirmatory-factor-analysis-based drinking-
+  water management-quality/user-satisfaction model-building study; the
+  paper's stated purpose is to design a generalizable multidimensional
+  management model from managers' and users' perceived-quality/
+  satisfaction ratings (4 manager interviews, 360-user survey, CFA
+  construct validation). A "role of law" item is one of 19
+  qualitatively-rated conceptual dimensions in the model, not a
+  primary study of a specific legal/institutional mechanism's effect
+  on household water access, connection, or affordability, following
+  the established methodological-contribution E01 precedent (Lanz &
+  Provins, Hatton MacDonald/Morrison/Barnes, Post/Agnihotri/Hyun,
+  Porse et al.).
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes). `effect_sizes.csv` unchanged. `exclusion_log.csv` updated
+(650 rows total; E01 228 → 229). `full_text_retrieval_queue.csv`
+regenerated (2,338 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,321/3,659 screened (671 include/650 exclude), 2,338
+open, 671 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twenty-third full-text screening batch (2 Drive-retrieved PDFs: 2 includes S672-S673)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

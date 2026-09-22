@@ -3061,6 +3061,22 @@ evidence of anything.
   Running totals: 1,320/3,659 screened (671 include/649 exclude), 2,339
   open, 671 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: hundred-twenty-fourth full-text screening batch — 1
+  Drive-retrieved PDF, 1 exclude.** Silva Rodríguez de San Miguel,
+  Lambarry-Vilchis & Trujillo Flores (2019, CFA-based drinking-water
+  management-quality/user-satisfaction model-building study, Iztapalapa,
+  Mexico City) — **excluded E01**, a methodological model-building
+  contribution ("role of law" is one of 19 qualitatively-rated
+  dimensions, not a primary study of a legal/institutional access
+  mechanism), same rationale as the Lanz & Provins/Hatton MacDonald/
+  Post-Agnihotri-Hyun/Porse methodological-contribution exclusions.
+  `extraction_database.csv`/`evidence_map.csv` unchanged (no new
+  includes); `effect_sizes.csv` unchanged; `exclusion_log.csv` updated
+  (650 rows total; E01 228 → 229); `full_text_retrieval_queue.csv`
+  regenerated (2,338 open records); schema validation re-run clean.
+  Running totals: 1,321/3,659 screened (671 include/650 exclude), 2,338
+  open, 671 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3079,10 +3095,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,320 of the 3,659
-  Phase-5 includes have been assessed; 2,339 records have not yet been
+- Full-text screening itself is far from complete: 1,321 of the 3,659
+  Phase-5 includes have been assessed; 2,338 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,339
+  on the researcher supplying full-text PDFs. Six of those 2,338
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
