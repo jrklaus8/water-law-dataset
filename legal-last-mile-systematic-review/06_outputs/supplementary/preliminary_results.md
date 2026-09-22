@@ -2424,6 +2424,25 @@ evidence of anything.
   clean. Running totals: 1,217/3,659 screened (609 include/608 exclude),
   2,442 open, 609 extracted studies, 31 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: ninety-fifth full-text screening batch — 2 Drive-retrieved
+  PDFs, 2 includes (S612-S613), 0 excludes.** Chapman et al. (2020), a
+  32-interview qualitative ethnographic study of women's water access in
+  Gressier, Haiti, documenting informal unregulated neighbor-to-neighbor
+  pipe networks with no government oversight (~40% of piped households
+  restricted monthly for non-payment) — **included** (S612). McCulligh,
+  Arellano-García & Casas-Beltrán (2020), a mixed-methods 293-household
+  survey across 4 Jalisco municipalities documenting Mexico's weak/
+  unenforced water regulation (CONAGUA averaging only 269 inspections/
+  year across 41,116 concessions) against household water-service
+  intermittency (only 34.1% receive water daily) and affordability
+  outcomes — **included** (S613). `extraction_database.csv`/
+  `evidence_map.csv` updated (S612-S613, 609 → 611 rows each);
+  `effect_sizes.csv` unchanged (31 rows; no new candidates);
+  `exclusion_log.csv` unchanged (608 rows; no new exclusions);
+  `full_text_retrieval_queue.csv` regenerated (2,440 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,219/3,659 screened (611 include/608 exclude), 2,440 open, 611
+  extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2442,16 +2461,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,217 of the 3,659
-  Phase-5 includes have been assessed; 2,442 records have not yet been
+- Full-text screening itself is far from complete: 1,219 of the 3,659
+  Phase-5 includes have been assessed; 2,440 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,442
+  on the researcher supplying full-text PDFs. Four of those 2,440
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 609
+- Extraction (Phase 8) is caught up with screening completely — all 611
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  609 extracted studies** (a first 12-study partial pilot batch was
+  611 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

@@ -4,7 +4,50 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-fourth full-text screening batch (4 Drive-retrieved PDFs: 3 includes S609-S611, 1 exclude)
+## 2026-09-22 (latest) — Ninety-fifth full-text screening batch (2 Drive-retrieved PDFs: 2 includes S612-S613, 0 excludes)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RB27F53708057** (Chapman, Merceron, Myers & Wood 2020, *Water
+  International*, "Women's lived-experiences of water infrastructure in
+  Gressier, Haiti"). **INCLUDE.** Qualitative ethnographic study: 32
+  in-depth interviews (from a 304-participant base sample) with women in
+  Gressier, Haiti, documenting informal, unregulated neighbor-to-neighbor
+  water-pipe networks operating with no accessible government
+  documentation or oversight (DINEPA nominally but largely absent),
+  informal payment/non-payment/service-restriction dynamics (~40% of
+  households with piped access restricted monthly for non-payment), and
+  informal source-management disputes, against household water
+  access/reliability/affordability outcomes. Extracted as **S612**. Not
+  effect_sizes eligible (qualitative interview-based study, no
+  regression).
+- **R70C06383A22C** (McCulligh, Arellano-Garcia & Casas-Beltran 2020,
+  *Local Environment*, "Unsafe waters: the hydrosocial cycle of drinking
+  water in Western Mexico"). **INCLUDE.** Mixed-methods case study:
+  293-household survey across 4 Jalisco municipalities plus
+  official/stakeholder interviews, documenting Mexico's 1992 National
+  Waters Law concession system, CONAGUA's near-nonexistent enforcement
+  (269 inspections/year across 41,116 concessions), and the weak
+  NOM-127-SSA1-1994 drinking-water standard, against household-level
+  water-service intermittency (only 34.1% of surveyed households receive
+  water daily) and affordability (48% resorted to tanker-truck water at
+  358% higher cost) outcomes. Extracted as **S613**. Not effect_sizes
+  eligible (descriptive survey statistics within a qualitative
+  case-study narrative, no regression).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S612-S613, 609 →
+611 rows each). `effect_sizes.csv` unchanged (31 rows; no new
+candidates). `exclusion_log.csv` unchanged (608 rows; no new exclusions
+this batch). `full_text_retrieval_queue.csv` regenerated (2,440 open
+records). Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,219/3,659 screened (611 include/608 exclude), 2,440
+open, 611 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-fourth full-text screening batch (4 Drive-retrieved PDFs: 3 includes S609-S611, 1 exclude)
 
 Four PDFs surfaced in the Google Drive retrieval inbox. All 4 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
