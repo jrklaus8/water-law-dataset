@@ -4,7 +4,122 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-sixth full-text screening batch (2 Drive-retrieved PDFs: 1 exclude, 1 new include S583)
+## 2026-09-22 (latest) — Eighty-seventh full-text screening batch (14 Drive-retrieved PDFs: 1 duplicate deferred, 8 excludes, 5 new includes S584-S588)
+
+Fourteen PDFs surfaced in the Google Drive retrieval inbox in one check (6
+pre-matched with record_id in the filename, 8 labeled `UNMATCHED__` and
+title-matched by content against the full-text screening database). One
+(**R897B0E5CB3C7**, Li/McManus/Cronk Liberia water-point-functionality
+paper) is a duplicate of an already-`include`-decided record (matching
+study S388 from an earlier session) — moved to the Processed folder without
+re-screening, per the standing duplicate-defer rule. The remaining 13 open
+with no prior `wrong_file_retrieved` history:
+
+- **R7562AB7A89D4** — Lieberherr E, Ingold K. "Public, Private, or
+  Inter-Municipal Organizations: Actors' Preferences in the Swiss Water
+  Sector." **EXCLUDE (E04, wrong outcome).** Stated-preference/
+  choice-experiment survey of water-sector professionals' organizational-
+  form preferences; the measured outcome is expressed preference, not an
+  access/connection/affordability/reliability outcome.
+- **R88B242AA77A8** — Germann V, Langergraber G. "Going Beyond Global
+  Indicators — Policy Relevant Indicators for SDG 6 Targets in the Context
+  of Austria." **EXCLUDE (E05, no empirical evidence).** Desk-based
+  indicator-selection/expert-consultation paper; no original data
+  collection on household/community access.
+- **RCE880579857E** — Løvbrand E/Gloppen S (Kenya/Slovenia right-to-water
+  constitutionalization). **EXCLUDE (E01, wrong topic/unit of analysis).**
+  Macro comparative-politics process-tracing study of constitutional
+  right-to-water adoption; no household-level enforcement outcome.
+- **RF0D065E4A163** — Côrtes L, Gianella C, Páez AM, Vallejo Piedrahíta C
+  (2021). "Comparing Experiences of Constitutional Reforms to Enshrine the
+  Right to Water in Brazil, Colombia, and Peru: Opportunities and
+  Limitations." *Water* 13(24):3519. doi 10.3390/w13243519. **INCLUDE.**
+  Comparative constitutional-law/case-law documentary study documenting
+  Colombia's Constitutional Court tutela jurisprudence enforcing household
+  reconnection for low-income petitioners unable to pay who show imminent
+  risk to health/life, and Peru's amparo action/2017 constitutional
+  amendment — directly analogous to the previously-included S517 Morgan
+  "Turning off the tap" household reconnection/disconnection precedent.
+  Extracted as **S584** (qualitative).
+- **R8C306200E800** — Wingfield et al. "Challenges to Water Management in
+  Ecuador: Legal Authorization, Quality Parameters, and Socio-Political
+  Responses." **EXCLUDE (E05, no empirical evidence).** Desk-based legal/
+  policy literature review; Methods section confirms no original data
+  collection.
+- **R5977B1A524C5** — de Castro MAS et al. "An Experiment in
+  Transdisciplinary Systems Mapping: Architecture and the Water-Energy-
+  Sanitation Nexus in Brazil." **EXCLUDE (E01, wrong topic/unit of
+  analysis).** Methodological systems-mapping-framework paper; matches the
+  established Porse et al. 2022 methodological-paper precedent.
+- **RC89A2B1CEA16** — Granados-Muñoz LE (2022). "El acueducto II de
+  Querétaro: obras de trasvase y escenarios de desigualdad social."
+  *Letras Verdes* 32:129-146. doi 10.17141/letrasverdes.32.2022.5273.
+  **INCLUDE.** Spanish-language ethnographic case study documenting the
+  Querétaro state government's broken public-private-partnership-financed
+  restitution promises (hydraulic network, bridge, sanitary drainage) made
+  to the Maconí agrarian community after aqueduct-tunnel blasting destroyed
+  five natural springs; primary interview testimony confirms water was
+  never delivered. Extracted as **S585** (qualitative).
+- **RA84EFD886B54** — Silva-Novoa Sanchez LM, Kemerink-Seyoum JS,
+  Zwarteveen M (2019). "Water Infrastructure Always In-the-Making:
+  Distributing Water and Authority through the Water Supply Network in
+  Moamba, Mozambique." *Water* 11(9):1926. doi 10.3390/w11091926.
+  **INCLUDE.** Ethnographic case study of a self-installed household pipe
+  extension (Block Q11) that the water utility tacitly tolerated as
+  "unauthorized" while providing technical connection assistance; the
+  neighborhood chief's 50 MT per-household contribution fee created a new
+  exclusionary entitlement rule barring non-paying households.
+  Extracted as **S586** (qualitative).
+- **R684F94E229C3** — Alba R, Bruns A, Bartels LE, Kooy M (2019). "Water
+  Brokers: Exploring Urban Water Governance through the Practices of
+  Tanker Water Supply in Accra." *Water* 11(9):1919. doi
+  10.3390/w11091919. **INCLUDE.** Ethnographic study (12 days participant
+  observation, 15 policy-maker interviews) documenting Ghana's water law's
+  exclusive legal recognition of GWCL as urban water provider (leaving
+  tanker/vendor supply unregulated) and the land-tenure barrier excluding
+  Old Fadama informal-settlement residents from legal piped connections.
+  Extracted as **S587** (qualitative).
+- **R2E8B036BE02F** — Richmond A, Myers I, Namuli H (2018). "Urban
+  Informality and Vulnerability: A Case Study in Kampala, Uganda." *Urban
+  Science* 2(1):22. doi 10.3390/urbansci2010022. **INCLUDE.** Mixed-methods
+  study (ACTogether community survey data across 57 informal settlements
+  plus interviews) documenting how Kampala's overlapping land-tenure
+  system and stand-pipe connection-fee requirements determine household
+  eligibility for legal piped-water access. Extracted as **S588** (mixed
+  methods).
+- **R0E0F6D8C3330** — Machado AVM, dos Santos JAN, Quindeler NdS, Alves LMC
+  (2019). "Critical Factors for the Success of Rural Water Supply Services
+  in Brazil." *Water* 11(10):2180. **EXCLUDE (E04, wrong outcome).**
+  Nominal Group Technique survey of 88 mostly national/state-level
+  professionals (only n=7 from local communities) ranking 30 literature-
+  derived success factors; measured outcome is expert-perceived importance,
+  not an empirical access outcome.
+- **R3D4E9479ACD7** — Dhoba L (2022). "Strengthening water, sanitation and
+  hygiene governance: a critical review of Zimbabwe's WASH sector
+  institutional arrangements." *H2Open Journal* 5(2):248. **EXCLUDE (E01,
+  wrong topic/unit of analysis).** Institutional-coordination-mechanism
+  study (questionnaire survey of 43 sector organizations plus FGDs/KIIs)
+  assessing the functioning/legitimacy of Zimbabwe's National Action
+  Committee WASH coordination structure; no household-level access
+  outcome — matches the established SusWASH institutional-coordination
+  precedent.
+- **R7220865B32E6** — Poudel M et al. (2024). "Effectiveness of climate
+  resilient water safety plans in Nepal." *AQUA — Water Infrastructure,
+  Ecosystems and Society* 73(7):1437. **EXCLUDE (E06, engineering only).**
+  Technical climate-resilience assessment of 10 piped water supply schemes
+  using the HTIW engineering/infrastructure-resilience scoring framework
+  (Likert-scale domain scores); measures scheme-level technical resilience,
+  not a legal-institutional household access outcome.
+
+`evidence_map.csv` updated for S584-S588. `exclusion_log.csv` updated (599
+rows total). `full_text_retrieval_queue.csv` regenerated (2,474 open
+records). Duplicate audit (DOI + record_id) and `validate_schemas.py`
+both clean. Running totals: 1,185/3,659 screened (586 include/599
+exclude), 2,474 open, 586 extracted studies, 27 effect_sizes rows
+(unchanged — none of S584-S588 report a quantitative comparator effect
+estimate).
+
+## 2026-09-22 — Eighty-sixth full-text screening batch (2 Drive-retrieved PDFs: 1 exclude, 1 new include S583)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox on the next
 recurring 10-minute inbox check. Both open with no prior

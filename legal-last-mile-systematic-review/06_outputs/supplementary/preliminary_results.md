@@ -2169,6 +2169,47 @@ evidence of anything.
   re-run clean. Running totals: 1,172/3,659 screened (581 include/591
   exclude), 2,487 open, 581 extracted studies, 27 effect_sizes rows
   (unchanged). Full detail in `CHANGELOG.md`.
+- **2026-09-22: eighty-seventh full-text screening batch — 14
+  Drive-retrieved PDFs, 1 duplicate deferred, 8 excludes, 5 new includes
+  (S584-S588).** One (Li/McManus/Cronk, Liberia water-point functionality)
+  was a duplicate of an already-`include`-decided record — moved to
+  Processed without re-screening, per the standing duplicate-defer rule.
+  Of the remaining 13, all open with no prior `wrong_file_retrieved`
+  history: Cortes et al. (2021), a comparative constitutional-law/
+  case-law study of Brazil, Colombia, and Peru documenting Colombia's
+  Constitutional Court tutela jurisprudence enforcing household
+  reconnection for low-income petitioners and Peru's amparo action/2017
+  constitutional amendment (S584, directly analogous to the S517 Morgan
+  precedent); Granados-Munoz (2022), a Spanish-language ethnographic case
+  study of Mexico's Acueducto II documenting broken PPP-financed
+  restitution promises to the Maconi agrarian community (S585);
+  Silva-Novoa Sanchez et al. (2019), an ethnographic study of a
+  self-installed household pipe extension in Moamba, Mozambique that the
+  utility tacitly tolerated while a neighborhood chief's contribution fee
+  created a new exclusionary access rule (S586); Alba et al. (2019), an
+  ethnographic study of Accra's tanker water-supply governance
+  documenting the exclusive legal recognition of GWCL and the land-tenure
+  barrier excluding Old Fadama informal-settlement residents from legal
+  piped connections (S587); and Richmond et al. (2018), a mixed-methods
+  study of Kampala's 57 informal settlements documenting how overlapping
+  land tenure and connection-fee requirements determine legal
+  piped-water eligibility (S588). Eight excludes: Lieberherr & Ingold
+  (Swiss organizational-preference survey, **E04**); Germann &
+  Langergraber (Austria SDG6 indicator-selection desk review, **E05**);
+  a Kenya/Slovenia constitutionalization process study (**E01**);
+  Wingfield et al. (Ecuador legal/policy desk review, **E05**); de Castro
+  et al. (Brazil water-energy-sanitation systems-mapping methodological
+  paper, **E01**); Machado et al. (Brazil rural-water-supply NGT
+  expert-opinion survey, only n=7 community-level respondents, **E04**);
+  Dhoba (Zimbabwe WASH sector institutional-coordination study, **E01**);
+  and Poudel et al. (Nepal climate-resilient water-safety-plan technical
+  resilience-scoring study, **E06**). `evidence_map.csv` updated for
+  S584-S588; `exclusion_log.csv` updated (599 rows total);
+  `full_text_retrieval_queue.csv` regenerated (2,474 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,185/3,659 screened (586 include/599 exclude), 2,474 open, 586
+  extracted studies, 27 effect_sizes rows (unchanged). Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2187,14 +2228,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,172 of the 3,659
-  Phase-5 includes have been assessed; 2,487 records have not yet been
+- Full-text screening itself is far from complete: 1,185 of the 3,659
+  Phase-5 includes have been assessed; 2,474 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 581
+- Extraction (Phase 8) is caught up with screening completely — all 586
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  581 extracted studies** (a first 12-study partial pilot batch was
+  586 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
