@@ -2276,6 +2276,21 @@ evidence of anything.
   1,191/3,659 screened (590 include/601 exclude), 2,468 open, 590
   extracted studies, 29 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: ninetieth full-text screening batch — 1 Drive-retrieved
+  PDF, 1 exclude.** Willis & Buonocore (2023), a short AJPH editorial
+  commenting on oil and gas extraction siting near marginalized
+  communities and reviewing California/New York fracking-regulation
+  timelines — **excluded E01**, the paper's subject is oil/gas
+  extraction environmental-justice regulation, not water/sanitation
+  service access ("community water supply contamination" is mentioned
+  once in passing, attributed to a different cited study).
+  `exclusion_log.csv` updated (602 rows total);
+  `full_text_retrieval_queue.csv` regenerated (2,467 open records);
+  duplicate audit and schema validation re-run clean (no
+  extraction/evidence_map/effect_sizes changes — pure exclude). Running
+  totals: 1,192/3,659 screened (590 include/602 exclude), 2,467 open,
+  590 extracted studies, 29 effect_sizes rows (unchanged). Full detail
+  in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2294,10 +2309,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,191 of the 3,659
-  Phase-5 includes have been assessed; 2,468 records have not yet been
+- Full-text screening itself is far from complete: 1,192 of the 3,659
+  Phase-5 includes have been assessed; 2,467 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,468
+  on the researcher supplying full-text PDFs. Four of those 2,467
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
 - Extraction (Phase 8) is caught up with screening completely — all 590

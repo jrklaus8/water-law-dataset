@@ -4,7 +4,33 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-ninth full-text screening batch (5 Drive-retrieved PDFs, all Antigravity-delivered: 2 excludes, 3 new includes S590-S592)
+## 2026-09-22 (latest) — Ninetieth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox. Open with no prior
+`wrong_file_retrieved` history, title/authors matched:
+
+- **R2F0303FF9A77** — Willis MD, Buonocore JJ (2023). "Fossil Fuel
+  Racism: The Ongoing Burden of Oil and Gas Development in the Shadows of
+  Regulatory Inaction." *American Journal of Public Health*
+  113(11):1176-1178. **EXCLUDE (E01, wrong topic).** A short editorial
+  commenting on two other studies' findings about oil and gas extraction
+  siting near persistently marginalized/redlined communities in Los
+  Angeles County, and reviewing the regulatory timeline (setback-distance
+  rules, fracking moratoria/bans) for oil and gas development in
+  California and New York. "Community water supply contamination" is
+  mentioned once in passing as a health-hazard pathway addressed by a
+  different cited study, not examined empirically here — the paper's
+  subject is oil/gas extraction environmental-justice regulation, not
+  water/sanitation service access.
+
+`exclusion_log.csv` updated (602 rows total). `full_text_retrieval_queue.csv`
+regenerated (2,467 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean (no extraction/evidence_map/effect_sizes
+changes this batch — pure exclude). Running totals: 1,192/3,659 screened
+(590 include/602 exclude), 2,467 open, 590 extracted studies, 29
+effect_sizes rows (unchanged).
+
+## 2026-09-22 — Eighty-ninth full-text screening batch (5 Drive-retrieved PDFs, all Antigravity-delivered: 2 excludes, 3 new includes S590-S592)
 
 Five PDFs surfaced in the Google Drive retrieval inbox in one check, all
 pre-matched with `record_id` in the filename and all genuine matches (no
