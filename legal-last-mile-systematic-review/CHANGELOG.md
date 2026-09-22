@@ -4,7 +4,97 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-second full-text screening batch (6 Drive-retrieved PDFs: 2 excludes, 4 new includes S576-S579)
+## 2026-09-22 (latest) — Eighty-third full-text screening batch (9 Drive-retrieved PDFs: 7 excludes, 2 new includes S580-S581)
+
+Nine further PDFs surfaced in the Google Drive retrieval inbox on the
+immediately following inbox check. All nine were open with no prior
+`wrong_file_retrieved` history and no duplicates to defer:
+
+- **R7D3F1DFC2F82** — Craps M, Dewulf A, Mancero M, Santos E, Bouwen R
+  (2004). "Constructing Common Ground and Re-Creating Differences Between
+  Professional and Indigenous Communities in the Andes." *Journal of
+  Community & Applied Social Psychology* 14(5):378-393. doi
+  10.1002/casp.796. **INCLUDE.** A qualitative case study of a negotiation
+  process between indigenous highland communities and development
+  professionals in the Chambo river subbasin, Ecuador. Documents genuine
+  legal-institutional content: indigenous communities' legal land titles,
+  a judicial workshop process, and formation of a new interinstitutional
+  legal consortium governing subbasin water/resource issues. Extracted as
+  **S580** (qualitative).
+- **R1F5F1AA03B4D** — Hess DJ, Wold CA, Hunter E, Nay J, Worland S,
+  Gilligan J, Hornberger GM (2016). "Drought, Risk, and Institutional
+  Politics in the American Southwest." *Sociological Forum* 31(S1):807-827.
+  doi 10.1111/socf.12274. **INCLUDE.** A mixed-methods study of 22 American
+  Southwest metropolitan statistical areas combining qualitative
+  institutional-logics conflict coding of water-supply-policy disputes
+  (development, preservation, environmental, consumer logics — e.g.
+  Choctaw/Chickasaw Nations litigation over Sardis Lake, San Antonio's
+  Vista Ridge ratepayer opposition, Tucson pricing/mandate conflicts) with
+  a quantitative decision-tree/random-forest model identifying a city's
+  Partisan Voting Index as the dominant predictor of municipal
+  water-conservation-policy adoption (VWCIb index, 117 metrics).
+  Extracted as **S581** (mixed methods). Not added to `effect_sizes.csv`:
+  the decision-tree/random-forest variable-importance analysis (%
+  increase in prediction error) is not a coefficient-plus-standard-error
+  effect estimate comparable to the studies already in that file.
+- **RF7AFEEC69292** — Suleiman L (2011). "Civil society: a revived mantra
+  in the development discourse." *Water Policy* 13(1):87-101. doi
+  10.2166/wp.2010.087. **EXCLUDE (E01, wrong topic).** A governance-
+  process/participation discourse study at a macro/institutional unit of
+  analysis, not household-level water/sanitation access — matches the
+  established governance-process/participation precedent.
+- **RCBAA22BF401E** — Murdocca C (2010). "'There Is Something in That
+  Water': Race, Nationalism, and Legal Violence." *Law & Social Inquiry*
+  35(2):369-402. doi 10.1111/j.1747-4469.2010.01189.x. **EXCLUDE (E05, no
+  empirical evidence).** A documentary/case-study sociolegal analysis of
+  the Kashechewan water crisis using secondary sources and case law, with
+  no original empirical data collection by the author.
+- **RADD32264AC64** — Jaffee D, Newman S (2013). "A More Perfect
+  Commodity: Bottled Water, Global Accumulation, and Local Contestation."
+  *Rural Sociology* 78(1):1-28. doi 10.1111/j.1549-0831.2012.00095.x.
+  **EXCLUDE (E01, wrong topic).** A political-economy study of bottled-
+  water commodification and corporate resource-extraction contestation,
+  not a household-level legal-administrative water/sanitation access
+  study.
+- **R7863774753EC** — Abu TZ, Elliott SJ, Karanja D (2021). "'When you
+  preach water and you drink wine': WASH in healthcare facilities in
+  Kenya." *Journal of Water, Sanitation and Hygiene for Development*
+  11(4):558-569. doi 10.2166/washdev.2021.238. **EXCLUDE (E01, wrong
+  topic).** An institutional healthcare-facility WASH study — institutional
+  (non-household) unit of analysis, matching the established
+  institutional-WASH exclusion precedent.
+- **RE41EC0C4C23A** — Krishna A, Eliatamby DM, Fry MW, et al. (2024).
+  "Workplace menstrual health in the private sector: Results from a pilot
+  study in Kenya and Nepal." *Journal of Water, Sanitation and Hygiene for
+  Development* 14(7):473-485. doi 10.2166/washdev.2024.026. **EXCLUDE
+  (E01, wrong topic).** A workplace-based menstrual-health intervention
+  pilot study, not household water/sanitation access.
+- **R720E1DE4E7C8** — Rehman N (2022). "Epidemic Infrastructures and the
+  Politics of Responsibility in Lahore." *Antipode* 54(5):1451-1475. doi
+  10.1111/anti.12826. **EXCLUDE (E01, wrong topic).** A dengue
+  epidemiology/public-health surveillance study using Lahore's fractured
+  water infrastructure as disease-transmission context; the primary
+  reported outcome is epidemiological (mosquito breeding/disease risk),
+  not a water access/connection/affordability outcome.
+- **R49DDEAB1849F** — Yusuf TS, Murray A, Okereke C (2022). "Working with
+  local governments to increase access to WASH services: a case of
+  WaterAid's participatory approaches in Nigeria." *H2Open Journal*
+  5(3):424-437. doi 10.2166/h2oj.2022.061. **EXCLUDE (E01, wrong topic).**
+  A WaterAid Nigeria LGA-INGO partnership/participatory-development case
+  study — a governance-process/participation study at institutional (LGA)
+  level, not household-unit legal-administrative water access.
+
+`evidence_map.csv` updated for S580-S581. `exclusion_log.csv` updated for
+the 7 new excludes (588 rows). `full_text_retrieval_queue.csv`
+regenerated (2,492 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,167/3,659 screened
+(579 include/588 exclude), 2,492 open, 579 extracted studies, 27
+effect_sizes rows (unchanged — S580 is qualitative with no quantitative
+effect estimate; S581's decision-tree/random-forest political-predictor
+analysis does not yield a coefficient-plus-standard-error effect
+estimate comparable to the studies already in `effect_sizes.csv`).
+
+## 2026-09-22 — Eighty-second full-text screening batch (6 Drive-retrieved PDFs: 2 excludes, 4 new includes S576-S579)
 
 Six further PDFs surfaced in the Google Drive retrieval inbox on the
 immediately following inbox check. All six were open with no prior

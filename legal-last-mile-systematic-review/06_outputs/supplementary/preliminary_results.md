@@ -2067,6 +2067,50 @@ evidence of anything.
   logistic-regression odds ratios are demographic predictors of
   water-poverty risk, not a legal-institutional exposure-vs-comparator
   effect). Full detail in `CHANGELOG.md`.
+- **2026-09-22: eighty-third full-text screening batch — 9
+  Drive-retrieved PDFs, 7 excludes, 2 new includes (S580-S581).** All nine
+  were open with no prior `wrong_file_retrieved` history and no
+  duplicates to defer. Two includes: Craps, Dewulf, Mancero, Santos &
+  Bouwen (2004), a qualitative case study of an indigenous-community/
+  professional negotiation process over water/resource governance in the
+  Chambo river subbasin, Ecuador, documenting indigenous communities'
+  legal land titles, a judicial workshop, and formation of a new
+  interinstitutional legal consortium (S580, Legal Institutional Evidence
+  Appraisal Framework). Hess, Wold, Hunter, Nay, Worland, Gilligan &
+  Hornberger (2016), a mixed-methods 22-MSA study of the American
+  Southwest combining qualitative institutional-logics conflict coding of
+  water-supply-policy disputes (development, preservation, environmental,
+  consumer logics — e.g. Choctaw/Chickasaw Nations litigation over Sardis
+  Lake, San Antonio's Vista Ridge ratepayer opposition) with a
+  quantitative decision-tree/random-forest model identifying a city's
+  Partisan Voting Index as the dominant predictor of municipal
+  water-conservation-policy adoption (S581, JBI observational; not added
+  to `effect_sizes.csv` — the variable-importance analysis is not a
+  coefficient-plus-standard-error effect estimate). Seven excludes:
+  RF7AFEEC69292 (Suleiman 2011, civil-society development-discourse
+  study) — **excluded E01**, governance-process/participation study at a
+  macro/institutional unit of analysis. RCBAA22BF401E (Murdocca 2010,
+  Kashechewan water-crisis race/legal-violence analysis) — **excluded
+  E05**, documentary/case-study analysis of secondary sources, no
+  original empirical data collection. RADD32264AC64 (Jaffee & Newman
+  2013, bottled-water commodification study) — **excluded E01**,
+  corporate resource-extraction contestation, not household-level
+  access. R7863774753EC (Abu, Elliott & Karanja 2021, Kenyan
+  healthcare-facility WASH) — **excluded E01**, institutional (non-
+  household) unit of analysis. RE41EC0C4C23A (Krishna et al. 2024,
+  workplace menstrual-health pilot study) — **excluded E01**,
+  workplace-based, not household access. R720E1DE4E7C8 (Rehman 2022,
+  "Epidemic Infrastructures... Lahore") — **excluded E01**, dengue
+  epidemiology/public-health-surveillance study; the reported outcome is
+  epidemiological, not water access. R49DDEAB1849F (Yusuf, Murray &
+  Okereke 2022, WaterAid Nigeria LGA-INGO participatory partnership case
+  study) — **excluded E01**, governance-process/participation study at
+  institutional (LGA) level. `evidence_map.csv` updated for S580-S581;
+  `exclusion_log.csv` updated (588 rows total); `full_text_retrieval_queue.csv`
+  regenerated (2,492 open records); duplicate audit and schema validation
+  re-run clean. Running totals: 1,167/3,659 screened (579 include/588
+  exclude), 2,492 open, 579 extracted studies, 27 effect_sizes rows
+  (unchanged). Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2085,14 +2129,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,158 of the 3,659
-  Phase-5 includes have been assessed; 2,501 records have not yet been
+- Full-text screening itself is far from complete: 1,167 of the 3,659
+  Phase-5 includes have been assessed; 2,492 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 577
+- Extraction (Phase 8) is caught up with screening completely — all 579
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  577 extracted studies** (a first 12-study partial pilot batch was
+  579 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
