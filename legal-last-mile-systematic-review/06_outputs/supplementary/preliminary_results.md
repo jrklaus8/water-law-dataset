@@ -2147,6 +2147,28 @@ evidence of anything.
   re-run clean. Running totals: 1,170/3,659 screened (580 include/590
   exclude), 2,489 open, 580 extracted studies, 27 effect_sizes rows
   (unchanged). Full detail in `CHANGELOG.md`.
+- **2026-09-22: eighty-sixth full-text screening batch — 2
+  Drive-retrieved PDFs, 1 exclude, 1 new include (S583).** Both open with
+  no prior `wrong_file_retrieved` history, no duplicates to defer:
+  Hallström (2005), a historical case-comparative study using primary
+  archival sources (City Council/Waterworks Board/Water Company minutes,
+  contemporary newspaper accounts) of whether working-class suburbs of
+  Norrköping and Linköping, Sweden received municipal piped-water
+  connections, 1860-1890, documenting the "planned area"/rural-district
+  administrative boundary determining building/fire/health-code
+  applicability, discretionary municipal extension decisions, and the
+  "10 percent rule" financing criterion (S583, Legal Institutional
+  Evidence Appraisal Framework). Jiménez & Pérez-Foguet (2010), a
+  GIS/water-point-mapping technical analysis of 5,921 rural water points
+  across 15 Tanzanian districts — **excluded E06**, infrastructure/
+  technical-methodology study of coverage-estimation methodology and
+  technology functionality decay, no legal-administrative access
+  mechanism examined. `evidence_map.csv` updated for S583;
+  `exclusion_log.csv` updated (591 rows total); `full_text_retrieval_queue.csv`
+  regenerated (2,487 open records); duplicate audit and schema validation
+  re-run clean. Running totals: 1,172/3,659 screened (581 include/591
+  exclude), 2,487 open, 581 extracted studies, 27 effect_sizes rows
+  (unchanged). Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2165,14 +2187,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,170 of the 3,659
-  Phase-5 includes have been assessed; 2,489 records have not yet been
+- Full-text screening itself is far from complete: 1,172 of the 3,659
+  Phase-5 includes have been assessed; 2,487 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 580
+- Extraction (Phase 8) is caught up with screening completely — all 581
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  580 extracted studies** (a first 12-study partial pilot batch was
+  581 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

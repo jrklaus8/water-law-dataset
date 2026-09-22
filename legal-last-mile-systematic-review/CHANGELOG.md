@@ -4,7 +4,50 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-fifth full-text screening batch (2 Drive-retrieved PDFs: 2 excludes)
+## 2026-09-22 (latest) — Eighty-sixth full-text screening batch (2 Drive-retrieved PDFs: 1 exclude, 1 new include S583)
+
+Two further PDFs surfaced in the Google Drive retrieval inbox on the next
+recurring 10-minute inbox check. Both open with no prior
+`wrong_file_retrieved` history, no duplicates to defer:
+
+- **R546EB2436B96** — Hallström J (2005). "Technology, social space and
+  environmental justice in Swedish cities: water distribution to
+  suburban Norrköping and Linköping, 1860-90." *Urban History*
+  32(3):413-433. doi 10.1017/S0963926805003214. **INCLUDE.** A historical
+  case-comparative study using primary archival sources (City
+  Council/Waterworks Board/Water Company minutes, contemporary newspaper
+  accounts) of whether working-class suburbs received municipal
+  piped-water connections. Documents genuine household/property-level
+  legal-institutional content: the "planned area"/rural-district
+  administrative boundary determining applicability of national
+  building, fire, and public-health codes; discretionary municipal
+  decisions on extension requests (Norrköping's contested 1886 approval
+  vs. Linköping's Ladugårdsbacke request, denied until 1921); the "10
+  percent rule" extension-financing criterion; and fee-based connection
+  charges. Extracted as **S583** (qualitative). Notably, `read_file_content`
+  returned an empty `fileContent` for the companion PDF surfaced the
+  same check (R6E292C80B16D) despite it being a valid, non-empty PDF —
+  the established `download_file_content` + base64-decode fallback
+  recovered the full text.
+- **R6E292C80B16D** — Jiménez A, Pérez-Foguet A (2010). "Water Point
+  Mapping for the Analysis of Rural Water Supply Plans: Case Study from
+  Tanzania." *Journal of Infrastructure Systems*. **EXCLUDE (E06,
+  engineering only).** A GIS/water-point-mapping technical analysis of
+  5,921 rural water points across 15 Tanzanian districts, evaluating
+  coverage-estimation methodology and technology-type functionality
+  decay over time against the Rural Water Supply and Sanitation
+  Program's design assumptions; no legal-administrative access mechanism
+  examined — matches the established infrastructure/technical-methodology
+  precedent (e.g., the Delhi hydrological IDW-interpolation study).
+
+`evidence_map.csv` updated for S583. `exclusion_log.csv` updated (591
+rows total). `full_text_retrieval_queue.csv` regenerated (2,487 open
+records). Duplicate audit (DOI + record_id) and `validate_schemas.py`
+both clean. Running totals: 1,172/3,659 screened (581 include/591
+exclude), 2,487 open, 581 extracted studies, 27 effect_sizes rows
+(unchanged — S583 is qualitative with no quantitative effect estimate).
+
+## 2026-09-22 — Eighty-fifth full-text screening batch (2 Drive-retrieved PDFs: 2 excludes)
 
 Two further PDFs surfaced in the Google Drive retrieval inbox on the next
 recurring 10-minute inbox check. Both open with no prior
