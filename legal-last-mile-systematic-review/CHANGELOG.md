@@ -4,7 +4,55 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-fifth full-text screening batch (2 Drive-retrieved PDFs: 2 includes S612-S613, 0 excludes)
+## 2026-09-22 (latest) — Ninety-sixth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S614-S615, 1 exclude)
+
+Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **R7CD58D2E7BE3** (Agbemor & Smiley 2021, *The Journal of Development
+  Studies*, "Tensions between Formal and Informal Water Providers:
+  Receptivity toward Mechanised Boreholes in the Sunyani West District,
+  Ghana"). **INCLUDE.** Case-study census of 98 mechanised boreholes plus
+  2,439 water-user interviews, documenting privately managed informal
+  boreholes operating in explicit, unenforced violation of Ghana's Water
+  Resources Commission groundwater-abstraction permitting, against
+  household-level water access, reliability, quantity, and affordability
+  outcomes (91/93 boreholes functional >=347 days/year; >=25 L/capita/day).
+  Extracted as **S614**. Not effect_sizes eligible (descriptive census
+  statistics, no regression).
+- **R77355A6C9E10** (Tantoh & McKay 2020, *GeoJournal*, "Rural
+  self-empowerment: the case of small water supply management in
+  Northwest, Cameroon"). **INCLUDE.** Household survey (108 households,
+  6 villages) of community-based water management under Cameroon's 1998
+  water law, documenting Water Management Committee eligibility/fee
+  requirements against household water access and consumption (34%
+  private connection at 35.6 L/capita/day vs 66% communal tap at 24.7
+  L/capita/day; 71/108 households unable to afford connection fees).
+  Extracted as **S615**. Not effect_sizes eligible (descriptive per-village
+  means, no significance test, small samples).
+- **R96A74867D7C2** (Sandoval & Sarmiento 2020, *Disaster Prevention and
+  Management*, "A neglected issue: informal settlements, urban
+  development, and disaster risk reduction in Latin America and the
+  Caribbean"). **EXCLUDE (E01, wrong topic).** Macro/national-level
+  comparative content analysis of 17 Habitat III National Reports
+  examining urban informal-settlement prevalence and risk-governance/
+  disaster-resilience discourse; water/sewerage access appears only as an
+  aggregate national statistic, not tested against any specific
+  legal/administrative mechanism -- same macro cross-national governance-
+  index rationale as the Nkiaka/Shadabi & Ward/Laitinen/Schiel exclusions.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S614-S615, 611 →
+613 rows each). `effect_sizes.csv` unchanged (31 rows; no new
+candidates). `exclusion_log.csv` updated (609 rows total; E01 201 → 202).
+`full_text_retrieval_queue.csv` regenerated (2,437 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,222/3,659 screened (613 include/609 exclude), 2,437
+open, 613 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-fifth full-text screening batch (2 Drive-retrieved PDFs: 2 includes S612-S613, 0 excludes)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

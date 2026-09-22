@@ -2443,6 +2443,29 @@ evidence of anything.
   duplicate audit and schema validation re-run clean. Running totals:
   1,219/3,659 screened (611 include/608 exclude), 2,440 open, 611
   extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: ninety-sixth full-text screening batch — 3 Drive-retrieved
+  PDFs, 2 includes (S614-S615), 1 exclude.** Agbemor & Smiley (2021), a
+  case-study census of 98 mechanised boreholes plus 2,439 water-user
+  interviews in Ghana's Sunyani West District, documenting privately
+  managed informal boreholes operating in unenforced violation of Water
+  Resources Commission permitting against household access/reliability/
+  quantity outcomes — **included** (S614). Tantoh & McKay (2020), a
+  108-household survey of community-based water management under
+  Cameroon's 1998 water law, finding 34% of households achieved private
+  connections (35.6 L/capita/day) vs 66% on communal taps (24.7
+  L/capita/day), with 71/108 households unable to afford connection fees
+  — **included** (S615). Sandoval & Sarmiento (2020), a macro
+  17-country comparative content analysis of Habitat III National Reports
+  on informal-settlement/disaster-risk-reduction governance discourse —
+  **excluded E01**, water/sewerage access is only an aggregate national
+  statistic, no specific legal/administrative mechanism tested.
+  `extraction_database.csv`/`evidence_map.csv` updated (S614-S615, 611 →
+  613 rows each); `effect_sizes.csv` unchanged (31 rows; no new
+  candidates); `exclusion_log.csv` updated (609 rows total; E01 201 →
+  202); `full_text_retrieval_queue.csv` regenerated (2,437 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,222/3,659 screened (613 include/609 exclude), 2,437 open, 613
+  extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2461,16 +2484,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,219 of the 3,659
-  Phase-5 includes have been assessed; 2,440 records have not yet been
+- Full-text screening itself is far from complete: 1,222 of the 3,659
+  Phase-5 includes have been assessed; 2,437 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,440
+  on the researcher supplying full-text PDFs. Four of those 2,437
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 611
+- Extraction (Phase 8) is caught up with screening completely — all 613
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  611 extracted studies** (a first 12-study partial pilot batch was
+  613 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
