@@ -4,7 +4,105 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninetieth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-22 (latest) — Ninety-first full-text screening batch (7 Drive-retrieved PDFs: 6 includes S593-S598, 1 exclude)
+
+Seven PDFs surfaced in the Google Drive retrieval inbox. All 7 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+title/authors verified against `full_text_screening_database.csv` before
+reading (per the batch-88 lesson of checking authors, not just titles).
+
+- **R7A9FA4B1B749** — Ko H (2024). "A study on the equity and influencing
+  factors of local water supply services in Korea." *Journal of Korea
+  Water Resources Association* 57(6):393-407. doi
+  10.3741/JKWRA.2024.57.6.393. **INCLUDE.** Tobit regression (152 South
+  Korean local governments, 2010/2016/2021) of Coulter distributional-
+  inequity coefficients for 6 water-service-equity variables against
+  administrative-district classification (si/gun), municipal fiscal
+  autonomy, and local tax burden. Administrative si classification and
+  local tax burden significantly improve equity (p<0.01-0.05 across all
+  3 years); fiscal autonomy (financial independence) significantly
+  worsens it (p<0.01, all years, all 6 variables). Extracted as **S593**;
+  also added to `effect_sizes.csv` (Family C) — a clean institutional/
+  fiscal-governance exposure with consistent, replicated Tobit
+  coefficients (29 → 30 rows).
+- **RB0165DA1B47D** — Linn C, Robbins-Panko J, Perry TE, Seibel A (2023).
+  "Living with Lead: Older Adults' Experiences of Necropolitical Water
+  Governance in Flint, Michigan." *Human Organization* 82(4):335-346.
+  **INCLUDE.** Ethnographic interviews (46 older-adult residents,
+  2016-2018) documenting Michigan's Emergency Manager law suspending
+  local democratic control (enabling the 2014 water-source switch),
+  state/federal water-safety emergency declarations, and a court-ordered
+  consent-decree lead-service-line-replacement deadline as legal/
+  institutional mechanisms shaping household water insecurity. Extracted
+  as **S594**.
+- **RF563E44C5B3E** — Mokoena A (2023). "Questioning Day Zero: Rights,
+  Provision, and Water Inequality in Khayelitsha, Cape Town." *Human
+  Organization* 82(4):324-334. **INCLUDE.** Qualitative fieldwork (10
+  households + 3 officials) during the 2017-2018 Day Zero crisis
+  documenting the South African constitutional water right, the Free
+  Basic Water policy quantum litigated in *Mazibuko v. City of
+  Johannesburg*, disproportionate installation of prepaid Water
+  Management Devices in low-income/informal areas, and formal/informal
+  settlement classification determining connection eligibility.
+  Extracted as **S595**.
+- **R238F15C4814B** — Kashem S, Tahsin N, Subah Z, Murshed SB, Nowreen S,
+  Mondal MS (2023). "Assessing the right to water of the urban poor in
+  Dhaka city." *GeoJournal* 88:3183-3204. doi 10.1007/s10708-022-10804-3.
+  **INCLUDE.** Mixed-methods comparison (150-household survey + 9
+  FGDs/12 IDIs/3 KIIs) of 3 Dhaka slums, 2 legally DWASA-connected and 1
+  illegally connected. DWASA's connection requirement (conditioned on
+  land title/approved building plan) excludes tenure-insecure, frequently
+  -evicted residents; the illegally-connected slum pays 17x the water
+  price, spends 8% of income on water (vs. 0.5-2.0%), and has the
+  highest (worst) Water Security Index of the 3 slums. Extracted as
+  **S596**.
+- **R6022ED0189EC** — Kouassi HAA, Andrianisa HA, Traoré MB, Sossou SK,
+  Nguematio RM, Djambou MD (2023). "Factors influencing community-led
+  total sanitation (CLTS) implementation abandonment before achieving
+  open defecation-free (ODF) status: case study of the Central-Western
+  region of Burkina Faso." *Environmental Science and Pollution
+  Research* 30:125628-125645. doi 10.1007/s11356-023-31142-y.
+  **INCLUDE.** Content analysis (257 interviewees, 4 villages) of
+  national CLTS sanitation-program abandonment; governance/institutional
+  factors (subsidy-policy ambiguity applied inconsistently across
+  adjoining villages, agent transfers, inter-agency coordination
+  failure) account for 26.28% of abandonment cases (787 of 3,546
+  triggered villages nationally). Sissili province, the only province
+  using a single actor and the original unsubsidized approach, achieved
+  100% ODF certification with zero abandonments. Extracted as **S597**.
+- **R8D6F4AD1EAA6** — Aluko OO, Oloruntoba EO, Ana GREE, Afolabi OT, Okon
+  AJ (2023). "The dynamics of household water security and treatment
+  practices: a population-based, cross-sectional study in Osun State,
+  Southwest Nigeria." *Environmental Monitoring and Assessment* 195:138.
+  doi 10.1007/s10661-022-10682-9. **INCLUDE.** Cross-sectional study
+  (548 households) directly testing an EU/African-Development-Bank-
+  funded WASH institutional and governance reform program as an exposure
+  against household water security via binary logistic regression; the
+  study concludes the reform program did not significantly influence
+  water security, while wealth and improved household toilet facilities
+  were significant predictors (OR=1.667, 95% CI 1.058-2.628, p=0.028).
+  Extracted as **S598**.
+- **RADF284366C3F** — Hamdan OHC, Libânio M, Costa VAF (2023). "Proposal
+  of a regulatory index of quality of water supply services—RIQS."
+  *Environmental Science and Pollution Research* 30:93564-93581. doi
+  10.1007/s11356-023-28880-4. **EXCLUDE (E06, engineering only).** A
+  methodological/engineering paper proposing and validating an AHP-
+  weighted regulatory index for triaging on-site inspections across 591
+  Minas Gerais, Brazil municipalities. The unit of analysis is the
+  municipality/utility, not a household or population; the outcome is
+  an engineering/operational index score used for inspection
+  prioritization, not a population-level legal-institutional-factor
+  vs. access-outcome test.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S593-S598, 590 →
+596 rows each). `effect_sizes.csv` updated (29 → 30 rows, S593 added,
+Family C). `exclusion_log.csv` updated (603 rows total; E06 45 → 46).
+`full_text_retrieval_queue.csv` regenerated (2,460 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,199/3,659 screened (596 include/603 exclude), 2,460
+open, 596 extracted studies, 30 effect_sizes rows.
+
+## 2026-09-22 — Ninetieth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox. Open with no prior
 `wrong_file_retrieved` history, title/authors matched:

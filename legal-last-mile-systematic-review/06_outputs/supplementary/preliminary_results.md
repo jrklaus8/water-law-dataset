@@ -2291,6 +2291,42 @@ evidence of anything.
   totals: 1,192/3,659 screened (590 include/602 exclude), 2,467 open,
   590 extracted studies, 29 effect_sizes rows (unchanged). Full detail
   in `CHANGELOG.md`.
+- **2026-09-22: ninety-first full-text screening batch — 7 Drive-retrieved
+  PDFs, 6 includes (S593-S598), 1 exclude.** Ko (2024), a Tobit-regression
+  study of water-service equity across 152 South Korean local governments
+  (2010/2016/2021) — **included** (S593), also added to `effect_sizes.csv`
+  as a Family C candidate: administrative si/gun district classification
+  and local tax burden significantly improve equity, while municipal
+  fiscal autonomy significantly worsens it, consistently across all 3
+  years. Linn, Robbins-Panko, Perry & Seibel (2023), a Flint, Michigan
+  ethnographic study of older adults navigating the Emergency Manager
+  law and a court-ordered lead-pipe-replacement deadline — **included**
+  (S594). Mokoena (2023), a Cape Town Day Zero qualitative study of the
+  constitutional water right, Free Basic Water policy, *Mazibuko v.
+  Johannesburg* litigation, and prepaid Water Management Devices —
+  **included** (S595). Kashem et al. (2023), a Dhaka right-to-water
+  study comparing 2 legally-connected and 1 illegally-connected slum,
+  finding a 17x water-price differential tied to DWASA's land-title
+  connection requirement — **included** (S596). Kouassi et al. (2023),
+  a Burkina Faso content-analysis study of CLTS sanitation-program
+  abandonment, attributing 26.28% of abandonment to governance/
+  institutional factors — **included** (S597). Aluko et al. (2023), a
+  548-household Osun State, Nigeria study directly testing an EU/AfDB
+  WASH institutional-reform program as an exposure against water
+  security (finding no significant effect) — **included** (S598).
+  Hamdan, Libânio & Costa (2023), a methodological/engineering paper
+  proposing a regulatory inspection-prioritization index (RIQS) across
+  591 Minas Gerais, Brazil municipalities — **excluded E06**, the unit
+  of analysis is the municipality/utility and the outcome is an
+  engineering index score, not a population-level access outcome.
+  `extraction_database.csv`/`evidence_map.csv` updated (S593-S598, 590
+  → 596 rows each); `effect_sizes.csv` updated (29 → 30 rows, S593
+  added); `exclusion_log.csv` updated (603 rows total; E06 45 → 46);
+  `full_text_retrieval_queue.csv` regenerated (2,460 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,199/3,659 screened (596 include/603 exclude), 2,460 open, 596
+  extracted studies, 30 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2309,16 +2345,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,192 of the 3,659
-  Phase-5 includes have been assessed; 2,467 records have not yet been
+- Full-text screening itself is far from complete: 1,199 of the 3,659
+  Phase-5 includes have been assessed; 2,460 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,467
+  on the researcher supplying full-text PDFs. Four of those 2,460
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 590
+- Extraction (Phase 8) is caught up with screening completely — all 596
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  590 extracted studies** (a first 12-study partial pilot batch was
+  596 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
