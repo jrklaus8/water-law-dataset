@@ -2242,6 +2242,40 @@ evidence of anything.
   1,186/3,659 screened (587 include/599 exclude), 2,473 open, 587
   extracted studies, 28 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: eighty-ninth full-text screening batch — 5
+  Drive-retrieved PDFs, all delivered by an Antigravity retrieval session
+  and all genuine matches (no wrong-file issues this time), 2 excludes, 3
+  new includes (S590-S592).** Mundonde & Makoni (2024), a national-level
+  Tobit econometric study of macro/financial/governance determinants of
+  aggregate Zimbabwe water-sanitation PPP investment financing value —
+  **excluded E04**, the outcome is investment dollars, not an access
+  outcome. Tomalty & Skaburskis (1997), a qualitative case study of
+  Ontario municipal development-charge calculation methodology across 8
+  Greater Toronto Area municipalities — **excluded E01**, water/sewer is
+  one of many bundled "hard services" with no water-specific data or
+  outcome anywhere in the paper. Three includes: Brown (1989), a
+  historical quasi-experimental logit analysis of 244 Prussian cities
+  showing municipal franchise/voting-power concentration (the tax-weighted
+  Three Class System) predicts the probability of investing in waterworks
+  infrastructure, with instrumented cost, full covariate adjustment, and
+  counterfactual province-swap simulations (S590, also added to
+  `effect_sizes.csv` Family C — one of the strongest quasi-experimental
+  designs in the corpus); Wu (1999), an institutional/fiscal-reform case
+  study of China documenting a socialist-era employment/housing-linked
+  water-access mechanism and fiscal-decentralization reforms, with
+  tap-water coverage tracked as an explicit outcome (81.0%→94.9%
+  nationally 1990-1996) (S591); and Marvin & Laurie (1999), a qualitative
+  case study of SEMAPA's legal restructuring and privatization in
+  Cochabamba, Bolivia, documenting a privatization bid structure tied to
+  a 90%-connection-within-5-years target and stark connection-rate
+  disparities by neighborhood income (99% in affluent Casco Viejo vs.
+  under 4% in some suburbs) (S592). `evidence_map.csv` updated for
+  S590-S592; `exclusion_log.csv` updated (601 rows total);
+  `full_text_retrieval_queue.csv` regenerated (2,468 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,191/3,659 screened (590 include/601 exclude), 2,468 open, 590
+  extracted studies, 29 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2260,16 +2294,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,186 of the 3,659
-  Phase-5 includes have been assessed; 2,473 records have not yet been
+- Full-text screening itself is far from complete: 1,191 of the 3,659
+  Phase-5 includes have been assessed; 2,468 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,473
+  on the researcher supplying full-text PDFs. Four of those 2,468
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 587
+- Extraction (Phase 8) is caught up with screening completely — all 590
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  587 extracted studies** (a first 12-study partial pilot batch was
+  590 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

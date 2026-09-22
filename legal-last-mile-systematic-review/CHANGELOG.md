@@ -4,7 +4,79 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-eighth full-text screening batch (3 Drive-retrieved PDFs: 2 wrong-file deliveries flagged, 1 new include S589)
+## 2026-09-22 (latest) — Eighty-ninth full-text screening batch (5 Drive-retrieved PDFs, all Antigravity-delivered: 2 excludes, 3 new includes S590-S592)
+
+Five PDFs surfaced in the Google Drive retrieval inbox in one check, all
+pre-matched with `record_id` in the filename and all genuine matches (no
+`wrong_file_retrieved` issues this time — every delivered PDF's content
+was cross-checked against the target title/authors before screening, per
+the lesson from the previous batch):
+
+- **R4F2E31188545** — Mundonde J, Makoni PL (2024). "Framework Model for
+  Financing Sustainable Water and Sanitation Infrastructure in Zimbabwe."
+  *Water* 16(12):1691. **EXCLUDE (E04, wrong outcome).** National-level
+  Tobit econometric analysis (1996-2021 annual time series, 25
+  observations) of macroeconomic, financial-market, and governance
+  determinants of the aggregate USD investment value of water/sanitation
+  PPP transactions reaching financial closure; the outcome is aggregate
+  investment financing value, not any household/community-level access,
+  connection, coverage, affordability, or reliability outcome.
+- **R052039CCB61E** — Brown JC (1989). "Public Reform for Private Gain?
+  The Case of Investments in Sanitary Infrastructure: Germany,
+  1880-1887." *Urban Studies* 26:2-12. **INCLUDE.** Historical
+  quasi-experimental logit analysis of 244 Prussian cities exploiting
+  cross-province variation in municipal franchise/voting-rights law (the
+  tax-weighted "Three Class System" vs. more equal franchise in
+  Hannover/Holstein) to estimate its association with the probability a
+  city invested in waterworks infrastructure — instrumented cost, full
+  covariate adjustment, counterfactual province-swap simulations
+  (likelihood-ratio test statistic -30.0, 3 df). One of the strongest
+  causal-identification designs for a legal-institutional exposure in the
+  corpus. Extracted as **S590**; also added to `effect_sizes.csv`
+  (Family C) — the second quantitative addition to that table this
+  session (28 → 29 rows).
+- **RDA48A50740DB** — Tomalty R, Skaburskis A (1997). "Negotiating
+  Development Charges in Ontario: Average Cost versus Marginal Cost
+  Pricing of Services." *Urban Studies* 34(12):1987-2002. **EXCLUDE
+  (E01, wrong topic/unit of analysis).** Qualitative case study (27
+  interviews plus OMB case-law analysis) of municipal development-charge
+  calculation methodology across 8 Greater Toronto Area municipalities;
+  water/sewer is mentioned only generically as one of many bundled "hard
+  services" (alongside roads, parks, libraries, fire/police, land,
+  buildings, even furniture) with no water-specific data or access
+  outcome reported anywhere in the paper.
+- **R2B84D3F84A28** — Wu W (1999). "Reforming China's Institutional
+  Environment for Urban Infrastructure Provision." *Urban Studies*
+  36(13):2263-2282. **INCLUDE.** Institutional/fiscal-reform case study
+  (national statistics plus a Shanghai case study) documenting a
+  socialist-era legal-institutional household-access mechanism
+  (state-employer-provided housing automatically conferring
+  water/electricity/sewerage access, persisting for over half of urban
+  employment through the mid-1990s) alongside fiscal-decentralization and
+  infrastructure-connection-fee reforms, with tap-water coverage tracked
+  as an explicit outcome variable (81.0% → 94.9% nationally 1990-1996;
+  100% in Shanghai both years). Extracted as **S591**.
+- **R639910BFA05F** — Marvin S, Laurie N (1999). "An Emerging Logic of
+  Urban Water Management, Cochabamba, Bolivia." *Urban Studies*
+  36(2):341-357. **INCLUDE.** Qualitative case study (interviews with
+  SEMAPA, municipal, FIS, central-government, and consumer-association
+  stakeholders) documenting SEMAPA's legal restructuring and
+  privatization-driven governance changes, a privatization bid structure
+  tying utility ownership to a specific connection-rate target (90%
+  within 5 years), a World-Bank-funded community co-management/training
+  program (FIS) extending formal connections to squatter communities, and
+  household connection-rate disparities by neighborhood income (99% in
+  affluent Casco Viejo vs. under 4% inside-house connection in some
+  suburban districts). Extracted as **S592**.
+
+`evidence_map.csv` updated for S590-S592. `exclusion_log.csv` updated
+(601 rows total). `full_text_retrieval_queue.csv` regenerated (2,468
+open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,191/3,659 screened
+(590 include/601 exclude), 2,468 open, 590 extracted studies, 29
+effect_sizes rows.
+
+## 2026-09-22 — Eighty-eighth full-text screening batch (3 Drive-retrieved PDFs: 2 wrong-file deliveries flagged, 1 new include S589)
 
 Three PDFs surfaced in the Google Drive retrieval inbox, the first delivery
 from an Antigravity retrieval session working from an exported copy of the
