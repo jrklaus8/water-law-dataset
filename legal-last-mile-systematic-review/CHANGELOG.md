@@ -4,7 +4,79 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Eighty-seventh full-text screening batch (14 Drive-retrieved PDFs: 1 duplicate deferred, 8 excludes, 5 new includes S584-S588)
+## 2026-09-22 (latest) — Eighty-eighth full-text screening batch (3 Drive-retrieved PDFs: 2 wrong-file deliveries flagged, 1 new include S589)
+
+Three PDFs surfaced in the Google Drive retrieval inbox, the first delivery
+from an Antigravity retrieval session working from an exported copy of the
+open-records queue (see `COWORK_RETRIEVAL_INSTRUCTIONS.md`-style handoff).
+All three target record_ids were open with no prior `wrong_file_retrieved`
+history, but this batch is a reminder of why the "verify delivered
+PDF title/content matches the target record" pipeline step exists as a
+separate check from "confirm the record_id is open": **two of the three
+titles matched closely enough on the surface that a title-only check would
+have passed them through, but the actual delivered content was a different
+paper entirely** — caught only by cross-checking the delivered PDF's
+author names against the `authors` field already on file in
+`full_text_screening_database.csv`.
+
+- **RF7F8D43984CE** — target is Leopold, Ellen & McDonald, David A (2012),
+  "Municipal Socialism Then and Now: some lessons for the Global South,"
+  *Third World Quarterly*, doi 10.1080/01436597.2012.728321. The PDF
+  delivered was a different paper sharing only the phrase "municipal
+  socialism" in its title/theme: Jamie Peck (2009), "Creative moments:
+  working culture, through municipal socialism and neoliberal urbanism"
+  (book chapter contrasting 1980s GLC cultural-industries policy with
+  2000s Detroit "creative cities" branding) — confirmed via full-text
+  search that neither "Leopold" nor "McDonald" appears anywhere in the
+  delivered PDF, and the whole ~1,600-line document never once mentions
+  water or sanitation. **Not screened.** `full_text_status` set to
+  `wrong_file_retrieved`; record remains open pending correct retrieval.
+- **R60D4F5EF6DE5** — target is Sharma, Virinder; Orindi, Victor; Hesse,
+  Ced; Pattison, James; Anderson, Simon (2014), "Supporting local climate
+  adaptation planning and implementation through local governance and
+  decentralised finance provision," *Community Development Journal*, doi
+  10.1080/09614524.2014.907240. The PDF delivered was a 1-page UK-Aid-
+  funded field "Resilience Assessment Summary" for Kinna ward, Isiolo
+  County, Kenya (May 2012) — grey-literature program documentation
+  related to the same Kenya County Climate Adaptation Fund initiative,
+  but not the target journal article itself; none of the five target
+  authors' names appear in the delivered PDF. **Not screened.**
+  `full_text_status` set to `wrong_file_retrieved`; record remains open.
+- **R98669D9A19CA** — World Bank/Inter-American Development Bank (2004),
+  *Ecuador: Creating Fiscal Space for Poverty Reduction — A Fiscal
+  Management and Public Expenditure Review*, Volume I, Report No.
+  28911-EC. This one is a genuine match (the delivered "Vol. 1 of 2" PDF
+  corresponds exactly to the two-volume structure the document itself
+  describes). **INCLUDE.** Water/sanitation is a minor sub-topic within
+  this much larger multi-sector national fiscal report (electricity,
+  telecom, education, health, pensions, oil are all also covered), but
+  within its ~3-page water subsection the report presents an original
+  World-Bank-staff quantile-based subsidy-incidence estimate specific to
+  water (poorest quintile captures 7.9% of water subsidies vs. 41.3% to
+  the richest) and a household-level case illustration (Box 3.2, Machala,
+  El Oro): connected households pay ~US$1.20/month for ~15 m3 (0.4% of
+  monthly income) versus unconnected households, served by tankers,
+  paying ~US$29.00/month for only 4-5 m3 (9.0% of monthly income) — a
+  roughly 22-24x higher effective per-unit cost for the unconnected poor.
+  Tied to decentralized, under-resourced municipal water governance
+  (MIDUVI transfers for municipal investment cut from US$52M to US$5M,
+  2001-2002; no integrated national water-resource-management system).
+  Extracted as **S589** (observational). Also added to
+  `effect_sizes.csv` (Family A, economic_access) as a descriptive,
+  unadjusted case comparison — the first change to that table all
+  session (27 → 28 rows); not eligible for pooling (no sample size, CI,
+  or significance test reported in the source, and it is an illustrative
+  city-level case rather than a study-level regression/RCT estimate).
+
+`evidence_map.csv` updated for S589. `exclusion_log.csv` unchanged (no
+excludes this batch). `full_text_retrieval_queue.csv` regenerated (2,473
+open records — the two wrong-file-flagged records remain open pending
+correct retrieval, not counted as decided). Duplicate audit (DOI +
+record_id) and `validate_schemas.py` both clean. Running totals:
+1,186/3,659 screened (587 include/599 exclude), 2,473 open, 587
+extracted studies, 28 effect_sizes rows.
+
+## 2026-09-22 — Eighty-seventh full-text screening batch (14 Drive-retrieved PDFs: 1 duplicate deferred, 8 excludes, 5 new includes S584-S588)
 
 Fourteen PDFs surfaced in the Google Drive retrieval inbox in one check (6
 pre-matched with record_id in the filename, 8 labeled `UNMATCHED__` and

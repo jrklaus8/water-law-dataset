@@ -2210,6 +2210,38 @@ evidence of anything.
   1,185/3,659 screened (586 include/599 exclude), 2,474 open, 586
   extracted studies, 27 effect_sizes rows (unchanged). Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: eighty-eighth full-text screening batch — 3
+  Drive-retrieved PDFs (the first delivered by an Antigravity retrieval
+  session), 2 wrong-file deliveries flagged, 1 new include (S589).** Two
+  of the three targets were caught as mismatches only by cross-checking
+  the delivered PDF's actual author names against the `authors` field
+  already on file, not by title alone: Leopold & McDonald's (2012)
+  "Municipal Socialism Then and Now" arrived instead as an unrelated
+  Jamie Peck (2009) book chapter on creative-cities urban policy (zero
+  water/sanitation mentions in ~1,600 lines), and Sharma et al.'s (2014)
+  Community Development Journal article arrived instead as an unrelated
+  1-page UK-Aid field resilience-assessment summary for Kinna ward,
+  Isiolo County. Neither was screened; both flagged
+  `wrong_file_retrieved` and left open pending correct retrieval. The
+  third, a World Bank/IDB (2004) Ecuador fiscal-management and
+  public-expenditure review, was a genuine match — **included**: within
+  a much larger multi-sector fiscal report, its water-subsection
+  documents an original World-Bank-staff quantile subsidy-incidence
+  estimate (poorest quintile receives 7.9% of water subsidies vs. 41.3%
+  to the richest) and a household case (Machala, El Oro) showing
+  connected households pay roughly 22-24x less per unit of water than
+  unconnected households served by tankers (0.4% vs. 9.0% of monthly
+  income), tied to decentralized, under-resourced municipal water
+  governance. Extracted as S589; also added to `effect_sizes.csv`
+  (Family A, descriptive/unadjusted, not eligible for pooling) — the
+  first change to that table all session, 27 → 28 rows.
+  `evidence_map.csv` updated for S589; `exclusion_log.csv` unchanged (no
+  excludes); `full_text_retrieval_queue.csv` regenerated (2,473 open —
+  the two wrong-file-flagged records remain open, not decided);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,186/3,659 screened (587 include/599 exclude), 2,473 open, 587
+  extracted studies, 28 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2228,14 +2260,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,185 of the 3,659
-  Phase-5 includes have been assessed; 2,474 records have not yet been
+- Full-text screening itself is far from complete: 1,186 of the 3,659
+  Phase-5 includes have been assessed; 2,473 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 586
+  on the researcher supplying full-text PDFs. Four of those 2,473
+  (`wrong_file_retrieved`) were retrieved but did not match their target
+  record and are pending a correct re-retrieval attempt.
+- Extraction (Phase 8) is caught up with screening completely — all 587
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  586 extracted studies** (a first 12-study partial pilot batch was
+  587 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
