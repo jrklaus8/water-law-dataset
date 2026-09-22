@@ -2854,6 +2854,25 @@ evidence of anything.
   records); schema validation re-run clean. Running totals: 1,287/3,659
   screened (654 include/633 exclude), 2,372 open, 654 extracted studies,
   34 effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-thirteenth full-text screening batch — 1 Drive-
+  retrieved PDF, 1 include.** Toubkiss (2010, book chapter, "Meeting the
+  Sanitation Challenge in Sub-Saharan Cities: Lessons Learnt from a
+  Financial Perspective") — a comparative multi-case-study synthesis of
+  12 primary Hydroconseil/pS-Eau field case studies (Mali, Burkina Faso,
+  Senegal, Niger, Uganda) documenting sanitation-financing institutional
+  mechanisms (household-subsidy schemes, sanitation-surcharge fees,
+  decentralization without financial transfer, land-tenure barriers)
+  against real tracked household-level outcomes (~900,000-1,000,000
+  people gaining access via a subsidy scheme over 14-15 years; 56% of
+  registered household requests unfulfilled after Senegal's PAQPUD
+  programme was prematurely interrupted), S657.
+  `extraction_database.csv`/`evidence_map.csv` updated (S657, 654 → 655
+  rows each); `effect_sizes.csv` and `exclusion_log.csv` unchanged;
+  duplicate audit found no duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,371 open records); schema validation re-run clean.
+  Running totals: 1,288/3,659 screened (655 include/633 exclude), 2,371
+  open, 655 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2872,17 +2891,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,287 of the 3,659
-  Phase-5 includes have been assessed; 2,372 records have not yet been
+- Full-text screening itself is far from complete: 1,288 of the 3,659
+  Phase-5 includes have been assessed; 2,371 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,372
+  on the researcher supplying full-text PDFs. Six of those 2,371
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 654
+- Extraction (Phase 8) is caught up with screening completely — all 655
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  654 extracted studies** (a first 12-study partial pilot batch was
+  655 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

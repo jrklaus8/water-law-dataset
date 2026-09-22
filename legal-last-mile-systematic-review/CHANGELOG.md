@@ -4,7 +4,39 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twelfth full-text screening batch (7 Drive-retrieved PDFs: 3 includes S654-S656, 3 excludes, 1 wrong_file_retrieved)
+## 2026-09-22 (latest) — Hundred-thirteenth full-text screening batch (1 Drive-retrieved PDF: 1 include S657)
+
+One PDF surfaced in the Google Drive retrieval inbox (previously flagged
+`not_retrievable`/paywalled). Target record_id confirmed open with no
+prior `wrong_file_retrieved` history; title and authors verified against
+the delivered PDF before screening.
+
+- **RFDCD6A65E245** (Toubkiss 2010, in van Vliet et al. (eds), *Social
+  Perspectives on the Sanitation Challenge*, Chapter 10, "Meeting the
+  Sanitation Challenge in Sub-Saharan Cities: Lessons Learnt from a
+  Financial Perspective"). **INCLUDE.** Book chapter synthesizing 12
+  primary Hydroconseil/pS-Eau field case studies (Mali, Burkina Faso,
+  Senegal, Niger, Uganda) documenting institutional/financing mechanisms
+  (household-subsidy schemes, sanitation-surcharge fee mechanisms,
+  decentralization of sanitation responsibility without financial
+  transfer, land-tenure/title-document barriers) against real tracked
+  household-level outcome data: ~900,000-1,000,000 people gaining
+  sanitation access via a targeted subsidy scheme over 14-15 years in
+  Ouagadougou/Bobo-Dioulasso, and Senegal's PAQPUD programme
+  interruption leaving 56% of registered household requests unfulfilled.
+  Extracted as **S657**. Not effect_sizes eligible (narrative case-study
+  synthesis, no regression-based causal estimate).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S657, 654 → 655
+rows). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+unchanged (633 rows; no excludes this batch). Duplicate audit found no
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,371 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,288/3,659 screened (655 include/633 exclude), 2,371
+open, 655 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twelfth full-text screening batch (7 Drive-retrieved PDFs: 3 includes S654-S656, 3 excludes, 1 wrong_file_retrieved)
 
 Seven PDFs surfaced in the Google Drive retrieval inbox (all previously
 flagged `not_retrievable`/paywalled; the researcher has now supplied the
