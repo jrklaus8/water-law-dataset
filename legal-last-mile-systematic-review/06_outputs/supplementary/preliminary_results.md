@@ -2906,6 +2906,26 @@ evidence of anything.
   Running totals: 1,292/3,659 screened (656 include/636 exclude), 2,367
   open, 656 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: hundred-sixteenth full-text screening batch — 5 Drive-
+  retrieved PDFs, 3 includes (S659-S661), 2 excludes.** Lanti (2006,
+  Jakarta water-supply concession-contract regulatory case study under
+  Indonesia's Law No. 7/2004, real longitudinal household connection/
+  coverage data, S659); Graham (2006, Great Britain water-disconnection
+  judicial-review case producing the Water Industry Act 1999's statutory
+  disconnection ban, S660); Moretto (2007, comparative policy-document
+  review of donor governance philosophies) **excluded E05** (no original
+  empirical data); Klepov (2007, Upper Volga basin hydraulic-engineering
+  release-regulation model, Moscow) **excluded E06** (technical modeling
+  only); Chappells & Medd (2008, England/Wales post-privatization
+  water-charging equity study with real household affordability data and
+  22 drought-period interviews, S661).
+  `extraction_database.csv`/`evidence_map.csv` updated (S659-S661, 656 →
+  659 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (638 rows total; E05 72 → 73, E06 48 → 49); duplicate audit
+  found no duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,362 open records); schema validation re-run clean. Running totals:
+  1,297/3,659 screened (659 include/638 exclude), 2,362 open, 659
+  extracted studies, 34 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2924,17 +2944,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,292 of the 3,659
-  Phase-5 includes have been assessed; 2,367 records have not yet been
+- Full-text screening itself is far from complete: 1,297 of the 3,659
+  Phase-5 includes have been assessed; 2,362 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,367
+  on the researcher supplying full-text PDFs. Six of those 2,362
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 656
+- Extraction (Phase 8) is caught up with screening completely — all 659
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  656 extracted studies** (a first 12-study partial pilot batch was
+  659 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

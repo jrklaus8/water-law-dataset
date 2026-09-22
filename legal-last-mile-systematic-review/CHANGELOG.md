@@ -4,7 +4,65 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-fifteenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-22 (latest) — Hundred-sixteenth full-text screening batch (5 Drive-retrieved PDFs: 3 includes S659-S661, 2 excludes)
+
+Five PDFs surfaced in the Google Drive retrieval inbox (all previously
+flagged `not_retrievable`/paywalled). All five target record_ids
+confirmed open with no prior `wrong_file_retrieved` history; titles and
+authors verified against the delivered PDFs before screening.
+
+- **RC089E19DF34F** (Lanti 2006, *Water Resources Development*, "A
+  Regulatory Approach to the Jakarta Water Supply Concession
+  Contracts"). **INCLUDE.** Real institutional/legal regulatory
+  framework (Indonesia's Law No. 7/2004 on Water Resources, Government
+  Regulation No. 16/2005, Presidential Decree No. 67/2005, Governor
+  Decree establishing the Jakarta Water Supply Regulatory Body) governing
+  25-year private-concession contracts, documented against real
+  longitudinal household-level connection/coverage data (1993-2022
+  targets vs. realizations) and a documented cross-subsidy policy for
+  the urban poor. Extracted as **S659**. Not effect_sizes eligible
+  (descriptive longitudinal case study).
+- **R371D7DD278E0** (Graham 2006, *Journal of Consumer Policy*, "The
+  politics of necessity: electricity and water in Great Britain").
+  **INCLUDE.** Real litigated judicial-review case (BPU case, six local
+  authorities v. Director General of Water Services, pre-payment devices
+  ruled unlawful disconnection) that directly produced the Water
+  Industry Act 1999's statutory disconnection ban and Vulnerable Groups
+  Regulations, with real household-level uptake data (7,693-9,217
+  successful applications 2003-05). Extracted as **S660**. Not
+  effect_sizes eligible (historical-institutional case study).
+- **RDD25A310EACB** (Moretto 2007, *Review of International
+  Organizations*, "Urban governance and multilateral aid organizations:
+  The case of informal water supply systems"). **EXCLUDE E05.**
+  Comparative policy-document/discourse-analysis review of World
+  Bank/UN-HABITAT/EU governance philosophies citing other studies'
+  secondary findings; no original empirical data collection.
+- **RDABCD99464D4** (Klepov 2007, *Water Resources*, "Regulation of
+  Environmental-Protection Water Releases in the Upper Volga Basin...").
+  **EXCLUDE E06.** Purely technical hydraulic-engineering simulation
+  model of reservoir water releases for the Moscow region; no legal/
+  institutional factor, no household-level data.
+- **R32DF2C4FFB4F** (Chappells & Medd 2008, *Local Environment*, "What is
+  fair? Tensions between sustainable and equitable domestic water
+  consumption in England and Wales"). **INCLUDE.** Post-1989
+  privatization institutional shift from social-equity to
+  market-environmental water charging (Water Act 2003, EU Water
+  Framework Directive, statutory no-disconnection right), documented
+  against real household-level bill/affordability data and primary
+  interviews (22 households, 4 water-resource teams) from the 2006
+  drought. Extracted as **S661**. Not effect_sizes eligible (mixed-
+  methods descriptive/qualitative study).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S659-S661, 656 →
+659 rows). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (638 rows total; E05 72 → 73, E06 48 → 49). Duplicate audit
+found no duplicates. `full_text_retrieval_queue.csv` regenerated (2,362
+open records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,297/3,659 screened (659 include/638 exclude), 2,362
+open, 659 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-fifteenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox (previously flagged
 `not_retrievable`/paywalled). Target record_id confirmed open with no
