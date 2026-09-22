@@ -3091,6 +3091,31 @@ evidence of anything.
   Running totals: 1,322/3,659 screened (671 include/651 exclude), 2,337
   open, 671 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: hundred-twenty-sixth full-text screening batch — 5
+  Drive-retrieved PDFs, 5 includes.** Brottem (2018, political-ecology
+  study of Mali administrative-territory legal codification driving
+  village-level drinking-water-access disparities, 44-municipality
+  field survey plus regression, S674); Bond (2019, documentary
+  institutional case study of Durban's Free Basic Water policy and the
+  litigated Manquele v. eThekwini disconnection case, S675); Hernandez
+  Aguilar, Lerner, Manuel-Navarrete & Siqueiros-Garcia (2021, qualitative
+  case study of Mexico City's 2017 Sustainable Water Law excluding
+  informal settlers, 27 key-informant interviews plus a 41-resident
+  questionnaire, S676); Birkenholtz (2013, mixed-methods case study of
+  state-planned rural water-network expansion producing intervillage/
+  caste/gender differentiation in Rajasthan, real 180-household
+  caste-disaggregated survey, S677); Eguavoen (2013, ethnographic-
+  historical case study of Ghana's 1992 constitution and WRC Act
+  522/1996 in dissonance with customary water rights, 2004-2006 primary
+  fieldwork spanning four historical periods, S678) — all **INCLUDE**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S674-S678, 671
+  → 676 rows each); `effect_sizes.csv` unchanged (34 rows);
+  `exclusion_log.csv` unchanged (no new excludes); duplicate audit
+  found no duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,332 open records); schema validation re-run clean.
+  Running totals: 1,327/3,659 screened (676 include/651 exclude), 2,332
+  open, 676 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3109,17 +3134,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,322 of the 3,659
-  Phase-5 includes have been assessed; 2,337 records have not yet been
+- Full-text screening itself is far from complete: 1,327 of the 3,659
+  Phase-5 includes have been assessed; 2,332 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,337
+  on the researcher supplying full-text PDFs. Six of those 2,332
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 671
+- Extraction (Phase 8) is caught up with screening completely — all 676
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  671 extracted studies** (a first 12-study partial pilot batch was
+  676 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

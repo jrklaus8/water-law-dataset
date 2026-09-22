@@ -4,7 +4,72 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twenty-fifth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-22 (latest) — Hundred-twenty-sixth full-text screening batch (5 Drive-retrieved PDFs: 5 includes S674-S678)
+
+Five PDFs surfaced in the Google Drive retrieval inbox. All target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **RDE671123A010** (Brottem 2018, *Annals of the American Association
+  of Geographers*, "Dig Your Own Well: A Political Ecology of Rural
+  Institutions in Western Sub-Saharan Africa"). **INCLUDE.**
+  Political-ecology study of Mali's administrative-territory legal
+  codification driving village-level drinking-water-access disparities,
+  with archival sources, 20th-century census data, a 44-municipality
+  field survey, and a regression showing administrative reach as a
+  significant predictor (R2 0.53->0.63, p<0.05) of infrastructure-
+  excluded hamlet proliferation. Extracted as **S674**. Not
+  effect_sizes eligible (regression's dependent variable is hamlet
+  count, not a water-access outcome directly).
+- **R3520D2BF6FB3** (Bond 2019, *Journal of Contemporary African
+  Studies*, "Tokenistic water and neoliberal sanitation in
+  post-apartheid Durban"). **INCLUDE.** Documentary institutional case
+  study of Durban's Free Basic Water policy, means-testing, and a real
+  litigated disconnection case (Manquele v. eThekwini), with real
+  disconnection statistics (~1,000/day) and household-level price-
+  elasticity/consumption data by wealth band. Extracted as **S675**.
+  Not effect_sizes eligible (price elasticities are a cited secondary
+  estimate, not this paper's own primary regression).
+- **R8645861E4624** (Hernandez Aguilar, Lerner, Manuel-Navarrete &
+  Siqueiros-Garcia 2021, *Water International*, "Persisting narratives
+  undermine potential water scarcity solutions for informal areas of
+  Mexico City"). **INCLUDE.** Qualitative institutional case study
+  documenting Mexico City's 2017 Sustainable Water Law prohibiting
+  public-service provision to informal settlers in the Conservation
+  Zone, via 27 key-informant interviews and a 41-resident questionnaire
+  across two informal settlements. Extracted as **S676**. Not
+  effect_sizes eligible (qualitative thematic-coding design).
+- **R59B2D594C94F** (Birkenholtz 2013, *Environment and Planning D*,
+  "'On the network, off the map': developing intervillage and
+  intragender differentiation in rural water supply"). **INCLUDE.**
+  Mixed-methods case study of state-planned rural water-network
+  expansion in Rajasthan producing intervillage/caste/gender
+  differentiation, with a real 180-household caste-disaggregated
+  survey plus interviews with water users and government engineers.
+  Extracted as **S677**. Not effect_sizes eligible (descriptive
+  correlations, not a regression-based institutional-mechanism
+  estimate).
+- **RF456013643C2** (Eguavoen 2013, *Canadian Journal of African
+  Studies*, "Far from basic rules: social dynamics, legal regulations
+  and access to household water in Northern Ghana, 1965-2012").
+  **INCLUDE.** Ethnographic-historical institutional case study
+  documenting Ghana's 1992 constitution (Article 257/6) and Water
+  Resources Commission Act 522/1996 in dissonance with customary/
+  project water rights, via 2004-2006 primary ethnographic/archival
+  fieldwork spanning four historical periods in a single rural village.
+  Extracted as **S678**. Not effect_sizes eligible (ethnographic-
+  historical design).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S674-S678, 671 →
+676 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+unchanged (no new excludes). Duplicate audit found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,332 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,327/3,659 screened (676 include/651 exclude), 2,332
+open, 676 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twenty-fifth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
