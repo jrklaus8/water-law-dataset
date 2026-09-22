@@ -4,7 +4,113 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-tenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-22 (latest) — Hundred-eleventh full-text screening batch (10 Drive-retrieved PDFs: 8 includes S646-S653, 2 excludes)
+
+Ten PDFs surfaced in the Google Drive retrieval inbox. All ten target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **RE9D7E0998707** (Mycoo 2011, *International Journal of Water Resources
+  Development*, "Conflicting Objectives of Trinidad's Water Pricing
+  Policy: A Need for Good Water Pricing and Governance"). **INCLUDE.**
+  Institutional/administrative water-pricing-policy (flat ARV-based
+  tariff, no metering) case study with real WASA accounts data 1988-2008
+  plus interviews (1993, 2000, 2002, 2010); household-level reliability
+  decline (45% receiving 24-hour service in 1994 down to 18-21% by 2008),
+  equity/expenditure data, and coping behavior (storage-tank ownership
+  66% → 80%). Extracted as **S646**. Not effect_sizes eligible
+  (descriptive longitudinal case study).
+- **R0299C96CF472** (Bond 2013, *South African Journal on Human Rights*,
+  "Water Rights, Commons and Advocacy Narratives"). **INCLUDE.**
+  Constitutional water-rights litigation study (Mazibuko v. City of
+  Johannesburg/"Phiri case", Constitution s27(1)(b), Water Services Act
+  108 of 1997) through three court levels, with real household-level
+  service-type data (65% standpipes/20% tanker/15% yard taps for water;
+  sanitation breakdown) and Free Basic Water block-tariff/price-elasticity
+  data. Extracted as **S647**. Not effect_sizes eligible (documentary/
+  legal case-study design).
+- **RD115629ED34F** (Singh, Mittal & Upadhyay 2011, *Benchmarking: An
+  International Journal*, "Benchmarking of North Indian urban water
+  utilities"). **EXCLUDE E01.** Purely technical DEA efficiency-
+  benchmarking study of utility-level inputs/outputs (unaccounted-for
+  water, staff, O&M expenditure); no legal/institutional factor and no
+  household-level data -- same utility-level-benchmarking rationale as
+  prior macro/city-scale exclusions.
+- **RC4DF38E3B363** (Pierce 2012, *International Journal of Water
+  Resources Development*, "The Political Economy of Water Service
+  Privatization in Mexico City, 1994-2011"). **INCLUDE.** Institutional/
+  legal water-service-privatization case study with real census-based
+  household-level access data (1990-2010 across DF/ZMCM/ZMVM) and a
+  civil-society legal-transparency mechanism (COMDA's use of the 2002
+  Federal Transparency Law). Extracted as **S648**. Not effect_sizes
+  eligible (descriptive census time-series comparison).
+- **RAFD43FB2362E** (González Rivas 2012, *Development in Practice*,
+  "Why do indigenous municipalities in Mexico have worse piped water
+  coverage?"). **INCLUDE.** Rigorous national GLM/OLS regression study
+  (2,342-2,372 municipalities) identifying reduced per-capita federal
+  transfers under Mexico's constitutionally assigned (Article 115)
+  municipal water-governance system as a significant mechanism driving
+  lower piped-water coverage for indigenous municipalities (indigenous
+  coefficient -0.031, p=0.014; transfers coefficient 0.571, p=0.019).
+  Extracted as **S649**. **Effect_sizes eligible** -- added to
+  `effect_sizes.csv` (no synthesis_family assigned; fiscal-transfer
+  exposure does not cleanly map to Family A/B/C).
+- **R5A010875D9FB** (Fernández & Buitrón Cisneros 2012, *Environmental
+  Justice*, "The Right to Water and Sanitation in Ecuador: Progress,
+  Limitations, and Challenges"). **INCLUDE.** Ecuador's 2008
+  constitutional water-rights framework (Article 318) and multi-agency
+  institutional fragmentation (SENAGUA/MIDUVI/MAE/MSP) documented against
+  real household-level access data disaggregated by region, income
+  quintile, urban/rural, and ethnicity (indigenous 18% vs. national 48%
+  vs. white 57% coverage). Extracted as **S650**. Not effect_sizes
+  eligible (descriptive policy analysis).
+- **RE4E5A4029D2D** (Obeng-Odoom 2012, *Development in Practice*, "Beyond
+  access to water"). **INCLUDE.** Ghana's institutional/regulatory
+  water-privatization framework (PURC Act 538/1997, affermage-style AVRL
+  management contract) documented against real household-level survey
+  data disaggregated by income quintile (connection 57%/70%/83% by
+  income band; reliability 46% "only sometimes"/"rarely"; affordability
+  9-15% of household income; 80% diarrhea reduction with piped access).
+  Extracted as **S651**. Not effect_sizes eligible (descriptive/
+  comparative case study).
+- **RD039A852D35C** (Harutyunyan 2012, *Frontiers of Environmental
+  Science & Engineering*, "State versus private sector provision of
+  water services in Armenia"). **EXCLUDE E01.** Utility-level "before/
+  after" privatization performance-benchmarking study (5 companies,
+  operational/financial/environmental indicators); no household-level
+  access data -- the study's own conclusion explicitly flags affordability
+  and access-by-poor-households as unexamined.
+- **R658467768162** (Hackenbroch & Hossain 2012, *Planning Theory &
+  Practice*, "'The organised encroachment of the powerful'—Everyday
+  practices of public space and water supply in Dhaka, Bangladesh").
+  **INCLUDE.** Ethnographic study of illegal/informal water-tapping
+  institutional arrangements (DWASA statutory authority, informal
+  political-committee governance) in a Dhaka bosti, with real documented
+  household-level price ($9-22/hour) and reliability/quality variation by
+  political position, plus a 2007 institutional shift toward tenure-blind
+  DWASA service to informal settlements. Extracted as **S652**. Not
+  effect_sizes eligible (qualitative ethnographic study).
+- **R34FB4E74EB11** (Brinkerhoff, Wetterberg & Dunn 2012, *Public
+  Management Review*, "Service Delivery and Legitimacy in Fragile and
+  Conflict-Affected States: Evidence from water services in Iraq").
+  **INCLUDE.** Large real household-level water-services survey (6,979
+  respondents, 9 Iraqi provinces, 2010) examining service continuity/
+  satisfaction and willingness-to-pay, contextualized against Iraq's
+  post-2005 decentralized institutional/legal framework (2005
+  Constitution, Law 21 of 2008). Extracted as **S653**. Not effect_sizes
+  eligible (descriptive survey analysis).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S646-S653, 643 →
+651 rows). `effect_sizes.csv` updated (S649 added; 33 → 34 rows).
+`exclusion_log.csv` updated (630 rows total; E01 212 → 214). Duplicate
+audit (exact-DOI and record_id-in-extraction_note Counter methods) found
+no duplicates. `full_text_retrieval_queue.csv` regenerated (2,378 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,281/3,659 screened (651 include/630 exclude), 2,378
+open, 651 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-tenth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and

@@ -2797,6 +2797,32 @@ evidence of anything.
   schema validation re-run clean. Running totals: 1,271/3,659 screened
   (643 include/628 exclude), 2,388 open, 643 extracted studies, 33
   effect_sizes rows. Full detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-eleventh full-text screening batch — 10 Drive-
+  retrieved PDFs, 8 includes (S646-S653), 2 excludes.** Mycoo (2011,
+  Trinidad water-pricing policy, S646) and Bond (2013, South African
+  Mazibuko/Phiri constitutional water-rights litigation, S647); Singh,
+  Mittal & Upadhyay (2011, North Indian urban water-utility DEA
+  benchmarking) **excluded E01** (utility-level technical efficiency, no
+  household data); Pierce (2012, Mexico City water-privatization political
+  economy, S648); González Rivas (2012, Mexico indigenous-municipality
+  piped-water-coverage regression, S649 — **effect_sizes eligible**,
+  federal-transfers mechanism under Article 115 municipal water
+  governance, indigenous coefficient -0.031 p=0.014, transfers coefficient
+  0.571 p=0.019); Fernández & Buitrón Cisneros (2012, Ecuador
+  constitutional right-to-water framework, S650); Obeng-Odoom (2012,
+  Ghana PURC-regulated water privatization, S651); Harutyunyan (2012,
+  Armenia state-vs-private water-service performance benchmarking)
+  **excluded E01** (utility-level benchmarking, no household data);
+  Hackenbroch & Hossain (2012, Dhaka bosti informal water-supply
+  governance ethnography, S652); Brinkerhoff, Wetterberg & Dunn (2012,
+  Iraq water-services survey/state-legitimacy study, S653).
+  `extraction_database.csv`/`evidence_map.csv` updated (S646-S653, 643 →
+  651 rows each); `effect_sizes.csv` updated (S649 added, 33 → 34 rows);
+  `exclusion_log.csv` updated (630 rows total; E01 212 → 214); duplicate
+  audit found no duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,378 open records); schema validation re-run clean. Running totals:
+  1,281/3,659 screened (651 include/630 exclude), 2,378 open, 651
+  extracted studies, 34 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2815,17 +2841,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,271 of the 3,659
-  Phase-5 includes have been assessed; 2,388 records have not yet been
+- Full-text screening itself is far from complete: 1,281 of the 3,659
+  Phase-5 includes have been assessed; 2,378 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Five of those 2,388
+  on the researcher supplying full-text PDFs. Five of those 2,378
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 643
+- Extraction (Phase 8) is caught up with screening completely — all 651
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  643 extracted studies** (a first 12-study partial pilot batch was
+  651 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
