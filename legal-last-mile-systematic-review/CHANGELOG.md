@@ -4,7 +4,46 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-seventh full-text screening batch (15 Drive-retrieved PDFs: 9 includes S634-S642, 6 excludes, 1 new effect_sizes candidate)
+## 2026-09-22 (latest) — Hundred-eighth full-text screening batch (3 Drive-retrieved PDFs: 2 includes S643-S644, 1 exclude)
+
+Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RC4A4206BDF16** (Appelblad Fredby & Nilsson 2013, *Journal of Eastern
+  African Studies*, "From 'All for some' to 'Some for all'? A historical
+  geography of pro-poor water provision in Kampala"). **INCLUDE.**
+  Historical-institutional case study documenting Kampala's 2004 NWSC
+  connection-subsidy policy, land-tenure/property-rights barriers to piped
+  connections in informal settlements, and the 2006-onward pre-paid-meter
+  pro-poor pilot project, against real tracked connection-count data.
+  Extracted as **S643**. Not effect_sizes eligible (historical case study).
+- **R2033EDC2AA88** (Erhard, Degabriele, Naughton & Freeman 2013, *Global
+  Public Health*, "Policy and provision of WASH in schools for children
+  with disabilities: A case study in Malawi and Uganda"). **EXCLUDE E01.**
+  School-based (institutional, non-household) unit of analysis, same
+  rationale as the Chatterley/Abu-Elliott-Karanja school/healthcare-facility
+  WASH exclusion precedent.
+- **R14B39B9D52E2** (Vasquez & Franceschi 2013, *Water Resources
+  Management*, "System Reliability and Water Service Decentralization:
+  Investigating Household Preferences in Nicaragua"). **INCLUDE.** 690-
+  household contingent-valuation survey testing preferences for centralized
+  (ENACAL) versus decentralized (municipal) water-service governance under
+  Nicaragua's Law of Municipalities and National Water Strategy. Extracted
+  as **S644**. Not effect_sizes eligible (the centralization coefficient
+  itself is not statistically significant in the pooled WTP regression).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S643-S644, 640 → 642
+rows each). `effect_sizes.csv` unchanged (33 rows; no new candidates).
+`exclusion_log.csv` updated (627 rows total; E01 210 → 211).
+`full_text_retrieval_queue.csv` regenerated (2,390 open records). Duplicate
+audit clean (no DOI or record_id duplicates). `validate_schemas.py`
+confirms all 13 tracked files OK.
+
+Running totals: 1,269/3,659 screened (642 include/627 exclude), 2,390
+open, 642 extracted studies, 33 effect_sizes rows.
+
+## 2026-09-22 — Hundred-seventh full-text screening batch (15 Drive-retrieved PDFs: 9 includes S634-S642, 6 excludes, 1 new effect_sizes candidate)
 
 Fifteen PDFs surfaced in the Google Drive retrieval inbox -- the largest batch
 this segment. All 15 target record_ids confirmed open with no prior

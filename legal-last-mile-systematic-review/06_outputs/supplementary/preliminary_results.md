@@ -2742,6 +2742,31 @@ evidence of anything.
   re-run clean. Running totals: 1,266/3,659 screened (640 include/626
   exclude), 2,393 open, 640 extracted studies, 33 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
+- **2026-09-22: hundred-eighth full-text screening batch — 3 Drive-
+  retrieved PDFs, 2 includes, 1 exclude.** Appelblad Fredby & Nilsson
+  (2013), a historical-institutional case study documenting Kampala,
+  Uganda's 2004 NWSC connection-subsidy policy, land-tenure/property-
+  rights barriers to piped connections in informal settlements, and the
+  2006-onward pre-paid-meter pro-poor pilot project, against real tracked
+  connection-count data — **included** (S643, not effect_sizes eligible).
+  Erhard, Degabriele, Naughton & Freeman (2013), a WASH-in-schools-for-
+  children-with-disabilities policy and provision case study in Malawi and
+  Uganda — **excluded E01**, school-based (institutional, non-household)
+  unit of analysis, same rationale as the Chatterley/Abu-Elliott-Karanja
+  exclusion precedent. Vasquez & Franceschi (2013), a 690-household
+  contingent-valuation survey testing preferences for centralized (ENACAL)
+  versus decentralized (municipal) water-service governance under
+  Nicaragua's Law of Municipalities and National Water Strategy, Leon —
+  **included** (S644, not effect_sizes eligible — the centralization
+  coefficient itself is not statistically significant in the pooled WTP
+  regression). `extraction_database.csv`/`evidence_map.csv` updated
+  (S643-S644, 640 → 642 rows each); `effect_sizes.csv` unchanged (33 rows;
+  no new candidates); `exclusion_log.csv` updated (627 rows total; E01
+  210 → 211); `full_text_retrieval_queue.csv` regenerated (2,390 open
+  records); duplicate audit and schema validation re-run clean. Running
+  totals: 1,269/3,659 screened (642 include/627 exclude), 2,390 open,
+  642 extracted studies, 33 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2760,17 +2785,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,266 of the 3,659
-  Phase-5 includes have been assessed; 2,393 records have not yet been
+- Full-text screening itself is far from complete: 1,269 of the 3,659
+  Phase-5 includes have been assessed; 2,390 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Five of those 2,393
+  on the researcher supplying full-text PDFs. Five of those 2,390
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 640
+- Extraction (Phase 8) is caught up with screening completely — all 642
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  640 extracted studies** (a first 12-study partial pilot batch was
+  642 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
