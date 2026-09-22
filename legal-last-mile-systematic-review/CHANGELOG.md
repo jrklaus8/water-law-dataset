@@ -4,7 +4,60 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-first full-text screening batch (2 Drive-retrieved PDFs: 2 includes S620-S621)
+## 2026-09-22 (latest) — Hundred-second full-text screening batch (3 Drive-retrieved PDFs: 1 include S622, 1 exclude, 1 left open)
+
+Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **R046A5EB2D8C0** (Yadav 2018, *Development in Practice*, "A
+  market-based solution to a sanitation issue in a marginalised area").
+  **INCLUDE.** Case study of an NGO (CURE) water/sanitation improvement
+  project in an informal settlement (~11,300 households) in NOIDA,
+  Uttar Pradesh, India. Documents the township authority's explicit
+  refusal to extend water/sanitation infrastructure "due to the illegal
+  nature of housing in the colony," against real household-level
+  baseline survey data (n=1,127; 85% bottled-water dependence, 88%
+  private-toilet self-provision, 0.6% no sanitation access at all) and
+  real tracked community-driven service-improvement outcomes. Extracted
+  as **S622**. Not effect_sizes eligible (descriptive case-study/NGO
+  program evaluation, no regression).
+- **RB4C18930C3CC** (Mansur, Brondizio, Roy, de Miranda Araujo Soares &
+  Newton 2018, *Regional Environmental Change*, "Adapting to urban
+  challenges in the Amazon: flood risk and infrastructure deficiencies
+  in Belem, Brazil"). **EXCLUDE (E01, wrong topic).** Core focus is
+  flood-risk climate-adaptation capacity; water/sanitation is bundled
+  with paved roads, waste management, and drainage into one composite
+  "generic capacity" index rather than analyzed as an isolated access
+  outcome against a legal/institutional exposure.
+- **R33E4CEE682AC** (Mabiza 2013, PhD dissertation, "Integrated Water
+  Resources Management, Institutions and Livelihoods under Stress:
+  Bottom-Up Perspectives from Zimbabwe"). **Left open, flagged
+  `wrong_file_retrieved`.** Title/authors match the target record, but
+  the delivered PDF is a truncated/preview edition containing only
+  front matter, Chapter 1, and the references list -- the empirical
+  Chapters 2-9 body text (Ward 1 waterpoint-committee case study,
+  Bulawayo urban-water contestation case, river basin planning case) is
+  entirely absent. Confirmed via two independent extraction methods
+  (Google Drive `read_file_content` and a raw-PDF download + `pypdf`
+  page-by-page extraction across all 51 delivered pages), both ending
+  at the references list with no chapter-body text in between. Not
+  screened on the basis of incomplete content, per `PROJECT_SPEC.md`'s
+  rule against estimated/illustrative placeholder data; pending a
+  complete full-text re-retrieval.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S622, 619 → 620
+rows each). `effect_sizes.csv` unchanged (31 rows; no new candidates).
+`exclusion_log.csv` updated (617 rows total; E01 204 → 205).
+`full_text_retrieval_queue.csv` regenerated (2,422 open records, R33E4
+CEE682AC remains among them). Duplicate audit clean (no DOI or
+record_id duplicates). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,237/3,659 screened (620 include/617 exclude), 2,422
+open, 620 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Hundred-first full-text screening batch (2 Drive-retrieved PDFs: 2 includes S620-S621)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

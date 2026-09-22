@@ -2565,6 +2565,30 @@ evidence of anything.
   clean. Running totals: 1,235/3,659 screened (619 include/616 exclude),
   2,424 open, 619 extracted studies, 31 effect_sizes rows. Full detail
   in `CHANGELOG.md`.
+- **2026-09-22: hundred-second full-text screening batch — 3 Drive-
+  retrieved PDFs, 1 include (S622), 1 exclude, 1 left open.** Yadav
+  (2018), a case study of an NGO market-based water/sanitation
+  improvement project in an illegal informal settlement in NOIDA,
+  India, documenting the township authority's explicit refusal to
+  extend service due to illegal-settlement status against real
+  household baseline-survey access data (85% bottled-water dependence,
+  0.6% no sanitation access) — **included** (S622). Mansur, Brondizio,
+  Roy, de Miranda Araujo Soares & Newton (2018), a Belem, Brazil
+  flood-risk adaptive-capacity study bundling water/sanitation into a
+  composite infrastructure index — **excluded E01**, wrong topic (core
+  focus is flood-risk climate adaptation). Mabiza (2013), a PhD
+  dissertation on IWRM in Zimbabwe — **left open**, flagged
+  `wrong_file_retrieved`: correct title/author match, but the delivered
+  PDF is a truncated/preview edition missing the empirical Chapters 2-9
+  body text, confirmed via two independent extraction methods.
+  `extraction_database.csv`/`evidence_map.csv` updated (S622, 619 → 620
+  rows each); `effect_sizes.csv` unchanged (31 rows; no new
+  candidates); `exclusion_log.csv` updated (617 rows total; E01 204 →
+  205); `full_text_retrieval_queue.csv` regenerated (2,422 open
+  records); duplicate audit and schema validation re-run clean. Running
+  totals: 1,237/3,659 screened (620 include/617 exclude), 2,422 open,
+  620 extracted studies, 31 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2583,16 +2607,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,235 of the 3,659
-  Phase-5 includes have been assessed; 2,424 records have not yet been
+- Full-text screening itself is far from complete: 1,237 of the 3,659
+  Phase-5 includes have been assessed; 2,422 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,424
+  on the researcher supplying full-text PDFs. Five of those 2,422
   (`wrong_file_retrieved`) were retrieved but did not match their target
-  record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 619
+  record or lacked complete content, and are pending a correct/complete
+  re-retrieval attempt.
+- Extraction (Phase 8) is caught up with screening completely — all 620
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  619 extracted studies** (a first 12-study partial pilot batch was
+  620 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
