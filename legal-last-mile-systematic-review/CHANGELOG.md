@@ -4,7 +4,65 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-second full-text screening batch (3 Drive-retrieved PDFs: 1 include S622, 1 exclude, 1 left open)
+## 2026-09-22 (latest) — Hundred-third full-text screening batch (5 Drive-retrieved PDFs: 4 includes S623-S626, 1 exclude)
+
+Five PDFs surfaced in the Google Drive retrieval inbox. All 5 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **RFC8814ED1AC1** (Ablo & Yekple 2018, *GeoJournal*, "Urban water
+  stress and poor sanitation in Ghana: perception and experiences of
+  residents in the Ashaiman Municipality"). **INCLUDE.** Mixed-methods
+  survey (n=200) across 4 Ashaiman communities documenting lack of
+  legal land documents/building permits as barriers preventing Ghana
+  Water Company Limited from extending connections, against real
+  household pipe-connection/sanitation percentages by community.
+  Extracted as **S623**. Not effect_sizes eligible (exact chi-square
+  statistic not reported).
+- **R23C975B9CAD2** (Muchadenyika & Williams 2018, *Journal of Southern
+  African Studies*, "Politics, Centralisation and Service Delivery in
+  Urban Zimbabwe"). **INCLUDE.** 30-interview study documenting the
+  2005 central-government directive centralizing water/sanitation to
+  ZINWA, explicitly contravening the still-standing Urban Councils Act,
+  against real before/after tracked outcomes (tenfold tariff increase,
+  cholera outbreak, post-2009-reversion 76.67% supply improvement).
+  Extracted as **S624**. Not effect_sizes eligible (descriptive
+  before/after case study, no regression).
+- **RCAC17563F65F** (Filcak, Szilvasi & Skobla 2018, *Ethnic and Racial
+  Studies*, "No water for the poor: the Roma ethnic minority and local
+  governance in Slovakia"). **INCLUDE.** Fieldwork across 17
+  municipalities documenting land-title/construction-permit
+  requirements and municipal debt-conditionality as explicit barriers
+  to Roma settlements' water access, against real connection-rate
+  (39%), disconnection, and water-quality data. Extracted as **S625**.
+  Not effect_sizes eligible (qualitative multi-site case study).
+- **R77D2791283C1** (Abubakar 2018, *Water International*, "Strategies
+  for coping with inadequate domestic water supply in Abuja, Nigeria").
+  **INCLUDE.** 60-household interview study documenting Federal Capital
+  Development Authority and Abuja Environmental Protection Board
+  regulatory bans on self-supply wells/boreholes and informal vending
+  as an explicit factor restricting coping-strategy availability,
+  against detailed coping-strategy-utilization percentages. Extracted
+  as **S626**. Not effect_sizes eligible (descriptive interview study).
+- **RCAC30132C5F4** (Silva Rodriguez de San Miguel, Trujillo Flores &
+  Lambarry-Vilchis 2018, *Management of Environmental Quality*,
+  "Improving urban water supply in Mexico: a systematic review").
+  **EXCLUDE (E05, no empirical evidence).** PRISMA-style systematic
+  review of 21 secondary documents on Mexico's water-sector legal/
+  institutional framework, no original empirical data collection, same
+  rationale as the Hlongwa/Nkomo exclusion.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S623-S626, 620 →
+624 rows each). `effect_sizes.csv` unchanged (31 rows; no new
+candidates). `exclusion_log.csv` updated (618 rows total; E05 68 →
+69). `full_text_retrieval_queue.csv` regenerated (2,417 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,242/3,659 screened (624 include/618 exclude), 2,417
+open, 624 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Hundred-second full-text screening batch (3 Drive-retrieved PDFs: 1 include S622, 1 exclude, 1 left open)
 
 Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
