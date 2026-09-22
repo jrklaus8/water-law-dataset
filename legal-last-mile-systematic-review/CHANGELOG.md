@@ -4,7 +4,66 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-eighth full-text screening batch (4 Drive-retrieved PDFs: 1 include S617, 3 excludes)
+## 2026-09-22 (latest) — Ninety-ninth full-text screening batch (3 Drive-retrieved PDFs: 1 include S618, 2 excludes)
+
+Three PDFs surfaced in the Google Drive retrieval inbox. All 3 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **R2D5B15E9481A** (Adams, Sambu & Smiley 2019, *International Journal
+  of Water Resources Development*, "Urban water supply in Sub-Saharan
+  Africa: historical and emerging policies and institutional
+  arrangements"). **INCLUDE.** Comprehensive documentary/narrative
+  synthesis of historical (International Hydrological Decade, Water
+  Decade, MDGs) and emerging institutional arrangements (delegated
+  management models, community-public partnerships, community self-help
+  initiatives) for urban water supply across Sub-Saharan Africa, with
+  extensive real tracked outcome data drawn from underlying primary
+  studies: city-specific household piped-connection rates (4% Greater
+  Accra, 9% Lilongwe, 23% Ouagadougou, 29% Dar es Salaam, 61% Nairobi/
+  Mombasa/Kakamega), delegated management model outcomes in Kisumu,
+  Kenya (expanded network, reduced tariffs, reduced non-revenue water),
+  and community-public partnership outcomes in Malawi (improved
+  technical/financial management, stabilized pricing). Included via the
+  Legal Institutional Evidence Appraisal Framework, consistent with the
+  Mariwah/Sullivan Lemaitre & Stoler/Romano et al. precedent for
+  narrative/documentary reviews with genuine institutional analysis and
+  real tracked outcome data. Extracted as **S618**. Not effect_sizes
+  eligible (narrative synthesis, no single regression-based exposure-
+  comparator effect estimate).
+- **RC0A48E1C4D35** (Thoradeniya, Pinto & Maheshwari 2019,
+  *Environmental Science and Pollution Research*, "Perspectives on
+  impacts of water quality on agriculture and community well-being -- a
+  key informant study from Sri Lanka"). **EXCLUDE (E03, wrong exposure/
+  water-quality-only).** 35-key-informant qualitative study examining
+  perceptions of water QUALITY degradation (groundwater hardness,
+  fluoride, agro-chemical contamination) affecting agriculture and
+  community well-being; core exposure and outcome are environmental
+  contamination/water-quality effects, not a legal/administrative water/
+  sanitation access mechanism.
+- **R1B918BF54680** (Hailu, Tolossa & Alemu 2019, *Sustainable Water
+  Resources Management*, "Water security: stakeholders' arena in the
+  Awash River Basin of Ethiopia"). **EXCLUDE (E01, wrong topic).**
+  Basin-level multi-stakeholder institutional-coordination study (29 key
+  informant interviews, 16 focus group discussions) examining water
+  RESOURCES governance across competing uses (irrigation, industry,
+  hydropower, pastoralism, ecosystem services, domestic supply); unit of
+  analysis is basin-level stakeholder coordination across all water uses
+  collectively, not a mechanism tested against household-level access
+  outcomes, same macro water-resources-governance rationale as prior
+  exclusions.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S618, 615 → 616
+rows each). `effect_sizes.csv` unchanged (31 rows; no new candidates).
+`exclusion_log.csv` updated (615 rows total; E01 203 → 204, E03 21 → 22).
+`full_text_retrieval_queue.csv` regenerated (2,428 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,231/3,659 screened (616 include/615 exclude), 2,428
+open, 616 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-eighth full-text screening batch (4 Drive-retrieved PDFs: 1 include S617, 3 excludes)
 
 Four PDFs surfaced in the Google Drive retrieval inbox. All 4 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
