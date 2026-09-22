@@ -4,7 +4,142 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-21 (latest) — Eightieth full-text screening batch (10 Drive-retrieved PDFs: 4 excludes, 6 new includes S565-S570)
+## 2026-09-22 (latest) — Eighty-first full-text screening batch (15 Drive-retrieved PDFs: 10 excludes, 5 new includes S571-S575)
+
+Fifteen further PDFs surfaced in the Google Drive retrieval inbox (3
+already-decided duplicates from the same inbox check — RD864629E91F7,
+R0482B6E724C6, R2C5270DE77D8 — were moved to Processed without
+re-screening per the duplicate-detection/defer rule). One record
+(R22849E39FE23) carried prior `wrong_file_retrieved` history; its
+title/content was re-verified against the target record before screening
+and confirmed to match this time:
+
+- **R17BBF0A9B354** — "Strengthening rural water security through
+  professional maintenance: lessons from Mvila Division, Cameroon."
+  **INCLUDE.** A mixed-methods study (647 water-point WSSI quantitative
+  assessments, 103 semi-structured committee interviews). Documents
+  genuine legal-institutional content: Cameroon's General Code of
+  Decentralized Territorial Collectivities (Law No. 2019/024 of 24
+  December 2019); institutional/governance/economic analysis of
+  water-point committee failures; and a proposed intermunicipal syndicate
+  legal structure. Extracted as **S571** (mixed methods).
+- **R0A361F399C81** — Foggitt E, Cawood S, Evans B, Acheampong P (2019).
+  "Experiences of shared sanitation — towards a better understanding of
+  access, exclusion and 'toilet mobility' in low-income urban areas."
+  *Journal of Water, Sanitation and Hygiene for Development* 9(3):581-590.
+  doi 10.2166/washdev.2019.025. **INCLUDE.** A mixed-methods study (152
+  house-unit toilet mapping with GPS, natural group discussions, 2 focus
+  groups; 2,743-person study population) in Fante New Town, Kumasi,
+  Ghana. Documents genuine household-level legal-institutional content: a
+  landlord-permission exclusion mechanism (49% non-permittance, 84%
+  attributed to landlord-exclusive toilet use); the legal abolition of
+  bucket latrines; and proposed legal/social-economic instruments
+  requiring landlords to provide adequate tenant sanitation. Extracted as
+  **S572** (mixed methods).
+- **R25C5F4851EB7** — Shields KF et al. (2021). "Community management does
+  not equate to participation: fostering community participation in
+  rural water supplies." *Journal of Water, Sanitation and Hygiene for
+  Development* 11(6):937-947. doi 10.2166/washdev.2021.089. **INCLUDE.**
+  A qualitative study (243 interviews + 39 focus group discussions across
+  18 communities in Ghana, Kenya, and Zambia). Documents genuine
+  institutional-governance content: water-committee tariff-setting
+  decision-making; community participation typology
+  (transactional/transitional/transformational); and
+  transparency/accountability rights framed under Rio Declaration
+  Principle 10. Extracted as **S573** (qualitative).
+- **R22849E39FE23** — Chimphero LM, Tembo M, Gadama R (2026). "Community
+  engagement and capacity building as determinants of rural water supply
+  functionality: a case of traditional authority Mankhambira in Nkhata
+  Bay District, Malawi." *Journal of Water, Sanitation and Hygiene for
+  Development* 16(1):22-35. doi 10.2166/washdev.2025.149. **INCLUDE.** A
+  mixed-methods study (299 respondents across 30 water points, 8 FGDs, 12
+  KIIs). Title/content re-verified against prior `wrong_file_retrieved`
+  history and confirmed matching on this delivery. Documents genuine
+  household/village-level legal-institutional content: Water Point
+  Committee governance; traditional-authority by-law enforcement; and
+  informal contribution-based exclusionary access rules with explicit
+  recommendations to codify inter-village access rights. Extracted as
+  **S574** (mixed methods).
+- **R44ED9C065C16** — Bazaanah P, Buthelezi SJ, Oppong DAK (2024).
+  "Qualitative study of drinking water, sanitation, and hygiene access:
+  perspectives from the Central Gonja District, Ghana, and Mtubatuba
+  Municipality, South Africa." *Journal of Water, Sanitation and Hygiene
+  for Development* 14(11):1043-1065. doi 10.2166/washdev.2024.021.
+  **INCLUDE.** A qualitative study (98 participants: interviews and
+  FGDs). Documents genuine household-level legal-institutional content:
+  South Africa's Water Services Act, Free Basic Water policy, and
+  Municipal Systems Act; Ghana's CWSA Act and Local Government Act; and
+  testimony on corruption/favouritism in water distribution plus a
+  public-private-partnership water-treatment model. Extracted as **S575**
+  (qualitative).
+- **R7BC30D37A001** — "Water quality status and challenges in India and
+  Nepal" (book chapter). **EXCLUDE (E05, no original empirical
+  evidence).** A pure literature-review/synthesis chapter relying
+  exclusively on secondary sources; no original data collection.
+- **R2DDCC2FC03E7** — "Water policy reform in the Nigeria water governance
+  system: assessment" (OECD governance principles/toxicological-index
+  study). **EXCLUDE (E01, wrong topic).** A macro/basin-level analysis
+  with no household/applicant-level legal-administrative access
+  examination — matches the Nkiaka/Laitinen precedent.
+- **RF16C02EE1F2F** — "Water inequality and the constitutional right to
+  water: evaluating the [Free Basic Water policy]" (South Africa).
+  **EXCLUDE (E05, no original empirical evidence).** Explicitly
+  self-described "doctrinal legal research methodology"; Ethics Statement
+  confirms no human participants, reliance exclusively on secondary/
+  documentary sources.
+- **RC28E7E20373D** — "Use of group maturity index to measure growth,
+  performance, and sustainability" (Zimbabwe community health clubs).
+  **EXCLUDE (E01, wrong topic).** A hygiene-promotion program
+  organizational-monitoring-tool validation study; does not examine any
+  water/sanitation legal-administrative access mechanism.
+- **R178AF8716D6A** — "Urban Water System of the National Capital
+  Territory (NCT) of Delhi" (hydrological/engineering study). **EXCLUDE
+  (E06, engineering only).** IDW spatial interpolation on secondary DJB/
+  CGWB/CPCB datasets; no household-level empirical data collection.
+- **RDC76C62702D0** — Pierce G, Lai L (2019). "Toward a comprehensive
+  explanatory model of reliance on alternatives to the tap: evidence
+  from California's retail water stores." *Journal of Water and Health*
+  17(3). doi 10.2166/wh.2019.289. **EXCLUDE (E01, wrong topic).** A
+  zero-inflated negative binomial regression modeling retail water store
+  locations across California census tracts as a proxy for tap-water-
+  alternative reliance; examines market-substitution behavior, not any
+  legal-administrative access mechanism.
+- **RD5DE21EB6425** — Hlongwa N, Nkomo SL, Desai SA. "Barriers to water,
+  sanitation, and hygiene in Sub-Saharan Africa: a mini review."
+  **EXCLUDE (E05, no original empirical evidence).** An explicit
+  PRISMA-style systematic literature review of 76 secondary sources; no
+  original data collection.
+- **R7E702A70F8C6** — Kimbugwe C et al. (2022). "Practical system
+  approaches to realise the human rights to water and sanitation: results
+  and lessons from Uganda and Cambodia." *H2Open Journal* 5(1):69-83.
+  **EXCLUDE (E01, wrong topic).** A WaterAid programmatic process-review
+  paper (Likert-scale stakeholder perception surveys of institutional
+  "building blocks"); not an empirical examination of household-level
+  legal-administrative water access.
+- **R3B73F903D49F** — Chatterley C et al. (2018). "Institutional WASH in
+  the SDGs: data gaps and opportunities for national monitoring."
+  *Journal of Water, Sanitation and Hygiene for Development* 8(4):
+  595-606. **EXCLUDE (E01, wrong topic).** A review of national WASH
+  monitoring-data systems (EMIS/HMIS) for schools and health care
+  facilities — explicitly non-household settings.
+- **R345D7E2BCAC6** — Schiel RE, Wilson BM, Langford M, Faulkner CM
+  (2023). "Democracy and public goods revisited: Local institutions,
+  development, and access to water." *The British Journal of Politics and
+  International Relations* 25(2):237-259. **EXCLUDE (E01, wrong
+  topic).** A cross-national regression analysis (140 states,
+  2000–2015) using aggregate World Bank/V-Dem/REIGN datasets; a macro
+  governance-index study with no household/applicant-level
+  legal-administrative access examination.
+
+`evidence_map.csv` updated for S571-S575. `exclusion_log.csv` updated for
+the 10 new excludes (579 rows). `full_text_retrieval_queue.csv`
+regenerated (2,507 open records). Duplicate audit (DOI + record_id) and
+`validate_schemas.py` both clean. Running totals: 1,152/3,659 screened
+(573 include/579 exclude), 2,507 open, 573 extracted studies, 27
+effect_sizes rows (unchanged — none of the new includes has a genuine
+exposure-vs-comparator quantitative contrast).
+
+## 2026-09-21 — Eightieth full-text screening batch (10 Drive-retrieved PDFs: 4 excludes, 6 new includes S565-S570)
 
 Ten further PDFs surfaced in the Google Drive retrieval inbox, all
 title/content-verified against their target records prior to screening

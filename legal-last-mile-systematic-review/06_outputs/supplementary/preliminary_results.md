@@ -1959,6 +1959,68 @@ evidence of anything.
   1,137/3,659 screened (568 include/569 exclude), 2,522 open, 568
   extracted studies, 27 effect_sizes rows (unchanged). Full detail in
   `CHANGELOG.md`.
+- **2026-09-22: eighty-first full-text screening batch — 15
+  Drive-retrieved PDFs, 10 excludes, 5 new includes (S571-S575). Three
+  already-decided duplicates from the same inbox check (RD864629E91F7,
+  R0482B6E724C6, R2C5270DE77D8) were moved to Processed without
+  re-screening; one record (R22849E39FE23) carried prior
+  `wrong_file_retrieved` history and was re-verified, confirmed matching
+  this time.** Five includes: a Mvila Division, Cameroon rural
+  water-security study (647 water-point WSSI assessments + 103 committee
+  interviews) documenting Cameroon's General Code of Decentralized
+  Territorial Collectivities (Law No. 2019/024) and a proposed
+  intermunicipal syndicate legal structure (S571, MMAT). Foggitt, Cawood,
+  Evans & Acheampong (2019), a mixed-methods study (152 house-unit toilet
+  mapping, natural group discussions, 2 focus groups) of shared-sanitation
+  exclusion in Kumasi, Ghana, documenting a landlord-permission exclusion
+  mechanism (49% non-permittance, 84% attributed to landlord-exclusive
+  use) and the legal abolition of bucket latrines (S572, MMAT). Shields et
+  al. (2021), a qualitative study (243 interviews + 39 FGDs across 18
+  communities in Ghana, Kenya, and Zambia) of community participation in
+  rural water governance, documenting tariff-setting decision-making and
+  transparency/accountability rights (S573, CASP). Chimphero, Tembo &
+  Gadama (2026), a mixed-methods study (299 respondents, 8 FGDs, 12 KIIs)
+  of Water Point Committee governance in Nkhata Bay District, Malawi,
+  documenting traditional-authority by-law enforcement and informal
+  contribution-based exclusionary access rules with recommendations to
+  codify inter-village access rights (S574, MMAT). Bazaanah, Buthelezi &
+  Oppong (2024), a qualitative study (98 participants) of household WASH
+  access in Ghana and South Africa, documenting corruption/favouritism
+  against named statutory frameworks (South Africa's Water Services Act,
+  Free Basic Water policy; Ghana's CWSA Act) and a public-private-
+  partnership water-treatment model (S575, CASP). Ten excludes:
+  R7BC30D37A001 (India/Nepal water-quality book chapter) — **excluded
+  E05**, pure literature-review/synthesis with no original data
+  collection. R2DDCC2FC03E7 (Nigeria OECD water-governance-principles
+  study) — **excluded E01**, macro/basin-level analysis, same
+  Nkiaka/Laitinen rationale. RF16C02EE1F2F (South African Free Basic Water
+  constitutional-law paper) — **excluded E05**, explicitly self-described
+  doctrinal legal research methodology, no human participants. RC28E7E20373D
+  (Zimbabwe community-health-club Group Maturity Index study) — **excluded
+  E01**, hygiene-promotion organizational-monitoring tool, not a water/
+  sanitation access mechanism. R178AF8716D6A (Delhi urban water system
+  hydrological study) — **excluded E06**, IDW spatial interpolation on
+  secondary GIS data, no household-level collection. RDC76C62702D0 (Pierce
+  & Lai 2019, California retail-water-stores regression study) —
+  **excluded E01**, models market-substitution behavior, not a
+  legal-administrative access mechanism. RD5DE21EB6425 (Hlongwa, Nkomo &
+  Desai, Sub-Saharan Africa WASH-barriers mini-review) — **excluded E05**,
+  explicit PRISMA-style systematic review of 76 secondary sources.
+  R7E702A70F8C6 (Kimbugwe et al. 2022, WaterAid SusWASH programmatic
+  process review) — **excluded E01**, stakeholder-perception surveys of
+  institutional building blocks, not household-level access. R3B73F903D49F
+  (Chatterley et al. 2018, institutional WASH-in-the-SDGs monitoring-data
+  review) — **excluded E01**, explicitly non-household settings (schools,
+  health facilities). R345D7E2BCAC6 (Schiel, Wilson, Langford & Faulkner
+  2023, cross-national democracy/water-access regression study, 140
+  states) — **excluded E01**, macro governance-index study using aggregate
+  datasets, no household-level access examination. `evidence_map.csv`
+  updated for S571-S575; `exclusion_log.csv` updated (579 rows total);
+  `full_text_retrieval_queue.csv` regenerated (2,507 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,152/3,659 screened (573 include/579 exclude), 2,507 open, 573
+  extracted studies, 27 effect_sizes rows (unchanged). Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -1977,14 +2039,14 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,137 of the 3,659
-  Phase-5 includes have been assessed; 2,522 records have not yet been
+- Full-text screening itself is far from complete: 1,152 of the 3,659
+  Phase-5 includes have been assessed; 2,507 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
   on the researcher supplying full-text PDFs.
-- Extraction (Phase 8) is caught up with screening completely — all 568
+- Extraction (Phase 8) is caught up with screening completely — all 573
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  568 extracted studies** (a first 12-study partial pilot batch was
+  573 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
