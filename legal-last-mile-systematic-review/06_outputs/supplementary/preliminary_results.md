@@ -2368,6 +2368,37 @@ evidence of anything.
   re-run clean. Running totals: 1,207/3,659 screened (602 include/605
   exclude), 2,452 open, 602 extracted studies, 30 effect_sizes rows
   (unchanged). Full detail in `CHANGELOG.md`.
+- **2026-09-22: ninety-third full-text screening batch — 6 Drive-retrieved
+  PDFs, 4 includes (S605-S608), 2 excludes.** Meredith et al. (2021), a
+  Kibera Nairobi slum-upgrading case study finding the Settlement
+  Executive Committee (a formally constituted community institution)
+  negotiated legal property ownership plus water/sanitation
+  infrastructure for 822 families across a 15-year process including
+  litigation — **included** (S605). Zhou & Liang (2021), a 290-city
+  Chinese panel regression finding hukou household-registration status
+  significantly predicts lower wastewater/solid-waste treatment capacity
+  (p<0.01) — **included** (S606), also added to `effect_sizes.csv` as a
+  Family C candidate. Biswas et al. (2020), a mobile sanitation-app
+  usability study — **excluded E01**, methodology/app-design paper, not a
+  population-access-outcome study. Jeil & Abass (2021), an 86-household
+  Northern Ghana water-choice study — **excluded E01**, no legal/
+  institutional exposure examined (risk-perception/cultural-belief
+  study). Romano, Nelson-Nuñez & LaVanchy (2021), a 3-country (Nicaragua/
+  Honduras/Costa Rica) comparative review of community-based water
+  management legal-recognition frameworks, finding only partial
+  registration rates in all 3 countries (e.g. 30% of Nicaraguan CAPS
+  within 5 years of the 2010 law) — **included** (S607). Basu et al.
+  (2020), a multi-actor India rural-water-governance study (282 community
+  participants + 33 Panchayat heads + Block officials, 16 villages)
+  documenting a caste-based handpump-exclusion instance and a
+  discretionary construction-vs-maintenance funding pattern — **included**
+  (S608). `extraction_database.csv`/`evidence_map.csv` updated (S605-S608,
+  602 → 606 rows each); `effect_sizes.csv` updated (30 → 31 rows, S606
+  added); `exclusion_log.csv` updated (607 rows total; E01 198 → 200);
+  `full_text_retrieval_queue.csv` regenerated (2,446 open records);
+  duplicate audit and schema validation re-run clean. Running totals:
+  1,213/3,659 screened (606 include/607 exclude), 2,446 open, 606
+  extracted studies, 31 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -2386,16 +2417,16 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,207 of the 3,659
-  Phase-5 includes have been assessed; 2,452 records have not yet been
+- Full-text screening itself is far from complete: 1,213 of the 3,659
+  Phase-5 includes have been assessed; 2,446 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Four of those 2,452
+  on the researcher supplying full-text PDFs. Four of those 2,446
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record and are pending a correct re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 602
+- Extraction (Phase 8) is caught up with screening completely — all 606
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  602 extracted studies** (a first 12-study partial pilot batch was
+  606 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

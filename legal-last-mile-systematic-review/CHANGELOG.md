@@ -4,7 +4,82 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Ninety-second full-text screening batch (8 Drive-retrieved PDFs: 6 includes S599-S604, 2 excludes)
+## 2026-09-22 (latest) — Ninety-third full-text screening batch (6 Drive-retrieved PDFs: 4 includes S605-S608, 2 excludes)
+
+Six PDFs surfaced in the Google Drive retrieval inbox. All 6 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+title/authors verified against `full_text_screening_database.csv` before
+reading.
+
+- **R59468F0C4D5B** — Meredith T, MacDonald M, Kwach H, Waikuru E,
+  Alabaster G (2021). "Partnerships for Successes in Slum Upgrading:
+  Local Governance and Social Change in Kibera, Nairobi." Book chapter in
+  *Land Issues for Urban Governance in Sub-Saharan Africa*, Springer, pp.
+  237-255. doi 10.1007/978-3-030-52504-0_15. **INCLUDE.** Case study of
+  the KENSUP Soweto East slum-upgrading project's Settlement Executive
+  Committee (SEC), a formally constituted community institution that
+  negotiated housing pricing across a political-administration change,
+  prevailed in a 2-year civil court case, and secured legal property
+  ownership plus K-WATSAN water/sanitation infrastructure for 822
+  families. Extracted as **S605**.
+- **RF8C06439B2CA** — Zhou S, Liang J (2021). "Migrant workers and
+  environmental amenities and infrastructure in urban China: from the
+  lens of environmental justice." *Journal of Environmental Policy &
+  Planning* 23(6):781-795. doi 10.1080/1523908X.2021.1920379.
+  **INCLUDE.** Panel fixed-effects regression (290 Chinese prefectural
+  cities, 2008-2014) finding China's hukou household-registration status
+  (a legal/administrative exclusion mechanism) significantly predicts
+  lower per-capita wastewater and solid-waste treatment capacity
+  (p<0.01) in cities with a higher share of unregistered temporary
+  residents. Extracted as **S606**; also added to `effect_sizes.csv`
+  (Family C) — a clean legal-exclusion exposure with consistent,
+  robustness-checked significant coefficients (30 → 31 rows).
+- **R4A2516BE7A0A** — Biswas R, Arya K, Fernandes V, Shah T (2020). "Find
+  A Loo: an app for sanitation governance." *Information, Communication &
+  Society* 24(11):1586-1602. doi 10.1080/1369118X.2020.1716038.
+  **EXCLUDE (E01, wrong topic).** Mobile-app usability/design study (33
+  evaluators, SUS/PCS Likert scales); the outcome is app usability score,
+  not a population-level sanitation access outcome — a methodology paper,
+  same rationale as prior crowd-sourced-data/GIS-modeling methodology
+  exclusions.
+- **RF92EF484E8E6** — Jeil EB, Abass K (2021). "A contextual analysis of
+  public health implications of water choices and hygiene practices in
+  Northern Ghana." *Local Environment* 26(5):542-556. doi
+  10.1080/13549839.2021.1901269. **EXCLUDE (E01, wrong topic).**
+  86-household risk-perception-theory study of water-source choice
+  driven by taste, accessibility, and traditional beliefs; no legal/
+  institutional exposure is examined in the empirical analysis.
+- **R7D6CA19199B3** — Romano ST, Nelson-Nuñez J, LaVanchy GT (2021).
+  "Rural water provision at the state-society interface in Latin
+  America." *Water International* 46(6):802-820. doi
+  10.1080/02508060.2021.1928973. **INCLUDE.** Comparative documentary
+  review of community-based water management (CBWM) legal-recognition
+  frameworks in Nicaragua (2010 Special CAPS Law), Honduras (2003 Water
+  Framework Law), and Costa Rica (1939 Law of Associations/ASADAS), with
+  registration-rate statistics for each country (e.g. only 30% of
+  Nicaraguan CAPS registered within 5 years of the law). Extracted as
+  **S607**.
+- **R7F86482382FC** — Basu M, DasGupta R, Hashimoto S, Hoshino S (2020).
+  "A multi-actor and bottom-up perspective on attaining rural water
+  security: qualitative evidence from India." *Environment, Development
+  and Sustainability* 23:1461-1484. doi 10.1007/s10668-020-00631-2.
+  **INCLUDE.** Multi-actor qualitative study (282 community FGD
+  participants + 33 Gram Panchayat heads + Block officials, 16 villages,
+  West Bengal) documenting India's decentralized Panchayati Raj water-
+  governance framework, including a directly quoted instance of caste-
+  based exclusion from a community handpump and a discretionary new-
+  construction-vs-maintenance funding-allocation pattern. Extracted as
+  **S608**.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S605-S608, 602 →
+606 rows each). `effect_sizes.csv` updated (30 → 31 rows, S606 added,
+Family C). `exclusion_log.csv` updated (607 rows total; E01 198 → 200).
+`full_text_retrieval_queue.csv` regenerated (2,446 open records).
+Duplicate audit (DOI + record_id) and `validate_schemas.py` both clean.
+Running totals: 1,213/3,659 screened (606 include/607 exclude), 2,446
+open, 606 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Ninety-second full-text screening batch (8 Drive-retrieved PDFs: 6 includes S599-S604, 2 excludes)
 
 Eight PDFs surfaced in the Google Drive retrieval inbox. All 8 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
