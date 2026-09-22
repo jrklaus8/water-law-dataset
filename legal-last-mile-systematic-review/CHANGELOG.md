@@ -4,7 +4,59 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-third full-text screening batch (5 Drive-retrieved PDFs: 4 includes S623-S626, 1 exclude)
+## 2026-09-22 (latest) — Hundred-fourth full-text screening batch (4 Drive-retrieved PDFs: 3 includes S627-S629, 1 exclude)
+
+Four PDFs surfaced in the Google Drive retrieval inbox. All 4 target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against delivered PDFs before screening.
+
+- **R83FCFEB8D3DB** (Akpabio & Udofia 2017, *International Journal of
+  Water Resources Development*, "Unsafe water, sanitation and hygiene
+  in Nigeria's public spaces: the political economy angle").
+  **INCLUDE.** Field study (20 public spaces, 100 interviews) in Ikot
+  Ekpene, Nigeria, documenting weak/non-existent regulatory enforcement
+  of WASH standards in public spaces, against real facility-level
+  water-supply/toilet-provision data and city-wide access statistics
+  (1.4% water-company coverage). Extracted as **S627**. Not
+  effect_sizes eligible (descriptive field-study tabulation).
+- **RA1B1F2182B55** (Pierce 2017, *Development in Practice*, "Why is
+  basic service access worse in slums? A synthesis of obstacles").
+  **INCLUDE.** Mixed-methods study (26 interviews, 789-household
+  survey, 500 programme records) across 4 Hyderabad, India slums
+  documenting government-recognition/notification status and
+  inter-agency jurisdictional disputes as institutional barriers,
+  against real household service-interruption and health outcomes (a
+  2009 contamination incident killed 14+ people). Extracted as
+  **S628**. Not effect_sizes eligible (qualitative typology synthesis).
+- **R8C684502F84D** (Eichelberger 2018, *Environmental Science and
+  Pollution Research*, "Household water insecurity and its cultural
+  dimensions: preliminary results from Newtok, Alaska"). **INCLUDE.**
+  Ethnographic study (23 interviews) in a remote Yupik village
+  documenting village-government funding constraints, a State
+  infrastructure-program failure, and a school-district water-rationing
+  rule against real quantified household consumption data (1.91
+  gal/person/day). Extracted as **S629**. Not effect_sizes eligible
+  (ethnographic study with descriptive statistics).
+- **R3F81DA1627AD** (de Carvalho, Cunha Marques & Cordeiro Netto 2018,
+  *Water Resources Management*, "Regulatory Impact Assessment (RIA):
+  an Ex-Post Analysis of Water Services by the Legal Review in
+  Portugal"). **EXCLUDE (E04, wrong outcome).** Ex-post Delphi/TOPSIS
+  multicriteria assessment of Portugal's Law no.194/2009 PPP water
+  reform using utility/concessionaire-level financial and governance
+  performance metrics, not household-level access outcomes, same
+  rationale as the prior DEA-efficiency exclusions.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S627-S629, 624 →
+627 rows each). `effect_sizes.csv` unchanged (31 rows; no new
+candidates). `exclusion_log.csv` updated (619 rows total; E04 58 →
+59). `full_text_retrieval_queue.csv` regenerated (2,413 open records).
+Duplicate audit clean (no DOI or record_id duplicates).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,246/3,659 screened (627 include/619 exclude), 2,413
+open, 627 extracted studies, 31 effect_sizes rows.
+
+## 2026-09-22 — Hundred-third full-text screening batch (5 Drive-retrieved PDFs: 4 includes S623-S626, 1 exclude)
 
 Five PDFs surfaced in the Google Drive retrieval inbox. All 5 target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
