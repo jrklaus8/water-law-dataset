@@ -4,7 +4,43 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-thirty-first full-text screening batch (4 Drive-retrieved PDFs: 3 includes, 1 exclude)
+## 2026-09-23 (latest) — Hundred-thirty-second full-text screening batch (2 Drive-retrieved PDFs: 1 include, 1 exclude)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R3DF6CF34D9CE** (Hasan 2006, *Environment & Urbanization*, "Orangi
+  Pilot Project: the expansion of work beyond Orangi and the mapping of
+  informal settlements and infrastructure"). **INCLUDE.** Documentary
+  institutional case study of an NGO-mediated community sanitation
+  programme in Karachi, Pakistan informal settlements, documenting
+  Pakistan's Katchi Abadi regularization programme (since 1973),
+  Devolution Plan 2001 local-government structure, and a provincial
+  ombudsman ruling compelling KWSB to take over community-built sewer
+  maintenance, with quantified outcomes (infant mortality 128->37 per
+  1,000; 77.9% vs. 97.1% lane-sewer coverage for a formally excluded
+  vs. supported settlement area). Extracted as **S684**. Not
+  effect_sizes eligible (descriptive before/after and area comparisons,
+  no adjusted effect estimate).
+- **RBA76411516B7** (Kucher 2005, *Journal of Urban History*, "The Use
+  of Water and its Regulation in Medieval Siena"). **EXCLUDE (E01 —
+  wrong topic).** Historical-legal study of medieval statutes
+  regulating industrial water use, firefighting, and a physical/legal
+  purity hierarchy across fountain complexes; domestic water use is
+  explicitly noted as barely covered by statutes, with no household/
+  community access-exclusion outcome examined anywhere in the paper.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S684, 681 → 682
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (655 → 656 rows; E01 231 → 232). Duplicate audit found no
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,321 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,338/3,659 screened (682 include/656 exclude), 2,321
+open, 682 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-thirty-first full-text screening batch (4 Drive-retrieved PDFs: 3 includes, 1 exclude)
 
 Four PDFs surfaced in the Google Drive retrieval inbox. All target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
