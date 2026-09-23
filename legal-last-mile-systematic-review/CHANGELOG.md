@@ -4,7 +4,35 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-twenty-ninth full-text screening batch (1 Drive-retrieved PDF: 1 include)
+## 2026-09-23 (latest) — Hundred-thirtieth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **RA2C47DBF8584** (Crow & McPike 2009, *Gender, Technology and
+  Development*, "How the Drudgery of Getting Water Shapes Women's
+  Lives in Low-income Urban Communities"). **EXCLUDE (E05 — no
+  empirical evidence).** Narrative literature review synthesizing ~30
+  secondary published studies on gender, time-use, and water-collection
+  drudgery; no original primary data collection and no documented
+  systematic-review search methodology (the authors explicitly disclaim
+  comprehensiveness). Institutional/legal themes appear only
+  incidentally, not as the paper's object of study. Extends the
+  established narrative-synthesis exclusion precedent (cf. Foster &
+  Gathu 2024).
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes, 678 rows each). `effect_sizes.csv` unchanged (34 rows).
+`exclusion_log.csv` updated (653 → 654 rows; E05 75 → 76). Duplicate
+audit found no duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,327 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,332/3,659 screened (678 include/654 exclude), 2,327
+open, 678 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-twenty-ninth full-text screening batch (1 Drive-retrieved PDF: 1 include)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
