@@ -3217,6 +3217,25 @@ evidence of anything.
   Running totals: 1,338/3,659 screened (682 include/656 exclude), 2,321
   open, 682 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-23, hundred-thirty-third full-text screening batch, 4
+  Drive-retrieved PDFs, 1 include, 3 excludes.** Sawchuk, Burke & Padiak
+  (2002, historical demographic natural-experiment study of an 1884
+  gubernatorial order granting military families free condenser-water
+  access in Gibraltar, statistically significant infant-mortality
+  divergence emerging only post-policy, S685) — **INCLUDE**. Sandhu
+  (2000, secondary-source housing-poverty synthesis, water one
+  incidental indicator among ~10) — **EXCLUDE (E01)**. Dhar (2000,
+  narrative policy essay across five basic-service sectors, no original
+  data) — **EXCLUDE (E05)**. Banerjee (2001, macro/regional IWRM project
+  proposal, no household-level access data) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S685, 682 →
+  683 rows each); `effect_sizes.csv` unchanged (34 rows);
+  `exclusion_log.csv` updated (656 → 659 rows; E01 232 → 234, E05 76 →
+  77); duplicate audit found no duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,317 open records); schema validation re-run clean.
+  Running totals: 1,342/3,659 screened (683 include/659 exclude), 2,317
+  open, 683 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3235,17 +3254,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,338 of the 3,659
-  Phase-5 includes have been assessed; 2,321 records have not yet been
+- Full-text screening itself is far from complete: 1,342 of the 3,659
+  Phase-5 includes have been assessed; 2,317 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,321
+  on the researcher supplying full-text PDFs. Six of those 2,317
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 682
+- Extraction (Phase 8) is caught up with screening completely — all 683
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  682 extracted studies** (a first 12-study partial pilot batch was
+  683 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

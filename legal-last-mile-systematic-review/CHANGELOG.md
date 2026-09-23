@@ -4,7 +4,48 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-thirty-second full-text screening batch (2 Drive-retrieved PDFs: 1 include, 1 exclude)
+## 2026-09-23 (latest) — Hundred-thirty-third full-text screening batch (4 Drive-retrieved PDFs: 1 include, 3 excludes)
+
+Four PDFs surfaced in the Google Drive retrieval inbox. All target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R0AFB571151F8** (Sawchuk, Burke & Padiak 2002, *Journal of Family
+  History*, "A Matter of Privilege: Infant Mortality in the Garrison
+  Town of Gibraltar, 1870-1899"). **INCLUDE.** Historical demographic
+  natural-experiment study using primary vital-registration archival
+  data, documenting an 1884 gubernatorial order granting military
+  families free condenser-water access while civilians had to pay,
+  with a statistically significant Kolmogorov-Smirnov divergence in
+  infant mortality (KS=1.461, p=.028) emerging only after the policy,
+  vs. no significant difference before it (KS=0.730, p=.66). Extracted
+  as **S685**. Not effect_sizes eligible (nonparametric two-group
+  distributional test, not a regression-based point estimate).
+- **RBE58AF9BAF95** (Sandhu 2000, *Social Change*, "Housing poverty in
+  urban India"). **EXCLUDE (E01 — wrong topic).** Secondary-source
+  synthesis on general urban housing poverty; water connection is one
+  incidental indicator among ~10, not the paper's object of study.
+- **R925A310D75C8** (Dhar 2000, *Social Change*, "Equity and access to
+  basic services: Issues and options"). **EXCLUDE (E05 — no empirical
+  evidence).** Narrative policy essay covering five basic-service
+  sectors generically with no original data collection.
+- **R22206B3DC3A0** (Banerjee 2001, *Social Change*, "Integrated
+  management of water resources in the National Capital
+  Region-Delhi"). **EXCLUDE (E01 — wrong topic).** Macro/regional IWRM
+  project proposal/policy document with no household-level access
+  data.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S685, 682 → 683
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (656 → 659 rows; E01 232 → 234, E05 76 → 77). Duplicate audit
+found no duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,317 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,342/3,659 screened (683 include/659 exclude), 2,317
+open, 683 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-thirty-second full-text screening batch (2 Drive-retrieved PDFs: 1 include, 1 exclude)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
