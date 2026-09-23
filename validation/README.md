@@ -56,10 +56,10 @@ residual from 89.2% → 8.3%. However:
 | `generate_all_outputs.py` | Reproducibility script: generates kappa files, Excel workbook, and report data |
 | `second_coder_sample_raw.csv` | 207-decision stratified NWR sample (NL_broad_water=100, NL_aansluiting=12, NL_plain=60, BR_all=35) |
 | `second_coder_labeled.csv` | Same sample with author (coder1) WATER/NOT_WATER/UNCERTAIN labels + reasons |
-| `coder1_labels.csv` | Clean coder1 label file for kappa input |
+| `coder1_labels.csv` | Raw coder1 (author) labels for the full 207-decision sample, with per-case reasons — **not** `kappa_calculator.py`-ready as-is (wrong columns: `sample_id,case_id,country,stratum,coder1_label,coder1_reason`); use `coder1_kappa.csv` for kappa input |
 | `coder2_labels_template.csv` | 91-decision template for independent second coder (fill in `coder2_label`, return as `coder2_labels.csv`) |
-| `coder1_kappa.csv` | Coder1 labels formatted for `kappa_calculator.py` (91 matched cases) |
-| `coder2_labels.csv` | Coder2 labels (91 cases) — **κ = 0.734** |
+| `coder1_kappa.csv` | Coder1 labels formatted for `kappa_calculator.py` (`case_id,label`, 91 matched cases) — this is the file that actually reproduces `kappa_results.json` |
+| `coder2_labels.csv` | Coder2 labels (91 cases) — **κ = 0.568** (pre-rule three-label baseline; reproduces `kappa_results.json` exactly). See `RESIDUAL_AUDIT.md` §5.2 for the mananciais-rule-adjusted κ = 0.832 and binary WATER/NOT_WATER κ = 0.932 computed from this same underlying sample. |
 | `kappa_agreement_detail.csv` | Case-by-case comparison: coder1 vs coder2, agree/disagree flag |
 | `kappa_results.json` | Official kappa output: κ, CI, per-category precision/recall |
 | `precision_recall_results.json` | Per-stratum and population-weighted precision/recall for the NWR filter |
@@ -78,7 +78,7 @@ python validation/residual_audit.py
 **Compute kappa (after second-coder labels are available):**
 ```bash
 python validation/kappa_calculator.py \
-    --coder1 validation/coder1_labels.csv \
+    --coder1 validation/coder1_kappa.csv \
     --coder2 validation/coder2_labels.csv
 ```
 

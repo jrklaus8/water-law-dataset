@@ -7,11 +7,13 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent / ".env")
 
 _env_path = os.getenv("DATASET_PATH")
-DATASET_PATH = (
-    Path(_env_path)
-    if _env_path
-    else Path(r"C:\Users\junio\OneDrive\Área de Trabalho\Legal Last Mile - Water Law Dataset\Dataset\water_law_global_coded.csv")
-)
+if not _env_path:
+    raise RuntimeError(
+        "DATASET_PATH is not set. Copy .env.example to .env and set DATASET_PATH "
+        "to the location of water_law_global_coded.csv (see .env.example for "
+        "download links)."
+    )
+DATASET_PATH = Path(_env_path)
 
 GOVERNANCE_LABELS = {
     "tariff_dispute": "Tariff Disputes",

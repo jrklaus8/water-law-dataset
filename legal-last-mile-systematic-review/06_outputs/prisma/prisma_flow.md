@@ -1,0 +1,216 @@
+# PRISMA 2020 Flow Diagram — Data
+
+Status: **Identification and title/abstract screening (first pass only)
+are populated with real counts as of 2026-09-11, now that the search
+phase has closed by researcher decision** (candidate pool judged large
+enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
+`PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
+real count (n = 3,659) as of 2026-09-12, the size of the tracking file
+Phase 6 was seeded with. Full-text screening is now live and ongoing
+(updated 2026-09-23): of 3,659, 1,358 have been assessed (691 include / 667
+exclude), with "Reports not retrieved" still at 0 since every record
+reaching this pipeline so far has arrived with full text already in hand
+via researcher chat upload or Drive-shared Zotero export — the remaining
+2,301 are simply not yet reached, not confirmed unretrievable. This is
+expected to keep growing over roughly a month as the researcher continues
+supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
+illustrative, or a placeholder dressed as data; every filled count traces
+to `01_search/raw_exports/`, `01_search/deduplicated/`, or
+`02_screening/title_abstract/screening_database.csv` as of this date, and
+is annotated as provisional wherever it is.
+
+**Two things this diagram is not, yet:**
+
+1. **The search phase closed with real, documented gaps.** Databases
+   actually searched: Scopus (18/18 planned batches), Web of Science
+   (`SEARCH_035`), HeinOnline (`SEARCH_036`-`SEARCH_038`, minimal real
+   yield), ProQuest (`SEARCH_039`, full account-based export) and
+   ProQuest/Sociological Abstracts (`SEARCH_040`), and JSTOR (`SEARCH_041`,
+   50 of 356 identified results). SSRN (`SEARCH_042`) and Westlaw/Lexis
+   (`SEARCH_043`) were never searched at all — the phase was closed before
+   either was reached; see `SEARCH_PROTOCOL.md` §7 for the full account.
+   This is a real, disclosed limitation of this review's search strategy,
+   not a placeholder gap awaiting completion.
+2. **Title/abstract screening below shows reviewer_1 (AI) numbers only —
+   a human `reviewer_2` pass has since completed (2026-09-12) but is not
+   yet reflected in the boxes below**, which this file derives strictly
+   from `screening_database.csv`'s `title_abstract_decision` (reviewer_1)
+   field per its own re-derivation rule. The real post-reviewer_2 result:
+   3,659 include / 6 exclude / 0 conflicts out of the 3,665 include+unsure
+   records — see `PRISMA_WORKFLOW.md` Phase 5 and `CHANGELOG.md` for the
+   number **and** an important caveat that must travel with it: the
+   agreement rate between the two reviewers was unusually high (99.8%)
+   for genuinely independent screening, flagged to and confirmed by the
+   researcher before being recorded rather than treated as routine. Any
+   manuscript reporting this step should disclose that caveat alongside
+   the number.
+
+```
+Identification
+  Records identified from databases (n = 34,557)
+    [Scopus: SEARCH_018 (500) + all 18 planned batches (5,484) = 5,984.
+    Web of Science: SEARCH_035, 4,058 (5 export batches). HeinOnline:
+    SEARCH_037, 1 (SEARCH_036 was count-only, no export mechanism at
+    71,226 hits; SEARCH_038's 3 records were never delivered). ProQuest:
+    SEARCH_039, 7,728 (full account-based export). ProQuest/Sociological
+    Abstracts: SEARCH_040, 16,736. JSTOR: SEARCH_041, 50 (of 356
+    identified; the remaining 306 were never exported before the search
+    phase closed). SSRN and Westlaw/Lexis were never searched -- see
+    SEARCH_PROTOCOL.md S7.]
+  Records identified from grey literature / registers (n = 37)
+    [34 from an explicitly non-systematic Claude WebSearch pilot
+    (SEARCH_003-017, 2026-08-25 -- SEARCH_PROTOCOL.md S7, not a
+    substitute for a real database search) + 3 SOURCES.md exemplars
+    added directly to the pipeline.]
+  Records removed before screening:
+    Duplicate records removed (n = 7,113)
+      [code/search/deduplicate.py, DOI-match + title/year-similarity
+      match, full merge log in 01_search/deduplicated/merge_log.csv.
+      Heavy Scopus/WoS/ProQuest cross-database overlap is expected --
+      several major academic databases index much of the same journal
+      literature. record_id is a stable content hash -- see
+      CHANGELOG.md.]
+    Records marked ineligible by automation tools (n = 0)
+    Records removed for other reasons (n = 0)
+
+Screening  [reviewer_1 (AI) first pass only -- see caveat above]
+  Records screened (n = 26,222)
+    [Of 27,481 unique records, 1,259 have no real abstract (pre-2026-09-10
+    exports or grey-lit/JSTOR records lacking one) and were deliberately
+    left unscreened rather than judged on title alone -- see
+    title_only_triage_memo.md for why title-only judgments are
+    non-binding in this project.]
+  Records excluded at title/abstract (n = 22,557, PROVISIONAL)
+    [reviewer_1 only. Breakdown by code, all provisional:
+      E01 wrong topic (n = 16,666)
+      E02 wrong population (n = 51)
+      E03 wrong exposure / water-quality-only (n = 263)
+      E04 wrong outcome (n = 1,000)
+      E05 no empirical evidence (n = 1,510)
+      E06 engineering only (n = 1,617)
+      E07 wrong service (n = 1,040)
+      E08 duplicate (n = 26)
+      E09 insufficient information (n = 208)
+      E10 inaccessible full text (n = 0)
+      E11 wrong jurisdiction/context (n = 1)
+      E12 wrong study design (n = 175)
+    E01's large share reflects the ProQuest/Sociological Abstracts
+    round's much broader, noisier search (wire-service press releases,
+    medical conference proceedings, a large general sociology-of-
+    bureaucracy literature pulled in by thesaurus-term matching) rather
+    than a screening-quality issue -- see search_log.csv's SEARCH_039/040
+    notes and REVIEWER_2_README.md.
+    603 further records marked "unsure" by reviewer_1 are NOT counted
+    as excluded here -- they carry forward with the includes pending
+    full-text review; see below.]
+  Reports sought for retrieval (n = 3,659)
+    [02_screening/full_text/full_text_screening_database.csv seeded
+    2026-09-12 by code/screening/init_full_text_db.py from every
+    screening_database.csv record with final_decision == "include" -- this
+    is the population now in scope for retrieval, not yet the count
+    actually retrieved. See the reviewer_2 agreement-rate caveat above
+    before treating 3,659 as settled without qualification.]
+  Reports not retrieved (n = 0)
+    [Not a claim that the remaining 2,301 are all retrievable -- it means
+    none has yet been confirmed unretrievable. Every record reaching
+    full-text screening so far arrived via researcher chat upload or
+    Drive-shared Zotero export with full text already in hand, so "not
+    retrieved" has not yet had reason to be used; expect this to change as
+    retrieval of the full pool continues.]
+  Reports assessed for eligibility (n = 1,358, PROVISIONAL AND GROWING)
+    [02_screening/full_text/full_text_screening_database.csv, updated
+    2026-09-23. Full-text screening is ongoing, not complete -- 2,301 of
+    3,659 records have not yet been reached.]
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 667 total, PROVISIONAL):
+    E01 wrong topic (n = 236)
+    E02 wrong population (n = 33)
+    E03 wrong exposure (n = 23)
+    E04 wrong outcome (n = 60)
+    E05 no empirical evidence (n = 81)
+    E06 engineering only (n = 51)
+    E07 wrong service (n = 20)
+    E08 duplicate (n = 6)
+    E09 insufficient information (n = 2)
+    E10 inaccessible full text (n = 151)
+    E11 wrong jurisdiction/context (n = 0)
+    E12 wrong study design (n = 4)
+
+Included
+  Studies included in systematic review (n = 691, PROVISIONAL AND GROWING)
+    [Full-text include count as of 2026-09-23; full-text screening is
+    still ongoing across the remaining 2,301 unreached records.]
+  Studies included in full extraction so far (n = 691)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S693 (S227
+    and S399 documented post-hoc-duplicate gaps, see CHANGELOG.md). Fully caught up
+    with the full-text include count as of 2026-09-23 -- no outstanding gap.]
+  Studies included in quantitative evidence synthesis (n = 34, PROVISIONAL AND GROWING)
+    [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16,
+    extended same day with 2 more studies (S353, S358) from the Zotero
+    Drive-folder batch, then 1 more (S388, Li/McManus/Cronk 2025, Liberia
+    water-point functionality), then 1 more (S398, dos Santos Nascimento
+    Sobrinho & da Mota Silveira Neto 2025, Recife ZEIS zoning DiD study),
+    then 1 more (S404, Mwaura et al. 2021, Kenya WRUA legal-membership
+    effect on water poverty), then 4 more (S434 mining proximity/water
+    security; S435 uncontested water-board elections/bill-assistance
+    adoption; S445 Brazilian rural-school regional funding-formula
+    disadvantage; S448 intermunicipal cooperation/WWS financial
+    performance) from the 2026-09-17 Google Drive batch 3, then 2 more
+    (S470 Arsae-MG regulatory enforcement/social-tariff implementation in
+    Brazil; S471 municipal form-of-government/drinking-water affordability
+    in the US) from researcher chat uploads, then 1 more (S483, Mutono et
+    al. 2022, Nairobi residential-income-category water-sufficiency rate
+    ratios), then 1 more (S489, Koehler et al. 2021, Kwale Kenya
+    affordability-concern/service-contract-uptake odds ratio), then 1 more
+    (S491, Sempewo et al. 2021, Uganda COVID-19 lockdown water
+    payment-relationship/willingness-to-pay odds ratio), then 1 more
+    (S589, Ecuador World Bank Machala household-case fiscal-subsidy
+    comparison) from the 2026-09-22 batch-88 Drive delivery, then 1 more
+    (S590, Brown 1989, 19th-century Prussian municipal-franchise logit
+    study) from the batch-89 Drive delivery, then 1 more (S593, Ko 2024,
+    South Korean local-government water-supply-equity Tobit study,
+    administrative-district classification and fiscal-autonomy exposure)
+    from the batch-91 Drive delivery, then 1 more (S606, Zhou & Liang
+    2021, China hukou household-registration/pollution-treatment-
+    infrastructure panel regression) from the batch-93 Drive delivery, then 1 more
+    (S631, Lewis 2017, Indonesia local-government-proliferation/pemekaran
+    quasi-experimental panel DiD-GMM study, household water/sanitation
+    access-percentage outcome) from the batch-105 Drive delivery, then 1 more
+    (S636, Lewis 2014, Indonesia Water Hibah intergovernmental performance-
+    grant program, propensity-score-matched quasi-experimental evaluation of
+    grant-financed PDAM equity investment against household water
+    connections) from the batch-107 Drive delivery, then 1 more
+    (S649, Gonzalez Rivas 2012, Mexico indigenous-municipality piped-water-
+    coverage GLM/OLS regression study, federal intergovernmental-transfer
+    mechanism under Article 115 municipal water governance) from the
+    batch-111 Drive delivery.
+    These are
+    the studies with a
+    genuine, non-fabricated exposure-vs-comparator contrast and a
+    locatable effect estimate -- a much smaller, stricter subset than the
+    196 studies evidence_map.csv flags
+    quantitative_synthesis_eligible = TRUE, most of
+    which are single-group descriptive statistics with no defined
+    comparator. See CHANGELOG.md 2026-09-17 for the full study list and
+    exclusion rationale.]
+  Studies included in restricted meta-analysis, by family (n = 0)
+    [No pooling has occurred -- every effect_sizes.csv row has
+    included_in_pooled_estimate = FALSE at this stage (project is still
+    pre-Phase-12); each row cites the specific ANALYSIS_PLAN.md S2
+    decision-tree branch preventing pooling for now, most commonly a
+    single study per exposure-comparator definition.]
+```
+
+**Pool carried forward to Phase 6** (not a PRISMA box on its own, but the
+number that matters for planning full-text screening): reviewer_1 marked
+3,665 records `include` (3,062) or `unsure` (603) — see
+`02_screening/title_abstract/reviewer_2_queue.csv`. reviewer_2 has since
+reviewed all 3,665 and set `final_decision`: **3,659 include / 6 exclude**,
+zero conflicts. **3,659 records** are the actual set Phase 6 should
+retrieve full text for — see the reviewer_2 agreement-rate caveat above
+before treating this number as settled without qualification.
+
+Source data for these counts is
+`02_screening/title_abstract/screening_database.csv` and
+`02_screening/exclusion_log/exclusion_log.csv` — this file is a summary
+derived from those, not an independent source of truth. Re-derive rather
+than hand-edit this file's numbers when the underlying data changes.
