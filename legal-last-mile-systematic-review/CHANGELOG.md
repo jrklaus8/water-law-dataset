@@ -4,7 +4,44 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-22 (latest) — Hundred-twenty-sixth full-text screening batch (5 Drive-retrieved PDFs: 5 includes S674-S678)
+## 2026-09-23 (latest) — Hundred-twenty-seventh full-text screening batch (2 Drive-retrieved PDFs: 1 include, 1 exclude)
+
+Two PDFs surfaced in the Google Drive retrieval inbox. Both target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R8F361F312043** (Goldin 2010, *Review of Radical Political
+  Economics*, "Water Policy in South Africa: Trust and Knowledge as
+  Obstacles to Reform"). **INCLUDE.** Qualitative institutional case
+  study of South Africa's Breede-Overberg Water Management Area,
+  documenting the National Water Act (No. 36 of 1998), Water Services
+  Act (No. 108 of 1997), and Catchment Management Agency/Water User
+  Association participation structures, via paired ethnographic case
+  narratives (white commercial farmers' Ruensveld/Duivenhoks irrigation
+  scheme vs. Kassiesbaai fishing village) and interviews (2001-2004)
+  showing network-mediated differential institutional access reproducing
+  apartheid-era water-scheme disparities. Extracted as **S679**. Not
+  effect_sizes eligible (qualitative narrative/interview design, no
+  quantified effect estimate).
+- **RAF15F47BD74F** (Thunqvist, Ilskog & Mvungi 2012, *Gender,
+  Technology and Development*, "The Figures behind Facts:
+  Photo-eliciting Infrastructural Consequences in Dar es Salaam,
+  Tanzania"). **EXCLUDE (E01 — wrong topic).** Qualitative
+  photo-elicitation methodology research note on general infrastructural
+  deprivation among female-headed households in a Dar es Salaam informal
+  settlement; no legal, administrative, institutional, regulatory or
+  governance factor is examined anywhere in the paper.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S679, 676 → 677
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (651 → 652 rows). Duplicate audit found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,330 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,329/3,659 screened (677 include/652 exclude), 2,330
+open, 677 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-22 — Hundred-twenty-sixth full-text screening batch (5 Drive-retrieved PDFs: 5 includes S674-S678)
 
 Five PDFs surfaced in the Google Drive retrieval inbox. All target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
