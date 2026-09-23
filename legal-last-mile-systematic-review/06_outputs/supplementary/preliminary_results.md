@@ -3237,6 +3237,47 @@ evidence of anything.
   open, 683 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **2026-09-23, hundred-fortieth full-text screening batch, 16
+  Drive-retrieved PDFs, 8 includes, 8 excludes, plus 1 wrong_file_retrieved
+  flag.** Bakker (2005, England & Wales privatization/reregulation,
+  Ofwat statutory duty, High Court ruling against prepayment meters,
+  disconnection-protection legislation, S686) — **INCLUDE**. Schusterman &
+  Hardoy (1997, Barrio San Jorge Buenos Aires, 10-year legal-tenure and
+  formal-utility-connection transition, S687) — **INCLUDE**. Faisal &
+  Kabir (2005, rural Bangladesh gender-water field study, WMG/WMA
+  participation-mandate vs. de facto exclusion, S688) — **INCLUDE**. Allen,
+  Davila & Hofmann (2006, five-metro-area comparative peri-urban
+  water-poor study, policy-driven vs. needs-driven access, S689) —
+  **INCLUDE**. Anand (2007, Chennai institutional mapping and household
+  entitlements analysis, S690) — **INCLUDE**. Jenson (2008, 19th-century
+  Britain citizenship regimes and differential sewer/water connection,
+  S691) — **INCLUDE**. Kumara (2013, Bangalore metropolitan governance
+  fragmentation and water-supply service delivery, S692) — **INCLUDE**.
+  Chathukulam & Devavrathan (2014, Kerala Gram Panchayat sanitation
+  field study, S693) — **INCLUDE**. Mustafa (2007, Indus Basin
+  hydropolitics narrative review) — **EXCLUDE (E05)**. Ali (2010, slum
+  water-treatment technology review) — **EXCLUDE (E06)**. Yang et al.
+  (1991, Fujian PHC programme, water incidental) — **EXCLUDE (E01)**.
+  Jaglin (2002, sub-Saharan Africa water-reform narrative review) —
+  **EXCLUDE (E05)**. Memon et al. (2006, 14-Asian-city macro reform
+  review, no household outcome data) — **EXCLUDE (E01)**. Kay et al.
+  (2007, UK private-water-supply microbiological quality) — **EXCLUDE
+  (E03)**. Perkins (2009, Cairo NGO site-visit commentary) — **EXCLUDE
+  (E05)**. Buckley (2011, Mumbai SPARC economic commentary,
+  self-described non-empirical) — **EXCLUDE (E05)**. Also: R2EAEC279B644
+  (target Koros et al. 2024, Kenya user-owned utilities) flagged
+  `wrong_file_retrieved` — delivered PDF was an unrelated 2015 GIZ/World
+  Bank Kenya water-kiosk case study; not screened, committed separately.
+  `extraction_database.csv`/`evidence_map.csv` updated (S686-S693, 683 →
+  691 rows each); `effect_sizes.csv` unchanged (34 rows);
+  `exclusion_log.csv` updated (659 → 667 rows; E01 234 → 236, E03 22 →
+  23, E05 77 → 81, E06 50 → 51); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,301 open
+  records); schema validation re-run clean.
+  Running totals: 1,358/3,659 screened (691 include/667 exclude), 2,301
+  open, 691 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
@@ -3254,17 +3295,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,342 of the 3,659
-  Phase-5 includes have been assessed; 2,317 records have not yet been
+- Full-text screening itself is far from complete: 1,358 of the 3,659
+  Phase-5 includes have been assessed; 2,301 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,317
+  on the researcher supplying full-text PDFs. Eight of those 2,301
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 683
+- Extraction (Phase 8) is caught up with screening completely — all 691
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  683 extracted studies** (a first 12-study partial pilot batch was
+  691 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

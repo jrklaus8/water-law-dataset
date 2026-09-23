@@ -4,7 +4,123 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-thirty-third full-text screening batch (4 Drive-retrieved PDFs: 1 include, 3 excludes)
+## 2026-09-23 (latest) — Hundred-fortieth full-text screening batch (16 Drive-retrieved PDFs: 8 includes, 8 excludes) plus 1 wrong_file_retrieved flag
+
+Seventeen PDFs surfaced in the Google Drive retrieval inbox. All target
+record_ids confirmed open with no prior `wrong_file_retrieved` history.
+One record (**R2EAEC279B644**, target: Koros, Juuti, Juuti, Hukka &
+Asokan 2024, "Leaving No One Behind: Prospects for User-Owned Urban
+Water Utilities in Kenya") was found to have an entirely different PDF
+delivered (Werchota & Nordmann 2015, a GIZ/World Bank case study on
+Kenyan water kiosks, sharing no author, title or DOI with the target)
+and was flagged `wrong_file_retrieved` without screening (committed
+separately, `6e302f5`). The remaining 16 were screened:
+
+- **R483391EAF0A4** (Bakker 2005, *Annals of the AAG*, "Neoliberalizing
+  Nature? Market Environmentalism in Water Supply in England and
+  Wales"). **INCLUDE.** Legal/regulatory case study of 1989
+  privatization and reregulation, documenting Ofwat's statutory
+  affordability duty, a High Court ruling against prepayment meters,
+  and subsequent disconnection-protection legislation. Extracted as
+  **S686**.
+- **R124041F5DF16** (Mustafa 2007, *Geographical Review*, "Social
+  Construction of Hydropolitics... Indus Basin"). **EXCLUDE (E05 — no
+  empirical evidence).** Narrative review explicitly framed around
+  "future research directions," drawing on cited secondary sources
+  (including the author's own earlier publications) rather than
+  original data collected in this article.
+- **R3AEF33753AF3** (Ali 2010, *Journal of Water and Health*,
+  "Alternatives for safe water provision in urban and peri-urban
+  slums"). **EXCLUDE (E06 — engineering only).** Water-treatment
+  technology review with no legal/institutional/governance analysis.
+- **R5288473FC800** (Yang et al. 1991, *Health Education Quarterly*,
+  "A Multisectoral Approach to Primary Health Care in Fujian, China").
+  **EXCLUDE (E01 — wrong topic).** Community PHC program case study;
+  water access is one brief outcome indicator among many.
+- **R9741314656A3** (Schusterman & Hardoy 1997, *Environment and
+  Urbanization*, "Reconstructing Social Capital... Barrio San Jorge").
+  **INCLUDE.** Ten-year case study of an informal Buenos Aires
+  settlement's transition to legal land tenure and formal
+  utility-managed water/sanitation, negotiated by a new community
+  organization. Extracted as **S687**.
+- **R53BDAFE46BDD** (Jaglin 2002, *Environment and Urbanization*, "The
+  right to water versus cost recovery... sub-Saharan Africa").
+  **EXCLUDE (E05 — no empirical evidence).** Regional narrative
+  review/synthesis with no original fieldwork.
+- **R02C6DE366093** (Faisal & Kabir 2005, *Journal of Developing
+  Societies*, "An Analysis of Gender-Water Nexus in Rural
+  Bangladesh"). **INCLUDE.** Primary field study (survey, FGDs,
+  interviews at 7 locations) documenting the gap between Bangladesh's
+  Participatory Water Management Guidelines (mandating women's WMG/WMA
+  membership) and actual near-exclusion of women from irrigation
+  water-management institutions. Extracted as **S688**.
+- **R0C5D57C3EF0E** (Memon et al. 2006, *Journal of Environment &
+  Development*, "Reforms for Managing Urban Environmental
+  Infrastructure and Services in Asia"). **EXCLUDE (E01 — wrong
+  topic).** Macro-level 14-country statutory-reform review with no
+  household-level access data.
+- **RF3056823844E** (Allen, Dávila & Hofmann 2006, *Environment and
+  Urbanization*, "The peri-urban water poor: citizens or consumers?").
+  **INCLUDE.** Three-year comparative primary research project across
+  five metropolitan areas (Mexico City, Caracas, Chennai, Dar es
+  Salaam, Cairo) distinguishing policy-driven (rights-based) from
+  needs-driven (informal/market) water/sanitation access. Extracted as
+  **S689**.
+- **RF307BBEBB415** (Anand 2007, *Journal of Environment &
+  Development*, "Semantics of Success or Pragmatics of Progress?...
+  India's Progress With Drinking Water Supply"). **INCLUDE.**
+  Institutional mapping of Chennai's water utility (1919 municipal-law
+  assignment superseded by a 1978 state water board) combined with
+  household entitlements data showing large income-stratified access
+  inequality. Extracted as **S690**.
+- **R6884837E85A8** (Kay et al. 2007, *Journal of Water and Health*,
+  "The microbiological quality of seven large commercial private water
+  supplies in the United Kingdom"). **EXCLUDE (E03 — water quality
+  without access/governance).** Pure microbiological monitoring study.
+- **R5DEFEB3CB256** (Jenson 2008, *Politics & Society*, "Getting to
+  Sewers and Sanitation: Doing Public Health within Nineteenth-Century
+  Britain's Citizenship Regimes"). **INCLUDE.** Historical-institutional
+  case study of the 1848 Public Health Act's governance design and its
+  documented effect of delaying mass household water/sewer connection
+  for the poor relative to wealthier households. Extracted as **S691**.
+- **R761657E447C4** (Perkins 2009, *Global Health Promotion*, "A
+  rights-based approach to accessing health determinants"). **EXCLUDE
+  (E05 — no empirical evidence).** First-person commentary on a single
+  NGO site visit; water access is a two-sentence anecdote among several
+  unrelated outcomes.
+- **RB6A1EB27E732** (Buckley 2011, *Environment and Urbanization*,
+  "Social inclusion in Mumbai: economics matters too"). **EXCLUDE (E05
+  — no empirical evidence).** Theoretical/economic commentary that
+  self-describes as "not a fine-grained empirical study."
+- **R1F58000B5617** (Kumara 2013, *Environment and Urbanization Asia*,
+  "Revisit the Debate on Issues of Metropolitan Governance... Water
+  Supply in Bangalore, India"). **INCLUDE.** Comparative institutional
+  performance study of a single metropolitan water board vs. ten
+  fragmented Urban Local Bodies, using benchmarking data on household-
+  and slum-level coverage, availability and cost recovery. Extracted
+  as **S692**. Not effect_sizes eligible (Pearson correlation matrix
+  and composite index, not a regression-based point estimate).
+- **R3C9D8DD0859C** (Chathukulam & Devavrathan 2014, *Journal of Health
+  Management*, "Applying Narrative and Quantitative Models... Gram
+  Panchayats in a Post-TSC Era from Kerala"). **INCLUDE.** Primary
+  field study (496 households, 28 schools, 32 anganwadis across 7
+  Gram Panchayats) of sanitation coverage under India's decentralized
+  Panchayati Raj governance and the TSC/Nirmal Gram Puraskar scheme.
+  Extracted as **S693**.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S686-S693, 683 →
+691 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (659 → 667 rows; E01 234 → 236, E03 22 → 23, E05 77 → 81, E06
+50 → 51). Duplicate audit (exact-DOI and record_id-in-extraction_note)
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,301 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,358/3,659 screened (691 include/667 exclude), 2,301
+open, 691 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-thirty-third full-text screening batch (4 Drive-retrieved PDFs: 1 include, 3 excludes)
+
 
 Four PDFs surfaced in the Google Drive retrieval inbox. All target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;
