@@ -3177,6 +3177,28 @@ evidence of anything.
   Running totals: 1,332/3,659 screened (678 include/654 exclude), 2,327
   open, 678 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-23, hundred-thirty-first full-text screening batch, 4
+  Drive-retrieved PDFs, 3 includes, 1 exclude.** Singh (2006, ethnographic
+  institutional case study of India's ARWSP statutory coverage criteria
+  and PRI site-selection, only 9 of 46 handpumps within SC/ST localities
+  despite formal coverage, S681); Singh (2006, companion ethnographic
+  case study of PRI/VWSC participation contradictions, hand-pump siting
+  denying access to SC/Jatav women despite formal representation, S682);
+  Avila Garcia (2006, historical-documentary institutional case study of
+  Morelia, Mexico across four centuries of legal water-rights frameworks,
+  89% household connection with 300 vs. under 100 lpcd wealthy/poor
+  disparity, S683) — all **INCLUDE**. Agnihotri (2008, empirical study of
+  land-acquisition/resettlement law and displacement impacts for an
+  irrigation project; no water-access outcome examined despite nominal
+  "potable water" framing) — **EXCLUDE (E04)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S681-S683, 678
+  → 681 rows each); `effect_sizes.csv` unchanged (34 rows);
+  `exclusion_log.csv` updated (654 → 655 rows; E04 59 → 60); duplicate
+  audit found no duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,323 open records); schema validation re-run clean.
+  Running totals: 1,336/3,659 screened (681 include/655 exclude), 2,323
+  open, 681 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3195,17 +3217,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,332 of the 3,659
-  Phase-5 includes have been assessed; 2,327 records have not yet been
+- Full-text screening itself is far from complete: 1,336 of the 3,659
+  Phase-5 includes have been assessed; 2,323 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,327
+  on the researcher supplying full-text PDFs. Six of those 2,323
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 678
+- Extraction (Phase 8) is caught up with screening completely — all 681
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  678 extracted studies** (a first 12-study partial pilot batch was
+  681 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

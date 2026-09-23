@@ -4,7 +4,57 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-thirtieth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-23 (latest) — Hundred-thirty-first full-text screening batch (4 Drive-retrieved PDFs: 3 includes, 1 exclude)
+
+Four PDFs surfaced in the Google Drive retrieval inbox. All target
+record_ids confirmed open with no prior `wrong_file_retrieved` history;
+titles and authors verified against the delivered PDFs before screening.
+
+- **R0D499B7D1D12** (Singh 2006, *Gender, Technology and Development*,
+  "Women, Society and Water Technologies: Lessons for Bureaucracy").
+  **INCLUDE.** Ethnographic institutional case study (162 women, 149
+  men, 12 FGDs across Madhya Pradesh, Bihar, Jharkhand, West Bengal)
+  documenting India's ARWSP statutory coverage criteria and PRI
+  site-selection process, showing only 9 of 46 handpumps installed
+  under the program actually fell within SC/ST localities despite
+  formal coverage criteria. Extracted as **S681**. Not effect_sizes
+  eligible (ethnographic design, descriptive counts).
+- **RDCEF86AF76DC** (Singh 2006, *Gender, Technology and Development*,
+  "Women's Participation in Local Water Governance: Understanding
+  Institutional Contradictions"). **INCLUDE.** Companion ethnographic
+  case study (fieldwork 2002-2004, 27 villages) documenting India's PRI
+  statutory framework (73rd Constitutional Amendment) and VWSC/WCWHC
+  participation structures, with two case studies of hand-pump siting
+  denying access to SC/Jatav women despite formal representation.
+  Extracted as **S682**. Not effect_sizes eligible (ethnographic
+  design, descriptive counts).
+- **RA1695DE0E546** (Avila Garcia 2006, *Environment & Urbanization*,
+  "Water, society and environment in the history of one Mexican
+  city"). **INCLUDE.** Historical-documentary institutional case study
+  of Morelia, Mexico across four centuries, documenting colonial Crown
+  water concessions (mercedes), post-revolutionary State water
+  nationalization, and 1990s legislation reform, with quantified
+  modern-era outcomes (89% household connection, 300 vs. under 100
+  lpcd wealthy/poor disparity). Extracted as **S683**. Not
+  effect_sizes eligible (historical-documentary design).
+- **R5807B67AFA98** (Agnihotri 2008, *Social Change*, "Resettlement
+  issues in water resources development: An empirical study of the
+  lower Suktel irrigation project, Orissa"). **EXCLUDE (E04 — wrong
+  outcome).** Empirical study of land-acquisition/resettlement policy
+  and displacement impacts for an irrigation project; despite the
+  project's nominal "potable water" framing, no water or sanitation
+  service-access outcome is examined anywhere in the study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S681-S683, 678 →
+681 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (654 → 655 rows; E04 59 → 60). Duplicate audit found no
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,323 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,336/3,659 screened (681 include/655 exclude), 2,323
+open, 681 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-thirtieth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
