@@ -4,7 +4,33 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-twenty-seventh full-text screening batch (2 Drive-retrieved PDFs: 1 include, 1 exclude)
+## 2026-09-23 (latest) — Hundred-twenty-eighth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **RD76AC7C9D711** (Matous & Ozawa 2010, *Field Methods*, "Measuring
+  Social Capital in a Philippine Slum"). **EXCLUDE (E01 — wrong
+  topic).** Social-capital measurement-instrument methodology paper
+  (position-generator survey tool development/validation); water-
+  connection access appears only as a brief illustrative validation
+  vignette demonstrating the instrument's real-life relevance, not as
+  the paper's object of study. Extends the established methodological-
+  contribution exclusion precedent (cf. Silva Rodriguez de San Miguel
+  et al. 2019).
+
+`extraction_database.csv`/`evidence_map.csv` unchanged (no new
+includes, 677 rows each). `effect_sizes.csv` unchanged (34 rows).
+`exclusion_log.csv` updated (652 → 653 rows; E01 230 → 231). Duplicate
+audit found no duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,329 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,330/3,659 screened (677 include/653 exclude), 2,329
+open, 677 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-twenty-seventh full-text screening batch (2 Drive-retrieved PDFs: 1 include, 1 exclude)
 
 Two PDFs surfaced in the Google Drive retrieval inbox. Both target
 record_ids confirmed open with no prior `wrong_file_retrieved` history;

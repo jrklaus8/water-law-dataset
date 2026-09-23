@@ -3135,6 +3135,19 @@ evidence of anything.
   Running totals: 1,329/3,659 screened (677 include/652 exclude), 2,330
   open, 677 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-23, hundred-twenty-eighth full-text screening batch, 1
+  Drive-retrieved PDF, 1 exclude.** Matous & Ozawa (2010, social-capital
+  measurement-instrument methodology paper; water-connection access is a
+  brief illustrative validation vignette, not the paper's object of
+  study) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` unchanged (no new
+  includes, 677 rows each); `effect_sizes.csv` unchanged (34 rows);
+  `exclusion_log.csv` updated (652 → 653 rows; E01 230 → 231); duplicate
+  audit found no duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,329 open records); schema validation re-run clean.
+  Running totals: 1,330/3,659 screened (677 include/653 exclude), 2,329
+  open, 677 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3153,10 +3166,10 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,329 of the 3,659
-  Phase-5 includes have been assessed; 2,330 records have not yet been
+- Full-text screening itself is far from complete: 1,330 of the 3,659
+  Phase-5 includes have been assessed; 2,329 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,330
+  on the researcher supplying full-text PDFs. Six of those 2,329
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
