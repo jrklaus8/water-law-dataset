@@ -3148,6 +3148,21 @@ evidence of anything.
   Running totals: 1,330/3,659 screened (677 include/653 exclude), 2,329
   open, 677 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-23, hundred-twenty-ninth full-text screening batch, 1
+  Drive-retrieved PDF, 1 include.** Ofer (2009, historical-archival/
+  oral-history institutional case study of Orcasitas, an illegal Madrid
+  shantytown negotiating formal water/sanitation infrastructure via a
+  1971 Neighborhood Association legalization and direct negotiation with
+  the Canal de Isabel II water-canal company, a primary 230-family
+  Ministry of Housing archival database, S680) — **INCLUDE**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S680, 677 → 678
+  rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  unchanged (no new excludes); duplicate audit found no duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,328 open records);
+  schema validation re-run clean.
+  Running totals: 1,331/3,659 screened (678 include/653 exclude), 2,328
+  open, 678 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3166,17 +3181,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,330 of the 3,659
-  Phase-5 includes have been assessed; 2,329 records have not yet been
+- Full-text screening itself is far from complete: 1,331 of the 3,659
+  Phase-5 includes have been assessed; 2,328 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Six of those 2,329
+  on the researcher supplying full-text PDFs. Six of those 2,328
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 677
+- Extraction (Phase 8) is caught up with screening completely — all 678
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  677 extracted studies** (a first 12-study partial pilot batch was
+  678 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

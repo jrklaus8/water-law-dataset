@@ -4,7 +4,36 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-twenty-eighth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
+## 2026-09-23 (latest) — Hundred-twenty-ninth full-text screening batch (1 Drive-retrieved PDF: 1 include)
+
+One PDF surfaced in the Google Drive retrieval inbox. Target record_id
+confirmed open with no prior `wrong_file_retrieved` history; title and
+authors verified against the delivered PDF before screening.
+
+- **R2C0C4B70308A** (Ofer 2009, *Journal of Urban History*, "La Guerra
+  de Agua: Notions of Morality, Respectability, and Community in a
+  Madrid Neighborhood"). **INCLUDE.** Historical-archival/oral-history
+  institutional case study of Orcasitas, an illegal Madrid shantytown
+  (1950s-1986), documenting the settlement's negotiated path to formal
+  water/sanitation infrastructure via the 1971 legalization of its
+  Neighborhood Association, direct negotiation with the Canal de Isabel
+  II water-canal company (1970 construction), and informal "stealing
+  water" workarounds later regularized by local officials, based on a
+  primary 230-family Ministry of Housing archival database and oral
+  history interviews. Extracted as **S680**. Not effect_sizes eligible
+  (qualitative archival/oral-history design, no quantified effect
+  estimate).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S680, 677 → 678
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+unchanged (no new excludes). Duplicate audit found no duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,328 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,331/3,659 screened (678 include/653 exclude), 2,328
+open, 678 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-twenty-eighth full-text screening batch (1 Drive-retrieved PDF: 1 exclude)
 
 One PDF surfaced in the Google Drive retrieval inbox. Target record_id
 confirmed open with no prior `wrong_file_retrieved` history; title and
