@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-ninth full-text screening batch (10 records, 3 includes, 6 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Two-hundredth full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Twenty-third batch from `new_batch_pool.json[220:230]`.
+
+- **RB67EF412F779** (Gomes & Hermans 2018, *Land Use Policy*, "Institutional
+  function and urbanization in Bangladesh: How peri-urban communities respond
+  to changing environments"). **INCLUDE.** Institutional-change case study of
+  two peri-urban Khulna communities finding that formal licensing discretion
+  under a WATSAN tube-well quota system (Matumdanga's repeated licence
+  failures) versus successful constitutional/statutory legal challenge
+  against a competing groundwater-abstraction project (Phultala, via BELA
+  litigation) directly determined divergent drinking-water access outcomes.
+  Extracted as **S1007**.
+- **RB26ACD9EDC54** (Morales & Zambrano 2018, *Poblacion y Salud en
+  Mesoamerica*, "Analisis de la gestion del saneamiento en el asentamiento
+  informal Bajo Los Anonos..."). **INCLUDE.** Mixed-methods survey and
+  wastewater-sampling study documenting that informal ('precario') land
+  tenure and eviction risk discourage household investment in sanitation
+  infrastructure, corroborated by DBO5 sampling exceeding regulatory
+  discharge limits, Costa Rica. Extracted as **S1008**.
+- **R26D33D07A9AC** (Das 2016, *Environment and Planning A*, "Uncharted
+  waters: Navigating new configurations for urban service delivery in
+  India"). **INCLUDE.** Cross-case comparative study of the Community
+  Managed Water Supply Scheme in three Madhya Pradesh cities finding that
+  decentralization-law-based governance arrangements (CWASC-municipal
+  relationship quality, intermediary presence, notified-slum status)
+  produced starkly divergent water-connection and cost-recovery outcomes
+  across otherwise comparable cities. Extracted as **S1009**.
+- **R29678D9CBF7A** (Zekri 2008, "Using economic incentives and regulations
+  to reduce seawater intrusion in the Batinah coastal area of Oman") —
+  **EXCLUDE (E01).** Agricultural groundwater-abstraction quota/subsidy
+  study for irrigation; basin-scale resource-allocation, not household
+  domestic water access.
+- **RB5516429E2DC** (Mkondiwa, Jumbe & Wiyo 2013, "Poverty–Lack of Access to
+  Adequate Safe Water Nexus: Evidence from Rural Malawi") — **EXCLUDE
+  (E01).** Canonical Correlation Analysis of poverty and water-access
+  correlation; socioeconomic-determinants study, no legal/institutional
+  mechanism tested.
+- **RB57130FC082E** (Massarutto & Ermano 2013, "Drowned in an inch of
+  water: how poor regulation has weakened the Italian water reform") —
+  **EXCLUDE (E01).** National regulatory-design critique of Italy's 1994
+  water-sector reform; no documented household-level access-inequality
+  mechanism (confirmed via full-text search).
+- **RB67D8330DA11** (Adams, Boateng & Amoyaw 2015, "Socioeconomic and
+  Demographic Predictors of Potable Water and Sanitation Access in Ghana")
+  — **EXCLUDE (E01).** GLM regression of wealth/education/region predictors
+  of access using DHS data; no legal/institutional variable tested.
+- **RB407CBC6296A** (McKay & Bjornlund 2001, "Recent Australian Market
+  Mechanisms as a Component of an Environmental Policy...") — **EXCLUDE
+  (E01).** Broad review of COAG water-reform legal instruments across
+  rural irrigation markets and urban pricing; predominantly basin-scale
+  irrigation-water-market allocation with a general urban-equity literature
+  synthesis rather than an original documented access-inequality mechanism.
+- **R27F9A4C5890B** (Musembi 2014, "How participation as a right enhances
+  realization of the rights to water and sanitation") — **EXCLUDE (E05).**
+  Normative/doctrinal argument article on participation as a human right;
+  no original empirical data collection.
+- **R276F53A7E8D1** (Kohlitz, Chong & Willetts 2016, "Monitoring the human
+  rights to water and sanitation: An analysis of policy in Pacific island
+  countries") — **EXCLUDE (E01).** Document-analysis study of national
+  HRWS-monitoring policy design quality across 13 Pacific island countries;
+  studies monitoring-policy design, not documented access outcomes.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1007-S1009 added;
+1,004 → 1,007 rows each). `effect_sizes.csv` unchanged (45 rows): all
+three includes are qualitative/mixed-methods comparative case studies with
+no regression-based estimate isolating a legal/institutional mechanism's
+effect on a Family A/B/C water-access outcome. `exclusion_log.csv` updated
+(934 → 941 rows; E01 384 → 390, E05 123 → 124). Duplicate audit (exact-DOI
++ study_id) found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (1,711 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,948/3,659 screened (1,007 include/941 exclude), 1,711
+open, 1,007 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-ninth full-text screening batch (10 records, 3 includes, 6 excludes, 1 wrong_file_retrieved)
 
 Twenty-second batch from `new_batch_pool.json[210:220]`.
 

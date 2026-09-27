@@ -5349,6 +5349,47 @@ evidence of anything.
   1,721 open, 1,004 extracted studies, 45 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundredth batch (10 records, 2026-09-27), twenty-third batch
+  from the 543-record pool.** `new_batch_pool.json[220:230]`. Gomes &
+  Hermans (2018, institutional-change case study finding WATSAN
+  licensing discretion versus successful constitutional/statutory legal
+  challenge determined divergent groundwater-access outcomes across two
+  peri-urban communities, Khulna, Bangladesh, S1007) — **INCLUDE**.
+  Morales & Zambrano (2018, mixed-methods survey/wastewater-sampling
+  study finding informal tenure and eviction risk discourage sanitation
+  investment, corroborated by DBO5 sampling, Costa Rica, S1008) —
+  **INCLUDE**. Das (2016, cross-case comparative study finding
+  decentralization-law-based governance arrangements produced divergent
+  water-connection/cost-recovery outcomes across three otherwise
+  comparable Indian cities, S1009) — **INCLUDE**. Zekri (2008, E01
+  Oman agricultural groundwater-abstraction quota/subsidy study for
+  irrigation) — **EXCLUDE (E01)**. Mkondiwa, Jumbe & Wiyo (2013, E01
+  Canonical Correlation Analysis of poverty-water access, rural Malawi)
+  — **EXCLUDE (E01)**. Massarutto & Ermano (2013, E01 national
+  regulatory-design critique of Italy's 1994 water reform, no
+  documented access-inequality mechanism) — **EXCLUDE (E01)**. Adams,
+  Boateng & Amoyaw (2015, E01 GLM regression of socioeconomic
+  predictors of water/sanitation access, Ghana DHS data) — **EXCLUDE
+  (E01)**. McKay & Bjornlund (2001, E01 broad review of Australian
+  COAG water-reform instruments across rural irrigation markets and
+  urban pricing) — **EXCLUDE (E01)**. Musembi (2014, E05
+  normative/doctrinal argument on participation as a human right, no
+  original empirical data) — **EXCLUDE (E05)**. Kohlitz, Chong &
+  Willetts (2016, E01 document-analysis of HRWS-monitoring policy
+  design across 13 Pacific island countries) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1007-S1009,
+  1,004 → 1,007 rows each); `effect_sizes.csv` unchanged (45 rows: all
+  three includes are qualitative/mixed-methods comparative case
+  studies, none report a regression-based estimate isolating a legal/
+  institutional mechanism's effect on a Family A/B/C water-access
+  outcome); `exclusion_log.csv` updated (934 → 941 rows; E01 384 → 390,
+  E05 123 → 124); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,711 open
+  records); schema validation re-run clean.
+  Running totals: 1,948/3,659 screened (1,007 include/941 exclude),
+  1,711 open, 1,007 extracted studies, 45 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
