@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-eighth full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-forty-ninth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RDAAEB54CE4DE** (Singh, Wickenberg, Astrom & Hyden 2008, *Development*,
+  "Children's Right to Water as a Contested Domain... India"). **INCLUDE.**
+  Field data (9 of 44 public handpumps sited in underprivileged-caste
+  localities) show the water-supply programme's caste-blind numerical
+  siting criterion producing de facto caste-based exclusion from formally
+  "covered" public water sources. Extracted as **S737**.
+- **RDA2517B5D58E** (Munala & Kainz 2012, *Development in Practice*,
+  "Managing interactions in the informal water market... Kisumu, Kenya").
+  **INCLUDE.** Weak regulatory enforcement/inter-agency coordination over
+  the corporatised utility KIWASCO allows informal water cartels to control
+  kiosk access and pricing in informal settlements. Extends Ranganathan/
+  Bangalore water-mafia precedent (S706). Extracted as **S738**.
+- **RD9F8791BF7D2** (Sutherland, Hordijk, Lewis, Meyer & Buthelezi 2014,
+  *Environment and Urbanization*, "Water and sanitation provision in
+  eThekwini Municipality... spatially differentiated approach"). **INCLUDE.**
+  Constitutional right-to-water/Free Basic Water Policy framework and
+  Municipal Structures Act devolution combine with a deliberate spatial-
+  differentiation service model producing restricted vs. full water access
+  by settlement type. Extracted as **S739**.
+- **RD8B9CAF4C5DA** (Asthana 2003, *Journal of Development Studies*,
+  "Decentralisation and Supply Efficiency... Rural Water Supply in Central
+  India"). **INCLUDE.** Genuine regression isolating centralised vs.
+  decentralised utility management (n=1,708) with significant coefficients
+  on operating-expense/asset-utilisation ratios; not effect_sizes eligible
+  since the outcomes are production/cost-efficiency metrics, not a
+  household/community water-access outcome. Extracted as **S740**.
+- **RD8AD4E521D45** (Baer & Gerlak 2015, *Third World Quarterly*,
+  "Implementing the human right to water and sanitation... global and local
+  discourses"). **INCLUDE.** Comparative discourse analysis finds the
+  dominant global HRtWS implementation approach fails to address state
+  corruption or peri-urban residents' access needs, per Bolivia case study.
+  Extracted as **S741**.
+- **RDCB899855EE9** (Wafer 2012, *Urban Forum*, "Discourses of
+  Infrastructure and Citizenship in Post-Apartheid Soweto") — **EXCLUDE
+  (E01).** Citizenship-discourse/protest-politics analysis centred on
+  electricity disconnections; water (Phiri prepaid-metre case) mentioned
+  only in passing.
+- **RDB768A284CCF** (Lee 2014, *IJURR*, "The Changing Nature of Border,
+  Scale and the Production of Hong Kong's Water Supply System") —
+  **EXCLUDE (E01).** Macro-scale border-studies/political-geography
+  analysis of transboundary bulk water supply, not a household/community
+  legal-access mechanism.
+- **RDA19C702AB54** (Willoughby-Herard 2014, *Cultural Dynamics*, "'The
+  only one who was thought to know the pulse of the people'... Black
+  women's politics") — **EXCLUDE (E05).** Literary/cultural-studies
+  genealogy analyzing three works of fiction; no empirical water-access
+  data.
+- **RD9AA2E70843A** (Choguill 1994, *Third World Planning Review*,
+  "Implementing Urban Development Projects... Criteria for Success") —
+  **EXCLUDE (E01).** Generic public-administration implementation-theory
+  framework; the Honduras water case is one of two illustrations, no
+  specific legal/access-barrier mechanism analyzed.
+- **RD897F797A040** (Roth et al. 2004, *Science, Technology, & Human
+  Values*, "Those Who Get Hurt Aren't Always Being Heard... Scientist-
+  Resident Interactions over Community Water") — **EXCLUDE (E01).**
+  STS "boundary work" analysis of scientific-expertise-vs-local-knowledge
+  discourse in a Canadian water-main-extension dispute.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S737-S741, 734 →
+739 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (701 → 706 rows; E01 263 → 267, E05 84 → 85). Duplicate audit found
+no new duplicates. `full_text_retrieval_queue.csv` regenerated (2,214 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,445/3,659 screened (739 include/706 exclude), 2,214
+open, 739 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-eighth full-text screening batch (10 records, 7 includes, 3 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
