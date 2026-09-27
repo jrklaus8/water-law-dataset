@@ -6431,6 +6431,49 @@ evidence of anything.
   1,445 open, 1,127 extracted studies, 54 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-eighth batch (10 records, 2026-09-27),
+  fifty-first batch from the 543-record pool.** `new_batch_pool.json[500:510]`.
+  Rahaman, Everett & Neu (2007, governmentality/institutional-
+  sociology study of accounting technologies in Ghana's water-
+  privatization debate, 34 interviews, S1130) — **INCLUDE**.
+  Subramaniam (2014, National Water Policy analysis + Tarun Bharat
+  Sangh "water parliament" institutional case study, differential
+  participation by caste/class/gender, Rajasthan, S1131) —
+  **INCLUDE**. Manikutty (1997, matched comparative study of Ward
+  Water Committee participatory-governance mechanism, n=80x2, Kerala,
+  S1132) — **INCLUDE**. McFarlane & Desai (2015, ethnography of
+  notified/non-notified legal slum status and residency-cutoff
+  eligibility producing differential water/sanitation entitlements,
+  Mumbai, S1133) — **INCLUDE**. Das (2015, comparative case study of
+  notified-slum eligibility/cost-recovery mechanism, n=422 survey,
+  Madhya Pradesh, S1134) — **INCLUDE**. Wutich (2009, panel survey of
+  community-membership eligibility institution excluding renters from
+  a tapstand system, 72 households x 5 rounds, Cochabamba, S1135) —
+  **INCLUDE**. Yacoob (1990, E12 policy essay/literature review on
+  cost-recovery methodology, no original case study) — **EXCLUDE
+  (E12)**. Medilanski et al. (2006, E06 engineering/technology-
+  adoption feasibility survey of decentralized sanitation
+  alternatives, Kunming) — **EXCLUDE (E06)**. Arar (1998, E04
+  biocultural epidemiological study, childhood diarrhea as primary
+  outcome, Palestinians in Jordan) — **EXCLUDE (E04)**. Target record
+  Fombe & Bih 2014 (surface water pollution, Kumba, Cameroon) —
+  **wrong_file_retrieved**: delivered PDF was instead Kimengsi & Fogwe
+  2017 ("Urban Green Development Planning," Bamenda City, Cameroon),
+  confirmed by title metadata and full-text content; not screened,
+  file not moved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1130-S1135,
+  1,127 → 1,133 rows each); `effect_sizes.csv` unchanged (54 rows --
+  all six includes are qualitative/descriptive institutional case
+  studies, none regression-based); `exclusion_log.csv` updated (1,087
+  → 1,090 rows; E04 75 → 76, E06 103 → 104, E12 44 → 45); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,436 open records,
+  incl. 19 wrong_file_retrieved records); schema validation re-run
+  clean.
+  Running totals: 2,223/3,659 screened (1,133 include/1,090 exclude),
+  1,436 open, 1,133 extracted studies, 54 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

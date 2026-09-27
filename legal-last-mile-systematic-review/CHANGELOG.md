@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-seventh full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-eighth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+
+Fifty-first batch from `new_batch_pool.json[500:510]`.
+
+- **R0A72E874D143** (Rahaman, Everett & Neu 2007, "Accounting and the
+  move to privatize water services in Africa," AAAJ, Ghana).
+  **INCLUDE.** Governmentality/institutional-sociology study (34
+  interviews, 2,300+ pages archival) of accounting technologies used
+  to justify and contest a proposed GWC lease privatization. →
+  **S1130**.
+- **R10C784AFAE14** (Subramaniam 2014, "Neoliberalism and water
+  rights: The case of India," Current Sociology). **INCLUDE.**
+  National Water Policy analysis + embedded case study of Tarun
+  Bharat Sangh's Arvari Sansad ("water parliament"), a documented
+  water-governance institution with differential participation by
+  caste, class and gender. → **S1131**.
+- **R0CD725BAD368** (Manikutty 1997, "Community Participation: So
+  What?", Development Policy Review, Kerala). **INCLUDE.** Matched
+  comparative study (n=80x2) of two rural water/sanitation projects
+  differing only in a Ward Water Committee participatory-governance
+  mechanism; statistically significant differences in tap-functioning
+  (92% vs. 74%), cost recovery (25% vs. <10%) and satisfaction. →
+  **S1132**.
+- **R0CC979E7B4D9** (McFarlane & Desai 2015, "Sites of entitlement,"
+  Environment and Urbanization, Mumbai). **INCLUDE.** Ethnography of
+  two informal settlements documenting how notified/non-notified
+  legal status under the Maharashtra Slum Act 1971 and a pre-1995
+  residency cutoff produce starkly differential water/sanitation
+  entitlements. → **S1133**.
+- **R150C5FBFA557** (Das 2015, "The urban sanitation conundrum,"
+  Environment and Urbanization, Madhya Pradesh). **INCLUDE.**
+  Comparative case study (n=422 survey) of Community Managed
+  Sewerage Schemes in notified slums across two cities; a formal
+  eligibility/cost-recovery mechanism produces sharply different
+  sanitation outcomes (63% vs. 21% open defecation). → **S1134**.
+- **R13E85C59B4CA** (Wutich 2009, "Water Scarcity and the
+  Sustainability of a Common Pool Resource Institution in the Urban
+  Andes," Human Ecology, Cochabamba). **INCLUDE.** Panel survey
+  (72 households, 5 rounds) of a community-membership eligibility
+  institution (landowner/proxy-member vs. renter status) formally
+  excluding renters from a community tapstand system. → **S1135**.
+- **R0C4B74812D98** (Yacoob 1990, community self-financing of water
+  supply and sanitation, Health Policy and Planning). **EXCLUDE
+  (E12).** Policy essay/literature review on cost-recovery
+  methodology, no institutional-mechanism case study of its own.
+- **R013E7C57E2C0** (Medilanski et al. 2006, wastewater management
+  stakeholder perspective, Kunming, Environment and Urbanization).
+  **EXCLUDE (E06).** Engineering/technology-adoption feasibility
+  survey of decentralized sanitation alternatives.
+- **R12527DF38787** (Arar 1998, cultural responses to water shortage,
+  Palestinians in Jordan, Human Organization). **EXCLUDE (E04).**
+  Biocultural epidemiological study with childhood diarrhea as
+  primary outcome.
+- **R110B658A4045** (target: Fombe & Bih 2014, surface water
+  pollution, Kumba, Cameroon). **WRONG_FILE_RETRIEVED.** Delivered
+  PDF content (verified via title metadata and full text) is an
+  entirely different paper: Kimengsi & Fogwe 2017, "Urban Green
+  Development Planning... Bamenda City, Cameroon" (International
+  Journal of Global Sustainability) — different authors, title,
+  journal, year and topic. Not screened; Drive file not moved.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1130-S1135,
+1,127 → 1,133 rows each); `effect_sizes.csv` unchanged (54 rows --
+all six includes are qualitative/descriptive institutional case
+studies, none regression-based); `exclusion_log.csv` updated (1,087
+→ 1,090 rows; E04 75 → 76, E06 103 → 104, E12 44 → 45); duplicate
+audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,436 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,223/3,659 screened (1,133 include/1,090 exclude),
+1,436 open (including 19 wrong_file_retrieved), 1,133 extracted
+studies, 54 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-seventh full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Fiftieth batch from `new_batch_pool.json[490:500]`.
 
