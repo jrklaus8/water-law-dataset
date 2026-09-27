@@ -4,7 +4,65 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-fourth full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-fifth full-text screening batch (10 records, 8 includes, 2 excludes)
+
+Forty-eighth batch from `new_batch_pool.json[470:480]`.
+
+- **R46096F5F6F6C** (Narzetti & Marques 2021, "Access to Water and
+  Sanitation Services in Brazilian Vulnerable Areas," Water/MDPI).
+  **INCLUDE.** Informal settlements excluded from urban WSS
+  statistics ("nobody's land"); regulatory reform needed for
+  universalization. → **S1113**.
+- **R2428752DF562** (Safari et al. 2019, Njombe sanitation campaign
+  lessons, J. Water Sanit. Hyg. Dev., Tanzania). **INCLUDE.** Village
+  WASH by-laws + SMART enforcement drove latrine coverage 7.5%→99.8%
+  (2011-2018). → **S1114**.
+- **R01025F73B0E2** (Danert et al. 2003, private sector rural water/
+  sanitation Uganda, J. Int. Dev.). **INCLUDE.** Multi-district
+  stakeholder-interview analysis of decentralization/privatization
+  policy shaping private-sector delivery. → **S1115**.
+- **R800E2F068095** (Mottelson 2020, informal land supply East
+  Africa, Land/MDPI). **INCLUDE.** Government repression of informal
+  development linked to lower water/sanitation access across 4
+  cities. → **S1116**.
+- **R235E42D59F53** (Amaechina et al. 2020, EfD COVID-19 policy
+  responses, Water Economics and Policy, 14 countries). **INCLUDE.**
+  Multi-country documentation of disconnection moratoriums,
+  reconnection programs, subsidy eligibility criteria. → **S1117**.
+- **RA5E555B4E7F8** (Mawani 2019, religion and municipal water
+  access, Water/MDPI, Ahmedabad). **INCLUDE.** Town planning scheme,
+  premised on illegal-construction status, mediates water access in
+  Muslim-majority areas. → **S1118**.
+- **R89B77B5F6948** (Silvestri et al. 2018, transition management
+  WASH informal settlements, Sustainability/MDPI). **INCLUDE.**
+  57-interview/2-workshop study documenting landownership/governance-
+  capacity mechanisms (incl. KCCA exclusion of Kawaala settlement
+  from a water well). → **S1119**.
+- **R001780FF5AE4** (Yeboah 2006, subaltern strategies water
+  privatization Ghana, Geographical Journal). **INCLUDE.**
+  Service-area reclassification (urban→rural CWSD) on an explicit
+  "ability to pay" criterion. → **S1120**.
+- **R000FED66EADD** (Akiwumi 2015, Sierra Leone water reform,
+  Politics Groups and Identities). **EXCLUDE (E05).** Doctrinal
+  legal-text analysis, no empirical data collection.
+- **R006EEFF9CD0E** (Taylor & Trentmann 2011, "Liquid Politics,"
+  Past & Present). **EXCLUDE (E01).** Victorian-era propertied-
+  ratepayer tariff-politics history, not a marginalized-population
+  exclusion mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1113-S1120,
+1,110 → 1,118 rows each); `effect_sizes.csv` unchanged (52 rows --
+all eight includes are qualitative/comparative institutional case
+studies without regression-based estimates); `exclusion_log.csv`
+updated (1,075 → 1,077 rows; E01 474 → 475, E05 132 → 133); duplicate
+audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,464 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,195/3,659 screened (1,118 include/1,077 exclude),
+1,464 open, 1,118 extracted studies, 52 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-fourth full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Forty-seventh batch from `new_batch_pool.json[460:470]`.
 

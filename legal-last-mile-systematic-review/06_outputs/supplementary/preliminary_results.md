@@ -6319,6 +6319,45 @@ evidence of anything.
   1,474 open, 1,110 extracted studies, 52 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-fifth batch (10 records, 2026-09-27),
+  forty-eighth batch from the 543-record pool.** `new_batch_pool.json[470:480]`.
+  Narzetti & Marques (2021, informal settlements excluded from urban
+  WSS statistics, regulatory reform needed for universalization,
+  Brazil, S1113) — **INCLUDE**. Safari et al. (2019, village WASH
+  by-laws + SMART enforcement drove latrine coverage 7.5%->99.8%,
+  Njombe, Tanzania, S1114) — **INCLUDE**. Danert et al. (2003,
+  multi-district stakeholder analysis of decentralization/
+  privatization policy shaping private-sector rural water delivery,
+  Uganda, S1115) — **INCLUDE**. Mottelson (2020, government repression
+  of informal development linked to lower water/sanitation access
+  across 4 East African cities, S1116) — **INCLUDE**. Amaechina et al.
+  (2020, multi-country documentation of COVID-19 disconnection
+  moratoriums/reconnection programs/subsidy eligibility criteria, 14
+  countries, S1117) — **INCLUDE**. Mawani (2019, town planning scheme
+  premised on illegal-construction status mediates water access in
+  Muslim-majority Ahmedabad, S1118) — **INCLUDE**. Silvestri et al.
+  (2018, 57-interview/2-workshop study of landownership/governance-
+  capacity mechanisms incl. KCCA exclusion of Kawaala settlement from
+  a water well, Tanzania/Ghana/Uganda, S1119) — **INCLUDE**. Yeboah
+  (2006, service-area reclassification urban->rural CWSD on an
+  explicit "ability to pay" criterion, Ghana, S1120) — **INCLUDE**.
+  Akiwumi (2015, E05 doctrinal legal-text analysis, no empirical data,
+  Sierra Leone water reform) — **EXCLUDE (E05)**. Taylor & Trentmann
+  (2011, E01 Victorian-era propertied-ratepayer tariff-politics
+  history, not a marginalized-population exclusion mechanism,
+  "Liquid Politics") — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1113-S1120,
+  1,110 → 1,118 rows each); `effect_sizes.csv` unchanged (52 rows --
+  all eight includes are qualitative/comparative institutional case
+  studies without regression-based estimates); `exclusion_log.csv`
+  updated (1,075 → 1,077 rows; E01 474 → 475, E05 132 → 133); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,464 open records);
+  schema validation re-run clean.
+  Running totals: 2,195/3,659 screened (1,118 include/1,077 exclude),
+  1,464 open, 1,118 extracted studies, 52 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
