@@ -4,7 +4,67 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-third full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R7D0B0BE35E0D** (Anand 2011, *Cultural Anthropology*, "PRESSURE:
+  The PoliTechnics of Water Supply in Mumbai"). **INCLUDE.** 22-month
+  ethnographic study of a formal 1995 settlement-cutoff eligibility
+  rule for water connections and its systematic circumvention via
+  forged documentation and discretionary departmental accommodation.
+  Extracted as **S826**.
+- **R7ECF02CF6B42** (Schnegg & Kiaka 2019, *Economic Anthropology*,
+  "The economic value of water... Namibia"). **INCLUDE.** Ethnographic
+  case study of Community-Based Management devolution of rural water
+  infrastructure and pricing, documenting community-level institutional
+  breakdown. Extracted as **S827**.
+- **R7FBDF527DD60** (dos Santos, Gupta, Pouw & Schwartz 2019, *Water
+  Policy*, "Public water supply and sanitation policies and inclusive
+  development of the urban poor in Brazil"). **INCLUDE.** Original
+  six-indicator comparative analysis of two national WatSan laws'
+  tenure/housing-access provisions. Extracted as **S828**.
+- **R7F994C395052** (Wutich, Brewis, York & Stotts 2013, *Society &
+  Natural Resources*, "Rules, Norms, and Injustice: A Cross-Cultural
+  Study of Perceptions of Justice in Water Institutions"). **INCLUDE.**
+  135-interview cross-cultural study of institutional rules/norms in
+  water-access justice perceptions across Bolivia, Fiji, Arizona, and
+  New Zealand. Extracted as **S829**.
+- **R7952A5F79DF3** (Basnet, book review of Cahill-Ripley, "The Human
+  Right to Water... Occupied Palestinian Territories") — **EXCLUDE
+  (E05).** Book review, not original research.
+- **R7A71F4BE9DFF** (Ferreyra, de Loe & Kreutzwiser 2008, "Imagined
+  communities, contested watersheds... Ontario") — **EXCLUDE (E01).**
+  Agricultural water-quality-protection policy-network governance
+  study.
+- **R7C907BED6D11** (Fontana & Elson 2014, "Public policies on water
+  provision and... ECEC... unpaid work?") — **EXCLUDE (E05).**
+  Policy-advocacy synthesis of secondary statistics.
+- **R7F3951051E8D** (Hecker, Watzold & Markwardt 2020, "Spotlight on
+  Spatial Spillovers... Wastewater Treatment in Mexican
+  Municipalities") — **EXCLUDE (E01).** Spatial-econometric study of
+  environmental-policy diffusion between municipalities.
+- **R7E8BD25A85A4** (Young & Keil 2005, "Urinetown or Morainetown?...
+  Toronto") — **EXCLUDE (E01).** Political-ecology analysis of
+  privatization debate and sprawl/watershed conservation politics.
+- **R7D58C754450F** (Book review of Shannon & De Meulder (eds.),
+  "Water Urbanisms 2 - East") — **EXCLUDE (E05).** Book review of a
+  design/architecture volume.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S826-S829, 823 →
+827 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (761 → 767 rows; E01 299 → 302, E05 95 →
+98). Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,065 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,594/3,659 screened (827 include/767 exclude), 2,065
+open, 827 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-third full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

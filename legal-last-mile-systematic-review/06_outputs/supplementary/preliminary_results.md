@@ -4003,6 +4003,36 @@ evidence of anything.
   Running totals: 1,584/3,659 screened (823 include/761 exclude), 2,075
   open, 823 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-fourth full-text screening batch, 10
+  records, 4 includes, 6 excludes.** Anand (2011, ethnographic study of
+  a 1995 settlement-cutoff eligibility rule and its circumvention,
+  Mumbai water supply, S826) — **INCLUDE**. Schnegg & Kiaka (2019,
+  Community-Based Management devolution and pricing, institutional
+  breakdown, Namibia, S827) — **INCLUDE**. dos Santos et al. (2019,
+  comparative six-indicator analysis of two national WatSan laws'
+  tenure/housing provisions, Brazil, S828) — **INCLUDE**. Wutich et
+  al. (2013, 135-interview cross-cultural study of institutional
+  rules/norms in water-access justice, Bolivia/Fiji/Arizona/New
+  Zealand, S829) — **INCLUDE**. Basnet (book review, Cahill-Ripley's
+  Occupied Palestinian Territories water-rights book) — **EXCLUDE
+  (E05)**. Ferreyra, de Loe & Kreutzwiser (2008, agricultural water-
+  quality-protection governance study, Ontario) — **EXCLUDE (E01)**.
+  Fontana & Elson (2014, policy-advocacy synthesis on water/ECEC
+  unpaid work) — **EXCLUDE (E05)**. Hecker, Watzold & Markwardt (2020,
+  spatial-econometric wastewater-policy-diffusion study, Mexico) —
+  **EXCLUDE (E01)**. Young & Keil (2005, political-ecology analysis of
+  Toronto's privatization debate) — **EXCLUDE (E01)**. Book review of
+  Shannon & De Meulder, "Water Urbanisms 2 - East" — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S826-S829, 823 →
+  827 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (761 → 767 rows; E01 299 → 302, E05 95 →
+  98); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,065 open records);
+  schema validation re-run clean.
+  Running totals: 1,594/3,659 screened (827 include/767 exclude), 2,065
+  open, 827 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 

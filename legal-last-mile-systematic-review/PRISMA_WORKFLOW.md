@@ -98,7 +98,7 @@ was fast relative to the volume — documented in `CHANGELOG.md` and the
 Phase 5 row above so it's visible to anyone assessing this review's rigor,
 including in any manuscript reporting this step. Phase 6 (full-text
 screening) is now live and ongoing: of the 3,659-record included set,
-**1,584 have been screened (823 include / 761 exclude)**, with the researcher
+**1,594 have been screened (827 include / 767 exclude)**, with the researcher
 supplying full-text PDFs on a rolling basis expected to continue for over
 a month — see the Phase 6 row above for the exclusion-reason breakdown.
 Phase 7 (pilot extraction) was superseded by the researcher's explicit
