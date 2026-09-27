@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-second full-text screening batch (10 records, 8 includes, 2 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-third full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R49BC05123474** (Whittington, Lauria & Mu 1991, *World
+  Development*, "A Study of Water Vending and Willingness to Pay for
+  Water in Onitsha, Nigeria"). **INCLUDE.** Seminal household/market
+  survey documenting a public utility's coverage of only ~8,000
+  households and the resulting informal water-vending market
+  collecting 24x the utility's dry-season revenue. Extracted as
+  **S821**.
+- **R3BE9653C9842** (Nolan, Bloom & Subbaraman 2018, IZA DP No. 10639,
+  "Legal Status and Deprivation in India's Urban Slums: An Analysis of
+  Two Decades of National Sample Survey Data"). **INCLUDE.** Rigorous
+  multilevel regression (2,901 slums, 4 survey waves) finding slum
+  legal-notification status the strongest predictor of a basic-
+  services deprivation index (beta=-0.768/year notified, 95% CI
+  -0.914 to -0.622, p<0.001). Extracted as **S822**; NOT added to
+  effect_sizes.csv because the regression outcome is a composite
+  index (water+sanitation+schools+health centers), not isolated to
+  water access, per the S794 Vasquez precedent.
+- **R2D16CA4C51A0** (Alvez Marin 2016, *Windsor Yearbook of Access to
+  Justice*, "Constitutional Challenges of the South: Indigenous Water
+  Rights in Chile"). **INCLUDE.** Constitutional/legal-doctrinal
+  analysis of Chile's 1980 water-commodification provision in
+  conflict with Indigenous (Mapuche) water rights. Extracted as
+  **S823**.
+- **R003523574784** (Cook & Wei 2002, *Development*, "The Anomalous
+  Nature of Development Success: A Case Study from China"). **INCLUDE.**
+  Government rainwater-harvesting programme case study documenting
+  village/household eligibility and exclusion mechanisms (remoteness,
+  official oversight failures, affordability of required
+  contribution). Extracted as **S824**.
+- **R7B1FE35F1E88** (Perumal 2011, *Agenda*, "Women's socio-economic
+  [in]equality and gender [in]justice: Feminist reflections on...
+  Mazibuko and Others v City of Johannesburg"). **INCLUDE.** Detailed
+  legal-doctrinal analysis of the landmark Mazibuko prepayment-meter/
+  Free Basic Water Policy litigation through three court levels.
+  Extracted as **S825**.
+- **R457A96841C7E** (Parkinson & Tayler 2003, "Decentralized
+  wastewater management in peri-urban areas in low-income countries")
+  — **EXCLUDE (E06).** Technical/policy technology-options review, no
+  original empirical data.
+- **R323554A8B2B1** (Bah 1992, "Community Participation and Rural
+  Water Supply Development in Sierra Leone") — **EXCLUDE (E01).** NGO
+  project community self-help model case study, no government/legal
+  mechanism.
+- **R2EDB83537DF8** (Frumkin 2005, "Health, Equity, and the Built
+  Environment," guest editorial) — **EXCLUDE (E01).** General built-
+  environment opinion editorial, no water content, not empirical
+  research.
+- **R1360D12AADAC** (Moller & Radloff 2010, "Monitoring Perceptions of
+  Social Progress and Pride of Place in a South African Community") —
+  **EXCLUDE (E01).** Broad quality-of-life survey; water is one minor
+  descriptive indicator among many.
+- **R04002DCC0AAF** (Bartlett 2003, "Water, sanitation and urban
+  children: the need to go beyond 'improved' provision") — **EXCLUDE
+  (E05).** Literature-review synthesis of child-health effects, no
+  original data or institutional mechanism analysis.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S821-S825, 818 →
+823 rows each). `effect_sizes.csv` unchanged (38 rows; the S822 India
+slums regression judged not eligible, see above). `exclusion_log.csv`
+updated (756 → 761 rows; E01 296 → 299, E05 94 → 95, E06 62 → 63).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,075 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,584/3,659 screened (823 include/761 exclude), 2,075
+open, 823 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-second full-text screening batch (10 records, 8 includes, 2 excludes)
 
 Continuing through the Antigravity delivery folder (records previously
 marked `not_retrievable`, now delivered). All 10 target record_ids

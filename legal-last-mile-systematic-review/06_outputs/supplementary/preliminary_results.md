@@ -3972,6 +3972,37 @@ evidence of anything.
   Running totals: 1,574/3,659 screened (818 include/756 exclude), 2,085
   open, 818 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-third full-text screening batch, 10
+  records, 5 includes, 5 excludes.** Whittington, Lauria & Mu (1991,
+  seminal household/market survey, public-utility coverage gap and
+  informal water-vending market, Onitsha Nigeria, S821) —
+  **INCLUDE**. Nolan, Bloom & Subbaraman (2018, multilevel regression,
+  2,901 slums, legal notification status strongest predictor of
+  services deprivation, beta=-0.768/year p<0.001, India, S822) —
+  **INCLUDE**, not added to effect_sizes.csv (composite deprivation
+  outcome, not isolated to water access). Alvez Marin (2016,
+  constitutional water-commodification vs. Indigenous water rights,
+  Chile, S823) — **INCLUDE**. Cook & Wei (2002, government rainwater-
+  harvesting programme eligibility/exclusion mechanisms, Gansu China,
+  S824) — **INCLUDE**. Perumal (2011, Mazibuko prepayment-meter/Free
+  Basic Water Policy litigation feminist legal analysis, South
+  Africa, S825) — **INCLUDE**. Parkinson & Tayler (2003, decentralized
+  wastewater technology-options review) — **EXCLUDE (E06)**. Bah
+  (1992, NGO community self-help well-construction case study, Sierra
+  Leone) — **EXCLUDE (E01)**. Frumkin (2005, general built-environment
+  opinion editorial) — **EXCLUDE (E01)**. Moller & Radloff (2010,
+  broad quality-of-life survey, South Africa) — **EXCLUDE (E01)**.
+  Bartlett (2003, child-health literature-review synthesis) —
+  **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S821-S825, 818 →
+  823 rows each); `effect_sizes.csv` unchanged (38 rows; S822's
+  regression judged not eligible, see above); `exclusion_log.csv`
+  updated (756 → 761 rows; E01 296 → 299, E05 94 → 95, E06 62 → 63);
+  duplicate audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,075 open records); schema validation re-run clean.
+  Running totals: 1,584/3,659 screened (823 include/761 exclude), 2,075
+  open, 823 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
