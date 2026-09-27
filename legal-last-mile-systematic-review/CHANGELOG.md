@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-seventh full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-eighth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Eleventh batch from `new_batch_pool.json[100:110]`.
+
+- **R6727B5865609** (Nelson-Nunez, Walters & Charpentier 2019, *Water
+  Policy*, "Exploring the challenges to sustainable rural drinking water
+  services in Chile"). **INCLUDE.** Delphi study of Chilean rural water
+  experts assessing the newly enacted Law No. 20.998 (2017) legal
+  reform's implications for rural water governance. Extracted as
+  **S949**.
+- **R662825EA0EAA** (O'Reilly & Dhanju 2014, *Transactions of the
+  Institute of British Geographers*, "Public taps and private
+  connections: the production of caste distinction and common sense in
+  a Rajasthan drinking water supply project"). **INCLUDE.** Longitudinal
+  ethnography documenting how village water-governance institutions and
+  state power re-produced caste-based water-access inequality
+  post-construction. Extracted as **S950**.
+- **R6D53C0A6E3A4** (Ennis-McMillan 2001, *Medical Anthropology
+  Quarterly*, "Suffering from Water: Social Origins of Bodily Distress
+  in a Mexican Community"). **INCLUDE.** Ethnography with participant-
+  observation and interviews of local water-management officials linking
+  community water-governance institutions to household water-access
+  hardship. Extracted as **S951**.
+- **R61C9559AE0A2** (Rammelt, Masud, Boes & Masud 2014, *Water Policy*,
+  "Toxic injustice in the Bangladesh water sector: a social inequities
+  perspective on arsenic contamination"). **INCLUDE.** NGO program-
+  implementation case study contrasting state governance failure with
+  AMRF's social-mobilization approach to arsenic-affected communities'
+  water access. Extracted as **S952**.
+- **R5DEA9225B1BF** (De & Nag 2016, *Water Policy*, "Local self-
+  governance, ethnic division in slums and preference for water supply
+  institutions in Kolkata, India"). **INCLUDE.** Household survey with
+  logit regression linking notified/non-notified slum legal status and
+  ethnic identity to local-government water-accountability outcomes.
+  Extracted as **S953**.
+- **R653C938D77F9** (Reddy & Batchelor 2012, "Cost of providing
+  sustainable water, sanitation and hygiene (WASH) services... a
+  life-cycle cost approach (LCCA) in rural Andhra Pradesh, India") —
+  **EXCLUDE (E06).** Financial-costing/budgeting methodology paper.
+- **R646F7032970F** (O'Connell & Devine 2015, "Who is likely to own a
+  latrine in rural areas? Findings from formative research studies") —
+  **EXCLUDE (E01).** SaniFOAM behavior-change framework study of
+  social/behavioral latrine-ownership determinants, not an
+  institutional/legal access-mechanism study.
+- **R62C43D95536A** (Ray & Shaw 2016, "Water Stress in the Megacity of
+  Kolkata, India, and Its Implications for Urban Resilience") —
+  **EXCLUDE (E05).** Desk-based application of an existing resilience
+  framework using secondary survey/census data; no original fieldwork.
+- **R61B13B02B733** (Baruah 2010, "Energy services for the urban poor:
+  NGO participation in slum electrification in India") — **EXCLUDE
+  (E07).** Electricity/energy-service delivery study, wrong service.
+- **R6C5EA80EC864** (Mitra & Pool 2000, "Why women stay poor: An
+  examination of urban poverty in India") — **EXCLUDE (E01).** Broad
+  gender/urban-poverty study; water/sanitation a minor topic among
+  several basic-services dimensions.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S949-S953 added;
+946 → 951 rows each). `effect_sizes.csv` unchanged (44 rows): none of
+this batch's includes are effect_sizes eligible (S953's logit-regression
+outcome is councilor-accountability perception, not a direct
+connection/access/quantity/reliability outcome under the Family A/B/C
+framework). `exclusion_log.csv` updated (874 → 879 rows; E01 352 →
+354, E05 118 → 119, E06 82 → 83, E07 22 → 23). Duplicate audit
+(exact-DOI + study_id) found no new duplicates. `full_text_retrieval_
+queue.csv` regenerated (1,829 open records). `validate_schemas.py`
+confirms all 13 tracked files OK.
+
+Running totals: 1,830/3,659 screened (951 include/879 exclude), 1,829
+open, 951 extracted studies, 44 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-seventh full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Tenth batch from `new_batch_pool.json[90:100]`.
 

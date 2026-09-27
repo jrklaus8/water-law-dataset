@@ -4878,6 +4878,41 @@ evidence of anything.
   open, 946 extracted studies, 44 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-eighth batch (10 records, 2026-09-27), eleventh batch
+  from the 543-record pool.** `new_batch_pool.json[100:110]`.
+  Nelson-Nunez, Walters & Charpentier (2019, Delphi study assessing
+  Chile's Law No. 20.998 rural water-governance reform, S949) —
+  **INCLUDE**. O'Reilly & Dhanju (2014, longitudinal ethnography of
+  caste-differentiated water access via village governance institutions,
+  Rajasthan India, S950) — **INCLUDE**. Ennis-McMillan (2001,
+  ethnography with local water-official interviews on community water-
+  governance and access hardship, Mexico, S951) — **INCLUDE**. Rammelt,
+  Masud, Boes & Masud (2014, NGO program-implementation case study on
+  arsenic-affected communities' water access, Bangladesh, S952) —
+  **INCLUDE**. De & Nag (2016, household survey with logit regression
+  linking slum notification legal status and ethnicity to water-
+  accountability outcomes, Kolkata India, S953) — **INCLUDE**. Reddy &
+  Batchelor (2012, life-cycle cost approach financial-methodology paper,
+  Andhra Pradesh) — **EXCLUDE (E06)**. O'Connell & Devine (2015,
+  SaniFOAM behavioral-determinants study of latrine ownership) —
+  **EXCLUDE (E01)**. Ray & Shaw (2016, desk-based resilience-framework
+  application to Kolkata using secondary data, no original fieldwork) —
+  **EXCLUDE (E05)**. Baruah (2010, NGO slum-electrification study,
+  wrong service) — **EXCLUDE (E07)**. Mitra & Pool (2000, broad gender/
+  urban-poverty study, water/sanitation a minor topic) — **EXCLUDE
+  (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S949-S953, 946 →
+  951 rows each); `effect_sizes.csv` unchanged (44 rows: S953's
+  regression outcome is accountability perception, not a direct access
+  outcome under Family A/B/C); `exclusion_log.csv` updated (874 → 879
+  rows; E01 352 → 354, E05 118 → 119, E06 82 → 83, E07 22 → 23);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,829 open records);
+  schema validation re-run clean.
+  Running totals: 1,830/3,659 screened (951 include/879 exclude), 1,829
+  open, 951 extracted studies, 44 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
