@@ -5927,6 +5927,40 @@ evidence of anything.
   1,574 open, 1,061 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-fifteenth batch (10 records, 2026-09-27), thirty-
+  eighth batch from the 543-record pool.** `new_batch_pool.json[370:380]`.
+  Walsh (2011, JAD cost-recovery/water-meter enforcement in Matamoros
+  targeting wealthy neighborhoods first, within a legal non-denial-of-
+  service constraint, Mexico, S1064) — **INCLUDE**. Jemmali & Amara
+  (2015, Human Opportunity Index study of regional water/sanitation
+  access disparities, Tunisia, S1065) — **INCLUDE**. Dawson (2010,
+  Operation Gcin'amanzi prepaid water-meter program and class-
+  differentiated citizenship, Soweto, S1066) — **INCLUDE**. Schoeffel
+  (1995, multiple compounding institutional failures in a failed
+  donor-funded rural water project, South Pacific, S1067) —
+  **INCLUDE**. Schur (2017, comparative institutional study of
+  Palomas/Columbus water-security outcomes shaped by binational
+  policy parameters, US-Mexico transboundary aquifer, S1068) —
+  **INCLUDE**. Warner & Bel (2008, E01 US/Spain privatization
+  institutional-efficiency comparison, no documented access outcome)
+  — **EXCLUDE (E01)**. Fedulova (2016, E01 Ukraine water-resources-
+  market capitalization theory) — **EXCLUDE (E01)**. Hu (2011, E01
+  Ninth Dragon God religious-political anthropology, North China) —
+  **EXCLUDE (E01)**. Lukasiewicz et al. (2013, E01 Australian water-
+  reform social-justice-framework content analysis) — **EXCLUDE
+  (E01)**. Eggers et al. (2018, E03 Crow Reservation well-water
+  contaminant risk assessment) — **EXCLUDE (E03)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1064-S1068,
+  1,061 → 1,066 rows each); `effect_sizes.csv` unchanged (51 rows --
+  all five includes are qualitative/descriptive-disparity studies);
+  `exclusion_log.csv` updated (1,024 → 1,029 rows; E01 451 → 455, E03
+  30 → 31); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,564 open
+  records); schema validation re-run clean.
+  Running totals: 2,095/3,659 screened (1,066 include/1,029 exclude),
+  1,564 open, 1,066 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

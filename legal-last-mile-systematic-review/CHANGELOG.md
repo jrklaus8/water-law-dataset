@@ -4,7 +4,60 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-fourteenth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-fifteenth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Thirty-eighth batch from `new_batch_pool.json[370:380]`.
+
+- **R5514D2439F0C** (Walsh 2011, "Managing Urban Water Demand in
+  Neoliberal Northern Mexico," Human Organization). **INCLUDE.**
+  JAD cost-recovery/water-meter enforcement in Matamoros, targeting
+  wealthy neighborhoods first, within a legal non-denial-of-service
+  constraint. → **S1064**.
+- **R5614863C8D6E** (Jemmali & Amara 2015, "Assessing Inequality of
+  Human Opportunities," Tunisia). **INCLUDE.** Human Opportunity
+  Index logistic-regression study finding large regional disparities
+  in water/sanitation access. → **S1065**.
+- **R555884F9D440** (Dawson 2010, "The cost of belonging," Soweto's
+  water war, Citizenship Studies). **INCLUDE.** Operation
+  Gcin'amanzi prepaid water-meter program and class-differentiated
+  citizenship. → **S1066**.
+- **R58C7B8CDD09C** (Schoeffel 1995, South Pacific rural water
+  project appraisal). **INCLUDE.** Multiple compounding institutional
+  failures (fee-collection failure, gender exclusion, land tenure,
+  political discretion) in a failed donor-funded project. → **S1067**.
+- **R595251DE2748** (Schur 2017, "Potable or Affordable?," US-Mexico
+  transboundary aquifer). **INCLUDE.** Comparative institutional
+  study of Palomas/Columbus water-security outcomes shaped by
+  binational policy parameters. → **S1068**.
+- **R5455E07BCDDA** (Warner & Bel 2008, US/Spain privatization
+  comparison). **EXCLUDE (E01).** Institutional-efficiency comparison
+  without documented differential-access outcome.
+- **R5622BFD5874F** (Fedulova 2016, Ukraine water-resources-market
+  capitalization theory). **EXCLUDE (E01).** Water-resource-market
+  economics, not water-service access.
+- **R592ACB0FBD22** (Hu 2011, Ninth Dragon God, North China village
+  religious-political anthropology). **EXCLUDE (E01).** Religious-
+  political anthropology, not a legal/institutional access mechanism.
+- **R5C5F26FA769D** (Lukasiewicz et al. 2013, Australian water-reform
+  social-justice-framework content analysis). **EXCLUDE (E01).**
+  Water-resource-reform policy analysis.
+- **R0260D66B3853** (Eggers et al. 2018, Crow Reservation well-water
+  contaminant risk assessment). **EXCLUDE (E03).** Water-quality/
+  exposure-risk study, not an access-eligibility mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1064-S1068,
+1,061 → 1,066 rows each); `effect_sizes.csv` unchanged (51 rows --
+all five includes are qualitative/descriptive-disparity studies, no
+mechanism-isolating regression); `exclusion_log.csv` updated (1,024 →
+1,029 rows; E01 451 → 455, E03 30 → 31); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,564 open records); schema validation re-run clean
+(13/13 files OK).
+
+Running totals: 2,095/3,659 screened (1,066 include/1,029 exclude),
+1,564 open, 1,066 extracted studies, 51 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-fourteenth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Thirty-seventh batch from `new_batch_pool.json[360:370]`.
 
