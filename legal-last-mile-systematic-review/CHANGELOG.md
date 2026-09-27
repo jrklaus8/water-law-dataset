@@ -4,7 +4,96 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-first full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-seventy-second full-text screening batch (10 records, 7 includes, 3 excludes)
+
+First batch drawn from `new_batch_pool.json`, a freshly-built 68-record
+pool assembled by cross-referencing the actively-growing Antigravity
+delivery folder against the screening database (37 already-decided
+duplicate files found and moved to Processed without re-screening
+during pool construction, per the standing duplicate-detection/defer
+rule). All 10 target record_ids confirmed open with no prior decisions
+or `wrong_file_retrieved` history.
+
+- **RAE228938C27E** (Mwihaki 2018, *Water Policy*, "Decentralisation as
+  a tool in improving water governance in Kenya"). **INCLUDE.**
+  766-household survey plus key-informant interviews comparing
+  decentralisation types under Kenya's 1974/2002 Water Acts across two
+  sub-counties, with quantified accountability/efficiency/coverage
+  performance indicators. Extracted as **S866**.
+- **RC373C4B7C2DE** (Lenneiye 2000, *IDS Bulletin*, "Testing Community
+  Empowerment Strategies in Zimbabwe... Water Supply and Sanitation
+  Programmes"). **INCLUDE.** Documentary institutional case study of
+  Zimbabwe's Democratic Development Structures (VIDCO/WADCO/DDC) and
+  their formally assigned roles in the national rural water/sanitation
+  programme. Extracted as **S867**.
+- **R1CEF7787CF8F** (Mbanaso 1989, Portland State University
+  dissertation, "Urban Service Delivery System and Federal Government
+  Bureaucracy... Metropolitan Lagos"). **INCLUDE.** Mixed-methods
+  structural/bureaucratic case study of federal fiscal structures
+  constraining water-service delivery in a planned Lagos suburb, based
+  on household survey, F.H.A. budget-record analysis and bureaucratic
+  interviews. Extracted as **S868**.
+- **R7FA19A7B8819** (Silvestre, Marques, Dollery & Correia 2022,
+  *Utilities Policy*, "Regional consortia and transaction costs for
+  sanitation services in Brazil"). **INCLUDE.** Panel-data GLM
+  regression (1,157-1,159 municipality-year observations) isolating
+  formal intermunicipal cooperation-consortium contracts as the
+  exposure and water/sewage service coverage as the outcome.
+  Extracted as **S869**. **EFFECT_SIZES ELIGIBLE** (Family A/B/C):
+  cooperation coefficient not significant for water coverage (p=.494)
+  but significant for sewage coverage (p=.026) — distinguished from
+  the S837 Houston precedent because the outcome here is directly a
+  water/sanitation-access coverage measure, not capital investment.
+- **RFFE28947EC31** (Cleaver 1994, *Journal of International
+  Development*, "Problems in the Planning of Rural Water Supply
+  Projects... Nkayi District, Zimbabwe"). **INCLUDE.** Five-month
+  ethnographic field report tracing how historical state water-supply
+  policy (colonial cattle-grazing borehole siting, forced-resettlement
+  water infrastructure, politically-motivated borehole disconnection)
+  shapes present-day community water-management participation.
+  Extracted as **S870**.
+- **RF2447F982F89** (Ogle 1999, *Journal of Urban History*, "Water
+  supply, waste disposal, and the culture of privatism in the
+  mid-nineteenth-century American city"). **INCLUDE.** Historical
+  institutional case study of municipal court doctrine and financing
+  law explaining resistance to centrally managed municipal waterworks
+  despite available legal/financial mechanisms. Extracted as **S871**.
+- **REED4B1701A21** (Prieto 2016, *Geoforum*, "Practicing costumbres
+  and the decommodification of nature: The Chilean water markets and
+  the Atacameño people"). **INCLUDE.** Ethnographic case study of
+  Atacameño customary institutional rules subverting Chile's 1981
+  Water Code market-based water-rights framework. Extracted as
+  **S872**.
+- **R9FEFA8CF8F20** (Penn, Loring & Schnabel 2017, *J. Environ.
+  Manag.*, "Diagnosing water security in the rural North with an
+  environmental security framework") — **EXCLUDE (E06).** Ethnographic
+  diagnostic-framework synthesis centered on Arctic infrastructure
+  engineering suitability and Water-Utility operating-cost efficiency,
+  not a documented legal/institutional access mechanism.
+- **R2587238E5574** (Marara, Palamuleni & Ebenso 2011, *J. Soc. Sci.*,
+  "Access to Potable Drinking Water in the Wonderfonteinspruit
+  Catchment") — **EXCLUDE (E03).** Survey study centered on
+  acid-mine-drainage water-quality/contamination risk and community
+  perceptions thereof; settlement-type access data is secondary
+  context, not an isolated legal/institutional mechanism.
+- **RFBB1B55A8D79** (Huby 2001, "The Sustainable Use of Resources on a
+  Global Scale") — **EXCLUDE (E05).** Theoretical/policy-comparative
+  essay on social-welfare/environmental-sustainability goals drawing
+  entirely on secondary cross-national statistics; no original data or
+  documented institutional mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S866-S872, 863 →
+870 rows each). `effect_sizes.csv` updated (38 → 39 rows; S869 Brazil
+sanitation-consortia panel regression newly eligible). `exclusion_log.csv`
+updated (801 → 804 rows; E03 28 → 29, E05 104 → 105, E06 65 → 66).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (1,985 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,674/3,659 screened (870 include/804 exclude), 1,985
+open, 870 extracted studies, 39 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-first full-text screening batch (10 records, 7 includes, 3 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records; this batch completes the original 290-record snapshot pool

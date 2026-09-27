@@ -4263,6 +4263,49 @@ evidence of anything.
   open, 863 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-second batch (10 records, 2026-09-27), first batch
+  drawn from a freshly-built 68-record pool (`new_batch_pool.json`)
+  assembled from the actively-growing Antigravity delivery folder (37
+  already-decided duplicates found and moved to Processed without
+  re-screening during pool construction).** Mwihaki (2018, 766-household
+  survey comparing decentralisation types under Kenya's Water Acts,
+  S866) — **INCLUDE**. Lenneiye (2000, documentary case study of
+  Zimbabwe's Democratic Development Structures governing the national
+  rural water/sanitation programme, S867) — **INCLUDE**. Mbanaso (1989,
+  dissertation, mixed-methods structural/bureaucratic case study of
+  federal fiscal constraints on Lagos-suburb water delivery, S868) —
+  **INCLUDE**. Silvestre, Marques, Dollery & Correia (2022, panel GLM
+  regression isolating intermunicipal sanitation-consortium cooperation
+  as exposure and water/sewage coverage as outcome, Brazil, S869) —
+  **INCLUDE, EFFECT_SIZES ELIGIBLE** (cooperation not significant for
+  water coverage p=.494, significant for sewage coverage p=.026;
+  distinguished from the S837 Houston precedent because the outcome is
+  directly a coverage measure, not capital investment). Cleaver (1994,
+  five-month ethnographic field report on historical state water-supply
+  policy shaping present-day community participation, Nkayi Zimbabwe,
+  S870) — **INCLUDE**. Ogle (1999, historical case study of municipal
+  legal/financing doctrine explaining resistance to centralized
+  waterworks, mid-19th-century American cities, S871) — **INCLUDE**.
+  Prieto (2016, ethnographic case study of Atacameño customary rules
+  subverting Chile's 1981 Water Code market framework, S872) —
+  **INCLUDE**. Penn, Loring & Schnabel (2017, ethnographic
+  diagnostic-framework synthesis centered on Arctic infrastructure
+  engineering suitability, rural Alaska) — **EXCLUDE (E06)**. Marara,
+  Palamuleni & Ebenso (2011, survey centered on acid-mine-drainage
+  water-quality/contamination risk, Wonderfonteinspruit South Africa) —
+  **EXCLUDE (E03)**. Huby (2001, theoretical/policy-comparative essay
+  on secondary cross-national statistics, no original data) — **EXCLUDE
+  (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S866-S872, 863 →
+  870 rows each); `effect_sizes.csv` updated (38 → 39 rows; S869 added);
+  `exclusion_log.csv` updated (801 → 804 rows; E03 28 → 29, E05 104 →
+  105, E06 65 → 66); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,985 open records);
+  schema validation re-run clean.
+  Running totals: 1,674/3,659 screened (870 include/804 exclude), 1,985
+  open, 870 extracted studies, 39 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
