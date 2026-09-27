@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-first full-text screening batch (first sub-batch of a large Antigravity-retrieved PDF drop: 10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-forty-second full-text screening batch (second sub-batch of the Antigravity-retrieved PDF drop: 10 records, 6 includes, 2 excludes, 2 wrong_file_retrieved flags)
+
+Second sub-batch of the ~103-record Antigravity delivery. Two records had
+PDF content that did not match their target metadata and were flagged
+`wrong_file_retrieved` without screening:
+
+- **R31E29BB9CFED** (target: "WORLD BANK: India, World Bank launch series
+  on India's water resources management"). Delivered PDF was *The Lancet
+  Commission's "Global health 2035"* (Jamison, Summers et al., 2013) — an
+  unrelated global-health investment report.
+- **R19FD5701BC0D** (target: Dondeynaz 2014, "Water, governance and human
+  development variables in developing countries"). Delivered PDF was
+  "Determinants of Corporate Sustainability in the Malaysian Construction
+  Industry" (Kwek Choon Ling et al. 2023) — entirely unrelated.
+
+The remaining 8 were screened:
+
+- **R2772B94F6E5E** (Naz 2015, *Capitalism Nature Socialism*, "Water,
+  Water Lords, and Caste: A Village Study from Gujarat, India").
+  **INCLUDE.** Ethnographic study of caste-based discretionary control of
+  village water infrastructure, interacting with the state Jyotirgram
+  Scheme groundwater/electrification policy. Extracted as **S701**.
+- **R2B628DEA4272** (Ley 2022, *Geoforum*, "On the margins of the
+  hydrosocial: Quasi-events along a stagnant river... Semarang").
+  **EXCLUDE (E07 — wrong service).** Study concerns stormwater
+  drainage/urban flooding; sanitation/drinking-water are only incidental.
+  Extends drainage-as-distinct-service-category precedent under E07.
+- **R2830B61ED4DE** (Mellah 2018, *Water Policy*, "Effectiveness of the
+  water resources allocation institution in Tunisia"). **INCLUDE.** Legal
+  case study of the 1975 Tunisian Water Code as a water-allocation
+  institution. Extracted as **S702**.
+- **R24E80DAAD57D** (Sunderland 2003, *Urban History*, "'Disgusting to the
+  imagination and destructive of health'?... 1820-52"). **INCLUDE.**
+  Historical-institutional case study of London's private water
+  monopolies pre-1852 Metropolis Water Act, with quantified household
+  exclusion data (c. 70,000 houses with no supply in 1847). Extends the
+  Jenson 2008 (S691) precedent. Extracted as **S703**.
+- **R29303CD53875** (Cole 2012, *Annals of Tourism Research*, "A political
+  ecology of water equity and tourism... Bali"). **INCLUDE.** Real legal
+  mechanisms (Indonesian Law No. 7/2004, unenforced well permits,
+  Governor's Decree No. 16/2009) tied to household connection-rate,
+  affordability and waiting-list data. Extracted as **S704**.
+- **R37FED9503C6D** (Imonikhe & Moodley 2018, *Water Science & Technology:
+  Water Supply*, "The challenge of effective policy implementation in
+  Nigerian urban water utilities"). **INCLUDE.** Comparative institutional
+  case study of four state water laws' effect on utility autonomy and
+  tariff-setting, tied to affordability-driven illegal connections.
+  Extends the Page 2003/Pihljak 2021 utility-case-study precedent.
+  Extracted as **S705**.
+- **R198957B7D1CB** (Castán Broto & Sudhira 2019, *Urban Studies*,
+  "Engineering modernity: Water, electricity and the infrastructure
+  landscapes of Bangalore, India"). **INCLUDE.** Historical-institutional
+  case study of taxable-area/connection-extension regulation and
+  peri-urban semi-legal tenure ("revenue layouts") shaping unequal
+  connection access (1,359 → 10,327 connections against 17,481 dwellings,
+  1915-1938). Extracted as **S706**.
+- **RD54062398124** (Turman-Bryant, Nagel, Stover, Muragijimana & Thomas
+  2019, *Sustainability*, "Improved Drought Resilience Through Continuous
+  Water Service Monitoring and Specialized Institutions... Northern
+  Kenya"). **EXCLUDE (E01 — wrong topic).** Technical/engineering
+  longitudinal analysis of remote-sensor borehole functionality; no
+  legal/institutional access-barrier mechanism at the household level.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S701-S706, 698 → 704
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (670 → 672 rows). `full_text_screening_database.csv` now shows 10
+total `wrong_file_retrieved` records. Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,283 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,376/3,659 screened (704 include/672 exclude), 2,283
+open, 704 extracted studies, 34 effect_sizes rows. Approximately 83
+records remain from the Antigravity delivery folder.
+
+## 2026-09-27 — Hundred-forty-first full-text screening batch (first sub-batch of a large Antigravity-retrieved PDF drop: 10 records, 7 includes, 3 excludes)
 
 A separate researcher-run retrieval agent ("Antigravity") delivered a large
 batch of full-text PDFs (103 unique records enumerated) into a new Google

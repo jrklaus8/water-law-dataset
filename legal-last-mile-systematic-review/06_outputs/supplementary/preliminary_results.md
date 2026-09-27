@@ -3311,6 +3311,37 @@ evidence of anything.
   Running totals: 1,368/3,659 screened (698 include/670 exclude), 2,291
   open, 698 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-second full-text screening batch, second
+  sub-batch of the Antigravity-retrieved PDF drop, 10 records, 6 includes,
+  2 excludes, 2 wrong_file_retrieved flags.** Naz (2015, caste-based water
+  exclusion and the Jyotirgram Scheme, Gujarat, S701) — **INCLUDE**. Ley
+  (2022, Semarang stormwater/flood drainage, sanitation incidental) —
+  **EXCLUDE (E07)**. Mellah (2018, Tunisia's 1975 Water Code allocation
+  institution, S702) — **INCLUDE**. Sunderland (2003, London's private
+  water monopolies pre-1852 Metropolis Water Act, S703) — **INCLUDE**.
+  Cole (2012, Bali tourism-vs-household water competition under Indonesian
+  Law No. 7/2004, S704) — **INCLUDE**. Imonikhe & Moodley (2018, four
+  Nigerian state water laws and utility autonomy/tariff-setting, S705) —
+  **INCLUDE**. Castán Broto & Sudhira (2019, Bangalore historical
+  connection-extension regulation and peri-urban informal tenure, S706) —
+  **INCLUDE**. Turman-Bryant et al. (2019, Northern Kenya borehole
+  remote-monitoring engineering study, no legal/institutional
+  access-barrier mechanism) — **EXCLUDE (E01)**. Two records had delivered
+  PDF content that did not match their target metadata and were flagged
+  `wrong_file_retrieved` without screening: R31E29BB9CFED (target: World
+  Bank India water-resources press release; delivered: The Lancet
+  Commission's unrelated "Global health 2035" report) and R19FD5701BC0D
+  (target: Dondeynaz 2014 on water governance; delivered: an unrelated
+  paper on Malaysian construction-industry corporate sustainability).
+  `extraction_database.csv`/`evidence_map.csv` updated (S701-S706, 698 →
+  704 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (670 → 672 rows; E01 239 → 240, E07 20 → 21); duplicate audit
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,283 open records); schema validation re-run clean.
+  Running totals: 1,376/3,659 screened (704 include/672 exclude), 2,283
+  open, 704 extracted studies, 34 effect_sizes rows. Approximately 83
+  records remain from the Antigravity delivery folder. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3329,17 +3360,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,368 of the 3,659
-  Phase-5 includes have been assessed; 2,291 records have not yet been
+- Full-text screening itself is far from complete: 1,376 of the 3,659
+  Phase-5 includes have been assessed; 2,283 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eight of those 2,291
+  on the researcher supplying full-text PDFs. Ten of those 2,283
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 698
+- Extraction (Phase 8) is caught up with screening completely — all 704
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  698 extracted studies** (a first 12-study partial pilot batch was
+  704 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
