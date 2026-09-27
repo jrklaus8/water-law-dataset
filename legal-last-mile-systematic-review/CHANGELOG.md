@@ -4,7 +4,68 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-seventh full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-forty-eighth full-text screening batch (10 records, 7 includes, 3 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RE2092C0B2608** (Galvin 2011, *Agenda*, "Participating in urban myths
+  about women's rural water struggles"). **INCLUDE.** Municipal capacity
+  and urban-biased national delivery programmes shown to structurally
+  limit rural participation, extending the Masanyiwa 2014 (S700)
+  precedent. Extracted as **S730**.
+- **RE1E71A927835** (Hillier 2014, *Urban History*, "Implementation
+  without control... private water companies... nineteenth-century
+  London"). **INCLUDE.** Permissive regulatory environment for private
+  water companies tied to fragmented constant-water access. Extends
+  Sunderland 2003/Jenson 2008 (S703/S691). Extracted as **S731**.
+- **RE1B2A5D017D1** (Tewari & Oumar 2013, *Water Policy*, "Is the water
+  permit system a panacea... South Africa"). **INCLUDE.** South Africa's
+  National Water Act 1998 permit system's institutional inefficiencies
+  undermining its own equity objective. Extracted as **S732**.
+- **RE0FFA253B377** (Truelove 2011, *Geoforum*, "(Re-)Conceptualizing
+  water inequality in Delhi... feminist political ecology"). **INCLUDE.**
+  Illegal-slum vs. legal-resettlement-colony status directly tied to
+  water/sanitation access practices and "criminalization of the poor"
+  discourse. Extracted as **S733**.
+- **RDF9D6AE68D61** (Kooy & Bakker 2008, *IJURR*, "Technologies of
+  Government... Colonial and Contemporary Jakarta"). **INCLUDE.**
+  Colonial and contemporary kampung/formal-settlement legal
+  classification as the mechanism producing enduring water-access
+  differentiation. Extracted as **S734**.
+- **RDECE6D5D99AE** (Fisher 2009, *Asia Pacific Viewpoint*, "Urban water
+  supply and local neoliberalism in Tagbilaran City"). **INCLUDE.**
+  National resource-governance reform and local hybrid public/private
+  utility restructuring. Extracted as **S735**.
+- **RDE53A2FE1BAD** (Reis & Mollinga 2015, *Asian Studies Review*,
+  "Public Policy and the Idea of the Vietnamese State... Domestic Water
+  Supply"). **INCLUDE.** Structural gap between formal Rural Water Supply
+  policy design and informal implementation practice. Extracted as
+  **S736**.
+- **RE26903A758D8** (Reddy et al. 2012, *Water, Sanitation and Hygiene
+  for Development*, "Life-cycle costs approach... rural Andhra Pradesh").
+  **EXCLUDE (E01).** Public-finance costing-methodology study; no legal
+  access-barrier mechanism.
+- **RE17576EC9085** (Bauchspies 2012, *Journal of Asian and African
+  Studies*, "The Community Water Jar... Guinea"). **EXCLUDE (E01).**
+  Gender/technology ethnography; institutional detail incidental to a
+  cultural-meaning study.
+- **RDEE9E6CB3035** (Chandola 2013, *International Journal of Cultural
+  Studies*, "Listening in to water routes: Soundscapes... Delhi").
+  **EXCLUDE (E01).** Sound-studies/cultural-anthropology framework, not a
+  legal-mechanism analysis.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S730-S736, 727 →
+734 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (698 → 701 rows; E01 260 → 263). Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,224 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,435/3,659 screened (734 include/701 exclude), 2,224
+open, 734 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-seventh full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

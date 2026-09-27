@@ -3488,6 +3488,38 @@ evidence of anything.
   Running totals: 1,425/3,659 screened (727 include/698 exclude), 2,234
   open, 727 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-eighth full-text screening batch, 10
+  records, 7 includes, 3 excludes.** Galvin (2011, municipal capacity and
+  urban-biased national delivery programmes limiting rural participation,
+  S730) — **INCLUDE** (extends Masanyiwa 2014/S700). Hillier (2014,
+  permissive regulatory environment for private water companies,
+  nineteenth-century London, S731) — **INCLUDE** (extends
+  Sunderland 2003/Jenson 2008, S703/S691). Tewari & Oumar (2013, South
+  Africa's National Water Act 1998 permit system's institutional
+  inefficiencies undermining its own equity objective, S732) —
+  **INCLUDE**. Truelove (2011, illegal-slum vs. legal-resettlement-colony
+  status tied to water/sanitation access and "criminalization of the
+  poor" discourse, Delhi, S733) — **INCLUDE**. Kooy & Bakker (2008,
+  colonial and contemporary kampung/formal-settlement legal
+  classification producing enduring water-access differentiation,
+  Jakarta, S734) — **INCLUDE**. Fisher (2009, national resource-
+  governance reform and local hybrid public/private utility
+  restructuring, Tagbilaran City, S735) — **INCLUDE**. Reis & Mollinga
+  (2015, structural gap between formal Rural Water Supply policy design
+  and informal implementation practice, Vietnam, S736) — **INCLUDE**.
+  Reddy et al. (2012, life-cycle-costs public-finance methodology, rural
+  Andhra Pradesh) — **EXCLUDE (E01)**. Bauchspies (2012, gender/
+  technology ethnography, Guinea) — **EXCLUDE (E01)**. Chandola (2013,
+  sound-studies/cultural-anthropology soundscapes analysis, Delhi) —
+  **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S730-S736, 727 →
+  734 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (698 → 701 rows; E01 260 → 263); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,224 open
+  records); schema validation re-run clean.
+  Running totals: 1,435/3,659 screened (734 include/701 exclude), 2,224
+  open, 734 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3506,17 +3538,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,425 of the 3,659
-  Phase-5 includes have been assessed; 2,234 records have not yet been
+- Full-text screening itself is far from complete: 1,435 of the 3,659
+  Phase-5 includes have been assessed; 2,224 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,234
+  on the researcher supplying full-text PDFs. Eleven of those 2,224
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 727
+- Extraction (Phase 8) is caught up with screening completely — all 734
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  727 extracted studies** (a first 12-study partial pilot batch was
+  734 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
