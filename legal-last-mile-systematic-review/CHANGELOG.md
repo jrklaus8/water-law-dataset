@@ -4,7 +4,72 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirty-fifth full-text screening batch (10 records, 3 includes, 1 exclude, 6 wrong_file_retrieved)
+## 2026-09-27 (latest) — Two-hundred-thirty-sixth full-text screening batch (15 records, 6 includes, 0 excludes, 9 wrong_file_retrieved) — 45-record open queue from the large Drive delivery now fully exhausted
+
+Final batch from the 45-record open queue surfaced by the large new Drive
+delivery (see Batch 233), covering the 15 remaining records: the 2
+inadvertently skipped in the gap between Batch 234 (positions 11-20) and
+Batch 235 (positions 23-32) -- positions 21-22, R117905075AEC and
+R116235C8172D -- plus the final 13 (positions 33-45). The
+content-behind-filename mismatch failure mode identified in Batch 234
+recurred heavily here: 4 of the 9 wrong_file cases this batch are this
+type, the highest count in a single batch so far.
+
+- **RED01AD3DE1C0** (Beall, Crankshaw & Parnell 2000, "Victims, Villains
+  and Fixers: The Urban Environment and Johannesburg's Poor," historical
+  racial housing-type determinants of water/sanitation/electricity access,
+  Johannesburg). **INCLUDE.** → **S1151**.
+- **RD5A2982CF41B** (Marra 2008, gendered impacts of water-policy reform,
+  Malawi). **INCLUDE.** → **S1152**.
+- **RD2B443A67F95** (Das & Takahashi 2014, non-participation of low-income
+  households in community-managed water projects, India). **INCLUDE.**
+  Genuine multivariate logistic regression exists (income/caste predicting
+  participation), but the dependent variable is program participation, not
+  a water-access outcome, so it does not qualify for `effect_sizes.csv`
+  under this project's strict access-outcome requirement. → **S1153**.
+- **RCBBF97B6D984** (Marumahoko, Afolabi, Sadie & Nhede 2020, governance and
+  urban service delivery post-devolution, Zimbabwe). **INCLUDE.** →
+  **S1154**.
+- **R24E101DAAFF3** (Oumar & Tewari 2012, development of water-management
+  institutions, Cameroon). **INCLUDE.** → **S1155**.
+- **R58CA7A40C336** (Goldman 2007, World Bank-driven "Water for All!"
+  privatization-policy diffusion, South Africa case evidence including a
+  cholera-outbreak linkage to service cutoffs). **INCLUDE.** → **S1156**.
+  All six qualitative; no effect_sizes.csv entries.
+- **Nine wrong_file_retrieved this batch**: R117905075AEC (target:
+  Palanca-Tan 2015, Metro Manila sanitation; delivered: a Nigeria/Australia
+  water-corporations comparison), R16E56D8BCECE (target: Vijayanthi 2002
+  SHG participatory-approach paper; delivered: a 2024 SHG "analytical
+  study" by a different author), R746C33035455 (target: Allouche 2014,
+  post-conflict informal service providers; delivered: an unrelated
+  Marawi/Philippines COVID-displacement paper), RA38256CBC26F (target:
+  Khan et al. 2020, Pakistan water-security index; delivered: an unrelated
+  Sri Lanka settlement-morphology paper) -- ordinary title+content
+  mismatches; plus five **content-behind-filename** mismatches: R116235C8172D
+  (filename read the Haiti/Mexico collective-action target; actual content
+  was an unrelated South America HIV/PrEP policy paper), RC8E1C6959D2C
+  (filename read "Water Access in Mexico City"; actual content was a
+  Kampala, Uganda water/land-politics paper), RD08AB246F841 (filename read
+  the Nairobi WASH-childcare target; actual content was a Hyderabad,
+  India health-equity paper), RD7C03A60934A (filename read "From dams to
+  tanks to jerry cans"; actual content was an unrelated Indian Himalayan
+  heritage-infrastructure paper), and RD841349D5ED3 (filename read the
+  DRC/Haiti/Mozambique/Niger institutional-framework target; actual
+  content was a Nigeria SDG-6 review).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1151-S1156,
+1,148 → 1,154 rows each); `effect_sizes.csv` unchanged (59 rows -- all
+six new includes are qualitative, including the Das & Takahashi
+participation-regression case documented above); `exclusion_log.csv`
+unchanged (1,114 rows -- no excludes this batch); duplicate audit
+(exact-DOI + study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,391 open records); schema validation re-run clean (13/13).
+
+Running totals: 2,268/3,659 screened (1,154 include/1,114 exclude),
+1,391 open (including 51 wrong_file_retrieved), 1,154 extracted
+studies, 59 effect_sizes rows.
+
+## 2026-09-27 (earlier) — Two-hundred-thirty-fifth full-text screening batch (10 records, 3 includes, 1 exclude, 6 wrong_file_retrieved)
 
 Third batch of 10 from the 45-record open queue surfaced by the large new
 Drive delivery (see Batch 233). The content-behind-filename mismatch

@@ -6680,6 +6680,43 @@ evidence of anything.
   1,397 open (including 42 wrong_file_retrieved), 1,148 extracted
   studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-sixth batch (15 records, 2026-09-27), final batch
+  from the 45-record open queue -- queue now fully exhausted.** Covered
+  the 2 records inadvertently skipped between Batch 234 and Batch 235
+  (R117905075AEC, R116235C8172D) plus the final 13 in the queue. Beall,
+  Crankshaw & Parnell 2000 (Journal of Southern African Studies, historical
+  racial housing-type determinants of water/sanitation/electricity access,
+  Johannesburg, S1151) — **INCLUDE**. Marra 2008 (Rural Society, gendered
+  impacts of water-policy reform, Malawi, S1152) — **INCLUDE**. Das &
+  Takahashi 2014 (International Development Planning Review,
+  non-participation of low-income households in community-managed water
+  projects, India, S1153) — **INCLUDE** (contains a genuine multivariate
+  logistic regression, but on a program-participation outcome rather than
+  a water-access outcome, so no `effect_sizes.csv` entry under this
+  project's strict access-outcome requirement). Marumahoko, Afolabi, Sadie
+  & Nhede 2020 (Strategic Review for Southern Africa, governance and urban
+  service delivery post-devolution, Zimbabwe, S1154) — **INCLUDE**. Oumar &
+  Tewari 2012 (development of water-management institutions, Cameroon,
+  S1155) — **INCLUDE**. Goldman 2007 (Geoforum, World Bank-driven "Water
+  for All!" privatization-policy diffusion with South African
+  cutoff/cholera-outbreak evidence, S1156) — **INCLUDE**. All six
+  qualitative; no effect_sizes.csv entries. Nine records flagged
+  wrong_file_retrieved this batch: R117905075AEC, R16E56D8BCECE,
+  R746C33035455, and RA38256CBC26F were ordinary title+content mismatches;
+  R116235C8172D, RC8E1C6959D2C, RD08AB246F841, RD7C03A60934A, and
+  RD841349D5ED3 are five more instances of the content-behind-filename
+  mismatch failure mode first identified in Batch 234 -- the highest count
+  in a single batch so far.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1151-S1156,
+  1,148 → 1,154 rows each); `effect_sizes.csv` unchanged (59 rows);
+  `exclusion_log.csv` unchanged (1,114 rows -- no excludes this batch);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,391 open records); schema
+  validation re-run clean.
+  Running totals: 2,268/3,659 screened (1,154 include/1,114 exclude),
+  1,391 open (including 51 wrong_file_retrieved), 1,154 extracted
+  studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
