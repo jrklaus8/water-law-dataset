@@ -6279,6 +6279,46 @@ evidence of anything.
   1,484 open, 1,107 extracted studies, 52 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-fourth batch (10 records, 2026-09-27),
+  forty-seventh batch from the 543-record pool.** `new_batch_pool.json[460:470]`.
+  Mafuta, Zuwarimwe & Mwale (2021, near-zero state WASH investment in
+  Jariban district financed instead by NGOs 54.3%/diaspora
+  34.5%/community 11.2%, Somalia, S1110) — **INCLUDE**. Faure, Faust &
+  Kaminsky (2019, 28-interview institutional-decision-making study,
+  reactive rather than proactive WASH planning response to the
+  2015-2016 refugee crisis, Germany, S1111) — **INCLUDE**. Martinez
+  Moscoso, Aguilar Feijo & Verdugo Silva (2018, constitutional
+  minimum-water cost-recovery charge disproportionately burdens
+  smaller/less-efficient/more-indigenous municipalities -- Suscal 4.17%
+  vs. Cuenca 0.31% of extreme-poverty income, Ecuador, S1112) —
+  **INCLUDE**. Betera, Nyamandi & Nunu (2025, E12 explicit scoping
+  review, no original empirical data, Zimbabwe WASH) — **EXCLUDE
+  (E12)**. Turley et al. (2013, E12 Cochrane slum-upgrading systematic
+  review) — **EXCLUDE (E12)**. Pories, Fonseca & Delmon (2019, E12
+  multi-country synthesis/framework paper, not a bounded case study,
+  "Mobilising Finance for WASH") — **EXCLUDE (E12)**. Li, Cohen, Li &
+  Zhang (2019, E01 broad province-level socioeconomic-determinants CCA
+  study, no institutional mechanism, China rural drinking water) —
+  **EXCLUDE (E01)**. Patel et al. (2012, E04 child water-consumption
+  behavior study, wrong outcome, California school food-service
+  areas) — **EXCLUDE (E04)**. Jimenez et al. (2019, E12
+  literature-review-based conceptual framework, "The Enabling
+  Environment for Participation in Water and Sanitation") — **EXCLUDE
+  (E12)**. Bellaubi & Bustamante (2018, E05 theoretical/values-based
+  paradigm analysis, no empirical data, Cochabamba water agenda) —
+  **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1110-S1112,
+  1,107 → 1,110 rows each); `effect_sizes.csv` unchanged (52 rows --
+  S1112's cross-municipality IH percentages are a 3-unit formula-based
+  comparative calculation, not a regression-based estimate);
+  `exclusion_log.csv` updated (1,068 → 1,075 rows; E01 473 → 474, E04
+  72 → 73, E05 131 → 132, E12 38 → 42); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,474 open records); schema validation re-run clean.
+  Running totals: 2,185/3,659 screened (1,110 include/1,075 exclude),
+  1,474 open, 1,110 extracted studies, 52 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

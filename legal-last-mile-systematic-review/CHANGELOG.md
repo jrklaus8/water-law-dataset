@@ -4,7 +4,67 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-third full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-fourth full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Forty-seventh batch from `new_batch_pool.json[460:470]`.
+
+- **R11ECDBD13542** (Mafuta, Zuwarimwe & Mwale 2021, "WASH Financial
+  and Social Investment Dynamics in a Conflict-Arid District of
+  Jariban in Somalia," Sustainability/MDPI). **INCLUDE.** State
+  government WASH investment near zero (collapsed since 1991);
+  infrastructure financed by NGOs (54.3%), diaspora (34.5%), community
+  (11.2%). → **S1110**.
+- **R33EC8B53721E** (Faure, Faust & Kaminsky 2019, "Legitimization of
+  the Inclusion of Cultural Practices in the Planning of Water and
+  Sanitation Services for Displaced Persons," Water/MDPI, Germany).
+  **INCLUDE.** 28-interview institutional-decision-making study: WASH
+  planning response to the 2015-2016 refugee crisis was predominantly
+  reactive, not proactive. → **S1111**.
+- **R855E06BB5C3D** (Martinez Moscoso, Aguilar Feijo & Verdugo Silva
+  2018, "The Vital Minimum Amount of Drinking Water Required in
+  Ecuador," Resources/MDPI). **INCLUDE.** Ecuador's constitutional
+  minimum-water cost-recovery charge disproportionately burdens
+  smaller, less-efficient, more-indigenous municipalities (Suscal IH
+  4.17% of extreme-poverty income vs. Cuenca 0.31%). → **S1112**.
+- **R78B2DCE9ED20** (Betera, Nyamandi & Nunu 2025, WASH scoping
+  review, INQUIRY, Zimbabwe). **EXCLUDE (E12).** Explicit scoping
+  review, no original empirical data.
+- **RA9801F141888** (Turley et al. 2013, slum-upgrading Cochrane
+  systematic review). **EXCLUDE (E12).** Cochrane intervention review,
+  not primary research.
+- **R365803888D74** (Pories, Fonseca & Delmon 2019, "Mobilising
+  Finance for WASH," Water/MDPI). **EXCLUDE (E12).** Multi-country
+  (40+) synthesis/framework paper, not a bounded original case study.
+- **R363EC91C7699** (Li, Cohen, Li & Zhang 2019, rural drinking water
+  safety China, Sustainability/MDPI). **EXCLUDE (E01).** Broad
+  province-level socioeconomic-determinants CCA study, no
+  legal/institutional eligibility mechanism.
+- **R3A1EB80FA37D** (Patel et al. 2012, school food-service-area water
+  access, California, Prev. Chronic Dis.). **EXCLUDE (E04).** Child
+  water-consumption behavior study, wrong outcome.
+- **R2ABF896EA8EB** (Jimenez et al. 2019, "The Enabling Environment
+  for Participation in Water and Sanitation," Water/MDPI). **EXCLUDE
+  (E12).** Literature-review-based conceptual framework, no original
+  empirical data.
+- **R014D93A818B8** (Bellaubi & Bustamante 2018, Cochabamba water
+  agenda ethical approach, Geosciences/MDPI). **EXCLUDE (E05).**
+  Theoretical/values-based paradigm analysis, no empirical data
+  collection.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1110-S1112,
+1,107 → 1,110 rows each); `effect_sizes.csv` unchanged (52 rows --
+S1112's cross-municipality IH percentages are a 3-unit formula-based
+comparative calculation, not a regression-based estimate);
+`exclusion_log.csv` updated (1,068 → 1,075 rows; E01 473 → 474, E04 72
+→ 73, E05 131 → 132, E12 38 → 42); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,474 open records); schema validation re-run clean
+(13/13 files OK).
+
+Running totals: 2,185/3,659 screened (1,110 include/1,075 exclude),
+1,474 open, 1,110 extracted studies, 52 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-third full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Forty-sixth batch from `new_batch_pool.json[450:460]`.
 
