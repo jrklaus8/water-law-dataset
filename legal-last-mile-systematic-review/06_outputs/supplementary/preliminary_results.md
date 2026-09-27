@@ -4804,6 +4804,43 @@ evidence of anything.
   open, 935 extracted studies, 43 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-sixth batch (10 records, 2026-09-27), ninth batch
+  from the 543-record pool.** `new_batch_pool.json[80:90]`. Bontianti,
+  Hungerford, Younsa & Noma (2014, neighborhood-scale comparative
+  fieldwork on Niger's 2001 PPP water-reform effects on two disadvantaged
+  Niamey neighborhoods, S938) — **INCLUDE**. Pierce & Gonzalez (2017,
+  mixed-methods content-analysis/administrative-data study of California
+  mobile-home-park water access under the state's legislated Human Right
+  to Water, S939) — **INCLUDE**. Muchadenyika (2015, case study of the
+  Harare Slum Upgrading Programme's incremental water/sanitation-access
+  institutional structure, Zimbabwe, S940) — **INCLUDE**. Gutierrez
+  (2007, documentary analysis of water/sanitation under-prioritization
+  within Malawi's and Zambia's Poverty Reduction Strategy Papers, S941)
+  — **INCLUDE**. Lele, Madhyastha, Sulagna, Dhavamani & Srinivasan (2018,
+  four-town comparative study of municipal vs. para-statal institutional
+  water-governance arrangements, south India, S942) — **INCLUDE**. Liu,
+  Brown, Demargne & Seo (2011, hydrologic-forecasting wavelet-based
+  timing-error methodology paper) — **EXCLUDE (E06)**. Mancilla Garcia &
+  Bodin (2019, basin-scale participatory water-resource-council
+  inclusion-dynamics study, Peru/Brazil, zero household-water mentions)
+  — **EXCLUDE (E01)**. Thompson (2016, feminist-geography intersectionality
+  conceptual framework paper with secondary-literature illustrative case
+  studies) — **EXCLUDE (E05)**. Batley (2006, editorial preface
+  introducing a journal symposium, not a primary study) — **EXCLUDE
+  (E12)**. Crocker, Shields, Venkataramanan, Saywell & Bartram (2016,
+  CLTS management-training evaluation study, Kenya, outcome is trainee
+  performance not household access) — **EXCLUDE (E04)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S938-S942, 935 →
+  940 rows each); `effect_sizes.csv` unchanged (43 rows: no eligible
+  regression-based estimates this batch); `exclusion_log.csv` updated
+  (865 → 870 rows; E01 350 → 351, E04 63 → 64, E05 117 → 118, E06 80 →
+  81, E12 11 → 12); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,849 open
+  records); schema validation re-run clean.
+  Running totals: 1,810/3,659 screened (940 include/870 exclude), 1,849
+  open, 940 extracted studies, 43 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

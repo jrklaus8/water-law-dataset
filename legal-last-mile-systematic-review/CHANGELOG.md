@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-fifth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Ninth batch from `new_batch_pool.json[80:90]`.
+
+- **R706085F2592E** (Bontianti, Hungerford, Younsa & Noma 2014, *Habitat
+  International*, "Fluid experiences: Comparing local adaptations to
+  water inaccessibility in two disadvantaged neighborhoods in Niamey,
+  Niger"). **INCLUDE.** Neighborhood-scale comparative fieldwork showing
+  Niger's 2001 PPP water reform produced highly variable, locally-
+  contingent access outcomes even among similarly disadvantaged
+  neighborhoods. Extracted as **S938**.
+- **R700E3084D85D** (Pierce & Gonzalez 2017, *Environmental Justice*,
+  "Public Drinking Water System Coverage and Its Discontents: The
+  Prevalence and Severity of Water Access Problems in California's
+  Mobile Home Parks"). **INCLUDE.** Mixed-methods content analysis +
+  administrative-data study evaluating mobile-home-park water access
+  against California's legislated Human Right to Water. Extracted as
+  **S939**.
+- **R6DB58AA8E6EA** (Muchadenyika 2015, *Habitat International*, "Slum
+  upgrading and inclusive municipal governance in Harare, Zimbabwe: New
+  perspectives for the urban poor"). **INCLUDE.** Case-study analysis of
+  the Harare Slum Upgrading Programme's incremental-development
+  institutional structure enabling gradual water/sanitation access for
+  informal settlers. Extracted as **S940**.
+- **R6C0CBAFA3F7A** (Gutierrez 2007, *Geoforum*, "Delivering pro-poor
+  water and sanitation services: The technical and political challenges
+  in Malawi and Zambia"). **INCLUDE.** Documentary/institutional
+  analysis of how water/sanitation were under-prioritized late additions
+  within both countries' national Poverty Reduction Strategy Papers.
+  Extracted as **S941**.
+- **R6B7F134E71E2** (Lele, Madhyastha, Sulagna, Dhavamani & Srinivasan
+  2018, *Water Policy*, "Match, don't mix: implications of institutional
+  and technical service modalities for water governance outcomes in
+  south Indian small towns"). **INCLUDE.** Four-town comparative study
+  (household surveys, metering, interviews) linking municipal vs.
+  para-statal institutional arrangements to water-governance
+  responsiveness and access outcomes. Extracted as **S942**.
+- **R6F950F094963** (Liu, Brown, Demargne & Seo 2011, "A wavelet-based
+  approach to assessing timing errors in hydrologic predictions") —
+  **EXCLUDE (E06).** Pure hydrologic-forecasting statistical methodology
+  paper; no institutional/legal content.
+- **R7DF428757F6D** (Mancilla Garcia & Bodin 2019, "Participatory Water
+  Basin Councils in Peru and Brazil: Expert discourses as means and
+  barriers to inclusion") — **EXCLUDE (E01).** Basin-scale
+  water-RESOURCE-governance study of participatory-forum inclusion
+  dynamics; zero mentions of household/drinking/domestic water,
+  consistent with the Tapela/Roncoli basin-scale exclusion precedent.
+- **R7DC5A97E31CC** (Thompson 2016, "Intersectionality and water: how
+  social relations intersect with ecological difference") — **EXCLUDE
+  (E05).** Feminist-geography conceptual/theoretical framework paper
+  with secondary-literature illustrative case studies, no original data
+  collection.
+- **R6CA3DF70B3CE** (Batley 2006, "Guest editor's preface. Symposium on
+  non-state provision of basic services") — **EXCLUDE (E12).** Editorial
+  preface introducing a journal symposium, not itself a primary
+  empirical study.
+- **R779433B8EBD3** (Crocker, Shields, Venkataramanan, Saywell & Bartram
+  2016, "Building capacity for water, sanitation, and hygiene
+  programming: Training evaluation theory applied to CLTS management
+  training in Kenya") — **EXCLUDE (E04).** Training-evaluation study of
+  a CLTS management-training program; outcome is trainee
+  learning/performance, not household water/sanitation access.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S938-S942 added;
+935 → 940 rows each). `effect_sizes.csv` unchanged (43 rows): none of
+this batch's includes are effect_sizes eligible (qualitative/mixed-
+methods comparative case studies, no regression-based estimate).
+`exclusion_log.csv` updated (865 → 870 rows; E01 350 → 351, E04 63 →
+64, E05 117 → 118, E06 80 → 81, E12 11 → 12). Duplicate audit
+(exact-DOI + study_id) found no new duplicates. `full_text_retrieval_
+queue.csv` regenerated (1,849 open records). `validate_schemas.py`
+confirms all 13 tracked files OK.
+
+Running totals: 1,810/3,659 screened (940 include/870 exclude), 1,849
+open, 940 extracted studies, 43 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-fifth full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Eighth batch from `new_batch_pool.json[70:80]`.
 
