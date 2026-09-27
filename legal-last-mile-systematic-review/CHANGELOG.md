@@ -4,7 +4,59 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-sixth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Two-hundred-twenty-seventh full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Fiftieth batch from `new_batch_pool.json[490:500]`.
+
+- **R0878C3037524** (Gulyani, Talukdar & Kariuki 2005, "Universal
+  (Non)service?", Urban Studies, Kenya). **INCLUDE.** 674-household
+  survey testing the "poor pay more, get less" narrative and the
+  demand-driven/water-markets prescription. → **S1127**.
+- **R09476239ACAF** (Ballestero 2015, "The Ethics of a Formula,"
+  American Ethnologist, Costa Rica). **INCLUDE.** Ethnography of
+  ARESEP's water-tariff regulatory formula operationalizing the
+  constitutional human right to water. → **S1128**.
+- **R0B7EE19A8A50** (Pastore 2015, "Reworking the relation between
+  sanitation and the city," Environment and Urbanization, Dar es
+  Salaam). **INCLUDE.** Colonial-era "piped paradigm" infrastructure
+  design as a mechanism of differential sanitation access. →
+  **S1129**.
+- **R03DD1BAD1AD0** (McSpirit & Reid 2011, bottled-water perceptions,
+  Appalachia). **EXCLUDE (E04).** Consumer purchasing-behavior/
+  perceptions study, wrong outcome.
+- **R05BD2228D528** (Willetts et al. 2013, gender-equality
+  strengths-based assessment methodology). **EXCLUDE (E12).**
+  Methodological/evaluation-approach paper.
+- **R0714B62F6AF9** (Kiunsi 2013, climate-change-adaptation
+  constraints, Dar es Salaam). **EXCLUDE (E01).** Climate-adaptation-
+  policy overview, water statistics contextual only.
+- **R08A3A9C2AA0D** (Imo State Evaluation Team 1989, Nigeria water/
+  sanitation health-impact evaluation). **EXCLUDE (E04).**
+  Quasi-experimental public-health epidemiological evaluation.
+- **R0AF5F2494B63** (Stewart & Gray 2006, Type Two multistakeholder
+  partnerships, Environmental Politics). **EXCLUDE (E01).**
+  Governance/stakeholder-theory analysis, no documented access
+  outcomes.
+- **R08ABAD98A481** (Perez 2002, sustainable livelihoods Mexican
+  rural community). **EXCLUDE (E01).** Participatory-development/
+  gender-inclusion critique, not a water-access mechanism.
+- **R0B1CE2205CB7** (Leon 2014, World Bank forced evictions Ethiopia,
+  Peace Review). **EXCLUDE (E01).** Land-tenure/eviction political
+  economy, water only incidentally mentioned.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1127-S1129,
+1,124 → 1,127 rows each); `effect_sizes.csv` unchanged (54 rows --
+all three includes are qualitative institutional case studies);
+`exclusion_log.csv` updated (1,080 → 1,087 rows; E01 476 → 480, E04
+73 → 75, E12 43 → 44); duplicate audit (exact-DOI + study_id) found
+no new duplicates; `full_text_retrieval_queue.csv` regenerated
+(1,445 open records); schema validation re-run clean (13/13 files
+OK).
+
+Running totals: 2,214/3,659 screened (1,127 include/1,087 exclude),
+1,445 open, 1,127 extracted studies, 54 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-sixth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
 
 Forty-ninth batch from `new_batch_pool.json[480:490]`.
 

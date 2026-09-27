@@ -6396,6 +6396,41 @@ evidence of anything.
   1,455 open, 1,124 extracted studies, 54 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-seventh batch (10 records, 2026-09-27),
+  fiftieth batch from the 543-record pool.** `new_batch_pool.json[490:500]`.
+  Gulyani, Talukdar & Kariuki (2005, 674-household survey testing the
+  "poor pay more, get less" narrative and demand-driven/water-markets
+  prescription, Kenya, S1127) — **INCLUDE**. Ballestero (2015,
+  ethnography of ARESEP's water-tariff regulatory formula
+  operationalizing the constitutional human right to water, Costa
+  Rica, S1128) — **INCLUDE**. Pastore (2015, colonial-era "piped
+  paradigm" infrastructure design as a mechanism of differential
+  sanitation access, Dar es Salaam, S1129) — **INCLUDE**. McSpirit &
+  Reid (2011, E04 bottled-water consumer-perceptions/purchasing-
+  behavior study, Appalachia) — **EXCLUDE (E04)**. Willetts et al.
+  (2013, E12 gender-equality strengths-based assessment methodology
+  paper) — **EXCLUDE (E12)**. Kiunsi (2013, E01 climate-change-
+  adaptation-policy overview, water statistics contextual only, Dar
+  es Salaam) — **EXCLUDE (E01)**. Imo State Evaluation Team (1989,
+  E04 quasi-experimental public-health epidemiological evaluation,
+  Nigeria) — **EXCLUDE (E04)**. Stewart & Gray (2006, E01 governance/
+  stakeholder-theory analysis, no documented access outcomes, Type
+  Two multistakeholder partnerships) — **EXCLUDE (E01)**. Perez
+  (2002, E01 participatory-development/gender-inclusion critique,
+  Mexican rural community) — **EXCLUDE (E01)**. Leon (2014, E01
+  land-tenure/eviction political economy, water only incidentally
+  mentioned, World Bank Ethiopia) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1127-S1129,
+  1,124 → 1,127 rows each); `effect_sizes.csv` unchanged (54 rows --
+  all three includes are qualitative institutional case studies);
+  `exclusion_log.csv` updated (1,080 → 1,087 rows; E01 476 → 480, E04
+  73 → 75, E12 43 → 44); duplicate audit (exact-DOI + study_id) found
+  no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,445 open records); schema validation re-run clean.
+  Running totals: 2,214/3,659 screened (1,127 include/1,087 exclude),
+  1,445 open, 1,127 extracted studies, 54 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
