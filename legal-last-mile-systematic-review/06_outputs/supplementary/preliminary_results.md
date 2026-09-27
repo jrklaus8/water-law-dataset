@@ -5106,6 +5106,44 @@ evidence of anything.
   open, 978 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-fourth batch (10 records, 2026-09-27), seventeenth
+  batch from the 543-record pool.** `new_batch_pool.json[160:170]`.
+  Molinos-Senante (2018, book chapter on Chile's Law 382/Law 70 tariff-
+  setting reforms and Law 18,778 subsidy system for vulnerable
+  households, S981) — **INCLUDE**. Dismas, Mulungu & Mtalo (2018,
+  household survey of rainwater-harvesting adoption under Tanzania's
+  Water Resources Management Act 2009 permit exemption and municipal
+  building-permit bylaws, Kinondoni, S982) — **INCLUDE**. Irshad (2013,
+  field survey of World Bank/JBIC-funded institutional reform shifting
+  Kerala Water Authority from subsidized to cost-recovery community
+  provision, S983) — **INCLUDE**. ElDidi & Corbera (2017, qualitative
+  case study of charitable water wells/property-rights institutions
+  under Egypt's 1984 Irrigation and Drainage Law, Nile Delta, S984) —
+  **INCLUDE**. Matros-Goreses & Franceys (2008, interview study of
+  Namibia's politically-driven tariff price-setting process and its
+  affordability consequences for the urban poor, Windhoek, S985) —
+  **INCLUDE**. Bisung et al (2015, photovoice ecosocial/health-geography
+  study, Kenya) — **EXCLUDE (E01)**. Long et al (2013, anthropological
+  water-values/chemical-contamination study, Ghanaian gold-mining
+  community) — **EXCLUDE (E01)**. Hamed & Sannen (1993, technical/
+  financial engineering planning report, Fayoum Egypt) — **EXCLUDE
+  (E06)**. Zhuang, Fang & Ji (2021, program-implementation-factor
+  regression study for urine-diverting dry toilets, rural China) —
+  **EXCLUDE (E01)**. Herrala & Haapasalo (2012, SWOT-analysis comparison
+  of public waterworks governance/ownership models on efficiency
+  grounds, Finland) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S981-S985, 978 →
+  983 rows each); `effect_sizes.csv` unchanged (45 rows: no eligible
+  estimates this batch — all five includes are qualitative/descriptive,
+  none report a regression-based estimate isolating a legal/institutional
+  mechanism's effect); `exclusion_log.csv` updated (901 → 906 rows;
+  E01 363 → 367, E06 89 → 90); duplicate audit (exact-DOI + study_id)
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,770 open records); schema validation re-run clean.
+  Running totals: 1,889/3,659 screened (983 include/906 exclude), 1,770
+  open, 983 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

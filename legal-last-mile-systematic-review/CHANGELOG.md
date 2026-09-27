@@ -4,7 +4,85 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-third full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-fourth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Seventeenth batch from `new_batch_pool.json[160:170]`.
+
+- **R420211B3E670** (Molinos-Senante 2018, book chapter, "Urban Water
+  Management," in Donoso (ed) *Water Policy in Chile*). **INCLUDE.**
+  Legal/institutional review of Chile's Law 382 (General Law of
+  Sanitation Services) and Law 70 (General Law of Tariffs) tariff-
+  setting reforms, SISS regulator, and Law 18,778's targeted subsidy
+  system for low-income households (14.8% of customers subsidized in
+  2015). Extracted as **S981**.
+- **R418BDADF8E47** (Dismas, Mulungu & Mtalo 2018, *Water Science &
+  Technology: Water Supply*, "Advancing rainwater harvesting as a
+  strategy to improve water access in Kinondoni municipality,
+  Tanzania"). **INCLUDE.** Household survey (102 households) of RWH
+  adoption under the Tanzania Water Resources Management Act 2009's
+  water-permit exemption for domestic RWH and municipal building-permit
+  bylaws mandating RWH inclusion. Extracted as **S982**.
+- **R410CAF95F628** (Irshad 2013, *Water Policy*, "Foreign funding-
+  induced development, institutional weakening and access to water: a
+  case study from Kerala, India"). **INCLUDE.** Field survey (92
+  villages) of World Bank/JBIC-funded institutional reform shifting
+  Kerala Water Authority from subsidized state provision to a
+  cost-recovery community-ownership scheme (KRWSA), with quantified
+  before/after household access change. Extracted as **S983**.
+- **R43C575771C91** (ElDidi & Corbera 2017, *Development and Change*,
+  "A Moral Economy of Water: Charity Wells in Egypt's Nile Delta").
+  **INCLUDE.** Qualitative case study (55 interviews) of property-
+  rights regimes and charitable-institution governance (sobol/waqf)
+  under Egypt's 1984 Irrigation and Drainage Law, documenting
+  differential water access by institutional arrangement. Extracted as
+  **S984**.
+- **R3DCC4CCBD760** (Matros-Goreses & Franceys 2008, *Water Science &
+  Technology: Water Supply*, "The price-setting process and a potential
+  role for economic regulation in a water scarce developing country").
+  **INCLUDE.** Interview study (35 individuals, 16 organizations) of
+  Namibia's politically-driven tariff price-setting process under the
+  Water Resources Management Act 2004, documenting affordability
+  consequences for the urban poor. Extracted as **S985**.
+- **R41224AA84355** (Bisung, Elliott, Abudho, Schuster-Wallace & Karanja
+  2015, "Dreaming of toilets: Using photovoice to explore knowledge,
+  attitudes and practices around water-health linkages in rural Kenya")
+  — **EXCLUDE (E01).** Photovoice ecosocial/health-geography study;
+  institutional content (KIWASCO pro-poor model) is background context,
+  not the paper's core analytical focus.
+- **R440763E96236** (Long et al. 2013, "Water Values in a Ghanaian
+  Small-Scale Gold Mining Community") — **EXCLUDE (E01).**
+  Anthropological water-values/chemical-contamination study; government
+  oversight discussed as background, not the core analytical framework.
+- **R3FEE63DFDEC4** (Hamed & Sannen 1993, "The development of rural
+  water supply in the province of Fayoum, Egypt") — **EXCLUDE (E06).**
+  Technical/engineering and financial planning report (production
+  capacity, billing efficiency, UFW), not an institutional-mechanism
+  analysis.
+- **R3F83B65D41C0** (Zhuang, Fang & Ji 2021, "Beyond technology: a
+  program for promoting urine-diverting dry toilets in rural areas to
+  support sustainability") — **EXCLUDE (E01).** Ordinal logistic
+  regression of social-marketing program-implementation factors
+  predicting UDDT adoption; a behavioral-uptake study, not a legal/
+  institutional access mechanism.
+- **R3E6A10BB691A** (Herrala & Haapasalo 2012, "Effect of governance
+  models on enhancing water service delivery") — **EXCLUDE (E01).**
+  SWOT-analysis comparison of public waterworks ownership/governance
+  models (Finland) on efficiency/business-orientation grounds; not
+  focused on access inequality for any marginalized population.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S981-S985 added;
+978 → 983 rows each). `effect_sizes.csv` unchanged (45 rows): all five
+includes are qualitative/descriptive studies with no regression-based
+estimate isolating a legal/institutional mechanism's effect.
+`exclusion_log.csv` updated (901 → 906 rows; E01 363 → 367, E06 89 →
+90). Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,770 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,889/3,659 screened (983 include/906 exclude), 1,770
+open, 983 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-third full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Sixteenth batch from `new_batch_pool.json[150:160]`.
 
