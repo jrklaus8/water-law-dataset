@@ -4,7 +4,78 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-third full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Two-hundred-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Twenty-seventh batch from `new_batch_pool.json[260:270]`.
+
+- **R07A0E36456D4** (Mogomotsi, Mogomotsi & Matlhola 2018, "A review of
+  formal institutions affecting water supply and access in Botswana").
+  **INCLUDE.** New-institutional-economics review documenting Botswana's
+  Water Act 1968 Section 6 borehole-permission regime and the absence of
+  a justiciable right to water, analyzed via the Mosetlhanyane/Sesana
+  case law in which the government refused indigenous Basarwa/San
+  residents of the Central Kalahari Game Reserve permission to
+  re-commission a domestic borehole as a coercive relocation tool.
+  Extracted as **S1018**.
+- **R53F48CC1C325** (Fischer 2021, *World Development*, "Decentralization
+  and the governance of climate adaptation... India"). **INCLUDE.**
+  Mixed-methods study of India's MGNREGA statutory decentralized-
+  planning mechanism, finding via a primary dataset of 798 projects
+  across 35 Himachal Pradesh villages that 79% of water-related
+  interventions improved water access, with benefits skewed toward
+  poorer and historically marginalized groups. Extracted as **S1019**.
+- **R21E208560E01** (Hope 2007, *World Development*, "Evaluating Social
+  Impacts of Watershed Development in India"). **INCLUDE, effect_sizes-
+  eligible.** Propensity-score-matched quasi-experimental evaluation
+  (n=470) finding a government watershed-development institutional
+  intervention increased mean domestic water collection time by 17.37
+  min/day (SE 2.46), with significant heterogeneous effects by income
+  quartile and prior collection-time burden. Extracted as **S1020**;
+  added to `effect_sizes.csv` (Family A).
+- **RBF7A834386E5** (Zerah 2008, *Geoforum*, "Splintering urbanism in
+  Mumbai: Contrasting trends in a multilayered society"). **INCLUDE.**
+  Historical-institutional analysis documenting the 1888 Bombay
+  Municipal Corporation Act, "notified" vs. "non-notified" slum
+  eligibility classification for network expansion, and 1970s World
+  Bank institutional-restructuring conditionalities, tied to documented
+  differential access (500 vs. ~50 lpcd by area; 5% vs. 49% individual-
+  connection rates for slum dwellers). Extracted as **S1021**.
+- **R01577352961E** (Bardosh 2015, "Achieving 'Total Sanitation' in
+  Rural African Geographies... Eastern Zambia") — **EXCLUDE (E01).**
+  Behavioral/participatory CLTS programme-evaluation ethnography; no
+  specific legal/institutional access mechanism.
+- **R234022A8FD20** (Romero Lankao 2010, "Water in Mexico City: what
+  will climate change bring...") — **EXCLUDE (E01).** Climate-hazard/
+  flood-drought vulnerability study; institutional content is
+  contextual background to disaster-risk-reduction narrative.
+- **RBC9BBD26946B** (Ilahi & Grimard 2000, "Public Infrastructure and
+  Private Costs: Water Supply and Time Allocation of Women in Rural
+  Pakistan") — **EXCLUDE (E01).** Econometric infrastructure-quality/
+  time-allocation study; no specific legal/institutional mechanism.
+- **RBFBE0C8DD5C3** (Nkwocha 2009, "Water Supply Deficiency and
+  Implications for Rural Development in the Niger-Delta Region of
+  Nigeria") — **EXCLUDE (E01).** General water-scarcity-impact survey;
+  no legal/institutional mechanism examined.
+- **RC05659F81735** (Poonia & Punia 2018, "A question on sustainability
+  of drinking water supply... India") — **EXCLUDE (E01).** Macro-level
+  district-scale AHP spatial-index/benchmarking study.
+- **RC03DB0BC866E** (Adegun 2015, "State-led versus community-
+  initiated: stormwater drainage... Johannesburg") — **EXCLUDE (E07).**
+  Stormwater-drainage/flood-management study; wrong service.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1018-S1021 added;
+1,015 → 1,019 rows each). `effect_sizes.csv` updated (45 → 46 rows: S1020
+added, a propensity-score-matched estimate isolating a legal/
+institutional mechanism's effect on a Family A water-access outcome).
+`exclusion_log.csv` updated (963 → 969 rows; E01 406 → 411, E07 23 → 24).
+Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,671 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,988/3,659 screened (1,019 include/969 exclude), 1,671
+open, 1,019 extracted studies, 46 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-third full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Twenty-sixth batch from `new_batch_pool.json[250:260]`.
 

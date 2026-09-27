@@ -5510,6 +5510,48 @@ evidence of anything.
   1,681 open, 1,015 extracted studies, 45 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-fourth batch (10 records, 2026-09-27), twenty-seventh
+  batch from the 543-record pool.** `new_batch_pool.json[260:270]`.
+  Mogomotsi, Mogomotsi & Matlhola (2018, new-institutional-economics
+  review finding Botswana's Water Act 1968 borehole-permission regime,
+  absent a justiciable right to water, was used per the Mosetlhanyane/
+  Sesana case law to deny indigenous Basarwa/San residents of the
+  Central Kalahari Game Reserve water access as a coercive relocation
+  tool, S1018) — **INCLUDE**. Fischer (2021, mixed-methods study
+  finding India's MGNREGA decentralized-planning mechanism improved
+  water access in 79% of 251 water-related interventions across a
+  798-project dataset, benefits skewed toward marginalized groups,
+  Himachal Pradesh, S1019) — **INCLUDE**. Hope (2007, propensity-score-
+  matched evaluation finding a government watershed-development
+  intervention increased domestic water collection time by 17.37
+  min/day on average with heterogeneous effects by income and social
+  group, Madhya Pradesh, S1020) — **INCLUDE, added to effect_sizes.csv
+  (Family A)**. Zerah (2008, historical-institutional analysis finding
+  the 1888 Bombay Municipal Corporation Act and notified/non-notified
+  slum eligibility classification tied to documented differential
+  water-access outcomes, Mumbai, S1021) — **INCLUDE**. Bardosh (2015,
+  E01 behavioral/participatory CLTS sanitation-programme ethnography,
+  Zambia) — **EXCLUDE (E01)**. Romero Lankao (2010, E01 climate-hazard/
+  flood-drought vulnerability study, Mexico City) — **EXCLUDE (E01)**.
+  Ilahi & Grimard (2000, E01 econometric infrastructure-quality/time-
+  allocation study, rural Pakistan) — **EXCLUDE (E01)**. Nkwocha (2009,
+  E01 general water-scarcity-impact survey, Niger-Delta Nigeria) —
+  **EXCLUDE (E01)**. Poonia & Punia (2018, E01 macro-level district-
+  scale AHP spatial-index study, India) — **EXCLUDE (E01)**. Adegun
+  (2015, E07 stormwater-drainage/flood-management study, wrong service,
+  Johannesburg) — **EXCLUDE (E07)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1018-S1021,
+  1,015 → 1,019 rows each); `effect_sizes.csv` updated (45 → 46 rows:
+  S1020 added, a propensity-score-matched estimate isolating a legal/
+  institutional mechanism's effect on a Family A water-access outcome);
+  `exclusion_log.csv` updated (963 → 969 rows; E01 406 → 411, E07
+  23 → 24); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,671 open
+  records); schema validation re-run clean.
+  Running totals: 1,988/3,659 screened (1,019 include/969 exclude),
+  1,671 open, 1,019 extracted studies, 46 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
