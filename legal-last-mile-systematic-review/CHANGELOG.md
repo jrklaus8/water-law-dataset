@@ -4,7 +4,61 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-nineteenth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Two-hundred-twentieth full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Forty-third batch from `new_batch_pool.json[420:430]`.
+
+- **R6F0D8847D6F7** (de Sardan 2011, "Local Powers and the Co-delivery
+  of Public Goods in Niger," IDS Bulletin). **INCLUDE.** Multiple
+  institutional modes of governance co-delivering water; project-
+  imposed contribution quotas; traders circumventing subsidized-water
+  eligibility by misrepresenting occupation. → **S1094**.
+- **R214868A2F9A8** (Adams & Zulu 2015, "Participants or customers in
+  water governance?," Geoforum, Malawi). **INCLUDE.** Water User
+  Associations as business-based community-public partnership model;
+  land-tenure insecurity and power relations shaping peri-urban water
+  access. → **S1095**.
+- **R236175EC76E5** (Sandoval-Minero 2019, "Water Utilities... The
+  Mexican Case," Springer). **INCLUDE.** Federal subsidy allocation
+  without performance linkage; new connections financed directly by
+  users via connection rights, shifting cost burden onto households.
+  → **S1096**.
+- **R6C0CAA12E4E9** (Agthe & Billings 1987, Tucson block-rate price
+  elasticity by income group). **EXCLUDE (E06).** Pure demand-
+  elasticity economics study, not an access-eligibility mechanism.
+- **R69F53378C8F2** (Jiang & Zheng 2014, China PSP water-utility
+  performance). **EXCLUDE (E06).** Utility financial/efficiency
+  study; the one potentially access-relevant coverage estimate is
+  explicitly non-significant per the authors.
+- **R686809568A69** (Plummer et al. 2010, Walkerton multi-barrier
+  source-water-protection policy). **EXCLUDE (E01).** Water-quality
+  regulatory-policy study, distinct from access-eligibility mechanism.
+- **R6D2B3D34E44B** (Closmann 2007, Hamburg water pollution history
+  1919-1923). **EXCLUDE (E01).** Historical water-quality/pollution
+  study, no access-eligibility content.
+- **R6E9D96798462** (Ivens 2008, "Does Increased Water Access Empower
+  Women?," Development). **EXCLUDE (E12).** Synthesis/opinion essay,
+  no original empirical data.
+- **R20AFC5AD5970** (Kansal & Cole 2019, Sierra Leone WASH
+  sustainability index). **EXCLUDE (E01).** Broad sustainability/
+  customer-satisfaction framework, not a specific eligibility
+  mechanism.
+- **R1EA55CF56B9D** (Gero et al. 2014, systematic review of
+  enterprise WASH roles, J. Water Sanit. Hyg. Dev.). **EXCLUDE
+  (E12).** Explicitly labeled review paper, no original empirical
+  data.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1094-S1096,
+1,091 → 1,094 rows each); `effect_sizes.csv` unchanged (51 rows --
+all three includes are qualitative/institutional-analysis case
+studies without a regression-based effect size); `exclusion_log.csv`
+updated (1,044 → 1,051 rows; E01 464 → 467, E06 98 → 100, E12 33 →
+35); duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,514 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,145/3,659 screened (1,094 include/1,051 exclude),
+1,514 open, 1,094 extracted studies, 51 effect_sizes rows.
 
 Forty-second batch from `new_batch_pool.json[410:420]`.
 
