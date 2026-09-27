@@ -5892,6 +5892,41 @@ evidence of anything.
   1,584 open, 1,056 extracted studies, 50 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-fourteenth batch (10 records, 2026-09-27), thirty-
+  seventh batch from the 543-record pool.** `new_batch_pool.json[360:370]`.
+  Massey (2014, Cape Town informal-settlement upgrading failure
+  prompting illegal water/electricity connections as counter-conduct,
+  S1059) — **INCLUDE**. Acey (2010, 783-household survey of gendered
+  exclusion from water-governance voice channels, Lagos and Benin
+  City, Nigeria, S1060) — **INCLUDE**. Hoque & Hoque (1994, Bangladesh
+  rural WSS partnership, gender-differentiated tubewell site-selection
+  participation, S1061) — **INCLUDE**. Marson & Savin (2015, panel
+  regression across 22 SSA countries finding curvilinear cost-
+  recovery-policy effect on water-coverage change, S1062) —
+  **INCLUDE**, added to `effect_sizes.csv` (Family C). van Koppen &
+  Schreiner (2014, South Africa statutory water-licensing law
+  analysis identifying three forms of legal injustice against poor/
+  Black small-scale water users, S1063) — **INCLUDE**. Godlewski
+  (2010, E01 Israeli-Palestinian water-politics geopolitical essay) —
+  **EXCLUDE (E01)**. Proskuryakova et al. (2018, E01 Russia water-
+  sector scenario-planning study) — **EXCLUDE (E01)**. Kulkarni &
+  Shankar (2014, E01 India groundwater-resource-competition study) —
+  **EXCLUDE (E01)**. Kot, Gagnon & Castleden (2015, E01 Canadian
+  small-water-system regulatory-compliance-capacity study) —
+  **EXCLUDE (E01)**. Reddy & Snehalatha (2011, E01 sanitation/hygiene
+  meaning to poor women, socio-cultural perceptions study, Hyderabad)
+  — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1059-S1063,
+  1,056 → 1,061 rows each); `effect_sizes.csv` updated (50 → 51 rows:
+  S1062 added, cost-recovery-policy effect on water-coverage change,
+  Family C); `exclusion_log.csv` updated (1,019 → 1,024 rows; E01
+  446 → 451); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,574 open
+  records); schema validation re-run clean.
+  Running totals: 2,085/3,659 screened (1,061 include/1,024 exclude),
+  1,574 open, 1,061 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

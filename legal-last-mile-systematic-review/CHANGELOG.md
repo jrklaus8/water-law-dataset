@@ -4,7 +4,61 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirteenth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Two-hundred-fourteenth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Thirty-seventh batch from `new_batch_pool.json[360:370]`.
+
+- **R527BCF310148** (Massey 2014, "Exploring counter-conduct in
+  upgraded informal settlements," Habitat International).
+  **INCLUDE.** Government upgrading-program design failing residents'
+  needs, prompting illegal water/electricity connections as the most
+  prevalent counter-conduct, Cape Town. → **S1059**.
+- **R5209A3D2844E** (Acey 2010, "Gender and community mobilisation,"
+  Gender & Development). **INCLUDE.** 783-household survey documenting
+  gendered exclusion from water-governance voice channels, Lagos and
+  Benin City, Nigeria. → **S1060**.
+- **R553025EB9A0D** (Hoque & Hoque 1994, Bangladesh rural WSS
+  partnership, Health Policy and Planning). **INCLUDE.** Gender-
+  differentiated (15% vs. near-universal) participation in NGO/
+  government tubewell site-selection process. → **S1061**.
+- **R54F56C59F64A** (Marson & Savin 2015, "Ensuring Sustainable Access
+  to Drinking Water in Sub Saharan Africa," World Development).
+  **INCLUDE.** Panel regression (22 SSA countries) finding a
+  curvilinear cost-recovery-policy effect on water-coverage change.
+  → **S1062**, added to `effect_sizes.csv` (Family C).
+- **R535DF24F0A07** (van Koppen & Schreiner 2014, "Priority General
+  Authorisations," Water Policy). **INCLUDE.** Statutory water-
+  licensing law analysis identifying three forms of legal injustice
+  against poor/Black small-scale water users, South Africa. →
+  **S1063**.
+- **R4FF8291DD424** (Godlewski 2010, Israeli-Palestinian water
+  politics geopolitical essay). **EXCLUDE (E01).** Water-resource
+  conflict, not water-service access.
+- **R526DB7DFDBEF** (Proskuryakova et al. 2018, Russia water-sector
+  trends/future scenarios). **EXCLUDE (E01).** Scenario-planning
+  study.
+- **R4FFEE7FE13E6** (Kulkarni & Shankar 2014, India groundwater-
+  resource competition). **EXCLUDE (E01).** Water-resource governance,
+  not water-service access.
+- **R52495F14FBEB** (Kot, Gagnon & Castleden 2015, Canadian small
+  water-system compliance). **EXCLUDE (E01).** Regulatory-compliance-
+  capacity study.
+- **R54542BFFD781** (Reddy & Snehalatha 2011, sanitation/hygiene
+  meaning to poor women, Hyderabad). **EXCLUDE (E01).** Socio-cultural
+  perceptions study, not a legal/institutional-mechanism study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1059-S1063,
+1,056 → 1,061 rows each); `effect_sizes.csv` updated (50 → 51 rows --
+S1062 added, Family C, cost-recovery-policy effect on water-coverage
+change); `exclusion_log.csv` updated (1,019 → 1,024 rows; E01 446 →
+451); duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,574 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,085/3,659 screened (1,061 include/1,024 exclude),
+1,574 open, 1,061 extracted studies, 51 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-thirteenth full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Thirty-sixth batch from `new_batch_pool.json[350:360]`.
 
