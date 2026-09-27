@@ -4,7 +4,86 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-seventh full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-eighth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Twenty-first batch from `new_batch_pool.json[200:210]`.
+
+- **R2E4979185A18** (Bakker, Kooy, Shofiani & Martijn 2008, *World
+  Development*, "Governance Failure: Rethinking the Institutional
+  Dimensions of Urban Water Supply to Poor Households"). **INCLUDE.**
+  Mixed-methods study developing a "governance failure" institutional
+  framework, documenting how utility governance norms, land-use
+  policy, discriminatory connection-fee policies, and household
+  tenure/residency status jointly disincentivize connecting poor
+  households to networked water supply, Jakarta. Extracted as
+  **S1000**.
+- **RAF43F1049CAC** (Kooy & Bakker 2008, *Geoforum*, "Splintered
+  networks: The colonial and contemporary waters of Jakarta").
+  **INCLUDE.** Archival/interview-based historical study tracing
+  colonial-era institutional citizenship classification to the origins
+  and sustained postcolonial persistence of highly unequal, fragmented
+  water access, unaltered by 1998 private-sector management. Extracted
+  as **S1001**.
+- **R2E27CA42816D** (Statman-Weil, Nanus & Wilkinson 2020, *Applied
+  Geography*, "Disparities in community water system compliance with
+  the Safe Drinking Water Act"). **INCLUDE.** Negative-binomial-
+  regression study finding small (<200 connections) and rural
+  community water systems significantly less likely to comply with the
+  U.S. Safe Drinking Water Act, Pennsylvania. Extracted as **S1002**.
+- **RAE2EE524BC5B** (Anand 2007, *Journal of International
+  Development*, "Right to water and access to water: an assessment").
+  **INCLUDE.** Comparative cross-country empirical study applying a
+  Hohfeldian legal-rights framework and governance indicators to test
+  whether formal legal promulgation of a right to water improves
+  access, finding governance mechanisms matter more than the right's
+  formal articulation. Extracted as **S1003**.
+- **R2E89C4D0ECBE** (Pinto, Da Cruz & Marques 2015, "Contracting water
+  services with public and private partners: a case study approach") —
+  **EXCLUDE (E01).** Comparative case study of PPP vs. public-public
+  water-utility contract design quality, Portugal; focused on
+  contracting practice, not differential household access outcomes.
+- **RAD91FA5DFF79** (Daniere & Takahashi 1999, "Poverty and Access:
+  Differences and Commonalties across Slum Communities in Bangkok") —
+  **EXCLUDE (E01).** Household survey finding settlement age/income
+  (not government policy) explain access differences; general
+  socioeconomic-determinants study, not a legal/institutional
+  mechanism.
+- **R2E48DA87EEB4** (Gupta, Ahlers & Ahmed 2010, "The human right to
+  water: Moving towards consensus in a fragmented world") — **EXCLUDE
+  (E05).** Theoretical/doctrinal argument article on the UN human-
+  right-to-water resolution advocating a PPP-to-NGO partnership shift;
+  normative commentary without an empirical case study.
+- **R2DBFA78BFB76** (Criqui 2015, "Infrastructure urbanism: Roadmaps
+  for servicing unplanned urbanisation in emerging cities") — **EXCLUDE
+  (E01).** Urban-planning theory of infrastructure-extension mechanisms
+  for water and electricity, Delhi/Lima; multi-sector planning
+  framework, not a water-specific legal/institutional mechanism study.
+- **RB091A2B0357C** (Gandy 2006, "Planning, Anti-planning and the
+  Infrastructure Crisis Facing Metropolitan Lagos") — **EXCLUDE
+  (E01).** Historical/political-economy essay on general multi-sector
+  (water, housing, transit) infrastructure crisis, Lagos.
+- **R2D7CBFF1D2B9** (Devkar, Thillai Rajan, Narayanan & Elayaraja 2019,
+  "Provision of Basic Services in Slums: A review of the evidence on
+  top-down and bottom-up approaches") — **EXCLUDE (E12).** Self-labeled
+  systematic review; secondary synthesis, not primary research.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1000-S1003
+added; 997 → 1,001 rows each). `effect_sizes.csv` unchanged (45 rows):
+all four includes are qualitative/descriptive or comparative-
+secondary-data studies with no regression-based estimate isolating a
+legal/institutional mechanism's effect on a Family A/B/C water-access
+outcome (S1002's SDWA-compliance regression was considered but not
+added — its outcome is regulatory violations, not a Family A/B/C
+access outcome). `exclusion_log.csv` updated (922 → 928 rows; E01
+376 → 380, E05 122 → 123, E12 21 → 22). Duplicate audit (exact-DOI +
+study_id) found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (1,730 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,929/3,659 screened (1,001 include/928 exclude),
+1,730 open, 1,001 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-seventh full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Twentieth batch from `new_batch_pool.json[190:200]`.
 

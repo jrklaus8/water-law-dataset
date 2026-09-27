@@ -5262,6 +5262,46 @@ evidence of anything.
   open, 997 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-eighth batch (10 records, 2026-09-27), twenty-first
+  batch from the 543-record pool.** `new_batch_pool.json[200:210]`.
+  Bakker, Kooy, Shofiani & Martijn (2008, mixed-methods "governance
+  failure" study of utility/household institutional disincentives to
+  connect poor households, Jakarta, S1000) — **INCLUDE**. Kooy &
+  Bakker (2008, archival/historical study of colonial-era institutional
+  citizenship classification producing persistent fragmented water
+  access, Jakarta, S1001) — **INCLUDE**. Statman-Weil, Nanus &
+  Wilkinson (2020, regression study of disparities in Safe Drinking
+  Water Act compliance by system size/rurality, Pennsylvania, S1002) —
+  **INCLUDE**. Anand (2007, comparative cross-country study testing
+  whether legal right-to-water promulgation improves access via
+  Hohfeldian framework and governance indicators, S1003) —
+  **INCLUDE**. Pinto, Da Cruz & Marques (2015, comparative case study
+  of PPP/public-public water-utility contract design quality,
+  Portugal) — **EXCLUDE (E01)**. Daniere & Takahashi (1999,
+  socioeconomic-determinants-of-access measurement study, Bangkok
+  slums) — **EXCLUDE (E01)**. Gupta, Ahlers & Ahmed (2010, theoretical/
+  doctrinal argument on UN human-right-to-water resolution and PPP-to-
+  NGO partnership shift) — **EXCLUDE (E05)**. Criqui (2015, urban-
+  planning theory of infrastructure-extension mechanisms for water and
+  electricity, Delhi/Lima) — **EXCLUDE (E01)**. Gandy (2006, historical/
+  political-economy essay on general multi-sector infrastructure
+  crisis, Lagos) — **EXCLUDE (E01)**. Devkar, Thillai Rajan, Narayanan
+  & Elayaraja (2019, self-labeled systematic review of slum basic-
+  service provision approaches) — **EXCLUDE (E12)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1000-S1003,
+  997 → 1,001 rows each); `effect_sizes.csv` unchanged (45 rows: no
+  eligible estimates this batch — all four includes are qualitative/
+  descriptive or comparative-secondary-data studies, none report a
+  regression-based estimate isolating a legal/institutional mechanism's
+  effect on a Family A/B/C water-access outcome); `exclusion_log.csv`
+  updated (922 → 928 rows; E01 376 → 380, E05 122 → 123, E12 21 → 22);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,730 open records);
+  schema validation re-run clean.
+  Running totals: 1,929/3,659 screened (1,001 include/928 exclude),
+  1,730 open, 1,001 extracted studies, 45 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
