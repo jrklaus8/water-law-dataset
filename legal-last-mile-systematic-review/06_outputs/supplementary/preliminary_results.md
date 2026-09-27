@@ -6509,6 +6509,41 @@ evidence of anything.
   1,426 open, 1,137 extracted studies, 55 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirtieth batch (10 records, 2026-09-27),
+  fifty-third batch from the 543-record pool.** `new_batch_pool.json[520:530]`.
+  Shrestha (2013, logistic-regression study of self-organized network
+  capital and RWSSP infrastructure-funding success, Nepal, S1140) —
+  **INCLUDE**. Hajek & Petruzela (2016, E06 tariff-pricing sustainability
+  econometrics, Czech Republic) — **EXCLUDE (E06)**. Kayser et al.
+  (2019, E12 WASH gender-measurement perspectives article) — **EXCLUDE
+  (E12)**. Hannah et al. (2021, E01 gender-quota
+  governance-representation study, WRUA committees Kenya) — **EXCLUDE
+  (E01)**. Agarwal (2011, E01 broad wealth-quartile urban health
+  disparities, India) — **EXCLUDE (E01)**. Berk et al. (1980, E06
+  water-conservation demand-management econometrics, California) —
+  **EXCLUDE (E06)**. Kane (2012, E01 hydropolitics/disaster-narrative
+  ethnography, Buenos Aires) — **EXCLUDE (E01)**. Wutich (2011, E01
+  informal reciprocity/moral-economy coping-strategy study, Cochabamba)
+  — **EXCLUDE (E01)**. Target "AFRICA: Barriers to investment in water
+  are lowering" (2011) — **WRONG_FILE_RETRIEVED**: delivered PDF was
+  instead Cotula et al. (2009), an unrelated agricultural-land-deals
+  report. Ananga (2015, dissertation on community participation in
+  water production/management, Kisumu Kenya) — **LEFT UNDECIDED**:
+  title/authorship confirmed correct, but the Google Drive extraction
+  delivered only front matter and Chapters 1-3, omitting the empirical
+  results chapters (4-7); record left open per the undecided-record
+  rule, file not moved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1140,
+  1,137 → 1,138 rows each); `effect_sizes.csv` updated (55 → 56 rows
+  -- S1140 added as Family B); `exclusion_log.csv` updated (1,096 →
+  1,103 rows; E01 484 → 488, E06 104 → 106, E12 46 → 47); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,418 open records);
+  schema validation re-run clean.
+  Running totals: 2,241/3,659 screened (1,138 include/1,103 exclude),
+  1,418 open (including 20 wrong_file_retrieved), 1,138 extracted
+  studies, 56 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

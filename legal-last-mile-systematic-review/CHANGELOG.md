@@ -4,7 +4,67 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-ninth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Two-hundred-thirtieth full-text screening batch (10 records, 1 include, 7 excludes, 1 wrong_file_retrieved, 1 left undecided)
+
+Fifty-third batch from `new_batch_pool.json[520:530]`.
+
+- **R102EBEF65059** (Shrestha 2013, "Self-Organizing Network Capital and
+  the Success of Collaborative Public Programs," JPART, Nepal).
+  **INCLUDE.** Logistic regression: village communities' network capital
+  (partners, bridging reach, subgroup cohesion) sharply increases
+  probability of securing Rural Water Supply and Sanitation Program
+  funding. → **S1140**. **Added to effect_sizes.csv** (Family B).
+- **RDC5BD0E41BEE** (Hajek & Petruzela 2016, water/sewerage tariff
+  sustainability, Czech Republic). **EXCLUDE (E06).** Economic/tariff
+  price-elasticity analysis of existing-customer consumption.
+- **R00CA19ACF0B3** (Kayser et al. 2019, WASH gender-equality
+  measurement, Bull WHO). **EXCLUDE (E12).** Perspectives/commentary
+  proposing indicator frameworks, no original case study.
+- **R03FCE2E0674E** (Hannah et al. 2021, gender quota water
+  committees, Kenya, World Development). **EXCLUDE (E01).**
+  Governance-representation/leadership-equity study, no documented
+  water-access outcomes.
+- **R0A1ED1B5B51E** (target: "AFRICA: Barriers to investment in water
+  are lowering," 2011). **WRONG_FILE_RETRIEVED.** Delivered PDF was
+  instead Cotula et al. 2009, "Land grab or development opportunity?"
+  (IIED/FAO/IFAD) — different authors, title, year, and topic
+  (agricultural land deals, not water investment); not screened, file
+  not moved.
+- **R0CCBF382E07C** (Agarwal 2011, state of urban health India,
+  Environment and Urbanization). **EXCLUDE (E01).** Broad
+  wealth-quartile health-disparities analysis, water/sanitation one of
+  several outcome indicators, no institutional mechanism analyzed.
+- **R1D80BF6FC64D** (Berk et al. 1980, reducing water consumption
+  acute scarcity, California). **EXCLUDE (E06).** Econometric
+  water-conservation/demand-management program study.
+- **R133156D538B6** (Kane 2012, water security Buenos Aires,
+  Human Organization). **EXCLUDE (E01).** Ethnographic hydropolitics
+  essay, broad disaster narratives, not a focused access mechanism.
+- **R153375378313** (Wutich 2011, moral economy of water reexamined,
+  Cochabamba). **EXCLUDE (E01).** Informal household reciprocal
+  water-sharing/coping-norms study, not a legal/institutional
+  access-eligibility mechanism.
+- **R12A082B16D4D** (target: Ananga 2015, community participation
+  water production Kisumu Kenya, USF dissertation). **LEFT
+  UNDECIDED.** Title/authorship confirmed correct, but Google Drive
+  extraction delivered only front matter and Chapters 1-3 (through
+  page 67); Chapters 4-7 with the empirical logistic-regression
+  results were not retrieved. Record left open per the undecided-
+  record rule; Drive file not moved.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1140,
+1,137 → 1,138 rows each); `effect_sizes.csv` updated (55 → 56 rows --
+S1140 added as Family B); `exclusion_log.csv` updated (1,096 → 1,103
+rows; E01 484 → 488, E06 104 → 106, E12 46 → 47); duplicate audit
+(exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,418 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,241/3,659 screened (1,138 include/1,103 exclude),
+1,418 open (including 20 wrong_file_retrieved), 1,138 extracted
+studies, 56 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-ninth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Fifty-second batch from `new_batch_pool.json[510:520]`.
 
