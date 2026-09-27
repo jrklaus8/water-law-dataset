@@ -5664,6 +5664,45 @@ evidence of anything.
   1,641 open, 1,031 extracted studies, 47 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-eighth batch (10 records, 2026-09-27), thirty-first
+  batch from the 543-record pool.** `new_batch_pool.json[300:310]`.
+  Granados & Sanchez (2014, difference-in-difference panel study of
+  Colombia's Law 142/1994 water-provision reform, finding slower child-
+  mortality reduction and smaller water-coverage gains in reformed
+  municipalities, S1034) — **INCLUDE**. Makwara & Tavuyanago (2012,
+  Zimbabwe urban water crisis, documenting municipal councils' lack of
+  tariff-setting autonomy as an institutional barrier compounding the
+  2008-2009 cholera epidemic, S1035) — **INCLUDE**. Francois, Kakeu &
+  Kouame (2021, dynamic-panel GMM study of institutional quality and
+  sanitation access across 44 sub-Saharan African countries, S1036) —
+  **INCLUDE**. Leite (2010, qualitative case study of women's
+  leadership in two Brazilian community water-management projects,
+  S1037) — **INCLUDE**. Bruggink (1985, econometric study finding
+  state-level regulation of US municipal water utilities significantly
+  reduces monopoly welfare loss/excess pricing relative to local-only
+  regulation, S1038) — **INCLUDE, added to effect_sizes.csv (Family
+  C)**. McEvoy & Wilder (2012, E01 desalination climate-adaptation
+  risk-discourse study, Arizona-Sonora) — **EXCLUDE (E01)**. Gorostiza,
+  March & Sauri (2015, E01 historical case study of Madrid water supply
+  during the Spanish Civil War) — **EXCLUDE (E01)**. Moglia, Perez &
+  Burn (2008, E01 participatory water-development process-design
+  paper, Pacific Islands) — **EXCLUDE (E01)**. Mbuvi, De Witte &
+  Perelman (2012, E01 utility operational-efficiency benchmarking
+  study, Africa) — **EXCLUDE (E01)**. Norman et al (2013, E01
+  governance-assessment-tool development/application study, British
+  Columbia) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1034-S1038,
+  1,031 → 1,036 rows each); `effect_sizes.csv` updated (47 → 48 rows:
+  S1038 added, an econometric estimate isolating a regulatory/
+  institutional mechanism's -- state vs. local economic regulation --
+  effect on a Family C water-affordability outcome); `exclusion_log.csv`
+  updated (987 → 992 rows; E01 424 → 429); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,631 open records); schema validation re-run clean.
+  Running totals: 2,028/3,659 screened (1,036 include/992 exclude),
+  1,631 open, 1,036 extracted studies, 48 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

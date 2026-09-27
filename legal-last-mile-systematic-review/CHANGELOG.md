@@ -4,7 +4,88 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-seventh full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Two-hundred-eighth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Thirty-first batch from `new_batch_pool.json[300:310]`.
+
+- **R3537F9598B47** (Granados & Sanchez 2014, "Water Reforms,
+  Decentralization and Child Mortality in Colombia, 1990-2005").
+  **INCLUDE.** Difference-in-difference panel study (550 municipalities)
+  of the impact of Colombia's Law 142 of 1994 (replacing direct
+  municipal water/sewerage provision with specialized public/private/
+  mixed companies) on child mortality and water/sewerage coverage.
+  Reformed municipalities exhibited a slower reduction in child
+  mortality and, for larger reformed municipalities, a smaller
+  increase in water coverage (though a larger increase in sewerage
+  coverage) than unreformed municipalities. → **S1034**.
+- **R33F5730F8C31** (Makwara & Tavuyanago 2012, "Water Woes in
+  Zimbabwe's Urban Areas in the Midst of Plenty: 2000-Present").
+  **INCLUDE.** Mixed-methods study of Zimbabwe's urban water crisis
+  documenting an institutional/legal barrier: municipal councils lack
+  autonomy to set water tariffs and must obtain central-government
+  permission, a bureaucratic process compounding chronic
+  underinvestment and contributing to the 2008-2009 cholera epidemic.
+  → **S1035**.
+- **R30F0552CD829** (Francois, Kakeu & Kouame 2021, "Do Better
+  Institutions Broaden Access to Sanitation in Sub-Sahara Africa?").
+  **INCLUDE.** Dynamic panel (system GMM) study of 44 sub-Saharan
+  African countries (2002-2015) finding control of corruption,
+  regulatory quality, and voice and accountability significantly
+  broaden sanitation access, with a rural/urban dichotomy in which
+  aspects of institutional quality matter. → **S1036**.
+- **R351FB6562A87** (Leite 2010, "After the summit: women's access to
+  water and policymaking in Brazil"). **INCLUDE.** Qualitative case
+  study documenting two Brazilian community water-management projects
+  in which women's institutional leadership directly improved local
+  water conditions, contrasted with the absence of gender-sensitive
+  national water policy. → **S1037**.
+- **R350FA2E35538** (Bruggink 1985, "Monopoly Pricing as a Consumer
+  Exaction in the Public Utility Sector"). **INCLUDE, added to
+  effect_sizes.csv (Family C).** Econometric study of 95 U.S.
+  municipally-owned water utilities finding state-level economic
+  regulation significantly associated with lower monopoly welfare loss
+  (excess residential water pricing) than local-only regulation
+  (5.2-6.15% vs. 9.6-10.4% of the annual bill; t=-4.58 and t=-2.71,
+  p<0.01). → **S1038**.
+- **R35003BF36393** (McEvoy & Wilder 2012, desalination climate-
+  adaptation discourse/risk analysis, Arizona-Sonora). **EXCLUDE
+  (E01).** Wrong-topic technology-risk-discourse study; no legal/
+  institutional mechanism's documented effect on household water
+  access.
+- **R35DB956E02BF** (Gorostiza, March & Sauri 2015, Madrid water supply
+  during the Spanish Civil War). **EXCLUDE (E01).** Historical
+  political-ecology/labor-geography case study of wartime infrastructure
+  resilience; not a legal/institutional access-inequality mechanism
+  study.
+- **R3665AA462296** (Moglia, Perez & Burn 2008, participatory
+  water-development process archetypes, Pacific Islands). **EXCLUDE
+  (E01).** Process-design/methodology paper without a reported water-
+  access, coverage, or affordability outcome tied to a specific legal/
+  institutional mechanism.
+- **R3832EE69700F** (Mbuvi, De Witte & Perelman 2012, African urban
+  water utility efficiency/effectiveness benchmarking). **EXCLUDE
+  (E01).** Utility operational-efficiency benchmarking study; reapplies
+  established E01 precedent (Ferro, Romero & Covelli, Batch 207).
+- **R366F94E9259F** (Norman et al 2013, Water Security Status
+  Indicators assessment method, British Columbia). **EXCLUDE (E01).**
+  Governance-assessment-tool development/application study; reapplies
+  established governance-benchmarking-tool-application E01 precedent
+  (Moretto Venezuela, Batch 207).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1034-S1038,
+1,031 → 1,036 rows each); `effect_sizes.csv` updated (47 → 48 rows:
+S1038 added, an econometric estimate isolating a regulatory/
+institutional mechanism's -- state vs. local economic regulation --
+effect on a Family C water-affordability outcome); `exclusion_log.csv`
+updated (987 → 992 rows; E01 424 → 429); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,631 open records); schema validation re-run clean
+(13/13 files OK).
+
+Running totals: 2,028/3,659 screened (1,036 include/992 exclude),
+1,631 open, 1,036 extracted studies, 48 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-seventh full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Thirtieth batch from `new_batch_pool.json[290:300]`.
 
