@@ -4,7 +4,68 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Human full-text reviewer_2 pass begun: first 100 studies (S001–S100), full agreement
+## 2026-09-27 (latest) — Two-hundred-thirty-third full-text screening batch (10 records, 3 includes, 2 excludes, 5 wrong_file_retrieved) — large new Google Drive delivery, high wrong-file rate
+
+First batch drawn from a large new bulk delivery to the Antigravity Drive
+delivery folder (510 PDFs total, reconciled against the live screening
+database by a background agent: 464 already-decided duplicates moved to
+Processed, 45 genuinely open records queued for screening, 1 fresh
+delivery for a previously-flagged wrong_file_retrieved record that turned
+out to still be the wrong file — see below). This is the first batch of 5
+from that 45-record open queue (`new_batch_pool.json` itself remains
+exhausted; this is a separate Drive re-sweep per the standing pipeline).
+
+- **R0DF9468FC154** (Gopakumar 2012, "Transforming Urban Water Supplies in
+  India," book, PPP-driven water-supply reform, Bangalore/Chennai/Kochi).
+  **INCLUDE.** Qualitative comparative institutional case study. → **S1145**.
+- **RD768BF81FBAA** (Breen & Gillanders 2024, "Money down the drain,"
+  Afrobarometer corruption/water-access probit study, multi-country
+  Africa). **INCLUDE.** → **S1146**. **Added to effect_sizes.csv**
+  (Family C).
+- **R27F510DA4541** (Romero 2022, private/public water-management history,
+  Colombia). **INCLUDE.** Qualitative institutional/regulatory-history
+  case study. → **S1147**.
+- **R4FF1B9A43E90** (Amis & Kumar 2000, urban economic growth/infrastructure/
+  poverty, Visakhapatnam India). **EXCLUDE (E01).** Broad
+  infrastructure-investment/poverty study, not a focused legal/
+  administrative water-access mechanism.
+- **R1C05E6CC38E3** (Santana et al. 2023, unequal territories/water-access
+  policy, Brazilian Northeast). **EXCLUDE (E05).** Theoretical geography
+  paper with only secondary descriptive statistics, no empirical mechanism
+  test.
+- **Five records flagged wrong_file_retrieved this batch** (an unusually
+  high rate for one batch, worth flagging plainly rather than smoothing
+  over): R180DB01E1A79 (target Araujo et al. 2011 Spain water-utility
+  regulation; delivered a Georgian banking-compliance-risk paper),
+  R1F37F14B3722 (target Beausejour 2009 Vietnam sanitation; delivered a
+  UEMOA institutional-quality/growth econometrics paper), R1F2EDC030C66
+  (target Anjum 2016 Addis Ababa decentralization; delivered a Pakistan
+  disease-surveillance-governance paper), R1ECC532A797B (target Kumar 2013
+  Delhi hydropolitics; delivered a Uganda Nile Basin governance-survey
+  paper), R1D27DF36A4B5 (target Syal 2025 Delhi informal-settlement
+  regulatory overlap; delivered a Rwanda hospital-PPP-financing paper).
+  None screened; none moved from the inbox.
+- **A sixth previously-flagged wrong_file_retrieved record was
+  re-delivered and re-checked, and is still wrong**: RE07A5B3A53CD
+  (target: Tojal Ramos dos Santos 2024 ProQuest dissertation) — the fresh
+  PDF is again Lea Bignon's unrelated 2025 Toulouse School of Economics
+  thesis on pharmaceutical/health-insurance industrial organization, the
+  same mismatch already on record. Left exactly as flagged; file not
+  moved.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1145-S1147,
+1,142 → 1,145 rows each); `effect_sizes.csv` updated (58 → 59 rows --
+S1146 added as Family C); `exclusion_log.csv` updated (1,111 → 1,113
+rows; E01 495 → 496, E05 133 → 134); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,401 open records); schema validation re-run clean
+(13/13).
+
+Running totals: 2,258/3,659 screened (1,145 include/1,113 exclude),
+1,401 open (including 26 wrong_file_retrieved), 1,145 extracted
+studies, 59 effect_sizes rows.
+
+## 2026-09-27 — Human full-text reviewer_2 pass begun: first 100 studies (S001–S100), full agreement
 
 The researcher (Claudio Klaus, PI) began an independent human second-reviewer
 pass over the full-text screening decisions -- the open item flagged

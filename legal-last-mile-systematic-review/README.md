@@ -58,15 +58,15 @@ explained in full further down; this is the index.
    flagged to the researcher and confirmed before being merged into the
    permanent record, rather than treated as a routine result. See
    **Chronological workflow → 5**.
-5. **Full-text human second-review (reviewer_2) is real but only 8.8%
+5. **Full-text human second-review (reviewer_2) is real but only 8.7%
    complete.** As of today, the PI has independently reviewed and confirmed
-   the first 100 of 1,142 current full-text includes (S001–S100). The
-   remaining 1,042 includes, and all 1,111 excludes, at the full-text stage
+   the first 100 of 1,145 current full-text includes (S001–S100). The
+   remaining 1,045 includes, and all 1,113 excludes, at the full-text stage
    still carry no human second reviewer. Do not read "a human reviewer_2
    pass has begun" as "the full-text stage is independently verified." See
    **Current project status** and **Human and AI involvement**.
 6. **Risk-of-bias appraisal is the most under-done phase relative to how far
-   extraction has progressed.** 1,096 of 1,142 extracted studies have their
+   extraction has progressed.** 1,099 of 1,145 extracted studies have their
    design-matched appraisal *tool* identified, but only 33 have an actual
    *rating*, and 29 of those 33 are explicitly partial/pilot judgments (many
    literally recorded as "Not ratable" or "at least [severity]"), not
@@ -89,7 +89,7 @@ explained in full further down; this is the index.
    **A warning about stale documentation** for exactly what is wrong in each
    and where the current truth actually lives.
 9. **Quantitative synthesis remains genuinely contingent, by design, not by
-   accident.** 58 effect-size rows have been extracted from 245
+   accident.** 59 effect-size rows have been extracted from 246
    quantitative-synthesis-eligible studies; zero are currently pooled into
    any meta-analytic estimate. That is the expected, correct state of a
    project that refuses to manufacture comparability — see **The review does
@@ -97,7 +97,7 @@ explained in full further down; this is the index.
    stalled.
 10. **A small number of "wrong file retrieved" and "partial/unusable
     extraction" cases are deliberately left open, not force-decided.**
-    21 records currently carry a `wrong_file_retrieved` flag (the delivered
+    26 records currently carry a `wrong_file_retrieved` flag (the delivered
     PDF did not match the target citation, or the extraction tool returned
     an unusable fragment of the real document); these are not screened and
     not counted in any decided total until the correct file is retrieved.
@@ -195,12 +195,12 @@ documentation**.
 | Records identified | 34,594 raw (34,557 database + 37 grey-literature/pilot) |
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
-| Full-text screening | **Live, in progress.** 2,253 of 3,659 assessed (**1,142 include / 1,111 exclude**); 1,406 still open; **21 flagged `wrong_file_retrieved`** (not counted in any total) |
-| Full-text human reviewer_2 | **Just begun, 8.8% complete.** 100 of 1,142 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,042 includes and all 1,111 excludes still unreviewed by a human second reviewer at this stage |
-| Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,142 studies extracted, `S001`–`S1144` (`S227`, `S399` retired as documented post-hoc-duplicate corrections — real gaps in the numbering, not an error) |
-| Risk-of-bias appraisal | **Barely started relative to extraction.** Design-matched tool identified for 1,096 of 1,142 studies; an actual **rating** exists for only **33** — 29 of those are explicit partial/pilot judgments (2026-09-16 batch), 2 are complete AMSTAR 2 ratings for included secondary reviews (S370, S372 — both "Critically Low"), 2 more are complete individual ratings (S468 CASP Qualitative "Moderate"; S469 MMAT "Moderate") |
-| Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,142 studies — 245 flagged quantitative-synthesis-eligible, 1,045 qualitative-synthesis-eligible (categories overlap) |
-| Quantitative evidence (effect sizes) | 58 rows extracted from the 245 eligible studies (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 5 Family B, 14 Family C, **19 rows added before the Family A/B/C tag was consistently applied and still carry a blank family** (a real, disclosed data-cleanliness gap) |
+| Full-text screening | **Live, in progress.** 2,258 of 3,659 assessed (**1,145 include / 1,113 exclude**); 1,401 still open; **26 flagged `wrong_file_retrieved`** (not counted in any total) |
+| Full-text human reviewer_2 | **Just begun, 8.7% complete.** 100 of 1,145 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,045 includes and all 1,113 excludes still unreviewed by a human second reviewer at this stage |
+| Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,145 studies extracted, `S001`–`S1147` (`S227`, `S399` retired as documented post-hoc-duplicate corrections — real gaps in the numbering, not an error) |
+| Risk-of-bias appraisal | **Barely started relative to extraction.** Design-matched tool identified for 1,099 of 1,145 studies; an actual **rating** exists for only **33** — 29 of those are explicit partial/pilot judgments (2026-09-16 batch), 2 are complete AMSTAR 2 ratings for included secondary reviews (S370, S372 — both "Critically Low"), 2 more are complete individual ratings (S468 CASP Qualitative "Moderate"; S469 MMAT "Moderate") |
+| Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,145 studies — 246 flagged quantitative-synthesis-eligible, 1,047 qualitative-synthesis-eligible (categories overlap) |
+| Quantitative evidence (effect sizes) | 59 rows extracted from the 246 eligible studies (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 5 Family B, 15 Family C, **19 rows added before the Family A/B/C tag was consistently applied and still carry a blank family** (a real, disclosed data-cleanliness gap) |
 | Pooled/meta-analytic estimates | **Zero.** Every effect_sizes.csv row has `included_in_pooled_estimate = FALSE`; almost every one cites "single study defining this exact exposure-comparator pairing" as the reason, per `ANALYSIS_PLAN.md` §2 |
 | Corpus-level quantitative-feasibility judgment (Phase 11) | **Not yet formally written up** as its own document, though the decision-tree reasoning is already recorded per-effect-size in `effect_sizes.csv`'s `exclusion_from_pooling_reason` field |
 | Meta-analysis / sensitivity / publication-bias code (Phases 12–15) | Templates exist (`08_code/R/*.R`, `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`) but have **never been run against real data** |
@@ -208,9 +208,9 @@ documentation**.
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
 
 Exclusion-reason breakdown at full-text stage (E01–E12,
-`INCLUSION_EXCLUSION.md`), of 1,111 total: E01 wrong topic 495 · E02 wrong
+`INCLUSION_EXCLUSION.md`), of 1,113 total: E01 wrong topic 496 · E02 wrong
 population 34 · E03 wrong exposure 33 · E04 wrong outcome 77 · E05 no
-empirical evidence 133 · E06 engineering only 106 · E07 wrong service 26 ·
+empirical evidence 134 · E06 engineering only 106 · E07 wrong service 26 ·
 E08 duplicate 6 · E09 insufficient information 2 · E10 inaccessible full
 text 151 · E11 wrong jurisdiction/context 0 · E12 wrong study design 48.
 
@@ -273,8 +273,8 @@ been independently confirmed by a human second reviewer — `reviewer_2`
 was blank for all 3,659 rows of `full_text_screening_database.csv`. As of
 2026-09-27, the PI has reviewed and confirmed the first 100 chronologically
 included studies (`S001`–`S100`), agreeing with the AI reviewer's
-classification in all 100 cases, zero conflicts. **This is 100 of 1,142
-current includes (8.8%) and 0 of 1,111 current excludes.** Treat every
+classification in all 100 cases, zero conflicts. **This is 100 of 1,145
+current includes (8.7%) and 0 of 1,113 current excludes.** Treat every
 full-text decision beyond those 100 confirmed includes as AI-reviewer-only
 until this README says otherwise, and check `full_text_screening_database.csv`'s
 `reviewer_2` column directly rather than assuming this document is current
@@ -285,7 +285,7 @@ if substantial time has passed since 2026-09-27.
 `RISK_OF_BIAS.md` assigns each extracted study a design-matched tool (RoB 2,
 ROBINS-I, one of two JBI checklists, CASP, MMAT, or AMSTAR 2 for
 already-systematic-review sources); that assignment step is essentially
-done (1,096 of 1,142). Actually *rating* a study against the real
+done (1,099 of 1,145). Actually *rating* a study against the real
 instrument is a slower, harder step, and only 33 studies have any rating at
 all. Of those, 29 come from a single 2026-09-16 pilot batch and are
 frequently recorded as "Not ratable" (e.g. AMSTAR 2 applied to a study that
@@ -465,7 +465,7 @@ of the validated instruments (RoB 2, ROBINS-I, the JBI checklists, CASP,
 MMAT, AMSTAR 2) may be reconstructed from memory — appraising a study
 against "roughly what RoB 2 asks" is not the same as appraising it against
 the actual current instrument. So the tool field is populated broadly
-(1,096 of 1,142), while the rating field is left blank pending a real,
+(1,099 of 1,145), while the rating field is left blank pending a real,
 careful pass with the correct instrument in hand — except for the 33
 studies described in **Current project status**, most of which are
 themselves only partial/pilot judgments. This is reported as a disclosed
@@ -523,8 +523,8 @@ of the following as current without cross-checking the CSVs directly**:
 
 - **`PRISMA_WORKFLOW.md`, Phase 6 entry.** Currently frozen at "1,535 of
   3,659 records decided (795 include / 740 exclude)" with an 11-record
-  `wrong_file_retrieved` list that no longer matches the current 21. The
-  live figure is **2,253 of 3,659 (1,142 include / 1,111 exclude)** — see
+  `wrong_file_retrieved` list that no longer matches the current 26. The
+  live figure is **2,258 of 3,659 (1,145 include / 1,113 exclude)** — see
   **Current project status** above. The rest of `PRISMA_WORKFLOW.md`'s
   16-phase table (Phases 1–5) is accurate; only its later-phase entries
   have drifted.
@@ -649,11 +649,11 @@ caveat applies. It is not softened.
   AI-excludes were only spot-checked (120 random + a 74-record targeted
   scan for a known corruption signature), not fully independently
   re-screened.
-- Full-text screening, AI first pass (2,253 of 3,659 records assessed so
-  far) — independently human-confirmed for **100 of the 1,142 current
-  includes only** (S001–S100, as of 2026-09-27). The remaining 1,042
-  includes and all 1,111 excludes at this stage are AI-reviewer-only.
-- Extraction against the 92-field codebook (1,142 studies) — not
+- Full-text screening, AI first pass (2,258 of 3,659 records assessed so
+  far) — independently human-confirmed for **100 of the 1,145 current
+  includes only** (S001–S100, as of 2026-09-27). The remaining 1,045
+  includes and all 1,113 excludes at this stage are AI-reviewer-only.
+- Extraction against the 92-field codebook (1,145 studies) — not
   independently human-reviewed at scale; spot-checking this is recommended
   future work (see **How to continue this project**).
 - Evidence classification (mechanism/outcome family assignment) — the
@@ -674,9 +674,9 @@ caveat applies. It is not softened.
   any manuscript reporting this figure should disclose the caveat alongside
   it, not report the number alone.
 - Full-text screening, human second reviewer — **begun 2026-09-27**, 100 of
-  1,142 current includes reviewed and confirmed, zero conflicts. This is a
+  1,145 current includes reviewed and confirmed, zero conflicts. This is a
   real, independent confirmation (the PI reviewed the articles and the
-  classification, not merely the AI's summary), but it covers 8.8% of
+  classification, not merely the AI's summary), but it covers 8.7% of
   current includes and 0% of excludes. Do not describe this stage as
   "human-reviewed" without that qualifier.
 - Every closure decision recorded in `CHANGELOG.md` as "researcher
@@ -724,7 +724,7 @@ code/                search / screening / extraction / analysis scripts (these a
 
 In roughly this order, for whoever picks this up next:
 
-1. **Keep retrieving and screening full-text PDFs.** 1,406 of 3,659 records
+1. **Keep retrieving and screening full-text PDFs.** 1,401 of 3,659 records
    are still open. Use `code/screening/build_full_text_queue.py` to
    regenerate the retrieval queue, `update_full_text_record.py` or a
    batch-recording script (see recent `CHANGELOG.md` entries for the
@@ -732,7 +732,7 @@ In roughly this order, for whoever picks this up next:
    `code/analysis/validate_schemas.py` after each batch.
 2. **Extend the human full-text reviewer_2 pass past S100.** This is
    currently the most under-resourced verification gap relative to how
-   much AI-reviewed material already exists (1,042 includes, 1,111
+   much AI-reviewed material already exists (1,045 includes, 1,113
    excludes with no human check at all). Prioritize a random or systematic
    sample of the excludes first if full coverage isn't feasible — excludes
    are the harder failure mode to catch later, since an incorrectly

@@ -6600,6 +6600,34 @@ evidence of anything.
   1,406 open (including 21 wrong_file_retrieved), 1,142 extracted
   studies, 58 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-third batch (10 records, 2026-09-27), first batch
+  drawn from a large new Google Drive delivery (510 PDFs, reconciled by a
+  background agent: 464 already-decided duplicates moved to Processed, 45
+  genuinely open records queued for screening, 1 fresh delivery for a
+  previously-flagged wrong_file_retrieved record still wrong).**
+  Gopakumar (2012, PPP-driven water-supply reform book, Bangalore/Chennai/
+  Kochi India, S1145) — **INCLUDE**. Breen & Gillanders (2024, Afrobarometer
+  corruption/water-access probit study, multi-country Africa, S1146) —
+  **INCLUDE**, added to effect_sizes.csv as Family C. Romero (2022,
+  private/public water-management history, Colombia, S1147) — **INCLUDE**.
+  Amis & Kumar (2000, E01 broad infrastructure/poverty study, Visakhapatnam
+  India) — **EXCLUDE (E01)**. Santana et al. (2023, E05 theoretical
+  geography paper, Brazilian Northeast) — **EXCLUDE (E05)**. Five records
+  flagged wrong_file_retrieved this batch (an unusually high rate):
+  R180DB01E1A79, R1F37F14B3722, R1F2EDC030C66, R1ECC532A797B, R1D27DF36A4B5
+  — each delivered a completely unrelated paper. A sixth, previously-
+  flagged record (RE07A5B3A53CD) was re-delivered and re-checked, and is
+  still the wrong file (same unrelated Toulouse thesis as before).
+  `extraction_database.csv`/`evidence_map.csv` updated (S1145-S1147,
+  1,142 → 1,145 rows each); `effect_sizes.csv` updated (58 → 59 rows --
+  S1146 added as Family C); `exclusion_log.csv` updated (1,111 → 1,113
+  rows; E01 495 → 496, E05 133 → 134); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,401 open records); schema validation re-run clean.
+  Running totals: 2,258/3,659 screened (1,145 include/1,113 exclude),
+  1,401 open (including 26 wrong_file_retrieved), 1,145 extracted
+  studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
