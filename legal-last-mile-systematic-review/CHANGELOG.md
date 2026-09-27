@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-23 (latest) — Hundred-fortieth full-text screening batch (16 Drive-retrieved PDFs: 8 includes, 8 excludes) plus 1 wrong_file_retrieved flag
+## 2026-09-27 (latest) — Hundred-forty-first full-text screening batch (first sub-batch of a large Antigravity-retrieved PDF drop: 10 records, 7 includes, 3 excludes)
+
+A separate researcher-run retrieval agent ("Antigravity") delivered a large
+batch of full-text PDFs (103 unique records enumerated) into a new Google
+Drive folder, following the established `R<record_id>__<title>.pdf` naming
+convention. All 103 record_ids were cross-checked against
+`full_text_screening_database.csv`: all open, none previously decided, none
+with prior `wrong_file_retrieved` history. This is the first of several
+planned sub-batches to process the full delivery; the remaining ~93 records
+will be worked through in subsequent batches.
+
+- **R32CC5C530F76** (Sauri, Olcina & Rico 2007, *Journal of Comparative
+  Social Welfare*, "The March towards Privatisation? Urban Water Supply
+  and Sanitation in Spain"). **INCLUDE.** Legal/regulatory case study of
+  Spanish water privatization documenting the "Barcelona Water War" — a
+  Higher Court of Catalonia ruling requiring household-size-adjusted
+  pricing and the 1999 Catalan Water Taxation Law. Extracted as **S694**.
+- **R33B987ACF787** (Mansur & Olmstead 2012, *Journal of Urban Economics*,
+  "The value of scarce water"). **EXCLUDE (E01 — wrong topic).**
+  Welfare-economics analysis of drought rationing vs. market pricing among
+  already-connected households; no access/exclusion mechanism examined.
+- **R2BEFD559FD67** (Pihljak, Rusca, Alda-Vidal & Schwartz 2021, *EPC:
+  Politics and Space*, "Everyday practices in the production of uneven
+  water pricing regimes in Lilongwe"). **INCLUDE.** Qualitative
+  institutional case study of utility tariff-setting practices producing
+  uneven access/affordability. Extracted as **S695**.
+- **R2EE2734753C2** (Fan 2016, *Human Ecology*, "Environmental Justice and
+  the Politics of Risk... Taiwan"). **EXCLUDE (E01 — wrong topic).**
+  Macro-level water-diversion-megaproject EIA/indigenous-exclusion case
+  study; no household-level water/sanitation service-access outcome.
+- **R3A5206FB2852** (Lim & Prakash 2020, *Environmental Policy and
+  Governance*, "How the opposing pressures of industrialization and
+  democratization influence clean water access..."). **INCLUDE.**
+  112-country, 20-year panel regression finding democratization mitigates
+  and reverses an industrialization-driven pro-urban bias in water-access
+  provision. Extracted as **S696**. Not effect_sizes eligible (democracy is
+  a moderator of the industrialization-access relationship, not a single
+  clean exposure with its own isolated point estimate).
+- **R39FC015AF6E0** (Narayanan, Rajan, Jebaraj & Elayaraja 2017, *Utilities
+  Policy*, "Delivering basic infrastructure services to the urban poor: a
+  meta-analysis..."). **INCLUDE.** Meta-analysis of NGO/CBO bottom-up
+  service delivery for urban-poor water/sanitation/electricity access;
+  finds no average effect except with active community participation.
+  Extracted as **S697** (`systematic_review_secondary`, not added to
+  effect_sizes.csv per established convention for secondary syntheses).
+- **R2CD3ADF81E21** (Page 2003, *Geoforum*, "Communities as the Agents of
+  Commodification: The Kumbo Water Authority in Northwest Cameroon").
+  **INCLUDE.** Historical-institutional case study of a 1991 forcible
+  community takeover of a national water utility. Extracted as **S698**.
+- **R29F08D523D16** (González-Parra & Simon 2008, *American Behavioral
+  Scientist*, "All That Glitters Is Not Gold... Pehuenche Community Ayin
+  Mapu, Chile"). **EXCLUDE (E01 — wrong topic).** Indigenous-resettlement
+  case study; potable water/sewage are two incidental items in a broader
+  compensation package, not the paper's object of study.
+- **R2829FD9C762C** (Hoffmann 2004, *Human Ecology*, "Access to Land and
+  Water in the Zamfara Reserve... Pastoral Areas of West Africa").
+  **INCLUDE.** Empirical case study of customary common-property
+  institutions governing land/water access among pastoralist user-groups.
+  Extracted as **S699**.
+- **R26A228051D15** (Masanyiwa, Niehof & Termeer 2014, *Journal of Modern
+  African Studies*, "Gender perspectives on decentralisation and service
+  users' participation in rural Tanzania"). **INCLUDE.** Field study
+  finding Tanzanian decentralisation created village-level water/health
+  participation spaces, but men gained more leverage than women. Extends
+  the established PRI/WMG formal-inclusion-vs-de-facto-exclusion
+  precedent. Extracted as **S700**.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S694-S700, 691 → 698
+rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (667 → 670 rows; E01 236 → 239). Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,291 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,368/3,659 screened (698 include/670 exclude), 2,291
+open, 698 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-23 — Hundred-fortieth full-text screening batch (16 Drive-retrieved PDFs: 8 includes, 8 excludes) plus 1 wrong_file_retrieved flag
 
 Seventeen PDFs surfaced in the Google Drive retrieval inbox. All target
 record_ids confirmed open with no prior `wrong_file_retrieved` history.

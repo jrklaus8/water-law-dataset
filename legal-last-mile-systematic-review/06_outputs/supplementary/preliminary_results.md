@@ -3278,6 +3278,40 @@ evidence of anything.
   open, 691 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **2026-09-27, hundred-forty-first full-text screening batch, first
+  sub-batch of a large Antigravity-retrieved PDF drop, 10 records, 7
+  includes, 3 excludes.** A separate researcher-run retrieval agent
+  ("Antigravity") delivered 103 unique full-text PDFs into a new Drive
+  folder following the established naming convention; all 103 record_ids
+  were cross-checked as open with no prior decisions or wrong_file_retrieved
+  history. This is the first of several planned sub-batches; ~93 records
+  remain to be processed. Sauri, Olcina & Rico (2007, Spanish water
+  privatization and the "Barcelona Water War" court ruling, S694) —
+  **INCLUDE**. Mansur & Olmstead (2012, drought-rationing welfare
+  economics) — **EXCLUDE (E01)**. Pihljak et al. (2021, Lilongwe uneven
+  water pricing regimes, S695) — **INCLUDE**. Fan (2016, Taiwan water-
+  diversion megaproject EIA) — **EXCLUDE (E01)**. Lim & Prakash (2020,
+  112-country panel study of democratization mitigating industrialization's
+  pro-urban water-access bias, S696) — **INCLUDE**, not effect_sizes
+  eligible (democracy is a moderator, not a clean isolated exposure).
+  Narayanan et al. (2017, meta-analysis of bottom-up urban-poor
+  infrastructure delivery, S697) — **INCLUDE** (secondary synthesis, not
+  pooled). Page (2003, Kumbo Water Authority community takeover, Cameroon,
+  S698) — **INCLUDE**. González-Parra & Simon (2008, Pehuenche resettlement,
+  Chile, water incidental to broader compensation package) — **EXCLUDE
+  (E01)**. Hoffmann (2004, Zamfara Reserve pastoral common-property
+  institutions, Nigeria, S699) — **INCLUDE**. Masanyiwa et al. (2014,
+  Tanzania decentralisation and gendered water/health participation, S700)
+  — **INCLUDE**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S694-S700, 691 →
+  698 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (667 → 670 rows; E01 236 → 239); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,291 open
+  records); schema validation re-run clean.
+  Running totals: 1,368/3,659 screened (698 include/670 exclude), 2,291
+  open, 698 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
@@ -3295,17 +3329,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,358 of the 3,659
-  Phase-5 includes have been assessed; 2,301 records have not yet been
+- Full-text screening itself is far from complete: 1,368 of the 3,659
+  Phase-5 includes have been assessed; 2,291 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eight of those 2,301
+  on the researcher supplying full-text PDFs. Eight of those 2,291
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 691
+- Extraction (Phase 8) is caught up with screening completely — all 698
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  691 extracted studies** (a first 12-study partial pilot batch was
+  698 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
