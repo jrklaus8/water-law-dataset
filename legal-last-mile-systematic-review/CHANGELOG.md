@@ -4,7 +4,68 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-eighteenth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Two-hundred-nineteenth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Forty-second batch from `new_batch_pool.json[410:420]`.
+
+- **R0B902066E9BE** (Rajaraman, Travasso & Heymann 2013, "A qualitative
+  study of access to sanitation amongst low-income working women,"
+  J. Water Sanit. Hyg. Dev., Bangalore, India). **INCLUDE.** Labour-law
+  coverage (Factories Act; Construction Workers Act) versus its
+  absence (domestic work) produces sharply differential workplace
+  sanitation access. → **S1088**.
+- **R186BCFDEF64B** (Javed & Farhan 2020, "Access to urban services for
+  political and social inclusion in Pakistan," Springer). **INCLUDE.**
+  Decentralized governance fragmentation and NGO-WASA bulk-purchase
+  partnership (Badar Colony) as institutional mechanisms for
+  low-income water access. → **S1089**.
+- **R16F5F8144871** (Colbran 2017, "Piped Water in Jakarta: A
+  Political, Economic or Social Good?," Cambridge UP). **INCLUDE.**
+  Legal eligibility obstacles restricting low-income household water
+  qualification, disproportionate tariff increases for the poor. →
+  **S1090**.
+- **R178232D887EC** (Mukherjee et al. 2009, "What does it take to
+  scale up and sustain rural sanitation beyond projects?,"
+  Waterlines). **INCLUDE.** Eight-dimension institutional "enabling
+  environment" framework (policy, financing, institutional
+  arrangements) for rural sanitation scale-up, India/Indonesia/
+  Tanzania. → **S1091**.
+- **R1C6169322694** (Singh, Upadhyay & Mittal 2005, "Water Tariff
+  Structure and Reform Needs," ASCE EWRI, India). **INCLUDE.**
+  Connection charges as a major obstacle to formal water access for
+  the poor; ~50% of India's poor remain unconnected and thus
+  unsubsidized. → **S1092**.
+- **R6E2CA3E33C37** (Loftus & McDonald 2001, "Of Liquid Dreams,"
+  Environment and Urbanization, Buenos Aires, Argentina). **INCLUDE.**
+  Regressive infrastructure/connection charges and regulatory-capture
+  tariff increases under the Aguas Argentinas privatization
+  concession. → **S1093**.
+- **R13DCD030A31C** (Danso-Appiah et al. 2008, Cochrane review of
+  urinary schistosomiasis drug treatments). **EXCLUDE (E01).**
+  Wrong-topic clinical/medical review.
+- **R18B4875CC0DD** (Nelson & Murray 2008, sanitation technologies
+  review, Annu. Rev. Environ. Resour.). **EXCLUDE (E12).** Conceptual/
+  technology review, no original empirical data.
+- **R1DAB2ADE242E** (Postel & Thompson 2005, watershed protection,
+  Natural Resources Forum). **EXCLUDE (E01).** Water-resource/
+  ecosystem-services governance study.
+- **R16A3197AFC75** (Grigg 2017, "Institutional Analysis of Drinking
+  Water Supply Failure," Flint, Michigan, ASCE). **EXCLUDE (E01).**
+  Regulatory-compliance/water-quality-crisis study, distinct from an
+  access-eligibility mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1088-S1093,
+1,085 → 1,091 rows each); `effect_sizes.csv` unchanged (51 rows --
+all six includes are qualitative/policy-analysis case studies with
+descriptive statistics, not regression-based estimates isolating a
+mechanism's effect per the strict Family A/B/C framework);
+`exclusion_log.csv` updated (1,040 → 1,044 rows; E01 461 → 464, E12
+32 → 33); duplicate audit (exact-DOI + study_id) found no new
+duplicates; `full_text_retrieval_queue.csv` regenerated (1,524 open
+records); schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,135/3,659 screened (1,091 include/1,044 exclude),
+1,524 open, 1,091 extracted studies, 51 effect_sizes rows.
 
 Forty-first batch from `new_batch_pool.json[400:410]`.
 

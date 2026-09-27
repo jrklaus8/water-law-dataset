@@ -6087,6 +6087,46 @@ evidence of anything.
   1,534 open, 1,085 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-nineteenth batch (10 records, 2026-09-27), forty-
+  second batch from the 543-record pool.** `new_batch_pool.json[410:420]`.
+  Rajaraman, Travasso & Heymann (2013, labour-law coverage vs. its
+  absence produces sharply differential workplace sanitation access
+  for low-income working women, Bangalore, India, S1088) —
+  **INCLUDE**. Javed & Farhan (2020, decentralized-governance
+  fragmentation and NGO-WASA bulk-purchase partnership as
+  institutional mechanisms for low-income water access, Pakistan,
+  S1089) — **INCLUDE**. Colbran (2017, legal eligibility obstacles
+  restricting low-income household water qualification and
+  disproportionate tariff increases for the poor, Jakarta, Indonesia,
+  S1090) — **INCLUDE**. Mukherjee et al. (2009, eight-dimension
+  institutional "enabling environment" framework for rural sanitation
+  scale-up, India/Indonesia/Tanzania, S1091) — **INCLUDE**. Singh,
+  Upadhyay & Mittal (2005, connection charges as a major obstacle to
+  formal water access for the poor, ~50% of India's poor unconnected
+  and unsubsidized, S1092) — **INCLUDE**. Loftus & McDonald (2001,
+  regressive infrastructure/connection charges and regulatory-capture
+  tariff increases under Buenos Aires water privatization, S1093) —
+  **INCLUDE**. Danso-Appiah et al. (2008, E01 wrong-topic Cochrane
+  review of schistosomiasis drug treatments) — **EXCLUDE (E01)**.
+  Nelson & Murray (2008, E12 conceptual/technology sanitation review,
+  no original empirical data) — **EXCLUDE (E12)**. Postel & Thompson
+  (2005, E01 watershed protection/ecosystem-services governance
+  study) — **EXCLUDE (E01)**. Grigg (2017, E01 regulatory-
+  compliance/water-quality-crisis study, Flint, Michigan) — **EXCLUDE
+  (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1088-S1093,
+  1,085 → 1,091 rows each); `effect_sizes.csv` unchanged (51 rows --
+  all six includes are qualitative/policy-analysis case studies with
+  descriptive statistics, not regression-based estimates isolating a
+  mechanism's effect per the strict Family A/B/C framework);
+  `exclusion_log.csv` updated (1,040 → 1,044 rows; E01 461 → 464, E12
+  32 → 33); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,524
+  open records); schema validation re-run clean.
+  Running totals: 2,135/3,659 screened (1,091 include/1,044 exclude),
+  1,524 open, 1,091 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
