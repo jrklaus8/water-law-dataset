@@ -4,7 +4,78 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-fifth full-text screening batch (10 records, 4 includes, 5 excludes, 1 skipped)
+## 2026-09-27 (latest) — Hundred-seventy-sixth full-text screening batch (10 records, 5 includes, 4 excludes, 1 undecided)
+
+Fifth batch drawn from `new_batch_pool.json`. All 10 target record_ids
+confirmed with no prior decisions or `wrong_file_retrieved` history at
+batch start.
+
+- **RC8422265D240** (Von Schnitzler 2013, *Cultural Anthropology*,
+  "Traveling Technologies: Infrastructure, Ethical Regimes, and the
+  Materiality of Politics in South Africa"). **INCLUDE.** Ethnographic/
+  genealogical study of prepaid water-meter self-disconnection
+  enforcement (Operation Gcin'amanzi) and the Mazibuko constitutional
+  court case. Extracted as **S885**.
+- **RC819F87A16F8** (Brown 2010, *Gender & Development*, "Unequal
+  burden: water privatisation and women's human rights in Tanzania").
+  **INCLUDE.** Documentary analysis of the Dar es Salaam City Water
+  concession contract's termination and TGNP household-survey data on
+  gendered access burdens. Extracted as **S886**.
+- **RC660CF868FA0** (Marcos 2024, *Lex Localis*, "Governing Urban Water
+  in a Decentralized System... Zamboanga Peninsula, Philippines").
+  **INCLUDE.** Five-city comparative case study of institutional
+  fragmentation under a shared national legal framework (LWUA/NWRB).
+  Extracted as **S887**.
+- **RBEA8F34FFA53** (Kornberg 2016, *IJURR*, "The Structural Origins of
+  Territorial Stigma: Water and Racial Politics in Metropolitan
+  Detroit, 1950s-2010s"). **INCLUDE.** FOIA-based archival case study
+  of DWSD infrastructure-financing decisions and racialized regional
+  water-governance conflict. Extracted as **S888**.
+- **RBDD5DD14AEFB** (Hasna 1995, *Environment and Urbanization*,
+  "Street Hydrant Project in Chittagong Low-Income Settlement").
+  **INCLUDE.** Participatory action-research case study of CWASA's
+  street-hydrant institutional practices and community Water-Committee
+  formation. Extracted as **S889**.
+- **RC7156CD65FA6** (Mohanty & Rout 2020, "Factors affecting operation
+  and maintenance cost recovery of urban water supply... eastern
+  Indian states") — **EXCLUDE (E06).** Utility financial-sustainability
+  regression study, not a water-access mechanism.
+- **RC6ED4CA9878A** (Vintges, Hamad, Diab, Abuhamad & Jones 2026,
+  "Denying humanitarian aid in a war zone... Gaza... adolescent girls'
+  and young women's health") — **EXCLUDE (E01).** Water denial as a
+  wartime blockade/weapon-of-war context (Hagan & Kaiser Darfur
+  precedent), not a legal/institutional access mechanism.
+- **RC3D24DCB83DC** (Rondinelli 1991, "Decentralizing Water Supply
+  Services in Developing Countries: Factors Affecting the Success of
+  Community Management") — **EXCLUDE (E05).** Conceptual policy
+  synthesis drawing on secondary evaluations, no original fieldwork.
+- **RC1A2A5291C94** (Hope 2013, "Implementing the Sector Wide Approach
+  for Improved Aid and Development Effectiveness: Assessing the
+  Swaziland Experience") — **EXCLUDE (E01).** Water/sanitation is one
+  of four sectors examined; the water SWAP "has not been functioning,"
+  with minimal substantive water-specific content.
+- **RBEDB6556B711** (Olmstead 2004, *Land Economics*, "Thirsty
+  colonias: Rate regulation and the provision of water service") —
+  **UNDECIDED.** Correct title/author match, but the delivered PDF's
+  extracted content is entirely JSTOR access-terms boilerplate repeated
+  ~16 times with no actual article text -- a content-extraction failure
+  on a correctly-identified file (Batch 161 Olmstead-type precedent),
+  not `wrong_file_retrieved`. Left open/undecided; not moved from
+  inbox.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S885-S889, 882 →
+887 rows each). `effect_sizes.csv` unchanged (41 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (820 → 824 rows; E01 328 → 330, E05 111 →
+112, E06 70 → 71). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,948 open records;
+RBEDB6556B711 remains open/undecided). `validate_schemas.py` confirms
+all 13 tracked files OK.
+
+Running totals: 1,711/3,659 screened (887 include/824 exclude), 1,948
+open, 887 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-fifth full-text screening batch (10 records, 4 includes, 5 excludes, 1 skipped)
 
 Fourth batch drawn from `new_batch_pool.json`. One target record
 (RFEBA9E5C7885, Madeley "Tourism and water") had a prior

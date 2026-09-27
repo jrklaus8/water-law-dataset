@@ -4415,6 +4415,42 @@ evidence of anything.
   open, 882 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-sixth batch (10 records, 2026-09-27), fifth batch
+  from `new_batch_pool.json`.** Von Schnitzler (2013, ethnographic/legal
+  study of prepaid water-meter self-disconnection enforcement and the
+  Mazibuko constitutional case, South Africa, S885) — **INCLUDE**.
+  Brown (2010, documentary analysis of Dar es Salaam's City Water
+  concession-contract termination and gendered TGNP household-survey
+  data, Tanzania, S886) — **INCLUDE**. Marcos (2024, five-city
+  comparative case study of institutional fragmentation under a shared
+  legal framework, Zamboanga Peninsula Philippines, S887) —
+  **INCLUDE**. Kornberg (2016, FOIA-based archival case study of DWSD
+  infrastructure financing and racialized regional water-governance
+  conflict, Detroit, S888) — **INCLUDE**. Hasna (1995, participatory
+  action-research case study of CWASA street-hydrant institutional
+  practices and community Water-Committee formation, Chittagong,
+  S889) — **INCLUDE**. Mohanty & Rout (2020, utility O&M cost-recovery
+  regression study, not a water-access mechanism, eastern India) —
+  **EXCLUDE (E06)**. Vintges et al. (2026, Gaza war-zone humanitarian
+  blockade study, water denial as weapon of war) — **EXCLUDE (E01)**.
+  Rondinelli (1991, conceptual policy synthesis on secondary
+  evaluations, no original fieldwork) — **EXCLUDE (E05)**. Hope (2013,
+  Swaziland SWAP assessment across 4 sectors, water SWAP "not
+  functioning") — **EXCLUDE (E01)**. Olmstead (2004, "Thirsty
+  colonias") — **UNDECIDED**: delivered PDF is entirely JSTOR
+  boilerplate with no article text, a content-extraction failure
+  (Batch 161 precedent); left open, not moved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S885-S889, 882 →
+  887 rows each); `effect_sizes.csv` unchanged (41 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (820 → 824 rows; E01 328 → 330, E05 111 →
+  112, E06 70 → 71); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,948 open records);
+  schema validation re-run clean.
+  Running totals: 1,711/3,659 screened (887 include/824 exclude), 1,948
+  open, 887 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
