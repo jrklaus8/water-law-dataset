@@ -4,7 +4,44 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirty-first full-text screening batch (10 records, 2 includes, 7 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Two-hundred-thirty-second full-text screening batch (3 records, 2 includes, 1 exclude)
+
+Fifty-fifth and final batch from `new_batch_pool.json[540:543]` -- the last
+3 records of the current 543-record pool. `new_batch_pool.json` is now
+fully exhausted; the next step is a fresh Drive re-sweep for new
+deliveries.
+
+- **R34A37671F4E3** (Jones, Greenberg, Kaufman & Drew 1978, service
+  delivery rules and distribution of local government services, three
+  Detroit bureaucracies). **INCLUDE.** Rigorous OLS-regression study of
+  Detroit's Sanitation Division 'weight rule' and its supplementary
+  center-city equity rule as administrative mechanisms producing
+  differential sanitation-resource distribution across neighborhoods.
+  → **S1143**. **Added to effect_sizes.csv** (Family C).
+- **R3DB2F9D0CE7E** (Tukahirwa 2011, access of urban poor to NGO/CBO-
+  supplied sanitation and solid waste services, Uganda). **INCLUDE.**
+  Rigorous logit-regression study of social-proximity trust as the
+  dominant determinant of urban-poor access to NGO/CBO-supplied
+  sanitation services in Kampala slums. → **S1144**. **Added to
+  effect_sizes.csv** (Family B).
+- **R372282DE211B** (Krueger, Rao & Borchardt 2019, quantifying urban
+  water supply security under global change). **EXCLUDE (E12).**
+  Methodological Capital-Portfolio-Approach index/framework-development
+  paper, not an empirical institutional-mechanism case study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1143-S1144,
+1,140 → 1,142 rows each); `effect_sizes.csv` updated (56 → 58 rows --
+S1143 added as Family C, S1144 as Family B); `exclusion_log.csv`
+updated (1,110 → 1,111 rows; E12 47 → 48); duplicate audit (exact-DOI
++ study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,406 open records); schema validation re-run clean
+(13/13).
+
+Running totals: 2,253/3,659 screened (1,142 include/1,111 exclude),
+1,406 open (including 21 wrong_file_retrieved), 1,142 extracted
+studies, 58 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-thirty-first full-text screening batch (10 records, 2 includes, 7 excludes, 1 wrong_file_retrieved)
 
 Fifty-fourth batch from `new_batch_pool.json[530:540]`.
 

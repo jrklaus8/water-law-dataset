@@ -6577,6 +6577,29 @@ evidence of anything.
   1,409 open (including 21 wrong_file_retrieved), 1,140 extracted
   studies, 56 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-second batch (3 records, 2026-09-27), fifty-fifth
+  and final batch from the 543-record pool.** `new_batch_pool.json[540:543]`.
+  `new_batch_pool.json` is now fully exhausted; a fresh Drive re-sweep for
+  new deliveries is the next step. Jones, Greenberg, Kaufman & Drew (1978,
+  regression study of administrative service-delivery rules and
+  differential sanitation-resource distribution, three Detroit
+  bureaucracies, S1143) — **INCLUDE**, added to effect_sizes.csv as
+  Family C. Tukahirwa (2011, logit-regression study of social-proximity
+  trust and urban-poor access to NGO/CBO-supplied sanitation services,
+  Kampala Uganda, S1144) — **INCLUDE**, added to effect_sizes.csv as
+  Family B. Krueger, Rao & Borchardt (2019, E12 Capital Portfolio
+  Approach water-security index/framework paper) — **EXCLUDE (E12)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1143-S1144,
+  1,140 → 1,142 rows each); `effect_sizes.csv` updated (56 → 58 rows --
+  S1143 added as Family C, S1144 as Family B); `exclusion_log.csv`
+  updated (1,110 → 1,111 rows; E12 47 → 48); duplicate audit
+  (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,406 open records);
+  schema validation re-run clean.
+  Running totals: 2,253/3,659 screened (1,142 include/1,111 exclude),
+  1,406 open (including 21 wrong_file_retrieved), 1,142 extracted
+  studies, 58 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
