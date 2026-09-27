@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-fifth full-text screening batch (10 records, 8 includes, 2 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **REA98E915A1CD** (Tynan 2013, *Review of Austrian Economics*,
+  "Nineteenth century London water supply: Processes of innovation and
+  improvement"). **INCLUDE.** Historical-institutional case study of
+  sewer-connection legality and Parliamentary investment-approval
+  regulation shaping private water-company network expansion.
+  Extracted as **S779**.
+- **RE992755C7ABF** (Pizzi 2020, *Asian Survey*, "Ethnicity and
+  Government Provision of Drinking Water Infrastructure in Rural
+  China"). **INCLUDE and EFFECT_SIZES ELIGIBLE (Family A).** OLS
+  regression (n=61 counties, >10,000 projects) testing official
+  ethnic-minority-autonomous-county legal status; coefficient
+  -41,810.91 (SE 25,959.55), not significant — recorded as a faithful
+  null result. Extracted as **S780**; added as the 37th
+  `effect_sizes.csv` row.
+- **RE8EDE45DF049** (Crawford & Bell 2012, *Urban Studies*, "Analysing
+  the Relationship between Urban Livelihoods and Water Infrastructure
+  in Three Settlements in Cusco, Peru"). **INCLUDE.** Extends the
+  splintering-urbanism/informal-governance precedent (Marvin & Graham
+  framework) to Cusco. Extracted as **S781**.
+- **RE57362A779FA** (Pierce & Gmoser-Daskalakis 2021, *Utilities
+  Policy*, "Multifaceted intra-city water system arrangements in
+  California"). **INCLUDE.** Regression analysis of 482 California
+  cities; city incorporation date (legal/administrative status) drives
+  institutional-arrangement fragmentation and intra-city affordability
+  variance. Companion study to S037 (Espinoza & Viers SGMA). Extracted
+  as **S782**.
+- **RE54EF28A4406** (Pezon 2017, *International Journal of Sustainable
+  Development*, "Price-cap regulation of private water services for
+  small towns in Burkina Faso based on solar energy"). **INCLUDE.**
+  Action-research analysis of ONEA concession/affermage contracts and
+  price-cap tariff regulation. Extracted as **S783**.
+- **RE9FD407645E2** (Ezeudu 2019, *Reviews on Environmental Health*,
+  "Urban sanitation in Nigeria: the past, current and future status of
+  access, policies and institutions") — **EXCLUDE (E05).** Literature
+  review synthesising secondary sources, no original empirical data
+  collection.
+- **RE8E407F925B3** (Takeda & Putthividhya 2015, "Perspectives on
+  Dry-Season Water Allocation... Chao-Phraya River Basin, Thailand") —
+  **EXCLUDE (E01).** Inter-sectoral irrigation-allocation/climate-
+  resilience study, not a household water-access-barrier mechanism.
+- **RE8CF1FD19CE7** (Rowles et al. 2020, *Science of the Total
+  Environment*, "Seasonal contamination of well-water in flood-prone
+  colonias...") — **EXCLUDE (E03).** Water-quality chemistry/
+  microbiology study; informal legal status of colonias is background
+  context, not the object of analysis.
+- **RE5FCC85D5EF2** (Ouellet-Plamondon et al. 2009, "Audit, need
+  analysis and design of vehicle washdown facilities for biosecurity in
+  Queensland, Australia") — **EXCLUDE (E06).** Pure engineering
+  biosecurity-infrastructure audit.
+- **RE3EE606AB539** (Asay 2007, *Journal AWWA*, "Water suppliers and
+  plumbers share backflow prevention responsibility") — **EXCLUDE
+  (E06).** Pure technical/engineering plumbing-practice trade article.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S779-S783, 776 →
+781 rows each). `effect_sizes.csv` updated (36 → 37 rows; S780 Pizzi
+2020 added as a Family A null result). `exclusion_log.csv` updated
+(729 → 734 rows; E01 284 → 285, E03 23 → 24, E05 87 → 88, E06 57 → 59).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,144 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,515/3,659 screened (781 include/734 exclude), 2,144
+open, 781 extracted studies, 37 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-fifth full-text screening batch (10 records, 8 includes, 2 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

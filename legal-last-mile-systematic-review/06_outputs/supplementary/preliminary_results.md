@@ -3752,6 +3752,38 @@ evidence of anything.
   Running totals: 1,505/3,659 screened (776 include/729 exclude), 2,154
   open, 776 extracted studies, 36 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-sixth full-text screening batch, 10
+  records, 5 includes, 5 excludes.** Tynan (2013, historical-legal
+  analysis of sewer-connection legality and Parliamentary investment-
+  approval regulation, 19th c. London, S779) — **INCLUDE**. Pizzi
+  (2020, OLS regression on Chinese ethnic-minority-autonomous-county
+  legal status and drinking-water beneficiaries, Guizhou, S780) —
+  **INCLUDE, EFFECT_SIZES ELIGIBLE (Family A)**: coefficient -41,810.91
+  (SE 25,959.55), not significant, recorded as a null result; added as
+  the 37th effect_sizes.csv row. Crawford & Bell (2012, three-
+  settlement comparative case study extending the splintering-
+  urbanism precedent, Cusco Peru, S781) — **INCLUDE**. Pierce &
+  Gmoser-Daskalakis (2021, regression analysis of incorporation date
+  and water-system fragmentation, 482 California cities, S782) —
+  **INCLUDE**, companion to S037. Pezon (2017, ONEA concession/
+  affermage price-cap regulation analysis, Burkina Faso, S783) —
+  **INCLUDE**. Ezeudu (2019, literature review, no original empirical
+  data, Nigeria sanitation) — **EXCLUDE (E05)**. Takeda & Putthividhya
+  (2015, inter-sectoral irrigation allocation, Thailand) — **EXCLUDE
+  (E01)**. Rowles et al. (2020, water-quality chemistry study,
+  colonias) — **EXCLUDE (E03)**. Ouellet-Plamondon et al. (2009,
+  vehicle washdown biosecurity engineering audit) — **EXCLUDE (E06)**.
+  Asay (2007, backflow prevention plumbing trade article) — **EXCLUDE
+  (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S779-S783, 776 →
+  781 rows each); `effect_sizes.csv` updated (36 → 37 rows; S780 Pizzi
+  2020 added); `exclusion_log.csv` updated (729 → 734 rows; E01 284 →
+  285, E03 23 → 24, E05 87 → 88, E06 57 → 59); duplicate audit found no
+  new duplicates; `full_text_retrieval_queue.csv` regenerated (2,144
+  open records); schema validation re-run clean.
+  Running totals: 1,515/3,659 screened (781 include/734 exclude), 2,144
+  open, 781 extracted studies, 37 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3777,10 +3809,10 @@ evidence of anything.
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 776
+- Extraction (Phase 8) is caught up with screening completely — all 781
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  776 extracted studies** (a first 12-study partial pilot batch was
+  781 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -3823,11 +3855,12 @@ evidence of anything.
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 36 studies in `effect_sizes.csv` (added
+- Effect sizes now exist for 37 studies in `effect_sizes.csv` (added
   2026-09-16, extended 2026-09-17 and in later full-text-screening
-  batches through 2026-09-27, most recently S765 -- Meeks 2018's Peru
-  PETT land-titling modified difference-in-differences estimate,
-  mapped to Family A (legal recognition/tenure)),
+  batches through 2026-09-27, most recently S780 -- Pizzi 2020's null
+  result for Chinese ethnic-minority-autonomous-county legal status on
+  drinking-water beneficiaries, mapped to Family A (legal recognition/
+  status)),
   but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template
