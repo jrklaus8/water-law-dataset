@@ -4,7 +4,76 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-ninth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-seventieth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **RFEE77DC1C510** (Razavi 2019, *Water*, "'Social control' and the
+  politics of public participation in water remunicipalization,
+  Cochabamba, Bolivia"). **INCLUDE.** Doctoral-fieldwork case study of
+  SEMAPA's post-Water War participatory governance and its persistent
+  failure to resolve southern-zone connection disparities. Extracted
+  as **S854**.
+- **RB57945A09D4B** (Kumasi & Agbemor 2018, *J. Water Sanitation
+  Hygiene Dev.*, "Tracking user satisfaction of rural water services
+  in northern Ghana"). **INCLUDE.** 1,181-household survey against
+  CWSA institutional benchmarks under Ghana's decentralized Community
+  Ownership and Management (district-assembly trusteeship) model.
+  Extracted as **S855**.
+- **R9432B4531BC0** (Spencer, Meng, Nguyen & Guzinsky 2008,
+  *Development*, "Innovations in Local Governance: Meeting MDG7 in
+  Southeast Asia"). **INCLUDE.** Four original institutional case
+  studies (Can Tho, Ha Noi, Phnom Penh, Gresik) documenting specific
+  contractual/subsidy mechanisms with quantified connection outcomes.
+  Extracted as **S856**.
+- **R960A96145969** (Akpabio 2011, *Society & Natural Resources*,
+  "Water and People: Perception and Management Practices in Akwa Ibom
+  State, Nigeria"). **INCLUDE.** Ethnographic study of customary
+  land-tenure water-rights institutions in conflict with a state
+  water-development authority's cost-recovery framework. Extracted as
+  **S857**.
+- **R706C98313920** (Cleaver & Toner 2006, *Natural Resources Forum*,
+  "The evolution of community water governance in Uchira, Tanzania").
+  **INCLUDE.** Longitudinal ethnographic case study of Tanzania's 2002
+  water-policy decentralization mandate and its equity consequences.
+  Extracted as **S858**.
+- **RCA5C1A9910CA** (Grafton, Garrick, Manero & Do 2019, "The water
+  governance reform framework... Australia, Mexico, Tanzania, U.S.A and
+  Vietnam") — **EXCLUDE (E01).** Macro-scale basin-level water-resource
+  governance (Murray-Darling, Rufiji, Colorado basins), not
+  household-level access.
+- **R5BBEEFE4A138** (Sigler, Mahmoudi & Graham 2015, "Analysis of
+  behavioral change techniques in community-led total sanitation
+  programs") — **EXCLUDE (E01).** Public-health behavior-change
+  intervention methodology; no legal/institutional access-mechanism
+  content.
+- **R94BF90B2AED5** (Magee 2013, "The politics of water in rural
+  China: a review of English-language scholarship") — **EXCLUDE
+  (E12).** Explicitly a secondary literature review, not primary
+  research.
+- **R9575AD9F87A8** (Pawar 2013, "Water Insecurity: A Case for Social
+  Policy Action by Social Workers") — **EXCLUDE (E05).** Conceptual
+  framework paper explicitly drawing on secondary data analysis; no
+  original empirical data.
+- **R96CC88EE0933** (Wutich & Ragsdale 2008, "Water insecurity and
+  emotional distress... Bolivian squatter settlement") — **EXCLUDE
+  (E04).** Outcome is emotional distress/mental health; water access is
+  only an independent variable.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S854-S858, 851 →
+856 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (793 → 798 rows; E01 318 → 320, E04 61 →
+62, E05 103 → 104, E12 5 → 6). Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,005 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,654/3,659 screened (856 include/798 exclude), 2,005
+open, 856 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-ninth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

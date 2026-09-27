@@ -4199,6 +4199,38 @@ evidence of anything.
   Running totals: 1,644/3,659 screened (851 include/793 exclude), 2,015
   open, 851 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-seventieth full-text screening batch, 10
+  records, 5 includes, 5 excludes.** Razavi (2019, doctoral-fieldwork
+  case study, SEMAPA remunicipalization 'social control' participatory
+  governance, Cochabamba, S854) — **INCLUDE**. Kumasi & Agbemor (2018,
+  1,181-household survey vs. CWSA institutional benchmarks, Community
+  Ownership and Management model, northern Ghana, S855) —
+  **INCLUDE**. Spencer, Meng, Nguyen & Guzinsky (2008, four original
+  institutional case studies, contractual/subsidy mechanisms, Southeast
+  Asia, S856) — **INCLUDE**. Akpabio (2011, ethnographic study,
+  customary land-tenure water rights vs. state cost-recovery framework,
+  Nigeria, S857) — **INCLUDE**. Cleaver & Toner (2006, longitudinal
+  ethnographic case study, 2002 water-policy decentralization mandate,
+  Uchira Tanzania, S858) — **INCLUDE**. Grafton, Garrick, Manero & Do
+  (2019, macro-scale basin-level water-resource governance framework,
+  Murray-Darling/Rufiji/Colorado basins) — **EXCLUDE (E01)**. Sigler,
+  Mahmoudi & Graham (2015, public-health behavior-change intervention
+  methodology, CLTS) — **EXCLUDE (E01)**. Magee (2013, secondary
+  literature review, rural China water politics) — **EXCLUDE (E12)**.
+  Pawar (2013, conceptual framework paper on secondary data analysis,
+  social work) — **EXCLUDE (E05)**. Wutich & Ragsdale (2008, outcome is
+  emotional distress not water access, Bolivian squatter settlement) —
+  **EXCLUDE (E04)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S854-S858, 851 →
+  856 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (793 → 798 rows; E01 318 → 320, E04 61 →
+  62, E05 103 → 104, E12 5 → 6); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,005 open
+  records); schema validation re-run clean.
+  Running totals: 1,654/3,659 screened (856 include/798 exclude), 2,005
+  open, 856 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
