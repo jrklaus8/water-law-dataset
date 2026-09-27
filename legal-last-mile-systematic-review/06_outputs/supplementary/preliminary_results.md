@@ -5224,6 +5224,44 @@ evidence of anything.
   open, 992 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-seventh batch (10 records, 2026-09-27), twentieth
+  batch from the 543-record pool.** `new_batch_pool.json[190:200]`.
+  Mustafa & Reeder (2009, ethnographic study of failed water-supply
+  privatization -- tariff increases, disconnection rates -- Belize
+  City, S995) — **INCLUDE**. Scott, Cotton & Khan (2013, household
+  study of de facto tenure security shaping sanitation-investment
+  decisions, Dakar, S996) — **INCLUDE**. Vibhu & James (2010, project
+  policy analysis of flexible O&M tariff-collection institutional
+  design improving rural water-supply sustainability, Tamil Nadu,
+  S997) — **INCLUDE**. Jackson & Barber (2013, legal/institutional
+  analysis of Australia's National Water Initiative/Native Title Act
+  and indigenous water-entitlement inequity, Northern Territory, S998)
+  — **INCLUDE**. Subbaraman & Murthy (2015, legal analysis of notified/
+  non-notified slum status and the 2014 Bombay High Court PIL Article
+  21 right-to-water ruling, Mumbai, S999) — **INCLUDE**. Tempelhoff
+  (2021, historical/environmental narrative of Emfuleni wastewater
+  infrastructure collapse, Vaal River, South Africa) — **EXCLUDE
+  (E01)**. Mishra & Ray (2013, broad composite multi-dimensional
+  deprivation index study, India) — **EXCLUDE (E01)**. Butala,
+  VanRooyen & Patel (2010, quasi-experimental regression of slum-
+  upgrading intervention on waterborne-illness health-insurance
+  claims, Ahmedabad) — **EXCLUDE (E04)**. Welle, Schaefer, Butterworth
+  & Bostoen (2012, political-economy analysis of WASH inventory data-
+  monitoring-system governance, Ethiopia) — **EXCLUDE (E01)**. Kurland
+  & Zell (2011, naturological business-ethics case study of a
+  California utility rate-regulation proceeding) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S995-S999, 992
+  → 997 rows each); `effect_sizes.csv` unchanged (45 rows: no eligible
+  estimates this batch — all five includes are qualitative/descriptive
+  studies, none report a regression-based estimate isolating a legal/
+  institutional mechanism's effect); `exclusion_log.csv` updated (917
+  → 922 rows; E01 372 → 376, E04 66 → 67); duplicate audit (exact-DOI
+  + study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,740 open records); schema validation re-run clean.
+  Running totals: 1,919/3,659 screened (997 include/922 exclude), 1,740
+  open, 997 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

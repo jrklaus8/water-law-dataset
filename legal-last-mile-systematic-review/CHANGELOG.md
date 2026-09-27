@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-sixth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-seventh full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Twentieth batch from `new_batch_pool.json[190:200]`.
+
+- **RA92812EC2661** (Mustafa & Reeder 2009, *International Journal of
+  Urban and Regional Research*, "'People Is All That Is Left to
+  Privatize': Water Supply Privatization, Globalization and Social
+  Justice in Belize City, Belize"). **INCLUDE.** Ethnographic/survey
+  study documenting tariff increases and excessive disconnection rates
+  under the institutional shift to privatized water supply (BWSL).
+  Extracted as **S995**.
+- **RA9D674E9C236** (Scott, Cotton & Khan 2013, *Habitat
+  International*, "Tenure security and household investment decisions
+  for urban sanitation: The case of Dakar, Senegal"). **INCLUDE.**
+  Household study of de facto (vs. de jure) tenure security as the
+  institutional mechanism shaping sanitation-investment decisions.
+  Extracted as **S996**.
+- **R2F782937787E** (Vibhu & James 2010, *Water Resources
+  Development*, "Policy insights on user charges from a rural water
+  supply project: A counter-intuitive view from South India").
+  **INCLUDE.** Project policy analysis of flexible, community-engaged
+  O&M cost-recovery tariff-collection institutional design improving
+  rural water-supply sustainability, Tamil Nadu. Extracted as **S997**.
+- **RAD2F8C9FB199** (Jackson & Barber 2013, *Planning Theory &
+  Practice*, "Recognition of indigenous water values in Australia's
+  Northern Territory"). **INCLUDE.** Legal/institutional case study
+  (18 interviews) of the National Water Initiative and Native Title
+  Act shaping indigenous water entitlements, documenting stark
+  inequity (>20% land ownership vs. <0.01% water entitlements).
+  Extracted as **S998**.
+- **RABA8C62B263C** (Subbaraman & Murthy 2015, *Bulletin of the World
+  Health Organization*, "The right to water in the slums of Mumbai,
+  India"). **INCLUDE.** Legal analysis of notified/non-notified slum
+  status and the 2014 Bombay High Court PIL Article 21 right-to-water
+  ruling, documenting >40x price and >2x infant-mortality disparities.
+  Extracted as **S999**.
+- **RA9E2522BF679** (Tempelhoff 2021, "Emfuleni's wastewater crisis,
+  2018-2021: The history of a Vaal sub-catchment problem") — **EXCLUDE
+  (E01).** Historical/environmental narrative of municipal wastewater
+  infrastructure collapse and fish-kill disaster; primary focus is
+  environmental harm and river-system governance, not household
+  water-access outcomes.
+- **RAB5CF32C6D46** (Mishra & Ray 2013, "Multi-Dimensional Deprivation
+  in India During and After the Reforms") — **EXCLUDE (E01).** Broad
+  composite multi-dimensional deprivation index study; water access is
+  one of several household-amenity covariates in a general poverty-
+  index methodology paper.
+- **RAB3F0FD802CD** (Butala, VanRooyen & Patel 2010, "Improved health
+  outcomes in urban slums through infrastructure upgrading") —
+  **EXCLUDE (E04).** Quasi-experimental difference-in-difference
+  regression using micro-health-insurance claims; dependent variable
+  is waterborne illness incidence (health outcome), not water access.
+- **RA9308E647DFC** (Welle, Schaefer, Butterworth & Bostoen 2012,
+  "Enabling or disabling? Reflections on the Ethiopian national WASH
+  inventory process") — **EXCLUDE (E01).** Political-economy analysis
+  of WASH data-monitoring-system governance and donor-government
+  dynamics, not a mechanism affecting household water access.
+- **RAC15BC9785C8** (Kurland & Zell 2011, "Regulating Water: A
+  Naturological Analysis of Competing Interests Among Company, Town,
+  and State") — **EXCLUDE (E01).** Business-ethics theoretical case
+  study applying a naturological framework to a single California
+  utility rate-regulation proceeding; not focused on access inequality
+  for a marginalized population.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S995-S999 added;
+992 → 997 rows each). `effect_sizes.csv` unchanged (45 rows): all five
+includes are qualitative/descriptive studies with no regression-based
+estimate isolating a legal/institutional mechanism's effect.
+`exclusion_log.csv` updated (917 → 922 rows; E01 372 → 376, E04 66 →
+67). Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,740 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,919/3,659 screened (997 include/922 exclude), 1,740
+open, 997 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-sixth full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Nineteenth batch from `new_batch_pool.json[180:190]`.
 
