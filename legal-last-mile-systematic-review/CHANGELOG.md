@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-second full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-third full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Forty-sixth batch from `new_batch_pool.json[450:460]`.
+
+- **R835937265185** (Baijius & Patrick 2019, "We Don't Drink the Water
+  Here," Water/MDPI, Canada). **INCLUDE.** Political-ecology case study
+  documenting colonial institutional/jurisdictional exclusion (Indian
+  Act reservation system, federal fiduciary responsibility) driving
+  boil-water advisories 2.5x more frequent for First Nations. →
+  **S1106**.
+- **R93D7F84D81B3** (Katomero & Georgiadou 2018, "The Elephant in the
+  Room," ISPRS Int. J. Geo-Information, Tanzania). **INCLUDE.**
+  Institutional-theory case study: formal/informal COWSO institutional
+  complementarity associated with superior rural water access in two
+  districts. → **S1107**.
+- **RB5257A44EC80** (Patrick, Grant & Bharadwaj 2019, "Reclaiming
+  Indigenous Planning as a Pathway to Local Water Security," Water/MDPI,
+  Muskowekwan First Nation, Saskatchewan). **INCLUDE.** Federal/
+  provincial jurisdictional fragmentation under the Indian Act and
+  Constitution Act 1982 linked to a 74%/21%/remainder piped/truck/well
+  service-type split on reserve. → **S1108**.
+- **R132A30EE97F5** (Jama & Mourad 2019, "Water Services
+  Sustainability," Sustainability/MDPI, Garowe, Puntland, Somalia).
+  **INCLUDE.** Overlapping/uncoordinated agency mandates (PSAWEN,
+  Ministry of Environment) and a PPP concession pricing structure
+  (NUWACO) documented as driving unaffordable water for the poor. →
+  **S1109**.
+- **R7B4238C0F691** (Baird, Plummer, Dupont & Carter 2015,
+  "Perceptions of Water Quality in First Nations Communities," Nature
+  and Culture). **EXCLUDE (E04).** Perceptions/satisfaction survey
+  (Likert-scale), not an institutional access-eligibility mechanism
+  analysis.
+- **R7A1EB1512BE4** (Huda et al. 2012, SHEWA-B interim evaluation,
+  Social Science & Medicine, Bangladesh). **EXCLUDE (E04).** Child
+  diarrhea/respiratory-illness handwashing-behavior RCT, wrong outcome.
+- **R9ABC6050547A** (Jackson, Hatton MacDonald & Bark 2019, "Public
+  Attitudes to Inequality in Water Distribution," Water Resources
+  Research, Murray-Darling Basin, Australia). **EXCLUDE (E04).**
+  Contingent-valuation public-willingness-to-pay survey, not a
+  documented access mechanism.
+- **RAB0CE1247452** (Yulistyorini et al. 2019, anaerobic baffled
+  reactor performance, Processes/MDPI, Malang, Indonesia). **EXCLUDE
+  (E06).** Pure engineering/treatment-performance study.
+- **RE4B8992DC140** (Snyder et al. 2020, private-sector sanitation
+  delivery follow-up RCT, Int. J. Environ. Res. Public Health, Nairobi,
+  Kenya). **EXCLUDE (E06).** Facility-maintenance/service-delivery-model
+  performance comparison, not a legal-eligibility mechanism.
+- **R6C0638AC2F78** (Sinclair et al. 2011, "Oral vaccines for
+  preventing cholera," Cochrane Database of Systematic Reviews).
+  **EXCLUDE (E01).** Clinical vaccine-efficacy review, wrong topic.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1106-S1109,
+1,103 → 1,107 rows each); `effect_sizes.csv` unchanged (52 rows -- all
+four includes are qualitative institutional case studies, no
+regression-based estimates); `exclusion_log.csv` updated (1,062 → 1,068
+rows; E01 472 → 473, E04 69 → 72, E06 100 → 102); duplicate audit
+(exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,484 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,175/3,659 screened (1,107 include/1,068 exclude),
+1,484 open, 1,107 extracted studies, 52 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-second full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Forty-fifth batch from `new_batch_pool.json[440:450]`.
 

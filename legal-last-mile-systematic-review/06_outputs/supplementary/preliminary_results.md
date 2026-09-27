@@ -6238,6 +6238,47 @@ evidence of anything.
   1,494 open, 1,103 extracted studies, 52 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-third batch (10 records, 2026-09-27),
+  forty-sixth batch from the 543-record pool.** `new_batch_pool.json[450:460]`.
+  Baijius & Patrick (2019, political-ecology case study of colonial
+  institutional/jurisdictional exclusion, boil-water advisories 2.5x
+  more frequent for First Nations, Canada, S1106) — **INCLUDE**.
+  Katomero & Georgiadou (2018, institutional-theory case study of
+  formal/informal COWSO complementarity associated with superior rural
+  water access, Tanzania, S1107) — **INCLUDE**. Patrick, Grant &
+  Bharadwaj (2019, federal/provincial jurisdictional fragmentation
+  under the Indian Act and Constitution Act 1982 linked to a
+  74%/21%/remainder piped/truck/well service-type split on reserve,
+  Muskowekwan First Nation, Saskatchewan, S1108) — **INCLUDE**. Jama &
+  Mourad (2019, overlapping/uncoordinated agency mandates and a PPP
+  concession pricing structure driving unaffordable water for the
+  poor, Garowe, Puntland, Somalia, S1109) — **INCLUDE**. Baird,
+  Plummer, Dupont & Carter (2015, E04 perceptions/satisfaction survey,
+  not an institutional access-eligibility mechanism, Ontario First
+  Nations) — **EXCLUDE (E04)**. Huda et al. (2012, E04 child
+  diarrhea/respiratory-illness handwashing-behavior RCT, wrong
+  outcome, Bangladesh SHEWA-B) — **EXCLUDE (E04)**. Jackson, Hatton
+  MacDonald & Bark (2019, E04 contingent-valuation public-willingness-
+  to-pay survey, not a documented access mechanism, Murray-Darling
+  Basin, Australia) — **EXCLUDE (E04)**. Yulistyorini et al. (2019, E06
+  pure engineering/treatment-performance study, Malang, Indonesia) —
+  **EXCLUDE (E06)**. Snyder et al. (2020, E06 facility-maintenance/
+  service-delivery-model performance comparison, not a legal-
+  eligibility mechanism, Nairobi, Kenya) — **EXCLUDE (E06)**. Sinclair
+  et al. (2011, E01 clinical vaccine-efficacy review, wrong topic,
+  Cochrane cholera-vaccine review) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1106-S1109,
+  1,103 → 1,107 rows each); `effect_sizes.csv` unchanged (52 rows --
+  all four includes are qualitative institutional case studies without
+  a regression-based effect size); `exclusion_log.csv` updated (1,062
+  → 1,068 rows; E01 472 → 473, E04 69 → 72, E06 100 → 102); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,484 open records);
+  schema validation re-run clean.
+  Running totals: 2,175/3,659 screened (1,107 include/1,068 exclude),
+  1,484 open, 1,107 extracted studies, 52 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
