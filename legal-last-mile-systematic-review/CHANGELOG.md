@@ -4,7 +4,66 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-seventeenth full-text screening batch (10 records, 8 includes, 2 excludes)
+## 2026-09-27 (latest) — Two-hundred-eighteenth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Forty-first batch from `new_batch_pool.json[400:410]`.
+
+- **R2D9BCED515D0** (Etongo et al. 2018, "Community-Managed Water Supply
+  Systems," Water, Uganda). **INCLUDE.** Water User Committee (WUC)
+  financial-contribution requirements and participation as
+  determinants of rural water-system functionality. → **S1082**.
+- **R14C9B7372CC7** (Badri & Joshi 2018, "Significance of Granular Real
+  Time Data," IEEE PuneCon, Maharashtra, India). **INCLUDE.** NGO-ULB
+  cost-sharing "One Home-One Toilet" household sanitation delivery
+  model, pre-post impact assessment. → **S1083**.
+- **R14D397826679** (Behera, Rahut & Sethi 2020, "Analysis of household
+  access," Utilities Policy, Nepal). **INCLUDE.** Multinomial logit
+  regression on NLSS panel data (1995-2011) finding broad
+  socioeconomic/geographic determinants of water/sanitation access. →
+  **S1084**.
+- **R13014C89A7C9** (Tigabu et al., "Determinants of household
+  participation," Water Policy, Ethiopia). **INCLUDE.** Tobit
+  regression on WUC-set tariff/contribution determinants of
+  water-system maintenance funding. → **S1085**.
+- **R0E434D61F108** (Ranganathan 2014, "Paying for Pipes, Claiming
+  Citizenship," IJURR, Bangalore, India). **INCLUDE.** Formal land-
+  tenure-proof requirement for water connection waived in favor of
+  payment-proof, following resident welfare association lobbying. →
+  **S1086**.
+- **R0F404B9CB634** (Chng 2012, "Regulatory mobilization," Regulation &
+  Governance, Metro Manila, Philippines). **INCLUDE.** NWRB Certificate
+  of Public Convenience licensing framework for small-scale water
+  providers and regulatory mobilization by NGOs/community groups. →
+  **S1087**.
+- **R6A8E5F1C16DC** (Khabo-Mmekoa & Momba 2019, microbiological water
+  quality, KwaZulu-Natal). **EXCLUDE (E03).** Water-quality/
+  contamination-exposure study.
+- **R0BE5FFDEDC88** (Sperling, Romero-Lankao & Beig 2016, citizen
+  infrastructure/environmental policy priorities, Mumbai). **EXCLUDE
+  (E04).** Wrong outcome -- policy-priority ranking, not water access.
+- **R0F457D622245** (Sommer et al. 2014, "Violence, gender and WASH,"
+  Environment and Urbanization). **EXCLUDE (E12).** Narrative
+  literature review, no original empirical data.
+- **R0A739DB3E994** (Nauges & Strand 2007, non-tap water demand
+  elasticity, Central America). **EXCLUDE (E06).** Pure economic
+  demand-elasticity estimation, no legal/institutional content.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1082-S1087,
+1,079 → 1,085 rows each); `effect_sizes.csv` unchanged (51 rows --
+all six includes are qualitative/mixed-methods case studies or
+regressions whose outcome variable (contribution amount, broad
+socioeconomic determinants) does not isolate a specific legal/
+institutional mechanism's effect on a water-access outcome per the
+strict Family A/B/C framework); `exclusion_log.csv` updated (1,036 →
+1,040 rows; E03 31 → 32, E04 68 → 69, E06 97 → 98, E12 31 → 32);
+duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,534 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,125/3,659 screened (1,085 include/1,040 exclude),
+1,534 open, 1,085 extracted studies, 51 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-seventeenth full-text screening batch (10 records, 8 includes, 2 excludes)
 
 Fortieth batch from `new_batch_pool.json[390:400]`.
 

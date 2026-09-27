@@ -6044,6 +6044,49 @@ evidence of anything.
   1,544 open, 1,079 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-eighteenth batch (10 records, 2026-09-27), forty-
+  first batch from the 543-record pool.** `new_batch_pool.json[400:410]`.
+  Etongo et al. (2018, Water User Committee financial-contribution
+  requirements and participation as determinants of rural
+  water-system functionality, Uganda, S1082) — **INCLUDE**. Badri &
+  Joshi (2018, NGO-ULB cost-sharing "One Home-One Toilet" household
+  sanitation delivery model, pre-post impact assessment, Maharashtra,
+  India, S1083) — **INCLUDE**. Behera, Rahut & Sethi (2020,
+  multinomial logit regression on Nepal Living Standard Survey panel
+  data finding broad socioeconomic/geographic determinants of
+  water/sanitation access, S1084) — **INCLUDE**. Tigabu et al. (Tobit
+  regression on Water User Committee-set tariff/contribution
+  determinants of water-system maintenance funding, Ethiopia, S1085)
+  — **INCLUDE**. Ranganathan (2014, formal land-tenure-proof
+  requirement for water connection waived in favor of payment-proof
+  following resident welfare association lobbying, Bangalore, India,
+  S1086) — **INCLUDE**. Chng (2012, National Water Resources Board
+  Certificate of Public Convenience licensing framework for
+  small-scale water providers and regulatory mobilization by
+  NGOs/community groups, post-privatization Metro Manila,
+  Philippines, S1087) — **INCLUDE**. Khabo-Mmekoa & Momba (2019, E03
+  microbiological water-quality/contamination-exposure study,
+  KwaZulu-Natal) — **EXCLUDE (E03)**. Sperling, Romero-Lankao & Beig
+  (2016, E04 wrong outcome -- policy-priority ranking, not water
+  access, Mumbai) — **EXCLUDE (E04)**. Sommer et al. (2014, E12
+  narrative literature review, no original empirical data) —
+  **EXCLUDE (E12)**. Nauges & Strand (2007, E06 pure economic
+  demand-elasticity estimation, no legal/institutional content,
+  Central America) — **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1082-S1087,
+  1,079 → 1,085 rows each); `effect_sizes.csv` unchanged (51 rows --
+  all six includes are qualitative/mixed-methods case studies or
+  regressions whose outcome variable does not isolate a specific
+  legal/institutional mechanism's effect on a water-access outcome
+  per the strict Family A/B/C framework); `exclusion_log.csv` updated
+  (1,036 → 1,040 rows; E03 31 → 32, E04 68 → 69, E06 97 → 98, E12 31
+  → 32); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,534
+  open records); schema validation re-run clean.
+  Running totals: 2,125/3,659 screened (1,085 include/1,040 exclude),
+  1,534 open, 1,085 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
