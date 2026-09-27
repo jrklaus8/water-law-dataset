@@ -4648,6 +4648,41 @@ evidence of anything.
   open, 915 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-second batch (10 records, 2026-09-27), fifth batch
+  from the 543-record pool.** `new_batch_pool.json[40:50]`.
+  Martinez-Espineira, Garcia-Valinas & Gonzalez-Gomez (2012, econometric
+  analysis of unjustified water-price disparities under a decentralized/
+  unregulated tariff framework, Spanish cities, S918) — **INCLUDE**.
+  Peal, Evans, Blackett, Hawkins & Heymans (2014, comparative 12-city
+  FSM institutional scoring, S919) — **INCLUDE**. Barde (2017,
+  difference-in-differences/kernel-matching isolating water-user-
+  association vs. local-government management effects on rural
+  piped-water access, Brazil, S920) — **INCLUDE**, added to
+  `effect_sizes.csv` (Family A, first new row since Batch 175). Biddle
+  & Baehler (2019, two-case process-tracing of NYC vs. Flint under the
+  Safe Drinking Water Act's polycentric federalism, S921) —
+  **INCLUDE**. Rachwal (2007, documentary/historical analysis of the
+  UK's 1989 privatisation legal framework's household-bill and
+  disconnection-protection effects, S922) — **INCLUDE**. Wride, Chen
+  & Johnstone (2004, rainfall-measurement engineering methodology,
+  Cincinnati) — **EXCLUDE (E06)**. Humphries et al. (2011, pure
+  ecohydrology/geochemistry wetland study, South Africa, corpus error)
+  — **EXCLUDE (E01)**. Grimes (2012, conceptual UWAF framework paper
+  with desk-based illustrative application) — **EXCLUDE (E05)**. Obani
+  (2017, confirmed via full-text read as a self-described literature
+  review) — **EXCLUDE (E12)**. Harvey (2007, technical tariff-
+  hierarchy/cost-calculation planning-tool methodology paper) —
+  **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S918-S922, 915 →
+  920 rows each); `effect_sizes.csv` updated (41 → 42 rows; S920
+  added); `exclusion_log.csv` updated (845 → 850 rows; E01 341 → 342,
+  E05 114 → 115, E06 76 → 78, E12 8 → 9); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,889 open records); schema validation re-run clean.
+  Running totals: 1,770/3,659 screened (920 include/850 exclude), 1,889
+  open, 920 extracted studies, 42 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

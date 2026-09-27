@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-first full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Hundred-eighty-second full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Fifth batch from `new_batch_pool.json[40:50]`.
+
+- **R8DF8439BABC3** (Martinez-Espineira, Garcia-Valinas & Gonzalez-
+  Gomez 2012, *IJWRD*, "Is the Pricing of Urban Water Services
+  Justifiably Perceived as Unequal among Spanish Cities?"). **INCLUDE.**
+  Econometric analysis linking a decentralized/unregulated tariff-
+  setting framework to unjustified price disparities. Extracted as
+  **S918**.
+- **R8C6C4D410F39** (Peal, Evans, Blackett, Hawkins & Heymans 2014,
+  *JWSHD*, "Fecal sludge management: a comparative analysis of 12
+  cities"). **INCLUDE.** Comparative 12-city institutional scoring
+  (modified SDA tool) linking enabling-environment strength to safe
+  fecal-waste-management outcomes; despite the journal's "Review Paper"
+  label, genuine original comparative research (key-informant
+  interviews + structured scoring), distinguished from literature-
+  synthesis reviews. Extracted as **S919**.
+- **R9502CE771F1E** (Barde 2017, *World Development*, "What Determines
+  Access to Piped Water in Rural Areas? Evidence from Small-Scale
+  Supply Systems in Rural Brazil"). **INCLUDE.** Difference-in-
+  differences with kernel matching isolating water-user-association vs.
+  local-government management effects on rural piped-water access.
+  Extracted as **S920**; added to `effect_sizes.csv` (Family A — first
+  new effect_sizes row since Batch 175/S882).
+- **R94E2C2B0C8C2** (Biddle & Baehler 2019, *Environmental Policy and
+  Governance*, "Breaking bad: When does polycentricity lead to
+  maladaptation rather than adaptation?"). **INCLUDE.** Two-case
+  process-tracing comparison of NYC vs. Flint, Michigan under the Safe
+  Drinking Water Act's polycentric federalism. Extracted as **S921**.
+- **R88AA43E1DE4C** (Rachwal 2007, *Journal of Water Supply: Research
+  and Technology-AQUA*, "30 Years of technical and organisational
+  development in the UK water sector: Thames Water's experiences of
+  moving from public to private sector"). **INCLUDE.**
+  Documentary/historical analysis of the UK's 1989 privatisation legal
+  framework's effects on household bills, quality compliance and
+  disconnection protection. Extracted as **S922**.
+- **R8B31849A5CDA** (Wride, Chen & Johnstone 2004, "Characterizing the
+  Spatial Variability of Rainfall Across a Large Metropolitan Area") —
+  **EXCLUDE (E06).** Rainfall-measurement engineering methodology for
+  sewer-system modeling, Cincinnati.
+- **R8A914A23E59B** (Humphries, Kindness, Ellery, Hughes, Bond & Barnes
+  2011, "Vegetation influences on groundwater salinity and chemical
+  heterogeneity... South Africa") — **EXCLUDE (E01).** Pure
+  ecohydrology/geochemistry study; zero human water-access content,
+  a corpus-inclusion error.
+- **R8A823907105A** (Grimes 2012, "Integrating human rights into water
+  governance") — **EXCLUDE (E05).** Conceptual framework paper (UWAF)
+  with a brief desk-based illustrative application, not original
+  empirical data collection.
+- **R89AB91CFAF11** (Obani 2017, "Inclusiveness in humanitarian
+  action—access to water, sanitation & hygiene in focus") — **EXCLUDE
+  (E12).** Confirmed via full-text read as a self-described literature
+  review with a stated database search methodology.
+- **R89525A02FCDE** (Harvey 2007, "Cost determination and sustainable
+  financing for rural water services in sub-Saharan Africa") —
+  **EXCLUDE (E06).** Technical tariff-hierarchy/cost-calculation
+  planning-tool methodology paper.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S918-S922, 915 →
+920 rows each). `effect_sizes.csv` updated (41 → 42 rows; S920 added,
+Family A, first new row since Batch 175). `exclusion_log.csv` updated
+(845 → 850 rows; E01 341 → 342, E05 114 → 115, E06 76 → 78, E12 8 →
+9). Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,889 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,770/3,659 screened (920 include/850 exclude), 1,889
+open, 920 extracted studies, 42 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-first full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
 
 Fourth batch from `new_batch_pool.json[30:40]`.
 
