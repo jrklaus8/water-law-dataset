@@ -4,7 +4,56 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirty-fourth full-text screening batch (10 records, 0 includes, 0 excludes, 10 wrong_file_retrieved) — a full wash, and a new failure mode identified
+## 2026-09-27 (latest) — Two-hundred-thirty-fifth full-text screening batch (10 records, 3 includes, 1 exclude, 6 wrong_file_retrieved)
+
+Third batch of 10 from the 45-record open queue surfaced by the large new
+Drive delivery (see Batch 233). The content-behind-filename mismatch
+failure mode identified in Batch 234 recurred here too (2 of the 6
+wrong_file cases this batch), confirming it as a real, recurring pattern
+in this delivery rather than an isolated incident.
+
+- **R033442B63D00** (Salazar Adams, Haro Velarde & Loera Burnes, comparative
+  institutional-capacity case study, Saltillo/Hermosillo water utilities,
+  Mexico). **INCLUDE.** → **S1148**.
+- **R01210FAAED72** (Martinez-Fernandez et al. 2020, Water Framework
+  Directive and water-policy-paradigm transition, Spain/Portugal).
+  **INCLUDE.** → **S1149**.
+- **R1C1A13D65727** (World Bank & IADB 2018, "Transforming Karachi into a
+  Livable and Competitive Megacity," city diagnostic). **INCLUDE.**
+  Detailed institutional/legal fragmentation (~20 agencies) and
+  formal/informal-settlement-status mechanism documentation. → **S1150**.
+  All three qualitative; no effect_sizes.csv entries.
+- **RC0F997C39416** (EEA/WHO joint report, "Water and health in Europe").
+  **EXCLUDE (E03).** Broad water-quality/public-health report, not a
+  water-service-access-mechanism study.
+- **Six wrong_file_retrieved this batch**: R0EF03089DEC3 (target: US
+  ecological sanitation; delivered: Tanzania WASH-education abstract-only
+  PARJ paper), R0999DC7092C9 (target: colonial Puebla water/bureaucracy;
+  delivered: Indonesian public-service-bureaucracy essay), R08432C1433E1
+  (target: Panama human right to water; delivered: the *same* Mexico
+  migration paper already flagged for R13BB56FEF2D1 in Batch 234 -- now
+  confirmed delivered under two different record_ids), R0142AEB4AB16
+  (target: Cabo Verde environmental problems; delivered: Brazil indigenous-
+  village deforestation study) -- ordinary title+content mismatches; plus
+  two **content-behind-filename** mismatches matching Batch 234's newly
+  identified failure mode: R0E7A7452FD2B (filename read "Mapping Cholera
+  Vulnerability in Delhi"; actual content was an unrelated paleopathology
+  review) and R7C6EB2B41FD4 (filename read "Meeting the Water Reform
+  Challenge"; actual content was a WHO HIV/AIDS report).
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1148-S1150,
+1,145 → 1,148 rows each); `effect_sizes.csv` unchanged (59 rows -- all
+three new includes are qualitative); `exclusion_log.csv` updated
+(1,113 → 1,114 rows; E03 33 → 34); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,397 open records); schema validation re-run clean
+(13/13).
+
+Running totals: 2,262/3,659 screened (1,148 include/1,114 exclude),
+1,397 open (including 42 wrong_file_retrieved), 1,148 extracted
+studies, 59 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-thirty-fourth full-text screening batch (10 records, 0 includes, 0 excludes, 10 wrong_file_retrieved) — a full wash, and a new failure mode identified
 
 Second batch of 10 from the 45-record open queue surfaced by the large new
 Drive delivery (see Batch 233). Every one of the 10 records in this batch

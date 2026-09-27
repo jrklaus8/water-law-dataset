@@ -6647,6 +6647,39 @@ evidence of anything.
   1,401 open (including 36 wrong_file_retrieved, up from 26), 1,145
   extracted studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-fifth batch (10 records, 2026-09-27), third batch
+  from the 45-record open queue.** Salazar Adams, Haro Velarde & Loera
+  Burnes (comparative institutional-capacity case study, Saltillo/
+  Hermosillo Mexican municipal water utilities, S1148) — **INCLUDE**.
+  Martinez-Fernandez et al. 2020 (Water Alternatives, EU Water Framework
+  Directive regulatory-paradigm transition, Spain/Portugal, S1149) —
+  **INCLUDE**. World Bank & Inter-American Development Bank 2018
+  ("Transforming Karachi into a Livable and Competitive Megacity,"
+  multi-agency institutional/legal fragmentation and informal-settlement
+  status as determinants of water/sanitation access, Karachi, S1150) —
+  **INCLUDE**. EEA/WHO Regional Office for Europe ("Water and health in
+  Europe," a water-quality/public-health report) — **EXCLUDE (E03)**. Six
+  records flagged wrong_file_retrieved this batch: R0EF03089DEC3,
+  R0999DC7092C9, R08432C1433E1, and R0142AEB4AB16 were ordinary
+  title+content mismatches (R08432C1433E1 notably delivered the identical
+  wrong content — a Mexico migration/water-rights paper — already flagged
+  wrong for a different record_id, R13BB56FEF2D1, in Batch 234, now
+  confirmed a repeat delivery under a second record_id); R0E7A7452FD2B and
+  R7C6EB2B41FD4 are two more instances of the content-behind-filename
+  mismatch failure mode first identified in Batch 234 (filename/title
+  metadata matched the target exactly, but the actual PDF content was an
+  unrelated paper, caught only by reading full text).
+  `extraction_database.csv`/`evidence_map.csv` updated (S1148-S1150,
+  1,145 → 1,148 rows each, all three qualitative-synthesis-eligible only);
+  `effect_sizes.csv` unchanged (59 rows — no regression-based effect
+  estimate among the three includes); `exclusion_log.csv` updated
+  (1,113 → 1,114 rows; E03 33 → 34); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,397 open records); schema validation re-run clean.
+  Running totals: 2,262/3,659 screened (1,148 include/1,114 exclude),
+  1,397 open (including 42 wrong_file_retrieved), 1,148 extracted
+  studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
