@@ -4,7 +4,79 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-eighth full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-ninth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RD6FBE5C6BF3B** (Mulwafu & Msosa 2005, *Physics and Chemistry of the
+  Earth*, "IWRM and poverty reduction in Malawi: A socio-economic
+  analysis"). **INCLUDE.** Document review and key-informant interviews
+  identifying an absence-of-enabling-legislation barrier blocking
+  decentralized river-basin Catchment Management Authorities. Extracted
+  as **S798**.
+- **RD601DD13E14F** (Roy, Akshintala & Sharma 2013, *Social Change*,
+  "Water Governance and Supply in Urban Areas"). **INCLUDE.** JNNURM
+  reform analysis linking land-tenure documentation to resettlement-
+  colony water-quality/access outcomes, Delhi. Extracted as **S799**.
+- **RD460C6C5BA82** (Lewis 1998, *RURDS*, "The impact of public
+  infrastructure on municipal economic development: Empirical results
+  from Kenya"). **INCLUDE.** OLS/2SLS regression and comparison of
+  local-vs-central administrative authority effects on water
+  infrastructure/access across 32-35 municipalities. Extracted as
+  **S800**. Not effect_sizes eligible: the significant Table 3
+  access-time/reliability findings are an unadjusted difference-of-means
+  comparison, not a regression-based estimate, per the established
+  chi-square/ANOVA exclusion precedent (S724, S761); the Table 1
+  regression on infrastructure quantity found D2 not significant.
+- **RD1C3B399E90B** (Townsend & Eyles 2004, *Health Promotion
+  International*, "Capacity and transparency of potable water regulation
+  in Tijuana, Mexico..."). **INCLUDE.** 30 key-informant interviews
+  documenting clientelistic/discretionary administrative practice and
+  institutional fragmentation between health and utility regulators.
+  Extracted as **S801**.
+- **RD17D28844F71** (Brady & Gray 2013, *Water Policy*, "Analysis of
+  water pricing in Ireland and recommendations towards a more efficient
+  water sector"). **INCLUDE.** Survey of 104 Group Water Schemes and 34
+  local authorities documenting fragmented, unregulated tariff-setting
+  (35% GWS/public pricing gap). Extracted as **S802**.
+- **RD0D63BD0DF34** (Vasquez 2011, *Water Policy*, "Municipal water
+  services in Guatemala: exploring official perceptions"). **INCLUDE.**
+  Semi-structured interviews with government officials identifying
+  institutional determinants of service quality; companion study to the
+  already-included S794 (Vasquez 2015). Extracted as **S803**.
+- **RD24CFA69A828** (Khan 1988, *Natural Resources Forum*, "Institutional
+  Aspects of Water Supply and Sanitation in Asia") — **EXCLUDE (E05).**
+  Normative policy-synthesis review of secondary national statistics,
+  no original empirical data collection; close call given its dedicated
+  Legal Regulations section, but excluded for consistency with the
+  Nallathiga/Ezeudu review-paper precedent.
+- **RD1DE793F1296** (Otis, Gilbertson, McCarthy & Barnett 2004,
+  "Performance management and inventory system for onsite/cluster
+  wastewater treatment facilities") — **EXCLUDE (E01).** GIS/database
+  permit-tracking software tool for Minnesota regulators, a
+  methodology/tool-development paper.
+- **RD135735976C0** (Bes-Pia, Cuartas-Uribe, Mendoza-Roca &
+  Alcaina-Miranda 2010, *Journal of Hazardous Materials*, "Study of the
+  behaviour of different NF membranes...") — **EXCLUDE (E06).** Pure
+  membrane-technology engineering study.
+- **RCFA60F99F5A8** (Cain, Irias & Pratt 2009, "Seismic Safety of Water
+  Lifelines: An Ongoing Process") — **EXCLUDE (E06).** Pure structural/
+  seismic engineering case study, EBMUD California.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S798-S803, 795 →
+801 rows each). `effect_sizes.csv` unchanged (38 rows; Lewis 1998 Table
+3 finding judged not eligible, see above). `exclusion_log.csv` updated
+(740 → 744 rows; E01 287 → 288, E05 91 → 92, E06 60 → 62). Duplicate
+audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,114 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,545/3,659 screened (801 include/744 exclude), 2,114
+open, 801 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-eighth full-text screening batch (10 records, 7 includes, 3 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

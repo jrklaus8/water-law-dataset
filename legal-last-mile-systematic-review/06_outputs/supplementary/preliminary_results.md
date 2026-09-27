@@ -3843,6 +3843,38 @@ evidence of anything.
   Running totals: 1,535/3,659 screened (795 include/740 exclude), 2,124
   open, 795 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-ninth full-text screening batch, 10
+  records, 6 includes, 4 excludes.** Mulwafu & Msosa (2005, absence-of-
+  enabling-legislation barrier blocking Catchment Management Authorities,
+  Malawi, S798) — **INCLUDE**. Roy, Akshintala & Sharma (2013, JNNURM
+  reform analysis, tenure documentation linked to resettlement-colony
+  water quality, Delhi, S799) — **INCLUDE**. Lewis (1998, local-vs-
+  central administrative authority OLS/2SLS regression and access-time/
+  reliability comparison, Kenya, S800) — **INCLUDE**, not effect_sizes
+  eligible (Table 3's significant finding is an unadjusted difference-
+  of-means comparison, not a regression, per the S724/S761 precedent;
+  Table 1's regression found the authority dummy not significant).
+  Townsend & Eyles (2004, 30 key-informant interviews on clientelistic
+  administrative practice and institutional fragmentation, Tijuana,
+  S801) — **INCLUDE**. Brady & Gray (2013, survey of 104 Group Water
+  Schemes and 34 local authorities, fragmented unregulated tariff-
+  setting, Ireland, S802) — **INCLUDE**. Vasquez (2011, official-
+  perceptions interviews, companion to S794, Guatemala, S803) —
+  **INCLUDE**. Khan (1988, normative policy-synthesis review, Asia) —
+  **EXCLUDE (E05)**. Otis et al. (2004, GIS/database permit-tracking
+  tool, Minnesota) — **EXCLUDE (E01)**. Bes-Pia et al. (2010, NF
+  membrane textile-effluent engineering study) — **EXCLUDE (E06)**.
+  Cain, Irias & Pratt (2009, seismic safety engineering case study,
+  EBMUD California) — **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S798-S803, 795 →
+  801 rows each); `effect_sizes.csv` unchanged (38 rows; Lewis 1998
+  finding judged not eligible, see above); `exclusion_log.csv` updated
+  (740 → 744 rows; E01 287 → 288, E05 91 → 92, E06 60 → 62); duplicate
+  audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,114 open records); schema validation re-run clean.
+  Running totals: 1,545/3,659 screened (801 include/744 exclude), 2,114
+  open, 801 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
