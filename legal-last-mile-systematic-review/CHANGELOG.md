@@ -4,7 +4,62 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twentieth full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-first full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Forty-fourth batch from `new_batch_pool.json[430:440]`.
+
+- **R1E3F115E2D74** (Botton & de Gouvello 2008, "Water and sanitation
+  in the Buenos Aires metropolitan region," Geoforum). **INCLUDE.**
+  ETOSS vs. ORAB regulatory-tolerance divergence for informal water
+  access; AASA sole-provider clause requiring wells blocked up;
+  desvinculados networks later institutionally recognized. →
+  **S1097**.
+- **R20599F7A50A1** (Whittington 2003, "Municipal water pricing and
+  tariff design," Water Policy, South Asia). **INCLUDE.** Pro-poor
+  reform agenda: guaranteed connections, upfront-cost subsidies,
+  legalized vending, no exclusive service-area rights. → **S1098**.
+- **R71410CC8C846** (Adubofour, Obiri-Danso & Quansah 2013,
+  "Sanitation survey of two urban slum Muslim communities," Environ.
+  Urban., Kumasi, Ghana). **INCLUDE.** Illegal-settlement status
+  barring legal connections; informal water purchase at 10-11x
+  official tariff; landlord-imposed latrine barriers. → **S1099**.
+- **R704B148C5117** (Willis et al. 2008, "Indigenous Responses to
+  Water Policymaking in Australia," Development). **INCLUDE.**
+  National Water Initiative full-cost-recovery tariff applied to a
+  15-household bulk connection at Yarilena Aboriginal homeland. →
+  **S1100**.
+- **R21E676633A38** (Bel, González-Gómez & Picazo-Tadeo 2013, Spain
+  water privatization/regulation comparative study). **EXCLUDE
+  (E01).** Regulatory-agency institutional architecture/market
+  structure, no documented access-exclusion outcome.
+- **R727E74956984** (Sandhu, waste-picker affordable-housing
+  vulnerability, Amritsar, India). **EXCLUDE (E01).** Wrong topic --
+  housing vulnerability, water only tangential.
+- **R74287BEE0595** (Kotze & Mathola 2012, Alexandra urban-renewal
+  satisfaction survey, Urban Forum). **EXCLUDE (E01).** Broad
+  multi-service satisfaction survey, no isolated access mechanism.
+- **R72919F1AC937** (Caldwell et al. 2003, Bangladesh arsenic
+  crisis, Social Science & Medicine). **EXCLUDE (E03).** Water-
+  quality/contamination-exposure study.
+- **R72F429CD88E3** (Wutich et al. 2021, HWISE global agenda, JAWRA).
+  **EXCLUDE (E12).** Conceptual agenda-setting synthesis, no original
+  empirical data.
+- **R5D43547CB77D** (Mpanga 2016, doctrinal right-to-water
+  constitutional analysis, Uganda, African Human Rights Law
+  Journal). **EXCLUDE (E05).** No empirical evidence -- purely
+  doctrinal legal-interpretive argument.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1097-S1100,
+1,094 → 1,098 rows each); `effect_sizes.csv` unchanged (51 rows --
+all four includes are institutional case studies/policy analyses
+without a regression-based effect size); `exclusion_log.csv` updated
+(1,051 → 1,057 rows; E01 467 → 470, E03 32 → 33, E05 129 → 130, E12
+35 → 36); duplicate audit (exact-DOI + study_id) found no new
+duplicates; `full_text_retrieval_queue.csv` regenerated (1,504 open
+records); schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,155/3,659 screened (1,098 include/1,057 exclude),
+1,504 open, 1,098 extracted studies, 51 effect_sizes rows.
 
 Forty-third batch from `new_batch_pool.json[420:430]`.
 

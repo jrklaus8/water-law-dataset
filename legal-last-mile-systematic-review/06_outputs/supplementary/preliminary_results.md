@@ -6163,6 +6163,43 @@ evidence of anything.
   1,514 open, 1,094 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-first batch (10 records, 2026-09-27), forty-
+  fourth batch from the 543-record pool.** `new_batch_pool.json[430:440]`.
+  Botton & de Gouvello (2008, ETOSS vs. ORAB regulatory-tolerance
+  divergence for informal water access, AASA sole-provider clause,
+  desvinculados networks, Buenos Aires, Argentina, S1097) —
+  **INCLUDE**. Whittington (2003, pro-poor tariff-reform agenda:
+  guaranteed connections, upfront-cost subsidies, legalized vending,
+  South Asia, S1098) — **INCLUDE**. Adubofour, Obiri-Danso & Quansah
+  (2013, illegal-settlement status barring legal water connections,
+  informal purchase at 10-11x official tariff, Kumasi, Ghana, S1099)
+  — **INCLUDE**. Willis et al. (2008, National Water Initiative
+  full-cost-recovery tariff applied to a 15-household bulk
+  connection, Yarilena Aboriginal homeland, Australia, S1100) —
+  **INCLUDE**. Bel, González-Gómez & Picazo-Tadeo (2013, E01
+  regulatory-agency institutional architecture, no documented access
+  outcome, Spain) — **EXCLUDE (E01)**. Sandhu (E01 wrong topic,
+  waste-picker affordable-housing vulnerability, Amritsar, India) —
+  **EXCLUDE (E01)**. Kotze & Mathola (2012, E01 broad multi-service
+  urban-renewal satisfaction survey, Alexandra, Johannesburg) —
+  **EXCLUDE (E01)**. Caldwell et al. (2003, E03 water-quality/
+  arsenic-contamination study, Bangladesh) — **EXCLUDE (E03)**.
+  Wutich et al. (2021, E12 conceptual agenda-setting synthesis, no
+  original empirical data) — **EXCLUDE (E12)**. Mpanga (2016, E05
+  doctrinal right-to-water constitutional analysis, no empirical
+  evidence, Uganda) — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1097-S1100,
+  1,094 → 1,098 rows each); `effect_sizes.csv` unchanged (51 rows --
+  all four includes are institutional case studies/policy analyses
+  without a regression-based effect size); `exclusion_log.csv`
+  updated (1,051 → 1,057 rows; E01 467 → 470, E03 32 → 33, E05 129 →
+  130, E12 35 → 36); duplicate audit (exact-DOI + study_id) found no
+  new duplicates; `full_text_retrieval_queue.csv` regenerated (1,504
+  open records); schema validation re-run clean.
+  Running totals: 2,155/3,659 screened (1,098 include/1,057 exclude),
+  1,504 open, 1,098 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
