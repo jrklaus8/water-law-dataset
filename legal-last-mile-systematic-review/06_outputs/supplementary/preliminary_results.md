@@ -5627,6 +5627,43 @@ evidence of anything.
   1,651 open, 1,028 extracted studies, 46 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-seventh batch (10 records, 2026-09-27), thirtieth
+  batch from the 543-record pool.** `new_batch_pool.json[290:300]`.
+  Nastar (2014, comparative case study finding 'world city'
+  development-plan strategies in Johannesburg and Hyderabad produce
+  documented water-access disparity favoring elites, S1031) —
+  **INCLUDE**. Russ & Takahashi (2013, logistic regression, n=277,
+  finding institutional redress-seeking contact -- municipal
+  corporation OR=0.60*, NGO OR=0.56* -- significantly predicts reduced
+  water-complaint odds, Ahmedabad Slum Networking Project, S1032) —
+  **INCLUDE, added to effect_sizes.csv (Family C)**. Galaa & Bukari
+  (2014, case study of a Tri-Water Sector Partnership using
+  chieftaincy-based conflict resolution to resolve water-tariff
+  payment conflicts, northern Ghana, S1033) — **INCLUDE**. Chappells,
+  Medd & Shove (2011, E01 household gardening-practices drought
+  study) — **EXCLUDE (E01)**. Kobayashi et al (eds., E12 full
+  multi-chapter edited book, not screenable as one study) — **EXCLUDE
+  (E12)**. Ferro, Romero & Covelli (2011, E01 utility operational-
+  efficiency benchmarking study, Latin America) — **EXCLUDE (E01)**.
+  Gomez-Temesio (2019, E01 reflexive ethnographic-methodology essay,
+  Senegal) — **EXCLUDE (E01)**. Khan & Yang (2014, E01 water-quality/
+  arsenic-mitigation stakeholder-opinion study, Bangladesh) —
+  **EXCLUDE (E01)**. Moretto (2015, E01 governance-assessment-tool
+  critique/application study, Venezuela) — **EXCLUDE (E01)**. Castro
+  (2007, E12 self-labeled overview/conceptual article) — **EXCLUDE
+  (E12)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1031-S1033,
+  1,028 → 1,031 rows each); `effect_sizes.csv` updated (46 → 47 rows:
+  S1032 added, a logistic-regression estimate isolating institutional
+  redress-seeking mechanisms' effect on a Family C water-service-
+  complaint outcome); `exclusion_log.csv` updated (980 → 987 rows; E01
+  419 → 424, E12 25 → 27); duplicate audit (exact-DOI + study_id)
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,641 open records); schema validation re-run clean.
+  Running totals: 2,018/3,659 screened (1,031 include/987 exclude),
+  1,641 open, 1,031 extracted studies, 47 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

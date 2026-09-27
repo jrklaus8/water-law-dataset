@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-sixth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Two-hundred-seventh full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Thirtieth batch from `new_batch_pool.json[290:300]`.
+
+- **R2E81D8F6358D** (Nastar 2014, "The quest to become a world city:
+  Implications for access to water"). **INCLUDE.** Comparative case
+  study finding 'world city' urban-development-plan strategies in
+  Johannesburg and Hyderabad produce documented water-access disparity,
+  benefiting elites while leaving service promises to the poor
+  unfulfilled. Extracted as **S1031**.
+- **R309188806D95** (Russ & Takahashi 2013, *Urban Studies*, "Exploring
+  the Influence of Participation on Programme Satisfaction... Ahmedabad
+  Slum Networking Project"). **INCLUDE, effect_sizes-eligible.**
+  Logistic regression (n=277) finding institutional redress-seeking
+  contact (municipal corporation OR=0.60*, NGO OR=0.56*) significantly
+  predicts reduced water-complaint odds. Extracted as **S1032**; added
+  to `effect_sizes.csv` (Family C).
+- **R32B0F0E2A2CA** (Galaa & Bukari 2014, "Water tariff conflict
+  resolution through indigenous participation in tri-water sector
+  partnerships... northern Ghana"). **INCLUDE.** Case study of a
+  Tri-Water Sector Partnership combining GWCL, private development
+  actors, and chieftaincy-based conflict resolution, resolving
+  water-tariff payment conflicts in Dalun communities. Extracted as
+  **S1033**.
+- **R2B97C2298327** (Chappells, Medd & Shove 2011, "Disruption and
+  change: drought and the inconspicuous dynamics of garden lives") —
+  **EXCLUDE (E01).** Household gardening-practices study during
+  drought.
+- **R6230EBC4E809** (Kobayashi, Syabri, Ari & Jeong, eds., "Community
+  Based Water Management and Social Capital") — **EXCLUDE (E12).**
+  Full multi-chapter edited book, not screenable as one study.
+- **R2CF326CC85CB** (Ferro, Romero & Covelli 2011, "Regulation and
+  performance: a production frontier estimate for the Latin American
+  water and sanitation sector") — **EXCLUDE (E01).** Utility
+  operational-efficiency benchmarking study.
+- **R30DC77EED2DA** (Gomez-Temesio 2019, "Feeling like a caiman:
+  Bodily experiences of corruption") — **EXCLUDE (E01).** Reflexive
+  ethnographic-methodology essay, Senegal.
+- **R04FDCEFB8D34** (Khan & Yang 2014, "Arsenic mitigation in
+  Bangladesh: An analysis of institutional stakeholders' opinions") —
+  **EXCLUDE (E01).** Water-quality/contamination-mitigation study.
+- **R07BEDF2412B5** (Moretto 2015, "Application of the 'Urban
+  Governance Index' to water service provisions... Venezuela") —
+  **EXCLUDE (E01).** Governance-assessment-tool critique/application
+  study.
+- **R33DFBC17F664** (Castro 2007, "Systemic Conditions Affecting the
+  Universalisation of Water and Sanitation Services: A Sociological
+  Exploration") — **EXCLUDE (E12).** Self-labeled overview/conceptual
+  article.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1031-S1033
+added; 1,028 → 1,031 rows each). `effect_sizes.csv` updated (46 → 47
+rows: S1032 added, a logistic-regression estimate isolating
+institutional redress-seeking mechanisms' effect on a Family C
+water-service-complaint outcome). `exclusion_log.csv` updated (980 →
+987 rows; E01 419 → 424, E12 25 → 27). Duplicate audit (exact-DOI +
+study_id) found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (1,641 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 2,018/3,659 screened (1,031 include/987 exclude),
+1,641 open, 1,031 extracted studies, 47 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-sixth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Twenty-ninth batch from `new_batch_pool.json[280:290]`.
 
