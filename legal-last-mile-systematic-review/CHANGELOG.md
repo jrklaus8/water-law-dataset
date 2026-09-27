@@ -4,7 +4,74 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-seventh full-text screening batch (10 records, 7 includes, 3 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RE3D6C0549F37** (Bhattarai et al. 2021, *World Water Policy*, "Gender
+  inequality in urban water governance... two towns of Nepal").
+  **INCLUDE.** Examines Nepal's statutory 30% women's-quota mechanism
+  in local water management bodies and property-ownership structures
+  constraining women's water/sanitation access. Extracted as **S784**.
+- **RE290B71E882F** (Wait et al. 2020, *Science of the Total
+  Environment*, "Disparities in well water outreach and assistance
+  offered by local health departments: A North Carolina case study").
+  **INCLUDE.** Statewide survey documenting an administrative-
+  implementation gap in state private-well regulations producing
+  unequal access to water-safety services. Extracted as **S785**.
+- **RE27DBC552685** (Lloyd Owen 2013, *International Journal of Water
+  Resources Development*, "Glas Cymru: lessons from nine years as a
+  not-for-profit public-private partnership"). **INCLUDE.** Ofwat
+  price-cap regulation and statutory disconnection-ban case study with
+  concrete affordability outcome data, Wales. Extracted as **S786**.
+- **RE26DB8683A1F** (Montgomery & Dacin, *Academy of Management
+  Journal*, "Water Wars in Detroit: Custodianship and the Work of
+  Institutional Renewal"). **INCLUDE.** Longitudinal case study of the
+  2014 mass water-shutoff crisis (33,000 households) and institutional
+  renewal. Extracted as **S787**.
+- **RE080CB357B2C** (Marques, Simoes & Berg 2013, *Water Policy*,
+  "Water sector regulation in small island developing states: an
+  application to Cape Verde"). **INCLUDE.** Regulatory-design study of
+  ARE, Cape Verde's multi-sector regulator, and its benchmarking
+  framework. Extracted as **S788**.
+- **RDF291C6CC5DD** (Grimes 2011, *Proceedings of the ICE Engineering
+  Sustainability*, "The right to water and its relevance to sustainable
+  water governance"). **INCLUDE.** Legal-institutional analysis of
+  South Africa's constitutional right to water (UN GC15) and provider-
+  consumer implementation disputes. Extracted as **S789**.
+- **RDE788100646E** (Krasznai Kovacs et al. 2019, *Geoforum*, "A
+  political ecology of water and small-town urbanisation across the
+  lower Himalayas"). **INCLUDE.** Six-town comparative case study of
+  state/donor water-infrastructure governance and differential access
+  outcomes, India/Nepal. Extracted as **S790**.
+- **RE122123AF5EF** (Nallathiga 2011, *International Journal of
+  Regulation and Governance*, "Urban water supply sector in India:
+  setting the reform agenda...") — **EXCLUDE (E05).** Normative policy-
+  reform-agenda review, no original empirical data collection.
+- **RE0841B3F072D** (Ruet, Gambiez & Lacour 2007, *Geoforum*, "Private
+  appropriation of resource: Impact of peri-urban farmers selling water
+  to Chennai Metropolitan Water Board") — **EXCLUDE (E01).** Upstream
+  bulk-water-sourcing property-rights conflict among peri-urban
+  farmers, not a household last-mile access-barrier mechanism.
+- **RDFA05DD5B85A** (Mulas et al. 2011, "Estimating nitrate
+  concentration in the post-denitrification unit of a municipal
+  wastewater treatment plant") — **EXCLUDE (E06).** Pure engineering
+  soft-sensor design study for wastewater-treatment process control.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S784-S790, 781 →
+788 rows each). `effect_sizes.csv` unchanged (37 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (734 → 737 rows; E01 285 → 286, E05 88 →
+89, E06 59 → 60). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,134 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,525/3,659 screened (788 include/737 exclude), 2,134
+open, 788 extracted studies, 37 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
