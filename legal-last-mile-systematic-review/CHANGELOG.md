@@ -4,7 +4,64 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-eleventh full-text screening batch (10 records, 3 includes, 6 excludes, 1 left undecided)
+## 2026-09-27 (latest) — Two-hundred-twelfth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Thirty-fifth batch from `new_batch_pool.json[340:350]`.
+
+- **R46937097B958** (Heller 2007, "Basic Sanitation in Brazil," Journal
+  of Comparative Social Welfare). **INCLUDE.** Traces the PLANASA
+  concession model and the 2007 National Sanitation Law, with
+  documented WSS coverage asymmetries by income (>20 vs. <1 minimum
+  wage) and region (rural 25% vs. urban 91.4%). → **S1048**.
+- **R4556D8990F42** (Murungi & van Dijk 2014, feacal sludge emptying
+  economics, Kampala informal settlements). **INCLUDE.** Documents
+  unregulated emptying-fee pricing and institutional fragmentation
+  between KCCA and private operators excluding poorer slum dwellers
+  from formal emptying services. → **S1049**.
+- **R462B01EA2916** (Gerlach & Franceys 2010, "Regulating Water
+  Services for All in Developing Economies," World Development).
+  **INCLUDE.** 11-metropolitan-area comparative case study finding
+  pro-poor regulatory outcomes constrained by framework conditions and
+  limited understanding of alternative providers. → **S1050**.
+- **R4624B0F84E67** (van Dijk, Etajak, Mwalwega & Ssempebwa 2014,
+  sanitation financing/cost recovery, Dar es Salaam & Kampala slums).
+  **INCLUDE.** Documents governance-structure-dependent eligibility
+  and fees (CBO-managed toilets restricted to contributing members).
+  → **S1051**.
+- **R497171E0A98B** (Kurup 1991, community-based WSS approaches,
+  Kerala, India). **INCLUDE.** Documents a before/after shift from
+  opaque standpost site-selection to a participatory Ward-Water-
+  Committee process explicitly targeting below-poverty-line
+  households. → **S1052**.
+- **R482CFD536DF0** (Barraque 2007, French water-services delegation
+  history). **EXCLUDE (E01).** Institutional history without a
+  documented differential-access-exclusion outcome.
+- **R46CB7FA17E82** (Alvarez, Prieto & Zofio 2014, stochastic-frontier
+  infrastructure cost-efficiency methodology). **EXCLUDE (E06).**
+  Technical/econometric efficiency study.
+- **R4914200BD97B** (Grafton, Chu & Kompas 2015, optimal water-tariff/
+  supply-augmentation timing model, Sydney). **EXCLUDE (E06).**
+  Engineering-economics optimization study.
+- **R4CCD45F0ECA6** (Lee 2014, medieval English civic piped-water
+  history). **EXCLUDE (E01).** Institutional history without a
+  documented differential-access-exclusion outcome.
+- **R4BBE5A2D92EE** (Zaato 2015, Ghana water-sector management-
+  contract case study). **EXCLUDE (E01).** Contract-theory/efficiency
+  study, not a household-access-outcome study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1048-S1052,
+1,045 → 1,050 rows each); `effect_sizes.csv` unchanged (49 rows --
+all five includes are qualitative/comparative-case-study evidence,
+no regression-based estimate); `exclusion_log.csv` updated (1,010 →
+1,015 rows; E01 441 → 444, E06 95 → 97); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,594 open records); schema validation re-run clean
+(13/13 files OK).
+
+Running totals: 2,065/3,659 screened (1,050 include/1,015 exclude),
+1,594 open, 1,050 extracted studies, 49 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-eleventh full-text screening batch (10 records, 3 includes, 6 excludes, 1 left undecided)
 
 Thirty-fourth batch from `new_batch_pool.json[330:340]`.
 

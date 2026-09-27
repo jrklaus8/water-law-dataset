@@ -5822,6 +5822,40 @@ evidence of anything.
   counted as decided), 1,604 open, 1,045 extracted studies, 49
   effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-twelfth batch (10 records, 2026-09-27), thirty-fifth
+  batch from the 543-record pool.** `new_batch_pool.json[340:350]`.
+  Heller (2007, Brazil basic sanitation, PLANASA concession model and
+  2007 National Sanitation Law, documented coverage asymmetries by
+  income and region, S1048) — **INCLUDE**. Murungi & van Dijk (2014,
+  Kampala feacal sludge emptying economics, unregulated pricing and
+  institutional fragmentation excluding poorer slum dwellers, S1049)
+  — **INCLUDE**. Gerlach & Franceys (2010, 11-metropolitan-area
+  comparative study of economic regulation's pro-poor constraints,
+  S1050) — **INCLUDE**. van Dijk, Etajak, Mwalwega & Ssempebwa (2014,
+  sanitation financing/governance-structure-dependent eligibility,
+  Dar es Salaam & Kampala slums, S1051) — **INCLUDE**. Kurup (1991,
+  Kerala participatory Ward Water Committee site-selection targeting
+  the poor, before/after documented improvement, S1052) — **INCLUDE**.
+  Barraque (2007, E01 French water-services delegation history, no
+  documented differential-access outcome) — **EXCLUDE (E01)**.
+  Alvarez, Prieto & Zofio (2014, E06 stochastic-frontier cost-
+  efficiency methodology) — **EXCLUDE (E06)**. Grafton, Chu & Kompas
+  (2015, E06 optimal water-tariff/supply-augmentation timing model,
+  Sydney) — **EXCLUDE (E06)**. Lee (2014, E01 medieval English civic
+  piped-water history, no documented differential-access outcome) —
+  **EXCLUDE (E01)**. Zaato (2015, E01 Ghana water-sector management-
+  contract efficiency case study) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1048-S1052,
+  1,045 → 1,050 rows each); `effect_sizes.csv` unchanged (49 rows --
+  all five includes are qualitative/comparative-case-study evidence);
+  `exclusion_log.csv` updated (1,010 → 1,015 rows; E01 441 → 444, E06
+  95 → 97); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,594 open
+  records); schema validation re-run clean.
+  Running totals: 2,065/3,659 screened (1,050 include/1,015 exclude),
+  1,594 open, 1,050 extracted studies, 49 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
