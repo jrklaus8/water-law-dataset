@@ -4,7 +4,73 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-forty-fifth full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RF6E3BA87A01A** (Drew & Rai 2016, *Asian Studies Review*, "Water
+  Management in Post-colonial Darjeeling"). **INCLUDE.** Colonial-legacy
+  centralized water infrastructure and limited decentralization tied to
+  an income-stratified formal-pipeline vs. informal private-tanker
+  ("water mafia") access disparity. Extends the Bangalore/Ranganathan
+  precedent (S706). Extracted as **S716**.
+- **RF0E6FD6A757D** (Paul 2013, *Indiana Journal of Global Legal
+  Studies*, "Plugging the Democracy Drain in the Struggle for Universal
+  Access to Safe Drinking Water"). **INCLUDE.** Legal-doctrinal analysis
+  of South Africa's Promotion of Administrative Justice Act as an
+  administrative-law mechanism for water-privatization accountability —
+  directly on point for the dissertation's administrative-law framing.
+  Extracted as **S717**.
+- **REF5A05B72782** (Gilbert 2007, *Urban Studies*, "Water for All...
+  Bogota"). **INCLUDE.** Colombian national legislation mandating
+  income-stratified tariff pricing plus EAAB public-utility independence
+  tied to near-universal connection coverage and a large documented drop
+  in child diarrhoeal mortality in poor neighborhoods (17 to 3.4 per
+  100,000). Extracted as **S718**.
+- **RF6A57AF91895** (Tantoh & Simatele 2017, *South African Geographical
+  Journal*, "Community-based water resource management... North-west
+  Cameroon"). **EXCLUDE (E01).** General CBNRM/community-development
+  framework study; no specific legal access-barrier mechanism or
+  documented exclusion outcome.
+- **RF633F3C10F83** (Brown & van den Broek 2020, *Geoforum*, "Crime and
+  punishment... rural water sector... Uganda"). **EXCLUDE (E01).**
+  NGO-piloted community byelaws for handpump-maintenance free-riding; no
+  government legal/administrative mechanism.
+- **RF3B7A5825AAD** (Pietila, Hukka & Katko 2007, *Journal of Comparative
+  Social Welfare*, "The Finnish Experience"). **EXCLUDE (E01).**
+  Comparative description of a well-functioning municipal water system
+  citing real statutes, but no documented access-exclusion outcome or
+  disparity.
+- **RF39E37B1152B** (Low 2015, *Comparative Studies in Society and
+  History*, "Ottoman Infrastructures of the Saudi Hydro-State"). **EXCLUDE
+  (E02).** Imperial/state-level technopolitics of pilgrimage
+  infrastructure; no household-level access outcome.
+- **RF349D3658F7A** (Lai et al. 2020, *Water Policy*, "Systems thinking
+  approach for analysing non-revenue water management reform in
+  Malaysia"). **EXCLUDE (E06).** Systems-engineering NRW-reduction
+  analysis; no legal/institutional access-barrier mechanism.
+- **RF166266361BD** (Sherval & Askew 2012, *Population and Environment*,
+  "Experiencing 'drought and more'... rural Victoria, Australia").
+  **EXCLUDE (E01).** Agricultural irrigation water-allocation/trading
+  study; wrong population (farmers) and exposure, not household
+  drinking-water access.
+- **REF058F229DA8** (Dimaano 2015, *Water Practice & Technology*, "Effort
+  in reducing unaccountable water... Maynilad"). **EXCLUDE (E06).**
+  Engineering/operations non-revenue-water reduction case study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S716-S718, 713 →
+716 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (682 → 689 rows; E01 248 → 252, E02 33 → 34, E06 51 → 53).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,254 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,405/3,659 screened (716 include/689 exclude), 2,254
+open, 716 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the large Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

@@ -3403,6 +3403,34 @@ evidence of anything.
   Running totals: 1,395/3,659 screened (713 include/682 exclude), 2,264
   open, 713 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-fifth full-text screening batch, 10
+  records, 3 includes, 7 excludes.** Drew & Rai (2016, colonial-legacy
+  centralized infrastructure and the Darjeeling 'water mafia' income
+  stratification, S716) — **INCLUDE**. Paul (2013, South Africa's
+  Promotion of Administrative Justice Act as a water-privatization
+  accountability mechanism, S717) — **INCLUDE**. Gilbert (2007, Bogota's
+  stratified-tariff legislation and EAAB public utility tied to a
+  drop in child diarrhoeal mortality in poor neighborhoods, S718) —
+  **INCLUDE**. Tantoh & Simatele (2017, general CBNRM community-
+  development framework, Cameroon) — **EXCLUDE (E01)**. Brown & van den
+  Broek (2020, NGO-piloted community byelaws for handpump free-riding,
+  Uganda) — **EXCLUDE (E01)**. Pietila, Hukka & Katko (2007, well-
+  functioning Finnish municipal water system, no documented exclusion
+  outcome) — **EXCLUDE (E01)**. Low (2015, Ottoman/Saudi imperial
+  pilgrimage-infrastructure technopolitics, Hijaz) — **EXCLUDE (E02)**.
+  Lai et al. (2020, systems-engineering non-revenue-water reform,
+  Malaysia) — **EXCLUDE (E06)**. Sherval & Askew (2012, agricultural
+  irrigation drought/water-allocation study, rural Victoria) — **EXCLUDE
+  (E01)**. Dimaano (2015, Maynilad non-revenue-water engineering case
+  study, Manila) — **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S716-S718, 713 →
+  716 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (682 → 689 rows; E01 248 → 252, E02 33 → 34, E06 51 → 53);
+  duplicate audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,254 open records); schema validation re-run clean.
+  Running totals: 1,405/3,659 screened (716 include/689 exclude), 2,254
+  open, 716 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3421,17 +3449,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,395 of the 3,659
-  Phase-5 includes have been assessed; 2,264 records have not yet been
+- Full-text screening itself is far from complete: 1,405 of the 3,659
+  Phase-5 includes have been assessed; 2,254 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,264
+  on the researcher supplying full-text PDFs. Eleven of those 2,254
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 713
+- Extraction (Phase 8) is caught up with screening completely — all 716
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  713 extracted studies** (a first 12-study partial pilot batch was
+  716 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
