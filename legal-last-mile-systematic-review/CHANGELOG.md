@@ -4,7 +4,88 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-fifth full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-sixth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Nineteenth batch from `new_batch_pool.json[180:190]`.
+
+- **R375DC07A5C67** (Gimelli, Rogers & Bos 2018, *International Journal
+  of Urban and Regional Research*, "The Quest for Water, Rights and
+  Freedoms: Informal Urban Settlements in India"). **INCLUDE.**
+  Qualitative case study (44 interviews, Faridabad/Delhi/Mumbai) of
+  legal notification status (Maharashtra Slum Areas Act 1971, MCGM
+  documentation cutoff) and a Bombay High Court PIL/Article 21
+  constitutional claim shaping informal settlers' water access.
+  Extracted as **S989**.
+- **R375CB03774D9** (Giglioli & Swyngedouw 2008, *International Journal
+  of Urban and Regional Research*, "Let's Drink to the Great Thirst!
+  Water and the Politics of Fractured Techno-natures in Sicily").
+  **INCLUDE.** Historical/political-economy case study of Mafia-linked
+  institutional capture of public-works contracting producing a
+  documented water-supply-interruption disparity (6.6 vs. 36.1
+  days/year) disproportionately affecting poor neighborhoods during
+  Sicily's 2002 water crisis. Extracted as **S990**.
+- **R355ECFDBF14D** (Nelson et al. 2022, *International Journal of
+  Water Resources Development*, "Understanding the decision-making
+  structures, roles and actions of village-level water committees in
+  Fiji"). **INCLUDE.** Qualitative study (40 KIIs/FGDs, 6 villages) of
+  statutorily-mandated village water committee governance and gender
+  dynamics under Fiji's Water Authority framework. Extracted as
+  **S991**.
+- **R35461F430753** (Harvey 2017, *Waterlines*, "Steps to
+  sustainability: A road map for WASH"). **INCLUDE.** Uganda WASH
+  program case study of a regulatory structure, PPP maintenance
+  contracts, proposed new by-laws, and formal legal status for
+  community water-management committees across 200+ communities.
+  Extracted as **S992**.
+- **R330A544EACCE** (Chidya, Mulwafu & Banda 2016, *Physics and
+  Chemistry of the Earth*, "Water supply dynamics and quality of
+  alternative water sources in low-income areas of Lilongwe City,
+  Malawi"). **INCLUDE.** Mixed-methods study (120 households, 25
+  informants) of informal water-provider dynamics under Malawi's Water
+  Works Act (1995), where the formal utility fails to reach low-income
+  areas. Extracted as **S993**.
+- **R317C83144950** (Behailu, Hukka & Katko 2017, *Public Works
+  Management & Policy*, "Service Failures of Rural Water Supply
+  Systems in Ethiopia and Their Policy Implications"). **INCLUDE.**
+  Field study (48 experts, 35 artisans, 20 failed schemes) diagnosing
+  local-government institutional incapability as the primary driver of
+  rural water-scheme failures. Extracted as **S994**.
+- **R36A2B99DC8AD** (Ching, Yishu, Rajoo & Tan 2019, "Constructing a
+  fabula of resilience: A lived experience approach") — **EXCLUDE
+  (E01).** Psychological "paradox of social resilience" narrative
+  study of coping-cost perception, Kathmandu; not a legal/institutional
+  access mechanism.
+- **R35E214EE7613** (Fry, Mihelcic & Watkins 2008, "Water and
+  nonwater-related challenges of achieving global sanitation
+  coverage") — **EXCLUDE (E01).** Cross-national statistical/
+  geospatial modeling of composite governance/economic indicators and
+  water-stress impacts of sanitation-technology choice; broad
+  macro-level indicator regression, not a specific legal/institutional
+  mechanism.
+- **R316CFC35EF4E** (Planas 1991, "Operation and maintenance of water
+  projects and services in Latin America") — **EXCLUDE (E05).**
+  Conceptual seminar essay on institutional obstacles to water-utility
+  O&M; no original empirical data collection.
+- **RAAB22A572D27** (Jewell & Wutich 2011, "Charitable Christians,
+  Punitive Neighbors: Religiosity and Economic Norms in a Water-Scarce
+  Environment") — **EXCLUDE (E01).** Ethnography/economic-experiment
+  study of religiosity's effect on prosocial water-sharing norms,
+  Bolivia; the municipal utility's institutional exclusion is
+  background context, not the paper's analytical focus.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S989-S994 added;
+986 → 992 rows each). `effect_sizes.csv` unchanged (45 rows): all six
+includes are qualitative/descriptive case studies with no regression-
+based estimate isolating a legal/institutional mechanism's effect.
+`exclusion_log.csv` updated (913 → 917 rows; E01 369 → 372, E05 121 →
+122). Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,750 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,909/3,659 screened (992 include/917 exclude), 1,750
+open, 992 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-fifth full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Eighteenth batch from `new_batch_pool.json[170:180]`.
 

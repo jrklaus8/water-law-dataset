@@ -5184,6 +5184,46 @@ evidence of anything.
   open, 986 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-sixth batch (10 records, 2026-09-27), nineteenth
+  batch from the 543-record pool.** `new_batch_pool.json[180:190]`.
+  Gimelli, Rogers & Bos (2018, qualitative case study of legal
+  notification status and Bombay High Court PIL/Article 21 litigation
+  shaping informal settlers' water access, India, S989) — **INCLUDE**.
+  Giglioli & Swyngedouw (2008, historical/political-economy case study
+  of Mafia-linked institutional capture producing documented water-
+  interruption disparities for the poor, Sicily's 2002 crisis, S990) —
+  **INCLUDE**. Nelson et al (2022, qualitative study of statutorily-
+  mandated village water committee governance and gender dynamics,
+  Fiji, S991) — **INCLUDE**. Harvey (2017, Uganda WASH program case
+  study of regulatory structure, PPP contracts, and new legal status/
+  by-laws for community water-management committees, S992) —
+  **INCLUDE**. Chidya, Mulwafu & Banda (2016, mixed-methods study of
+  informal water-provider dynamics under Malawi's Water Works Act 1995,
+  Lilongwe low-income areas, S993) — **INCLUDE**. Behailu, Hukka &
+  Katko (2017, field study diagnosing local-government institutional
+  incapability as the primary driver of rural water-scheme failures,
+  Ethiopia, S994) — **INCLUDE**. Ching, Yishu, Rajoo & Tan (2019,
+  psychological "paradox of resilience" narrative study, Kathmandu) —
+  **EXCLUDE (E01)**. Fry, Mihelcic & Watkins (2008, cross-national
+  statistical/geospatial modeling of governance-index correlates of
+  sanitation coverage) — **EXCLUDE (E01)**. Planas (1991, conceptual
+  seminar essay on Latin American water-utility O&M obstacles, no
+  original empirical data) — **EXCLUDE (E05)**. Jewell & Wutich (2011,
+  ethnography/economic-experiment study of religiosity and prosocial
+  water-sharing norms, Bolivia) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S989-S994, 986 →
+  992 rows each); `effect_sizes.csv` unchanged (45 rows: no eligible
+  estimates this batch — all six includes are qualitative/descriptive
+  case studies, none report a regression-based estimate isolating a
+  legal/institutional mechanism's effect); `exclusion_log.csv` updated
+  (913 → 917 rows; E01 369 → 372, E05 121 → 122); duplicate audit
+  (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,750 open records);
+  schema validation re-run clean.
+  Running totals: 1,909/3,659 screened (992 include/917 exclude), 1,750
+  open, 992 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
