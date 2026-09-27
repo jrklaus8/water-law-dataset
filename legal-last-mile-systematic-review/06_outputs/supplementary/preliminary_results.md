@@ -6474,6 +6474,41 @@ evidence of anything.
   1,436 open, 1,133 extracted studies, 54 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-ninth batch (10 records, 2026-09-27),
+  fifty-second batch from the 543-record pool.** `new_batch_pool.json[510:520]`.
+  Ban, Das Gupta & Rao (2010, regression study of political capture of
+  Gram Panchayat sanitation function, village/road fixed effects,
+  South India, S1136) — **INCLUDE**. Shah et al. (2010, multi-state
+  colloquium on governance-reform/outsourcing models and differential
+  sanitation outcomes, 6 Indian states, S1137) — **INCLUDE**.
+  Habich-Sobiegalla (2018, "project mechanism" earmarked-fund
+  allocation case study, Yunnan China, S1138) — **INCLUDE**. Kazora &
+  Mourad (2018, multi-criteria sustainability assessment scoring
+  legal/institutional gaps in decentralized wastewater systems, Kigali
+  Rwanda, S1139) — **INCLUDE**. Bos & Brown (2012, E01
+  environmental-governance transition-management case study, Cooks
+  River Sydney) — **EXCLUDE (E01)**. Hauck & Youkhana (2010, E01
+  fisheries-management institutional case study, Northern Ghana) —
+  **EXCLUDE (E01)**. Devnarain & Matthias (2011, E04 gendered
+  education/safety consequences of water/sanitation infrastructure
+  absence, rural South African school) — **EXCLUDE (E04)**. Kósa,
+  Darago & Adany (2011, E12 methodological environmental-survey
+  scoring-system paper, segregated Roma habitats Hungary) — **EXCLUDE
+  (E12)**. Refulio Coronado (2025, E01 recreational-beach/PFAS
+  consumer-behavior economics dissertation, US) — **EXCLUDE (E01)**.
+  Barber & Jackson (2014, E01 customary water-resource/riparian-law
+  history, Roper River Australia) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1136-S1139,
+  1,133 → 1,137 rows each); `effect_sizes.csv` updated (54 → 55 rows
+  -- S1136 added as Family C); `exclusion_log.csv` updated (1,090 →
+  1,096 rows; E01 480 → 484, E04 76 → 77, E12 45 → 46); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,426 open records);
+  schema validation re-run clean.
+  Running totals: 2,233/3,659 screened (1,137 include/1,096 exclude),
+  1,426 open, 1,137 extracted studies, 55 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

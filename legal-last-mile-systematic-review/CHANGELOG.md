@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-eighth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Two-hundred-twenty-ninth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Fifty-second batch from `new_batch_pool.json[510:520]`.
+
+- **R111EFC29F4F6** (Ban, Das Gupta & Rao 2010, "The Political Economy
+  of Village Sanitation in South India," Journal of Development
+  Studies). **INCLUDE.** Regression study (linear probability model,
+  village/block fixed effects, 5,276 villages) directly testing
+  political capture of a constitutionally mandated Gram Panchayat
+  sanitation function; GP head's village and politician roads
+  significantly better served. → **S1136**. **Added to
+  effect_sizes.csv** (Family C).
+- **R128F4F59CC33** (Shah et al. 2010, "The Globalizing State,"
+  Vikalpa colloquium, 6 Indian states). **INCLUDE.** Multi-jurisdiction
+  comparative case study of governance-reform/outsourcing models
+  producing sharply differential sanitation outcomes (Surat 20%→97%
+  slum toilet access vs. Junagadh unchanged since the 1930s). →
+  **S1137**.
+- **R1573575F847B** (Habich-Sobiegalla 2018, "How Do Central Control
+  Mechanisms Impact Local Water Governance in China?", China
+  Quarterly, Yunnan). **INCLUDE.** 65-interview case study of the
+  "project mechanism" earmarked-fund allocation institution
+  systematically advantaging well-connected counties over poorer,
+  dispersed-population counties. → **S1138**.
+- **REC463A5AE1B2** (Kazora & Mourad 2018, decentralized wastewater
+  sustainability, Sustainability/MDPI, Kigali). **INCLUDE.**
+  Multi-criteria sustainability assessment scoring legal/institutional
+  dimensions weakest (no enforceable sanitation law; institutional-
+  framework score 4.1-4.78/10). → **S1139**.
+- **R14D92D589123** (Bos & Brown 2012, governance experimentation
+  Cooks River, Sydney). **EXCLUDE (E01).** Environmental-governance
+  transition-management case study, urban stormwater/river health, not
+  household water-service access.
+- **R142F0281D111** (Hauck & Youkhana 2010, water governance Northern
+  Ghana). **EXCLUDE (E01).** Fisheries-management institutional case
+  study, water-resource not water-service.
+- **R14F3D3927E11** (Devnarain & Matthias 2011, girls' water/sanitation
+  access, rural South African school). **EXCLUDE (E04).** Gendered
+  education/safety consequences of infrastructure absence, no
+  institutional-mechanism documentation.
+- **R14EE06D3195B** (Kósa, Darago & Adany 2011, segregated Roma
+  habitats environmental survey, Hungary). **EXCLUDE (E12).**
+  Methodological survey/scoring-system design paper.
+- **R002547F1FB80** (Refulio Coronado 2025, water-quality decisions
+  dissertation, URI). **EXCLUDE (E01).** Recreational-beach/PFAS
+  consumer-behavior economics, not water/sanitation service access.
+- **R00844FA233FD** (Barber & Jackson 2014, Aboriginal water
+  management history, Roper River, Australia). **EXCLUDE (E01).**
+  Customary water-resource/riparian-law history, water-resource not
+  water-service.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1136-S1139,
+1,133 → 1,137 rows each); `effect_sizes.csv` updated (54 → 55 rows --
+S1136 added as Family C); `exclusion_log.csv` updated (1,090 → 1,096
+rows; E01 480 → 484, E04 76 → 77, E12 45 → 46); duplicate audit
+(exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,426 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,233/3,659 screened (1,137 include/1,096 exclude),
+1,426 open (including 19 wrong_file_retrieved), 1,137 extracted
+studies, 55 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-eighth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
 
 Fifty-first batch from `new_batch_pool.json[500:510]`.
 
