@@ -5302,6 +5302,53 @@ evidence of anything.
   1,730 open, 1,001 extracted studies, 45 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Hundred-ninety-ninth batch (10 records, 2026-09-27), twenty-second
+  batch from the 543-record pool.** `new_batch_pool.json[210:220]`.
+  Rusca, Boakye-Ansah, Loftus, Ferrero & van der Zaag (2017,
+  interdisciplinary political-ecology study finding Waterworks Act
+  statutory disconnection authority and utility governance decisions
+  produce laboratory-measured water-quality disparities by income area,
+  Lilongwe, Malawi, S1004) — **INCLUDE**. Matsinhe, Juízo, Macheve &
+  dos Santos (2008, field-survey study finding the delegated-management
+  regulatory framework does not extend to informal water resellers/
+  SSIPs, who serve 32-45% of unconnected peri-urban residents at
+  unregulated higher prices, Maputo, Mozambique, S1005) — **INCLUDE**.
+  Torres-Rouff (2006, historical case study finding the legal
+  transition from communal pueblo water rights to individual-property/
+  special-assessment doctrine structurally excluded Mexican and Chinese
+  neighbourhoods from 19th-century sewer infrastructure, Los Angeles,
+  S1006) — **INCLUDE**. Fisher (2008, discourse/media analysis of the
+  Tagbilaran privatization-legitimacy debate as an election issue,
+  Philippines) — **EXCLUDE (E01)**. Derman & Ferguson (2003, Zimbabwe
+  Water Act 1998/catchment-council study of irrigation/agricultural/
+  mining water-permit allocation) — **EXCLUDE (E01)**. Clark & Mondello
+  (2003, theoretical real-options economic model of delegation-contract
+  pricing, France) — **EXCLUDE (E01)**. Sutton (2017, technical/
+  financial-planning review of sub-Saharan rural water-supply coverage
+  strategy and Self-supply cost-benchmarking) — **EXCLUDE (E06)**.
+  Estache & Iimi (2011, econometric auction-theory analysis of
+  procurement bundling/bidder cost structure for water and sewage
+  projects) — **EXCLUDE (E06)**. Mitra (2008, Foucauldian
+  policy-discourse analysis of the Hubli-Dharwad 24x7 pilot project's
+  "lifestyle vs. lifeline" narrative framing, Karnataka, India) —
+  **EXCLUDE (E01)**. One record (target: Pu 2024, "Amplifying the
+  Poverty-Alleviation Impacts of Water Infrastructure Investments in
+  Sub-Saharan Africa") flagged **wrong_file_retrieved**: the delivered
+  PDF was an unrelated 2015 drought-tolerant-maize adoption study by a
+  different author team; not screened, not moved, needs re-retrieval.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1004-S1006,
+  1,001 → 1,004 rows each); `effect_sizes.csv` unchanged (45 rows: all
+  three includes are qualitative/mixed-methods or historical case
+  studies, none report a regression-based estimate isolating a legal/
+  institutional mechanism's effect on a Family A/B/C water-access
+  outcome); `exclusion_log.csv` updated (928 → 934 rows; E01 380 → 384,
+  E06 91 → 93); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,721 open
+  records); schema validation re-run clean.
+  Running totals: 1,938/3,659 screened (1,004 include/934 exclude),
+  1,721 open, 1,004 extracted studies, 45 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

@@ -4,7 +4,90 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-eighth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-ninth full-text screening batch (10 records, 3 includes, 6 excludes, 1 wrong_file_retrieved)
+
+Twenty-second batch from `new_batch_pool.json[210:220]`.
+
+- **RAF735D6E9B6F** (Rusca, Boakye-Ansah, Loftus, Ferrero & van der Zaag
+  2017, *Geoforum*, "An interdisciplinary political ecology of drinking
+  water quality. Exploring socio-ecological inequalities in Lilongwe's
+  water supply network"). **INCLUDE.** Mixed-methods study finding the
+  Waterworks Act (1995, s.12.16a) statutory disconnection authority and
+  utility infrastructure/maintenance/monitoring decisions systematically
+  favour higher-income in-house-connection areas over low-income
+  kiosk-served areas, producing laboratory-measured water-quality
+  disparities, Malawi. Extracted as **S1004**.
+- **R2BB90F5F4034** (Matsinhe, Juízo, Macheve & dos Santos 2008,
+  *Physics and Chemistry of the Earth*, "Regulation of formal and
+  informal water service providers in peri-urban areas of Maputo,
+  Mozambique"). **INCLUDE.** Field-survey study documenting that the
+  1998 delegated-management/regulatory framework (FIPAG/CRA) does not
+  extend to informal small-scale independent providers and household
+  water resellers, who serve 32-45% of surveyed unconnected residents
+  at unregulated, higher prices. Extracted as **S1005**.
+- **R2A58025F1A28** (Torres-Rouff 2006, *Pacific Historical Review*,
+  "Water Use, Ethnic Conflict, and Infrastructure in Nineteenth-Century
+  Los Angeles"). **INCLUDE.** Historical case study documenting how the
+  legal transition from Spanish/Mexican communal pueblo water rights to
+  individual-property/special-assessment doctrine, applied with
+  discretionary eminent domain and general-fund financing elsewhere,
+  structurally excluded majority-renter Mexican and Chinese
+  neighbourhoods from 19th-century sewer infrastructure. Extracted as
+  **S1006**.
+- **RB1114E2BF515** (Fisher 2008, "Politics and Urban Water Supply") —
+  **EXCLUDE (E01).** Discourse/media analysis of the Tagbilaran,
+  Philippines privatization-legitimacy debate as an election issue;
+  political-rhetoric case study, not a documented access-inequality
+  mechanism analysis.
+- **R1757CC18E1BA** (Derman & Ferguson 2003, "Value of Water: Political
+  Ecology and Water Reform in Southern Africa") — **EXCLUDE (E01).**
+  Zimbabwe Water Act 1998/catchment-council study of irrigation/
+  agricultural/mining water-permit allocation; basin/catchment-scale
+  resource-allocation study, not household domestic-access research.
+- **R15F48C29794A** (Clark & Mondello 2003, "Water Management in
+  France: Delegation and Market Based Auto-regulation") — **EXCLUDE
+  (E01).** Theoretical real-options economic model of delegation-
+  contract pricing; contract-design efficiency study with no access-
+  inequality data.
+- **R29B8BB54C7ED** (Sutton 2017, "Trends in sub-Saharan rural water
+  supply and the essential inclusion of Self-supply to achieve 2030 SDG
+  targets") — **EXCLUDE (E06).** Technical/financial-planning review of
+  rural water-supply coverage strategy and cost-benchmarking; no legal/
+  institutional-mechanism analysis.
+- **RB2CF65098BEF** (Estache & Iimi 2011, "(Un)Bundling infrastructure
+  procurement: evidence from water supply and sewage projects") —
+  **EXCLUDE (E06).** Econometric auction-theory analysis of procurement
+  bundling/bidder cost structure; procurement/engineering economics,
+  not an access-inequality study.
+- **R1B5292F08080** (Mitra 2008, "Power and Policy Processes in
+  Drinking Water Supply in Karnataka, India") — **EXCLUDE (E01).**
+  Foucauldian policy-discourse analysis of the Hubli-Dharwad 24x7 pilot
+  project's "lifestyle vs. lifeline" narrative framing; discourse case
+  study without a documented access-inequality mechanism analysis.
+- **R162B7F22CF42** — **wrong_file_retrieved.** Target record is Pu,
+  Christine Jiarui (2024), "Amplifying the Poverty-Alleviation Impacts
+  of Water Infrastructure Investments in Sub-Saharan Africa," but the
+  delivered PDF is an entirely different publication — Fisher, Abate,
+  Lunduka, Asnake, Alemayehu & Madulu (2015), "Drought tolerant maize
+  for farmer adaptation to drought in sub-Saharan Africa," *Climatic
+  Change* 133:283-299 — confirmed via full-text read (different
+  authors, journal, year, and topic). Not screened, not moved; needs
+  re-retrieval.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1004-S1006
+added; 1,001 → 1,004 rows each). `effect_sizes.csv` unchanged (45
+rows): all three includes are qualitative/mixed-methods or historical
+case studies with no regression-based estimate isolating a legal/
+institutional mechanism's effect on a Family A/B/C water-access
+outcome. `exclusion_log.csv` updated (928 → 934 rows; E01 380 → 384,
+E06 91 → 93). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,721 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,938/3,659 screened (1,004 include/934 exclude),
+1,721 open, 1,004 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-eighth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Twenty-first batch from `new_batch_pool.json[200:210]`.
 
