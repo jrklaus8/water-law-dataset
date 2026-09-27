@@ -5780,6 +5780,48 @@ evidence of anything.
   1,613 open, 1,042 extracted studies, 49 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-eleventh batch (10 records, 2026-09-27), thirty-fourth
+  batch from the 543-record pool.** `new_batch_pool.json[330:340]`.
+  Jimenez, Cortobius & Kjellen (2014, systematic review of 185 articles
+  on indigenous peoples and WASH, with a dedicated legislative-
+  frameworks/indigenous-rights theme as a central organizing category,
+  not a minor subcategory, S1045) — **INCLUDE**. Alda-Vidal, Kooy &
+  Rusca (2018, 38-interview fieldwork study of Lilongwe Water Board
+  staff documenting how everyday operational practices produce
+  differential water-supply continuity between low-income and
+  high-end areas, S1046) — **INCLUDE**. Haglund (2014, qualitative case
+  study of legal adjudication via Brazilian courts and the Ministerio
+  Publico reshaping water/sanitation access equity in Sao Paulo,
+  S1047) — **INCLUDE**. McDonald & Jones (2018, E03 county-level SDWA-
+  violation regression, water-quality outcome not access outcome) —
+  **EXCLUDE (E03)**. Baffrey & Adis (2012, E06 Manila Water sewerage
+  expansion engineering/operational case study) — **EXCLUDE (E06)**.
+  Wong & Sharp (2009, E01 environmental-citizenship participation-
+  theory case study, England) — **EXCLUDE (E01)**. Belzer (2020, E12
+  normative SDWA "economic feasibility" regulatory-design essay, no
+  original empirical data) — **EXCLUDE (E12)**. McFarlane (2008, E01
+  discursive/theoretical sanitation-governmentality history, colonial/
+  post-colonial Bombay) — **EXCLUDE (E01)**. Cole (2014, E01 tourism-
+  water-scarcity/business-human-rights-advisory study, Bali) —
+  **EXCLUDE (E01)**.
+  One record, Behnke, Cronk, Shackelford et al. (2020, "Environmental
+  health conditions in protracted displacement"), left **undecided**:
+  title/authors/DOI confirmed correct, but the delivered PDF contained
+  only the article's Supplemental Material, not the main-text
+  synthesis; not screened, Drive file not moved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1045-S1047,
+  1,042 → 1,045 rows each); `effect_sizes.csv` unchanged (49 rows --
+  all three includes are qualitative/review studies with no
+  regression-based estimate); `exclusion_log.csv` updated (1,004 →
+  1,010 rows; E01 438 → 441, E03 29 → 30, E06 94 → 95, E12 28 → 29);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,604 open records);
+  schema validation re-run clean.
+  Running totals: 2,055/3,659 screened (1,045 include/1,010 exclude;
+  17 wrong_file_retrieved, 1 further record left undecided, neither
+  counted as decided), 1,604 open, 1,045 extracted studies, 49
+  effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

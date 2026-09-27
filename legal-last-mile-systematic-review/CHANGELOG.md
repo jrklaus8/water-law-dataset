@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-tenth full-text screening batch (10 records, 3 includes, 5 excludes, 2 wrong_file_retrieved)
+## 2026-09-27 (latest) — Two-hundred-eleventh full-text screening batch (10 records, 3 includes, 6 excludes, 1 left undecided)
+
+Thirty-fourth batch from `new_batch_pool.json[330:340]`.
+
+- **R41AA7F6D888B** (Jimenez, Cortobius & Kjellen 2014, "Water, sanitation
+  and hygiene and indigenous peoples: a review of the literature," Water
+  International). **INCLUDE.** Systematic review of 185 articles with a
+  dedicated 18-article "Legislative frameworks and indigenous rights"
+  theme (international/domestic legal recognition of indigenous water
+  rights, co-management agreements, pluralistic legal systems) plus
+  direct WaSH-access findings on tariff barriers specific to indigenous
+  communities -- legal/institutional content is a central organizing
+  theme, not a minor subcategory (distinguishing this from the Novotny
+  et al. E01 precedent). → **S1045**.
+- **R41CA30F1CDC0** (Alda-Vidal, Kooy & Rusca 2018, "Mapping operation
+  and maintenance," Urban Geography). **INCLUDE.** 38-interview
+  fieldwork study of Lilongwe Water Board staff documenting how
+  everyday administrative/operational maintenance practices produce
+  differential water-supply continuity/quantity between low-income and
+  high-end areas within one nominally universal centralized network.
+  → **S1046**.
+- **R4298BDB00D8D** (Haglund 2014, "Water governance and social justice
+  in Sao Paulo, Brazil," Water Policy). **INCLUDE.** Qualitative case
+  study (archival data, 40 key-informant interviews) of legal
+  adjudication through Brazilian courts, with the Ministerio Publico as
+  a key rights-based advocate, reshaping water/sanitation access equity
+  for peripheral communities. → **S1047**.
+- **R411507C514D3** (McDonald & Jones 2018, county-level SDWA-violation
+  regression, environmental justice, US). **EXCLUDE (E03).**
+  Water-quality-violation outcome, not a water-service-access outcome.
+- **R4142F316A241** (Baffrey & Adis 2012, Manila Water sewerage
+  expansion practitioner case study). **EXCLUDE (E06).**
+  Engineering/operational-strategy narrative, no isolated legal/
+  institutional access-barrier mechanism.
+- **R41631C8B1BBE** (Wong & Sharp 2009, environmental-citizenship
+  case study, social housing, England). **EXCLUDE (E01).**
+  Participation-theory study of imposed water-innovation technology,
+  not a water-access-eligibility mechanism.
+- **R41D39ACE327D** (Belzer 2020, SDWA "economic feasibility" vs.
+  "affordability" regulatory-design essay). **EXCLUDE (E12).**
+  Normative benefit-cost argument, no original empirical data.
+- **R43232F8A444B** (McFarlane 2008, colonial/post-colonial Bombay
+  sanitation governmentality history). **EXCLUDE (E01).**
+  Discursive/theoretical political-ecology analysis, not an empirical
+  access-eligibility-mechanism study.
+- **R44AC6ADF1E28** (Cole 2014, tourism-water scarcity and business
+  human-rights due diligence, Bali). **EXCLUDE (E01).**
+  Tourism-industry water-resource-competition/business-advisory study,
+  not a water-service-access mechanism study.
+
+**R430C429810BF** (Behnke, Cronk, Shackelford et al. 2020, "Environmental
+health conditions in protracted displacement," Science of The Total
+Environment) left **undecided/open**: the Drive delivery's title,
+authors, and DOI correctly match this record, but the PDF content is
+only the article's Supplemental Material (search terms, country
+breakdown) -- no main-text synthesis was retrieved. Not screened; Drive
+file not moved; needs re-retrieval of the main article.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1045-S1047,
+1,042 → 1,045 rows each); `effect_sizes.csv` unchanged (49 rows --
+all three includes are qualitative/review studies with no
+regression-based estimate); `exclusion_log.csv` updated (1,004 →
+1,010 rows; E01 438 → 441, E03 29 → 30, E06 94 → 95, E12 28 → 29);
+duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,604 open records, which
+includes the 1 undecided record); schema validation re-run clean
+(13/13 files OK).
+
+Running totals: 2,055/3,659 screened (1,045 include/1,010 exclude;
+17 records flagged wrong_file_retrieved, 1 further record left
+undecided for unusable content -- neither counted as decided),
+1,604 open, 1,045 extracted studies, 49 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-tenth full-text screening batch (10 records, 3 includes, 5 excludes, 2 wrong_file_retrieved)
 
 Thirty-third batch from `new_batch_pool.json[320:330]`.
 
