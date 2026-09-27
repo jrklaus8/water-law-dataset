@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-forty-seventh full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **REB79407B1F91** (Schuller & Levey 2014, *Disasters*, "Kabrit ki gen
+  twop met... Haiti's IDP camps"). **INCLUDE.** Multivariate/chi-square
+  analysis of 108 IDP camps showing land ownership status (public vs.
+  private) significantly predicts WASH-service gaps. Extracted as
+  **S724**; not effect_sizes eligible (chi-square is nonparametric).
+- **RE875C1FD167C** (Wilcox et al. 2010, *Journal of the American
+  Planning Association*, "Using Groundwater Models... Rural
+  Subdivisions"). **INCLUDE.** Wisconsin's lack of local regulatory
+  authority for well-construction standards (vs. Kansas/Utah) directly
+  traced to a withdrawn county requirement and unprotected wells.
+  Extracted as **S725**.
+- **RE7568F6E701C** (Franceys & Gerlach 2011, *Utilities Policy*,
+  "Consumer involvement in water services regulation"). **INCLUDE.**
+  Comparative regulatory-design analysis of low-income/informal
+  consumer engagement in water-sector governance. Extracted as **S726**.
+- **RE6EEC29886F0** (Strauss 2011, *Human Ecology*, "Water Conflicts
+  among Different User Groups in South Bali, Indonesia"). **INCLUDE.**
+  Indonesian national water law, presidential decrees, and a Bali Local
+  Government Regulation recognizing subak rights while licensing water
+  to tourism/utility sectors. Extends the Cole 2012 (S704) precedent.
+  Extracted as **S727**.
+- **RE63BCE294E12** (Taks 2008, *Development*, "'El Agua es de
+  Todos/Water for All'... Uruguay"). **INCLUDE.** 2004 Constitutional
+  Water Referendum tied to a documented exclusion of poor families
+  during prior privatization and subsequent near-universal public
+  coverage. Extracted as **S728**.
+- **RE3D6525404B1** (Aguilar & Lopez 2009, *Journal of Latin American
+  Geography*, "Water Insecurity... Xochimilco, Mexico City"). **INCLUDE.**
+  Settlement legal status (illegal vs. formal) tied to a documented
+  water-supply-security disparity and local-government regulatory
+  incapacity. Extracted as **S729**.
+- **REA39654B750D** (da Silva Wells & Sijbesma 2012, *Development in
+  Practice*, "Practical innovations for strengthening CLTS"). **EXCLUDE
+  (E01).** NGO/practitioner methods paper; no legal/administrative
+  mechanism.
+- **RE9F82B212206** (Campos et al. 2015, *Environment and Urbanization*,
+  "...methodology to assess sanitary risks in Maputo"). **EXCLUDE (E01).**
+  Technical risk-assessment methodology, not a legal mechanism.
+- **RE78B9B796A4A** (Abedin & Shaw 2013, *Risk, Hazards & Crisis in
+  Public Policy*, "Safe Water Adaptability... Bangladesh"). **EXCLUDE
+  (E01).** Composite adaptability-index (SIPE) development; institutional
+  dimension is which agencies are involved, not a legal-mechanism
+  analysis.
+- **RE4EEC48EC1E1** (O'Keefe et al. 2015, *Environment and
+  Urbanization*, "Opportunities and limits to market-driven sanitation
+  services... East Africa"). **EXCLUDE (E01).** Market-based social
+  enterprise service-delivery study; no government legal mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S724-S729, 721 →
+727 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (694 → 698 rows; E01 256 → 260). Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,234 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,425/3,659 screened (727 include/698 exclude), 2,234
+open, 727 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

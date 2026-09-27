@@ -3460,6 +3460,34 @@ evidence of anything.
   Running totals: 1,415/3,659 screened (721 include/694 exclude), 2,244
   open, 721 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-seventh full-text screening batch, 10
+  records, 6 includes, 4 excludes.** Schuller & Levey (2014, land
+  ownership status significantly predicts WASH-service gaps across 108
+  Haiti IDP camps, S724) — **INCLUDE** (not effect_sizes eligible:
+  chi-square is nonparametric). Wilcox et al. (2010, Wisconsin's lack of
+  local well-construction regulatory authority vs. Kansas/Utah, S725) —
+  **INCLUDE**. Franceys & Gerlach (2011, comparative consumer-involvement
+  regulatory design for low-income/informal water consumers, S726) —
+  **INCLUDE**. Strauss (2011, Indonesian water law/decrees and Bali Local
+  Government Regulation on subak rights vs. tourism licensing, S727) —
+  **INCLUDE** (extends Cole 2012/S704). Taks (2008, Uruguay's 2004
+  Constitutional Water Referendum and Maldonado privatization exclusion,
+  S728) — **INCLUDE**. Aguilar & Lopez (2009, settlement legal status and
+  water-supply-security disparity, Xochimilco, S729) — **INCLUDE**.
+  da Silva Wells & Sijbesma (2012, CLTS practitioner methods, Asia) —
+  **EXCLUDE (E01)**. Campos et al. (2015, sanitary-risk assessment
+  methodology, Maputo) — **EXCLUDE (E01)**. Abedin & Shaw (2013, SIPE
+  composite adaptability index, Bangladesh) — **EXCLUDE (E01)**. O'Keefe
+  et al. (2015, market-driven sanitation social enterprise, East Africa)
+  — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S724-S729, 721 →
+  727 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (694 → 698 rows; E01 256 → 260); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,234 open
+  records); schema validation re-run clean.
+  Running totals: 1,425/3,659 screened (727 include/698 exclude), 2,234
+  open, 727 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3478,17 +3506,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,415 of the 3,659
-  Phase-5 includes have been assessed; 2,244 records have not yet been
+- Full-text screening itself is far from complete: 1,425 of the 3,659
+  Phase-5 includes have been assessed; 2,234 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,244
+  on the researcher supplying full-text PDFs. Eleven of those 2,234
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 721
+- Extraction (Phase 8) is caught up with screening completely — all 727
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  721 extracted studies** (a first 12-study partial pilot batch was
+  727 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
