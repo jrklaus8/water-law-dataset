@@ -5144,6 +5144,46 @@ evidence of anything.
   open, 983 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-fifth batch (10 records, 2026-09-27), eighteenth
+  batch from the 543-record pool.** `new_batch_pool.json[170:180]`.
+  Lovei & Whittington (1993, institutional-economic framework and
+  numerical modeling of rent-extracting behavior by government
+  officials, utility staff and licensed public-tap operators/vendors
+  restricting household connections and inflating vended-water prices,
+  Jakarta, S986) — **INCLUDE**. Ducrot (2017, field study of water-
+  committee leadership/governance quality determining borehole
+  sustainability under Mozambique's National Rural Water Supply and
+  Sanitation Program, S987) — **INCLUDE**. Rout (2014, comparative
+  field study of two institutional arrangements implementing India's
+  Demand Responsive Approach reform, finding it reinforced existing
+  water-access inequality, Odisha, S988) — **INCLUDE**. Andersen (2016,
+  ethnographic study of Peru's Water Law 29338 basin-scale irrigation-
+  rights redistribution among farmers, mining and urban users, Arequipa)
+  — **EXCLUDE (E01)**. Molinos-Senante et al (2016, DEA technical-
+  efficiency benchmarking of water companies, England and Wales) —
+  **EXCLUDE (E06)**. Stiegler (2000, Journal AWWA legal case-note
+  column summarizing three utility-law court decisions) — **EXCLUDE
+  (E12)**. Crum (2005, book review of Troesken's "Water, Race, and
+  Disease") — **EXCLUDE (E12)**. Madhoo (2007, self-labeled cross-
+  country survey/taxonomy of water-utility-regime reforms) — **EXCLUDE
+  (E12)**. Oduro-Kwarteng, Monney & Braimah (2015, human-resources
+  capacity/workforce-staffing study of Ghana's WASH sector) — **EXCLUDE
+  (E01)**. Cross & Morel (2005, World Bank WSP-Africa proposed pro-poor
+  work-program document, no original empirical data) — **EXCLUDE
+  (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S986-S988, 983 →
+  986 rows each); `effect_sizes.csv` unchanged (45 rows: no eligible
+  estimates this batch — all three includes are qualitative/descriptive
+  or theoretical-modeling studies, none report a regression-based
+  estimate isolating a legal/institutional mechanism's effect);
+  `exclusion_log.csv` updated (906 → 913 rows; E01 367 → 369, E05 120 →
+  121, E06 90 → 91, E12 18 → 21); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,760 open records); schema validation re-run clean.
+  Running totals: 1,899/3,659 screened (986 include/913 exclude), 1,760
+  open, 986 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

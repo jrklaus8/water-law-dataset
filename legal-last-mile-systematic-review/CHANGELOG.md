@@ -4,7 +4,84 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-fourth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-fifth full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Eighteenth batch from `new_batch_pool.json[170:180]`.
+
+- **R3D9E303C9EB3** (Lovei & Whittington 1993, *Water Resources
+  Research*, "Rent-extracting behavior by multiple agents in the
+  provision of municipal water supply: A study of Jakarta, Indonesia").
+  **INCLUDE.** Institutional-economic framework and numerical modeling
+  demonstrating how informal rent-seeking behavior by government
+  officials, water utility staff, and licensed public-tap operators
+  restricts household connections and public-tap supply, inflating
+  vended-water prices to up to 50x the municipal tariff for unconnected
+  households. Extracted as **S986**.
+- **R3AE23244EFDE** (Ducrot 2017, *Physics and Chemistry of the Earth*,
+  "When good practices by water committees are not relevant:
+  Sustainability of small water infrastructures in semi-arid
+  Mozambique"). **INCLUDE.** Field study of Mozambique's National Rural
+  Water Supply and Sanitation Program finding that water-committee
+  leadership and village governance quality, rather than normative
+  committee functioning, determine borehole sustainability and
+  continued access. Extracted as **S987**.
+- **R39C8535D837B** (Rout 2014, *Water Policy*, "Institutional
+  variations in practice of demand responsive approach: evidence from
+  rural water supply in India"). **INCLUDE.** Comparative field study
+  (12 villages, Odisha) of two institutional arrangements (Gram
+  Panchayat vs. community-based Village Water and Sanitation Committee)
+  implementing the Demand Responsive Approach, finding it reinforced
+  existing social inequality in rural drinking-water access. Extracted
+  as **S988**.
+- **R422212E8D444** (Andersen 2016, "Infrastructures of progress and
+  dispossession: Collective responses to shrinking water access among
+  farmers in Arequipa, Peru") — **EXCLUDE (E01).** Ethnographic study
+  of Peru's Water Law 29338 basin-scale irrigation-rights
+  redistribution among farmer irrigation organizations, mining, and
+  urban users; basin-scale resource-allocation governance, not
+  household domestic access.
+- **RA75E798FACF3** (Molinos-Senante, Maziotis, Mocholí-Arce & Sala-
+  Garrido 2016, "Accounting for service quality to customers in the
+  efficiency of water companies: evidence from England and Wales") —
+  **EXCLUDE (E06).** Data envelopment analysis (DEA) technical-
+  efficiency benchmarking study; technical optimization methodology.
+- **RA69778FDBAC5** (Stiegler 2000, "Proposed rule invalidated, then
+  reinstated," Journal AWWA) — **EXCLUDE (E12).** Legal case-note
+  column summarizing three unrelated utility-law court decisions
+  (Florida ratemaking, Colorado liability, Pennsylvania mine-permit);
+  not primary empirical research.
+- **RA7D5ADA35BCD** (Crum 2005, book review of Troesken's "Water,
+  Race, and Disease," *Contemporary Sociology*) — **EXCLUDE (E12).**
+  Book review, not primary research.
+- **R3CBE6A1ACFA3** (Madhoo 2007, "International trends in water
+  utility regimes") — **EXCLUDE (E12).** Self-labeled cross-country
+  survey/taxonomy of water-utility-regime reform literature; broad
+  theoretical/comparative review, not primary research.
+- **R3CB8FAE6ECDA** (Oduro-Kwarteng, Monney & Braimah 2015, "Human
+  resources capacity in Ghana's water, sanitation and hygiene sector")
+  — **EXCLUDE (E01).** Workforce-staffing/capacity-building policy
+  analysis of the WASH sector's human resources; not a legal/
+  institutional mechanism's effect on household access.
+- **R3C5881639608** (Cross & Morel 2005, "Pro-poor strategies for
+  urban water supply and sanitation services delivery in Africa") —
+  **EXCLUDE (E05).** World Bank WSP-Africa proposed multi-country
+  work-program document citing other studies' findings; no original
+  empirical data collection.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S986-S988 added;
+983 → 986 rows each). `effect_sizes.csv` unchanged (45 rows): all three
+includes are qualitative/descriptive or theoretical-modeling studies
+with no regression-based estimate isolating a legal/institutional
+mechanism's effect. `exclusion_log.csv` updated (906 → 913 rows; E01
+367 → 369, E05 120 → 121, E06 90 → 91, E12 18 → 21). Duplicate audit
+(exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,760 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,899/3,659 screened (986 include/913 exclude), 1,760
+open, 986 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-fourth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Seventeenth batch from `new_batch_pool.json[160:170]`.
 
