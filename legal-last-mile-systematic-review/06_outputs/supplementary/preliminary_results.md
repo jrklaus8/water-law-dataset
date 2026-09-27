@@ -3377,6 +3377,32 @@ evidence of anything.
   open, 709 extracted studies, 34 effect_sizes rows. Roughly 280 records
   remain open in the Antigravity delivery folder, with more uploads
   expected. Full detail in `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-fourth full-text screening batch, 10
+  records, 4 includes, 6 excludes.** Nyangena (2008, Kenya Water Act 2002
+  licensing/tariff regime tied to connection and disconnection outcomes,
+  S712) — **INCLUDE**. Morgan (2006, UK Water Industry Act 1999
+  disconnection prohibition and UN General Comment 15 tenure
+  non-discrimination, S713) — **INCLUDE**. Paerregaard, Stensrud &
+  Andersen (2016, Peru's new water law and redefined access rights,
+  Andes, S714) — **INCLUDE**. Sambu & Tarhule (2013, Kenyan colonial
+  legislative fiat through post-2000 water reforms, S715) — **INCLUDE**.
+  Mullen, Vladi & Mills (2006, organizational sensemaking theory applied
+  to the Walkerton crisis) — **EXCLUDE (E01)**. Upadhyay (2005, gendered
+  intra-household water allocation, Gujarat) — **EXCLUDE (E01)**. Moran
+  et al. (2016, NFP-utility hardship-referral partnership network
+  analysis, Australia) — **EXCLUDE (E01)**. Arbués & Villanúa (2006,
+  water-demand price elasticity, Zaragoza) — **EXCLUDE (E01)**. Adams &
+  Vásquez (2019, household-tap willingness-to-pay choice experiment,
+  Accra) — **EXCLUDE (E01)**. Cottam (1997, discourse analysis of urban
+  poverty applied to a World Bank Zambia project) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S712-S715, 709 →
+  713 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (676 → 682 rows; E01 242 → 248); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,264 open
+  records); schema validation re-run clean.
+  Running totals: 1,395/3,659 screened (713 include/682 exclude), 2,264
+  open, 713 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3395,17 +3421,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,385 of the 3,659
-  Phase-5 includes have been assessed; 2,274 records have not yet been
+- Full-text screening itself is far from complete: 1,395 of the 3,659
+  Phase-5 includes have been assessed; 2,264 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,274
+  on the researcher supplying full-text PDFs. Eleven of those 2,264
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 709
+- Extraction (Phase 8) is caught up with screening completely — all 713
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  709 extracted studies** (a first 12-study partial pilot batch was
+  713 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

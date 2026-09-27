@@ -4,7 +4,70 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-third full-text screening batch (Antigravity delivery folder grew substantially with new uploads; 10 records, 5 includes, 4 excludes, 1 wrong_file_retrieved flag, plus 10 duplicate re-uploads of already-decided Batch 141 records moved to Processed without re-screening)
+## 2026-09-27 (latest) — Hundred-forty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the large Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history; no wrong-file mismatches this batch.
+
+- **RFBA3CE02FD4E** (Nyangena 2008, *Africa Development*, "Privatization
+  of Water and Sanitation Services in Kenya"). **INCLUDE.** Kenya Water
+  Act 2002's WRMA/WSRB licensing and tariff-setting regime tied to
+  household connection/affordability/disconnection outcomes (only 42% of
+  Nairobi households connected). Extracted as **S712**.
+- **RFB5E22BF9BB7** (Morgan 2006, *Journal of Consumer Policy*, "The
+  North-South politics of necessity"). **INCLUDE.** UK Water Industry Act
+  1999's statutory disconnection prohibition (won via litigation/civil
+  society activism per Drakeford 1998) and UN General Comment 15's
+  tenure/land-status non-discrimination provision. Extracted as **S713**.
+- **RF8DC8ABACFBA** (Paerregaard, Stensrud & Andersen 2016, *Latin
+  American Research Review*, "Water Citizenship... Peruvian Andes").
+  **INCLUDE.** Ethnographic study of Peru's new water law redefining
+  legal rights/obligations governing water access across three highland
+  localities. Extracted as **S714**.
+- **RF7AB8DA9173B** (Sambu & Tarhule 2013, *Water Policy*, "Institutional
+  water reforms in Kenya: an analytical review"). **INCLUDE.**
+  Historical-institutional review tracing colonial legislative fiat and
+  successive water-sector reforms restricting/expanding access over more
+  than a century. Extracted as **S715**.
+- **RFC696CEFD0F1** (Mullen, Vladi & Mills 2006, *Culture and
+  Organization*, "Making Sense of the Walkerton Crisis"). **EXCLUDE
+  (E01).** Organizational sensemaking/crisis-communication theory
+  applied to the Walkerton E. coli crisis; no legal-mechanism analysis or
+  access outcome.
+- **RFB41BA4B400D** (Upadhyay 2005, *Agriculture and Human Values*,
+  "Gendered Livelihoods and Multiple Water Use in North Gujarat").
+  **EXCLUDE (E01).** Intra-household gender/water-allocation study; no
+  legal/institutional access-barrier mechanism identified.
+- **RFA18A400F778** (Moran et al. 2016, *Australian Journal of Public
+  Administration*, "What Does 'Collaboration' Without Government Look
+  Like?"). **EXCLUDE (E01).** Social-network-analysis study of an NFP-
+  utility hardship-referral partnership; outcome is network/collaboration
+  quality, not water access.
+- **RF94808EAE557** (Arbués & Villanúa 2006, *Urban Studies*, "Potential
+  for Pricing Policies... Zaragoza, Spain"). **EXCLUDE (E01).**
+  Econometric water-demand price-elasticity study among connected
+  households; extends the Mansur & Olmstead 2012 precedent.
+- **RF8BD93786D82** (Adams & Vásquez 2019, *Journal of Environmental
+  Management*, "Do the urban poor want household taps?... Accra,
+  Ghana"). **EXCLUDE (E01).** Choice-experiment willingness-to-pay study;
+  no legal/institutional access-barrier mechanism.
+- **RF81354379727** (Cottam 1997, *IDS Bulletin*, "A Concrete Response to
+  Poverty?... Zambian Case Study"). **EXCLUDE (E01).** Foucauldian
+  discourse/genealogy analysis of the poverty debate applied to a World
+  Bank infrastructure project; focus is donor institutional design, not a
+  government legal/administrative mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S712-S715, 709 →
+713 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (676 → 682 rows; E01 242 → 248). Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,264 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,395/3,659 screened (713 include/682 exclude), 2,264
+open, 713 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-third full-text screening batch (Antigravity delivery folder grew substantially with new uploads; 10 records, 5 includes, 4 excludes, 1 wrong_file_retrieved flag, plus 10 duplicate re-uploads of already-decided Batch 141 records moved to Processed without re-screening)
 
 The Antigravity delivery folder (a subfolder of the monitored Drive inbox)
 received a large new wave of uploads beyond the original 103-record
