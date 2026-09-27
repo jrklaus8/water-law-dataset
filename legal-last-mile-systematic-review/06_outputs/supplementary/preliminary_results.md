@@ -5703,6 +5703,42 @@ evidence of anything.
   1,631 open, 1,036 extracted studies, 48 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-ninth batch (10 records, 2026-09-27), thirty-second
+  batch from the 543-record pool.** `new_batch_pool.json[310:320]`.
+  Guardia, Rossello & Garriga (2014, historical case study of
+  Barcelona's water supply 1867-1967, documenting municipal-concession
+  and private-monopoly mechanisms excluding poorer/peripheral districts
+  until the 1960s, S1039) — **INCLUDE**. Rana & Piracha (2018,
+  qualitative case study of the DSK Model community-based water
+  governance partnership in Karail slum, Dhaka, documenting
+  house-ownership/CBO-membership eligibility criteria and only 28%
+  formal coverage, S1040) — **INCLUDE**. Greiner (2016, logistic
+  regression of social drivers of US water utility privatization,
+  n=47,367, S1041) — **INCLUDE**. Nickum & Lee (2006, E01 institutional
+  water-supply bureaucracy reform, China) — **EXCLUDE (E01)**. Abers &
+  Keck (2009, E01 Brazilian river-basin participatory water-resource
+  governance) — **EXCLUDE (E01)**. Novotny, Hasman & Lepic (2018, E01
+  systematic review of rural-sanitation contextual factors/motivations,
+  institutional factors a minor 4.4% subcategory) — **EXCLUDE (E01)**.
+  Nealer (2009, E12 conceptual SWOT-analysis essay, South African
+  municipal water governance) — **EXCLUDE (E12)**. Lowatanatrakul
+  (1991, E01 Thailand Provincial Waterworks Authority progress report)
+  — **EXCLUDE (E01)**. Traverso-Yepez (2009, E07 Brazil Family Health
+  Program social inequities, wrong service) — **EXCLUDE (E07)**.
+  Troeger, Pham & Van Arsdale (2015, E01 community perceptions of
+  water-source projects, Timor-Leste) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1039-S1041,
+  1,036 → 1,039 rows each); `effect_sizes.csv` unchanged (48 rows --
+  none of this batch's includes cleanly satisfied the strict Family
+  A/B/C direct-exposure-to-access-outcome requirement); `exclusion_log.csv`
+  updated (992 → 999 rows; E01 429 → 434, E07 24 → 25, E12 27 → 28);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,621 open records);
+  schema validation re-run clean.
+  Running totals: 2,038/3,659 screened (1,039 include/999 exclude),
+  1,621 open, 1,039 extracted studies, 48 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

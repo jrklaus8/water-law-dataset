@@ -4,7 +4,72 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-eighth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-ninth full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Thirty-second batch from `new_batch_pool.json[310:320]`.
+
+- **R35C9E7782B04** (Guardia, Rossello & Garriga 2014, "Barcelona's water
+  supply, 1867-1967: the transition to a modern system"). **INCLUDE.**
+  Historical case study documenting how Barcelona's 18th-19th century
+  municipal water-concession regime (granted by financial means from
+  1791) and the subsequent de facto private monopoly of the Sociedad
+  General de Aguas de Barcelona produced sustained exclusion of poorer
+  and peripheral districts from the modern water network until the
+  1960s. → **S1039**.
+- **R082522E9FF13** (Rana & Piracha 2018, "Supplying water to the urban
+  poor: Processes and challenges of community-based water governance in
+  Dhaka city"). **INCLUDE.** Qualitative case study of the DSK Model
+  (NGO-mediated CBO-DWASA partnership) in Karail slum, documenting
+  house-ownership and CBO-membership eligibility criteria for formal
+  water-meter access, with only 28% of the ~115,000-person slum formally
+  connected. → **S1040**.
+- **R379A9E400957** (Greiner 2016, "Social Drivers of Water Utility
+  Privatization in the United States"). **INCLUDE.** Logistic-regression
+  study (n=47,367 U.S. community water systems) finding county
+  unemployment, racial-minority share, and a curvilinear income
+  relationship predict water utility privatization, situated within
+  documented evidence of post-privatization rate increases and
+  quality declines. → **S1041**.
+- **R39832266BF9A** (Nickum & Lee 2006, institutional water-supply
+  bureaucracy reform, Beijing/Pearl River Delta, China). **EXCLUDE
+  (E01).** Supply-side institutional/bureaucratic-coordination study;
+  no household-level differential access outcome.
+- **R392CC7A02A7C** (Abers & Keck 2009, Brazilian river-basin
+  committees, participatory water-resource governance). **EXCLUDE
+  (E01).** Water-resource/environmental-governance study, not a
+  household water/sanitation service-access study.
+- **R0931F164C986** (Novotny, Hasman & Lepic 2018, systematic review of
+  contextual factors/motivations affecting rural sanitation, LMICs).
+  **EXCLUDE (E01).** Institutional factors are only a minor subcategory
+  (4.4%) within a much broader multi-factor determinants review.
+- **R61DB3FC3D4FB** (Nealer 2009, conceptual SWOT-analysis essay on
+  South African municipal water governance). **EXCLUDE (E12).**
+  Conceptual/normative essay, no original empirical data.
+- **R089ED6BEB7BE** (Lowatanatrakul 1991, Thailand Provincial Waterworks
+  Authority coverage-target progress report). **EXCLUDE (E01).**
+  Aggregate infrastructure-progress report, no isolated institutional
+  mechanism's differential access effect.
+- **R088A6862CBAC** (Traverso-Yepez 2009, Brazil Family Health Program
+  social inequities, Natal). **EXCLUDE (E07).** Wrong service -- primary
+  health care delivery, not water/sanitation.
+- **R3974945F7707** (Troeger, Pham & Van Arsdale 2015, community
+  perceptions of water-source projects, Timor-Leste). **EXCLUDE (E01).**
+  Project-implementation/perception study, not a legal/institutional
+  access-barrier mechanism study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1039-S1041,
+1,036 → 1,039 rows each); `effect_sizes.csv` unchanged (48 rows --
+none of this batch's three includes cleanly satisfied the strict
+Family A/B/C direct-exposure-to-access-outcome requirement);
+`exclusion_log.csv` updated (992 → 999 rows; E01 429 → 434, E07
+24 → 25, E12 27 → 28); duplicate audit (exact-DOI + study_id) found no
+new duplicates; `full_text_retrieval_queue.csv` regenerated (1,621
+open records); schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,038/3,659 screened (1,039 include/999 exclude),
+1,621 open, 1,039 extracted studies, 48 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-eighth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Thirty-first batch from `new_batch_pool.json[300:310]`.
 
