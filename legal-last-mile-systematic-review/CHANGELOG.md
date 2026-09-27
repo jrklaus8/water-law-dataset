@@ -4,7 +4,75 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventieth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-seventy-first full-text screening batch (10 records, 7 includes, 3 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records; this batch completes the original 290-record snapshot pool
+at index 290). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R7A3F1A708032** (Masanyiwa, Niehof & Termeer 2015, *Gender, Place &
+  Culture*, "Users' perspectives on decentralized rural water services
+  in Tanzania"). **INCLUDE.** Mixed-methods 2002-vs-2011 comparison of
+  water-sector decentralization reform outcomes with gender-
+  differentiated results. Extracted as **S859**.
+- **R9BEC06E5E577** (Singh 2014, *Social Change*, "Mapping Poverty to
+  Reach the Urban Poor"). **INCLUDE.** Citywide poverty-mapping survey
+  documenting slum notification status as a formal service-eligibility
+  barrier across four Madhya Pradesh cities. Extracted as **S860**.
+- **R9F1FB9F1D75D** (Das & Walton 2015, *Current Anthropology*,
+  "Political Leadership and the Urban Poor: Local Histories").
+  **INCLUDE.** Survey/ethnographic study of local political leaders
+  navigating bureaucratic/legal processes to secure infrastructure
+  access in two Delhi informal settlements. Extracted as **S861**.
+- **R9D838E8FBB65** (Galvin & Roux 2019, *Transformation*, "Dam state
+  capture: its cascading effect on the Department of Water and
+  Sanitation"). **INCLUDE.** Documentary analysis (Parliamentary
+  reports, PAIA requests) of regulatory capture cascading to
+  municipal-level water-service failures, South Africa. Extracted as
+  **S862**.
+- **R9CCA5D7854A6** (Liu Haiyan 2011, *Urban History*, "Water supply
+  and the reconstruction of urban space in early twentieth-century
+  Tianjin"). **INCLUDE.** Historical case study of divided treaty-port
+  municipal governance producing differential household tap-water
+  connection outcomes. Extracted as **S863**.
+- **R9D4088D1FDFD** (Chng 2008, *Development*, "Privatization and
+  Citizenship: Local politics of water in the Philippines").
+  **INCLUDE.** Original interview-based case study of a bulk-water
+  contract mechanism between community Peoples' Organizations and
+  MWCI, Metro Manila. Extracted as **S864**.
+- **RA268D41C7EFC** (Abrahams, Mhlongo & Napo 2011, *Agenda*, "A
+  gendered analysis of water and sanitation services policies and
+  programmes in South Africa: 2006-2010"). **INCLUDE.** Statutory-
+  framework review (Water Services Act 1997, National Water Act 1998,
+  Free Basic Services Policy) with province-level government
+  survey access data. Extracted as **S865**.
+- **R980187687E77** (MacKillop & Boudreau 2008, "Water and power
+  networks and urban fragmentation in Los Angeles") — **EXCLUDE
+  (E01).** Macro-scale historical/political-economy annexation
+  analysis; no household-level access content.
+- **R9D9CD0074631** (Mahon & Fernandes 2010, "Menstrual hygiene in
+  South Asia: a neglected issue for WASH programmes") — **EXCLUDE
+  (E01).** Gender-health/hygiene-product access issue, not a
+  legal/institutional water-access-barrier mechanism.
+- **R9E976E52357D** (Driedger, Mazur & Mistry 2014, "The evolution of
+  blame and trust... Canadian drinking water contamination event") —
+  **EXCLUDE (E03).** Media/focus-group risk-perception study of
+  water-quality-contamination blame/trust, not a water-access
+  mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S859-S865, 856 →
+863 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (798 → 801 rows; E01 320 → 322, E03 27 →
+28). Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (1,995 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,664/3,659 screened (863 include/801 exclude), 1,995
+open, 863 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventieth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

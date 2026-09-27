@@ -4231,6 +4231,37 @@ evidence of anything.
   Running totals: 1,654/3,659 screened (856 include/798 exclude), 2,005
   open, 856 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-seventy-first full-text screening batch, 10
+  records, 7 includes, 3 excludes.** This batch completes the original
+  290-record snapshot pool. Masanyiwa, Niehof & Termeer (2015,
+  mixed-methods decentralization-reform comparison, Tanzania, S859) —
+  **INCLUDE**. Singh (2014, citywide poverty-mapping survey, slum
+  notification/eligibility barrier, Madhya Pradesh, S860) —
+  **INCLUDE**. Das & Walton (2015, survey/ethnographic study, political
+  leaders navigating bureaucratic/legal processes, Delhi, S861) —
+  **INCLUDE**. Galvin & Roux (2019, documentary analysis of DWS
+  regulatory capture cascading to service failures, South Africa,
+  S862) — **INCLUDE**. Liu Haiyan (2011, historical case study, divided
+  treaty-port municipal governance, Tianjin, S863) — **INCLUDE**. Chng
+  (2008, original interview-based case study, bulk-water contract
+  mechanism, Manila, S864) — **INCLUDE**. Abrahams, Mhlongo & Napo
+  (2011, statutory-framework review with government survey data, South
+  Africa, S865) — **INCLUDE**. MacKillop & Boudreau (2008, macro-scale
+  historical annexation politics, no household content, Los Angeles) —
+  **EXCLUDE (E01)**. Mahon & Fernandes (2010, menstrual hygiene
+  gender-health issue, not a water-access mechanism, South Asia) —
+  **EXCLUDE (E01)**. Driedger, Mazur & Mistry (2014, media/focus-group
+  blame-trust study of a water-quality contamination event, Walkerton
+  Ontario) — **EXCLUDE (E03)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S859-S865, 856 →
+  863 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (798 → 801 rows; E01 320 → 322, E03 27 →
+  28); duplicate audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,995 open records); schema validation re-run clean.
+  Running totals: 1,664/3,659 screened (863 include/801 exclude), 1,995
+  open, 863 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
