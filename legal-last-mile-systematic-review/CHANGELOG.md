@@ -4,7 +4,72 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-fifth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R812C5CF68631** (Silva 2000, *International Journal of Urban and
+  Regional Research*, "The Connectivity of Infrastructure Networks
+  and the Urban Space of Sao Paulo in the 1990s"). **INCLUDE.**
+  Institutional/administrative-law analysis tracing Brazil's utility
+  privatization/re-regulation to qualitative (beneath-formal-coverage)
+  water-access exclusion. Extracted as **S830**.
+- **R7FB3A3D76F81** (Madrigal, Alpizar & Schluter 2011, *World
+  Development*, "Determinants of Performance of Community-Based
+  Drinking Water Organizations"). **INCLUDE.** Matched comparative
+  case study of four Costa Rican community water organizations
+  isolating working-rule/accountability determinants of performance.
+  Extracted as **S831**.
+- **R8277D5F60CD4** (O'Reilly & Dhanju 2012, *Geoforum*, "Hybrid
+  drinking water governance: Community participation and ongoing
+  neoliberal reforms in rural Rajasthan, India"). **INCLUDE.**
+  Longitudinal ethnographic study of a payment/participation-for-
+  accountability governance reform's failure and resulting small-scale
+  privatization. Extracted as **S832**.
+- **R850039CA750A** (Aladuwaka & Momsen 2010, *Gender & Development*,
+  "Sustainable development, water resources management and women's
+  empowerment: the Wanaraniya Water Project in Sri Lanka"). **INCLUDE.**
+  Ethnographic case study of a formally-registered women's water
+  organization's fee/billing/disconnection governance. Extracted as
+  **S833**.
+- **R81F51DA7DB8A** (Hasanov 2009, "Social Capital, Civic Engagement
+  and the Performance of Local Self-Government in Azerbaijan") —
+  **EXCLUDE (E01).** Broad civic-engagement survey; water supply is
+  one minor infrastructure category among several.
+- **R8044EE45423C** (Rao & Purkayastha 2003, "Common Property Resource
+  Management: The Case of Chatla in Assam") — **EXCLUDE (E01).**
+  Fisheries common-property-resource management, not drinking-water
+  access.
+- **R80EFC63E1487** (Karim et al. 2012, "Water Development Projects
+  and Marital Violence: Experiences From Rural Bangladesh") —
+  **EXCLUDE (E01).** Studied outcome is intimate-partner violence, not
+  a water-access outcome.
+- **R838190F90528** (Abers & Keck 2006, "Muddy Waters: The Political
+  Construction of Deliberative River Basin Governance in Brazil") —
+  **EXCLUDE (E01).** Basin-level water-resource governance/pricing
+  legislation politics, not household access.
+- **R54E45DD5DD8B** (Earl & Czerniak 1996, "Sunbelt Water War: The El
+  Paso-New Mexico Water Conflict") — **EXCLUDE (E01).** Interstate
+  bulk-water-rights legal conflict, not household-level access
+  exclusion.
+- **RD8DF9CD532A4** (Bartram et al. 2014, "Global Monitoring of Water
+  Supply and Sanitation: History, Methods and Future Challenges") —
+  **EXCLUDE (E01).** JMP monitoring-methodology review paper.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S830-S833, 827 →
+831 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (767 → 773 rows; E01 302 → 308). Duplicate
+audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,055 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,604/3,659 screened (831 include/773 exclude), 2,055
+open, 831 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

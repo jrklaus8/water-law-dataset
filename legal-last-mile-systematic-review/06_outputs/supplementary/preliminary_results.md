@@ -4033,6 +4033,35 @@ evidence of anything.
   Running totals: 1,594/3,659 screened (827 include/767 exclude), 2,065
   open, 827 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-fifth full-text screening batch, 10
+  records, 4 includes, 6 excludes.** Silva (2000, administrative-law
+  utility-privatization analysis and qualitative connectivity
+  exclusion, Sao Paulo, S830) — **INCLUDE**. Madrigal, Alpizar &
+  Schluter (2011, matched comparative case study, working-rule
+  determinants of community water-organization performance, Costa
+  Rica, S831) — **INCLUDE**. O'Reilly & Dhanju (2012, longitudinal
+  ethnographic study, payment/participation-for-accountability reform
+  failure, Rajasthan, S832) — **INCLUDE**. Aladuwaka & Momsen (2010,
+  formally-registered women's water organization, fee/billing/
+  disconnection governance, Sri Lanka, S833) — **INCLUDE**. Hasanov
+  (2009, broad civic-engagement survey, Azerbaijan) — **EXCLUDE
+  (E01)**. Rao & Purkayastha (2003, fisheries common-property
+  management, Assam) — **EXCLUDE (E01)**. Karim et al. (2012, water-
+  development-project marital-violence study, Bangladesh) — **EXCLUDE
+  (E01)**. Abers & Keck (2006, river-basin water-resource governance
+  legislation politics, Brazil) — **EXCLUDE (E01)**. Earl & Czerniak
+  (1996, interstate bulk-water-rights legal conflict, El Paso-New
+  Mexico) — **EXCLUDE (E01)**. Bartram et al. (2014, JMP monitoring-
+  methodology review) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S830-S833, 827 →
+  831 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (767 → 773 rows; E01 302 → 308); duplicate
+  audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,055 open records); schema validation re-run clean.
+  Running totals: 1,604/3,659 screened (831 include/773 exclude), 2,055
+  open, 831 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
