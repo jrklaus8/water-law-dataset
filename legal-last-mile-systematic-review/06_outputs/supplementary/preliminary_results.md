@@ -6628,6 +6628,25 @@ evidence of anything.
   1,401 open (including 26 wrong_file_retrieved), 1,145 extracted
   studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-fourth batch (10 records, 2026-09-27), a full
+  wash.** Second batch of 10 from the 45-record open queue. All 10
+  records turned out to be wrong_file_retrieved. A new, more insidious
+  failure mode was confirmed for 7 of the 10 (R1D096BB71916,
+  R198209A1D839, R189CB69DDE8B, R16D87BB47C02, R14569CA54EA8,
+  R131D44D2032B, R1261BA60DC49): the Drive file's own filename/title
+  metadata matched the target citation exactly, but the actual PDF
+  content behind that fileId was a completely unrelated paper -- caught
+  only by reading full-text content, not by the filename check alone.
+  The remaining 3 (R19D28505FC8A, R155835EF1B8F, R13BB56FEF2D1) were
+  ordinary title+content mismatches, two from an apparent
+  predatory-journal source (abstract-only, "request full paper"). No
+  includes, no excludes, no extraction/evidence_map/effect_sizes changes.
+  `full_text_retrieval_queue.csv` regenerated (1,401 open records,
+  unchanged); schema validation re-run clean.
+  Running totals: 2,258/3,659 screened (1,145 include/1,113 exclude),
+  1,401 open (including 36 wrong_file_retrieved, up from 26), 1,145
+  extracted studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

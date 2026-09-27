@@ -4,7 +4,47 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirty-third full-text screening batch (10 records, 3 includes, 2 excludes, 5 wrong_file_retrieved) — large new Google Drive delivery, high wrong-file rate
+## 2026-09-27 (latest) — Two-hundred-thirty-fourth full-text screening batch (10 records, 0 includes, 0 excludes, 10 wrong_file_retrieved) — a full wash, and a new failure mode identified
+
+Second batch of 10 from the 45-record open queue surfaced by the large new
+Drive delivery (see Batch 233). Every one of the 10 records in this batch
+turned out to be wrong_file_retrieved -- a complete wash, disclosed
+plainly rather than smoothed over.
+
+**A new, more insidious variant of wrong_file_retrieved was identified and
+confirmed this batch: content-behind-filename mismatch.** For 7 of the 10
+records (R1D096BB71916, R198209A1D839, R189CB69DDE8B, R16D87BB47C02,
+R14569CA54EA8, R131D44D2032B, R1261BA60DC49), the Drive file's own
+filename/title metadata matched the target citation *exactly* -- passing
+the title-check step that has caught every prior wrong_file case -- but
+the actual extracted PDF **content** behind that same fileId was a
+completely unrelated paper (e.g. R1D096BB71916's filename read "Panacea or
+Placebo? ... Drinking Water System Consolidation" but its content was
+Song 2026, "Mitochondrial ecosystem restoration in Alzheimer's disease").
+This was caught only because full-text content is read and checked before
+every screening decision, per established practice -- filename/title
+agreement alone would have missed all 7 of these. Verified the fileId in
+each tool result's own `viewUrl` matched the intended target before
+concluding this was a genuine content mismatch and not a mapping error on
+this pipeline's side.
+
+The remaining 3 (R19D28505FC8A, R155835EF1B8F, R13BB56FEF2D1) were the
+more familiar variant: both filename and content belonged to a different
+paper entirely (different author/year/country), including two that were
+themselves abstract-only publications from an apparent predatory-journal
+pattern ("PARJ," offering to email the "full paper" on request).
+
+No includes, no excludes, no extraction, no evidence_map, no effect_sizes
+changes this batch. `full_text_retrieval_queue.csv` regenerated (1,401
+open records, unchanged -- wrong_file_retrieved records were already
+counted as open, consistent with established convention); schema
+validation re-run clean (13/13).
+
+Running totals: 2,258/3,659 screened (1,145 include/1,113 exclude),
+1,401 open (including **36** wrong_file_retrieved, up from 26), 1,145
+extracted studies, 59 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-thirty-third full-text screening batch (10 records, 3 includes, 2 excludes, 5 wrong_file_retrieved) — large new Google Drive delivery, high wrong-file rate
 
 First batch drawn from a large new bulk delivery to the Antigravity Drive
 delivery folder (510 PDFs total, reconciled against the live screening
