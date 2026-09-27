@@ -5390,6 +5390,43 @@ evidence of anything.
   1,711 open, 1,007 extracted studies, 45 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-first batch (10 records, 2026-09-27), twenty-fourth
+  batch from the 543-record pool.** `new_batch_pool.json[230:240]`.
+  Sarkar (2019, mixed-methods case study finding weak Water Act 2002
+  tariff-enforcement and tribal favouritism at Mathare slum standpipes
+  produce documented price disparities, traced to a colonial Vagrancy
+  Act legacy, Nairobi, Kenya, S1010) — **INCLUDE**. Romano (2012,
+  qualitative case study finding decades of non-recognition and
+  eventual legal recognition (Special CAPS Law 722) of community water
+  committees serving over 1 million rural Nicaraguans, S1011) —
+  **INCLUDE**. Almebo et al (2021, E01 behavioral-determinants study of
+  fluoride-filter-technology utilization, Ethiopia) — **EXCLUDE
+  (E01)**. Sharma (2009, E01 historical water-reservoir/architecture
+  study, pre-modern India) — **EXCLUDE (E01)**. Dobyns (1952, E01
+  anthropological narrative of well-introduction among the Tohono
+  O'odham) — **EXCLUDE (E01)**. Okumura et al (2021, E01 City Blueprint
+  governance-capacity benchmarking-tool application, Rio de Janeiro) —
+  **EXCLUDE (E01)**. Andajani-Sutjahjo, Chirawatkul & Saito (2015, E01
+  qualitative gender study of domestic water burden/governance
+  participation, Northeast Thailand) — **EXCLUDE (E01)**. Zakiya (2014,
+  E05 reflective practitioner essay on endogenous-development praxis,
+  Ghana) — **EXCLUDE (E05)**. Schories (2008, E06 membrane-bioreactor
+  wastewater-treatment engineering pilot) — **EXCLUDE (E06)**. Vasquez
+  & Adams (2019, E01 discrete-choice-experiment willingness-to-pay
+  study for standpipe attributes, Accra, Ghana) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1010-S1011,
+  1,007 → 1,009 rows each); `effect_sizes.csv` unchanged (45 rows: both
+  includes are qualitative/mixed-methods case studies, none report a
+  regression-based estimate isolating a legal/institutional mechanism's
+  effect on a Family A/B/C water-access outcome); `exclusion_log.csv`
+  updated (941 → 949 rows; E01 390 → 396, E05 124 → 125, E06 93 → 94);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,701 open records);
+  schema validation re-run clean.
+  Running totals: 1,958/3,659 screened (1,009 include/949 exclude),
+  1,701 open, 1,009 extracted studies, 45 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

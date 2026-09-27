@@ -4,7 +4,82 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundredth full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Two-hundred-first full-text screening batch (10 records, 2 includes, 8 excludes)
+
+Twenty-fourth batch from `new_batch_pool.json[230:240]`.
+
+- **R1E724AC6317D** (Sarkar 2019, *Water Policy*, "Can shared standpipes
+  fulfil the Sustainable Development Goal of universal access to safe
+  water for urban poor in Kenya?"). **INCLUDE.** Mixed-methods case
+  study of Mathare slum, Nairobi, finding that weak enforcement of Water
+  Act 2002 tariff/licensing regulation at the standpipe level -- with
+  standpipe managers charging 5-7x regulated rates and engaging in
+  tribal-affiliation favouritism -- directly produces documented price
+  disparities and access hardship, traced to a colonial-era (Vagrancy
+  Act 1902) segregated-infrastructure legacy. Extracted as **S1010**.
+- **R1F7E051104F1** (Romano 2012, *Bulletin of Latin American Research*,
+  "From Protest to Proposal: The Contentious Politics of the Nicaraguan
+  Anti-Water Privatisation Social Movement"). **INCLUDE.** Qualitative
+  case study documenting that community water-user associations (CAPS),
+  serving over 1 million rural Nicaraguans, operated for decades without
+  legal recognition -- including exclusion from the comprehensive
+  General Water Law (620) -- until social-movement mobilization achieved
+  formal legal status via the Special CAPS Law (722). Extracted as
+  **S1011**.
+- **R19E5408986F2** (Almebo et al 2021, "Utilization of Community-Level
+  Fluoride-Filtered Water and its Associated Factors... Ethiopia") —
+  **EXCLUDE (E01).** Logistic-regression study of behavioral/public-
+  health determinants of adoption of a fluoride-treatment technology;
+  no legal/institutional mechanism governing access.
+- **RB70EF69F5B32** (Sharma 2009, "The Circuit of Life: Water and Water
+  Reservoirs in Pre-modern India") — **EXCLUDE (E01).** Historical
+  water-culture/architecture study of 16th-17th century reservoirs; no
+  administrative-law content.
+- **R1BB5C10692F8** (Dobyns 1952, "Thirsty Indians, Introduction of
+  Wells Among People of an Arid Region") — **EXCLUDE (E01).**
+  Anthropological narrative of U.S. Indian Bureau well-introduction
+  among the Tohono O'odham; institutional content is background to a
+  technology-diffusion narrative, no documented access-inequality
+  mechanism.
+- **R2622E802C40F** (Okumura et al 2021, "Integrated water resource
+  management as a development driver... Rio de Janeiro City Blueprint
+  approach") — **EXCLUDE (E01).** Governance-capacity benchmarking-tool
+  application (City Blueprint Approach); technical diagnostic
+  methodology, not a documented access-inequality mechanism study.
+- **R19C83E32D0E1** (Andajani-Sutjahjo, Chirawatkul & Saito 2015,
+  "Gender and Water in Northeast Thailand: Inequalities and Women's
+  Realities") — **EXCLUDE (E01).** Qualitative gender study of domestic
+  water burden and governance-participation exclusion; institutional
+  content is background, no documented differential water-access
+  outcome by legal mechanism.
+- **R1D3B70649AA6** (Zakiya 2014, "Centring African culture in water,
+  sanitation, and hygiene development praxis in Ghana") — **EXCLUDE
+  (E05).** Reflective practitioner essay on endogenous-development
+  theory; no rigorous empirical methodology.
+- **R25B42F41DEE8** (Schories 2008, "IWAPIL — innovative wastewater
+  treatment applications for isolated locations") — **EXCLUDE (E06).**
+  Engineering conference paper on a membrane bioreactor pilot; pure
+  wastewater-treatment engineering.
+- **R25A96282EB25** (Vasquez & Adams 2019, "Climbing the water ladder in
+  poor urban areas... Accra, Ghana") — **EXCLUDE (E01).** Discrete-
+  choice-experiment willingness-to-pay study for standpipe service
+  attributes; economic demand-analysis, institutional-barrier content
+  is background rationale only.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1010-S1011 added;
+1,007 → 1,009 rows each). `effect_sizes.csv` unchanged (45 rows): both
+includes are qualitative/mixed-methods case studies with no regression-
+based estimate isolating a legal/institutional mechanism's effect on a
+Family A/B/C water-access outcome. `exclusion_log.csv` updated (941 →
+949 rows; E01 390 → 396, E05 124 → 125, E06 93 → 94). Duplicate audit
+(exact-DOI + study_id) found no new duplicates. `full_text_retrieval_
+queue.csv` regenerated (1,701 open records). `validate_schemas.py`
+confirms all 13 tracked files OK.
+
+Running totals: 1,958/3,659 screened (1,009 include/949 exclude), 1,701
+open, 1,009 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Two-hundredth full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Twenty-third batch from `new_batch_pool.json[220:230]`.
 
