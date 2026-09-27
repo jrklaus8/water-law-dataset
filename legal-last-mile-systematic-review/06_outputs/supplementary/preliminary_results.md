@@ -5026,6 +5026,40 @@ evidence of anything.
   open, 969 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-second batch (10 records, 2026-09-27), fifteenth
+  batch from the 543-record pool.** `new_batch_pool.json[140:150]`.
+  Ponder & Omstedt (2019, documentary case study of interest rate swap
+  debt and federal-court/emergency-manager mechanisms driving mass
+  racially disparate household water shutoffs, Detroit, S972) —
+  **INCLUDE**. Danesi, Passarelli & Peruzzi (2007, policy/institutional
+  analysis of Italy's Galli Law utility-aggregation reform and tariff
+  affordability, S973) — **INCLUDE**. Kacker & Joshi (2016, qualitative
+  case study of legal-status transitions in informal-settlement water
+  provision improving access/affordability, Sangam Vihar New Delhi,
+  S974) — **INCLUDE**. March & Sauri (2013, documentary analysis of EU
+  directives and Catalan water-financing design driving tariff increases
+  and reduced public participation, Barcelona, S975) — **INCLUDE**.
+  Ludwig (2000, book review of a World Bank wastewater-management
+  brochure) — **EXCLUDE (E12)**. Stoler (2017, self-labeled WIREs Water
+  "Advanced Review" of sachet drinking water in West Africa) — **EXCLUDE
+  (E12)**. Taddei (2011, basin-committee reservoir water-allocation
+  governance study, Northeast Brazil) — **EXCLUDE (E01)**. Xie et al
+  (2011, technical chance-constrained programming model for industrial
+  water quality, China) — **EXCLUDE (E06)**. Lockie, Momtaz & Taylor
+  (1999, Social Impact Assessment methodology study for an industrial
+  dam project, Australia) — **EXCLUDE (E01)**. Kudebayeva (2010, general
+  rural-poverty logit-regression study, Kazakhstan, water one of several
+  covariates) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S972-S975, 969 →
+  973 rows each); `effect_sizes.csv` unchanged (45 rows: no eligible
+  estimates this batch); `exclusion_log.csv` updated (890 → 896 rows;
+  E01 357 → 360, E06 88 → 89, E12 15 → 17); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,790 open records); schema validation re-run clean.
+  Running totals: 1,869/3,659 screened (973 include/896 exclude), 1,790
+  open, 973 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

@@ -4,7 +4,74 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-first full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-second full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Fifteenth batch from `new_batch_pool.json[140:150]`.
+
+- **R4818B7F566CE** (Ponder & Omstedt 2019, *Geoforum*, "The violence of
+  municipal debt: From interest rate swaps to racialized harm in the
+  Detroit water crisis"). **INCLUDE.** Documentary/archival case study
+  tracing predatory interest rate swap debt and federal-court/emergency-
+  manager institutional mechanisms to mass, racially disparate household
+  water shutoffs (33,000+ households, 2014). Extracted as **S972**.
+- **R460B9BC74FA4** (Danesi, Passarelli & Peruzzi 2007, *Water Policy*,
+  "Water services reform in Italy: its impacts on regulation, investment
+  and affordability"). **INCLUDE.** Policy/institutional analysis of the
+  1994 Galli Law's utility-aggregation and revenue-cap reform and its
+  effects on national water/sewerage coverage and tariff affordability.
+  Extracted as **S973**.
+- **R45FB2A780DA8** (Kacker & Joshi 2016, *International Development
+  Planning Review*, "In the pipeline: the governance of water supply to
+  urban informal settlements"). **INCLUDE.** Qualitative case study
+  tracing the legal-status evolution of water provision (unregulated
+  informal to DJB-regulated) to quantified improvements in access,
+  reliability and affordability, Sangam Vihar, New Delhi. Extracted as
+  **S974**.
+- **RA580E8237E5A** (March & Sauri 2013, *Environment and Planning A*,
+  "The unintended consequences of ecological modernization: debt-induced
+  reconfiguration of the water cycle in Barcelona"). **INCLUDE.**
+  Documentary/policy analysis linking EU environmental directives and
+  Catalan water-financing institutional design to household tariff
+  increases and reduced public participation in water governance.
+  Extracted as **S975**.
+- **R4CC41822C1CE** (Ludwig 2000, book review of Marino & Boland 1999,
+  "An integrated approach to wastewater management") — **EXCLUDE
+  (E12).** Book-review section entry, not primary research.
+- **R4B036EC5F939** (Stoler 2017, "From curiosity to commodity: a
+  review of the evolution of sachet drinking water in West Africa") —
+  **EXCLUDE (E12).** Self-labeled WIREs Water "Advanced Review"
+  literature-synthesis article.
+- **RA40422CA051D** (Taddei 2011, "Watered-down democratization:
+  modernization versus social participation in water management in
+  Northeast Brazil") — **EXCLUDE (E01).** Basin-committee reservoir
+  water-allocation governance study (irrigation/municipal/industrial
+  users), not household access.
+- **R490B82E5ADFA** (Xie, Li, Huang, Li & Chen 2011, "An inexact
+  chance-constrained programming model for water quality management in
+  Binhai New Area of Tianjin, China") — **EXCLUDE (E06).** Technical
+  optimization-modeling study for industrial wastewater discharge.
+- **RA3A338BE381A** (Lockie, Momtaz & Taylor 1999, "Meaning and the
+  Construction of Social Impacts: Water infrastructure development in
+  Australia's Gladstone/Calliope region") — **EXCLUDE (E01).** Social
+  Impact Assessment methodology/politics study for an industrial
+  bulk-water dam project, not household access.
+- **RA592B6E9DD12** (Kudebayeva 2010, "Kazakhstan: Poverty And Social
+  Exclusion In Rural Development") — **EXCLUDE (E01).** General
+  rural-poverty logit-regression study; water/sanitation is one of
+  several household-amenity covariates, wrong outcome direction.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S972-S975 added;
+969 → 973 rows each). `effect_sizes.csv` unchanged (45 rows): none of
+this batch's includes are effect_sizes eligible. `exclusion_log.csv`
+updated (890 → 896 rows; E01 357 → 360, E06 88 → 89, E12 15 → 17).
+Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,790 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,869/3,659 screened (973 include/896 exclude), 1,790
+open, 973 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-first full-text screening batch (10 records, 7 includes, 3 excludes)
 
 Fourteenth batch from `new_batch_pool.json[130:140]`.
 
