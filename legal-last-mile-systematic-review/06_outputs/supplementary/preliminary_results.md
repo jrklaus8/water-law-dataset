@@ -4306,6 +4306,45 @@ evidence of anything.
   open, 870 extracted studies, 39 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-third batch (10 records, 2026-09-27), second batch
+  from `new_batch_pool.json`.** Kim (2012, Wageningen dissertation,
+  mixed-methods case study of Malaysia's 2006 WSIA/SPANA water-sector
+  reform with public/private comparative performance data, S873) —
+  **INCLUDE**. Morvaridi (1994, fieldwork field report on caste-based
+  mediation of a formal ODA rural water-entitlement standard,
+  Maharashtra India, S874) — **INCLUDE**. Hanchett, Akhter & Khan (2003,
+  1,130-household matched-comparison survey of a WaterAid formal
+  water-authority-connection mechanism, Dhaka/Chittagong slums, S875) —
+  **INCLUDE**. Mumme & Ingram (1985, original Papago tribal-member survey
+  -- 92.5% favoring collective water-rights ownership -- plus Hispanic
+  acequia-community analysis documenting customary institutions resisting
+  market-based water law, southwest US, S876) — **INCLUDE**. Bradshaw &
+  Schafer (2000, cross-national INGO-density regression on aggregate
+  water access, not a legal/institutional mechanism) — **EXCLUDE (E01)**.
+  Payne, Nakato & Nabalango (2008, NGO gender-skills-training case study
+  on household rainwater-tank adoption, Uganda) — **EXCLUDE (E01)**.
+  Whittington, Briscoe, Mu & Barron (1990, contingent-valuation
+  survey-methodology validation study, southern Haiti) — **EXCLUDE
+  (E06)**. Presbey (2015, water shutoffs as one section within a broader
+  Detroit bankruptcy/political-economy analysis, Safransky-Detroit
+  precedent) — **EXCLUDE (E01)**. Loftus (2009, theoretical/conceptual
+  political-ecology review essay on secondary literature) — **EXCLUDE
+  (E05)**. Tojal Ramos dos Santos (2024, ProQuest dissertation target) —
+  **WRONG_FILE_RETRIEVED**: delivered PDF was an entirely different
+  dissertation (Lea Bignon, Toulouse, pharmaceutical/health-insurance
+  industrial organization) with no environmental/water content; not
+  screened, not moved from inbox.
+  `extraction_database.csv`/`evidence_map.csv` updated (S873-S876, 870 →
+  874 rows each); `effect_sizes.csv` unchanged (39 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (804 → 809 rows; E01 322 → 325, E05 105 →
+  106, E06 66 → 67); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,976 open records);
+  schema validation re-run clean.
+  Running totals: 1,683/3,659 screened (874 include/809 exclude), 1,976
+  open, 874 extracted studies, 39 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

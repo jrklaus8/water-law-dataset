@@ -4,7 +4,76 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-second full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-seventy-third full-text screening batch (10 records, 4 includes, 5 excludes, 1 wrong_file_retrieved)
+
+Second batch drawn from `new_batch_pool.json`. All 10 target
+record_ids confirmed open with no prior decisions or
+`wrong_file_retrieved` history at batch start.
+
+- **RE6E898E698B5** (Kim 2012, Wageningen University dissertation,
+  "Malaysian Water Sector Reform: Policy and Performance"). **INCLUDE.**
+  Mixed-methods (53 interviews, document analysis) case study of
+  Malaysia's 2006 legal/institutional water-sector reform (WSIA, SPANA,
+  NWSC, PAAB) with comparative public/private utility performance
+  indicators. Extracted as **S873**.
+- **R82AEE5CC7ACC** (Morvaridi 1994, *J. Int. Development*, "Management
+  of Water Supply and Sanitation Projects in Maharashtra State, India").
+  **INCLUDE.** Fieldwork field report documenting how caste-based
+  institutional structure mediates a formal ODA rural water-entitlement
+  standard. Extracted as **S874**.
+- **R74AD122FBBD1** (Hanchett, Akhter & Khan 2003, *Environment &
+  Urbanization*, "Water, sanitation and hygiene in Bangladeshi slums").
+  **INCLUDE.** 1,130-household matched beneficiary/non-beneficiary
+  survey of a WaterAid-facilitated formal water-authority-connection
+  mechanism in Dhaka/Chittagong slums. Extracted as **S875**.
+- **R3C8C664DF35D** (Mumme & Ingram 1985, *Policy Studies Review*,
+  "Community Values in Southwest Water Management"). **INCLUDE.**
+  Original survey of Papago tribal water-rights-ownership preferences
+  (92.5% favoring collective ownership) plus Hispanic acequia-community
+  analysis, documenting customary/tribal institutions resisting
+  market-based water-law reform. Extracted as **S876**.
+- **REA41C1AC010A** (Bradshaw & Schafer 2000, "Urbanization and
+  Development: The Emergence of International Nongovernmental
+  Organizations Amid Declining States") — **EXCLUDE (E01).**
+  Cross-national INGO-density regression; civil-society organizational
+  presence is not a documented legal/institutional mechanism.
+- **RDE97BBA1228E** (Payne, Nakato & Nabalango 2008, "Building Rain
+  Water Tanks and Building Skills... Uganda") — **EXCLUDE (E01).** NGO
+  gender-skills-training case study on household rainwater-tank
+  technology adoption, no legal/institutional access mechanism.
+- **RC4B9336131E4** (Whittington, Briscoe, Mu & Barron 1990,
+  "Estimating the Willingness to Pay for Water Services... Southern
+  Haiti") — **EXCLUDE (E06).** Contingent-valuation survey-methodology
+  validation study.
+- **RB39539FFABEC** (Presbey 2015, "Globalization and the Crisis in
+  Detroit") — **EXCLUDE (E01).** 2014 water shutoffs are one section
+  within a much broader bankruptcy/political-economy analysis (Safransky
+  Detroit precedent).
+- **R5229ABCF8511** (Loftus 2009, "Rethinking Political Ecologies of
+  Water") — **EXCLUDE (E05).** Theoretical/conceptual review essay on
+  secondary literature (Bond/Castro precedent).
+- **RE07A5B3A53CD** — **WRONG_FILE_RETRIEVED.** Database record is
+  Tojal Ramos dos Santos (2024) "Essays on Industrial Organization,
+  Environmental and Health Economics" (ProQuest dissertation); delivered
+  PDF is an entirely different dissertation by Lea Bignon (Toulouse
+  School of Economics, 2025) on pharmaceutical/health-insurance
+  industrial organization, with no environmental/water content. Not
+  screened, not moved from inbox.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S873-S876, 870 →
+874 rows each). `effect_sizes.csv` unchanged (39 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (804 → 809 rows; E01 322 → 325, E05 105 →
+106, E06 66 → 67). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,976 open records;
+RE07A5B3A53CD remains open/undecided pending correct re-retrieval, per
+the wrong_file_retrieved convention). `validate_schemas.py` confirms
+all 13 tracked files OK.
+
+Running totals: 1,683/3,659 screened (874 include/809 exclude), 1,976
+open, 874 extracted studies, 39 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-second full-text screening batch (10 records, 7 includes, 3 excludes)
 
 First batch drawn from `new_batch_pool.json`, a freshly-built 68-record
 pool assembled by cross-referencing the actively-growing Antigravity
