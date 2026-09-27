@@ -4726,6 +4726,45 @@ evidence of anything.
   open, 925 extracted studies, 42 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-fourth batch (10 records, 2026-09-27), seventh batch
+  from the 543-record pool.** `new_batch_pool.json[60:70]`.
+  Golooba-Mutebi (2012, comparative ethnographic fieldwork on
+  decentralization/PPP water-provision institutions, Rwanda & Uganda,
+  S928) — **INCLUDE**. Obeta (2018, investigative/qualitative study of
+  institutional policy-gaps behind rural water-scheme failure, Nigeria,
+  S929) — **INCLUDE**. Diaz-Cayeros, Magaloni & Ruiz-Euler (2014,
+  kernel-matching quasi-experimental design isolating the 1995 Oaxaca
+  usos y costumbres legal-recognition reform's effect on sewerage
+  access, Mexico, S930) — **INCLUDE**, added to `effect_sizes.csv`
+  (Family A, sanitation_access outcome). Mallick (2010, participatory
+  action-research project linking community-government institutional
+  links to drinking-water/sanitation access gains, Bangladesh, S931) —
+  **INCLUDE**. Brocklehurst (2014, descriptive coding of 307 stated
+  political commitments at a global partnership meeting, no evidence of
+  actual institutional-mechanism effects) — **EXCLUDE (E05)**.
+  Scodanibbio & Manez (2005, basin-scale dam-operation/water-resources
+  governance study of downstream livelihoods, Lower Zambezi Mozambique)
+  — **EXCLUDE (E01)**. Huby (1995, self-labeled review of UK water-
+  poverty issues, no original data collection) — **EXCLUDE (E12)**.
+  Parsa, Nakendo, McCluskey & Page (2011, land-tenure/credit-access
+  formalization study, Dar es Salaam, water/sanitation a brief
+  background mention only) — **EXCLUDE (E01)**. Kefeni & Yallew (2018,
+  cross-sectional survey of behavioral/environmental determinants of
+  latrine use among households with existing access, Addis Ababa) —
+  **EXCLUDE (E01)**. Salman, Al-Karablieh & Haddadin (2008, household
+  water-demand price/income-elasticity econometrics among already-
+  connected households, Jordan) — **EXCLUDE (E04)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S928-S931, 925 →
+  929 rows each); `effect_sizes.csv` updated (42 → 43 rows; S930 added,
+  Family A, sanitation_access outcome); `exclusion_log.csv` updated
+  (855 → 861 rows; E01 346 → 349, E04 62 → 63, E05 115 → 116, E12 10 →
+  11); duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,869 open records);
+  schema validation re-run clean.
+  Running totals: 1,790/3,659 screened (929 include/861 exclude), 1,869
+  open, 929 extracted studies, 43 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

@@ -4,7 +4,75 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-third full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Seventh batch from `new_batch_pool.json[60:70]`.
+
+- **R7EE9044E5204** (Golooba-Mutebi 2012, *Public Administration and
+  Development*, "In Search of the Right Formula: Public, Private and
+  Community-Driven Provision of Safe Water in Rwanda and Uganda").
+  **INCLUDE.** 5-6 month comparative ethnographic fieldwork on how
+  decentralization/PPP institutional arrangements and accountability
+  mechanisms determine rural water-service delivery. Extracted as
+  **S928**.
+- **R7EE2F2CC79B7** (Obeta 2018, *Water Policy*, "Rural water supply in
+  Nigeria: policy-gaps and future directions"). **INCLUDE.**
+  Investigative/qualitative study (primary + secondary data) identifying
+  institutional policy-gaps behind chronic rural water-scheme failure.
+  Extracted as **S929**.
+- **R7DF2A5059A76** (Diaz-Cayeros, Magaloni & Ruiz-Euler 2014, *World
+  Development*, "Traditional Governance, Citizen Engagement, and Local
+  Public Goods: Evidence from Mexico"). **INCLUDE.** Kernel-matching
+  quasi-experimental design isolating the 1995 Oaxaca constitutional
+  reform (legal recognition of usos y costumbres indigenous governance)
+  effect on sewerage/sanitation-access outcomes. Extracted as **S930**;
+  added to `effect_sizes.csv` (Family A, sanitation_access outcome).
+- **R7C16D234F08C** (Mallick 2010, *Water Communities* book chapter,
+  "Amplifying the community voices for greater access to drinking water
+  in Bangladesh"). **INCLUDE.** Participatory action-research project
+  documentation linking community-government institutional links to
+  household drinking-water/sanitation access gains in marginalized
+  riverine/coastal communities. Extracted as **S931**.
+- **R80F6DB4B063B** (Brocklehurst 2014, "The 2014 Sanitation and Water
+  for All High Level Meeting: what does it tell us about how developing
+  countries are tackling inequalities?") — **EXCLUDE (E05).** Descriptive
+  coding of 307 stated political commitments; no evidence of actual
+  institutional-mechanism effects on access outcomes.
+- **R800C51E60CEC** (Scodanibbio & Manez 2005, "The World Commission on
+  Dams... A pilot case in the Lower Zambezi, Mozambique") — **EXCLUDE
+  (E01).** Basin-scale dam-operation/water-resources governance study of
+  downstream livelihood impacts, not household water/sanitation access.
+- **R8BF0E540D98E** (Huby 1995, "Water Poverty and Social Policy: A
+  review of issues for research") — **EXCLUDE (E12).** Self-labeled
+  review synthesizing existing UK OFWAT/DSS reports and prior studies,
+  no original empirical data collection.
+- **R8AEFC6F889E8** (Parsa, Nakendo, McCluskey & Page 2011, "Impact of
+  formalisation of property rights in informal settlements: Evidence
+  from Dar es Salaam city") — **EXCLUDE (E01).** Land-tenure/credit-
+  access study; water/sanitation is a brief background mention only.
+- **R7D749313D4F4** (Kefeni & Yallew 2018, "Communal latrine utilization
+  and associated factors in Addis Ababa, Ethiopia") — **EXCLUDE (E01).**
+  Cross-sectional survey of behavioral/environmental determinants of
+  latrine use among households with existing physical access, not an
+  institutional/legal access-mechanism study.
+- **R7C2124844CF8** (Salman, Al-Karablieh & Haddadin 2008, "Limits of
+  pricing policy in curtailing household water consumption under
+  scarcity conditions") — **EXCLUDE (E04).** Household water-demand
+  price/income-elasticity econometrics among already-connected
+  households; outcome is consumption quantity, not access.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S928-S931 added;
+925 → 929 rows each). `effect_sizes.csv` updated (42 → 43 rows; S930
+added, Family A, sanitation_access outcome). `exclusion_log.csv` updated
+(855 → 861 rows; E01 346 → 349, E04 62 → 63, E05 115 → 116, E12 10 →
+11). Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,869 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,790/3,659 screened (929 include/861 exclude), 1,869
+open, 929 extracted studies, 43 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-third full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Sixth batch from `new_batch_pool.json[50:60]`.
 
