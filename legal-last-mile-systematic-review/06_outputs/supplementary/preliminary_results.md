@@ -4492,6 +4492,51 @@ evidence of anything.
   open, 892 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-eighth batch (10 records, 2026-09-27), first batch
+  from a new, much larger pool.** A bulk delivery of 552 unique PDFs
+  arrived across the Drive inbox and Antigravity folders; reconciled
+  against `full_text_screening_database.csv` (0 already-decided
+  duplicates, 9 already flagged `wrong_file_retrieved`/`undecided`
+  left untouched, 543 genuinely open records saved as the new
+  `new_batch_pool.json`). This batch is `new_batch_pool.json[0:10]`.
+  Kotsila & Saravanan (2017, mixed-methods fieldwork on state WSS
+  success narratives obscuring unequal access, Mekong Delta Vietnam,
+  S895) — **INCLUDE**. Crow, Swallow & Asamba (2012, comparative field
+  study of household connection-status effects under Kenya's Water Act
+  2002, Nyando basin, S896) — **INCLUDE**. Whittington (1992, household
+  survey/regression showing Kumasi's increasing-block-tariff structure
+  regressively burdens shared-connection households, Ghana, S897) —
+  **INCLUDE**. Monstadt & Schramm (2017, field-based documentary
+  analysis of formal planning institutions vs. hybrid unequal access,
+  Dar es Salaam, S898) — **INCLUDE**. Nyarko, Oduro-Kwarteng &
+  Owusu-Antwi (2011, comparative case study of 5 water systems under
+  Ghana's Local Government Act 462, S899) — **INCLUDE**. Tiwale (2019,
+  socio-technical field study of institutional/regulatory governance
+  producing differentiated network access, Lilongwe Malawi, S900) —
+  **INCLUDE**. Van Vugt (2001, social-psychology study of household
+  water-conservation behavior, UK, not an access-mechanism study) —
+  **EXCLUDE (E01)**. Devkar, Mahalingam, Deep & Thillairajan (2013,
+  self-labeled "a systematic review" of PSP across electricity/
+  telecom/water) — **EXCLUDE (E12)**. Arlosoroff et al. (1988, World
+  Bank/UNDP handpump-technology engineering report) — **EXCLUDE
+  (E06)**. Nimoh, Poku, Ohene-Yankyera, Konradsen & Abaidoo (2014,
+  supply-side small-business economics of sanitation service
+  providers, Ghana, not household access barriers) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S895-S900, 892 →
+  898 rows each); `effect_sizes.csv` unchanged (41 rows; all six
+  includes are qualitative/documentary/case-study designs, or, for
+  Whittington, exposure-side mismatched -- households-sharing-a-
+  connection is a housing-density variable, not itself the
+  institutional tariff mechanism -- so none met the strict Family
+  A/B/C criteria this batch); `exclusion_log.csv` updated (829 → 833
+  rows; E01 333 → 335, E06 71 → 72, E12 7 → 8); duplicate audit
+  (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,928 open records);
+  schema validation re-run clean.
+  Running totals: 1,731/3,659 screened (898 include/833 exclude), 1,928
+  open, 898 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

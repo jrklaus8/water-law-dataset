@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-seventh full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-seventy-eighth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+First batch from a new, much larger pool: a bulk delivery of 552 unique PDFs
+across the Google Drive inbox and Antigravity delivery folders (up from the
+68-record pool exhausted at Batch 177). Cross-referenced all 552 against
+`full_text_screening_database.csv`: 0 already-decided duplicates, 9 already
+flagged `wrong_file_retrieved`/`undecided` (left untouched per standing
+rule), 543 genuinely open records saved as the new `new_batch_pool.json`
+(scratchpad). This batch is `new_batch_pool.json[0:10]`.
+
+- **RAF4ED0F28A15** (Kotsila & Saravanan 2017, *World Development*,
+  "Biopolitics Gone to Shit? State Narratives versus Everyday Realities
+  of Water and Sanitation in the Mekong Delta"). **INCLUDE.** 10-month
+  mixed-methods fieldwork on state WSS success narratives obscuring
+  unequal access, Can Tho City, Vietnam. Extracted as **S895**.
+- **RB1BD766758CF** (Crow, Swallow & Asamba 2012, *World Development*,
+  "Community Organized Household Water Increases Not Only Rural
+  Incomes, but Also Men's Work"). **INCLUDE.** Comparative field study
+  of household water-connection status effects, Nyando basin, Kenya,
+  against the Water Act 2002 framework. Extracted as **S896**.
+- **RB0D2ED9C835F** (Whittington 1992, *Economic Development and
+  Cultural Change*, "Possible Adverse Effects of Increasing Block
+  Water Tariffs in Developing Countries"). **INCLUDE.** Household
+  survey and regression analysis showing Kumasi's IBT tariff structure
+  regressively burdens poorer, shared-connection households. Extracted
+  as **S897**.
+- **RB020C12A06CA** (Monstadt & Schramm 2017, *IJURR*, "Toward The
+  Networked City? Translating Technological Ideals and Planning
+  Models... Dar es Salaam"). **INCLUDE.** Field-based documentary
+  analysis of formal planning institutions vs. hybrid unequal access
+  outcomes. Extracted as **S898**.
+- **RAD75F64031CA** (Nyarko, Oduro-Kwarteng & Owusu-Antwi 2011,
+  *Physics and Chemistry of the Earth*, "Local Authorities, Community
+  and Private Operators Partnerships in Small Towns Water Service
+  Delivery in Ghana"). **INCLUDE.** Comparative case study of 5 water
+  systems under Ghana's Local Government Act 462. Extracted as
+  **S899**.
+- **RACB833F0F26E** (Tiwale 2019, *Geoforum*, "Materiality Matters...
+  The Case of Lilongwe, Malawi"). **INCLUDE.** Socio-technical field
+  study of institutional/regulatory governance producing differentiated
+  network water access. Extracted as **S900**.
+- **RBFA34E702541** (Van Vugt 2001, "Community Identification
+  Moderating the Impact of Financial Incentives... Water Conservation")
+  — **EXCLUDE (E01).** Social-psychology study of household
+  water-conservation behavior, UK; not an access-mechanism study.
+- **RB065139F8F17** (Devkar, Mahalingam, Deep & Thillairajan 2013,
+  "Impact of Private Sector Participation on access and quality in
+  provision of electricity, telecom and water services") — **EXCLUDE
+  (E12).** Self-labeled "a systematic review" in the abstract; secondary
+  synthesis, not original research.
+- **RAF8DEBF43A76** (Arlosoroff et al. 1988, "Executive Summary --
+  Community Water Supply: The Handpump Option") — **EXCLUDE (E06).**
+  World Bank/UNDP engineering report on handpump technology selection.
+- **RAED243630873** (Nimoh, Poku, Ohene-Yankyera, Konradsen & Abaidoo
+  2014, "Constraints and motivations to sanitation business in
+  peri-urban communities in Ghana") — **EXCLUDE (E01).** Supply-side
+  small-business economics of sanitation service providers, not
+  household access barriers.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S895-S900, 892 →
+898 rows each). `effect_sizes.csv` unchanged (41 rows; all six includes
+are qualitative/documentary/case-study designs, or, for Whittington,
+exposure-side mismatched -- number of households sharing a connection
+is a housing-density variable, not itself the institutional tariff
+mechanism -- so none met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (829 → 833 rows; E01 333 → 335, E06 71 →
+72, E12 7 → 8). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,928 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,731/3,659 screened (898 include/833 exclude), 1,928
+open, 898 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-seventh full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Sixth batch drawn from `new_batch_pool.json`. All 10 target record_ids
 confirmed with no prior decisions or `wrong_file_retrieved` history at
