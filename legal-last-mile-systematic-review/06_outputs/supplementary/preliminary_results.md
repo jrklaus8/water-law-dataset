@@ -3590,6 +3590,41 @@ evidence of anything.
   Running totals: 1,455/3,659 screened (744 include/711 exclude), 2,204
   open, 744 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-first full-text screening batch, 10
+  records, 7 includes, 3 excludes.** K'Akumu (2008, Water Act 2002
+  rights ambiguity, powerless CAAC, WRUAs never established, Kenya,
+  S747) — **INCLUDE**. Cornea, Zimmer & Veron (2016, ambiguous statutory
+  governance and fragmented control enabling informal-institution-
+  mediated, caste/class/gender-differentiated pond access, Bardhaman,
+  West Bengal, S748) — **INCLUDE**. Barbosa & Brusca (2015, unbalanced
+  panel regression, 51 corporations, private-ownership coefficient
+  +0.3456 R$/m3 on water tariffs, significant, Brazil, S749) —
+  **INCLUDE** (effect_sizes eligible, added as the 35th row; ownership/
+  regulatory-structure exposure not mapped to Family A/B/C, not pooled).
+  Pascual Sanz, Schouten & Hantke-Domas (2011, comparative case study of
+  three tariff-setting regulatory regimes, Netherlands/Spain/Scotland,
+  S750) — **INCLUDE**. Saravanan et al. (2015, historical infrastructure
+  legacy and municipal policy producing sociospatial water-access
+  inequality and disease burden, Ahmedabad, S751) — **INCLUDE**. Narsiah
+  (2013, corporatisation/ring-fencing institutional restructuring tied
+  to tariff increases affecting vulnerable residents, Durban, S752) —
+  **INCLUDE** (extends Sutherland et al. 2014/S739). Nilsson (2006,
+  colonial-era piped water/sewer system designed for affluent groups
+  with durable institutional inertia, Kampala, S753) — **INCLUDE**
+  (extends Kooy & Bakker 2008/S734). Chitonge (2014, broad continent-
+  level infrastructure-financing review, African cities) — **EXCLUDE
+  (E01)**. Capone (2013, Naples toxic-waste-trafficking narrative, water
+  mentioned only in passing) — **EXCLUDE (E01)**. Ballestero (2012, NGO
+  project audit-culture/transparency ethnography, Costa Rica) —
+  **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S747-S753, 744 →
+  751 rows each); `effect_sizes.csv` updated (34 → 35 rows, S749 added);
+  `exclusion_log.csv` updated (711 → 714 rows; E01 272 → 275); duplicate
+  audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,194 open records); schema validation re-run clean.
+  Running totals: 1,465/3,659 screened (751 include/714 exclude), 2,194
+  open, 751 extracted studies, 35 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3608,17 +3643,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,455 of the 3,659
-  Phase-5 includes have been assessed; 2,204 records have not yet been
+- Full-text screening itself is far from complete: 1,465 of the 3,659
+  Phase-5 includes have been assessed; 2,194 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,204
+  on the researcher supplying full-text PDFs. Eleven of those 2,194
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 744
+- Extraction (Phase 8) is caught up with screening completely — all 751
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  744 extracted studies** (a first 12-study partial pilot batch was
+  751 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -3661,10 +3696,11 @@ evidence of anything.
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 26 studies in `effect_sizes.csv` (added
+- Effect sizes now exist for 35 studies in `effect_sizes.csv` (added
   2026-09-16, extended 2026-09-17 and in later full-text-screening
-  batches through 2026-09-19, most recently S526 -- Switzer & Teodoro's
-  public-enterprise-pricing ownership-type effect estimate, Family C),
+  batches through 2026-09-27, most recently S749 -- Barbosa & Brusca's
+  Brazilian water-utility ownership/regulatory-structure tariff-level
+  effect estimate, not mapped to a Family A/B/C synthesis family),
   but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template

@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fiftieth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-first full-text screening batch (10 records, 7 includes, 3 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RD4DC2325ECF4** (K'Akumu 2008, *Development*, "Mainstreaming the
+  Participatory Approach in Water Resource Governance: The 2002 water law
+  in Kenya"). **INCLUDE.** Close statutory analysis showing the Water Act
+  2002's participatory rhetoric undermined by a rights ambiguity (s.5 vs.
+  s.85), a powerless CAAC with no independent instrument, and WRUAs never
+  actually established. Extracted as **S747**.
+- **RD4C7B154BD46** (Cornea, Zimmer & Veron 2016, *IJURR*, "Ponds, Power
+  and Institutions... Small Bengali City"). **INCLUDE.** Ambiguous
+  statutory governance and fragmented municipal control over urban ponds
+  allow informal institutions to mediate caste/class/gender-differentiated
+  access for the poor. Extracted as **S748**.
+- **RD4A74FAB9801** (Barbosa & Brusca 2015, *Utilities Policy*,
+  "Governance structures and their impact on tariff levels of Brazilian
+  water and sanitation corporations"). **INCLUDE.** Unbalanced panel
+  regression (51 corporations, 351 obs.) isolating ownership/regulatory-
+  structure effects on tariff levels; private ownership coefficient
+  +0.3456 R$/m3, significant. **EFFECT_SIZES ELIGIBLE** — added to
+  `effect_sizes.csv` (35th row). Extracted as **S749**.
+- **RD3F146BB7AEA** (Pascual Sanz, Schouten & Hantke-Domas 2011, *Water
+  Policy*, "Consumer-inclusive economic regulation... water pricing").
+  **INCLUDE.** Comparative case study of three tariff-setting regulatory
+  regimes (Netherlands/Spain/Scotland) and their differential consumer
+  transparency/participation/accountability mechanisms. Extracted as
+  **S750**.
+- **RD3A71388F324** (Saravanan et al. 2015, *Journal of Industrial
+  Ecology*, "Metabolized-Water Breeding Diseases in Urban India...
+  Ahmedabad"). **INCLUDE.** Georeferenced case study linking historical
+  infrastructure legacy and municipal policy to sociospatial water-access
+  inequality and disease burden. Extracted as **S751**.
+- **RD0BCF1B1B012** (Narsiah 2013, *Geoforum*, "Neoliberalism as spatial
+  fix: An example from South Africa"). **INCLUDE.** Institutional
+  restructuring (Palmer Report, ring-fencing, corporatisation) of Durban
+  water services tied to tariff increases affecting vulnerable residents.
+  Extends Sutherland et al. 2014/S739. Extracted as **S752**.
+- **RCFBDF8C62619** (Nilsson 2006, *Environment and Urbanization*, "A
+  heritage of unsustainability?... Kampala, Uganda"). **INCLUDE.**
+  Colonial-era piped water/sewer system designed for affluent groups,
+  durable institutional inertia producing persistent incomplete coverage
+  today. Extends Kooy & Bakker 2008/S734. Extracted as **S753**.
+- **RD506C8166A35** (Chitonge 2014, *African Studies*, "Cities Beyond
+  Networks: The Status of Water Services for the Urban Poor in African
+  Cities") — **EXCLUDE (E01).** Broad continent-level infrastructure-
+  financing review using aggregate secondary statistics, not a specific
+  legal-mechanism case study.
+- **RD3A6C6EA4781** (Capone 2013, *Capitalism Nature Socialism*, "The
+  Assemblies of the City of Naples... Landscape and Environment") —
+  **EXCLUDE (E01).** Naples toxic-waste-trafficking and real-estate-
+  speculation narrative; water mentioned only once in passing.
+- **RD00CC5C728CA** (Ballestero 2012, *PoLAR*, "Transparency Short-
+  Circuited: Laughter and Numbers in Costa Rican Water Politics") —
+  **EXCLUDE (E01).** NGO project audit-culture/transparency ethnography,
+  not a legal-institutional water-access mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S747-S753, 744 →
+751 rows each). `effect_sizes.csv` updated (34 → 35 rows; S749 added,
+ownership/regulatory-structure exposure not mapped to Family A/B/C, not
+pooled). `exclusion_log.csv` updated (711 → 714 rows; E01 272 → 275).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,194 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,465/3,659 screened (751 include/714 exclude), 2,194
+open, 751 extracted studies, 35 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fiftieth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
