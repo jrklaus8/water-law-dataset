@@ -6200,6 +6200,44 @@ evidence of anything.
   1,504 open, 1,098 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-second batch (10 records, 2026-09-27),
+  forty-fifth batch from the 543-record pool.** `new_batch_pool.json[440:450]`.
+  Debbane & Keil (2004, Zwelihle residents excluded from indigent-
+  tariff subsidy, ~60% affected by credit-control water cut-offs,
+  Hermanus, South Africa, S1101) — **INCLUDE**. Prokopy (2009,
+  propensity-score-matched estimates showing capital-cost
+  contribution and meeting attendance significantly improve a
+  composite water-access index, India, S1102) — **INCLUDE**, added to
+  `effect_sizes.csv` (Family B). Wu & Malaluan (2008, natural
+  experiment of identical concession terms producing divergent
+  corporate-governance outcomes, 30% connection growth concentrated
+  in poor areas, Metro Manila, S1103) — **INCLUDE**. Franceys & Weitz
+  (2003, 20 case studies across 10 Asian countries documenting land-
+  title-waiver, installment-fee and shared-connection mechanisms for
+  the urban poor, S1104) — **INCLUDE**. Trepied (2012, municipal
+  water-pipeline sequencing dispute bypassing the source-territory
+  Kanak tribe, contested via customary governance, New Caledonia,
+  S1105) — **INCLUDE**. Kooy, Furlong & Lamb (E12 conceptual
+  viewpoint essay, no original empirical data, Nature Based
+  Solutions) — **EXCLUDE (E12)**. Muller (2003, E05 policy-opinion
+  essay by responsible government official, South Africa) —
+  **EXCLUDE (E05)**. Ioris (2007, E01 water-resource/political-
+  economy critique, Brazil) — **EXCLUDE (E01)**. Subramaniam &
+  Williford (2012, E12 explicit literature review, no original
+  empirical data) — **EXCLUDE (E12)**. Van Vugt & Samuelson (1999,
+  E01 consumption/conservation behavior study, not an access-
+  eligibility mechanism) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1101-S1105,
+  1,098 → 1,103 rows each); `effect_sizes.csv` updated (51 → 52 rows
+  -- S1102 added as Family B); `exclusion_log.csv` updated (1,057 →
+  1,062 rows; E01 470 → 472, E05 130 → 131, E12 36 → 38); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,494 open records);
+  schema validation re-run clean.
+  Running totals: 2,165/3,659 screened (1,103 include/1,062 exclude),
+  1,494 open, 1,103 extracted studies, 52 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

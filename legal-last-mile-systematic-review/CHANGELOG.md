@@ -4,7 +4,64 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-first full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-second full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Forty-fifth batch from `new_batch_pool.json[440:450]`.
+
+- **R737AA21A56E8** (Debbane & Keil 2004, "Multiple Disconnections,"
+  Space and Polity, Canada/South Africa). **INCLUDE.** Zwelihle
+  residents excluded from indigent-tariff subsidy they qualify for;
+  ~60% affected by credit-control water cut-offs. → **S1101**.
+- **R76BD2052C008** (Prokopy 2009, "Determinants and Benefits of
+  Household Level Participation," J. Dev. Studies, India).
+  **INCLUDE.** Propensity-score-matched estimates: capital-cost
+  contribution and meeting attendance significantly improve a
+  composite water-access index. → **S1102**. **Added to
+  effect_sizes.csv** (Family B).
+- **R7814DEF7ACC8** (Wu & Malaluan 2008, "A Tale of Two
+  Concessionaires," Urban Studies, Metro Manila). **INCLUDE.**
+  Natural experiment: identical concession terms, divergent
+  corporate-governance outcomes -- 30% connection growth
+  concentrated in poor areas; Manila Water's territory-management
+  model outperformed Maynilad's system-wide approach. → **S1103**.
+- **R75D9E25CA71A** (Franceys & Weitz 2003, "Public-Private
+  Community Partnerships in Infrastructure for the Poor," J. Int.
+  Dev., 10 Asian countries). **INCLUDE.** 20 case studies documenting
+  land-title-waiver, installment-fee, and shared-connection
+  mechanisms for the urban poor. → **S1104**.
+- **R78C1CB0A4FC9** (Trepied 2012, "Indigenous struggles and water
+  policies in contemporary New Caledonia," Social Identities).
+  **INCLUDE.** Municipal water-pipeline sequencing dispute bypassing
+  the source-territory Kanak tribe, contested via customary
+  governance. → **S1105**.
+- **R76E257E7F829** (Kooy, Furlong & Lamb, Nature Based Solutions
+  viewpoint, Int. Dev. Planning Review). **EXCLUDE (E12).** Conceptual
+  viewpoint essay, no original empirical data.
+- **R771D41BC1584** (Muller 2003, South African PPP policy essay, J.
+  Int. Dev.). **EXCLUDE (E05).** Policy-opinion essay by responsible
+  government official, no empirical evidence.
+- **R79CD54BC24BE** (Ioris 2007, "Troubled Waters of Brazil,"
+  Capitalism Nature Socialism). **EXCLUDE (E01).** Water-resource/
+  political-economy critique, no specific access-eligibility
+  mechanism.
+- **R77C65607B9D2** (Subramaniam & Williford 2012, "Contesting Water
+  Rights," Sociology Compass). **EXCLUDE (E12).** Explicit literature
+  review, no original empirical data.
+- **R79A39D631DB8** (Van Vugt & Samuelson 1999, personal metering
+  social-dilemma study, Pers. Soc. Psychol. Bull.). **EXCLUDE (E01).**
+  Consumption/conservation behavior study, not an access-eligibility
+  mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1101-S1105,
+1,098 → 1,103 rows each); `effect_sizes.csv` updated (51 → 52 rows --
+S1102 added as Family B); `exclusion_log.csv` updated (1,057 → 1,062
+rows; E01 470 → 472, E05 130 → 131, E12 36 → 38); duplicate audit
+(exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,494 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,165/3,659 screened (1,103 include/1,062 exclude),
+1,494 open, 1,103 extracted studies, 52 effect_sizes rows.
 
 Forty-fourth batch from `new_batch_pool.json[430:440]`.
 
