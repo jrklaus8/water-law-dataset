@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-seventh full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-eighth full-text screening batch (10 records, 8 includes, 2 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history. An unusually strong batch
+topically: 8 of 10 records were genuine institutional/legal water-
+access mechanism studies.
+
+- **R4EF71E7E284E** (Swyngedouw 1995, *Third World Planning Review*,
+  "The Contradictions of Urban Water Provision: A Study of Guayaquil,
+  Ecuador"). **INCLUDE.** Seminal urban-political-ecology case study of
+  below-cost tariffs, utility financial deficits, and clientelist
+  politics excluding invasion-settlement residents from piped water.
+  Extracted as **S842**.
+- **R85BDB2AE39E0** (Kooy & Walter 2019, *Water*, "Towards A Situated
+  Urban Political Ecology Analysis of Packaged Drinking Water Supply").
+  **INCLUDE.** Household-survey study documenting a land/building-tax
+  documentation eligibility requirement for direct piped connections,
+  Jakarta. Extracted as **S843**.
+- **R8DBAA192D598** (Hordijk, Sara & Sutherland 2014, *Environment and
+  Urbanization*, "Resilience, transition or transformation?... four
+  southern cities"). **INCLUDE.** Comparative institutional case study
+  of water-governance decentralization/legal-framework change across
+  Guarulhos, Arequipa, Lima, and Durban. Extracted as **S844**.
+- **RBD155EDBD079** (Romero Lankao & Gunther 2011, *Policy and
+  Society*, "Missing the multiple dimensions of water?... Mexico City
+  and Buenos Aires"). **INCLUDE.** Comparative institutional case study
+  of neoliberal water-privatization reform outcomes across economic,
+  environmental, and political dimensions. Extracted as **S845**.
+- **R8A2445A92C67** (Ducrot, Bueno, Barban & Reydon 2010, *Environment
+  and Urbanization*, "Integrating land tenure, infrastructure and water
+  catchment management in Sao Paulo's periphery"). **INCLUDE.**
+  Participatory role-playing-game study of land tenure insecurity as
+  the root institutional barrier to water/sanitation infrastructure
+  access. Extracted as **S846**.
+- **RB279F6DED9CF** (Hill 2015, *Procedia Engineering*, "E-Governance:
+  Silencing Vulnerable Populations"). **INCLUDE.** Cross-sectional
+  survey (168 interviews, chi-square tests) showing vulnerable
+  populations have least capacity to use a municipal SMS fault-
+  reporting mechanism, Cape Town. Extracted as **S847**.
+- **R8D4D5CF53A02** (Hanrahan 2017, *British Journal of Canadian
+  Studies*, "Water (in)security in Canada: national identity and the
+  exclusion of Indigenous peoples"). **INCLUDE.** Five case studies
+  documenting the Indian Act reserve system and decentralized water
+  governance producing a 90-fold Indigenous/non-Indigenous piped-water
+  access disparity. Extracted as **S848**.
+- **R96660AABF429** (Ayalew, Chenoweth, Malcolm, Mulugetta, Okotto &
+  Pedley 2014, *Journal of Environmental Law*, "Small Independent Water
+  Providers... Kenya and Ethiopia"). **INCLUDE.** Legal/regulatory
+  research project on the absence of formal regulation of small
+  independent water vendors filling municipal-network gaps. Extracted
+  as **S849**.
+- **RC61650B037D2** (Hutchings et al. 2015, "A systematic review of
+  success factors in the community management of rural water
+  supplies... 30 years") — **EXCLUDE (E12).** Secondary systematic
+  review/meta-analysis of 174 case studies, not primary empirical
+  research.
+- **R8DC43EB66951** (Shandra, Shandra & London 2011, "World Bank
+  Structural Adjustment, Water, and Sanitation: A Cross-National
+  Analysis of Child Mortality in Sub-Saharan Africa") — **EXCLUDE
+  (E04).** Sole dependent variable is child mortality; water/sanitation
+  access is only a control variable.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S842-S849, 839 →
+847 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (785 → 787 rows; E04 60 → 61, E12 4 → 5).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,025 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,634/3,659 screened (847 include/787 exclude), 2,025
+open, 847 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-seventh full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

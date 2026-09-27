@@ -4133,6 +4133,39 @@ evidence of anything.
   Running totals: 1,624/3,659 screened (839 include/785 exclude), 2,035
   open, 839 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-eighth full-text screening batch, 10
+  records, 8 includes, 2 excludes.** An unusually strong batch
+  topically. Swyngedouw (1995, seminal urban-political-ecology case
+  study, tariff/clientelism exclusion, Guayaquil, S842) — **INCLUDE**.
+  Kooy & Walter (2019, household survey, land/tax documentation
+  eligibility for piped connection, Jakarta, S843) — **INCLUDE**.
+  Hordijk, Sara & Sutherland (2014, comparative institutional case
+  study, water-governance decentralization, 4 cities, S844) —
+  **INCLUDE**. Romero Lankao & Gunther (2011, comparative institutional
+  case study, neoliberal privatization outcomes, Mexico City/Buenos
+  Aires, S845) — **INCLUDE**. Ducrot, Bueno, Barban & Reydon (2010,
+  participatory role-playing-game study, land tenure insecurity as
+  access barrier, Sao Paulo, S846) — **INCLUDE**. Hill (2015,
+  cross-sectional survey, SMS e-governance access barriers for
+  vulnerable populations, Cape Town, S847) — **INCLUDE**. Hanrahan
+  (2017, five case studies, Indian Act reserve system, 90-fold
+  Indigenous water-access disparity, Canada, S848) — **INCLUDE**.
+  Ayalew, Chenoweth, Malcolm, Mulugetta, Okotto & Pedley (2014,
+  legal/regulatory research project, unregulated small independent
+  water vendors, Kenya/Ethiopia, S849) — **INCLUDE**. Hutchings et al.
+  (2015, secondary systematic review of 174 case studies, not primary
+  research) — **EXCLUDE (E12)**. Shandra, Shandra & London (2011,
+  cross-national panel regression, child mortality as sole dependent
+  variable) — **EXCLUDE (E04)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S842-S849, 839 →
+  847 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (785 → 787 rows; E04 60 → 61, E12 4 → 5);
+  duplicate audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,025 open records); schema validation re-run clean.
+  Running totals: 1,634/3,659 screened (847 include/787 exclude), 2,025
+  open, 847 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
