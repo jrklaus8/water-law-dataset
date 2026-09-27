@@ -5427,6 +5427,46 @@ evidence of anything.
   1,701 open, 1,009 extracted studies, 45 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-second batch (10 records, 2026-09-27), twenty-fifth
+  batch from the 543-record pool.** `new_batch_pool.json[240:250]`.
+  Ruiz Rosado (2008, case study finding SEDALIB's institutional water-
+  rationing policy and Comite de Agua committee gatekeeping produce
+  documented price disparities up to 16.6x network tariff, Trujillo,
+  Peru, S1012) — **INCLUDE**. Ratner & Rivera Gutierrez (2004,
+  action-research case study finding a municipal sewage-connection
+  legal-eligibility requirement (later relaxed) plus a negotiated
+  differentiated fee schedule and alley-committee collective-connection
+  mechanism directly producing measured connection-rate increases,
+  Panajachel, Guatemala, S1013) — **INCLUDE**. Yntiso (2008, E01 broad
+  multi-domain urban-resettlement-impact study, water access a minor
+  sub-finding among six impact domains, Addis Ababa) — **EXCLUDE
+  (E01)**. Patel et al (2010, E01 school beverage/nutrition-policy
+  barriers study, California) — **EXCLUDE (E01)**. Ndesamburo, Flynn &
+  French (2012, E05 reflective NGO practitioner case study, Tanzania) —
+  **EXCLUDE (E05)**. Cleaver & Hamada (E05 conceptual/analytical
+  framework paper synthesizing secondary case examples, no original
+  empirical data) — **EXCLUDE (E05)**. Kapuria (2013, E01 multi-service
+  fuzzy-sets quality-of-life index study, water one of seven domains,
+  Delhi) — **EXCLUDE (E01)**. Chang et al (2020, E01 City Blueprint
+  Approach governance-capacity benchmarking study, 32 Chinese cities) —
+  **EXCLUDE (E01)**. Kolesar & Serio (2011, E01 basin-scale interstate
+  reservoir-release operations-research study, Delaware River) —
+  **EXCLUDE (E01)**. Chaudhuri et al (2020, E01 nationwide
+  state-aggregated statistical appraisal of RWSS coverage performance,
+  India) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1012-S1013,
+  1,009 → 1,011 rows each); `effect_sizes.csv` unchanged (45 rows: both
+  includes are qualitative/action-research case studies, none report a
+  regression-based estimate isolating a legal/institutional mechanism's
+  effect on a Family A/B/C water-access outcome); `exclusion_log.csv`
+  updated (949 → 957 rows; E01 396 → 402, E05 125 → 127); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,691 open records);
+  schema validation re-run clean.
+  Running totals: 1,968/3,659 screened (1,011 include/957 exclude),
+  1,691 open, 1,011 extracted studies, 45 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

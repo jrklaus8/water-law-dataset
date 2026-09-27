@@ -4,7 +4,86 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-first full-text screening batch (10 records, 2 includes, 8 excludes)
+## 2026-09-27 (latest) — Two-hundred-second full-text screening batch (10 records, 2 includes, 8 excludes)
+
+Twenty-fifth batch from `new_batch_pool.json[240:250]`.
+
+- **RBA33BDA14EAD** (Ruiz Rosado 2008, "Urbanization, Migration and
+  Water Management in Trujillo, Peru"). **INCLUDE.** Case study of
+  Bellavista, Trujillo documenting SEDALIB's explicit institutional
+  water-rationing policy (piped supply limited to three days/week, two
+  hours/day) and the Comite de Agua community committee's role in
+  mediating formal connections, directly producing measured price
+  disparities (up to 16.6x network tariff via tricycle vendors, 5-8x via
+  official resale; only 17% achieving "optimal access"). Extends the
+  institutional-rationing/informal-market-price-disparity precedent
+  (Matsinhe et al Maputo, S1005). Extracted as **S1012**.
+- **RB87EFA103B2F** (Ratner & Rivera Gutierrez 2004, *Human
+  Organization*, "Reasserting Community: The Social Challenge of
+  Wastewater Management in Panajachel, Guatemala"). **INCLUDE.**
+  Action-research case study documenting a municipal sewage-connection
+  eligibility rule (initial legal-property-ownership/tax-currency
+  requirement, later relaxed to bill-currency + Q75 fee), a
+  stakeholder-negotiated differentiated fee schedule, and
+  neighborhood alley-committee collective-connection agreements, tied
+  to directly measured connection-rate outcomes (550/~1,400 households
+  by April 2001; +185 via alley committees by March 2002). Extracted as
+  **S1013**.
+- **RB8507E5E888F** (Yntiso 2008, "Urban Development and Displacement in
+  Addis Ababa: The Impact of Resettlement Projects on Low-Income
+  Households") — **EXCLUDE (E01).** Broad multi-domain resettlement-
+  impact study (income, education, health, housing, social networks,
+  transport); water access is one minor sub-finding among six impact
+  domains, not the paper's focus.
+- **R1823F1155BA1** (Patel et al 2010, "Perceptions about availability
+  and adequacy of drinking water in a large California school
+  district") — **EXCLUDE (E01).** School beverage/nutrition-policy
+  barriers study; wrong topic and population.
+- **RBCDE0E7C6962** (Ndesamburo, Flynn & French 2012, "Looking through
+  an equity and inclusion lens in Tanzania: the experience of
+  WaterAid") — **EXCLUDE (E05).** Reflective NGO practitioner case
+  study; narrative programme methodology, not rigorous original
+  empirical research.
+- **R1FBB650F8BAC** (Cleaver & Hamada, "'Good' water governance and
+  gender equity: a troubled relationship") — **EXCLUDE (E05).**
+  Conceptual/analytical framework paper (Franks & Cleaver framework)
+  illustrated entirely with secondary case examples; no original
+  empirical data collection.
+- **RB96173BC7BEA** (Kapuria 2013, "Quality of Life in the City of
+  Delhi: An Assessment Based on Access to Basic Services") — **EXCLUDE
+  (E01).** Multi-service (7-domain) fuzzy-sets quality-of-life index
+  study; water is one of seven service domains.
+- **R1E0A15AEB55A** (Chang et al 2020, "Evaluation on the integrated
+  water resources management in China's major cities... City Blueprint
+  Approach") — **EXCLUDE (E01).** City Blueprint Approach
+  governance-capacity benchmarking-tool study; reapplies the Okumura
+  Rio de Janeiro precedent (Batch 201).
+- **R16AB75AC4334** (Kolesar & Serio 2011, "Breaking the Deadlock:
+  Improving Water-Release Policies on the Delaware River Through
+  Operations Research") — **EXCLUDE (E01).** Basin-scale interstate
+  reservoir-release operations-research/engineering study; no
+  household-level legal/institutional access mechanism.
+- **R140432031A46** (Chaudhuri et al 2020, "Water for All (Har Ghar
+  Jal): Rural Water Supply Services (RWSS) in India (2013-2018)") —
+  **EXCLUDE (E01).** Nationwide state-aggregated statistical
+  appraisal (Gini coefficients, cluster analysis) of programme coverage
+  performance; no mechanism-level test of a specific legal/institutional
+  barrier's effect on household access.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1012-S1013 added;
+1,009 → 1,011 rows each). `effect_sizes.csv` unchanged (45 rows): both
+includes are qualitative/mixed-methods case studies with no regression-
+based estimate isolating a legal/institutional mechanism's effect on a
+Family A/B/C water-access outcome. `exclusion_log.csv` updated (949 →
+957 rows; E01 396 → 402, E05 125 → 127, E06 94 unchanged). Duplicate
+audit (exact-DOI + study_id) found no new duplicates. `full_text_
+retrieval_queue.csv` regenerated (1,691 open records). `validate_
+schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,968/3,659 screened (1,011 include/957 exclude), 1,691
+open, 1,011 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-first full-text screening batch (10 records, 2 includes, 8 excludes)
 
 Twenty-fourth batch from `new_batch_pool.json[230:240]`.
 
