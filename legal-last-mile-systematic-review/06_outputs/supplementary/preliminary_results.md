@@ -5996,6 +5996,54 @@ evidence of anything.
   1,554 open, 1,071 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-seventeenth batch (10 records, 2026-09-27), fortieth
+  batch from the 543-record pool.** `new_batch_pool.json[390:400]`.
+  Anand (2012, deliberate municipal inaction and discriminatory
+  infrastructure neglect rendering a Muslim settler community
+  "abject" and denied formal water access, Mumbai, S1074) —
+  **INCLUDE**. Silvestre (2012, institutional-arrangement comparison
+  finding prices track organizational costs and quality tracks
+  ownership model rather than management-model alone, Portugal,
+  S1075) — **INCLUDE**. Valerio (2024, multi-level-governance
+  fragmentation and tariff-approval delay producing stagnant coverage
+  and higher effective costs for poorer households, Zamboanga City,
+  Philippines, S1076) — **INCLUDE**. Panda (2007, critical policy
+  analysis of gender-mainstreaming rhetoric vs. practice in
+  water-sector reform and privatization, India, S1077) — **INCLUDE**.
+  Eguavoen (2008, Ghana's NCWSP community-based management policy
+  formally restricting pre-existing customary equal-use water rights,
+  excluding non-resident farmers and households unable to raise the
+  required contribution, S1078) — **INCLUDE**. Antunes & Martins
+  (2020, fixed-effects panel regression across 111 countries finding
+  significant socioeconomic/structural determinants of water-access
+  coverage, S1079) — **INCLUDE**. Crook & Ayee (2006,
+  privatization/contracting-out of environmental sanitation
+  undermining street-level regulatory enforcement capacity, Kumasi
+  and Accra, Ghana, S1080) — **INCLUDE**. Alam et al. (2020,
+  qualitative assessment of institutional/infrastructural barriers
+  and financing strategies for connecting low-income communities to
+  the proposed Dhaka Sanitation Improvement Project sewerage network,
+  S1081) — **INCLUDE**. Zawahri (2006, E01 Iraq/Indus transboundary
+  water-treaty comparison, geopolitical not household-service access)
+  — **EXCLUDE (E01)**. Gehrke (2016, E01 Joseph Chamberlain municipal
+  socialism, Birmingham, historical municipal-ownership politics
+  without documented differential-access outcome) — **EXCLUDE
+  (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1074-S1081,
+  1,071 → 1,079 rows each); `effect_sizes.csv` unchanged (51 rows --
+  Silvestre's ownership/management-model comparison and Antunes &
+  Martins' panel regression both lack a specific legal/institutional
+  fee/tenure/eligibility mechanism isolated per the strict Family
+  A/B/C framework; the remaining six includes are qualitative/
+  ethnographic case studies without a mechanism-isolating regression
+  on water access); `exclusion_log.csv` updated (1,034 → 1,036 rows;
+  E01 459 → 461); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,544
+  open records); schema validation re-run clean.
+  Running totals: 2,115/3,659 screened (1,079 include/1,036 exclude),
+  1,544 open, 1,079 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

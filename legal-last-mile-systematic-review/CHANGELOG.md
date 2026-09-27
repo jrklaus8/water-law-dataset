@@ -4,7 +4,75 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-sixteenth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-seventeenth full-text screening batch (10 records, 8 includes, 2 excludes)
+
+Fortieth batch from `new_batch_pool.json[390:400]`.
+
+- **R653891430501** (Anand 2012, "Municipal disconnect," Ethnography,
+  Premnagar/Mumbai). **INCLUDE.** Deliberate municipal inaction and
+  discriminatory infrastructure neglect rendering a Muslim settler
+  community "abject" and denied formal water access. → **S1074**.
+- **R6633D02DAFEB** (Silvestre 2012, "Public-private partnership and
+  corporate public sector organizations," Utilities Policy, Portugal).
+  **INCLUDE.** Institutional-arrangement comparison (PPP vs. corporate
+  public ownership) finding prices track organizational costs and
+  quality tracks ownership model, not management-model alone. →
+  **S1075**.
+- **R64FBAD6F3FDE** (Valerio 2024, "Institutional Fragmentation and
+  Service Performance," Lex Localis, Zamboanga City, Philippines).
+  **INCLUDE.** Multi-level-governance case study of regulatory
+  fragmentation and tariff-approval delay producing stagnant coverage
+  and higher effective costs for poorer households. → **S1076**.
+- **R66E3FE3817F3** (Panda 2007, "Mainstreaming Gender in Water
+  Management," Gender, Technology and Development, India). **INCLUDE.**
+  Critical policy analysis of gender-mainstreaming rhetoric vs.
+  practice in water-sector reform and privatization. → **S1077**.
+- **R65BF964A8E4D** (Eguavoen 2008, "Changing Household Water Rights,"
+  Development, northern Ghana). **INCLUDE.** Ghana's NCWSP
+  community-based management policy (registration, 5% capital-cost
+  fee, water-user committees) formally restricted pre-existing
+  customary equal-use water rights, excluding non-resident farmers and
+  households unable to raise the required contribution. → **S1078**.
+- **R67088B57E351** (Antunes & Martins 2020, "Determinants of access
+  to improved water sources," Utilities Policy, 111 countries).
+  **INCLUDE.** Fixed-effects panel regression (Driscoll-Kraay
+  corrected) finding significant socioeconomic/structural determinants
+  of water-access coverage. → **S1079**.
+- **R680EE05D7AEB** (Crook & Ayee 2006, "Urban Service Partnerships,
+  'Street-Level Bureaucrats,'" Development Policy Review, Kumasi/Accra,
+  Ghana). **INCLUDE.** Privatization/contracting-out of environmental
+  sanitation undermining street-level regulatory enforcement capacity.
+  → **S1080**.
+- **R123EABE57C5A** (Alam et al. 2020, "Strategies to Connect
+  Low-Income Communities," IJERPH, Dhaka, Bangladesh). **INCLUDE.**
+  Qualitative assessment of institutional/infrastructural barriers and
+  financing strategies for connecting low-income communities to the
+  proposed DSIP sewerage network. → **S1081**.
+- **R66E21A3EF32C** (Zawahri 2006, Iraq/Indus transboundary-treaty
+  comparison, Third World Quarterly). **EXCLUDE (E01).** Water-resource
+  geopolitical/international-treaty study, not household water-service
+  access.
+- **R67A29BF1BE09** (Gehrke 2016, Joseph Chamberlain municipal
+  socialism, Birmingham, American Journal of Economics and Sociology).
+  **EXCLUDE (E01).** Historical municipal-ownership political history
+  without documented differential-access-exclusion outcome.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1074-S1081,
+1,071 → 1,079 rows each); `effect_sizes.csv` unchanged (51 rows --
+Silvestre's ownership/management-model comparison and Antunes &
+Martins' panel regression both lack a specific legal/institutional
+fee/tenure/eligibility mechanism isolated per the strict Family A/B/C
+framework; the remaining six includes are qualitative/ethnographic
+case studies without a mechanism-isolating regression on water
+access); `exclusion_log.csv` updated (1,034 → 1,036 rows; E01 459 →
+461); duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,544 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,115/3,659 screened (1,079 include/1,036 exclude),
+1,544 open, 1,079 extracted studies, 51 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-sixteenth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Thirty-ninth batch from `new_batch_pool.json[380:390]`.
 
