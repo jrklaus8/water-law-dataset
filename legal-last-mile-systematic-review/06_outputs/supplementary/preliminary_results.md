@@ -4574,6 +4574,44 @@ evidence of anything.
   open, 903 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eightieth batch (10 records, 2026-09-27), third batch from
+  the 543-record pool.** `new_batch_pool.json[20:30]`. Nizkorodov
+  (2021, comparative case study of 10 Southern California water PPPs'
+  risk-allocation design, S906) — **INCLUDE**. Saleth & Sastry (2004,
+  documentary/financial analysis of Karnataka's coverage-criteria
+  policy and subsidy dynamics, S907) — **INCLUDE**. Alzahrani (2019,
+  three-essay econometric dissertation on SDWA violations, boil-water
+  notices, and West Virginia's Source Water Protection Act, S908) —
+  **INCLUDE** (Essay 3's SB 373/water-charges regression considered
+  for effect_sizes but not added, consistent with the Whittington S897
+  precedent). Adams, Braune, Cobbing, Fourie & Riemann (2015,
+  documentary analysis of South Africa's National Water Act 1998
+  groundwater reclassification and 20-year coverage gains, S909) —
+  **INCLUDE**. Kundu (2014, documentary/statistical analysis of
+  JnNURM's city-size-based water-investment disparities, S910) —
+  **INCLUDE**. Hazarika & Nitivattananon (2016, household survey
+  linking Guwahati's groundwater/land-rights legal linkage to
+  household water access, S911) — **INCLUDE**. O'Toole (1989,
+  confirmed via full-text read as a public-administration
+  implementation-theory study using EPA wastewater-treatment-plant
+  privatization, not household access) — **EXCLUDE (E07)**. Jimenez &
+  Perez-Foguet (2011, Water Point Mapping technical
+  functionality-decay study, Tanzania) — **EXCLUDE (E06)**. Guragai,
+  Takizawa, Hashimoto & Oguma (2017, intermittent-supply
+  reliability/water-quality engineering study, Kathmandu) — **EXCLUDE
+  (E06)**. Salmoral, Zegarra, Vazquez-Rowe et al. (2020, water-food-
+  energy-land nexus resource-governance stakeholder study, Arequipa
+  Peru) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S906-S911, 903 →
+  909 rows each); `effect_sizes.csv` unchanged (41 rows); `exclusion_log.csv`
+  updated (838 → 842 rows; E01 338 → 339, E06 73 → 75, E07 21 → 22);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,908 open records);
+  schema validation re-run clean.
+  Running totals: 1,751/3,659 screened (909 include/842 exclude), 1,908
+  open, 909 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

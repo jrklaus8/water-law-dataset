@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-ninth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-eightieth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Third batch from `new_batch_pool.json[20:30]`.
+
+- **RA6A6B0425E70** (Nizkorodov 2021, *World Development*, "Evaluating
+  risk allocation and project impacts of sustainability-oriented water
+  public-private partnerships in Southern California"). **INCLUDE.**
+  Comparative qualitative case study of 10 water PPPs' contract/risk-
+  allocation design and distributional impacts. Extracted as **S906**.
+- **R9E1C92EFDCBB** (Saleth & Sastry 2004, *Water Policy*, "Water
+  supply and sanitation sector of Karnataka, India: status,
+  performance and change"). **INCLUDE.** Documentary/financial
+  analysis of state coverage-criteria policy and subsidy dynamics.
+  Extracted as **S907**.
+- **RA2C6963F84B8** (Alzahrani 2019, PhD dissertation, "Three Essays
+  on Water Economics"). **INCLUDE.** Three-essay econometric analysis
+  of SDWA violations, boil-water notices, and West Virginia's Source
+  Water Protection Act (SB 373). Extracted as **S908**; Essay 3's SB
+  373/water-charges regression considered but NOT added to
+  effect_sizes.csv (outcome does not cleanly map to Family A/B/C,
+  consistent with the Whittington S897 precedent).
+- **R9ACCC3D2E6C2** (Adams, Braune, Cobbing, Fourie & Riemann 2015,
+  *South African Journal of Geology*, "Critical reflections on 20
+  years of groundwater research, development and implementation in
+  South Africa"). **INCLUDE.** Documentary policy analysis linking the
+  National Water Act 1998's groundwater reclassification to 20-year
+  national coverage gains. Extracted as **S909**.
+- **R999C3CB53A0C** (Kundu 2014, *Social Change*, "Urban Development
+  Programmes in India: A Critique of JnNURM"). **INCLUDE.**
+  Documentary/statistical analysis of a national infrastructure-aid
+  program's city-size-based water-supply-investment disparities.
+  Extracted as **S910**.
+- **R9926E6BB7498** (Hazarika & Nitivattananon 2016, *Environmental
+  Science & Policy*, "Strategic assessment of groundwater resource
+  exploitation using DPSIR framework in Guwahati city, India").
+  **INCLUDE.** Household survey linking groundwater-rights/land-rights
+  legal linkage to household water-access outcomes. Extracted as
+  **S911**.
+- **RA86C18416D33** (O'Toole 1989, "Goal Multiplicity in the
+  Implementation Setting... Wastewater Treatment Privatization") —
+  **EXCLUDE (E07).** Confirmed via full-text read as a public-
+  administration implementation-theory study using EPA municipal
+  treatment-plant construction-grant privatization as its case, not
+  household water/sanitation access.
+- **R9D43BF928F12** (Jimenez & Perez-Foguet 2011, "The relationship
+  between technology and functionality of rural water points...
+  Tanzania") — **EXCLUDE (E06).** Water Point Mapping technical
+  functionality-decay study by pump technology.
+- **R9D37CC49998B** (Guragai, Takizawa, Hashimoto & Oguma 2017,
+  "Effects of inequality of supply hours on consumers' coping
+  strategies... Kathmandu Valley, Nepal") — **EXCLUDE (E06).**
+  Intermittent-supply reliability/water-quality engineering study.
+- **R9E388863E256** (Salmoral, Zegarra, Vazquez-Rowe et al. 2020,
+  "Water-related challenges in nexus governance... Arequipa, Peru") —
+  **EXCLUDE (E01).** Water-food-energy-land nexus resource-governance
+  stakeholder study, basin/resource-scale rather than household
+  access.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S906-S911, 903 →
+909 rows each). `effect_sizes.csv` unchanged (41 rows; Alzahrani Essay
+3's SB 373/water-charges regression considered but its outcome does
+not cleanly map to Family A/B/C). `exclusion_log.csv` updated (838 →
+842 rows; E01 338 → 339, E06 73 → 75, E07 21 → 22). Duplicate audit
+(exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,908 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,751/3,659 screened (909 include/842 exclude), 1,908
+open, 909 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-ninth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Second batch from `new_batch_pool.json[10:20]` (the 543-record pool built
 at Batch 178).
