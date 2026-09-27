@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-eighth full-text screening batch (10 records, 8 includes, 2 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-ninth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R916889165AD5** (Aiga & Umenai 2002, *Social Science & Medicine*,
+  "Impact of improvement of water supply on household economy in a
+  squatter area of Manila"). **INCLUDE.** Comparative 201-household
+  survey documenting the Philippines' Zonal Improvement Program
+  legalizing squatter tenure and formal water connections. Extracted
+  as **S850**.
+- **R8EF694ACCE60** (Post 2014, *Politics & Society*, "Home Court
+  Advantage: Investor Type and Contractual Resilience in the Argentine
+  Water Sector"). **INCLUDE.** Comparative case study of 14 water
+  privatization concessions; the Corrientes case shows domestic-
+  investor embeddedness raising water coverage from 66% to 90%.
+  Extracted as **S851**.
+- **R92E20B0729D7** (Narsiah & Ahmed 2012, *Journal of Asian and
+  African Studies*, "The Neoliberalization of the Water and Energy
+  Sectors in South Africa and India"). **INCLUDE.** Legal-text analysis
+  of South Africa's Water Services Act 1997 private-provider provision
+  and documented municipal water-privatization collapses. Extracted as
+  **S852**.
+- **R6EA0A0277A0E** (Gomez, Perdiguero & Sanz 2019, *Water*,
+  "Socioeconomic Factors Affecting Water Access in Rural Areas of Low
+  and Middle Income Countries"). **INCLUDE.** Cross-national panel
+  regression showing governance/institutional-quality indicators as
+  significant predictors of rural piped-water access. Extracted as
+  **S853**. NOT effect_sizes eligible: exposure is a broad perception-
+  based governance index, not a documented legal/institutional
+  mechanism per PROJECT_SPEC.md Family A/B/C.
+- **R91DDD83ED473** (Blanchard-Boehm, Earl, Wachter & Hanford 2008,
+  "Communicating future water needs to an at-risk population...
+  Applewhite Dam... San Antonio, Texas") — **EXCLUDE (E01).** Macro-
+  scale bulk-water-infrastructure referendum/risk-communication study,
+  not household-level access.
+- **R8F2B41CC1A57** (Gonzalez-Gomez & Guardiola 2009, "A Duration Model
+  for the Estimation of the Contracting Out of Urban Water Management
+  in Southern Spain") — **EXCLUDE (E01).** Determinants of the
+  municipal contracting-out decision itself; no water-access outcome
+  content.
+- **R8E2E7578F722** (Bond 2004, "Water Commodification and
+  Decommodification Narratives... Johannesburg to Kyoto to Cancun and
+  Back") — **EXCLUDE (E05).** Explicitly labeled theoretical/polemical
+  Essay; no original empirical data.
+- **R917E4BA2FDDC** (Castro 2008, "Water Struggles, Citizenship and
+  Governance in Latin America") — **EXCLUDE (E05).** Short "Dialogue"
+  opinion/commentary synthesis; no original empirical data.
+- **R8F3A862DA6B1** (Olutayo, Omobowale & Amzat 2009, "Privatization
+  and the Social Value of Water in Africa") — **EXCLUDE (E05).**
+  Policy-advocacy essay drawing entirely on secondary press/NGO
+  sources; no original data collection.
+- **R550D015C22B6** (Adida & Girod 2011, "Do migrants improve their
+  hometowns? Remittances and access to public services in Mexico,
+  1995-2000") — **EXCLUDE (E01).** Exposure is a private household
+  financial flow (remittances), not a legal/institutional access
+  mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S850-S853, 847 →
+851 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (787 → 793 rows; E01 315 → 318, E05 100 →
+103). Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,015 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,644/3,659 screened (851 include/793 exclude), 2,015
+open, 851 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-eighth full-text screening batch (10 records, 8 includes, 2 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

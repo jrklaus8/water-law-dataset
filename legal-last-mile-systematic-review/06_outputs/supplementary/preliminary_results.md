@@ -4166,6 +4166,39 @@ evidence of anything.
   Running totals: 1,634/3,659 screened (847 include/787 exclude), 2,025
   open, 847 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-ninth full-text screening batch, 10
+  records, 4 includes, 6 excludes.** Aiga & Umenai (2002, comparative
+  201-household survey, Zonal Improvement Program tenure legalization
+  and water connections, Manila, S850) — **INCLUDE**. Post (2014,
+  comparative case study, 14 Argentine water privatization concessions,
+  investor-type/coverage outcomes, S851) — **INCLUDE**. Narsiah & Ahmed
+  (2012, legal-text case study, Water Services Act 1997 private-
+  provider provision and municipal privatization collapses, South
+  Africa, S852) — **INCLUDE**. Gomez, Perdiguero & Sanz (2019, cross-
+  national panel regression, governance indicators predicting rural
+  piped-water access, S853) — **INCLUDE** (not effect_sizes eligible:
+  exposure is a broad perception-based governance index, not a
+  documented legal/institutional mechanism per PROJECT_SPEC.md Family
+  A/B/C). Blanchard-Boehm et al. (2008, Applewhite Dam referendum,
+  macro-scale bulk-water infrastructure, San Antonio) — **EXCLUDE
+  (E01)**. Gonzalez-Gomez & Guardiola (2009, duration model of
+  municipal contracting-out decision, no access-outcome content, Spain)
+  — **EXCLUDE (E01)**. Bond (2004, theoretical/polemical Essay, no
+  original data) — **EXCLUDE (E05)**. Castro (2008, short Dialogue
+  opinion piece, no original data) — **EXCLUDE (E05)**. Olutayo,
+  Omobowale & Amzat (2009, policy-advocacy essay on secondary sources,
+  Africa) — **EXCLUDE (E05)**. Adida & Girod (2011, remittances as a
+  private financial substitute for state provision, Mexico) —
+  **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S850-S853, 847 →
+  851 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (787 → 793 rows; E01 315 → 318, E05 100 →
+  103); duplicate audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,015 open records); schema validation re-run clean.
+  Running totals: 1,644/3,659 screened (851 include/793 exclude), 2,015
+  open, 851 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
