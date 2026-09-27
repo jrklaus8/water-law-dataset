@@ -6544,6 +6544,39 @@ evidence of anything.
   1,418 open (including 20 wrong_file_retrieved), 1,138 extracted
   studies, 56 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-first batch (10 records, 2026-09-27),
+  fifty-fourth batch from the 543-record pool.** `new_batch_pool.json[530:540]`.
+  Victor (2019, ethnographic case study of "DIY formalisation" and
+  informal-settlement legal-status gating water-service eligibility,
+  Marikana South Africa, S1141) — **INCLUDE**. Smith & Hanson (2003,
+  cost-recovery/disconnection policy case study, urban poor water
+  access, Cape Town, S1142) — **INCLUDE**. Both qualitative, no
+  regression-based effect estimate — not added to effect_sizes.csv.
+  Sinha & Pokhriyal (2001, E01 Tehri Dam resettlement/rehabilitation
+  evaluation, India) — **EXCLUDE (E01)**. Okpala (1980, E01 broad
+  economic-development essay on water-supply constraints, Nigeria) —
+  **EXCLUDE (E01)**. Katani (2010, E01 legal-pluralism/water-resource
+  tenure dissertation, spring forests, Ukerewe Tanzania) — **EXCLUDE
+  (E01)**. Staddon et al. (2018, E01 household rainwater-harvesting
+  adoption-decision study, Uganda) — **EXCLUDE (E01)**. Shrestha, Roth
+  & Joshi (2018, E01 informal water-resource contestation ethnography,
+  peri-urban Kathmandu) — **EXCLUDE (E01)**. Roth et al. (2019, E01
+  policy-discourse synthesis, peri-urban South Asia) — **EXCLUDE
+  (E01)**. Paerregaard (2013, E01 irrigation/water-resource governance,
+  Cabanaconde Peru) — **EXCLUDE (E01)**. Target "Stream-flow bill bad
+  for state" (Pederson 2009) — **WRONG_FILE_RETRIEVED**: delivered PDF
+  was instead an unrelated computer-science paper on stream-processing
+  optimizations.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1141-S1142,
+  1,138 → 1,140 rows each); `effect_sizes.csv` unchanged (56 rows);
+  `exclusion_log.csv` updated (1,103 → 1,110 rows; E01 488 → 495);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,409 open records);
+  schema validation re-run clean.
+  Running totals: 2,250/3,659 screened (1,140 include/1,110 exclude),
+  1,409 open (including 21 wrong_file_retrieved), 1,140 extracted
+  studies, 56 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

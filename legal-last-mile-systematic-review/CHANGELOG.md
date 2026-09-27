@@ -4,7 +4,69 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirtieth full-text screening batch (10 records, 1 include, 7 excludes, 1 wrong_file_retrieved, 1 left undecided)
+## 2026-09-27 (latest) — Two-hundred-thirty-first full-text screening batch (10 records, 2 includes, 7 excludes, 1 wrong_file_retrieved)
+
+Fifty-fourth batch from `new_batch_pool.json[530:540]`.
+
+- **R20684C4B20E4** (Victor 2019, "DIY formalisation," Marikana informal
+  settlement, Potchefstroom South Africa). **INCLUDE.** Ethnographic
+  case study of informal-settlement legal status gating municipal
+  water-service eligibility, and residents' self-organized
+  formalization strategy to overcome it. → **S1141**.
+- **R34D4B693CF22** (Smith & Hanson 2003, access to water for the
+  urban poor, Cape Town). **INCLUDE.** Cost-recovery/disconnection
+  policy case study (160,000 cutoffs in 3 years) documenting a
+  legal/administrative mechanism reproducing apartheid-era territorial
+  service inequities. → **S1142**. Both qualitative/descriptive, no
+  regression-based effect estimate against a defined comparator; not
+  added to effect_sizes.csv.
+- **R1B8FD401A58C** (Sinha & Pokhriyal 2001, Tehri Dam rehabilitation
+  evaluation, India). **EXCLUDE (E01).** Broad dam-displacement/
+  resettlement-policy evaluation, not a focused water-service-access
+  mechanism.
+- **R1D9934EC161F** (Okpala 1980, water supply constraints on Nigeria's
+  economic development, Anambra State). **EXCLUDE (E01).** Broad
+  descriptive economic-development essay on water-supply
+  infrastructure, no institutional-mechanism focus.
+- **R1C7B5A6466D9** (Katani 2010, multiple institutions managing micro
+  spring forests, Ukerewe Tanzania). **EXCLUDE (E01).**
+  Legal-pluralism/water-resource-tenure dissertation (spring/forest
+  commons), not municipal water-service access.
+- **R215A46C61B6D** (Staddon et al 2018, rainwater-harvesting adoption
+  factors, central Uganda). **EXCLUDE (E01).** Household
+  adoption-decision study, not an institutional access-eligibility
+  mechanism.
+- **R21BC744CC726** (Shrestha, Roth & Joshi 2018, dynamic water rights,
+  peri-urban Kathmandu). **EXCLUDE (E01).** Informal
+  irrigation/drinking-water-source contestation ethnography, water
+  resource not water service.
+- **R152C9FC53F5A** (Roth et al 2019, climates of urbanization,
+  peri-urban South Asia). **EXCLUDE (E01).** Multi-site policy-discourse
+  synthesis critiquing "community resilience" framing, no institutional
+  mechanism isolated.
+- **R27165B30AE1C** (Paerregaard 2013, governing water in Cabanaconde,
+  Peru). **EXCLUDE (E01).** Irrigation/water-resource governance
+  (communal-to-state model shift), not household water-service access.
+- **R31BD502FD038** (target: Pederson 2009, "Stream-flow bill bad for
+  state"). **WRONG_FILE_RETRIEVED.** Delivered PDF was instead Hirzel
+  et al. 2014, "A Catalog of Stream Processing Optimizations" (ACM
+  Computing Surveys) — an unrelated computer-science paper; not
+  screened, file not moved.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1141-S1142,
+1,138 → 1,140 rows each); `effect_sizes.csv` unchanged (56 rows — both
+new includes are qualitative/descriptive with no isolable
+regression-based effect estimate); `exclusion_log.csv` updated
+(1,103 → 1,110 rows; E01 488 → 495); duplicate audit (exact-DOI +
+study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,409 open records); schema validation re-run clean
+(13/13).
+
+Running totals: 2,250/3,659 screened (1,140 include/1,110 exclude),
+1,409 open (including 21 wrong_file_retrieved), 1,140 extracted
+studies, 56 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-thirtieth full-text screening batch (10 records, 1 include, 7 excludes, 1 wrong_file_retrieved, 1 left undecided)
 
 Fifty-third batch from `new_batch_pool.json[520:530]`.
 
