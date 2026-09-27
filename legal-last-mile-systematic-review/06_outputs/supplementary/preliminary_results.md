@@ -3342,6 +3342,41 @@ evidence of anything.
   open, 704 extracted studies, 34 effect_sizes rows. Approximately 83
   records remain from the Antigravity delivery folder. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-third full-text screening batch.** The
+  Antigravity delivery folder grew substantially with new uploads beyond
+  the original 103-record delivery, reaching roughly 290 genuinely open
+  records at time of sweep -- confirming the researcher's advance notice
+  of a "big batch." A folder re-sweep also surfaced 10 duplicate
+  re-uploads of record_ids already decided in Batch 141 (new Drive file
+  IDs, same record_ids), moved directly to Processed without
+  re-screening per the standing duplicate-detection/defer rule. Of the
+  next 10 open records screened: Wankhade (2015, tenure/legal status and
+  urban sanitation access, India, S707) — **INCLUDE**. De & Nag (2016,
+  74th Constitutional Amendment decentralization and clientelism, Kolkata
+  water vs. drainage delivery, S708) — **INCLUDE**. Reddy (2010, de
+  jure/de facto groundwater-rights gap, Rajasthan, S709) — **INCLUDE**.
+  Jimenez Cisneros & Torregrosa Armentia (2007, Mexican Water Law reforms
+  and urban-rural coverage gap, S710) — **INCLUDE**. Duggal (2004,
+  unauthorized-colony legal status and formal/informal water connections,
+  Panchkula, S711) — **INCLUDE**. Oberg (2019, discourse analysis of
+  open-defecation problematization, Agra) — **EXCLUDE (E01)**. Mumme
+  (2016, US-Mexico transboundary treaty, interstate not household-level)
+  — **EXCLUDE (E01)**. White (1983, general community-participation
+  synthesis essay) — **EXCLUDE (E05)**. Balali et al. (2009, conceptual
+  water-management paradigms, Iran) — **EXCLUDE (E05)**. One record had
+  delivered PDF content that did not match its target metadata and was
+  flagged `wrong_file_retrieved` without screening: RFEBA9E5C7885
+  (target: Madeley 2012, "Tourism and water"; delivered: an unrelated
+  2023 microbiology/water-quality study of Yucatan cenotes).
+  `extraction_database.csv`/`evidence_map.csv` updated (S707-S711, 704 →
+  709 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (672 → 676 rows; E01 240 → 242, E05 81 → 83); duplicate audit
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,274 open records); schema validation re-run clean.
+  Running totals: 1,385/3,659 screened (709 include/676 exclude), 2,274
+  open, 709 extracted studies, 34 effect_sizes rows. Roughly 280 records
+  remain open in the Antigravity delivery folder, with more uploads
+  expected. Full detail in `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3360,17 +3395,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,376 of the 3,659
-  Phase-5 includes have been assessed; 2,283 records have not yet been
+- Full-text screening itself is far from complete: 1,385 of the 3,659
+  Phase-5 includes have been assessed; 2,274 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Ten of those 2,283
+  on the researcher supplying full-text PDFs. Eleven of those 2,274
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 704
+- Extraction (Phase 8) is caught up with screening completely — all 709
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  704 extracted studies** (a first 12-study partial pilot batch was
+  709 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

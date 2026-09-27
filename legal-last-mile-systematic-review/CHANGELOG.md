@@ -4,7 +4,81 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-second full-text screening batch (second sub-batch of the Antigravity-retrieved PDF drop: 10 records, 6 includes, 2 excludes, 2 wrong_file_retrieved flags)
+## 2026-09-27 (latest) — Hundred-forty-third full-text screening batch (Antigravity delivery folder grew substantially with new uploads; 10 records, 5 includes, 4 excludes, 1 wrong_file_retrieved flag, plus 10 duplicate re-uploads of already-decided Batch 141 records moved to Processed without re-screening)
+
+The Antigravity delivery folder (a subfolder of the monitored Drive inbox)
+received a large new wave of uploads beyond the original 103-record
+delivery, growing to roughly 290 genuinely open records at time of
+sweep, confirming the researcher's advance notice of a "big batch." A
+Drive folder-listing sweep (using `modifiedTime`-bucketed queries, since
+naive pagination under-counts large folders) also surfaced 10 files that
+were duplicate re-uploads of record_ids already decided in Batch 141
+(new Drive file IDs, same record_ids); per the standing
+duplicate-detection/defer rule, these were moved directly to `Processed`
+without re-screening.
+
+Of the next 10 open records screened:
+
+- **RFF4355ACB420** (Wankhade 2015, *Environment and Urbanization*,
+  "Urban sanitation in India: key shifts in the national policy frame").
+  **INCLUDE.** Ties land tenure/legal status of settlements to sanitation
+  access for the urban poor under India's national sanitation policy.
+  Extracted as **S707**.
+- **RFE2A66422954** (De & Nag 2016, *Development Policy Review*,
+  "Dangers of Decentralisation in Urban Slums... Kolkata"). **INCLUDE.**
+  74th Constitutional Amendment decentralization reform tied to political
+  capture/clientelism differentially affecting water vs. drainage service
+  delivery. Extracted as **S708**.
+- **RFDE0B63BD547** (Reddy 2010, *Water Policy*, "Water sector
+  performance under scarcity conditions... Rajasthan"). **INCLUDE.**
+  De jure/de facto groundwater-rights gap tied to urban/rich bias in
+  water access. Extracted as **S709**.
+- **RFD5FA6667229** (Jimenez Cisneros & Torregrosa Armentia 2007,
+  *Journal of Comparative Social Welfare*, "Water Services in Mexico:
+  Are they a Public Priority?"). **INCLUDE.** 1992/2004 Mexican Water Law
+  reforms and Basin Organism decentralization tied to a large,
+  quantified urban-rural water/sanitation coverage gap. Extracted as
+  **S710**.
+- **RFCCCFA44398C** (Duggal 2004, *Social Change*, "The slums of
+  Panchkula"). **INCLUDE.** Settlement legal status (unauthorized
+  colonies) shown to determine formal vs. informal ("kundi") water
+  connection access, absent slum-regularization legislation. Extracted
+  as **S711**.
+- **RFFB5BFDE3838** (Oberg 2019, *IJURR*, "Problematizing Urban
+  Shit(ting)... Agra"). **EXCLUDE (E01).** Foucauldian discourse analysis
+  of open-defecation problematization; no legal/institutional
+  access-barrier mechanism or access outcome.
+- **RFF4355C792EF** (Mumme 2016, *Globalizations*, "Scarcity and Power in
+  US-Mexico Transboundary Water Governance"). **EXCLUDE (E01).** 1944
+  Water Treaty/NAFTA analysis operates entirely at the interstate level;
+  no household-level access outcome.
+- **RFECF89F1B231** (White 1983, *Community Development Journal*,
+  "Obstacles to Full Community Participation in Water Supply
+  Programmes"). **EXCLUDE (E05).** General international synthesis essay,
+  no specific legal framework or empirical case data.
+- **RFDB989AF82C5** (Balali, Keulartz & Korthals 2009, *Environmental
+  Values*, "Reflexive Water Management in Arid Regions: The Case of
+  Iran"). **EXCLUDE (E05).** Conceptual/philosophical paradigm paper, no
+  empirical case data.
+- **RFEBA9E5C7885** (target: Madeley 2012, "Tourism and water").
+  **wrong_file_retrieved.** Delivered PDF was an unrelated 2023
+  microbiology/water-quality study of Yucatan cenotes (Arcega-Cabrera et
+  al.) by different authors; not screened.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S707-S711, 704 →
+709 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (672 → 676 rows; E01 240 → 242, E05 81 → 83). Duplicate audit
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,274 open records). `validate_schemas.py` confirms all 13 tracked files
+OK. `full_text_screening_database.csv` now shows 11 total
+`wrong_file_retrieved` records.
+
+Running totals: 1,385/3,659 screened (709 include/676 exclude), 2,274
+open, 709 extracted studies, 34 effect_sizes rows. Roughly 280 records
+remain open in the Antigravity delivery folder, with more uploads
+expected.
+
+## 2026-09-27 — Hundred-forty-second full-text screening batch (second sub-batch of the Antigravity-retrieved PDF drop: 10 records, 6 includes, 2 excludes, 2 wrong_file_retrieved flags)
 
 Second sub-batch of the ~103-record Antigravity delivery. Two records had
 PDF content that did not match their target metadata and were flagged
