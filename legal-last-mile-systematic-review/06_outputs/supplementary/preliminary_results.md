@@ -3875,6 +3875,37 @@ evidence of anything.
   Running totals: 1,545/3,659 screened (801 include/744 exclude), 2,114
   open, 801 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixtieth full-text screening batch, 10 records,
+  4 includes, 6 excludes.** Kalulu & Hoko (2010, Blantyre Water Board
+  performance benchmarking plus 100 low-income customer interviews on
+  tariff burden/disconnection/reconnection, Malawi, S804) —
+  **INCLUDE**. Begolli & Lajci (2016, consolidation of 30 municipal
+  utilities into 7 Regional Water Companies via UNMIK law, independent
+  regulator, Kosova, S805) — **INCLUDE**. Guimaraes, Malheiros &
+  Marques (2016, land-tenure regularization as a legal barrier to
+  WS&S access, SABESP connection program, Brazil, S806) —
+  **INCLUDE**. Gerlach & Franceys (2009, household survey and
+  regulatory-gap analysis for poor consumers, private-management
+  contract, Amman Jordan, S807) — **INCLUDE**. Lagerwey (2009,
+  historical missionary-nursing cleanliness discourse study) —
+  **EXCLUDE (E01)**. Jimenez-Moleon & Gomez-Albores (2011, spatial-
+  epidemiological GIS waterborne-disease study, Mexico) — **EXCLUDE
+  (E03)**. Samwel & Gabizon (2009, urine-diverting school-toilet
+  demonstration project, EECCA/EU) — **EXCLUDE (E01)**. Nabulo & Cole
+  (Uganda environmental-health encyclopedia entry) — **EXCLUDE
+  (E01)**. Rusca & Schwartz (2014, institutional-governance literature-
+  review essay) — **EXCLUDE (E05)**. Neto & Tropp (2000, global UN
+  coverage-statistics policy synthesis) — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S804-S807, 801 →
+  805 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (744 → 750 rows; E01 288 → 291, E03 24 →
+  25, E05 92 → 94); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,104 open records);
+  schema validation re-run clean.
+  Running totals: 1,555/3,659 screened (805 include/750 exclude), 2,104
+  open, 805 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 

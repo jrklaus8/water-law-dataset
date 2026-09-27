@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-ninth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-sixtieth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the Antigravity delivery folder (drawn from records
+previously marked `not_retrievable` in the tracking file, now delivered).
+All 10 target record_ids confirmed open with no prior decisions or
+`wrong_file_retrieved` history.
+
+- **RCF31FA5B9CF9** (Kalulu & Hoko 2010, *Physics and Chemistry of the
+  Earth*, "Assessment of the performance of a public water utility:
+  Blantyre Water Board, Malawi"). **INCLUDE.** Utility performance
+  benchmarking plus 100 low-income customer interviews documenting
+  tariff burden (4.4% of household income), disconnection despite
+  payment, and reconnection-fee barriers under the Water Works Act
+  1995's full-cost-recovery mandate. Extracted as **S804**.
+- **RCF1AD58436DF** (Begolli & Lajçi 2016, *Water Science & Technology:
+  Water Supply*, "Water services sector reform: the Kosova experience").
+  **INCLUDE.** Detailed legal/institutional case study of consolidating
+  30 municipal utilities into 7 Regional Water Companies via UNMIK
+  Regulations and Laws, with an independent economic regulator (WWRO);
+  coverage rose from 52% pre-reform to 72.1% in RWC areas. Extracted as
+  **S805**.
+- **RCD44792548EF** (Guimarães, Malheiros & Marques 2016, *Utilities
+  Policy*, "Inclusive governance: New concept of water supply and
+  sanitation services in social vulnerability areas"). **INCLUDE.**
+  Direct legal analysis of Brazil's land-tenure-regularization
+  requirement excluding favela residents from official WS&S coverage
+  and utility service, plus SABESP's "Se liga na Rede" connection
+  program survey data. Extracted as **S806**.
+- **RC8FC125A9F16** (Gerlach & Franceys 2009, *Geoforum*, "Regulating
+  water services for the poor: The case of Amman"). **INCLUDE.**
+  Household survey of poor/vulnerable consumers combined with
+  institutional analysis of regulatory gaps left unaddressed by the
+  quasi-regulator despite Jordan's near-100% urban connection rate.
+  Extracted as **S807**.
+- **RCEF41B961251** (Lagerwey 2009, "In their own words: nurses'
+  discourses of cleanliness from the Rehoboth Mission") — **EXCLUDE
+  (E01).** Historical discourse-analysis study of missionary nursing
+  culture, no water-access-barrier mechanism.
+- **RCEDB672130C6** (Jiménez-Moleón & Gómez-Albores 2011, "Waterborne
+  diseases in the state of Mexico, Mexico (2000-2005)") — **EXCLUDE
+  (E03).** Spatial-epidemiological GIS study correlating disease
+  incidence with service coverage; institutional context is background
+  only.
+- **RCD3248F027A6** (Samwel & Gabizon 2009, "Improving school sanitation
+  ... EECCA and new EU member states") — **EXCLUDE (E01).** Technical
+  demonstration-project report on urine-diverting toilet installation
+  at rural schools.
+- **RCC7EA7EF993C** (Nabulo & Cole, "Uganda: Environmental Health
+  Concerns," encyclopedia entry) — **EXCLUDE (E01).** Broad country-
+  profile encyclopedia article, water legislation mentioned only in
+  passing among many other topics.
+- **RCBA43CCC1A08** (Rusca & Schwartz 2014, "'Going with the grain':
+  accommodating local institutions in water governance") — **EXCLUDE
+  (E05).** Literature-review essay; its one empirical example (Lilongwe
+  WUAs) is drawn from a separate co-authored paper, not original data.
+- **RCB7A81AE9AD2** (Neto & Tropp 2000, "Water supply and sanitation
+  services for all: global progress during the 1990s") — **EXCLUDE
+  (E05).** Global policy synthesis of secondary UN coverage statistics.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S804-S807, 801 →
+805 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (744 → 750 rows; E01 288 → 291, E03 24 →
+25, E05 92 → 94). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,104 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,555/3,659 screened (805 include/750 exclude), 2,104
+open, 805 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-ninth full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
