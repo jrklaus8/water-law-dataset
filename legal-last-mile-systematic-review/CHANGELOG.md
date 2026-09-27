@@ -4,7 +4,73 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-seventh full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-eighth full-text screening batch (10 records, 7 includes, 3 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RDE1EDA735C46** (Fuente & Bartram 2018, *Perspectives in Public
+  Health*, "Pro-poor governance in water and sanitation service
+  delivery: evidence from GLAAS surveys"). **INCLUDE.** Original
+  document analysis of primary UN-Water GLAAS government survey
+  responses on pro-poor policy and its implementation gap. Extracted
+  as **S791**.
+- **RDCFFEDDA5CAF** (Swatuk & Kgomotso 2007, *Physics and Chemistry of
+  the Earth*, "The challenges of supplying water to small, scattered
+  communities in the Lower Okavango Basin... Botswana"). **INCLUDE.**
+  Field-based case study identifying a deliberate government under-
+  service policy for remote areas. Extracted as **S792**.
+- **RDC175D72AFE5** (Beisheim, Liese, Janetschek & Sarre, "Transnational
+  Partnerships: Conditions for Successful Service Provision in Areas of
+  Limited Statehood"). **INCLUDE.** Comparative 10-project analysis of
+  PPP institutional design and legitimacy, Bangladesh/India/Kenya.
+  Extracted as **S793**.
+- **RDB3CF0A8AAED** (Vasquez 2015, *Water Resources Research*,
+  "Willingness to pay and willingness to work for improvements of
+  municipal and community-managed water services"). **INCLUDE.**
+  Household comparison of governance-type effects on service
+  improvement preferences, Guatemala. Extracted as **S794**.
+- **RDAD1B5F3B10E** (Hailu, Osorio & Tsukada 2012, *World Development*,
+  "Privatization and Renationalization: What Went Wrong in Bolivia's
+  Water Sector?"). **INCLUDE and EFFECT_SIZES ELIGIBLE.** Probit DiD
+  across four cities; privatization effect on piped-water access =
+  0.077 (SE 0.016), p<0.01, 1996-2005. Extracted as **S795**; added as
+  the 38th `effect_sizes.csv` row (blank synthesis_family, ownership/
+  regulatory-structure exposure, per S749 precedent).
+- **RD93C9D05E8F4** (Bradlow, *Theory and Society*, "Embeddedness and
+  cohesion: regimes of urban public goods distribution"). **INCLUDE.**
+  Comparative-historical case study of bureaucratic mechanisms
+  determining favela sanitation/housing access, Sao Paulo. Extracted
+  as **S796**.
+- **RD864FBEE0D54** (Britto, Maiello & Quintslr 2018, *Journal of
+  Hydrology*, "Water supply system in the Rio de Janeiro Metropolitan
+  Region..."). **INCLUDE.** Institutional case study of the 1974
+  complementary law and CEDAE state water company governance
+  structure. Extracted as **S797**.
+- **RDDEE18CE92AF** (Guppy 2014, *Natural Resources Forum*, "The Water
+  Poverty Index in rural Cambodia and Viet Nam...") — **EXCLUDE (E01).**
+  Composite-index methodology-validation study.
+- **RDAD34E024169** (Lee 1995, "Financing investments in water supply
+  and sanitation") — **EXCLUDE (E05).** Secondary-statistics regional
+  policy-modeling paper, no original empirical data collection.
+- **RD88D7BDC6553** (Ako et al. 2010, "Access to potable water and
+  sanitation in Cameroon within the context of MDGs") — **EXCLUDE
+  (E05).** Descriptive MDG-progress-tracking synthesis of secondary
+  statistics.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S791-S797, 788 →
+795 rows each). `effect_sizes.csv` updated (37 → 38 rows; S795 Hailu
+et al. 2012 Bolivia privatization DiD added). `exclusion_log.csv`
+updated (737 → 740 rows; E01 286 → 287, E05 89 → 91). Duplicate audit
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,124 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,535/3,659 screened (795 include/740 exclude), 2,124
+open, 795 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-seventh full-text screening batch (10 records, 7 includes, 3 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

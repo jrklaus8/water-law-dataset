@@ -3813,6 +3813,36 @@ evidence of anything.
   Running totals: 1,525/3,659 screened (788 include/737 exclude), 2,134
   open, 788 extracted studies, 37 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-eighth full-text screening batch, 10
+  records, 7 includes, 3 excludes.** Fuente & Bartram (2018, GLAAS
+  pro-poor governance survey document analysis, S791) — **INCLUDE**.
+  Swatuk & Kgomotso (2007, deliberate government under-service policy
+  for remote areas, Botswana, S792) — **INCLUDE**. Beisheim et al.
+  (transnational PPP institutional-design comparison, 10 projects,
+  Bangladesh/India/Kenya, S793) — **INCLUDE**. Vasquez (2015,
+  municipal vs. community-managed governance-type comparison,
+  Guatemala, S794) — **INCLUDE**. Hailu, Osorio & Tsukada (2012,
+  probit DiD across 4 Bolivian cities, S795) — **INCLUDE, EFFECT_SIZES
+  ELIGIBLE**: privatization effect on piped-water access = 0.077 (SE
+  0.016, p<0.01), added as the 38th effect_sizes.csv row (blank
+  synthesis_family). Bradlow (comparative-historical case study of
+  bureaucratic embeddedness/cohesion, Sao Paulo favelas, S796) —
+  **INCLUDE**. Britto, Maiello & Quintslr (2018, 1974 complementary
+  law and CEDAE state water company governance, Rio de Janeiro, S797)
+  — **INCLUDE**. Guppy (2014, Water Poverty Index methodology-
+  validation study) — **EXCLUDE (E01)**. Lee (1995, secondary-
+  statistics regional financing-policy model) — **EXCLUDE (E05)**.
+  Ako et al. (2010, descriptive MDG-progress synthesis, Cameroon) —
+  **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S791-S797, 788 →
+  795 rows each); `effect_sizes.csv` updated (37 → 38 rows; S795 added);
+  `exclusion_log.csv` updated (737 → 740 rows; E01 286 → 287, E05 89 →
+  91); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,124 open records);
+  schema validation re-run clean.
+  Running totals: 1,535/3,659 screened (795 include/740 exclude), 2,124
+  open, 795 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3838,10 +3868,10 @@ evidence of anything.
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 788
+- Extraction (Phase 8) is caught up with screening completely — all 795
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  788 extracted studies** (a first 12-study partial pilot batch was
+  795 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -3884,12 +3914,12 @@ evidence of anything.
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 37 studies in `effect_sizes.csv` (added
+- Effect sizes now exist for 38 studies in `effect_sizes.csv` (added
   2026-09-16, extended 2026-09-17 and in later full-text-screening
-  batches through 2026-09-27, most recently S780 -- Pizzi 2020's null
-  result for Chinese ethnic-minority-autonomous-county legal status on
-  drinking-water beneficiaries, mapped to Family A (legal recognition/
-  status)),
+  batches through 2026-09-27, most recently S795 -- Hailu, Osorio &
+  Tsukada's probit difference-in-differences estimate of Bolivian
+  water-utility privatization's effect on piped-water access (0.077,
+  SE 0.016, p<0.01), not mapped to a Family A/B/C synthesis family),
   but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template
