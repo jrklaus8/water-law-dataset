@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-ninth full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Two-hundred-tenth full-text screening batch (10 records, 3 includes, 5 excludes, 2 wrong_file_retrieved)
+
+Thirty-third batch from `new_batch_pool.json[320:330]`.
+
+Two of the ten Google Drive deliveries did not match their target
+records despite correct filename/title metadata -- a new error mode
+distinct from prior ordering/mapping errors, caught only by reading
+the actual delivered text against the expected title/authors/journal:
+
+- **R3B415FA79D4C** (target: Crow & Sultana 2002, "Gender, Class, and
+  Access to Water: Three Cases in a Poor and Crowded Delta").
+  **wrong_file_retrieved.** Delivered PDF was Sneddon, Harris, Dimitrov
+  & Ozesmi's "Contested Waters" introductory essay to the same special
+  issue (Society & Natural Resources 15:8), which itself cites "Crow
+  and Sultana, this issue" as a distinct article. Not screened.
+- **R3DA90E060AD7** (target: Bazaanah 2021, "Community Water Governance
+  for Sustainable Local Development in Northern Ghana"). **wrong_file_
+  retrieved.** Delivered PDF was Bardhan 2002, "Decentralization of
+  Governance and Development" (JEP 16(4)) -- wrong journal, year,
+  author, and country focus. Not screened.
+
+- **R3C1D63DD65AB** (Kvartiuk 2016, "Community-Based Organizations and
+  Rural Public Goods: Evidence from Ukraine," Voluntas). **INCLUDE.**
+  SUR and ordered-Probit-with-instruments regressions find non-electoral
+  participation (town hall meeting attendance: +29 pp) and established
+  CBOs (+~25 pp) significantly increase the probability of good local
+  water-supply-system quality. → **S1042**, added to `effect_sizes.csv`
+  (Family A).
+- **R3F7FD1164835** (Hoogesteger 2012, "Democratizing Water Governance
+  from the Grassroots," Human Organization). **INCLUDE.** Case study of
+  Ecuador's Interjuntas-Chimborazo water-users federation, whose Legal
+  Advisory Office and an 18-day occupation of the provincial Water
+  Agency (2005) secured dismissal of a corrupt director and a
+  transparent, non-discriminatory successor process for indigenous
+  water users. → **S1043**.
+- **R650BE63591AA** (González-Gómez, García-Rubio & González-Martínez
+  2014, "Beyond the public-private controversy in urban water
+  management in Spain," Utilities Policy). **INCLUDE.** Fieldwork-based
+  critique documenting an oligopolistic private-sector market structure
+  and higher water prices in privatized Spanish municipalities, tied to
+  institutional/regulatory deficiencies (competition, transparency,
+  citizen participation). → **S1044**.
+- **R3B2D2E5CD09B** (Teodoro & Switzer 2016, human-capital/SDWA-
+  compliance logistic regression, n=8,962 U.S. utilities). **EXCLUDE
+  (E01).** Institutional-capacity/regulatory-compliance study; outcome
+  is utility compliance, not household water access.
+- **R39990BF4F869** (Neri Serneri 2007, Italian urban water/sewer
+  infrastructure history 1880-1920). **EXCLUDE (E01).** Macro
+  infrastructure-modernization history; no isolated eligibility
+  mechanism's differential access effect.
+- **R401566C6D1F6** (Price, Fielding & Leviston 2012, Toowoomba
+  recycled-water referendum focus groups). **EXCLUDE (E01).**
+  Public-attitudes/cognition study of a technology referendum.
+- **R08D3F4577102** (Hope, Foster, Money & Rouse 2012, mobile-payment/
+  smart-metering innovations, Kenya/Zambia). **EXCLUDE (E01).**
+  Forward-looking technology-innovation/policy-prospects paper.
+- **R406FC36CCAAF** (Vidal de Llobatera 2003, "Resource Wars: Water
+  Wars in Spain," ~1-page advocacy column). **EXCLUDE (E05).** No
+  methodology, no empirical evidence.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1042-S1044,
+1,039 → 1,042 rows each); `effect_sizes.csv` updated (48 → 49 rows --
+S1042 added, Family A, town-hall-meeting-participation and CBO
+marginal effects on water-supply-system quality); `exclusion_log.csv`
+updated (999 → 1,004 rows; E01 434 → 438, E05 128 → 129); duplicate
+audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,613 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,046/3,659 screened (1,042 include/1,004 exclude;
+17 records now flagged wrong_file_retrieved, not counted as decided),
+1,613 open, 1,042 extracted studies, 49 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-ninth full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Thirty-second batch from `new_batch_pool.json[310:320]`.
 

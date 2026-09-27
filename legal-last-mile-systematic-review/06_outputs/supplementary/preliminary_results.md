@@ -5739,6 +5739,47 @@ evidence of anything.
   1,621 open, 1,039 extracted studies, 48 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-tenth batch (10 records, 2026-09-27), thirty-third
+  batch from the 543-record pool.** `new_batch_pool.json[320:330]`.
+  Two Google Drive deliveries did not match their target records
+  despite correct filename/title metadata (caught only by reading the
+  actual delivered text against expected title/authors/journal): Crow
+  & Sultana 2002 (target) vs. Sneddon et al.'s introductory essay to
+  the same special issue actually delivered — **wrong_file_retrieved**,
+  not screened; Bazaanah 2021 (target) vs. Bardhan 2002 actually
+  delivered — **wrong_file_retrieved**, not screened.
+  Kvartiuk (2016, SUR/ordered-Probit-IV regressions finding non-
+  electoral participation and CBO establishment significantly increase
+  the probability of good local water-supply-system quality in rural
+  Ukraine, S1042) — **INCLUDE**, added to `effect_sizes.csv` (Family A).
+  Hoogesteger (2012, case study of Ecuador's Interjuntas-Chimborazo
+  water-users federation eliminating a provincial Water Agency's
+  corruption/ethnic discrimination via grassroots advocacy, S1043) —
+  **INCLUDE**. González-Gómez, García-Rubio & González-Martínez (2014,
+  fieldwork-based critique of Spain's privatized water-utility market
+  structure and higher prices tied to institutional/regulatory
+  deficiencies, S1044) — **INCLUDE**. Teodoro & Switzer (2016, E01
+  human-capital/SDWA-compliance logistic regression, n=8,962 US
+  utilities) — **EXCLUDE (E01)**. Neri Serneri (2007, E01 Italian urban
+  water/sewer infrastructure history 1880-1920) — **EXCLUDE (E01)**.
+  Price, Fielding & Leviston (2012, E01 Toowoomba recycled-water
+  referendum attitudes study) — **EXCLUDE (E01)**. Hope, Foster, Money
+  & Rouse (2012, E01 mobile-payment/smart-metering innovations, Kenya/
+  Zambia) — **EXCLUDE (E01)**. Vidal de Llobatera (2003, E05 ~1-page
+  advocacy column, no empirical evidence) — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1042-S1044,
+  1,039 → 1,042 rows each); `effect_sizes.csv` updated (48 → 49 rows:
+  S1042 added, town-hall-meeting-participation and CBO marginal effects
+  on water-supply-system quality, Family A); `exclusion_log.csv`
+  updated (999 → 1,004 rows; E01 434 → 438, E05 128 → 129); duplicate
+  audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,613 open records);
+  schema validation re-run clean.
+  Running totals: 2,046/3,659 screened (1,042 include/1,004 exclude;
+  17 records now flagged wrong_file_retrieved, not counted as decided),
+  1,613 open, 1,042 extracted studies, 49 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
