@@ -3555,6 +3555,41 @@ evidence of anything.
   Running totals: 1,445/3,659 screened (739 include/706 exclude), 2,214
   open, 739 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fiftieth full-text screening batch, 10 records,
+  5 includes, 5 excludes.** Nemarundwe & Kozanayi (2003, formal/informal
+  institutional rules directly determining conditional access to
+  community and private water sources, with documented denial-of-access
+  mechanisms, southern Zimbabwe, S742) — **INCLUDE**. Nash (2007, federal
+  groundwater-extraction permits granted to Coca-Cola, unmetered and
+  uncompensated, tied to water scarcity for indigenous residents, Chiapas,
+  Mexico, S743) — **INCLUDE**. Farooqui (2020, ethnographic case study of
+  formal/informal status distinctions shaping water access, low-income
+  settlement, Karachi, S744) — **INCLUDE** (extends Truelove/S733 and
+  Kooy & Bakker/S734). Gorostiza, March & Sauri (2013, anarchist-union
+  worker collectivization of a private water utility introducing a single
+  citywide tariff and subsidized "social" price, Barcelona, Spanish Civil
+  War, S745) — **INCLUDE**. Thomas-Slayter (1992, county-council
+  sand-extraction permits documented to destroy a community's dry-season
+  water source, with a traced causal chain to declining well levels and a
+  5-hour round-trip water-fetching burden, rural Kenya, S746) —
+  **INCLUDE**. Earle (2007, Lesotho Highlands Water Project bribery-
+  prosecution legal doctrine, bulk transboundary megaproject) — **EXCLUDE
+  (E01)**. Schwartz & McConnell (2009, comparative regulatory-failure/
+  reform theory, Walkerton and an unrelated Israeli disaster) — **EXCLUDE
+  (E01)**. Madon & Sahay (2002, NGO information/communication mediation
+  model, Bangalore slums) — **EXCLUDE (E01)**. Zwarteveen (1997, gender
+  and water rights in irrigation/productive water use) — **EXCLUDE
+  (E01)**. Quaghebeur, Masschelein & Nguyen (2004, Foucauldian
+  governmentality critique of participatory-methodology theory, Vietnam
+  water-management project) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S742-S746, 739 →
+  744 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (706 → 711 rows; E01 267 → 272); duplicate audit found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (2,204 open
+  records); schema validation re-run clean.
+  Running totals: 1,455/3,659 screened (744 include/711 exclude), 2,204
+  open, 744 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3573,17 +3608,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,445 of the 3,659
-  Phase-5 includes have been assessed; 2,214 records have not yet been
+- Full-text screening itself is far from complete: 1,455 of the 3,659
+  Phase-5 includes have been assessed; 2,204 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,214
+  on the researcher supplying full-text PDFs. Eleven of those 2,204
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 739
+- Extraction (Phase 8) is caught up with screening completely — all 744
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  739 extracted studies** (a first 12-study partial pilot batch was
+  744 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

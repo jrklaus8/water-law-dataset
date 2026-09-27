@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-ninth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-fiftieth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RD78BE4E7A173** (Nemarundwe & Kozanayi 2003, *Journal of Southern
+  African Studies*, "Institutional Arrangements for Water Resource
+  Use... Southern Zimbabwe"). **INCLUDE.** Formal and informal
+  (largely unwritten) institutional rules directly determine conditional
+  access to community and privately-owned water sources, including
+  documented denial-of-access mechanisms. Extracted as **S742**.
+- **RD6ACC482E5FD** (Nash 2007, *Cultural Anthropology*, "Consuming
+  Interests: Water, Rum, and Coca-Cola... Highland Chiapas"). **INCLUDE.**
+  Federal groundwater-extraction permits granted to Coca-Cola (unmetered,
+  uncompensated) directly tied to water scarcity for indigenous residents
+  of San Cristobal de las Casas. Extracted as **S743**.
+- **RD69D09F09A2C** (Farooqui 2020, *Urban Studies*, "Politics of
+  neutrality... Karachi's waterscape"). **INCLUDE.** Ethnographic case
+  study (49 interviews, 7 months fieldwork) of formal/informal status
+  distinctions shaping water access in a low-income Karachi settlement.
+  Extends Truelove/S733 and Kooy & Bakker/S734 precedent. Extracted as
+  **S744**.
+- **RD60E8645D88B** (Gorostiza, March & Sauri 2013, *Antipode*,
+  "Servicing Customers in Revolutionary Times... Collectivized Barcelona
+  Water Company"). **INCLUDE.** Archival case study: anarchist-union
+  worker collectivization of a private water utility (1936-1939)
+  introduced a single citywide tariff and subsidized "social" price,
+  improving water-access equity. Extracted as **S745**.
+- **RD57B43C5CE2C** (Thomas-Slayter 1992, *Economic Development and
+  Cultural Change*, "Politics, Class, and Gender in African Resource
+  Management... Rural Kenya"). **INCLUDE.** County-council sand-extraction
+  permits (Ksh 6,000/month, unlimited loads) directly documented to
+  destroy a community's dry-season water source, with a traced causal
+  chain to declining well levels and a 5-hour round-trip water-fetching
+  burden. Extracted as **S746**.
+- **RD888853DBB5B** (Earle 2007, *Water Policy*, "The role of governance
+  in countering corruption... African case study") — **EXCLUDE (E01).**
+  Legal-doctrinal case study of Lesotho Highlands Water Project bribery
+  prosecutions; a bulk transboundary megaproject, not a last-mile
+  household/community access mechanism.
+- **RD6CFBE19B1AC** (Schwartz & McConnell 2009, "Do crises help remedy
+  regulatory failure?... Walkerton... and Jerusalem banquet hall
+  disasters") — **EXCLUDE (E01).** General regulatory-failure/reform
+  theory comparison, not a legal mechanism producing differential
+  household water access.
+- **RD6C57C9AE28E** (Madon & Sahay 2002, *The Information Society*, "An
+  Information-Based Model of NGO Mediation... Slum Dwellers in
+  Bangalore") — **EXCLUDE (E01).** NGO information/communication
+  mediation model; water is one of several generic basic-amenity
+  mentions, not the analytical object.
+- **RD6B9F237B30D** (Zwarteveen 1997, *World Development*, "Water: From
+  Basic Need to Commodity... Gender and Water Rights in the Context of
+  Irrigation") — **EXCLUDE (E01).** Irrigation/productive water-rights
+  discussion, out of scope (domestic/household access only).
+- **RD673D5E33933** (Quaghebeur, Masschelein & Nguyen 2004, "Paradox of
+  Participation... Vietnamese-Belgian water management project") —
+  **EXCLUDE (E01).** Foucauldian governmentality critique of
+  participatory-methodology theory, not a legal-institutional
+  water-access mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S742-S746, 739 →
+744 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (706 → 711 rows; E01 267 → 272). Duplicate audit found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (2,204 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,455/3,659 screened (744 include/711 exclude), 2,204
+open, 744 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-ninth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
