@@ -6358,6 +6358,44 @@ evidence of anything.
   1,464 open, 1,118 extracted studies, 52 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-twenty-sixth batch (10 records, 2026-09-27),
+  forty-ninth batch from the 543-record pool.** `new_batch_pool.json[480:490]`.
+  Hanak (2008, panel regression: water-adequacy screening policy
+  reduces new residential permitting 16%-41%, impact fees have no
+  effect, California, S1121) — **INCLUDE**, added to `effect_sizes.csv`
+  (Family A). Dos Santos & LeGrand (2013, Cox regression: non-zoned
+  settlement hazard ratio 0.14*** for piped-water access, Ouagadougou,
+  S1122) — **INCLUDE**, added to `effect_sizes.csv` (Family A).
+  Mukhija & Mason (2013, municipal annexation-refusal excluding poor
+  colonias from water/sewer, federal funding as enabling reversal,
+  California, S1123) — **INCLUDE**. Smiley (2016, connection-fee/
+  service-fragmentation mechanisms producing differential consumption
+  by income, Dar es Salaam, S1124) — **INCLUDE**. Fiki et al. (2007,
+  centralized state water program's politicization vs. community-
+  centered nodal governance, Nigeria, S1125) — **INCLUDE**. Ojha et al.
+  (2020, 4 of 5 Himalayan cities lack water-governance institutions,
+  Nepal/India, S1126) — **INCLUDE**. Arku & Arku (2010, E01 water-
+  resource/irrigation time-use ethnography, gender and drought, Ghana)
+  — **EXCLUDE (E01)**. Sullivan & Meigh (2003, E12 methodological
+  Water Poverty Index implementation paper) — **EXCLUDE (E12)**. Ojha
+  et al. (2018, E06 engineering/economic tariff-optimization
+  simulation, Melamchi, Nepal) — **EXCLUDE (E06)**. Target record
+  Nallathiga 2009 (Mumbai private-sector water supply) —
+  **wrong_file_retrieved**: delivered PDF was instead Bakker 2008
+  ("The Ambiguity of Community," Cochabamba), confirmed by title
+  metadata and full-text content; not screened, file not moved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1121-S1126,
+  1,118 → 1,124 rows each); `effect_sizes.csv` updated (52 → 54 rows
+  -- S1121, S1122 added as Family A); `exclusion_log.csv` updated
+  (1,077 → 1,080 rows; E01 475 → 476, E06 102 → 103, E12 42 → 43);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,455 open records,
+  incl. 18 wrong_file_retrieved records); schema validation re-run
+  clean.
+  Running totals: 2,204/3,659 screened (1,124 include/1,080 exclude),
+  1,455 open, 1,124 extracted studies, 54 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

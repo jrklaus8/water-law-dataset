@@ -4,7 +4,67 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twenty-fifth full-text screening batch (10 records, 8 includes, 2 excludes)
+## 2026-09-27 (latest) — Two-hundred-twenty-sixth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+
+Forty-ninth batch from `new_batch_pool.json[480:490]`.
+
+- **R014D81805085** (Hanak 2008, "Is Water Policy Limiting Residential
+  Growth? Evidence from California," Land Economics). **INCLUDE.**
+  Panel regression: water-adequacy screening policy reduces new
+  residential permitting 16%-41%; impact fees have no such effect. →
+  **S1121**. **Added to effect_sizes.csv** (Family A).
+- **R0327EF4BAA21** (Dos Santos & LeGrand 2013, "Is the Tap Locked?",
+  Urban Studies, Ouagadougou). **INCLUDE.** Cox regression: non-zoned
+  settlement hazard ratio 0.14*** for piped-water access; renting in
+  non-zoned periphery HR ≈ 0.00***. → **S1122**. **Added to
+  effect_sizes.csv** (Family A).
+- **R0282D73BD533** (Mukhija & Mason 2013, "Reluctant Cities,
+  Colonias and Municipal Underbounding," Urban Studies, California).
+  **INCLUDE.** Municipal annexation-refusal mechanism excluding poor
+  colonias from water/sewer infrastructure; federal funding as
+  enabling reversal. → **S1123**.
+- **R0400EAA17741** (Smiley 2016, "Water Availability and
+  Reliability in Dar es Salaam, Tanzania," J. Dev. Studies).
+  **INCLUDE.** Connection-fee/service-fragmentation mechanisms
+  produce large differential consumption by income area. → **S1124**.
+- **R01EF154CA5CB** (Fiki et al. 2007, Jos-McMaster Drought and
+  Rural Water Use Project, J. Community Practice, Nigeria).
+  **INCLUDE.** Centralized state water-provision program's
+  politicization/corruption vs. community-centered nodal-governance
+  alternative. → **S1125**.
+- **RFD5A081230C5** (Ojha et al. 2020, "Scarcity amidst plenty,"
+  Water/MDPI, Himalayan cities). **INCLUDE.** 4 of 5 cities lack
+  well-performing water-governance institutions; fragmented
+  government/community/private supply mix. → **S1126**.
+- **R0320961C9ED4** (Arku & Arku 2010, gender/drought Ghana, Gender &
+  Development). **EXCLUDE (E01).** Water-resource/irrigation
+  time-use ethnography, not a water-service access mechanism.
+- **R03A03D4DBFB6** (Sullivan & Meigh 2003, Water Poverty Index,
+  Water Policy). **EXCLUDE (E12).** Methodological/index-
+  implementation paper, not an institutional-mechanism case study.
+- **RA6188251C726** (Ojha et al. 2018, Melamchi water price
+  optimization, Water/MDPI, Nepal). **EXCLUDE (E06).**
+  Engineering/economic tariff-optimization simulation.
+- **R0D5C4BC1354D** — **wrong_file_retrieved.** Target record is
+  Nallathiga 2009 ("Private Sector Participation in the Provision of
+  Urban Water Supply... Mumbai"); delivered PDF is instead Karen
+  Bakker 2008 ("The Ambiguity of Community," Water Alternatives,
+  Cochabamba case study) — confirmed by title metadata and full-text
+  content. NOT screened; file NOT moved to Processed.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1121-S1126,
+1,118 → 1,124 rows each); `effect_sizes.csv` updated (52 → 54 rows --
+S1121 and S1122 added as Family A); `exclusion_log.csv` updated
+(1,077 → 1,080 rows; E01 475 → 476, E06 102 → 103, E12 42 → 43);
+duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,455 open records,
+including 18 wrong_file_retrieved records); schema validation re-run
+clean (13/13 files OK).
+
+Running totals: 2,204/3,659 screened (1,124 include/1,080 exclude),
+1,455 open, 1,124 extracted studies, 54 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twenty-fifth full-text screening batch (10 records, 8 includes, 2 excludes)
 
 Forty-eighth batch from `new_batch_pool.json[470:480]`.
 
