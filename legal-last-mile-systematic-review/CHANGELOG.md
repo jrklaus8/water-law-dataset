@@ -4,7 +4,65 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirty-second full-text screening batch (3 records, 2 includes, 1 exclude)
+## 2026-09-27 (latest) — Human full-text reviewer_2 pass begun: first 100 studies (S001–S100), full agreement
+
+The researcher (Claudio Klaus, PI) began an independent human second-reviewer
+pass over the full-text screening decisions -- the open item flagged
+repeatedly throughout this project ("a human `reviewer_2` for this stage has
+not yet been assigned") -- and reviewed the first 100 chronologically
+included studies, i.e. the 100 records corresponding to `study_id` S001-S100
+in `extraction_database.csv`, in the order they cleared full-text screening.
+The researcher's instruction, verbatim: *"I've just reviewed the first 100
+articles that were included and I want to register my decision which is that
+I agree with the classification."*
+
+**Method used to identify the 100 records.** `extraction_database.csv` does
+not carry a `record_id` column (only `study_id`, `citation`, `doi`), so each
+of S001-S100 had to be matched back to its `record_id` in
+`full_text_screening_database.csv`: 83 matched on an exact normalized-DOI
+key, 13 more on a normalized-title fallback after DOI normalization (URL
+prefix/case) resolved them, and 4 residual cases (S002, S004, S012, S067)
+were located by hand via title-keyword search after both automated passes
+left them ambiguous.
+
+**One data anomaly caught and corrected during this matching, not silently
+absorbed.** S063's extraction DOI
+(`10.12804/revistas.urosario.edu.co/territorios/a.9931`) matched
+`record_id` R7EECD84CD3AA textually -- but that record is itself the
+already-documented post-hoc duplicate (E08, `exclusion_reason_detail`
+references "already extracted as study S063") of the TRUE include,
+`record_id` RF043AAD78E8E, whose own DOI in the search export carries an
+extra, messy suffix (`...a.9931vol462021`) inherited from the original
+Scopus/WoS export. A same-paper "matched but final_decision=exclude" sanity
+check caught this before any write; the mapping was corrected to
+RF043AAD78E8E before recording reviewer_2. This is exactly the kind of
+duplicate-DOI-variant issue the S227/S399 post-hoc-duplicate gaps
+(documented elsewhere in this file) already illustrate -- search-export DOI
+fields are not always byte-identical for the same paper, and any future
+DOI-matching script over this data should normalize and de-duplicate before
+trusting a "unique match."
+
+**What was written.** `02_screening/full_text/full_text_screening_database.csv`
+updated (atomic write): `reviewer_2` set to `Human-reviewer2-fulltext-
+2026-09-27` and `conflict` set to `FALSE` for exactly these 100 `record_id`s
+-- agreement with `reviewer_1`'s (AI) original `include` call in every one of
+the 100 cases, zero conflicts. No other field was touched; `final_decision`
+was already `include` for all 100 and is unchanged. Schema validation
+re-run clean (13/13).
+
+**What this does and does not establish.** This is real, independent human
+confirmation of the AI's full-text include decisions for the review's first
+100 included studies -- not a rubber stamp: the researcher reviewed the
+articles and the classification independently before registering agreement.
+It does **not** extend to the remaining 1,042 currently-included studies
+(S101 onward), which still carry a blank `reviewer_2` for the full-text
+stage, nor to any of the 1,111 full-text excludes, nor to the 21
+wrong_file_retrieved or the (at this date) undecided/open records. A future
+researcher should not read "human reviewer_2 pass begun" as "human
+reviewer_2 pass complete" -- see the README's current-status section for the
+exact, currently-true boundary of this confirmation.
+
+## 2026-09-27 — Two-hundred-thirty-second full-text screening batch (3 records, 2 includes, 1 exclude)
 
 Fifty-fifth and final batch from `new_batch_pool.json[540:543]` -- the last
 3 records of the current 543-record pool. `new_batch_pool.json` is now
