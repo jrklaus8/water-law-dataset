@@ -4,7 +4,74 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-forty-fifth full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Hundred-forty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RED9BCBF3BA22** (Whitfield 2006, *Review of African Political
+  Economy*, "The Politics of Urban Water Reform in Ghana"). **INCLUDE.**
+  Rawlings government's Private Sector Participation policy and
+  World Bank-mandated lease contract tied to an affordability disparity
+  for poor unserved households. Extracted as **S719**.
+- **RED145F94416F** (Jimenez 2004, *Journal of Urban History*, "Popular
+  Organizing for Public Services... Morelia, Mexico, 1880-1920").
+  **INCLUDE.** Municipal permit system for private sewer connections,
+  documented via primary-source petitions across income groups.
+  Extracted as **S720**.
+- **RED0408163645** (Acey 2019, *IJURR*, "Silence and Voice in Nigeria's
+  Hybrid Urban Water Markets"). **INCLUDE.** Multi-year fieldwork on
+  differential regulation of state vs. non-state water-market actors
+  shaping household access strategies and governance voice, Lagos and
+  Benin City. Extracted as **S721**.
+- **REBD3E8E26D01** (Solo 1999, *Environment and Urbanization*,
+  "Small-Scale Entrepreneurs in the Urban Water and Sanitation Market").
+  **INCLUDE.** Multi-country comparative study of state utility
+  monopoly-rights laws (including Peru's water-management law)
+  rendering independent providers legally precarious while reaching the
+  poor more effectively than subsidized monopolies. Extracted as **S722**.
+- **REB91A9D9447A** (McDonald & Grineski 2012, *Population and
+  Environment*, "Disparities in access to residential plumbing... El
+  Paso and Ciudad Juarez"). **INCLUDE.** Binational spatial regression on
+  colonias/colonias populares outside formal municipal
+  annexation/infrastructure planning, linked to institutional racism and
+  budgeting-process exclusion. Extracted as **S723**; not effect_sizes
+  eligible (ecological/neighborhood-level correlational model, tenure
+  is one of several general covariates, not an isolated legal-mechanism
+  estimate).
+- **REE9E2CC218BA** (Mamo & Novotny 2024, *Health Promotion
+  International*, "Promotion of market-based sanitation in Ethiopia").
+  **EXCLUDE (E01).** MBS programme implementation-challenges study; no
+  legal/administrative household-access-barrier mechanism.
+- **REE56282C3DF9** (Geels 2005, *Technology in Society*, "Co-Evolution
+  of Technology and Society... Netherlands 1850-1930"). **EXCLUDE (E01).**
+  Socio-technical transitions theory paper; water supply is an
+  illustrative case for innovation-typology theory, not a legal-mechanism
+  analysis.
+- **REDC07790866A** (Lopus et al. 2017, *Applied Geography*, "Drivers of
+  farmer satisfaction with small-scale irrigation systems"). **EXCLUDE
+  (E01).** Farmer-satisfaction survey of CWP irrigation water quantity,
+  Mount Kenya; wrong population/exposure.
+- **RED78A982436F** (Rogers et al. 2015, *Environment and Behavior*,
+  "Water Management and Healthy Ageing in Rural Australia"). **EXCLUDE
+  (E01).** Focus-group study of elderly perceptions of water policy; no
+  specific legal-mechanism analysis.
+- **REC1AF8910410** (Bouwer 2006, *Peace Review*, "Women and Water").
+  **EXCLUDE (E05).** Short synthesis/opinion essay citing third-party
+  statistics; no original empirical research.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S719-S723, 716 →
+721 rows each). `effect_sizes.csv` unchanged (34 rows). `exclusion_log.csv`
+updated (689 → 694 rows; E01 252 → 256, E05 83 → 84). Duplicate audit
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,244 open records). `validate_schemas.py` confirms all 13 tracked files
+OK.
+
+Running totals: 1,415/3,659 screened (721 include/694 exclude), 2,244
+open, 721 extracted studies, 34 effect_sizes rows.
+
+## 2026-09-27 — Hundred-forty-fifth full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

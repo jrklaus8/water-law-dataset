@@ -3431,6 +3431,35 @@ evidence of anything.
   Running totals: 1,405/3,659 screened (716 include/689 exclude), 2,254
   open, 716 extracted studies, 34 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-forty-sixth full-text screening batch, 10
+  records, 5 includes, 5 excludes.** Whitfield (2006, Ghana's PSP water
+  policy and World Bank-mandated lease contract tied to poor-household
+  affordability, S719) — **INCLUDE**. Jimenez (2004, municipal sewer-
+  connection permit system, Morelia, Mexico 1880-1920, S720) —
+  **INCLUDE**. Acey (2019, differential regulation of state vs. non-state
+  water markets, Lagos and Benin City, S721) — **INCLUDE**. Solo (1999,
+  state utility monopoly-rights laws constraining independent providers
+  who reach the poor better than subsidized monopolies, multi-country,
+  S722) — **INCLUDE**. McDonald & Grineski (2012, colonias/colonias
+  populares excluded from municipal annexation, institutional racism,
+  El Paso/Ciudad Juarez, S723) — **INCLUDE** (not effect_sizes eligible:
+  ecological spatial regression, tenure is one of several general
+  covariates, not an isolated legal-mechanism estimate). Mamo & Novotny
+  (2024, Ethiopia market-based-sanitation implementation challenges) —
+  **EXCLUDE (E01)**. Geels (2005, socio-technical transitions theory,
+  Netherlands water supply 1850-1930) — **EXCLUDE (E01)**. Lopus et al.
+  (2017, farmer-satisfaction survey of CWP irrigation, Mount Kenya) —
+  **EXCLUDE (E01)**. Rogers et al. (2015, elderly perceptions of water
+  policy, rural Australia) — **EXCLUDE (E01)**. Bouwer (2006, "Women and
+  Water" synthesis essay) — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S719-S723, 716 →
+  721 rows each); `effect_sizes.csv` unchanged (34 rows); `exclusion_log.csv`
+  updated (689 → 694 rows; E01 252 → 256, E05 83 → 84); duplicate audit
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,244 open records); schema validation re-run clean.
+  Running totals: 1,415/3,659 screened (721 include/694 exclude), 2,244
+  open, 721 extracted studies, 34 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3449,17 +3478,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,405 of the 3,659
-  Phase-5 includes have been assessed; 2,254 records have not yet been
+- Full-text screening itself is far from complete: 1,415 of the 3,659
+  Phase-5 includes have been assessed; 2,244 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,254
+  on the researcher supplying full-text PDFs. Eleven of those 2,244
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 716
+- Extraction (Phase 8) is caught up with screening completely — all 721
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  716 extracted studies** (a first 12-study partial pilot batch was
+  721 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
