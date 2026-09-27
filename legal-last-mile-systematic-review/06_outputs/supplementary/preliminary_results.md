@@ -3625,6 +3625,41 @@ evidence of anything.
   Running totals: 1,465/3,659 screened (751 include/714 exclude), 2,194
   open, 751 extracted studies, 35 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-second full-text screening batch, 10
+  records, 5 includes, 5 excludes.** Bjorkman (2014, 18-month ethnographic
+  account of water-infrastructure criminalization mediating a
+  settlement's legal reclassification from municipal colony to illegal
+  slum, Mumbai, S754) — **INCLUDE** (extends Truelove/S733, Kooy &
+  Bakker/S734). White et al. (2008, government Water Reserve land
+  declarations with eviction powers and a 14-year-unenacted water-
+  ownership statute explaining rural/urban access inequity, Kiribati,
+  S755) — **INCLUDE**. Diedericks & Nealer (2015, statutory district
+  water-sector-planning requirement documented as unimplemented, South
+  Africa, S756) — **INCLUDE**. Awortwi (2006, users' satisfaction survey
+  comparing sanitation service quality across public/private/community
+  institutional arrangements, 3 Ghanaian cities, S757) — **INCLUDE**.
+  Brocas, Chan & Perrigne (2006, structural model of CPUC rate-of-return
+  regulation with quantified counterfactual consumer-surplus effects, 32
+  California districts, S758) — **INCLUDE** (not effect_sizes eligible:
+  simulated counterfactuals, not a directly-observed regression
+  coefficient). Boland (2007, ideology/discourse analysis of affluent
+  secession via premium water networks, China) — **EXCLUDE (E01)**.
+  Nayak & Samal (2025, composite Water Security Index from secondary
+  data, Bhubaneswar) — **EXCLUDE (E01)**. Douvitsa & Kassavetis (2014,
+  normative water-cooperative policy-proposal essay, Greece) — **EXCLUDE
+  (E05)**. Barrington et al. (2016, social-marketing-exchange behaviour-
+  change framework for WASH, Melanesia) — **EXCLUDE (E01)**. Zeitoun,
+  Eid-Sabbagh & Loveless (2014, International Humanitarian Law analysis
+  of wartime water-infrastructure damage, Israel-Lebanon) — **EXCLUDE
+  (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S754-S758, 751 →
+  756 rows each); `effect_sizes.csv` unchanged (35 rows); `exclusion_log.csv`
+  updated (714 → 719 rows; E01 275 → 279, E05 85 → 86); duplicate audit
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,184 open records); schema validation re-run clean.
+  Running totals: 1,475/3,659 screened (756 include/719 exclude), 2,184
+  open, 756 extracted studies, 35 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3643,17 +3678,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,465 of the 3,659
-  Phase-5 includes have been assessed; 2,194 records have not yet been
+- Full-text screening itself is far from complete: 1,475 of the 3,659
+  Phase-5 includes have been assessed; 2,184 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,194
+  on the researcher supplying full-text PDFs. Eleven of those 2,184
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 751
+- Extraction (Phase 8) is caught up with screening completely — all 756
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  751 extracted studies** (a first 12-study partial pilot batch was
+  756 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but

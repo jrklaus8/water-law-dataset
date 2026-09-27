@@ -4,7 +4,77 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-first full-text screening batch (10 records, 7 includes, 3 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-second full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RCEA1E794B05B** (Bjorkman 2014, *IJURR*, "Becoming a Slum: From
+  Municipal Colony to Illegal Settlement in Liberalization-Era Mumbai").
+  **INCLUDE.** 18-month ethnographic account of how the criminalization of
+  water infrastructure mediated a settlement's legal reclassification
+  from municipal colony to illegal slum. Extends Truelove/S733 and Kooy &
+  Bakker/S734. Extracted as **S754**.
+- **RCD415D6E7610** (White et al. 2008, *Development*, "Safe Water for
+  People in Low, Small Island Pacific Nations: The rural-urban dilemma").
+  **INCLUDE.** Government "Water Reserve" land declarations (with
+  eviction powers) over private land and a 14-year-unenacted water-
+  ownership statute directly explain persistent rural/urban water-access
+  inequity in Kiribati. Extracted as **S755**.
+- **RCC81F64B0502** (Diedericks & Nealer 2015, *TD*, "A proposed water
+  sector plan for the Dr Kenneth Kaunda District Municipality").
+  **INCLUDE.** Statutory district water-sector-planning requirement
+  (Water Services Act 1997/National Water Act 1998) documented as
+  unimplemented, producing uncoordinated water-services delivery.
+  Extracted as **S756**.
+- **RCB895D9C44DB** (Awortwi 2006, *IJTMSD*, "Technology and
+  institutional arrangements in the delivery of public sanitation and
+  solid waste services in Ghanaian cities"). **INCLUDE.** Users'
+  satisfaction survey comparing sanitation service quality across
+  public/private/community institutional arrangements in low-income
+  areas of 3 Ghanaian cities. Extracted as **S757**.
+- **RCA8EBC5427E6** (Brocas, Chan & Perrigne 2006, *American Economic
+  Review*, "Regulation under Asymmetric Information in Water Utilities").
+  **INCLUDE.** Structural model of CPUC rate-of-return regulation, 32
+  California districts, with quantified counterfactual consumer-surplus
+  effects; not effect_sizes eligible (simulated counterfactuals, not a
+  directly-observed regression coefficient). Extracted as **S758**.
+- **RCFB3EAA5343C** (Boland 2007, *IJURR*, "The Trickle-down Effect...
+  Premium Water Networks in China's Cities") — **EXCLUDE (E01).**
+  Ideology/discourse analysis of affluent secession from municipal water
+  networks; the paper's own finding is the absence of distributional
+  analysis.
+- **RCFA80916BCB0** (Nayak & Samal 2025, *Lex Localis*, "An Evaluation
+  of Water Security in Coastal Urban Areas... Bhubaneswar") — **EXCLUDE
+  (E01).** Composite Water Security Index from secondary agency data, not
+  a specific legal-mechanism case study.
+- **RCF3A1AF89150** (Douvitsa & Kassavetis 2014, *Social Enterprise
+  Journal*, "Cooperatives: an alternative to water privatization in
+  Greece") — **EXCLUDE (E05).** Normative policy-proposal essay, no
+  original empirical data collection.
+- **RCE03521BFFE3** (Barrington et al. 2016, *Social Science & Medicine*,
+  "Improving community health through marketing exchanges... three
+  Melanesian countries") — **EXCLUDE (E01).** Social/behavioural
+  marketing-exchange framework for WASH, not a legal-institutional
+  mechanism.
+- **RCB664E1D2F9E** (Zeitoun, Eid-Sabbagh & Loveless 2014, *Disasters*,
+  "The analytical framework of water and armed conflict... 2006 Summer
+  War") — **EXCLUDE (E01).** International Humanitarian Law analysis of
+  wartime infrastructure damage, not a last-mile access-barrier
+  mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S754-S758, 751 →
+756 rows each). `effect_sizes.csv` unchanged (35 rows). `exclusion_log.csv`
+updated (714 → 719 rows; E01 275 → 279, E05 85 → 86). Duplicate audit
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,184 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,475/3,659 screened (756 include/719 exclude), 2,184
+open, 756 extracted studies, 35 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-first full-text screening batch (10 records, 7 includes, 3 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
