@@ -4,7 +4,79 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-seventh full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Tenth batch from `new_batch_pool.json[90:100]`.
+
+- **R6B6565EFE1C9** (Cobbing, Eales, Gibson, Lenkoe & Cobbing 2015,
+  *South African Journal of Geology*, "Operation and maintenance (O&M)
+  and the perceived unreliability of domestic groundwater supplies in
+  South Africa"). **INCLUDE.** Multi-province interview study with
+  Mahikeng case-study triangulation showing institutional O&M capacity,
+  not physical resource availability, drives domestic groundwater
+  reliability. Extracted as **S943**.
+- **R75F551BE4748** (Johnson, Parnell, Joyner, Christman & Marsh 2004,
+  *Review of Black Political Economy*, "Racial Apartheid in a Small
+  North Carolina Town"). **INCLUDE.** GIS-based case study documenting
+  how ETJ manipulation, selective annexation, and zoning-overlay
+  application produced race-differentiated sewer-service denial in
+  Mebane, NC. Extracted as **S944**.
+- **R6A459D59A92A** (Bassi & Kabir 2016, *Rural Water Systems for
+  Multiple Uses and Livelihood Security*, "Sustainability Versus Local
+  Management: Comparative Performance of Rural Water Supply Schemes").
+  **INCLUDE.** 850-household, 12-scheme comparative institutional
+  performance study of individual vs. regional rural water-supply
+  management models, Maharashtra India. Extracted as **S945**.
+- **R69C019A0A542** (Boex, Malik, Brookins, Edwards & Zaidi 2020, *New
+  Urban Agenda in Asia-Pacific*, "The Political Economy of Urban
+  Governance in Asian Cities: Delivering Water, Sanitation and Solid
+  Waste Management Services"). **INCLUDE.** 18-city comparative
+  institutional assessment across 6 countries linking intergovernmental
+  authority structures to water/sanitation service outcomes. Extracted
+  as **S946**.
+- **R7189977C3E95** (Tadadjeu, Njangang, Ningaye & Nourou 2020,
+  *Resources Policy*, "Linking natural resource dependence and access
+  to water and sanitation in African countries"). **INCLUDE.** 44-country
+  dynamic-panel GMM regression showing regulation quality significantly
+  increases water/sanitation access and reduces the urban-rural gap.
+  Extracted as **S947**; added to `effect_sizes.csv` (Family C,
+  institutional/regulatory-quality effect on access).
+- **R6F22E1AE923A** (Kujinga, Vanderpost, Mmopelwa & Wolski 2013,
+  *Physics and Chemistry of the Earth*, "An analysis of factors
+  contributing to household water security problems and threats in
+  different settlement categories of Ngamiland, Botswana"). **INCLUDE.**
+  Mixed-methods study linking gazetted vs. ungazetted settlement legal
+  status to differentiated household water-security outcomes. Extracted
+  as **S948**.
+- **R696ECAB36A20** (Jaffee 2018, "Enclosing Water: Privatization,
+  Commodification, and Access") — **EXCLUDE (E12).** Literature-synthesis
+  book chapter; no fieldwork, interviews, or original data collection.
+- **R68475B3785B2** (Harutyunyan 2014, "Metering drinking water in
+  Armenia: The process and impacts") — **EXCLUDE (E04).** Water-metering
+  consumption/demand-elasticity study; outcome is consumption quantity,
+  not access, consistent with the Salman Jordan wrong-outcome precedent.
+- **R6C487F03F147** (Pailla 2011, "Integration of Capacity Factors
+  Analysis Risk Methodology and Ostrom's Social Ecological System
+  Assessment Framework... Nalgonda District, India") — **EXCLUDE
+  (E06).** Engineering/technical decision-support tool for water-supply
+  technology selection.
+- **R67B4818D18B5** (Roy, Sowgat, Islam & Anjum 2020, "Sustainability
+  Challenges for Sprawling Dhaka") — **EXCLUDE (E01).** Broad
+  urban-sprawl sustainability study; water/sanitation a minor topic.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S943-S948 added;
+940 → 946 rows each). `effect_sizes.csv` updated (43 → 44 rows; S947
+added, Family C, regulation-quality/access-inequality outcome).
+`exclusion_log.csv` updated (870 → 874 rows; E01 351 → 352, E04 64 →
+65, E06 81 → 82, E12 12 → 13). Duplicate audit (exact-DOI + study_id)
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(1,839 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,820/3,659 screened (946 include/874 exclude), 1,839
+open, 946 extracted studies, 44 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-sixth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Ninth batch from `new_batch_pool.json[80:90]`.
 

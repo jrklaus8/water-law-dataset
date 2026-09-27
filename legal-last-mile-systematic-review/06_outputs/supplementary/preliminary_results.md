@@ -4841,6 +4841,43 @@ evidence of anything.
   open, 940 extracted studies, 43 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-seventh batch (10 records, 2026-09-27), tenth batch
+  from the 543-record pool.** `new_batch_pool.json[90:100]`. Cobbing,
+  Eales, Gibson, Lenkoe & Cobbing (2015, multi-province interview study
+  linking institutional O&M capacity to domestic groundwater reliability,
+  South Africa, S943) — **INCLUDE**. Johnson, Parnell, Joyner, Christman
+  & Marsh (2004, GIS-based case study of ETJ/annexation/zoning-driven
+  race-differentiated sewer-service denial, Mebane NC, S944) —
+  **INCLUDE**. Bassi & Kabir (2016, 850-household 12-scheme comparative
+  institutional performance study, rural Maharashtra India, S945) —
+  **INCLUDE**. Boex, Malik, Brookins, Edwards & Zaidi (2020, 18-city
+  comparative institutional assessment of intergovernmental authority
+  structures, South/Southeast Asia, S946) — **INCLUDE**. Tadadjeu,
+  Njangang, Ningaye & Nourou (2020, 44-country dynamic-panel GMM
+  regression showing regulation quality raises water/sanitation access
+  and narrows the urban-rural gap, Africa, S947) — **INCLUDE**, added to
+  `effect_sizes.csv` (Family C). Kujinga, Vanderpost, Mmopelwa & Wolski
+  (2013, mixed-methods study linking gazetted/ungazetted settlement
+  legal status to household water security, Ngamiland Botswana, S948) —
+  **INCLUDE**. Jaffee (2018, literature-synthesis book chapter on water
+  privatization/commodification, no original data) — **EXCLUDE (E12)**.
+  Harutyunyan (2014, Armenia water-metering consumption/demand-
+  elasticity study) — **EXCLUDE (E04)**. Pailla (2011, engineering
+  capacity-assessment decision-support-tool paper, Nalgonda India) —
+  **EXCLUDE (E06)**. Roy, Sowgat, Islam & Anjum (2020, broad Dhaka
+  urban-sprawl sustainability study, water/sanitation minor topic) —
+  **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S943-S948, 940 →
+  946 rows each); `effect_sizes.csv` updated (43 → 44 rows; S947 added,
+  Family C, regulation-quality/access-inequality outcome);
+  `exclusion_log.csv` updated (870 → 874 rows; E01 351 → 352, E04 64 →
+  65, E06 81 → 82, E12 12 → 13); duplicate audit (exact-DOI + study_id)
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,839 open records); schema validation re-run clean.
+  Running totals: 1,820/3,659 screened (946 include/874 exclude), 1,839
+  open, 946 extracted studies, 44 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
