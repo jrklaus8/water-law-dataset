@@ -4,7 +4,57 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-fifteenth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-sixteenth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Thirty-ninth batch from `new_batch_pool.json[380:390]`.
+
+- **R5C1AE58C70FF** (Bond 2012, "South African People Power since the
+  mid-1980s," Third World Quarterly). **INCLUDE.** Free Basic Water
+  convex tariff design, prepaid metering, and mass disconnections
+  disproportionately burdening the poor. → **S1069**.
+- **R5C0FB7C8A56E** (Ducrot & Bourblanc 2017, rural water equity,
+  semi-arid Mozambique). **INCLUDE.** Contradictions between pro-poor
+  program design intent and delivered equity outcomes. → **S1070**.
+- **R61589A3544B4** (Galaz 2004, "Stealing from the Poor?," Chile
+  water markets). **INCLUDE.** Game-theoretic/empirical study finding
+  Chile's tradable water-rights market incentivizes rights violations
+  against underprivileged users. → **S1071**.
+- **R5FAEF4C373E7** (Shandra, Shandra & London 2012, IMF structural
+  adjustment/infant mortality, Sub-Saharan Africa). **INCLUDE.**
+  Fixed-effects regression confirming water/sanitation access as a
+  mediating pathway. → **S1072**.
+- **R60EF6EE70FE0** (Birkenholtz 2010, "Full-cost recovery," Jaipur,
+  India). **INCLUDE.** Full-cost-recovery tariff reform producing
+  class-differentiated water-collection practices. → **S1073**.
+- **R5AC1E717B5D7** (Taylor 2014, Sevenoaks sewage-reform political
+  history, 1871-1882). **EXCLUDE (E01).** Institutional-political
+  history without documented differential-access outcome.
+- **R5CF5ED5FBF8F** (Hoag 2006, gender and water-resource development,
+  Rufiji Delta). **EXCLUDE (E01).** Water-resource-development
+  participation study.
+- **R5B9459402927** (Moore 2014, China South-North Water Transfer
+  Project, authoritarian environmentalism). **EXCLUDE (E01).**
+  Water-resource mega-infrastructure politics.
+- **R63A9A75133CE** (Boucheron 2001, medieval Milan water-governance
+  history). **EXCLUDE (E01).** Elite water-resource-allocation
+  institutional history, not household service access.
+- **R649B644170D9** (Sternlieb & Laituri 2010, WASH indicator
+  frameworks review). **EXCLUDE (E12).** Conceptual/methodological
+  review, no original empirical data.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1069-S1073,
+1,066 → 1,071 rows each); `effect_sizes.csv` unchanged (51 rows --
+all five includes are qualitative/theoretical or mediation-model
+studies without a mechanism-isolating regression on water access);
+`exclusion_log.csv` updated (1,029 → 1,034 rows; E01 455 → 459, E12
+30 → 31); duplicate audit (exact-DOI + study_id) found no new
+duplicates; `full_text_retrieval_queue.csv` regenerated (1,554 open
+records); schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,105/3,659 screened (1,071 include/1,034 exclude),
+1,554 open, 1,071 extracted studies, 51 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-fifteenth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Thirty-eighth batch from `new_batch_pool.json[370:380]`.
 

@@ -5961,6 +5961,41 @@ evidence of anything.
   1,564 open, 1,066 extracted studies, 51 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-sixteenth batch (10 records, 2026-09-27), thirty-
+  ninth batch from the 543-record pool.** `new_batch_pool.json[380:390]`.
+  Bond (2012, Free Basic Water convex tariff design, prepaid metering,
+  and mass disconnections disproportionately burdening the poor,
+  South Africa, S1069) — **INCLUDE**. Ducrot & Bourblanc (2017,
+  contradictions between pro-poor rural water-program design intent
+  and delivered equity outcomes, Mozambique, S1070) — **INCLUDE**.
+  Galaz (2004, game-theoretic/empirical study of Chile's tradable
+  water-rights market incentivizing rights violations against
+  underprivileged users, S1071) — **INCLUDE**. Shandra, Shandra &
+  London (2012, fixed-effects regression confirming water/sanitation
+  access as a mediating pathway of IMF structural adjustment's effect
+  on infant mortality, Sub-Saharan Africa, S1072) — **INCLUDE**.
+  Birkenholtz (2010, full-cost-recovery tariff reform producing
+  class-differentiated water-collection practices, Jaipur, India,
+  S1073) — **INCLUDE**. Taylor (2014, E01 Sevenoaks sewage-reform
+  political history, no documented differential-access outcome) —
+  **EXCLUDE (E01)**. Hoag (2006, E01 gender and water-resource
+  development, Rufiji Delta) — **EXCLUDE (E01)**. Moore (2014, E01
+  China South-North Water Transfer Project, water-resource
+  infrastructure politics) — **EXCLUDE (E01)**. Boucheron (2001, E01
+  medieval Milan water-governance history, elite resource allocation)
+  — **EXCLUDE (E01)**. Sternlieb & Laituri (2010, E12 WASH indicator
+  frameworks conceptual review) — **EXCLUDE (E12)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1069-S1073,
+  1,066 → 1,071 rows each); `effect_sizes.csv` unchanged (51 rows --
+  all five includes are qualitative/theoretical or mediation-model
+  studies); `exclusion_log.csv` updated (1,029 → 1,034 rows; E01 455 →
+  459, E12 30 → 31); duplicate audit (exact-DOI + study_id) found no
+  new duplicates; `full_text_retrieval_queue.csv` regenerated (1,554
+  open records); schema validation re-run clean.
+  Running totals: 2,105/3,659 screened (1,071 include/1,034 exclude),
+  1,554 open, 1,071 extracted studies, 51 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
