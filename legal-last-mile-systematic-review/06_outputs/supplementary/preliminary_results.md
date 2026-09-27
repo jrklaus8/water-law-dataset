@@ -4451,6 +4451,47 @@ evidence of anything.
   open, 887 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-seventh batch (10 records, 2026-09-27), sixth batch
+  from `new_batch_pool.json`.** Aleixo et al. (2016, 232-household
+  survey of within-community water-access inequality under Brazil's
+  PLANSAB legal framework, Cristais, Brazil, S890) — **INCLUDE**.
+  Bellaubi & Boehm (2018, multi-case-study principal-agent analysis of
+  regulatory-capture/political-opportunism/state-capture corruption
+  risks in water service delivery, Kenya and Ghana, S891) —
+  **INCLUDE**. Truelove (2018, ethnographic/documentary analysis of
+  state water-measurement bureaucratic practices as a mechanism
+  producing distributive water-access injustice, Delhi, S892) —
+  **INCLUDE**. Jocoy (2000, chi-square/Mann-Whitney statistical
+  analysis of PENNVEST Safe Drinking Water Act aid-allocation data
+  showing systematic under-service of the smallest water systems,
+  Pennsylvania, S893) — **INCLUDE**. Anzera et al. (2016, household
+  survey linking the 1995 Oslo Agreement Joint Water Committee
+  bilateral allocation regime to constrained Palestinian household
+  water access, Palestine and Tunisia, S894) — **INCLUDE**.
+  Satterthwaite (2016, MDG statistical-methodology critique, same
+  author as the Batch 175 exclusion) — **EXCLUDE (E05)**. Kundu (2000,
+  water as one of several "basic amenities" in a broad India
+  poverty-trends analysis) — **EXCLUDE (E01)**. Dos Santos et al.
+  (2017, explicitly labeled "Review" article, sub-Saharan Africa urban
+  water access) — **EXCLUDE (E12)**. Boardman (2010, confirmed via
+  full-text read to concern Mexican biosimilar-drug regulation, zero
+  water content despite exact title/author match, a corpus-inclusion
+  error) — **EXCLUDE (E01)**. Li et al. (2009, confirmed via full-text
+  read to be a purely agronomic dryland-crop-nutrition book chapter,
+  China, a corpus-inclusion error) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S890-S894, 887 →
+  892 rows each); `effect_sizes.csv` unchanged (41 rows; all five
+  includes are qualitative/descriptive or, for Jocoy, exposure-side
+  mismatched -- water-system size is not itself a documented
+  legal/institutional mechanism -- so none met the strict Family A/B/C
+  criteria this batch); `exclusion_log.csv` updated (824 → 829 rows;
+  E01 330 → 333, E05 112 → 113, E12 6 → 7); duplicate audit (exact-DOI
+  + study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,938 open records); schema validation re-run clean.
+  Running totals: 1,721/3,659 screened (892 include/829 exclude), 1,938
+  open, 892 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

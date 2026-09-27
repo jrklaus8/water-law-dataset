@@ -4,7 +4,78 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-sixth full-text screening batch (10 records, 5 includes, 4 excludes, 1 undecided)
+## 2026-09-27 (latest) — Hundred-seventy-seventh full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Sixth batch drawn from `new_batch_pool.json`. All 10 target record_ids
+confirmed with no prior decisions or `wrong_file_retrieved` history at
+batch start.
+
+- **RB96E8D94B2BD** (Aleixo, Rezende, Pena, Zapata & Heller 2016,
+  *Ambiente & Sociedade*, "Human Right in Perspective: Inequalities in
+  Access to Water in a Rural Community of the Brazilian Northeast").
+  **INCLUDE.** 232-household survey documenting within-community water-
+  access inequality in a community targeted by Brazil's national
+  PLANSAB legal framework (Act 11.445/2007). Extracted as **S890**.
+- **RB70B7542FFB9** (Bellaubi & Boehm 2018, *Water Policy*, "Management
+  practices and corruption risks in water service delivery in Kenya and
+  Ghana"). **INCLUDE.** Multi-case-study principal-agent analysis of
+  post-reform regulatory-capture, political-opportunism and state-
+  capture corruption risks in water service delivery. Extracted as
+  **S891**.
+- **RB709D82B9922** (Truelove 2018, *Environment and Planning D*,
+  "Negotiating states of water: Producing illegibility, bureaucratic
+  arbitrariness, and distributive injustices in Delhi"). **INCLUDE.**
+  Ethnographic/documentary analysis of state water-measurement
+  bureaucratic practices as a mechanism producing distributive water-
+  access injustice. Extracted as **S892**.
+- **RB6BFA3BE24E5** (Jocoy 2000, *JAWRA*, "Who gets clean water? Aid
+  allocation to small water systems in Pennsylvania"). **INCLUDE.**
+  Statistical analysis (chi-square, Mann-Whitney U) of PENNVEST
+  Safe Drinking Water Act aid-allocation data showing systematic
+  under-service of the smallest water systems. Extracted as **S893**.
+- **RB7D025C8BB6D** (Anzera, Belotti, Bousselmi & Rabi 2016,
+  *International Review of Sociology*, "The hydropolitical challenges
+  of domestic water conservation. Palestine and Tunisia case studies").
+  **INCLUDE.** Household survey linking the 1995 Oslo Agreement Joint
+  Water Committee bilateral allocation regime to constrained Palestinian
+  household water access. Extracted as **S894**.
+- **RBD91806D4AF5** (Satterthwaite 2016, "Missing the Millennium
+  Development Goal targets for water and sanitation in urban areas")
+  — **EXCLUDE (E05).** MDG statistical-methodology critique, same author
+  as the Batch 175 exclusion precedent.
+- **RB9A117B7E3E9** (Kundu 2000, "Urban poverty in India: Issues and
+  perspectives in development") — **EXCLUDE (E01).** Water is one of
+  several "basic amenities" within a broad poverty-trends analysis.
+- **RB5444B329650** (Dos Santos et al. 2017, *Science of the Total
+  Environment*, "Urban growth and water access in sub-Saharan Africa:
+  Progress, challenges, and emerging research directions") — **EXCLUDE
+  (E12).** Confirmed via full-text read as an explicitly labeled
+  "Review" article, not original empirical research.
+- **RB4ABDB221CD3** (Boardman 2010, "Mexico at the vanguard: A new era
+  in medicines of biotechnological origin") — **EXCLUDE (E01).**
+  Confirmed via full-text read to concern Mexican pharmaceutical
+  regulation of biosimilar drugs; zero water content despite exact
+  title/author match — a corpus-inclusion error, not
+  `wrong_file_retrieved`.
+- **RB2086E7D7795** (Li, Wang, Malhi, Li, Gao & Tian 2009, "Nutrient
+  and Water Management Effects on Crop Production... Dryland Areas of
+  China") — **EXCLUDE (E01).** Confirmed via full-text read as a purely
+  agronomic book chapter; corpus-inclusion error.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S890-S894, 887 →
+892 rows each). `effect_sizes.csv` unchanged (41 rows; all five includes
+are qualitative/descriptive or, for Jocoy, exposure-side mismatched —
+system size is not itself a documented legal/institutional mechanism —
+so none met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (824 → 829 rows; E01 330 → 333, E05 112 →
+113, E12 6 → 7). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,938 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,721/3,659 screened (892 include/829 exclude), 1,938
+open, 892 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-sixth full-text screening batch (10 records, 5 includes, 4 excludes, 1 undecided)
 
 Fifth batch drawn from `new_batch_pool.json`. All 10 target record_ids
 confirmed with no prior decisions or `wrong_file_retrieved` history at
