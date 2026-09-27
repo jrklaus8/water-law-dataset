@@ -5590,6 +5590,43 @@ evidence of anything.
   1,661 open, 1,024 extracted studies, 46 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-sixth batch (10 records, 2026-09-27), twenty-ninth
+  batch from the 543-record pool.** `new_batch_pool.json[280:290]`.
+  White, Murphy & Spence (2012, policy analysis finding federal
+  jurisdiction and fragmented departmental responsibility over First
+  Nations reserve water systems tied to 119 of 600+ communities under
+  water advisories despite $2.5B+ in federal spending, Canada, S1027)
+  — **INCLUDE**. Snider (2004, case study of a formal Public Inquiry
+  attributing the 2000 Walkerton E. coli disaster to neo-liberal
+  deregulation of water-safety oversight, Ontario, S1028) —
+  **INCLUDE**. Zaki & Amin (2009, household survey finding Thailand's
+  1998 water-supply privatisation improved access/quality/tenure
+  prospects for the poor despite higher charges, S1029) — **INCLUDE**.
+  Graham, Desai & McFarlane (2013, nine-month ethnography documenting
+  criminalization of informal water-pump use and a threefold
+  differentiated municipal allocation quota, Mumbai, S1030) —
+  **INCLUDE**. Chappells & Medd (2012, E01 drought-resilience policy-
+  discourse study, southeast England) — **EXCLUDE (E01)**. Sharan
+  (2011, E01 historical water-quality/pollution-discourse study,
+  colonial Delhi) — **EXCLUDE (E01)**. Mugagga & Nabaasa (2016, E12
+  self-labeled literature review, Africa SDGs) — **EXCLUDE (E12)**.
+  Guardiola, Garcia-Rubio & Guidi-Gutierrez (2014, E04 wrong outcome --
+  subjective well-being, not water access -- Sucre Bolivia) —
+  **EXCLUDE (E04)**. Perez Prado (2006, E12 book review) — **EXCLUDE
+  (E12)**. Hardy (2014, E01 historical disease-control study, typhoid
+  America/England) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1027-S1030,
+  1,024 → 1,028 rows each); `effect_sizes.csv` unchanged (46 rows: no
+  confirmed regression-based estimate isolating a legal/institutional
+  mechanism's effect on a Family A/B/C water-access outcome this
+  batch); `exclusion_log.csv` updated (974 → 980 rows; E01 416 → 419,
+  E04 67 → 68, E12 23 → 25); duplicate audit (exact-DOI + study_id)
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,651 open records); schema validation re-run clean.
+  Running totals: 2,008/3,659 screened (1,028 include/980 exclude),
+  1,651 open, 1,028 extracted studies, 46 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

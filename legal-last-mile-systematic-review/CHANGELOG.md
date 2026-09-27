@@ -4,7 +4,68 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-fifth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-sixth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Twenty-ninth batch from `new_batch_pool.json[280:290]`.
+
+- **R2281173EAC98** (White, Murphy & Spence 2012, "Water and Indigenous
+  Peoples: Canada's Paradox"). **INCLUDE.** Policy analysis documenting
+  federal jurisdiction over First Nations reserve water systems,
+  fragmented three-department responsibility, and a 20%-cost-share
+  funding model, tied to 119 of 600+ communities under water advisories
+  despite $2.5B+ in federal spending since 1996. Extracted as **S1027**.
+- **R25C72141A46C** (Snider 2004, "Resisting Neo-Liberalism: The
+  Poisoned Water Disaster in Walkerton, Ontario"). **INCLUDE.** Case
+  study of a formal Public Inquiry (O'Connor Report) directly
+  attributing the 2000 E. coli contamination disaster (7 deaths, 2,300
+  illnesses) to neo-liberal deregulation of Ontario's water-safety
+  oversight. Extracted as **S1028**.
+- **R2965A86006E5** (Zaki & Amin 2009, "Does Basic Services
+  Privatisation Benefit the Urban Poor?... Thailand"). **INCLUDE.**
+  Household-level survey study finding Thailand's 1998 water-supply
+  privatisation scheme improved piped-water access, quality, and
+  tenure prospects for poor households despite higher charges.
+  Extracted as **S1029**.
+- **R2B590CAA2B94** (Graham, Desai & McFarlane 2013, "Water Wars in
+  Mumbai"). **INCLUDE.** Nine-month ethnography documenting
+  criminalization of informal water-pump use (Prevention of Damages to
+  Public Property Act) and BMC's differentiated allocation quota (45
+  vs. 135 lpcd for informal vs. formal areas). Extracted as **S1030**.
+- **RC2AB966A3236** (Chappells & Medd 2012, "Resilience in Practice:
+  The 2006 Drought in Southeast England") — **EXCLUDE (E01).**
+  Drought-resilience policy-discourse study; no legal/institutional
+  access mechanism.
+- **RC60181B6DCC6** (Sharan 2011, "From source to sink"... colonial
+  Delhi water history) — **EXCLUDE (E01).** Historical water-quality/
+  pollution-discourse study.
+- **R5D1990E27D97** (Mugagga & Nabaasa 2016, "The centrality of water
+  resources to... SDG... Africa") — **EXCLUDE (E12).** Self-labeled
+  literature review, no original empirical data.
+- **RC7AC4804264A** (Guardiola, Garcia-Rubio & Guidi-Gutierrez 2014,
+  "Water Access and Subjective Well-Being... Sucre, Bolivia") —
+  **EXCLUDE (E04).** Wrong outcome (subjective well-being, not water
+  access).
+- **R2512F210717D** (Perez Prado 2006, book review of "Globalization,
+  Water, and Health") — **EXCLUDE (E12).** Book review, not original
+  research.
+- **R26BC497EB17E** (Hardy 2014, "Scientific Strategy and Ad Hoc
+  Response: The Problem of Typhoid in America and England") —
+  **EXCLUDE (E01).** Historical disease-control study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1027-S1030 added;
+1,024 → 1,028 rows each). `effect_sizes.csv` unchanged (46 rows: all
+four includes are qualitative/mixed case studies; none report a
+regression-based estimate isolating a legal/institutional mechanism's
+effect confirmed within the strict Family A/B/C framework this batch).
+`exclusion_log.csv` updated (974 → 980 rows; E01 416 → 419, E04 67 → 68,
+E12 23 → 25). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,651 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 2,008/3,659 screened (1,028 include/980 exclude), 1,651
+open, 1,028 extracted studies, 46 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-fifth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Twenty-eighth batch from `new_batch_pool.json[270:280]`.
 
