@@ -4,7 +4,84 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-fifth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Eighth batch from `new_batch_pool.json[70:80]`.
+
+- **R7B052D90C3BF** (Guidi Gutierrez, Gonzalez Gomez & Guardiola 2013,
+  *IJWRD*, "Water access in Sucre, Bolivia: a case of governance
+  deficit"). **INCLUDE.** Documentary institutional case study tracing
+  Bolivia's water-regulatory history and diagnosing governance-framework
+  gaps (not ownership structure) as the root cause of service-delivery
+  conflict and poor access. Extracted as **S932**.
+- **R7891B393A14B** (Smith 2011, *Journal of Asian and African Studies*,
+  "The Limits to Public Participation in Strengthening Public
+  Accountability: A Reflection on the 'Citizens' Voice' Initiative in
+  South Africa"). **INCLUDE.** Four-year multi-city implementation study
+  documenting how institutional fragmentation across government spheres
+  constrains citizen accountability for water-service delivery.
+  Extracted as **S933**.
+- **R756C4F77C0A7** (Rama Mohan 2003, *Water International*, "Rural
+  Water Supply in India: Trends in Institutionalizing People's
+  Participation"). **INCLUDE.** Documentary/policy analysis of India's
+  shift from centralized supply-driven to community-participatory rural
+  water-management institutions, with two NGO case studies. Extracted
+  as **S934**.
+- **R73872693EBDD** (Hellberg 2014, *Geoforum*, "Water, life and
+  politics: Exploring the contested case of eThekwini municipality
+  through a governmentality lens"). **INCLUDE.** Original 2008/2009
+  narrative-interview fieldwork documenting how eThekwini's
+  differentiated water-service-delivery technologies (tariffs, prepaid
+  meters, disconnection) shape household water access and citizenship.
+  Extracted as **S935**.
+- **R82B3655E82D0** (Blase, Green & Matson 1973, *Journal of the
+  Community Development Society*, "Selected Impacts of Public Water
+  Supply Districts on Firms, Households and Communities"). **INCLUDE.**
+  Mail-survey before/after study of Missouri's 1935 Public Water Supply
+  District enabling legislation's effects on household water
+  connection, consumption, and land values. Extracted as **S936**.
+- **R721DC414A085** (de Carvalho, Costa, Marques & Netto 2019, *Water
+  Science and Technology*, "The impact of household connection to
+  public network wastewater systems: regulatory impact assessment").
+  **INCLUDE.** MCDA regulatory impact assessment of household
+  wastewater-connection policy options under Brazil's national/state
+  legal connection mandates. Extracted as **S937**.
+- **R7B043D18F36C** (Hirano 2016, "Public participation in the global
+  regulatory governance of water services: Global administrative law
+  perspective on the Inspection Panel of the World Bank and amicus
+  curiae in investment arbitration") — **EXCLUDE (E05).**
+  Doctrinal/conceptual legal analysis with no case study and no original
+  household-level empirical data.
+- **R7A4DACA8AA5D** (Lawanson & Fadare 2013, "Neighbourhood
+  differentials and environmental health interface in Lagos metropolis,
+  Nigeria") — **EXCLUDE (E01).** Comparative household survey of general
+  socioeconomic/environmental-health disparities; water access is one of
+  several environmental-health indicators, not the dedicated focus.
+- **R777E7407DCD6** (Rowles, Whittaker, Ward, Araiza, Kirisits, Lawler &
+  Saleh 2021, "A Structural Equation Model to Decipher Relationships
+  among Water, Sanitation, and Health in Colonias-Type Unincorporated
+  Communities") — **EXCLUDE (E06).** Technical/statistical water-quality
+  and health SEM modeling study.
+- **R73487CC7FF84** (Fuller, Goldstick, Bartram & Eisenberg 2016,
+  "Tracking progress towards global drinking water and sanitation
+  targets: A within and among country analysis") — **EXCLUDE (E06).**
+  Statistical monitoring-methodology paper (GAM vs. linear regression
+  for JMP trend estimation), not an institutional/legal-mechanism study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S932-S937 added;
+929 → 935 rows each). `effect_sizes.csv` unchanged (43 rows): none of
+this batch's includes are effect_sizes eligible (qualitative case
+studies, a descriptive before/after survey, and an ex-ante MCDA
+scenario-modeling exercise, none isolating an observed regression-based
+causal estimate). `exclusion_log.csv` updated (861 → 865 rows; E01 349
+→ 350, E06 78 → 80). Duplicate audit (exact-DOI + study_id) found no
+new duplicates. `full_text_retrieval_queue.csv` regenerated (1,859 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,800/3,659 screened (935 include/865 exclude), 1,859
+open, 935 extracted studies, 43 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Seventh batch from `new_batch_pool.json[60:70]`.
 

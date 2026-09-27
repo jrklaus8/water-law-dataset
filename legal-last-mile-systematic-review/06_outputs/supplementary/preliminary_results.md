@@ -4765,6 +4765,45 @@ evidence of anything.
   open, 929 extracted studies, 43 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-fifth batch (10 records, 2026-09-27), eighth batch
+  from the 543-record pool.** `new_batch_pool.json[70:80]`. Guidi
+  Gutierrez, Gonzalez Gomez & Guardiola (2013, documentary institutional
+  case study diagnosing water-governance-framework gaps as the root
+  cause of service-delivery conflict, Sucre Bolivia, S932) —
+  **INCLUDE**. Smith (2011, four-year multi-city implementation study of
+  institutional fragmentation constraining citizen accountability for
+  water services, South Africa, S933) — **INCLUDE**. Rama Mohan (2003,
+  documentary/policy analysis of India's rural water-management
+  institutional shift with NGO case studies, S934) — **INCLUDE**.
+  Hellberg (2014, original 2008/2009 narrative-interview fieldwork on
+  eThekwini's differentiated water-service technologies, South Africa,
+  S935) — **INCLUDE**. Blase, Green & Matson (1973, mail-survey
+  before/after study of Missouri Public Water Supply District formation
+  effects on household connection/consumption/land values, S936) —
+  **INCLUDE**. de Carvalho, Costa, Marques & Netto (2019, MCDA
+  regulatory impact assessment of household wastewater-connection
+  policy options under Brazilian legal connection mandates, S937) —
+  **INCLUDE**. Hirano (2016, doctrinal global-administrative-law
+  analysis of World Bank Inspection Panel/investment arbitration, no
+  original empirical data) — **EXCLUDE (E05)**. Lawanson & Fadare (2013,
+  comparative household survey of general socioeconomic/environmental-
+  health disparities, Lagos, water one of several indicators) —
+  **EXCLUDE (E01)**. Rowles et al (2021, structural-equation-model
+  water-quality/health study, Texas colonias) — **EXCLUDE (E06)**.
+  Fuller, Goldstick, Bartram & Eisenberg (2016, statistical monitoring-
+  methodology paper for JMP global drinking-water/sanitation trends) —
+  **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S932-S937, 929 →
+  935 rows each); `effect_sizes.csv` unchanged (43 rows: no eligible
+  regression-based estimates this batch); `exclusion_log.csv` updated
+  (861 → 865 rows; E01 349 → 350, E06 78 → 80); duplicate audit
+  (exact-DOI + study_id) found no new duplicates; `full_text_retrieval_
+  queue.csv` regenerated (1,859 open records); schema validation
+  re-run clean.
+  Running totals: 1,800/3,659 screened (935 include/865 exclude), 1,859
+  open, 935 extracted studies, 43 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
