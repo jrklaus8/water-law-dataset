@@ -4,7 +4,79 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-sixth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-seventh full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R85E320C718A8** (Derman 2003, *Africa Today*, "Cultures of
+  Development and Indigenous Knowledge: The Erosion of Traditional
+  Boundaries"). **INCLUDE.** Ethnographic study of Zimbabwe's Water Act
+  1998 statutory distinction between permit-requiring "commercial
+  water" and unregulated "primary" (household/domestic) water, and its
+  institutional marginalization of communal domestic-water access.
+  Extracted as **S838**.
+- **R8609FE411A88** (Odeku & Konanani 2014, *Studies of Tribes and
+  Tribals*, "Poor Water Service Delivery: An Exposition of the Plight
+  of the Phiri Community in Soweto, South Africa"). **INCLUDE.**
+  Independent legal-doctrinal case analysis of Mazibuko v. City of
+  Johannesburg (Free Basic Water policy, pre-paid meters, Indigent
+  Registration Policy), extending the established Mazibuko
+  doctrinal-inclusion precedent (S825 Perumal) with a distinct
+  analytical angle. Extracted as **S839**.
+- **R513E53E45833** (Grant 1955, *The Journal of Politics*, "Urban and
+  Suburban Nashville: A Case Study in Metropolitanism"). **INCLUDE.**
+  Institutional case study of Tennessee's State Utility District Act of
+  1937 creating unaccountable special water-utility districts with
+  quantified tariff disparities (suburban rates up to 3x in-city
+  rates) across ~114,000 residents. Extracted as **S840**.
+- **R899DB35753C8** (Addai & Pokimica 2012, *Social Indicators
+  Research*, "An Exploratory Study of Trust and Material Hardship in
+  Ghana"). **INCLUDE.** National Afrobarometer survey with an isolated
+  multinomial-regression water-deprivation model showing institutional
+  (judicial and executive) trust as significant, water-specific
+  predictors. Extracted as **S841**. NOT effect_sizes eligible: the
+  exposure (subjective institutional trust) is a perceptual proxy, not
+  a documented legal/institutional mechanism per PROJECT_SPEC.md Family
+  A/B/C.
+- **R87C35161C630** (Safransky 2014, "Greening the urban frontier:
+  Race, property, and resettlement in Detroit") — **EXCLUDE (E01).**
+  Water is one minor municipal-service category among several in a
+  broader settler-colonial/racial planning analysis.
+- **R87FBB9180C15** (Punjabi 2016, "Debate on Karen Bakker's
+  Privatizing Water") — **EXCLUDE (E05).** IJURR "Author Meets the
+  Critics" book-review/debate forum; no original empirical data.
+- **R77749A581F7E** (Dukhovny & Ziganshina 2011, "Ways to improve water
+  governance") — **EXCLUDE (E05).** Normative/advocacy global
+  water-governance essay; no empirical data collection.
+- **R87654C2FD7AA** (Heath, Parker & Weatherhead 2012, "Testing a rapid
+  climate change adaptation assessment for water and sanitation
+  providers... sub-Saharan Africa") — **EXCLUDE (E06).** Technical
+  climate-adaptation engineering methodology, not an
+  institutional/legal-mechanism study.
+- **R87132C51E802** (Gonzalez Rivas 2014, "Ethnolinguistic Divisions
+  and Access to Clean Water in Mexico") — **EXCLUDE (E01).**
+  Ethnic-fragmentation political-economy regression study with no
+  specific legal/institutional access mechanism examined.
+- **R889D34F0A0C2** (Nyong & Kanaroglou 1999, "Domestic Water Use in
+  Rural Semiarid Africa... Katarko Village... Nigeria") — **EXCLUDE
+  (E01).** Hydrological/behavioral survey of a village relying entirely
+  on natural water sources, no formal utility or legal/institutional
+  framework.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S838-S841, 835 →
+839 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (779 → 785 rows; E01 312 → 315, E05 98 →
+100, E06 64 → 65). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,035 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,624/3,659 screened (839 include/785 exclude), 2,035
+open, 839 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-sixth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

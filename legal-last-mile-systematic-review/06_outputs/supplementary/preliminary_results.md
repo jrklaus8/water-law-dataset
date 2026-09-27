@@ -4099,6 +4099,40 @@ evidence of anything.
   Running totals: 1,614/3,659 screened (835 include/779 exclude), 2,045
   open, 835 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-seventh full-text screening batch, 10
+  records, 4 includes, 6 excludes.** Derman (2003, ethnographic study,
+  Water Act 1998 primary/commercial water classification, Zimbabwe,
+  S838) — **INCLUDE**. Odeku & Konanani (2014, independent
+  legal-doctrinal Mazibuko case analysis, Free Basic Water/pre-paid
+  meters, South Africa, S839) — **INCLUDE**. Grant (1955, institutional
+  case study, Tennessee State Utility District Act special-district
+  tariff fragmentation, Nashville, S840) — **INCLUDE**. Addai &
+  Pokimica (2012, national Afrobarometer survey, isolated water-
+  deprivation regression model, institutional trust, Ghana, S841) —
+  **INCLUDE** (not effect_sizes eligible: exposure is subjective
+  institutional trust, not a documented legal/institutional mechanism
+  per PROJECT_SPEC.md Family A/B/C). Safransky (2014, water as one
+  minor service category in settler-colonial Detroit planning
+  analysis) — **EXCLUDE (E01)**. Punjabi (2016, IJURR book-review/
+  debate forum on Bakker's Privatizing Water) — **EXCLUDE (E05)**.
+  Dukhovny & Ziganshina (2011, normative global water-governance essay,
+  no empirical data) — **EXCLUDE (E05)**. Heath, Parker & Weatherhead
+  (2012, technical climate-adaptation engineering methodology,
+  sub-Saharan Africa) — **EXCLUDE (E06)**. Gonzalez Rivas (2014,
+  ethnic-fragmentation political-economy regression, no specific legal/
+  institutional mechanism, Mexico) — **EXCLUDE (E01)**. Nyong &
+  Kanaroglou (1999, hydrological/behavioral survey, no formal water
+  institution, Katarko village, Nigeria) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S838-S841, 835 →
+  839 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (779 → 785 rows; E01 312 → 315, E05 98 →
+  100, E06 64 → 65); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,035 open records);
+  schema validation re-run clean.
+  Running totals: 1,624/3,659 screened (839 include/785 exclude), 2,035
+  open, 839 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
