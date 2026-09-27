@@ -4,7 +4,91 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-ninth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Hundred-ninetieth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Thirteenth batch from `new_batch_pool.json[120:130]`.
+
+- **R566E192D76F6** (Narzetti & Marques 2021, *Utilities Policy*,
+  "Isomorphic mimicry and the effectiveness of water-sector reforms in
+  Brazil"). **INCLUDE.** Policy/institutions/regulation (PIR) documentary
+  case study tracing four waves of Brazilian WSS legal reform (Law
+  11.445/2007, Law 14.026/2020) against persistent peri-urban/rural
+  access exclusion, diagnosing isomorphic mimicry as the mechanism
+  behind the de jure/de facto gap. Extracted as **S960**.
+- **R5597D1B7A139** (Kachenje 2019, *Social Responsibility and
+  Sustainability*, Springer, "Strengths and Weaknesses of Community-Based
+  Systems in Municipal Services Delivery... Dar es Salaam, Tanzania").
+  **INCLUDE.** Qualitative case study of a community-based Water
+  Committee operating under a 2003 municipal constitution, processing
+  connections in 3-6 days vs. ~4 weeks under the comparator public
+  system. Extracted as **S961**.
+- **R5088AD87DF7C** (Rusca, Alda-Vidal & Kooy 2018, *Water Justice*,
+  Cambridge University Press, "Sanitation Justice? The Multiple
+  Dimensions of Urban Sanitation Inequalities"). **INCLUDE.**
+  Interview-based case study tracing Uganda's 1997 Strategic Framework
+  for Reform (devolving sanitation from state to household) to
+  persistent low-income sanitation-access inequality in Kampala's
+  Kawempe District. Extracted as **S962**.
+- **R5207E9C3B055** (Nastar & Ramasar 2012, *Environmental Innovation
+  and Societal Transitions*, "Transition in South African water
+  governance: Insights from a perspective on power"). **INCLUDE.**
+  Interview-based case study and litigation tracing (Phiri pre-paid
+  water-meter case through South African High Court and Supreme Court
+  of Appeal) linking the National Water Act 1998 and free-basic-water
+  policy to divergent household water-access outcomes across Alexandra
+  and Soweto, Johannesburg. Extracted as **S963**.
+- **R4DBC86E42AB3** (Laurie & Crespo 2007, *Geoforum*, "Deconstructing
+  the best case scenario: lessons from water politics in La Paz-El
+  Alto, Bolivia"). **INCLUDE.** Mixed-methods case study and regulatory/
+  contract documentary analysis showing the La Paz-El Alto concession's
+  "pro-poor" connection mandate was substantially fulfilled through
+  network densification rather than new coverage to unconnected poor
+  areas, under a regulatory framework (Law 2029, 1999) with no formal
+  user-participation mechanism in tariff-setting. Extracted as **S964**.
+- **R550AF41D1041** (Walkinshaw, Hecht, Patel & Podrabsky 2019, *Journal
+  of School Health*, "Training High School Student Citizen Scientists to
+  Document School Water Access: A Feasibility Study") — **EXCLUDE
+  (E06).** Photo-evidence data-collection methodology/feasibility study
+  of school drinking-fountain condition; no legal/institutional-mechanism
+  content.
+- **R50095132981A** (Parker, Kirkpatrick & Figueira-Theodorakopoulou
+  2008, *The Quarterly Review of Economics and Finance*, "Infrastructure
+  regulation and poverty reduction in developing countries: A review of
+  the evidence and a research agenda") — **EXCLUDE (E12).**
+  Self-described literature review across multiple infrastructure
+  sectors, not water-specific primary research.
+- **R4FB92115E802** (Naghibi-Beidokhti & Lence 2005, "Management
+  Alternatives for River-Alluvial Groundwater Supply Systems") —
+  **EXCLUDE (E06).** Engineering/hydrogeology optimization study of
+  manganese/iron removal for the Fredericton, NB groundwater supply; no
+  legal/institutional content.
+- **R4EE7C202AE99** (Robinson et al. 2004, *Conservation Biology*,
+  "Distribution of Bird Diversity in a Vulnerable Neotropical
+  Landscape") — **EXCLUDE (E01).** Conservation-biology study of forest
+  bird distribution in the Panama Canal corridor; zero household
+  water-access content. Corpus-inclusion error, analogous to prior
+  off-topic exclusions.
+- **R4D7CD4E75E33** (Vasquez 2013, *Water Resources and Economics*, "An
+  economic valuation of water connections under different approaches of
+  service governance") — **EXCLUDE (E04).** Hedonic-price analysis of
+  households' implicit willingness-to-pay for connections in Guatemala;
+  outcome is economic valuation, not an actual access/connection
+  outcome — wrong outcome, per the Salman et al. precedent.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S960-S964 added;
+957 → 962 rows each). `effect_sizes.csv` unchanged (44 rows): none of
+this batch's includes are effect_sizes eligible (all qualitative/
+descriptive case studies, no regression-based estimate isolating a
+single mechanism). `exclusion_log.csv` updated (882 → 887 rows; E01 354
+→ 355, E04 65 → 66, E06 85 → 87, E12 14 → 15). Duplicate audit
+(exact-DOI + study_id) found no new duplicates. `full_text_retrieval_
+queue.csv` regenerated (1,810 open records). `validate_schemas.py`
+confirms all 13 tracked files OK.
+
+Running totals: 1,849/3,659 screened (962 include/887 exclude), 1,810
+open, 962 extracted studies, 44 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-ninth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
 
 Twelfth batch from `new_batch_pool.json[110:120]`.
 

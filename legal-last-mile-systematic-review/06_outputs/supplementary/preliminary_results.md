@@ -4949,6 +4949,46 @@ evidence of anything.
   open, 957 extracted studies, 44 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninetieth batch (10 records, 2026-09-27), thirteenth batch
+  from the 543-record pool.** `new_batch_pool.json[120:130]`. Narzetti &
+  Marques (2021, PIR documentary case study of Brazilian WSS legal
+  reform and isomorphic mimicry driving peri-urban/rural access
+  exclusion, S960) — **INCLUDE**. Kachenje (2019, qualitative case study
+  of a community-based Water Committee's 3-6 day connection processing
+  vs. ~4 weeks under the comparator public system, Dar es Salaam, S961)
+  — **INCLUDE**. Rusca, Alda-Vidal & Kooy (2018, interview-based case
+  study tracing Uganda's 1997 sanitation-devolution reform to persistent
+  access inequality, Kampala, S962) — **INCLUDE**. Nastar & Ramasar
+  (2012, interview-based case study and litigation tracing of the Phiri
+  pre-paid water-meter case through South African courts, Johannesburg,
+  S963) — **INCLUDE**. Laurie & Crespo (2007, mixed-methods case study
+  and regulatory/contract analysis of the La Paz-El Alto "pro-poor"
+  concession's densification-inflated coverage claims, Bolivia, S964) —
+  **INCLUDE**. Walkinshaw, Hecht, Patel & Podrabsky (2019, photo-
+  evidence citizen-science feasibility study of school water-fountain
+  condition) — **EXCLUDE (E06)**. Parker, Kirkpatrick &
+  Figueira-Theodorakopoulou (2008, self-described literature review of
+  infrastructure regulation and poverty across multiple sectors) —
+  **EXCLUDE (E12)**. Naghibi-Beidokhti & Lence (2005, engineering/
+  hydrogeology optimization study of manganese/iron removal for
+  Fredericton, NB groundwater supply) — **EXCLUDE (E06)**. Robinson et
+  al. (2004, conservation-biology study of bird distribution in the
+  Panama Canal corridor, zero water-access content) — **EXCLUDE (E01)**,
+  corpus-inclusion error. Vasquez (2013, hedonic-price analysis of
+  households' willingness-to-pay for water connections under different
+  governance types, Guatemala) — **EXCLUDE (E04)**, wrong outcome
+  (economic valuation, not an access outcome).
+  `extraction_database.csv`/`evidence_map.csv` updated (S960-S964, 957 →
+  962 rows each); `effect_sizes.csv` unchanged (44 rows: no eligible
+  estimates this batch); `exclusion_log.csv` updated (882 → 887 rows;
+  E01 354 → 355, E04 65 → 66, E06 85 → 87, E12 14 → 15); duplicate audit
+  (exact-DOI + study_id) found no new duplicates; `full_text_retrieval_
+  queue.csv` regenerated (1,810 open records); schema validation re-run
+  clean.
+  Running totals: 1,849/3,659 screened (962 include/887 exclude), 1,810
+  open, 962 extracted studies, 44 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
