@@ -4,7 +4,90 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-third full-text screening batch (10 records, 3 includes, 7 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-fourth full-text screening batch (10 records, 9 includes, 1 exclude)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RF6E405620386** (Kumasi, Agbemor & Burr 2019, *Water and Environment
+  Journal*, "Rural water asset management practices in Ghana: the gaps
+  and needs"). **INCLUDE.** Case study of Ghana's decentralised rural
+  water governance (CWSA Regulations 2011/Legislative Instrument 2007,
+  District Assembly/DWST capacity) and the 'fix on failure' post-paid
+  financing model's effect on repair delay and service reliability.
+  Extracted as **S762**.
+- **RF6B313F45217** (Nzengya 2015, *Cities*, "Exploring the challenges
+  and opportunities for master operators and water kiosks under
+  Delegated Management Model (DMM)... Lake Victoria region, Kenya").
+  **INCLUDE.** IAD Framework case study of Kenya's Water Act 2002 DMM
+  delegation arrangement; companion study to S761 (Nzengya 2018).
+  Extracted as **S763**.
+- **RF69CDD7A3484** (Helgegren, McConville, Landaeta & Rauch 2021,
+  *Technological Forecasting and Social Change*, "A multiple regime
+  analysis of the water and sanitation sectors in the Kanata
+  metropolitan region, Bolivia"). **INCLUDE.** Institutional-regime
+  analysis explicitly incorporating legislation as an institutionalization
+  dimension for individual/community/municipal service regimes.
+  Extracted as **S764**.
+- **RF611C2722057** (Meeks 2018, *World Development*, "Property Rights
+  and Water Access: Evidence from Land Titling in Rural Peru").
+  **INCLUDE and EFFECT_SIZES ELIGIBLE (Family A).** Clean quasi-
+  experimental modified difference-in-differences design exploiting
+  phased PETT land-titling program rollout; core DiD estimate on
+  improved water source access = 0.059 (SE 0.027), significant at 5%
+  (n=3,182). Extracted as **S765**; added as the 36th `effect_sizes.csv`
+  row.
+- **RF564D516EE5E** (Jones, Reed & Bevan 2003, *Municipal Engineer/ICE
+  Proceedings*, "Water and sanitation for the disabled in low-income
+  countries"). **INCLUDE.** WEDC research project documenting
+  disability-based eligibility/accommodation barriers to WASH access,
+  including a South Africa disability-legislation implementation gap.
+  Extracted as **S766**.
+- **RF2B2F583825D** (Ravnborg & Jensen 2012, *Water Science &
+  Technology: Water Supply*, "The water governance challenge... "
+  Competing for Water programme, Bolivia/Mali/Nicaragua/Vietnam/Zambia).
+  **INCLUDE.** Comparative institutional analysis of the gap between
+  statutory water-allocation frameworks and actual local institutions,
+  with quantitative evidence of poor households' disadvantaged access
+  outcomes in institutionally-mediated conflicts. Extracted as **S767**.
+- **RF289721552FD** (Smith 2004, *Geoforum*, "The murky waters of the
+  second wave of neoliberalism: corporatization as a service delivery
+  model in Cape Town"). **INCLUDE.** Extends the Sutherland et
+  al./eThekwini corporatization precedent to Cape Town; three cost-
+  recovery/credit-control/disconnection policies (1997-2001) with
+  disproportionate impact on low-income townships. Extracted as **S768**.
+- **RF12971C35B2E** (Adeoti & Fati 2020, *Utilities Policy*, "Barriers to
+  extending piped water distribution networks: The case of Ekiti State,
+  Nigeria"). **INCLUDE.** Institutional-theory case study directly
+  analyzing the Ekiti State Water Corporation Law No. 4 of 1997 and
+  Public Procurement Law No. 2 of 2010 as constraints on piped-water
+  network extension. Extracted as **S769**.
+- **RF0C8946FC9E3** (Novotny, Humnalova & Kolomaznikova 2018, *Journal of
+  Rural Studies*, "The social and political construction of latrines in
+  rural Ethiopia"). **INCLUDE.** Documents Ethiopia's command-and-control
+  CLTSH sanitation-enforcement mechanism (formal/semi-formal sanctions
+  including fines and arrest) driving latrine adoption. Extracted as
+  **S770**.
+- **RF1E7023008C0** (Onabolu et al. 2011, *Physics and Chemistry of the
+  Earth*, "Source to point of use drinking water changes and knowledge,
+  attitude and practices in Katsina State, Northern Nigeria") —
+  **EXCLUDE (E01).** Water-quality contamination-tracking/KAP study;
+  institutional/legislative assessment is background for a water-quality
+  monitoring system, not the core legal-access-barrier mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S762-S770, 759 →
+768 rows each). `effect_sizes.csv` updated (35 → 36 rows; S765 Meeks
+2018 added as the first Family A land-titling/tenure estimate).
+`exclusion_log.csv` updated (726 → 727 rows; E01 282 → 283).
+Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,164 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,495/3,659 screened (768 include/727 exclude), 2,164
+open, 768 extracted studies, 36 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-third full-text screening batch (10 records, 3 includes, 7 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

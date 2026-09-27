@@ -3690,6 +3690,38 @@ evidence of anything.
   Running totals: 1,485/3,659 screened (759 include/726 exclude), 2,174
   open, 759 extracted studies, 35 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-fourth full-text screening batch, 10
+  records, 9 includes, 1 exclude.** Kumasi, Agbemor & Burr (2019, Ghana
+  decentralised rural water governance, post-paid financing model and
+  repair delay, S762) — **INCLUDE**. Nzengya (2015, IAD Framework case
+  study of Kenya Water Act 2002 DMM, Lake Victoria, S763) — **INCLUDE**
+  (companion to S761). Helgegren et al. (2021, multi-regime institutional
+  analysis with legislation as an institutionalization dimension,
+  Bolivia, S764) — **INCLUDE**. Meeks (2018, quasi-experimental modified
+  difference-in-differences, PETT land-titling program, Peru, S765) —
+  **INCLUDE, EFFECT_SIZES ELIGIBLE (Family A)**: core DiD estimate on
+  improved water source access = 0.059 (SE 0.027, p<0.05, n=3,182), added
+  as the 36th effect_sizes.csv row. Jones, Reed & Bevan (2003, WEDC
+  disability-WASH research project, S766) — **INCLUDE**. Ravnborg &
+  Jensen (2012, comparative institutional analysis of statutory vs.
+  actual water governance, 5 countries, S767) — **INCLUDE**. Smith (2004,
+  Cape Town corporatization/cost-recovery case study, extends
+  Sutherland/eThekwini precedent, S768) — **INCLUDE**. Adeoti & Fati
+  (2020, Ekiti State Water Corporation Law No. 4 of 1997 case study,
+  Nigeria, S769) — **INCLUDE**. Novotny, Humnalova & Kolomaznikova (2018,
+  command-and-control CLTSH sanitation-enforcement mechanism, Ethiopia,
+  S770) — **INCLUDE**. Onabolu et al. (2011, water-quality
+  contamination-tracking/KAP study, Katsina State Nigeria) — **EXCLUDE
+  (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S762-S770, 759 →
+  768 rows each); `effect_sizes.csv` updated (35 → 36 rows; S765 Meeks
+  2018 added); `exclusion_log.csv` updated (726 → 727 rows; E01 282 →
+  283); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,164 open records);
+  schema validation re-run clean.
+  Running totals: 1,495/3,659 screened (768 include/727 exclude), 2,164
+  open, 768 extracted studies, 36 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3715,10 +3747,10 @@ evidence of anything.
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 759
+- Extraction (Phase 8) is caught up with screening completely — all 768
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  759 extracted studies** (a first 12-study partial pilot batch was
+  768 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
@@ -3761,11 +3793,11 @@ evidence of anything.
   a genuinely comparable exposure-comparator definition, so none is close
   to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
   full list and exclusion rationale.
-- Effect sizes now exist for 35 studies in `effect_sizes.csv` (added
+- Effect sizes now exist for 36 studies in `effect_sizes.csv` (added
   2026-09-16, extended 2026-09-17 and in later full-text-screening
-  batches through 2026-09-27, most recently S749 -- Barbosa & Brusca's
-  Brazilian water-utility ownership/regulatory-structure tariff-level
-  effect estimate, not mapped to a Family A/B/C synthesis family),
+  batches through 2026-09-27, most recently S765 -- Meeks 2018's Peru
+  PETT land-titling modified difference-in-differences estimate,
+  mapped to Family A (legal recognition/tenure)),
   but none is pooled, and no family-level meta-analysis has
   been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
   analysis, publication bias, PRISMA reporting) have R-script/template
