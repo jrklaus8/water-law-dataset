@@ -4,7 +4,87 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-fifth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-sixth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Continuing through the Antigravity delivery folder (regular pool
+records). All 10 target record_ids confirmed open with no prior
+decisions or `wrong_file_retrieved` history.
+
+- **R84FCE5A47D09** (Anand 2015, *Public Culture*, "Leaky States:
+  Water Audits, Ignorance, and the Politics of Infrastructure").
+  **INCLUDE.** Companion ethnographic study to already-included S826
+  (Anand 2011), documenting the same 1995 settlement-eligibility-cutoff
+  rule for Mumbai water connections via a failed privatization/water-
+  audit reform initiative. Extracted as **S834**.
+- **R828C9773E407** (Peda, Argento & Grossi 2013, *Public Organization
+  Review*, "Governance and Performance of a Mixed Public-Private
+  Enterprise: An Assessment of a Company in the Estonian Water
+  Sector"). **INCLUDE.** Detailed 15-year service-contract governance
+  case study with quantified household-level coverage (99.7%) and
+  affordability (1.2-1.3% of disposable income) outcomes, matching the
+  established descriptive/regulatory-performance national-case-study
+  precedent (S805 Kosova, S819 Chile, S830 Sao Paulo). Extracted as
+  **S835**.
+- **RA7ECB9D783C3** (Valencia & Ecuyer 2023, *Lecturas de Economia*,
+  "Community Water Management in the Colombian Post-Conflict").
+  **INCLUDE.** Documentary/policy analysis of 16 PDET post-conflict
+  subregions identifying the absence of legal recognition
+  (*reconocimiento juridico*) of community water-management
+  associations under Law 142/1994 and Decree 1898/2016 as a structural
+  access barrier. Extracted as **S836**.
+- **R84FF08BBE70F** (Scott, Moldogaziev & Greer 2018, *Urban Studies*,
+  "Drink what you can pay for: Financing infrastructure in a
+  fragmented water system"). **INCLUDE.** Quantitative panel study of
+  500+ Houston special purpose water districts using hierarchical
+  Bayesian regression to show institutional fragmentation channels
+  capital-investment response to regulatory violations toward
+  wealthier districts. Extracted as **S837**. NOT effect_sizes
+  eligible: outcome (capital investment/debt issuance) is a fiscal-
+  response proxy, not a water-access outcome isolated per
+  PROJECT_SPEC.md Family A, paralleling the S794/S822 precedent.
+- **RF104A3C9A7FE** (Bolatova et al. 2021, "Challenges of Access to
+  WASH in Schools in Low- and Middle-Income Countries: Case Study from
+  Rural Central Kazakhstan") — **EXCLUDE (E01).** School WASH
+  infrastructure-condition survey; no institutional/legal
+  access-mechanism analysis.
+- **R84A709AA9EB9** (Byrnes 2013, "A short institutional and
+  regulatory history of the Australian urban water sector") —
+  **EXCLUDE (E01).** Aggregate utility financial/regulatory-structure
+  and efficiency-comparison history; no household-level access-barrier
+  content.
+- **RB955BA567B95** (Berg & Mugisha 2010, "Pro-poor water service
+  strategies in developing countries: Promoting justice in Uganda's
+  urban project") — **EXCLUDE (E06).** Linear-programming technology-
+  selection optimisation study; engineering/economic optimisation
+  model, not an institutional-mechanism empirical study.
+- **R865D170681D0** (Peres, Fernandes & Peres 2004, "Inequality of
+  water fluoridation in Southern Brazil — the inverse equity hypothesis
+  revisited") — **EXCLUDE (E03).** Outcome is water-fluoridation
+  policy diffusion, a water-quality/public-health additive, not water
+  access.
+- **R8699CF1378C6** (Hunt, Staunton & Dunstan 2013, "Equity tension and
+  new public management policy development and implementation in the
+  water industry") — **EXCLUDE (E01).** Entity-level user-pays
+  pricing-mechanism adoption study; no household-level access-barrier
+  outcome data.
+- **R85C7CC7405FF** (Hagan & Kaiser 2011, "The displaced and
+  dispossessed of Darfur: explaining the sources of a continuing
+  state-led genocide") — **EXCLUDE (E01).** Water destruction as a
+  genocide weapon in armed conflict, not a legal/institutional
+  access-barrier mechanism in ordinary governance.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S834-S837, 831 →
+835 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (773 → 779 rows; E01 308 → 312, E03 26 →
+27, E06 63 → 64). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (2,045 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,614/3,659 screened (835 include/779 exclude), 2,045
+open, 835 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-fifth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the Antigravity delivery folder (regular pool
 records). All 10 target record_ids confirmed open with no prior

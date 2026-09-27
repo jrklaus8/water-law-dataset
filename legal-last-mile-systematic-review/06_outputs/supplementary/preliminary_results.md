@@ -4062,6 +4062,43 @@ evidence of anything.
   Running totals: 1,604/3,659 screened (831 include/773 exclude), 2,055
   open, 831 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-sixth full-text screening batch, 10
+  records, 4 includes, 6 excludes.** Anand (2015, companion ethnographic
+  study to already-included S826, 1995 settlement-eligibility cutoff via
+  failed water-audit/privatization reform, Mumbai, S834) — **INCLUDE**.
+  Peda, Argento & Grossi (2013, 15-year mixed public-private
+  service-contract governance case study with quantified household
+  coverage/affordability outcomes, Estonia, S835) — **INCLUDE**. Valencia
+  & Ecuyer (2023, documentary/policy analysis identifying absence of
+  legal recognition of community water associations as a structural
+  barrier, Colombian post-conflict PDET subregions, S836) — **INCLUDE**.
+  Scott, Moldogaziev & Greer (2018, quantitative panel study of 500+
+  special purpose water districts, hierarchical Bayesian regression on
+  institutional fragmentation and capital-investment response to
+  regulatory violations, Houston, S837) — **INCLUDE** (not effect_sizes
+  eligible: outcome is capital investment/debt issuance, a fiscal-
+  response proxy, not a water-access outcome isolated per
+  PROJECT_SPEC.md Family A). Bolatova et al. (2021, school WASH
+  infrastructure-condition survey, rural Kazakhstan) — **EXCLUDE
+  (E01)**. Byrnes (2013, aggregate utility regulatory/efficiency-
+  comparison history, Australia) — **EXCLUDE (E01)**. Berg & Mugisha
+  (2010, linear-programming technology-selection optimisation study,
+  Uganda) — **EXCLUDE (E06)**. Peres, Fernandes & Peres (2004,
+  water-fluoridation policy-diffusion inequality study, Southern Brazil)
+  — **EXCLUDE (E03)**. Hunt, Staunton & Dunstan (2013, entity-level
+  user-pays pricing-mechanism adoption study, Queensland Australia) —
+  **EXCLUDE (E01)**. Hagan & Kaiser (2011, water destruction as a
+  genocide weapon, Darfur) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S834-S837, 831 →
+  835 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (773 → 779 rows; E01 308 → 312, E03 26 →
+  27, E06 63 → 64); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,045 open records);
+  schema validation re-run clean.
+  Running totals: 1,614/3,659 screened (835 include/779 exclude), 2,045
+  open, 835 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
