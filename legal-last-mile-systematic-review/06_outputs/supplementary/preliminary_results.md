@@ -5552,6 +5552,44 @@ evidence of anything.
   1,671 open, 1,019 extracted studies, 46 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-fifth batch (10 records, 2026-09-27), twenty-eighth
+  batch from the 543-record pool.** `new_batch_pool.json[270:280]`.
+  Drew (2008, case study finding India's 73rd/74th Constitutional
+  Amendments empowering panchayats over groundwater directly enabled a
+  court-ordered closure of Coca-Cola's water-mining operation in
+  Plachimada, Kerala, S1022) — **INCLUDE**. Loftus (2007, political-
+  ecology study with 20 interviews finding Durban's differentiated
+  ground-tank connections and tiered tariffs tied to differential
+  payment burdens, S1023) — **INCLUDE**. Driessen (2008, case study of
+  Cochabamba SEMAPA's post-Water-War participatory-governance model,
+  elite capture vs. Southern Zone service expansion, S1024) —
+  **INCLUDE**. Tardanico (2008, regression study finding dwelling-title
+  status and water-service-establishment status predict municipal
+  service-coverage deficits, San Salvador, n=1,243, S1025) —
+  **INCLUDE**. Anand (2004, case study finding Chennai's unaccountable
+  Metro Water Board institutional structure coincides with 31% of
+  households lacking secure water entitlements despite official 90%+
+  access statistics, S1026) — **INCLUDE**. Alston & Mason (2008, E01
+  gender-composition-of-water-boards study, Murray-Darling Basin
+  Australia) — **EXCLUDE (E01)**. Rahaman, Everett & Neu (2013, E01
+  business-ethics/trust analysis of Ghana privatization) — **EXCLUDE
+  (E01)**. Douglas (2016, E01 general Public Value Management study
+  across mixed Caribbean utilities) — **EXCLUDE (E01)**. Gondhalekar et
+  al (2013, E01 water-scarcity/health study, Leh Ladakh India) —
+  **EXCLUDE (E01)**. Meinzen-Dick & Bakker (1999, E01 agricultural/
+  irrigation multiple-use-commons study, Sri Lanka) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1022-S1026,
+  1,019 → 1,024 rows each); `effect_sizes.csv` unchanged (46 rows: no
+  confirmed regression-based estimate isolating a legal/institutional
+  mechanism's effect on a Family A/B/C water-access outcome this batch);
+  `exclusion_log.csv` updated (969 → 974 rows; E01 411 → 416); duplicate
+  audit (exact-DOI + study_id) found no new duplicates; `full_text_
+  retrieval_queue.csv` regenerated (1,661 open records); schema
+  validation re-run clean.
+  Running totals: 1,998/3,659 screened (1,024 include/974 exclude),
+  1,661 open, 1,024 extracted studies, 46 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

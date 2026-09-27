@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Two-hundred-fifth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Twenty-eighth batch from `new_batch_pool.json[270:280]`.
+
+- **R23FC463CA51F** (Drew 2008, "From the Groundwater Up: Asserting water
+  rights in India"). **INCLUDE.** Case study documenting India's 73rd/
+  74th Constitutional Amendments empowering panchayats to regulate
+  groundwater extraction, upheld by a Joint Parliamentary Committee
+  report; the Plachimada, Kerala precedent shows this authority
+  directly producing a court-ordered plant closure blocking Coca-Cola's
+  groundwater mining. Extracted as **S1022**.
+- **RC1FEB7393384** (Loftus 2007, *IJURR*, "Working the Socio-Natural
+  Relations of the Urban Waterscape in South Africa"). **INCLUDE.**
+  Political-ecology/feminist-standpoint study with 20 interviews
+  finding eThekwini Water Services' differentiated ground-tank
+  connection technology and tiered tariff structure directly tied to
+  differential payment-burden outcomes across Durban neighbourhoods.
+  Extracted as **S1023**.
+- **RC377927F144E** (Driessen 2008, "Collective Management Strategies
+  and Elite Resistance in Cochabamba, Bolivia"). **INCLUDE.** Case
+  study of SEMAPA's post-Water-War 'Social Control' participatory-
+  governance model (elected Citizen Directors), documenting both
+  elite-capture limitations and a service-expansion Plan targeting the
+  underserved Southern Zone. Extracted as **S1024**.
+- **RC1D14599F0AE** (Tardanico 2008, *Journal of Development Studies*,
+  "Post-Civil War San Salvador..."). **INCLUDE.** Regression study
+  (heterogeneous choice ordinal models, n=1,243) incorporating formal/
+  informal dwelling-title status and community/government water-
+  service-establishment status as predictors of municipal service-
+  coverage deficits. Extracted as **S1025**.
+- **RC331942401C8** (Anand 2004, "The political economy of water
+  scarcity... southern India"). **INCLUDE.** Case study documenting
+  the Chennai Metro Water Board's principal-agent accountability
+  structure (accountable to the state legislature, not Chennai's own
+  unelected local government), coinciding with documented household-
+  level entitlement inequality (31% of households lack secure water
+  entitlements despite official 90%+ access statistics). Extracted as
+  **S1026**.
+- **RBFD1D75DFEC0** (Alston & Mason 2008, "Who Determines Access to
+  Australia's Water?...") — **EXCLUDE (E01).** Gender composition of
+  Murray-Darling Basin water-governance boards; agricultural/
+  environmental allocation, not documented household-access outcomes.
+- **RC0A0716E4072** (Rahaman, Everett & Neu 2013, "Trust, Morality, and
+  the Privatization of Water Services in Developing Countries") —
+  **EXCLUDE (E01).** Business-ethics/trust analysis of Ghana
+  privatization negotiations; no documented differential access
+  outcome.
+- **RC165BC72115E** (Douglas 2016, "Value-oriented public management in
+  vulnerable societies... Caribbean") — **EXCLUDE (E01).** General
+  Public Value Management study across 16 mixed (non-water-specific)
+  utilities.
+- **R24B92E5B8F42** (Gondhalekar et al 2013, "Drops and Hot Stones...
+  Leh Town, Ladakh, India") — **EXCLUDE (E01).** Water-scarcity/health
+  (diarrhoeal-disease) urban-planning study; no legal/institutional
+  access mechanism.
+- **RC3824F034384** (Meinzen-Dick & Bakker 1999, "Irrigation systems as
+  multiple-use commons... Sri Lanka") — **EXCLUDE (E01).** Agricultural/
+  irrigation multiple-use-commons study; domestic water one minor use
+  category.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1022-S1026 added;
+1,019 → 1,024 rows each). `effect_sizes.csv` unchanged (46 rows: all five
+includes are qualitative/mixed case studies or a regression study whose
+water-specific coefficient could not be confirmed with certainty from the
+extracted portions; none added under the strict Family A/B/C framework).
+`exclusion_log.csv` updated (969 → 974 rows; E01 411 → 416). Duplicate
+audit (exact-DOI + study_id) found no new duplicates. `full_text_
+retrieval_queue.csv` regenerated (1,661 open records). `validate_
+schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,998/3,659 screened (1,024 include/974 exclude), 1,661
+open, 1,024 extracted studies, 46 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Twenty-seventh batch from `new_batch_pool.json[260:270]`.
 
