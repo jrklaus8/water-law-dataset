@@ -4345,6 +4345,39 @@ evidence of anything.
   open, 874 extracted studies, 39 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-fourth batch (10 records, 2026-09-27), third batch
+  from `new_batch_pool.json`.** Miller (2000, historical case study of
+  colonial-era sanitary regulation/water concession contesting
+  traditional authority, Tangier, S877) — **INCLUDE**. Spronk (2007,
+  comparative case study of Bolivia's capitalization-law water
+  privatizations and resistance coalitions, S878) — **INCLUDE**.
+  Coville, Galiani, Gertler & Yoshida (2025, RCT of utility
+  contract-disconnection enforcement, Nairobi informal settlements,
+  S879) — **INCLUDE, EFFECT_SIZES ELIGIBLE** (30pp increase in payment,
+  p<0.001, but a precisely estimated null effect on household water
+  access/connection rates at 9-month follow-up). Gero & Willetts (2020,
+  multi-country qualitative study of local-government regulatory roles
+  in WASH markets, Vietnam/Cambodia/Indonesia, S880) — **INCLUDE**.
+  Kabogo et al. (2017, basin-scale Water Users' Associations under
+  Tanzania's WRM Act -- water-resource governance, not household
+  access) — **EXCLUDE (E01)**. Olivera (2001, published single-
+  informant interview transcript, not an independent empirical study)
+  — **EXCLUDE (E05)**. Torras (2005, cross-national power-inequality
+  regression, generic exposure) — **EXCLUDE (E01)**. Coles (2009,
+  reflective review essay on secondary/grey literature) — **EXCLUDE
+  (E05)**. Stokman (1995, game-theoretic methodology paper on Dutch
+  water-utility merger policy) — **EXCLUDE (E01)**. Griesinger & Moody
+  (2001, conference rapporteur summary report) — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S877-S880, 874 →
+  878 rows each); `effect_sizes.csv` updated (39 → 40 rows; S879
+  added); `exclusion_log.csv` updated (809 → 815 rows; E01 325 → 328,
+  E05 106 → 109); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,966 open records);
+  schema validation re-run clean.
+  Running totals: 1,693/3,659 screened (878 include/815 exclude), 1,966
+  open, 878 extracted studies, 40 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

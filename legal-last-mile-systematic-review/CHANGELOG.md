@@ -4,7 +4,78 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-third full-text screening batch (10 records, 4 includes, 5 excludes, 1 wrong_file_retrieved)
+## 2026-09-27 (latest) — Hundred-seventy-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Third batch drawn from `new_batch_pool.json`. Three target records
+(R4D81D56EA98B, R0F076F861B72, R063CE14907E2) had a prior
+`not_retrievable` status but a PDF is now available via the
+Antigravity delivery folder; all 10 confirmed with no prior
+`wrong_file_retrieved` history.
+
+- **R131D9C683C29** (Miller 2000, *J. North African Studies*,
+  "Watering the garden of Tangier: colonial contestations in a
+  Moroccan city"). **INCLUDE.** Historical institutional case study of
+  colonial-era municipal sanitary regulation, an English water
+  concession, and an international Sanitary Council contesting
+  traditional/makhzan authority over Tangier's water supply. Extracted
+  as **S877**.
+- **R0F7C649E8E07** (Spronk 2007, *Int'l Labor & Working-Class
+  History*, "Roots of Resistance to Urban Water Privatization in
+  Bolivia"). **INCLUDE.** Comparative case study of Bolivia's
+  capitalization-law municipal water-privatization concessions
+  (Cochabamba, La Paz-El Alto) and class dynamics of organized
+  resistance. Extracted as **S878**.
+- **R4D81D56EA98B** (Coville, Galiani, Gertler & Yoshida 2025, *Review
+  of Economics and Statistics*, "Financing Municipal Water and
+  Sanitation Services in Nairobi's Informal Settlements"). **INCLUDE.**
+  Randomized controlled trial of utility contract-disconnection
+  enforcement for nonpayment. Extracted as **S879**.
+  **EFFECT_SIZES ELIGIBLE** (Family C): 30-percentage-point increase in
+  payment (p<0.001) but a precisely estimated null effect on actual
+  household water access, connection rates, spending and collection
+  time at 9-month follow-up.
+- **R063CE14907E2** (Gero & Willetts 2020, *Waterlines*, "Securing a
+  conducive environment for WASH markets: The role of local
+  government"). **INCLUDE.** Multi-country (Vietnam, Cambodia,
+  Indonesia) qualitative interview study of local-government
+  regulatory/licensing/subsidy mechanisms for small-scale WASH
+  enterprises. Extracted as **S880**.
+- **R3ADAE9AD6CD1** (Kabogo, Anderson, Hyera & Kajanja 2017,
+  "Facilitating public participation in water resources management:
+  reflections from Tanzania") — **EXCLUDE (E01).** Basin-scale water
+  Users' Associations under Tanzania's WRM Act concern water-RESOURCE
+  allocation governance, not household drinking-water access.
+- **R35523A7C027A** (Olivera 2001, "The Fight for Water and Democracy:
+  An Interview with Oscar Olivera") — **EXCLUDE (E05).** Published
+  verbatim single-informant interview transcript, not an independent
+  empirical research study.
+- **R2153D357CF74** (Torras 2005, "Income and Power Inequality as
+  Determinants of Environmental and Health Outcomes") — **EXCLUDE
+  (E01).** Cross-national regression with a generic societal
+  power-inequality exposure, not a documented legal/institutional
+  mechanism.
+- **R1C7EBDEC4818** (Coles 2009, "Domestic water provision and gender
+  roles in drylands") — **EXCLUDE (E05).** Reflective review essay
+  drawing on a co-edited book and secondary/grey literature.
+- **R1876AB3E9A52** (Stokman 1995, "Modeling Conflict and Exchange in
+  Collective Decision Making") — **EXCLUDE (E01).** Game-theoretic
+  methodology paper on Dutch water-utility merger/industrial-
+  organization policy, not water access.
+- **R0F076F861B72** (Griesinger & Moody 2001, "North, South & Central
+  America and the Caribbean") — **EXCLUDE (E05).** Conference
+  rapporteur summary report, no original empirical data.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S877-S880, 874 →
+878 rows each). `effect_sizes.csv` updated (39 → 40 rows; S879 Nairobi
+RCT newly eligible). `exclusion_log.csv` updated (809 → 815 rows; E01
+325 → 328, E05 106 → 109). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,966 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,693/3,659 screened (878 include/815 exclude), 1,966
+open, 878 extracted studies, 40 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-third full-text screening batch (10 records, 4 includes, 5 excludes, 1 wrong_file_retrieved)
 
 Second batch drawn from `new_batch_pool.json`. All 10 target
 record_ids confirmed open with no prior decisions or
