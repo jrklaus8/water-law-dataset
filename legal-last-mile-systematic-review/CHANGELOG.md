@@ -4,7 +4,73 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eightieth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-first full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+
+Fourth batch from `new_batch_pool.json[30:40]`.
+
+- **R98EE7A8CD53B** (Hossain 2012, *Habitat International*, "The
+  production of space in the negotiation of water and electricity
+  supply in a bosti of Dhaka"). **INCLUDE.** Ethnographic case study of
+  informal-settlement utility negotiation under formal utility
+  non-recognition. Extracted as **S912**.
+- **R95641AC1C405** (Baud & Dhanalakshmi 2007, *Cities*, "Governance in
+  urban environmental management... Chennai"). **INCLUDE.** Comparative
+  2-municipality case study of multi-stakeholder sewerage-investment
+  governance. Extracted as **S913**.
+- **R9499AFC94021** (Dugard 2011, book chapter, "Urban Basic Services:
+  Rights, Reality, and Resistance," in *Socio-Economic Rights in South
+  Africa*). **INCLUDE.** Documentary/legal analysis of South Africa's
+  constitutional water-rights framework vs. municipal service-delivery
+  reality. Extracted as **S914**.
+- **R934020F5D9E0** (Gopakumar 2014, *IJURR*, "Experiments and
+  Counter-Experiments in the Urban Laboratory of Water-Supply
+  Partnerships in India"). **INCLUDE.** Qualitative case study of a
+  Bengaluru water-supply PPP pilot and resident counter-mobilization.
+  Extracted as **S915**.
+- **R8FA24A9DD2C8** (Toure, Kane, Noel, Turmine, Nedeff & Lazar 2012,
+  *IJAEOG*, "Water-poverty relationships in the coastal town of Mbour
+  (Senegal)"). **INCLUDE.** GIS-based household survey linking the 1995
+  Senegalese water-sector reform to connection/affordability outcomes.
+  Extracted as **S916**.
+- **R984395E64462** (Crane 1994, *World Development*, "Water Markets,
+  Market Reform and the Urban Poor: Results from Jakarta, Indonesia").
+  **INCLUDE.** Household survey on the April 1990 water-resale
+  deregulation measure's affordability/consumption impacts. Extracted
+  as **S917**.
+- **R9DF6B20973C6** (van Steenbergen 1995, "The Frontier Problem in
+  Incipient Groundwater Management Regimes in Balochistan (Pakistan)")
+  — **EXCLUDE (E01).** Basin-scale common-pool groundwater-management
+  regime analysis for irrigated agriculture, not household access.
+- **R9D4038D0E695** (Isunju, Orach & Kemp 2016, "Community-level
+  adaptation... Kampala's wetlands") — **EXCLUDE (E01).** Environmental-
+  vulnerability/livelihood-adaptation study; water access is one minor
+  benefit among several wetland-location benefits.
+- **R996153B78E54** (Rehan, Knight, Haas & Unger 2011, "Application of
+  system dynamics for developing financially self-sustaining management
+  policies for water and wastewater systems") — **EXCLUDE (E06).**
+  System Dynamics simulation/demonstration-model methodology paper,
+  Canada.
+- **R99433B75F8E9** ("Ecology in Public Health," Kiss 2005) —
+  **WRONG_FILE_RETRIEVED.** Confirmed via full-text read that the
+  delivered PDF is an entirely unrelated 2025 PRRSV swine-virus One
+  Health veterinary review (Chen, Weng, Huang, Li & Duan). Flagged,
+  not screened, not moved; record remains open pending correct
+  retrieval.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S912-S917, 909 →
+915 rows each). `effect_sizes.csv` unchanged (41 rows; all six includes
+are qualitative/case-study or descriptive-survey designs, no
+regression-based estimate). `exclusion_log.csv` updated (842 → 845
+rows; E01 339 → 341, E06 75 → 76). Duplicate audit (exact-DOI +
+study_id) found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (1,899 open records; R99433B75F8E9 remains open/
+wrong_file_retrieved). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,760/3,659 screened (915 include/845 exclude), 1,899
+open, 915 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eightieth full-text screening batch (10 records, 6 includes, 4 excludes)
 
 Third batch from `new_batch_pool.json[20:30]`.
 

@@ -4612,6 +4612,42 @@ evidence of anything.
   open, 909 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-first batch (10 records, 2026-09-27), fourth batch
+  from the 543-record pool.** `new_batch_pool.json[30:40]`. Hossain
+  (2012, ethnographic case study of Dhaka bosti utility negotiation
+  under formal non-recognition, S912) — **INCLUDE**. Baud &
+  Dhanalakshmi (2007, comparative 2-municipality multi-stakeholder
+  sewerage-governance case study, Chennai, S913) — **INCLUDE**. Dugard
+  (2011, documentary/legal analysis of South Africa's constitutional
+  water-rights framework vs. municipal service-delivery reality, S914)
+  — **INCLUDE**. Gopakumar (2014, qualitative case study of a
+  Bengaluru water-supply PPP pilot and resident counter-mobilization,
+  S915) — **INCLUDE**. Toure, Kane, Noel, Turmine, Nedeff & Lazar
+  (2012, GIS-based household survey linking the 1995 Senegalese
+  water-sector reform to connection/affordability outcomes, Mbour,
+  S916) — **INCLUDE**. Crane (1994, household survey on Jakarta's
+  April 1990 water-resale deregulation measure, S917) — **INCLUDE**.
+  van Steenbergen (1995, basin-scale groundwater-management-regime
+  analysis, Balochistan Pakistan) — **EXCLUDE (E01)**. Isunju, Orach
+  & Kemp (2016, environmental-vulnerability/livelihood-adaptation
+  study, water a minor topic, Kampala wetlands) — **EXCLUDE (E01)**.
+  Rehan, Knight, Haas & Unger (2011, System Dynamics utility financial-
+  modeling methodology paper, Canada) — **EXCLUDE (E06)**. "Ecology
+  in Public Health" (Kiss 2005) — **WRONG_FILE_RETRIEVED**: confirmed
+  via full-text read that the delivered PDF is an unrelated 2025 PRRSV
+  swine-virus One Health veterinary review; flagged, not screened, not
+  moved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S912-S917, 909 →
+  915 rows each); `effect_sizes.csv` unchanged (41 rows);
+  `exclusion_log.csv` updated (842 → 845 rows; E01 339 → 341, E06 75 →
+  76); duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,899 open records;
+  R99433B75F8E9 remains open/wrong_file_retrieved); schema validation
+  re-run clean.
+  Running totals: 1,760/3,659 screened (915 include/845 exclude), 1,899
+  open, 915 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
