@@ -4,7 +4,67 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-second full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-fifty-third full-text screening batch (10 records, 3 includes, 7 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RFE7846A23C22** (Bakker 2003, *The Geographical Journal*, "Archipelagos
+  and networks: urbanization and water privatization in the South").
+  **INCLUDE.** Foundational theoretical/comparative analysis distinguishing
+  privatization from commercialization/regulatory change, directly linking
+  the shift to public-to-private management with fragmented, class-
+  differentiated urban water coverage. Extracted as **S759**.
+- **RFE6F4BE0CCF1** (Ahlers, Schwartz & Perez Guida 2013, *Habitat
+  International*, "The myth of 'healthy' competition in the water
+  sector... small scale water providers"). **INCLUDE.** Field research
+  (Maputo, 2009) showing inequities between small-scale independent
+  water providers undermine the donor-promoted market-competition/
+  formalization policy narrative. Extends Ranganathan/Munala & Kainz
+  precedent. Extracted as **S760**.
+- **RF816C47AF660** (Nzengya 2018, *Development Policy Review*, "Improving
+  water service to the urban poor through delegated management...
+  Kisumu, Kenya"). **INCLUDE.** Quasi-experimental treatment-vs-control
+  comparison of Kenya Water Act 2002 delegated management model; DMM
+  settlements had significantly lower water costs (ANOVA, p<.01) than
+  control. Not effect_sizes eligible (ANOVA, not a regression-based
+  estimate, per S724 chi-square precedent). Extracted as **S761**.
+- **RFE11AB2AFE89** (O'Leary 2018, *Case Studies in the Environment*,
+  "Pluralizing Science for Inclusive Water Governance... Delhi") —
+  **EXCLUDE (E01).** Citizen-science/data-collection-methodology paper,
+  not a legal-institutional-mechanism study.
+- **RFDABF84847E7** (Almandoz et al. 2005, "Leakage Assessment through
+  Water Distribution Network Simulation") — **EXCLUDE (E06).** Pure
+  hydraulic-engineering leakage-simulation methodology.
+- **RFD27AC6C215B** (Bischoff-Mattson et al. 2020, *Water Policy*, "Shape
+  of a water crisis... 'Day Zero' in South Africa") — **EXCLUDE (E01).**
+  Q-methodology practitioner-perception-clustering study.
+- **RFA83F1BCC6A9** (Das, Laishram & Jawed 2019, *Water Research*,
+  "Public participation in urban water supply projects... Guwahati") —
+  **EXCLUDE (E01).** Public-participation project-management framework-
+  development/validation study.
+- **RF84BAA4E54CD** (Xu et al. 2009, "Decision making under information
+  constraints") — **EXCLUDE (E06).** Pure sensor-placement engineering/
+  operations-research paper.
+- **RF7BB1B57C0B3** (Arlosoroff, Roche & Wright 1989, "Economic
+  Considerations for Low-Cost, Groundwater-Based Rural Water Supply") —
+  **EXCLUDE (E06).** Engineering pumping-technology cost-benefit tool.
+- **RF6EFC712D0D7** (Mitchell, Whiteside & Jones 2009, "Water main
+  rehabilitation and replacement... dynamic prioritization tool") —
+  **EXCLUDE (E06).** Pure asset-management/GIS engineering tool.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S759-S761, 756 →
+759 rows each). `effect_sizes.csv` unchanged (35 rows). `exclusion_log.csv`
+updated (719 → 726 rows; E01 279 → 282, E06 53 → 57). Duplicate audit
+found no new duplicates. `full_text_retrieval_queue.csv` regenerated
+(2,174 open records). `validate_schemas.py` confirms all 13 tracked
+files OK.
+
+Running totals: 1,485/3,659 screened (759 include/726 exclude), 2,174
+open, 759 extracted studies, 35 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-second full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

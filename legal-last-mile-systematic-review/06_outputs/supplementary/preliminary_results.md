@@ -3660,6 +3660,36 @@ evidence of anything.
   Running totals: 1,475/3,659 screened (756 include/719 exclude), 2,184
   open, 756 extracted studies, 35 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-third full-text screening batch, 10
+  records, 3 includes, 7 excludes.** Bakker (2003, foundational typology
+  distinguishing privatization from commercialization/regulatory change,
+  linked to fragmented class-differentiated water coverage, global South,
+  S759) — **INCLUDE**. Ahlers, Schwartz & Perez Guida (2013, field
+  research showing inequities between small-scale independent water
+  providers undermine market-competition/formalization policy, Maputo,
+  S760) — **INCLUDE** (extends Ranganathan/Munala & Kainz). Nzengya
+  (2018, quasi-experimental DMM-vs-control comparison, significantly
+  lower water costs in DMM settlements, Kisumu, S761) — **INCLUDE** (not
+  effect_sizes eligible: ANOVA, not a regression-based estimate, per S724
+  precedent). O'Leary (2018, citizen-science/data-collection-methodology
+  paper, Delhi) — **EXCLUDE (E01)**. Almandoz et al. (2005, hydraulic-
+  engineering leakage-simulation methodology) — **EXCLUDE (E06)**.
+  Bischoff-Mattson et al. (2020, Q-methodology practitioner-perception
+  study, Cape Town Day Zero) — **EXCLUDE (E01)**. Das, Laishram & Jawed
+  (2019, public-participation project-management framework development,
+  Guwahati) — **EXCLUDE (E01)**. Xu et al. (2009, sensor-placement
+  engineering/operations-research paper) — **EXCLUDE (E06)**. Arlosoroff,
+  Roche & Wright (1989, pumping-technology cost-benefit engineering
+  tool) — **EXCLUDE (E06)**. Mitchell, Whiteside & Jones (2009, GIS
+  asset-management prioritization tool) — **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S759-S761, 756 →
+  759 rows each); `effect_sizes.csv` unchanged (35 rows); `exclusion_log.csv`
+  updated (719 → 726 rows; E01 279 → 282, E06 53 → 57); duplicate audit
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (2,174 open records); schema validation re-run clean.
+  Running totals: 1,485/3,659 screened (759 include/726 exclude), 2,174
+  open, 759 extracted studies, 35 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3678,17 +3708,17 @@ evidence of anything.
 - A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
   been assigned — open question for the researcher, distinct from the
   title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,475 of the 3,659
-  Phase-5 includes have been assessed; 2,184 records have not yet been
+- Full-text screening itself is far from complete: 1,485 of the 3,659
+  Phase-5 includes have been assessed; 2,174 records have not yet been
   reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,184
+  on the researcher supplying full-text PDFs. Eleven of those 2,174
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 756
+- Extraction (Phase 8) is caught up with screening completely — all 759
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  756 extracted studies** (a first 12-study partial pilot batch was
+  759 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
