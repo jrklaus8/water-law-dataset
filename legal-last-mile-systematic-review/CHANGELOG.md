@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixty-first full-text screening batch (10 records drawn, 5 includes, 4 excludes, 1 left undecided)
+## 2026-09-27 (latest) — Hundred-sixty-second full-text screening batch (10 records, 8 includes, 2 excludes)
+
+Continuing through the Antigravity delivery folder (records previously
+marked `not_retrievable`, now delivered). All 10 target record_ids
+confirmed open with no prior decisions or `wrong_file_retrieved` history.
+
+- **RBDEF2943A1C3** (Hylton & Charles 2018, *Habitat International*,
+  "Informal mechanisms to regularize informal settlements: Water
+  services in Sao Paulo's favelas"). **INCLUDE.** Interview-based case
+  study of four informal 'negotiated institution' mechanisms overcoming
+  the legal barrier informal settlement status poses to service
+  extension. Extracted as **S813**.
+- **RBDD2A9AC8690** (Costa, Costa, Dias & Welter 2009, *Water Science
+  & Technology*, "The role of municipal committees in the development
+  of an integrated urban water policy in Belo Horizonte, Brazil").
+  **INCLUDE.** Statutory/institutional case study of legally-mandated
+  participatory water-governance committees, with committee-member
+  interviews. Extracted as **S814**.
+- **RBB42A504E371** (Bakker, Simms, Joe & Harris 2018, "Indigenous
+  Peoples and Water Governance in Canada: Regulatory Injustice and
+  Prospects for Reform"). **INCLUDE.** Legal/jurisdictional analysis
+  of unresolved Aboriginal-title water rights and fragmented federal/
+  provincial/municipal governance producing on-reserve water injustice.
+  Extracted as **S815**.
+- **RBA427862C34C** (Kibassa 2011, *Water Science & Technology*, "The
+  impact of cost recovery and sharing system on water policy
+  implementation and human right to water: a case of Ileje,
+  Tanzania"). **INCLUDE.** 145-household survey documenting cost-
+  recovery-driven service reduction and denial of piped-service
+  extension to two villages. Extracted as **S816**.
+- **RB932E7855B82** (Wanda et al. 2017, *International Journal of
+  Disaster Risk Reduction*, "Governing WASH for disaster risk
+  reduction in Karonga Town, Malawi"). **INCLUDE.** Interview/
+  documentary case study of the absence of a WASH legal framework and
+  council/NRWB jurisdictional disconnect. Extracted as **S817**.
+- **RB894AA51801F** (Wanda, Gulula & Phiri 2012, *Physics and
+  Chemistry of the Earth*, "An appraisal of public water supply and
+  coverage in Mzuzu City, northern Malawi"). **INCLUDE.** 420-
+  respondent case study documenting the statutory water board's
+  discretionary halt on new connections in unplanned settlements.
+  Extracted as **S818**.
+- **RB7A0171C272A** (Donoso 2017, *WIREs Water*, "Urban water pricing
+  in Chile: cost recovery, affordability, and water conservation").
+  **INCLUDE.** Institutional/legal case study of Chile's WSS tariff
+  and concession regulatory framework, with quantified subsidy-
+  targeting errors. Extracted as **S819**.
+- **RB76C55D87C12** (Komala, Nur & Septanisa 2020, *AIP Conference
+  Proceedings*, "Real demand survey of the water supply system in
+  Padang city"). **INCLUDE.** 200-household survey quantifying
+  connection-fee/tariff affordability and reliability barriers to
+  utility subscription. Extracted as **S820**.
+- **RB937F6B14510** (Kolb & Williamson 2012, "Water and Sewer
+  Infrastructure Challenges as a Barrier to Housing Development in the
+  Marcellus Shale Region") — **EXCLUDE (E01).** Utility infrastructure-
+  expansion capacity/cost study for new housing, not household-level
+  water-access exclusion.
+- **RB8541E7A11B9** (Alley, Barr & Mehta 2018, "Infrastructure
+  disarray in the clean Ganga and clean India campaigns") — **EXCLUDE
+  (E01).** Wastewater/fecal-sludge infrastructure-chain governance and
+  manual-scavenging labor study, not household water/sanitation-access
+  determination.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S813-S820, 810 →
+818 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (754 → 756 rows; E01 294 → 296). Duplicate
+audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,085 open records). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,574/3,659 screened (818 include/756 exclude), 2,085
+open, 818 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixty-first full-text screening batch (10 records drawn, 5 includes, 4 excludes, 1 left undecided)
 
 Continuing through the Antigravity delivery folder (records previously
 marked `not_retrievable`, now delivered). All 10 target record_ids

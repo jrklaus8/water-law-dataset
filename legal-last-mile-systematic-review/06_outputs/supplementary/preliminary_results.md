@@ -3940,6 +3940,38 @@ evidence of anything.
   Running totals: 1,564/3,659 screened (810 include/754 exclude), 2,095
   open, 810 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-second full-text screening batch, 10
+  records, 8 includes, 2 excludes.** Hylton & Charles (2018, informal
+  'negotiated institution' mechanisms overcoming a legal barrier to
+  service extension, Sao Paulo favelas, S813) — **INCLUDE**. Costa et
+  al. (2009, legally-mandated participatory water-governance
+  committees, Belo Horizonte, S814) — **INCLUDE**. Bakker et al.
+  (2018, unresolved Aboriginal-title water rights and fragmented
+  federal/provincial governance, Canada, S815) — **INCLUDE**. Kibassa
+  (2011, 145-household survey, cost-recovery-driven service reduction
+  and denial of extension, Ileje Tanzania, S816) — **INCLUDE**. Wanda
+  et al. (2017, absence of WASH legal framework, council/NRWB
+  jurisdictional disconnect, Karonga Malawi, S817) — **INCLUDE**.
+  Wanda, Gulula & Phiri (2012, 420-respondent study, discretionary
+  halt on unplanned-settlement connections, Mzuzu Malawi, S818) —
+  **INCLUDE**. Donoso (2017, Chile WSS tariff/concession regulatory
+  framework, quantified subsidy-targeting errors, S819) —
+  **INCLUDE**. Komala, Nur & Septanisa (2020, 200-household survey,
+  connection-fee/tariff affordability barriers, Padang Indonesia,
+  S820) — **INCLUDE**. Kolb & Williamson (2012, utility infrastructure-
+  expansion cost/capacity study for new housing, Marcellus Shale
+  region) — **EXCLUDE (E01)**. Alley, Barr & Mehta (2018, wastewater/
+  fecal-sludge infrastructure-chain governance and manual-scavenging
+  labor study, India) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S813-S820, 810 →
+  818 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (754 → 756 rows; E01 294 → 296); duplicate
+  audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (2,085 open records); schema validation re-run clean.
+  Running totals: 1,574/3,659 screened (818 include/756 exclude), 2,085
+  open, 818 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
