@@ -4,7 +4,80 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninetieth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-first full-text screening batch (10 records, 7 includes, 3 excludes)
+
+Fourteenth batch from `new_batch_pool.json[130:140]`.
+
+- **R4D48C6031F04** (Nakyagaba, Lawhon, Lwasa, Silver & Tumwine 2021,
+  *Singapore Journal of Tropical Geography*, "Power, politics and a poo
+  pump: Contestation over legitimacy, access and benefits of sanitation
+  technology in Kampala"). **INCLUDE.** Ethnographic case study tracing
+  KCCA's regulatory legitimization of gulper pit-emptying technology
+  (permits, treatment-plant access) expanding affordable sanitation
+  access for informal-settlement households. Extracted as **S965**.
+- **R4D32E3F3E2E3** (Jimenez, Mtango & Cairncross 2014, *Water Policy*,
+  "What role for local government in sanitation promotion? Lessons from
+  Tanzania"). **INCLUDE.** Problem-driven governance and political
+  economy analysis of district-council institutional/budget constraints
+  implementing the National Sanitation Campaign. Extracted as **S966**.
+- **RA32AC23D7C25** (Balazs & Lubell 2014, *Water Policy*, "Social
+  learning in an environmental justice context: a case study of
+  integrated regional water management"). **INCLUDE.** Case study of
+  California Water Code-mandated disadvantaged-community participation
+  in regional water planning and resulting institutional social
+  learning. Extracted as **S967**.
+- **RA0E245C18B33** (Lea 2008, *Human Organization*, "Housing for
+  Health in Indigenous Australia: Driving Change when Research and
+  Policy are Part of the Problem"). **INCLUDE.** Ethnographic case study
+  documenting institutional funding fragmentation and bureaucratic
+  racial bias (a Water Authority's refusal to meter water use) driving
+  water/sanitation infrastructure failure in remote Aboriginal
+  communities. Extracted as **S968**.
+- **RA1C04D0EBE47** (Njoh & Akiwumi 2011, *Cities*, "The impact of
+  colonization on access to improved water and sanitation facilities in
+  African cities"). **INCLUDE.** Cross-national OLS regression (43
+  African countries) finding colonial-era governance duration a
+  significant predictor of contemporary urban water/sanitation access
+  (b=0.322, t=4.500, p<0.000, Adj. R2=0.34). Extracted as **S969** and
+  added to `effect_sizes.csv` (Family A).
+- **RA361E2E22F9C** (Terhorst, Olivera & Dwinell 2013, *Latin American
+  Perspectives*, "Social Movements, Left Governments, and the Limits of
+  Water Sector Reform in Latin America's Left Turn"). **INCLUDE.**
+  Comparative case study of constitutional water-rights reforms
+  (Uruguay, Bolivia, Ecuador) and their limited institutional
+  implementation. Extracted as **S970**.
+- **RA1626402A233** (Spaling, Brouwer & Njoka 2014, *Development in
+  Practice*, "Factors affecting the sustainability of a community water
+  supply project in Kenya"). **INCLUDE.** Case study of Kenya's Water
+  Act 2002 licensing/permit requirements and community-governance
+  capacity threatening long-term water-supply access for 11,000+
+  beneficiaries. Extracted as **S971**.
+- **RA312FCCFFA53** (Lin & Berg 2008, "Incorporating Service Quality
+  into Yardstick Regulation: An Application to the Peru Water Sector")
+  — **EXCLUDE (E06).** Technical DEA/Malmquist-index benchmarking
+  methodology study of utility productivity, not household access.
+- **R9F7FE0255880** (Aubin 2011, "Non-owners' success: confrontations
+  of rules in rivalries between water users in Belgium and
+  Switzerland") — **EXCLUDE (E01).** General water-resource-rivalry
+  typology (industrial, hydro-power, flood control), not household
+  water/sanitation access.
+- **RA13FEA76F392** (Kubler & Schwab 2007, "New regionalism in five
+  Swiss metropolitan areas: An assessment of inclusiveness, deliberation
+  and democratic accountability") — **EXCLUDE (E01).** Water supply is
+  one of four co-equal policy sectors studied; outcome is governance
+  democratic quality, not water access.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S965-S971 added;
+962 → 969 rows each). `effect_sizes.csv` updated (44 → 45 rows: S969,
+Family A, added). `exclusion_log.csv` updated (887 → 890 rows; E01 355
+→ 357, E06 87 → 88). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,800 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,859/3,659 screened (969 include/890 exclude), 1,800
+open, 969 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninetieth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Thirteenth batch from `new_batch_pool.json[120:130]`.
 

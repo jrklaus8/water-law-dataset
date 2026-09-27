@@ -4989,6 +4989,43 @@ evidence of anything.
   open, 962 extracted studies, 44 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-first batch (10 records, 2026-09-27), fourteenth
+  batch from the 543-record pool.** `new_batch_pool.json[130:140]`.
+  Nakyagaba et al (2021, ethnographic case study of KCCA regulatory
+  legitimization of gulper pit-emptying sanitation technology, Kampala,
+  S965) — **INCLUDE**. Jimenez, Mtango & Cairncross (2014, PGPE analysis
+  of district-council institutional constraints on the National
+  Sanitation Campaign, Tanzania, S966) — **INCLUDE**. Balazs & Lubell
+  (2014, case study of California Water Code-mandated disadvantaged-
+  community participation in regional water planning, S967) —
+  **INCLUDE**. Lea (2008, ethnographic case study of institutional
+  funding fragmentation and bureaucratic racial bias in Indigenous
+  Australian water/sanitation infrastructure, S968) — **INCLUDE**. Njoh
+  & Akiwumi (2011, cross-national OLS regression, colonial-era
+  governance duration significantly predicting urban water/sanitation
+  access across 43 African countries, S969) — **INCLUDE**, added to
+  `effect_sizes.csv` (Family A). Terhorst, Olivera & Dwinell (2013,
+  comparative case study of constitutional water-rights reforms and
+  their limited institutional implementation, Uruguay/Bolivia/Ecuador,
+  S970) — **INCLUDE**. Spaling, Brouwer & Njoka (2014, case study of
+  Kenya's Water Act 2002 compliance and community-governance capacity
+  threatening water-supply sustainability, S971) — **INCLUDE**. Lin &
+  Berg (2008, technical DEA/Malmquist-index benchmarking study of Peru
+  water-utility productivity) — **EXCLUDE (E06)**. Aubin (2011, general
+  water-resource-rivalry typology, Belgium/Switzerland) — **EXCLUDE
+  (E01)**. Kubler & Schwab (2007, Swiss metropolitan governance across
+  four co-equal policy sectors including water supply, outcome is
+  democratic accountability not water access) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S965-S971, 962 →
+  969 rows each); `effect_sizes.csv` updated (44 → 45 rows: S969 added);
+  `exclusion_log.csv` updated (887 → 890 rows; E01 355 → 357, E06 87 →
+  88); duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,800 open records);
+  schema validation re-run clean.
+  Running totals: 1,859/3,659 screened (969 include/890 exclude), 1,800
+  open, 969 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
