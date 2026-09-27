@@ -4537,6 +4537,43 @@ evidence of anything.
   open, 898 extracted studies, 41 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-ninth batch (10 records, 2026-09-27), second batch
+  from the 543-record pool.** `new_batch_pool.json[10:20]`. Larrain
+  (2012, documentary/statistical analysis of Chile's 1981 Water Code
+  and post-privatization rate/coverage outcomes, S901) — **INCLUDE**.
+  Avidar (2018, mixed-methods analysis of Kenya's 2010 devolution
+  reform and Water Acts 2002/2016, Siaya County, S902) — **INCLUDE**.
+  Allison (2002, multiple-case study of CBO/local-government sanitation
+  governance under South Africa's bill-of-rights framework, Cape Town,
+  S903) — **INCLUDE**. Wahby (2021, two-case-study ethnography of
+  state/informal water-governance arrangements, Cairo, S904) —
+  **INCLUDE**. Akumuntu, Wehn, Mulenga & Brdanovic (2017, case study of
+  government institutional/regulatory constraints on sustainable FSM
+  access, Kigali Rwanda, S905) — **INCLUDE**. Bond (2000, water is one
+  of three illustrative topics in a broader political-economy
+  discourse essay, South Africa) — **EXCLUDE (E01)**. Frenoux &
+  Tsitsikalis (2015, market-efficiency framing of Cambodia's private
+  FSM operator market, distinguished from Akumuntu's institutional
+  framing) — **EXCLUDE (E01)**. Ranganathan (2016, confirmed via
+  full-text read as a self-framed theoretical essay on Flint with no
+  original data collection) — **EXCLUDE (E05)**. Vivekanandan (2009,
+  confirmed via full-text read to concern India's nanotechnology
+  health sector with water mentioned only in passing, a
+  corpus-inclusion error) — **EXCLUDE (E01)**. Hoko & Hertle (2006,
+  technical M&E study of an NGO borehole-rehabilitation project's
+  breakdown rates and pump functionality, Zimbabwe) — **EXCLUDE
+  (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S901-S905, 898 →
+  903 rows each); `effect_sizes.csv` unchanged (41 rows; all five
+  includes are documentary/case-study/ethnographic designs, no
+  regression-based estimate); `exclusion_log.csv` updated (833 → 838
+  rows; E01 335 → 338, E05 113 → 114); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,918 open records); schema validation re-run clean.
+  Running totals: 1,741/3,659 screened (903 include/838 exclude), 1,918
+  open, 903 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

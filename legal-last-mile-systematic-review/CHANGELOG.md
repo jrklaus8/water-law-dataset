@@ -4,7 +4,74 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-eighth full-text screening batch (10 records, 6 includes, 4 excludes)
+## 2026-09-27 (latest) — Hundred-seventy-ninth full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Second batch from `new_batch_pool.json[10:20]` (the 543-record pool built
+at Batch 178).
+
+- **RABD874ECDC9D** (Larrain 2012, *Environmental Justice*, "Human
+  Rights and Market Rules in Chile's Water Conflicts"). **INCLUDE.**
+  Documentary/statistical analysis of the 1981 Water Code and
+  post-privatization rate/coverage outcomes, Chile. Extracted as
+  **S901**.
+- **RAF5FDD222D54** (Avidar 2018, *The Journal of the Middle East and
+  Africa*, "Half-hearted Devolution... Kenya's water governance from
+  Siaya County"). **INCLUDE.** Mixed-methods analysis of Kenya's 2010
+  devolution reform and Water Acts 2002/2016. Extracted as **S902**.
+- **RAAA3E8CD5A17** (Allison 2002, *Social Science & Medicine*,
+  "Balancing responsibility for sanitation"). **INCLUDE.**
+  Multiple-case study of CBO/local-government sanitation governance
+  under South Africa's bill-of-rights framework, Cape Town. Extracted
+  as **S903**.
+- **RA88CE2AB8E94** (Wahby 2021, *Environment and Planning E*, "Urban
+  informality and the state: Repairing Cairo's waters through Gehood
+  Zateya"). **INCLUDE.** Two-case-study ethnography of state/informal
+  water-governance arrangements, Cairo. Extracted as **S904**.
+- **RA78F7A82EE77** (Akumuntu, Wehn, Mulenga & Brdanovic 2017,
+  *IJHEH*, "Enabling the sustainable Faecal Sludge Management service
+  delivery chain... Kigali, Rwanda"). **INCLUDE.** Case study of
+  government institutional/regulatory constraints on sustainable FSM
+  access. Extracted as **S905**.
+- **RAF1193CDC9AF** (Bond 2000, "Economic Growth, Ecological
+  Modernization or Environmental Justice? Conflicting Discourses in
+  Post-Apartheid South Africa") — **EXCLUDE (E01).** Water/sanitation
+  is one of three illustrative case studies within a broader
+  macro-political-economy discourse essay.
+- **RA8A5580EBB31** (Frenoux & Tsitsikalis 2015, "Domestic private
+  fecal sludge emptying services in Cambodia: between market
+  efficiency and regulation needs") — **EXCLUDE (E01).** Market-
+  efficiency framing of a private FSM operator market, not a
+  legal/institutional access-barrier study; distinguished from the
+  Akumuntu Kigali paper's institutional-governance framing this same
+  batch.
+- **RAEF4F8AC8D31** (Ranganathan 2016, "Thinking with Flint: Racial
+  Liberalism and the Roots of an American Water Tragedy") — **EXCLUDE
+  (E05).** Confirmed via full-text read as a self-framed theoretical/
+  interpretive essay (critical race theory) with no described original
+  data collection.
+- **RA3D65AC0E1D7** (Vivekanandan 2009, "Nano Applications, Mega
+  Challenges: The Case of the Health Sector in India") — **EXCLUDE
+  (E01).** Confirmed via full-text read to concern nanotechnology in
+  India's health/pharma sector; water mentioned only in passing --
+  corpus-inclusion error.
+- **RA3683AE3534F** (Hoko & Hertle 2006, "An evaluation of the
+  sustainability of a rural water rehabilitation project in Zimbabwe")
+  — **EXCLUDE (E06).** Technical M&E study of NGO borehole-
+  rehabilitation project performance (breakdown rates, pump
+  functionality), not a legal/institutional access-mechanism study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S901-S905, 898 →
+903 rows each). `effect_sizes.csv` unchanged (41 rows; all five includes
+are documentary/case-study/ethnographic designs, no regression-based
+estimate). `exclusion_log.csv` updated (833 → 838 rows; E01 335 → 338,
+E05 113 → 114). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,918 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,741/3,659 screened (903 include/838 exclude), 1,918
+open, 903 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-eighth full-text screening batch (10 records, 6 includes, 4 excludes)
 
 First batch from a new, much larger pool: a bulk delivery of 552 unique PDFs
 across the Google Drive inbox and Antigravity delivery folders (up from the
