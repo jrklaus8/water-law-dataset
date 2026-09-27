@@ -4,7 +4,95 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-ninety-second full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-ninety-third full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Sixteenth batch from `new_batch_pool.json[150:160]`.
+
+- **R44B35D130A49** (Mwenge Kahinda, Taigbenu & Boroto 2007, *Physics
+  and Chemistry of the Earth*, "Domestic rainwater harvesting to
+  improve water supply in rural South Africa"). **INCLUDE.** Legal/
+  policy review documenting domestic rainwater harvesting's ambiguous/
+  illegal status under South Africa's National Water Act (Act No. 36 of
+  1998) and Water Services Act (Act No. 108 of 1997), plus the DWAF
+  Pilot Programme government financial-assistance mechanism (ss. 61/62
+  National Water Act). Extracted as **S976**.
+- **R4443C2EFEEE0** (Bolaane & Ikgopoleng 2011, *Habitat International*,
+  "Towards improved sanitation: Constraints and opportunities in
+  accessing waterborne sewerage in major villages of Botswana").
+  **INCLUDE.** Empirical mixed-methods household survey (429
+  questionnaires, Ramotswa/Tlokweng) of the Major Village Infrastructure
+  Programme's cost-recovery-for-O&M-only institutional design and
+  household income as the strongest barrier to waterborne-sewerage
+  connection uptake. Extracted as **S977**.
+- **R4288E0B980A6** (Osumanu, Zumayelleh & Kosoe 2022, *Community
+  Development Journal*, "Sustainability of community-managed small town
+  and rural water systems in northern Ghana"). **INCLUDE.** Mixed-
+  methods case study (225 household questionnaires + 15 interviews,
+  Upper West Region) linking the National Community Water and
+  Sanitation Programme's community-management institutional structure
+  (WSMTs/WATSANs/WMBs) to a rise in potable water access from 38% to
+  97%. Extracted as **S978**.
+- **R45641CF1C6FA** (El-Jazairi 2017, book chapter in *The Human Right
+  to Water and Sanitation*, "The occupied Palestinian territory:
+  Challenges to progressive realisation"). **INCLUDE.** Legal analysis
+  of Palestinian Water Law No. 3 (2002), Oslo II jurisdictional
+  fragmentation (Areas A/B/C), and occupying-power obligations under
+  the Hague Regulations/Fourth Geneva Convention/ICESCR constraining
+  the Palestinian Water Authority's realisation of the right to water.
+  Extracted as **S979**.
+- **R45B892C461F4** (Cobbinah, Kosoe & Diawuo 2020, *Science of the
+  Total Environment*, "Environmental planning crisis in urban Ghana").
+  **INCLUDE.** Household survey + key informant interviews (Wa
+  municipality) with regression analysis, explicitly analyzing
+  urban-planning-regime enforcement distortions (limited monitoring,
+  inadequate logistics/personnel) as a driver of household toilet-
+  facility absence. Extracted as **S980**.
+- **R437473ADF773** (Furlong 2021, "Full-cost recovery = debt recovery:
+  How infrastructure financing models lead to overcapacity, debt, and
+  disconnection") — **EXCLUDE (E05).** WIREs Water article explicitly
+  labeled "OPINION"; argumentative synthesis of prior published work,
+  no original empirical data collection.
+- **R48132E069769** (Mbereko, Scott & Chimbari 2016, "The relationship
+  between HIV and AIDS and water scarcity in Nyamakate resettlements
+  land, north-central Zimbabwe") — **EXCLUDE (E01).** Primary
+  analytical focus is the HIV/AIDS-water-scarcity health/caregiving
+  dialectic and stigma-driven social exclusion from communal water
+  points; the Zimbabwe Water Act 1998/Catchment Council institutional
+  content is contextual background for community-wide scarcity, not
+  the paper's analytical vehicle for differential access.
+- **R420DE16EB90E** (String & Lantagne 2016, "A systematic review of
+  outcomes and lessons learned from ... Water Safety Plan
+  implementations") — **EXCLUDE (E12).** Self-labeled systematic
+  literature review of 53 source documents; not primary research, and
+  WSP risk-management content is a water-quality/engineering topic
+  distinct from legal/institutional water-access mechanisms.
+- **R4459FC42FAAC** (Nallathiga 2006, "Reforming water sector
+  governance and institutions for improving efficiency: the case of
+  Mumbai") — **EXCLUDE (E01).** General institutional-reform argument/
+  overview of Mumbai's urban water sector (supply, demand management,
+  tariff efficiency); not focused on household-level access inequality
+  or a specific legal/institutional mechanism's effect on an access
+  outcome.
+- **RA542DE926650** (Kumasi, Obiri-Danso & Ephraim 2010, "Community
+  engagement in the sustainable management of rivers: Barekese
+  catchment, Kumasi, Ghana") — **EXCLUDE (E01).** Catchment/watershed
+  conservation study of community attitudes toward upstream land
+  degradation and reservoir sustainability; not about household water
+  access.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S976-S980 added;
+973 → 978 rows each). `effect_sizes.csv` unchanged (45 rows): all five
+includes are qualitative/descriptive studies with no regression-based
+estimate isolating a legal/institutional mechanism's effect.
+`exclusion_log.csv` updated (896 → 901 rows; E01 360 → 363, E05 119 →
+120, E12 17 → 18). Duplicate audit (exact-DOI + study_id) found no new
+duplicates. `full_text_retrieval_queue.csv` regenerated (1,780 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,879/3,659 screened (978 include/901 exclude), 1,780
+open, 978 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Hundred-ninety-second full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Fifteenth batch from `new_batch_pool.json[140:150]`.
 

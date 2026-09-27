@@ -5060,6 +5060,52 @@ evidence of anything.
   open, 973 extracted studies, 45 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-ninety-third batch (10 records, 2026-09-27), sixteenth
+  batch from the 543-record pool.** `new_batch_pool.json[150:160]`.
+  Mwenge Kahinda, Taigbenu & Boroto (2007, legal/policy review of
+  domestic rainwater harvesting's ambiguous/illegal status under South
+  Africa's National Water Act and Water Services Act, plus the DWAF
+  Pilot Programme financial-assistance mechanism, S976) — **INCLUDE**.
+  Bolaane & Ikgopoleng (2011, empirical household-survey study of the
+  Major Village Infrastructure Programme's cost-recovery design and
+  income barriers to waterborne-sewerage uptake, Botswana, S977) —
+  **INCLUDE**. Osumanu, Zumayelleh & Kosoe (2022, mixed-methods case
+  study of community-management institutional structure lifting potable
+  water access from 38% to 97%, Upper West Region, Ghana, S978) —
+  **INCLUDE**. El-Jazairi (2017, legal analysis of Palestinian Water Law
+  No. 3, Oslo II jurisdictional fragmentation, and occupying-power
+  obligations under international humanitarian law constraining
+  realisation of the right to water, occupied Palestinian territory,
+  S979) — **INCLUDE**. Cobbinah, Kosoe & Diawuo (2020, household-survey
+  study of urban-planning-regime enforcement distortions inhibiting
+  in-house toilet provision, Wa municipality, Ghana, S980) —
+  **INCLUDE**. Furlong (2021, WIREs Water article explicitly labeled
+  "OPINION," argumentative synthesis with no original empirical data
+  collection) — **EXCLUDE (E05)**. Mbereko, Scott & Chimbari (2016,
+  HIV/AIDS-water-scarcity health/caregiving dialectic and stigma-driven
+  social exclusion as the primary analytical focus, Zimbabwe Water
+  Act/Catchment Council content contextual only, Nyamakate) — **EXCLUDE
+  (E01)**. String & Lantagne (2016, self-labeled systematic review of
+  Water Safety Plan outcomes, a water-quality/engineering topic distinct
+  from legal/institutional access mechanisms) — **EXCLUDE (E12)**.
+  Nallathiga (2006, general institutional-reform overview of Mumbai's
+  water-sector supply/tariff efficiency, not household-access
+  inequality) — **EXCLUDE (E01)**. Kumasi, Obiri-Danso & Ephraim (2010,
+  catchment/watershed conservation study of community attitudes toward
+  upstream land degradation, Barekese, Ghana, not household water
+  access) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S976-S980, 973 →
+  978 rows each); `effect_sizes.csv` unchanged (45 rows: no eligible
+  estimates this batch — all five includes are qualitative/descriptive,
+  none report a regression-based estimate isolating a legal/institutional
+  mechanism's effect); `exclusion_log.csv` updated (896 → 901 rows;
+  E01 360 → 363, E05 119 → 120, E12 17 → 18); duplicate audit (exact-DOI +
+  study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,780 open records); schema validation re-run clean.
+  Running totals: 1,879/3,659 screened (978 include/901 exclude), 1,780
+  open, 978 extracted studies, 45 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
