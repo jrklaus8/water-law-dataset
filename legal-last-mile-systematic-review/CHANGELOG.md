@@ -4,7 +4,67 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-twelfth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Two-hundred-thirteenth full-text screening batch (10 records, 6 includes, 4 excludes)
+
+Thirty-sixth batch from `new_batch_pool.json[350:360]`.
+
+- **R4BCCFE408D51** (Sahu 2008, "Pani Panchayat in Orissa, India,"
+  Development). **INCLUDE.** Statutory WUA institution (Orissa PP Act
+  2002/Rules 2003) documented to exclude marginal/landless farmers
+  who cannot afford fee contributions from irrigation-water access.
+  → **S1053**.
+- **R4E5E7EA9AF31** (Jacobs 1978, "Top-Down Planning," Human
+  Organization). **INCLUDE.** Treaty-protected acequia water-rights
+  institution (New Mexico) threatened by top-down federal/state
+  water-rights adjudication. → **S1054**.
+- **R4DCB1F867CA2** (Menon 2013, "Citizens and 'Squatters',"
+  Ethics and Social Welfare). **INCLUDE.** Citizenship/legal-subject
+  status determining water/sanitation infrastructure eligibility for
+  Mumbai pavement dwellers, documented illegal-connection reliance
+  and above-tariff informal pricing. → **S1055**.
+- **R4D89B36E51A9** (Motiram & Osberg 2010, "Social Capital and Basic
+  Goods," Economic Development and Cultural Change). **INCLUDE.**
+  Indian Time Use Survey analysis of caste, land inequality, and
+  social capital correlating with community water-supply outcomes
+  (correlational, not causal; not effect_sizes-eligible). → **S1056**.
+- **R4DBF12B4A327** (Isham & Kahkonen 2001, "Institutional
+  Determinants of the Impact of Community-Based Water Services,"
+  World Bank working paper). **INCLUDE.** OLS/probit/IV estimates
+  isolating community design-participation's effect on household
+  water-collection time-savings across Sri Lanka, Karnataka, and
+  Maharashtra. → **S1057**, added to `effect_sizes.csv` (Family A).
+- **R4E8ECECC23D8** (Cheng 2013, "(In)visible urban water networks,"
+  Environment and Urbanization). **INCLUDE.** Manila private
+  concessionaires' asymmetric non-payment-enforcement mechanisms
+  producing differential affordability/access burdens for poor vs.
+  wealthy consumers. → **S1058**.
+- **R4D3FA2134902** (Wong 2016, Volta River Basin trans-boundary
+  water-governance committee, elite capture/gender-quota interplay).
+  **EXCLUDE (E01).** Water-resource governance, not water-service
+  access.
+- **R4E68BD8F3368** (Strauch & Almedom 2011, Sonjo traditional
+  resource management and water quality, rural Tanzania). **EXCLUDE
+  (E01).** Water-resource/quality-management study.
+- **R4D3EE9BBEA3C** (Njeri et al. 2026, Kenya hand hygiene policy
+  governance-gap analysis). **EXCLUDE (E07).** Hand hygiene is a
+  distinct WASH sub-service from water/sanitation access.
+- **R4D3518D8ACB3** (Aiyer 2007, Plachimada Coca-Cola groundwater-
+  extraction political economy essay, India). **EXCLUDE (E12).**
+  Self-described exploratory/incomplete conceptual essay.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1053-S1058,
+1,050 → 1,056 rows each); `effect_sizes.csv` updated (49 → 50 rows --
+S1057 added, Family A, community design-participation marginal
+effect on household water-collection time-savings); `exclusion_log.csv`
+updated (1,015 → 1,019 rows; E01 444 → 446, E07 25 → 26, E12 29 → 30);
+duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,584 open records);
+schema validation re-run clean (13/13 files OK).
+
+Running totals: 2,075/3,659 screened (1,056 include/1,019 exclude),
+1,584 open, 1,056 extracted studies, 50 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-twelfth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Thirty-fifth batch from `new_batch_pool.json[340:350]`.
 

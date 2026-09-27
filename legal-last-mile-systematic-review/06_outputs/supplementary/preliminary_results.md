@@ -5856,6 +5856,42 @@ evidence of anything.
   1,594 open, 1,050 extracted studies, 49 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirteenth batch (10 records, 2026-09-27), thirty-
+  sixth batch from the 543-record pool.** `new_batch_pool.json[350:360]`.
+  Sahu (2008, Orissa Pani Panchayat statutory WUA excluding marginal/
+  landless farmers from irrigation-water access, S1053) — **INCLUDE**.
+  Jacobs (1978, treaty-protected acequia water-rights institution
+  threatened by top-down water-rights adjudication, New Mexico,
+  S1054) — **INCLUDE**. Menon (2013, citizenship/legal-subject status
+  determining water/sanitation infrastructure eligibility for Mumbai
+  pavement dwellers, S1055) — **INCLUDE**. Motiram & Osberg (2010,
+  Indian Time Use Survey analysis of caste/land-inequality/social-
+  capital correlates of community water-supply outcomes, correlational
+  not causal, S1056) — **INCLUDE**. Isham & Kahkonen (2001, OLS/probit/
+  IV estimates of community design-participation's effect on
+  water-collection time-savings, Sri Lanka/Karnataka/Maharashtra,
+  S1057) — **INCLUDE**, added to `effect_sizes.csv` (Family A). Cheng
+  (2013, Manila concessionaires' asymmetric non-payment enforcement
+  producing differential affordability burdens, S1058) — **INCLUDE**.
+  Wong (2016, E01 Volta River Basin trans-boundary water-resource
+  governance) — **EXCLUDE (E01)**. Strauch & Almedom (2011, E01 Sonjo
+  traditional water-resource/quality management, Tanzania) —
+  **EXCLUDE (E01)**. Njeri et al. (2026, E07 Kenya hand hygiene policy
+  governance-gap analysis) — **EXCLUDE (E07)**. Aiyer (2007, E12
+  Plachimada Coca-Cola political-economy essay, self-described
+  exploratory/incomplete) — **EXCLUDE (E12)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1053-S1058,
+  1,050 → 1,056 rows each); `effect_sizes.csv` updated (49 → 50 rows:
+  S1057 added, community design-participation effect on water-
+  collection time-savings, Family A); `exclusion_log.csv` updated
+  (1,015 → 1,019 rows; E01 444 → 446, E07 25 → 26, E12 29 → 30);
+  duplicate audit (exact-DOI + study_id) found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,584 open records);
+  schema validation re-run clean.
+  Running totals: 2,075/3,659 screened (1,056 include/1,019 exclude),
+  1,584 open, 1,056 extracted studies, 50 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
