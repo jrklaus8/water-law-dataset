@@ -4,7 +4,82 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-fifty-fourth full-text screening batch (10 records, 9 includes, 1 exclude)
+## 2026-09-27 (latest) — Hundred-fifty-fifth full-text screening batch (10 records, 8 includes, 2 excludes)
+
+Continuing through the Antigravity delivery folder. All 10 target
+record_ids confirmed open with no prior decisions or `wrong_file_retrieved`
+history.
+
+- **RF04979D5CC95** (Hendry 2016, *Water Policy*, "The customer forum —
+  putting customers at the centre of regulating water services").
+  **INCLUDE.** Detailed statutory/regulatory analysis (Water Industry
+  (Scotland) Act 2002, Water Services (Scotland) Act 2005) of a
+  negotiated-settlement customer-representation mechanism in water
+  price regulation. Extracted as **S771**.
+- **REFCB6826A20A** (Nagaraj & Namasivayam 2010, *International Journal
+  of Regulation and Governance*, "Institutions, access, and entitlements
+  to water supply... Cuddalore district, Tamil Nadu"). **INCLUDE.**
+  Sen's entitlements framework applied to planned/unplanned urban-limit
+  legal status determining tap-connection eligibility; quantified
+  access disparity (51 vs. 95 lpcd). Extracted as **S772**.
+- **REF1851D5AE3F** (Clifford-Holmes et al., "Modelling in the 'Muddled
+  Middle': A Case Study of Water Service Delivery in Post-Apartheid
+  South Africa"). **INCLUDE.** System-dynamics case study grounded in
+  the National Water Act 1998/Water Services Act 1997, Greater Kirkwood.
+  Extracted as **S773**.
+- **RED1DDE4608AA** (Abubakar 2016, *Utilities Policy*, "Quality
+  dimensions of public water services in Abuja, Nigeria"). **INCLUDE.**
+  Qualitative institutional/governance case study (billing, public
+  involvement, institutional efficiency) of water service quality.
+  Extracted as **S774**.
+- **RED031F3340F7** (Marson & van Dijk 2016, *International Journal of
+  Water*, "Does the Zambian water sector regulation have pro-poor tools
+  and outcomes?"). **INCLUDE.** Detailed NWASCO regulatory-tool analysis
+  (DTF financing, tariff regulation, alternative-provider regulation)
+  and pro-poor water-access outcomes. Extracted as **S775**.
+- **REC9BE7729D00** (Laryea-Adjei & van Dijk 2012, *International
+  Journal of Water*, "Changing water governance in Ghana through
+  decentralisation"). **INCLUDE.** Strong statutory analysis (Local
+  Government Act 1993, CWSA Act 1998, District Assemblies' Common Fund
+  Act 1993) with a clean two-district natural comparison (Tamale vs.
+  Savelugu-Nanton) showing large water-coverage/reliability differences
+  by decentralisation model. Extracted as **S776**.
+- **REC4A13B5CAD0** (Sally et al. 2014, *Community Development Journal*,
+  "The effect of urbanization on community-managed water supply: case
+  study of Buea, Cameroon"). **INCLUDE.** Documents Cameroonian water
+  law's exclusive utility mandate denying legal recognition to
+  community-managed schemes, linked to service unreliability. Extracted
+  as **S777**.
+- **REB42ED2971BB** (Heller, Rezende & Cairncross 2014, *Proceedings of
+  the ICE Municipal Engineer*, "Water and Sanitation in Brazil: The
+  Public-Private Pendulum"). **INCLUDE.** Historical-legal analysis
+  (Concessions Law No. 8987/1995, Planasa 1971) with a national
+  institutional-model-by-coverage comparison. Extracted as **S778**.
+- **RF0679308DDFB** (Weaver et al. 2019, *Geoforum*, "A civil society
+  organisation response to water service delivery issues in South
+  Africa... Part 1") — **EXCLUDE (E01).** Core analytical lens is
+  Communities of Practice theory applied to CSO emergence/practice, not
+  a legal/institutional-mechanism study.
+- **RECB3D410CC43** (Nigam & Ghosh 1995, "A model of costs and resources
+  for rural and peri-urban water supply and sanitation in the 1990s") —
+  **EXCLUDE (E05).** Global cost-estimation/financing-strategy model
+  from secondary statistics, not an empirical study of a specific
+  country's legal/institutional mechanism.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S771-S778, 768 →
+776 rows each). `effect_sizes.csv` unchanged (36 rows; none of this
+batch's regression evidence met the strict Family A/B/C criteria —
+all quantitative comparisons were descriptive/case-comparison, not
+regression-based estimates isolating the legal mechanism).
+`exclusion_log.csv` updated (727 → 729 rows; E01 283 → 284, E05 86 →
+87). Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,154 open records). `validate_schemas.py` confirms all 13
+tracked files OK.
+
+Running totals: 1,505/3,659 screened (776 include/729 exclude), 2,154
+open, 776 extracted studies, 36 effect_sizes rows.
+
+## 2026-09-27 — Hundred-fifty-fourth full-text screening batch (10 records, 9 includes, 1 exclude)
 
 Continuing through the Antigravity delivery folder. All 10 target
 record_ids confirmed open with no prior decisions or `wrong_file_retrieved`

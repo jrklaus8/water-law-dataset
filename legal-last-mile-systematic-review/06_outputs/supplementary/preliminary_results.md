@@ -3722,6 +3722,36 @@ evidence of anything.
   Running totals: 1,495/3,659 screened (768 include/727 exclude), 2,164
   open, 768 extracted studies, 36 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-fifty-fifth full-text screening batch, 10
+  records, 8 includes, 2 excludes.** Hendry (2016, Customer Forum
+  negotiated-settlement regulation, Water Industry (Scotland) Act 2002,
+  S771) — **INCLUDE**. Nagaraj & Namasivayam (2010, Sen's entitlements
+  approach, planned/unplanned urban-limit legal status, Cuddalore Tamil
+  Nadu, S772) — **INCLUDE**. Clifford-Holmes et al. (system-dynamics
+  case study, National Water Act 1998/Water Services Act 1997, South
+  Africa, S773) — **INCLUDE**. Abubakar (2016, institutional/governance
+  case study of water service quality, Abuja, S774) — **INCLUDE**.
+  Marson & van Dijk (2016, NWASCO pro-poor regulatory tools, Zambia,
+  S775) — **INCLUDE**. Laryea-Adjei & van Dijk (2012, Local Government
+  Act 1993/CWSA Act 1998 two-district decentralisation comparison,
+  Ghana, S776) — **INCLUDE**. Sally et al. (2014, Cameroonian water
+  law's exclusive utility mandate excluding community schemes, Buea,
+  S777) — **INCLUDE**. Heller, Rezende & Cairncross (2014, Concessions
+  Law No. 8987/1995 and Planasa 1971 institutional-history analysis,
+  Brazil, S778) — **INCLUDE**. Weaver et al. (2019, Communities of
+  Practice theory applied to CSO emergence, South Africa) — **EXCLUDE
+  (E01)**. Nigam & Ghosh (1995, global cost-estimation/financing model)
+  — **EXCLUDE (E05)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S771-S778, 768 →
+  776 rows each); `effect_sizes.csv` unchanged (36 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (727 → 729 rows; E01 283 → 284, E05 86 →
+  87); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,154 open records);
+  schema validation re-run clean.
+  Running totals: 1,505/3,659 screened (776 include/729 exclude), 2,154
+  open, 776 extracted studies, 36 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
@@ -3747,10 +3777,10 @@ evidence of anything.
   (`wrong_file_retrieved`) were retrieved but did not match their target
   record or lacked complete content, and are pending a correct/complete
   re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 768
+- Extraction (Phase 8) is caught up with screening completely — all 776
   current full-text includes are extracted, no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  768 extracted studies** (a first 12-study partial pilot batch was
+  776 extracted studies** (a first 12-study partial pilot batch was
   appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
   positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
   `risk_of_bias_tool` is identified per study, but
