@@ -5467,6 +5467,49 @@ evidence of anything.
   1,691 open, 1,011 extracted studies, 45 effect_sizes rows. Full
   detail in `CHANGELOG.md`.
 
+- **Two-hundred-third batch (10 records, 2026-09-27), twenty-sixth
+  batch from the 543-record pool.** `new_batch_pool.json[250:260]`.
+  Gowlland-Gualtieri (2010, doctrinal/policy analysis finding
+  disconnection and pre-paid-meter mechanisms under South Africa's
+  Water Services Act directly deprive poor households of the Free
+  Basic Water entitlement, documented via case law including Mazibuko/
+  Phiri litigation, S1014) — **INCLUDE**. Njoh (2011, comparative case
+  study finding a formalized differentiated connection-fee structure
+  directly tied to divergent success/failure outcomes across two
+  Cameroonian community water projects, S1015) — **INCLUDE**. Muller
+  (2008, policy-evaluation study finding pre-payment tariff mechanisms
+  produced severe under-consumption before, and South Africa's 2001
+  Free Basic Water policy improved access after, documented via the
+  Shemula kiosk sub-case and national coverage statistics, S1016) —
+  **INCLUDE**. Zlolniski (2011, ethnographic case study finding
+  Mexico's 1992 National Water Law's differential agribusiness/
+  domestic subsidy structure and CESPE tariff/quota policies directly
+  producing measured price and access disparities in Baja California,
+  S1017) — **INCLUDE**. Ormerod & Scott (2013, E01 public-trust/
+  technology-acceptance survey for potable reuse, Tucson) — **EXCLUDE
+  (E01)**. Ibem (2013, E01 multi-service accessibility survey, public
+  housing, Ogun State Nigeria) — **EXCLUDE (E01)**. Meinzen-Dick &
+  Pradhan (2001, E05 conceptual legal-pluralism article with secondary
+  case examples, no original empirical data) — **EXCLUDE (E05)**.
+  Lopez Porras, Stringer & Quinn (2019, E01 agricultural/watershed
+  governance study, Rio del Carmen, Mexico) — **EXCLUDE (E01)**.
+  Bisung et al (2014, E01 social-capital-theory application study,
+  rural Kenya) — **EXCLUDE (E01)**. McGeough (2013, E12 performance-
+  studies/rhetorical analysis of Indian toilet festivals) — **EXCLUDE
+  (E12)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1014-S1017,
+  1,011 → 1,015 rows each); `effect_sizes.csv` unchanged (45 rows: all
+  four includes are doctrinal/policy-evaluation or qualitative case
+  studies, none report a regression-based estimate isolating a legal/
+  institutional mechanism's effect on a Family A/B/C water-access
+  outcome); `exclusion_log.csv` updated (957 → 963 rows; E01 402 → 406,
+  E05 127 → 128, E12 22 → 23); duplicate audit (exact-DOI + study_id)
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,681 open records); schema validation re-run clean.
+  Running totals: 1,978/3,659 screened (1,015 include/963 exclude),
+  1,681 open, 1,015 extracted studies, 45 effect_sizes rows. Full
+  detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

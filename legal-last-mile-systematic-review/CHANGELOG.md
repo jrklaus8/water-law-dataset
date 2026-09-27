@@ -4,7 +4,76 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-second full-text screening batch (10 records, 2 includes, 8 excludes)
+## 2026-09-27 (latest) — Two-hundred-third full-text screening batch (10 records, 4 includes, 6 excludes)
+
+Twenty-sixth batch from `new_batch_pool.json[250:260]`.
+
+- **R0C54E2A3F77C** (Gowlland-Gualtieri 2010, book chapter, "South Africa's
+  water law and policy framework: Implications for the right to water").
+  **INCLUDE.** Doctrinal/policy analysis documenting, via statutory text,
+  case law (Mazibuko/Phiri litigation, Bon Vista Mansions, Manquele,
+  Highveldridge) and government data, how disconnection and pre-paid-meter
+  mechanisms under the Water Services Act directly deprive poor households
+  of the Free Basic Water free entitlement. Extracted as **S1014**.
+- **R21570E47C3A1** (Njoh 2011, *Development*, "Citizen Participation and
+  Sustainability: Lessons from Cameroon"). **INCLUDE.** Comparative case
+  study of two community self-help water projects (Mpundu failure vs.
+  Bonadikombo success) finding a formalized, differentiated connection-fee
+  eligibility structure directly tied to measured divergent
+  connection/coverage outcomes. Extracted as **S1015**.
+- **RBCF8A8901239** (Muller 2008, *Environment and Urbanization*, "Free
+  basic water -- a sustainable instrument for a sustainable future in
+  South Africa"). **INCLUDE.** Policy-evaluation study (by the former
+  DWAF Director-General) documenting, via the Shemula pre-payment-kiosk
+  sub-case and national coverage statistics, how tariff mechanisms
+  directly produced under-consumption before, and improved access after,
+  the 2001 Free Basic Water policy. Extracted as **S1016**.
+- **R21CCF27E55E5** (Zlolniski 2011, *Cultural Anthropology*, "Water
+  Flowing North of the Border: Export Agriculture and Water Politics in a
+  Rural Community in Baja California"). **INCLUDE.** Ethnographic case
+  study finding Mexico's 1992 National Water Law's differential subsidy
+  structure (agribusiness vs. domestic users) and CESPE's tariff/quota
+  policies directly producing measured differential price/access
+  outcomes for poor colonia residents. Extracted as **S1017**.
+- **RBA18C893F671** (Ormerod & Scott 2013, "Drinking Wastewater: Public
+  Trust in Potable Reuse") — **EXCLUDE (E01).** Public-trust/technology-
+  acceptance survey for indirect potable reuse; no legal/institutional
+  access mechanism.
+- **RBD738547CB4C** (Ibem 2013, "Accessibility of Services and Facilities
+  for Residents in Public Housing... Ogun State, Nigeria") — **EXCLUDE
+  (E01).** Multi-service (7+ domain) accessibility survey; water one of
+  many services measured.
+- **RBA346FCF6A8C** (Meinzen-Dick & Pradhan 2001, "Implications of Legal
+  Pluralism for Natural Resource Management") — **EXCLUDE (E05).**
+  Conceptual/theoretical article illustrated with secondary case
+  examples; no original empirical data collection.
+- **R0A22230BEAC5** (Lopez Porras, Stringer & Quinn 2019, "Corruption and
+  conflicts as barriers to adaptive governance... Rio del Carmen
+  watershed") — **EXCLUDE (E01).** Agricultural/watershed governance
+  study, not household/domestic water access.
+- **R209F0EDBD5C8** (Bisung et al 2014, "Social capital, collective
+  action and access to water in rural Kenya") — **EXCLUDE (E01).**
+  Social-capital-theory application study; no specific legal/
+  institutional mechanism tested.
+- **R21FFE47FADB8** (McGeough 2013, "Laboring for Community, Civic
+  Participation, and Sanitation: The Performance of Indian Toilet
+  Festivals") — **EXCLUDE (E12).** Performance-studies/rhetorical
+  analysis of secondary documents, not empirical social science.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1014-S1017 added;
+1,011 → 1,015 rows each); `effect_sizes.csv` unchanged (45 rows: all four
+includes are doctrinal/policy-evaluation or qualitative case studies with
+no regression-based estimate isolating a legal/institutional mechanism's
+effect on a Family A/B/C water-access outcome). `exclusion_log.csv`
+updated (957 → 963 rows; E01 402 → 406, E05 127 → 128, E12 22 → 23).
+Duplicate audit (exact-DOI + study_id) found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,681 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,978/3,659 screened (1,015 include/963 exclude), 1,681
+open, 1,015 extracted studies, 45 effect_sizes rows.
+
+## 2026-09-27 — Two-hundred-second full-text screening batch (10 records, 2 includes, 8 excludes)
 
 Twenty-fifth batch from `new_batch_pool.json[240:250]`.
 
