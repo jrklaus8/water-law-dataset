@@ -4,7 +4,72 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-seventy-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-seventy-fifth full-text screening batch (10 records, 4 includes, 5 excludes, 1 skipped)
+
+Fourth batch drawn from `new_batch_pool.json`. One target record
+(RFEBA9E5C7885, Madeley "Tourism and water") had a prior
+`wrong_file_retrieved` flag; the fresh Antigravity delivery was
+confirmed via full-text read to be the identical wrong file (Arcega-
+Cabrera et al. 2023 cenotes microbiology study) as the earlier
+attempt -- notes updated to record the repeat wrong delivery; still
+not screened, not moved. The other 9 confirmed with no prior
+`wrong_file_retrieved` history.
+
+- **RA420CEEC7E34** (Brown 1987, *J. Economic History* dissertation
+  summary, "Reforming the Urban Environment: Sanitation, Housing, and
+  Government Intervention in Germany, 1870-1910"). **INCLUDE.**
+  Historical econometric median-voter model exploiting Prussia's
+  wealth-weighted electoral franchise to explain municipal waterworks-
+  investment decisions. Extracted as **S881**.
+- **R59329720D787** (Mason 2014, *J. Society for Social Work and
+  Research*, "Examining Relationships between Household Resources and
+  Water Security in an Urban Philippine Community"). **INCLUDE.**
+  396-household survey with regression models isolating formal
+  utility-connection status. Extracted as **S882**.
+  **EFFECT_SIZES ELIGIBLE** (Family A): household BWD connection
+  associated with +27.2% consumption, +0.35 SD cleanliness, 2.16x
+  odds of ease, 2.76x odds of affordability (all significant).
+- **R55280045A6D7** (Bukari, Authur & Zachary 2024, *Ghana J.
+  Geography*, "Social Aspects of Groundwater Use and Management in
+  the Wa West District"). **INCLUDE.** Mixed-methods study documenting
+  the gap between Ghana's National Water Policy and actual implicit
+  rural groundwater governance institutions. Extracted as **S883**.
+- **RCA0676FFA182** (Estache & Grifell-Tatje 2013, *J. Development
+  Studies*, "How (Un)Even was the Distribution of the Impacts of
+  Mali's Water Privatisation across Stakeholders?"). **INCLUDE.**
+  Quantitative welfare-distribution decomposition of Mali's 2001 SAUR
+  concession contract, finding poor rural users benefited far less
+  than other stakeholders. Extracted as **S884**.
+- **RDD4F59E101DE** (Torterotot, Rebelo, Werey & Craveiro 2005,
+  "Rehabilitation of water networks: analysis of the decision making
+  processes") — **EXCLUDE (E06).** Utility asset-management
+  decision-process study for pipe rehabilitation, not water access.
+- **REB1290DC097C** (Munasinghe 1991, "Water Supply Policies and
+  Issues in Developing Countries") — **EXCLUDE (E05).** Broad World
+  Bank policy-review essay on secondary WHO/World Bank statistics.
+- **R7F996950E419** (Satterthwaite 2003, "The Millennium Development
+  Goals and Urban Poverty Reduction: Great Expectations and Nonsense
+  Statistics") — **EXCLUDE (E05).** Statistical-methodology/policy
+  critique essay.
+- **R52881817AE22** (Syaukat & Fox 2004, "Conjunctive Surface and
+  Ground Water Management in the Jakarta Region, Indonesia") —
+  **EXCLUDE (E06).** Hydro-economic optimization modeling study.
+- **RC8B2DF4FAAB3** (Urakami & Parker 2011, "The Effects of
+  Consolidation amongst Japanese Water Utilities: A Hedonic Cost
+  Function Analysis") — **EXCLUDE (E06).** Utility-merger cost-
+  efficiency econometric study.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S881-S884, 878 →
+882 rows each). `effect_sizes.csv` updated (40 → 41 rows; S882 newly
+eligible). `exclusion_log.csv` updated (815 → 820 rows; E05 109 → 111,
+E06 67 → 70). Duplicate audit found no new duplicates.
+`full_text_retrieval_queue.csv` regenerated (1,957 open records).
+`validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,702/3,659 screened (882 include/820 exclude), 1,957
+open, 882 extracted studies, 41 effect_sizes rows.
+
+## 2026-09-27 — Hundred-seventy-fourth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Third batch drawn from `new_batch_pool.json`. Three target records
 (R4D81D56EA98B, R0F076F861B72, R063CE14907E2) had a prior

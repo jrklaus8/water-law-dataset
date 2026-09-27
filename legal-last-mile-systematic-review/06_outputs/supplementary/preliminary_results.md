@@ -4378,6 +4378,43 @@ evidence of anything.
   open, 878 extracted studies, 40 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-seventy-fifth batch (10 records, 2026-09-27), fourth batch
+  from `new_batch_pool.json`; one record (RFEBA9E5C7885, Madeley
+  "Tourism and water") confirmed a repeat wrong-file delivery
+  (identical Arcega-Cabrera et al. cenotes microbiology paper as a
+  prior attempt), notes updated, not screened.** Brown (1987, historical
+  median-voter econometric model of Prussia's wealth-weighted
+  electoral franchise explaining municipal waterworks investment,
+  Germany 1870-1910, S881) — **INCLUDE**. Mason (2014, 396-household
+  survey with regression models isolating formal BWD utility-
+  connection status, Philippines, S882) — **INCLUDE, EFFECT_SIZES
+  ELIGIBLE** (own connection: +27.2% consumption, +0.35 SD
+  cleanliness, 2.16x odds of ease, 2.76x odds of affordability, all
+  significant). Bukari, Authur & Zachary (2024, mixed-methods study of
+  the gap between Ghana's National Water Policy and implicit rural
+  groundwater governance, Wa West District, S883) — **INCLUDE**.
+  Estache & Grifell-Tatje (2013, quantitative welfare-distribution
+  decomposition of Mali's 2001 SAUR water-privatisation concession,
+  finding poor rural users benefited far less than other stakeholders,
+  S884) — **INCLUDE**. Torterotot et al. (2005, utility asset-
+  management decision-process study for pipe rehabilitation) —
+  **EXCLUDE (E06)**. Munasinghe (1991, broad World Bank policy-review
+  essay on secondary statistics) — **EXCLUDE (E05)**. Satterthwaite
+  (2003, statistical-methodology/policy critique essay on MDG
+  statistics) — **EXCLUDE (E05)**. Syaukat & Fox (2004, hydro-economic
+  optimization modeling study, Jakarta) — **EXCLUDE (E06)**. Urakami &
+  Parker (2011, utility-merger cost-efficiency econometric study,
+  Japan) — **EXCLUDE (E06)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S881-S884, 878 →
+  882 rows each); `effect_sizes.csv` updated (40 → 41 rows; S882
+  added); `exclusion_log.csv` updated (815 → 820 rows; E05 109 → 111,
+  E06 67 → 70); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (1,957 open records);
+  schema validation re-run clean.
+  Running totals: 1,702/3,659 screened (882 include/820 exclude), 1,957
+  open, 882 extracted studies, 41 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
