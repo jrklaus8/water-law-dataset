@@ -4683,6 +4683,49 @@ evidence of anything.
   open, 920 extracted studies, 42 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-third batch (10 records, 2026-09-27), sixth batch
+  from the 543-record pool.** `new_batch_pool.json[50:60]`. Reynaud
+  (2010, instrumental-variable econometric analysis of PSP/delegation-
+  contract effects on household water-affordability under France's 1992
+  RMI water-access law, S923) — **INCLUDE**. Furlong (2012, documentary
+  case study of 30+ years of Ontario water-sector regulatory reform,
+  including post-Walkerton Safe Drinking Water Act 2002/Clean Water Act
+  2006 reregulation, S924) — **INCLUDE**. Zaato & Ohemeng (2015,
+  original 9-interview case study of Ghana Water Company Limited's
+  organizational-autonomy reform, S925) — **INCLUDE**. Vijay & Ghosh
+  (2018, institutional/programmatic case study of Nadia District's
+  Sabar Shouchagar sanitation program with quantified before/after
+  coverage outcomes, India, S926) — **INCLUDE**. Roth (2008, ten-year
+  anthropological case study of municipal decision-making over
+  extending a watermain to 64 contaminated-well households, Central
+  Saanich, British Columbia, S927) — **INCLUDE**. Shah & Narain (2019,
+  self-labeled Geoforum "Review" section conceptual argument piece
+  synthesizing secondary literature only) — **EXCLUDE (E12)**. Bazoglu
+  (2011, UN-HABITAT 52-119-city urban-growth typology with piped-water
+  access as one of several infrastructure indicators) — **EXCLUDE
+  (E01)**. Tapela (2002, basin/catchment-scale water-resources
+  allocation and interstate governance study, Zimbabwe/Mozambique
+  Pungwe-Mutare project) — **EXCLUDE (E01)**. Roncoli, Dowd-Uribe,
+  Orlove, West & Sanon (2016, Burkina Faso water user committee whose
+  core function is an irrigation allocation plan among agro-industrial
+  users and farmers, not household access) — **EXCLUDE (E01)**;
+  initially screened INCLUDE on preview, corrected to EXCLUDE after
+  full-text reading, before extraction. Dinpanah & Lashgarara (2008,
+  general agricultural/natural-resource sustainability conceptual
+  model, Iran, water tangential) — **EXCLUDE (E01)**.
+  `extraction_database.csv`/`evidence_map.csv` updated (S923-S927, 920 →
+  925 rows each); `effect_sizes.csv` unchanged (42 rows: none of this
+  batch's includes are effect_sizes eligible — qualitative case studies,
+  or a clean regression on a water-affordability outcome that does not
+  map to Family A/B/C per the established Whittington/Alzahrani
+  precedent); `exclusion_log.csv` updated (850 → 855 rows; E01 342 →
+  346, E12 9 → 10); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,879 open
+  records); schema validation re-run clean.
+  Running totals: 1,780/3,659 screened (925 include/855 exclude), 1,879
+  open, 925 extracted studies, 42 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

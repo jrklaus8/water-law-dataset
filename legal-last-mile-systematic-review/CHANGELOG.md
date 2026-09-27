@@ -4,7 +4,92 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-second full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-third full-text screening batch (10 records, 5 includes, 5 excludes)
+
+Sixth batch from `new_batch_pool.json[50:60]`.
+
+- **R8821F07922AB** (Reynaud 2010, *Oxford Development Studies*, "Private
+  Sector Participation, Regulation and Social Policies in Water Supply
+  in France"). **INCLUDE.** Instrumental-variable econometric analysis
+  (2001 INSEE household survey) linking PSP status and delegation-
+  contract type to household water-affordability outcomes under
+  France's 1992 RMI water-access law. Extracted as **S923**.
+- **R86051205DAED** (Furlong 2012, *Environment and Planning A*, "Good
+  water governance without good urban governance? Regulation, service
+  delivery models, and local government"). **INCLUDE.** Documentary
+  case study of 30+ years of Ontario water-sector regulatory reform,
+  including the post-Walkerton Safe Drinking Water Act 2002/Clean Water
+  Act 2006 reregulation and its limits absent municipal governance
+  capacity. Extracted as **S924**.
+- **R83CC2CDECA38** (Zaato & Ohemeng 2015, *Forum for Development
+  Studies*, "Building Resilient Organizations for Effective Service
+  Delivery in Developing Countries: The Experience of Ghana Water
+  Company Limited"). **INCLUDE.** Original 9-interview case study of
+  Ghana Water Company Limited's organizational-autonomy reform and its
+  effect on urban water-access/reliability outcomes. Extracted as
+  **S925**.
+- **R8132FFEC58AA** (Vijay & Ghosh 2018, *Emerald Emerging Markets Case
+  Studies*, "The Sabar Shouchagar Project (toilets for everyone): making
+  Nadia District the first open-defecation-free district in India").
+  **INCLUDE.** Institutional/programmatic case study coordinating
+  national sanitation-legal frameworks with employment/livelihoods
+  schemes and local government, with quantified before/after
+  sanitation-coverage outcomes. Extracted as **S926**.
+- **R8CC9DED5F88A** (Roth 2008, *Proceedings of the ICE - Municipal
+  Engineer*, "Constructing community health and safety"). **INCLUDE.**
+  Ten-year anthropological case study of municipal administrative
+  decision-making over extending a watermain to 64 contaminated-well
+  households in Central Saanich, British Columbia. Extracted as **S927**.
+- **R87F24B4E11DF** (Shah & Narain 2019, *Geoforum*, "Re-framing India's
+  'water crisis': An institutions and entitlements perspective") —
+  **EXCLUDE (E12).** Self-labeled Geoforum "Review" section piece
+  synthesizing an institutions-and-entitlements argument entirely from
+  secondary literature; no original empirical data collection.
+- **R86E29439A5B6** (Bazoglu 2011, "Measuring and coping with urban
+  growth in developing countries") — **EXCLUDE (E01).** Book chapter on
+  a UN-HABITAT 52-119-city urban-growth/governance typology; piped-water
+  access is one of several infrastructure indicators in a broader
+  multi-sector analysis.
+- **R860770E07485** (Tapela 2002, *Physics and Chemistry of the Earth*,
+  "The challenge of integration in the implementation of Zimbabwe's new
+  water policy... Pungwe-Mutare water supply project") — **EXCLUDE
+  (E01).** Basin/catchment-scale water-resources allocation and
+  interstate governance study (Catchment Councils, Joint Water
+  Commission); content is entirely about basin-level allocation among
+  farmers, mines and municipalities, not household water access.
+- **R8F394022B0DC** (Roncoli, Dowd-Uribe, Orlove, West & Sanon 2016,
+  "Who counts, what counts: representation and accountability in water
+  governance in the Upper Comoé sub-basin, Burkina Faso") — **EXCLUDE
+  (E01).** Initially screened as a possible include on preview; full
+  reading confirmed the studied water user committee ("Comité Local de
+  l'Eau") is a basin-scale IWRM water-allocation institution whose core
+  function is an annual *irrigation* allocation plan among agro-
+  industrial users (SN-SOSUCO, UCEPAK) and riparian farmers, with the
+  national water utility (ONEA) appearing only as one of several
+  allocation stakeholders — not a household water-access study,
+  consistent with the Tapela exclusion in this same batch. Corrected
+  from an initial include to exclude before extraction; see
+  `full_text_screening_database.csv` notes field for R8F394022B0DC.
+- **R81BEA2E1C8CE** (Dinpanah & Lashgarara 2008, "Designing an optimum
+  model for protection and improvement of sustainability of natural
+  resources and environment in Iran") — **EXCLUDE (E01).** General
+  agricultural/natural-resource sustainability conceptual model paper;
+  water is one of several resources mentioned, not the focus.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S923-S927 added;
+920 → 925 rows each). `effect_sizes.csv` unchanged (42 rows):
+none of this batch's includes are effect_sizes eligible (qualitative
+case studies, or clean regressions on affordability/pricing outcomes
+that do not map to Family A/B/C per the established Whittington/
+Alzahrani precedent). `exclusion_log.csv` updated (850 → 855 rows; E01
+342 → 346, E12 9 → 10). Duplicate audit (exact-DOI + study_id) found no
+new duplicates. `full_text_retrieval_queue.csv` regenerated (1,879 open
+records). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,780/3,659 screened (925 include/855 exclude), 1,879
+open, 925 extracted studies, 42 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-second full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Fifth batch from `new_batch_pool.json[40:50]`.
 
