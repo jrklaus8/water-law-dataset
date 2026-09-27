@@ -4,7 +4,82 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-sixtieth full-text screening batch (10 records, 4 includes, 6 excludes)
+## 2026-09-27 (latest) — Hundred-sixty-first full-text screening batch (10 records drawn, 5 includes, 4 excludes, 1 left undecided)
+
+Continuing through the Antigravity delivery folder (records previously
+marked `not_retrievable`, now delivered). All 10 target record_ids
+confirmed open with no prior decisions or `wrong_file_retrieved` history.
+
+- **RC8E4D27449CF** (Koelble & LiPuma 2010, *Social Dynamics*,
+  "Institutional obstacles to service delivery in South Africa").
+  **INCLUDE.** Comparative case study of 18 municipalities identifying
+  central-government non-enforcement of accountability regulations and
+  local skills shortages as the drivers of water/sanitation
+  service-delivery failure. Extracted as **S808**.
+- **RC3F88BC83E64** (Hirvi & Whitfield 2015, *Development Policy
+  Review*, "Public-Service Provision in Clientelist Political
+  Settlements: Lessons from Ghana's Urban Water Sector"). **INCLUDE.**
+  Interview/documentary case study of clientelist political-settlement
+  dynamics shaping private-sector-participation outcomes at Ghana
+  Water Company Limited. Extracted as **S809**.
+- **RC2F103D94FC7** (Kelly-Richards & Banister 2017, *Political
+  Geography*, "A state of suspended animation: Urban sanitation and
+  water access in Nogales, Sonora"). **INCLUDE.** Ethnographic case
+  study of informal land-tenure status as the access-control mechanism
+  for formal water/sanitation connection in Mexican border colonias.
+  Extracted as **S810**.
+- **RC2ADB3C483ED** (Devas 1996, *Public Administration and
+  Development*, "Reshaping government at the local level in Cambodia:
+  ... urban water supply in Battambang"). **INCLUDE.** Institutional/
+  fiscal case study linking the provincial water enterprise's capacity
+  constraints to 8% formal coverage and 4-5x informal-vendor price
+  premiums. Extracted as **S811**.
+- **RC00FA37AB2F9** (Jimu 2008, *Physics and Chemistry of the Earth*,
+  "The role of stakeholders in the provision and management of water
+  kiosks in Nkolokoti, Blantyre (Malawi)"). **INCLUDE.** Stakeholder
+  case study documenting institutional weaknesses of the water utility
+  and city government undermining affordable kiosk water access.
+  Extracted as **S812**.
+- **RC4001C6C73B3** (Akosa, Franceys, Barker & Weyman-Jones,
+  "Efficiency of Water-Supply and Sanitation Projects in Ghana") —
+  **EXCLUDE (E01).** Data envelopment analysis (DEA) efficiency-
+  measurement methodology paper.
+- **RC0750E198B8C** (Peter & Nkambule 2012, "Factors affecting
+  sustainability of rural water schemes in Swaziland") — **EXCLUDE
+  (E01).** Multi-criteria sustainability-factors analysis; "institutional"
+  factor concerns internal community user-committee coordination, not a
+  formal legal/institutional government mechanism.
+- **RC0409B5F0BE0** (Petelet-Giraud et al. 2017, "Multi-layered water
+  resources, management, and uses... Recife, NE Brazil") — **EXCLUDE
+  (E03).** Hydrogeological/environmental-science field study; water-law
+  content is narrative background, no primary institutional data.
+- **RC02292A9D406** (Furlong 2015, "Water and the entrepreneurial
+  city: The territorial expansion of public utility companies from
+  Colombia and the Netherlands") — **EXCLUDE (E01).** Corporate
+  international-expansion strategy analysis, not a domestic household
+  access-barrier study.
+- **RBEDB6556B711** (Olmstead 2004, *Land Economics*, "Thirsty
+  Colonias: Rate Regulation and the Provision of Water Service") —
+  **LEFT UNDECIDED.** File identity confirmed correct (title/author/
+  journal/pages all match), but the underlying PDF appears to be a
+  scanned JSTOR reprint whose text extraction returned only the
+  repeated cover-page/footer boilerplate, not the article body. Not
+  flagged `wrong_file_retrieved` (file identity is correct, not a
+  content mismatch); left open in the tracking database and the Drive
+  Antigravity folder pending a future extraction retry.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S808-S812, 805 →
+810 rows each). `effect_sizes.csv` unchanged (38 rows; no regression-
+based estimate met the strict Family A/B/C criteria this batch).
+`exclusion_log.csv` updated (750 → 754 rows; E01 291 → 294, E03 25 →
+26). Duplicate audit found no new duplicates. `full_text_retrieval_queue.csv`
+regenerated (2,095 open records; 9 of the 10 batch records decided, 1
+left open). `validate_schemas.py` confirms all 13 tracked files OK.
+
+Running totals: 1,564/3,659 screened (810 include/754 exclude), 2,095
+open, 810 extracted studies, 38 effect_sizes rows.
+
+## 2026-09-27 — Hundred-sixtieth full-text screening batch (10 records, 4 includes, 6 excludes)
 
 Continuing through the Antigravity delivery folder (drawn from records
 previously marked `not_retrievable` in the tracking file, now delivered).

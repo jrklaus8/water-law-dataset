@@ -3906,6 +3906,40 @@ evidence of anything.
   Running totals: 1,555/3,659 screened (805 include/750 exclude), 2,104
   open, 805 extracted studies, 38 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
+- **2026-09-27, hundred-sixty-first full-text screening batch, 10
+  records drawn, 5 includes, 4 excludes, 1 left undecided.** Koelble &
+  LiPuma (2010, 18-municipality institutional case study, enforcement
+  gaps driving service-delivery failure, South Africa, S808) —
+  **INCLUDE**. Hirvi & Whitfield (2015, clientelist political-
+  settlement dynamics shaping private-sector-participation outcomes,
+  Ghana Water Company, S809) — **INCLUDE**. Kelly-Richards & Banister
+  (2017, informal land-tenure as access-control mechanism, Nogales
+  Sonora colonias, S810) — **INCLUDE**. Devas (1996, provincial water
+  enterprise capacity constraints, 8% coverage, informal-vendor price
+  premiums, Battambang Cambodia, S811) — **INCLUDE**. Jimu (2008,
+  stakeholder case study, institutional weaknesses undermining
+  affordable kiosk water access, Blantyre Malawi, S812) — **INCLUDE**.
+  Akosa et al. (DEA efficiency-measurement methodology paper, Ghana) —
+  **EXCLUDE (E01)**. Peter & Nkambule (2012, multi-criteria rural
+  water-scheme sustainability-factors analysis, Swaziland) — **EXCLUDE
+  (E01)**. Petelet-Giraud et al. (2017, hydrogeological field study,
+  Recife Brazil) — **EXCLUDE (E03)**. Furlong (2015, water-utility
+  corporate international-expansion strategy analysis) — **EXCLUDE
+  (E01)**. Olmstead (2004, "Thirsty Colonias," Land Economics) — **LEFT
+  UNDECIDED**: correct file delivered but the scanned PDF's text
+  extraction returned only JSTOR cover-page boilerplate, no article
+  body; not a `wrong_file_retrieved` case, left open pending a future
+  extraction retry.
+  `extraction_database.csv`/`evidence_map.csv` updated (S808-S812, 805 →
+  810 rows each); `effect_sizes.csv` unchanged (38 rows; no regression-
+  based estimate met the strict Family A/B/C criteria this batch);
+  `exclusion_log.csv` updated (750 → 754 rows; E01 291 → 294, E03 25 →
+  26); duplicate audit found no new duplicates;
+  `full_text_retrieval_queue.csv` regenerated (2,095 open records);
+  schema validation re-run clean.
+  Running totals: 1,564/3,659 screened (810 include/754 exclude), 2,095
+  open, 810 extracted studies, 38 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
 
 ## What has not been done
 
