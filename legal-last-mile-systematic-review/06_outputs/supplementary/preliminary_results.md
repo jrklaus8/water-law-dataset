@@ -4913,6 +4913,42 @@ evidence of anything.
   open, 951 extracted studies, 44 effect_sizes rows. Full detail in
   `CHANGELOG.md`.
 
+- **Hundred-eighty-ninth batch (10 records, 2026-09-27), twelfth batch
+  from the 543-record pool.** `new_batch_pool.json[110:120]`. Mwendera
+  (2006, government-commissioned institutional assessment of Swaziland's
+  RWSS budget-allocation/community-governance structure, S954) —
+  **INCLUDE**. Monney, Baffoe-Kyeremeh & Amissah-Reynolds (2015,
+  400-respondent mixed-methods study of local-assembly institutional
+  constraints on rural sanitation coverage, Ghana, S955) — **INCLUDE**.
+  Tantoh & McKay (2021, Cultural Theory/Systems Thinking assessment of
+  decentralization-law vs. centralized water control, North-West
+  Cameroon, S956) — **INCLUDE**. Rydhagen (2002, interview-based
+  fieldwork on gender-differentiated participation in water/sanitation
+  decision-making, Vioolsdrif South Africa, S957) — **INCLUDE**. Carrera
+  & Flowers (2018, documentary case study of sanitation-law enforcement
+  and heir-property tenure producing racial sanitation-access denial,
+  Lowndes County Alabama, S958) — **INCLUDE**. Hossain (2011, empirical
+  case study of informal regulatory institutions in a Dhaka bosti, S959)
+  — **INCLUDE**. Beck (2018, self-labeled "Advanced Review" literature-
+  synthesis article on Water Operator Partnerships) — **EXCLUDE (E12)**.
+  Arvai & Post (2012, structured decision-making study for point-of-use
+  water-treatment technology choice, Tanzania) — **EXCLUDE (E06)**.
+  Park & Visvanathan (2018, comparative engineering study of drinking-
+  water treatment-technology trajectories) — **EXCLUDE (E06)**. Rey
+  (2003, "Framework for action") — **WRONG_FILE_RETRIEVED**: delivered
+  PDF is unrelated 2026 BJPsych Open mental-health conference abstracts,
+  Wales; flagged, not screened, Drive file left untouched.
+  `extraction_database.csv`/`evidence_map.csv` updated (S954-S959, 951 →
+  957 rows each); `effect_sizes.csv` unchanged (44 rows: no eligible
+  estimates this batch); `exclusion_log.csv` updated (879 → 882 rows;
+  E06 83 → 85, E12 13 → 14); duplicate audit (exact-DOI + study_id)
+  found no new duplicates; `full_text_retrieval_queue.csv` regenerated
+  (1,820 open records, including the wrong_file_retrieved record left
+  undecided); schema validation re-run clean.
+  Running totals: 1,839/3,659 screened (957 include/882 exclude), 1,820
+  open, 957 extracted studies, 44 effect_sizes rows. Full detail in
+  `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

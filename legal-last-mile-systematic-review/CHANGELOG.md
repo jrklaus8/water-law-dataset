@@ -4,7 +4,79 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Hundred-eighty-eighth full-text screening batch (10 records, 5 includes, 5 excludes)
+## 2026-09-27 (latest) — Hundred-eighty-ninth full-text screening batch (10 records, 6 includes, 3 excludes, 1 wrong_file_retrieved)
+
+Twelfth batch from `new_batch_pool.json[110:120]`.
+
+- **R5AE001CE6E9E** (Mwendera 2006, *Physics and Chemistry of the
+  Earth*, "Rural water supply and sanitation (RWSS) coverage in
+  Swaziland: Toward achieving millennium development goals"). **INCLUDE.**
+  Government-commissioned institutional assessment (interviews, field
+  visits) linking RWSB budget-allocation structure and community
+  cost-sharing governance to quantified coverage outcomes. Extracted as
+  **S954**.
+- **R58857C935BCF** (Monney, Baffoe-Kyeremeh & Amissah-Reynolds 2015,
+  *JWSHD*, "Accelerating rural sanitation coverage in Ghana: what are
+  the speed bumps impeding progress?"). **INCLUDE.** 400-respondent
+  mixed-methods study linking local-district-assembly institutional
+  resource-allocation constraints to rural sanitation coverage.
+  Extracted as **S955**.
+- **R582D32CAA4B0** (Tantoh & McKay 2021, *Journal of Cleaner
+  Production*, "Assessing community-based water management and
+  governance systems in North-West Cameroon using a Cultural Theory and
+  Systems Approach"). **INCLUDE.** Institutional/governance assessment
+  documenting the disconnect between decentralization law and continued
+  centralized water-resource control. Extracted as **S956**.
+- **R6A629E95E47B** (Rydhagen 2002, *Gender, Technology and
+  Development*, "Feminist Sanitary Engineering in Vioolsdrif, South
+  Africa"). **INCLUDE.** Interview-based fieldwork on gender-
+  differentiated participation in local water/sanitation decision-making
+  institutions. Extracted as **S957**.
+- **R57B19F9E60B7** (Carrera & Flowers 2018, *American Journal of
+  Economics and Sociology*, "Sanitation Inequity and the Cumulative
+  Effects of Racism in Colorblind Public Health Policies"). **INCLUDE.**
+  Documentary case study linking public-health sanitation-law
+  enforcement and heir-property land tenure to race-differentiated
+  sanitation-access denial, Lowndes County, Alabama. Extracted as
+  **S958**.
+- **R567A3B014963** (Hossain 2011, *Environment and Urbanization*, "The
+  informal practice of appropriation and social control - experience
+  from a bosti in Dhaka"). **INCLUDE.** Empirical case study of informal
+  regulatory institutions determining differential water access for
+  statutorily excluded bosti residents. Extracted as **S959**.
+- **R5BE691E02C84** (Beck 2018, "Water operator partnerships: Peer
+  learning and the politics of solidarity in water and sanitation
+  service provision") — **EXCLUDE (E12).** Self-labeled WIREs Water
+  "Advanced Review" literature-synthesis article.
+- **R58D1D52A0625** (Arvai & Post 2012, "Risk Management in a
+  Developing Country Context: Improving Decisions About Point-of-Use
+  Water Treatment Among the Rural Poor in Africa") — **EXCLUDE (E06).**
+  Structured decision-making/technology-adoption decision-science
+  study.
+- **R5691BDC5804B** (Park & Visvanathan 2018, "Technology development
+  trajectory for drinking water treatment: a comparative study between
+  South Korea, Thailand, and Lao PDR") — **EXCLUDE (E06).** Comparative
+  engineering study of treatment-technology adoption; zero
+  legal/institutional-mechanism content.
+- **R57A89A8AFC15** (Rey 2003, "Framework for action", DOI
+  10.1016/s1366-7017(01)00018-6) — **WRONG_FILE_RETRIEVED.** The
+  delivered PDF is an entirely unrelated set of 2026 BJPsych Open
+  conference abstracts on mental health services in Wales. Flagged, not
+  screened; Drive file left untouched.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S954-S959 added;
+951 → 957 rows each). `effect_sizes.csv` unchanged (44 rows): none of
+this batch's includes are effect_sizes eligible. `exclusion_log.csv`
+updated (879 → 882 rows; E06 83 → 85, E12 13 → 14). Duplicate audit
+(exact-DOI + study_id) found no new duplicates. `full_text_retrieval_
+queue.csv` regenerated (1,820 open records, including the wrong_file_
+retrieved record left undecided). `validate_schemas.py` confirms all
+13 tracked files OK.
+
+Running totals: 1,839/3,659 screened (957 include/882 exclude), 1,820
+open, 957 extracted studies, 44 effect_sizes rows.
+
+## 2026-09-27 — Hundred-eighty-eighth full-text screening batch (10 records, 5 includes, 5 excludes)
 
 Eleventh batch from `new_batch_pool.json[100:110]`.
 
