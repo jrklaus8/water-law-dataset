@@ -4,7 +4,38 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — evidence_map.csv's study_design_class partially normalized to DATA_DICTIONARY.md's 8-value enum
+## 2026-09-28 (latest) — effect_sizes.csv's `adjusted` field fixed for 19 rows; DATA_DICTIONARY.md brought current across several enum fields
+
+**Part 1: `effect_sizes.csv`'s `adjusted` column.** 19 of 62 rows literally said `"TRUE"`
+instead of the descriptive-text convention used elsewhere in the same column. Checked each
+against `extraction_database.csv`'s own `adjusted_or_unadjusted`/`covariates` fields before
+touching anything: 18 had real, already-extracted adjustment/covariate detail sitting unused
+(carried over verbatim, not re-derived); the 19th (S969) had no such detail recorded at
+extraction time, so its replacement text is derived instead from this row's own
+`effect_estimate` equation (`ACCESS = 41.956 + 0.322*YRSCOL + 2.420*COLONIZER`), which already
+discloses the one covariate (colonizer identity) actually in the model. 62 rows unchanged in
+count; `code/analysis/validate_schemas.py` re-run clean.
+
+**Part 2: `DATA_DICTIONARY.md`.** Checking whether `study_design_class`'s enum-drift problem
+(fixed earlier today) was a one-off surfaced a broader pattern: `mechanism_family` and
+`outcome_family` both have documented enums that current practice has visibly outgrown in
+favor of richer, more specific values (not noise -- a deliberate refinement neither this pass
+nor any prior one should force back into the old enum without a considered decision);
+`effect_measure` is documented as a short code but used as full descriptive text in all 62
+`effect_sizes.csv` rows; and `effect_sizes.csv`'s own `adjusted` field (distinct from
+`extraction_database.csv`'s `adjusted_or_unadjusted`) was not documented under its own name at
+all. Updated each entry to describe what the data actually contains, flagging the
+`mechanism_family`/`outcome_family` cases as open decisions for a future researcher rather than
+resolving them unilaterally. Also added the `effect_sizes.csv` field documentation that was
+missing outright (`exposure_definition`, `comparator_definition`, `effect_measure`,
+`effect_estimate`, `lower_CI`/`upper_CI`/`standard_error`, `sample_size`, `direction`,
+`adjusted`, `provenance_note` -- previously only 3 of the file's 17 columns were documented),
+and corrected the dictionary's own closing "Status" section, which still said "No data exists
+yet in any of the CSVs above beyond headers" -- true when written, badly wrong for a long time,
+not previously caught by any of today's documentation passes. This is a documentation-only
+change; no data file was touched in Part 2.
+
+## 2026-09-28 (earlier) — evidence_map.csv's study_design_class partially normalized to DATA_DICTIONARY.md's 8-value enum
 
 `DATA_DICTIONARY.md` documents `study_design_class` as an 8-value enum, but the live data
 carried 482 distinct free-text values -- an enum-compliance bug flagged (without fixing) in

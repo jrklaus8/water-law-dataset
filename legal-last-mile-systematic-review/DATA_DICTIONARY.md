@@ -156,9 +156,9 @@ header. Key type/format notes not obvious from the field name alone:
 | eligibility, burden, discretion_accommodation, enforcement | boolean | top-level mechanism families |
 | documentation ... bureaucratic_assistance | boolean | detailed mechanism codes, `CODEBOOK.md` §4 |
 | formal_connection ... delay_outcome | boolean | outcome codes, `CODEBOOK.md` §5 (note `delay_outcome`, not `delay`, to avoid a duplicate header with the mechanism-code `delay`) |
-| effect_measure | enum | `OR` / `RR` / `RD` / `MD` / `SMD` / `r` / `beta` / `log_OR` / `other` (specify in extraction_note) |
+| effect_measure | enum (as originally specified) | `OR` / `RR` / `RD` / `MD` / `SMD` / `r` / `beta` / `log_OR` / `other` (specify in extraction_note). **In `extraction_database.csv` itself this short code is often followed by descriptive text in the same field** (e.g. `OR`, but also longer strings naming the exact model); **`effect_sizes.csv`'s own `effect_measure` column abandons the short-code convention entirely** — all 62 rows there use a full descriptive phrase instead (e.g. "multilevel logistic regression, adjusted odds ratio (OR)"), which is more informative for a review that deliberately does not force effect measures onto one common scale (`ANALYSIS_PLAN.md` §4) — see that file's own column for real examples rather than the short-code list here. |
 | effect_estimate, lower_CI, upper_CI, standard_error, p_value | numeric | leave blank, not zero, if not reported/calculable |
-| adjusted_or_unadjusted | enum | `adjusted` / `unadjusted` |
+| adjusted_or_unadjusted | enum | `adjusted` / `unadjusted`. **`effect_sizes.csv`'s equivalent column is named `adjusted`, not `adjusted_or_unadjusted`, and was not separately documented here until 2026-09-28** — see that file's own section below. |
 | model_type | string | e.g. `logistic regression`, `OLS`, `difference-in-differences` |
 | risk_of_bias_rating | string | tool-specific rating vocabulary (RoB 2: low/some concerns/high; ROBINS-I: low/moderate/serious/critical/no information; JBI/CASP/MMAT: per that tool's own scale) — record the tool alongside the rating so the scale is unambiguous |
 | mechanism_certainty | integer 0–4 | `CODEBOOK.md` §9 |
@@ -168,10 +168,10 @@ header. Key type/format notes not obvious from the field name alone:
 
 | Field | Type | Notes |
 |---|---|---|
-| study_design_class | enum | `experimental` / `quasi_experimental` / `observational` / `qualitative` / `doctrinal` / `jurimetric` / `systematic_review_secondary` / `mixed_methods` |
+| study_design_class | enum | `experimental` / `quasi_experimental` / `observational` / `qualitative` / `doctrinal` / `jurimetric` / `systematic_review_secondary` / `mixed_methods`. **Status, 2026-09-28**: normalized for the 707 studies whose `risk_of_bias_tool` unambiguously implies one of the first 6 values (`code/analysis/build_evidence_map.py`'s `derive_study_design_class`); the 455 studies tagged with the project's own Legal Institutional Evidence Appraisal Framework or `NONE` remain free text, since their real methodological diversity (ethnographic/historical-institutional/comparative-institutional/documentary case studies, per `RISK_OF_BIAS.md` §2) doesn't reduce to just `doctrinal`/`jurimetric` without inventing a false binary — see `05_analysis/descriptive/study_design_class_normalization_2026-09-28.md`. A future extension of this enum (e.g. a `qualitative_institutional_case_study` value) would let that remainder be normalized too. |
 | evidence_level | string | narrative tier, not a numeric score (this project does not use a single universal evidence-hierarchy number — see `RISK_OF_BIAS.md` §1 on design-matched appraisal) |
-| mechanism_family | enum | `ELIGIBILITY` / `BURDEN` / `DISCRETION_ACCOMMODATION` / `ENFORCEMENT` / `MULTIPLE` |
-| outcome_family | enum | per `PROJECT_SPEC.md` §7 (`primary_connection` / `effective_access` / `economic_access` / `administrative_outcome`) |
+| mechanism_family | enum (as originally specified) | `ELIGIBILITY` / `BURDEN` / `DISCRETION_ACCOMMODATION` / `ENFORCEMENT` / `MULTIPLE`. **In practice, this enum has been superseded, not followed.** A large share of `evidence_map.csv` rows instead carry a specific, synthesized lowercase thematic label describing the study's actual substantive mechanism (e.g. `institutional_fragmentation`, `landlord_tenant_exclusion`, `corruption_favouritism_distribution`, `tariff_subsidy_design`) — richer and more analytically useful than the 5-value enum, but an undocumented departure from it, not a documented alternative. This is a genuine, unresolved schema question, not a data error: a future researcher should decide whether to (a) formally adopt the richer scheme as the documented standard and normalize the remaining `ELIGIBILITY`/`BURDEN`/.../`MULTIPLE`-style rows up to it, or (b) enforce the narrow enum and lose the richer labels' specificity. Neither direction should be taken mechanically — see `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`'s "Mechanism-family coverage" section. |
+| outcome_family | enum (as originally specified) | per `PROJECT_SPEC.md` §7 (`primary_connection` / `effective_access` / `economic_access` / `administrative_outcome`). **In practice, `effect_sizes.csv`'s `outcome_family` column uses a wider set** — `water_access`, `sanitation_access`, `service_coverage`, `affordability`, `formal_connection` also appear, alongside the four documented values. Not corrected here for the same reason as `mechanism_family` above: these look like a deliberate refinement (splitting `effective_access` into water- and sanitation-specific variants, for instance), not noise, and forcing them back into the 4-value list would lose that distinction without a considered decision to do so. |
 | quantitative_synthesis_eligible, qualitative_synthesis_eligible | boolean | |
 | legal_context | string | e.g. `civil_law`, `common_law` |
 | institutional_context | string | e.g. `centralized`, `decentralized`, `fragmented` |
@@ -182,9 +182,25 @@ Records only the effects actually judged eligible for quantitative synthesis
 (a subset of `extraction_database.csv`, one row per pooled or
 pooling-candidate effect):
 
+**Status, 2026-09-28**: this section originally documented only 3 of `effect_sizes.csv`'s 17
+actual columns. Filled in below to match the live file, none of it retroactive invention — every
+row added to this file across the project (61 at original extraction, S348 added 2026-09-28)
+already used these fields; this just catches the dictionary up.
+
 | Field | Type | Notes |
 |---|---|---|
+| outcome_family | enum (as originally specified, see `evidence_map.csv` section above) | which outcome construct this effect targets — see that section's note on the enum's actual, wider usage in this file specifically |
 | synthesis_family | string | `A` / `B` / `C` per `PROJECT_SPEC.md` §8, or a newly identified family — record the family's own definition in `05_analysis/meta_analysis/` if a new one is created |
+| exposure_definition | string | full prose description of the exposure and how it was operationalized in the source study — not a short code, since `ANALYSIS_PLAN.md` §3's critical pooling rule requires enough detail to judge comparability, not just a label |
+| comparator_definition | string | full prose description of the reference/comparison group, same reasoning as `exposure_definition` |
+| effect_measure | string | see this file's `effect_measure` note above — in practice a full descriptive phrase, not the short enum code |
+| effect_estimate | string | the reported point estimate, narrated in the study's own terms when a single clean numeric value isn't recoverable from this project's extraction (a real, disclosed limit — not invented precision) |
+| lower_CI, upper_CI, standard_error | numeric or blank | leave blank, not zero, if not reported/calculable — same rule as `extraction_database.csv` |
+| sample_size | string | the study's own reported N, in whatever unit is appropriate to its design (households, utilities, country-years, etc.) |
+| direction | string | `positive` / `negative` / `null` / `mixed`, with a short parenthetical stating what that direction means substantively for this specific exposure-outcome pair (raw regression sign alone is not informative across differently-coded reference categories) |
+| adjusted | string | **not the same enum as `adjusted_or_unadjusted` above** — in practice, a descriptive phrase naming the actual covariates/matching/fixed-effects used, not a bare `adjusted`/`unadjusted` flag (a bare `TRUE` here is a data-entry artifact, not a valid value — see `CHANGELOG.md`'s 2026-09-28 "adjusted field" fix entry for the 19 rows this was corrected in) |
+| evidence_status | enum | `OBSERVED` / `CALCULATED` / `ASSUMED` / `INTERPRETED`, `PROJECT_SPEC.md` §13 — same enum as `extraction_database.csv`'s field of the same name |
+| provenance_note | string | cites the source `extraction_database.csv` study_id, citation, and — for any row added or corrected after original extraction — the specific audit/pass responsible, so this file's own history stays traceable without needing `CHANGELOG.md` open at the same time |
 | included_in_pooled_estimate | boolean | |
 | exclusion_from_pooling_reason | string | required if `included_in_pooled_estimate = false` — must cite the specific decision-tree branch from `ANALYSIS_PLAN.md` §2 that excluded it |
 
@@ -202,6 +218,18 @@ audit trail, not a general methods description — general transformation
 
 ## Status
 
-No data exists yet in any of the CSVs above beyond headers. This dictionary
-is written ahead of extraction so the schema is fixed before data entry
-begins, per the reproducibility requirement in `REPRODUCIBILITY.md`.
+**This section originally said "No data exists yet in any of the CSVs above beyond headers,"
+written when this dictionary was drafted ahead of extraction so the schema would be fixed
+before data entry began, per `REPRODUCIBILITY.md`. That was true then and has been badly wrong
+for a long time — updated here 2026-09-28 rather than left to keep misleading a reader.**
+
+As of 2026-09-28: `screening_database.csv` holds all 27,481 deduplicated records, fully
+screened at title/abstract; `full_text_screening_database.csv` holds 3,659 seeded records,
+2,276 assessed (Phase 6 formally closed by researcher decision); `extraction_database.csv`
+holds all 1,162 included studies, fully extracted against every field this dictionary
+documents; `evidence_map.csv` and `effect_sizes.csv` are populated and current as described in
+their own sections above (both were updated the same day this Status section was corrected).
+See `README.md`'s "Current project status" table for exact live figures — this dictionary
+describes the *schema*, and that table is the authoritative source for *how much of it is
+filled in* at any given time; the two will drift apart again if only one is kept current, so
+check both rather than assuming this section's date makes it permanently reliable.
