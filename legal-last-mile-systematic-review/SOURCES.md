@@ -265,6 +265,12 @@ Phase 5/6 screening on that basis, not on topical grounds).
 ## Status
 
 This is a preliminary source list of 14 methodological/exemplar
-references, not a bibliography of the review's evidence base. The
-evidence-base bibliography does not exist yet — it is built during Phase 3
-onward of `PRISMA_WORKFLOW.md`.
+references, not a bibliography of the review's evidence base. **The
+evidence-base bibliography itself is no longer "not built yet" as of
+2026-09-28** — this originally said it would be "built during Phase 3
+onward," and Phase 3 (database searching) closed 2026-09-11; the citation
+for every one of the 1,162 included studies now lives in
+`extraction_database.csv`'s `citation`/`doi` columns, not as a separate
+document here. This file remains what it always was: the smaller,
+distinct list of methodological/exemplar references the review's own
+design choices cite, not a restatement of the evidence base.

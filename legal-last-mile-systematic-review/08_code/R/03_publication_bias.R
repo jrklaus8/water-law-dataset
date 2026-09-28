@@ -40,10 +40,11 @@ for (fam in unique(pooled$synthesis_family)) {
 
   if (k < MIN_STUDIES_FOR_PUB_BIAS) {
     cat(sprintf(
-      "Family %s: k=%d, below ANALYSIS_PLAN.md S9's %d-study threshold -- ",
-      "REFUSING to run funnel/Egger/Begg for this family. A funnel plot with ",
-      "this few points is not meaningfully interpretable for asymmetry; do not ",
-      "force one just because the code can technically produce a plot.\n",
+      paste0(
+        "Family %s: k=%d, below ANALYSIS_PLAN.md S9's %d-study threshold -- ",
+        "REFUSING to run funnel/Egger/Begg for this family. A funnel plot with ",
+        "this few points is not meaningfully interpretable for asymmetry; do not ",
+        "force one just because the code can technically produce a plot.\n"),
       fam, k, MIN_STUDIES_FOR_PUB_BIAS))
     next
   }
@@ -68,11 +69,12 @@ for (fam in unique(pooled$synthesis_family)) {
   write.csv(tests, sprintf("05_analysis/publication_bias/%s_tests.csv", fam), row.names = FALSE)
 
   cat(sprintf(
-    "Family %s (k=%d): Egger p=%.3f, Begg p=%.3f. REMINDER (ANALYSIS_PLAN.md S9): ",
-    "do not interpret funnel asymmetry or a significant test here as PROOF of ",
-    "publication bias on its own -- heterogeneity, genuine small-study effects, ",
-    "selective outcome reporting, and methodological differences across studies ",
-    "are equally plausible explanations. Report this alongside those alternatives, ",
-    "not as a standalone verdict.\n",
+    paste0(
+      "Family %s (k=%d): Egger p=%.3f, Begg p=%.3f. REMINDER (ANALYSIS_PLAN.md S9): ",
+      "do not interpret funnel asymmetry or a significant test here as PROOF of ",
+      "publication bias on its own -- heterogeneity, genuine small-study effects, ",
+      "selective outcome reporting, and methodological differences across studies ",
+      "are equally plausible explanations. Report this alongside those alternatives, ",
+      "not as a standalone verdict.\n"),
     fam, k, tests$egger_p, tests$begg_p))
 }

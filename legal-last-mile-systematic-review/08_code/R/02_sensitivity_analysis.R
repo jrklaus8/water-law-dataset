@@ -112,9 +112,11 @@ for (fam in unique(pooled$synthesis_family)) {
   #    defensible for this family, and if so, add it explicitly rather
   #    than through a generic loop.
   cat(sprintf(
-    "Family %s: alternative-effect-measure sensitivity check NOT automated -- ",
-    "ANALYSIS_PLAN.md S4/S10 require a case-by-case defensibility judgment, ",
-    "add manually if applicable for this family.\n", fam))
+    paste0(
+      "Family %s: alternative-effect-measure sensitivity check NOT automated -- ",
+      "ANALYSIS_PLAN.md S4/S10 require a case-by-case defensibility judgment, ",
+      "add manually if applicable for this family.\n"),
+    fam))
 
   fam_results <- do.call(rbind, results)
   dir.create("05_analysis/sensitivity", showWarnings = FALSE, recursive = TRUE)

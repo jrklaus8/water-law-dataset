@@ -133,10 +133,12 @@ for (fam in families) {
   # a finding to discuss, not a bug to suppress by switching models.
   if (!is.na(model$I2) && model$I2 > 75) {
     cat(sprintf(
-      "NOTE: family %s shows I^2 = %.1f%% -- high heterogeneity. Per ANALYSIS_PLAN.md ",
-      "S6, treat this as a substantive/institutional question (legal system, ",
-      "centralization, provider model, population, mechanism, outcome, design), ",
-      "not merely a statistical nuisance to explain away.\n", fam, model$I2))
+      paste0(
+        "NOTE: family %s shows I^2 = %.1f%% -- high heterogeneity. Per ANALYSIS_PLAN.md ",
+        "S6, treat this as a substantive/institutional question (legal system, ",
+        "centralization, provider model, population, mechanism, outcome, design), ",
+        "not merely a statistical nuisance to explain away.\n"),
+      fam, model$I2))
   }
 
   png(sprintf("05_analysis/meta_analysis/%s_forest.png", fam), width = 1000, height = 800)

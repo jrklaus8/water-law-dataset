@@ -4,7 +4,53 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — effect_sizes.csv's `adjusted` field fixed for 19 rows; DATA_DICTIONARY.md brought current across several enum fields
+## 2026-09-28 (latest) — R templates (Phases 12/14/15) validated: 4 real bugs found and fixed
+
+An R interpreter became available in this environment (`apt-get install r-base-core`, plus
+`r-cran-metafor`/`r-cran-dplyr`/`r-cran-ggplot2` -- the only three packages the three scripts
+in `08_code/R/` actually `library()`-load, confirmed by reading each script; `meta`/`readxl`/
+`openxlsx`/`janitor`/`robvis`, part of `ANALYSIS_PLAN.md` §12's broader named toolkit, are not
+called by any code that currently exists here). `08_code/R/README.md`'s Status section had said
+since 2026-09-12 that none of this code had ever been run, "per this project's never-fabricate
+rule, that is not the same claim as tested and working" -- closing that gap felt worth doing
+once it became possible.
+
+Ran all three scripts (`01_meta_analysis.R`, `02_sensitivity_analysis.R`,
+`03_publication_bias.R`) against the real `effect_sizes.csv` (62 rows, all
+`included_in_pooled_estimate = FALSE` per Phase 11's verdict) -- all three correctly and
+immediately `stop()` with an informative message, exactly the intended behavior, not a bug.
+Then built several synthetic datasets (outside the repository, never committed) specifically to
+exercise every branch the real data doesn't currently reach: enough pooled rows per family,
+enough per-jurisdiction and per-moderator studies to clear each script's own thresholds, and,
+in one dataset, deliberately high heterogeneity (I²>99%) to trigger the one branch that
+specifically checks for it.
+
+**Found and fixed 4 real bugs, all the same underlying error**: a multi-line `sprintf()` call
+where a user-facing message was split across several string-literal arguments meant to read as
+one continuous sentence. R does not auto-concatenate adjacent string literals -- each fragment
+was instead passed as a separate *value* argument trying to fill a `%s`/`%d` placeholder that
+didn't exist for it. In `02_sensitivity_analysis.R` this silently dropped the real substitution
+value and produced a warning plus garbled output; in the other three cases (one in
+`01_meta_analysis.R`'s I²>75% heterogeneity note, two in `03_publication_bias.R`) it threw a
+hard, unrecoverable `Error`. **`03_publication_bias.R`'s two buggy messages sit on its two
+mutually exhaustive branches (below vs. at-or-above the 10-study threshold), meaning this
+script would have crashed on its very first real invocation, whichever branch it took.** Fixed
+by wrapping each split message in `paste0()` so the fragments concatenate into one format
+string before `sprintf()` sees it, then re-ran every synthetic scenario to confirm each branch
+now completes cleanly and produces correctly-formed output (forest/funnel PNGs, `.rds` model
+objects, `.csv` heterogeneity/sensitivity/publication-bias tables all inspected directly, not
+just checked for absence of an error).
+
+This is real, meaningful validation, not a formality: these scripts had never been executed
+before today in any environment, and the bugs found were not hypothetical -- every one of them
+would have fired on the very branch the code exists to handle. `08_code/R/README.md`'s Status
+section, `PRISMA_WORKFLOW.md`'s Phase 12/14/15 rows and closing narrative, and `README.md`'s
+corresponding status-table row all updated to reflect this. Separately, `SOURCES.md`'s own
+closing Status section was also caught and fixed in the same documentation pass -- it still
+said the evidence-base bibliography "does not exist yet -- it is built during Phase 3 onward,"
+true when written, stale since Phase 3 closed 2026-09-11.
+
+## 2026-09-28 (earlier) — effect_sizes.csv's `adjusted` field fixed for 19 rows; DATA_DICTIONARY.md brought current across several enum fields
 
 **Part 1: `effect_sizes.csv`'s `adjusted` column.** 19 of 62 rows literally said `"TRUE"`
 instead of the descriptive-text convention used elsewhere in the same column. Checked each
