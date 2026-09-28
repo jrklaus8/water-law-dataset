@@ -4,7 +4,35 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Phase 13 SWiM syntheses written for all three families; the 9 never-evaluated blank-family effect-size rows resolved; S526/S539/S749 pooling-feasibility methods note written
+## 2026-09-28 (latest) — DOI-variant duplicate audit run across the full 27,481-record pool
+
+Closes `README.md`'s "How to continue this project" item 4. Normalized every non-empty `doi`
+field in `01_search/deduplicated/deduplicated_records.csv` (14,076 of 27,481 records) and
+checked both exact and prefix matches (the prefix check catches the `S063`-style corruption
+pattern -- a trailing suffix concatenated onto a real DOI with no separator -- that exact-string
+comparison cannot). Zero new exact-match duplicate groups. The prefix-match pass returned 40
+candidate pairs; manual review sorted them into three buckets, all disclosed in
+`01_search/deduplicated/doi_variant_duplicate_audit_2026-09-28.md` rather than silently
+filtered: ~20 are legitimate book-DOI/chapter-DOI publisher hierarchies (not duplicates), 4 are
+coincidental numeric-suffix string collisions in sequential journal-article DOI numbering (not
+duplicates, a disclosed limitation of prefix-matching on this kind of identifier), and 16
+involve one single record (`RCD78B89FE287`) with a truncated DOI (`10.1080/07`) that spuriously
+prefix-matches many unrelated papers -- a genuine data-quality defect, but one with no
+downstream effect since that record was already excluded at title/abstract screening (E01)
+before this audit ran.
+
+The remaining 2 pairs are genuine same-paper duplicates, both already known or already
+resolved, not new problems: the already-documented S063 case (confirming the method works), and
+a previously-undocumented-at-the-README-level fourth case -- `R6ABD0B221622`/`RD9FA1D5723A2`
+(Cesari et al.'s West Bank water-trucking governance paper, duplicated across a 2019 and a 2022
+Scopus record differing only by Practical Action Publishing's "OA" open-access DOI suffix) --
+which `full_text_screening_database.csv` shows was already correctly caught and excluded (E08)
+during full-text screening, well before this audit, via ordinary reviewer discipline rather than
+an automated DOI check. `README.md`'s "at least three known cases" bullet (Known limitations
+item 7) updated to "at least four," and item 4 under "How to continue this project" marked
+done, both pointing to the audit file for full detail.
+
+## 2026-09-28 (earlier) — Phase 13 SWiM syntheses written for all three families; the 9 never-evaluated blank-family effect-size rows resolved; S526/S539/S749 pooling-feasibility methods note written
 
 Closes the three concrete open items Phase 11 (`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md` §8) left for a future pass, now done the same week rather than left open:
 

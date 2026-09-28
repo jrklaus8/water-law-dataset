@@ -269,9 +269,9 @@ retrieval are now closed by researcher decision — see below):
 | Title/abstract screening | Complete, double-reviewed: 3,659 include / 6 exclude, zero conflicts |
 | Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,276 of 3,659 records actually screened (62.2%) — **1,162 include / 1,114 exclude**; 1,383 permanently unretrieved |
 | Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,162 studies extracted |
-| Risk-of-bias appraisal | Design-matched tool assigned to 1,116 of 1,162 studies; only 33 have an actual completed rating |
+| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,162 studies carry a correctly design-matched tool; all 1,154 to which one applies carry a completed rating — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
 | Evidence classification | Caught up with extraction: 248 studies quantitative-synthesis-eligible, 1,062 qualitative-synthesis-eligible |
-| Quantitative synthesis | 61 effect-size estimates extracted; **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work |
+| Quantitative synthesis | 61 effect-size estimates extracted; **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
 
 This is an unusually large and comprehensive systematic review for its
 fields (administrative law, comparative law, sociolegal studies), closed

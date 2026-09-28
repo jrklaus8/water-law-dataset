@@ -89,22 +89,41 @@ explained in full further down; this is the index.
    honestly "Can't tell"/"not assessable" rather than a real judgement. See
    `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for the full
    account of what this does and does not mean for synthesis confidence.
-7. **At least three known cases of the same paper being assigned two
+7. **At least four known cases of the same paper being assigned two
    different `record_id`s exist**, caused by DOI-formatting variants across
    different search-database exports of the same article (e.g. a trailing
    volume/year fragment appended to one export's DOI field but not the
-   other's). Two were caught during a 2026-09-16 post-hoc duplicate audit
-   (`S227`, `S399` — see `CHANGELOG.md`); a third was caught today,
-   2026-09-27, while matching studies to reviewer confirmations (see
-   **Chronological workflow → 5**, "S063"). There is no guarantee every such
-   variant across the full 27,481-record pool has been found.
-8. **Several governing documents in this repository contain status sections
-   that are now significantly out of date and must not be read as current.**
-   `PRISMA_WORKFLOW.md`'s Phase 6 entry, `RISK_OF_BIAS.md` §4, and
-   `ANALYSIS_PLAN.md` §13 all still describe an earlier, much less advanced
-   state of the project. The parent repository's own top-level `README.md`
-   ("Companion Project" section) is stale by roughly the same margin. See
-   **A warning about stale documentation** for exactly what is wrong in each
+   other's, or a publisher's open-access-version DOI suffix). Two were
+   caught during a 2026-09-16 post-hoc duplicate audit (`S227`, `S399` —
+   see `CHANGELOG.md`); a third was caught 2026-09-27 while matching
+   studies to reviewer confirmations (see **Chronological workflow → 5**,
+   "S063"); a fourth — `R6ABD0B221622`/`RD9FA1D5723A2`, the West Bank
+   water-trucking governance paper, Cesari et al. — was already correctly
+   caught and resolved at the full-text screening stage, and was confirmed
+   (not newly found) by a dedicated DOI-variant audit run 2026-09-28 across
+   the **full 27,481-record pool**, not just the extracted subset —
+   `01_search/deduplicated/doi_variant_duplicate_audit_2026-09-28.md`. That
+   audit found no further unresolved duplicates (0 exact-match groups; 40
+   prefix-match candidates, of which ~36 were false positives from the
+   method itself — book/chapter DOI hierarchies and coincidental numeric-
+   suffix collisions, both disclosed in the audit file rather than
+   filtered silently — and the remaining 4 were the two already-known cases
+   counted above). This narrows, but does not eliminate, the uncertainty
+   this bullet originally flagged: the audit is DOI-based only and would
+   not catch a same-paper duplicate indexed under two entirely different
+   DOIs (e.g. a preprint vs. a final-publication DOI) — see that file's
+   "What this audit does not do" for the exact limits.
+8. **Several governing documents in this repository had status sections
+   that drifted significantly out of date and should not always be read as
+   current without checking.** `PRISMA_WORKFLOW.md`'s Phase 6+ entries are
+   only partially current (Phase 9 and 13 rows were updated 2026-09-28;
+   its "Current phase" summary line and Phase 8/9 narrative paragraph were
+   annotated rather than rewritten — see that file directly).
+   `RISK_OF_BIAS.md` §4 and `ANALYSIS_PLAN.md` §13 have both been brought
+   current as of 2026-09-28. The parent repository's own top-level
+   `README.md` ("Companion Project" section) was also updated 2026-09-28.
+   See **A warning about stale documentation** for exactly what was wrong
+   in each and what "current" now means for each one
    and where the current truth actually lives.
 9. **Quantitative synthesis remains genuinely contingent, by design, not by
    accident.** 61 effect-size rows have been extracted from 248
@@ -793,17 +812,21 @@ of the following as current without cross-checking the CSVs directly**:
   bullet is left as a historical example of how stale a "Status" section
   can get if not maintained; the other two documents below still show
   that same pattern uncorrected.
-- **`ANALYSIS_PLAN.md` §13 ("Status")** still says "No data has been
+- **`ANALYSIS_PLAN.md` §13 ("Status")** originally said "No data has been
   extracted, so no analysis in this document has actually been run...
-  full-text screening (Phase 6) hasn't produced real decisions yet." Also
-  now badly wrong for the same reason.
+  full-text screening (Phase 6) hasn't produced real decisions yet." That
+  is no longer accurate and no longer what §13 says: it was rewritten
+  2026-09-28 to reflect Phase 11's completion, and updated again the same
+  day to reflect Phase 13's — it is now current. Left here as a second
+  historical example, alongside the corrected `RISK_OF_BIAS.md` bullet
+  above, of how stale a "Status" section can get if not actively
+  maintained.
 - **The parent repository's top-level `README.md`**, "Companion Project:
-  Systematic Review" section, currently says "full-text screening is live
-  (131 assessed so far)... 62 studies fully extracted." The real figures
-  are roughly 17× and 18× higher respectively. This file lives outside
-  this folder and is not something this review's own batch-processing
-  workflow touches automatically — a future update to this README should
-  be paired with an update there.
+  Systematic Review" section, is updated as of 2026-09-28 to reflect
+  current figures — see `README.md` in the repository root. This file
+  lives outside this folder and is not something this review's own
+  batch-processing workflow touches automatically, so it can still drift
+  again if a future update here is not paired with one there.
 - **This README itself, before this rewrite**, had already drifted
   internally: its own top-line status paragraph correctly said 2,253/1,142/
   1,111, while a lower section still said "all 488 fully-extracted studies
@@ -840,7 +863,7 @@ top.
 | [`INCLUSION_EXCLUSION.md`](INCLUSION_EXCLUSION.md) | Screening criteria and the E01–E12 exclusion codes |
 | [`CODEBOOK.md`](CODEBOOK.md) | Extraction rules — the 92-field schema, mechanism/outcome coding, evidence-status labels |
 | [`RISK_OF_BIAS.md`](RISK_OF_BIAS.md) | Which appraisal tool applies to which study design, plus §4 "Status" (current as of 2026-09-28) and §3's cross-cutting evidence-limitations narrative, `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` |
-| [`ANALYSIS_PLAN.md`](ANALYSIS_PLAN.md) | Synthesis decisions — the quantitative-feasibility decision tree, effect-size strategy, contingent meta-analytic model (its own §13 "Status" is stale — see above) |
+| [`ANALYSIS_PLAN.md`](ANALYSIS_PLAN.md) | Synthesis decisions — the quantitative-feasibility decision tree, effect-size strategy, contingent meta-analytic model (its own §13 "Status" is current as of 2026-09-28) |
 | [`PRISMA_WORKFLOW.md`](PRISMA_WORKFLOW.md) **and the live databases** | The 16-phase workflow narrative — reliable for Phases 1–5, **stale for Phase 6 onward**; for current numbers use this README's status table, `06_outputs/prisma/prisma_flow.md`, and the CSVs directly |
 | [`CHANGELOG.md`](CHANGELOG.md) | The full, dated history of every methodological decision, correction, and status change, in the order it actually happened — the primary audit trail |
 | [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md) | Field-by-field type and allowed-value definitions for every tracked CSV |
@@ -1043,12 +1066,22 @@ In roughly this order, for whoever picks this up next:
      "Overall confidence" section).
    - None of today's ratings have been independently human-reviewed —
      same caveat as extraction and full-text screening.
-4. **Run a DOI-variant duplicate audit across the full 27,481-record
-   pool**, not just the extracted subset, given three known instances of
-   the same paper carrying two `record_id`s. A script that normalizes DOIs
-   (stripping URL prefixes, case, and — per the `S063` case above — any
-   trailing non-DOI suffix a source export may have appended) before
-   matching would catch more of these than exact-string comparison does.
+4. **Done, 2026-09-28** — a DOI-variant duplicate audit ran across the full
+   27,481-record pool (not just the extracted subset), normalizing DOIs
+   (URL prefixes, case) and checking both exact and prefix matches (the
+   latter catching the `S063`-style trailing-suffix pattern that
+   exact-string comparison misses). Result: zero new exact-match
+   duplicates; the prefix-match pass surfaced 40 candidates, of which ~36
+   were false positives (book/chapter DOI hierarchies; coincidental
+   numeric-suffix collisions — both disclosed as known limitations of this
+   method) and 4 were the two already-known duplicate pairs (S063, and a
+   newly-confirmed-but-already-resolved West Bank water-trucking case). See
+   `01_search/deduplicated/doi_variant_duplicate_audit_2026-09-28.md` for
+   the full account, including what this DOI-only method would still miss
+   (e.g. a same-paper duplicate under two unrelated DOIs, like a preprint
+   vs. final-publication pair) — a fuzzy title/author-similarity pass
+   across all 27,481 records remains a real, larger, not-yet-done
+   follow-up if more confidence is needed here.
 5. **Phase 11 is done** (2026-09-28,
    `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`)
    — no family clears the bar for meta-analysis — **and, as of the same
@@ -1077,13 +1110,17 @@ In roughly this order, for whoever picks this up next:
    note's §6 for what would reopen the question. `08_code/R/` still has
    nothing to run against.
 7. **Update the stale documents** listed in **A warning about stale
-   documentation** — `PRISMA_WORKFLOW.md`'s Phase 6+ entries,
+   documentation** if they drift again. `RISK_OF_BIAS.md` §4,
    `ANALYSIS_PLAN.md` §13, and the parent repository's top-level README's
-   "Companion Project" section — to match whatever the live numbers are at
-   that time, or at minimum add a pointer to this README's status table if
-   a full rewrite isn't practical yet. (`RISK_OF_BIAS.md` §4 was brought
-   current on 2026-09-28 and no longer belongs on this list — see **Known
-   limitations → 15**.)
+   "Companion Project" section were all brought current on 2026-09-28 and
+   no longer belong on this list as outstanding (see **Known limitations →
+   15** and the stale-documentation section itself). `PRISMA_WORKFLOW.md`
+   remains only partially current — its Phase 9 and 13 table rows were
+   updated 2026-09-28, but its "Current phase" summary line, Phase 8/9
+   narrative paragraph, and every phase entry not related to risk-of-bias
+   or synthesis feasibility were left as-is with a dated annotation rather
+   than fully rewritten. A full `PRISMA_WORKFLOW.md` rewrite (not just
+   another annotation) remains genuinely open work.
 8. **Do not change the research question, the E01–E12 inclusion/exclusion
    criteria, the 92-field codebook, or the planned synthesis approach
    without logging the change, its date, and its rationale in

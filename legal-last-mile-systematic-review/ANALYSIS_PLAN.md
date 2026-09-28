@@ -174,12 +174,27 @@ is now complete**, in
 `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`.
 Verdict: no family (A, B, or C) clears the bar for meta-analysis; all
 three route to Phase 13's structured quantitative synthesis (SWiM)
-instead — see that document for the full reasoning, including the one
-sub-cluster (Family C's utility-ownership/price studies) that comes
-closest and exactly why it still doesn't clear. `08_code/R/` (Phases
-12/14/15) and `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`
-(Phase 13) still hold only templates — **none of that code has actually
-been run**, and per Phase 11's verdict, Phase 12 (meta-analysis) has
-nothing to run against yet; Phase 13's three SWiM write-ups (one per
-family) are the actual next step. See `08_code/R/README.md`'s "Status"
-section and `README.md`'s "How to continue" for what remains.
+instead — see that document for the full reasoning. **Update, 2026-09-28
+(later the same day): Phase 13 is now also complete.** All three SWiM
+write-ups exist —
+`06_outputs/supplementary/family_A_swim_synthesis_2026-09-28.md`,
+`family_B_swim_synthesis_2026-09-28.md`, `family_C_swim_synthesis_2026-09-28.md`
+— each with a vote-counting table by direction of effect, thematic
+subgroups, a robustness check, and a certainty judgment drawn from that
+week's corpus-wide risk-of-bias ratings. Separately, the 9
+`effect_sizes.csv` rows Phase 11 had flagged as never evaluated against
+the family definitions were resolved
+(`06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md`),
+and a dedicated methods note concluded no defensible common-metric
+transformation exists for the Family C utility-ownership/price
+sub-cluster (S526/S539/S749) with the data currently extracted
+(`06_outputs/supplementary/phase11_pooling_feasibility_S526_S539_S749.md`)
+— that sub-cluster is presented as a directionally-consistent
+vote-counting group in the Family C SWiM synthesis instead of a pooled
+estimate. `08_code/R/` (Phases 12/14/15) still holds only templates and
+**none of that code has actually been run** — per Phase 11's verdict,
+Phase 12 (meta-analysis) has nothing to run against, and nothing found
+during Phase 13 changed that. See `08_code/R/README.md`'s "Status"
+section and `README.md`'s "How to continue" for what remains (the DOI-
+variant duplicate audit and the reviewer_2 human pass, primarily — not
+this document's own synthesis work, which is now done).
