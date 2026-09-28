@@ -4,7 +4,102 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-27 (latest) — Two-hundred-thirty-sixth full-text screening batch (15 records, 6 includes, 0 excludes, 9 wrong_file_retrieved) — 45-record open queue from the large Drive delivery now fully exhausted
+## 2026-09-28 (latest) — Two-hundred-thirty-seventh full-text screening batch (69 records, 1 include, 0 excludes, 68 wrong_file_retrieved, 1 left undecided) — a new, much larger Drive delivery ("Sep 26 2026" folder, 774 PDFs) reconciled, and a systemic retrieval-tool failure mode identified
+
+A second large Google Drive delivery landed in the Antigravity folder (a
+"Sep 26 2026" subfolder, 774 unique PDFs plus 4 non-PDF tracking files).
+Reconciliation (via background agent, cross-referencing every record_id
+against `full_text_screening_database.csv`): 677 were already-decided
+duplicates (moved to Processed), 28 were re-appearances of files already
+flagged `wrong_file_retrieved` in earlier batches (verified, via Drive
+metadata, to already be correctly parked in a new dedicated "wrong_file
+records" Drive folder created this session -- not new re-deliveries, a
+stale read caused by two background agents running concurrently), and 69
+were genuinely open records requiring screening. This batch covers those
+69.
+
+**A systemic failure mode was identified in the delivery tool's own
+tracking file** (`systematic_review_retrieval_final_master.csv`, also
+found in the delivery folder): 99 of its records show a `notes` field
+reading "Harvested from Zotero storage: Title word match (N/M words,
+X%)" -- meaning the tool matched a PDF from local Zotero storage to a
+target citation using fuzzy shared-word overlap in the title alone, with
+confidence as low as 40%, and 95 of the 99 are below 80% confidence --
+yet every one of these is still labeled `retrieval_status: retrieved` /
+`prisma_2020_reason_code: RETRIEVED_AND_VERIFIED` by the tool itself. 65
+of this batch's 69 open records fall into this low-confidence set. This
+was confirmed empirically, not just inferred from the tracking file:
+every one of the first 12 records checked by direct full-text reading
+turned out to be a genuine wrong-file delivery, and a follow-up
+verification pass (reading full content, not trusting filename or the
+tool's "verified" label) found the same for 56 of the remaining 57. This
+is now the dominant driver of this delivery's wrong-file rate and is
+recorded here as a disclosed, named limitation of the "Antigravity"
+retrieval tool's self-reported verification claims -- its
+`RETRIEVED_AND_VERIFIED` label must never be treated as evidence of
+actual content correctness; only direct full-text reading, as this
+pipeline has always done, can establish that.
+
+- **RC8E1C6959D2C** (Samano Romero & Chavez-Mejia 2025, "Water Access in
+  Mexico City: A Review of Local Research Approaches" -- a genuine
+  literature-review synthesis of historical, sociospatial, and
+  quantitative research on Mexico City water-access inequality, covering
+  governance, infrastructure, and affordability). **INCLUDE.** → **S1157**.
+  **Correction to a Batch 236 wrong_file_retrieved flag**: this record was
+  flagged wrong_file_retrieved in Batch 236 after an unrelated Kampala,
+  Uganda paper was delivered under this record_id. During this batch's
+  reconciliation, the correct target content was found -- by direct
+  full-text reading -- mislabeled under a *different* record_id,
+  R023B3A0D827A, in the new delivery. Confirmed via the read tool's own
+  `.viewUrl`/`.title` fields that this is a genuine content-labeling error
+  in the delivery tool's output (a cross-contamination between two
+  different records' deliveries), not a mapping error on this pipeline's
+  end. R023B3A0D827A itself is flagged wrong_file_retrieved below, since
+  its own target citation (Pablos et al. 2014, Sonora river watershed
+  management) remains unretrieved.
+- **68 wrong_file_retrieved this batch**, including R023B3A0D827A (see
+  above) and dozens of ordinary title/content mismatches and
+  content-behind-filename mismatches consistent with the low-confidence
+  Zotero-matching failure mode described above; full per-record detail
+  (target citation vs. delivered content) recorded in
+  `full_text_screening_database.csv` notes for each record_id.
+- **1 record left undecided, per the established undecided-record rule**:
+  R0908697F9FE5 (target: Scott 1977, "Self-Help in Rural Mexico: Santa
+  Maria's Well") returned a completely empty extractable-text result from
+  Google Drive -- filename metadata matches the target, but no content
+  could be read to confirm or refute a match. Left open, untouched, no
+  notes added, pending a manual/OCR follow-up on the underlying file.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1157, 1,154 →
+1,155 rows each); `effect_sizes.csv` unchanged (59 rows -- S1157 is a
+qualitative narrative review with no effect estimate); `exclusion_log.csv`
+unchanged (1,114 rows -- no excludes this batch); duplicate audit
+(exact-DOI + study_id) found no new duplicates; `full_text_retrieval_queue.csv`
+regenerated (1,390 open records); schema validation re-run clean (13/13).
+
+Running totals: 2,269/3,659 screened (1,155 include/1,114 exclude),
+1,390 open (including 118 wrong_file_retrieved), 1,155 extracted
+studies, 59 effect_sizes rows.
+
+## 2026-09-27 (later) — Google Drive reorganization: all `wrong_file_retrieved` PDFs consolidated into a single dedicated folder
+
+At the researcher's request, created a new Google Drive folder, "wrong_file
+records" (alongside the Inbox and Processed folders), and moved every
+Drive file corresponding to a `wrong_file_retrieved` record_id into it,
+regardless of which folder (Inbox or the Antigravity delivery folder) it
+was previously sitting in. All 51 record_ids flagged `wrong_file_retrieved`
+as of this point were located (searched Drive-wide by record_id filename
+prefix, not restricted to any one folder) and moved; 0 were not found. One
+stray file, "WRONG_CHAPTER_not_R81549C4709FC__Sherpa_ch19_climate_justice_
+Kathmandu.pdf" (sitting in Processed, its name explicitly marked as *not*
+belonging to record R81549C4709FC despite matching that record_id as a
+substring), was correctly left untouched since the task was to move files
+whose name *starts with* a flagged record_id, not merely contains one as a
+substring; flagged for awareness, not otherwise acted on. This is a pure
+Drive-organization change -- no screening database fields were modified,
+no counts changed.
+
+## 2026-09-27 — Two-hundred-thirty-sixth full-text screening batch (15 records, 6 includes, 0 excludes, 9 wrong_file_retrieved) — 45-record open queue from the large Drive delivery now fully exhausted
 
 Final batch from the 45-record open queue surfaced by the large new Drive
 delivery (see Batch 233), covering the 15 remaining records: the 2

@@ -6717,6 +6717,49 @@ evidence of anything.
   1,391 open (including 51 wrong_file_retrieved), 1,154 extracted
   studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Drive reorganization (2026-09-27, later that day)**: created a
+  dedicated "wrong_file records" Google Drive folder and consolidated
+  every file corresponding to a `wrong_file_retrieved` record_id into it
+  (51 record_ids located Drive-wide by filename prefix, 0 not found),
+  regardless of which folder each had previously been sitting in. Pure
+  Drive-organization change; no screening-database fields or counts
+  affected.
+
+- **Two-hundred-thirty-seventh batch (69 records, 2026-09-28), a new,
+  much larger Drive delivery (774 PDFs, "Sep 26 2026" folder) reconciled,
+  and a systemic retrieval-tool failure mode identified.** Reconciliation
+  found 677 already-decided duplicates (moved to Processed), 28
+  re-appearances of already-flagged wrong_file records (confirmed already
+  correctly parked in the new "wrong_file records" folder -- a stale read
+  from two concurrent background agents, not genuine re-deliveries), and
+  69 genuinely open records. Of those 69: 1 include, 0 excludes, 68
+  wrong_file_retrieved, 1 left undecided (empty/unreadable Drive
+  extraction, R0908697F9FE5). **Root-cause finding**: the delivery tool's
+  own tracking file showed 99 records harvested via fuzzy "title word
+  match" against local Zotero storage at confidence as low as 40% (95 of
+  99 below 80%), yet all self-labeled `RETRIEVED_AND_VERIFIED`; 65 of this
+  batch's 69 open records fell inside that low-confidence set, and direct
+  full-text verification confirmed 68 of 69 as wrong-file. This tool's
+  self-reported verification status is now a disclosed, named limitation
+  -- never trust it without reading actual content.
+  **RC8E1C6959D2C** (Samano Romero & Chavez-Mejia 2025, "Water Access in
+  Mexico City: A Review of Local Research Approaches") -- **INCLUDE** →
+  **S1157**. This corrects a Batch 236 wrong_file_retrieved flag: the
+  correct target content was found, by direct full-text reading, mislabeled
+  under a different record_id (R023B3A0D827A) in the new delivery -- a
+  genuine delivery-side cross-contamination, confirmed via the read tool's
+  own `.viewUrl`/`.title` fields. R023B3A0D827A itself is flagged
+  wrong_file_retrieved, since its own target citation remains unretrieved.
+  `extraction_database.csv`/`evidence_map.csv` updated (S1157, 1,154 →
+  1,155 rows each); `effect_sizes.csv` unchanged (59 rows -- S1157 is a
+  qualitative narrative review); `exclusion_log.csv` unchanged (1,114 rows
+  -- no excludes); duplicate audit (exact-DOI + study_id) found no new
+  duplicates; `full_text_retrieval_queue.csv` regenerated (1,390 open
+  records); schema validation re-run clean.
+  Running totals: 2,269/3,659 screened (1,155 include/1,114 exclude),
+  1,390 open (including 118 wrong_file_retrieved), 1,155 extracted
+  studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
