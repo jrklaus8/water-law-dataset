@@ -247,12 +247,29 @@ excluded from every overall judgement rather than defaulted to "No
 information" for all 63 — flagged as genuinely unassessed, not
 assumed low-risk.
 
+**2026-09-28, later still — JBI Cross-Sectional ratings completed for 125
+studies; 26 more flagged as mistagged before appraisal, not appraised.**
+See `04_quality/appraisal_forms/JBI_CrossSectional_batch_2026-09-28.md`
+for the full method and results. Of 151 studies tagged with this tool,
+**26 have a `study_design` that is explicitly qualitative** ("qualitative
+case study," "qualitative documentary analysis," "qualitative
+ethnographic case study," etc.) — a pre-existing mistagging from before
+today's session, not something today's audit introduced, but surfaced by
+it. Applying a quantitative cross-sectional checklist to these would
+produce a meaningless score, so they were left unappraised and flagged
+for individual reassignment to CASP Qualitative or the Legal Framework
+instead. Of the 125 genuinely appraised: 8 Low concern, 67 Some concern,
+50 High concern — the "High concern" label reflects sparse extraction
+(no `covariates` or named statistical method captured), not a confirmed
+finding of poor study quality, and is labeled as such throughout.
+
 **Signaling-question-level ratings for the remaining populations (the
-~65 JBI Cross-Sectional studies, the ~53 newly-tagged plus ~96
-originally-tagged MMAT studies, and the ~230 CASP Qualitative studies)
-have not been produced yet.** These are the next, much larger phases of
-this work — most of `extraction_database.csv`'s fields were built to
-capture the legal/institutional exposure-outcome data this review needs,
-not the study-conduct or methodology-reporting details these instruments
-ask about — expect heavy, honest use of "No information" across most of
-the corpus, not a confirmed absence of bias.
+~53 newly-tagged plus ~96 originally-tagged MMAT studies, and the ~230
+CASP Qualitative studies, now plus the 26 reassignment-pending studies
+above) have not been produced yet.** These are the next, much larger
+phases of this work — most of `extraction_database.csv`'s fields were
+built to capture the legal/institutional exposure-outcome data this
+review needs, not the study-conduct or methodology-reporting details
+these instruments ask about — expect heavy, honest use of "No
+information"/"Unclear" across most of the corpus, not a confirmed
+absence of bias.

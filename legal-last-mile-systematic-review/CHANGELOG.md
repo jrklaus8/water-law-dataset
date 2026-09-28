@@ -4,7 +4,50 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — ROBINS-I ratings completed for 63 studies; 9 more design corrections found while preparing the batch
+## 2026-09-28 (latest) — JBI Cross-Sectional ratings completed for 125 studies; 26 more found mistagged (qualitative, not cross-sectional) and left unappraised
+
+Continuing the same day's risk-of-bias execution. Applied the official
+JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies
+(8 items) to the 151-study tagged population (99 pre-existing + 52 from
+today's Legal Framework audit) — see
+`04_quality/appraisal_forms/JBI_CrossSectional_batch_2026-09-28.md` for
+the full method and results.
+
+**26 studies turned out to be mistagged**: S403, S410, S412, S414, S415,
+S416, S417, S419, S420, S424, S425, S431, S433, S441, S444, S446, S447,
+S451, S455, S456, S457, S458, S459, S460, S461, S465 all have a
+`study_design` field that is explicitly qualitative ("qualitative case
+study," "qualitative documentary analysis," "qualitative ethnographic
+case study") — not the quantitative exposure-outcome comparison this
+checklist assumes. This predates today's session (tagged with a bare
+"JBI," not today's reclassification format) but surfaced while preparing
+this batch. **Left unappraised rather than scored meaninglessly**, and
+added as a new task (#13) to the session's tracked work: these need
+individual review to decide CASP Qualitative vs. the Legal Framework, the
+same care given to today's other reclassifications, not a rushed blanket
+move.
+
+JBI's own checklist ends in an "Include / Exclude / Seek further info"
+decision — **relabeled "Low concern / Some concern / High concern"** in
+this project's records to avoid any reader mistaking a
+methodological-quality judgement for a re-opening of this project's
+already-final Phase 6 inclusion decision. No study's inclusion in the
+review is affected.
+
+Of the 125 genuinely appraised: **8 Low concern, 67 Some concern, 50 High
+concern**. "High concern" is explicitly labeled as reflecting sparse
+extraction (no `covariates` or named statistical method captured at
+extraction time for ~40% of this batch), not a confirmed finding of weak
+study quality.
+
+`03_extraction/extracted_data/extraction_database.csv`: 125
+`risk_of_bias_rating` cells populated (plus item-level detail folded into
+`selection_bias`/`confounding`/`measurement_bias`/`reporting_bias`); 26
+more `risk_of_bias_rating` cells set to an explicit "NOT APPRAISED --
+tool assignment questioned" flag rather than left silently blank. Row
+count verified unchanged at 1,162.
+
+## 2026-09-28 (earlier) — ROBINS-I ratings completed for 63 studies; 9 more design corrections found while preparing the batch
 
 Continuing the same day's risk-of-bias execution (RoB 2, AMSTAR 2, and the
 Legal Framework audit logged below). Applied the official ROBINS-I
