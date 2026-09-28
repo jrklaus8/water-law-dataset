@@ -49,6 +49,19 @@ are marked "not assessable," honestly, rather than guessed:
   extraction fields were never built to capture these specifically, and no study-by-study
   differentiation is possible without returning to each source document.
 
+## Follow-up: 9 studies missed by an exact-string-match gap, then fixed
+
+The script that generated this batch filtered on `risk_of_bias_tool.strip() ==
+"Legal Institutional Evidence Appraisal Framework"` — an exact match. The 9 studies reverted
+to this framework earlier today (S462, and the 8 no-comparator case studies S646, S659,
+S687, S787, S832, S858, S927, S950) carry extra explanatory text appended to that same tool
+name ("... (reverted 2026-09-28 -- ...)"), so the exact-match filter silently skipped them,
+leaving all 9 with no `risk_of_bias_rating` at all. Caught by checking for any remaining
+blank ratings after this batch ran, and fixed in a follow-up pass using the identical
+5-domains-from-real-data method described above. Noted here rather than left implicit,
+consistent with this project's practice of disclosing its own process errors alongside the
+substantive findings.
+
 ## What this is and is not
 
 This is a genuine, disclosed, source-cited risk-of-bias appraisal — 5 of 13 domains answered

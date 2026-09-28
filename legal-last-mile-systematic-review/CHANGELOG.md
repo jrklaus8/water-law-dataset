@@ -4,7 +4,46 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — the 425 confirmed Legal Framework studies now all rated; every study in the corpus has both a tool and a rating
+## 2026-09-28 (latest) — corpus-wide consistency sweep: a gap in the Legal Framework batch fixed, stale AMSTAR2 rating text cleaned up, the 2026-09-16 partial pilots confirmed closed
+
+Final consistency pass across all of today's risk-of-bias work.
+
+**9 studies missed by an exact-string-match bug**, found by re-checking
+for any remaining blank `risk_of_bias_rating` after the 425-study Legal
+Framework batch: the batch script filtered on an exact match to
+`"Legal Institutional Evidence Appraisal Framework"`, but S462 and the
+8 no-comparator case studies reverted earlier today (S646, S659, S687,
+S787, S832, S858, S927, S950) carry extra explanatory text appended to
+that same tool name, so the exact match silently skipped them. Fixed in
+a follow-up pass using the identical 5-domains-from-real-data method.
+
+**4 studies with stale AMSTAR2 rating text**: S079, S320, S321, S322
+were correctly reclassified to `risk_of_bias_tool = NONE` earlier today
+(not eligible for AMSTAR 2 or any of the six validated tools), but their
+`risk_of_bias_rating` field still carried the old "partial AMSTAR 2
+pilot appraisal, 2026-09-16" text from before that correction --
+misleadingly implying AMSTAR 2 had actually been applied. Cleared to an
+explicit "NOT APPLICABLE" note, consistent with the other 8 NONE-tool
+studies, which were never rated under the wrong instrument in the first
+place.
+
+**The 2026-09-16 partial pilots (task #10) confirmed closed.** A
+corpus-wide search for every row still referencing "2026-09-16"
+confirms the full, final state: 5 (S037, S057, S085, S142, S294) were
+completed today with real domain-level ratings (RoB 2 and ROBINS-I
+batches); 10 AMSTAR2 studies (S015, S019, S027, S052, S116, S319, S323,
+S324, S327, S328) remain "Not ratable" because their extraction is
+abstract-only and genuinely cannot be improved without re-extracting
+full text -- re-confirmed eligible today rather than left stale; the
+remaining originally-mistagged ones are the 4 just cleaned up above.
+Nothing is left silently incomplete or mislabeled.
+
+`03_extraction/extracted_data/extraction_database.csv`: 9
+`risk_of_bias_rating` cells populated (the missed Legal Framework
+studies), 4 more cleaned up (the stale AMSTAR2 text). Row count verified
+unchanged at 1,162.
+
+## 2026-09-28 (earlier) — the 425 confirmed Legal Framework studies now all rated; every study in the corpus has both a tool and a rating
 
 Closes task #15, the last population-level gap in today's risk-of-bias
 execution -- see

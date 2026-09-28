@@ -383,10 +383,28 @@ them. `legal_measurement_quality`/`outcome_measurement_quality` were
 populated for 365 of 425 (60 predate these codebook fields);
 `mechanism_certainty` for all 425.
 
-**Every study in the corpus now has both a correctly classified
-`risk_of_bias_tool` and a `risk_of_bias_rating`.** What remains open,
-tracked in the session's task list: completing the original 2026-09-16
-partial pilots (revisiting 29 studies' partial ratings to close out
-their remaining domains, not a from-scratch task), writing the
-RISK_OF_BIAS.md §3 cross-cutting evidence-limitations narrative, and a
-final documentation sweep across README/PRISMA_WORKFLOW/prisma_flow.md.
+**2026-09-28, later still — a final corpus-wide consistency sweep.**
+Checking for any remaining blank `risk_of_bias_rating` after the Legal
+Framework batch above found 9 studies an exact-string-match bug in that
+batch's script had silently skipped (S462 and the 8 no-comparator case
+studies reverted earlier today — their tool name carries extra
+explanatory text the exact match didn't catch); fixed with the same
+method. Separately, 4 studies (S079, S320, S321, S322) correctly
+reclassified to `risk_of_bias_tool = NONE` still carried stale "partial
+AMSTAR 2 pilot, 2026-09-16" text in their rating field from before that
+correction, misleadingly implying AMSTAR 2 had been applied — cleared to
+an explicit "NOT APPLICABLE" note. A corpus-wide search then confirmed
+the 2026-09-16 partial-pilot question (task #10) is fully closed: 5
+studies completed today with real ratings, 10 AMSTAR2 studies remain
+honestly "Not ratable" (abstract-only extraction, not fixable without
+re-extraction — re-confirmed eligible rather than left stale), and the
+rest were the 4 just cleaned up.
+
+**Every study in the corpus now has a correctly classified
+`risk_of_bias_tool`, and every study for which a rating is possible has
+one** — the only 8 studies without a `risk_of_bias_rating` are the 8
+correctly tagged `NONE` (no validated tool applies to their design at
+all), which is the honest state, not a gap. What remains open, tracked
+in the session's task list: writing the RISK_OF_BIAS.md §3 cross-cutting
+evidence-limitations narrative, and a final documentation sweep across
+README/PRISMA_WORKFLOW/prisma_flow.md.
