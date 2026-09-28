@@ -4,7 +4,84 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Researcher supplied official RoB 2/ROBINS-I/JBI/MMAT/CASP/AMSTAR 2 checklists directly; two gate-checks run before using them, correcting 16 risk_of_bias_tool assignments
+## 2026-09-28 (latest) — Full risk-of-bias execution begun: RoB 2 (5) and AMSTAR 2 (18) ratings completed; 148 of 573 Legal Framework-tagged studies reclassified after a systematic design audit
+
+The researcher instructed a complete execution of the risk-of-bias phase
+across the whole corpus, fully documented for future audit. Given the
+scale (roughly 1,120 tool-tagged studies across 6 instruments), this is
+being run as a tracked, multi-batch program of work (12 tasks, see the
+session's task list), not a single pass — this entry covers the first
+three completed batches.
+
+**Batch 1 — RoB 2 cluster-trial ratings (5 studies).** Domain-by-domain
+ratings against the official RoB 2 cluster-randomized-trials cribsheet
+for S057, S085, S294, S366, S879 — completing the 2026-09-16 partial
+pilots for S057/S085/S294 (which left Domains 3 and 5 "not assessable")
+and producing first-time ratings for S366 and S879. All 5 land on "Some
+concerns," driven mostly by undocumented procedural detail rather than
+confirmed problems. Per-study files: `04_quality/appraisal_forms/
+S057_RoB2.md` through `S879_RoB2.md`.
+
+**Batch 2 — AMSTAR 2 ratings for the 18 confirmed-eligible systematic
+reviews (6 newly appraised; 12 already correctly appraised 2026-09-16,
+re-confirmed).** New appraisals for S427, S438, S475, S521, S537, S697.
+All 18 land on "Not ratable" (insufficient extracted critical-item
+evidence for a defensible formal label), but S475 and S521 have
+materially richer extraction (named databases, PRISMA diagrams, a named
+risk-of-bias-assessment technique) yielding real Partial Yes answers on
+2-3 of the 5 applicable critical items — both forms note this would still
+cap them at Low confidence even if fully resolved, not higher. Per-study
+files: `04_quality/appraisal_forms/S427_AMSTAR2.md` through
+`S697_AMSTAR2.md`.
+
+**Batch 3 — systematic design audit of the 573 studies tagged with the
+project's own Legal Institutional Evidence Appraisal Framework.** This
+framework (`RISK_OF_BIAS.md` §2) is meant only for studies that don't fit
+a standard design; the 2026-09-28 gate-check entry earlier today flagged,
+without resolving, a concern that it had been broadly over-applied. A
+keyword audit of every tagged study's `study_design`/`model_type` fields,
+spot-checked against the actual text (not just keyword absence/presence),
+found:
+
+- **425 of 573 genuinely belong here** — confirmed by direct inspection:
+  "doctrinal legal-institutional policy analysis," "jurimetric/historical
+  case study," "documentary/institutional analysis," "qualitative
+  exploratory," etc. — exactly this framework's intended scope.
+- **148 reclassified**, preserving prior classification history in this
+  commit's diff (every changed row's `risk_of_bias_tool` cell now also
+  states "reclassified 2026-09-28 from Legal Institutional Evidence
+  Appraisal Framework" plus the specific reason):
+  - **43 → ROBINS-I**: explicit difference-in-differences,
+    propensity-score-matching, panel/longitudinal, or before-after
+    intervention-comparison structure. Includes S765, S795, S920, S930,
+    S1020, S1102 — all genuine quasi-experimental designs with a real
+    comparator group, previously misclassified the same way S879 was
+    (see the earlier 2026-09-28 gate-check entry).
+  - **53 → MMAT**: `study_design` explicitly names a mixed-methods
+    design.
+  - **12 → JBI Cross-Sectional (high confidence)**: `study_design`
+    explicitly names a cross-sectional design.
+  - **40 → JBI Cross-Sectional (medium confidence)**: a broader
+    regression/survey keyword match without an explicit design-type
+    label. Spot-checked on a 20-study sample and found sound (household
+    surveys, regression analyses, composite-index studies — all
+    standard quantitative designs), but this bucket used a less precise
+    match than the other three and is flagged in `RISK_OF_BIAS.md` §4
+    for individual follow-up rather than treated as equally certain.
+- None of the 148 reclassified studies have a `risk_of_bias_rating` yet
+  — this batch only corrected the tool assignment; producing the actual
+  ratings for this population (now folded into the ROBINS-I, MMAT, and
+  JBI Cross-Sectional totals) is separately tracked, ongoing work.
+
+`03_extraction/extracted_data/extraction_database.csv`: 148
+`risk_of_bias_tool` cells changed in this batch (plus the 5 RoB2 and 6
+AMSTAR2 `risk_of_bias_rating` cells from Batches 1-2); row count
+verified unchanged at 1,162 throughout. See `RISK_OF_BIAS.md` §4 for the
+same account in context, including the updated population sizes now
+queued for each remaining instrument (ROBINS-I ~72, JBI Cross-Sectional
+~65, MMAT ~149, CASP Qualitative ~230).
+
+## 2026-09-28 (earlier) — Researcher supplied official RoB 2/ROBINS-I/JBI/MMAT/CASP/AMSTAR 2 checklists directly; two gate-checks run before using them, correcting 16 risk_of_bias_tool assignments
 
 The network-egress blocker logged earlier the same day (below) was
 resolved the same way full-text PDFs have always been supplied for this

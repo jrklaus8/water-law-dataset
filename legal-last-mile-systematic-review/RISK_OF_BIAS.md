@@ -181,18 +181,59 @@ for every AMSTAR2-tagged study, neither relying on the existing
 - See `CHANGELOG.md`'s dated entry for the full per-study list and the
   prior tool value each corrected study carried (also recoverable from
   git history on `03_extraction/extracted_data/extraction_database.csv`).
-- **Signaling-question-level ratings using these checklists have not
-  been produced yet** — the checklists themselves are large (the RoB 2
-  cluster-trial instrument alone has 5 domains and roughly 25 signaling
-  questions), and most of `extraction_database.csv`'s fields were built to
-  capture the legal/institutional exposure-outcome data this review
-  needs, not the trial-conduct or systematic-review-methodology details
-  (allocation concealment, timing of participant identification relative
-  to randomization, protocol registration, duplicate study selection,
-  etc.) these instruments ask about. Producing real ratings for the 18
-  confirmed-eligible AMSTAR2 studies and the 5 RoB2 cluster trials is the
-  next step, and will need either re-reading each study's actual source
-  PDF, or an explicit decision to accept a "No information" (NI) response
-  — itself a legitimate, honest answer within RoB 2's own framework, not
-  a fabrication — wherever the extraction record doesn't capture the
-  needed fact.
+**2026-09-28, later still — RoB 2 (5 studies) and AMSTAR 2 (18 studies)
+signaling-question-level ratings completed**, using the official
+instruments and honest "No information" (NI) answers wherever the
+extraction record doesn't capture the needed fact — see the per-study
+files in `04_quality/appraisal_forms/` (`S057_RoB2.md` through
+`S879_RoB2.md`, `S427_AMSTAR2.md` through `S697_AMSTAR2.md`) and
+`CHANGELOG.md`'s dated entries for the full account. All 5 RoB2 studies
+land on "Some concerns"; all 18 AMSTAR2 studies land on "Not ratable"
+(insufficient critical-item evidence in most cases; two — S475, S521 —
+have real Partial Yes evidence on several critical items but still can't
+reach a defensible formal label, and both forms note explicitly that
+even full resolution would cap them at Low confidence).
+
+**2026-09-28, later still — audit of the 573 studies tagged with the
+project's own Legal Institutional Evidence Appraisal Framework.** This
+framework is meant only for studies that don't fit a standard design
+(doctrinal-empirical hybrids, institutional case studies, jurimetric
+analyses) — §4's earlier entry above flagged, without resolving, a
+concern that it had been over-applied to studies with entirely standard
+designs. A systematic keyword audit of every tagged study's
+`study_design`/`model_type` fields (explicit quasi-experimental/panel/
+before-after language → ROBINS-I; explicit "mixed-methods" → MMAT;
+explicit "cross-sectional" → JBI) found:
+
+- **425 of 573 genuinely belong here** — confirmed by direct inspection
+  of a sample, not just the absence of a keyword match: these studies'
+  own `study_design` text says things like "doctrinal legal-institutional
+  policy analysis," "jurimetric/historical case study," "documentary/
+  institutional analysis," "qualitative exploratory" — exactly this
+  framework's intended scope.
+- **148 were reclassified**: 43 to ROBINS-I (explicit DiD/PSM/panel/
+  before-after quasi-experimental structure — e.g. S765, S795, S920,
+  S930, S1020, S1102, all genuine quasi-experimental designs with a real
+  comparator), 53 to MMAT (explicit "mixed-methods" in their own
+  `study_design` field), 12 to JBI Cross-Sectional (explicit
+  "cross-sectional" wording, high confidence), and **40 more to JBI
+  Cross-Sectional on medium confidence** — a broader regression/survey
+  keyword match without an explicit design-type label, spot-checked on a
+  sample and found sound, but flagged for individual follow-up rather
+  than treated as equally certain as the other three groups.
+- None of the 148 have a `risk_of_bias_rating` yet — this audit only
+  fixed the tool assignment; the ratings themselves are the next phase
+  of work (see `CHANGELOG.md`).
+
+**Signaling-question-level ratings for the remaining populations (the
+now-72 ROBINS-I studies, the ~65 JBI Cross-Sectional studies, the ~53
+newly-tagged plus ~96 originally-tagged MMAT studies, and the ~230 CASP
+Qualitative studies) have not been produced yet.** These are the next,
+much larger phases of this work — the checklists themselves are large
+(RoB 2 cluster alone has 5 domains and ~25 signalling questions), and
+most of `extraction_database.csv`'s fields were built to capture the
+legal/institutional exposure-outcome data this review needs, not the
+study-conduct or methodology-reporting details (allocation concealment,
+duplicate screening, blinding, protocol registration, etc.) these
+instruments ask about — expect heavy, honest use of "No information"
+across most of the corpus, not a confirmed absence of bias.
