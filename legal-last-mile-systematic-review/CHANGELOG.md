@@ -4,7 +4,21 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — SOURCES.md: 7 remaining "not independently re-confirmed" citations verified via WebSearch
+## 2026-09-28 (latest) — PRISMA 2020 checklist numbering error found and fixed via WebSearch
+
+`06_outputs/prisma/PRISMA_2020_CHECKLIST.md` already carried a disclaimer that its 27-item
+table was reconstructed from memory without a live publisher fetch, and should have its item
+numbering/wording checked before final submission. Checked the numbering via `WebSearch`
+(`WebFetch` to prisma-statement.org, the BMJ paper, and PMC all still return `EGRESS_BLOCKED`,
+so this remains search-snippet-level verification): **the table had merged "Rationale" and
+"Objectives" into items `3a`/`3b`, but PRISMA 2020's real checklist gives them standalone items
+3 and 4.** Fixed — no other file in this repository referenced the old `3a`/`3b` numbering, so
+this was a self-contained correction. The rest of the checklist's numbering (5 through 27,
+including every lettered sub-item under 10/13/16/20/23/24) was spot-checked against the
+confirmed structure and found correct; only the 3/4 merge was wrong. Item *wording* (as opposed
+to numbering) remains unconfirmed, per the file's existing caveat.
+
+## 2026-09-28 (earlier) — SOURCES.md: 7 remaining "not independently re-confirmed" citations verified via WebSearch
 
 Extended the same WebSearch-based verification used for the SWiM guideline (below) to the 7
 `SOURCES.md` entries still marked "not independently re-confirmed": PRISMA-P 2015, AMSTAR 2,

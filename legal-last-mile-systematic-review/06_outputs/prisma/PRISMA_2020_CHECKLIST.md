@@ -12,8 +12,17 @@ copying RoB 2's own signaling questions would be.
 submission** — this table was reconstructed from well-established
 knowledge of PRISMA 2020's structure without a live fetch against the
 publisher in the session that wrote it (the same access-blocked situation
-noted throughout `SOURCES.md`), so treat item numbering/wording here as a
+noted throughout `SOURCES.md`), so treat item wording here as a
 close approximation to check, not the authoritative final text.
+**Item numbering was checked 2026-09-28** via `WebSearch` (`WebFetch` to
+every candidate source — prisma-statement.org, the BMJ paper, PMC — still
+returns `EGRESS_BLOCKED`, so this remains search-snippet-level
+verification, not a full-text fetch): the original table had merged
+"Rationale" and "Objectives" into `3a`/`3b`, but PRISMA 2020's real
+numbering gives them **standalone items 3 and 4** — fixed here. The rest
+of the numbering (5 through 27, including every lettered sub-item under
+10, 13, 16, 20, 23, and 24) was spot-checked against the confirmed
+structure and found correct; only the 3/4 merge was wrong.
 
 **Purpose of the "Addressed where" column**: most PRISMA items are
 already substantively addressed somewhere in this repository, well before
@@ -30,8 +39,8 @@ because the manuscript hasn't been drafted yet).
 |---|---|---|---|
 | 1 | Title: identify the report as a systematic review | `manuscript_outline.md` | ☐ |
 | 2 | Abstract: structured summary (PRISMA 2020 for Abstracts) | `07_manuscript/draft/manuscript_outline.md` | ☐ |
-| 3a | Rationale, in the context of existing knowledge | `PROJECT_SPEC.md` §1–3, `SOURCES.md` | ☐ |
-| 3b | Objectives, as an explicit question (PICO or equivalent) | `PROTOCOL.md` §1–2, `PROJECT_SPEC.md` §5–7 | ☐ |
+| 3 | Rationale, in the context of existing knowledge | `PROJECT_SPEC.md` §1–3, `SOURCES.md` | ☐ |
+| 4 | Objectives, as an explicit question (PICO or equivalent) | `PROTOCOL.md` §1–2, `PROJECT_SPEC.md` §5–7 | ☐ |
 | 5 | Eligibility criteria | `INCLUSION_EXCLUSION.md`, `PROTOCOL.md` §5 | ☐ |
 | 6 | Information sources and last-search date | `SEARCH_PROTOCOL.md`, `search_log.csv`, `PRISMA_WORKFLOW.md` Phase 3 | ☐ |
 | 7 | Full search strategy for each database | `SEARCH_PROTOCOL.md` per-database strings, `search_log.csv`'s `exact_search_string` | ☐ |
