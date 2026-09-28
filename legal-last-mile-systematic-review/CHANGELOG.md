@@ -4,7 +4,18 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — PRISMA 2020 checklist numbering error found and fixed via WebSearch
+## 2026-09-28 (latest) — AMSTAR 2 critical-items/algorithm independently re-confirmed via WebSearch
+
+A targeted follow-up search confirmed the exact convention this project has used for all 34
+AMSTAR 2 appraisals this session -- the 7 critical items (2, 4, 7, 9, 11, 13, 15) and the
+High/Moderate/Low/Critically-Low rating algorithm -- matches independent sources, not just the
+citation already verified above. This structure was originally sourced 2026-09-16
+(`04_quality/appraisal_forms/S019_AMSTAR2.md`'s own provenance note, itself obtained via
+WebSearch at the time); today's check is a second, independent confirmation of the same
+structure, not a new finding, but directly validates work already published under it. Recorded
+in `SOURCES.md`'s AMSTAR 2 entry.
+
+## 2026-09-28 (earlier) — PRISMA 2020 checklist numbering error found and fixed via WebSearch
 
 `06_outputs/prisma/PRISMA_2020_CHECKLIST.md` already carried a disclaimer that its 27-item
 table was reconstructed from memory without a live publisher fetch, and should have its item

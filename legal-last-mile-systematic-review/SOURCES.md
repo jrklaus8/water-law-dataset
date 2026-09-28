@@ -174,7 +174,14 @@ expanded from AMSTAR's original 11, with an explicit critical/non-critical
 domain distinction and a High/Moderate/Low/Critically-Low overall-
 confidence rating), consistent with what `04_quality/appraisal_forms/S019_AMSTAR2.md`'s
 own provenance note already recorded from an earlier independent check.
-Same `EGRESS_BLOCKED` caveat as PRISMA-P above for full-text/exact-item-
+**A second, more targeted search the same day independently re-confirmed
+the exact 7 critical items this project has used all along** (2, 4, 7, 9,
+11, 13, 15) and the exact rating algorithm (no critical flaw + ≤1
+non-critical weakness = High; >1 non-critical weakness, no critical flaw
+= Moderate; 1 critical flaw = Low; >1 critical flaw = Critically Low) —
+directly validating the convention behind every one of this project's 34
+AMSTAR 2 appraisals (`RISK_OF_BIAS.md` §4), not just the citation. Same
+`EGRESS_BLOCKED` caveat as PRISMA-P above for full-text/exact-item-
 wording verification. Used strictly as a secondary-review appraisal tool
 (`RISK_OF_BIAS.md` §1) — explicitly not as the primary-study risk-of-bias
 instrument.
