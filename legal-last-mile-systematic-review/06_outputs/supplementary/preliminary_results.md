@@ -6852,6 +6852,16 @@ evidence of anything.
 
 ## What has not been done
 
+*This section was last brought current on 2026-09-28. It had previously
+drifted badly out of date (an earlier version, left unmaintained for
+several weeks of batch work, still described 795 extracted studies, 38
+effect sizes, and an unassigned `reviewer_2` pass — all long since
+superseded). The batch-by-batch log above this section is the actively
+maintained record; this section is a periodic summary of it and should
+always be re-derived from the live CSVs and `CHANGELOG.md` rather than
+trusted as current on its own if substantial time has passed since the
+date above.*
+
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were
   searched, and two planned searches never ran at all.** Scopus (fully
   searched, 18/18 planned batches) and Web of Science (`SEARCH_035`) are
@@ -6859,78 +6869,74 @@ evidence of anything.
   ProQuest/Sociological Abstracts, and JSTOR were also reached but with
   real, disclosed gaps in each (see above). **SSRN and Westlaw/Lexis were
   never searched at all** — the search phase was closed by researcher
-  decision before either was reached. CanLII, Rechtspraak.nl, and
-  Brazilian court/regulatory portals (feeding the doctrinal/jurimetric
+  decision (2026-09-11) before either was reached. CanLII, Rechtspraak.nl,
+  and Brazilian court/regulatory portals (feeding the doctrinal/jurimetric
   strand rather than this empirical-evidence pipeline) also remain
-  untouched. This is the review's single largest disclosed limitation and
-  must be reported as such in any manuscript output.
-- A human `reviewer_2` pass for full-text screening (Phase 6) has not yet
-  been assigned — open question for the researcher, distinct from the
-  title/abstract `reviewer_2` pass, which is complete.
-- Full-text screening itself is far from complete: 1,485 of the 3,659
-  Phase-5 includes have been assessed; 2,174 records have not yet been
-  reached, not confirmed unretrievable, since retrieval depends entirely
-  on the researcher supplying full-text PDFs. Eleven of those 2,174
-  (`wrong_file_retrieved`) were retrieved but did not match their target
-  record or lacked complete content, and are pending a correct/complete
-  re-retrieval attempt.
-- Extraction (Phase 8) is caught up with screening completely — all 795
-  current full-text includes are extracted, no outstanding gap.
+  untouched. This is the review's single largest disclosed search-stage
+  limitation and must be reported as such in any manuscript output.
+- **Full-text retrieval (Phase 6) is itself now closed, by a second,
+  separate researcher decision, 2026-09-28** — institutional access to
+  further database providers is exhausted, and the corpus was judged
+  large and comprehensive enough for the review's purposes. Final figures:
+  2,276 of 3,659 records that were sought for retrieval were actually
+  screened (62.2%) — 1,162 include / 1,114 exclude. The remaining 1,383
+  (37.8%) will not be screened: 182 are `wrong_file_retrieved` (a delivery
+  was attempted and the wrong content arrived) and 1,201 are
+  `not_retrievable` (no successful retrieval attempt ever occurred). This
+  is the same kind of judgment-call closure as the search-phase closure
+  above, not a claim that these 1,383 records are provably unobtainable by
+  every conceivable means. See `CHANGELOG.md`, "Full-text retrieval phase
+  (Phase 6) formally closed by researcher decision," for the full account.
+- **A human `reviewer_2` pass for full-text screening has begun but is
+  only 8.7% complete** — the PI has independently reviewed and confirmed
+  the first 100 of 1,162 current includes (`S001`–`S100`), zero conflicts.
+  The remaining 1,062 includes and all 1,114 excludes at this stage remain
+  AI-reviewer-only. This gap does not close on its own just because Phase
+  6 retrieval has closed — extending it remains open, human work.
+- Extraction (Phase 8) is caught up with the now-closed full-text
+  population completely — all 1,162 current full-text includes are
+  extracted (`S001`–`S1164`, with `S227`/`S399` retired as documented
+  post-hoc-duplicate corrections), no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  795 extracted studies** (a first 12-study partial pilot batch was
-  appraised 2026-09-16, plus 2 further studies -- S370, S372 -- with a
-  positively-determined AMSTAR 2 rating, see `PRISMA_WORKFLOW.md` Phase 9) —
-  `risk_of_bias_tool` is identified per study, but
-  `risk_of_bias_rating` is deliberately left blank for the rest pending the official
-  version of each appraisal instrument (`RISK_OF_BIAS.md`'s explicit
-  prohibition on reconstructing a validated tool from memory). This is a
-  real, reportable limitation at this stage, not an oversight.
+  1,162 extracted studies.** A design-matched appraisal tool is identified
+  for 1,116 of 1,162, but an actual completed rating exists for only 33:
+  29 are explicit partial/pilot judgments from a single 2026-09-16 pilot
+  batch (frequently recorded as "Not ratable" or "at least [severity]"),
+  and only 4 (`S370`, `S372` — AMSTAR 2, both "Critically Low"; `S468`,
+  `S469` — CASP Qualitative / MMAT, both "Moderate") are complete,
+  non-partial ratings. `risk_of_bias_rating` is deliberately left blank
+  for the rest pending a real pass with the correct instrument in hand
+  (`RISK_OF_BIAS.md`'s explicit prohibition on reconstructing a validated
+  tool from memory). This is a real, reportable limitation, not an
+  oversight, and is currently the single largest piece of unfinished work
+  in the pipeline relative to how far everything upstream has progressed.
 - **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family** — 180 studies being individually
-  eligible for quantitative synthesis is not the same as any family
-  clearing `ANALYSIS_PLAN.md` §2's full decision tree (empirical basis →
-  substantively comparable estimand → enough independent, non-secondary
-  studies). That corpus-level judgment has not been made for any family.
-  **2026-09-16: a stricter first pass through `05_analysis/effect_sizes/
-  effect_sizes.csv` found only 11 of those 124 studies have a genuine,
-  non-fabricated exposure-vs-comparator contrast and a locatable effect
-  estimate** (8 fit `PROJECT_SPEC.md` §8's Families A/B/C; 3 do not match
-  any existing family's exposure/outcome definitions). **Extended the same
-  day with 2 more studies (S353, S358) from a later PDF batch, then 1
-  more the same day (S388, Li/McManus/Cronk 2025, Liberia water-point
-  functionality -- a genuine institutional-management exposure/comparator
-  with a real adjusted OR, but left without a synthesis_family assignment
-  since it does not cleanly fit Family A/B/C), bringing
-  the total to 14 (9 fit Families A/B/C, 5 do not), then 1 more (S398,
-  dos Santos Nascimento Sobrinho & da Mota Silveira Neto 2025, a genuine
-  quasi-experimental difference-in-differences evaluation of Recife's
-  ZEIS zoning-law intervention, Family A), bringing the total to 15 (10
-  fit Families A/B/C, 5 do not), then 1 more (S404, Mwaura et al. 2021, a
-  genuine quasi-experimental estimate of WRUA legal-membership status'
-  effect on water poverty, Family A), bringing the total to 16 (11 fit
-  Families A/B/C, 5 do not), then 4 more from Google Drive batch 3 (S434
-  mining-proximity/water-security IV estimate; S435 water-board-election
-  competitiveness/bill-assistance-adoption marginal effect; S445 school-
-  census regional funding-formula-disadvantage odds ratios; S448
-  intermunicipal-cooperation/financial-performance panel coefficient; none
-  fit Families A/B/C), bringing the total to 20 (11 fit Families A/B/C, 9
-  do not).** Every row has
-  `included_in_pooled_estimate = FALSE` — no pooling decision has been
-  made for any family, and no family yet has more than one study sharing
-  a genuinely comparable exposure-comparator definition, so none is close
-  to clearing the decision tree yet. See `CHANGELOG.md` 2026-09-17 for the
-  full list and exclusion rationale.
-- Effect sizes now exist for 38 studies in `effect_sizes.csv` (added
-  2026-09-16, extended 2026-09-17 and in later full-text-screening
-  batches through 2026-09-27, most recently S795 -- Hailu, Osorio &
-  Tsukada's probit difference-in-differences estimate of Bolivian
-  water-utility privatization's effect on piped-water access (0.077,
-  SE 0.016, p<0.01), not mapped to a Family A/B/C synthesis family),
-  but none is pooled, and no family-level meta-analysis has
-  been run. Phases 12–16 (meta-analysis, SWiM synthesis, sensitivity
-  analysis, publication bias, PRISMA reporting) have R-script/template
-  scaffolding built but are all blocked on Phase 11 and have not been run
-  against real data.
+  for any candidate synthesis family.** 248 studies are individually
+  flagged quantitative-synthesis-eligible in `evidence_map.csv`; that is
+  not the same as any family clearing `ANALYSIS_PLAN.md` §2's full
+  decision tree (empirical basis → substantively comparable estimand →
+  enough independent, non-secondary studies) — that corpus-level judgment
+  has not been made for any family. `05_analysis/effect_sizes/
+  effect_sizes.csv` currently holds 61 rows with a genuine, non-fabricated
+  exposure-vs-comparator contrast and a locatable effect estimate: 20
+  Family A, 6 Family B, 16 Family C, and 19 added before the Family A/B/C
+  tag was consistently applied and still carrying a blank family (a
+  disclosed data-cleanliness gap, not lost data). Every row has
+  `included_in_pooled_estimate = FALSE` — no family yet has more than a
+  handful of studies sharing a genuinely comparable exposure-comparator
+  definition, so none is close to clearing the decision tree. This
+  paragraph previously narrated the study-by-study growth of
+  `effect_sizes.csv` inline from 2026-09-16 through S649/2026-09-22 and
+  was then left unmaintained through dozens of subsequent batches; rather
+  than repeat that drift, the complete study-by-study history now lives
+  only in `CHANGELOG.md`'s dated batch entries, which this paragraph
+  points to instead of re-narrating. Phases 12–16 (meta-analysis, SWiM
+  synthesis, sensitivity analysis, publication bias, PRISMA reporting)
+  have R-script/template scaffolding built but are all blocked on Phase 11
+  and have not been run against real data. None of this is affected by
+  the Phase 6 retrieval closure above — no further full-text retrieval
+  will add new candidate studies to this pool, but writing up Phase 11
+  against the pool that already exists remains entirely open work.
 
 ## Why this file is still preliminary, not a results section
 
