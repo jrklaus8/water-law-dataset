@@ -284,12 +284,31 @@ specific quality), so honest appraisal of 185 of 188 mixed-methods
 studies currently has almost nothing to say beyond confirming the
 research question is identifiable.
 
-**Signaling-question-level ratings for the remaining population (the
-~230 CASP Qualitative studies, now plus the 26 + 14 = 40
-reassignment-pending studies above) have not been produced yet.** This
-is the next, much larger phase of this work — most of
-`extraction_database.csv`'s fields were built to capture the
-legal/institutional exposure-outcome data this review needs, not the
-study-conduct or methodology-reporting details these instruments ask
-about — expect heavy, honest use of "No information"/"Unclear"/"Can't
-tell" across most of the corpus, not a confirmed absence of bias.
+**2026-09-28, later still — CASP Qualitative ratings completed for 227
+studies (the largest single batch of the day); 2 more found mistagged
+and directly corrected.** See
+`04_quality/appraisal_forms/CASP_Qualitative_batch_2026-09-28.md` for
+the full method and results. S344 and S350 turned out to be genuine
+systematic/scoping reviews, not primary qualitative studies — corrected
+directly to AMSTAR 2 (unambiguous, unlike the JBI/MMAT reassignment
+queues) and added to the AMSTAR 2 eligible-but-unrated queue. Of the 227
+genuinely appraised: items 1 (clear aims, 218/227 Yes) and 2 (qualitative
+methodology appropriate, 226/227 Yes) are strong; **6 of the 10 CASP
+items are "Can't tell" for the entire batch** — research-design
+justification, recruitment strategy, researcher-participant reflexivity,
+ethics consideration, data-analysis rigor, and the study's stated value
+are essentially never captured in this project's extraction fields.
+CASP's own guidance is explicit that a high count of "Can't tell"
+responses is a signal to interpret findings with caution — stated here
+plainly, not softened. This is the same pattern as the MMAT batch, at
+the largest scale in the whole risk-of-bias effort: the batch with the
+least assessable methodological detail on record is also the biggest
+single population in the corpus.
+
+**Every risk-of-bias batch identified at the start of today's session is
+now complete.** What remains open, tracked in the session's task list:
+the 46 studies with no `risk_of_bias_tool` at all, the 5 ambiguous
+AMSTAR2-flagged studies, the 26 + 14 = 40 reassignment-pending studies
+found during the JBI and MMAT batches, completing the original
+2026-09-16 partial pilots, writing the RISK_OF_BIAS.md §3 cross-cutting
+evidence-limitations narrative, and a final documentation sweep.

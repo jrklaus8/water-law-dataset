@@ -4,7 +4,57 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — MMAT ratings completed for 188 studies; 14 more found mistagged (not genuinely mixed-methods) and left unappraised
+## 2026-09-28 (latest) — CASP Qualitative ratings completed for 227 studies, the largest single batch of the day; 2 more found mistagged and directly corrected; every batch identified at the start of today's session is now complete
+
+Continuing the same day's risk-of-bias execution. Applied the official
+CASP Qualitative Checklist (2024, 10 items) to the 230-study tagged
+population -- see
+`04_quality/appraisal_forms/CASP_Qualitative_batch_2026-09-28.md`.
+
+**2 studies turned out to be mistagged**: S344 ("A systematic review of
+Jakarta's water governance...") and S350 ("...A scoping review") are
+genuine secondary evidence syntheses, not primary qualitative research
+-- `study_design` for both was already "systematic_review_secondary"
+with no qualitative-methods signal at all. Unlike the JBI and MMAT
+reassignment queues, this was unambiguous enough to correct directly:
+**reclassified to AMSTAR 2** and added to that tool's
+eligible-but-unrated queue.
+
+(A false-positive substring match while building this batch briefly
+counted S344/S350 as still-CASP, since their new tool value's own
+explanatory text contains the word "CASP" -- caught and excluded before
+finalizing the 227-study appraisal population; noted here in case it
+helps a future reader auditing this process.)
+
+Of the 227 genuinely appraised: item 1 (clear aims) Yes for 218/227,
+item 2 (qualitative methodology appropriate) Yes for 226/227, item 5
+(data collection method addressed the issue) Yes for 84/227, item 9
+(clear statement of findings) Yes for 204/227. **The other 6 of 10 items
+-- research-design justification, recruitment strategy, researcher-
+participant reflexivity, ethics consideration, data-analysis rigor, and
+the study's stated value -- are "Can't tell" for all 227 studies.** CASP's
+own checklist explicitly warns that a high count of "Can't tell"
+responses should prompt caution about a study's findings; stated
+plainly here rather than smoothed over. Per CASP's own guidance, no
+composite score is computed for any study, consistent with today's MMAT
+batch.
+
+`03_extraction/extracted_data/extraction_database.csv`: 227
+`risk_of_bias_rating` cells populated with the full 10-item record; 2
+more `risk_of_bias_tool` cells corrected (CASP to AMSTAR 2). Row count
+verified unchanged at 1,162.
+
+**Every risk-of-bias batch identified at the outset of today's session
+(RoB 2, AMSTAR 2, the Legal Framework audit, ROBINS-I, JBI
+Cross-Sectional, MMAT, CASP Qualitative) is now complete.** What remains,
+tracked as open tasks: 46 studies with no `risk_of_bias_tool` at all, 5
+ambiguous AMSTAR2-flagged studies, 40 reassignment-pending studies found
+during the JBI/MMAT batches (now 42 with S344/S350's queue addition),
+completing the original 2026-09-16 partial pilots, the RISK_OF_BIAS.md
+§3 cross-cutting evidence-limitations narrative, and a final
+documentation sweep.
+
+## 2026-09-28 (earlier) — MMAT ratings completed for 188 studies; 14 more found mistagged (not genuinely mixed-methods) and left unappraised
 
 Continuing the same day's risk-of-bias execution. Applied the official
 MMAT 2018 screening questions and mixed-methods criteria (5.1-5.5) to
