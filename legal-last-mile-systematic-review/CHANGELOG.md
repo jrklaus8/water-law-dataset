@@ -4,7 +4,41 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — both reassignment queues closed (26 + 14 = 40 studies); one false flag caught and corrected
+## 2026-09-28 (latest) — the 425 confirmed Legal Framework studies now all rated; every study in the corpus has both a tool and a rating
+
+Closes task #15, the last population-level gap in today's risk-of-bias
+execution -- see
+`04_quality/appraisal_forms/LegalFramework_batch_2026-09-28.md`.
+
+Unlike the thinnest condensed appraisals used for the small Legal
+Framework groups found earlier today, this batch draws on real evidence
+already sitting in `extraction_database.csv`: `legal_measurement_quality`,
+`outcome_measurement_quality`, and `mechanism_certainty` were populated
+during the *original* extraction work, months before today's
+risk-of-bias session, and map directly onto 3 of the framework's 13
+domains (exposure definition, outcome definition, causal
+identification) -- reported verbatim, not reinterpreted for this
+appraisal. Combined with jurisdictional specificity (from `country`) and
+institutional context (from `country` + `legal_system`), **5 of 13
+domains are populated from real sources**; the other 8 remain "not
+assessable" honestly, since this project's extraction was never built to
+capture them. `legal_measurement_quality`/`outcome_measurement_quality`
+were populated for 365 of 425 (60 predate these codebook fields);
+`mechanism_certainty` for all 425; `country` for 424 (S513 the one
+exception).
+
+**Every one of the 1,162 studies in `extraction_database.csv` now has
+both a correctly classified `risk_of_bias_tool` and a
+`risk_of_bias_rating`.** This is the largest single milestone of today's
+risk-of-bias execution -- the phase that `README.md`'s own "Known
+limitations" item 14 (added earlier today) described as "barely started
+relative to extraction" this morning.
+
+`03_extraction/extracted_data/extraction_database.csv`: 425
+`risk_of_bias_rating` cells populated. Row count verified unchanged at
+1,162.
+
+## 2026-09-28 (earlier) — both reassignment queues closed (26 + 14 = 40 studies); one false flag caught and corrected
 
 Closing tasks #13 and #14, the two reassignment queues opened while
 preparing today's JBI Cross-Sectional and MMAT batches -- see

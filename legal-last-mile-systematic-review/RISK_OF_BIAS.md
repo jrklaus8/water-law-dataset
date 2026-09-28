@@ -365,8 +365,28 @@ full run of batches does mean: every study now has a correctly
 classified `risk_of_bias_tool`, and every study actually appraised today
 has an honest rating, never a fabricated one.
 
-What remains open, tracked in the session's task list: completing the
-original 2026-09-16 partial pilots, individually rating the 425
-confirmed Legal-Framework studies, writing the RISK_OF_BIAS.md §3
-cross-cutting evidence-limitations narrative, and a final documentation
-sweep.
+**2026-09-28, later still — the 425 confirmed Legal Framework studies
+now all have a rating too.** See
+`04_quality/appraisal_forms/LegalFramework_batch_2026-09-28.md`. This
+one draws on real, already-extracted data rather than the thinnest
+possible condensed appraisal: `legal_measurement_quality`,
+`outcome_measurement_quality`, and `mechanism_certainty` were populated
+during the *original* extraction work (months before today's
+risk-of-bias session), and map directly onto 3 of the framework's 13
+domains (exposure definition, outcome definition, causal
+identification) — reported verbatim, not reinterpreted. Combined with
+jurisdictional specificity (from `country`) and institutional context
+(from `country` + `legal_system`), **5 of 13 domains are populated from
+real sources for this batch**; the other 8 remain "not assessable,"
+honestly, since this project's extraction was never built to capture
+them. `legal_measurement_quality`/`outcome_measurement_quality` were
+populated for 365 of 425 (60 predate these codebook fields);
+`mechanism_certainty` for all 425.
+
+**Every study in the corpus now has both a correctly classified
+`risk_of_bias_tool` and a `risk_of_bias_rating`.** What remains open,
+tracked in the session's task list: completing the original 2026-09-16
+partial pilots (revisiting 29 studies' partial ratings to close out
+their remaining domains, not a from-scratch task), writing the
+RISK_OF_BIAS.md §3 cross-cutting evidence-limitations narrative, and a
+final documentation sweep across README/PRISMA_WORKFLOW/prisma_flow.md.
