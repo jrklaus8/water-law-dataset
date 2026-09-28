@@ -116,6 +116,18 @@ has(el_txt, f"| {T['CASP Qualitative']} | ", 'tool table CASP')
 has(el_txt, f"only {F['causal_capable_designs']} of {n:,} studies", 'causal-capable')
 has(el_txt, f"{F['legal_framework_measurement_quality_populated']} of the\n{T['Legal Framework']} Legal Framework studies", 'LF measurement quality')
 has(el_txt, f"{F['abstract_only_extractions']} of the {n:,}", 'abstract-only')
+mcn = F['mechanism_certainty_numeric']
+has(el_txt, f"only {mcn['3'] + mcn['4']} of {n:,} studies", 'mechanism_certainty 3-4')
+has(el_txt, f"{mcn['1']} (", 'mechanism_certainty level 1')
+has(el_txt, f"{mcn['2']} (", 'mechanism_certainty level 2')
+has(el_txt, f"{F['mechanism_certainty_narrative_text']} of {n:,}", 'mechanism_certainty narrative')
+has(el_txt, f"{F['robins_i_ratings'].get('Moderate', 0)} land at", 'ROBINS-I moderate')
+has(el_txt, f"{F['robins_i_ratings'].get('Serious', 0)} at", 'ROBINS-I serious')
+_fam = F['effect_size_by_family']
+_sw = '06_outputs/supplementary/'
+has(_sw + 'family_A_swim_synthesis_2026-09-28.md', f"the {_fam['A']} studies", 'Family A size')
+has(_sw + 'family_B_swim_synthesis_2026-09-28.md', f"k = {_fam['B']}", 'Family B size')
+has(_sw + 'family_C_swim_synthesis_2026-09-28.md', f"Vote count across all {_fam['C']} studies", 'Family C size')
 lb = F['legal_system_buckets']
 has(el_txt, f"common law only {lb['common law']} ", 'legal-system common')
 has(el_txt, f"civil law only {lb['civil law']} ", 'legal-system civil')

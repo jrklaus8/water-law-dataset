@@ -118,6 +118,13 @@ def compute():
             return 'mixed / both / customary'
         return 'common law' if has_c else 'civil law' if has_v else 'other'
     F['legal_system_buckets'] = dict(sorted(Counter(legal_bucket(r['legal_system']) for r in ed).items()))
+    mc = Counter(r['mechanism_certainty'].strip() for r in ed)
+    numeric = {k: mc.get(k, 0) for k in ('0', '1', '2', '3', '4')}
+    F['mechanism_certainty_numeric'] = numeric
+    F['mechanism_certainty_narrative_text'] = len(ed) - sum(numeric.values())
+    rob = Counter(re.split(r'[ (,]', r['risk_of_bias_rating'].strip())[0] for r in ed if tool_of(r['risk_of_bias_tool']) == 'ROBINS-I')
+    F['robins_i_ratings'] = dict(rob)
+    F['rob2_ratings'] = dict(Counter(re.split(r'[(,]', r['risk_of_bias_rating'])[0].strip() for r in ed if tool_of(r['risk_of_bias_tool']) == 'RoB 2'))
     n = len(ed)
     F['tool_share_pct'] = {k: round(100 * v / n, 1) for k, v in F['tools'].items()}
     return F
@@ -160,6 +167,10 @@ def render(F):
               f"`country`: {F['country_single_name_studies']:,} studies name exactly one country, {F['country_multi_or_regional_studies']} name several countries or a region, "
               f"{F['country_blank_studies']} are blank. Top single-country values: " + ", ".join(f"{k} {v}" for k, v in F['country_top10_single_name']) + ". "
               f"`legal_system` buckets: " + ", ".join(f"{k} {v}" for k, v in F['legal_system_buckets'].items()) + ".",
+              "", "## Certainty scale and ratings", "",
+              "`mechanism_certainty` numeric levels: " + ", ".join(f"{k}: {v}" for k, v in F['mechanism_certainty_numeric'].items()) +
+              f"; {F['mechanism_certainty_narrative_text']} studies carry narrative text instead of a 0-4 code. ROBINS-I ratings: " +
+              ", ".join(f"{k} {v}" for k, v in F['robins_i_ratings'].items()) + ". RoB 2 ratings: " + ", ".join(f"{k.strip()} {v}" for k, v in F['rob2_ratings'].items()) + ".",
               "", "## Effect sizes", "",
               f"{F['effect_size_rows']} rows ({F['effect_size_rows_from_eligible_studies']} from quantitative-synthesis-eligible studies, "
               f"{F['effect_size_rows_from_ineligible_studies']} from a study not flagged eligible); by family: " +

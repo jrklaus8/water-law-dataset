@@ -49,6 +49,10 @@ Tool-applicable studies (all tools except NONE): 1,147; unrated among them: 0. N
 
 `country`: 1,029 studies name exactly one country, 122 name several countries or a region, 8 are blank. Top single-country values: India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. `legal_system` buckets: blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
 
+## Certainty scale and ratings
+
+`mechanism_certainty` numeric levels: 0: 4, 1: 238, 2: 286, 3: 27, 4: 8; 596 studies carry narrative text instead of a 0-4 code. ROBINS-I ratings: Moderate 54, Serious 9. RoB 2 ratings: Some concerns 5.
+
 ## Effect sizes
 
 62 rows (61 from quantitative-synthesis-eligible studies, 1 from a study not flagged eligible); by family: (none: reasoned non-fit) 16, A 20, B 6, C 20; rows pooled: 0.
