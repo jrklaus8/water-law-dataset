@@ -4,7 +4,49 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — JBI Cross-Sectional ratings completed for 125 studies; 26 more found mistagged (qualitative, not cross-sectional) and left unappraised
+## 2026-09-28 (latest) — MMAT ratings completed for 188 studies; 14 more found mistagged (not genuinely mixed-methods) and left unappraised
+
+Continuing the same day's risk-of-bias execution. Applied the official
+MMAT 2018 screening questions and mixed-methods criteria (5.1-5.5) to
+the 202-study tagged population -- see
+`04_quality/appraisal_forms/MMAT_batch_2026-09-28.md` for the full
+method and results.
+
+**14 studies turned out not to be genuinely mixed-methods**: S150,
+S409, S421, S422, S423, S426, S428, S432, S452, S454, S467, S494, S619,
+S1153 have neither an explicit "mixed methods" self-label nor both a
+qualitative and quantitative signal in their `study_design` -- most are
+purely quantitative ("cross-sectional observational," "quantitative
+survey-based logistic regression"), one (S421) purely qualitative
+("documentary/archival analysis"). MMAT's own guide requires "at least
+one QUAL method and one QUAN method" combined. Left unappraised, added
+as a new open item (task #14) for individual reassignment to JBI
+Cross-Sectional or CASP Qualitative/the Legal Framework.
+
+Of the 188 genuinely appraised: screening questions Yes for 185/188.
+**The 5 mixed-methods criteria are "Can't tell" for nearly the entire
+batch** -- only criterion 5.2 (integration) is answered "Yes," for 3
+studies with an explicit triangulation signal in their extraction notes
+(S086, S134, S168). Per MMAT's own user guide, no composite score is
+computed for any study -- the tool's own guidance explicitly discourages
+this and calls for reporting per-criterion ratings instead, which is
+what this batch does.
+
+This is the most candid single finding of today's risk-of-bias work:
+`extraction_database.csv`'s fields were built to capture legal/
+institutional exposure-outcome data, not mixed-methods integration
+practice (rationale for the MM design, triangulation, divergence-
+handling, tradition-specific component quality), so for 185 of 188
+mixed-methods studies this project currently has almost nothing to say
+about MM-specific quality beyond confirming the research question and
+data are identifiable.
+
+`03_extraction/extracted_data/extraction_database.csv`: 188
+`risk_of_bias_rating` cells populated with the full per-criterion
+record; 14 more set to an explicit "NOT APPRAISED -- tool assignment
+questioned" flag. Row count verified unchanged at 1,162.
+
+## 2026-09-28 (earlier) — JBI Cross-Sectional ratings completed for 125 studies; 26 more found mistagged (qualitative, not cross-sectional) and left unappraised
 
 Continuing the same day's risk-of-bias execution. Applied the official
 JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies

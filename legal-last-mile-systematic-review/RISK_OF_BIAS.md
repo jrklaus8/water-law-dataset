@@ -263,13 +263,33 @@ instead. Of the 125 genuinely appraised: 8 Low concern, 67 Some concern,
 (no `covariates` or named statistical method captured), not a confirmed
 finding of poor study quality, and is labeled as such throughout.
 
-**Signaling-question-level ratings for the remaining populations (the
-~53 newly-tagged plus ~96 originally-tagged MMAT studies, and the ~230
-CASP Qualitative studies, now plus the 26 reassignment-pending studies
-above) have not been produced yet.** These are the next, much larger
-phases of this work — most of `extraction_database.csv`'s fields were
-built to capture the legal/institutional exposure-outcome data this
-review needs, not the study-conduct or methodology-reporting details
-these instruments ask about — expect heavy, honest use of "No
-information"/"Unclear" across most of the corpus, not a confirmed
-absence of bias.
+**2026-09-28, later still — MMAT ratings completed for 188 studies; 14
+more flagged as mistagged, not appraised.** See
+`04_quality/appraisal_forms/MMAT_batch_2026-09-28.md` for the full method
+and results. Of 202 MMAT-tagged studies, **14 lack either a qualitative
+or quantitative component entirely** (mostly purely quantitative
+"cross-sectional observational" studies, one purely qualitative) — MMAT
+requires a genuine combination of both, so these were left unappraised
+and flagged for reassignment. Of the 188 genuinely appraised: the
+screening questions (S1/S2) are Yes for 185; **the 5 mixed-methods
+criteria (5.1-5.5) are "Can't tell" for essentially the entire batch** —
+only criterion 5.2 (integration) has a positive answer, for 3 studies.
+This is not a rating failure — it directly follows MMAT's own guide,
+which explicitly discourages computing a composite score and instead
+calls for reporting each criterion individually — and it is the most
+candid single finding of the day's risk-of-bias work: this project's
+extraction fields were never built to capture mixed-methods integration
+practice (rationale, triangulation, divergence-handling, tradition-
+specific quality), so honest appraisal of 185 of 188 mixed-methods
+studies currently has almost nothing to say beyond confirming the
+research question is identifiable.
+
+**Signaling-question-level ratings for the remaining population (the
+~230 CASP Qualitative studies, now plus the 26 + 14 = 40
+reassignment-pending studies above) have not been produced yet.** This
+is the next, much larger phase of this work — most of
+`extraction_database.csv`'s fields were built to capture the
+legal/institutional exposure-outcome data this review needs, not the
+study-conduct or methodology-reporting details these instruments ask
+about — expect heavy, honest use of "No information"/"Unclear"/"Can't
+tell" across most of the corpus, not a confirmed absence of bias.
