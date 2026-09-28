@@ -1109,18 +1109,22 @@ In roughly this order, for whoever picks this up next:
    adjustment none of the source papers' extracted data supports). See that
    note's §6 for what would reopen the question. `08_code/R/` still has
    nothing to run against.
-7. **Update the stale documents** listed in **A warning about stale
-   documentation** if they drift again. `RISK_OF_BIAS.md` §4,
-   `ANALYSIS_PLAN.md` §13, and the parent repository's top-level README's
-   "Companion Project" section were all brought current on 2026-09-28 and
-   no longer belong on this list as outstanding (see **Known limitations →
-   15** and the stale-documentation section itself). `PRISMA_WORKFLOW.md`
-   remains only partially current — its Phase 9 and 13 table rows were
-   updated 2026-09-28, but its "Current phase" summary line, Phase 8/9
-   narrative paragraph, and every phase entry not related to risk-of-bias
-   or synthesis feasibility were left as-is with a dated annotation rather
-   than fully rewritten. A full `PRISMA_WORKFLOW.md` rewrite (not just
-   another annotation) remains genuinely open work.
+7. **Done, 2026-09-28.** All of the documents listed in **A warning about
+   stale documentation** have been brought current if they drift again in
+   the future: `RISK_OF_BIAS.md` §4, `ANALYSIS_PLAN.md` §13, and the
+   parent repository's top-level README's "Companion Project" section were
+   brought current earlier the same day (see **Known limitations → 15**);
+   `PRISMA_WORKFLOW.md` received a full currency pass across every
+   remaining phase row (6, 8, 10, 11, 12, 14, 15), its "Current phase"
+   summary line, its closing Phases-10/11/13 narrative paragraph, and its
+   PRISMA-flow-diagram description (which wrongly claimed
+   `06_outputs/prisma/prisma_flow.md` was still a zero-count stub — it is
+   not, and has not been for some time). Every original historical figure
+   is left in place with a dated correction appended next to it, matching
+   how every other document in this project was brought current today —
+   not a wholesale rewrite, consistent with this project's practice of
+   preserving its own history rather than erasing it. See `CHANGELOG.md`'s
+   final 2026-09-28 entry for the itemized list.
 8. **Do not change the research question, the E01–E12 inclusion/exclusion
    criteria, the 92-field codebook, or the planned synthesis approach
    without logging the change, its date, and its rationale in

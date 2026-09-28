@@ -4,7 +4,43 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — DOI-variant duplicate audit run across the full 27,481-record pool
+## 2026-09-28 (latest) — full currency pass over PRISMA_WORKFLOW.md's remaining phase rows
+
+Extends the documentation sweep already run for Phases 9 and 13 to every other row in the
+16-phase table plus the "Current phase" summary line and the closing Phases-10/11/13 narrative
+paragraph. Phases 1-5 were already confirmed accurate (`README.md`'s own stale-documentation
+warning). For each of the remaining rows, appended a dated update note rather than rewriting the
+original historical snapshot, consistent with this project's practice throughout today's work:
+
+- **Phase 6** (full-text screening) said "in progress, live" — now closed 2026-09-28; final
+  figures 2,276 of 3,659 assessed, 1,162 include / 1,114 exclude, 1,383 permanently unretrieved.
+- **Phase 8** (full extraction) cited a 759-study snapshot — now 1,162, matching the closed
+  Phase 6 population exactly, no backlog.
+- **Phase 10** (evidence classification) cited a 512-study snapshot — now populated for all
+  1,162 studies; also flagged that `study_design_class` was not recomputed as part of today's
+  risk-of-bias work and should not be assumed current against `risk_of_bias_tool` (a separate,
+  already-disclosed staleness gap between the two fields).
+- **Phase 11** (quantitative feasibility) still listed the pre-correction 20/6/17/18 family
+  counts and the 9-row open item — updated to the corrected 20/6/19/16 counts and a pointer to
+  both follow-up documents now that they exist.
+- **Phase 12/14/15** (meta-analysis/sensitivity/publication-bias) all still frame Phase 11 as
+  not-yet-run -- updated to note Phase 11's verdict is now final and definitive, not just
+  provisionally blocking.
+- **The closing Phases-10/11/13 narrative paragraph** described Phase 10 at "512 extracted
+  studies," Phase 11 as "deliberately left without speculative tooling" (written before Phase 11
+  actually ran), and Phase 13 as only having a template -- all three corrected.
+- **The PRISMA flow diagram description** claimed `06_outputs/prisma/prisma_flow.md` is "a stub
+  with all counts at zero" -- false as of today (and has been for some time): that file carries
+  real, dated identification/screening/retrieval counts. Corrected.
+- **The "Current phase" summary line** extended with a fuller update note covering Phases 6, 8,
+  10, 11, and 13, alongside the Phase 9 pointer already added in an earlier commit today.
+
+`PRISMA_WORKFLOW.md` is still not a full rewrite -- every original historical figure and framing
+is left in place, with a dated correction appended next to it, matching how every other document
+in this project has been brought current today. `README.md`'s "How to continue" item 7 updated
+to reflect that this is now done rather than open.
+
+## 2026-09-28 (earlier) — DOI-variant duplicate audit run across the full 27,481-record pool
 
 Closes `README.md`'s "How to continue this project" item 4. Normalized every non-empty `doi`
 field in `01_search/deduplicated/deduplicated_records.csv` (14,076 of 27,481 records) and
