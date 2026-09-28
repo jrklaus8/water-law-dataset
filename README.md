@@ -12,7 +12,7 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
-### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [Systematic Review (companion project)](legal-last-mile-systematic-review/README.md)
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [AI-Assisted Systematic Review (companion project)](legal-last-mile-systematic-review/README.md)
 
 > **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
@@ -254,11 +254,11 @@ The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII 
 
 ---
 
-## Companion Project: Systematic Review
+## Companion Project: AI-Assisted Systematic Review
 
-**➡️ [Read the full systematic review here](legal-last-mile-systematic-review/README.md)**
+**➡️ [Read the full AI-assisted systematic review here](legal-last-mile-systematic-review/README.md)** · [How AI was used and what a human checked](legal-last-mile-systematic-review/AI_USE_STATEMENT.md)
 
-[`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/) is a separate, companion research project in this repository: a systematic review (with contingent, restricted meta-analysis) of the *household-level* empirical literature on legal and administrative barriers to water and sanitation access. It is deliberately **not** merged with the judicial dataset above — litigation is a selected pathway, not a representative sample of administrative exclusion, so the two evidence bases are kept separate and only triangulated.
+[`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/) is a separate, companion research project in this repository: an **AI-assisted** systematic review (most screening, extraction, appraisal and synthesis drafting was done by a large language model under the researcher's direction; see its AI-use statement) (with contingent, restricted meta-analysis) of the *household-level* empirical literature on legal and administrative barriers to water and sanitation access. It is deliberately **not** merged with the judicial dataset above — litigation is a selected pathway, not a representative sample of administrative exclusion, so the two evidence bases are kept separate and only triangulated.
 
 **Status as of 2026-09-28** (both the database search and full-text
 retrieval are now closed by researcher decision — see below):
@@ -273,7 +273,7 @@ retrieval are now closed by researcher decision — see below):
 | Evidence classification | Caught up with extraction: 247 studies quantitative-synthesis-eligible, 1,059 qualitative-synthesis-eligible |
 | Quantitative synthesis | 62 effect-size rows extracted (one, S589's, is an unresolved eligibility inconsistency flagged by the 2026-09-28 audit); **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
 
-This is an unusually large and comprehensive systematic review for its
+This is an unusually large and comprehensive AI-assisted systematic review for its
 fields (administrative law, comparative law, sociolegal studies), closed
 on the researcher's own judgment that the corpus is sufficient — not a
 claim of exhaustive retrieval. Every figure above, and every material

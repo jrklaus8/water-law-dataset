@@ -54,8 +54,8 @@ would undercut the point of registering at all.
 ## Title
 
 *The Legal Last Mile: Legal and Administrative Barriers to Water and
-Sanitation Access — A Systematic Review and Structured Quantitative
-Evidence Synthesis*
+Sanitation Access — An AI-Assisted Systematic Review and Structured
+Quantitative Evidence Synthesis*
 
 ("...and Meta-Analysis" is added only if Phase 12 of `PRISMA_WORKFLOW.md`
 concludes a restricted pooled estimate is defensible for at least one

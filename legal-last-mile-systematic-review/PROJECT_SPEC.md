@@ -83,12 +83,12 @@ water quantity, reliability, affordability, application success, and service
 continuity are not one common outcome. **A mathematically convertible
 statistic is not automatically a substantively comparable effect.**
 
-**Label:** *Systematic Review with Structured Quantitative Evidence Synthesis
-and Contingent Meta Analysis.* Do not use "meta-analysis" in any output title
+**Label:** *AI-Assisted Systematic Review with Structured Quantitative Evidence Synthesis
+and Contingent Meta Analysis* ("AI-Assisted" added 2026-09-28, see `AI_USE_STATEMENT.md`). Do not use "meta-analysis" in any output title
 until the evidence supports it. If a restricted meta-analysis is ultimately
 justified, the final paper may be titled *The Legal Last Mile: Legal and
-Administrative Barriers to Water and Sanitation Access: A Systematic Review
-and Meta Analysis.*
+Administrative Barriers to Water and Sanitation Access: An AI-Assisted Systematic
+Review and Meta Analysis.*
 
 ### Preliminary feasibility assessment
 

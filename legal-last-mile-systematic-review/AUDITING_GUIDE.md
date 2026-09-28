@@ -1,6 +1,6 @@
 # Auditing and reviewing this review — a guide for scholars, students, supervisors and critics
 
-This is a large, partly AI-conducted systematic review, and it has been corrected several times while being built. This
+This is a large, AI-assisted systematic review (see `AI_USE_STATEMENT.md`), and it has been corrected several times while being built. This
 guide tells you how to check it rather than take it on trust: where the numbers come from, how to follow a single study
 from search hit to synthesis, what has already gone wrong and been fixed, and what is still unverified.
 

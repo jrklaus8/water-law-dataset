@@ -6,8 +6,7 @@ Status: **draft, not yet registered.** Written in PRISMA-P (2015) style. See
 ## 1. Title (working)
 
 *The Legal Last Mile: Legal and Administrative Barriers to Water and
-Sanitation Access — A Systematic Review and Structured Quantitative Evidence
-Synthesis.* ("...and Meta-Analysis" is added only if Phase 12 of
+Sanitation Access — An AI-Assisted Systematic Review and Structured Quantitative Evidence Synthesis.* ("...and Meta-Analysis" is added only if Phase 12 of
 `PRISMA_WORKFLOW.md` concludes a restricted pooled estimate is defensible —
 see `PROJECT_SPEC.md` §3.)
 
@@ -134,6 +133,10 @@ Phase 2). No registration has yet been submitted — this document is the
 pre-registration draft.
 
 ## 12. Amendments
+
+**2026-09-28 — title amended (not the research question, eligibility criteria or synthesis approach):** "AI-Assisted" was added to the working
+title so that the use of a large language model for most screening, extraction, appraisal and synthesis drafting is stated in the title
+(disclosure in `AI_USE_STATEMENT.md`). The protocol is still an unregistered draft, so no registration is amended; logged in `CHANGELOG.md`.
 
 Any change to the research question, eligibility criteria, or planned
 synthesis approach after registration must be logged in `CHANGELOG.md` with

@@ -100,6 +100,11 @@ if _m:
     _got = {c: int(v) for c, v in _re.findall(r'(E\d\d)[^0-9·]*?(\d+)(?= ·|\.|$|\s·)', _m.group(0))}
     for _code, _cnt in F['exclusion_by_code'].items():
         check(_got.get(_code) == _cnt, f"README exclusion breakdown: {_code} is {_got.get(_code)}, data says {_cnt}")
+# The AI-assisted nature of the project must stay visible in the title and the disclosure must exist
+check(text('README.md').lstrip().startswith('# The Legal Last Mile — An AI-Assisted Systematic Review'), 'README.md: H1 no longer carries "AI-Assisted"')
+check('AI-Assisted' in text('CITATION.cff').split('\n')[3], 'CITATION.cff: title no longer carries "AI-Assisted"')
+check('AI-Assisted' in text('PROTOCOL.md').split('## 2.')[0], 'PROTOCOL.md: working title no longer carries "AI-Assisted"')
+check((ROOT / 'AI_USE_STATEMENT.md').exists(), 'AI_USE_STATEMENT.md is missing')
 top_txt = (ROOT.parent / 'README.md').read_text(encoding='utf-8')
 for needle in (f"**{inc_n:,} include / {exc_n:,} exclude**", f"{n:,} studies extracted", f"all {F['tool_applicable']:,} to which one applies",
                f"{F['quantitative_synthesis_eligible']} studies quantitative-synthesis-eligible, {F['qualitative_synthesis_eligible']:,} qualitative"):

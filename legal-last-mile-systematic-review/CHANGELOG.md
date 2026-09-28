@@ -4,7 +4,22 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Reviewability: generated figures, one-command verifier, reviewer's guide, decisions register
+## 2026-09-28 (latest) — Title amended to "AI-Assisted Systematic Review"; AI-use statement added
+
+At the researcher's request, so that the use of AI is obvious from the title: the project title is now *The Legal Last Mile — An
+AI-Assisted Systematic Review* (working full title: *The Legal Last Mile: Legal and Administrative Barriers to Water and Sanitation
+Access — An AI-Assisted Systematic Review and Structured Quantitative Evidence Synthesis*). Changed in `README.md` (H1, subtitle and
+a top banner), `CITATION.cff`, `PROTOCOL.md` §1 (with an entry in §12 Amendments: the title only — not the research question,
+eligibility criteria or synthesis approach; the protocol is an unregistered draft, so no registration is amended),
+`PROJECT_SPEC.md` (label and hypothetical final title), the OSF preregistration draft's title, `AUDITING_GUIDE.md`, and the
+repository root README's companion-project section and link. New `AI_USE_STATEMENT.md` states what the AI did at each stage, what a
+human independently checked (title/abstract screening; 100 full-text includes; nothing else), and why to read critically. `verify_repository.py` now fails
+if "AI-Assisted" is removed from the README title, `CITATION.cff` or the protocol title, or the statement goes missing. **Not renamed:**
+the folder `legal-last-mile-systematic-review/`, the repository, the GitHub Actions workflow and the dated historical documents
+(e.g. `preliminary_report_2026-09-13.md`) keep their names — renaming paths would break every link and script reference and can be a
+separate decision.
+
+## 2026-09-28 (earlier) — Reviewability: generated figures, one-command verifier, reviewer's guide, decisions register
 
 No data changed. Added so that future scholars, supervisors and critics can check this project instead of trusting it — and so the
 class of error the audit kept finding (hand-typed figures going stale across documents) is caught mechanically:
