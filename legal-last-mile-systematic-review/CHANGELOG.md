@@ -4,7 +4,31 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — SWiM reporting-guideline structure confirmed via WebSearch; a genuinely missing checklist item added
+## 2026-09-28 (latest) — SOURCES.md: 7 remaining "not independently re-confirmed" citations verified via WebSearch
+
+Extended the same WebSearch-based verification used for the SWiM guideline (below) to the 7
+`SOURCES.md` entries still marked "not independently re-confirmed": PRISMA-P 2015, AMSTAR 2,
+RoB 2, ROBINS-I, the JBI Manual for Evidence Synthesis chapter, the CASP Qualitative Checklist,
+and MMAT 2018 -- the citations for every validated risk-of-bias/appraisal instrument this
+project uses. All 7 confirmed: title, authors, journal, volume/issue/pages or article number,
+and publication date all matched across multiple independent repository listings for each
+(White Rose, Bristol, Johns Hopkins, Oxford ORA, UCL, McGill, Semantic Scholar, PubMed, and
+others, cross-checked per entry). One honest, unresolved discrepancy surfaced rather than
+smoothed over: the JBI chapter's citation year varies (2017/2019/2020) across indexed sources,
+since the JBI Manual for Evidence Synthesis is a continuously-updated web manual, not a fixed
+print edition -- noted in that entry rather than picking one year and calling it settled.
+
+Also corrected `SOURCES.md`'s own opening paragraph, which still said the protocol search "has
+not yet been executed" -- true when written, badly stale since the search closed 2026-09-11 and
+full-text retrieval closed entirely 2026-09-28 -- and made the network-access note more precise:
+`WebFetch` returns `EGRESS_BLOCKED` for every domain tested, including non-publisher sites, a
+blanket restriction rather than one targeted at academic publishers specifically; `WebSearch`
+itself works and is what every "Confirmed via web search" verification in this file actually
+used. Every entry's caveat remains accurate: this is search-snippet-level verification, not a
+full-text fetch, and a researcher with working publisher access should still confirm each
+citation directly before manuscript use.
+
+## 2026-09-28 (earlier) — SWiM reporting-guideline structure confirmed via WebSearch; a genuinely missing checklist item added
 
 Tested network access more precisely than the earlier risk-of-bias-tool checks had: `WebFetch`
 returns `EGRESS_BLOCKED` for every domain tried (doi.org, en.wikipedia.org, the EQUATOR Network,

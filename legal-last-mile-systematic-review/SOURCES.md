@@ -1,14 +1,25 @@
 # Preliminary Methodological Sources
 
 These are **starting points, not the final evidence base** — none of them
-were found through the protocol search (`SEARCH_PROTOCOL.md`), which has not
-yet been executed. Each citation below has been checked in this session
-against independent web sources; the verification method and result are
-recorded for each so the check itself is auditable. `doi.org` and every
-publisher domain (academic.oup.com, journals.sagepub.com, ajps.org,
-link.springer.com, bmj.com) were unreachable in this environment — blocked
-by the outbound network egress proxy — so verification here relied on
-independent web search rather than a direct DOI/publisher fetch. This is a
+were found through the protocol search (`SEARCH_PROTOCOL.md`). **This
+originally said that search "has not yet been executed" — badly stale
+since 2026-09-11: the protocol search closed that day, and full-text
+retrieval closed entirely on 2026-09-28 (`README.md`'s "Current project
+status"). Corrected here rather than left to mislead a reader**; these 14
+entries remain methodological/exemplar references distinct from the
+review's own 1,162-study evidence base regardless. Each citation below has
+been checked against independent web sources; the verification method and
+result are recorded for each so the check itself is auditable. `doi.org`
+and every publisher domain (academic.oup.com, journals.sagepub.com,
+ajps.org, link.springer.com, bmj.com) were unreachable in this
+environment — blocked by the outbound network egress proxy — so
+verification here relied on independent web search rather than a direct
+DOI/publisher fetch. **Confirmed more precisely 2026-09-28**: this is a
+blanket `WebFetch` restriction covering every domain tested (including
+non-publisher sites like en.wikipedia.org), not a targeted block on
+specific academic publishers — but `WebSearch` itself works and returns
+real result snippets, which is what every "Confirmed via web search"
+entry below actually used. This is a
 weaker verification than resolving the DOI directly, and a researcher with
 working publisher access should confirm each entry directly against the
 DOI before the sources are relied on in the manuscript.
@@ -118,13 +129,14 @@ risk-of-bias tool (`RISK_OF_BIAS.md` §1).
 > statement. *Systematic Reviews*, 4, 1.
 > https://doi.org/10.1186/2046-4053-4-1
 
-**Verification status:** **not independently re-confirmed in this
-session** beyond the researcher-supplied citation (publisher domains
-blocked; a targeted web search was not run for this specific entry). This
-is a very widely cited, standard methodological reference and the citation
-details are internally consistent with its well-known form, but treat this
-as unverified until a direct check is done. Used for `PROTOCOL.md`'s
-PRISMA-P-style structure.
+**Verification:** Confirmed via web search 2026-09-28 (Springer Nature Link,
+Monash/Bristol repository listings, PubMed 25555855) — title, authors,
+journal, volume all match; the 17-item-checklist description matches this
+citation's well-known form. `WebFetch` to every candidate source domain
+still returns `EGRESS_BLOCKED`, so this remains search-snippet-level, not
+full-text, verification — a researcher with working publisher access
+should still confirm directly before this appears in a manuscript
+reference list. Used for `PROTOCOL.md`'s PRISMA-P-style structure.
 
 ## 7. SWiM 2020
 
@@ -154,12 +166,18 @@ published phrasing is not.
 > or non-randomised studies of healthcare interventions, or both. *BMJ*,
 > 358, j4008. https://doi.org/10.1136/bmj.j4008
 
-**Verification status:** **not independently re-confirmed in this
-session**, for the same access-blocked reason as PRISMA-P above; this is
-likewise a very widely cited, standard instrument and the citation is
-internally consistent with its well-known form. Used strictly as a
-secondary-review appraisal tool (`RISK_OF_BIAS.md` §1) — explicitly not as
-the primary-study risk-of-bias instrument.
+**Verification:** Confirmed via web search 2026-09-28 (Semantic Scholar,
+amstar.ca's own hosted PDF, multiple institutional repositories) — title,
+authors, journal, volume/article number, and publication date all match;
+search results also confirm the tool's real structure (16 items,
+expanded from AMSTAR's original 11, with an explicit critical/non-critical
+domain distinction and a High/Moderate/Low/Critically-Low overall-
+confidence rating), consistent with what `04_quality/appraisal_forms/S019_AMSTAR2.md`'s
+own provenance note already recorded from an earlier independent check.
+Same `EGRESS_BLOCKED` caveat as PRISMA-P above for full-text/exact-item-
+wording verification. Used strictly as a secondary-review appraisal tool
+(`RISK_OF_BIAS.md` §1) — explicitly not as the primary-study risk-of-bias
+instrument.
 
 ## 9. RoB 2
 
@@ -168,12 +186,13 @@ the primary-study risk-of-bias instrument.
 > of bias in randomised trials. *BMJ*, 366, l4898.
 > https://doi.org/10.1136/bmj.l4898
 
-**Verification status:** **not independently re-confirmed in this
-session**, for the same access-blocked reason as PRISMA-P and AMSTAR 2
-above (§6, §8); this is a very widely cited, standard instrument and the
-citation is internally consistent with its well-known form, but a
-researcher with working publisher access should confirm it directly
-before it appears in the manuscript's reference list. Used for
+**Verification:** Confirmed via web search 2026-09-28 (White Rose, Johns
+Hopkins, Oxford ORA, and UCL repository listings; PubMed 31462531) — full
+25-author list, journal, volume/article number, and 28 August 2019
+publication date all match. Same `EGRESS_BLOCKED` caveat as PRISMA-P
+above for full-text/exact-item-wording verification — a researcher with
+working publisher access should still confirm directly before this
+appears in the manuscript's reference list. Used for
 randomized studies (`RISK_OF_BIAS.md` §1) — this project does not
 reproduce RoB 2's own signaling questions anywhere in this repository;
 obtain the current official tool directly from its source before
@@ -186,9 +205,11 @@ appraising any study with it.
 > of bias in non-randomised studies of interventions. *BMJ*, 355, i4919.
 > https://doi.org/10.1136/bmj.i4919
 
-**Verification status:** same caveat as RoB 2 above — not independently
-re-confirmed this session, standard and widely cited, confirm before
-manuscript use. Used for non-randomized intervention studies
+**Verification:** Confirmed via web search 2026-09-28 (Bristol, White Rose,
+Semantic Scholar, LSHTM repository listings; PubMed 27733354) — authors,
+journal, volume/article number, and 12 October 2016 publication date all
+match. Same `EGRESS_BLOCKED` full-text caveat as RoB 2 above — confirm
+directly before manuscript use. Used for non-randomized intervention studies
 (`RISK_OF_BIAS.md` §1); same note on not reproducing the tool's own
 content here.
 
@@ -200,8 +221,17 @@ content here.
 > Z. Munn (Eds.), *JBI Manual for Evidence Synthesis*. JBI.
 > https://synthesismanual.jbi.global
 
-**Verification status:** not independently re-confirmed this session
-(publisher/JBI access blocked); this is the standard reference for the
+**Verification:** Confirmed via web search 2026-09-28 (Semantic Scholar,
+ResearchGate, Scientific Research Publishing reference listings) — title,
+authors (Moola, Munn, Tufanaru, Aromataris, Sears, Sfetcu et al.), and
+chapter/manual structure all match. **One honest discrepancy, not
+resolved**: different indexed sources cite this chapter's year as 2017,
+2019, or 2020 (the JBI Manual for Evidence Synthesis is a continuously-
+updated web manual, not a fixed print edition, so multiple citation years
+are each defensible depending on when accessed) — this entry's "(2020)"
+is one valid form, not confirmed as the single correct one. Same
+`EGRESS_BLOCKED` caveat as above for full-text verification; this is the
+standard reference for the
 JBI critical appraisal checklist family, including the Cross Sectional
 Studies and Cohort Studies checklists named in `RISK_OF_BIAS.md` §1.
 Confirm the specific checklist version against JBI's current published
@@ -213,12 +243,17 @@ checklists, and this project does not reproduce checklist items here.
 > Critical Appraisal Skills Programme. (2018). *CASP Qualitative Studies
 > Checklist*. CASP UK. https://casp-uk.net/checklists-tool/qualitative-studies-checklist/
 
-**Verification status:** not independently re-confirmed this session
-(CASP's website was not reachable from this environment); this is a
-tool/checklist rather than a journal article, so there is no DOI to
-resolve — confirm against CASP's current published checklist directly
-before use, since CASP has revised this checklist's exact wording across
-versions. Used for qualitative studies (`RISK_OF_BIAS.md` §1).
+**Verification:** Confirmed via web search 2026-09-28 (search results
+resolve directly to CASP's own hosted checklist PDFs at casp-uk.net,
+even though `WebFetch` to casp-uk.net itself returns `EGRESS_BLOCKED`) —
+2018 version, 10-question structure, and the "yes/no/can't tell" response
+format all match what this project's CASP appraisal batches used
+throughout `04_quality/appraisal_forms/CASP_Qualitative_batch_2026-09-28.md`.
+This is a tool/checklist rather than a journal article, so there is no
+DOI to resolve — confirm against CASP's current published checklist
+directly before use, since CASP has revised this checklist's exact
+wording across versions and this remains search-snippet-level, not
+full-text, verification. Used for qualitative studies (`RISK_OF_BIAS.md` §1).
 
 ## 13. MMAT (Mixed Methods Appraisal Tool)
 
@@ -229,9 +264,11 @@ versions. Used for qualitative studies (`RISK_OF_BIAS.md` §1).
 > *Education for Information*, 34(4), 285–291.
 > https://doi.org/10.3233/EFI-180221
 
-**Verification status:** not independently re-confirmed this session
-(publisher access blocked, same as RoB 2/ROBINS-I above); standard and
-widely cited, confirm directly before manuscript use. Used for mixed
+**Verification:** Confirmed via web search 2026-09-28 (McGill eScholarship,
+SAGE Journals, WRAP/White Rose repository listings, ERIC EJ1201207) —
+full 13-author list, journal, volume/issue/pages, and DOI all match
+exactly. Same `EGRESS_BLOCKED` full-text caveat as RoB 2/ROBINS-I above —
+confirm directly before manuscript use. Used for mixed
 methods studies (`RISK_OF_BIAS.md` §1); this project does not reproduce
 MMAT's own criteria here.
 
