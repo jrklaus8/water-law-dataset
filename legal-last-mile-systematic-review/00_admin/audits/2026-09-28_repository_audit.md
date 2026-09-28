@@ -107,7 +107,11 @@ metadata only (CASP 30, MMAT 14, JBI 11, Legal Framework 10, AMSTAR 2 5, RoB 2 1
 are honest (CASP entries record "Can't tell" on 6–8 of 10 items; S366's RoB 2 is labelled
 LOW-CONFIDENCE), but the limitation appeared only in scattered `CHANGELOG.md` entries. It is now in
 `2026-09-28_evidence_limitations.md`. A sensitivity analysis excluding these 71 is straightforward
-later (filter on `extraction_note`) and is recommended before any synthesis leans on them.
+later (filter on `extraction_note`) and is recommended before any synthesis leans on them. **Follow-up:** the
+70 that remain after the duplicate merge are listed in
+`05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`, and none of them has an `effect_sizes.csv`
+row, so the SWiM syntheses and any future pooling are untouched by this limitation; it bears on the
+descriptive counts, mechanism/context tabulations and risk-of-bias ratings only.
 
 ### 9 — Blank `reviewer_1` on 74 decided rows (open)
 

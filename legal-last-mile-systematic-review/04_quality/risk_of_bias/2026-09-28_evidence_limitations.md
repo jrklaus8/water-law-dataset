@@ -207,7 +207,9 @@ obtained at extraction time (CASP 30, MMAT 14, JBI Cross-Sectional 11, Legal Fra
 AMSTAR 2 5, RoB 2 1; 71 and 10 before S299, an abstract-only duplicate row, was retired). Their appraisals are honest about this — the CASP entries, for example,
 record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
 LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 70 as
-equivalent to full-text appraisals; filter on `extraction_note` before doing so. This
+equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 70 are listed in
+`05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`, and **none of them has an `effect_sizes.csv`
+row**, so no Family A/B/C synthesis figure rests on an abstract-only extraction. This
 limitation was previously documented only in scattered `CHANGELOG.md` entries, not in any
 corpus-level summary.
 

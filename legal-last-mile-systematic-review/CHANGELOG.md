@@ -26,6 +26,9 @@ decision or classification changed.
   a sign count).
 - **Sweeps with nothing to fix:** effect-size numeric consistency, boolean formats (3 annotated `migrant_population`
   values noted, left), shared-DOI and journal/volume/page duplicate checks, citation-year versus publication-year.
+- **Abstract-only extractions** (70 after the merge) are now listed in
+  `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`; none has an `effect_sizes.csv` row, so no
+  SWiM synthesis figure rests on one.
 - Scripts and raw outputs added under `code/provenance/audit_and_repair/`.
 
 ## 2026-09-28 (earlier) — Two double-counted papers merged (S233 → S1008, S299 → S392): 1,162 → 1,160 included studies
