@@ -27,7 +27,9 @@ prior work, not new extraction.
    > studies with a row + 187 eligible studies with a non-blank `effect_estimate` and no row + 1
    > eligible study (S690) with a blank `effect_estimate` = 248. The set this pass actually
    > screened (the 187) was correct, so no candidate was missed; only the "exactly complementary"
-   > claim and the "61 rows, all from eligible studies" premise were inaccurate.
+   > claim and the "61 rows, all from eligible studies" premise were inaccurate. (Later the same day
+> S233, one of the 187 studies screened, was retired as a duplicate of S1008 and the eligible count fell
+> from 248 to 247 — the screening result is unaffected.)
 2. Manually inspecting a sample of the 187 confirmed most are correctly *not* in
    `effect_sizes.csv`: the `quantitative_synthesis_eligible` flag is a broad "has some
    quantitative content" category (descriptive percentages, correlation coefficients, GIS

@@ -12,7 +12,7 @@ researcher's institutional access to further database providers is
 exhausted, and the corpus was judged large and comprehensive enough for
 the review's purposes — the same kind of judgment call as the
 2026-09-11 search closure). **Final figures: of 3,659, 2,276 were
-assessed (1,162 include / 1,114 exclude), and "Reports not retrieved" is
+assessed (1,160 include / 1,116 exclude — 1,162 / 1,114 before two duplicate records were merged on 2026-09-28), and "Reports not retrieved" is
 1,383 — 182 flagged `wrong_file_retrieved` (a delivery was attempted and
 the wrong content arrived) and 1,201 `not_retrievable` (no successful
 retrieval attempt). These 1,383 will not grow further, and will not be
@@ -132,7 +132,7 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     2026-09-28 Phase 6 closure. 62.2% of the 3,659 records sought for
     retrieval were actually screened; this is now the final figure for
     this box, not a provisional/growing one.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,114 total, PROVISIONAL):
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,116 total, FINAL after the 2026-09-28 duplicate merge):
     E01 wrong topic (n = 496)
     E02 wrong population (n = 34)
     E03 wrong exposure (n = 34)
@@ -140,23 +140,26 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E05 no empirical evidence (n = 134)
     E06 engineering only (n = 106)
     E07 wrong service (n = 26)
-    E08 duplicate (n = 6)
+    E08 duplicate (n = 8)
     E09 insufficient information (n = 2)
     E10 inaccessible full text (n = 151)
     E11 wrong jurisdiction/context (n = 0)
     E12 wrong study design (n = 48)
 
 Included
-  Studies included in systematic review (n = 1,162, FINAL)
-    [Full-text include count as of the 2026-09-28 Phase 6 closure. This
+  Studies included in systematic review (n = 1,160, FINAL)
+    [Full-text include count as of the 2026-09-28 Phase 6 closure (1,162 at closure,
+    reduced by 2 when the repository audit's two live double-counted papers, S233 and
+    S299, were merged into S1008 and S392 with the researcher's approval and their
+    screening records re-classified as E08 duplicates). This
     figure will not grow further unless a future researcher makes a new,
     separately-recorded decision to reopen full-text retrieval for some or
     all of the 1,383 never-screened records.]
-  Studies included in full extraction so far (n = 1,162)
-    [03_extraction/extracted_data/extraction_database.csv, S001-S1164 (S227
-    and S399 documented post-hoc-duplicate gaps, see CHANGELOG.md). Fully caught up
+  Studies included in full extraction so far (n = 1,160)
+    [03_extraction/extracted_data/extraction_database.csv, S001-S1164 (S227,
+    S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 61, as of 2026-09-28)
+  Studies included in quantitative evidence synthesis (n = 62 effect-size rows, as of 2026-09-28; 61 of them from quantitative-synthesis-eligible studies, plus S589's row, an unresolved eligibility inconsistency flagged by the repository audit)
     [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16
     and extended in almost every full-text-screening batch since as new
     genuinely quantitative, non-fabricated exposure-vs-comparator studies
@@ -164,19 +167,22 @@ Included
     complete study-by-study history (this paragraph previously narrated
     that history inline up to S649/2026-09-22 and was left unmaintained
     for several weeks of subsequent batches; it is now a pointer rather
-    than a re-narration, to avoid the same drift recurring). Of the 61
-    rows: 20 Family A, 6 Family B, 16 Family C, and 19 added before the
-    Family A/B/C tag was consistently applied and still carry a blank
-    family (a disclosed data-cleanliness gap, not lost data -- see
-    README.md's Current project status table). These are the studies with
+    than a re-narration, to avoid the same drift recurring). Of the 62
+    rows: 20 Family A, 6 Family B, 20 Family C, and 16 that carry no family
+    because each was individually judged a reasoned non-fit to Family A/B/C
+    (not a data-cleanliness gap -- see
+    06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md
+    and README.md's Current project status table; an earlier version of this
+    paragraph described 16 Family C and 19 blank rows, which the 2026-09-28
+    Phase 11 follow-ups superseded). These are the studies with
     a genuine, non-fabricated exposure-vs-comparator contrast and a
     locatable effect estimate -- a much smaller, stricter subset than the
-    248 studies evidence_map.csv flags quantitative_synthesis_eligible =
+    247 studies evidence_map.csv flags quantitative_synthesis_eligible =
     TRUE, most of which are single-group descriptive statistics with no
     defined comparator. This figure is now final in the sense that no
     further full-text retrieval will add new candidate studies (Phase 6
-    closed 2026-09-28), though re-deriving Family A/B/C tags for the 19
-    blank-family rows remains open work.]
+    closed 2026-09-28); the blank-family rows were resolved
+    2026-09-28, see above.]
   Studies included in restricted meta-analysis, by family (n = 0)
     [No pooling has occurred -- every effect_sizes.csv row has
     included_in_pooled_estimate = FALSE at this stage (project is still

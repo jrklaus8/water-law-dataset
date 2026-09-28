@@ -267,11 +267,11 @@ retrieval are now closed by researcher decision — see below):
 |---|---|
 | Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique after deduplication |
 | Title/abstract screening | Complete, double-reviewed: 3,659 include / 6 exclude, zero conflicts |
-| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,276 of 3,659 records actually screened (62.2%) — **1,162 include / 1,114 exclude**; 1,383 permanently unretrieved |
-| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,162 studies extracted |
-| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,162 studies carry a correctly design-matched tool; all 1,154 to which one applies carry a completed rating — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
-| Evidence classification | Caught up with extraction: 248 studies quantitative-synthesis-eligible, 1,062 qualitative-synthesis-eligible |
-| Quantitative synthesis | 61 effect-size estimates extracted; **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
+| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,276 of 3,659 records actually screened (62.2%) — **1,160 include / 1,116 exclude** (after two duplicate records were merged on 2026-09-28); 1,383 permanently unretrieved |
+| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,160 studies extracted |
+| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,160 studies carry a correctly design-matched tool; all 1,148 to which one applies carry a completed rating — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
+| Evidence classification | Caught up with extraction: 247 studies quantitative-synthesis-eligible, 1,060 qualitative-synthesis-eligible |
+| Quantitative synthesis | 62 effect-size rows extracted (one, S589's, is an unresolved eligibility inconsistency flagged by the 2026-09-28 audit); **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
 
 This is an unusually large and comprehensive systematic review for its
 fields (administrative law, comparative law, sociolegal studies), closed

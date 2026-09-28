@@ -4,7 +4,44 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Repository audit: wrong figures corrected, two live double-counted papers found, provenance scripts archived
+## 2026-09-28 (latest) — Two double-counted papers merged (S233 → S1008, S299 → S392): 1,162 → 1,160 included studies
+
+The researcher approved the merge proposed by the repository audit's finding 13
+(`00_admin/audits/2026-09-28_repository_audit.md`), executed by
+`code/provenance/audit_and_repair/merge_live_duplicates_2026-09-28.py` under the `S399` → `S102`
+precedent: **S233** (Morales & Zambrano 2018) and **S299** (Minaverry 2017) were retired — their
+extraction and evidence-map rows removed, their study IDs left as permanent gaps beside `S227` and `S399`
+— and their screening records `RFEFB1427701B` and `R7896D097B364` re-classified from include to **E08
+duplicate exclusions** (two new `exclusion_log.csv` rows, reviewer `Claude-AI-audit-2026-09-28`). The kept
+rows are **S1008** (record `RB26ACD9EDC54`; full-text-based, DOI, sample size) and **S392** (record
+`R56D409CF27A6`; fuller full-text-based extraction); their `extraction_note`/`notes` fields carry a
+`MERGED` note recording what was retired, S233's abstract-level effect estimate and
+`discretion_accommodation` coding are preserved in S1008's note, and S392's blank DOI was filled from S299.
+No judgement coding was carried across and nothing in a kept row was overwritten.
+
+**Figures that changed (current-status documents updated; earlier dated entries left as written):**
+full-text includes **1,162 → 1,160**, excludes **1,114 → 1,116** (E08 6 → 8; exclusion log 1,114 → 1,116
+rows; 2,276 decided and 1,383 unretrieved unchanged); extraction and evidence-map rows 1,162 → 1,160;
+quantitative-synthesis-eligible 248 → 247 and qualitative 1,062 → 1,060; tool distribution MMAT 206 → 205
+and Legal Framework 449 → 448 (tool-applicable studies 1,150 → 1,148, NONE still 12); abstract-only
+extractions 71 → 70; reviewer_2 coverage 100 of 1,160 (8.6%, was 8.7%); the `mechanism_certainty`
+level-1 count 241 → 239 and civil-law studies 414 → 412; `study_design_class`, `effect_sizes.csv` and all
+three SWiM syntheses unaffected (neither pair had an effect-size row). Also corrected in passing:
+`prisma_flow.md`'s quantitative-synthesis box still read "n = 61" with 16 Family C / 19 blank-family rows
+(now 62 rows: A 20 / B 6 / C 20 / 16 reasoned non-fits, S589 flagged), the parent repository README's
+status table still read "1,154 ratings", and the evidence-limitations note's "25%" for India/Brazil/South
+Africa (26%, a rounding-sum error). Updated: `README.md` (both), `PRISMA_WORKFLOW.md`,
+`06_outputs/prisma/prisma_flow.md`, `RISK_OF_BIAS.md` §4 annotation,
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`, `SOURCES.md`, `DATA_DICTIONARY.md`,
+`ANALYSIS_PLAN.md`, the title/author duplicate-audit banner, the audit report, and the effect-size
+re-mining note.
+
+**Still true after the merge:** this class of duplicate (same paper, different-language titles, blank DOI)
+is undetectable by the DOI and title audits; the check that found these two was run on the included
+studies only, and matched author/year/title-token overlap, so a duplicate with different years or
+transliterated author names could still be present. Retired study IDs must not be reused.
+
+## 2026-09-28 (earlier) — Repository audit: wrong figures corrected, two live double-counted papers found, provenance scripts archived
 
 Full report: `00_admin/audits/2026-09-28_repository_audit.md` (13 findings). This entry records what
 changed; earlier dated entries are **not** rewritten — where they quote figures this audit found

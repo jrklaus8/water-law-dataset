@@ -30,7 +30,7 @@ follow the atomic-write pattern below, and log it in `CHANGELOG.md`.
 | `batch_extraction/` | 159 | `extract_s###_s###.py` — rows appended to `extraction_database.csv`, named by the study-ID range they created |
 | `batch_evidence_map/` | 151 | `evidence_map_s###_s###.py` — the matching `evidence_map.csv` rows |
 | `batch_effect_sizes/` | 28 | `effect_sizes_s###.py` — rows appended to `effect_sizes.csv` |
-| `audit_and_repair/` | 21 | Analysis, corrective, and audit scripts: risk-of-bias batch updates (`rob2_*`, `amstar2_*`, `legal_framework_audit_apply.py`, `rob_and_family_fixes.py`), Phase 11 follow-ups (`resolve_9_blank_family.py`, `add_s348.py`), duplicate audits (`doi_audit.py`, `title_dup_*.py`), field/enum repairs (`fix_adjusted_field.py`, `fix_study_design_class.py`, `resync_study_design_class.py`), the reviewer_2 sample draw (`stratified_draw.py`), and the audit's own recomputation (`live_numbers.py`) and documentation-correction scripts (`fix_evidence_limitations.py`, `fix_readme_prisma.py`) |
+| `audit_and_repair/` | 22 | Analysis, corrective, and audit scripts: risk-of-bias batch updates (`rob2_*`, `amstar2_*`, `legal_framework_audit_apply.py`, `rob_and_family_fixes.py`), Phase 11 follow-ups (`resolve_9_blank_family.py`, `add_s348.py`), duplicate audits (`doi_audit.py`, `title_dup_*.py`), field/enum repairs (`fix_adjusted_field.py`, `fix_study_design_class.py`, `resync_study_design_class.py`), the reviewer_2 sample draw (`stratified_draw.py`), the two duplicate-paper scripts (`annotate_live_duplicates_2026-09-28.py`, then the researcher-approved `merge_live_duplicates_2026-09-28.py`), and the audit's own recomputation (`live_numbers.py`) and documentation-correction scripts (`fix_evidence_limitations.py`, `fix_readme_prisma.py`) |
 | `audit_results/` | 2 | `title_dup_results.txt` (raw candidate pairs from the fuzzy title/author duplicate audit) and `doi_audit_output.txt` — the raw outputs cited by `01_search/deduplicated/*_duplicate_audit_2026-09-28.md` |
 
 ## The write pattern the scripts share
@@ -66,4 +66,4 @@ row records the record ID and retrieval URL/DOI so the source can be re-obtained
 
 This folder was scanned for credentials, tokens, and personal contact details before it was
 committed (none found; the only hits were the words "secretary" and "tokenistic" inside extracted
-text). All 542 scripts parse (`ast.parse`) under Python 3.
+text). All 543 scripts parse (`ast.parse`) under Python 3.

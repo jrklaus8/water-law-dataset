@@ -1,5 +1,13 @@
 # Repository audit — 2026-09-28
 
+> **Update, later 2026-09-28: finding 13's merge was approved by the researcher and executed.** All counts
+> in this report are **as of audit time (1,162 included studies, 1,114 excludes)** unless stated; the merge
+> then reduced them to **1,160 included / 1,116 excluded**, retired one MMAT row (S233) and one Legal
+> Framework row (S299), and moved the affected derived figures (tool distribution MMAT 205 / Legal
+> Framework 448; 1,148 tool-applicable studies; 70 abstract-only extractions; 247 quantitative-synthesis-eligible).
+> The current-status documents carry the post-merge values; this report is kept as the record of what the
+> audit saw.
+
 **Scope.** After the corpus-wide risk-of-bias pass, Phase 11 follow-ups, and three Phase 13 SWiM
 syntheses were complete, the whole project was audited for (1) claims in documents that no longer
 match the live data, (2) integrity between the CSV databases, (3) code health, (4) secrets/PII, and
@@ -34,7 +42,7 @@ carry annotation text naming a second tool and substring matching mis-buckets th
 | 10 | 13 decided full-text rows still carry `full_text_status = not_retrievable`; one (S356) is an include decided without a recorded reviewer or full text | Low–Medium | **Open — needs researcher input** |
 | 11 | One-off scripts cited by `CHANGELOG.md` existed only in an ephemeral scratchpad; `title_dup_results.txt` was cited but not in the repo | Medium | **Fixed** (earliest work remains unarchivable — disclosed) |
 | 12 | Three `preliminary_*` outputs describe a 509-study snapshot with no superseded banner | Low | **Fixed** |
-| 13 | **Two papers are double-counted among the 1,162 included studies** (S233/S1008 and S299/S392); the earlier "zero live double-counting" conclusion was wrong | **High** | **Annotated — merge needs researcher decision** |
+| 13 | **Two papers were double-counted among the 1,162 included studies** (S233/S1008 and S299/S392); the earlier "zero live double-counting" conclusion was wrong | **High** | **Fixed — merged with the researcher's approval; 1,162 → 1,160** |
 
 ### 1 and 2 — Wrong tool distribution and derived figures (fixed)
 
@@ -122,7 +130,7 @@ was extracted from abstract/introduction text only. Under the project's own rule
 text) that record should be either excluded/unretrieved or explicitly retained as an abstract-level
 include; the researcher should decide. It is not changed here.
 
-### 13 — Two live double-counted papers (annotated; researcher decision)
+### 13 — Two live double-counted papers (merged with researcher approval)
 
 A language-agnostic check of the 1,162 extracted studies — same year plus shared author surnames plus
 title-token overlap, then title-only Jaccard ≥ 0.6, then DOI equality — found two papers each counted
@@ -143,18 +151,31 @@ each count this paper differently depending on which row is read. Neither pair h
 row, so no pooled or SWiM figure is affected. Two other same-author-team pairs that surfaced
 (S175/S891, S427/S1158) were checked and are different papers.
 
-**What was done:** the four extraction-note fields and four screening-note fields carry an explicit
-`PROBABLE LIVE DUPLICATE` annotation (script:
-`code/provenance/audit_and_repair/annotate_live_duplicates_2026-09-28.py`); no decision, count, or
-classification was changed. **What was not done, deliberately:** merging. The project's precedent
-(`S399` merged into `S102`) is to retire one row and leave a permanent gap in the study-ID sequence, and to
-record the retired record as an `E08` duplicate exclusion. Doing that here would change the headline
-include count 1,162 → 1,160 (and exclude 1,114 → 1,116) and ripple through the README, PRISMA
-documents, flow diagram, and supervisor report — a decision about published numbers that belongs to
-the researcher. Recommended merge, if approved: keep the richer row in each pair (S1008: 45 fields
-populated vs 35, has the DOI and sample size; S392 or S299 after a comparison — S299 was extracted from
-abstract/metadata only, S392 carries the fuller appraisal note), retire the other, log both as
-`E08` exclusions, and update the counts.
+**What was done.** First the four extraction-note and four screening-note fields were annotated
+`PROBABLE LIVE DUPLICATE` (`annotate_live_duplicates_2026-09-28.py`) and the decision was put to the
+researcher, because the merge changes published counts. The researcher then approved the merge, which
+was executed by `code/provenance/audit_and_repair/merge_live_duplicates_2026-09-28.py` following the
+project's `S399` → `S102` precedent (retire one row, leave a permanent gap in the study-ID sequence, record
+the retired screening record as an `E08` duplicate exclusion):
+
+| | Kept | Retired | Basis for keeping |
+|---|---|---|---|
+| Pair 1 | **S1008** (record `RB26ACD9EDC54`) | S233 (record `RFEFB1427701B`) | full-text-based extraction (45 vs 35 populated fields), DOI, sample size, table/section locations; S233 was abstract-level |
+| Pair 2 | **S392** (record `R56D409CF27A6`) | S299 (record `R7896D097B364`) | fuller full-text-based extraction and appraisal note; S299 was abstract/metadata-only |
+
+Effects: extraction and evidence-map rows 1,162 → 1,160; full-text includes 1,162 → 1,160 and excludes
+1,114 → 1,116 (E08 6 → 8; two new `exclusion_log.csv` rows attributed to `Claude-AI-audit-2026-09-28`);
+quantitative-synthesis-eligible 248 → 247 (S233 was flagged eligible from its abstract; the kept S1008's
+full-text coding is not eligible, and that coding was retained); qualitative-eligible 1,062 → 1,060; tool
+distribution MMAT 206 → 205 and Legal Framework 449 → 448. **Nothing was overwritten in a kept row** except
+that S392's blank DOI was filled from S299 (a bibliographic fact recorded in the retired record); no
+judgement codings were carried across. S233's abstract-level effect estimate and its
+`discretion_accommodation` coding are preserved in S1008's extraction note so nothing is lost. The
+retired screening records' `reviewer_1` now reads `Claude-AI-audit-2026-09-28` (the original
+`Claude-AI-fulltext-2026-09-15` stamp and include decision are recorded in each record's notes and in git
+history), so the current decision is not attributed to a reviewer who did not make it. `effect_sizes.csv` was
+untouched. Note that the kept S392 record has no `reviewer_1` and a stale `oa_page_candidate` status — one of
+the hygiene items in findings 9 and 10 — and was not altered beyond the merge note.
 
 ### 11 — Provenance scripts (fixed, with a disclosed gap)
 
@@ -184,11 +205,13 @@ earlier work has no surviving script, only `git log` and `CHANGELOG.md`.
 
 ## Decisions needed from the researcher
 
+*(The finding-13 merge decision was made and executed — see above.)*
+
 1. **S589** — remove the row (recommended) or keep it and flip the eligibility flag (finding 5).
 2. **The 74 blank-`reviewer_1` rows** — who screened them, and whether to prioritize them for
    reviewer_2 (finding 9).
 3. **S356** — retain as an abstract-level include, or treat as unretrieved (finding 10).
-4. Whether to require a sensitivity analysis excluding the 71 abstract-only extractions before any
+4. Whether to require a sensitivity analysis excluding the 70 abstract-only extractions (71 at audit time) before any
    synthesis statement is published (finding 7).
 
 Already on the researcher's earlier to-do list and unchanged by this audit: reviewer_2 human pass

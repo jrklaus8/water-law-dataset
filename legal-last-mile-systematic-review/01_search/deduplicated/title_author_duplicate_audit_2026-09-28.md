@@ -37,9 +37,10 @@ carry a shared or even similar DOI at all.
 > cannot match a pair whose titles are in different languages (S233/S1008) or where one title
 > carries a bilingual `[translation]` suffix and one record's DOI field is blank
 > (S299/S392) — an inherent limit of the method that the "What this audit does not do"
-> section only partly anticipated. The two pairs are annotated, not merged, pending the
-> researcher's decision. The text below is preserved as the record of what this audit
-> concluded; read it with this correction.
+> section only partly anticipated. **Both pairs were merged the same day with the researcher's
+> approval** (S233 → S1008, S299 → S392; included studies 1,162 → 1,160; see `CHANGELOG.md`).
+> The text below is preserved as the record of what this audit concluded; read it with this
+> correction, and read its "1,162" figures as the pre-merge count.
 
 **For every one of the 290 candidate groups, checked against `full_text_screening_database.csv`'s
 `final_decision` field: no group has two or more members both currently `include`.** This was

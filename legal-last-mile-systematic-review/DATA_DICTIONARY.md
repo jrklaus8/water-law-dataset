@@ -226,7 +226,7 @@ for a long time — updated here 2026-09-28 rather than left to keep misleading 
 As of 2026-09-28: `screening_database.csv` holds all 27,481 deduplicated records, fully
 screened at title/abstract; `full_text_screening_database.csv` holds 3,659 seeded records,
 2,276 assessed (Phase 6 formally closed by researcher decision); `extraction_database.csv`
-holds all 1,162 included studies, fully extracted against every field this dictionary
+holds all 1,160 included studies (1,162 before two duplicates were merged on 2026-09-28), fully extracted against every field this dictionary
 documents; `evidence_map.csv` and `effect_sizes.csv` are populated and current as described in
 their own sections above (both were updated the same day this Status section was corrected).
 See `README.md`'s "Current project status" table for exact live figures — this dictionary
