@@ -99,28 +99,60 @@ framing.
 
 ## Results
 
-Vote count by direction, as extracted (see table above for per-study detail):
+Vote count by **sign of the association as extracted** (see table above for per-study detail).
+The Positive/Negative column headers below name the *usual* reading of each sign, but the
+categories were assigned from each study's full `direction` text in `effect_sizes.csv`, not its
+first word, and **sign and valence diverge for three studies** — see the concordance recount that
+follows the table. Judgment calls in the coding: S358's extracted direction is "negative/protective"
+(a *negative* coefficient on groundwater *decline*, i.e. beneficial) and was placed under Positive;
+S404's is free text ("WRUA membership reduces water poverty") and was placed under Positive.
 
 | Direction | k | Studies |
 |---|---|---|
-| Positive (recognition/formalization associated with better access) | 12 | S057, S104, S358, S398, S404, S765, S882, S920, S930, S969, S1042, S1057 |
-| Negative (unrecognized/informal status associated with worse access) | 6 | S084, S142, S589, S1020, S1121, S1122 |
+| Positive sign (usually: recognition/formalization associated with better access; S104 is the exception) | 12 | S057, S104, S358, S398, S404, S765, S882, S920, S930, S969, S1042, S1057 |
+| Negative sign (usually: unrecognized/informal status associated with worse access; S1020 and S1121 are exceptions) | 6 | S084, S142, S589, S1020, S1121, S1122 |
 | Null | 2 | S037, S780 |
 | Mixed | 0 | — |
 
-**12 of 20 (60%) find a positive association between legal/institutional recognition and
-improved access; 6 of 20 (30%) find the converse — unrecognized/informal status associated
-with worse access, which is directionally the same underlying claim stated from the opposite
-reference category; 2 (10%) find no significant effect.** Combining the "positive" and
-"negative-framed-as-unrecognized-status-harms-access" rows (18 of 20, 90%), the substantive
-pattern across this family is a consistent one: **legal/institutional recognition of a
-settlement, tenure claim, or governance arrangement is associated with better water/sanitation
-access far more often than not**, across 15 countries and 7 distinct mechanism types. Two
-findings run counter to the pattern in a way worth flagging rather than folding in: **S1020**
-(a watershed-development intervention associated with *worsened* domestic water outcomes) and
-**S104** (home ownership associated with *higher* odds of interruption) — both are legitimate,
-adjusted findings from studies rated "Moderate"/"Low" concern respectively, not outliers to be
-explained away.
+**By sign as extracted, 12 of 20 (60%) are Positive, 6 of 20 (30%) Negative, and 2 (10%) Null.**
+For most studies the Positive sign means legal/institutional recognition associated with better
+access, and the Negative sign means unrecognized/informal status associated with worse access —
+directionally the same underlying claim stated from the opposite reference category — but that
+mapping does not hold for three studies, so the sign counts should not be read as concordance
+counts.
+
+**Concordance recount (corrected 2026-09-28 by the repository audit).** An earlier draft of this
+paragraph added the Positive and Negative rows together ("18 of 20, 90%") and called that the
+share of studies finding recognition associated with better access. That was wrong: the sign of
+the extracted coefficient is not the same as "recognition helps access", and three of those 18
+studies run the other way. **S104** (home ownership associated with *higher* odds of water-supply
+interruption) has a Positive sign but an adverse-for-access result; **S1020** (a
+watershed-development intervention associated with *worsened*, i.e. longer, domestic water
+collection time) and **S1121** (a water-adequacy screening policy associated with *reduced*
+residential connection permitting) have Negative signs and are adverse results for exposures that
+are not "unrecognized status" at all. Recounted by substance:
+
+| Substantive reading | k | Studies |
+|---|---|---|
+| Consistent with "recognition/eligibility improves access" (11 positive-sign studies, plus the 4 negative-sign studies where unrecognized/informal status is the exposure) | 15 (75%) | S057, S358, S398, S404, S765, S882, S920, S930, S969, S1042, S1057; S084, S142, S589, S1122 |
+| Counter-pattern (exposure associated with *worse* access) | 3 (15%) | S104, S1020, S1121 |
+| Null | 2 (10%) | S037, S780 |
+
+So the honest summary is that **15 of 20 studies (75%) are consistent with legal/institutional
+recognition of a settlement, tenure claim, or governance arrangement being associated with better
+water/sanitation access**, across 15 countries and 7 distinct mechanism types, and three
+legitimate, adjusted findings — S104, S1020, S1121, rated "Low"/"Moderate" concern — run against
+it and are not outliers to be explained away. This substantive coding is itself a judgment call
+(S1020 and S1121 are arguably outside a strict "recognition" framing altogether); it is disclosed,
+not hidden, and the sign-based vote table above is kept unchanged so a reader can recompute
+either version.
+
+**Eligibility caveat on S589.** S589's `effect_sizes.csv` row records a *descriptive, unadjusted*
+group comparison (connected vs. unconnected household consumption and cost share), not a
+regression estimate, and `evidence_map.csv` does not flag S589
+`quantitative_synthesis_eligible`. It is the only one of the 62 `effect_sizes.csv` rows in that
+position and is left in place pending the researcher's decision (`CHANGELOG.md`, 2026-09-28 audit
+entry); see the robustness section for the effect on the counts above.
 
 A harvest-plot-style visual summary is not produced here — with only 20 studies split across 7
 thematic groups and a simple 4-category direction code, the table above already conveys the
@@ -128,11 +160,16 @@ same information a harvest plot would, without adding a chart for its own sake.
 
 ## Robustness of the synthesis
 
-The 90% "recognition helps access" figure is sensitive to how S358 and S404 are coded: both
-report a "protective"/"reduces poverty" framing that required judgment to place in the
-"positive" column above rather than treating them as their own category. If both were instead
-coded as ambiguous/excluded, the positive share would drop to 10/18 (56%) — still a majority,
-but a much thinner one. The two null results (S037, S780) both test institutional exposures
+**Corrected 2026-09-28 (audit).** An earlier draft here said the "90% 'recognition helps access'
+figure" was sensitive to how S358 and S404 are coded and quoted a drop to 10/18 (56%). Both
+numbers mixed two different measures (the discarded sign-sum "90%" and the positive-sign-only
+share) and overstated the sensitivity. On the corrected concordance count (15 of 20, 75%): S358
+and S404 both report a "protective"/"reduces poverty" framing that required judgment to place as
+concordant; if both were instead coded ambiguous and dropped, concordance would be 13 of 18 (72%).
+If S589 is also dropped as an unadjusted descriptive comparison, it would be 12 of 17 (71%). The
+concordant share therefore stays between 71% and 75% across all three coding/eligibility
+decisions — the family-level pattern is *not* fragile to them; it is thin for the different
+reason that no more than 15 studies carry it, as the certainty section below says. The two null results (S037, S780) both test institutional exposures
 that are one step removed from the household (state/tribal water-rights authority; county-level
 administrative allocation) rather than a household-facing recognition status directly, which
 may explain why they diverge from the pattern — a hypothesis this synthesis notes but does not
@@ -147,10 +184,10 @@ of the 20 studies above), the corpus-wide pattern is 54 of 63 total ROBINS-I rat
 "Moderate" confounding risk and 9 at "Serious" — meaning even this family's strongest-designed
 quasi-experimental studies (S398, S404, S765, S920, S930, S1020, S1042, S1121, S1122, S142,
 S037) carry real, undocumented confounding risk by this project's own conservative reading. The
-JBI Cross-Sectional-rated studies (S084, S358, S969, S1057, S780) and the RoB 2 cluster-trial
-study (S057, "Some concerns") add further heterogeneity in appraisal depth rather than
+JBI Cross-Sectional-rated studies (S084, S104, S358, S780, S969, S1057), the MMAT-rated S882, the
+Legal Framework-appraised S589, and the RoB 2 cluster-trial study (S057, "Some concerns") add further heterogeneity in appraisal depth rather than
 resolving it. **This review can document that legal/institutional recognition and improved
-access co-occur consistently across this family; it cannot currently certify that this
+access co-occur in most of this family's studies (15 of 20 on the corrected concordance count); it cannot currently certify that this
 association is causal in the majority of these 20 individual cases** — see
 `RISK_OF_BIAS.md` §3 for the full corpus-wide account.
 

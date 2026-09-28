@@ -426,3 +426,17 @@ list opened for today's execution: all 1,162 studies now carry a
 correctly classified `risk_of_bias_tool`, all 1,154 to which a tool
 applies carry a `risk_of_bias_rating`, and every governing document that
 describes this phase says so.
+
+**2026-09-28, after the repository audit — figures in the dated annotations above are historical
+snapshots, and some were superseded.** A repository-wide audit recomputed the tool distribution from
+the live data using the earliest-tool-keyword rule: **RoB 2 5, ROBINS-I 63, JBI 140, MMAT 206, CASP
+263, AMSTAR 2 24, Legal Framework 449, NONE 12 (sum 1,162)**. The 166 JBI / 207 MMAT / 245 CASP /
+22 AMSTAR 2 / 425 Legal Framework figures quoted in earlier annotations are snapshots of intermediate
+states of that day's work (the JBI count of 166 predates the 26 JBI reassignments, for example),
+not the end-of-day distribution — and the mid-session bucketing helper that produced some of them
+matched tool names by substring, which mis-buckets rows whose annotation text mentions a second tool. Likewise
+"1,154 studies to which a tool applies" is corrected to **1,150** (the 12 `NONE` studies: 4 carry an
+explicit NOT APPLICABLE note, 8 have a blank rating by design). The earlier text is left as written;
+current statements are in `README.md`'s status table and
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`. See `CHANGELOG.md` for the full
+audit-correction entry.

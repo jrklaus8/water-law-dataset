@@ -29,6 +29,18 @@ carry a shared or even similar DOI at all.
 
 ## The central finding: zero live double-counting, checked exhaustively
 
+> **Correction, 2026-09-28 (later the same day, repository audit —
+> `00_admin/audits/2026-09-28_repository_audit.md`, finding 13).** The headline below is
+> **wrong for two cases**. A language-agnostic author/year/citation check across the 1,162
+> extracted studies found two papers counted twice: **S233 / S1008** (Morales & Zambrano 2018)
+> and **S299 / S392** (Minaverry 2017). This audit's token-Jaccard method (threshold 0.75)
+> cannot match a pair whose titles are in different languages (S233/S1008) or where one title
+> carries a bilingual `[translation]` suffix and one record's DOI field is blank
+> (S299/S392) — an inherent limit of the method that the "What this audit does not do"
+> section only partly anticipated. The two pairs are annotated, not merged, pending the
+> researcher's decision. The text below is preserved as the record of what this audit
+> concluded; read it with this correction.
+
 **For every one of the 290 candidate groups, checked against `full_text_screening_database.csv`'s
 `final_decision` field: no group has two or more members both currently `include`.** This was
 checked two ways — first restricted to the 165 exact-title groups, then separately across all
@@ -122,8 +134,10 @@ just on paper.
   stage — most sit among the 1,383 unretrieved, a handful are still genuinely pending. These
   are not currently operationally relevant (no live decision depends on resolving them), and
   are not individually itemized here; the method and full candidate list
-  (`title_dup_results.txt`-style output) is reproducible from this document's own method
-  section if a future researcher needs the complete list.
+  are reproducible from this document's own method section, and the raw candidate-pair
+  output plus the scripts that produced it are archived at
+  `code/provenance/audit_results/title_dup_results.txt` and
+  `code/provenance/audit_and_repair/title_dup_*.py` (added by the 2026-09-28 repository audit).
 
 ## Updated known-duplicate-cases count
 
@@ -133,6 +147,8 @@ almost certainly higher still — this audit is thorough but not exhaustive (see
 
 ## What this audit does not do
 
+- **Cross-language duplicates.** Bilingual or translated titles fall below the token-similarity
+  threshold; two live cases were later found this way (see the correction at the top).
 - It is still a **title/author-similarity method**, not a semantic or full-text comparison. A
   same-paper duplicate with a substantially reworded title (a book chapter adapted from a
   journal article, say) would not be caught by either pass.

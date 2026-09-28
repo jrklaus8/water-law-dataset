@@ -1,5 +1,14 @@
 # Preliminary Narrative Synthesis: What Can Be Inferred So Far
 
+> **Snapshot notice (added 2026-09-28 by the repository audit, `00_admin/audits/2026-09-28_repository_audit.md`).**
+> This document describes the **509-study extraction snapshot** that existed when it was written.
+> The corpus now holds **1,162** extracted studies, every one with a `risk_of_bias_tool` and (where
+> a tool applies) a `risk_of_bias_rating` (`README.md` status table;
+> `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`), so its statements that Phase 9 is
+> "rated for only 12 of 509" are historical. The counts, percentages, and country/design/mechanism
+> patterns below have **not** been recomputed for the 1,162-study corpus and must not be quoted as
+> current. The text is preserved unchanged as a dated record.
+
 **Status: a preliminary qualitative/narrative synthesis, not a validated
 systematic-review conclusion.** This draws substantive inferences from the
 509 studies extracted under Phase 8 — what recurs across them, where they

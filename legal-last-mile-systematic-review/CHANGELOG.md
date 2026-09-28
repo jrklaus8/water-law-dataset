@@ -4,7 +4,69 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — AMSTAR 2 critical-items/algorithm independently re-confirmed via WebSearch
+## 2026-09-28 (latest) — Repository audit: wrong figures corrected, two live double-counted papers found, provenance scripts archived
+
+Full report: `00_admin/audits/2026-09-28_repository_audit.md` (13 findings). This entry records what
+changed; earlier dated entries are **not** rewritten — where they quote figures this audit found
+wrong, the correction is stated here and in a dated note beside the current-status text.
+(The audit was performed by the same AI system that produced most of the audited material, so it
+checks internal consistency, not fidelity to source papers — see the report's independence note.)
+
+**Corrected (current-status documents; earlier snapshot figures in dated entries left as written):**
+
+- **Risk-of-bias tool distribution.** The live distribution (earliest-tool-keyword rule) is RoB 2 5,
+  ROBINS-I 63, JBI 140, MMAT 206, CASP 263, AMSTAR 2 24, Legal Framework 449, NONE 12 = 1,162. The
+  documents carried 433/245/207/166/72/22/12/5 (evidence-limitations table) and
+  425/245/207/166/63/22/12/5 (README, `PRISMA_WORKFLOW.md`, summing to 1,145) — mid-session snapshots
+  plus an early substring-matching bucket helper. Derived figures fixed in
+  `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`: causal-capable designs 77 (7%) → 68 (6%);
+  Legal Framework measurement-quality populated 365/433 → 389/449; CASP+MMAT 452 (39%) → 469 (40%);
+  "roughly 1,050" CASP/MMAT/Legal-Framework studies → 918; Legal Framework accounting 573 − 148 + 24 =
+  449; "1,154 rated / 8 NONE" → 1,150 rated / 12 NONE (4 explicit NOT APPLICABLE, 8 blank by design)
+  in `README.md`, `PRISMA_WORKFLOW.md`. No conclusion changed. `RISK_OF_BIAS.md` §4 gained a dated
+  annotation; its earlier annotations stand as historical snapshots.
+- **Family A SWiM synthesis** (`family_A_swim_synthesis_2026-09-28.md`): "18 of 20 (90%)" summed *signs*
+  of association, not concordance with the recognition hypothesis; three studies (S104, S1020, S1121) run
+  the other way. Corrected to 15 of 20 (75%) concordant / 3 counter-pattern / 2 null, with a rewritten
+  robustness paragraph (71–75% across the S358/S404/S589 coding decisions). The sign-based vote table is
+  unchanged. Families B and C gained explicit direction-coding disclosures; Family C's 7/9/4 is stated to
+  be a sign count, not beneficial-vs-adverse.
+- **`evidence_map.csv`**: 22 `study_design_class` values re-synced to their `risk_of_bias_tool` (19 CASP,
+  1 MMAT, 2 AMSTAR 2) — the earlier normalization ran before the JBI→CASP reassignments finished. Addendum
+  in `study_design_class_normalization_2026-09-28.md`.
+- **Effect-size wording**: "62 rows from 248 eligible studies" → 61 from eligible studies + S589's row; the
+  re-mining note's "61 + 187 = 248" arithmetic annotated (true decomposition 60 + 187 + 1 [S690, blank
+  estimate] = 248).
+- **Duplicate-audit claim**: the 2026-09-28 title/author audit's headline "zero live double-counting" was
+  wrong (below); banner added to that document, README Known limitations 7 corrected ("at least seven"
+  known cases; two live and unresolved).
+- **Superseded-snapshot banners** added to `preliminary_results.md`, `preliminary_corpus_characterization.md`,
+  and `preliminary_narrative_synthesis.md` (they describe a 509-study snapshot).
+- **New corpus-level disclosures** in the evidence-limitations note: 71 studies (6.1%) extracted from
+  abstract/metadata only; 59 of 140 JBI ratings are "High concern" meaning sparse extraction; the two
+  double-counted papers.
+
+**Found and annotated, not fixed (researcher decisions):**
+
+- **S233/S1008** (Morales & Zambrano 2018) and **S299/S392** (Minaverry 2017) are the same papers counted
+  twice; both records of each pair are live includes. Missed by the DOI-variant audit (blank DOI on one
+  side) and the title audit (cross-language / bilingual titles). Annotated in the extraction and screening
+  databases (`annotate_live_duplicates_2026-09-28.py`); **not merged**, because merging changes the headline
+  1,162 → 1,160. Effective distinct included studies: 1,160.
+- **S589**'s `effect_sizes.csv` row is an unadjusted descriptive comparison for a study `evidence_map.csv`
+  does not flag quantitative-synthesis-eligible. Recommended: remove the row; not changed.
+- **74 decided full-text rows have a blank `reviewer_1`** (48 include, 26 exclude); `reviewer_1` labels vary
+  (`Claude`, `claude`, `claude_sonnet_5`, date-stamped). Not back-filled — a guessed value would be
+  fabricated provenance.
+- 13 decided full-text rows retain a stale `not_retrievable` status; S356 (R1827C03DA45A) is an include
+  with no reviewer, no location, and abstract-only extraction.
+
+**Provenance.** 542 one-off scripts and two raw result files (title-duplicate candidates, DOI audit) that
+this and earlier entries cite, previously only in an ephemeral session scratchpad, are archived in
+`code/provenance/` (README explains they are a historical record, not a runnable pipeline; coverage begins
+at `record_batch64` and study S532 — earlier work has no surviving script).
+
+## 2026-09-28 (earlier) — AMSTAR 2 critical-items/algorithm independently re-confirmed via WebSearch
 
 A targeted follow-up search confirmed the exact convention this project has used for all 34
 AMSTAR 2 appraisals this session -- the 7 critical items (2, 4, 7, 9, 11, 13, 15) and the

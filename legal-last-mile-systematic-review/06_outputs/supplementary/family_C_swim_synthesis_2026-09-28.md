@@ -135,7 +135,19 @@ loose groups.
 
 ## Results
 
-Vote count across all 20 studies, as extracted (S348 added 2026-09-28, direction negative):
+Vote count across all 20 studies, as extracted (S348 added 2026-09-28, direction negative).
+**These are counts of the sign of each study's association, not of beneficial vs. adverse results
+for access.** Categories were assigned from each study's full `direction` text in
+`effect_sizes.csv`, not its first word (S879 and S1062 are coded Mixed because their extracted
+directions combine a positive and a null/negative component). Because Family C's exposures are
+heterogeneous, sign and valence diverge freely: S539 and S749 (Positive: private ownership → *higher*
+price, i.e. worse affordability) and S471 and S1038 (Negative: mayor-led government / state
+regulation → *lower* price, i.e. better affordability) are examples. The 7/9/4 split therefore
+must not be read as "7 beneficial, 9 adverse". A valence-normalized recount is deliberately not
+offered: deciding whether an exposure such as "private ownership" or "mayor-led government" is
+the adverse or the beneficial side of a comparison is a normative judgment the review protocol
+does not fix, and imposing one here would manufacture a comparability this synthesis argues the
+family does not have.
 
 | Direction | k | Studies |
 |---|---|---|

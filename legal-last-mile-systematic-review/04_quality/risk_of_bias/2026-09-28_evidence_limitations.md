@@ -12,11 +12,24 @@ version of this file that can actually do what `RISK_OF_BIAS.md` §3 asks: summa
 limitations of the evidence base **as a whole**, informed by real ratings rather than corpus
 composition alone.
 
+**Audit correction, 2026-09-28 (later the same day).** A repository-wide audit recomputed every
+figure in this narrative against the live `extraction_database.csv` and found that the
+tool-distribution table, several percentages, and the Legal Framework counts had been written
+from mid-session snapshots taken *before* the later reassignment batches finished (and, in one
+case, from a tool-classification helper that matched tool names by substring and so mis-bucketed
+rows whose annotation text mentions a second tool). The figures below are the recomputed live
+values (method: earliest tool keyword in `risk_of_bias_tool`); the affected sentences are edited
+in place with the earlier figure recorded in parentheses where it changes a claim, and the full
+account is in `CHANGELOG.md`'s audit-correction entry and
+`00_admin/audits/2026-09-28_repository_audit.md`. None of the corrections changes a conclusion:
+every qualitative caveat below survives, and two (the causal-capable share and the CASP/MMAT
+share) get slightly stronger, not weaker.
+
 **What "appraised" means here needs to be read carefully, not assumed to mean uniform
 depth.** Today's appraisal was necessarily a rule-based, disclosed batch process across a
 corpus this size, not a signalling-question-level read of each study's actual source
-document. For the roughly 1,050 studies rated via CASP, MMAT, or the condensed Legal
-Framework method, most individual domains are honestly "Can't tell"/"not assessable" rather
+document. For the 918 studies rated via CASP (263), MMAT (206), or the condensed Legal
+Framework method (449) (an earlier draft said "roughly 1,050"), most individual domains are honestly "Can't tell"/"not assessable" rather
 than a real judgement — because this project's extraction fields were built to capture
 legal/institutional exposure-outcome content, not each study's own methodological reporting.
 This section-by-section narrative says exactly where that limitation bites and where it
@@ -30,26 +43,30 @@ doesn't.
 `05_analysis/descriptive/study_design_class_normalization_2026-09-28.md`: 482 distinct
 free-text values reduced to 297 by mapping the 707 studies whose tool unambiguously implies a
 design onto `DATA_DICTIONARY.md`'s 8-value enum (228 of 707 needed correction). The remaining
-455 Legal-Framework/`NONE`-tool studies were deliberately left as free text, since the enum
+455 Legal-Framework/`NONE`-tool studies were deliberately left as free text (counts as of that
+pass; 26 studies were reclassified afterwards, and an audit re-sync on 2026-09-28 corrected 22
+`study_design_class` values that the later reclassifications had left stale — see that
+document's audit addendum), since the enum
 itself has no category for their real methodological diversity — a genuine schema gap, not
 unfinished normalization):
 
 | Tool (design family) | n | % |
 |---|---|---|
-| Legal Institutional Evidence Appraisal Framework (doctrinal/documentary/jurimetric) | 433 | 37% |
-| CASP Qualitative | 245 | 21% |
-| MMAT (mixed methods) | 207 | 18% |
-| JBI Cross-Sectional | 166 | 14% |
-| ROBINS-I (non-randomized intervention/quasi-experimental) | 72 | 6% |
-| AMSTAR 2 (secondary systematic reviews) | 22 | 2% |
+| Legal Institutional Evidence Appraisal Framework (doctrinal/documentary/jurimetric) | 449 | 39% |
+| CASP Qualitative | 263 | 23% |
+| MMAT (mixed methods) | 206 | 18% |
+| JBI Cross-Sectional | 140 | 12% |
+| ROBINS-I (non-randomized intervention/quasi-experimental) | 63 | 5% |
+| AMSTAR 2 (secondary systematic reviews) | 24 | 2% |
 | NONE (no validated tool applies — narrative/conceptual/simulation studies) | 12 | 1% |
 | RoB 2 (randomized controlled trials) | 5 | 0.4% |
 
 **This is the same underlying pattern the 2026-09-16 note already identified, now confirmed
-at more than 3x the corpus size**: only 77 of 1,162 studies (7% — the 72 ROBINS-I plus 5 RoB
-2) use a design capable of supporting a causal claim about a legal/administrative mechanism's
-effect on access. The other 93% are either doctrinal/documentary analysis (37%), qualitative
-research (21%), mixed-methods (18%), or cross-sectional observational association (14%). This
+at more than 3x the corpus size**: only 68 of 1,162 studies (6% — the 63 ROBINS-I plus 5 RoB
+2; an earlier draft said "77 (7%)") use a design capable of supporting a causal claim about a
+legal/administrative mechanism's effect on access. The other 94% are doctrinal/documentary
+analysis (39%), qualitative research (23%), mixed-methods (18%), cross-sectional observational
+association (12%), or secondary reviews and no-tool studies (3%). This
 is corroborated by `mechanism_certainty`: only 35 of 1,162 studies (3%) reach level 3
 ("quasi-experimental evidence") or 4 ("experimental evidence"); 241 (21%) sit at level 1
 ("documented association") and 286 (25%) at level 2. **596 of 1,162 (51%) carry narrative
@@ -83,8 +100,8 @@ not a deliberate sampling frame.
 
 ## Measurement quality patterns
 
-`legal_measurement_quality` and `outcome_measurement_quality` are populated for 365 of the
-433 Legal Framework studies (84%) and for most of the quantitative-tool populations
+`legal_measurement_quality` and `outcome_measurement_quality` are populated for 389 of the
+449 Legal Framework studies (87%) and for most of the quantitative-tool populations
 (ROBINS-I, JBI, RoB 2) via the `covariates`/`outcome`-related fields used in today's
 rule-based appraisals — but **not as a dedicated, uniform quality-coding pass**: these fields
 were populated at different points across many extraction batches spanning weeks, using an
@@ -94,12 +111,12 @@ a single cross-study quality tabulation from these fields will need a normalizat
 first, not a direct `groupby`.
 
 Today's appraisal surfaced a second, larger measurement-quality pattern directly: **for the
-CASP Qualitative batch (245 studies) and the MMAT batch (207 studies) — 39% of the entire
+CASP Qualitative batch (263 studies) and the MMAT batch (206 studies) — 40% of the entire
 corpus between them — 6 to 8 of each tool's roughly 10 quality items are honestly "Can't
 tell" for nearly every single study**, because this project's extraction was built to
 capture each study's substantive legal/institutional finding, not its own recruitment
 strategy, reflexivity statement, ethics approval, or analytic process. This is not evidence
-that these 452 studies are poorly conducted — it is evidence that this review cannot
+that these 469 studies are poorly conducted — it is evidence that this review cannot
 currently say whether they are, for the specific methodological dimensions CASP and MMAT ask
 about. See `04_quality/appraisal_forms/CASP_Qualitative_batch_2026-09-28.md` and
 `MMAT_batch_2026-09-28.md` for the full item-by-item accounting; this is, by a wide margin,
@@ -115,7 +132,10 @@ normalized later today (see that section's update). What today's work does newly
 Phase 11 quantitative-feasibility judgment
 (`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`, 2026-09-28) found
 20 Family A, 6 Family B, and 17 Family C studies with a genuine, poolable effect size (plus
-18 studies whose family assignment remains genuinely unresolved) — consistent with the
+18 studies whose family assignment remained unresolved at that point — updated later the same
+day: after the 9-row blank-family follow-up and the S348 addition, `effect_sizes.csv` holds 62
+rows, Family A 20 / B 6 / C 20, with 16 rows left blank on a documented, reasoned non-fit basis,
+`phase11_blank_family_resolution_2026-09-28.md`) — consistent with the
 366-study snapshot's own finding that Family A and Family B "each currently rest on a small
 handful of studies," now confirmed at a larger, still-small scale. **No candidate family has
 enough independent, comparably-operationalized studies to support pooling** — Phase 11's own
@@ -123,19 +143,22 @@ verdict, unchanged in substance from what this note's predecessor anticipated.
 
 ## Studies appraised with the non-validated framework
 
-433 of 1,162 studies (37%) carry `risk_of_bias_tool` = "Legal Institutional Evidence
+449 of 1,162 studies (39%) carry `risk_of_bias_tool` = "Legal Institutional Evidence
 Appraisal Framework" — up from 20% at the 366-study snapshot, both in raw count and as a
 share of the corpus, reflecting real growth in doctrinal/jurimetric full-text retrieval since
 then, not a classification drift (today's design audit, `CHANGELOG.md`, actually *reduced*
-the raw tag count from 573 to 433 by correcting 148 misclassified studies onto validated
-tools instead). `RISK_OF_BIAS.md` §2 remains explicit that this framework's output is a
+the raw tag count by moving 148 misclassified studies onto validated tools: 573 − 148 = 425,
+which later rose to 449 when 24 studies were moved *into* the framework — 9 reverted after an
+over-correction, 8 from the previously unassigned batch, 6 JBI mis-tags, and 1 other (S409)). `RISK_OF_BIAS.md` §2 remains explicit that this framework's output is a
 **narrative judgment call, not a citable, validated score**, and today's condensed appraisal
-of all 433 (`LegalFramework_batch_2026-09-28.md`) only strengthens that caveat rather than
+of the framework studies (`LegalFramework_batch_2026-09-28.md` covers 434 — the 425 plus a
+9-study follow-up; the other 15 were appraised in the unassigned-studies and reassignment
+batches, generally more thinly) only strengthens that caveat rather than
 resolving it: only 5 of the framework's 13 domains were populated from real prior-extraction
 data (jurisdictional specificity, exposure definition, outcome definition, causal
-identification, institutional context) for the 365 studies with that data on record; the
+identification, institutional context) for the 389 studies with that data on record; the
 other 8 domains — including legal source accuracy, sampling transparency, and researcher
-reflexivity — are "not assessable" for all 433. This caveat must travel with any synthesis
+reflexivity — are "not assessable" for all 449. This caveat must travel with any synthesis
 finding drawn from more than a third of this corpus.
 
 ## Overall confidence in the body of evidence
@@ -158,7 +181,7 @@ on both today's risk-of-bias ratings and the Phase 11 quantitative-feasibility j
   confidence on sample size grounds alone** (6 studies, per Phase 11), independent of the
   individual studies' own reasonably solid RoB 2 ratings ("Some concerns," not "High risk,"
   for both).
-- **Family C (administrative/legal barriers, 17 effect-size rows):** the largest of the
+- **Family C (administrative/legal barriers, 20 effect-size rows; 17 in the original Phase 11 judgment):** the largest of the
   three families and the most design-heterogeneous — spanning ROBINS-I, JBI Cross-Sectional,
   and Legal Framework-appraised studies. Phase 11 §5.1 already identified this family's
   strongest internal candidate (the ownership/price sub-cluster, S526/S539/S749), and
@@ -173,3 +196,33 @@ for meta-analysis.** This is not a failure of today's appraisal effort; it is th
 product of an evidence base that is, by design and by the discipline's own nature, dominated
 by observational and qualitative work rather than by a large pool of directly comparable
 quasi-experimental studies.
+
+## Three further caveats surfaced by the 2026-09-28 audit
+
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 71 of the 1,162
+studies (6.1%) carry an `extraction_note` stating they were extracted from the published
+abstract, introduction, or repository metadata only, because the full text was never
+obtained at extraction time (CASP 30, MMAT 14, JBI Cross-Sectional 11, Legal Framework 10,
+AMSTAR 2 5, RoB 2 1). Their appraisals are honest about this — the CASP entries, for example,
+record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
+LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 71 as
+equivalent to full-text appraisals; filter on `extraction_note` before doing so. This
+limitation was previously documented only in scattered `CHANGELOG.md` entries, not in any
+corpus-level summary.
+
+**2. A "High concern" JBI rating usually means "sparse extraction", not "flawed study".** 59
+of the 140 JBI Cross-Sectional studies (42%) are rated "High concern" (`RISK_OF_BIAS.md` §4
+already states this in the rating text: no `covariates` or named statistical method captured
+in this project's extraction fields). It measures how much methodological detail the extraction
+captured, not the study's actual conduct, and must not be read as a finding that 42% of
+cross-sectional studies in this corpus are methodologically poor.
+
+**3. Two papers are counted twice, so 1,162 overstates the number of distinct studies by 2.** The
+repository audit found S233/S1008 (Morales & Zambrano 2018) and S299/S392 (Minaverry 2017) to be the
+same papers extracted and appraised under two `record_id`s each (language-variant titles and a blank
+DOI defeated the earlier duplicate audits). Every tool-distribution and percentage figure in this note
+counts both rows of each pair; the effective number of distinct included studies is **1,160**. The pairs
+are annotated in the databases and not yet merged (researcher decision;
+`00_admin/audits/2026-09-28_repository_audit.md`, finding 13). Neither pair contributes an
+`effect_sizes.csv` row, so no synthesis figure is affected; the tool-distribution shares move by
+less than 0.2 percentage points either way.

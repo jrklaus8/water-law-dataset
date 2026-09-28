@@ -20,6 +20,14 @@ prior work, not new extraction.
    non-blank `effect_estimate` in `extraction_database.csv` but no corresponding
    `effect_sizes.csv` row** (61 + 187 = 248 exactly, confirming this is the complete
    complementary set — not a coincidence, a check).
+
+   > **Audit correction, 2026-09-28.** That arithmetic was right by coincidence, not by check:
+   > `effect_sizes.csv`'s 61 rows are *not* all rows for eligible studies — S589's row belongs to a
+   > study `evidence_map.csv` does not flag eligible. The true decomposition is 60 eligible
+   > studies with a row + 187 eligible studies with a non-blank `effect_estimate` and no row + 1
+   > eligible study (S690) with a blank `effect_estimate` = 248. The set this pass actually
+   > screened (the 187) was correct, so no candidate was missed; only the "exactly complementary"
+   > claim and the "61 rows, all from eligible studies" premise were inaccurate.
 2. Manually inspecting a sample of the 187 confirmed most are correctly *not* in
    `effect_sizes.csv`: the `quantitative_synthesis_eligible` flag is a broad "has some
    quantitative content" category (descriptive percentages, correlation coefficients, GIS

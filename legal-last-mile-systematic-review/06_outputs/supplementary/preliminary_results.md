@@ -1,5 +1,12 @@
 # Preliminary Results
 
+> **Notice (added 2026-09-28 by the repository audit).** This is a chronological working log written
+> phase by phase; figures inside it are dated snapshots. Its opening statement that "there are still no
+> review findings" predates Phases 9-13: there is still **no pooled finding** (Phase 11's verdict is that
+> no family clears the meta-analysis bar), but corpus-wide risk-of-bias ratings and three Phase 13 SWiM
+> syntheses (`family_A_swim_synthesis_2026-09-28.md`, `family_B_...`, `family_C_...`) now exist. For the
+> current state read `README.md`'s "Current project status" table, not this log.
+
 **There are still no review findings.** This file is updated only when a
 phase of `PRISMA_WORKFLOW.md` actually produces a result — never pre-filled
 with an anticipated or illustrative finding. A pool of unscreened candidate

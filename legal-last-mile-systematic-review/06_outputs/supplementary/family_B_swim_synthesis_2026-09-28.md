@@ -64,6 +64,12 @@ Two natural groups, both noted in `phase11_quantitative_feasibility_judgment.md`
 
 ## Results
 
+Direction categories were assigned from each study's full `direction` text in `effect_sizes.csv`,
+not its first word — the one case where that mattered is S294 (extracted direction is a mixed
+null-on-health / positive-on-institutional-strengthening finding, coded Mixed). Sign and
+valence coincide for all six studies here (every positive sign is a beneficial result for
+access), unlike Families A and C.
+
 | Direction | k | Studies |
 |---|---|---|
 | Positive | 5 | S085, S1102, S1140, S1144, S1163 |
