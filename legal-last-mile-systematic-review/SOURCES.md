@@ -7,7 +7,7 @@ since 2026-09-11: the protocol search closed that day, and full-text
 retrieval closed entirely on 2026-09-28 (`README.md`'s "Current project
 status"). Corrected here rather than left to mislead a reader**; these 14
 entries remain methodological/exemplar references distinct from the
-review's own 1,160-study evidence base regardless. Each citation below has
+review's own 1,159-study evidence base regardless. Each citation below has
 been checked against independent web sources; the verification method and
 result are recorded for each so the check itself is auditable. `doi.org`
 and every publisher domain (academic.oup.com, journals.sagepub.com,
@@ -322,7 +322,7 @@ references, not a bibliography of the review's evidence base. **The
 evidence-base bibliography itself is no longer "not built yet" as of
 2026-09-28** — this originally said it would be "built during Phase 3
 onward," and Phase 3 (database searching) closed 2026-09-11; the citation
-for every one of the 1,160 included studies now lives in
+for every one of the 1,159 included studies now lives in
 `extraction_database.csv`'s `citation`/`doi` columns, not as a separate
 document here. This file remains what it always was: the smaller,
 distinct list of methodological/exemplar references the review's own

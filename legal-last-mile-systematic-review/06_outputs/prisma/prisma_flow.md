@@ -12,7 +12,7 @@ researcher's institutional access to further database providers is
 exhausted, and the corpus was judged large and comprehensive enough for
 the review's purposes — the same kind of judgment call as the
 2026-09-11 search closure). **Final figures: of 3,659, 2,276 were
-assessed (1,160 include / 1,116 exclude — 1,162 / 1,114 before two duplicate records were merged on 2026-09-28), and "Reports not retrieved" is
+assessed (1,159 include / 1,117 exclude — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28), and "Reports not retrieved" is
 1,383 — 182 flagged `wrong_file_retrieved` (a delivery was attempted and
 the wrong content arrived) and 1,201 `not_retrievable` (no successful
 retrieval attempt). These 1,383 will not grow further, and will not be
@@ -132,12 +132,12 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     2026-09-28 Phase 6 closure. 62.2% of the 3,659 records sought for
     retrieval were actually screened; this is now the final figure for
     this box, not a provisional/growing one.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,116 total, FINAL after the 2026-09-28 duplicate merge):
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,117 total, FINAL after the 2026-09-28 duplicate merge and S356 exclusion):
     E01 wrong topic (n = 496)
     E02 wrong population (n = 34)
     E03 wrong exposure (n = 34)
     E04 wrong outcome (n = 77)
-    E05 no empirical evidence (n = 134)
+    E05 no empirical evidence (n = 135)
     E06 engineering only (n = 106)
     E07 wrong service (n = 26)
     E08 duplicate (n = 8)
@@ -147,15 +147,16 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E12 wrong study design (n = 48)
 
 Included
-  Studies included in systematic review (n = 1,160, FINAL)
+  Studies included in systematic review (n = 1,159, FINAL)
     [Full-text include count as of the 2026-09-28 Phase 6 closure (1,162 at closure,
     reduced by 2 when the repository audit's two live double-counted papers, S233 and
     S299, were merged into S1008 and S392 with the researcher's approval and their
-    screening records re-classified as E08 duplicates). This
+    screening records re-classified as E08 duplicates, and by 1 more when S356, an OECD policy
+    overview included on an abstract-level reading, was excluded as E05 after its full text was read). This
     figure will not grow further unless a future researcher makes a new,
     separately-recorded decision to reopen full-text retrieval for some or
     all of the 1,383 never-screened records.]
-  Studies included in full extraction so far (n = 1,160)
+  Studies included in full extraction so far (n = 1,159)
     [03_extraction/extracted_data/extraction_database.csv, S001-S1164 (S227,
     S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]

@@ -439,7 +439,7 @@ matched tool names by substring, which mis-buckets rows whose annotation text me
 explicit NOT APPLICABLE note, 8 have a blank rating by design). **A later same-day duplicate merge then
 retired two more rows (S233, an MMAT study, and S299, a Legal Framework study — the same papers as S1008
 and S392), so the final distribution is RoB 2 5, ROBINS-I 63, JBI 140, MMAT 205, CASP 263, AMSTAR 2 24,
-Legal Framework 448, NONE 12 (sum 1,160), with 1,148 tool-applicable studies.** The earlier text is left as written;
+Legal Framework 447, NONE 12 (sum 1,159), with 1,147 tool-applicable studies.** The earlier text is left as written;
 current statements are in `README.md`'s status table and
 `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`. See `CHANGELOG.md` for the full
 audit-correction entry.

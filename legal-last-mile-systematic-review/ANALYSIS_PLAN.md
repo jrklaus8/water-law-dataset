@@ -167,7 +167,7 @@ not actually require. See `REPRODUCIBILITY.md`.
 state (no extraction, Phase 6 not producing decisions) that stopped being
 true many batches ago; it is rewritten here as of 2026-09-28 rather than
 left to drift further.** Full-text retrieval (Phase 6) formally closed
-2026-09-28; extraction (Phase 8) holds 1,160 studies (S001–S1164, with S227, S233, S299 and S399 retired duplicates);
+2026-09-28; extraction (Phase 8) holds 1,159 studies (S001–S1164, with S227, S233, S299 and S399 retired duplicates and S356 retired after exclusion);
 evidence classification (Phase 10) is populated for all of them; **Phase
 11 — this document's own §2 decision tree, applied at the family level —
 is now complete**, in

@@ -4,7 +4,29 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Audit follow-up: linked reports mapped, study↔record index built, Family C text corrected
+## 2026-09-28 (latest) — S356 resolved on its full text: excluded (E05) and retired
+
+The researcher supplied the full text of S356 (record `R1827C03DA45A`), Trémolet & Smith (2026), *Economic regulation of
+water supply and sanitation services: key trends and approaches*, OECD Environment Working Paper No. 275 (open access, CC BY
+4.0; DOI 10.1787/14514522-en). It had been an include with no reviewer, no location and an abstract-only extraction (audit
+finding 10). Read in full (54 pages): a seminar-derived policy overview of regulation by contract, agency and self-regulation and of
+pro-poor and environmental regulatory instruments, illustrated with case boxes (Senegal, Paris, Portugal, England, Manila, Burkina
+Faso, Djibouti, Jamaica, Wallonia, Benin, Italy) compiled from secondary sources and stakeholder feedback. It states no search strategy
+or synthesis method, collects and analyses no primary data, and itself says robust comparative evidence is absent. Inclusion criterion 3
+requires empirical evidence or a *systematic* empirical synthesis, and the project's precedent for non-systematic policy overviews is
+E05 (e.g. `R0186AD905238`, `R67ED91FDC3BF`), so it was **excluded as E05** and **S356 retired** (permanent ID gap). Applied by
+`code/provenance/audit_and_repair/resolve_s356_exclude_2026-09-28.py` after the researcher approved the row deletion.
+
+The screening record now reads exclude/E05 with reviewer `Claude-AI-fulltext-2026-09-28` (the full text was actually read this time),
+status `retrieved` and the PDF's location, and one exclusion-log row was added. **Figures:** included 1,160 → **1,159**; excluded
+1,116 → **1,117** (E05 134 → 135; exclusion log 1,117 rows); Legal Framework studies 448 → 447; tool-applicable studies 1,148 → 1,147;
+qualitative-eligible 1,060 → 1,059 (quantitative-eligible unchanged at 247); abstract-only extractions 70 → 69; decided rows with
+no `reviewer_1` 74 → 73; distinct-study estimates 1,158/1,156 → 1,157/1,155; reviewer_2 coverage 100 of 1,159 (still 8.6%).
+`effect_sizes.csv`, the SWiM syntheses and the linked-reports table are unaffected. Current-status documents (both READMEs,
+`PRISMA_WORKFLOW.md`, `prisma_flow.md`, the evidence-limitations note, `RISK_OF_BIAS.md`, `SOURCES.md`, `DATA_DICTIONARY.md`,
+`ANALYSIS_PLAN.md`, the audit report) were updated; earlier dated entries are left as written.
+
+## 2026-09-28 (earlier) — Audit follow-up: linked reports mapped, study↔record index built, Family C text corrected
 
 Continuation of the repository audit (`00_admin/audits/2026-09-28_repository_audit.md`, findings 14-16). No count,
 decision or classification changed.

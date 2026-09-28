@@ -15,9 +15,9 @@ institutional access to further providers is exhausted, and 2,276 of
 before the corpus was judged large and comprehensive enough to close on;
 Phase 8 (extraction) fully caught up with the closed Phase 6 population;
 Phase 9 (risk of bias) is now **complete for tool classification and rating
-alike**: all 1,160 studies carry a correctly design-matched
+alike**: all 1,159 studies carry a correctly design-matched
 `risk_of_bias_tool` (including 12 correctly flagged `NONE` where no
-validated instrument applies), and all 1,148 studies to which a tool
+validated instrument applies), and all 1,147 studies to which a tool
 applies carry a `risk_of_bias_rating` — see **Current project status** and
 `RISK_OF_BIAS.md` §4 for what depth that rating actually reflects, since a
 corpus-scale batch appraisal is not the same thing as a signalling-question
@@ -71,23 +71,23 @@ explained in full further down; this is the index.
    **Chronological workflow → 5**.
 5. **Full-text human second-review (reviewer_2) is real but only 8.6%
    complete.** As of 2026-09-27, the PI has independently reviewed and
-   confirmed the first 100 of 1,160 current full-text includes (S001–S100;
+   confirmed the first 100 of 1,159 current full-text includes (S001–S100;
    1,162 before the 2026-09-28 duplicate merge, see item 7).
-   The remaining 1,060 includes, and all 1,116 excludes, at the full-text
+   The remaining 1,059 includes, and all 1,117 excludes, at the full-text
    stage still carry no human second reviewer. Do not read "a human
    reviewer_2 pass has begun" as "the full-text stage is independently
    verified." See **Current project status** and **Human and AI
    involvement**.
 6. **Risk-of-bias appraisal is now complete at the corpus scale, but not at
-   uniform depth.** All 1,160 studies carry a correctly design-matched
-   `risk_of_bias_tool` (1,148 with an applicable validated or project-specific
-   instrument, 12 correctly flagged `NONE`), and all 1,148 carry a
+   uniform depth.** All 1,159 studies carry a correctly design-matched
+   `risk_of_bias_tool` (1,147 with an applicable validated or project-specific
+   instrument, 12 correctly flagged `NONE`), and all 1,147 carry a
    `risk_of_bias_rating` (of the 12 `NONE` studies, 4 carry an explicit
    NOT APPLICABLE note and 8 are blank by design). That rating was produced by a disclosed,
    rule-based batch process appropriate to this corpus's scale, not a
    signalling-question-level read of each study's source document — for the
-   916 studies rated via CASP (263), MMAT (205), or the project's own Legal
-   Institutional Evidence Appraisal Framework (448), most individual domains are
+   915 studies rated via CASP (263), MMAT (205), or the project's own Legal
+   Institutional Evidence Appraisal Framework (447), most individual domains are
    honestly "Can't tell"/"not assessable" rather than a real judgement. See
    `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for the full
    account of what this does and does not mean for synthesis confidence.
@@ -327,13 +327,13 @@ explained in full further down; this is the index.
     as JBI Cross-Sectional and 14 mistagged as MMAT were reassigned to their
     correct tool; 43 studies with no tool at all were classified; and every
     one of the resulting populations (5 RoB 2, 63 ROBINS-I, 140 JBI, 205
-    MMAT, 263 CASP, 24 AMSTAR 2, 448 Legal Framework, 12 NONE — live counts
+    MMAT, 263 CASP, 24 AMSTAR 2, 447 Legal Framework, 12 NONE — live counts
     after the 2026-09-28 duplicate merge; an earlier draft of this list showed
     pre-reassignment figures) received a
     disclosed, rule-based rating grounded in real `extraction_database.csv`
-    fields — never a fabricated signalling-question answer. All 1,160
+    fields — never a fabricated signalling-question answer. All 1,159
     studies now carry a correctly classified `risk_of_bias_tool`, and all
-    1,148 to which a tool applies carry a `risk_of_bias_rating`. See
+    1,147 to which a tool applies carry a `risk_of_bias_rating`. See
     `RISK_OF_BIAS.md` §4, `CHANGELOG.md`'s 2026-09-28 entries, the batch
     documentation files under `04_quality/appraisal_forms/`, and the new
     cross-cutting narrative at
@@ -343,7 +343,7 @@ explained in full further down; this is the index.
     about its own "Can't tell" answers, but it is not a
     signalling-question-level read of every source document.
 16. **Extraction rows are per report, not per underlying study — so
-    "1,160 studies" counts reports.** `REPRODUCIBILITY.md` §6 says that
+    "1,159 studies" counts reports.** `REPRODUCIBILITY.md` §6 says that
     where several reports describe the same underlying study, the study is
     to be treated as one and the reports cross-referenced by `study_id`; in
     practice this project extracted companion papers as separate rows (a
@@ -354,14 +354,14 @@ explained in full further down; this is the index.
     confidence). **Two links are the same underlying data (S294/S366, the same
     cluster-randomised trial; S097/S098, the same interview sample) and two more
     overlap partially (S681/S682, S357/S369)**, so the corpus holds roughly
-    1,158 distinct studies on the definite links and 1,156 counting the partial
+    1,157 distinct studies on the definite links and 1,155 counting the partial
     ones — and the "5 RoB 2 studies" are 4 distinct trials. Nothing was merged or
     recounted: whether to collapse these rows is a researcher decision. None of the
     linked pairs has both members in `effect_sizes.csv`, except the audit-inferred
     S526/S539 (two US utility studies whose samples probably overlap), which matters
     if the ownership/price cluster is ever pooled. The index
     `03_extraction/extracted_data/study_record_map.csv` (study_id ↔ screening
-    record_id, all 1,160 studies) was added at the same time, since the extraction
+    record_id, all 1,159 studies) was added at the same time, since the extraction
     database has no `record_id` column.
 
 ---
@@ -459,11 +459,11 @@ documentation**.
 | Records identified | 34,594 raw (34,557 database + 37 grey-literature/pilot) |
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
-| Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,276 of 3,659 assessed (**1,160 include / 1,116 exclude** — 1,162 / 1,114 before two duplicate records were merged on 2026-09-28); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
-| Full-text human reviewer_2 | **Just begun, 8.6% complete.** 100 of 1,160 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,060 includes and all 1,116 excludes still unreviewed by a human second reviewer at this stage |
-| Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,160 studies extracted, `S001`–`S1164` (`S227`, `S233`, `S299`, `S399` retired as documented duplicate corrections — real gaps in the numbering, not an error) |
-| Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,160 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 63 ROBINS-I, 140 JBI Cross-Sectional, 205 MMAT, 263 CASP Qualitative, 24 AMSTAR 2, 448 Legal Institutional Evidence Appraisal Framework, 12 correctly-flagged `NONE` — live counts as recomputed by the 2026-09-28 audit and duplicate merge), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,148 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
-| Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,160 studies — 247 flagged quantitative-synthesis-eligible, 1,060 qualitative-synthesis-eligible (categories overlap) |
+| Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,276 of 3,659 assessed (**1,159 include / 1,117 exclude** — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
+| Full-text human reviewer_2 | **Just begun, 8.6% complete.** 100 of 1,159 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,059 includes and all 1,117 excludes still unreviewed by a human second reviewer at this stage |
+| Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,159 studies extracted, `S001`–`S1164` (`S227`, `S233`, `S299`, `S399` retired as documented duplicate corrections and `S356` retired after its full-text exclusion — real gaps in the numbering, not an error) |
+| Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,159 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 63 ROBINS-I, 140 JBI Cross-Sectional, 205 MMAT, 263 CASP Qualitative, 24 AMSTAR 2, 447 Legal Institutional Evidence Appraisal Framework, 12 correctly-flagged `NONE` — live counts as recomputed by the 2026-09-28 audit and duplicate merge), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,147 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
+| Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,159 studies — 247 flagged quantitative-synthesis-eligible, 1,059 qualitative-synthesis-eligible (categories overlap) |
 | Quantitative evidence (effect sizes) | **62** rows (61 from the 247 eligible studies, plus S589's row — an unresolved eligibility inconsistency flagged by the 2026-09-28 audit; see **Known limitations**) (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 6 Family B, **20** Family C, **16 rows are reasoned non-fits with no family (not a data-cleanliness gap — each carries a documented reason it does not match Family A/B/C, see `phase11_blank_family_resolution_2026-09-28.md`)**. A 2026-09-28 re-mining pass checked whether any of the other 186 eligible-but-unpromoted studies had a missed effect estimate already sitting in `extraction_database.csv` — found exactly one genuine addition (S348, Family C); see `06_outputs/supplementary/effect_sizes_remining_2026-09-28.md` |
 | Pooled/meta-analytic estimates | **Zero.** Every effect_sizes.csv row has `included_in_pooled_estimate = FALSE`; almost every one cites "single study defining this exact exposure-comparator pairing" as the reason, per `ANALYSIS_PLAN.md` §2 |
 | Corpus-level quantitative-feasibility judgment (Phase 11) | **Complete, 2026-09-28** — `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`. Verdict: no family clears the bar for meta-analysis; all three route to Phase 13's structured synthesis (SWiM) instead. Identified one 5-study pooling-candidate sub-grouping in Family C (governance/regulatory-structure vs. affordability); a dedicated methods note (`phase11_pooling_feasibility_S526_S539_S749.md`) subsequently found no defensible common-metric transformation exists for its 3-study ownership-price core |
@@ -473,9 +473,9 @@ documentation**.
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
 
 Exclusion-reason breakdown at full-text stage (E01–E12,
-`INCLUSION_EXCLUSION.md`), of 1,116 total: E01 wrong topic 496 · E02 wrong
+`INCLUSION_EXCLUSION.md`), of 1,117 total: E01 wrong topic 496 · E02 wrong
 population 34 · E03 wrong exposure 34 · E04 wrong outcome 77 · E05 no
-empirical evidence 134 · E06 engineering only 106 · E07 wrong service 26 ·
+empirical evidence 135 · E06 engineering only 106 · E07 wrong service 26 ·
 E08 duplicate 8 · E09 insufficient information 2 · E10 inaccessible full
 text 151 · E11 wrong jurisdiction/context 0 · E12 wrong study design 48.
 
@@ -538,8 +538,8 @@ been independently confirmed by a human second reviewer — `reviewer_2`
 was blank for all 3,659 rows of `full_text_screening_database.csv`. As of
 2026-09-27, the PI has reviewed and confirmed the first 100 chronologically
 included studies (`S001`–`S100`), agreeing with the AI reviewer's
-classification in all 100 cases, zero conflicts. **This is 100 of 1,160
-current includes (8.6%) and 0 of 1,116 current excludes.** Treat every
+classification in all 100 cases, zero conflicts. **This is 100 of 1,159
+current includes (8.6%) and 0 of 1,117 current excludes.** Treat every
 full-text decision beyond those 100 confirmed includes as AI-reviewer-only
 until this README says otherwise, and check `full_text_screening_database.csv`'s
 `reviewer_2` column directly rather than assuming this document is current
@@ -576,10 +576,10 @@ ROBINS-I, one of two JBI checklists, CASP, MMAT, AMSTAR 2 for
 already-systematic-review sources, or the project's own non-validated
 Legal Institutional Evidence Appraisal Framework where none of the six
 validated instruments fit). As of 2026-09-28, this assignment is complete
-and audited for all 1,160 studies — a corpus-wide design audit that day
+and audited for all 1,159 studies — a corpus-wide design audit that day
 corrected 148 Legal-Framework misclassifications plus 26 JBI and 14 MMAT
 mistags onto the correct instrument, and classified the 43 studies that
-previously had no tool at all. Every one of the 1,148 studies to which a
+previously had no tool at all. Every one of the 1,147 studies to which a
 tool applies (the other 12 are correctly flagged `NONE`) now also carries a
 `risk_of_bias_rating`, using the official checklist PDFs the researcher
 supplied that same day to work around this environment's network block
@@ -587,7 +587,7 @@ on the instruments' official sources.
 
 **Read "rated" carefully.** This was a disclosed, rule-based batch process
 appropriate to a corpus this size, not a signalling-question-level read of
-each study's own source document. For the 916 studies rated via
+each study's own source document. For the 915 studies rated via
 CASP, MMAT, or the Legal Framework, most individual domains are honestly
 "Can't tell"/"not assessable" — a real reflection of what this project's
 extraction fields do and do not capture about each study's own
@@ -877,7 +877,7 @@ of the following as current without cross-checking the CSVs directly**:
 - **`PRISMA_WORKFLOW.md`, Phase 6 entry.** Currently frozen at "1,535 of
   3,659 records decided (795 include / 740 exclude)" with an 11-record
   `wrong_file_retrieved` list that no longer matches the current 182. The
-  live figure is **2,276 of 3,659 (1,160 include / 1,116 exclude after the 2026-09-28 duplicate merge; 1,162 / 1,114 before)** — see
+  live figure is **2,276 of 3,659 (1,159 include / 1,117 exclude after the 2026-09-28 duplicate merge and S356 exclusion; 1,162 / 1,114 before)** — see
   **Current project status** above. The rest of `PRISMA_WORKFLOW.md`'s
   16-phase table (Phases 1–5) is accurate; only its later-phase entries
   have drifted.
@@ -1021,10 +1021,10 @@ caveat applies. It is not softened.
   re-screened.
 - Full-text screening, AI first pass (2,276 of 3,659 records that reached
   this stage — the final figure, since Phase 6 closed 2026-09-28) —
-  independently human-confirmed for **100 of the 1,160 current includes
-  only** (S001–S100, as of 2026-09-27). The remaining 1,060 includes and
-  all 1,116 excludes at this stage are AI-reviewer-only.
-- Extraction against the 92-field codebook (1,160 studies) — not
+  independently human-confirmed for **100 of the 1,159 current includes
+  only** (S001–S100, as of 2026-09-27). The remaining 1,059 includes and
+  all 1,117 excludes at this stage are AI-reviewer-only.
+- Extraction against the 92-field codebook (1,159 studies) — not
   independently human-reviewed at scale; spot-checking this is recommended
   future work (see **How to continue this project**).
 - Evidence classification (mechanism/outcome family assignment) — the
@@ -1032,8 +1032,8 @@ caveat applies. It is not softened.
   record; the judgment-requiring fields are filled by the same AI process
   that did extraction, with reasoning recorded but without independent
   human re-derivation.
-- Risk-of-bias tool assignment (all 1,160 studies, complete as of
-  2026-09-28) and the resulting 1,148 ratings (see **Current project
+- Risk-of-bias tool assignment (all 1,159 studies, complete as of
+  2026-09-28) and the resulting 1,147 ratings (see **Current project
   status**) — AI-conducted, via a disclosed rule-based batch process
   grounded in extraction-database fields; none independently human-reviewed
   yet.
@@ -1047,7 +1047,7 @@ caveat applies. It is not softened.
   any manuscript reporting this figure should disclose the caveat alongside
   it, not report the number alone.
 - Full-text screening, human second reviewer — **begun 2026-09-27**, 100 of
-  1,160 current includes reviewed and confirmed, zero conflicts. This is a
+  1,159 current includes reviewed and confirmed, zero conflicts. This is a
   real, independent confirmation (the PI reviewed the articles and the
   classification, not merely the AI's summary), but it covers 8.6% of
   current includes and 0% of excludes. Do not describe this stage as
@@ -1058,10 +1058,10 @@ caveat applies. It is not softened.
   methodological judgment call, not an AI decision presented as one.
 
 **What still requires independent human confirmation, unambiguously:**
-- The remaining 1,060 full-text includes and all 1,116 full-text excludes
+- The remaining 1,059 full-text includes and all 1,117 full-text excludes
   (reviewer_2).
-- All 1,160 extractions (no second-extractor pass has been run at all).
-- All 1,148 risk-of-bias ratings produced by 2026-09-28's batch process
+- All 1,159 extractions (no second-extractor pass has been run at all).
+- All 1,147 risk-of-bias ratings produced by 2026-09-28's batch process
   (tool-assignment and rating are both complete, but independent human
   review of the ratings themselves has not happened).
 - A corpus-level Phase 11 quantitative-feasibility write-up (currently
@@ -1121,7 +1121,7 @@ In roughly this order, for whoever picks this up next:
    workaround that found them.
 2. **Extend the human full-text reviewer_2 pass past S100.** This is
    currently the most under-resourced verification gap relative to how
-   much AI-reviewed material already exists (1,060 includes, 1,116
+   much AI-reviewed material already exists (1,059 includes, 1,117
    excludes with no human check at all). Prioritize a random or systematic
    sample of the excludes first if full coverage isn't feasible — excludes
    are the harder failure mode to catch later, since an incorrectly
@@ -1129,14 +1129,14 @@ In roughly this order, for whoever picks this up next:
 3. **The corpus-wide risk-of-bias pass is done (2026-09-28)** — the
    network block on the official checklists that stopped this item on
    2026-09-27 was resolved the same day when the researcher supplied the
-   official checklist PDFs directly, and every one of the 1,160 studies
+   official checklist PDFs directly, and every one of the 1,159 studies
    now has a correctly classified `risk_of_bias_tool` and, where one
    applies, a `risk_of_bias_rating` (see **Known limitations → 15** and
    `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`). **What
    is still real, open work**, now that the corpus-wide pass exists:
    - The rating itself is a disclosed, rule-based **batch** appraisal, not
      a signalling-question-level read of each study's source document —
-     for the ~916 studies rated via CASP, MMAT, or the Legal Framework,
+     for the ~915 studies rated via CASP, MMAT, or the Legal Framework,
      most individual domains are honestly "Can't tell." A future
      researcher with more time per study could go back and do a genuine
      item-by-item appraisal for any subset that turns out to matter for a

@@ -170,11 +170,11 @@ Two index files added by the 2026-09-28 repository audit; neither is a validated
 read by any script.
 
 **`study_record_map.csv`** — `study_id, record_id, link_method, status, note`. One row per extracted study
-(1,160 `active`), plus the two retired duplicates (`retired_duplicate`, S233 and S299). It links each
+(1,159 `active`), plus the three retired rows (`retired_duplicate` for S233 and S299; `retired_excluded` for S356, excluded E05 on full text). It links each
 extraction row to its `full_text_screening_database.csv` `record_id`, because the extraction database has no
 `record_id` column. `link_method`: `extraction_note` (a record_id stated in the row's own note; 992),
 `doi` (122), `title in citation` (41), or `manual` (5, accent/spelling variants verified by hand). The map is
-a bijection with the 1,160 full-text includes. S227 and S399 (retired earlier) are not listed: their record
+a bijection with the 1,159 full-text includes. S227 and S399 (retired earlier) are not listed: their record
 IDs are not recoverable from the repository.
 
 **`linked_reports_2026-09-28.csv`** — `link_id, study_id_a, study_id_b, relationship, same_underlying_data,
@@ -246,7 +246,7 @@ for a long time — updated here 2026-09-28 rather than left to keep misleading 
 As of 2026-09-28: `screening_database.csv` holds all 27,481 deduplicated records, fully
 screened at title/abstract; `full_text_screening_database.csv` holds 3,659 seeded records,
 2,276 assessed (Phase 6 formally closed by researcher decision); `extraction_database.csv`
-holds all 1,160 included studies (1,162 before two duplicates were merged on 2026-09-28), fully extracted against every field this dictionary
+holds all 1,159 included studies (1,162 before two duplicates were merged and S356 excluded on 2026-09-28), fully extracted against every field this dictionary
 documents; `evidence_map.csv` and `effect_sizes.csv` are populated and current as described in
 their own sections above (both were updated the same day this Status section was corrected).
 See `README.md`'s "Current project status" table for exact live figures — this dictionary

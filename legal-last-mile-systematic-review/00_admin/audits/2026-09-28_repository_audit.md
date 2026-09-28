@@ -1,5 +1,7 @@
 # Repository audit — 2026-09-28
 
+> **Update, later 2026-09-28: S356 (finding 10) was resolved too.** The researcher supplied the full text; it is a non-systematic OECD policy overview with no method or primary data, so it was excluded as E05 and retired (1,160 → 1,159 included, 1,116 → 1,117 excluded, E05 134 → 135, Legal Framework 448 → 447, abstract-only 70 → 69, blank `reviewer_1` 74 → 73). The record now carries a real full-text reviewer stamp and location. See `CHANGELOG.md`.
+>
 > **Update, later 2026-09-28: finding 13's merge was approved by the researcher and executed.** All counts
 > in this report are **as of audit time (1,162 included studies, 1,114 excludes)** unless stated; the merge
 > then reduced them to **1,160 included / 1,116 excluded**, retired one MMAT row (S233) and one Legal
@@ -266,7 +268,7 @@ earlier work has no surviving script, only `git log` and `CHANGELOG.md`.
 1. **S589** — remove the row (recommended) or keep it and flip the eligibility flag (finding 5).
 2. **The 74 blank-`reviewer_1` rows** — who screened them, and whether to prioritize them for
    reviewer_2 (finding 9).
-3. **S356** — retain as an abstract-level include, or treat as unretrieved (finding 10).
+3. ~~**S356**~~ — resolved: full text supplied and read; excluded as E05 (finding 10).
 4. Whether to require a sensitivity analysis excluding the 70 abstract-only extractions (71 at audit time) before any
    synthesis statement is published (finding 7).
 5. **Linked reports** (finding 14) — collapse, keep-and-link, or leave as is: S294/S366 and S097/S098 are the
