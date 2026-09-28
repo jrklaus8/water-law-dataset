@@ -4,7 +4,58 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — final documentation sweep: README.md, PRISMA_WORKFLOW.md updated to reflect corpus-wide risk-of-bias completion
+## 2026-09-28 (latest) — Phase 13 SWiM syntheses written for all three families; the 9 never-evaluated blank-family effect-size rows resolved; S526/S539/S749 pooling-feasibility methods note written
+
+Closes the three concrete open items Phase 11 (`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md` §8) left for a future pass, now done the same week rather than left open:
+
+1. **The 9 blank-`synthesis_family` `effect_sizes.csv` rows Phase 11 §6 found had never
+   been checked against `PROJECT_SPEC.md` §8's Family A/B/C definitions at all (S434, S435,
+   S445, S448, S470, S471, S483, S489, S491) are now resolved** —
+   `06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md`. Each was checked
+   against real precedent already established elsewhere in the corpus (fiscal-transfer
+   exposures don't map to any family, per S636/S649; intermunicipal-cooperation exposures
+   don't map, per S869; jurisdiction-level policy-adoption outcomes aren't household access
+   outcomes, per S312; governance/regulatory-structure exposures tested against a price
+   outcome do fit Family C, per S1038). Result: S470 and S471 corrected to Family C; the
+   other 7 confirmed as genuine, reasoned non-fits, not omissions. Family C moves from 17 to
+   19 studies; the blank-reasoned-non-fit count moves from 18 to 16. `effect_sizes.csv`
+   `synthesis_family` and `exclusion_from_pooling_reason` fields updated for all 9 rows
+   (61 total rows unchanged); `code/analysis/validate_schemas.py` re-run clean afterward.
+2. **A dedicated methods note weighs whether a defensible common-metric transformation
+   exists for the S526/S539/S749 ownership-vs-price cluster** Phase 11 §5.1 identified as
+   this corpus's strongest (still unpooled) candidate —
+   `06_outputs/supplementary/phase11_pooling_feasibility_S526_S539_S749.md`. Verdict: no. S526's
+   outcome (a dimensionless unit-price ratio) measures rate-*structure* progressivity, a
+   different construct from S539/S749's price-*level* outcomes; converting S539's dollar bill
+   and S749's R$/m³ tariff onto one scale would require inventing an assumed household
+   consumption volume, a currency-conversion reference year, and an inflation adjustment that
+   neither source paper's extracted data supports. `included_in_pooled_estimate` stays
+   `FALSE` for all three; the cluster is instead presented as a vote-counting sub-group (all 5
+   related studies, including S471 and S1038, agree in direction) in the Family C SWiM
+   synthesis below.
+3. **All three Phase 13 SWiM syntheses are written** —
+   `06_outputs/supplementary/family_A_swim_synthesis_2026-09-28.md` (12/20 positive, 6/20
+   negative, 2/20 null — legal/institutional recognition associated with better access in a
+   clear majority of cases, across 7 thematic mechanism groups), `family_B_swim_synthesis_2026-09-28.md`
+   (5/6 positive, 1/6 mixed — the most directionally consistent family, but explicitly flagged
+   as too small (k=6) to generalize from regardless), and `family_C_swim_synthesis_2026-09-28.md`
+   (7/19 positive, 8/19 negative, 4/19 mixed at the full-family level — no dominant direction,
+   exactly as `PROJECT_SPEC.md` §8 predicted this family would prove "too heterogeneous" for;
+   the one real pattern is the 5-study ownership/regulatory-structure sub-group, where all 5
+   agree). Each cites Phase 11 as the reason that family did not proceed to meta-analysis, and
+   each draws its "Certainty in this body of evidence" section directly from today's
+   corpus-wide risk-of-bias ratings and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`.
+
+**A stale cross-reference caught and fixed in passing**:
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`'s Family B confidence paragraph
+named "S085 and S879" as this family's two RoB 2 cluster-trial studies; S879 is actually a
+Family C study, and S085's real Family B RoB 2 co-study is S294 (both appraised in the same
+batch, the likely source of the mix-up). Corrected in that document and noted in
+`family_B_swim_synthesis_2026-09-28.md`.
+
+`06_outputs/prisma/PRISMA_WORKFLOW.md`'s Phase 13 row and `phase11_quantitative_feasibility_judgment.md` §8 both updated to point to the new files rather than list them as outstanding.
+
+## 2026-09-28 (earlier) — final documentation sweep: README.md, PRISMA_WORKFLOW.md updated to reflect corpus-wide risk-of-bias completion
 
 `README.md` and `PRISMA_WORKFLOW.md` both carried multiple sections
 describing risk-of-bias appraisal as barely started or blocked -- accurate

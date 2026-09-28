@@ -257,22 +257,34 @@ common-metric transformation is found).
 
 ## 8. What this document does not do
 
-- It does not perform the actual Phase 13 SWiM write-ups. Three files
-  should now be created from `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`
-  — one per family — citing this document as "why this family did not
-  proceed to meta-analysis." Not yet done.
-- It does not resolve the 9 never-evaluated blank rows in §6. That needs
-  the same side-by-side family-definition judgment given to the other 52
-  rows, applied deliberately, not as a byproduct of this pass.
-- It does not attempt the S526/S539/S749 price-metric conversion floated
-  in §5.1. That requires its own methods note (what transformation is
-  defensible, and why) before any pooling could even be considered for
-  that sub-cluster — this document only identifies that the cluster
-  exists and names the specific obstacle blocking it.
+**Status update, 2026-09-28 (later the same day): the three items below are now done.**
+
+- ~~It does not perform the actual Phase 13 SWiM write-ups.~~ **Done**: three files created
+  from `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md` —
+  `family_A_swim_synthesis_2026-09-28.md`, `family_B_swim_synthesis_2026-09-28.md`,
+  `family_C_swim_synthesis_2026-09-28.md` — each citing this document as why that family did
+  not proceed to meta-analysis, and incorporating that day's completed risk-of-bias ratings
+  into each family's "Certainty in this body of evidence" section.
+- ~~It does not resolve the 9 never-evaluated blank rows in §6.~~ **Done**: see
+  `phase11_blank_family_resolution_2026-09-28.md`. 2 of the 9 (S470, S471) were corrected to
+  Family C after being checked against real precedent elsewhere in the corpus (S1038); the
+  other 7 were confirmed as genuine non-fits, each citing the specific precedent applied
+  (S312, S636/S649, or S869). Family C's count moved from 17 to 19; the blank-reasoned-non-fit
+  count moved from 18 to 16.
+- ~~It does not attempt the S526/S539/S749 price-metric conversion floated in §5.1.~~ **Done**:
+  see `phase11_pooling_feasibility_S526_S539_S749.md`, a dedicated methods note. Verdict: no
+  defensible transformation exists with the data currently extracted — S526's outcome measures
+  rate-structure progressivity (a different construct from S539/S749's price-*level* outcomes),
+  and converting S539's dollar bill to S749's R$/m³ tariff rate (or vice versa) would require
+  inventing an assumed household consumption volume, a currency-conversion reference year, and
+  an inflation adjustment that neither source paper's extracted data supports. The cluster
+  remains a structured-synthesis (SWiM) grouping, not a pooling candidate — see §6 of that note
+  for what would change this answer.
 - It does not assume the 61-row pool is final in the sense of never
   changing — it is final in the sense that no further full-text
   retrieval will add candidate studies (Phase 6 closed 2026-09-28), but a
   future researcher could still add effect sizes by re-mining the 1,162
   already-included full texts for quantitative results not yet extracted
   into `effect_sizes.csv`, or by resolving the family assignment of the
-  studies in §6.
+  studies in §6. (This last item remains open — no re-mining of full texts
+  for additional effect sizes was performed today.)

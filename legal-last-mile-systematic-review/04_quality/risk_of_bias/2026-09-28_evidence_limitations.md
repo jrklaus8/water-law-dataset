@@ -145,11 +145,13 @@ on both today's risk-of-bias ratings and the Phase 11 quantitative-feasibility j
   **Low-to-moderate confidence**, not because the individual studies are necessarily weak,
   but because this review cannot currently document that they are strong.
 - **Family B (bureaucratic assistance, 6 effect-size rows):** the smallest family, and the
-  one where today's appraisal happens to be richest — S085 and S879 (both RoB 2
-  cluster-trial-rated today) carry real pre-registration evidence and the most complete
-  appraisal forms in the whole corpus. **Low confidence on sample size grounds alone** (6
-  studies, per Phase 11), independent of the individual studies' own reasonably solid
-  RoB 2 ratings ("Some concerns," not "High risk," for both).
+  one where today's appraisal happens to be richest — S085 and **S294** (both RoB 2
+  cluster-trial-rated today; corrected 2026-09-28 from an earlier draft of this paragraph
+  that misnamed the second study as S879, which is actually a Family C study) carry real
+  pre-registration evidence and the most complete appraisal forms in the whole corpus. **Low
+  confidence on sample size grounds alone** (6 studies, per Phase 11), independent of the
+  individual studies' own reasonably solid RoB 2 ratings ("Some concerns," not "High risk,"
+  for both).
 - **Family C (administrative/legal barriers, 17 effect-size rows):** the largest of the
   three families and the most design-heterogeneous — spanning ROBINS-I, JBI Cross-Sectional,
   and Legal Framework-appraised studies. Phase 11 §5.1 already identified this family's

@@ -215,7 +215,11 @@ explained in full further down; this is the index.
     analogues S526/S539 — see that document §5.1), and 9 blank-family rows
     were flagged as apparently never evaluated against the family
     definitions at all (S434, S435, S445, S448, S470, S471, S483, S489,
-    S491) — not resolved, an itemized open item. Separately, the same
+    S491) — not resolved at the time, an itemized open item then.
+    **Resolved the same week**: see item 5 under **How to continue this
+    project** and `06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md`
+    (2 of the 9 corrected to Family C, 7 confirmed as reasoned non-fits).
+    Separately, the same
     session re-checked 7 `risk_of_bias_tool` assignments against
     `RISK_OF_BIAS.md` §1's own table and corrected mismatches (S590, S593,
     S606, S879, S1162, S1163, S749 — full detail in `RISK_OF_BIAS.md` §4),
@@ -363,10 +367,11 @@ documentation**.
 | Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,162 studies extracted, `S001`–`S1164` (`S227`, `S399` retired as documented post-hoc-duplicate corrections — real gaps in the numbering, not an error) |
 | Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,162 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 63 ROBINS-I, 166 JBI Cross-Sectional, 207 MMAT, 245 CASP Qualitative, 22 AMSTAR 2, 425 Legal Institutional Evidence Appraisal Framework, 12 correctly-flagged `NONE`), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,154 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
 | Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,162 studies — 248 flagged quantitative-synthesis-eligible, 1,062 qualitative-synthesis-eligible (categories overlap) |
-| Quantitative evidence (effect sizes) | 61 rows extracted from the 248 eligible studies (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 6 Family B, 17 Family C, **18 rows added before the Family A/B/C tag was consistently applied and still carry a blank family** (a real, disclosed data-cleanliness gap; S749 was reclassified blank→C on 2026-09-28, see **Known limitations**) |
+| Quantitative evidence (effect sizes) | 61 rows extracted from the 248 eligible studies (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 6 Family B, **19** Family C, **16 rows are reasoned non-fits with no family (not a data-cleanliness gap — each carries a documented reason it does not match Family A/B/C, see `phase11_blank_family_resolution_2026-09-28.md`)** |
 | Pooled/meta-analytic estimates | **Zero.** Every effect_sizes.csv row has `included_in_pooled_estimate = FALSE`; almost every one cites "single study defining this exact exposure-comparator pairing" as the reason, per `ANALYSIS_PLAN.md` §2 |
-| Corpus-level quantitative-feasibility judgment (Phase 11) | **Complete, 2026-09-28** — `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`. Verdict: no family clears the bar for meta-analysis; all three route to Phase 13's structured synthesis (SWiM) instead. Identifies one 3-study pooling-candidate sub-cluster in Family C (utility ownership vs. price/affordability) and names the specific metric-comparability obstacle still blocking it |
-| Meta-analysis / sensitivity / publication-bias code (Phases 12–15) | Templates exist (`08_code/R/*.R`, `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`) but have **never been run against real data** |
+| Corpus-level quantitative-feasibility judgment (Phase 11) | **Complete, 2026-09-28** — `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`. Verdict: no family clears the bar for meta-analysis; all three route to Phase 13's structured synthesis (SWiM) instead. Identified one 5-study pooling-candidate sub-grouping in Family C (governance/regulatory-structure vs. affordability); a dedicated methods note (`phase11_pooling_feasibility_S526_S539_S749.md`) subsequently found no defensible common-metric transformation exists for its 3-study ownership-price core |
+| Structured synthesis (Phase 13, SWiM) | **Complete, 2026-09-28** — `06_outputs/supplementary/family_A_swim_synthesis_2026-09-28.md`, `family_B_swim_synthesis_2026-09-28.md`, `family_C_swim_synthesis_2026-09-28.md`. Vote-counting by direction: Family A 12/20 positive (60%); Family B 5/6 positive (83%, but explicitly flagged as too few studies to generalize from); Family C 7/19 positive, 8/19 negative, 4/19 mixed (no dominant direction at the full-family level, as `PROJECT_SPEC.md` §8 predicted, though a 5-study sub-grouping is directionally consistent) |
+| Meta-analysis / sensitivity / publication-bias code (Phases 12, 14–15) | Templates exist (`08_code/R/*.R`) but have **never been run against real data** — nothing to run given Phase 11's verdict |
 | Preregistration | Draft ready (`00_admin/preregistration/osf_preregistration_draft.md`), **not submitted** — no OSF account access from this environment |
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
 
@@ -1044,28 +1049,33 @@ In roughly this order, for whoever picks this up next:
    (stripping URL prefixes, case, and — per the `S063` case above — any
    trailing non-DOI suffix a source export may have appended) before
    matching would catch more of these than exact-string comparison does.
-5. **Phase 11 is now done** (2026-09-28,
+5. **Phase 11 is done** (2026-09-28,
    `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`)
-   — no family clears the bar for meta-analysis. The next step is writing
-   the three Phase 13 SWiM syntheses this verdict requires (one per
-   family, from `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`,
-   citing the Phase 11 document as "why this family did not proceed to
-   meta-analysis") — not yet done. Separately, Phase 11 flagged but did
-   not resolve 9 blank-`synthesis_family` effect-size rows that were
-   apparently never evaluated against the family definitions at all
-   (S434, S435, S445, S448, S470, S471, S483, S489, S491) — that
-   evaluation is real, undone work, not a mechanical follow-up.
+   — no family clears the bar for meta-analysis — **and, as of the same
+   week, so is everything it left open.** The 9 blank-`synthesis_family`
+   effect-size rows it flagged as never evaluated against the family
+   definitions (S434, S435, S445, S448, S470, S471, S483, S489, S491) have
+   been resolved (`06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md`
+   — 2 corrected to Family C, 7 confirmed as reasoned non-fits), and all
+   three Phase 13 SWiM syntheses the verdict requires are written —
+   `family_A_swim_synthesis_2026-09-28.md`, `family_B_swim_synthesis_2026-09-28.md`,
+   `family_C_swim_synthesis_2026-09-28.md`, each citing the Phase 11 document
+   and drawing its certainty judgment from that week's risk-of-bias ratings.
 6. **Meta-analysis remains not justified** given the Phase 11 verdict —
    `08_code/R/`'s meta-analysis/sensitivity/publication-bias templates
-   have nothing to run against. The one exception worth real
-   investigation: Phase 11 §5.1 identifies a 3-study Family C sub-cluster
-   (S526, S539, S749 — private-vs-public utility ownership and
-   price/affordability) that is close, blocked only by non-identical price
-   metrics across the three studies. A dedicated methods note weighing
-   whether a defensible common-metric transformation exists (per
-   `ANALYSIS_PLAN.md` §4) — not a decision to make in passing — could
-   potentially unlock the corpus's first real pooled estimate. Do this
-   before touching `08_code/R/` for anything else.
+   have nothing to run against. The one candidate worth real investigation
+   — Phase 11 §5.1's Family C sub-cluster (S526, S539, S749 —
+   private-vs-public utility ownership and price/affordability) — has now
+   had that investigation done: a dedicated methods note
+   (`06_outputs/supplementary/phase11_pooling_feasibility_S526_S539_S749.md`)
+   concludes **no defensible common-metric transformation exists** with the
+   data currently extracted (S526's outcome measures a different construct
+   — rate-structure progressivity — from S539/S749's price-level outcomes;
+   harmonizing S539/S749 alone would require inventing a household
+   consumption volume, a currency-conversion year, and an inflation
+   adjustment none of the source papers' extracted data supports). See that
+   note's §6 for what would reopen the question. `08_code/R/` still has
+   nothing to run against.
 7. **Update the stale documents** listed in **A warning about stale
    documentation** — `PRISMA_WORKFLOW.md`'s Phase 6+ entries,
    `ANALYSIS_PLAN.md` §13, and the parent repository's top-level README's
