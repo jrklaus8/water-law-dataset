@@ -315,9 +315,35 @@ tool's already-established rule-based method from today's earlier
 batches. **Every one of the 1,162 extracted studies now has a
 `risk_of_bias_tool` assigned — this gap is fully closed.**
 
-What remains open, tracked in the session's task list: the 5 ambiguous
-AMSTAR2-flagged studies, the 26 + 14 = 40 reassignment-pending studies
-found during the JBI and MMAT batches (plus S344/S350's small AMSTAR 2
-queue addition), completing the original 2026-09-16 partial pilots,
-writing the RISK_OF_BIAS.md §3 cross-cutting evidence-limitations
-narrative, and a final documentation sweep.
+**2026-09-28, later still — the 5 ambiguous AMSTAR2 flags and the JBI
+Cohort question resolved.** The JBI Cohort question resolves itself:
+S373 (the corpus's one apparent cohort-design study) was already
+correctly appraised under ROBINS-I in today's earlier batch (a
+matched-cohort quasi-experimental design fits ROBINS-I's non-randomized
+intervention-study remit better than a separate cohort instrument would
+have) — no separate JBI Cohort checklist was ever needed. For the 5
+ambiguous AMSTAR2 flags, each was independently re-checked once more:
+
+- **S321 — not confirmed eligible, reclassified to `NONE`**:
+  `publication_type` is "literature review," not "systematic review,"
+  and no corroborating systematic-methodology claim exists elsewhere in
+  the record. Same tooling gap as the original 11 corrections (no
+  validated tool for a non-systematic literature review used as an
+  evidence source).
+- **S325, S326, S329, S418 — confirmed AMSTAR2-eligible** on balance
+  (S325: `publication_type` explicitly "PRISMA systematic review"; S326:
+  "evidence survey," a recognized quasi-systematic policy-research
+  format, kept eligible with residual uncertainty noted; S329: "narrative
+  review with systematic search," a genuine hybrid, kept eligible with a
+  caveat that only its search-related items are likely assessable; S418:
+  `study_design` explicitly "systematic review (secondary)"). All 4 rated
+  "Not ratable" per the same abstract/metadata-only extraction pattern as
+  the rest of the AMSTAR2 batch.
+- **S344, S350** (queued from the CASP batch's reclassification) rated
+  the same way.
+
+What remains open, tracked in the session's task list: the 26 + 14 = 40
+reassignment-pending studies found during the JBI and MMAT batches,
+completing the original 2026-09-16 partial pilots, writing the
+RISK_OF_BIAS.md §3 cross-cutting evidence-limitations narrative, and a
+final documentation sweep.

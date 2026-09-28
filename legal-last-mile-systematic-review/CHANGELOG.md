@@ -4,7 +4,37 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — the last 43 studies with no risk_of_bias_tool at all now classified and appraised; every extracted study has a tool assigned
+## 2026-09-28 (latest) — 5 ambiguous AMSTAR2 flags and the JBI Cohort question resolved
+
+Closing two small open items from earlier today's audits.
+
+**JBI Cohort**: resolves itself without any new work. S373, the corpus's
+one apparent cohort-design study, was already correctly appraised under
+ROBINS-I in today's ROBINS-I batch -- its matched-cohort quasi-
+experimental design (evolutionary genetic-matching algorithm for
+control-group selection) fits ROBINS-I's non-randomized intervention-
+study remit better than a separate cohort instrument would have.
+
+**The 5 ambiguous AMSTAR2 flags**, each independently re-checked once
+more against publication_type/study_design (not the existing tag):
+S321 is not confirmed eligible -- publication_type is "literature
+review," not "systematic review," with no corroborating claim elsewhere
+-- reclassified to NONE, the same tooling gap as the original 11
+AMSTAR2 corrections. S325 ("PRISMA systematic review"), S326 ("evidence
+survey," kept eligible with residual uncertainty noted), S329
+("narrative review with systematic search," a genuine hybrid, caveated),
+and S418 ("systematic review (secondary)" in its own study_design field)
+are all confirmed AMSTAR2-eligible and rated "Not ratable," consistent
+with the rest of the AMSTAR2 batch's abstract/metadata-only extraction
+pattern. S344 and S350 (queued from the CASP Qualitative batch's own
+reclassification earlier today) rated the same way.
+
+`03_extraction/extracted_data/extraction_database.csv`: 1
+`risk_of_bias_tool` cell corrected (S321), 6 `risk_of_bias_rating` cells
+populated (S325, S326, S329, S418, S344, S350). Row count verified
+unchanged at 1,162.
+
+## 2026-09-28 (earlier) — the last 43 studies with no risk_of_bias_tool at all now classified and appraised; every extracted study has a tool assigned
 
 Continuing the same day's risk-of-bias execution. S571-S618 (43 studies,
 the tail of the extraction range) had never had a `risk_of_bias_tool`
