@@ -133,3 +133,66 @@ studies).** Current real state, of 1,162 extracted studies:
   narrative in §3 above — that narrative has not been written yet, and
   should not be until real ratings exist for enough of the corpus to say
   something evidence-based about it.
+
+**2026-09-28, later the same day — the network blocker above was
+resolved: the researcher supplied the official RoB 2 (parallel-trial and
+cluster-trial variants), ROBINS-I, MMAT, CASP Qualitative, JBI
+Cross-Sectional, and AMSTAR 2 checklists/guidance directly, the same way
+full-text PDFs have been supplied throughout this project.** Before using
+any of them, two explicit gate-checks were run — an instrument-design
+check for every RoB2-tagged study, and an independent eligibility check
+for every AMSTAR2-tagged study, neither relying on the existing
+`risk_of_bias_tool` field as proof of correctness:
+
+- **RoB 2 design check.** All 5 RoB2-tagged studies (S057, S085, S294,
+  S366, S879) turned out to be **cluster-randomized**, not individually
+  randomized parallel trials — the parallel-trial instrument that had
+  been implicitly assumed by the plain "RoB 2" tag was the wrong variant
+  for every single one. 4 of 5 state this explicitly in their own
+  `study_design` field; S879 doesn't say "cluster" outright, but its
+  recorded unit of intervention ("96 disconnected compounds," "enforcement
+  arms") strongly implies compound-level randomization — corrected
+  provisionally to the cluster variant but flagged as inferred, not
+  confirmed, pending direct verification against the source paper.
+  `risk_of_bias_tool` for all 5 now reads "RoB 2 (cluster-randomized
+  trials variant)" rather than a bare "RoB 2"/"ROB2", so a future pass
+  cannot repeat this mistake by trusting the old tag.
+- **AMSTAR 2 eligibility check.** Of the 34 AMSTAR2-tagged studies, an
+  independent check against each study's title, `publication_type`, and
+  `extraction_note` (not the existing tool tag) confirmed 18 are genuinely
+  eligible (systematic reviews, a scoping review, or a meta-analysis), but
+  **11 are misclassified** — self-described in their own recorded fields
+  as narrative, conceptual, or documentary reviews, never claiming a
+  systematic search/screening methodology: S079, S320, S322, S429, S430,
+  S436, S440, S466, S479, S480, S482. AMSTAR 2 does not apply to any of
+  these — it assumes a systematic review structure these studies never
+  had, and scoring one against it would produce a misleading "critically
+  low" verdict that conflates "not a systematic review" with "a badly
+  conducted one." `risk_of_bias_tool` for all 11 was corrected to `NONE`
+  with a study-specific reason; **RISK_OF_BIAS.md itself has no validated
+  tool assigned for a non-systematic narrative/conceptual review used as
+  an evidence source** — that is a real gap this check surfaced, not
+  something resolved here. A further 5 (S321, S325, S326, S329, S418) are
+  ambiguous on the evidence available and were left as AMSTAR2-tagged,
+  flagged for individual re-verification rather than corrected on a guess
+  either way — S325 in particular was extracted from abstract/metadata
+  only, its full text never retrieved, so its eligibility can't be
+  confirmed at all without going back for the PDF.
+- See `CHANGELOG.md`'s dated entry for the full per-study list and the
+  prior tool value each corrected study carried (also recoverable from
+  git history on `03_extraction/extracted_data/extraction_database.csv`).
+- **Signaling-question-level ratings using these checklists have not
+  been produced yet** — the checklists themselves are large (the RoB 2
+  cluster-trial instrument alone has 5 domains and roughly 25 signaling
+  questions), and most of `extraction_database.csv`'s fields were built to
+  capture the legal/institutional exposure-outcome data this review
+  needs, not the trial-conduct or systematic-review-methodology details
+  (allocation concealment, timing of participant identification relative
+  to randomization, protocol registration, duplicate study selection,
+  etc.) these instruments ask about. Producing real ratings for the 18
+  confirmed-eligible AMSTAR2 studies and the 5 RoB2 cluster trials is the
+  next step, and will need either re-reading each study's actual source
+  PDF, or an explicit decision to accept a "No information" (NI) response
+  — itself a legitimate, honest answer within RoB 2's own framework, not
+  a fabrication — wherever the extraction record doesn't capture the
+  needed fact.

@@ -4,7 +4,108 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Phase 11 corpus-level quantitative-feasibility judgment written; risk-of-bias tool-assignment corrections; real appraisal against the six validated tools confirmed blocked
+## 2026-09-28 (latest) — Researcher supplied official RoB 2/ROBINS-I/JBI/MMAT/CASP/AMSTAR 2 checklists directly; two gate-checks run before using them, correcting 16 risk_of_bias_tool assignments
+
+The network-egress blocker logged earlier the same day (below) was
+resolved the same way full-text PDFs have always been supplied for this
+project: the researcher fetched the official checklists themselves and
+uploaded them directly — RoB 2 guidance + template (parallel-trial
+variant), RoB 2 cluster-randomized-trial cribsheet, ROBINS-I blank
+template + detailed guidance, MMAT 2018 criteria/manual, CASP Qualitative
+Checklist (2024), JBI Critical Appraisal Checklist for Analytical
+Cross-Sectional Studies, and AMSTAR 2 plus its guidance document.
+
+Before using any of them, the researcher specified two explicit
+gate-checks, neither of which may rely on the existing `risk_of_bias_tool`
+field as proof of correctness — both were run in full:
+
+**RoB 2 design check** (individual vs. cluster vs. crossover
+randomization, per-study, before picking the instrument variant). All 5
+RoB2-tagged studies turned out to be cluster-randomized:
+
+| study_id | prior `risk_of_bias_tool` | evidence | corrected to |
+|---|---|---|---|
+| S057 | `RoB 2` | `study_design`: "experimental (clustered RCT)" | `RoB 2 (cluster-randomized trials variant)` |
+| S085 | `RoB 2` | `study_design`: "cluster-randomized controlled trial (2x2 factorial, block-randomized, staggered rollout)" | same |
+| S294 | `ROB2` | `study_design`: "cluster-randomized controlled trial" | same |
+| S366 | `RoB 2` | `study_design`: "experimental (cluster-randomized controlled trial)" | same |
+| S879 | `RoB 2` | no explicit "cluster" wording, but recorded intervention unit is "96 disconnected compounds" / "enforcement arms" — compound-level, not household-level | same, **flagged as inferred, not confirmed** pending direct verification against the source paper |
+
+Every one of these had been tagged with a bare "RoB 2"/"ROB2" — the
+tool family was right, but the specific instrument variant (individual
+parallel-trial vs. cluster-trial, which ask materially different
+signalling questions, particularly around identification/recruitment
+timing) was never distinguished, and the parallel-trial form supplied
+earlier would have been the wrong one for all five.
+
+**AMSTAR 2 eligibility check** (independently confirm the tagged record
+is actually a systematic review or eligible evidence synthesis, not
+primary empirical research, before applying AMSTAR 2). Checked all 34
+AMSTAR2-tagged studies against their own `citation` title,
+`publication_type`, and `extraction_note` fields — not the tool tag
+itself. Result:
+
+- **18 confirmed eligible**, unchanged: S015, S019, S027, S052, S116,
+  S319, S323, S324, S327, S328, S370, S372, S427, S438, S475, S521, S537,
+  S697. (Several of these — S116, S372, S521 realist reviews; S370
+  systematic mapping; S427/S323 scoping reviews — are systematic
+  syntheses but not the classic intervention-effectiveness systematic
+  review AMSTAR 2's items were written for; noted as an imperfect-fit
+  caveat, not a misclassification, since they are still genuine
+  systematic evidence syntheses.)
+- **11 corrected — clear misclassifications.** None of these are primary
+  empirical research either (so the correction is not "reclassify as a
+  primary study," which is the alternative the researcher's instruction
+  named) — they are secondary reviews that are simply not *systematic*
+  ones, a case `RISK_OF_BIAS.md` §1's table does not currently cover at
+  all:
+
+  | study_id | prior `risk_of_bias_tool` | why it's not eligible |
+  |---|---|---|
+  | S079 | `AMSTAR 2 (secondary systematic review)...` | own `study_design`: "focused/narrative review (WIREs Water Focus Article)" |
+  | S320 | `AMSTAR 2 (secondary systematic review)...` | own `publication_type`: "narrative review" |
+  | S322 | `AMSTAR 2 (secondary systematic review)...` | own `publication_type`: "narrative review" |
+  | S429 | `AMSTAR2` | own title: "...a narrative synthesis of barriers" |
+  | S430 | `AMSTAR2` | own `study_design`: "narrative critical review" |
+  | S436 | `AMSTAR2` | own `study_design`: "qualitative documental synthesis / narrative review" |
+  | S440 | `AMSTAR2` | own `publication_type`: "narrative review" (Annual Review of Public Health) |
+  | S466 | `AMSTAR2` | own `study_design`: "narrative comparative review" |
+  | S479 | `AMSTAR2` | own `study_design`: "narrative review"; `publication_type`: "research and policy agenda" |
+  | S480 | `AMSTAR2` | own `study_design`: "documentary/regulatory-compliance review" — closer to a doctrinal/regulatory-history analysis than an evidence synthesis |
+  | S482 | `AMSTAR2` | own `study_design`: "conceptual review" (WIREs Focus Article) |
+
+  All 11 corrected to `NONE` with a study-specific reason recorded
+  directly in `risk_of_bias_tool` (the prior value is preserved above and
+  in git history). `risk_of_bias_rating` was already blank for all 11 and
+  remains blank.
+- **5 left flagged, not corrected either way — genuinely ambiguous on the
+  evidence available, and guessing would violate the same
+  "independently confirm" instruction that caught the 11 above:** S321
+  (`publication_type`: "literature review," no "systematic" qualifier),
+  S325 (`publication_type`: "PRISMA systematic review," but
+  `extraction_note` says full text was never retrieved — extracted from
+  abstract/metadata only, so eligibility can't actually be confirmed
+  without the PDF), S326 (`publication_type`: "evidence survey" — a
+  review-type format, but not explicitly systematic), S329
+  (`publication_type`: "narrative review with systematic search" — a
+  genuine hybrid; AMSTAR 2's search-related items may apply even if its
+  synthesis-related items likely won't), S418 (thin evidence: only
+  "journal article (review)," no independent title confirmation
+  available from what's recorded).
+
+`03_extraction/extracted_data/extraction_database.csv`: 16
+`risk_of_bias_tool` cells changed (row count unchanged, 1,162; verified
+with an assertion in the correction script). `risk_of_bias_rating` was
+not touched anywhere in this pass — no new ratings were produced, since
+producing a genuine signalling-question-level rating for even one
+cluster-RCT or systematic review requires facts (allocation concealment,
+protocol registration, timing of participant identification relative to
+randomization, etc.) that `extraction_database.csv`'s fields were built
+to capture for a different purpose (the legal/institutional
+exposure-outcome data this review needs) and mostly don't record. See
+`RISK_OF_BIAS.md` §4 for the same account in context.
+
+## 2026-09-28 (earlier) — Phase 11 corpus-level quantitative-feasibility judgment written; risk-of-bias tool-assignment corrections; real appraisal against the six validated tools confirmed blocked
 
 **Phase 11.** `ANALYSIS_PLAN.md` §2's decision tree was applied explicitly
 at the family level, for the first time, across all 61 rows of
