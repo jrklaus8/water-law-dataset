@@ -98,7 +98,7 @@ explained in full further down; this is the index.
    stalled.
 10. **A small number of "wrong file retrieved" and "partial/unusable
     extraction" cases are deliberately left open, not force-decided.**
-    159 records currently carry a `wrong_file_retrieved` flag (the delivered
+    182 records currently carry a `wrong_file_retrieved` flag (the delivered
     PDF did not match the target citation, or the extraction tool returned
     an unusable fragment of the real document); these are not screened and
     not counted in any decided total until the correct file is retrieved.
@@ -224,7 +224,7 @@ documentation**.
 | Records identified | 34,594 raw (34,557 database + 37 grey-literature/pilot) |
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
-| Full-text screening | **Live, in progress.** 2,276 of 3,659 assessed (**1,162 include / 1,114 exclude**); 1,383 still open; **159 flagged `wrong_file_retrieved`** (not counted in any total) |
+| Full-text screening | **Live, in progress.** 2,276 of 3,659 assessed (**1,162 include / 1,114 exclude**); 1,383 still open; **182 flagged `wrong_file_retrieved`** (not counted in any total) |
 | Full-text human reviewer_2 | **Just begun, 8.7% complete.** 100 of 1,162 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,062 includes and all 1,114 excludes still unreviewed by a human second reviewer at this stage |
 | Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,162 studies extracted, `S001`–`S1164` (`S227`, `S399` retired as documented post-hoc-duplicate corrections — real gaps in the numbering, not an error) |
 | Risk-of-bias appraisal | **Barely started relative to extraction.** Design-matched tool identified for 1,116 of 1,162 studies; an actual **rating** exists for only **33** — 29 of those are explicit partial/pilot judgments (2026-09-16 batch), 2 are complete AMSTAR 2 ratings for included secondary reviews (S370, S372 — both "Critically Low"), 2 more are complete individual ratings (S468 CASP Qualitative "Moderate"; S469 MMAT "Moderate") |
@@ -570,7 +570,7 @@ of the following as current without cross-checking the CSVs directly**:
 
 - **`PRISMA_WORKFLOW.md`, Phase 6 entry.** Currently frozen at "1,535 of
   3,659 records decided (795 include / 740 exclude)" with an 11-record
-  `wrong_file_retrieved` list that no longer matches the current 118. The
+  `wrong_file_retrieved` list that no longer matches the current 182. The
   live figure is **2,276 of 3,659 (1,162 include / 1,114 exclude)** — see
   **Current project status** above. The rest of `PRISMA_WORKFLOW.md`'s
   16-phase table (Phases 1–5) is accurate; only its later-phase entries

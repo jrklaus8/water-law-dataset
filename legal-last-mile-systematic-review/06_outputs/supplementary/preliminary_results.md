@@ -6797,6 +6797,29 @@ evidence of anything.
   1,383 open (including 159 wrong_file_retrieved), 1,162 extracted
   studies, 61 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-ninth batch (23 records, 2026-09-28), a complete
+  wash -- a third, finer-grained reconciliation pass (16 hex-prefix bucket
+  queries defeating a persistent Drive search-pagination anomaly) finally
+  cleared the "Sep 26 2026" folder.** Found 69 more files: 41 duplicates
+  moved to Processed, 3 more wrong_file re-appearances moved to the
+  wrong_file records folder, 25 open (23 new plus the 2 already-known
+  undecided records, left untouched). All 23 new records: **WRONG_FILE**.
+  Two received special attention as likely resurfacing of already-flagged
+  targets under duplicate record_ids (Carrera 2015 "Sanitation and social
+  power" and Stopnitzky 2012 "Household Sanitation... India," both
+  mirroring Batch 238 targets) -- both confirmed independent, unrelated
+  wrong deliveries, not the correct paper. Two deliveries were not
+  research papers at all: a law-firm client letter and an Ontario court
+  decision, both self-labeled "verified" by the delivery tool -- the same
+  failure mode now confirmed to extend to non-academic document types.
+  Folder now treated as exhaustively reconciled: 1,036 unique PDFs seen
+  across all three passes. No database changes beyond wrong_file flags;
+  `full_text_retrieval_queue.csv` regenerated (1,383 open, count
+  unchanged); schema validation re-run clean.
+  Running totals: 2,276/3,659 screened (1,162 include/1,114 exclude),
+  1,383 open (including 182 wrong_file_retrieved), 1,162 extracted
+  studies, 61 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

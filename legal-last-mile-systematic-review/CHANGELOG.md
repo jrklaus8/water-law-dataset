@@ -4,7 +4,58 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Two-hundred-thirty-eighth full-text screening batch (50 records, 7 includes, 0 excludes, 41 wrong_file_retrieved, 2 left undecided) — the "Sep 26 2026" delivery folder confirmed to be continuously growing, not a one-time drop; two genuine quantitative access-outcome effect sizes added
+## 2026-09-28 (latest) — Two-hundred-thirty-ninth full-text screening batch (23 records, 0 includes, 0 excludes, 23 wrong_file_retrieved) — a third, finer-grained reconciliation pass finally clears the "Sep 26 2026" folder; a complete wash, including two non-research documents mistakenly harvested
+
+A persistent Google Drive search-pagination anomaly in the "Sep 26 2026"
+folder caused two prior reconciliation passes (774, then 967 files) to
+each miss files that were genuinely present. A third pass, using 16
+single-hex-character bucket queries (`R0`-`RF`) plus targeted sub-prefix
+probing in place of plain pagination, found 69 more unique files: 41
+already-decided duplicates (moved to Processed), 3 more re-appearances of
+already-flagged wrong_file records (moved to the wrong_file records
+folder), and 25 open records -- 23 genuinely new (this batch) plus the 2
+already-known deliberately-undecided records (`R0908697F9FE5`,
+`RBEDB6556B711`), left untouched since nothing about their content has
+changed. The reconciling agent gave a corroborating, CSV-based account of
+why the ten hex-prefixes that still returned nothing (`R4`-`R9`, `RA`,
+`RC`, `RD`, `RF`) are genuinely absent from this folder rather than still
+hidden -- their retrievals are recorded in the database as sourced from
+other Drive folders/batches -- so this folder is now treated as
+exhaustively reconciled, running total 1,036 unique PDFs ever seen in it
+across all three passes.
+
+**All 23 of this batch's records are wrong_file_retrieved -- a complete
+wash**, continuing the systemic low-confidence-matching pattern already
+disclosed (see the Batch 237 entry). Two records received special
+attention because their targets closely mirror papers already wrong-
+flagged under different record_ids in Batch 238 (`R3C453AC209FD`, target
+Carrera 2015 "Sanitation and social power in the United States", mirrors
+`RCF2C8A8C45DD`'s Carrera 2014 target; `R2A9751DFEE49`, target Stopnitzky
+2012 "Household Sanitation, Social Norms, and Public Policy in India",
+mirrors `RBFC70108EBEE`'s Stopnitzky 2013 target) -- both were read
+carefully and confirmed to be second, independent wrong deliveries, not
+the correct paper resurfacing under a duplicate record_id: four wrong
+files across four record_ids now exist for these two targets, with no
+correct copy found yet for either. Two other deliveries in this batch
+were not research papers at all: a Canadian law-firm client letter about
+an Ontario corporate share reorganization (`R144A499B49EF`), and an
+Ontario Superior Court of Justice real-estate-contract decision
+(`R25CA44C49907`) -- both mistakenly harvested and self-labeled
+"verified" by the delivery tool, the same failure mode already documented,
+now confirmed to extend to non-academic document types as well.
+
+`extraction_database.csv`/`evidence_map.csv`/`effect_sizes.csv` unchanged
+(no includes this batch); `exclusion_log.csv` unchanged (no excludes);
+duplicate audit (exact-DOI + study_id) found no new duplicates;
+`full_text_retrieval_queue.csv` regenerated (1,383 open records,
+unchanged count -- only per-record status fields updated); schema
+validation re-run clean (13/13).
+
+Running totals: 2,276/3,659 screened (1,162 include/1,114 exclude),
+1,383 open (including 182 wrong_file_retrieved, up from 159), 1,162
+extracted studies, 61 effect_sizes rows.
+
+## 2026-09-28 — Two-hundred-thirty-eighth full-text screening batch (50 records, 7 includes, 0 excludes, 41 wrong_file_retrieved, 2 left undecided) — the "Sep 26 2026" delivery folder confirmed to be continuously growing, not a one-time drop; two genuine quantitative access-outcome effect sizes added
 
 A second reconciliation pass on the same "Sep 26 2026" Drive folder (see
 the prior entry below) found 967 unique physical files now present --
