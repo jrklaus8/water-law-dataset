@@ -4,7 +4,54 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — full currency pass over PRISMA_WORKFLOW.md's remaining phase rows
+## 2026-09-28 (latest) — title/author-similarity duplicate audit: closes the DOI audit's own disclosed gap, zero live double-counting confirmed
+
+Follow-up to the DOI-variant audit (below), which explicitly named its own limit: a DOI-only
+method cannot catch a same-paper duplicate indexed under two unrelated or absent DOIs. Ran a
+title/author-similarity pass across the same full 27,481-record `deduplicated_records.csv`
+pool: exact-normalized-title matching (165 duplicate-title groups) plus year-blocked Jaccard
+near-duplicate matching at a 0.75 threshold (125 further candidate pairs) -- 290 candidates
+total, categorized in full rather than left as a bare count in
+`01_search/deduplicated/title_author_duplicate_audit_2026-09-28.md`.
+
+**Central finding: zero live double-counting**, checked exhaustively across all 290 candidates
+against `full_text_screening_database.csv`'s `final_decision` field -- no group has two or more
+members both currently `include`. The 1,162 included, extracted studies do not double-count any
+paper this audit can detect.
+
+**What the 290 candidates actually are, categorized:**
+- **5 records (3 distinct papers)** are probable duplicates of an already-included study, sitting
+  among the 1,383 "permanently unretrieved" records rather than genuinely lost evidence: Coville
+  et al.'s Nairobi financing paper (S879, 2 further un-retrieved indexings), Taing's South
+  African sanitation-case paper (1 further un-retrieved indexing), and McCullough's "Square Peg,
+  Round Hole" dissertation (2 further un-retrieved indexings under a differently-worded title).
+  Each of these 5 records' `notes` field in `full_text_screening_database.csv` was annotated
+  (not the `full_text_status`/decision fields, since none of the 5 was ever actually retrieved
+  and directly compared -- the match is title/author only) to disclose the probable duplication.
+  3659 rows unchanged; `code/analysis/validate_schemas.py` re-run clean.
+- **2 clusters were already correctly resolved via E08 exclusion** at the full-text screening
+  stage, months before this audit ran: the already-documented West Bank water-trucking case
+  (confirmed independently here), and a newly-surfaced fifth known case -- Thapa et al.'s
+  PAMSIMAS Indonesia governance paper -- found only by this title-based method since its
+  duplicate record carries no DOI at all.
+- **9 exact-title matches pair an inert `WebSearch(general)` exploratory-pilot record** (never
+  counted toward the systematic search, per `PRISMA_WORKFLOW.md` S3) against the real
+  systematically-retrieved record for the same paper; confirmed the pilot records were never
+  screened (blank `title_abstract_decision`), so no operational effect.
+- **~15 groups are recurring generic section-header titles** ("Introduction," "Discussion,"
+  "Editorial," "Bibliography," etc.) shared by unrelated books/journal issues -- confirmed false
+  positives, not duplicates.
+- **A recurring pattern of periodic market-research/financial-news report series** (SWOT
+  reports, company capsules, dividend-announcement wires) republished under an identical title
+  each cycle -- a real, disclosed characteristic of this corpus's grey-literature component, not
+  duplicate indexing; none reached title/abstract inclusion.
+- **The remainder** are genuine same-paper duplicates where neither copy has yet reached
+  `include` -- not operationally relevant, mostly sitting among the 1,383 unretrieved already.
+
+`README.md`'s "Known limitations" item 7 updated from "at least four" to "at least five" known
+duplicate-`record_id` cases, and "How to continue" item 4 updated to point to both audits.
+
+## 2026-09-28 (earlier) — full currency pass over PRISMA_WORKFLOW.md's remaining phase rows
 
 Extends the documentation sweep already run for Phases 9 and 13 to every other row in the
 16-phase table plus the "Current phase" summary line and the closing Phases-10/11/13 narrative

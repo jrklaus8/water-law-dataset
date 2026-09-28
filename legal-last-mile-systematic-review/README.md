@@ -89,30 +89,45 @@ explained in full further down; this is the index.
    honestly "Can't tell"/"not assessable" rather than a real judgement. See
    `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for the full
    account of what this does and does not mean for synthesis confidence.
-7. **At least four known cases of the same paper being assigned two
-   different `record_id`s exist**, caused by DOI-formatting variants across
-   different search-database exports of the same article (e.g. a trailing
-   volume/year fragment appended to one export's DOI field but not the
-   other's, or a publisher's open-access-version DOI suffix). Two were
+7. **At least five known cases of the same paper being assigned two
+   different `record_id`s exist**, caused by DOI-formatting variants or
+   independent cross-database re-indexing of the same article (e.g. a
+   trailing volume/year fragment appended to one export's DOI field but
+   not the other's, a publisher's open-access-version DOI suffix, or
+   ProQuest/Sociological Abstracts re-indexing a Scopus record under a
+   shortened or reworded title with no DOI at all). Two were
    caught during a 2026-09-16 post-hoc duplicate audit (`S227`, `S399` —
    see `CHANGELOG.md`); a third was caught 2026-09-27 while matching
    studies to reviewer confirmations (see **Chronological workflow → 5**,
-   "S063"); a fourth — `R6ABD0B221622`/`RD9FA1D5723A2`, the West Bank
-   water-trucking governance paper, Cesari et al. — was already correctly
-   caught and resolved at the full-text screening stage, and was confirmed
-   (not newly found) by a dedicated DOI-variant audit run 2026-09-28 across
-   the **full 27,481-record pool**, not just the extracted subset —
-   `01_search/deduplicated/doi_variant_duplicate_audit_2026-09-28.md`. That
-   audit found no further unresolved duplicates (0 exact-match groups; 40
-   prefix-match candidates, of which ~36 were false positives from the
-   method itself — book/chapter DOI hierarchies and coincidental numeric-
-   suffix collisions, both disclosed in the audit file rather than
-   filtered silently — and the remaining 4 were the two already-known cases
-   counted above). This narrows, but does not eliminate, the uncertainty
-   this bullet originally flagged: the audit is DOI-based only and would
-   not catch a same-paper duplicate indexed under two entirely different
-   DOIs (e.g. a preprint vs. a final-publication DOI) — see that file's
-   "What this audit does not do" for the exact limits.
+   "S063"); a fourth (`R6ABD0B221622`/`RD9FA1D5723A2`, the West Bank
+   water-trucking governance paper, Cesari et al.) and a fifth
+   (`RC41D17900D05`/`R346D1BF8F31D`, the PAMSIMAS Indonesia governance
+   paper, Thapa et al.) were both already correctly caught and resolved at
+   the full-text screening stage, and were confirmed (not newly found) by
+   two dedicated audits run 2026-09-28 across the **full 27,481-record
+   pool**, not just the extracted subset:
+   `01_search/deduplicated/doi_variant_duplicate_audit_2026-09-28.md`
+   (DOI-based; found no further unresolved duplicates — 0 exact-match
+   groups, 40 prefix-match candidates, ~36 false positives from book/
+   chapter DOI hierarchies and numeric-suffix collisions, the rest the
+   already-known cases) and
+   `01_search/deduplicated/title_author_duplicate_audit_2026-09-28.md`
+   (title/author-similarity-based, to catch what the DOI method structurally
+   cannot — a same-paper duplicate under two unrelated or absent DOIs; 290
+   candidate groups checked, **zero currently reflect live double-counting**
+   in the 1,162 included studies, and the fifth case above — with no DOI on
+   one side — was found only by this second method). That second audit also
+   surfaced, and disclosed via a `notes`-field annotation rather than a
+   status change, 5 further records (3 distinct papers) that sit among the
+   1,383 "permanently unretrieved" records but are probable duplicates of an
+   already-included study — meaning a small number of that 1,383 figure
+   represents no additional lost evidence, a positive nuance not previously
+   stated anywhere in this project's documentation. This narrows, but does
+   not eliminate, the uncertainty this bullet originally flagged — see each
+   audit file's own "What this audit does not do" for the exact limits that
+   remain (most importantly: neither method touches the 1,162 included
+   studies' own reference lists, and a substantially reworded title/absent
+   author match would still slip through both).
 8. **Several governing documents in this repository had status sections
    that drifted significantly out of date and should not always be read as
    current without checking.** `PRISMA_WORKFLOW.md`'s Phase 6+ entries are
@@ -1079,9 +1094,17 @@ In roughly this order, for whoever picks this up next:
    `01_search/deduplicated/doi_variant_duplicate_audit_2026-09-28.md` for
    the full account, including what this DOI-only method would still miss
    (e.g. a same-paper duplicate under two unrelated DOIs, like a preprint
-   vs. final-publication pair) — a fuzzy title/author-similarity pass
-   across all 27,481 records remains a real, larger, not-yet-done
-   follow-up if more confidence is needed here.
+   vs. final-publication pair). **That follow-up is also done, same day** —
+   `01_search/deduplicated/title_author_duplicate_audit_2026-09-28.md` ran a
+   title/author-similarity pass (exact-normalized-title plus Jaccard
+   near-duplicate matching) across the same full pool, found 290 candidate
+   groups, and confirmed **zero currently reflect live double-counting** in
+   the 1,162 included studies — while surfacing a fifth known duplicate
+   case (see **Known limitations → 7**) and 5 further unretrieved records
+   that are probable duplicates of an already-included study, now annotated
+   in `full_text_screening_database.csv` rather than left to look like
+   unqualified lost evidence. See that file's own "What this audit does not
+   do" for what even this second method would still miss.
 5. **Phase 11 is done** (2026-09-28,
    `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`)
    — no family clears the bar for meta-analysis — **and, as of the same
