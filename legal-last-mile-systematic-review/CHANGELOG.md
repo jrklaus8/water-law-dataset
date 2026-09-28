@@ -4,7 +4,50 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — 5 ambiguous AMSTAR2 flags and the JBI Cohort question resolved
+## 2026-09-28 (latest) — both reassignment queues closed (26 + 14 = 40 studies); one false flag caught and corrected
+
+Closing tasks #13 and #14, the two reassignment queues opened while
+preparing today's JBI Cross-Sectional and MMAT batches -- see
+`04_quality/appraisal_forms/reassignment_batch_2026-09-28.md`.
+
+**26 mistagged-as-JBI (qualitative, not cross-sectional):** 19
+genuinely qualitative -> CASP Qualitative (S403, S410, S412, S414, S415,
+S416, S417, S419, S420, S424, S431, S433, S441, S446, S447, S451, S456,
+S459, S460); 6 documentary/policy analyses -> Legal Institutional
+Evidence Appraisal Framework (S425, S444, S455, S457, S458, S465); 1
+with a genuine quantitative component too -> MMAT (S461).
+
+**14 mistagged-as-MMAT (not genuinely mixed-methods):** 11 purely
+quantitative -> JBI Cross-Sectional (S150, S422, S423, S426, S428, S432,
+S452, S454, S467, S619, S1153); 1 documentary case study -> Legal
+Framework (S409); 1 genuinely qualitative -> CASP (S421); and **1 false
+flag caught and corrected**: S494 was originally flagged suspect
+because the MMAT batch's quantitative-signal regex missed "standardized
+indicator scoring" as a real quantitative signal -- on reconsideration,
+combined with its "stakeholder interviews" component, it is genuinely
+mixed-methods after all. Returned to MMAT rather than left reassigned
+on a technicality.
+
+All 40 appraised immediately under their corrected tool, using each
+tool's rule-based method already established earlier today.
+
+**Important scope note, stated plainly rather than implied:** closing
+these queues does not mean every study in the corpus now has a
+`risk_of_bias_rating`. The 425 studies confirmed as genuinely belonging
+under the Legal Institutional Evidence Appraisal Framework (today's
+earlier design audit) were only classified, not individually rated --
+tracked as a new task (#15). What today's full run of risk-of-bias
+batches does establish: every one of the 1,162 extracted studies now has
+a correctly classified `risk_of_bias_tool`, and every study actually
+appraised today carries an honest rating -- a real judgement, an
+explicit "Not ratable"/"Can't tell"-heavy verdict, or a `NONE` flag
+naming a genuine tooling gap -- never a fabricated one.
+
+`03_extraction/extracted_data/extraction_database.csv`: 40
+`risk_of_bias_tool` cells corrected and 40 `risk_of_bias_rating` cells
+populated. Row count verified unchanged at 1,162.
+
+## 2026-09-28 (earlier) — 5 ambiguous AMSTAR2 flags and the JBI Cohort question resolved
 
 Closing two small open items from earlier today's audits.
 

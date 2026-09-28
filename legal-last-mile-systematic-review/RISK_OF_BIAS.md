@@ -342,8 +342,31 @@ ambiguous AMSTAR2 flags, each was independently re-checked once more:
 - **S344, S350** (queued from the CASP batch's reclassification) rated
   the same way.
 
-What remains open, tracked in the session's task list: the 26 + 14 = 40
-reassignment-pending studies found during the JBI and MMAT batches,
-completing the original 2026-09-16 partial pilots, writing the
-RISK_OF_BIAS.md §3 cross-cutting evidence-limitations narrative, and a
-final documentation sweep.
+**2026-09-28, later still — both reassignment queues (26 + 14 = 40
+studies) closed.** See
+`04_quality/appraisal_forms/reassignment_batch_2026-09-28.md`. Of the 26
+mistagged-as-JBI studies: 19 were genuinely qualitative (→ CASP), 6 were
+documentary/policy analyses (→ Legal Framework), 1 had a real
+quantitative component too (→ MMAT). Of the 14 mistagged-as-MMAT
+studies: 11 were purely quantitative (→ JBI Cross-Sectional), 1 was a
+documentary case study (→ Legal Framework), 1 was genuinely qualitative
+(→ CASP), and 1 (S494) was a **false flag** — its "standardized
+indicator scoring" component was missed by an over-narrow
+quantitative-signal check in the original MMAT batch, and on
+reconsideration it is genuinely mixed-methods after all; returned to
+MMAT rather than left reassigned on a technicality. All 40 appraised
+immediately under their corrected tool.
+
+**This does not mean every study in the corpus now has a
+`risk_of_bias_rating`** — the 425 studies confirmed as genuinely
+Legal-Framework-appropriate (the design audit earlier today) were only
+classified, not individually rated, and remain open work. What today's
+full run of batches does mean: every study now has a correctly
+classified `risk_of_bias_tool`, and every study actually appraised today
+has an honest rating, never a fabricated one.
+
+What remains open, tracked in the session's task list: completing the
+original 2026-09-16 partial pilots, individually rating the 425
+confirmed Legal-Framework studies, writing the RISK_OF_BIAS.md §3
+cross-cutting evidence-limitations narrative, and a final documentation
+sweep.
