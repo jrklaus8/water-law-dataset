@@ -6760,6 +6760,43 @@ evidence of anything.
   1,390 open (including 118 wrong_file_retrieved), 1,155 extracted
   studies, 59 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Two-hundred-thirty-eighth batch (50 records, 2026-09-28), a second
+  reconciliation pass on the same "Sep 26 2026" folder found 967 unique
+  files (193 more than the 774 already accounted for), confirming the
+  delivery process is continuously adding files, not a one-time drop.**
+  870 already-decided duplicates moved to Processed; 43 re-appearances of
+  already-flagged wrong_file records moved to the "wrong_file records"
+  folder (by database status only); 50 genuinely new open records
+  screened here. Behnke et al. 2020 (WASH/environmental-health scoping
+  review in protracted displacement, S1158), de Lima et al. 2026 (ESG
+  strategies for a fiscally-constrained Brazilian sanitation utility,
+  S1159), Ananga 2015 (community participation in Kisumu NGO water
+  schemes -- genuine logistic regression but on a satisfaction/hygiene
+  outcome, not access, so no effect size, S1160), Ikeda 2024 (Florianopolis
+  dam-rupture disaster-governance case study, S1161), and Kurian &
+  McCarney eds. 2010 (peri-urban WSS comparative case-study volume, S1164)
+  -- all **INCLUDE**, qualitative. Two genuine quantitative access-outcome
+  studies also included: Subramanyam 2020 (multilevel regression, 3,547
+  Indian urban local governments; local-government administrative
+  category significantly predicts water-coverage growth, -4.062 to -5.432
+  percentage points depending on category, p<0.05-0.01; **Family C**,
+  S1162) and Cronk et al. 2021 (multilevel logistic regression, 2,677
+  rural schools, 14 LMICs; external WaSH-program funding significantly
+  predicts basic on-premises water service, OR=1.4, p=0.021; **Family B**,
+  S1163). 41 wrong_file_retrieved. 2 left undecided per the partial/
+  unusable-extraction rule: R0908697F9FE5 (empty extraction, confirmed a
+  second time) and RBEDB6556B711 (Olmstead 2004 "Thirsty Colonias" --
+  bibliographic front matter confirmed exactly, but body text was only
+  JSTOR boilerplate, no substantive content recoverable).
+  `extraction_database.csv`/`evidence_map.csv` updated (S1158-S1164, 1,155
+  → 1,162 rows each); `effect_sizes.csv` updated (59 → 61 rows -- S1162
+  Family C, S1163 Family B); `exclusion_log.csv` unchanged (1,114 rows);
+  duplicate audit found no new duplicates; `full_text_retrieval_queue.csv`
+  regenerated (1,383 open records); schema validation re-run clean.
+  Running totals: 2,276/3,659 screened (1,162 include/1,114 exclude),
+  1,383 open (including 159 wrong_file_retrieved), 1,162 extracted
+  studies, 61 effect_sizes rows. Full detail in `CHANGELOG.md`.
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

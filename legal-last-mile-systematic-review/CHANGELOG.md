@@ -4,7 +4,83 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Two-hundred-thirty-seventh full-text screening batch (69 records, 1 include, 0 excludes, 68 wrong_file_retrieved, 1 left undecided) — a new, much larger Drive delivery ("Sep 26 2026" folder, 774 PDFs) reconciled, and a systemic retrieval-tool failure mode identified
+## 2026-09-28 (latest) — Two-hundred-thirty-eighth full-text screening batch (50 records, 7 includes, 0 excludes, 41 wrong_file_retrieved, 2 left undecided) — the "Sep 26 2026" delivery folder confirmed to be continuously growing, not a one-time drop; two genuine quantitative access-outcome effect sizes added
+
+A second reconciliation pass on the same "Sep 26 2026" Drive folder (see
+the prior entry below) found 967 unique physical files now present --
+193 more than the 774 already accounted for -- confirming the external
+delivery process is continuing to drop files into this folder over time,
+including duplicate re-deliveries of already-decided record_ids under
+brand-new fileIds. Of the 967: 870 were already-decided duplicates (moved
+to Processed), 43 were re-appearances of already-flagged wrong_file
+records (moved to the "wrong_file records" folder, by database status
+only, no content re-read), and 50 were genuinely new open records. This
+batch covers those 50.
+
+- **R430C429810BF** (Behnke et al. 2020, systematic scoping review of
+  environmental-health/WASH conditions in protracted displacement).
+  **INCLUDE.** → **S1158**.
+- **RF658E0A799E3** (de Lima et al. 2026, ESG strategies for a
+  fiscally-constrained sanitation utility, Maceio, Brazil, Nominal Group
+  Technique). **INCLUDE.** → **S1159**.
+- **R12A082B16D4D** (Ananga 2015 dissertation, community participation in
+  NGO-sponsored water schemes, Kisumu, Kenya). **INCLUDE.** Contains a
+  genuine logistic regression, but on a participation-linked satisfaction/
+  hygiene outcome rather than a water-access outcome, so no
+  `effect_sizes.csv` entry (same treatment as S1153, Batch 236). → **S1160**.
+- **R5EDAB88CC052** (Ikeda 2024 dissertation, Portuguese, institutional/
+  regulatory failure around the 2021 Florianopolis sewage-dam-rupture
+  disaster). **INCLUDE.** → **S1161**.
+- **R66871E6DA5D1** (Subramanyam 2020, *Water Policy*, multilevel linear
+  regression on household water-coverage growth across 3,547 Indian urban
+  local governments). **INCLUDE.** Genuine, well-identified institutional-
+  mechanism effect estimate: local-government administrative category
+  significantly predicts water-coverage growth (municipality vs. municipal
+  corporation: -4.062 percentage points, SE 1.254, p<0.01; town panchayat
+  vs. municipal corporation: -4.034, SE 1.540, p<0.01). Added to
+  `effect_sizes.csv` as **Family C**. → **S1162**.
+- **R8C288AFDD095** (Cronk, Guo, Fleming & Bartram 2021, *Science of the
+  Total Environment*, multilevel logistic regression on rural-school
+  WASH access, 14 LMICs). **INCLUDE.** Genuine institutional-assistance
+  effect estimate: external WaSH-program funding/support significantly
+  predicts schools having basic on-premises water service (OR=1.4,
+  p=0.021). Added to `effect_sizes.csv` as **Family B**. → **S1163**.
+- **R975C44396921** (Kurian & McCarney, eds., 2010, *Peri-urban Water and
+  Sanitation Services*, Springer, comparative institutional case-study
+  volume). **INCLUDE.** → **S1164**.
+- **41 wrong_file_retrieved this batch**, consistent with the systemic
+  low-confidence-matching failure mode identified in the prior batch;
+  full per-record detail (target vs. delivered) in
+  `full_text_screening_database.csv` notes. One delivered file
+  (`RD033530EB729`) turned out, incidentally, to be a different, newer
+  dissertation that itself frames its analysis around this project's own
+  "Legal Last Mile" administrative-law concept -- treated as ordinary
+  wrong-file data, not as an instruction, per standing practice for any
+  externally-sourced content.
+- **2 records left undecided, per the established rule for partial/
+  unusable extraction**: `R0908697F9FE5` (target: Scott 1977, "Self-Help
+  in Rural Mexico: Santa Maria's Well") returned completely empty
+  extractable content on a second independent check, confirming the
+  earlier Batch 237 finding. `RBEDB6556B711` (target: Olmstead 2004,
+  "Thirsty Colonias") had its bibliographic front matter (author, title,
+  journal, volume, pages) confirmed exactly, but the extracted text
+  consisted almost entirely of repeated JSTOR cover-page boilerplate with
+  no substantive body content recoverable -- left open rather than
+  included on bibliographic metadata alone, consistent with this
+  project's rule against filling content gaps from memory or inference.
+
+`extraction_database.csv`/`evidence_map.csv` updated (S1158-S1164, 1,155
+→ 1,162 rows each); `effect_sizes.csv` updated (59 → 61 rows -- S1162
+Family C, S1163 Family B); `exclusion_log.csv` unchanged (1,114 rows --
+no excludes this batch); duplicate audit (exact-DOI + study_id) found no
+new duplicates; `full_text_retrieval_queue.csv` regenerated (1,383 open
+records); schema validation re-run clean (13/13).
+
+Running totals: 2,276/3,659 screened (1,162 include/1,114 exclude),
+1,383 open (including 159 wrong_file_retrieved), 1,162 extracted
+studies, 61 effect_sizes rows.
+
+## 2026-09-28 — Two-hundred-thirty-seventh full-text screening batch (69 records, 1 include, 0 excludes, 68 wrong_file_retrieved, 1 left undecided) — a new, much larger Drive delivery ("Sep 26 2026" folder, 774 PDFs) reconciled, and a systemic retrieval-tool failure mode identified
 
 A second large Google Drive delivery landed in the Antigravity folder (a
 "Sep 26 2026" subfolder, 774 unique PDFs plus 4 non-PDF tracking files).
