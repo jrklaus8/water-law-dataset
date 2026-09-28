@@ -12,7 +12,7 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
-### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf)
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [Systematic Review (companion project)](legal-last-mile-systematic-review/README.md)
 
 > **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
@@ -256,9 +256,38 @@ The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII 
 
 ## Companion Project: Systematic Review
 
+**➡️ [Read the full systematic review here](legal-last-mile-systematic-review/README.md)**
+
 [`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/) is a separate, companion research project in this repository: a systematic review (with contingent, restricted meta-analysis) of the *household-level* empirical literature on legal and administrative barriers to water and sanitation access. It is deliberately **not** merged with the judicial dataset above — litigation is a selected pathway, not a representative sample of administrative exclusion, so the two evidence bases are kept separate and only triangulated.
 
-As of 2026-09-12: the search is closed and deduplicated (27,481 unique candidate records), title/abstract screening is complete and double-reviewed (3,659 studies to full-text screen), full-text screening is live (131 assessed so far), and full extraction against a 92-field codebook is essentially caught up with screening (62 studies fully extracted). Every step — including its disclosed limitations, such as an early search-phase closure and a still-blank risk-of-bias rating pending the correct appraisal instruments — is documented in detail in its own [`README.md`](legal-last-mile-systematic-review/README.md), written as a standalone methodological walkthrough for anyone continuing or auditing this work.
+**Status as of 2026-09-28** (both the database search and full-text
+retrieval are now closed by researcher decision — see below):
+
+| Stage | Status |
+|---|---|
+| Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique after deduplication |
+| Title/abstract screening | Complete, double-reviewed: 3,659 include / 6 exclude, zero conflicts |
+| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,276 of 3,659 records actually screened (62.2%) — **1,162 include / 1,114 exclude**; 1,383 permanently unretrieved |
+| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,162 studies extracted |
+| Risk-of-bias appraisal | Design-matched tool assigned to 1,116 of 1,162 studies; only 33 have an actual completed rating |
+| Evidence classification | Caught up with extraction: 248 studies quantitative-synthesis-eligible, 1,062 qualitative-synthesis-eligible |
+| Quantitative synthesis | 61 effect-size estimates extracted; **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work |
+
+This is an unusually large and comprehensive systematic review for its
+fields (administrative law, comparative law, sociolegal studies), closed
+on the researcher's own judgment that the corpus is sufficient — not a
+claim of exhaustive retrieval. Every figure above, and every material
+limitation and irregularity behind it — a caught-and-fixed multi-agent
+data-corruption incident, an unusually high 99.8% inter-reviewer
+agreement rate that was flagged and confirmed rather than treated as
+routine, known duplicate-record cases from cross-database DOI-formatting
+drift, a named systemic PDF-delivery-tool failure mode, and the exact
+terms of both phase closures — is documented in full, without
+simplification, in the project's own
+[`README.md`](legal-last-mile-systematic-review/README.md). That document
+is written as a standalone audit record for anyone continuing or
+reviewing this work, not a summary for display, and is the place to start
+before opening any other file in that folder.
 
 ---
 
