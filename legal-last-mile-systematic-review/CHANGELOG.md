@@ -4,7 +4,49 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — title/author-similarity duplicate audit: closes the DOI audit's own disclosed gap, zero live double-counting confirmed
+## 2026-09-28 (latest) — effect_sizes.csv re-mining pass: one genuine addition (S348) found, 186 confirmed correctly unpromoted
+
+PDFs supplied earlier in this project were session-ephemeral chat uploads and are not available
+in this environment, so full-text re-mining is not possible. This pass instead re-examines
+quantitative content *already captured* in `extraction_database.csv`'s own fields during the
+original extraction work, checking whether any of it should have been, but was not, promoted
+into `effect_sizes.csv`.
+
+248 studies are flagged `quantitative_synthesis_eligible` in `evidence_map.csv`. 61 already had
+an `effect_sizes.csv` row. **All 187 of the remaining 187 had a non-blank `effect_estimate` in
+`extraction_database.csv` but no `effect_sizes.csv` row** (61+187=248 exactly). Filtered to
+genuine candidates via a disclosed, conservative rule (`effect_measure`/`model_type` containing
+a real statistical-method keyword, `adjusted_or_unadjusted = adjusted`, non-blank `covariates`)
+-- the same three properties the existing 61 rows overwhelmingly share. **This returned exactly
+4 candidates.**
+
+Of the 4: **S348** (Andrews, Beynon & Baafi 2025, Ghana local-government infrastructure access)
+is a genuine miss -- a real adjusted hierarchical multivariate regression on governance-quality
+district clusters, isolating a governance-quality mechanism's effect on water/sanitation/
+electricity access -- now added to `effect_sizes.csv` (61 -> 62 rows; Family C 19 -> 20). The
+other 3 were correctly *not* added: **S006**'s own `extraction_note` already discloses an
+outcome-construct mismatch (a management-effectiveness binary, not a Family A/B/C access
+outcome); **S696** and **S1025** were already deliberately excluded with full reasoning recorded
+in their own `extraction_note` at extraction time (S696: the exposure is a moderator, not a
+clean Family A/B/C exposure; S1025: the specific coefficient was never confirmed with certainty
+-- this row's `effect_measure`/`effect_estimate`/`p_value` fields also contain the literal
+string `"TRUE"`, a pre-existing data artifact flagged but not corrected here, since fixing it
+needs the source text this environment lacks). See
+`06_outputs/supplementary/effect_sizes_remining_2026-09-28.md` for the full audit.
+
+**The result is mostly confirmatory**, and that is the finding worth recording: 187 candidates
+checked against the same bar as the existing 61 rows yielded only 1 genuine addition, with 3
+others already correctly excluded by name rather than silently dropped. The original extraction
+and promotion work was already disciplined.
+
+**Downstream updates**: `phase11_quantitative_feasibility_judgment.md` (counts: 62 total, Family
+C 20), `family_C_swim_synthesis_2026-09-28.md` (S348 added to the table, vote count updated to
+7 positive/9 negative/4 mixed of 20), and `README.md`'s status table, all updated. **This one
+addition does not change Phase 11's overall verdict** -- Family C still does not clear
+`ANALYSIS_PLAN.md` §2's bar for meta-analysis, and S348 tests its own distinct exposure with no
+comparable study yet in the corpus. `code/analysis/validate_schemas.py` re-run clean.
+
+## 2026-09-28 (earlier) — title/author-similarity duplicate audit: closes the DOI audit's own disclosed gap, zero live double-counting confirmed
 
 Follow-up to the DOI-variant audit (below), which explicitly named its own limit: a DOI-only
 method cannot catch a same-paper duplicate indexed under two unrelated or absent DOIs. Ran a

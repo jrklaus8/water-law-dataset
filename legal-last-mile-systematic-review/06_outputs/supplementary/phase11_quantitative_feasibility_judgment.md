@@ -13,7 +13,7 @@ reopens retrieval — see the caveat under "What this document does not do."
 
 ## 1. Data basis
 
-`effect_sizes.csv` holds **61 rows** as of this writing (S001–S1164
+`effect_sizes.csv` held **61 rows** as of this writing (S001–S1164
 extraction range). Family assignment, after one correction made as part
 of this pass (§5 below):
 
@@ -26,6 +26,14 @@ of this pass (§5 below):
 | **Total** | **61** |
 
 (Before this pass: 20/6/16/19. S749 moved from blank to C — see §5.)
+
+**Later updates, 2026-09-28: `effect_sizes.csv` now holds 62 rows.** The 9 blank rows §6 flagged
+as never evaluated were resolved (`phase11_blank_family_resolution_2026-09-28.md`: S470/S471
+corrected to C, 7 confirmed as reasoned non-fits), and a re-mining pass across the 187
+quantitative-eligible studies with an extracted-but-unpromoted effect estimate found exactly
+one genuine addition, S348 (`effect_sizes_remining_2026-09-28.md`). Current family counts: **A
+20 / B 6 / C 20 / blank-reasoned-non-fit 16 / total 62.** None of these changes affect §7's
+overall verdict below.
 
 ## 2. Method
 
@@ -185,6 +193,12 @@ Phase 13 SWiM write-up as the same broader mechanism family, not folded
 into it as a fourth comparable estimand.
 
 ### 5.2 The remaining 13 Family C studies
+
+**Now 16, after two later 2026-09-28 updates**: S470 and S471 were corrected in from blank
+(`phase11_blank_family_resolution_2026-09-28.md`), and S348 was added as a genuine new
+effect-size row (`effect_sizes_remining_2026-09-28.md`) — see the Family C SWiM synthesis
+(`family_C_swim_synthesis_2026-09-28.md`) for how all three are integrated into this family's
+presentation. The original 13 named below are left as this section's original scope.
 
 The other 13 studies (S174, S590, S593, S606, S631, S879, S947, S1032,
 S1062, S1136, S1143, S1146, S1162) each test a distinct
