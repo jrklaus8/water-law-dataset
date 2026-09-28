@@ -4,7 +4,41 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — cross-cutting evidence-limitations narrative written (RISK_OF_BIAS.md §3), superseding the 2026-09-16 placeholder
+## 2026-09-28 (latest) — final documentation sweep: README.md, PRISMA_WORKFLOW.md updated to reflect corpus-wide risk-of-bias completion
+
+`README.md` and `PRISMA_WORKFLOW.md` both carried multiple sections
+describing risk-of-bias appraisal as barely started or blocked -- accurate
+when written, badly stale after today's corpus-wide completion (see the
+2026-09-28 entries below and `RISK_OF_BIAS.md` §4). This pass updates every
+such reference rather than leaving them to mislead a future reader:
+
+- `README.md`: the top-line status paragraph, "Known limitations" item 6
+  (rewritten) plus a new item 15 documenting the full 2026-09-28 sequence,
+  the "Current project status" table's risk-of-bias row, the "Risk-of-bias
+  appraisal is real but thin" subsection (retitled and rewritten), the
+  "Risk-of-bias ratings are mostly still blank" chronological entry
+  (left as written, with a dated pointer appended -- it accurately
+  describes the review's state through 2026-09-27), the stale-documentation
+  warning's `RISK_OF_BIAS.md` §4 bullet (now correctly says that document
+  is current), the "which files are authoritative" table row, the
+  "Human and AI involvement" section's two risk-of-bias bullets, the
+  repository map's `04_quality/` line, and "How to continue this project"
+  items 3 and 7.
+- `PRISMA_WORKFLOW.md`: the Phase 9 table row, the "Current phase" summary
+  line, and the Phase 8/9 narrative paragraph each received an appended
+  2026-09-28 update note rather than having their original historical text
+  deleted -- consistent with this project's practice of preserving the
+  historical record rather than overwriting it.
+- `06_outputs/prisma/prisma_flow.md` was checked and contains no
+  risk-of-bias content (it only tracks the PRISMA flow-diagram screening
+  counts), so no change was needed there.
+
+This closes the task list opened for today's risk-of-bias execution: every
+study in the corpus now has a correctly classified `risk_of_bias_tool`
+and, where one applies, a `risk_of_bias_rating`, and every governing
+document that describes this phase's status now says so.
+
+## 2026-09-28 (earlier) — cross-cutting evidence-limitations narrative written (RISK_OF_BIAS.md §3), superseding the 2026-09-16 placeholder
 
 `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` is the
 first version of this file that can actually do what `RISK_OF_BIAS.md`

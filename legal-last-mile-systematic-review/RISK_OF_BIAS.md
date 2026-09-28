@@ -416,7 +416,13 @@ synthesis family (Family A/B/C all land at low-to-moderate confidence;
 nothing in today's ratings changes Phase 11's verdict that no family
 clears the bar for meta-analysis).
 
-What remains open, tracked in the session's task list: a final
-documentation sweep across README/PRISMA_WORKFLOW/prisma_flow.md to
-make sure every reference to risk-of-bias status across the repository
-reflects today's completed work.
+**2026-09-28, final — the documentation sweep is done.** Every
+risk-of-bias reference in `README.md` and `PRISMA_WORKFLOW.md` has been
+updated or annotated to reflect today's corpus-wide completion (see
+`CHANGELOG.md`'s final 2026-09-28 entry for the itemized list);
+`06_outputs/prisma/prisma_flow.md` was checked and needed no change, since
+it only tracks PRISMA flow-diagram screening counts. This closes the task
+list opened for today's execution: all 1,162 studies now carry a
+correctly classified `risk_of_bias_tool`, all 1,154 to which a tool
+applies carry a `risk_of_bias_rating`, and every governing document that
+describes this phase says so.
