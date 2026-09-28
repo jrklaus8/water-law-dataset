@@ -99,6 +99,25 @@ def compute():
     F['linked_partial'] = sum(r['same_underlying_data'] == 'partial' for r in links)
     F['distinct_studies_definite_links'] = len(ed) - F['linked_same_underlying_data_yes']
     F['distinct_studies_incl_partial_links'] = len(ed) - F['linked_same_underlying_data_yes'] - F['linked_partial']
+    # Jurisdiction coverage. `country` and `legal_system` are FREE TEXT, not controlled vocabularies (see DATA_DICTIONARY.md),
+    # so these are rule-based buckets, stated here so they can be challenged.
+    multi_re = re.compile(r'[;/&,]| and |multi|global|various|several|worldwide|international', re.I)
+    countries = [r['country'].strip() for r in ed]
+    single = Counter(c for c in countries if c and not multi_re.search(c))
+    F['country_single_name_studies'] = sum(single.values())
+    F['country_multi_or_regional_studies'] = sum(1 for c in countries if c and multi_re.search(c))
+    F['country_blank_studies'] = sum(1 for c in countries if not c)
+    F['country_top10_single_name'] = single.most_common(10)
+    F['country_distinct_single_name_values'] = len(single)
+    def legal_bucket(v):
+        v = v.strip().lower()
+        if not v:
+            return 'blank'
+        has_c, has_v = 'common' in v, 'civil' in v
+        if (has_c and has_v) or any(k in v for k in ('mixed', 'hybrid', 'pluralis', 'customary')):
+            return 'mixed / both / customary'
+        return 'common law' if has_c else 'civil law' if has_v else 'other'
+    F['legal_system_buckets'] = dict(sorted(Counter(legal_bucket(r['legal_system']) for r in ed).items()))
     n = len(ed)
     F['tool_share_pct'] = {k: round(100 * v / n, 1) for k, v in F['tools'].items()}
     return F
@@ -137,6 +156,10 @@ def render(F):
               f"Causal-capable designs (ROBINS-I + RoB 2): {F['causal_capable_designs']}. CASP + MMAT: {F['casp_plus_mmat']}; with Legal Framework: {F['casp_mmat_legal_framework']}. "
               f"JBI \"High concern\" (sparse extraction): {F['jbi_high_concern']} of {T.get('JBI Cross-Sectional', 0)}. "
               f"Legal Framework studies with legal_measurement_quality populated: {F['legal_framework_measurement_quality_populated']} of {T.get('Legal Framework', 0)}.",
+              "", "## Jurisdiction coverage (free-text fields; rule-based buckets, see current_figures.py)", "",
+              f"`country`: {F['country_single_name_studies']:,} studies name exactly one country, {F['country_multi_or_regional_studies']} name several countries or a region, "
+              f"{F['country_blank_studies']} are blank. Top single-country values: " + ", ".join(f"{k} {v}" for k, v in F['country_top10_single_name']) + ". "
+              f"`legal_system` buckets: " + ", ".join(f"{k} {v}" for k, v in F['legal_system_buckets'].items()) + ".",
               "", "## Effect sizes", "",
               f"{F['effect_size_rows']} rows ({F['effect_size_rows_from_eligible_studies']} from quantitative-synthesis-eligible studies, "
               f"{F['effect_size_rows_from_ineligible_studies']} from a study not flagged eligible); by family: " +

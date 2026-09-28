@@ -91,6 +91,15 @@ has(readme, f"E05 no\nempirical evidence {F['exclusion_by_code']['E05']}", 'E05 
 has(readme, f"E08 duplicate {F['exclusion_by_code']['E08']}", 'E08 count')
 has(readme, f"of {exc_n:,} total", 'exclusion total')
 has(readme, f"100 of {inc_n:,} current includes", 'reviewer_2 coverage')
+# README's full exclusion-reason breakdown ("E01 wrong topic 496 · E02 wrong population 34 ...") must match the exclusion log
+import re as _re
+_flat = _re.sub(r'\s+', ' ', text(readme))
+_m = _re.search(r'E01 wrong topic.*?E12 wrong study design \d+', _flat)
+check(bool(_m), 'README: exclusion-reason breakdown not found')
+if _m:
+    _got = {c: int(v) for c, v in _re.findall(r'(E\d\d)[^0-9·]*?(\d+)(?= ·|\.|$|\s·)', _m.group(0))}
+    for _code, _cnt in F['exclusion_by_code'].items():
+        check(_got.get(_code) == _cnt, f"README exclusion breakdown: {_code} is {_got.get(_code)}, data says {_cnt}")
 top_txt = (ROOT.parent / 'README.md').read_text(encoding='utf-8')
 for needle in (f"**{inc_n:,} include / {exc_n:,} exclude**", f"{n:,} studies extracted", f"all {F['tool_applicable']:,} to which one applies",
                f"{F['quantitative_synthesis_eligible']} studies quantitative-synthesis-eligible, {F['qualitative_synthesis_eligible']:,} qualitative"):
@@ -107,6 +116,14 @@ has(el_txt, f"| {T['CASP Qualitative']} | ", 'tool table CASP')
 has(el_txt, f"only {F['causal_capable_designs']} of {n:,} studies", 'causal-capable')
 has(el_txt, f"{F['legal_framework_measurement_quality_populated']} of the\n{T['Legal Framework']} Legal Framework studies", 'LF measurement quality')
 has(el_txt, f"{F['abstract_only_extractions']} of the {n:,}", 'abstract-only')
+lb = F['legal_system_buckets']
+has(el_txt, f"common law only {lb['common law']} ", 'legal-system common')
+has(el_txt, f"civil law only {lb['civil law']} ", 'legal-system civil')
+has(el_txt, f"mixed / both / customary {lb['mixed / both / customary']} ", 'legal-system mixed')
+has(el_txt, f"1,029 name exactly one country".replace('1,029', f"{F['country_single_name_studies']:,}"), 'country single-name count')
+has(el_txt, f"**{F['country_multi_or_regional_studies']} name several countries or a region", 'country multi count')
+for cname, cnt in F['country_top10_single_name'][:4]:
+    has(el_txt, f"{cname} {cnt} (", f'top country {cname}')
 has('RISK_OF_BIAS.md', f"Legal Framework {T['Legal Framework']}, NONE 12 (sum {n:,})", 'dated audit annotation figures')
 
 print(f"{passes} checks passed, {len(fails)} failed")

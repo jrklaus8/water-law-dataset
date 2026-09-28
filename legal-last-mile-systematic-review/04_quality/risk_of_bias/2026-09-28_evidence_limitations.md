@@ -80,16 +80,25 @@ finding that more data has since overturned.
 
 ## Coverage by jurisdiction / legal system
 
-Top countries (`country`, of 1,159): India 133 (11%), Brazil 87 (7.5%), South Africa 84 (7%),
+**Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
+vocabularies. Of the 1,159 studies, 1,029 name exactly one country, **122 name several countries or a region and are
+not counted under any single country below**, and 8 are blank; `legal_system` has hundreds of distinct strings
+(`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
+`code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
+that also appears in a multi-country study, and the "top countries" are shares of all 1,159 studies.
+
+Top single-country values: India 133 (11%), Brazil 87 (7.5%), South Africa 84 (7%),
 United States 71 (6%), Ghana 53 (5%), Kenya 49 (4%), Mexico 37 (3%), Indonesia 30 (3%),
-Nigeria 28 (2%), Bangladesh 27 (2%), with the remaining ~100 countries each contributing
+Nigeria 28 (2%), Bangladesh 27 (2%), with the remaining ~95 single-country values each contributing
 fewer. India, Brazil, and South Africa alone account for 26% of the corpus (an earlier draft said 25%, from summing rounded shares) — a shift from the
 366-study snapshot (Brazil/India/South Africa then led at 29% combined, in a different order),
 but the same underlying caution applies: any synthesis finding should be checked for whether
 it is really general or a small set of country literatures dressed as a general one.
 
-Legal-system coverage: common law (incl. variants) 651 (56%), civil law (incl. variants) 412
-(36%), mixed/hybrid/customary-overlay 66 (6%), blank 28 (2%). This is a real shift from the
+Legal-system coverage (rule-based buckets): common law only 546 (47%), civil law only 394 (34%),
+mixed / both / customary 188 (16%), blank 28 (2%), other 3. (An earlier draft of this paragraph quoted
+"common law 651 (56%), civil law 412 (36%), mixed 66 (6%)" from an undocumented bucketing that counted mixed
+entries under common law; the rules are now in code.) This is a real shift from the
 366-study snapshot's near-even common/civil split (41%/39%) toward common-law
 over-representation — worth flagging as a genuine change in corpus composition as full-text
 retrieval progressed, not an artifact of this appraisal pass. The disclosed search-strategy

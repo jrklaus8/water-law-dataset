@@ -18,6 +18,13 @@ class of error the audit kept finding (hand-typed figures going stale across doc
   quote the computed figures. Tested by deliberately breaking one figure: the check fails as intended. Historical dated documents
   are intentionally not checked.
 - `.github/workflows/verify-review-repository.yml` runs it on every push or pull request touching the project.
+- **Free-text jurisdiction fields disclosed.** Found while extending the verifier: `country` holds single names, multi-country
+  lists and free-text regions (122 of 1,159 studies name several countries or a region and were never counted under any single
+  country), and `legal_system` has hundreds of distinct strings, so the evidence-limitations note's country and legal-system
+  figures came from an undocumented bucketing (its "common law 651 / civil 412 / mixed 66" mixed entries under common law). Now
+  rule-based, in code, disclosed in the note and `DATA_DICTIONARY.md`: common law only 546, civil law only 394, mixed/both/customary
+  188, blank 28, other 3. Top single-country counts are unchanged. The verifier also checks the README's full exclusion-reason
+  breakdown against the exclusion log.
 - `AUDITING_GUIDE.md`: how to check the numbers, who did what (AI versus human), how to trace a study end to end, what already went
   wrong, how to challenge a result, what is not claimed. `00_admin/DECISIONS_AND_OPEN_ITEMS.md`: open decisions with
   recommendations, the judgment calls already made and where each is documented, what is unverified, and a backlog. The README now

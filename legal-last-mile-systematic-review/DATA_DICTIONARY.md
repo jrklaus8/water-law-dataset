@@ -151,6 +151,7 @@ header. Key type/format notes not obvious from the field name alone:
 | Field | Type | Notes |
 |---|---|---|
 | study_id | string | `S001`, `S002`, ... — stable once assigned, never reused |
+| country, legal_system | free text | **Not controlled vocabularies.** `country` holds single names, multi-country lists (`;`, `/`, `,`) and free-text regions (122 of 1,159 studies name several countries or a region; `Democratic Republic of Congo` and `... of the Congo` both occur); `legal_system` has hundreds of distinct strings. Any tabulation needs an explicit bucketing rule — the ones the project uses are in `code/analysis/current_figures.py` |
 | peer_reviewed | boolean | |
 | household_level, community_level, indigenous_population, migrant_population | boolean | |
 | eligibility, burden, discretion_accommodation, enforcement | boolean | top-level mechanism families |

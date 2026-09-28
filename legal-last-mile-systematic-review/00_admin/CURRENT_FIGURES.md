@@ -45,6 +45,10 @@ Method: the *earliest* tool keyword in `risk_of_bias_tool` decides (substring ma
 
 Tool-applicable studies (all tools except NONE): 1,147; unrated among them: 0. NONE studies: 12 (4 with an explicit NOT APPLICABLE note, 8 blank by design). Causal-capable designs (ROBINS-I + RoB 2): 68. CASP + MMAT: 468; with Legal Framework: 915. JBI "High concern" (sparse extraction): 59 of 140. Legal Framework studies with legal_measurement_quality populated: 389 of 447.
 
+## Jurisdiction coverage (free-text fields; rule-based buckets, see current_figures.py)
+
+`country`: 1,029 studies name exactly one country, 122 name several countries or a region, 8 are blank. Top single-country values: India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. `legal_system` buckets: blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
+
 ## Effect sizes
 
 62 rows (61 from quantitative-synthesis-eligible studies, 1 from a study not flagged eligible); by family: (none: reasoned non-fit) 16, A 20, B 6, C 20; rows pooled: 0.
