@@ -4,7 +4,62 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Full risk-of-bias execution begun: RoB 2 (5) and AMSTAR 2 (18) ratings completed; 148 of 573 Legal Framework-tagged studies reclassified after a systematic design audit
+## 2026-09-28 (latest) — ROBINS-I ratings completed for 63 studies; 9 more design corrections found while preparing the batch
+
+Continuing the same day's risk-of-bias execution (RoB 2, AMSTAR 2, and the
+Legal Framework audit logged below). Applied the official ROBINS-I
+template to the population handed down from that audit (29 originally
+tagged + 43 reclassified = 72 candidates), using a disclosed, rule-based
+batch methodology given the scale — see
+`04_quality/appraisal_forms/ROBINS-I_batch_2026-09-28.md` for the full
+method (how each of the 7 domains is assigned from `study_design`/
+`covariates` signals) and the complete 63-study results table.
+
+Before appraising, two more design problems surfaced and were fixed:
+
+- **8 studies reverted back to the Legal Framework** (S646, S659, S687,
+  S787, S832, S858, S927, S950): these had been reclassified to ROBINS-I
+  on a "longitudinal/panel" keyword match, but on individual review they
+  are single-case institutional/ethnographic histories with no designed
+  comparator arm at all — ROBINS-I structurally requires a target trial
+  with an intervention arm *and* a comparator arm, which these lack. They
+  are genuinely this framework's intended scope after all.
+- **S462 reverted to the Legal Framework** as the closer of two
+  imperfect fits: it is a multiobjective-optimization/scenario-simulation
+  study, not an empirical comparison of an observed intervention against
+  an observed comparator. `RISK_OF_BIAS.md` names no tool at all for
+  simulation/modelling studies — flagged as a real, small, disclosed
+  tooling gap, not resolved by this reversion.
+
+Of the 63 studies genuinely appraised: **54 land at Moderate overall, 9 at
+Serious** (S169, S235, S648, S665, S667, S837, S853, S869, S908 — studies
+with no documented covariate adjustment or quasi-experimental
+identification strategy, or documentary/case-study comparisons the
+instrument fits poorly even though a real comparator exists, e.g. S648's
+before/after privatization periods and S665's four-country comparison).
+None reach Low (the covariates-field-only evidence available never
+supports a confounding profile that strong) or Critical (no positive
+evidence of a fatal flaw was found for any study). Domain 7 (selective
+reporting) was deliberately excluded from every overall judgement rather
+than defaulted to "No information" for all 63, which would have silently
+swallowed the real, differentiated information in the other domains —
+flagged as genuinely unassessed corpus-wide, not assumed low-risk.
+
+Two classification bugs in the rule-based method itself were caught and
+fixed before finalizing: S1135 (a genuine quantitative ethnographic
+panel-survey) was initially mis-caught by a "documentary" keyword match
+on the phrase "institutional case study"; S462 (above) was caught the
+same way but turned out to need full reversion rather than a corrected
+in-batch rating.
+
+`03_extraction/extracted_data/extraction_database.csv`: 63
+`risk_of_bias_rating` cells populated (plus `confounding`,
+`selection_bias`, `measurement_bias`, `attrition`, `reporting_bias`); 9
+more `risk_of_bias_tool` reversions (8 to Legal Framework for no-comparator
+case studies, 1 for the simulation study). Row count verified unchanged
+at 1,162.
+
+## 2026-09-28 (earlier) — Full risk-of-bias execution begun: RoB 2 (5) and AMSTAR 2 (18) ratings completed; 148 of 573 Legal Framework-tagged studies reclassified after a systematic design audit
 
 The researcher instructed a complete execution of the risk-of-bias phase
 across the whole corpus, fully documented for future audit. Given the

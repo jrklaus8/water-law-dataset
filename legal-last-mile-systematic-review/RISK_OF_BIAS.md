@@ -225,15 +225,34 @@ explicit "cross-sectional" → JBI) found:
   fixed the tool assignment; the ratings themselves are the next phase
   of work (see `CHANGELOG.md`).
 
+**2026-09-28, later still — ROBINS-I ratings completed for 63 studies**,
+via a disclosed, rule-based batch methodology (not a full
+signalling-question read per study, given the scale) — see
+`04_quality/appraisal_forms/ROBINS-I_batch_2026-09-28.md` for the full
+method and results table. Two problems were caught and fixed while
+preparing this batch: 8 single-case longitudinal/ethnographic
+institutional histories (S646, S659, S687, S787, S832, S858, S927, S950)
+had been reclassified to ROBINS-I on a keyword match despite having no
+designed comparator arm at all, which ROBINS-I structurally requires —
+reverted back to the Legal Framework. S462 is a simulation/optimization
+study, not an empirical intervention-vs-comparator comparison — also
+reverted, flagging that `RISK_OF_BIAS.md` has no tool at all for
+simulation studies (a small, disclosed gap). Of the 63 genuinely
+appraised: 54 land at Moderate overall, 9 at Serious (mostly studies with
+no documented covariate adjustment or quasi-experimental identification
+strategy). None reach Low (the evidence available never supports a
+confounding profile strong enough) or Critical (no positive evidence of
+a fatal flaw was found). Domain 7 (selective reporting) was deliberately
+excluded from every overall judgement rather than defaulted to "No
+information" for all 63 — flagged as genuinely unassessed, not
+assumed low-risk.
+
 **Signaling-question-level ratings for the remaining populations (the
-now-72 ROBINS-I studies, the ~65 JBI Cross-Sectional studies, the ~53
-newly-tagged plus ~96 originally-tagged MMAT studies, and the ~230 CASP
-Qualitative studies) have not been produced yet.** These are the next,
-much larger phases of this work — the checklists themselves are large
-(RoB 2 cluster alone has 5 domains and ~25 signalling questions), and
-most of `extraction_database.csv`'s fields were built to capture the
-legal/institutional exposure-outcome data this review needs, not the
-study-conduct or methodology-reporting details (allocation concealment,
-duplicate screening, blinding, protocol registration, etc.) these
-instruments ask about — expect heavy, honest use of "No information"
-across most of the corpus, not a confirmed absence of bias.
+~65 JBI Cross-Sectional studies, the ~53 newly-tagged plus ~96
+originally-tagged MMAT studies, and the ~230 CASP Qualitative studies)
+have not been produced yet.** These are the next, much larger phases of
+this work — most of `extraction_database.csv`'s fields were built to
+capture the legal/institutional exposure-outcome data this review needs,
+not the study-conduct or methodology-reporting details these instruments
+ask about — expect heavy, honest use of "No information" across most of
+the corpus, not a confirmed absence of bias.
