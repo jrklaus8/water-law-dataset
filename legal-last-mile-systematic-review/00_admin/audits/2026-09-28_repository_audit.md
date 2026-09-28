@@ -43,6 +43,9 @@ carry annotation text naming a second tool and substring matching mis-buckets th
 | 11 | One-off scripts cited by `CHANGELOG.md` existed only in an ephemeral scratchpad; `title_dup_results.txt` was cited but not in the repo | Medium | **Fixed** (earliest work remains unarchivable — disclosed) |
 | 12 | Three `preliminary_*` outputs describe a 509-study snapshot with no superseded banner | Low | **Fixed** |
 | 13 | **Two papers were double-counted among the 1,162 included studies** (S233/S1008 and S299/S392); the earlier "zero live double-counting" conclusion was wrong | **High** | **Fixed — merged with the researcher's approval; 1,162 → 1,160** |
+| 14 | Extraction is per report, not per underlying study: 4 documented pairs share underlying data (2 fully, 2 partly), so "5 RoB 2 studies" are 4 trials; no machine-readable links existed | Medium | **Disclosed + linked (`linked_reports_2026-09-28.csv`); recount is a researcher decision** |
+| 15 | Family C SWiM said the ownership cluster spans "three countries" and "three independent studies"; it is two countries, and S526/S539 samples probably overlap | Medium | **Fixed (text)** |
+| 16 | No study↔record index existed (extraction database has no `record_id` column) | Low | **Fixed** (`study_record_map.csv`) |
 
 ### 1 and 2 — Wrong tool distribution and derived figures (fixed)
 
@@ -177,6 +180,55 @@ history), so the current decision is not attributed to a reviewer who did not ma
 untouched. Note that the kept S392 record has no `reviewer_1` and a stale `oa_page_candidate` status — one of
 the hygiene items in findings 9 and 10 — and was not altered beyond the merge note.
 
+### 14 — Reports versus studies (linked; recount is a researcher decision)
+
+`REPRODUCIBILITY.md` §6 requires that several reports of one underlying study be treated as one study and
+cross-referenced by `study_id`; the project instead extracted companion papers as separate rows (a precedent
+disclosed in S369's note) and recorded the relationship only in free-text notes. The audit gathered every
+explicit "companion / same trial / same fieldwork" statement and added inferred candidates (same author team +
+same country + same period) into `03_extraction/extracted_data/linked_reports_2026-09-28.csv`: **12 links, 8
+extractor-documented and 4 audit-inferred (marked low confidence, unverified against the source papers)**.
+Definitely the same underlying data: **S294/S366** (one cluster-randomised trial in rural DRC, two outcome
+reports) and **S097/S098** (one interview sample). Partly overlapping: S681/S682 (overlapping fieldwork) and
+S357/S369 (one programme, earlier vs later report). The rest are same-author-team pairs with distinct data
+(S008/S009, S541/S542, S761/S763, S794/S803) or inferred candidates (S526/S539, S175/S891, the Kooy & Bakker
+Jakarta papers). Consequences: the 1,160 rows are roughly **1,158 distinct studies on the definite links, 1,156
+counting the partial ones**, and the **5 RoB 2 "studies" are 4 trials** (S057, S085, S294/S366, S879). No
+linked pair has both members in `effect_sizes.csv` except the audit-inferred S526/S539. Cross-reference
+notes were appended to the six extraction rows of documented pairs that lacked them; **nothing was merged or
+recounted**, because unlike the exact duplicates in finding 13 these are different papers reporting different
+results, and how to treat them (collapse for counting, keep separate for extraction, link only) is a
+methods decision for the researcher.
+
+### 15 — Family C text errors and the S526/S539 independence question (fixed)
+
+The Family C synthesis said the ownership cluster (S526, S539, S749) spans "three different countries (US ×2,
+Brazil)" — it is two — and `phase11_pooling_feasibility_S526_S539_S749.md` called them "three independent
+studies in three different national contexts". Corrected in both. S526 (1,183–1,189 US utilities serving
+40,000+) and S539 (the 500 largest US community water systems) very probably sample overlapping utilities, so
+the ownership finding rests on two effectively independent samples (US, Brazil), not three; this is an
+inference from the extracted sample descriptions, disclosed as such. The cluster's "5 of 5 same direction"
+paragraph was also tempered (S471 attenuates to non-significance under full covariate adjustment; whether
+"mayor-led" is the more "accountable" structure is an interpretive reading; and it now says explicitly that this
+is a substantive judgment, consistent with the sign-versus-valence caution added earlier).
+
+### 16 — Study↔record index (fixed)
+
+`03_extraction/extracted_data/study_record_map.csv` links each of the 1,160 extraction rows to its screening
+`record_id` (992 by the record_id in the row's note, 122 by DOI, 41 by title, 5 by hand) — a bijection with the
+1,160 full-text includes — plus the two retired duplicates. The links were sanity-checked: all 30 low
+title-overlap cases were translated titles of the same paper, and the 27 year differences were ±1-year
+online-first/issue gaps apart from five same-title cases (e.g. S931's screening record says 2025 for a
+2010 chapter — a source-metadata error, not a wrong link).
+
+### Other sweeps that found nothing to fix
+
+Effect-size numeric consistency (no lower > upper, estimate outside CI, or negative SE among the few rows that
+carry them; only 4 rows have a CI and 6 an SE — the file is mostly free-text estimates by design); boolean-field
+formats in the extraction database (all `TRUE`/`FALSE`/blank; three `migrant_population` values carry annotation
+text and were left); no shared DOI across extraction rows; no shared journal+volume+page+year; the one blank
+`adjusted` value (S312) is genuinely unrecorded in the extraction and was not inferred.
+
 ### 11 — Provenance scripts (fixed, with a disclosed gap)
 
 542 scripts and two raw output files (6.0 MB) are archived in `code/provenance/` with a README that
@@ -213,6 +265,8 @@ earlier work has no surviving script, only `git log` and `CHANGELOG.md`.
 3. **S356** — retain as an abstract-level include, or treat as unretrieved (finding 10).
 4. Whether to require a sensitivity analysis excluding the 70 abstract-only extractions (71 at audit time) before any
    synthesis statement is published (finding 7).
+5. **Linked reports** (finding 14) — collapse, keep-and-link, or leave as is: S294/S366 and S097/S098 are the
+   same underlying data (1,158 distinct studies); adding S681/S682 and S357/S369 gives 1,156.
 
 Already on the researcher's earlier to-do list and unchanged by this audit: reviewer_2 human pass
 (100 of 1,162 confirmed), the `mechanism_family`/`outcome_family` taxonomy decision, OSF

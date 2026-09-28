@@ -198,7 +198,7 @@ product of an evidence base that is, by design and by the discipline's own natur
 by observational and qualitative work rather than by a large pool of directly comparable
 quasi-experimental studies.
 
-## Three further caveats surfaced by the 2026-09-28 audit
+## Four further caveats surfaced by the 2026-09-28 audit
 
 **1. Some appraisals rest on abstract- or metadata-level extraction only.** 70 of the 1,160
 studies (6.0%) carry an `extraction_note` stating they were extracted from the published
@@ -228,3 +228,14 @@ Legal Framework row. Neither pair contributed an `effect_sizes.csv` row, so no s
 (`00_admin/audits/2026-09-28_repository_audit.md`, finding 13). This kind of duplicate — same paper,
 different-language titles, blank DOI — remains undetectable by the DOI and title audits, and the
 check that found these two covered only the included studies.
+
+**4. Counts are of reports, and some reports share an underlying study.** Extraction is per report. Two
+pairs are the same underlying data (S294/S366, one cluster-randomised trial; S097/S098, one interview
+sample) and two overlap partially (S681/S682, S357/S369), so the 1,160 rows correspond to roughly 1,158
+distinct studies on the definite links and 1,156 counting the partial ones
+(`03_extraction/extracted_data/linked_reports_2026-09-28.csv`; nothing merged — researcher decision). The
+practical consequences for this note: the **5 RoB 2 studies are 4 distinct trials** (S294 and S366 report
+the same DRC trial), so the "68 causal-capable designs" are 67 distinct studies; and the S366 appraisal is
+itself one of the abstract-only, low-confidence ones flagged in caveat 1. Independence also matters
+within effect sizes: the audit-inferred pair S526/S539 (two US large-utility studies whose samples
+probably overlap) are both in `effect_sizes.csv`, which the Family C synthesis now discloses.

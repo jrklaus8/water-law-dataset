@@ -164,6 +164,26 @@ header. Key type/format notes not obvious from the field name alone:
 | mechanism_certainty | integer 0–4 | `CODEBOOK.md` §9 |
 | evidence_status | enum | `OBSERVED` / `CALCULATED` / `ASSUMED` / `INTERPRETED`, `PROJECT_SPEC.md` §13 |
 
+## `03_extraction/extracted_data/study_record_map.csv` and `linked_reports_2026-09-28.csv`
+
+Two index files added by the 2026-09-28 repository audit; neither is a validated-schema file and neither is
+read by any script.
+
+**`study_record_map.csv`** — `study_id, record_id, link_method, status, note`. One row per extracted study
+(1,160 `active`), plus the two retired duplicates (`retired_duplicate`, S233 and S299). It links each
+extraction row to its `full_text_screening_database.csv` `record_id`, because the extraction database has no
+`record_id` column. `link_method`: `extraction_note` (a record_id stated in the row's own note; 992),
+`doi` (122), `title in citation` (41), or `manual` (5, accent/spelling variants verified by hand). The map is
+a bijection with the 1,160 full-text includes. S227 and S399 (retired earlier) are not listed: their record
+IDs are not recoverable from the repository.
+
+**`linked_reports_2026-09-28.csv`** — `link_id, study_id_a, study_id_b, relationship, same_underlying_data,
+basis, source_of_link, in_effect_sizes, confidence, status`. Candidate groups of reports of one underlying
+study, per `REPRODUCIBILITY.md` §6. `source_of_link` is `extractor_note` (the extractor already stated the
+relationship) or `audit_inferred` (the audit's inference from extracted fields, unverified). `same_underlying_data`
+is `yes` / `partial` / `possible` / `probable` / `no`. `status` is always "proposed": no link has been applied to
+any count. New links should get the next `LRnn` id.
+
 ## `05_analysis/descriptive/evidence_map.csv`
 
 | Field | Type | Notes |

@@ -342,6 +342,27 @@ explained in full further down; this is the index.
     not mean for synthesis confidence: it is real, auditable, and honest
     about its own "Can't tell" answers, but it is not a
     signalling-question-level read of every source document.
+16. **Extraction rows are per report, not per underlying study — so
+    "1,160 studies" counts reports.** `REPRODUCIBILITY.md` §6 says that
+    where several reports describe the same underlying study, the study is
+    to be treated as one and the reports cross-referenced by `study_id`; in
+    practice this project extracted companion papers as separate rows (a
+    disclosed precedent, e.g. in S369's extraction note) and flagged them in
+    free-text notes only. The 2026-09-28 audit made those links explicit in
+    `03_extraction/extracted_data/linked_reports_2026-09-28.csv` (12 links:
+    8 the extractor had already documented, 4 the audit inferred and marks low
+    confidence). **Two links are the same underlying data (S294/S366, the same
+    cluster-randomised trial; S097/S098, the same interview sample) and two more
+    overlap partially (S681/S682, S357/S369)**, so the corpus holds roughly
+    1,158 distinct studies on the definite links and 1,156 counting the partial
+    ones — and the "5 RoB 2 studies" are 4 distinct trials. Nothing was merged or
+    recounted: whether to collapse these rows is a researcher decision. None of the
+    linked pairs has both members in `effect_sizes.csv`, except the audit-inferred
+    S526/S539 (two US utility studies whose samples probably overlap), which matters
+    if the ownership/price cluster is ever pooled. The index
+    `03_extraction/extracted_data/study_record_map.csv` (study_id ↔ screening
+    record_id, all 1,160 studies) was added at the same time, since the extraction
+    database has no `record_id` column.
 
 ---
 

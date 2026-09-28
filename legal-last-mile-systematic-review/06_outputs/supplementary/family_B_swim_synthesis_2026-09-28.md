@@ -26,6 +26,10 @@ where the comparability question in §2 would even need to be asked** — see
 | S1144 | Uganda | Quantitative regression (logit) | Positive — higher NGO/CBO trust → higher probability of accessing that organization's service | JBI Cross-Sectional — Low concern |
 | S1163 | 14 LMICs | Cross-sectional multilevel regression | Positive — external WaSH-programme funding → higher odds of the outcome | ROBINS-I — Moderate |
 
+S294's trial also has a second published report in the corpus, S366 (Quattrochi et al. 2021, infrastructure/access/behaviour/governance
+outcomes of the same DRC cluster-randomised trial; `linked_reports_2026-09-28.csv`, LR01). S366 has no
+`effect_sizes.csv` row and is deliberately not a separate row here, since it would add no independent evidence.
+
 Pulled from `effect_sizes.csv` and `extraction_database.csv`; not re-extracted. RoB ratings as
 of the 2026-09-28 corpus-wide pass — `RISK_OF_BIAS.md` §4.
 

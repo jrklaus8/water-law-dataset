@@ -99,7 +99,9 @@ public/cooperative/mixed-capital ownership), all three are adjusted for a reason
 observable confounders, and all three find a statistically significant effect in the same
 substantive direction (private ownership → worse affordability/progressivity outcome for the
 household). That is a real, reportable finding — "the direction of association is consistent
-across three independent studies in three different national contexts" — that does not require
+across three studies in two national contexts" (US ×2, Brazil; the two US studies probably draw on
+overlapping populations of large utilities, so they should not be described as fully independent —
+see the independence caveat in `family_C_swim_synthesis_2026-09-28.md`) — that does not require
 a pooled effect size to state honestly. `family_C_swim_synthesis_2026-09-28.md` presents it
 this way.
 

@@ -66,8 +66,16 @@ group because it is genuinely different from the rest of Family C in kind, not j
 | S1038 | State vs. local economic regulation | Monopoly welfare loss (% of bill) | −4.6 pp under state regulation (p<0.01) |
 
 **All three ownership-type studies (S526, S539, S749) agree in substance**: private ownership is
-associated with a worse affordability/progressivity outcome for the household, across three
-different countries (US ×2, Brazil) and three non-convertible metrics.
+associated with a worse affordability/progressivity outcome for the household, across **two**
+countries (US ×2, Brazil; an earlier draft said "three different countries") and three
+non-convertible metrics. **Independence caveat (added 2026-09-28, audit):** S526 (1,183–1,189 US
+utilities serving 40,000+ people) and S539 (the 500 largest US community water systems) both draw on
+large US utilities, so their samples very probably overlap substantially even though they are
+separate papers by different author teams with different data collections — "three independent
+studies" cannot be claimed for the ownership question. This is inferred from the two samples'
+extracted descriptions, not verified against the source papers' data appendices; if it holds, the
+ownership finding rests on two effectively independent samples (US and Brazil), both
+cross-sectional and both appraised "Some concern".
 `phase11_pooling_feasibility_S526_S539_S749.md` concludes this cannot be pooled — the
 dimensionless UPR (S526) measures rate-*structure* progressivity, a different construct from
 the price-*level* measures in S539/S749, and converting S539↔S749 would require assumed
@@ -77,15 +85,22 @@ broader "governance/regulatory-structure → affordability" theme but test a dif
 (government form; regulatory jurisdiction, not ownership type) and are presented alongside, not
 folded into, the three-study ownership cluster.
 
-**Vote count for this 5-study grouping**: 3 of 5 (S539, S749, and — read as "lower cost is the
-favorable direction" — S471) point toward the state/public/regulated-structure comparator being
+**Vote count for this 5-study grouping** (a substantive reading — see the sign-versus-valence
+caution under Results above; treat it as a disclosed judgment, not a count of extracted signs): 3 of 5
+(S539, S749, and — read as "lower cost is the favorable direction" — S471, whose association attenuates to
+non-significance once fiscal, community and environmental-risk covariates are added) point toward the state/public/regulated-structure comparator being
 more favorable for affordability; S526 agrees in substance (private → more regressive) even
 though its raw sign is "negative"; S1038 agrees as well (state regulation → lower excess
 pricing). **All 5 of 5 studies in this grouping point the same substantive direction**: more
 public, more regulated, or more accountable governance structures are associated with better
-household affordability outcomes than less regulated/private alternatives. This is the
-strongest directionally consistent finding in Family C, precisely because it is also the most
-mechanistically coherent sub-group.
+household affordability outcomes than less regulated/private alternatives. This is the most
+directionally consistent sub-group in Family C and the most mechanistically coherent, but it is
+small and thin: the *core* ownership question is 3 studies in 2 countries (two probably overlapping
+US samples, above); S471 and S1038 test different exposures (government form; regulatory
+jurisdiction) and S471's result is not robust to full covariate adjustment; whether "mayor-led" is
+the more "accountable" structure is an interpretive reading, not something the extraction records;
+and all five are observational cross-sectional or panel designs rated "Some concern" or "Low
+concern" on the basis of limited extracted methodological detail.
 
 ## The remaining 15 studies
 

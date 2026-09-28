@@ -4,7 +4,31 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Two double-counted papers merged (S233 → S1008, S299 → S392): 1,162 → 1,160 included studies
+## 2026-09-28 (latest) — Audit follow-up: linked reports mapped, study↔record index built, Family C text corrected
+
+Continuation of the repository audit (`00_admin/audits/2026-09-28_repository_audit.md`, findings 14-16). No count,
+decision or classification changed.
+
+- **Linked reports.** `REPRODUCIBILITY.md` §6 requires reports of one underlying study to be cross-referenced; the
+  extraction database had no link column. New `03_extraction/extracted_data/linked_reports_2026-09-28.csv` records 12
+  links (8 the extractor had documented, 4 audit-inferred and marked low confidence). **S294/S366** (one DRC cluster
+  RCT, two outcome reports) and **S097/S098** (one interview sample) are the same underlying data; S681/S682 and
+  S357/S369 overlap partly. So the 1,160 rows are roughly 1,158 distinct studies (1,156 counting the partial links) and
+  the **5 RoB 2 "studies" are 4 trials**. Cross-reference notes were appended to the 6 extraction rows of documented
+  pairs that lacked them. Nothing merged or recounted — researcher decision (audit report, decision 5). README Known
+  limitation 16, `DATA_DICTIONARY.md`, the evidence-limitations note (caveat 4) and the Family B synthesis were updated.
+- **Study↔record index.** New `03_extraction/extracted_data/study_record_map.csv` (study_id ↔ screening record_id for all
+  1,160 studies, plus the two retired duplicates): a bijection with the 1,160 full-text includes.
+- **Family C corrections.** The ownership cluster (S526/S539/S749) spans two countries, not "three", and S526/S539 are
+  two US large-utility studies whose samples probably overlap, so it is not "three independent studies"; corrected in
+  `family_C_swim_synthesis_2026-09-28.md` and `phase11_pooling_feasibility_S526_S539_S749.md`, and the cluster's "5 of 5"
+  paragraph was tempered (S471 attenuates to non-significance under full adjustment; the reading is substantive, not
+  a sign count).
+- **Sweeps with nothing to fix:** effect-size numeric consistency, boolean formats (3 annotated `migrant_population`
+  values noted, left), shared-DOI and journal/volume/page duplicate checks, citation-year versus publication-year.
+- Scripts and raw outputs added under `code/provenance/audit_and_repair/`.
+
+## 2026-09-28 (earlier) — Two double-counted papers merged (S233 → S1008, S299 → S392): 1,162 → 1,160 included studies
 
 The researcher approved the merge proposed by the repository audit's finding 13
 (`00_admin/audits/2026-09-28_repository_audit.md`), executed by
