@@ -4,7 +4,45 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — CASP Qualitative ratings completed for 227 studies, the largest single batch of the day; 2 more found mistagged and directly corrected; every batch identified at the start of today's session is now complete
+## 2026-09-28 (latest) — the last 43 studies with no risk_of_bias_tool at all now classified and appraised; every extracted study has a tool assigned
+
+Continuing the same day's risk-of-bias execution. S571-S618 (43 studies,
+the tail of the extraction range) had never had a `risk_of_bias_tool`
+assigned at all -- not misclassified, simply never reached. Classified
+from `study_design` against `RISK_OF_BIAS.md` §1's table and appraised
+immediately using each tool's already-established rule-based method from
+today's earlier batches -- see
+`04_quality/appraisal_forms/unassigned_43_batch_2026-09-28.md`.
+
+Classification: 15 CASP Qualitative (explicitly qualitative, most with a
+named method -- interviews, FGDs, ethnography), 16 MMAT (explicitly
+mixed-methods or a genuine quant+qual combination), 4 JBI Cross-Sectional
+(purely quantitative cross-sectional), 8 Legal Institutional Evidence
+Appraisal Framework (doctrinal/documentary/case-law analyses with no
+empirical qualitative or quantitative model). One of the 8 (S618) had
+literally written "Legal Institutional Evidence Appraisal Framework"
+into its own `study_design` field already -- the intended tool never got
+copied into `risk_of_bias_tool`, an evident oversight from whichever
+batch extracted it, corrected here.
+
+Appraised immediately: 15 CASP studies follow the same "Can't tell"-heavy
+pattern as today's main CASP batch; 16 MMAT studies the same pattern as
+today's main MMAT batch (5.1/5.3/5.4/5.5 "Can't tell" for all 16); 4 JBI
+studies split Low/Some/Some/High concern; 8 Legal Framework studies given
+a condensed appraisal (jurisdictional specificity assessable from the
+`country` field, the other 11 of the framework's 13 domains marked "not
+assessable" given extraction depth).
+
+**Every one of the 1,162 extracted studies now has a `risk_of_bias_tool`
+assigned.** This specific gap, open since before this session, is fully
+closed.
+
+`03_extraction/extracted_data/extraction_database.csv`: 43
+`risk_of_bias_tool` cells populated (from blank) and 43
+`risk_of_bias_rating` cells populated in the same pass. Row count
+verified unchanged at 1,162.
+
+## 2026-09-28 (earlier) — CASP Qualitative ratings completed for 227 studies, the largest single batch of the day; 2 more found mistagged and directly corrected; every batch identified at the start of today's session is now complete
 
 Continuing the same day's risk-of-bias execution. Applied the official
 CASP Qualitative Checklist (2024, 10 items) to the 230-study tagged

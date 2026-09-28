@@ -305,10 +305,19 @@ the largest scale in the whole risk-of-bias effort: the batch with the
 least assessable methodological detail on record is also the biggest
 single population in the corpus.
 
-**Every risk-of-bias batch identified at the start of today's session is
-now complete.** What remains open, tracked in the session's task list:
-the 46 studies with no `risk_of_bias_tool` at all, the 5 ambiguous
+**2026-09-28, later still — the 43 studies with no `risk_of_bias_tool` at
+all now all have one, and all 43 were appraised the same pass.** See
+`04_quality/appraisal_forms/unassigned_43_batch_2026-09-28.md`. These
+were simply never reached, not misclassified — classified from
+`study_design` against §1's table (15 CASP, 16 MMAT, 4 JBI
+Cross-Sectional, 8 Legal Framework) and appraised immediately using each
+tool's already-established rule-based method from today's earlier
+batches. **Every one of the 1,162 extracted studies now has a
+`risk_of_bias_tool` assigned — this gap is fully closed.**
+
+What remains open, tracked in the session's task list: the 5 ambiguous
 AMSTAR2-flagged studies, the 26 + 14 = 40 reassignment-pending studies
-found during the JBI and MMAT batches, completing the original
-2026-09-16 partial pilots, writing the RISK_OF_BIAS.md §3 cross-cutting
-evidence-limitations narrative, and a final documentation sweep.
+found during the JBI and MMAT batches (plus S344/S350's small AMSTAR 2
+queue addition), completing the original 2026-09-16 partial pilots,
+writing the RISK_OF_BIAS.md §3 cross-cutting evidence-limitations
+narrative, and a final documentation sweep.
