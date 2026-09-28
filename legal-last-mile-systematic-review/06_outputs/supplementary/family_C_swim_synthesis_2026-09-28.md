@@ -110,6 +110,20 @@ cluster additionally organized around its shared *substantive theme* (governance
 affordability) even though its members' *metrics* remain non-convertible — a distinction this
 synthesis is careful to keep explicit throughout, per `ANALYSIS_PLAN.md` §3.
 
+## Criteria used to prioritize results
+
+Mechanical for 19 of 20 studies, per `CODEBOOK.md` §12's one-prespecified-effect-per-study
+default — each already contributes exactly one result to `effect_sizes.csv`, selected at
+extraction time as the paper's clearest primary finding. **One study in this family did require
+an explicit selection among competing results, recorded in its own `provenance_note`**: S471's
+form-of-government coefficient was chosen over two other reported institutional/fiscal
+coefficients from the same combined regression model (purchased-water dependence,
++2.86/SE 0.91/p<0.05; water utility expenditures per capita, +0.0055/SE 0.0008/p<0.01) because
+it is "the clearest formal institutional/governance-structure exposure-comparator among the
+variables studied" — i.e. the one that actually tests this family's mechanism, not merely the
+statistically strongest or most convenient of the three. No other study in this family required
+a new prioritization decision beyond the existing default.
+
 ## Grouping and ordering of studies for the synthesis
 
 Two-tier grouping: (1) the ownership/regulatory-structure-and-affordability cluster (5 studies,

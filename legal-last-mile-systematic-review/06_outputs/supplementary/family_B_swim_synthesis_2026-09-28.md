@@ -36,6 +36,16 @@ informal common ground used for Family A, and for the same reason: no shared eff
 exists across an RCT risk difference (S085, S294), a PSM coefficient (S1102), and three logit
 odds ratios on three different exposure constructs (S1140, S1144, S1163).
 
+## Criteria used to prioritize results
+
+Mechanical, not a new judgment call for this synthesis: `CODEBOOK.md` §12's one-prespecified-
+effect-per-study default means each of these 6 studies already contributes exactly one result to
+`effect_sizes.csv`. None of this family's 6 `provenance_note` entries document an explicit
+choice among several competing reported results (unlike some Family C studies do — see that
+family's synthesis) — each of these 6 papers' selected result was its own clear primary finding,
+not one picked over rival candidates. No study in this family required a new prioritization
+decision beyond the existing default.
+
 ## Grouping and ordering of studies for the synthesis
 
 Two natural groups, both noted in `phase11_quantitative_feasibility_judgment.md` §4:

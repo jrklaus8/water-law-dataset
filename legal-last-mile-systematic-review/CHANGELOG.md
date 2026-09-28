@@ -4,7 +4,32 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — R templates (Phases 12/14/15) validated: 4 real bugs found and fixed
+## 2026-09-28 (latest) — SWiM reporting-guideline structure confirmed via WebSearch; a genuinely missing checklist item added
+
+Tested network access more precisely than the earlier risk-of-bias-tool checks had: `WebFetch`
+returns `EGRESS_BLOCKED` for every domain tried (doi.org, en.wikipedia.org, the EQUATOR Network,
+the SWiM guideline's own official site) -- a blanket restriction, not one targeted at specific
+checklist publishers -- but `WebSearch` works and returns real result snippets. Used it to
+close a gap `SWIM_SYNTHESIS_TEMPLATE.md` and `SOURCES.md` §7 had both explicitly flagged as
+unverified: SWiM's real structure (Campbell et al. 2020, BMJ) is a 9-item checklist, and a
+search specific enough to surface the item list by topic confirmed all 9: grouping, standardised
+metric, synthesis methods, **criteria for prioritizing results**, heterogeneity investigation,
+certainty of evidence, data presentation, reporting results, limitations.
+
+Mapped the template's existing sections onto 8 of the 9 -- **the template was genuinely missing
+one item entirely, "criteria used to prioritize results" (which study result was selected when
+a paper reported several, and why)**. Added it as its own section, and backfilled it into all
+three already-published SWiM syntheses (`family_A/B/C_swim_synthesis_2026-09-28.md`): mechanical
+for the overwhelming majority of studies per `CODEBOOK.md` §12's one-prespecified-effect-per-
+study default, with one genuine exception surfaced and cited directly from its own
+`provenance_note` -- Family C's S471, whose form-of-government coefficient was explicitly chosen
+over two other reported institutional/fiscal coefficients from the same regression model.
+
+`SOURCES.md` §7 updated to record this extended verification. Full item *wording* (the exact
+published phrasing of each of the 9 items) remains unconfirmed -- structure and citation are
+verified, phrasing is not, since no full-text fetch succeeded for any candidate source.
+
+## 2026-09-28 (earlier) — R templates (Phases 12/14/15) validated: 4 real bugs found and fixed
 
 An R interpreter became available in this environment (`apt-get install r-base-core`, plus
 `r-cran-metafor`/`r-cran-dplyr`/`r-cran-ggplot2` -- the only three packages the three scripts

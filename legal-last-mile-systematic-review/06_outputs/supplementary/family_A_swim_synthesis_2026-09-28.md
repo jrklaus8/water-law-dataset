@@ -58,6 +58,19 @@ rule: do not manufacture comparability just because this is a narrative synthesi
 a meta-analysis). No attempt is made to convert, say, S765's DiD coefficient and S084's
 adjusted odds ratio onto one effect-size scale.
 
+## Criteria used to prioritize results
+
+Mechanical, not a new judgment call for this synthesis: `CODEBOOK.md` §12's one-prespecified-
+effect-per-study default means each of these 20 studies already contributes exactly one result
+to `effect_sizes.csv`, selected at extraction time as the paper's own primary or most directly
+mechanism-isolating estimate — see each row's own `provenance_note` for the study-specific
+reason where one is recorded (several Family C studies document an explicit choice among
+multiple reported results in their `provenance_note`; none of this family's 20 provenance notes
+happen to document that same kind of explicit multi-result selection, which is itself
+informative — it suggests these 20 papers more often reported a single clear headline
+legal-recognition estimate rather than several competing candidates). No study in this family
+required a new prioritization decision beyond the existing one-effect-per-study default.
+
 ## Grouping and ordering of studies for the synthesis
 
 Grouped by the **type of legal/institutional mechanism** tested, following
