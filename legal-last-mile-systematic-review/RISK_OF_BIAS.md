@@ -404,7 +404,19 @@ rest were the 4 just cleaned up.
 `risk_of_bias_tool`, and every study for which a rating is possible has
 one** — the only 8 studies without a `risk_of_bias_rating` are the 8
 correctly tagged `NONE` (no validated tool applies to their design at
-all), which is the honest state, not a gap. What remains open, tracked
-in the session's task list: writing the RISK_OF_BIAS.md §3 cross-cutting
-evidence-limitations narrative, and a final documentation sweep across
-README/PRISMA_WORKFLOW/prisma_flow.md.
+all), which is the honest state, not a gap.
+
+**2026-09-28, later still — the §3 cross-cutting evidence-limitations
+narrative written**, superseding the 2026-09-16 placeholder version. See
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for the
+full account — design mix, jurisdiction/legal-system coverage,
+measurement-quality patterns, mechanism-family coverage, the Legal
+Framework subset's caveat, and overall confidence reported per Phase 11
+synthesis family (Family A/B/C all land at low-to-moderate confidence;
+nothing in today's ratings changes Phase 11's verdict that no family
+clears the bar for meta-analysis).
+
+What remains open, tracked in the session's task list: a final
+documentation sweep across README/PRISMA_WORKFLOW/prisma_flow.md to
+make sure every reference to risk-of-bias status across the repository
+reflects today's completed work.

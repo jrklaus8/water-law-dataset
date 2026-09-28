@@ -4,7 +4,44 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — corpus-wide consistency sweep: a gap in the Legal Framework batch fixed, stale AMSTAR2 rating text cleaned up, the 2026-09-16 partial pilots confirmed closed
+## 2026-09-28 (latest) — cross-cutting evidence-limitations narrative written (RISK_OF_BIAS.md §3), superseding the 2026-09-16 placeholder
+
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` is the
+first version of this file that can actually do what `RISK_OF_BIAS.md`
+§3 asks -- summarize the evidence base's limitations as a whole,
+informed by real ratings, now that every study in the corpus has a
+correctly classified tool and (where possible) a rating. The 2026-09-16
+version was explicitly a placeholder, written when only 12 of a
+366-study corpus had been appraised at all, with its own "Overall
+confidence" section deliberately left blank.
+
+Key findings, updated from the 366-study snapshot to the full
+1,162-study corpus: only 77 studies (7%) use a design capable of
+supporting a causal claim (72 ROBINS-I + 5 RoB 2); 596 of 1,162 (51%)
+carry narrative text rather than a numeric `mechanism_certainty` code, a
+real scale inconsistency across extraction-batch eras; legal-system
+coverage has shifted toward common-law over-representation (56%, up
+from a near-even 41%/39% split at 366 studies) as full-text retrieval
+progressed; 433 studies (37%, up from 20%) are appraised under the
+project's own non-validated Legal Framework, and today's condensed
+appraisal of all 433 only strengthens that instrument's caveat rather
+than resolving it (5 of 13 domains populated from real data, 8 "not
+assessable"); for the CASP and MMAT populations combined (452 studies,
+39% of the corpus), 6-8 of each tool's ~10 quality items are honestly
+"Can't tell" for nearly every study -- the single largest unresolved
+measurement-quality gap in the whole effort.
+
+**Overall confidence, reported per Phase 11's candidate synthesis
+family rather than globally, as RISK_OF_BIAS.md §3 requires**: Family A
+low-to-moderate (54 of 63 rule-based ROBINS-I ratings land at "Moderate"
+confounding risk, 9 at "Serious"); Family B low on sample-size grounds
+alone (6 studies) despite reasonably solid individual RoB 2 ratings;
+Family C low-to-moderate, matching Family A's caveat. **Nothing in
+today's risk-of-bias work changes Phase 11's verdict that no family
+clears the bar for meta-analysis** -- this narrative explains why in
+terms of the underlying evidence quality, not just study count.
+
+## 2026-09-28 (earlier) — corpus-wide consistency sweep: a gap in the Legal Framework batch fixed, stale AMSTAR2 rating text cleaned up, the 2026-09-16 partial pilots confirmed closed
 
 Final consistency pass across all of today's risk-of-bias work.
 
