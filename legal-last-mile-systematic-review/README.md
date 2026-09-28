@@ -114,22 +114,54 @@ explained in full further down; this is the index.
     "Two-hundred-thirty-sixth full-text screening batch" entries, for the
     full account.
 11. **A named, systemic cause of the wrong-file problem was identified
-    2026-09-28: a delivery tool's own "verified" label cannot be trusted.**
-    A second large Drive delivery's own tracking file
-    (`systematic_review_retrieval_final_master.csv`) showed 99 of its
+    2026-09-28: a delivery tool's own "verified" label cannot be trusted —
+    and this held up across every subsequent batch of the same delivery.**
+    A large Drive delivery's own tracking file
+    (`systematic_review_retrieval_final_master.csv`) showed dozens of its
     records were harvested by fuzzy title-word matching against local
-    Zotero storage — confidence as low as 40%, 95 of 99 below 80% — yet
-    every one was self-labeled `RETRIEVED_AND_VERIFIED`. Of 69 genuinely
-    open records in that delivery, 68 turned out, on direct full-text
-    reading, to be wrong-file deliveries; 65 of those 68 fell inside this
-    low-confidence set. One record's correct target content was found
-    mislabeled under a *different* record's file entirely (see
-    **Chronological workflow → 5** for that specific correction). This
-    tool's self-reported retrieval/verification status must never be
-    treated as evidence of actual content correctness — only direct
-    full-text reading, as this pipeline has always done, establishes that.
-    See `CHANGELOG.md`, "Two-hundred-thirty-seventh full-text screening
-    batch," for the full account.
+    Zotero storage — confidence as low as 40%, most below 80% — yet every
+    one was self-labeled `RETRIEVED_AND_VERIFIED`. Across three batches of
+    that delivery's genuinely-open records (69, then 50, then 23 — the
+    last batch a complete wash, 23 of 23 wrong), direct full-text reading
+    confirmed the overwhelming majority were wrong-file deliveries in
+    every batch, not a one-off cluster. The failure mode was also
+    confirmed to extend beyond academic mismatches: two deliveries in the
+    third batch were not research papers at all — a Canadian law firm's
+    client letter and an Ontario court judgment — both harvested and
+    self-labeled "verified" the same way. One record's correct target
+    content was separately found mislabeled under a *different* record's
+    file entirely (see **Chronological workflow → 5** for that specific
+    correction); two other targets (Carrera 2015 and Stopnitzky 2012) each
+    received two *different* wrong deliveries under two different
+    record_ids, with no correct copy of either found yet. This tool's
+    self-reported retrieval/verification status must never be treated as
+    evidence of actual content correctness — only direct full-text
+    reading, as this pipeline has always done, establishes that. See
+    `CHANGELOG.md`, "Two-hundred-thirty-seventh" through
+    "Two-hundred-thirty-ninth full-text screening batch" entries, for the
+    full account.
+12. **Locating every file in that same Drive delivery required three
+    reconciliation passes, because of a persistent Google Drive
+    search-pagination bug, not because the delivery arrived in three
+    installments.** A plain paginated folder query silently stopped short
+    of the folder's real contents in a way that was not obvious from the
+    tool's own response (it kept returning a `nextPageToken` while the
+    set of files actually returned stopped growing). The first pass found
+    774 files; a second pass, prompted by finding already-decided
+    record_ids still sitting in the folder under fresh fileIds, used
+    16 title-prefix bucket queries and found 967 (193 more); a third pass
+    using finer-grained bucketing found 1,036 (69 more) before the folder
+    was judged exhaustively reconciled, on the strength of a
+    cross-check against the screening database showing the remaining
+    unsearched prefixes' records were genuinely sourced from elsewhere.
+    Every wrong-file PDF found across this process was moved into one
+    consolidated Google Drive folder ("wrong_file records", created
+    2026-09-27 at the researcher's request) so that every wrong delivery
+    for a given record_id — however many times it recurs — ends up in one
+    place rather than scattered across the intake folder. A future
+    researcher or pipeline operator interacting with this project's Drive
+    folders directly should not trust a single plain-paginated folder
+    listing as complete without a similar cross-check.
 
 ---
 
@@ -344,7 +376,7 @@ instances have been fixed.
 
 ### The quantitative arm is intentionally thin — this is a finding, not a failure
 
-245 studies are flagged quantitative-synthesis-eligible, but only 58
+248 studies are flagged quantitative-synthesis-eligible, but only 61
 effect-size rows have actually been extracted, and zero are pooled. This
 reflects the project's governing rule against manufacturing comparability
 (see above), applied consistently: almost every effect-size row's own
@@ -452,12 +484,37 @@ water/sanitation/legal-administrative research). 74 records matched; an
 further instances of the corruption.
 
 **Full text (Phase 6, live).** The researcher supplies PDFs on a rolling
-basis; each is converted to text, screened against the same E01–E12 codes,
-and recorded via atomic-write Python scripts rather than hand-edited, to
-keep the tracking CSV internally consistent. A human `reviewer_2` for this
-stage was an explicitly open, unresolved question for most of this
-project's history — see **Human and AI involvement** for its current,
-partial resolution as of today.
+basis, mostly by dropping large batches of files into shared Google Drive
+folders; each is converted to text, screened against the same E01–E12
+codes, and recorded via atomic-write Python scripts rather than
+hand-edited, to keep the tracking CSV internally consistent. A human
+`reviewer_2` for this stage was an explicitly open, unresolved question
+for most of this project's history — see **Human and AI involvement** for
+its current, partial resolution as of today.
+
+**A single Drive delivery of PDFs required three separate reconciliation
+passes to actually locate everything in it, 2026-09-27 through
+2026-09-28.** What looked at first like a large one-time delivery (774
+files) turned out, on closer inspection prompted by already-decided
+record_ids reappearing under new fileIds, to be a much larger set (1,036
+files) that a Google Drive folder-listing bug had been silently truncating
+— the API kept returning a pagination token as if more results existed,
+but the actual file count stopped growing well short of the folder's true
+contents. The fix was to query by title-prefix buckets (one query per
+leading hex character of the record_id, then finer sub-prefixes where
+needed) and take the union of every result by file ID, rather than trust
+a single paginated listing. Each pass reclassified whatever new files it
+found against the live screening database (already-decided → move to
+Processed; already-flagged-wrong-file → move to a new, dedicated
+"wrong_file records" Drive folder created specifically to consolidate
+every wrong delivery for a given record_id in one place; genuinely open →
+screen). This is disclosed in detail because it is exactly the kind of
+operational failure mode — belonging to the *tooling*, not the
+*evidence* — that a future person continuing this pipeline via the same
+Drive folders needs to know not to repeat. See **Known limitations and
+unresolved issues → 11–12** and `CHANGELOG.md`'s "Two-hundred-thirty-
+seventh" through "Two-hundred-thirty-ninth full-text screening batch"
+entries for the full account.
 
 ### 5. Extraction against a fixed codebook — and a hard rule against filling gaps from memory
 
@@ -680,6 +737,16 @@ top.
   `REPRODUCIBILITY.md` §5 for the exact missing-data escalation procedure
   (check supplementary material → repository version → author manuscript →
   working-paper version → contact authors → record the gap explicitly).
+- **Every physical wrong-file PDF is kept, not deleted, in a single named
+  Google Drive folder ("wrong_file records")** rather than left scattered
+  across intake folders or silently removed — so a later audit of any
+  `wrong_file_retrieved` record_id can go look at exactly what was
+  actually delivered for it, including cases where the same wrong content
+  was delivered more than once, or where two different wrong papers were
+  delivered for the same target under different record_ids. This folder
+  is Drive-side infrastructure, not part of this git repository, and is
+  referenced here for completeness of the audit trail, not because this
+  repository can verify its contents directly.
 
 ---
 
@@ -776,7 +843,12 @@ In roughly this order, for whoever picks this up next:
    regenerate the retrieval queue, `update_full_text_record.py` or a
    batch-recording script (see recent `CHANGELOG.md` entries for the
    pattern) to record decisions, and always run
-   `code/analysis/validate_schemas.py` after each batch.
+   `code/analysis/validate_schemas.py` after each batch. If PDFs are being
+   supplied via a shared Google Drive folder, do not trust a single plain
+   paginated folder listing as complete — see **Known limitations and
+   unresolved issues → 12** for the pagination bug that hid over 250 files
+   across three passes on one delivery, and the title-prefix-bucketing
+   workaround that found them.
 2. **Extend the human full-text reviewer_2 pass past S100.** This is
    currently the most under-resourced verification gap relative to how
    much AI-reviewed material already exists (1,062 includes, 1,114
