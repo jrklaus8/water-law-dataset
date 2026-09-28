@@ -4,7 +4,26 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — S356 resolved on its full text: excluded (E05) and retired
+## 2026-09-28 (latest) — Reviewability: generated figures, one-command verifier, reviewer's guide, decisions register
+
+No data changed. Added so that future scholars, supervisors and critics can check this project instead of trusting it — and so the
+class of error the audit kept finding (hand-typed figures going stale across documents) is caught mechanically:
+
+- `code/analysis/current_figures.py` computes every headline figure from the CSV databases (tool bucketing by earliest keyword is
+  documented in code); `--write` regenerates `00_admin/CURRENT_FIGURES.md` and `00_admin/current_figures.json`.
+- `code/analysis/verify_repository.py` (standard library only; exit status 0/1): schemas; extraction/evidence-map/effect-size ID
+  agreement; the study↔record map is a bijection with the full-text includes; exclusion log matches full-text excludes;
+  retired IDs absent; linked-report IDs exist; every tool-applicable study rated; the generated figures file is fresh; and the
+  current-status documents (both READMEs, `prisma_flow.md`, `PRISMA_WORKFLOW.md`, the evidence-limitations note, `RISK_OF_BIAS.md`)
+  quote the computed figures. Tested by deliberately breaking one figure: the check fails as intended. Historical dated documents
+  are intentionally not checked.
+- `.github/workflows/verify-review-repository.yml` runs it on every push or pull request touching the project.
+- `AUDITING_GUIDE.md`: how to check the numbers, who did what (AI versus human), how to trace a study end to end, what already went
+  wrong, how to challenge a result, what is not claimed. `00_admin/DECISIONS_AND_OPEN_ITEMS.md`: open decisions with
+  recommendations, the judgment calls already made and where each is documented, what is unverified, and a backlog. The README now
+  points to all three at the top.
+
+## 2026-09-28 (earlier) — S356 resolved on its full text: excluded (E05) and retired
 
 The researcher supplied the full text of S356 (record `R1827C03DA45A`), Trémolet & Smith (2026), *Economic regulation of
 water supply and sanitation services: key trends and approaches*, OECD Environment Working Paper No. 275 (open access, CC BY

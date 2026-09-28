@@ -1,0 +1,23 @@
+name: verify-review-repository
+# Re-derives every headline figure of the systematic review from its CSV databases and checks that the databases and the
+# current-status documents agree. Read-only; no secrets; standard library only.
+on:
+  push:
+    paths:
+      - 'legal-last-mile-systematic-review/**'
+  pull_request:
+    paths:
+      - 'legal-last-mile-systematic-review/**'
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: legal-last-mile-systematic-review
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify databases, cross-file integrity and documented figures
+        run: python3 code/analysis/verify_repository.py

@@ -8,6 +8,13 @@ Administrative Law as a Mechanism of Connectivity and Exclusion in
 Sanitation Governance: A Comparative Study of the Netherlands, Canada
 (Ontario), and Brazil* (Claudio Klaus).
 
+> **Reviewing, auditing or building on this project?** Start with [`AUDITING_GUIDE.md`](AUDITING_GUIDE.md)
+> (how to check the numbers, trace one study end to end, and challenge a result),
+> [`00_admin/DECISIONS_AND_OPEN_ITEMS.md`](00_admin/DECISIONS_AND_OPEN_ITEMS.md) (what is still undecided and what was a
+> judgment call) and [`00_admin/CURRENT_FIGURES.md`](00_admin/CURRENT_FIGURES.md) (every headline figure, generated from the
+> data). One command re-checks the databases and the documents against each other:
+> `python3 code/analysis/verify_repository.py`.
+
 **Last updated: 2026-09-28.** Current phase: Phases 1–5 complete; Phase 6
 (full-text retrieval/screening) **closed by researcher decision** —
 institutional access to further providers is exhausted, and 2,276 of
