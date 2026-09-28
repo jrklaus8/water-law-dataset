@@ -24,10 +24,15 @@ doesn't.
 
 ## Coverage of designs
 
-`risk_of_bias_tool` (now fully consistent across all 1,162 studies, unlike the 482
-inconsistent free-text values still sitting in `05_analysis/descriptive/evidence_map.csv`'s
-`study_design_class` field — a genuine, disclosed data-cleanliness gap in that file that
-today's work did not touch, since it tracks a different pipeline than `risk_of_bias_tool`):
+`risk_of_bias_tool` (now fully consistent across all 1,162 studies. `evidence_map.csv`'s
+`study_design_class` field was also partially normalized later the same day, once
+`risk_of_bias_tool` was trustworthy enough to normalize against — see
+`05_analysis/descriptive/study_design_class_normalization_2026-09-28.md`: 482 distinct
+free-text values reduced to 297 by mapping the 707 studies whose tool unambiguously implies a
+design onto `DATA_DICTIONARY.md`'s 8-value enum (228 of 707 needed correction). The remaining
+455 Legal-Framework/`NONE`-tool studies were deliberately left as free text, since the enum
+itself has no category for their real methodological diversity — a genuine schema gap, not
+unfinished normalization):
 
 | Tool (design family) | n | % |
 |---|---|---|
@@ -104,8 +109,9 @@ the single largest unresolved measurement-quality gap in the whole risk-of-bias 
 
 `evidence_map.csv`'s `mechanism_family` field was not recomputed as part of today's
 risk-of-bias work (it tracks a separate derivation pipeline, `build_evidence_map.py`, keyed
-off different fields) and should not be assumed current — see the design-class inconsistency
-noted above as the same underlying staleness. What today's work does newly connect: the
+off different fields) and should not be assumed current — this is a distinct, still-open
+staleness gap from the `study_design_class` field discussed above, which was partially
+normalized later today (see that section's update). What today's work does newly connect: the
 Phase 11 quantitative-feasibility judgment
 (`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`, 2026-09-28) found
 20 Family A, 6 Family B, and 17 Family C studies with a genuine, poolable effect size (plus

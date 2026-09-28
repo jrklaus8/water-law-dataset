@@ -4,7 +4,39 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — effect_sizes.csv re-mining pass: one genuine addition (S348) found, 186 confirmed correctly unpromoted
+## 2026-09-28 (latest) — evidence_map.csv's study_design_class partially normalized to DATA_DICTIONARY.md's 8-value enum
+
+`DATA_DICTIONARY.md` documents `study_design_class` as an 8-value enum, but the live data
+carried 482 distinct free-text values -- an enum-compliance bug flagged (without fixing) in
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` and `PRISMA_WORKFLOW.md`'s Phase
+10 row earlier today. Now that `risk_of_bias_tool` is fully audited and internally consistent
+(today's corpus-wide risk-of-bias work), it can serve as ground truth for 707 of the 1,162
+studies whose tool unambiguously implies one of 6 enum values (RoB 2->experimental,
+ROBINS-I->quasi_experimental, JBI->observational, MMAT->mixed_methods,
+CASP->qualitative, AMSTAR 2->systematic_review_secondary). Set `study_design_class` to the
+canonical value wherever it did not already match: **228 of 707 needed correction, 479 were
+already right.** A sample confirms this is real, not spurious -- 10 of the corrected rows
+(S150, S422, S423, S426, S428, S432, S452, S454, S467, S551) are studies today's own
+JBI-reassignment batch moved from MMAT to JBI; their `risk_of_bias_tool` was updated at the
+time but `evidence_map.csv` was never touched to match, until now.
+
+`study_design_class` distinct-value count: 482 -> 297. **Deliberately left untouched**: the
+remaining 455 Legal-Framework/`NONE`-tool studies. Their actual `study_design` free text spans
+ethnographic case studies, historical-institutional case studies, comparative institutional
+analyses, and more -- `RISK_OF_BIAS.md` §2 itself describes this population as spanning four
+design types (doctrinal/documentary/jurimetric/institutional-case-study), not the two
+(`doctrinal`/`jurimetric`) the enum has room for. Forcing a binary split here would manufacture
+a false decisiveness the data does not support -- a genuine schema gap, flagged for
+`DATA_DICTIONARY.md` to address in future work, not something this pass papers over. See
+`05_analysis/descriptive/study_design_class_normalization_2026-09-28.md` for the full account.
+
+This does not change `risk_of_bias_tool`, any rating, any `effect_sizes.csv` row, or any Phase
+11/13 conclusion. 1,162 `evidence_map.csv` rows unchanged in count;
+`code/analysis/validate_schemas.py` re-run clean.
+`04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` and `PRISMA_WORKFLOW.md`'s Phase
+10 row both updated to point here rather than list this as untouched.
+
+## 2026-09-28 (earlier) — effect_sizes.csv re-mining pass: one genuine addition (S348) found, 186 confirmed correctly unpromoted
 
 PDFs supplied earlier in this project were session-ephemeral chat uploads and are not available
 in this environment, so full-text re-mining is not possible. This pass instead re-examines
