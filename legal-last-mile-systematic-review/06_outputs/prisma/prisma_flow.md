@@ -6,14 +6,18 @@ phase has closed by researcher decision** (candidate pool judged large
 enough to move to screening — see `SEARCH_PROTOCOL.md` §7 and
 `PRISMA_WORKFLOW.md` Phase 3). **"Reports sought for retrieval" has a
 real count (n = 3,659) as of 2026-09-12, the size of the tracking file
-Phase 6 was seeded with. Full-text screening is now live and ongoing
-(updated 2026-09-28): of 3,659, 2,276 have been assessed (1,162 include /
-1,114 exclude), with "Reports not retrieved" still at 0 since every record
-reaching this pipeline so far has arrived with full text already in hand
-via researcher chat upload or Drive-shared Zotero export — the remaining
-1,383 are simply not yet reached, not confirmed unretrievable. This is
-expected to keep growing over roughly a month as the researcher continues
-supplying PDFs.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
+Phase 6 was seeded with. Full-text retrieval/screening (Phase 6) was
+itself formally closed by researcher decision on 2026-09-28** (the
+researcher's institutional access to further database providers is
+exhausted, and the corpus was judged large and comprehensive enough for
+the review's purposes — the same kind of judgment call as the
+2026-09-11 search closure). **Final figures: of 3,659, 2,276 were
+assessed (1,162 include / 1,114 exclude), and "Reports not retrieved" is
+1,383 — 182 flagged `wrong_file_retrieved` (a delivery was attempted and
+the wrong content arrived) and 1,201 `not_retrievable` (no successful
+retrieval attempt). These 1,383 will not grow further, and will not be
+resolved, unless a future researcher makes a new, separately-recorded
+decision to reopen retrieval.** Per `PROJECT_SPEC.md` §14, no number below is estimated,
 illustrative, or a placeholder dressed as data; every filled count traces
 to `01_search/raw_exports/`, `01_search/deduplicated/`, or
 `02_screening/title_abstract/screening_database.csv` as of this date, and
@@ -110,17 +114,24 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     is the population now in scope for retrieval, not yet the count
     actually retrieved. See the reviewer_2 agreement-rate caveat above
     before treating 3,659 as settled without qualification.]
-  Reports not retrieved (n = 0)
-    [Not a claim that the remaining 2,124 are all retrievable -- it means
-    none has yet been confirmed unretrievable. Every record reaching
-    full-text screening so far arrived via researcher chat upload or
-    Drive-shared Zotero export with full text already in hand, so "not
-    retrieved" has not yet had reason to be used; expect this to change as
-    retrieval of the full pool continues.]
-  Reports assessed for eligibility (n = 2,276, PROVISIONAL AND GROWING)
-    [02_screening/full_text/full_text_screening_database.csv, updated
-    2026-09-28. Full-text screening is ongoing, not complete -- 1,383 of
-    3,659 records have not yet been reached.]
+  Reports not retrieved (n = 1,383, FINAL)
+    [Phase 6 formally closed by researcher decision, 2026-09-28 --
+    institutional access to further database providers exhausted; see
+    CHANGELOG.md, "Full-text retrieval phase (Phase 6) formally closed by
+    researcher decision." Of these 1,383: 182 are flagged
+    wrong_file_retrieved (a delivery was attempted for this record and the
+    wrong content arrived, confirmed by direct full-text reading) and
+    1,201 are flagged not_retrievable (no successful retrieval attempt
+    ever occurred, for a mix of historical reasons folded into this one
+    closure). Neither group is claimed to be provably unobtainable by
+    every conceivable means -- this is a judgment-call closure, exactly
+    parallel to the 2026-09-11 database-search closure, not a claim of
+    exhaustion.]
+  Reports assessed for eligibility (n = 2,276, FINAL)
+    [02_screening/full_text/full_text_screening_database.csv, as of the
+    2026-09-28 Phase 6 closure. 62.2% of the 3,659 records sought for
+    retrieval were actually screened; this is now the final figure for
+    this box, not a provisional/growing one.]
   Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,114 total, PROVISIONAL):
     E01 wrong topic (n = 496)
     E02 wrong population (n = 34)
@@ -136,62 +147,36 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E12 wrong study design (n = 48)
 
 Included
-  Studies included in systematic review (n = 1,162, PROVISIONAL AND GROWING)
-    [Full-text include count as of 2026-09-28; full-text screening is
-    still ongoing across the remaining 1,383 unreached records.]
+  Studies included in systematic review (n = 1,162, FINAL)
+    [Full-text include count as of the 2026-09-28 Phase 6 closure. This
+    figure will not grow further unless a future researcher makes a new,
+    separately-recorded decision to reopen full-text retrieval for some or
+    all of the 1,383 never-screened records.]
   Studies included in full extraction so far (n = 1,162)
     [03_extraction/extracted_data/extraction_database.csv, S001-S1164 (S227
     and S399 documented post-hoc-duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 34, PROVISIONAL AND GROWING)
-    [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16,
-    extended same day with 2 more studies (S353, S358) from the Zotero
-    Drive-folder batch, then 1 more (S388, Li/McManus/Cronk 2025, Liberia
-    water-point functionality), then 1 more (S398, dos Santos Nascimento
-    Sobrinho & da Mota Silveira Neto 2025, Recife ZEIS zoning DiD study),
-    then 1 more (S404, Mwaura et al. 2021, Kenya WRUA legal-membership
-    effect on water poverty), then 4 more (S434 mining proximity/water
-    security; S435 uncontested water-board elections/bill-assistance
-    adoption; S445 Brazilian rural-school regional funding-formula
-    disadvantage; S448 intermunicipal cooperation/WWS financial
-    performance) from the 2026-09-17 Google Drive batch 3, then 2 more
-    (S470 Arsae-MG regulatory enforcement/social-tariff implementation in
-    Brazil; S471 municipal form-of-government/drinking-water affordability
-    in the US) from researcher chat uploads, then 1 more (S483, Mutono et
-    al. 2022, Nairobi residential-income-category water-sufficiency rate
-    ratios), then 1 more (S489, Koehler et al. 2021, Kwale Kenya
-    affordability-concern/service-contract-uptake odds ratio), then 1 more
-    (S491, Sempewo et al. 2021, Uganda COVID-19 lockdown water
-    payment-relationship/willingness-to-pay odds ratio), then 1 more
-    (S589, Ecuador World Bank Machala household-case fiscal-subsidy
-    comparison) from the 2026-09-22 batch-88 Drive delivery, then 1 more
-    (S590, Brown 1989, 19th-century Prussian municipal-franchise logit
-    study) from the batch-89 Drive delivery, then 1 more (S593, Ko 2024,
-    South Korean local-government water-supply-equity Tobit study,
-    administrative-district classification and fiscal-autonomy exposure)
-    from the batch-91 Drive delivery, then 1 more (S606, Zhou & Liang
-    2021, China hukou household-registration/pollution-treatment-
-    infrastructure panel regression) from the batch-93 Drive delivery, then 1 more
-    (S631, Lewis 2017, Indonesia local-government-proliferation/pemekaran
-    quasi-experimental panel DiD-GMM study, household water/sanitation
-    access-percentage outcome) from the batch-105 Drive delivery, then 1 more
-    (S636, Lewis 2014, Indonesia Water Hibah intergovernmental performance-
-    grant program, propensity-score-matched quasi-experimental evaluation of
-    grant-financed PDAM equity investment against household water
-    connections) from the batch-107 Drive delivery, then 1 more
-    (S649, Gonzalez Rivas 2012, Mexico indigenous-municipality piped-water-
-    coverage GLM/OLS regression study, federal intergovernmental-transfer
-    mechanism under Article 115 municipal water governance) from the
-    batch-111 Drive delivery.
-    These are
-    the studies with a
-    genuine, non-fabricated exposure-vs-comparator contrast and a
+  Studies included in quantitative evidence synthesis (n = 61, as of 2026-09-28)
+    [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16
+    and extended in almost every full-text-screening batch since as new
+    genuinely quantitative, non-fabricated exposure-vs-comparator studies
+    cleared screening -- see CHANGELOG.md's dated batch entries for the
+    complete study-by-study history (this paragraph previously narrated
+    that history inline up to S649/2026-09-22 and was left unmaintained
+    for several weeks of subsequent batches; it is now a pointer rather
+    than a re-narration, to avoid the same drift recurring). Of the 61
+    rows: 20 Family A, 6 Family B, 16 Family C, and 19 added before the
+    Family A/B/C tag was consistently applied and still carry a blank
+    family (a disclosed data-cleanliness gap, not lost data -- see
+    README.md's Current project status table). These are the studies with
+    a genuine, non-fabricated exposure-vs-comparator contrast and a
     locatable effect estimate -- a much smaller, stricter subset than the
-    196 studies evidence_map.csv flags
-    quantitative_synthesis_eligible = TRUE, most of
-    which are single-group descriptive statistics with no defined
-    comparator. See CHANGELOG.md 2026-09-17 for the full study list and
-    exclusion rationale.]
+    248 studies evidence_map.csv flags quantitative_synthesis_eligible =
+    TRUE, most of which are single-group descriptive statistics with no
+    defined comparator. This figure is now final in the sense that no
+    further full-text retrieval will add new candidate studies (Phase 6
+    closed 2026-09-28), though re-deriving Family A/B/C tags for the 19
+    blank-family rows remains open work.]
   Studies included in restricted meta-analysis, by family (n = 0)
     [No pooling has occurred -- every effect_sizes.csv row has
     included_in_pooled_estimate = FALSE at this stage (project is still

@@ -6820,6 +6820,36 @@ evidence of anything.
   1,383 open (including 182 wrong_file_retrieved), 1,162 extracted
   studies, 61 effect_sizes rows. Full detail in `CHANGELOG.md`.
 
+- **Full-text retrieval phase (Phase 6) formally closed by researcher
+  decision, 2026-09-28.** The researcher reported that institutional
+  access to further database providers is exhausted and confirmed the
+  current corpus (1,162 included, fully extracted studies) is judged
+  sufficient for a review of unusually comprehensive scope for
+  administrative law, comparative law, and sociolegal studies -- the same
+  kind of judgment-call closure, at the same level of seriousness, as the
+  2026-09-11 database-search closure. Every one of the 1,383 records
+  never screened at full-text stage (because the correct full text was
+  never obtained) was updated to record this permanently: 182 keep their
+  `wrong_file_retrieved` status; the remaining 1,201 (previously a mix of
+  blank and several legacy statuses -- `not_retrievable`,
+  `no_oa_copy_found`, `oa_page_candidate`, `undecided` -- inherited from
+  at least one earlier, undocumented tooling generation) were normalized
+  to `not_retrievable`, the value `DATA_DICTIONARY.md` already documents.
+  `final_decision` was not touched for any of them -- they stay correctly
+  blank permanently, per the standing rule against forcing a decision
+  when the correct source material was never in hand.
+  `full_text_retrieval_queue.csv` regenerated one final time (1,383,
+  unchanged in count); schema validation re-run clean (13/13) after this
+  1,383-row mass update. **This closes Phase 6 at 2,276/3,659 screened
+  (62.2%) -- the final figure, not a running total.** Extraction,
+  evidence classification, risk-of-bias appraisal, human reviewer_2, and
+  Phase 11's quantitative-feasibility write-up are all unaffected by this
+  closure and remain open work on the 1,162 studies already included.
+  README.md and `06_outputs/prisma/prisma_flow.md` updated throughout to
+  reflect this as final rather than provisional/growing. Full detail in
+  `CHANGELOG.md`, "Full-text retrieval phase (Phase 6) formally closed by
+  researcher decision."
+
 ## What has not been done
 
 - **Only five of the databases named in `SEARCH_PROTOCOL.md` were

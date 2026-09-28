@@ -9,14 +9,17 @@ Sanitation Governance: A Comparative Study of the Netherlands, Canada
 (Ontario), and Brazil* (Claudio Klaus).
 
 **Last updated: 2026-09-28.** Current phase: Phases 1–5 complete; Phase 6
-(full-text screening) live and roughly 62% through its pool; Phase 8
-(extraction) fully caught up with Phase 6; Phase 9 (risk of bias) barely
-started relative to how much has been extracted; Phase 10 (evidence
-classification) caught up with extraction; Phase 11 (corpus-level
-quantitative-feasibility judgment) not yet formally written up. See
-**Current project status** below for exact figures, and **What future
-researchers must know before using this dataset** for what those figures do
-and do not mean.
+(full-text retrieval/screening) **closed by researcher decision** —
+institutional access to further providers is exhausted, and 2,276 of
+3,659 records that reached this stage (62.2%) were actually screened
+before the corpus was judged large and comprehensive enough to close on;
+Phase 8 (extraction) fully caught up with the closed Phase 6 population;
+Phase 9 (risk of bias) barely started relative to how much has been
+extracted; Phase 10 (evidence classification) caught up with extraction;
+Phase 11 (corpus-level quantitative-feasibility judgment) not yet formally
+written up. See **Current project status** below for exact figures, and
+**What future researchers must know before using this dataset** for what
+those figures do and do not mean.
 
 This document is written as an audit record, not a summary for display. It
 is meant to let a future researcher, collaborator, supervisor, reviewer, or
@@ -162,6 +165,29 @@ explained in full further down; this is the index.
     researcher or pipeline operator interacting with this project's Drive
     folders directly should not trust a single plain-paginated folder
     listing as complete without a similar cross-check.
+13. **Full-text retrieval (Phase 6) is now permanently closed, and 1,383
+    of 3,659 records that reached this stage will never be screened.**
+    On 2026-09-28 the researcher reported that institutional access to
+    further database providers is exhausted and confirmed the corpus is
+    large and comprehensive enough for the review's purposes — the same
+    kind of judgment-call closure as the 2026-09-11 search closure, at
+    the same level of seriousness, not a claim that every possible
+    retrieval avenue has been exhausted by every means. Every one of the
+    1,383 never-screened records was updated the same day to reflect this
+    permanently, not left in an ambiguous "still being worked on" state:
+    182 keep their `wrong_file_retrieved` status; the remaining 1,201
+    (previously a mix of blank and several legacy statuses from at least
+    one earlier, undocumented tooling generation — `not_retrievable`,
+    `no_oa_copy_found`, `oa_page_candidate`, `undecided`) were normalized
+    to `not_retrievable`, the value `DATA_DICTIONARY.md` already
+    documents for exactly this situation. `final_decision` was not
+    touched for any of them — they were never screened and stay correctly
+    blank permanently. **62.2% of the records that reached full-text stage
+    were actually screened; this is now the final figure, not a running
+    total.** See `CHANGELOG.md`, "Full-text retrieval phase (Phase 6)
+    formally closed by researcher decision," for the full account, and
+    **How to continue this project** for what remains open regardless of
+    this closure (reviewer_2, risk-of-bias, Phase 11).
 
 ---
 
@@ -256,7 +282,7 @@ documentation**.
 | Records identified | 34,594 raw (34,557 database + 37 grey-literature/pilot) |
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
-| Full-text screening | **Live, in progress.** 2,276 of 3,659 assessed (**1,162 include / 1,114 exclude**); 1,383 still open; **182 flagged `wrong_file_retrieved`** (not counted in any total) |
+| Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,276 of 3,659 assessed (**1,162 include / 1,114 exclude**); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
 | Full-text human reviewer_2 | **Just begun, 8.7% complete.** 100 of 1,162 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,062 includes and all 1,114 excludes still unreviewed by a human second reviewer at this stage |
 | Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,162 studies extracted, `S001`–`S1164` (`S227`, `S399` retired as documented post-hoc-duplicate corrections — real gaps in the numbering, not an error) |
 | Risk-of-bias appraisal | **Barely started relative to extraction.** Design-matched tool identified for 1,116 of 1,162 studies; an actual **rating** exists for only **33** — 29 of those are explicit partial/pilot judgments (2026-09-16 batch), 2 are complete AMSTAR 2 ratings for included secondary reviews (S370, S372 — both "Critically Low"), 2 more are complete individual ratings (S468 CASP Qualitative "Moderate"; S469 MMAT "Moderate") |
@@ -340,6 +366,30 @@ full-text decision beyond those 100 confirmed includes as AI-reviewer-only
 until this README says otherwise, and check `full_text_screening_database.csv`'s
 `reviewer_2` column directly rather than assuming this document is current
 if substantial time has passed since 2026-09-27.
+
+### Full-text retrieval is now permanently closed — 62.2% of the eligible pool, not the whole pool
+
+On 2026-09-28 the researcher reported that institutional access to
+further database providers is exhausted and that no further full-text
+PDFs can be retrieved through the means available. This closes Phase 6
+permanently: 2,276 of the 3,659 records that were sought for retrieval
+(62.2%) were actually screened; the remaining 1,383 (37.8%) will not be.
+This is a **judgment call that the corpus is large and comprehensive
+enough**, explicitly analogous to the 2026-09-11 database-search closure
+— not a claim that these 1,383 records are provably unobtainable by every
+conceivable means, and not something a future researcher should treat as
+self-evidently correct without their own independent assessment of
+whether the resulting corpus is adequate for their specific analytic
+purpose. The 1,383 records are recorded as `wrong_file_retrieved` (182 —
+a delivery was attempted and the wrong content arrived) or
+`not_retrievable` (1,201 — no attempt ever succeeded, for various
+historical reasons folded into this one closure), never as a decided
+`include` or `exclude`: they were never screened, and per this project's
+standing rule they are not force-decided just because the phase closed.
+Any manuscript drawn from this review must report both the 62.2% figure
+and the reason for closure, exactly as the database-search gaps must be
+reported, per PRISMA's transparency requirement for reports sought but
+not retrieved.
 
 ### Risk-of-bias appraisal is real but thin, and much of what exists is explicitly partial
 
@@ -763,10 +813,11 @@ caveat applies. It is not softened.
   AI-excludes were only spot-checked (120 random + a 74-record targeted
   scan for a known corruption signature), not fully independently
   re-screened.
-- Full-text screening, AI first pass (2,276 of 3,659 records assessed so
-  far) — independently human-confirmed for **100 of the 1,162 current
-  includes only** (S001–S100, as of 2026-09-27). The remaining 1,062
-  includes and all 1,114 excludes at this stage are AI-reviewer-only.
+- Full-text screening, AI first pass (2,276 of 3,659 records that reached
+  this stage — the final figure, since Phase 6 closed 2026-09-28) —
+  independently human-confirmed for **100 of the 1,162 current includes
+  only** (S001–S100, as of 2026-09-27). The remaining 1,062 includes and
+  all 1,114 excludes at this stage are AI-reviewer-only.
 - Extraction against the 92-field codebook (1,162 studies) — not
   independently human-reviewed at scale; spot-checking this is recommended
   future work (see **How to continue this project**).
@@ -838,11 +889,20 @@ code/                search / screening / extraction / analysis scripts (these a
 
 In roughly this order, for whoever picks this up next:
 
-1. **Keep retrieving and screening full-text PDFs.** 1,383 of 3,659 records
-   are still open. Use `code/screening/build_full_text_queue.py` to
-   regenerate the retrieval queue, `update_full_text_record.py` or a
-   batch-recording script (see recent `CHANGELOG.md` entries for the
-   pattern) to record decisions, and always run
+1. **Full-text retrieval is closed (see Known limitations → 13) — do not
+   reopen it without a new, explicit researcher decision and a new
+   `CHANGELOG.md` entry recording it.** 1,383 of 3,659 records that
+   reached this stage were never screened and are now permanently marked
+   `not_retrievable` (1,201) or `wrong_file_retrieved` (182); this is the
+   final figure for this phase, not a queue to keep working through. If a
+   future researcher does obtain new institutional access and chooses to
+   reopen retrieval for some or all of these records, that is itself a
+   substantive methodological decision requiring the same closure/
+   reopening discipline as the original 2026-09-11 search closure: record
+   the date, the rationale, and exactly which records are back in scope,
+   before using `code/screening/build_full_text_queue.py`,
+   `update_full_text_record.py`, or a batch-recording script (see recent
+   `CHANGELOG.md` entries for the pattern) to resume work, and always run
    `code/analysis/validate_schemas.py` after each batch. If PDFs are being
    supplied via a shared Google Drive folder, do not trust a single plain
    paginated folder listing as complete — see **Known limitations and

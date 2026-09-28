@@ -4,7 +4,71 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Two-hundred-thirty-ninth full-text screening batch (23 records, 0 includes, 0 excludes, 23 wrong_file_retrieved) — a third, finer-grained reconciliation pass finally clears the "Sep 26 2026" folder; a complete wash, including two non-research documents mistakenly harvested
+## 2026-09-28 (latest) — Full-text retrieval phase (Phase 6) formally closed by researcher decision
+
+The researcher reported that their institutional (university) access to
+further database providers is exhausted — no further full-text PDFs can
+be retrieved through the means available to them — and confirmed that the
+current volume (1,162 included, fully extracted studies) is judged
+sufficient for a systematic review of unusually comprehensive scope for
+the fields of administrative law, comparative law, and sociolegal
+studies. This is **the same kind of judgment-call closure, at the same
+level of seriousness, as the 2026-09-11 database-search closure**
+(`SEARCH_PROTOCOL.md` §7) — a decision that the corpus is large and
+comprehensive enough for the review's purposes, not a claim that every
+possible source of full text has been exhausted by every conceivable
+means.
+
+Concrete actions taken to record this closure accurately, rather than
+leaving 1,383 records in an ambiguous "still open" state indefinitely:
+
+1. **Every record with no `final_decision`** (1,383 of 3,659 — i.e. every
+   record never screened at full-text stage because the correct full
+   text was never obtained) **was updated to reflect that retrieval is
+   now closed, not merely paused.** 182 records already flagged
+   `wrong_file_retrieved` keep that status (it remains more informative
+   than a generic label — a delivery was attempted and failed) but gained
+   a closure note. The remaining 1,201 records (previously a mix of
+   blank, `not_retrievable`, `no_oa_copy_found`, `oa_page_candidate`, and
+   one `undecided` status — remnants of at least one earlier,
+   undocumented open-access-lookup tooling generation this pipeline
+   inherited) were normalized to `not_retrievable`, the value
+   `DATA_DICTIONARY.md` already documents for exactly this situation.
+   `final_decision` was **not** touched for any of these 1,383 records —
+   they were never screened, and per this project's standing rule against
+   forcing a decision when the correct source material was never in hand,
+   they stay correctly blank permanently, exactly parallel to the 1,259
+   title/abstract records deliberately left undecided for lacking an
+   abstract.
+2. **`full_text_retrieval_queue.csv` was regenerated one final time**
+   (1,383 open records, unchanged in count from before this closure,
+   since `final_decision` did not change) — this file's role now changes
+   from an active work queue to a historical record of the final,
+   permanently-unretrieved population.
+3. **Schema validation re-run clean (13/13)** after the mass status
+   update — this was a large edit (1,383 rows) and was checked with the
+   same rigor as any batch-recording script, using the same atomic-write
+   discipline.
+
+**What this closure does and does not mean.** It means Phase 6 (full-text
+screening/retrieval) is now closed: 2,276 of 3,659 records that reached
+this stage (62.2%) were actually screened, and this is now the final
+figure for that denominator, not a running total expected to keep
+growing. It does **not** mean the review itself is finished — extraction
+is caught up with the 1,162 includes this closure locks in, but the
+human `reviewer_2` full-text pass (8.7% complete), risk-of-bias appraisal
+(mostly tool-assignment only), and the corpus-level Phase 11
+quantitative-feasibility write-up all remain open work, entirely
+unaffected by this closure. See `README.md`'s **Current project status**
+and **How to continue this project** sections, both updated to reflect
+this closure, for what happens next.
+
+Running totals (final for Phase 6): 2,276/3,659 screened (1,162
+include/1,114 exclude), 1,383 permanently unretrieved (182
+wrong_file_retrieved, 1,201 not_retrievable), 1,162 extracted studies, 61
+effect_sizes rows.
+
+## 2026-09-28 (earlier) — Two-hundred-thirty-ninth full-text screening batch (23 records, 0 includes, 0 excludes, 23 wrong_file_retrieved) — a third, finer-grained reconciliation pass finally clears the "Sep 26 2026" folder; a complete wash, including two non-research documents mistakenly harvested
 
 A persistent Google Drive search-pagination anomaly in the "Sep 26 2026"
 folder caused two prior reconciliation passes (774, then 967 files) to
