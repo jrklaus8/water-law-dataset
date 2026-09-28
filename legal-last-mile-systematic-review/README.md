@@ -15,9 +15,12 @@ institutional access to further providers is exhausted, and 2,276 of
 before the corpus was judged large and comprehensive enough to close on;
 Phase 8 (extraction) fully caught up with the closed Phase 6 population;
 Phase 9 (risk of bias) barely started relative to how much has been
-extracted; Phase 10 (evidence classification) caught up with extraction;
-Phase 11 (corpus-level quantitative-feasibility judgment) not yet formally
-written up. See **Current project status** below for exact figures, and
+extracted, and further real progress is confirmed blocked pending access
+to the official validated-tool checklists; Phase 10 (evidence
+classification) caught up with extraction; Phase 11 (corpus-level
+quantitative-feasibility judgment) **complete** — no family clears the bar
+for meta-analysis, all three route to structured synthesis (SWiM)
+instead. See **Current project status** below for exact figures, and
 **What future researchers must know before using this dataset** for what
 those figures do and do not mean.
 
@@ -187,7 +190,37 @@ explained in full further down; this is the index.
     total.** See `CHANGELOG.md`, "Full-text retrieval phase (Phase 6)
     formally closed by researcher decision," for the full account, and
     **How to continue this project** for what remains open regardless of
-    this closure (reviewer_2, risk-of-bias, Phase 11).
+    this closure (reviewer_2, risk-of-bias — Phase 11 itself is now
+    complete, see item 14).
+14. **Phase 11 (corpus-level quantitative-feasibility judgment) is
+    complete, and genuine risk-of-bias rating progress is confirmed
+    blocked, not just historically noted as such.** 2026-09-28:
+    `ANALYSIS_PLAN.md` §2's decision tree was applied explicitly across
+    all 61 `effect_sizes.csv` rows — see
+    `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`.
+    No family clears the bar for meta-analysis; all three route to
+    structured synthesis (SWiM) instead. One reclassification came out of
+    this (S749, blank → Family C, matching its two ownership/price
+    analogues S526/S539 — see that document §5.1), and 9 blank-family rows
+    were flagged as apparently never evaluated against the family
+    definitions at all (S434, S435, S445, S448, S470, S471, S483, S489,
+    S491) — not resolved, an itemized open item. Separately, the same
+    session re-checked 7 `risk_of_bias_tool` assignments against
+    `RISK_OF_BIAS.md` §1's own table and corrected mismatches (S590, S593,
+    S606, S879, S1162, S1163, S749 — full detail in `RISK_OF_BIAS.md` §4),
+    and flagged a broader, unaddressed finding that roughly two dozen more
+    studies are tagged with the project's own non-validated Legal
+    Institutional Evidence Appraisal Framework despite having entirely
+    standard designs. It then tried to fetch the actual official RoB 2,
+    ROBINS-I, and JBI checklists (`riskofbias.info`, `methods.cochrane.org`,
+    `jbi.global`, a JBI wiki mirror) to do real ratings, since this
+    project's own rules prohibit reconstructing a validated instrument
+    from memory — **all four attempts were blocked by this environment's
+    network egress proxy.** This confirms the restriction is live now, not
+    an inherited note from an earlier environment. No new
+    `risk_of_bias_rating`s were fabricated as a workaround. See
+    `RISK_OF_BIAS.md` §4 for the complete, itemized state and what
+    unblocking this actually needs.
 
 ---
 
@@ -285,11 +318,11 @@ documentation**.
 | Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,276 of 3,659 assessed (**1,162 include / 1,114 exclude**); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
 | Full-text human reviewer_2 | **Just begun, 8.7% complete.** 100 of 1,162 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,062 includes and all 1,114 excludes still unreviewed by a human second reviewer at this stage |
 | Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,162 studies extracted, `S001`–`S1164` (`S227`, `S399` retired as documented post-hoc-duplicate corrections — real gaps in the numbering, not an error) |
-| Risk-of-bias appraisal | **Barely started relative to extraction.** Design-matched tool identified for 1,116 of 1,162 studies; an actual **rating** exists for only **33** — 29 of those are explicit partial/pilot judgments (2026-09-16 batch), 2 are complete AMSTAR 2 ratings for included secondary reviews (S370, S372 — both "Critically Low"), 2 more are complete individual ratings (S468 CASP Qualitative "Moderate"; S469 MMAT "Moderate") |
+| Risk-of-bias appraisal | **Barely started relative to extraction.** Design-matched tool identified for 1,116 of 1,162 studies (7 tool-assignment corrections made 2026-09-28, see **Known limitations**); an actual **rating** exists for only **33** — 29 of those are explicit partial/pilot judgments (2026-09-16 batch), 2 are complete AMSTAR 2 ratings for included secondary reviews (S370, S372 — both "Critically Low"), 2 more are complete individual ratings (S468 CASP Qualitative "Moderate"; S469 MMAT "Moderate"). Producing further real ratings is confirmed blocked in this environment — see **Known limitations** |
 | Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,162 studies — 248 flagged quantitative-synthesis-eligible, 1,062 qualitative-synthesis-eligible (categories overlap) |
-| Quantitative evidence (effect sizes) | 61 rows extracted from the 248 eligible studies (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 6 Family B, 16 Family C, **19 rows added before the Family A/B/C tag was consistently applied and still carry a blank family** (a real, disclosed data-cleanliness gap) |
+| Quantitative evidence (effect sizes) | 61 rows extracted from the 248 eligible studies (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 20 Family A, 6 Family B, 17 Family C, **18 rows added before the Family A/B/C tag was consistently applied and still carry a blank family** (a real, disclosed data-cleanliness gap; S749 was reclassified blank→C on 2026-09-28, see **Known limitations**) |
 | Pooled/meta-analytic estimates | **Zero.** Every effect_sizes.csv row has `included_in_pooled_estimate = FALSE`; almost every one cites "single study defining this exact exposure-comparator pairing" as the reason, per `ANALYSIS_PLAN.md` §2 |
-| Corpus-level quantitative-feasibility judgment (Phase 11) | **Not yet formally written up** as its own document, though the decision-tree reasoning is already recorded per-effect-size in `effect_sizes.csv`'s `exclusion_from_pooling_reason` field |
+| Corpus-level quantitative-feasibility judgment (Phase 11) | **Complete, 2026-09-28** — `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`. Verdict: no family clears the bar for meta-analysis; all three route to Phase 13's structured synthesis (SWiM) instead. Identifies one 3-study pooling-candidate sub-cluster in Family C (utility ownership vs. price/affordability) and names the specific metric-comparability obstacle still blocking it |
 | Meta-analysis / sensitivity / publication-bias code (Phases 12–15) | Templates exist (`08_code/R/*.R`, `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`) but have **never been run against real data** |
 | Preregistration | Draft ready (`00_admin/preregistration/osf_preregistration_draft.md`), **not submitted** — no OSF account access from this environment |
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
@@ -918,23 +951,51 @@ In roughly this order, for whoever picks this up next:
    excluded study simply never appears anywhere downstream.
 3. **Do a real risk-of-bias pass**, not more partial pilot judgments,
    against the actual RoB 2 / ROBINS-I / JBI / CASP / MMAT / AMSTAR 2
-   instruments in hand — the 29 "partial pilot" ratings from 2026-09-16
-   should be revisited and completed, not left as the permanent record.
+   instruments — the 29 "partial pilot" ratings from 2026-09-16 should be
+   revisited and completed, not left as the permanent record. **This is
+   currently blocked, confirmed 2026-09-28**: obtaining the actual
+   official checklists (required — this project's own rules prohibit
+   reconstructing one from memory) requires network access to
+   `riskofbias.info`, `methods.cochrane.org`, or `jbi.global`, all of
+   which returned `EGRESS_BLOCKED` from this environment's proxy when
+   tested. Either get the researcher to supply the official checklist
+   documents directly (the same way full-text PDFs have been supplied),
+   or run this from an environment where one of those domains is
+   reachable. Separately, and not blocked: a further audit of
+   `risk_of_bias_tool` assignments is still needed — 2026-09-28 corrected
+   7 clear mismatches (`RISK_OF_BIAS.md` §4) but flagged, without fixing,
+   roughly two dozen more studies that appear to be over-tagged with the
+   project's own Legal Institutional Evidence Appraisal Framework despite
+   having standard RCT/DiD/PSM/panel designs that `RISK_OF_BIAS.md` §1's
+   own table already routes elsewhere.
 4. **Run a DOI-variant duplicate audit across the full 27,481-record
    pool**, not just the extracted subset, given three known instances of
    the same paper carrying two `record_id`s. A script that normalizes DOIs
    (stripping URL prefixes, case, and — per the `S063` case above — any
    trailing non-DOI suffix a source export may have appended) before
    matching would catch more of these than exact-string comparison does.
-5. **Once each of Families A, B, and C has more than one comparable
-   effect-size row, run `ANALYSIS_PLAN.md` §2's decision tree explicitly at
-   the family level and write up Phase 11 as its own document** —
-   currently the reasoning exists only scattered across individual
-   `exclusion_from_pooling_reason` fields.
-6. **Only after Phase 11 finds a family eligible**, run the actual
-   meta-analysis / sensitivity / publication-bias code in `08_code/R/`
-   against real data for the first time, and validate it against a
-   hand-calculated check on at least one family before trusting its output.
+5. **Phase 11 is now done** (2026-09-28,
+   `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`)
+   — no family clears the bar for meta-analysis. The next step is writing
+   the three Phase 13 SWiM syntheses this verdict requires (one per
+   family, from `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`,
+   citing the Phase 11 document as "why this family did not proceed to
+   meta-analysis") — not yet done. Separately, Phase 11 flagged but did
+   not resolve 9 blank-`synthesis_family` effect-size rows that were
+   apparently never evaluated against the family definitions at all
+   (S434, S435, S445, S448, S470, S471, S483, S489, S491) — that
+   evaluation is real, undone work, not a mechanical follow-up.
+6. **Meta-analysis remains not justified** given the Phase 11 verdict —
+   `08_code/R/`'s meta-analysis/sensitivity/publication-bias templates
+   have nothing to run against. The one exception worth real
+   investigation: Phase 11 §5.1 identifies a 3-study Family C sub-cluster
+   (S526, S539, S749 — private-vs-public utility ownership and
+   price/affordability) that is close, blocked only by non-identical price
+   metrics across the three studies. A dedicated methods note weighing
+   whether a defensible common-metric transformation exists (per
+   `ANALYSIS_PLAN.md` §4) — not a decision to make in passing — could
+   potentially unlock the corpus's first real pooled estimate. Do this
+   before touching `08_code/R/` for anything else.
 7. **Update the stale documents** listed in **A warning about stale
    documentation** — `PRISMA_WORKFLOW.md`'s Phase 6+ entries,
    `RISK_OF_BIAS.md` §4, `ANALYSIS_PLAN.md` §13, and the parent

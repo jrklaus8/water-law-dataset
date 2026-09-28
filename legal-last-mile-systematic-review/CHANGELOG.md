@@ -4,7 +4,60 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-28 (latest) — Full-text retrieval phase (Phase 6) formally closed by researcher decision
+## 2026-09-28 (latest) — Phase 11 corpus-level quantitative-feasibility judgment written; risk-of-bias tool-assignment corrections; real appraisal against the six validated tools confirmed blocked
+
+**Phase 11.** `ANALYSIS_PLAN.md` §2's decision tree was applied explicitly
+at the family level, for the first time, across all 61 rows of
+`effect_sizes.csv` — see the new
+`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`.
+**Verdict: no family (A, B, or C) clears the bar for meta-analysis; all
+three route to Phase 13's structured quantitative synthesis (SWiM)
+instead.** The document identifies the corpus's strongest pooling
+candidate — a 3-study Family C sub-cluster on private-vs-public utility
+ownership and price/affordability (S526, S539, and S749, newly
+reclassified into Family C as part of this pass — its exposure and
+outcome type match S526/S539's already-established Family C tag, and
+leaving it blank was an inconsistency, not a principled distinction) —
+and names the specific, unresolved obstacle still blocking it
+(non-identical price metrics: a unit-price ratio, a dollar bill amount,
+and an R$/m3 tariff level). It also flags 9 blank-`synthesis_family` rows
+(S434, S435, S445, S448, S470, S471, S483, S489, S491) that appear to
+have never been evaluated against the family definitions at all — an
+itemized, unresolved open item, not force-assigned here.
+
+**Risk of bias.** Re-examined the 61 `effect_sizes.csv` studies'
+`risk_of_bias_tool` assignments against `RISK_OF_BIAS.md` §1's own
+design-to-tool table and corrected 7 mismatches: S590 and S593 (no tool
+at all — both cross-sectional, assigned JBI Cross Sectional); S606 (no
+tool — panel/longitudinal observational, assigned ROBINS-I); S879 (was
+tagged the project's own Legal Institutional Evidence Appraisal Framework
+despite being a literal randomized controlled trial — corrected to RoB
+2); S1162 and S1163 (both wrongly tagged RoB 2 despite neither being
+randomized — corrected to JBI Cross Sectional and ROBINS-I respectively);
+S749 (corrected to JBI Cross Sectional to match its new Family C
+analogues S526/S539). A broader, unresolved finding: roughly two dozen
+further studies appear to carry the Legal Framework tag despite having
+entirely standard designs (RCT, DiD, PSM, panel fixed-effects) that
+`RISK_OF_BIAS.md` §1 already assigns to one of the six validated tools —
+not corrected in this pass, flagged in `RISK_OF_BIAS.md` §4 for a future
+dedicated audit.
+
+**No new `risk_of_bias_rating`s were added.** This session tested whether
+the official checklists for RoB 2 and ROBINS-I (`riskofbias.info`,
+`methods.cochrane.org`) and the JBI Critical Appraisal Checklist
+(`jbi.global` and a JBI wiki mirror) could actually be fetched, since
+`04_quality/appraisal_forms/APPRAISAL_FORM.md` explicitly requires the
+real current instrument and explicitly prohibits reconstructing one from
+memory. All four attempts returned `EGRESS_BLOCKED` from this
+environment's network proxy — confirming, not just inheriting from an
+earlier note, that this restriction is real and current. Producing
+ratings against these tools without the actual checklist would be exactly
+the fabrication this project's own rules prohibit, so none were produced.
+See `RISK_OF_BIAS.md` §4 for the full, itemized current state (1,116/1,162
+tool-assigned, 33/1,162 rated, of which 4 are complete non-partial
+ratings) and what unblocking this needs going forward.
+
+## 2026-09-28 (earlier) — Full-text retrieval phase (Phase 6) formally closed by researcher decision
 
 The researcher reported that their institutional (university) access to
 further database providers is exhausted — no further full-text PDFs can

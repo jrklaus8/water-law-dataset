@@ -64,15 +64,72 @@ directly into the Discussion/Limitations sections of `PUBLICATION_PLAN.md`.
 
 ## 4. Status
 
-No study has yet been appraised — appraisal happens as part of extraction
-(`CODEBOOK.md` §8), and extraction has not started: full-text screening
-(Phase 6) and pilot extraction (Phase 7) are both scaffolded but not yet
-run against real decisions, see `PRISMA_WORKFLOW.md`. The search phase
-itself closed 2026-09-11 (`SEARCH_PROTOCOL.md` §7) — that is no longer
-what's blocking this phase. `04_quality/appraisal_forms/` now has
-`APPRAISAL_FORM.md` (the general process guide — see there for how each
-tool's rating is recorded into `extraction_database.csv`) and a fillable
-form for this project's own Legal Institutional Evidence Appraisal
-Framework; `04_quality/risk_of_bias/` now has a template for the
-end-of-phase cross-cutting narrative in §3 above. Neither directory has
-any actual completed appraisal yet.
+**Rewritten 2026-09-28 — the text above was stale (it described a state
+from before extraction had even started; extraction now holds 1,162
+studies).** Current real state, of 1,162 extracted studies:
+
+- **`risk_of_bias_tool` populated for 1,116 of 1,162** (46 still have no
+  tool assigned at all — untouched by this pass, which focused on the 61
+  studies in `effect_sizes.csv`).
+- **`risk_of_bias_rating` populated (fully or partially) for 33** — 29 are
+  explicit "partial pilot" judgments from 2026-09-16 (some domains
+  assessed, others marked not-assessable; see
+  `04_quality/appraisal_forms/S*_*.md`), and 4 are complete, non-partial
+  ratings (S370, S372: AMSTAR 2; S468: CASP Qualitative; S469: MMAT).
+- **2026-09-28 pass (this one):** did not add new ratings. It re-examined
+  the 61 `effect_sizes.csv` studies' `risk_of_bias_tool` assignments
+  against this document's own §1 design-to-tool table and corrected 7
+  that did not match: S590, S593 (missing entirely — both cross-sectional
+  comparisons, assigned JBI Cross Sectional), S606 (missing — panel/
+  longitudinal observational, assigned ROBINS-I, matching this project's
+  own established convention for that design), S879 (was tagged the Legal
+  Framework despite being a literal randomized controlled trial —
+  corrected to RoB 2), S1162 and S1163 (both were tagged RoB 2 despite
+  neither being randomized — S1162 corrected to JBI Cross Sectional,
+  S1163 to ROBINS-I since its exposure is a genuine program/intervention),
+  and S749 (corrected to JBI Cross Sectional to match its two now-linked
+  Family C analogues S526/S539 — see
+  `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`
+  §5.1).
+- **A broader, unresolved finding from this same pass:** roughly two
+  dozen studies are tagged with the project's own **Legal Institutional
+  Evidence Appraisal Framework** (§2 above) despite having entirely
+  standard designs — RCTs, difference-in-differences, propensity-score
+  matching, panel fixed-effects regression — that this document's §1
+  table already assigns to RoB 2, ROBINS-I, or a JBI checklist. The Legal
+  Framework is meant for studies that *do not fit* any of those six
+  designs (doctrinal-empirical hybrids, institutional case studies,
+  jurimetric analyses), not as a generic label for "any study with a
+  legal/institutional exposure variable." This looks like the Legal
+  Framework having been over-applied across several earlier extraction
+  batches. **Not corrected in this pass** — it needs a study-by-study
+  design re-classification at the same level of care given to the 7
+  corrections above, which this pass did not have room for. A future
+  pass should audit every `Legal Institutional Evidence Appraisal
+  Framework`-tagged row against this document's §1 table before trusting
+  its tool assignment.
+- **Why no new `risk_of_bias_rating`s were produced today, beyond
+  tool-classification fixes:** `04_quality/appraisal_forms/APPRAISAL_FORM.md`
+  explicitly requires obtaining the actual current official checklist for
+  whichever of the six validated tools applies, and explicitly prohibits
+  reconstructing one from memory. This session attempted to fetch the
+  official RoB 2 and ROBINS-I pages from `riskofbias.info` and
+  `methods.cochrane.org`, and the JBI Critical Appraisal Checklist from
+  `jbi.global` and a JBI wiki mirror — **all four domains returned
+  `EGRESS_BLOCKED` from this environment's network proxy**, confirming
+  (not just inheriting from an earlier note) that this access restriction
+  is real and current, not merely historical. Producing "ratings" against
+  these tools without the actual instrument would be exactly the
+  fabrication this document and `SOURCES.md` §9–13 already warn against.
+  Genuine progress on the remaining ~1,083 tool-assigned-but-unrated
+  studies (plus the 46 with no tool, plus completing the 29 partial
+  pilots) requires either the researcher supplying the official checklist
+  documents directly (the same way full-text PDFs have been supplied), or
+  a future session with unblocked access to one of those four domains.
+- `04_quality/appraisal_forms/` still has `APPRAISAL_FORM.md` (the general
+  process guide) and a fillable form for the project's own Legal
+  Institutional Evidence Appraisal Framework; `04_quality/risk_of_bias/`
+  still has only the template for the end-of-phase cross-cutting
+  narrative in §3 above — that narrative has not been written yet, and
+  should not be until real ratings exist for enough of the corpus to say
+  something evidence-based about it.

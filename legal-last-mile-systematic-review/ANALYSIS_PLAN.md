@@ -163,15 +163,23 @@ not actually require. See `REPRODUCIBILITY.md`.
 
 ## 13. Status
 
-**No data has been extracted, so no analysis in this document has
-actually been run.** The search phase itself closed 2026-09-11
-(`SEARCH_PROTOCOL.md` §7) — that is no longer what's blocking this
-document. The real current blocker is upstream: full-text screening
-(Phase 6) hasn't produced real decisions yet, so extraction (Phase 8) and
-therefore evidence classification (Phase 10) and quantitative feasibility
-(Phase 11) haven't started either. `08_code/R/` (Phases 12/14/15) and
-`06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md` (Phase 13) hold
-templates written directly against this plan's own specification, but
-**none of that code has actually been run** — see `08_code/R/README.md`'s
-"Status" section. `05_analysis/` still holds only CSV schemas/templates
-and `.gitkeep` files where actual results will go.
+**This section was stale for a long time — the text above described a
+state (no extraction, Phase 6 not producing decisions) that stopped being
+true many batches ago; it is rewritten here as of 2026-09-28 rather than
+left to drift further.** Full-text retrieval (Phase 6) formally closed
+2026-09-28; extraction (Phase 8) holds 1,162 studies (S001–S1164);
+evidence classification (Phase 10) is populated for all of them; **Phase
+11 — this document's own §2 decision tree, applied at the family level —
+is now complete**, in
+`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`.
+Verdict: no family (A, B, or C) clears the bar for meta-analysis; all
+three route to Phase 13's structured quantitative synthesis (SWiM)
+instead — see that document for the full reasoning, including the one
+sub-cluster (Family C's utility-ownership/price studies) that comes
+closest and exactly why it still doesn't clear. `08_code/R/` (Phases
+12/14/15) and `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`
+(Phase 13) still hold only templates — **none of that code has actually
+been run**, and per Phase 11's verdict, Phase 12 (meta-analysis) has
+nothing to run against yet; Phase 13's three SWiM write-ups (one per
+family) are the actual next step. See `08_code/R/README.md`'s "Status"
+section and `README.md`'s "How to continue" for what remains.

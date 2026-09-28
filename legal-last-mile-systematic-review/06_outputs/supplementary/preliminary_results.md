@@ -6898,45 +6898,56 @@ date above.*
   extracted (`S001`–`S1164`, with `S227`/`S399` retired as documented
   post-hoc-duplicate corrections), no outstanding gap.
 - **No risk-of-bias rating has been performed on the great majority of the
-  1,162 extracted studies.** A design-matched appraisal tool is identified
-  for 1,116 of 1,162, but an actual completed rating exists for only 33:
-  29 are explicit partial/pilot judgments from a single 2026-09-16 pilot
-  batch (frequently recorded as "Not ratable" or "at least [severity]"),
-  and only 4 (`S370`, `S372` — AMSTAR 2, both "Critically Low"; `S468`,
-  `S469` — CASP Qualitative / MMAT, both "Moderate") are complete,
-  non-partial ratings. `risk_of_bias_rating` is deliberately left blank
-  for the rest pending a real pass with the correct instrument in hand
-  (`RISK_OF_BIAS.md`'s explicit prohibition on reconstructing a validated
-  tool from memory). This is a real, reportable limitation, not an
-  oversight, and is currently the single largest piece of unfinished work
-  in the pipeline relative to how far everything upstream has progressed.
-- **No quantitative-feasibility determination (Phase 11) has been made
-  for any candidate synthesis family.** 248 studies are individually
-  flagged quantitative-synthesis-eligible in `evidence_map.csv`; that is
-  not the same as any family clearing `ANALYSIS_PLAN.md` §2's full
-  decision tree (empirical basis → substantively comparable estimand →
-  enough independent, non-secondary studies) — that corpus-level judgment
-  has not been made for any family. `05_analysis/effect_sizes/
-  effect_sizes.csv` currently holds 61 rows with a genuine, non-fabricated
-  exposure-vs-comparator contrast and a locatable effect estimate: 20
-  Family A, 6 Family B, 16 Family C, and 19 added before the Family A/B/C
-  tag was consistently applied and still carrying a blank family (a
-  disclosed data-cleanliness gap, not lost data). Every row has
-  `included_in_pooled_estimate = FALSE` — no family yet has more than a
-  handful of studies sharing a genuinely comparable exposure-comparator
-  definition, so none is close to clearing the decision tree. This
+  1,162 extracted studies, and this is now confirmed structurally blocked,
+  not merely undone.** A design-matched appraisal tool is identified for
+  1,116 of 1,162 (7 tool-assignment corrections made 2026-09-28 — see
+  `RISK_OF_BIAS.md` §4), but an actual completed rating exists for only
+  33: 29 are explicit partial/pilot judgments from a single 2026-09-16
+  pilot batch (frequently recorded as "Not ratable" or "at least
+  [severity]"), and only 4 (`S370`, `S372` — AMSTAR 2, both "Critically
+  Low"; `S468`, `S469` — CASP Qualitative / MMAT, both "Moderate") are
+  complete, non-partial ratings. `risk_of_bias_rating` is deliberately
+  left blank for the rest: `RISK_OF_BIAS.md`'s own process guide prohibits
+  reconstructing a validated tool (RoB 2, ROBINS-I, the JBI checklists)
+  from memory and requires fetching the actual official checklist first.
+  2026-09-28 tested this directly — `riskofbias.info`, `methods.cochrane.org`,
+  and `jbi.global` (plus a JBI wiki mirror) all returned `EGRESS_BLOCKED`
+  from this environment's network proxy. This is a real, reportable,
+  *confirmed-current* limitation, not an oversight, and remains the single
+  largest piece of unfinished work in the pipeline relative to how far
+  everything upstream has progressed.
+- **The quantitative-feasibility determination (Phase 11) is now
+  complete** (2026-09-28,
+  `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`).
+  248 studies are individually flagged quantitative-synthesis-eligible in
+  `evidence_map.csv`; `ANALYSIS_PLAN.md` §2's full decision tree
+  (empirical basis → substantively comparable estimand → enough
+  independent, non-secondary studies) was applied to the much stricter
+  61-row `effect_sizes.csv` pool, at the family level, for the first time.
+  **Verdict: no family clears the bar for meta-analysis.** 20 Family A, 6
+  Family B, 17 Family C (S749 reclassified blank→C as part of this pass —
+  its ownership/price exposure-outcome pairing matches its two Family C
+  analogues S526/S539), and 18 rows still carry a blank family, of which 9
+  appear to have never been evaluated against the family definitions at
+  all (an itemized, unresolved open item: S434, S435, S445, S448, S470,
+  S471, S483, S489, S491). All three families route to Phase 13's
+  structured quantitative synthesis (SWiM) instead of meta-analysis. One
+  genuine near-miss was identified: a 3-study Family C sub-cluster
+  (private-vs-public utility ownership and price/affordability — S526,
+  S539, S749) shares the same exposure but not yet a common outcome
+  metric, so it remains unpooled pending a dedicated methods decision on
+  whether a defensible metric conversion exists. Every `effect_sizes.csv`
+  row still has `included_in_pooled_estimate = FALSE`, correctly. This
   paragraph previously narrated the study-by-study growth of
   `effect_sizes.csv` inline from 2026-09-16 through S649/2026-09-22 and
   was then left unmaintained through dozens of subsequent batches; rather
-  than repeat that drift, the complete study-by-study history now lives
-  only in `CHANGELOG.md`'s dated batch entries, which this paragraph
-  points to instead of re-narrating. Phases 12–16 (meta-analysis, SWiM
-  synthesis, sensitivity analysis, publication bias, PRISMA reporting)
-  have R-script/template scaffolding built but are all blocked on Phase 11
-  and have not been run against real data. None of this is affected by
-  the Phase 6 retrieval closure above — no further full-text retrieval
-  will add new candidate studies to this pool, but writing up Phase 11
-  against the pool that already exists remains entirely open work.
+  than repeat that drift, the complete study-by-study history lives only
+  in `CHANGELOG.md`'s dated batch entries. Phases 12–16 (meta-analysis,
+  SWiM synthesis, sensitivity analysis, publication bias, PRISMA
+  reporting) still have only R-script/template scaffolding, unrun against
+  real data — Phase 12 (meta-analysis) has nothing to run given the Phase
+  11 verdict; Phase 13's three SWiM write-ups are the actual next step and
+  have not been done yet.
 
 ## Why this file is still preliminary, not a results section
 
@@ -6948,9 +6959,13 @@ file now reports real screening and extraction progress — because that
 progress is real, logged, and reproducible from the CSVs it cites — but it
 still contains **no finding about any legal/administrative mechanism's
 relationship to any household-level water/sanitation outcome**, because no
-such finding has been produced yet: Phase 9 (risk of bias) and Phase 11
-(quantitative feasibility) both remain undone, and nothing in
+such finding has been produced yet: Phase 9 (risk of bias) remains
+undone, and while Phase 11 (quantitative feasibility) is now complete, its
+verdict is that no family clears the bar for meta-analysis — so nothing in
 `05_analysis/` or `08_code/R/` has been run against this project's real
-data. The next entry in this file that reports an actual finding should be
-written only once a synthesis family has cleared Phase 11's decision tree
-and a corresponding Phase 12/13 output exists.
+data, and Phase 13's structured (SWiM) syntheses, which Phase 11's verdict
+actually calls for, do not exist yet either. The next entry in this file
+that reports an actual finding should be written only once a Phase 13
+SWiM synthesis exists for at least one family, or — if the Family C
+ownership/price sub-cluster's metric-comparability question (see above)
+is ever resolved in favor of pooling — a corresponding Phase 12 output.
