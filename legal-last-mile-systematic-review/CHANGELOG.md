@@ -17,7 +17,7 @@ No study-level data values were changed except one added column. Researcher deci
 - `code/analysis/build_manuscript_pieces.py` → `07_manuscript/draft/GENERATED_MANUSCRIPT_PIECES_2026-09-29.md` (methods/AI disclosure, PRISMA flow paragraph, limitations; figures from `current_figures`).
 - `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (prompts only; PRISMA items 25/26 still need the researcher's answers); checklist rows 25/26 point to it.
 - `verify_repository.py` now runs 97 checks: adds boolean-field validity (three annotated `migrant_population` values allow-listed), freshness of the generated report, manuscript pieces, vocabulary and sensitivity files, README constants used by the manuscript generator, and the queue's tier-1 count.
-- Found while writing the report: the human title/abstract second pass covered include-plus-unsure records only (README), whereas `AI_USE_STATEMENT.md`/`AUDITING_GUIDE.md` say "all records" — wording in those two files corrected to the README's narrower scope, and flagged in `DECISIONS_AND_OPEN_ITEMS.md` for the researcher to confirm.
+- Found while writing the report: the human title/abstract second pass covered include-plus-unsure records only (README), whereas `AI_USE_STATEMENT.md`/`AUDITING_GUIDE.md` say "all records" — wording in those two files corrected to the README's narrower scope, and flagged in `DECISIONS_AND_OPEN_ITEMS.md`; the researcher confirmed the corrected scope on 2026-09-29.
 
 ## 2026-09-28 (later) — Title amended to "AI-Assisted Systematic Review"; AI-use statement added
 
