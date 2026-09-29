@@ -14,8 +14,8 @@
 | Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique (SSRN and Westlaw/Lexis never searched) |
 | Title/abstract screening | Final 3,659 include / 6 exclude: 26,222 of 27,481 screened by AI first pass (3,062 include / 22,557 exclude / 603 unsure; 1,259 without an abstract left undecided); a human second pass covered the 3,665 include-plus-unsure records, **not the 22,557 AI excludes**; 99.8% agreement, flagged by the project as unusually high |
 | Full-text screening | Closed by researcher decision at **2,276 of 3,659 assessed (62.2%)**: **1,159 include / 1,117 exclude**; 1,383 never assessed. 151 of the excludes are E10 ("full text inaccessible"), so only **2,125** were judged on content. AI decisions; a human confirmed 100 includes and no excludes |
-| Extraction | 1,159 studies, 92 codebook fields, by the AI; 68 from abstract/metadata only; no second extractor |
-| Appraisal | Rule-based batch ratings from extracted fields with design-matched tools: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 24, Legal Framework 447, NONE 12. Legal Framework is the project's own **non-validated** instrument. No human review of ratings |
+| Extraction | 1,159 studies, 92 codebook fields, by the AI; 67 from abstract/metadata only; no second extractor |
+| Appraisal | Rule-based batch ratings from extracted fields with design-matched tools: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 23, Legal Framework 447, NONE 13. Legal Framework is the project's own **non-validated** instrument. No human review of ratings |
 | Synthesis | Phase 11: no family clears the bar for meta-analysis. 62 effect-size rows (A 20, B 6, C 20, 16 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses |
 
 ## 2A. Preliminary findings drawn from the extracted evidence
@@ -23,9 +23,9 @@
 ### 2A.1 What the evidence base looks like
 
 - **Volume and recency.** 1,159 studies; 985 (85%) published 2010 or later (median year 2018; 30 before 2000).
-- **Design mix** (evidence-map `study_design_class`; 349 studies carry free-text values outside the 8-value enum — the commonest are variants of "case study", e.g. ethnographic case study (16); qualitative case study (10); they are not in the counts that follow): qualitative 267, mixed-methods 207, observational 147, quasi-experimental 65, doctrinal 44, jurimetric 39, secondary systematic reviews 36, experimental 5. By appraisal tool: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 24, Legal Framework 447, NONE 12.
+- **Design mix** (evidence-map `study_design_class`; 349 studies carry free-text values outside the 8-value enum — the commonest are variants of "case study", e.g. ethnographic case study (16); qualitative case study (10); they are not in the counts that follow): qualitative 267, mixed-methods 207, observational 147, quasi-experimental 65, doctrinal 44, jurimetric 39, secondary systematic reviews 36, experimental 5. By appraisal tool: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 23, Legal Framework 447, NONE 13.
 - **Designs able to support a causal claim about a legal/administrative mechanism:** 68 (6%) — 63 quasi-experimental studies and 5 randomised trials (which are 4 distinct trials, see §3.4). Only 35 studies carry a numeric mechanism-certainty of 3 or 4 (quasi-experimental or experimental evidence); 238 sit at level 1 (documented association) and 286 at level 2; 596 carry narrative text instead of a 0–4 code.
-- **Geography** (`country` is free text; 122 studies name several countries or a region and are not counted below): India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. The dissertation's comparison countries are unevenly covered: **Brazil 87, Canada 15 (19 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).**
+- **Geography** (`country` is free text; 123 studies name several countries or a region and are not counted below): India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. The dissertation's comparison countries are unevenly covered: **Brazil 87, Canada 15 (19 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).**
 - **Legal systems** (rule-based buckets): blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
 - **Setting and language:** urban (incl. informal settlements) 525, rural 298, mixed/both 270, peri-urban 29, blank/other 37; English 1073 of 1,159 studies, Spanish 32, Portuguese 22, French 6.
 
@@ -37,10 +37,10 @@ Counts are studies for which the extraction coded the field `TRUE` (a blank is *
 |---|---|---|---|---|
 | `institutional_fragmentation` | 663 | | `water_access` | 1,013 |
 | `discretion_accommodation` | 597 | | `formal_connection` | 577 |
-| `fees` | 541 | | `service_coverage` | 563 |
+| `fees` | 542 | | `service_coverage` | 564 |
 | `service_area` | 482 | | `affordability` | 507 |
 | `political_coordination` | 475 | | `sanitation_access` | 457 |
-| `enforcement` | 454 | | `service_reliability` | 381 |
+| `enforcement` | 455 | | `service_reliability` | 381 |
 | `participation` | 440 | | `service_quality` | 301 |
 | `eligibility` | 422 | | `service_continuity` | 249 |
 | `burden` | 419 | | `service_quantity` | 206 |
@@ -52,7 +52,7 @@ Counts are studies for which the extraction coded the field `TRUE` (a blank is *
 | `disconnection` | 107 | |  |  |
 | `reconnection` | 23 | |  |  |
 
-Institutional fragmentation (663), official discretion/accommodation (597) and fees/tariffs (541) are the most frequently coded mechanisms; formal-connection (577) and affordability (507) outcomes are well represented, while sanitation access (457) is coded about half as often as water access (1,013). Mechanisms concerning redress and review — administrative review (69), judicial review (65), complaint (124), reconnection (23) — and application outcomes (refusal 107, delay 95, success 75) are coded far less often.
+Institutional fragmentation (663), official discretion/accommodation (597) and fees/tariffs (542) are the most frequently coded mechanisms; formal-connection (577) and affordability (507) outcomes are well represented, while sanitation access (457) is coded about half as often as water access (1,013). Mechanisms concerning redress and review — administrative review (69), judicial review (65), complaint (124), reconnection (23) — and application outcomes (refusal 107, delay 95, success 75) are coded far less often.
 
 ### 2A.3 The quantitative subset: three structured syntheses (direction of association, not effect size)
 
@@ -138,7 +138,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 ### 3.3 Missing or thin data
 
-- 68 studies were extracted from abstract or metadata only (5.9%); none has an effect-size row, so the SWiM syntheses are unaffected, but descriptive counts and ratings include them. There is no second extractor: extracted values have not been checked against the source papers.
+- 67 studies were extracted from abstract or metadata only (5.8%); none has an effect-size row, so the SWiM syntheses are unaffected, but descriptive counts and ratings include them. There is no second extractor: extracted values have not been checked against the source papers.
 - 59 of 140 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
 - Of 62 effect-size rows, 7 give a confidence interval and 25 a standard error; estimates are as the papers report them and none is pooled.
 
@@ -146,9 +146,9 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 **Are the AMSTAR 2 studies actually systematic reviews? Partly confirmed, partly not.**
 
-- 24 studies carry AMSTAR 2; another 12 studies also had a secondary-review design class but were **reclassified to `NONE`** after an eligibility check found them to be self-described narrative, conceptual or documentary reviews that never claim a systematic search (S079, S320, S321, S322, S429, S430, S436, S440, S466, S479, S480, S482; `RISK_OF_BIAS.md` §4). AMSTAR 2 was not applied to those, and the project has **no validated instrument for a non-systematic review used as an evidence source** — an acknowledged gap.
-- Of the 24 that kept AMSTAR 2, each was classed as a secondary systematic review — but the evidence for that is thin: only 12 of the 24 records carry a method label in `study_design` (systematic, PRISMA, realist, scoping, mapping or meta-analysis); the other 12 (S052, S319, S323, S324, S325, S326, S327, S328, S329, S344, S350, S537) carry only the bare class label `systematic_review_secondary`, so their systematic character rests on the AI's earlier classification, not on a recorded method statement. **5 of them (S319, S324, S325, S326, S344) were extracted from abstract or metadata only, so their eligibility was never confirmed from the full text**; S326 is described as an "evidence survey" and S329 as a "narrative review with systematic search" (hybrids kept eligible with a noted caveat); S697's number of included studies was not extracted.
-- **Only 2 of the 24 received a formal AMSTAR 2 confidence rating** (S370, S372: Critically Low, because the review authors state they did no critical appraisal); the other 22 are "Not ratable" because the extraction lacks the information for the critical items. **So AMSTAR 2 currently tells the reader almost nothing about the reviews' confidence.**
+- 23 studies carry AMSTAR 2; another 13 studies also had a secondary-review design class but were **reclassified to `NONE`** after an eligibility check found them to be self-described narrative, conceptual or documentary reviews that never claim a systematic search (S079, S320, S321, S322, S326, S429, S430, S436, S440, S466, S479, S480, S482; `RISK_OF_BIAS.md` §4; S326 joined them on 2026-09-29 after its full text, supplied by you, showed no stated search, selection or appraisal method). AMSTAR 2 was not applied to those, and the project has **no validated instrument for a non-systematic review used as an evidence source** — an acknowledged gap.
+- Of the 23 that kept AMSTAR 2, each was classed as a secondary systematic review — but the evidence for that is thin: only 12 of the 23 records carry a method label in `study_design` (systematic, PRISMA, realist, scoping, mapping or meta-analysis); the other 11 (S052, S319, S323, S324, S325, S327, S328, S329, S344, S350, S537) carry only the bare class label `systematic_review_secondary`, so their systematic character rests on the AI's earlier classification, not on a recorded method statement. **4 of them (S319, S324, S325, S344) were extracted from abstract or metadata only, so their eligibility was never confirmed from the full text**; S329 is described as a "narrative review with systematic search" (a hybrid kept eligible with a noted caveat); S326, first flagged as an "evidence survey", was moved to `NONE` once its full text was read; S697's number of included studies was not extracted.
+- **Only 2 of the 23 received a formal AMSTAR 2 confidence rating** (S370, S372: Critically Low, because the review authors state they did no critical appraisal); the other 21 are "Not ratable" because the extraction lacks the information for the critical items. **So AMSTAR 2 currently tells the reader almost nothing about the reviews' confidence.**
 - *Tentative flag (this report's own observation, not a project ruling):* AMSTAR 2 was designed for reviews of healthcare interventions that include randomised or non-randomised studies; several of these reviews are realist, scoping or mapping reviews of qualitative and policy literature, for which a rating would be out-of-design even with full information. A decision on whether to keep AMSTAR 2 for these, or use a different instrument, is open.
 - Reviews are secondary evidence and are never pooled as if primary; their primary studies may also be in this corpus (a double-counting risk not yet checked).
 
@@ -170,7 +170,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 ## 4. Most useful next steps (in order)
 
 1. **Human check of the AI's screening**: work `full_text_reviewer_2_priority_queue_2026-09-28.csv` (tier 1: the 73 no-reviewer rows; tier 2: a stratified sample of excludes). It bounds the risk that eligible studies were excluded or ineligible ones included.
-2. **Obtain the full text of the abstract-only studies that carry the most weight**: (S366, the RoB 2 study, was re-extracted 2026-09-29), the five AMSTAR 2 reviews extracted from abstracts (S319, S324, S325, S326, S344), then the rest of the 68; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`).
+2. **Obtain the full text of the abstract-only studies that carry the most weight**: (S366, the RoB 2 study, was re-extracted 2026-09-29), the five AMSTAR 2 reviews extracted from abstracts (S319, S324, S325, S344), then the rest of the 67; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`).
 3. **Verify S879's randomisation unit against the paper** and confirm S189's parent-trial handling; then finalise or revise the RoB 2 cluster ratings.
 4. **Decide the AMSTAR 2 question**: keep it (and obtain full texts so the 22 "Not ratable" reviews can be rated) or replace it for realist/scoping/mapping reviews; decide how to handle the non-systematic reviews now labelled `NONE`. Check whether these reviews' primary studies are also in the corpus.
 5. **Second-extract a sample** (for example the 62 effect-size studies and the 47 no-reviewer includes) against the source papers to estimate extraction error.

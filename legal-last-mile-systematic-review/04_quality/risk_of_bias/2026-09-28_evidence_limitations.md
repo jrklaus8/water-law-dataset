@@ -57,8 +57,8 @@ unfinished normalization):
 | MMAT (mixed methods) | 205 | 18% |
 | JBI Cross-Sectional | 140 | 12% |
 | ROBINS-I (non-randomized intervention/quasi-experimental) | 63 | 5% |
-| AMSTAR 2 (secondary systematic reviews) | 24 | 2% |
-| NONE (no validated tool applies — narrative/conceptual/simulation studies) | 12 | 1% |
+| AMSTAR 2 (secondary systematic reviews) | 23 | 2% |
+| NONE (no validated tool applies — narrative/conceptual/simulation studies) | 13 | 1% |
 | RoB 2 (randomized controlled trials) | 5 | 0.4% |
 
 **This is the same underlying pattern the 2026-09-16 note already identified, now confirmed
@@ -81,8 +81,8 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 1,029 name exactly one country, **122 name several countries or a region and are
-not counted under any single country below**, and 8 are blank; `legal_system` has hundreds of distinct strings
+vocabularies. Of the 1,159 studies, 1,029 name exactly one country, **123 name several countries or a region and are
+not counted under any single country below**, and 7 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
 that also appears in a multi-country study, and the "top countries" are shares of all 1,159 studies.
@@ -209,11 +209,11 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 68 of the 1,159
-studies (5.9%) carry an `extraction_note` stating they were extracted from the published
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 67 of the 1,159
+studies (5.8%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
 obtained at extraction time (CASP 30, MMAT 14, JBI Cross-Sectional 11, Legal Framework 8,
-AMSTAR 2 5, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before that); 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
+AMSTAR 2 4 — S326 was re-read in full text on 2026-09-29 and moved to NONE, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before either); 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
 record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
 LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 69 as
 equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 69 are listed in

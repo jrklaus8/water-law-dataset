@@ -24,7 +24,7 @@ checks that the current-status documents quote these values. If a document disag
 | Extraction rows / evidence-map rows | 1,159 / 1,159 |
 | Highest study ID; retired-ID gaps | S1164; S227, S233, S299, S356, S399 |
 | Quantitative-synthesis-eligible / qualitative-synthesis-eligible | 247 / 1,059 |
-| Abstract/metadata-only extractions | 68 |
+| Abstract/metadata-only extractions | 67 |
 | Linked-report links (same data yes / partial) | 12 (2 / 2) |
 | Distinct studies (definite links / incl. partial) | 1,157 / 1,155 |
 
@@ -39,15 +39,15 @@ Method: the *earliest* tool keyword in `risk_of_bias_tool` decides (substring ma
 | JBI Cross-Sectional | 140 | 12.1 |
 | MMAT | 205 | 17.7 |
 | CASP Qualitative | 263 | 22.7 |
-| AMSTAR 2 | 24 | 2.1 |
+| AMSTAR 2 | 23 | 2.0 |
 | Legal Framework | 447 | 38.6 |
-| NONE | 12 | 1.0 |
+| NONE | 13 | 1.1 |
 
-Tool-applicable studies (all tools except NONE): 1,147; unrated among them: 0. NONE studies: 12 (4 with an explicit NOT APPLICABLE note, 8 blank by design). Causal-capable designs (ROBINS-I + RoB 2): 68. CASP + MMAT: 468; with Legal Framework: 915. JBI "High concern" (sparse extraction): 59 of 140. Legal Framework studies with legal_measurement_quality populated: 389 of 447.
+Tool-applicable studies (all tools except NONE): 1,146; unrated among them: 0. NONE studies: 13 (5 with an explicit NOT APPLICABLE note, 8 blank by design). Causal-capable designs (ROBINS-I + RoB 2): 68. CASP + MMAT: 468; with Legal Framework: 915. JBI "High concern" (sparse extraction): 59 of 140. Legal Framework studies with legal_measurement_quality populated: 389 of 447.
 
 ## Jurisdiction coverage (free-text fields; rule-based buckets, see current_figures.py)
 
-`country`: 1,029 studies name exactly one country, 122 name several countries or a region, 8 are blank. Top single-country values: India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. `legal_system` buckets: blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
+`country`: 1,029 studies name exactly one country, 123 name several countries or a region, 7 are blank. Top single-country values: India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. `legal_system` buckets: blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
 
 ## Certainty scale and ratings
 

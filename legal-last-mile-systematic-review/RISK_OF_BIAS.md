@@ -440,6 +440,7 @@ explicit NOT APPLICABLE note, 8 have a blank rating by design). **A later same-d
 retired two more rows (S233, an MMAT study, and S299, a Legal Framework study — the same papers as S1008
 and S392), so the final distribution is RoB 2 5, ROBINS-I 63, JBI 140, MMAT 205, CASP 263, AMSTAR 2 24,
 Legal Framework 447, NONE 12 (sum 1,159), with 1,147 tool-applicable studies.** The earlier text is left as written;
+**Correction 2026-09-29: S326 was re-read in full text, found not to be a systematic review and moved from AMSTAR 2 to NONE, so the current distribution is AMSTAR 2 23, Legal Framework 447, NONE 13 (sum 1,159), with 1,146 tool-applicable studies.**
 current statements are in `README.md`'s status table and
 `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`. See `CHANGELOG.md` for the full
 audit-correction entry.

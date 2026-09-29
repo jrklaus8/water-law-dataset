@@ -14,7 +14,7 @@ title carries the words "AI-Assisted" so that no reader has to discover this fro
 | Search strategy, exports, deduplication | Wrote and ran scripts for deduplication and audits | Designed searches, ran them in the databases, exported records | Duplicate audits were also run by the AI; not independently re-checked |
 | Title/abstract screening | First-pass decision and written rationale for each record | Second reviewer on the 3,665 include-plus-unsure records, not on the AI's 22,557 exclusions (99.8% agreement — flagged in the README as unusually high) | Yes, for those records |
 | Full-text screening | Read each supplied full text and decided include/exclude with a coded reason | Obtained and supplied the full texts; confirmed 100 includes (S001–S100) | **Only those 100 includes**; no excludes |
-| Data extraction (92 fields) | Extracted every study, largely from full text; 68 studies from abstract or metadata only | Supplied documents | **None**; no second extractor |
+| Data extraction (92 fields) | Extracted every study, largely from full text; 67 studies from abstract or metadata only | Supplied documents | **None**; no second extractor |
 | Risk-of-bias appraisal | Rule-based batch ratings from extracted fields, using the published instruments' structure | Supplied the official instrument documents | **None**; not a signalling-question read of each paper. One instrument is the project's own and is not validated |
 | Classification, effect-size table | Coded and classified | — | None |
 | Structured (SWiM) syntheses, feasibility judgment | Drafted, with disclosed judgment calls | Approves and decides | None |

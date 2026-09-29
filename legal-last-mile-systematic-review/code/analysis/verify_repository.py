@@ -142,7 +142,7 @@ has(el_txt, f"1,029 name exactly one country".replace('1,029', f"{F['country_sin
 has(el_txt, f"**{F['country_multi_or_regional_studies']} name several countries or a region", 'country multi count')
 for cname, cnt in F['country_top10_single_name'][:4]:
     has(el_txt, f"{cname} {cnt} (", f'top country {cname}')
-has('RISK_OF_BIAS.md', f"Legal Framework {T['Legal Framework']}, NONE 12 (sum {n:,})", 'dated audit annotation figures')
+has('RISK_OF_BIAS.md', f"AMSTAR 2 {T['AMSTAR 2']}, Legal Framework {T['Legal Framework']}, NONE {T['NONE']} (sum {n:,})", 'dated-correction figures')
 
 # ---- D. boolean fields, generated-file freshness, queue
 BOOL_COLS = ['peer_reviewed', 'household_level', 'community_level', 'indigenous_population', 'eligibility', 'burden', 'discretion_accommodation', 'enforcement',

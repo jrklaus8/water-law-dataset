@@ -1,3 +1,10 @@
+> **SUPERSEDED 2026-09-29.** The full text (researcher-supplied PDF, 21 pp) shows S326 is a narrative "survey of the evidence": it states no
+> search strategy, databases, selection procedure, protocol, duplicate screening, list of excluded studies or critical appraisal of the included
+> studies (its only selection rule is exclusionary: qualitative studies, case studies and narrative assessments without robust statistical tests are
+> not covered, notes 2 and 5). It is therefore not a systematic review, AMSTAR 2 does not apply, and `risk_of_bias_tool` is now `NONE` (as for S320 and
+> eleven other narrative reviews). The item-level table below is the 2026-09-16 abstract-only pilot, kept unchanged for the audit trail; none of
+> its "Not assessable" entries is a rating.
+
 # AMSTAR 2 Appraisal (partial/pilot) -- S326
 
 **Citation:** Bagnoli L, Bertomeu-Sanchez S, Estache A, Vagliasindi M (2023). Does the ownership of utilities matter for social outcomes? A survey of the evidence for developing countries. Util Policy.

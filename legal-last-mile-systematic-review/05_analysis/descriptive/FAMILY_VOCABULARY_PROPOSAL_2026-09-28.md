@@ -71,10 +71,10 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 | `institutional_structure_coordination` | 872 |
 | `discretion_accommodation` | 718 |
 | `eligibility_status_documentation` | 644 |
-| `fees_tariffs_subsidies` | 542 |
+| `fees_tariffs_subsidies` | 543 |
 | `participation_assistance` | 517 |
 | `procedural_burden` | 504 |
-| `enforcement_sanctions` | 489 |
+| `enforcement_sanctions` | 490 |
 | `review_redress` | 187 |
 | `regulatory_model_ownership` | 73 |
 
