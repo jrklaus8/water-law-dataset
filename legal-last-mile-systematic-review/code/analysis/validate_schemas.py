@@ -94,7 +94,7 @@ HARDCODED_SCHEMAS = {
         "legal_measurement_quality", "outcome_measurement_quality",
         "mechanism_certainty", "source_document", "page", "table", "figure",
         "section", "exact_location", "extraction_note", "researcher",
-        "date_extracted", "evidence_status",
+        "date_extracted", "evidence_status", "record_id",
     ],
     "05_analysis/descriptive/evidence_map.csv": [
         "study_id", "study_design_class", "evidence_level", "mechanism_family",

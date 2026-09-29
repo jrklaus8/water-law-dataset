@@ -58,6 +58,7 @@ check(len(es) == len(es_ids), 'effect_sizes has more than one row for a study (C
 inc = {r['record_id'] for r in ft if r['final_decision'] == 'include'}
 exc = {r['record_id'] for r in ft if r['final_decision'] == 'exclude'}
 active = [r for r in mp if r['status'] == 'active']
+check({r['study_id']: r['record_id'] for r in active} == {r['study_id']: r['record_id'] for r in ed}, 'extraction_database.record_id disagrees with study_record_map')
 check({r['study_id'] for r in active} == ed_ids, 'study_record_map active rows do not match extraction study_ids')
 check({r['record_id'] for r in active} == inc and len(active) == len(inc), 'study_record_map is not a bijection with the full-text includes')
 retired = {r['study_id']: r for r in mp if r['status'] != 'active'}
@@ -142,6 +143,34 @@ has(el_txt, f"**{F['country_multi_or_regional_studies']} name several countries 
 for cname, cnt in F['country_top10_single_name'][:4]:
     has(el_txt, f"{cname} {cnt} (", f'top country {cname}')
 has('RISK_OF_BIAS.md', f"Legal Framework {T['Legal Framework']}, NONE 12 (sum {n:,})", 'dated audit annotation figures')
+
+# ---- D. boolean fields, generated-file freshness, queue
+BOOL_COLS = ['peer_reviewed', 'household_level', 'community_level', 'indigenous_population', 'eligibility', 'burden', 'discretion_accommodation', 'enforcement',
+             'documentation', 'tenure', 'property', 'planning', 'zoning', 'building_permit', 'service_area', 'fees', 'procedural_steps', 'delay', 'discretion',
+             'hardship_exception', 'administrative_review', 'complaint', 'judicial_review', 'disconnection', 'reconnection', 'sanction', 'participation',
+             'institutional_fragmentation', 'political_coordination', 'bureaucratic_assistance', 'formal_connection', 'water_access', 'sanitation_access',
+             'service_coverage', 'service_reliability', 'service_quantity', 'service_quality', 'affordability', 'service_continuity', 'application_success',
+             'refusal', 'delay_outcome']
+_bad = [(r['study_id'], k, r[k]) for r in ed for k in BOOL_COLS if r[k] not in ('TRUE', 'FALSE', '')]
+check(not _bad, f'boolean fields hold non-TRUE/FALSE/blank values: {_bad[:5]}')
+_KNOWN_MIGRANT = {'S129', 'S412', 'S416'}  # three annotated values ("TRUE (...)" or "included as ...") recorded in DECISIONS_AND_OPEN_ITEMS.md
+_mig = {r['study_id'] for r in ed if r['migrant_population'] not in ('TRUE', 'FALSE', '')}
+check(_mig == _KNOWN_MIGRANT, f'migrant_population annotated values differ from the three known ones: {sorted(_mig ^ _KNOWN_MIGRANT)}')
+
+import build_manuscript_pieces as bmp, build_preliminary_report as bpr, propose_family_vocabulary as pv, sensitivity_analysis as sa  # noqa: E402
+def fresh(path, generated, script):
+    check(path.read_text(encoding='utf-8') == generated, f'{path.relative_to(ROOT)} is stale: run `python3 code/analysis/{script}`')
+fresh(bmp.OUT, bmp.build(), 'build_manuscript_pieces.py')
+fresh(bpr.OUT, bpr.build(), 'build_preliminary_report.py')
+fresh(pv.OUT_MD, pv.render(pv.build()), 'propose_family_vocabulary.py')
+fresh(sa.OUT_MD, sa.render(*sa.scenarios()), 'sensitivity_analysis.py')
+for needle in ('34,594', '27,481', '26,222', '1,259', '3,665'):
+    check(needle in text('README.md'), f'README.md no longer contains {needle}, which build_manuscript_pieces.py hard-codes')
+_q = csv.DictReader(open(ROOT / '02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv', encoding='utf-8', newline=''))
+_tier1 = sum(1 for r in _q if r['priority_tier'] == '1')
+check(_tier1 == F['decided_blank_reviewer_1'], f"reviewer_2 priority queue tier 1 has {_tier1} rows but {F['decided_blank_reviewer_1']} decided rows have no reviewer_1: rebuild the queue")
+for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md',):
+    check((ROOT / f_).exists(), f'{f_} is missing')
 
 print(f"{passes} checks passed, {len(fails)} failed")
 for f_ in fails:

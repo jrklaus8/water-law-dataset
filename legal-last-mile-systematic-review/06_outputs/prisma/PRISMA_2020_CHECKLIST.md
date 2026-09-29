@@ -76,8 +76,8 @@ because the manuscript hasn't been drafted yet).
 | 24a | Registration information | `00_admin/preregistration/osf_preregistration_draft.md` (drafted, not yet submitted — see `PRISMA_WORKFLOW.md` Phase 2) | ☐ |
 | 24b | Protocol availability | `PROTOCOL.md`, this repository itself | ☐ |
 | 24c | Amendments to protocol/registration, with rationale | `CHANGELOG.md` (`PROTOCOL.md` §12's amendment-logging requirement) | ☐ |
-| 25 | Funding/support sources and role | *(not yet recorded anywhere in this repo — add when known)* | ☐ |
-| 26 | Competing interests of review authors | *(not yet recorded anywhere in this repo — add when known)* | ☐ |
+| 25 | Funding/support sources and role | **Not yet recorded** — prompts in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (researcher to complete) | ☐ |
+| 26 | Competing interests of review authors | **Not yet recorded** — prompts in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (researcher to complete) | ☐ |
 | 27 | Availability of data, code, and materials | This repository (public git history), `REPRODUCIBILITY.md` | ☐ |
 
 ## Two rows with nothing to point to yet

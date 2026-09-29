@@ -164,6 +164,7 @@ header. Key type/format notes not obvious from the field name alone:
 | risk_of_bias_rating | string | tool-specific rating vocabulary (RoB 2: low/some concerns/high; ROBINS-I: low/moderate/serious/critical/no information; JBI/CASP/MMAT: per that tool's own scale) — record the tool alongside the rating so the scale is unambiguous |
 | mechanism_certainty | integer 0–4 | `CODEBOOK.md` §9 |
 | evidence_status | enum | `OBSERVED` / `CALCULATED` / `ASSUMED` / `INTERPRETED`, `PROJECT_SPEC.md` §13 |
+| record_id | string | **Added 2026-09-28 (93rd column, after the 92 codebook fields).** The `record_id` of this study's row in `full_text_screening_database.csv`; a full-text include. Unique per row. Filled from `study_record_map.csv`, which keeps the `link_method` provenance. |
 
 ## `03_extraction/extracted_data/study_record_map.csv` and `linked_reports_2026-09-28.csv`
 
@@ -172,8 +173,8 @@ read by any script.
 
 **`study_record_map.csv`** — `study_id, record_id, link_method, status, note`. One row per extracted study
 (1,159 `active`), plus the three retired rows (`retired_duplicate` for S233 and S299; `retired_excluded` for S356, excluded E05 on full text). It links each
-extraction row to its `full_text_screening_database.csv` `record_id`, because the extraction database has no
-`record_id` column. `link_method`: `extraction_note` (a record_id stated in the row's own note; 992),
+extraction row to its `full_text_screening_database.csv` `record_id`; since 2026-09-28 the same value is also the
+extraction database's own last column, and the map is kept for its `link_method` provenance and the retired rows. `link_method`: `extraction_note` (a record_id stated in the row's own note; 992),
 `doi` (122), `title in citation` (41), or `manual` (5, accent/spelling variants verified by hand). The map is
 a bijection with the 1,159 full-text includes. S227 and S399 (retired earlier) are not listed: their record
 IDs are not recoverable from the repository.

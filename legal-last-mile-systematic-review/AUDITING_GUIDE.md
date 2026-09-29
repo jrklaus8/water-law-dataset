@@ -20,7 +20,7 @@ from search hit to synthesis, what has already gone wrong and been fixed, and wh
 | Stage | Who did it | Independent human check |
 |---|---|---|
 | Search, deduplication | Researcher (databases, exports) + scripts in `code/search/` | Deduplication audits 2026-09-28 (DOI, title/author) |
-| Title/abstract screening | AI first pass; human second reviewer | Yes, all records (99.8% agreement, itself flagged as unusually high — see README) |
+| Title/abstract screening | AI first pass; human second reviewer | Yes, for the 3,665 include-plus-unsure records (99.8% agreement, itself flagged as unusually high — see README); the AI's 22,557 exclusions were **not** human-checked |
 | Full-text screening | AI reviewer (`reviewer_1`) | **Only 100 of the included studies (S001–S100) confirmed by a human `reviewer_2`**; excludes not reviewed |
 | Extraction (92 fields) | AI | **None yet** — no second-extractor pass |
 | Risk-of-bias ratings | AI, rule-based batch process from extracted fields | **None yet**; not a signalling-question read of each paper |
@@ -34,7 +34,7 @@ Take any `study_id` (e.g. `S294`):
 
 | Step | Where | How to find it |
 |---|---|---|
-| Source paper's screening record | `02_screening/full_text/full_text_screening_database.csv` | `03_extraction/extracted_data/study_record_map.csv` gives the `record_id` for every `study_id` |
+| Source paper's screening record | `02_screening/full_text/full_text_screening_database.csv` | the extraction row's `record_id` column (provenance of each link in `study_record_map.csv`) |
 | Title/abstract decision and rationale | `02_screening/title_abstract/screening_database.csv`, `ai_first_pass_rationale.csv` | same `record_id` |
 | How the record entered the pool | `01_search/` (search logs, per-database strategies, `merge_log.csv`) | `record_id`, `doi` |
 | Extracted data | `03_extraction/extracted_data/extraction_database.csv` | `study_id`; field meanings in `CODEBOOK.md`, `DATA_DICTIONARY.md` |
@@ -45,7 +45,7 @@ Take any `study_id` (e.g. `S294`):
 | The script that wrote its rows | `code/provenance/` | `grep -rl "S294" code/provenance/` (coverage starts at `record_batch64` / study S532; earlier work has no surviving script, only `git log`) |
 | Everything that ever changed about it | `git log -p -S"S294" -- 03_extraction/` and `CHANGELOG.md` | |
 
-Two things to know: the extraction database has no `record_id` column, so the link is the map file above; and **extraction is
+Two things to know: the extraction database's last column, `record_id` (added 2026-09-28), gives the screening record directly, and the map file above keeps how each link was made; and **extraction is
 per report, not per underlying study** — companion papers of one study are listed in
 `03_extraction/extracted_data/linked_reports_2026-09-28.csv`.
 

@@ -374,8 +374,8 @@ explained in full further down; this is the index.
     S526/S539 (two US utility studies whose samples probably overlap), which matters
     if the ownership/price cluster is ever pooled. The index
     `03_extraction/extracted_data/study_record_map.csv` (study_id ↔ screening
-    record_id, all 1,159 studies) was added at the same time, since the extraction
-    database has no `record_id` column.
+    record_id, all 1,159 studies) was added at the same time; the same value was
+    then added as the extraction database's own last column, `record_id` (2026-09-28).
 
 ---
 
