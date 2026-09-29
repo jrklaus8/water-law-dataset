@@ -215,11 +215,14 @@ def build():
     W("- Reviews are secondary evidence and are never pooled as if primary; their primary studies may also be in this corpus (a double-counting risk not yet checked).")
     W("")
     rob = [s for s, r in ed.items() if cf.tool_of(r['risk_of_bias_tool']) == 'RoB 2']
-    W(f"**Do the randomised trials need the cluster version of RoB 2? Yes for all five — but one is inferred and one is unverified.**")
+    W(f"**Do the randomised trials need the cluster version of RoB 2? Yes for all five — one unit is inferred, and S366 has now been re-read in full.**")
     W("")
     W(f"- All {len(rob)} RoB 2 studies ({', '.join(sorted(rob, key=lambda s: int(s[1:])))}) were checked and are **cluster-randomised**, not individually randomised, and were appraised with the cluster-trial variant (`04_quality/appraisal_forms/`). Four state cluster randomisation in their own extracted design field.")
     W(f"- **S879** (Kenya) records only \"randomized controlled trial\"; cluster randomisation at compound level is *inferred* from the recorded unit of intervention and flagged \"verify against source paper before finalizing rating\" in its own tool field. Its rating is provisional.")
-    W(f"- **S366** was extracted from abstract/introduction text only, and its RoB 2 rating is labelled LOW-CONFIDENCE in its own rating field. S366 and S294 report the same DRC cluster trial, so the {len(rob)} RoB 2 studies are **4 distinct trials**. All five rate \"Some concerns\"; ratings use many \"No information\" answers because extraction did not capture trial-conduct details.")
+    s366_abs = ed['S366']['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)
+    W(("- **S366** is still extracted from abstract/introduction text only and its RoB 2 rating is labelled low-confidence. " if s366_abs else
+       "- **S366** was re-extracted and re-appraised on 2026-09-29 from the full-text PDF you supplied (its earlier abstract-only, low-confidence rating is superseded): Domains 1 and 3 Low, Domains 2 and 5 Some concerns, Domain 4 Some concerns for the primary outcomes and High for the self-reported satisfaction/behaviour indices; Figure 1 and the supplement were not read. ") +
+      f"S366 and S294 report the same DRC cluster trial, so the {len(rob)} RoB 2 studies are **4 distinct trials** (but different surveys: 1,312 households in S366, 3,283 in S294). All five rate \"Some concerns\" overall; S057, S085, S294 and S879 still use many \"No information\" answers because extraction did not capture trial-conduct details.")
     W(f"- A keyword scan of design fields in the other {n - len(rob):,} studies found no further randomised design under another tool. **S189** is a process evaluation conducted \"in connection with a randomised controlled trial\" (Orissa, India); it was appraised with ROBINS-I as a quasi-experimental study, and its full appraisal form covers the confounding domain only. Whether the parent trial itself is in the corpus, and whether any of its outcomes belong under RoB 2 cluster, is worth confirming. (The scan covered design and measure fields only, not full texts.)")
     W("")
     W("### 3.5 Other unresolved items that may matter")
@@ -233,7 +236,7 @@ def build():
     W("## 4. Most useful next steps (in order)")
     W("")
     W("1. **Human check of the AI's screening**: work `full_text_reviewer_2_priority_queue_2026-09-28.csv` (tier 1: the 73 no-reviewer rows; tier 2: a stratified sample of excludes). It bounds the risk that eligible studies were excluded or ineligible ones included.")
-    W("2. **Obtain the full text of the abstract-only studies that carry the most weight**: S366 (RoB 2), the five AMSTAR 2 reviews extracted from abstracts (" + ", ".join(sorted(am_abs, key=lambda s: int(s[1:]))) + "), then the rest of the 69; re-extract.")
+    W("2. **Obtain the full text of the abstract-only studies that carry the most weight**: " + ("S366 (RoB 2), " if s366_abs else "(S366, the RoB 2 study, was re-extracted 2026-09-29), ") + "the five AMSTAR 2 reviews extracted from abstracts (" + ", ".join(sorted(am_abs, key=lambda s: int(s[1:]))) + f"), then the rest of the {F['abstract_only_extractions']}; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`).")
     W("3. **Verify S879's randomisation unit against the paper** and confirm S189's parent-trial handling; then finalise or revise the RoB 2 cluster ratings.")
     W("4. **Decide the AMSTAR 2 question**: keep it (and obtain full texts so the 22 \"Not ratable\" reviews can be rated) or replace it for realist/scoping/mapping reviews; decide how to handle the non-systematic reviews now labelled `NONE`. Check whether these reviews' primary studies are also in the corpus.")
     W("5. **Second-extract a sample** (for example the 62 effect-size studies and the 47 no-reviewer includes) against the source papers to estimate extraction error.")

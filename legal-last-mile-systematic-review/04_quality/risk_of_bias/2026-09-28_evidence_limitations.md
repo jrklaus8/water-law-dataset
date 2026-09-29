@@ -209,11 +209,11 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 69 of the 1,159
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 68 of the 1,159
 studies (5.9%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
 obtained at extraction time (CASP 30, MMAT 14, JBI Cross-Sectional 11, Legal Framework 8,
-AMSTAR 2 5, RoB 2 1; 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
+AMSTAR 2 5, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before that); 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
 record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
 LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 69 as
 equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 69 are listed in
