@@ -69,8 +69,8 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 | Family | Studies |
 |---|---|
 | `institutional_structure_coordination` | 872 |
-| `discretion_accommodation` | 718 |
-| `eligibility_status_documentation` | 644 |
+| `discretion_accommodation` | 719 |
+| `eligibility_status_documentation` | 645 |
 | `fees_tariffs_subsidies` | 543 |
 | `participation_assistance` | 517 |
 | `procedural_burden` | 504 |

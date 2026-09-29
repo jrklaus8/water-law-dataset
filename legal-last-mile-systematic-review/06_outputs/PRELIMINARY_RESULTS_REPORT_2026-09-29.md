@@ -14,7 +14,7 @@
 | Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique (SSRN and Westlaw/Lexis never searched) |
 | Title/abstract screening | Final 3,659 include / 6 exclude: 26,222 of 27,481 screened by AI first pass (3,062 include / 22,557 exclude / 603 unsure; 1,259 without an abstract left undecided); a human second pass covered the 3,665 include-plus-unsure records, **not the 22,557 AI excludes**; 99.8% agreement, flagged by the project as unusually high |
 | Full-text screening | Closed by researcher decision at **2,276 of 3,659 assessed (62.2%)**: **1,159 include / 1,117 exclude**; 1,383 never assessed. 151 of the excludes are E10 ("full text inaccessible"), so only **2,125** were judged on content. AI decisions; a human confirmed 100 includes and no excludes |
-| Extraction | 1,159 studies, 92 codebook fields, by the AI; 67 from abstract/metadata only; no second extractor |
+| Extraction | 1,159 studies, 92 codebook fields, by the AI; 66 from abstract/metadata only; no second extractor |
 | Appraisal | Rule-based batch ratings from extracted fields with design-matched tools: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 23, Legal Framework 447, NONE 13. Legal Framework is the project's own **non-validated** instrument. No human review of ratings |
 | Synthesis | Phase 11: no family clears the bar for meta-analysis. 62 effect-size rows (A 20, B 6, C 20, 16 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses |
 
@@ -42,7 +42,7 @@ Counts are studies for which the extraction coded the field `TRUE` (a blank is *
 | `political_coordination` | 475 | | `sanitation_access` | 457 |
 | `enforcement` | 455 | | `service_reliability` | 381 |
 | `participation` | 440 | | `service_quality` | 301 |
-| `eligibility` | 422 | | `service_continuity` | 249 |
+| `eligibility` | 423 | | `service_continuity` | 250 |
 | `burden` | 419 | | `service_quantity` | 206 |
 | `documentation` | 260 | | `refusal` | 107 |
 | `bureaucratic_assistance` | 215 | | `delay_outcome` | 95 |
@@ -138,7 +138,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 ### 3.3 Missing or thin data
 
-- 67 studies were extracted from abstract or metadata only (5.8%); none has an effect-size row, so the SWiM syntheses are unaffected, but descriptive counts and ratings include them. There is no second extractor: extracted values have not been checked against the source papers.
+- 66 studies were extracted from abstract or metadata only (5.7%); none has an effect-size row, so the SWiM syntheses are unaffected, but descriptive counts and ratings include them. There is no second extractor: extracted values have not been checked against the source papers.
 - 59 of 140 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
 - Of 62 effect-size rows, 7 give a confidence interval and 25 a standard error; estimates are as the papers report them and none is pooled.
 
@@ -170,7 +170,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 ## 4. Most useful next steps (in order)
 
 1. **Human check of the AI's screening**: work `full_text_reviewer_2_priority_queue_2026-09-28.csv` (tier 1: the 73 no-reviewer rows; tier 2: a stratified sample of excludes). It bounds the risk that eligible studies were excluded or ineligible ones included.
-2. **Obtain the full text of the abstract-only studies that carry the most weight**: (S366, the RoB 2 study, was re-extracted 2026-09-29), the five AMSTAR 2 reviews extracted from abstracts (S319, S324, S325, S344), then the rest of the 67; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`).
+2. **Obtain the full text of the abstract-only studies that carry the most weight**: (S366, the RoB 2 study, was re-extracted 2026-09-29), the five AMSTAR 2 reviews extracted from abstracts (S319, S324, S325, S344), then the rest of the 66; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`).
 3. **Verify S879's randomisation unit against the paper** and confirm S189's parent-trial handling; then finalise or revise the RoB 2 cluster ratings.
 4. **Decide the AMSTAR 2 question**: keep it (and obtain full texts so the 22 "Not ratable" reviews can be rated) or replace it for realist/scoping/mapping reviews; decide how to handle the non-systematic reviews now labelled `NONE`. Check whether these reviews' primary studies are also in the corpus.
 5. **Second-extract a sample** (for example the 62 effect-size studies and the 47 no-reviewer includes) against the source papers to estimate extraction error.
