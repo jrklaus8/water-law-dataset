@@ -169,7 +169,7 @@ for needle in ('34,594', '27,481', '26,222', '1,259', '3,665'):
 _q = csv.DictReader(open(ROOT / '02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv', encoding='utf-8', newline=''))
 _tier1 = sum(1 for r in _q if r['priority_tier'] == '1')
 check(_tier1 == F['decided_blank_reviewer_1'], f"reviewer_2 priority queue tier 1 has {_tier1} rows but {F['decided_blank_reviewer_1']} decided rows have no reviewer_1: rebuild the queue")
-for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md',):
+for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md', '06_outputs/slides/Water_Access_Evidence_Diagnostic_slides_2026-09-29.pdf', '06_outputs/slides/README.md'):
     check((ROOT / f_).exists(), f'{f_} is missing')
 
 # ---- E. database sanity checks (added 2026-09-29) and freshness of the audit outputs
@@ -214,7 +214,7 @@ def _as_str(rows):
     return [{k: str(v) for k, v in r.items()} for r in rows]
 
 
-fresh(adq.OUT_MD, adq.render(adq.flag_audit(), *adq.es_scan()[:1], len(es), adq.es_scan()[1], adq.amstar_sweep(), adq.year_audit()), 'audit_data_quality.py')
+fresh(adq.OUT_MD, adq.render(adq.flag_audit(), *adq.es_scan()[:1], len(es), adq.es_scan()[1], adq.amstar_sweep(), adq.year_audit(), adq.certainty_audit()), 'audit_data_quality.py')
 for _path, _rows, _script in ((adq.OUT_CSV, adq.flag_audit(), 'audit_data_quality.py'), (adq.OUT_AM, adq.amstar_sweep(), 'audit_data_quality.py'),
                              (bse.OUT, bse.draw(), 'build_second_extractor_sample.py'), (bfr.OUT, bfr.rows(), 'build_fulltext_request_list.py')):
     check(_csv_rows(_path) == _as_str(_rows), f'{_path.relative_to(ROOT)} is stale: run `python3 code/analysis/{_script}`')

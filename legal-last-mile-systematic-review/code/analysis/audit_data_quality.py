@@ -93,6 +93,17 @@ def year_audit():
     return sorted(out, key=lambda x: int(x[0][1:]))
 
 
+def certainty_audit():
+    """mechanism_certainty 3/4 means quasi-experimental/experimental evidence (CODEBOOK section 9). Does the coding agree with the design/tool?"""
+    ed = {r['study_id']: r for r in cf.read('ed')}
+    causal = {s for s, r in ed.items() if cf.tool_of(r['risk_of_bias_tool']) in ('ROBINS-I', 'RoB 2')}
+    hi = {s for s, r in ed.items() if r['mechanism_certainty'] in ('3', '4')}
+    code = lambda s: ed[s]['mechanism_certainty'] if ed[s]['mechanism_certainty'] in ('0', '1', '2', '3', '4') else 'narrative'
+    return {'hi_total': len(hi), 'hi_in_causal': len(hi & causal), 'hi_outside': sorted(hi - causal, key=lambda x: int(x[1:])),
+            'hi_outside_tools': Counter(cf.tool_of(ed[s]['risk_of_bias_tool']) for s in hi - causal), 'causal_total': len(causal),
+            'causal_by_code': Counter(code(s) for s in causal)}
+
+
 def _num(s):
     m = re.search(NUM, s.replace('−', '-'))
     return float(m.group(0)) if m else None
@@ -144,7 +155,7 @@ def es_scan():
     return out, cov
 
 
-def render(rows, findings, es_n, cov, am, yrs):
+def render(rows, findings, es_n, cov, am, yrs, cert):
     c = Counter(r['category'] for r in rows)
     withrow = Counter(r['category'] for r in rows if r['has_effect_size_row'])
     tools = Counter((r['category'], r['risk_of_bias_tool']) for r in rows)
@@ -180,14 +191,21 @@ def render(rows, findings, es_n, cov, am, yrs):
           f"{len(yrs)} of the extraction rows have a different year from their full-text screening record; {len(yrs) - len(big)} differ by one year (usually online-first versus issue year), "
           f"and {len(big)} differ by more or are blank: " + ", ".join(f"{s} ({a} vs {b})" for s, a, b, d in big) + ". "
           "The report's recency statistics use the extraction field; a one-year difference cannot change them materially, but the larger ones should be checked against the papers. Not corrected here.", ""]
+    cc = cert['causal_by_code']
+    L += ["", "## 5. `mechanism_certainty` 3–4 versus study design", "",
+          f"`mechanism_certainty` 3 means quasi-experimental and 4 experimental evidence (`CODEBOOK.md` §9). {cert['hi_total']} studies carry 3 or 4, but **only {cert['hi_in_causal']} of them are ROBINS-I or RoB 2 studies**; "
+          f"{len(cert['hi_outside'])} sit in other designs ({', '.join(f'{t} {n}' for t, n in cert['hi_outside_tools'].most_common())}), e.g. " + ", ".join(cert['hi_outside'][:6]) + ". "
+          f"Conversely, of the {cert['causal_total']} ROBINS-I/RoB 2 studies, {cc['4'] + cc['3']} are coded 3–4, {cc['2']} are coded 2, {cc['1']} are coded 1 and {cc['narrative']} carry narrative text instead of a 0–4 code. "
+          "So the number of studies at certainty 3–4 is **not** a count of quasi-experimental or experimental studies, and the two figures (causal-capable designs, certainty 3–4) should not be read as the same thing. "
+          "Which coding is wrong (the certainty or the design/tool) needs the papers; nothing was changed.", ""]
     return "\n".join(L) + "\n"
 
 
 if __name__ == '__main__':
-    rows = flag_audit(); findings, cov = es_scan(); am = amstar_sweep(); yrs = year_audit()
+    rows = flag_audit(); findings, cov = es_scan(); am = amstar_sweep(); yrs = year_audit(); cert = certainty_audit()
     with open(OUT_CSV, 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator='\r\n'); w.writeheader(); w.writerows(rows)
-    OUT_MD.write_text(render(rows, findings, len(cf.read('es')), cov, am, yrs), encoding='utf-8')
+    OUT_MD.write_text(render(rows, findings, len(cf.read('es')), cov, am, yrs, cert), encoding='utf-8')
     with open(OUT_AM, 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=list(am[0]), lineterminator='\r\n'); w.writeheader(); w.writerows(am)
     print('wrote', OUT_MD.name, OUT_CSV.name, dict(Counter(r['category'] for r in rows)), len(findings), 'es findings')

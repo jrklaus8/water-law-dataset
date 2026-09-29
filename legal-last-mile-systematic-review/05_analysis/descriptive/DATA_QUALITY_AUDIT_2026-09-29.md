@@ -66,3 +66,8 @@ The weakest-evidenced studies deserve the earliest full-text check; S329 ("narra
 
 29 of the extraction rows have a different year from their full-text screening record; 22 differ by one year (usually online-first versus issue year), and 7 differ by more or are blank: S425 (2012 vs 2015), S571 ((blank) vs 2026), S931 (2010 vs 2025), S959 (2011 vs 2013), S972 (2019 vs 2022), S1085 ((blank) vs 2013), S1148 (2018 vs 2020). The report's recency statistics use the extraction field; a one-year difference cannot change them materially, but the larger ones should be checked against the papers. Not corrected here.
 
+
+## 5. `mechanism_certainty` 3–4 versus study design
+
+`mechanism_certainty` 3 means quasi-experimental and 4 experimental evidence (`CODEBOOK.md` §9). 35 studies carry 3 or 4, but **only 10 of them are ROBINS-I or RoB 2 studies**; 25 sit in other designs (JBI Cross-Sectional 8, MMAT 7, CASP Qualitative 6, Legal Framework 3, NONE 1), e.g. S062, S066, S070, S074, S075, S076. Conversely, of the 68 ROBINS-I/RoB 2 studies, 10 are coded 3–4, 17 are coded 2, 2 are coded 1 and 39 carry narrative text instead of a 0–4 code. So the number of studies at certainty 3–4 is **not** a count of quasi-experimental or experimental studies, and the two figures (causal-capable designs, certainty 3–4) should not be read as the same thing. Which coding is wrong (the certainty or the design/tool) needs the papers; nothing was changed.
+

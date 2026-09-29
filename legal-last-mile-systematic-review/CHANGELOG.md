@@ -4,7 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-09-29 (latest, audit batch) — data-quality audits, second-extractor sample, wider verifier
+## 2026-09-29 (latest, slides) — slide copy of the preliminary report filed
+
+The researcher supplied `Water_Access_Evidence_Diagnostic.pdf` (13 slides, 16.9 MB), a visual summary of the preliminary report made with Google NotebookLM ("A Gemini Notebook" in its footers). Filed unaltered as `06_outputs/slides/Water_Access_Evidence_Diagnostic_slides_2026-09-29.pdf` with `06_outputs/slides/README.md`, which records its provenance and lists where it differs from the current report (its "92% in ten countries" is wrong — 52%; "mandatory" recommendations exceed the report; the AMSTAR 2 and RoB 2 slide predates the S326/S366 re-extractions and the corrected AMSTAR 2 wording; a leftover "(XX records)" placeholder). Only the text was checked (no JavaScript, launch actions, embedded files or links); charts and images were not viewed. **Checking slide 8 found a data inconsistency (and a misleading sentence of my own in the report):** of the 35 studies coded `mechanism_certainty` 3 or 4 (quasi-experimental or experimental evidence), only 10 are ROBINS-I/RoB 2 studies; the other 25 are qualitative, mixed-methods, cross-sectional or documentary designs, while 38 of the 68 ROBINS-I/RoB 2 studies carry narrative text instead of a 0–4 code. New section 5 of `DATA_QUALITY_AUDIT_2026-09-29.md` reports it; the report's §2A.1 and interpretation 1 no longer equate certainty 3–4 with causal-capable designs; no value was changed; the verifier (now 115 checks) also requires the slide PDF and its README. `AI_USE_STATEMENT.md` now notes that a second AI tool produced this one file. The report remains the authority.
+
+## 2026-09-29 (audit batch) — data-quality audits, second-extractor sample, wider verifier
 
 No data value was changed. All outputs are generated, read-only and freshness-checked by the verifier (now **113 checks**).
 - `code/analysis/audit_data_quality.py` → `05_analysis/descriptive/DATA_QUALITY_AUDIT_2026-09-29.md` plus `quantitative_flag_audit_2026-09-29.csv` and `amstar2_systematic_evidence_sweep_2026-09-29.csv`:

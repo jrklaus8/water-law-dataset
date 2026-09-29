@@ -207,6 +207,8 @@ product of an evidence base that is, by design and by the discipline's own natur
 by observational and qualitative work rather than by a large pool of directly comparable
 quasi-experimental studies.
 
+> **Correction 2026-09-29:** the "only 35 of 1,159 studies" at `mechanism_certainty` 3–4 below is a count of the field's values, not of quasi-experimental or experimental studies — only 10 of those 35 are ROBINS-I/RoB 2 studies (`05_analysis/descriptive/DATA_QUALITY_AUDIT_2026-09-29.md` §5). The text below is left as written.
+
 ## Four further caveats surfaced by the 2026-09-28 audit
 
 **1. Some appraisals rest on abstract- or metadata-level extraction only.** 66 of the 1,159

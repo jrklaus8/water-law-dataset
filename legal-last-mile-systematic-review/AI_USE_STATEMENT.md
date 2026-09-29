@@ -31,6 +31,12 @@ title carries the words "AI-Assisted" so that no reader has to discover this fro
   identify AI-made decisions; **73 decided full-text rows carry no reviewer label** and their provenance is unknown.
 - No pooled estimate exists and none is claimed; the syntheses report direction of association, not effect size or GRADE certainty.
 
+## A second AI tool appears in one file
+
+`06_outputs/slides/Water_Access_Evidence_Diagnostic_slides_2026-09-29.pdf` is a slide summary of the preliminary report that the researcher produced
+with a different AI tool (its footers read "A Gemini Notebook", i.e. Google NotebookLM). It is kept unaltered for reference; where it differs from the
+current report the report is right — see `06_outputs/slides/README.md`. Nothing else in the repository was produced with that tool.
+
 ## Where to check
 
 `AUDITING_GUIDE.md` (how to verify and challenge), `00_admin/DECISIONS_AND_OPEN_ITEMS.md` (what is undecided and what was a
