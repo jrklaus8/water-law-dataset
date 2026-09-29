@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import current_figures as cf  # noqa: E402
 import sensitivity_analysis as sa  # noqa: E402
 import propose_family_vocabulary as pv  # noqa: E402
+import audit_data_quality as adq  # noqa: E402
 
 ROOT = cf.ROOT
 OUT = ROOT / '06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md'
@@ -198,9 +199,10 @@ def build():
     W("")
     # AMSTAR 2 eligibility
     am = [s for s, r in ed.items() if cf.tool_of(r['risk_of_bias_tool']) == 'AMSTAR 2']
-    meth = re.compile(r'systematic review|prisma|realist|scoping|mapping|meta-analysis', re.I)
-    bare = [s for s in am if not meth.search(ed[s]['study_design'].replace('systematic_review_secondary', ''))]
-    n_meth = len(am) - len(bare)
+    sweep = adq.amstar_sweep()
+    weak = [x['study_id'] for x in sweep if x['evidence_score'] <= 1]
+    n_reg = sum('registration' in x['signals'] for x in sweep)
+    n_cnt = sum('count of included' in x['signals'] for x in sweep)
     rated = [s for s in am if not ed[s]['risk_of_bias_rating'].startswith('Not ratable')]
     am_abs = [s for s in am if ed[s]['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)]
     none_sr = [s for s, r in ed.items() if cf.tool_of(r['risk_of_bias_tool']) == 'NONE' and em[s]['study_design_class'] == 'systematic_review_secondary']
@@ -209,7 +211,7 @@ def build():
     W(f"**Are the AMSTAR 2 studies actually systematic reviews? Partly confirmed, partly not.**")
     W("")
     W(f"- {len(am)} studies carry AMSTAR 2; another {len(none_sr)} studies also had a secondary-review design class but were **reclassified to `NONE`** after an eligibility check found them to be self-described narrative, conceptual or documentary reviews that never claim a systematic search ({', '.join(sorted(none_sr, key=lambda x: int(x[1:])))}; `RISK_OF_BIAS.md` §4; S326 joined them on 2026-09-29 after its full text, supplied by you, showed no stated search, selection or appraisal method). AMSTAR 2 was not applied to those, and the project has **no validated instrument for a non-systematic review used as an evidence source** — an acknowledged gap.")
-    W(f"- Of the {len(am)} that kept AMSTAR 2, each was classed as a secondary systematic review — but the evidence for that is thin: only {n_meth} of the {len(am)} records carry a method label in `study_design` (systematic, PRISMA, realist, scoping, mapping or meta-analysis); the other {len(am) - n_meth} ({', '.join(sorted(bare, key=lambda x: int(x[1:])))}) carry only the bare class label `systematic_review_secondary`, so their systematic character rests on the AI's earlier classification, not on a recorded method statement. **{len(am_abs)} of them ({', '.join(sorted(am_abs, key=lambda s: int(s[1:])))}) were extracted from abstract or metadata only, so their eligibility was never confirmed from the full text**; S329 is described as a \"narrative review with systematic search\" (a hybrid kept eligible with a noted caveat); S326, first flagged as an \"evidence survey\", was moved to `NONE` once its full text was read; S697's number of included studies was not extracted.")
+    W(f"- Of the {len(am)} that kept AMSTAR 2, each was classed as a secondary systematic review. The recorded fields (publication type, design, method text, sample) support that unevenly: {n_reg} name a registration, PRISMA or JBI method, {n_cnt} state a count of included studies, and {len(weak)} ({', '.join(sorted(weak, key=lambda x: int(x[1:])))}) show at most one weak signal (the word \"systematic\" or a review type) — a way to order full-text checks, not a finding (`05_analysis/descriptive/DATA_QUALITY_AUDIT_2026-09-29.md` §3). **{len(am_abs)} of them ({', '.join(sorted(am_abs, key=lambda s: int(s[1:])))}) were extracted from abstract or metadata only, so their eligibility was never confirmed from the full text**; S329 is described as a \"narrative review with systematic search\" and S418 as a narrative/scoping review with a documented search (hybrids kept eligible with a noted caveat); S326, first flagged as an \"evidence survey\", was moved to `NONE` once its full text was read; S697's number of included studies was not extracted.")
     W(f"- **Only {len(rated)} of the {len(am)} received a formal AMSTAR 2 confidence rating** ({', '.join(sorted(rated))}: Critically Low, because the review authors state they did no critical appraisal); the other {len(am) - len(rated)} are \"Not ratable\" because the extraction lacks the information for the critical items. **So AMSTAR 2 currently tells the reader almost nothing about the reviews' confidence.**")
     W(f"- *Tentative flag (this report's own observation, not a project ruling):* AMSTAR 2 was designed for reviews of healthcare interventions that include randomised or non-randomised studies; several of these reviews are realist, scoping or mapping reviews of qualitative and policy literature, for which a rating would be out-of-design even with full information. A decision on whether to keep AMSTAR 2 for these, or use a different instrument, is open.")
     W("- Reviews are secondary evidence and are never pooled as if primary; their primary studies may also be in this corpus (a double-counting risk not yet checked).")
@@ -231,6 +233,9 @@ def build():
     W(f"- **Linked reports:** the {n:,} rows are about {F['distinct_studies_definite_links']:,} distinct studies (S294/S366 one trial; S097/S098 one sample) and {F['distinct_studies_incl_partial_links']:,} counting partial overlaps.")
     W(f"- **Free-text classifications:** `mechanism_family` ({len({r['mechanism_family'] for r in em.values()})} distinct labels) and `outcome_family` ({len({r['outcome_family'] for r in em.values()})}) are uncontrolled; {free_design} studies have a design class outside the documented enum; a draft vocabulary is proposed, not adopted. Country and legal-system fields are free text, so the geographic counts here are rule-based.")
     W(f"- **Direction coding** in the SWiM documents is a judgment by the same AI; sign and valence differ for several studies.")
+    fa = adq.flag_audit(); fc = Counter(x['category'] for x in fa); esf, escov = adq.es_scan()
+    W(f"- **The \"quantitative-synthesis-eligible\" flag looks generous.** Of {len(fa)} studies flagged, {fc['C']} show nothing inferential in their extraction (descriptive or unclear), {fc['B']} name an inferential model but hold no interval, SE or p-value, and {fc['A']} carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only {F['effect_size_rows']} studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.")
+    W(f"- **Consistency scan of the effect-size rows** found {len([f for f in esf if f[1] != 'row_for_study_not_flagged_eligible'])} new item(s) besides the known S589 row ({', '.join(f'{a} {b}' for a, b, _ in esf if b != 'row_for_study_not_flagged_eligible') or 'none'}); but an interval could be checked for only {escov['structured_interval'] + escov['text_interval']} of {F['effect_size_rows']} rows, so this is weak assurance.")
     W(f"- **Same-paper duplicates** with different-language titles and blank DOIs were found and merged among included studies; the DOI/title audits cannot detect this class in the wider pool.")
     W("")
     W("## 4. Most useful next steps (in order)")

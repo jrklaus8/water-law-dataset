@@ -77,6 +77,9 @@ The 2026-09-28 audit found, and this repository corrected in the open, problems 
 - **Re-screen a sample:** `02_screening/full_text/full_text_reviewer_2_queue.csv` (built by
   `code/screening/build_full_text_reviewer2_queue.py`) lists decided-but-unconfirmed records for a human second reviewer.
 
+- **Read the audits that need no papers:** `05_analysis/descriptive/DATA_QUALITY_AUDIT_2026-09-29.md` (is the eligibility flag supported by the extracted results? are the effect-size rows internally consistent? which AMSTAR 2 studies are least evidenced as systematic? do years agree with the screening record?).
+- **Measure the extraction error rate yourself:** `03_extraction/second_extractor/README.md` is a ready-made 60-study sample and scoring script for an independent re-extraction.
+
 ## 6. What this review does not claim
 
 No pooled effect exists: Phase 11 found that no synthesis family clears the bar for meta-analysis, and every

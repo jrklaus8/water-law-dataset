@@ -172,6 +172,53 @@ check(_tier1 == F['decided_blank_reviewer_1'], f"reviewer_2 priority queue tier 
 for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md',):
     check((ROOT / f_).exists(), f'{f_} is missing')
 
+# ---- E. database sanity checks (added 2026-09-29) and freshness of the audit outputs
+import re  # noqa: E402
+import audit_data_quality as adq, build_second_extractor_sample as bse, build_fulltext_request_list as bfr  # noqa: E402
+_doi_bad = [(r['study_id'], r['doi']) for r in ed if r['doi'].strip() and not re.match(r'^10\.\d{4,9}/\S+$', r['doi'].strip())]
+check(not _doi_bad, f'malformed DOI in extraction_database: {_doi_bad[:5]}')
+_dois = [r['doi'].strip().lower() for r in ed if r['doi'].strip()]
+check(len(_dois) == len(set(_dois)), 'the same DOI appears on two extraction rows (a double-counted paper?)')
+_KNOWN_YEAR = {'S020', 'S071', 'S1057', 'S1085', 'S1148', 'S284', 'S285', 'S306', 'S425', 'S429', 'S449', 'S462', 'S465', 'S467', 'S492', 'S571', 'S589', 'S608', 'S614', 'S773', 'S794',
+               'S796', 'S797', 'S931', 'S942', 'S948', 'S959', 'S972', 'S975'}  # publication_year differs from the screening record's year; listed in DATA_QUALITY_AUDIT_2026-09-29.md section 4
+_new_year = [y for y in adq.year_audit() if y[0] not in _KNOWN_YEAR]
+check(not _new_year, f'publication_year disagrees with the screening record for a study not in the known list: {_new_year[:5]}')
+check(all(r['publication_year'].strip() == '' or (r['publication_year'].strip().isdigit() and 1900 <= int(r['publication_year']) <= 2027) for r in ed), 'publication_year outside 1900-2027 or not a number')
+_class = {r['study_id']: r['study_design_class'] for r in em}
+_ALLOWED = {'RoB 2': {'experimental'}, 'ROBINS-I': {'quasi_experimental'}, 'AMSTAR 2': {'systematic_review_secondary'}, 'JBI Cross-Sectional': {'observational'},
+            'CASP Qualitative': {'qualitative'}, 'MMAT': {'mixed_methods'}}
+_mismatch = [(r['study_id'], cf.tool_of(r['risk_of_bias_tool']), _class[r['study_id']]) for r in ed
+             if cf.tool_of(r['risk_of_bias_tool']) in _ALLOWED and _class[r['study_id']] not in _ALLOWED[cf.tool_of(r['risk_of_bias_tool'])]]
+check(not _mismatch, f'risk-of-bias tool does not fit the design class: {_mismatch[:5]}')
+_none_class = [(r['study_id'], _class[r['study_id']]) for r in ed if cf.tool_of(r['risk_of_bias_tool']) == 'NONE' and _class[r['study_id']] not in ('systematic_review_secondary', 'doctrinal', 'jurimetric', 'qualitative', 'observational', 'mixed_methods') and _class[r['study_id']] in ('experimental', 'quasi_experimental')]
+check(not _none_class, f'a randomised/quasi-experimental study has tool NONE: {_none_class[:5]}')
+_STARTS = {'RoB 2': ('Some concerns', 'Low', 'High'), 'ROBINS-I': ('Low', 'Moderate', 'Serious', 'Critical', 'No information'),
+           'AMSTAR 2': ('High', 'Moderate', 'Low', 'Critically Low', 'Not ratable'), 'JBI Cross-Sectional': ('High concern', 'Some concern', 'Low concern', 'JBI Cross')}
+_badrate = [(r['study_id'], cf.tool_of(r['risk_of_bias_tool']), r['risk_of_bias_rating'][:30]) for r in ed
+            if cf.tool_of(r['risk_of_bias_tool']) in _STARTS and not r['risk_of_bias_rating'].startswith(_STARTS[cf.tool_of(r['risk_of_bias_tool'])])]
+check(not _badrate, f'rating text does not use its tool\'s vocabulary: {_badrate[:5]}')
+_none_rate = [r['study_id'] for r in ed if cf.tool_of(r['risk_of_bias_tool']) == 'NONE' and r['risk_of_bias_rating'].strip() and not r['risk_of_bias_rating'].startswith('NOT APPLICABLE')]
+check(not _none_rate, f'a tool-NONE study carries a real rating: {_none_rate[:5]}')
+check(all(r['mechanism_certainty'] in ('0', '1', '2', '3', '4') or len(r['mechanism_certainty']) >= 10 for r in ed), 'mechanism_certainty is neither 0-4 nor a narrative')
+check(all(re.match(r'^\d{4}-\d\d-\d\d', r['date_extracted']) and r['researcher'].strip() for r in ed), 'date_extracted not ISO or researcher blank')
+_abs_ids = {r['study_id'] for r in ed if r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)}
+_abs_file = {r['study_id'] for r in csv.DictReader(open(ROOT / '05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv', encoding='utf-8', newline=''))}
+check(_abs_ids == _abs_file, f'abstract_only_extractions csv differs from the extraction notes: {sorted(_abs_ids ^ _abs_file)[:8]}')
+
+
+def _csv_rows(path):
+    return list(csv.DictReader(open(path, encoding='utf-8', newline='')))
+
+
+def _as_str(rows):
+    return [{k: str(v) for k, v in r.items()} for r in rows]
+
+
+fresh(adq.OUT_MD, adq.render(adq.flag_audit(), *adq.es_scan()[:1], len(es), adq.es_scan()[1], adq.amstar_sweep(), adq.year_audit()), 'audit_data_quality.py')
+for _path, _rows, _script in ((adq.OUT_CSV, adq.flag_audit(), 'audit_data_quality.py'), (adq.OUT_AM, adq.amstar_sweep(), 'audit_data_quality.py'),
+                             (bse.OUT, bse.draw(), 'build_second_extractor_sample.py'), (bfr.OUT, bfr.rows(), 'build_fulltext_request_list.py')):
+    check(_csv_rows(_path) == _as_str(_rows), f'{_path.relative_to(ROOT)} is stale: run `python3 code/analysis/{_script}`')
+
 print(f"{passes} checks passed, {len(fails)} failed")
 for f_ in fails:
     print('  FAIL:', f_)
