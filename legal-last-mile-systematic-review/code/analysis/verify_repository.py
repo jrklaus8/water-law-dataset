@@ -160,8 +160,10 @@ check(_mig == _KNOWN_MIGRANT, f'migrant_population annotated values differ from 
 import build_manuscript_pieces as bmp, build_preliminary_report as bpr, propose_family_vocabulary as pv, sensitivity_analysis as sa  # noqa: E402
 def fresh(path, generated, script):
     check(path.read_text(encoding='utf-8') == generated, f'{path.relative_to(ROOT)} is stale: run `python3 code/analysis/{script}`')
+import build_report_html as brh  # noqa: E402
 fresh(bmp.OUT, bmp.build(), 'build_manuscript_pieces.py')
 fresh(bpr.OUT, bpr.build(), 'build_preliminary_report.py')
+fresh(brh.OUT, brh.build(), 'build_report_html.py')
 fresh(pv.OUT_MD, pv.render(pv.build()), 'propose_family_vocabulary.py')
 fresh(sa.OUT_MD, sa.render(*sa.scenarios()), 'sensitivity_analysis.py')
 for needle in ('34,594', '27,481', '26,222', '1,259', '3,665'):

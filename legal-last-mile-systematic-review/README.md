@@ -8,6 +8,8 @@ Quantitative Evidence Synthesis**
 > (see the table in [`AI_USE_STATEMENT.md`](AI_USE_STATEMENT.md)). Treat every figure as AI-produced and unverified
 > against source papers unless the documentation says a human confirmed it.
 
+**Preliminary results:** [`06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md`](06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md) (readable on GitHub) and a navigable web version, [`…report….html`](06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.html) (download and open in a browser, or serve with GitHub Pages — GitHub shows `.html` files as source). Both are generated and checked against the data; neither is a final result.
+
 Companion project to the doctoral dissertation *The Legal Last Mile:
 Administrative Law as a Mechanism of Connectivity and Exclusion in
 Sanitation Governance: A Comparative Study of the Netherlands, Canada
