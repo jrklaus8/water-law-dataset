@@ -81,8 +81,8 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 1,029 name exactly one country, **123 name several countries or a region and are
-not counted under any single country below**, and 7 are blank; `legal_system` has hundreds of distinct strings
+vocabularies. Of the 1,159 studies, 1,029 name exactly one country, **125 name several countries or a region and are
+not counted under any single country below**, and 5 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
 that also appears in a multi-country study, and the "top countries" are shares of all 1,159 studies.
@@ -211,11 +211,11 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 66 of the 1,159
-studies (5.7%) carry an `extraction_note` stating they were extracted from the published
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 62 of the 1,159
+studies (5.3%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
 obtained at extraction time (CASP 30, MMAT 13 — S277 was re-read in full text on 2026-09-29 —, JBI Cross-Sectional 11, Legal Framework 8,
-AMSTAR 2 4 — S326 was re-read in full text on 2026-09-29 and moved to NONE, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before either); 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
+AMSTAR 2 0 — S326 was re-read in full text on 2026-09-29 and moved to NONE, and S319, S324, S325 and S344 were re-read on 2026-10-02 and appraised from their full texts, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before either); 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
 record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
 LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 69 as
 equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 69 are listed in

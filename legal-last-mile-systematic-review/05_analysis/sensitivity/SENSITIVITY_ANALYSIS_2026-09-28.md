@@ -9,7 +9,7 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 
 ## Why several scenarios change nothing
 
-- **Abstract-only extractions (66 studies):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
+- **Abstract-only extractions (62 studies):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
 - **Linked reports:** of the definite same-data links, only S294 (Family B) has an effect-size row; its twin S366 has none. S3 therefore changes nothing in A, B or C.
 - **Studies not flagged eligible (S589):** S589 is in Family A; S2 removes it.
 
@@ -27,9 +27,9 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 Tests: **A** — more than half of the studies are concordant with "recognition/eligibility improves access" (the Family A document's substantive reading, not the raw sign);
 **B** — no study is negative or null; **C** — no single sign holds a majority. Signs are as extracted; see the Family A and C documents for why sign and valence differ.
 
-## Descriptive counts with the 66 abstract-only extractions removed
+## Descriptive counts with the 62 abstract-only extractions removed
 
-Studies: 1,159 → 1,093. Risk-of-bias tool distribution:
+Studies: 1,159 → 1,097. Risk-of-bias tool distribution:
 
 | Tool | All | Without abstract-only | Change |
 |---|---|---|---|
@@ -37,7 +37,7 @@ Studies: 1,159 → 1,093. Risk-of-bias tool distribution:
 | JBI Cross-Sectional | 140 | 129 | -11 |
 | CASP Qualitative | 263 | 233 | -30 |
 | Legal Framework | 447 | 439 | -8 |
-| AMSTAR 2 | 23 | 19 | -4 |
+| AMSTAR 2 | 23 | 23 | +0 |
 | ROBINS-I | 63 | 63 | +0 |
 | RoB 2 | 5 | 5 | +0 |
 | NONE | 13 | 13 | +0 |
