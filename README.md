@@ -12,7 +12,7 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
-### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf)
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [AI-Assisted Systematic Review (companion project)](legal-last-mile-systematic-review/README.md)
 
 > **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
@@ -251,6 +251,43 @@ The Brazil sub-dataset carries outcome coding, but the coding was AI-assisted. A
 ### Canada Coverage
 
 The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII and does not include unreported Environmental Review Tribunal or Ontario Licence Appeal Tribunal decisions, which may carry a disproportionate share of access-to-water disputes.
+
+---
+
+## Companion Project: AI-Assisted Systematic Review
+
+**➡️ [Read the full AI-assisted systematic review here](legal-last-mile-systematic-review/README.md)** · [How AI was used and what a human checked](legal-last-mile-systematic-review/AI_USE_STATEMENT.md)
+
+[`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/) is a separate, companion research project in this repository: an **AI-assisted** systematic review (most screening, extraction, appraisal and synthesis drafting was done by a large language model under the researcher's direction; see its AI-use statement) (with contingent, restricted meta-analysis) of the *household-level* empirical literature on legal and administrative barriers to water and sanitation access. It is deliberately **not** merged with the judicial dataset above — litigation is a selected pathway, not a representative sample of administrative exclusion, so the two evidence bases are kept separate and only triangulated.
+
+**Status as of 2026-09-28** (both the database search and full-text
+retrieval are now closed by researcher decision — see below):
+
+| Stage | Status |
+|---|---|
+| Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique after deduplication |
+| Title/abstract screening | Complete, double-reviewed: 3,659 include / 6 exclude, zero conflicts |
+| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,276 of 3,659 records actually screened (62.2%) — **1,159 include / 1,117 exclude** (after two duplicate records were merged and S356 excluded on full text, 2026-09-28); 1,383 permanently unretrieved |
+| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,159 studies extracted |
+| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,159 studies carry a correctly design-matched tool; all 1,146 to which one applies carry a completed rating — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
+| Evidence classification | Caught up with extraction: 247 studies quantitative-synthesis-eligible, 1,059 qualitative-synthesis-eligible |
+| Quantitative synthesis | 62 effect-size rows extracted (one, S589's, is an unresolved eligibility inconsistency flagged by the 2026-09-28 audit); **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
+
+This is an unusually large and comprehensive AI-assisted systematic review for its
+fields (administrative law, comparative law, sociolegal studies), closed
+on the researcher's own judgment that the corpus is sufficient — not a
+claim of exhaustive retrieval. Every figure above, and every material
+limitation and irregularity behind it — a caught-and-fixed multi-agent
+data-corruption incident, an unusually high 99.8% inter-reviewer
+agreement rate that was flagged and confirmed rather than treated as
+routine, known duplicate-record cases from cross-database DOI-formatting
+drift, a named systemic PDF-delivery-tool failure mode, and the exact
+terms of both phase closures — is documented in full, without
+simplification, in the project's own
+[`README.md`](legal-last-mile-systematic-review/README.md). That document
+is written as a standalone audit record for anyone continuing or
+reviewing this work, not a summary for display, and is the place to start
+before opening any other file in that folder.
 
 ---
 

@@ -161,3 +161,18 @@ To ensure transparency and replicability, all scraping scripts, data processing 
 - **Dataset DOI:** [10.5281/zenodo.19836413](https://doi.org/10.5281/zenodo.19836413)
 - **PyPI package:** [water-law-dataset](https://pypi.org/project/water-law-dataset/)
 - **GitHub:** [jrklaus8/water-law-dataset](https://github.com/jrklaus8/water-law-dataset)
+
+---
+
+## Related: Systematic Review Project
+
+This judicial dataset is one empirical strand of the doctoral research
+architecture; a separate companion project,
+[`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/),
+carries out a systematic review of the household/applicant-level empirical
+literature on legal and administrative access barriers. Per that project's
+`PROJECT_SPEC.md` §9, the two evidence bases are never merged into a single
+statistical model: litigation visibility is not a representative sample of
+administrative exclusion. The judicial dataset's role there is limited to
+triangulation and hypothesis generation, and to a possible future, separate
+jurimetric comparison paper.
