@@ -4,7 +4,7 @@
 Tiers (rationale in 02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md):
   1  every decided row with NO reviewer label (provenance unknown)                       -- all of them
   2  seeded, stratified random sample of substantive EXCLUDES (E08 duplicates and E10 'inaccessible' excluded from sampling)
-  3  seeded random sample of INCLUDES beyond the 100 already human-confirmed (S001-S100)  -- optional
+  3  seeded random sample of INCLUDES beyond the 200 already human-confirmed (S001-S200)  -- optional
 
 Deterministic: fixed seed, stratified allocation stated below. Regenerate:  python3 code/screening/build_reviewer2_priority_queue.py
 Run from the project root. Writes 02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv

@@ -91,7 +91,7 @@ has(readme, f"{F['quantitative_synthesis_eligible']} flagged quantitative-synthe
 has(readme, f"E05 no\nempirical evidence {F['exclusion_by_code']['E05']}", 'E05 count')
 has(readme, f"E08 duplicate {F['exclusion_by_code']['E08']}", 'E08 count')
 has(readme, f"of {exc_n:,} total", 'exclusion total')
-has(readme, f"100 of {inc_n:,} current includes", 'reviewer_2 coverage')
+has(readme, f"{F['reviewer_2_confirmed_includes']} of {inc_n:,} current includes", 'reviewer_2 coverage')
 # README's full exclusion-reason breakdown ("E01 wrong topic 496 · E02 wrong population 34 ...") must match the exclusion log
 import re as _re
 _flat = _re.sub(r'\s+', ' ', text(readme))

@@ -21,7 +21,7 @@ from search hit to synthesis, what has already gone wrong and been fixed, and wh
 |---|---|---|
 | Search, deduplication | Researcher (databases, exports) + scripts in `code/search/` | Deduplication audits 2026-09-28 (DOI, title/author) |
 | Title/abstract screening | AI first pass; human second reviewer | Yes, for the 3,665 include-plus-unsure records (99.8% agreement, itself flagged as unusually high — see README); the AI's 22,557 exclusions were **not** human-checked |
-| Full-text screening | AI reviewer (`reviewer_1`) | **Only 100 of the included studies (S001–S100) confirmed by a human `reviewer_2`**; excludes not reviewed |
+| Full-text screening | AI reviewer (`reviewer_1`) | **Only 200 of the included studies (S001–S200) confirmed by a human `reviewer_2`**; excludes not reviewed |
 | Extraction (92 fields) | AI | **None yet** — no second-extractor pass |
 | Risk-of-bias ratings | AI, rule-based batch process from extracted fields | **None yet**; not a signalling-question read of each paper |
 | Synthesis (Phase 11 judgment, SWiM) | AI, from the extracted data | None yet |

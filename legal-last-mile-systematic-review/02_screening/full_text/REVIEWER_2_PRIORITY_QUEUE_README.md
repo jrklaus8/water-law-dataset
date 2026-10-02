@@ -2,7 +2,7 @@
 
 `full_text_reviewer_2_priority_queue_2026-09-28.csv` is the recommended order of work for a human second reviewer of the
 full-text decisions. The older `full_text_reviewer_2_queue.csv` (175 records from an early snapshot) is superseded.
-**One-page working checklist: `REVIEWER_2_CHECKLIST.md`.** Currently only 100 of the 1,159 includes (S001–S100) and none of the
+**One-page working checklist: `REVIEWER_2_CHECKLIST.md`.** Currently only 200 of the 1,159 includes (S001–S200) and none of the
 1,117 excludes have been independently confirmed by a human (`AI_USE_STATEMENT.md`).
 
 ## What is in it
@@ -11,7 +11,7 @@ full-text decisions. The older `full_text_reviewer_2_queue.csv` (175 records fro
 |---|---|---|---|
 | 1 | 73 (47 include, 26 exclude) | **Every** decided row with no reviewer label | Provenance unknown; nothing can be said about who or what made these decisions |
 | 2 | 103 excludes | Seeded random sample, stratified by exclusion code (about 100 in proportion, at least 3 per code; codes E08 duplicate and E10 inaccessible-text are not sampled because a second reader cannot re-make them from the paper) | Checks that AI excludes are correct; errors here silently remove eligible studies |
-| 3 | 50 includes | Seeded random sample of includes beyond S001–S100 (optional) | Checks that AI includes — and the extraction built on them — are correct |
+| 3 | 50 includes | Seeded random sample of includes beyond S001–S200 (optional) | Checks that AI includes — and the extraction built on them — are correct |
 
 Seed `20260928`; regenerate with `python3 code/screening/build_reviewer2_priority_queue.py` (deterministic). Sampling proportions
 and the seed are in the script, so the sample can be audited and re-drawn.

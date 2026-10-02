@@ -15,7 +15,7 @@ checks that the current-status documents quote these values. If a document disag
 | Never decided (retrieval closed) | 1,383 (1,201 not_retrievable, 182 wrong_file_retrieved) |
 | Exclusion-log rows | 1,117 — by code: E01 496, E02 34, E03 34, E04 77, E05 135, E06 106, E07 26, E08 8, E09 2, E10 151, E12 48 |
 | Decided rows with blank reviewer_1 | 73 |
-| Includes confirmed by a human reviewer_2 | 100 |
+| Includes confirmed by a human reviewer_2 | 200 |
 
 ## Extraction and classification
 

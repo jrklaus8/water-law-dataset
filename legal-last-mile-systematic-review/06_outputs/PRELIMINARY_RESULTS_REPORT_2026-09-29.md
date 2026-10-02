@@ -133,7 +133,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 - Full-text retrieval closed at 62.2%: 1,383 of 3,659 records (1,201 not retrievable, 182 wrong file delivered) were never assessed, and the unassessed set is systematically older (§2A.5). Some may be duplicates of included studies, some not eligible; the direction of any bias is unknown.
 - 151 of the 1,117 full-text excludes are E10 (inaccessible text), i.e. never judged on content.
-- Every full-text decision is the AI's; a human confirmed 100 includes (S001–S100) and no excludes; 73 decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).
+- Every full-text decision is the AI's; a human confirmed 200 includes (S001–S200) and no excludes; 73 decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).
 - At title/abstract stage the human second pass covered the 3,665 include-plus-unsure records only; the 22,557 records the AI excluded were not human-checked, so any wrongly excluded record is invisible to this review. The 99.8% agreement on the reviewed set is unusually high and was flagged by the project itself. (`AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` say "all records"; that wording should be checked against the README, which is narrower.)
 
 ### 3.3 Missing or thin data

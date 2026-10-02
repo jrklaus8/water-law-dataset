@@ -189,7 +189,7 @@ def build():
     W("")
     W(f"- Full-text retrieval closed at 62.2%: {F['full_text_undecided']:,} of {F['full_text_records']:,} records ({F['unretrieved_not_retrievable']:,} not retrievable, {F['unretrieved_wrong_file']} wrong file delivered) were never assessed, and the unassessed set is systematically older (§2A.5). Some may be duplicates of included studies, some not eligible; the direction of any bias is unknown.")
     W(f"- {e10} of the {F['full_text_exclude']:,} full-text excludes are E10 (inaccessible text), i.e. never judged on content.")
-    W(f"- Every full-text decision is the AI's; a human confirmed {F['reviewer_2_confirmed_includes']} includes (S001–S100) and no excludes; {F['decided_blank_reviewer_1']} decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).")
+    W(f"- Every full-text decision is the AI's; a human confirmed {F['reviewer_2_confirmed_includes']} includes (S001–S200) and no excludes; {F['decided_blank_reviewer_1']} decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).")
     W(f"- At title/abstract stage the human second pass covered the 3,665 include-plus-unsure records only; the 22,557 records the AI excluded were not human-checked, so any wrongly excluded record is invisible to this review. The 99.8% agreement on the reviewed set is unusually high and was flagged by the project itself. (`AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` say \"all records\"; that wording should be checked against the README, which is narrower.)")
     W("")
     W("### 3.3 Missing or thin data")

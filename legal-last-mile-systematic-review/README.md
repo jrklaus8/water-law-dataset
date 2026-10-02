@@ -84,11 +84,12 @@ explained in full further down; this is the index.
    flagged to the researcher and confirmed before being merged into the
    permanent record, rather than treated as a routine result. See
    **Chronological workflow → 5**.
-5. **Full-text human second-review (reviewer_2) is real but only 8.6%
-   complete.** As of 2026-09-27, the PI has independently reviewed and
-   confirmed the first 100 of 1,159 current full-text includes (S001–S100;
-   1,162 before the 2026-09-28 duplicate merge, see item 7).
-   The remaining 1,059 includes, and all 1,117 excludes, at the full-text
+5. **Full-text human second-review (reviewer_2) is real but only 17.3%
+   complete.** The PI has independently reviewed and confirmed the first
+   200 of 1,159 current full-text includes (S001–S100 on 2026-09-27 and
+   S101–S200 on 2026-10-02, no conflicts, no further notes; 1,162 includes
+   before the 2026-09-28 duplicate merge, see item 7).
+   The remaining 959 includes, and all 1,117 excludes, at the full-text
    stage still carry no human second reviewer. Do not read "a human
    reviewer_2 pass has begun" as "the full-text stage is independently
    verified." See **Current project status** and **Human and AI
@@ -475,7 +476,7 @@ documentation**.
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
 | Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,276 of 3,659 assessed (**1,159 include / 1,117 exclude** — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
-| Full-text human reviewer_2 | **Just begun, 8.6% complete.** 100 of 1,159 current includes (S001–S100) independently confirmed by the PI, zero conflicts. 1,059 includes and all 1,117 excludes still unreviewed by a human second reviewer at this stage |
+| Full-text human reviewer_2 | **Under way, 17.3% complete.** 200 of 1,159 current includes (S001–S200) independently confirmed by the PI, zero conflicts. 959 includes and all 1,117 excludes still unreviewed by a human second reviewer at this stage |
 | Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,159 studies extracted, `S001`–`S1164` (`S227`, `S233`, `S299`, `S399` retired as documented duplicate corrections and `S356` retired after its full-text exclusion — real gaps in the numbering, not an error) |
 | Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,159 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 63 ROBINS-I, 140 JBI Cross-Sectional, 205 MMAT, 263 CASP Qualitative, 23 AMSTAR 2, 447 Legal Institutional Evidence Appraisal Framework, 13 correctly-flagged `NONE` — live counts as recomputed by the 2026-09-28 audit and duplicate merge), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,146 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
 | Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,159 studies — 247 flagged quantitative-synthesis-eligible, 1,059 qualitative-synthesis-eligible (categories overlap) |
@@ -551,11 +552,12 @@ review's screening statistics should disclose this caveat alongside the
 Until today, no full-text include or exclude decision in this review had
 been independently confirmed by a human second reviewer — `reviewer_2`
 was blank for all 3,659 rows of `full_text_screening_database.csv`. As of
-2026-09-27, the PI has reviewed and confirmed the first 100 chronologically
-included studies (`S001`–`S100`), agreeing with the AI reviewer's
-classification in all 100 cases, zero conflicts. **This is 100 of 1,159
-current includes (8.6%) and 0 of 1,117 current excludes.** Treat every
-full-text decision beyond those 100 confirmed includes as AI-reviewer-only
+2026-09-27, the PI reviewed and confirmed the first 100 chronologically
+included studies (`S001`–`S100`), and on 2026-10-02 the next 100 (`S101`–`S200`,
+reported by the PI as reviewed and agreed, no further notes), agreeing with the AI reviewer's
+classification in all 200 cases, zero conflicts. **This is 200 of 1,159
+current includes (17.3%) and 0 of 1,117 current excludes.** Treat every
+full-text decision beyond those 200 confirmed includes as AI-reviewer-only
 until this README says otherwise, and check `full_text_screening_database.csv`'s
 `reviewer_2` column directly rather than assuming this document is current
 if substantial time has passed since 2026-09-27.
@@ -1036,8 +1038,8 @@ caveat applies. It is not softened.
   re-screened.
 - Full-text screening, AI first pass (2,276 of 3,659 records that reached
   this stage — the final figure, since Phase 6 closed 2026-09-28) —
-  independently human-confirmed for **100 of the 1,159 current includes
-  only** (S001–S100, as of 2026-09-27). The remaining 1,059 includes and
+  independently human-confirmed for **200 of the 1,159 current includes
+  only** (S001–S200, as of 2026-10-02). The remaining 959 includes and
   all 1,117 excludes at this stage are AI-reviewer-only.
 - Extraction against the 92-field codebook (1,159 studies) — not
   independently human-reviewed at scale; spot-checking this is recommended
@@ -1061,10 +1063,10 @@ caveat applies. It is not softened.
   was flagged to and confirmed by the researcher before being merged, and
   any manuscript reporting this figure should disclose the caveat alongside
   it, not report the number alone.
-- Full-text screening, human second reviewer — **begun 2026-09-27**, 100 of
-  1,159 current includes reviewed and confirmed, zero conflicts. This is a
+- Full-text screening, human second reviewer — **begun 2026-09-27**, 200 of
+  1,159 current includes reviewed and confirmed (S001–S100; S101–S200 on 2026-10-02), zero conflicts. This is a
   real, independent confirmation (the PI reviewed the articles and the
-  classification, not merely the AI's summary), but it covers 8.6% of
+  classification, not merely the AI's summary), but it covers 17.3% of
   current includes and 0% of excludes. Do not describe this stage as
   "human-reviewed" without that qualifier.
 - Every closure decision recorded in `CHANGELOG.md` as "researcher
