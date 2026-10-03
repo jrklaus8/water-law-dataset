@@ -4,7 +4,18 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-10-03 (latest, S697 and S438) — two more AMSTAR 2 appraisals from full text
+## 2026-10-03 (latest, S052 and S327) — the last two weakest-evidenced AMSTAR 2 reviews appraised from full text
+
+The researcher supplied the PDFs of S052 (Muoghalu, Semiyaga & Manga 2023, *Front Environ Sci*) and S327 (Ezezika et al. 2023, *PLOS Glob Public Health*). `code/provenance/audit_and_repair/appraise_s052_s327_amstar2_2026-10-03.py` replaced their "Not ratable" entries with full-text AMSTAR 2 appraisals (`04_quality/appraisal_forms/S052_AMSTAR2.md`, `S327_AMSTAR2.md`) and re-extracted both. Text only was read: flow diagrams, figures and every supplementary file were not.
+
+- **S052: Critically Low** (items 2, 7, 9, 13 flawed: no protocol, no excluded-study list, no appraisal of included studies).
+- **S327: Low** — the first review not rated Critically Low (PROSPERO-registered, duplicate screening and extraction, MMAT appraisal). One critical flaw (item 7). **Borderline:** it rests on a judgement call at item 13; scored No it would be Critically Low.
+- **Corrections to the earlier abstract-level S052 extraction.** (a) "Illegal FS dumping outlawed in India, Kenya, Ghana" was wrong: the paper says *manual emptying* is deemed illegal in India, Kenya, Ghana and Bangladesh, from one cited source. (b) "Mechanical emptying up to 4x more costly than manual (Jenkins 2015)" was reversed: mechanical is more costly in most studies, and the 4x figure is *formal manual* emptying costing 4x mechanical in Kisumu (Peletz 2020). No flag or effect-size row was changed.
+- **S327:** citation corrected to 3(4); it was citation/summary-level only and was not caught by the abstract-only note-prefix check; it is a behavioural-determinants review with almost no legal content (scope question logged). Country field now filled, so the multi-country count is 126 (4 blank).
+- Report wording made computed ("every rating is Critically Low" no longer hard-coded); stale clause "S697's number of included studies was not extracted" removed.
+- AMSTAR 2: **11 of 23 formally rated** (10 Critically Low, 1 Low), 12 Not ratable. Verifier 116 of 116.
+
+## 2026-10-03 (S697 and S438) — two more AMSTAR 2 appraisals from full text
 
 The researcher put `main.pdf` (S697, Narayanan et al. 2017, *Utilities Policy*) and `ijerph-13-01222 2.pdf` (S438, Majuru et al. 2016, *IJERPH*) in the Drive folder. `code/provenance/audit_and_repair/appraise_s697_s438_amstar2_2026-10-03.py` replaced their "Not ratable" entries with item-level full-text appraisals (`S697_AMSTAR2.md`, `S438_AMSTAR2.md`). **S697** is a real random-effects meta-analysis: 21 studies and 71 findings from 25,499 records; pooled OR 1.05 for bottom-up versus top-down approaches on connectivity, not significant on any access dimension; significant only for individual toilets and where community participation was active; Egger/Begg tests show no publication bias; 20 of 21 studies high or medium quality. **S438**: seven databases plus Google Scholar, 28 cross-sectional studies, adapted Cochrane/EPPI appraisal (12 low, 13 moderate, 3 high risk of bias), thematic synthesis. Both rate **Critically Low** because AMSTAR 2's critical items 2 (no protocol) and 7 (no list of excluded studies) are flawed — S697 is otherwise among the most rigorous reviews appraised, so the rating says more about reporting than about care. The "exact k not extracted" gap for S697 is closed. Formal AMSTAR 2 ratings: **9 of 23** (all Critically Low); 14 unrated. Figures, flow diagrams and image tables were not read. Both PDFs filed in Drive `Processed`.
 
