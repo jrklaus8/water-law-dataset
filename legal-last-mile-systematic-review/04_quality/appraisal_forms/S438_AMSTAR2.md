@@ -1,34 +1,26 @@
-# AMSTAR 2 Appraisal — S438
+# AMSTAR 2 appraisal (full text) — S438
 
-**Citation:** Majuru B, Suhrcke M, Hunter PR (2016). How Do Households Respond to Unreliable Water Supplies? A Systematic Review. IJERPH.
+**Date appraised:** 2026-10-03 · **Appraiser:** Claude-AI-appraisal-2026-10-03 · **Basis:** the full-text PDF supplied by the researcher via the shared Drive folder (not committed). Figures (flow diagrams, forest plots) and image tables/appendices were **not read**. Supersedes the earlier abstract-level entry. Appraised by the AI; not independently verified.
 
-**Date appraised:** 2026-09-28 · **Appraiser:** Claude-AI-appraisal-2026-09-28
+**Overall confidence: Critically Low** — critical items 2 (no protocol) and 7 (no list of excluded studies) are flawed; items 4 and 13 are met. Critical items: 2, 4, 7, 9, 11, 13, 15.
 
-Same tool-structure provenance and conservative NI convention as `S427_AMSTAR2.md` — see
-that file for the full statement rather than repeating it verbatim here.
+| # | Critical? | Item | Answer | Basis (from the text read) |
+|---|---|---|---|---|
+| 1 | No | PICO components in the research questions and inclusion criteria | Partial Yes | review questions and four inclusion criteria stated; no formal PICO |
+| 2 | **Yes** | Review methods established prior to the review (protocol); deviations justified | No | no protocol or registration stated |
+| 3 | No | Selection of study designs explained | No | designs not discussed; all included studies cross-sectional |
+| 4 | **Yes** | Comprehensive literature search strategy | Yes | seven databases (CINAHL, Embase, PubMed Central, Scopus, ScienceDirect, Scirus, Web of Knowledge) with the full string, Google and Google Scholar (first 50 hits), reference lists; English only (acknowledged) |
+| 5 | No | Study selection in duplicate | No | duplicate selection not stated; the search was performed by one author |
+| 6 | No | Data extraction in duplicate | No | duplicate extraction not stated |
+| 7 | **Yes** | List of excluded studies with justification | No | 1,643 records, 357 duplicates, 4 added from references, 28 included; no list of excluded studies (Figure 1 not read) |
+| 8 | No | Included studies described in adequate detail | Yes | Table 2 describes each study (objectives, setting, supply, methods, findings) |
+| 9 | **Yes** | Satisfactory technique for risk of bias in included studies | Partial Yes | framework adapted from Hellebrandt et al. (Cochrane/EPPI domains), six scored criteria combined into low/moderate/high risk of bias; number of appraisers not stated; confounding not a named domain |
+| 10 | No | Funding sources of included studies reported | No | not reported |
+| 11 | **Yes** | Appropriate meta-analytic methods | N/A | no meta-analysis |
+| 12 | No | Impact of risk of bias on meta-analysis results | N/A | no meta-analysis |
+| 13 | **Yes** | Risk of bias accounted for when interpreting results | Yes | 12 studies low, 13 moderate and 3 high risk of bias; common bias sources (unclear methods, convenience or snowball sampling) discussed in the results |
+| 14 | No | Heterogeneity explained and discussed | Yes | diversity of methods, disciplines and outcomes explained; thematic synthesis because pooling was not appropriate |
+| 15 | **Yes** | Publication bias investigated (quantitative synthesis) | N/A | no quantitative synthesis |
+| 16 | No | Conflicts of interest and funding of the review reported | Partial Yes | no conflict of interest declared; funding for the review not stated in the text read |
 
-## Item-level assessment
-
-| # | Critical? | Answer | Basis |
-|---|---|---|---|
-| 1 | No | Partial Yes | Population (households facing unreliable supply) and outcome (coping-strategy choice) defined; no intervention/comparator — a determinants review, not an intervention-effect test |
-| 2 | **Yes** | NI | Not stated |
-| 3 | No | NI | Not stated |
-| 4 | **Yes** | NI | "Systematic review of the peer-reviewed literature" too generic to credit further |
-| 5 | No | NI | Not stated |
-| 6 | No | NI | Not stated |
-| 7 | **Yes** | NI | Not stated |
-| 8 | No | Partial Yes | Specific, real finding reported (Dar es Salaam illegal-connection case detail; land tenure and regulatory environment named as determinants) |
-| 9 | **Yes** | NI | Not stated |
-| 10 | No | NI | Not stated |
-| 11 | **Yes** | No meta-analysis conducted | Narrative synthesis |
-| 12 | No | No meta-analysis conducted | Same |
-| 13 | **Yes** | NI | Not stated |
-| 14 | No | NI | Not stated |
-| 15 | **Yes** | No meta-analysis conducted | Same |
-| 16 | No | NI | Not stated |
-
-## Overall confidence rating: Not ratable
-
-All 5 applicable critical items (2, 4, 7, 9, 13) are NI. Same conclusion, and same reason,
-as S427. A real rating requires the paper's full Methods section.
+Method note: where the text is silent the answer is No (AMSTAR 2's own convention). The algorithm counts critical flaws only, so a review can be methodologically careful yet rate Critically Low for lacking a protocol and an excluded-study list.

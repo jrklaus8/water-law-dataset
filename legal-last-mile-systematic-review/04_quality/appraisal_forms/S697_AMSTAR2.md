@@ -1,43 +1,26 @@
-# AMSTAR 2 Appraisal — S697
+# AMSTAR 2 appraisal (full text) — S697
 
-**Citation:** Narayanan S, Rajan AT, Jebaraj P, Elayaraja MS (2017). Delivering basic infrastructure services to the urban poor: a meta-analysis of the effectiveness of bottom-up approaches. Utilities Policy.
+**Date appraised:** 2026-10-03 · **Appraiser:** Claude-AI-appraisal-2026-10-03 · **Basis:** the full-text PDF supplied by the researcher via the shared Drive folder (not committed). Figures (flow diagrams, forest plots) and image tables/appendices were **not read**. Supersedes the earlier abstract-level entry. Appraised by the AI; not independently verified.
 
-**Date appraised:** 2026-09-28 · **Appraiser:** Claude-AI-appraisal-2026-09-28
+**Overall confidence: Critically Low** — critical items 2 (no protocol) and 7 (no list of excluded studies) are flawed; the rest of the critical items are met or partly met. Critical items: 2, 4, 7, 9, 11, 13, 15.
 
-Same tool-structure provenance and conservative NI convention as `S427_AMSTAR2.md`.
-`extraction_note` states explicitly: "extraction fields populated at abstract/synthesis
-level, not from a fully-read Methods section" — thin, comparable to the base-10-study group,
-but notably different in one respect: **this study genuinely is a meta-analysis** (unlike
-S427/S438/S475/S521/S537, which are narrative/thematic/scoping/realist syntheses), so items
-11, 12, 14, and 15 apply here and are not N/A — they are simply unknown, which is a more
-consequential gap for a meta-analysis's validity than for a narrative synthesis.
+| # | Critical? | Item | Answer | Basis (from the text read) |
+|---|---|---|---|---|
+| 1 | No | PICO components in the research questions and inclusion criteria | Yes | population (urban poor in LMIC slums), intervention (bottom-up approaches), comparison (top-down), outcomes (four access dimensions) all stated |
+| 2 | **Yes** | Review methods established prior to the review (protocol); deviations justified | No | no protocol or registration stated |
+| 3 | No | Selection of study designs explained | Partial Yes | inclusion and exclusion criteria in Appendix 1 (an image table, not read); designs not discussed in the text |
+| 4 | **Yes** | Comprehensive literature search strategy | Yes | hand search of journals, ScienceDirect/EBSCO/ProQuest, ~20 agency websites, reference lists, author correspondence; 21,919 + 3,580 records; search dates and string not given in the text |
+| 5 | No | Study selection in duplicate | No | multi-stage screening in EPPI-Reviewer; duplicate selection not stated |
+| 6 | No | Data extraction in duplicate | No | duplicate extraction not stated |
+| 7 | **Yes** | List of excluded studies with justification | No | record counts only; no list of excluded studies |
+| 8 | No | Included studies described in adequate detail | Yes | Appendix 2 lists the 21 studies; Table 1 classifies the 71 findings by dimension, sector, region, slum type and participation |
+| 9 | **Yes** | Satisfactory technique for risk of bias in included studies | Partial Yes | critical appraisal tool (Annamalai et al. 2016) scored out of 72, two independent appraisers, high/medium/low bands; confounding handling not described |
+| 10 | No | Funding sources of included studies reported | No | funding of included studies not reported |
+| 11 | **Yes** | Appropriate meta-analytic methods | Yes | random-effects (DerSimonian-Laird) on log odds ratios, SMD converted by a stated formula, separate analyses for different metrics, I2; caveat: 71 findings from 21 studies |
+| 12 | No | Impact of risk of bias on meta-analysis results | No | no analysis of the effect of study quality on pooled results seen |
+| 13 | **Yes** | Risk of bias accounted for when interpreting results | Yes | 20 of 21 studies rated high or medium; evidence base described as good quality in the interpretation |
+| 14 | No | Heterogeneity explained and discussed | Yes | I2 and subgroup analyses by sector, facility type, region, slum type and community participation |
+| 15 | **Yes** | Publication bias investigated (quantitative synthesis) | Yes | funnel-plot asymmetry, Egger and Begg tests; no bias indicated (Appendix 4) |
+| 16 | No | Conflicts of interest and funding of the review reported | Yes | DFID funding (Contract 40077696) disclosed; no conflicts statement seen in the text read |
 
-## Item-level assessment
-
-| # | Critical? | Answer | Basis |
-|---|---|---|---|
-| 1 | No | Partial Yes | Population/intervention/comparator/outcome reasonably clear from the meta-analysis framing (bottom-up vs. top-down delivery models on access outcomes) |
-| 2 | **Yes** | NI | Not stated |
-| 3 | No | NI | Not stated |
-| 4 | **Yes** | NI | Not stated |
-| 5 | No | NI | Not stated |
-| 6 | No | NI | Not stated |
-| 7 | **Yes** | NI | Not stated |
-| 8 | No | NI | Only aggregate meta-analytic findings extracted, no per-study description |
-| 9 | **Yes** | NI | Not stated |
-| 10 | No | NI | Not stated |
-| 11 | **Yes** | **NI (applies — a meta-analysis was performed, method unknown)** | Weighting/heterogeneity-adjustment technique not described in extracted text |
-| 12 | No | **NI (applies)** | Not stated |
-| 13 | **Yes** | NI | Not stated |
-| 14 | No | **NI (applies)** | Not stated |
-| 15 | **Yes** | **NI (applies)** | Publication-bias investigation not described in extracted text |
-| 16 | No | NI | Not stated |
-
-## Overall confidence rating: Not ratable
-
-All 7 critical items (2, 4, 7, 9, 11, 13, 15) are NI here — unlike the narrative/scoping/
-realist reviews elsewhere in this batch, none of the meta-analysis-specific critical items
-(11, 15) are exempted as "no meta-analysis conducted," since one genuinely was. This makes
-the evidentiary gap here more consequential than for the narrative-synthesis studies in this
-same batch, not less. A real rating requires the paper's full Methods and Results sections
-(pooling method, heterogeneity statistics, publication-bias tests).
+Method note: where the text is silent the answer is No (AMSTAR 2's own convention). The algorithm counts critical flaws only, so a review can be methodologically careful yet rate Critically Low for lacking a protocol and an excluded-study list.

@@ -37,8 +37,6 @@ Ordered least-evidenced first (see the script docstring for the score). Signals 
 |---|---|---|---|---|
 | S052 | 0 | no | no | none in recorded fields |
 | S327 | 1 | no | no | word "systematic" |
-| S438 | 1 | no | no | word "systematic" |
-| S697 | 1 | no | no | scoping/realist/mapping/meta-analysis |
 | S328 | 2 | no | no | word "systematic"; scoping/realist/mapping/meta-analysis |
 | S329 | 2 | no | no | count of included studies stated; word "systematic"; narrative review with a systematic search (hybrid) |
 | S370 | 2 | no | yes | word "systematic"; scoping/realist/mapping/meta-analysis |
@@ -50,6 +48,7 @@ Ordered least-evidenced first (see the script docstring for the score). Signals 
 | S323 | 4 | no | no | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S344 | 4 | no | yes | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S521 | 4 | no | no | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
+| S697 | 4 | no | yes | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S015 | 5 | no | no | registration/PRISMA/JBI method named; count of included studies stated; word "systematic" |
 | S019 | 5 | no | no | registration/PRISMA/JBI method named; count of included studies stated; word "systematic" |
 | S324 | 5 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis; narrative-review wording |
@@ -57,6 +56,7 @@ Ordered least-evidenced first (see the script docstring for the score). Signals 
 | S350 | 5 | no | no | registration/PRISMA/JBI method named; count of included studies stated; scoping/realist/mapping/meta-analysis |
 | S027 | 6 | no | no | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S319 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
+| S438 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S537 | 6 | no | no | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 
 The weakest-evidenced studies deserve the earliest full-text check; S329 ("narrative review with systematic search") and S418 ("narrative/scoping review") are hybrids where the question is real, not just unconfirmed.
