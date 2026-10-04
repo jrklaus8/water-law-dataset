@@ -25,7 +25,7 @@ Category C by risk-of-bias tool: MMAT 61, JBI Cross-Sectional 26, Legal Framewor
 
 Each line is a prompt to look at the row against its paper, not proof of an error: direction wording is a synthesis judgment (sign and valence can differ — see the Family A and C documents), and interval scale (ratio vs difference) is inferred from the measure text.
 
-**Coverage:** an interval could be checked for 5 rows (structured `lower_CI`/`upper_CI`) plus 0 rows with exactly one interval stated in the estimate text, i.e. 5 of 62; the rest have no interval, several intervals for several outcomes, or free-text intervals, so the interval checks say nothing about them.
+**Coverage:** an interval could be checked for 6 rows (structured `lower_CI`/`upper_CI`) plus 0 rows with exactly one interval stated in the estimate text, i.e. 6 of 62; the rest have no interval, several intervals for several outcomes, or free-text intervals, so the interval checks say nothing about them.
 
 Checks run: interval order; `null` direction vs an interval excluding the null value; `significant` direction vs an interval including it; effect-size rows for studies not flagged eligible; blank family without a recorded non-pooling reason; blank `adjusted`, estimate, direction or reason. Duplicate study across families is impossible by construction (one row per study; the verifier enforces it).
 
