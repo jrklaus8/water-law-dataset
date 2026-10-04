@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (rehearsal 3) — what options A20 and A21 would cost
+
+- Rehearsed two of the researcher's open options on scratch copies: A20 (a), writing the draft design-class mapping into `evidence_map.csv`, gave 0 verifier failures and passing tests (regeneration adapts the report, figures and manuscript by itself); A21 (b), blanking the family of the 29 rows outside their family's wording, gave 3 verifier failures (hand-written family sizes in the three SWiM documents: 11, 1 and 5 studies) and a failing `test_sensitivity_invariants`, since the sensitivity script takes its study lists from the SWiM documents, so those documents would have to be rewritten before regenerating. Both costs are now stated in the A20 and A21 rows of `DECISIONS_AND_OPEN_ITEMS.md`. Nothing was applied to the real data.
+
 ## 2026-10-04 (rehearsal 2) — confirms and recodes only
 
 - Second rehearsal on a scratch copy, with the other half of the workflow: a mock sheet with 3 confirmations and 3 recodes (E01 to E07), no reversals. `apply_a16_adjudications.py` wrote the notes and recodes correctly, the resolver correctly had nothing to do, all tests passed, and the verifier gave 6 failures: the README's per-code exclusion breakdown (E01 496 to 493, E07 26 to 29) and the A16 implied-includes figure (468 to 466, because the projection weights by per-code counts) in the README, `DECISIONS_AND_OPEN_ITEMS.md`, the decision brief and the handoff. Documented in the handoff; no defect found. A grep of all code and documentation for TODO, FIXME, XXX and HACK finds none in maintained code (one false hit in a provenance comment).
