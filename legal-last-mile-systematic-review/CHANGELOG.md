@@ -16,6 +16,27 @@ amendments in particular must be logged here with rationale).
 
 - The second rehearsal fixed only 4 of 17 failures because several different numbers matched each pattern. `verify_repository.py` now records every phrase it looks for (`VERIFY_EMIT_EXPECTED=file` dumps them as JSON); `fix_documented_counts.py` runs it on the last commit (temporary git worktree, `--old-ref`, default HEAD) and on the working tree, pairs phrases by file, label and position, and replaces the old phrase when it occurs exactly once; the pattern search stays as the fallback (`--no-exact` skips the mapping). It also keeps CRLF line endings, which the first version would have flattened. Rehearsal on a scratch clone (three included studies excluded): 35 of 38 failures repaired, the other three left for a person, and the verifier then showed only those three. Four new unit tests (9 in the file).
 
+## 2026-10-04 (data quality) — twelve stale `not_retrievable` statuses on decided rows fixed
+
+- `DECISIONS_AND_OPEN_ITEMS.md`'s backlog had long flagged that twelve full-text-decided rows kept `full_text_status =
+  not_retrievable`, a contradiction (a decision requires something was read). Checked each one against its own `notes`
+  field rather than assuming: eight `include` rows (`RA1815DB6A8FD`, `R19F2163297EB`, `RC1E784D9D197`, `RF35F2E5A319B`,
+  `R78F5B66C5C9F`, `R9FA1C1004C69`, `R1197785426F6`, `RD1E30397691A`) already said "Extracted as S5xx" in their own
+  notes, proving retrieval directly — status corrected to `retrieved`, nothing else touched. The other four
+  (`R73C7494E55DD`, `RBEBE0BACCD18`, `RC1CB10DA729E`, `RE8D979932979`) are `exclude` rows the automated pipeline
+  could not download (CDN-blocked or paywalled); `EXCLUSION_BASIS_AUDIT_2026-10-04.md` had already independently found
+  and read each full PDF via Drive and reconfirmed the exclusion, so the status is corrected the same way, with a note
+  on the row itself pointing to that audit so the provenance is visible without cross-referencing a separate generated
+  file. No `full_text_decision` was changed. Regenerated: `EXCLUSION_BASIS_AUDIT_2026-10-04.md` dropped from 75 to 63
+  rows (the twelve false positives it had been flagging are gone); `verify_repository.py` passes 157/157.
+- Also genuinely invoked the Claude Octopus plugin's own packaged `/octo:review` pipeline against an unrelated,
+  real staged fix (`run_codex_reviewer2.py`'s unsafe `shell=True` Gemini dispatch) as a transparency exercise, per
+  this project's commitment to disclose every AI tool tried. All four round-1 providers failed for three
+  independently-diagnosed reasons (a stale internal OAuth token, a hardcoded unsupported Codex model, a Gemini
+  CLI auth/env-propagation gap) — see `_reviewer2_codex/OCTOPUS_REVIEW_DIAGNOSTIC_2026-10-04.md`. The project's own
+  `run_codex_reviewer2.py`/`run_second_extractor.py`/`run_debate.py` dispatch scripts remain the working, validated
+  reviewer_2 methodology and are unaffected.
+
 ## 2026-10-04 (tooling) — automatic fixer for documented counts
 
 - The rehearsals showed that the main manual burden after a real data change is 36-42 hand-written figures. New `code/analysis/fix_documented_counts.py` (dry run by default, `--apply` to write; 5 unit tests in `code/tests/test_fix_documented_counts.py`, run by `regenerate_all.sh`) reads the verifier's "expected to contain '...'" failures, builds a digit-wildcard regular expression from the expected phrase and replaces the old text when exactly one distinct old text matches in the named file. On the A22 rehearsal copy (42 failures) it applied 24 replacements and re-running the verifier left 17 failures, all listed as MANUAL (ambiguous short phrases such as `236 (` that match dozens of places, per-code breakdown sentences, and the root-README path, since fixed). It cannot judge whether a number in a dated historical document should change, so `git diff` must be read before committing. The resolver docstring and the handoff point to it.
