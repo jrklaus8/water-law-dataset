@@ -12,6 +12,8 @@ from search hit to synthesis, what has already gone wrong and been fixed, and wh
    headline figure from the CSV databases, checks that the databases agree with each other, and checks that the
    current-status documents quote the same figures. `00_admin/CURRENT_FIGURES.md` is the human-readable output. If a document
    ever disagrees with that file, the file is right.
+   `bash code/analysis/regenerate_all.sh` rebuilds every derived file, runs the unit tests in `code/tests/` (the A16 adjudication
+   scripts and the second-extractor scorer) and then the verifier; it stops if a test fails.
 3. **Read the audit trail:** `CHANGELOG.md` (newest entry first, every entry dated) and
    `00_admin/audits/2026-09-28_repository_audit.md` (16 findings, what was wrong, what was fixed, what is open).
 
