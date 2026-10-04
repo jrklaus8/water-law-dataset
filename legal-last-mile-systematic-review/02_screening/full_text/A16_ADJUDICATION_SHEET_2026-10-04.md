@@ -10,6 +10,27 @@ AI excludes by original code among priority 1-3: E01 wrong topic 34, E03 wrong e
 
 Priority 1 = both models include and every criterion is 'yes' in both; 2 = both include but some criterion is not 'yes'; 3 = only one model includes. Start with priority 1: if the researcher rejects most of those, the independent models are probably reading the criteria too loosely and the original exclusions can stand; if the researcher accepts most, widen the tier-2 sample (A16 option b) before relying on the 1,117-exclude log.
 
+## What the sample implies, if the models were right (arithmetic, not a finding)
+
+Tier 2 is a seeded random sample of the AI's full-text excludes, stratified by exclusion code (E08 duplicates and E10 inaccessible texts not sampled); the models re-read only those whose PDF was available. Scaling each code's rate to the whole exclusion log gives the order of magnitude at stake. The 95% ranges are Wilson intervals per code; they ignore the PDF-availability selection and the models' own error, so treat them as a sense of scale only.
+
+| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied includes if the rate held (95% range) |
+|---|---|---|---|---|---|
+| E01 wrong topic | 496 | 37 | 19 | 19 | 255 (178-330) |
+| E02 wrong population | 34 | 0 | 0 | 0 | not estimable (none re-read) |
+| E03 wrong exposure | 34 | 2 | 2 | 2 | 34 (12-34) |
+| E04 wrong outcome | 77 | 3 | 2 | 2 | 51 (16-72) |
+| E05 no empirical evidence | 135 | 6 | 2 | 2 | 45 (13-95) |
+| E06 engineering only | 106 | 9 | 6 | 5 | 71 (38-93) |
+| E07 wrong service | 26 | 1 | 0 | 0 | 0 (0-21) |
+| E09 insufficient information | 2 | 0 | 0 | 0 | not estimable (none re-read) |
+| E12 wrong study design | 48 | 4 | 1 | 1 | 12 (2-34) |
+| **Sum of estimable codes** | 922 | 62 | 32 | 31 | **468** |
+
+For scale: the review currently has 1,159 full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.
+
+## Records
+
 | Pri | Record | Title | AI code | Codex | Gemini |
 |---|---|---|---|---|---|
 | 1 | R089ED6BEB7BE | The provincial water supply in Thailand and the water decade | E01 wrong topic | include (high) | include (high) |

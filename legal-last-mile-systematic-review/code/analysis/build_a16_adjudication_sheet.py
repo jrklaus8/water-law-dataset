@@ -35,6 +35,38 @@ def _not_yes(p):
     return '; '.join(f'{k}={v}' for k, v in sorted((p.get('criteria') or {}).items()) if v != 'yes')
 
 
+def _wilson(k, n, z=1.96):
+    if n == 0:
+        return (0.0, 1.0)
+    ph = k / n; d = 1 + z * z / n; c = ph + z * z / (2 * n); h = z * ((ph * (1 - ph) / n + z * z / (4 * n * n)) ** 0.5)
+    return (c - h) / d, (c + h) / d
+
+
+def projection(cx, gm, queue):
+    """Per exclusion code: excludes in the log, tier-2 records the models re-read, how many they would include, and the implied count if the rate held for the whole code.
+    Tier 2 is a seeded random sample stratified by code (E08 and E10 not sampled), so a per-code projection is legitimate as arithmetic; it inherits every weakness of the model verdicts."""
+    by_code = cf.compute()['exclusion_by_code']
+    rows = []
+    for code in sorted(by_code):
+        if code in ('E08', 'E10'):
+            continue
+        rev = [q for q in queue.values() if q['priority_tier'] == '2' and q['ai_exclusion_code'] == code and (q['record_id'] in cx or q['record_id'] in gm)]
+        prim = sum(1 for q in rev if q['reviewer_2_decision (include/exclude/cannot_tell)'] == 'include')
+        both = sum(1 for q in rev if cx.get(q['record_id'], {}).get('decision') == 'include' and gm.get(q['record_id'], {}).get('decision') == 'include')
+        lo, hi = _wilson(prim, len(rev))
+        N = by_code[code]
+        rows.append(dict(code=code, in_log=N, reread=len(rev), primary_include=prim, both_include=both,
+                         projected=round(N * prim / len(rev)) if rev else None, lo=round(N * lo) if rev else None, hi=round(N * hi) if rev else None))
+    return rows
+
+
+def implied_total():
+    """Sum over estimable exclusion codes of the per-code projection (see projection()); a sense of scale only."""
+    cx, gm = _load('results'), _load('results_gemini')
+    queue = {r['record_id']: r for r in csv.DictReader(open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline=''))}
+    return sum(p['projected'] for p in projection(cx, gm, queue) if p['projected'] is not None)
+
+
 def build():
     """Return (csv rows as dicts, markdown text)."""
     cx, gm = _load('results'), _load('results_gemini')
@@ -75,7 +107,19 @@ def build():
          "Priority 1 = both models include and every criterion is 'yes' in both; 2 = both include but some criterion is not 'yes'; 3 = only one model includes. Start with priority 1: if the researcher "
          "rejects most of those, the independent models are probably reading the criteria too loosely and the original exclusions can stand; if the researcher accepts most, widen the tier-2 sample "
          "(A16 option b) before relying on the 1,117-exclude log.", "",
-         "| Pri | Record | Title | AI code | Codex | Gemini |", "|---|---|---|---|---|---|"]
+         "## What the sample implies, if the models were right (arithmetic, not a finding)", "",
+         "Tier 2 is a seeded random sample of the AI's full-text excludes, stratified by exclusion code (E08 duplicates and E10 inaccessible texts not sampled); the models re-read only those whose PDF was available. "
+         "Scaling each code's rate to the whole exclusion log gives the order of magnitude at stake. The 95% ranges are Wilson intervals per code; they ignore the PDF-availability selection and the models' own error, so treat them as a sense of scale only.", "",
+         "| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied includes if the rate held (95% range) |", "|---|---|---|---|---|---|"]
+    proj = projection(cx, gm, queue)
+    for p in proj:
+        L.append(f"| {p['code']} {CODES.get(p['code'], '')} | {p['in_log']} | {p['reread']} | {p['primary_include']} | {p['both_include']} | "
+                 + (f"{p['projected']} ({p['lo']}-{p['hi']})" if p['projected'] is not None else 'not estimable (none re-read)') + " |")
+    est = [p for p in proj if p['projected'] is not None]
+    L += [f"| **Sum of estimable codes** | {sum(p['in_log'] for p in est)} | {sum(p['reread'] for p in est)} | {sum(p['primary_include'] for p in est)} | {sum(p['both_include'] for p in est)} | **{sum(p['projected'] for p in est)}** |", "",
+          f"For scale: the review currently has {cf.compute()['full_text_include']:,} full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.", "",
+          "## Records", "",
+          "| Pri | Record | Title | AI code | Codex | Gemini |", "|---|---|---|---|---|---|"]
     for r in rows:
         L.append(f"| {r['priority']} | {r['record_id']} | {r['title'][:90]} | {r['ai_code']} {r['ai_code_meaning']} | {r['codex_decision']} ({r['codex_confidence']}) | {r['gemini_decision']} ({r['gemini_confidence']}) |")
     return rows, "\n".join(L) + "\n"
