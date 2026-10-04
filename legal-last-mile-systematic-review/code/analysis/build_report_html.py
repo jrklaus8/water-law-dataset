@@ -197,6 +197,11 @@ def build():
         (f"{F['abstract_only_extractions']}", 'abstract-only extractions', 'extracted without the full text', 'warn'),
         (f"{F['reviewer_2_confirmed_includes']}", 'human-confirmed includes', 'no extracted value or rating human-checked', 'bad'),
     ]
+    figs = [('fig4_direction_by_family', 'Direction of association in the three syntheses'), ('fig1_design_mix', 'Study designs'), ('fig2_publication_years', 'Publication years'),
+            ('fig3_countries', 'Countries'), ('fig5_appraisal_tools', 'Appraisal instruments')]
+    fdir = cf.ROOT / '06_outputs/figures'
+    inner = ''.join(f'<figure class="fig"><div class="figsvg" role="img" aria-label="{H.escape(t)}">{(fdir / (f + ".svg")).read_text(encoding="utf-8").split("?>", 1)[-1]}</div></figure>' for f, t in figs if (fdir / (f + '.svg')).exists())
+    figures_html = f'<details class="figs" open><summary>Figures</summary><div class="figgrid">{inner}</div></details>' if inner else ''
     cards_html = ''.join(f'<div class="card c-{c}"><div class="big">{a}</div><div class="lab">{b}</div><div class="sub">{H.escape(d)}</div></div>' for a, b, d, c in cards)
 
     return (TEMPLATE
@@ -204,6 +209,7 @@ def build():
             .replace('{{DATE}}', gen_date)
             .replace('{{TOC}}', '\n'.join(toc_html))
             .replace('{{CARDS}}', cards_html)
+            .replace('{{FIGURES}}', figures_html)
             .replace('{{BANNER}}', banner)
             .replace('{{BODY}}', '\n'.join(body)))
 
@@ -252,6 +258,7 @@ nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);over
 main{padding:28px clamp(16px,4vw,48px) 80px;min-width:0}
 .hero h1{font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;letter-spacing:-.01em}
 .hero .meta{color:var(--muted);font-size:.9rem}
+.figs{margin:14px 0}.figs summary{cursor:pointer;font-weight:650;margin-bottom:8px}.figgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px}.fig{margin:0;border:1px solid var(--line,#d7d6cf);border-radius:10px;overflow:hidden;background:#fcfcfb}.figsvg svg{display:block;width:100%;height:auto}
 .cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 8px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 15px;box-shadow:var(--shadow);border-top:4px solid var(--methods)}
 .card .big{font-size:1.9rem;font-weight:750;line-height:1.1;font-variant-numeric:tabular-nums}
@@ -337,6 +344,7 @@ footer{color:var(--muted);font-size:.84rem;margin-top:30px}
   </div>
   {{BANNER}}
   <div class="cards" role="list">{{CARDS}}</div>
+  {{FIGURES}}
   <div class="guide">
     <a class="g1" href="#s-2a"><b>Findings</b><span>What the extracted records contain</span></a>
     <a class="g2" href="#s-2b"><b>Tentative interpretations</b><span>Readings that could be wrong</span></a>

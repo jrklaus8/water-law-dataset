@@ -129,6 +129,7 @@ def build():
          "Reasons for full-text exclusion (standardised codes; per-record rationale in `exclusion_log.csv`):", "",
          exclusion_table(F), "",
          "### 3.2 Characteristics of the included evidence", "",
+         "*Figures 1–3 and 5 (`06_outputs/figures/fig1_design_mix.svg`, `fig2_publication_years.svg`, `fig3_countries.svg`, `fig5_appraisal_tools.svg`) show the design mix, publication years, countries and appraisal instruments; Figure 4 (`fig4_direction_by_family.svg`) shows the direction of association in the three syntheses (Section 3.5). All are generated from the databases by `code/analysis/build_figures.py`.*", "",
          demote(pick(sub, '2A.1'), 0).replace('**Volume and recency.**', '**Volume and recency.**'), "",
          "### 3.3 Mechanisms and outcomes addressed", "",
          pick(sub, '2A.2'), "",
