@@ -2,7 +2,7 @@
 """Score a filled second-extractor sheet: agreement of the AI extraction with an independent human, by field and overall.
 
 Usage: python3 code/analysis/score_second_extractor_sheet.py path/to/filled_sheet.csv
-Counts rows whose `agrees (Y/N/cannot_tell)` is Y or N (cannot_tell and blank are excluded and reported; any other verdict, and a filled value with a blank verdict, is flagged as a warning and not scored; exit code 2 if a verdict is invalid). Reports disagreement rate with a Wilson 95% interval.
+Counts rows whose `agrees (Y/N/cannot_tell)` is Y or N (cannot_tell and blank are excluded and reported; yes/no and "can't tell" spellings are accepted; any other verdict, and a filled value with a blank verdict, is flagged as a warning and not scored; exit code 2 if a verdict is invalid). Reports disagreement rate with a Wilson 95% interval.
 With ~60 studies the interval for any one field is wide (about +/-10 points); read the overall figure, not single fields.
 """
 import csv, math, sys
@@ -21,6 +21,13 @@ def wilson(k, n, z=1.96):
 
 VERDICT = 'agrees (Y/N/cannot_tell)'
 VALID = {'Y', 'N', 'CANNOT_TELL', ''}
+SYNONYMS = {'YES': 'Y', 'NO': 'N', 'CANNOTTELL': 'CANNOT_TELL', "CAN'T_TELL": 'CANNOT_TELL', 'CANT_TELL': 'CANNOT_TELL', 'UNCLEAR': 'CANNOT_TELL'}  # what a person types into the column
+
+
+def verdict_of(r):
+    """Normalise a verdict cell: case, spaces, and the obvious spellings (yes/no/can't tell). Anything else is returned as typed and flagged by score()."""
+    v = (r[VERDICT] or '').strip().upper().replace(' ', '_')
+    return SYNONYMS.get(v, v)
 
 
 def score(rows):
@@ -30,7 +37,8 @@ def score(rows):
     per_study = defaultdict(int)
     invalid, filled_unjudged = [], []
     for i, r in enumerate(rows, start=2):  # row 1 is the header
-        v = (r[VERDICT] or '').strip().upper().replace(' ', '_')
+        v = verdict_of(r)
+        r = {**r, 'study_id': (r['study_id'] or '').strip()}
         if v not in VALID:
             invalid.append((i, r['study_id'], r['field'], r[VERDICT]))
         if v not in ('Y', 'N'):

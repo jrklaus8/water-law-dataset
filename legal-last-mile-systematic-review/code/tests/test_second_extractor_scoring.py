@@ -27,9 +27,15 @@ class TestScore(unittest.TestCase):
         self.assertEqual(R['invalid'], []); self.assertEqual(R['filled_unjudged'], [])  # 'n' lower case and 'cannot_tell' are accepted; a blank with no value is not a warning
 
     def test_invalid_and_unjudged_are_flagged_not_scored(self):
-        R = sc.score([row('S1', 'A', 'country', 'yes'), row('S1', 'A', 'sample_size', '', value='12'), row('S1', 'A', 'study_design', 'Y')])
+        R = sc.score([row('S1', 'A', 'country', 'maybe'), row('S1', 'A', 'sample_size', '', value='12'), row('S1', 'A', 'study_design', 'Y')])
         self.assertEqual(sum(R['tot'].values()), 1)
-        self.assertEqual([x[3] for x in R['invalid']], ['yes']); self.assertEqual(R['filled_unjudged'][0][1:], ('S1', 'sample_size'))
+        self.assertEqual([x[3] for x in R['invalid']], ['maybe']); self.assertEqual(R['filled_unjudged'][0][1:], ('S1', 'sample_size'))
+
+    def test_everyday_spellings_and_padded_ids(self):
+        R = sc.score([row('S1', 'A', 'country', 'Yes'), row('S1 ', 'A', 'sample_size', ' no '), row('S2', 'A', 'country', "Can't tell"), row('S2', 'A', 'sample_size', 'cannot tell')])
+        self.assertEqual((sum(R['tot'].values()), sum(R['bad'].values())), (2, 1)); self.assertEqual(R['invalid'], [])
+        self.assertEqual(sorted(R['per_study']), ['S1'])  # 'S1 ' counts as S1
+        self.assertEqual([x[3] for x in sc.score([row('S1', 'A', 'country', 'maybe')])['invalid']], ['maybe'])
 
     def test_wilson_interval(self):
         lo, hi = sc.wilson(0, 10); self.assertEqual(lo, 0.0 if lo == 0 else lo); self.assertLess(hi, 0.31)
