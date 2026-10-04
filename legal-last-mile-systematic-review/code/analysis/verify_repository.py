@@ -69,6 +69,8 @@ F = cf.compute()
 ft, el, ed, em, es, mp, links = (cf.read(k) for k in ('ft', 'el', 'ed', 'em', 'es', 'map', 'links'))
 ed_ids, em_ids, es_ids = {r['study_id'] for r in ed}, {r['study_id'] for r in em}, {r['study_id'] for r in es}
 check(len(ed) == len(ed_ids), 'extraction_database has duplicate study_ids')
+_blank_core = [(r['study_id'], f) for r in ed for f in ('citation', 'record_id', 'study_design') if not r[f].strip()]
+check(not _blank_core, f'extraction rows with a blank citation, record_id or study_design: {_blank_core[:5]}')
 check(ed_ids == em_ids, f'extraction/evidence_map study_id sets differ: {sorted(ed_ids ^ em_ids)[:10]}')
 check(es_ids <= ed_ids, f'effect_sizes has study_ids not extracted: {sorted(es_ids - ed_ids)}')
 check(len(es) == len(es_ids), 'effect_sizes has more than one row for a study (CODEBOOK section 12: one prespecified effect per study)')
@@ -80,6 +82,9 @@ check({r['study_id'] for r in active} == ed_ids, 'study_record_map active rows d
 check({r['record_id'] for r in active} == inc and len(active) == len(inc), 'study_record_map is not a bijection with the full-text includes')
 retired = {r['study_id']: r for r in mp if r['status'] != 'active'}
 check(all(s not in ed_ids for s in retired), f'retired study IDs still present in extraction: {[s for s in retired if s in ed_ids]}')
+_nums = {int(r['study_id'][1:]) for r in mp}
+_gaps = set(range(1, max(_nums) + 1)) - _nums
+check(_gaps == {227, 399}, f'study_record_map gaps in the S-number sequence differ from the two documented ones (S227, S399, retired 2026-09-16 before the map existed): {sorted(_gaps)[:10]} (a retired row deleted?)')
 check(all(r['record_id'] in {x['record_id'] for x in ft} for r in retired.values()), 'a retired study maps to an unknown record_id')
 check(all(r['record_id'] in exc for r in retired.values()), 'a retired study\'s screening record is not an exclusion')
 check({r['record_id'] for r in el} == exc and len(el) == len(exc), 'exclusion_log does not match full-text excludes one-to-one')

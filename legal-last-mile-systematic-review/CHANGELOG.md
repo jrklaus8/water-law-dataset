@@ -12,6 +12,11 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tooling) — mutation check of the verifier; two blind spots closed
+
+- New `code/analysis/check_verifier_mutations.py` copies the project to a scratch directory, applies one deliberate defect at a time (21 kinds: dropped or swapped rows, an include flipped to exclude, a duplicated DOI, a bad year or boolean, a tampered README figure, a deleted AI statement, ...) and runs the verifier on each. Result map: `00_admin/VERIFIER_MUTATION_MAP_2026-10-04.md`. About 12 minutes; not part of `regenerate_all.sh`.
+- It found two defects the verifier let through, now caught (160 checks): deleting a retired row from `study_record_map.csv` (the S-number sequence must have exactly the two documented gaps, S227 and S399) and blanking an extraction row's citation, record id or study design. Stale docstrings in `audit_exclusion_basis.py` (hard-coded 1,117) and `audit_sparse_records.py` (the "62" abstract-only count) were corrected. No data changed.
+
 ## 2026-10-04 (tooling) — fix_documented_counts.py maps old to new phrases exactly
 
 - The second rehearsal fixed only 4 of 17 failures because several different numbers matched each pattern. `verify_repository.py` now records every phrase it looks for (`VERIFY_EMIT_EXPECTED=file` dumps them as JSON); `fix_documented_counts.py` runs it on the last commit (temporary git worktree, `--old-ref`, default HEAD) and on the working tree, pairs phrases by file, label and position, and replaces the old phrase when it occurs exactly once; the pattern search stays as the fallback (`--no-exact` skips the mapping). It also keeps CRLF line endings, which the first version would have flattened. Rehearsal on a scratch clone (three included studies excluded): 35 of 38 failures repaired, the other three left for a person, and the verifier then showed only those three. Four new unit tests (9 in the file).

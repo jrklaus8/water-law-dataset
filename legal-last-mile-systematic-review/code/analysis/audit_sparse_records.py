@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only audit of how thinly each extraction row is evidenced, written because the "abstract-only" count (62) is computed from one note prefix
+"""Read-only audit of how thinly each extraction row is evidenced, written because the original "abstract-only" count (62 when this was written; fewer remain after the 2026-10-04 re-extractions) is computed from one note prefix
 and that prefix missed S327 (a citation-level row) and S214 ("extracted from openly-readable abstract ... full text not accessible").
 
 For every extraction row it records, from the CSV alone (no source papers), five signals:

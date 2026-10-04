@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Which full-text-stage exclusions rest on a landing-page abstract or a metadata record rather than on a read full text?
 
-The full-text database holds 1,117 excludes. Most were decided on a read full text, but the reason text of some says the decision used only a landing-page
+The full-text database holds every full-text-stage exclude (the current count is in the generated report). Most were decided on a read full text, but the reason text of some says the decision used only a landing-page
 abstract, a paywalled abstract or a bibliographic metadata record. E10 (inaccessible) and E08 (duplicate) are expected to say so; for the other codes it
 means a substantive exclusion (wrong topic, wrong design, no empirical evidence, insufficient information) was made without the full text. This lists them
 so the researcher can retrieve the texts. Detection is a phrase match on exclusion_reason_detail, so it finds records whose reason SAYS the basis was thin;
