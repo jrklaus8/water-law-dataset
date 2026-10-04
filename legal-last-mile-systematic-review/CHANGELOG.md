@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tests) — family-fit cues, Excel edge cases
+
+- `test_audit_rules.py` now has 9 tests: the Family A/B/C cue patterns of the A21 audit and its `build()` ordering. Writing them showed that the Family A cue `recogni[sz]` matched "recognise/recognize" but not "recognition", the very word in the family's definition ("legal recognition"); it is now `recogni`. No current effect-size row changes class (a regeneration left every generated file identical), but a future row worded "recognition of ..." would have been wrongly listed as outside its family. `test_sheet_xlsx.py` (6 tests) now also covers padded headers, a second worksheet, upper-case extension, trailing blank rows, a missing column, and a file that is not a workbook (both scripts now say "could not read ... as an Excel workbook" instead of printing a traceback).
+
 ## 2026-10-04 (housekeeping) — lint-clean code
 
 - Removed the `f` prefix from 27 string literals that had no placeholders (six scripts); `pyflakes` now reports nothing for the maintained code. A full regeneration changed no generated file, so no output differs.

@@ -20,7 +20,7 @@ import current_figures as cf  # noqa: E402
 OUT_CSV = cf.ROOT / '05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.csv'
 OUT_MD = cf.ROOT / '05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md'
 CUES = {
-    'A': re.compile(r'recogni[sz]|notif|incorporat|legal (status|title|land)|tenure|home-?ownership|\btitl|zon(ed|ing|e)\b|ZEIS|eligib|formal (household )?(water )?connection|customary|autonom', re.I),
+    'A': re.compile(r'recogni|notif|incorporat|legal (status|title|land)|tenure|home-?ownership|\btitl|zon(ed|ing|e)\b|ZEIS|eligib|formal (household )?(water )?connection|customary|autonom', re.I),
     'B': re.compile(r'assist|facilitat|simplif|bureaucra|help (completing|with)|application', re.I),
     'C': re.compile(r'barrier|documentation|eligib\w* restrict|formali[sz]ation|inequit|inequal|disconnection|enforcement|weight rule|unregistered|hukou|restrict|redress', re.I),
 }

@@ -59,7 +59,10 @@ def read_rows(path):
     if str(path).lower().endswith('.xlsx'):  # the drop-down version of the sheet (sheet_xlsx.py), filled in directly
         sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
         import sheet_xlsx
-        header, xrows = sheet_xlsx.read_xlsx(path)
+        try:
+            header, xrows = sheet_xlsx.read_xlsx(path)
+        except Exception as e:  # a corrupt, password-protected or renamed file
+            raise SystemExit(f'could not read {path} as an Excel workbook ({type(e).__name__}); save it again as .xlsx or as CSV')
         missing = [c for c in ('study_id', 'field', VERDICT) if c not in header]
         if missing:
             raise SystemExit(f'the sheet lacks the column(s) {missing}; keep the original header row')

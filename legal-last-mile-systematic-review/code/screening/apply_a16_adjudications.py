@@ -63,7 +63,10 @@ def read_sheet(path: Path):
     if path.suffix.lower() == '.xlsx':  # the drop-down version of the sheet (code/analysis/sheet_xlsx.py), filled in directly
         sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis'))
         import sheet_xlsx
-        header, xrows = sheet_xlsx.read_xlsx(path)
+        try:
+            header, xrows = sheet_xlsx.read_xlsx(path)
+        except Exception as e:  # a corrupt, password-protected or renamed file
+            raise ValueError(f'could not read {path.name} as an Excel workbook ({type(e).__name__}); save it again as .xlsx or as CSV') from e
         missing = [c for c in ('record_id', DEC_COL, CODE_COL) if c not in header]
         if missing:
             raise ValueError(f'the sheet lacks the column(s) {missing}; keep the original header row of the A16 sheet')

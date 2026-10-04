@@ -71,6 +71,34 @@ class TestSheets(unittest.TestCase):
             R = scorer.score(scorer.read_rows(str(f)))
             self.assertEqual((sum(R['tot'].values()), sum(R['bad'].values())), (2, 1)); self.assertEqual(R['invalid'], [])
 
+    def test_awkward_workbooks(self):
+        from openpyxl import Workbook
+        with tempfile.TemporaryDirectory() as d:
+            d = Path(d)
+            # padded header, a second sheet, capitalised values, an upper-case extension, trailing blank rows
+            wb = Workbook(); ws = wb.active
+            ws.append([' record_id ', apply_mod.DEC_COL + ' ', apply_mod.CODE_COL]); ws.append([' r0abc ', 'Include', None]); ws.append([None, None, None]); ws.append([None, None, None])
+            wb.create_sheet('notes').append(['ignored'])
+            f = d / 'X.XLSX'; wb.save(f)
+            rows = apply_mod.read_sheet(f)
+            self.assertEqual(len(rows), 1); self.assertEqual(rows[0]['record_id'], 'R0ABC'); self.assertEqual(rows[0][apply_mod.DEC_COL], 'Include')
+            plan, errors = apply_mod.plan(rows, {'R0ABC': dict(final_decision='exclude', full_text_decision='exclude', exclusion_reason='E01', notes='')})
+            self.assertEqual(errors, []); self.assertEqual(plan[0][0], 'reverse')  # 'Include' is read case-insensitively
+            # missing required column
+            wb = Workbook(); wb.active.append(['record_id', 'something']); g = d / 'm.xlsx'; wb.save(g)
+            with self.assertRaises(ValueError):
+                apply_mod.read_sheet(g)
+            with self.assertRaises(SystemExit):
+                scorer.read_rows(str(g))
+            # not a workbook at all
+            h = d / 'broken.xlsx'; h.write_bytes(b'this is not a zip file')
+            with self.assertRaises(ValueError) as cm:
+                apply_mod.read_sheet(h)
+            self.assertIn('could not read', str(cm.exception))
+            with self.assertRaises(SystemExit) as cm2:
+                scorer.read_rows(str(h))
+            self.assertIn('could not read', str(cm2.exception))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

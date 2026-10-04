@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'code/analysis'))
+import audit_effect_size_families as aef  # noqa: E402
 import audit_exclusion_basis as aeb  # noqa: E402
 import audit_includes_criterion3 as aic  # noqa: E402
 import propose_design_vocabulary as pdv  # noqa: E402
@@ -64,6 +65,30 @@ class TestCriterion3Cues(unittest.TestCase):
             self.assertTrue(aic.NO_SAMPLE.search(s), s)
         for s in ('1,200 households', '57 interviews'):
             self.assertFalse(aic.NO_SAMPLE.search(s), s)
+
+
+class TestFamilyFit(unittest.TestCase):
+    def test_cues(self):
+        yes = {'A': ['Legal recognition of informal settlements', 'Land title formalisation', 'Home-ownership vs rental', 'Eligibility for a formal water connection', 'zoned as residential'],
+               'B': ['Assistance completing the application', 'Simplified procedures', 'Bureaucratic facilitation'],
+               'C': ['Documentation requirement as a barrier', 'Disconnection enforcement', 'Hukou restrictions']}
+        for fam, labels in yes.items():
+            for s in labels:
+                self.assertTrue(aef.CUES[fam].search(s), (fam, s))
+        self.assertFalse(aef.CUES['A'].search('Rainfall variability'))
+        self.assertFalse(aef.CUES['B'].search('Average household income'))
+
+    def test_build_flags_rows_outside_the_wording_and_sorts_them_first(self):
+        fake = [dict(study_id='S010', synthesis_family='A', outcome_family='x', exposure_definition='Legal recognition of the settlement'),
+                dict(study_id='S002', synthesis_family='A', outcome_family='x', exposure_definition='Rainfall variability'),
+                dict(study_id='S003', synthesis_family='B', outcome_family='x', exposure_definition='Rainfall'),
+                dict(study_id='S004', synthesis_family='', outcome_family='x', exposure_definition='anything')]  # a non-fit row (no family) is skipped
+        orig = aef.cf.read
+        aef.cf.read = lambda name: fake if name == 'es' else orig(name)
+        self.addCleanup(setattr, aef.cf, 'read', orig)
+        rows = aef.build()
+        self.assertEqual([(r['study_id'], r['fit']) for r in rows], [('S002', 'outside the definition wording'), ('S010', 'cue in definition wording'), ('S003', 'outside the definition wording')])
+        self.assertEqual(rows[1]['cue_found'], 'recogni')
 
 
 if __name__ == '__main__':
