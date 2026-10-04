@@ -190,6 +190,29 @@ class TestResolve(A16Base):
         self.assertEqual(len(read(self.root / REL['PEND'])), 1)
 
 
+class TestSheetReading(A16Base):
+    def raw_sheet(self, data: bytes):
+        p = self.root / 'raw.csv'; p.write_bytes(data)
+        return run(apply_mod, [str(p), '--reviewer', 'T', '--root', str(self.root), '--apply'])
+
+    def test_bom_cp1252_and_semicolon_sheets(self):
+        head = f'priority,record_id,{D},{C},{M}\n'
+        rc, _ = self.raw_sheet(('\ufeff' + head + '1, r5 ,Include,,caf\u00e9\n').encode('utf-8'))   # BOM, padded and lower-case record id, capitalised decision
+        self.assertEqual(rc, 0); self.assertIn('confirms include', self.ft()['R5']['notes'])
+        rc, _ = self.raw_sheet((head + '1,R1,exclude,E01,caf\u00e9\n').encode('cp1252'))          # Windows-1252 with an accented character
+        self.assertEqual(rc, 0); self.assertIn('café', self.ft()['R1']['notes'])
+        rc, _ = self.raw_sheet(head.replace(',', ';').encode('utf-8') + b'1;R2;exclude;E06;x\n;;;;\n')  # semicolon delimiter, blank trailing row
+        self.assertEqual(rc, 0); self.assertIn('confirms exclude', self.ft()['R2']['notes'])
+
+    def test_missing_columns_and_duplicate_rows_write_nothing(self):
+        before = (self.root / REL['FT']).read_bytes()
+        rc, out = self.raw_sheet(b'a,b\n1,2\n')
+        self.assertEqual(rc, 2); self.assertIn('lacks the column', out)
+        rc, out = self.adjudicate([{'record_id': 'R1', D: 'include'}, {'record_id': 'R1', D: 'exclude', C: 'E01'}])
+        self.assertEqual(rc, 2); self.assertIn('more than one row', out)
+        self.assertEqual((self.root / REL['FT']).read_bytes(), before)
+
+
 class TestRoundTrip(unittest.TestCase):
     def test_real_files_rewrite_byte_identical(self):
         """Reading and re-writing each CSV the scripts touch must reproduce it exactly (line endings, quoting), so an adjudication changes only the intended rows."""

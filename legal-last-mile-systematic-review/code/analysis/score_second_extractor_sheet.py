@@ -46,8 +46,24 @@ def score(rows):
                 n_studies=len({r['study_id'] for r in rows}))
 
 
+def read_rows(path):
+    """Read a filled sheet tolerantly (UTF-8 with or without BOM, else Windows-1252; ',' or ';' delimiter; padded headers), as a spreadsheet program may save it."""
+    raw = open(path, 'rb').read()
+    try:
+        text = raw.decode('utf-8-sig')
+    except UnicodeDecodeError:
+        text = raw.decode('cp1252')
+    first = text.split('\n', 1)[0]
+    rd = csv.DictReader(text.splitlines(), delimiter=';' if first.count(';') > first.count(',') else ',')
+    rd.fieldnames = [(h or '').strip() for h in (rd.fieldnames or [])]
+    missing = [c for c in ('study_id', 'field', VERDICT) if c not in rd.fieldnames]
+    if missing:
+        raise SystemExit(f'the sheet lacks the column(s) {missing}; keep the original header row')
+    return [{k: (v or '') for k, v in r.items() if k is not None} for r in rd if (r.get('study_id') or '').strip()]
+
+
 def main(path):
-    rows = list(csv.DictReader(open(path, encoding='utf-8', newline='')))
+    rows = read_rows(path)
     R = score(rows)
     tot, bad = R['tot'], R['bad']
     if R['invalid']:

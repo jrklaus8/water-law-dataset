@@ -43,6 +43,18 @@ class TestScore(unittest.TestCase):
         R = sc.score(rows)
         self.assertEqual(sum(R['tot'].values()), 0); self.assertEqual(R['invalid'], []); self.assertEqual(R['filled_unjudged'], [])
 
+    def test_tolerant_reading(self):
+        import tempfile
+        head = f'study_id,stratum,field,second_extractor_value,{V}\n'
+        with tempfile.TemporaryDirectory() as d:
+            for name, data in {'bom': ('\ufeff' + head + 'S1,A,country,caf\u00e9,Y\n').encode('utf-8'), 'cp': (head + 'S1,A,country,caf\u00e9,N\n').encode('cp1252'),
+                               'semi': head.replace(',', ';').encode() + b'S1;A;country;x;Y\n;;;;\n'}.items():
+                p = Path(d) / name; p.write_bytes(data)
+                rows = sc.read_rows(str(p)); self.assertEqual(len(rows), 1); self.assertEqual(rows[0]['field'], 'country')
+            (Path(d) / 'bad').write_bytes(b'a,b\n1,2\n')
+            with self.assertRaises(SystemExit):
+                sc.read_rows(str(Path(d) / 'bad'))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

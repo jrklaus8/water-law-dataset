@@ -50,14 +50,41 @@ def _write(path: Path, fields, rows, eol):
     os.replace(tmp, path)
 
 
+def read_sheet(path: Path):
+    """Read the researcher's filled sheet tolerantly: a spreadsheet program may save it with a UTF-8 BOM or in Windows-1252, with ';' as the
+    delimiter (European locales), with stray spaces in headers or record ids, or with blank trailing rows. Raises ValueError if the required columns are missing."""
+    raw = path.read_bytes()
+    try:
+        text = raw.decode('utf-8-sig')
+    except UnicodeDecodeError:
+        text = raw.decode('cp1252')
+    first = text.split('\n', 1)[0]
+    delim = ';' if first.count(';') > first.count(',') else ','
+    rd = csv.DictReader(text.splitlines(), delimiter=delim)
+    rd.fieldnames = [(h or '').strip() for h in (rd.fieldnames or [])]
+    missing = [c for c in ('record_id', DEC_COL, CODE_COL) if c not in rd.fieldnames]
+    if missing:
+        raise ValueError(f'the sheet lacks the column(s) {missing}; keep the original header row of the A16 sheet')
+    rows = []
+    for r in rd:
+        r = {k: (v or '').strip() if isinstance(v, str) or v is None else v for k, v in r.items() if k is not None}
+        if r.get('record_id'):
+            r['record_id'] = r['record_id'].upper()
+            rows.append(r)
+    return rows
+
+
 def plan(sheet_rows, ft_by_id):
     """Validate the filled sheet and return (actions, errors). Each action: (kind, record_id, sheet_row)."""
-    actions, errors = [], []
+    actions, errors, seen = [], [], set()
     for r in sheet_rows:
         dec = (r.get(DEC_COL) or '').strip().lower()
         if not dec:
             continue
         rid = r['record_id']
+        if rid in seen:
+            errors.append(f'{rid}: appears with a decision on more than one row of the sheet'); continue
+        seen.add(rid)
         code = (r.get(CODE_COL) or '').strip().upper()
         if dec not in ('include', 'exclude'):
             errors.append(f'{rid}: decision must be include or exclude, got {dec!r}'); continue
@@ -89,7 +116,10 @@ def main(argv=None):
     PEND = root / '02_screening/full_text/A16_PENDING_REVERSALS.csv'
     today = datetime.date.today().isoformat()
 
-    _, sheet, _ = _read(a.filled_sheet)
+    try:
+        sheet = read_sheet(a.filled_sheet)
+    except ValueError as e:
+        print(f'Nothing written: {e}'); return 2
     ft_fields, ft, ft_eol = _read(FT)
     el_fields, el, el_eol = _read(EL)
     ft_by_id = {r['record_id']: r for r in ft}

@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 and scorer) — filled sheets read tolerantly; interval clamped
+
+- Review of the A16 logic: the Wilson interval matches the reference formula on six test cases (including 0/n and n/n); it is now clamped to [0, 1] (it could return -0.0). The projection arithmetic was re-read and is unchanged.
+- The researcher will probably fill the sheets in a spreadsheet program, which can save a UTF-8 BOM, Windows-1252 text, a semicolon delimiter, padded headers or blank trailing rows. `apply_a16_adjudications.py` (new `read_sheet`) and `score_second_extractor_sheet.py` (new `read_rows`) now read all of these, upper-case record ids, stop with a clear message if required columns are missing, and the apply script refuses a sheet that gives one record a decision on two rows. Tests added (A16 pipeline 11, scorer 5).
+
 ## 2026-10-04 (documentation) — stale pilot-extraction text marked superseded
 
 - A scan of backticked file paths in the documentation found `pilot_sample.csv` documented as "not yet generated" and `PILOT_EXTRACTION.md` still saying the pilot cannot run for lack of decisions. The pilot was replaced by full extraction on the researcher's authorisation (already recorded in `PRISMA_WORKFLOW.md` Phase 7 and the README deviations list); both files now carry a dated superseded note beside the original text, which is unchanged. The other missing paths the scan listed are shorthand for existing files (`reextract_2026-10-04/...`) or the not-yet-created `A16_PENDING_REVERSALS.csv`.
