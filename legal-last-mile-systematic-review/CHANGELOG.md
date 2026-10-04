@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tests) — Wilson interval pinned to reference values
+
+- Checked both Wilson-interval implementations (`score_second_extractor_sheet.py`, `build_a16_adjudication_sheet.py`) against the closed-form values (5/10 gives 0.2366-0.7634, 0/10 gives 0-0.2775); both agree. The scorer's lower bound for 0 of n was `-2e-17` from floating-point error and is now clamped to [0, 1]; a reference-value test (8 tests in the scorer file) guards both ends. No figure changed.
+
 ## 2026-10-04 (tests) — rule tests for the A19, A20 and A22 audits
 
 - New `test_audit_rules.py` (7 tests, eleven test files in all) pins the design-class rules (A20), the thin-basis phrase match (A19) and the criterion-3 cues (A22) on small synthetic inputs, so a later edit to a regular expression cannot silently change which studies the researcher is asked to look at. Writing it showed that a label that says "mixed methods" outright but names only qualitative techniques would have been classed qualitative; `propose_design_vocabulary.py` now maps an explicit "mixed method(s)" label to `mixed_methods` (rule 3b). No label in the current data is affected, so the generated proposal is unchanged apart from the rule text in the script.

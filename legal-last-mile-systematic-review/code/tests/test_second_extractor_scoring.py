@@ -37,6 +37,13 @@ class TestScore(unittest.TestCase):
         self.assertEqual(sorted(R['per_study']), ['S1'])  # 'S1 ' counts as S1
         self.assertEqual([x[3] for x in sc.score([row('S1', 'A', 'country', 'maybe')])['invalid']], ['maybe'])
 
+    def test_wilson_matches_reference_values(self):
+        # reference values from the closed-form Wilson score interval (z = 1.96), e.g. as printed by standard statistics packages
+        for (k, n), (lo, hi) in {(5, 10): (0.2366, 0.7634), (0, 10): (0.0, 0.2775), (10, 10): (0.7225, 1.0), (1, 20): (0.0089, 0.2361)}.items():
+            got = sc.wilson(k, n)
+            self.assertAlmostEqual(got[0], lo, places=4, msg=(k, n)); self.assertAlmostEqual(got[1], hi, places=4, msg=(k, n))
+            self.assertTrue(0.0 <= got[0] <= got[1] <= 1.0)
+
     def test_wilson_interval(self):
         lo, hi = sc.wilson(0, 10); self.assertEqual(lo, 0.0 if lo == 0 else lo); self.assertLess(hi, 0.31)
         lo, hi = sc.wilson(5, 10); self.assertAlmostEqual((lo + hi) / 2, 0.5, places=1)
