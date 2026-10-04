@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (verifier) — mutation test and crash reporting
+
+- Mutation test of `verify_repository.py` on a scratch copy: 11 deliberate breaks (dropped extraction row, dropped evidence-map row, map pointing at the wrong record, an include flipped to exclude, dropped exclusion-log row, an exclude without a code, an effect-size row for a study that is not extracted, a duplicated DOI, an impossible year, a stale generated file, a tampered README figure). All 11 were caught, so the checks are not vacuous.
+- Three of them (a dropped extraction or evidence-map row, an orphan effect-size row) made a later generated-file builder raise, so the verifier died with a bare traceback and the failures it had already found (which name the cause) were lost. `verify_repository.py` now has an excepthook that prints the failures collected so far, the exception, and exits 1. Re-run on the dropped-row copy: it reports 19 failures, the first being "extraction/evidence_map study_id sets differ: ['S001']".
+
 ## 2026-10-04 (A16 and scorer) — filled sheets read tolerantly; interval clamped
 
 - Review of the A16 logic: the Wilson interval matches the reference formula on six test cases (including 0/n and n/n); it is now clamped to [0, 1] (it could return -0.0). The projection arithmetic was re-read and is unchanged.

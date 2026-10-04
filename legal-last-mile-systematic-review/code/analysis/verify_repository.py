@@ -35,6 +35,21 @@ def check(cond, msg):
         fails.append(msg)
 
 
+def _report_crash(exc_type, exc, tb):
+    """If a later check or generated-file builder raises (typically because a database is inconsistent, e.g. a missing extraction row), still print the
+    failures already collected: they usually name the cause, which a bare traceback would hide."""
+    import traceback
+    print(f"{passes} checks passed, {len(fails)} failed BEFORE THE VERIFIER CRASHED (it did not finish)")
+    for f_ in fails:
+        print('  FAIL:', f_)
+    print('  CRASH:', ''.join(traceback.format_exception_only(exc_type, exc)).strip())
+    traceback.print_exception(exc_type, exc, tb)
+    sys.exit(1)
+
+
+sys.excepthook = _report_crash
+
+
 def text(rel):
     return (ROOT / rel).read_text(encoding='utf-8')
 
