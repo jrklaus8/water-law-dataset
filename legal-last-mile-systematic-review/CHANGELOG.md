@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (PRISMA numbers) — end-to-end reconciliation from the files
+
+- New `code/tests/test_search_reconciliation.py` (4 tests, run by `regenerate_all.sh`) reconciles the PRISMA identification and screening numbers from the raw files: raw exports by database (Scopus 5,984; Web of Science 4,058; HeinOnline 1; ProQuest 24,464 = the 7,728 and 16,736 exports quoted in the flow text; JSTOR 50; grey/pilot 37) sum to 34,557 database and 34,594 raw records; 34,594 minus the 7,113 merge-log rows is the 27,481 deduplicated pool, which equals the title/abstract database; its decisions (3,062 include, 22,557 exclude, 603 unsure, 1,259 undecided without an abstract) give 26,222 screened and 3,665 include-plus-unsure; the full-text tracking file holds 3,659 records (1,159 include, 1,117 exclude, 1,383 never assessed = 182 wrong file + 1,201 not retrievable). Each figure quoted in `prisma_flow.md` and the README is asserted too. Everything reconciles; nothing needed correcting.
+
 ## 2026-10-04 (code documentation) — docstring audit
 
 - Of 608 Python files, all 81 maintained scripts (everything outside `code/provenance/`) have a module docstring; the 527 without one are all one-shot historical records under `code/provenance/`, which `code/provenance/README.md` says not to edit or modernise (the authoritative record is the databases plus `git log`). So a docstring or type-hint pass over those would rewrite provenance and was not done. The verifier now requires a module docstring in every maintained script (155 checks).
