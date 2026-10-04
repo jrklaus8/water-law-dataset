@@ -169,6 +169,8 @@ fresh(bpr.OUT, bpr.build(), 'build_preliminary_report.py')
 fresh(brh.OUT, brh.build(), 'build_report_html.py')
 import build_manuscript_draft as bmd  # noqa: E402
 fresh(bmd.OUT, bmd.build(), 'build_manuscript_draft.py')
+import build_supporting_texts as bst  # noqa: E402
+fresh(bst.OUT, bst.build(), 'build_supporting_texts.py')
 fresh(pv.OUT_MD, pv.render(pv.build()), 'propose_family_vocabulary.py')
 fresh(sa.OUT_MD, sa.render(*sa.scenarios()), 'sensitivity_analysis.py')
 for needle in ('34,594', '27,481', '26,222', '1,259', '3,665'):
