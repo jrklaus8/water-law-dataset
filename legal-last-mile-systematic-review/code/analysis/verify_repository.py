@@ -303,9 +303,13 @@ _nodoc = [str(q.relative_to(ROOT)) for q in sorted(list((ROOT / 'code').glob('**
 check(not _nodoc, f'scripts without a module docstring: {_nodoc[:5]}')
 
 # the drop-down workbooks the researcher fills in must hold exactly the CSV rows (code/analysis/sheet_xlsx.py)
-import sheet_xlsx as _sx  # noqa: E402
-for _p in _sx.SPECS:
-    check(_sx.in_sync(_p), f'{_sx.xlsx_path(_p).relative_to(ROOT)} is out of date: run `python3 code/analysis/sheet_xlsx.py`')
+try:
+    import openpyxl  # noqa: F401
+    import sheet_xlsx as _sx  # noqa: E402
+    for _p in _sx.SPECS:
+        check(_sx.in_sync(_p), f'{_sx.xlsx_path(_p).relative_to(ROOT)} is out of date: run `python3 code/analysis/sheet_xlsx.py`')
+except ImportError:
+    print('NOTE: openpyxl is not installed, so the .xlsx sheet sync check was skipped (pip install openpyxl)')
 
 # every unit-test file in code/tests must be run by regenerate_all.sh (a new test file that is not listed there would never run)
 _ra = text('code/analysis/regenerate_all.sh')

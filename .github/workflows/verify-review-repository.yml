@@ -1,6 +1,6 @@
 name: verify-review-repository
 # Re-derives every headline figure of the systematic review from its CSV databases and checks that the databases and the
-# current-status documents agree. Read-only; no secrets; standard library only.
+# current-status documents agree. Read-only; no secrets; standard library only (openpyxl optional, for the .xlsx sheet check).
 on:
   push:
     paths:
@@ -19,5 +19,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install openpyxl (only for the .xlsx sheet sync check; the verifier skips that check without it)
+        run: pip install openpyxl
       - name: Verify databases, cross-file integrity and documented figures
         run: python3 code/analysis/verify_repository.py
