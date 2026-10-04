@@ -17,6 +17,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 | 8 | **AMSTAR 2 for realist/scoping/qualitative reviews** (11 of 12 rated are Critically Low; the tool separates little) | (a) keep; (b) add a second, narrative-review instrument | **(a)** for this paper; note the limitation | None needed if (a) |
 | 9 | **Registration**: submit the OSF draft as an explicitly **retrospective** registration | (a) submit now; (b) skip registration and state so | **(a)** — the draft already carries the disclosure; it takes ~20 minutes | Record the identifier in `PROTOCOL.md`; update draft §2.1 and PRISMA item 24a |
 | 10 | **Release**: tag a version and update `CITATION.cff` (still `0.1.0-interim`) | (a) tag now; (b) after the human verification below | **(b)** the data may still change | AI updates version and date |
+| 11 | **Appraisal-tool reclassification** of 14 studies whose full text shows the tool does not fit (e.g. a qualitative focus-group study tagged JBI Cross-Sectional; non-systematic reviews tagged CASP) | (a) apply the proposal; (b) apply part of it; (c) leave and footnote | **(a)**, after glancing at `TOOL_RECLASSIFICATION_PROPOSAL_2026-10-04.md` | A dated script moves the tools, the AI re-answers each moved study's rating item by item, regenerates every tool count |
 
 ## Part 2 — Things only you can do, ranked by payoff per hour
 
@@ -30,7 +31,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 
 ## Part 3 — What the AI will do the moment you answer
 
-- Apply decisions 1–10, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (127 checks) before every push.
+- Apply decisions 1–11, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (127 checks) before every push.
 - Score the filled second-extractor sheet and update the AI-use statement and limitations with the measured error rate.
 - Re-extract and appraise any PDF you supply (about 20 minutes of AI time each) and update the AMSTAR 2 count (12 of 23 rated now).
 - Draft the cover letter, a journal-specific AI-disclosure paragraph and a plain-language summary once decisions 1–4 and the second-extraction sheet are in.
