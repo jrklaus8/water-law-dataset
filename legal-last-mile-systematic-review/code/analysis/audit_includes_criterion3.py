@@ -18,7 +18,15 @@ OUT_MD = cf.ROOT / '05_analysis/descriptive/INCLUDES_CRITERION3_SCREEN_2026-10-0
 CUE = re.compile(r'essay|theoretical|game-theoretic|conceptual|simulation|model(l)?ing study|decision-analytic|normative|ex-ante|perspective article|framework (demonstration|development)', re.I)
 NO_SAMPLE = re.compile(r'^\s*$|not stated|not reported|no primary|none\b|^n/?a\b|no (stated|sample)', re.I)
 REVIEWS_ALREADY_LISTED = {'S079', 'S320', 'S321', 'S322', 'S326', 'S429', 'S430', 'S436', 'S440', 'S466', 'S479', 'S480', 'S482'}  # DECISIONS_AND_OPEN_ITEMS.md, narrative/non-systematic reviews
-FIELDS = ['study_id', 'record_id', 'tool', 'cue', 'study_design', 'sample_size', 'extraction_note_start']
+# What reading the Drive copy of each flagged study showed (2026-10-04; an AI reading, same model family as the extraction, not independent). Hand-entered, so it is listed
+# here rather than derived; studies not in the dict have no Drive text.
+DRIVE_CHECK = {
+    'S219': 'Drive PDF is the full article (Aquino & Ledo 2023): a stylised theoretical model, then tested on municipal panel data with an econometric model; empirical, so it meets criterion 3 and the cue was a false positive',
+    'S264': 'Drive file is only a Wageningen research-portal abstract page (Joy et al. 2014): a conceptual argument illustrated with evidence from India; no full text to judge how much is empirical',
+    'S297': 'Drive file is the journal page with the full introduction (Jones 2015): case-study research on WaterAid in Mali (collaborative fieldwork 2010-11); empirical case study, so it likely meets criterion 3',
+    'S314': 'Drive file is only a Wageningen research-portal abstract page (Mehta & Karpouzoglou 2015): states it shows that peri-urban waterscapes fall outside planning models for Ghaziabad; empirical basis cannot be judged from the abstract',
+}
+FIELDS = ['study_id', 'record_id', 'tool', 'cue', 'study_design', 'sample_size', 'extraction_note_start', 'drive_check']
 
 
 def build():
@@ -33,7 +41,7 @@ def build():
         m = CUE.search(txt)
         if m and NO_SAMPLE.search(r['sample_size'] or ''):
             rows.append({'study_id': s, 'record_id': r['record_id'], 'tool': cf.tool_of(r['risk_of_bias_tool']), 'cue': m.group(0).lower(), 'study_design': r['study_design'][:120].replace('\n', ' '),
-                         'sample_size': (r['sample_size'] or '')[:60], 'extraction_note_start': r['extraction_note'][:90].replace('\n', ' ')})
+                         'sample_size': (r['sample_size'] or '')[:60], 'extraction_note_start': r['extraction_note'][:90].replace('\n', ' '), 'drive_check': DRIVE_CHECK.get(s, 'no Drive text found')})
     return sorted(rows, key=lambda x: int(x['study_id'][1:]))
 
 
@@ -45,6 +53,8 @@ def render(rows):
          "**What would resolve it:** read the flagged studies against `INCLUSION_EXCLUSION.md` criterion 3 (`DECISIONS_AND_OPEN_ITEMS.md` A22); any that are conceptual or theory-only would be excluded E05 by a dated script like `resolve_s356_exclude_2026-09-28.py` (or `resolve_a16_pending_reversals.py` once queued).", '',
          "| Study | Tool | Cue | Design (extracted) | Sample size field |", "|---|---|---|---|---|"]
     L += [f"| {r['study_id']} | {r['tool']} | {r['cue']} | {r['study_design'][:90]} | {r['sample_size'] or '(blank)'} |" for r in rows]
+    L += ['', '## What the Drive copies showed', '', 'An AI reading (same model family as the extraction, so not independent) of the copy of each flagged study held in the researcher\'s Drive:', '']
+    L += [f"- **{r['study_id']}** — {r['drive_check']}" for r in rows]
     return '\n'.join(L) + '\n'
 
 
