@@ -145,7 +145,7 @@ def render(rows):
     L += [f"| `{k}` | {v:,} |" for k, v in po.most_common()]
     L += ["", "## Known weaknesses of this draft", "",
           "- Keyword rules can mis-assign a one-off label (e.g. a label containing \"community\" is sent to `participation_assistance`).",
-          "- `multiple` is large because 394 studies already carry the label `MULTIPLE` (more than one of the four top-level booleans TRUE) and specific labels that name several families also land there; use `mechanism_families_all` for breadth.",
+          f"- `multiple` is large because {sum(1 for r in rows if r['mechanism_family_original'].strip().upper() == 'MULTIPLE'):,} studies already carry the label `MULTIPLE` (more than one of the four top-level booleans TRUE) and specific labels that name several families also land there; use `mechanism_families_all` for breadth.",
           "- The multi-label counts are broad because the extraction booleans are TRUE for most studies (e.g. institutional fragmentation for about three quarters); they show low discriminating power of the booleans — itself a finding for the taxonomy decision, not a clean count of \"studies about X\".",
           "- Extraction booleans are sparse-to-noisy (blank is not FALSE), so a study with few TRUE booleans may be under-labelled.",
           "- `effective_access` is broad by design (it absorbs coverage, reliability, quantity, quality, continuity); a finer split may be wanted.",

@@ -4,7 +4,18 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-10-03 (latest, S052 and S327) — the last two weakest-evidenced AMSTAR 2 reviews appraised from full text
+## 2026-10-04 (latest) — six-item batch: sparse-record audit, S001–S200 sample, AMSTAR 2 overlap check, S324 final, evidence-map text, code review
+
+No include decision, flag, effect-size row or appraisal rating other than S324's finality changed. Verifier 120 of 120.
+
+1. **Sparse-record audit** (`code/analysis/audit_sparse_records.py` → `05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md` and `.csv`, freshness-checked by the verifier). The abstract-only count (62) is a floor: it counts one note prefix and missed S327 and S214. The audit adds four signals and finds 128 further rows with signs of shallow extraction (14 strong, 67 moderate, 47 weak), 3 of them with effect-size rows. The report, AI-use statement and auditing guide now say the 62 is a floor. The sensitivity analysis gained scenario S1b (drop those rows): no conclusion changes.
+2. **Second-extractor sample redrawn from S001–S200 only** (`03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv`; the 2026-09-29 sheet was deleted). 60 studies, 540 rows, 9 with effect-size rows, strata capped at what S001–S200 holds; cannot be generalised to later extractions.
+3. **AMSTAR 2 overlap check** (`code/provenance/audit_and_repair/check_amstar2_overlap_2026-10-04.py` → `AMSTAR2_OVERLAP_CHECK_2026-10-04.md`). Only the 7 reviews whose PDFs were on this machine could be checked: their reference lists cite 48 distinct corpus studies (S319 21, S325 19); an upper bound. The double-counting question stays open.
+4. **S324 made final** (`resolve_s324_rating_2026-10-04.py`): Figure 1 was read; it gives counts of exclusion reasons, not a list of excluded studies, so item 7 stays No; item 13 stays No on the main text. Critically Low, no longer provisional.
+5. **evidence_map text refreshed** (`refresh_evidence_map_deferred_text_2026-10-04.py`): 515 rows said "rating deferred" although every instrument had been applied; 431 standard sentences replaced, 84 free-text variants kept and annotated.
+6. **Code review** of the verifier and build scripts. Fixed: `Trinidad and Tobago` counted as two countries (country counts 1,031 / 124 / 4); an effect-size scan that read the English word "or" as an odds ratio (S294, S398, S631, S780, S920 mis-scaled, no current finding changed); `build_fulltext_request_list.py` would crash on an abstract-only ROBINS-I or NONE row; a hard-coded "all Critically Low" in the manuscript piece (stale since S327); hard-coded prose in the sensitivity file and data-quality audit (62, "S294 only", "S589") now computed; link targets in the HTML report limited to http(s), anchors and relative paths; the verifier fails cleanly when the overlap CSV is missing.
+
+## 2026-10-03 (S052 and S327) — the last two weakest-evidenced AMSTAR 2 reviews appraised from full text
 
 The researcher supplied the PDFs of S052 (Muoghalu, Semiyaga & Manga 2023, *Front Environ Sci*) and S327 (Ezezika et al. 2023, *PLOS Glob Public Health*). `code/provenance/audit_and_repair/appraise_s052_s327_amstar2_2026-10-03.py` replaced their "Not ratable" entries with full-text AMSTAR 2 appraisals (`04_quality/appraisal_forms/S052_AMSTAR2.md`, `S327_AMSTAR2.md`) and re-extracted both. Text only was read: flow diagrams, figures and every supplementary file were not.
 

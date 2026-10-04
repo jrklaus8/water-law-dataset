@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """List the abstract-only extractions in priority order, with the details needed to fetch each full text.
 
-Priority: 1 = the RoB 2 study; 2 = AMSTAR 2 reviews (eligibility never confirmed from full text); 3 = quantitative-synthesis-eligible;
-4 = JBI Cross-Sectional; 5 = MMAT; 6 = Legal Framework; 7 = CASP Qualitative. Within a tier, by study_id.
+Priority: 1 = RoB 2 / ROBINS-I studies; 2 = AMSTAR 2 reviews (eligibility never confirmed from full text); 3 = quantitative-synthesis-eligible;
+4 = JBI Cross-Sectional; 5 = MMAT; 6 = Legal Framework; 7 = CASP Qualitative; 8 = no tool applies. Within a tier, by study_id.
 Writes 03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv. Run from the project root.
 """
 import csv, sys
@@ -11,9 +11,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import current_figures as cf  # noqa: E402
 
 OUT = cf.ROOT / '03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv'
-TIER = {'RoB 2': 1, 'AMSTAR 2': 2, 'JBI Cross-Sectional': 4, 'MMAT': 5, 'Legal Framework': 6, 'CASP Qualitative': 7}
-WHY = {1: 'RoB 2 cluster trial (same trial as S294); rating is low-confidence', 2: 'AMSTAR 2 review; systematic-review eligibility never confirmed from full text',
-       3: 'quantitative-synthesis-eligible', 4: 'quantitative cross-sectional design', 5: 'mixed-methods design', 6: 'documentary/doctrinal design', 7: 'qualitative design'}
+TIER = {'RoB 2': 1, 'ROBINS-I': 1, 'AMSTAR 2': 2, 'JBI Cross-Sectional': 4, 'MMAT': 5, 'Legal Framework': 6, 'CASP Qualitative': 7, 'NONE': 8}  # an abstract-only ROBINS-I or NONE row used to raise KeyError (2026-10-04 review)
+WHY = {1: 'RoB 2 / ROBINS-I causal-capable design; rating is low-confidence', 2: 'AMSTAR 2 review; systematic-review eligibility never confirmed from full text',
+       3: 'quantitative-synthesis-eligible', 4: 'quantitative cross-sectional design', 5: 'mixed-methods design', 6: 'documentary/doctrinal design', 7: 'qualitative design', 8: 'no appraisal tool applies (narrative or documentary review)'}
 
 
 def rows():

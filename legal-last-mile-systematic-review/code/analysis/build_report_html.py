@@ -35,7 +35,8 @@ def inline(text, ids):
     t = H.escape(t, quote=False)
     t = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', t)
     t = re.sub(r'(?<![\*\w])\*(?!\s)(.+?)(?<!\s)\*(?![\*\w])', r'<em>\1</em>', t)
-    t = re.sub(r'\[([^\]]+)\]\(([^)\s]+)\)', lambda m: f'<a href="{H.escape(m.group(2))}">{m.group(1)}</a>', t)
+    # only http(s), in-page or relative links become anchors; anything else (e.g. a javascript: URL inside an AI-extracted quotation) is left as plain text (2026-10-04 review)
+    t = re.sub(r'\[([^\]]+)\]\(([^)\s]+)\)', lambda m: f'<a href="{H.escape(m.group(2))}">{m.group(1)}</a>' if re.match(r'^(https?://|#|[\w./-]+$)', m.group(2), re.I) else m.group(0), t)
 
     def xref(m):
         sid = slug(m.group(1))

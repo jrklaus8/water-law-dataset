@@ -138,7 +138,7 @@ lb = F['legal_system_buckets']
 has(el_txt, f"common law only {lb['common law']} ", 'legal-system common')
 has(el_txt, f"civil law only {lb['civil law']} ", 'legal-system civil')
 has(el_txt, f"mixed / both / customary {lb['mixed / both / customary']} ", 'legal-system mixed')
-has(el_txt, f"1,029 name exactly one country".replace('1,029', f"{F['country_single_name_studies']:,}"), 'country single-name count')
+has(el_txt, f"{F['country_single_name_studies']:,} name exactly one country", 'country single-name count')
 has(el_txt, f"**{F['country_multi_or_regional_studies']} name several countries or a region", 'country multi count')
 for cname, cnt in F['country_top10_single_name'][:4]:
     has(el_txt, f"{cname} {cnt} (", f'top country {cname}')
@@ -157,6 +157,9 @@ _KNOWN_MIGRANT = {'S129', 'S412', 'S416'}  # three annotated values ("TRUE (...)
 _mig = {r['study_id'] for r in ed if r['migrant_population'] not in ('TRUE', 'FALSE', '')}
 check(_mig == _KNOWN_MIGRANT, f'migrant_population annotated values differ from the three known ones: {sorted(_mig ^ _KNOWN_MIGRANT)}')
 
+if not (ROOT / '05_analysis/descriptive/amstar2_overlap_check_2026-10-04.csv').exists():  # build_preliminary_report.py reads it; fail cleanly instead of crashing
+    print('FAIL: 05_analysis/descriptive/amstar2_overlap_check_2026-10-04.csv is missing (needed by build_preliminary_report.py)')
+    sys.exit(1)
 import build_manuscript_pieces as bmp, build_preliminary_report as bpr, propose_family_vocabulary as pv, sensitivity_analysis as sa  # noqa: E402
 def fresh(path, generated, script):
     check(path.read_text(encoding='utf-8') == generated, f'{path.relative_to(ROOT)} is stale: run `python3 code/analysis/{script}`')
@@ -171,12 +174,13 @@ for needle in ('34,594', '27,481', '26,222', '1,259', '3,665'):
 _q = csv.DictReader(open(ROOT / '02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv', encoding='utf-8', newline=''))
 _tier1 = sum(1 for r in _q if r['priority_tier'] == '1')
 check(_tier1 == F['decided_blank_reviewer_1'], f"reviewer_2 priority queue tier 1 has {_tier1} rows but {F['decided_blank_reviewer_1']} decided rows have no reviewer_1: rebuild the queue")
-for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md', '06_outputs/slides/Water_Access_Evidence_Diagnostic_slides_2026-09-29.pdf', '06_outputs/slides/README.md'):
+for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md', '06_outputs/slides/Water_Access_Evidence_Diagnostic_slides_2026-09-29.pdf', '06_outputs/slides/README.md',
+           '05_analysis/descriptive/amstar2_overlap_check_2026-10-04.csv', '05_analysis/descriptive/AMSTAR2_OVERLAP_CHECK_2026-10-04.md'):  # the report builder reads the overlap CSV
     check((ROOT / f_).exists(), f'{f_} is missing')
 
 # ---- E. database sanity checks (added 2026-09-29) and freshness of the audit outputs
 import re  # noqa: E402
-import audit_data_quality as adq, build_second_extractor_sample as bse, build_fulltext_request_list as bfr  # noqa: E402
+import audit_data_quality as adq, build_second_extractor_sample as bse, build_fulltext_request_list as bfr, audit_sparse_records as asr  # noqa: E402
 _doi_bad = [(r['study_id'], r['doi']) for r in ed if r['doi'].strip() and not re.match(r'^10\.\d{4,9}/\S+$', r['doi'].strip())]
 check(not _doi_bad, f'malformed DOI in extraction_database: {_doi_bad[:5]}')
 _dois = [r['doi'].strip().lower() for r in ed if r['doi'].strip()]
@@ -216,9 +220,11 @@ def _as_str(rows):
     return [{k: str(v) for k, v in r.items()} for r in rows]
 
 
+fresh(asr.OUT_MD, asr.render(asr.audit()), 'audit_sparse_records.py')
 fresh(adq.OUT_MD, adq.render(adq.flag_audit(), *adq.es_scan()[:1], len(es), adq.es_scan()[1], adq.amstar_sweep(), adq.year_audit(), adq.certainty_audit()), 'audit_data_quality.py')
 for _path, _rows, _script in ((adq.OUT_CSV, adq.flag_audit(), 'audit_data_quality.py'), (adq.OUT_AM, adq.amstar_sweep(), 'audit_data_quality.py'),
-                             (bse.OUT, bse.draw(), 'build_second_extractor_sample.py'), (bfr.OUT, bfr.rows(), 'build_fulltext_request_list.py')):
+                             (bse.OUT, bse.draw(), 'build_second_extractor_sample.py'), (bfr.OUT, bfr.rows(), 'build_fulltext_request_list.py'),
+                             (asr.OUT_CSV, asr.audit(), 'audit_sparse_records.py')):
     check(_csv_rows(_path) == _as_str(_rows), f'{_path.relative_to(ROOT)} is stale: run `python3 code/analysis/{_script}`')
 
 print(f"{passes} checks passed, {len(fails)} failed")

@@ -70,7 +70,8 @@ def compute():
     F['evidence_map_rows'] = len(em)
     ids = sorted(int(r['study_id'][1:]) for r in ed)
     F['study_id_max'] = f"S{ids[-1]}"
-    F['study_id_gaps'] = [f"S{i:03d}" for i in range(1, ids[-1] + 1) if i not in set(ids)]
+    present = set(ids)
+    F['study_id_gaps'] = [f"S{i:03d}" for i in range(1, ids[-1] + 1) if i not in present]
     tools = Counter(tool_of(r['risk_of_bias_tool']) for r in ed)
     F['tools'] = {k: tools[k] for k in [n for _, n in TOOL_KEYS] if tools[k]}
     F['tool_unclassified'] = tools['UNCLASSIFIED']
@@ -102,10 +103,13 @@ def compute():
     # Jurisdiction coverage. `country` and `legal_system` are FREE TEXT, not controlled vocabularies (see DATA_DICTIONARY.md),
     # so these are rule-based buckets, stated here so they can be challenged.
     multi_re = re.compile(r'[;/&,]| and |multi|global|various|several|worldwide|international', re.I)
+    # single countries whose official names contain " and " must not be read as two countries (found in the 2026-10-04 code review: Trinidad and Tobago was bucketed as multi-country)
+    and_names = re.compile(r'trinidad and tobago|bosnia and herzegovina|antigua and barbuda|saint kitts and nevis|st\.? kitts and nevis|saint vincent and the grenadines|sao tome and principe|s[aã]o tom[eé] and pr[ií]ncipe|turks and caicos', re.I)
     countries = [r['country'].strip() for r in ed]
-    single = Counter(c for c in countries if c and not multi_re.search(c))
+    is_multi = lambda c: bool(multi_re.search(and_names.sub('', c)))
+    single = Counter(c for c in countries if c and not is_multi(c))
     F['country_single_name_studies'] = sum(single.values())
-    F['country_multi_or_regional_studies'] = sum(1 for c in countries if c and multi_re.search(c))
+    F['country_multi_or_regional_studies'] = sum(1 for c in countries if c and is_multi(c))
     F['country_blank_studies'] = sum(1 for c in countries if not c)
     F['country_top10_single_name'] = single.most_common(10)
     F['country_distinct_single_name_values'] = len(single)

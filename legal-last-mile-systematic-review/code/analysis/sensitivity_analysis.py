@@ -6,10 +6,11 @@ Question answered: does any stated conclusion move if the weakest inputs are rem
 Scenarios (each applied to the study lists in the SWiM documents):
   S0 baseline
   S1 drop the abstract-/metadata-only extractions           (05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv logic)
+  S1b drop every strong or moderate row of the sparse-record audit (added 2026-10-04: the prefix-based abstract-only set misses shallow extractions that DO carry effect-size rows)
   S2 drop effect-size rows for studies not flagged quantitative_synthesis_eligible   (S589)
   S3 collapse linked reports that share underlying data     (linked_reports_2026-09-28.csv, same_underlying_data = yes)
   S4 drop the two coding judgment calls in Family A         (S358, S404: "protective"/free-text direction read as concordant)
-  S5 all of S1-S4 together
+  S5 all of the above together
 
 Pre-stated conclusion tests (written before the numbers were computed, so they cannot be tuned to the result):
   A: a majority (> 50%) of studies is concordant with "legal recognition/eligibility improves access" (substantive reading in the Family A document)
@@ -26,6 +27,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import current_figures as cf  # noqa: E402
+import audit_sparse_records as asr  # noqa: E402
 
 ROOT = cf.ROOT
 SW = ROOT / '06_outputs/supplementary'
@@ -74,14 +76,16 @@ def scenarios():
     for f in 'ABC':
         assert set(signs[f]) <= es_ids, f'{f}: SWiM document lists a study not in effect_sizes.csv'
     assert set(conc) == set(signs['A']), 'Family A concordance table does not cover the same studies as the Family A sign table'
+    shallow = {r['study_id'] for r in asr.audit() if r['strength'] in ('strong', 'moderate')}
     S = {
         'S0 baseline': set(),
         'S1 drop abstract-only extractions': abstract_only,
+        'S1b drop sparse-audit strong+moderate rows': shallow,
         'S2 drop rows for studies not flagged eligible': not_eligible,
         'S3 collapse linked reports (same underlying data)': collapse_drop,
         'S4 drop Family A coding judgment calls (S358, S404)': {'S358', 'S404'},
     }
-    S['S5 all of S1-S4'] = set().union(*[v for k, v in S.items() if k != 'S0 baseline'])
+    S['S5 all of the above'] = set().union(*[v for k, v in S.items() if k != 'S0 baseline'])
     rows = []
     for name, drop in S.items():
         rec = {'scenario': name, 'dropped_studies_in_families': ';'.join(sorted(d for d in drop if any(d in signs[f] for f in 'ABC')))}
@@ -102,6 +106,39 @@ def scenarios():
     return rows, abstract_only, not_eligible, collapse_drop, signs
 
 
+def _fam_of(sid):
+    return [f for f in 'ABC' if sid in parse_signs(f)]
+
+
+def abs_line(abstract_only):
+    es_ids = {r['study_id'] for r in cf.read('es')}
+    hit = sorted(abstract_only & es_ids, key=lambda x: int(x[1:]))
+    if not hit:
+        return f"- **Abstract-only extractions ({len(abstract_only)} studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below)."
+    return f"- **Abstract-only extractions ({len(abstract_only)} studies, prefix definition):** {len(hit)} have an `effect_sizes.csv` row ({', '.join(hit)}); S1 removes them from the families."
+
+
+def link_line():
+    es_ids = {r['study_id'] for r in cf.read('es')}
+    yes = [r for r in cf.read('links') if r['same_underlying_data'] == 'yes']
+    inv = sorted({x for r in yes for x in (r['study_id_a'], r['study_id_b']) if x in es_ids}, key=lambda x: int(x[1:]))
+    return (f"- **Linked reports:** {len(yes)} definite same-data links; {len(inv)} {'involves' if len(inv) == 1 else 'involve'} a study that has an effect-size row ({', '.join(f'{i} (Family {_fam_of(i)[0] if _fam_of(i) else chr(8212)})' for i in inv) or 'none'}), so S3 "
+            + ("changes nothing in A, B or C." if not any(r['study_id_b'] in es_ids for r in yes) else "removes the later member of a linked pair that has an effect-size row."))
+
+
+def elig_line(not_eligible):
+    ne = sorted(not_eligible, key=lambda x: int(x[1:]))
+    return f"- **Studies with an effect-size row but not flagged eligible ({', '.join(ne) or 'none'}):** " + ('; '.join(f"{i} is in Family {'/'.join(_fam_of(i)) or '—'}" for i in ne) or 'none') + f"; S2 removes {'it' if len(ne) == 1 else 'them'}."
+
+
+def shallow_line(rows):
+    r = next(x for x in rows if x['scenario'].startswith('S1b'))
+    base = rows[0]
+    return (f"- **Sparse-audit strong and moderate rows (S1b):** removes {len(r['dropped_studies_in_families'].split(';')) if r['dropped_studies_in_families'] else 0} study(ies) from the families ({r['dropped_studies_in_families'] or 'none'}); "
+            f"Family A goes from k = {base['A_k']} to {r['A_k']}, B from {base['B_k']} to {r['B_k']}, C from {base['C_k']} to {r['C_k']}. "
+            "The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).")
+
+
 def descriptive_drop_abstract_only(abstract_only):
     ed = cf.read('ed')
     kept = [r for r in ed if r['study_id'] not in abstract_only]
@@ -118,10 +155,11 @@ def render(rows, abstract_only, not_eligible, collapse_drop, signs):
          "## Headline", "",
          ("**No stated conclusion changes under any scenario.**" if not fails else "**At least one stated conclusion fails under some scenario:** " + "; ".join(f"{s} — {k}" for s, k in fails)) +
          f" Families A, B and C rest on {rows[0]['A_k']}, {rows[0]['B_k']} and {rows[0]['C_k']} studies; the scenarios remove at most {max(len(r['dropped_studies_in_families'].split(';')) if r['dropped_studies_in_families'] else 0 for r in rows)} of them.", "",
-         "## Why several scenarios change nothing", "",
-         f"- **Abstract-only extractions ({len(abstract_only)} studies):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).",
-         f"- **Linked reports:** of the definite same-data links, only S294 (Family B) has an effect-size row; its twin S366 has none. S3 therefore changes nothing in A, B or C.",
-         f"- **Studies not flagged eligible ({', '.join(sorted(not_eligible)) or 'none'}):** S589 is in Family A; S2 removes it.", "",
+         "## Why several scenarios change nothing (or not)", "",
+         abs_line(abstract_only),
+         link_line(),
+         elig_line(not_eligible),
+         shallow_line(rows), "",
          "## Family results by scenario", "",
          "| Scenario | Dropped (in families) | A k | A pos/neg/null | A concordant | A test | B k | B pos/mixed | B test | C k | C pos/neg/mixed | C test |",
          "|---|---|---|---|---|---|---|---|---|---|---|---|"]

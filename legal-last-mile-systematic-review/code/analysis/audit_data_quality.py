@@ -131,7 +131,8 @@ def es_scan():
             cov['structured_interval'] += 1
         cov['rows'] += 1
         d = r['direction'].lower()
-        ratio = bool(re.search(r'\bor\b|odds|\brr\b|risk ratio|\bhr\b|hazard|\birr\b|incidence rate ratio', (r['effect_measure'] + ' ' + r['effect_estimate']).lower()))
+        # the bare word "or" (English conjunction) used to match here and mark difference-scale rows as ratio-scale (S294, S398, S631, S780, S920); now needs a number after OR/RR/HR (2026-10-04 review)
+        ratio = bool(re.search(r'\bor\b\s*[=:(]?\s*-?\d|odds|\brr\b\s*[=:(]?\s*\d|risk ratio|\bhr\b\s*[=:(]?\s*\d|hazard|\birr\b|incidence rate ratio', (r['effect_measure'] + ' ' + r['effect_estimate']).lower()))
         if single:
             l, h = _num(lo), _num(hi)
             if l > h:
@@ -157,6 +158,8 @@ def es_scan():
 
 def render(rows, findings, es_n, cov, am, yrs, cert):
     c = Counter(r['category'] for r in rows)
+    pooled_n = sum(r_['included_in_pooled_estimate'] == 'TRUE' for r_ in cf.read('es'))
+    s277_clause = ', and S277 (found descriptive-only on its full text) is one of them' if any(r['study_id'] == 'S277' and r['category'] == 'C' for r in rows) else ''
     withrow = Counter(r['category'] for r in rows if r['has_effect_size_row'])
     tools = Counter((r['category'], r['risk_of_bias_tool']) for r in rows)
     L = ["# Data-quality audit (generated — do not edit by hand)", "",
@@ -168,9 +171,9 @@ def render(rows, findings, es_n, cov, am, yrs, cert):
          f"| B | inferential model named, but no interval/SE/p-value extracted | {c['B']} | {withrow['B']} |",
          f"| C | descriptive or unclear — the flag looks overstated | {c['C']} | {withrow['C']} |", "",
          "Category C by risk-of-bias tool: " + ", ".join(f"{t} {n}" for (k, t), n in sorted(tools.items(), key=lambda kv: -kv[1]) if k == 'C') + ".", "",
-         f"**Reading it:** the flag marks studies that *might* support a quantitative synthesis; {c['C']} of {len(rows)} ({100 * c['C'] / len(rows):.0f}%) show nothing inferential in the extraction, and S277 (found descriptive-only on its full text) is one of them. "
+         f"**Reading it:** the flag marks studies that *might* support a quantitative synthesis; {c['C']} of {len(rows)} ({100 * c['C'] / len(rows):.0f}%) show nothing inferential in the extraction{s277_clause}. "
          "Category B studies may well have estimates in the paper that the extraction did not capture — a re-extraction question, not a flag question. "
-         "Only 62 studies have an effect-size row and none is pooled, so **no synthesis result depends on the flag**; what it changes is the size of the pool that Phase 11 believed was available. "
+         f"Only {es_n} studies have an effect-size row and {'none is pooled' if not pooled_n else str(pooled_n) + ' are pooled'}, so **no synthesis result depends on the flag**; what it changes is the size of the pool that Phase 11 believed was available. "
          "Per-study list: `quantitative_flag_audit_2026-09-29.csv`. Whether to unflag any study is a researcher decision.", "",
          f"## 2. Consistency scan of `effect_sizes.csv` ({es_n} rows)", ""]
     if findings:

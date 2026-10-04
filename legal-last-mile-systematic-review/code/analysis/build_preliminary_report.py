@@ -16,6 +16,7 @@ import current_figures as cf  # noqa: E402
 import sensitivity_analysis as sa  # noqa: E402
 import propose_family_vocabulary as pv  # noqa: E402
 import audit_data_quality as adq  # noqa: E402
+import audit_sparse_records as asr  # noqa: E402
 
 ROOT = cf.ROOT
 OUT = ROOT / '06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md'
@@ -147,7 +148,8 @@ def build():
     for s in ('S765', 'S398', 'S1122', 'S142', 'S057', 'S104', 'S1020', 'S1121', 'S085', 'S294', 'S526', 'S539', 'S749', 'S631', 'S947', 'S1146', 'S879', 'S1062'):
         W(ex(s))
     W("")
-    W("**Sensitivity of these counts** (`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`): under every scenario tried — dropping abstract-only extractions, dropping S589 (an unadjusted descriptive comparison in an ineligible-flagged study), collapsing linked reports, and dropping Family A's two coding judgment calls — the pre-stated conclusion tests for A, B and C hold; Family A's concordant share ranges " + f"{min(r['A_concordant_pct'] for r in rows_sc)}–{max(r['A_concordant_pct'] for r in rows_sc)}%.")
+    _fails = any(r_[k_] == 'FAILS' for r_ in rows_sc for k_ in ('A_test_majority_concordant', 'B_test_none_negative_or_null', 'C_test_no_dominant_sign'))
+    W("**Sensitivity of these counts** (`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`): under " + ("every scenario tried" if not _fails else "the scenarios tried, **except where a test FAILS (see the file)**") + " — dropping abstract-only extractions, dropping the sparse-audit rows that carry effect sizes, dropping S589 (an unadjusted descriptive comparison in an ineligible-flagged study), collapsing linked reports, and dropping Family A's two coding judgment calls — the pre-stated conclusion tests for A, B and C " + ("hold" if not _fails else "do not all hold") + "; Family A's concordant share ranges " + f"{min(r['A_concordant_pct'] for r in rows_sc)}–{max(r['A_concordant_pct'] for r in rows_sc)}%.")
     W("")
     W("### 2A.4 What the qualitative, doctrinal and mixed-methods studies record")
     W("")
@@ -194,7 +196,13 @@ def build():
     W("")
     W("### 3.3 Missing or thin data")
     W("")
-    W(f"- {F['abstract_only_extractions']} studies were extracted from abstract or metadata only ({100 * F['abstract_only_extractions'] / n:.1f}%); none has an effect-size row, so the SWiM syntheses are unaffected, but descriptive counts and ratings include them. There is no second extractor: extracted values have not been checked against the source papers.")
+    sp = asr.audit()
+    sp_new = [r_ for r_ in sp if not r_['S1_prefix']]
+    sp_strong, sp_mod = sum(r_['strength'] == 'strong' for r_ in sp_new), sum(r_['strength'] == 'moderate' for r_ in sp_new)
+    sp_es = sum(1 for r_ in sp_new if r_['strength'] in ('strong', 'moderate') and 'effect-size row' in r_['weight'])
+    abs_es = sum(1 for r_ in cf.read('es') if ed[r_['study_id']]['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES))
+    abs_es_txt = 'none has an effect-size row, so the SWiM syntheses are unaffected by them' if abs_es == 0 else f'{abs_es} effect-size rows come from them'
+    W(f"- {F['abstract_only_extractions']} studies were extracted from abstract or metadata only ({100 * F['abstract_only_extractions'] / n:.1f}%); {abs_es_txt}, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found {len(sp_new)} more rows with at least one sign of shallow extraction — {sp_strong} whose own notes say only the abstract or citation was read and {sp_mod} whose recorded location cites the abstract alone (a verification queue, not proof) — of which {sp_es} carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.")
     W(f"- {F['jbi_high_concern']} of {tools['JBI Cross-Sectional']} JBI ratings are \"High concern\", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are \"Can't tell\" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.")
     W(f"- Of {F['effect_size_rows']} effect-size rows, {sum(1 for r in cf.read('es') if r['lower_CI'].strip() or r['upper_CI'].strip())} give a confidence interval and {sum(1 for r in cf.read('es') if r['standard_error'].strip())} a standard error; estimates are as the papers report them and none is pooled.")
     W("")
@@ -220,7 +228,11 @@ def build():
     cl_clause = ('every rating given so far is Critically Low, or provisionally so' if n_cl == len(rated) else f'{n_cl} of the {len(rated)} are Critically Low (some provisionally); the others are {others_txt}')
     W(f"- **Only {len(rated)} of the {len(am)} received a formal AMSTAR 2 confidence rating** ({rated_txt}; {cl_clause}, mostly because of missing protocols, single-database searches, no list of excluded studies or no appraisal of the included studies); the other {len(am) - len(rated)} are \"Not ratable\" because their extraction lacks the information for the critical items. **So AMSTAR 2 so far tells the reader little beyond \"low confidence\"; the {len(am) - len(rated)} unrated reviews need their full texts.**")
     W(f"- *Tentative flag (this report's own observation, not a project ruling):* AMSTAR 2 was designed for reviews of healthcare interventions that include randomised or non-randomised studies; several of these reviews are realist, scoping or mapping reviews of qualitative and policy literature, for which a rating would be out-of-design even with full information. A decision on whether to keep AMSTAR 2 for these, or use a different instrument, is open.")
-    W("- Reviews are secondary evidence and are never pooled as if primary; their primary studies may also be in this corpus (a double-counting risk not yet checked).")
+    import csv as _csv
+    _ov = list(_csv.DictReader(open(cf.ROOT / '05_analysis/descriptive/amstar2_overlap_check_2026-10-04.csv', encoding='utf-8')))
+    _cited = {c_ for r_ in _ov for c_ in r_['cited_corpus_study_ids'].split(';') if c_}
+    _heavy = ', '.join(f"{r_['review']} ({r_['corpus_studies_cited']})" for r_ in _ov if int(r_['corpus_studies_cited']) >= 10)
+    W(f"- Reviews are secondary evidence and are never pooled as if primary. Whether their primary studies are also separate rows in this corpus was checked on 2026-10-04 for only {len(_ov)} of the {len(am)} reviews (those whose PDFs were to hand): their reference lists cite {len(_cited)} distinct corpus studies, {_heavy or 'none'} cite ten or more. This is an upper bound (background citations count) and does not read the included-studies tables, so the real double-counting risk is **still unresolved**, and {len(am) - len(_ov)} reviews are unchecked (`05_analysis/descriptive/AMSTAR2_OVERLAP_CHECK_2026-10-04.md`).")
     W("")
     rob = [s for s, r in ed.items() if cf.tool_of(r['risk_of_bias_tool']) == 'RoB 2']
     W(f"**Do the randomised trials need the cluster version of RoB 2? Yes for all five — one unit is inferred, and S366 has now been re-read in full.**")
@@ -247,7 +259,7 @@ def build():
     W("## 4. Most useful next steps (in order)")
     W("")
     W("1. **Human check of the AI's screening**: work `full_text_reviewer_2_priority_queue_2026-09-28.csv` (tier 1: the 73 no-reviewer rows; tier 2: a stratified sample of excludes). It bounds the risk that eligible studies were excluded or ineligible ones included.")
-    W("2. **Obtain the full text of the abstract-only studies that carry the most weight**: " + ("S366 (RoB 2), " if s366_abs else "(S366, the RoB 2 study, was re-extracted 2026-09-29; the four abstract-only AMSTAR 2 reviews on 2026-10-02), ") + ("the AMSTAR 2 reviews extracted from abstracts (" + ", ".join(sorted(am_abs, key=lambda s: int(s[1:]))) + "), " if am_abs else f"the {len(am) - len(rated)} AMSTAR 2 reviews still unrated (start with the weakest-evidenced in the audit, `DATA_QUALITY_AUDIT_2026-09-29.md` §3), ") + f"then the {F['abstract_only_extractions']} remaining abstract-only studies; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`).")
+    W("2. **Obtain the full text of the abstract-only studies that carry the most weight**: " + ("S366 (RoB 2), " if s366_abs else "(S366, the RoB 2 study, was re-extracted 2026-09-29; the four abstract-only AMSTAR 2 reviews on 2026-10-02), ") + ("the AMSTAR 2 reviews extracted from abstracts (" + ", ".join(sorted(am_abs, key=lambda s: int(s[1:]))) + "), " if am_abs else f"the {len(am) - len(rated)} AMSTAR 2 reviews still unrated (start with the weakest-evidenced in the audit, `DATA_QUALITY_AUDIT_2026-09-29.md` §3), ") + f"then the {F['abstract_only_extractions']} remaining abstract-only studies and the {sp_strong} further strong candidates from the sparse-record audit; re-extract (`03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`, `05_analysis/descriptive/sparse_record_audit_2026-10-04.csv`).")
     W("3. **Verify S879's randomisation unit against the paper** and confirm S189's parent-trial handling; then finalise or revise the RoB 2 cluster ratings.")
     W("4. **Decide the AMSTAR 2 question**: keep it (and obtain full texts so the 22 \"Not ratable\" reviews can be rated) or replace it for realist/scoping/mapping reviews; decide how to handle the non-systematic reviews now labelled `NONE`. Check whether these reviews' primary studies are also in the corpus.")
     W("5. **Second-extract a sample** (for example the 62 effect-size studies and the 47 no-reviewer includes) against the source papers to estimate extraction error.")

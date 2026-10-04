@@ -2,10 +2,12 @@
 """Draw a seeded, stratified sample of extracted studies for an independent (human) second extraction, and write a blank comparison sheet.
 
 Purpose: estimate how often the AI's extraction disagrees with the source paper. Nothing about the AI extraction is verified until a human fills this in.
-Population: all extracted studies except those still extracted from abstract/metadata only (a second extractor cannot check those against a full text the
-project does not hold). Strata are drawn in order without overlap (seed 20260929):
-  effect-size rows 15 | RoB 2 / ROBINS-I 8 | JBI Cross-Sectional 8 | MMAT 8 | CASP Qualitative 8 | Legal Framework 8 | AMSTAR 2 + NONE 5   (total 60)
-Output (long format, one row per study x field): 03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-09-29.csv
+Population (redrawn 2026-10-04): studies S001-S200 only -- the 200 includes whose full-text screening decisions the researcher has already reviewed (the researcher
+confirmed the include decisions, not the extractions, but knows these papers) -- minus rows whose own notes say only the abstract or citation was read
+(`audit_sparse_records.py`, strong tier), because a second extractor cannot check those against a full text the extraction never used.
+Strata are drawn in this order without overlap (seed 20260929), each capped at the number available, then topped up at random from the rest of the pool to 60 studies:
+  RoB 2 / ROBINS-I 8 | effect-size rows 15 | AMSTAR 2 / NONE 5 | JBI Cross-Sectional 8 | MMAT 8 | CASP Qualitative 8 | Legal Framework 8 | general top-up to 60
+Output (long format, one row per study x field): 03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv
 The human copies the file, fills `second_extractor_value` / `agrees` / `comment`, and scores it with code/analysis/score_second_extractor_sheet.py.
 Regenerating overwrites only the BLANK file. Run from the project root.
 """
@@ -14,11 +16,14 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import current_figures as cf  # noqa: E402
+import audit_sparse_records as asr  # noqa: E402
 
 ROOT = cf.ROOT
-OUT = ROOT / '03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-09-29.csv'
+OUT = ROOT / '03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv'
 SEED = 20260929
-STRATA = [('effect-size row', 15), ('RoB 2 / ROBINS-I', 8), ('JBI Cross-Sectional', 8), ('MMAT', 8), ('CASP Qualitative', 8), ('Legal Framework', 8), ('AMSTAR 2 / NONE', 5)]
+STRATA = [('RoB 2 / ROBINS-I', 8), ('effect-size row', 15), ('AMSTAR 2 / NONE', 5), ('JBI Cross-Sectional', 8), ('MMAT', 8), ('CASP Qualitative', 8), ('Legal Framework', 8)]
+TOTAL = 60
+ID_RANGE = range(1, 201)  # S001-S200
 FIELDS = [
     ('publication_year', 'Year of publication'),
     ('country', 'Country / countries studied'),
@@ -39,7 +44,8 @@ def draw():
     ed = {r['study_id']: r for r in cf.read('ed')}
     es = {r['study_id']: r for r in cf.read('es')}
     ft = {r['record_id']: r for r in cf.read('ft')}
-    pool = sorted((s for s, r in ed.items() if not r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)), key=lambda x: int(x[1:]))
+    thin = {r['study_id'] for r in asr.audit() if r['strength'] == 'strong'}
+    pool = sorted((s for s, r in ed.items() if int(s[1:]) in ID_RANGE and s not in thin and not r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)), key=lambda x: int(x[1:]))
     rng = random.Random(SEED)
     chosen, used = [], set()
     for name, k in STRATA:
@@ -52,9 +58,12 @@ def draw():
         else:
             cand = [s for s in pool if cf.tool_of(ed[s]['risk_of_bias_tool']) == name]
         cand = [s for s in cand if s not in used]
-        pick = sorted(rng.sample(cand, k), key=lambda x: int(x[1:]))
+        pick = sorted(rng.sample(cand, min(k, len(cand))), key=lambda x: int(x[1:]))
         used.update(pick)
         chosen += [(s, name) for s in pick]
+    rest = [s for s in pool if s not in used]
+    top = sorted(rng.sample(rest, TOTAL - len(chosen)), key=lambda x: int(x[1:]))
+    chosen += [(s, 'general top-up') for s in top]
     rows = []
     for s, stratum in chosen:
         r = ed[s]
