@@ -67,6 +67,10 @@ check(r.returncode == 0 and 'match their documented' in r.stdout, 'validate_sche
 # ---- B. cross-file logic
 F = cf.compute()
 ft, el, ed, em, es, mp, links = (cf.read(k) for k in ('ft', 'el', 'ed', 'em', 'es', 'map', 'links'))
+_ft_status = {'', 'sought', 'retrieved', 'not_retrievable', 'wrong_file_retrieved', 'oa_pdf_candidate', 'oa_page_candidate', 'included', 'excluded'}  # DATA_DICTIONARY.md, full_text_status
+check({r['full_text_status'] for r in ft} <= _ft_status, f"full_text_status holds values not in DATA_DICTIONARY.md: {sorted({r['full_text_status'] for r in ft} - _ft_status)}")
+check(all((r['full_text_status'] == 'included') <= (r['final_decision'] == 'include') and (r['full_text_status'] == 'excluded') <= (r['final_decision'] == 'exclude') for r in ft),
+      "a full_text_status of included/excluded disagrees with final_decision")
 ed_ids, em_ids, es_ids = {r['study_id'] for r in ed}, {r['study_id'] for r in em}, {r['study_id'] for r in es}
 check(len(ed) == len(ed_ids), 'extraction_database has duplicate study_ids')
 _blank_core = [(r['study_id'], f) for r in ed for f in ('citation', 'record_id', 'study_design') if not r[f].strip()]

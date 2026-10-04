@@ -12,6 +12,11 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tests) — bulk importer defect; full_text_status documented
+
+- New `test_bulk_import_full_text.py` (5 tests; fifteen test files in all). It found a real defect in `bulk_import_full_text_results.py`: enum values were validated after stripping but stored as typed, so `" retrieved "` passed validation and was written with the spaces. Values of the enum columns (and `conflict`, lower-cased) are now stored as validated. The committed database has no padded value, so no data changed. The tests also cover all-or-nothing rejection, skipping decided and unknown records, touching only the columns present, dry runs and a blank record id.
+- Documentation gap found on the way: `DATA_DICTIONARY.md` listed four `full_text_status` values but the database holds eight (`wrong_file_retrieved` 182, `oa_pdf_candidate` 29, `oa_page_candidate` 10, `included` 275, `excluded` 226, besides the four). The dictionary now lists and explains all of them, and the verifier (164 checks) fails if a value outside that list appears or if `included`/`excluded` ever disagrees with `final_decision`. The one-record and bulk scripts still accept only the original four values (left unchanged: they are conservative).
+
 ## 2026-10-04 (tests) — one-record editor of the full-text database
 
 - New `test_update_full_text_record.py` (5 tests; fourteen test files in all): a no-op update leaves the real database byte-identical (CRLF kept), a change touches only the named fields, an unknown record or no fields writes nothing, an invalid exclusion code is refused before any write, and an exclude without a code warns. No behaviour changed.

@@ -84,6 +84,7 @@ def load_module(path: Path, name: str):
 
 VALID_EXCLUSION_REASON = {"", "E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "E09", "E10", "E11", "E12"}
 VALID_CONFLICT = {"", "true", "false"}
+ENUM_FIELDS = {"full_text_status", "full_text_decision", "exclusion_reason", "conflict", "final_decision"}
 
 
 def read_csv(path: Path) -> list[dict]:
@@ -196,6 +197,8 @@ def main() -> int:
         target = db_by_id[rid]
         for field in incoming_fields:
             value = row.get(field)
+            if value is not None and field in ENUM_FIELDS:
+                value = value.strip().lower() if field == "conflict" else value.strip()  # validation above strips, so store what was validated
             if value is not None and value != "":
                 target[field] = value
 

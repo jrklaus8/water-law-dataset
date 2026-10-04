@@ -62,7 +62,7 @@ workflow.
 |---|---|---|
 | record_id | string | matches `screening_database.csv` |
 | title, authors, year, doi, url | — | bibliographic metadata, copied from `screening_database.csv` at seed time |
-| full_text_status | enum | `` / `sought` / `retrieved` / `not_retrievable` |
+| full_text_status | enum | `` (not yet sought) / `sought` / `retrieved` / `not_retrievable`, plus four values added by later batches and in use (counts at 2026-10-04): `wrong_file_retrieved` (182; a delivery was attempted but the file was not the record's paper; left undecided), `oa_pdf_candidate` (29) and `oa_page_candidate` (10) (an open-access PDF or landing page was located but no full text was read), `included` (275) and `excluded` (226) (set with the decision by some screening batches; always equal to `final_decision`). The one-record and bulk import scripts still accept only the first four; the verifier checks that no other value appears |
 | full_text_location | string | file path or URL where the retrieved full text can be found again |
 | full_text_decision | enum | `` / `include` / `exclude` |
 | exclusion_reason | string | E01–E12, see `INCLUSION_EXCLUSION.md`; blank if included or not yet decided |
