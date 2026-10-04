@@ -135,7 +135,11 @@ Per-database search strings: `01_search/database_strategies/`.
 
 - **Data management:** `02_screening/title_abstract/screening_database.csv`.
 - **Selection process:** two reviewers where feasible; conflicts resolved
-  by discussion or a third reviewer.
+  by discussion or a third reviewer. *Disclosure for the retrospective
+  registration:* the first pass and most full-text decisions were made by an AI (Claude); a human
+  confirmed 200 full-text includes and the title/abstract include-plus-unsure records, and
+  a blind re-screen by two other AI models disagreed with a large share of sampled AI
+  excludes (`02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`); adjudication is pending.
 - **Data collection process:** `03_extraction/extraction_form/` +
   `CODEBOOK.md`, piloted on ~10 studies before full extraction.
 

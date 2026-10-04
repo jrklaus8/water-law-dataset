@@ -44,7 +44,7 @@ because the manuscript hasn't been drafted yet).
 | 5 | Eligibility criteria | `INCLUSION_EXCLUSION.md`, `PROTOCOL.md` §5 | ◐ §2.2 |
 | 6 | Information sources and last-search date | `SEARCH_PROTOCOL.md`, `search_log.csv`, `PRISMA_WORKFLOW.md` Phase 3 | ◐ §2.3 (closing date; full database list still to add to the text) |
 | 7 | Full search strategy for each database | `SEARCH_PROTOCOL.md` per-database strings, `search_log.csv`'s `exact_search_string` | ☐ not in the draft — supplement (`SEARCH_PROTOCOL.md`, `search_log.csv`) |
-| 8 | Selection process (how many reviewers, independently or not) | `PROTOCOL.md` §6, `PRISMA_WORKFLOW.md` Phase 5 | ◐ §2.3 (AI first pass; partial human second pass disclosed) |
+| 8 | Selection process (how many reviewers, independently or not) | `PROTOCOL.md` §6, `PRISMA_WORKFLOW.md` Phase 5 | ◐ §2.3 (AI first pass; partial human second pass disclosed). Add: a blind AI-versus-AI re-screen of 99 full-text decisions by two non-Claude models, not human-adjudicated (`_reviewer2_codex/`, A16) |
 | 9 | Data collection process | `CODEBOOK.md`, `03_extraction/extraction_form/EXTRACTION_FORM.md`, `REPRODUCIBILITY.md` §3 | ◐ §2.4 |
 | 10a | Data items: outcomes sought | `CODEBOOK.md` §5, `PROJECT_SPEC.md` §7 | ◐ §2.4, §3.3 |
 | 10b | Data items: other variables sought | `CODEBOOK.md` §1–4, §6–9 | ◐ §2.4, §3.2 |
@@ -59,7 +59,7 @@ because the manuscript hasn't been drafted yet).
 | 14 | Reporting-bias assessment methods | `ANALYSIS_PLAN.md` §9, `08_code/R/03_publication_bias.R` | ◐ §3.5 — not assessable (no common metric) |
 | 15 | Certainty assessment methods | `RISK_OF_BIAS.md` §3, `04_quality/risk_of_bias/EVIDENCE_LIMITATIONS_TEMPLATE.md` | ◐ §3.5/§5.1 — GRADE not done, stated |
 | 16a | Study selection: numbers screened/assessed/excluded, reasons | `06_outputs/prisma/prisma_flow.md` | ◐ §3.1 (flow numbers and exclusion table) |
-| 16b | Study selection: excluded studies considered potentially eligible | `02_screening/title_abstract/exclude_spotcheck_sample.csv`, `02_screening/exclusion_log/exclusion_log.csv` | ☐ not in the draft — `exclusion_log.csv` |
+| 16b | Study selection: excluded studies considered potentially eligible | `02_screening/title_abstract/exclude_spotcheck_sample.csv`, `02_screening/exclusion_log/exclusion_log.csv` | ☐ not in the draft — `exclusion_log.csv`; **A16 is the evidence for this item**: `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md` lists the excludes that blind models judged potentially eligible and projects the scale (about 468 at the models' rate, about 104 under a narrow reading), pending the researcher's adjudication |
 | 17 | Study characteristics | `05_analysis/descriptive/evidence_map.csv`, `03_extraction/extracted_data/extraction_database.csv` | ◐ §3.2 |
 | 18 | Risk of bias in included studies | `extraction_database.csv`'s quality fields, `04_quality/appraisal_forms/` | ◐ §3.4 |
 | 19 | Results of individual studies | `extraction_database.csv`, `05_analysis/effect_sizes/effect_sizes.csv` | ◐ §3.5 + family documents |
@@ -71,7 +71,7 @@ because the manuscript hasn't been drafted yet).
 | 22 | Certainty of evidence per outcome | `04_quality/risk_of_bias/` narrative (once written) | ◐ §3.5/§5.1 — GRADE not done, stated |
 | 23a | Interpretation of results in context of other evidence | `07_manuscript/draft/manuscript_outline.md`, `SOURCES.md` | ☐ §4 interpretation is not yet set against the wider literature (author) |
 | 23b | Limitations of the included evidence | `RISK_OF_BIAS.md` §3, `EVIDENCE_LIMITATIONS_TEMPLATE.md` | ◐ §5 |
-| 23c | Limitations of the review process itself | `PRISMA_WORKFLOW.md` Phase 3's disclosed search gaps (SSRN, Westlaw/Lexis never searched), the reviewer_2 agreement-rate caveat (`CHANGELOG.md` 2026-09-12) | ◐ §5 |
+| 23c | Limitations of the review process itself | `PRISMA_WORKFLOW.md` Phase 3's disclosed search gaps (SSRN, Westlaw/Lexis never searched), the reviewer_2 agreement-rate caveat (`CHANGELOG.md` 2026-09-12), the AI-versus-AI excludes finding (A16) | ◐ §5 (the generated limitations now state the A16 finding) |
 | 23d | Implications for practice/policy/future research | `PROJECT_SPEC.md` §1–2, `07_manuscript/draft/manuscript_outline.md` | ◐ §6.1 |
 | 24a | Registration information | `00_admin/preregistration/osf_preregistration_draft.md` (drafted, not yet submitted — see `PRISMA_WORKFLOW.md` Phase 2) | ◐ §2.1 — NOT registered; state retrospective if registered now |
 | 24b | Protocol availability | `PROTOCOL.md`, this repository itself | ◐ §2.8 |
