@@ -39,10 +39,10 @@ title carries the words "AI-Assisted" so that no reader has to discover this fro
 with a different AI tool (its footers read "A Gemini Notebook", i.e. Google NotebookLM). It is kept unaltered for reference; where it differs from the
 current report the report is right — see `06_outputs/slides/README.md`. Nothing else in the repository was produced with that tool.
 
-## Third and fourth AI tools: two independent second reviewers on part of the full-text decisions (2026-10-03)
+## Third and fourth AI tools: two independent second reviewers on part of the full-text decisions (2026-10-03/04)
 
-To begin closing the provenance gap on full-text decisions with no independent check, 99 of the 226 reviewer-2 queue rows (tiers
-1-3; those whose PDF was available) were re-screened **blind** by two different model families — the Codex CLI (OpenAI,
+To begin closing the provenance gap on full-text decisions with no independent check, 108 of the 226 reviewer-2 queue rows
+(tiers 1-3; those whose PDF was available) were re-screened **blind** by two different model families — the Codex CLI (OpenAI,
 `gpt-5.6-sol`) and the Gemini CLI (Google, `gemini-3.1-flash-lite` / `gemini-2.5-flash`) — each of which saw only the protocol
 criteria and the paper, never Claude's decision or reasoning. Decisions are recorded in `full_text_screening_database.csv` under
 `reviewer_2` labels `Codex-gpt-5.6-sol-reviewer2-fulltext-2026-10-03` / `Gemini-...`, with `conflict = true` where a model disagreed
@@ -54,7 +54,7 @@ second model reads differently, it does not certify either side as correct.
 "wrong topic" and E06 "engineering only." This has not been human-adjudicated and nothing was auto-corrected — every disagreement
 is a `conflict = true` row awaiting the researcher. Full technical disclosure (exact tools, versions, prompts, blinding protocol,
 known limitations, and how to reproduce or extend this work) is in `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`; the row-by-row
-report is `_reviewer2_codex/REVIEWER_2_AGREEMENT_2026-10-03.md` (`CHANGELOG.md` 2026-10-03).
+report is `_reviewer2_codex/REVIEWER_2_AGREEMENT_2026-10-04.md` (`CHANGELOG.md` 2026-10-03/04).
 
 ## Where to check
 
