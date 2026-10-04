@@ -4,9 +4,9 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-10-04 (A19 Drive check) — twelve of the thin-basis excludes read in Drive
+## 2026-10-04 (A19 Drive check) — 28 of the 30 thin-basis excludes read in Drive
 
-- Searched Drive by record id for the priority substantive and status-contradicting excludes and read what was there (AI reading, same model family as the screener, not independent). Six are only portal or landing pages (Groningen, Wageningen x3, a journal page, a Springer paywall preview), so the original exclusions did rest on an abstract; on that abstract they are plausible or borderline, and the two irrigation-water papers (R155FFF508359, RA1F6E143593E) would fit E07 better than E01. Six have real PDFs (SWA commitments, the 1998 South African Water Act in French, cisterns in Canada, a Nepal gender-equality quasi-experiment, a 1999 Suez practitioner report, a Brazilian environmental-justice discussion) whose recorded status was simply stale, and their exclusions look sound. `audit_exclusion_basis.py` records these in a `drive_check` column and a markdown section; about 18 of the ~30 were not checked. No decision changed.
+- Searched Drive by record id for the substantive and status-contradicting excludes and read what was there (AI reading, same model family as the screener, not independent). Eight are only portal or landing pages (Groningen, Wageningen x4, Utrecht, a journal page, a Springer paywall preview), so those exclusions did rest on an abstract; on it they are plausible or borderline. Twenty have real PDFs whose recorded status was simply stale, and their exclusions mostly look sound. Code points: R155FFF508359 and RA1F6E143593E (irrigation water) fit E07 better than E01; RD1829FC2C94A fits E05 better than E03; R4266AA2DF8F3 is a borderline E05; R00E98F4E387F is a narrative review with a stated database search (the S418 and S329 type) and should be settled with the narrative-review group. Two have no Drive text. `audit_exclusion_basis.py` records the readings in a `drive_check` column and a markdown section. No decision changed.
 
 ## 2026-10-04 (sensitivity analysis) — invariants tested
 

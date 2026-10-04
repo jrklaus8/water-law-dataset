@@ -32,6 +32,24 @@ DRIVE_CHECK = {
     'R600CF4CBBFE7': 'full PDF in Drive (MacArthur et al. 2025): quasi-experimental evaluation of WASH programme effects on gender equality -- outcome is gender equality, not access (E04 would fit as well as E03); status field stale',
     'REA305644CBB3': 'full PDF in Drive (Chambolle 1999, French): utility-practitioner report on serving poor districts under concession contracts -- no empirical design; E05 plausible; status field stale',
     'RF22EFFAD48CC': 'PDF in Drive (Fracalanza et al. 2013, Portuguese): conceptual discussion of environmental justice and basin committees -- E05 plausible; status field stale',
+    'RC9378CBDB2EE': 'portal page (Utrecht repository, abstract only): governance capacity for desalination in Antofagasta, Chile; technology and consumer perception focus, access is one step of a priority ladder -- exclusion plausible',
+    'RAB6AA06D8E9D': 'not checked: no Drive text found (title: a climate-change and water-quality socio-economics study, Catalonia)',
+    'R803988411D3E': 'portal page (Wageningen, book record): edited volume on socio-technical diversity in East African waste and sanitation; multi-chapter book, not a single study -- E12 defensible, though its empirical core is sanitation access',
+    'R0B462A3EF2D7': 'full PDF in Drive (Leite et al. 2026): Balanced Scorecard for unbilled-water losses in a Portuguese utility -- utility management, not access; exclusion stands; status field stale',
+    'R54D4AEC2087E': 'full PDF in Drive (Scruggs et al. 2020): interview study of public acceptance of direct potable reuse in five communities, governance as one influencing factor -- outcome is acceptance of reuse, not access; exclusion plausible; status field stale',
+    'RAA8D967AD545': "PDF in Drive (Barnes 2006): a university utilities master's programme -- not a study of access; exclusion stands; status field stale",
+    'RBEBE0BACCD18': "full PDF in Drive (Wagaba et al. 2023): survey and interviews on small NGOs' access to geological data (bureaucracy a barrier) -- the access studied is to data, not water; exclusion plausible; status field stale",
+    'RD1829FC2C94A': "full PDF in Drive (Milton et al. 2012): authors' lessons from arsenic mitigation programmes, from experience rather than a defined method -- E05 would fit better than E03; status field stale",
+    'R00E98F4E387F': 'full PDF in Drive (Hove et al. 2022): narrative review with a stated multi-database search (21 articles) of community participation in health and water governance in South Africa -- outcome is participation effectiveness, not access; note it is a hybrid review like S418 and S329, which were kept under AMSTAR 2; status field stale',
+    'R73C7494E55DD': 'full PDF in Drive (Gidion 2025): network DEA method for ranking water utilities -- method development, no access outcome; exclusion stands; status field stale',
+    'RCB78D4EF3652': 'not checked: no Drive text found',
+    'R057F7388EEF4': 'full PDF in Drive (Wall 2006, Water SA technical note): investigation of franchising as a service-delivery model, concept and assessment, no empirical data -- E05 plausible; status field stale',
+    'R4266AA2DF8F3': 'full PDF in Drive (Busari 2002): analysis of rural water-supply policies and institutional capacities in Swaziland with proposals -- an institutional and policy analysis that could count as documentary evidence, so E05 is borderline; status field stale',
+    'R804A6CFFD1D7': 'PDF in Drive (Umunna 2010): a letter to the editor on community participation and rural health -- opinion piece; E05 stands; status field stale',
+    'RF8AB3815D963': 'full PDF in Drive (Nurbaiti & Bambang 2018): non-systematic literature study of community participation in rural water and sanitation programmes -- E05 plausible; status field stale',
+    'R0532032FE3BB': 'full PDF in Drive (Saraswat et al. 2017): scenario modelling of Kathmandu water demand and supply strategies -- modelling study; E06 plausible; status field stale',
+    'R9167527BC9AE': 'full PDF in Drive (Alehashemi & Coulais 2021, French): hydraulic systems and urban structure in Iran with three field case studies -- infrastructure and territory focus; E06 or E01 plausible; status field stale',
+    'RDEA162168676': 'full PDF in Drive (Jauhari et al. 2021): household survey of life-cycle costs of self-supply water in Metro City, Indonesia -- costs of an access route, little governance exposure; E03 would fit as well as E06; status field stale',
 }
 FIELDS = ['group', 'record_id', 'year', 'exclusion_code', 'title', 'basis_phrase', 'in_A16_sheet', 'reason_excerpt', 'drive_check']
 STATUS_CONTRADICTS = ('not_retrievable', 'oa_pdf_candidate', 'oa_page_candidate')  # a decided record whose recorded status says no full text was obtained (or only located, not downloaded)
@@ -85,9 +103,9 @@ def build():
          "| Group | Record | Year | Code | Title | In A16 sheet |", "|---|---|---|---|---|---|"]
     for r in rows:
         L.append(f"| {r['group']} | {r['record_id']} | {r['year']} | {r['exclusion_code']} | {r['title']} | {r['in_A16_sheet']} |")
-    chk = [r for r in rows if r['drive_check'] != 'not checked']
+    chk = [r for r in rows if not r['drive_check'].startswith('not checked')]
     L += ['', '## What the Drive copies showed', '',
-          f"An AI reading (same model family as the screener, so not independent) of the Drive copy of {len(chk)} of the substantive and status-contradicting excludes; the rest were not checked. "
+          f"An AI reading (same model family as the screener, so not independent) of the Drive copy of {len(chk)} of the {sum(1 for r in rows if r['group'] in ('substantive', 'status_exclude'))} substantive and status-contradicting excludes; the other {sum(1 for r in rows if r['group'] in ('substantive', 'status_exclude')) - len(chk)} have no Drive text. "
           f"Of the {len(chk)}, {sum(1 for r in chk if r['drive_check'].startswith('portal page'))} are only portal or landing pages (the original exclusion really was made on an abstract; on that abstract the exclusion is plausible or borderline, and for R155FFF508359 and RA1F6E143593E the code E07 would fit better) "
           f"and {sum(1 for r in chk if 'status field stale' in r['drive_check'])} are real PDFs whose recorded status was simply stale (no concern beyond the bookkeeping).", '']
     L += [f"- **{r['record_id']}** ({r['exclusion_code']}) — {r['drive_check']}" for r in chk]
