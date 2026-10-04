@@ -14,7 +14,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 | 5 | **Sparse-record audit**: should the headline abstract-only count use the broader definition (165 rows, of which 37 are on the current list)? | (a) keep 37 and state it is a floor; (b) adopt the broader set | **(a)** until the 14 strong rows are re-extracted; the report already says it is a floor | Re-extract from full text when PDFs arrive |
 | 6 | **Taxonomy** (`mechanism_family`/`outcome_family`: 236 and 127 distinct labels; draft vocabulary exists) | (a) adopt the draft; (b) edit it first; (c) leave and say so | **(b)** spot-check the `needs_review = TRUE` rows, then adopt | Add controlled columns to the evidence map by a dated script |
 | 7 | **Mechanism-certainty re-coding** (35 studies coded 3–4; only 10 are quasi-experimental/experimental) | (a) re-code to match design; (b) keep and footnote | **(a)** after reading the 25 outside-design papers or accepting a rule from design | Regenerate figures; no effect-size row changes |
-| 8 | **AMSTAR 2 for realist/scoping/qualitative reviews** (10 of 11 rated are Critically Low; the tool separates little) | (a) keep; (b) add a second, narrative-review instrument | **(a)** for this paper; note the limitation | None needed if (a) |
+| 8 | **AMSTAR 2 for realist/scoping/qualitative reviews** (11 of 12 rated are Critically Low; the tool separates little) | (a) keep; (b) add a second, narrative-review instrument | **(a)** for this paper; note the limitation | None needed if (a) |
 | 9 | **Registration**: submit the OSF draft as an explicitly **retrospective** registration | (a) submit now; (b) skip registration and state so | **(a)** — the draft already carries the disclosure; it takes ~20 minutes | Record the identifier in `PROTOCOL.md`; update draft §2.1 and PRISMA item 24a |
 | 10 | **Release**: tag a version and update `CITATION.cff` (still `0.1.0-interim`) | (a) tag now; (b) after the human verification below | **(b)** the data may still change | AI updates version and date |
 
@@ -32,7 +32,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 
 - Apply decisions 1–10, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (127 checks) before every push.
 - Score the filled second-extractor sheet and update the AI-use statement and limitations with the measured error rate.
-- Re-extract and appraise any PDF you supply (about 20 minutes of AI time each) and update the AMSTAR 2 count (11 of 23 rated now).
+- Re-extract and appraise any PDF you supply (about 20 minutes of AI time each) and update the AMSTAR 2 count (12 of 23 rated now).
 - Draft the cover letter, a journal-specific AI-disclosure paragraph and a plain-language summary once decisions 1–4 and the second-extraction sheet are in.
 
 ## Where the project stands in one paragraph

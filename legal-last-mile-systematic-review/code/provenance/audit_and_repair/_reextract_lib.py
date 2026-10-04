@@ -23,7 +23,7 @@ def _rw(path, fn):
     return n, len(rows)
 
 
-def apply(batch, updates, evidence_levels, pdf_note):
+def apply(batch, updates, evidence_levels, pdf_note, strict=True):
     """updates: {study_id: {field: value}}; pdf_note: {study_id: short description of the PDF read (pages, language, what was not read)}."""
     ids = set(updates)
 
@@ -33,7 +33,7 @@ def apply(batch, updates, evidence_levels, pdf_note):
             s = r['study_id']
             if s not in ids:
                 continue
-            assert r['extraction_note'].startswith(PREFIX), (s, r['extraction_note'][:60])
+            assert (not strict) or r['extraction_note'].startswith(PREFIX), (s, r['extraction_note'][:60])
             for k, v in updates[s].items():
                 assert k in r, (s, k)
                 r[k] = v
@@ -55,6 +55,9 @@ def apply(batch, updates, evidence_levels, pdf_note):
                 r['evidence_level'] = evidence_levels[r['study_id']]
         return rows
     _rw(EM, m_em)
+    if not strict:  # rows that were sparse for another reason (not on the abstract-only list)
+        print(f'{batch}: {len(ids)} studies re-extracted (sparse-audit rows, not abstract-only prefix)')
+        return
     n0, n1 = _rw(AB, lambda rows: [x for x in rows if x['study_id'] not in ids])
     assert n0 - n1 == len(ids), (n0, n1)
     print(f'{batch}: {len(ids)} studies re-extracted; abstract-only set {n0} -> {n1}')

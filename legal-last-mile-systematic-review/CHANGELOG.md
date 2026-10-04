@@ -4,6 +4,16 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (sparse-audit rows) — S328 appraised; S397 and S174 re-extracted from full texts found in Drive
+
+Drive was searched by record ID for the 14 *strong* sparse-audit rows and the unrated AMSTAR 2 reviews: only S328, S397, S174 (and the landing pages S214, S329) turned up; S015, S019, S027, S116, S323 and others are not in Drive.
+
+- **S328** (Ali et al. 2026, Nigeria water-supply SLR/meta-analysis) appraised with AMSTAR 2: **Critically Low** (critical items 7 and 13 flawed; item 11 judged flawed because the meta-analysis is internally inconsistent -- 51 vs 23 vs 16 studies for the same pooled 52.3%, different CI and I2 in conclusion). Item-level form `04_quality/appraisal_forms/S328_AMSTAR2.md`, script `appraise_s328_amstar2_2026-10-04.py`. AMSTAR 2 rated: 12 of 23 (11 Critically Low, 1 Low). Pooled numbers deliberately not extracted as results.
+- **S397** (Araujo et al. 2025, Minas Gerais panel logit) re-extracted: the abstract-level entry said weaker capacity made adoption of the mandated sanitation plan less likely; the full text shows mixed signs (revenue negative, expenses positive, staff n.s.; n = 2,589 model observations). Effect-size candidate (not added).
+- **S174** (Araujo et al. 2022, same authors, cross-section) re-extracted: Minas Gerais only (not "national"), n = 391, coefficients extracted; the plan/policy dimension is negative for water coverage. The existing Family C row in `effect_sizes.csv` was updated (n, coefficients, provenance note; direction column unchanged) and the Family C synthesis table row reworded. No pooled result changes (the row is not pooled).
+- `_reextract_lib.py` / runner extended with `nonprefix` JSONs for sparse-audit rows that lack the abstract-only note prefix (idempotent via the re-extraction note marker).
+- S214 (Winmore 2022, Gweru) and S329 (Sohns 2019, Arctic) Drive files are paywall/landing pages: still abstract-level.
+
 ## 2026-10-04 (campaign) — 25 abstract-only studies re-extracted from full texts already in the researcher's Drive
 
 Abstract-only extractions fall from 62 to **37**. The AI read the Drive PDFs and web-page captures (reader output, no OCR) and rewrote the extraction fields for S257, S260, S267, S274, S278, S279, S281, S288, S318, S331–S343, S345–S347 with `code/provenance/audit_and_repair/run_reextract_2026-10-04.py` (one JSON per study in `reextract_2026-10-04/`; asserts each row still carried the abstract-only note; also updates the evidence_map `evidence_level` text and the abstract-only sensitivity CSV). Aggregated findings: `reextract_2026-10-04/CAMPAIGN_NOTES.md`.

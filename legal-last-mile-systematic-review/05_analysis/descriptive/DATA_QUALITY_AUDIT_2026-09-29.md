@@ -35,7 +35,6 @@ Ordered least-evidenced first (see the script docstring for the score). Signals 
 
 | Study | Score | Abstract-only | Formally rated | Signals in recorded fields |
 |---|---|---|---|---|
-| S328 | 2 | no | no | word "systematic"; scoping/realist/mapping/meta-analysis |
 | S329 | 2 | no | no | count of included studies stated; word "systematic"; narrative review with a systematic search (hybrid) |
 | S370 | 2 | no | yes | word "systematic"; scoping/realist/mapping/meta-analysis |
 | S372 | 2 | no | yes | word "systematic"; scoping/realist/mapping/meta-analysis |
@@ -44,6 +43,7 @@ Ordered least-evidenced first (see the script docstring for the score). Signals 
 | S475 | 3 | no | no | registration/PRISMA/JBI method named; word "systematic" |
 | S116 | 4 | no | no | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S323 | 4 | no | no | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
+| S328 | 4 | no | yes | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S344 | 4 | no | yes | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S521 | 4 | no | no | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S697 | 4 | no | yes | count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |

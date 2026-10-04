@@ -22,7 +22,7 @@ was gathered.**
 
 | Study | Country | Design | Direction (as extracted) | RoB tool / rating |
 |---|---|---|---|---|
-| S174 | Brazil | Cross-sectional regression | Positive — higher institutional capacity → better sanitation indicators | JBI Cross-Sectional — Some concern |
+| S174 | Brazil | Cross-sectional regression | Positive for financial, technical and operational capacity; the plan/policy (legal-compliance) component is negative for water coverage, null for sewerage, marginally positive for waste (full text read 2026-10-04; Minas Gerais, n = 391) | JBI Cross-Sectional — Some concern |
 | S470 | Brazil | Quasi-experimental before/after panel | Positive — regulatory enforcement → higher social-tariff enrollment | ROBINS-I — Moderate |
 | S471 | United States | Cross-sectional (national, 2,119 municipalities) | Negative — mayor-led government → lower water cost | JBI Cross-Sectional — Low concern |
 | S526 | United States | Cross-sectional regression | Negative — private ownership → more regressive pricing | JBI Cross-Sectional — Some concern |
