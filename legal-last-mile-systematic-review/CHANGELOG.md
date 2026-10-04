@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (tooling) — verifier guards the test list
+
+- New verifier check (158 in all): every `code/tests/test_*.py` must be named in `regenerate_all.sh`, so a new test file cannot silently go unrun. The handoff now says nine test files (the count fixer's tests had been added without updating it). Documentation only otherwise.
+
 ## 2026-10-04 (tooling) — second-extractor scorer accepts everyday spellings
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
