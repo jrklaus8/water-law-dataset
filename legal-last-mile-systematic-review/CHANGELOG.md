@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (sensitivity analysis) — invariants tested
+
+- New `code/tests/test_sensitivity_invariants.py` (4 tests, run by `regenerate_all.sh`) checks the sensitivity scenarios structurally against `effect_sizes.csv`: the baseline k equals the family counts (20, 6, 20); in every scenario the sign counts sum to k, Family A's concordant, counter-pattern and null counts sum to k and the concordance percentage equals concordant/k; each dropped study is a real effect-size study and exactly accounts for the fall in its family's k; and the three pre-stated conclusion tests ("holds" or not) follow from the counts they are computed from. All pass; the sensitivity script (run by every `regenerate_all.sh`) was already running without error.
+
 ## 2026-10-04 (inclusion criteria) — advisory screen of includes against criterion 3 (A22)
 
 - Mechanical screen of the 1,159 includes for conceptual or theory-only designs: a design cue (essay, theoretical, conceptual, simulation, modelling study, normative, ex-ante) plus no primary sample named, leaving out effect-size studies, systematic-review-class rows and the 13 narrative reviews already on the decisions list. Seven studies remain (S219, S264, S297, S314, S340, S462, S513); S340 is one the blind models would also exclude (A16) and S513 is a narrative review not on the earlier list. New `code/analysis/audit_includes_criterion3.py` writes `05_analysis/descriptive/INCLUDES_CRITERION3_SCREEN_2026-10-04.{csv,md}`; wired into `regenerate_all.sh` and the verifier; logged as A22. Cue words on extracted text, not a validated judgement; nothing changed.
