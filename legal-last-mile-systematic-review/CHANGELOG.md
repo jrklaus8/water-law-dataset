@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (screening database audit) — status contradictions widen A19
+
+- Anomaly scan of `full_text_screening_database.csv`: 3,659 unique record ids; no include carries an exclusion reason or detail and no exclude lacks them; `full_text_decision` equals `final_decision` throughout; no DOI repeats; no DOI has two different decisions; all 73 decided-without-reviewer-1 rows are the known ones. Two things found: (1) the `conflict` column mixes `FALSE` (200, human second reviewer), `false` (83) and `true` (38) from the Codex and Gemini passes, which is harmless (the one reader, `full_text_progress.py` and `current_figures.py`, lower-cases it) but untidy; left as written by the remote passes. (2) 12 decided records have status `not_retrievable` and 40 more only `oa_pdf_candidate` / `oa_page_candidate`. The 29 includes among them have extractions not marked abstract-only, so the status is most likely stale. The 21 substantive excludes among them have no trail of a read full text.
+- `audit_exclusion_basis.py` now reports this second group beside the phrase-match group (A19: about 30 substantive exclusions without a read full text in all). The phrase match alone had missed four `not_retrievable` excludes (E01, E04) whose reasons do not mention a landing page. Nothing in the screening data changed.
+
 ## 2026-10-04 (housekeeping) — figures differ by environment
 
 - After merging the remote's reviewer-2 completion (121 of 121 available records), `regenerate_all.sh` here rewrites the five SVG figures and the HTML report even though the data are unchanged: the SVG layout depends on the fonts available to matplotlib, which differ between this environment and the one the remote used (the hash salt is already fixed). The merged versions were kept to avoid commits that only flip layout details back and forth; the verifier does not check figures. The remote also corrected the A16 includes-side figures (3 of 40, about 72, range 25-191), which the new verifier checks accepted.
