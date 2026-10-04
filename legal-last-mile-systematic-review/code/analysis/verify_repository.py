@@ -236,6 +236,15 @@ for _path, _rows, _script in ((adq.OUT_CSV, adq.flag_audit(), 'audit_data_qualit
                              (asr.OUT_CSV, asr.audit(), 'audit_sparse_records.py'), (brp.OUT_CSV, _brp_rows, 'build_reclassification_proposal.py'), (baa.OUT_CSV, _baa_rows, 'build_a16_adjudication_sheet.py')):
     check(_csv_rows(_path) == _as_str(_rows), f'{_path.relative_to(ROOT)} is stale: run `python3 code/analysis/{_script}`')
 
+# provenance files the verifier and generated texts depend on must be tracked by git (a `*.json` ignore rule once kept the 2026-10-04 re-extraction records out of the repository)
+try:
+    import subprocess as _sp
+    _tracked = set(_sp.run(['git', 'ls-files', 'code/provenance/audit_and_repair/reextract_2026-10-04'], cwd=ROOT, capture_output=True, text=True, check=True).stdout.split())
+    _local = {str(q.relative_to(ROOT)) for q in (ROOT / 'code/provenance/audit_and_repair/reextract_2026-10-04').glob('S*.json')}
+    check(_local <= _tracked, f're-extraction JSONs not tracked by git (check .gitignore): {sorted(_local - _tracked)[:5]}')
+except (OSError, _sp.CalledProcessError):
+    pass  # not a git checkout (e.g. an exported archive): nothing to compare
+
 print(f"{passes} checks passed, {len(fails)} failed")
 for f_ in fails:
     print('  FAIL:', f_)

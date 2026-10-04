@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (verifier) — guard against untracked provenance files
+
+- `verify_repository.py` now fails if any `reextract_2026-10-04/S*.json` is not tracked by git (the `*.json` ignore rule had kept the campaign records out of the repository); skipped outside a git checkout. Tested by adding an untracked JSON (check fails) and removing it (passes). 133 checks.
+
 ## 2026-10-04 (A16 includes side) — the precision question
 
 - Tier 3 of the blind check was a random sample of includes beyond S001–S200: of 18 re-read, the primary model would exclude 3 (S1117 policy note without methods; S1053 irrigation, not domestic service; S340 desk review) and Claude's triage agrees on all three; the tier-1 include S397 (outcome is policy formulation) is a fourth, borderline. Scaled to the 959 unconfirmed includes: about 160 (Wilson 95% 56–376) might not meet the criteria. Arithmetic on 18 records; nothing changed. Added to the A16 sheet (computed), the generated limitations, report and manuscript draft, the brief (decision 13) and A16. Verifier 132 checks.
