@@ -13,6 +13,15 @@ import current_figures as cf  # noqa: E402
 
 ROOT = cf.ROOT
 OUT = ROOT / '07_manuscript/draft/GENERATED_MANUSCRIPT_PIECES_2026-09-29.md'
+import json as _json  # noqa: E402
+
+
+def reextraction_counts():
+    """(re-extracted from full text in the 2026-10-04 campaigns, of which sparse-audit rows, with a recorded material correction) from the campaign JSONs."""
+    ds = [_json.load(open(p, encoding='utf-8')) for p in sorted((ROOT / 'code/provenance/audit_and_repair/reextract_2026-10-04').glob('S*.json'))]
+    return len(ds), sum(1 for d in ds if d.get('nonprefix')), sum(1 for d in ds if d.get('material_correction'))
+
+
 RAW, UNIQUE, TA_SCREENED, TA_NO_ABSTRACT, TA_HUMAN_PASS = 34594, 27481, 26222, 1259, 3665  # README "Chronological workflow"; verifier-checked
 SEARCH_CLOSED = '2026-09-11'
 
@@ -44,7 +53,7 @@ def build():
          "## 3. Limitations (draft)", "",
          f"- **Incomplete full-text screening.** {und:,} of {rec:,} records ({100 * und / rec:.1f}%) were not assessed, and those not assessed are older on average; the review is not exhaustive and may under-represent earlier literature.",
          f"- **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only {F['reviewer_2_confirmed_includes']} full-text includes were human-confirmed, {F['decided_blank_reviewer_1']} decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked.",
-         f"- **Thin extraction for some studies.** {F['abstract_only_extractions']} studies were extracted from abstract or metadata only; there was no second extractor.",
+         f"- **Thin extraction for some studies.** {F['abstract_only_extractions']} studies were extracted from abstract or metadata only; there was no second extractor. The AI re-read {reextraction_counts()[0]} studies from full texts after the first extraction (an AI check of AI work, not independent verification); in {reextraction_counts()[2]} of the {reextraction_counts()[1]} sparse-audit rows among them the abstract-level extraction was materially wrong or incomplete (`CAMPAIGN_NOTES.md`).",
          f"- **Appraisal validity.** Ratings are rule-based; {tools['Legal Framework']} studies were appraised with a non-validated project instrument; {F['jbi_high_concern']} of {tools['JBI Cross-Sectional']} JBI ratings are 'high concern' largely reflecting sparse extraction; only {n_rated_am} of {tools['AMSTAR 2']} AMSTAR 2 reviews could be given a confidence rating ({am_clause}).",
          f"- **No pooled estimate.** Direction-of-association syntheses rest on {F['effect_size_rows']} effect-size rows and are neither effect estimates nor certainty-graded (GRADE).",
          f"- **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.",

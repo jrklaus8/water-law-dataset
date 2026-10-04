@@ -46,7 +46,7 @@ Searches closed on 2026-09-11; SSRN and Westlaw/Lexis were not searched (`SEARCH
 
 ### 2.4 Data extraction
 
-A 92-field extraction form (`CODEBOOK.md`) was completed for every included study by the AI, largely from full text; 37 studies were extracted from abstract or metadata only and an audit found further rows with signs of shallow extraction (Limitations). There was no second extractor. A seeded sample for human second extraction has been prepared (`03_extraction/second_extractor/`) but not yet completed.
+A 92-field extraction form (`CODEBOOK.md`) was completed for every included study by the AI, largely from full text; 37 studies were extracted from abstract or metadata only and an audit found further rows with signs of shallow extraction (Limitations). The AI later re-read 72 studies from full texts found in the researcher's Drive; of the 47 rows flagged only by the sparse-record audit, 2 had an abstract-level extraction that was materially wrong or incomplete (`reextract_2026-10-04/CAMPAIGN_NOTES.md`). There was no second extractor. A seeded sample for human second extraction has been prepared (`03_extraction/second_extractor/`) but not yet completed.
 
 ### 2.5 Risk of bias and critical appraisal
 
@@ -194,7 +194,7 @@ A large part of the evidence base (557 studies by design class, plus 349 with fr
 
 - **Incomplete full-text screening.** 1,383 of 3,659 records (37.8%) were not assessed, and those not assessed are older on average; the review is not exhaustive and may under-represent earlier literature.
 - **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only 200 full-text includes were human-confirmed, 73 decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked.
-- **Thin extraction for some studies.** 37 studies were extracted from abstract or metadata only; there was no second extractor.
+- **Thin extraction for some studies.** 37 studies were extracted from abstract or metadata only; there was no second extractor. The AI re-read 72 studies from full texts after the first extraction (an AI check of AI work, not independent verification); in 2 of the 47 sparse-audit rows among them the abstract-level extraction was materially wrong or incomplete (`CAMPAIGN_NOTES.md`).
 - **Appraisal validity.** Ratings are rule-based; 447 studies were appraised with a non-validated project instrument; 55 of 140 JBI ratings are 'high concern' largely reflecting sparse extraction; only 12 of 23 AMSTAR 2 reviews could be given a confidence rating (11 Critically Low and 1 Low).
 - **No pooled estimate.** Direction-of-association syntheses rest on 62 effect-size rows and are neither effect estimates nor certainty-graded (GRADE).
 - **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.
