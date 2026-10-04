@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tooling) — seven more verifier invariants (172 checks); mutation map covers 27 defects
+
+- New verifier checks, all true of the current data and each aimed at a plausible hand edit: a full-text include carries no exclusion code; `final_decision` and `full_text_decision` never disagree; no decided record lacks a `final_decision`; every exclude has a detail text; every exclusion code is E01-E12; every extraction DOI has the form `10.xxxx/...`; `included_in_pooled_estimate` is TRUE, FALSE or blank. `check_verifier_mutations.py` gained six matching defects (27 in all) and `00_admin/VERIFIER_MUTATION_MAP_2026-10-04.md` was regenerated: 27 of 27 caught. No data changed.
+
 ## 2026-10-04 (data hygiene) — `conflict` spelled one way in the full-text database
 
 - `code/provenance/audit_and_repair/normalise_conflict_case_2026-10-04.py` changed the 200 `FALSE` cells of the `conflict` column in `full_text_screening_database.csv` to `false`, matching its 83 `false` and 38 `true` cells and the data dictionary (true/false/blank). Exactly those 200 lines changed (checked by a byte-level diff; line endings and every other cell untouched; idempotent). Every reader already compared case-insensitively, so no count or output changed. The verifier (165 checks) now fails on any other value in that column. The title/abstract database spells it `FALSE` uniformly (3,665 rows) and is left alone.
@@ -68,7 +72,7 @@ amendments in particular must be logged here with rationale).
 
 ## 2026-10-04 (tooling) — mutation check of the verifier; two blind spots closed
 
-- New `code/analysis/check_verifier_mutations.py` copies the project to a scratch directory, applies one deliberate defect at a time (21 kinds: dropped or swapped rows, an include flipped to exclude, a duplicated DOI, a bad year or boolean, a tampered README figure, a deleted AI statement, ...) and runs the verifier on each. Result map: `00_admin/VERIFIER_MUTATION_MAP_2026-10-04.md`. About 12 minutes; not part of `regenerate_all.sh`.
+- New `code/analysis/check_verifier_mutations.py` copies the project to a scratch directory, applies one deliberate defect at a time (27 kinds: dropped or swapped rows, an include flipped to exclude, a duplicated DOI, a bad year or boolean, a tampered README figure, a deleted AI statement, ...) and runs the verifier on each. Result map: `00_admin/VERIFIER_MUTATION_MAP_2026-10-04.md`. About 12 minutes; not part of `regenerate_all.sh`.
 - It found two defects the verifier let through, now caught (160 checks): deleting a retired row from `study_record_map.csv` (the S-number sequence must have exactly the two documented gaps, S227 and S399) and blanking an extraction row's citation, record id or study design. Stale docstrings in `audit_exclusion_basis.py` (hard-coded 1,117) and `audit_sparse_records.py` (the "62" abstract-only count) were corrected. No data changed.
 
 ## 2026-10-04 (tooling) — fix_documented_counts.py maps old to new phrases exactly

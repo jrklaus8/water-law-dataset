@@ -106,6 +106,31 @@ def _blank_citation(rows, _):
     rows[7]['citation'] = ''
 
 
+def _include_with_reason(rows, _):
+    next(r for r in rows if r['final_decision'] == 'include')['exclusion_reason'] = 'E01'
+
+
+def _decision_disagree(rows, _):
+    r = next(x for x in rows if x['final_decision'] == 'include')
+    r['full_text_decision'] = 'exclude'
+
+
+def _bad_doi(rows, _):
+    next(r for r in rows if r['doi'].strip())['doi'] = 'doi-not-valid'
+
+
+def _bad_code(rows, _):
+    next(r for r in rows if r['exclusion_reason'])['exclusion_reason'] = 'E99'
+
+
+def _bad_status(rows, _):
+    next(r for r in rows if r['full_text_status'] == 'retrieved')['full_text_status'] = 'maybe'
+
+
+def _bad_pooled(rows, _):
+    rows[0]['included_in_pooled_estimate'] = 'yes'
+
+
 MUTATIONS = [
     ('drop_extraction_row', 'the last extraction row is deleted', [ED], lambda r: edit_csv(r, ED, _drop_last)),
     ('drop_evidence_map_row', 'the last evidence-map row is deleted', [EM], lambda r: edit_csv(r, EM, _drop_last)),
@@ -123,6 +148,12 @@ MUTATIONS = [
     ('country_changed', 'a study\'s country is changed to a non-country', [ED], lambda r: edit_csv(r, ED, _country)),
     ('appraisal_tool_changed', 'a JBI study is relabelled RoB 2 without any appraisal', [ED], lambda r: edit_csv(r, ED, _tool)),
     ('blank_citation', 'a study loses its citation text', [ED], lambda r: edit_csv(r, ED, _blank_citation)),
+    ('include_with_exclusion_code', 'a full-text include carries an exclusion code', [FT], lambda r: edit_csv(r, FT, _include_with_reason)),
+    ('decision_fields_disagree', 'final_decision and full_text_decision disagree on a record', [FT], lambda r: edit_csv(r, FT, _decision_disagree)),
+    ('malformed_doi', 'an extraction DOI is not a DOI', [ED], lambda r: edit_csv(r, ED, _bad_doi)),
+    ('exclusion_code_out_of_range', 'an exclusion code E99', [FT], lambda r: edit_csv(r, FT, _bad_code)),
+    ('undocumented_status', 'a full_text_status value the data dictionary does not list', [FT], lambda r: edit_csv(r, FT, _bad_status)),
+    ('pooled_flag_invalid', 'included_in_pooled_estimate set to yes', [ES], lambda r: edit_csv(r, ES, _bad_pooled)),
     ('stale_generated_file', 'a generated audit file is edited by hand', ['05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.md'],
      lambda r: (r / '05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.md').open('a', encoding='utf-8').write('\nhand edit\n')),
     ('tamper_readme_figure', 'the README extraction figure is changed', ['README.md'], lambda r: _readme_any(r)),

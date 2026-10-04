@@ -7,7 +7,7 @@ Produced by `python3 code/analysis/check_verifier_mutations.py --write`: one del
 | `drop_extraction_row` | the last extraction row is deleted | CAUGHT (crash) | 18 | extraction/evidence_map study_id sets differ: ['S1164'] |
 | `drop_evidence_map_row` | the last evidence-map row is deleted | CAUGHT (crash) | 4 | extraction/evidence_map study_id sets differ: ['S1164'] |
 | `map_wrong_record` | two studies swap their screening record ids in the extraction database | CAUGHT | 1 | extraction_database.record_id disagrees with study_record_map |
-| `flip_include_to_exclude` | one full-text include is switched to exclude | CAUGHT | 18 | study_record_map is not a bijection with the full-text includes |
+| `flip_include_to_exclude` | one full-text include is switched to exclude | CAUGHT | 20 | final_decision and full_text_decision disagree |
 | `drop_exclusion_log_row` | the last exclusion-log row is deleted | CAUGHT | 7 | exclusion_log does not match full-text excludes one-to-one |
 | `exclude_without_code` | a full-text exclude loses its exclusion code | CAUGHT | 1 | a full-text exclude lacks an exclusion_reason code |
 | `es_study_not_extracted` | an effect-size row points to a study that is not extracted | CAUGHT (crash) | 2 | effect_sizes has study_ids not extracted: ['S9999'] |
@@ -20,10 +20,16 @@ Produced by `python3 code/analysis/check_verifier_mutations.py --write`: one del
 | `country_changed` | a study's country is changed to a non-country | CAUGHT | 3 | 00_admin/current_figures.json is stale: run `python3 code/analysis/current_figures.py --write` |
 | `appraisal_tool_changed` | a JBI study is relabelled RoB 2 without any appraisal | CAUGHT | 16 | 00_admin/current_figures.json is stale: run `python3 code/analysis/current_figures.py --write` |
 | `blank_citation` | a study loses its citation text | CAUGHT | 1 | extraction rows with a blank citation, record_id or study_design: [('S008', 'citation')] |
+| `include_with_exclusion_code` | a full-text include carries an exclusion code | CAUGHT | 1 | a full-text include carries an exclusion_reason |
+| `decision_fields_disagree` | final_decision and full_text_decision disagree on a record | CAUGHT | 1 | final_decision and full_text_decision disagree |
+| `malformed_doi` | an extraction DOI is not a DOI | CAUGHT | 2 | an extraction DOI is not of the form 10.xxxx/... |
+| `exclusion_code_out_of_range` | an exclusion code E99 | CAUGHT | 1 | an exclusion_reason is not E01-E12 |
+| `undocumented_status` | a full_text_status value the data dictionary does not list | CAUGHT | 1 | full_text_status holds values not in DATA_DICTIONARY.md: ['maybe'] |
+| `pooled_flag_invalid` | included_in_pooled_estimate set to yes | CAUGHT | 1 | effect_sizes.included_in_pooled_estimate holds values other than TRUE/FALSE/blank |
 | `stale_generated_file` | a generated audit file is edited by hand | CAUGHT | 1 | 05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.md is stale: run `python3 code/analysis/audit_exclusion_basis.py` |
 | `tamper_readme_figure` | the README extraction figure is changed | CAUGHT | 1 | README.md: expected to contain '1,159 studies extracted' (extraction row) |
 | `remove_ai_disclosure_title` | the "AI-Assisted" marker is removed from the README title | CAUGHT | 1 | README.md: H1 no longer carries "AI-Assisted" |
 | `remove_ai_use_statement` | AI_USE_STATEMENT.md is deleted | CAUGHT | 1 | AI_USE_STATEMENT.md is missing |
 | `unlisted_test_file` | a new test file that regenerate_all.sh does not run | CAUGHT | 1 | unit-test files not run by code/analysis/regenerate_all.sh: ['test_zz_unlisted'] |
 
-21 of 21 defects caught.
+27 of 27 defects caught.

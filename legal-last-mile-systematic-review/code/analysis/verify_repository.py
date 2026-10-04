@@ -17,7 +17,7 @@ Also checks that 00_admin/current_figures.json is up to date with the databases.
 
 No third-party dependencies. Read-only.
 """
-import csv, json, os, subprocess, sys
+import csv, json, os, re, subprocess, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -70,6 +70,14 @@ ft, el, ed, em, es, mp, links = (cf.read(k) for k in ('ft', 'el', 'ed', 'em', 'e
 _ft_status = {'', 'sought', 'retrieved', 'not_retrievable', 'wrong_file_retrieved', 'oa_pdf_candidate', 'oa_page_candidate', 'included', 'excluded'}  # DATA_DICTIONARY.md, full_text_status
 check({r['full_text_status'] for r in ft} <= _ft_status, f"full_text_status holds values not in DATA_DICTIONARY.md: {sorted({r['full_text_status'] for r in ft} - _ft_status)}")
 check({r['conflict'] for r in ft} <= {'', 'true', 'false'}, f"full-text conflict column holds values other than true/false/blank: {sorted({r['conflict'] for r in ft} - {'', 'true', 'false'})}")
+# decision-field consistency of the full-text database (all hold today; each would catch a hand edit)
+check(not [r['record_id'] for r in ft if r['final_decision'] == 'include' and r['exclusion_reason']], 'a full-text include carries an exclusion_reason')
+check(not [r['record_id'] for r in ft if r['final_decision'] and r['full_text_decision'] and r['final_decision'] != r['full_text_decision']], 'final_decision and full_text_decision disagree')
+check(not [r['record_id'] for r in ft if r['full_text_decision'] and not r['final_decision']], 'a record has a full_text_decision but no final_decision')
+check(not [r['record_id'] for r in ft if r['final_decision'] == 'exclude' and not r['exclusion_reason_detail'].strip()], 'a full-text exclude has no exclusion_reason_detail')
+check(all(re.fullmatch(r'E(0[1-9]|1[0-2])', r['exclusion_reason']) for r in ft if r['exclusion_reason']), 'an exclusion_reason is not E01-E12')
+check(all(re.fullmatch(r'10\.\d{4,9}/\S+', r['doi'].strip()) for r in ed if r['doi'].strip()), 'an extraction DOI is not of the form 10.xxxx/...')
+check({r['included_in_pooled_estimate'] for r in es} <= {'', 'TRUE', 'FALSE'}, 'effect_sizes.included_in_pooled_estimate holds values other than TRUE/FALSE/blank')
 check(all((r['full_text_status'] == 'included') <= (r['final_decision'] == 'include') and (r['full_text_status'] == 'excluded') <= (r['final_decision'] == 'exclude') for r in ft),
       "a full_text_status of included/excluded disagrees with final_decision")
 ed_ids, em_ids, es_ids = {r['study_id'] for r in ed}, {r['study_id'] for r in em}, {r['study_id'] for r in es}
