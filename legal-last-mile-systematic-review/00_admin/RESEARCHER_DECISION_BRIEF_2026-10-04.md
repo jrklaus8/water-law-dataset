@@ -18,12 +18,13 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 | 9 | **Registration**: submit the OSF draft as an explicitly **retrospective** registration | (a) submit now; (b) skip registration and state so | **(a)** — the draft already carries the disclosure; it takes ~20 minutes | Record the identifier in `PROTOCOL.md`; update draft §2.1 and PRISMA item 24a |
 | 10 | **Release**: tag a version and update `CITATION.cff` (still `0.1.0-interim`) | (a) tag now; (b) after the human verification below | **(b)** the data may still change | AI updates version and date |
 | 11 | **Appraisal-tool reclassification** of 14 studies whose full text shows the tool does not fit (e.g. a qualitative focus-group study tagged JBI Cross-Sectional; non-systematic reviews tagged CASP) | (a) apply the proposal; (b) apply part of it; (c) leave and footnote | **(a)**, after glancing at `TOOL_RECLASSIFICATION_PROPOSAL_2026-10-04.md` | A dated script moves the tools, the AI re-answers each moved study's rating item by item, regenerates every tool count |
+| 12 | **Add Olmstead 2004 ('Thirsty Colonias') to the review**: eligible and quantitative; screening is closed, so this is yours | (a) include and extract; (b) leave out and state it | **(a)** | The AI extracts it, adds a Family C row and regenerates every count |
 
 ## Part 2 — Things only you can do, ranked by payoff per hour
 
 1. **Human second-extraction sample** (`03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv`; 60 studies from S001–S200, 9 fields each; about 15–20 minutes per study if you know the field). This is the single biggest credibility gain: it gives the first estimate of the extraction error rate. Even 20 studies helps — send the filled sheet and the AI scores it (`score_second_extractor_sheet.py`, Wilson intervals).
 2. **Human screening check of the 73 no-reviewer rows** (`02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv`, tier 1; about 5 minutes each) — closes the provenance gap (A2/A6).
-3. **PDFs the AI could not read or reach** (the egress proxy blocks the open web, so retrieval is yours): `R0908697F9FE5` (156 MB scan) and `RBEDB6556B711` (a scanned JSTOR PDF with no text layer — needs a text-searchable copy or the pages as images); the 14 *strong* sparse-audit rows (`SPARSE_RECORD_AUDIT_2026-10-04.csv`, `strength = strong`); and the unrated AMSTAR 2 reviews S015, S019, S027, S116, S323, S328, S329, S350, S427, S475, S521, S537.
+3. **PDFs the AI could not read or reach** (the egress proxy blocks the open web, so retrieval is yours): `R0908697F9FE5` (156 MB scan) and `RBEDB6556B711` (now read by the AI from page images and judged eligible — see `02_screening/full_text/UNASSESSED_RECORD_RBEDB6556B711_READ_2026-10-04.md`; whether to include it is decision 12); the 14 *strong* sparse-audit rows (`SPARSE_RECORD_AUDIT_2026-10-04.csv`, `strength = strong`); and the unrated AMSTAR 2 reviews S015, S019, S027, S116, S323, S328, S329, S350, S427, S475, S521, S537.
 4. **Fill PRISMA items 25 and 26** (funding, competing interests) in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` — five minutes, and it unblocks the manuscript declarations.
 5. **Read and edit the manuscript draft** (`07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md`): add the `[ref]` citations and the literature context for the Introduction and Discussion; nothing in it has been human-reviewed.
 6. **Check checklist wording against the official sources** (PRISMA 2020, AMSTAR 2, RoB 2, ROBINS-I, JBI, CASP, MMAT) — the AI could only verify at search-snippet level (A9).
@@ -31,7 +32,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 
 ## Part 3 — What the AI will do the moment you answer
 
-- Apply decisions 1–11, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (129 checks) before every push.
+- Apply decisions 1–12, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (129 checks) before every push.
 - Score the filled second-extractor sheet and update the AI-use statement and limitations with the measured error rate.
 - Re-extract and appraise any PDF you supply (about 20 minutes of AI time each) and update the AMSTAR 2 count (12 of 23 rated now).
 - Draft the cover letter, a journal-specific AI-disclosure paragraph and a plain-language summary once decisions 1–4 and the second-extraction sheet are in.
