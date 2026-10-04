@@ -72,6 +72,7 @@ class A16Base(unittest.TestCase):
         write(self.root / REL['MAP'], headers(REL['MAP']), mp)
         write(self.root / REL['ES'], headers(REL['ES']), [dict(study_id='S003')])
         write(self.root / REL['LINKS'], headers(REL['LINKS']), [])
+        write(self.root / REL['AB'], ['study_id', 'risk_of_bias_tool'], [dict(study_id='S004', risk_of_bias_tool='x'), dict(study_id='S002', risk_of_bias_tool='x')])  # abstract-only sensitivity list
 
     def sheet(self, rows):
         p = self.root / 'filled.csv'
@@ -152,6 +153,7 @@ class TestResolve(A16Base):
         mp = {r['study_id']: r for r in read(self.root / REL['MAP'])}
         self.assertEqual(mp['S005']['record_id'], 'R1'); self.assertEqual(mp['S005']['status'], 'active')  # next ID after S004; retired S001 never reused
         self.assertEqual(mp['S004']['status'], 'retired_excluded')
+        self.assertEqual([r['study_id'] for r in read(self.root / REL['AB'])], ['S002'])  # the retired study leaves the abstract-only list
         ed_ids = {r['study_id'] for r in read(self.root / REL['ED'])}
         self.assertEqual(ed_ids, {'S002', 'S003', 'S005'})
         self.assertEqual({r['study_id'] for r in read(self.root / REL['EM'])}, ed_ids)

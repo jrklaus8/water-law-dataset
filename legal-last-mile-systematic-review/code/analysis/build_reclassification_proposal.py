@@ -44,6 +44,8 @@ def build():
     ed = {r['study_id']: r for r in cf.read('ed')}
     rows = []
     for s, (new, why) in P.items():
+        if s not in ed:  # a study retired after the proposal was written (e.g. by an A16 or criterion-3 exclusion) drops out of it
+            continue
         cur = cf.tool_of(ed[s]['risk_of_bias_tool'])
         if cur == new:
             continue

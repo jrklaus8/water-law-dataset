@@ -10,7 +10,7 @@ Per pending row (the whole batch is validated first; any problem stops the run b
   flips the full-text database row to include and removes its exclusion-log row. If the new include has a quantitative effect, add its
   effect_sizes.csv row with a separate dated script (one prespecified effect per study, CODEBOOK section 12).
 - include -> exclude (new exclusion). Retires the study ID (map status retired_excluded, never reused), removes its extraction and evidence-map
-  rows, flips the full-text row to exclude with the researcher's code and comment, and appends an exclusion-log row. A study that has an
+  rows (and its row in the abstract-only sensitivity list, as the S356 precedent did), flips the full-text row to exclude with the researcher's code and comment, and appends an exclusion-log row. A study that has an
   effect_sizes.csv row or a linked_reports entry is refused: handle those by hand first, because removing them changes the synthesis.
 Resolved rows move from A16_PENDING_REVERSALS.csv to A16_RESOLVED_REVERSALS.csv (with the study ID and date); re-running is safe.
 Precedent for the exclude direction: code/provenance/audit_and_repair/resolve_s356_exclude_2026-09-28.py.
@@ -45,7 +45,7 @@ CODES = {f'E{i:02d}' for i in range(1, 13)}
 REL = dict(FT='02_screening/full_text/full_text_screening_database.csv', EL='02_screening/exclusion_log/exclusion_log.csv',
            ED='03_extraction/extracted_data/extraction_database.csv', EM='05_analysis/descriptive/evidence_map.csv',
            MAP='03_extraction/extracted_data/study_record_map.csv', ES='05_analysis/effect_sizes/effect_sizes.csv',
-           LINKS='03_extraction/extracted_data/linked_reports_2026-09-28.csv',
+           LINKS='03_extraction/extracted_data/linked_reports_2026-09-28.csv', AB='05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv',
            PEND='02_screening/full_text/A16_PENDING_REVERSALS.csv', DONE='02_screening/full_text/A16_RESOLVED_REVERSALS.csv',
            INC='02_screening/full_text/a16_new_includes')
 
@@ -153,6 +153,10 @@ def main(argv=None):
         print('DRY RUN: nothing written. Re-run with --apply to write.'); return 0
     write(P['FT'], ft_f, ft, ft_e); write(P['EL'], el_f, el, el_e); write(P['ED'], ed_f, ed, ed_e)
     write(P['EM'], em_f, em, em_e); write(P['MAP'], map_f, mp, map_e)
+    retired = {sid for kind, _, sid, _ in plan if kind == 'exclude'}
+    if retired and P['AB'].exists():  # the abstract-only sensitivity list must not keep a retired study (the verifier compares it with the extraction notes)
+        ab_f, ab_rows, ab_e = read(P['AB'])
+        write(P['AB'], ab_f, [r for r in ab_rows if r['study_id'] not in retired], ab_e)
     if P['DONE'].exists():
         d_f, d_rows, _ = read(P['DONE'])
     else:
