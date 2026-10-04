@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (R templates) — a latent bug found by running them with flagged rows
+
+- The R meta-analysis, sensitivity and publication-bias scripts had only ever been run on empty or all-numeric input. Run against a copy of the real `effect_sizes.csv` with ten Family A rows flagged for pooling (synthetic numbers; nothing real is flagged), `01_meta_analysis.R` and `03_publication_bias.R` failed with "'yi' is not numeric": the free text in the non-pooled rows makes R read the column as character. All three scripts now coerce the pooled rows to numeric and stop with a clear message if a pooled row lacks a numeric estimate or SE. `01_meta_analysis.R`'s stale "not yet run, no R interpreter" header and the R README's status are corrected beside the originals.
+- New `code/tests/test_r_templates.py` (3 tests, about 15 s, run by `regenerate_all.sh`, skipped if R or its packages are missing): refusal with nothing pooled, end-to-end run with synthetic pooled rows (model, forest plot, heterogeneity table, sensitivity table, funnel plot, bias tests all written), and the clear rejection of a non-numeric pooled row. No real analysis output exists or changed; the Phase 11 verdict (nothing pooled) stands.
+
 ## 2026-10-04 (tests) — helper tests; unclosed files fixed
 
 - New `code/tests/test_analysis_helpers.py` (5 tests, run by `regenerate_all.sh`): the A16 Wilson interval against reference values and its bounds, the ordering narrow <= literal <= models' rate of the implied-includes projection on the real data, and the design-label classifier (including the two misclassifications found while building it), determinism and enum-only output. Running them surfaced unclosed-file warnings in `build_a16_adjudication_sheet.py`, now fixed (`_queue()` helper, `Path.read_text`); outputs unchanged.

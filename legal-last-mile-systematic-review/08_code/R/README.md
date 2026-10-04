@@ -8,6 +8,8 @@ already-made tooling choice, not an inconsistency.
 
 ## Status: validated 2026-09-28, ready to use once a family is poolable
 
+> **Correction, 2026-10-04.** The 2026-09-28 validation did not cover the column types of the real `effect_sizes.csv`: its free text in non-pooled rows made R read `effect_estimate` and `standard_error` as character, so `rma()` would have failed ("'yi' is not numeric") the first time any row was flagged for pooling. All three scripts now coerce the pooled rows to numeric and stop with a clear message if a pooled row has no numeric estimate or SE. `code/tests/test_r_templates.py` (run by `regenerate_all.sh`) exercises all three scripts with synthetic pooled rows in the real layout.
+
 **Updated 2026-09-28: an R interpreter became available in this environment (installed via
 `apt-get install r-base-core`, plus `r-cran-metafor`/`r-cran-dplyr`/`r-cran-ggplot2` — the only
 three packages any of these three scripts actually `library()`-load; `meta`/`readxl`/

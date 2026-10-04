@@ -27,6 +27,18 @@ MIN_STUDIES_FOR_PUB_BIAS <- 10  # ANALYSIS_PLAN.md S9, explicit.
 effect_sizes <- read.csv("05_analysis/effect_sizes/effect_sizes.csv", stringsAsFactors = FALSE)
 pooled <- effect_sizes %>% filter(included_in_pooled_estimate == TRUE)
 
+# effect_sizes.csv keeps free text in effect_estimate / standard_error / CI columns for rows that are NOT pooled (e.g. "positive", "OR 1.4-2.1"), so R reads
+# those columns as character. Coerce for the pooled rows only, and stop with a clear message if a pooled row has no usable number (found 2026-10-04: without
+# this, rma() fails with "'yi' is not numeric" the first time any row is flagged for pooling).
+pooled <- pooled %>%
+  mutate(across(any_of(c("effect_estimate", "standard_error", "lower_CI", "upper_CI")),
+                ~ suppressWarnings(as.numeric(.x))))
+if (nrow(pooled) > 0 && any(is.na(pooled$effect_estimate) | is.na(pooled$standard_error))) {
+  bad <- pooled$study_id[is.na(pooled$effect_estimate) | is.na(pooled$standard_error)]
+  stop("Pooled rows need a numeric effect_estimate and standard_error (on the analysis scale, e.g. log OR); missing or non-numeric for: ",
+       paste(bad, collapse = ", "), ". Derive the SE from the CI in a dated script before flagging the row for pooling.")
+}
+
 if (nrow(pooled) == 0) {
   stop("No pooled effects yet -- nothing to assess for publication bias.")
 }

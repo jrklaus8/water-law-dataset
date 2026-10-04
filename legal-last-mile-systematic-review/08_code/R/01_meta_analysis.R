@@ -1,8 +1,11 @@
 # 01_meta_analysis.R -- Phase 12 (meta-analysis where justified)
 #
-# STATUS: template, not yet run against real data -- no R interpreter was
-# available in the environment this was written in. See ../README.md's
-# "Status" section before relying on this. Structurally complete against
+# STATUS (updated 2026-10-04): runs end-to-end under R with metafor (checked by
+# code/tests/test_r_templates.py against effect_sizes.csv's real column layout
+# with synthetic numbers). No real row is flagged for pooling (Phase 11
+# verdict), so on the real data it stops with the message below. Originally
+# written as a template before any R interpreter was available; see
+# ../README.md's "Status" section. Structurally complete against
 # ANALYSIS_PLAN.md SS4-8, but verify it actually runs once effect_sizes.csv
 # has real rows.
 #
@@ -57,6 +60,18 @@ effect_sizes <- effect_sizes %>%
             by = "study_id")
 
 pooled <- effect_sizes %>% filter(included_in_pooled_estimate == TRUE)
+
+# effect_sizes.csv keeps free text in effect_estimate / standard_error / CI columns for rows that are NOT pooled (e.g. "positive", "OR 1.4-2.1"), so R reads
+# those columns as character. Coerce for the pooled rows only, and stop with a clear message if a pooled row has no usable number (found 2026-10-04: without
+# this, rma() fails with "'yi' is not numeric" the first time any row is flagged for pooling).
+pooled <- pooled %>%
+  mutate(across(any_of(c("effect_estimate", "standard_error", "lower_CI", "upper_CI")),
+                ~ suppressWarnings(as.numeric(.x))))
+if (nrow(pooled) > 0 && any(is.na(pooled$effect_estimate) | is.na(pooled$standard_error))) {
+  bad <- pooled$study_id[is.na(pooled$effect_estimate) | is.na(pooled$standard_error)]
+  stop("Pooled rows need a numeric effect_estimate and standard_error (on the analysis scale, e.g. log OR); missing or non-numeric for: ",
+       paste(bad, collapse = ", "), ". Derive the SE from the CI in a dated script before flagging the row for pooling.")
+}
 
 if (nrow(pooled) == 0) {
   stop("No rows in effect_sizes.csv have included_in_pooled_estimate == TRUE yet -- ",

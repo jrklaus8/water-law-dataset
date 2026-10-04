@@ -8,7 +8,7 @@ for s in current_figures:--write audit_data_quality build_fulltext_request_list 
   name="${s%%:*}"; arg=""; [[ "$s" == *:* ]] && arg="${s#*:}"
   python3 "code/analysis/${name}.py" $arg | tail -1
 done
-for t in test_a16_pipeline test_second_extractor_scoring test_analysis_helpers; do
+for t in test_a16_pipeline test_second_extractor_scoring test_analysis_helpers test_r_templates; do
   python3 "code/tests/$t.py" > /tmp/test_$t.log 2>&1 || { cat "/tmp/test_$t.log"; echo "TEST FAILED: $t"; exit 1; }
   tail -1 "/tmp/test_$t.log"
 done
