@@ -48,7 +48,7 @@ def score(rows):
 
 def read_rows(path):
     """Read a filled sheet tolerantly (UTF-8 with or without BOM, else Windows-1252; ',' or ';' delimiter; padded headers), as a spreadsheet program may save it."""
-    raw = open(path, 'rb').read()
+    raw = __import__('pathlib').Path(path).read_bytes()
     try:
         text = raw.decode('utf-8-sig')
     except UnicodeDecodeError:

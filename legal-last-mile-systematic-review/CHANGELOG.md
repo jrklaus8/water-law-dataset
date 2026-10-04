@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (second extraction) — scorer edge cases tested
+
+- `test_second_extractor_scoring.py` now covers the edge cases (every row disagreeing on a single study: 100% with no crash; nothing judged: no division by zero and no "ALL FIELDS" line; one agreeing row), and the scorer's file read no longer leaves a file open. 6 tests. Noted while checking the remote branch: it holds an earlier Codex second-extractor run (`_reviewer2_codex/run_second_extractor.py`, results for 6 studies) that targets the older `second_extractor_sheet_BLANK_2026-09-29.csv` sample, not the S001-S200 sample of 2026-10-04; its results are not scored or documented here (the Codex and Gemini CLIs are not available in this environment).
+
 ## 2026-10-04 (merge) — reviewer-2 pass of 108 merged; includes-side figures updated
 
 - Merged the remote branch's reviewer-2 update (9 more Gemini rows, 108 reviewed in all; verifier path fix; AI-use-statement wording). The nine new rows are tier-3 includes that the models also include, so the includes-side sample grew from 18 to 27 re-read includes with the same 3 the models would exclude (S1117, S1053, S340): the implied count among the 959 unconfirmed includes is now about 107 (range 37-269), not about 160 (56-376). The generated texts recompute this on their own; the hand-written mentions in `README.md`, `DECISIONS_AND_OPEN_ITEMS.md` (A16), decision brief 13 and the session handoff were updated, along with the "99 of the 226" count in the README. The verifier did not catch these hand-written figures (it only checked curated phrases), so it now does: 15 new checks (154 in all) require the computed A16 figures (models' rate, narrow-reading count, includes-side k of n, implied count and range) in the README, `DECISIONS_AND_OPEN_ITEMS.md`, the decision brief and the session handoff; a deliberate stale README figure was confirmed to fail.

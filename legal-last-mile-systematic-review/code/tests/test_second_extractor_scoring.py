@@ -55,6 +55,29 @@ class TestScore(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 sc.read_rows(str(Path(d) / 'bad'))
 
+    def test_edge_cases_all_disagree_all_missing_single_study(self):
+        import contextlib
+        import io
+        import tempfile
+        def run_main(rows):
+            with tempfile.TemporaryDirectory() as d:
+                p = Path(d) / 's.csv'
+                with open(p, 'w', encoding='utf-8', newline='') as f:
+                    w = csv.DictWriter(f, fieldnames=['study_id', 'stratum', 'field', 'second_extractor_value', V]); w.writeheader(); w.writerows(rows)
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    rc = sc.main(str(p))
+                return rc, buf.getvalue()
+        # everything disagrees: rate 100%, interval upper bound 100%, one study, no crash
+        rc, out = run_main([row('S1', 'A', f, 'N') for f in ('country', 'sample_size', 'study_design')])
+        self.assertEqual(rc, 0); self.assertIn('100.0%', out); self.assertIn('1 of 1', out)
+        # nothing judged (all blank or cannot_tell): no division by zero, nothing scored
+        rc, out = run_main([row('S1', 'A', 'country', ''), row('S2', 'A', 'country', 'cannot_tell')])
+        self.assertEqual(rc, 0); self.assertNotIn('ALL FIELDS', out); self.assertIn('0 of 2', out)
+        # a single agreeing row: 0% with a sensible interval
+        rc, out = run_main([row('S1', 'A', 'country', 'Y')])
+        self.assertEqual(rc, 0); self.assertIn('0.0%', out)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
