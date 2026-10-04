@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 tooling) — regression tests and a line-ending bug fix
+
+- New `code/tests/test_a16_pipeline.py` (9 stdlib unit tests; run by `regenerate_all.sh`): builds a tiny project tree in a temp directory with headers read from the real files and exercises `apply_a16_adjudications.py` and `resolve_a16_pending_reversals.py` (dry run writes nothing, confirm/recode/reverse, idempotence, invalid rows stop everything, next study ID never reuses a retired one, one-to-one invariants after a new include and a new exclude, refusals for effect-size rows and missing or malformed extraction JSON), plus a check that each real CSV the scripts touch is rewritten byte-identically.
+- Bug found by the tests and fixed in both scripts: the line-ending detection read the file through universal-newline text mode, so a CRLF file (all five screening and extraction CSVs are CRLF) would have been rewritten with LF endings, turning every row into a diff. Detection now reads the bytes and looks at the header line. The earlier scratch-copy test had not caught this because it checked linkage, not bytes.
+
 ## 2026-10-04 (A16 tooling) — script to resolve queued reversals
 
 - `code/screening/resolve_a16_pending_reversals.py` added: turns the reversals queued by `apply_a16_adjudications.py` into real new inclusions (from a prepared full-text extraction JSON; assigns the next study ID) or new exclusions (retires the study ID; refuses studies with an effect-size row or a linked-report entry), updating the full-text database, exclusion log, study_record_map, extraction database and evidence map together, and moves resolved rows to `A16_RESOLVED_REVERSALS.csv`. Dry run by default; validates the whole batch before writing. Tested on a scratch copy with one include and one exclude: the linkage checks passed and the verifier then failed only on hand-written study counts (listed in the script's docstring) and on the deliberately copied test extraction (duplicate DOI, wrong year). No real data changed.

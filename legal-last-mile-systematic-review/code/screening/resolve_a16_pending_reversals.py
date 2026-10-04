@@ -48,10 +48,10 @@ REL = dict(FT='02_screening/full_text/full_text_screening_database.csv', EL='02_
 
 
 def read(path: Path):
-    raw = path.read_text(encoding='utf-8')
+    raw = path.read_bytes().decode('utf-8')
     with open(path, encoding='utf-8', newline='') as f:
         rd = csv.DictReader(f)
-        return rd.fieldnames, list(rd), ('\r\n' if '\r\n' in raw[:5000] else '\n')
+        return rd.fieldnames, list(rd), ('\r\n' if raw.split('\n', 1)[0].endswith('\r') else '\n')
 
 
 def write(path: Path, fields, rows, eol):

@@ -8,4 +8,5 @@ for s in current_figures:--write audit_data_quality build_fulltext_request_list 
   name="${s%%:*}"; arg=""; [[ "$s" == *:* ]] && arg="${s#*:}"
   python3 "code/analysis/${name}.py" $arg | tail -1
 done
+python3 code/tests/test_a16_pipeline.py 2>&1 | tail -1
 python3 code/analysis/verify_repository.py | tail -3
