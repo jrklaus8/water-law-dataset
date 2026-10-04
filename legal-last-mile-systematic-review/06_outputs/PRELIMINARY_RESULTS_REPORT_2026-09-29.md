@@ -166,7 +166,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 - **Free-text classifications:** `mechanism_family` (236 distinct labels) and `outcome_family` (127) are uncontrolled; 349 studies have a design class outside the documented enum; a draft vocabulary is proposed, not adopted. Country and legal-system fields are free text, so the geographic counts here are rule-based.
 - **Direction coding** in the SWiM documents is a judgment by the same AI; sign and valence differ for several studies.
 - **The "quantitative-synthesis-eligible" flag looks generous.** Of 247 studies flagged, 113 show nothing inferential in their extraction (descriptive or unclear), 27 name an inferential model but hold no interval, SE or p-value, and 107 carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only 62 studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.
-- **Consistency scan of the effect-size rows** found 1 new item(s) besides the known S589 row (S312 adjusted_blank); but an interval could be checked for only 6 of 62 rows, so this is weak assurance.
+- **Consistency scan of the effect-size rows** found 0 new item(s) besides the known S589 row (none); but an interval could be checked for only 6 of 62 rows, so this is weak assurance.
 - **Same-paper duplicates** with different-language titles and blank DOIs were found and merged among included studies; the DOI/title audits cannot detect this class in the wider pool.
 
 ## 4. Most useful next steps (in order)

@@ -20,7 +20,6 @@ Category C by risk-of-bias tool: MMAT 61, JBI Cross-Sectional 26, Legal Framewor
 
 | Study | Check | Detail |
 |---|---|---|
-| S312 | `adjusted_blank` |  |
 | S589 | `row_for_study_not_flagged_eligible` | known: S589 (DECISIONS A1) |
 
 Each line is a prompt to look at the row against its paper, not proof of an error: direction wording is a synthesis judgment (sign and valence can differ — see the Family A and C documents), and interval scale (ratio vs difference) is inferred from the measure text.
