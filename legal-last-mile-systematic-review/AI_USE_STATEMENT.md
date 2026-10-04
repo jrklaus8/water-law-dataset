@@ -23,7 +23,9 @@ title carries the words "AI-Assisted" so that no reader has to discover this fro
 ## Why you should still read it critically
 
 - The same system produced and audited much of the work, so its checks find inconsistencies and arithmetic errors but cannot
-  confirm that an extracted value matches its source paper. The source PDFs are not in the repository.
+  confirm that an extracted value matches its source paper. The source PDFs are not included in this public repository
+  because many are subject to publisher copyright and licensing terms that do not permit their redistribution. Their
+  absence reflects those legal and licensing restrictions, not a decision by the author to withhold the underlying sources.
 - The audit found, and this repository corrected in the open, errors of the AI's own making: stale figures, two papers
   counted twice, a sign-versus-valence error in a synthesis, provenance gaps. See `AUDITING_GUIDE.md` §4 and
   `00_admin/audits/2026-09-28_repository_audit.md`. Assume more exist.
