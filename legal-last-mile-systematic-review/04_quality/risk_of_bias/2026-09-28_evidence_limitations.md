@@ -81,7 +81,7 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 1,032 name exactly one country, **124 name several countries or a region and are
+vocabularies. Of the 1,159 studies, 1,031 name exactly one country, **125 name several countries or a region and are
 not counted under any single country below**, and 3 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country

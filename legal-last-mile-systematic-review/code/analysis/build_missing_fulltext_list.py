@@ -61,7 +61,7 @@ def build():
 
     # 1: A19 nine
     audit = csvrows('05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.csv')
-    nine = [r for r in audit if r['group'] == 'substantive']
+    nine = [r for r in audit if r['group'] == 'substantive' and not r['drive_check'].startswith(('full PDF in Drive', 'PDF in Drive'))]  # a full text that has since arrived through Drive is no longer missing
     for r in nine:
         add(r['record_id'], 1, f"A19: excluded {r['exclusion_code']} on a thin basis; re-screen on the full text", r['drive_check'])
     # 6: other A19 status groups still not checked
