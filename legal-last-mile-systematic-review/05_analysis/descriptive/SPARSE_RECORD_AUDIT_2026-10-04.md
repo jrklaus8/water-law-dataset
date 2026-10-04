@@ -4,21 +4,21 @@
 
 ## Why this exists
 
-The "49 abstract-only extractions" figure counts one note prefix. That prefix missed S327 (a citation-level row) and S214 ("extracted from openly-readable abstract … full text not accessible"), so the figure is a **floor**, not the full count of shallow extractions. This audit looks for four further signals.
+The "37 abstract-only extractions" figure counts one note prefix. That prefix missed S327 (a citation-level row) and S214 ("extracted from openly-readable abstract … full text not accessible"), so the figure is a **floor**, not the full count of shallow extractions. This audit looks for four further signals.
 
 ## Signals
 
 | Signal | Meaning | Rows |
 |---|---|---|
-| S1 prefix | note starts with the abstract-only prefix (already on the request list) | 49 |
+| S1 prefix | note starts with the abstract-only prefix (already on the request list) | 37 |
 | S2 note | note says only the abstract, citation or metadata was read | 14 |
 | S3 location | recorded location cites the abstract alone, no table or figure | 76 |
 | S4 first pages | section is the abstract plus introduction, background or highlights only | 41 |
-| S5 sparse | 9 or fewer of 14 descriptive content fields populated | 25 |
+| S5 sparse | 9 or fewer of 14 descriptive content fields populated | 20 |
 
 ## Result
 
-- **177 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **63 strong** (S1 or S2), **67 moderate** (location cites the abstract alone), **47 weak** (abstract plus introduction, or sparse fields).
+- **165 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **51 strong** (S1 or S2), **67 moderate** (location cites the abstract alone), **47 weak** (abstract plus introduction, or sparse fields).
 - **128 of them are not on the current abstract-only request list**: 14 strong and 67 moderate. These are the rows the prefix check missed.
 - A "moderate" row is not proven abstract-only: an extractor may cite "Abstract" because that is where a quotation sits while having read more. Treat the moderate tier as a **verification queue**, not a count of failures.
 

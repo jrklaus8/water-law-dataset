@@ -24,7 +24,7 @@ checks that the current-status documents quote these values. If a document disag
 | Extraction rows / evidence-map rows | 1,159 / 1,159 |
 | Highest study ID; retired-ID gaps | S1164; S227, S233, S299, S356, S399 |
 | Quantitative-synthesis-eligible / qualitative-synthesis-eligible | 247 / 1,059 |
-| Abstract/metadata-only extractions | 49 |
+| Abstract/metadata-only extractions | 37 |
 | Linked-report links (same data yes / partial) | 12 (2 / 2) |
 | Distinct studies (definite links / incl. partial) | 1,157 / 1,155 |
 
@@ -43,7 +43,7 @@ Method: the *earliest* tool keyword in `risk_of_bias_tool` decides (substring ma
 | Legal Framework | 447 | 38.6 |
 | NONE | 13 | 1.1 |
 
-Tool-applicable studies (all tools except NONE): 1,146; unrated among them: 0. NONE studies: 13 (5 with an explicit NOT APPLICABLE note, 8 blank by design). Causal-capable designs (ROBINS-I + RoB 2): 68. CASP + MMAT: 468; with Legal Framework: 915. JBI "High concern" (sparse extraction): 56 of 140. Legal Framework studies with legal_measurement_quality populated: 389 of 447.
+Tool-applicable studies (all tools except NONE): 1,146; unrated among them: 0. NONE studies: 13 (5 with an explicit NOT APPLICABLE note, 8 blank by design). Causal-capable designs (ROBINS-I + RoB 2): 68. CASP + MMAT: 468; with Legal Framework: 915. JBI "High concern" (sparse extraction): 55 of 140. Legal Framework studies with legal_measurement_quality populated: 389 of 447.
 
 ## Jurisdiction coverage (free-text fields; rule-based buckets, see current_figures.py)
 

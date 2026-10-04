@@ -4,6 +4,15 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (campaign) — 25 abstract-only studies re-extracted from full texts already in the researcher's Drive
+
+Abstract-only extractions fall from 62 to **37**. The AI read the Drive PDFs and web-page captures (reader output, no OCR) and rewrote the extraction fields for S257, S260, S267, S274, S278, S279, S281, S288, S318, S331–S343, S345–S347 with `code/provenance/audit_and_repair/run_reextract_2026-10-04.py` (one JSON per study in `reextract_2026-10-04/`; asserts each row still carried the abstract-only note; also updates the evidence_map `evidence_level` text and the abstract-only sensitivity CSV). Aggregated findings: `reextract_2026-10-04/CAMPAIGN_NOTES.md`.
+
+- **Not changed:** flags, `effect_sizes.csv`, evidence_map quantitative flag, and the old appraisal ratings where the full text shows the tool does not fit the design (reclassification is decision A11). Ratings were re-answered item by item only where the tool fits (e.g. S347 JBI 8/8, S288 MMAT 1 of 5).
+- **Finding:** many Drive files marked "retrieved" are repository landing pages or paywall previews (S268, S285, S280, S310, S311, S284, S286, S308, S315 and others) and stay abstract-only (A14).
+- **Raised for the researcher** (A12, A13): eligibility doubts for several non-systematic or modelling papers; effect-size candidates (S331 first). S332's country corrected to United States (a parenthetical had been counted as multi-country).
+- Regenerated every derived file; evidence-limitations note, AI-use statement, auditing guide and decision brief carry the new counts; verifier 127 checks, 0 failed.
+
 ## 2026-10-04 (later, manuscript draft and decision brief)
 
 No data changed. Egress to the open web is blocked from the working environment (DOI resolvers, Crossref, Europe PMC all refused), and one retrieved PDF (`RBEDB6556B711`, a JSTOR scan) has no text layer, so retrieval-dependent work waits on the researcher.

@@ -60,7 +60,7 @@ The 2026-09-28 audit found, and this repository corrected in the open, problems 
 - **A sign-versus-valence error** in a synthesis (a coefficient's sign summed as if it meant "helps access").
 - **Provenance gaps:** 73 decided full-text rows with no recorded reviewer; one abstract-only include resolved on its full
   text (excluded); one effect-size row for a study not flagged eligible.
-- **Extractions from abstract or metadata only** (62 studies; S366, S326, S277 and S319/S324/S325/S344 were re-extracted from full text on 2026-09-29 and 2026-10-02) — listed in
+- **Extractions from abstract or metadata only** (37 studies; S366, S326, S277, S319/S324/S325/S344 and 25 studies from the 2026-10-04 Drive campaign, `reextract_2026-10-04/CAMPAIGN_NOTES.md`, were re-extracted from full text) — listed in
   `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`; none feeds an effect-size row. **This is a floor.** It counts one note prefix; `code/analysis/audit_sparse_records.py` (2026-10-04) finds 128 more rows with signs of shallow extraction, three of which (S104, S174, S358) carry effect-size rows — `SPARSE_RECORD_AUDIT_2026-10-04.md`, and the sensitivity file's S1b scenario drops them (no conclusion changes).
 
 ## 5. Ways to challenge a result

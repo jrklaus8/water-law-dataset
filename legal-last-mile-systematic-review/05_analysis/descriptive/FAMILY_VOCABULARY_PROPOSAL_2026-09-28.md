@@ -72,9 +72,9 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 | `discretion_accommodation` | 720 |
 | `eligibility_status_documentation` | 648 |
 | `fees_tariffs_subsidies` | 544 |
-| `participation_assistance` | 521 |
+| `participation_assistance` | 522 |
 | `procedural_burden` | 504 |
-| `enforcement_sanctions` | 493 |
+| `enforcement_sanctions` | 495 |
 | `review_redress` | 188 |
 | `regulatory_model_ownership` | 73 |
 

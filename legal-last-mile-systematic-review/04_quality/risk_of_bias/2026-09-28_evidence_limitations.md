@@ -211,14 +211,13 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 49 of the 1,159
-studies (5.3%) carry an `extraction_note` stating they were extracted from the published
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 37 of the 1,159
+studies (3.2%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
-obtained at extraction time (CASP 24, MMAT 10 — S277 was re-read in full text on 2026-09-29 —, JBI Cross-Sectional 7, Legal Framework 8,
-AMSTAR 2 0 — S326 was re-read in full text on 2026-09-29 and moved to NONE, and S319, S324, S325 and S344 were re-read on 2026-10-02 and appraised from their full texts, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before either, and a further 13 re-extracted from full text on 2026-10-04: S331-S347 in the researcher's Drive; 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
+obtained at extraction time (CASP 20, MMAT 7, JBI Cross-Sectional 6, Legal Framework 4, AMSTAR 2 0, RoB 2 0). The count has fallen over time as full texts were found: 69 before 2026-09-29; S277, S326 and S366 re-read from full text on 2026-09-29; S319, S324, S325 and S344 on 2026-10-02; 13 more (S331-S347) and then 5 (S257, S278, S279, S281, S288) and 3 (S260, S267, S274) on 2026-10-04 from PDFs already in the researcher's Drive (see `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`); two abstract-only rows were retired (S299, a duplicate; S356, an E05 exclusion). Their appraisals are honest about this — the CASP entries, for example,
 record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
-LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 69 as
-equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 69 are listed in
+LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 37 as
+equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 37 are listed in
 `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`, and **none of them has an `effect_sizes.csv`
 row**, so no Family A/B/C synthesis figure rests on an abstract-only extraction. This
 limitation was previously documented only in scattered `CHANGELOG.md` entries, not in any
