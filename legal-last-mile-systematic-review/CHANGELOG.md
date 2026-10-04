@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (design classes) — draft mapping of the free-text design labels (A20)
+
+- A check of `evidence_map.csv` against the enum in `DATA_DICTIONARY.md` confirmed the documented state: 810 of 1,159 studies carry an enum value (derived from the risk-of-bias tool) and 349 keep free-text labels by an earlier, disclosed decision. Other A16-sheet checks run in the same pass: 56 unique rows, priorities non-decreasing (33/19/4), every AI decision and code matches the full-text database, decision columns blank.
+- New `code/analysis/propose_design_vocabulary.py` writes a deterministic keyword draft mapping of the 349 labels to the enum (`05_analysis/descriptive/design_class_mapping_DRAFT_2026-10-04.csv`, `DESIGN_CLASS_PROPOSAL_2026-10-04.md`); wired into `regenerate_all.sh` and the verifier's freshness checks. A first version put "institutional/legal case study" and a Delphi study under `doctrinal`; the doctrinal rule now needs an explicit doctrinal/statutory/legal-analysis cue and no field, survey, quantitative or "qualitative" cue. The mapping is unvalidated; nothing in the evidence map changed. Logged as A20.
+
 ## 2026-10-04 (verifier) — mutation test and crash reporting
 
 - Mutation test of `verify_repository.py` on a scratch copy: 11 deliberate breaks (dropped extraction row, dropped evidence-map row, map pointing at the wrong record, an include flipped to exclude, dropped exclusion-log row, an exclude without a code, an effect-size row for a study that is not extracted, a duplicated DOI, an impossible year, a stale generated file, a tampered README figure). All 11 were caught, so the checks are not vacuous.
