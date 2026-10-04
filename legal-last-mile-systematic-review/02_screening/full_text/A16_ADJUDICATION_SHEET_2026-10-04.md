@@ -14,18 +14,22 @@ Priority 1 = both models include and every criterion is 'yes' in both; 2 = both 
 
 Tier 2 is a seeded random sample of the AI's full-text excludes, stratified by exclusion code (E08 duplicates and E10 inaccessible texts not sampled); the models re-read only those whose PDF was available. Scaling each code's rate to the whole exclusion log gives the order of magnitude at stake. The 95% ranges are Wilson intervals per code; they ignore the PDF-availability selection and the models' own error, so treat them as a sense of scale only.
 
-| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied includes if the rate held (95% range) |
-|---|---|---|---|---|---|
-| E01 wrong topic | 496 | 37 | 19 | 19 | 255 (178-330) |
-| E02 wrong population | 34 | 0 | 0 | 0 | not estimable (none re-read) |
-| E03 wrong exposure | 34 | 2 | 2 | 2 | 34 (12-34) |
-| E04 wrong outcome | 77 | 3 | 2 | 2 | 51 (16-72) |
-| E05 no empirical evidence | 135 | 6 | 2 | 2 | 45 (13-95) |
-| E06 engineering only | 106 | 9 | 6 | 5 | 71 (38-93) |
-| E07 wrong service | 26 | 1 | 0 | 0 | 0 (0-21) |
-| E09 insufficient information | 2 | 0 | 0 | 0 | not estimable (none re-read) |
-| E12 wrong study design | 48 | 4 | 1 | 1 | 12 (2-34) |
-| **Sum of estimable codes** | 922 | 62 | 32 | 31 | **468** |
+The last two columns use Claude's triage of the same records (column `claude_triage` in the CSV; from titles and the models' summaries, not from the papers): *narrow* counts only records whose exposure is a rule-type mechanism of the kind the codebook flags (N); *literal* adds general governance factors (N + B). Records the triage judges to fail either reading (X: outcome not service access, or exposure not institutional) count under neither.
+
+| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied if the model rate held (95% range) | Implied, narrow reading (triage N) | Implied, literal reading (triage N + B) |
+|---|---|---|---|---|---|---|---|
+| E01 wrong topic | 496 | 37 | 19 | 19 | 255 (178-330) | 94 (7) | 201 (15) |
+| E02 wrong population | 34 | 0 | 0 | 0 | not estimable (none re-read) | - | - |
+| E03 wrong exposure | 34 | 2 | 2 | 2 | 34 (12-34) | 17 (1) | 34 (2) |
+| E04 wrong outcome | 77 | 3 | 2 | 2 | 51 (16-72) | 26 (1) | 26 (1) |
+| E05 no empirical evidence | 135 | 6 | 2 | 2 | 45 (13-95) | 22 (1) | 45 (2) |
+| E06 engineering only | 106 | 9 | 6 | 5 | 71 (38-93) | 47 (4) | 71 (6) |
+| E07 wrong service | 26 | 1 | 0 | 0 | 0 (0-21) | 0 (0) | 0 (0) |
+| E09 insufficient information | 2 | 0 | 0 | 0 | not estimable (none re-read) | - | - |
+| E12 wrong study design | 48 | 4 | 1 | 1 | 12 (2-34) | 0 (0) | 24 (2) |
+| **Sum of estimable codes** | 922 | 62 | 32 | 31 | **468** | **206** | **401** |
+
+Counts in brackets are the re-read records the triage put in each group. The triage is a third AI opinion from the same model family as the original screener, so it may share its blind spots; it is offered to show how much turns on the scope reading, not as a decision.
 
 For scale: the review currently has 1,159 full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.
 

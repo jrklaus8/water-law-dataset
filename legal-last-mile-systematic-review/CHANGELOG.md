@@ -4,6 +4,12 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 triage) — how much turns on the scope reading
+
+- The A16 sheet now carries Claude's triage of the 52 AI-exclude disagreements (column `claude_triage`: N = rule-type mechanism of the kind the codebook flags; B = general governance factor only; X = fails either reading). It is from titles and the blind models' own design/exposure/outcome summaries, not from the papers, and it is a third AI opinion from the same model family as the original screener. Priority 1 (both models include): 15 N, 12 B, 6 X; priority 3: 3 B, 16 X.
+- Projected per exclusion code as before: about **206** further includes under the narrow reading and **401** under the literal reading (468 at the models' own rate), against 1,159 current includes. **Even the narrow reading implies a material number of mis-excluded studies**, so A16 matters whichever reading the researcher chooses. Context from the extraction database: 1,107 of the 1,159 includes carry at least one rule-type mechanism flag and 52 carry none, so in practice the original screening applied something close to the narrow reading, but not strictly.
+- Computed into the generated limitations, the preliminary report and the manuscript draft; added by hand to the brief (decision 13) and A16. Verifier 132 checks.
+
 ## 2026-10-04 (A16 scale) — what the blind-reviewer sample implies for the exclusion log
 
 - `build_a16_adjudication_sheet.py` now adds a per-code projection: tier 2 is a seeded random sample of AI full-text excludes stratified by exclusion code, so each code's model-include rate can be scaled to that code's count in the exclusion log. Result: E01 255 (Wilson 95% 178-330), E06 71, E04 51, E05 45, E03 34, E12 12, E07 0; E02 and E09 not estimable; **about 468 in all, against 1,159 current includes**, if the models were right. This is arithmetic, not a finding: it ignores the PDF-availability selection of the re-read records and the models' own error, and no human has adjudicated a single record. The figure is computed (not typed) into the generated limitations, the preliminary report and the manuscript draft, and added by hand to the decision brief (decision 13) and A16. Verifier 132 checks.

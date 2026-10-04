@@ -17,7 +17,67 @@ CODES = {'E01': 'wrong topic', 'E02': 'wrong population', 'E03': 'wrong exposure
          'E08': 'duplicate', 'E09': 'insufficient information', 'E10': 'inaccessible full text', 'E11': 'wrong jurisdiction / context', 'E12': 'wrong study design'}
 FIELDS = ['priority', 'direction', 'record_id', 'study_id', 'year', 'authors', 'title', 'doi', 'url', 'ai_decision', 'ai_code', 'ai_code_meaning', 'ai_reasoning',
           'codex_decision', 'codex_code', 'codex_confidence', 'codex_criteria_not_yes', 'codex_design', 'codex_exposure', 'codex_outcome', 'codex_rationale', 'gemini_decision', 'gemini_code', 'gemini_confidence', 'gemini_criteria_not_yes', 'gemini_exposure', 'gemini_outcome', 'gemini_rationale',
-          'researcher_decision (include/exclude)', 'researcher_exclusion_code (E01-E12)', 'researcher_comment']
+          'claude_triage (N/B/X)', 'claude_triage_note', 'researcher_decision (include/exclude)', 'researcher_exclusion_code (E01-E12)', 'researcher_comment']
+
+# Claude's triage (2026-10-04) from each record's title and the models' own design/exposure/outcome summaries — NOT from reading the papers. A third AI opinion, of the same model family
+# as the original screener, to show how much of the disagreement turns on the scope reading. N = the exposure is a rule-type mechanism of the kind the codebook flags (eligibility, documents,
+# tenure, fees/tariffs, ownership, enforcement, disconnection, administrative rules or assistance) and the outcome is service access: would pass the narrow and the literal reading.
+# B = a general governance factor (participation, coordination, fragmentation, project or fiscal management) with an access outcome: passes the literal reading only. X = fails both readings
+# (outcome is not household/community water or sanitation service access, or the exposure is not institutional).
+TRIAGE = {
+    'R089ED6BEB7BE': ('N', 'tariff, subsidy and cost-recovery policy of the provincial waterworks authority; coverage outcome'),
+    'R08D3F4577102': ('X', 'outcome is professionals ranking hypothetical benefits of mobile payment, not measured access'),
+    'R2DBFA78BFB76': ('N', 'documentation and tenure requirements for network extension in Lima'),
+    'R3974945F7707': ('B', 'project participation and needs assessment; service availability outcome'),
+    'R3F83B65D41C0': ('N', 'government promotion and assistance programme for dry toilets (administrative assistance, Family B type); uptake outcome'),
+    'R4FFEE7FE13E6': ('X', 'land-linked groundwater rights, but access is mostly agricultural (exclusion 7, water-resource study)'),
+    'R6103D8CFE42F': ('N', 'prison rules restricting toilet access (night-time access, queuing)'),
+    'R7E506F37F7B8': ('X', 'exposure is a dam-failure disaster; zoning appears only as a stratifier'),
+    'R96A74867D7C2': ('B', 'national urban policy and legislation for informal settlements, cross-country descriptive'),
+    'RAAB22A572D27': ('X', 'exposure is religiosity and social norms, not an institutional factor'),
+    'RAD91FA5DFF79': ('B', 'slum zone and income with service-delivery conditions; institutional factor weak'),
+    'RB8541E7A11B9': ('N', 'regulatory enforcement, legal exceptionalism and non-enforcement of the manual-scavenging law'),
+    'RB9A117B7E3E9': ('B', 'municipal finance and decentralisation (74th Amendment); coverage outcome'),
+    'RBFBE0C8DD5C3': ('B', 'deficient public provision and pump operating hours; institutional factor weak'),
+    'RD9AA2E70843A': ('B', 'project governance and coordination with some cost-recovery rules'),
+    'RE0841B3F072D': ('X', 'groundwater purchase agreement; outcomes are farmers and resource depletion'),
+    'RF104A3C9A7FE': ('N', 'school rules restricting toilet and water use (locked toilets, permission)'),
+    'RF8BD93786D82': ('N', 'connection fee and provider type; outcome is stated willingness to pay, not observed access'),
+    'RFE07661F24F1': ('B', 'state-civil society partnerships under decentralisation'),
+    'R72919F1AC937': ('N', 'administrative red-marking of contaminated wells and well ownership shaping access'),
+    'RC0409B5F0BE0': ('B', 'fragmented multilevel governance, rationing and a public-private partnership'),
+    'R03DD1BAD1AD0': ('X', 'outcome is bottled-water purchase driven by trust, not access'),
+    'R4D7CD4E75E33': ('N', 'provider type (municipal, private, community) for connections: ownership, Family C type'),
+    'RBCDE0E7C6962': ('B', 'NGO equity-and-inclusion approach (participation, design, some tariff reform)'),
+    'RDAD34E024169': ('N', 'tariff and subsidy rules; but originally E05, check that it holds empirical data'),
+    'R09C9177378D2': ('B', 'drought-management institutions and programmes; access outcome'),
+    'R69F53378C8F2': ('N', 'private shareholding in utilities: ownership, Family C type'),
+    'RA10042C12DA6': ('N', 'connection, delivery arrangements and service shutoffs'),
+    'RB955BA567B95': ('N', 'subsidised yard taps and prepaid meters; projections from a model, check that it is empirical'),
+    'RDC5BD0E41BEE': ('N', 'state tariff regulation and affordability'),
+    'RDEA162168676': ('B', 'self-supply versus piped service costs; the regulatory element (absent permitting) is thin'),
+    'R21CAA5C1809C': ('N', 'compulsory connection, income-based exemptions and tariffs; originally coded E08 duplicate, so check duplicate status first'),
+    'R2ABF896EA8EB': ('B', 'enabling environment for participation; originally E12, may be conceptual'),
+    'R0A1C9E556D77': ('B', 'water concessions and private appropriation behind conflicts; access restrictions partly domestic'),
+    'R0B462A3EF2D7': ('X', 'utility management tool; outcome is unbilled water'),
+    'R16AB75AC4334': ('X', 'reservoir-release rules; outcomes are habitat, flows and floods'),
+    'R3ADAE9AD6CD1': ('X', 'water-resource user associations; outcome is association functioning'),
+    'R4D3FA2134902': ('X', 'transboundary participation; outcome is irrigation access'),
+    'R79A39D631DB8': ('X', 'metering and charging, but the outcome is conservation behaviour'),
+    'R8A95684C4716': ('X', 'outcome is protest participation'),
+    'R9477DF8E814D': ('X', 'agrarian commons and irrigation'),
+    'R9DF6B20973C6': ('X', 'groundwater rules for irrigated agriculture'),
+    'RB5516429E2DC': ('X', 'exposure is household poverty'),
+    'RBA18C893F671': ('X', 'outcome is willingness to drink recycled water'),
+    'RD1D7FB8C4689': ('X', 'outcome is children\'s participation in planning'),
+    'RD6B9F237B30D': ('X', 'irrigation water rights'),
+    'RDCB899855EE9': ('X', 'prepaid meters and disconnection, but the outcome is citizenship discourse'),
+    'RFA18A400F778': ('X', 'hardship-support partnership; outcome is network structure, not access'),
+    'R00E98F4E387F': ('X', 'outcome is the effectiveness of participation, not access'),
+    'R457A96841C7E': ('B', 'decentralised wastewater arrangements; descriptive service claims'),
+    'RCFA60F99F5A8': ('X', 'seismic engineering programme; modelled post-earthquake service'),
+    'R4D3518D8ACB3': ('B', 'licensing and permissions around a bottling plant; community exclusion from groundwater partly domestic'),
+}
 
 
 def _load(sub):
@@ -53,18 +113,21 @@ def projection(cx, gm, queue):
         rev = [q for q in queue.values() if q['priority_tier'] == '2' and q['ai_exclusion_code'] == code and (q['record_id'] in cx or q['record_id'] in gm)]
         prim = sum(1 for q in rev if q['reviewer_2_decision (include/exclude/cannot_tell)'] == 'include')
         both = sum(1 for q in rev if cx.get(q['record_id'], {}).get('decision') == 'include' and gm.get(q['record_id'], {}).get('decision') == 'include')
+        nN = sum(1 for q in rev if TRIAGE.get(q['record_id'], ('',))[0] == 'N')
+        nNB = sum(1 for q in rev if TRIAGE.get(q['record_id'], ('',))[0] in ('N', 'B'))
         lo, hi = _wilson(prim, len(rev))
         N = by_code[code]
         rows.append(dict(code=code, in_log=N, reread=len(rev), primary_include=prim, both_include=both,
-                         projected=round(N * prim / len(rev)) if rev else None, lo=round(N * lo) if rev else None, hi=round(N * hi) if rev else None))
+                         projected=round(N * prim / len(rev)) if rev else None, triage_N=nN, triage_NB=nNB, proj_narrow=round(N * nN / len(rev)) if rev else None, proj_literal=round(N * nNB / len(rev)) if rev else None, lo=round(N * lo) if rev else None, hi=round(N * hi) if rev else None))
     return rows
 
 
 def implied_total():
-    """Sum over estimable exclusion codes of the per-code projection (see projection()); a sense of scale only."""
+    """(model rate, narrow-reading triage, literal-reading triage) implied includes summed over estimable codes (see projection()); a sense of scale only."""
     cx, gm = _load('results'), _load('results_gemini')
     queue = {r['record_id']: r for r in csv.DictReader(open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline=''))}
-    return sum(p['projected'] for p in projection(cx, gm, queue) if p['projected'] is not None)
+    est = [p for p in projection(cx, gm, queue) if p['projected'] is not None]
+    return sum(p['projected'] for p in est), sum(p['proj_narrow'] for p in est), sum(p['proj_literal'] for p in est)
 
 
 def build():
@@ -88,7 +151,7 @@ def build():
                          ai_code=q['ai_exclusion_code'], ai_code_meaning=CODES.get(q['ai_exclusion_code'], ''), ai_reasoning=q['ai_reasoning_READ_AFTER_YOUR_OWN_JUDGMENT'][:500],
                          codex_decision=part(c, 'decision'), codex_code=part(c, 'exclusion_code'), codex_confidence=part(c, 'confidence'), codex_criteria_not_yes=_not_yes(c) if c else '', codex_design=part(c, 'study_design')[:200], codex_exposure=part(c, 'exposure')[:300], codex_outcome=part(c, 'outcome')[:300], codex_rationale=part(c, 'rationale')[:600],
                          gemini_decision=part(g, 'decision'), gemini_code=part(g, 'exclusion_code'), gemini_confidence=part(g, 'confidence'), gemini_criteria_not_yes=_not_yes(g) if g else '', gemini_exposure=part(g, 'exposure')[:300], gemini_outcome=part(g, 'outcome')[:300], gemini_rationale=part(g, 'rationale')[:600],
-                         **{'researcher_decision (include/exclude)': '', 'researcher_exclusion_code (E01-E12)': '', 'researcher_comment': ''}))
+                         **{'claude_triage (N/B/X)': TRIAGE.get(rid, ('', ''))[0], 'claude_triage_note': TRIAGE.get(rid, ('', ''))[1], 'researcher_decision (include/exclude)': '', 'researcher_exclusion_code (E01-E12)': '', 'researcher_comment': ''}))
     rows.sort(key=lambda r: (r['priority'], r['ai_code'], r['record_id']))
     n = {p: sum(1 for r in rows if r['priority'] == p) for p in (1, 2, 3, 4)}
     codes = {}
@@ -110,13 +173,15 @@ def build():
          "## What the sample implies, if the models were right (arithmetic, not a finding)", "",
          "Tier 2 is a seeded random sample of the AI's full-text excludes, stratified by exclusion code (E08 duplicates and E10 inaccessible texts not sampled); the models re-read only those whose PDF was available. "
          "Scaling each code's rate to the whole exclusion log gives the order of magnitude at stake. The 95% ranges are Wilson intervals per code; they ignore the PDF-availability selection and the models' own error, so treat them as a sense of scale only.", "",
-         "| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied includes if the rate held (95% range) |", "|---|---|---|---|---|---|"]
+         "The last two columns use Claude's triage of the same records (column `claude_triage` in the CSV; from titles and the models' summaries, not from the papers): *narrow* counts only records whose exposure is a rule-type mechanism of the kind the codebook flags (N); *literal* adds general governance factors (N + B). Records the triage judges to fail either reading (X: outcome not service access, or exposure not institutional) count under neither.", "",
+         "| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied if the model rate held (95% range) | Implied, narrow reading (triage N) | Implied, literal reading (triage N + B) |", "|---|---|---|---|---|---|---|---|"]
     proj = projection(cx, gm, queue)
     for p in proj:
         L.append(f"| {p['code']} {CODES.get(p['code'], '')} | {p['in_log']} | {p['reread']} | {p['primary_include']} | {p['both_include']} | "
-                 + (f"{p['projected']} ({p['lo']}-{p['hi']})" if p['projected'] is not None else 'not estimable (none re-read)') + " |")
+                 + (f"{p['projected']} ({p['lo']}-{p['hi']}) | {p['proj_narrow']} ({p['triage_N']}) | {p['proj_literal']} ({p['triage_NB']})" if p['projected'] is not None else 'not estimable (none re-read) | - | -') + " |")
     est = [p for p in proj if p['projected'] is not None]
-    L += [f"| **Sum of estimable codes** | {sum(p['in_log'] for p in est)} | {sum(p['reread'] for p in est)} | {sum(p['primary_include'] for p in est)} | {sum(p['both_include'] for p in est)} | **{sum(p['projected'] for p in est)}** |", "",
+    L += [f"| **Sum of estimable codes** | {sum(p['in_log'] for p in est)} | {sum(p['reread'] for p in est)} | {sum(p['primary_include'] for p in est)} | {sum(p['both_include'] for p in est)} | **{sum(p['projected'] for p in est)}** | **{sum(p['proj_narrow'] for p in est)}** | **{sum(p['proj_literal'] for p in est)}** |", "",
+          "Counts in brackets are the re-read records the triage put in each group. The triage is a third AI opinion from the same model family as the original screener, so it may share its blind spots; it is offered to show how much turns on the scope reading, not as a decision.", "",
           f"For scale: the review currently has {cf.compute()['full_text_include']:,} full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.", "",
           "## Records", "",
           "| Pri | Record | Title | AI code | Codex | Gemini |", "|---|---|---|---|---|---|"]
