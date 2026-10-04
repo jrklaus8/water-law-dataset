@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 tooling) — script to apply the researcher's adjudications
+
+- `code/screening/apply_a16_adjudications.py` reads a filled copy of the A16 sheet. Dry run by default; `--apply` writes. Confirmed decisions are recorded in the record's notes (a changed exclusion code is written to both the full-text database and the exclusion log); reversals are not applied to the decision fields — they are annotated and queued in `02_screening/full_text/A16_PENDING_REVERSALS.csv` for a dated script that performs the full inclusion or exclusion (study ID, extraction, appraisal, study_record_map, exclusion log), so the verifier's one-to-one checks hold. Invalid rows stop the run before anything is written; re-runs skip rows already adjudicated. Tested on a scratch copy (confirm, recode, both reversal directions, re-run, invalid input). The sheet, the brief and the handoff point to it.
+
 ## 2026-10-04 (verifier) — guard against untracked provenance files
 
 - `verify_repository.py` now fails if any `reextract_2026-10-04/S*.json` is not tracked by git (the `*.json` ignore rule had kept the campaign records out of the repository); skipped outside a git checkout. Tested by adding an untracked JSON (check fails) and removing it (passes). 133 checks.

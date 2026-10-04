@@ -11,7 +11,8 @@ Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3
 1. `git pull`, then `bash code/analysis/regenerate_all.sh` (rebuilds every derived file in dependency order and runs the verifier). Run from `legal-last-mile-systematic-review/`.
 2. Change data only with a small dated script under `code/provenance/audit_and_repair/` that asserts row counts and writes atomically (pattern: `enrich_s1163_ci_2026-10-04.py`), add a dated `CHANGELOG.md` entry, regenerate, verify, commit. Word versions are made with `pandoc … --reference-doc=<a reference .docx>` (not in the repository).
 3. Re-extraction from a Drive full text: write `code/provenance/audit_and_repair/reextract_2026-10-04/<study>.json` (`nonprefix: true` for rows without the abstract-only note), run `run_reextract_2026-10-04.py` (idempotent), then `reextract_2026-10-04/build_campaign_notes.py`. **`.gitignore` ignores `*.json`; the folder has an exception line, so `git add` picks the JSONs up. Check `git ls-files` after adding any new JSON.**
-4. Never apply an open decision (items 1-14) without the researcher's answer; the brief says what each answer triggers.
+4. When the researcher returns a filled A16 sheet: `python3 code/screening/apply_a16_adjudications.py <filled.csv> --reviewer <initials>` (dry run), then `--apply`. Confirmations are written; reversals go to `02_screening/full_text/A16_PENDING_REVERSALS.csv` and need a dated script that assigns study IDs, extracts, appraises and updates `study_record_map` and the exclusion log together (precedent: `resolve_s356_exclude_2026-09-28.py`), so the verifier's one-to-one checks keep passing.
+5. Never apply an open decision (items 1-14) without the researcher's answer; the brief says what each answer triggers.
 
 ## What was completed this session (details in `CHANGELOG.md`)
 
