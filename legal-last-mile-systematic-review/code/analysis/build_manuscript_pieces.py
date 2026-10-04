@@ -22,6 +22,14 @@ def reextraction_counts():
     return len(ds), sum(1 for d in ds if d.get('nonprefix')), sum(1 for d in ds if d.get('material_correction'))
 
 
+def reviewer2_ai_counts():
+    """(AI full-text excludes re-read blind by the non-Claude models, of which judged include, records reviewed in all) from the reviewer-2 queue file; AI-versus-AI, not human."""
+    import csv as _csv
+    rows = list(_csv.DictReader(open(ROOT / '_reviewer2_codex/full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline='')))
+    ex = [r for r in rows if r['ai_decision'] == 'exclude']
+    return len(ex), sum(1 for r in ex if r['reviewer_2_decision (include/exclude/cannot_tell)'] == 'include'), len(rows)
+
+
 RAW, UNIQUE, TA_SCREENED, TA_NO_ABSTRACT, TA_HUMAN_PASS = 34594, 27481, 26222, 1259, 3665  # README "Chronological workflow"; verifier-checked
 SEARCH_CLOSED = '2026-09-11'
 
@@ -52,7 +60,7 @@ def build():
          f"Of the {dec:,} assessed, {exc:,} were excluded ({e10} because the full text was inaccessible; reasons for the others are in `exclusion_log.csv`) and {inc:,} were included ({n:,} extraction rows, corresponding to {F['distinct_studies_definite_links']:,} distinct studies after collapsing definite companion reports).", "",
          "## 3. Limitations (draft)", "",
          f"- **Incomplete full-text screening.** {und:,} of {rec:,} records ({100 * und / rec:.1f}%) were not assessed, and those not assessed are older on average; the review is not exhaustive and may under-represent earlier literature.",
-         f"- **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only {F['reviewer_2_confirmed_includes']} full-text includes were human-confirmed, {F['decided_blank_reviewer_1']} decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked.",
+         f"- **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only {F['reviewer_2_confirmed_includes']} full-text includes were human-confirmed, {F['decided_blank_reviewer_1']} decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked. A blind re-read by two non-Claude models (Codex, Gemini) of {reviewer2_ai_counts()[0]} of the AI's full-text excludes (a stratified sample, limited to records whose PDF was available) judged {reviewer2_ai_counts()[1]} of them to be includes; this is an AI-versus-AI check, it was not human-adjudicated, and it means the exclusion log may understate the eligible literature (open item A16; `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`).",
          f"- **Thin extraction for some studies.** {F['abstract_only_extractions']} studies were extracted from abstract or metadata only; there was no second extractor. The AI re-read {reextraction_counts()[0]} studies from full texts after the first extraction (an AI check of AI work, not independent verification); in {reextraction_counts()[2]} of the {reextraction_counts()[1]} sparse-audit rows among them the abstract-level extraction was materially wrong or incomplete (`CAMPAIGN_NOTES.md`).",
          f"- **Appraisal validity.** Ratings are rule-based; {tools['Legal Framework']} studies were appraised with a non-validated project instrument; {F['jbi_high_concern']} of {tools['JBI Cross-Sectional']} JBI ratings are 'high concern' largely reflecting sparse extraction; only {n_rated_am} of {tools['AMSTAR 2']} AMSTAR 2 reviews could be given a confidence rating ({am_clause}).",
          f"- **No pooled estimate.** Direction-of-association syntheses rest on {F['effect_size_rows']} effect-size rows and are neither effect estimates nor certainty-graded (GRADE).",

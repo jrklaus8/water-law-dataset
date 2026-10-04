@@ -17,6 +17,7 @@ import sensitivity_analysis as sa  # noqa: E402
 import propose_family_vocabulary as pv  # noqa: E402
 import audit_data_quality as adq  # noqa: E402
 import audit_sparse_records as asr  # noqa: E402
+import build_manuscript_pieces as bmp  # noqa: E402
 
 ROOT = cf.ROOT
 OUT = ROOT / '06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md'
@@ -192,6 +193,8 @@ def build():
     W(f"- Full-text retrieval closed at 62.2%: {F['full_text_undecided']:,} of {F['full_text_records']:,} records ({F['unretrieved_not_retrievable']:,} not retrievable, {F['unretrieved_wrong_file']} wrong file delivered) were never assessed, and the unassessed set is systematically older (§2A.5). Some may be duplicates of included studies, some not eligible; the direction of any bias is unknown.")
     W(f"- {e10} of the {F['full_text_exclude']:,} full-text excludes are E10 (inaccessible text), i.e. never judged on content.")
     W(f"- Every full-text decision is the AI's; a human confirmed {F['reviewer_2_confirmed_includes']} includes (S001–S200) and no excludes; {F['decided_blank_reviewer_1']} decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).")
+    _n_ex, _n_inc, _n_all = bmp.reviewer2_ai_counts()
+    W(f"- **An AI-versus-AI check found many contested excludes.** Two non-Claude models (Codex, Gemini), blind to the original decision, re-read {_n_all} full-text decisions whose PDF was available; of the {_n_ex} the AI had excluded, {_n_inc} were judged includes (concentrated in E01 wrong topic and E06 engineering only). This was not human-adjudicated, the models may read the criteria too loosely, and nothing was changed; if even a fraction are eligible, the exclusion log and every count built on it are understated. The researcher's reading list is `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md` (open item A16).")
     W(f"- At title/abstract stage the human second pass covered the 3,665 include-plus-unsure records only; the 22,557 records the AI excluded were not human-checked, so any wrongly excluded record is invisible to this review. The 99.8% agreement on the reviewed set is unusually high and was flagged by the project itself. (`AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` say \"all records\"; that wording should be checked against the README, which is narrower.)")
     W("")
     W("### 3.3 Missing or thin data")

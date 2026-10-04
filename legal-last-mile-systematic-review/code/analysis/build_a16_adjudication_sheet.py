@@ -16,7 +16,7 @@ OUT_MD = ROOT / '02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md'
 CODES = {'E01': 'wrong topic', 'E02': 'wrong population', 'E03': 'wrong exposure', 'E04': 'wrong outcome', 'E05': 'no empirical evidence', 'E06': 'engineering only', 'E07': 'wrong service',
          'E08': 'duplicate', 'E09': 'insufficient information', 'E10': 'inaccessible full text', 'E11': 'wrong jurisdiction / context', 'E12': 'wrong study design'}
 FIELDS = ['priority', 'direction', 'record_id', 'study_id', 'year', 'authors', 'title', 'doi', 'url', 'ai_decision', 'ai_code', 'ai_code_meaning', 'ai_reasoning',
-          'codex_decision', 'codex_code', 'codex_confidence', 'codex_criteria_not_yes', 'codex_rationale', 'gemini_decision', 'gemini_code', 'gemini_confidence', 'gemini_criteria_not_yes', 'gemini_rationale',
+          'codex_decision', 'codex_code', 'codex_confidence', 'codex_criteria_not_yes', 'codex_design', 'codex_exposure', 'codex_outcome', 'codex_rationale', 'gemini_decision', 'gemini_code', 'gemini_confidence', 'gemini_criteria_not_yes', 'gemini_exposure', 'gemini_outcome', 'gemini_rationale',
           'researcher_decision (include/exclude)', 'researcher_exclusion_code (E01-E12)', 'researcher_comment']
 
 
@@ -54,8 +54,8 @@ def build():
         def part(p, k): return p.get(k, '') if p else ''
         rows.append(dict(priority=pr, direction=direction, record_id=rid, study_id=q['study_id'], year=q['year'], authors=q['authors'][:80], title=q['title'], doi=q['doi'], url=q['url'], ai_decision=ai,
                          ai_code=q['ai_exclusion_code'], ai_code_meaning=CODES.get(q['ai_exclusion_code'], ''), ai_reasoning=q['ai_reasoning_READ_AFTER_YOUR_OWN_JUDGMENT'][:500],
-                         codex_decision=part(c, 'decision'), codex_code=part(c, 'exclusion_code'), codex_confidence=part(c, 'confidence'), codex_criteria_not_yes=_not_yes(c) if c else '', codex_rationale=part(c, 'rationale')[:600],
-                         gemini_decision=part(g, 'decision'), gemini_code=part(g, 'exclusion_code'), gemini_confidence=part(g, 'confidence'), gemini_criteria_not_yes=_not_yes(g) if g else '', gemini_rationale=part(g, 'rationale')[:600],
+                         codex_decision=part(c, 'decision'), codex_code=part(c, 'exclusion_code'), codex_confidence=part(c, 'confidence'), codex_criteria_not_yes=_not_yes(c) if c else '', codex_design=part(c, 'study_design')[:200], codex_exposure=part(c, 'exposure')[:300], codex_outcome=part(c, 'outcome')[:300], codex_rationale=part(c, 'rationale')[:600],
+                         gemini_decision=part(g, 'decision'), gemini_code=part(g, 'exclusion_code'), gemini_confidence=part(g, 'confidence'), gemini_criteria_not_yes=_not_yes(g) if g else '', gemini_exposure=part(g, 'exposure')[:300], gemini_outcome=part(g, 'outcome')[:300], gemini_rationale=part(g, 'rationale')[:600],
                          **{'researcher_decision (include/exclude)': '', 'researcher_exclusion_code (E01-E12)': '', 'researcher_comment': ''}))
     rows.sort(key=lambda r: (r['priority'], r['ai_code'], r['record_id']))
     n = {p: sum(1 for r in rows if r['priority'] == p) for p in (1, 2, 3, 4)}
