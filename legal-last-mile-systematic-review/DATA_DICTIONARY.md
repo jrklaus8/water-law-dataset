@@ -168,6 +168,9 @@ header. Key type/format notes not obvious from the field name alone:
 | evidence_status | enum | `OBSERVED` / `CALCULATED` / `ASSUMED` / `INTERPRETED`, `PROJECT_SPEC.md` §13 |
 | record_id | string | **Added 2026-09-28 (93rd column, after the 92 codebook fields).** The `record_id` of this study's row in `full_text_screening_database.csv`; a full-text include. Unique per row. Filled from `study_record_map.csv`, which keeps the `link_method` provenance. |
 
+> **Convention for the mechanism and outcome flags (documented 2026-10-04, from the data as they stand).** Across the 38 flag columns of the 1,159 extraction rows there are 11,714 `TRUE`, 1,390 `FALSE` and 30,938 blank cells. Explicit `FALSE` appears in only 171 studies (mostly Legal Framework, MMAT and CASP rows from the earlier batches); everywhere else a flag is either `TRUE` or blank. So blank cannot be told apart from "coded absent" and "not assessed": every count and prevalence in the reports treats `TRUE` as present and everything else as not coded as present, which understates presence if some blanks are omissions. Nothing was changed; a future extraction rule should say whether blank means absent.
+
+
 ## `03_extraction/extracted_data/study_record_map.csv` and `linked_reports_2026-09-28.csv`
 
 Two index files added by the 2026-09-28 repository audit; neither is a validated-schema file and neither is

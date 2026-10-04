@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (extraction fill rates) — blank versus FALSE in the flag columns
+
+- Fill-rate audit of the 93 extraction columns: the identification and context fields are well filled (country blank in 3 studies, publication year in 2, population in 5, risk-of-bias rating in 8 NONE-tool studies; DOI blank in 216, 18.6%, covered by title and record-id matching). The statistics fields are sparse by nature (upper and lower CI blank in about 98%, standard error 97%, p-value 91%). The mechanism and outcome flags are mostly blank, with explicit `FALSE` in only 171 studies, so blank means either "absent" or "not assessed" and the documentation never said which. `DATA_DICTIONARY.md` now records the convention actually in force (TRUE or not-TRUE) and its limitation; no data changed.
+
 ## 2026-10-04 (documentation) — PROJECT_SPEC feasibility table revisited
 
 - A grep for stale status wording across the top-level documents found one real case: `PROJECT_SPEC.md` still said its feasibility table "has not yet been tested against a completed search" and rated restricted meta-analyses "potentially feasible". A dated revisit note now sits beside the original text (unchanged) stating the Phase 11 outcome and the numeric census (1 of 62 rows with a numeric estimate). The other hits are accurate (protocol draft not yet registered; documented placeholders superseded elsewhere).
