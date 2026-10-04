@@ -16,6 +16,25 @@ amendments in particular must be logged here with rationale).
 
 - The second rehearsal fixed only 4 of 17 failures because several different numbers matched each pattern. `verify_repository.py` now records every phrase it looks for (`VERIFY_EMIT_EXPECTED=file` dumps them as JSON); `fix_documented_counts.py` runs it on the last commit (temporary git worktree, `--old-ref`, default HEAD) and on the working tree, pairs phrases by file, label and position, and replaces the old phrase when it occurs exactly once; the pattern search stays as the fallback (`--no-exact` skips the mapping). It also keeps CRLF line endings, which the first version would have flattened. Rehearsal on a scratch clone (three included studies excluded): 35 of 38 failures repaired, the other three left for a person, and the verifier then showed only those three. Four new unit tests (9 in the file).
 
+## 2026-10-04 (tooling) — a second, working `/octo:review` pass; two real findings fixed
+
+- Re-ran the Octopus plugin's packaged `/octo:review` after diagnosing that one of its three failure causes from
+  earlier the same day (a hardcoded, unsupported Codex model for this account's login) is fixable through the
+  plugin's own documented config file (`${HOME}/.claude-octopus/config/providers.json`, outside this repository),
+  not by patching its shipped code. This time Codex and the plugin's internal Claude-sonnet provider both
+  completed (Gemini still failed on the same shell/auth-propagation gap as before). Reviewed a genuine fix to
+  `decode_drive.py`, whose Drive tool-result source directory was hardcoded to one Claude Code session's own
+  scratch path and would never work for anyone else; made it a required argument or `DRIVE_TOOL_RESULTS_DIR` env
+  var instead. The review returned two real findings, both verified: an unescaped `glob.glob()` pattern (a path
+  containing `[`/`]` could silently match nothing or the wrong files — fixed with `glob.escape()`), and a
+  pre-existing path-traversal risk (`d["title"]`, an untrusted Drive-supplied filename, was joined into the output
+  path with no validation — fixed with `os.path.basename()` plus a check against an empty or `.`/`..` result).
+  Full account in `_reviewer2_codex/OCTOPUS_REVIEW_DIAGNOSTIC_2026-10-04.md`'s second section. Also re-confirmed
+  no data at GitHub is stale: fetched the remote branch (fast-forward, no divergence), ran a full
+  `regenerate_all.sh` + `verify_repository.py` pass (158/158) and found zero working-tree diff against the
+  already-committed derived files, meaning everything on GitHub is byte-identical to what the pipeline produces
+  fresh from the current source data.
+
 ## 2026-10-04 (documentation) — `reviewer_1` label variants documented as one reviewer
 
 - Closed a long-standing backlog item: `DATA_DICTIONARY.md` now explains that every `reviewer_1` value matching

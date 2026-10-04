@@ -86,3 +86,36 @@ already completed 121/121 available full-text reviews across both Codex and Gemi
 output of this exercise is the `shell=True` fix itself (above), which is a genuine, independently-motivated
 correctness improvement to `run_codex_reviewer2.py`, found by comparing it against its two sibling scripts rather
 than by any of the four review providers (none of which returned findings).
+
+## Second attempt, same day: Codex's hardcoded model fixed, 2 of 4 providers worked
+
+Re-run later the same session against a different genuine fix (`decode_drive.py`, below), after diagnosing that one
+of the three failure causes above — Octopus's own model-resolver hardcoding `gpt-5.4` for the Codex role — is
+addressable through the plugin's own documented config extension point, not by patching its shipped code: created
+`${HOME}/.claude-octopus/config/providers.json` with `{"providers": {"codex": {"model": "gpt-5.6-sol"}}}`, the same
+model this project's own `run_codex_reviewer2.py`/`run_second_extractor.py` already use successfully with this
+account's Codex CLI login. This is a plugin-level, machine-local config file outside the repository, not a change
+to this project's own data or scripts.
+
+**Result: Codex and the internal Claude-sonnet provider both completed; Gemini still failed** (exit 41, no output —
+the same shell env/auth-propagation gap diagnosed above; `OCTOPUS_CODEX_MODEL`/`providers.json` has no equivalent
+override path for Octopus's internal Gemini dispatch). The review ran against a real staged diff (making
+`decode_drive.py`'s hardcoded, session-specific Drive-download source path configurable instead) and returned two
+genuine findings, both independently verified against the script before fixing:
+
+1. **[NORMAL]** the new configurable `src` directory was interpolated unescaped into a `glob.glob()` pattern; a
+   directory path containing `[` or `]` (legal in a Windows path) could silently match zero or the wrong files.
+   Fixed with `glob.escape(src)`.
+2. **[PRE-EXISTING]** `d["title"]`, a filename supplied by whatever wrote the Drive tool-result payload (ultimately
+   Google Drive's own file title, untrusted input from outside this script), was joined directly into the
+   destination path with no validation — a crafted or unusual title containing a path separator or `..` component
+   could write a PDF outside the intended `pdfs/` directory. Fixed by taking `os.path.basename()` of the title and
+   rejecting an empty or `.`/`..` result.
+
+Both findings were real and are now fixed in `decode_drive.py`, committed alongside the path-configurability change
+that was reviewed. **Conclusion, updated**: the packaged `/octo:review` pipeline is usable in this environment for
+the subset of providers whose failures were fixable (Codex, via the plugin's own config file; Claude-sonnet's
+internal OAuth token had apparently refreshed on its own between the first and second attempt). Gemini remains
+blocked by the same shell/auth-propagation gap, which lives outside this repository and outside anything the
+Octopus plugin's own config exposes. This review pass genuinely found two real, independently-confirmed issues —
+unlike the first attempt, which found nothing because nothing ran.
