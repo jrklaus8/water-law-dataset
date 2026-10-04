@@ -19,11 +19,14 @@ Usage (from legal-last-mile-systematic-review/):
   python3 code/screening/resolve_a16_pending_reversals.py --reviewer "Initials"           # dry run
   python3 code/screening/resolve_a16_pending_reversals.py --reviewer "Initials" --apply   # write
 Then: bash code/analysis/regenerate_all.sh (the verifier must pass; counts in README/PRISMA/manuscript are computed or flagged by it) and add a
-dated CHANGELOG entry. After a real reversal the verifier WILL fail on hand-written figures that count studies (found on a scratch-copy test with one
-new include and one new exclude: the tool counts, the quantitative/qualitative split and the 1,159 totals in README.md and the repository-root README.md,
-the tool, legal-system, country and mechanism-certainty figures in 04_quality/risk_of_bias/2026-09-28_evidence_limitations.md, and the dated-correction
-sentence in RISK_OF_BIAS.md); update each from the numbers the verifier names. Also re-read the hand-written A16 figures (README, DECISIONS_AND_OPEN_ITEMS
-A16, decision brief 13). The linkage checks (study_record_map bijection with includes, exclusion log one-to-one, retired IDs) pass without edits.
+dated CHANGELOG entry. After a real reversal the verifier and two tests WILL fail on hand-written figures (rehearsed end to end on a scratch copy with two mock new
+includes: 36 verifier failures); update each from the numbers the verifier names, in this order of files: README.md and the repository-root README.md (include/exclude
+totals, extraction rows, tool counts, quantitative/qualitative split, exclusion total and per-code breakdown, reviewer-2 coverage), 06_outputs/prisma/prisma_flow.md
+and PRISMA_WORKFLOW.md (included and excluded totals), 04_quality/risk_of_bias/2026-09-28_evidence_limitations.md (tool table, causal-capable, abstract-only,
+mechanism-certainty, legal-system and country counts), the dated-correction sentence in RISK_OF_BIAS.md, the A16 figures (README, DECISIONS_AND_OPEN_ITEMS A16, decision
+brief 13, session handoff), and the _KNOWN_YEAR list in verify_repository.py if a new study's year differs from its screening record; then rebuild the HTML report
+(regenerate_all.sh does). test_search_reconciliation also asserts the flow-text figures, so it fails until prisma_flow.md is updated. The linkage checks (study_record_map
+bijection with includes, exclusion log one-to-one, retired IDs) pass without edits.
 """
 from __future__ import annotations
 

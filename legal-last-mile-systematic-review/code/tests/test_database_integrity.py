@@ -45,7 +45,10 @@ class TestStudyMap(unittest.TestCase):
         self.assertEqual(len(self.mp), len({r['study_id'] for r in self.mp}))
         active = [r['record_id'] for r in self.mp if r['status'] == 'active']
         self.assertEqual(len(active), len(set(active)))
-        self.assertEqual(Counter(r['status'] for r in self.mp), Counter({'active': 1159, 'retired_duplicate': 2, 'retired_excluded': 1}))
+        c = Counter(r['status'] for r in self.mp)
+        self.assertTrue(set(c) <= {'active', 'retired_duplicate', 'retired_excluded'}, c)
+        self.assertEqual(c['active'], sum(1 for r in self.ft.values() if r['final_decision'] == 'include'))  # every include is an active study (changes with A16 reversals)
+        self.assertGreaterEqual(c['retired_duplicate'], 2); self.assertGreaterEqual(c['retired_excluded'], 1)  # the 2026-09-28 merges and S356; later A16 exclusions may add more
 
     def test_retired_studies(self):
         active_by_study = {r['study_id']: r for r in self.mp if r['status'] == 'active'}

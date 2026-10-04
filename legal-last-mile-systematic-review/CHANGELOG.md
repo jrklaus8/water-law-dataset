@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (end-to-end rehearsal) — what a real A16 resolution will break
+
+- Rehearsed the whole A16 workflow on a scratch copy of the real repository with two mock reversals to include (apply, resolve, regenerate, tests, verifier). The scripts and linkage checks worked. Two defects found and fixed: `test_database_integrity` hard-coded the study-map status counts (1,159 active, one retired exclusion), which would have made `regenerate_all.sh` stop after the first real reversal before reaching the verifier, and `test_search_reconciliation` hard-coded the full-text totals; both now derive them from the files. A mock that swaps one include for one exclude (my first rehearsal) hid the second problem because the totals did not move.
+- What a real resolution breaks, by design: 36 verifier failures on hand-written counts (README, root README, `prisma_flow.md`, `PRISMA_WORKFLOW.md`, the evidence-limitations note, `RISK_OF_BIAS.md`, the A16 figures, the HTML report until regenerated, and the known-year list) plus the flow-text assertions of `test_search_reconciliation`. The complete list is now in the docstring of `resolve_a16_pending_reversals.py` and the handoff. Nothing was applied to the real data.
+
 ## 2026-10-04 (handoff and brief) — refreshed
 
 - `SESSION_HANDOFF_2026-10-04.md` now lists the eight unit-test files, the newer open items (A19-A22) and housekeeping facts (another session pushes to the branch; figures differ by environment; blank flag convention; why the R scripts stop). The researcher decision brief's Part 2 item 6 (check checklist wording against official sources) is struck through as done, because the remote session resolved A9 the same day, and a new item 8 points to A19-A22. No decision count changed.

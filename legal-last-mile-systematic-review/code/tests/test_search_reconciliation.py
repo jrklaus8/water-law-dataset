@@ -59,14 +59,16 @@ class TestPrismaReconciliation(unittest.TestCase):
         self.assertIn('26,222 of 27,481', self.readme); self.assertIn('1,259', self.readme)
 
     def test_full_text_tracking(self):
+        """The three outcomes sum to the tracking file and the figures quoted in the flow text equal them (computed, so a legitimate A16 reversal does not break this)."""
         with open(ROOT / '02_screening/full_text/full_text_screening_database.csv', encoding='utf-8', newline='') as f:
             c = Counter(r['final_decision'] for r in csv.DictReader(f))
-        self.assertEqual(c['include'] + c['exclude'] + c[''], 3659)
-        self.assertEqual((c['include'], c['exclude'], c['']), (1159, 1117, 1383))
-        for phrase in ('3,659', '2,276', '1,383', '1,159 include / 1,117 exclude'):
+        inc, exc, und = c['include'], c['exclude'], c['']
+        self.assertEqual(inc + exc + und, 3659)
+        self.assertEqual(c.total() - inc - exc, und)
+        for phrase in (f'{inc + exc + und:,}', f'{inc + exc:,}', f'{und:,}', f'{inc:,} include / {exc:,} exclude'):
             self.assertIn(phrase, self.flow)
         m = re.search(r'1,383 — (\d+) flagged `wrong_file_retrieved`.*?(\d[\d,]*) `not_retrievable`', self.flow, re.S)
-        self.assertIsNotNone(m); self.assertEqual(int(m.group(1)) + int(m.group(2).replace(',', '')), 1383)
+        self.assertIsNotNone(m); self.assertEqual(int(m.group(1)) + int(m.group(2).replace(',', '')), und)
 
 
 if __name__ == '__main__':
