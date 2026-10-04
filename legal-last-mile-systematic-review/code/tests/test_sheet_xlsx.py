@@ -33,6 +33,15 @@ class TestSheets(unittest.TestCase):
                 col = get_column_letter(header.index(h) + 1)
                 self.assertEqual(got[col], '"' + ','.join(allowed) + '"')
 
+    def test_a_freshly_written_workbook_has_text_cells_frozen_header_and_drop_downs(self):
+        with tempfile.TemporaryDirectory() as d:
+            for p, (dropdowns, _) in sx.SPECS.items():
+                f = Path(d) / (p.stem + '.xlsx'); sx.write_xlsx(p, f)
+                ws = load_workbook(f).worksheets[0]
+                self.assertEqual(ws.freeze_panes, 'A2')
+                self.assertEqual(ws['A1'].number_format, '@'); self.assertEqual(ws['A2'].number_format, '@')  # text: ids and DOIs are never reinterpreted
+                self.assertEqual(len(ws.data_validations.dataValidation), len(dropdowns))
+
     def test_ids_stay_text_and_empty_rows_are_skipped(self):
         with tempfile.TemporaryDirectory() as d:
             from openpyxl import Workbook

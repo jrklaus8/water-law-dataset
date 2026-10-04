@@ -20,6 +20,10 @@ amendments in particular must be logged here with rationale).
 
 - `DATA_DICTIONARY.md` said `mechanism_certainty` is an integer 0-4; in the data 563 rows are (0 x4, 1 x238, 2 x286, 3 x27, 4 x8) and 596 hold a narrative sentence. The row now says so (the evidence-limitations note already reported the 596). Also checked and found consistent: the extraction database's yes/no flag columns (TRUE/FALSE/blank, with the three known long-text exceptions in `migrant_population`), `evidence_status` (all OBSERVED), and the free-text status of `legal_system`, `urban_rural`, `income_group`, `tenure_status` and `legal_status` (already documented as uncontrolled). No data changed.
 
+## 2026-10-04 (tests) — the new tests were themselves mutation-tested
+
+- 26 deliberate one-line breaks of the code under the new tests (deduplication thresholds, DOI and year rules, RIS and WoS parsing, the bulk importer and editor guards, the audit regexes, the count fixer, the sheet writer/reader, the scorer) were each caught by the tests except four, which pointed at three weak spots now closed: the Web of Science stray-quote test did not use a quote that opens a field (the only kind that breaks default CSV parsing), and the workbook text-format, frozen-header and "unclear" synonym behaviours were untested. One survivor (whole-number floats in `read_xlsx`) is an equivalent mutant (the library already returns integers). No code behaviour changed.
+
 ## 2026-10-04 (evening, researcher-supplied full texts) — Drive inbox: seven PDFs processed
 
 - The researcher put seven full texts in the Drive folder `Sep 26 2026` and asked for them to be analysed and moved to `Processed`. Read in full: S015, S037, S104, S142, S270, S294, S388 (script `code/provenance/audit_and_repair/process_drive_inbox_2026-10-04.py`, plus `reextract_2026-10-04/S270.json` and `S104.json`). Nothing from the PDFs is copied into the repository.

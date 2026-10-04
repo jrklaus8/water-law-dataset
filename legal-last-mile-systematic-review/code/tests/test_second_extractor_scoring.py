@@ -36,6 +36,8 @@ class TestScore(unittest.TestCase):
         self.assertEqual((sum(R['tot'].values()), sum(R['bad'].values())), (2, 1)); self.assertEqual(R['invalid'], [])
         self.assertEqual(sorted(R['per_study']), ['S1'])  # 'S1 ' counts as S1
         self.assertEqual([x[3] for x in sc.score([row('S1', 'A', 'country', 'maybe')])['invalid']], ['maybe'])
+        R = sc.score([row('S1', 'A', 'country', 'Unclear'), row('S1', 'A', 'sample_size', 'cant tell')])  # unclear and can't tell are cannot_tell: skipped, not scored as N
+        self.assertEqual((sum(R['tot'].values()), sum(R['bad'].values()), R['invalid']), (0, 0, []))
 
     def test_wilson_matches_reference_values(self):
         # reference values from the closed-form Wilson score interval (z = 1.96), e.g. as printed by standard statistics packages
