@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (rehearsal 2) — confirms and recodes only
+
+- Second rehearsal on a scratch copy, with the other half of the workflow: a mock sheet with 3 confirmations and 3 recodes (E01 to E07), no reversals. `apply_a16_adjudications.py` wrote the notes and recodes correctly, the resolver correctly had nothing to do, all tests passed, and the verifier gave 6 failures: the README's per-code exclusion breakdown (E01 496 to 493, E07 26 to 29) and the A16 implied-includes figure (468 to 466, because the projection weights by per-code counts) in the README, `DECISIONS_AND_OPEN_ITEMS.md`, the decision brief and the handoff. Documented in the handoff; no defect found. A grep of all code and documentation for TODO, FIXME, XXX and HACK finds none in maintained code (one false hit in a provenance comment).
+
 ## 2026-10-04 (A22 follow-up) — S462 found in Drive by title; an inconsistency
 
 - Searching Drive by title (not only by record id) found S462's full article under an author-title file name. It is a multiobjective scenario-modelling study of water-supply investment pathways in the Federal District of Brazil with an equity angle, and it resembles the Kathmandu scenario-modelling paper R0532032FE3BB, which was excluded E06 (engineering only): one of the two decisions is inconsistent. S340 and S513 have no Drive copy even by title. Recorded in the `drive_check` column of the criterion-3 screen and in A22. Lesson for any future Drive search: try the title as well as the record id, because some files were saved under author-title names. No decision changed.
