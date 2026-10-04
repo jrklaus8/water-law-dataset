@@ -40,6 +40,8 @@ def classify(label):
         return 'systematic_review_secondary', '1 review/synthesis'
     if QUASI.search(label):
         return 'quasi_experimental', '2 natural experiment / counterfactual'
+    if re.search(r'mixed[- ]methods?', label, re.I):
+        return 'mixed_methods', '3b label says mixed methods'
     legal, field, quant, qual = (bool(x.search(label)) for x in (LEGAL, FIELD, QUANT, QUAL))
     if legal and not field and not quant and 'qualitative' not in label.lower():
         return 'doctrinal', '3 explicit doctrinal cue, no field or quantitative cue'
