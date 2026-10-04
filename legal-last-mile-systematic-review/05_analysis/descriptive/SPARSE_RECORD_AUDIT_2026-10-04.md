@@ -12,14 +12,14 @@ The "37 abstract-only extractions" figure counts one note prefix. That prefix mi
 |---|---|---|
 | S1 prefix | note starts with the abstract-only prefix (already on the request list) | 37 |
 | S2 note | note says only the abstract, citation or metadata was read | 12 |
-| S3 location | recorded location cites the abstract alone, no table or figure | 48 |
+| S3 location | recorded location cites the abstract alone, no table or figure | 30 |
 | S4 first pages | section is the abstract plus introduction, background or highlights only | 41 |
 | S5 sparse | 9 or fewer of 14 descriptive content fields populated | 19 |
 
 ## Result
 
-- **135 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **49 strong** (S1 or S2), **39 moderate** (location cites the abstract alone), **47 weak** (abstract plus introduction, or sparse fields).
-- **98 of them are not on the current abstract-only request list**: 12 strong and 39 moderate. These are the rows the prefix check missed.
+- **117 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **49 strong** (S1 or S2), **21 moderate** (location cites the abstract alone), **47 weak** (abstract plus introduction, or sparse fields).
+- **80 of them are not on the current abstract-only request list**: 12 strong and 21 moderate. These are the rows the prefix check missed.
 - A "moderate" row is not proven abstract-only: an extractor may cite "Abstract" because that is where a quotation sits while having read more. Treat the moderate tier as a **verification queue**, not a count of failures.
 
 ### By risk-of-bias tool (rows not already on the request list)
@@ -27,7 +27,7 @@ The "37 abstract-only extractions" figure counts one note prefix. That prefix mi
 | Tool | strong | moderate | weak |
 |---|---|---|---|
 | AMSTAR 2 | 6 | 0 | 1 |
-| CASP Qualitative | 0 | 27 | 20 |
+| CASP Qualitative | 0 | 9 | 20 |
 | JBI Cross-Sectional | 0 | 4 | 3 |
 | Legal Framework | 0 | 4 | 12 |
 | MMAT | 1 | 2 | 9 |
