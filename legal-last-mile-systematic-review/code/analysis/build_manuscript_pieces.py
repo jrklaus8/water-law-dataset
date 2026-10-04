@@ -34,7 +34,7 @@ def family_fit_clause():
 def reviewer2_ai_counts():
     """(AI full-text excludes re-read blind by the non-Claude models, of which judged include, records reviewed in all) from the reviewer-2 queue file; AI-versus-AI, not human."""
     import csv as _csv
-    rows = list(_csv.DictReader(open(ROOT / '_reviewer2_codex/full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline='')))
+    rows = list(_csv.DictReader(open(sorted((ROOT / '_reviewer2_codex').glob('full_text_reviewer_2_FILLED_*.csv'))[-1], encoding='utf-8', newline='')))  # newest dated pass
     ex = [r for r in rows if r['ai_decision'] == 'exclude']
     return len(ex), sum(1 for r in ex if r['reviewer_2_decision (include/exclude/cannot_tell)'] == 'include'), len(rows)
 

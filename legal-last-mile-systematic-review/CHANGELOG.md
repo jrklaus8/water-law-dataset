@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (merge) — reviewer-2 pass of 108 merged; includes-side figures updated
+
+- Merged the remote branch's reviewer-2 update (9 more Gemini rows, 108 reviewed in all; verifier path fix; AI-use-statement wording). The nine new rows are tier-3 includes that the models also include, so the includes-side sample grew from 18 to 27 re-read includes with the same 3 the models would exclude (S1117, S1053, S340): the implied count among the 959 unconfirmed includes is now about 107 (range 37-269), not about 160 (56-376). The generated texts recompute this on their own; the hand-written mentions in `README.md`, `DECISIONS_AND_OPEN_ITEMS.md` (A16), decision brief 13 and the session handoff were updated, along with the "99 of the 226" count in the README. The verifier did not catch these hand-written figures (it only checks curated phrases).
+- `build_a16_adjudication_sheet.py` and `build_manuscript_pieces.py` now read the newest `full_text_reviewer_2_FILLED_*.csv` instead of a hard-coded 2026-10-03 name (the remote left both a 2026-10-03 and a 2026-10-04 file, identical in content).
+
 ## 2026-10-04 (effect-size families) — fit of each row to its family's wording (A21)
 
 - Draft audit of the 46 family-assigned effect-size rows against the exposure words of `PROJECT_SPEC.md` §8, by keyword cue: 29 of 46 sit outside their family's wording (A 9 of 20, B 5 of 6, C 15 of 20). The family assignments were judgement calls from 2026-09-28 that only organise the SWiM write-ups (nothing was pooled), so no estimate changes, but the write-ups present A/B/C as the spec's constructs. New `code/analysis/audit_effect_size_families.py` writes `05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.{csv,md}`; wired into `regenerate_all.sh` and the verifier. Logged as A21 with three options. The generated methods paragraph and the manuscript draft now carry a computed sentence saying the families are loose groupings for the write-up (`family_fit_clause()` in `build_manuscript_pieces.py`). Keyword-based and arguable row by row; nothing in `effect_sizes.csv` changed.

@@ -109,7 +109,7 @@ def _wilson(k, n, z=1.96):
 
 def _queue():
     """The reviewer-2 priority queue with the filled primary-model decisions, by record_id."""
-    with open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline='') as f:
+    with open(sorted(R2.glob('full_text_reviewer_2_FILLED_*.csv'))[-1], encoding='utf-8', newline='') as f:  # the newest filled file (the reviewer-2 passes are dated)
         return {r['record_id']: r for r in csv.DictReader(f)}
 
 

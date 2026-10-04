@@ -90,8 +90,8 @@ explained in full further down; this is the index.
    S101–S200 on 2026-10-02, no conflicts, no further notes; 1,162 includes
    before the 2026-09-28 duplicate merge, see item 7).
    The remaining 959 includes, and all 1,117 excludes, at the full-text
-   stage still carry no human second reviewer. (Separately, on 2026-10-03,
-   99 of the 226 reviewer-2 queue rows across tiers 1-3 were blind-re-screened
+   stage still carry no human second reviewer. (Separately, on 2026-10-03/04,
+   108 of the 226 reviewer-2 queue rows across tiers 1-3 were blind-re-screened
    by two independent AI models, Codex `gpt-5.6-sol` and Gemini: most agreed,
    but **52% of the 62 tier-2 sample excludes reviewed were judged `include`**
    by the independent model — a substantial, un-adjudicated disagreement on
@@ -100,7 +100,7 @@ explained in full further down; this is the index.
    AI-versus-AI check and is not counted here as human confirmation.
    Scaled by exclusion code it would imply roughly 468 further includes if
    the models were right, and about 37 even under a narrow reading of
-   criterion 2 by an AI triage; in the other direction 3 of 18 sampled
+   criterion 2 by an AI triage; in the other direction 3 of 27 sampled
    unconfirmed includes look excludable. Arithmetic only, see
    `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`.)
    Do not read "a human
