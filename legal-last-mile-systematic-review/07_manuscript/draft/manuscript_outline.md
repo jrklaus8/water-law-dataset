@@ -1,6 +1,6 @@
 # Manuscript Outline
 
-Status: **outline only — no prose drafted.** Mirrors `PUBLICATION_PLAN.md`
+Status: **superseded 2026-10-04 by `MANUSCRIPT_DRAFT_2026-10-04.md`** (a generated, unreviewed full draft; see CHANGELOG). The text below is the original outline, kept for reference: **outline only — no prose drafted.** Mirrors `PUBLICATION_PLAN.md`
 §5. Each section below is a placeholder to be filled in only after the
 corresponding phase of `PRISMA_WORKFLOW.md` produces real results; none of
 these sections may be drafted from assumption, illustration, or the

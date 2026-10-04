@@ -4,7 +4,16 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
-## 2026-10-04 (latest) — six-item batch: sparse-record audit, S001–S200 sample, AMSTAR 2 overlap check, S324 final, evidence-map text, code review
+## 2026-10-04 (later, manuscript draft and decision brief)
+
+No data changed. Egress to the open web is blocked from the working environment (DOI resolvers, Crossref, Europe PMC all refused), and one retrieved PDF (`RBEDB6556B711`, a JSTOR scan) has no text layer, so retrieval-dependent work waits on the researcher.
+
+- **Full manuscript draft** (`code/analysis/build_manuscript_draft.py` → `07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md`, ~5,000 words, freshness-checked by the verifier): abstract, introduction, methods, results, discussion, limitations, conclusion, declarations. Every number is computed; every place needing a literature citation is an `[ref]` (none invented); funding, competing interests and author contributions are placeholders. It states that the protocol was not registered in advance, that nothing was pooled and that GRADE was not used.
+- **PRISMA 2020 checklist** (`06_outputs/prisma/PRISMA_2020_CHECKLIST.md`): 42 rows now show where the draft covers them (`◐`, unreviewed) or why not (`☐`).
+- **Researcher decision brief** (`00_admin/RESEARCHER_DECISION_BRIEF_2026-10-04.md`): ten decisions with a recommendation each, and the seven things only the researcher can do, ranked by payoff.
+- **Report fixes found while assembling the draft:** "0 () show at most one weak signal", "some provisionally" (S324 is final), and stale hard-coded counts in the next-steps list (22 unrated, 47 no-reviewer, the old second-extraction suggestion) are now computed or rewritten.
+
+## 2026-10-04 — six-item batch: sparse-record audit, S001–S200 sample, AMSTAR 2 overlap check, S324 final, evidence-map text, code review
 
 No include decision, flag, effect-size row or appraisal rating other than S324's finality changed. Verifier 120 of 120.
 

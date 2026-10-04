@@ -167,6 +167,8 @@ import build_report_html as brh  # noqa: E402
 fresh(bmp.OUT, bmp.build(), 'build_manuscript_pieces.py')
 fresh(bpr.OUT, bpr.build(), 'build_preliminary_report.py')
 fresh(brh.OUT, brh.build(), 'build_report_html.py')
+import build_manuscript_draft as bmd  # noqa: E402
+fresh(bmd.OUT, bmd.build(), 'build_manuscript_draft.py')
 fresh(pv.OUT_MD, pv.render(pv.build()), 'propose_family_vocabulary.py')
 fresh(sa.OUT_MD, sa.render(*sa.scenarios()), 'sensitivity_analysis.py')
 for needle in ('34,594', '27,481', '26,222', '1,259', '3,665'):
@@ -175,7 +177,8 @@ _q = csv.DictReader(open(ROOT / '02_screening/full_text/full_text_reviewer_2_pri
 _tier1 = sum(1 for r in _q if r['priority_tier'] == '1')
 check(_tier1 == F['decided_blank_reviewer_1'], f"reviewer_2 priority queue tier 1 has {_tier1} rows but {F['decided_blank_reviewer_1']} decided rows have no reviewer_1: rebuild the queue")
 for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md', '06_outputs/slides/Water_Access_Evidence_Diagnostic_slides_2026-09-29.pdf', '06_outputs/slides/README.md',
-           '05_analysis/descriptive/amstar2_overlap_check_2026-10-04.csv', '05_analysis/descriptive/AMSTAR2_OVERLAP_CHECK_2026-10-04.md'):  # the report builder reads the overlap CSV
+           '05_analysis/descriptive/amstar2_overlap_check_2026-10-04.csv', '05_analysis/descriptive/AMSTAR2_OVERLAP_CHECK_2026-10-04.md',
+           '00_admin/RESEARCHER_DECISION_BRIEF_2026-10-04.md'):  # the report builder reads the overlap CSV
     check((ROOT / f_).exists(), f'{f_} is missing')
 
 # ---- E. database sanity checks (added 2026-09-29) and freshness of the audit outputs
