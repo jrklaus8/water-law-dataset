@@ -4,6 +4,12 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (data) — third Drive-inbox batch (88 full texts)
+
+- Read 88 researcher-supplied full texts and moved them to the Drive `Processed` folder (log: `00_admin/DRIVE_INBOX_BATCH3_LOG_2026-10-04.md`; PDFs are not committed). Scripts: `code/provenance/audit_and_repair/process_drive_inbox_2026-10-04b.py` and `..._c.py`, plus 29 JSONs in `reextract_2026-10-04/` (see `CAMPAIGN_NOTES.md`).
+- Effect sizes: 7 more rows compared with the paper (59 of 62 verified; S470, S489, S526 outstanding; S057 sample enriched). AMSTAR 2: S019, S116, S323, S329 appraised (17 of 23 rated). Extraction: 29 full-text re-extractions (abstract-only extractions 36 to 17; S329 country corrected, documented counts refreshed).
+- Screening: no decision changed (A15). Proposals only: four A19 re-screen verdicts and a recheck of 15 decided excludes (two borderline on the code). New eligibility flags listed in `DECISIONS_AND_OPEN_ITEMS.md`.
+
 ## 2026-10-04 (tooling) — verifier guards the test list
 
 - New verifier check (158 in all): every `code/tests/test_*.py` must be named in `regenerate_all.sh`, so a new test file cannot silently go unrun. The handoff now says nine test files (the count fixer's tests had been added without updating it). Documentation only otherwise.

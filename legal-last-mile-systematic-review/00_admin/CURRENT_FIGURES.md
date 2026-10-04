@@ -25,7 +25,7 @@ checks that the current-status documents quote these values. If a document disag
 | Extraction rows / evidence-map rows | 1,159 / 1,159 |
 | Highest study ID; retired-ID gaps | S1164; S227, S233, S299, S356, S399 |
 | Quantitative-synthesis-eligible / qualitative-synthesis-eligible | 247 / 1,059 |
-| Abstract/metadata-only extractions | 36 |
+| Abstract/metadata-only extractions | 17 |
 | Linked-report links (same data yes / partial) | 12 (2 / 2) |
 | Distinct studies (definite links / incl. partial) | 1,157 / 1,155 |
 

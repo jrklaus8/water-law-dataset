@@ -98,3 +98,7 @@ Two groups: **(A) abstract-only rows** (note prefix 'Extracted from published ab
 | S1012 | Legal Institutional Ev |  | Supplies the numeric findings (46% loss, 17%, price multiples) that the first extraction left blank; the empirical base is thin (short Local/Global Encounters piece). |
 
 Files still at abstract level (landing page or paywall preview, or no Drive file) need the real PDFs from the researcher: see `03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv` and `05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`.
+
+## Batch 3 (third Drive inbox, 88 files, 2026-10-04)
+
+29 further studies re-extracted from full texts (S103, S156, S161, S164, S210, S214, S250, S268, S273, S286, S291, S292, S303, S306, S308, S311, S320, S321, S322, S354, S355, S357, S359 and others; the JSONs in this folder dated 2026-10-04 are the list). Eligibility or fit flags raised by the full texts are recorded in each row's notes and summarised in `00_admin/DECISIONS_AND_OPEN_ITEMS.md`: S322, S320, S321, S359, S286, S308, S291, S273, S355, S363, S374, S103. S114 needs a clean copy of its PDF. After this batch 17 of the 1,159 extractions remain abstract-only. The per-file log is `00_admin/DRIVE_INBOX_BATCH3_LOG_2026-10-04.md`.
