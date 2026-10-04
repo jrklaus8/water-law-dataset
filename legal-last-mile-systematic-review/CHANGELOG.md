@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (data hygiene) — `conflict` spelled one way in the full-text database
+
+- `code/provenance/audit_and_repair/normalise_conflict_case_2026-10-04.py` changed the 200 `FALSE` cells of the `conflict` column in `full_text_screening_database.csv` to `false`, matching its 83 `false` and 38 `true` cells and the data dictionary (true/false/blank). Exactly those 200 lines changed (checked by a byte-level diff; line endings and every other cell untouched; idempotent). Every reader already compared case-insensitively, so no count or output changed. The verifier (165 checks) now fails on any other value in that column. The title/abstract database spells it `FALSE` uniformly (3,665 rows) and is left alone.
+
 ## 2026-10-04 (tests) — bulk importer defect; full_text_status documented
 
 - New `test_bulk_import_full_text.py` (5 tests; fifteen test files in all). It found a real defect in `bulk_import_full_text_results.py`: enum values were validated after stripping but stored as typed, so `" retrieved "` passed validation and was written with the spaces. Values of the enum columns (and `conflict`, lower-cased) are now stored as validated. The committed database has no padded value, so no data changed. The tests also cover all-or-nothing rejection, skipping decided and unknown records, touching only the columns present, dry runs and a blank record id.

@@ -69,6 +69,7 @@ F = cf.compute()
 ft, el, ed, em, es, mp, links = (cf.read(k) for k in ('ft', 'el', 'ed', 'em', 'es', 'map', 'links'))
 _ft_status = {'', 'sought', 'retrieved', 'not_retrievable', 'wrong_file_retrieved', 'oa_pdf_candidate', 'oa_page_candidate', 'included', 'excluded'}  # DATA_DICTIONARY.md, full_text_status
 check({r['full_text_status'] for r in ft} <= _ft_status, f"full_text_status holds values not in DATA_DICTIONARY.md: {sorted({r['full_text_status'] for r in ft} - _ft_status)}")
+check({r['conflict'] for r in ft} <= {'', 'true', 'false'}, f"full-text conflict column holds values other than true/false/blank: {sorted({r['conflict'] for r in ft} - {'', 'true', 'false'})}")
 check(all((r['full_text_status'] == 'included') <= (r['final_decision'] == 'include') and (r['full_text_status'] == 'excluded') <= (r['final_decision'] == 'exclude') for r in ft),
       "a full_text_status of included/excluded disagrees with final_decision")
 ed_ids, em_ids, es_ids = {r['study_id'] for r in ed}, {r['study_id'] for r in em}, {r['study_id'] for r in es}
