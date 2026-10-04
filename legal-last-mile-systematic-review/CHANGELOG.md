@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A19 Drive check) — twelve of the thin-basis excludes read in Drive
+
+- Searched Drive by record id for the priority substantive and status-contradicting excludes and read what was there (AI reading, same model family as the screener, not independent). Six are only portal or landing pages (Groningen, Wageningen x3, a journal page, a Springer paywall preview), so the original exclusions did rest on an abstract; on that abstract they are plausible or borderline, and the two irrigation-water papers (R155FFF508359, RA1F6E143593E) would fit E07 better than E01. Six have real PDFs (SWA commitments, the 1998 South African Water Act in French, cisterns in Canada, a Nepal gender-equality quasi-experiment, a 1999 Suez practitioner report, a Brazilian environmental-justice discussion) whose recorded status was simply stale, and their exclusions look sound. `audit_exclusion_basis.py` records these in a `drive_check` column and a markdown section; about 18 of the ~30 were not checked. No decision changed.
+
 ## 2026-10-04 (sensitivity analysis) — invariants tested
 
 - New `code/tests/test_sensitivity_invariants.py` (4 tests, run by `regenerate_all.sh`) checks the sensitivity scenarios structurally against `effect_sizes.csv`: the baseline k equals the family counts (20, 6, 20); in every scenario the sign counts sum to k, Family A's concordant, counter-pattern and null counts sum to k and the concordance percentage equals concordant/k; each dropped study is a real effect-size study and exactly accounts for the fall in its family's k; and the three pre-stated conclusion tests ("holds" or not) follow from the counts they are computed from. All pass; the sensitivity script (run by every `regenerate_all.sh`) was already running without error.

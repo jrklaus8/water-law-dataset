@@ -17,7 +17,23 @@ OUT_CSV = cf.ROOT / '05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.cs
 OUT_MD = cf.ROOT / '05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.md'
 A16 = cf.ROOT / '02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.csv'
 PAT = re.compile(r'abstract[- ]only|landing[- ]page|metadata (record|only)|bibliographic metadata|paywall|no abstract|abstract text|only (the )?abstract|abstract (was|is) (available|retrieved)', re.I)
-FIELDS = ['group', 'record_id', 'year', 'exclusion_code', 'title', 'basis_phrase', 'in_A16_sheet', 'reason_excerpt']
+# What the copy in the researcher's Drive showed (2026-10-04; an AI reading, same model family as the screener, so not independent). Hand-entered, not derived: records not listed
+# here were not checked. "portal page" = Drive holds only a repository or publisher landing page, not the article.
+DRIVE_CHECK = {
+    'R0B0F3925F533': 'portal page (Groningen); abstract: institutional capacity in regional water-resource cooperation, Cirebon; access outcome not stated -- borderline, E01 or E04 defensible',
+    'R155FFF508359': 'portal page (Wageningen); abstract: peasant and indigenous water-user associations defending irrigation water in the Andes -- legal/governance exposure but irrigation water, so E07 (wrong service) is the better code than E01',
+    'R977ECB01FA02': 'portal page (Wageningen); abstract: rules and norms of access to four natural resources (water one of them) after resettlement in Mozambique -- governance of access, water not the focus; borderline',
+    'RA1F6E143593E': 'portal page (Wageningen); abstract: agribusiness and peasant irrigation water contestation, Tanzania -- agricultural water, E07 plausible',
+    'RFC362FE42028': 'portal page (REIS journal); abstract: public participation in Water Framework Directive basin processes, Spain -- basin governance, not household or community service access; exclusion plausible',
+    'RF5C6D981DB3B': 'portal page (Springer paywall preview); abstract: SDG interlinkages case of land-cover change and water quality in Chiapas, governance as a lever -- water quality focus; exclusion plausible',
+    'RC1CB10DA729E': 'full PDF in Drive (Schiedek et al. 2021): qualitative content analysis of national SWA commitments, outcome is commitment quality, not access -- exclusion stands; status field stale',
+    'RE8D979932979': 'PDF in Drive (Blanchon 2003, French): implementation of the 1998 Water Act and the environmental Reserve on the Orange River -- legal reform but environmental-flow outcome; exclusion plausible; status field stale',
+    'R1A33C22EDA73': 'full PDF in Drive (Baird et al. 2013): narrative exploration of cistern safety in Canada with little empirical data -- exclusion plausible; status field stale',
+    'R600CF4CBBFE7': 'full PDF in Drive (MacArthur et al. 2025): quasi-experimental evaluation of WASH programme effects on gender equality -- outcome is gender equality, not access (E04 would fit as well as E03); status field stale',
+    'REA305644CBB3': 'full PDF in Drive (Chambolle 1999, French): utility-practitioner report on serving poor districts under concession contracts -- no empirical design; E05 plausible; status field stale',
+    'RF22EFFAD48CC': 'PDF in Drive (Fracalanza et al. 2013, Portuguese): conceptual discussion of environmental justice and basin committees -- E05 plausible; status field stale',
+}
+FIELDS = ['group', 'record_id', 'year', 'exclusion_code', 'title', 'basis_phrase', 'in_A16_sheet', 'reason_excerpt', 'drive_check']
 STATUS_CONTRADICTS = ('not_retrievable', 'oa_pdf_candidate', 'oa_page_candidate')  # a decided record whose recorded status says no full text was obtained (or only located, not downloaded)
 GROUPS = {'substantive': 'substantive exclusion (E01-E07, E09, E12) decided without a read full text', 'E10': 'E10 inaccessible (expected to say so)', 'E08': 'E08 duplicate (expected to say so)'}
 CODE_NAMES = {'E01': 'wrong topic', 'E02': 'wrong population', 'E03': 'wrong exposure', 'E04': 'wrong outcome', 'E05': 'no empirical evidence', 'E06': 'engineering only',
@@ -36,7 +52,7 @@ def build():
         code = r['exclusion_reason']
         group = code if code in ('E10', 'E08') else 'substantive'
         rows.append({'group': group, 'record_id': r['record_id'], 'year': r['year'], 'exclusion_code': code, 'title': r['title'][:110], 'basis_phrase': m.group(0).lower(),
-                     'in_A16_sheet': ('priority ' + a16[r['record_id']]) if r['record_id'] in a16 else 'no', 'reason_excerpt': r['exclusion_reason_detail'][:240].replace('\n', ' ')})
+                     'in_A16_sheet': ('priority ' + a16[r['record_id']]) if r['record_id'] in a16 else 'no', 'reason_excerpt': r['exclusion_reason_detail'][:240].replace('\n', ' '), 'drive_check': DRIVE_CHECK.get(r['record_id'], 'not checked')})
     ed = {r['record_id']: r for r in cf.read('ed')}
     ed_notes = {k: v['extraction_note'] for k, v in ed.items()}
     have = {r['record_id'] for r in rows}
@@ -47,7 +63,7 @@ def build():
         e = ed.get(r['record_id'])
         basis = ('extraction note: ' + e['extraction_note'][:70].replace('\n', ' ')) if e else r['notes'][:120].replace('\n', ' ')
         rows.append({'group': 'status_include' if r['final_decision'] == 'include' else 'status_exclude', 'record_id': r['record_id'], 'year': r['year'], 'exclusion_code': code or 'include', 'title': r['title'][:110],
-                     'basis_phrase': 'status ' + r['full_text_status'], 'in_A16_sheet': ('priority ' + a16[r['record_id']]) if r['record_id'] in a16 else 'no', 'reason_excerpt': basis})
+                     'basis_phrase': 'status ' + r['full_text_status'], 'in_A16_sheet': ('priority ' + a16[r['record_id']]) if r['record_id'] in a16 else 'no', 'reason_excerpt': basis, 'drive_check': DRIVE_CHECK.get(r['record_id'], 'not checked')})
     order = {'substantive': 0, 'status_exclude': 1, 'status_include': 2, 'E10': 3, 'E08': 4}
     rows.sort(key=lambda x: (order[x['group']], x['exclusion_code'], x['record_id']))
     n_ex = sum(1 for r in cf.read('ft') if r['final_decision'] == 'exclude')
@@ -69,6 +85,12 @@ def build():
          "| Group | Record | Year | Code | Title | In A16 sheet |", "|---|---|---|---|---|---|"]
     for r in rows:
         L.append(f"| {r['group']} | {r['record_id']} | {r['year']} | {r['exclusion_code']} | {r['title']} | {r['in_A16_sheet']} |")
+    chk = [r for r in rows if r['drive_check'] != 'not checked']
+    L += ['', '## What the Drive copies showed', '',
+          f"An AI reading (same model family as the screener, so not independent) of the Drive copy of {len(chk)} of the substantive and status-contradicting excludes; the rest were not checked. "
+          f"Of the {len(chk)}, {sum(1 for r in chk if r['drive_check'].startswith('portal page'))} are only portal or landing pages (the original exclusion really was made on an abstract; on that abstract the exclusion is plausible or borderline, and for R155FFF508359 and RA1F6E143593E the code E07 would fit better) "
+          f"and {sum(1 for r in chk if 'status field stale' in r['drive_check'])} are real PDFs whose recorded status was simply stale (no concern beyond the bookkeeping).", '']
+    L += [f"- **{r['record_id']}** ({r['exclusion_code']}) — {r['drive_check']}" for r in chk]
     return rows, '\n'.join(L) + '\n'
 
 

@@ -88,3 +88,20 @@ The phrase match finds exclusions whose reason *says* the basis was thin and the
 | E10 | RE5ACEE269B63 | 2009 | E10 | Does Private Management of Water Supply Services Really Increase Prices? An Empirical Analysis in Spain | no |
 | E10 | RF1537F0C1961 | 2023 | E10 | Responsiveness of water-sector regulation in Brazil to the Covid-19 pandemic: A view through the human rights  | no |
 | E08 | R7896D097B364 | 2017 | E08 | Consumers and users water service in Argentina. Legal outputs | no |
+
+## What the Drive copies showed
+
+An AI reading (same model family as the screener, so not independent) of the Drive copy of 12 of the substantive and status-contradicting excludes; the rest were not checked. Of the 12, 6 are only portal or landing pages (the original exclusion really was made on an abstract; on that abstract the exclusion is plausible or borderline, and for R155FFF508359 and RA1F6E143593E the code E07 would fit better) and 6 are real PDFs whose recorded status was simply stale (no concern beyond the bookkeeping).
+
+- **R0B0F3925F533** (E01) — portal page (Groningen); abstract: institutional capacity in regional water-resource cooperation, Cirebon; access outcome not stated -- borderline, E01 or E04 defensible
+- **R155FFF508359** (E01) — portal page (Wageningen); abstract: peasant and indigenous water-user associations defending irrigation water in the Andes -- legal/governance exposure but irrigation water, so E07 (wrong service) is the better code than E01
+- **R977ECB01FA02** (E01) — portal page (Wageningen); abstract: rules and norms of access to four natural resources (water one of them) after resettlement in Mozambique -- governance of access, water not the focus; borderline
+- **RA1F6E143593E** (E01) — portal page (Wageningen); abstract: agribusiness and peasant irrigation water contestation, Tanzania -- agricultural water, E07 plausible
+- **RF5C6D981DB3B** (E01) — portal page (Springer paywall preview); abstract: SDG interlinkages case of land-cover change and water quality in Chiapas, governance as a lever -- water quality focus; exclusion plausible
+- **RFC362FE42028** (E01) — portal page (REIS journal); abstract: public participation in Water Framework Directive basin processes, Spain -- basin governance, not household or community service access; exclusion plausible
+- **RC1CB10DA729E** (E01) — full PDF in Drive (Schiedek et al. 2021): qualitative content analysis of national SWA commitments, outcome is commitment quality, not access -- exclusion stands; status field stale
+- **RE8D979932979** (E01) — PDF in Drive (Blanchon 2003, French): implementation of the 1998 Water Act and the environmental Reserve on the Orange River -- legal reform but environmental-flow outcome; exclusion plausible; status field stale
+- **R1A33C22EDA73** (E03) — full PDF in Drive (Baird et al. 2013): narrative exploration of cistern safety in Canada with little empirical data -- exclusion plausible; status field stale
+- **R600CF4CBBFE7** (E03) — full PDF in Drive (MacArthur et al. 2025): quasi-experimental evaluation of WASH programme effects on gender equality -- outcome is gender equality, not access (E04 would fit as well as E03); status field stale
+- **REA305644CBB3** (E05) — full PDF in Drive (Chambolle 1999, French): utility-practitioner report on serving poor districts under concession contracts -- no empirical design; E05 plausible; status field stale
+- **RF22EFFAD48CC** (E05) — PDF in Drive (Fracalanza et al. 2013, Portuguese): conceptual discussion of environmental justice and basin committees -- E05 plausible; status field stale
