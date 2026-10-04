@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (tests) — helper tests; unclosed files fixed
+
+- New `code/tests/test_analysis_helpers.py` (5 tests, run by `regenerate_all.sh`): the A16 Wilson interval against reference values and its bounds, the ordering narrow <= literal <= models' rate of the implied-includes projection on the real data, and the design-label classifier (including the two misclassifications found while building it), determinism and enum-only output. Running them surfaced unclosed-file warnings in `build_a16_adjudication_sheet.py`, now fixed (`_queue()` helper, `Path.read_text`); outputs unchanged.
+- Checked while here: the abstract-only full-text request list has 37 unique rows and matches the 37 abstract-only extractions exactly (none missing, none extra); the second-extractor sample's stratum sizes (5 effect-size rows, 1 AMSTAR 2/NONE) are the available numbers within S001-S200 (9 effect-size studies and 6 AMSTAR 2/NONE studies exist there), not a drawing error.
+
 ## 2026-10-04 (second extraction) — what the sample can speak for
 
 - Selection check of the second-extractor sample: it is drawn from S001-S200 only (by design, the includes the researcher already knows), and that subset skews recent: 75% published 2020 or later against 43% of all 1,159 extracted studies. The measured disagreement rate will therefore describe the AI's extraction of those 200 studies; extending it to S201-S1164 is an assumption. `score_second_extractor_sheet.py` now prints this caveat (computed from the data) with every score, and `03_extraction/second_extractor/README.md` has a section on it. Nothing in the sample changed.

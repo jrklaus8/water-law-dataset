@@ -90,7 +90,7 @@ def _load(sub):
     for f in sorted(glob.glob(str(R2 / sub / 'R*.json'))):
         if 'phase2' in f:
             continue
-        j = json.load(open(f, encoding='utf-8'))
+        j = json.loads(Path(f).read_text(encoding='utf-8'))
         if j.get('parsed'):
             out[j['record_id']] = j['parsed']
     return out
@@ -105,6 +105,12 @@ def _wilson(k, n, z=1.96):
         return (0.0, 1.0)
     ph = k / n; d = 1 + z * z / n; c = ph + z * z / (2 * n); h = z * ((ph * (1 - ph) / n + z * z / (4 * n * n)) ** 0.5)
     return max(0.0, (c - h) / d), min(1.0, (c + h) / d)
+
+
+def _queue():
+    """The reviewer-2 priority queue with the filled primary-model decisions, by record_id."""
+    with open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline='') as f:
+        return {r['record_id']: r for r in csv.DictReader(f)}
 
 
 def projection(cx, gm, queue):
@@ -130,7 +136,7 @@ def projection(cx, gm, queue):
 def includes_side():
     """(tier-3 includes re-read, judged exclude by the primary model, implied count among unconfirmed includes, Wilson low, Wilson high)."""
     cx, gm = _load('results'), _load('results_gemini')
-    queue = {r['record_id']: r for r in csv.DictReader(open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline=''))}
+    queue = _queue()
     t3 = [q for q in queue.values() if q['priority_tier'] == '3' and (q['record_id'] in cx or q['record_id'] in gm)]
     k3 = sum(1 for q in t3 if q['reviewer_2_decision (include/exclude/cannot_tell)'] == 'exclude')
     F = cf.compute(); pool = F['full_text_include'] - F['reviewer_2_confirmed_includes']
@@ -141,7 +147,7 @@ def includes_side():
 def implied_total():
     """(model rate, narrow-reading triage, literal-reading triage) implied includes summed over estimable codes (see projection()); a sense of scale only."""
     cx, gm = _load('results'), _load('results_gemini')
-    queue = {r['record_id']: r for r in csv.DictReader(open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline=''))}
+    queue = _queue()
     est = [p for p in projection(cx, gm, queue) if p['projected'] is not None]
     return sum(p['projected'] for p in est), sum(p['proj_narrow'] for p in est), sum(p['proj_literal'] for p in est)
 
@@ -149,7 +155,7 @@ def implied_total():
 def build():
     """Return (csv rows as dicts, markdown text)."""
     cx, gm = _load('results'), _load('results_gemini')
-    queue = {r['record_id']: r for r in csv.DictReader(open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline=''))}
+    queue = _queue()
     rows = []
     for rid, q in queue.items():
         ai = q['ai_decision']; c = cx.get(rid); g = gm.get(rid)
