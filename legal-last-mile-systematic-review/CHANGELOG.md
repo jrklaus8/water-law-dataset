@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (results-based exclusions) — two excludes cite a non-significant result; decision 14 / A18
+
+- A text search of all 1,117 full-text exclusion reasons for wording about non-significance found two: R69F53378C8F2 (E06; the domestic-users estimate 'statistically insignificant') and R0B87CA1C5270 (E01; the water dimension's RR = 1.00). Eligibility that depends on results biases a review against null findings, and `INCLUSION_EXCLUSION.md` does not say otherwise. Nothing was changed: re-screening the two and adding a one-sentence protocol amendment is the researcher's decision (brief decision 14, A18).
+
 ## 2026-10-04 (A16 abstract checks) — the 15 narrow-reading candidates checked against their abstracts
 
 - The 15 priority-1 records first triaged N (rule-type mechanism) were checked against their abstracts (Drive search snippets). 7 stay N (R2DBFA78BFB76 Lima/Delhi network extension; RB8541E7A11B9 enforcement gaps, empirical basis to check; RF104A3C9A7FE locked school toilets; RF8BD93786D82 connection fees and provider, stated preference; R4D7CD4E75E33 provider type and connection value; R69F53378C8F2 private participation panel; RDC5BD0E41BEE regulated tariffs and bill burden); 5 move to B (descriptive agency report, promotion programme, prison conditions, testing policy, a WTP thesis); 3 move to X (R21CAA5C1809C is a duplicate of S102 so E08 stands; RDAD34E024169 is a policy analysis without access data; RB955BA567B95 is an optimisation model).
