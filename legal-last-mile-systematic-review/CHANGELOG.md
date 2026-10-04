@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (documentation) — data dictionary: mechanism_certainty is only half numeric
+
+- `DATA_DICTIONARY.md` said `mechanism_certainty` is an integer 0-4; in the data 563 rows are (0 x4, 1 x238, 2 x286, 3 x27, 4 x8) and 596 hold a narrative sentence. The row now says so (the evidence-limitations note already reported the 596). Also checked and found consistent: the extraction database's yes/no flag columns (TRUE/FALSE/blank, with the three known long-text exceptions in `migrant_population`), `evidence_status` (all OBSERVED), and the free-text status of `legal_system`, `urban_rural`, `income_group`, `tenure_status` and `legal_status` (already documented as uncontrolled). No data changed.
+
 ## 2026-10-04 (tooling) — seven more verifier invariants (172 checks); mutation map covers 27 defects
 
 - New verifier checks, all true of the current data and each aimed at a plausible hand edit: a full-text include carries no exclusion code; `final_decision` and `full_text_decision` never disagree; no decided record lacks a `final_decision`; every exclude has a detail text; every exclusion code is E01-E12; every extraction DOI has the form `10.xxxx/...`; `included_in_pooled_estimate` is TRUE, FALSE or blank. `check_verifier_mutations.py` gained six matching defects (27 in all) and `00_admin/VERIFIER_MUTATION_MAP_2026-10-04.md` was regenerated: 27 of 27 caught. No data changed.
