@@ -92,3 +92,7 @@ The researcher dropped 88 full texts in the Drive inbox folder (`Sep 26 2026`). 
 | S169 | second-extractor sample / moderate-sparse row | checked; extraction kept as is (the abstract-level location is the only signal); file moved so the human second extractor can use the original | S169_Pulgarin_Franco_2024_Pulgarin_Franco_2024_Cadastral_updating_and_local_institutional_ |
 | S085 | effect-size row | numbers compared with the paper; all verified (FULLTEXT_VERIFICATION_2026-10-04.csv; S057 sample added) | S085_Gaikwad_2026_Getting_on_the_grid_A_field_experiment_on_bottom_up_political_pressur.pd |
 | S057 | effect-size row | numbers compared with the paper; all verified (FULLTEXT_VERIFICATION_2026-10-04.csv; S057 sample added) | S057_Kozole_2023_Impact_of_targeted_subsidies_on_access_to_resilient_sanitation_for_cli.pd |
+
+## Re-dropped copies (found 2026-10-04, after the batch above)
+
+Nine renamed copies of files already processed above appeared in the inbox (S445, S374, S361, S291, S164, S250, S161, S169, S109; the same sizes as the earlier copies, except S164, S161 and S445, which are different files). Nothing new to extract: S445's effect-size row was already verified from its web-article text (the PDF copy has no machine-readable text layer, 156 MB), and the others were already re-extracted or checked. All nine were moved to `Processed`. The `Fulltext_Tracker` sheet stays in the inbox folder.
