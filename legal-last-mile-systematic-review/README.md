@@ -96,8 +96,13 @@ explained in full further down; this is the index.
    but **52% of the 62 tier-2 sample excludes reviewed were judged `include`**
    by the independent model — a substantial, un-adjudicated disagreement on
    the AI's own exclusion decisions; see `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`
-   and `00_admin/DECISIONS_AND_OPEN_ITEMS.md` item A11. That is an
-   AI-versus-AI check and is not counted here as human confirmation.)
+   and `00_admin/DECISIONS_AND_OPEN_ITEMS.md` item A16. That is an
+   AI-versus-AI check and is not counted here as human confirmation.
+   Scaled by exclusion code it would imply roughly 468 further includes if
+   the models were right, and about 104 even under a narrow reading of
+   criterion 2 by an AI triage; in the other direction 3 of 18 sampled
+   unconfirmed includes look excludable. Arithmetic only, see
+   `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`.)
    Do not read "a human
    reviewer_2 pass has begun" as "the full-text stage is independently
    verified." See **Current project status** and **Human and AI
