@@ -243,6 +243,22 @@ def _as_str(rows):
 fresh(asr.OUT_MD, asr.render(asr.audit()), 'audit_sparse_records.py')
 _brp_rows, _brp_md = brp.build()
 _baa_rows, _baa_md = baa.build()
+# hand-written A16 figures in the status documents must match the computed projection (they went stale once when 9 more reviewer-2 rows were merged)
+_a16_total, _a16_narrow, _a16_literal = baa.implied_total()
+_a16_n3, _a16_k3, _a16_imp, _a16_lo, _a16_hi = baa.includes_side()
+_a16_pool = F['full_text_include'] - F['reviewer_2_confirmed_includes']
+_ws = lambda rel: ' '.join(text(rel).split())
+for _rel, _phrases in {
+        'README.md': (f'roughly {_a16_total} further includes', f'about {_a16_narrow} even under a narrow reading', f'{_a16_k3} of {_a16_n3} sampled'),
+        '00_admin/DECISIONS_AND_OPEN_ITEMS.md': (f'roughly {_a16_total} further includes', f'about {_a16_narrow} even under a narrow reading', f'{_a16_k3} of {_a16_n3} sampled unconfirmed includes',
+                                                 f'roughly {_a16_imp} of {_a16_pool:,} (range {_a16_lo}-{_a16_hi})'.replace(f'{_a16_pool:,}', str(_a16_pool))),
+        '00_admin/RESEARCHER_DECISION_BRIEF_2026-10-04.md': (f'roughly {_a16_total} further includes', f'about {_a16_narrow} even under a narrow reading', f'{_a16_k3} of {_a16_n3} sampled includes',
+                                                              f'roughly {_a16_imp} of the {_a16_pool} unconfirmed includes (range {_a16_lo}–{_a16_hi})'),
+        '00_admin/SESSION_HANDOFF_2026-10-04.md': (f'about {_a16_total} implied further includes', f'about {_a16_narrow} under a narrow reading', f'{_a16_k3} of {_a16_n3} sampled unconfirmed includes',
+                                                   f'about {_a16_imp} of {_a16_pool}, range {_a16_lo}-{_a16_hi}')}.items():
+    _t = _ws(_rel)
+    for _ph in _phrases:
+        check(_ph in _t, f'{_rel}: A16 figure out of date, expected the phrase {_ph!r} (computed by build_a16_adjudication_sheet.py)')
 fresh(baa.OUT_MD, _baa_md, 'build_a16_adjudication_sheet.py')
 _aeb_rows, _aeb_md = aeb.build()
 fresh(aeb.OUT_MD, _aeb_md, 'audit_exclusion_basis.py')
