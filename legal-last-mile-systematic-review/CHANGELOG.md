@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (documentation) — README headline numbers re-verified; publication_type documented
+
+- Re-checked every identification and title/abstract figure in the README status table against the live files: 34,594 identified = 27,481 unique + 7,113 merged; 26,222 with an abstract and 1,259 without; the AI first pass 3,062 include / 22,557 exclude / 603 unsure; 3,659 include and 6 exclude after the human pass. All agree, and the verifier and `test_search_reconciliation.py` already guard them. `DATA_DICTIONARY.md` now says `publication_type` is free text (54 strings, two spellings of "journal article") and is not used in any output. No data changed.
+
 ## 2026-10-04 (documentation) — data dictionary: mechanism_certainty is only half numeric
 
 - `DATA_DICTIONARY.md` said `mechanism_certainty` is an integer 0-4; in the data 563 rows are (0 x4, 1 x238, 2 x286, 3 x27, 4 x8) and 596 hold a narrative sentence. The row now says so (the evidence-limitations note already reported the 596). Also checked and found consistent: the extraction database's yes/no flag columns (TRUE/FALSE/blank, with the three known long-text exceptions in `migrant_population`), `evidence_status` (all OBSERVED), and the free-text status of `legal_system`, `urban_rural`, `income_group`, `tenure_status` and `legal_status` (already documented as uncontrolled). No data changed.
