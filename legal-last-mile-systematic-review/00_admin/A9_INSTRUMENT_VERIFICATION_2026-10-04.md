@@ -60,6 +60,20 @@ something this check could confirm verbatim from the guidance document alone. Wo
 against the original BMJ paper's exact rating-rule wording before final submission, since that is the one detail
 this pass could not fully pin down to a verbatim quote.
 
+## SWiM 2020 (9-item synthesis-without-meta-analysis reporting guideline)
+
+Not formally part of A9 (A9 names PRISMA 2020, AMSTAR 2, RoB 2, ROBINS-I, JBI, CASP, MMAT), but the same gap
+existed for the same reason: `SOURCES.md` §7 had SWiM's citation and 9-item *structure* confirmed by search
+snippet (2026-09-28), with item *wording* explicitly left unconfirmed. Fetched the guideline's own official
+supplementary checklist PDF directly this pass.
+
+**Result: confirmed correct, no changes needed.** All 9 items' exact wording matches
+`06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`'s section mapping, including the "criteria used to
+prioritise results for summary and synthesis" section added on 2026-09-28 from the structural check alone — its
+wording ("the criteria used, with supporting justification, to select the particular studies ... for the main
+synthesis") matches the official item 4 text exactly. `SOURCES.md` §7 and the template updated to record the
+full-text confirmation.
+
 ## What this does and does not close
 
 - **PRISMA 2020 and AMSTAR 2 wording and numbering are now verified against primary sources**, not search
