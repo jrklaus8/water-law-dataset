@@ -86,7 +86,7 @@ No pooled effect exists: Phase 11 found that no synthesis family clears the bar 
 `effect_sizes.csv` row has `included_in_pooled_estimate = FALSE`. The three structured (SWiM) syntheses report direction of
 association with disclosed judgment calls; they are not effect estimates and not certainty-graded (GRADE) conclusions.
 Full-text retrieval was closed by researcher decision with 1,383 records never assessed, so the corpus is not exhaustive.
-Source PDFs are not in the repository; the extracted values could not be re-checked against them by the audit.
+Source PDFs are not in the repository (many are under publisher copyright or licensing terms that do not allow redistribution). The 2026-09-28 audit could not re-check extracted values against them. Since 2026-10-04 the AI has re-read many full texts from the researcher's Drive (72 studies re-extracted; 47 of the 62 effect-size rows compared with their sources, 15 not checkable): see `05_analysis/effect_sizes/FULLTEXT_VERIFICATION_2026-10-04.csv` and `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`. That is an AI check of AI work, not an independent human check.
 
 ## 7. Keeping it auditable
 
