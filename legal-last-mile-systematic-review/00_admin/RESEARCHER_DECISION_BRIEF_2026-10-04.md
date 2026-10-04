@@ -19,7 +19,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 | 10 | **Release**: tag a version and update `CITATION.cff` (still `0.1.0-interim`) | (a) tag now; (b) after the human verification below | **(b)** the data may still change | AI updates version and date |
 | 11 | **Appraisal-tool reclassification** of 14 studies whose full text shows the tool does not fit (e.g. a qualitative focus-group study tagged JBI Cross-Sectional; non-systematic reviews tagged CASP) | (a) apply the proposal; (b) apply part of it; (c) leave and footnote | **(a)**, after glancing at `TOOL_RECLASSIFICATION_PROPOSAL_2026-10-04.md` | A dated script moves the tools, the AI re-answers each moved study's rating item by item, regenerates every tool count |
 | 12 | **Add Olmstead 2004 ('Thirsty Colonias') to the review**: eligible and quantitative; screening is closed, so this is yours | (a) include and extract; (b) leave out and state it | **(a)** | The AI extracts it, adds a Family C row and regenerates every count |
-| 13 | **Independent-model disagreement on AI full-text excludes (A16)**: of 62 sampled AI excludes re-read blind by Codex/Gemini, 32 (52%) were judged *include* (E01 wrong topic 19/37; E06 engineering only 6/9). Not human-adjudicated; nothing auto-corrected. | (a) read the 32 disagreements yourself (`_reviewer2_codex/REVIEWER_2_AGREEMENT_2026-10-03.md`) and decide each; (b) widen the sample first; (c) accept the exclusions and state the limitation | **(a)**, E01/E06 first; it bears on completeness of the whole evidence base, so it outranks most items above | Any reversed exclude goes through screening rules (new include, extraction, appraisal) and every count regenerates |
+| 13 | **Independent-model disagreement on AI full-text excludes (A16)**: of 62 sampled AI excludes re-read blind by Codex/Gemini, 32 (52%) were judged *include* (E01 wrong topic 19/37; E06 engineering only 6/9). Not human-adjudicated; nothing auto-corrected. | (a) read the disagreements yourself and decide each — `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.csv` lists all 56 records, most likely mis-excludes first, with blank decision columns (the 33 priority-1 rows are the ones both blind models include); (b) widen the sample first; (c) accept the exclusions and state the limitation | **(a)**, E01/E06 first; it bears on completeness of the whole evidence base, so it outranks most items above | Any reversed exclude goes through screening rules (new include, extraction, appraisal) and every count regenerates |
 
 ## Part 2 — Things only you can do, ranked by payoff per hour
 
@@ -33,7 +33,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 
 ## Part 3 — What the AI will do the moment you answer
 
-- Apply decisions 1–13, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (130 checks) before every push.
+- Apply decisions 1–13, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (132 checks) before every push.
 - Score the filled second-extractor sheet and update the AI-use statement and limitations with the measured error rate.
 - Re-extract and appraise any PDF you supply (about 20 minutes of AI time each) and update the AMSTAR 2 count (12 of 23 rated now).
 - Draft the cover letter, a journal-specific AI-disclosure paragraph and a plain-language summary once decisions 1–4 and the second-extraction sheet are in.
