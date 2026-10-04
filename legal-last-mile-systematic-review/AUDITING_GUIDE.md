@@ -61,7 +61,7 @@ The 2026-09-28 audit found, and this repository corrected in the open, problems 
 - **Provenance gaps:** 73 decided full-text rows with no recorded reviewer; one abstract-only include resolved on its full
   text (excluded); one effect-size row for a study not flagged eligible.
 - **Extractions from abstract or metadata only** (37 studies; S366, S326, S277, S319/S324/S325/S344 and 25 studies from the 2026-10-04 Drive campaign, `reextract_2026-10-04/CAMPAIGN_NOTES.md`, were re-extracted from full text) — listed in
-  `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`; none feeds an effect-size row. **This is a floor.** It counts one note prefix; `code/analysis/audit_sparse_records.py` (2026-10-04) finds 80 more rows with signs of shallow extraction (a further 47 sparse rows were re-extracted from Drive full texts on 2026-10-04), three of which (S104, S174, S358) carry effect-size rows — `SPARSE_RECORD_AUDIT_2026-10-04.md`, and the sensitivity file's S1b scenario drops them (no conclusion changes).
+  `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`; none feeds an effect-size row. **This is a floor.** It counts one note prefix; `code/analysis/audit_sparse_records.py` (2026-10-04) finds 73 more rows with signs of shallow extraction (a further 54 sparse rows were re-extracted from Drive full texts on 2026-10-04), three of which (S057, S104, S358) carry effect-size rows — `SPARSE_RECORD_AUDIT_2026-10-04.md`, and the sensitivity file's S1b scenario drops them (no conclusion changes).
 
 ## 5. Ways to challenge a result
 
@@ -86,7 +86,7 @@ No pooled effect exists: Phase 11 found that no synthesis family clears the bar 
 `effect_sizes.csv` row has `included_in_pooled_estimate = FALSE`. The three structured (SWiM) syntheses report direction of
 association with disclosed judgment calls; they are not effect estimates and not certainty-graded (GRADE) conclusions.
 Full-text retrieval was closed by researcher decision with 1,383 records never assessed, so the corpus is not exhaustive.
-Source PDFs are not in the repository (many are under publisher copyright or licensing terms that do not allow redistribution). The 2026-09-28 audit could not re-check extracted values against them. Since 2026-10-04 the AI has re-read many full texts from the researcher's Drive (72 studies re-extracted; 47 of the 62 effect-size rows compared with their sources, 15 not checkable): see `05_analysis/effect_sizes/FULLTEXT_VERIFICATION_2026-10-04.csv` and `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`. That is an AI check of AI work, not an independent human check.
+Source PDFs are not in the repository (many are under publisher copyright or licensing terms that do not allow redistribution). The 2026-09-28 audit could not re-check extracted values against them. Since 2026-10-04 the AI has re-read many full texts from the researcher's Drive (79 studies re-extracted; 47 of the 62 effect-size rows compared with their sources, 15 not checkable): see `05_analysis/effect_sizes/FULLTEXT_VERIFICATION_2026-10-04.csv` and `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`. That is an AI check of AI work, not an independent human check.
 
 ## 7. Keeping it auditable
 
