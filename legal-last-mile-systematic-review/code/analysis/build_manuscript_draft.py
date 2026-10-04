@@ -53,7 +53,7 @@ def exclusion_table(F):
 
 def build():
     F = cf.compute()
-    n, inc, exc = F['extraction_rows'], F['full_text_include'], F['full_text_exclude']
+    n, inc = F['extraction_rows'], F['full_text_include']
     rpt = bpr.build()
     top = sections(rpt, '##')
     sub = sections(rpt, '###')

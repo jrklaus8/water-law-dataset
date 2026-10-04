@@ -113,7 +113,6 @@ CI_TEXT = re.compile(r'(?:95\s?%\s?)?(?:\bci\b|confidence interval)[^\d\-−]{0,
 
 
 def es_scan():
-    ed = {r['study_id']: r for r in cf.read('ed')}
     em = {r['study_id']: r for r in cf.read('em')}
     out = []
     cov = Counter()
