@@ -65,7 +65,10 @@ def compute():
     F['exclusion_by_code'] = dict(sorted(Counter(r['exclusion_code'] for r in el).items()))
     dec_rows = [r for r in ft if r['final_decision']]
     F['decided_blank_reviewer_1'] = sum(not r['reviewer_1'] for r in dec_rows)
-    F['reviewer_2_confirmed_includes'] = sum(bool(r['reviewer_2']) and r['final_decision'] == 'include' for r in ft)
+    # Human confirmations only (labels `Human-reviewer2-...`); a second AI model's blind pass is counted separately.
+    F['reviewer_2_confirmed_includes'] = sum(r['reviewer_2'].startswith('Human-') and r['final_decision'] == 'include' for r in ft)
+    F['reviewer_2_second_model_rows'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) for r in ft)
+    F['reviewer_2_second_model_conflicts'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) and r['conflict'].lower() == 'true' for r in ft)
     F['extraction_rows'] = len(ed)
     F['evidence_map_rows'] = len(em)
     ids = sorted(int(r['study_id'][1:]) for r in ed)
@@ -149,7 +152,8 @@ def render(F):
              f"| Never decided (retrieval closed) | {F['full_text_undecided']:,} ({F['unretrieved_not_retrievable']:,} not_retrievable, {F['unretrieved_wrong_file']:,} wrong_file_retrieved) |",
              f"| Exclusion-log rows | {F['exclusion_log_rows']:,} — by code: " + ", ".join(f"{k} {v}" for k, v in F['exclusion_by_code'].items()) + " |",
              f"| Decided rows with blank reviewer_1 | {F['decided_blank_reviewer_1']} |",
-             f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |", "",
+             f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |",
+             f"| Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | {F['reviewer_2_second_model_rows']} / {F['reviewer_2_second_model_conflicts']} |", "",
              "## Extraction and classification", "",
              f"| Item | Figure |", "|---|---|",
              f"| Extraction rows / evidence-map rows | {F['extraction_rows']:,} / {F['evidence_map_rows']:,} |",

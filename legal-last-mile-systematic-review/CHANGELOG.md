@@ -54,6 +54,43 @@ No include decision, flag, effect-size row or appraisal rating other than S324's
 5. **evidence_map text refreshed** (`refresh_evidence_map_deferred_text_2026-10-04.py`): 515 rows said "rating deferred" although every instrument had been applied; 431 standard sentences replaced, 84 free-text variants kept and annotated.
 6. **Code review** of the verifier and build scripts. Fixed: `Trinidad and Tobago` counted as two countries (country counts 1,031 / 124 / 4); an effect-size scan that read the English word "or" as an odds ratio (S294, S398, S631, S780, S920 mis-scaled, no current finding changed); `build_fulltext_request_list.py` would crash on an abstract-only ROBINS-I or NONE row; a hard-coded "all Critically Low" in the manuscript piece (stale since S327); hard-coded prose in the sensitivity file and data-quality audit (62, "S294 only", "S589") now computed; link targets in the HTML report limited to http(s), anchors and relative paths; the verifier fails cleanly when the overlap CSV is missing.
 
+## 2026-10-03 (reviewer 2, tiers 1-3, expanded) — 99 full-text rows independently re-screened; substantial disagreement found on AI excludes
+
+Extends the same-day tier-1 pass (below) to all three reviewer-2 queue tiers, using two independent non-Claude
+models (Codex `gpt-5.6-sol` and Gemini; see `_reviewer2_codex/REVIEWER_2_AGREEMENT_2026-10-03.md` for the full
+report and `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md` for exactly how). 99 of the 226 tier 1-3 rows were
+reviewed (tier 1: 19/73, tier 2: 62/103, tier 3: 18/50), limited to records whose PDF was available.
+
+**The important finding is in tier 2** (the stratified random sample of the AI's own full-text EXCLUDES,
+precisely the tier the queue README warned "errors here silently remove eligible studies"): of 62 AI excludes
+independently re-read blind, **32 (52%) were judged `include` by the independent model** — concentrated in
+code E01 "wrong topic" (19 of 37 reviewed, 51%) and E06 "engineering only" (6 of 9, 67%). Reading the rationales,
+these are genuine, substantive scope disagreements, not a model defect: the independent reviewer tends to find
+an institutional/administrative determinant or an empirical method (a survey, fieldwork, document analysis) that
+the original AI's one-line exclusion reasoning did not engage with, rather than disagreeing on a point both
+sides addressed. All had `full_text_status = retrieved`, so this is not an artifact of deciding from an abstract.
+**This has not been adjudicated by a human and nothing was auto-corrected**: every disagreement is recorded as
+`conflict = true` with `final_decision` left blank for the researcher (45 agreements got `final_decision` set
+automatically, same rule as tier 1). Tiers 1 and 3 (AI includes) showed much lower disagreement (3/19 and 3/18).
+**Recommendation:** before trusting the 1,117-exclude total, read a sample of the 32 tier-2 disagreements
+yourself (start with the E01 and E06 ones) and decide whether criterion 2/3 need tighter wording, the original
+screening needs a second look, or the independent model is being too permissive — the sample size (62 of 103) is
+large enough that this is unlikely to be noise, but which side is "right" on each case is a judgment call only
+a human can make. `00_admin/DECISIONS_AND_OPEN_ITEMS.md` item A2 updated accordingly.
+
+Also run: a second-extractor check (6-41 of the 60-study sample scored, in progress) and an AI-vs-AI debate on
+three open items (A3 linked reports, A5 family vocabulary, the 13-narrative-review scope question) — see
+`_reviewer2_codex/` for scripts and raw output; results pending at time of this entry, to be added once complete.
+
+## 2026-10-03 (reviewer 2, tier 1) — 19 of the 73 no-reviewer full-text rows independently re-screened by a second, non-Claude AI model
+
+First step on open items A2 and A6. The 73 tier-1 rows of `full_text_reviewer_2_priority_queue_2026-09-28.csv` (decided rows with no `reviewer_1`) were matched against the researcher's Drive folder; 19 PDFs were found. Each was re-screened **blind** by the Codex CLI (OpenAI, model `gpt-5.6-sol`, reasoning effort `high`, read-only sandbox): the model saw `INCLUSION_EXCLUSION.md`, the checklist criteria and the PDF text, never `ai_decision` or `ai_reasoning`. For the 11 first-reviewer includes a second call compared the paper against ten key fields of the extraction row. Scripts and raw model output: `_reviewer2_codex/` (`run_codex_reviewer2.py`, `results/<record_id>.json`, `results/<record_id>.phase2.json`); compiled sheet `full_text_reviewer_2_priority_queue_2026-09-28_FILLED_Codex-gpt-5.6-sol-reviewer2-fulltext-2026-10-03.csv`; report `REVIEWER_2_CODEX_AGREEMENT_2026-10-03.md`.
+
+- **Decision agreement 16 of 19** (includes 10 of 11; excludes 6 of 8). 15 of 19 also matched the exclusion code.
+- **Three conflicts, recorded with `conflict = true`, `final_decision` left for the researcher:** R64A7E6073EF0 (S397, AI include → R2 exclude E04: the regression outcome is municipal sanitation-policy adoption, not household access); R21CAA5C1809C (AI exclude E08 duplicate → R2 include — not a real disagreement, a second reader cannot re-make a duplicate call from one paper, as the queue README notes); RDEA162168676 (AI exclude E06 engineering-only → R2 include: 315-household survey comparing access and cost by service arrangement, with institutional implications).
+- **Extraction mismatches on the 11 includes** (phase 2): `sample_size` blank or wrong in 10 of 11 (the paper states it in each); `study_design` disputed in 4; `effect_estimate` text disputed in 5, most seriously S397 (the extracted statement contradicts the paper's Table 3 coefficients) and S392 (the paper says no legal-versus-practical score gap could be computed). Nothing in `extraction_database.csv` was changed; the mismatches are listed in the report for the researcher.
+- `reviewer_2` on the 19 rows now reads `Codex-gpt-5.6-sol-reviewer2-fulltext-2026-10-03`; `reviewer_1` stays blank (provenance of the first decision remains unknown). `AI_USE_STATEMENT.md` updated to disclose the second tool. The remaining 54 tier-1 rows still need their full text.
+
 ## 2026-10-03 (S052 and S327) — the last two weakest-evidenced AMSTAR 2 reviews appraised from full text
 
 The researcher supplied the PDFs of S052 (Muoghalu, Semiyaga & Manga 2023, *Front Environ Sci*) and S327 (Ezezika et al. 2023, *PLOS Glob Public Health*). `code/provenance/audit_and_repair/appraise_s052_s327_amstar2_2026-10-03.py` replaced their "Not ratable" entries with full-text AMSTAR 2 appraisals (`04_quality/appraisal_forms/S052_AMSTAR2.md`, `S327_AMSTAR2.md`) and re-extracted both. Text only was read: flow diagrams, figures and every supplementary file were not.
