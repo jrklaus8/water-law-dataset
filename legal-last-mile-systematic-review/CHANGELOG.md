@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (data) — fourth Drive-inbox batch: last three effect-size rows checked
+
+- S470 (Amorim 2025), S489 (Koehler 2021) and S526 (Switzer & Teodoro 2025) compared with their full texts; every value matches (S470 REGU 19.2078, SE 0.8174, N 1,144, robustness 0.1345/0.1348/0.1313 on 2,280 observations; S489 OR 0.532 and 0.537, 1,215 households at 190 waterpoints; S526 -0.167, 0.310, -0.209, N 1,183). All 62 effect-size rows are now compared with the papers; none of the values changed. Script `code/provenance/audit_and_repair/process_drive_inbox_2026-10-04d.py`. Six more files in the batch were renamed re-drops of papers already processed; all nine were moved to `Processed`.
+
 ## 2026-10-04 (data) — third Drive-inbox batch (88 full texts)
 
 - Read 88 researcher-supplied full texts and moved them to the Drive `Processed` folder (log: `00_admin/DRIVE_INBOX_BATCH3_LOG_2026-10-04.md`; PDFs are not committed). Scripts: `code/provenance/audit_and_repair/process_drive_inbox_2026-10-04b.py` and `..._c.py`, plus 29 JSONs in `reextract_2026-10-04/` (see `CAMPAIGN_NOTES.md`).

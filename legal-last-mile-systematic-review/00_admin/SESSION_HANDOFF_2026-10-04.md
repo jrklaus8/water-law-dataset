@@ -4,7 +4,7 @@
 
 ## State in one paragraph
 
-Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3 code/analysis/verify_repository.py` passes (174 checks), and a fresh clone of the pushed branch also passes. Everything the AI can do without the researcher's decisions or PDFs it cannot reach is done: full-text re-extraction of 81 studies, 59 of the 62 effect-size rows compared with their sources, AMSTAR 2 for 17 of 23 reviews, a tool-reclassification proposal, supporting texts, a manuscript draft, an adjudication sheet for the blind-reviewer disagreements. What remains needs the researcher (decisions 1-14 in the brief, the human second extraction, PDFs) or PDFs that are not in Drive.
+Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3 code/analysis/verify_repository.py` passes (174 checks), and a fresh clone of the pushed branch also passes. Everything the AI can do without the researcher's decisions or PDFs it cannot reach is done: full-text re-extraction of 81 studies, all 62 effect-size rows compared with their sources, AMSTAR 2 for 17 of 23 reviews, a tool-reclassification proposal, supporting texts, a manuscript draft, an adjudication sheet for the blind-reviewer disagreements. What remains needs the researcher (decisions 1-14 in the brief, the human second extraction, PDFs) or PDFs that are not in Drive.
 
 ## How to resume
 
@@ -50,3 +50,7 @@ Done: 88 full texts read and moved to `Processed`; per-file log `00_admin/DRIVE_
 Flags raised for the researcher (eligibility, in the re-extraction notes): S322, S320, S321, S359, S286, S308, S291, S273, S355, S363, S374, S103. S114 needs a clean copy of the PDF; S364 needs an AMSTAR 2 versus other-tool decision.
 
 Exact next steps: (1) `git pull`; re-list the Drive inbox (`parentId = 13iSstCDB_PEiI7cV3MIxzE_h0aJL3tAa`, files created after 2026-10-04T17:33Z) for new uploads and process them the same way (read, re-extract or verify, log, move to `Processed`); (2) the five A19 records still without a full text and the three effect-size rows are listed in `02_screening/full_text/MISSING_FULLTEXTS_REQUEST_LIST_2026-10-04.csv` (priority 1 and 3); (3) everything else is researcher-gated (criterion 2 scope reading, A16 sheet, decisions 1-14, A19/A22 calls, second-extractor sheet).
+
+## Update: fourth Drive-inbox batch (9 files, later on 2026-10-04)
+
+S470, S489 and S526 (the last three unchecked effect-size rows) were compared with their papers and all match (`FULLTEXT_VERIFICATION_2026-10-04.csv`; script `process_drive_inbox_2026-10-04d.py`), so all 62 rows are now checked (AI-on-AI). The other six files were renamed re-drops of papers already processed (S057, S084, S085, S483, S491; S489 twice). All nine are in `Processed`. The remaining missing full texts are the 19 in priorities 1-4 of `MISSING_FULLTEXTS_REQUEST_LIST_2026-10-04.csv` (five A19 excludes, five A22 includes, six AMSTAR 2 reviews and so on), then the lower-priority lists.
