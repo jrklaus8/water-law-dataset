@@ -26,7 +26,7 @@ OUT_CSV = ROOT / '05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv
 OUT_MD = ROOT / '05_analysis/descriptive/DATA_QUALITY_AUDIT_2026-09-29.md'
 OUT_AM = ROOT / '05_analysis/descriptive/amstar2_systematic_evidence_sweep_2026-09-29.csv'
 
-INFERENTIAL = re.compile(r'regress|logit|probit|\bols\b|difference-in-difference|\bdid\b|propensity|instrumental|\biv\b|panel|fixed.effect|random.effect|multilevel|mixed.effect|'
+INFERENTIAL = re.compile(r'regress|logit|probit|\bols\b|difference-in-difference|(?-i:\bDiD\b)|propensity|instrumental|\biv\b|panel|fixed.effect|random.effect|multilevel|mixed.effect|'
                          r'randomi[sz]|\brct\b|meta-analy|\bglm\b|\bcox\b|hazard|odds ratio|regression discontinuity|structural equation|\bsem\b|time.series|arima|'
                          r'poisson|negative binomial|tobit|matching|synthetic control|event.study|spatial|econometric|anova|t-test|chi-?square|mann-whitney|kruskal', re.I)
 UNCERTAINTY_TEXT = re.compile(r'95\s?%\s?ci|confidence interval|\bci\b\s*[\[(:=\d]|\bp\s?[<=>]|p-value|standard error|\bs\.?e\.?\b\s*[=(:]|\bsig(nificant|nificantly)\b', re.I)

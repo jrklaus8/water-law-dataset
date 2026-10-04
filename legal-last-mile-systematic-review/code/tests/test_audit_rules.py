@@ -9,9 +9,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'code/analysis'))
+import audit_data_quality as adq  # noqa: E402
 import audit_effect_size_families as aef  # noqa: E402
 import audit_exclusion_basis as aeb  # noqa: E402
 import audit_includes_criterion3 as aic  # noqa: E402
+import audit_sparse_records as asr  # noqa: E402
 import propose_design_vocabulary as pdv  # noqa: E402
 
 
@@ -89,6 +91,45 @@ class TestFamilyFit(unittest.TestCase):
         rows = aef.build()
         self.assertEqual([(r['study_id'], r['fit']) for r in rows], [('S002', 'outside the definition wording'), ('S010', 'cue in definition wording'), ('S003', 'outside the definition wording')])
         self.assertEqual(rows[1]['cue_found'], 'recogni')
+
+
+class TestSparseRecordSignals(unittest.TestCase):
+    def test_note_says_the_basis_was_thin(self):
+        for s in ('full text not accessible', 'Full-text was not available', 'full text unavailable', 'only the abstract was read', 'abstract/citation-level only',
+                  'extracted from openly-readable abstract', 'not yet retrieved'):
+            self.assertTrue(asr.NOTE_THIN.search(s), s)
+        for s in ('full text read in full', 'the full text is available online'):
+            self.assertFalse(asr.NOTE_THIN.search(s), s)
+
+    def test_section_signals(self):
+        for s in ('Abstract', 'Resumen / Abstract', 'abstract; resumo', 'Abstract.'):
+            self.assertTrue(asr.SEC_ONLY.search(s), s)
+        for s in ('Methods', 'Abstract; Methods'):
+            self.assertFalse(asr.SEC_ONLY.search(s), s)
+        self.assertTrue(asr.SEC_INTRO.search('Abstract; Introduction')); self.assertFalse(asr.SEC_INTRO.search('Abstract; Results'))
+        self.assertTrue(asr.LOC_ABS.search('p. 1 (abstract')); self.assertFalse(asr.LOC_ABS.search('Table 2'))
+
+    def test_reextraction_marker(self):
+        self.assertTrue(asr.REEXTRACTED.search('supersedes the abstract-only entry')); self.assertFalse(asr.REEXTRACTED.search('abstract only'))
+
+
+class TestDataQualityPatterns(unittest.TestCase):
+    def test_inferential_methods(self):
+        for s in ('logistic regression', 'difference-in-differences', 'DiD estimates', 'propensity score matching', 'OLS estimates', 'negative binomial model', 'chi-square test'):
+            self.assertTrue(adq.INFERENTIAL.search(s), s)
+        # the English word "did" is not the DiD abbreviation (the pattern was once case-insensitive and matched "did not")
+        for s in ('descriptive statistics', 'the authors did not report', 'Did the programme work?'):
+            self.assertFalse(adq.INFERENTIAL.search(s), s)
+
+    def test_uncertainty_wording(self):
+        for s in ('95% CI 1.2-3.4', 'confidence interval', 'p<0.05', 'p = 0.01', 'p-value', 'standard error', 'CI [1.0, 2.0]'):
+            self.assertTrue(adq.UNCERTAINTY_TEXT.search(s), s)
+        self.assertFalse(adq.UNCERTAINTY_TEXT.search('happy'))
+
+    def test_ci_bounds_are_read_from_text(self):
+        for s in ('95% CI 1.2 to 3.4', 'CI: 1.2, 3.4', 'CI [1.1, 2.3]'):
+            self.assertTrue(adq.CI_TEXT.search(s), s)
+        self.assertFalse(adq.CI_TEXT.search('no interval'))
 
 
 if __name__ == '__main__':

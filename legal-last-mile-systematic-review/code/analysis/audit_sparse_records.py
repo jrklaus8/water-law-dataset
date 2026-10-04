@@ -29,7 +29,7 @@ ABS = r'(abstract|resumen|resumo)'
 SEC_ONLY = re.compile(rf'^\s*{ABS}(\s*[/;,&]\s*{ABS})*\s*\.?\s*$', re.I)
 SEC_INTRO = re.compile(rf'^\s*{ABS}\s*[;,/&]\s*(introduction|background|highlights|introducci[oó]n|introdu[cç][aã]o|literature review)\s*$', re.I)
 LOC_ABS = re.compile(r'^\s*(p\.?\s*\d+(-\d+)?\s*\(?)?\(?\s*(abstract|resumen|resumo)', re.I)
-NOTE_THIN = re.compile(r'full[- ]text (is |was )?(not|un)(available|accessible)|only the abstract|abstract[/ -]*(and )?citation[- ]level|citation[- ]level|summary[- ]level|'
+NOTE_THIN = re.compile(r'full[- ]text (is |was )?(not |un)(available|accessible)|only the abstract|abstract[/ -]*(and )?citation[- ]level|citation[- ]level|summary[- ]level|'
                        r'abstract/repository metadata|not yet retrieved|extracted from (the )?(openly[- ]readable )?abstract|extraction depth', re.I)
 REEXTRACTED = re.compile(r'supersedes the abstract|upgrading the original|full-text appraisal|full-text re-extraction|re-extracted from (the )?full text|corrects the earlier abstract', re.I)
 
