@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (effect-size families) — fit of each row to its family's wording (A21)
+
+- Draft audit of the 46 family-assigned effect-size rows against the exposure words of `PROJECT_SPEC.md` §8, by keyword cue: 29 of 46 sit outside their family's wording (A 9 of 20, B 5 of 6, C 15 of 20). The family assignments were judgement calls from 2026-09-28 that only organise the SWiM write-ups (nothing was pooled), so no estimate changes, but the write-ups present A/B/C as the spec's constructs. New `code/analysis/audit_effect_size_families.py` writes `05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.{csv,md}`; wired into `regenerate_all.sh` and the verifier. Logged as A21 with three options. Keyword-based and arguable row by row; nothing in `effect_sizes.csv` changed.
+
 ## 2026-10-04 (R templates) — a latent bug found by running them with flagged rows
 
 - The R meta-analysis, sensitivity and publication-bias scripts had only ever been run on empty or all-numeric input. Run against a copy of the real `effect_sizes.csv` with ten Family A rows flagged for pooling (synthetic numbers; nothing real is flagged), `01_meta_analysis.R` and `03_publication_bias.R` failed with "'yi' is not numeric": the free text in the non-pooled rows makes R read the column as character. All three scripts now coerce the pooled rows to numeric and stop with a clear message if a pooled row lacks a numeric estimate or SE. `01_meta_analysis.R`'s stale "not yet run, no R interpreter" header and the R README's status are corrected beside the originals.

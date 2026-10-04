@@ -4,7 +4,7 @@
 
 ## State in one paragraph
 
-Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3 code/analysis/verify_repository.py` passes (137 checks), and a fresh clone of the pushed branch also passes. Everything the AI can do without the researcher's decisions or PDFs it cannot reach is done: full-text re-extraction of 79 studies, 47 of the 62 effect-size rows compared with their sources, AMSTAR 2 for 12 of 23 reviews, a tool-reclassification proposal, supporting texts, a manuscript draft, an adjudication sheet for the blind-reviewer disagreements. What remains needs the researcher (decisions 1-14 in the brief, the human second extraction, PDFs) or PDFs that are not in Drive.
+Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3 code/analysis/verify_repository.py` passes (139 checks), and a fresh clone of the pushed branch also passes. Everything the AI can do without the researcher's decisions or PDFs it cannot reach is done: full-text re-extraction of 79 studies, 47 of the 62 effect-size rows compared with their sources, AMSTAR 2 for 12 of 23 reviews, a tool-reclassification proposal, supporting texts, a manuscript draft, an adjudication sheet for the blind-reviewer disagreements. What remains needs the researcher (decisions 1-14 in the brief, the human second extraction, PDFs) or PDFs that are not in Drive.
 
 ## How to resume
 
