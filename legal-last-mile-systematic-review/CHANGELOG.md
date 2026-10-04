@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (exclusion audit) — exclusions made on a landing page or metadata record (A19)
+
+- Audit of exclusion codes against their reason text. Log and full-text database agree on every code (1,117 of 1,117), every E08 duplicate points to an existing include, and no reason is shorter than 40 characters. One real finding: 25 full-text-stage excludes say in their reason text that the decision rested on a landing-page abstract, a paywalled abstract or a metadata record. For 15 E10 and 1 E08 that is expected; for the other 9 (E01 wrong topic 7, E09 1, E12 1) a substantive judgement was made without a read full text. A first version of the phrase match also caught R1827C03DA45A (the S356 exclusion, whose reason says its full text was read); reasons that say "full text read" are now excluded from the match.
+- New `code/analysis/audit_exclusion_basis.py` writes `05_analysis/descriptive/EXCLUSION_BASIS_AUDIT_2026-10-04.{csv,md}`; wired into `regenerate_all.sh` and the verifier's freshness checks. Logged as A19 in `DECISIONS_AND_OPEN_ITEMS.md`. Detection finds only exclusions whose reason says the basis was thin. Nothing in the screening data changed.
+
 ## 2026-10-04 (second extraction) — scorer hardened and tested before the human sheet arrives
 
 - `score_second_extractor_sheet.py` now separates a pure `score(rows)` from printing, warns about verdicts that are not Y, N or cannot_tell (they were silently skipped before, so a typed "yes" would have vanished from the denominator) and about rows with a second-extractor value but a blank verdict, adds a per-stratum breakdown and exits 2 on an invalid verdict. `code/tests/test_second_extractor_scoring.py` (4 tests) covers it and checks the blank sheet scores nothing. `regenerate_all.sh` now runs both test files and stops if one fails (before, a failing test would have been hidden by `tail`).

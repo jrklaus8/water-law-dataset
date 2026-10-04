@@ -185,7 +185,7 @@ for f_ in ('00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md', '
 
 # ---- E. database sanity checks (added 2026-09-29) and freshness of the audit outputs
 import re  # noqa: E402
-import audit_data_quality as adq, build_second_extractor_sample as bse, build_fulltext_request_list as bfr, audit_sparse_records as asr, build_reclassification_proposal as brp, build_a16_adjudication_sheet as baa  # noqa: E402
+import audit_data_quality as adq, build_second_extractor_sample as bse, build_fulltext_request_list as bfr, audit_sparse_records as asr, build_reclassification_proposal as brp, build_a16_adjudication_sheet as baa, audit_exclusion_basis as aeb  # noqa: E402
 _doi_bad = [(r['study_id'], r['doi']) for r in ed if r['doi'].strip() and not re.match(r'^10\.\d{4,9}/\S+$', r['doi'].strip())]
 check(not _doi_bad, f'malformed DOI in extraction_database: {_doi_bad[:5]}')
 _dois = [r['doi'].strip().lower() for r in ed if r['doi'].strip()]
@@ -229,11 +229,13 @@ fresh(asr.OUT_MD, asr.render(asr.audit()), 'audit_sparse_records.py')
 _brp_rows, _brp_md = brp.build()
 _baa_rows, _baa_md = baa.build()
 fresh(baa.OUT_MD, _baa_md, 'build_a16_adjudication_sheet.py')
+_aeb_rows, _aeb_md = aeb.build()
+fresh(aeb.OUT_MD, _aeb_md, 'audit_exclusion_basis.py')
 fresh(brp.OUT_MD, _brp_md, 'build_reclassification_proposal.py')
 fresh(adq.OUT_MD, adq.render(adq.flag_audit(), *adq.es_scan()[:1], len(es), adq.es_scan()[1], adq.amstar_sweep(), adq.year_audit(), adq.certainty_audit()), 'audit_data_quality.py')
 for _path, _rows, _script in ((adq.OUT_CSV, adq.flag_audit(), 'audit_data_quality.py'), (adq.OUT_AM, adq.amstar_sweep(), 'audit_data_quality.py'),
                              (bse.OUT, bse.draw(), 'build_second_extractor_sample.py'), (bfr.OUT, bfr.rows(), 'build_fulltext_request_list.py'),
-                             (asr.OUT_CSV, asr.audit(), 'audit_sparse_records.py'), (brp.OUT_CSV, _brp_rows, 'build_reclassification_proposal.py'), (baa.OUT_CSV, _baa_rows, 'build_a16_adjudication_sheet.py')):
+                             (asr.OUT_CSV, asr.audit(), 'audit_sparse_records.py'), (brp.OUT_CSV, _brp_rows, 'build_reclassification_proposal.py'), (baa.OUT_CSV, _baa_rows, 'build_a16_adjudication_sheet.py'), (aeb.OUT_CSV, _aeb_rows, 'audit_exclusion_basis.py')):
     check(_csv_rows(_path) == _as_str(_rows), f'{_path.relative_to(ROOT)} is stale: run `python3 code/analysis/{_script}`')
 
 # provenance files the verifier and generated texts depend on must be tracked by git (a `*.json` ignore rule once kept the 2026-10-04 re-extraction records out of the repository)
