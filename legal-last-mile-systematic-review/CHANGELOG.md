@@ -8,6 +8,18 @@ amendments in particular must be logged here with rationale).
 
 - Searched Drive by record id for the priority substantive and status-contradicting excludes and read what was there (AI reading, same model family as the screener, not independent). Six are only portal or landing pages (Groningen, Wageningen x3, a journal page, a Springer paywall preview), so the original exclusions did rest on an abstract; on that abstract they are plausible or borderline, and the two irrigation-water papers (R155FFF508359, RA1F6E143593E) would fit E07 better than E01. Six have real PDFs (SWA commitments, the 1998 South African Water Act in French, cisterns in Canada, a Nepal gender-equality quasi-experiment, a 1999 Suez practitioner report, a Brazilian environmental-justice discussion) whose recorded status was simply stale, and their exclusions look sound. `audit_exclusion_basis.py` records these in a `drive_check` column and a markdown section; about 18 of the ~30 were not checked. No decision changed.
 
+## 2026-10-04 (SWiM wording confirmed) — the last search-snippet-only methodological citation upgraded to full text
+
+Extends the same A9 full-text verification pass to SWiM (Campbell et al. 2020, BMJ), the last of the project's
+methodological-guideline citations still at search-snippet level for item wording (its 9-item *structure* was
+already confirmed by search on 2026-09-28; wording was explicitly flagged unconfirmed). Fetched the guideline's
+own official supplementary checklist PDF directly this pass.
+
+All 9 items' exact wording matches `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`'s existing section
+mapping, including the "criteria used to prioritise results" section added on 2026-09-28 from the structural check
+alone — its wording matches the official item 4 text exactly. No changes needed to the template's structure.
+`SOURCES.md` §7 updated; `00_admin/A9_INSTRUMENT_VERIFICATION_2026-10-04.md` extended with this finding.
+
 ## 2026-10-04 (sensitivity analysis) — invariants tested
 
 - New `code/tests/test_sensitivity_invariants.py` (4 tests, run by `regenerate_all.sh`) checks the sensitivity scenarios structurally against `effect_sizes.csv`: the baseline k equals the family counts (20, 6, 20); in every scenario the sign counts sum to k, Family A's concordant, counter-pattern and null counts sum to k and the concordance percentage equals concordant/k; each dropped study is a real effect-size study and exactly accounts for the fall in its family's k; and the three pre-stated conclusion tests ("holds" or not) follow from the counts they are computed from. All pass; the sensitivity script (run by every `regenerate_all.sh`) was already running without error.

@@ -154,16 +154,18 @@ reference list. Used for `PROTOCOL.md`'s PRISMA-P-style structure.
 **Verification:** Confirmed via web search (Monash/White Rose/York
 repository listings, EQUATOR Network guideline registry, PMC7190266).
 Used in `ANALYSIS_PLAN.md` and `PROTOCOL.md` §9 for reporting evidence that
-cannot legitimately be meta-analyzed. **Extended 2026-09-28**: a further
-`WebSearch` (direct `WebFetch` to every candidate source — doi.org, the
-EQUATOR Network page, and the guideline's own official site — returned
-`EGRESS_BLOCKED`, so this remains search-snippet-level, not full-text,
-verification) confirmed the guideline's real structure is a 9-item
-checklist and named all 9 item topics; `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md`
-was updated to map its own sections onto all 9 (it had been missing one,
-"criteria for prioritizing results," entirely). Full item *wording* is
-still unconfirmed — the citation and structure are verified, the exact
-published phrasing is not.
+cannot legitimately be meta-analyzed. **Extended 2026-09-28**: a `WebSearch` (every `WebFetch` returned
+`EGRESS_BLOCKED`, so this was search-snippet-level) confirmed the
+guideline's real structure is a 9-item checklist and named all 9 item
+topics; `06_outputs/supplementary/SWIM_SYNTHESIS_TEMPLATE.md` was updated
+to map its own sections onto all 9 (it had been missing one, "criteria
+for prioritizing results," entirely). **Upgraded to full-text
+verification 2026-10-04**: a different session tool (not subject to this
+environment's egress block) fetched the guideline's own official
+supplementary checklist PDF directly and confirmed the exact wording of
+all 9 items against the template — all correct, including the item-4
+section added from the 2026-09-28 structural check, which matches the
+official wording exactly. See `00_admin/A9_INSTRUMENT_VERIFICATION_2026-10-04.md`.
 
 ## 8. AMSTAR 2
 

@@ -10,26 +10,33 @@ that systematic review does not require meta-analysis, and a
 well-reported structured synthesis is a first-class output here, not a
 consolation prize.
 
-**This template does not reproduce SWiM's own reporting-guideline
-checklist items verbatim, and still doesn't — but its structure is now
-cross-checked, not just "well-known general approach."** `SOURCES.md` §7
-cites the guideline (Campbell et al. 2020, BMJ); as of 2026-09-28, a
-`WebSearch` (not `WebFetch` — every publisher/repository/guideline-registry
-domain tested, including doi.org, the EQUATOR Network, and the guideline's
-own official site, returned `EGRESS_BLOCKED`; only search-result snippets
-were reachable) confirmed SWiM's real structure is a **9-item checklist**:
-(1) grouping studies for synthesis, (2) standardised metric and
-transformation methods, (3) synthesis methods, (4) criteria used to
-prioritise results for summary and synthesis, (5) investigation of
-heterogeneity in reported effects, (6) certainty of evidence, (7) data
-presentation methods, (8) reporting results, (9) limitations of the
-synthesis. This template's existing sections map onto 8 of the 9 (below);
-**item 4 — criteria for prioritizing results — was genuinely missing until
-this update**, added as its own section rather than left implicit. Full
-item *wording* (as opposed to the item topics themselves) remains
-unconfirmed, since no full-text or PDF fetch succeeded — **check the
-actual guideline directly before finalizing any manuscript section**, per
-the original caveat.
+**Upgraded to full-text verification 2026-10-04** (see
+`00_admin/A9_INSTRUMENT_VERIFICATION_2026-10-04.md`): a different session
+tool, not subject to this environment's egress block, fetched the
+guideline's own official supplementary checklist PDF directly and
+confirmed both the item structure and the exact item wording, which a
+2026-09-28 `WebSearch` (snippets only; every `WebFetch` to a
+publisher/registry domain had returned `EGRESS_BLOCKED`) had only been
+able to confirm at the structural level. SWiM is a **9-item checklist**:
+**1** grouping studies for synthesis (provide a description of, and
+rationale for, the groups used; detail changes since the protocol);
+**2** describe the standardised metric and transformation methods used;
+**3** describe the synthesis methods (and justify them, for each outcome,
+when meta-analysis was not possible); **4** criteria used to prioritise
+results for summary and synthesis (where applicable, the criteria and
+justification for selecting particular studies for the main synthesis or
+conclusions, e.g. by study design, risk-of-bias assessment, directness);
+**5** investigation of heterogeneity in reported effects; **6** certainty
+of evidence (methods used to assess it); **7** data presentation methods
+(graphical/tabular, and the study characteristics used to order studies);
+**8** reporting results (for each comparison and outcome, the synthesised
+finding, its certainty, and which studies contribute); **9** limitations
+of the synthesis (of the methods and/or groupings used, and how these
+affect the conclusions drawn). This template's existing sections map onto
+all 9 (below) **and the item-4 section added on 2026-09-28 matches the
+official wording exactly** ("criteria ... with supporting justification,
+to select the particular studies ... for the main synthesis"). No further
+correction is needed to this template's structure or section framing.
 
 | SWiM item (confirmed 2026-09-28) | This template's section |
 |---|---|
