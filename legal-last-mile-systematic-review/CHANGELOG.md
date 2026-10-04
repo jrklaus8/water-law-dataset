@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (tooling) — fix_documented_counts.py maps old to new phrases exactly
+
+- The second rehearsal fixed only 4 of 17 failures because several different numbers matched each pattern. `verify_repository.py` now records every phrase it looks for (`VERIFY_EMIT_EXPECTED=file` dumps them as JSON); `fix_documented_counts.py` runs it on the last commit (temporary git worktree, `--old-ref`, default HEAD) and on the working tree, pairs phrases by file, label and position, and replaces the old phrase when it occurs exactly once; the pattern search stays as the fallback (`--no-exact` skips the mapping). It also keeps CRLF line endings, which the first version would have flattened. Rehearsal on a scratch clone (three included studies excluded): 35 of 38 failures repaired, the other three left for a person, and the verifier then showed only those three. Four new unit tests (9 in the file).
+
 ## 2026-10-04 (tooling) — automatic fixer for documented counts
 
 - The rehearsals showed that the main manual burden after a real data change is 36-42 hand-written figures. New `code/analysis/fix_documented_counts.py` (dry run by default, `--apply` to write; 5 unit tests in `code/tests/test_fix_documented_counts.py`, run by `regenerate_all.sh`) reads the verifier's "expected to contain '...'" failures, builds a digit-wildcard regular expression from the expected phrase and replaces the old text when exactly one distinct old text matches in the named file. On the A22 rehearsal copy (42 failures) it applied 24 replacements and re-running the verifier left 17 failures, all listed as MANUAL (ambiguous short phrases such as `236 (` that match dozens of places, per-code breakdown sentences, and the root-README path, since fixed). It cannot judge whether a number in a dated historical document should change, so `git diff` must be read before committing. The resolver docstring and the handoff point to it.

@@ -50,5 +50,39 @@ class TestPropose(unittest.TestCase):
         self.assertEqual(edits[0][2], 'about 466 implied further includes')
 
 
+class TestExactMapping(unittest.TestCase):
+    def setUp(self):
+        self._t = tempfile.TemporaryDirectory(); self.addCleanup(self._t.cleanup)
+        self.root = Path(self._t.name) / 'proj'; self.root.mkdir()
+
+    def test_pairs_need_equal_phrase_counts_and_a_real_change(self):
+        old = [('a.md', '10 of 20', 'x'), ('a.md', '11 of 21', 'x'), ('b.md', '5 (', None)]
+        new = [('a.md', '12 of 22', 'x'), ('a.md', '11 of 21', 'x'), ('b.md', '6 (', None)]
+        self.assertEqual(fx.exact_pairs(old, new), {('a.md', '12 of 22'): '10 of 20', ('b.md', '6 ('): '5 ('})
+        # a different number of phrases for the same (file, label) means the lists cannot be aligned: no pairs for it
+        self.assertEqual(fx.exact_pairs([old[0], old[2]], new), {('b.md', '6 ('): '5 ('})
+
+    def test_exact_mapping_resolves_what_the_pattern_search_cannot(self):
+        (self.root / 'doc.md').write_text('10 of 20 sampled, 11 of 21 sampled.\n', encoding='utf-8')
+        out = "  FAIL: doc.md: expected to contain '12 of 22 sampled' (x)"
+        self.assertEqual(fx.propose(self.root, out)[0], [])  # pattern search alone: two candidates
+        edits, manual = fx.propose(self.root, out, [('doc.md', '10 of 20 sampled', 'x'), ('doc.md', '11 of 21 sampled', 'y')], [('doc.md', '12 of 22 sampled', 'x'), ('doc.md', '11 of 21 sampled', 'y')])
+        self.assertEqual([(e[1], e[2]) for e in edits], [('10 of 20 sampled', '12 of 22 sampled')]); self.assertEqual(manual, [])
+
+    def test_old_phrase_occurring_twice_is_not_edited_blindly(self):
+        (self.root / 'doc.md').write_text('236 (a), 236 (b) and 237 (c)\n', encoding='utf-8')
+        out = "  FAIL: doc.md: expected to contain '233 ('"
+        edits, manual = fx.propose(self.root, out, [('doc.md', '236 (', None)], [('doc.md', '233 (', None)])
+        self.assertEqual(edits, []); self.assertEqual(len(manual), 1)
+
+    def test_crlf_files_keep_their_line_endings(self):
+        p = self.root / 'doc.md'
+        p.write_bytes(b'line one\r\n1,159 studies extracted\r\nline three\r\n')
+        text, crlf = fx._read(p)
+        self.assertTrue(crlf); self.assertNotIn('\r', text)
+        fx._write(p, text.replace('1,159', '1,161'), crlf)
+        self.assertEqual(p.read_bytes(), b'line one\r\n1,161 studies extracted\r\nline three\r\n')
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

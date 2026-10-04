@@ -20,7 +20,7 @@ Usage (from legal-last-mile-systematic-review/):
   python3 code/screening/resolve_a16_pending_reversals.py --reviewer "Initials" --apply   # write
 Then: bash code/analysis/regenerate_all.sh (the verifier must pass; counts in README/PRISMA/manuscript are computed or flagged by it) and add a
 dated CHANGELOG entry. After a real reversal the verifier and two tests WILL fail on hand-written figures (rehearsed end to end on a scratch copy with two mock new
-includes: 36 verifier failures); run `python3 code/analysis/fix_documented_counts.py` (dry run, then --apply; it fixed 24 of 42 in the rehearsal and lists the rest as MANUAL) and update the remainder from the numbers the verifier names, in this order of files: README.md and the repository-root README.md (include/exclude
+includes: 36 verifier failures); run `python3 code/analysis/fix_documented_counts.py` (dry run, then --apply; it fixed 35 of 38 when three A22 includes were excluded in a rehearsal and lists the rest as MANUAL) and update the remainder from the numbers the verifier names, in this order of files: README.md and the repository-root README.md (include/exclude
 totals, extraction rows, tool counts, quantitative/qualitative split, exclusion total and per-code breakdown, reviewer-2 coverage), 06_outputs/prisma/prisma_flow.md
 and PRISMA_WORKFLOW.md (included and excluded totals), 04_quality/risk_of_bias/2026-09-28_evidence_limitations.md (tool table, causal-capable, abstract-only,
 mechanism-certainty, legal-system and country counts), the dated-correction sentence in RISK_OF_BIAS.md, the A16 figures (README, DECISIONS_AND_OPEN_ITEMS A16, decision

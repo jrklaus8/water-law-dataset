@@ -17,7 +17,7 @@ Also checks that 00_admin/current_figures.json is up to date with the databases.
 
 No third-party dependencies. Read-only.
 """
-import csv, json, subprocess, sys
+import csv, json, os, subprocess, sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -25,6 +25,7 @@ import current_figures as cf  # noqa: E402
 
 ROOT = cf.ROOT
 fails, passes = [], 0
+EXPECTED = []  # (file, phrase, label) for every hand-written phrase the verifier looks for; dumped when VERIFY_EMIT_EXPECTED is set (used by fix_documented_counts.py)
 
 
 def check(cond, msg):
@@ -55,6 +56,7 @@ def text(rel):
 
 
 def has(rel, needle, label=None):
+    EXPECTED.append((rel, needle, label))
     check(needle in text(rel), f"{rel}: expected to contain {needle!r}" + (f" ({label})" if label else ''))
 
 
@@ -124,6 +126,7 @@ check((ROOT / 'AI_USE_STATEMENT.md').exists(), 'AI_USE_STATEMENT.md is missing')
 top_txt = (ROOT.parent / 'README.md').read_text(encoding='utf-8')
 for needle in (f"**{inc_n:,} include / {exc_n:,} exclude**", f"{n:,} studies extracted", f"all {F['tool_applicable']:,} to which one applies",
                f"{F['quantitative_synthesis_eligible']} studies quantitative-synthesis-eligible, {F['qualitative_synthesis_eligible']:,} qualitative"):
+    EXPECTED.append(('../README.md (repository root)', needle, None))
     check(needle in top_txt, f"../README.md (repository root): expected to contain {needle!r}")
 has('06_outputs/prisma/prisma_flow.md', f"Studies included in systematic review (n = {inc_n:,}, FINAL)")
 has('06_outputs/prisma/prisma_flow.md', f"E05 no empirical evidence (n = {F['exclusion_by_code']['E05']})")
@@ -258,6 +261,7 @@ for _rel, _phrases in {
                                                    f'about {_a16_imp} of {_a16_pool}, range {_a16_lo}-{_a16_hi}')}.items():
     _t = _ws(_rel)
     for _ph in _phrases:
+        EXPECTED.append((_rel, _ph, 'A16 figure'))
         check(_ph in _t, f'{_rel}: A16 figure out of date, expected the phrase {_ph!r} (computed by build_a16_adjudication_sheet.py)')
 fresh(baa.OUT_MD, _baa_md, 'build_a16_adjudication_sheet.py')
 _aeb_rows, _aeb_md = aeb.build()
@@ -289,6 +293,8 @@ try:
 except (OSError, _sp.CalledProcessError):
     pass  # not a git checkout (e.g. an exported archive): nothing to compare
 
+if os.environ.get('VERIFY_EMIT_EXPECTED'):
+    Path(os.environ['VERIFY_EMIT_EXPECTED']).write_text(json.dumps(EXPECTED), encoding='utf-8')
 print(f"{passes} checks passed, {len(fails)} failed")
 for f_ in fails:
     print('  FAIL:', f_)
