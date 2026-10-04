@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (documentation) — ANALYSIS_PLAN section 13 drift
+
+- Reading `ANALYSIS_PLAN.md` section 13 against the current pipeline found one stale claim: that the R code in `08_code/R/` had never been run. A dated update paragraph now sits after the original (unchanged) text: the R scripts are exercised by `test_r_templates.py` and still stop by design on the real data; the Phase 11 verdict is quantified (1 of 62 rows numeric); the DOI-variant audit and reviewer_2 passes are done. The rest of the plan (sections 1-12) describes methods and does not state project status, so no other drift was found.
+
 ## 2026-10-04 (rehearsal 4) — excluding the five A22 candidates; two defects fixed
 
 - Rehearsed the A22 outcome on a scratch copy: queue S264, S314, S340, S462 and S513 as new E05 exclusions and run `resolve_a16_pending_reversals.py`. Two defects surfaced and are fixed. (1) `build_reclassification_proposal.py` has a hard-coded list of study ids that includes S340 and crashed with a `KeyError` once S340 was retired; it now skips studies that are no longer extracted. (2) The resolver did not remove a retired study from `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv` (the S356 precedent did), so the verifier stopped on "abstract_only_extractions csv differs from the extraction notes: S264, S314"; the resolver now removes retired studies from that list, and `test_a16_pipeline` asserts it. After the fixes the rehearsal ran every generator and test (apart from `test_search_reconciliation`, which fails by design until `prisma_flow.md` is updated) and the verifier completed with 42 failures, all hand-written counts (1,154 includes, 1,122 excludes, E05 135 to 140, tool counts and the A16 figures; the same file list as the other rehearsals).
