@@ -116,6 +116,7 @@ def build():
          "### 2.6 Synthesis", "",
          "Studies were coded to four mechanism families (eligibility, burden, discretion/accommodation, enforcement) and outcome families (formal connection, effective access, economic access, administrative outcomes) that are not pooled with each other. "
          f"A feasibility judgment (`phase11_quantitative_feasibility_judgment.md`) concluded that no family reaches the bar for meta-analysis, so {F['effect_size_rows']} effect-size rows were compiled into three structured syntheses reporting direction and significance of each study's own estimate (SWiM). "
+         + bmp.family_fit_clause() + " "
          "No effect was converted to a common scale. Sensitivity analyses removed abstract-only and shallow extractions, the one row for a study not flagged eligible, linked reports and two coding judgment calls.", "",
          "### 2.7 Secondary reviews", "",
          "Systematic reviews in the corpus are treated as secondary evidence and never pooled as if primary; their primary studies may also be in the corpus (a double-counting risk assessed only in part, Limitations).", "",

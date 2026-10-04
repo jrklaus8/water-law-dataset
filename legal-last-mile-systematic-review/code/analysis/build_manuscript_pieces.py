@@ -22,6 +22,15 @@ def reextraction_counts():
     return len(ds), sum(1 for d in ds if d.get('nonprefix')), sum(1 for d in ds if d.get('material_correction'))
 
 
+def family_fit_clause():
+    """Computed sentence: how many family-assigned effect-size rows sit outside their family's own wording (keyword audit, audit_effect_size_families.py)."""
+    import audit_effect_size_families as _aef
+    rows = _aef.build()
+    out = sum(1 for r in rows if r['fit'].startswith('outside'))
+    return (f"The family assignments were made by judgement and organise the write-up only: on a keyword reading of the exposure definitions, {out} of {len(rows)} family-assigned rows "
+            "sit outside the wording of the family they were placed in (`05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`), so the families are loose groupings, not tests of the specified constructs.")
+
+
 def reviewer2_ai_counts():
     """(AI full-text excludes re-read blind by the non-Claude models, of which judged include, records reviewed in all) from the reviewer-2 queue file; AI-versus-AI, not human."""
     import csv as _csv
@@ -63,7 +72,7 @@ def build():
          "[Model version and dates of use: add per journal policy.] The stage-by-stage division of labour is tabulated in `AI_USE_STATEMENT.md`.", "",
          "The review was conducted according to a written protocol (`PROTOCOL.md`) [registration status: draft prepared, not yet submitted]. Searches closed on " + SEARCH_CLOSED + f" and identified {RAW:,} records ({UNIQUE:,} after deduplication). Risk of bias was assessed with the instrument matching each study's design — RoB 2 (cluster variant) {tools['RoB 2']}, ROBINS-I {tools['ROBINS-I']}, JBI cross-sectional {tools['JBI Cross-Sectional']}, MMAT {tools['MMAT']}, CASP qualitative {tools['CASP Qualitative']}, AMSTAR 2 {tools['AMSTAR 2']} — and, for {tools['Legal Framework']} studies for which no published instrument fits, this project's own non-validated Legal Institutional Evidence Appraisal Framework; {tools['NONE']} studies were judged not appraisable. "
          "Ratings were assigned by rule from the extracted fields rather than by signalling-question reading of each paper. "
-         f"Synthesis followed SWiM guidance without meta-analysis: {F['effect_size_rows']} effect-size rows (Family A {fam['A']}, B {fam['B']}, C {fam['C']}, {fam['(none: reasoned non-fit)']} reasoned non-fits) were compiled and none was pooled.", "",
+         f"Synthesis followed SWiM guidance without meta-analysis: {F['effect_size_rows']} effect-size rows (Family A {fam['A']}, B {fam['B']}, C {fam['C']}, {fam['(none: reasoned non-fit)']} reasoned non-fits) were compiled and none was pooled. " + family_fit_clause(), "",
          "## 2. Results — PRISMA flow paragraph", "",
          f"The database and grey-literature searches identified {RAW:,} records; {UNIQUE:,} remained after deduplication. {TA_SCREENED:,} had an abstract and were screened at title/abstract level ({TA_NO_ABSTRACT:,} without an abstract were not decided); {F['title_abstract_include']:,} were retained for full-text assessment. "
          f"Full-text retrieval was closed by the researcher's decision: {dec:,} of {rec:,} records were assessed and {und:,} were never assessed ({F['unretrieved_not_retrievable']:,} not retrievable, {F['unretrieved_wrong_file']} for which the wrong file was obtained). "
