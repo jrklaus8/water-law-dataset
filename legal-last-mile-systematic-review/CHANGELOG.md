@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (code documentation) — docstring audit
+
+- Of 608 Python files, all 81 maintained scripts (everything outside `code/provenance/`) have a module docstring; the 527 without one are all one-shot historical records under `code/provenance/`, which `code/provenance/README.md` says not to edit or modernise (the authoritative record is the databases plus `git log`). So a docstring or type-hint pass over those would rewrite provenance and was not done. The verifier now requires a module docstring in every maintained script (155 checks).
+
 ## 2026-10-04 (figures) — independent re-derivation of the headline figures
 
 - `current_figures.py` feeds the verifier, the README checks and every generated text, so a bug in it would confirm itself. New `code/tests/test_current_figures_independent.py` (3 tests, run by `regenerate_all.sh`) recomputes the headline numbers with separate plain-csv code and its own prefix-based tool normalisation and compares them with `current_figures.json`: full-text records, includes, excludes, undecided, decided-without-reviewer-1, exclusion log and per-code counts, title/abstract includes and excludes, extraction rows, the tool counts (all eight), causal-capable designs, blank countries, effect-size rows by family, pooled rows, and one effect per study. All agree. A first version matched tool names by substring and disagreed, because free-text tool fields often mention another tool when explaining a reclassification; the test now uses prefixes, as the generator does.

@@ -273,6 +273,11 @@ for _path, _rows, _script in ((adq.OUT_CSV, adq.flag_audit(), 'audit_data_qualit
                              (asr.OUT_CSV, asr.audit(), 'audit_sparse_records.py'), (brp.OUT_CSV, _brp_rows, 'build_reclassification_proposal.py'), (baa.OUT_CSV, _baa_rows, 'build_a16_adjudication_sheet.py'), (aeb.OUT_CSV, _aeb_rows, 'audit_exclusion_basis.py'), (pdv.OUT_CSV, _pdv_rows, 'propose_design_vocabulary.py'), (aef.OUT_CSV, _aef_rows, 'audit_effect_size_families.py')):
     check(_csv_rows(_path) == _as_str(_rows), f'{_path.relative_to(ROOT)} is stale: run `python3 code/analysis/{_script}`')
 
+# every maintained script (everything outside code/provenance, which holds one-shot historical records that are deliberately not edited) has a module docstring
+import ast as _ast
+_nodoc = [str(q.relative_to(ROOT)) for q in sorted(list((ROOT / 'code').glob('**/*.py')) + list((ROOT / '08_code').glob('**/*.py'))) if 'provenance' not in q.parts and not _ast.get_docstring(_ast.parse(q.read_text(encoding='utf-8')))]
+check(not _nodoc, f'scripts without a module docstring: {_nodoc[:5]}')
+
 # provenance files the verifier and generated texts depend on must be tracked by git (a `*.json` ignore rule once kept the 2026-10-04 re-extraction records out of the repository)
 try:
     import subprocess as _sp
