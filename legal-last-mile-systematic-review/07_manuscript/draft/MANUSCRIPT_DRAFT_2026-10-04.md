@@ -46,7 +46,7 @@ Searches closed on 2026-09-11; SSRN and Westlaw/Lexis were not searched (`SEARCH
 
 ### 2.4 Data extraction
 
-A 92-field extraction form (`CODEBOOK.md`) was completed for every included study by the AI, largely from full text; 62 studies were extracted from abstract or metadata only and an audit found further rows with signs of shallow extraction (Limitations). There was no second extractor. A seeded sample for human second extraction has been prepared (`03_extraction/second_extractor/`) but not yet completed.
+A 92-field extraction form (`CODEBOOK.md`) was completed for every included study by the AI, largely from full text; 49 studies were extracted from abstract or metadata only and an audit found further rows with signs of shallow extraction (Limitations). There was no second extractor. A seeded sample for human second extraction has been prepared (`03_extraction/second_extractor/`) but not yet completed.
 
 ### 2.5 Risk of bias and critical appraisal
 
@@ -97,7 +97,7 @@ Reasons for full-text exclusion (standardised codes; per-record rationale in `ex
 - **Volume and recency.** 1,159 studies; 985 (85%) published 2010 or later (median year 2018; 30 before 2000).
 - **Design mix** (evidence-map `study_design_class`; 349 studies carry free-text values outside the 8-value enum — the commonest are variants of "case study", e.g. ethnographic case study (16); qualitative case study (10); they are not in the counts that follow): qualitative 267, mixed-methods 207, observational 147, quasi-experimental 65, doctrinal 44, jurimetric 39, secondary systematic reviews 36, experimental 5. By appraisal tool: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 23, Legal Framework 447, NONE 13.
 - **Designs able to support a causal claim about a legal/administrative mechanism:** 68 (6%) — 63 quasi-experimental studies and 5 randomised trials (which are 4 distinct trials, see Section 3.4). 35 studies carry a numeric mechanism-certainty of 3 or 4 (the codebook's quasi-experimental or experimental evidence), **but only 10 of them are among the 68 ROBINS-I/RoB 2 studies; the other 25 are other designs, a coding inconsistency the audit flags** (`DATA_QUALITY_AUDIT_2026-09-29.md` §5); 238 sit at level 1 (documented association) and 286 at level 2; 596 carry narrative text instead of a 0–4 code.
-- **Geography** (`country` is free text; 124 studies name several countries or a region and are not counted below): India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 49, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. The dissertation's comparison countries are unevenly covered: **Brazil 87, Canada 15 (19 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).**
+- **Geography** (`country` is free text; 124 studies name several countries or a region and are not counted below): India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 50, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. The dissertation's comparison countries are unevenly covered: **Brazil 87, Canada 15 (19 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).**
 - **Legal systems** (rule-based buckets): blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
 - **Setting and language:** urban (incl. informal settlements) 525, rural 298, mixed/both 270, peri-urban 29, blank/other 37; English 1073 of 1,159 studies, Spanish 32, Portuguese 22, French 6.
 
@@ -108,27 +108,27 @@ Counts are studies for which the extraction coded the field `TRUE` (a blank is *
 | Mechanism coded | Studies | | Outcome coded | Studies |
 |---|---|---|---|---|
 | `institutional_fragmentation` | 663 | | `water_access` | 1,013 |
-| `discretion_accommodation` | 597 | | `formal_connection` | 577 |
-| `fees` | 542 | | `service_coverage` | 564 |
+| `discretion_accommodation` | 597 | | `formal_connection` | 579 |
+| `fees` | 543 | | `service_coverage` | 564 |
 | `service_area` | 482 | | `affordability` | 507 |
-| `political_coordination` | 475 | | `sanitation_access` | 457 |
-| `enforcement` | 455 | | `service_reliability` | 381 |
-| `participation` | 440 | | `service_quality` | 301 |
-| `eligibility` | 423 | | `service_continuity` | 250 |
+| `political_coordination` | 480 | | `sanitation_access` | 457 |
+| `enforcement` | 458 | | `service_reliability` | 382 |
+| `participation` | 444 | | `service_quality` | 302 |
+| `eligibility` | 423 | | `service_continuity` | 251 |
 | `burden` | 419 | | `service_quantity` | 206 |
-| `documentation` | 260 | | `refusal` | 107 |
+| `documentation` | 262 | | `refusal` | 107 |
 | `bureaucratic_assistance` | 215 | | `delay_outcome` | 95 |
-| `administrative_review` | 69 | | `application_success` | 75 |
+| `administrative_review` | 70 | | `application_success` | 75 |
 | `complaint` | 124 | |  |  |
 | `judicial_review` | 65 | |  |  |
 | `disconnection` | 107 | |  |  |
-| `reconnection` | 23 | |  |  |
+| `reconnection` | 24 | |  |  |
 
-Institutional fragmentation (663), official discretion/accommodation (597) and fees/tariffs (542) are the most frequently coded mechanisms; formal-connection (577) and affordability (507) outcomes are well represented, while sanitation access (457) is coded about half as often as water access (1,013). Mechanisms concerning redress and review — administrative review (69), judicial review (65), complaint (124), reconnection (23) — and application outcomes (refusal 107, delay 95, success 75) are coded far less often.
+Institutional fragmentation (663), official discretion/accommodation (597) and fees/tariffs (543) are the most frequently coded mechanisms; formal-connection (579) and affordability (507) outcomes are well represented, while sanitation access (457) is coded about half as often as water access (1,013). Mechanisms concerning redress and review — administrative review (70), judicial review (65), complaint (124), reconnection (24) — and application outcomes (refusal 107, delay 95, success 75) are coded far less often.
 
 ### 3.4 Risk of bias and confidence in the evidence
 
-Appraisal ratings are rule-based and, for most studies, depend on what was extracted (Methods 2.5). Of the 140 JBI cross-sectional studies, 59 were rated 'high concern', largely reflecting sparse extraction rather than demonstrated weakness. ROBINS-I ratings: Moderate 54, Serious 9. RoB 2 ratings: Some concerns 5; two of the randomised-trial studies (S294 and S366) report the same trial. A numeric mechanism-certainty code of 3 or 4 (quasi-experimental or experimental) was recorded for 35 studies, but only some of these are ROBINS-I or RoB 2 studies, a coding inconsistency reported in `DATA_QUALITY_AUDIT_2026-09-29.md` §5.
+Appraisal ratings are rule-based and, for most studies, depend on what was extracted (Methods 2.5). Of the 140 JBI cross-sectional studies, 56 were rated 'high concern', largely reflecting sparse extraction rather than demonstrated weakness. ROBINS-I ratings: Moderate 54, Serious 9. RoB 2 ratings: Some concerns 5; two of the randomised-trial studies (S294 and S366) report the same trial. A numeric mechanism-certainty code of 3 or 4 (quasi-experimental or experimental) was recorded for 35 studies, but only some of these are ROBINS-I or RoB 2 studies, a coding inconsistency reported in `DATA_QUALITY_AUDIT_2026-09-29.md` §5.
 
 **Are the AMSTAR 2 studies actually systematic reviews? Partly confirmed, partly not.**
 
@@ -174,7 +174,7 @@ A large part of the evidence base (557 studies by design class, plus 349 with fr
 
 ### 3.7 Gaps in the evidence base
 
-- **Geographic:** the Netherlands (1 single-country study) and Canada (15) — two of the dissertation's three comparison jurisdictions — are barely represented against Brazil (87); 599 (52%) of studies sit in the ten commonest single countries.
+- **Geographic:** the Netherlands (1 single-country study) and Canada (15) — two of the dissertation's three comparison jurisdictions — are barely represented against Brazil (87); 600 (52%) of studies sit in the ten commonest single countries.
 - **Design:** 5 randomised trials (4 distinct) and 63 quasi-experimental studies against 447 (39%) studies appraised with the project's own non-validated framework (the residual category for designs no published instrument fits, including doctrinal and documentary studies).
 - **Mechanisms/outcomes:** redress and review mechanisms and application-process outcomes are thinly coded (see Section 3.3); sanitation access less than water.
 - **Retrieval:** 1,383 title/abstract includes were never assessed. Their median publication year is 2014 versus 2018 for assessed records; 8.9% were published before 2000 versus 3.0%, and 30.9% in 2020 or later versus 42.7% — the unassessed set is older, so the corpus under-represents earlier literature.
@@ -194,8 +194,8 @@ A large part of the evidence base (557 studies by design class, plus 349 with fr
 
 - **Incomplete full-text screening.** 1,383 of 3,659 records (37.8%) were not assessed, and those not assessed are older on average; the review is not exhaustive and may under-represent earlier literature.
 - **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only 200 full-text includes were human-confirmed, 73 decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked.
-- **Thin extraction for some studies.** 62 studies were extracted from abstract or metadata only; there was no second extractor.
-- **Appraisal validity.** Ratings are rule-based; 447 studies were appraised with a non-validated project instrument; 59 of 140 JBI ratings are 'high concern' largely reflecting sparse extraction; only 11 of 23 AMSTAR 2 reviews could be given a confidence rating (10 Critically Low and 1 Low).
+- **Thin extraction for some studies.** 49 studies were extracted from abstract or metadata only; there was no second extractor.
+- **Appraisal validity.** Ratings are rule-based; 447 studies were appraised with a non-validated project instrument; 56 of 140 JBI ratings are 'high concern' largely reflecting sparse extraction; only 11 of 23 AMSTAR 2 reviews could be given a confidence rating (10 Critically Low and 1 Low).
 - **No pooled estimate.** Direction-of-association syntheses rest on 62 effect-size rows and are neither effect estimates nor certainty-graded (GRADE).
 - **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.
 - **Search scope.** SSRN and Westlaw/Lexis were not searched (`README.md`, Known limitations).
@@ -215,8 +215,8 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 ### 5.3 Missing or thin data
 
-- 62 studies were extracted from abstract or metadata only (5.3%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found 128 more rows with at least one sign of shallow extraction — 14 whose own notes say only the abstract or citation was read and 67 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 3 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.
-- 59 of 140 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
+- 49 studies were extracted from abstract or metadata only (4.2%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found 128 more rows with at least one sign of shallow extraction — 14 whose own notes say only the abstract or citation was read and 67 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 3 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.
+- 56 of 140 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
 - Of 62 effect-size rows, 7 give a confidence interval and 25 a standard error; estimates are as the papers report them and none is pooled.
 
 ## 6. Conclusion

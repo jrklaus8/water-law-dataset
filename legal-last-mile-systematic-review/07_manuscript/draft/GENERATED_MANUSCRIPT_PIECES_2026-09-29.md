@@ -16,8 +16,8 @@ The database and grey-literature searches identified 34,594 records; 27,481 rema
 
 - **Incomplete full-text screening.** 1,383 of 3,659 records (37.8%) were not assessed, and those not assessed are older on average; the review is not exhaustive and may under-represent earlier literature.
 - **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only 200 full-text includes were human-confirmed, 73 decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked.
-- **Thin extraction for some studies.** 62 studies were extracted from abstract or metadata only; there was no second extractor.
-- **Appraisal validity.** Ratings are rule-based; 447 studies were appraised with a non-validated project instrument; 59 of 140 JBI ratings are 'high concern' largely reflecting sparse extraction; only 11 of 23 AMSTAR 2 reviews could be given a confidence rating (10 Critically Low and 1 Low).
+- **Thin extraction for some studies.** 49 studies were extracted from abstract or metadata only; there was no second extractor.
+- **Appraisal validity.** Ratings are rule-based; 447 studies were appraised with a non-validated project instrument; 56 of 140 JBI ratings are 'high concern' largely reflecting sparse extraction; only 11 of 23 AMSTAR 2 reviews could be given a confidence rating (10 Critically Low and 1 Low).
 - **No pooled estimate.** Direction-of-association syntheses rest on 62 effect-size rows and are neither effect estimates nor certainty-graded (GRADE).
 - **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.
 - **Search scope.** SSRN and Westlaw/Lexis were not searched (`README.md`, Known limitations).

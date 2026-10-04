@@ -9,7 +9,7 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 
 ## Why several scenarios change nothing (or not)
 
-- **Abstract-only extractions (62 studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
+- **Abstract-only extractions (49 studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
 - **Linked reports:** 2 definite same-data links; 1 involves a study that has an effect-size row (S294 (Family B)), so S3 changes nothing in A, B or C.
 - **Studies with an effect-size row but not flagged eligible (S589):** S589 is in Family A; S2 removes it.
 - **Sparse-audit strong and moderate rows (S1b):** removes 3 study(ies) from the families (S104;S174;S358); Family A goes from k = 20 to 18, B from 6 to 6, C from 20 to 19. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
@@ -29,22 +29,22 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 Tests: **A** — more than half of the studies are concordant with "recognition/eligibility improves access" (the Family A document's substantive reading, not the raw sign);
 **B** — no study is negative or null; **C** — no single sign holds a majority. Signs are as extracted; see the Family A and C documents for why sign and valence differ.
 
-## Descriptive counts with the 62 abstract-only extractions removed
+## Descriptive counts with the 49 abstract-only extractions removed
 
-Studies: 1,159 → 1,097. Risk-of-bias tool distribution:
+Studies: 1,159 → 1,110. Risk-of-bias tool distribution:
 
 | Tool | All | Without abstract-only | Change |
 |---|---|---|---|
-| MMAT | 205 | 192 | -13 |
-| JBI Cross-Sectional | 140 | 129 | -11 |
-| CASP Qualitative | 263 | 233 | -30 |
+| MMAT | 205 | 195 | -10 |
+| JBI Cross-Sectional | 140 | 133 | -7 |
+| CASP Qualitative | 263 | 239 | -24 |
 | Legal Framework | 447 | 439 | -8 |
 | AMSTAR 2 | 23 | 23 | +0 |
 | ROBINS-I | 63 | 63 | +0 |
 | RoB 2 | 5 | 5 | +0 |
 | NONE | 13 | 13 | +0 |
 
-Every tool population keeps its rank order; the largest reductions are CASP Qualitative (30), MMAT (13), JBI Cross-Sectional (11).
+Every tool population keeps its rank order; the largest reductions are CASP Qualitative (24), MMAT (10), Legal Framework (8).
 
 ## What this does not test
 

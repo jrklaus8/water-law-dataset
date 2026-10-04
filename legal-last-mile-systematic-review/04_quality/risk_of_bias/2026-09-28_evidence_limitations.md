@@ -81,14 +81,14 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 1,031 name exactly one country, **124 name several countries or a region and are
-not counted under any single country below**, and 4 are blank; `legal_system` has hundreds of distinct strings
+vocabularies. Of the 1,159 studies, 1,032 name exactly one country, **124 name several countries or a region and are
+not counted under any single country below**, and 3 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
 that also appears in a multi-country study, and the "top countries" are shares of all 1,159 studies.
 
 Top single-country values: India 133 (11%), Brazil 87 (7.5%), South Africa 84 (7%),
-United States 71 (6%), Ghana 53 (5%), Kenya 49 (4%), Mexico 37 (3%), Indonesia 30 (3%),
+United States 71 (6%), Ghana 53 (5%), Kenya 50 (4%), Mexico 37 (3%), Indonesia 30 (3%),
 Nigeria 28 (2%), Bangladesh 27 (2%), with the remaining ~95 single-country values each contributing
 fewer. India, Brazil, and South Africa alone account for 26% of the corpus (an earlier draft said 25%, from summing rounded shares) — a shift from the
 366-study snapshot (Brazil/India/South Africa then led at 29% combined, in a different order),
@@ -211,11 +211,11 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 62 of the 1,159
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 49 of the 1,159
 studies (5.3%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
-obtained at extraction time (CASP 30, MMAT 13 — S277 was re-read in full text on 2026-09-29 —, JBI Cross-Sectional 11, Legal Framework 8,
-AMSTAR 2 0 — S326 was re-read in full text on 2026-09-29 and moved to NONE, and S319, S324, S325 and S344 were re-read on 2026-10-02 and appraised from their full texts, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before either); 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
+obtained at extraction time (CASP 24, MMAT 10 — S277 was re-read in full text on 2026-09-29 —, JBI Cross-Sectional 7, Legal Framework 8,
+AMSTAR 2 0 — S326 was re-read in full text on 2026-09-29 and moved to NONE, and S319, S324, S325 and S344 were re-read on 2026-10-02 and appraised from their full texts, RoB 2 0 — S366, the only RoB 2 one, was re-extracted from its full text on 2026-09-29 (69 before either, and a further 13 re-extracted from full text on 2026-10-04: S331-S347 in the researcher's Drive; 71 and 10 before the abstract-only rows S299, a duplicate, and S356, an E05 exclusion, were retired). Their appraisals are honest about this — the CASP entries, for example,
 record "Can't tell" on 6 to 8 of 10 items (typically 7) — and S366 (RoB 2) is explicitly labelled
 LOW-CONFIDENCE. But a reader tabulating ratings by tool should not treat those 69 as
 equivalent to full-text appraisals; filter on `extraction_note` before doing so — the 69 are listed in
