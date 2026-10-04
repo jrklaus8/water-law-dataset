@@ -60,5 +60,45 @@ class TestSensitivity(unittest.TestCase):
             self.assertEqual(r['C_test_no_dominant_sign'] == 'holds', max(signs) * 2 <= int(r['C_k']), r['scenario'])  # no single sign holds a majority
 
 
+    def test_combined_scenario_is_the_union_and_k_never_rises(self):
+        last = self.sc[-1]
+        self.assertTrue(last['scenario'].startswith('S5'))
+        union = set()
+        for r in self.sc[1:-1]:
+            union |= {s for s in r['dropped_studies_in_families'].split(';') if s}
+        self.assertEqual({s for s in last['dropped_studies_in_families'].split(';') if s}, union)
+        for r in self.sc:
+            for f in 'ABC':
+                self.assertLessEqual(int(r[f'{f}_k']), int(self.sc[0][f'{f}_k']), (r['scenario'], f))
+                self.assertGreaterEqual(int(r[f'{f}_k']), int(last[f'{f}_k']), (r['scenario'], f))  # S5 removes the most
+
+
+class TestParsers(unittest.TestCase):
+    """parse_signs / parse_concordance read the SWiM documents; they must fail loudly rather than silently miscount."""
+    @classmethod
+    def setUpClass(cls):
+        sys.path.insert(0, str(ROOT / 'code/analysis'))
+        import sensitivity_analysis as sa
+        cls.sa = sa
+
+    def with_text(self, text):
+        orig = self.sa.swim_text
+        self.sa.swim_text = lambda fam: text
+        self.addCleanup(setattr, self.sa, 'swim_text', orig)
+
+    def test_parses_a_well_formed_table(self):
+        self.with_text('x\n## Results\n| Positive (n) | 2 | S001, S002 |\n| Null | 1 | S003 |\n## Next\n| Negative | 1 | S009 |\n')
+        self.assertEqual(self.sa.parse_signs('A'), {'S001': 'positive', 'S002': 'positive', 'S003': 'null'})  # the table after the next heading is ignored
+
+    def test_a_count_that_disagrees_with_the_listed_ids_is_an_error(self):
+        self.with_text('x\n## Results\n| Positive | 3 | S001, S002 |\n## Next\n')
+        with self.assertRaises(AssertionError):
+            self.sa.parse_signs('A')
+
+    def test_concordance_labels(self):
+        self.with_text('| Consistent with it | 2 (67%) | S001, S002 |\n| Counter-pattern here | 1 (33%) | S003 |\n')
+        self.assertEqual(self.sa.parse_concordance(), {'S001': 'concordant', 'S002': 'concordant', 'S003': 'counter'})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

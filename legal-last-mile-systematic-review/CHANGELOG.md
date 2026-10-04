@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tests) — sensitivity tests extended; lint pass
+
+- `test_sensitivity_invariants.py` has 8 tests (was 4): the combined scenario S5 drops exactly the union of the other scenarios and k never rises or falls below it; the SWiM-table parsers read a well-formed table, ignore tables after the next heading, and raise when a stated count disagrees with the study IDs listed (so a hand edit to a SWiM document cannot silently miscount). A pyflakes pass over all maintained code found only cosmetic "f-string without placeholders" notes, no unused imports or undefined names. No data or output changed.
+
 ## 2026-10-04 (housekeeping) — stray 25 MB wheel removed from the tree
 
 - `pymupdf-1.28.2-cp310-abi3-manylinux_2_28_x86_64.whl` had been committed into the project folder by an earlier `git add -A` (commit 790dab2) after a tool download. Nothing refers to it. It is removed from the tree and `*.whl` is now in `.gitignore`; it stays in git history (history is not rewritten on this shared branch). A link audit of the markdown files found no other broken file references.
