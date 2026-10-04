@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 tooling) — script to resolve queued reversals
+
+- `code/screening/resolve_a16_pending_reversals.py` added: turns the reversals queued by `apply_a16_adjudications.py` into real new inclusions (from a prepared full-text extraction JSON; assigns the next study ID) or new exclusions (retires the study ID; refuses studies with an effect-size row or a linked-report entry), updating the full-text database, exclusion log, study_record_map, extraction database and evidence map together, and moves resolved rows to `A16_RESOLVED_REVERSALS.csv`. Dry run by default; validates the whole batch before writing. Tested on a scratch copy with one include and one exclude: the linkage checks passed and the verifier then failed only on hand-written study counts (listed in the script's docstring) and on the deliberately copied test extraction (duplicate DOI, wrong year). No real data changed.
+
 ## 2026-10-04 (A16: full-text check of priority-1 triage calls)
 
 - Four priority-1 A16 records (R2DBFA78BFB76, RB8541E7A11B9, RF104A3C9A7FE, RF8BD93786D82) were read from their Drive full texts against `INCLUSION_EXCLUSION.md`, not only their abstracts. R2DBFA78BFB76 stays N (comparative case study of utility network extension into unplanned settlements; documentation, tenure and regulatory arrangements are the exposure; the water case is Lima, Delhi is electricity). R4D7CD4E75E33 (Guatemala hedonic valuation of connections by governance approach; abstract and introduction read) also moves to B for the same stated-value reason. The other three move from N to B: RB8541E7A11B9 has a legal exposure (tribunal petitions, manual-scavenging prohibition) but its outcomes are untreated wastewater and treatment capacity, not access; RF104A3C9A7FE is an infrastructure-condition survey of three schools in which rules appear as findings rather than as the exposure examined; RF8BD93786D82 is a stated-preference choice experiment, so criterion 4 is borderline.
