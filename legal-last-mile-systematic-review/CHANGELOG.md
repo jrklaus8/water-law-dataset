@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (figures) — independent re-derivation of the headline figures
+
+- `current_figures.py` feeds the verifier, the README checks and every generated text, so a bug in it would confirm itself. New `code/tests/test_current_figures_independent.py` (3 tests, run by `regenerate_all.sh`) recomputes the headline numbers with separate plain-csv code and its own prefix-based tool normalisation and compares them with `current_figures.json`: full-text records, includes, excludes, undecided, decided-without-reviewer-1, exclusion log and per-code counts, title/abstract includes and excludes, extraction rows, the tool counts (all eight), causal-capable designs, blank countries, effect-size rows by family, pooled rows, and one effect per study. All agree. A first version matched tool names by substring and disagreed, because free-text tool fields often mention another tool when explaining a reclassification; the test now uses prefixes, as the generator does.
+
 ## 2026-10-04 (extraction booleans) — outcome and mechanism flag audit
 
 - Consistency check of the extraction booleans: every one of the 1,159 studies has at least one outcome flag TRUE; every one of the 62 effect-size rows has a TRUE outcome flag matching its `outcome_family`. 17 studies (1.5%) have no mechanism flag TRUE: S206, S321, S322, S323, S324, S325, S327, S328, S329, S337 (reviews, an index, and secondary or non-appraisable items, where none is expected) and S651, S653, S655, S677, S696, S841, S896. For the last seven a mechanism is arguably codable from their own certainty text (S655 describes tenure-based barriers yet the `tenure` flag is not set; S651 a privatization framework; S696 democratic accountability; S896 formal-connection status). A coding gap of this size does not move any count that matters, so nothing was changed; listed for the human second extractor.
