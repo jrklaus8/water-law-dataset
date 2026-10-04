@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (extraction booleans) — outcome and mechanism flag audit
+
+- Consistency check of the extraction booleans: every one of the 1,159 studies has at least one outcome flag TRUE; every one of the 62 effect-size rows has a TRUE outcome flag matching its `outcome_family`. 17 studies (1.5%) have no mechanism flag TRUE: S206, S321, S322, S323, S324, S325, S327, S328, S329, S337 (reviews, an index, and secondary or non-appraisable items, where none is expected) and S651, S653, S655, S677, S696, S841, S896. For the last seven a mechanism is arguably codable from their own certainty text (S655 describes tenure-based barriers yet the `tenure` flag is not set; S651 a privatization framework; S696 democratic accountability; S896 formal-connection status). A coding gap of this size does not move any count that matters, so nothing was changed; listed for the human second extractor.
+
 ## 2026-10-04 (second extraction) — scorer edge cases tested
 
 - `test_second_extractor_scoring.py` now covers the edge cases (every row disagreeing on a single study: 100% with no crash; nothing judged: no division by zero and no "ALL FIELDS" line; one agreeing row), and the scorer's file read no longer leaves a file open. 6 tests. Noted while checking the remote branch: it holds an earlier Codex second-extractor run (`_reviewer2_codex/run_second_extractor.py`, results for 6 studies) that targets the older `second_extractor_sheet_BLANK_2026-09-29.csv` sample, not the S001-S200 sample of 2026-10-04; its results are not scored or documented here (the Codex and Gemini CLIs are not available in this environment).
