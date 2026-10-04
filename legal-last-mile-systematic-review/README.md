@@ -99,7 +99,7 @@ explained in full further down; this is the index.
    and `00_admin/DECISIONS_AND_OPEN_ITEMS.md` item A16. That is an
    AI-versus-AI check and is not counted here as human confirmation.
    Scaled by exclusion code it would imply roughly 468 further includes if
-   the models were right, and about 104 even under a narrow reading of
+   the models were right, and about 63 even under a narrow reading of
    criterion 2 by an AI triage; in the other direction 3 of 18 sampled
    unconfirmed includes look excludable. Arithmetic only, see
    `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`.)

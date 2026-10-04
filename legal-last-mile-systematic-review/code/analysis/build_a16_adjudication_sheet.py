@@ -19,7 +19,7 @@ FIELDS = ['priority', 'direction', 'record_id', 'study_id', 'year', 'authors', '
           'codex_decision', 'codex_code', 'codex_confidence', 'codex_criteria_not_yes', 'codex_design', 'codex_exposure', 'codex_outcome', 'codex_rationale', 'gemini_decision', 'gemini_code', 'gemini_confidence', 'gemini_criteria_not_yes', 'gemini_exposure', 'gemini_outcome', 'gemini_rationale',
           'claude_triage (N/B/X)', 'claude_triage_note', 'researcher_decision (include/exclude)', 'researcher_exclusion_code (E01-E12)', 'researcher_comment']
 
-# Claude's triage (2026-10-04) from each record's title and the models' own design/exposure/outcome summaries; the 15 priority-1 records first triaged N were then checked against their abstracts (notes say 'abstract checked') — NOT a full-text reading. A third AI opinion, of the same model family
+# Claude's triage (2026-10-04) from each record's title and the models' own design/exposure/outcome summaries; the 15 priority-1 records first triaged N were then checked against their abstracts (notes say 'abstract checked'), and four of them (R2DBFA78BFB76, RB8541E7A11B9, RF104A3C9A7FE, RF8BD93786D82) against the full text (notes say 'full text read'). A third AI opinion, of the same model family
 # as the original screener, to show how much of the disagreement turns on the scope reading. N = the exposure is a rule-type mechanism of the kind the codebook flags (eligibility, documents,
 # tenure, fees/tariffs, ownership, enforcement, disconnection, administrative rules or assistance) and the outcome is service access: would pass the narrow and the literal reading.
 # B = a general governance factor (participation, coordination, fragmentation, project or fiscal management) with an access outcome: passes the literal reading only. X = fails both readings
@@ -27,7 +27,7 @@ FIELDS = ['priority', 'direction', 'record_id', 'study_id', 'year', 'authors', '
 TRIAGE = {
     'R089ED6BEB7BE': ('B', 'abstract checked: a short descriptive agency report on coverage targets and budgets; the tariff is named as a constraint, not analysed'),
     'R08D3F4577102': ('X', 'outcome is professionals ranking hypothetical benefits of mobile payment, not measured access'),
-    'R2DBFA78BFB76': ('N', 'abstract checked: case study of how utilities extend networks into unplanned settlements in Delhi and Lima (institutional bricolage; documentation and tenure arrangements per the models)'),
+    'R2DBFA78BFB76': ('N', 'full text read (Drive): comparative case study (document analysis, two six-month field visits, interviews) of how utilities extend water and sanitation networks into unplanned settlements in Lima and Delhi; documentation, tenure and regulatory arrangements are the exposure. Passes the narrow reading; the water case is Lima, Delhi is electricity'),
     'R3974945F7707': ('B', 'project participation and needs assessment; service availability outcome'),
     'R3F83B65D41C0': ('B', 'abstract checked: a promotion programme (trigger meetings, follow-up visits, training) and toilet uptake, n = 538; behaviour-change assistance rather than an access rule'),
     'R4FFEE7FE13E6': ('X', 'land-linked groundwater rights, but access is mostly agricultural (exclusion 7, water-resource study)'),
@@ -36,13 +36,13 @@ TRIAGE = {
     'R96A74867D7C2': ('B', 'national urban policy and legislation for informal settlements, cross-country descriptive'),
     'RAAB22A572D27': ('X', 'exposure is religiosity and social norms, not an institutional factor'),
     'RAD91FA5DFF79': ('B', 'slum zone and income with service-delivery conditions; institutional factor weak'),
-    'RB8541E7A11B9': ('N', 'abstract checked: WIREs Focus article on three non-state actors and enforcement gaps in sanitation; check that it is empirical enough for criterion 3'),
+    'RB8541E7A11B9': ('B', "full text read (Drive): three qualitative case studies of non-state actors and law enforcement (National Green Tribunal petitions, manual-scavenging prohibition, 'legal exceptionalism'); the exposure is legal, but the outcomes are untreated wastewater and treatment capacity, not access, so criterion 1/4 are borderline (was N on the abstract)"),
     'RB9A117B7E3E9': ('B', 'municipal finance and decentralisation (74th Amendment); coverage outcome'),
     'RBFBE0C8DD5C3': ('B', 'deficient public provision and pump operating hours; institutional factor weak'),
     'RD9AA2E70843A': ('B', 'project governance and coordination with some cost-recovery rules'),
     'RE0841B3F072D': ('X', 'groundwater purchase agreement; outcomes are farmers and resource depletion'),
-    'RF104A3C9A7FE': ('N', 'abstract checked: survey of three rural schools; a toilet locked with a key that a quarter of pupils could not get; school rules restricting access'),
-    'RF8BD93786D82': ('N', 'abstract checked: choice experiment in Nima, Accra; connection fees and provider (AMA vs GWCL) shape willingness to pay; outcome is stated preference, not observed access'),
+    'RF104A3C9A7FE': ('B', 'full text read (Drive): pupil survey, observation and three administrator interviews in three rural schools; administrative rules (locked toilet, key access) appear as findings but the design is an infrastructure-condition survey, so criterion 2 is borderline (was N on the abstract)'),
+    'RF8BD93786D82': ('B', 'full text read (Drive): choice experiment, 344 households in Nima, Accra; provider (AMA v GWCL) and connection fee are attributes, but the outcome is stated willingness to pay, not observed access, so criterion 4 is borderline (was N on the abstract)'),
     'RFE07661F24F1': ('B', 'state-civil society partnerships under decentralisation'),
     'R72919F1AC937': ('B', 'abstract checked: national tubewell census and household survey arguing for comprehensive well testing; information policy rather than an access rule'),
     'RC0409B5F0BE0': ('B', 'fragmented multilevel governance, rationing and a public-private partnership'),
