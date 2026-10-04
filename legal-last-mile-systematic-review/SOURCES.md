@@ -120,7 +120,13 @@ risk-of-bias tool (`RISK_OF_BIAS.md` §1).
 
 **Verification:** Confirmed via web search (prisma-statement.org, PubMed
 33782057, multiple institutional repositories). Used for reporting per
-`PRISMA_WORKFLOW.md`.
+`PRISMA_WORKFLOW.md`. **Upgraded to full-text verification 2026-10-04**: a
+different session tool (not subject to this environment's egress block)
+fetched the paper's full text directly from PMC
+(https://pmc.ncbi.nlm.nih.gov/articles/PMC8005924/) and confirmed the
+exact wording and numbering of items 8, 10a/b, 13a-f, 16a/b, 20a-d,
+23a-d, 24a-c, 25, 26 and 27 against `06_outputs/prisma/PRISMA_2020_CHECKLIST.md`
+— all correct, no changes needed. See `00_admin/A9_INSTRUMENT_VERIFICATION_2026-10-04.md`.
 
 ## 6. PRISMA-P 2015
 
@@ -180,9 +186,14 @@ the exact 7 critical items this project has used all along** (2, 4, 7, 9,
 non-critical weakness = High; >1 non-critical weakness, no critical flaw
 = Moderate; 1 critical flaw = Low; >1 critical flaw = Critically Low) —
 directly validating the convention behind every one of this project's 34
-AMSTAR 2 appraisals (`RISK_OF_BIAS.md` §4), not just the citation. Same
-`EGRESS_BLOCKED` caveat as PRISMA-P above for full-text/exact-item-
-wording verification. Used strictly as a secondary-review appraisal tool
+AMSTAR 2 appraisals (`RISK_OF_BIAS.md` §4), not just the citation. **Upgraded to full-text verification 2026-10-04**: a different session
+tool (not subject to this environment's egress block) fetched the
+authors' own official guidance PDF directly
+(https://amstar.ca/docs/AMSTAR%202-Guidance-document.pdf) and confirmed
+the exact wording of all 16 items and the exact 7 critical items (2, 4,
+7, 9, 11, 13, 15) against every AMSTAR 2 appraisal form in this
+repository — all correct, no changes needed. See
+`00_admin/A9_INSTRUMENT_VERIFICATION_2026-10-04.md`. Used strictly as a secondary-review appraisal tool
 (`RISK_OF_BIAS.md` §1) — explicitly not as the primary-study risk-of-bias
 instrument.
 
