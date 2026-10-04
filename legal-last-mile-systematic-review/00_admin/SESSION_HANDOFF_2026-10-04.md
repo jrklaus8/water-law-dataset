@@ -4,7 +4,7 @@
 
 ## State in one paragraph
 
-Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3 code/analysis/verify_repository.py` passes (174 checks), and a fresh clone of the pushed branch also passes. Everything the AI can do without the researcher's decisions or PDFs it cannot reach is done: full-text re-extraction of 81 studies, all 62 effect-size rows compared with their sources, AMSTAR 2 for 17 of 23 reviews, a tool-reclassification proposal, supporting texts, a manuscript draft, an adjudication sheet for the blind-reviewer disagreements. What remains needs the researcher (decisions 1-14 in the brief, the human second extraction, PDFs) or PDFs that are not in Drive.
+Branch `claude/legal-last-mile-review-spec-8ri0zs` is pushed and clean; `python3 code/analysis/verify_repository.py` passes (174 checks), and a fresh clone of the pushed branch also passes. Everything the AI can do without the researcher's decisions or PDFs it cannot reach is done: full-text re-extraction of 81 studies, all 62 effect-size rows compared with their sources, AMSTAR 2 for 22 of 23 reviews (only S027 is unrated), a tool-reclassification proposal, supporting texts, a manuscript draft, an adjudication sheet for the blind-reviewer disagreements. What remains needs the researcher (decisions 1-14 in the brief, the human second extraction, PDFs) or PDFs that are not in Drive.
 
 ## How to resume
 
@@ -54,3 +54,9 @@ Exact next steps: (1) `git pull`; re-list the Drive inbox (`parentId = 13iSstCDB
 ## Update: fourth Drive-inbox batch (9 files, later on 2026-10-04)
 
 S470, S489 and S526 (the last three unchecked effect-size rows) were compared with their papers and all match (`FULLTEXT_VERIFICATION_2026-10-04.csv`; script `process_drive_inbox_2026-10-04d.py`), so all 62 rows are now checked (AI-on-AI). The other six files were renamed re-drops of papers already processed (S057, S084, S085, S483, S491; S489 twice). All nine are in `Processed`. The remaining missing full texts are the 19 in priorities 1-4 of `MISSING_FULLTEXTS_REQUEST_LIST_2026-10-04.csv` (five A19 excludes, five A22 includes, six AMSTAR 2 reviews and so on), then the lower-priority lists.
+
+## Update: fifth Drive-inbox batch (17 full texts, later on 2026-10-04)
+
+Done: 17 files read and moved to `Processed`. **AMSTAR 2** on the full text for S350, S427, S475 and S521 (Critically Low) and S537 (Low: its only critical flaw is the missing list of excluded studies); 22 of 23 reviews are now rated and only **S027** is missing (`04_quality/appraisal_forms/`, script `code/provenance/audit_and_repair/process_drive_inbox_2026-10-04e.py`). **Re-extraction** of S285 (abstract-only count now 16). **A22:** S297 read in full and proposed as borderline on criterion 3 (`02_screening/full_text/A22_VERDICTS_2026-10-04.csv`). **Stale-status includes** (S389, S392, S394, S396, S398, S402, S403, S418, S536, S537, with S388 and S397 read earlier): the extractions already rested on the full text and match it; blank sample sizes were filled and two entries were corrected (S402: the sample is 48 stakeholders, not households; S403: the Disability Act point is the authors' statement, not an interviewee finding, so legal measurement quality is lowered to moderate). The exclusion-basis audit and the missing-full-text list now count these as read. S489 and S418 arrived again (already processed).
+
+Still missing, in order: the five A19 excludes and four A22 includes (S264, S314, S340, S513) in `MISSING_FULLTEXTS_REQUEST_LIST_2026-10-04.csv` priorities 1 and 2; the S027 review; then 16 abstract-only extractions (S079 is in hand and needs no new text) and ten lower-priority status checks.

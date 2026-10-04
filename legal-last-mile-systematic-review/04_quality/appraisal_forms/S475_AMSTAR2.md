@@ -1,43 +1,28 @@
-# AMSTAR 2 Appraisal — S475
+# AMSTAR 2 appraisal (full text) — S475
 
-**Citation:** Murebwayire M.L., Nilsson E., Nhapi I., Wali U.G. (2025). A Systematic Review of Households' Fecal Sludge Management Situation to Identify Gaps and Improve Services: A Case of Kigali City, Rwanda. Sustainability 17(17):7588.
+**Citation:** Murebwayire ML, Nilsson E, Nhapi I, et al. (2025). A Systematic Review of Households' Fecal Sludge Management Situation to Identify Gaps and Priority Actions in Kigali, Rwanda. Sustainability 17(17):7588
 
-**Date appraised:** 2026-09-28 · **Appraiser:** Claude-AI-appraisal-2026-09-28
+**Date appraised:** 2026-10-04 · **Appraiser:** Claude-AI-appraisal-2026-10-04 · **Basis:** the full-text copy in the researcher's Drive inbox (not committed): Sustainability 17:7588, full text read (34 pages); the appendices (list of included publications, evaluation results) and the supplementary materials were not read. Supplementary files and appendices were **not read**. Supersedes the earlier abstract-level or partial pilot appraisal.
 
-Same tool-structure provenance and conservative NI convention as `S427_AMSTAR2.md`. **This
-study has materially richer extraction than the rest of this batch** — its own
-`selection_bias`/`measurement_bias` fields already record real, specific methodological
-facts (a named dual appraisal-tool approach, PRISMA 2020 methodology), so several items
-below carry a real Partial Yes rather than defaulting to NI.
+**Overall confidence: Critically Low** — critical items 2 (no protocol or registration located) and 7 (no list of excluded studies) are flawed; item 13 is also answered No because the quality ratings are reported but not used to weigh the findings in the text read; items 11 and 15 do not apply (no meta-analysis). Critical items: 2, 4, 7, 9, 11, 13, 15.
 
-## Item-level assessment
+| # | Critical? | Item | Answer | Basis (from the text read) |
+|---|---|---|---|---|
+| 1 | No | PICO components in the research questions and inclusion criteria | Partial Yes | project convention: the question concerns household faecal sludge management in Kigali (population, topic and outcomes); no comparator |
+| 2 | **Yes** | Review methods established prior to the review (protocol); deviations justified | No | CRITICAL FLAW: PRISMA 2020 is cited as a reporting guide; no protocol or registration is mentioned |
+| 3 | No | Selection of study designs explained | No | publications of any type from 2013 to 2024 were included (scientific and governmental sources); the choice of designs is not explained |
+| 4 | **Yes** | Comprehensive literature search strategy | Partial Yes | Google, Google Scholar, ResearchGate, PubMed and ScienceDirect with keyword strings; 2013-2024; no explicit reference-list searching and no statement of search dates or full strategies |
+| 5 | No | Study selection in duplicate | Partial Yes | 270 publications were screened by two reviewers against the criteria; independence and the handling of disagreements are not described |
+| 6 | No | Data extraction in duplicate | No | duplicate extraction is not described |
+| 7 | **Yes** | List of excluded studies with justification | No | CRITICAL FLAW: PRISMA counts only (270 screened, 73 retained); excluded publications and those whose full text was not reached are not listed |
+| 8 | No | Included studies described in adequate detail | Partial Yes | all 73 included publications are listed in an appendix (not read); the text summarises them by theme |
+| 9 | **Yes** | Satisfactory technique for risk of bias in included studies | Partial Yes | the adapted Newcastle-Ottawa Scale and JBI tools were used for 40 publications (17 high, 19 good, 1 satisfactory, 3 poor quality); the 33 government publications were not appraised with a risk-of-bias tool and were checked for authenticity only |
+| 10 | No | Funding sources of included studies reported | No | funding sources of the included publications are not reported |
+| 11 | **Yes** | Appropriate meta-analytic methods | No (n/a) | not applicable: no meta-analysis (narrative synthesis); not counted as a flaw |
+| 12 | No | Impact of risk of bias on meta-analysis results | No (n/a) | not applicable: no meta-analysis (narrative synthesis); not counted as a flaw |
+| 13 | **Yes** | Risk of bias accounted for when interpreting results | No | CRITICAL FLAW (conservative): the three poor-quality publications were kept because their findings aligned with high-quality studies, but the discussion does not weigh the findings by quality; the limitations section concerns the citywide focus and scarcity of literature |
+| 14 | No | Heterogeneity explained and discussed | No | themes are described; no heterogeneity discussion |
+| 15 | **Yes** | Publication bias investigated (quantitative synthesis) | No (n/a) | not applicable: no quantitative synthesis; publication bias is not discussed |
+| 16 | No | Conflicts of interest and funding of the review reported | No | a funding or conflict statement was not located in the text read |
 
-| # | Critical? | Answer | Basis |
-|---|---|---|---|
-| 1 | No | Partial Yes | Population (Kigali FSM households/stakeholders) and outcome (4 themes: access, services, public health, governance) defined; descriptive/thematic review, no intervention-effect comparator |
-| 2 | **Yes** | NI | PRISMA 2020 methodology named, but no protocol-registration (e.g. PROSPERO) statement extracted |
-| 3 | No | Partial Yes | Explicit rationale for including two distinct source categories (36 scientific studies + 32 government/policy documents) organized around 4 stated themes |
-| 4 | **Yes** | **Partial Yes** | "PRISMA 2020-reported systematic multi-database search strategy with documented inclusion/exclusion criteria" — real, specific, extracted evidence, though exact database count/names and bibliography/registry-searching aren't confirmed, so short of full Yes |
-| 5 | No | NI | Not stated |
-| 6 | No | NI | Not stated |
-| 7 | **Yes** | NI | Not stated |
-| 8 | No | Partial Yes | Real per-theme synthesis with specific findings (institutional fragmentation across named actors, enforcement-responsibility gaps, tenant-landlord maintenance disputes) |
-| 9 | **Yes** | **Partial Yes** | Extracted `measurement_bias` field states explicitly: "dual appraisal tools — Newcastle-Ottawa Scale for cross-sectional primary studies, JBI Critical Appraisal Checklist for opinion/review-type sources — applied across a heterogeneous source base." A real, named, design-matched RoB technique was used; cannot confirm it met AMSTAR 2's finer Yes-tier sub-criteria (confounding + selection bias + exposure/outcome ascertainment + selective-reporting coverage), so Partial Yes, not Yes |
-| 10 | No | NI | Not stated |
-| 11 | **Yes** | No meta-analysis conducted | Thematic/narrative synthesis |
-| 12 | No | No meta-analysis conducted | Same |
-| 13 | **Yes** | NI | No confirmation that the dual-appraisal-tool findings were discussed when interpreting results |
-| 14 | No | NI | Not stated |
-| 15 | **Yes** | No meta-analysis conducted | Same |
-| 16 | No | NI | Not stated |
-
-## Overall confidence rating: Not ratable (but the strongest evidentiary basis of the 6 newly-appraised studies alongside S521)
-
-Of the 5 applicable critical items (2, 4, 7, 9, 13): **2 have real, extracted Partial Yes
-evidence (4 and 9)** — genuinely more than the "all-NI" pattern seen across the rest of the
-2026-09-16 batch and S427/S438 above — but 3 remain NI (2, 7, 13), so a defensible formal
-label still cannot be computed. Because items 4 and 9 are Partial Yes rather than full Yes,
-even full confirmation of the 3 NI items would cap this review at **Low**, not
-Moderate/High, per AMSTAR 2's own algorithm (any critical-item shortfall caps the rating).
-**Re-extraction from the paper's full Methods section would very likely be able to close
-items 2, 7, and 13** given how much detail this extraction already captured elsewhere.
+Method note: where the text is silent the answer is No (AMSTAR 2's own convention). AMSTAR 2 rating rule: no critical flaw = High or Moderate; one critical flaw = Low; more than one = Critically Low. A 'Partial Yes' is not a flaw; items 11, 12 and 15 do not apply without a meta-analysis. Items 13 and 16 marked conservative or 'not located' rest on the extracted text, which can omit front and back matter.

@@ -33,6 +33,18 @@ DRIVE_CHECK = {
     'REA305644CBB3': 'full PDF in Drive (Chambolle 1999, French): utility-practitioner report on serving poor districts under concession contracts -- no empirical design; E05 plausible; status field stale',
     'RF22EFFAD48CC': 'PDF in Drive (Fracalanza et al. 2013, Portuguese): conceptual discussion of environmental justice and basin committees -- E05 plausible; status field stale',
     'RC9378CBDB2EE': 'full PDF in Drive (Šteflová et al. 2022, read 2026-10-04): City Blueprint governance-capacity study of desalinated drinking-water provision in Antofagasta; outcomes are barriers, perception and environmental impact, not access -- exclusion confirmed (E04 fits better than E01); see A19_RESCREEN_VERDICTS_2026-10-04.csv',
+    'R897B0E5CB3C7': 'full PDF in Drive (S388 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'RA1109B58A443': 'full PDF in Drive (S389 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R56D409CF27A6': 'full PDF in Drive (S392 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R03824D388779': 'full PDF in Drive (S394 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'RF20B9AADA984': 'full PDF in Drive (S396 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R64A7E6073EF0': 'full PDF in Drive (S397 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R2B5A92453E91': 'full PDF in Drive (S398 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R7170047A72DF': 'full PDF in Drive (S402 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R28001B16ADA4': 'full PDF in Drive (S403 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R79E038D49B1A': 'full PDF in Drive (S418 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'R0206140E81E4': 'full PDF in Drive (S536 read 2026-10-04): the extraction is consistent with the full text; status field stale',
+    'REA101C40B5BB': 'full PDF in Drive (S537 read 2026-10-04): the extraction is consistent with the full text; status field stale',
     'RAB6AA06D8E9D': 'not checked: no Drive text found (title: a climate-change and water-quality socio-economics study, Catalonia)',
     'R803988411D3E': 'portal page (Wageningen, book record): edited volume on socio-technical diversity in East African waste and sanitation; multi-chapter book, not a single study -- E12 defensible, though its empirical core is sanitation access',
     'R0B462A3EF2D7': 'full PDF in Drive (Leite et al. 2026): Balanced Scorecard for unbilled-water losses in a Portuguese utility -- utility management, not access; exclusion stands; status field stale',
@@ -103,7 +115,7 @@ def build():
          "| Group | Record | Year | Code | Title | In A16 sheet |", "|---|---|---|---|---|---|"]
     for r in rows:
         L.append(f"| {r['group']} | {r['record_id']} | {r['year']} | {r['exclusion_code']} | {r['title']} | {r['in_A16_sheet']} |")
-    chk = [r for r in rows if not r['drive_check'].startswith('not checked')]
+    chk = [r for r in rows if r['group'] in ('substantive', 'status_exclude') and not r['drive_check'].startswith('not checked')]  # the includes read later are not part of this exclude-focused count
     L += ['', '## What the Drive copies showed', '',
           f"An AI reading (same model family as the screener, so not independent) of the Drive copy of {len(chk)} of the {sum(1 for r in rows if r['group'] in ('substantive', 'status_exclude'))} substantive and status-contradicting excludes; the other {sum(1 for r in rows if r['group'] in ('substantive', 'status_exclude')) - len(chk)} have no Drive text. "
           f"Of the {len(chk)}, {sum(1 for r in chk if r['drive_check'].startswith('portal page'))} are only portal or landing pages (the original exclusion really was made on an abstract; on that abstract the exclusion is plausible or borderline, and for R155FFF508359 and RA1F6E143593E the code E07 would fit better) "

@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (data) — fifth Drive-inbox batch (17 full texts)
+
+- AMSTAR 2 on the full text for S350, S427, S475, S521 (Critically Low) and S537 (Low); 22 of 23 reviews rated (S027 outstanding). S285 re-extracted (abstract-only extractions 17 to 16). S297 read for A22 (borderline, `A22_VERDICTS_2026-10-04.csv`). Stale-status includes S389, S392, S394, S396, S398, S402, S403, S536 and S418 checked against their full texts: extractions confirmed, blank sample sizes filled, S402 and S403 entries corrected. `audit_exclusion_basis.py` now records the twelve includes read as read and keeps its exclude counts to the exclude groups. Script `process_drive_inbox_2026-10-04e.py` plus seven JSONs in `reextract_2026-10-04/`. No screening decision changed (A15).
+
 ## 2026-10-04 (data) — fourth Drive-inbox batch: last three effect-size rows checked
 
 - S470 (Amorim 2025), S489 (Koehler 2021) and S526 (Switzer & Teodoro 2025) compared with their full texts; every value matches (S470 REGU 19.2078, SE 0.8174, N 1,144, robustness 0.1345/0.1348/0.1313 on 2,280 observations; S489 OR 0.532 and 0.537, 1,215 households at 190 waterpoints; S526 -0.167, 0.310, -0.209, N 1,183). All 62 effect-size rows are now compared with the papers; none of the values changed. Script `code/provenance/audit_and_repair/process_drive_inbox_2026-10-04d.py`. Six more files in the batch were renamed re-drops of papers already processed; all nine were moved to `Processed`.

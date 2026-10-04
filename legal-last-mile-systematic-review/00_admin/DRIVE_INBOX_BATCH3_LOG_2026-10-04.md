@@ -96,3 +96,15 @@ The researcher dropped 88 full texts in the Drive inbox folder (`Sep 26 2026`). 
 ## Re-dropped copies (found 2026-10-04, after the batch above)
 
 Nine renamed copies of files already processed above appeared in the inbox (S445, S374, S361, S291, S164, S250, S161, S169, S109; six of them, S374, S361, S291, S250, S169 and S109, have exactly the byte size of the earlier copy; S164, S161 and S445 were not size-compared). Nothing new to extract: S445's effect-size row was already verified from its web-article text (the PDF copy has no machine-readable text layer, 156 MB), and the others were already re-extracted or checked. All nine were moved to `Processed`. The `Fulltext_Tracker` sheet stays in the inbox folder.
+
+## Fifth drop (17 files, later on 2026-10-04)
+
+| File key | Category | What was done |
+|---|---|---|
+| S350, S427, S475, S521, S537 | systematic or scoping review | AMSTAR 2 on the full text (S537 Low, the others Critically Low); extraction rows upgraded |
+| S297 | A22 include | read in full; borderline on criterion 3 (A22_VERDICTS_2026-10-04.csv) |
+| S285 | abstract-only row | re-extracted from the full text |
+| S389, S392, S394, S396, S398, S402, S403, S418, S536 | includes with a stale "no full text read" status | compared with the paper: extractions confirmed; blank sample sizes filled; S402 and S403 corrected |
+| S489 | effect-size row | second copy of a paper already verified (it also arrived in the fourth drop) |
+
+All 17 were moved to `Processed` after the commit. Scripts: `process_drive_inbox_2026-10-04e.py` and the JSONs in `reextract_2026-10-04/`.
