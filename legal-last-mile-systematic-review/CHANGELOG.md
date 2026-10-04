@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A22 follow-up) — S462 found in Drive by title; an inconsistency
+
+- Searching Drive by title (not only by record id) found S462's full article under an author-title file name. It is a multiobjective scenario-modelling study of water-supply investment pathways in the Federal District of Brazil with an equity angle, and it resembles the Kathmandu scenario-modelling paper R0532032FE3BB, which was excluded E06 (engineering only): one of the two decisions is inconsistent. S340 and S513 have no Drive copy even by title. Recorded in the `drive_check` column of the criterion-3 screen and in A22. Lesson for any future Drive search: try the title as well as the record id, because some files were saved under author-title names. No decision changed.
+
 ## 2026-10-04 (end-to-end rehearsal) — what a real A16 resolution will break
 
 - Rehearsed the whole A16 workflow on a scratch copy of the real repository with two mock reversals to include (apply, resolve, regenerate, tests, verifier). The scripts and linkage checks worked. Two defects found and fixed: `test_database_integrity` hard-coded the study-map status counts (1,159 active, one retired exclusion), which would have made `regenerate_all.sh` stop after the first real reversal before reaching the verifier, and `test_search_reconciliation` hard-coded the full-text totals; both now derive them from the files. A mock that swaps one include for one exclude (my first rehearsal) hid the second problem because the totals did not move.

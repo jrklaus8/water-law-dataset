@@ -22,6 +22,6 @@ An AI reading (same model family as the extraction, so not independent) of the c
 - **S264** — Drive file is only a Wageningen research-portal abstract page (Joy et al. 2014): a conceptual argument illustrated with evidence from India; no full text to judge how much is empirical
 - **S297** — Drive file is the journal page with the full introduction (Jones 2015): case-study research on WaterAid in Mali (collaborative fieldwork 2010-11); empirical case study, so it likely meets criterion 3
 - **S314** — Drive file is only a Wageningen research-portal abstract page (Mehta & Karpouzoglou 2015): states it shows that peri-urban waterscapes fall outside planning models for Ghaziabad; empirical basis cannot be judged from the abstract
-- **S340** — no Drive text found
-- **S462** — no Drive text found
-- **S513** — no Drive text found
+- **S340** — searched by title as well as record id: no Drive copy found
+- **S462** — full article in Drive under an author-title file name, not the record id (Araujo et al. 2024): multiobjective optimisation and scenario modelling of water-supply investment pathways for two service areas of the Federal District of Brazil, with equity disaggregation; model-based on local data, with little legal or institutional exposure. Compare R0532032FE3BB (Kathmandu scenario modelling), excluded E06: the two are alike, so one of the two decisions is inconsistent
+- **S513** — searched by title as well as record id: no Drive copy found
