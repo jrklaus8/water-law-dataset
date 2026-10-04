@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 abstract checks) — the 15 narrow-reading candidates checked against their abstracts
+
+- The 15 priority-1 records first triaged N (rule-type mechanism) were checked against their abstracts (Drive search snippets). 7 stay N (R2DBFA78BFB76 Lima/Delhi network extension; RB8541E7A11B9 enforcement gaps, empirical basis to check; RF104A3C9A7FE locked school toilets; RF8BD93786D82 connection fees and provider, stated preference; R4D7CD4E75E33 provider type and connection value; R69F53378C8F2 private participation panel; RDC5BD0E41BEE regulated tariffs and bill burden); 5 move to B (descriptive agency report, promotion programme, prison conditions, testing policy, a WTP thesis); 3 move to X (R21CAA5C1809C is a duplicate of S102 so E08 stands; RDAD34E024169 is a policy analysis without access data; RB955BA567B95 is an optimisation model).
+- Revised projections: about **104** further includes under the narrow reading and **366** under the literal reading (468 at the models' rate), against 1,159. The A16 sheet now notes two lessons: blind reviewers cannot see duplicates, and one exclusion rested on a non-significant access estimate, which is not an exclusion criterion. Brief, A16 and generated texts updated; verifier 132 checks.
+
 ## 2026-10-04 (A16 triage) — how much turns on the scope reading
 
 - The A16 sheet now carries Claude's triage of the 52 AI-exclude disagreements (column `claude_triage`: N = rule-type mechanism of the kind the codebook flags; B = general governance factor only; X = fails either reading). It is from titles and the blind models' own design/exposure/outcome summaries, not from the papers, and it is a third AI opinion from the same model family as the original screener. Priority 1 (both models include): 15 N, 12 B, 6 X; priority 3: 3 B, 16 X.
