@@ -35,7 +35,7 @@ Detail for each item: `DECISIONS_AND_OPEN_ITEMS.md`. Figures: `CURRENT_FIGURES.m
 
 ## Part 3 — What the AI will do the moment you answer
 
-- Apply decisions 1–14, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (172 checks) before every push.
+- Apply decisions 1–14, regenerate the report, HTML and Word versions, manuscript draft, sensitivity file and figures, and run the verifier (174 checks) before every push.
 - Score the filled second-extractor sheet and update the AI-use statement and limitations with the measured error rate.
 - Re-extract and appraise any PDF you supply (about 20 minutes of AI time each) and update the AMSTAR 2 count (13 of 23 rated now).
 - Draft the cover letter, a journal-specific AI-disclosure paragraph and a plain-language summary once decisions 1–4 and the second-extraction sheet are in.
