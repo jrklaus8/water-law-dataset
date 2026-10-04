@@ -62,6 +62,21 @@ def read_rows(path):
     return [{k: (v or '') for k, v in r.items() if k is not None} for r in rd if (r.get('study_id') or '').strip()]
 
 
+def coverage_note():
+    """One line on what the sample can and cannot speak for: it is drawn from S001-S200 only, which skews recent (checked against the whole corpus)."""
+    try:
+        sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
+        import current_figures as cf
+        ed = cf.read('ed')
+        yr = lambda rows: [int(r['publication_year']) for r in rows if r['publication_year'].strip().isdigit()]
+        a, b = yr([r for r in ed if int(r['study_id'][1:]) <= 200]), yr(ed)
+        return (f"NOTE: the sample was drawn from S001-S200 only ({100 * sum(y >= 2020 for y in a) / len(a):.0f}% published 2020 or later, against "
+                f"{100 * sum(y >= 2020 for y in b) / len(b):.0f}% of all {len(ed):,} extracted studies). The disagreement rate describes the AI's extraction of those 200 studies; "
+                "applying it to the later batches (S201-S1164) is an assumption, not a measurement.")
+    except Exception:  # pragma: no cover - the note is advisory; never block scoring
+        return ''
+
+
 def main(path):
     rows = read_rows(path)
     R = score(rows)
@@ -85,6 +100,9 @@ def main(path):
         for st in sorted(R['st_tot']):
             print(f"  {st:28} {R['st_tot'][st]:4d} {R['st_bad'][st]:8d} {100 * R['st_bad'][st] / R['st_tot'][st]:5.1f}%")
     print(f"studies with at least one disagreement: {len(R['per_study'])} of {R['n_studies']}; rows skipped (blank or cannot_tell): {sum(R['skipped'].values())}")
+    note = coverage_note()
+    if note:
+        print('\n' + note)
     return 2 if R['invalid'] else 0
 
 

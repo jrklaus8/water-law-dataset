@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (second extraction) — what the sample can speak for
+
+- Selection check of the second-extractor sample: it is drawn from S001-S200 only (by design, the includes the researcher already knows), and that subset skews recent: 75% published 2020 or later against 43% of all 1,159 extracted studies. The measured disagreement rate will therefore describe the AI's extraction of those 200 studies; extending it to S201-S1164 is an assumption. `score_second_extractor_sheet.py` now prints this caveat (computed from the data) with every score, and `03_extraction/second_extractor/README.md` has a section on it. Nothing in the sample changed.
+
 ## 2026-10-04 (design classes) — draft mapping of the free-text design labels (A20)
 
 - A check of `evidence_map.csv` against the enum in `DATA_DICTIONARY.md` confirmed the documented state: 810 of 1,159 studies carry an enum value (derived from the risk-of-bias tool) and 349 keep free-text labels by an earlier, disclosed decision. Other A16-sheet checks run in the same pass: 56 unique rows, priorities non-decreasing (33/19/4), every AI decision and code matches the full-text database, decision columns blank.
