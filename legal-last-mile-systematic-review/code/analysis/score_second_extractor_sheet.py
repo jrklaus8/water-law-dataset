@@ -56,6 +56,14 @@ def score(rows):
 
 def read_rows(path):
     """Read a filled sheet tolerantly (UTF-8 with or without BOM, else Windows-1252; ',' or ';' delimiter; padded headers), as a spreadsheet program may save it."""
+    if str(path).lower().endswith('.xlsx'):  # the drop-down version of the sheet (sheet_xlsx.py), filled in directly
+        sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
+        import sheet_xlsx
+        header, xrows = sheet_xlsx.read_xlsx(path)
+        missing = [c for c in ('study_id', 'field', VERDICT) if c not in header]
+        if missing:
+            raise SystemExit(f'the sheet lacks the column(s) {missing}; keep the original header row')
+        return [r for r in xrows if (r.get('study_id') or '').strip()]
     raw = __import__('pathlib').Path(path).read_bytes()
     try:
         text = raw.decode('utf-8-sig')

@@ -60,6 +60,20 @@ def norm_code(raw: str) -> str:
 def read_sheet(path: Path):
     """Read the researcher's filled sheet tolerantly: a spreadsheet program may save it with a UTF-8 BOM or in Windows-1252, with ';' as the
     delimiter (European locales), with stray spaces in headers or record ids, or with blank trailing rows. Raises ValueError if the required columns are missing."""
+    if path.suffix.lower() == '.xlsx':  # the drop-down version of the sheet (code/analysis/sheet_xlsx.py), filled in directly
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'analysis'))
+        import sheet_xlsx
+        header, xrows = sheet_xlsx.read_xlsx(path)
+        missing = [c for c in ('record_id', DEC_COL, CODE_COL) if c not in header]
+        if missing:
+            raise ValueError(f'the sheet lacks the column(s) {missing}; keep the original header row of the A16 sheet')
+        out = []
+        for r in xrows:
+            r = {k: (v or '').strip() for k, v in r.items()}
+            if r.get('record_id'):
+                r['record_id'] = r['record_id'].upper()
+                out.append(r)
+        return out
     raw = path.read_bytes()
     try:
         text = raw.decode('utf-8-sig')
