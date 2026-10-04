@@ -131,7 +131,7 @@ def run_model(prompt, out_path):
     else:
         cmd = [EXE, "-m", MODEL, "-p", "Follow the instructions in the input above and respond with ONLY the JSON object."]
         p = subprocess.run(cmd, input=prompt, text=True, encoding="utf-8", errors="replace",
-                           capture_output=True, timeout=1500, cwd=HERE, shell=(os.name == "nt"))
+                           capture_output=True, timeout=1500, cwd=HERE)
         last = p.stdout or ""
         open(tmp, "w", encoding="utf-8").write(last)
     dur = time.time() - t0
