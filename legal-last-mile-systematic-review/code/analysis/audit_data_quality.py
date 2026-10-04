@@ -189,7 +189,7 @@ def render(rows, findings, es_n, cov, am, yrs, cert):
          [f"| {a['study_id']} | {a['evidence_score']} | {'yes' if a['abstract_only'] else 'no'} | {'yes' if a['formally_rated'] else 'no'} | {a['signals']} |" for a in am] + \
          ["", "The weakest-evidenced studies deserve the earliest full-text check; S329 (\"narrative review with systematic search\") and S418 (\"narrative/scoping review\") are hybrids where the question is real, not just unconfirmed.", ""]
     big = [y for y in yrs if y[3] is None or abs(y[3]) > 1]
-    L += ["", f"## 4. `publication_year` versus the screening record's year", "",
+    L += ["", "## 4. `publication_year` versus the screening record's year", "",
           f"{len(yrs)} of the extraction rows have a different year from their full-text screening record; {len(yrs) - len(big)} differ by one year (usually online-first versus issue year), "
           f"and {len(big)} differ by more or are blank: " + ", ".join(f"{s} ({a} vs {b})" for s, a, b, d in big) + ". "
           "The report's recency statistics use the extraction field; a one-year difference cannot change them materially, but the larger ones should be checked against the papers. Not corrected here.", ""]

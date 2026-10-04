@@ -145,7 +145,7 @@ def render(F):
              "(or the databases changed and this file needs regenerating — run the script). Historical, dated documents",
              "(`CHANGELOG.md` entries, audit reports, `preliminary_*` logs) intentionally keep the figures that were true when written.", "",
              "## Screening", "",
-             f"| Stage | Figure |", "|---|---|",
+             "| Stage | Figure |", "|---|---|",
              f"| Title/abstract | {F['title_abstract_include']:,} include / {F['title_abstract_exclude']:,} exclude |",
              f"| Full-text records tracked | {F['full_text_records']:,} |",
              f"| Full-text decided | {F['full_text_decided']:,} ({F['full_text_include']:,} include / {F['full_text_exclude']:,} exclude) |",
@@ -155,7 +155,7 @@ def render(F):
              f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |",
              f"| Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | {F['reviewer_2_second_model_rows']} / {F['reviewer_2_second_model_conflicts']} |", "",
              "## Extraction and classification", "",
-             f"| Item | Figure |", "|---|---|",
+             "| Item | Figure |", "|---|---|",
              f"| Extraction rows / evidence-map rows | {F['extraction_rows']:,} / {F['evidence_map_rows']:,} |",
              f"| Highest study ID; retired-ID gaps | {F['study_id_max']}; " + ", ".join(F['study_id_gaps']) + " |",
              f"| Quantitative-synthesis-eligible / qualitative-synthesis-eligible | {F['quantitative_synthesis_eligible']} / {F['qualitative_synthesis_eligible']:,} |",
@@ -174,7 +174,7 @@ def render(F):
               "", "## Jurisdiction coverage (free-text fields; rule-based buckets, see current_figures.py)", "",
               f"`country`: {F['country_single_name_studies']:,} studies name exactly one country, {F['country_multi_or_regional_studies']} name several countries or a region, "
               f"{F['country_blank_studies']} are blank. Top single-country values: " + ", ".join(f"{k} {v}" for k, v in F['country_top10_single_name']) + ". "
-              f"`legal_system` buckets: " + ", ".join(f"{k} {v}" for k, v in F['legal_system_buckets'].items()) + ".",
+              "`legal_system` buckets: " + ", ".join(f"{k} {v}" for k, v in F['legal_system_buckets'].items()) + ".",
               "", "## Certainty scale and ratings", "",
               "`mechanism_certainty` numeric levels: " + ", ".join(f"{k}: {v}" for k, v in F['mechanism_certainty_numeric'].items()) +
               f"; {F['mechanism_certainty_narrative_text']} studies carry narrative text instead of a 0-4 code. ROBINS-I ratings: " +

@@ -83,7 +83,7 @@ def build():
          f"- **Thin extraction for some studies.** {F['abstract_only_extractions']} studies were extracted from abstract or metadata only; there was no second extractor. The AI re-read {reextraction_counts()[0]} studies from full texts after the first extraction (an AI check of AI work, not independent verification); in {reextraction_counts()[2]} of the {reextraction_counts()[1]} sparse-audit rows among them the abstract-level extraction was materially wrong or incomplete (`CAMPAIGN_NOTES.md`).",
          f"- **Appraisal validity.** Ratings are rule-based; {tools['Legal Framework']} studies were appraised with a non-validated project instrument; {F['jbi_high_concern']} of {tools['JBI Cross-Sectional']} JBI ratings are 'high concern' largely reflecting sparse extraction; only {n_rated_am} of {tools['AMSTAR 2']} AMSTAR 2 reviews could be given a confidence rating ({am_clause}).",
          f"- **No pooled estimate.** Direction-of-association syntheses rest on {F['effect_size_rows']} effect-size rows and are neither effect estimates nor certainty-graded (GRADE).",
-         f"- **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.",
+         "- **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.",
          "- **Search scope.** SSRN and Westlaw/Lexis were not searched (`README.md`, Known limitations).", "",
          "*Source of every figure: `00_admin/CURRENT_FIGURES.md`; checked by `python3 code/analysis/verify_repository.py`.*"]
     return "\n".join(L) + "\n"

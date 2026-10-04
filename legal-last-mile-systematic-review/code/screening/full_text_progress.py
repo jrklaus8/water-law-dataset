@@ -75,7 +75,7 @@ def main() -> int:
     if open_conflicts:
         print(f"\nWARNING: {len(open_conflicts)} record(s) marked conflict=true with no final_decision yet -- unresolved: {open_conflicts}")
 
-    print(f"\nPRISMA-line values as of now:")
+    print("\nPRISMA-line values as of now:")
     print(f"  Reports sought for retrieval (n = {total})")
     print(f"  Reports not retrieved (n = {status_counts.get('not_retrievable', 0)})")
     print(f"  Reports assessed for eligibility (n = {decision_counts.get('include', 0) + decision_counts.get('exclude', 0)})")
