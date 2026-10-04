@@ -29,6 +29,31 @@ amendments in particular must be logged here with rationale).
 - Merged the remote branch's reviewer-2 update (9 more Gemini rows, 108 reviewed in all; verifier path fix; AI-use-statement wording). The nine new rows are tier-3 includes that the models also include, so the includes-side sample grew from 18 to 27 re-read includes with the same 3 the models would exclude (S1117, S1053, S340): the implied count among the 959 unconfirmed includes is now about 107 (range 37-269), not about 160 (56-376). The generated texts recompute this on their own; the hand-written mentions in `README.md`, `DECISIONS_AND_OPEN_ITEMS.md` (A16), decision brief 13 and the session handoff were updated, along with the "99 of the 226" count in the README. The verifier did not catch these hand-written figures (it only checked curated phrases), so it now does: 15 new checks (154 in all) require the computed A16 figures (models' rate, narrow-reading count, includes-side k of n, implied count and range) in the README, `DECISIONS_AND_OPEN_ITEMS.md`, the decision brief and the session handoff; a deliberate stale README figure was confirmed to fail.
 - `build_a16_adjudication_sheet.py` and `build_manuscript_pieces.py` now read the newest `full_text_reviewer_2_FILLED_*.csv` instead of a hard-coded 2026-10-03 name (the remote left both a 2026-10-03 and a 2026-10-04 file, identical in content).
 
+## 2026-10-04 (reviewer 2, complete) — 121/121 available records reviewed; AI-vs-AI debate on A3/A5/narrative-reviews
+
+Gemini's tier 1-3 pass finished the remaining 13 records that had stopped it earlier; **every one of the 121
+reviewer-2 queue rows with an available PDF has now been independently re-screened** by at least one non-Claude
+model (was 108). 13 new agreements recorded, 0 new conflicts — total still 38 of 121 (31%). 98 of 121 have both
+models' independent verdicts; 21 of those split between Codex and Gemini.
+
+Separately, ran a two-round AI-vs-AI debate (Codex vs Gemini, each blind to the other's position in round 1, shown
+it in round 2) on three open items: `_reviewer2_codex/DEBATE_SYNTHESIS_2026-10-04.md`.
+
+- **Narrative reviews (13 studies, tool NONE):** both models converge on **exclude under E05**, consistent with
+  S356's precedent — "systematic empirical synthesis" requires documented, reproducible selection/synthesis
+  procedures that a narrative review lacks by definition, however much empirical material it discusses. Gemini
+  explicitly changed its initial position (keep as secondary evidence) after engaging with Codex's argument.
+- **Linked reports (A3):** both converge on collapsing only the two `same_underlying_data=yes` pairs (LR01
+  S294/S366, LR02 S097/S098) for counting and synthesis, keeping the 2 partial and remaining lower-confidence pairs
+  separate but linked. LR01 specifically: one trial, two companion outcome reports, not two independent studies.
+- **Family vocabulary (A5):** both converge on adopting the draft only as a multi-label coding scheme (not a
+  mutually-exclusive tabulation field), keeping every original label, and having a human manually assign one
+  primary mechanism per study for any headline table — not deriving it mechanically from the extraction booleans.
+
+None of this was applied to the data; it is advisory input for the researcher's own decision on A3, A5 and the
+narrative-reviews scope question. `_reviewer2_codex/results_gemini/`, `results_2ndextractor_codex/` and
+`_reviewer2_codex/debate/` hold the raw model output for every record and every debate round.
+
 ## 2026-10-04 (effect-size families) — fit of each row to its family's wording (A21)
 
 - Draft audit of the 46 family-assigned effect-size rows against the exposure words of `PROJECT_SPEC.md` §8, by keyword cue: 29 of 46 sit outside their family's wording (A 9 of 20, B 5 of 6, C 15 of 20). The family assignments were judgement calls from 2026-09-28 that only organise the SWiM write-ups (nothing was pooled), so no estimate changes, but the write-ups present A/B/C as the spec's constructs. New `code/analysis/audit_effect_size_families.py` writes `05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.{csv,md}`; wired into `regenerate_all.sh` and the verifier. Logged as A21 with three options. The generated methods paragraph and the manuscript draft now carry a computed sentence saying the families are loose groupings for the write-up (`family_fit_clause()` in `build_manuscript_pieces.py`). Keyword-based and arguable row by row; nothing in `effect_sizes.csv` changed.

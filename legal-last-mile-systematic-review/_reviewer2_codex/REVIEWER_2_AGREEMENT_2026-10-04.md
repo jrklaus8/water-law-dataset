@@ -2,16 +2,16 @@
 
 Models: Codex (`Codex-gpt-5.6-sol-reviewer2-fulltext-2026-10-03`), Gemini (`Gemini-gemini-3.1-flash-lite-reviewer2-fulltext-2026-10-03`). Both ran **blind**: phase 1 saw only `INCLUSION_EXCLUSION.md`, the checklist criteria and the PDF text — never `ai_decision` or `ai_reasoning`. Phase 2 (first-reviewer includes only) compared the paper against the extraction row's key fields.
 
-Scope: 108 of the 226 tier 1-3 rows reviewed (tier breakdown: tier 1 19/73, tier 2 62/103, tier 3 27/50), limited to records whose PDF was available in the researcher's Drive folder. 98 records were reviewed by **both** models independently (three-way comparison with the original AI possible).
+Scope: 121 of the 226 tier 1-3 rows reviewed (tier breakdown: tier 1 19/73, tier 2 62/103, tier 3 40/50), limited to records whose PDF was available in the researcher's Drive folder. 98 records were reviewed by **both** models independently (three-way comparison with the original AI possible).
 
 ## Agreement (primary model vs. original AI reviewer)
 
 | Measure | Count |
 |---|---|
-| Same include/exclude decision | 70 / 108 |
+| Same include/exclude decision | 83 / 121 |
 | Different decision | 38 |
 | Could not tell | 0 |
-| Same decision AND same exclusion code | 46 |
+| Same decision AND same exclusion code | 59 |
 
 ## Three-way comparison (both Codex and Gemini reviewed the same record)
 
@@ -23,7 +23,7 @@ Scope: 108 of the 226 tier 1-3 rows reviewed (tier breakdown: tier 1 19/73, tier
 |---|---|---|---|
 | 1 | 19 | 16 | 3 |
 | 2 | 62 | 30 | 32 |
-| 3 | 27 | 24 | 3 |
+| 3 | 40 | 37 | 3 |
 
 ## Row by row
 
@@ -136,7 +136,20 @@ Scope: 108 of the 226 tier 1-3 rows reviewed (tier breakdown: tier 1 19/73, tier
 | 205 | 3 | R85BDB2AE39E0 | S843 | include  | include  | gemini | no | - | Towards a situated urban political ecology analysis of packaged d |
 | 206 | 3 | R8A2445A92C67 | S846 | include  | include  | gemini | no | - | Integrating land tenure, infrastructure and water catchment manag |
 | 208 | 3 | R9E1C92EFDCBB | S907 | include  | include  | gemini | no | - | Water supply and sanitation sector of Karnataka, India: Status, p |
+| 209 | 3 | R9E826C424890 | S235 | include  | include  | gemini | no | - | Analysing inter-relationships among water, governance, human deve |
+| 211 | 3 | RA0E245C18B33 | S968 | include  | include  | gemini | no | - | Housing for Health in Indigenous Australia: Driving Change when R |
 | 212 | 3 | RA92812EC2661 | S995 | include  | include  | gemini | no | - | 'People Is All That Is Left to Privatize': Water Supply Privatiza |
+| 213 | 3 | RB132C2E6C253 | S207 | include  | include  | gemini | no | - | The 2020 reform of the water and sanitation services sector in Br |
+| 214 | 3 | RB57945A09D4B | S855 | include  | include  | gemini | no | - | Tracking user satisfaction of rural water services in northern gh |
+| 215 | 3 | RB96E8D94B2BD | S890 | include  | include  | gemini | no | - | Human Right in Perspective: Inequalities in Access to Water in a  |
+| 216 | 3 | RC3F88BC83E64 | S809 | include  | include  | gemini | no | - | Public-service provision in clientelist political settlements: Le |
+| 218 | 3 | RD78BE4E7A173 | S742 | include  | include  | gemini | no | - | Institutional arrangements for water resource use: A case study f |
+| 220 | 3 | RE6E898E698B5 | S873 | include  | include  | gemini | no | - | Malaysian Water Sector Reform: Policy and Performance |
+| 221 | 3 | REA98E915A1CD | S779 | include  | include  | gemini | no | - | Nineteenth century London water supply: Processes of innovation a |
+| 222 | 3 | REBD3E8E26D01 | S722 | include  | include  | gemini | no | - | Small-Scale Entrepreneurs in the Urban Water and Sanitation Marke |
+| 223 | 3 | REF5A05B72782 | S718 | include  | include  | gemini | no | - | Water for All: How To Combine Public Management with Commercial P |
+| 224 | 3 | RF12971C35B2E | S769 | include  | include  | gemini | no | - | Barriers to extending piped water distribution networks: The case |
+| 225 | 3 | RF7AB8DA9173B | S715 | include  | include  | gemini | no | - | Institutional water reforms in Kenya: an analytical review |
 
 ## Disagreements (primary model vs. original AI, or Codex vs. Gemini) — read first
 

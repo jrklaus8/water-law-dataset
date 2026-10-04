@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
-BLANK = os.path.join(ROOT, "03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-09-29.csv")
+BLANK = os.path.join(ROOT, "03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv")
 MAP_CSV = os.path.join(ROOT, "03_extraction/extracted_data/study_record_map.csv")
 
 ap = argparse.ArgumentParser()

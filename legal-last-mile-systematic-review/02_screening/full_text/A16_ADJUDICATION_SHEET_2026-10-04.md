@@ -37,7 +37,7 @@ For scale: the review currently has 1,159 full-text includes. Codes with no re-r
 
 ## The other direction: AI includes the models would exclude
 
-Tier 3 is a seeded random sample of includes beyond the 200 human-confirmed ones; the models re-read 27 and the primary model would exclude 3, and Claude's triage agrees on 3 of them (three of the four priority-4 rows below; the fourth, S397, comes from tier 1). Scaled to the 959 unconfirmed includes, that is about 107 (Wilson 95% range 37-269) studies that might not meet the criteria — arithmetic on 27 records, so the range is wide. It bears on precision, not on completeness, and is the strongest reason to finish the human second-screening of includes (brief, part 2).
+Tier 3 is a seeded random sample of includes beyond the 200 human-confirmed ones; the models re-read 40 and the primary model would exclude 3, and Claude's triage agrees on 3 of them (three of the four priority-4 rows below; the fourth, S397, comes from tier 1). Scaled to the 959 unconfirmed includes, that is about 72 (Wilson 95% range 25-191) studies that might not meet the criteria — arithmetic on 40 records, so the range is wide. It bears on precision, not on completeness, and is the strongest reason to finish the human second-screening of includes (brief, part 2).
 
 ## Records
 
