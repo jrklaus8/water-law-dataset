@@ -21,6 +21,59 @@ amendments in particular must be logged here with rationale).
 
 - The second rehearsal fixed only 4 of 17 failures because several different numbers matched each pattern. `verify_repository.py` now records every phrase it looks for (`VERIFY_EMIT_EXPECTED=file` dumps them as JSON); `fix_documented_counts.py` runs it on the last commit (temporary git worktree, `--old-ref`, default HEAD) and on the working tree, pairs phrases by file, label and position, and replaces the old phrase when it occurs exactly once; the pattern search stays as the fallback (`--no-exact` skips the mapping). It also keeps CRLF line endings, which the first version would have flattened. Rehearsal on a scratch clone (three included studies excluded): 35 of 38 failures repaired, the other three left for a person, and the verifier then showed only those three. Four new unit tests (9 in the file).
 
+## 2026-10-04 (tooling) — a second, working `/octo:review` pass; two real findings fixed
+
+- Re-ran the Octopus plugin's packaged `/octo:review` after diagnosing that one of its three failure causes from
+  earlier the same day (a hardcoded, unsupported Codex model for this account's login) is fixable through the
+  plugin's own documented config file (`${HOME}/.claude-octopus/config/providers.json`, outside this repository),
+  not by patching its shipped code. This time Codex and the plugin's internal Claude-sonnet provider both
+  completed (Gemini still failed on the same shell/auth-propagation gap as before). Reviewed a genuine fix to
+  `decode_drive.py`, whose Drive tool-result source directory was hardcoded to one Claude Code session's own
+  scratch path and would never work for anyone else; made it a required argument or `DRIVE_TOOL_RESULTS_DIR` env
+  var instead. The review returned two real findings, both verified: an unescaped `glob.glob()` pattern (a path
+  containing `[`/`]` could silently match nothing or the wrong files — fixed with `glob.escape()`), and a
+  pre-existing path-traversal risk (`d["title"]`, an untrusted Drive-supplied filename, was joined into the output
+  path with no validation — fixed with `os.path.basename()` plus a check against an empty or `.`/`..` result).
+  Full account in `_reviewer2_codex/OCTOPUS_REVIEW_DIAGNOSTIC_2026-10-04.md`'s second section. Also re-confirmed
+  no data at GitHub is stale: fetched the remote branch (fast-forward, no divergence), ran a full
+  `regenerate_all.sh` + `verify_repository.py` pass (158/158) and found zero working-tree diff against the
+  already-committed derived files, meaning everything on GitHub is byte-identical to what the pipeline produces
+  fresh from the current source data.
+
+## 2026-10-04 (documentation) — `reviewer_1` label variants documented as one reviewer
+
+- Closed a long-standing backlog item: `DATA_DICTIONARY.md` now explains that every `reviewer_1` value matching
+  `Claude*`/`claude*` (`Claude`, `claude`, `claude_sonnet_5`, the date-stamped `Claude-AI-1stpass-...` and
+  `Claude-AI-fulltext-...`/`Claude-AI-audit-...` forms) names the same AI reviewer across both screening-stage
+  files, with the date suffix recording the work session, not a different identity. Checked both files directly
+  (19,113 + 7,109 title/abstract rows; 8 distinct full-text variants) before writing the note — no stray values
+  found. Nothing in either CSV was changed, so no decision is affected; this only makes the existing field
+  auditable without reading the whole repository's history first. Attempted an exhaustive AMSTAR 2 reference-list
+  overlap extension to the 14 still-unchecked reviews first: none of their PDFs are present in the project's Drive
+  folder (most were one-off session chat uploads the researcher was told to keep a personal copy of, not Drive
+  deliveries), so that item stays blocked on retrieval, not on analysis.
+
+## 2026-10-04 (data quality) — twelve stale `not_retrievable` statuses on decided rows fixed
+
+- `DECISIONS_AND_OPEN_ITEMS.md`'s backlog had long flagged that twelve full-text-decided rows kept `full_text_status =
+  not_retrievable`, a contradiction (a decision requires something was read). Checked each one against its own `notes`
+  field rather than assuming: eight `include` rows (`RA1815DB6A8FD`, `R19F2163297EB`, `RC1E784D9D197`, `RF35F2E5A319B`,
+  `R78F5B66C5C9F`, `R9FA1C1004C69`, `R1197785426F6`, `RD1E30397691A`) already said "Extracted as S5xx" in their own
+  notes, proving retrieval directly — status corrected to `retrieved`, nothing else touched. The other four
+  (`R73C7494E55DD`, `RBEBE0BACCD18`, `RC1CB10DA729E`, `RE8D979932979`) are `exclude` rows the automated pipeline
+  could not download (CDN-blocked or paywalled); `EXCLUSION_BASIS_AUDIT_2026-10-04.md` had already independently found
+  and read each full PDF via Drive and reconfirmed the exclusion, so the status is corrected the same way, with a note
+  on the row itself pointing to that audit so the provenance is visible without cross-referencing a separate generated
+  file. No `full_text_decision` was changed. Regenerated: `EXCLUSION_BASIS_AUDIT_2026-10-04.md` dropped from 75 to 63
+  rows (the twelve false positives it had been flagging are gone); `verify_repository.py` passes 157/157.
+- Also genuinely invoked the Claude Octopus plugin's own packaged `/octo:review` pipeline against an unrelated,
+  real staged fix (`run_codex_reviewer2.py`'s unsafe `shell=True` Gemini dispatch) as a transparency exercise, per
+  this project's commitment to disclose every AI tool tried. All four round-1 providers failed for three
+  independently-diagnosed reasons (a stale internal OAuth token, a hardcoded unsupported Codex model, a Gemini
+  CLI auth/env-propagation gap) — see `_reviewer2_codex/OCTOPUS_REVIEW_DIAGNOSTIC_2026-10-04.md`. The project's own
+  `run_codex_reviewer2.py`/`run_second_extractor.py`/`run_debate.py` dispatch scripts remain the working, validated
+  reviewer_2 methodology and are unaffected.
+
 ## 2026-10-04 (tooling) — automatic fixer for documented counts
 
 - The rehearsals showed that the main manual burden after a real data change is 36-42 hand-written figures. New `code/analysis/fix_documented_counts.py` (dry run by default, `--apply` to write; 5 unit tests in `code/tests/test_fix_documented_counts.py`, run by `regenerate_all.sh`) reads the verifier's "expected to contain '...'" failures, builds a digit-wildcard regular expression from the expected phrase and replaces the old text when exactly one distinct old text matches in the named file. On the A22 rehearsal copy (42 failures) it applied 24 replacements and re-running the verifier left 17 failures, all listed as MANUAL (ambiguous short phrases such as `236 (` that match dozens of places, per-code breakdown sentences, and the root-README path, since fixed). It cannot judge whether a number in a dated historical document should change, so `git diff` must be read before committing. The resolver docstring and the handoff point to it.

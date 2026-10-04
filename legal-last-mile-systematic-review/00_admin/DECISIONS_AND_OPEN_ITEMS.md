@@ -61,8 +61,19 @@ regenerated in `00_admin/CURRENT_FIGURES.md`.
 ## D. Improvement backlog (no decision needed)
 
 - ~~Add a `record_id` column to `extraction_database.csv`~~ — done 2026-09-28 (last column; verifier checks it against the map).
-- Normalise `reviewer_1` labels (`Claude`, `claude`, `claude_sonnet_5`, date-stamped) with a documented mapping — decisions
-  unchanged. Twelve decided rows also retain a stale `not_retrievable` status although they were decided.
+- ~~Normalise `reviewer_1` labels (`Claude`, `claude`, `claude_sonnet_5`, date-stamped) with a documented mapping~~ —
+  done 2026-10-04. `DATA_DICTIONARY.md` now documents that every `Claude*`/`claude*` variant across both screening
+  files is the same reviewer identity, the date suffix being session provenance, not a different reviewer. The
+  underlying field itself was deliberately left untouched so that provenance is not lost.
+- ~~Twelve decided rows retained a stale `not_retrievable` status although they were decided~~ — fixed 2026-10-04. Eight
+  (`RA1815DB6A8FD`, `R19F2163297EB`, `RC1E784D9D197`, `RF35F2E5A319B`, `R78F5B66C5C9F`, `R9FA1C1004C69`, `R1197785426F6`,
+  `RD1E30397691A`) were `include` rows whose own notes already said "Extracted as S5xx" — status corrected to `retrieved`,
+  nothing else changed. The other four (`R73C7494E55DD`, `RBEBE0BACCD18`, `RC1CB10DA729E`, `RE8D979932979`) are `exclude`
+  rows the automated pipeline could not download (CDN-blocked or paywalled), but `EXCLUSION_BASIS_AUDIT_2026-10-04.md`
+  had already independently found and read each one's full PDF via Drive and reconfirmed the exclusion — status also
+  corrected to `retrieved` there, with a note on each row pointing to that audit so the provenance is traceable from the
+  row itself, not only from a separate generated file. No `full_text_decision` was changed; `verify_repository.py` still
+  passes 157/157 after the fix.
 - ~~Collapse the stale historical status rows in `PRISMA_WORKFLOW.md`~~ — done; old file archived verbatim at `11_archive/PRISMA_WORKFLOW_before_retirement_2026-09-28.md`.
 - Extend `verify_repository.py` with any figure a future document quotes (boolean-field, freshness and queue checks added 2026-09-29).
 - **New, from the Drive tidy-up (2026-10-03):** two records still `undecided`/`not_retrievable` in the screening database have PDFs in the Drive folder (`R0908697F9FE5` Santa Maria's Well; `RBEDB6556B711` Thirsty colonias). Screening closed 2026-09-28, so assessing them is a researcher decision; if a few PDFs exist for records marked `not_retrievable`, the status field is stale for those. Also: `Processed` holds many same-name copies (759 distinct names across at least 1,025 files) — a dedup pass is worth doing by hand or by a script that compares sizes/hashes.

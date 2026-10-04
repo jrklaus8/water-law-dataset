@@ -72,6 +72,17 @@ workflow.
 | final_decision | enum | `` / `include` / `exclude`, after conflict resolution |
 | notes | text | free text |
 
+**`reviewer_1` label normalization (documented 2026-10-04, no data changed):** across both screening-stage files,
+`reviewer_1` carries free text, not a fixed enum, and over the life of the project the same single AI reviewer has
+been recorded under several surface forms: `Claude`, `claude`, `claude_sonnet_5`, `Claude-AI-1stpass-YYYY-MM-DD`
+(title/abstract stage), and `Claude-AI-fulltext-YYYY-MM-DD` / `Claude-AI-audit-YYYY-MM-DD` (full-text stage). All of
+these denote the same reviewer identity — this project's primary AI screening/extraction assistant, referred to
+elsewhere in the repository simply as "Claude" (see `AI_USE_STATEMENT.md`) — never a different reviewer; the
+date-stamped suffix records which dated work session produced the row, which is useful provenance and is why the
+underlying field was **not** mechanically rewritten to a single canonical string. A later analysis that needs to
+group by reviewer rather than by session should treat every value matching `Claude*` or `claude*` (case-insensitive)
+as this one reviewer.
+
 **Relationship to `screening_database.csv`**: that file's own
 `full_text_decision`/`reviewer_1`/`reviewer_2`/`conflict` columns predate
 this file and are now **unused and superseded** — they were never
