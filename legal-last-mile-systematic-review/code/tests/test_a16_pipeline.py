@@ -93,7 +93,7 @@ class A16Base(unittest.TestCase):
         ed_cols = [c for c in headers(REL['ED']) if c not in ('study_id', 'record_id')]
         em_cols = [c for c in headers(REL['EM']) if c != 'study_id']
         d = self.root / REL['INC']; d.mkdir(parents=True, exist_ok=True)
-        (d / f'{rid}.json').write_text(json.dumps({'extraction': {c: 'v' for c in ed_cols}, 'evidence_map': {c: 'v' for c in em_cols}}), encoding='utf-8')
+        (d / f'{rid}.json').write_text(json.dumps({'extraction': {c: ('10.9/' + rid if c == 'doi' else 'v') for c in ed_cols}, 'evidence_map': {c: 'v' for c in em_cols}}), encoding='utf-8')
 
 
 D, C, M = apply_mod.DEC_COL, apply_mod.CODE_COL, apply_mod.COMMENT_COL
@@ -122,6 +122,13 @@ class TestApply(A16Base):
         pend = read(self.root / REL['PEND'])
         self.assertEqual([p['record_id'] for p in pend], ['R3']); self.assertEqual(pend[0]['researcher_exclusion_code'], 'E01')
         self.assertIn(b'\r\n', (self.root / REL['FT']).read_bytes()[:5000])  # CRLF preserved
+
+    def test_code_spellings_are_normalised(self):
+        for raw, want in (('e3', 'E03'), (' E3 ', 'E03'), ('E03 - wrong design', 'E03'), ('e12', 'E12'), ('E012', 'E12'), ('E13', 'E13'), ('x', 'X'), ('', '')):
+            self.assertEqual(apply_mod.norm_code(raw), want, raw)
+        self.adjudicate([{'record_id': 'R1', D: 'exclude', C: 'e6'}])  # a confirmed exclude with a different code, typed loosely
+        self.assertEqual(self.ft()['R1']['exclusion_reason'], 'E06')
+        rc, out = self.adjudicate([{'record_id': 'R2', D: 'exclude', C: 'E13'}], apply=False); self.assertEqual(rc, 2)
 
     def test_idempotent(self):
         rows = [{'record_id': 'R3', D: 'exclude', C: 'E01'}]
@@ -182,6 +189,28 @@ class TestResolve(A16Base):
         d = self.root / REL['INC']; d.mkdir(parents=True, exist_ok=True)
         (d / 'R2.json').write_text(json.dumps({'extraction': {'citation': 'x'}, 'evidence_map': {}}), encoding='utf-8')
         rc, out = self.resolve(); self.assertEqual(rc, 2); self.assertIn('columns differ', out)
+
+    def test_two_new_includes_get_consecutive_ids(self):
+        self.queue([{'record_id': 'R1', D: 'include'}, {'record_id': 'R2', D: 'include'}]); self.include_json('R1'); self.include_json('R2')
+        rc, _ = self.resolve(); self.assertEqual(rc, 0)
+        mp = {r['record_id']: r['study_id'] for r in read(self.root / REL['MAP']) if r['status'] == 'active'}
+        self.assertEqual((mp['R1'], mp['R2']), ('S005', 'S006'))
+
+    def test_include_of_a_record_that_is_already_included_is_refused(self):
+        self.queue([{'record_id': 'R1', D: 'include'}]); self.include_json('R1')
+        rows = read(self.root / REL['FT']); [r.update(final_decision='include', full_text_decision='include') for r in rows if r['record_id'] == 'R1']
+        write(self.root / REL['FT'], headers(REL['FT']), rows, '\r\n')  # someone included it in the meantime
+        before = (self.root / REL['MAP']).read_bytes()
+        rc, out = self.resolve(); self.assertEqual(rc, 2)
+        self.assertEqual((self.root / REL['MAP']).read_bytes(), before)
+
+    def test_new_include_with_a_doi_already_extracted_is_refused(self):
+        self.queue([{'record_id': 'R1', D: 'include'}]); self.include_json('R1')
+        p = self.root / REL['INC'] / 'R1.json'; d = json.loads(p.read_text(encoding='utf-8')); d['extraction']['doi'] = '10.1/S002'
+        p.write_text(json.dumps(d), encoding='utf-8')  # the A16 lesson: a blind reviewer cannot see that R21CAA5C1809C was already S102
+        before = (self.root / REL['MAP']).read_bytes()
+        rc, out = self.resolve(); self.assertEqual(rc, 2); self.assertIn('DOI', out)
+        self.assertEqual((self.root / REL['MAP']).read_bytes(), before)
 
     def test_dry_run_writes_nothing(self):
         self.queue([{'record_id': 'R1', D: 'include'}]); self.include_json('R1')

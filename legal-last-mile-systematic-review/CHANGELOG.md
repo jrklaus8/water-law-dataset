@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tooling) — A16 pipeline edge cases: duplicate DOI refused, loose exclusion codes accepted
+
+- New tests (15 in `test_a16_pipeline.py`, was 11) found a real gap: `resolve_a16_pending_reversals.py` would have accepted a new include whose DOI is already on an extraction row, which is exactly the R21CAA5C1809C = S102 situation a blind reviewer cannot see; only the verifier would have complained, after the files were written. It now refuses (also when two new includes share a DOI) and writes nothing. `apply_a16_adjudications.py` now reads `e3`, `E3`, `E03 - wrong design` as E03 (anything else outside E01-E12 is still rejected). Tests also cover consecutive study IDs for two new includes and a record that was included in the meantime. No data changed.
+
 ## 2026-10-04 (tooling) — mutation check of the verifier; two blind spots closed
 
 - New `code/analysis/check_verifier_mutations.py` copies the project to a scratch directory, applies one deliberate defect at a time (21 kinds: dropped or swapped rows, an include flipped to exclude, a duplicated DOI, a bad year or boolean, a tampered README figure, a deleted AI statement, ...) and runs the verifier on each. Result map: `00_admin/VERIFIER_MUTATION_MAP_2026-10-04.md`. About 12 minutes; not part of `regenerate_all.sh`.

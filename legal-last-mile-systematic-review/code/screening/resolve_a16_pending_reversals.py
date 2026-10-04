@@ -11,7 +11,7 @@ Per pending row (the whole batch is validated first; any problem stops the run b
   effect_sizes.csv row with a separate dated script (one prespecified effect per study, CODEBOOK section 12).
 - include -> exclude (new exclusion). Retires the study ID (map status retired_excluded, never reused), removes its extraction and evidence-map
   rows (and its row in the abstract-only sensitivity list, as the S356 precedent did), flips the full-text row to exclude with the researcher's code and comment, and appends an exclusion-log row. A study that has an
-  effect_sizes.csv row or a linked_reports entry is refused: handle those by hand first, because removing them changes the synthesis.
+  effect_sizes.csv row or a linked_reports entry is refused, and so is a new include whose DOI is already on an extraction row (or on another new include): handle those by hand first, because removing them changes the synthesis.
 Resolved rows move from A16_PENDING_REVERSALS.csv to A16_RESOLVED_REVERSALS.csv (with the study ID and date); re-running is safe.
 Precedent for the exclude direction: code/provenance/audit_and_repair/resolve_s356_exclude_2026-09-28.py.
 
@@ -64,6 +64,14 @@ def write(path: Path, fields, rows, eol):
     os.replace(tmp, path)
 
 
+def _norm_doi(doi: str) -> str:
+    d = (doi or '').strip().lower()
+    for pre in ('https://doi.org/', 'http://doi.org/', 'https://dx.doi.org/', 'doi:'):
+        if d.startswith(pre):
+            d = d[len(pre):]
+    return d
+
+
 def next_study_id(map_rows):
     n = max(int(re.sub(r'\D', '', r['study_id'])) for r in map_rows) + 1
     return f'S{n:03d}'
@@ -88,6 +96,7 @@ def main(argv=None):
     ft_by = {r['record_id']: r for r in ft}
     active_by_rec = {r['record_id']: r for r in mp if r['status'] == 'active'}
     errors, plan, new_id = [], [], next_study_id(mp)
+    seen_dois = {_norm_doi(r['doi']): r['study_id'] for r in ed if r['doi'].strip()}
     for p in pend:
         rid, dec, code = p['record_id'], p['researcher_decision'], p['researcher_exclusion_code']
         r = ft_by.get(rid)
@@ -106,6 +115,11 @@ def main(argv=None):
             em_extra = set(spec.get('evidence_map', {})) - set(em_f)
             if miss or extra or em_miss or em_extra:
                 errors.append(f'{rid}: extraction JSON columns differ (missing {sorted(miss)}, unknown {sorted(extra)}; evidence_map missing {sorted(em_miss)}, unknown {sorted(em_extra)})'); continue
+            doi = _norm_doi(spec['extraction'].get('doi', ''))
+            if doi and doi in seen_dois:
+                errors.append(f'{rid}: its DOI {doi} is already on extraction row {seen_dois[doi]} (a duplicate of an included study? a blind reviewer cannot see that, cf. R21CAA5C1809C = S102); resolve the duplicate first'); continue
+            if doi:
+                seen_dois[doi] = rid
             plan.append(('include', p, spec, new_id)); new_id = f"S{int(new_id[1:]) + 1:03d}"
         elif dec == 'exclude':
             if r['final_decision'] != 'include' or rid not in active_by_rec:

@@ -50,6 +50,13 @@ def _write(path: Path, fields, rows, eol):
     os.replace(tmp, path)
 
 
+def norm_code(raw: str) -> str:
+    """'e3', 'E3', 'E03 - wrong design' and ' e03 ' all mean E03; anything else is returned upper-cased so plan() can reject it."""
+    import re
+    m = re.match(r'\s*E\s*0*(\d{1,2})\b', raw or '', re.I)
+    return f'E{int(m.group(1)):02d}' if m else (raw or '').strip().upper()
+
+
 def read_sheet(path: Path):
     """Read the researcher's filled sheet tolerantly: a spreadsheet program may save it with a UTF-8 BOM or in Windows-1252, with ';' as the
     delimiter (European locales), with stray spaces in headers or record ids, or with blank trailing rows. Raises ValueError if the required columns are missing."""
@@ -85,7 +92,7 @@ def plan(sheet_rows, ft_by_id):
         if rid in seen:
             errors.append(f'{rid}: appears with a decision on more than one row of the sheet'); continue
         seen.add(rid)
-        code = (r.get(CODE_COL) or '').strip().upper()
+        code = norm_code(r.get(CODE_COL))
         if dec not in ('include', 'exclude'):
             errors.append(f'{rid}: decision must be include or exclude, got {dec!r}'); continue
         if dec == 'exclude' and code not in CODES:
@@ -132,7 +139,7 @@ def main(argv=None):
     pending = []
     for kind, rid, r in actions:
         row = ft_by_id[rid]
-        dec = r[DEC_COL].strip().lower(); code = (r.get(CODE_COL) or '').strip().upper(); comment = (r.get(COMMENT_COL) or '').strip()
+        dec = r[DEC_COL].strip().lower(); code = norm_code(r.get(CODE_COL)); comment = (r.get(COMMENT_COL) or '').strip()
         if kind == 'already':
             print(f'skip     {rid}: already adjudicated'); continue
         note = f'{MARK} {today} by {a.reviewer}: '
