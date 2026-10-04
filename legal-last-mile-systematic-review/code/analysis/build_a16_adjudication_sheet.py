@@ -76,6 +76,11 @@ TRIAGE = {
     'R00E98F4E387F': ('X', 'outcome is the effectiveness of participation, not access'),
     'R457A96841C7E': ('B', 'decentralised wastewater arrangements; descriptive service claims'),
     'RCFA60F99F5A8': ('X', 'seismic engineering programme; modelled post-earthquake service'),
+    # priority 4: the AI included, the models would exclude (X here = the triage agrees the record fails the criteria)
+    'R235E42D59F53': ('X', 'S1117: policy note scanning COVID-19 responses with no methods, search or selection described; criterion 3 doubtful (Codex E05; Gemini include)'),
+    'R4BCCFE408D51': ('X', 'S1053: participatory irrigation management for 115 farming households; irrigation, not household water or sanitation service (exclusion 7)'),
+    'R64A7E6073EF0': ('X', 'S397: outcome is whether a municipality formulated a sanitation policy, not access (the same outcome problem as S312 and S435); borderline'),
+    'R68F11D7E3F64': ('X', 'S340: desk-based literature review with no search or selection method; criterion 3 doubtful (already on the reclassification eligibility list)'),
     'R4D3518D8ACB3': ('B', 'licensing and permissions around a bottling plant; community exclusion from groundwater partly domestic'),
 }
 
@@ -120,6 +125,17 @@ def projection(cx, gm, queue):
         rows.append(dict(code=code, in_log=N, reread=len(rev), primary_include=prim, both_include=both,
                          projected=round(N * prim / len(rev)) if rev else None, triage_N=nN, triage_NB=nNB, proj_narrow=round(N * nN / len(rev)) if rev else None, proj_literal=round(N * nNB / len(rev)) if rev else None, lo=round(N * lo) if rev else None, hi=round(N * hi) if rev else None))
     return rows
+
+
+def includes_side():
+    """(tier-3 includes re-read, judged exclude by the primary model, implied count among unconfirmed includes, Wilson low, Wilson high)."""
+    cx, gm = _load('results'), _load('results_gemini')
+    queue = {r['record_id']: r for r in csv.DictReader(open(R2 / 'full_text_reviewer_2_FILLED_2026-10-03.csv', encoding='utf-8', newline=''))}
+    t3 = [q for q in queue.values() if q['priority_tier'] == '3' and (q['record_id'] in cx or q['record_id'] in gm)]
+    k3 = sum(1 for q in t3 if q['reviewer_2_decision (include/exclude/cannot_tell)'] == 'exclude')
+    F = cf.compute(); pool = F['full_text_include'] - F['reviewer_2_confirmed_includes']
+    lo, hi = _wilson(k3, len(t3))
+    return len(t3), k3, round(pool * k3 / len(t3)), round(pool * lo), round(pool * hi)
 
 
 def implied_total():
@@ -176,6 +192,15 @@ def build():
          "The last two columns use Claude's triage of the same records (column `claude_triage` in the CSV; from titles and the models' summaries, not from the papers): *narrow* counts only records whose exposure is a rule-type mechanism of the kind the codebook flags (N); *literal* adds general governance factors (N + B). Records the triage judges to fail either reading (X: outcome not service access, or exposure not institutional) count under neither.", "",
          "| Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied if the model rate held (95% range) | Implied, narrow reading (triage N) | Implied, literal reading (triage N + B) |", "|---|---|---|---|---|---|---|---|"]
     proj = projection(cx, gm, queue)
+    t3 = [q for q in queue.values() if q['priority_tier'] == '3' and (q['record_id'] in cx or q['record_id'] in gm)]
+    k3 = sum(1 for q in t3 if q['reviewer_2_decision (include/exclude/cannot_tell)'] == 'exclude')
+    k3x = sum(1 for q in t3 if q['reviewer_2_decision (include/exclude/cannot_tell)'] == 'exclude' and TRIAGE.get(q['record_id'], ('',))[0] == 'X')
+    pool3 = cf.compute()['full_text_include'] - cf.compute()['reviewer_2_confirmed_includes']
+    lo3, hi3 = _wilson(k3, len(t3))
+    inc_text = (f"Tier 3 is a seeded random sample of includes beyond the {cf.compute()['reviewer_2_confirmed_includes']} human-confirmed ones; the models re-read {len(t3)} and the primary model would exclude {k3}, "
+                f"and Claude's triage agrees on {k3x} of them (three of the four priority-4 rows below; the fourth, S397, comes from tier 1). Scaled to the {pool3:,} unconfirmed includes, that is about {round(pool3 * k3 / len(t3)) if t3 else 0} "
+                f"(Wilson 95% range {round(pool3 * lo3)}-{round(pool3 * hi3)}) studies that might not meet the criteria — arithmetic on {len(t3)} records, so the range is wide. It bears on precision, not on completeness, "
+                "and is the strongest reason to finish the human second-screening of includes (brief, part 2).")
     for p in proj:
         L.append(f"| {p['code']} {CODES.get(p['code'], '')} | {p['in_log']} | {p['reread']} | {p['primary_include']} | {p['both_include']} | "
                  + (f"{p['projected']} ({p['lo']}-{p['hi']}) | {p['proj_narrow']} ({p['triage_N']}) | {p['proj_literal']} ({p['triage_NB']})" if p['projected'] is not None else 'not estimable (none re-read) | - | -') + " |")
@@ -185,6 +210,8 @@ def build():
           "(2) one original exclusion (R69F53378C8F2, a 200-city panel on private-sector participation) rests partly on the access estimate being non-significant, which is not an exclusion criterion and would bias the review against null results.", "",
           "Counts in brackets are the re-read records the triage put in each group. The triage is a third AI opinion from the same model family as the original screener, so it may share its blind spots; it is offered to show how much turns on the scope reading, not as a decision.", "",
           f"For scale: the review currently has {cf.compute()['full_text_include']:,} full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.", "",
+          "## The other direction: AI includes the models would exclude", "",
+          inc_text, "",
           "## Records", "",
           "| Pri | Record | Title | AI code | Codex | Gemini |", "|---|---|---|---|---|---|"]
     for r in rows:

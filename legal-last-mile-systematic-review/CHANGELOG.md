@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (A16 includes side) — the precision question
+
+- Tier 3 of the blind check was a random sample of includes beyond S001–S200: of 18 re-read, the primary model would exclude 3 (S1117 policy note without methods; S1053 irrigation, not domestic service; S340 desk review) and Claude's triage agrees on all three; the tier-1 include S397 (outcome is policy formulation) is a fourth, borderline. Scaled to the 959 unconfirmed includes: about 160 (Wilson 95% 56–376) might not meet the criteria. Arithmetic on 18 records; nothing changed. Added to the A16 sheet (computed), the generated limitations, report and manuscript draft, the brief (decision 13) and A16. Verifier 132 checks.
+
 ## 2026-10-04 (results-based exclusions) — two excludes cite a non-significant result; decision 14 / A18
 
 - A text search of all 1,117 full-text exclusion reasons for wording about non-significance found two: R69F53378C8F2 (E06; the domestic-users estimate 'statistically insignificant') and R0B87CA1C5270 (E01; the water dimension's RR = 1.00). Eligibility that depends on results biases a review against null findings, and `INCLUSION_EXCLUSION.md` does not say otherwise. Nothing was changed: re-screening the two and adding a one-sentence protocol amendment is the researcher's decision (brief decision 14, A18).

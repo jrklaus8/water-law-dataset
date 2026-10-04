@@ -35,6 +35,10 @@ Counts in brackets are the re-read records the triage put in each group. The tri
 
 For scale: the review currently has 1,159 full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.
 
+## The other direction: AI includes the models would exclude
+
+Tier 3 is a seeded random sample of includes beyond the 200 human-confirmed ones; the models re-read 18 and the primary model would exclude 3, and Claude's triage agrees on 3 of them (three of the four priority-4 rows below; the fourth, S397, comes from tier 1). Scaled to the 959 unconfirmed includes, that is about 160 (Wilson 95% range 56-376) studies that might not meet the criteria — arithmetic on 18 records, so the range is wide. It bears on precision, not on completeness, and is the strongest reason to finish the human second-screening of includes (brief, part 2).
+
 ## Records
 
 | Pri | Record | Title | AI code | Codex | Gemini |
