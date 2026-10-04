@@ -19,7 +19,7 @@ FIELDS = ['priority', 'direction', 'record_id', 'study_id', 'year', 'authors', '
           'codex_decision', 'codex_code', 'codex_confidence', 'codex_criteria_not_yes', 'codex_design', 'codex_exposure', 'codex_outcome', 'codex_rationale', 'gemini_decision', 'gemini_code', 'gemini_confidence', 'gemini_criteria_not_yes', 'gemini_exposure', 'gemini_outcome', 'gemini_rationale',
           'claude_triage (N/B/X)', 'claude_triage_note', 'researcher_decision (include/exclude)', 'researcher_exclusion_code (E01-E12)', 'researcher_comment']
 
-# Claude's triage (2026-10-04) from each record's title and the models' own design/exposure/outcome summaries; the 15 priority-1 records first triaged N were then checked against their abstracts (notes say 'abstract checked'), and four of them (R2DBFA78BFB76, RB8541E7A11B9, RF104A3C9A7FE, RF8BD93786D82) against the full text (notes say 'full text read'). A third AI opinion, of the same model family
+# Claude's triage (2026-10-04) from each record's title and the models' own design/exposure/outcome summaries; the 15 priority-1 records first triaged N were then checked against their abstracts (notes say 'abstract checked'), and five of them (R2DBFA78BFB76, RB8541E7A11B9, RF104A3C9A7FE, RF8BD93786D82 full text; R4D7CD4E75E33 abstract and introduction) were read in Drive (notes say 'full text read' or 'abstract and introduction read'). A third AI opinion, of the same model family
 # as the original screener, to show how much of the disagreement turns on the scope reading. N = the exposure is a rule-type mechanism of the kind the codebook flags (eligibility, documents,
 # tenure, fees/tariffs, ownership, enforcement, disconnection, administrative rules or assistance) and the outcome is service access: would pass the narrow and the literal reading.
 # B = a general governance factor (participation, coordination, fragmentation, project or fiscal management) with an access outcome: passes the literal reading only. X = fails both readings
@@ -47,7 +47,7 @@ TRIAGE = {
     'R72919F1AC937': ('B', 'abstract checked: national tubewell census and household survey arguing for comprehensive well testing; information policy rather than an access rule'),
     'RC0409B5F0BE0': ('B', 'fragmented multilevel governance, rationing and a public-private partnership'),
     'R03DD1BAD1AD0': ('X', 'outcome is bottled-water purchase driven by trust, not access'),
-    'R4D7CD4E75E33': ('N', 'abstract checked: hedonic models of rental prices in Guatemala; value of connections differs by municipal, private or community management (ownership, Family C type)'),
+    'R4D7CD4E75E33': ('B', 'abstract and introduction read (Drive): governance approach (municipal, private, community) is the exposure, but the outcome is the stated rental value of a connection, a valuation rather than observed access, so criterion 4 is borderline, as for RF8BD93786D82 (was N on the abstract snippet)'),
     'RBCDE0E7C6962': ('B', 'NGO equity-and-inclusion approach (participation, design, some tariff reform)'),
     'RDAD34E024169': ('X', 'abstract checked: ECLAC policy analysis of tariff self-financing from cost information; no empirical access data, so the original E05 looks right'),
     'R09C9177378D2': ('B', 'drought-management institutions and programmes; access outcome'),
