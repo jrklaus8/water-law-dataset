@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (second extraction) — scorer hardened and tested before the human sheet arrives
+
+- `score_second_extractor_sheet.py` now separates a pure `score(rows)` from printing, warns about verdicts that are not Y, N or cannot_tell (they were silently skipped before, so a typed "yes" would have vanished from the denominator) and about rows with a second-extractor value but a blank verdict, adds a per-stratum breakdown and exits 2 on an invalid verdict. `code/tests/test_second_extractor_scoring.py` (4 tests) covers it and checks the blank sheet scores nothing. `regenerate_all.sh` now runs both test files and stops if one fails (before, a failing test would have been hidden by `tail`).
+
 ## 2026-10-04 (A16 tooling) — regression tests and a line-ending bug fix
 
 - New `code/tests/test_a16_pipeline.py` (9 stdlib unit tests; run by `regenerate_all.sh`): builds a tiny project tree in a temp directory with headers read from the real files and exercises `apply_a16_adjudications.py` and `resolve_a16_pending_reversals.py` (dry run writes nothing, confirm/recode/reverse, idempotence, invalid rows stop everything, next study ID never reuses a retired one, one-to-one invariants after a new include and a new exclude, refusals for effect-size rows and missing or malformed extraction JSON), plus a check that each real CSV the scripts touch is rewritten byte-identically.

@@ -2,7 +2,7 @@
 """Score a filled second-extractor sheet: agreement of the AI extraction with an independent human, by field and overall.
 
 Usage: python3 code/analysis/score_second_extractor_sheet.py path/to/filled_sheet.csv
-Counts rows whose `agrees (Y/N/cannot_tell)` is Y or N (cannot_tell and blank are excluded and reported). Reports disagreement rate with a Wilson 95% interval.
+Counts rows whose `agrees (Y/N/cannot_tell)` is Y or N (cannot_tell and blank are excluded and reported; any other verdict, and a filled value with a blank verdict, is flagged as a warning and not scored; exit code 2 if a verdict is invalid). Reports disagreement rate with a Wilson 95% interval.
 With ~60 studies the interval for any one field is wide (about +/-10 points); read the overall figure, not single fields.
 """
 import csv, math, sys
@@ -19,20 +19,43 @@ def wilson(k, n, z=1.96):
     return (c - h) / d, (c + h) / d
 
 
-def main(path):
-    rows = list(csv.DictReader(open(path, encoding='utf-8', newline='')))
-    col = 'agrees (Y/N/cannot_tell)'
+VERDICT = 'agrees (Y/N/cannot_tell)'
+VALID = {'Y', 'N', 'CANNOT_TELL', ''}
+
+
+def score(rows):
+    """Return a dict of the scoring results (see main for how they are printed). Pure function of the sheet rows, so it can be tested."""
     tot, bad, skipped = Counter(), Counter(), Counter()
+    st_tot, st_bad = Counter(), Counter()
     per_study = defaultdict(int)
-    for r in rows:
-        v = r[col].strip().upper()
+    invalid, filled_unjudged = [], []
+    for i, r in enumerate(rows, start=2):  # row 1 is the header
+        v = (r[VERDICT] or '').strip().upper().replace(' ', '_')
+        if v not in VALID:
+            invalid.append((i, r['study_id'], r['field'], r[VERDICT]))
         if v not in ('Y', 'N'):
             skipped[r['field']] += 1
+            if v == '' and (r.get('second_extractor_value') or '').strip():
+                filled_unjudged.append((i, r['study_id'], r['field']))
             continue
-        tot[r['field']] += 1
+        tot[r['field']] += 1; st_tot[r.get('stratum', '')] += 1
         if v == 'N':
-            bad[r['field']] += 1
+            bad[r['field']] += 1; st_bad[r.get('stratum', '')] += 1
             per_study[r['study_id']] += 1
+    return dict(tot=tot, bad=bad, skipped=skipped, st_tot=st_tot, st_bad=st_bad, per_study=per_study, invalid=invalid, filled_unjudged=filled_unjudged,
+                n_studies=len({r['study_id'] for r in rows}))
+
+
+def main(path):
+    rows = list(csv.DictReader(open(path, encoding='utf-8', newline='')))
+    R = score(rows)
+    tot, bad = R['tot'], R['bad']
+    if R['invalid']:
+        print(f"WARNING: {len(R['invalid'])} rows have a verdict that is not Y, N or cannot_tell and were NOT scored (sheet row, study, field, value):")
+        for x in R['invalid'][:20]:
+            print('   ', x)
+    if R['filled_unjudged']:
+        print(f"WARNING: {len(R['filled_unjudged'])} rows have a second-extractor value but a blank verdict and were NOT scored (e.g. sheet row {R['filled_unjudged'][0][0]}, {R['filled_unjudged'][0][1]} {R['filled_unjudged'][0][2]}).")
     print(f"{'field':22} {'n':>4} {'disagree':>8} {'rate':>6}   95% CI")
     for f in list(tot):
         lo, hi = wilson(bad[f], tot[f])
@@ -41,8 +64,13 @@ def main(path):
     if n:
         lo, hi = wilson(k, n)
         print(f"{'ALL FIELDS':22} {n:4d} {k:8d} {100 * k / n:5.1f}%   {100 * lo:.0f}-{100 * hi:.0f}%  (fields are not independent within a study)")
-    print(f"studies with at least one disagreement: {len(per_study)} of {len({r['study_id'] for r in rows})}; rows skipped (blank or cannot_tell): {sum(skipped.values())}")
+    if len(R['st_tot']) > 1:
+        print('\nby stratum (the sample was stratified by appraisal tool or extraction type; small cells are noisy):')
+        for st in sorted(R['st_tot']):
+            print(f"  {st:28} {R['st_tot'][st]:4d} {R['st_bad'][st]:8d} {100 * R['st_bad'][st] / R['st_tot'][st]:5.1f}%")
+    print(f"studies with at least one disagreement: {len(R['per_study'])} of {R['n_studies']}; rows skipped (blank or cannot_tell): {sum(R['skipped'].values())}")
+    return 2 if R['invalid'] else 0
 
 
 if __name__ == '__main__':
-    main(sys.argv[1])
+    sys.exit(main(sys.argv[1]))
