@@ -16,6 +16,19 @@ amendments in particular must be logged here with rationale).
 
 - The second rehearsal fixed only 4 of 17 failures because several different numbers matched each pattern. `verify_repository.py` now records every phrase it looks for (`VERIFY_EMIT_EXPECTED=file` dumps them as JSON); `fix_documented_counts.py` runs it on the last commit (temporary git worktree, `--old-ref`, default HEAD) and on the working tree, pairs phrases by file, label and position, and replaces the old phrase when it occurs exactly once; the pattern search stays as the fallback (`--no-exact` skips the mapping). It also keeps CRLF line endings, which the first version would have flattened. Rehearsal on a scratch clone (three included studies excluded): 35 of 38 failures repaired, the other three left for a person, and the verifier then showed only those three. Four new unit tests (9 in the file).
 
+## 2026-10-04 (documentation) — `reviewer_1` label variants documented as one reviewer
+
+- Closed a long-standing backlog item: `DATA_DICTIONARY.md` now explains that every `reviewer_1` value matching
+  `Claude*`/`claude*` (`Claude`, `claude`, `claude_sonnet_5`, the date-stamped `Claude-AI-1stpass-...` and
+  `Claude-AI-fulltext-...`/`Claude-AI-audit-...` forms) names the same AI reviewer across both screening-stage
+  files, with the date suffix recording the work session, not a different identity. Checked both files directly
+  (19,113 + 7,109 title/abstract rows; 8 distinct full-text variants) before writing the note — no stray values
+  found. Nothing in either CSV was changed, so no decision is affected; this only makes the existing field
+  auditable without reading the whole repository's history first. Attempted an exhaustive AMSTAR 2 reference-list
+  overlap extension to the 14 still-unchecked reviews first: none of their PDFs are present in the project's Drive
+  folder (most were one-off session chat uploads the researcher was told to keep a personal copy of, not Drive
+  deliveries), so that item stays blocked on retrieval, not on analysis.
+
 ## 2026-10-04 (data quality) — twelve stale `not_retrievable` statuses on decided rows fixed
 
 - `DECISIONS_AND_OPEN_ITEMS.md`'s backlog had long flagged that twelve full-text-decided rows kept `full_text_status =

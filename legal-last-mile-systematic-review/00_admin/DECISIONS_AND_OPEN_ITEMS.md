@@ -61,8 +61,10 @@ regenerated in `00_admin/CURRENT_FIGURES.md`.
 ## D. Improvement backlog (no decision needed)
 
 - ~~Add a `record_id` column to `extraction_database.csv`~~ — done 2026-09-28 (last column; verifier checks it against the map).
-- Normalise `reviewer_1` labels (`Claude`, `claude`, `claude_sonnet_5`, date-stamped) with a documented mapping — decisions
-  unchanged.
+- ~~Normalise `reviewer_1` labels (`Claude`, `claude`, `claude_sonnet_5`, date-stamped) with a documented mapping~~ —
+  done 2026-10-04. `DATA_DICTIONARY.md` now documents that every `Claude*`/`claude*` variant across both screening
+  files is the same reviewer identity, the date suffix being session provenance, not a different reviewer. The
+  underlying field itself was deliberately left untouched so that provenance is not lost.
 - ~~Twelve decided rows retained a stale `not_retrievable` status although they were decided~~ — fixed 2026-10-04. Eight
   (`RA1815DB6A8FD`, `R19F2163297EB`, `RC1E784D9D197`, `RF35F2E5A319B`, `R78F5B66C5C9F`, `R9FA1C1004C69`, `R1197785426F6`,
   `RD1E30397691A`) were `include` rows whose own notes already said "Extracted as S5xx" — status corrected to `retrieved`,
