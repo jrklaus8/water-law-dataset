@@ -26,6 +26,25 @@ amendments in particular must be logged here with rationale).
 - Anomaly scan of `full_text_screening_database.csv`: 3,659 unique record ids; no include carries an exclusion reason or detail and no exclude lacks them; `full_text_decision` equals `final_decision` throughout; no DOI repeats; no DOI has two different decisions; all 73 decided-without-reviewer-1 rows are the known ones. Two things found: (1) the `conflict` column mixes `FALSE` (200, human second reviewer), `false` (83) and `true` (38) from the Codex and Gemini passes, which is harmless (the one reader, `full_text_progress.py` and `current_figures.py`, lower-cases it) but untidy; left as written by the remote passes. (2) 12 decided records have status `not_retrievable` and 39 more only `oa_pdf_candidate` / `oa_page_candidate`. The 29 includes among them have extractions not marked abstract-only, so the status is most likely stale. The 21 substantive excludes among them have no trail of a read full text.
 - `audit_exclusion_basis.py` now reports this second group beside the phrase-match group (A19: about 30 substantive exclusions without a read full text in all). The phrase match alone had missed four `not_retrievable` excludes (E01, E04) whose reasons do not mention a landing page. Nothing in the screening data changed.
 
+## 2026-10-04 (A9 resolved) — PRISMA 2020 and AMSTAR 2 wording verified against primary sources, not search snippets
+
+Closes open item A9. RoB 2, ROBINS-I, JBI Cross-Sectional, CASP Qualitative and MMAT were each already verified
+directly against an official tool document the researcher supplied (see each tool's `04_quality/appraisal_forms/`
+"Source of tool structure" section) — that left only PRISMA 2020 and AMSTAR 2 at search-snippet-level
+verification, because `WebFetch` to every publisher domain returned `EGRESS_BLOCKED` in the environment those
+checks ran in. A different session tool this pass (not subject to that egress block) fetched both primary
+sources directly: PRISMA 2020's full text from PMC, and AMSTAR 2's official guidance PDF from amstar.ca.
+
+- **PRISMA 2020:** full 27-item numbering/lettering (items 8, 10a/b, 13a-f, 16a/b, 20a-d, 23a-d, 24a-c, 25, 26, 27
+  checked verbatim) matches `06_outputs/prisma/PRISMA_2020_CHECKLIST.md` exactly, including the earlier
+  search-snippet-based 3/4 item split correction — now confirmed right by the full text.
+- **AMSTAR 2:** all 16 items' wording and the exact 7 critical domains (2, 4, 7, 9, 11, 13, 15) match every
+  appraisal form in `04_quality/appraisal_forms/` exactly. No corrections needed to either tool's documentation.
+- `00_admin/A9_INSTRUMENT_VERIFICATION_2026-10-04.md` records the full comparison; `SOURCES.md` entries 5 and 8
+  updated from "search-snippet" to "full-text, confirmed" status; `DECISIONS_AND_OPEN_ITEMS.md` A9 marked
+  resolved. The source PDF is not committed (publicly downloadable guidance document, not one of the review's
+  primary-study papers; consistent with the project's practice of citing rather than bulk-storing externals).
+
 ## 2026-10-04 (housekeeping) — figures differ by environment
 
 - After merging the remote's reviewer-2 completion (121 of 121 available records), `regenerate_all.sh` here rewrites the five SVG figures and the HTML report even though the data are unchanged: the SVG layout depends on the fonts available to matplotlib, which differ between this environment and the one the remote used (the hash salt is already fixed). The merged versions were kept to avoid commits that only flip layout details back and forth; the verifier does not check figures. The remote also corrected the A16 includes-side figures (3 of 40, about 72, range 25-191), which the new verifier checks accepted.
