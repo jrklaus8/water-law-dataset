@@ -2,7 +2,7 @@
 
 Abstract-only rows whose PDFs turned out to be in the researcher's Drive were re-extracted from the full text by the AI (one JSON per study in this directory; applied by `../run_reextract_2026-10-04.py`, which asserts each row still carried the abstract-only note and rewrites only the fields in the JSON). Nothing here has been human-checked.
 
-**What was and was not done.** Fields were re-extracted; flags were not removed; `effect_sizes.csv` and the evidence_map quantitative flag were not changed; where the full text shows the appraisal tool does not fit the design, the old rating was **left in place** and flagged below for the reclassification step (a researcher decision). Many Drive files labelled 'retrieved' are repository landing pages or paywall previews and cannot be extracted (S268, S285, S280, S310, S311, S284, S286, S308, S315, S250, S256, S264, S271, S291, S303, S317, S301, S270 and others): they remain abstract-only.
+**What was and was not done.** Fields were re-extracted; flags were not removed; `effect_sizes.csv` and the evidence_map quantitative flag were not changed; where the full text shows the appraisal tool does not fit the design, the old rating was **left in place** and flagged below for the reclassification step (a researcher decision). Many Drive files labelled 'retrieved' are repository landing pages or paywall previews and cannot be extracted (S268, S285, S280, S310, S311, S284, S286, S308, S315, S250, S256, S264, S271, S291, S303, S317, S301, S270, S273 and others): they remain abstract-only.
 
 | Study | Tool now | Design as found | Note |
 |---|---|---|---|
@@ -33,3 +33,5 @@ Abstract-only rows whose PDFs turned out to be in the researcher's Drive were re
 | S347 | JBI Critical Appraisal Checklist | cross-sectional analysis of a nationally representative household survey | Quantitative mediation result with CI-like quantities; no effect-size row added. Exposure is gender (participation in local water governance), so fit with the legal/administrative exposure is indirect. |
 
 25 studies re-extracted in total. Not re-extractable from Drive (landing page or paywall preview): see list above. Still-unread Drive candidates and the 12 with no Drive PDF: see `DECISIONS_AND_OPEN_ITEMS.md`.
+
+**Closed 2026-10-04.** Every Drive file reachable for the 37 remaining abstract-only studies was read and is a landing page or paywall preview (the first-pass tiny files plus S273, S285, S286, S308, S310, S311, S284, S315 read individually). The remaining 37 need the researcher to supply the real PDFs; list and priority tiers: `03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv`.
