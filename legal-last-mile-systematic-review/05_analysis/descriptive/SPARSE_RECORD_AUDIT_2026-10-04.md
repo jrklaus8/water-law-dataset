@@ -12,14 +12,14 @@ The "37 abstract-only extractions" figure counts one note prefix. That prefix mi
 |---|---|---|
 | S1 prefix | note starts with the abstract-only prefix (already on the request list) | 37 |
 | S2 note | note says only the abstract, citation or metadata was read | 12 |
-| S3 location | recorded location cites the abstract alone, no table or figure | 75 |
+| S3 location | recorded location cites the abstract alone, no table or figure | 60 |
 | S4 first pages | section is the abstract plus introduction, background or highlights only | 41 |
 | S5 sparse | 9 or fewer of 14 descriptive content fields populated | 19 |
 
 ## Result
 
-- **162 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **49 strong** (S1 or S2), **66 moderate** (location cites the abstract alone), **47 weak** (abstract plus introduction, or sparse fields).
-- **125 of them are not on the current abstract-only request list**: 12 strong and 66 moderate. These are the rows the prefix check missed.
+- **147 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **49 strong** (S1 or S2), **51 moderate** (location cites the abstract alone), **47 weak** (abstract plus introduction, or sparse fields).
+- **110 of them are not on the current abstract-only request list**: 12 strong and 51 moderate. These are the rows the prefix check missed.
 - A "moderate" row is not proven abstract-only: an extractor may cite "Abstract" because that is where a quotation sits while having read more. Treat the moderate tier as a **verification queue**, not a count of failures.
 
 ### By risk-of-bias tool (rows not already on the request list)
@@ -28,11 +28,11 @@ The "37 abstract-only extractions" figure counts one note prefix. That prefix mi
 |---|---|---|---|
 | AMSTAR 2 | 6 | 0 | 1 |
 | CASP Qualitative | 0 | 27 | 20 |
-| JBI Cross-Sectional | 0 | 9 | 3 |
-| Legal Framework | 0 | 18 | 12 |
-| MMAT | 1 | 9 | 9 |
+| JBI Cross-Sectional | 0 | 4 | 3 |
+| Legal Framework | 0 | 16 | 12 |
+| MMAT | 1 | 2 | 9 |
 | NONE | 4 | 0 | 0 |
-| ROBINS-I | 1 | 3 | 1 |
+| ROBINS-I | 1 | 2 | 1 |
 | RoB 2 | 0 | 0 | 1 |
 
 ### Strong and moderate rows with analytic weight (effect-size row, quantitative-eligible, RoB 2/ROBINS-I, AMSTAR 2, certainty 3–4) — not on the current list
@@ -43,7 +43,6 @@ The "37 abstract-only extractions" figure counts one note prefix. That prefix mi
 | S121 | moderate | S3 | quantitative-eligible; ROBINS-I; certainty 3-4 | ROBINS-I | Abstract |
 | S104 | moderate | S3 | effect-size row; quantitative-eligible | JBI Cross-Sectional | Abstract |
 | S169 | moderate | S3 | quantitative-eligible; ROBINS-I | ROBINS-I | Abstract; Resumen |
-| S235 | moderate | S3 | quantitative-eligible; ROBINS-I | ROBINS-I | Abstract |
 | S358 | moderate | S3 | effect-size row; quantitative-eligible | JBI Cross-Sectional | Abstract |
 
 ## What to do with it (researcher decisions, not applied)
