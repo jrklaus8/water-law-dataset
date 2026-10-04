@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (inclusion criteria) — advisory screen of includes against criterion 3 (A22)
+
+- Mechanical screen of the 1,159 includes for conceptual or theory-only designs: a design cue (essay, theoretical, conceptual, simulation, modelling study, normative, ex-ante) plus no primary sample named, leaving out effect-size studies, systematic-review-class rows and the 13 narrative reviews already on the decisions list. Seven studies remain (S219, S264, S297, S314, S340, S462, S513); S340 is one the blind models would also exclude (A16) and S513 is a narrative review not on the earlier list. New `code/analysis/audit_includes_criterion3.py` writes `05_analysis/descriptive/INCLUDES_CRITERION3_SCREEN_2026-10-04.{csv,md}`; wired into `regenerate_all.sh` and the verifier; logged as A22. Cue words on extracted text, not a validated judgement; nothing changed.
+
 ## 2026-10-04 (extraction fill rates) — blank versus FALSE in the flag columns
 
 - Fill-rate audit of the 93 extraction columns: the identification and context fields are well filled (country blank in 3 studies, publication year in 2, population in 5, risk-of-bias rating in 8 NONE-tool studies; DOI blank in 216, 18.6%, covered by title and record-id matching). The statistics fields are sparse by nature (upper and lower CI blank in about 98%, standard error 97%, p-value 91%). The mechanism and outcome flags are mostly blank, with explicit `FALSE` in only 171 studies, so blank means either "absent" or "not assessed" and the documentation never said which. `DATA_DICTIONARY.md` now records the convention actually in force (TRUE or not-TRUE) and its limitation; no data changed.
