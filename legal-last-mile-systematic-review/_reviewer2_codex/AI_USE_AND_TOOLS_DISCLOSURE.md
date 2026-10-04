@@ -97,7 +97,7 @@ count in `CURRENT_FIGURES.md` — was changed by this pass; only `reviewer_2`, `
 agreement only) and `notes` were written, and every write was pinned to the record by `--record-id` and
 validated by the existing script before being committed to disk.
 
-## What was found (summary — see `REVIEWER_2_AGREEMENT_2026-10-03.md` for the full row-by-row report)
+## What was found (summary — see `REVIEWER_2_AGREEMENT_2026-10-04.md` for the full row-by-row report)
 
 | | Tier 1 (no-reviewer includes/excludes) | Tier 2 (stratified sample of AI excludes) | Tier 3 (sample of AI includes) |
 |---|---|---|---|
