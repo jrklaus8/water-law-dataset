@@ -69,6 +69,9 @@ def build():
          f"**{len(rows)} records** where Codex and/or Gemini (blind to the original decision) disagreed with the original AI's include/exclude call: "
          f"priority 1 = {n[1]}, priority 2 = {n[2]}, priority 3 = {n[3]} (AI excluded, models include); priority 4 = {n[4]} (AI included, models exclude).", "",
          "AI excludes by original code among priority 1-3: " + ', '.join(f"{k} {CODES.get(k, '')} {v}" for k, v in sorted(codes.items())) + ".", "",
+         "**Why they disagree may be a scope question, not only an error rate.** `INCLUSION_EXCLUSION.md` criterion 2 asks for \"a legal, administrative, institutional, regulatory or governance factor\" and states that qualitative socio-legal studies must not be dropped; the blind models read that literally. "
+         "The original AI's E01 'wrong topic' exclusions (see its reasoning column) appear to apply a narrower reading closer to the project's core question: rules about eligibility, documents, cost, discretion and enforcement. "
+         "Decide which reading governs before judging individual rows. If the protocol's literal breadth governs, many E01 excludes would flip and the corpus is larger than reported; if the narrower reading governs, `INCLUSION_EXCLUSION.md` should be tightened to say so and the blind check re-run with the narrow wording (this is the AI's reading of the pattern, not a finding).", "",
          "Priority 1 = both models include and every criterion is 'yes' in both; 2 = both include but some criterion is not 'yes'; 3 = only one model includes. Start with priority 1: if the researcher "
          "rejects most of those, the independent models are probably reading the criteria too loosely and the original exclusions can stand; if the researcher accepts most, widen the tier-2 sample "
          "(A16 option b) before relying on the 1,117-exclude log.", "",
