@@ -6,13 +6,14 @@ Rows whose full texts turned out to be in the researcher's Drive were re-extract
 
 Two groups: **(A) abstract-only rows** (note prefix 'Extracted from published abstract', removed from the abstract-only list when applied) and **(B) sparse-audit rows** (`nonprefix: true`; flagged by `code/analysis/audit_sparse_records.py`, not on the abstract-only list).
 
-## A. Abstract-only rows (25)
+## A. Abstract-only rows (26)
 
 | Study | Tool now | Design as found | Note |
 |---|---|---|---|
 | S257 | MMAT | cross-sectional convergent mixed-methods study (random multi-stage sample of schools and pupils) | Quantitative chi-square only; no effect-size row added. |
 | S260 | Legal Institutional Ev | narrative qualitative review of secondary documents (not a systematic synthesis: no document count, no apprais | DESIGN/ELIGIBILITY FLAG: narrative documentary review of secondary sources with no source count and no appraisal; same status as S329/S418-type narrative reviews (inclusion criterion 3 question). Legal Framework rating NOT re-answered. No effect-size row. |
 | S267 | Legal Institutional Ev | perspective article: documentary analysis of eight purposively selected municipal cases | DESIGN/ELIGIBILITY FLAG: article is labelled a Perspective and rests on non-representative documentary cases; inclusion criterion 3 question. Legal Framework rating NOT re-answered. No effect-size row. |
+| S270 | Legal Institutional Ev |  | Supplies the numeric compliance and survey results that the abstract-only extraction left out; the paper's Table 2 (12+66+134=212) disagrees with its abstract (200 collected). |
 | S274 | Legal Institutional Ev | qualitative policy-analysis case study based exclusively on secondary data | DESIGN FLAG: secondary-document policy analysis; Legal Framework rating NOT re-answered. Quantitative claims (15-30% water productivity) are cited preliminary assessments, so no effect-size row. |
 | S278 | MMAT |  | Operational time-series with qualitative interpretation; the legal/administrative content is weak (reactive management, no strategic plan). |
 | S279 | JBI Critical Appraisal | cross-sectional spatial composite-index analysis of all census blocks (descriptive; no outcome validation) | Descriptive spatial index; quantitative-synthesis flag looks overstated (no inferential estimate). |
@@ -36,10 +37,11 @@ Two groups: **(A) abstract-only rows** (note prefix 'Extracted from published ab
 | S346 | CASP | qualitative single-programme case study (conference paper); author affiliated with a consultancy that works wi | Very thin methods; author is affiliated with a programme partner (possible conflict). |
 | S347 | JBI Critical Appraisal | cross-sectional analysis of a nationally representative household survey | Quantitative mediation result with CI-like quantities; no effect-size row added. Exposure is gender (participation in local water governance), so fit with the legal/administrative exposure is indirect. |
 
-## B. Sparse-audit rows (54)
+## B. Sparse-audit rows (55)
 
 | Study | Tool now | Design as found | Note |
 |---|---|---|---|
+| S104 | JBI |  | The extraction already matched the abstract; the full text adds the cluster count, the covariate lists and the table location, and shows small internal inconsistencies in the paper. |
 | S171 | Legal Institutional Ev | documentary case study of a national programme's investments in one state (policy documents and secondary data | Abstract-level extraction accurate; adds budget figures. Same author as S188 (Borja) in a related programme-evaluation line. |
 | S174 | JBI Critical Appraisal | cross-sectional municipality-level regression (observational, ecological; one year) | CORRECTS the abstract-level extraction (national sample, n not located, uniformly positive). Full text: Minas Gerais only, n = 391 in the models, and the legal-compliance component (plan/policy existence) is NOT positively associated with water coverage. Existing Family C effect_sizes.csv row updated with n and coefficients; direction left as 'positive' for the capacity composite but annotated (3 of 4 dimensions positive; political negative for water). Companion paper of S397 (same authors; panel of the same state). |
 | S176 | CASP | qualitative comparative case study (six cities; literature review plus key-informant interviews; modified SES  | Abstract-level extraction accurate; names example cities and the selection design (success-selected cases). Funder gave input on research questions. |

@@ -70,7 +70,8 @@ class TestWosAndPubmed(unittest.TestCase):
         # a lone double quote in an abstract must not swallow the following rows (the real export lost 12 of 1,000 rows this way)
         with tempfile.TemporaryDirectory() as d:
             p = Path(d) / 'savedrecs.txt'
-            p.write_text('PT\tTI\tAB\nJ\tOne\tthe "so-called gap\nJ\tTwo\tplain\nJ\tThree\tplain too\n', encoding='utf-8')
+            # the quote OPENS the abstract field, which is what makes a default CSV reader treat it as a quoted field and swallow the rows below
+            p.write_text('PT\tTI\tAB\nJ\tOne\t"Access is contested and this quote is never closed\nJ\tTwo\tplain\nJ\tThree\tplain too\n', encoding='utf-8')
             header, rows = wos.load_records(p)
         self.assertEqual(header, ['PT', 'TI', 'AB']); self.assertEqual([r['TI'] for r in rows], ['One', 'Two', 'Three'])
 

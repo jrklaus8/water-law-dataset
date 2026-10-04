@@ -92,5 +92,44 @@ class TestScore(unittest.TestCase):
         self.assertEqual(rc, 0); self.assertIn('0.0%', out)
 
 
+class TestStickySample(unittest.TestCase):
+    """build_second_extractor_sample keeps an issued sheet stable: a pool change replaces only the studies that became ineligible (it once swapped 21 of 60)."""
+    @classmethod
+    def setUpClass(cls):
+        import build_second_extractor_sample as bse
+        cls.bse = bse
+
+    def ids(self, rows):
+        return {r['study_id'] for r in rows}
+
+    def test_the_committed_sheet_is_a_fixed_point(self):
+        rows = self.bse.draw()
+        with open(self.bse.OUT, encoding='utf-8', newline='') as f:
+            committed = list(csv.DictReader(f))
+        self.assertEqual(self.ids(rows), self.ids(committed)); self.assertEqual(len(self.ids(rows)), 60)
+
+    def test_an_ineligible_study_is_replaced_and_nothing_else_moves(self):
+        import audit_sparse_records as asr
+        before = self.ids(self.bse.draw())
+        victim = sorted(before)[10]
+        orig = asr.audit
+        def fake():
+            return orig() + [{'study_id': victim, 'strength': 'strong'}]
+        asr.audit = fake
+        self.addCleanup(setattr, asr, 'audit', orig)
+        after = self.ids(self.bse.draw())
+        self.assertEqual(len(after), 60); self.assertNotIn(victim, after)
+        self.assertEqual(len(before - after), 1); self.assertEqual(len(after - before), 1)
+
+    def test_without_an_earlier_sheet_the_seeded_draw_is_reproducible(self):
+        import tempfile
+        orig = self.bse.OUT
+        with tempfile.TemporaryDirectory() as d:
+            self.bse.OUT = Path(d) / 'none.csv'
+            self.addCleanup(setattr, self.bse, 'OUT', orig)
+            a, b = self.ids(self.bse.draw()), self.ids(self.bse.draw())
+        self.assertEqual(a, b); self.assertEqual(len(a), 60)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

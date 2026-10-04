@@ -5,14 +5,14 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 
 ## Headline
 
-**No stated conclusion changes under any scenario.** Families A, B and C rest on 20, 6 and 20 studies; the scenarios remove at most 4 of them.
+**No stated conclusion changes under any scenario.** Families A, B and C rest on 20, 6 and 20 studies; the scenarios remove at most 3 of them.
 
 ## Why several scenarios change nothing (or not)
 
-- **Abstract-only extractions (37 studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
+- **Abstract-only extractions (36 studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
 - **Linked reports:** 2 definite same-data links; 1 involves a study that has an effect-size row (S294 (Family B)), so S3 changes nothing in A, B or C.
 - **Studies with an effect-size row but not flagged eligible (S589):** S589 is in Family A; S2 removes it.
-- **Sparse-audit strong and moderate rows (S1b):** removes 2 study(ies) from the families (S104;S358); Family A goes from k = 20 to 18, B from 6 to 6, C from 20 to 20. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
+- **Sparse-audit strong and moderate rows (S1b):** removes 1 study(ies) from the families (S358); Family A goes from k = 20 to 19, B from 6 to 6, C from 20 to 20. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
 
 ## Family results by scenario
 
@@ -20,25 +20,25 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | S0 baseline | — | 20 | 12/6/2 | 15 (75.0%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
 | S1 drop abstract-only extractions | — | 20 | 12/6/2 | 15 (75.0%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
-| S1b drop sparse-audit strong+moderate rows | S104;S358 | 18 | 10/6/2 | 14 (77.8%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S1b drop sparse-audit strong+moderate rows | S358 | 19 | 11/6/2 | 14 (73.7%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
 | S2 drop rows for studies not flagged eligible | S589 | 19 | 12/5/2 | 14 (73.7%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
 | S3 collapse linked reports (same underlying data) | — | 20 | 12/6/2 | 15 (75.0%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
 | S4 drop Family A coding judgment calls (S358, S404) | S358;S404 | 18 | 10/6/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
-| S5 all of the above | S104;S358;S404;S589 | 16 | 9/5/2 | 12 (75.0%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S5 all of the above | S358;S404;S589 | 17 | 10/5/2 | 12 (70.6%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
 
 Tests: **A** — more than half of the studies are concordant with "recognition/eligibility improves access" (the Family A document's substantive reading, not the raw sign);
 **B** — no study is negative or null; **C** — no single sign holds a majority. Signs are as extracted; see the Family A and C documents for why sign and valence differ.
 
-## Descriptive counts with the 37 abstract-only extractions removed
+## Descriptive counts with the 36 abstract-only extractions removed
 
-Studies: 1,159 → 1,122. Risk-of-bias tool distribution:
+Studies: 1,159 → 1,123. Risk-of-bias tool distribution:
 
 | Tool | All | Without abstract-only | Change |
 |---|---|---|---|
 | MMAT | 205 | 198 | -7 |
 | JBI Cross-Sectional | 140 | 134 | -6 |
 | CASP Qualitative | 263 | 243 | -20 |
-| Legal Framework | 447 | 443 | -4 |
+| Legal Framework | 447 | 444 | -3 |
 | AMSTAR 2 | 23 | 23 | +0 |
 | ROBINS-I | 63 | 63 | +0 |
 | RoB 2 | 5 | 5 | +0 |

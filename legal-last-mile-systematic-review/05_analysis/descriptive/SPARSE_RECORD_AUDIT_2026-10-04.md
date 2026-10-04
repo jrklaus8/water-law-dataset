@@ -4,31 +4,31 @@
 
 ## Why this exists
 
-The "37 abstract-only extractions" figure counts one note prefix. That prefix missed S327 (a citation-level row) and S214 ("extracted from openly-readable abstract … full text not accessible"), so the figure is a **floor**, not the full count of shallow extractions. This audit looks for four further signals.
+The "36 abstract-only extractions" figure counts one note prefix. That prefix missed S327 (a citation-level row) and S214 ("extracted from openly-readable abstract … full text not accessible"), so the figure is a **floor**, not the full count of shallow extractions. This audit looks for four further signals.
 
 ## Signals
 
 | Signal | Meaning | Rows |
 |---|---|---|
-| S1 prefix | note starts with the abstract-only prefix (already on the request list) | 37 |
-| S2 note | note says only the abstract, citation or metadata was read | 12 |
-| S3 location | recorded location cites the abstract alone, no table or figure | 30 |
+| S1 prefix | note starts with the abstract-only prefix (already on the request list) | 36 |
+| S2 note | note says only the abstract, citation or metadata was read | 11 |
+| S3 location | recorded location cites the abstract alone, no table or figure | 29 |
 | S4 first pages | section is the abstract plus introduction, background or highlights only | 39 |
 | S5 sparse | 9 or fewer of 14 descriptive content fields populated | 14 |
 
 ## Result
 
-- **110 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **49 strong** (S1 or S2), **21 moderate** (location cites the abstract alone), **40 weak** (abstract plus introduction, or sparse fields).
-- **73 of them are not on the current abstract-only request list**: 12 strong and 21 moderate. These are the rows the prefix check missed.
+- **107 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **47 strong** (S1 or S2), **20 moderate** (location cites the abstract alone), **40 weak** (abstract plus introduction, or sparse fields).
+- **71 of them are not on the current abstract-only request list**: 11 strong and 20 moderate. These are the rows the prefix check missed.
 - A "moderate" row is not proven abstract-only: an extractor may cite "Abstract" because that is where a quotation sits while having read more. Treat the moderate tier as a **verification queue**, not a count of failures.
 
 ### By risk-of-bias tool (rows not already on the request list)
 
 | Tool | strong | moderate | weak |
 |---|---|---|---|
-| AMSTAR 2 | 6 | 0 | 1 |
+| AMSTAR 2 | 5 | 0 | 1 |
 | CASP Qualitative | 0 | 9 | 16 |
-| JBI Cross-Sectional | 0 | 4 | 3 |
+| JBI Cross-Sectional | 0 | 3 | 3 |
 | Legal Framework | 0 | 4 | 11 |
 | MMAT | 1 | 2 | 7 |
 | NONE | 4 | 0 | 0 |
@@ -41,7 +41,6 @@ The "37 abstract-only extractions" figure counts one note prefix. That prefix mi
 |---|---|---|---|---|---|
 | S385 | strong | S2 | quantitative-eligible; ROBINS-I | ROBINS-I | Resumen; Introduccion; Contexto Fiscal y Geografico |
 | S121 | moderate | S3 | quantitative-eligible; ROBINS-I; certainty 3-4 | ROBINS-I | Abstract |
-| S104 | moderate | S3 | effect-size row; quantitative-eligible | JBI Cross-Sectional | Abstract |
 | S169 | moderate | S3 | quantitative-eligible; ROBINS-I | ROBINS-I | Abstract; Resumen |
 | S358 | moderate | S3 | effect-size row; quantitative-eligible | JBI Cross-Sectional | Abstract |
 

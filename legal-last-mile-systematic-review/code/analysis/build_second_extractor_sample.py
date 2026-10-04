@@ -9,7 +9,7 @@ Strata are drawn in this order without overlap (seed 20260929), each capped at t
   RoB 2 / ROBINS-I 8 | effect-size rows 15 | AMSTAR 2 / NONE 5 | JBI Cross-Sectional 8 | MMAT 8 | CASP Qualitative 8 | Legal Framework 8 | general top-up to 60
 Output (long format, one row per study x field): 03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv
 The human copies the file, fills `second_extractor_value` / `agrees` / `comment`, and scores it with code/analysis/score_second_extractor_sheet.py.
-Regenerating overwrites only the BLANK file. Run from the project root.
+Regenerating overwrites only the BLANK file, and keeps every study already in it that is still eligible (see STICKY SAMPLE in draw()). Run from the project root.
 """
 import csv, random, sys
 from pathlib import Path
@@ -23,6 +23,7 @@ OUT = ROOT / '03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-1
 SEED = 20260929
 STRATA = [('RoB 2 / ROBINS-I', 8), ('effect-size row', 15), ('AMSTAR 2 / NONE', 5), ('JBI Cross-Sectional', 8), ('MMAT', 8), ('CASP Qualitative', 8), ('Legal Framework', 8)]
 TOTAL = 60
+STRATUM_ORDER = {name: i for i, (name, _) in enumerate(STRATA)}  # sheet order: strata as listed, then the general top-up
 ID_RANGE = range(1, 201)  # S001-S200
 FIELDS = [
     ('publication_year', 'Year of publication'),
@@ -48,6 +49,18 @@ def draw():
     pool = sorted((s for s, r in ed.items() if int(s[1:]) in ID_RANGE and s not in thin and not r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)), key=lambda x: int(x[1:]))
     rng = random.Random(SEED)
     chosen, used = [], set()
+    # STICKY SAMPLE: once a sheet has been issued, a study stays in it for as long as it is still eligible. Without this a change to the pool (for example S015 leaving the
+    # abstract-only tier after its full text arrived, 2026-10-04) re-ran the seeded draw and swapped 21 of the 60 studies, which would invalidate a sheet someone has started.
+    # Only the slots of studies that became ineligible are refilled, by the same seeded procedure; with no earlier sheet the draw is the plain seeded draw.
+    prev = {}
+    if OUT.exists():
+        with open(OUT, encoding='utf-8', newline='') as f:
+            for r in csv.DictReader(f):
+                prev.setdefault(r['study_id'], r['stratum'])
+    kept = {s: st for s, st in prev.items() if s in set(pool)}
+    for s, st in kept.items():
+        chosen.append((s, st)); used.add(s)
+    vacancies = TOTAL - len(chosen) if prev else TOTAL
     for name, k in STRATA:
         if name == 'effect-size row':
             cand = [s for s in pool if s in es]
@@ -58,12 +71,14 @@ def draw():
         else:
             cand = [s for s in pool if cf.tool_of(ed[s]['risk_of_bias_tool']) == name]
         cand = [s for s in cand if s not in used]
-        pick = sorted(rng.sample(cand, min(k, len(cand))), key=lambda x: int(x[1:]))
-        used.update(pick)
+        need = min(max(0, k - sum(1 for _, st in chosen if st == name)), len(cand), vacancies)
+        pick = sorted(rng.sample(cand, need), key=lambda x: int(x[1:]))
+        used.update(pick); vacancies -= len(pick)
         chosen += [(s, name) for s in pick]
     rest = [s for s in pool if s not in used]
-    top = sorted(rng.sample(rest, TOTAL - len(chosen)), key=lambda x: int(x[1:]))
+    top = sorted(rng.sample(rest, vacancies), key=lambda x: int(x[1:]))
     chosen += [(s, 'general top-up') for s in top]
+    chosen.sort(key=lambda x: (STRATUM_ORDER.get(x[1], 99), int(x[0][1:])))
     rows = []
     for s, stratum in chosen:
         r = ed[s]
