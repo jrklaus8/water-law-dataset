@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'code/analysis'))
 import audit_data_quality as adq  # noqa: E402
+import current_figures as cf  # noqa: E402
 import audit_effect_size_families as aef  # noqa: E402
 import audit_exclusion_basis as aeb  # noqa: E402
 import audit_includes_criterion3 as aic  # noqa: E402
@@ -130,6 +131,25 @@ class TestDataQualityPatterns(unittest.TestCase):
         for s in ('95% CI 1.2 to 3.4', 'CI: 1.2, 3.4', 'CI [1.1, 2.3]'):
             self.assertTrue(adq.CI_TEXT.search(s), s)
         self.assertFalse(adq.CI_TEXT.search('no interval'))
+
+
+class TestToolOf(unittest.TestCase):
+    """current_figures.tool_of reads the appraisal tool from free text; the earliest keyword wins because a reclassified row names its OLD tool later in the note."""
+    def test_names(self):
+        for s, want in {'MMAT': 'MMAT', 'CASP': 'CASP Qualitative', 'CASP Qualitative Checklist': 'CASP Qualitative', 'ROBINS-I': 'ROBINS-I', 'RoB 2': 'RoB 2', 'AMSTAR 2': 'AMSTAR 2', 'NONE': 'NONE',
+                        'JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies': 'JBI Cross-Sectional', 'Legal Institutional Evidence Appraisal Framework': 'Legal Framework'}.items():
+            self.assertEqual(cf.tool_of(s), want, s)
+
+    def test_earliest_keyword_wins(self):
+        self.assertEqual(cf.tool_of('MMAT (reclassified 2026-09-28 from Legal Institutional Evidence Appraisal Framework -- study_design explicitly names a mixed-methods design)'), 'MMAT')
+        self.assertEqual(cf.tool_of('ROBINS-I (reclassified from Legal Institutional Evidence Appraisal Framework)'), 'ROBINS-I')
+
+    def test_unknown_is_flagged_not_guessed(self):
+        for s in ('', 'Newcastle-Ottawa'):
+            self.assertEqual(cf.tool_of(s), 'UNCLASSIFIED', s)
+
+    def test_every_real_row_is_classified(self):
+        self.assertNotIn('UNCLASSIFIED', {cf.tool_of(r['risk_of_bias_tool']) for r in cf.read('ed')})
 
 
 if __name__ == '__main__':

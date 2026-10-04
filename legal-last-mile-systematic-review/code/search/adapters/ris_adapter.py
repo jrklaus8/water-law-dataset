@@ -85,7 +85,9 @@ ABSTRACT_TAGS = {"AB", "N2"}
 URL_TAGS = {"UR", "L1", "L2"}
 AUTHOR_TAGS = {"AU", "A1"}
 
-RIS_LINE_RE = re.compile(r"^([A-Z][A-Z0-9])  - (.*)$")
+# "ER  - " is often saved without its trailing space (editors and some exporters strip it); a tag line with an empty value must still be a tag line,
+# otherwise the end-of-record marker is glued onto the previous field's text
+RIS_LINE_RE = re.compile(r"^([A-Z][A-Z0-9])  -(?: (.*))?$")
 
 
 def parse_ris(text: str) -> list[dict]:
@@ -104,7 +106,7 @@ def parse_ris(text: str) -> list[dict]:
                 if last_tag and current[last_tag]:
                     current[last_tag][-1] += " " + line.strip()
             continue
-        tag, value = m.group(1), m.group(2).strip()
+        tag, value = m.group(1), (m.group(2) or "").strip()
         if tag == "TY":
             if current:
                 records.append(current)
