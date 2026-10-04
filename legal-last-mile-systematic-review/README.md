@@ -100,7 +100,7 @@ explained in full further down; this is the index.
    AI-versus-AI check and is not counted here as human confirmation.
    Scaled by exclusion code it would imply roughly 468 further includes if
    the models were right, and about 37 even under a narrow reading of
-   criterion 2 by an AI triage; in the other direction 3 of 27 sampled
+   criterion 2 by an AI triage; in the other direction 3 of 40 sampled
    unconfirmed includes look excludable. Arithmetic only, see
    `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`.)
    Do not read "a human
