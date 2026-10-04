@@ -1,5 +1,7 @@
 # Pilot Extraction (Phase 7) — Start Here
 
+> **Superseded (noted 2026-10-04).** The researcher authorised extracting all full-text includes directly instead of running a separate ~10-study pilot (`PRISMA_WORKFLOW.md` Phase 7; `README.md`, deviations list). `pilot_sample.csv` was therefore never generated and `select_pilot_sample.py` was never used for it. The text below is the original plan, kept as written; its "zero decisions" statement describes the project as it stood when this was drafted, not now.
+
 `PROTOCOL.md` §6 and `PRISMA_WORKFLOW.md` Phase 7 both require piloting
 the extraction form/codebook on **~10 studies** before full extraction
 begins. The point of a pilot isn't to extract 10 studies faster than the

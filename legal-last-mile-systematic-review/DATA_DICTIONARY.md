@@ -130,6 +130,8 @@ decision into `screening_database.csv`'s own `reviewer_2` column.
 
 ## `03_extraction/extraction_form/pilot_sample.csv`
 
+> **Superseded (noted 2026-10-04):** the separate pilot was replaced by full extraction on the researcher's authorisation (`PRISMA_WORKFLOW.md` Phase 7), so this file does not exist and is not expected to. Original text follows.
+
 Not yet generated as of this writing — will be created by
 `code/extraction/select_pilot_sample.py` (schema in that script's own
 `OUTPUT_FIELDS`, add to `validate_schemas.py`'s generated schemas once it

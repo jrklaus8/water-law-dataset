@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (documentation) — stale pilot-extraction text marked superseded
+
+- A scan of backticked file paths in the documentation found `pilot_sample.csv` documented as "not yet generated" and `PILOT_EXTRACTION.md` still saying the pilot cannot run for lack of decisions. The pilot was replaced by full extraction on the researcher's authorisation (already recorded in `PRISMA_WORKFLOW.md` Phase 7 and the README deviations list); both files now carry a dated superseded note beside the original text, which is unchanged. The other missing paths the scan listed are shorthand for existing files (`reextract_2026-10-04/...`) or the not-yet-created `A16_PENDING_REVERSALS.csv`.
+
 ## 2026-10-04 (exclusion audit) — exclusions made on a landing page or metadata record (A19)
 
 - Audit of exclusion codes against their reason text. Log and full-text database agree on every code (1,117 of 1,117), every E08 duplicate points to an existing include, and no reason is shorter than 40 characters. One real finding: 25 full-text-stage excludes say in their reason text that the decision rested on a landing-page abstract, a paywalled abstract or a metadata record. For 15 E10 and 1 E08 that is expected; for the other 9 (E01 wrong topic 7, E09 1, E12 1) a substantive judgement was made without a read full text. A first version of the phrase match also caught R1827C03DA45A (the S356 exclusion, whose reason says its full text was read); reasons that say "full text read" are now excluded from the match.
