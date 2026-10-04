@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (data) — recheck of the Drive inbox: S385 read
+
+- A recheck found no new uploads, but a second set of 59 renamed copies of files already processed (the retrieval tracker's clean names) and one file never processed: S385 (Rojas Rivera 2026, Colombian municipal water and sewerage coverage), still listed as a strong sparse extraction. Its full text was read and the row re-extracted (sample sizes, Table 6 coefficients, administrative-capacity and royalties results); no effect-size row was added (researcher decision). The renamed copies were moved to `Processed`.
+
 ## 2026-10-04 (data) — fifth Drive-inbox batch (17 full texts)
 
 - AMSTAR 2 on the full text for S350, S427, S475, S521 (Critically Low) and S537 (Low); 22 of 23 reviews rated (S027 outstanding). S285 re-extracted (abstract-only extractions 17 to 16). S297 read for A22 (borderline, `A22_VERDICTS_2026-10-04.csv`). Stale-status includes S389, S392, S394, S396, S398, S402, S403, S536 and S418 checked against their full texts: extractions confirmed, blank sample sizes filled, S402 and S403 entries corrected. `audit_exclusion_basis.py` now records the twelve includes read as read and keeps its exclude counts to the exclude groups. Script `process_drive_inbox_2026-10-04e.py` plus seven JSONs in `reextract_2026-10-04/`. No screening decision changed (A15).

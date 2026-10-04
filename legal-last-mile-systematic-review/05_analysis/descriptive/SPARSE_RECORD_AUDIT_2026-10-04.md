@@ -11,15 +11,15 @@ The "16 abstract-only extractions" figure counts one note prefix. That prefix mi
 | Signal | Meaning | Rows |
 |---|---|---|
 | S1 prefix | note starts with the abstract-only prefix (already on the request list) | 16 |
-| S2 note | note says only the abstract, citation or metadata was read | 3 |
+| S2 note | note says only the abstract, citation or metadata was read | 2 |
 | S3 location | recorded location cites the abstract alone, no table or figure | 15 |
 | S4 first pages | section is the abstract plus introduction, background or highlights only | 37 |
 | S5 sparse | 9 or fewer of 14 descriptive content fields populated | 6 |
 
 ## Result
 
-- **73 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **19 strong** (S1 or S2), **15 moderate** (location cites the abstract alone), **39 weak** (abstract plus introduction, or sparse fields).
-- **57 of them are not on the current abstract-only request list**: 3 strong and 15 moderate. These are the rows the prefix check missed.
+- **72 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **18 strong** (S1 or S2), **15 moderate** (location cites the abstract alone), **39 weak** (abstract plus introduction, or sparse fields).
+- **56 of them are not on the current abstract-only request list**: 2 strong and 15 moderate. These are the rows the prefix check missed.
 - A "moderate" row is not proven abstract-only: an extractor may cite "Abstract" because that is where a quotation sits while having read more. Treat the moderate tier as a **verification queue**, not a count of failures.
 
 ### By risk-of-bias tool (rows not already on the request list)
@@ -32,14 +32,13 @@ The "16 abstract-only extractions" figure counts one note prefix. That prefix mi
 | Legal Framework | 0 | 1 | 11 |
 | MMAT | 0 | 1 | 7 |
 | NONE | 1 | 0 | 0 |
-| ROBINS-I | 1 | 2 | 1 |
+| ROBINS-I | 0 | 2 | 1 |
 | RoB 2 | 0 | 0 | 1 |
 
 ### Strong and moderate rows with analytic weight (effect-size row, quantitative-eligible, RoB 2/ROBINS-I, AMSTAR 2, certainty 3–4) — not on the current list
 
 | Study | Strength | Signals | Weight | Tool | Section recorded |
 |---|---|---|---|---|---|
-| S385 | strong | S2 | quantitative-eligible; ROBINS-I | ROBINS-I | Resumen; Introduccion; Contexto Fiscal y Geografico |
 | S121 | moderate | S3 | quantitative-eligible; ROBINS-I; certainty 3-4 | ROBINS-I | Abstract |
 | S169 | moderate | S3 | quantitative-eligible; ROBINS-I | ROBINS-I | Abstract; Resumen |
 | S358 | moderate | S3 | effect-size row; quantitative-eligible | JBI Cross-Sectional | Abstract |
