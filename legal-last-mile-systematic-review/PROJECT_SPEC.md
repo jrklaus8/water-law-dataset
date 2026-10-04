@@ -110,6 +110,8 @@ Review and Meta Analysis.*
 This table is a preliminary judgment, not a result — it has not yet been
 tested against a completed search. Revisit after Phase 11 of `PRISMA_WORKFLOW.md`.
 
+> **Revisited 2026-10-04 (original text above kept as written).** The search and screening are closed and Phase 11 was applied on 2026-09-28 (`06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`). Outcome: no family was judged poolable, so "restricted meta-analyses: potentially feasible" did not hold in practice. Of the 62 effect-size rows only 1 has a numeric effect estimate, 6 a numeric standard error and 5 both confidence bounds (`code/tests/test_database_integrity.py`); the rest are reported results held as descriptive text. Quantitative evidence is synthesised by structured direction-and-significance tables (SWiM), not pooled estimates. The systematic review itself stands.
+
 ## 4. Unit of analysis (three levels — never conflate)
 
 | Level | Unit | Use |

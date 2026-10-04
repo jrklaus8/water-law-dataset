@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-04 (documentation) — PROJECT_SPEC feasibility table revisited
+
+- A grep for stale status wording across the top-level documents found one real case: `PROJECT_SPEC.md` still said its feasibility table "has not yet been tested against a completed search" and rated restricted meta-analyses "potentially feasible". A dated revisit note now sits beside the original text (unchanged) stating the Phase 11 outcome and the numeric census (1 of 62 rows with a numeric estimate). The other hits are accurate (protocol draft not yet registered; documented placeholders superseded elsewhere).
+
 ## 2026-10-04 (integrity tests) — study map, merges and effect-size table
 
 - New `code/tests/test_database_integrity.py` (6 tests, run by `regenerate_all.sh`): study ids unique and one active study per record; the three retired studies (S233 and S299 merged into S1008 and S392, S356 excluded E05) are full-text excludes with the matching code, absent from the extraction database, evidence map, effect-size table and linked-report table, and each merge target is an active study whose record is the one the note and the E08 reason name; the only gaps in the study-id sequence are the documented S227 and S399 (retired 2026-09-16, before the map existed, so they are not listed in it); the effect-size table has 62 rows, one per extracted study, with every descriptive field filled and any row flagged for pooling numeric. All pass; nothing needed correcting.
