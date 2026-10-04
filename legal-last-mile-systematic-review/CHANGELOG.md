@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (housekeeping) — stray 25 MB wheel removed from the tree
+
+- `pymupdf-1.28.2-cp310-abi3-manylinux_2_28_x86_64.whl` had been committed into the project folder by an earlier `git add -A` (commit 790dab2) after a tool download. Nothing refers to it. It is removed from the tree and `*.whl` is now in `.gitignore`; it stays in git history (history is not rewritten on this shared branch). A link audit of the markdown files found no other broken file references.
+
 ## 2026-10-04 (tooling) — A16 pipeline edge cases: duplicate DOI refused, loose exclusion codes accepted
 
 - New tests (15 in `test_a16_pipeline.py`, was 11) found a real gap: `resolve_a16_pending_reversals.py` would have accepted a new include whose DOI is already on an extraction row, which is exactly the R21CAA5C1809C = S102 situation a blind reviewer cannot see; only the verifier would have complained, after the files were written. It now refuses (also when two new includes share a DOI) and writes nothing. `apply_a16_adjudications.py` now reads `e3`, `E3`, `E03 - wrong design` as E03 (anything else outside E01-E12 is still rejected). Tests also cover consecutive study IDs for two new includes and a record that was included in the meantime. No data changed.
