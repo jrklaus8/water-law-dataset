@@ -12,6 +12,10 @@ amendments in particular must be logged here with rationale).
 
 - `score_second_extractor_sheet.py` now reads yes/no, "can't tell" and "unclear" as Y, N and cannot_tell, and strips spaces around study ids (so `S1 ` is not counted as a second study). Anything else is still flagged and not scored, with exit code 2. One new unit test (7 in the file). No data or figure changed.
 
+## 2026-10-04 (tests) — one-record editor of the full-text database
+
+- New `test_update_full_text_record.py` (5 tests; fourteen test files in all): a no-op update leaves the real database byte-identical (CRLF kept), a change touches only the named fields, an unknown record or no fields writes nothing, an invalid exclusion code is refused before any write, and an exclude without a code warns. No behaviour changed.
+
 ## 2026-10-04 (tests) — deduplication and search-adapter tests; one parser defect fixed
 
 - New `test_deduplicate.py` (10 tests) and `test_search_adapters.py` (10 tests); thirteen test files in all. Deduplication: golden identity tests (record ids are content hashes, so any change to the DOI/title normalisers would silently re-key the corpus; real rows of `deduplicated_records.csv` must keep their ids), both merge rules, the same-year requirement and 0.92 title threshold, abstract backfill that never overwrites, order independence, and a hash-collision case. One quirk is pinned rather than changed: a second record with the same DOI but a different title is merged but logged under a `-1` id (318 of 7,113 `merge_log.csv` rows), because the id is keyed on the DOI; no record is lost.
