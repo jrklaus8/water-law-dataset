@@ -51,7 +51,7 @@ Ordered least-evidenced first (see the script docstring for the score). Signals 
 | S350 | 5 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; scoping/realist/mapping/meta-analysis |
 | S015 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S019 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
-| S027 | 6 | no | no | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
+| S027 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S319 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S327 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |
 | S427 | 6 | no | yes | registration/PRISMA/JBI method named; count of included studies stated; word "systematic"; scoping/realist/mapping/meta-analysis |

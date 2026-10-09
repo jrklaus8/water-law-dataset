@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-09 (data) — browser-agent retrieval round: S027 appraised, S393 checked, RAB6AA06D8E9D settled
+
+- S027 (Fanaian 2025) read in full and appraised with AMSTAR 2: Critically Low (items 7, 9 and 13); all 23 reviews are now rated (21 Critically Low, 2 Low). S393 (Curtis 2019): the supplied copy is the medRxiv preprint; the extraction matches it, the blank sample size is filled (17 interviews), and the note says the published version is unread. RAB6AA06D8E9D: Europe PMC holds only the conference abstract, no full article exists, so the E09 exclusion stands (proposal row in `A19_RESCREEN_VERDICTS_2026-10-04.csv`). The agent's outcomes and the researcher's remaining to-do list are in `PDF_RETRIEVAL_OUTCOMES_2026-10-09.csv` and `00_admin/PDF_RETRIEVAL_STATUS_2026-10-09.md`. Script `process_drive_inbox_2026-10-09.py`. No screening decision changed (A15).
+
 ## 2026-10-09 (tooling) — brief and target list for fetching the missing full texts
 
 - `00_admin/PDF_RETRIEVAL_AGENT_BRIEF_2026-10-09.md` is a self-contained brief for a browser agent (Claude in Chrome) or a person: project context, lawful-route rules, search order, a check against saved web pages with a .pdf name, file naming, email and interlibrary-loan templates, a report format. `02_screening/full_text/PDF_RETRIEVAL_TARGETS_2026-10-09.csv` lists 10 tier-A papers (five A19 excludes, four A22 includes, the S027 review), 14 abstract-only extractions and 10 low-priority status checks, with DOIs and what to confirm in each paper. Built by `code/provenance/audit_and_repair/build_pdf_retrieval_targets_2026-10-09.py`. No data changed.
