@@ -105,21 +105,34 @@ RECEIVED = [  # (id, tier in PDF_RETRIEVAL_TARGETS, Drive file name, what it is,
     ('S417', 'C', 'pdf.pdf', 'Environ. Res.: Infrastruct. Sustain. 5:025006 (2025), open-access journal PDF', '', 'extraction checked and fields filled; CASP re-answered'),
     ('S415', 'C', '23251042.2026.2666400.pdf', 'Environmental Sociology (online 2 May 2026), journal PDF', '', 'extraction checked and fields filled; CASP re-answered'),
 ]
-HDR = ['id', 'tier_in_PDF_RETRIEVAL_TARGETS', 'drive_file_name', 'what_it_is', 'pages', 'what_was_done']
+PROCESSED_NAME = {  # the files were renamed with the study or record id when they were moved to the Drive folder Processed
+    'S513': 'S513_McGranahan_2015_Realizing_the_right_to_sanitation_in_deprived_urban_communities.pdf',
+    'RF5C6D981DB3B': 'RF5C6D981DB3B__Inequality_water_accessibility_and_health_impacts_in_Chiapas_Mexico.pdf',
+    'S352': 'S352_Wamuchiru_2017_Beyond_the_networked_city_Chamazi_Dar_es_Salaam.pdf',
+    'S271': 'S271_Joshi_2011_Health_hygiene_and_appropriate_sanitation.pdf',
+    'S304': 'S304_Ioris_2012_Persistent_water_problems_of_Lima_author_final_draft.pdf',
+    'S310': 'S310_Flores_2013_Monitoring_access_to_water_Nicaragua_scanned_image.pdf',
+    'S315': 'S315_Jimenez_2010_Local_government_and_the_human_right_to_water_Tanzania_scanned_image.pdf',
+    'S416': 'S416_Roy_2013_Negotiating_marginalities_right_to_water_in_Delhi.pdf',
+    'S393': 'S393_Curtis_2019_Clean_India_campaign_BMJ_Global_Health_published_version.pdf',
+    'S395': 'S395_Lutfia_2024_Community_based_rural_water_supply_Jambon_Village.pdf',
+    'S417': 'S417_Hacker_2025_WASH_for_unsheltered_individuals_West_Coast_US.pdf',
+    'S415': 'S415_Ward_2026_Values_at_the_tap_organizational_culture_and_water_unaffordability.pdf'}
+HDR = ['id', 'tier_in_PDF_RETRIEVAL_TARGETS', 'drive_file_name', 'name_in_Processed', 'what_it_is', 'pages', 'what_was_done']
 LOG = '00_admin/DRIVE_INBOX_BATCH4_LOG_2026-10-09.md'
 REC = '02_screening/full_text/PDF_RETRIEVAL_RECEIVED_2026-10-09.csv'
 
 
 def write_received():
     with open(REC, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f, lineterminator='\n'); w.writerow(HDR); w.writerows(RECEIVED)
+        w = csv.writer(f, lineterminator='\n'); w.writerow(HDR); w.writerows([(r[0], r[1], r[2], PROCESSED_NAME[r[0]]) + tuple(r[3:]) for r in RECEIVED])
     lines = ['# Drive inbox, fourth batch (2026-10-09): twelve PDFs after the browser-agent round', '',
-             'The researcher dropped twelve PDFs in the Drive inbox folder (`Sep 26 2026`) after the retrieval brief (`PDF_RETRIEVAL_AGENT_BRIEF_2026-10-09.md`). The AI read each in the session. '
+             'The researcher dropped twelve PDFs in the Drive inbox folder (`Sep 26 2026`) after the retrieval brief (`PDF_RETRIEVAL_AGENT_BRIEF_2026-10-09.md`). The AI read each in the session and moved it to the Drive folder `Processed`, renaming it with its study or record id. '
              'Two of them (`content (2).pdf`, `content (3).pdf`) are scanned images without a text layer; they were read page by page as images, so their table values are page-image readings, not machine extraction. '
              'No PDF is committed to the repository. Outputs: `process_drive_inbox_2026-10-09b.py` (this script), nine new JSONs in `reextract_2026-10-04/` and the rows listed below.', '',
-             '| Study or record | Tier | Drive file | What it is | Pages | What was done |', '|---|---|---|---|---|---|']
+             '| Study or record | Tier | Drive file as dropped | Name in Processed | What it is | Pages | What was done |', '|---|---|---|---|---|---|---|']
     for r in RECEIVED:
-        lines.append('| ' + ' | '.join(x.replace('|', '/') for x in r) + ' |')
+        lines.append('| ' + ' | '.join(x.replace('|', '/') for x in (r[0], r[1], r[2], PROCESSED_NAME[r[0]]) + tuple(r[3:])) + ' |')
     lines += ['', '## Two decisions the full texts raise (proposals only; screening is closed, A15)', '',
               '- **A19, RF5C6D981DB3B (Chiapas, E01):** exclusion confirmed on the full text; E04 (wrong outcome) is the better code. Three of the nine A19 records still have no full text: R155FFF508359, RA1F6E143593E and R803988411D3E.',
               '- **A22, S513 (McGranahan 2015):** a conceptual and policy argument with no stated data or method; fails criterion 3. Three A22 includes still need a full text: S264, S314, S340.', '',
