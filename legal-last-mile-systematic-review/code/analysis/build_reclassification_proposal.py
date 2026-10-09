@@ -1,0 +1,81 @@
+#!/usr/bin/env python3
+"""Generate 05_analysis/descriptive/TOOL_RECLASSIFICATION_PROPOSAL_2026-10-04.{csv,md}: a READ-ONLY proposal listing studies whose appraisal tool does not fit the design
+found when the full text was read (2026-10-04 re-extraction campaign), with the effect on the tool counts quoted in the report. Changes no data; applying it is researcher
+decision A11. The proposals below are the AI's judgement from reading each full text (partly, for long papers); they are hard-coded here with a reason, and the script checks each
+study's current tool against the extraction database so the file stays correct if the database changes. Run from the project root: python3 code/analysis/build_reclassification_proposal.py"""
+import csv, sys, collections
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import current_figures as cf  # noqa: E402
+csv.field_size_limit(sys.maxsize)
+ROOT = cf.ROOT
+OUT_CSV = ROOT / '05_analysis/descriptive/TOOL_RECLASSIFICATION_PROPOSAL_2026-10-04.csv'
+OUT_MD = ROOT / '05_analysis/descriptive/TOOL_RECLASSIFICATION_PROPOSAL_2026-10-04.md'
+# study -> (proposed tool, reason). Tools use cf.tool_of() names. 'NONE' = not appraisable with any instrument (also an eligibility question, see ELIG).
+P = {
+    'S235': ('JBI Cross-Sectional', 'cross-national ecological regression with no intervention; ROBINS-I (Serious) does not apply'),
+    'S397': ('JBI Cross-Sectional', 'observational panel regression of municipal capacity; no intervention, so ROBINS-I does not apply'),
+    'S181': ('NONE', 'Bayesian-network modelling of country indicators; no instrument fits (JBI checklist items do not apply)'),
+    'S230': ('MMAT', 'single-village case study with a network survey, interviews and a focus group (mixed methods); JBI cross-sectional does not fit'),
+    'S345': ('CASP Qualitative', 'qualitative focus-group study tagged JBI Cross-Sectional'),
+    'S318': ('NONE', 'non-systematic narrative review of the national WASH sector (no search); CASP does not apply'),
+    'S335': ('NONE', 'targeted literature and documentary review; CASP does not apply'),
+    'S340': ('NONE', 'desk-based literature review / conceptual analysis; CASP does not apply'),
+    'S333': ('MMAT', 'mixed-methods case study (questionnaire, key-informant interviews, observation) tagged CASP'),
+    'S334': ('MMAT', 'mixed-methods case study (survey, interviews, document review, workshop) tagged CASP'),
+    'S337': ('MMAT', 'convergent mixed-methods single-country case study tagged CASP'),
+    'S231': ('CASP Qualitative', 'no respondent data (documents, statistics, observation, mapping); the mixed-methods tag overstates, MMAT 5.x do not fit'),
+    'S236': ('NONE', 'conceptual/observational essay without systematic methods; CASP does not apply'),
+    'S281': ('NONE', 'systems-modelling study from literature and six expert opinions; the Legal Framework condensed appraisal is not meaningful for a model'),
+    'S310': ('JBI Cross-Sectional', 'quantitative descriptive paper: a 417-household survey and 28 committee interviews aggregated into a composite right-to-water index; the MMAT mixed-methods criteria fit poorly (the sister paper S285 is on a JBI checklist)'),
+}
+# studies whose full text raises a question under inclusion criterion 3 (empirical evidence or a SYSTEMATIC empirical synthesis); none was excluded by the AI
+ELIG = {
+    'S260': 'narrative documentary review, no document count or appraisal', 'S267': 'article type Perspective; eight purposive cases from documents',
+    'S281': 'modelling from literature plus six expert opinions', 'S318': 'narrative review, no search', 'S335': 'targeted literature review',
+    'S340': 'desk-based literature review, no method', 'S341': 'no stated sample or analysis', 'S288': 'MMAT 1 of 5; future-tense methods; tables do not reconcile with n',
+    'S332': 'three-part dissertation, thin legal content', 'S236': 'conceptual/observational, methods unspecified', 'S203': 'doctrinal analysis (SWOT named, no data)',
+    'S199': 'doctrinal legal analysis, no outcome data', 'S212': 'SDG target mapping, no outcome data', 'S206': 'index construction, no legal or institutional exposure',
+    'S243': 'NGO description of two projects, outcomes self-reported', 'S246': 'design-stage project description, no outcomes',
+    'S513': 'conceptual and policy argument; two community-driven sanitation initiatives summarised from published sources, no stated data or method (A22, read in full 2026-10-09)',
+}
+
+
+def build():
+    """Return (csv rows, markdown text)."""
+    ed = {r['study_id']: r for r in cf.read('ed')}
+    rows = []
+    for s, (new, why) in P.items():
+        if s not in ed:  # a study retired after the proposal was written (e.g. by an A16 or criterion-3 exclusion) drops out of it
+            continue
+        cur = cf.tool_of(ed[s]['risk_of_bias_tool'])
+        if cur == new:
+            continue
+        rows.append(dict(study_id=s, current_tool=cur, proposed_tool=new, reason=why, current_rating=ed[s]['risk_of_bias_rating'][:90], also_eligibility_question='yes' if s in ELIG else ''))
+    elig_rows = [dict(study_id=s, current_tool=cf.tool_of(ed[s]['risk_of_bias_tool']), question=why) for s, why in ELIG.items() if s in ed]
+    before = collections.Counter(cf.tool_of(r['risk_of_bias_tool']) for r in cf.read('ed'))
+    after = before.copy()
+    for r in rows:
+        after[r['current_tool']] -= 1; after[r['proposed_tool']] += 1
+    L = ["# Appraisal-tool reclassification proposal (read-only, 2026-10-04)", "",
+         "*Generated by `code/analysis/build_reclassification_proposal.py`. Changes no data. These are the AI's judgements from reading the full texts found in Drive; applying them is researcher decision A11 (`00_admin/DECISIONS_AND_OPEN_ITEMS.md`). Where a study moves to a tool that fits, its rating must be re-answered item by item (the old rating belongs to the wrong instrument) and every tool count quoted in the README, `CURRENT_FIGURES.md`, the report and the evidence-limitations table regenerates or needs patching.*", "",
+         f"## Proposed moves ({len(rows)})", "", "| Study | Now | Proposed | Why | Also an eligibility question |", "|---|---|---|---|---|"]
+    L += [f"| {r['study_id']} | {r['current_tool']} | {r['proposed_tool']} | {r['reason']} | {r['also_eligibility_question']} |" for r in rows]
+    L += ["", "## Effect on the tool counts", "", "| Tool | Now | After the proposal |", "|---|---|---|"]
+    for t in sorted(set(before) | set(after), key=lambda x: -before[x]):
+        L.append(f"| {t} | {before[t]} | {after[t]}{' (' + format(after[t] - before[t], '+d') + ')' if after[t] != before[t] else ''} |")
+    L += ["", f"## Eligibility questions raised by full texts ({len(elig_rows)})", "", "Inclusion criterion 3 requires empirical evidence or a systematic empirical synthesis. The AI excluded none of these; they are for decision 1/A12.", "", "| Study | Tool now | Question |", "|---|---|---|"]
+    L += [f"| {r['study_id']} | {r['current_tool']} | {r['question']} |" for r in elig_rows]
+    return rows, "\n".join(L) + "\n"
+
+
+def main():
+    rows, md = build()
+    with open(OUT_CSV, 'w', newline='', encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator='\n'); w.writeheader(); w.writerows(rows)
+    OUT_MD.write_text(md, encoding='utf-8')
+    print('wrote', OUT_MD.relative_to(ROOT), len(rows), 'moves')
+
+
+if __name__ == '__main__':
+    main()

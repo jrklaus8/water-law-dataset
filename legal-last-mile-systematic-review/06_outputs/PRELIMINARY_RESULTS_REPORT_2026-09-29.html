@@ -1,0 +1,2153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preliminary Results Report</title>
+<meta name="description" content="Preliminary, AI-assisted results of the Legal Last Mile systematic review. Not final.">
+<style>
+:root{--bg:#f6f7f9;--surface:#fff;--ink:#1c2430;--muted:#5a6676;--line:#dfe4ea;--brand:#1f5f8b;--brand-ink:#fff;--soft:#eef3f8;
+--evidence:#1f5f8b;--evidence-bg:#e8f1f8;--interp:#8a5a00;--interp-bg:#fff4dc;--limits:#a12b2b;--limits-bg:#fdecec;--next:#1d7a4d;--next-bg:#e6f5ec;--methods:#4b5565;--methods-bg:#edf0f4;
+--code:#eef1f5;--shadow:0 1px 2px rgba(20,30,45,.06),0 4px 14px rgba(20,30,45,.05);--r:12px;--side:300px}
+:root[data-theme=dark]{--bg:#0f141a;--surface:#171e27;--ink:#e6ebf1;--muted:#9aa7b7;--line:#2a3441;--brand:#6db3e6;--brand-ink:#0b1117;--soft:#1d2733;
+--evidence:#7bbdee;--evidence-bg:#15283a;--interp:#f0b94d;--interp-bg:#33290f;--limits:#f08a8a;--limits-bg:#381a1a;--next:#6fd39c;--next-bg:#12301f;--methods:#a9b4c2;--methods-bg:#1f2833;--code:#222c38;--shadow:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f141a;--surface:#171e27;--ink:#e6ebf1;--muted:#9aa7b7;--line:#2a3441;--brand:#6db3e6;--brand-ink:#0b1117;--soft:#1d2733;
+--evidence:#7bbdee;--evidence-bg:#15283a;--interp:#f0b94d;--interp-bg:#33290f;--limits:#f08a8a;--limits-bg:#381a1a;--next:#6fd39c;--next-bg:#12301f;--methods:#a9b4c2;--methods-bg:#1f2833;--code:#222c38;--shadow:none}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--brand)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--brand);color:var(--brand-ink);padding:8px 12px;border-radius:8px;z-index:100}
+.skip:focus{left:8px}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--brand);z-index:60}
+.top{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .name{font-weight:650;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.pill{font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--interp-bg);color:var(--interp);border:1px solid var(--interp);white-space:nowrap}
+button,.btn{white-space:nowrap;font:inherit;font-size:.85rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 11px;border-radius:9px;cursor:pointer}
+button:hover{background:var(--soft)}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+#menu{display:none}
+.layout{display:grid;grid-template-columns:var(--side) minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav#toc{position:sticky;top:53px;align-self:start;height:calc(100vh - 53px);overflow:auto;padding:18px 14px 28px 18px;border-right:1px solid var(--line)}
+.search{position:relative;margin-bottom:14px}
+.search input{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;font-size:.9rem}
+.search small{display:block;color:var(--muted);margin-top:4px;min-height:1.2em;font-size:.78rem}
+.tocnav a{display:flex;gap:8px;text-decoration:none;color:var(--muted);padding:5px 8px;border-radius:8px;font-size:.88rem;line-height:1.35;border-left:3px solid transparent}
+.tocnav a:hover{background:var(--soft);color:var(--ink)}
+.tocnav a.l2{font-weight:650;color:var(--ink);margin-top:10px}
+.tocnav a.l3{margin-left:14px}
+.tocnav a .tn{flex:none;min-width:2.2em;font-variant-numeric:tabular-nums;opacity:.75}
+.tocnav a.active{background:var(--soft);color:var(--ink);border-left-color:var(--brand)}
+.tocnav a.k-evidence.active{border-left-color:var(--evidence)}.tocnav a.k-interp.active{border-left-color:var(--interp)}.tocnav a.k-limits.active{border-left-color:var(--limits)}.tocnav a.k-next.active{border-left-color:var(--next)}
+main{padding:28px clamp(16px,4vw,48px) 80px;min-width:0}
+.hero h1{font-size:clamp(1.6rem,3.4vw,2.2rem);line-height:1.2;margin:.2em 0 .3em;letter-spacing:-.01em}
+.hero .meta{color:var(--muted);font-size:.9rem}
+.figs{margin:14px 0}.figs summary{cursor:pointer;font-weight:650;margin-bottom:8px}.figgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:12px}.fig{margin:0;border:1px solid var(--line,#d7d6cf);border-radius:10px;overflow:hidden;background:#fcfcfb}.figsvg svg{display:block;width:100%;height:auto}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0 8px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 15px;box-shadow:var(--shadow);border-top:4px solid var(--methods)}
+.card .big{font-size:1.9rem;font-weight:750;line-height:1.1;font-variant-numeric:tabular-nums}
+.card .lab{font-weight:600;font-size:.9rem;margin-top:3px}.card .sub{color:var(--muted);font-size:.8rem;margin-top:3px;line-height:1.35}
+.card.c-warn{border-top-color:var(--interp)}.card.c-bad{border-top-color:var(--limits)}.card.c-neutral{border-top-color:var(--evidence)}
+.guide{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0 6px}
+.guide a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow)}
+.guide a:hover{transform:translateY(-1px)}
+.guide b{display:block;margin-bottom:2px}.guide span{color:var(--muted);font-size:.86rem}
+.guide .g1{border-left:5px solid var(--evidence)}.guide .g2{border-left:5px solid var(--interp)}.guide .g3{border-left:5px solid var(--limits)}.guide .g4{border-left:5px solid var(--next)}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 4px}
+.banner{display:flex;gap:12px;align-items:flex-start;background:var(--interp-bg);border:1px solid var(--interp);color:var(--ink);border-radius:var(--r);padding:12px 16px;margin:16px 0}
+.banner p{margin:0}.bicon{flex:none;width:26px;height:26px;border-radius:50%;background:var(--interp);color:var(--bg);font-weight:800;display:grid;place-items:center;margin-top:2px}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px clamp(14px,2.6vw,26px) 18px;margin:22px 0;box-shadow:var(--shadow);border-top:5px solid var(--methods)}
+.sec.k-evidence{border-top-color:var(--evidence)}.sec.k-interp{border-top-color:var(--interp)}.sec.k-limits{border-top-color:var(--limits)}.sec.k-next{border-top-color:var(--next)}
+.sechead{padding-top:12px}
+.chip{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--methods-bg);color:var(--methods)}
+.k-evidence .chip{background:var(--evidence-bg);color:var(--evidence)}.k-interp .chip{background:var(--interp-bg);color:var(--interp)}.k-limits .chip{background:var(--limits-bg);color:var(--limits)}.k-next .chip{background:var(--next-bg);color:var(--next)}
+.sec.k-plain .chip{display:none}
+h2{font-size:1.4rem;line-height:1.25;margin:.45em 0 .4em}
+h3{font-size:1.05rem;line-height:1.35;margin:0;display:inline}
+.num{color:var(--muted);font-variant-numeric:tabular-nums;margin-right:.25em;font-weight:600}
+.anchor{opacity:0;margin-left:8px;text-decoration:none;font-weight:400;color:var(--muted)}
+h2:hover .anchor,summary:hover .anchor,.anchor:focus{opacity:1}
+details.sub{border-top:1px solid var(--line);margin-top:10px}
+details.sub>summary{cursor:pointer;list-style:none;padding:12px 0 8px;display:flex;align-items:baseline;gap:6px}
+details.sub>summary::-webkit-details-marker{display:none}
+details.sub>summary::before{content:"";flex:none;width:.5em;height:.5em;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(-45deg);transition:transform .15s;margin-right:6px;position:relative;top:-1px}
+details.sub[open]>summary::before{transform:rotate(45deg)}
+.subbody{padding:0 0 4px}
+p{margin:.7em 0}ul,ol{padding-left:1.3em;margin:.6em 0}li{margin:.4em 0}
+code{background:var(--code);padding:.1em .38em;border-radius:5px;font:.84em ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;word-break:break-word}
+hr{border:0;border-top:1px solid var(--line);margin:26px 0}
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:10px;-webkit-overflow-scrolling:touch}
+table{border-collapse:collapse;width:100%;font-size:.88rem;line-height:1.45}
+th,td{padding:8px 11px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+th{position:sticky;top:0;background:var(--soft);font-weight:650;white-space:nowrap}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--soft) 55%,transparent)}
+tbody tr:last-child td{border-bottom:0}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+.sec.k-interp ol{list-style:none;padding:0;counter-reset:i}
+.sec.k-interp ol>li{counter-increment:i;background:var(--interp-bg);border:1px solid var(--line);border-left:5px solid var(--interp);border-radius:10px;padding:10px 14px 10px 46px;position:relative;margin:10px 0}
+.sec.k-interp ol>li::before{content:counter(i);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--interp);color:var(--bg);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+.sec.k-next ol{list-style:none;padding:0;counter-reset:i}
+.sec.k-next ol>li{counter-increment:i;border:1px solid var(--line);border-left:5px solid var(--next);border-radius:10px;padding:10px 14px 10px 46px;position:relative;margin:10px 0;background:var(--next-bg)}
+.sec.k-next ol>li::before{content:counter(i);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--next);color:var(--bg);font-weight:700;display:grid;place-items:center;font-size:.85rem}
+mark{background:#ffe27a;color:#000;border-radius:3px;padding:0 1px}mark.cur{outline:2px solid var(--brand);background:#ffc400}
+footer{color:var(--muted);font-size:.84rem;margin-top:30px}
+#top{position:fixed;right:18px;bottom:18px;display:none;z-index:40;box-shadow:var(--shadow)}
+.scrim{display:none}
+@media (max-width:1100px){.guide{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.guide{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.card .big{font-size:1.6rem}.top .name{display:none}.top{justify-content:space-between}#menu{white-space:nowrap}}
+@media (max-width:900px){
+ .layout{display:block}#menu{display:inline-block}
+ nav#toc{position:fixed;z-index:70;top:0;left:0;bottom:0;height:100vh;height:100dvh;width:min(86vw,340px);background:var(--surface);transform:translateX(-102%);transition:transform .2s;box-shadow:var(--shadow);border-right:1px solid var(--line)}
+ body.menu-open nav#toc{transform:none}body.menu-open .scrim{display:block;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:65}
+}
+@media print{.top,nav#toc,#top,.tools,#progress,.skip,.anchor{display:none!important}.layout{display:block}main{padding:0}body{background:#fff;color:#000;font-size:11pt}.sec,.card{box-shadow:none;break-inside:avoid-page}details.sub>summary::before{display:none}.tablewrap{overflow:visible}th{position:static}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to the report</a>
+<div id="progress" aria-hidden="true"></div>
+<div class="top">
+  <button id="menu" aria-label="Open contents" aria-expanded="false">☰ Contents</button>
+  <span class="name">Preliminary results report — AI-assisted systematic review</span>
+  <span class="pill">Preliminary · not final</span>
+  <button id="theme" aria-label="Toggle dark mode">◐</button>
+</div>
+<div class="scrim" id="scrim"></div>
+<div class="layout">
+<nav id="toc" aria-label="Report contents">
+  <div class="search"><input id="q" type="search" placeholder="Search the report…" aria-label="Search the report" autocomplete="off"><small id="qinfo" aria-live="polite">Enter = next match</small></div>
+  <div class="tocnav">
+<a class="l2 k-methods" href="#s-1" data-target="s-1"><span class="tn">1</span><span class="tt">Methods and progress in brief</span></a>
+<a class="l2 k-evidence" href="#s-2a" data-target="s-2a"><span class="tn">2A</span><span class="tt">Preliminary findings drawn from the extracted evidence</span></a>
+<a class="l3 k-evidence" href="#s-2a-1" data-target="s-2a-1"><span class="tn">2A.1</span><span class="tt">What the evidence base looks like</span></a>
+<a class="l3 k-evidence" href="#s-2a-2" data-target="s-2a-2"><span class="tn">2A.2</span><span class="tt">Mechanisms and outcomes the studies address</span></a>
+<a class="l3 k-evidence" href="#s-2a-3" data-target="s-2a-3"><span class="tn">2A.3</span><span class="tt">The quantitative subset: three structured syntheses</span></a>
+<a class="l3 k-evidence" href="#s-2a-4" data-target="s-2a-4"><span class="tn">2A.4</span><span class="tt">What the qualitative, doctrinal and mixed-methods studies record</span></a>
+<a class="l3 k-evidence" href="#s-2a-5" data-target="s-2a-5"><span class="tn">2A.5</span><span class="tt">Gaps visible in the records</span></a>
+<a class="l2 k-interp" href="#s-2b" data-target="s-2b"><span class="tn">2B</span><span class="tt">Tentative interpretations</span></a>
+<a class="l2 k-limits" href="#s-3" data-target="s-3"><span class="tn">3</span><span class="tt">Confidence and limitations</span></a>
+<a class="l3 k-limits" href="#s-3-1" data-target="s-3-1"><span class="tn">3.1</span><span class="tt">Overall confidence: low to very low for any causal or comparative claim</span></a>
+<a class="l3 k-limits" href="#s-3-2" data-target="s-3-2"><span class="tn">3.2</span><span class="tt">Incomplete screening</span></a>
+<a class="l3 k-limits" href="#s-3-3" data-target="s-3-3"><span class="tn">3.3</span><span class="tt">Missing or thin data</span></a>
+<a class="l3 k-limits" href="#s-3-4" data-target="s-3-4"><span class="tn">3.4</span><span class="tt">Unresolved classifications</span></a>
+<a class="l3 k-limits" href="#s-3-5" data-target="s-3-5"><span class="tn">3.5</span><span class="tt">Other unresolved items that may matter</span></a>
+<a class="l2 k-next" href="#s-4" data-target="s-4"><span class="tn">4</span><span class="tt">Most useful next steps</span></a>
+  </div>
+</nav>
+<main id="content">
+  <div class="hero">
+    <h1>Preliminary results report — AI-assisted systematic review</h1>
+    <div class="meta">Generated 2026-09-29 from the repository's databases · AI-assisted review, nothing independently verified against source papers</div>
+  </div>
+  <aside class="banner" role="note"><div class="bicon" aria-hidden="true">!</div><p><strong>PRELIMINARY — NOT A FINAL RESULT.</strong> Produced by the same AI that screened, extracted and appraised the studies, from the repository's own databases, with no human verification of extracted values against the source papers (<code>AI_USE_STATEMENT.md</code>). Every number below is computed from the data (<code>code/analysis/build_preliminary_report.py</code>); every quoted example is an AI-extracted field, not a re-reading of the paper. Sections 2A and 3 report what the records contain; <strong>Section 2B is tentative interpretation</strong> and is labelled as such. No pooled effect exists and none is claimed.</p></aside>
+  <div class="cards" role="list"><div class="card c-neutral"><div class="big">1,159</div><div class="lab">studies extracted</div><div class="sub">by an AI; no human second extraction yet</div></div><div class="card c-warn"><div class="big">62.2%</div><div class="lab">of full texts assessed</div><div class="sub">2,276 of 3,659; 1,383 never assessed</div></div><div class="card c-warn"><div class="big">68</div><div class="lab">causal-capable designs</div><div class="sub">6% of studies (63 quasi-experimental, 5 randomised = 4 trials)</div></div><div class="card c-neutral"><div class="big">0</div><div class="lab">pooled estimates</div><div class="sub">62 effect-size rows; direction of association only</div></div><div class="card c-warn"><div class="big">11</div><div class="lab">abstract-only extractions</div><div class="sub">extracted without the full text</div></div><div class="card c-bad"><div class="big">200</div><div class="lab">human-confirmed includes</div><div class="sub">no extracted value or rating human-checked</div></div></div>
+  <details class="figs" open><summary>Figures</summary><div class="figgrid"><figure class="fig"><div class="figsvg" role="img" aria-label="Direction of association in the three syntheses">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="532.8pt" height="237.6pt" viewBox="0 0 532.8 237.6" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 237.6 
+L 532.8 237.6 
+L 532.8 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 231.56 154.51344 
+L 522 154.51344 
+L 522 64.8 
+L 231.56 64.8 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 231.56 68.877884 
+L 376.78 68.877884 
+L 376.78 86.468754 
+L 231.56 86.468754 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #2a78d6; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 376.78 68.877884 
+L 449.39 68.877884 
+L 449.39 86.468754 
+L 376.78 86.468754 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #eb6834; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 449.39 68.877884 
+L 473.593333 68.877884 
+L 473.593333 86.468754 
+L 449.39 86.468754 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #8a8984; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 231.56 100.861285 
+L 292.068333 100.861285 
+L 292.068333 118.452155 
+L 231.56 118.452155 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #2a78d6; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 292.068333 100.861285 
+L 304.17 100.861285 
+L 304.17 118.452155 
+L 292.068333 118.452155 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #4a3aa7; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 231.56 132.844686 
+L 316.271667 132.844686 
+L 316.271667 150.435556 
+L 231.56 150.435556 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #2a78d6; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 316.271667 132.844686 
+L 425.186667 132.844686 
+L 425.186667 150.435556 
+L 316.271667 150.435556 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #eb6834; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 425.186667 132.844686 
+L 473.593333 132.844686 
+L 473.593333 150.435556 
+L 425.186667 150.435556 
+z
+" clip-path="url(#p42be1f61dc)" style="fill: #4a3aa7; stroke: #fcfcfb; stroke-width: 2; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="231.56" y="165.611877" transform="rotate(-0 231.56 165.611877)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="292.068333" y="165.611877" transform="rotate(-0 292.068333 165.611877)">5</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="352.576667" y="165.611877" transform="rotate(-0 352.576667 165.611877)">10</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="413.085" y="165.611877" transform="rotate(-0 413.085 165.611877)">15</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="473.593333" y="165.611877" transform="rotate(-0 473.593333 165.611877)">20</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="376.78" y="179.290003" transform="rotate(-0 376.78 179.290003)">Studies (sign of each study's own extracted association)</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_6"/>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="228.06" y="81.472538" transform="rotate(-0 228.06 81.472538)">A  Legal recognition and eligibility</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_7"/>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="228.06" y="113.455939" transform="rotate(-0 228.06 113.455939)">B  Administrative assistance</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_8"/>
+     <g id="text_9">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="228.06" y="145.43934" transform="rotate(-0 228.06 145.43934)">C  Administrative barriers, ownership, price</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_11">
+    <path d="M 231.56 154.51344 
+L 231.56 64.8 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 231.56 154.51344 
+L 522 154.51344 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="304.17" y="80.432694" transform="rotate(-0 304.17 80.432694)">12</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="413.085" y="80.432694" transform="rotate(-0 413.085 80.432694)">6</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="461.491667" y="80.432694" transform="rotate(-0 461.491667 80.432694)">2</text>
+   </g>
+   <g id="text_13">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="478.434" y="80.156756" transform="rotate(-0 478.434 80.156756)">k = 20</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="261.814167" y="112.416095" transform="rotate(-0 261.814167 112.416095)">5</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="298.119167" y="112.416095" transform="rotate(-0 298.119167 112.416095)">1</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="309.010667" y="112.140157" transform="rotate(-0 309.010667 112.140157)">k = 6</text>
+   </g>
+   <g id="text_17">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="273.915833" y="144.399496" transform="rotate(-0 273.915833 144.399496)">7</text>
+   </g>
+   <g id="text_18">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="370.729167" y="144.399496" transform="rotate(-0 370.729167 144.399496)">9</text>
+   </g>
+   <g id="text_19">
+    <text style="font-weight: 700; font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #ffffff" x="449.39" y="144.399496" transform="rotate(-0 449.39 144.399496)">4</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="478.434" y="144.123559" transform="rotate(-0 478.434 144.123559)">k = 20</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_13">
+     <path d="M 239.838672 194.571797 
+L 257.838672 194.571797 
+L 257.838672 188.271797 
+L 239.838672 188.271797 
+z
+" style="fill: #2a78d6; stroke: #2a78d6; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="265.038672" y="194.571797" transform="rotate(-0 265.038672 194.571797)">Positive</text>
+    </g>
+    <g id="patch_14">
+     <path d="M 317.728047 194.571797 
+L 335.728047 194.571797 
+L 335.728047 188.271797 
+L 317.728047 188.271797 
+z
+" style="fill: #eb6834; stroke: #eb6834; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="342.928047" y="194.571797" transform="rotate(-0 342.928047 194.571797)">Negative</text>
+    </g>
+    <g id="patch_15">
+     <path d="M 401.321172 194.571797 
+L 419.321172 194.571797 
+L 419.321172 188.271797 
+L 401.321172 188.271797 
+z
+" style="fill: #4a3aa7; stroke: #4a3aa7; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_23">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="426.521172" y="194.571797" transform="rotate(-0 426.521172 194.571797)">Mixed</text>
+    </g>
+    <g id="patch_16">
+     <path d="M 471.083828 194.571797 
+L 489.083828 194.571797 
+L 489.083828 188.271797 
+L 471.083828 188.271797 
+z
+" style="fill: #8a8984; stroke: #8a8984; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_24">
+     <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="496.283828" y="194.571797" transform="rotate(-0 496.283828 194.571797)">Null</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_25">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="5.328" y="24.958125" transform="rotate(-0 5.328 24.958125)">Direction of association in the three structured syntheses</text>
+  </g>
+  <g id="text_26">
+   <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="5.328" y="42.458672" transform="rotate(-0 5.328 42.458672)">Counts of studies; sign and valence can differ. Nothing is pooled and no effect size is shown</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p42be1f61dc">
+   <rect x="231.56" y="64.8" width="290.44" height="89.71344"/>
+  </clipPath>
+ </defs>
+</svg>
+</div></figure><figure class="fig"><div class="figsvg" role="img" aria-label="Study designs">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="518.4pt" height="339.84pt" viewBox="0 0 518.4 339.84" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 339.84 
+L 518.4 339.84 
+L 518.4 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 210.14 301.38 
+L 507.6 301.38 
+L 507.6 64.8 
+L 210.14 64.8 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 210.14 301.38 
+L 210.14 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="210.14" y="312.478437" transform="rotate(-0 210.14 312.478437)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 248.190041 301.38 
+L 248.190041 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="248.190041" y="312.478437" transform="rotate(-0 248.190041 312.478437)">50</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 286.240082 301.38 
+L 286.240082 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="286.240082" y="312.478437" transform="rotate(-0 286.240082 312.478437)">100</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 324.290123 301.38 
+L 324.290123 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="324.290123" y="312.478437" transform="rotate(-0 324.290123 312.478437)">150</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 362.340164 301.38 
+L 362.340164 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="362.340164" y="312.478437" transform="rotate(-0 362.340164 312.478437)">200</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 400.390205 301.38 
+L 400.390205 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="400.390205" y="312.478437" transform="rotate(-0 400.390205 312.478437)">250</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 438.440246 301.38 
+L 438.440246 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="438.440246" y="312.478437" transform="rotate(-0 438.440246 312.478437)">300</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 476.490287 301.38 
+L 476.490287 64.8 
+" clip-path="url(#pdea833dba3)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="476.490287" y="312.478437" transform="rotate(-0 476.490287 312.478437)">350</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="358.87" y="326.156563" transform="rotate(-0 358.87 326.156563)">Studies</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_17"/>
+     <g id="text_10">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="87.087489" transform="rotate(-0 206.64 87.087489)">free-text label (outside the 8-value list)</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_18"/>
+     <g id="text_11">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="112.037922" transform="rotate(-0 206.64 112.037922)">qualitative</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_19"/>
+     <g id="text_12">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="136.988354" transform="rotate(-0 206.64 136.988354)">mixed methods</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_20"/>
+     <g id="text_13">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="161.938786" transform="rotate(-0 206.64 161.938786)">observational</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21"/>
+     <g id="text_14">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="186.889219" transform="rotate(-0 206.64 186.889219)">quasi experimental</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_22"/>
+     <g id="text_15">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="211.839651" transform="rotate(-0 206.64 211.839651)">doctrinal</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_23"/>
+     <g id="text_16">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="236.790084" transform="rotate(-0 206.64 236.790084)">jurimetric</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_24"/>
+     <g id="text_17">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="261.740516" transform="rotate(-0 206.64 261.740516)">systematic review secondary</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_25"/>
+     <g id="text_18">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="206.64" y="286.690948" transform="rotate(-0 206.64 286.690948)">experimental</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 210.14 75.553636 
+L 475.729286 75.553636 
+L 475.729286 91.022904 
+L 210.14 91.022904 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 210.14 100.504069 
+L 413.327219 100.504069 
+L 413.327219 115.973337 
+L 210.14 115.973337 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 210.14 125.454501 
+L 367.667169 125.454501 
+L 367.667169 140.923769 
+L 210.14 140.923769 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 210.14 150.404934 
+L 322.00712 150.404934 
+L 322.00712 165.874202 
+L 210.14 165.874202 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 210.14 175.355366 
+L 259.605053 175.355366 
+L 259.605053 190.824634 
+L 210.14 190.824634 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 210.14 200.305798 
+L 243.624036 200.305798 
+L 243.624036 215.775066 
+L 210.14 215.775066 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 210.14 225.256231 
+L 239.819032 225.256231 
+L 239.819032 240.725499 
+L 210.14 240.725499 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 210.14 250.206663 
+L 237.536029 250.206663 
+L 237.536029 265.675931 
+L 210.14 265.675931 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 210.14 275.157096 
+L 213.945004 275.157096 
+L 213.945004 290.626364 
+L 210.14 290.626364 
+z
+" clip-path="url(#pdea833dba3)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 210.14 301.38 
+L 210.14 64.8 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 210.14 301.38 
+L 507.6 301.38 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="478.385179" y="85.771708" transform="rotate(-0 478.385179 85.771708)">349</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="415.983111" y="110.72214" transform="rotate(-0 415.983111 110.72214)">267</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="370.323062" y="135.672573" transform="rotate(-0 370.323062 135.672573)">207</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="324.663013" y="160.623005" transform="rotate(-0 324.663013 160.623005)">147</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="262.260946" y="185.573438" transform="rotate(-0 262.260946 185.573438)">65</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="246.279929" y="210.52387" transform="rotate(-0 246.279929 210.52387)">44</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="242.474925" y="235.474302" transform="rotate(-0 242.474925 235.474302)">39</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="240.191922" y="260.424735" transform="rotate(-0 240.191922 260.424735)">36</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="216.600897" y="285.375167" transform="rotate(-0 216.600897 285.375167)">5</text>
+   </g>
+  </g>
+  <g id="text_28">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="5.184" y="24.958125" transform="rotate(-0 5.184 24.958125)">Study designs in the 1,159 included studies</text>
+  </g>
+  <g id="text_29">
+   <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="5.184" y="42.458672" transform="rotate(-0 5.184 42.458672)">Evidence-map design class; only quasi-experimental and experimental designs can support a causal claim</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pdea833dba3">
+   <rect x="210.14" y="64.8" width="297.46" height="236.58"/>
+  </clipPath>
+ </defs>
+</svg>
+</div></figure><figure class="fig"><div class="figsvg" role="img" aria-label="Publication years">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="518.4pt" height="244.8pt" viewBox="0 0 518.4 244.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 244.8 
+L 518.4 244.8 
+L 518.4 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 47.37 206.34 
+L 507.6 206.34 
+L 507.6 67.024 
+L 47.37 67.024 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="99.756271" y="217.438437" transform="rotate(-0 99.756271 217.438437)">1960</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="158.027986" y="217.438437" transform="rotate(-0 158.027986 217.438437)">1970</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="216.2997" y="217.438437" transform="rotate(-0 216.2997 217.438437)">1980</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="274.571414" y="217.438437" transform="rotate(-0 274.571414 217.438437)">1990</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="332.843129" y="217.438437" transform="rotate(-0 332.843129 217.438437)">2000</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6"/>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="391.114843" y="217.438437" transform="rotate(-0 391.114843 217.438437)">2010</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7"/>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="449.386557" y="217.438437" transform="rotate(-0 449.386557 217.438437)">2020</text>
+     </g>
+    </g>
+    <g id="text_8">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="277.485" y="231.116562" transform="rotate(-0 277.485 231.116562)">Publication year</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_8">
+      <path d="M 47.37 206.34 
+L 507.6 206.34 
+" clip-path="url(#pa4f0596d1d)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_9"/>
+     <g id="text_9">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="43.87" y="210.139219" transform="rotate(-0 43.87 210.139219)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_10">
+      <path d="M 47.37 180.824249 
+L 507.6 180.824249 
+" clip-path="url(#pa4f0596d1d)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11"/>
+     <g id="text_10">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="43.87" y="184.623468" transform="rotate(-0 43.87 184.623468)">20</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_12">
+      <path d="M 47.37 155.308498 
+L 507.6 155.308498 
+" clip-path="url(#pa4f0596d1d)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13"/>
+     <g id="text_11">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="43.87" y="159.107717" transform="rotate(-0 43.87 159.107717)">40</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_14">
+      <path d="M 47.37 129.792747 
+L 507.6 129.792747 
+" clip-path="url(#pa4f0596d1d)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15"/>
+     <g id="text_12">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="43.87" y="133.591966" transform="rotate(-0 43.87 133.591966)">60</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_16">
+      <path d="M 47.37 104.276996 
+L 507.6 104.276996 
+" clip-path="url(#pa4f0596d1d)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17"/>
+     <g id="text_13">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="43.87" y="108.076215" transform="rotate(-0 43.87 108.076215)">80</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_18">
+      <path d="M 47.37 78.761245 
+L 507.6 78.761245 
+" clip-path="url(#pa4f0596d1d)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19"/>
+     <g id="text_14">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="43.87" y="82.560464" transform="rotate(-0 43.87 82.560464)">100</text>
+     </g>
+    </g>
+    <g id="text_15">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="18.702812" y="136.682" transform="rotate(-90 18.702812 136.682)">Studies</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 68.289545 206.34 
+L 72.951283 206.34 
+L 72.951283 205.064212 
+L 68.289545 205.064212 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 74.116717 206.34 
+L 78.778454 206.34 
+L 78.778454 206.34 
+L 74.116717 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 79.943888 206.34 
+L 84.605625 206.34 
+L 84.605625 206.34 
+L 79.943888 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 85.77106 206.34 
+L 90.432797 206.34 
+L 90.432797 206.34 
+L 85.77106 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 91.598231 206.34 
+L 96.259968 206.34 
+L 96.259968 206.34 
+L 91.598231 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 97.425403 206.34 
+L 102.08714 206.34 
+L 102.08714 206.34 
+L 97.425403 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 103.252574 206.34 
+L 107.914311 206.34 
+L 107.914311 206.34 
+L 103.252574 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 109.079746 206.34 
+L 113.741483 206.34 
+L 113.741483 206.34 
+L 109.079746 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 114.906917 206.34 
+L 119.568654 206.34 
+L 119.568654 206.34 
+L 114.906917 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 120.734088 206.34 
+L 125.395826 206.34 
+L 125.395826 206.34 
+L 120.734088 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 126.56126 206.34 
+L 131.222997 206.34 
+L 131.222997 206.34 
+L 126.56126 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 132.388431 206.34 
+L 137.050168 206.34 
+L 137.050168 206.34 
+L 132.388431 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 138.215603 206.34 
+L 142.87734 206.34 
+L 142.87734 206.34 
+L 138.215603 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 144.042774 206.34 
+L 148.704511 206.34 
+L 148.704511 206.34 
+L 144.042774 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 149.869946 206.34 
+L 154.531683 206.34 
+L 154.531683 206.34 
+L 149.869946 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 155.697117 206.34 
+L 160.358854 206.34 
+L 160.358854 206.34 
+L 155.697117 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 161.524288 206.34 
+L 166.186026 206.34 
+L 166.186026 206.34 
+L 161.524288 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 167.35146 206.34 
+L 172.013197 206.34 
+L 172.013197 206.34 
+L 167.35146 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 173.178631 206.34 
+L 177.840368 206.34 
+L 177.840368 205.064212 
+L 173.178631 205.064212 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 179.005803 206.34 
+L 183.66754 206.34 
+L 183.66754 206.34 
+L 179.005803 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 184.832974 206.34 
+L 189.494711 206.34 
+L 189.494711 206.34 
+L 184.832974 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 190.660146 206.34 
+L 195.321883 206.34 
+L 195.321883 206.34 
+L 190.660146 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 196.487317 206.34 
+L 201.149054 206.34 
+L 201.149054 206.34 
+L 196.487317 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 202.314488 206.34 
+L 206.976226 206.34 
+L 206.976226 203.788425 
+L 202.314488 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 208.14166 206.34 
+L 212.803397 206.34 
+L 212.803397 206.34 
+L 208.14166 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 213.968831 206.34 
+L 218.630568 206.34 
+L 218.630568 206.34 
+L 213.968831 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 219.796003 206.34 
+L 224.45774 206.34 
+L 224.45774 206.34 
+L 219.796003 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 225.623174 206.34 
+L 230.284911 206.34 
+L 230.284911 206.34 
+L 225.623174 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 231.450346 206.34 
+L 236.112083 206.34 
+L 236.112083 206.34 
+L 231.450346 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 237.277517 206.34 
+L 241.939254 206.34 
+L 241.939254 206.34 
+L 237.277517 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 243.104689 206.34 
+L 247.766426 206.34 
+L 247.766426 203.788425 
+L 243.104689 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 248.93186 206.34 
+L 253.593597 206.34 
+L 253.593597 206.34 
+L 248.93186 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 254.759031 206.34 
+L 259.420769 206.34 
+L 259.420769 203.788425 
+L 254.759031 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 260.586203 206.34 
+L 265.24794 206.34 
+L 265.24794 206.34 
+L 260.586203 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 266.413374 206.34 
+L 271.075111 206.34 
+L 271.075111 203.788425 
+L 266.413374 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 272.240546 206.34 
+L 276.902283 206.34 
+L 276.902283 206.34 
+L 272.240546 206.34 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 278.067717 206.34 
+L 282.729454 206.34 
+L 282.729454 203.788425 
+L 278.067717 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 283.894889 206.34 
+L 288.556626 206.34 
+L 288.556626 203.788425 
+L 283.894889 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_41">
+    <path d="M 289.72206 206.34 
+L 294.383797 206.34 
+L 294.383797 205.064212 
+L 289.72206 205.064212 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_42">
+    <path d="M 295.549231 206.34 
+L 300.210969 206.34 
+L 300.210969 201.23685 
+L 295.549231 201.23685 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 301.376403 206.34 
+L 306.03814 206.34 
+L 306.03814 202.512637 
+L 301.376403 202.512637 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 307.203574 206.34 
+L 311.865311 206.34 
+L 311.865311 205.064212 
+L 307.203574 205.064212 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 313.030746 206.34 
+L 317.692483 206.34 
+L 317.692483 203.788425 
+L 313.030746 203.788425 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_46">
+    <path d="M 318.857917 206.34 
+L 323.519654 206.34 
+L 323.519654 205.064212 
+L 318.857917 205.064212 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_47">
+    <path d="M 324.685089 206.34 
+L 329.346826 206.34 
+L 329.346826 201.23685 
+L 324.685089 201.23685 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_48">
+    <path d="M 330.51226 206.34 
+L 335.173997 206.34 
+L 335.173997 198.685275 
+L 330.51226 198.685275 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_49">
+    <path d="M 336.339432 206.34 
+L 341.001169 206.34 
+L 341.001169 202.512637 
+L 336.339432 202.512637 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_50">
+    <path d="M 342.166603 206.34 
+L 346.82834 206.34 
+L 346.82834 199.961062 
+L 342.166603 199.961062 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_51">
+    <path d="M 347.993774 206.34 
+L 352.655512 206.34 
+L 352.655512 185.927399 
+L 347.993774 185.927399 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_52">
+    <path d="M 353.820946 206.34 
+L 358.482683 206.34 
+L 358.482683 185.927399 
+L 353.820946 185.927399 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_53">
+    <path d="M 359.648117 206.34 
+L 364.309854 206.34 
+L 364.309854 198.685275 
+L 359.648117 198.685275 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_54">
+    <path d="M 365.475289 206.34 
+L 370.137026 206.34 
+L 370.137026 180.824249 
+L 365.475289 180.824249 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_55">
+    <path d="M 371.30246 206.34 
+L 375.964197 206.34 
+L 375.964197 178.272674 
+L 371.30246 178.272674 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_56">
+    <path d="M 377.129632 206.34 
+L 381.791369 206.34 
+L 381.791369 161.687436 
+L 377.129632 161.687436 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_57">
+    <path d="M 382.956803 206.34 
+L 387.61854 206.34 
+L 387.61854 189.754762 
+L 382.956803 189.754762 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_58">
+    <path d="M 388.783974 206.34 
+L 393.445712 206.34 
+L 393.445712 173.169524 
+L 388.783974 173.169524 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_59">
+    <path d="M 394.611146 206.34 
+L 399.272883 206.34 
+L 399.272883 155.308498 
+L 394.611146 155.308498 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_60">
+    <path d="M 400.438317 206.34 
+L 405.100054 206.34 
+L 405.100054 142.550623 
+L 400.438317 142.550623 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_61">
+    <path d="M 406.265489 206.34 
+L 410.927226 206.34 
+L 410.927226 145.102198 
+L 406.265489 145.102198 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_62">
+    <path d="M 412.09266 206.34 
+L 416.754397 206.34 
+L 416.754397 134.895897 
+L 412.09266 134.895897 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_63">
+    <path d="M 417.919832 206.34 
+L 422.581569 206.34 
+L 422.581569 145.102198 
+L 417.919832 145.102198 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_64">
+    <path d="M 423.747003 206.34 
+L 428.40874 206.34 
+L 428.40874 141.274835 
+L 423.747003 141.274835 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_65">
+    <path d="M 429.574174 206.34 
+L 434.235912 206.34 
+L 434.235912 150.205348 
+L 429.574174 150.205348 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_66">
+    <path d="M 435.401346 206.34 
+L 440.063083 206.34 
+L 440.063083 120.862234 
+L 435.401346 120.862234 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_67">
+    <path d="M 441.228517 206.34 
+L 445.890254 206.34 
+L 445.890254 127.241172 
+L 441.228517 127.241172 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_68">
+    <path d="M 447.055689 206.34 
+L 451.717426 206.34 
+L 451.717426 124.689597 
+L 447.055689 124.689597 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_69">
+    <path d="M 452.88286 206.34 
+L 457.544597 206.34 
+L 457.544597 118.310659 
+L 452.88286 118.310659 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_70">
+    <path d="M 458.710032 206.34 
+L 463.371769 206.34 
+L 463.371769 125.965385 
+L 458.710032 125.965385 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_71">
+    <path d="M 464.537203 206.34 
+L 469.19894 206.34 
+L 469.19894 129.792747 
+L 464.537203 129.792747 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_72">
+    <path d="M 470.364375 206.34 
+L 475.026112 206.34 
+L 475.026112 133.62011 
+L 470.364375 133.62011 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_73">
+    <path d="M 476.191546 206.34 
+L 480.853283 206.34 
+L 480.853283 73.658095 
+L 476.191546 73.658095 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_74">
+    <path d="M 482.018717 206.34 
+L 486.680455 206.34 
+L 486.680455 109.380147 
+L 482.018717 109.380147 
+z
+" clip-path="url(#pa4f0596d1d)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_75">
+    <path d="M 47.37 206.34 
+L 47.37 67.024 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_76">
+    <path d="M 47.37 206.34 
+L 507.6 206.34 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="472.522415" y="69.658095" transform="rotate(-0 472.522415 69.658095)">2025: 104</text>
+   </g>
+  </g>
+  <g id="text_17">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="5.184" y="24.958125" transform="rotate(-0 5.184 24.958125)">When the included studies were published</text>
+  </g>
+  <g id="text_18">
+   <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="5.184" y="42.458672" transform="rotate(-0 5.184 42.458672)">985 of 1,157 (85%) were published in 2010 or later; 2026 is a partial year</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa4f0596d1d">
+   <rect x="47.37" y="67.024" width="460.23" height="139.316"/>
+  </clipPath>
+ </defs>
+</svg>
+</div></figure><figure class="fig"><div class="figsvg" role="img" aria-label="Countries">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="518.4pt" height="367.2pt" viewBox="0 0 518.4 367.2" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 367.2 
+L 518.4 367.2 
+L 518.4 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 81.98 328.74 
+L 507.6 328.74 
+L 507.6 64.8 
+L 81.98 64.8 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 81.98 328.74 
+L 81.98 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="81.98" y="339.838437" transform="rotate(-0 81.98 339.838437)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 139.125542 328.74 
+L 139.125542 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="139.125542" y="339.838437" transform="rotate(-0 139.125542 339.838437)">20</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 196.271085 328.74 
+L 196.271085 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="196.271085" y="339.838437" transform="rotate(-0 196.271085 339.838437)">40</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 253.416627 328.74 
+L 253.416627 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="253.416627" y="339.838437" transform="rotate(-0 253.416627 339.838437)">60</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 310.56217 328.74 
+L 310.56217 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="310.56217" y="339.838437" transform="rotate(-0 310.56217 339.838437)">80</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 367.707712 328.74 
+L 367.707712 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="367.707712" y="339.838437" transform="rotate(-0 367.707712 339.838437)">100</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_13">
+      <path d="M 424.853255 328.74 
+L 424.853255 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_7">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="424.853255" y="339.838437" transform="rotate(-0 424.853255 339.838437)">120</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_15">
+      <path d="M 481.998797 328.74 
+L 481.998797 64.8 
+" clip-path="url(#pa4ba9248f6)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="481.998797" y="339.838437" transform="rotate(-0 481.998797 339.838437)">140</text>
+     </g>
+    </g>
+    <g id="text_9">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="294.79" y="353.516563" transform="rotate(-0 294.79 353.516563)">Studies</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_17"/>
+     <g id="text_10">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="88.328622" transform="rotate(-0 78.48 88.328622)">India</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_18"/>
+     <g id="text_11">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="113.270976" transform="rotate(-0 78.48 113.270976)">Brazil</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_19"/>
+     <g id="text_12">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="138.213331" transform="rotate(-0 78.48 138.213331)">South Africa</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_20"/>
+     <g id="text_13">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="163.155686" transform="rotate(-0 78.48 163.155686)">United States</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21"/>
+     <g id="text_14">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="188.098041" transform="rotate(-0 78.48 188.098041)">Ghana</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_22"/>
+     <g id="text_15">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="213.040396" transform="rotate(-0 78.48 213.040396)">Kenya</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_23"/>
+     <g id="text_16">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="237.982751" transform="rotate(-0 78.48 237.982751)">Mexico</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_24"/>
+     <g id="text_17">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="262.925106" transform="rotate(-0 78.48 262.925106)">Indonesia</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_25"/>
+     <g id="text_18">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="287.867461" transform="rotate(-0 78.48 287.867461)">Nigeria</text>
+     </g>
+    </g>
+    <g id="ytick_10">
+     <g id="line2d_26"/>
+     <g id="text_19">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="78.48" y="312.809816" transform="rotate(-0 78.48 312.809816)">Bangladesh</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 81.98 76.797273 
+L 461.997857 76.797273 
+L 461.997857 92.261533 
+L 81.98 92.261533 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 81.98 101.739628 
+L 330.56311 101.739628 
+L 330.56311 117.203888 
+L 81.98 117.203888 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 81.98 126.681983 
+L 321.991278 126.681983 
+L 321.991278 142.146243 
+L 81.98 142.146243 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 81.98 151.624338 
+L 284.846676 151.624338 
+L 284.846676 167.088598 
+L 81.98 167.088598 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 81.98 176.566692 
+L 233.415687 176.566692 
+L 233.415687 192.030953 
+L 81.98 192.030953 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 81.98 201.509047 
+L 224.843856 201.509047 
+L 224.843856 216.973308 
+L 81.98 216.973308 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 81.98 226.451402 
+L 187.699253 226.451402 
+L 187.699253 241.915662 
+L 81.98 241.915662 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 81.98 251.393757 
+L 167.698314 251.393757 
+L 167.698314 266.858017 
+L 81.98 266.858017 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 81.98 276.336112 
+L 161.983759 276.336112 
+L 161.983759 291.800372 
+L 81.98 291.800372 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 81.98 301.278467 
+L 159.126482 301.278467 
+L 159.126482 316.742727 
+L 81.98 316.742727 
+z
+" clip-path="url(#pa4ba9248f6)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 81.98 328.74 
+L 81.98 64.8 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 81.98 328.74 
+L 507.6 328.74 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="465.798036" y="87.01284" transform="rotate(-0 465.798036 87.01284)">133</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="334.363288" y="111.955195" transform="rotate(-0 334.363288 111.955195)">87</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="325.791457" y="136.89755" transform="rotate(-0 325.791457 136.89755)">84</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="288.646854" y="161.839905" transform="rotate(-0 288.646854 161.839905)">71</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="237.215866" y="186.78226" transform="rotate(-0 237.215866 186.78226)">53</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="228.644035" y="211.724615" transform="rotate(-0 228.644035 211.724615)">50</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="191.499432" y="236.66697" transform="rotate(-0 191.499432 236.66697)">37</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="171.498492" y="261.609325" transform="rotate(-0 171.498492 261.609325)">30</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="165.783938" y="286.55168" transform="rotate(-0 165.783938 286.55168)">28</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="162.926661" y="311.494035" transform="rotate(-0 162.926661 311.494035)">27</text>
+   </g>
+  </g>
+  <g id="text_30">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="5.184" y="24.958125" transform="rotate(-0 5.184 24.958125)">The ten most frequent single countries</text>
+  </g>
+  <g id="text_31">
+   <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="5.184" y="42.458672" transform="rotate(-0 5.184 42.458672)">Free-text country field; 124 multi-country or regional studies and 3 blank are not counted</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pa4ba9248f6">
+   <rect x="81.98" y="64.8" width="425.62" height="263.94"/>
+  </clipPath>
+ </defs>
+</svg>
+</div></figure><figure class="fig"><div class="figsvg" role="img" aria-label="Appraisal instruments">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="518.4pt" height="312.48pt" viewBox="0 0 518.4 312.48" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:format>image/svg+xml</dc:format>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 312.48 
+L 518.4 312.48 
+L 518.4 0 
+L 0 0 
+z
+" style="fill: #fcfcfb"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 107.09 274.02 
+L 498.663595 274.02 
+L 498.663595 64.8 
+L 107.09 64.8 
+z
+" style="fill: #fcfcfb"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 107.09 274.02 
+L 107.09 64.8 
+" clip-path="url(#p99f43d9179)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="107.09" y="285.118438" transform="rotate(-0 107.09 285.118438)">0</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 185.304604 274.02 
+L 185.304604 64.8 
+" clip-path="url(#p99f43d9179)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="185.304604" y="285.118438" transform="rotate(-0 185.304604 285.118438)">100</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 263.519209 274.02 
+L 263.519209 64.8 
+" clip-path="url(#p99f43d9179)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="263.519209" y="285.118438" transform="rotate(-0 263.519209 285.118438)">200</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 341.733813 274.02 
+L 341.733813 64.8 
+" clip-path="url(#p99f43d9179)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="341.733813" y="285.118438" transform="rotate(-0 341.733813 285.118438)">300</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 419.948418 274.02 
+L 419.948418 64.8 
+" clip-path="url(#p99f43d9179)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="419.948418" y="285.118438" transform="rotate(-0 419.948418 285.118438)">400</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_11">
+      <path d="M 498.163022 274.02 
+L 498.163022 64.8 
+" clip-path="url(#p99f43d9179)" style="fill: none; stroke: #e6e5e0; stroke-width: 0.6; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_6">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="498.163022" y="285.118438" transform="rotate(-0 498.163022 285.118438)">500</text>
+     </g>
+    </g>
+    <g id="text_7">
+     <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle; fill: #52514e" x="302.876798" y="298.796562" transform="rotate(-0 302.876798 298.796562)">Studies</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13"/>
+     <g id="text_8">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="85.847014" transform="rotate(-0 103.59 85.847014)">Legal Framework</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_14"/>
+     <g id="text_9">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="110.807644" transform="rotate(-0 103.59 110.807644)">CASP Qualitative</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_15"/>
+     <g id="text_10">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="135.768274" transform="rotate(-0 103.59 135.768274)">MMAT</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_16"/>
+     <g id="text_11">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="160.728904" transform="rotate(-0 103.59 160.728904)">JBI Cross-Sectional</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_17"/>
+     <g id="text_12">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="185.689534" transform="rotate(-0 103.59 185.689534)">ROBINS-I</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_18"/>
+     <g id="text_13">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="210.650164" transform="rotate(-0 103.59 210.650164)">AMSTAR 2</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_19"/>
+     <g id="text_14">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="235.610794" transform="rotate(-0 103.59 235.610794)">NONE</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_20"/>
+     <g id="text_15">
+      <text style="font-size: 10px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end; fill: #0b0b0b" x="103.59" y="260.571423" transform="rotate(-0 103.59 260.571423)">RoB 2</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 107.09 74.31 
+L 456.709282 74.31 
+L 456.709282 89.785591 
+L 107.09 89.785591 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 107.09 99.27063 
+L 312.79441 99.27063 
+L 312.79441 114.74622 
+L 107.09 114.74622 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 107.09 124.23126 
+L 267.429939 124.23126 
+L 267.429939 139.70685 
+L 107.09 139.70685 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 107.09 149.19189 
+L 216.590446 149.19189 
+L 216.590446 164.66748 
+L 107.09 164.66748 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 107.09 174.15252 
+L 156.365201 174.15252 
+L 156.365201 189.62811 
+L 107.09 189.62811 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 107.09 199.11315 
+L 125.079359 199.11315 
+L 125.079359 214.58874 
+L 107.09 214.58874 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 107.09 224.07378 
+L 117.257899 224.07378 
+L 117.257899 239.54937 
+L 107.09 239.54937 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 107.09 249.034409 
+L 111.00073 249.034409 
+L 111.00073 264.51 
+L 107.09 264.51 
+z
+" clip-path="url(#p99f43d9179)" style="fill: #2a78d6"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 107.09 274.02 
+L 107.09 64.8 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 107.09 274.02 
+L 498.663595 274.02 
+" style="fill: none; stroke: #c8c7c1; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="460.205474" y="84.531233" transform="rotate(-0 460.205474 84.531233)">447</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="316.290602" y="109.491863" transform="rotate(-0 316.290602 109.491863)">263</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="270.926132" y="134.452493" transform="rotate(-0 270.926132 134.452493)">205</text>
+   </g>
+   <g id="text_19">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="220.086639" y="159.413123" transform="rotate(-0 220.086639 159.413123)">140</text>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="159.861394" y="184.373752" transform="rotate(-0 159.861394 184.373752)">63</text>
+   </g>
+   <g id="text_21">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="128.575552" y="209.334382" transform="rotate(-0 128.575552 209.334382)">23</text>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="120.754091" y="234.295012" transform="rotate(-0 120.754091 234.295012)">13</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 9px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="114.496923" y="259.255642" transform="rotate(-0 114.496923 259.255642)">5</text>
+   </g>
+  </g>
+  <g id="text_24">
+   <text style="font-weight: 700; font-size: 12px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #0b0b0b" x="5.184" y="24.958125" transform="rotate(-0 5.184 24.958125)">Which appraisal instrument each study received</text>
+  </g>
+  <g id="text_25">
+   <text style="font-size: 8.5px; font-family: 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start; fill: #52514e" x="5.184" y="42.458672" transform="rotate(-0 5.184 42.458672)">Rule-based ratings; the Legal Framework instrument is the project's own and is not validated</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p99f43d9179">
+   <rect x="107.09" y="64.8" width="391.573595" height="209.22"/>
+  </clipPath>
+ </defs>
+</svg>
+</div></figure></div></details>
+  <div class="guide">
+    <a class="g1" href="#s-2a"><b>Findings</b><span>What the extracted records contain</span></a>
+    <a class="g2" href="#s-2b"><b>Tentative interpretations</b><span>Readings that could be wrong</span></a>
+    <a class="g3" href="#s-3"><b>Confidence &amp; limits</b><span>Incomplete screening, thin data, open classifications</span></a>
+    <a class="g4" href="#s-4"><b>Next steps</b><span>What would help most, in order</span></a>
+  </div>
+  <div class="tools"><button id="expand">Expand all</button><button id="collapse">Collapse subsections</button><button onclick="window.print()">Print / save as PDF</button></div>
+<section class="sec k-methods" id="s-1"><header class="sechead"><span class="chip">Methods &amp; progress</span><h2><span class="num">1</span> Methods and progress in brief<a class="anchor" href="#s-1" aria-label="Link to this section">#</a></h2></header>
+<div class="tablewrap" tabindex="0"><table><thead><tr><th scope="col">Step</th><th scope="col">Status</th></tr></thead><tbody><tr><td>Question</td><td>How legal and administrative institutions shape the translation of physical water/sanitation infrastructure into effective household access (<code>PROTOCOL.md</code>)</td></tr><tr><td>Search</td><td>Closed 2026-09-11; 34,594 raw records → 27,481 unique (SSRN and Westlaw/Lexis never searched)</td></tr><tr><td>Title/abstract screening</td><td>Final 3,659 include / 6 exclude: 26,222 of 27,481 screened by AI first pass (3,062 include / 22,557 exclude / 603 unsure; 1,259 without an abstract left undecided); a human second pass covered the 3,665 include-plus-unsure records, <strong>not the 22,557 AI excludes</strong>; 99.8% agreement, flagged by the project as unusually high</td></tr><tr><td>Full-text screening</td><td>Closed by researcher decision at <strong>2,276 of 3,659 assessed (62.2%)</strong>: <strong>1,159 include / 1,117 exclude</strong>; 1,383 never assessed. 151 of the excludes are E10 ("full text inaccessible"), so only <strong>2,125</strong> were judged on content. AI decisions; a human confirmed 100 includes and no excludes</td></tr><tr><td>Extraction</td><td>1,159 studies, 92 codebook fields, by the AI; 11 from abstract/metadata only; no second extractor</td></tr><tr><td>Appraisal</td><td>Rule-based batch ratings from extracted fields with design-matched tools: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 23, Legal Framework 447, NONE 13. Legal Framework is the project's own <strong>non-validated</strong> instrument. No human review of ratings</td></tr><tr><td>Synthesis</td><td>Phase 11: no family clears the bar for meta-analysis. 62 effect-size rows (A 20, B 6, C 20, 16 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses</td></tr></tbody></table></div>
+</section>
+<section class="sec k-evidence" id="s-2a"><header class="sechead"><span class="chip">Extracted evidence</span><h2><span class="num">2A</span> Preliminary findings drawn from the extracted evidence<a class="anchor" href="#s-2a" aria-label="Link to this section">#</a></h2></header>
+<details class="sub" id="s-2a-1" open><summary><h3><span class="num">2A.1</span> What the evidence base looks like</h3><a class="anchor" href="#s-2a-1" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<ul><li><strong>Volume and recency.</strong> 1,159 studies; 985 (85%) published 2010 or later (median year 2018; 30 before 2000).</li><li><strong>Design mix</strong> (evidence-map <code>study_design_class</code>; 349 studies carry free-text values outside the 8-value enum — the commonest are variants of "case study", e.g. ethnographic case study (16); qualitative case study (10); they are not in the counts that follow): qualitative 267, mixed-methods 207, observational 147, quasi-experimental 65, doctrinal 44, jurimetric 39, secondary systematic reviews 36, experimental 5. By appraisal tool: RoB 2 5, ROBINS-I 63, JBI Cross-Sectional 140, MMAT 205, CASP Qualitative 263, AMSTAR 2 23, Legal Framework 447, NONE 13.</li><li><strong>Designs able to support a causal claim about a legal/administrative mechanism:</strong> 68 (6%) — 63 quasi-experimental studies and 5 randomised trials (which are 4 distinct trials, see <a class="xref" href="#s-3-4">§3.4</a>). 35 studies carry a numeric mechanism-certainty of 3 or 4 (the codebook's quasi-experimental or experimental evidence), <strong>but only 10 of them are among the 68 ROBINS-I/RoB 2 studies; the other 25 are other designs, a coding inconsistency the audit flags</strong> (<code>DATA_QUALITY_AUDIT_2026-09-29.md</code> §5); 238 sit at level 1 (documented association) and 286 at level 2; 596 carry narrative text instead of a 0–4 code.</li><li><strong>Geography</strong> (<code>country</code> is free text; 126 studies name several countries or a region and are not counted below): India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 50, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. The dissertation's comparison countries are unevenly covered: <strong>Brazil 87, Canada 15 (19 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).</strong></li><li><strong>Legal systems</strong> (rule-based buckets): blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.</li><li><strong>Setting and language:</strong> urban (incl. informal settlements) 525, rural 298, mixed/both 270, peri-urban 29, blank/other 37; English 1073 of 1,159 studies, Spanish 32, Portuguese 22, French 6.</li></ul>
+</div></details>
+<details class="sub" id="s-2a-2" open><summary><h3><span class="num">2A.2</span> Mechanisms and outcomes the studies address (AI extraction coding)</h3><a class="anchor" href="#s-2a-2" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<p>Counts are studies for which the extraction coded the field <code>TRUE</code> (a blank is <em>not</em> <code>FALSE</code>; a study can carry many). They show what was coded, not how strong the evidence is.</p>
+<div class="tablewrap" tabindex="0"><table><thead><tr><th scope="col">Mechanism coded</th><th scope="col">Studies</th><th scope="col"></th><th scope="col">Outcome coded</th><th scope="col">Studies</th></tr></thead><tbody><tr><td><code>institutional_fragmentation</code></td><td class="num">664</td><td></td><td><code>water_access</code></td><td class="num">1,013</td></tr><tr><td><code>discretion_accommodation</code></td><td class="num">597</td><td></td><td><code>formal_connection</code></td><td class="num">579</td></tr><tr><td><code>fees</code></td><td class="num">543</td><td></td><td><code>service_coverage</code></td><td class="num">564</td></tr><tr><td><code>service_area</code></td><td class="num">482</td><td></td><td><code>affordability</code></td><td class="num">507</td></tr><tr><td><code>political_coordination</code></td><td class="num">481</td><td></td><td><code>sanitation_access</code></td><td class="num">457</td></tr><tr><td><code>enforcement</code></td><td class="num">460</td><td></td><td><code>service_reliability</code></td><td class="num">382</td></tr><tr><td><code>participation</code></td><td class="num">445</td><td></td><td><code>service_quality</code></td><td class="num">302</td></tr><tr><td><code>eligibility</code></td><td class="num">423</td><td></td><td><code>service_continuity</code></td><td class="num">251</td></tr><tr><td><code>burden</code></td><td class="num">419</td><td></td><td><code>service_quantity</code></td><td class="num">206</td></tr><tr><td><code>documentation</code></td><td class="num">262</td><td></td><td><code>refusal</code></td><td class="num">107</td></tr><tr><td><code>bureaucratic_assistance</code></td><td class="num">215</td><td></td><td><code>delay_outcome</code></td><td class="num">95</td></tr><tr><td><code>administrative_review</code></td><td class="num">70</td><td></td><td><code>application_success</code></td><td class="num">75</td></tr><tr><td><code>complaint</code></td><td class="num">124</td><td></td><td></td><td></td></tr><tr><td><code>judicial_review</code></td><td class="num">65</td><td></td><td></td><td></td></tr><tr><td><code>disconnection</code></td><td class="num">107</td><td></td><td></td><td></td></tr><tr><td><code>reconnection</code></td><td class="num">24</td><td></td><td></td><td></td></tr></tbody></table></div>
+<p>Institutional fragmentation (664), official discretion/accommodation (597) and fees/tariffs (543) are the most frequently coded mechanisms; formal-connection (579) and affordability (507) outcomes are well represented, while sanitation access (457) is coded about half as often as water access (1,013). Mechanisms concerning redress and review — administrative review (70), judicial review (65), complaint (124), reconnection (24) — and application outcomes (refusal 107, delay 95, success 75) are coded far less often.</p>
+</div></details>
+<details class="sub" id="s-2a-3" open><summary><h3><span class="num">2A.3</span> The quantitative subset: three structured syntheses (direction of association, not effect size)</h3><a class="anchor" href="#s-2a-3" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<p>Only 62 studies have an effect-size row; none is pooled. Counts are of the <strong>sign of each study's extracted association</strong> (sign and valence differ for some studies — see the Family A and C documents).</p>
+<div class="tablewrap" tabindex="0"><table><thead><tr><th scope="col">Family</th><th scope="col">Studies</th><th scope="col">Positive / negative / null / mixed (sign)</th><th scope="col">Documents</th></tr></thead><tbody><tr><td>A — legal recognition, eligibility and access</td><td class="num">20</td><td class="num">12 / 6 / 2 / 0</td><td><code>family_A_swim_synthesis_2026-09-28.md</code></td></tr><tr><td>B — bureaucratic/administrative assistance</td><td class="num">6</td><td class="num">5 / 0 / 0 / 1</td><td><code>family_B_…</code></td></tr><tr><td>C — administrative/legal barriers, ownership and price</td><td class="num">20</td><td class="num">7 / 9 / 0 / 4</td><td><code>family_C_…</code></td></tr></tbody></table></div>
+<p><strong>Where studies agree.</strong> In Family A, 15 of 20 (75.0%) are concordant with "legal/institutional recognition or eligibility is associated with better access" on a substantive reading (11 positive-sign studies plus 4 negative-sign studies in which unrecognised or informal status is associated with worse access). All 6 Family B studies report a positive or mixed association between administrative assistance/institutional trust and access, and none is negative. Three studies of private versus public ownership (S526, S539, S749; US ×2 and Brazil) all associate private ownership with worse affordability or progressivity.</p>
+<p><strong>Where they disagree or do not fit.</strong></p>
+<ul><li>Family A counter-pattern (exposure associated with <em>worse</em> access): S1020, S104, S1121; null: S037, S780.</li><li>Family C has no dominant direction (7 positive / 9 negative / 4 mixed) — its exposures and outcomes are heterogeneous, and signs are not comparable across them.</li></ul>
+<p>Examples as extracted (exposure and direction are AI-extracted fields):</p>
+<div class="tablewrap" tabindex="0"><table><thead><tr><th scope="col">Study</th><th scope="col">Country</th><th scope="col">Tool</th><th scope="col">Exposure (extracted)</th><th scope="col">Direction (extracted)</th></tr></thead><tbody><tr><td>S765</td><td>Peru</td><td>ROBINS-I</td><td>Household acquisition of a legal land title under Peru's PETT (Proyecto Especial de Titulacion…</td><td>positive (statistically significant)</td></tr><tr><td>S398</td><td>Brazil</td><td>ROBINS-I</td><td>Household census-tract location within an area designated ZEIS (Zona Especial de Interesse Soci…</td><td>positive (ZEIS designation associated with increased water/sewage-network access and homeownership)</td></tr><tr><td>S1122</td><td>Burkina Faso</td><td>ROBINS-I</td><td>Legal/administrative zoning status of residence (zoned vs. non-zoned/spontaneous-settlement lan…</td><td>negative (non-zoned/informal legal status sharply reduces hazard of gaining piped water access; effect compoun…</td></tr><tr><td>S142</td><td>United States</td><td>ROBINS-I</td><td>Municipal incorporation status (incorporated vs. unincorporated), which functions as the legal/…</td><td>negative (unincorporated/unrecognized jurisdictional status associated with reduced service access)</td></tr><tr><td>S057</td><td>Cambodia</td><td>RoB 2</td><td>Random offer of a targeted sanitation subsidy to households determined eligible via the Poverty…</td><td>positive (subsidy eligibility increases sanitation-product purchase)</td></tr><tr><td>S104</td><td>Zambia</td><td>JBI Cross-Sectional</td><td>Household home-ownership / tenure status (owner vs. non-owner) in a multilevel household-neighb…</td><td>positive (home ownership associated with higher odds of interruption -- direction counter to a simple "tenure…</td></tr><tr><td>S1020</td><td>India</td><td>ROBINS-I</td><td>Household residence in a treatment micro-watershed subject to a government watershed-developmen…</td><td>negative (watershed-development intervention associated with increased, i.e. worsened, domestic water collecti…</td></tr><tr><td>S1121</td><td>United States</td><td>ROBINS-I</td><td>Local government adoption of a water-adequacy screening policy (an administrative-review growth…</td><td>negative (water-adequacy screening reduces new residential water-connection permitting)</td></tr><tr><td>S085</td><td>India</td><td>RoB 2</td><td>Random assignment to bureaucratic-assistance treatment (T1: help completing formalization appli…</td><td>positive (bureaucratic assistance increases formalization, conditional on political coordination)</td></tr><tr><td>S294</td><td>Democratic Republic of Congo</td><td>RoB 2</td><td>Random assignment to a community-driven WASH intervention with an institutional-strengthening c…</td><td>null (health outcomes); positive (institutional-strengthening outcome)</td></tr><tr><td>S526</td><td>United States</td><td>JBI Cross-Sectional</td><td>Utility ownership/governance type: investor-owned (private) water utility with rates set by a s…</td><td>negative (private ownership associated with less progressive/more regressive water pricing)</td></tr><tr><td>S539</td><td>United States</td><td>JBI Cross-Sectional</td><td>Investor-owned (private) community water utility, with rates set via state Public Utility Commi…</td><td>positive (private ownership and pro-private regulation associated with higher price and lower affordability)</td></tr><tr><td>S749</td><td>Brazil</td><td>JBI Cross-Sectional</td><td>Private (vs. public) ownership of a Brazilian water and sanitation business corporation -- a go…</td><td>positive (private ownership associated with HIGHER water tariffs, i.e. lower affordability, relative to public…</td></tr><tr><td>S631</td><td>Indonesia</td><td>JBI Cross-Sectional</td><td>Creation of a new local government (kabupaten/kota) via pemekaran -- the legal/administrative s…</td><td>negative (local government proliferation associated with LOWER household water/sanitation access, relative to…</td></tr><tr><td>S947</td><td>44 African countries</td><td>ROBINS-I</td><td>Higher institutional/regulatory governance quality (World Bank Worldwide Governance Indicators…</td><td>positive (higher institutional/regulatory quality associated with greater water/sanitation access and smaller…</td></tr><tr><td>S1146</td><td>multi-country (Africa, Afrob</td><td>ROBINS-I</td><td>Regional incidence of utilities-sector corruption (Afrobarometer round 7, multi-country Africa…</td><td>negative (higher regional utilities-sector corruption reduces likelihood of reported adequate household water…</td></tr><tr><td>S879</td><td>Kenya</td><td>RoB 2</td><td>Randomized assignment to systematic contract enforcement (transparent, credible service-disconn…</td><td>positive and significant for payment compliance; null (no significant effect) for water access, connection rat…</td></tr><tr><td>S1062</td><td>multi-country (22 Sub-Sahara</td><td>ROBINS-I</td><td>Water-utility operation-and-maintenance (O&amp;M) cost-recovery ratio (a financial/regulatory insti…</td><td>positive up to a threshold, then negative (curvilinear/inverted-U)</td></tr></tbody></table></div>
+<p><strong>Sensitivity of these counts</strong> (<code>05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md</code>): under every scenario tried — dropping abstract-only extractions, dropping the sparse-audit rows that carry effect sizes, dropping S589 (an unadjusted descriptive comparison in an ineligible-flagged study), collapsing linked reports, and dropping Family A's two coding judgment calls — the pre-stated conclusion tests for A, B and C hold; Family A's concordant share ranges 70.6–75.0%.</p>
+</div></details>
+<details class="sub" id="s-2a-4" open><summary><h3><span class="num">2A.4</span> What the qualitative, doctrinal and mixed-methods studies record</h3><a class="anchor" href="#s-2a-4" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<p>A large part of the evidence base (557 studies by design class, plus 349 with free-text design labels, mostly case studies) is qualitative, mixed-methods or documentary rather than quantitative. Using the draft mechanism vocabulary (<code>FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md</code>, mechanical and unvalidated), studies whose label maps to a single mechanism family are: eligibility status documentation 157, discretion accommodation 137, institutional structure coordination 115, enforcement sanctions 80, fees tariffs subsidies 47, participation assistance 25, regulatory model ownership 24, procedural burden 18, review redress 4; 520 carry several. The mapping is mechanical and unvalidated, so read the counts as indicative only. Examples of qualitative or doctrinal studies with <code>mechanism_certainty</code> 2 or higher ("mechanism directly observed" or above), showing the study's own recorded mechanism label beside the draft family, and the AI-extracted finding text:</p>
+<div class="tablewrap" tabindex="0"><table><thead><tr><th scope="col">Study</th><th scope="col">Country</th><th scope="col">Design</th><th scope="col">Own recorded mechanism label → draft family</th><th scope="col">Extracted finding (truncated)</th></tr></thead><tbody><tr><td>S101</td><td>Kenya</td><td>qualitative</td><td>DISCRETION_ACCOMMODATION → discretion accommodation</td><td>Formal water connection through Nairobi's piped grid does not equal reliable water access: neighborhood disparities exist even among neighbors with formally equivalent connections, because water rights are 'con…</td></tr><tr><td>S253</td><td>United States</td><td>qualitative</td><td>ENFORCEMENT → enforcement sanctions</td><td>Each case illustrates one literacy level in tribal water-quality contexts: Apsaalooke (functional EHL: accessible information and skills), Anishinaabe (interactive EHL), Hoopa Valley (critical EHL; the tribal o…</td></tr><tr><td>S305</td><td>multi-country (Ecuador,</td><td>qualitative</td><td>ELIGIBILITY → eligibility status documentation</td><td>Comparing successful (Ecuador 2008) and unsuccessful (Chile 2022) constitutional water-change processes, the article argues that where there is no agreement on either science or policy, politicization is requir…</td></tr><tr><td>S307</td><td>multi-country</td><td>qualitative</td><td>BURDEN → procedural burden</td><td>The dominant perceived driver of subscriber attrition from container-based sanitation services was economic challenges faced by subscribers, and the most common mitigation strategy was developing individual rep…</td></tr></tbody></table></div>
+</div></details>
+<details class="sub" id="s-2a-5" open><summary><h3><span class="num">2A.5</span> Gaps visible in the records</h3><a class="anchor" href="#s-2a-5" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<ul><li><strong>Geographic:</strong> the Netherlands (1 single-country study) and Canada (15) — two of the dissertation's three comparison jurisdictions — are barely represented against Brazil (87); 600 (52%) of studies sit in the ten commonest single countries.</li><li><strong>Design:</strong> 5 randomised trials (4 distinct) and 63 quasi-experimental studies against 447 (39%) studies appraised with the project's own non-validated framework (the residual category for designs no published instrument fits, including doctrinal and documentary studies).</li><li><strong>Mechanisms/outcomes:</strong> redress and review mechanisms and application-process outcomes are thinly coded (see 2A.2); sanitation access less than water.</li><li><strong>Retrieval:</strong> 1,383 title/abstract includes were never assessed. Their median publication year is 2014 versus 2018 for assessed records; 8.9% were published before 2000 versus 3.0%, and 30.9% in 2020 or later versus 42.7% — the unassessed set is older, so the corpus under-represents earlier literature.</li></ul>
+</div></details>
+</section>
+<section class="sec k-interp" id="s-2b"><header class="sechead"><span class="chip">Tentative interpretation</span><h2><span class="num">2B</span> Tentative interpretations (not findings — each rests on the numbers cited and could be wrong)<a class="anchor" href="#s-2b" aria-label="Link to this section">#</a></h2></header>
+<ol><li><strong>The literature documents co-occurrence far more than causation.</strong> With 68 (6%) causal-capable designs (and a certainty-3–4 coding that does not line up with them, see <a class="xref" href="#s-2a-1">§2A.1</a>), the base can say that legal/administrative features and access outcomes are associated across many settings, but rarely that one causes the other. <em>Rests on:</em> <a class="xref" href="#s-2a-1">§2A.1</a> counts. <em>Would change if:</em> the 1,383 unassessed records or future searches contain many more designs with credible identification.</li><li><strong>Recognition and formal status tend to go with better access (Family A), but the pattern is thin.</strong> 15 of 20 concordant, 3 counter-pattern (S104 tenure and interruptions; S1020 a watershed programme and collection time; S1121 water-adequacy screening and permitting): S104 appraised with JBI Cross-Sectional; S1020 appraised with ROBINS-I; S1121 appraised with ROBINS-I. <em>Rests on:</em> the SWiM coding, a judgment by the same AI. Not a pooled estimate and not certainty-graded.</li><li><strong>Assistance and trust mechanisms look uniformly favourable (Family B) — but on six studies with six different mechanisms.</strong> The consistency may reflect small numbers or reporting of positive findings; nothing here excludes either.</li><li><strong>Ownership and price: private ownership goes with worse affordability in the three studies (S526, S539, S749), but the two US samples probably overlap</strong>, so this may be two independent samples, not three (<code>linked_reports_2026-09-28.csv</code> LR09, an audit inference).</li><li><strong>Most institutional analysis in this corpus is descriptive-qualitative and concentrated on fragmentation, discretion and fees.</strong> This may reflect what the search and the closed retrieval surfaced (English-language, post-2010, database-indexed) as much as what the world contains.</li><li><strong>The dissertation's comparative frame (Netherlands, Canada, Brazil) cannot be tested from this base as it stands</strong>: one Dutch and 15 Canadian single-country studies.</li></ol>
+</section>
+<section class="sec k-limits" id="s-3"><header class="sechead"><span class="chip">Confidence &amp; limitations</span><h2><span class="num">3</span> Confidence and limitations<a class="anchor" href="#s-3" aria-label="Link to this section">#</a></h2></header>
+<details class="sub" id="s-3-1" open><summary><h3><span class="num">3.1</span> Overall confidence: low to very low for any causal or comparative claim</h3><a class="anchor" href="#s-3-1" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<p>This is the author's tentative characterisation, not a GRADE judgment (none has been made): the direction-of-association statements rest on a small quantitative subset (20, 6 and 20 studies), AI-extracted and AI-coded values, mostly observational designs, and a screening stage that closed early. Reasons follow.</p>
+</div></details>
+<details class="sub" id="s-3-2" open><summary><h3><span class="num">3.2</span> Incomplete screening</h3><a class="anchor" href="#s-3-2" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<ul><li>Full-text retrieval closed at 62.2%: 1,383 of 3,659 records (1,201 not retrievable, 182 wrong file delivered) were never assessed, and the unassessed set is systematically older (<a class="xref" href="#s-2a-5">§2A.5</a>). Some may be duplicates of included studies, some not eligible; the direction of any bias is unknown.</li><li>151 of the 1,117 full-text excludes are E10 (inaccessible text), i.e. never judged on content.</li><li>Every full-text decision is the AI's; a human confirmed 200 includes (S001–S200) and no excludes; 73 decided rows carry no reviewer label. A prioritised queue for human review exists (<code>02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md</code>).</li><li><strong>An AI-versus-AI check found many contested excludes.</strong> Two non-Claude models (Codex, Gemini), blind to the original decision, re-read 121 full-text decisions whose PDF was available; of the 70 the AI had excluded, 34 were judged includes (concentrated in E01 wrong topic and E06 engineering only). This was not human-adjudicated, the models may read the criteria too loosely, and nothing was changed; scaled by exclusion code the rate would imply roughly 468 further includes if the models were right, and about 37 even under a narrow reading of criterion 2 by an AI triage of the same records (arithmetic only, against 1,159 current includes); if even a fraction are eligible, the exclusion log and every count built on it are understated. In the other direction the models would exclude 3 of 40 sampled includes beyond S001–S200, roughly 72 (range 25–191) of the unconfirmed includes if the rate held — a precision question that the human second-screening of includes would settle. The researcher's reading list is <code>02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md</code> (open item A16).</li><li>At title/abstract stage the human second pass covered the 3,665 include-plus-unsure records only; the 22,557 records the AI excluded were not human-checked, so any wrongly excluded record is invisible to this review. The 99.8% agreement on the reviewed set is unusually high and was flagged by the project itself. (<code>AI_USE_STATEMENT.md</code> and <code>AUDITING_GUIDE.md</code> say "all records"; that wording should be checked against the README, which is narrower.)</li></ul>
+</div></details>
+<details class="sub" id="s-3-3" open><summary><h3><span class="num">3.3</span> Missing or thin data</h3><a class="anchor" href="#s-3-3" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<ul><li>11 studies were extracted from abstract or metadata only (0.9%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. <strong>That count is a floor:</strong> it counts one note prefix, and a sparse-record audit (<code>05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md</code>) found 55 more rows with at least one sign of shallow extraction — 1 whose own notes say only the abstract or citation was read and 15 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 1 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.</li><li>55 of 140 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.</li><li>Of 62 effect-size rows, 8 give a confidence interval and 25 a standard error; estimates are as the papers report them and none is pooled.</li></ul>
+</div></details>
+<details class="sub" id="s-3-4" open><summary><h3><span class="num">3.4</span> Unresolved classifications — the two you asked about</h3><a class="anchor" href="#s-3-4" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<p><strong>Are the AMSTAR 2 studies actually systematic reviews? Partly confirmed, partly not.</strong></p>
+<ul><li>23 studies carry AMSTAR 2; another 13 studies also had a secondary-review design class but were <strong>reclassified to <code>NONE</code></strong> after an eligibility check found them to be self-described narrative, conceptual or documentary reviews that never claim a systematic search (S079, S320, S321, S322, S326, S429, S430, S436, S440, S466, S479, S480, S482; <code>RISK_OF_BIAS.md</code> <a class="xref" href="#s-4">§4</a>; S326 joined them on 2026-09-29 after its full text, supplied by you, showed no stated search, selection or appraisal method). AMSTAR 2 was not applied to those, and the project has <strong>no validated instrument for a non-systematic review used as an evidence source</strong> — an acknowledged gap.</li><li>Of the 23 that kept AMSTAR 2, each was classed as a secondary systematic review. The recorded fields (publication type, design, method text, sample) support that unevenly: 13 name a registration, PRISMA or JBI method, 19 state a count of included studies, and 1 (S521) show at most one weak signal (the word "systematic" or a review type) — a way to order full-text checks, not a finding (<code>05_analysis/descriptive/DATA_QUALITY_AUDIT_2026-09-29.md</code> <a class="xref" href="#s-3">§3</a>). None of them is now extracted from abstract or metadata only; S319, S324, S325 and S344 were read in full text on 2026-10-02 (S324 is a registered, well-reported review; S319 searched one database; S325 and S344 are single-author reviews with weak methods, but all four state a search, a selection process and a synthesis, so all keep AMSTAR 2); S329 is described as a "narrative review with systematic search" and S418 as a narrative/scoping review with a documented search (hybrids kept eligible with a noted caveat); S326, first flagged as an "evidence survey", was moved to <code>NONE</code> once its full text was read; S418, S438, S697, S052 and S327 were read in full text on 2026-10-03 (S697, a meta-analysis, and S438, S052 and S327 all state a search, selection and synthesis, so all keep AMSTAR 2).</li><li><strong>Only 23 of the 23 received a formal AMSTAR 2 confidence rating</strong> (S015 Critically Low, S019 Critically Low, S027 Critically Low, S052 Critically Low, S116 Critically Low, S319 Critically Low, S323 Critically Low, S324 Critically Low, S325 Critically Low, S327 Low, S328 Critically Low, S329 Critically Low, S344 Critically Low, S350 Critically Low, S370 Critically Low, S372 Critically Low, S418 Critically Low, S427 Critically Low, S438 Critically Low, S475 Critically Low, S521 Critically Low, S537 Low, S697 Critically Low; 21 of the 23 are Critically Low; the others are S327 Low, S537 Low, mostly because of missing protocols, single-database searches, no list of excluded studies or no appraisal of the included studies); the other 0 are "Not ratable" because their extraction lacks the information for the critical items. <strong>So AMSTAR 2 so far tells the reader little beyond "low confidence"; the 0 unrated reviews need their full texts.</strong></li><li><em>Tentative flag (this report's own observation, not a project ruling):</em> AMSTAR 2 was designed for reviews of healthcare interventions that include randomised or non-randomised studies; several of these reviews are realist, scoping or mapping reviews of qualitative and policy literature, for which a rating would be out-of-design even with full information. A decision on whether to keep AMSTAR 2 for these, or use a different instrument, is open.</li><li>Reviews are secondary evidence and are never pooled as if primary. Whether their primary studies are also separate rows in this corpus was checked on 2026-10-04 for only 7 of the 23 reviews (those whose PDFs were to hand): their reference lists cite 48 distinct corpus studies, S319 (21), S325 (19) cite ten or more. This is an upper bound (background citations count) and does not read the included-studies tables, so the real double-counting risk is <strong>still unresolved</strong>, and 16 reviews are unchecked (<code>05_analysis/descriptive/AMSTAR2_OVERLAP_CHECK_2026-10-04.md</code>).</li></ul>
+<p><strong>Do the randomised trials need the cluster version of RoB 2? Yes for all five — one unit is inferred, and S366 has now been re-read in full.</strong></p>
+<ul><li>All 5 RoB 2 studies (S057, S085, S294, S366, S879) were checked and are <strong>cluster-randomised</strong>, not individually randomised, and were appraised with the cluster-trial variant (<code>04_quality/appraisal_forms/</code>). Four state cluster randomisation in their own extracted design field.</li><li><strong>S879</strong> (Kenya) records only "randomized controlled trial"; cluster randomisation at compound level is <em>inferred</em> from the recorded unit of intervention and flagged "verify against source paper before finalizing rating" in its own tool field. Its rating is provisional.</li><li><strong>S366</strong> was re-extracted and re-appraised on 2026-09-29 from the full-text PDF you supplied (its earlier abstract-only, low-confidence rating is superseded): Domains 1 and 3 Low, Domains 2 and 5 Some concerns, Domain 4 Some concerns for the primary outcomes and High for the self-reported satisfaction/behaviour indices; Figure 1 and the supplement were not read. S366 and S294 report the same DRC cluster trial, so the 5 RoB 2 studies are <strong>4 distinct trials</strong> (but different surveys: 1,312 households in S366, 3,283 in S294). All five rate "Some concerns" overall; S057, S085, S294 and S879 still use many "No information" answers because extraction did not capture trial-conduct details.</li><li>A keyword scan of design fields in the other 1,154 studies found no further randomised design under another tool. <strong>S189</strong> is a process evaluation conducted "in connection with a randomised controlled trial" (Orissa, India); it was appraised with ROBINS-I as a quasi-experimental study, and its full appraisal form covers the confounding domain only. Whether the parent trial itself is in the corpus, and whether any of its outcomes belong under RoB 2 cluster, is worth confirming. (The scan covered design and measure fields only, not full texts.)</li></ul>
+</div></details>
+<details class="sub" id="s-3-5" open><summary><h3><span class="num">3.5</span> Other unresolved items that may matter</h3><a class="anchor" href="#s-3-5" aria-label="Link to this subsection">#</a></summary><div class="subbody">
+<ul><li><strong>S589</strong> is in Family A but its row is an unadjusted descriptive comparison for a study not flagged eligible; Family A results are shown with and without it. Decision pending (<code>DECISIONS_AND_OPEN_ITEMS.md</code> A1).</li><li><strong>Linked reports:</strong> the 1,159 rows are about 1,157 distinct studies (S294/S366 one trial; S097/S098 one sample) and 1,155 counting partial overlaps.</li><li><strong>Free-text classifications:</strong> <code>mechanism_family</code> (236 distinct labels) and <code>outcome_family</code> (127) are uncontrolled; 349 studies have a design class outside the documented enum; a draft vocabulary is proposed, not adopted. Country and legal-system fields are free text, so the geographic counts here are rule-based.</li><li><strong>Direction coding</strong> in the SWiM documents is a judgment by the same AI; sign and valence differ for several studies.</li><li><strong>The "quantitative-synthesis-eligible" flag looks generous.</strong> Of 247 studies flagged, 107 show nothing inferential in their extraction (descriptive or unclear), 30 name an inferential model but hold no interval, SE or p-value, and 110 carry some uncertainty information (heuristic; <code>05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv</code>). Only 62 studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.</li><li><strong>Consistency scan of the effect-size rows</strong> found 0 new item(s) besides the known S589 row (none); but an interval could be checked for only 6 of 62 rows, so this is weak assurance.</li><li><strong>Same-paper duplicates</strong> with different-language titles and blank DOIs were found and merged among included studies; the DOI/title audits cannot detect this class in the wider pool.</li></ul>
+</div></details>
+</section>
+<section class="sec k-next" id="s-4"><header class="sechead"><span class="chip">Next steps</span><h2><span class="num">4</span> Most useful next steps (in order)<a class="anchor" href="#s-4" aria-label="Link to this section">#</a></h2></header>
+<ol><li><strong>Human check of the AI's screening</strong>: work <code>full_text_reviewer_2_priority_queue_2026-09-28.csv</code> (tier 1: the 73 no-reviewer rows; tier 2: a stratified sample of excludes). It bounds the risk that eligible studies were excluded or ineligible ones included.</li><li><strong>Obtain the full text of the abstract-only studies that carry the most weight</strong>: (S366, the RoB 2 study, was re-extracted 2026-09-29; the four abstract-only AMSTAR 2 reviews on 2026-10-02), the 0 AMSTAR 2 reviews still unrated (start with the weakest-evidenced in the audit, <code>DATA_QUALITY_AUDIT_2026-09-29.md</code> <a class="xref" href="#s-3">§3</a>), then the 11 remaining abstract-only studies and the 1 further strong candidates from the sparse-record audit; re-extract (<code>03_extraction/extracted_data/abstract_only_fulltext_request_list_2026-09-29.csv</code>, <code>05_analysis/descriptive/sparse_record_audit_2026-10-04.csv</code>).</li><li><strong>Verify S879's randomisation unit against the paper</strong> and confirm S189's parent-trial handling; then finalise or revise the RoB 2 cluster ratings.</li><li><strong>Decide the AMSTAR 2 question</strong>: keep it (and obtain full texts so the 0 "Not ratable" reviews can be rated) or replace it for realist/scoping/mapping reviews; decide how to handle the non-systematic reviews now labelled <code>NONE</code>. Finish the check of whether these reviews' primary studies are also in the corpus (so far 7 of 23 reviews, reference lists only).</li><li><strong>Second-extract the prepared sample</strong> (60 studies from S001–S200, <code>03_extraction/second_extractor/</code>) against the source papers to estimate extraction error; the sample cannot speak for later extractions, so a second sample from S201 onward is needed before any whole-corpus claim.</li><li><strong>Resolve S589, linked reports and the family vocabulary</strong>, then re-run <code>sensitivity_analysis.py</code>.</li><li><strong>Reduce the retrieval bias</strong>: prioritise the older, unassessed records (or state the limitation prominently), and consider targeted searches for Dutch and Canadian evidence if the comparative frame is to be tested.</li><li><strong>Only then</strong> decide whether any family could support a restricted meta-analysis (<code>ANALYSIS_PLAN.md</code> §2); at present none does.</li></ol>
+<hr>
+<p><em>Provenance: <code>00_admin/CURRENT_FIGURES.md</code>, <code>05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md</code>, <code>05_analysis/descriptive/FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md</code>, <code>04_quality/risk_of_bias/2026-09-28_evidence_limitations.md</code>, <code>00_admin/audits/2026-09-28_repository_audit.md</code>. Regenerate with <code>python3 code/analysis/build_preliminary_report.py</code>.</em></p>
+</section>
+  <footer>Source: <code>06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md</code> (generated by <code>code/analysis/build_preliminary_report.py</code>); this page by <code>code/analysis/build_report_html.py</code>. Regenerate both after any data change; <code>verify_repository.py</code> checks they are current.</footer>
+</main>
+</div>
+<button id="top" aria-label="Back to top">↑ Top</button>
+<script>
+(function(){
+var d=document,root=d.documentElement,$=function(s,c){return(c||d).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||d).querySelectorAll(s))};
+function store(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+var t=store('lm-theme');if(t)root.setAttribute('data-theme',t);
+$('#theme').onclick=function(){var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);var n=dark?'light':'dark';root.setAttribute('data-theme',n);store('lm-theme',n)};
+function menu(o){d.body.classList.toggle('menu-open',o);$('#menu').setAttribute('aria-expanded',o)}
+$('#menu').onclick=function(){menu(!d.body.classList.contains('menu-open'))};$('#scrim').onclick=function(){menu(false)};
+$$('.tocnav a').forEach(function(a){a.addEventListener('click',function(){menu(false)})});
+d.addEventListener('keydown',function(e){if(e.key==='Escape')menu(false);if(e.key==='/'&&d.activeElement.tagName!=='INPUT'){e.preventDefault();$('#q').focus()}});
+var subs=$$('details.sub');
+$('#expand').onclick=function(){subs.forEach(function(x){x.open=true})};$('#collapse').onclick=function(){subs.forEach(function(x){x.open=false})};
+function openFor(id){var el=id&&d.getElementById(id);if(!el)return;var p=el.closest('details.sub');if(p)p.open=true;if(el.tagName==='DETAILS')el.open=true}
+addEventListener('hashchange',function(){openFor(location.hash.slice(1))});openFor(location.hash.slice(1));
+window.addEventListener('beforeprint',function(){subs.forEach(function(x){x.open=true})});
+var links={};$$('.tocnav a').forEach(function(a){links[a.dataset.target]=a});
+var heads=$$('section.sec, details.sub');var cur=null;
+function setActive(id){if(cur===id)return;cur=id;$$('.tocnav a.active').forEach(function(a){a.classList.remove('active')});var a=links[id];if(a){a.classList.add('active');var nav=$('#toc');var r=a.getBoundingClientRect(),n=nav.getBoundingClientRect();if(r.top<n.top+60||r.bottom>n.bottom-20)nav.scrollTop+=r.top-n.top-120}}
+function spy(){var y=innerHeight*0.25,best=null;heads.forEach(function(h){var r=h.getBoundingClientRect();if(r.top<=y)best=h});if(best)setActive(best.id);else setActive(null)}
+var tick=false;addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){tick=false;spy();var h=d.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight);$('#progress').style.width=(Math.max(0,Math.min(1,p))*100)+'%';$('#top').style.display=h.scrollTop>700?'block':'none'})}},{passive:true});spy();
+$('#top').onclick=function(){scrollTo({top:0})};
+var q=$('#q'),info=$('#qinfo'),hits=[],idx=-1;
+function clear(){$$('mark').forEach(function(m){var p=m.parentNode;p.replaceChild(d.createTextNode(m.textContent),m);p.normalize()});hits=[];idx=-1}
+function run(){clear();var v=q.value.trim();if(v.length<2){info.textContent='Enter = next match';return}
+ var re=new RegExp(v.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');var w=d.createTreeWalker($('#content'),NodeFilter.SHOW_TEXT,{acceptNode:function(n){var p=n.parentNode;return(p.closest('script,style,button')||!n.nodeValue.trim())?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT}});
+ var nodes=[];while(w.nextNode())nodes.push(w.currentNode);
+ nodes.forEach(function(n){var s=n.nodeValue,m,last=0,f=null;re.lastIndex=0;while((m=re.exec(s))){if(!f)f=d.createDocumentFragment();f.appendChild(d.createTextNode(s.slice(last,m.index)));var k=d.createElement('mark');k.textContent=m[0];f.appendChild(k);last=m.index+m[0].length;if(m[0].length===0)re.lastIndex++}
+  if(f){f.appendChild(d.createTextNode(s.slice(last)));n.parentNode.replaceChild(f,n)}});
+ hits=$$('mark',$('#content'));hits.forEach(function(m){var p=m.closest('details.sub');if(p)p.open=true});
+ info.textContent=hits.length?hits.length+' match'+(hits.length>1?'es':'')+' · Enter = next':'No matches';if(hits.length)go(0)}
+function go(i){if(!hits.length)return;if(hits[idx])hits[idx].classList.remove('cur');idx=(i+hits.length)%hits.length;hits[idx].classList.add('cur');hits[idx].scrollIntoView({block:'center'});info.textContent=(idx+1)+' of '+hits.length+' · Enter = next'}
+var to;q.addEventListener('input',function(){clearTimeout(to);to=setTimeout(run,180)});
+q.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();if(!hits.length)run();else go(idx+(e.shiftKey?-1:1))}if(e.key==='Escape'){q.value='';clear();info.textContent='Enter = next match'}});
+})();
+</script>
+</body>
+</html>

@@ -1,3 +1,7 @@
+# Claude Octopus plugin local state (not part of the repository's own tooling)
+.claude-octopus/
+**/.claude-octopus/
+
 # Python
 __pycache__/
 *.py[cod]
@@ -29,6 +33,8 @@ data/*.xls
 *.csv
 *.xlsx
 !data/.gitkeep
+# the 2026-10-04 full-text re-extraction records are provenance (the verifier and generated texts count them), so they must be tracked
+!legal-last-mile-systematic-review/code/provenance/audit_and_repair/reextract_2026-10-04/*.json
 
 # Session reports — local only, never pushed
 validation/SESSION_REPORT_*.docx
@@ -36,6 +42,10 @@ validation/SESSION_REPORT_*.xlsx
 validation/session_data.json
 validation/build_session_report.js
 validation/build_session_excel.py
+
+# Legal Last Mile systematic review — schema templates (headers only, no
+# data) explicitly tracked despite the *.csv exclusion above
+!legal-last-mile-systematic-review/**/*.csv
 
 # Validation files — explicitly tracked despite *.csv and *.json and *.xlsx exclusions above
 !validation/second_coder_sample_raw.csv
@@ -65,3 +75,24 @@ desktop.ini
 
 # Logs
 *.log
+
+# Claude Code personal settings
+.claude/settings.local.json
+
+# Generated headline figures are tracked deliberately (checked by code/analysis/verify_repository.py)
+!legal-last-mile-systematic-review/00_admin/current_figures.json
+
+# Reviewer-2 / second-extractor / debate raw AI model outputs — tracked deliberately for audit
+# transparency (AI_USE_AND_TOOLS_DISCLOSURE.md explains what these are and how they were produced)
+!legal-last-mile-systematic-review/_reviewer2_codex/results/*.json
+!legal-last-mile-systematic-review/_reviewer2_codex/results_gemini/*.json
+!legal-last-mile-systematic-review/_reviewer2_codex/results_2ndextractor_*/*.json
+!legal-last-mile-systematic-review/_reviewer2_codex/debate/*.json
+!legal-last-mile-systematic-review/_reviewer2_codex/*.json
+
+# binary wheels downloaded into the tree by tooling are never project files
+*.whl
+
+# the drop-down workbooks the researcher fills in (code/analysis/sheet_xlsx.py)
+!legal-last-mile-systematic-review/02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.xlsx
+!legal-last-mile-systematic-review/03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.xlsx
