@@ -64,3 +64,7 @@ Still missing, in order: the five A19 excludes and four A22 includes (S264, S314
 ## Update: recheck of the Drive inbox (later on 2026-10-04)
 
 No new uploads. The inbox held 59 renamed copies of files already processed (the tracker's clean names) plus five older records handled in earlier sessions (R0908697F9FE5, RBEDB6556B711, R2EAEC279B644, R5571A513905A, R33E4CEE682AC; they stay put, see A15 and the 2026-10-03 tidy-up note) and the tracker spreadsheets and exports. One file had been missed: **S385** (Colombia, Hausman-Taylor panel of municipal coverage), now read and re-extracted. The renamed copies were moved to `Processed`.
+
+## Update: retrieving the missing full texts (2026-10-09)
+
+To get the remaining papers, give a browser agent (Claude in Chrome, using the researcher's own library login) `00_admin/PDF_RETRIEVAL_AGENT_BRIEF_2026-10-09.md`; its targets are in `02_screening/full_text/PDF_RETRIEVAL_TARGETS_2026-10-09.csv`. It drafts emails and interlibrary-loan requests; the researcher sends them. Files land in the Drive inbox; the next session processes them with the inbox procedure above (read, re-extract or appraise, log, regenerate, verify, commit, push, move to `Processed`). Tier-A outcomes to apply: the five A19 verdicts, the four A22 verdicts and the S027 AMSTAR 2 appraisal.

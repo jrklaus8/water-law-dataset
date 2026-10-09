@@ -4,6 +4,10 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-09 (tooling) — brief and target list for fetching the missing full texts
+
+- `00_admin/PDF_RETRIEVAL_AGENT_BRIEF_2026-10-09.md` is a self-contained brief for a browser agent (Claude in Chrome) or a person: project context, lawful-route rules, search order, a check against saved web pages with a .pdf name, file naming, email and interlibrary-loan templates, a report format. `02_screening/full_text/PDF_RETRIEVAL_TARGETS_2026-10-09.csv` lists 10 tier-A papers (five A19 excludes, four A22 includes, the S027 review), 14 abstract-only extractions and 10 low-priority status checks, with DOIs and what to confirm in each paper. Built by `code/provenance/audit_and_repair/build_pdf_retrieval_targets_2026-10-09.py`. No data changed.
+
 ## 2026-10-04 (data) — recheck of the Drive inbox: S385 read
 
 - A recheck found no new uploads, but a second set of 59 renamed copies of files already processed (the retrieval tracker's clean names) and one file never processed: S385 (Rojas Rivera 2026, Colombian municipal water and sewerage coverage), still listed as a strong sparse extraction. Its full text was read and the row re-extracted (sample sizes, Table 6 coefficients, administrative-capacity and royalties results); no effect-size row was added (researcher decision). The renamed copies were moved to `Processed`.
