@@ -27,6 +27,7 @@ P = {
     'S231': ('CASP Qualitative', 'no respondent data (documents, statistics, observation, mapping); the mixed-methods tag overstates, MMAT 5.x do not fit'),
     'S236': ('NONE', 'conceptual/observational essay without systematic methods; CASP does not apply'),
     'S281': ('NONE', 'systems-modelling study from literature and six expert opinions; the Legal Framework condensed appraisal is not meaningful for a model'),
+    'S310': ('JBI Cross-Sectional', 'quantitative descriptive paper: a 417-household survey and 28 committee interviews aggregated into a composite right-to-water index; the MMAT mixed-methods criteria fit poorly (the sister paper S285 is on a JBI checklist)'),
 }
 # studies whose full text raises a question under inclusion criterion 3 (empirical evidence or a SYSTEMATIC empirical synthesis); none was excluded by the AI
 ELIG = {
@@ -36,6 +37,7 @@ ELIG = {
     'S332': 'three-part dissertation, thin legal content', 'S236': 'conceptual/observational, methods unspecified', 'S203': 'doctrinal analysis (SWOT named, no data)',
     'S199': 'doctrinal legal analysis, no outcome data', 'S212': 'SDG target mapping, no outcome data', 'S206': 'index construction, no legal or institutional exposure',
     'S243': 'NGO description of two projects, outcomes self-reported', 'S246': 'design-stage project description, no outcomes',
+    'S513': 'conceptual and policy argument; two community-driven sanitation initiatives summarised from published sources, no stated data or method (A22, read in full 2026-10-09)',
 }
 
 

@@ -27,7 +27,7 @@ DRIVE_CHECK = {
     'S314': 'Drive file is only a Wageningen research-portal abstract page (Mehta & Karpouzoglou 2015): states it shows that peri-urban waterscapes fall outside planning models for Ghaziabad; empirical basis cannot be judged from the abstract',
     'S462': 'full article in Drive under an author-title file name, not the record id (Araujo et al. 2024): multiobjective optimisation and scenario modelling of water-supply investment pathways for two service areas of the Federal District of Brazil, with equity disaggregation; model-based on local data, with little legal or institutional exposure. Compare R0532032FE3BB (Kathmandu scenario modelling), excluded E06: the two are alike, so one of the two decisions is inconsistent',
     'S340': 'searched by title as well as record id: no Drive copy found',
-    'S513': 'searched by title as well as record id: no Drive copy found',
+    'S513': 'full article in Drive (McGranahan 2015, read 2026-10-09): a conceptual and policy argument on the right to sanitation; two community-driven initiatives (Orangi Pilot Project, Karachi; the Mahila Milan/SPARC/NSDF Alliance, Pune and Mumbai) are summarised from published documentation, with no stated data, sample or method -- fails criterion 3 on the full text (proposal only; see A22_VERDICTS_2026-10-04.csv)',
 }
 FIELDS = ['study_id', 'record_id', 'tool', 'cue', 'study_design', 'sample_size', 'extraction_note_start', 'drive_check']
 

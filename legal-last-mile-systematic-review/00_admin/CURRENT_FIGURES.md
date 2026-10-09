@@ -25,7 +25,7 @@ checks that the current-status documents quote these values. If a document disag
 | Extraction rows / evidence-map rows | 1,159 / 1,159 |
 | Highest study ID; retired-ID gaps | S1164; S227, S233, S299, S356, S399 |
 | Quantitative-synthesis-eligible / qualitative-synthesis-eligible | 247 / 1,059 |
-| Abstract/metadata-only extractions | 16 |
+| Abstract/metadata-only extractions | 11 |
 | Linked-report links (same data yes / partial) | 12 (2 / 2) |
 | Distinct studies (definite links / incl. partial) | 1,157 / 1,155 |
 
@@ -48,7 +48,7 @@ Tool-applicable studies (all tools except NONE): 1,146; unrated among them: 0. N
 
 ## Jurisdiction coverage (free-text fields; rule-based buckets, see current_figures.py)
 
-`country`: 1,031 studies name exactly one country, 125 name several countries or a region, 3 are blank. Top single-country values: India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 50, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. `legal_system` buckets: blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
+`country`: 1,031 studies name exactly one country, 126 name several countries or a region, 2 are blank. Top single-country values: India 133, Brazil 87, South Africa 84, United States 71, Ghana 53, Kenya 50, Mexico 37, Indonesia 30, Nigeria 28, Bangladesh 27. `legal_system` buckets: blank 28, civil law 394, common law 546, mixed / both / customary 188, other 3.
 
 ## Certainty scale and ratings
 

@@ -81,7 +81,7 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 1,031 name exactly one country, **125 name several countries or a region and are
+vocabularies. Of the 1,159 studies, 1,031 name exactly one country, **126 name several countries or a region and are
 not counted under any single country below**, and 3 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
@@ -211,7 +211,7 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 16 of the 1,159
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 11 of the 1,159
 studies (3.2%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
 obtained at extraction time (CASP 20, MMAT 7, JBI Cross-Sectional 6, Legal Framework 4, AMSTAR 2 0, RoB 2 0). The count has fallen over time as full texts were found: 69 before 2026-09-29; S277, S326 and S366 re-read from full text on 2026-09-29; S319, S324, S325 and S344 on 2026-10-02; 13 more (S331-S347) and then 5 (S257, S278, S279, S281, S288) and 3 (S260, S267, S274) on 2026-10-04 from PDFs already in the researcher's Drive (see `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`); two abstract-only rows were retired (S299, a duplicate; S356, an E05 exclusion). Their appraisals are honest about this — the CASP entries, for example,
