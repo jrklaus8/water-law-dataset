@@ -4,6 +4,11 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-13 (data) — new upload: a never-assessed record read in full
+
+- The researcher dropped the published article for **R4A7F8709BEDE** (dos Santos, Bastos & Razzolini 2026, *WASH policy responses for homeless populations during the COVID-19 pandemic: a global review with emphasis on Brazil*, J Water Sanit Hyg Dev 16(9):862) in the Drive inbox. It passed title/abstract screening but was never assessed at full text. The AI read all 15 pages; the assessment is a proposal only (`02_screening/full_text/UNASSESSED_RECORD_R4A7F8709BEDE_READ_2026-10-13.md`; decision A23): fits criteria 1 and 2, borderline on 3 (a documentary review with a stated search and flow diagram but no protocol, appraisal or list of exclusions), pre-appraised Critically Low on AMSTAR 2 if included. No database was changed (A15).
+- `build_missing_fulltext_list.py` now says in `what_we_have` when a never-assessed record has been read by the AI (this one and RBEDB6556B711); the list's counts are unchanged because both remain undecided.
+
 ## 2026-10-09 (data) — fourth Drive-inbox batch: twelve PDFs after the retrieval round
 
 - The researcher dropped twelve PDFs in the Drive inbox. All were read in the session (none is committed); the per-file log is `00_admin/DRIVE_INBOX_BATCH4_LOG_2026-10-09.md` and `02_screening/full_text/PDF_RETRIEVAL_RECEIVED_2026-10-09.csv`. Two (`content (2).pdf` = S310, `content (3).pdf` = S315) are scanned images with no text layer and were read page by page as images, so their table values are an AI reading of images.

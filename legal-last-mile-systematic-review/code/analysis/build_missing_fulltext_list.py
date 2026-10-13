@@ -31,6 +31,9 @@ A19_FIELDS = ['record_id', 'year', 'authors', 'title', 'doi', 'doi_link', 'other
 WHAT = {'E01': 'INCLUSION_EXCLUSION.md criterion 2: does the paper study how legal or administrative institutions (rules, rights, eligibility, procedures, regulators, tenure, tariffs, enforcement) shape access to drinking water or sanitation, with an empirical design? The AI excluded it as wrong topic on the abstract alone.',
         'E09': 'whether the paper is a full report with empirical evidence on water or sanitation access, or only a conference-abstract supplement (the AI excluded it as a conference abstract on the metadata record alone)',
         'E12': 'whether the volume contains a chapter or study that meets the inclusion criteria (the AI excluded the edited volume on the book record alone); if so, name the chapter'}
+READ_UNDECIDED = {  # never-assessed records whose full text has since been read by the AI (assessment proposals only, A15); they remain undecided in the screening data
+    'RBEDB6556B711': 'full text read 2026-10-04 (scanned pages): UNASSESSED_RECORD_RBEDB6556B711_READ_2026-10-04.md proposes include',
+    'R4A7F8709BEDE': 'full text read 2026-10-13: UNASSESSED_RECORD_R4A7F8709BEDE_READ_2026-10-13.md proposes a borderline include'}
 BY_YEAR = lambda r: (r['priority'], int(r['year']) if str(r['year']).isdigit() else 0, r['record_id'])
 
 
@@ -89,10 +92,10 @@ def build():
     for r in csvrows('03_extraction/second_extractor/second_extractor_sheet_BLANK_2026-10-04.csv'):
         if r['field'] == 'publication_year':
             add(ed[r['study_id']]['record_id'], 7, f"{r['study_id']} is in the human second-extraction sample", 'AI full-text or abstract extraction; the human needs the PDF')
-    # 9: never assessed
+    # 9: never assessed (a record the AI has since read stays on the list, because it is still undecided, but says so in what_we_have)
     for rid, f in ft.items():
         if not f['final_decision']:
-            add(rid, 9, 'never assessed: no full text could be retrieved; full-text screening closed by researcher decision 2026-09-28', f"status {f['full_text_status'] or 'blank'}")
+            add(rid, 9, 'never assessed: no full text could be retrieved; full-text screening closed by researcher decision 2026-09-28', READ_UNDECIDED.get(rid) or f"status {f['full_text_status'] or 'blank'}")
 
     rows = []
     for rid, it in items.items():
