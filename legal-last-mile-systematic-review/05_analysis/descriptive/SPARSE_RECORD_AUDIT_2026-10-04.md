@@ -18,7 +18,7 @@ The "11 abstract-only extractions" figure counts one note prefix. That prefix mi
 
 ## Result
 
-- **66 of 1,159 extraction rows** show at least one signal and have not been re-extracted from full text: **12 strong** (S1 or S2), **15 moderate** (location cites the abstract alone), **39 weak** (abstract plus introduction, or sparse fields).
+- **66 of 1,157 extraction rows** show at least one signal and have not been re-extracted from full text: **12 strong** (S1 or S2), **15 moderate** (location cites the abstract alone), **39 weak** (abstract plus introduction, or sparse fields).
 - **55 of them are not on the current abstract-only request list**: 1 strong and 15 moderate. These are the rows the prefix check missed.
 - A "moderate" row is not proven abstract-only: an extractor may cite "Abstract" because that is where a quotation sits while having read more. Treat the moderate tier as a **verification queue**, not a count of failures.
 

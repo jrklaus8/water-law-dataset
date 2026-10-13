@@ -31,14 +31,14 @@ Tests: **A** — more than half of the studies are concordant with "recognition/
 
 ## Descriptive counts with the 11 abstract-only extractions removed
 
-Studies: 1,159 → 1,148. Risk-of-bias tool distribution:
+Studies: 1,157 → 1,146. Risk-of-bias tool distribution:
 
 | Tool | All | Without abstract-only | Change |
 |---|---|---|---|
 | MMAT | 205 | 204 | -1 |
-| JBI Cross-Sectional | 140 | 138 | -2 |
+| JBI Cross-Sectional | 141 | 139 | -2 |
 | CASP Qualitative | 263 | 256 | -7 |
-| Legal Framework | 447 | 446 | -1 |
+| Legal Framework | 444 | 443 | -1 |
 | AMSTAR 2 | 23 | 23 | +0 |
 | ROBINS-I | 63 | 63 | +0 |
 | RoB 2 | 5 | 5 | +0 |

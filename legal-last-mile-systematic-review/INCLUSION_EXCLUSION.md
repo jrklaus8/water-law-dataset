@@ -6,6 +6,15 @@ A study should generally satisfy **all** of the following:
 
 1. Examines water or sanitation service access.
 2. Examines a legal, administrative, institutional, regulatory or governance factor.
+   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in
+   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —
+   eligibility screening, administrative burden, documentation or tenure requirements,
+   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility
+   ownership or regulatory structure directly governing service access — rather than
+   generic project delivery, behavioural promotion, or unanalysed macro-governance
+   background. The wording above is unchanged; this note records how it is applied to
+   both included and excluded studies. The protocol is an unregistered draft, so no
+   registration is amended; the ruling is to be disclosed in the manuscript methods.)*
 3. Contains empirical evidence or a systematic empirical synthesis.
 4. Reports an outcome relevant to access, connection, service availability,
    reliability, quantity, affordability or exclusion.

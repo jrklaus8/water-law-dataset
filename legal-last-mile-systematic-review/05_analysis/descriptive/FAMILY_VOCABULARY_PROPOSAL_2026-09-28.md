@@ -7,7 +7,7 @@ should spot-check a sample (start with `needs_review = TRUE`).
 
 ## The problem
 
-`mechanism_family` holds 236 distinct labels and `outcome_family` 127 across 1,159 studies. The documented enum
+`mechanism_family` holds 235 distinct labels and `outcome_family` 126 across 1,157 studies. The documented enum
 (`DATA_DICTIONARY.md`) has 5 and 4 values; in practice the fields mix the enum, upper- and lower-case variants, comma-separated
 lists and one-off free-text descriptions. Any tabulation by family is therefore unreliable as it stands.
 
@@ -41,10 +41,10 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 
 | | Mechanism | Outcome |
 |---|---|---|
-| Original distinct labels | 236 | 127 |
+| Original distinct labels | 235 | 126 |
 | Proposed single-label values (incl. `multiple`, `unmapped_needs_review`) | 11 | 6 |
-| Studies mapped to exactly one family | 607 | 1,088 |
-| Studies mapped to `multiple` | 520 | 70 |
+| Studies mapped to exactly one family | 606 | 1,087 |
+| Studies mapped to `multiple` | 519 | 69 |
 | Studies `unmapped_needs_review` | 32 | 1 |
 | Studies flagged `needs_review` (either field, or an unmatched outcome token) | 45 | |
 
@@ -52,7 +52,7 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 
 | Value | Studies |
 |---|---|
-| `multiple` | 520 |
+| `multiple` | 519 |
 | `eligibility_status_documentation` | 157 |
 | `discretion_accommodation` | 137 |
 | `institutional_structure_coordination` | 115 |
@@ -61,32 +61,32 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 | `unmapped_needs_review` | 32 |
 | `participation_assistance` | 25 |
 | `regulatory_model_ownership` | 24 |
-| `procedural_burden` | 18 |
+| `procedural_burden` | 17 |
 | `review_redress` | 4 |
 
 ### Studies touching each mechanism family (multi-label)
 
 | Family | Studies |
 |---|---|
-| `institutional_structure_coordination` | 874 |
-| `discretion_accommodation` | 720 |
-| `eligibility_status_documentation` | 648 |
-| `fees_tariffs_subsidies` | 544 |
-| `participation_assistance` | 522 |
-| `procedural_burden` | 504 |
-| `enforcement_sanctions` | 495 |
-| `review_redress` | 188 |
+| `institutional_structure_coordination` | 871 |
+| `discretion_accommodation` | 717 |
+| `eligibility_status_documentation` | 645 |
+| `fees_tariffs_subsidies` | 542 |
+| `participation_assistance` | 518 |
+| `procedural_burden` | 501 |
+| `enforcement_sanctions` | 494 |
+| `review_redress` | 186 |
 | `regulatory_model_ownership` | 73 |
 
 ### Proposed outcome value counts
 
 | Value | Studies |
 |---|---|
-| `effective_access` | 712 |
+| `effective_access` | 711 |
 | `primary_connection` | 161 |
-| `economic_access` | 129 |
-| `administrative_outcome` | 86 |
-| `multiple` | 70 |
+| `economic_access` | 130 |
+| `administrative_outcome` | 85 |
+| `multiple` | 69 |
 | `unmapped_needs_review` | 1 |
 
 ## Known weaknesses of this draft
