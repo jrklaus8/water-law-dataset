@@ -143,6 +143,8 @@ def main(argv=None):
         if kind == 'include':
             print(f'INCLUDE  {rid} -> {sid_new}: new study, extraction and evidence-map rows added, exclusion-log row removed')
             r.update(full_text_decision='include', final_decision='include', exclusion_reason='', exclusion_reason_detail='', reviewer_2=p['adjudicated_by'])
+            if r['full_text_status'] == 'excluded':  # verify_repository.py requires status and final_decision to agree
+                r['full_text_status'] = 'included'
             r['notes'] = (r['notes'] + ' | ' if r['notes'] else '') + f'A16 reversal exclude -> include, {who}; study {sid_new}'
             el = [x for x in el if x['record_id'] != rid]
             ed.append({'study_id': sid_new, 'record_id': rid, **extra['extraction']})
@@ -154,6 +156,8 @@ def main(argv=None):
             print(f'EXCLUDE  {rid} ({sid}): study retired, extraction and evidence-map rows removed, exclusion-log row added ({p["researcher_exclusion_code"]})')
             detail = f"A16 adjudication {p['date']} by {p['adjudicated_by']}: " + (p['researcher_comment'] or 'excluded on the researcher\'s reading') + f"; study {sid} retired {today}"
             r.update(full_text_decision='exclude', final_decision='exclude', exclusion_reason=p['researcher_exclusion_code'], exclusion_reason_detail=detail, reviewer_2=p['adjudicated_by'])
+            if r['full_text_status'] == 'included':  # verify_repository.py requires status and final_decision to agree (S841, 2026-10-13)
+                r['full_text_status'] = 'excluded'
             r['notes'] = (r['notes'] + ' | ' if r['notes'] else '') + f'A16 reversal include -> exclude, {who}; {sid} retired'
             el.append({'record_id': rid, 'title': r['title'], 'authors': r['authors'], 'year': r['year'], 'stage': 'full_text',
                        'exclusion_code': p['researcher_exclusion_code'], 'exclusion_reason_detail': detail, 'reviewer': p['adjudicated_by'], 'date': today})

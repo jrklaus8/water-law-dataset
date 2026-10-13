@@ -12,7 +12,7 @@ researcher's institutional access to further database providers is
 exhausted, and the corpus was judged large and comprehensive enough for
 the review's purposes — the same kind of judgment call as the
 2026-09-11 search closure). **Final figures: of 3,659, 2,276 were
-assessed (1,157 include / 1,119 exclude — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28, and 1,159 / 1,117 before the PI's A16 adjudication of 2026-10-13 reversed three exclusions to includes and five includes to excludes), and "Reports not retrieved" is
+assessed (1,144 include / 1,132 exclude — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28, and 1,159 / 1,117 before the PI's A16 and A24 rulings of 2026-10-13 reversed three exclusions to includes and 18 includes to excludes), and "Reports not retrieved" is
 1,383 — 182 flagged `wrong_file_retrieved` (a delivery was attempted and
 the wrong content arrived) and 1,201 `not_retrievable` (no successful
 retrieval attempt). These 1,383 will not grow further, and will not be
@@ -132,13 +132,13 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     2026-09-28 Phase 6 closure. 62.2% of the 3,659 records sought for
     retrieval were actually screened; this is now the final figure for
     this box, not a provisional/growing one.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,119 total, FINAL after the 2026-09-28 duplicate merge and S356 exclusion):
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,132 total, FINAL after the 2026-09-28 duplicate merge and S356 exclusion):
     E01 wrong topic (n = 495)
     E02 wrong population (n = 34)
-    E03 wrong exposure (n = 34)
-    E04 wrong outcome (n = 79)
+    E03 wrong exposure (n = 44)
+    E04 wrong outcome (n = 81)
     E05 no empirical evidence (n = 138)
-    E06 engineering only (n = 104)
+    E06 engineering only (n = 105)
     E07 wrong service (n = 27)
     E08 duplicate (n = 8)
     E09 insufficient information (n = 2)
@@ -147,7 +147,7 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E12 wrong study design (n = 47)
 
 Included
-  Studies included in systematic review (n = 1,157, FINAL)
+  Studies included in systematic review (n = 1,144, FINAL)
     [Full-text include count as of the 2026-09-28 Phase 6 closure (1,162 at closure,
     reduced by 2 when the repository audit's two live double-counted papers, S233 and
     S299, were merged into S1008 and S392 with the researcher's approval and their
@@ -156,11 +156,11 @@ Included
     figure will not grow further unless a future researcher makes a new,
     separately-recorded decision to reopen full-text retrieval for some or
     all of the 1,383 never-screened records.]
-  Studies included in full extraction so far (n = 1,157)
+  Studies included in full extraction so far (n = 1,144)
     [03_extraction/extracted_data/extraction_database.csv, S001-S1167 (S227,
     S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 63 effect-size rows, as of 2026-10-13; 62 of them from quantitative-synthesis-eligible studies, plus S589's row, an unresolved eligibility inconsistency flagged by the repository audit)
+  Studies included in quantitative evidence synthesis (n = 61 effect-size rows, as of 2026-10-13; 60 of them from quantitative-synthesis-eligible studies, plus S589's row, an unresolved eligibility inconsistency flagged by the repository audit)
     [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16
     and extended in almost every full-text-screening batch since as new
     genuinely quantitative, non-fabricated exposure-vs-comparator studies
@@ -168,8 +168,8 @@ Included
     complete study-by-study history (this paragraph previously narrated
     that history inline up to S649/2026-09-22 and was left unmaintained
     for several weeks of subsequent batches; it is now a pointer rather
-    than a re-narration, to avoid the same drift recurring). Of the 63
-    rows: 20 Family A, 6 Family B, 20 Family C, and 17 that carry no family
+    than a re-narration, to avoid the same drift recurring). Of the 61
+    rows: 20 Family A, 6 Family B, 20 Family C, and 15 that carry no family
     because each was individually judged a reasoned non-fit to Family A/B/C
     (not a data-cleanliness gap -- see
     06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md

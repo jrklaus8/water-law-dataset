@@ -84,7 +84,7 @@ class TestEffectSizes(unittest.TestCase):
         cls.ed = {r['study_id'] for r in rows('03_extraction/extracted_data/extraction_database.csv')}
 
     def test_shape(self):
-        self.assertEqual(len(self.es), 63)  # 62 until 2026-10-13, when the A16 ruling added S1166 (Jiang & Zheng 2014)
+        self.assertEqual(len(self.es), 61)  # 62 until 2026-10-13: the A16 ruling added S1166 (Jiang & Zheng 2014), then the A24 rulings removed S312 and S435
         self.assertEqual(len({r['study_id'] for r in self.es}), len(self.es))
         self.assertTrue({r['study_id'] for r in self.es} <= self.ed)
         for col in ('study_id', 'outcome_family', 'exposure_definition', 'comparator_definition', 'effect_measure', 'effect_estimate', 'sample_size', 'direction', 'adjusted',
@@ -99,7 +99,7 @@ class TestEffectSizes(unittest.TestCase):
         self.assertTrue(all(r['exclusion_from_pooling_reason'].strip() for r in self.es if r not in pooled), 'a non-pooled row gives no reason')
 
     def test_numeric_census(self):
-        """How many of the 63 rows could be pooled on their numbers at all: this is the picture behind the Phase 11 'nothing pooled' verdict."""
+        """How many of the 61 rows could be pooled on their numbers at all: this is the picture behind the Phase 11 'nothing pooled' verdict."""
         n_est = sum(numeric(r['effect_estimate']) for r in self.es)
         n_se = sum(numeric(r['standard_error']) for r in self.es)
         n_ci = sum(numeric(r['lower_CI']) and numeric(r['upper_CI']) for r in self.es)

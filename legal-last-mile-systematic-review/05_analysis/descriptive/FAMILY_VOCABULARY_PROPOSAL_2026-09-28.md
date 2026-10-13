@@ -7,7 +7,7 @@ should spot-check a sample (start with `needs_review = TRUE`).
 
 ## The problem
 
-`mechanism_family` holds 235 distinct labels and `outcome_family` 126 across 1,157 studies. The documented enum
+`mechanism_family` holds 234 distinct labels and `outcome_family` 126 across 1,144 studies. The documented enum
 (`DATA_DICTIONARY.md`) has 5 and 4 values; in practice the fields mix the enum, upper- and lower-case variants, comma-separated
 lists and one-off free-text descriptions. Any tabulation by family is therefore unreliable as it stands.
 
@@ -41,24 +41,24 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 
 | | Mechanism | Outcome |
 |---|---|---|
-| Original distinct labels | 235 | 126 |
+| Original distinct labels | 234 | 126 |
 | Proposed single-label values (incl. `multiple`, `unmapped_needs_review`) | 11 | 6 |
-| Studies mapped to exactly one family | 606 | 1,087 |
-| Studies mapped to `multiple` | 519 | 69 |
-| Studies `unmapped_needs_review` | 32 | 1 |
-| Studies flagged `needs_review` (either field, or an unmatched outcome token) | 45 | |
+| Studies mapped to exactly one family | 602 | 1,074 |
+| Studies mapped to `multiple` | 511 | 69 |
+| Studies `unmapped_needs_review` | 31 | 1 |
+| Studies flagged `needs_review` (either field, or an unmatched outcome token) | 44 | |
 
 ### Proposed mechanism value counts (single-label column)
 
 | Value | Studies |
 |---|---|
-| `multiple` | 519 |
-| `eligibility_status_documentation` | 157 |
-| `discretion_accommodation` | 137 |
-| `institutional_structure_coordination` | 115 |
+| `multiple` | 511 |
+| `eligibility_status_documentation` | 155 |
+| `discretion_accommodation` | 136 |
+| `institutional_structure_coordination` | 114 |
 | `enforcement_sanctions` | 80 |
 | `fees_tariffs_subsidies` | 47 |
-| `unmapped_needs_review` | 32 |
+| `unmapped_needs_review` | 31 |
 | `participation_assistance` | 25 |
 | `regulatory_model_ownership` | 24 |
 | `procedural_burden` | 17 |
@@ -68,13 +68,13 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 
 | Family | Studies |
 |---|---|
-| `institutional_structure_coordination` | 871 |
-| `discretion_accommodation` | 717 |
-| `eligibility_status_documentation` | 645 |
+| `institutional_structure_coordination` | 869 |
+| `discretion_accommodation` | 716 |
+| `eligibility_status_documentation` | 643 |
 | `fees_tariffs_subsidies` | 542 |
 | `participation_assistance` | 518 |
-| `procedural_burden` | 501 |
-| `enforcement_sanctions` | 494 |
+| `procedural_burden` | 500 |
+| `enforcement_sanctions` | 493 |
 | `review_redress` | 186 |
 | `regulatory_model_ownership` | 73 |
 
@@ -82,9 +82,9 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 
 | Value | Studies |
 |---|---|
-| `effective_access` | 711 |
-| `primary_connection` | 161 |
-| `economic_access` | 130 |
+| `effective_access` | 701 |
+| `primary_connection` | 160 |
+| `economic_access` | 128 |
 | `administrative_outcome` | 85 |
 | `multiple` | 69 |
 | `unmapped_needs_review` | 1 |
@@ -92,7 +92,7 @@ and folded into these four; `PROJECT_SPEC.md` §7 warns not to pool them merely 
 ## Known weaknesses of this draft
 
 - Keyword rules can mis-assign a one-off label (e.g. a label containing "community" is sent to `participation_assistance`).
-- `multiple` is large because 394 studies already carry the label `MULTIPLE` (more than one of the four top-level booleans TRUE) and specific labels that name several families also land there; use `mechanism_families_all` for breadth.
+- `multiple` is large because 386 studies already carry the label `MULTIPLE` (more than one of the four top-level booleans TRUE) and specific labels that name several families also land there; use `mechanism_families_all` for breadth.
 - The multi-label counts are broad because the extraction booleans are TRUE for most studies (e.g. institutional fragmentation for about three quarters); they show low discriminating power of the booleans — itself a finding for the taxonomy decision, not a clean count of "studies about X".
 - Extraction booleans are sparse-to-noisy (blank is not FALSE), so a study with few TRUE booleans may be under-labelled.
 - `effective_access` is broad by design (it absorbs coverage, reliability, quantity, quality, continuity); a finer split may be wanted.
