@@ -1,6 +1,6 @@
 # Unassessed record read in full — dos Santos, Bastos & Razzolini 2026, WASH policy responses for homeless populations during COVID-19 (R4A7F8709BEDE), 2026-10-13
 
-*Status: **assessment proposal only; no database was changed.** Screening closed on 2026-09-28, so adding this record is a researcher decision (`00_admin/DECISIONS_AND_OPEN_ITEMS.md` A15 and A23).*
+*Status: **superseded 2026-10-14: the PI ruled to include this record (A23), now S1168; the note below is the 2026-10-13 assessment and was left as written.** Screening had closed on 2026-09-28, so adding the record was a researcher decision (`00_admin/DECISIONS_AND_OPEN_ITEMS.md` A15 and A23).*
 
 **What happened.** The record passed title/abstract screening (both reviewers: include) but its full-text status is `not_retrievable` and it was never assessed at the full-text stage (it is one of the 1,383 never-assessed records; `MISSING_FULLTEXTS_REQUEST_LIST_2026-10-04.csv`, priority 9). The researcher dropped the published article in the Drive inbox on 2026-10-13 (`WASHDEV-D-25-00262 (2).pdf`, also uploaded to the session). The AI read all 15 pages (text and tables as page images). **Journal of Water, Sanitation and Hygiene for Development 16(9):862-876, doi 10.2166/washdev.2026.262; received 27 November 2025, accepted in revised form 12 July 2026, online 17 August 2026.** The Supplementary Material (Table S1, the list of documents) was not supplied, so the corpus cannot be checked.
 

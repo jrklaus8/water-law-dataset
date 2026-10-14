@@ -103,7 +103,7 @@ def main(argv=None):
         if r is None:
             errors.append(f'{rid}: not in the full-text database'); continue
         if dec == 'include':
-            if r['final_decision'] != 'exclude':
+            if r['final_decision'] not in ('exclude', ''):  # '' = a never-assessed record the researcher has ruled on (A23, 2026-10-14)
                 errors.append(f'{rid}: queued as exclude -> include but the database says {r["final_decision"]!r}'); continue
             f = P['INC'] / f'{rid}.json'
             if not f.exists():
@@ -145,7 +145,10 @@ def main(argv=None):
             r.update(full_text_decision='include', final_decision='include', exclusion_reason='', exclusion_reason_detail='', reviewer_2=p['adjudicated_by'])
             if r['full_text_status'] == 'excluded':  # verify_repository.py requires status and final_decision to agree
                 r['full_text_status'] = 'included'
-            r['notes'] = (r['notes'] + ' | ' if r['notes'] else '') + f'A16 reversal exclude -> include, {who}; study {sid_new}'
+            if not p['ai_decision']:  # a never-assessed record whose full text the researcher supplied and the AI read: mark it retrieved and credit the AI reading
+                r['full_text_status'] = 'retrieved'
+                r['reviewer_1'] = r['reviewer_1'] or f'Claude-AI-fulltext-{today}'
+            r['notes'] = (r['notes'] + ' | ' if r['notes'] else '') + f"A16 reversal {'exclude' if p['ai_decision'] else 'never assessed'} -> include, {who}; study {sid_new}"
             el = [x for x in el if x['record_id'] != rid]
             ed.append({'study_id': sid_new, 'record_id': rid, **extra['extraction']})
             em.append({'study_id': sid_new, **extra['evidence_map']})

@@ -67,7 +67,7 @@ class TestPrismaReconciliation(unittest.TestCase):
         self.assertEqual(c.total() - inc - exc, und)
         for phrase in (f'{inc + exc + und:,}', f'{inc + exc:,}', f'{und:,}', f'{inc:,} include / {exc:,} exclude'):
             self.assertIn(phrase, self.flow)
-        m = re.search(r'1,383 — (\d+) flagged `wrong_file_retrieved`.*?(\d[\d,]*) `not_retrievable`', self.flow, re.S)
+        m = re.search(rf'{und:,} — (\d+) flagged `wrong_file_retrieved`.*?(\d[\d,]*) `not_retrievable`', self.flow, re.S)  # was hard-coded to 1,383 until the A23 record (2026-10-14) made it 1,382
         self.assertIsNotNone(m); self.assertEqual(int(m.group(1)) + int(m.group(2).replace(',', '')), und)
 
 

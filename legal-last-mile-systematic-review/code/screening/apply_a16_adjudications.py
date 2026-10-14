@@ -174,8 +174,8 @@ def main(argv=None):
                 el_by_id[rid]['exclusion_reason_detail'] = row['exclusion_reason_detail']
         else:
             ai = row['final_decision'] or row['full_text_decision']
-            note += f'REVERSES the AI {ai} -> {dec}' + (f' ({code})' if code else '') + ' -- pending: decision fields unchanged until a dated script processes A16_PENDING_REVERSALS.csv' + (f'; {comment}' if comment else '')
-            print(f'REVERSE  {rid}: {ai} -> {dec}' + (f' {code}' if code else '') + '  (queued, decision fields unchanged)')
+            note += (f'REVERSES the AI {ai} -> {dec}' if ai else f'rules a never-assessed record: {dec}') + (f' ({code})' if code else '') + ' -- pending: decision fields unchanged until a dated script processes A16_PENDING_REVERSALS.csv' + (f'; {comment}' if comment else '')
+            print(f'REVERSE  {rid}: {ai or "never assessed"} -> {dec}' + (f' {code}' if code else '') + '  (queued, decision fields unchanged)')
             pending.append({'record_id': rid, 'title': row['title'], 'ai_decision': ai, 'researcher_decision': dec, 'researcher_exclusion_code': code,
                             'researcher_comment': comment, 'adjudicated_by': a.reviewer, 'date': today,
                             'next_step': 'new inclusion: assign study ID, extract, appraise, add study_record_map row, remove exclusion-log row' if dec == 'include'

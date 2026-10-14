@@ -1,5 +1,7 @@
 # Re-mining extraction_database.csv for missed effect_sizes.csv promotions — 2026-09-28
 
+> **Update 2026-10-14.** The one promotion this audit made, S348 (Family C), was reversed when the PI excluded S348 on the narrow scope ruling (E03); its row is archived in `11_archive/effect_sizes_removed_2026-10-13.csv`. The text below is left as written on 2026-09-28.
+
 ## Why this is possible without new full-text retrieval
 
 Full-text PDFs supplied by the researcher earlier in this project were session-ephemeral chat

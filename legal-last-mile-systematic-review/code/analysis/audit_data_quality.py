@@ -196,7 +196,7 @@ def render(rows, findings, es_n, cov, am, yrs, cert):
     cc = cert['causal_by_code']
     L += ["", "## 5. `mechanism_certainty` 3–4 versus study design", "",
           f"`mechanism_certainty` 3 means quasi-experimental and 4 experimental evidence (`CODEBOOK.md` §9). {cert['hi_total']} studies carry 3 or 4, but **only {cert['hi_in_causal']} of them are ROBINS-I or RoB 2 studies**; "
-          f"{len(cert['hi_outside'])} sit in other designs ({', '.join(f'{t} {n}' for t, n in cert['hi_outside_tools'].most_common())}), e.g. " + ", ".join(cert['hi_outside'][:6]) + ". "
+          f"{len(cert['hi_outside'])} sit in other designs ({', '.join(f'{t} {n}' for t, n in sorted(cert['hi_outside_tools'].items(), key=lambda kv: (-kv[1], kv[0])))}), e.g. " + ", ".join(cert['hi_outside'][:6]) + ". "
           f"Conversely, of the {cert['causal_total']} ROBINS-I/RoB 2 studies, {cc['4'] + cc['3']} are coded 3–4, {cc['2']} are coded 2, {cc['1']} are coded 1 and {cc['narrative']} carry narrative text instead of a 0–4 code. "
           "So the number of studies at certainty 3–4 is **not** a count of quasi-experimental or experimental studies, and the two figures (causal-capable designs, certainty 3–4) should not be read as the same thing. "
           "Which coding is wrong (the certainty or the design/tool) needs the papers; nothing was changed.", ""]

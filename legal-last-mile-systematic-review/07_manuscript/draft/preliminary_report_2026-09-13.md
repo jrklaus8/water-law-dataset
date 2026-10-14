@@ -2,7 +2,7 @@
 
 ### Systematic Review Protocol and Interim Descriptive Report
 
-Junior Klaus
+Claudio Klaus
 Erasmus University Rotterdam
 Draft of 2026-09-13
 
