@@ -73,22 +73,17 @@ because the manuscript hasn't been drafted yet).
 | 23b | Limitations of the included evidence | `RISK_OF_BIAS.md` §3, `EVIDENCE_LIMITATIONS_TEMPLATE.md` | ◐ §5 |
 | 23c | Limitations of the review process itself | `PRISMA_WORKFLOW.md` Phase 3's disclosed search gaps (SSRN, Westlaw/Lexis never searched), the reviewer_2 agreement-rate caveat (`CHANGELOG.md` 2026-09-12), the AI-versus-AI excludes finding (A16) | ◐ §5 (the generated limitations now state the A16 finding) |
 | 23d | Implications for practice/policy/future research | `PROJECT_SPEC.md` §1–2, `07_manuscript/draft/manuscript_outline.md` | ◐ §6.1 |
-| 24a | Registration information | `00_admin/preregistration/osf_preregistration_draft.md` (drafted, not yet submitted — see `PRISMA_WORKFLOW.md` Phase 2) | ◐ §2.1 — NOT registered; state retrospective if registered now |
+| 24a | Registration information | `00_admin/preregistration/osf_preregistration_draft.md` (a **retrospective** registration frozen at release `0.2.0-interim`, 2026-10-14; prepared, not yet submitted — see `PRISMA_WORKFLOW.md` Phase 2) | ◐ §2.1 — NOT registered before the work was done; states the retrospective registration and what was fixed a priori |
 | 24b | Protocol availability | `PROTOCOL.md`, this repository itself | ◐ §2.8 |
 | 24c | Amendments to protocol/registration, with rationale | `CHANGELOG.md` (`PROTOCOL.md` §12's amendment-logging requirement) | ◐ §2.1 |
-| 25 | Funding/support sources and role | **Not yet recorded** — prompts in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (researcher to complete) | ☐ §7 placeholder — researcher must supply |
-| 26 | Competing interests of review authors | **Not yet recorded** — prompts in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (researcher to complete) | ☐ §7 placeholder — researcher must supply |
+| 25 | Funding/support sources and role | **Recorded 2026-10-14** in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md`: no specific grant; database access through institutional subscriptions at Erasmus University Rotterdam | ◐ §7 — author's statement entered; final sign-off pending |
+| 26 | Competing interests of review authors | **Recorded 2026-10-14** in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md`: the author declares no competing financial or non-financial interests | ◐ §7 — author's statement entered; final sign-off pending |
 | 27 | Availability of data, code, and materials | This repository (public git history), `REPRODUCIBILITY.md` | ◐ §2.8, §7 |
 
 ## Status key (2026-10-04)
 
-`◐` = drafted in `07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md` (generated; **not reviewed by a human author**) — the box is deliberately not ticked until an author has read and accepted the text. `☐` = not yet in the draft, with the reason. The draft states plainly that the protocol was not registered in advance (item 24a), that nothing was pooled (items 13d, 13e, 14, 20b, 21) and that GRADE was not used (items 15, 22). Items 25 and 26 need the researcher.
+`◐` = drafted in `07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md` (generated; **not reviewed by a human author**) — the box is deliberately not ticked until an author has read and accepted the text. `☐` = not yet in the draft, with the reason. The draft states plainly that the protocol was not registered in advance (item 24a), that nothing was pooled (items 13d, 13e, 14, 20b, 21) and that GRADE was not used (items 15, 22). Items 25 and 26 were supplied by the researcher on 2026-10-14 and entered unchanged (final sign-off pending).
 
-## Two rows with nothing to point to yet
+## Items 25 and 26 (completed 2026-10-14)
 
-Items 25 (funding/support) and 26 (competing interests) have no existing
-home in this repository — they're standard journal-submission
-disclosures rather than methodological content this pipeline generates,
-so there's nothing to link to until the researcher supplies them. Don't
-leave them silently blank at submission time; add the actual disclosure
-text directly to this checklist (or a `00_admin/` file) once known.
+Funding/support and competing interests were supplied by the author and are recorded in `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` and in Section 7 of the generated manuscript draft. The remaining prompts the author's statements do not answer (cost of the AI tools, any relationship to the AI vendors) are listed there for sign-off.

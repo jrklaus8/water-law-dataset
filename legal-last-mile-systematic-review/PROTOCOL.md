@@ -129,14 +129,24 @@ heterogeneity across mechanism and outcome families.
 assumed to be an appropriate registry because the primary question is not a
 conventional health-intervention question; this will be re-checked against
 current PROSPERO scope before a final registry decision (`PRISMA_WORKFLOW.md`
-Phase 2). No registration has yet been submitted — this document is the
-pre-registration draft.
+Phase 2). No registration has yet been submitted. **Update 2026-10-14:** the
+work was executed before it was registered, so the registration is being filed as a **transparent retrospective
+(post-execution) registration frozen at release `0.2.0-interim`**, with the a priori content and the later dated
+clarifications separated (`00_admin/preregistration/osf_preregistration_draft.md`). The protocol was fixed in writing on 2026-08-22
+(git commit `d591062`).
 
 ## 12. Amendments
 
 **2026-09-28 — title amended (not the research question, eligibility criteria or synthesis approach):** "AI-Assisted" was added to the working
 title so that the use of a large language model for most screening, extraction, appraisal and synthesis drafting is stated in the title
 (disclosure in `AI_USE_STATEMENT.md`). The protocol is still an unregistered draft, so no registration is amended; logged in `CHANGELOG.md`.
+
+**Post-execution clarifications and departures, 2026-09-11 to 2026-10-14 (the research question and the wording of the criteria were not changed; each is
+logged in `CHANGELOG.md` and listed with its kind in the registration draft):** search phase closed 2026-09-11 (SSRN and Westlaw/Lexis never searched); full-text
+retrieval closed 2026-09-28 (1,382 of 3,659 never assessed); rule-based risk-of-bias ratings instead of item-by-item reading (2026-09-28); the narrow, rule-type reading of
+criterion 2 adopted 2026-10-13 after an AI-versus-AI disagreement was seen, and the consistency passes under criteria 3 and 4 that followed (`INCLUSION_EXCLUSION.md`);
+results never decide eligibility (2026-10-14); synthesis families retitled as thematic mechanism groupings (2026-10-14, `PROJECT_SPEC.md` §8); controlled vocabularies
+for mechanism, outcome and design adopted (2026-10-14); the SWiM sensitivity analysis made a standing pre-publication requirement (2026-10-14, `ANALYSIS_PLAN.md` §10).
 
 Any change to the research question, eligibility criteria, or planned
 synthesis approach after registration must be logged in `CHANGELOG.md` with

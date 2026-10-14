@@ -1,37 +1,58 @@
-# Funding and competing interests — template for PRISMA 2020 items 25 and 26
+# Funding, competing interests and author affiliation — completed statements (PRISMA 2020 items 25 and 26)
 
-**Status: NOT COMPLETED.** Nothing in this repository records the review's funding or the authors' competing interests, and
-none has been invented here. Only the researcher can complete this file. Replace each `[ ]` prompt with the answer, or write
-"None" where that is true, and add the date and who completed it.
+**Status: COMPLETED 2026-10-14 for the three required statements, on the author's instruction (open item A8); ready for the author's final sign-off.**
+The statements below were supplied by the author (Claudio Klaus) and entered by the AI without change; nothing in them was inferred by the AI.
+The file keeps its original name (`..._TEMPLATE.md`) because other files link to it. Prompts the author's statements do not answer are marked
+`[not stated]` and are listed at the end; none of them has been guessed.
+
+## Author and affiliation
+
+Claudio Klaus, External Doctoral Candidate, Erasmus School of Law, Erasmus University Rotterdam, Rotterdam, The Netherlands.
+This review is the companion systematic review to the PhD dissertation *The Legal Last Mile: Administrative Law as a Mechanism of Connectivity and
+Exclusion in Sanitation Governance: A Comparative Study of the Netherlands, Canada (Ontario), and Brazil*.
 
 ## Item 25 — Support
 
+**Funding statement.** This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors.
+Database access was provided through institutional subscriptions at Erasmus University Rotterdam.
+
 | Prompt | Answer |
 |---|---|
-| Was the review funded, in whole or in part? (grant, scholarship, salary support, institutional research allowance) | [ ] |
-| Funder name(s) and grant/award number(s) | [ ] |
-| Role of the funder in design, conduct, analysis, interpretation, decision to publish | [ ] |
-| Non-financial support (institutional library access, software licences, AI-tool subscriptions, supervisor time) | [ ] |
-| Institution / programme under which the work is done (degree, dissertation) | [ ] |
-| Cost of the AI tools used, and who paid | [ ] |
+| Was the review funded, in whole or in part? | No specific grant from any funding agency in the public, commercial or not-for-profit sectors |
+| Funder name(s) and grant/award number(s) | None |
+| Role of the funder in design, conduct, analysis, interpretation, decision to publish | Not applicable (no funder) |
+| Non-financial support | Database access through institutional subscriptions at Erasmus University Rotterdam |
+| Institution / programme under which the work is done | External doctoral candidate, Erasmus School of Law, Erasmus University Rotterdam; companion to the PhD dissertation named above |
+| Cost of the AI tools used, and who paid | `[not stated]` |
 
 ## Item 26 — Competing interests
 
+**Competing-interests statement.** The author declares no competing financial or non-financial interests.
+
 | Prompt | Answer |
 |---|---|
-| Financial relationships with water utilities, regulators, consultancies, NGOs or funders of water/sanitation work | [ ] |
-| Employment or advisory roles in the sector reviewed | [ ] |
-| Authorship of any included study (the reviewer's own work should be declared and, if included, handled by a second reviewer) | [ ] |
-| Views or affiliations that could be seen to bear on the question (legal-institutional reform advocacy) | [ ] |
-| Relationship to the AI vendor (Anthropic), if any | [ ] |
-| Anyone else involved in screening/extraction (human reviewers, supervisors) and their interests | [ ] |
+| Financial relationships with water utilities, regulators, consultancies, NGOs or funders of water/sanitation work | Covered by the statement above: none declared |
+| Employment or advisory roles in the sector reviewed | Covered by the statement above: none declared |
+| Authorship of any included study | Covered by the statement above. Check by the AI on 2026-10-14, by surname only: no citation among the 1,080 included reports and no author field in the full-text database contains "Klaus" |
+| Views or affiliations that could be seen to bear on the question | Covered by the statement above: none declared (the author's dissertation addresses the same topic, which is disclosed above as the relationship of this review to it) |
+| Relationship to the AI vendor (Anthropic), if any | `[not stated]` |
+| Anyone else involved in screening/extraction and their interests | The AI performed most screening, extraction and appraisal (`AI_USE_STATEMENT.md`); two other AI models (Codex, Gemini) acted as blind second reviewers on a sample. No other human reviewer is recorded. Interests of the AI tools' vendors: `[not stated]` |
 
 ## Also declare (journal-dependent)
 
-- AI use: see `AI_USE_STATEMENT.md` — journals commonly want the tool, version, purpose and human oversight stated.
-- Data and code availability (PRISMA item 27): this repository; state the release or DOI once one exists.
-- Registration (item 24): OSF draft prepared, not submitted (`00_admin/preregistration/osf_preregistration_draft.md`).
+- AI use: see `AI_USE_STATEMENT.md` — tool, purpose and human oversight; model versions and dates of use still to be added per journal policy.
+- Data and code availability (PRISMA item 27): this repository, release `0.2.0-interim` (tag `v0.2.0-interim`).
+- Registration (item 24): retrospective OSF registration prepared, frozen at release `0.2.0-interim`, not yet submitted (`00_admin/preregistration/osf_preregistration_draft.md`).
+
+## Where the statements appear
+
+`07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md` (Section 7, Declarations; generated by `code/analysis/build_manuscript_draft.py`) and
+`06_outputs/prisma/PRISMA_2020_CHECKLIST.md` (items 25 and 26).
+
+## Left for the author's sign-off
+
+1. Cost of the AI tools and who paid. 2. Any relationship to Anthropic (or the vendors of the second reviewers' models). 3. Confirmation that the statements above are final.
 
 ## Filled by
 
-Name: [ ]  Date: [ ]
+Statements: Claudio Klaus (instruction of 2026-10-14). Entered: the AI, 2026-10-14. Final sign-off: [ ]

@@ -1,222 +1,118 @@
-# OSF Generalized Systematic Review Preregistration — Draft
+# OSF Generalized Systematic Review Registration — Transparent Retrospective / Post-Execution Protocol Registration
 
-Status: **draft, ready for submission; not yet submitted.** This document
-has not been posted to OSF — this environment has no OSF account access,
-so the actual submission click can only be done by the researcher. It is
-written so the researcher can copy it directly into an OSF Generalized
-Systematic Review registration form. Every section below maps to a
-section of `PROTOCOL.md`; where the two differ, `PROTOCOL.md` is the
-source of truth and this file should be reconciled to it before
-submission.
+**Frozen at Release `0.2.0-interim` (2026-10-14).** Snapshot: git commit `a23f63e` of
+`github.com/jrklaus8/water-law-dataset`, tag `v0.2.0-interim` (the tag is pushed by the researcher from a local clone).
 
-Per `PROTOCOL.md` §11, PROSPERO was considered and ruled out: it is scoped
-to health/welfare-outcome reviews and, separately, does not accept
-registration once data extraction has begun — both of which foreclose it
-here (this review's question is legal/administrative, not a health
-intervention, and extraction started 2026-09-12). OSF is the registry
-used below.
+Status: **ready for upload; not yet submitted.** The AI that prepared this file has no OSF account access, so the
+submission itself can only be done by the researcher. Every section maps to a section of `PROTOCOL.md`; where the two differ,
+`PROTOCOL.md` and the dated notes in the files it points to are the source of truth. Per `PROTOCOL.md` §11, PROSPERO was
+considered and ruled out (it is scoped to health-outcome reviews and does not accept registration once extraction has begun;
+extraction began 2026-09-12). OSF is the registry used.
 
-## Disclosure: this is a retrospective registration, not a fully a priori one
-
-Be direct about this on OSF itself, not just here — it is exactly the
-kind of thing this project's own `CHANGELOG.md` has consistently
-"flagged, not hidden," and a registration that quietly implied otherwise
-would undercut the point of registering at all.
-
-- **The content of this protocol was drafted 2026-08-22**, the day the
-  repository was scaffolded, before any database was searched
-  (`CHANGELOG.md` "2026-08-22 — Initial scaffold"). At that point the
-  research question, eligibility criteria (`INCLUSION_EXCLUSION.md`),
-  extraction codebook (`CODEBOOK.md`), risk-of-bias tool assignments
-  (`RISK_OF_BIAS.md`), and analysis plan (`ANALYSIS_PLAN.md`) were all
-  already fixed in the form found in this repository today — none of them
-  have been revised in response to what the search or screening later
-  turned up (`PROTOCOL.md` §12 requires any such change to be logged as a
-  dated amendment, and none has been).
-- **It was not actually submitted to OSF at that time.** By the time of
-  this submission, the search has been executed and closed (2026-09-11),
-  title/abstract screening is complete (2026-09-12), and full-text
-  screening/extraction are live and ongoing (`PRISMA_WORKFLOW.md`). So
-  while the plan itself was fixed before any evidence was seen, the
-  formal registration timestamp postdates that evidence by roughly three
-  weeks.
-- **Net effect:** this protects against the main thing preregistration
-  guards against — revising your question, codebook, or analysis plan
-  after seeing what the data show — but it does not carry the same
-  evidentiary weight as a registration whose *timestamp* also precedes
-  data collection. State both dates (drafted 2026-08-22; registered
-  [fill in actual OSF submission date]) explicitly in the OSF entry
-  itself, and reference this section if OSF's form allows free-text
-  context.
+**What kind of registration this is.** The review was planned in writing on 2026-08-22 and then *executed* (search, screening,
+extraction, appraisal, synthesis) before anything was registered. This registration therefore does **not** carry the evidentiary
+weight of a registration whose timestamp precedes data collection. What it does is (1) freeze, with a verifiable timestamp, the
+state of the protocol and the evidence base at release `0.2.0-interim`; (2) separate what was fixed before any database was searched
+from what was clarified, decided or departed from afterwards, each with its date and where it is logged; and (3) bind the
+manuscript to those disclosures. It is labelled retrospective on purpose, and the OSF form should say so in its first line.
 
 ---
 
-## Title
+## 1. Two dates, stated together
 
-*The Legal Last Mile: Legal and Administrative Barriers to Water and
-Sanitation Access — An AI-Assisted Systematic Review and Structured
-Quantitative Evidence Synthesis*
+- **Protocol fixed:** 2026-08-22 (git commit `d591062`, "Scaffold Legal Last Mile systematic review project"; `CHANGELOG.md`
+  "2026-08-22 — Initial scaffold"). The first real database data (Scopus) arrived on 2026-08-26.
+- **Registered:** [fill in the actual OSF submission date]. State both dates in the OSF entry.
 
-("...and Meta-Analysis" is added only if Phase 12 of `PRISMA_WORKFLOW.md`
-concludes a restricted pooled estimate is defensible for at least one
-evidence family.)
+## 2. Specified a priori (2026-08-22, before any database was searched)
 
-## Research questions
+Recoverable from the first commit; the files have since changed only in the ways listed in §3.
 
-**Primary:** How do legal and administrative institutions shape the
-translation of physical availability of water and sanitation infrastructure
-into effective household access, and what evidence exists concerning the
-mechanisms through which eligibility screening, administrative burden,
-discretion, accommodation and enforcement produce or mitigate exclusion?
+| Element | Where it is fixed |
+|---|---|
+| Research questions (primary: how legal and administrative institutions shape the translation of physical availability into effective household access; secondary: magnitude where comparable evidence exists) | `PROTOCOL.md` §2, `PROJECT_SPEC.md` |
+| PECO, outcome hierarchy | `PROTOCOL.md` §3 and §7, `PROJECT_SPEC.md` §5–7 |
+| Eligibility: inclusion criteria 1–10 (criterion 2: a legal, administrative, institutional, regulatory or governance factor; criterion 3: empirical evidence or a systematic empirical synthesis; criterion 4: an access-relevant outcome), exclusion criteria 1–11 and the codes E01–E12 | `INCLUSION_EXCLUSION.md` |
+| Information sources and search strings (Tier 1/2 academic databases, legal/institutional repositories, grey literature) | `SEARCH_PROTOCOL.md`, `01_search/database_strategies/` |
+| Selection process: two reviewers where feasible, conflicts to discussion or a third reviewer, a coded reason for every exclusion | `PROTOCOL.md` §6 |
+| Data collection: a 92-field codebook piloted on about ten studies | `CODEBOOK.md`, `03_extraction/extraction_form/` |
+| Risk of bias: design-matched tools (RoB 2, ROBINS-I, JBI, CASP, MMAT) plus a supplementary, explicitly non-validated Legal Institutional Evidence Appraisal Framework | `RISK_OF_BIAS.md`, `PROTOCOL.md` §8 |
+| Synthesis: a quantitative-feasibility decision tree applied per candidate family, SWiM reporting where meta-analysis is not justified, candidate families A, B and C, sensitivity analyses, publication-bias assessment only with about ten studies or more | `ANALYSIS_PLAN.md`, `PROJECT_SPEC.md` §8 |
+| **Binding commitment:** no title, abstract or manuscript section asserts or implies a pooled meta-analytic finding unless the decision tree was satisfied for that evidence family | `ANALYSIS_PLAN.md` §2, `PROJECT_SPEC.md` §3 |
+| No directional hypothesis: an evidence test of the Legal Last Mile framework, not a confirmatory study | `PROJECT_SPEC.md` §2 and §11 |
 
-**Secondary (quantitative synthesis):** Where sufficiently comparable
-evidence exists, what is the magnitude of the association between specific
-legal or administrative access conditions and household water or
-sanitation access outcomes?
+## 3. Decided, clarified or departed from after execution began (dated, logged in `CHANGELOG.md`)
 
-Full rationale for this framing over the two alternatives considered:
-`PROTOCOL.md` §2.
+Wording of the criteria and of the research question was **not** rewritten; the clarifications below were added as dated notes
+next to the original text, which was kept as written (`PROTOCOL.md` §12).
 
-## Condition or domain being studied
+| Date | What | Kind | Effect |
+|---|---|---|---|
+| 2026-09-11 | **Search phase closed by the researcher.** Searched: Scopus (18 of 18 planned batches), Web of Science, HeinOnline (only a handful of records reached the pipeline), ProQuest, ProQuest/Sociological Abstracts, JSTOR (356 identified, 50 exported, none reached the pipeline). **Never searched: SSRN and Westlaw/Lexis.** The AI had no database access; the researcher searched through institutional access | Execution decision / departure (a gap) | 34,594 raw records, 27,481 after deduplication. The gap must be reported in the manuscript (`SEARCH_PROTOCOL.md` §7) |
+| 2026-09-12 | Title/abstract screening complete: an AI first pass on every record; a human second reviewer on the include-plus-unsure records only, not on the AI's exclusions | Departure from "two reviewers where feasible" | 3,659 records advanced to full text |
+| 2026-09-28 | **Full-text retrieval (Phase 6) closed by the researcher** once institutional access to further providers was exhausted | Execution decision / departure (a gap) | 2,277 of 3,659 records assessed; **1,382 never assessed** (1,200 not retrievable, 182 wrong file) |
+| 2026-09-28 | Official RoB 2, ROBINS-I, JBI, CASP, MMAT and AMSTAR 2 documents supplied; **appraisal done as rule-based batch ratings from the extracted fields, not as a signalling-question read of each paper**; the project's own framework is non-validated | Departure in depth of method | Ratings describe the extraction as much as the paper |
+| 2026-09-28 | Title amended to "AI-Assisted Systematic Review…" (not the question, criteria or synthesis approach) | Amendment (title) | `PROTOCOL.md` §12, `AI_USE_STATEMENT.md` |
+| 2026-09-28 | Phase 11 applied the decision tree: **no family clears the bar for meta-analysis**; all three route to SWiM; Phase 12 (meta-analysis) not run. A methods note found no defensible common metric for the ownership/price cluster | Pre-specified branch taken | Nothing pooled; no pooled claim made |
+| 2026-10-04 to 2026-10-14 | Blind second-model re-screen (two other AI models) of 121 AI excludes found about half of a stratified sample read as `include` (adjudication A16). Not a human check | Added check (AI versus AI) | Led to the scope question below |
+| 2026-10-13 | **Criterion 2 read narrowly (A16 ruling by the PI):** a legal or administrative access rule or mechanism (eligibility screening, administrative burden, documentation or tenure rules, tariff or cost-recovery rules, discretion or accommodation, enforcement, utility ownership or regulatory structure) rather than project delivery, behavioural promotion or unanalysed macro-governance background. Applied to **both** includes and excludes. **This was decided after seeing the independent-model disagreement**, so it is a post-hoc interpretive clarification | Post-hoc clarification (`INCLUSION_EXCLUSION.md` note; wording unchanged) | A16, A22, A24 and A25 passes: 3 excludes reversed to includes and 83 includes reversed to excludes (E03 wrong exposure and E05 no empirical evidence mostly), two never-assessed records added as includes |
+| 2026-10-13/14 | **Consistency rulings under criteria 3 and 4 (A24, A25, A20 residue):** E05 for narrative or doctrinal papers with no primary access data and no systematic method; E04 where the outcome is not a household access outcome (for example policy adoption); E03 where no rule is tested | Post-hoc application of the original criteria | See `CHANGELOG.md` 2026-10-13/14 |
+| 2026-10-14 | **Results never decide eligibility** (A18): significance, magnitude or direction of an effect estimate is never an eligibility ground | Post-hoc clarification | One exclusion re-coded, one reversed |
+| 2026-10-14 | Families A, B, C retitled as **thematic mechanism groupings** for vote counting, not homogeneous exposure–outcome pairs (A21); codes and assignments unchanged | Clarification (`PROJECT_SPEC.md` §8 note) | Headings only |
+| 2026-10-14 | Controlled vocabularies adopted for `mechanism_family`, `outcome_family` and `study_design_class` (nine design values plus `other`); originals preserved | Post-hoc classification, keyword-based and unvalidated | Descriptive tables only |
+| 2026-10-14 | Linked companion reports kept as separate rows (A3); the SWiM sensitivity analysis made a standing requirement (A4) | Counting convention; added requirement | 1,080 reports = 1,078 distinct studies |
 
-Access to water and sanitation services as shaped by legal and
-administrative institutions (eligibility rules, administrative burden,
-discretion/accommodation, enforcement, and related mechanisms — see
-`PROJECT_SPEC.md` §5–6). Comparative scope centers on Brazil, the
-Netherlands, and Canada (Ontario) per the parent doctoral project, but the
-search is not restricted to these three jurisdictions (`SEARCH_PROTOCOL.md`
-§1–3).
+Not departed from: the research question, the eligibility *wording*, the codebook fields, the synthesis decision tree.
 
-## Existing data / prior work
+## 4. Headline figures at the freeze (computed; the live values are in `00_admin/CURRENT_FIGURES.md`)
 
-**As originally drafted (2026-08-22):** none of the search, screening, or
-extraction had been performed. Eight preliminary methodological/exemplar
-sources had been identified and checked against independent sources
-(`SOURCES.md`) but were explicitly not treated as the review's evidence
-base.
+| Item | Figure |
+|---|---|
+| Records | 34,594 raw; 27,481 after deduplication |
+| Advanced to full text | 3,659; assessed 2,277; never assessed 1,382 |
+| Full-text decisions | **1,080 included reports** and **1,197 excluded** |
+| Distinct studies | **1,078** on the definite same-data links (S294/S366, S097/S098); **1,076** counting the partial-overlap links (S681/S682, S357/S369); the 5 RoB 2 report rows are 4 trials |
+| Extraction | 1,080 rows of 92 fields |
+| Effect-size rows | **59**: Family A 18, Family B 6, Family C 20 and 15 reasoned non-fits; **none pooled** |
+| Human involvement | 197 full-text includes confirmed by the researcher (S001–S200 less three the researcher later excluded); about 175 further full-text records adjudicated (A16, A22–A25); no human second extractor |
 
-**As of actual OSF submission (2026-09-12):** the plan above was not
-revised in light of any of the following, but for full transparency the
-review has since progressed to: search executed and closed across five
-databases with disclosed gaps (Scopus and Web of Science fully covered;
-HeinOnline, ProQuest, and ProQuest/Sociological Abstracts covered with
-real limitations; SSRN and Westlaw/Lexis never reached) — 27,481 unique
-candidate records after deduplication; title/abstract screening complete
-(3,659 records advanced to full-text screening, with a disclosed
-near-total reviewer_1/reviewer_2 agreement rate — see
-`PRISMA_WORKFLOW.md` Phase 5); full-text screening live and ongoing (175
-of 3,659 assessed as of this date); full extraction caught up with
-full-text screening (85 of 85 current includes extracted); risk-of-bias
-rating and quantitative-feasibility assessment (Phases 9 and 11) not yet
-started. `06_outputs/supplementary/preliminary_results.md` is the
-up-to-date public account of this progress and should be linked from the
-OSF entry.
+## 5. Disclosure on AI use and verification
 
-## Hypotheses
+Most screening, extraction, appraisal and drafting was carried out by a large language model (Claude, Anthropic) under the
+researcher's direction (`AI_USE_STATEMENT.md`). Extracted values, risk-of-bias ratings, the direction coding of the syntheses and
+the vocabulary mapping have **not** been verified by a human; a planned human second-extraction sample and the reviewer-2 queue
+(open item A6) remain. The repository's own verifier checks internal consistency, not correctness against source papers.
 
-None specified as directional hypotheses to be confirmed — this is
-explicitly an evidence test, not a confirmatory study of the Legal Last
-Mile framework (`PROJECT_SPEC.md` §11, "anti-confirmation-bias rule"). The
-review instead pre-specifies a mechanism framework to be tested, supported,
-qualified, or rejected by the evidence (`PROJECT_SPEC.md` §2).
+## 6. OSF form fields
 
-## Eligibility criteria
+**Title.** *The Legal Last Mile: Legal and Administrative Barriers to Water and Sanitation Access — An AI-Assisted Systematic Review and Structured Quantitative Evidence Synthesis.* ("…and Meta-Analysis" is not used: nothing was pooled.)
 
-Full criteria and standardized exclusion codes (E01–E12):
-`INCLUSION_EXCLUSION.md`.
+**Authors.** Claudio Klaus, External Doctoral Candidate, Erasmus School of Law, Erasmus University Rotterdam, Rotterdam, The Netherlands.
+Companion systematic review to the PhD dissertation *The Legal Last Mile: Administrative Law as a Mechanism of Connectivity and Exclusion
+in Sanitation Governance: A Comparative Study of the Netherlands, Canada (Ontario), and Brazil*.
 
-## Information sources
+**Research questions.** Primary and secondary as in §2.
 
-Tier 1/Tier 2 academic databases, sector-specific databases, legal/
-institutional repositories, and grey literature: `SEARCH_PROTOCOL.md` §1.
-Per-database search strings: `01_search/database_strategies/`.
+**Condition or domain.** Access to water and sanitation services as shaped by legal and administrative institutions (`PROJECT_SPEC.md` §5–6). The comparative scope of the parent project centres on Brazil, the Netherlands and Canada (Ontario); the search was not restricted to them.
 
-## Study records
+**Existing data at registration.** All of it: the search, screening, extraction, appraisal and synthesis are complete to the extent set out in §3–4. `06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md` and `07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md` (an AI-generated draft not yet reviewed by a human author) are the public accounts of the results.
 
-- **Data management:** `02_screening/title_abstract/screening_database.csv`.
-- **Selection process:** two reviewers where feasible; conflicts resolved
-  by discussion or a third reviewer. *Disclosure for the retrospective
-  registration:* the first pass and most full-text decisions were made by an AI (Claude); a human
-  confirmed 200 full-text includes and the title/abstract include-plus-unsure records, and
-  a blind re-screen by two other AI models disagreed with a large share of sampled AI
-  excludes (`02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`); adjudication is pending.
-- **Data collection process:** `03_extraction/extraction_form/` +
-  `CODEBOOK.md`, piloted on ~10 studies before full extraction.
+**Hypotheses.** None directional (§2).
 
-## Risk of bias (individual studies)
+**Eligibility, sources, study records, risk of bias, synthesis, meta-bias.** As in §2, with §3 for the dated clarifications; per-item detail in `INCLUSION_EXCLUSION.md`, `SEARCH_PROTOCOL.md`, `CODEBOOK.md`, `RISK_OF_BIAS.md`, `ANALYSIS_PLAN.md`.
 
-Design-matched tools: RoB 2, ROBINS-I, JBI (cross-sectional/cohort), CASP,
-MMAT, plus a supplementary, explicitly non-validated Legal Institutional
-Evidence Appraisal Framework for legal-empirical studies. Full detail:
-`RISK_OF_BIAS.md`.
+**Funding and competing interests.** See `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (filled): no specific grant from any funding agency in the public, commercial or not-for-profit sectors; database access through institutional subscriptions at Erasmus University Rotterdam; the author declares no competing financial or non-financial interests.
 
-## Data synthesis
-
-Quantitative-feasibility decision tree, effect-size strategy, contingent
-meta-analytic model, heterogeneity, subgroup/moderator rules, sensitivity
-analyses, and publication-bias thresholds: `ANALYSIS_PLAN.md`. Where
-meta-analysis is not justified for a given evidence family, synthesis
-follows SWiM (2020) reporting guidance.
-
-**Binding commitment for this preregistration:** no title, abstract, or
-manuscript section produced from this review will assert or imply a pooled
-meta-analytic finding unless the quantitative-feasibility decision tree in
-`ANALYSIS_PLAN.md` §2 was actually satisfied for that specific evidence
-family, with the determination documented in `05_analysis/`.
-
-## Meta-bias(es)
-
-Publication bias assessed only where ≥ ~10 studies contribute to a
-synthesis family (`ANALYSIS_PLAN.md` §9).
-
-## Amendments
-
-Any change to the research question, eligibility criteria, or planned
-synthesis approach after this registration is submitted must be logged as
-a dated, reasoned amendment on OSF itself (not just in this repository's
-`CHANGELOG.md`) — per `PROTOCOL.md` §12, changes are never made silently.
-
-## Anticipated timeline
-
-Realized-to-date, per `CHANGELOG.md` (fill in remaining estimates before
-submission):
-
-- 2026-08-22: protocol and codebook drafted (this document's content
-  originates here).
-- 2026-08-25 – 2026-09-11: database searching (pilot rounds, then Scopus,
-  Web of Science, HeinOnline, ProQuest, ProQuest/Sociological Abstracts,
-  JSTOR); search closed 2026-09-11.
-- 2026-09-10 – 2026-09-12: title/abstract screening, including the human
-  reviewer_2 pass; complete 2026-09-12.
-- 2026-09-12 – ongoing: full-text screening and extraction, running in
-  lockstep, dependent on the researcher supplying full-text PDFs on a
-  rolling basis (expected to continue for over a month from 2026-09-12).
-- Not yet scheduled: risk-of-bias appraisal (Phase 9, blocked on
-  obtaining the official versions of RoB 2 / ROBINS-I / JBI / CASP / MMAT
-  rather than reconstructing them from memory), quantitative-feasibility
-  determination (Phase 11), and manuscript drafting. **Fill in realistic
-  target dates for these before submitting** — an OSF registration with
-  no forward timeline at all is a weaker record than one with dates the
-  researcher is prepared to be a few months off on.
+**Amendments from now on.** Any change after this registration is logged as a dated, reasoned amendment on OSF itself and in `CHANGELOG.md` (`PROTOCOL.md` §12); nothing is changed silently.
 
 ---
 
-## Submission checklist (for the researcher, before posting to OSF)
+## Submission checklist (for the researcher)
 
-- [x] Confirm OSF Generalized Systematic Review is the appropriate
-      registry — PROSPERO ruled out 2026-09-12 (see top of this document).
-- [ ] Reconcile this draft against the current `PROTOCOL.md` — this file is
-      a snapshot and does not auto-update.
-- [ ] Fill in remaining anticipated-timeline dates (Phase 9, Phase 11,
-      manuscript) and named reviewers.
-- [ ] On OSF's registration form, state both dates explicitly: protocol
-      drafted 2026-08-22; registered [actual submission date] — see the
-      "Disclosure" section above for why this distinction matters and
-      should not be glossed over.
-- [ ] Submit; record the resulting OSF registration DOI/URL back into
-      `PROTOCOL.md` §11 and `CHANGELOG.md` (as a new dated entry, not an
-      edit to an old one).
-- [ ] If also archiving this repository on Zenodo, cross-link the two:
-      add the OSF DOI to the Zenodo deposit's "related identifiers" field
-      (relation: "isSupplementTo" or "isDocumentedBy"), and add the
-      Zenodo DOI back into this OSF entry once it exists.
+- [x] OSF Generalized Systematic Review is the registry; PROSPERO ruled out (2026-09-12).
+- [x] Draft reconciled with `PROTOCOL.md`, the files in §2 and `CHANGELOG.md` at release `0.2.0-interim` (2026-10-14).
+- [ ] Push the tag `v0.2.0-interim` (commit `a23f63e`) so the registration can point at it.
+- [ ] On the OSF form state both dates (protocol fixed 2026-08-22; registered [date]) and label the registration retrospective in its first line.
+- [ ] Attach or link this file, `PROTOCOL.md`, `INCLUSION_EXCLUSION.md`, `ANALYSIS_PLAN.md`, `CHANGELOG.md` and `00_admin/RELEASE_0.2.0-interim_2026-10-14.md`.
+- [ ] Submit; record the OSF DOI/URL in `PROTOCOL.md` §11 and as a new dated `CHANGELOG.md` entry (not an edit to an old one); update the PRISMA checklist item 24a.
+- [ ] If the repository is also archived on Zenodo, cross-link the two DOIs.

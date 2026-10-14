@@ -1,6 +1,6 @@
 # Release 0.2.0-interim (2026-10-14)
 
-Tag `v0.2.0-interim`; version and date in `CITATION.cff`. This replaces `0.1.0-interim` (2026-09-12), which described a state of the project that no longer exists (screening and extraction were then live; appraisal and synthesis had not started).
+Tag `v0.2.0-interim` (on commit `a23f63e`, created locally; pushing it is left to the PI because the git relay refused the tag push with HTTP 403 and was not bypassed); version and date in `CITATION.cff`. This replaces `0.1.0-interim` (2026-09-12), which described a state of the project that no longer exists (screening and extraction were then live; appraisal and synthesis had not started).
 It is still an **interim, AI-assisted** deposit: nothing in it has been independently verified by a human beyond the items listed under "What is verified", and the protocol was not registered before the work was done.
 
 ## What the release contains (figures as of the release date; the live values are in `00_admin/CURRENT_FIGURES.md`)
@@ -27,4 +27,4 @@ Full-text screening completed and closed; extraction of every included report; c
 
 ## Still open (long-term, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`)
 
-A6 human second-review sampling (the reviewer-2 queue) and the independent second-extractor sample; A7 OSF preregistration (a retrospective label is required); A8 funding and competing-interest statements (PRISMA items 25 and 26); A13 one effect-size candidate (S331) and A14 about twenty Drive files that are landing pages; the papers still to fetch; manuscript revision by a human author (`07_manuscript/draft/`) with the methods disclosure of the narrow criterion-2 ruling.
+A6 human second-review sampling (the reviewer-2 queue) and the independent second-extractor sample; A7 OSF registration (prepared 2026-10-14 as a transparent retrospective registration frozen at this release; the researcher uploads it after pushing the tag); A8 final sign-off of the funding, competing-interest and affiliation statements entered 2026-10-14 (PRISMA items 25 and 26); A13 one effect-size candidate (S331: adjusted OR 4.27 found, PI approval needed) and A14 (ten included studies still rest on a landing page or no file: S256, S280, S284, S290, S300, S301, S314, S317, S365, S380); the papers still to fetch; manuscript revision by a human author (`07_manuscript/draft/`) with the methods disclosure of the narrow criterion-2 ruling.
