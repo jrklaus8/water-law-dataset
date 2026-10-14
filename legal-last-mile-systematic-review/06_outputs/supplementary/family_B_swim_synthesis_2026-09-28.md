@@ -71,18 +71,27 @@ Two natural groups, both noted in `phase11_quantitative_feasibility_judgment.md`
 
 ## Results
 
-Direction categories were assigned from each study's full `direction` text in `effect_sizes.csv`,
-not its first word — the one case where that mattered is S294 (extracted direction is a mixed
-null-on-health / positive-on-institutional-strengthening finding, coded Mixed). Sign and
-valence coincide for all six studies here (every positive sign is a beneficial result for
-access), unlike Families A and C.
+Two tables follow, derived from `05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv` (the AI's coding, not yet human-verified; worksheet `SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv`): the raw sign of each reported estimate, and its substantive direction for household access, formal access or service (Favourable, Unfavourable, Null or Mixed). The two readings coincide for all six studies here: every positive coefficient is a beneficial result, unlike Families A and C. The one case where the extracted `direction` text mattered is S294 (null on its health arm, positive on its institutional-strengthening arm), coded Mixed in both tables. Until 2026-10-14 only one table, headed "Direction", was shown; its counts are unchanged.
+
+### (a) Raw coefficient sign
 
 | Direction | k | Studies |
 |---|---|---|
-| Positive | 5 | S085, S1102, S1140, S1144, S1163 |
+| Positive (+) | 5 | S085, S1102, S1140, S1144, S1163 |
 | Mixed | 1 | S294 (null on its health-outcome arm, positive on its institutional-strengthening arm) |
-| Negative | 0 | — |
+| Negative (-) | 0 | — |
 | Null | 0 | — |
+
+### (b) Substantive direction for household access
+
+| Direction | k | Studies |
+|---|---|---|
+| Favourable | 5 (83%) | S085, S1102, S1140, S1144, S1163 |
+| Mixed | 1 (17%) | S294 |
+| Unfavourable | 0 (0%) | — |
+| Null | 0 (0%) | — |
+
+S1140's outcome is success in securing programme funding (an application outcome), not a household access measure; time saved per household appears only as a control (checked 2026-10-14). It stays in the family, and a sensitivity scenario drops it (S4b in `SENSITIVITY_ANALYSIS_2026-09-28.md`).
 
 **Every one of the 6 studies in Family B reports a positive association between some form of
 administrative assistance, institutional trust, or bureaucratic facilitation and improved

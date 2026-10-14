@@ -134,3 +134,8 @@ S391, S395 and the 20 batch-2 includes are confirmed; ten includes carry a `BORD
 ## Update: A6 tier 1 complete, SWiM verification worksheet (2026-10-14, round 9)
 
 All 73 tier-1 rows carry a CK ruling; 13 includes are `BORDERLINE INCLUDE`. Human verification is 445 of 2,277 (19.5%). Next for A6: tier 2 (102 excludes) and tier 3 (50 includes) of the queue, the second-extractor sample (`03_extraction/second_extractor/`), and the human check of the SWiM direction coding in `05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv` (fill the `ck_*` columns; the 44 rows are the three SWiM families). The manuscript Introduction now cites included studies; the `[ref]` placeholders are gone, and one author note remains in the References.
+
+## Update: manuscript text fixes, two-column SWiM direction, mechanism-certainty normalisation (2026-10-14, round 10)
+
+The A16 passages of the manuscript now report the author's adjudication with computed numbers (52 flagged, 49 confirmed, 3 reversed: S1165 to S1167; 3 of 62 sampled exclusions, 4.8%, about 50 of 1,038); the manuscript prose carries "Supplementary File Sn" references instead of paths and open-item codes, with one Appendix table of exact paths. The 44 family-assigned effect rows carry a raw sign and a substantive direction (`SWIM_DIRECTION_CODING_2026-10-14.csv`; family documents, sensitivity analysis and Figure 4 updated). `mechanism_certainty` is an integer 0 to 4 everywhere (design ceiling per CODEBOOK §9; originals preserved). Open for the PI: A26 (check both direction codings; move S358, S1121, S590 to the reasoned non-fits?; S1038, S471, S879), A27 (label-to-level mapping), A6 tiers 2 and 3. The README's human-verification counts were brought up to 445 of 2,277.
+

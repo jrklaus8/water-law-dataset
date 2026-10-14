@@ -144,6 +144,45 @@ def includes_side():
     return len(t3), k3, round(pool * k3 / len(t3)), round(pool * lo), round(pool * hi)
 
 
+def adjudication_outcome():
+    """What the author's adjudication (2026-10-13/14) of the blind AI re-read showed, computed from the filled sheet, the resolved-reversals file and the reviewer-2 queue (nothing typed).
+    The random sample is tier 2 of the queue (excludes, stratified by code, PDF available); the other re-read excludes came from tier 1. The false-exclusion rate counts reversals to Include among the
+    sampled excludes; scaling it to the content-based excludes (every code except E08 duplicates and E10 inaccessible texts, which were never sampled) is arithmetic on a sample of that size."""
+    cx, gm = _load('results'), _load('results_gemini')
+    queue = _queue()
+    filled_path = sorted((ROOT / '02_screening/full_text').glob('A16_ADJUDICATION_FILLED_*.csv'))[-1]
+    with open(filled_path, encoding='utf-8', newline='') as f:
+        filled = list(csv.DictReader(f))
+    dec = lambda r: r['researcher_decision (include/exclude)']
+    reread = [q for q in queue.values() if q['ai_decision'] == 'exclude' and (q['record_id'] in cx or q['record_id'] in gm)]
+    sample = [q for q in reread if q['priority_tier'] == '2']
+    flagged = [r for r in filled if r['priority'] in ('1', '2', '3')]                      # AI excluded; at least one model includes
+    in_sample = {q['record_id'] for q in sample}
+    reversed_ = [r for r in flagged if dec(r) == 'include']
+    rev_sample = [r for r in reversed_ if r['record_id'] in in_sample]
+    p4 = [r for r in filled if r['priority'] == '4']
+    by_code = cf.compute()['exclusion_by_code']
+    pool = sum(v for k, v in by_code.items() if k not in ('E08', 'E10'))
+    k, n = len(rev_sample), len(sample)
+    lo, hi = _wilson(k, n)
+    strat = 0.0                                                                             # scale within each exclusion code, as projection() does
+    for code in sorted(by_code):
+        if code in ('E08', 'E10'):
+            continue
+        rev = [q for q in sample if q['ai_exclusion_code'] == code]
+        if rev:
+            strat += by_code[code] * sum(1 for r in rev_sample if r['ai_code'] == code) / len(rev)
+    with open(ROOT / '02_screening/full_text/A16_RESOLVED_REVERSALS.csv', encoding='utf-8', newline='') as f:
+        resolved = list(csv.DictReader(f))
+    moved_out = [r for r in resolved if r['ai_decision'] == 'include' and r['researcher_decision'] == 'exclude']
+    moved_in = [r for r in resolved if r['ai_decision'] == 'exclude' and r['researcher_decision'] == 'include']
+    return {'reread_excludes': len(reread), 'sample': n, 'flagged': len(flagged), 'flagged_in_sample': sum(1 for r in flagged if r['record_id'] in in_sample),
+            'upheld': sum(1 for r in flagged if dec(r) == 'exclude'), 'reversed': len(reversed_), 'reversed_ids': sorted((r['study_id'] for r in moved_in if r['record_id'] in {x['record_id'] for x in reversed_}), key=lambda s: int(s[1:])),
+            'reversed_in_sample': k, 'rate': k / n, 'rate_lo': lo, 'rate_hi': hi, 'pool': pool, 'scaled': round(pool * k / n), 'scaled_lo': round(pool * lo), 'scaled_hi': round(pool * hi), 'scaled_by_code': round(strat),
+            'p4_flagged': len(p4), 'p4_excluded': sum(1 for r in p4 if dec(r) == 'exclude'), 'moved_to_exclusion': len(moved_out), 'moved_to_exclusion_after_p4': len(moved_out) - len(p4),
+            'moved_to_inclusion': len(moved_in)}
+
+
 def implied_total():
     """(model rate, narrow-reading triage, literal-reading triage) implied includes summed over estimable codes (see projection()); a sense of scale only."""
     cx, gm = _load('results'), _load('results_gemini')

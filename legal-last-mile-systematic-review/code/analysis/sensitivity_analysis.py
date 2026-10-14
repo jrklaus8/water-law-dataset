@@ -10,14 +10,19 @@ Scenarios (each applied to the study lists in the SWiM documents):
   S2 drop effect-size rows for studies not flagged quantitative_synthesis_eligible   (S589)
   S3 collapse linked reports that share underlying data     (linked_reports_2026-09-28.csv, same_underlying_data = yes)
   S4 drop the two coding judgment calls in Family A         (S358, S404: "protective"/free-text direction read as concordant)
-  S5 all of the above together
+  S4b drop the five studies whose outcome is not a household access measure (S358, S1121, S1140, S590, S1136; checked 2026-10-14, SWIM_DIRECTION_CODING_2026-10-14.csv)
+  S4c recode S471 as Null            (its fully adjusted estimate is not significant; the primary estimate is the organisation-only model)
+  S5 S1 to S4c together
+  S4d drop every study whose raw coefficient sign and substantive direction come apart (inverted outcome polarity or a restated pole), i.e. keep only studies where '+' means Favourable and '-' means Unfavourable
 
 Pre-stated conclusion tests (written before the numbers were computed, so they cannot be tuned to the result):
-  A: a majority (> 50%) of studies is concordant with "legal recognition/eligibility improves access" (substantive reading in the Family A document)
-  B: every study has a positive sign or is mixed (none negative or null)
-  C: no single sign (positive/negative/mixed/null) holds a majority of studies ("no dominant direction")
+  A: a majority (> 50%) of studies is concordant with "legal recognition/eligibility improves access" (Favourable in the substantive-direction table of the Family A document)
+  B: every study is Favourable or Mixed in substantive direction (none Unfavourable or Null)
+  C: no single category holds a majority of studies ("no dominant direction"), by raw coefficient sign AND by substantive direction
+Since 2026-10-14 each family document carries two tables: the raw coefficient sign (positive/negative/null/mixed) and the substantive direction for household access, affordability or equity
+(Favourable/Unfavourable/Null/Mixed); they were conflated before (see SWIM_DIRECTION_CODING_2026-10-14.csv for how the second is derived from the first).
 
-Inputs are the SWiM documents themselves (single source of truth for the direction coding) and the CSV databases. Deterministic;
+Inputs are the SWiM documents themselves (single source of truth for the direction coding; a test checks them against SWIM_DIRECTION_CODING_2026-10-14.csv) and the CSV databases. Deterministic;
 rewrites 05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md and sensitivity_scenarios_2026-09-28.csv.
 Run from the project root:  python3 code/analysis/sensitivity_analysis.py
 """
@@ -51,15 +56,27 @@ def parse_signs(fam):
     return signs
 
 
-def parse_concordance():
-    t = swim_text('A')
+def parse_substantive(fam):
+    """Substantive direction (Favourable / Unfavourable / Null / Mixed) from the family document's second Results table; rows read '| Favourable | 13 (72%) | S057, ... |'."""
+    t = swim_text(fam)
+    sec = t[t.index('\n## Results'):]
+    sec = sec[:sec.index('\n## ', 5)]
     out = {}
-    for m in re.finditer(r'^\| (Consistent|Counter-pattern|Null) [^|]*\| (\d+) \((\d+)%\) \| ([^|]*)\|', t, re.M):
-        key = {'Consistent': 'concordant', 'Counter-pattern': 'counter', 'Null': 'null'}[m.group(1)]
+    for m in re.finditer(r'^\| (Favourable|Unfavourable|Null|Mixed)[^|]*\| (\d+) \((\d+)%\) \| ([^|]*)\|', sec, re.M):
         ids = re.findall(r'S\d+', m.group(4))
-        assert len(ids) == int(m.group(2)), key
-        out.update({i: key for i in ids})
+        assert len(ids) == int(m.group(2)), (fam, m.group(1))
+        out.update({i: m.group(1).lower() for i in ids})
     return out
+
+
+def parse_concordance():
+    """Family A concordance with 'recognition/eligibility improves access': the Favourable / Unfavourable / Null rows of its substantive table."""
+    return {i: {'favourable': 'concordant', 'unfavourable': 'counter', 'null': 'null', 'mixed': 'mixed'}[v] for i, v in parse_substantive('A').items()}
+
+
+INDIRECT_OUTCOME = {'S358', 'S1121', 'S1140', 'S590', 'S1136'}   # no household access measure in the extraction or the cached full text (checked 2026-10-14)
+RECODE_NULL = {'S471'}                                           # primary estimate significant, fully adjusted estimate not
+FAVOURABLE_IF = {('positive', 'favourable'), ('negative', 'unfavourable')}   # sign and valence agree: '+' is Favourable and '-' is Unfavourable
 
 
 def scenarios():
@@ -72,11 +89,12 @@ def scenarios():
     # collapse: for each definite link, drop the later member (keep the first-listed study) if both are in the analysed set
     collapse_drop = {r['study_id_b'] for r in links if r['same_underlying_data'] == 'yes'}
     signs = {f: parse_signs(f) for f in 'ABC'}
-    conc = parse_concordance()
+    subst = {f: parse_substantive(f) for f in 'ABC'}
     for f in 'ABC':
         assert set(signs[f]) <= es_ids, f'{f}: SWiM document lists a study not in effect_sizes.csv'
-    assert set(conc) == set(signs['A']), 'Family A concordance table does not cover the same studies as the Family A sign table'
+        assert set(signs[f]) == set(subst[f]), f'{f}: the raw-sign and substantive-direction tables do not cover the same studies'
     shallow = {r['study_id'] for r in asr.audit() if r['strength'] in ('strong', 'moderate')}
+    diverge = {s for f in 'ABC' for s, v in signs[f].items() if v in ('positive', 'negative') and (v, subst[f][s]) not in FAVOURABLE_IF}   # sign and valence come apart
     S = {
         'S0 baseline': set(),
         'S1 drop abstract-only extractions': abstract_only,
@@ -84,24 +102,30 @@ def scenarios():
         'S2 drop rows for studies not flagged eligible': not_eligible,
         'S3 collapse linked reports (same underlying data)': collapse_drop,
         'S4 drop Family A coding judgment calls (S358, S404)': {'S358', 'S404'},
+        'S4b drop the five studies with no household access outcome (S358, S1121, S1140, S590, S1136)': INDIRECT_OUTCOME,
+        'S4c recode S471 as Null (fully adjusted estimate not significant)': set(),
     }
-    S['S5 all of the above'] = set().union(*[v for k, v in S.items() if k != 'S0 baseline'])
+    S['S5 S1 to S4c together'] = set().union(*[v for k, v in S.items() if k != 'S0 baseline'])
+    S['S4d drop every study whose raw sign and substantive direction come apart'] = diverge
     rows = []
     for name, drop in S.items():
-        rec = {'scenario': name, 'dropped_studies_in_families': ';'.join(sorted(d for d in drop if any(d in signs[f] for f in 'ABC')))}
+        recode = RECODE_NULL if name.startswith(('S4c', 'S5')) else set()
+        rec = {'scenario': name, 'dropped_studies_in_families': ';'.join(sorted((d for d in drop if any(d in signs[f] for f in 'ABC')), key=lambda x: int(x[1:]))), 'recoded_as_null': ';'.join(sorted(recode))}
         for f in 'ABC':
-            kept = {s: v for s, v in signs[f].items() if s not in drop}
-            c = Counter(kept.values()); k = len(kept)
-            rec[f'{f}_k'] = k
+            keep = [s for s in signs[f] if s not in drop]
+            raw = {s: ('null' if s in recode else signs[f][s]) for s in keep}
+            sub = {s: ('null' if s in recode else subst[f][s]) for s in keep}
+            c, cs = Counter(raw.values()), Counter(sub.values())
+            rec[f'{f}_k'] = len(keep)
             for lab in ('positive', 'negative', 'null', 'mixed'):
                 rec[f'{f}_{lab}'] = c.get(lab, 0)
-        keptA = [s for s in signs['A'] if s not in drop]
-        cc = Counter(conc[s] for s in keptA)
-        rec['A_concordant'], rec['A_counter'], rec['A_null_concordance'] = cc.get('concordant', 0), cc.get('counter', 0), cc.get('null', 0)
-        rec['A_concordant_pct'] = round(100 * rec['A_concordant'] / len(keptA), 1) if keptA else ''
-        rec['A_test_majority_concordant'] = 'holds' if keptA and rec['A_concordant'] * 2 > len(keptA) else 'FAILS'
-        rec['B_test_none_negative_or_null'] = 'holds' if rec['B_k'] and rec['B_negative'] == 0 and rec['B_null'] == 0 else 'FAILS'
+            rec[f'{f}_favourable'], rec[f'{f}_unfavourable'], rec[f'{f}_subst_null'], rec[f'{f}_subst_mixed'] = (cs.get(x, 0) for x in ('favourable', 'unfavourable', 'null', 'mixed'))
+        rec['A_concordant'], rec['A_counter'], rec['A_null_concordance'] = rec['A_favourable'], rec['A_unfavourable'], rec['A_subst_null']
+        rec['A_concordant_pct'] = round(100 * rec['A_concordant'] / rec['A_k'], 1) if rec['A_k'] else ''
+        rec['A_test_majority_concordant'] = 'holds' if rec['A_k'] and rec['A_concordant'] * 2 > rec['A_k'] else 'FAILS'
+        rec['B_test_none_negative_or_null'] = 'holds' if rec['B_k'] and rec['B_unfavourable'] == 0 and rec['B_subst_null'] == 0 else 'FAILS'
         rec['C_test_no_dominant_sign'] = 'holds' if rec['C_k'] and max(rec[f'C_{l}'] for l in ('positive', 'negative', 'null', 'mixed')) * 2 <= rec['C_k'] else 'FAILS'
+        rec['C_test_no_dominant_direction'] = 'holds' if rec['C_k'] and max(rec[f'C_{l}'] for l in ('favourable', 'unfavourable', 'subst_null', 'subst_mixed')) * 2 <= rec['C_k'] else 'FAILS'
         rows.append(rec)
     return rows, abstract_only, not_eligible, collapse_drop, signs
 
@@ -148,9 +172,9 @@ def descriptive_drop_abstract_only(abstract_only):
 
 def render(rows, abstract_only, not_eligible, collapse_drop, signs):
     n_all, n_kept, full, sub = descriptive_drop_abstract_only(abstract_only)
-    fails = [(r['scenario'], k) for r in rows for k in ('A_test_majority_concordant', 'B_test_none_negative_or_null', 'C_test_no_dominant_sign') if r[k] == 'FAILS']
+    fails = [(r['scenario'], k) for r in rows for k in ('A_test_majority_concordant', 'B_test_none_negative_or_null', 'C_test_no_dominant_sign', 'C_test_no_dominant_direction') if r[k] == 'FAILS']
     L = ["# Sensitivity analysis of the SWiM syntheses (generated — do not edit by hand)", "",
-         "Generated by `code/analysis/sensitivity_analysis.py`. Direction coding is read from the SWiM documents themselves; nothing was re-coded here.",
+         "Generated by `code/analysis/sensitivity_analysis.py`. Direction coding (raw coefficient sign and substantive direction) is read from the SWiM documents themselves; nothing was re-coded here.",
          "Conclusion tests were fixed before the numbers were computed (see the script's docstring).", "",
          "## Headline", "",
          ("**No stated conclusion changes under any scenario.**" if not fails else "**At least one stated conclusion fails under some scenario:** " + "; ".join(f"{s} — {k}" for s, k in fails)) +
@@ -161,13 +185,16 @@ def render(rows, abstract_only, not_eligible, collapse_drop, signs):
          elig_line(not_eligible),
          shallow_line(rows), "",
          "## Family results by scenario", "",
-         "| Scenario | Dropped (in families) | A k | A pos/neg/null | A concordant | A test | B k | B pos/mixed | B test | C k | C pos/neg/mixed | C test |",
-         "|---|---|---|---|---|---|---|---|---|---|---|---|"]
+         "| Scenario | Dropped (in families) | Recoded | A k | A raw +/-/null | A Fav/Unfav/null | A test | B k | B Fav/mixed | B test | C k | C raw +/-/mixed | C Fav/Unfav/mixed | C tests (sign, direction) |",
+         "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
-        L.append(f"| {r['scenario']} | {r['dropped_studies_in_families'] or '—'} | {r['A_k']} | {r['A_positive']}/{r['A_negative']}/{r['A_null']} | {r['A_concordant']} ({r['A_concordant_pct']}%) | {r['A_test_majority_concordant']} | "
-                 f"{r['B_k']} | {r['B_positive']}/{r['B_mixed']} | {r['B_test_none_negative_or_null']} | {r['C_k']} | {r['C_positive']}/{r['C_negative']}/{r['C_mixed']} | {r['C_test_no_dominant_sign']} |")
-    L += ["", "Tests: **A** — more than half of the studies are concordant with \"recognition/eligibility improves access\" (the Family A document's substantive reading, not the raw sign);",
-          "**B** — no study is negative or null; **C** — no single sign holds a majority. Signs are as extracted; see the Family A and C documents for why sign and valence differ.", "",
+        L.append(f"| {r['scenario']} | {r['dropped_studies_in_families'] or '—'} | {r['recoded_as_null'] or '—'} | {r['A_k']} | {r['A_positive']}/{r['A_negative']}/{r['A_null']} | {r['A_favourable']}/{r['A_unfavourable']}/{r['A_subst_null']} ({r['A_concordant_pct']}%) | {r['A_test_majority_concordant']} | "
+                 f"{r['B_k']} | {r['B_favourable']}/{r['B_subst_mixed']} | {r['B_test_none_negative_or_null']} | {r['C_k']} | {r['C_positive']}/{r['C_negative']}/{r['C_mixed']} | {r['C_favourable']}/{r['C_unfavourable']}/{r['C_subst_mixed']} | {r['C_test_no_dominant_sign']}, {r['C_test_no_dominant_direction']} |")
+    L += ["", "Tests: **A** — more than half of the studies are Favourable (concordant with \"recognition/eligibility improves access\") in the substantive-direction table;",
+          "**B** — no study is Unfavourable or Null in substantive direction; **C** — no single category holds a majority, by raw coefficient sign and by substantive direction. "
+          "The raw sign is the sign of the reported estimate; the substantive direction is its meaning for household access, affordability or equity once the outcome polarity and the exposure pole are taken into account "
+          "(`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4b** drops the five studies whose outcome is not a household access measure; **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; "
+          "**S4d** keeps only the studies where the two readings agree ('+' is Favourable, '-' is Unfavourable), which tests whether the Family A and C conclusions depend on the inverted-outcome and restated-pole judgments.", "",
           f"## Descriptive counts with the {len(abstract_only)} abstract-only extractions removed", "",
           f"Studies: {n_all:,} → {n_kept:,}. Risk-of-bias tool distribution:", "", "| Tool | All | Without abstract-only | Change |", "|---|---|---|---|"]
     for t in full:

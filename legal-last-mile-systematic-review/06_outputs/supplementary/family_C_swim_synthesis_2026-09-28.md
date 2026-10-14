@@ -87,13 +87,7 @@ broader "governance/regulatory-structure → affordability" theme but test a dif
 (government form; regulatory jurisdiction, not ownership type) and are presented alongside, not
 folded into, the three-study ownership cluster.
 
-**Vote count for this 5-study grouping** (a substantive reading — see the sign-versus-valence
-caution under Results above; treat it as a disclosed judgment, not a count of extracted signs): 3 of 5
-(S539, S749, and — read as "lower cost is the favorable direction" — S471, whose association attenuates to
-non-significance once fiscal, community and environmental-risk covariates are added) point toward the state/public/regulated-structure comparator being
-more favorable for affordability; S526 agrees in substance (private → more regressive) even
-though its raw sign is "negative"; S1038 agrees as well (state regulation → lower excess
-pricing). **All 5 of 5 studies in this grouping point the same substantive direction**: more
+**Vote count for this 5-study grouping** (the two tables under Results below, applied to these five studies): the three ownership-type studies are all **Unfavourable** for private ownership, with opposite raw signs because their outcomes point in opposite directions (S526: -0.167 on a progressivity ratio, where higher is better; S539: +$144 a year in the bill and +1.55 percentage points of the lowest-quintile income share, where higher is worse; S749: +0.3456 R$/m3 on the tariff, where higher is worse). The other two are **Favourable** for the more public or more regulated arrangement: S471 (raw sign negative on a cost, where lower is better; the association attenuates to non-significance once fiscal, community and environmental-risk covariates are added, so its fully adjusted direction is Null) and S1038 (state regulation, -4.6 percentage points of welfare loss). **All 5 of 5 studies in this grouping point the same way**: more
 public, more regulated, or more accountable governance structures are associated with better
 household affordability outcomes than less regulated/private alternatives. This is the most
 directionally consistent sub-group in Family C and the most mechanistically coherent, but it is
@@ -151,40 +145,36 @@ loose groups.
 
 ## Results
 
-Vote count across all 20 studies, as extracted.
-**These are counts of the sign of each study's association, not of beneficial vs. adverse results
-for access.** Categories were assigned from each study's full `direction` text in
-`effect_sizes.csv`, not its first word (S879 and S1062 are coded Mixed because their extracted
-directions combine a positive and a null/negative component). Because Family C's exposures are
-heterogeneous, sign and valence diverge freely: S539 and S749 (Positive: private ownership → *higher*
-price, i.e. worse affordability) and S471 and S1038 (Negative: mayor-led government / state
-regulation → *lower* price, i.e. better affordability) are examples. The 7/9/4 split therefore
-must not be read as "7 beneficial, 9 adverse". A valence-normalized recount is deliberately not
-offered: deciding whether an exposure such as "private ownership" or "mayor-led government" is
-the adverse or the beneficial side of a comparison is a normative judgment the review protocol
-does not fix, and imposing one here would manufacture a comparability this synthesis argues the
-family does not have.
+Vote count across all 20 studies, in two tables derived from `05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv` (the AI's coding, not yet human-verified; worksheet `SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv`). **They are counts of two different things.** Table (a) counts the raw sign of each study's reported estimate. Table (b) counts the substantive direction: whether the exposure, as the estimate reports it, goes with better (Favourable) or worse (Unfavourable) household access, affordability or equity on the paper's own outcome measure, once the polarity of the outcome is taken into account (a higher tariff, bill or complaint rate is worse; a higher progressivity ratio, coverage or access rate is better). Categories were assigned from each study's full `direction` and `effect_estimate` text, not its first word (S879 and S1062 are coded Mixed because their extracted directions combine a positive and a null or negative component).
+
+Until 2026-10-14 this document declined to offer the second count, because deciding whether an exposure such as private ownership or mayor-led government is the adverse or the beneficial side of a comparison is a normative judgment the protocol does not fix. The substantive column does not make that judgment: it never restates a Family C exposure, and says only what the paper's own estimate implies for households. Raw sign and substantive direction diverge for S471 (negative on a cost, so Favourable), S539 and S749 (positive on a bill or tariff, so Unfavourable) and S1032 and S1038 (negative on complaints or on welfare loss, so Favourable), while S526 (negative on a progressivity ratio) is Unfavourable. Read the raw split as "7 positive, 9 negative", never as "7 beneficial, 9 adverse".
+
+### (a) Raw coefficient sign
 
 | Direction | k | Studies |
 |---|---|---|
-| Positive | 7 | S174, S470, S539, S590, S749, S947, S1136 |
-| Negative | 9 | S471, S526, S606, S631, S1032, S1038, S1146, S1162, S1169 |
+| Positive (+) | 7 | S174, S470, S539, S590, S749, S947, S1136 |
+| Negative (-) | 9 | S471, S526, S606, S631, S1032, S1038, S1146, S1162, S1169 |
 | Mixed | 4 | S593, S879, S1062, S1143 |
 | Null | 0 | — |
 
-Unlike Family A (61% positive) or Family B (83% positive), **Family C shows no dominant
-direction across its full 20-study set** — 7 positive, 9 negative, 4 mixed, a genuinely
-heterogeneous pattern that mirrors the heterogeneity of the mechanisms themselves. This is not
-a synthesis failure; it is the accurate representation of what `PROJECT_SPEC.md` §8 predicted
-before this review began. **The one place a real pattern emerges is the 5-study
-ownership/regulatory-structure sub-grouping above, where all 5 point the same way** — that
-finding should not be diluted by averaging it into the full 20-study vote count, and is
-reported separately for that reason.
+### (b) Substantive direction for household access, affordability or equity
+
+| Direction | k | Studies |
+|---|---|---|
+| Favourable | 8 (40%) | S174, S470, S471, S590, S947, S1032, S1038, S1136 |
+| Unfavourable | 8 (40%) | S526, S539, S606, S631, S749, S1146, S1162, S1169 |
+| Mixed | 4 (20%) | S593, S879, S1062, S1143 |
+| Null | 0 (0%) | — |
+
+Notes on individual rows. **S471** is coded on its primary estimate (-1.58, organisation-only model with state fixed effects, p < 0.05): negative in sign and Favourable, since a lower bill is better. Its fully adjusted estimate (-1.03) is not significant, so its adjusted direction is Null; a sensitivity scenario recodes it (S4c). **S1038**: the `exposure_definition` of its `effect_sizes.csv` row names local-only regulation as the exposure, but the reported difference (-4.6 percentage points of welfare loss) is state-regulated minus locally regulated, and it is coded on that contrast; the row should be confirmed. **S590** and **S1136** are coded Favourable on their own outcomes (a city's decision to build waterworks; road-level public sanitation infrastructure for politically connected villages, a favouritism finding), neither of which is a household access measure (checked 2026-10-14). **S879** is Mixed because payment compliance rose by 30 percentage points (a utility-side outcome) while water access did not change; a strict household-access reading would be Null.
+
+Unlike Family A (13 of 18 Favourable) or Family B (5 of 6 Favourable), **Family C shows no dominant direction across its full 20-study set**, by either reading: 7 positive, 9 negative and 4 mixed by raw sign, and 8 Favourable, 8 Unfavourable and 4 Mixed by substantive direction. That is a genuinely heterogeneous pattern that mirrors the heterogeneity of the mechanisms themselves. This is not a synthesis failure; it is the accurate representation of what `PROJECT_SPEC.md` §8 predicted before this review began. **The one place a real pattern emerges is the 5-study ownership/regulatory-structure sub-grouping above**, where the three ownership studies are all Unfavourable for private ownership (S526, S539, S749 despite opposite raw signs), and the two governance-structure studies (S471, S1038) are Favourable for the more public or more regulated arrangement. That finding should not be diluted by averaging it into the full 20-study vote count, and is reported separately for that reason.
 
 ## Robustness of the synthesis
 
-The full-family 7/9/4 split is not meaningfully robust to any single exclusion — no direction holds a
-majority (the largest, negative, is 9 of 20), so removing or reclassifying any one or two studies could change
+The full-family splits (7 positive, 9 negative, 4 mixed by raw sign; 8 Favourable, 8 Unfavourable, 4 Mixed by substantive direction) are not meaningfully robust to any single exclusion — no category holds a
+majority (the largest, raw negative, is 9 of 20), so removing or reclassifying any one or two studies could change
 which direction is nominally "most common" without changing the substantive conclusion (there is
 no dominant direction). The 5-study ownership/regulatory-structure finding is more robust:
 losing any single study out of the five still leaves 4/4 in the same direction. The most
@@ -210,7 +200,7 @@ the family's overall causal credibility.
 
 Family C is where a vote-counting/SWiM approach is weakest as a tool: 20 studies testing 15+
 distinct mechanisms cannot be meaningfully reduced to a single directional headline, and this
-synthesis's own 7/9/4 split makes that explicit rather than papering over it with a false
+synthesis's own 7/9/4 raw and 8/8/4 substantive splits make that explicit rather than papering over it with a false
 "barriers generally worsen access" narrative the corpus does not actually support at the
 full-family level. The one place this synthesis approach adds real value is the 5-study
 ownership/regulatory-structure sub-grouping, where enough mechanistic similarity exists for a

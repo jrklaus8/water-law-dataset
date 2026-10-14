@@ -1,7 +1,7 @@
 """2026-10-14: the 44-study SWiM core verification table (Family A 18, B 6, C 20 of the 60 rows of effect_sizes.csv; the 16 reasoned non-fits are not in the three syntheses).
-One row per study with the exposure against its comparator, the outcome, the estimate, the sign as coded in the SWiM document of its family (read with sensitivity_analysis.parse_signs, i.e. the same coding the
-sensitivity analysis uses), the risk-of-bias tool and rating now in extraction_database.csv, whether the inclusion decision is human-verified (a 'Human-' confirmation or a CK ruling), and whether the AI checked the row
-against the full text (FULLTEXT_VERIFICATION_2026-10-04.csv). The two ck_* columns are blank: they are the worksheet for the human check of the direction coding that the SWiM documents still await.
+One row per study with the exposure against its comparator, the outcome, the estimate, the raw coefficient sign and the substantive direction for household access (both from SWIM_DIRECTION_CODING_2026-10-14.csv, which is also what the
+three family documents and the sensitivity analysis carry; a test checks they agree), the risk-of-bias tool and rating now in extraction_database.csv, whether the inclusion decision is human-verified (a 'Human-' confirmation or a CK ruling),
+and whether the AI checked the row against the full text (FULLTEXT_VERIFICATION_2026-10-04.csv). The two ck_* columns are blank: they are the worksheet for the human check of the two direction codings that the SWiM documents still await.
 READ-ONLY on every database. Writes 05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.{csv,md}; refuses to overwrite a sheet whose ck_* columns are filled (--force to rebuild).
 Run from legal-last-mile-systematic-review/."""
 import csv, os, re, sys
@@ -11,7 +11,8 @@ import current_figures as cf
 import sensitivity_analysis as sa
 
 OUT = '05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14'
-if os.path.exists(OUT + '.csv') and any(r['ck_direction_coding_agrees (Y/N)'].strip() for r in csv.DictReader(open(OUT + '.csv', encoding='utf-8'))) and '--force' not in sys.argv:
+CKCOLS = ('ck_raw_sign_agrees (Y/N)', 'ck_substantive_direction_agrees (Y/N)', 'ck_direction_coding_agrees (Y/N)')
+if os.path.exists(OUT + '.csv') and any(r.get(c, '').strip() for r in csv.DictReader(open(OUT + '.csv', encoding='utf-8')) for c in CKCOLS) and '--force' not in sys.argv:
     sys.exit('Refusing to overwrite a table whose ck_* columns are filled (pass --force to rebuild).')
 # study: (exposure, comparator, outcome, estimate), written from effect_sizes.csv
 S = {
@@ -52,7 +53,7 @@ S = {
  'S879': ('Random contract enforcement: credible disconnection notices (Kenya)', 'enforcement-exempt compounds', 'payment compliance; water access', 'payment +30 pp (p<0.001); access null'),
  'S947': ('Regulation quality, WGI (44 countries)', 'lower regulation-quality scores', 'access to drinking water', 'coef 0.0121 (SE 0.0035), p<0.01'),
  'S1032': ('Contact with the municipality or an NGO for redress (Ahmedabad)', 'no contact', 'household water complaints', 'OR 0.60* (municipal); 0.56* (NGO)'),
- 'S1038': ('Local-only economic regulation of a municipal utility (U.S.)', 'state PUC regulation', 'monopoly welfare loss, % of residential bill', '9.6% vs 5.2%'),
+ 'S1038': ('State PUC economic regulation of a municipal utility (U.S.; reported contrast)', 'local-only regulation', 'monopoly welfare loss, % of residential bill', '5.2% vs 9.6% (difference -4.6 pp)'),
  'S1062': ('O&M cost-recovery ratio (Sub-Saharan utilities)', 'lower cost-recovery ratios', 'coverage change', 'positive, then negative (inverted U)'),
  'S1136': ("Political capture: Gram Panchayat head's village or politician's road (India)", 'other roads', 'paved road, drain, cleanliness', 'paved 0.053***; drain 0.037**'),
  'S1143': ('Detroit weight rule for garbage-route allocation', 'tracts by wealth and race', 'service allocation', 'fidelity r=.84; mixed distribution'),
@@ -64,9 +65,14 @@ ed = {r['study_id']: r for r in cf.read('ed')}
 ft = {r['record_id']: r for r in cf.read('ft')}
 es = {r['study_id']: r for r in cf.read('es')}
 ver = {r['study_id']: r for r in csv.DictReader(open('05_analysis/effect_sizes/FULLTEXT_VERIFICATION_2026-10-04.csv', encoding='utf-8'))}
+coding = {r['study_id']: r for r in csv.DictReader(open('05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv', encoding='utf-8'))}
 signs = {f: sa.parse_signs(f) for f in 'ABC'}
+subst = {f: sa.parse_substantive(f) for f in 'ABC'}
 fam_rows = [(f, s) for f in 'ABC' for s in sorted((x for x in es if es[x]['synthesis_family'] == f), key=lambda x: int(x[1:]))]
-assert len(fam_rows) == 44 and {s for _, s in fam_rows} == set(S), sorted({s for _, s in fam_rows} ^ set(S))
+assert len(fam_rows) == 44 and {s for _, s in fam_rows} == set(S) == set(coding), sorted({s for _, s in fam_rows} ^ set(S))
+SIGN_WORD = {'+': 'positive', '-': 'negative', 'null': 'null', 'mixed': 'mixed'}
+for f, s in fam_rows:   # the family documents, the sensitivity analysis and this table must carry the same two codings
+    assert signs[f][s] == SIGN_WORD[coding[s]['raw_coefficient_sign']] and subst[f][s] == coding[s]['substantive_direction'].lower(), (f, s)
 
 
 def author(r):
@@ -108,21 +114,27 @@ for fam, s in fam_rows:
     r, e = ed[s], es[s]
     ex, cm, out, est = S[s]
     v = ver.get(s, {})
+    c = coding[s]
     rows.append({'study_id': s, 'author_year': f"{author(r)} ({r['publication_year']})", 'family': fam, 'exposure_short': ex, 'comparator_short': cm, 'outcome_short': out, 'outcome_family': e['outcome_family'], 'estimate_short': est,
-                 'swim_sign': signs[fam][s], 'rob_tool': cf.tool_of(r['risk_of_bias_tool']), 'rob_rating': rating(r), 'inclusion_decision_human_verified': ck(r),
+                 'raw_coefficient_sign': c['raw_coefficient_sign'], 'substantive_direction': c['substantive_direction'], 'outcome_polarity': c['outcome_polarity'], 'exposure_orientation': c['exposure_orientation'],
+                 'alternative_substantive_direction': c['alternative_substantive_direction'], 'outcome_directness_check': c['outcome_directness_check'], 'ai_recommendation_for_author': c['ai_recommendation_for_author'], 'coding_note': c['coding_note'],
+                 'rob_tool': cf.tool_of(r['risk_of_bias_tool']), 'rob_rating': rating(r), 'inclusion_decision_human_verified': ck(r),
                  'effect_row_checked_vs_full_text_by_AI': v.get('verdict', ''), 'raw_direction_text': e['direction'], 'exposure_full': e['exposure_definition'], 'comparator_full': e['comparator_definition'],
-                 'estimate_full': e['effect_estimate'], 'ck_direction_coding_agrees (Y/N)': '', 'ck_comment': ''})
+                 'estimate_full': e['effect_estimate'], 'ck_raw_sign_agrees (Y/N)': '', 'ck_substantive_direction_agrees (Y/N)': '', 'ck_comment': ''})
 fields = list(rows[0])
 with open(OUT + '.csv', 'w', newline='', encoding='utf-8') as fh:
     w = csv.DictWriter(fh, fieldnames=fields, lineterminator='\r\n'); w.writeheader(); w.writerows(rows)
-JUDG = {'S104', 'S358', 'S404'}
 L = ['# SWiM core verification table: the 44 family-assigned effect rows (A 18, B 6, C 20)', '',
-     '*Generated by `code/provenance/audit_and_repair/build_swim_core_verification_table_2026-10-14.py`; read-only. "Sign" is the coding of the SWiM document of the study\'s family, not a new coding. '
-     '"Human-verified" refers to the inclusion decision only (a Human- confirmation or a CK ruling); no direction coding and no extracted value has been verified by a human. ‡ marks the sign-coding judgment calls named in the Family A document '
-     '(S104: higher odds of interruption coded positive; S358: protective coded positive; S404: free text coded positive).*', '',
-     '| ID | Author (Year) | Fam | Exposure vs comparator | Outcome | Estimate | Sign | RoB | Human-verified |', '|---|---|---|---|---|---|---|---|---|']
+     '*Generated by `code/provenance/audit_and_repair/build_swim_core_verification_table_2026-10-14.py`; read-only. Two direction columns, because the raw sign of a coefficient and its meaning for households are different things '
+     '(`SWIM_DIRECTION_CODING_2026-10-14.csv`, the AI\'s coding, not human-verified): **Raw sign** is the sign of the reported estimate for the contrast it reports (ratio above 1 = +, below 1 = -; null = not significant); '
+     '**Substantive** is Favourable / Unfavourable / Null / Mixed for household access, affordability or equity, derived from the raw sign, the polarity of the outcome (is a higher value better or worse?) and the pole of the exposure. '
+     '† = the exposure is a non-recognised status and the contrast is restated to the recognised pole (S084, S142, S1122); ‡ = the fully adjusted estimate gives a different direction (S471: Null); '
+     '◊ = the outcome is not a household access measure (checked 2026-10-14: S358, S590, S1121, S1136, S1140). "Human-verified" refers to the inclusion decision only (a Human- confirmation or a CK ruling); no direction coding and no extracted value has been verified by a human. '
+     'The CSV also carries the polarity, the exposure pole, the notes and the blank ck_* worksheet columns.*', '',
+     '| ID | Author (Year) | Fam | Exposure vs comparator | Outcome | Estimate | Raw sign | Substantive | RoB | Human-verified |', '|---|---|---|---|---|---|---|---|---|---|']
 for x in rows:
-    L.append(f"| {x['study_id']}{' ‡' if x['study_id'] in JUDG else ''} | {x['author_year']} | {x['family']} | {x['exposure_short']} vs {x['comparator_short']} | {x['outcome_short']} | {x['estimate_short']} | {x['swim_sign']} | {x['rob_tool']}: {x['rob_rating']} | {x['inclusion_decision_human_verified'][0]} |")
+    flags = ('†' if x['exposure_orientation'].startswith('restated') else '') + ('‡' if x['alternative_substantive_direction'] else '') + ('◊' if x['outcome_directness_check'].startswith('checked') else '')
+    L.append(f"| {x['study_id']}{' ' + flags if flags else ''} | {x['author_year']} | {x['family']} | {x['exposure_short']} vs {x['comparator_short']} | {x['outcome_short']} | {x['estimate_short']} | {x['raw_coefficient_sign']} | {x['substantive_direction']} | {x['rob_tool']}: {x['rob_rating']} | {x['inclusion_decision_human_verified'][0]} |")
 open(OUT + '.md', 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 import collections
-print('wrote', OUT + '.csv/.md;', collections.Counter(x['swim_sign'] for x in rows), 'human-verified:', collections.Counter(x['inclusion_decision_human_verified'] for x in rows))
+print('wrote', OUT + '.csv/.md; raw', collections.Counter(x['raw_coefficient_sign'] for x in rows), 'substantive', collections.Counter(x['substantive_direction'] for x in rows), 'human-verified:', collections.Counter(x['inclusion_decision_human_verified'] for x in rows))

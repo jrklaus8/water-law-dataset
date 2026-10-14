@@ -194,12 +194,19 @@ def render(rows, findings, es_n, cov, am, yrs, cert):
           f"and {len(big)} differ by more or are blank: " + ", ".join(f"{s} ({a} vs {b})" for s, a, b, d in big) + ". "
           "The report's recency statistics use the extraction field; a one-year difference cannot change them materially, but the larger ones should be checked against the papers. Not corrected here.", ""]
     cc = cert['causal_by_code']
-    L += ["", "## 5. `mechanism_certainty` 3–4 versus study design", "",
-          f"`mechanism_certainty` 3 means quasi-experimental and 4 experimental evidence (`CODEBOOK.md` §9). {cert['hi_total']} studies carry 3 or 4, but **only {cert['hi_in_causal']} of them are ROBINS-I or RoB 2 studies**; "
-          f"{len(cert['hi_outside'])} sit in other designs ({', '.join(f'{t} {n}' for t, n in sorted(cert['hi_outside_tools'].items(), key=lambda kv: (-kv[1], kv[0])))}), e.g. " + ", ".join(cert['hi_outside'][:6]) + ". "
-          f"Conversely, of the {cert['causal_total']} ROBINS-I/RoB 2 studies, {cc['4'] + cc['3']} are coded 3–4, {cc['2']} are coded 2, {cc['1']} are coded 1 and {cc['narrative']} carry narrative text instead of a 0–4 code. "
-          "So the number of studies at certainty 3–4 is **not** a count of quasi-experimental or experimental studies, and the two figures (causal-capable designs, certainty 3–4) should not be read as the same thing. "
-          "Which coding is wrong (the certainty or the design/tool) needs the papers; nothing was changed.", ""]
+    if not cert['hi_outside'] and not cc['narrative']:
+        L += ["", "## 5. `mechanism_certainty` 3–4 versus study design", "",
+              f"`mechanism_certainty` 3 means quasi-experimental and 4 experimental evidence (`CODEBOOK.md` §9). **All {cert['hi_total']} studies that carry 3 or 4 are ROBINS-I or RoB 2 studies** (of the {cert['causal_total']} such studies, {cc['4'] + cc['3']} are coded 3–4, {cc['2']} are coded 2 and {cc['1']} are coded 1), and no study carries narrative text instead of a 0–4 code. "
+              "This is the state after the normalisation of 2026-10-14 (`code/provenance/audit_and_repair/normalize_mechanism_certainty_2026-10-14.py`): before it, 567 studies held a narrative sentence and 22 studies of other designs held a 3 or 4, which this audit had flagged. "
+              "The scale is now design-driven (level 4 only for RoB 2, level 3 only for RoB 2 and for ROBINS-I rated Low or Moderate, level 2 at most for every other design), so the number of studies at certainty 3–4 is by construction a subset of the causal-capable designs; "
+              "the label-to-level step for the former narrative values is the AI's reading and is not validated. The original values are in `03_extraction/extracted_data/extraction_mechanism_certainty_original_2026-10-14.csv`.", ""]
+    else:
+        L += ["", "## 5. `mechanism_certainty` 3–4 versus study design", "",
+              f"`mechanism_certainty` 3 means quasi-experimental and 4 experimental evidence (`CODEBOOK.md` §9). {cert['hi_total']} studies carry 3 or 4, but **only {cert['hi_in_causal']} of them are ROBINS-I or RoB 2 studies**; "
+              f"{len(cert['hi_outside'])} sit in other designs ({', '.join(f'{t} {n}' for t, n in sorted(cert['hi_outside_tools'].items(), key=lambda kv: (-kv[1], kv[0])))}), e.g. " + ", ".join(cert['hi_outside'][:6]) + ". "
+              f"Conversely, of the {cert['causal_total']} ROBINS-I/RoB 2 studies, {cc['4'] + cc['3']} are coded 3–4, {cc['2']} are coded 2, {cc['1']} are coded 1 and {cc['narrative']} carry narrative text instead of a 0–4 code. "
+              "So the number of studies at certainty 3–4 is **not** a count of quasi-experimental or experimental studies, and the two figures (causal-capable designs, certainty 3–4) should not be read as the same thing. "
+              "Which coding is wrong (the certainty or the design/tool) needs the papers; nothing was changed.", ""]
     return "\n".join(L) + "\n"
 
 

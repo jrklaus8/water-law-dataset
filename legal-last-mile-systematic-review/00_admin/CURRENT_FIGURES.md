@@ -54,7 +54,7 @@ Tool-applicable studies (all tools except NONE): 1,080; unrated among them: 0. N
 
 ## Certainty scale and ratings
 
-`mechanism_certainty` numeric levels: 0: 4, 1: 209, 2: 268, 3: 24, 4: 8; 567 studies carry narrative text instead of a 0-4 code. ROBINS-I ratings: Moderate 49, Serious 9. RoB 2 ratings: Some concerns 5.
+`mechanism_certainty` numeric levels: 0: 4, 1: 326, 2: 716, 3: 30, 4: 4; every study carries a 0-4 code (narrative values normalised 2026-10-14). ROBINS-I ratings: Moderate 49, Serious 9. RoB 2 ratings: Some concerns 5.
 
 ## Effect sizes
 

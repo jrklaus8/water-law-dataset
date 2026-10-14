@@ -67,12 +67,13 @@ at more than 3x the corpus size**: only 63 of 1,080 studies (6% — the 60 ROBIN
 legal/administrative mechanism's effect on access. The other 94% are doctrinal/documentary
 analysis (39%), qualitative research (23%), mixed-methods (18%), cross-sectional observational
 association (12%), or secondary reviews and no-tool studies (3%). This
-is corroborated by `mechanism_certainty`: only 32 of 1,080 studies (3%) reach level 3
-("quasi-experimental evidence") or 4 ("experimental evidence"); 209 (20%) sit at level 1
-("documented association") and 268 (24%) at level 2. **567 of 1,080 (52%) carry narrative
-text rather than the intended 0–4 numeric code** — a real scale inconsistency inherited
-across different extraction-batch eras, not smoothed over here (see `RISK_OF_BIAS.md` §4's
-similar note about the Legal Framework batch's use of this same field). **The great majority
+is corroborated by `mechanism_certainty`: only 34 of 1,080 studies (3%) reach level 3
+("quasi-experimental evidence") or 4 ("experimental evidence"), and every one of them is a ROBINS-I or RoB 2 study; 326 (30%) sit at level 1
+("documented association") and 716 (66%) at level 2. 0 of 1,080 studies now carry narrative
+text rather than the 0–4 numeric code. Until 2026-10-14, 567 (52%) did, and 22 studies of other designs carried a 3 or 4, an inconsistency
+inherited across different extraction-batch eras; the field was then normalised to the design-driven scale of `CODEBOOK.md` §9 (script
+`normalize_mechanism_certainty_2026-10-14.py`; the original values are kept in `extraction_mechanism_certainty_original_2026-10-14.csv`).
+The large level-2 share follows from reading the narrative labels 'High' and 'Moderate-high' as "mechanism directly observed"; that mapping is the AI's, not a validated one. **The great majority
 of this evidence base documents that legal/administrative mechanisms and access outcomes
 co-occur, not that the former causes the latter** — this remains, at 1,159 studies, exactly
 the single most important cross-cutting limitation the 366-study version identified, not a

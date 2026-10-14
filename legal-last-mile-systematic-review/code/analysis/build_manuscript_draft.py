@@ -15,7 +15,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import current_figures as cf  # noqa: E402
-import build_manuscript_pieces as bmp  # noqa: E402
+import build_manuscript_pieces as bmp
+import manuscript_supplement as msup  # noqa: E402
 import build_preliminary_report as bpr  # noqa: E402
 
 ROOT = cf.ROOT
@@ -142,7 +143,7 @@ def build():
          "A seeded sample for human second extraction has been prepared (`03_extraction/second_extractor/`) but not yet completed.", "",
          "### 2.5 Risk of bias and critical appraisal", "",
          f"Each study was appraised with the instrument matching its design: RoB 2 (cluster variant) for randomised trials ({T['RoB 2']} reports of {T['RoB 2'] - _rob2_double_reports(F)} distinct trials), ROBINS-I ({T['ROBINS-I']}), JBI cross-sectional ({T['JBI Cross-Sectional']}), MMAT ({T['MMAT']}), CASP qualitative ({T['CASP Qualitative']}) and AMSTAR 2 for systematic reviews ({T['AMSTAR 2']}). "
-         f"For {T['Legal Framework']} legal-documentary or doctrinal studies no published instrument fits, and this project's own **non-validated** Legal Institutional Evidence Appraisal Framework was used; {T.get('NONE', 0)} studies were judged not appraisable. "
+         f"For {T['Legal Framework']} legal-documentary or doctrinal studies no published instrument fits, and this project's own **non-validated** Legal Institutional Evidence Appraisal Framework was used; {('no study was judged not appraisable' if not T.get('NONE', 0) else str(T.get('NONE', 0)) + ' studies were judged not appraisable')}. "
          "Ratings were assigned by rule from the extracted fields, not by signalling-question reading of each paper, except for the studies re-appraised from full text (listed in `CHANGELOG.md`). Ratings therefore describe the extraction as much as the paper.", "",
          "### 2.6 Synthesis", "",
          "Each study was coded to one of nine mechanism families (eligibility, status and documentation; procedural burden; fees, tariffs and subsidies; discretion and accommodation; enforcement and sanctions; review and redress; institutional structure and coordination; participation and assistance; regulatory model and ownership) or to `multiple`, and to one of four outcome families (primary connection, effective access, economic access, administrative outcome) or `multiple`; the families are not pooled with each other. "
@@ -153,7 +154,7 @@ def build():
          "### 2.7 Secondary reviews", "",
          "Systematic reviews in the corpus are treated as secondary evidence and never pooled as if primary; their primary studies may also be in the corpus (a double-counting risk assessed only in part, Limitations).", "",
          "### 2.8 Data and code", "",
-         "All databases, scripts and generated figures are in the project repository; `python3 code/analysis/verify_repository.py` re-derives every quoted figure and checks that generated files are current.", "",
+         "All databases, scripts and generated figures are in the project repository; a verification script (`code/analysis/verify_repository.py`) re-derives every quoted figure and checks that generated files are current. Every dated decision, rule change and adjudication, including the author's rulings on the screening decisions, is recorded in the Repository Audit Trail (`00_admin/DECISIONS_AND_OPEN_ITEMS.md`), and the files cited in the text are indexed in the Appendix.", "",
          "### 2.9 Use of artificial intelligence", "",
          demote(man['1. Methods — AI-assisted conduct and disclosure'].split('\n\n')[0], 0), "",
          "## 3. Results", "",
@@ -169,13 +170,13 @@ def build():
          "### 3.4 Risk of bias and confidence in the evidence", "",
          f"Appraisal ratings are rule-based and, for most studies, depend on what was extracted (Methods 2.5). Of the {T['JBI Cross-Sectional']} JBI cross-sectional studies, {F['jbi_high_concern']} were rated 'high concern', largely reflecting sparse extraction rather than demonstrated weakness. "
          f"ROBINS-I ratings: {', '.join(f'{k} {v}' for k, v in F['robins_i_ratings'].items())}. RoB 2 ratings: {', '.join(f'{k.strip()} {v}' for k, v in F['rob2_ratings'].items())}; two of the randomised-trial studies (S294 and S366) report the same trial. "
-         f"A numeric mechanism-certainty code of 3 or 4 (quasi-experimental or experimental) was recorded for {mcn['3'] + mcn['4']} studies, but only some of these are ROBINS-I or RoB 2 studies, a coding inconsistency reported in `DATA_QUALITY_AUDIT_2026-09-29.md` §5.", "",
+         f"The mechanism-certainty code was normalised to the codebook's design-driven scale (Section 3.2): all {mcn['3'] + mcn['4']} studies at level 3 or 4 (quasi-experimental or experimental evidence) are ROBINS-I or RoB 2 studies, so the earlier mismatch between the certainty code and the study design no longer exists.", "",
          pick(sub, '3.4 Unresolved classifications').split('**Do the randomised')[0].strip(), "",
          "### 3.5 Quantitative evidence: three structured syntheses", "",
          pick(sub, '2A.3').split('Examples as extracted')[0].strip(), "",
          "Per-study results (exposure, outcome, direction, appraisal rating) are tabulated in the three family documents (`06_outputs/supplementary/family_*_swim_synthesis_2026-09-28.md`).", "",
          "**Sensitivity analyses.** " + re.search(r'\*\*Sensitivity of these counts\*\*(.*?)(?=\n\n|$)', pick(sub, '2A.3'), re.S).group(1).strip(), "",
-         "**Reporting bias and certainty.** No publication-bias assessment was possible: although Families A and C each contain 20 studies, no common effect metric exists, so no funnel-plot or small-study analysis is defined (`ANALYSIS_PLAN.md` §9 requires about ten studies on a common scale). "
+         f"**Reporting bias and certainty.** No publication-bias assessment was possible: although Family A contains {fam['A']} studies and Family C {fam['C']}, no common effect metric exists, so no funnel-plot or small-study analysis is defined (`ANALYSIS_PLAN.md` §9 requires about ten studies on a common scale). "
          "Certainty of evidence was **not** graded with GRADE; the direction-of-association syntheses carry no certainty rating and the overall confidence statement in Section 5.1 is qualitative.", "",
          "### 3.6 Qualitative, doctrinal and mixed-methods evidence", "",
          pick(sub, '2A.4'), "",
@@ -208,7 +209,7 @@ def build():
          "- **Registration (PRISMA item 24):** retrospective, frozen at release `0.2.0-interim` (2026-10-14); see Section 2.1 [author: add the identifier once submitted].",
          "- **AI use:** Claude (Anthropic) performed most screening, extraction, appraisal and synthesis drafting; see `AI_USE_STATEMENT.md` for the stage-by-stage table. " + bmp.ai_provenance_clause(),
          "- **Author contributions (CRediT):** Claudio Klaus: Conceptualization, Data curation, Formal analysis, Funding acquisition (self-funded), Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft (direction and revision of AI-assisted synthesis; see AI_USE_STATEMENT.md), Writing – review & editing. The AI tools used (Anthropic Claude, OpenAI Codex, Google Gemini) are not authors; the AI-assisted stages are described in `AI_USE_STATEMENT.md`.",
-         "- **Data and code availability:** repository (`README.md`), release `0.2.0-interim` (tag `v0.2.0-interim`); source PDFs are not redistributed.",
+         "- **Data and code availability:** all databases, scripts and generated files are in the project repository (release 0.2.0-interim, tag v0.2.0-interim); the Supplementary Files cited in the text are indexed, with their exact repository paths, in the Appendix. Source PDFs are not redistributed.",
          "- **Ethics:** Ethics approval was not required for this study as it is a systematic review of published and grey literature involving no primary data collection from human participants.", "",
          "## References", "", *_reference_lines(), "[Author: the Introduction cites included studies and reviews as examples of each point; check each against the paper before submission, and add a general reference on administrative burden if wanted. `SOURCES.md` and `sources.bib` list the methodological sources (RoB 2, ROBINS-I, JBI, CASP, MMAT and AMSTAR 2).]", ""]
     text = "\n".join(x for x in L if x is not None).replace('\n\n\n', '\n\n')
@@ -216,7 +217,16 @@ def build():
     for old, new in (('§2A.1', 'Section 3.2'), ('§2A.2', 'Section 3.3'), ('§2A.3', 'Section 3.5'), ('§2A.5', 'Section 3.7'), ('see 2A.2', 'see Section 3.3'), ('§3.4', 'Section 3.4'),
                      ("this report's own observation, not a project ruling", "an observation of this draft, not a project ruling"), ('supplied by you', 'supplied by the author'), ('the human researcher', 'the author'), ("the researcher's", "the author's"), ('The researcher', 'The author'), ('the researcher', 'the author')):
         text = text.replace(old, new)
-    return text + "\n"
+    a16 = bmp._a16_outcome()
+    n_ex_, n_inc_, _ = bmp.reviewer2_ai_counts()
+    for old_, new_ in (("After a blind re-read by two other AI models disagreed with about half of a sample of the AI's full-text exclusions, the author ruled",
+                        f"After a blind re-read by two other AI models disagreed with the AI on about half of the full-text exclusions they re-read ({n_inc_} of {n_ex_} for the primary model; the author's own adjudication of the {a16['flagged']} exclusions flagged by either model then confirmed {a16['upheld']} and reversed {a16['reversed']}, Section 5.2), the author ruled"),
+                       ("in these passes 83 included reports were moved to the exclusions and three exclusions to the inclusions",
+                        f"in these passes {a16['moved_to_exclusion']} included reports were moved to the exclusions and {a16['moved_to_inclusion']} exclusions to the inclusions")):
+        assert old_ in text, old_[:60]
+        text = text.replace(old_, new_)
+    text, used = msup.strip_repository_jargon(text)   # file paths, the commit hash and open-item codes leave the prose; the Appendix keeps the exact paths
+    return text.rstrip("\n") + "\n\n" + msup.appendix(used)
 
 
 if __name__ == '__main__':

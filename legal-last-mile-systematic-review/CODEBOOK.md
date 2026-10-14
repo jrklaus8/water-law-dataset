@@ -108,6 +108,8 @@ directly demonstrated X*:
 | 3 | Quasi-experimental evidence |
 | 4 | Experimental evidence |
 
+*Design ceiling (applied 2026-10-14, `code/provenance/audit_and_repair/normalize_mechanism_certainty_2026-10-14.py`).* The scale is design-driven: level 4 can be held only by a randomised trial (RoB 2), level 3 only by a RoB 2 trial or a ROBINS-I study whose overall rating is Low or Moderate (credible identification), and every other design (observational, mixed-methods, qualitative, doctrinal, jurimetric, secondary review, or ROBINS-I rated Serious or Critical) holds at most level 2. The field always holds an integer 0–4; free-text rationale belongs in `extraction_note`, never in this field.
+
 ## 10. Evidence status
 
 `evidence_status` — one of `OBSERVED` / `CALCULATED` / `ASSUMED` /

@@ -72,24 +72,32 @@ def main():
     top = F['country_top10_single_name']
     hbar([c for c, _ in top], [v for _, v in top], BLUE, 'fig3_countries', 'The ten most frequent single countries',
          f"Free-text country field; {F['country_multi_or_regional_studies']} multi-country or regional studies and {F['country_blank_studies']} blank are not counted", 'Studies')
-    # direction by family (sign of each study's own estimate; not effect sizes)
+    # direction by family: the raw sign of each study's own estimate and its substantive direction for households (two readings; not effect sizes)
     fams = {f: sa.parse_signs(f) for f in 'ABC'}
+    subs = {f: sa.parse_substantive(f) for f in 'ABC'}
     names = {'A': 'A  Legal status, tenure, recognition', 'B': 'B  Assistance, participation, trust', 'C': 'C  Ownership, regulation, institutions'}
-    cols = [('positive', BLUE, 'Positive'), ('negative', ORANGE, 'Negative'), ('mixed', VIOLET, 'Mixed'), ('null', GREY, 'Null')]
-    fig, ax = plt.subplots(figsize=(7.4, 3.3))
-    for i, f in enumerate('ABC'):
-        c = Counter(fams[f].values()); left = 0
-        for key, col, lab in cols:
-            v = c.get(key, 0)
-            if v:
-                ax.barh(i, v, left=left, color=col, height=0.55, edgecolor=SURF, linewidth=2)
-                ax.text(left + v / 2, i, str(v), ha='center', va='center', color='white', fontsize=10, fontweight='bold')
-                left += v
-        ax.text(left + 0.4, i, f'k = {left}', va='center', fontsize=9, color=MUTED)
-    ax.set_yticks(range(3)); ax.set_yticklabels([names[f] for f in 'ABC']); ax.invert_yaxis(); ax.set_xlim(0, 24); ax.set_xlabel('Studies (sign of each study\'s own extracted association)')
-    handles = [plt.Rectangle((0, 0), 1, 1, color=col) for _, col, _ in cols]
-    ax.legend(handles, [lab for _, _, lab in cols], ncol=4, frameon=False, loc='upper center', bbox_to_anchor=(0.5, -0.28), fontsize=9)
-    finish(fig, ax, 'fig4_direction_by_family', 'Direction of association in the three structured syntheses', 'Counts of studies; sign and valence can differ. Nothing is pooled and no effect size is shown')
+    panels = [(fams, [('positive', BLUE, 'Positive (+)'), ('negative', ORANGE, 'Negative (-)'), ('mixed', VIOLET, 'Mixed'), ('null', GREY, 'Null')], 'Raw sign of the reported estimate'),
+              (subs, [('favourable', BLUE, 'Favourable'), ('unfavourable', ORANGE, 'Unfavourable'), ('mixed', VIOLET, 'Mixed'), ('null', GREY, 'Null')], 'Substantive direction for household access, affordability or equity')]
+    fig, axes = plt.subplots(2, 1, figsize=(7.4, 6.0), sharex=True)
+    for ax, (data, cols, ttl), ly in zip(axes, panels, (-0.12, -0.34)):
+        for i, f in enumerate('ABC'):
+            c = Counter(data[f].values()); left = 0
+            for key, col, lab in cols:
+                v = c.get(key, 0)
+                if v:
+                    ax.barh(i, v, left=left, color=col, height=0.55, edgecolor=SURF, linewidth=2)
+                    ax.text(left + v / 2, i, str(v), ha='center', va='center', color='white', fontsize=10, fontweight='bold')
+                    left += v
+            ax.text(left + 0.4, i, f'k = {left}', va='center', fontsize=9, color=MUTED)
+        ax.set_yticks(range(3)); ax.set_yticklabels([names[f] for f in 'ABC']); ax.invert_yaxis(); ax.set_xlim(0, 24)
+        ax.set_title(ttl, loc='left', fontsize=9.5, color=INK)
+        handles = [plt.Rectangle((0, 0), 1, 1, color=col) for _, col, _ in cols]
+        ax.legend(handles, [lab for _, _, lab in cols], ncol=4, frameon=False, loc='upper center', bbox_to_anchor=(0.5, ly), fontsize=9)
+        for sp in ('top', 'right'):
+            ax.spines[sp].set_visible(False)
+        ax.tick_params(length=0)
+    axes[1].set_xlabel("Studies")
+    finish(fig, axes[1], 'fig4_direction_by_family', 'Direction of association in the three structured syntheses', 'Counts of studies; two different readings of each estimate. Nothing is pooled; no effect size is shown')
     tools = F['tools']
     items = sorted(tools.items(), key=lambda kv: -kv[1])
     hbar([k for k, _ in items], [v for _, v in items], BLUE, 'fig5_appraisal_tools', 'Which appraisal instrument each study received',

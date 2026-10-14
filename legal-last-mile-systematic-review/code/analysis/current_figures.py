@@ -210,7 +210,7 @@ def render(F):
               "`legal_system` buckets: " + ", ".join(f"{k} {v}" for k, v in F['legal_system_buckets'].items()) + ".",
               "", "## Certainty scale and ratings", "",
               "`mechanism_certainty` numeric levels: " + ", ".join(f"{k}: {v}" for k, v in F['mechanism_certainty_numeric'].items()) +
-              f"; {F['mechanism_certainty_narrative_text']} studies carry narrative text instead of a 0-4 code. ROBINS-I ratings: " +
+              ("; every study carries a 0-4 code (narrative values normalised 2026-10-14). " if not F['mechanism_certainty_narrative_text'] else f"; {F['mechanism_certainty_narrative_text']} studies carry narrative text instead of a 0-4 code. ") + "ROBINS-I ratings: " +
               ", ".join(f"{k} {v}" for k, v in F['robins_i_ratings'].items()) + ". RoB 2 ratings: " + ", ".join(f"{k.strip()} {v}" for k, v in F['rob2_ratings'].items()) + ".",
               "", "## Effect sizes", "",
               f"{F['effect_size_rows']} rows ({F['effect_size_rows_from_eligible_studies']} from quantitative-synthesis-eligible studies, "

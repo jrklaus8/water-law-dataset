@@ -104,53 +104,47 @@ framing.
 
 ## Results
 
-Vote count by **sign of the association as extracted** (see table above for per-study detail).
-The Positive/Negative column headers below name the *usual* reading of each sign, but the
-categories were assigned from each study's full `direction` text in `effect_sizes.csv`, not its
-first word, and **sign and valence diverge for three studies** — see the concordance recount that
-follows the table. Judgment calls in the coding: S358's extracted direction is "negative/protective"
-(a *negative* coefficient on groundwater *decline*, i.e. beneficial) and was placed under Positive;
-S404's is free text ("WRUA membership reduces water poverty") and was placed under Positive.
+Two tables follow because the raw sign of a coefficient and its meaning for households are different things (SWiM, Campbell et al. 2020). Until 2026-10-14 this section held one "sign" table whose categories were assigned from each study's full `direction` text, and that table mixed the two readings: S358 and S404 sat under Positive although both coefficients are negative, and S1020 sat under Negative although its coefficient is positive (the earlier table read 11 positive, 5 negative, 2 null, 0 mixed). Both tables below come from `05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`, which records for each study (i) the raw sign of the reported estimate, (ii) whether a higher value of the outcome is better or worse for households, and (iii) the pole of the exposure the estimate refers to. The substantive direction is computed from those three fields and never typed. Both codings are the AI's and are not yet human-verified (worksheet: `05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv`).
+
+### (a) Raw coefficient sign
+
+The sign of the reported estimate for the contrast it reports (a ratio above 1 is positive, below 1 negative); Null means the paper reports no significant difference.
 
 | Direction | k | Studies |
 |---|---|---|
-| Positive sign (usually: recognition/formalization associated with better access; S104 is the exception) | 11 | S057, S104, S358, S398, S404, S765, S882, S920, S930, S1042, S1057 |
-| Negative sign (usually: unrecognized/informal status associated with worse access; S1020 and S1121 are exceptions) | 5 | S084, S142, S1020, S1121, S1122 |
+| Positive (+) | 10 | S057, S104, S398, S765, S882, S920, S930, S1020, S1042, S1057 |
+| Negative (-) | 6 | S084, S142, S358, S404, S1121, S1122 |
 | Null | 2 | S037, S780 |
 | Mixed | 0 | — |
 
-**By sign as extracted, 11 of 18 (61%) are Positive, 5 of 18 (28%) Negative, and 2 (11%) Null.**
-For most studies the Positive sign means legal/institutional recognition associated with better
-access, and the Negative sign means unrecognized/informal status associated with worse access —
-directionally the same underlying claim stated from the opposite reference category — but that
-mapping does not hold for three studies, so the sign counts should not be read as concordance
-counts.
+### (b) Substantive direction for household access
 
-**Concordance recount (corrected 2026-09-28 by the repository audit).** An earlier draft of this
-paragraph added the Positive and Negative rows together ("18 of 20, 90%") and called that the
-share of studies finding recognition associated with better access (then 18 of 20; 17 of 19 after S969 left; 16 of 18 after S589 left). That was wrong: the sign of
-the extracted coefficient is not the same as "recognition helps access", and three of those 16
-studies run the other way. **S104** (home ownership associated with *higher* odds of water-supply
-interruption) has a Positive sign but an adverse-for-access result; **S1020** (a
-watershed-development intervention associated with *worsened*, i.e. longer, domestic water
-collection time) and **S1121** (a water-adequacy screening policy associated with *reduced*
-residential connection permitting) have Negative signs and are adverse results for exposures that
-are not "unrecognized status" at all. Recounted by substance:
+Favourable means that the exposure, with the recognised or formal arrangement as the exposure, goes with better access, affordability or service on the paper's own outcome measure; Unfavourable means worse; Null means no significant difference. It describes the association in each paper and is not a judgment that the exposure is desirable.
 
-| Substantive reading | k | Studies |
+| Direction | k | Studies |
 |---|---|---|
-| Consistent with "recognition/eligibility improves access" (10 positive-sign studies, plus the 3 negative-sign studies where unrecognized/informal status is the exposure) | 13 (72%) | S057, S358, S398, S404, S765, S882, S920, S930, S1042, S1057; S084, S142, S1122 |
-| Counter-pattern (exposure associated with *worse* access) | 3 (17%) | S104, S1020, S1121 |
+| Favourable | 13 (72%) | S057, S084, S142, S358, S398, S404, S765, S882, S920, S930, S1042, S1057, S1122 |
+| Unfavourable | 3 (17%) | S104, S1020, S1121 |
 | Null | 2 (11%) | S037, S780 |
+| Mixed | 0 (0%) | — |
 
-So the honest summary is that **13 of 18 studies (72%) are consistent with legal/institutional
-recognition of a settlement, tenure claim, or governance arrangement being associated with better
-water/sanitation access**, across 11 countries and 6 distinct mechanism types, and three
-legitimate, adjusted findings — S104, S1020, S1121, rated "Low"/"Moderate" concern — run against
-it and are not outliers to be explained away. This substantive coding is itself a judgment call
-(S1020 and S1121 are arguably outside a strict "recognition" framing altogether); it is disclosed,
-not hidden, and the sign-based vote table above is kept unchanged so a reader can recompute
-either version.
+### Where the two readings come apart
+
+| Study | Reported estimate | Raw sign | Substantive | Why |
+|---|---|---|---|---|
+| S084 | non-notified vs notified slums: 37.3% less water per capita | negative | Favourable | the reported exposure is the deprived pole; restated to notified vs non-notified, recognition goes with more water |
+| S142 | unincorporated vs incorporated: significantly reduced centralised access | negative | Favourable | the same restatement of a non-recognised status |
+| S1122 | non-zoned vs zoned residence: hazard ratio 0.14 for first piped-water access | negative | Favourable | the same restatement; a lower hazard means slower access |
+| S104 | home ownership: OR 1.31 for a piped-water interruption | positive | Unfavourable | an interruption is an adverse outcome, and the tenure-security hypothesis predicts fewer |
+| S358 | Tribal oversight: OR 0.62 for groundwater decline | negative | Favourable | decline risk is an adverse outcome |
+| S404 | WRUA membership: ATT -14% to -32% on a water-poverty index | negative | Favourable | water poverty is an adverse outcome |
+| S1020 | watershed development: +17.4 minutes a day of water collection | positive | Unfavourable | collection time is an adverse outcome |
+
+S1121 (coefficient -0.31 to -0.53 on residential permitting, where a higher value is more new housing and connections) is negative in sign and Unfavourable for permitting, so the two readings agree there.
+
+By raw sign 10 of 18 (56%) are positive, 6 (33%) negative and 2 (11%) null. By substantive direction **13 of 18 (72%) are Favourable, 3 (17%) Unfavourable and 2 (11%) Null.** The two cannot be read as one count: adding the positive and negative rows of table (a) says nothing about whether recognition helps access. An earlier draft of this document did exactly that ("18 of 20, 90%") and was corrected on 2026-09-28 by the repository audit.
+
+So the honest summary is that **13 of 18 studies (72%) are consistent with legal/institutional recognition of a settlement, tenure claim, or governance arrangement being associated with better water/sanitation access**, across 11 countries and 6 distinct mechanism types, and three legitimate, adjusted findings (S104, S1020, S1121, rated "Low" or "Moderate" concern) run against it and are not outliers to be explained away. This coding is itself a judgment call: S1020 and S1121 are arguably outside a strict "recognition" framing altogether, and the outcome of S1121 is housing permitting rather than a household access measure (checked 2026-10-14; the Family A synthesis would be 13 of 17 without it). It is disclosed, not hidden, and both tables are kept so a reader can recompute either version.
 
 **S589 (resolved 2026-10-14).** S589's `effect_sizes.csv` row recorded a *descriptive, unadjusted*
 group comparison (connected vs. unconnected household consumption and cost share), not a
@@ -165,15 +159,19 @@ same information a harvest plot would, without adding a chart for its own sake.
 
 ## Robustness of the synthesis
 
-**Corrected 2026-09-28 (audit).** An earlier draft here said the "90% 'recognition helps access'
+**Corrected 2026-09-28 (audit); recomputed 2026-10-14 for the two-table coding.** An earlier draft here said the "90% 'recognition helps access'
 figure" was sensitive to how S358 and S404 are coded and quoted a drop to 10/18 (56%). Both
 numbers mixed two different measures (the discarded sign-sum "90%" and the positive-sign-only
-share) and overstated the sensitivity. On the corrected concordance count (13 of 18, 72%): S358
-and S404 both report a "protective"/"reduces poverty" framing that required judgment to place as
-concordant; if both were instead coded ambiguous and dropped, concordance would be 11 of 16 (69%).
-(Before S589's row was removed a third scenario, dropping it as an unadjusted descriptive comparison, was also tested.) The
-concordant share therefore stays between 69% and 72% across both coding
-decisions — the family-level pattern is *not* fragile to them; it is thin for the different
+share) and overstated the sensitivity. On the substantive count (13 of 18 Favourable, 72%): S358
+and S404 both report a "protective" or "reduces poverty" result that is Favourable only because a lower value of an adverse
+outcome (groundwater decline risk; water poverty) is read as better, which is a judgment about outcome polarity; if both were dropped,
+the Favourable share would be 11 of 16 (69%). Three further scenarios were added on 2026-10-14
+(`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`): dropping the five studies that report no household access outcome (S358, S1121, S1140, S590 and S1136; S4b) leaves 12 of 16
+(75%) Favourable in this family; keeping only the studies for which a positive sign means Favourable and a negative sign Unfavourable, that is dropping every study whose
+inverted-outcome or restated-pole coding was needed (S084, S104, S142, S358, S404, S1020 and S1122 here; S4d), leaves 8 of 11 (73%); and all the other scenarios together (S5) leave 11 of 15 (73%). (Before S589's row was removed a further
+scenario, dropping it as an unadjusted descriptive comparison, was also tested.) The
+Favourable share therefore stays between 69% and 75% across every scenario tried and both codings of the two judgment calls —
+the family-level pattern is *not* fragile to them; it is thin for the different
 reason that no more than 13 studies carry it, as the certainty section below says. The two null results (S037, S780) both test institutional exposures
 that are one step removed from the household (state/tribal water-rights authority; county-level
 administrative allocation) rather than a household-facing recognition status directly, which
@@ -202,7 +200,7 @@ statistical power, and sample size entirely, and treats a large, well-powered st
 large administrative dataset) the same as a small one in the tally. It also cannot detect or
 correct for publication bias, since no formal small-study-effects test is possible without a
 common effect-size scale (`08_code/R/03_publication_bias.R`'s templates require exactly the
-pooled data this family does not have). The 61/28/11 split reported above should be read as "a
+pooled data this family does not have). The 10/6/2 raw split and the 13/3/2 substantive split reported above should be read as "a
 directionally consistent pattern across a heterogeneous evidence base," not as an estimate of a
 true effect size or its precision — a genuinely different and weaker claim than what a
 meta-analysis, had one been possible, would support.

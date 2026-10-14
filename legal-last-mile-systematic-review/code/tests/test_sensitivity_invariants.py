@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Structural invariants of the sensitivity scenarios (05_analysis/sensitivity/sensitivity_scenarios_2026-09-28.csv), checked against effect_sizes.csv.
 
-For every scenario: the sign counts of each family sum to its k; Family A's concordant + counter-pattern + null counts sum to its k and the concordance percentage equals
+For every scenario: the raw-sign counts and the substantive-direction counts of each family each sum to its k; Family A's concordant + counter-pattern + null counts sum to its k and the concordance percentage equals
 concordant / k; dropped studies are real effect-size studies of that family and exactly account for the fall in k against the baseline; and the pre-stated conclusion
 tests are consistent with the counts they are computed from. Run from legal-last-mile-systematic-review/:  python3 code/tests/test_sensitivity_invariants.py"""
 import csv
@@ -36,6 +36,7 @@ class TestSensitivity(unittest.TestCase):
         for r in self.sc:
             for f in 'ABC':
                 self.assertEqual(sum(int(r[f'{f}_{s}']) for s in ('positive', 'negative', 'null', 'mixed')), int(r[f'{f}_k']), (r['scenario'], f))
+                self.assertEqual(sum(int(r[f'{f}_{s}']) for s in ('favourable', 'unfavourable', 'subst_null', 'subst_mixed')), int(r[f'{f}_k']), (r['scenario'], f))
             self.assertEqual(int(r['A_concordant']) + int(r['A_counter']) + int(r['A_null_concordance']), int(r['A_k']), r['scenario'])
             self.assertAlmostEqual(float(r['A_concordant_pct']), 100 * int(r['A_concordant']) / int(r['A_k']), delta=0.06, msg=r['scenario'])
 
@@ -54,23 +55,37 @@ class TestSensitivity(unittest.TestCase):
         for r in self.sc:
             a_holds = int(r['A_concordant']) * 2 > int(r['A_k'])
             self.assertEqual(r['A_test_majority_concordant'] == 'holds', a_holds, r['scenario'])
-            b_holds = int(r['B_negative']) == 0 and int(r['B_null']) == 0
+            b_holds = int(r['B_unfavourable']) == 0 and int(r['B_subst_null']) == 0
             self.assertEqual(r['B_test_none_negative_or_null'] == 'holds', b_holds, r['scenario'])
             signs = [int(r[f'C_{x}']) for x in ('positive', 'negative', 'null', 'mixed')]
             self.assertEqual(r['C_test_no_dominant_sign'] == 'holds', max(signs) * 2 <= int(r['C_k']), r['scenario'])  # no single sign holds a majority
+            dirs = [int(r[f'C_{x}']) for x in ('favourable', 'unfavourable', 'subst_null', 'subst_mixed')]
+            self.assertEqual(r['C_test_no_dominant_direction'] == 'holds', max(dirs) * 2 <= int(r['C_k']), r['scenario'])  # nor does any substantive direction
 
 
     def test_combined_scenario_is_the_union_and_k_never_rises(self):
-        last = self.sc[-1]
-        self.assertTrue(last['scenario'].startswith('S5'))
+        s5 = next(r for r in self.sc if r['scenario'].startswith('S5'))
+        parts = [r for r in self.sc if not r['scenario'].startswith(('S0', 'S4d', 'S5'))]   # S4d is a stand-alone check (sign and valence agree), not part of S5
         union = set()
-        for r in self.sc[1:-1]:
+        for r in parts:
             union |= {s for s in r['dropped_studies_in_families'].split(';') if s}
-        self.assertEqual({s for s in last['dropped_studies_in_families'].split(';') if s}, union)
+        self.assertEqual({s for s in s5['dropped_studies_in_families'].split(';') if s}, union)
         for r in self.sc:
             for f in 'ABC':
                 self.assertLessEqual(int(r[f'{f}_k']), int(self.sc[0][f'{f}_k']), (r['scenario'], f))
-                self.assertGreaterEqual(int(r[f'{f}_k']), int(last[f'{f}_k']), (r['scenario'], f))  # S5 removes the most
+        for r in parts:
+            for f in 'ABC':
+                self.assertGreaterEqual(int(r[f'{f}_k']), int(s5[f'{f}_k']), (r['scenario'], f))  # S5 removes the most of S1 to S4c
+
+    def test_s4d_keeps_only_studies_where_sign_and_valence_agree(self):
+        """Every study S4d drops has a raw sign '+' with substantive Unfavourable or '-' with Favourable, and every study it keeps does not."""
+        coding = {r['study_id']: r for r in rows('05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv')}
+        s4d = next(r for r in self.sc if r['scenario'].startswith('S4d'))
+        dropped = {s for s in s4d['dropped_studies_in_families'].split(';') if s}
+        agree = {('+', 'Favourable'), ('-', 'Unfavourable')}
+        for s, c in coding.items():
+            diverges = c['raw_coefficient_sign'] in ('+', '-') and (c['raw_coefficient_sign'], c['substantive_direction']) not in agree
+            self.assertEqual(s in dropped, diverges, s)
 
 
 class TestParsers(unittest.TestCase):
@@ -96,8 +111,19 @@ class TestParsers(unittest.TestCase):
             self.sa.parse_signs('A')
 
     def test_concordance_labels(self):
-        self.with_text('| Consistent with it | 2 (67%) | S001, S002 |\n| Counter-pattern here | 1 (33%) | S003 |\n')
+        self.with_text('x\n## Results\n| Favourable | 2 (67%) | S001, S002 |\n| Unfavourable | 1 (33%) | S003 |\n| Null | 0 (0%) | — |\n## Next\n')
         self.assertEqual(self.sa.parse_concordance(), {'S001': 'concordant', 'S002': 'concordant', 'S003': 'counter'})
+
+    def test_the_two_tables_do_not_read_each_other(self):
+        """A raw-sign row with a plain count is not a substantive row, and a substantive row with a percentage is not a raw-sign row."""
+        self.with_text('x\n## Results\n| Positive (+) | 2 | S001, S002 |\n| Null | 1 | S003 |\n| Favourable | 1 (50%) | S001 |\n| Unfavourable | 1 (50%) | S002 |\n| Null | 1 (33%) | S003 |\n## Next\n')
+        self.assertEqual(self.sa.parse_signs('A'), {'S001': 'positive', 'S002': 'positive', 'S003': 'null'})
+        self.assertEqual(self.sa.parse_substantive('A'), {'S001': 'favourable', 'S002': 'unfavourable', 'S003': 'null'})
+
+    def test_a_substantive_count_that_disagrees_with_the_listed_ids_is_an_error(self):
+        self.with_text('x\n## Results\n| Favourable | 3 (100%) | S001, S002 |\n## Next\n')
+        with self.assertRaises(AssertionError):
+            self.sa.parse_substantive('A')
 
 
 if __name__ == '__main__':
