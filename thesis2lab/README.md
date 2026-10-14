@@ -29,6 +29,14 @@ Tests: `npm test`, `npm run test:py`, `npm run test:e2e` (after a build). Detail
 ## For other researchers
 Nothing project-specific is hardcoded. Replace `project.config.json`, the records in `research/`, and the folders in `experiments/`. See `examples/other-project/` and `docs/ADDING_RESEARCH.md`.
 
+## Notes for future researchers
+
+Sources worth a look, found while reviewing [toddrjones/datasets](https://github.com/toddrjones/datasets), a curated list of free datasets for social science. Licences and coverage below have not been verified. Check them before relying on any source.
+
+- **OpenAlex** (Academia section): an open index of scholarly works with author affiliations, countries, topics and citations. It could replace the synthetic data in EXP-001 with a real bibliometric study of sanitation research in Brazil, Canada and the Netherlands. It's free, and I believe it's openly licensed, but check that. It would also give you real records to work with while the systematic review records are still missing.
+- **IPUMS International**: census microdata for 100+ countries. Many census files include housing variables such as water source, toilet type and sewage connection. I haven't verified that for Brazil, Canada or the Netherlands, so check coverage first. It would give you an access-side measure to set beside your court data. It needs a data agreement, and redistribution is restricted, so any experiment using it would have to run on the researcher's side, not as public data.
+- **LawAtlas**: coded laws from a US public health project. It holds no data for you, but it's a model for coding laws in a structured, citable way, which suits your comparative governance matrix.
+
 ## Layout
 `app/` interface and calculation code, `experiments/` one folder per experiment, `research/` thesis, sources, claims, methods, governance evidence, `data/` datasets and JSON Schemas, `validation/` generated reports, `pipelines/` Python ingest, `scripts/` tooling, `docs/` documentation. Read `CLAUDE.md` for the working rules.
 
