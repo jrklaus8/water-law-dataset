@@ -95,6 +95,7 @@ def compute():
     F['human_adjudicated_rows'] = len(_adj)
     F['human_adjudicated_excludes'] = sum(r['final_decision'] == 'exclude' for r in _adj)
     F['human_adjudicated_includes'] = sum(r['final_decision'] == 'include' for r in _adj)
+    F['borderline_includes'] = sum(r['final_decision'] == 'include' and 'BORDERLINE INCLUDE' in r['notes'] for r in ft)   # includes the PI confirmed in A6 as borderline (thin rule-type link, or borderline on criterion 3)
     F['human_verified_rows'] = F['reviewer_2_confirmed_includes'] + F['human_adjudicated_rows']
     F['reviewer_2_second_model_rows'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) for r in ft)
     F['reviewer_2_second_model_conflicts'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) and r['conflict'].lower() == 'true' for r in ft)
@@ -183,6 +184,7 @@ def render(F):
              f"| Decided rows with blank / inferred reviewer_1 | {F['decided_blank_reviewer_1']} / {F['decided_inferred_reviewer_1']} |",
              f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |",
              f"| Further decided rows ruled on by the PI under reviewer CK (adjudication passes and A6) | {F['human_adjudicated_rows']} ({F['human_adjudicated_excludes']} excludes, {F['human_adjudicated_includes']} includes) |",
+             f"| Includes confirmed by the PI in A6 as borderline (thin rule-type link; flagged, not removed) | {F['borderline_includes']} |",
              f"| Full-text rows with human verification or adjudication, in all / share of decided rows | {F['human_verified_rows']} / {100 * F['human_verified_rows'] / F['full_text_decided']:.1f}% |",
              f"| Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | {F['reviewer_2_second_model_rows']} / {F['reviewer_2_second_model_conflicts']} |", "",
              "## Extraction and classification", "",

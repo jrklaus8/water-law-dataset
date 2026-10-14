@@ -150,6 +150,12 @@ check((ROOT / 'AI_USE_STATEMENT.md').exists(), 'AI_USE_STATEMENT.md is missing')
 _aus = (ROOT / 'AI_USE_STATEMENT.md').read_text(encoding='utf-8')
 _n_sn, _n_lg = sum(r['reviewer_1'] == 'claude_sonnet_5' for r in ft), sum(r['reviewer_1'] in ('Claude', 'claude') for r in ft)
 check(f"{_n_sn} early rows `claude_sonnet_5`; {_n_lg} legacy rows" in _aus, f'AI_USE_STATEMENT.md provenance table does not match the reviewer labels ({_n_sn} claude_sonnet_5 rows, {_n_lg} legacy Claude rows)')
+# the hand-written documents that quote the human-verification counts must carry the computed ones (current_figures.py: human_adjudicated_rows, human_verified_rows)
+for _doc, _needle in (('00_admin/preregistration/osf_preregistration_draft.md', f"{F['human_verified_rows']} of {F['full_text_decided']:,} full-text decisions"),
+                      ('00_admin/RELEASE_0.2.0-interim_2026-10-14.md', f"{F['human_verified_rows']} of {F['full_text_decided']:,} decisions"),
+                      ('02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md', f"{F['human_verified_rows']} of {F['full_text_decided']:,} full-text decisions"),
+                      ('AI_USE_STATEMENT.md', f"adjudicated {F['human_adjudicated_rows']} further full-text decisions")):
+    check(_needle in (ROOT / _doc).read_text(encoding='utf-8'), f"{_doc} does not quote the current human-verification count ({_needle!r})")
 _sec_models = {m for r in ft for m in [__import__('re').match(r'(?:Codex|Gemini)-(.+)-reviewer2-fulltext-', r['reviewer_2'])] if m}
 check(_sec_models and all(m.group(1) in _aus for m in _sec_models), 'AI_USE_STATEMENT.md does not name every second-reviewer model string that the full-text database logs')
 top_txt = (ROOT.parent / 'README.md').read_text(encoding='utf-8')

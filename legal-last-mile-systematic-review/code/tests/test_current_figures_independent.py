@@ -62,6 +62,7 @@ class TestHeadlineFigures(unittest.TestCase):
         self.assertEqual(F['human_adjudicated_rows'], len(ruled))
         self.assertEqual(F['human_verified_rows'], len(human) + len(ruled))
         self.assertEqual(F['human_adjudicated_excludes'] + F['human_adjudicated_includes'], len(ruled))
+        self.assertEqual(F['borderline_includes'], sum(1 for r in decided if r['final_decision'] == 'include' and 'BORDERLINE INCLUDE' in r['notes']))
 
     def test_extraction_counts(self):
         F, ed = self.F, self.ed

@@ -62,8 +62,8 @@ def human_verification(F):
 def human_verification_clause(F):
     """The sentence of the Abstract that reports how much of the full-text screening a human has verified."""
     h = human_verification(F)
-    return (f"A human has confirmed {h['conf']} full-text inclusions (S001–S200 net of {h['retired']} later retirements) and the researcher has adjudicated a further {h['adj']} full-text records ({h['adj_exc']} exclusions, {h['adj_inc']} inclusions) "
-            f"in the scope, consistency and audit passes (A16, A19, A22–A25 and A6), so {h['tot']:,} of the {h['dec']:,} full-text decisions ({h['pct']:.1f}%) carry human verification or adjudication; no extracted value has been independently verified.")
+    return (f"The author independently confirmed {h['conf']} chronological full-text inclusions (S001–S200 net of {h['retired']} later retirements) and adjudicated a further {h['adj']} full-text records ({h['adj_exc']} exclusions, {h['adj_inc']} inclusions) "
+            f"in the scope, consistency and audit passes (A6, A16, A19, A22–A25), so {h['tot']:,} of the {h['dec']:,} full-text decisions ({h['pct']:.1f}%) carry human verification or adjudication; no extracted value has been independently verified.")
 
 
 def family_fit_clause():

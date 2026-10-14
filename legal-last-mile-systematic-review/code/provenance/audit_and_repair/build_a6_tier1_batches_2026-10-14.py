@@ -59,7 +59,7 @@ for r in q:
         country = short(e['country'], 30)
         mech = em[r['study_id']]['mechanism_family'] if r['study_id'] in em else ''
     else:
-        summ, exposure, design, country, mech = sentence(TAG.sub('', f['exclusion_reason_detail'])), '', '', '', ''
+        summ, exposure, design, country, mech = short(f['exclusion_reason_detail'], 420), '', '', '', ''   # the whole written Pass-1 rationale (it starts with the citation tag; cutting at the first full stop shows the tag only)
     rows.append({'batch': batch, 'rank': r['priority_rank'], 'record_id': rid, 'study_id': r['study_id'], 'citation': short(f"{r['authors']} ({r['year']}). {r['title']}", 190), 'ai_decision': r['ai_decision'], 'ai_code': r['ai_exclusion_code'],
                  'full_text_status': f['full_text_status'], 'rule_type_flags_true': ', '.join(rule), 'weak_rule_flag': 'only discretion_accommodation' if inc and rule == ['discretion_accommodation'] else ('NO rule-type flag' if inc and not rule else ''),
                  'governance_flags_true': ', '.join(gov), 'mechanism_family': mech, 'country': country, 'design': design, 'regulatory_model_or_exposure': exposure, 'summary_1line': summ,

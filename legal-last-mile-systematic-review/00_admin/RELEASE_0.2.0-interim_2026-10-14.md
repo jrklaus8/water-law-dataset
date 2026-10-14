@@ -22,7 +22,7 @@ Full-text screening completed and closed; extraction of every included report; c
 ## What is verified, and what is not
 
 - **Verified by the repository checks:** internal consistency (counts, one-to-one maps between screening, exclusion log, extraction and evidence map, controlled vocabularies, generated files fresh). Run `bash code/analysis/regenerate_all.sh`.
-- **Verified by the PI:** 197 full-text includes (S001–S200 less three the PI later excluded) and 192 further full-text decisions ruled on in the adjudication passes and in A6 tier 1 (146 excludes and 46 includes, each with a recorded ruling), 389 of 2,277 decisions (17.1%) in all.
+- **Verified by the PI:** 197 full-text includes (S001–S200 less three the PI later excluded) and 214 further full-text decisions ruled on in the adjudication passes and in A6 tier 1 (146 excludes and 68 includes, each with a recorded ruling), 411 of 2,277 decisions (18.1%) in all.
 - **Not verified by a human:** extracted values (no second extractor), risk-of-bias ratings, the direction coding in the SWiM tables, the mechanism and outcome vocabulary mapping, and the remaining AI full-text decisions. The `reviewer_1` label of 73 early decisions was inferred, not recorded.
 
 ## Still open (long-term, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`)
