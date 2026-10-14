@@ -1,0 +1,105 @@
+#!/usr/bin/env python3
+"""2026-10-14 (Round 14, item 3): what the source PDFs actually print for the stored numbers the dossier could not find in S037, S470, S593, S1038, S1102 and S471.
+
+Writes 05_analysis/effect_sizes/EFFECT_ROW_NUMBER_CHECK_2026-10-14.md: for each study the stored value, the verbatim passage of the PDF (page number, text layer as extracted, ligatures expanded and whitespace collapsed),
+what the difference is, and a PROPOSED correction to effect_sizes.csv. NOTHING IS CHANGED in effect_sizes.csv by this script or by this round: the author approves a correction first.
+Every quote is checked against the PDF text on every build (a quote that is not found stops the build). The PDFs are not in the repository: give their directory (files named <study_id>.pdf) with --pdf-dir.
+Run from legal-last-mile-systematic-review/:  python3 code/provenance/audit_and_repair/build_effect_row_number_check_2026-10-14.py --pdf-dir DIR"""
+import argparse
+import csv
+import re
+import sys
+from pathlib import Path
+
+sys.path.insert(0, 'code/analysis')
+csv.field_size_limit(sys.maxsize)
+import current_figures as cf  # noqa: E402
+import source_text_tools as T  # noqa: E402
+
+OUT = Path('05_analysis/effect_sizes/EFFECT_ROW_NUMBER_CHECK_2026-10-14.md')
+
+# study: (stored value that was not found, finding, [(label, verbatim quote)], proposed correction or None)
+CASES = {
+    'S037': ("`sample_size` = \"153 (97 ID-DAC + 56 GDC census places)\"",
+             "The PDF never prints 153 (searched the whole text layer). It prints the two group sizes, n = 97 and n = 56, and the stored 153 is their sum, an AI-derived total. Every other stored number (83% vs 79%, p = 0.1363; 83% vs 81%, p = 0.3147; $34,276 vs $36,450, p = 0.7893) is printed in Table 1.",
+             [("Table 1 header (p. 13)", "Socioeconomic Variable (mean) ID-DAC (n = 97) GDC (n = 56) P-Value (α = 0.05)"),
+              ("Table 1 rows (p. 13)", "Poor Drinking Water Exposure (%) 83 79 0.1363 Overall DAC Vulnerability (%) 83 81 0.3147"),
+              ("Table 1, income row (p. 13)", "$34,276 $36,450 0.7893"),
+              ("Text (p. 13)", "this paper compares DACs within irrigation district boundaries (n = 97), hereafter ID DACs, and DACs in GDCs (n = 56), hereafter GDCs")],
+             "`sample_size` -> \"97 ID-DAC census places and 56 GDC census places (n = 97 and n = 56; Table 1, p. 13)\" (drop the derived total 153)."),
+    'S470': ("`effect_estimate` = \"... ~13-13.5 percentage-point effect (0-1 scaled index)\" (13.5 not found); the main estimates +19.21, +19.16 and +18.82 are stored rounded",
+             "Table 5 prints the main estimates to four decimals (19.2078 with SE 0.8174; 19.155 with 0.8143; 18.819 with 0.8101) and the stored +19.21, +19.16, +18.82 and SE 0.8174 are those numbers rounded or copied. "
+             "The robustness estimates are printed on the 0 to 1 scale (0.1345, 0.1348, 0.1313; SE 0.0059, 0.0059, 0.0060) and the text says 'about a 13% increase'. The stored '13-13.5 percentage points' is those coefficients times 100 and rounded up (13.45, 13.48, 13.13); 13.5 itself is never printed.",
+             [("Table 5, REGU row (p. 16)", "REGU 19.2078*** 0.8174 19.155*** 0.8143 18.819*** 0.8101"),
+              ("Table 6, REGU row (p. 18)", "REGU 0.1345*** 0.0059 0.1348*** 0.0059 0.1313*** 0.0060"),
+              ("Text on the robustness check (p. 17)", "In the robustness check models, the effect of the regulation and enforcement on the implementation of the social tariff is about a 13% increase.")],
+             "`effect_estimate`: replace \"a smaller but still significant ~13-13.5 percentage-point effect (0-1 scaled index)\" with \"a smaller but still significant effect: REGU 0.1345 (SE 0.0059), 0.1348 (0.0059) and 0.1313 (0.0060) on the 0-1 index (Table 6, p. 18), 'about a 13% increase' (p. 17)\"; optionally give the main estimates as printed (19.2078, 19.155, 18.819)."),
+    'S593': ("`standard_error` = \"0.3006-0.6 depending on variable/year\" (0.6 not found); the main coefficient is stored as -0.9174",
+             "The coefficient is printed exactly as stored: Table 9 gives -.9174 with SE .3006 for the 2021 administrative-district-unit effect on average unit price (Table 15 prints the same effect as -.917***). "
+             "The stored upper bound 0.6 is not printed anywhere: the standard errors of the administrative-district-unit row across Tables 9 to 14 run from .3006 to .4217.",
+             [("Table 9, administrative-district-unit row (p. 10)", "Administrative district unit -.7470 .3361 -.8596 .3402 -.9174 .3006"),
+              ("Table 10, same row (p. 10)", "Administrative district unit -.7906** .3938 -.7896* .4066 -.9064** .3714"),
+              ("Table 13, same row (p. 12)", "Administrative district unit -.7300** .3411 -.9437** .3899 -1.1569*** .3726"),
+              ("Table 14, same row (p. 12)", "Administrative district unit -.0360 .4217 -.3211 .3378 -.2666 .3579"),
+              ("Table 15, multiple regression (p. 15)", "Administrative Region -.747** -.860** -.917*** -.791*")],
+             "`standard_error` -> \"0.3006 (2021, average unit price, Table 9, p. 10); the standard errors of this row across Tables 9-14 range from 0.3006 to 0.4217\" (drop the unsupported upper bound 0.6)."),
+    'S1038': ("`standard_error` = \"0.583 ...; 0.818 (Model 1, state-regulated) ...\" (0.818 not found)",
+              "Nothing is wrong with the stored value. Table 2 prints the standard error as \"(.818\" followed by a stray character in the text layer (\"(.8181\", a scan artefact where the closing parenthesis was read as a 1): .818. "
+              "The means 9.6 and 5.2 and the difference -4.6 with t = -4.58 are printed; the text of p. 9 repeats 9.6 and 5.2 per cent.",
+              [("Table 2 (p. 8)", "n - 88 n - 27 9.6 5.2 ( .583) (.8181 10.39 6.15 ( .786) (1.35) t-ratio -4.6 -4.58* -4.24 -2,71*"),
+               ("Text (p. 9)", "For locally-regulated utilities, the average welfare loss in Model 1 is 9.6 per cent, a n d in Model 2 it is 10.4 per cent. For the smaller group of state-regulated utilities, the average welfare loss in Model 1 is 5.2 per cent and in Model 2 it is 6.15 per cent.")],
+              None),
+    'S1102': ("`effect_estimate` = \"... treatment 0.364, control -0.676, difference 1.04 (t=4.26) ... control -0.252 ...\" (0.676 and 0.252 not found)",
+              "Nothing is wrong with the stored values. Table 4 prints the minus sign of the control means as the digit 7 in the text layer (\"70.676\" is -0.676 and \"70.252\" is -0.252; the same artefact shows in \"70.0081\" and \"70.310\" for the Karnataka rows), "
+              "so a search for 0.676 and 0.252 fails although the numbers are there. The differences 1.04 and 0.749 and the t statistics 4.26 and 3.46 are printed.",
+              [("Table 4, capital cost contribution (p. 18)", "All 0.364 70.676 1.04"),
+               ("Table 4, meeting attendance (p. 18)", "All 0.497 70.252 0.749"),
+               ("Table 4, a region row showing the same artefact (p. 18)", "S. Karnataka 70.0081 70.310 0.302"),
+               ("Table 4, t statistics (p. 18)", "T-statistic 4.26 1.28 0.32 1.02 8.54 5.14 1.11 1.63 3.46 2.51 1.78 0.70 4.16 2.90 0.18 0.45")],
+              None),
+    'S471': ("all stored numbers (-1.58 with SE 0.69, -1.03 with SE 0.76, n = 2,119)",
+             "All stored numbers are printed. The earlier 'missing' flag arose because no PDF was found for S471 in the Drive folders (the file was filed under record id R6B1C512A548D); with the file recovered, Table 3 and Table 2 carry the stored values.",
+             [("Table 3, form of government (p. 8)", "Form of government −1.58** (0.69) −1.03 (0.76)"),
+              ("Table 3, observations (p. 8)", "Observations 2119 2119 2119 2119 2119"),
+              ("Table 2 caption (p. 6)", "TABLE 2 | Descriptive statistics of variables used in analysis. n = 2119.")],
+             None),
+}
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--pdf-dir', required=True)
+    a = ap.parse_args()
+    es = {r['study_id']: r for r in cf.read('es')}
+    ed = {r['study_id']: r for r in cf.read('ed')}
+    L = ['# What the PDFs print for the stored numbers the dossier could not find (S037, S470, S593, S1038, S1102, S471) (2026-10-14)', '',
+         "*Generated by `code/provenance/audit_and_repair/build_effect_row_number_check_2026-10-14.py`. For each study: the stored value, the verbatim passage of the PDF's text layer with its PDF page (ligatures expanded, whitespace collapsed; every quote is checked against the PDF text when this file is built), "
+         "what the difference is, and a **proposed** correction. **`effect_sizes.csv` has not been changed**: a correction is made only when the author approves it. The PDFs are not in the repository.*", '',
+         '| Study | Stored value flagged | Verdict | Proposed correction to `effect_sizes.csv` |', '|---|---|---|---|']
+    verdict = {'S037': 'a derived sum is stored, not a printed number', 'S470': 'rounding and a x100 conversion; 13.5 is not printed', 'S593': 'an unsupported upper bound in a standard-error range', 'S1038': 'stored value is right (scan artefact)',
+               'S1102': 'stored values are right (minus printed as 7)', 'S471': 'stored values are right (PDF was filed under another record id)'}
+    for s, (stored, finding, quotes, fix) in CASES.items():
+        L.append(f"| {s} | {stored} | {verdict[s]} | {fix.split(' (drop')[0][:140] + '...' if fix and len(fix) > 140 else (fix or 'none needed')} |")
+    L.append('')
+    for s, (stored, finding, quotes, fix) in CASES.items():
+        doc = T.Doc(Path(a.pdf_dir) / f'{s}.pdf')
+        L += [f"## {s}  ·  {ed[s]['citation'][:200]}", '', f"- **Stored:** {stored}.", f"- **What the PDF shows:** {finding}"]
+        for lab, q in quotes:
+            pages = doc.find(q)
+            assert pages, f'{s}: quote not found in the PDF text: {q[:80]}'
+            m = re.search(r'p\. (\d+)', lab)
+            if m:
+                assert int(m.group(1)) in pages, (s, lab, pages)
+            L.append(f"  - *{lab}*: \"{q}\"")
+        if s == 'S037':
+            full = ' '.join(doc.pages + [' '.join(doc.layout_lines(p)) for p in range(1, doc.n + 1)])
+            assert not re.search(r'(?<![\d,.])153(?![\d,])', full), 'S037: 153 is now found in the PDF text'
+            L.append("  - *Search for 153 (whole text layer, plain and layout)*: no match.")
+        L.append(f"- **Proposed correction (not applied):** {fix if fix else 'none; the stored values match the PDF.'}")
+        L.append('')
+    OUT.write_text('\n'.join(L).rstrip() + '\n', encoding='utf-8')
+    print(f'wrote {OUT} ({len(CASES)} studies)')
+
+
+if __name__ == '__main__':
+    main()

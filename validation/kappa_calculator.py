@@ -77,9 +77,18 @@ def cohen_kappa(y1: list, y2: list) -> float:
     return (p_o - p_e) / (1 - p_e)
 
 
-def bootstrap_kappa_ci(y1: list, y2: list, n_boot: int = 1000,
+def bootstrap_kappa_ci(y1: list, y2: list, n_boot: int = 2000,
                         alpha: float = 0.05, seed: int = 42) -> tuple:
-    """Bootstrap 95% CI for kappa."""
+    """Bootstrap 95% CI for kappa.
+
+    n_boot=2000 (not the more common 1000) matches generate_all_outputs.py's
+    inline bootstrap exactly -- that script is what actually produced the
+    committed kappa_results.json (and the CI cited in RESIDUAL_AUDIT.md and
+    the manuscript). Keep these two scripts' n_boot in sync: with the same
+    seed=42 and sampling method, a different n_boot changes which sorted
+    index lands at the 2.5th/97.5th percentile, so this is the one knob that
+    silently breaks bit-for-bit reproduction between the two scripts.
+    """
     rng = random.Random(seed)
     n = len(y1)
     pairs = list(zip(y1, y2))

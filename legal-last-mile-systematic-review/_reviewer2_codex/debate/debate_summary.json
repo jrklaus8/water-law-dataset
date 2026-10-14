@@ -1,0 +1,52 @@
+{
+ "linked_reports": {
+  "question": "Should linked (companion) reports be collapsed, kept-and-linked, or left as separate counted studies?",
+  "r1_codex": {
+   "position": "Use a study-level counting policy: collapse confirmed same-study reports (LR01 and LR02) into one counted study while retaining and linking every report, and keep partial, possible, or distinct-data pairs separate unless verification establishes common study identity.",
+   "reasoning": "PRISMA distinguishes reports from underlying studies, so multiple publications from the same trial or fieldwork should not inflate the included-study count. Confidence should guide verification, but collapse should depend on affirmative evidence of shared study identity; partial overlap or similarity of authors, setting, and topic is insufficient. All links should remain documented, and uncertain pairs should be considered for dependence whenever they enter the same synthesis. LR01 must be represented in Family B as one cluster-randomised trial with two companion outcome reports: retain eligible outcomes from both papers, but do not count or weight S294 and S366 as two independent studies, and model or otherwise manage any within-trial outcome dependence.",
+   "confidence": "high"
+  },
+  "r1_gemini": {
+   "position": "Adopt a tiered approach where high-confidence 'same-data' pairs are collapsed for quantitative synthesis and counting, while lower-confidence or 'possible' overlaps remain separate but are clearly linked.",
+   "reasoning": "Counting the same underlying dataset multiple times causes unit-of-analysis errors, artificially inflating study counts and biasing quantitative synthesis results like Family B. For confirmed cases like LR01, collapsing is methodologically necessary to ensure that independent outcomes from the same trial do not erroneously receive doubled weight. Conversely, prematurely collapsing 'possible' overlaps risks invalidly merging distinct studies. A tiered approach provides the necessary precision for meta-analysis while preserving transparency for speculative links.",
+   "confidence": "high"
+  },
+  "r2_codex": {
+   "final_position": "Use study-level counting: collapse confirmed same-study reports such as LR01 into one study while retaining and linking all reports, and keep possible or partial overlaps separate unless common study identity is verified, while accounting for dependence if they enter the same synthesis.",
+   "changed_mind": "no",
+   "reasoning": "The other reviewer’s tiered approach substantively agrees with my position: confirmed same-data reports must be collapsed for counting and quantitative synthesis to prevent double weighting, whereas uncertain overlaps should remain separate but linked. Their emphasis on quantitative unit-of-analysis errors reinforces the need to treat LR01 as one cluster-randomised trial with outcomes drawn from both companion reports. I retain the additional caution that even uncollapsed, uncertain pairs may require sensitivity analysis or dependence management when synthesized together.",
+   "confidence": "high"
+  },
+  "r2_gemini": {
+   "final_position": "Adopt a study-level counting policy that collapses confirmed 'same-study' reports into a single counted unit while retaining and linking all individual reports to ensure methodological transparency and prevent unit-of-analysis errors.",
+   "changed_mind": "partially",
+   "reasoning": "While I maintain the core of my tiered strategy, the second reviewer’s appeal to the PRISMA framework provides a stronger, more conventional justification for separating reports from underlying studies. Their refinement clarifies that collapsing is not just about confidence levels, but about strictly adhering to study-level counting principles while managing dependence in synthesis. This addition solidifies my original approach by providing a concrete procedural rule for handling the resulting data structure.",
+   "confidence": "high"
+  }
+ },
+ "family_vocabulary": {
+  "question": "Should the draft controlled vocabulary for mechanism_family/outcome_family be adopted?",
+  "r1_codex": {
+   "position": "Adopt the draft only as a provisional multi-label taxonomy, not as an as-is replacement for the existing fields, and add a manually validated primary-family variable for tabulation.",
+   "reasoning": "A 45% `multiple` rate makes the proposed single-label mechanism field analytically uninformative and largely relabels the original granularity problem. The nine mechanism families are nevertheless a reasonable starting framework for multi-label coding, co-occurrence analysis, and structured refinement, while the four documented outcome families are suitable if richer outcome subtypes are retained. Preserve all original labels, treat blank booleans as unknown rather than false, manually review every unmapped or rule-ambiguous record, and validate a stratified sample of the remaining mappings with two independent coders. For mutually exclusive headline tabulations, code a primary mechanism from each study's stated causal or analytic focus rather than mechanically deriving it from broadly positive extraction booleans.",
+   "confidence": "high"
+  },
+  "r1_gemini": {
+   "position": "I recommend adopting the draft vocabulary only after refining the keyword mapping rules to reduce the 45% 'multiple' classification rate and validating the 45 studies flagged as 'needs_review'.",
+   "reasoning": "While the proposal successfully reduces label entropy, the high 'multiple' rate for mechanism families defeats the primary goal of creating a reliable, high-level tabulation for synthesis. The 'multiple' bucket is currently too large to serve as a meaningful analytical category, functioning more as a classification bypass than a true family mapping. A more nuanced keyword mapping, particularly addressing the specific overlaps that trigger this flag, is necessary to achieve actionable data. Validating the 'needs_review' subset is essential for quality, but refining the logic to minimize the 'multiple' categorization should be the immediate priority before implementing the schema.",
+   "confidence": "high"
+  },
+  "r2_codex": {
+   "final_position": "Adopt the draft only as a provisional multi-label taxonomy after validating all needs-review records and refining ambiguous mappings, while retaining original labels and adding a manually coded primary-family variable for mutually exclusive tabulation.",
+   "changed_mind": "partially",
+   "reasoning": "I agree that the 45% multiple rate exposes mapping rules that should be examined and that all 45 needs-review studies require validation before implementation. However, refining keywords merely to force studies into one family risks concealing genuine multi-mechanism designs; the multiple rate may reflect both rule overbreadth and real conceptual overlap. Therefore, rule refinement should improve mapping validity, while a separately and manually coded primary family—not mechanical keyword tie-breaking—should support headline tabulation.",
+   "confidence": "high"
+  },
+  "r2_gemini": {
+   "final_position": "Adopt the draft as a provisional multi-label taxonomy while simultaneously implementing a manually validated primary-family variable for tabulation to address the high 'multiple' classification rate.",
+   "changed_mind": "partially",
+   "reasoning": "The other reviewer correctly identifies that the 'multiple' rate reflects the inherent complexity of multi-mechanism studies rather than just a mapping error to be refined away. Adopting a multi-label framework instead of forcing a single-label categorization is a superior architectural choice, and their proposal to add a manually validated primary-family variable provides the necessary analytical focus for tabulation without losing the granular complexity. This approach balances immediate utility with long-term data integrity better than my original proposal to solely focus on refining keyword mappings.",
+   "confidence": "high"
+  }
+ }
+}
