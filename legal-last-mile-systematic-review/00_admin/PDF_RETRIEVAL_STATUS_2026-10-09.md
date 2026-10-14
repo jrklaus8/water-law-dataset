@@ -38,3 +38,7 @@ Source: the agent's own tracker (`ZZ_TRACKER_retrieval_status_all_34_2026-10-09.
 **Group 4: do not chase.** The "green open access" flag at research.wur.nl (also in OpenAlex and Semantic Scholar) is a false positive: those records carry no file. Affected: S264, S314, R155FFF508359, RA1F6E143593E, R803988411D3E (tier A) and S300, S317, S256, S290, S301 (tier B). The publisher or an author request is the only route; UvA DARE for S264 is metadata-only too.
 
 Upload each file to the Drive inbox with the name in `PDF_RETRIEVAL_TARGETS_2026-10-09.csv` (`file_name_to_use`).
+
+## Update 2026-10-14
+
+Two of the 20 are moot because the PI excluded them: **S340** (Mubecua & Nojiyeza, E05, 2026-10-13) and **S264** (Joy et al., E05, 2026-10-14). The list is now **18**: S280, S401, S391, RCB78D4EF3652 and S400 (Group 1); S390 and S284 (Group 2); R803988411D3E, S380 and S365 (Group 3); and S314, R155FFF508359, RA1F6E143593E, S300, S317, S256, S290 and S301 (Group 4). Of the 18, ten are included studies that are still abstract-only extractions (S280, S284, S380, S365, S314, S300, S317, S256, S290, S301); S401, S391, S400 and S390 are included studies whose recorded full-text status is probably stale; RCB78D4EF3652, R803988411D3E, R155FFF508359 and RA1F6E143593E are excluded records that were decided on a landing page or a book record (A19). S314's abstract-only extraction is the limitation recorded when the PI kept it (A22).
