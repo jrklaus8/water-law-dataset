@@ -7,6 +7,8 @@ csv.field_size_limit(sys.maxsize)
 Q = '02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv'
 FT = '02_screening/full_text/full_text_screening_database.csv'
 OUT = '02_screening/full_text/A6_TIER1_SECOND_MODEL_CK_SHEET_2026-10-14'
+if os.path.exists(OUT + '.csv') and any(r['ck_decision (include/exclude)'].strip() or r['ck_comment'].strip() for r in csv.DictReader(open(OUT + '.csv', encoding='utf-8'))) and '--force' not in sys.argv:
+    sys.exit('Refusing to overwrite a sheet that already holds CK rulings or comments (pass --force to rebuild it).')
 q = [r for r in csv.DictReader(open(Q, encoding='utf-8')) if r['priority_tier'] == '1']
 ft = {r['record_id']: r for r in csv.DictReader(open(FT, encoding='utf-8'))}
 
@@ -54,7 +56,7 @@ for r in q:
                  'codex_decision': c['decision'], 'codex_code': c.get('exclusion_code', ''), 'gemini_decision': g['decision'], 'gemini_code': g.get('exclusion_code', ''),
                  'db_conflict_flag': f['conflict'], 'ck_decision (include/exclude)': '', 'ck_exclusion_code (E01-E12)': '', 'ck_comment': '',
                  'codex_rationale_1line': first_sentence(c.get('rationale', '')), 'gemini_rationale_1line': first_sentence(g.get('rationale', '')),
-                 'pass1_ai_reasoning_1line': first_sentence(TAG.sub('', f['exclusion_reason_detail'])) if ai == 'exclude' and f['exclusion_reason_detail'].strip() else '(no written rationale stored for this include; see the extraction row)',
+                 'pass1_ai_reasoning_1line': TAG.sub('', ' '.join(f['exclusion_reason_detail'].split())) if ai == 'exclude' and f['exclusion_reason_detail'].strip() else '(no written rationale stored for this include; see the extraction row)',
                  'prior_ck_ruling': prior_ck(f['notes'])})
 rows.sort(key=lambda x: (x['_g'], x['pass1_ai_decision'] != 'exclude', x['record_id']))
 for i, x in enumerate(rows, 1):

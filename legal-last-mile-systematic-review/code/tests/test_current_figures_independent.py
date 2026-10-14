@@ -52,6 +52,17 @@ class TestHeadlineFigures(unittest.TestCase):
         self.assertEqual(F['title_abstract_include'], sum(r['final_decision'] == 'include' for r in self.ta))
         self.assertEqual(F['title_abstract_exclude'], sum(r['final_decision'] == 'exclude' for r in self.ta))
 
+    def test_human_verification_counts(self):
+        """Rows verified or adjudicated by a human: Human- confirmations plus distinct decided rows with a CK ruling (label or dated note), counted without the module's constants."""
+        F = self.F
+        decided = [r for r in self.ft if r['final_decision'] in ('include', 'exclude')]
+        human = {r['record_id'] for r in decided if r['reviewer_2'].startswith('Human-')}
+        ruled = {r['record_id'] for r in decided if r['record_id'] not in human and (r['reviewer_2'] == 'CK' or 'A16 adjudication' in r['notes'] or 'A19 ruling' in r['notes'] or 'A6 tier-1 ruling' in r['notes'])}
+        self.assertEqual(F['reviewer_2_confirmed_includes'], len(human))
+        self.assertEqual(F['human_adjudicated_rows'], len(ruled))
+        self.assertEqual(F['human_verified_rows'], len(human) + len(ruled))
+        self.assertEqual(F['human_adjudicated_excludes'] + F['human_adjudicated_includes'], len(ruled))
+
     def test_extraction_counts(self):
         F, ed = self.F, self.ed
         self.assertEqual(F['extraction_rows'], len(ed)); self.assertEqual(F['extraction_rows'], F['full_text_include'])

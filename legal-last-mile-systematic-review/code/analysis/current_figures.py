@@ -44,6 +44,7 @@ def original_labels():
 # mis-buckets rows whose annotation text mentions a second tool (an error this project made and corrected on 2026-09-28).
 TOOL_KEYS = [('RoB 2', 'RoB 2'), ('ROBINS-I', 'ROBINS-I'), ('JBI', 'JBI Cross-Sectional'), ('MMAT', 'MMAT'),
              ('CASP', 'CASP Qualitative'), ('AMSTAR', 'AMSTAR 2'), ('Legal Institutional', 'Legal Framework'), ('NONE', 'NONE')]
+HUMAN_RULING_MARKS = ('A16 adjudication', 'A19 ruling', 'A6 tier-1 ruling')
 ABSTRACT_ONLY_PREFIXES = ('Extracted from published abstract', 'Extracted from abstract')
 
 
@@ -87,6 +88,14 @@ def compute():
     F['decided_inferred_reviewer_1'] = sum('reviewer_1 label inferred' in r['notes'] for r in dec_rows)  # backfilled 2026-10-14 (open item A2): label inferred, not recorded at the time
     # Human confirmations only (labels `Human-reviewer2-...`); a second AI model's blind pass is counted separately.
     F['reviewer_2_confirmed_includes'] = sum(r['reviewer_2'].startswith('Human-') and r['final_decision'] == 'include' for r in ft)
+    # human verification or adjudication of full-text decisions: the 'Human-' confirmations of S001-S200, plus every decided row on which the PI ruled under reviewer CK (reviewer_2 'CK', or a dated
+    # adjudication or ruling note: the A16 apply script is also used for the A19, A20, A22-A25 and audit passes; 'A19 ruling' and 'A6 tier-1 ruling' are the two other marks)
+    _adj = [r for r in ft if r['final_decision'] in ('include', 'exclude') and not r['reviewer_2'].startswith('Human-')
+            and (r['reviewer_2'] == 'CK' or any(m in r['notes'] for m in HUMAN_RULING_MARKS))]
+    F['human_adjudicated_rows'] = len(_adj)
+    F['human_adjudicated_excludes'] = sum(r['final_decision'] == 'exclude' for r in _adj)
+    F['human_adjudicated_includes'] = sum(r['final_decision'] == 'include' for r in _adj)
+    F['human_verified_rows'] = F['reviewer_2_confirmed_includes'] + F['human_adjudicated_rows']
     F['reviewer_2_second_model_rows'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) for r in ft)
     F['reviewer_2_second_model_conflicts'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) and r['conflict'].lower() == 'true' for r in ft)
     F['extraction_rows'] = len(ed)
@@ -173,6 +182,8 @@ def render(F):
              f"| Exclusion-log rows | {F['exclusion_log_rows']:,} — by code: " + ", ".join(f"{k} {v}" for k, v in F['exclusion_by_code'].items()) + " |",
              f"| Decided rows with blank / inferred reviewer_1 | {F['decided_blank_reviewer_1']} / {F['decided_inferred_reviewer_1']} |",
              f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |",
+             f"| Further decided rows ruled on by the PI under reviewer CK (adjudication passes and A6) | {F['human_adjudicated_rows']} ({F['human_adjudicated_excludes']} excludes, {F['human_adjudicated_includes']} includes) |",
+             f"| Full-text rows with human verification or adjudication, in all / share of decided rows | {F['human_verified_rows']} / {100 * F['human_verified_rows'] / F['full_text_decided']:.1f}% |",
              f"| Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | {F['reviewer_2_second_model_rows']} / {F['reviewer_2_second_model_conflicts']} |", "",
              "## Extraction and classification", "",
              "| Item | Figure |", "|---|---|",
