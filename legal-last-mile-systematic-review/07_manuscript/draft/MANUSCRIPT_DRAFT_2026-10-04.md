@@ -8,9 +8,9 @@
 
 **Objective.** To map and synthesise the empirical evidence on how legal and administrative institutions shape the translation of physical availability of water and sanitation infrastructure into effective household access, and to synthesise quantitative evidence where it is comparable.
 
-**Methods.** An AI-assisted systematic review: 34,594 records from multiple databases (27,481 after deduplication) were screened at title/abstract level and 2,277 full texts assessed; 1,084 studies were included, extracted into a 1,084-row database, and appraised with the instrument matching each design (RoB 2, ROBINS-I, JBI, MMAT, CASP, AMSTAR 2, and a project-specific non-validated framework for legal-documentary studies). Quantitative findings were synthesised without meta-analysis (SWiM). The protocol was not registered in advance; most steps were carried out by a large language model with partial human verification.
+**Methods.** An AI-assisted systematic review: 34,594 records from multiple databases (27,481 after deduplication) were screened at title/abstract level and 2,277 full texts assessed; 1,080 studies were included, extracted into a 1,080-row database, and appraised with the instrument matching each design (RoB 2, ROBINS-I, JBI, MMAT, CASP, AMSTAR 2, and a project-specific non-validated framework for legal-documentary studies). Quantitative findings were synthesised without meta-analysis (SWiM). The protocol was not registered in advance; most steps were carried out by a large language model with partial human verification.
 
-**Results.** 1,084 studies (85% since 2010) spanned many countries (India, Brazil, South Africa, the United States and Ghana the most frequent), but only 63 (6%) used designs able to support a causal claim. 59 studies had an extractable effect-size row; none could be pooled. In three SWiM families the direction of association was mostly favourable for legal-status, tenure and recognition mechanisms (Family A, k = 18), uniformly favourable or mixed for assistance, participation, trust and external-support mechanisms (Family B, k = 6), and without a dominant direction for ownership, regulation, institutional-capacity and administrative-structure mechanisms (Family C, k = 20); the families are thematic mechanism groupings, not homogeneous exposure–outcome pairs. Only 197 inclusion decisions and no extracted value have been independently verified.
+**Results.** 1,080 studies (85% since 2010) spanned many countries (India, Brazil, South Africa, the United States and Ghana the most frequent), but only 63 (6%) used designs able to support a causal claim. 59 studies had an extractable effect-size row; none could be pooled. In three SWiM families the direction of association was mostly favourable for legal-status, tenure and recognition mechanisms (Family A, k = 18), uniformly favourable or mixed for assistance, participation, trust and external-support mechanisms (Family B, k = 6), and without a dominant direction for ownership, regulation, institutional-capacity and administrative-structure mechanisms (Family C, k = 20); the families are thematic mechanism groupings, not homogeneous exposure–outcome pairs. Only 197 inclusion decisions and no extracted value have been independently verified.
 
 **Conclusions.** The literature documents associations between legal/administrative conditions and access across many settings far more often than it establishes causal effects; it does not support one pooled estimate. Confidence is low to very low for any causal or comparative claim. [Author to revise after human verification.]
 
@@ -42,7 +42,7 @@ The primary question asked how legal and administrative institutions shape the t
 
 ### 2.3 Search and selection
 
-Searches closed on 2026-09-11; SSRN and Westlaw/Lexis were not searched (`SEARCH_PROTOCOL.md`, README Known limitations). Selection was by an AI first pass (title/abstract and full text) with written rationales and standardised exclusion codes (E01–E12); a human second reviewer covered the 3,665 title/abstract records the AI marked include or unsure, and confirmed 197 of the 1,084 full-text includes. Full-text retrieval was closed by the researcher's decision with 1,383 title/abstract includes never assessed; the unassessed set is older on average (see 3.1).
+Searches closed on 2026-09-11; SSRN and Westlaw/Lexis were not searched (`SEARCH_PROTOCOL.md`, README Known limitations). Selection was by an AI first pass (title/abstract and full text) with written rationales and standardised exclusion codes (E01–E12); a human second reviewer covered the 3,665 title/abstract records the AI marked include or unsure, and confirmed 197 of the 1,080 full-text includes. Full-text retrieval was closed by the researcher's decision with 1,383 title/abstract includes never assessed; the unassessed set is older on average (see 3.1).
 
 ### 2.4 Data extraction
 
@@ -50,7 +50,7 @@ A 92-field extraction form (`CODEBOOK.md`) was completed for every included stud
 
 ### 2.5 Risk of bias and critical appraisal
 
-Each study was appraised with the instrument matching its design: RoB 2 (cluster variant) for randomised trials (5), ROBINS-I (58), JBI cross-sectional (130), MMAT (195), CASP qualitative (248) and AMSTAR 2 for systematic reviews (18). For 430 legal-documentary or doctrinal studies no published instrument fits, and this project's own **non-validated** Legal Institutional Evidence Appraisal Framework was used; 0 studies were judged not appraisable. Ratings were assigned by rule from the extracted fields, not by signalling-question reading of each paper, except for the studies re-appraised from full text (listed in `CHANGELOG.md`). Ratings therefore describe the extraction as much as the paper.
+Each study was appraised with the instrument matching its design: RoB 2 (cluster variant) for randomised trials (5), ROBINS-I (58), JBI cross-sectional (130), MMAT (195), CASP qualitative (248) and AMSTAR 2 for systematic reviews (18). For 426 legal-documentary or doctrinal studies no published instrument fits, and this project's own **non-validated** Legal Institutional Evidence Appraisal Framework was used; 0 studies were judged not appraisable. Ratings were assigned by rule from the extracted fields, not by signalling-question reading of each paper, except for the studies re-appraised from full text (listed in `CHANGELOG.md`). Ratings therefore describe the extraction as much as the paper.
 
 ### 2.6 Synthesis
 
@@ -66,13 +66,13 @@ All databases, scripts and generated figures are in the project repository; `pyt
 
 ### 2.9 Use of artificial intelligence
 
-This is an AI-assisted systematic review. A large language model (Claude, Anthropic) performed most of the title/abstract first-pass screening, full-text screening, data extraction, risk-of-bias appraisal and synthesis drafting, under the direction of the human researcher, who defined the question, protocol and eligibility criteria, ran the database searches, supplied the full texts and made the closing and scoping decisions. Independent human verification was partial: a human second reviewer covered the 3,665 title/abstract records the AI marked include or unsure (not the AI's exclusions), and confirmed 197 of the 1,084 full-text includes; no full-text exclusion, extracted value or risk-of-bias rating has been independently verified against source papers. [Model version and dates of use: add per journal policy.] The stage-by-stage division of labour is tabulated in `AI_USE_STATEMENT.md`.
+This is an AI-assisted systematic review. A large language model (Claude, Anthropic) performed most of the title/abstract first-pass screening, full-text screening, data extraction, risk-of-bias appraisal and synthesis drafting, under the direction of the human researcher, who defined the question, protocol and eligibility criteria, ran the database searches, supplied the full texts and made the closing and scoping decisions. Independent human verification was partial: a human second reviewer covered the 3,665 title/abstract records the AI marked include or unsure (not the AI's exclusions), and confirmed 197 of the 1,080 full-text includes; no full-text exclusion, extracted value or risk-of-bias rating has been independently verified against source papers. [Model version and dates of use: add per journal policy.] The stage-by-stage division of labour is tabulated in `AI_USE_STATEMENT.md`.
 
 ## 3. Results
 
 ### 3.1 Search and selection
 
-The database and grey-literature searches identified 34,594 records; 27,481 remained after deduplication. 26,222 had an abstract and were screened at title/abstract level (1,259 without an abstract were not decided); 3,659 were retained for full-text assessment. Full-text retrieval was closed by the researcher's decision: 2,277 of 3,659 records were assessed and 1,382 were never assessed (1,200 not retrievable, 182 for which the wrong file was obtained). Of the 2,277 assessed, 1,193 were excluded (151 because the full text was inaccessible; reasons for the others are in `exclusion_log.csv`) and 1,084 were included (1,084 extraction rows, corresponding to 1,082 distinct studies after collapsing definite companion reports).
+The database and grey-literature searches identified 34,594 records; 27,481 remained after deduplication. 26,222 had an abstract and were screened at title/abstract level (1,259 without an abstract were not decided); 3,659 were retained for full-text assessment. Full-text retrieval was closed by the researcher's decision: 2,277 of 3,659 records were assessed and 1,382 were never assessed (1,200 not retrievable, 182 for which the wrong file was obtained). Of the 2,277 assessed, 1,197 were excluded (151 because the full text was inaccessible; reasons for the others are in `exclusion_log.csv`) and 1,080 were included (1,080 extraction rows, corresponding to 1,078 distinct studies after collapsing definite companion reports).
 
 Reasons for full-text exclusion (standardised codes; per-record rationale in `exclusion_log.csv`):
 
@@ -82,7 +82,7 @@ Reasons for full-text exclusion (standardised codes; per-record rationale in `ex
 | E02 | wrong population | 34 |
 | E03 | wrong exposure | 88 |
 | E04 | wrong outcome | 84 |
-| E05 | no empirical evidence | 153 |
+| E05 | no empirical evidence | 157 |
 | E06 | engineering only | 106 |
 | E07 | wrong service | 29 |
 | E08 | duplicate | 8 |
@@ -94,12 +94,12 @@ Reasons for full-text exclusion (standardised codes; per-record rationale in `ex
 
 *Figures 1–3 and 5 (`06_outputs/figures/fig1_design_mix.svg`, `fig2_publication_years.svg`, `fig3_countries.svg`, `fig5_appraisal_tools.svg`) show the design mix, publication years, countries and appraisal instruments; Figure 4 (`fig4_direction_by_family.svg`) shows the direction of association in the three syntheses (Section 3.5). All are generated from the databases by `code/analysis/build_figures.py`.*
 
-- **Volume and recency.** 1,084 studies; 914 (84%) published 2010 or later (median year 2018; 30 before 2000).
-- **Design mix** (evidence-map `study_design_class`; the free-text design labels of 328 studies were mapped onto the 8-value enum on 2026-10-14 under open item A20, with the original strings kept in `evidence_map_original_labels_2026-10-14.csv`, so `qualitative` lumps ethnographic, historical, institutional and documentary case studies; 10 studies keep a free-text label the rules could not map (essays, theory, policy analyses) and are not in the counts that follow): qualitative 528, mixed-methods 228, observational 141, quasi-experimental 62, doctrinal 54, jurimetric 36, secondary systematic reviews 20, experimental 5. By appraisal tool: RoB 2 5, ROBINS-I 58, JBI Cross-Sectional 130, MMAT 195, CASP Qualitative 248, AMSTAR 2 18, Legal Framework 430.
-- **Designs able to support a causal claim about a legal/administrative mechanism:** 63 (6%) — 58 quasi-experimental studies and 5 randomised trials (which are 4 distinct trials, see Section 3.4). 32 studies carry a numeric mechanism-certainty of 3 or 4 (the codebook's quasi-experimental or experimental evidence), **but only 10 of them are among the 63 ROBINS-I/RoB 2 studies; the other 22 are other designs, a coding inconsistency the audit flags** (`DATA_QUALITY_AUDIT_2026-09-29.md` §5); 209 sit at level 1 (documented association) and 268 at level 2; 571 carry narrative text instead of a 0–4 code.
-- **Geography** (`country` is free text; 112 studies name several countries or a region and are not counted below): India 124, Brazil 80, South Africa 78, United States 64, Ghana 51, Kenya 47, Mexico 36, Indonesia 30, Bangladesh 24, Nigeria 24. The dissertation's comparison countries are unevenly covered: **Brazil 80, Canada 15 (17 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).**
-- **Legal systems** (rule-based buckets): blank 11, civil law 378, common law 514, mixed / both / customary 178, other 3.
-- **Setting and language:** urban (incl. informal settlements) 514, rural 275, mixed/both 243, peri-urban 27, blank/other 25; English 1003 of 1,084 studies, Spanish 30, Portuguese 21, French 6.
+- **Volume and recency.** 1,080 studies; 913 (85%) published 2010 or later (median year 2018; 30 before 2000).
+- **Design mix** (evidence-map `study_design_class`; the free-text design labels of 334 studies were mapped onto the design list (the eight documented values plus `other`, added for decision-analysis and theoretical models) on 2026-10-14 under open item A20, with the original strings kept in `evidence_map_original_labels_2026-10-14.csv`, so `qualitative` lumps ethnographic, historical, institutional and documentary case studies; no study keeps a free-text label): qualitative 529, mixed-methods 229, observational 143, quasi-experimental 62, doctrinal 54, jurimetric 36, secondary systematic reviews 20, experimental 5, other 2. By appraisal tool: RoB 2 5, ROBINS-I 58, JBI Cross-Sectional 130, MMAT 195, CASP Qualitative 248, AMSTAR 2 18, Legal Framework 426.
+- **Designs able to support a causal claim about a legal/administrative mechanism:** 63 (6%) — 58 quasi-experimental studies and 5 randomised trials (which are 4 distinct trials, see Section 3.4). 32 studies carry a numeric mechanism-certainty of 3 or 4 (the codebook's quasi-experimental or experimental evidence), **but only 10 of them are among the 63 ROBINS-I/RoB 2 studies; the other 22 are other designs, a coding inconsistency the audit flags** (`DATA_QUALITY_AUDIT_2026-09-29.md` §5); 209 sit at level 1 (documented association) and 268 at level 2; 567 carry narrative text instead of a 0–4 code.
+- **Geography** (`country` is free text; 112 studies name several countries or a region and are not counted below): India 122, Brazil 80, South Africa 77, United States 64, Ghana 51, Kenya 47, Mexico 36, Indonesia 30, Bangladesh 24, Nigeria 24. The dissertation's comparison countries are unevenly covered: **Brazil 80, Canada 15 (17 counting multi-country entries), Netherlands 1 (3 counting multi-country entries).**
+- **Legal systems** (rule-based buckets): blank 11, civil law 378, common law 511, mixed / both / customary 177, other 3.
+- **Setting and language:** urban (incl. informal settlements) 512, rural 274, mixed/both 242, peri-urban 27, blank/other 25; English 999 of 1,080 studies, Spanish 30, Portuguese 21, French 6.
 
 ### 3.3 Mechanisms and outcomes addressed
 
@@ -107,24 +107,24 @@ Counts are studies for which the extraction coded the field `TRUE` (a blank is *
 
 | Mechanism coded | Studies | | Outcome coded | Studies |
 |---|---|---|---|---|
-| `institutional_fragmentation` | 624 | | `water_access` | 954 |
-| `discretion_accommodation` | 585 | | `formal_connection` | 563 |
-| `fees` | 538 | | `service_coverage` | 538 |
-| `service_area` | 479 | | `affordability` | 493 |
-| `political_coordination` | 462 | | `sanitation_access` | 420 |
-| `enforcement` | 455 | | `service_reliability` | 368 |
-| `participation` | 418 | | `service_quality` | 291 |
-| `eligibility` | 416 | | `service_continuity` | 243 |
-| `burden` | 413 | | `service_quantity` | 205 |
-| `documentation` | 261 | | `refusal` | 105 |
+| `institutional_fragmentation` | 623 | | `water_access` | 950 |
+| `discretion_accommodation` | 583 | | `formal_connection` | 561 |
+| `fees` | 535 | | `service_coverage` | 535 |
+| `service_area` | 477 | | `affordability` | 490 |
+| `political_coordination` | 461 | | `sanitation_access` | 419 |
+| `enforcement` | 455 | | `service_reliability` | 367 |
+| `participation` | 417 | | `service_quality` | 291 |
+| `eligibility` | 413 | | `service_continuity` | 243 |
+| `burden` | 411 | | `service_quantity` | 205 |
+| `documentation` | 260 | | `refusal` | 104 |
 | `bureaucratic_assistance` | 194 | | `delay_outcome` | 95 |
-| `administrative_review` | 69 | | `application_success` | 74 |
+| `administrative_review` | 69 | | `application_success` | 73 |
 | `complaint` | 124 | |  |  |
 | `judicial_review` | 64 | |  |  |
 | `disconnection` | 104 | |  |  |
 | `reconnection` | 22 | |  |  |
 
-Institutional fragmentation (624), official discretion/accommodation (585) and fees/tariffs (538) are the most frequently coded mechanisms; formal-connection (563) and affordability (493) outcomes are well represented, while sanitation access (420) is coded about half as often as water access (954). Mechanisms concerning redress and review — administrative review (69), judicial review (64), complaint (124), reconnection (22) — and application outcomes (refusal 105, delay 95, success 74) are coded far less often.
+Institutional fragmentation (623), official discretion/accommodation (583) and fees/tariffs (535) are the most frequently coded mechanisms; formal-connection (561) and affordability (490) outcomes are well represented, while sanitation access (419) is coded about half as often as water access (950). Mechanisms concerning redress and review — administrative review (69), judicial review (64), complaint (124), reconnection (22) — and application outcomes (refusal 104, delay 95, success 73) are coded far less often.
 
 ### 3.4 Risk of bias and confidence in the evidence
 
@@ -165,7 +165,7 @@ Per-study results (exposure, outcome, direction, appraisal rating) are tabulated
 
 ### 3.6 Qualitative, doctrinal and mixed-methods evidence
 
-A large part of the evidence base (846 studies by design class, plus 10 with unmapped free-text design labels) is qualitative, mixed-methods or documentary rather than quantitative. Using the mechanism vocabulary adopted on 2026-10-14 (`FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md`, mechanical and unvalidated), studies whose label maps to a single mechanism family are: eligibility status documentation 156, discretion accommodation 118, institutional structure coordination 115, enforcement sanctions 78, fees tariffs subsidies 49, regulatory model ownership 28, participation assistance 22, procedural burden 15, review redress 4; 499 carry several. The mapping is mechanical and unvalidated, so read the counts as indicative only. Examples of qualitative or doctrinal studies with `mechanism_certainty` 2 or higher ("mechanism directly observed" or above), showing the study's own recorded (original) mechanism label beside the adopted family, and the AI-extracted finding text:
+A large part of the evidence base (848 studies by design class, plus 0 with unmapped free-text design labels) is qualitative, mixed-methods or documentary rather than quantitative. Using the mechanism vocabulary adopted on 2026-10-14 (`FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md`, mechanical and unvalidated), studies whose label maps to a single mechanism family are: eligibility status documentation 154, discretion accommodation 118, institutional structure coordination 115, enforcement sanctions 78, fees tariffs subsidies 49, regulatory model ownership 28, participation assistance 22, procedural burden 15, review redress 4; 497 carry several. The mapping is mechanical and unvalidated, so read the counts as indicative only. Examples of qualitative or doctrinal studies with `mechanism_certainty` 2 or higher ("mechanism directly observed" or above), showing the study's own recorded (original) mechanism label beside the adopted family, and the AI-extracted finding text:
 
 | Study | Country | Design | Own recorded mechanism label (original) → adopted family | Extracted finding (truncated) |
 |---|---|---|---|---|
@@ -176,8 +176,8 @@ A large part of the evidence base (846 studies by design class, plus 10 with unm
 
 ### 3.7 Gaps in the evidence base
 
-- **Geographic:** the Netherlands (1 single-country study) and Canada (15) — two of the dissertation's three comparison jurisdictions — are barely represented against Brazil (80); 558 (51%) of studies sit in the ten commonest single countries.
-- **Design:** 5 randomised trials (4 distinct) and 58 quasi-experimental studies against 430 (40%) studies appraised with the project's own non-validated framework (the residual category for designs no published instrument fits, including doctrinal and documentary studies).
+- **Geographic:** the Netherlands (1 single-country study) and Canada (15) — two of the dissertation's three comparison jurisdictions — are barely represented against Brazil (80); 555 (51%) of studies sit in the ten commonest single countries.
+- **Design:** 5 randomised trials (4 distinct) and 58 quasi-experimental studies against 426 (39%) studies appraised with the project's own non-validated framework (the residual category for designs no published instrument fits, including doctrinal and documentary studies).
 - **Mechanisms/outcomes:** redress and review mechanisms and application-process outcomes are thinly coded (see Section 3.3); sanitation access less than water.
 - **Retrieval:** 1,382 title/abstract includes were never assessed. Their median publication year is 2014 versus 2018 for assessed records; 8.9% were published before 2000 versus 3.0%, and 30.8% in 2020 or later versus 42.7% — the unassessed set is older, so the corpus under-represents earlier literature.
 
@@ -195,9 +195,9 @@ A large part of the evidence base (846 studies by design class, plus 10 with unm
 ## 5. Limitations
 
 - **Incomplete full-text screening.** 1,382 of 3,659 records (37.8%) were not assessed, and those not assessed are older on average; the review is not exhaustive and may under-represent earlier literature.
-- **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only 197 full-text includes were human-confirmed, 73 decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked. A blind re-read by two non-Claude models (Codex, Gemini) of 70 of the AI's full-text excludes (a stratified sample, limited to records whose PDF was available) judged 34 of them to be includes; this is an AI-versus-AI check, it was not human-adjudicated, and, scaled by exclusion code, the rate would imply roughly 531 further includes if the models were right, and an AI triage of the same records puts about 37 under a narrow reading of the criteria (arithmetic only), so the exclusion log may understate the eligible literature substantially; in the other direction, the models would exclude 3 of 40 sampled unconfirmed includes, roughly 67 of the unconfirmed includes if the rate held (open item A16; `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`).
+- **AI-conducted judgments with partial verification.** Screening decisions, extraction, appraisal and coding of direction of association were made by the same AI system; only 197 full-text includes were human-confirmed, 73 decided rows carry no recorded reviewer, and the title/abstract exclusions were not human-checked. A blind re-read by two non-Claude models (Codex, Gemini) of 70 of the AI's full-text excludes (a stratified sample, limited to records whose PDF was available) judged 34 of them to be includes; this is an AI-versus-AI check, it was not human-adjudicated, and, scaled by exclusion code, the rate would imply roughly 532 further includes if the models were right, and an AI triage of the same records puts about 37 under a narrow reading of the criteria (arithmetic only), so the exclusion log may understate the eligible literature substantially; in the other direction, the models would exclude 3 of 40 sampled unconfirmed includes, roughly 66 of the unconfirmed includes if the rate held (open item A16; `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md`).
 - **Thin extraction for some studies.** 10 studies were extracted from abstract or metadata only; there was no second extractor. The AI re-read 127 studies from full texts after the first extraction (an AI check of AI work, not independent verification); in 9 of the 76 sparse-audit rows among them the abstract-level extraction was materially wrong or incomplete (`CAMPAIGN_NOTES.md`).
-- **Appraisal validity.** Ratings are rule-based; 430 studies were appraised with a non-validated project instrument; 51 of 130 JBI ratings are 'high concern' largely reflecting sparse extraction; only 18 of 18 AMSTAR 2 reviews could be given a confidence rating (17 Critically Low and 1 Low).
+- **Appraisal validity.** Ratings are rule-based; 426 studies were appraised with a non-validated project instrument; 51 of 130 JBI ratings are 'high concern' largely reflecting sparse extraction; only 18 of 18 AMSTAR 2 reviews could be given a confidence rating (17 Critically Low and 1 Low).
 - **No pooled estimate.** Direction-of-association syntheses rest on 59 effect-size rows and are neither effect estimates nor certainty-graded (GRADE).
 - **Uncontrolled classifications.** Free-text country, legal-system, mechanism and outcome fields; a proposed controlled vocabulary is a mechanical draft.
 - **Search scope.** SSRN and Westlaw/Lexis were not searched (`README.md`, Known limitations).
@@ -211,20 +211,20 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 ### 5.2 Incomplete screening
 
 - Full-text retrieval closed at 62.2%: 1,382 of 3,659 records (1,200 not retrievable, 182 wrong file delivered) were never assessed, and the unassessed set is systematically older (Section 3.7). Some may be duplicates of included studies, some not eligible; the direction of any bias is unknown.
-- 151 of the 1,193 full-text excludes are E10 (inaccessible text), i.e. never judged on content.
+- 151 of the 1,197 full-text excludes are E10 (inaccessible text), i.e. never judged on content.
 - Every full-text decision is the AI's; a human confirmed 197 includes (S001–S200) and no excludes; 73 decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).
-- **An AI-versus-AI check found many contested excludes.** Two non-Claude models (Codex, Gemini), blind to the original decision, re-read 121 full-text decisions whose PDF was available; of the 70 the AI had excluded, 34 were judged includes (concentrated in E01 wrong topic and E06 engineering only). This was not human-adjudicated, the models may read the criteria too loosely, and nothing was changed; scaled by exclusion code the rate would imply roughly 531 further includes if the models were right, and about 37 even under a narrow reading of criterion 2 by an AI triage of the same records (arithmetic only, against 1,084 current includes); if even a fraction are eligible, the exclusion log and every count built on it are understated. In the other direction the models would exclude 3 of 40 sampled includes beyond S001–S200, roughly 67 (range 23–176) of the unconfirmed includes if the rate held — a precision question that the human second-screening of includes would settle. The researcher's reading list is `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md` (open item A16).
+- **An AI-versus-AI check found many contested excludes.** Two non-Claude models (Codex, Gemini), blind to the original decision, re-read 121 full-text decisions whose PDF was available; of the 70 the AI had excluded, 34 were judged includes (concentrated in E01 wrong topic and E06 engineering only). This was not human-adjudicated, the models may read the criteria too loosely, and nothing was changed; scaled by exclusion code the rate would imply roughly 532 further includes if the models were right, and about 37 even under a narrow reading of criterion 2 by an AI triage of the same records (arithmetic only, against 1,080 current includes); if even a fraction are eligible, the exclusion log and every count built on it are understated. In the other direction the models would exclude 3 of 40 sampled includes beyond S001–S200, roughly 66 (range 23–175) of the unconfirmed includes if the rate held — a precision question that the human second-screening of includes would settle. The researcher's reading list is `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md` (open item A16).
 - At title/abstract stage the human second pass covered the 3,665 include-plus-unsure records only; the 22,557 records the AI excluded were not human-checked, so any wrongly excluded record is invisible to this review. The 99.8% agreement on the reviewed set is unusually high and was flagged by the project itself. (`AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` say "all records"; that wording should be checked against the README, which is narrower.)
 
 ### 5.3 Missing or thin data
 
-- 10 studies were extracted from abstract or metadata only (0.9%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found 54 more rows with at least one sign of shallow extraction — 0 whose own notes say only the abstract or citation was read and 15 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 1 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.
+- 10 studies were extracted from abstract or metadata only (0.9%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found 53 more rows with at least one sign of shallow extraction — 0 whose own notes say only the abstract or citation was read and 15 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 1 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.
 - 51 of 130 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
 - Of 59 effect-size rows, 8 give a confidence interval and 26 a standard error; estimates are as the papers report them and none is pooled.
 
 ## 6. Conclusion
 
-The evidence assembled here shows that legal and administrative conditions are studied in association with water and sanitation access across a wide range of settings, most often descriptively and rarely with designs able to support causal claims (63 of 1,084 studies). Where quantitative estimates exist they are too heterogeneous to pool, and their direction is most consistent for legal-status, tenure and recognition mechanisms and for assistance and participation mechanisms, least consistent for ownership, regulation and administrative-structure mechanisms. These statements are provisional: extraction and appraisal were AI-conducted and only partly verified, screening of the full-text pool is incomplete, and the protocol was not registered in advance. The review does not establish the *legal last mile* as a general mechanism; it describes where evidence exists, where it is thin, and what a human-verified update would need to check first. [Author to revise.]
+The evidence assembled here shows that legal and administrative conditions are studied in association with water and sanitation access across a wide range of settings, most often descriptively and rarely with designs able to support causal claims (63 of 1,080 studies). Where quantitative estimates exist they are too heterogeneous to pool, and their direction is most consistent for legal-status, tenure and recognition mechanisms and for assistance and participation mechanisms, least consistent for ownership, regulation and administrative-structure mechanisms. These statements are provisional: extraction and appraisal were AI-conducted and only partly verified, screening of the full-text pool is incomplete, and the protocol was not registered in advance. The review does not establish the *legal last mile* as a general mechanism; it describes where evidence exists, where it is thin, and what a human-verified update would need to check first. [Author to revise.]
 
 ### 6.1 Implications for research and practice
 

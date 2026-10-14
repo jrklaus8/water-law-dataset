@@ -53,8 +53,8 @@ def main():
     F = cf.compute()
     ed, em = cf.read('ed'), cf.read('em')
     n = len(ed)
-    enum = {'experimental', 'quasi_experimental', 'observational', 'qualitative', 'doctrinal', 'jurimetric', 'systematic_review_secondary', 'mixed_methods'}
-    dc = Counter(r['study_design_class'] if r['study_design_class'] in enum else 'free-text label (outside the 8-value list)' for r in em)
+    enum = {'experimental', 'quasi_experimental', 'observational', 'qualitative', 'doctrinal', 'jurimetric', 'systematic_review_secondary', 'mixed_methods', 'other'}
+    dc = Counter(r['study_design_class'] if r['study_design_class'] in enum else 'free-text label (outside the design list)' for r in em)
     items = sorted(dc.items(), key=lambda kv: -kv[1])
     hbar([k.replace('_', ' ') for k, _ in items], [v for _, v in items], BLUE, 'fig1_design_mix', f'Study designs in the {n:,} included studies',
          'Evidence-map design class; only quasi-experimental and experimental designs can support a causal claim', 'Studies')

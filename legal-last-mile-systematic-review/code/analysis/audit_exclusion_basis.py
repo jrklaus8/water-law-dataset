@@ -74,7 +74,10 @@ SETTLED = {
     'R155FFF508359': 'A19, 2026-10-14: exclusion confirmed, re-coded E01 to E07 (irrigation, a wrong service)',
     'RA1F6E143593E': 'A19, 2026-10-14: exclusion confirmed, re-coded E01 to E07 (irrigation, a wrong service)',
     'RAB6AA06D8E9D': '2026-10-09: no full article exists (the Europe PMC record is an abstract), E09 stands',
+    'R59D021BE3315': "A22 residue ruling 2026-10-14 (this record is S264, Joy et al. 2014): E05, a conceptual and normative water-justice paper illustrated with Indian evidence; the Drive file is only the Wageningen portal page (re-read 2026-10-14), whose abstract confirms it",
+    'RCB78D4EF3652': "2026-10-14: E04 confirmed from the abstract on file (the outcome is how a changing water-service model is read by users and utilities in Greater Paris, where network access is already general; no household access outcome), so no Drive text is needed",
 }
+# 2026-10-14 (PI ruling): the 17 status-only excludes with a real Drive PDF and the 16 includes with a stale status were set to 'retrieved' by fix_stale_fulltext_status_batch_2026-10-14.py, so they no longer appear below.
 FIELDS = ['group', 'record_id', 'year', 'exclusion_code', 'title', 'basis_phrase', 'in_A16_sheet', 'reason_excerpt', 'drive_check']
 STATUS_CONTRADICTS = ('not_retrievable', 'oa_pdf_candidate', 'oa_page_candidate')  # a decided record whose recorded status says no full text was obtained (or only located, not downloaded)
 GROUPS = {'substantive': 'substantive exclusion (E01-E07, E09, E12) decided without a read full text', 'E10': 'E10 inaccessible (expected to say so)', 'E08': 'E08 duplicate (expected to say so)'}
@@ -140,7 +143,10 @@ def build():
           f"{len(sett)} of the {len(core)} substantive and status-contradicting excludes are settled by a ruling ({len(opn)} remain open); R803988411D3E left the exclusions altogether (A19 normalised it to `not_retrievable`, 2026-10-14).", '']
     L += [f"- Settled: **{r['record_id']}** ({r['exclusion_code']}) — {SETTLED[r['record_id']]}" for r in sett]
     L += [f"- Open: **{r['record_id']}** ({r['exclusion_code']}, {r['group']}) — {r['title'][:70]}" for r in opn if r['group'] == 'substantive']
-    L += [f"- Open (status_exclude, {sum(1 for r in opn if r['group'] == 'status_exclude')} records): see the table above; {sum(1 for r in opn if r['group'] == 'status_exclude' and 'status field stale' in r['drive_check'])} have a real PDF in Drive (stale status), the rest were not checked or are portal pages."]
+    n_so = sum(1 for r in opn if r['group'] == 'status_exclude')
+    if n_so:
+        L += [f"- Open (status_exclude, {n_so} records): see the table above; {sum(1 for r in opn if r['group'] == 'status_exclude' and 'status field stale' in r['drive_check'])} have a real PDF in Drive (stale status), the rest were not checked or are portal pages."]
+    L += ['', '17 status-only excludes with a real Drive PDF and 16 includes with a stale status were corrected to `retrieved` on 2026-10-14 (they drop out of the tables above).']
     return rows, '\n'.join(L) + '\n'
 
 

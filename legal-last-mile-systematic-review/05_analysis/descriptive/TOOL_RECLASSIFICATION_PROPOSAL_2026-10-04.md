@@ -11,7 +11,7 @@
 
 | Tool | Now | After the proposal |
 |---|---|---|
-| Legal Framework | 430 | 430 |
+| Legal Framework | 426 | 426 |
 | CASP Qualitative | 248 | 248 |
 | MMAT | 195 | 195 |
 | JBI Cross-Sectional | 130 | 130 |
