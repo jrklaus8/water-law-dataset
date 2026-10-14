@@ -13,6 +13,7 @@ const byId = <T extends { id: string }>(xs: T[]) => Object.fromEntries(xs.map((x
 
 export interface ProjectConfig {
   project: { id: string; title: string; subtitle?: string; researcher: string; institution: string; status: string; summary?: string; repository_url?: string; citation?: string; disclaimer?: string }
+  cover?: { title: string; lead: string; disclosure?: string; sections: { heading: string; body: string[]; bullets?: string[] }[] }
   labels: { jurisdictions: Record<string, string>; topics: Record<string, string>; governance_categories?: Record<string, string> }
 }
 export interface Chapter { id: string; title: string; status: string; research_questions?: string[]; claim_ids?: string[]; experiment_ids?: string[]; source_ids?: string[] }

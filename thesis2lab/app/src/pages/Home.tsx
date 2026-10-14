@@ -9,6 +9,7 @@ export function HomePage() {
   experimentList.forEach((m) => { const s = statusOf(m).status; counts[s] = (counts[s] ?? 0) + 1 })
   return (
     <>
+      <div className="callout warn" role="note"><p><strong>An exploration based on partial studies.</strong> The thesis is not written and part of the evidence is missing or synthetic. <a href={href('cover')}>Read this first</a> to see what this is, what AI did and did not do, and how to read the results.</p></div>
       <section className="hero">
         <p className="eyebrow">Interactive research laboratory</p>
         <h1 tabIndex={-1}>{config.project.title}</h1>

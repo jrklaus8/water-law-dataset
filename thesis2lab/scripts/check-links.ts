@@ -18,7 +18,7 @@ for (const f of md) {
     if (!existsSync(target)) bad.push(`${relative(ROOT, f)} -> ${m[1]}`)
   }
 }
-const routes = new Set(['', 'thesis', 'lab', 'evidence', 'compare', 'methods', 'versions', 'about'])
+const routes = new Set(['', 'cover', 'thesis', 'lab', 'evidence', 'compare', 'methods', 'versions', 'about'])
 const app = readFileSync(p('app/src/App.tsx'), 'utf8')
 for (const m of app.matchAll(/path: '([^']*)'/g)) if (!routes.has(m[1])) bad.push(`App.tsx navigation names unknown route ${m[1]}`)
 if (bad.length) { console.error('Broken links:\n  ' + bad.join('\n  ')); process.exit(1) }

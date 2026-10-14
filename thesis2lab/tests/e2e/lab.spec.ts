@@ -101,7 +101,7 @@ test('unknown experiment id fails gracefully', async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Experiment not found' })).toBeVisible()
 })
 
-for (const route of ['', 'thesis', 'lab', 'lab/EXP-001', 'lab/EXP-002', 'lab/EXP-003', 'evidence', 'compare', 'methods', 'versions', 'about']) {
+for (const route of ['', 'cover', 'thesis', 'lab', 'lab/EXP-001', 'lab/EXP-002', 'lab/EXP-003', 'evidence', 'compare', 'methods', 'versions', 'about']) {
   test(`accessibility (axe, WCAG 2 A/AA): /${route}`, async ({ page }) => {
     await page.goto(`/#/${route}`)
     await page.waitForLoadState('networkidle')
@@ -129,3 +129,12 @@ for (const route of ['', 'lab/EXP-002', 'evidence']) {
     expect(r.violations.map((v) => `${v.id}: ${v.nodes.map((n) => n.target.join(' ')).join(' | ')}`)).toEqual([])
   })
 }
+
+test('cover page explains partial basis and AI role, and home links to it', async ({ page }) => {
+  await page.goto('/')
+  await page.getByRole('link', { name: 'Read this first' }).first().click()
+  await expect(page.getByRole('heading', { level: 1, name: 'Read this first' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'It is based on partial studies' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What AI was used for' })).toBeVisible()
+  await expect(page.getByText('does not call any AI service')).toBeVisible()
+})

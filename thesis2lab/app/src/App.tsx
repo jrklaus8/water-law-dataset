@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { config } from './lib/registry'
 import { href, useRoute } from './lib/router'
 import { AboutPage } from './pages/About'
+import { CoverPage } from './pages/Cover'
 import { ComparePage } from './pages/Compare'
 import { EvidencePage } from './pages/Evidence'
 import { ExperimentPage } from './pages/Experiment'
@@ -12,7 +13,7 @@ import { ThesisPage } from './pages/Thesis'
 import { VersionsPage } from './pages/Versions'
 
 const NAV: { path: string; label: string }[] = [
-  { path: '', label: 'Home' }, { path: 'thesis', label: 'Thesis' }, { path: 'lab', label: 'Laboratory' }, { path: 'evidence', label: 'Evidence' },
+  { path: '', label: 'Home' }, { path: 'cover', label: 'Read first' }, { path: 'thesis', label: 'Thesis' }, { path: 'lab', label: 'Laboratory' }, { path: 'evidence', label: 'Evidence' },
   { path: 'compare', label: 'Compare' }, { path: 'methods', label: 'Methods' }, { path: 'versions', label: 'Versions' }, { path: 'about', label: 'About' },
 ]
 
@@ -26,6 +27,7 @@ function Page({ route }: { route: string[] }) {
     case 'compare': return <ComparePage />
     case 'methods': return <MethodsPage />
     case 'versions': return <VersionsPage />
+    case 'cover': return <CoverPage />
     case 'about': return <AboutPage />
     default: return <section><h1 tabIndex={-1}>Page not found</h1><p><a href={href()}>Return home</a></p></section>
   }
