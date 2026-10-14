@@ -1,7 +1,7 @@
-"""2026-10-14: the SWiM core verification table (after the A26 rulings: Family A 16, B 6, C 17 = 39 studies of the 58 rows of effect_sizes.csv; the 19 reasoned non-fits are not in the three syntheses; it had 44 rows before A26).
+"""2026-10-14: the SWiM core verification table (after the A26 and A29 rulings: Family A 16, B 5, C 16 = 37 studies of the 58 rows of effect_sizes.csv; the 21 reasoned non-fits are not in the three syntheses; it had 44 rows before A26 and 39 before A29).
 One row per study with the exposure against its comparator, the outcome, the estimate, the raw coefficient sign and the substantive direction for household access (both from SWIM_DIRECTION_CODING_2026-10-14.csv, which is also what the
 three family documents and the sensitivity analysis carry; a test checks they agree), the risk-of-bias tool and rating now in extraction_database.csv, whether the inclusion decision is human-verified (a 'Human-' confirmation or a CK ruling),
-and whether the AI checked the row against the full text (FULLTEXT_VERIFICATION_2026-10-04.csv). The ck_* columns come from SWIM_CK_CHECKS_2026-10-14.csv (the author's confirmations of 2026-10-14 for the 20 studies that passed the scope and outcome check; blank for the 10 flagged for A28 and for the 9 studies whose inclusion was confirmed earlier, whose direction coding nobody has checked yet).
+and whether the AI checked the row against the full text (FULLTEXT_VERIFICATION_2026-10-04.csv). The ck_* columns come from SWIM_CK_CHECKS_2026-10-14.csv (the confirmations recorded on 2026-10-14 for the 18 studies that passed the AI's scope and outcome check (recorded under the author's instruction; the author has not yet re-read their papers, see SWIM_37_SOURCE_VERIFICATION_DOSSIER.md); blank for the 10 flagged for A28 and for the 9 studies whose inclusion was confirmed earlier, whose direction coding nobody has checked yet).
 READ-ONLY on every database. Writes 05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.{csv,md}; a rebuild keeps the ck_* columns because they are merged from the checks file.
 Run from legal-last-mile-systematic-review/."""
 import csv, os, re, sys
@@ -33,7 +33,6 @@ S = {
  'S085': ('Bureaucratic assistance (T1) with political coordination (T2)', 'control, no assistance', 'full formalisation of land/connection', '+19 pp (T1 with T2)'),
  'S294': ('Community-driven WASH with institutional strengthening (cluster RCT, DRC)', 'control villages', 'diarrhoea, child growth, WASH-institutions index', 'diarrhoea -0.01 (-0.05, 0.03); LAZ -0.01 (-0.15, 0.12)'),
  'S1102': ('Capital-cost contribution and meeting attendance (India)', 'non-contributors', 'water improvements index', 'difference 1.04 (t=4.26)'),
- 'S1140': ('Network capital: number of partners (Nepal RWSSP)', 'fewer partners', 'funding success', 'log-odds 0.55*** (SE 0.10) per partner'),
  'S1144': ('Social-proximity trust in NGOs/CBOs (Kampala)', 'lower trust', 'access to NGO-supplied sanitation', 'coef 7.01 (SE 1.35); ME 1.01'),
  'S1163': ('External WASH-programme support to rural schools (14 LMICs)', 'no support', 'basic on-premises water service', 'OR 1.4 (1.1-1.7)'),
  'S174': ('Municipal institutional capacity (Brazil)', 'lower-capacity municipalities', 'water and sanitation coverage', 'coef 6.02 (SE 1.02) financial factor'),
@@ -49,7 +48,6 @@ S = {
  'S1032': ('Contact with the municipality or an NGO for redress (Ahmedabad)', 'no contact', 'household water complaints', 'OR 0.60* (municipal); 0.56* (NGO)'),
  'S1038': ('State PUC economic regulation of a municipal utility (U.S.; reported contrast)', 'local-only regulation', 'monopoly welfare loss, % of residential bill', '5.2% vs 9.6% (difference -4.6 pp)'),
  'S1062': ('O&M cost-recovery ratio (Sub-Saharan utilities)', 'lower cost-recovery ratios', 'coverage change', 'positive, then negative (inverted U)'),
- 'S1136': ("Political capture: Gram Panchayat head's village or politician's road (India)", 'other roads', 'paved road, drain, cleanliness', 'paved 0.053***; drain 0.037**'),
  'S1146': ('Regional utilities-sector corruption (Afrobarometer)', 'regions with none', 'access to enough clean water', 'negative marginal effect (probit)'),
  'S1162': ('Municipality or town panchayat (India)', 'municipal corporations', 'water access, %', '-4.06 pp (SE 1.25), p<0.01'),
  'S1169': ('Price-regulated water provider (Texas colonias)', 'unregulated provider', 'colonia has water service', 'coef -1.19 (SE 0.42); ME -27 pp'),
@@ -62,7 +60,7 @@ coding = {r['study_id']: r for r in csv.DictReader(open('05_analysis/effect_size
 signs = {f: sa.parse_signs(f) for f in 'ABC'}
 subst = {f: sa.parse_substantive(f) for f in 'ABC'}
 fam_rows = [(f, s) for f in 'ABC' for s in sorted((x for x in es if es[x]['synthesis_family'] == f), key=lambda x: int(x[1:]))]
-assert len(fam_rows) == 39 and {s for _, s in fam_rows} == set(S) == set(coding), sorted({s for _, s in fam_rows} ^ set(S))
+assert len(fam_rows) == 37 and {s for _, s in fam_rows} == set(S) == set(coding), sorted({s for _, s in fam_rows} ^ set(S))
 SIGN_WORD = {'+': 'positive', '-': 'negative', 'null': 'null', 'mixed': 'mixed'}
 for f, s in fam_rows:   # the family documents, the sensitivity analysis and this table must carry the same two codings
     assert signs[f][s] == SIGN_WORD[coding[s]['raw_coefficient_sign']] and subst[f][s] == coding[s]['substantive_direction'].lower(), (f, s)
@@ -120,12 +118,12 @@ for fam, s in fam_rows:
 fields = list(rows[0])
 with open(OUT + '.csv', 'w', newline='', encoding='utf-8') as fh:
     w = csv.DictWriter(fh, fieldnames=fields, lineterminator='\r\n'); w.writeheader(); w.writerows(rows)
-L = ['# SWiM core verification table: the 39 family-assigned effect rows (A 16, B 6, C 17)', '',
-     '*Generated by `code/provenance/audit_and_repair/build_swim_core_verification_table_2026-10-14.py`; read-only. Before the author\'s A26 rulings of 2026-10-14 it had 44 rows: S358 and S590 and S606 became reasoned non-fits, S1121 and S1143 were excluded. '
+L = ['# SWiM core verification table: the 37 family-assigned effect rows (A 16, B 5, C 16)', '',
+     '*Generated by `code/provenance/audit_and_repair/build_swim_core_verification_table_2026-10-14.py`; read-only. Before the author\'s A26 and A29 rulings of 2026-10-14 it had 44 rows: S358, S590 and S606 became reasoned non-fits under A26, S1121 and S1143 were excluded, and S1140 and S1136 became reasoned non-fits under A29. '
      'Two direction columns, because the raw sign of a coefficient and its meaning for households are different things (`SWIM_DIRECTION_CODING_2026-10-14.csv`, the AI\'s coding): **Raw sign** is the sign of the reported estimate for the contrast it reports (ratio above 1 = +, below 1 = -; null = not significant); '
      '**Substantive** is Favourable / Unfavourable / Null / Mixed for household access, affordability or equity, derived from the raw sign, the polarity of the outcome (is a higher value better or worse?) and the pole of the exposure. '
      '† = the exposure is a non-recognised status and the contrast is restated to the recognised pole (S084, S142, S1122); ‡ = the fully adjusted estimate gives a different direction (S471: Null); '
-     '◊ = the outcome is not a household access measure (S1136 and S1140, kept by the author). **Human-verified** is the inclusion decision only (a Human- confirmation or a CK ruling). **CK check** is the author\'s confirmation of 2026-10-14 of the inclusion and of both direction codings '
+     '**Human-verified** is the inclusion decision only (a Human- confirmation or a CK ruling). **CK check** is the confirmation recorded on 2026-10-14 of the inclusion and of both direction codings (for the studies that passed the AI\'s check it was recorded under the author\'s instruction and the author has not yet re-read the paper; see `SWIM_37_SOURCE_VERIFICATION_DOSSIER.md`) '
      '(`SWIM_CK_CHECKS_2026-10-14.csv`): confirmed for the studies that passed the AI\'s narrow-scope and outcome check, **flagged** for the ten that did not (open item A28, not confirmed), blank for the nine whose inclusion was confirmed earlier and whose direction coding has not been checked. '
      'The effect estimates were extracted and checked against the full texts by the AI; no estimate has been verified by a human. The CSV also carries the polarity, the exposure pole, the notes and the ck_* columns.*', '',
      '| ID | Author (Year) | Fam | Exposure vs comparator | Outcome | Estimate | Raw sign | Substantive | RoB | Human-verified | CK check |', '|---|---|---|---|---|---|---|---|---|---|---|']

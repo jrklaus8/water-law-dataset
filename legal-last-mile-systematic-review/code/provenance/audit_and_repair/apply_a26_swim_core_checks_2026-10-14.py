@@ -4,7 +4,7 @@ The instruction was to confirm the remaining unconfirmed SWiM core studies (incl
 narrow reading of criterion 2 (a legal or administrative access rule or mechanism, not project delivery, participation, attitudes or unanalysed macro-governance) and against criterion 4 (a household or community access outcome), using the same
 categories the author used in the A24 recheck (Group 3: community management, participation, NGO or partnership, or programme delivery; Groups 4 and 5: macro-governance, institutional context). 20 pass and are confirmed here; 10 carry a red
 flag and are NOT confirmed: they go to 02_screening/full_text/A28_SWIM_FLAGGED_CK_SHEET_2026-10-14.csv for the author's ruling (include = keep, exclude + code = reverse, applied with apply_a16_adjudications.py).
-S1140 and S1136 pass by the author's own A26 ruling (kept in their families). Nine other core studies were already human-verified (S001-S200 confirmations or CK rulings) and are untouched, and their direction coding stays unchecked.
+S1140 and S1136 were listed here as passing by the author's own A26 ruling (kept in their families); the A29 ruling of 2026-10-14 moved both to the reasoned non-fits, so they are no longer in the SWiM families and no longer in this list (their A26 notes in the full-text database stay, with an A29 note after them). Nine other core studies were already human-verified (S001-S200 confirmations or CK rulings) and are untouched, and their direction coding stays unchecked.
 
 What it writes: (1) 05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv (the status of every one of the 30, which the verification-table builder merges into its ck_* columns); (2) a dated note on each full-text row ('A26 ruling 2026-10-14 by CK: confirms ...' for the 20,
 'A26 scope check (AI) ...: flagged, not confirmed' for the 10) and reviewer_2 = 'CK' on the confirmed rows whose reviewer_2 is blank (S1062 keeps its Codex second-model label and the confirmation is in the note, as for the A6 tier-1 rows);
@@ -27,7 +27,6 @@ CONFIRM = {   # study: why it passes
  'S882': 'exposure is a formal metered connection that requires a connection fee; outcomes are household water-security measures',
  'S930': 'exposure is the legal recognition of customary-law governance (the 1995 Oaxaca reform); outcome is sewerage access',
  'S1122': 'exposure is legal zoning and tenure status; outcome is the time to first piped-water access',
- 'S1140': 'kept in Family B by the author (A26): application-process outcome, which the protocol lists',
  'S470': 'exposure is a regulator\'s enforcement norm on an income-eligibility social tariff; outcome is social-tariff implementation',
  'S471': 'exposure is the form of local government that owns the utility; outcome is the water bill; the primary estimate is kept in the main count by the author (A26)',
  'S526': 'exposure is utility ownership and the rate-setting regime; outcome is price progressivity',
@@ -39,7 +38,6 @@ CONFIRM = {   # study: why it passes
  'S1032': 'exposure is use of an administrative redress channel (municipal corporation or NGO); outcome is household water complaints',
  'S1038': 'exposure is state versus local economic regulation of the utility; outcome is welfare loss in the bill; exposure and comparator corrected by the author\'s A26 ruling',
  'S1062': 'exposure is the O&M cost-recovery policy; outcome is the change in water-supply coverage',
- 'S1136': 'kept in Family C by the author (A26): distribution of public sanitation infrastructure under political capture of a mandated local-government function',
  'S1162': 'exposure is the legal administrative category of the urban local government; outcome is growth in household water coverage',
 }
 FLAG = {      # study: (red flag, the AI's pointer for the author)
@@ -54,7 +52,7 @@ FLAG = {      # study: (red flag, the AI's pointer for the author)
  'S947': ('the exposure is the national World Bank regulation-quality index across 44 countries: macro-governance, as in S348 and S969 (excluded E03, effect rows removed)', 'E03'),
  'S1146': ('the exposure is the regional incidence of utilities-sector corruption (a governance-quality measure, cf. S348) rather than a rule or mechanism of access', 'E03, or keep'),
 }
-EXPECT_OK = 20
+EXPECT_OK = 18   # 20 until the A29 ruling moved S1140 and S1136 out of the families
 assert len(CONFIRM) == EXPECT_OK and len(FLAG) == 10 and not set(CONFIRM) & set(FLAG)
 
 

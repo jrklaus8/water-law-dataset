@@ -19,7 +19,7 @@ checks that the current-status documents quote these values. If a document disag
 | Further decided rows ruled on by the PI under reviewer CK (adjudication passes, A6 and the A26 SWiM core confirmations) | 270 (166 excludes, 104 includes) |
 | Includes confirmed by the PI in A6 as borderline (thin rule-type link; flagged, not removed) | 13 |
 | Full-text rows with human verification or adjudication, in all / share of decided rows | 467 / 20.5% |
-| SWiM core: studies in the three families / with a human-verified inclusion decision / with both direction codings confirmed by the author / flagged and awaiting the author | 39 / 29 / 20 / 10 |
+| SWiM core: studies in the three families / with a human-verified inclusion decision / with both direction codings confirmed by the author / flagged and awaiting the author | 37 / 27 / 18 / 10 |
 | Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | 112 / 31 |
 
 ## Extraction and classification
@@ -59,5 +59,5 @@ Tool-applicable studies (all tools except NONE): 1,078; unrated among them: 0. N
 
 ## Effect sizes
 
-58 rows (58 from quantitative-synthesis-eligible studies, 0 from a study not flagged eligible); by family: (none: reasoned non-fit) 19, A 16, B 6, C 17; rows pooled: 0.
+58 rows (58 from quantitative-synthesis-eligible studies, 0 from a study not flagged eligible); by family: (none: reasoned non-fit) 21, A 16, B 5, C 16; rows pooled: 0.
 

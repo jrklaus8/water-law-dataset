@@ -10,7 +10,7 @@ Scenarios (each applied to the study lists in the SWiM documents):
   S2 drop effect-size rows for studies not flagged quantitative_synthesis_eligible   (S589)
   S3 collapse linked reports that share underlying data     (linked_reports_2026-09-28.csv, same_underlying_data = yes)
   S4 drop the coding judgment call in Family A               (S404: a lower water-poverty score read as favourable; S358, the other call, left the families under A26)
-  S4b drop the two kept studies whose outcome is not a household access measure (S1140 funding success, S1136 road-level infrastructure; the author's A26 ruling of 2026-10-14 kept them, and moved S358 and S590 to the reasoned non-fits and excluded S1121)
+  (S4b, which dropped S1140 and S1136, was retired on 2026-10-14: the A29 ruling moved both to the reasoned non-fits, so the primary count already excludes them. Scenario labels are not renumbered, so dated documents still point at the right scenario.)
   S4c recode S471 as Null            (its fully adjusted estimate is not significant; the primary estimate is the organisation-only model, kept in the main count by the author)
   S4e recode S879 as Null            (household water access alone was null; payment compliance, a utility-side outcome, rose by 30 percentage points; kept as Mixed in the main count by the author)
   S5 S1 to S4c and S4e together
@@ -75,7 +75,6 @@ def parse_concordance():
     return {i: {'favourable': 'concordant', 'unfavourable': 'counter', 'null': 'null', 'mixed': 'mixed'}[v] for i, v in parse_substantive('A').items()}
 
 
-INDIRECT_OUTCOME = {'S1140', 'S1136'}   # no household access measure in the extraction or the cached full text (checked 2026-10-14); kept by the author (A26)
 RECODE_S471 = {'S471'}                  # primary estimate significant, fully adjusted estimate not
 RECODE_S879 = {'S879'}                  # household access alone null, payment compliance up
 FAVOURABLE_IF = {('positive', 'favourable'), ('negative', 'unfavourable')}   # sign and valence agree: '+' is Favourable and '-' is Unfavourable
@@ -104,7 +103,6 @@ def scenarios():
         'S2 drop rows for studies not flagged eligible': not_eligible,
         'S3 collapse linked reports (same underlying data)': collapse_drop,
         'S4 drop the Family A coding judgment call (S404; S358 left the families under A26)': {'S404'},
-        'S4b drop the two kept studies with no household access outcome (S1140, S1136)': INDIRECT_OUTCOME,
         'S4c recode S471 as Null (fully adjusted estimate not significant)': set(),
         'S4e recode S879 as Null (household water access alone)': set(),
     }
@@ -196,7 +194,7 @@ def render(rows, abstract_only, not_eligible, collapse_drop, signs):
     L += ["", "Tests: **A** — more than half of the studies are Favourable (concordant with \"recognition/eligibility improves access\") in the substantive-direction table;",
           "**B** — no study is Unfavourable or Null in substantive direction; **C** — no single category holds a majority, by raw coefficient sign and by substantive direction. "
           "The raw sign is the sign of the reported estimate; the substantive direction is its meaning for household access, affordability or equity once the outcome polarity and the exposure pole are taken into account "
-          "(`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4b** drops the two kept studies whose outcome is not a household access measure (S1140, S1136); **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; **S4e** recodes S879 as Null (household water access alone was null; the 30-point rise was in payment compliance); "
+          "(`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; **S4e** recodes S879 as Null (household water access alone was null; the 30-point rise was in payment compliance); "
           "**S4d** keeps only the studies where the two readings agree ('+' is Favourable, '-' is Unfavourable), which tests whether the Family A and C conclusions depend on the inverted-outcome and restated-pole judgments.", "",
           f"## Descriptive counts with the {len(abstract_only)} abstract-only extractions removed", "",
           f"Studies: {n_all:,} → {n_kept:,}. Risk-of-bias tool distribution:", "", "| Tool | All | Without abstract-only | Change |", "|---|---|---|---|"]

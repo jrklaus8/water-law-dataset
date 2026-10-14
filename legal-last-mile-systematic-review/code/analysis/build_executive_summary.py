@@ -333,6 +333,7 @@ def build():
     b_k, b_rest = base['B_k'], ill['B']['k']
     top3 = D['mech'].most_common(3)
     country = D['country']
+    geo = bmp.geography_framing(F)
     doc = Document()
     z = doc.settings.element.find(qn('w:zoom'))
     if z is not None and z.get(qn('w:percent')) is None:
@@ -350,7 +351,8 @@ def build():
     para(doc, '**Executive summary of preliminary findings (partial report)**', size=13, after=2, color=NAVY)
     para(doc, f'AI-assisted systematic review of legal and administrative conditions and household access to water and sanitation  ·  interim release {RELEASE}  ·  {REPORT_DATE}', size=9, color=RGBColor(0x52, 0x51, 0x4E), after=8)
     banner(doc, f"**Preliminary and partial.** Screening, data extraction, quality appraisal and the direction coding of each estimate were done by an AI under the author's rulings. "
-                f"Only {hv:,} of {dec:,} full-text decisions ({hv / dec * 100:.1f}%) have a human check, and of the {F['swim_core_studies']} studies in the quantitative syntheses {F['swim_core_inclusion_human_verified']} have a human-verified inclusion decision and {F['swim_core_direction_ck_confirmed']} a confirmed direction coding. "
+                f"Only {hv:,} of {dec:,} full-text decisions ({hv / dec * 100:.1f}%) have a recorded human check. Of the {F['swim_core_studies']} studies in the quantitative syntheses, the author's own earlier checks cover the inclusion decisions of {F['swim_core_inclusion_human_verified'] - F['swim_core_direction_ck_confirmed']}; "
+                f"for {F['swim_core_direction_ck_confirmed']} more a confirmation was recorded after the AI's own scope check and has not yet been checked by the author against the papers. "
                 f"No effect size is pooled. Read every number as AI-produced and unverified against the source papers unless this summary says otherwise.")
 
     # ---- 1. bottom line
@@ -361,12 +363,13 @@ def build():
         f"**Legal recognition and formal status tend to go with better access (Family A).** {base['A_favourable']} of {base['A_k']} quantitative studies ({base['A_concordant_pct']:.0f}%) point in the favourable direction; "
         f"{base['A_unfavourable']} point the other way and {base['A_subst_null']} are null.",
         f"**Assistance, participation and trust look uniformly favourable (Family B), but this is the least secure result.** All {b_k} studies are favourable ({base['B_favourable']}) or mixed ({base['B_subst_mixed']}), "
-        f"yet {fl['B']} of the {b_k} are among the ten studies flagged on a scope check and awaiting the author's ruling. If all {fl['B']} were excluded, {b_rest} studies would remain.",
+        f"yet {fl['B']} of the {b_k} are among the ten studies flagged on a scope check and awaiting the author's ruling. If all {fl['B']} were excluded, {b_rest} {'study' if b_rest == 1 else 'studies'} would remain.",
         f"**Ownership, regulation and institutional structure show no consistent direction (Family C).** {base['C_favourable']} favourable, {base['C_unfavourable']} unfavourable and {base['C_subst_mixed']} mixed across {base['C_k']} studies with "
         f"heterogeneous exposures and outcomes. The one coherent sub-pattern, private ownership going with worse affordability, rests on three studies that probably draw on two independent samples.",
         f"**The counts survive every test tried, but nothing is pooled and confidence is low.** " + (f"The pre-stated conclusions hold in all {len(rows) - 1} alternative scenarios" if all_hold else "Some pre-stated conclusions fail in some scenarios (section 5)") +
         f" (Family A's favourable share ranges {min(shares):.1f}% to {max(shares):.1f}%). No family has enough comparable studies for meta-analysis, and confidence in any causal or comparative claim is low to very low.",
-        f"**The dissertation's comparative frame cannot be tested from this base.** There are {country('Netherlands')} Dutch and {country('Canada')} Canadian single-country studies against {country('Brazil')} for Brazil.",
+        f"**The evidence is concentrated where networks are incomplete.** India, Brazil, South Africa, Ghana and the United States dominate, while high-coverage welfare states are sparsely represented ({geo['canada']} single-country studies in Canada, {geo['canada_fn']} on the drinking water of First Nations and other Indigenous communities, and {geo['netherlands']} in the Netherlands). "
+        "Administrative exclusion inside universal-network systems (tariff hardship exemptions, tenant billing rules, administrative redress) is therefore comparatively under-examined in this evidence base.",
     ]
     for m in msgs:
         bullet(doc, m, style='List Number', after=4)
@@ -409,8 +412,9 @@ def build():
         c = Counter(st[s] for s in fam[f])
         trs.append([names[f], base[f'{f}_k'], f"{base[f'{f}_positive']} / {base[f'{f}_negative']} / {base[f'{f}_null']} / {base[f'{f}_mixed']}",
                     f"{base[f'{f}_favourable']} / {base[f'{f}_unfavourable']} / {base[f'{f}_subst_null']} / {base[f'{f}_subst_mixed']}", f"{c['confirmed']} / {c['flagged']} / {c['unchecked']}"])
-    table(doc, ['Family', 'Studies', 'Raw sign\n+ / − / null / mixed', 'Substantive direction\nfav. / unfav. / null / mixed', "Direction coding, author's check\nconfirmed / flagged / not yet"], trs, [2.45, 0.6, 1.15, 1.4, 1.1],
+    table(doc, ['Family', 'Studies', 'Raw sign\n+ / − / null / mixed', 'Substantive direction\nfav. / unfav. / null / mixed', "Direction-coding check\npassed AI check* / flagged / not yet"], trs, [2.45, 0.6, 1.15, 1.4, 1.1],
           align=['l', 'c', 'c', 'c', 'c'], size=8.5)
+    para(doc, "*Passed the AI's own narrow-scope and outcome check; a confirmation was recorded on that basis and the author has not yet checked these papers against their source passages. 'Not yet' means the inclusion was confirmed earlier and the direction coding has not been checked.", size=8, color=RGBColor(0x52, 0x51, 0x4E), after=4)
     pic = doc.add_paragraph()
     pic.alignment = WD_ALIGN_PARAGRAPH.CENTER; pic.paragraph_format.space_after = Pt(2); pic.paragraph_format.keep_with_next = True
     shape = pic.add_run().add_picture(chart(D), width=Inches(5.9))
@@ -422,11 +426,12 @@ def build():
     for b in (
         f"**Family A (recognition and status).** Where a legal status, tenure right or formal recognition is the exposure, the association with access is favourable in {base['A_concordant_pct']:.0f}% of studies. "
         f"Two point the other way (S104, a tenure study in which owners had more service interruptions, and S1020, a watershed programme after which collection time rose; the second is among the flagged studies) and two are null.",
-        f"**Family B (assistance, participation, trust).** Five studies are favourable and one is mixed (S294, a cluster trial with null health outcomes). The six study different mechanisms, and four of them are flagged (see below), so this should not be read as a pattern.",
+        f"**Family B (assistance, participation, trust).** {base['B_favourable']} studies are favourable and {base['B_subst_mixed']} is mixed (S294, a cluster trial with null health outcomes). The {b_k} study different mechanisms, and {fl['B']} of them are flagged (see below), so this should not be read as a pattern.",
         f"**Family C (ownership, regulation, structure).** Raw signs split {base['C_positive']} positive, {base['C_negative']} negative and {base['C_mixed']} mixed; substantive directions split {base['C_favourable']}, {base['C_unfavourable']} and {base['C_subst_mixed']}. "
         f"The exposures are too different (private versus public ownership, the level of regulation, new local governments, contract enforcement, cost-recovery policy, governance quality) to expect agreement.",
         f"**Two readings, deliberately.** Raw sign and substantive direction come apart for {D['diverge']} of the {F['swim_core_studies']} studies, so each is reported separately.",
-        f"**Verification status.** {F['swim_core_inclusion_human_verified']} of the {F['swim_core_studies']} studies have a human-verified inclusion decision and {F['swim_core_direction_ck_confirmed']} also have both direction codings confirmed by the author. "
+        f"**Verification status.** {F['swim_core_inclusion_human_verified']} of the {F['swim_core_studies']} studies carry a recorded human verification of the inclusion decision, but for {F['swim_core_direction_ck_confirmed']} of them (and for their two direction codings) the record was entered after the AI's own scope check, and the author has not yet checked those papers; "
+        f"the author's own earlier confirmations cover {F['swim_core_inclusion_human_verified'] - F['swim_core_direction_ck_confirmed']}. "
         f"The other {F['swim_core_flagged_for_author']} were flagged on a narrow-scope check (an exposure that is community management, participation, programme delivery, an attitude or macro-governance, or an outcome that is not household access) and are not counted as confirmed. "
         f"The effect estimates were extracted and checked against the full texts by the AI, not by a human.",
     ):
@@ -434,7 +439,7 @@ def build():
 
     # ---- 5. robustness
     doc.add_heading('5. How robust are the counts?', level=1)
-    pick = [('S0', 'Baseline'), ('S4 ', 'Drop S404, the one Family A coding judgment call'), ('S4b', 'Drop the two kept studies with no household-access outcome'), ('S4c', 'Recode S471 as null (fully adjusted estimate)'),
+    pick = [('S0', 'Baseline'), ('S4 ', 'Drop S404, the one Family A coding judgment call'), ('S4c', 'Recode S471 as null (fully adjusted estimate)'),
             ('S4e', 'Recode S879 as null (household water access alone)'), ('S5', 'All of the above, plus the data-quality drops, applied together'), ('S4d', 'Keep only studies where raw sign and direction agree')]
     rr = []
     for key, label in pick:
@@ -452,7 +457,7 @@ def build():
           align=['l', 'c', 'c', 'c', 'c'], size=8)
     para(doc, f"The pre-stated conclusions were: more than half of Family A favourable; no Family B study unfavourable or null; no single direction holding a majority in Family C. They were fixed before the numbers were computed. "
               f"The scenarios do not test the direction coding itself, studies that were never extracted, or overlap between reports that were not flagged as linked. "
-              f"The illustrative row shows the cost of the open scope question: Family B would shrink to {bb['k']} studies, though its direction would not change.", size=9.5, after=4)
+              f"The illustrative row shows the cost of the open scope question: Family B would shrink to {bb['k']} {'study' if bb['k'] == 1 else 'studies'}, though its direction would not change.", size=9.5, after=4)
 
     # ---- 6. confidence and limits
     doc.add_heading('6. How far to trust this', level=1)
@@ -474,7 +479,7 @@ def build():
         ['1', f"Rule on the {F['swim_core_flagged_for_author']} flagged core studies (open item A28)", f"Include or exclude, with a reason code. Family B is most affected ({fl['B']} of {b_k}), then A ({fl['A']} of {base['A_k']}) and C ({fl['C']} of {base['C_k']}). The sheet is `02_screening/full_text/A28_SWIM_FLAGGED_CK_SHEET_2026-10-14.csv`."],
         ['2', 'Finish the human check of screening (A6, tiers 2 and 3)', '152 further rows (102 excludes, 50 includes) would bound the risk of wrongly excluded or included studies.'],
         ['3', 'Second-extract the prepared sample', '60 studies from S001 to S200, checked against the source papers, to estimate extraction error. A second sample from later studies is needed before any corpus-wide claim.'],
-        ['4', 'Reduce the retrieval bias', f"Prioritise the older, unassessed records, and consider targeted searches for Dutch and Canadian evidence if the comparative frame is to be tested."],
+        ['4', 'Reduce the retrieval bias', "Prioritise the older, unassessed records, and consider targeted searches for evidence from high-coverage welfare states (for example the Netherlands and other European systems) to examine administrative exclusion inside universal-network systems."],
         ['5', 'Register and freeze', f"Upload the preregistration draft to OSF (A7) and push the release tag `v{RELEASE}` from your own clone."],
         ['6', 'Revise the manuscript draft by hand', 'The draft in `07_manuscript/draft/` is generated from the same figures and is marked as not reviewed by a human author.'],
     ]

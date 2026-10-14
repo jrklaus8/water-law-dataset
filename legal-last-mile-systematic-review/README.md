@@ -12,6 +12,8 @@ Quantitative Evidence Synthesis**
 
 **Executive summary (docx):** [`06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx`](06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx) — the findings, their robustness and the open decisions in short form; generated from the same figures (`code/analysis/build_executive_summary.py`) and equally preliminary.
 
+**Verification aids for the author (2026-10-14):** [`05_analysis/effect_sizes/SWIM_37_SOURCE_VERIFICATION_DOSSIER.md`](05_analysis/effect_sizes/SWIM_37_SOURCE_VERIFICATION_DOSSIER.md) (the 37 SWiM studies against their PDFs, every verification box blank) and the blind second-extractor route in [`03_extraction/second_extractor/README.md`](03_extraction/second_extractor/README.md). No human confirmation is recorded by either; see open item A30.
+
 Companion project to the doctoral dissertation *The Legal Last Mile:
 Administrative Law as a Mechanism of Connectivity and Exclusion in
 Sanitation Governance: A Comparative Study of the Netherlands, Canada

@@ -69,8 +69,34 @@ def human_verification_clause(F):
 def swim_core_clause(F):
     """Computed sentence: how much of the SWiM core the author has verified (inclusion decision, direction codings), and what is flagged and still open."""
     n, hv, ck, fl = F['swim_core_studies'], F['swim_core_inclusion_human_verified'], F['swim_core_direction_ck_confirmed'], F['swim_core_flagged_for_author']
-    return (f"Of the {n} studies in the three SWiM families, {hv} ({100 * hv / n:.0f}%) have a human-verified inclusion decision and {ck} ({100 * ck / n:.0f}%) also have both direction codings (raw sign and substantive direction) confirmed by the author; "
-            f"{fl} were flagged on a narrow-scope and outcome check and await the author's ruling, so they are not counted as confirmed. The effect estimates themselves were extracted and checked against the full texts by the AI, not by a human.")
+    return (f"Of the {n} studies in the three SWiM families, {hv} ({100 * hv / n:.0f}%) carry a recorded human verification of the inclusion decision: {hv - ck} from the author's own earlier confirmations and rulings, and {ck} entered in the final scope pass "
+            f"after the AI's own narrow-scope and outcome check, which the author has not yet checked against the papers (a source-verification dossier has been prepared for that check); for those {ck} a confirmation of both direction codings (raw sign and substantive direction) was recorded on the same basis. "
+            f"{fl} were flagged on the check and await the author's ruling, so they are not counted as confirmed. The effect estimates themselves were extracted and checked against the full texts by the AI, not by a human.")
+
+
+def geography_framing(F):
+    """Computed standalone wording for what the geographic distribution shows (replaces the earlier references to the dissertation's comparison countries). Returns the full paragraph (for the gaps section),
+    a one-sentence discussion point and a short summary, all from the extraction database: the four commonest middle-income countries, the United States, Canada (and how many of its studies concern First Nations or other
+    Indigenous communities) and the Netherlands. The claim about under-examined mechanisms is worded as a statement about the evidence this review identified, because a review can speak only for the evidence it found;
+    municipal discretion is deliberately not in the list of under-examined mechanisms, since it is the second most frequently coded mechanism in the whole corpus."""
+    import re as _re
+    ed = cf.read('ed')
+    T_ = lambda v: str(v).strip().upper() == 'TRUE'
+    one = lambda name: sum(1 for r in ed if r['country'].strip() == name)
+    four = [r for r in ed if r['country'].strip() in ('India', 'Brazil', 'South Africa', 'Ghana')]
+    fc, el = sum(T_(r['formal_connection']) for r in four), sum(T_(r['eligibility']) for r in four)
+    canada = [r for r in ed if r['country'].strip() == 'Canada']
+    fn = sum(bool(_re.search(r'first nation|indigenous|aboriginal|inuit|m[eé]tis', ' '.join([r['citation'], r.get('population', ''), r.get('subnational_unit', ''), r.get('extraction_note', '')]), _re.I)) for r in canada)
+    c = {k: one(k) for k in ('India', 'Brazil', 'South Africa', 'Ghana', 'United States', 'Canada', 'Netherlands')}
+    full = (f"Empirical research on the legal last mile is heavily concentrated in middle-income urbanising jurisdictions (India {c['India']}, Brazil {c['Brazil']}, South Africa {c['South Africa']}, Ghana {c['Ghana']}) and the United States ({c['United States']}), "
+            f"where last-mile exclusion is studied primarily at the informal-settlement tenure, municipal incorporation and utility-connection boundary: in the four middle-income countries, {fc} of {len(four)} studies ({100 * fc / len(four):.0f}%) code a formal-connection outcome and {el} ({100 * el / len(four):.0f}%) an eligibility mechanism. "
+            f"By contrast, high-coverage welfare states with near-universal physical networks are sparsely represented (for example, {c['Canada']} single-country studies in Canada, {fn} of them concerning the drinking water of First Nations and other Indigenous communities (advisories, infrastructure, regulation and jurisdictional gaps), "
+            f"and {c['Netherlands']} in the Netherlands), leaving administrative exclusion mechanisms within universal-network systems, such as tariff hardship exemptions, tenant billing rules and administrative redress, comparatively under-examined in the evidence this review identified.")
+    point = (f"**The evidence is concentrated where networks are incomplete and thin where they are near-universal.** Middle-income urbanising countries and the United States dominate, and high-coverage welfare states are represented by few studies ({c['Canada']} single-country studies in Canada, mostly on First Nations drinking water, and {c['Netherlands']} in the Netherlands), "
+             "so how administrative exclusion operates inside universal-network systems (tariff hardship exemptions, tenant billing rules, administrative redress) cannot be assessed from this evidence base.")
+    short = (f"high-coverage welfare states with near-universal networks are sparsely represented ({c['Canada']} single-country studies in Canada, {fn} of them on First Nations and other Indigenous communities' drinking water, and {c['Netherlands']} in the Netherlands), "
+             "so administrative exclusion within universal-network systems is comparatively under-examined in this evidence base.")
+    return {'full': full, 'point': point, 'short': short, 'canada': c['Canada'], 'canada_fn': fn, 'netherlands': c['Netherlands'], 'four_n': len(four), 'four_formal': fc, 'four_elig': el}
 
 
 def family_fit_clause():

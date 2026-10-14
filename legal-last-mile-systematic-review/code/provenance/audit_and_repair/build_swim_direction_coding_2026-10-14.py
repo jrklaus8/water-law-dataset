@@ -1,4 +1,4 @@
-"""2026-10-14: the two-column direction coding of the 44 family-assigned effect rows (Family A 18, B 6, C 20), under reviewer CK's instruction to stop conflating the raw sign of a coefficient with its
+"""2026-10-14: the two-column direction coding of the family-assigned effect rows (44 when first built: Family A 18, B 6, C 20; 39 after the A26 rulings; 37 after the A29 ruling: A 16, B 5, C 16), under reviewer CK's instruction to stop conflating the raw sign of a coefficient with its
 substantive direction for households (Campbell et al. 2020, SWiM item on the direction of effect; the earlier sign tables mixed the two, e.g. S358 and S404 were 'Positive' although both coefficients are negative).
 
 Four coded fields per study, all by the AI from effect_sizes.csv (not human-verified; the ck_* columns of SWIM_CORE_VERIFICATION_TABLE_2026-10-14 are the worksheet for that):
@@ -10,7 +10,7 @@ Four coded fields per study, all by the AI from effect_sizes.csv (not human-veri
   substantive_direction  DERIVED, never typed: Favourable / Unfavourable / Null / Mixed = sign(raw) x polarity x orientation, with null and mixed passed through.
 Favourable therefore means: the exposure (oriented as above) is associated with better household access, affordability, equity or service on the paper's own outcome measure. It is not a judgment that the exposure is desirable.
 
-Also recorded: whether the outcome is a household access measure (the check of 2026-10-14 found none in S358, S1121, S1140, S590 and S1136; the author's A26 rulings moved S358 and S590 to the reasoned non-fits, excluded S1121, and kept S1140 and S1136; S606 and S1143 left the families too), an alternative substantive direction where the primary and fully
+Also recorded: whether the outcome is a household access measure (the check of 2026-10-14 found none in S358, S1121, S1140, S590 and S1136; the author's A26 rulings moved S358 and S590 to the reasoned non-fits and excluded S1121, S606 and S1143 left the families too, and the A29 ruling then moved S1140 and S1136 to the reasoned non-fits), an alternative substantive direction where the primary and fully
 adjusted estimates differ (S471), and a short note. Writes 05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv. READ-ONLY on every database. Run from legal-last-mile-systematic-review/."""
 import csv, sys
 sys.path.insert(0, 'code/analysis')
@@ -46,7 +46,6 @@ D = {
  'S085': ('+', HB, AR, NOT, '', 'Bureaucratic assistance with political coordination: +19 pp full formalisation.'),
  'S294': ('mixed', HB, AR, NOT, '', 'Null on diarrhoea (-0.01; CI -0.05 to 0.03) and child growth; positive on the community WASH-institutions index (+0.40; CI 0.16 to 0.65).'),
  'S1102': ('+', HB, AR, NOT, '', 'Capital-cost contribution: water-improvements index difference 1.04 (t = 4.26).'),
- 'S1140': ('+', HB, AR, CHK, '', 'Number of partners: log-odds 0.55 for funding success. Outcome is success in securing programme funding (an application outcome), not household access; time saved per household enters only as a control.'),
  'S1144': ('+', HB, AR, NOT, '', 'Trust in NGOs: coefficient 7.01 on access to NGO-supplied sanitation.'),
  'S1163': ('+', HB, AR, NOT, '', 'External WASH support: OR 1.4 for basic on-premises school water.'),
  # Family C
@@ -63,15 +62,11 @@ D = {
  'S1032': ('-', HW, AR, NOT, '', 'Contact with the municipality or an NGO: OR 0.60 and 0.56 for the odds of a water complaint (a complaint is a worse outcome). Raw sign -, substantive Favourable.'),
  'S1038': ('-', HW, AR, NOT, '', 'The reported contrast is state-regulated minus locally regulated welfare loss (-4.6 pp; higher = worse), so the exposure is state PUC regulation. effect_sizes.csv carried the opposite pole in its exposure_definition until the author\'s A26 ruling of 2026-10-14, which swapped exposure and comparator to match.'),
  'S1062': ('mixed', HB, AR, NOT, '', 'Inverted U: positive coefficient on cost recovery, negative on its square.'),
- 'S1136': ('+', HB, AR, CHK, '', 'Political proximity (GP head village +0.053 paved, +0.037 drain; politician road +0.078 drain): a favouritism finding; SC/ST roads are less likely to be paved (-0.051). Outcome is road-level public sanitation infrastructure, not household access; the household survey is used only to rank problems.'),
  'S1146': ('-', HB, AR, NOT, '', 'Regional utilities corruption: negative marginal effect on reporting enough clean water.'),
  'S1162': ('-', HB, AR, NOT, '', 'Municipality or town panchayat vs municipal corporation: -4.06 pp growth in household water coverage.'),
  'S1169': ('-', HB, AR, NOT, '', 'Price-regulated provider: coefficient -1.19, about 27 pp lower probability that a colonia had water service.'),
 }
-RECOMMEND = {
- 'S1140': 'kept by the author (A26): funding success is an application outcome the protocol lists (application_success); a sensitivity row drops it',
- 'S1136': 'kept by the author (A26): a distributional finding (public sanitation infrastructure by caste and political connection); a sensitivity row drops it',
-}
+RECOMMEND = {}   # S1140 and S1136 carried a recommendation until the A29 ruling (2026-10-14) moved both to the reasoned non-fits
 INDIRECT = tuple(sorted(RECOMMEND, key=lambda s: int(s[1:])))
 
 
@@ -91,7 +86,7 @@ def fam_rows():
 
 def build():
     fr = fam_rows()
-    assert len(fr) == 39 and {s for _, s in fr} == set(D), sorted({s for _, s in fr} ^ set(D))
+    assert len(fr) == 37 and {s for _, s in fr} == set(D), sorted({s for _, s in fr} ^ set(D))
     out = []
     for f, s in fr:
         raw, pol, ori, chk, alt, note = D[s]

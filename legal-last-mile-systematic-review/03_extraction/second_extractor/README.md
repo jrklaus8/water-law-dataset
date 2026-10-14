@@ -16,3 +16,13 @@ way to estimate it: a seeded, stratified sample of 60 studies (seed 20260929) dr
 ## What the result can speak for
 
 The 60 studies are drawn from S001-S200 only (the includes the researcher already knows), so the measured disagreement rate describes the AI's extraction of those 200 studies. That subset skews recent (about three quarters published 2020 or later, against about 43% of all extracted studies), and the later batches (S201-S1164) were extracted by the same process but are not sampled. `score_second_extractor_sheet.py` prints this caveat with every score; carry it into the limitations when reporting the rate.
+
+## A genuinely blind pass (added 2026-10-14)
+
+The BLANK sheet shows `ai_value` next to the empty `second_extractor_value`, which invites anchoring. For a blind pass use the other route, built by `code/analysis/build_second_extractor_passages.py --pdf-dir DIR`:
+
+1. `second_extractor_sheet_BLIND_VALUES_2026-10-14.csv` has the same 540 rows with no `ai_value`, no `where_the_AI_looked` and no stratum (the stratum names the appraisal tool the AI chose); three fields (`effect_estimate`, `risk_of_bias_tool` and the two flag fields) are re-asked as independent questions. Fill `second_extractor_value`.
+2. `SECOND_EXTRACTOR_SOURCE_PASSAGES.md` (local only, in `.gitignore`: it reproduces long stretches of copyrighted papers) holds the abstract, the authors' stated aim, a methods and a results excerpt and the table and figure captions, with PDF pages, for the sampled papers whose PDFs were found (24 of 60 on 2026-10-14; the other 36 are not in the Drive folders searched, so use your own copy). It contains no AI value.
+3. `--merge your_filled_blind_sheet.csv` copies your values into a copy of the BLANK sheet (`second_extractor_sheet_BLIND_MERGED_2026-10-14.csv`, `agrees` left empty). Only now compare against `ai_value` and set `agrees`, then run `score_second_extractor_sheet.py` on that file.
+
+Seven of the 37 SWiM studies are in the sample (S037, S057, S084, S085, S104, S142, S174); for them the `effect_estimate` field is an independent human check of the extracted headline result. The caveat above still applies: the sample comes from S001 to S200 only.

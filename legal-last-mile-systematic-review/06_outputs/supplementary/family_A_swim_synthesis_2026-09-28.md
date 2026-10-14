@@ -162,7 +162,7 @@ share) and overstated the sensitivity. S358 has since left the family (A26), and
 judgment call: its "reduces poverty" result is Favourable only because a lower value of an adverse outcome (the water-poverty index) is read as better, which is a judgment about outcome polarity; if it were dropped,
 the Favourable share would be 11 of 15 (73%). Further scenarios were added on 2026-10-14
 (`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`): keeping only the studies for which a positive sign means Favourable and a negative sign Unfavourable, that is dropping every study whose
-inverted-outcome or restated-pole coding was needed (S084, S104, S142, S404, S1020 and S1122 here; S4d), leaves 8 of 10 (80%); the scenarios that drop the two kept studies without a household access outcome (S1140 and S1136, in Families B and C; S4b), recode S471 or S879 (both in Family C) leave this family unchanged at 12 of 16 (75%); and all the others together (S5) leave 11 of 15 (73%). (Before S589's row was removed a further
+inverted-outcome or restated-pole coding was needed (S084, S104, S142, S404, S1020 and S1122 here; S4d), leaves 8 of 10 (80%); the scenarios that recode S471 or S879 (both in Family C; S4c, S4e) leave this family unchanged at 12 of 16 (75%), as the retired scenario S4b (which dropped S1140 and S1136, in Families B and C, before the A29 ruling moved both out of the families) also did; and all the others together (S5) leave 11 of 15 (73%). (Before S589's row was removed a further
 scenario, dropping it as an unadjusted descriptive comparison, was also tested.) The
 Favourable share therefore stays between 73% and 80% across every scenario tried —
 the family-level pattern is *not* fragile to them; it is thin for the different

@@ -2,7 +2,7 @@
 """The executive summary (06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx) quotes the current figures.
 
 Checks, against figures recomputed from the databases rather than read back from the builder's own output: (1) the headline screening and verification numbers appear in the text;
-(2) the family table matches the baseline sensitivity scenario and the three family sizes add up to the 39 studies in the coding file; (3) the flagged / confirmed / not-yet split equals the
+(2) the family table matches the baseline sensitivity scenario and the three family sizes add up to the studies in the coding file (37 after the A29 ruling); (3) the flagged / confirmed / not-yet split equals the
 counts in current_figures; (4) no template placeholder, "None" or "nan" leaked into the text; (5) the picture has alt text; (6) the document makes no claim to a pooled effect or to full human review.
 Run from legal-last-mile-systematic-review/:  python3 code/tests/test_executive_summary.py"""
 import re
@@ -71,6 +71,22 @@ class TestExecutiveSummary(unittest.TestCase):
         self.assertNotIn('100% of the', low)
         self.assertNotIn('fully verified', low)
         self.assertIn('flagged', low)
+
+    def test_standalone_geography_framing(self):
+        """The summary and the manuscript describe what the geographic distribution shows, without reference to the dissertation's comparison countries; the counts come from the extraction database."""
+        low = self.text.lower()
+        self.assertNotIn('dissertation', low)
+        self.assertNotIn('comparative frame', low)
+        import build_manuscript_pieces as bmp
+        g = bmp.geography_framing(self.D['F'])
+        self.assertEqual((g['canada'], g['netherlands']), (15, 1))
+        self.assertEqual(g['canada_fn'], 12)                                   # the Canadian studies that concern First Nations or other Indigenous communities (checked by reading their titles, 2026-10-14)
+        self.assertIn(f"{g['canada']} single-country studies in Canada", self.text)
+        ms = (ROOT / '07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md').read_text(encoding='utf-8').lower()
+        self.assertNotIn('comparative frame', ms)
+        self.assertEqual(ms.count('dissertation'), 1)                          # only the declaration of the companion PhD project
+        self.assertIn('universal-network systems', ms)
+        self.assertNotIn('municipal discretion', g['full'].lower())            # discretion is the second most coded mechanism in the corpus, so it is not called under-examined
 
 
 if __name__ == '__main__':
