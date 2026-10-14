@@ -68,6 +68,13 @@ DRIVE_CHECK = {
     'R9167527BC9AE': 'full PDF in Drive (Alehashemi & Coulais 2021, French): hydraulic systems and urban structure in Iran with three field case studies -- infrastructure and territory focus; E06 or E01 plausible; status field stale',
     'RDEA162168676': 'full PDF in Drive (Jauhari et al. 2021): household survey of life-cycle costs of self-supply water in Metro City, Indonesia -- costs of an access route, little governance exposure; E03 would fit as well as E06; status field stale',
 }
+# Records the researcher (PI, reviewer CK) has ruled on, so that the open count below is honest. Hand-entered from the CHANGELOG (A19, 2026-10-09 and 2026-10-14).
+SETTLED = {
+    'RF5C6D981DB3B': 'A19, 2026-10-14: exclusion confirmed on the full text, E01 kept',
+    'R155FFF508359': 'A19, 2026-10-14: exclusion confirmed, re-coded E01 to E07 (irrigation, a wrong service)',
+    'RA1F6E143593E': 'A19, 2026-10-14: exclusion confirmed, re-coded E01 to E07 (irrigation, a wrong service)',
+    'RAB6AA06D8E9D': '2026-10-09: no full article exists (the Europe PMC record is an abstract), E09 stands',
+}
 FIELDS = ['group', 'record_id', 'year', 'exclusion_code', 'title', 'basis_phrase', 'in_A16_sheet', 'reason_excerpt', 'drive_check']
 STATUS_CONTRADICTS = ('not_retrievable', 'oa_pdf_candidate', 'oa_page_candidate')  # a decided record whose recorded status says no full text was obtained (or only located, not downloaded)
 GROUPS = {'substantive': 'substantive exclusion (E01-E07, E09, E12) decided without a read full text', 'E10': 'E10 inaccessible (expected to say so)', 'E08': 'E08 duplicate (expected to say so)'}
@@ -126,6 +133,14 @@ def build():
           f"Of the {len(chk)}, {sum(1 for r in chk if r['drive_check'].startswith('portal page'))} are only portal or landing pages (the original exclusion really was made on an abstract; on that abstract the exclusion is plausible or borderline, and for R155FFF508359 and RA1F6E143593E the code E07 would fit better) "
           f"and {sum(1 for r in chk if 'status field stale' in r['drive_check'])} are real PDFs whose recorded status was simply stale (no concern beyond the bookkeeping).", '']
     L += [f"- **{r['record_id']}** ({r['exclusion_code']}) — {r['drive_check']}" for r in chk]
+    core = [r for r in rows if r['group'] in ('substantive', 'status_exclude')]
+    sett = [r for r in core if r['record_id'] in SETTLED]
+    opn = [r for r in core if r['record_id'] not in SETTLED]
+    L += ['', "## Status after the researcher's rulings", '',
+          f"{len(sett)} of the {len(core)} substantive and status-contradicting excludes are settled by a ruling ({len(opn)} remain open); R803988411D3E left the exclusions altogether (A19 normalised it to `not_retrievable`, 2026-10-14).", '']
+    L += [f"- Settled: **{r['record_id']}** ({r['exclusion_code']}) — {SETTLED[r['record_id']]}" for r in sett]
+    L += [f"- Open: **{r['record_id']}** ({r['exclusion_code']}, {r['group']}) — {r['title'][:70]}" for r in opn if r['group'] == 'substantive']
+    L += [f"- Open (status_exclude, {sum(1 for r in opn if r['group'] == 'status_exclude')} records): see the table above; {sum(1 for r in opn if r['group'] == 'status_exclude' and 'status field stale' in r['drive_check'])} have a real PDF in Drive (stale status), the rest were not checked or are portal pages."]
     return rows, '\n'.join(L) + '\n'
 
 

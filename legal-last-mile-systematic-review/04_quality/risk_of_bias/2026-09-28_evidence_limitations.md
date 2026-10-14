@@ -52,9 +52,9 @@ unfinished normalization):
 
 | Tool (design family) | n | % |
 |---|---|---|
-| Legal Institutional Evidence Appraisal Framework (doctrinal/documentary/jurimetric) | 433 | 39% |
-| CASP Qualitative | 251 | 23% |
-| MMAT (mixed methods) | 196 | 18% |
+| Legal Institutional Evidence Appraisal Framework (doctrinal/documentary/jurimetric) | 430 | 40% |
+| CASP Qualitative | 248 | 23% |
+| MMAT (mixed methods) | 195 | 18% |
 | JBI Cross-Sectional | 130 | 12% |
 | ROBINS-I (non-randomized intervention/quasi-experimental) | 60 | 5% |
 | AMSTAR 2 (secondary systematic reviews) | 18 | 2% |
@@ -62,14 +62,14 @@ unfinished normalization):
 | RoB 2 (randomized controlled trials) | 5 | 0.4% |
 
 **This is the same underlying pattern the 2026-09-16 note already identified, now confirmed
-at more than 3x the corpus size**: only 65 of 1,104 studies (6% — the 60 ROBINS-I plus 5 RoB
+at more than 3x the corpus size**: only 63 of 1,084 studies (6% — the 60 ROBINS-I plus 5 RoB
 2; an earlier draft said "77 (7%)") use a design capable of supporting a causal claim about a
 legal/administrative mechanism's effect on access. The other 94% are doctrinal/documentary
 analysis (39%), qualitative research (23%), mixed-methods (18%), cross-sectional observational
 association (12%), or secondary reviews and no-tool studies (3%). This
-is corroborated by `mechanism_certainty`: only 33 of 1,104 studies (3%) reach level 3
-("quasi-experimental evidence") or 4 ("experimental evidence"); 222 (20%) sit at level 1
-("documented association") and 270 (24%) at level 2. **575 of 1,104 (52%) carry narrative
+is corroborated by `mechanism_certainty`: only 32 of 1,084 studies (3%) reach level 3
+("quasi-experimental evidence") or 4 ("experimental evidence"); 209 (20%) sit at level 1
+("documented association") and 268 (24%) at level 2. **571 of 1,084 (52%) carry narrative
 text rather than the intended 0–4 numeric code** — a real scale inconsistency inherited
 across different extraction-batch eras, not smoothed over here (see `RISK_OF_BIAS.md` §4's
 similar note about the Legal Framework batch's use of this same field). **The great majority
@@ -81,22 +81,22 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 986 name exactly one country, **116 name several countries or a region and are
+vocabularies. Of the 1,159 studies, 971 name exactly one country, **112 name several countries or a region and are
 not counted under any single country below**, and 3 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
 that also appears in a multi-country study, and the "top countries" are shares of all 1,159 studies.
 
-Top single-country values: India 126 (11%), Brazil 81 (7.5%), South Africa 78 (7%),
-United States 67 (6%), Ghana 53 (5%), Kenya 50 (4%), Mexico 37 (3%), Indonesia 30 (3%),
+Top single-country values: India 124 (11%), Brazil 80 (7.5%), South Africa 78 (7%),
+United States 64 (6%), Ghana 53 (5%), Kenya 50 (4%), Mexico 37 (3%), Indonesia 30 (3%),
 Nigeria 28 (2%), Bangladesh 27 (2%), with the remaining ~95 single-country values each contributing
 fewer. India, Brazil, and South Africa alone account for 26% of the corpus (an earlier draft said 25%, from summing rounded shares) — a shift from the
 366-study snapshot (Brazil/India/South Africa then led at 29% combined, in a different order),
 but the same underlying caution applies: any synthesis finding should be checked for whether
 it is really general or a small set of country literatures dressed as a general one.
 
-Legal-system coverage (rule-based buckets): common law only 522 (47%), civil law only 385 (34%),
-mixed / both / customary 181 (16%), blank 28 (2%), other 3. (An earlier draft of this paragraph quoted
+Legal-system coverage (rule-based buckets): common law only 514 (47%), civil law only 378 (34%),
+mixed / both / customary 178 (16%), blank 28 (2%), other 3. (An earlier draft of this paragraph quoted
 "common law 651 (56%), civil law 412 (36%), mixed 66 (6%)" from an undocumented bucketing that counted mixed
 entries under common law; the rules are now in code.) This is a real shift from the
 366-study snapshot's near-even common/civil split (41%/39%) toward common-law
@@ -110,7 +110,7 @@ not a deliberate sampling frame.
 ## Measurement quality patterns
 
 `legal_measurement_quality` and `outcome_measurement_quality` are populated for 377 of the
-433 Legal Framework studies (87%) and for most of the quantitative-tool populations
+430 Legal Framework studies (87%) and for most of the quantitative-tool populations
 (ROBINS-I, JBI, RoB 2) via the `covariates`/`outcome`-related fields used in today's
 rule-based appraisals — but **not as a dedicated, uniform quality-coding pass**: these fields
 were populated at different points across many extraction batches spanning weeks, using an
@@ -178,7 +178,7 @@ on both today's risk-of-bias ratings and the Phase 11 quantitative-feasibility j
 
 - **Family A (legal recognition/eligibility, 20 effect-size rows):** the studies underlying
   this family are drawn mainly from the ROBINS-I and JBI Cross-Sectional populations. Of
-  today's 60 rule-based ROBINS-I ratings, 51 land at "Moderate" confounding risk and 9 at
+  today's 60 rule-based ROBINS-I ratings, 49 land at "Moderate" confounding risk and 9 at
   "Serious" — meaning even the strongest-designed quasi-experimental studies in this family
   carry real, undocumented confounding risk by this project's own conservative reading.
   **Low-to-moderate confidence**, not because the individual studies are necessarily weak,
@@ -211,7 +211,7 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 10 of the 1,104
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 10 of the 1,084
 studies (0.9%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
 obtained at extraction time (CASP 20, MMAT 7, JBI Cross-Sectional 6, Legal Framework 4, AMSTAR 2 0, RoB 2 0). The count has fallen over time as full texts were found: 69 before 2026-09-29; S277, S326 and S366 re-read from full text on 2026-09-29; S319, S324, S325 and S344 on 2026-10-02; 13 more (S331-S347) and then 5 (S257, S278, S279, S281, S288) and 3 (S260, S267, S274) on 2026-10-04 from PDFs already in the researcher's Drive (see `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`); two abstract-only rows were retired (S299, a duplicate; S356, an E05 exclusion). Their appraisals are honest about this — the CASP entries, for example,

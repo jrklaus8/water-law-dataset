@@ -267,10 +267,10 @@ retrieval are now closed by researcher decision — see below):
 |---|---|
 | Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique after deduplication |
 | Title/abstract screening | Complete, double-reviewed: 3,659 include / 6 exclude, zero conflicts |
-| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,277 of 3,659 records actually screened (62.2%) — **1,104 include / 1,173 exclude** (after two duplicate records were merged and S356 excluded on full text, 2026-09-28); 1,382 permanently unretrieved (1,383 at the closure; the PI added two records and returned one on 2026-10-14) |
-| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,104 studies extracted |
-| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,104 studies carry a correctly design-matched tool; all 1,094 to which one applies carry a completed rating — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
-| Evidence classification | Caught up with extraction: 232 studies quantitative-synthesis-eligible, 1,012 qualitative-synthesis-eligible |
+| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,277 of 3,659 records actually screened (62.2%) — **1,084 include / 1,193 exclude** (after two duplicate records were merged and S356 excluded on full text, 2026-09-28); 1,382 permanently unretrieved (1,383 at the closure; the PI added two records and returned one on 2026-10-14) |
+| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,084 studies extracted |
+| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,084 studies carry a correctly design-matched tool; all 1,084 to which one applies carry a completed rating (no study is now tagged NONE) — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
+| Evidence classification | Caught up with extraction: 232 studies quantitative-synthesis-eligible, 992 qualitative-synthesis-eligible |
 | Quantitative synthesis | 59 effect-size rows extracted (62 at 2026-09-28; the PI's scope rulings of 2026-10-13 and 14 removed five and added two (S1166 and S1169)); **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
 
 This is an unusually large and comprehensive AI-assisted systematic review for its

@@ -178,7 +178,7 @@ has(el_txt, f"{F['country_single_name_studies']:,} name exactly one country", 'c
 has(el_txt, f"**{F['country_multi_or_regional_studies']} name several countries or a region", 'country multi count')
 for cname, cnt in F['country_top10_single_name'][:4]:
     has(el_txt, f"{cname} {cnt} (", f'top country {cname}')
-has('RISK_OF_BIAS.md', f"AMSTAR 2 {T['AMSTAR 2']}, Legal Framework {T['Legal Framework']}, NONE {T['NONE']} (sum {n:,})", 'dated-correction figures')
+has('RISK_OF_BIAS.md', f"AMSTAR 2 {T['AMSTAR 2']}, Legal Framework {T['Legal Framework']}, NONE {T.get('NONE', 0)} (sum {n:,})", 'dated-correction figures')
 
 # ---- D. boolean fields, generated-file freshness, queue
 BOOL_COLS = ['peer_reviewed', 'household_level', 'community_level', 'indigenous_population', 'eligibility', 'burden', 'discretion_accommodation', 'enforcement',
@@ -243,7 +243,7 @@ check(not _free_class, f'study_design_class is a free-text label the design mapp
 _free_fam = [(r['study_id'], r['mechanism_family'][:30], r['outcome_family'][:30]) for r in em if r['mechanism_family'] not in pv.CONTROLLED_MECH or r['outcome_family'] not in pv.CONTROLLED_OUT]
 check(not _free_fam, f'mechanism_family or outcome_family is outside the adopted vocabulary (open item A5): {_free_fam[:5]}')
 _orig_ids = set(cf.original_labels())
-check(_orig_ids <= {r['study_id'] for r in em} and len(_orig_ids) >= 1104, 'evidence_map_original_labels_2026-10-14.csv must keep the original labels of every study that was in the evidence map on 2026-10-14')
+check(len(_orig_ids) >= 1104 and {r['study_id'] for r in em if int(r['study_id'][1:]) <= 1169} <= _orig_ids, 'evidence_map_original_labels_2026-10-14.csv must keep the original labels of every study that was in the evidence map on 2026-10-14 (retired studies stay in it as history)')
 _none_class = [(r['study_id'], _class[r['study_id']]) for r in ed if cf.tool_of(r['risk_of_bias_tool']) == 'NONE' and _class[r['study_id']] not in ('systematic_review_secondary', 'doctrinal', 'jurimetric', 'qualitative', 'observational', 'mixed_methods') and _class[r['study_id']] in ('experimental', 'quasi_experimental')]
 check(not _none_class, f'a randomised/quasi-experimental study has tool NONE: {_none_class[:5]}')
 _STARTS = {'RoB 2': ('Some concerns', 'Low', 'High'), 'ROBINS-I': ('Low', 'Moderate', 'Serious', 'Critical', 'No information'),
