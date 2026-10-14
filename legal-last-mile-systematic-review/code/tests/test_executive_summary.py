@@ -31,7 +31,7 @@ class TestExecutiveSummary(unittest.TestCase):
     def test_headline_numbers(self):
         F = self.D['F']
         for needle in (f"{F['human_verified_rows']:,} of {F['full_text_decided']:,}", f"{F['full_text_include']:,} included", f"{F['full_text_exclude']:,} excluded",
-                       f"{F['effect_size_rows']} effect-size rows", f"{F['swim_core_flagged_for_author']} flagged core studies", f"{F['causal_capable_designs']} "):
+                       f"{F['effect_size_rows']} effect-size rows", f"the other {F['swim_core_ai_checked_not_human']} were checked only by the AI", f"{F['causal_capable_designs']} "):
             self.assertIn(needle, self.text, needle)
 
     def test_family_table_matches_baseline(self):
@@ -50,9 +50,10 @@ class TestExecutiveSummary(unittest.TestCase):
 
     def test_check_split_equals_current_figures(self):
         F, t = self.D['F'], next(x for x in self.tables if x[0][0] == 'Family')
-        conf = sum(int(r[4].split(' / ')[0]) for r in t[1:])
-        flag = sum(int(r[4].split(' / ')[1]) for r in t[1:])
-        self.assertEqual((conf, flag), (F['swim_core_direction_ck_confirmed'], F['swim_core_flagged_for_author']))
+        author = sum(int(r[4].split(' / ')[0]) for r in t[1:])
+        ai = sum(int(r[4].split(' / ')[1]) for r in t[1:])
+        self.assertEqual((author, ai), (F['swim_core_inclusion_human_verified'], F['swim_core_ai_checked_not_human']))
+        self.assertEqual(author + ai, F['swim_core_studies'])
 
     def test_no_template_leaks(self):
         for bad in ('{', '}', '%%', '  .'):
@@ -70,7 +71,7 @@ class TestExecutiveSummary(unittest.TestCase):
         self.assertIn('nothing is pooled', low)
         self.assertNotIn('100% of the', low)
         self.assertNotIn('fully verified', low)
-        self.assertIn('flagged', low)
+        self.assertIn('ai-checked', low)
 
     def test_standalone_geography_framing(self):
         """The summary and the manuscript describe what the geographic distribution shows, without reference to the dissertation's comparison countries; the counts come from the extraction database."""

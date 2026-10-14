@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Generate 05_analysis/effect_sizes/SWIM_37_SOURCE_VERIFICATION_DOSSIER.md and SWIM_37_SOURCE_PDF_MANIFEST.csv: a reading aid for the author's own verification of the 37 studies in the three SWiM families
+"""Generate 05_analysis/effect_sizes/SWIM_31_SOURCE_VERIFICATION_DOSSIER.md and SWIM_31_SOURCE_PDF_MANIFEST.csv: a reading aid for the author's own verification of the 31 studies in the three SWiM families
 (inclusion and scope, exposure and comparator, outcome, estimate, sample size, risk-of-bias rating, direction coding) against the source PDFs.
 
 What it does and does not do. For every study in effect_sizes.csv with a family A, B or C it prints what the database stores, the status of any human verification, and the passages of the PDF that contain the stored
 numbers or terms, verbatim, with the PDF page and the table caption. The passages are located by lexical match; the AI does not judge whether they support the stored value. It records NO confirmation of any kind
-(no `human_verified`, no `reviewer_2`, no CK): every verification box in the dossier is blank for the author. Hand-picked quotes for the ten studies flagged in A28 come from swim_dossier_curated.py and are checked against the
-PDF text on every build (a quote that is not found stops the build).
+(no `human_verified`, no `reviewer_2`, no CK): every verification box in the dossier is blank for the author. Hand-picked quotes for the four studies the author kept in A28 come from swim_dossier_curated.py and are checked against the
+PDF text on every build (a quote that is not found stops the build). The 37-study version (with the six studies the author excluded under A28) is archived in 11_archive/.
 
 The PDFs are not in the repository (copyright). Give the directory of `<study_id>.pdf` files with --pdf-dir (or SWIM_PDF_DIR). A study without a PDF still gets its entry, marked as having no source file.
 Run from legal-last-mile-systematic-review/:  python3 code/analysis/build_swim_source_dossier.py --pdf-dir DIR
@@ -25,9 +25,9 @@ from swim_dossier_curated import CURATED  # noqa: E402
 
 csv.field_size_limit(sys.maxsize)
 ROOT = cf.ROOT
-OUT_MD = ROOT / '05_analysis/effect_sizes/SWIM_37_SOURCE_VERIFICATION_DOSSIER.md'
-OUT_CSV = ROOT / '05_analysis/effect_sizes/SWIM_37_SOURCE_PDF_MANIFEST.csv'
-A28 = ('S920', 'S1020', 'S1042', 'S1057', 'S294', 'S1102', 'S1144', 'S1163', 'S947', 'S1146')
+OUT_MD = ROOT / '05_analysis/effect_sizes/SWIM_31_SOURCE_VERIFICATION_DOSSIER.md'
+OUT_CSV = ROOT / '05_analysis/effect_sizes/SWIM_31_SOURCE_PDF_MANIFEST.csv'
+A28 = ('S920', 'S366', 'S1102', 'S1146')   # the studies the author kept under A28 (ruled in on 2026-10-14); the six excluded ones are in the archived 37-study dossier
 
 # Where each PDF came from (the author's Google Drive "Processed" folder, read-only downloads of 2026-10-14). None means no PDF was found there.
 DRIVE = {
@@ -38,10 +38,11 @@ DRIVE = {
     'S104': ('1k548crII0SPZT8VagB1qfNmNOw1Vkuo6', 'S104_ThomasPossee_2024_household-neighbourhood-service-provider-risk.pdf'),
     'S142': ('1bX785ptcsbS5fi4irjPba2tGtG6S3mnU', 'S142_Allaire_2024_water-wastewater-infrastructure.pdf'),
     'S174': ('1hVMuZqsRPzyXqBw3Qx1LQaxAL2ykinXQ', 'RF18D44C79805_de_2022.pdf'),
-    'S294': ('1stu3MeOYTPEPffQrfqEd7IrepVSxedPK', 'S294_Quattrochi_2025_effects-community-driven-wash-intervention.pdf'),
+    'S366': ('1stu3MeOYTPEPffQrfqEd7IrepVSxedPK', 'S294_Quattrochi_2025_effects-community-driven-wash-intervention.pdf'),
     'S398': ('1Uh_yV982Yy5SB0BuC2qvrlG0BkVTMygh', 'R2B5A92453E91_dos_2025.pdf'),
     'S404': ('1Iv80KRYPN6vE4qkd-bU5S0BqSuk_9DvY', 'R9B182B30D773.pdf'),
     'S470': ('1-gEJiwruJDqK3YWryGedtc2mmls7E3n1', 'wp2025193.pdf'),
+    'S471': ('10pLNYeRRoeiWPGDt-sTyy-5fKlKkVPcN', 'R6B1C512A548D__Analysis of costs, affordability, reliability, and.pdf'),
     'S526': ('19s7XKgq37R-Bdfjp7KFMtZ8UgRJq2VP4', 'Policy Studies Journal - 2025 - Switzer - Public enterprise pricing as redistributive policy.pdf'),
     'S593': ('1lJ6LTdbgc-l0aztpY0A0ue1yqS6lAqZb', 'R7A9FA4B1B749__A study on the equity and influencing factors of local water supply services in Korea.pdf'),
     'S631': ('1VZ_w3Xoc-jW33nh1Ko-dIxhsEHAMkXAs', 'R1CA3290F50A5__Does local government proliferation improve public service delivery_ Evidence from Indonesia.pdf'),
@@ -52,27 +53,21 @@ DRIVE = {
     'S882': ('1vgERrRtQtvuGTCuXdw9tVQpebWpQQ9GW', 'R59329720D787__Examining Relationships between Household Resources and Water Security in an Urb.pdf'),
     'S920': ('1iYEj8wwK6ZAckZ9skOhhFWFdVDocspZd', 'R9502CE771F1E__What Determines Access to Piped Water in Rural Areas Evidence from Small-Scale S.pdf'),
     'S930': ('1TaAyCtu8lCqTrPa6F1fuw7NVQttQRGfV', 'R7DF2A5059A76__Traditional Governance, Citizen Engagement, and Local Public Goods Evidence from.pdf'),
-    'S947': ('1HRYYfkms-juJszMQy7UdfsQqwgyjVKxB', 'R7189977C3E95__Linking natural resource dependence and access to water and sanitation in Africa.pdf'),
-    'S1020': ('18MkLh9WnApdUbgLbiYzh4UHgEQEsc9o_', 'R21E208560E01__Evaluating Social Impacts of Watershed Development in India.pdf'),
     'S1032': ('1Z6c4rYg7Bx8_npw4zcB9B5ClxA_Us3kz', 'R309188806D95__Exploring the Influence of Participation on Programme Satisfaction Lessons from.pdf'),
     'S1038': ('1vIH4Hed15e6KfshgF9Iv9IMwsqQ99H9h', 'R350FA2E35538__Monopoly Pricing as a Consumer Exaction in the Public Utility Sector Monopoly We.pdf'),
-    'S1042': ('1-KYkhtenp-gWkzzHrfNxOE802UVOBEr0', 'R3C1D63DD65AB__Participation and Local Governance Outcomes Evidence from Ukraine.pdf'),
-    'S1057': ('1Sbnk2a8GtOYbkVLaROlVa-QTOPwcAQQj', 'R4DBF12B4A327__Institutional determinants of the impact of community-based water services Evide.pdf'),
     'S1062': ('1f_b97XjX0nXDUMa9aSAxFPNx2guyYhHk', 'R54F56C59F64A__Ensuring Sustainable Access to Drinking Water in Sub Saharan Africa Conflict Bet.pdf'),
     'S1102': ('14H6QDrJrEcqfLBjFElOvXmMGLpA30FDo', 'R76BD2052C008__Determinants and Benefits of Household Level Participation in Rural Drinking Wat.pdf'),
     'S1122': ('1ljbhK1CFgpwDR1fVRvN6tfRBPeSakWfa', 'R0327EF4BAA21__Is the Tap Locked An Event History Analysis of Piped Water Access in Ouagadougou.pdf'),
-    'S1144': ('1f1uaX_KrBulsBRhgTjy5Wh1hTZ5rJoRy', 'R3DB2F9D0CE7E__Civil Society in Urban Sanitation and Solid Waste Management the Role of Ngos an.pdf'),
     'S1146': ('1spQLMQj6hV6PEQ5swYvH4alaBhR4grWN', 'RD768BF81FBAA__Money down the drain Corruption and water service.pdf'),
     'S1162': ('1NC5_KYJ2XfsVbYswAxaaupNcmTVxgaXE', 'R66871E6DA5D1__A small improvement Small cities lag in expanding household water coverage acros.pdf'),
-    'S1163': ('1QytgJNw_4jtZMOnMTJuuY-O-Vwamt2aT', 'R8C288AFDD095__Factors associated with water quality, sanitation, and hygiene in rural schools.pdf'),
 }
 NO_DRIVE_NOTE = {
     'S539': 'a PDF from an earlier retrieval round (not re-downloaded from Drive in this round)',
     'S1169': 'a PDF from an earlier retrieval round; it is a scan without a usable text layer',
-    'S471': 'no PDF found in the Drive folders (searched by record id, DOI and title)',
 }
 FILE_NOTE = {
-    'S294': 'This file is the 2021 BMJ Global Health report of the trial (catalogued as S366), not the 2025 paper catalogued as S294.',
+    'S366': 'The Drive file is named for S294 but it is the 2021 BMJ Global Health report of the trial, which is the report catalogued as S366; the 2025 companion report (S294) has no PDF on file and carries no effect row.',
+    'S471': 'The Drive file is filed under record id R6B1C512A548D, which is not S471\'s record id; its title, authors and Table 3 match S471\'s citation and stored values.',
 }
 LEGAL_TERMS = ('legal', 'law', 'statut', 'regulat', 'right', 'decree', 'contract', 'legislat')   # stems, so 'regulat' counts regulation, regulatory, regulated
 
@@ -87,13 +82,13 @@ def trunc(s, n):
 
 
 def status_of(s, ft_by_rec, ed, ck):
-    c = ck.get(s)
-    if c and c['scope_outcome_check'] == 'flagged':
-        return 'A28', "FLAGGED in A28 by the AI's narrow-scope and outcome check; NOT confirmed; awaits your ruling"
     f = ft_by_rec[ed[s]['record_id']]
-    if c and c['scope_outcome_check'] == 'passed':
-        return 'AI-checked', ("A CK confirmation of the inclusion and of both direction codings was RECORDED on 2026-10-14 after the AI's own narrow-scope and outcome check (Round 11 instruction). "
-                              "You have not yet verified this study against the paper, so treat it as AI-checked until you do")
+    if 'A28 ruling' in f['notes']:
+        return 'A28 ruled in', "RULED IN by you (CK) on 2026-10-14 under A28, from the verbatim PDF passages; the direction coding has not been confirmed"
+    c = ck.get(s)
+    if c and c['ai_scope_check'] == 'passed':
+        return 'AI-checked', ("AI-checked only: the AI's narrow-scope and outcome check of 2026-10-14 found no red flag. This is NOT a human confirmation (a confirmation recorded earlier on that basis was relabelled under your Round 14 instruction), "
+                              "and you have not yet verified this study against the paper")
     if f['reviewer_2'].startswith('Human-'):
         return 'earlier', "Inclusion confirmed by you earlier (the S001-S200 pass); the direction coding has not been checked"
     return 'earlier', "Inclusion decided by your own CK ruling earlier (an A6, A16, A19 or A22-A25 pass); the direction coding has not been checked"
@@ -105,9 +100,9 @@ def build(pdf_dir):
     em = {r['study_id']: r for r in rows('em')}
     ft = {r['record_id']: r for r in rows('ft')}
     code = {r['study_id']: r for r in csv.DictReader(open(ROOT / '05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv', encoding='utf-8'))}
-    ck = {r['study_id']: r for r in csv.DictReader(open(ROOT / '05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv', encoding='utf-8'))}
+    ck = {r['study_id']: r for r in csv.DictReader(open(ROOT / '05_analysis/effect_sizes/SWIM_AI_SCOPE_CHECKS_2026-10-14.csv', encoding='utf-8'))}
     core = sorted((s for s in es if es[s]['synthesis_family'] in ('A', 'B', 'C')), key=lambda s: (es[s]['synthesis_family'], int(s[1:])))
-    assert len(core) == 37 == len(code), (len(core), len(code))
+    assert len(core) == 31 == len(code), (len(core), len(code))
     entries, manifest, summary = {}, [], []
     for s in core:
         e, x, c = es[s], ed[s], code[s]
@@ -171,7 +166,7 @@ def build(pdf_dir):
                 L.append(f"- The paper is in {x['language']}; passages are matched mostly on numbers, because the stored terms are English.")
             L.append('')
             if s in CURATED:
-                L += ['**Hand-picked passages for your A28 ruling (verbatim; each was checked against the PDF text when this file was built):**', '', f"> **What the paper's exposure is (AI summary, from the quotes below; not a ruling):** {CURATED[s]['summary']}", '']
+                L += ['**Hand-picked passages behind your A28 ruling (verbatim; each was checked against the PDF text when this file was built):**', '', f"> **What the paper's exposure is (AI summary, from the quotes below; not a ruling):** {CURATED[s]['summary']}", '']
                 for lab, q in CURATED[s]['quotes']:
                     pages = doc.find(q)
                     assert pages, f'{s}: curated quote not found in the PDF: {q[:80]}'
@@ -207,7 +202,7 @@ def build(pdf_dir):
             L.append('')
         L += ['**Your verification (blank on purpose; the AI does not fill or tick any of this):**', '',
               '- [ ] Inclusion and scope (criteria 1 to 4)   - [ ] Exposure and comparator   - [ ] Outcome   - [ ] Estimate, SE or CI, p   - [ ] Sample size   - [ ] Risk-of-bias rating   - [ ] Raw sign and substantive direction',
-              ('- **Your A28 ruling:** keep / exclude E03 / exclude other (code ____)   ·   Comment: ' if s in A28 else '- **Your decision:** ____   ·   Comment: ') + '____', '']
+              ('- **Your decision:** ruled in under A28; now confirm the raw sign and substantive direction: ____   ·   Comment: ' if s in A28 else '- **Your decision:** ____   ·   Comment: ') + '____', '']
         entries[s] = L
         summary.append((s, e['synthesis_family'], kind, doc is not None, cov, c))
         manifest.append(manifest_row)
@@ -218,25 +213,25 @@ def render(core, entries, summary):
     F = cf.compute()
     kinds = Counter(k for _, _, k, _, _, _ in summary)
     have = sum(1 for *_, d, _, _ in summary if d)
-    L = ['# SWiM source-verification dossier: the 37 studies in Families A, B and C (generated, 2026-10-14)', '',
+    L = ['# SWiM source-verification dossier: the 31 studies in Families A, B and C (generated, 2026-10-14)', '',
          "*Generated by `code/analysis/build_swim_source_dossier.py` from the databases and the source PDFs. This file is a reading aid for **your** verification. It records no confirmation of any kind: no `human_verified`, no `reviewer_2`, no CK entry. "
          "Every box is blank for you. The AI located the passages below by matching the stored numbers and terms; it did not decide whether a passage supports a stored value.*", '',
          '## How to use it', '',
-         "1. Start with the ten **A28** entries (section 1). Each has hand-picked, verbatim quotes, checked against the PDF text, and a neutral description of the paper's own exposure, so you can rule keep (a formal rule or mechanism) or exclude E03.",
-         "2. For each other study, open the PDF, read the quoted passages in context, and compare the stored values in the table with the paper. The dossier says how many of the stored numbers it could find in the PDF at all.",
+         "1. Start with the 18 **AI-checked** studies: the AI found no scope or outcome red flag, but you have not read them, so they are not counted as human-verified. For each, open the PDF, read the quoted passages in context and rule include or exclude (with a reason code).",
+         "2. For every study (the four you ruled in under A28 and the nine confirmed earlier included), compare the stored values in the table with the paper, and confirm or correct the raw sign and the substantive direction. The dossier says how many of the stored numbers it could find in the PDF at all.",
          "3. If you want a study recorded as verified, say so in your own words and the AI will record exactly that, under your initials, and nothing more.", '',
          "**Conventions.** Quotes are verbatim apart from three mechanical clean-ups: ligature glyphs expanded (ﬁ to fi), a hyphen at a line break inside a word joined, and runs of whitespace collapsed to one space. `[...]` marks text cut from a long passage. "
-         "Table rows are copied from the PDF's layout text and can lose their column alignment. Page numbers are PDF page indexes. The files themselves are listed, with hashes, in `SWIM_37_SOURCE_PDF_MANIFEST.csv`; the PDFs are not in the repository.", '',
-         '## Status of the 37 studies', '',
-         f"- **{kinds['A28']} flagged (A28)**, not confirmed, awaiting your ruling.",
-         f"- **{kinds['AI-checked']} AI-checked**: a CK confirmation was recorded on 2026-10-14 after the AI's own scope and outcome check, under your Round 11 instruction. You have not verified them against the papers. They are shown as AI-checked here because the standard for this dossier is your own reading.",
+         "Table rows are copied from the PDF's layout text and can lose their column alignment. Page numbers are PDF page indexes. The files themselves are listed, with hashes, in `SWIM_31_SOURCE_PDF_MANIFEST.csv`; the PDFs are not in the repository.", '',
+         '## Status of the 31 studies', '',
+         f"- **{kinds['A28 ruled in']} ruled in by you under A28** (S920, S366, S1102, S1146), from the verbatim passages; the direction codings have not been confirmed.",
+         f"- **{kinds['AI-checked']} AI-checked only**: the AI's narrow-scope and outcome check found no red flag. A CK confirmation had been recorded on that basis in Round 11; it was relabelled `AI-checked` on your Round 14 instruction, so they are not counted as human-verified.",
          f"- **{kinds['earlier']} confirmed earlier by you** for inclusion (the S001-S200 pass or your own CK rulings); their direction codings have not been checked.",
-         f"- Source PDFs: {have} of 37 available to this build.", '',
+         f"- Source PDFs: {have} of 31 available to this build.", '',
          '| Study | Fam | Status | PDF | Estimate numbers found | Sample numbers found | Text layer | Raw sign | Substantive |', '|---|---|---|---|---|---|---|---|---|']
     for s, fam, kind, d, cov, c in summary:
         L.append(f"| {s} | {fam} | {kind} | {'yes' if d else '**none**'} | " + (f"{cov['est'][0]}/{cov['est'][1]}" if cov else 'n/a') + ' | ' + (f"{cov['n'][0]}/{cov['n'][1]}" if cov else 'n/a') + ' | ' + (cov['layer'].split(' ')[0] if cov else 'n/a') + f" | {c['raw_coefficient_sign']} | {c['substantive_direction']} |")
     L += ['', "*The numbers-found columns count how many of the numbers stored in `effect_sizes.csv` appear anywhere in the PDF's text layer. A low count means a possible extraction error, a different version of the paper, or a text layer that lost its tables, not a finding; a high count is not proof either, because a short decimal can match unrelated text.*", '',
-          '## 1. The A28 studies awaiting your ruling', '']
+          '## 1. The four A28 studies you kept (ruled in on 2026-10-14)', '']
     for s in A28:
         L += entries[s]
     for fam, title in (('A', 'Family A: legal status, tenure, recognition and governance arrangements'), ('B', 'Family B: assistance, participation, trust and external support'), ('C', 'Family C: ownership, regulation, institutional capacity and administrative structure')):

@@ -57,7 +57,7 @@ class TestHeadlineFigures(unittest.TestCase):
         F = self.F
         decided = [r for r in self.ft if r['final_decision'] in ('include', 'exclude')]
         human = {r['record_id'] for r in decided if r['reviewer_2'].startswith('Human-')}
-        ruled = {r['record_id'] for r in decided if r['record_id'] not in human and (r['reviewer_2'] == 'CK' or 'A16 adjudication' in r['notes'] or 'A19 ruling' in r['notes'] or 'A6 tier-1 ruling' in r['notes'] or 'A26 ruling' in r['notes'])}
+        ruled = {r['record_id'] for r in decided if r['record_id'] not in human and (r['reviewer_2'] == 'CK' or 'A16 adjudication' in r['notes'] or 'A19 ruling' in r['notes'] or 'A6 tier-1 ruling' in r['notes'] or 'A26 ruling' in r['notes'] or 'A28 ruling' in r['notes'])}
         self.assertEqual(F['reviewer_2_confirmed_includes'], len(human))
         self.assertEqual(F['human_adjudicated_rows'], len(ruled))
         self.assertEqual(F['human_verified_rows'], len(human) + len(ruled))
@@ -72,14 +72,18 @@ class TestHeadlineFigures(unittest.TestCase):
         ftb = {r['record_id']: r for r in self.ft}
         def human(s):
             f = ftb[rec[s]]
-            return f['reviewer_2'].startswith('Human-') or f['reviewer_2'] == 'CK' or any(m in f['notes'] for m in ('A16 adjudication', 'A19 ruling', 'A6 tier-1 ruling', 'A26 ruling'))
-        chk = rows('05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv')
+            return f['reviewer_2'].startswith('Human-') or f['reviewer_2'] == 'CK' or any(m in f['notes'] for m in ('A16 adjudication', 'A19 ruling', 'A6 tier-1 ruling', 'A26 ruling', 'A28 ruling'))
+        chk = rows('05_analysis/effect_sizes/SWIM_AI_SCOPE_CHECKS_2026-10-14.csv')
         self.assertEqual(F['swim_core_studies'], len(core))
         self.assertEqual(F['swim_core_inclusion_human_verified'], sum(human(s) for s in core))
         self.assertEqual(F['swim_core_direction_ck_confirmed'], sum(1 for r in chk if r['study_id'] in core and r['ck_raw_sign_agrees (Y/N)'] == 'Y' and r['ck_substantive_direction_agrees (Y/N)'] == 'Y'))
-        self.assertEqual(F['swim_core_flagged_for_author'], sum(1 for r in chk if r['study_id'] in core and r['scope_outcome_check'] == 'flagged'))
-        for r in chk:                                   # a flagged study is never counted as confirmed, and a confirmed one is human-verified
-            self.assertEqual(human(r['study_id']), r['scope_outcome_check'] == 'passed' or r['study_id'] not in {c['study_id'] for c in chk}, r['study_id'])
+        self.assertEqual(F['swim_core_flagged_for_author'], sum(1 for r in chk if r['study_id'] in core and r['ai_scope_check'] == 'flagged' and not r['a28_outcome']))
+        self.assertEqual(F['swim_core_ai_checked_not_human'], sum(1 for r in chk if r['study_id'] in core and r['ai_scope_check'] == 'passed' and not human(r['study_id'])))
+        for r in chk:                                   # AI-checked only is never counted as a human verification; an included A28 ruling is
+            if r['ai_scope_check'] == 'passed':
+                self.assertFalse(human(r['study_id']), r['study_id'])
+            if r['a28_outcome'].startswith('include'):
+                self.assertTrue(human(r['study_id']), r['study_id'])
 
     def test_extraction_counts(self):
         F, ed = self.F, self.ed

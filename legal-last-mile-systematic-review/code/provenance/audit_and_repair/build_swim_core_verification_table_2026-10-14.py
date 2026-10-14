@@ -1,8 +1,9 @@
-"""2026-10-14: the SWiM core verification table (after the A26 and A29 rulings: Family A 16, B 5, C 16 = 37 studies of the 58 rows of effect_sizes.csv; the 21 reasoned non-fits are not in the three syntheses; it had 44 rows before A26 and 39 before A29).
+"""2026-10-14: the SWiM core verification table (after the A26, A28 and A29 rulings: Family A 13, B 3, C 15 = 31 studies of the 52 rows of effect_sizes.csv; the 21 reasoned non-fits are not in the three syntheses; it had 44 rows before A26, 39 before A29 and 37 before A28).
 One row per study with the exposure against its comparator, the outcome, the estimate, the raw coefficient sign and the substantive direction for household access (both from SWIM_DIRECTION_CODING_2026-10-14.csv, which is also what the
 three family documents and the sensitivity analysis carry; a test checks they agree), the risk-of-bias tool and rating now in extraction_database.csv, whether the inclusion decision is human-verified (a 'Human-' confirmation or a CK ruling),
-and whether the AI checked the row against the full text (FULLTEXT_VERIFICATION_2026-10-04.csv). The ck_* columns come from SWIM_CK_CHECKS_2026-10-14.csv (the confirmations recorded on 2026-10-14 for the 18 studies that passed the AI's scope and outcome check (recorded under the author's instruction; the author has not yet re-read their papers, see SWIM_37_SOURCE_VERIFICATION_DOSSIER.md); blank for the 10 flagged for A28 and for the 9 studies whose inclusion was confirmed earlier, whose direction coding nobody has checked yet).
-READ-ONLY on every database. Writes 05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.{csv,md}; a rebuild keeps the ck_* columns because they are merged from the checks file.
+and whether the AI checked the row against the full text (FULLTEXT_VERIFICATION_2026-10-04.csv). The ai_scope_check and a28_outcome columns come from SWIM_AI_SCOPE_CHECKS_2026-10-14.csv: 18 studies passed the AI's narrow-scope and outcome
+check and are AI-checked only (not a human confirmation: relabelled under A31); the author ruled on the ten the AI flagged (A28, from the verbatim PDF passages: six excluded, four kept). The ck_* columns are the author's confirmation of the two direction
+codings; they are empty for every study because the author has not confirmed any direction coding. READ-ONLY on every database. Writes 05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.{csv,md}.
 Run from legal-last-mile-systematic-review/."""
 import csv, os, re, sys
 sys.path.insert(0, 'code/analysis')
@@ -11,7 +12,7 @@ import current_figures as cf
 import sensitivity_analysis as sa
 
 OUT = '05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14'
-CKFILE = '05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv'   # the author's checks (apply_a26_swim_core_checks_2026-10-14.py); merged below, so a rebuild keeps them
+CKFILE = '05_analysis/effect_sizes/SWIM_AI_SCOPE_CHECKS_2026-10-14.csv'   # the AI's scope checks and the author's A28 outcomes (apply_a26_swim_core_checks_2026-10-14.py, apply_a31_relabel_ai_checked_2026-10-14.py, apply_a28_effect_row_rulings_2026-10-14.py); merged below
 # study: (exposure, comparator, outcome, estimate), written from effect_sizes.csv
 S = {
  'S037': ('Place inside an irrigation district (DAC census places)', 'outside irrigation districts', 'poor drinking-water exposure score, % of places', '83% vs 79%, p=0.136'),
@@ -26,15 +27,10 @@ S = {
  'S882': ('Own metered utility connection (Baguio)', 'no connection', 'consumption, cleanliness, ease, affordability', '+27.2% lpcd; +0.35 SD; ORs 2.16 and 2.76'),
  'S920': ('Water-user-association management of small systems', 'non-participatory municipal management', 'piped-water access rate', '~+6 pp over trend (DiD)'),
  'S930': ('Usos y costumbres municipality (Oaxaca)', 'party-governed municipalities', 'sewerage access', 'ATT 0.086, p<0.01'),
- 'S1020': ('Watershed-development treatment villages', 'matched control watersheds', 'daily water-collection time', '+17.4 min/day (SE 2.46), i.e. worse'),
- 'S1042': ('Community organisation and town-hall participation (Ukraine)', 'municipalities without', 'good water-supply situation', 'town hall +29 pp; peer pressure +14 pp'),
- 'S1057': ('Design participation and satisfaction in demand-responsive programs', 'lower participation', 'log household collection-time saving', 'coef 1.63 (SE 0.95) to 2.92 (SE 0.95)'),
  'S1122': ('Non-zoned (informal) residence (Ouagadougou)', 'zoned periphery residents', 'time to first piped-water access', 'HR 0.14***'),
  'S085': ('Bureaucratic assistance (T1) with political coordination (T2)', 'control, no assistance', 'full formalisation of land/connection', '+19 pp (T1 with T2)'),
- 'S294': ('Community-driven WASH with institutional strengthening (cluster RCT, DRC)', 'control villages', 'diarrhoea, child growth, WASH-institutions index', 'diarrhoea -0.01 (-0.05, 0.03); LAZ -0.01 (-0.15, 0.12)'),
+ 'S366': ('Community-driven WASH (VEA programme) through village WASH committees (cluster RCT, DRC)', 'control clusters', 'improved primary drinking-water source', '83% vs 43%; ITT +33 pp (95% CI 22 to 45)'),
  'S1102': ('Capital-cost contribution and meeting attendance (India)', 'non-contributors', 'water improvements index', 'difference 1.04 (t=4.26)'),
- 'S1144': ('Social-proximity trust in NGOs/CBOs (Kampala)', 'lower trust', 'access to NGO-supplied sanitation', 'coef 7.01 (SE 1.35); ME 1.01'),
- 'S1163': ('External WASH-programme support to rural schools (14 LMICs)', 'no support', 'basic on-premises water service', 'OR 1.4 (1.1-1.7)'),
  'S174': ('Municipal institutional capacity (Brazil)', 'lower-capacity municipalities', 'water and sanitation coverage', 'coef 6.02 (SE 1.02) financial factor'),
  'S470': ('Arsae-MG enforcement norm (Minas Gerais)', 'same municipalities in 2020', 'social-tariff implementation', '+19.2 pp (SE 0.82)'),
  'S471': ('Mayor-led local government (U.S. utilities)', 'manager/council forms', 'basic drinking-water cost', '-1.58 (SE 0.69); -1.03 n.s. with covariates'),
@@ -44,7 +40,6 @@ S = {
  'S631': ('New district created by pemekaran (Indonesia)', 'original parent districts', 'household protected water and sanitation access', '~-1% (DiD)'),
  'S749': ('Private ownership of the corporation (Brazil)', 'public and mixed-capital corporations', 'water tariff level', '+0.3456 R$/m3'),
  'S879': ('Random contract enforcement: credible disconnection notices (Kenya)', 'enforcement-exempt compounds', 'payment compliance; water access', 'payment +30 pp (p<0.001); access null'),
- 'S947': ('Regulation quality, WGI (44 countries)', 'lower regulation-quality scores', 'access to drinking water', 'coef 0.0121 (SE 0.0035), p<0.01'),
  'S1032': ('Contact with the municipality or an NGO for redress (Ahmedabad)', 'no contact', 'household water complaints', 'OR 0.60* (municipal); 0.56* (NGO)'),
  'S1038': ('State PUC economic regulation of a municipal utility (U.S.; reported contrast)', 'local-only regulation', 'monopoly welfare loss, % of residential bill', '5.2% vs 9.6% (difference -4.6 pp)'),
  'S1062': ('O&M cost-recovery ratio (Sub-Saharan utilities)', 'lower cost-recovery ratios', 'coverage change', 'positive, then negative (inverted U)'),
@@ -60,7 +55,7 @@ coding = {r['study_id']: r for r in csv.DictReader(open('05_analysis/effect_size
 signs = {f: sa.parse_signs(f) for f in 'ABC'}
 subst = {f: sa.parse_substantive(f) for f in 'ABC'}
 fam_rows = [(f, s) for f in 'ABC' for s in sorted((x for x in es if es[x]['synthesis_family'] == f), key=lambda x: int(x[1:]))]
-assert len(fam_rows) == 37 and {s for _, s in fam_rows} == set(S) == set(coding), sorted({s for _, s in fam_rows} ^ set(S))
+assert len(fam_rows) == 31 and {s for _, s in fam_rows} == set(S) == set(coding), sorted({s for _, s in fam_rows} ^ set(S))
 SIGN_WORD = {'+': 'positive', '-': 'negative', 'null': 'null', 'mixed': 'mixed'}
 for f, s in fam_rows:   # the family documents, the sensitivity analysis and this table must carry the same two codings
     assert signs[f][s] == SIGN_WORD[coding[s]['raw_coefficient_sign']] and subst[f][s] == coding[s]['substantive_direction'].lower(), (f, s)
@@ -97,11 +92,11 @@ def ck(r):
         return 'Y (confirmed S001-S200)'
     if f['reviewer_2'] == 'CK' or any(m in f['notes'] for m in cf.HUMAN_RULING_MARKS):
         return 'Y (CK ruling)'
-    return 'N'
+    return 'N (AI-checked only)' if ck_.get(r['study_id'], {}).get('ai_scope_check') == 'passed' else 'N'
 
 
 ck_ = {r['study_id']: r for r in csv.DictReader(open(CKFILE, encoding='utf-8'))} if os.path.exists(CKFILE) else {}
-assert set(ck_) <= {s for _, s in fam_rows}, 'a CK check names a study that is no longer in a SWiM family'
+assert all(ck_[s]['a28_outcome'] for s in set(ck_) - {s for _, s in fam_rows}), 'a checked study left the SWiM families without a recorded ruling'
 rows = []
 for fam, s in fam_rows:
     r, e = ed[s], es[s]
@@ -113,24 +108,25 @@ for fam, s in fam_rows:
                  'alternative_substantive_direction': c['alternative_substantive_direction'], 'outcome_directness_check': c['outcome_directness_check'], 'ai_recommendation_for_author': c['ai_recommendation_for_author'], 'coding_note': c['coding_note'],
                  'rob_tool': cf.tool_of(r['risk_of_bias_tool']), 'rob_rating': rating(r), 'inclusion_decision_human_verified': ck(r),
                  'effect_row_checked_vs_full_text_by_AI': v.get('verdict', ''), 'raw_direction_text': e['direction'], 'exposure_full': e['exposure_definition'], 'comparator_full': e['comparator_definition'],
-                 'estimate_full': e['effect_estimate'], 'scope_outcome_check_2026-10-14': ck_[s]['scope_outcome_check'] if s in ck_ else '', 'ck_raw_sign_agrees (Y/N)': ck_[s]['ck_raw_sign_agrees (Y/N)'] if s in ck_ else '',
-                 'ck_substantive_direction_agrees (Y/N)': ck_[s]['ck_substantive_direction_agrees (Y/N)'] if s in ck_ else '', 'ck_comment': (ck_[s]['check_note'] if s in ck_ and ck_[s]['scope_outcome_check'] == 'flagged' else '')})
+                 'estimate_full': e['effect_estimate'], 'ai_scope_check_2026-10-14': ck_[s]['ai_scope_check'] if s in ck_ else '', 'a28_outcome': ck_[s]['a28_outcome'] if s in ck_ else '', 'ck_raw_sign_agrees (Y/N)': ck_[s]['ck_raw_sign_agrees (Y/N)'] if s in ck_ else '',
+                 'ck_substantive_direction_agrees (Y/N)': ck_[s]['ck_substantive_direction_agrees (Y/N)'] if s in ck_ else '', 'ck_comment': (ck_[s]['check_note'] if s in ck_ and ck_[s]['ai_scope_check'] == 'flagged' else '')})
 fields = list(rows[0])
 with open(OUT + '.csv', 'w', newline='', encoding='utf-8') as fh:
     w = csv.DictWriter(fh, fieldnames=fields, lineterminator='\r\n'); w.writeheader(); w.writerows(rows)
-L = ['# SWiM core verification table: the 37 family-assigned effect rows (A 16, B 5, C 16)', '',
-     '*Generated by `code/provenance/audit_and_repair/build_swim_core_verification_table_2026-10-14.py`; read-only. Before the author\'s A26 and A29 rulings of 2026-10-14 it had 44 rows: S358, S590 and S606 became reasoned non-fits under A26, S1121 and S1143 were excluded, and S1140 and S1136 became reasoned non-fits under A29. '
+L = ['# SWiM core verification table: the 31 family-assigned effect rows (A 13, B 3, C 15)', '',
+     '*Generated by `code/provenance/audit_and_repair/build_swim_core_verification_table_2026-10-14.py`; read-only. It had 44 rows before the author\'s rulings of 2026-10-14: S358, S590 and S606 became reasoned non-fits under A26, S1121 and S1143 were excluded, S1140 and S1136 became reasoned non-fits under A29, and S1020, S1042, S1057, S1144, S1163 and S947 were excluded under A28 (S294\'s row moved to S366). '
      'Two direction columns, because the raw sign of a coefficient and its meaning for households are different things (`SWIM_DIRECTION_CODING_2026-10-14.csv`, the AI\'s coding): **Raw sign** is the sign of the reported estimate for the contrast it reports (ratio above 1 = +, below 1 = -; null = not significant); '
      '**Substantive** is Favourable / Unfavourable / Null / Mixed for household access, affordability or equity, derived from the raw sign, the polarity of the outcome (is a higher value better or worse?) and the pole of the exposure. '
      '† = the exposure is a non-recognised status and the contrast is restated to the recognised pole (S084, S142, S1122); ‡ = the fully adjusted estimate gives a different direction (S471: Null); '
-     '**Human-verified** is the inclusion decision only (a Human- confirmation or a CK ruling). **CK check** is the confirmation recorded on 2026-10-14 of the inclusion and of both direction codings (for the studies that passed the AI\'s check it was recorded under the author\'s instruction and the author has not yet re-read the paper; see `SWIM_37_SOURCE_VERIFICATION_DOSSIER.md`) '
-     '(`SWIM_CK_CHECKS_2026-10-14.csv`): confirmed for the studies that passed the AI\'s narrow-scope and outcome check, **flagged** for the ten that did not (open item A28, not confirmed), blank for the nine whose inclusion was confirmed earlier and whose direction coding has not been checked. '
-     'The effect estimates were extracted and checked against the full texts by the AI; no estimate has been verified by a human. The CSV also carries the polarity, the exposure pole, the notes and the ck_* columns.*', '',
-     '| ID | Author (Year) | Fam | Exposure vs comparator | Outcome | Estimate | Raw sign | Substantive | RoB | Human-verified | CK check |', '|---|---|---|---|---|---|---|---|---|---|---|']
+     '**Inclusion** is the verification status of the inclusion decision only: **Y** = a Human- confirmation or a ruling under reviewer CK (for S920, S1102, S1146 and S366 the A28 rulings of 2026-10-14, made from the verbatim PDF passages); **AI** = checked only by the AI against the narrow reading of criteria 2 and 4 (no red flag), which is not a human confirmation (relabelled under A31; see `SWIM_31_SOURCE_VERIFICATION_DOSSIER.md` for the passages the author reviews); '
+     '**N** = neither. **Direction** is the author\'s confirmation of both direction codings (the ck_* columns): the author has not confirmed any, so the column is empty throughout. '
+     'The effect estimates were extracted and checked against the full texts by the AI; no estimate has been verified by a human. The CSV also carries the polarity, the exposure pole, the notes, the AI scope check and the A28 outcome.*', '',
+     '| ID | Author (Year) | Fam | Exposure vs comparator | Outcome | Estimate | Raw sign | Substantive | RoB | Inclusion | Direction |', '|---|---|---|---|---|---|---|---|---|---|---|']
 for x in rows:
     flags = ('†' if x['exposure_orientation'].startswith('restated') else '') + ('‡' if x['alternative_substantive_direction'] else '') + ('◊' if x['outcome_directness_check'].startswith('checked') else '')
-    ckc = 'confirmed' if x['ck_raw_sign_agrees (Y/N)'] == 'Y' and x['ck_substantive_direction_agrees (Y/N)'] == 'Y' else 'flagged' if x['scope_outcome_check_2026-10-14'] == 'flagged' else ''
-    L.append(f"| {x['study_id']}{' ' + flags if flags else ''} | {x['author_year']} | {x['family']} | {x['exposure_short']} vs {x['comparator_short']} | {x['outcome_short']} | {x['estimate_short']} | {x['raw_coefficient_sign']} | {x['substantive_direction']} | {x['rob_tool']}: {x['rob_rating']} | {x['inclusion_decision_human_verified'][0]} | {ckc} |")
+    ckc = 'confirmed' if x['ck_raw_sign_agrees (Y/N)'] == 'Y' and x['ck_substantive_direction_agrees (Y/N)'] == 'Y' else ''
+    inc = 'AI' if x['inclusion_decision_human_verified'].startswith('N (AI') else x['inclusion_decision_human_verified'][0]
+    L.append(f"| {x['study_id']}{' ' + flags if flags else ''} | {x['author_year']} | {x['family']} | {x['exposure_short']} vs {x['comparator_short']} | {x['outcome_short']} | {x['estimate_short']} | {x['raw_coefficient_sign']} | {x['substantive_direction']} | {x['rob_tool']}: {x['rob_rating']} | {inc} | {ckc} |")
 open(OUT + '.md', 'w', encoding='utf-8').write('\n'.join(L) + '\n')
 import collections
 print('wrote', OUT + '.csv/.md; raw', collections.Counter(x['raw_coefficient_sign'] for x in rows), 'substantive', collections.Counter(x['substantive_direction'] for x in rows), 'human-verified:', collections.Counter(x['inclusion_decision_human_verified'] for x in rows))

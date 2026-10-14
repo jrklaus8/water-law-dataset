@@ -10,6 +10,8 @@ What it writes: (1) 05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv (the 
 'A26 scope check (AI) ...: flagged, not confirmed' for the 10) and reviewer_2 = 'CK' on the confirmed rows whose reviewer_2 is blank (S1062 keeps its Codex second-model label and the confirmation is in the note, as for the A6 tier-1 rows);
 decision, code and conflict fields are untouched; (3) the A28 sheet (csv and md). Idempotent. Run from legal-last-mile-systematic-review/."""
 import csv, os, sys, tempfile
+if os.path.exists('05_analysis/effect_sizes/SWIM_AI_SCOPE_CHECKS_2026-10-14.csv'):
+    sys.exit('Superseded by apply_a31_relabel_ai_checked_2026-10-14.py (the 18 confirmations are recorded as AI-checked, not CK). Re-running this script would restore the CK labels, so it stops.')
 sys.path.insert(0, 'code/analysis')
 csv.field_size_limit(sys.maxsize)
 import current_figures as cf

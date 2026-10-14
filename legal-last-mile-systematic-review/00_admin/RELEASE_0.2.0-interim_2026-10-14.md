@@ -12,7 +12,7 @@ It is still an **interim, AI-assisted** deposit: nothing in it has been independ
 | Full-text screening | closed 2026-09-28 by researcher decision; 2,277 of 3,659 assessed: **1,078 include / 1,199 exclude**; 1,382 never assessed |
 | Included studies | **1,078 reports, representing 1,076 distinct studies** on the definite same-data links (1,074 counting the partial-overlap links); the 5 RoB 2 report rows are 4 trials |
 | Appraisal | every included study has a design-matched tool and a rule-based rating: RoB 2 5, ROBINS-I 57, JBI 129, MMAT 195, CASP 248, AMSTAR 2 18, Legal Institutional Evidence Appraisal Framework 426 (non-validated, project-specific) |
-| Effect sizes | 58 rows (Family A 16, B 5, C 16, and 21 reasoned non-fits, S331 among them); **none pooled** (Phase 11 verdict); three structured (SWiM) syntheses, Family A k = 16, B k = 5, C k = 16, each study coded for the raw sign of its estimate and its substantive direction for households, with a sensitivity analysis |
+| Effect sizes | 52 rows (Family A 13, B 3, C 15, and 21 reasoned non-fits, S331 among them); **none pooled** (Phase 11 verdict); three structured (SWiM) syntheses, Family A k = 13, B k = 3, C k = 15, each study coded for the raw sign of its estimate and its substantive direction for households, with a sensitivity analysis |
 | Controlled vocabularies | `mechanism_family` (nine families plus `multiple`), `outcome_family` (four plus `multiple`) and `study_design_class` (eight values plus `other`) adopted 2026-10-14; original labels preserved |
 
 ## What changed since 0.1.0-interim (see `CHANGELOG.md`)
@@ -22,7 +22,7 @@ Full-text screening completed and closed; extraction of every included report; c
 ## What is verified, and what is not
 
 - **Verified by the repository checks:** internal consistency (counts, one-to-one maps between screening, exclusion log, extraction and evidence map, controlled vocabularies, generated files fresh). Run `bash code/analysis/regenerate_all.sh`.
-- **Verified by the PI:** 197 full-text includes (S001–S200 less three the PI later excluded) and 270 further full-text decisions ruled on in the adjudication passes, in A6 tier 1 and in the A26 SWiM core confirmations (166 excludes and 104 includes, each with a recorded ruling), 467 of 2,277 decisions (20.5%) in all. A6 tier 1 (73 rows) is complete.
+- **Verified by the PI:** 197 full-text includes (S001–S200 less three the PI later excluded) and 262 further full-text decisions ruled on in the adjudication passes, in A6 tier 1 and in the A28 rulings on the SWiM core (172 excludes and 90 includes, each with a recorded ruling), 459 of 2,277 decisions (20.2%) in all. The AI's own scope check of 18 SWiM core studies is recorded as AI-checked, not as a human confirmation (A31). A6 tier 1 (73 rows) is complete.
 - **Not verified by a human:** extracted values (no second extractor), risk-of-bias ratings, the direction coding in the SWiM tables (except the 20 studies whose inclusion and both codings the author confirmed on 2026-10-14; ten others were flagged and await a ruling, A28), the mechanism and outcome vocabulary mapping, and the remaining AI full-text decisions. The `reviewer_1` label of 73 early decisions was inferred, not recorded.
 
 ## Still open (long-term, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`)

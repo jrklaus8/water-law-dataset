@@ -88,8 +88,9 @@ def scenarios():
     abstract_only = {s for s, r in ed.items() if r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)}
     not_eligible = {s for s in es_ids if em[s]['quantitative_synthesis_eligible'] != 'TRUE'}
     # collapse: for each definite link, drop the later member (keep the first-listed study) if both are in the analysed set
-    collapse_drop = {r['study_id_b'] for r in links if r['same_underlying_data'] == 'yes'}
     signs = {f: parse_signs(f) for f in 'ABC'}
+    in_families = {s for f in 'ABC' for s in signs[f]}
+    collapse_drop = {r['study_id_b'] for r in links if r['same_underlying_data'] == 'yes' and r['study_id_a'] in in_families and r['study_id_b'] in in_families}
     subst = {f: parse_substantive(f) for f in 'ABC'}
     for f in 'ABC':
         assert set(signs[f]) <= es_ids, f'{f}: SWiM document lists a study not in effect_sizes.csv'
@@ -148,7 +149,7 @@ def link_line():
     yes = [r for r in cf.read('links') if r['same_underlying_data'] == 'yes']
     inv = sorted({x for r in yes for x in (r['study_id_a'], r['study_id_b']) if x in es_ids}, key=lambda x: int(x[1:]))
     return (f"- **Linked reports:** {len(yes)} definite same-data links; {len(inv)} {'involves' if len(inv) == 1 else 'involve'} a study that has an effect-size row ({', '.join(f'{i} (Family {_fam_of(i)[0] if _fam_of(i) else chr(8212)})' for i in inv) or 'none'}), so S3 "
-            + ("changes nothing in A, B or C." if not any(r['study_id_b'] in es_ids for r in yes) else "removes the later member of a linked pair that has an effect-size row."))
+            + ("changes nothing in A, B or C (only one member of each linked pair has an effect-size row, so there is no second member to remove)." if not any(r['study_id_a'] in inv and r['study_id_b'] in inv for r in yes) else "removes the later member of a linked pair in which both members have an effect-size row."))
 
 
 def elig_line(not_eligible):

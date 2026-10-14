@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate 06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx: a short, partial report of the analysis and the preliminary findings.
 
-Every number is computed from the databases (current_figures.py, sensitivity_analysis.py, the SWiM direction-coding and CK-check files,
+Every number is computed from the databases (current_figures.py, sensitivity_analysis.py, the SWiM direction-coding and AI-scope-check files,
 build_a16_adjudication_sheet.py), so the summary cannot drift from the data; interpretive sentences are written here and say what they
 rest on. Nothing in it is a pooled effect, a GRADE judgment or a final finding. The long version is
 06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md.
@@ -52,38 +52,25 @@ def gather():
     em = cf.read('em')
     n = len(ed)
     code = {r['study_id']: r for r in csv.DictReader(open(ROOT / '05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv', encoding='utf-8'))}
-    ck = {r['study_id']: r for r in csv.DictReader(open(ROOT / '05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv', encoding='utf-8'))}
     rows, *_ = sa.scenarios()
     base = rows[0]
     D = {'F': F, 'n': n, 'rows': rows, 'base': base, 'A16': bmp._a16_outcome(), 'code': code}
-    # families, with the author's check status per study
+    # families, with the verification status of each study's inclusion decision: 'author' (a Human- confirmation or a ruling under reviewer CK) or 'ai' (AI-checked only)
+    ftb, edb = {r['record_id']: r for r in cf.read('ft')}, {r['study_id']: r for r in ed}
     def status(s):
-        c = ck.get(s)
-        if c and c['scope_outcome_check'] == 'flagged':
-            return 'flagged'
-        if c and c['ck_raw_sign_agrees (Y/N)'] == 'Y' and c['ck_substantive_direction_agrees (Y/N)'] == 'Y':
-            return 'confirmed'
-        return 'unchecked'
+        f = ftb[edb[s]['record_id']]
+        return 'author' if f['reviewer_2'].startswith('Human-') or f['reviewer_2'] == 'CK' or any(m in f['notes'] for m in cf.HUMAN_RULING_MARKS) else 'ai'
     st = {s: status(s) for s in code}
     D['status'] = st
     cnt = Counter(st.values())
-    assert cnt['confirmed'] == F['swim_core_direction_ck_confirmed'] and cnt['flagged'] == F['swim_core_flagged_for_author'] and len(code) == F['swim_core_studies']
+    assert cnt['author'] == F['swim_core_inclusion_human_verified'] and cnt['ai'] == F['swim_core_ai_checked_not_human'] and len(code) == F['swim_core_studies']
+    D['a28_kept'] = sorted((s for s in code if 'A28 ruling' in ftb[edb[s]['record_id']]['notes']), key=lambda x: int(x[1:]))
     fam = {f: [s for s, r in code.items() if r['family'] == f] for f in 'ABC'}
     D['fam'] = fam
     for f in 'ABC':
         assert len(fam[f]) == base[f'{f}_k'], f
         raw = Counter(code[s]['raw_coefficient_sign'] for s in fam[f])
         assert (raw['+'], raw['-'], raw['null'], raw['mixed']) == tuple(base[f'{f}_{k}'] for k in ('positive', 'negative', 'null', 'mixed')), f
-    # illustrative scenario: every flagged study excluded (the ruling is the author's; sensitivity_analysis.py is not changed by it)
-    def tally(ids, f):
-        c = Counter(code[s]['substantive_direction'] for s in ids)
-        return c['Favourable'], c['Unfavourable'], c['Null'], c['Mixed']
-    ill = {}
-    for f in 'ABC':
-        keep = [s for s in fam[f] if st[s] != 'flagged']
-        ill[f] = {'k': len(keep), 'sub': tally(keep, f)}
-    D['illustrative'] = ill
-    D['flagged_by_family'] = {f: sum(st[s] == 'flagged' for s in fam[f]) for f in 'ABC'}
     D['diverge'] = len([x for x in next(r for r in rows if r['scenario'].startswith('S4d'))['dropped_studies_in_families'].split(';') if x])
     # descriptive numbers
     dc = Counter(r['study_design_class'] for r in em)
@@ -318,7 +305,7 @@ def banner(doc, text, fill='FFF4D6', edge='E0A100', width=6.7):
 # ---------------------------------------------------------------- content
 def build():
     D = gather()
-    F, n, base, rows, A16, fam, ill, st = D['F'], D['n'], D['base'], D['rows'], D['A16'], D['fam'], D['illustrative'], D['status']
+    F, n, base, rows, A16, fam, st = D['F'], D['n'], D['base'], D['rows'], D['A16'], D['fam'], D['status']
     dc = D['dc']
     pct = lambda k, d: f'{100 * k / d:.0f}%'
     dec = F['full_text_decided']
@@ -329,8 +316,12 @@ def build():
     causal = F['causal_capable_designs']
     all_hold = all('FAILS' not in (r['A_test_majority_concordant'], r['B_test_none_negative_or_null'], r['C_test_no_dominant_sign'], r['C_test_no_dominant_direction']) for r in rows)
     shares = [r['A_concordant_pct'] for r in rows if r['A_concordant_pct'] != '']
-    fl = D['flagged_by_family']
-    b_k, b_rest = base['B_k'], ill['B']['k']
+    b_k = base['B_k']
+    n_core, hv_core, ai_core, ck_core = F['swim_core_studies'], F['swim_core_inclusion_human_verified'], F['swim_core_ai_checked_not_human'], F['swim_core_direction_ck_confirmed']
+    a28 = D['a28_kept']
+    fail_keys = ('A_test_majority_concordant', 'B_test_none_negative_or_null', 'C_test_no_dominant_sign', 'C_test_no_dominant_direction')
+    nfail = {k: sum(r[k] == 'FAILS' for r in rows) for k in fail_keys}
+
     top3 = D['mech'].most_common(3)
     country = D['country']
     geo = bmp.geography_framing(F)
@@ -351,8 +342,8 @@ def build():
     para(doc, '**Executive summary of preliminary findings (partial report)**', size=13, after=2, color=NAVY)
     para(doc, f'AI-assisted systematic review of legal and administrative conditions and household access to water and sanitation  ·  interim release {RELEASE}  ·  {REPORT_DATE}', size=9, color=RGBColor(0x52, 0x51, 0x4E), after=8)
     banner(doc, f"**Preliminary and partial.** Screening, data extraction, quality appraisal and the direction coding of each estimate were done by an AI under the author's rulings. "
-                f"Only {hv:,} of {dec:,} full-text decisions ({hv / dec * 100:.1f}%) have a recorded human check. Of the {F['swim_core_studies']} studies in the quantitative syntheses, the author's own earlier checks cover the inclusion decisions of {F['swim_core_inclusion_human_verified'] - F['swim_core_direction_ck_confirmed']}; "
-                f"for {F['swim_core_direction_ck_confirmed']} more a confirmation was recorded after the AI's own scope check and has not yet been checked by the author against the papers. "
+                f"Only {hv:,} of {dec:,} full-text decisions ({hv / dec * 100:.1f}%) have a recorded human check. Of the {n_core} studies in the quantitative syntheses, {hv_core} have a human-verified inclusion decision (the author's own confirmations and rulings); "
+                f"the other {ai_core} were checked only by the AI and are recorded as AI-checked, not as human confirmations, and the author has confirmed the direction coding of {ck_core}. "
                 f"No effect size is pooled. Read every number as AI-produced and unverified against the source papers unless this summary says otherwise.")
 
     # ---- 1. bottom line
@@ -362,12 +353,12 @@ def build():
         f"and only {causal} ({pct(causal, n)}) were appraised with a causal-design instrument (ROBINS-I or RoB 2); the 5 randomised trials are 4 distinct trials.",
         f"**Legal recognition and formal status tend to go with better access (Family A).** {base['A_favourable']} of {base['A_k']} quantitative studies ({base['A_concordant_pct']:.0f}%) point in the favourable direction; "
         f"{base['A_unfavourable']} point the other way and {base['A_subst_null']} are null.",
-        f"**Assistance, participation and trust look uniformly favourable (Family B), but this is the least secure result.** All {b_k} studies are favourable ({base['B_favourable']}) or mixed ({base['B_subst_mixed']}), "
-        f"yet {fl['B']} of the {b_k} are among the ten studies flagged on a scope check and awaiting the author's ruling. If all {fl['B']} were excluded, {b_rest} {'study' if b_rest == 1 else 'studies'} would remain.",
+        f"**Assistance, participation and trust look uniformly favourable (Family B), but this is the least secure result.** All {b_k} studies are favourable, "
+        f"yet the family has only {b_k} studies, each testing a different mechanism, after the author's scope rulings removed two of the five (an NGO-trust study and a school-programme study).",
         f"**Ownership, regulation and institutional structure show no consistent direction (Family C).** {base['C_favourable']} favourable, {base['C_unfavourable']} unfavourable and {base['C_subst_mixed']} mixed across {base['C_k']} studies with "
         f"heterogeneous exposures and outcomes. The one coherent sub-pattern, private ownership going with worse affordability, rests on three studies that probably draw on two independent samples.",
-        f"**The counts survive every test tried, but nothing is pooled and confidence is low.** " + (f"The pre-stated conclusions hold in all {len(rows) - 1} alternative scenarios" if all_hold else "Some pre-stated conclusions fail in some scenarios (section 5)") +
-        f" (Family A's favourable share ranges {min(shares):.1f}% to {max(shares):.1f}%). No family has enough comparable studies for meta-analysis, and confidence in any causal or comparative claim is low to very low.",
+        (f"**The counts survive every test tried, but nothing is pooled and confidence is low.** The pre-stated conclusions hold in all {len(rows) - 1} alternative scenarios" if all_hold else f"**Most pre-stated tests hold, one does not, and nothing is pooled; confidence is low.** The tests for Families A and B hold in every scenario; the test that no raw sign dominates Family C fails in {nfail['C_test_no_dominant_sign']} of {len(rows)} scenarios (negative is {base['C_negative']} of {base['C_k']}, a bare majority, because the raw sign mixes outcomes of opposite polarity), while the substantive-direction test, the household-relevant reading, {'holds in every scenario' if not nfail['C_test_no_dominant_direction'] else 'also fails in some scenarios'} (section 5)") +
+        f". Family A's favourable share ranges {min(shares):.1f}% to {max(shares):.1f}%. No family has enough comparable studies for meta-analysis, and confidence in any causal or comparative claim is low to very low.",
         f"**The evidence is concentrated where networks are incomplete.** India, Brazil, South Africa, Ghana and the United States dominate, while high-coverage welfare states are sparsely represented ({geo['canada']} single-country studies in Canada, {geo['canada_fn']} on the drinking water of First Nations and other Indigenous communities, and {geo['netherlands']} in the Netherlands). "
         "Administrative exclusion inside universal-network systems (tariff hardship exemptions, tenant billing rules, administrative redress) is therefore comparatively under-examined in this evidence base.",
     ]
@@ -411,10 +402,10 @@ def build():
     for f in 'ABC':
         c = Counter(st[s] for s in fam[f])
         trs.append([names[f], base[f'{f}_k'], f"{base[f'{f}_positive']} / {base[f'{f}_negative']} / {base[f'{f}_null']} / {base[f'{f}_mixed']}",
-                    f"{base[f'{f}_favourable']} / {base[f'{f}_unfavourable']} / {base[f'{f}_subst_null']} / {base[f'{f}_subst_mixed']}", f"{c['confirmed']} / {c['flagged']} / {c['unchecked']}"])
-    table(doc, ['Family', 'Studies', 'Raw sign\n+ / − / null / mixed', 'Substantive direction\nfav. / unfav. / null / mixed', "Direction-coding check\npassed AI check* / flagged / not yet"], trs, [2.45, 0.6, 1.15, 1.4, 1.1],
+                    f"{base[f'{f}_favourable']} / {base[f'{f}_unfavourable']} / {base[f'{f}_subst_null']} / {base[f'{f}_subst_mixed']}", f"{c['author']} / {c['ai']}"])
+    table(doc, ['Family', 'Studies', 'Raw sign\n+ / − / null / mixed', 'Substantive direction\nfav. / unfav. / null / mixed', "Inclusion checked by\nthe author / AI only*"], trs, [2.45, 0.6, 1.15, 1.4, 1.1],
           align=['l', 'c', 'c', 'c', 'c'], size=8.5)
-    para(doc, "*Passed the AI's own narrow-scope and outcome check; a confirmation was recorded on that basis and the author has not yet checked these papers against their source passages. 'Not yet' means the inclusion was confirmed earlier and the direction coding has not been checked.", size=8, color=RGBColor(0x52, 0x51, 0x4E), after=4)
+    para(doc, f"*AI only: the AI's narrow-scope and outcome check found no red flag; this is not a human confirmation, and the author has not yet reviewed these papers against their source passages. The author has confirmed the direction coding of {ck_core} of the {n_core} studies.", size=8, color=RGBColor(0x52, 0x51, 0x4E), after=4)
     pic = doc.add_paragraph()
     pic.alignment = WD_ALIGN_PARAGRAPH.CENTER; pic.paragraph_format.space_after = Pt(2); pic.paragraph_format.keep_with_next = True
     shape = pic.add_run().add_picture(chart(D), width=Inches(5.9))
@@ -425,14 +416,14 @@ def build():
     para(doc, '**Figure 1.** Direction of association in the three structured syntheses, read two ways.', size=8.5, color=RGBColor(0x52, 0x51, 0x4E), after=6, align=WD_ALIGN_PARAGRAPH.CENTER)
     for b in (
         f"**Family A (recognition and status).** Where a legal status, tenure right or formal recognition is the exposure, the association with access is favourable in {base['A_concordant_pct']:.0f}% of studies. "
-        f"Two point the other way (S104, a tenure study in which owners had more service interruptions, and S1020, a watershed programme after which collection time rose; the second is among the flagged studies) and two are null.",
-        f"**Family B (assistance, participation, trust).** {base['B_favourable']} studies are favourable and {base['B_subst_mixed']} is mixed (S294, a cluster trial with null health outcomes). The {b_k} study different mechanisms, and {fl['B']} of them are flagged (see below), so this should not be read as a pattern.",
+        f"{base['A_unfavourable']} points the other way (S104, a tenure study in which owners had more service interruptions) and {base['A_subst_null']} are null.",
+        f"**Family B (assistance, participation, trust).** {base['B_favourable']} of {b_k} studies are favourable: a cluster trial of bureaucratic assistance (S085), a cluster trial of a community-driven WASH programme in the DRC (S366; its 2025 companion report S294 is a linked report with no estimate of its own) and a matched comparison of a mandatory capital-cost contribution rule (S1102). The {b_k} test different mechanisms, so this should not be read as a pattern.",
         f"**Family C (ownership, regulation, structure).** Raw signs split {base['C_positive']} positive, {base['C_negative']} negative and {base['C_mixed']} mixed; substantive directions split {base['C_favourable']}, {base['C_unfavourable']} and {base['C_subst_mixed']}. "
-        f"The exposures are too different (private versus public ownership, the level of regulation, new local governments, contract enforcement, cost-recovery policy, governance quality) to expect agreement.",
+        f"The exposures are too different (private versus public ownership, the level of regulation, new local governments, contract enforcement, cost-recovery policy, corruption) to expect agreement." + (f" Negative is a bare majority by raw sign ({base['C_negative']} of {base['C_k']}), but that count mixes outcomes of opposite polarity (a lower bill or complaint rate is favourable) and is not the household reading." if base['C_test_no_dominant_sign'] == 'FAILS' else ""),
         f"**Two readings, deliberately.** Raw sign and substantive direction come apart for {D['diverge']} of the {F['swim_core_studies']} studies, so each is reported separately.",
-        f"**Verification status.** {F['swim_core_inclusion_human_verified']} of the {F['swim_core_studies']} studies carry a recorded human verification of the inclusion decision, but for {F['swim_core_direction_ck_confirmed']} of them (and for their two direction codings) the record was entered after the AI's own scope check, and the author has not yet checked those papers; "
-        f"the author's own earlier confirmations cover {F['swim_core_inclusion_human_verified'] - F['swim_core_direction_ck_confirmed']}. "
-        f"The other {F['swim_core_flagged_for_author']} were flagged on a narrow-scope check (an exposure that is community management, participation, programme delivery, an attitude or macro-governance, or an outcome that is not household access) and are not counted as confirmed. "
+        f"**Verification status.** {hv_core} of the {n_core} studies carry a recorded human verification of the inclusion decision: the author's earlier confirmations ({hv_core - len(a28)}) and, on 2026-10-14, rulings made after reading the verbatim passages of the papers ({', '.join(a28)}). "
+        f"The other {ai_core} were checked only by the AI against the narrow-scope and outcome criteria and are recorded as AI-checked, not as human confirmations. The author has confirmed the direction coding of {ck_core} studies. "
+        f"Of the ten core studies the AI had flagged on that check (an exposure that is community management, participation, programme delivery, an attitude or macro-governance, or an outcome that is not household access), the author's rulings removed six and kept four. "
         f"The effect estimates were extracted and checked against the full texts by the AI, not by a human.",
     ):
         bullet(doc, b)
@@ -447,17 +438,13 @@ def build():
         tests = 'all hold' if 'FAILS' not in (r['A_test_majority_concordant'], r['B_test_none_negative_or_null'], r['C_test_no_dominant_sign'], r['C_test_no_dominant_direction']) else 'one fails'
         rr.append([label, f"{r['A_k']}; {r['A_favourable']}/{r['A_unfavourable']}/{r['A_subst_null']} ({r['A_concordant_pct']:.0f}%)", f"{r['B_k']}; {r['B_favourable']}/{r['B_subst_mixed']}",
                    f"{r['C_k']}; {r['C_favourable']}/{r['C_unfavourable']}/{r['C_subst_mixed']}", tests])
-    a, bb, cc = ill['A'], ill['B'], ill['C']
-    a_ok = a['sub'][0] * 2 > a['k']
-    b_ok = bb['sub'][1] == 0 and bb['sub'][2] == 0
-    c_ok = max(cc['sub']) * 2 <= cc['k']
-    rr.append(['**Illustrative:** all ten flagged studies excluded (the ruling is the author\'s)', f"{a['k']}; {a['sub'][0]}/{a['sub'][1]}/{a['sub'][2]} ({100 * a['sub'][0] / a['k']:.0f}%)", f"{bb['k']}; {bb['sub'][0]}/{bb['sub'][3]}",
-               f"{cc['k']}; {cc['sub'][0]}/{cc['sub'][1]}/{cc['sub'][3]}", 'all hold' if (a_ok and b_ok and c_ok) else 'one fails'])
     table(doc, ['Scenario', 'Family A: k; fav./unfav./null', 'Family B: k; fav./mixed', 'Family C: k; fav./unfav./mixed', 'Pre-stated tests'], rr, [2.35, 1.35, 0.95, 1.2, 0.85],
           align=['l', 'c', 'c', 'c', 'c'], size=8)
-    para(doc, f"The pre-stated conclusions were: more than half of Family A favourable; no Family B study unfavourable or null; no single direction holding a majority in Family C. They were fixed before the numbers were computed. "
+    para(doc, f"The pre-stated conclusions were: more than half of Family A favourable; no Family B study unfavourable or null; no single raw sign and no single substantive direction holding a majority in Family C. They were fixed before the numbers were computed. "
               f"The scenarios do not test the direction coding itself, studies that were never extracted, or overlap between reports that were not flagged as linked. "
-              f"The illustrative row shows the cost of the open scope question: Family B would shrink to {bb['k']} {'study' if bb['k'] == 1 else 'studies'}, though its direction would not change.", size=9.5, after=4)
+              + (f"The Family C test now fails in the baseline: after the author's scope rulings removed S947, a positive study, negative raw signs are {base['C_negative']} of {base['C_k']}, a bare majority. It is reported, not reworded or dropped; "
+                 f"the substantive-direction test, which says what the result means for households, {'holds in every scenario' if not nfail['C_test_no_dominant_direction'] else 'fails in some scenarios'}. " if nfail['C_test_no_dominant_sign'] else "")
+              + f"Family B has only {b_k} studies, so its unanimity is fragile to any single removal.", size=9.5, after=4)
 
     # ---- 6. confidence and limits
     doc.add_heading('6. How far to trust this', level=1)
@@ -467,7 +454,7 @@ def build():
         f"**Most decisions are the AI's.** {dec - hv:,} of {dec:,} full-text decisions have no human check ({hv_inc} includes and {hv_exc} excludes do). A blind re-read of {A16['reread_excludes']} exclusions by two other AI models, adjudicated by the author, found "
         f"{A16['reversed_in_sample']} false exclusions among the {A16['sample']} randomly sampled ({100 * A16['rate']:.1f}%, 95% interval {100 * A16['rate_lo']:.1f} to {100 * A16['rate_hi']:.1f}%), roughly {A16['scaled']} studies across the {A16['pool']:,} content-based exclusions (interval {A16['scaled_lo']} to {A16['scaled_hi']}).",
         f"**Eligibility was narrowed after the fact.** After seeing the models' disagreement the author adopted a narrow reading of the second criterion (a legal or administrative access rule or mechanism, not programme delivery, participation or macro-governance). "
-        f"Together with the four inclusions the models questioned, that moved {A16['moved_to_exclusion']} included reports to the exclusions, and it is also why ten core studies are flagged. The protocol was fixed before searching but registered on OSF retrospectively.",
+        f"Together with the four inclusions the models questioned, that moved {A16['moved_to_exclusion']} included reports to the exclusions, and a further six core studies were excluded on the same reading after the author read their source passages. The protocol was fixed before searching but registered on OSF retrospectively.",
         f"**Extraction and appraisal are unchecked.** There is no second extractor, {F['abstract_only_extractions']} studies were extracted from abstracts only (a floor), and appraisal ratings are rule-based. {F['jbi_high_concern']} of {tools['JBI Cross-Sectional']} JBI ratings are \"High concern\", which here means sparse extraction rather than a poor study.",
         "**The families are thematic groupings, not homogeneous pairs.** Vote counting weights every study equally, ignores size and precision, and is not certainty-graded.",
     ):
@@ -476,17 +463,18 @@ def build():
     # ---- 7. decisions and next steps
     doc.add_heading('7. Decisions and next steps', level=1)
     steps = [
-        ['1', f"Rule on the {F['swim_core_flagged_for_author']} flagged core studies (open item A28)", f"Include or exclude, with a reason code. Family B is most affected ({fl['B']} of {b_k}), then A ({fl['A']} of {base['A_k']}) and C ({fl['C']} of {base['C_k']}). The sheet is `02_screening/full_text/A28_SWIM_FLAGGED_CK_SHEET_2026-10-14.csv`."],
-        ['2', 'Finish the human check of screening (A6, tiers 2 and 3)', '152 further rows (102 excludes, 50 includes) would bound the risk of wrongly excluded or included studies.'],
-        ['3', 'Second-extract the prepared sample', '60 studies from S001 to S200, checked against the source papers, to estimate extraction error. A second sample from later studies is needed before any corpus-wide claim.'],
-        ['4', 'Reduce the retrieval bias', "Prioritise the older, unassessed records, and consider targeted searches for evidence from high-coverage welfare states (for example the Netherlands and other European systems) to examine administrative exclusion inside universal-network systems."],
-        ['5', 'Register and freeze', f"Upload the preregistration draft to OSF (A7) and push the release tag `v{RELEASE}` from your own clone."],
-        ['6', 'Revise the manuscript draft by hand', 'The draft in `07_manuscript/draft/` is generated from the same figures and is marked as not reviewed by a human author.'],
+                ['1', f"Review the {ai_core} AI-checked core studies against their source passages (open item A30)", f"Read the verbatim passages in `05_analysis/effect_sizes/SWIM_31_SOURCE_VERIFICATION_DOSSIER.md`, rule include or exclude (with a reason code) and confirm the two direction codings for each of the {n_core} studies. Until then these are not counted as human-verified."],
+        ['2', 'Approve or reject three proposed number corrections (A32)', "The PDFs print different numbers from three stored fields: a derived sample total (S037), a robustness estimate (S470) and a standard-error range (S593). Nothing has been changed; the evidence is in `05_analysis/effect_sizes/EFFECT_ROW_NUMBER_CHECK_2026-10-14.md`."],
+        ['3', 'Finish the human check of screening (A6, tiers 2 and 3)', '152 further rows (102 excludes, 50 includes) would bound the risk of wrongly excluded or included studies.'],
+        ['4', 'Second-extract the prepared sample', '60 studies from S001 to S200, checked against the source papers, to estimate extraction error. A second sample from later studies is needed before any corpus-wide claim.'],
+        ['5', 'Reduce the retrieval bias', "Prioritise the older, unassessed records, and consider targeted searches for evidence from high-coverage welfare states (for example the Netherlands and other European systems) to examine administrative exclusion inside universal-network systems."],
+        ['6', 'Register and freeze', f"Upload the preregistration draft to OSF (A7) and push the release tag `v{RELEASE}` from your own clone."],
+        ['7', 'Revise the manuscript draft by hand', 'The draft in `07_manuscript/draft/` is generated from the same figures and is marked as not reviewed by a human author.'],
     ]
     table(doc, ['#', 'Item', 'What it needs'], [[a, b.replace('`', ''), c.replace('`', '')] for a, b, c in steps], [0.3, 2.3, 4.1], align=['c', 'l', 'l'], size=8.5)
 
     para(doc, 'Provenance. Every figure is computed by code/analysis/build_executive_summary.py from the project databases (00_admin/CURRENT_FIGURES.md, 05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md, '
-              '05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv and SWIM_CK_CHECKS_2026-10-14.csv). The full report is 06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.docx; '
+              '05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv and SWIM_AI_SCOPE_CHECKS_2026-10-14.csv). The full report is 06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.docx; '
               'AI use is described in AI_USE_STATEMENT.md.', size=8.5, color=RGBColor(0x52, 0x51, 0x4E), before=4, after=0)
     doc.save(OUT)
     pin_zip(OUT)

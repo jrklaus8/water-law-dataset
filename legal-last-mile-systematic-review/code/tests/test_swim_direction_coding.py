@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The two-column direction coding of the family-assigned effect rows (39 after the author's A26 rulings and 37 after the A29 ruling, both of 2026-10-14) (05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv).
+"""The two-column direction coding of the family-assigned effect rows (39 after the author's A26 rulings, 37 after the A29 ruling and 31 after the A28 rulings, all of 2026-10-14) (05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv).
 
 Checks, independently of the script that writes the file: (1) it covers exactly the studies that effect_sizes.csv assigns to Families A, B and C; (2) the substantive direction follows from the raw sign, the outcome polarity and the exposure
 orientation by one rule (the product of three signs; null and mixed pass through); (3) the cases the author named on 2026-10-14 come out as instructed; (4) the three family documents and the verification table carry the same two codings.
@@ -30,7 +30,7 @@ class TestDirectionCoding(unittest.TestCase):
     def test_covers_exactly_the_family_assigned_studies(self):
         fam = {s: r['synthesis_family'] for s, r in self.es.items() if r['synthesis_family'] in ('A', 'B', 'C')}
         self.assertEqual(set(self.c), set(fam))
-        self.assertEqual(Counter(fam.values()), Counter({'A': 16, 'B': 5, 'C': 16}))
+        self.assertEqual(Counter(fam.values()), Counter({'A': 13, 'B': 3, 'C': 15}))
         self.assertEqual({s: r['family'] for s, r in self.c.items()}, fam)
 
     def test_substantive_direction_follows_from_the_three_coded_fields(self):
@@ -75,21 +75,38 @@ class TestDirectionCoding(unittest.TestCase):
         self.assertEqual((self.c['S879']['raw_coefficient_sign'], self.c['S879']['substantive_direction']), ('mixed', 'Mixed'))
         self.assertEqual((self.c['S471']['raw_coefficient_sign'], self.c['S471']['substantive_direction'], self.c['S471']['alternative_substantive_direction']), ('-', 'Favourable', 'Null'))
 
-    def test_ck_checks_cover_twenty_eight_studies_and_the_table_follows_them(self):
-        """18 passed and were recorded as confirmed (both direction codings), 10 were flagged and are not confirmed; the verification table carries exactly that. (30 and 20 before the A29 ruling moved S1140 and S1136 out of the families.)"""
-        chk = {r['study_id']: r for r in rows('05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv')}
+    def test_ai_scope_checks_cover_twenty_eight_studies_and_the_table_follows_them(self):
+        """18 passed the AI's scope check and are AI-checked only (no human confirmation, no direction confirmation); the 10 the AI flagged carry the author's A28 ruling (4 kept, 6 excluded); the verification table carries exactly that."""
+        chk = {r['study_id']: r for r in rows('05_analysis/effect_sizes/SWIM_AI_SCOPE_CHECKS_2026-10-14.csv')}
         self.assertEqual(len(chk), 28)
-        passed = {s for s, r in chk.items() if r['scope_outcome_check'] == 'passed'}
-        flagged = {s for s, r in chk.items() if r['scope_outcome_check'] == 'flagged'}
+        passed = {s for s, r in chk.items() if r['ai_scope_check'] == 'passed'}
+        flagged = {s for s, r in chk.items() if r['ai_scope_check'] == 'flagged'}
         self.assertEqual((len(passed), len(flagged)), (18, 10))
-        self.assertTrue(all(chk[s]['ck_raw_sign_agrees (Y/N)'] == 'Y' and chk[s]['ck_substantive_direction_agrees (Y/N)'] == 'Y' for s in passed))
-        self.assertTrue(all(chk[s]['ck_raw_sign_agrees (Y/N)'] == '' and chk[s]['ck_substantive_direction_agrees (Y/N)'] == '' for s in flagged))
-        self.assertTrue(set(chk) <= set(self.c))
+        self.assertTrue(all(chk[s]['a28_outcome'] == '' for s in passed))
+        self.assertEqual({s for s in flagged if chk[s]['a28_outcome'].startswith('include')}, {'S920', 'S1102', 'S1146', 'S294'})
+        self.assertEqual({s for s in flagged if chk[s]['a28_outcome'].startswith('exclude')}, {'S1020', 'S1042', 'S1057', 'S1144', 'S1163', 'S947'})
+        self.assertTrue(all(r['ck_raw_sign_agrees (Y/N)'] == '' and r['ck_substantive_direction_agrees (Y/N)'] == '' for r in chk.values()))   # the author has not confirmed any direction coding
         tab = {r['study_id']: r for r in rows('05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv')}
+        self.assertEqual(set(chk) & set(self.c), passed | {'S920', 'S1102', 'S1146'})
         for s in passed:
-            self.assertEqual((tab[s]['ck_raw_sign_agrees (Y/N)'], tab[s]['inclusion_decision_human_verified'][:1]), ('Y', 'Y'), s)
-        for s in flagged:
-            self.assertEqual(tab[s]['inclusion_decision_human_verified'][:1], 'N', s)   # a flagged study is not confirmed
+            self.assertEqual((tab[s]['ck_raw_sign_agrees (Y/N)'], tab[s]['inclusion_decision_human_verified']), ('', 'N (AI-checked only)'), s)
+        for s in ('S920', 'S1102', 'S1146'):
+            self.assertEqual(tab[s]['inclusion_decision_human_verified'], 'Y (CK ruling)', s)
+        self.assertEqual(tab['S366']['inclusion_decision_human_verified'][:1], 'Y')
+
+    def test_a28_rulings(self):
+        """The author's A28 rulings of 2026-10-14: six studies left the review (their effect rows are archived), the Family B row moved from S294 to S366, S920's mechanism is recorded."""
+        for s in ('S1020', 'S1042', 'S1057', 'S1144', 'S1163', 'S947'):
+            self.assertNotIn(s, self.es, s)
+            self.assertNotIn(s, self.c, s)
+        archived = {r['study_id'] for r in rows('11_archive/effect_sizes_removed_2026-10-13.csv')}
+        self.assertTrue({'S1020', 'S1042', 'S1057', 'S1144', 'S1163', 'S947', 'S294'} <= archived)
+        self.assertNotIn('S294', self.es)
+        self.assertEqual((self.es['S366']['synthesis_family'], self.es['S366']['effect_estimate'][:4], self.es['S366']['lower_CI'], self.es['S366']['upper_CI']), ('B', '0.33', '0.22', '0.45'))
+        self.assertEqual((self.c['S366']['raw_coefficient_sign'], self.c['S366']['substantive_direction']), ('+', 'Favourable'))
+        self.assertIn('regulatory_model_ownership', self.es['S920']['provenance_note'])
+        links = {r['link_id']: r for r in rows('03_extraction/extracted_data/linked_reports_2026-09-28.csv')}
+        self.assertEqual(links['LR01']['in_effect_sizes'], 'second only')
 
     def test_family_documents_and_table_carry_the_same_codings(self):
         sys.path.insert(0, str(ROOT / 'code/analysis'))

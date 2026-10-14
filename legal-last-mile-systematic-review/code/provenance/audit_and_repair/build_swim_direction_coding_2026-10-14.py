@@ -1,4 +1,4 @@
-"""2026-10-14: the two-column direction coding of the family-assigned effect rows (44 when first built: Family A 18, B 6, C 20; 39 after the A26 rulings; 37 after the A29 ruling: A 16, B 5, C 16), under reviewer CK's instruction to stop conflating the raw sign of a coefficient with its
+"""2026-10-14: the two-column direction coding of the family-assigned effect rows (44 when first built: Family A 18, B 6, C 20; 39 after the A26 rulings; 37 after the A29 ruling: A 16, B 5, C 16; 31 after the A28 rulings: A 13, B 3, C 15), under reviewer CK's instruction to stop conflating the raw sign of a coefficient with its
 substantive direction for households (Campbell et al. 2020, SWiM item on the direction of effect; the earlier sign tables mixed the two, e.g. S358 and S404 were 'Positive' although both coefficients are negative).
 
 Four coded fields per study, all by the AI from effect_sizes.csv (not human-verified; the ck_* columns of SWIM_CORE_VERIFICATION_TABLE_2026-10-14 are the worksheet for that):
@@ -38,16 +38,11 @@ D = {
  'S882': ('+', HB, AR, NOT, '', 'Own metered connection: +27.2% consumption, +0.35 SD cleanliness, ORs 2.16 (ease) and 2.76 (affordable expenses).'),
  'S920': ('+', HB, AR, NOT, '', 'Water-user-association management: piped-water access about 6 pp above trend (DiD with kernel matching).'),
  'S930': ('+', HB, AR, NOT, '', 'Usos y costumbres: ATT 0.086 on sewerage access (PSM-DiD).'),
- 'S1020': ('+', HW, AR, NOT, '', 'Watershed development: +17.4 min/day collection time (higher = worse). Raw sign +, substantive Unfavourable.'),
- 'S1042': ('+', HB, AR, NOT, '', 'Town-hall participation +29 pp, established CBO about +25 pp, probability of a good water-supply situation.'),
- 'S1057': ('+', HB, AR, NOT, '', 'Community design satisfaction raised log collection-time saving (coefficients 1.63 to 2.92); a larger saving is better.'),
  'S1122': ('-', HB, RS, NOT, '', 'Non-zoned periphery residents: HR 0.14 for first piped-water access (higher hazard = faster access). Restated to zoned vs non-zoned the association is positive: Favourable for recognition.'),
  # Family B
  'S085': ('+', HB, AR, NOT, '', 'Bureaucratic assistance with political coordination: +19 pp full formalisation.'),
- 'S294': ('mixed', HB, AR, NOT, '', 'Null on diarrhoea (-0.01; CI -0.05 to 0.03) and child growth; positive on the community WASH-institutions index (+0.40; CI 0.16 to 0.65).'),
+ 'S366': ('+', HB, AR, NOT, '', 'Improved primary drinking-water source: 83% against 43%, adjusted ITT difference +33 pp (95% CI 22 to 45), cluster RCT of the VEA programme. Replaced S294\'s row under the author\'s A28 ruling (the full text on file is the S366 report).'),
  'S1102': ('+', HB, AR, NOT, '', 'Capital-cost contribution: water-improvements index difference 1.04 (t = 4.26).'),
- 'S1144': ('+', HB, AR, NOT, '', 'Trust in NGOs: coefficient 7.01 on access to NGO-supplied sanitation.'),
- 'S1163': ('+', HB, AR, NOT, '', 'External WASH support: OR 1.4 for basic on-premises school water.'),
  # Family C
  'S174': ('+', HB, AR, NOT, '', 'Headline financial-capacity factor +6.02 on water coverage; the plan/policy (legal-compliance) factor is negative for water (-1.89, p = 0.033).'),
  'S470': ('+', HB, AR, NOT, '', 'Arsae-MG enforcement norm: +19.2 pp social-tariff implementation.'),
@@ -58,7 +53,6 @@ D = {
  'S631': ('-', HB, AR, NOT, '', 'New-district creation: about -1% protected water and sanitation access (DiD), -1.35 pp in the dynamic model.'),
  'S749': ('+', HW, AR, NOT, '', 'Private ownership: +0.3456 R$/m3 on the tariff level (higher = worse). Raw sign +, substantive Unfavourable.'),
  'S879': ('mixed', HB, AR, NOT, '', 'Credible disconnection notices: +30 pp payment compliance (a utility-side outcome), null on water access, connections, spending and collection time. Kept as Mixed by the author (A26); a sensitivity scenario (S4e) treats household water access alone as Null.'),
- 'S947': ('+', HB, AR, NOT, '', 'Regulation quality: coefficient 0.0121 on access to drinking water.'),
  'S1032': ('-', HW, AR, NOT, '', 'Contact with the municipality or an NGO: OR 0.60 and 0.56 for the odds of a water complaint (a complaint is a worse outcome). Raw sign -, substantive Favourable.'),
  'S1038': ('-', HW, AR, NOT, '', 'The reported contrast is state-regulated minus locally regulated welfare loss (-4.6 pp; higher = worse), so the exposure is state PUC regulation. effect_sizes.csv carried the opposite pole in its exposure_definition until the author\'s A26 ruling of 2026-10-14, which swapped exposure and comparator to match.'),
  'S1062': ('mixed', HB, AR, NOT, '', 'Inverted U: positive coefficient on cost recovery, negative on its square.'),
@@ -86,7 +80,7 @@ def fam_rows():
 
 def build():
     fr = fam_rows()
-    assert len(fr) == 37 and {s for _, s in fr} == set(D), sorted({s for _, s in fr} ^ set(D))
+    assert len(fr) == 31 and {s for _, s in fr} == set(D), sorted({s for _, s in fr} ^ set(D))
     out = []
     for f, s in fr:
         raw, pol, ori, chk, alt, note = D[s]

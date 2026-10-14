@@ -83,7 +83,7 @@ def build(pdf_dir):
          "Quotes are verbatim apart from ligature expansion, joining of line-break hyphens and collapsed whitespace; `[...]` marks cut text.", '',
          '## The sample and the SWiM studies', '',
          f"- The sheet covers **{len(studies)} studies** (9 fields each, {len(sheet)} rows), drawn only from S001 to S200.",
-         f"- **{len(swim)} of the 37 SWiM studies are in the sample:** {', '.join(swim)}. For these, the `effect_estimate` field is an independent human check of the extracted headline result.",
+         f"- **{len(swim)} of the 31 SWiM studies are in the sample:** {', '.join(swim)}. For these, the `effect_estimate` field is an independent human check of the extracted headline result.",
          f"- PDFs available to this build: **{len(have)} of {len(studies)}**. Not available (not found on disk or in the Drive folders searched; use your own copy): {', '.join(miss) if miss else 'none'}.", '',
          '## What each field asks (blind wording; three fields are re-asked as independent questions)', '']
     for f_, w in what.items():

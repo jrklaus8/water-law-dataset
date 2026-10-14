@@ -63,15 +63,31 @@ def human_verification_clause(F):
     """The sentence of the Abstract that reports how much of the full-text screening a human has verified."""
     h = human_verification(F)
     return (f"The author independently confirmed {h['conf']} chronological full-text inclusions (S001–S200 net of {h['retired']} later retirements) and adjudicated a further {h['adj']} full-text records ({h['adj_exc']} exclusions, {h['adj_inc']} inclusions) "
-            f"in the scope, consistency, audit and SWiM-core confirmation passes (A6, A16, A19, A22–A26), so {h['tot']:,} of the {h['dec']:,} full-text decisions ({h['pct']:.1f}%) carry human verification or adjudication; no extracted value has been independently verified.")
+            f"in the scope, consistency and audit passes and the rulings on the SWiM core (A6, A16, A19, A22–A26, A28), so {h['tot']:,} of the {h['dec']:,} full-text decisions ({h['pct']:.1f}%) carry human verification or adjudication; no extracted value has been independently verified.")
+
+
+def swim_family_counts():
+    """Per family, how many studies carry each raw sign and each substantive direction, from SWIM_DIRECTION_CODING_2026-10-14.csv: {'A': {'k': 13, 'raw': Counter, 'sub': Counter}, ...}."""
+    import csv as _csv
+    from collections import Counter as _C
+    out = {f: {'k': 0, 'raw': _C(), 'sub': _C()} for f in 'ABC'}
+    with open(cf.ROOT / '05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv', newline='', encoding='utf-8') as fh:
+        for r in _csv.DictReader(fh):
+            o = out[r['family']]
+            o['k'] += 1
+            o['raw'][r['raw_coefficient_sign']] += 1
+            o['sub'][r['substantive_direction']] += 1
+    return out
 
 
 def swim_core_clause(F):
-    """Computed sentence: how much of the SWiM core the author has verified (inclusion decision, direction codings), and what is flagged and still open."""
-    n, hv, ck, fl = F['swim_core_studies'], F['swim_core_inclusion_human_verified'], F['swim_core_direction_ck_confirmed'], F['swim_core_flagged_for_author']
-    return (f"Of the {n} studies in the three SWiM families, {hv} ({100 * hv / n:.0f}%) carry a recorded human verification of the inclusion decision: {hv - ck} from the author's own earlier confirmations and rulings, and {ck} entered in the final scope pass "
-            f"after the AI's own narrow-scope and outcome check, which the author has not yet checked against the papers (a source-verification dossier has been prepared for that check); for those {ck} a confirmation of both direction codings (raw sign and substantive direction) was recorded on the same basis. "
-            f"{fl} were flagged on the check and await the author's ruling, so they are not counted as confirmed. The effect estimates themselves were extracted and checked against the full texts by the AI, not by a human.")
+    """Computed sentence: how much of the SWiM core the author has verified (inclusion decision, direction codings), how much is AI-checked only, and what is flagged and still open."""
+    n, hv, ai, ck, fl = F['swim_core_studies'], F['swim_core_inclusion_human_verified'], F['swim_core_ai_checked_not_human'], F['swim_core_direction_ck_confirmed'], F['swim_core_flagged_for_author']
+    other = n - hv - ai
+    return (f"Of the {n} studies in the three SWiM families, {hv} ({100 * hv / n:.0f}%) carry a recorded human verification of the inclusion decision (the author's own confirmations and rulings, among them the rulings of 2026-10-14 in which the author read the verbatim passages of the papers); "
+            f"{ai} ({100 * ai / n:.0f}%) were checked only by the AI against the narrow reading of criteria 2 and 4 and are recorded as AI-checked, not as human confirmations, until the author reviews the source passages (a source-verification dossier has been prepared for that review)"
+            + (f"; {other} have neither" if other else "") + f". The author has confirmed the two-column direction coding (raw sign and substantive direction) for {ck} of the {n}"
+            + (f", and {fl} are flagged and await a ruling" if fl else "") + ". The effect estimates themselves were extracted and checked against the full texts by the AI, not by a human.")
 
 
 def geography_framing(F):

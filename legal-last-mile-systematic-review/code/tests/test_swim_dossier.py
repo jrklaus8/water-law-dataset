@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""The SWiM source-verification dossier (05_analysis/effect_sizes/SWIM_37_SOURCE_VERIFICATION_DOSSIER.md) and the blind second-extractor sheet.
+"""The SWiM source-verification dossier (05_analysis/effect_sizes/SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) and the blind second-extractor sheet.
 
-Checks, against the databases rather than the builder: (1) the dossier has one entry for each of the 37 studies in Families A, B and C and the manifest one row each; (2) its status counts equal the figures in current_figures (10 flagged,
-the rest AI-checked or confirmed earlier); (3) the dossier records no verification: no ticked box, no filled decision field; (4) every A28 study has hand-picked quotes with a PDF page and nobody else's name is on a decision;
+Checks, against the databases rather than the builder: (1) the dossier has one entry for each of the 31 studies in Families A, B and C and the manifest one row each; (2) its status counts equal the figures in current_figures (4 ruled in under A28, 18 AI-checked,
+the rest confirmed earlier); (3) the dossier records no verification: no ticked box, no filled decision field; (4) every A28 study kept (S920, S366, S1102, S1146) has hand-picked quotes with a PDF page and nobody else's name is on a decision;
 (5) the blind sheet has the 60 sampled studies, nine fields each, and no AI value, location or stratum; (6) the committed files make no claim of CK confirmation of their own.
 Run from legal-last-mile-systematic-review/:  python3 code/tests/test_swim_dossier.py"""
 import csv
@@ -17,10 +17,10 @@ csv.field_size_limit(sys.maxsize)
 import current_figures as cf  # noqa: E402
 from swim_dossier_curated import CURATED  # noqa: E402
 
-DOS = ROOT / '05_analysis/effect_sizes/SWIM_37_SOURCE_VERIFICATION_DOSSIER.md'
-MAN = ROOT / '05_analysis/effect_sizes/SWIM_37_SOURCE_PDF_MANIFEST.csv'
+DOS = ROOT / '05_analysis/effect_sizes/SWIM_31_SOURCE_VERIFICATION_DOSSIER.md'
+MAN = ROOT / '05_analysis/effect_sizes/SWIM_31_SOURCE_PDF_MANIFEST.csv'
 BLIND = ROOT / '03_extraction/second_extractor/second_extractor_sheet_BLIND_VALUES_2026-10-14.csv'
-A28 = {'S920', 'S1020', 'S1042', 'S1057', 'S294', 'S1102', 'S1144', 'S1163', 'S947', 'S1146'}
+A28 = {'S920', 'S366', 'S1102', 'S1146'}
 
 
 def rows(p):
@@ -37,29 +37,30 @@ class TestDossier(unittest.TestCase):
         cls.entries = dict(re.findall(r'^### (S\d+)  ·  (.*?)(?=^### S\d+  ·  |\Z)', cls.text, re.S | re.M))
 
     def test_one_entry_per_study(self):
-        self.assertEqual(len(self.core), 37)
+        self.assertEqual(len(self.core), 31)
         self.assertEqual(sorted(self.entries, key=lambda s: int(s[1:])), sorted(self.core, key=lambda s: int(s[1:])))
         self.assertEqual(sorted(r['study_id'] for r in rows(MAN)), sorted(self.core))
 
     def test_status_counts_follow_current_figures(self):
-        flagged = sum('FLAGGED in A28' in e for e in self.entries.values())
-        ai = sum('RECORDED on 2026-10-14 after the AI' in e for e in self.entries.values())
+        ruled = sum('RULED IN by you (CK) on 2026-10-14 under A28' in e for e in self.entries.values())
+        ai = sum('AI-checked only' in e.split('**Source PDF:**')[0] for e in self.entries.values())
         earlier = sum(e.count('Inclusion confirmed by you earlier') + e.count('Inclusion decided by your own CK ruling earlier') for e in self.entries.values())
-        self.assertEqual(flagged, self.F['swim_core_flagged_for_author'])
-        self.assertEqual(ai, self.F['swim_core_direction_ck_confirmed'])
-        self.assertEqual(flagged + ai + earlier, 37)
+        self.assertEqual(ruled, 4)
+        self.assertEqual(ai, self.F['swim_core_ai_checked_not_human'])
+        self.assertEqual(ruled + ai + earlier, self.F['swim_core_studies'])
+        self.assertEqual(ruled + earlier, self.F['swim_core_inclusion_human_verified'])
+        self.assertEqual(self.F['swim_core_flagged_for_author'], 0)
 
     def test_dossier_records_no_verification(self):
         self.assertNotIn('[x]', self.text.lower())
-        self.assertEqual(self.text.count('- [ ] Inclusion and scope'), 37)
-        for needle in ('**Your decision:** ____', '**Your A28 ruling:** keep / exclude E03 / exclude other (code ____)'):
-            self.assertIn(needle, self.text)
+        self.assertEqual(self.text.count('- [ ] Inclusion and scope'), 31)
+        self.assertIn('**Your decision:** ____', self.text)
         self.assertIsNone(re.search(r'human_verified\s*[=:]\s*Y', self.text))
 
     def test_a28_entries_carry_checked_quotes_and_pages(self):
         for s in A28:
             e = self.entries[s]
-            self.assertIn('Hand-picked passages for your A28 ruling', e, s)
+            self.assertIn('Hand-picked passages behind your A28 ruling', e, s)
             for _label, q in CURATED[s]['quotes']:
                 self.assertIn(q, e, (s, q[:60]))
             self.assertRegex(e, r'\(PDF p\. \d+', s)
@@ -69,7 +70,7 @@ class TestDossier(unittest.TestCase):
             if r['text_layer'] not in ('no pdf', ''):
                 self.assertEqual(len(r['sha256']), 64, r['study_id'])
                 self.assertGreater(int(r['pages']), 0, r['study_id'])
-        self.assertEqual({r['study_id'] for r in rows(MAN) if r['text_layer'] == 'no pdf'}, {'S471'})   # the one study with no source file
+        self.assertEqual({r['study_id'] for r in rows(MAN) if r['text_layer'] == 'no pdf'}, set())   # every study has a source file (S471's is filed on Drive under another record id)
 
 
 class TestBlindSheet(unittest.TestCase):

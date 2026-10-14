@@ -12,7 +12,7 @@ researcher's institutional access to further database providers is
 exhausted, and the corpus was judged large and comprehensive enough for
 the review's purposes — the same kind of judgment call as the
 2026-09-11 search closure). **Final figures: of 3,659, 2,277 were
-assessed (1,078 include / 1,199 exclude — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28, and 1,159 / 1,117 before the PI's A16, A22, A23, A24, A15, A19, A25 and A20-residue rulings of 2026-10-13 and 14: three exclusions reversed to includes, 83 includes reversed to excludes, two never-assessed records, the WASHDEV review and Olmstead 2004, added as includes, and one record, R803988411D3E, returned to never-assessed under A19; and on 2026-10-14 the A26 rulings excluded S1121, E04, and S1143, E07, which is the 1,080 / 1,197 of the earlier releases), and "Reports not retrieved" is
+assessed (1,072 include / 1,205 exclude — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28, and 1,159 / 1,117 before the PI's A16, A22, A23, A24, A15, A19, A25 and A20-residue rulings of 2026-10-13 and 14: three exclusions reversed to includes, 83 includes reversed to excludes, two never-assessed records, the WASHDEV review and Olmstead 2004, added as includes, and one record, R803988411D3E, returned to never-assessed under A19; and on 2026-10-14 the A26 rulings excluded S1121, E04, and S1143, E07 (1,080 / 1,197 in the earlier releases), and the A28 rulings then excluded S1020, S1042, S1057, S1144, S1163 and S947 (E03, E04, E03, E03, E03, E03), which gives 1,072 / 1,205), and "Reports not retrieved" is
 1,382 — 182 flagged `wrong_file_retrieved` (a delivery was attempted and
 the wrong content arrived) and 1,200 `not_retrievable` (no successful
 retrieval attempt). These 1,382 will not grow further, and will not be
@@ -132,7 +132,7 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     2026-09-28 Phase 6 closure. 62.2% of the 3,659 records sought for
     retrieval were actually screened; this is now the final figure for
     this box, not a provisional/growing one.]
-  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,199 total, FINAL after the 2026-09-28 duplicate merge and S356 exclusion):
+  Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,205 total, FINAL after the 2026-09-28 duplicate merge and S356 exclusion):
     E01 wrong topic (n = 494)
     E02 wrong population (n = 34)
     E03 wrong exposure (n = 82)
@@ -147,8 +147,8 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     E12 wrong study design (n = 47)
 
 Included
-  Studies included in systematic review (n = 1,078, FINAL)
-    [Counted as included reports: 1,078 distinct studies on the definite same-data links (S294/S366, S097/S098), 1,076 counting the
+  Studies included in systematic review (n = 1,072, FINAL)
+    [Counted as included reports: 1,070 distinct studies on the definite same-data links (S294/S366, S097/S098), 1,068 counting the
     partial-overlap links (S681/S682, S357/S369); no pair collapsed, open item A3 ruled 2026-10-14.]
     [Full-text include count as of the 2026-09-28 Phase 6 closure (1,162 at closure,
     reduced by 2 when the repository audit's two live double-counted papers, S233 and
@@ -162,7 +162,7 @@ Included
     [03_extraction/extracted_data/extraction_database.csv, S001-S1169 (S227,
     S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 58 effect-size rows, as of 2026-10-14 after the A26 rulings excluded S1121 and S1143, all from quantitative-synthesis-eligible studies; S589's row, an eligibility inconsistency flagged by the repository audit, was removed on 2026-10-14, and S1169's and S331's rows were added the same day)
+  Studies included in quantitative evidence synthesis (n = 52 effect-size rows, as of 2026-10-14 after the A26 rulings excluded S1121 and S1143 and the A28 rulings excluded six more studies (their rows are archived), all from quantitative-synthesis-eligible studies; S589's row, an eligibility inconsistency flagged by the repository audit, was removed on 2026-10-14, and S1169's and S331's rows were added the same day)
     [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16
     and extended in almost every full-text-screening batch since as new
     genuinely quantitative, non-fabricated exposure-vs-comparator studies
