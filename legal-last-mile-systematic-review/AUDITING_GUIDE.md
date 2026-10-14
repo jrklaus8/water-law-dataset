@@ -71,7 +71,7 @@ The 2026-09-28 audit found, and this repository corrected in the open, problems 
   code; try your own rule and compare.
 - **Re-derive a synthesis count:** the SWiM documents give each study's coded direction; `effect_sizes.csv` holds the
   extracted `direction` text. Sign and valence differ for several studies — see the Family A and C documents' notes.
-- **Test a sensitivity:** drop the abstract-only studies (file above), the S589 row, or collapse linked reports, and see
+- **Test a sensitivity:** drop the abstract-only studies (file above), the sparse-audit rows, or collapse linked reports (the S589 row, once a scenario of its own, was removed on 2026-10-14), and see
   whether any conclusion moves. The synthesis documents state which decisions were judgment calls.
 - **Check a rating:** ratings are rule-based from extracted fields (`RISK_OF_BIAS.md` §4). "High concern" on a JBI rating
   usually means sparse extraction, not a poor study. The Legal Institutional Evidence Appraisal Framework is this project's

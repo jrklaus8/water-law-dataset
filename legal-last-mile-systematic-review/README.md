@@ -105,7 +105,7 @@ explained in full further down; this is the index.
    the AI's own exclusion decisions; see `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`
    and `00_admin/DECISIONS_AND_OPEN_ITEMS.md` item A16. That is an
    AI-versus-AI check and is not counted here as human confirmation.
-   Scaled by exclusion code it would imply roughly 520 further includes if
+   Scaled by exclusion code it would imply roughly 521 further includes if
    the models were right, and about 37 even under a narrow reading of
    criterion 2 by an AI triage; in the other direction 3 of 40 sampled
    unconfirmed includes look excludable. Arithmetic only, see
@@ -207,17 +207,16 @@ explained in full further down; this is the index.
    in each and what "current" now means for each one
    and where the current truth actually lives.
 9. **Quantitative synthesis remains genuinely contingent, by design, not by
-   accident.** 59 effect-size rows have been extracted: 58 rows belong to the 231
+   accident.** 58 effect-size rows have been extracted, all of them rows of the 231
    quantitative-synthesis-eligible studies (on 2026-09-28 there were 62 rows, 61 from eligible
    studies: 60 from the original extraction work plus one genuine addition — S348 — found by a
    re-mining pass across the 187 eligible studies that had an extracted effect estimate but no row;
    248 eligible / 187 screened before the same-day merge of the duplicate S233 into S1008,
    which was one of the 187; on 2026-10-13 the PI's rulings added S1166's row and removed
    S312's and S435's with those two studies, and on 2026-10-14 removed S348's (Family C) and S969's
-   (Family A) with those studies); the
-   remaining row is S589's, a study `evidence_map.csv` does *not* flag eligible (its row records an
-   unadjusted descriptive comparison — an unresolved inconsistency flagged by the 2026-09-28 audit,
-   awaiting the researcher's decision on whether to remove the row or upgrade the flag). The
+   (Family A) with those studies). The one row that belonged to a study `evidence_map.csv` does *not* flag
+   eligible, S589's (an unadjusted descriptive comparison, flagged by the 2026-09-28 audit as open item A1), was
+   removed by the PI on 2026-10-14. The
    re-mining pass (`06_outputs/supplementary/effect_sizes_remining_2026-09-28.md`)'s main
    finding was confirmatory: the other 186 screened studies (185 after
    the S233 merge) were correctly left unpromoted. (S1166's row, added on
@@ -506,17 +505,17 @@ documentation**.
 | Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,103 studies extracted, `S001`–`S1167` (`S227`, `S233`, `S299`, `S399` retired as documented duplicate corrections, `S356` retired after its full-text exclusion, and `S340`, `S397`, `S513`, `S1053`, `S1117` retired by the PI's A16 rulings of 2026-10-13, which also added `S1165`–`S1167`, followed the same day by the A24 rulings that retired `S206`, `S312`, `S321`–`S324`, `S327`–`S329`, `S337`, `S435`, `S696` and `S841` — real gaps in the numbering, not an error) |
 | Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,103 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 60 ROBINS-I, 130 JBI Cross-Sectional, 196 MMAT, 251 CASP Qualitative, 18 AMSTAR 2, 432 Legal Institutional Evidence Appraisal Framework, 11 correctly-flagged `NONE` — live counts as recomputed by the 2026-09-28 audit and duplicate merge), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,092 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
 | Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,103 studies — 231 flagged quantitative-synthesis-eligible, 1,012 qualitative-synthesis-eligible (categories overlap) |
-| Quantitative evidence (effect sizes) | **59** rows (58 from the 231 eligible studies, plus S589's row — an unresolved eligibility inconsistency flagged by the 2026-09-28 audit; see **Known limitations**) (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 19 Family A, 6 Family B, **19** Family C, **15 rows are reasoned non-fits with no family (not a data-cleanliness gap — each carries a documented reason it does not match Family A/B/C, see `phase11_blank_family_resolution_2026-09-28.md`)**. A 2026-09-28 re-mining pass checked whether any of the other 186 eligible-but-unpromoted studies had a missed effect estimate already sitting in `extraction_database.csv` — found exactly one genuine addition (S348, Family C, removed again on 2026-10-14); see `06_outputs/supplementary/effect_sizes_remining_2026-09-28.md`. On 2026-10-13 the PI's rulings added S1166's row (Jiang & Zheng 2014, a non-pooled reasoned non-fit) and removed the rows of S312 and S435 when those studies were excluded (E04), and on 2026-10-14 removed S348's (Family C) and S969's (Family A) when those were excluded (E03) |
+| Quantitative evidence (effect sizes) | **58** rows (all from the 231 eligible studies; S589's row, the one exception, was removed on 2026-10-14 under open item A1) (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 18 Family A, 6 Family B, **19** Family C, **15 rows are reasoned non-fits with no family (not a data-cleanliness gap — each carries a documented reason it does not match Family A/B/C, see `phase11_blank_family_resolution_2026-09-28.md`)**. A 2026-09-28 re-mining pass checked whether any of the other 186 eligible-but-unpromoted studies had a missed effect estimate already sitting in `extraction_database.csv` — found exactly one genuine addition (S348, Family C, removed again on 2026-10-14); see `06_outputs/supplementary/effect_sizes_remining_2026-09-28.md`. On 2026-10-13 the PI's rulings added S1166's row (Jiang & Zheng 2014, a non-pooled reasoned non-fit) and removed the rows of S312 and S435 when those studies were excluded (E04), and on 2026-10-14 removed S348's (Family C) and S969's (Family A) when those were excluded (E03), and S589's (Family A, an unadjusted descriptive comparison in a study not flagged eligible) under A1 |
 | Pooled/meta-analytic estimates | **Zero.** Every effect_sizes.csv row has `included_in_pooled_estimate = FALSE`; almost every one cites "single study defining this exact exposure-comparator pairing" as the reason, per `ANALYSIS_PLAN.md` §2 |
 | Corpus-level quantitative-feasibility judgment (Phase 11) | **Complete, 2026-09-28** — `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`. Verdict: no family clears the bar for meta-analysis; all three route to Phase 13's structured synthesis (SWiM) instead. Identified one 5-study pooling-candidate sub-grouping in Family C (governance/regulatory-structure vs. affordability); a dedicated methods note (`phase11_pooling_feasibility_S526_S539_S749.md`) subsequently found no defensible common-metric transformation exists for its 3-study ownership-price core |
-| Structured synthesis (Phase 13, SWiM) | **Complete, 2026-09-28** (updated same day after the effect_sizes.csv re-mining pass added S348 to Family C, and again on 2026-10-14 after S348 and S969 left the corpus) — `06_outputs/supplementary/family_A_swim_synthesis_2026-09-28.md`, `family_B_swim_synthesis_2026-09-28.md`, `family_C_swim_synthesis_2026-09-28.md`. Vote-counting by direction: Family A 11/19 positive (58%); Family B 5/6 positive (83%, but explicitly flagged as too few studies to generalize from); Family C 7/19 positive, 8/19 negative, 4/19 mixed (no dominant direction at the full-family level, as `PROJECT_SPEC.md` §8 predicted, though a 5-study sub-grouping is directionally consistent) |
+| Structured synthesis (Phase 13, SWiM) | **Complete, 2026-09-28** (updated same day after the effect_sizes.csv re-mining pass added S348 to Family C, and again on 2026-10-14 after S348 and S969 left the corpus) — `06_outputs/supplementary/family_A_swim_synthesis_2026-09-28.md`, `family_B_swim_synthesis_2026-09-28.md`, `family_C_swim_synthesis_2026-09-28.md`. Vote-counting by direction: Family A 11/18 positive (61%); Family B 5/6 positive (83%, but explicitly flagged as too few studies to generalize from); Family C 7/19 positive, 8/19 negative, 4/19 mixed (no dominant direction at the full-family level, as `PROJECT_SPEC.md` §8 predicted, though a 5-study sub-grouping is directionally consistent) |
 | Meta-analysis / sensitivity / publication-bias code (Phases 12, 14–15) | Templates exist (`08_code/R/*.R`) and are **now validated, 2026-09-28** — correctly refuse to run against the real `effect_sizes.csv` (nothing poolable yet, per Phase 11's verdict), and run cleanly against synthetic data exercising every branch, which found and fixed 4 real bugs (a malformed-`sprintf()` pattern that crashed `03_publication_bias.R` on either of its two possible branches). See `08_code/R/README.md`. Still nothing real to run them against |
 | Preregistration | Draft ready (`00_admin/preregistration/osf_preregistration_draft.md`), **not submitted** — no OSF account access from this environment |
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
 
 Exclusion-reason breakdown at full-text stage (E01–E12,
-`INCLUSION_EXCLUSION.md`), of 1,174 total: E01 wrong topic 495 · E02 wrong
-population 34 · E03 wrong exposure 81 · E04 wrong outcome 84 · E05 no
+`INCLUSION_EXCLUSION.md`), of 1,174 total: E01 wrong topic 494 · E02 wrong
+population 34 · E03 wrong exposure 82 · E04 wrong outcome 84 · E05 no
 empirical evidence 139 · E06 engineering only 106 · E07 wrong service 27 ·
 E08 duplicate 8 · E09 insufficient information 2 · E10 inaccessible full
 text 151 · E11 wrong jurisdiction/context 0 · E12 wrong study design 47.
@@ -664,8 +663,8 @@ instances have been fixed.
 ### The quantitative arm is intentionally thin — this is a finding, not a failure
 
 231 studies are flagged quantitative-synthesis-eligible (248 before the
-2026-09-28 duplicate merge, 247 before the 2026-10-13 rulings, 243 before the 2026-10-14 rulings), but only 58 effect-size rows from those studies (59
-counting S589's, see **Known limitations → 9**) have actually been extracted, and zero are pooled. This
+2026-09-28 duplicate merge, 247 before the 2026-10-13 rulings, 243 before the 2026-10-14 rulings), but only 58 effect-size rows from those studies (S589's
+row, from a study not flagged eligible, was removed on 2026-10-14; see **Known limitations → 9**) have actually been extracted, and zero are pooled. This
 reflects the project's governing rule against manufacturing comparability
 (see above), applied consistently: almost every effect-size row's own
 `exclusion_from_pooling_reason` field says, in effect, "this is currently

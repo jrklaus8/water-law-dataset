@@ -13,7 +13,7 @@ checks that the current-status documents quote these values. If a document disag
 | Full-text records tracked | 3,659 |
 | Full-text decided | 2,277 (1,103 include / 1,174 exclude) |
 | Never decided (retrieval closed) | 1,382 (1,200 not_retrievable, 182 wrong_file_retrieved) |
-| Exclusion-log rows | 1,174 — by code: E01 495, E02 34, E03 81, E04 84, E05 139, E06 106, E07 27, E08 8, E09 2, E10 151, E12 47 |
+| Exclusion-log rows | 1,174 — by code: E01 494, E02 34, E03 82, E04 84, E05 139, E06 106, E07 27, E08 8, E09 2, E10 151, E12 47 |
 | Decided rows with blank reviewer_1 | 73 |
 | Includes confirmed by a human reviewer_2 | 199 |
 | Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | 112 / 31 |
@@ -56,5 +56,5 @@ Tool-applicable studies (all tools except NONE): 1,092; unrated among them: 0. N
 
 ## Effect sizes
 
-59 rows (58 from quantitative-synthesis-eligible studies, 1 from a study not flagged eligible); by family: (none: reasoned non-fit) 15, A 19, B 6, C 19; rows pooled: 0.
+58 rows (58 from quantitative-synthesis-eligible studies, 0 from a study not flagged eligible); by family: (none: reasoned non-fit) 15, A 18, B 6, C 19; rows pooled: 0.
 

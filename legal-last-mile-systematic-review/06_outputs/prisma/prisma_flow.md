@@ -133,9 +133,9 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
     retrieval were actually screened; this is now the final figure for
     this box, not a provisional/growing one.]
   Reports excluded at full text, by reason (E01-E12, see INCLUSION_EXCLUSION.md; n = 1,174 total, FINAL after the 2026-09-28 duplicate merge and S356 exclusion):
-    E01 wrong topic (n = 495)
+    E01 wrong topic (n = 494)
     E02 wrong population (n = 34)
-    E03 wrong exposure (n = 81)
+    E03 wrong exposure (n = 82)
     E04 wrong outcome (n = 84)
     E05 no empirical evidence (n = 139)
     E06 engineering only (n = 106)
@@ -160,7 +160,7 @@ Included
     [03_extraction/extracted_data/extraction_database.csv, S001-S1168 (S227,
     S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 59 effect-size rows, as of 2026-10-14; 58 of them from quantitative-synthesis-eligible studies, plus S589's row, an unresolved eligibility inconsistency flagged by the repository audit)
+  Studies included in quantitative evidence synthesis (n = 58 effect-size rows, as of 2026-10-14, all from quantitative-synthesis-eligible studies; S589's row, an eligibility inconsistency flagged by the repository audit, was removed on 2026-10-14)
     [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16
     and extended in almost every full-text-screening batch since as new
     genuinely quantitative, non-fabricated exposure-vs-comparator studies
@@ -168,8 +168,8 @@ Included
     complete study-by-study history (this paragraph previously narrated
     that history inline up to S649/2026-09-22 and was left unmaintained
     for several weeks of subsequent batches; it is now a pointer rather
-    than a re-narration, to avoid the same drift recurring). Of the 59
-    rows: 19 Family A, 6 Family B, 19 Family C, and 15 that carry no family
+    than a re-narration, to avoid the same drift recurring). Of the 58
+    rows: 18 Family A, 6 Family B, 19 Family C, and 15 that carry no family
     because each was individually judged a reasoned non-fit to Family A/B/C
     (not a data-cleanliness gap -- see
     06_outputs/supplementary/phase11_blank_family_resolution_2026-09-28.md

@@ -30,6 +30,11 @@ A study should generally satisfy **all** of the following:
     is potentially important — log the translation method and translator in
     the extraction record's `extraction_note`.
 
+**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**
+Eligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.
+(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.
+The protocol is an unregistered draft, so no registration is amended.)
+
 **Qualitative socio-legal studies are never excluded from the systematic
 review merely because they cannot enter the meta-analysis.** They may
 contribute to the mechanism synthesis. Do not silently drop a

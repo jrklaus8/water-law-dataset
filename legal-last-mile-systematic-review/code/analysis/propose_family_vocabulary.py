@@ -138,11 +138,11 @@ def render(rows):
           f"| Studies `{NEEDS}` | {pm[NEEDS]:,} | {po[NEEDS]:,} |",
           f"| Studies flagged `needs_review` (either field, or an unmatched outcome token) | {sum(r['needs_review'] == 'TRUE' for r in rows):,} | |", "",
           "### Proposed mechanism value counts (single-label column)", "", "| Value | Studies |", "|---|---|"]
-    L += [f"| `{k}` | {v:,} |" for k, v in pm.most_common()]
+    L += [f"| `{k}` | {v:,} |" for k, v in cf.ranked(pm)]
     L += ["", "### Studies touching each mechanism family (multi-label)", "", "| Family | Studies |", "|---|---|"]
-    L += [f"| `{k}` | {v:,} |" for k, v in allm.most_common()]
+    L += [f"| `{k}` | {v:,} |" for k, v in cf.ranked(allm)]
     L += ["", "### Proposed outcome value counts", "", "| Value | Studies |", "|---|---|"]
-    L += [f"| `{k}` | {v:,} |" for k, v in po.most_common()]
+    L += [f"| `{k}` | {v:,} |" for k, v in cf.ranked(po)]
     L += ["", "## Known weaknesses of this draft", "",
           "- Keyword rules can mis-assign a one-off label (e.g. a label containing \"community\" is sent to `participation_assistance`).",
           f"- `multiple` is large because {sum(1 for r in rows if r['mechanism_family_original'].strip().upper() == 'MULTIPLE'):,} studies already carry the label `MULTIPLE` (more than one of the four top-level booleans TRUE) and specific labels that name several families also land there; use `mechanism_families_all` for breadth.",

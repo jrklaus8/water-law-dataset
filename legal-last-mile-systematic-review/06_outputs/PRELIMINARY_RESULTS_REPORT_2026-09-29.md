@@ -16,7 +16,7 @@
 | Full-text screening | Closed by researcher decision at **2,277 of 3,659 assessed (62.2%)**: **1,103 include / 1,174 exclude**; 1,382 never assessed. 151 of the excludes are E10 ("full text inaccessible"), so only **2,126** were judged on content. AI decisions; a human confirmed 100 includes and no excludes |
 | Extraction | 1,103 studies, 92 codebook fields, by the AI; 10 from abstract/metadata only; no second extractor |
 | Appraisal | Rule-based batch ratings from extracted fields with design-matched tools: RoB 2 5, ROBINS-I 60, JBI Cross-Sectional 130, MMAT 196, CASP Qualitative 251, AMSTAR 2 18, Legal Framework 432, NONE 11. Legal Framework is the project's own **non-validated** instrument. No human review of ratings |
-| Synthesis | Phase 11: no family clears the bar for meta-analysis. 59 effect-size rows (A 19, B 6, C 19, 15 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses |
+| Synthesis | Phase 11: no family clears the bar for meta-analysis. 58 effect-size rows (A 18, B 6, C 19, 15 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses |
 
 ## 2A. Preliminary findings drawn from the extracted evidence
 
@@ -56,15 +56,15 @@ Institutional fragmentation (632), official discretion/accommodation (593) and f
 
 ### 2A.3 The quantitative subset: three structured syntheses (direction of association, not effect size)
 
-Only 59 studies have an effect-size row; none is pooled. Counts are of the **sign of each study's extracted association** (sign and valence differ for some studies — see the Family A and C documents).
+Only 58 studies have an effect-size row; none is pooled. Counts are of the **sign of each study's extracted association** (sign and valence differ for some studies — see the Family A and C documents).
 
 | Family | Studies | Positive / negative / null / mixed (sign) | Documents |
 |---|---|---|---|
-| A — legal recognition, eligibility and access | 19 | 11 / 6 / 2 / 0 | `family_A_swim_synthesis_2026-09-28.md` |
+| A — legal recognition, eligibility and access | 18 | 11 / 5 / 2 / 0 | `family_A_swim_synthesis_2026-09-28.md` |
 | B — bureaucratic/administrative assistance | 6 | 5 / 0 / 0 / 1 | `family_B_…` |
 | C — administrative/legal barriers, ownership and price | 19 | 7 / 8 / 0 / 4 | `family_C_…` |
 
-**Where studies agree.** In Family A, 14 of 19 (73.7%) are concordant with "legal/institutional recognition or eligibility is associated with better access" on a substantive reading (10 positive-sign studies plus 4 negative-sign studies in which unrecognised or informal status is associated with worse access). All 6 Family B studies report a positive or mixed association between administrative assistance/institutional trust and access, and none is negative. Three studies of private versus public ownership (S526, S539, S749; US ×2 and Brazil) all associate private ownership with worse affordability or progressivity.
+**Where studies agree.** In Family A, 13 of 18 (72.2%) are concordant with "legal/institutional recognition or eligibility is associated with better access" on a substantive reading (10 positive-sign studies plus 3 negative-sign studies in which unrecognised or informal status is associated with worse access). All 6 Family B studies report a positive or mixed association between administrative assistance/institutional trust and access, and none is negative. Three studies of private versus public ownership (S526, S539, S749; US ×2 and Brazil) all associate private ownership with worse affordability or progressivity.
 
 **Where they disagree or do not fit.**
 
@@ -94,7 +94,7 @@ Examples as extracted (exposure and direction are AI-extracted fields):
 | S879 | Kenya | RoB 2 | Randomized assignment to systematic contract enforcement (transparent, credible service-disconn… | positive and significant for payment compliance; null (no significant effect) for water access, connection rat… |
 | S1062 | multi-country (22 Sub-Sahara | ROBINS-I | Water-utility operation-and-maintenance (O&M) cost-recovery ratio (a financial/regulatory insti… | positive up to a threshold, then negative (curvilinear/inverted-U) |
 
-**Sensitivity of these counts** (`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`): under every scenario tried — dropping abstract-only extractions, dropping the sparse-audit rows that carry effect sizes, dropping S589 (an unadjusted descriptive comparison in an ineligible-flagged study), collapsing linked reports, and dropping Family A's two coding judgment calls — the pre-stated conclusion tests for A, B and C hold; Family A's concordant share ranges 68.8–73.7%.
+**Sensitivity of these counts** (`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`): under every scenario tried — dropping abstract-only extractions, dropping the sparse-audit rows that carry effect sizes, dropping effect-size rows of studies not flagged eligible (none remains since S589's row was removed on 2026-10-14; the scenario is kept as a check), collapsing linked reports, and dropping Family A's two coding judgment calls — the pre-stated conclusion tests for A, B and C hold; Family A's concordant share ranges 68.8–72.2%.
 
 ### 2A.4 What the qualitative, doctrinal and mixed-methods studies record
 
@@ -117,7 +117,7 @@ A large part of the evidence base (533 studies by design class, plus 338 with fr
 ## 2B. Tentative interpretations (not findings — each rests on the numbers cited and could be wrong)
 
 1. **The literature documents co-occurrence far more than causation.** With 65 (6%) causal-capable designs (and a certainty-3–4 coding that does not line up with them, see §2A.1), the base can say that legal/administrative features and access outcomes are associated across many settings, but rarely that one causes the other. *Rests on:* §2A.1 counts. *Would change if:* the 1,382 unassessed records or future searches contain many more designs with credible identification.
-2. **Recognition and formal status tend to go with better access (Family A), but the pattern is thin.** 14 of 19 concordant, 3 counter-pattern (S104 tenure and interruptions; S1020 a watershed programme and collection time; S1121 water-adequacy screening and permitting): S104 appraised with JBI Cross-Sectional; S1020 appraised with ROBINS-I; S1121 appraised with ROBINS-I. *Rests on:* the SWiM coding, a judgment by the same AI. Not a pooled estimate and not certainty-graded.
+2. **Recognition and formal status tend to go with better access (Family A), but the pattern is thin.** 13 of 18 concordant, 3 counter-pattern (S104 tenure and interruptions; S1020 a watershed programme and collection time; S1121 water-adequacy screening and permitting): S104 appraised with JBI Cross-Sectional; S1020 appraised with ROBINS-I; S1121 appraised with ROBINS-I. *Rests on:* the SWiM coding, a judgment by the same AI. Not a pooled estimate and not certainty-graded.
 3. **Assistance and trust mechanisms look uniformly favourable (Family B) — but on six studies with six different mechanisms.** The consistency may reflect small numbers or reporting of positive findings; nothing here excludes either.
 4. **Ownership and price: private ownership goes with worse affordability in the three studies (S526, S539, S749), but the two US samples probably overlap**, so this may be two independent samples, not three (`linked_reports_2026-09-28.csv` LR09, an audit inference).
 5. **Most institutional analysis in this corpus is descriptive-qualitative and concentrated on fragmentation, discretion and fees.** This may reflect what the search and the closed retrieval surfaced (English-language, post-2010, database-indexed) as much as what the world contains.
@@ -134,14 +134,14 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 - Full-text retrieval closed at 62.2%: 1,382 of 3,659 records (1,200 not retrievable, 182 wrong file delivered) were never assessed, and the unassessed set is systematically older (§2A.5). Some may be duplicates of included studies, some not eligible; the direction of any bias is unknown.
 - 151 of the 1,174 full-text excludes are E10 (inaccessible text), i.e. never judged on content.
 - Every full-text decision is the AI's; a human confirmed 199 includes (S001–S200) and no excludes; 73 decided rows carry no reviewer label. A prioritised queue for human review exists (`02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md`).
-- **An AI-versus-AI check found many contested excludes.** Two non-Claude models (Codex, Gemini), blind to the original decision, re-read 121 full-text decisions whose PDF was available; of the 70 the AI had excluded, 34 were judged includes (concentrated in E01 wrong topic and E06 engineering only). This was not human-adjudicated, the models may read the criteria too loosely, and nothing was changed; scaled by exclusion code the rate would imply roughly 520 further includes if the models were right, and about 37 even under a narrow reading of criterion 2 by an AI triage of the same records (arithmetic only, against 1,103 current includes); if even a fraction are eligible, the exclusion log and every count built on it are understated. In the other direction the models would exclude 3 of 40 sampled includes beyond S001–S200, roughly 68 (range 23–180) of the unconfirmed includes if the rate held — a precision question that the human second-screening of includes would settle. The researcher's reading list is `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md` (open item A16).
+- **An AI-versus-AI check found many contested excludes.** Two non-Claude models (Codex, Gemini), blind to the original decision, re-read 121 full-text decisions whose PDF was available; of the 70 the AI had excluded, 34 were judged includes (concentrated in E01 wrong topic and E06 engineering only). This was not human-adjudicated, the models may read the criteria too loosely, and nothing was changed; scaled by exclusion code the rate would imply roughly 521 further includes if the models were right, and about 37 even under a narrow reading of criterion 2 by an AI triage of the same records (arithmetic only, against 1,103 current includes); if even a fraction are eligible, the exclusion log and every count built on it are understated. In the other direction the models would exclude 3 of 40 sampled includes beyond S001–S200, roughly 68 (range 23–180) of the unconfirmed includes if the rate held — a precision question that the human second-screening of includes would settle. The researcher's reading list is `02_screening/full_text/A16_ADJUDICATION_SHEET_2026-10-04.md` (open item A16).
 - At title/abstract stage the human second pass covered the 3,665 include-plus-unsure records only; the 22,557 records the AI excluded were not human-checked, so any wrongly excluded record is invisible to this review. The 99.8% agreement on the reviewed set is unusually high and was flagged by the project itself. (`AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` say "all records"; that wording should be checked against the README, which is narrower.)
 
 ### 3.3 Missing or thin data
 
 - 10 studies were extracted from abstract or metadata only (0.9%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found 55 more rows with at least one sign of shallow extraction — 1 whose own notes say only the abstract or citation was read and 15 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 1 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.
 - 50 of 130 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
-- Of 59 effect-size rows, 8 give a confidence interval and 25 a standard error; estimates are as the papers report them and none is pooled.
+- Of 58 effect-size rows, 8 give a confidence interval and 25 a standard error; estimates are as the papers report them and none is pooled.
 
 ### 3.4 Unresolved classifications — the two you asked about
 
@@ -162,12 +162,12 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 ### 3.5 Other unresolved items that may matter
 
-- **S589** is in Family A but its row is an unadjusted descriptive comparison for a study not flagged eligible; Family A results are shown with and without it. Decision pending (`DECISIONS_AND_OPEN_ITEMS.md` A1).
+- **S589's** effect-size row (an unadjusted descriptive comparison in a study not flagged eligible) was removed on 2026-10-14 (`DECISIONS_AND_OPEN_ITEMS.md` A1, closed); the study itself stays in the review.
 - **Linked reports:** the 1,103 rows are about 1,101 distinct studies (S294/S366 one trial; S097/S098 one sample) and 1,099 counting partial overlaps.
 - **Free-text classifications:** `mechanism_family` (231 distinct labels) and `outcome_family` (123) are uncontrolled; 338 studies have a design class outside the documented enum; a draft vocabulary is proposed, not adopted. Country and legal-system fields are free text, so the geographic counts here are rule-based.
 - **Direction coding** in the SWiM documents is a judgment by the same AI; sign and valence differ for several studies.
-- **The "quantitative-synthesis-eligible" flag looks generous.** Of 231 studies flagged, 102 show nothing inferential in their extraction (descriptive or unclear), 27 name an inferential model but hold no interval, SE or p-value, and 102 carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only 59 studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.
-- **Consistency scan of the effect-size rows** found 0 new item(s) besides the known S589 row (none); but an interval could be checked for only 6 of 59 rows, so this is weak assurance.
+- **The "quantitative-synthesis-eligible" flag looks generous.** Of 231 studies flagged, 102 show nothing inferential in their extraction (descriptive or unclear), 27 name an inferential model but hold no interval, SE or p-value, and 102 carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only 58 studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.
+- **Consistency scan of the effect-size rows** found 0 new item(s) besides the S589 row removed on 2026-10-14 (none); but an interval could be checked for only 6 of 58 rows, so this is weak assurance.
 - **Same-paper duplicates** with different-language titles and blank DOIs were found and merged among included studies; the DOI/title audits cannot detect this class in the wider pool.
 
 ## 4. Most useful next steps (in order)
@@ -177,7 +177,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 3. **Verify S879's randomisation unit against the paper** and confirm S189's parent-trial handling; then finalise or revise the RoB 2 cluster ratings.
 4. **Decide the AMSTAR 2 question**: keep it (and obtain full texts so the 0 "Not ratable" reviews can be rated) or replace it for realist/scoping/mapping reviews; decide how to handle the non-systematic reviews now labelled `NONE`. Finish the check of whether these reviews' primary studies are also in the corpus (so far 7 of 18 reviews, reference lists only).
 5. **Second-extract the prepared sample** (60 studies from S001–S200, `03_extraction/second_extractor/`) against the source papers to estimate extraction error; the sample cannot speak for later extractions, so a second sample from S201 onward is needed before any whole-corpus claim.
-6. **Resolve S589, linked reports and the family vocabulary**, then re-run `sensitivity_analysis.py`.
+6. **Resolve linked reports and the family vocabulary** (S589 was settled on 2026-10-14), then re-run `sensitivity_analysis.py`.
 7. **Reduce the retrieval bias**: prioritise the older, unassessed records (or state the limitation prominently), and consider targeted searches for Dutch and Canadian evidence if the comparative frame is to be tested.
 8. **Only then** decide whether any family could support a restricted meta-analysis (`ANALYSIS_PLAN.md` §2); at present none does.
 

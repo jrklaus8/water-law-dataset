@@ -35,6 +35,13 @@ TOOL_KEYS = [('RoB 2', 'RoB 2'), ('ROBINS-I', 'ROBINS-I'), ('JBI', 'JBI Cross-Se
 ABSTRACT_ONLY_PREFIXES = ('Extracted from published abstract', 'Extracted from abstract')
 
 
+def ranked(counter, n=None):
+    """Counter items by descending count, ties broken by key (Counter.most_common orders ties by insertion order, which follows set iteration order and so hash seed,
+    and made generated files flip between runs). Use this instead of most_common wherever the output is written to a tracked file."""
+    out = sorted(counter.items(), key=lambda kv: (-kv[1], str(kv[0])))
+    return out[:n] if n is not None else out
+
+
 def read(key):
     with open(PATHS[key], newline='', encoding='utf-8') as f:
         return list(csv.DictReader(f))
@@ -114,7 +121,7 @@ def compute():
     F['country_single_name_studies'] = sum(single.values())
     F['country_multi_or_regional_studies'] = sum(1 for c in countries if c and is_multi(c))
     F['country_blank_studies'] = sum(1 for c in countries if not c)
-    F['country_top10_single_name'] = single.most_common(10)
+    F['country_top10_single_name'] = ranked(single, 10)
     F['country_distinct_single_name_values'] = len(single)
     def legal_bucket(v):
         v = v.strip().lower()
