@@ -21,7 +21,7 @@ Database access was provided through institutional subscriptions at Erasmus Univ
 | Role of the funder in design, conduct, analysis, interpretation, decision to publish | Not applicable (no funder) |
 | Non-financial support | Database access through institutional subscriptions at Erasmus University Rotterdam |
 | Institution / programme under which the work is done | External doctoral candidate, Erasmus School of Law, Erasmus University Rotterdam; companion to the PhD dissertation named above |
-| Cost of the AI tools used, and who paid | API and subscription costs for the AI tools used in this review (Anthropic Claude, OpenAI Codex and Google Gemini) were paid personally by the author; no external, institutional or vendor funding was received. (Repository record: the Gemini calls of 2026-10-03/04 ran on the author's free-tier API key, `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`.) |
+| Cost of the AI tools used, and who paid | API and subscription costs for Anthropic Claude and OpenAI Codex were paid personally by the author, and Google Gemini runs (`gemini-3.1-flash-lite`) used the author's free-tier API key; no external, institutional, or vendor funding was received. (Repository record: the Gemini calls of 2026-10-03/04 ran on the author's free-tier API key, `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`.) |
 
 ## Item 26 — Competing interests
 
@@ -38,9 +38,8 @@ Database access was provided through institutional subscriptions at Erasmus Univ
 
 ## Author contributions (CRediT)
 
-Claudio Klaus: Conceptualization, Methodology, Protocol & Codebook Design, Database Search Execution, Title/Abstract Second Review, Full-Text Adjudication & Verification (`reviewer_2`), Software & Validation Oversight, Writing – Review & Editing, Supervision, Project Administration.
-The AI-assisted first-pass screening, data extraction, batch appraisal and preliminary synthesis drafting were carried out by AI tools under the author's direction and are described in `AI_USE_STATEMENT.md`; the AI tools are not authors.
-*(The role names are the author's wording; "Protocol & Codebook Design", "Database Search Execution" and the other composite names are not among the 14 standard CRediT terms, so a journal that requires the standard list will need them mapped, for example to Methodology, Investigation, Validation and Software.)*
+Claudio Klaus: Conceptualization, Data curation, Formal analysis, Funding acquisition (self-funded), Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft (direction and revision of AI-assisted synthesis; see AI_USE_STATEMENT.md), Writing – review & editing.
+The 14 role names are the standard NISO CRediT terms, so no journal needs to remap them. The AI tools used (Anthropic Claude, OpenAI Codex, Google Gemini) are not authors; the AI-assisted stages (first-pass screening, data extraction, batch appraisal, preliminary synthesis drafting) are described in `AI_USE_STATEMENT.md`.
 
 ## Ethics
 

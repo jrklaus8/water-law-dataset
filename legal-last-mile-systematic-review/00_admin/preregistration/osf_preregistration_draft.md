@@ -1,7 +1,7 @@
 # OSF Generalized Systematic Review Registration — Transparent Retrospective / Post-Execution Protocol Registration
 
-**Frozen at Release `0.2.0-interim` (2026-10-14).** Snapshot: git commit `a23f63e` of
-`github.com/jrklaus8/water-law-dataset`, tag `v0.2.0-interim` (the tag is pushed by the researcher from a local clone).
+**Frozen at Release `0.2.0-interim` (2026-10-14).** Snapshot: the git commit tagged `v0.2.0-interim` of
+`github.com/jrklaus8/water-law-dataset` (branch `claude/legal-last-mile-review-spec-8ri0zs`). The tag marks the commit that carries this file, which is the **complete state after open items A13, A14 and A8 were closed**; record its full hash (`git rev-parse 'v0.2.0-interim^{commit}'`) on the OSF form. The tag is pushed by the researcher from a local clone. An earlier local tag on `a23f63e`, made before those three items were closed, is superseded and was never pushed.
 
 Status: **ready for upload; not yet submitted.** The AI that prepared this file has no OSF account access, so the
 submission itself can only be done by the researcher. Every section maps to a section of `PROTOCOL.md`; where the two differ,
@@ -73,10 +73,10 @@ Not departed from: the research question, the eligibility *wording*, the codeboo
 | Full-text decisions | **1,080 included reports** and **1,197 excluded** |
 | Distinct studies | **1,078** on the definite same-data links (S294/S366, S097/S098); **1,076** counting the partial-overlap links (S681/S682, S357/S369); the 5 RoB 2 report rows are 4 trials |
 | Extraction | 1,080 rows of 92 fields |
-| Effect-size rows | **59** at the tagged snapshot (`a23f63e`): Family A 18, Family B 6, Family C 20 and 15 reasoned non-fits; **none pooled** (60 rows and 16 non-fits at the current head, see the note below) |
+| Effect-size rows | **60**: Family A 18, Family B 6, Family C 20 and 16 reasoned non-fits; **none pooled** |
 | Human involvement | 197 full-text includes confirmed by the researcher (S001–S200 less three the researcher later excluded); about 175 further full-text records adjudicated (A16, A22–A25); no human second extractor |
 
-**Changes after the tagged snapshot (2026-10-14, later; all PI rulings, reviewer CK).** (1) Open item A13: the adjusted odds ratio of S331 (Sarfo 2025, 4.27, 95% CI 3.07–5.93, n = 938) was added as an effect-size row and placed with the reasoned non-fits, because its outcome is compliance with a notice deadline, not household access; effect rows 59 to 60, non-fits 15 to 16, Families A, B and C and every SWiM table unchanged. (2) Open item A14: ten included studies whose full text is a landing page or absent carry the new `full_text_status` values `landing_page_only` (8) and `abstract_only` (2); no count and no decision changed. (3) The disclosure statements (funding, competing interests, author contributions, ethics, AI-tool provenance) and this file were completed. The tag marks the data as they stood at the snapshot; if the researcher wants the registration to freeze the later state, tag the later commit instead and cite that tag here.
+**Closed between the first draft of this registration and the freeze (2026-10-14, all PI rulings, reviewer CK).** (1) Open item A13: the adjusted odds ratio of S331 (Sarfo 2025, 4.27, 95% CI 3.07–5.93, n = 938) is an effect-size row placed with the reasoned non-fits, because its outcome is compliance with a notice deadline, not household access; Families A, B and C and every SWiM table are unchanged. (2) Open item A14: ten included studies whose full text is a landing page or absent carry the `full_text_status` values `landing_page_only` (8) and `abstract_only` (2); no count and no decision changed. (3) Open item A8: the disclosure statements (funding, competing interests, author contributions in the 14 standard CRediT roles, ethics, AI-tool provenance) are complete. These are the reasons the freeze was moved from the first release commit `a23f63e` to the later commit.
 
 ## 5. Disclosure on AI use and verification
 
@@ -103,7 +103,7 @@ in Sanitation Governance: A Comparative Study of the Netherlands, Canada (Ontari
 
 **Eligibility, sources, study records, risk of bias, synthesis, meta-bias.** As in §2, with §3 for the dated clarifications; per-item detail in `INCLUSION_EXCLUSION.md`, `SEARCH_PROTOCOL.md`, `CODEBOOK.md`, `RISK_OF_BIAS.md`, `ANALYSIS_PLAN.md`.
 
-**Funding and competing interests.** See `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (filled): no specific grant from any funding agency in the public, commercial or not-for-profit sectors; database access through institutional subscriptions at Erasmus University Rotterdam; the costs of the AI tools (Anthropic Claude, OpenAI Codex, Google Gemini) were paid personally by the author; the author declares no competing financial or non-financial interests and no relationship with Anthropic, OpenAI, Google or any other AI vendor. Ethics approval was not required (a review of published and grey literature, no primary data collection from human participants).
+**Funding and competing interests.** See `00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md` (filled): no specific grant from any funding agency in the public, commercial or not-for-profit sectors; database access through institutional subscriptions at Erasmus University Rotterdam; the costs of Anthropic Claude and OpenAI Codex were paid personally by the author and the Google Gemini runs (`gemini-3.1-flash-lite`) used the author's free-tier API key; the author declares no competing financial or non-financial interests and no relationship with Anthropic, OpenAI, Google or any other AI vendor. Ethics approval was not required (a review of published and grey literature, no primary data collection from human participants).
 
 **Amendments from now on.** Any change after this registration is logged as a dated, reasoned amendment on OSF itself and in `CHANGELOG.md` (`PROTOCOL.md` §12); nothing is changed silently.
 
@@ -113,7 +113,7 @@ in Sanitation Governance: A Comparative Study of the Netherlands, Canada (Ontari
 
 - [x] OSF Generalized Systematic Review is the registry; PROSPERO ruled out (2026-09-12).
 - [x] Draft reconciled with `PROTOCOL.md`, the files in §2 and `CHANGELOG.md` at release `0.2.0-interim` (2026-10-14).
-- [ ] Push the tag `v0.2.0-interim` (commit `a23f63e`) so the registration can point at it, or tag the later head instead (it holds the S331 row, the A14 status values and the completed declarations; see the note under §4).
+- [ ] Push the tag `v0.2.0-interim` (the commit that carries this file; the command and hash are in the session report) so the registration can point at it, and record the full commit hash on the OSF form.
 - [ ] On the OSF form state both dates (protocol fixed 2026-08-22; registered [date]) and label the registration retrospective in its first line.
 - [ ] Attach or link this file, `PROTOCOL.md`, `INCLUSION_EXCLUSION.md`, `ANALYSIS_PLAN.md`, `CHANGELOG.md` and `00_admin/RELEASE_0.2.0-interim_2026-10-14.md`.
 - [ ] Submit; record the OSF DOI/URL in `PROTOCOL.md` §11 and as a new dated `CHANGELOG.md` entry (not an edit to an old one); update the PRISMA checklist item 24a.
