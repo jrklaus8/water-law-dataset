@@ -60,7 +60,7 @@ The 2026-09-28 audit found, and this repository corrected in the open, problems 
 - **Two papers counted twice** (language-variant titles, blank DOI), missed by both duplicate audits. Merged; the class of
   error (same paper, different-language titles) is still not detectable by the DOI/title audits.
 - **A sign-versus-valence error** in a synthesis (a coefficient's sign summed as if it meant "helps access").
-- **Provenance gaps:** 73 decided full-text rows with no recorded reviewer; one abstract-only include resolved on its full
+- **Provenance gaps:** 73 decided full-text rows had no recorded reviewer (an AI label was inferred on 2026-10-14 from the exclusion log and extraction records; open item A2 closed); one abstract-only include resolved on its full
   text (excluded); one effect-size row for a study not flagged eligible.
 - **Extractions from abstract or metadata only** (11 studies remain abstract-only; S366, S326, S277, S319/S324/S325/S344 and the studies of the 2026-10-04 and 2026-10-09 Drive campaigns, `reextract_2026-10-04/CAMPAIGN_NOTES.md`, were re-extracted from full text) — listed in
   `05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv`; none feeds an effect-size row. **This is a floor.** It counts one note prefix; `code/analysis/audit_sparse_records.py` (2026-10-04) finds 71 more rows with signs of shallow extraction (a further 56 sparse rows were re-extracted or appraised from Drive full texts on 2026-10-04), two of which (S057, S358) carry effect-size rows — `SPARSE_RECORD_AUDIT_2026-10-04.md`, and the sensitivity file's S1b scenario drops them (no conclusion changes).

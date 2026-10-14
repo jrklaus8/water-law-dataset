@@ -4,6 +4,16 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-14 (release) — 0.2.0-interim: A2, A3, A4, A10 and the exclusion-basis audit closed
+
+- **Rulings recorded (PI, reviewer CK):** the ninth design value `other` is approved (S937, S1071). The four open substantive excludes of the audit are ruled (`AUDIT_EXCLUDES_ADJUDICATION_FILLED_2026-10-14.csv`, `fill_audit_excludes_adjudication_2026-10-14.py`): R0B0F3925F533 and RC9378CBDB2EE confirmed and re-coded **E01 to E04**, R977ECB01FA02 and RFC362FE42028 confirmed with E01 kept; R59D021BE3315 is S264 (A22, E05). All 10 substantive or status-contradicting excludes of `EXCLUSION_BASIS_AUDIT_2026-10-04.md` are settled and the audit is closed. Exclusion codes: E01 490, E04 86.
+- **A2 closed:** the 3 conflicts were settled by the A16 adjudication of 2026-10-13. `backfill_reviewer1_2026-09-16_batch_2026-10-14.py` set `reviewer_1` to `Claude-AI-fulltext-2026-09-16` on the 73 rows that had none, with the note "reviewer_1 label inferred from 2026-09-16 exclusion log and extraction record". The label is inferred and is not human review; the rows stay in tier 1 of the reviewer-2 queue (`build_reviewer2_priority_queue.py` and the verifier now count blank plus inferred labels; `CURRENT_FIGURES.md` shows blank / inferred as 0 / 73).
+- **A3 closed:** all 1,080 report rows and `linked_reports_2026-09-28.csv` are kept (its status column records the ruling; S526/S539 are flagged for overlap verification before any pooling). The repository, the PRISMA flow, the report and the manuscript generators state **1,080 included reports = 1,078 distinct studies** (definite links) **or 1,076** (counting partial overlaps), and that the 5 RoB 2 report rows are 4 trials.
+- **A4 closed:** the SWiM sensitivity analysis is a standing pre-publication requirement, reported as a supplementary table (`ANALYSIS_PLAN.md` §10, `PUBLICATION_PLAN.md` §5, the manuscript draft); human verification of the direction coding stays under A6.
+- **A10 closed, release 0.2.0-interim:** the review's `CITATION.cff` is version `0.2.0-interim`, released 2026-10-14, with an abstract that now matches the project's state; release notes in `00_admin/RELEASE_0.2.0-interim_2026-10-14.md`; tag `v0.2.0-interim`. The repository-root `CITATION.cff` belongs to the separate Global Water Law Judicial Decisions Dataset (0.3.0, Zenodo DOI) and was not changed.
+- **Counts:** included **1,080** reports, full-text excludes **1,197**, effect rows 59, human-confirmed includes 197.
+- **Open:** A6, A7, A8, A13, A14, the 12 papers still to fetch, and the human manuscript revision.
+
 ## 2026-10-14 (data) — A20 residue closed: 4 studies excluded E05, 6 design classes set (ninth value `other`); 33 stale statuses corrected; A10 blockers listed
 
 - **Confirmed (PI, reviewer CK):** S288 moved from MMAT to JBI Cross-Sectional with design class `observational` and rating "High concern (sparse extraction)"; S199 replaced by S019 in the 60-study second-extractor sample, with 197 human-confirmed includes in S001–S200.

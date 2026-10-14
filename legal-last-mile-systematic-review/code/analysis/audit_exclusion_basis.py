@@ -75,6 +75,10 @@ SETTLED = {
     'RA1F6E143593E': 'A19, 2026-10-14: exclusion confirmed, re-coded E01 to E07 (irrigation, a wrong service)',
     'RAB6AA06D8E9D': '2026-10-09: no full article exists (the Europe PMC record is an abstract), E09 stands',
     'R59D021BE3315': "A22 residue ruling 2026-10-14 (this record is S264, Joy et al. 2014): E05, a conceptual and normative water-justice paper illustrated with Indian evidence; the Drive file is only the Wageningen portal page (re-read 2026-10-14), whose abstract confirms it",
+    'R0B0F3925F533': "A19 wider-set ruling 2026-10-14: exclusion confirmed and re-coded E01 to E04 (inter-local utility cooperation, no household access outcome)",
+    'R977ECB01FA02': "A19 wider-set ruling 2026-10-14: exclusion confirmed, E01 kept (bundled natural-resource access after resettlement, household water findings not separable)",
+    'RC9378CBDB2EE': "A19 wider-set ruling 2026-10-14: exclusion confirmed and re-coded E01 to E04 (desalination governance capacity; outcomes are barriers, perceptions and environmental impact)",
+    'RFC362FE42028': "A19 wider-set ruling 2026-10-14: exclusion confirmed, E01 kept (public participation in river-basin planning under the Water Framework Directive)",
     'RCB78D4EF3652': "2026-10-14: E04 confirmed from the abstract on file (the outcome is how a changing water-service model is read by users and utilities in Greater Paris, where network access is already general; no household access outcome), so no Drive text is needed",
 }
 # 2026-10-14 (PI ruling): the 17 status-only excludes with a real Drive PDF and the 16 includes with a stale status were set to 'retrieved' by fix_stale_fulltext_status_batch_2026-10-14.py, so they no longer appear below.
@@ -146,6 +150,8 @@ def build():
     n_so = sum(1 for r in opn if r['group'] == 'status_exclude')
     if n_so:
         L += [f"- Open (status_exclude, {n_so} records): see the table above; {sum(1 for r in opn if r['group'] == 'status_exclude' and 'status field stale' in r['drive_check'])} have a real PDF in Drive (stale status), the rest were not checked or are portal pages."]
+    if not opn:
+        L += ['', f'**All {len(core)} substantive and status-contradicting excludes are now settled by a ruling; this audit is closed (open item A19).**']
     L += ['', '17 status-only excludes with a real Drive PDF and 16 includes with a stale status were corrected to `retrieved` on 2026-10-14 (they drop out of the tables above).']
     return rows, '\n'.join(L) + '\n'
 

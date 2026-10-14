@@ -9,7 +9,7 @@ full-text decisions. The older `full_text_reviewer_2_queue.csv` (175 records fro
 
 | Tier | Rows | Selection | Why |
 |---|---|---|---|
-| 1 | 73 (47 include, 26 exclude) | **Every** decided row with no reviewer label | Provenance unknown; nothing can be said about who or what made these decisions |
+| 1 | 73 (47 include, 26 exclude) | **Every** decided row whose reviewer label was not recorded (an AI label was inferred on 2026-10-14, open item A2) | Provenance not recorded at the time; the inferred label is not human review |
 | 2 | 103 excludes | Seeded random sample, stratified by exclusion code (about 100 in proportion, at least 3 per code; codes E08 duplicate and E10 inaccessible-text are not sampled because a second reader cannot re-make them from the paper) | Checks that AI excludes are correct; errors here silently remove eligible studies |
 | 3 | 50 includes | Seeded random sample of includes beyond S001–S200 (optional) | Checks that AI includes — and the extraction built on them — are correct |
 

@@ -2,7 +2,7 @@
 """Build the PRIORITISED human reviewer_2 queue for full-text decisions (2026-09-28).
 
 Tiers (rationale in 02_screening/full_text/REVIEWER_2_PRIORITY_QUEUE_README.md):
-  1  every decided row with NO reviewer label (provenance unknown)                       -- all of them
+  1  every decided row with NO reviewer label, or whose label was INFERRED on 2026-10-14 (open item A2: provenance not recorded at the time) -- all of them
   2  seeded, stratified random sample of substantive EXCLUDES (E08 duplicates and E10 'inaccessible' excluded from sampling)
   3  seeded random sample of INCLUDES beyond the 200 already human-confirmed (S001-S200)  -- optional
 
@@ -32,7 +32,7 @@ def build():
     confirmed = {r['record_id'] for r in ft if r['reviewer_2']}
     dec = [r for r in ft if r['final_decision']]
     rng = random.Random(SEED)
-    tier1 = sorted([r for r in dec if not r['reviewer_1']], key=lambda r: (r['final_decision'] != 'include', r['record_id']))
+    tier1 = sorted([r for r in dec if not r['reviewer_1'] or 'reviewer_1 label inferred' in r['notes']], key=lambda r: (r['final_decision'] != 'include', r['record_id']))
     chosen = {r['record_id'] for r in tier1}
     pool = defaultdict(list)
     for r in sorted(dec, key=lambda r: r['record_id']):
@@ -48,7 +48,7 @@ def build():
     inc_pool = sorted([r for r in dec if r['final_decision'] == 'include' and r['record_id'] not in chosen and r['record_id'] not in confirmed], key=lambda r: r['record_id'])
     tier3 = sorted(rng.sample(inc_pool, INCLUDE_SAMPLE), key=lambda r: r['record_id'])
     rows = []
-    why = {1: 'no reviewer_1 label recorded: provenance of the decision unknown',
+    why = {1: 'no reviewer_1 label recorded at the time (a label was inferred on 2026-10-14, open item A2): provenance of the decision not recorded',
            2: 'random check that AI excludes are correct (stratified by exclusion code)',
            3: 'random check that AI includes (and their extraction) are correct; optional'}
     for tier, group in ((1, tier1), (2, tier2), (3, tier3)):
@@ -57,7 +57,7 @@ def build():
             rows.append({'priority_tier': tier, 'priority_rank': len(rows) + 1, 'record_id': r['record_id'], 'study_id': m.get(r['record_id'], ''),
                          'year': r['year'], 'authors': r['authors'], 'title': r['title'], 'doi': r['doi'], 'url': r['url'],
                          'full_text_status': r['full_text_status'], 'ai_decision': r['final_decision'],
-                         'ai_exclusion_code': r['exclusion_reason'], 'ai_reviewer_label': r['reviewer_1'] or '(none recorded)',
+                         'ai_exclusion_code': r['exclusion_reason'], 'ai_reviewer_label': (r['reviewer_1'] + ' (inferred)') if 'reviewer_1 label inferred' in r['notes'] else (r['reviewer_1'] or '(none recorded)'),
                          'why_prioritised': why[tier],
                          'reviewer_2_decision (include/exclude/cannot_tell)': '', 'reviewer_2_exclusion_code (E01-E12)': '', 'reviewer_2_agrees_with_AI (Y/N)': '', 'reviewer_2_comment': '',
                          'ai_reasoning_READ_AFTER_YOUR_OWN_JUDGMENT': (r['exclusion_reason_detail'] if not inc else '') or r['notes'][:1200]

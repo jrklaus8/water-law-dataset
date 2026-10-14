@@ -18,16 +18,16 @@ The last two columns use Claude's triage of the same records (column `claude_tri
 
 | Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied if the model rate held (95% range) | Implied, narrow reading (triage N) | Implied, literal reading (triage N + B) |
 |---|---|---|---|---|---|---|---|
-| E01 wrong topic | 492 | 37 | 19 | 19 | 253 (177-327) | 13 (1) | 199 (15) |
+| E01 wrong topic | 490 | 37 | 19 | 19 | 252 (176-326) | 13 (1) | 199 (15) |
 | E02 wrong population | 34 | 0 | 0 | 0 | not estimable (none re-read) | - | - |
 | E03 wrong exposure | 88 | 2 | 2 | 2 | 88 (30-88) | 0 (0) | 88 (2) |
-| E04 wrong outcome | 84 | 3 | 2 | 2 | 56 (17-79) | 0 (0) | 28 (1) |
+| E04 wrong outcome | 86 | 3 | 2 | 2 | 57 (18-81) | 0 (0) | 29 (1) |
 | E05 no empirical evidence | 157 | 6 | 2 | 2 | 52 (15-110) | 0 (0) | 26 (1) |
 | E06 engineering only | 106 | 9 | 6 | 5 | 71 (38-93) | 24 (2) | 59 (5) |
 | E07 wrong service | 29 | 1 | 0 | 0 | 0 (0-23) | 0 (0) | 0 (0) |
 | E09 insufficient information | 2 | 0 | 0 | 0 | not estimable (none re-read) | - | - |
 | E12 wrong study design | 46 | 4 | 1 | 1 | 12 (2-32) | 0 (0) | 23 (2) |
-| **Sum of estimable codes** | 1002 | 62 | 32 | 31 | **532** | **37** | **423** |
+| **Sum of estimable codes** | 1002 | 62 | 32 | 31 | **532** | **37** | **424** |
 
 Two things the abstract check of the priority-1 records showed: (1) blind reviewers cannot detect duplicates, so a duplicate excluded as E08 can come back as a disagreement (R21CAA5C1809C is the same article as S102; E08 stands); (2) one original exclusion (R69F53378C8F2, a 200-city panel on private-sector participation) rests partly on the access estimate being non-significant, which is not an exclusion criterion and would bias the review against null results.
 

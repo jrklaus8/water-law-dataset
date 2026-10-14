@@ -34,6 +34,6 @@ Qualitative socio-legal studies are **never** excluded merely because they canno
 
 **5. Extra checks for includes (tiers 1 and 3):** does the extraction row (`study_id` column → `03_extraction/extracted_data/extraction_database.csv`) match the paper on country, design, sample size, exposure and outcome, and the effect direction if one is recorded? Note any mismatch in `reviewer_2_comment`.
 
-**6. Tier 1 only:** the row has no reviewer label; if you confirm it, your confirmation is the first recorded review of that decision.
+**6. Tier 1 only:** the row has no recorded reviewer label (the AI label shown is inferred, 2026-10-14); if you confirm it, your confirmation is the first recorded review of that decision.
 
 **Do not:** infer from the title or abstract alone; force a decision when you cannot read the paper; edit the AI's columns; extrapolate from a small sample — report per-tier agreement and flag disagreement patterns.

@@ -106,3 +106,7 @@ The PI approved the S480 design class and the 37 A5 overrides, mapped S1072 to `
 ## Update: A20 residue closed, stale statuses corrected (2026-10-14, final)
 
 S288 and the S199 to S019 sample refill are confirmed. S707, S976, S1077 and S1098 were excluded E05; S791, S799, S949, S1092 got design classes and S937 and S1071 the new ninth value `other`. 33 stale `full_text_status` values were set to `retrieved`, and RCB78D4EF3652 was confirmed E04. Included studies are now **1,080**, full-text excludes **1,197**, effect rows 59, human-confirmed includes 197. Waiting on the PI for A10 (`0.2.0-interim`): the 4 open substantive excludes of A19, A2 (provenance label for 73 rows), A3 (linked reports) and A4 (sensitivity analysis as a standing requirement). Details: `CHANGELOG.md` 2026-10-14 and ledger rows A2, A3, A4, A10, A19, A20.
+
+## Update: release 0.2.0-interim (2026-10-14, last)
+
+A2, A3, A4, A10 and the exclusion-basis audit are closed; `other` is approved as a design value; the review's `CITATION.cff` is `0.2.0-interim` (2026-10-14) and the release is tagged `v0.2.0-interim` (notes: `00_admin/RELEASE_0.2.0-interim_2026-10-14.md`). The root `CITATION.cff` (judicial decisions dataset, 0.3.0) was deliberately not changed. 73 `reviewer_1` labels were inferred and backfilled (not human review). Counts: 1,080 included reports = 1,078 distinct studies (1,076 with partial links), 1,197 excludes, 59 effect rows. Still open: A6, A7, A8, A13, A14, the papers to fetch, human manuscript revision.

@@ -384,7 +384,7 @@ explained in full further down; this is the index.
     about its own "Can't tell" answers, but it is not a
     signalling-question-level read of every source document.
 16. **Extraction rows are per report, not per underlying study — so
-    "1,159 studies" counts reports.** `REPRODUCIBILITY.md` §6 says that
+    "1,080 studies" counts included reports.** `REPRODUCIBILITY.md` §6 says that
     where several reports describe the same underlying study, the study is
     to be treated as one and the reports cross-referenced by `study_id`; in
     practice this project extracted companion papers as separate rows (a
@@ -394,12 +394,17 @@ explained in full further down; this is the index.
     8 the extractor had already documented, 4 the audit inferred and marks low
     confidence). **Two links are the same underlying data (S294/S366, the same
     cluster-randomised trial; S097/S098, the same interview sample) and two more
-    overlap partially (S681/S682, S357/S369)**, so the corpus holds roughly
-    1,142 distinct studies on the definite links and 1,140 counting the partial
-    ones (as of 2026-09-28; on 2026-10-14 the 1,080 rows are 1,078 distinct studies, or 1,076 counting the partial links) — and the "5 RoB 2 studies" are 4 distinct trials. Nothing was merged or
-    recounted: whether to collapse these rows is a researcher decision. None of the
+    overlap partially (S681/S682, S357/S369).** **Ruled 2026-10-14 (open item A3,
+    reviewer CK): keep every report row and every link; no pair is collapsed**, because companion
+    reports carry distinct outcome-specific extractions and risk-of-bias ratings (S294
+    and S366 under RoB 2, for example). Both figures are reported wherever the
+    count is used: **1,080 included reports, representing 1,078 distinct studies
+    on the definite same-data links, or 1,076 counting the partial-overlap links**
+    (1,157 and 1,155 of 1,159 rows on 2026-09-28), and the 5 RoB 2 report rows are 4 distinct
+    cluster-randomised trials. None of the
     linked pairs has both members in `effect_sizes.csv`, except the audit-inferred
-    S526/S539 (two US utility studies whose samples probably overlap), which matters
+    S526/S539 (two US utility studies whose samples probably overlap), which is
+    flagged for verification of sample overlap against the source papers and matters
     if the ownership/price cluster is ever pooled. The index
     `03_extraction/extracted_data/study_record_map.csv` (study_id ↔ screening
     record_id, all 1,159 studies) was added at the same time; the same value was
@@ -498,6 +503,7 @@ documentation**.
 
 | Stage | Status |
 |---|---|
+| Release | **0.2.0-interim, 2026-10-14** (git tag `v0.2.0-interim`; `CITATION.cff`; notes in `00_admin/RELEASE_0.2.0-interim_2026-10-14.md`). Interim and AI-assisted; read the disclosures below before citing any count |
 | Records identified | 34,594 raw (34,557 database + 37 grey-literature/pilot) |
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
@@ -515,8 +521,8 @@ documentation**.
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
 
 Exclusion-reason breakdown at full-text stage (E01–E12,
-`INCLUSION_EXCLUSION.md`), of 1,197 total: E01 wrong topic 492 · E02 wrong
-population 34 · E03 wrong exposure 88 · E04 wrong outcome 84 · E05 no
+`INCLUSION_EXCLUSION.md`), of 1,197 total: E01 wrong topic 490 · E02 wrong
+population 34 · E03 wrong exposure 88 · E04 wrong outcome 86 · E05 no
 empirical evidence 157 · E06 engineering only 106 · E07 wrong service 29 ·
 E08 duplicate 8 · E09 insufficient information 2 · E10 inaccessible full
 text 151 · E11 wrong jurisdiction/context 0 · E12 wrong study design 46.

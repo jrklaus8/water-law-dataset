@@ -13,8 +13,8 @@ checks that the current-status documents quote these values. If a document disag
 | Full-text records tracked | 3,659 |
 | Full-text decided | 2,277 (1,080 include / 1,197 exclude) |
 | Never decided (retrieval closed) | 1,382 (1,200 not_retrievable, 182 wrong_file_retrieved) |
-| Exclusion-log rows | 1,197 — by code: E01 492, E02 34, E03 88, E04 84, E05 157, E06 106, E07 29, E08 8, E09 2, E10 151, E12 46 |
-| Decided rows with blank reviewer_1 | 73 |
+| Exclusion-log rows | 1,197 — by code: E01 490, E02 34, E03 88, E04 86, E05 157, E06 106, E07 29, E08 8, E09 2, E10 151, E12 46 |
+| Decided rows with blank / inferred reviewer_1 | 0 / 73 |
 | Includes confirmed by a human reviewer_2 | 197 |
 | Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | 112 / 31 |
 

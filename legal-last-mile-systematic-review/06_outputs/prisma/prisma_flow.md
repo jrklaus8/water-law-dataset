@@ -148,6 +148,8 @@ Screening  [reviewer_1 (AI) first pass only -- see caveat above]
 
 Included
   Studies included in systematic review (n = 1,080, FINAL)
+    [Counted as included reports: 1,078 distinct studies on the definite same-data links (S294/S366, S097/S098), 1,076 counting the
+    partial-overlap links (S681/S682, S357/S369); no pair collapsed, open item A3 ruled 2026-10-14.]
     [Full-text include count as of the 2026-09-28 Phase 6 closure (1,162 at closure,
     reduced by 2 when the repository audit's two live double-counted papers, S233 and
     S299, were merged into S1008 and S392 with the researcher's approval and their

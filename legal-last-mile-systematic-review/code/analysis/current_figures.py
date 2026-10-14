@@ -84,6 +84,7 @@ def compute():
     F['exclusion_by_code'] = dict(sorted(Counter(r['exclusion_code'] for r in el).items()))
     dec_rows = [r for r in ft if r['final_decision']]
     F['decided_blank_reviewer_1'] = sum(not r['reviewer_1'] for r in dec_rows)
+    F['decided_inferred_reviewer_1'] = sum('reviewer_1 label inferred' in r['notes'] for r in dec_rows)  # backfilled 2026-10-14 (open item A2): label inferred, not recorded at the time
     # Human confirmations only (labels `Human-reviewer2-...`); a second AI model's blind pass is counted separately.
     F['reviewer_2_confirmed_includes'] = sum(r['reviewer_2'].startswith('Human-') and r['final_decision'] == 'include' for r in ft)
     F['reviewer_2_second_model_rows'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) for r in ft)
@@ -170,7 +171,7 @@ def render(F):
              f"| Full-text decided | {F['full_text_decided']:,} ({F['full_text_include']:,} include / {F['full_text_exclude']:,} exclude) |",
              f"| Never decided (retrieval closed) | {F['full_text_undecided']:,} ({F['unretrieved_not_retrievable']:,} not_retrievable, {F['unretrieved_wrong_file']:,} wrong_file_retrieved) |",
              f"| Exclusion-log rows | {F['exclusion_log_rows']:,} — by code: " + ", ".join(f"{k} {v}" for k, v in F['exclusion_by_code'].items()) + " |",
-             f"| Decided rows with blank reviewer_1 | {F['decided_blank_reviewer_1']} |",
+             f"| Decided rows with blank / inferred reviewer_1 | {F['decided_blank_reviewer_1']} / {F['decided_inferred_reviewer_1']} |",
              f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |",
              f"| Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | {F['reviewer_2_second_model_rows']} / {F['reviewer_2_second_model_conflicts']} |", "",
              "## Extraction and classification", "",

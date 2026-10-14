@@ -148,6 +148,8 @@ do not run every possible one reflexively:
 - **Study design:** compare observational-only vs. observational+quasi-experimental vs. experimental evidence separately.
 - **Alternative effect measures:** only where substantively and mathematically defensible.
 
+> **Dated note, 2026-10-14 (open item A4, ruled by the PI, reviewer CK).** The sensitivity analysis of the three SWiM syntheses (`code/analysis/sensitivity_analysis.py` → `05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`; scenarios S0 baseline, S1 drop abstract-only extractions, S1b drop sparse-audit rows, S2 drop rows for studies not flagged eligible, S3 collapse linked reports, S4 drop Family A coding judgment calls, S5 all of these) is a **standing pre-publication requirement**: it must be re-run and pass the verifier's freshness check before any submission, and it is reported as a supplementary table in the manuscript package. Human verification of the direction coding on a sample stays under open item A6.
+
 ## 11. Dependent effect sizes
 
 First-paper default: one prespecified effect per study and outcome family
