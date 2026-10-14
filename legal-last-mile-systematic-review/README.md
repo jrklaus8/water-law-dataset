@@ -10,6 +10,8 @@ Quantitative Evidence Synthesis**
 
 **Preliminary results:** [`06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md`](06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.md) (readable on GitHub) and a navigable web version, [`…report….html`](06_outputs/PRELIMINARY_RESULTS_REPORT_2026-09-29.html) (download and open in a browser, or serve with GitHub Pages — GitHub shows `.html` files as source). Both are generated and checked against the data; neither is a final result.
 
+**Executive summary (docx):** [`06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx`](06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx) — the findings, their robustness and the open decisions in short form; generated from the same figures (`code/analysis/build_executive_summary.py`) and equally preliminary.
+
 Companion project to the doctoral dissertation *The Legal Last Mile:
 Administrative Law as a Mechanism of Connectivity and Exclusion in
 Sanitation Governance: A Comparative Study of the Netherlands, Canada

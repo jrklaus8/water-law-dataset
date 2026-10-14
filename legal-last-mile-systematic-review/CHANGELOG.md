@@ -4,6 +4,12 @@ All notable methodological and structural decisions for this project are
 logged here, per `REPRODUCIBILITY.md` §8 and `PROTOCOL.md` §12 (protocol
 amendments in particular must be logged here with rationale).
 
+## 2026-10-14 (final, round 12) — executive summary of the preliminary findings (docx)
+
+- **New: `06_outputs/EXECUTIVE_SUMMARY_2026-10-14.docx`**, a short partial report for the author (bottom line, where the review stands, the evidence base, the three SWiM families with one figure, robustness, how far to trust it, decisions and next steps). Built by `code/analysis/build_executive_summary.py` (python-docx and matplotlib; no Node dependency) from `current_figures.py`, `sensitivity_analysis.py`, the A16 adjudication outcome, and the SWiM direction-coding and CK-check files, so no number is typed by hand; the file is byte-stable between runs (fixed document timestamps). Added to `regenerate_all.sh`, with `code/tests/test_executive_summary.py` (headline numbers, family table against the baseline scenario, the confirmed/flagged split against `current_figures`, no template leaks, alt text, no over-claim).
+- **One figure is new to the project and lives only in this summary:** an illustrative row showing the three families if all ten flagged SWiM core studies (open item A28) were excluded (A 12 studies, B 2, C 15; every pre-stated conclusion still holds). It is not a scenario in `sensitivity_analysis.py` and not a ruling. It also surfaces that four of Family B's six studies are among the flagged ten.
+- No data, ruling or count changed in this round.
+
 ## 2026-10-14 (final, round 11) — A26 and A27 closed; S1121 and S1143 excluded; three more reasoned non-fits; SWiM core confirmations
 
 - **A27 closed (PI ruling, reviewer CK):** the design ceiling and the label-to-level mapping of `mechanism_certainty` are approved as applied in round 10.
