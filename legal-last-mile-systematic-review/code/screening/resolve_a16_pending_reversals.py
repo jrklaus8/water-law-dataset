@@ -5,7 +5,8 @@ into real inclusions and exclusions, so every count follows. DRY RUN BY DEFAULT;
 Per pending row (the whole batch is validated first; any problem stops the run before anything is written):
 - exclude -> include (new inclusion). Needs a prepared extraction: 02_screening/full_text/a16_new_includes/<record_id>.json with two objects,
   "extraction" (every extraction_database.csv column except study_id and record_id, filled from the FULL TEXT with the same rules as any extraction,
-  including the risk-of-bias tool and rating) and "evidence_map" (every evidence_map.csv column except study_id). The script assigns the next study
+  including the risk-of-bias tool and rating) and "evidence_map" (every evidence_map.csv column except study_id; since 2026-10-14 `mechanism_family` and `outcome_family` must hold values of the adopted vocabulary
+  (propose_family_vocabulary.CONTROLLED_MECH / CONTROLLED_OUT) and `study_design_class` one of the eight enum values that fits the tool, or verify_repository.py fails). The script assigns the next study
   ID (retired IDs are never reused), appends the extraction and evidence-map rows, adds a study_record_map row (link_method a16_reversal),
   flips the full-text database row to include and removes its exclusion-log row. If the new include has a quantitative effect, add its
   effect_sizes.csv row with a separate dated script (one prespecified effect per study, CODEBOOK section 12).

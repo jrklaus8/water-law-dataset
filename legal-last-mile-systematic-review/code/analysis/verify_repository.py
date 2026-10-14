@@ -237,6 +237,13 @@ _ALLOWED = {'RoB 2': {'experimental'}, 'ROBINS-I': {'quasi_experimental'}, 'AMST
 _mismatch = [(r['study_id'], cf.tool_of(r['risk_of_bias_tool']), _class[r['study_id']]) for r in ed
              if cf.tool_of(r['risk_of_bias_tool']) in _ALLOWED and _class[r['study_id']] not in _ALLOWED[cf.tool_of(r['risk_of_bias_tool'])]]
 check(not _mismatch, f'risk-of-bias tool does not fit the design class: {_mismatch[:5]}')
+_unmapped_design = {r['study_id'] for r in pdv.build() if r['proposed_class'] == 'unmapped_needs_review'}
+_free_class = [s for s, c in _class.items() if c not in pdv.ENUM and s not in _unmapped_design]
+check(not _free_class, f'study_design_class is a free-text label the design mapping can place (adopted vocabulary, open item A20; run propose_design_vocabulary.py and adopt it): {_free_class[:5]}')
+_free_fam = [(r['study_id'], r['mechanism_family'][:30], r['outcome_family'][:30]) for r in em if r['mechanism_family'] not in pv.CONTROLLED_MECH or r['outcome_family'] not in pv.CONTROLLED_OUT]
+check(not _free_fam, f'mechanism_family or outcome_family is outside the adopted vocabulary (open item A5): {_free_fam[:5]}')
+_orig_ids = set(cf.original_labels())
+check(_orig_ids <= {r['study_id'] for r in em} and len(_orig_ids) >= 1104, 'evidence_map_original_labels_2026-10-14.csv must keep the original labels of every study that was in the evidence map on 2026-10-14')
 _none_class = [(r['study_id'], _class[r['study_id']]) for r in ed if cf.tool_of(r['risk_of_bias_tool']) == 'NONE' and _class[r['study_id']] not in ('systematic_review_secondary', 'doctrinal', 'jurimetric', 'qualitative', 'observational', 'mixed_methods') and _class[r['study_id']] in ('experimental', 'quasi_experimental')]
 check(not _none_class, f'a randomised/quasi-experimental study has tool NONE: {_none_class[:5]}')
 _STARTS = {'RoB 2': ('Some concerns', 'Low', 'High'), 'ROBINS-I': ('Low', 'Moderate', 'Serious', 'Critical', 'No information'),

@@ -52,7 +52,7 @@ unfinished normalization):
 
 | Tool (design family) | n | % |
 |---|---|---|
-| Legal Institutional Evidence Appraisal Framework (doctrinal/documentary/jurimetric) | 432 | 39% |
+| Legal Institutional Evidence Appraisal Framework (doctrinal/documentary/jurimetric) | 433 | 39% |
 | CASP Qualitative | 251 | 23% |
 | MMAT (mixed methods) | 196 | 18% |
 | JBI Cross-Sectional | 130 | 12% |
@@ -62,14 +62,14 @@ unfinished normalization):
 | RoB 2 (randomized controlled trials) | 5 | 0.4% |
 
 **This is the same underlying pattern the 2026-09-16 note already identified, now confirmed
-at more than 3x the corpus size**: only 65 of 1,103 studies (6% — the 60 ROBINS-I plus 5 RoB
+at more than 3x the corpus size**: only 65 of 1,104 studies (6% — the 60 ROBINS-I plus 5 RoB
 2; an earlier draft said "77 (7%)") use a design capable of supporting a causal claim about a
 legal/administrative mechanism's effect on access. The other 94% are doctrinal/documentary
 analysis (39%), qualitative research (23%), mixed-methods (18%), cross-sectional observational
 association (12%), or secondary reviews and no-tool studies (3%). This
-is corroborated by `mechanism_certainty`: only 33 of 1,103 studies (3%) reach level 3
-("quasi-experimental evidence") or 4 ("experimental evidence"); 221 (20%) sit at level 1
-("documented association") and 270 (24%) at level 2. **575 of 1,103 (52%) carry narrative
+is corroborated by `mechanism_certainty`: only 33 of 1,104 studies (3%) reach level 3
+("quasi-experimental evidence") or 4 ("experimental evidence"); 222 (20%) sit at level 1
+("documented association") and 270 (24%) at level 2. **575 of 1,104 (52%) carry narrative
 text rather than the intended 0–4 numeric code** — a real scale inconsistency inherited
 across different extraction-batch eras, not smoothed over here (see `RISK_OF_BIAS.md` §4's
 similar note about the Legal Framework batch's use of this same field). **The great majority
@@ -81,7 +81,7 @@ finding that more data has since overturned.
 ## Coverage by jurisdiction / legal system
 
 **Method caveat (audit, 2026-09-28).** `country` and `legal_system` are free-text fields, not controlled
-vocabularies. Of the 1,159 studies, 985 name exactly one country, **116 name several countries or a region and are
+vocabularies. Of the 1,159 studies, 986 name exactly one country, **116 name several countries or a region and are
 not counted under any single country below**, and 3 are blank; `legal_system` has hundreds of distinct strings
 (`common law`, `common_law`, `common law (India)` …). The counts here are rule-based buckets (rules in
 `code/analysis/current_figures.py`; figures in `00_admin/CURRENT_FIGURES.md`), so they understate every country
@@ -95,7 +95,7 @@ fewer. India, Brazil, and South Africa alone account for 26% of the corpus (an e
 but the same underlying caution applies: any synthesis finding should be checked for whether
 it is really general or a small set of country literatures dressed as a general one.
 
-Legal-system coverage (rule-based buckets): common law only 521 (47%), civil law only 385 (34%),
+Legal-system coverage (rule-based buckets): common law only 522 (47%), civil law only 385 (34%),
 mixed / both / customary 181 (16%), blank 28 (2%), other 3. (An earlier draft of this paragraph quoted
 "common law 651 (56%), civil law 412 (36%), mixed 66 (6%)" from an undocumented bucketing that counted mixed
 entries under common law; the rules are now in code.) This is a real shift from the
@@ -109,8 +109,8 @@ not a deliberate sampling frame.
 
 ## Measurement quality patterns
 
-`legal_measurement_quality` and `outcome_measurement_quality` are populated for 376 of the
-432 Legal Framework studies (87%) and for most of the quantitative-tool populations
+`legal_measurement_quality` and `outcome_measurement_quality` are populated for 377 of the
+433 Legal Framework studies (87%) and for most of the quantitative-tool populations
 (ROBINS-I, JBI, RoB 2) via the `covariates`/`outcome`-related fields used in today's
 rule-based appraisals — but **not as a dedicated, uniform quality-coding pass**: these fields
 were populated at different points across many extraction batches spanning weeks, using an
@@ -144,7 +144,7 @@ Phase 11 quantitative-feasibility judgment
 18 studies whose family assignment remained unresolved at that point — updated later the same
 day: after the 9-row blank-family follow-up and the S348 addition, `effect_sizes.csv` holds 62
 rows, Family A 20 / B 6 / C 20, with 16 rows left blank on a documented, reasoned non-fit basis,
-`phase11_blank_family_resolution_2026-09-28.md`; on 2026-10-14, after the PI's scope rulings, `effect_sizes.csv` holds 59 rows: Family A 19 / B 6 / C 19 and 15 blank) — consistent with the
+`phase11_blank_family_resolution_2026-09-28.md`; on 2026-10-14, after the PI's scope rulings, `effect_sizes.csv` holds 59 rows: Family A 19 / B 6 / C 19 and 15 blank; later the same day S589 left and S1169 joined, giving A 18 / B 6 / C 20 and 15 blank) — consistent with the
 366-study snapshot's own finding that Family A and Family B "each currently rest on a small
 handful of studies," now confirmed at a larger, still-small scale. **No candidate family has
 enough independent, comparably-operationalized studies to support pooling** — Phase 11's own
@@ -211,7 +211,7 @@ quasi-experimental studies.
 
 ## Four further caveats surfaced by the 2026-09-28 audit
 
-**1. Some appraisals rest on abstract- or metadata-level extraction only.** 10 of the 1,103
+**1. Some appraisals rest on abstract- or metadata-level extraction only.** 10 of the 1,104
 studies (0.9%) carry an `extraction_note` stating they were extracted from the published
 abstract, introduction, or repository metadata only, because the full text was never
 obtained at extraction time (CASP 20, MMAT 7, JBI Cross-Sectional 6, Legal Framework 4, AMSTAR 2 0, RoB 2 0). The count has fallen over time as full texts were found: 69 before 2026-09-29; S277, S326 and S366 re-read from full text on 2026-09-29; S319, S324, S325 and S344 on 2026-10-02; 13 more (S331-S347) and then 5 (S257, S278, S279, S281, S288) and 3 (S260, S267, S274) on 2026-10-04 from PDFs already in the researcher's Drive (see `code/provenance/audit_and_repair/reextract_2026-10-04/CAMPAIGN_NOTES.md`); two abstract-only rows were retired (S299, a duplicate; S356, an E05 exclusion). Their appraisals are honest about this — the CASP entries, for example,

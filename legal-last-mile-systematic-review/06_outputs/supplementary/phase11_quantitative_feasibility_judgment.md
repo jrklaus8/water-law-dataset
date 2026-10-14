@@ -1,6 +1,6 @@
 # Phase 11 — Corpus-Level Quantitative-Feasibility Judgment
 
-> **Update 2026-10-14.** The family counts in this 2026-09-28 judgment (Family A 20, Family C 20, 62 rows) have since changed: the PI's scope rulings of 2026-10-13 and 14 added S1166's row (a non-fit) and removed the rows of S312, S435 (non-fits), S969 (Family A) and S348 (Family C), leaving 59 rows: Family A 19, B 6, C 19, 15 non-fits. The verdict (no family clears the meta-analysis bar) is unchanged and was not re-derived; the figures below are left as written.
+> **Update 2026-10-14.** The family counts in this 2026-09-28 judgment (Family A 20, Family C 20, 62 rows) have since changed: the PI's scope rulings of 2026-10-13 and 14 added S1166's row (a non-fit) and removed the rows of S312, S435 (non-fits), S969 (Family A) and S348 (Family C), leaving 59 rows: Family A 19, B 6, C 19, 15 non-fits. Later the same day S589 (Family A) left and S1169 (Family C, Olmstead 2004) was added, so the current figures are 59 rows: Family A 18, B 6, C 20, 15 non-fits (the family titles were also made descriptive under the A21 ruling; the codes are unchanged). The verdict (no family clears the meta-analysis bar) is unchanged and was not re-derived; the figures below are left as written.
 
 **Status: written 2026-09-28.** This is the first time `ANALYSIS_PLAN.md`
 §2's decision tree has been applied explicitly, at the family level,

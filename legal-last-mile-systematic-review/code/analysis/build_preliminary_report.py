@@ -15,6 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import current_figures as cf  # noqa: E402
 import sensitivity_analysis as sa  # noqa: E402
 import propose_family_vocabulary as pv  # noqa: E402
+import propose_design_vocabulary as dvm  # noqa: E402
 import audit_data_quality as adq  # noqa: E402
 import audit_sparse_records as asr  # noqa: E402
 import build_manuscript_pieces as bmp  # noqa: E402
@@ -38,6 +39,7 @@ def build():
     rows_sc, ab_only, not_elig, collapse, signs = sa.scenarios()
     conc = sa.parse_concordance()
     vocab = {r['study_id']: r for r in pv.build()}
+    orig_lab = cf.original_labels() or {s: {k: r[k] for k in ('study_design_class', 'mechanism_family', 'outcome_family')} for s, r in em.items()}
     P = lambda k, d=n: f"{k:,} ({100 * k / d:.0f}%)"
 
     # ---- descriptive numbers
@@ -100,7 +102,8 @@ def build():
     W("")
     W(f"- **Volume and recency.** {n:,} studies; {P(since2010)} published 2010 or later (median year {int(statistics.median(years))}; {sum(y < 2000 for y in years)} before 2000).")
     free_top = "; ".join(f"{k} ({v})" for k, v in cf.ranked(Counter(v for v in (r['study_design_class'] for r in em.values()) if v not in enum), 2))
-    W(f"- **Design mix** (evidence-map `study_design_class`; {free_design} studies carry free-text values outside the 8-value enum — the commonest are variants of \"case study\", e.g. {free_top}; they are not in the counts that follow): qualitative {dc['qualitative']}, mixed-methods {dc['mixed_methods']}, observational {dc['observational']}, quasi-experimental {dc['quasi_experimental']}, doctrinal {dc['doctrinal']}, jurimetric {dc['jurimetric']}, secondary systematic reviews {dc['systematic_review_secondary']}, experimental {dc['experimental']}. By appraisal tool: " + ", ".join(f"{k} {v}" for k, v in tools.items()) + ".")
+    n_adopted = len(dvm.build()) - free_design
+    W(f"- **Design mix** (evidence-map `study_design_class`; the free-text design labels of {n_adopted} studies were mapped onto the 8-value enum on 2026-10-14 under open item A20, with the original strings kept in `evidence_map_original_labels_2026-10-14.csv`, so `qualitative` lumps ethnographic, historical, institutional and documentary case studies; {free_design} studies keep a free-text label the rules could not map (essays, theory, policy analyses) and are not in the counts that follow): qualitative {dc['qualitative']}, mixed-methods {dc['mixed_methods']}, observational {dc['observational']}, quasi-experimental {dc['quasi_experimental']}, doctrinal {dc['doctrinal']}, jurimetric {dc['jurimetric']}, secondary systematic reviews {dc['systematic_review_secondary']}, experimental {dc['experimental']}. By appraisal tool: " + ", ".join(f"{k} {v}" for k, v in tools.items()) + ".")
     W(f"- **Designs able to support a causal claim about a legal/administrative mechanism:** {F['causal_capable_designs']} ({100 * F['causal_capable_designs'] / n:.0f}%) — {tools['ROBINS-I']} quasi-experimental studies and {tools['RoB 2']} randomised trials (which are 4 distinct trials, see §3.4). {mcert['3'] + mcert['4']} studies carry a numeric mechanism-certainty of 3 or 4 (the codebook's quasi-experimental or experimental evidence), **but only {cert['hi_in_causal']} of them are among the {F['causal_capable_designs']} ROBINS-I/RoB 2 studies; the other {len(cert['hi_outside'])} are other designs, a coding inconsistency the audit flags** (`DATA_QUALITY_AUDIT_2026-09-29.md` §5); {mcert['1']} sit at level 1 (documented association) and {mcert['2']} at level 2; {F['mechanism_certainty_narrative_text']} carry narrative text instead of a 0–4 code.")
     W(f"- **Geography** (`country` is free text; {F['country_multi_or_regional_studies']} studies name several countries or a region and are not counted below): " + ", ".join(f"{k} {v}" for k, v in F['country_top10_single_name']) + f". The dissertation's comparison countries are unevenly covered: **Brazil {country('Brazil')}, Canada {country('Canada')} ({country_any('Canada')} counting multi-country entries), Netherlands {country('Netherlands')} ({country_any('Netherlands')} counting multi-country entries).**")
     W("- **Legal systems** (rule-based buckets): " + ", ".join(f"{k} {v}" for k, v in F['legal_system_buckets'].items()) + ".")
@@ -131,9 +134,11 @@ def build():
     W("")
     W("| Family | Studies | Positive / negative / null / mixed (sign) | Documents |")
     W("|---|---|---|---|")
-    W(f"| A — legal recognition, eligibility and access | {b['A_k']} | {b['A_positive']} / {b['A_negative']} / {b['A_null']} / 0 | `family_A_swim_synthesis_2026-09-28.md` |")
-    W(f"| B — bureaucratic/administrative assistance | {b['B_k']} | {b['B_positive']} / {b['B_negative']} / {b['B_null']} / {b['B_mixed']} | `family_B_…` |")
-    W(f"| C — administrative/legal barriers, ownership and price | {b['C_k']} | {b['C_positive']} / {b['C_negative']} / {b['C_null']} / {b['C_mixed']} | `family_C_…` |")
+    W(f"| A — legal status, tenure, recognition and governance arrangements | {b['A_k']} | {b['A_positive']} / {b['A_negative']} / {b['A_null']} / 0 | `family_A_swim_synthesis_2026-09-28.md` |")
+    W(f"| B — assistance, participation, trust and external support | {b['B_k']} | {b['B_positive']} / {b['B_negative']} / {b['B_null']} / {b['B_mixed']} | `family_B_…` |")
+    W(f"| C — ownership, regulation, institutional capacity and administrative structure | {b['C_k']} | {b['C_positive']} / {b['C_negative']} / {b['C_null']} / {b['C_mixed']} | `family_C_…` |")
+    W("")
+    W("The families are thematic mechanism groupings used to organise structured vote counting (SWiM), not homogeneous exposure–outcome pairs: their headings describe the mechanism clusters actually synthesised and are not the protocol's original titles (`PROJECT_SPEC.md` §8, dated note; open item A21).")
     W("")
     W(f"**Where studies agree.** In Family A, {b['A_concordant']} of {b['A_k']} ({b['A_concordant_pct']}%) are concordant with \"legal/institutional recognition or eligibility is associated with better access\" on a substantive reading ({pos_conc} positive-sign studies plus {neg_conc} negative-sign studies in which unrecognised or informal status is associated with worse access). All {b['B_k']} Family B studies report a positive or mixed association between administrative assistance/institutional trust and access, and none is negative. Three studies of private versus public ownership (S526, S539, S749; US ×2 and Brazil) all associate private ownership with worse affordability or progressivity.")
     W("")
@@ -154,9 +159,9 @@ def build():
     W("")
     W("### 2A.4 What the qualitative, doctrinal and mixed-methods studies record")
     W("")
-    W(f"A large part of the evidence base ({dc['qualitative'] + dc['mixed_methods'] + dc['doctrinal'] + dc['jurimetric']:,} studies by design class, plus {free_design} with free-text design labels, mostly case studies) is qualitative, mixed-methods or documentary rather than quantitative. Using the draft mechanism vocabulary (`FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md`, mechanical and unvalidated), studies whose label maps to a single mechanism family are: " + ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in cf.ranked(Counter(r['mechanism_family_proposed'] for r in vocab.values() if r['mechanism_family_proposed'] not in ('multiple', pv.NEEDS)))) + f"; {Counter(r['mechanism_family_proposed'] for r in vocab.values())['multiple']} carry several. The mapping is mechanical and unvalidated, so read the counts as indicative only. Examples of qualitative or doctrinal studies with `mechanism_certainty` 2 or higher (\"mechanism directly observed\" or above), showing the study's own recorded mechanism label beside the draft family, and the AI-extracted finding text:")
+    W(f"A large part of the evidence base ({dc['qualitative'] + dc['mixed_methods'] + dc['doctrinal'] + dc['jurimetric']:,} studies by design class, plus {free_design} with unmapped free-text design labels) is qualitative, mixed-methods or documentary rather than quantitative. Using the mechanism vocabulary adopted on 2026-10-14 (`FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md`, mechanical and unvalidated), studies whose label maps to a single mechanism family are: " + ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in cf.ranked(Counter(r['mechanism_family_proposed'] for r in vocab.values() if r['mechanism_family_proposed'] not in ('multiple', pv.NEEDS)))) + f"; {Counter(r['mechanism_family_proposed'] for r in vocab.values())['multiple']} carry several. The mapping is mechanical and unvalidated, so read the counts as indicative only. Examples of qualitative or doctrinal studies with `mechanism_certainty` 2 or higher (\"mechanism directly observed\" or above), showing the study's own recorded (original) mechanism label beside the adopted family, and the AI-extracted finding text:")
     W("")
-    W("| Study | Country | Design | Own recorded mechanism label → draft family | Extracted finding (truncated) |")
+    W("| Study | Country | Design | Own recorded mechanism label (original) → adopted family | Extracted finding (truncated) |")
     W("|---|---|---|---|---|")
     shown = Counter()
     for sid in sorted(ed, key=lambda s: int(s[1:])):
@@ -164,7 +169,7 @@ def build():
         f_ = v['mechanism_family_proposed']
         if e['study_design_class'] in ('qualitative', 'doctrinal') and r['mechanism_certainty'].strip() in ('2', '3', '4') and f_ not in ('multiple', pv.NEEDS) and shown[f_] < 1 and r['effect_estimate'].strip() and not r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES):
             shown[f_] += 1
-            W(f"| {sid} | {r['country'][:24]} | {e['study_design_class']} | {trim(e['mechanism_family'], 60)} → {f_.replace('_', ' ')} | {trim(r['effect_estimate'], 210)} |")
+            W(f"| {sid} | {r['country'][:24]} | {e['study_design_class']} | {trim(orig_lab.get(sid, {}).get('mechanism_family', e['mechanism_family']), 60)} → {f_.replace('_', ' ')} | {trim(r['effect_estimate'], 210)} |")
     W("")
     W("### 2A.5 Gaps visible in the records")
     W("")
@@ -254,7 +259,7 @@ def build():
     W("")
     W("- **S589's** effect-size row (an unadjusted descriptive comparison in a study not flagged eligible) was removed on 2026-10-14 (`DECISIONS_AND_OPEN_ITEMS.md` A1, closed); the study itself stays in the review.")
     W(f"- **Linked reports:** the {n:,} rows are about {F['distinct_studies_definite_links']:,} distinct studies (S294/S366 one trial; S097/S098 one sample) and {F['distinct_studies_incl_partial_links']:,} counting partial overlaps.")
-    W(f"- **Free-text classifications:** `mechanism_family` ({len({r['mechanism_family'] for r in em.values()})} distinct labels) and `outcome_family` ({len({r['outcome_family'] for r in em.values()})}) are uncontrolled; {free_design} studies have a design class outside the documented enum; a draft vocabulary is proposed, not adopted. Country and legal-system fields are free text, so the geographic counts here are rule-based.")
+    W(f"- **Free-text classifications:** `mechanism_family` ({len({r['mechanism_family'] for r in orig_lab.values()})} distinct labels) and `outcome_family` ({len({r['outcome_family'] for r in orig_lab.values()})}) were uncontrolled until 2026-10-14, when the PI adopted the draft vocabularies (open items A5 and A20; originals preserved, the AI-resolved edge cases listed in `FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md`); {free_design} studies still have an unmapped design class and the family mapping is mechanical and unvalidated. Country and legal-system fields are free text, so the geographic counts here are rule-based.")
     W("- **Direction coding** in the SWiM documents is a judgment by the same AI; sign and valence differ for several studies.")
     fa = adq.flag_audit(); fc = Counter(x['category'] for x in fa); esf, escov = adq.es_scan()
     W(f"- **The \"quantitative-synthesis-eligible\" flag looks generous.** Of {len(fa)} studies flagged, {fc['C']} show nothing inferential in their extraction (descriptive or unclear), {fc['B']} name an inferential model but hold no interval, SE or p-value, and {fc['A']} carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only {F['effect_size_rows']} studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.")

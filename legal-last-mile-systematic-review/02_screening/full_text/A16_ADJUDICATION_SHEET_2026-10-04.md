@@ -18,26 +18,26 @@ The last two columns use Claude's triage of the same records (column `claude_tri
 
 | Code | Excludes in log | Re-read by models | Primary model: include | Both models: include | Implied if the model rate held (95% range) | Implied, narrow reading (triage N) | Implied, literal reading (triage N + B) |
 |---|---|---|---|---|---|---|---|
-| E01 wrong topic | 494 | 37 | 19 | 19 | 254 (177-329) | 13 (1) | 200 (15) |
+| E01 wrong topic | 492 | 37 | 19 | 19 | 253 (177-327) | 13 (1) | 199 (15) |
 | E02 wrong population | 34 | 0 | 0 | 0 | not estimable (none re-read) | - | - |
 | E03 wrong exposure | 82 | 2 | 2 | 2 | 82 (28-82) | 0 (0) | 82 (2) |
 | E04 wrong outcome | 84 | 3 | 2 | 2 | 56 (17-79) | 0 (0) | 28 (1) |
 | E05 no empirical evidence | 139 | 6 | 2 | 2 | 46 (13-97) | 0 (0) | 23 (1) |
 | E06 engineering only | 106 | 9 | 6 | 5 | 71 (38-93) | 24 (2) | 59 (5) |
-| E07 wrong service | 27 | 1 | 0 | 0 | 0 (0-21) | 0 (0) | 0 (0) |
+| E07 wrong service | 29 | 1 | 0 | 0 | 0 (0-23) | 0 (0) | 0 (0) |
 | E09 insufficient information | 2 | 0 | 0 | 0 | not estimable (none re-read) | - | - |
-| E12 wrong study design | 47 | 4 | 1 | 1 | 12 (2-33) | 0 (0) | 24 (2) |
-| **Sum of estimable codes** | 979 | 62 | 32 | 31 | **521** | **37** | **416** |
+| E12 wrong study design | 46 | 4 | 1 | 1 | 12 (2-32) | 0 (0) | 23 (2) |
+| **Sum of estimable codes** | 978 | 62 | 32 | 31 | **520** | **37** | **414** |
 
 Two things the abstract check of the priority-1 records showed: (1) blind reviewers cannot detect duplicates, so a duplicate excluded as E08 can come back as a disagreement (R21CAA5C1809C is the same article as S102; E08 stands); (2) one original exclusion (R69F53378C8F2, a 200-city panel on private-sector participation) rests partly on the access estimate being non-significant, which is not an exclusion criterion and would bias the review against null results.
 
 Counts in brackets are the re-read records the triage put in each group. The triage is a third AI opinion from the same model family as the original screener, so it may share its blind spots; it is offered to show how much turns on the scope reading, not as a decision.
 
-For scale: the review currently has 1,103 full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.
+For scale: the review currently has 1,104 full-text includes. Codes with no re-read record are not estimated. A human reading of priority 1 is what turns this arithmetic into a number the review can report.
 
 ## The other direction: AI includes the models would exclude
 
-Tier 3 is a seeded random sample of includes beyond the 199 human-confirmed ones; the models re-read 40 and the primary model would exclude 3, and Claude's triage agrees on 3 of them (three of the four priority-4 rows below; the fourth, S397, comes from tier 1). Scaled to the 904 unconfirmed includes, that is about 68 (Wilson 95% range 23-180) studies that might not meet the criteria — arithmetic on 40 records, so the range is wide. It bears on precision, not on completeness, and is the strongest reason to finish the human second-screening of includes (brief, part 2).
+Tier 3 is a seeded random sample of includes beyond the 199 human-confirmed ones; the models re-read 40 and the primary model would exclude 3, and Claude's triage agrees on 3 of them (three of the four priority-4 rows below; the fourth, S397, comes from tier 1). Scaled to the 905 unconfirmed includes, that is about 68 (Wilson 95% range 23-180) studies that might not meet the criteria — arithmetic on 40 records, so the range is wide. It bears on precision, not on completeness, and is the strongest reason to finish the human second-screening of includes (brief, part 2).
 
 ## Records
 

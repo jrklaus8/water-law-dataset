@@ -57,6 +57,8 @@ META-ANALYSIS
 Apply this tree **per candidate synthesis family** (`PROJECT_SPEC.md` §8),
 not once globally — Family A, B, and C may land in different branches.
 
+> **Dated note, 2026-10-14 (A21 ruling 2026-10-14, open item A21).** Families A, B and C are thematic mechanism groupings used to organise structured vote counting (SWiM), not homogeneous exposure–outcome pairs; the synthesis documents now carry descriptive titles for the mechanism clusters they contain (see the dated note in `PROJECT_SPEC.md` §8). The tree above is applied per family exactly as written, and the family codes are unchanged.
+
 ## 3. Critical pooling rule
 
 Do not pool causal intervention effects with observational associations in

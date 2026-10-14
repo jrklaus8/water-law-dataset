@@ -28,6 +28,18 @@ PATHS = {
     'ta': ROOT / '02_screening/title_abstract/screening_database.csv',
 }
 
+ORIGINAL_LABELS = ROOT / '05_analysis/descriptive/evidence_map_original_labels_2026-10-14.csv'
+
+
+def original_labels():
+    """study_id -> {'study_design_class', 'mechanism_family', 'outcome_family'} exactly as they stood in evidence_map.csv before the controlled vocabularies were adopted on 2026-10-14
+    (open items A5 and A20); {} if that file does not exist yet. A study added after that date is not in it: its current evidence_map values are its original labels."""
+    if not ORIGINAL_LABELS.exists():
+        return {}
+    with open(ORIGINAL_LABELS, newline='', encoding='utf-8') as f:
+        return {r['study_id']: {'study_design_class': r['study_design_class_original'], 'mechanism_family': r['mechanism_family_original'], 'outcome_family': r['outcome_family_original']} for r in csv.DictReader(f)}
+
+
 # Tool classification: the EARLIEST tool keyword in `risk_of_bias_tool` wins. Substring matching anywhere in the string
 # mis-buckets rows whose annotation text mentions a second tool (an error this project made and corrected on 2026-09-28).
 TOOL_KEYS = [('RoB 2', 'RoB 2'), ('ROBINS-I', 'ROBINS-I'), ('JBI', 'JBI Cross-Sectional'), ('MMAT', 'MMAT'),

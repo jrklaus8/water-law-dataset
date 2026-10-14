@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
-"""DRAFT controlled vocabulary for evidence_map.csv's `mechanism_family` and `outcome_family`.
+"""Controlled vocabulary for evidence_map.csv's `mechanism_family` and `outcome_family`. ADOPTED 2026-10-14 (open item A5).
 
-The originals are NEVER modified. This script derives a *proposal* and writes two generated files:
+The PI adopted the mapping this script derives. `evidence_map.csv` now carries the single-label family in both columns (9 mechanism families + `multiple`, 4 outcome families + `multiple`),
+and the 5 studies the rules and the 2026-10-14 resolutions could not place keep `unmapped_needs_review`. The original free-text labels are preserved in
+05_analysis/descriptive/evidence_map_original_labels_2026-10-14.csv (written by code/provenance/audit_and_repair/adopt_a5_a20_vocabularies_2026-10-14.py) and this script reads them from there, so the files
+it writes stay reproducible. Resolutions of the rows the keyword rules could not place are in 05_analysis/descriptive/family_vocabulary_overrides_2026-10-14.csv (AI resolutions the PI can veto).
+The files keep their 2026-09-28 names. Written files:
     05_analysis/descriptive/family_vocabulary_mapping_DRAFT_2026-09-28.csv   one row per study
     05_analysis/descriptive/FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md          the vocabulary, rules, coverage and caveats
 
@@ -28,6 +32,7 @@ import current_figures as cf  # noqa: E402
 ROOT = cf.ROOT
 OUT_CSV = ROOT / '05_analysis/descriptive/family_vocabulary_mapping_DRAFT_2026-09-28.csv'
 OUT_MD = ROOT / '05_analysis/descriptive/FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md'
+OVERRIDES = ROOT / '05_analysis/descriptive/family_vocabulary_overrides_2026-10-14.csv'
 
 MECH = {  # proposed family -> (definition, extraction booleans (CODEBOOK s.4), label keywords)
     'eligibility_status_documentation': ('Who qualifies: legal recognition, tenure/property status, required documents',
@@ -76,9 +81,24 @@ def outcome_from_label(label):
     return fams, unmatched
 
 
+def overrides():
+    """study_id -> {'mechanism_family', 'outcome_family', 'basis'} from the 2026-10-14 resolutions of the flagged rows (blank = no override of that field)."""
+    if not OVERRIDES.exists():
+        return {}
+    with open(OVERRIDES, newline='', encoding='utf-8') as f:
+        return {r['study_id']: r for r in csv.DictReader(f)}
+
+
+CONTROLLED_MECH = set(MECH) | {'multiple', NEEDS}
+CONTROLLED_OUT = set(OUT) | {'multiple', NEEDS}
+
+
 def build():
-    em = {r['study_id']: r for r in cf.read('em')}
+    em = {r['study_id']: dict(r) for r in cf.read('em')}
     ed = {r['study_id']: r for r in cf.read('ed')}
+    orig, ov = cf.original_labels(), overrides()
+    for sid, r in em.items():  # the labels as they stood before adoption (a study added later has its current labels as originals)
+        r.update({k: v for k, v in orig.get(sid, {}).items() if k in ('mechanism_family', 'outcome_family')})
     rows = []
     for sid in sorted(em, key=lambda s: int(s[1:])):
         e, x = em[sid], ed[sid]
@@ -95,13 +115,22 @@ def build():
             mech, basis = (next(iter(top)) if len(top) == 1 else 'multiple'), 'top-level booleans (blank label)'
         else:
             mech, basis = NEEDS, 'none'
+        if sid not in orig and lab in CONTROLLED_MECH:  # already a controlled value (a study added after the adoption)
+            mech, basis = lab, 'already a controlled value'
         ofams, unm = outcome_from_label(e['outcome_family'])
         out = next(iter(ofams)) if len(ofams) == 1 else ('multiple' if ofams else NEEDS)
+        if sid not in orig and e['outcome_family'].strip() in CONTROLLED_OUT:
+            out, ofams, unm = e['outcome_family'].strip(), {e['outcome_family'].strip()} - {'multiple', NEEDS}, []
+        o = ov.get(sid)
+        if o and o['mechanism_family']:
+            mech, basis = o['mechanism_family'], 'A5 resolution 2026-10-14: ' + o['basis']
+        if o and o['outcome_family']:
+            out, unm = o['outcome_family'], []
         rows.append({'study_id': sid, 'mechanism_family_original': e['mechanism_family'], 'mechanism_family_proposed': mech,
                      'mechanism_families_all': ';'.join(sorted(allm)), 'mechanism_basis': basis,
                      'outcome_family_original': e['outcome_family'], 'outcome_family_proposed': out,
                      'outcome_families_all': ';'.join(sorted(ofams)), 'outcome_tokens_unmatched': ';'.join(unm),
-                     'needs_review': 'TRUE' if NEEDS in (mech, out) or unm else 'FALSE'})
+                     'needs_review': 'TRUE' if NEEDS in (mech, out) or unm else 'FALSE', 'resolution_2026-10-14': o['basis'] if o else ''})
     return rows
 
 
@@ -110,11 +139,12 @@ def render(rows):
     om, oo = Counter(r['mechanism_family_original'] for r in rows), Counter(r['outcome_family_original'] for r in rows)
     pm, po = Counter(r['mechanism_family_proposed'] for r in rows), Counter(r['outcome_family_proposed'] for r in rows)
     allm = Counter(f for r in rows for f in r['mechanism_families_all'].split(';') if f)
-    L = ["# DRAFT controlled vocabulary for `mechanism_family` and `outcome_family` (2026-09-28)", "",
-         "**Status: proposal for the researcher to accept, edit or reject. Nothing in `evidence_map.csv` was changed.** Generated by",
-         "`code/analysis/propose_family_vocabulary.py` (deterministic; every rule is in that file). The mapping is mechanical and",
-         "keyword-based, not a validated coding; the AI that produced the original labels also produced this draft, so a human",
-         "should spot-check a sample (start with `needs_review = TRUE`).", "",
+    n_ov = sum(1 for r in rows if r['resolution_2026-10-14'])
+    L = ["# Controlled vocabulary for `mechanism_family` and `outcome_family` (drafted 2026-09-28, adopted 2026-10-14)", "",
+         "**Status: ADOPTED by the PI on 2026-10-14 (open item A5).** `evidence_map.csv` now carries the single-label family below in both columns; the original free-text labels are preserved in",
+         "`evidence_map_original_labels_2026-10-14.csv`. Generated by `code/analysis/propose_family_vocabulary.py` (deterministic; every rule is in that file). The mapping is mechanical and",
+         f"keyword-based, not a validated coding; the AI that produced the original labels also produced it, so a human should still spot-check a sample. {n_ov} rows the keyword rules could not place, or placed doubtfully, were resolved by the AI on 2026-10-14 in",
+         "`family_vocabulary_overrides_2026-10-14.csv` (one-line basis each; the PI can veto any of them). The studies still `unmapped_needs_review` are the genuine edge cases listed at the end.", "",
          "## The problem", "",
          f"`mechanism_family` holds {len(om)} distinct labels and `outcome_family` {len(oo)} across {n:,} studies. The documented enum",
          "(`DATA_DICTIONARY.md`) has 5 and 4 values; in practice the fields mix the enum, upper- and lower-case variants, comma-separated",
@@ -149,11 +179,13 @@ def render(rows):
           "- The multi-label counts are broad because the extraction booleans are TRUE for most studies (e.g. institutional fragmentation for about three quarters); they show low discriminating power of the booleans — itself a finding for the taxonomy decision, not a clean count of \"studies about X\".",
           "- Extraction booleans are sparse-to-noisy (blank is not FALSE), so a study with few TRUE booleans may be under-labelled.",
           "- `effective_access` is broad by design (it absorbs coverage, reliability, quantity, quality, continuity); a finer split may be wanted.",
-          "- No inter-rater check exists. Adopting the vocabulary is the researcher's decision (`00_admin/DECISIONS_AND_OPEN_ITEMS.md` A5).", "",
-          "## To adopt", "",
-          "1. Review `family_vocabulary_mapping_DRAFT_2026-09-28.csv` (start with `needs_review = TRUE`).",
-          "2. Edit `MECH`/`OUT` in the script or hand-edit the CSV; keep the originals.",
-          "3. Add the accepted columns to `evidence_map.csv` (or replace the fields) through a dated, asserted script and a `CHANGELOG.md` entry."]
+          "- No inter-rater check exists. The PI adopted the vocabulary on 2026-10-14 (`00_admin/DECISIONS_AND_OPEN_ITEMS.md` A5) knowing this.", "",
+          "## Edge cases still `unmapped_needs_review`", "",
+          "These studies' recorded mechanism is a broad determinant or an external macro-policy, not a legal or administrative rule that fits one of the nine families; they keep the value `unmapped_needs_review` rather than a forced label.", ""]
+    L += [f"- {r['study_id']}: {r['mechanism_family_original'][:120]!r} (outcome: {r['outcome_family_proposed']})" for r in rows if r['mechanism_family_proposed'] == NEEDS] or ["(none)"]
+    L += ["", "## How it was adopted", "",
+          "`code/provenance/audit_and_repair/adopt_a5_a20_vocabularies_2026-10-14.py` saved the original labels, then wrote `mechanism_family_proposed` and `outcome_family_proposed` into `evidence_map.csv`. "
+          "`family_vocabulary_mapping_DRAFT_2026-09-28.csv` (name kept) lists, per study, the original label, the adopted value, the multi-label breadth and the basis."]
     return "\n".join(L) + "\n"
 
 

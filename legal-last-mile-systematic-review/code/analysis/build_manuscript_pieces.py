@@ -28,7 +28,9 @@ def family_fit_clause():
     rows = _aef.build()
     out = sum(1 for r in rows if r['fit'].startswith('outside'))
     return (f"The family assignments were made by judgement and organise the write-up only: on a keyword reading of the exposure definitions, {out} of {len(rows)} family-assigned rows "
-            "sit outside the wording of the family they were placed in (`05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`), so the families are loose groupings, not tests of the specified constructs.")
+            "sit outside the wording of the family they were placed in (`05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`), so the families are loose groupings, not tests of the specified constructs. "
+            "Families A, B and C are therefore reported as thematic mechanism groupings used to organise structured vote counting (SWiM), not as homogeneous exposure–outcome pairs, and their headings describe the clusters actually synthesised "
+            "(legal status, tenure, recognition and governance arrangements; assistance, participation, trust and external support; ownership, regulation, institutional capacity and administrative structure), which is also why pooling was rejected.")
 
 
 def reviewer2_ai_counts():

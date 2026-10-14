@@ -5,44 +5,44 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 
 ## Headline
 
-**No stated conclusion changes under any scenario.** Families A, B and C rest on 18, 6 and 19 studies; the scenarios remove at most 2 of them.
+**No stated conclusion changes under any scenario.** Families A, B and C rest on 18, 6 and 20 studies; the scenarios remove at most 2 of them.
 
 ## Why several scenarios change nothing (or not)
 
 - **Abstract-only extractions (10 studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
 - **Linked reports:** 2 definite same-data links; 1 involves a study that has an effect-size row (S294 (Family B)), so S3 changes nothing in A, B or C.
 - **Studies with an effect-size row but not flagged eligible (none):** none; S2 removes them.
-- **Sparse-audit strong and moderate rows (S1b):** removes 1 study(ies) from the families (S358); Family A goes from k = 18 to 17, B from 6 to 6, C from 19 to 19. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
+- **Sparse-audit strong and moderate rows (S1b):** removes 1 study(ies) from the families (S358); Family A goes from k = 18 to 17, B from 6 to 6, C from 20 to 20. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
 
 ## Family results by scenario
 
 | Scenario | Dropped (in families) | A k | A pos/neg/null | A concordant | A test | B k | B pos/mixed | B test | C k | C pos/neg/mixed | C test |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| S0 baseline | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
-| S1 drop abstract-only extractions | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
-| S1b drop sparse-audit strong+moderate rows | S358 | 17 | 10/5/2 | 12 (70.6%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
-| S2 drop rows for studies not flagged eligible | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
-| S3 collapse linked reports (same underlying data) | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
-| S4 drop Family A coding judgment calls (S358, S404) | S358;S404 | 16 | 9/5/2 | 11 (68.8%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
-| S5 all of the above | S358;S404 | 16 | 9/5/2 | 11 (68.8%) | holds | 6 | 5/1 | holds | 19 | 7/8/4 | holds |
+| S0 baseline | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S1 drop abstract-only extractions | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S1b drop sparse-audit strong+moderate rows | S358 | 17 | 10/5/2 | 12 (70.6%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S2 drop rows for studies not flagged eligible | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S3 collapse linked reports (same underlying data) | — | 18 | 11/5/2 | 13 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S4 drop Family A coding judgment calls (S358, S404) | S358;S404 | 16 | 9/5/2 | 11 (68.8%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
+| S5 all of the above | S358;S404 | 16 | 9/5/2 | 11 (68.8%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | holds |
 
 Tests: **A** — more than half of the studies are concordant with "recognition/eligibility improves access" (the Family A document's substantive reading, not the raw sign);
 **B** — no study is negative or null; **C** — no single sign holds a majority. Signs are as extracted; see the Family A and C documents for why sign and valence differ.
 
 ## Descriptive counts with the 10 abstract-only extractions removed
 
-Studies: 1,103 → 1,093. Risk-of-bias tool distribution:
+Studies: 1,104 → 1,094. Risk-of-bias tool distribution:
 
 | Tool | All | Without abstract-only | Change |
 |---|---|---|---|
 | MMAT | 196 | 195 | -1 |
-| JBI Cross-Sectional | 130 | 128 | -2 |
+| JBI Cross-Sectional | 131 | 129 | -2 |
 | CASP Qualitative | 251 | 245 | -6 |
-| Legal Framework | 432 | 431 | -1 |
+| Legal Framework | 433 | 432 | -1 |
 | AMSTAR 2 | 18 | 18 | +0 |
 | ROBINS-I | 60 | 60 | +0 |
 | RoB 2 | 5 | 5 | +0 |
-| NONE | 11 | 11 | +0 |
+| NONE | 10 | 10 | +0 |
 
 Every tool population keeps its rank order; the largest reductions are CASP Qualitative (6), JBI Cross-Sectional (2), MMAT (1).
 

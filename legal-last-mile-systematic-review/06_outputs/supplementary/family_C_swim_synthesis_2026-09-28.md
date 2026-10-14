@@ -1,19 +1,24 @@
-# SWiM Synthesis — Family C (Administrative/legal barriers and access inequality) — 2026-09-28
+# SWiM Synthesis — Family C (Ownership, regulation, institutional-capacity and administrative-structure mechanisms) — 2026-09-28
 
-> **Update 2026-10-14 (k 20 to 19).** The PI's narrow-scope ruling excluded S348 (Andrews, Beynon & Baafi 2025, Ghanaian district governance quality and access; E03, institutional context is background only) and its `effect_sizes.csv` row was removed (archived in `11_archive/effect_sizes_removed_2026-10-13.csv`). S348 was the study added by the 2026-09-28 re-mining pass, so the family is back to the 19 studies it had before that pass. Counts below were recomputed on the 19 studies; the ownership/price cluster is unchanged. The 20-study version of 2026-09-28 is in the git history.
+> **Update 2026-10-14 (k 19 to 20, S1169 added).** The PI included Olmstead (2004, *Thirsty Colonias*, Land Economics 80(1):136–150) as S1169 after a full-text read of pages 2–15. Its one access-relevant estimate (probit on whether a Texas border-county colonia household is served, N = 781; price (rate) regulation of the provider, coefficient −1.1858, SE 0.4163, p = 0.004) is now a Family C row (`effect_sizes.csv`). Counts below were recomputed on the 20 studies: Negative 9 (was 8), Positive 7 and Mixed 4 unchanged. S1169 sits in the remaining group, not in the ownership/price cluster, because its outcome is service coverage, not affordability. The 19-study version is in the git history.
+>
+> **Earlier update 2026-10-14 (k 20 to 19).** The PI's narrow-scope ruling excluded S348 (Andrews, Beynon & Baafi 2025, Ghanaian district governance quality and access; E03, institutional context is background only) and its `effect_sizes.csv` row was removed (archived in `11_archive/effect_sizes_removed_2026-10-13.csv`). S348 was the study added by the 2026-09-28 re-mining pass, so the family is back to the 19 studies it had before that pass. Counts below were recomputed on the 19 studies; the ownership/price cluster is unchanged. The 20-study version of 2026-09-28 is in the git history.
+
+> **What the family label means (added 2026-10-14 under the A21 ruling 2026-10-14, open item A21).** Family C groups studies of ownership, regulation, institutional capacity and administrative structure (private versus public ownership, price regulation, government form, political proximity, registration status, corruption, administrative category). The protocol heading, 'Administrative/legal barriers and access inequality', was broader in one respect and narrower in another than what was synthesised. Families A, B and C are **thematic mechanism groupings used to organise the structured vote count (SWiM)**, not homogeneous exposure–outcome pairs. Their member studies share a broad theme, not a comparable exposure, comparator and outcome measure; that is why Phase 11 rejected pooling (`phase11_quantitative_feasibility_judgment.md`; `ANALYSIS_PLAN.md` §2). The `synthesis_family` codes in `effect_sizes.csv` and every study assignment are unchanged; only the descriptive heading changed. The pre-evidence wording of the families stays in `PROJECT_SPEC.md` §8 (see the dated note there).
+> The keyword audit that prompted this is `05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`.
 
 ## Why this family did not proceed to meta-analysis
 
 `ANALYSIS_PLAN.md` §2's decision tree fails at the comparability fork, as it does for Family
 A, but Family C is the family `PROJECT_SPEC.md` §8 itself flagged in advance as "conceptually
 attractive but potentially too heterogeneous; treat as secondary synthesis unless evidence is
-unusually consistent." That prediction holds: of the 19 studies (17 originally, plus S470 and
+unusually consistent." That prediction holds: of the 20 studies (17 originally, plus S470 and
 S471 corrected in from blank on 2026-09-28 — see
-`phase11_blank_family_resolution_2026-09-28.md`; a twentieth, S348, was added by a re-mining pass the same day, see `effect_sizes_remining_2026-09-28.md`, and removed on 2026-10-14), only one genuine 3-study sub-cluster (§"The
+`phase11_blank_family_resolution_2026-09-28.md`; S348, added by a re-mining pass the same day, see `effect_sizes_remining_2026-09-28.md`, was removed on 2026-10-14, and S1169 was added the same day), only one genuine 3-study sub-cluster (§"The
 ownership/price cluster" below) shares even a family-resemblance estimand, and even that
 cluster cannot be pooled — see
 `phase11_pooling_feasibility_S526_S539_S749.md`'s dedicated methods note, which concludes no
-defensible common-metric transformation exists for it. The other 16 studies each test a
+defensible common-metric transformation exists for it. The other 17 studies each test a
 distinct administrative/legal-barrier mechanism in a distinct national context — see
 `phase11_quantitative_feasibility_judgment.md` §5.2's list. **This is the least internally
 consistent of the three families, exactly as `PROJECT_SPEC.md` anticipated before any evidence
@@ -42,6 +47,7 @@ was gathered.**
 | S1143 | United States | Regression-based institutional-mechanism study | Mixed — weight rule favors better-off areas; supplementary rule favors equity | JBI Cross-Sectional — Low concern |
 | S1146 | Multi-country Africa (Afrobarometer) | Regression-based | Negative — higher corruption → lower likelihood of adequate service | ROBINS-I — Moderate |
 | S1162 | India | Panel/cross-sectional multilevel regression | Negative — lower admin. capacity/category → lower access | JBI Cross-Sectional — Some concern |
+| S1169 | United States | Cross-sectional probit (781 Texas colonias) | Negative — price-regulated provider → lower probability of service | JBI Cross-Sectional — Some concern |
 
 Pulled from `effect_sizes.csv` and `extraction_database.csv`; not re-extracted. RoB ratings as
 of the 2026-09-28 corpus-wide pass — `RISK_OF_BIAS.md` §4.
@@ -98,17 +104,18 @@ the more "accountable" structure is an interpretive reading, not something the e
 and all five are observational cross-sectional or panel designs rated "Some concern" or "Low
 concern" on the basis of limited extracted methodological detail.
 
-## The remaining 14 studies
+## The remaining 15 studies
 
-The other 14 studies (S174, S590, S593, S606, S631, S879, S947, S1032, S1062, S1136, S1143,
-S1146, S1162, and S470 — S470 groups more naturally here than with the ownership/price
-cluster, since it concerns eligibility-based tariff *enrollment*, not ownership structure) each test a
+The other 15 studies (S174, S590, S593, S606, S631, S879, S947, S1032, S1062, S1136, S1143,
+S1146, S1162, S1169, and S470 — S470 groups more naturally here than with the ownership/price
+cluster, since it concerns eligibility-based tariff *enrollment*, not ownership structure; S1169 tests
+price regulation of the provider, but its outcome is the probability of being served at all, not affordability) each test a
 distinct administrative/legal-barrier mechanism: institutional-capacity indices, historical
 franchise/political-power structure, fiscal-autonomy classification, household-registration
 (hukou) status, jurisdiction-splitting/proliferation, contract-enforcement RCTs, national
 regulatory-quality indices, redress-seeking behavior, cost-recovery/regulatory-enforcement
 policy, political proximity/capture, service-delivery-rule design, corruption incidence, and
-local-government administrative category. **None shares a comparable estimand with another
+local-government administrative category, and price regulation of the provider against the probability of service in unserved border-county settlements. **None shares a comparable estimand with another
 study in this set.** `PROJECT_SPEC.md` §8's prediction that this family would prove "too
 heterogeneous" for anything beyond individual narrative treatment holds for this remainder.
 
@@ -121,7 +128,7 @@ synthesis is careful to keep explicit throughout, per `ANALYSIS_PLAN.md` §3.
 
 ## Criteria used to prioritize results
 
-Mechanical for 18 of 19 studies, per `CODEBOOK.md` §12's one-prespecified-effect-per-study
+Mechanical for 19 of 20 studies, per `CODEBOOK.md` §12's one-prespecified-effect-per-study
 default — each already contributes exactly one result to `effect_sizes.csv`, selected at
 extraction time as the paper's clearest primary finding. **One study in this family did require
 an explicit selection among competing results, recorded in its own `provenance_note`**: S471's
@@ -136,7 +143,7 @@ a new prioritization decision beyond the existing default.
 ## Grouping and ordering of studies for the synthesis
 
 Two-tier grouping: (1) the ownership/regulatory-structure-and-affordability cluster (5 studies,
-above), presented first as this family's most coherent finding; (2) the remaining 14
+above), presented first as this family's most coherent finding; (2) the remaining 15
 studies, grouped loosely by barrier type (fiscal/regulatory-capacity mechanisms; political/
 administrative-structure mechanisms; identity- or registration-based exclusion mechanisms;
 service-delivery-rule design) for readability, without claiming comparability across those
@@ -144,15 +151,15 @@ loose groups.
 
 ## Results
 
-Vote count across all 19 studies, as extracted.
+Vote count across all 20 studies, as extracted.
 **These are counts of the sign of each study's association, not of beneficial vs. adverse results
 for access.** Categories were assigned from each study's full `direction` text in
 `effect_sizes.csv`, not its first word (S879 and S1062 are coded Mixed because their extracted
 directions combine a positive and a null/negative component). Because Family C's exposures are
 heterogeneous, sign and valence diverge freely: S539 and S749 (Positive: private ownership → *higher*
 price, i.e. worse affordability) and S471 and S1038 (Negative: mayor-led government / state
-regulation → *lower* price, i.e. better affordability) are examples. The 7/8/4 split therefore
-must not be read as "7 beneficial, 8 adverse". A valence-normalized recount is deliberately not
+regulation → *lower* price, i.e. better affordability) are examples. The 7/9/4 split therefore
+must not be read as "7 beneficial, 9 adverse". A valence-normalized recount is deliberately not
 offered: deciding whether an exposure such as "private ownership" or "mayor-led government" is
 the adverse or the beneficial side of a comparison is a normative judgment the review protocol
 does not fix, and imposing one here would manufacture a comparability this synthesis argues the
@@ -161,23 +168,23 @@ family does not have.
 | Direction | k | Studies |
 |---|---|---|
 | Positive | 7 | S174, S470, S539, S590, S749, S947, S1136 |
-| Negative | 8 | S471, S526, S606, S631, S1032, S1038, S1146, S1162 |
+| Negative | 9 | S471, S526, S606, S631, S1032, S1038, S1146, S1162, S1169 |
 | Mixed | 4 | S593, S879, S1062, S1143 |
 | Null | 0 | — |
 
-Unlike Family A (58% positive) or Family B (83% positive), **Family C shows no dominant
-direction across its full 19-study set** — 7 positive, 8 negative, 4 mixed, a genuinely
+Unlike Family A (61% positive) or Family B (83% positive), **Family C shows no dominant
+direction across its full 20-study set** — 7 positive, 9 negative, 4 mixed, a genuinely
 heterogeneous pattern that mirrors the heterogeneity of the mechanisms themselves. This is not
 a synthesis failure; it is the accurate representation of what `PROJECT_SPEC.md` §8 predicted
 before this review began. **The one place a real pattern emerges is the 5-study
 ownership/regulatory-structure sub-grouping above, where all 5 point the same way** — that
-finding should not be diluted by averaging it into the full 19-study vote count, and is
+finding should not be diluted by averaging it into the full 20-study vote count, and is
 reported separately for that reason.
 
 ## Robustness of the synthesis
 
-The full-family 7/8/4 split is not meaningfully robust to any single exclusion — it is already
-close to an even three-way split, so removing or reclassifying any one or two studies could flip
+The full-family 7/9/4 split is not meaningfully robust to any single exclusion — no direction holds a
+majority (the largest, negative, is 9 of 20), so removing or reclassifying any one or two studies could change
 which direction is nominally "most common" without changing the substantive conclusion (there is
 no dominant direction). The 5-study ownership/regulatory-structure finding is more robust:
 losing any single study out of the five still leaves 4/4 in the same direction. The most
@@ -192,18 +199,18 @@ cost of one fewer country represented.
 `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`'s "Overall confidence" section,
 which identifies Family C's ownership/price sub-cluster (S526, S539 — both JBI "Some concern")
 as this family's strongest internal candidate without changing the overall family verdict. The
-14 non-ownership studies span ROBINS-I ("Moderate," the
+15 non-ownership studies span ROBINS-I ("Moderate," the
 large majority), JBI Cross-Sectional ("Some concern" or "Low concern"), and one RoB 2
 cluster-trial study (S879, "Some concerns") —
-consistent appraisal depth with Families A and B, but spread across 14 unrelated mechanisms
+consistent appraisal depth with Families A and B, but spread across 15 unrelated mechanisms
 rather than concentrated on one question, which limits how much any single rating can say about
 the family's overall causal credibility.
 
 ## Limitations of this synthesis approach itself
 
-Family C is where a vote-counting/SWiM approach is weakest as a tool: 19 studies testing 14+
+Family C is where a vote-counting/SWiM approach is weakest as a tool: 20 studies testing 15+
 distinct mechanisms cannot be meaningfully reduced to a single directional headline, and this
-synthesis's own 7/8/4 split makes that explicit rather than papering over it with a false
+synthesis's own 7/9/4 split makes that explicit rather than papering over it with a false
 "barriers generally worsen access" narrative the corpus does not actually support at the
 full-family level. The one place this synthesis approach adds real value is the 5-study
 ownership/regulatory-structure sub-grouping, where enough mechanistic similarity exists for a

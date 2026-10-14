@@ -74,7 +74,7 @@ def main():
          f"Free-text country field; {F['country_multi_or_regional_studies']} multi-country or regional studies and {F['country_blank_studies']} blank are not counted", 'Studies')
     # direction by family (sign of each study's own estimate; not effect sizes)
     fams = {f: sa.parse_signs(f) for f in 'ABC'}
-    names = {'A': 'A  Legal recognition and eligibility', 'B': 'B  Administrative assistance', 'C': 'C  Administrative barriers, ownership, price'}
+    names = {'A': 'A  Legal status, tenure, recognition', 'B': 'B  Assistance, participation, trust', 'C': 'C  Ownership, regulation, institutions'}
     cols = [('positive', BLUE, 'Positive'), ('negative', ORANGE, 'Negative'), ('mixed', VIOLET, 'Mixed'), ('null', GREY, 'Null')]
     fig, ax = plt.subplots(figsize=(7.4, 3.3))
     for i, f in enumerate('ABC'):

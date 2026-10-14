@@ -1,4 +1,7 @@
-# SWiM Synthesis — Family B (Administrative assistance and access) — 2026-09-28
+# SWiM Synthesis — Family B (Assistance, participation, trust and external-support mechanisms) — 2026-09-28
+
+> **What the family label means (added 2026-10-14 under the A21 ruling 2026-10-14, open item A21).** Family B groups studies of assistance, participation, trust and external support (bureaucratic assistance with political coordination, community institutional strengthening, capital-cost contribution, network capital, NGO/CBO trust, external programme funding). Only S085 tests bureaucratic assistance in the protocol's sense; the protocol heading, 'Administrative assistance and access', was narrower than what was synthesised. Families A, B and C are **thematic mechanism groupings used to organise the structured vote count (SWiM)**, not homogeneous exposure–outcome pairs. Their member studies share a broad theme, not a comparable exposure, comparator and outcome measure; that is why Phase 11 rejected pooling (`phase11_quantitative_feasibility_judgment.md`; `ANALYSIS_PLAN.md` §2). The `synthesis_family` codes in `effect_sizes.csv` and every study assignment are unchanged; only the descriptive heading changed. The pre-evidence wording of the families stays in `PROJECT_SPEC.md` §8 (see the dated note there).
+> The keyword audit that prompted this is `05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`.
 
 ## Why this family did not proceed to meta-analysis
 

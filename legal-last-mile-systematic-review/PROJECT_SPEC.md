@@ -200,6 +200,8 @@ service quality/reliability. Conceptually attractive but potentially too
 heterogeneous; treat as secondary synthesis unless evidence is unusually
 consistent.
 
+> **Dated note, 2026-10-14 (A21 ruling 2026-10-14, open item A21; the protocol wording above is unchanged).** The three family titles above were written before any evidence was gathered. A keyword audit of the effect-size rows (`05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`) found that many assigned rows sit outside the wording of their family, so the PI ruled that the synthesis documents carry descriptive titles that reflect the rule-type mechanism clusters actually synthesised: **A — legal status, tenure, recognition and governance-arrangement mechanisms; B — assistance, participation, trust and external-support mechanisms; C — ownership, regulation, institutional-capacity and administrative-structure mechanisms.** The codes A, B and C, every study assignment and the rule that the families are not pooled are unchanged. The families are thematic mechanism groupings for structured vote counting (SWiM), not homogeneous exposure–outcome pairs, and the manuscript methods say so. The protocol is an unregistered draft, so no registration is amended.
+
 ## 9. Relationship with the Global Water Law Judicial Decisions Dataset
 
 This repository also hosts the **Global Water Law Judicial Decisions Dataset**

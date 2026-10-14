@@ -54,7 +54,8 @@ def render(rows):
     L += ['', f"**{len(out)} of {len(rows)} family-assigned rows sit outside their family's wording.** No family reached pooling (Phase 11), so this does not alter any estimate; it matters for how the SWiM write-ups describe the families: "
           "Family B in particular is described as 'administrative assistance' while most of its six studies test participation, trust, network capital or external funding. "
           "The SWiM texts already say the mechanisms are distinct (`family_B_swim_synthesis_2026-09-28.md`); this adds that most do not match the family's own definition. "
-          "Options: (a) rename the families to describe what the rows actually test, (b) move outside rows to the non-fit group, (c) keep as is and state in the methods that families are loose groupings for write-up only (`DECISIONS_AND_OPEN_ITEMS.md` A21).", '',
+          "**Resolved 2026-10-14 (`DECISIONS_AND_OPEN_ITEMS.md` A21, options a + c):** the synthesis headings were retitled to describe the mechanism clusters actually synthesised, and the synthesis texts and manuscript methods state that Families A, B and C are thematic mechanism groupings for structured vote counting (SWiM), not homogeneous exposure–outcome pairs. "
+          "Family codes and rows are unchanged; the cue audit below deliberately keeps the original protocol wording, as it is the evidence for the ruling.", '',
           "## Rows outside their family's wording", "", "| Study | Family | Outcome | Exposure |", "|---|---|---|---|"]
     L += [f"| {r['study_id']} | {r['synthesis_family']} | {r['outcome_family']} | {r['exposure_definition'][:110]} |" for r in out]
     return '\n'.join(L) + '\n'
