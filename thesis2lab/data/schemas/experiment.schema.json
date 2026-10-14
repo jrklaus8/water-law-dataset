@@ -1,0 +1,264 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "experiment",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "version",
+    "research_question",
+    "source_ids",
+    "method_id",
+    "dataset_ids",
+    "runner",
+    "execution_mode",
+    "reproducibility_status",
+    "parameters",
+    "reference_outputs",
+    "validation_rules",
+    "limitations",
+    "requires_ai"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^EXP-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "research_question": {
+      "type": "string"
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-"
+      }
+    },
+    "method_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dataset_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^DS-"
+      }
+    },
+    "runner": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Registered computation runner; null for experiments that cannot run (e.g. BLOCKED)."
+    },
+    "execution_mode": {
+      "enum": [
+        "browser",
+        "workflow",
+        "ai_assisted"
+      ]
+    },
+    "reproducibility_status": {
+      "enum": [
+        "REPRODUCIBLE",
+        "PARTIAL",
+        "AUDITABLE",
+        "EXPLORATORY",
+        "BLOCKED",
+        "UNVERIFIED"
+      ]
+    },
+    "status_rationale": {
+      "type": "string"
+    },
+    "data_kind": {
+      "enum": [
+        "authentic",
+        "synthetic",
+        "none"
+      ]
+    },
+    "chapter_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CH-"
+      }
+    },
+    "claim_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CLM-"
+      }
+    },
+    "topics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "jurisdictions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "method_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "label",
+          "type"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "type": {
+            "enum": [
+              "range",
+              "select",
+              "multiselect",
+              "toggle"
+            ]
+          },
+          "help": {
+            "type": "string"
+          },
+          "variable": {
+            "type": "string"
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          },
+          "step": {
+            "type": "number"
+          },
+          "options": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "value",
+                "label"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "options_from_variable": {
+            "type": "string"
+          },
+          "default": {}
+        }
+      }
+    },
+    "reference_outputs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Paths relative to the experiment directory."
+    },
+    "validation_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "description"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "technical",
+              "numerical",
+              "methodological",
+              "repeatability",
+              "independent_review"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "tolerance": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requires_ai": {
+      "type": "boolean"
+    },
+    "exports": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "filtered_data",
+          "results_json",
+          "reproducibility_report"
+        ]
+      }
+    },
+    "ui_notice": {
+      "type": "string"
+    },
+    "runner_config": {
+      "type": "object"
+    }
+  }
+}

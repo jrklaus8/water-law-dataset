@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "project-config",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project",
+    "labels"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "researcher",
+        "institution",
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "title": {
+          "type": "string"
+        },
+        "subtitle": {
+          "type": "string"
+        },
+        "researcher": {
+          "type": "string"
+        },
+        "institution": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "planning",
+            "in_progress",
+            "submitted",
+            "defended",
+            "published"
+          ]
+        },
+        "summary": {
+          "type": "string"
+        },
+        "repository_url": {
+          "type": "string"
+        },
+        "citation": {
+          "type": "string"
+        },
+        "disclaimer": {
+          "type": "string"
+        }
+      }
+    },
+    "labels": {
+      "type": "object",
+      "description": "Display vocabulary so no discipline, jurisdiction or chapter count is hardcoded.",
+      "required": [
+        "jurisdictions",
+        "topics"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "jurisdictions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "topics": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "governance_categories": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

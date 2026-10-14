@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "id": "DS-WLD-INTERCODER",
+  "title": "Water-law dataset: 91-decision relabelling sample (coder 1 vs LLM-assisted coder 2)",
+  "version": "1.0.0",
+  "kind": "authentic",
+  "description": "Labels (WATER / NOT_WATER / UNCERTAIN) given to the same 91 court decisions by coder 1 (the author) and by an LLM-assisted second coder, as committed in the water-law-dataset repository. Case identifiers are pseudonymised.",
+  "source_ids": [
+    "SRC-WLD-VALIDATION"
+  ],
+  "licence": "MIT (repository licence); case identifiers withheld",
+  "checksum_sha256": "32d1cc9ff821c7540eeafedb86139728a36b9827fdd9d1d87857f939422408dc",
+  "path": "data/public/wld-intercoder-sample.csv",
+  "row_count": 91,
+  "privacy_status": "public_no_personal_data",
+  "privacy_notes": "Court case identifiers replaced by record ids and truncated hashes. No decision text, party names or summaries are included. Researcher should confirm redistribution before a public release.",
+  "permitted_uses": [
+    "view",
+    "filter",
+    "export",
+    "derive"
+  ],
+  "variables": [
+    {
+      "name": "record_id",
+      "type": "string",
+      "description": "Thesis2Lab stable record id"
+    },
+    {
+      "name": "case_ref_sha256_16",
+      "type": "string",
+      "description": "First 16 hex chars of SHA-256 of the original case id"
+    },
+    {
+      "name": "country",
+      "type": "category",
+      "categories": [
+        "Brazil",
+        "Netherlands"
+      ]
+    },
+    {
+      "name": "stratum",
+      "type": "category",
+      "categories": [
+        "BR_all",
+        "NL_aansluiting",
+        "NL_broad_water",
+        "NL_plain"
+      ]
+    },
+    {
+      "name": "coder1_label",
+      "type": "category",
+      "categories": [
+        "WATER",
+        "NOT_WATER",
+        "UNCERTAIN"
+      ]
+    },
+    {
+      "name": "coder2_label",
+      "type": "category",
+      "categories": [
+        "WATER",
+        "NOT_WATER",
+        "UNCERTAIN"
+      ]
+    }
+  ],
+  "provenance": {
+    "imported_from": "water-law-dataset/validation (read-only)",
+    "source_file_sha256": {
+      "coder1_kappa.csv": "f7ba8821b17d8b2eb1860d2f33e16858ec871e4572f0281a485536d0a7f1daca",
+      "coder2_labels.csv": "1a48f6ca2d99b922c25191358ceb2b8c7c93598f3cf0d3194a925837da334e33",
+      "kappa_agreement_detail.csv": "392a38a4e3c8c706f6c247dd2832ce2ee4f2ef73fde9c9f0ceba8f97a179a402",
+      "kappa_results.json": "407deb10aa76fc6adf994d3d62698b4a156d5215e54b4e5c21fe48a6f5b12f86"
+    },
+    "import_script": "pipelines/ingest/import_water_law_validation.py"
+  }
+}

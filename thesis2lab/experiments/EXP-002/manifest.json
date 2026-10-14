@@ -1,0 +1,149 @@
+{
+  "id": "EXP-002",
+  "title": "Reproducing the coding-agreement audit (Cohen's kappa)",
+  "version": "0.1.0",
+  "summary": "Recompute the kappa figures published in the residual audit from the committed label sample, under four specifications, and compare each with the published value.",
+  "research_question": "Does the upstream WATER / NOT_WATER filter agree well enough with an independent coder to support the jurimetric analysis, and can the published agreement figures be recomputed?",
+  "source_ids": [
+    "SRC-WLD-AUDIT",
+    "SRC-WLD-VALIDATION",
+    "SRC-WLD-README"
+  ],
+  "method_id": "MTH-COHEN-KAPPA",
+  "dataset_ids": [
+    "DS-WLD-INTERCODER"
+  ],
+  "runner": "coder_agreement",
+  "runner_config": {
+    "coder1_variable": "coder1_label",
+    "coder2_variable": "coder2_label",
+    "group_variable": "country",
+    "rule_group": "Brazil",
+    "rule_from": "UNCERTAIN",
+    "rule_to": "WATER",
+    "uncertain_label": "UNCERTAIN"
+  },
+  "execution_mode": "browser",
+  "reproducibility_status": "PARTIAL",
+  "data_kind": "authentic",
+  "status_rationale": "All four published point estimates (kappa, agreement, n) and the baseline per-category counts are recomputed within rounding. The bootstrap confidence intervals could not be reproduced exactly: the two published intervals disagree and neither seed nor row order is documented. Methodological fidelity to the original calculator is cross-checked, but no independent human review has happened.",
+  "chapter_ids": [
+    "CH-JURIMETRICS"
+  ],
+  "claim_ids": [
+    "CLM-IC-001",
+    "CLM-IC-002",
+    "CLM-IC-003",
+    "CLM-IC-004",
+    "CLM-IC-005"
+  ],
+  "topics": [
+    "validation",
+    "jurimetrics"
+  ],
+  "jurisdictions": [
+    "BR",
+    "NL"
+  ],
+  "method_tags": [
+    "inter-coder agreement",
+    "Cohen's kappa"
+  ],
+  "parameters": [
+    {
+      "id": "specification",
+      "label": "Specification",
+      "type": "select",
+      "default": "three_label_baseline",
+      "help": "Which cases and recoding rule enter the calculation.",
+      "options": [
+        {
+          "value": "three_label_baseline",
+          "label": "Baseline: three labels, no rule"
+        },
+        {
+          "value": "mananciais_rule",
+          "label": "Three labels, calibration rule applied to Brazil"
+        },
+        {
+          "value": "binary_exclude_uncertain",
+          "label": "Binary: exclude any UNCERTAIN pair"
+        },
+        {
+          "value": "coder1_confident",
+          "label": "Coder 1 confident only"
+        }
+      ]
+    },
+    {
+      "id": "bootstrap_iterations",
+      "label": "Bootstrap iterations",
+      "type": "range",
+      "min": 0,
+      "max": 5000,
+      "step": 500,
+      "default": 1000,
+      "help": "0 turns the confidence interval off."
+    },
+    {
+      "id": "bootstrap_seed",
+      "label": "Bootstrap seed",
+      "type": "range",
+      "min": 1,
+      "max": 99,
+      "step": 1,
+      "default": 42,
+      "help": "Changing the seed shows how much the interval depends on resampling luck."
+    }
+  ],
+  "reference_outputs": [
+    "references/reference_outputs.json"
+  ],
+  "validation_rules": [
+    {
+      "id": "V-TECH",
+      "kind": "technical",
+      "description": "Dataset checksum matches, labels belong to the allowed set, the runner executes."
+    },
+    {
+      "id": "V-ORIG",
+      "kind": "numerical",
+      "description": "Point estimates equal published values within their rounding precision.",
+      "tolerance": {
+        "baseline": 5e-05,
+        "others": 0.0005
+      }
+    },
+    {
+      "id": "V-IND",
+      "kind": "numerical",
+      "description": "Metrics equal an independent Python implementation."
+    },
+    {
+      "id": "V-FID",
+      "kind": "methodological",
+      "description": "The kappa formula equals the function in the original validation/kappa_calculator.py on the same labels."
+    },
+    {
+      "id": "V-REP",
+      "kind": "repeatability",
+      "description": "Two executions give identical output."
+    }
+  ],
+  "limitations": [
+    "The second coder is an LLM operating under written rules. This is a reproducibility audit of the regex filter, not human inter-coder reliability.",
+    "The calibration rule (0.832) was defined after the disagreements were seen on the same 91 decisions, so it is an in-sample figure.",
+    "The rule is applied to all Brazilian decisions where coder 1 said UNCERTAIN, because the dataset has no per-case topic flag. This reproduces the published figure.",
+    "Only 71 Dutch and 20 Brazilian decisions are sampled. Nothing is known about Canada.",
+    "Case identifiers are replaced by hashes in the public dataset; matching rows to the original decisions needs the researcher's private files."
+  ],
+  "unresolved": [
+    "Bootstrap interval endpoints: kappa_results.json says [0.4441, 0.6908]; RESIDUAL_AUDIT.md says [0.436, 0.695]; re-running the original algorithm on the committed file order gives about [0.439, 0.692]. The origin of the differences is not documented.",
+    "README.md headlines kappa 0.832, but the committed kappa_results.json holds only the 0.568 baseline. The 0.832 figure is reproducible here but its generating output file is not in the repository."
+  ],
+  "requires_ai": false,
+  "exports": [
+    "results_json",
+    "reproducibility_report"
+  ]
+}

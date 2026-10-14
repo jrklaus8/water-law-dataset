@@ -1,0 +1,71 @@
+name: Thesis2Lab CI
+
+on:
+  pull_request:
+    paths: ['thesis2lab/**', '.github/workflows/thesis2lab-*.yml']
+  push:
+    branches: [main]
+    paths: ['thesis2lab/**', '.github/workflows/thesis2lab-*.yml']
+  workflow_dispatch:
+
+concurrency:
+  group: thesis2lab-ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: thesis2lab
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: thesis2lab/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: thesis2lab/requirements-dev.txt
+      - run: npm ci --no-audit --no-fund
+      - run: pip install -r requirements-dev.txt
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Schemas and cross references
+        run: npm run validate:schemas
+      - name: Scientific reference tests (regenerates validation reports)
+        run: npm run validate:experiments
+      - name: Committed validation reports must be current
+        run: git diff --exit-code -- validation/reports app/src/generated
+      - name: Unit tests
+        run: npm test
+      - name: Python tests
+        run: npm run test:py
+      - name: Link check
+        run: npm run check:links
+      - name: Build static site
+        run: npx vite build --config app/vite.config.ts
+      - name: Browser and accessibility tests
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+        env:
+          CI: 'true'
+      - name: Validation summary
+        if: always()
+        run: |
+          echo '## Thesis2Lab validation' >> "$GITHUB_STEP_SUMMARY"
+          npx tsx scripts/research-status.ts >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: thesis2lab-static-site
+          path: thesis2lab/app/dist
+          retention-days: 14

@@ -1,0 +1,555 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "EXP-001",
+  "experiment_version": "0.1.0",
+  "declared_status": "EXPLORATORY",
+  "inputs_digest": "cb57e46dfe2c923d8f10d740e08b0403b4559d927e563a759ae852078e214fcf",
+  "code_version": {
+    "git_commit": "cf3542e3fecdeb9570a6ecb1455e3963e12bd626",
+    "working_tree_dirty": true
+  },
+  "dependency_versions": {
+    "node": "v22.22.0",
+    "python": "Python 3.13.16",
+    "thesis2lab": "0.1.0"
+  },
+  "dataset_checksums": {
+    "DS-SYN-BIBLIO": "0afb69917ae50653797b5b2cb67c1d510396e24583e6ed7eee91b84f7c147957"
+  },
+  "checks": [
+    {
+      "id": "tech:checksum:DS-SYN-BIBLIO",
+      "kind": "technical",
+      "description": "Dataset DS-SYN-BIBLIO file checksum equals its record",
+      "pass": true,
+      "required": true,
+      "expected": "0afb69917ae50653797b5b2cb67c1d510396e24583e6ed7eee91b84f7c147957",
+      "actual": "0afb69917ae50653797b5b2cb67c1d510396e24583e6ed7eee91b84f7c147957"
+    },
+    {
+      "id": "tech:parse",
+      "kind": "technical",
+      "description": "CSV parses and matches the declared columns and types",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "tech:rows",
+      "kind": "technical",
+      "description": "Row count equals the dataset record",
+      "pass": true,
+      "required": true,
+      "expected": 600,
+      "actual": 600
+    },
+    {
+      "id": "tech:categories",
+      "kind": "technical",
+      "description": "Every categorical value belongs to its declared category list",
+      "pass": true,
+      "required": true,
+      "actual": 0
+    },
+    {
+      "id": "tech:run:default",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"default\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:default",
+      "kind": "numerical",
+      "description": "All records, no filters (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 600,
+        "share_selected": 1,
+        "year_min": 2000,
+        "year_max": 2024,
+        "yearly_trend_slope": 1.38,
+        "citations_mean": 11.93,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "service_coverage",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic Centre E"
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 600,
+        "share_selected": 1,
+        "year_min": 2000,
+        "year_max": 2024,
+        "yearly_trend_slope": 1.38,
+        "citations_mean": 11.93,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "service_coverage",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic Centre E"
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:default",
+      "kind": "repeatability",
+      "description": "Two executions of \"default\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:default",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"default\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "tech:run:years-2010-2020",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"years-2010-2020\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:years-2010-2020",
+      "kind": "numerical",
+      "description": "Years 2010 to 2020 (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 319,
+        "share_selected": 0.5316666666666666,
+        "year_min": 2010,
+        "year_max": 2020,
+        "yearly_trend_slope": 1.8272727272727274,
+        "citations_mean": 12.106583072100314,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "wastewater_treatment",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic University B"
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 319,
+        "share_selected": 0.5316666666666666,
+        "year_min": 2010,
+        "year_max": 2020,
+        "yearly_trend_slope": 1.8272727272727274,
+        "citations_mean": 12.106583072100314,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "wastewater_treatment",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic University B"
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:years-2010-2020",
+      "kind": "repeatability",
+      "description": "Two executions of \"years-2010-2020\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:years-2010-2020",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"years-2010-2020\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "tech:run:brazil",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"brazil\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:brazil",
+      "kind": "numerical",
+      "description": "Country = Brazil (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 264,
+        "share_selected": 0.44,
+        "year_min": 2001,
+        "year_max": 2024,
+        "yearly_trend_slope": 0.5782608695652174,
+        "citations_mean": 11.140151515151516,
+        "citations_median": 7,
+        "n_distinct_country": 1,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "regulation_and_governance",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic University A"
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 264,
+        "share_selected": 0.44,
+        "year_min": 2001,
+        "year_max": 2024,
+        "yearly_trend_slope": 0.5782608695652174,
+        "citations_mean": 11.140151515151516,
+        "citations_median": 7,
+        "n_distinct_country": 1,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "regulation_and_governance",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic University A"
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:brazil",
+      "kind": "repeatability",
+      "description": "Two executions of \"brazil\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:brazil",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"brazil\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "tech:run:two-countries-theme",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"two-countries-theme\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:two-countries-theme",
+      "kind": "numerical",
+      "description": "Brazil or Canada, water quality only (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 54,
+        "share_selected": 0.09,
+        "year_min": 2000,
+        "year_max": 2023,
+        "yearly_trend_slope": 0.07391304347826087,
+        "citations_mean": 11.592592592592593,
+        "citations_median": 9,
+        "n_distinct_country": 2,
+        "top_country": "Brazil",
+        "n_distinct_theme": 1,
+        "top_theme": "water_quality",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic University A"
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 54,
+        "share_selected": 0.09,
+        "year_min": 2000,
+        "year_max": 2023,
+        "yearly_trend_slope": 0.07391304347826087,
+        "citations_mean": 11.592592592592593,
+        "citations_median": 9,
+        "n_distinct_country": 2,
+        "top_country": "Brazil",
+        "n_distinct_theme": 1,
+        "top_theme": "water_quality",
+        "n_distinct_method": 5,
+        "top_method": "mixed_methods",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic University A"
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:two-countries-theme",
+      "kind": "repeatability",
+      "description": "Two executions of \"two-countries-theme\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:two-countries-theme",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"two-countries-theme\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "tech:run:qualitative-recent",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"qualitative-recent\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:qualitative-recent",
+      "kind": "numerical",
+      "description": "Qualitative or mixed methods, 2015 onward (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 151,
+        "share_selected": 0.25166666666666665,
+        "year_min": 2015,
+        "year_max": 2024,
+        "yearly_trend_slope": 0.41818181818181815,
+        "citations_mean": 11.728476821192054,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "service_coverage",
+        "n_distinct_method": 2,
+        "top_method": "qualitative",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic Agency D"
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 151,
+        "share_selected": 0.25166666666666665,
+        "year_min": 2015,
+        "year_max": 2024,
+        "yearly_trend_slope": 0.41818181818181827,
+        "citations_mean": 11.728476821192054,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Brazil",
+        "n_distinct_theme": 6,
+        "top_theme": "service_coverage",
+        "n_distinct_method": 2,
+        "top_method": "qualitative",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic Agency D"
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:qualitative-recent",
+      "kind": "repeatability",
+      "description": "Two executions of \"qualitative-recent\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:qualitative-recent",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"qualitative-recent\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "tech:run:single-year",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"single-year\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:single-year",
+      "kind": "numerical",
+      "description": "A single year (trend undefined) (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 29,
+        "share_selected": 0.04833333333333333,
+        "year_min": 2024,
+        "year_max": 2024,
+        "yearly_trend_slope": null,
+        "citations_mean": 12.96551724137931,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Other",
+        "n_distinct_theme": 6,
+        "top_theme": "wastewater_treatment",
+        "n_distinct_method": 5,
+        "top_method": "legal_analysis",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic Centre E"
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 29,
+        "share_selected": 0.04833333333333333,
+        "year_min": 2024,
+        "year_max": 2024,
+        "yearly_trend_slope": null,
+        "citations_mean": 12.96551724137931,
+        "citations_median": 8,
+        "n_distinct_country": 4,
+        "top_country": "Other",
+        "n_distinct_theme": 6,
+        "top_theme": "wastewater_treatment",
+        "n_distinct_method": 5,
+        "top_method": "legal_analysis",
+        "n_distinct_institution": 5,
+        "top_institution": "Synthetic Centre E"
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:single-year",
+      "kind": "repeatability",
+      "description": "Two executions of \"single-year\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:single-year",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"single-year\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "tech:run:empty-selection",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"empty-selection\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:empty-selection",
+      "kind": "numerical",
+      "description": "Filters that match nothing (vs experiments/EXP-001/tests/reference_impl.py)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation",
+      "expected": {
+        "n_total": 600,
+        "n_selected": 0,
+        "share_selected": 0,
+        "year_min": null,
+        "year_max": null,
+        "yearly_trend_slope": null,
+        "citations_mean": null,
+        "citations_median": null,
+        "n_distinct_country": 0,
+        "top_country": null,
+        "n_distinct_theme": 0,
+        "top_theme": null,
+        "n_distinct_method": 0,
+        "top_method": null,
+        "n_distinct_institution": 0,
+        "top_institution": null
+      },
+      "actual": {
+        "n_total": 600,
+        "n_selected": 0,
+        "share_selected": 0,
+        "year_min": null,
+        "year_max": null,
+        "yearly_trend_slope": null,
+        "citations_mean": null,
+        "citations_median": null,
+        "n_distinct_country": 0,
+        "top_country": null,
+        "n_distinct_theme": 0,
+        "top_theme": null,
+        "n_distinct_method": 0,
+        "top_method": null,
+        "n_distinct_institution": 0,
+        "top_institution": null
+      },
+      "tolerance": {
+        "default": 1e-9
+      }
+    },
+    {
+      "id": "rep:empty-selection",
+      "kind": "repeatability",
+      "description": "Two executions of \"empty-selection\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:empty-selection",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"empty-selection\" (all 16 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    }
+  ],
+  "summary": {
+    "technical_execution": "pass",
+    "numerical_agreement": "pass",
+    "methodological_fidelity": "not_assessed",
+    "repeatability": "pass",
+    "checks_total": 32,
+    "checks_passed": 32,
+    "overall": "pass"
+  },
+  "independent_review": {
+    "status": "pending",
+    "note": "No reviewer has signed off. Reports are generated by program execution only."
+  },
+  "remaining_uncertainty": [
+    "Authentic bibliographic records (and the systematic-review S-prefixed identifiers) are not available. See docs/RESEARCH_CONTEXT.md.",
+    "Independent human review of this validation has not been recorded."
+  ],
+  "generated_at": "2026-10-14T01:02:08.350Z"
+}

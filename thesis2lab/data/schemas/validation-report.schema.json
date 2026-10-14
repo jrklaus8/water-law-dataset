@@ -1,0 +1,183 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "validation-report",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "experiment_id",
+    "experiment_version",
+    "declared_status",
+    "inputs_digest",
+    "code_version",
+    "dependency_versions",
+    "dataset_checksums",
+    "checks",
+    "summary",
+    "independent_review",
+    "remaining_uncertainty",
+    "generated_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "experiment_id": {
+      "type": "string",
+      "pattern": "^EXP-"
+    },
+    "experiment_version": {
+      "type": "string"
+    },
+    "declared_status": {
+      "type": "string"
+    },
+    "inputs_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "code_version": {
+      "type": "object"
+    },
+    "dependency_versions": {
+      "type": "object"
+    },
+    "dataset_checksums": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "description",
+          "pass"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "technical",
+              "numerical",
+              "methodological",
+              "repeatability",
+              "sanity"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "pass": {
+            "type": "boolean"
+          },
+          "required": {
+            "type": "boolean"
+          },
+          "reference_kind": {
+            "type": "string"
+          },
+          "expected": {},
+          "actual": {},
+          "tolerance": {},
+          "difference": {}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "technical_execution",
+        "numerical_agreement",
+        "methodological_fidelity",
+        "repeatability"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "technical_execution": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_applicable"
+          ]
+        },
+        "numerical_agreement": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_applicable"
+          ]
+        },
+        "methodological_fidelity": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_assessed",
+            "not_applicable"
+          ]
+        },
+        "repeatability": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_applicable"
+          ]
+        },
+        "checks_total": {
+          "type": "integer"
+        },
+        "checks_passed": {
+          "type": "integer"
+        },
+        "overall": {
+          "enum": [
+            "pass",
+            "fail",
+            "not_applicable"
+          ]
+        }
+      }
+    },
+    "independent_review": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "pending",
+            "completed"
+          ]
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "remaining_uncertainty": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "generated_at": {
+      "type": "string"
+    }
+  }
+}

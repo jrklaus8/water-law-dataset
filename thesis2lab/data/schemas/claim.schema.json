@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "claim",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "text",
+    "claim_type",
+    "source_ids",
+    "location",
+    "review_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^CLM-[A-Z0-9-]+$"
+    },
+    "text": {
+      "type": "string"
+    },
+    "claim_type": {
+      "enum": [
+        "empirical_quantitative",
+        "empirical_qualitative",
+        "theoretical",
+        "legal_description",
+        "methodological"
+      ]
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-"
+      },
+      "minItems": 1
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "locator"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^SRC-"
+        },
+        "locator": {
+          "type": "string"
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "chapter_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^CH-"
+      }
+    },
+    "experiment_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^EXP-"
+      }
+    },
+    "review_status": {
+      "enum": [
+        "unreviewed",
+        "researcher_reviewed",
+        "disputed",
+        "superseded"
+      ]
+    },
+    "verification": {
+      "enum": [
+        "not_applicable",
+        "not_attempted",
+        "reproduced",
+        "partially_reproduced",
+        "discrepancy_found",
+        "blocked"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# Manual only. Publishing scientific content needs a human decision.
+# WARNING: this repository already serves a dashboard from docs/ via GitHub Pages.
+# Setting the Pages source to "GitHub Actions" replaces that site. See thesis2lab/docs/DEPLOYMENT.md
+# and prefer moving Thesis2Lab into its own repository first.
+name: Thesis2Lab Pages (manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_release_approved:
+        description: 'Type "approved" to confirm a researcher approved the release being published'
+        required: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+defaults:
+  run:
+    working-directory: thesis2lab
+
+jobs:
+  deploy:
+    if: ${{ github.event.inputs.confirm_release_approved == 'approved' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: thesis2lab/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: thesis2lab/app/dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

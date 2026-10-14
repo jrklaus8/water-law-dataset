@@ -1,0 +1,44 @@
+{
+  "name": "thesis2lab",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turn an academic thesis into an interactive, verifiable research laboratory (static-first, no AI at runtime).",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config app/vite.config.ts",
+    "build": "npm run validate:all && vite build --config app/vite.config.ts",
+    "preview": "vite preview --config app/vite.config.ts",
+    "typecheck": "tsc --noEmit -p app/tsconfig.json",
+    "test": "vitest run --config app/vitest.config.ts",
+    "validate:schemas": "tsx scripts/validate-schemas.ts",
+    "validate:experiments": "tsx scripts/run-validation.ts",
+    "validate:all": "npm run validate:schemas && npm run validate:experiments",
+    "test:py": "python3 -m pytest -q tests experiments",
+    "test:e2e": "playwright test --config tests/e2e/playwright.config.ts",
+    "status": "tsx scripts/research-status.ts",
+    "check:all": "npm run typecheck && npm run test && npm run test:py && npm run check:links && npm run build",
+    "release:prepare": "tsx scripts/prepare-release.ts",
+    "changes": "tsx scripts/change-report.ts",
+    "cost": "tsx scripts/cost-report.ts",
+    "check:links": "tsx scripts/check-links.ts"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.0",
+    "vitest": "^3.2.0"
+  }
+}

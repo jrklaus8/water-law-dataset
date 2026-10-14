@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "source",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "kind",
+    "location",
+    "copyright_status",
+    "checksum_sha256",
+    "extraction_status",
+    "provenance"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^SRC-[A-Z0-9-]+$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "kind": {
+      "enum": [
+        "thesis",
+        "chapter",
+        "article",
+        "dataset",
+        "code",
+        "report",
+        "legal_text",
+        "other"
+      ]
+    },
+    "citation": {
+      "type": "object"
+    },
+    "location": {
+      "type": "object",
+      "required": [
+        "type",
+        "ref"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "enum": [
+            "repository_path",
+            "url",
+            "doi",
+            "private"
+          ]
+        },
+        "ref": {
+          "type": "string"
+        },
+        "repository": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        }
+      }
+    },
+    "copyright_status": {
+      "enum": [
+        "own_work_open_licence",
+        "own_work_unpublished",
+        "third_party_open",
+        "third_party_restricted",
+        "unknown"
+      ]
+    },
+    "licence": {
+      "type": "string"
+    },
+    "checksum_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "size_bytes": {
+      "type": [
+        "integer",
+        "null"
+      ]
+    },
+    "format": {
+      "type": "string"
+    },
+    "extraction_status": {
+      "enum": [
+        "registered",
+        "metadata_only",
+        "text_extracted",
+        "structured",
+        "failed"
+      ]
+    },
+    "extraction_notes": {
+      "type": "string"
+    },
+    "identifiers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": [
+        "imported_by",
+        "import_mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "imported_by": {
+          "type": "string"
+        },
+        "import_mode": {
+          "enum": [
+            "read_only_copy",
+            "reference_only",
+            "manual"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "experiment_id": "EXP-002",
+  "cases": [
+    {
+      "id": "baseline",
+      "description": "Baseline specification: point estimates and per-category counts",
+      "parameters": {
+        "specification": "three_label_baseline"
+      },
+      "expected": {
+        "n": 91,
+        "observed_agreement": 0.7143,
+        "cohen_kappa": 0.5684,
+        "tp_NOT_WATER": 30,
+        "fp_NOT_WATER": 1,
+        "fn_NOT_WATER": 3,
+        "tp_UNCERTAIN": 8,
+        "fp_UNCERTAIN": 4,
+        "fn_UNCERTAIN": 20,
+        "tp_WATER": 27,
+        "fp_WATER": 21,
+        "fn_WATER": 3
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 5e-05,
+        "cohen_kappa": 5e-05
+      },
+      "required": true,
+      "claim_id": "CLM-IC-001",
+      "provenance": {
+        "kind": "original",
+        "source": "validation/kappa_results.json (output of the original kappa_calculator.py, rounded to 4 decimals)"
+      }
+    },
+    {
+      "id": "mananciais",
+      "description": "Calibration rule applied (coder 1 UNCERTAIN to WATER for Brazil)",
+      "parameters": {
+        "specification": "mananciais_rule"
+      },
+      "expected": {
+        "n": 91,
+        "observed_agreement": 0.901,
+        "cohen_kappa": 0.832
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.0005,
+        "cohen_kappa": 0.0005
+      },
+      "required": true,
+      "claim_id": "CLM-IC-002",
+      "provenance": {
+        "kind": "original_published",
+        "source": "validation/RESIDUAL_AUDIT.md section 5.2 (values rounded to 3 decimals; percentages converted to proportions)",
+        "note": "Published in prose and tables only; the generating output file is not in the repository."
+      }
+    },
+    {
+      "id": "binary",
+      "description": "Binary WATER / NOT_WATER, excluding UNCERTAIN pairs",
+      "parameters": {
+        "specification": "binary_exclude_uncertain"
+      },
+      "expected": {
+        "n": 59,
+        "observed_agreement": 0.966,
+        "cohen_kappa": 0.932
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.0005,
+        "cohen_kappa": 0.0005
+      },
+      "required": true,
+      "claim_id": "CLM-IC-003",
+      "provenance": {
+        "kind": "original_published",
+        "source": "validation/RESIDUAL_AUDIT.md section 5.2 sensitivity table"
+      }
+    },
+    {
+      "id": "coder1-confident",
+      "description": "Pairs where coder 1 gave a non-UNCERTAIN label",
+      "parameters": {
+        "specification": "coder1_confident"
+      },
+      "expected": {
+        "n": 63,
+        "observed_agreement": 0.905,
+        "cohen_kappa": 0.821
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.0005,
+        "cohen_kappa": 0.0005
+      },
+      "required": true,
+      "claim_id": "CLM-IC-004",
+      "provenance": {
+        "kind": "original_published",
+        "source": "validation/RESIDUAL_AUDIT.md section 5.2 sensitivity table"
+      }
+    },
+    {
+      "id": "baseline-ci-json",
+      "description": "Baseline 95% bootstrap interval, compared with kappa_results.json",
+      "parameters": {
+        "specification": "three_label_baseline",
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 42
+      },
+      "expected": {
+        "ci_low": 0.4441,
+        "ci_high": 0.6908
+      },
+      "tolerance": {
+        "default": 0.005
+      },
+      "required": false,
+      "claim_id": "CLM-IC-005",
+      "provenance": {
+        "kind": "original",
+        "source": "validation/kappa_results.json ci_95",
+        "note": "Not required. Our seeded PRNG differs from the original, so exact equality is not expected. A failure here is reported, not hidden, and keeps the status at PARTIAL."
+      }
+    },
+    {
+      "id": "baseline-ci-md",
+      "description": "Baseline 95% bootstrap interval, compared with RESIDUAL_AUDIT.md",
+      "parameters": {
+        "specification": "three_label_baseline",
+        "bootstrap_iterations": 1000,
+        "bootstrap_seed": 42
+      },
+      "expected": {
+        "ci_low": 0.436,
+        "ci_high": 0.695
+      },
+      "tolerance": {
+        "default": 0.005
+      },
+      "required": false,
+      "claim_id": "CLM-IC-005",
+      "provenance": {
+        "kind": "original_published",
+        "source": "validation/RESIDUAL_AUDIT.md section 5.2 sensitivity table",
+        "note": "Not required. The markdown interval differs from the JSON interval for the same quantity."
+      }
+    }
+  ]
+}

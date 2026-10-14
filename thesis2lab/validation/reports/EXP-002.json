@@ -1,0 +1,394 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "EXP-002",
+  "experiment_version": "0.1.0",
+  "declared_status": "PARTIAL",
+  "inputs_digest": "f4c23c28fc0be96de1bfabd2443bf2fed4216efc3504a3b1e2024f01f7840d3e",
+  "code_version": {
+    "git_commit": "cf3542e3fecdeb9570a6ecb1455e3963e12bd626",
+    "working_tree_dirty": true
+  },
+  "dependency_versions": {
+    "node": "v22.22.0",
+    "python": "Python 3.13.16",
+    "thesis2lab": "0.1.0"
+  },
+  "dataset_checksums": {
+    "DS-WLD-INTERCODER": "32d1cc9ff821c7540eeafedb86139728a36b9827fdd9d1d87857f939422408dc"
+  },
+  "checks": [
+    {
+      "id": "tech:checksum:DS-WLD-INTERCODER",
+      "kind": "technical",
+      "description": "Dataset DS-WLD-INTERCODER file checksum equals its record",
+      "pass": true,
+      "required": true,
+      "expected": "32d1cc9ff821c7540eeafedb86139728a36b9827fdd9d1d87857f939422408dc",
+      "actual": "32d1cc9ff821c7540eeafedb86139728a36b9827fdd9d1d87857f939422408dc"
+    },
+    {
+      "id": "tech:parse",
+      "kind": "technical",
+      "description": "CSV parses and matches the declared columns and types",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "tech:rows",
+      "kind": "technical",
+      "description": "Row count equals the dataset record",
+      "pass": true,
+      "required": true,
+      "expected": 91,
+      "actual": 91
+    },
+    {
+      "id": "tech:categories",
+      "kind": "technical",
+      "description": "Every categorical value belongs to its declared category list",
+      "pass": true,
+      "required": true,
+      "actual": 0
+    },
+    {
+      "id": "tech:run:baseline",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"baseline\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:baseline",
+      "kind": "numerical",
+      "description": "Baseline specification: point estimates and per-category counts (vs validation/kappa_results.json (output of the original kappa_calculator.py, rounded to 4 decimals))",
+      "pass": true,
+      "required": true,
+      "reference_kind": "original",
+      "claim_id": "CLM-IC-001",
+      "expected": {
+        "n": 91,
+        "observed_agreement": 0.7143,
+        "cohen_kappa": 0.5684,
+        "tp_NOT_WATER": 30,
+        "fp_NOT_WATER": 1,
+        "fn_NOT_WATER": 3,
+        "tp_UNCERTAIN": 8,
+        "fp_UNCERTAIN": 4,
+        "fn_UNCERTAIN": 20,
+        "tp_WATER": 27,
+        "fp_WATER": 21,
+        "fn_WATER": 3
+      },
+      "actual": {
+        "n": 91,
+        "observed_agreement": 0.7142857142857143,
+        "cohen_kappa": 0.5684056913535207,
+        "tp_NOT_WATER": 30,
+        "fp_NOT_WATER": 1,
+        "fn_NOT_WATER": 3,
+        "tp_UNCERTAIN": 8,
+        "fp_UNCERTAIN": 4,
+        "fn_UNCERTAIN": 20,
+        "tp_WATER": 27,
+        "fp_WATER": 21,
+        "fn_WATER": 3
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.00005,
+        "cohen_kappa": 0.00005
+      }
+    },
+    {
+      "id": "rep:baseline",
+      "kind": "repeatability",
+      "description": "Two executions of \"baseline\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:baseline",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"baseline\" (all 12 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "fid:baseline",
+      "kind": "methodological",
+      "description": "Kappa equals the original validation/kappa_calculator.py function on \"baseline\"",
+      "pass": true,
+      "required": true,
+      "expected": 0.5684056913535207,
+      "actual": 0.5684056913535207
+    },
+    {
+      "id": "tech:run:mananciais",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"mananciais\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:mananciais",
+      "kind": "numerical",
+      "description": "Calibration rule applied (coder 1 UNCERTAIN to WATER for Brazil) (vs validation/RESIDUAL_AUDIT.md section 5.2 (values rounded to 3 decimals; percentages converted to proportions))",
+      "pass": true,
+      "required": true,
+      "reference_kind": "original_published",
+      "claim_id": "CLM-IC-002",
+      "expected": {
+        "n": 91,
+        "observed_agreement": 0.901,
+        "cohen_kappa": 0.832
+      },
+      "actual": {
+        "n": 91,
+        "observed_agreement": 0.9010989010989011,
+        "cohen_kappa": 0.8318275154004107
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.0005,
+        "cohen_kappa": 0.0005
+      }
+    },
+    {
+      "id": "rep:mananciais",
+      "kind": "repeatability",
+      "description": "Two executions of \"mananciais\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:mananciais",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"mananciais\" (all 12 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "fid:mananciais",
+      "kind": "methodological",
+      "description": "Kappa equals the original validation/kappa_calculator.py function on \"mananciais\"",
+      "pass": true,
+      "required": true,
+      "expected": 0.8318275154004107,
+      "actual": 0.8318275154004107
+    },
+    {
+      "id": "tech:run:binary",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"binary\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:binary",
+      "kind": "numerical",
+      "description": "Binary WATER / NOT_WATER, excluding UNCERTAIN pairs (vs validation/RESIDUAL_AUDIT.md section 5.2 sensitivity table)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "original_published",
+      "claim_id": "CLM-IC-003",
+      "expected": {
+        "n": 59,
+        "observed_agreement": 0.966,
+        "cohen_kappa": 0.932
+      },
+      "actual": {
+        "n": 59,
+        "observed_agreement": 0.9661016949152542,
+        "cohen_kappa": 0.9321058688147296
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.0005,
+        "cohen_kappa": 0.0005
+      }
+    },
+    {
+      "id": "rep:binary",
+      "kind": "repeatability",
+      "description": "Two executions of \"binary\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:binary",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"binary\" (all 9 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "fid:binary",
+      "kind": "methodological",
+      "description": "Kappa equals the original validation/kappa_calculator.py function on \"binary\"",
+      "pass": true,
+      "required": true,
+      "expected": 0.9321058688147296,
+      "actual": 0.9321058688147296
+    },
+    {
+      "id": "tech:run:coder1-confident",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"coder1-confident\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:coder1-confident",
+      "kind": "numerical",
+      "description": "Pairs where coder 1 gave a non-UNCERTAIN label (vs validation/RESIDUAL_AUDIT.md section 5.2 sensitivity table)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "original_published",
+      "claim_id": "CLM-IC-004",
+      "expected": {
+        "n": 63,
+        "observed_agreement": 0.905,
+        "cohen_kappa": 0.821
+      },
+      "actual": {
+        "n": 63,
+        "observed_agreement": 0.9047619047619048,
+        "cohen_kappa": 0.8207681365576103
+      },
+      "tolerance": {
+        "default": 0,
+        "observed_agreement": 0.0005,
+        "cohen_kappa": 0.0005
+      }
+    },
+    {
+      "id": "rep:coder1-confident",
+      "kind": "repeatability",
+      "description": "Two executions of \"coder1-confident\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "py:coder1-confident",
+      "kind": "numerical",
+      "description": "Independent Python implementation agrees on \"coder1-confident\" (all 12 metrics)",
+      "pass": true,
+      "required": true,
+      "reference_kind": "independent_reimplementation"
+    },
+    {
+      "id": "fid:coder1-confident",
+      "kind": "methodological",
+      "description": "Kappa equals the original validation/kappa_calculator.py function on \"coder1-confident\"",
+      "pass": true,
+      "required": true,
+      "expected": 0.8207681365576103,
+      "actual": 0.8207681365576103
+    },
+    {
+      "id": "tech:run:baseline-ci-json",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"baseline-ci-json\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:baseline-ci-json",
+      "kind": "numerical",
+      "description": "Baseline 95% bootstrap interval, compared with kappa_results.json (vs validation/kappa_results.json ci_95)",
+      "pass": false,
+      "required": false,
+      "reference_kind": "original",
+      "claim_id": "CLM-IC-005",
+      "expected": {
+        "ci_low": 0.4441,
+        "ci_high": 0.6908
+      },
+      "actual": {
+        "ci_low": 0.43587756683456036,
+        "ci_high": 0.6880000000000001
+      },
+      "tolerance": {
+        "default": 0.005
+      },
+      "difference": {
+        "ci_low": {
+          "expected": 0.4441,
+          "actual": 0.43587756683456036,
+          "tolerance": 0.005
+        }
+      }
+    },
+    {
+      "id": "rep:baseline-ci-json",
+      "kind": "repeatability",
+      "description": "Two executions of \"baseline-ci-json\" give identical output",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "tech:run:baseline-ci-md",
+      "kind": "technical",
+      "description": "Runner executes for scenario \"baseline-ci-md\"",
+      "pass": true,
+      "required": true
+    },
+    {
+      "id": "ref:baseline-ci-md",
+      "kind": "numerical",
+      "description": "Baseline 95% bootstrap interval, compared with RESIDUAL_AUDIT.md (vs validation/RESIDUAL_AUDIT.md section 5.2 sensitivity table)",
+      "pass": false,
+      "required": false,
+      "reference_kind": "original_published",
+      "claim_id": "CLM-IC-005",
+      "expected": {
+        "ci_low": 0.436,
+        "ci_high": 0.695
+      },
+      "actual": {
+        "ci_low": 0.43587756683456036,
+        "ci_high": 0.6880000000000001
+      },
+      "tolerance": {
+        "default": 0.005
+      },
+      "difference": {
+        "ci_high": {
+          "expected": 0.695,
+          "actual": 0.6880000000000001,
+          "tolerance": 0.005
+        }
+      }
+    },
+    {
+      "id": "rep:baseline-ci-md",
+      "kind": "repeatability",
+      "description": "Two executions of \"baseline-ci-md\" give identical output",
+      "pass": true,
+      "required": true
+    }
+  ],
+  "summary": {
+    "technical_execution": "pass",
+    "numerical_agreement": "pass",
+    "methodological_fidelity": "pass",
+    "repeatability": "pass",
+    "checks_total": 30,
+    "checks_passed": 28,
+    "overall": "pass"
+  },
+  "independent_review": {
+    "status": "pending",
+    "note": "No reviewer has signed off. Reports are generated by program execution only."
+  },
+  "remaining_uncertainty": [
+    "Non-required checks did not pass: ref:baseline-ci-json, ref:baseline-ci-md.",
+    "Bootstrap interval endpoints: kappa_results.json says [0.4441, 0.6908]; RESIDUAL_AUDIT.md says [0.436, 0.695]; re-running the original algorithm on the committed file order gives about [0.439, 0.692]. The origin of the differences is not documented.",
+    "README.md headlines kappa 0.832, but the committed kappa_results.json holds only the 0.568 baseline. The 0.832 figure is reproducible here but its generating output file is not in the repository.",
+    "Independent human review of this validation has not been recorded."
+  ],
+  "generated_at": "2026-10-14T01:02:01.539Z"
+}

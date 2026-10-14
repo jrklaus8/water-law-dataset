@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "thesis",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "title",
+    "institution",
+    "research_status",
+    "version",
+    "authors",
+    "chapters"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^THESIS-[A-Z0-9-]+$"
+    },
+    "title": {
+      "type": "string"
+    },
+    "institution": {
+      "type": "string"
+    },
+    "research_status": {
+      "enum": [
+        "planning",
+        "in_progress",
+        "submitted",
+        "defended",
+        "published"
+      ]
+    },
+    "version": {
+      "type": "string"
+    },
+    "authors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "source_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^SRC-"
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "status"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^CH-[A-Z0-9-]+$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "planned",
+              "drafting",
+              "draft_available",
+              "final"
+            ]
+          },
+          "research_questions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^CLM-"
+            }
+          },
+          "experiment_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^EXP-"
+            }
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^SRC-"
+            }
+          }
+        }
+      }
+    }
+  }
+}

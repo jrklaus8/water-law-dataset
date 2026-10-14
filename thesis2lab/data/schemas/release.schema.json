@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "release",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "thesis_version",
+    "dataset_versions",
+    "experiment_versions",
+    "code_commit",
+    "release_date",
+    "status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^REL-\\d+\\.\\d+\\.\\d+$"
+    },
+    "thesis_version": {
+      "type": "string"
+    },
+    "dataset_versions": {
+      "type": "object"
+    },
+    "experiment_versions": {
+      "type": "object"
+    },
+    "code_commit": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "release_date": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "approved",
+        "published"
+      ]
+    },
+    "notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "archived_references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approved_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

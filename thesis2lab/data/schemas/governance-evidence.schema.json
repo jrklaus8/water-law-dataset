@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "governance-evidence",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "id",
+    "jurisdiction",
+    "category",
+    "statement",
+    "evidence_type",
+    "source_id",
+    "locator",
+    "review_status"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^GOV-[A-Z0-9-]+$"
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "statement": {
+      "type": "string"
+    },
+    "evidence_type": {
+      "enum": [
+        "verified_legal_source",
+        "empirical_finding",
+        "researcher_hypothesis"
+      ]
+    },
+    "source_id": {
+      "type": "string",
+      "pattern": "^SRC-"
+    },
+    "locator": {
+      "type": "string"
+    },
+    "review_status": {
+      "enum": [
+        "unreviewed",
+        "researcher_reviewed",
+        "disputed"
+      ]
+    },
+    "caveat": {
+      "type": "string"
+    }
+  }
+}
