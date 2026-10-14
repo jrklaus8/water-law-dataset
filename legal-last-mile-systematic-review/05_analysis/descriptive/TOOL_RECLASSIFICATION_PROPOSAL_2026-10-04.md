@@ -14,8 +14,8 @@
 | Legal Framework | 426 | 426 |
 | CASP Qualitative | 248 | 248 |
 | MMAT | 195 | 195 |
-| JBI Cross-Sectional | 130 | 130 |
-| ROBINS-I | 58 | 58 |
+| JBI Cross-Sectional | 129 | 129 |
+| ROBINS-I | 57 | 57 |
 | AMSTAR 2 | 18 | 18 |
 | RoB 2 | 5 | 5 |
 

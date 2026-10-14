@@ -2,7 +2,7 @@
 
 `full_text_reviewer_2_priority_queue_2026-09-28.csv` is the recommended order of work for a human second reviewer of the
 full-text decisions. The older `full_text_reviewer_2_queue.csv` (175 records from an early snapshot) is superseded.
-**One-page working checklist: `REVIEWER_2_CHECKLIST.md`.** At 2026-10-14 a human has confirmed 197 of the 1,080 includes (S001–S200 less three the PI later excluded) and the PI has ruled on 164 excludes and 84 further includes in the adjudications and in A6 tier 1 (open items A16, A19, A22–A25 and A6; 445 of 2,277 full-text decisions, 19.5%, carry human verification or adjudication); no other exclude has been independently confirmed by a human (`AI_USE_STATEMENT.md`). **The queue holds 225 rows (73 + 102 + 50).** Progress on 2026-10-14: **tier 1 (73 rows) is complete**: every row carries a CK ruling (the 18 rows with a blind second-model decision in `A6_TIER1_SECOND_MODEL_CK_SHEET_2026-10-14.csv`, the other 54 in `A6_TIER1_BATCHES_2_TO_4_CK_SHEET_2026-10-14.csv`, one earlier A16 reversal). All were confirmations, and 13 included reports carry a `BORDERLINE INCLUDE` note (a thin rule-type link, or borderline on criterion 3). Tiers 2 (102 excludes) and 3 (50 includes) are untouched.
+**One-page working checklist: `REVIEWER_2_CHECKLIST.md`.** At 2026-10-14 a human has confirmed 197 of the 1,078 includes (S001–S200 less three the PI later excluded) and the PI has ruled on 166 excludes and 104 further includes in the adjudications, in A6 tier 1 and in the A26 SWiM core confirmations (open items A16, A19, A22–A26 and A6; 467 of 2,277 full-text decisions, 20.5%, carry human verification or adjudication); no other exclude has been independently confirmed by a human (`AI_USE_STATEMENT.md`). **The queue holds 225 rows (73 + 102 + 50).** Progress on 2026-10-14: **tier 1 (73 rows) is complete**: every row carries a CK ruling (the 18 rows with a blind second-model decision in `A6_TIER1_SECOND_MODEL_CK_SHEET_2026-10-14.csv`, the other 54 in `A6_TIER1_BATCHES_2_TO_4_CK_SHEET_2026-10-14.csv`, one earlier A16 reversal). All were confirmations, and 13 included reports carry a `BORDERLINE INCLUDE` note (a thin rule-type link, or borderline on criterion 3). Tiers 2 (102 excludes) and 3 (50 includes) are untouched.
 
 ## What is in it
 
@@ -25,5 +25,5 @@ and the seed are in the script, so the sample can be audited and re-drawn.
 
 ## Limits
 
-The samples are for spot-checking, not a certified error rate: 102 of the 1,197 excludes and 50 of the 883 unconfirmed includes (1,080 less the 197 confirmed) cannot
+The samples are for spot-checking, not a certified error rate: 102 of the 1,199 excludes and 50 of the 881 unconfirmed includes (1,078 less the 197 confirmed) cannot
 bound the true error rate tightly. If a tier shows disagreement, widen it rather than extrapolate.

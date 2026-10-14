@@ -9,10 +9,11 @@ Scenarios (each applied to the study lists in the SWiM documents):
   S1b drop every strong or moderate row of the sparse-record audit (added 2026-10-04: the prefix-based abstract-only set misses shallow extractions that DO carry effect-size rows)
   S2 drop effect-size rows for studies not flagged quantitative_synthesis_eligible   (S589)
   S3 collapse linked reports that share underlying data     (linked_reports_2026-09-28.csv, same_underlying_data = yes)
-  S4 drop the two coding judgment calls in Family A         (S358, S404: "protective"/free-text direction read as concordant)
-  S4b drop the five studies whose outcome is not a household access measure (S358, S1121, S1140, S590, S1136; checked 2026-10-14, SWIM_DIRECTION_CODING_2026-10-14.csv)
-  S4c recode S471 as Null            (its fully adjusted estimate is not significant; the primary estimate is the organisation-only model)
-  S5 S1 to S4c together
+  S4 drop the coding judgment call in Family A               (S404: a lower water-poverty score read as favourable; S358, the other call, left the families under A26)
+  S4b drop the two kept studies whose outcome is not a household access measure (S1140 funding success, S1136 road-level infrastructure; the author's A26 ruling of 2026-10-14 kept them, and moved S358 and S590 to the reasoned non-fits and excluded S1121)
+  S4c recode S471 as Null            (its fully adjusted estimate is not significant; the primary estimate is the organisation-only model, kept in the main count by the author)
+  S4e recode S879 as Null            (household water access alone was null; payment compliance, a utility-side outcome, rose by 30 percentage points; kept as Mixed in the main count by the author)
+  S5 S1 to S4c and S4e together
   S4d drop every study whose raw coefficient sign and substantive direction come apart (inverted outcome polarity or a restated pole), i.e. keep only studies where '+' means Favourable and '-' means Unfavourable
 
 Pre-stated conclusion tests (written before the numbers were computed, so they cannot be tuned to the result):
@@ -62,7 +63,7 @@ def parse_substantive(fam):
     sec = t[t.index('\n## Results'):]
     sec = sec[:sec.index('\n## ', 5)]
     out = {}
-    for m in re.finditer(r'^\| (Favourable|Unfavourable|Null|Mixed)[^|]*\| (\d+) \((\d+)%\) \| ([^|]*)\|', sec, re.M):
+    for m in re.finditer(r'^\| (Favourable|Unfavourable|Null|Mixed)[^|]*\| (\d+) \((\d+(?:\.\d+)?)%\) \| ([^|]*)\|', sec, re.M):
         ids = re.findall(r'S\d+', m.group(4))
         assert len(ids) == int(m.group(2)), (fam, m.group(1))
         out.update({i: m.group(1).lower() for i in ids})
@@ -74,8 +75,9 @@ def parse_concordance():
     return {i: {'favourable': 'concordant', 'unfavourable': 'counter', 'null': 'null', 'mixed': 'mixed'}[v] for i, v in parse_substantive('A').items()}
 
 
-INDIRECT_OUTCOME = {'S358', 'S1121', 'S1140', 'S590', 'S1136'}   # no household access measure in the extraction or the cached full text (checked 2026-10-14)
-RECODE_NULL = {'S471'}                                           # primary estimate significant, fully adjusted estimate not
+INDIRECT_OUTCOME = {'S1140', 'S1136'}   # no household access measure in the extraction or the cached full text (checked 2026-10-14); kept by the author (A26)
+RECODE_S471 = {'S471'}                  # primary estimate significant, fully adjusted estimate not
+RECODE_S879 = {'S879'}                  # household access alone null, payment compliance up
 FAVOURABLE_IF = {('positive', 'favourable'), ('negative', 'unfavourable')}   # sign and valence agree: '+' is Favourable and '-' is Unfavourable
 
 
@@ -101,15 +103,16 @@ def scenarios():
         'S1b drop sparse-audit strong+moderate rows': shallow,
         'S2 drop rows for studies not flagged eligible': not_eligible,
         'S3 collapse linked reports (same underlying data)': collapse_drop,
-        'S4 drop Family A coding judgment calls (S358, S404)': {'S358', 'S404'},
-        'S4b drop the five studies with no household access outcome (S358, S1121, S1140, S590, S1136)': INDIRECT_OUTCOME,
+        'S4 drop the Family A coding judgment call (S404; S358 left the families under A26)': {'S404'},
+        'S4b drop the two kept studies with no household access outcome (S1140, S1136)': INDIRECT_OUTCOME,
         'S4c recode S471 as Null (fully adjusted estimate not significant)': set(),
+        'S4e recode S879 as Null (household water access alone)': set(),
     }
-    S['S5 S1 to S4c together'] = set().union(*[v for k, v in S.items() if k != 'S0 baseline'])
+    S['S5 S1 to S4c and S4e together'] = set().union(*[v for k, v in S.items() if k != 'S0 baseline'])
     S['S4d drop every study whose raw sign and substantive direction come apart'] = diverge
     rows = []
     for name, drop in S.items():
-        recode = RECODE_NULL if name.startswith(('S4c', 'S5')) else set()
+        recode = (RECODE_S471 if name.startswith(('S4c', 'S5')) else set()) | (RECODE_S879 if name.startswith(('S4e', 'S5')) else set())
         rec = {'scenario': name, 'dropped_studies_in_families': ';'.join(sorted((d for d in drop if any(d in signs[f] for f in 'ABC')), key=lambda x: int(x[1:]))), 'recoded_as_null': ';'.join(sorted(recode))}
         for f in 'ABC':
             keep = [s for s in signs[f] if s not in drop]
@@ -193,7 +196,7 @@ def render(rows, abstract_only, not_eligible, collapse_drop, signs):
     L += ["", "Tests: **A** — more than half of the studies are Favourable (concordant with \"recognition/eligibility improves access\") in the substantive-direction table;",
           "**B** — no study is Unfavourable or Null in substantive direction; **C** — no single category holds a majority, by raw coefficient sign and by substantive direction. "
           "The raw sign is the sign of the reported estimate; the substantive direction is its meaning for household access, affordability or equity once the outcome polarity and the exposure pole are taken into account "
-          "(`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4b** drops the five studies whose outcome is not a household access measure; **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; "
+          "(`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4b** drops the two kept studies whose outcome is not a household access measure (S1140, S1136); **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; **S4e** recodes S879 as Null (household water access alone was null; the 30-point rise was in payment compliance); "
           "**S4d** keeps only the studies where the two readings agree ('+' is Favourable, '-' is Unfavourable), which tests whether the Family A and C conclusions depend on the inverted-outcome and restated-pole judgments.", "",
           f"## Descriptive counts with the {len(abstract_only)} abstract-only extractions removed", "",
           f"Studies: {n_all:,} → {n_kept:,}. Risk-of-bias tool distribution:", "", "| Tool | All | Without abstract-only | Change |", "|---|---|---|---|"]

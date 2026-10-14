@@ -1,5 +1,7 @@
 # SWiM Synthesis — Family B (Assistance, participation, trust and external-support mechanisms) — 2026-09-28
 
+> **Update 2026-10-14 (k 6, unchanged, after the author's A26 rulings).** S1140 stays in Family B by the author's ruling (its outcome, funding success, is the protocol's `application_success` outcome, not a household access measure); a sensitivity scenario drops it (S4b). The author confirmed the inclusion and both direction codings of S1140 on 2026-10-14. S294, S1102, S1144 and S1163 were flagged on the AI's narrow-scope and outcome check (programme delivery, participation, an attitude measure, and for S294 health outcomes) and await a ruling (open item A28), so they are not counted as confirmed; S085 was confirmed earlier (inclusion only).
+>
 > **What the family label means (added 2026-10-14 under the A21 ruling 2026-10-14, open item A21).** Family B groups studies of assistance, participation, trust and external support (bureaucratic assistance with political coordination, community institutional strengthening, capital-cost contribution, network capital, NGO/CBO trust, external programme funding). Only S085 tests bureaucratic assistance in the protocol's sense; the protocol heading, 'Administrative assistance and access', was narrower than what was synthesised. Families A, B and C are **thematic mechanism groupings used to organise the structured vote count (SWiM)**, not homogeneous exposure–outcome pairs. Their member studies share a broad theme, not a comparable exposure, comparator and outcome measure; that is why Phase 11 rejected pooling (`phase11_quantitative_feasibility_judgment.md`; `ANALYSIS_PLAN.md` §2). The `synthesis_family` codes in `effect_sizes.csv` and every study assignment are unchanged; only the descriptive heading changed. The pre-evidence wording of the families stays in `PROJECT_SPEC.md` §8 (see the dated note there).
 > The keyword audit that prompted this is `05_analysis/effect_sizes/FAMILY_FIT_AUDIT_2026-10-04.md`.
 
@@ -71,7 +73,7 @@ Two natural groups, both noted in `phase11_quantitative_feasibility_judgment.md`
 
 ## Results
 
-Two tables follow, derived from `05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv` (the AI's coding, not yet human-verified; worksheet `SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv`): the raw sign of each reported estimate, and its substantive direction for household access, formal access or service (Favourable, Unfavourable, Null or Mixed). The two readings coincide for all six studies here: every positive coefficient is a beneficial result, unlike Families A and C. The one case where the extracted `direction` text mattered is S294 (null on its health arm, positive on its institutional-strengthening arm), coded Mixed in both tables. Until 2026-10-14 only one table, headed "Direction", was shown; its counts are unchanged.
+Two tables follow, derived from `05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv` (the AI's coding, confirmed by the author for 1 of the 6 studies on 2026-10-14; the rest are flagged for open item A28 or not yet checked; worksheet `SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv`): the raw sign of each reported estimate, and its substantive direction for household access, formal access or service (Favourable, Unfavourable, Null or Mixed). The two readings coincide for all six studies here: every positive coefficient is a beneficial result, unlike Families A and C. The one case where the extracted `direction` text mattered is S294 (null on its health arm, positive on its institutional-strengthening arm), coded Mixed in both tables. Until 2026-10-14 only one table, headed "Direction", was shown; its counts are unchanged.
 
 ### (a) Raw coefficient sign
 
@@ -91,7 +93,7 @@ Two tables follow, derived from `05_analysis/effect_sizes/SWIM_DIRECTION_CODING_
 | Unfavourable | 0 (0%) | — |
 | Null | 0 (0%) | — |
 
-S1140's outcome is success in securing programme funding (an application outcome), not a household access measure; time saved per household appears only as a control (checked 2026-10-14). It stays in the family, and a sensitivity scenario drops it (S4b in `SENSITIVITY_ANALYSIS_2026-09-28.md`).
+S1140's outcome is success in securing programme funding (an application outcome), not a household access measure; time saved per household appears only as a control (checked 2026-10-14). The author kept it in the family (A26), and a sensitivity scenario drops it (S4b in `SENSITIVITY_ANALYSIS_2026-09-28.md`).
 
 **Every one of the 6 studies in Family B reports a positive association between some form of
 administrative assistance, institutional trust, or bureaucratic facilitation and improved

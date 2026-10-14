@@ -10,7 +10,7 @@ Four coded fields per study, all by the AI from effect_sizes.csv (not human-veri
   substantive_direction  DERIVED, never typed: Favourable / Unfavourable / Null / Mixed = sign(raw) x polarity x orientation, with null and mixed passed through.
 Favourable therefore means: the exposure (oriented as above) is associated with better household access, affordability, equity or service on the paper's own outcome measure. It is not a judgment that the exposure is desirable.
 
-Also recorded: whether the outcome is a household access measure (the five-study check requested 2026-10-14: S358, S1121, S1140, S590, S1136 report none), an alternative substantive direction where the primary and fully
+Also recorded: whether the outcome is a household access measure (the check of 2026-10-14 found none in S358, S1121, S1140, S590 and S1136; the author's A26 rulings moved S358 and S590 to the reasoned non-fits, excluded S1121, and kept S1140 and S1136; S606 and S1143 left the families too), an alternative substantive direction where the primary and fully
 adjusted estimates differ (S471), and a short note. Writes 05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv. READ-ONLY on every database. Run from legal-last-mile-systematic-review/."""
 import csv, sys
 sys.path.insert(0, 'code/analysis')
@@ -20,7 +20,7 @@ import current_figures as cf
 OUT = '05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv'
 HB, HW = 'higher = better', 'higher = worse'
 AR, RS = 'as reported', 'restated to the recognised pole'
-CHK = 'checked 2026-10-14: no household access measure'
+CHK = 'checked 2026-10-14: no household access measure; kept by the author (A26)'
 NOT = 'not separately checked'
 
 # study: (raw sign, outcome polarity, exposure orientation, outcome-directness check, alternative substantive direction, note)
@@ -31,7 +31,6 @@ D = {
  'S084': ('-', HB, RS, NOT, '', 'Reported contrast is non-notified vs notified (-37.3% water per capita). Restated to notified vs non-notified the association is positive: Favourable for recognition.'),
  'S104': ('+', HW, AR, NOT, '', 'Home ownership: OR 1.31 for piped-water interruption (higher = worse). Raw sign +, substantive Unfavourable: the tenure-security hypothesis predicts fewer interruptions.'),
  'S142': ('-', HB, RS, NOT, '', 'Reported contrast is unincorporated vs incorporated (significantly reduced access). Restated to incorporated vs unincorporated the association is positive: Favourable for recognition.'),
- 'S358': ('-', HW, AR, CHK, '', 'Tribal oversight: OR 0.62 for groundwater decline (higher = worse). Raw sign -, substantive Favourable. Outcome is groundwater decline and contamination of service areas, not a household access measure; the effect_sizes provenance note already calls it a looser fit.'),
  'S398': ('+', HB, AR, NOT, '', 'ZEIS zoning raised sewage-network access by 23 pp (DiD).'),
  'S404': ('-', HW, AR, NOT, '', 'WRUA membership: ATT -14% to -32% on a water-poverty index (higher = worse). Raw sign -, substantive Favourable.'),
  'S765': ('+', HB, AR, NOT, '', 'Legal title raised improved-water-source use by 5.9 pp (DiD).'),
@@ -42,7 +41,6 @@ D = {
  'S1020': ('+', HW, AR, NOT, '', 'Watershed development: +17.4 min/day collection time (higher = worse). Raw sign +, substantive Unfavourable.'),
  'S1042': ('+', HB, AR, NOT, '', 'Town-hall participation +29 pp, established CBO about +25 pp, probability of a good water-supply situation.'),
  'S1057': ('+', HB, AR, NOT, '', 'Community design satisfaction raised log collection-time saving (coefficients 1.63 to 2.92); a larger saving is better.'),
- 'S1121': ('-', HB, AR, CHK, '', 'Water-adequacy screening: coefficient -0.31 to -0.53 on new residential permitting (higher = more new housing and connections). Raw sign -, substantive Unfavourable for permitting. The outcome is housing growth, not household access; connection fees are a regressor, not an outcome.'),
  'S1122': ('-', HB, RS, NOT, '', 'Non-zoned periphery residents: HR 0.14 for first piped-water access (higher hazard = faster access). Restated to zoned vs non-zoned the association is positive: Favourable for recognition.'),
  # Family B
  'S085': ('+', HB, AR, NOT, '', 'Bureaucratic assistance with political coordination: +19 pp full formalisation.'),
@@ -54,31 +52,25 @@ D = {
  # Family C
  'S174': ('+', HB, AR, NOT, '', 'Headline financial-capacity factor +6.02 on water coverage; the plan/policy (legal-compliance) factor is negative for water (-1.89, p = 0.033).'),
  'S470': ('+', HB, AR, NOT, '', 'Arsae-MG enforcement norm: +19.2 pp social-tariff implementation.'),
- 'S471': ('-', HW, AR, NOT, 'Null', 'Primary estimate -1.58 (state fixed effects, organisation-only model, p < 0.05; a lower bill is better): raw sign -, Favourable. The fully adjusted estimate (-1.03) is not significant, so its adjusted direction is Null (sensitivity scenario S7).'),
+ 'S471': ('-', HW, AR, NOT, 'Null', 'Primary estimate -1.58 (state fixed effects, organisation-only model, p < 0.05; a lower bill is better): raw sign -, Favourable. The fully adjusted estimate (-1.03) is not significant, so its adjusted direction is Null (sensitivity scenario S4c); the primary estimate is kept in the main count by the author (A26).'),
  'S526': ('-', HB, AR, NOT, '', 'Investor-owned utilities: -0.167 on the unit-price ratio (higher = more progressive pricing). Raw sign -, substantive Unfavourable (more regressive).'),
  'S539': ('+', HW, AR, NOT, '', 'Investor-owned utilities: +$144 a year in the household bill and +1.55 pp in the lowest-quintile income share (higher = worse). Raw sign +, substantive Unfavourable.'),
- 'S590': ('+', HB, AR, CHK, '', 'Concentrated franchise: SKEW coefficient 0.457 on the probability that a Prussian city builds waterworks. Outcome is a city investment decision, not household access (sewer coverage appears only as background).'),
  'S593': ('mixed', HB, AR, NOT, '', 'Urban (si) status and tax burden go with lower inequity coefficients; fiscal independence goes with a higher one.'),
- 'S606': ('-', HB, AR, NOT, '', 'One-point rise in the unregistered-resident share: -0.00164 wastewater treatment capacity per capita. The outcome is infrastructure capacity (not in the five-study check).'),
  'S631': ('-', HB, AR, NOT, '', 'New-district creation: about -1% protected water and sanitation access (DiD), -1.35 pp in the dynamic model.'),
  'S749': ('+', HW, AR, NOT, '', 'Private ownership: +0.3456 R$/m3 on the tariff level (higher = worse). Raw sign +, substantive Unfavourable.'),
- 'S879': ('mixed', HB, AR, NOT, '', 'Credible disconnection notices: +30 pp payment compliance (a utility-side outcome), null on water access, connections, spending and collection time. A strict household-access reading would be Null.'),
+ 'S879': ('mixed', HB, AR, NOT, '', 'Credible disconnection notices: +30 pp payment compliance (a utility-side outcome), null on water access, connections, spending and collection time. Kept as Mixed by the author (A26); a sensitivity scenario (S4e) treats household water access alone as Null.'),
  'S947': ('+', HB, AR, NOT, '', 'Regulation quality: coefficient 0.0121 on access to drinking water.'),
  'S1032': ('-', HW, AR, NOT, '', 'Contact with the municipality or an NGO: OR 0.60 and 0.56 for the odds of a water complaint (a complaint is a worse outcome). Raw sign -, substantive Favourable.'),
- 'S1038': ('-', HW, AR, NOT, '', 'The reported contrast is state-regulated minus locally regulated welfare loss (-4.6 pp; higher = worse), so it is coded on state PUC regulation as the exposure. The exposure_definition in effect_sizes.csv names local-only regulation as the exposure; flagged for the author to confirm which pole the row should carry.'),
+ 'S1038': ('-', HW, AR, NOT, '', 'The reported contrast is state-regulated minus locally regulated welfare loss (-4.6 pp; higher = worse), so the exposure is state PUC regulation. effect_sizes.csv carried the opposite pole in its exposure_definition until the author\'s A26 ruling of 2026-10-14, which swapped exposure and comparator to match.'),
  'S1062': ('mixed', HB, AR, NOT, '', 'Inverted U: positive coefficient on cost recovery, negative on its square.'),
  'S1136': ('+', HB, AR, CHK, '', 'Political proximity (GP head village +0.053 paved, +0.037 drain; politician road +0.078 drain): a favouritism finding; SC/ST roads are less likely to be paved (-0.051). Outcome is road-level public sanitation infrastructure, not household access; the household survey is used only to rank problems.'),
- 'S1143': ('mixed', HB, AR, NOT, '', 'Weight rule alone favours better-off tracts; the supplementary centre-city rule reverses it for inner tracts. The service is garbage collection (not in the five-study check).'),
  'S1146': ('-', HB, AR, NOT, '', 'Regional utilities corruption: negative marginal effect on reporting enough clean water.'),
  'S1162': ('-', HB, AR, NOT, '', 'Municipality or town panchayat vs municipal corporation: -4.06 pp growth in household water coverage.'),
  'S1169': ('-', HB, AR, NOT, '', 'Price-regulated provider: coefficient -1.19, about 27 pp lower probability that a colonia had water service.'),
 }
 RECOMMEND = {
- 'S358': 'reasoned non-fit candidate (groundwater availability and contamination of service areas; no household access outcome)',
- 'S1121': 'reasoned non-fit candidate (new-housing permits; the same outcome problem as S312, S397 and S435, excluded under E04)',
- 'S590': 'reasoned non-fit candidate (a 19th-century city decision to build waterworks; no household access outcome)',
- 'S1140': 'keep: funding success is an application outcome the protocol lists (application_success); add to a sensitivity row',
- 'S1136': 'keep as a distributional finding (public sanitation infrastructure by caste and political connection); add to a sensitivity row',
+ 'S1140': 'kept by the author (A26): funding success is an application outcome the protocol lists (application_success); a sensitivity row drops it',
+ 'S1136': 'kept by the author (A26): a distributional finding (public sanitation infrastructure by caste and political connection); a sensitivity row drops it',
 }
 INDIRECT = tuple(sorted(RECOMMEND, key=lambda s: int(s[1:])))
 
@@ -99,7 +91,7 @@ def fam_rows():
 
 def build():
     fr = fam_rows()
-    assert len(fr) == 44 and {s for _, s in fr} == set(D), sorted({s for _, s in fr} ^ set(D))
+    assert len(fr) == 39 and {s for _, s in fr} == set(D), sorted({s for _, s in fr} ^ set(D))
     out = []
     for f, s in fr:
         raw, pol, ori, chk, alt, note = D[s]

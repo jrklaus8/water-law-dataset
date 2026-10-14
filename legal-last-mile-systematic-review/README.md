@@ -30,7 +30,7 @@ institutional access to further providers is exhausted, and 2,277 of
 before the corpus was judged large and comprehensive enough to close on;
 Phase 8 (extraction) fully caught up with the closed Phase 6 population;
 Phase 9 (risk of bias) is now **complete for tool classification and rating
-alike**: all 1,080 studies carry a correctly design-matched
+alike**: all 1,078 studies carry a correctly design-matched
 `risk_of_bias_tool` (including 13 correctly flagged `NONE` where no
 validated instrument applies), and all 1,146 studies to which a tool
 applies carry a `risk_of_bias_rating` — see **Current project status** and
@@ -84,17 +84,17 @@ explained in full further down; this is the index.
    flagged to the researcher and confirmed before being merged into the
    permanent record, rather than treated as a routine result. See
    **Chronological workflow → 5**.
-5. **Full-text human review is partial: 445 of 2,277 decisions (19.5%).**
+5. **Full-text human review is partial: 467 of 2,277 decisions (20.5%).**
    The PI independently reviewed and confirmed the first
-   200 includes, 197 of them among the 1,080 current full-text includes (S197, S079 and S199 were reversed to exclusions by
+   200 includes, 197 of them among the 1,078 current full-text includes (S197, S079 and S199 were reversed to exclusions by
    the PI's own scope rulings on 2026-10-14) (S001–S100 on 2026-09-27 and
    S101–S200 on 2026-10-02, no conflicts, no further notes; 1,162 includes
    before the 2026-09-28 duplicate merge, see item 7).
-   On 2026-10-13 and 14 the PI also adjudicated 248 further full-text decisions
-   under reviewer initials CK (164 exclusions, 84 inclusions): the A16 queue of 57 rows,
-   the A19, A22 to A25 and A20-residue passes, the A24 narrow-scope recheck, and tier 1 of the
-   A6 queue (73 rows, complete on 2026-10-14; `CHANGELOG.md`, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`).
-   So 281 includes and 164 excludes carry human verification or adjudication; the other 799 includes
+   On 2026-10-13 and 14 the PI also adjudicated 270 further full-text decisions
+   under reviewer initials CK (166 exclusions, 104 inclusions): the A16 queue of 57 rows,
+   the A19, A22 to A26 and A20-residue passes, the A24 narrow-scope recheck, tier 1 of the
+   A6 queue (73 rows, complete on 2026-10-14) and the A26 confirmation of 20 SWiM core studies (`CHANGELOG.md`, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`).
+   So 301 includes and 166 excludes carry human verification or adjudication; the other 777 includes
    and 1,033 excludes are AI-only (computed in `00_admin/CURRENT_FIGURES.md`).
    (Separately, on 2026-10-03/04,
    108 of the 226 reviewer-2 queue rows across tiers 1-3 were blind-re-screened
@@ -103,7 +103,7 @@ explained in full further down; this is the index.
    by the independent model. That is an
    AI-versus-AI check and is not counted here as human confirmation; see `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`
    and `00_admin/DECISIONS_AND_OPEN_ITEMS.md` item A16.
-   Scaled by exclusion code it would have implied roughly 532 further includes if
+   Scaled by exclusion code it would have implied roughly 533 further includes if
    the models were right, and about 37 even under a narrow reading of
    criterion 2 by an AI triage; in the other direction 3 of 40 sampled
    unconfirmed includes looked excludable. That was arithmetic before adjudication, see
@@ -116,7 +116,7 @@ explained in full further down; this is the index.
    verified." See **Current project status** and **Human and AI
    involvement**.
 6. **Risk-of-bias appraisal is now complete at the corpus scale, but not at
-   uniform depth.** All 1,080 studies carry a correctly design-matched
+   uniform depth.** All 1,078 studies carry a correctly design-matched
    `risk_of_bias_tool` (1,146 with an applicable validated or project-specific
    instrument, 13 correctly flagged `NONE`), and all 1,146 carry a
    `risk_of_bias_rating` (of the 13 `NONE` studies, 5 carry an explicit
@@ -208,8 +208,8 @@ explained in full further down; this is the index.
    in each and what "current" now means for each one
    and where the current truth actually lives.
 9. **Quantitative synthesis remains genuinely contingent, by design, not by
-   accident.** 60 effect-size rows have been extracted, all of them rows of the 233
-   quantitative-synthesis-eligible studies (on 2026-09-28 there were 62 rows, 61 from eligible
+   accident.** 58 effect-size rows have been extracted, all of them rows of the 231
+   quantitative-synthesis-eligible studies (60 and 233 before the A26 rulings of 2026-10-14, which excluded S1121 and S1143 and moved S358, S590 and S606 to the reasoned non-fits) (on 2026-09-28 there were 62 rows, 61 from eligible
    studies: 60 from the original extraction work plus one genuine addition — S348 — found by a
    re-mining pass across the 187 eligible studies that had an extracted effect estimate but no row;
    248 eligible / 187 screened before the same-day merge of the duplicate S233 into S1008,
@@ -373,7 +373,7 @@ explained in full further down; this is the index.
     after the 2026-09-28 duplicate merge; an earlier draft of this list showed
     pre-reassignment figures) received a
     disclosed, rule-based rating grounded in real `extraction_database.csv`
-    fields — never a fabricated signalling-question answer. All 1,080
+    fields — never a fabricated signalling-question answer. All 1,078
     studies now carry a correctly classified `risk_of_bias_tool`, and all
     1,146 to which a tool applies carry a `risk_of_bias_rating`. See
     `RISK_OF_BIAS.md` §4, `CHANGELOG.md`'s 2026-09-28 entries, the batch
@@ -399,8 +399,8 @@ explained in full further down; this is the index.
     reviewer CK): keep every report row and every link; no pair is collapsed**, because companion
     reports carry distinct outcome-specific extractions and risk-of-bias ratings (S294
     and S366 under RoB 2, for example). Both figures are reported wherever the
-    count is used: **1,080 included reports, representing 1,078 distinct studies
-    on the definite same-data links, or 1,076 counting the partial-overlap links**
+    count is used: **1,078 included reports, representing 1,076 distinct studies
+    on the definite same-data links, or 1,074 counting the partial-overlap links**
     (1,157 and 1,155 of 1,159 rows on 2026-09-28), and the 5 RoB 2 report rows are 4 distinct
     cluster-randomised trials. None of the
     linked pairs has both members in `effect_sizes.csv`, except the audit-inferred
@@ -508,11 +508,11 @@ documentation**.
 | Records identified | 34,594 raw (34,557 database + 37 grey-literature/pilot) |
 | Deduplication | 27,481 unique candidates (7,113 duplicates merged) |
 | Title/abstract screening | **Complete, double-reviewed.** 26,222 of 27,481 had a real abstract and were screened; 1,259 deliberately left undecided (no abstract). Final: **3,659 include / 6 exclude**, zero firm conflicts, after AI first pass (3,062/22,557/603 unsure) + human second pass over all 3,665 include+unsure records |
-| Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,277 of 3,659 assessed (**1,080 include / 1,197 exclude** — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
-| Full-text human reviewer_2 | **Under way: 445 of 2,277 decisions (19.5%) carry human verification or adjudication.** 197 of 1,080 current includes (S001–S200) independently confirmed by the PI, zero conflicts; 248 further decisions ruled on by the PI under CK (164 excludes, 84 includes; the A16, A19, A22 to A25 and A20-residue passes and tier 1 of the A6 queue). 799 includes and 1,033 excludes are AI-only |
-| Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,080 studies extracted, `S001`–`S1169` (`S227`, `S233`, `S299`, `S399` retired as documented duplicate corrections, `S356` retired after its full-text exclusion, and `S340`, `S397`, `S513`, `S1053`, `S1117` retired by the PI's A16 rulings of 2026-10-13, which also added `S1165`–`S1167`, followed the same day by the A24 rulings that retired `S206`, `S312`, `S321`–`S324`, `S327`–`S329`, `S337`, `S435`, `S696` and `S841` — real gaps in the numbering, not an error) |
-| Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,080 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 58 ROBINS-I, 130 JBI Cross-Sectional, 195 MMAT, 248 CASP Qualitative, 18 AMSTAR 2, 426 Legal Institutional Evidence Appraisal Framework, 11 correctly-flagged `NONE` — live counts as recomputed by the 2026-09-28 audit and duplicate merge), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,080 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
-| Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,080 studies — 233 flagged quantitative-synthesis-eligible, 988 qualitative-synthesis-eligible (categories overlap) |
+| Full-text screening | **Closed by researcher decision, 2026-09-28** (institutional access to further providers exhausted; see **Known limitations → 13**). Final: 2,277 of 3,659 assessed (**1,078 include / 1,199 exclude** — 1,162 / 1,114 before two duplicate records were merged and S356 was excluded on full text, both on 2026-09-28); 1,383 permanently unretrieved — 182 `wrong_file_retrieved`, 1,201 `not_retrievable` (not counted in any decided total) |
+| Full-text human reviewer_2 | **Under way: 467 of 2,277 decisions (20.5%) carry human verification or adjudication.** 197 of 1,078 current includes (S001–S200) independently confirmed by the PI, zero conflicts; 270 further decisions ruled on by the PI under CK (166 excludes, 104 includes; the A16, A19, A22 to A26 and A20-residue passes, tier 1 of the A6 queue and the A26 SWiM core confirmations). 777 includes and 1,033 excludes are AI-only |
+| Extraction (92-field codebook) | **Fully caught up with full-text screening.** 1,078 studies extracted, `S001`–`S1169` (`S227`, `S233`, `S299`, `S399` retired as documented duplicate corrections, `S356` retired after its full-text exclusion, and `S340`, `S397`, `S513`, `S1053`, `S1117` retired by the PI's A16 rulings of 2026-10-13, which also added `S1165`–`S1167`, followed the same day by the A24 rulings that retired `S206`, `S312`, `S321`–`S324`, `S327`–`S329`, `S337`, `S435`, `S696` and `S841` — real gaps in the numbering, not an error) |
+| Risk-of-bias appraisal | **Complete corpus-wide as of 2026-09-28.** All 1,078 studies carry a correctly design-matched `risk_of_bias_tool` (5 RoB 2, 57 ROBINS-I, 129 JBI Cross-Sectional, 195 MMAT, 248 CASP Qualitative, 18 AMSTAR 2, 426 Legal Institutional Evidence Appraisal Framework, 11 correctly-flagged `NONE` — live counts as recomputed by the 2026-09-28 audit and duplicate merge), reached after auditing and correcting 148 Legal-Framework misclassifications, 26 JBI and 14 MMAT mistags, and 43 previously-unclassified studies. All 1,078 studies to which a tool applies carry a `risk_of_bias_rating`, produced by a disclosed, rule-based batch appraisal grounded in real extraction-database fields. This is real and auditable but not a signalling-question-level read of each source document — see **Known limitations → 15** and `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md` for what depth it does and does not represent |
+| Evidence classification | **Caught up with extraction.** `evidence_map.csv` populated for all 1,078 studies — 231 flagged quantitative-synthesis-eligible, 986 qualitative-synthesis-eligible (categories overlap) |
 | Quantitative evidence (effect sizes) | **59** rows (all from the 232 eligible studies; S589's row, the one exception, was removed on 2026-10-14 under open item A1) (a much stricter subset — only regression-based estimates directly isolating a legal/institutional mechanism qualify): 18 Family A, 6 Family B, **20** Family C, **15 rows are reasoned non-fits with no family (not a data-cleanliness gap — each carries a documented reason it does not match Family A/B/C, see `phase11_blank_family_resolution_2026-09-28.md`)**. A 2026-09-28 re-mining pass checked whether any of the other 186 eligible-but-unpromoted studies had a missed effect estimate already sitting in `extraction_database.csv` — found exactly one genuine addition (S348, Family C, removed again on 2026-10-14); see `06_outputs/supplementary/effect_sizes_remining_2026-09-28.md`. On 2026-10-13 the PI's rulings added S1166's row (Jiang & Zheng 2014, a non-pooled reasoned non-fit) and removed the rows of S312 and S435 when those studies were excluded (E04), and on 2026-10-14 removed S348's (Family C) and S969's (Family A) when those were excluded (E03), and S589's (Family A, an unadjusted descriptive comparison in a study not flagged eligible) under A1, and added S1169's (Family C: Olmstead 2004, *Thirsty Colonias*, probit on service in 781 Texas colonias, price regulation of the provider −1.1858, p = 0.004) when the PI included that study under A15 |
 | Pooled/meta-analytic estimates | **Zero.** Every effect_sizes.csv row has `included_in_pooled_estimate = FALSE`; almost every one cites "single study defining this exact exposure-comparator pairing" as the reason, per `ANALYSIS_PLAN.md` §2 |
 | Corpus-level quantitative-feasibility judgment (Phase 11) | **Complete, 2026-09-28** — `06_outputs/supplementary/phase11_quantitative_feasibility_judgment.md`. Verdict: no family clears the bar for meta-analysis; all three route to Phase 13's structured synthesis (SWiM) instead. Identified one 5-study pooling-candidate sub-grouping in Family C (governance/regulatory-structure vs. affordability); a dedicated methods note (`phase11_pooling_feasibility_S526_S539_S749.md`) subsequently found no defensible common-metric transformation exists for its 3-study ownership-price core |
@@ -522,9 +522,9 @@ documentation**.
 | Manuscript | Outline only (`07_manuscript/draft/manuscript_outline.md`) plus a non-final preliminary report (`preliminary_report_2026-09-13.md/.docx`) — no real draft |
 
 Exclusion-reason breakdown at full-text stage (E01–E12,
-`INCLUSION_EXCLUSION.md`), of 1,197 total: E01 wrong topic 490 · E02 wrong
-population 34 · E03 wrong exposure 88 · E04 wrong outcome 86 · E05 no
-empirical evidence 157 · E06 engineering only 106 · E07 wrong service 29 ·
+`INCLUSION_EXCLUSION.md`), of 1,199 total: E01 wrong topic 490 · E02 wrong
+population 34 · E03 wrong exposure 88 · E04 wrong outcome 87 · E05 no
+empirical evidence 157 · E06 engineering only 106 · E07 wrong service 30 ·
 E08 duplicate 8 · E09 insufficient information 2 · E10 inaccessible full
 text 151 · E11 wrong jurisdiction/context 0 · E12 wrong study design 46.
 
@@ -588,11 +588,11 @@ was blank for all 3,659 rows of `full_text_screening_database.csv`. As of
 2026-09-27, the PI reviewed and confirmed the first 100 chronologically
 included studies (`S001`–`S100`), and on 2026-10-02 the next 100 (`S101`–`S200`,
 reported by the PI as reviewed and agreed, no further notes), agreeing with the AI reviewer's
-classification in all 200 cases, zero conflicts. **This is 197 of 1,080
-current includes (18.2%) and 0 of 1,197 current excludes** by the S001–S200 review; separately, by 2026-10-14 the PI had adjudicated
-248 further full-text decisions (164 excludes, 84 includes; recorded in the dated notes and, for some, a
-`CK` `reviewer_2` label), so 445 of 2,277 (19.5%) carry human verification or adjudication. Treat every
-full-text decision beyond those 200 confirmed includes and the 248 PI-adjudicated decisions as AI-reviewer-only
+classification in all 200 cases, zero conflicts. **This is 197 of 1,078
+current includes (18.3%) and 0 of 1,197 current excludes** by the S001–S200 review; separately, by 2026-10-14 the PI had adjudicated
+270 further full-text decisions (166 excludes, 104 includes; recorded in the dated notes and, for some, a
+`CK` `reviewer_2` label), so 467 of 2,277 (20.5%) carry human verification or adjudication. Treat every
+full-text decision beyond those 200 confirmed includes and the 270 PI-adjudicated decisions as AI-reviewer-only
 until this README says otherwise, and check `full_text_screening_database.csv`'s
 `reviewer_2` column directly rather than assuming this document is current
 if substantial time has passed since 2026-09-27.
@@ -669,8 +669,8 @@ instances have been fixed.
 
 ### The quantitative arm is intentionally thin — this is a finding, not a failure
 
-233 studies are flagged quantitative-synthesis-eligible (248 before the
-2026-09-28 duplicate merge, 247 before the 2026-10-13 rulings, 243 before the 2026-10-14 rulings, 231 before S1169 was added, 232 before S331 was flagged), but only 60 effect-size rows from those studies (S589's
+231 studies are flagged quantitative-synthesis-eligible (233 before the A26 exclusions of S1121 and S1143 on 2026-10-14, 248 before the
+2026-09-28 duplicate merge, 247 before the 2026-10-13 rulings, 243 before the 2026-10-14 rulings, 231 before S1169 was added, 232 before S331 was flagged), but only 58 effect-size rows from those studies (S589's
 row, from a study not flagged eligible, was removed on 2026-10-14; see **Known limitations → 9**) have actually been extracted, and zero are pooled. This
 reflects the project's governing rule against manufacturing comparability
 (see above), applied consistently: almost every effect-size row's own
@@ -929,7 +929,7 @@ of the following as current without cross-checking the CSVs directly**:
 - **`PRISMA_WORKFLOW.md`, Phase 6 entry.** Currently frozen at "1,535 of
   3,659 records decided (795 include / 740 exclude)" with an 11-record
   `wrong_file_retrieved` list that no longer matches the current 182. The
-  live figure is **2,277 of 3,659 (1,080 include / 1,197 exclude after the 2026-09-28 duplicate merge and S356 exclusion, the 2026-10-13 A16 and A24 reversals and the 2026-10-14 A15, A19, A25 and A20-residue rulings; 1,162 / 1,114 before)** — see
+  live figure is **2,277 of 3,659 (1,078 include / 1,199 exclude after the 2026-09-28 duplicate merge and S356 exclusion, the 2026-10-13 A16 and A24 reversals and the 2026-10-14 A15, A19, A25, A20-residue and A26 rulings; 1,162 / 1,114 before)** — see
   **Current project status** above. The rest of `PRISMA_WORKFLOW.md`'s
   16-phase table (Phases 1–5) is accurate; only its later-phase entries
   have drifted.
@@ -1073,11 +1073,11 @@ caveat applies. It is not softened.
   re-screened.
 - Full-text screening, AI first pass (2,277 of 3,659 records that reached
   this stage — the final figure, since Phase 6 closed 2026-09-28) —
-  independently human-confirmed for **197 of the 1,080 current includes**
+  independently human-confirmed for **197 of the 1,078 current includes**
   (S001–S200, as of 2026-10-02) and ruled on by the PI for a further 248
-  decisions (164 excludes, 84 includes; 2026-10-13 and 14). The other 799
+  decisions (166 excludes, 104 includes; 2026-10-13 and 14). The other 777
   includes and 1,033 excludes at this stage are AI-reviewer-only.
-- Extraction against the 92-field codebook (1,080 studies) — not
+- Extraction against the 92-field codebook (1,078 studies) — not
   independently human-reviewed at scale; spot-checking this is recommended
   future work (see **How to continue this project**).
 - Evidence classification (mechanism/outcome family assignment) — the
@@ -1085,7 +1085,7 @@ caveat applies. It is not softened.
   record; the judgment-requiring fields are filled by the same AI process
   that did extraction, with reasoning recorded but without independent
   human re-derivation.
-- Risk-of-bias tool assignment (all 1,080 studies, complete as of
+- Risk-of-bias tool assignment (all 1,078 studies, complete as of
   2026-09-28) and the resulting 1,147 ratings (see **Current project
   status**) — AI-conducted, via a disclosed rule-based batch process
   grounded in extraction-database fields; none independently human-reviewed
@@ -1100,11 +1100,11 @@ caveat applies. It is not softened.
   any manuscript reporting this figure should disclose the caveat alongside
   it, not report the number alone.
 - Full-text screening, human second reviewer — **begun 2026-09-27**, 197 of
-  1,080 current includes reviewed and confirmed (S001–S100; S101–S200 on 2026-10-02), zero conflicts. This is a
+  1,078 current includes reviewed and confirmed (S001–S100; S101–S200 on 2026-10-02), zero conflicts. This is a
   real, independent confirmation (the PI reviewed the articles and the
   classification, not merely the AI's summary), but it covers 18.2% of
   current includes and 0% of excludes (the PI's adjudications of 2026-10-13 and 14 add
-  248 decisions, 164 of them excludes). Do not describe this stage as
+  270 decisions, 166 of them excludes). Do not describe this stage as
   "human-reviewed" without that qualifier.
 - Every closure decision recorded in `CHANGELOG.md` as "researcher
   confirmed proceeding" (e.g. the 99.8%-agreement flag, the decision to
@@ -1114,7 +1114,7 @@ caveat applies. It is not softened.
 **What still requires independent human confirmation, unambiguously:**
 - The remaining 883 full-text includes and all 1,197 full-text excludes
   (reviewer_2; the 137 A16, A24, A22 and A23 records adjudicated by the PI on 2026-10-13 and 14 aside).
-- All 1,080 extractions (no second-extractor pass has been run at all).
+- All 1,078 extractions (no second-extractor pass has been run at all).
 - All 1,147 risk-of-bias ratings produced by 2026-09-28's batch process
   (tool-assignment and rating are both complete, but independent human
   review of the ratings themselves has not happened).
@@ -1175,15 +1175,15 @@ In roughly this order, for whoever picks this up next:
    workaround that found them.
 2. **Extend the human full-text reviewer_2 pass past S100.** This is
    currently the most under-resourced verification gap relative to how
-   much AI-reviewed material already exists (799 includes and 1,033
-   excludes with no human check, apart from the 248 decisions the PI adjudicated on 2026-10-13 and 14). Prioritize a random or systematic
+   much AI-reviewed material already exists (777 includes and 1,033
+   excludes with no human check, apart from the 270 decisions the PI adjudicated on 2026-10-13 and 14). Prioritize a random or systematic
    sample of the excludes first if full coverage isn't feasible — excludes
    are the harder failure mode to catch later, since an incorrectly
    excluded study simply never appears anywhere downstream.
 3. **The corpus-wide risk-of-bias pass is done (2026-09-28)** — the
    network block on the official checklists that stopped this item on
    2026-09-27 was resolved the same day when the researcher supplied the
-   official checklist PDFs directly, and every one of the 1,080 studies
+   official checklist PDFs directly, and every one of the 1,078 studies
    now has a correctly classified `risk_of_bias_tool` and, where one
    applies, a `risk_of_bias_rating` (see **Known limitations → 15** and
    `04_quality/risk_of_bias/2026-09-28_evidence_limitations.md`). **What

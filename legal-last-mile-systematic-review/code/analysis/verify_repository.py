@@ -274,7 +274,7 @@ check(all(r['mechanism_certainty'] in ('0', '1', '2', '3', '4') for r in ed), 'm
 check(all(r['mechanism_certainty'] != '4' or cf.tool_of(r['risk_of_bias_tool']) == 'RoB 2' for r in ed), 'mechanism_certainty 4 on a study that is not a RoB 2 trial')
 check(all(r['mechanism_certainty'] not in ('3', '4') or cf.tool_of(r['risk_of_bias_tool']) in ('RoB 2', 'ROBINS-I') for r in ed), 'mechanism_certainty 3-4 on a study that is neither RoB 2 nor ROBINS-I')
 _mcp = {r['study_id']: r for r in csv.DictReader(open(ROOT / '03_extraction/extracted_data/extraction_mechanism_certainty_original_2026-10-14.csv', encoding='utf-8'))}
-check(len(_mcp) == len(ed) and all(_mcp[r['study_id']]['new_value'] == r['mechanism_certainty'] for r in ed), 'mechanism_certainty provenance file does not match the extraction database')
+check(all(r['study_id'] in _mcp and _mcp[r['study_id']]['new_value'] == r['mechanism_certainty'] for r in ed), 'mechanism_certainty provenance file does not match the extraction database (rows of studies retired since 2026-10-14 may stay in it)')
 check(all(re.match(r'^\d{4}-\d\d-\d\d', r['date_extracted']) and r['researcher'].strip() for r in ed), 'date_extracted not ISO or researcher blank')
 _abs_ids = {r['study_id'] for r in ed if r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)}
 _abs_file = {r['study_id'] for r in csv.DictReader(open(ROOT / '05_analysis/sensitivity/abstract_only_extractions_2026-09-28.csv', encoding='utf-8', newline=''))}

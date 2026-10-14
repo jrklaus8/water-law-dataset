@@ -5,45 +5,46 @@ Conclusion tests were fixed before the numbers were computed (see the script's d
 
 ## Headline
 
-**No stated conclusion changes under any scenario.** Families A, B and C rest on 18, 6 and 20 studies; the scenarios remove at most 12 of them.
+**No stated conclusion changes under any scenario.** Families A, B and C rest on 16, 6 and 17 studies; the scenarios remove at most 11 of them.
 
 ## Why several scenarios change nothing (or not)
 
 - **Abstract-only extractions (10 studies, prefix definition):** none has an `effect_sizes.csv` row, so S1 leaves every family unchanged. It matters for descriptive counts only (below).
 - **Linked reports:** 2 definite same-data links; 1 involves a study that has an effect-size row (S294 (Family B)), so S3 changes nothing in A, B or C.
 - **Studies with an effect-size row but not flagged eligible (none):** none; S2 removes them.
-- **Sparse-audit strong and moderate rows (S1b):** removes 1 study(ies) from the families (S358); Family A goes from k = 18 to 17, B from 6 to 6, C from 20 to 20. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
+- **Sparse-audit strong and moderate rows (S1b):** removes 0 study(ies) from the families (none); Family A goes from k = 16 to 16, B from 6 to 6, C from 17 to 17. The sparse-audit signals are heuristics (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`).
 
 ## Family results by scenario
 
 | Scenario | Dropped (in families) | Recoded | A k | A raw +/-/null | A Fav/Unfav/null | A test | B k | B Fav/mixed | B test | C k | C raw +/-/mixed | C Fav/Unfav/mixed | C tests (sign, direction) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| S0 baseline | — | — | 18 | 10/6/2 | 13/3/2 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | 8/8/4 | holds, holds |
-| S1 drop abstract-only extractions | — | — | 18 | 10/6/2 | 13/3/2 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | 8/8/4 | holds, holds |
-| S1b drop sparse-audit strong+moderate rows | S358 | — | 17 | 10/5/2 | 12/3/2 (70.6%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | 8/8/4 | holds, holds |
-| S2 drop rows for studies not flagged eligible | — | — | 18 | 10/6/2 | 13/3/2 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | 8/8/4 | holds, holds |
-| S3 collapse linked reports (same underlying data) | — | — | 18 | 10/6/2 | 13/3/2 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | 8/8/4 | holds, holds |
-| S4 drop Family A coding judgment calls (S358, S404) | S358;S404 | — | 16 | 10/4/2 | 11/3/2 (68.8%) | holds | 6 | 5/1 | holds | 20 | 7/9/4 | 8/8/4 | holds, holds |
-| S4b drop the five studies with no household access outcome (S358, S1121, S1140, S590, S1136) | S358;S590;S1121;S1136;S1140 | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 5 | 4/1 | holds | 18 | 5/9/4 | 6/8/4 | holds, holds |
-| S4c recode S471 as Null (fully adjusted estimate not significant) | — | S471 | 18 | 10/6/2 | 13/3/2 (72.2%) | holds | 6 | 5/1 | holds | 20 | 7/8/4 | 7/8/4 | holds, holds |
-| S5 S1 to S4c together | S358;S404;S590;S1121;S1136;S1140 | S471 | 15 | 10/3/2 | 11/2/2 (73.3%) | holds | 5 | 4/1 | holds | 18 | 5/8/4 | 5/8/4 | holds, holds |
-| S4d drop every study whose raw sign and substantive direction come apart | S084;S104;S142;S358;S404;S471;S539;S749;S1020;S1032;S1038;S1122 | — | 11 | 8/1/2 | 8/1/2 (72.7%) | holds | 6 | 5/1 | holds | 15 | 5/6/4 | 5/6/4 | holds, holds |
+| S0 baseline | — | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/8/3 | 7/7/3 | holds, holds |
+| S1 drop abstract-only extractions | — | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/8/3 | 7/7/3 | holds, holds |
+| S1b drop sparse-audit strong+moderate rows | — | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/8/3 | 7/7/3 | holds, holds |
+| S2 drop rows for studies not flagged eligible | — | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/8/3 | 7/7/3 | holds, holds |
+| S3 collapse linked reports (same underlying data) | — | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/8/3 | 7/7/3 | holds, holds |
+| S4 drop the Family A coding judgment call (S404; S358 left the families under A26) | S404 | — | 15 | 10/3/2 | 11/2/2 (73.3%) | holds | 6 | 5/1 | holds | 17 | 6/8/3 | 7/7/3 | holds, holds |
+| S4b drop the two kept studies with no household access outcome (S1140, S1136) | S1136;S1140 | — | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 5 | 4/1 | holds | 16 | 5/8/3 | 6/7/3 | holds, holds |
+| S4c recode S471 as Null (fully adjusted estimate not significant) | — | S471 | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/7/3 | 6/7/3 | holds, holds |
+| S4e recode S879 as Null (household water access alone) | — | S879 | 16 | 10/4/2 | 12/2/2 (75.0%) | holds | 6 | 5/1 | holds | 17 | 6/8/2 | 7/7/2 | holds, holds |
+| S5 S1 to S4c and S4e together | S404;S1136;S1140 | S471;S879 | 15 | 10/3/2 | 11/2/2 (73.3%) | holds | 5 | 4/1 | holds | 16 | 5/7/2 | 5/7/2 | holds, holds |
+| S4d drop every study whose raw sign and substantive direction come apart | S084;S104;S142;S404;S471;S539;S749;S1020;S1032;S1038;S1122 | — | 10 | 8/0/2 | 8/0/2 (80.0%) | holds | 6 | 5/1 | holds | 12 | 4/5/3 | 4/5/3 | holds, holds |
 
 Tests: **A** — more than half of the studies are Favourable (concordant with "recognition/eligibility improves access") in the substantive-direction table;
-**B** — no study is Unfavourable or Null in substantive direction; **C** — no single category holds a majority, by raw coefficient sign and by substantive direction. The raw sign is the sign of the reported estimate; the substantive direction is its meaning for household access, affordability or equity once the outcome polarity and the exposure pole are taken into account (`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4b** drops the five studies whose outcome is not a household access measure; **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; **S4d** keeps only the studies where the two readings agree ('+' is Favourable, '-' is Unfavourable), which tests whether the Family A and C conclusions depend on the inverted-outcome and restated-pole judgments.
+**B** — no study is Unfavourable or Null in substantive direction; **C** — no single category holds a majority, by raw coefficient sign and by substantive direction. The raw sign is the sign of the reported estimate; the substantive direction is its meaning for household access, affordability or equity once the outcome polarity and the exposure pole are taken into account (`05_analysis/effect_sizes/SWIM_DIRECTION_CODING_2026-10-14.csv`). **S4b** drops the two kept studies whose outcome is not a household access measure (S1140, S1136); **S4c** recodes S471 (significant in its organisation-only model, not after full adjustment) as Null; **S4e** recodes S879 as Null (household water access alone was null; the 30-point rise was in payment compliance); **S4d** keeps only the studies where the two readings agree ('+' is Favourable, '-' is Unfavourable), which tests whether the Family A and C conclusions depend on the inverted-outcome and restated-pole judgments.
 
 ## Descriptive counts with the 10 abstract-only extractions removed
 
-Studies: 1,080 → 1,070. Risk-of-bias tool distribution:
+Studies: 1,078 → 1,068. Risk-of-bias tool distribution:
 
 | Tool | All | Without abstract-only | Change |
 |---|---|---|---|
 | MMAT | 195 | 194 | -1 |
-| JBI Cross-Sectional | 130 | 128 | -2 |
+| JBI Cross-Sectional | 129 | 127 | -2 |
 | CASP Qualitative | 248 | 242 | -6 |
 | Legal Framework | 426 | 425 | -1 |
 | AMSTAR 2 | 18 | 18 | +0 |
-| ROBINS-I | 58 | 58 | +0 |
+| ROBINS-I | 57 | 57 | +0 |
 | RoB 2 | 5 | 5 | +0 |
 
 Every tool population keeps its rank order; the largest reductions are CASP Qualitative (6), JBI Cross-Sectional (2), MMAT (1).

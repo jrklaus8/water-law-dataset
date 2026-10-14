@@ -84,7 +84,7 @@ class TestEffectSizes(unittest.TestCase):
         cls.ed = {r['study_id'] for r in rows('03_extraction/extracted_data/extraction_database.csv')}
 
     def test_shape(self):
-        self.assertEqual(len(self.es), 60)  # 59 before the A13 ruling of 2026-10-14 added S331 (Sarfo 2025, adjusted OR 4.27, a reasoned non-fit); 62 until 2026-10-13: the A16 ruling added S1166 (Jiang & Zheng 2014), the A24 rulings then removed S312 and S435 (2026-10-13) and S348 and S969 (2026-10-14), A1 removed S589 and the A15 ruling added S1169 (Olmstead 2004), all on 2026-10-14
+        self.assertEqual(len(self.es), 58)  # 60 before the A26 rulings of 2026-10-14 excluded S1121 (E04) and S1143 (E07) and archived their rows;  # 59 before the A13 ruling of 2026-10-14 added S331 (Sarfo 2025, adjusted OR 4.27, a reasoned non-fit); 62 until 2026-10-13: the A16 ruling added S1166 (Jiang & Zheng 2014), the A24 rulings then removed S312 and S435 (2026-10-13) and S348 and S969 (2026-10-14), A1 removed S589 and the A15 ruling added S1169 (Olmstead 2004), all on 2026-10-14
         self.assertEqual(len({r['study_id'] for r in self.es}), len(self.es))
         self.assertTrue({r['study_id'] for r in self.es} <= self.ed)
         for col in ('study_id', 'outcome_family', 'exposure_definition', 'comparator_definition', 'effect_measure', 'effect_estimate', 'sample_size', 'direction', 'adjusted',

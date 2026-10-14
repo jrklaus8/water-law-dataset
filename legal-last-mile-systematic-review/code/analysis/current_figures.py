@@ -44,7 +44,7 @@ def original_labels():
 # mis-buckets rows whose annotation text mentions a second tool (an error this project made and corrected on 2026-09-28).
 TOOL_KEYS = [('RoB 2', 'RoB 2'), ('ROBINS-I', 'ROBINS-I'), ('JBI', 'JBI Cross-Sectional'), ('MMAT', 'MMAT'),
              ('CASP', 'CASP Qualitative'), ('AMSTAR', 'AMSTAR 2'), ('Legal Institutional', 'Legal Framework'), ('NONE', 'NONE')]
-HUMAN_RULING_MARKS = ('A16 adjudication', 'A19 ruling', 'A6 tier-1 ruling')
+HUMAN_RULING_MARKS = ('A16 adjudication', 'A19 ruling', 'A6 tier-1 ruling', 'A26 ruling')
 ABSTRACT_ONLY_PREFIXES = ('Extracted from published abstract', 'Extracted from abstract')
 
 
@@ -89,7 +89,7 @@ def compute():
     # Human confirmations only (labels `Human-reviewer2-...`); a second AI model's blind pass is counted separately.
     F['reviewer_2_confirmed_includes'] = sum(r['reviewer_2'].startswith('Human-') and r['final_decision'] == 'include' for r in ft)
     # human verification or adjudication of full-text decisions: the 'Human-' confirmations of S001-S200, plus every decided row on which the PI ruled under reviewer CK (reviewer_2 'CK', or a dated
-    # adjudication or ruling note: the A16 apply script is also used for the A19, A20, A22-A25 and audit passes; 'A19 ruling' and 'A6 tier-1 ruling' are the two other marks)
+    # adjudication or ruling note: the A16 apply script is also used for the A19, A20, A22-A25 and audit passes; 'A19 ruling', 'A6 tier-1 ruling' and 'A26 ruling' (the SWiM core confirmations) are the other marks)
     _adj = [r for r in ft if r['final_decision'] in ('include', 'exclude') and not r['reviewer_2'].startswith('Human-')
             and (r['reviewer_2'] == 'CK' or any(m in r['notes'] for m in HUMAN_RULING_MARKS))]
     F['human_adjudicated_rows'] = len(_adj)
@@ -97,6 +97,16 @@ def compute():
     F['human_adjudicated_includes'] = sum(r['final_decision'] == 'include' for r in _adj)
     F['borderline_includes'] = sum(r['final_decision'] == 'include' and 'BORDERLINE INCLUDE' in r['notes'] for r in ft)   # includes the PI confirmed in A6 as borderline (thin rule-type link, or borderline on criterion 3)
     F['human_verified_rows'] = F['reviewer_2_confirmed_includes'] + F['human_adjudicated_rows']
+    # the SWiM core: the studies in the three synthesis families, how many have a human-verified inclusion decision, and how many have both direction codings confirmed by the author (SWIM_CK_CHECKS_2026-10-14.csv)
+    _ftb, _edb = {r['record_id']: r for r in ft}, {r['study_id']: r for r in ed}
+    _core = [r['study_id'] for r in es if r['synthesis_family'] in ('A', 'B', 'C')]
+    _hv = lambda s: (lambda f: f['reviewer_2'].startswith('Human-') or f['reviewer_2'] == 'CK' or any(m in f['notes'] for m in HUMAN_RULING_MARKS))(_ftb[_edb[s]['record_id']])
+    F['swim_core_studies'] = len(_core)
+    F['swim_core_inclusion_human_verified'] = sum(_hv(s) for s in _core)
+    _ck = ROOT / '05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv'
+    _ckrows = list(csv.DictReader(open(_ck, encoding='utf-8', newline=''))) if _ck.exists() else []
+    F['swim_core_direction_ck_confirmed'] = sum(r['ck_raw_sign_agrees (Y/N)'] == 'Y' and r['ck_substantive_direction_agrees (Y/N)'] == 'Y' and r['study_id'] in _core for r in _ckrows)
+    F['swim_core_flagged_for_author'] = sum(r['scope_outcome_check'] == 'flagged' and r['study_id'] in _core for r in _ckrows)
     F['reviewer_2_second_model_rows'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) for r in ft)
     F['reviewer_2_second_model_conflicts'] = sum(r['reviewer_2'].startswith(('Codex-', 'Gemini-')) and r['conflict'].lower() == 'true' for r in ft)
     F['extraction_rows'] = len(ed)
@@ -183,9 +193,10 @@ def render(F):
              f"| Exclusion-log rows | {F['exclusion_log_rows']:,} — by code: " + ", ".join(f"{k} {v}" for k, v in F['exclusion_by_code'].items()) + " |",
              f"| Decided rows with blank / inferred reviewer_1 | {F['decided_blank_reviewer_1']} / {F['decided_inferred_reviewer_1']} |",
              f"| Includes confirmed by a human reviewer_2 | {F['reviewer_2_confirmed_includes']} |",
-             f"| Further decided rows ruled on by the PI under reviewer CK (adjudication passes and A6) | {F['human_adjudicated_rows']} ({F['human_adjudicated_excludes']} excludes, {F['human_adjudicated_includes']} includes) |",
+             f"| Further decided rows ruled on by the PI under reviewer CK (adjudication passes, A6 and the A26 SWiM core confirmations) | {F['human_adjudicated_rows']} ({F['human_adjudicated_excludes']} excludes, {F['human_adjudicated_includes']} includes) |",
              f"| Includes confirmed by the PI in A6 as borderline (thin rule-type link; flagged, not removed) | {F['borderline_includes']} |",
              f"| Full-text rows with human verification or adjudication, in all / share of decided rows | {F['human_verified_rows']} / {100 * F['human_verified_rows'] / F['full_text_decided']:.1f}% |",
+             f"| SWiM core: studies in the three families / with a human-verified inclusion decision / with both direction codings confirmed by the author / flagged and awaiting the author | {F['swim_core_studies']} / {F['swim_core_inclusion_human_verified']} / {F['swim_core_direction_ck_confirmed']} / {F['swim_core_flagged_for_author']} |",
              f"| Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | {F['reviewer_2_second_model_rows']} / {F['reviewer_2_second_model_conflicts']} |", "",
              "## Extraction and classification", "",
              "| Item | Figure |", "|---|---|",

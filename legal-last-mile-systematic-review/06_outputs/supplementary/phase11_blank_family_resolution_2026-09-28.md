@@ -71,3 +71,8 @@ This resolves the 9 rows' family *classification* only. It does not change any r
 `effect_estimate`, `direction`, `adjusted`, or `evidence_status` — those remain exactly as
 originally extracted. It also does not reopen the 9 already-reasoned non-fits from Phase 11
 §6 (S149, S178, S312, S353, S388, S636, S649, S795, S869), which were not re-litigated here.
+
+## Addendum 2026-10-14 (A26): three further reasoned non-fits
+
+On 2026-10-14 the author moved three rows out of the families after checking their outcomes against the narrow reading: **S358** (Williams et al. 2025, formerly Family A: groundwater decline and contamination risk at the level of 1,881 service areas), **S590** (Brown 1989, formerly Family C: a 19th-century Prussian city's decision to build waterworks) and **S606** (Zhou & Liang 2021, formerly Family C: wastewater and solid-waste treatment capacity per capita). None measures household connection, access or service quality, so none matches Family A, B or C; each is a single study with its exposure and outcome. Their `effect_sizes.csv` rows keep every estimate and now read `synthesis_family` blank with the reason in `exclusion_from_pooling_reason`. S1121 (building permits) and S1143 (garbage collection) were excluded from the review (E04, E07) and their rows archived in `11_archive/effect_sizes_removed_2026-10-13.csv`. The families are now A 16, B 6, C 17, with 19 reasoned non-fits.
+

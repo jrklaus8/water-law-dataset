@@ -57,12 +57,29 @@ class TestHeadlineFigures(unittest.TestCase):
         F = self.F
         decided = [r for r in self.ft if r['final_decision'] in ('include', 'exclude')]
         human = {r['record_id'] for r in decided if r['reviewer_2'].startswith('Human-')}
-        ruled = {r['record_id'] for r in decided if r['record_id'] not in human and (r['reviewer_2'] == 'CK' or 'A16 adjudication' in r['notes'] or 'A19 ruling' in r['notes'] or 'A6 tier-1 ruling' in r['notes'])}
+        ruled = {r['record_id'] for r in decided if r['record_id'] not in human and (r['reviewer_2'] == 'CK' or 'A16 adjudication' in r['notes'] or 'A19 ruling' in r['notes'] or 'A6 tier-1 ruling' in r['notes'] or 'A26 ruling' in r['notes'])}
         self.assertEqual(F['reviewer_2_confirmed_includes'], len(human))
         self.assertEqual(F['human_adjudicated_rows'], len(ruled))
         self.assertEqual(F['human_verified_rows'], len(human) + len(ruled))
         self.assertEqual(F['human_adjudicated_excludes'] + F['human_adjudicated_includes'], len(ruled))
         self.assertEqual(F['borderline_includes'], sum(1 for r in decided if r['final_decision'] == 'include' and 'BORDERLINE INCLUDE' in r['notes']))
+
+    def test_swim_core_verification_figures(self):
+        """The SWiM core figures, recounted from the effect rows, the full-text notes and the author's checks file without the module's constants."""
+        F = self.F
+        core = [r['study_id'] for r in rows('05_analysis/effect_sizes/effect_sizes.csv') if r['synthesis_family'] in ('A', 'B', 'C')]
+        rec = {r['study_id']: r['record_id'] for r in self.ed}
+        ftb = {r['record_id']: r for r in self.ft}
+        def human(s):
+            f = ftb[rec[s]]
+            return f['reviewer_2'].startswith('Human-') or f['reviewer_2'] == 'CK' or any(m in f['notes'] for m in ('A16 adjudication', 'A19 ruling', 'A6 tier-1 ruling', 'A26 ruling'))
+        chk = rows('05_analysis/effect_sizes/SWIM_CK_CHECKS_2026-10-14.csv')
+        self.assertEqual(F['swim_core_studies'], len(core))
+        self.assertEqual(F['swim_core_inclusion_human_verified'], sum(human(s) for s in core))
+        self.assertEqual(F['swim_core_direction_ck_confirmed'], sum(1 for r in chk if r['study_id'] in core and r['ck_raw_sign_agrees (Y/N)'] == 'Y' and r['ck_substantive_direction_agrees (Y/N)'] == 'Y'))
+        self.assertEqual(F['swim_core_flagged_for_author'], sum(1 for r in chk if r['study_id'] in core and r['scope_outcome_check'] == 'flagged'))
+        for r in chk:                                   # a flagged study is never counted as confirmed, and a confirmed one is human-verified
+            self.assertEqual(human(r['study_id']), r['scope_outcome_check'] == 'passed' or r['study_id'] not in {c['study_id'] for c in chk}, r['study_id'])
 
     def test_extraction_counts(self):
         F, ed = self.F, self.ed
