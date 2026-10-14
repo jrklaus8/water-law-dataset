@@ -2,15 +2,14 @@
 
 `full_text_reviewer_2_priority_queue_2026-09-28.csv` is the recommended order of work for a human second reviewer of the
 full-text decisions. The older `full_text_reviewer_2_queue.csv` (175 records from an early snapshot) is superseded.
-**One-page working checklist: `REVIEWER_2_CHECKLIST.md`.** Currently only 200 of the 1,159 includes (S001–S200) and none of the
-1,117 excludes have been independently confirmed by a human (`AI_USE_STATEMENT.md`).
+**One-page working checklist: `REVIEWER_2_CHECKLIST.md`.** At 2026-10-14 a human has confirmed 197 of the 1,080 includes (S001–S200 less three the PI later excluded) and the PI has ruled on 137 excludes and 38 further includes in the adjudications (open items A16 and A22–A25); no other exclude has been independently confirmed by a human (`AI_USE_STATEMENT.md`). **The queue holds 225 rows (73 + 102 + 50) and none has been worked by a human reviewer yet** (one tier-1 row carries the PI's own `CK` label from an adjudication); 18 tier-1 rows also have a blind second-model decision (Codex or Gemini), which is AI-versus-AI and not a human check. The sample sizes below are fixed by the seed and the script, not by the 2026-09-28 figures, which moved with the rulings.
 
 ## What is in it
 
 | Tier | Rows | Selection | Why |
 |---|---|---|---|
-| 1 | 73 (47 include, 26 exclude) | **Every** decided row whose reviewer label was not recorded (an AI label was inferred on 2026-10-14, open item A2) | Provenance not recorded at the time; the inferred label is not human review |
-| 2 | 103 excludes | Seeded random sample, stratified by exclusion code (about 100 in proportion, at least 3 per code; codes E08 duplicate and E10 inaccessible-text are not sampled because a second reader cannot re-make them from the paper) | Checks that AI excludes are correct; errors here silently remove eligible studies |
+| 1 | 73 (46 include, 27 exclude) | **Every** decided row whose reviewer label was not recorded (an AI label was inferred on 2026-10-14, open item A2) | Provenance not recorded at the time; the inferred label is not human review |
+| 2 | 102 excludes | Seeded random sample, stratified by exclusion code (about 100 in proportion, at least 3 per code; codes E08 duplicate and E10 inaccessible-text are not sampled because a second reader cannot re-make them from the paper) | Checks that AI excludes are correct; errors here silently remove eligible studies |
 | 3 | 50 includes | Seeded random sample of includes beyond S001–S200 (optional) | Checks that AI includes — and the extraction built on them — are correct |
 
 Seed `20260928`; regenerate with `python3 code/screening/build_reviewer2_priority_queue.py` (deterministic). Sampling proportions
@@ -26,5 +25,5 @@ and the seed are in the script, so the sample can be audited and re-drawn.
 
 ## Limits
 
-The samples are for spot-checking, not a certified error rate: 103 of 1,117 excludes and 50 of 1,059 unconfirmed includes cannot
+The samples are for spot-checking, not a certified error rate: 102 of the 1,197 excludes and 50 of the 883 unconfirmed includes (1,080 less the 197 confirmed) cannot
 bound the true error rate tightly. If a tier shows disagreement, widen it rather than extrapolate.

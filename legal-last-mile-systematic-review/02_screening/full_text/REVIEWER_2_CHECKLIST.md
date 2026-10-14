@@ -6,7 +6,7 @@ For each record, in `full_text_reviewer_2_priority_queue_2026-09-28.csv` order. 
 
 **2. Apply the inclusion criteria** (`INCLUSION_EXCLUSION.md`) — all of them, in this order:
 - [ ] Examines water or sanitation **service access**?
-- [ ] Examines a **legal, administrative, institutional, regulatory or governance** factor?
+- [ ] Examines a **legal, administrative, institutional, regulatory or governance** factor? *Since 2026-10-13 this is read as a rule-type mechanism directly governing service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, utility ownership or regulatory structure), not generic project delivery, behavioural promotion or unanalysed governance background (dated note in `INCLUSION_EXCLUSION.md`). It is a post-hoc reading: if the paper passes the plain wording but not the narrow one, say so in the comment.*
 - [ ] Contains **empirical evidence or a systematic empirical synthesis**? (A policy overview, essay or commentary with no method and no primary data is **not** enough → E05.)
 - [ ] Reports an **outcome** relevant to access, connection, availability, reliability, quantity, affordability or exclusion?
 - [ ] Enough information to identify **population, exposure and outcome**? Study **design identifiable**?
