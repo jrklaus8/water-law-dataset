@@ -51,6 +51,33 @@ def exclusion_table(F):
     return "\n".join(rows)
 
 
+# references of the Introduction: (key in the text, study_id of the included record); the reference lines are built from the extraction rows so they match the database
+INTRO_REFS = [('Abdulhadi', 'S350'), ('Alam', 'S537'), ('Bakker', 'S1000'), ('Criqui', 'S1165'), ('Hackenbroch', 'S652'), ('Hendraputra', 'S344'), ('Nelson', 'S372'), ('Olmstead', 'S1169')]
+METHOD_REFS = ["Campbell, M., McKenzie, J. E., Sowden, A., Katikireddi, S. V., Brennan, S. E., Ellis, S., et al. (2020). Synthesis without meta-analysis (SWiM) in systematic reviews: reporting guideline. *BMJ*, 368, l6890. https://doi.org/10.1136/bmj.l6890",
+               "Page, M. J., McKenzie, J. E., Bossuyt, P. M., Boutron, I., Hoffmann, T. C., Mulrow, C. D., et al. (2021). The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. *BMJ*, 372, n71. https://doi.org/10.1136/bmj.n71"]
+
+
+def _reference_lines():
+    ed = {r['study_id']: r for r in cf.read('ed')}
+    lines = []
+    for key, sid in INTRO_REFS:
+        r = ed[sid]
+        assert key.lower() in r['citation'].lower(), (key, sid)
+        cit = r['citation'].rstrip('.').replace('"Behaviour', 'Behaviour').replace('scoping review."', 'scoping review.') if key == 'Alam' else r['citation'].rstrip('.')
+        lines.append((key, f"{cit}." + (f" https://doi.org/{r['doi']}" if r['doi'].strip() else '')))
+    lines += [(m.split(',')[0], m) for m in METHOD_REFS]
+    out = []
+    for _, line in sorted(lines, key=lambda x: x[0].lower()):
+        out += [line, ""]
+    return out
+
+
+def _rob2_double_reports(F):
+    """Number of RoB 2 reports that repeat another RoB 2 report of the same trial (definite same-data links between two RoB 2 studies)."""
+    rob2 = {r['study_id'] for r in cf.read('ed') if cf.tool_of(r['risk_of_bias_tool']) == 'RoB 2'}
+    return sum(1 for r in cf.read('links') if r['same_underlying_data'] == 'yes' and r['study_id_a'] in rob2 and r['study_id_b'] in rob2)
+
+
 def build():
     F = cf.compute()
     n, inc = F['extraction_rows'], F['full_text_include']
@@ -77,12 +104,10 @@ def build():
          "**Conclusions.** The empirical literature extensively documents associations between legal and administrative conditions and household water and sanitation access across diverse institutional contexts, but rarely employs designs capable of isolating causal effects and does not support a single pooled meta-analytic estimate. Overall certainty for causal or cross-jurisdictional magnitude claims remains low to very low, underscoring the need for quasi-experimental and comparative socio-legal designs targeting specific administrative rules.", "",
          "**Registration.** Not registered before the work was done. The protocol was fixed in writing on 2026-08-22 (git commit `d591062`), before any database was searched, and was registered retrospectively on OSF, frozen at release `0.2.0-interim` (2026-10-14) [author: add the OSF identifier and submission date once submitted, and label the registration retrospective].", "",
          "## 1. Introduction", "",
-         "[Author: write the background with references. The paragraphs below state the argument the repository supports; they are not cited.]", "",
-         "Access to water and sanitation is usually measured by infrastructure coverage, but a household within reach of a network may still be unable to connect, or to keep and use a connection, because of legal and administrative conditions: "
-         "who is recognised as eligible, what documents or tenure the application requires, what it costs, how much discretion officials hold, and how rules are enforced or reviewed [ref]. "
+                  "Access to water and sanitation is usually measured by infrastructure coverage, but a household within reach of a network may still be unable to connect, or to keep and use a connection, because of legal and administrative conditions: "
+         "who is recognised as eligible, what documents or tenure the application requires, what it costs, how much discretion officials hold, and how rules are enforced or reviewed (Bakker et al., 2008; Criqui, 2015; Hackenbroch & Hossain, 2012; Olmstead, 2004). "
          "This review calls the gap between physical availability and effective access the *legal last mile*. The term organises the question; it is not assumed to be established by the evidence (`PROJECT_SPEC.md` §14).", "",
-         "The relevant evidence is scattered across disciplines and designs — public administration, economics, law, geography, public health, development studies — and across mechanisms and outcome measures that are rarely comparable [ref]. "
-         "No prior synthesis, to the authors' knowledge, maps this evidence with a mechanism-based framework [author to verify against the literature].", "",
+         "The relevant evidence is scattered across disciplines and designs — public administration, economics, law, geography, public health, development studies — and across mechanisms and outcome measures that are rarely comparable. Most of the systematic reviews in the corpus synthesise a single intervention type or governance model: community participation (Nelson et al., 2021), behaviour-change and legal-provision approaches to household sewer connection (Alam et al., 2025), or the privatisation of one city's water services (Hendraputra, 2026). The closest cross-cutting review in the corpus, a scoping review of access inequalities in slums, organises its 33 studies into five barrier themes, one of which is governance and policy, rather than by the legal and administrative mechanisms through which access is conditioned (Abdulhadi et al., 2024). To the authors' knowledge, no prior synthesis maps this evidence with a mechanism-based framework.", "",
          "**Objectives.** (1) Describe the empirical evidence on legal and administrative conditions and access to water and sanitation, by design, setting, mechanism and outcome. "
          "(2) Synthesise quantitative evidence where exposure, comparator, outcome and effect measure are comparable enough to do so defensibly, and otherwise report the direction of association transparently. "
          "(3) State what the evidence base does and does not allow us to conclude, including how reliable the review's own process is.", "",
@@ -116,12 +141,12 @@ def build():
          f"A 92-field extraction form (`CODEBOOK.md`) was completed for every included study by the AI, largely from full text; {F['abstract_only_extractions']} studies were extracted from abstract or metadata only and an audit found further rows with signs of shallow extraction (Limitations). The AI later re-read {bmp.reextraction_counts()[0]} studies from full texts found in the researcher's Drive; of the {bmp.reextraction_counts()[1]} rows flagged only by the sparse-record audit, {bmp.reextraction_counts()[2]} had an abstract-level extraction that was materially wrong or incomplete (`reextract_2026-10-04/CAMPAIGN_NOTES.md`). There was no second extractor. "
          "A seeded sample for human second extraction has been prepared (`03_extraction/second_extractor/`) but not yet completed.", "",
          "### 2.5 Risk of bias and critical appraisal", "",
-         f"Each study was appraised with the instrument matching its design: RoB 2 (cluster variant) for randomised trials ({T['RoB 2']}), ROBINS-I ({T['ROBINS-I']}), JBI cross-sectional ({T['JBI Cross-Sectional']}), MMAT ({T['MMAT']}), CASP qualitative ({T['CASP Qualitative']}) and AMSTAR 2 for systematic reviews ({T['AMSTAR 2']}). "
+         f"Each study was appraised with the instrument matching its design: RoB 2 (cluster variant) for randomised trials ({T['RoB 2']} reports of {T['RoB 2'] - _rob2_double_reports(F)} distinct trials), ROBINS-I ({T['ROBINS-I']}), JBI cross-sectional ({T['JBI Cross-Sectional']}), MMAT ({T['MMAT']}), CASP qualitative ({T['CASP Qualitative']}) and AMSTAR 2 for systematic reviews ({T['AMSTAR 2']}). "
          f"For {T['Legal Framework']} legal-documentary or doctrinal studies no published instrument fits, and this project's own **non-validated** Legal Institutional Evidence Appraisal Framework was used; {T.get('NONE', 0)} studies were judged not appraisable. "
          "Ratings were assigned by rule from the extracted fields, not by signalling-question reading of each paper, except for the studies re-appraised from full text (listed in `CHANGELOG.md`). Ratings therefore describe the extraction as much as the paper.", "",
          "### 2.6 Synthesis", "",
          "Each study was coded to one of nine mechanism families (eligibility, status and documentation; procedural burden; fees, tariffs and subsidies; discretion and accommodation; enforcement and sanctions; review and redress; institutional structure and coordination; participation and assistance; regulatory model and ownership) or to `multiple`, and to one of four outcome families (primary connection, effective access, economic access, administrative outcome) or `multiple`; the families are not pooled with each other. "
-         "The labels were mapped from the free-text labels of the extraction by keyword rules, with the rows the rules could not place resolved by the AI under the author's review (four studies the mapping could not place were excluded), and the original labels are preserved; the mapping is mechanical and unvalidated, and a human has not checked it. Free-text study-design labels were mapped to the design list (eight values plus `other`) in the same way. "
+         "The labels were mapped from the free-text labels of the extraction by keyword rules, with the rows the rules could not place resolved by the AI under the author's review (four studies the mapping could not place were excluded), and the original labels are preserved; the mapping is mechanical and unvalidated, and the author has not checked it. Free-text study-design labels were mapped to the design list (eight values plus `other`) in the same way. "
          f"A feasibility judgment (`phase11_quantitative_feasibility_judgment.md`) concluded that no family reaches the bar for meta-analysis, so {F['effect_size_rows']} effect-size rows were compiled into three structured syntheses reporting direction and significance of each study's own estimate (SWiM). "
          + bmp.family_fit_clause() + " "
          "No effect was converted to a common scale. Sensitivity analyses removed abstract-only and shallow extractions, linked reports and two coding judgment calls, and would remove the rows of studies not flagged eligible (none remain since S589's row was taken out on 2026-10-14); they are reported as a supplementary table (`05_analysis/sensitivity/SENSITIVITY_ANALYSIS_2026-09-28.md`), a standing pre-publication requirement, and the direction coding itself still awaits human verification on a sample.", "",
@@ -185,13 +210,11 @@ def build():
          "- **Author contributions (CRediT):** Claudio Klaus: Conceptualization, Data curation, Formal analysis, Funding acquisition (self-funded), Investigation, Methodology, Project administration, Resources, Software, Supervision, Validation, Visualization, Writing – original draft (direction and revision of AI-assisted synthesis; see AI_USE_STATEMENT.md), Writing – review & editing. The AI tools used (Anthropic Claude, OpenAI Codex, Google Gemini) are not authors; the AI-assisted stages are described in `AI_USE_STATEMENT.md`.",
          "- **Data and code availability:** repository (`README.md`), release `0.2.0-interim` (tag `v0.2.0-interim`); source PDFs are not redistributed.",
          "- **Ethics:** Ethics approval was not required for this study as it is a systematic review of published and grey literature involving no primary data collection from human participants.", "",
-         "## References", "", "Campbell, M., McKenzie, J. E., Sowden, A., Katikireddi, S. V., Brennan, S. E., Ellis, S., et al. (2020). Synthesis without meta-analysis (SWiM) in systematic reviews: reporting guideline. *BMJ*, 368, l6890. https://doi.org/10.1136/bmj.l6890", "",
-         "Page, M. J., McKenzie, J. E., Bossuyt, P. M., Boutron, I., Hoffmann, T. C., Mulrow, C. D., et al. (2021). The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. *BMJ*, 372, n71. https://doi.org/10.1136/bmj.n71", "",
-         "[Author: references to be added where marked [ref]. The repository's `SOURCES.md` and `sources.bib` list the methodological sources already used (RoB 2, ROBINS-I, JBI, CASP, MMAT and AMSTAR 2 as well).]", ""]
+         "## References", "", *_reference_lines(), "[Author: the Introduction cites included studies and reviews as examples of each point; check each against the paper before submission, and add a general reference on administrative burden if wanted. `SOURCES.md` and `sources.bib` list the methodological sources (RoB 2, ROBINS-I, JBI, CASP, MMAT and AMSTAR 2).]", ""]
     text = "\n".join(x for x in L if x is not None).replace('\n\n\n', '\n\n')
     # the lifted paragraphs were written for the preliminary report: re-point its section numbers and voice at the manuscript's
     for old, new in (('§2A.1', 'Section 3.2'), ('§2A.2', 'Section 3.3'), ('§2A.3', 'Section 3.5'), ('§2A.5', 'Section 3.7'), ('see 2A.2', 'see Section 3.3'), ('§3.4', 'Section 3.4'),
-                     ("this report's own observation, not a project ruling", "an observation of this draft, not a project ruling"), ('supplied by you', 'supplied by the researcher')):
+                     ("this report's own observation, not a project ruling", "an observation of this draft, not a project ruling"), ('supplied by you', 'supplied by the author'), ('the human researcher', 'the author'), ("the researcher's", "the author's"), ('The researcher', 'The author'), ('the researcher', 'the author')):
         text = text.replace(old, new)
     return text + "\n"
 

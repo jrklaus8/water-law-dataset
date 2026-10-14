@@ -130,3 +130,7 @@ S331 stays a reasoned non-fit. The CRediT list is the 14 standard roles and the 
 ## Update: A6 tier 1 batch 2 and the flagged pair confirmed (2026-10-14, round 8)
 
 S391, S395 and the 20 batch-2 includes are confirmed; ten includes carry a `BORDERLINE INCLUDE` note (a computed figure). Human verification: 197 + 214 = 411 of 2,277 (18.1%). The documents that quote it are verifier-checked against `current_figures.py`, so after any new ruling batch run `python3 code/analysis/current_figures.py --write`, then edit the numbers in `osf_preregistration_draft.md`, `RELEASE_0.2.0-interim_2026-10-14.md`, `REVIEWER_2_PRIORITY_QUEUE_README.md` and `AI_USE_STATEMENT.md` until `verify_repository.py` passes. Open: batches 3 and 4 of the tier-1 sheet (34 rows: 16 includes including the abstract-only S365 and S380, and 18 excludes), then tiers 2 and 3.
+
+## Update: A6 tier 1 complete, SWiM verification worksheet (2026-10-14, round 9)
+
+All 73 tier-1 rows carry a CK ruling; 13 includes are `BORDERLINE INCLUDE`. Human verification is 445 of 2,277 (19.5%). Next for A6: tier 2 (102 excludes) and tier 3 (50 includes) of the queue, the second-extractor sample (`03_extraction/second_extractor/`), and the human check of the SWiM direction coding in `05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv` (fill the `ck_*` columns; the 44 rows are the three SWiM families). The manuscript Introduction now cites included studies; the `[ref]` placeholders are gone, and one author note remains in the References.

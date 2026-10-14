@@ -16,9 +16,9 @@ checks that the current-status documents quote these values. If a document disag
 | Exclusion-log rows | 1,197 — by code: E01 490, E02 34, E03 88, E04 86, E05 157, E06 106, E07 29, E08 8, E09 2, E10 151, E12 46 |
 | Decided rows with blank / inferred reviewer_1 | 0 / 73 |
 | Includes confirmed by a human reviewer_2 | 197 |
-| Further decided rows ruled on by the PI under reviewer CK (adjudication passes and A6) | 214 (146 excludes, 68 includes) |
-| Includes confirmed by the PI in A6 as borderline (thin rule-type link; flagged, not removed) | 10 |
-| Full-text rows with human verification or adjudication, in all / share of decided rows | 411 / 18.1% |
+| Further decided rows ruled on by the PI under reviewer CK (adjudication passes and A6) | 248 (164 excludes, 84 includes) |
+| Includes confirmed by the PI in A6 as borderline (thin rule-type link; flagged, not removed) | 13 |
+| Full-text rows with human verification or adjudication, in all / share of decided rows | 445 / 19.5% |
 | Decided rows blind-re-screened by a second AI model (reviewer_2 `Codex-…`) / conflicts | 112 / 31 |
 
 ## Extraction and classification
