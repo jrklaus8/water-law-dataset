@@ -162,7 +162,7 @@ Included
     [03_extraction/extracted_data/extraction_database.csv, S001-S1169 (S227,
     S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]
-  Studies included in quantitative evidence synthesis (n = 59 effect-size rows, as of 2026-10-14, all from quantitative-synthesis-eligible studies; S589's row, an eligibility inconsistency flagged by the repository audit, was removed on 2026-10-14 and S1169's row was added the same day)
+  Studies included in quantitative evidence synthesis (n = 60 effect-size rows, as of 2026-10-14, all from quantitative-synthesis-eligible studies; S589's row, an eligibility inconsistency flagged by the repository audit, was removed on 2026-10-14, and S1169's and S331's rows were added the same day)
     [05_analysis/effect_sizes/effect_sizes.csv, first populated 2026-09-16
     and extended in almost every full-text-screening batch since as new
     genuinely quantitative, non-fabricated exposure-vs-comparator studies

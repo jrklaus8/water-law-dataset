@@ -1,9 +1,7 @@
 # Funding, competing interests and author affiliation — completed statements (PRISMA 2020 items 25 and 26)
 
-**Status: COMPLETED 2026-10-14 for the three required statements, on the author's instruction (open item A8); ready for the author's final sign-off.**
-The statements below were supplied by the author (Claudio Klaus) and entered by the AI without change; nothing in them was inferred by the AI.
-The file keeps its original name (`..._TEMPLATE.md`) because other files link to it. Prompts the author's statements do not answer are marked
-`[not stated]` and are listed at the end; none of them has been guessed.
+**Status: CLOSED 2026-10-14 (open item A8), on the author's instruction.** Every prompt below is now answered by a statement the author (Claudio Klaus) supplied; the AI entered them without change and inferred nothing.
+The file keeps its original name (`..._TEMPLATE.md`) because other files link to it. Items the repository record can check are cross-referenced in the tables; the author's statements stand as given.
 
 ## Author and affiliation
 
@@ -23,7 +21,7 @@ Database access was provided through institutional subscriptions at Erasmus Univ
 | Role of the funder in design, conduct, analysis, interpretation, decision to publish | Not applicable (no funder) |
 | Non-financial support | Database access through institutional subscriptions at Erasmus University Rotterdam |
 | Institution / programme under which the work is done | External doctoral candidate, Erasmus School of Law, Erasmus University Rotterdam; companion to the PhD dissertation named above |
-| Cost of the AI tools used, and who paid | `[not stated]` |
+| Cost of the AI tools used, and who paid | API and subscription costs for the AI tools used in this review (Anthropic Claude, OpenAI Codex and Google Gemini) were paid personally by the author; no external, institutional or vendor funding was received. (Repository record: the Gemini calls of 2026-10-03/04 ran on the author's free-tier API key, `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md`.) |
 
 ## Item 26 — Competing interests
 
@@ -35,12 +33,22 @@ Database access was provided through institutional subscriptions at Erasmus Univ
 | Employment or advisory roles in the sector reviewed | Covered by the statement above: none declared |
 | Authorship of any included study | Covered by the statement above. Check by the AI on 2026-10-14, by surname only: no citation among the 1,080 included reports and no author field in the full-text database contains "Klaus" |
 | Views or affiliations that could be seen to bear on the question | Covered by the statement above: none declared (the author's dissertation addresses the same topic, which is disclosed above as the relationship of this review to it) |
-| Relationship to the AI vendor (Anthropic), if any | `[not stated]` |
-| Anyone else involved in screening/extraction and their interests | The AI performed most screening, extraction and appraisal (`AI_USE_STATEMENT.md`); two other AI models (Codex, Gemini) acted as blind second reviewers on a sample. No other human reviewer is recorded. Interests of the AI tools' vendors: `[not stated]` |
+| Relationship to the AI vendors (Anthropic, OpenAI, Google) or any other vendor whose models were used | The author has no employment, consulting, equity or other financial or non-financial relationship with Anthropic, OpenAI, Google or any other AI vendor whose models were used in this project. |
+| Anyone else involved in screening/extraction and their interests | The author was the human second reviewer at title/abstract (3,665 records, labelled `Human-reviewer2-2026-09-12`) and the human adjudicator and verifier at full text (`reviewer_2` labels `Human-reviewer2-fulltext-…` and `CK`). The AI performed most first-pass screening, extraction and appraisal (`AI_USE_STATEMENT.md`); two other AI models (Codex, Gemini) acted as blind second reviewers on a sample. No other person is recorded. Interests of the AI tools' vendors: none (see the vendor statement above). |
+
+## Author contributions (CRediT)
+
+Claudio Klaus: Conceptualization, Methodology, Protocol & Codebook Design, Database Search Execution, Title/Abstract Second Review, Full-Text Adjudication & Verification (`reviewer_2`), Software & Validation Oversight, Writing – Review & Editing, Supervision, Project Administration.
+The AI-assisted first-pass screening, data extraction, batch appraisal and preliminary synthesis drafting were carried out by AI tools under the author's direction and are described in `AI_USE_STATEMENT.md`; the AI tools are not authors.
+*(The role names are the author's wording; "Protocol & Codebook Design", "Database Search Execution" and the other composite names are not among the 14 standard CRediT terms, so a journal that requires the standard list will need them mapped, for example to Methodology, Investigation, Validation and Software.)*
+
+## Ethics
+
+Ethics approval was not required for this study as it is a systematic review of published and grey literature involving no primary data collection from human participants.
 
 ## Also declare (journal-dependent)
 
-- AI use: see `AI_USE_STATEMENT.md` — tool, purpose and human oversight; model versions and dates of use still to be added per journal policy.
+- AI use: see `AI_USE_STATEMENT.md` — tool, purpose and human oversight. Model and tool provenance as logged (labels, dates, the Codex and Gemini model strings) is in its section "Model and tool provenance, as logged" and in the manuscript's Section 1 and Declarations; the exact Claude model version is recorded only for 60 rows and the second-reviewer sessions (see there).
 - Data and code availability (PRISMA item 27): this repository, release `0.2.0-interim` (tag `v0.2.0-interim`).
 - Registration (item 24): retrospective OSF registration prepared, frozen at release `0.2.0-interim`, not yet submitted (`00_admin/preregistration/osf_preregistration_draft.md`).
 
@@ -49,10 +57,6 @@ Database access was provided through institutional subscriptions at Erasmus Univ
 `07_manuscript/draft/MANUSCRIPT_DRAFT_2026-10-04.md` (Section 7, Declarations; generated by `code/analysis/build_manuscript_draft.py`) and
 `06_outputs/prisma/PRISMA_2020_CHECKLIST.md` (items 25 and 26).
 
-## Left for the author's sign-off
-
-1. Cost of the AI tools and who paid. 2. Any relationship to Anthropic (or the vendors of the second reviewers' models). 3. Confirmation that the statements above are final.
-
 ## Filled by
 
-Statements: Claudio Klaus (instruction of 2026-10-14). Entered: the AI, 2026-10-14. Final sign-off: [ ]
+Statements: Claudio Klaus (instructions of 2026-10-14, two rounds). Entered: the AI, 2026-10-14. Closed by the author's instruction of 2026-10-14; no item is left open in this file. The one author item that remains in the manuscript is the OSF identifier, which exists only after the retrospective registration is submitted (open item A7).

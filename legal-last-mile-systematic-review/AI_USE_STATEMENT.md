@@ -68,5 +68,19 @@ Any manuscript based on this work should state the AI use in its title or subtit
 (Anthropic)", state which stages were AI-conducted using the table above, and report the verification status honestly.
 Journals' and funders' AI-disclosure policies vary; check the target venue's before submission.
 
-*Version-specific model identifiers are deliberately not recorded in this repository's files; the per-decision reviewer labels and
-`CHANGELOG.md` dates identify when each AI decision was made.*
+## Model and tool provenance, as logged
+
+Exact model versions were **not** recorded decision by decision; what the repository does hold is listed here and is generated, with the dates, into the manuscript draft (`code/analysis/build_manuscript_pieces.py`, `ai_provenance_clause`).
+
+| Work | Logged label or string | Dates |
+|---|---|---|
+| Title/abstract first pass (Claude, Anthropic) | `Claude-AI-1stpass-2026-09-10`, `Claude-AI-1stpass-2026-09-11` | 2026-09-10 to 2026-09-11 |
+| Title/abstract second review (human) | `Human-reviewer2-2026-09-12` (3,665 records) | 2026-09-12 |
+| Full-text decisions (Claude) | `Claude-AI-fulltext-YYYY-MM-DD`, `Claude-AI-audit-2026-09-28`; 60 early rows `claude_sonnet_5`; 519 legacy rows `Claude` / `claude` | 2026-09-12 to 2026-10-14 |
+| Extraction and appraisal (Claude) | `Claude-AI-extraction-YYYY-MM-DD`, `Claude-AI-fulltext-YYYY-MM-DD` in `researcher` | 2026-09-12 to 2026-10-14 |
+| Blind full-text second review (OpenAI) | `Codex-gpt-5.6-sol-reviewer2-fulltext-…`; Codex CLI 0.160.0, model `gpt-5.6-sol`, reasoning effort high | 2026-10-03 |
+| Blind full-text second review (Google) | `Gemini-gemini-3.1-flash-lite-reviewer2-fulltext-…`; Gemini CLI, model `gemini-3.1-flash-lite` (`gemini-2.5-flash` was tried first and dropped at its daily quota) | 2026-10-03 to 2026-10-04 |
+
+The only Claude version string in the data is `claude_sonnet_5` (60 rows) and "Claude Sonnet 5" in `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md` for the 2026-10-03/04 sessions; for every other Claude decision only the stage and the date are logged, so a journal that requires the exact model version for those cannot be given one from the repository. The costs of all three tool families were paid personally by the author, who has no relationship with any of the vendors (`00_admin/disclosures/FUNDING_AND_COMPETING_INTERESTS_TEMPLATE.md`).
+
+*The per-decision reviewer labels and `CHANGELOG.md` dates identify when each AI decision was made.*

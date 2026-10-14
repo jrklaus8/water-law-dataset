@@ -84,7 +84,7 @@ class TestEffectSizes(unittest.TestCase):
         cls.ed = {r['study_id'] for r in rows('03_extraction/extracted_data/extraction_database.csv')}
 
     def test_shape(self):
-        self.assertEqual(len(self.es), 59)  # 62 until 2026-10-13: the A16 ruling added S1166 (Jiang & Zheng 2014), the A24 rulings then removed S312 and S435 (2026-10-13) and S348 and S969 (2026-10-14), A1 removed S589 and the A15 ruling added S1169 (Olmstead 2004), all on 2026-10-14
+        self.assertEqual(len(self.es), 60)  # 59 before the A13 ruling of 2026-10-14 added S331 (Sarfo 2025, adjusted OR 4.27, a reasoned non-fit); 62 until 2026-10-13: the A16 ruling added S1166 (Jiang & Zheng 2014), the A24 rulings then removed S312 and S435 (2026-10-13) and S348 and S969 (2026-10-14), A1 removed S589 and the A15 ruling added S1169 (Olmstead 2004), all on 2026-10-14
         self.assertEqual(len({r['study_id'] for r in self.es}), len(self.es))
         self.assertTrue({r['study_id'] for r in self.es} <= self.ed)
         for col in ('study_id', 'outcome_family', 'exposure_definition', 'comparator_definition', 'effect_measure', 'effect_estimate', 'sample_size', 'direction', 'adjusted',
@@ -99,7 +99,7 @@ class TestEffectSizes(unittest.TestCase):
         self.assertTrue(all(r['exclusion_from_pooling_reason'].strip() for r in self.es if r not in pooled), 'a non-pooled row gives no reason')
 
     def test_numeric_census(self):
-        """How many of the 59 rows could be pooled on their numbers at all: this is the picture behind the Phase 11 'nothing pooled' verdict."""
+        """How many of the 60 rows could be pooled on their numbers at all: this is the picture behind the Phase 11 'nothing pooled' verdict."""
         n_est = sum(numeric(r['effect_estimate']) for r in self.es)
         n_se = sum(numeric(r['standard_error']) for r in self.es)
         n_ci = sum(numeric(r['lower_CI']) and numeric(r['upper_CI']) for r in self.es)

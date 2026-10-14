@@ -28,3 +28,7 @@ Full-text screening completed and closed; extraction of every included report; c
 ## Still open (long-term, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`)
 
 A6 human second-review sampling (the reviewer-2 queue) and the independent second-extractor sample; A7 OSF registration (prepared 2026-10-14 as a transparent retrospective registration frozen at this release; the researcher uploads it after pushing the tag); A8 final sign-off of the funding, competing-interest and affiliation statements entered 2026-10-14 (PRISMA items 25 and 26); A13 one effect-size candidate (S331: adjusted OR 4.27 found, PI approval needed) and A14 (ten included studies still rest on a landing page or no file: S256, S280, S284, S290, S300, S301, S314, S317, S365, S380); the papers still to fetch; manuscript revision by a human author (`07_manuscript/draft/`) with the methods disclosure of the narrow criterion-2 ruling.
+
+## After the tagged snapshot (2026-10-14, later)
+
+The tag marks commit `a23f63e`. Later the same day the PI closed A13 (S331's adjusted OR added as a reasoned non-fit: 60 effect rows, 16 non-fits; families unchanged), A14 (new `full_text_status` values `landing_page_only` and `abstract_only` on ten included studies; no count moves) and A8 (all disclosure statements entered). A7 (the OSF registration) is prepared and awaits upload. The figures in the table above are those of the tagged snapshot.

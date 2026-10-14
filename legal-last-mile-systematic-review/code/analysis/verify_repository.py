@@ -67,8 +67,14 @@ check(r.returncode == 0 and 'match their documented' in r.stdout, 'validate_sche
 # ---- B. cross-file logic
 F = cf.compute()
 ft, el, ed, em, es, mp, links = (cf.read(k) for k in ('ft', 'el', 'ed', 'em', 'es', 'map', 'links'))
-_ft_status = {'', 'sought', 'retrieved', 'not_retrievable', 'wrong_file_retrieved', 'oa_pdf_candidate', 'oa_page_candidate', 'included', 'excluded'}  # DATA_DICTIONARY.md, full_text_status
+_ft_status = {'', 'sought', 'retrieved', 'not_retrievable', 'wrong_file_retrieved', 'oa_pdf_candidate', 'oa_page_candidate', 'included', 'excluded', 'landing_page_only', 'abstract_only'}  # DATA_DICTIONARY.md, full_text_status
 check({r['full_text_status'] for r in ft} <= _ft_status, f"full_text_status holds values not in DATA_DICTIONARY.md: {sorted({r['full_text_status'] for r in ft} - _ft_status)}")
+# open item A14 (2026-10-14): a decided include whose status says landing_page_only or abstract_only must have an abstract-only extraction, and every abstract-only extraction must carry one of those two statuses
+_ft_by_rec = {r['record_id']: r for r in ft}
+_status_abs = {r['record_id'] for r in ft if r['full_text_status'] in ('landing_page_only', 'abstract_only')}
+_prefix_abs = {r['record_id'] for r in ed if r['extraction_note'].startswith(cf.ABSTRACT_ONLY_PREFIXES)}
+check(_status_abs == _prefix_abs, f"full_text_status landing_page_only/abstract_only and abstract-only extraction notes disagree (open item A14): status only {sorted(_status_abs - _prefix_abs)}, note only {sorted(_prefix_abs - _status_abs)}")
+check(all(_ft_by_rec[x]['final_decision'] == 'include' for x in _status_abs), 'a landing_page_only or abstract_only record is not a decided include')
 check({r['conflict'] for r in ft} <= {'', 'true', 'false'}, f"full-text conflict column holds values other than true/false/blank: {sorted({r['conflict'] for r in ft} - {'', 'true', 'false'})}")
 # decision-field consistency of the full-text database (all hold today; each would catch a hand edit)
 check(not [r['record_id'] for r in ft if r['final_decision'] == 'include' and r['exclusion_reason']], 'a full-text include carries an exclusion_reason')
@@ -141,6 +147,11 @@ check(text('README.md').lstrip().startswith('# The Legal Last Mile — An AI-Ass
 check('AI-Assisted' in text('CITATION.cff').split('\n')[3], 'CITATION.cff: title no longer carries "AI-Assisted"')
 check('AI-Assisted' in text('PROTOCOL.md').split('## 2.')[0], 'PROTOCOL.md: working title no longer carries "AI-Assisted"')
 check((ROOT / 'AI_USE_STATEMENT.md').exists(), 'AI_USE_STATEMENT.md is missing')
+_aus = (ROOT / 'AI_USE_STATEMENT.md').read_text(encoding='utf-8')
+_n_sn, _n_lg = sum(r['reviewer_1'] == 'claude_sonnet_5' for r in ft), sum(r['reviewer_1'] in ('Claude', 'claude') for r in ft)
+check(f"{_n_sn} early rows `claude_sonnet_5`; {_n_lg} legacy rows" in _aus, f'AI_USE_STATEMENT.md provenance table does not match the reviewer labels ({_n_sn} claude_sonnet_5 rows, {_n_lg} legacy Claude rows)')
+_sec_models = {m for r in ft for m in [__import__('re').match(r'(?:Codex|Gemini)-(.+)-reviewer2-fulltext-', r['reviewer_2'])] if m}
+check(_sec_models and all(m.group(1) in _aus for m in _sec_models), 'AI_USE_STATEMENT.md does not name every second-reviewer model string that the full-text database logs')
 top_txt = (ROOT.parent / 'README.md').read_text(encoding='utf-8')
 for needle in (f"**{inc_n:,} include / {exc_n:,} exclude**", f"{n:,} studies extracted", f"all {F['tool_applicable']:,} to which one applies",
                f"{F['quantitative_synthesis_eligible']} studies quantitative-synthesis-eligible, {F['qualitative_synthesis_eligible']:,} qualitative"):

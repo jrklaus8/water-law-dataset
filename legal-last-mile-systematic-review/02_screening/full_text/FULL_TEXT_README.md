@@ -86,6 +86,9 @@ plate:
      — this is itself a PRISMA-reportable outcome, not a failure to hide.
      Leave `full_text_decision` blank in this case; the PRISMA flow diagram
      has a dedicated "Reports not retrieved" line for exactly this.
+   - Two further values exist since 2026-10-14 (open item A14) and are set only on decided includes whose file is not the full text: `landing_page_only`
+     (the saved file is a publisher or repository landing page) and `abstract_only` (no file; only the abstract and introduction were read). Do not use `retrieved`
+     for a file that you have not opened and found to be the paper itself.
 2. **Record where the file lives** in `full_text_location` — a local file
    path, a URL, or whatever lets you (or someone auditing this review)
    find that exact PDF again. Free text, but be specific enough to be

@@ -144,7 +144,7 @@ Phase 11 quantitative-feasibility judgment
 18 studies whose family assignment remained unresolved at that point — updated later the same
 day: after the 9-row blank-family follow-up and the S348 addition, `effect_sizes.csv` holds 62
 rows, Family A 20 / B 6 / C 20, with 16 rows left blank on a documented, reasoned non-fit basis,
-`phase11_blank_family_resolution_2026-09-28.md`; on 2026-10-14, after the PI's scope rulings, `effect_sizes.csv` holds 59 rows: Family A 19 / B 6 / C 19 and 15 blank; later the same day S589 left and S1169 joined, giving A 18 / B 6 / C 20 and 15 blank) — consistent with the
+`phase11_blank_family_resolution_2026-09-28.md`; on 2026-10-14, after the PI's scope rulings, `effect_sizes.csv` holds 59 rows: Family A 19 / B 6 / C 19 and 15 blank; later the same day S589 left and S1169 joined, giving A 18 / B 6 / C 20 and 15 blank; then S331 (a compliance outcome, a reasoned non-fit) joined, giving 60 rows with 16 blank) — consistent with the
 366-study snapshot's own finding that Family A and Family B "each currently rest on a small
 handful of studies," now confirmed at a larger, still-small scale. **No candidate family has
 enough independent, comparably-operationalized studies to support pooling** — Phase 11's own

@@ -211,3 +211,7 @@ not a confirmed finding that these are poor studies — roughly 40% of this batc
 `covariates` or a named statistical method captured at extraction time, most likely because
 extraction focused on the legal/institutional exposure-outcome content these studies were
 included for, not on methods-section-level RoB detail.
+
+## Update 2026-10-14: S331 re-appraised on the full text
+
+S331 (Sarfo 2025) is listed above as 'High concern (sparse extraction)', its 2026-09-28 batch rating. It was re-appraised item by item on the full text on 2026-10-04 and again on 2026-10-14 after the adjusted model (Table 4) was read: items 1-8 Yes, Yes, Yes, Yes, Yes, Unclear, Yes, Yes (7/8), **Low concern** under the rule above (>= 6/8). Item 6 changed from Yes to Unclear because the modelled covariates (type of new system, repair versus replacement, cost, system age) describe the correction that follows the inspection and are partly post-exposure. The rating text is in `extraction_database.csv`.

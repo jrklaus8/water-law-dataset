@@ -16,7 +16,7 @@
 | Full-text screening | Closed by researcher decision at **2,277 of 3,659 assessed (62.2%)**: **1,080 include / 1,197 exclude**; 1,382 never assessed. 151 of the excludes are E10 ("full text inaccessible"), so only **2,126** were judged on content. AI decisions; a human confirmed 100 includes and no excludes |
 | Extraction | 1,080 studies, 92 codebook fields, by the AI; 10 from abstract/metadata only; no second extractor |
 | Appraisal | Rule-based batch ratings from extracted fields with design-matched tools: RoB 2 5, ROBINS-I 58, JBI Cross-Sectional 130, MMAT 195, CASP Qualitative 248, AMSTAR 2 18, Legal Framework 426. Legal Framework is the project's own **non-validated** instrument. No human review of ratings |
-| Synthesis | Phase 11: no family clears the bar for meta-analysis. 59 effect-size rows (A 18, B 6, C 20, 15 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses |
+| Synthesis | Phase 11: no family clears the bar for meta-analysis. 60 effect-size rows (A 18, B 6, C 20, 16 reasoned non-fits), none pooled; three structured (SWiM) direction-of-association syntheses |
 
 ## 2A. Preliminary findings drawn from the extracted evidence
 
@@ -56,7 +56,7 @@ Institutional fragmentation (623), official discretion/accommodation (583) and f
 
 ### 2A.3 The quantitative subset: three structured syntheses (direction of association, not effect size)
 
-Only 59 studies have an effect-size row; none is pooled. Counts are of the **sign of each study's extracted association** (sign and valence differ for some studies — see the Family A and C documents).
+Only 60 studies have an effect-size row; none is pooled. Counts are of the **sign of each study's extracted association** (sign and valence differ for some studies — see the Family A and C documents).
 
 | Family | Studies | Positive / negative / null / mixed (sign) | Documents |
 |---|---|---|---|
@@ -143,7 +143,7 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 
 - 10 studies were extracted from abstract or metadata only (0.9%); none has an effect-size row, so the SWiM syntheses are unaffected by them, but descriptive counts and ratings include them. **That count is a floor:** it counts one note prefix, and a sparse-record audit (`05_analysis/descriptive/SPARSE_RECORD_AUDIT_2026-10-04.md`) found 53 more rows with at least one sign of shallow extraction — 0 whose own notes say only the abstract or citation was read and 15 whose recorded location cites the abstract alone (a verification queue, not proof) — of which 1 carry effect-size rows. There is no second extractor: extracted values have not been checked against the source papers.
 - 51 of 130 JBI ratings are "High concern", which here means sparse extraction rather than a poor study. For CASP and MMAT, several items are "Can't tell" for every study (for example CASP item 3, research design justified) because extraction did not capture methodological reporting. Ratings are rule-based and unreviewed by a human.
-- Of 59 effect-size rows, 8 give a confidence interval and 26 a standard error; estimates are as the papers report them and none is pooled.
+- Of 60 effect-size rows, 9 give a confidence interval and 26 a standard error; estimates are as the papers report them and none is pooled.
 
 ### 3.4 Unresolved classifications — the two you asked about
 
@@ -168,8 +168,8 @@ This is the author's tentative characterisation, not a GRADE judgment (none has 
 - **Linked reports (open item A3, ruled 2026-10-14: keep and link):** the 1,080 included reports describe 1,078 distinct studies on the definite same-data links (S294/S366 one trial; S097/S098 one sample) and 1,076 counting the partial overlaps (S681/S682, S357/S369). No pair was collapsed: companion reports carry distinct outcome-specific extractions and appraisals. S526/S539 (two US utility studies whose samples probably overlap) are flagged for verification before any pooling.
 - **Free-text classifications:** `mechanism_family` (231 distinct labels) and `outcome_family` (123) were uncontrolled until 2026-10-14, when the PI adopted the draft vocabularies (open items A5 and A20; originals preserved, the AI-resolved edge cases listed in `FAMILY_VOCABULARY_PROPOSAL_2026-09-28.md`); 0 studies still have an unmapped design class and the family mapping is mechanical and unvalidated. Country and legal-system fields are free text, so the geographic counts here are rule-based.
 - **Direction coding** in the SWiM documents is a judgment by the same AI; sign and valence differ for several studies.
-- **The "quantitative-synthesis-eligible" flag looks generous.** Of 232 studies flagged, 102 show nothing inferential in their extraction (descriptive or unclear), 27 name an inferential model but hold no interval, SE or p-value, and 103 carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only 59 studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.
-- **Consistency scan of the effect-size rows** found 0 new item(s) besides the S589 row removed on 2026-10-14 (none); but an interval could be checked for only 6 of 59 rows, so this is weak assurance.
+- **The "quantitative-synthesis-eligible" flag looks generous.** Of 233 studies flagged, 102 show nothing inferential in their extraction (descriptive or unclear), 27 name an inferential model but hold no interval, SE or p-value, and 104 carry some uncertainty information (heuristic; `05_analysis/descriptive/quantitative_flag_audit_2026-09-29.csv`). Only 60 studies have an effect-size row and none is pooled, so no synthesis result depends on the flag. No flag was changed.
+- **Consistency scan of the effect-size rows** found 0 new item(s) besides the S589 row removed on 2026-10-14 (none); but an interval could be checked for only 7 of 60 rows, so this is weak assurance.
 - **Same-paper duplicates** with different-language titles and blank DOIs were found and merged among included studies; the DOI/title audits cannot detect this class in the wider pool.
 
 ## 4. Most useful next steps (in order)

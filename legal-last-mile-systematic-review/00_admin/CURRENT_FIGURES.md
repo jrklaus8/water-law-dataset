@@ -24,7 +24,7 @@ checks that the current-status documents quote these values. If a document disag
 |---|---|
 | Extraction rows / evidence-map rows | 1,080 / 1,080 |
 | Highest study ID; retired-ID gaps | S1169; S079, S197, S199, S201, S202, S203, S204, S205, S206, S209, S210, S211, S212, S215, S218, S221, S227, S230, S233, S235, S236, S243, S244, S246, S260, S264, S299, S312, S318, S320, S321, S322, S323, S324, S326, S327, S328, S329, S330, S332, S337, S340, S341, S342, S346, S347, S348, S356, S397, S399, S429, S430, S435, S436, S440, S462, S466, S479, S482, S513, S653, S673, S677, S693, S696, S697, S700, S707, S793, S796, S841, S854, S867, S896, S903, S931, S943, S945, S952, S969, S976, S1053, S1056, S1065, S1077, S1079, S1084, S1098, S1117 |
-| Quantitative-synthesis-eligible / qualitative-synthesis-eligible | 232 / 988 |
+| Quantitative-synthesis-eligible / qualitative-synthesis-eligible | 233 / 988 |
 | Abstract/metadata-only extractions | 10 |
 | Linked-report links (same data yes / partial) | 12 (2 / 2) |
 | Distinct studies (definite links / incl. partial) | 1,078 / 1,076 |
@@ -55,5 +55,5 @@ Tool-applicable studies (all tools except NONE): 1,080; unrated among them: 0. N
 
 ## Effect sizes
 
-59 rows (59 from quantitative-synthesis-eligible studies, 0 from a study not flagged eligible); by family: (none: reasoned non-fit) 15, A 18, B 6, C 20; rows pooled: 0.
+60 rows (60 from quantitative-synthesis-eligible studies, 0 from a study not flagged eligible); by family: (none: reasoned non-fit) 16, A 18, B 6, C 20; rows pooled: 0.
 

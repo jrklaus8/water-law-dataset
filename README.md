@@ -270,7 +270,7 @@ retrieval are now closed by researcher decision — see below):
 | Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,277 of 3,659 records actually screened (62.2%) — **1,080 include / 1,197 exclude** (after two duplicate records were merged and S356 excluded on full text, 2026-09-28); 1,382 permanently unretrieved (1,383 at the closure; the PI added two records and returned one on 2026-10-14) |
 | Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,080 studies extracted |
 | Risk-of-bias appraisal | **Complete corpus-wide.** All 1,080 studies carry a correctly design-matched tool; all 1,080 to which one applies carry a completed rating (no study is now tagged NONE) — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
-| Evidence classification | Caught up with extraction: 232 studies quantitative-synthesis-eligible, 988 qualitative-synthesis-eligible |
+| Evidence classification | Caught up with extraction: 233 studies quantitative-synthesis-eligible, 988 qualitative-synthesis-eligible |
 | Quantitative synthesis | 59 effect-size rows extracted (62 at 2026-09-28; the PI's scope rulings of 2026-10-13 and 14 removed five and added two (S1166 and S1169)); **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
 
 This is an unusually large and comprehensive AI-assisted systematic review for its
