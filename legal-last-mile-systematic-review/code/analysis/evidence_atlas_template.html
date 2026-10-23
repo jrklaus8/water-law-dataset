@@ -242,7 +242,7 @@ ul.plain li { margin-bottom: 5px; max-width: 74ch; }
   function h(tag, attrs, ...kids) {
     const e = document.createElement(tag);
     if (attrs) for (const k in attrs) { if (k === 'class') e.className = attrs[k]; else if (k === 'html') e.innerHTML = attrs[k]; else if (k.startsWith('on')) e.addEventListener(k.slice(2), attrs[k]); else if (attrs[k] !== false && attrs[k] != null) e.setAttribute(k, attrs[k] === true ? '' : attrs[k]); }
-    kids.flat().forEach(c => { if (c != null) e.append(c.nodeType ? c : document.createTextNode(c)); });
+    kids.flat(Infinity).forEach(c => { if (c != null) e.append(c.nodeType ? c : document.createTextNode(c)); });
     return e;
   }
 
@@ -619,7 +619,7 @@ ul.plain li { margin-bottom: 5px; max-width: 74ch; }
     $('#sw-diverge').append(h('p', { class: 'cap' }, dv.length + ' of ' + W.length + ' studies change category between the two readings, which is why neither alone is reported.'));
     // table
     $('#sw-table').replaceChildren(h('table', null, h('thead', null, h('tr', null, ['ID', 'Fam', 'Study', 'Exposure vs comparator', 'Outcome', 'Raw', 'For households', 'Tool', 'Inclusion'].map(x => h('th', null, x)))),
-      h('tbody', null, view.map(x => h('tr', { class: SW.sel === x.id ? 'sel' : '' }, h('td', { class: 'mono' }, h('button', { class: 'btn', type: 'button', style: 'padding:2px 8px', onclick: () => { SW.sel = x.id; drawSwim(); $('#sw-detail').scrollIntoView({ block: 'nearest' }); } }, x.id)), h('td', null, x.fam), h('td', { style: 'min-width:130px' }, x.ay), h('td', { style: 'min-width:260px' }, x.ex + ' vs ' + x.cm), h('td', { style: 'min-width:150px' }, x.out), h('td', { class: 'mono' }, x.raw), h('td', null, h('span', { class: 'dirdot', style: '--c:' + dirColor(x.sub) }), x.sub), h('td', null, x.tool), h('td', null, statusChip(x.status)))))));
+      h('tbody', null, view.map(x => h('tr', { class: SW.sel === x.id ? 'sel' : '' }, h('td', { class: 'mono' }, h('button', { class: 'btn', type: 'button', style: 'padding:2px 8px', onclick: () => { SW.sel = x.id; drawSwim(); $('#sw-detail').scrollIntoView({ block: 'nearest' }); } }, x.id)), h('td', null, x.fam), h('td', { style: 'min-width:130px' }, x.ay), h('td', { style: 'min-width:260px' }, x.ex + ' vs ' + x.cm), h('td', { style: 'min-width:150px' }, x.out), h('td', { class: 'mono' }, ({ '+': '+', '-': '−', 'null': 'Null', 'mixed': 'Mixed' })[x.raw] || x.raw), h('td', null, h('span', { class: 'dirdot', style: '--c:' + dirColor(x.sub) }), x.sub), h('td', null, x.tool), h('td', null, statusChip(x.status)))))));
   }
 
   /* ------------------------------------------------------------------ robust */
