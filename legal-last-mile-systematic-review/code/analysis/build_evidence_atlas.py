@@ -10,7 +10,9 @@ Run from legal-last-mile-systematic-review/:  python3 code/analysis/build_eviden
 """
 import argparse
 import csv
+import glob
 import json
+import os
 import re
 import sys
 from collections import Counter
@@ -75,9 +77,50 @@ def country_of(c):
     return 'Several countries or region' if multi_re.search(and_names.sub('', c)) else c
 
 
+def doi_of(d):
+    return re.sub(r'^https?://(dx\.)?doi\.org/', '', d.strip(), flags=re.I)
+
+
 def short(s, n):
     s = re.sub(r'\s+', ' ', s).strip()
     return s if len(s) <= n else s[:n - 1].rstrip() + '…'
+
+
+def methods(F, ed):
+    """Numbers and strings the Methodology tab states, computed from the search log, the raw exports and the screening databases."""
+    raw = {}
+    for p in sorted(glob.glob(str(ROOT / '01_search/raw_exports/*.csv'))):
+        n = sum(1 for _ in csv.DictReader(open(p, encoding='utf-8', errors='replace', newline='')))
+        b = os.path.basename(p)
+        k = ('Scopus' if '_SCOPUS_' in b else 'Web of Science' if '_WOS_' in b else 'ProQuest (full-text and abstract query)' if 'SEARCH_039' in b else 'ProQuest Sociological Abstracts (thesaurus terms)' if 'SEARCH_040' in b
+             else 'JSTOR' if '_JSTOR_' in b else 'HeinOnline' if 'HEINONLINE' in b else 'SSRN' if 'SSRN' in b else 'Exploratory web-search pilot')
+        raw[k] = raw.get(k, 0) + n
+    assert sum(raw.values()) == bmp.RAW, (sum(raw.values()), bmp.RAW)
+    log = list(csv.DictReader(open(ROOT / '01_search/search_logs/search_log.csv', encoding='utf-8')))
+    scopus = [r for r in log if r['database'] == 'Scopus']
+    real = [r for r in log if r['database'] in ('Scopus', 'Web of Science', 'HeinOnline', 'ProQuest', 'ProQuest (Sociological Abstracts)', 'JSTOR')]
+    first = next(r for r in log if r['search_id'] == 'SEARCH_018')['exact_search_string']
+    ta = list(csv.DictReader(open(ROOT / '02_screening/title_abstract/screening_database.csv', encoding='utf-8')))
+    tac = Counter(r['title_abstract_decision'] or 'blank' for r in ta)
+    n_cols = len(ed[0])
+    assert n_cols == 93, n_cols   # 92 codebook fields plus record_id
+    return {'raw': raw, 'scopus_runs': len(scopus), 'search_first': min(r['date'] for r in real), 'search_last': max(r['date'] for r in real), 'scopus_string': first,
+            'ta_ai': {'include': tac['include'], 'exclude': tac['exclude'], 'unsure': tac['unsure'], 'blank': tac['blank']}, 'fields': n_cols - 1,
+            'models': 'Claude (Anthropic) for first-pass screening, extraction, appraisal and synthesis drafting; Codex (OpenAI) and Gemini (Google) as blind second reviewers on part of the full-text decisions'}
+
+
+def texts(F, ed, em):
+    """The full lists a reader needs to reproduce the study: every included text with its full citation and DOI, every full text excluded with its code, and every candidate never assessed."""
+    ft = cf.read('ft')
+    fam = {r['study_id']: r['synthesis_family'] for r in cf.read('es') if r['synthesis_family'] in ('A', 'B', 'C')}
+    inc = [[r['study_id'], r['publication_year'], re.sub(r'\s+', ' ', r['citation']).strip(), doi_of(r['doi']), r['record_id'], fam.get(r['study_id'], '')] for r in ed]
+    inc.sort(key=lambda x: int(x[0][1:]))
+    exc = [[r['record_id'], r['year'], re.sub(r'\s+', ' ', r['authors']).strip(), re.sub(r'\s+', ' ', r['title']).strip(), doi_of(r['doi']), r['exclusion_reason'], short(r['exclusion_reason_detail'], 150)]
+           for r in ft if r['final_decision'] == 'exclude']
+    una = [[r['record_id'], r['year'], re.sub(r'\s+', ' ', r['authors']).strip(), re.sub(r'\s+', ' ', r['title']).strip(), doi_of(r['doi']), 'wf' if r['full_text_status'] == 'wrong_file_retrieved' else 'nr']
+           for r in ft if not r['final_decision']]
+    assert (len(inc), len(exc), len(una)) == (F['full_text_include'], F['full_text_exclude'], F['full_text_undecided'])
+    return {'inc': inc, 'exc': sorted(exc, key=lambda x: (x[5], x[3].lower())), 'una': sorted(una, key=lambda x: x[3].lower())}
 
 
 def gather():
@@ -146,6 +189,7 @@ def gather():
          'tools': F['tools'], 'robins': F['robins_i_ratings'], 'rob2': F['rob2_ratings'], 'jbi_high': F['jbi_high_concern'], 'abstract_only': F['abstract_only_extractions'],
          'qeligible': F['quantitative_synthesis_eligible'], 'effect_rows': F['effect_size_rows'], 'families': F['effect_size_by_family'], 'borderline': F['borderline_includes'],
          'studies': studies, 'swim': swim, 'scen': scen,
+         'methods': methods(F, ed), 'texts': texts(F, ed, em),
          'unassessed': F['full_text_undecided'], 'distinct_studies': F['distinct_studies_definite_links'], 'direction_confirmed': F['swim_core_direction_ck_confirmed']}
     return D
 

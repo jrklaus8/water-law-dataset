@@ -72,9 +72,31 @@ class TestAtlas(unittest.TestCase):
             self.assertEqual(base[f][0], rows[0][f'{f}_k'])
             self.assertEqual(base[f][1], rows[0][f'{f}_favourable'])
 
+    def test_text_lists_are_complete_and_disjoint(self):
+        D, F = self.D, self.F
+        inc, exc, una = D['texts']['inc'], D['texts']['exc'], D['texts']['una']
+        self.assertEqual((len(inc), len(exc), len(una)), (F['full_text_include'], F['full_text_exclude'], F['full_text_undecided']))
+        self.assertEqual(len(inc) + len(exc) + len(una), F['full_text_records'])
+        recs = [x[4] for x in inc] + [x[0] for x in exc] + [x[0] for x in una]
+        self.assertEqual(len(recs), len(set(recs)))                      # every candidate sits in exactly one list
+        self.assertEqual({x[0] for x in inc}, {r['study_id'] for r in cf.read('ed')})
+        self.assertEqual(Counter(x[5] for x in exc), Counter(F['exclusion_by_code']))
+        self.assertEqual(Counter(x[5] for x in una), Counter({'nr': F['unretrieved_not_retrievable'], 'wf': F['unretrieved_wrong_file']}))
+        self.assertEqual({x[0] for x in inc if x[5]}, {w['id'] for w in D['swim']})
+        for x in inc + exc + una:                                        # DOIs are stored bare, never as URLs
+            d = x[3] if x in inc else x[4]
+            self.assertFalse(d.lower().startswith('http'), d)
+
+    def test_methods_numbers_reconcile(self):
+        M, F = self.D['methods'], self.F
+        self.assertEqual(sum(M['raw'].values()), self.D['flow'][0]['n'])
+        self.assertEqual(M['ta_ai']['include'] + M['ta_ai']['unsure'], 3665)
+        self.assertEqual(M['fields'], 92)
+        self.assertIn('TITLE-ABS-KEY(', M['scopus_string'])
+
     def test_page_states_its_limits(self):
         low = self.text.lower()
-        for needle in ('preliminary', 'ai-checked', 'human-verified', 'cannot tell us', 'nothing here is pooled'):
+        for needle in ('preliminary', 'ai-checked', 'human-verified', 'cannot tell us', 'nothing here is pooled', 'departures from the protocol', 'reproducing this review'):
             self.assertIn(needle, low, needle)
         self.assertNotIn('lorem', low)
 
