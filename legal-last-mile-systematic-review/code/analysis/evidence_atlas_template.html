@@ -1,0 +1,694 @@
+<title>Legal Last Mile Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sticky masthead with tab navigation over a single reading column; evidence is shown as ruled ledgers and one verification-stamped harvest plot. */
+:root {
+  --bg: #f4f5f8; --surface: #ffffff; --surface2: #eceef3; --ink: #14181f; --ink2: #434a59; --ink3: #626a79; --line: #d3d7e0;
+  --accent: #256abf; --accent-ink: #ffffff; --fav: #2a78d6; --unf: #eb6834; --mix: #6250d6; --nul: #7c7f88; --warn: #b4540a; --warn-bg: #fdf0e3;
+  --seq0: #ffffff; --tile-ink: #ffffff;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1218; --surface: #171b23; --surface2: #1f242e; --ink: #eceef3; --ink2: #b8bfcc; --ink3: #8f97a6; --line: #2b313c;
+    --accent: #5598e7; --accent-ink: #0f1218; --fav: #3987e5; --unf: #d95926; --mix: #9085e9; --nul: #8d9099; --warn: #f0a766; --warn-bg: #2b2016;
+    --tile-ink: #0f1218; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1218; --surface: #171b23; --surface2: #1f242e; --ink: #eceef3; --ink2: #b8bfcc; --ink3: #8f97a6; --line: #2b313c;
+  --accent: #5598e7; --accent-ink: #0f1218; --fav: #3987e5; --unf: #d95926; --mix: #9085e9; --nul: #8d9099; --warn: #f0a766; --warn-bg: #2b2016;
+  --tile-ink: #0f1218; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.55; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 0 48px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+.wrap { max-width: 1120px; margin: 0 auto; }
+h1, h2, h3, h4 { text-wrap: balance; line-height: 1.2; margin: 0; }
+h1 { font-size: clamp(1.5rem, 2.6vw + 0.6rem, 2.2rem); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
+h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 6px; }
+p { margin: 0 0 10px; max-width: 70ch; }
+.mono, .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+td.mono { white-space: nowrap; }
+.foot .mono { overflow-wrap: anywhere; }
+.muted { color: var(--ink3); }
+.small { font-size: 0.86rem; }
+a { color: var(--accent); }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* masthead */
+.mast { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); margin: 0 calc(-1 * max(16px, env(safe-area-inset-left, 0px))) 0 calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding: 10px max(16px, env(safe-area-inset-right, 0px)) 0 max(16px, env(safe-area-inset-left, 0px)); }
+.mast-in { max-width: 1120px; margin: 0 auto; }
+.mast-top { display: flex; align-items: baseline; gap: 12px; justify-content: space-between; flex-wrap: wrap; }
+.kicker { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
+nav.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: thin; margin-top: 8px; }
+nav.tabs button { background: none; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px; white-space: nowrap; color: var(--ink2); font-weight: 700; font-size: 0.92rem; }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+nav.tabs button:hover { color: var(--ink); }
+.theme-btn { background: none; border: 1px solid var(--line); border-radius: 4px; padding: 2px 8px; font-size: 0.78rem; color: var(--ink2); }
+
+.caveat { background: var(--warn-bg); color: var(--ink); border: 1px solid var(--warn); border-radius: 4px; padding: 8px 12px; margin: 14px 0 0; font-size: 0.88rem; max-width: none; }
+.caveat b { color: var(--warn); }
+
+section.tab { padding-top: 22px; }
+.lede { font-size: 1.05rem; color: var(--ink2); max-width: 72ch; }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 16px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; min-width: 0; }
+.panel + .panel, .grid2 + .panel, .panel + .grid2, .grid2 + .grid2 { margin-top: 16px; }
+.grid2 > .panel { margin-top: 0; }
+.cap { color: var(--ink3); font-size: 0.84rem; margin: 8px 0 0; max-width: none; }
+.does { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 10px; font-size: 0.88rem; }
+.does div { min-width: 0; }
+.does b { display: block; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2px; }
+@media (max-width: 640px) { .does { grid-template-columns: 1fr; } }
+
+/* chips */
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 1px 7px; border-radius: 3px; border: 1.5px solid var(--ink); white-space: nowrap; }
+.chip.human { background: var(--ink); color: var(--bg); }
+.chip.ai { border-style: dashed; color: var(--ink2); border-color: var(--ink3); }
+.chip.t-desc { border-color: var(--ink3); color: var(--ink2); }
+.chip.t-tent { border-color: var(--warn); color: var(--warn); }
+.chip.t-none { border-color: var(--ink3); color: var(--ink3); text-decoration: line-through; }
+.chip.t-ok { border-color: var(--fav); color: var(--fav); }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+th { text-align: left; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink3); font-weight: 500; padding: 6px 10px 6px 0; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+td { padding: 9px 10px 9px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+td.r, th.r { text-align: right; }
+tr.sel td { background: var(--surface2); }
+
+/* bars */
+.bars { display: flex; flex-direction: column; gap: 3px; }
+.bar { display: grid; grid-template-columns: minmax(96px, 170px) 1fr auto; align-items: center; gap: 10px; background: none; border: 0; padding: 3px 4px; text-align: left; border-radius: 3px; width: 100%; }
+button.bar:hover { background: var(--surface2); }
+.bar.on { background: var(--surface2); outline: 1.5px solid var(--accent); }
+.bar .bl { font-size: 0.86rem; overflow-wrap: anywhere; }
+.bar .bt { height: 12px; background: var(--surface2); border-radius: 0 3px 3px 0; position: relative; }
+.bar .bt i { display: block; height: 100%; background: var(--accent); border-radius: 0 3px 3px 0; min-width: 2px; }
+.bar .bv { font-family: var(--font-mono); font-size: 0.8rem; font-variant-numeric: tabular-nums; min-width: 4.5ch; text-align: right; }
+
+/* funnel */
+.fun { display: grid; grid-template-columns: minmax(130px, 230px) 1fr; gap: 6px 14px; align-items: center; }
+.fun .fl { font-size: 0.9rem; font-weight: 700; }
+.fun .fb { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.fun .fbar { height: 22px; background: var(--accent); border-radius: 0 3px 3px 0; flex: none; }
+.fun .fn { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-weight: 500; }
+.fun .fnote { grid-column: 2; color: var(--ink3); font-size: 0.8rem; margin-top: -4px; margin-bottom: 8px; }
+@media (max-width: 640px) { .fun { grid-template-columns: 1fr; } .fun .fnote { grid-column: 1; } .fun .fl { margin-top: 6px; } }
+
+/* stacked bar */
+.stack { display: flex; height: 26px; gap: 2px; margin: 8px 0 6px; }
+.stack span { display: block; height: 100%; min-width: 2px; }
+.stack span.o { outline: 1px dashed var(--ink3); outline-offset: -1px; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 0.82rem; color: var(--ink2); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+/* filters */
+.filters { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px 12px; align-items: end; }
+.filters label { display: flex; flex-direction: column; gap: 3px; font-size: 0.74rem; font-family: var(--font-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink3); min-width: 0; }
+.filters select, .filters input[type="text"], .filters input[type="number"] { font: inherit; font-size: 0.9rem; text-transform: none; letter-spacing: 0; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; width: 100%; min-width: 0; }
+.btn { background: var(--surface); border: 1px solid var(--ink3); border-radius: 4px; padding: 6px 12px; font-size: 0.88rem; font-weight: 700; }
+.btn:hover { background: var(--surface2); }
+.btn.pri { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.count-line { font-weight: 700; margin: 12px 0 0; max-width: none; }
+.seg { display: inline-flex; border: 1px solid var(--ink3); border-radius: 4px; overflow: hidden; }
+.seg button { background: var(--surface); border: 0; padding: 6px 12px; font-size: 0.86rem; font-weight: 700; color: var(--ink2); border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.ctl { display: flex; flex-wrap: wrap; gap: 10px 22px; align-items: center; }
+.ctl .cl { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink3); margin-right: 8px; }
+
+/* heat grid */
+.heat { overflow-x: auto; }
+.heat table { font-size: 0.78rem; width: auto; min-width: 100%; }
+.heat th { padding: 4px 4px; text-align: center; border-bottom: 1px solid var(--line); font-size: 0.64rem; white-space: normal; max-width: 74px; vertical-align: bottom; }
+.heat th.rh { max-width: none; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--line); font-family: var(--font-body); font-size: 0.8rem; text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 400; padding-right: 10px; }
+.heat td { padding: 0; border: 1px solid var(--surface); text-align: center; }
+.heat td button { width: 100%; min-width: 46px; height: 28px; border: 0; background: var(--cellbg, var(--surface2)); font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink); }
+.heat td button.hi { color: var(--accent-ink); }
+.heat td button.on { outline: 2px solid var(--ink); outline-offset: -2px; }
+.heat td button:disabled { cursor: default; color: var(--ink3); }
+
+/* harvest plot */
+.fam { display: grid; grid-template-columns: 150px repeat(4, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.fam > div { padding: 10px 8px 12px; border-bottom: 1px solid var(--line); min-width: 0; }
+.fam .fh { font-weight: 700; font-size: 0.88rem; }
+.fam .fh small { display: block; font-weight: 400; color: var(--ink3); font-size: 0.78rem; margin-top: 3px; }
+.fam .ch { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink3); padding-bottom: 4px; border-bottom: 3px solid var(--c, var(--line)); }
+.fam .ch b { display: block; color: var(--ink); font-size: 0.95rem; letter-spacing: 0; }
+.tiles { display: flex; flex-wrap: wrap; gap: 5px; align-items: flex-end; }
+.tile { width: 58px; border-radius: 3px; border: 2px solid var(--c); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; line-height: 1.1; padding: 0; position: relative; }
+.tile.tall { height: 46px; } .tile.short { height: 30px; }
+.tile.human { background: var(--c); color: var(--tile-ink); }
+.tile.ai { background: var(--surface); color: var(--ink); border-style: dashed; }
+.tile.ai::after { content: "AI"; position: absolute; top: 1px; right: 2px; font-size: 0.55rem; color: var(--ink2); }
+.tile.sel { outline: 3px solid var(--ink); outline-offset: 1px; }
+.tile.off { opacity: 0.18; }
+svg .gl { stroke: var(--line); stroke-width: 1; }
+svg .ax { fill: var(--ink3); font: 10px var(--font-mono); }
+svg .bf { fill: var(--accent); }
+svg .bp { fill: var(--ink3); }
+svg .ivl { stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+svg .ivd { fill: var(--accent); stroke: var(--surface); stroke-width: 2; }
+.fam .cin { display: none; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink3); border-bottom: 3px solid var(--c); margin-bottom: 6px; padding-bottom: 2px; }
+.fam .empty { color: var(--ink3); font-size: 0.8rem; }
+@media (max-width: 760px) {
+  .fam.head { display: none; }
+  .fam .cin { display: block; }
+  .fam { grid-template-columns: 1fr 1fr; }
+  .fam .fh { grid-column: 1 / -1; border-bottom: 0; padding-bottom: 0; }
+}
+.key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 12px; font-size: 0.82rem; color: var(--ink2); align-items: center; }
+.key .k { display: inline-flex; align-items: center; gap: 6px; }
+.key .sw { width: 22px; height: 16px; border-radius: 3px; border: 2px solid var(--ink); display: inline-block; }
+.key .sw.h { background: var(--ink); } .key .sw.a { border-style: dashed; background: var(--surface); }
+.key .sw.t { height: 22px; } .key .sw.s { height: 12px; }
+.detail dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 10px 0 0; font-size: 0.9rem; }
+.detail dt { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink3); padding-top: 3px; }
+.detail dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 560px) { .detail dl { grid-template-columns: 1fr; } .detail dd { margin-bottom: 4px; } }
+.dir { display: inline-block; padding: 0 6px; border-radius: 3px; font-weight: 700; font-size: 0.82rem; border: 1.5px solid var(--c); color: var(--ink); }
+.dirdot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--c); margin-right: 6px; }
+
+/* robustness */
+.scen { display: flex; flex-wrap: wrap; gap: 6px; }
+.scen button { background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 5px 10px; font-size: 0.84rem; text-align: left; }
+.scen button[aria-pressed="true"] { border-color: var(--ink); background: var(--surface2); font-weight: 700; }
+.scen button .f { color: var(--warn); font-weight: 700; margin-left: 6px; }
+.fail { color: var(--warn); font-weight: 700; }
+.pass { color: var(--ink2); }
+ul.plain { margin: 0; padding-left: 1.1em; }
+ul.plain li { margin-bottom: 5px; max-width: 74ch; }
+.foot { margin-top: 36px; padding-top: 14px; border-top: 1px solid var(--line); color: var(--ink3); font-size: 0.82rem; }
+.foot p { max-width: 90ch; }
+</style>
+
+<header class="mast">
+    <div class="mast-in">
+      <div class="mast-top">
+        <div>
+          <div class="kicker">The Legal Last Mile · systematic review · interim release <span id="rel"></span> · data as of <span id="asof"></span></div>
+          <h1>Legal Last Mile Atlas</h1>
+        </div>
+        <button class="theme-btn" id="theme" type="button" aria-label="Toggle light and dark theme">Theme</button>
+      </div>
+      <nav class="tabs" role="tablist" aria-label="Sections" id="tabs"></nav>
+    </div>
+  </header>
+<div class="wrap">
+  <p class="caveat"><b>Preliminary.</b> Screening, extraction, appraisal and direction coding were done by an AI under the author's rulings. <span id="cv-hv"></span> Nothing here is pooled or certainty-graded, and no number is a finding about the effect of a law.</p>
+
+  <section class="tab" id="tab-summary" role="tabpanel" hidden></section>
+  <section class="tab" id="tab-flow" role="tabpanel" hidden></section>
+  <section class="tab" id="tab-map" role="tabpanel" hidden></section>
+  <section class="tab" id="tab-quality" role="tabpanel" hidden></section>
+  <section class="tab" id="tab-swim" role="tabpanel" hidden></section>
+  <section class="tab" id="tab-robust" role="tabpanel" hidden></section>
+  <section class="tab" id="tab-gaps" role="tabpanel" hidden></section>
+
+  <footer class="foot">
+    <p>Generated by <span class="mono">code/analysis/build_evidence_atlas.py</span> from the project databases; every figure is computed, none typed. Source files: <span class="mono">00_admin/CURRENT_FIGURES.md</span>, <span class="mono">05_analysis/descriptive/evidence_map.csv</span>, <span class="mono">05_analysis/effect_sizes/SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv</span>, <span class="mono">05_analysis/sensitivity/sensitivity_scenarios_2026-09-28.csv</span>. The SWiM syntheses follow Campbell et al. 2020 (vote counting by direction); the harvest-plot layout follows Ogilvie et al. 2008.</p>
+    <p>Reading rule used throughout: <b>human-verified</b> means the author reviewed the record and ruled on it (a confirmation in the S001-S200 pass or a ruling under reviewer CK). <b>AI-checked</b> means only the AI looked. The AI never records a human confirmation on the author's behalf.</p>
+  </footer>
+</div>
+
+<script>
+/*__DATA__*/
+(function () {
+  'use strict';
+  const $ = (s, r) => (r || document).querySelector(s);
+  const fmt = n => Number(n).toLocaleString('en-US');
+  const pct = (k, n, d) => (n ? (100 * k / n).toFixed(d === undefined ? 0 : d) : '0') + '%';
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const lab = k => String(k).replace(/_/g, ' ');
+  const cap1 = s => s.charAt(0).toUpperCase() + s.slice(1);
+  const count = (arr, f) => { const m = new Map(); arr.forEach(x => { const k = f(x); m.set(k, (m.get(k) || 0) + 1); }); return m; };
+  const ranked = m => [...m.entries()].sort((a, b) => b[1] - a[1] || String(a[0]).localeCompare(String(b[0])));
+  const S = D.studies, W = D.swim;
+  const DIRC = { Favourable: 'var(--fav)', Unfavourable: 'var(--unf)', Mixed: 'var(--mix)', Null: 'var(--nul)', '+': 'var(--fav)', '-': 'var(--unf)', mixed: 'var(--mix)', null: 'var(--nul)' };
+  const DESIGN = { qualitative: 'Qualitative', mixed_methods: 'Mixed methods', observational: 'Observational', quasi_experimental: 'Quasi-experimental', doctrinal: 'Doctrinal', jurimetric: 'Jurimetric', systematic_review_secondary: 'Systematic review', experimental: 'Experimental', other: 'Other' };
+  const MECHF = { eligibility_status_documentation: 'Eligibility, status, documentation', discretion_accommodation: 'Discretion, accommodation', institutional_structure_coordination: 'Institutional structure', enforcement_sanctions: 'Enforcement, sanctions', fees_tariffs_subsidies: 'Fees, tariffs, subsidies', regulatory_model_ownership: 'Regulatory model, ownership', participation_assistance: 'Participation, assistance', procedural_burden: 'Procedural burden', review_redress: 'Review, redress', multiple: 'Several mechanisms' };
+  const OUTF = { effective_access: 'Effective access', primary_connection: 'Primary connection', economic_access: 'Economic access', administrative_outcome: 'Administrative outcome', multiple: 'Several outcomes' };
+  const FAMN = { A: 'Family A · legal status, tenure, recognition, governance arrangements', B: 'Family B · assistance, participation, trust, external support', C: 'Family C · ownership, regulation, institutional structure' };
+  const FAMS = { A: 'Family A', B: 'Family B', C: 'Family C' };
+  const TOOLS = ['RoB 2', 'ROBINS-I', 'JBI Cross-Sectional', 'MMAT', 'CASP Qualitative', 'AMSTAR 2', 'Legal Framework'];
+
+  function h(tag, attrs, ...kids) {
+    const e = document.createElement(tag);
+    if (attrs) for (const k in attrs) { if (k === 'class') e.className = attrs[k]; else if (k === 'html') e.innerHTML = attrs[k]; else if (k.startsWith('on')) e.addEventListener(k.slice(2), attrs[k]); else if (attrs[k] !== false && attrs[k] != null) e.setAttribute(k, attrs[k] === true ? '' : attrs[k]); }
+    kids.flat().forEach(c => { if (c != null) e.append(c.nodeType ? c : document.createTextNode(c)); });
+    return e;
+  }
+
+  /* ------------------------------------------------------------------ shared figures */
+  const N = S.length;
+  const qualDesign = S.filter(x => ['qualitative', 'mixed_methods', 'doctrinal'].includes(x.d)).length;
+  const causal = S.filter(x => x.t === 'RoB 2' || x.t === 'ROBINS-I').length;
+  const single = ranked(count(S.filter(x => x.c && x.c !== 'Several countries or region'), x => x.c));
+  const top5 = single.slice(0, 5), top5n = top5.reduce((a, b) => a + b[1], 0);
+  const nCountry = single.length;
+  const since2010 = S.filter(x => x.y >= 2010).length;
+  const mflag = i => S.filter(x => x.mb >> i & 1).length;
+  const oflag = i => S.filter(x => x.ob >> i & 1).length;
+  const mIdx = k => D.mech.findIndex(m => m.key === k), oIdx = k => D.outc.findIndex(m => m.key === k);
+  const hvN = D.hv.total, decN = D.hv.decided;
+  const famCount = (fam, f) => W.filter(w => w.fam === fam && f(w)).length;
+
+  $('#rel').textContent = D.release; $('#asof').textContent = D.asof;
+  $('#cv-hv').textContent = 'Only ' + fmt(hvN) + ' of ' + fmt(decN) + ' full-text decisions (' + pct(hvN, decN, 1) + ') have a recorded human check; of the ' + W.length + ' studies in the direction counts, ' + W.filter(w => w.status === 'human').length + ' have a human-verified inclusion decision and the author has confirmed the direction coding of ' + D.direction_confirmed + '.';
+
+  /* ------------------------------------------------------------------ small chart helpers */
+  function bars(rows, o) {
+    o = o || {};
+    const max = o.max || Math.max(1, ...rows.map(r => r.v));
+    return h('div', { class: 'bars' }, rows.map(r => {
+      const inner = [h('span', { class: 'bl' }, r.label), h('span', { class: 'bt' }, h('i', { style: 'width:' + (100 * r.v / max) + '%' + (r.color ? ';background:' + r.color : '') })), h('span', { class: 'bv' }, o.pct ? pct(r.v, o.pct) + ' · ' + fmt(r.v) : fmt(r.v))];
+      if (o.onclick) return h('button', { class: 'bar' + (r.on ? ' on' : ''), type: 'button', 'aria-pressed': r.on ? 'true' : 'false', onclick: () => o.onclick(r) }, inner);
+      return h('div', { class: 'bar' }, inner);
+    }));
+  }
+  function stack(parts) {
+    const tot = parts.reduce((a, p) => a + p.v, 0) || 1;
+    return h('div', null,
+      h('div', { class: 'stack', role: 'img', 'aria-label': parts.map(p => p.label + ' ' + p.v).join(', ') }, parts.filter(p => p.v > 0).map(p => h('span', { class: p.o ? 'o' : '', style: 'width:' + (100 * p.v / tot) + '%;background:' + p.color, title: p.label + ': ' + fmt(p.v) }))),
+      h('div', { class: 'legend' }, parts.map(p => h('span', null, h('i', { style: 'background:' + p.color + (p.o ? ';outline:1px dashed var(--ink3);outline-offset:-1px' : '') }), p.label + ' ' + fmt(p.v) + ' (' + pct(p.v, tot) + ')'))));
+  }
+  function columns(data, o) {
+    const W_ = 640, H_ = 190, L = 34, B = 24, T = 12, R = 6;
+    const max = Math.max(1, ...data.map(d => d.v));
+    const nice = max <= 5 ? 5 : Math.ceil(max / 10) * 10;
+    const bw = (W_ - L - R) / data.length;
+    let s = '<svg viewBox="0 0 ' + W_ + ' ' + H_ + '" role="img" aria-label="' + esc(o.aria) + '" style="width:100%;height:auto;display:block">';
+    [0, 0.5, 1].forEach(f => { const y = T + (H_ - T - B) * (1 - f); s += '<line class="gl" x1="' + L + '" x2="' + (W_ - R) + '" y1="' + y + '" y2="' + y + '"/><text class="ax" x="' + (L - 6) + '" y="' + (y + 4) + '" text-anchor="end">' + Math.round(nice * f) + '</text>'; });
+    data.forEach((d, i) => {
+      const x = L + i * bw + 1.5, bh = (H_ - T - B) * d.v / nice, y = H_ - B - bh;
+      s += '<rect x="' + x + '" y="' + y + '" width="' + Math.max(1, bw - 3) + '" height="' + bh + '" rx="1.5" class="' + (d.partial ? 'bp' : 'bf') + '"><title>' + esc(d.label + ': ' + d.v) + '</title></rect>';
+      if (d.tick) s += '<text class="ax" x="' + (x + (bw - 3) / 2) + '" y="' + (H_ - 8) + '" text-anchor="middle">' + esc(d.tick) + '</text>';
+    });
+    return h('div', { html: s + '</svg>' });
+  }
+  function chip(kind, text) { return h('span', { class: 'chip ' + kind }, text); }
+  function statusChip(st) { return st === 'human' ? chip('human', 'Human-verified') : chip('ai', 'AI-checked'); }
+  const dirColor = d => DIRC[d] || 'var(--nul)';
+
+  /* ------------------------------------------------------------------ tabs */
+  const TABS = [['summary', 'Results preview'], ['flow', 'From records to studies'], ['map', 'Evidence map'], ['quality', 'Design and appraisal'], ['swim', 'Direction of association'], ['robust', 'Robustness'], ['gaps', 'Gaps and next steps']];
+  const built = {};
+  const tabsEl = $('#tabs');
+  TABS.forEach(([k, t]) => tabsEl.append(h('button', { type: 'button', role: 'tab', id: 'btn-' + k, 'aria-selected': 'false', 'aria-controls': 'tab-' + k, onclick: () => go(k) }, t)));
+  function go(k) {
+    if (!TABS.some(t => t[0] === k)) k = 'summary';
+    TABS.forEach(([id]) => { $('#tab-' + id).hidden = id !== k; $('#btn-' + id).setAttribute('aria-selected', id === k ? 'true' : 'false'); });
+    if (!built[k]) { built[k] = true; BUILD[k](); }
+    try { if (location.hash.slice(1) !== k) history.replaceState(null, '', '#' + k); } catch (e) { /* hash is optional */ }
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', () => go(location.hash.slice(1)));
+
+  /* ------------------------------------------------------------------ summary */
+  function ledgerRows() {
+    const fa = fam => W.filter(w => w.fam === fam);
+    const cnt = (a, d) => a.filter(w => w.sub === d).length;
+    const A = fa('A'), B = fa('B'), C = fa('C');
+    const a16 = D.a16, sc = D.scen;
+    const failing = sc.filter(s => Object.values(s.tests).includes('FAILS'));
+    const aShares = sc.map(s => 100 * s.A[1] / s.A[0]);
+    const issues = (name) => sc.filter(s => s.tests[name] === 'FAILS').length;
+    const aHv = A.filter(w => w.status === 'human').length, cHv = C.filter(w => w.status === 'human').length, bHv = B.filter(w => w.status === 'human').length;
+    const ws = oflag(oIdx('water_access')), ss = oflag(oIdx('sanitation_access'));
+    return [
+      { f: 'Most of the evidence is descriptive, not causal.', b: fmt(qualDesign) + ' of ' + fmt(N) + ' studies (' + pct(qualDesign, N) + ') are qualitative, mixed-methods or doctrinal; only ' + causal + ' (' + pct(causal, N) + ') were appraised with a causal-design tool (ROBINS-I or RoB 2).', t: 'desc', trust: 'Design labels are AI-coded and mapped by rule; the author approved the mapping as applied but has not checked each label.', to: 'quality' },
+      { f: 'The evidence is concentrated in a few jurisdictions.', b: top5.map(x => x[0] + ' ' + x[1]).join(', ') + ' make up ' + pct(top5n, N) + ' of studies; ' + nCountry + ' single-country values in all, and ' + single.filter(x => x[1] <= 2).length + ' of them have one or two studies.', t: 'desc', trust: 'Country is free text bucketed by rule. The 1,382 candidates never assessed are older, so earlier literature is under-represented.', to: 'gaps' },
+      { f: 'What is studied: fragmentation, discretion and fees dominate; redress is thin.', b: 'Fragmentation ' + fmt(mflag(mIdx('institutional_fragmentation'))) + ', discretion ' + fmt(mflag(mIdx('discretion_accommodation'))) + ', fees ' + fmt(mflag(mIdx('fees'))) + ' studies; administrative review ' + mflag(mIdx('administrative_review')) + ', judicial review ' + mflag(mIdx('judicial_review')) + '. Water access is coded in ' + fmt(ws) + ' studies, sanitation access in ' + fmt(ss) + '.', t: 'desc', trust: 'Flags are AI-extracted from one reading per study; there is no second extractor.', to: 'map' },
+      { f: 'Few studies can say anything about the size of effects.', b: D.effect_rows + ' effect-size rows from ' + D.qeligible + ' quantitative-eligible studies; ' + W.length + ' sit in the three direction-count families; none is pooled because no two studies share an exposure, comparator, outcome and effect measure.', t: 'desc', trust: 'The Phase 11 feasibility judgment found no family clears the bar for meta-analysis.', to: 'swim' },
+      { f: 'Recognition and formal status tend to go with better access (Family A).', b: cnt(A, 'Favourable') + ' of ' + A.length + ' studies Favourable (' + pct(cnt(A, 'Favourable'), A.length) + '), ' + cnt(A, 'Unfavourable') + ' Unfavourable, ' + cnt(A, 'Null') + ' Null; ' + aHv + ' of ' + A.length + ' have a human-verified inclusion.', t: 'tent', trust: 'A vote count. It ignores size and precision, is not causal, and the direction coding is the AI\'s (the author has confirmed ' + D.direction_confirmed + ').', to: 'swim' },
+      { f: 'Assistance, participation and trust look uniformly favourable, on very few studies (Family B).', b: cnt(B, 'Favourable') + ' of ' + B.length + ' Favourable; ' + bHv + ' of ' + B.length + ' human-verified inclusion. Each study tests a different mechanism.', t: 'tent', trust: 'Too few studies to call a pattern. Removing one removes a third of the evidence.', to: 'swim' },
+      { f: 'Ownership, regulation and institutional structure show no consistent household-relevant direction (Family C).', b: cnt(C, 'Favourable') + ' Favourable, ' + cnt(C, 'Unfavourable') + ' Unfavourable, ' + cnt(C, 'Mixed') + ' Mixed across ' + C.length + ' studies. One sub-pattern, private ownership going with worse affordability, rests on 3 studies that probably share data.', t: 'tent', trust: 'Heterogeneous exposures and outcomes; ' + cHv + ' of ' + C.length + ' human-verified inclusion.', to: 'swim' },
+      { f: 'The counts hold under the scenarios tried, except one pre-stated test.', b: 'Family A\'s Favourable share stays between ' + Math.min(...aShares).toFixed(0) + '% and ' + Math.max(...aShares).toFixed(0) + '% across ' + sc.length + ' scenarios. The pre-stated test that no raw sign dominates Family C fails in ' + issues('C no dominant raw sign') + ' of ' + sc.length + ' (negative is ' + sc[0].Craw[1] + ' of ' + sc[0].C[0] + '); the substantive-direction test fails in ' + issues('C no dominant substantive direction') + '.', t: 'ok', trust: 'The scenarios do not test the direction coding itself, unextracted studies, or overlap not flagged as linked.', to: 'robust' },
+      { f: 'The AI\'s exclusions look mostly sound, with a wide uncertainty band.', b: 'Of ' + a16.sample + ' randomly sampled content-based exclusions re-read blind by two other AI models and adjudicated by the author, ' + a16.reversed_in_sample + ' were false (' + (100 * a16.rate).toFixed(1) + '%, 95% interval ' + (100 * a16.rate_lo).toFixed(1) + ' to ' + (100 * a16.rate_hi).toFixed(1) + '%): roughly ' + a16.scaled + ' studies (' + a16.scaled_lo + ' to ' + a16.scaled_hi + ') across ' + fmt(a16.pool) + ' content-based exclusions.', t: 'desc', trust: 'Small sample, and the narrow reading of eligibility was adopted after the models\' disagreement was seen.', to: 'flow' },
+      { f: 'Human verification is partial.', b: fmt(hvN) + ' of ' + fmt(decN) + ' full-text decisions (' + pct(hvN, decN, 1) + ') carry a human check; ' + W.filter(w => w.status === 'human').length + ' of ' + W.length + ' direction-count studies; no extracted value has been checked by a second extractor.', t: 'desc', trust: 'This sets the ceiling on every other row.', to: 'flow' }
+    ];
+  }
+  const TYPE = { desc: ['t-desc', 'Descriptive'], tent: ['t-tent', 'Tentative association'], ok: ['t-ok', 'Stability check'], none: ['t-none', 'Not supported'] };
+  const BUILD = {};
+  BUILD.summary = function () {
+    const r = $('#tab-summary');
+    const rows = ledgerRows();
+    r.append(
+      h('h2', null, 'What we can learn from the evidence analysed so far'),
+      h('p', { class: 'lede' }, 'This review asks how legal and administrative conditions shape household access to water and sanitation. After screening ' + fmt(D.flow[1].n) + ' unique records it holds ' + fmt(N) + ' included studies. The ledger below separates what the evidence can support as a description of the literature, what it supports only as a tentative direction of association, and what it cannot support.'),
+      h('div', { class: 'panel' },
+        h('h3', null, 'Findings ledger'),
+        h('p', { class: 'small muted' }, 'Each row names its basis and how far to trust it. Use the link to open the chart behind it.'),
+        h('div', { class: 'tbl-wrap' }, h('table', null,
+          h('thead', null, h('tr', null, ['What the evidence shows', 'Basis', 'Kind of claim', 'How far to trust it', ''].map(x => h('th', null, x)))),
+          h('tbody', null, rows.map((x, i) => h('tr', null,
+            h('td', { style: 'min-width:190px;font-weight:700' }, x.f),
+            h('td', { style: 'min-width:260px' }, x.b),
+            h('td', null, chip(TYPE[x.t][0], TYPE[x.t][1])),
+            h('td', { style: 'min-width:200px', class: 'small' }, x.trust),
+            h('td', null, h('button', { class: 'btn', type: 'button', onclick: () => go(x.to) }, 'Open')))))))),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'What this evidence cannot tell us'),
+          h('ul', { class: 'plain' },
+            h('li', null, h('b', null, 'How big an effect any legal mechanism has. '), 'No two studies share an estimand, so there is no pooled or average effect, and vote counts carry no magnitude.'),
+            h('li', null, h('b', null, 'That a law causes better or worse access. '), 'Only ' + causal + ' studies used a causal-capable design, and their appraisal ratings are rule-based, not signalling-question level.'),
+            h('li', null, h('b', null, 'That a gap in the map is a gap in the world. '), 'Retrieval closed with ' + fmt(D.unassessed) + ' candidates never assessed, and the search was English-language and database-indexed.'),
+            h('li', null, h('b', null, 'Whether common-law or civil-law systems differ. '), 'Legal system is free text, confounded with country and design, and was not tested.'),
+            h('li', null, h('b', null, 'Anything about extraction accuracy. '), 'No second extractor has been run; ' + D.abstract_only + ' studies were extracted from abstracts only.'))),
+        h('div', { class: 'panel' }, h('h3', null, 'How to read the status marks'),
+          h('p', { class: 'small' }, 'Two kinds of mark recur in this atlas.'),
+          h('p', null, statusChip('human'), ' The author reviewed the record and ruled on it. This covers the inclusion decision only. It does not mean the effect estimate or the direction coding was verified.'),
+          h('p', null, statusChip('ai'), ' Only the AI looked. The AI\'s scope and outcome check found no red flag, but that is not a human confirmation.'),
+          h('p', { class: 'small muted' }, 'Kinds of claim: ', chip('t-desc', 'Descriptive'), ' counts the corpus; ', chip('t-tent', 'Tentative association'), ' is a vote count of direction; ', chip('t-ok', 'Stability check'), ' tests how the counts move; ', chip('t-none', 'Not supported'), ' marks claims the evidence cannot carry.'))),
+      h('div', { class: 'panel' }, h('h3', null, 'Method status in brief'),
+        h('div', { class: 'tbl-wrap' }, h('table', null, h('tbody', null, [
+          ['Protocol', 'Fixed before searching; registered on the Open Science Framework retrospectively (preregistration draft prepared).'],
+          ['Search and screening', 'Closed ' + D.flow[0].note.split(';')[0].replace('Searches closed ', '') + '. Title and abstract by the AI with a human second pass over include-or-unsure records. Full text by the AI, with ' + fmt(hvN) + ' human-checked decisions.'],
+          ['Eligibility', 'A narrow reading of criterion 2 (a legal or administrative access rule or mechanism) was adopted after seeing the AI models disagree; it moved ' + D.a16.moved_to_exclusion + ' included reports to exclusion.'],
+          ['Appraisal', 'Design-matched tool for all ' + fmt(N) + ' studies, rule-based; ' + pct(D.tools['Legal Framework'], N) + ' use the project\'s own non-validated framework.'],
+          ['Synthesis', 'Structured vote counting of direction (SWiM), two readings of each estimate; sensitivity analysis is a standing requirement. No meta-analysis, no GRADE judgment.']
+        ].map(x => h('tr', null, h('td', { style: 'font-weight:700;white-space:nowrap' }, x[0]), h('td', null, x[1])))))))
+    );
+  };
+
+  /* ------------------------------------------------------------------ flow */
+  BUILD.flow = function () {
+    const r = $('#tab-flow');
+    const maxL = Math.log10(D.flow[0].n);
+    const fun = h('div', { class: 'fun' });
+    D.flow.forEach(f => {
+      const w = Math.max(1.5, 100 * Math.log10(Math.max(f.n, 1)) / maxL);
+      fun.append(h('div', { class: 'fl' }, f.label), h('div', { class: 'fb' }, h('div', { class: 'fbar', style: 'width:calc(' + w + '% - 90px);min-width:4px' }), h('span', { class: 'fn' }, fmt(f.n))), h('div', { class: 'fnote' }, f.note));
+    });
+    const hv = D.hv;
+    const a = D.a16;
+    r.append(
+      h('h2', null, 'From records to studies'),
+      h('p', { class: 'lede' }, 'The flow follows PRISMA 2020. Bar length is on a log scale so the last stages stay visible; the number beside each bar is the count.'),
+      h('div', { class: 'panel' }, h('h3', null, 'Flow of records'), fun,
+        h('p', { class: 'cap' }, 'Reading: only ' + pct(D.flow[3].n, D.flow[2].n) + ' of the candidates that passed title and abstract were assessed at full text, because retrieval closed by decision. The ' + fmt(D.unassessed) + ' that were never assessed are older on average.')),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'Why full texts were excluded'),
+          bars(D.excl.slice().sort((x, y) => y.n - x.n).map(x => ({ label: x.code + ' ' + x.label, v: x.n })), { max: Math.max(...D.excl.map(x => x.n)) }),
+          h('p', { class: 'cap' }, fmt(D.excl.reduce((s, x) => s + x.n, 0)) + ' exclusion-log rows. ' + D.excl.find(x => x.code === 'E10').n + ' were excluded because the text was inaccessible, not on content. The narrow reading of criterion 2 shows up as E03 (wrong exposure).')),
+        h('div', { class: 'panel' }, h('h3', null, 'How much of the screening a human has checked'),
+          stack([{ label: 'Author-confirmed includes', v: hv.confirmed_includes, color: 'var(--ink)' }, { label: 'Author-ruled includes', v: hv.adj_includes, color: 'var(--accent)' }, { label: 'Author-ruled excludes', v: hv.adj_excludes, color: 'var(--mix)' }, { label: 'AI-only includes', v: hv.ai_includes, color: 'var(--surface2)', o: 1 }, { label: 'AI-only excludes', v: hv.ai_excludes, color: 'var(--surface2)', o: 1 }]),
+          h('p', { class: 'cap' }, fmt(hv.total) + ' of ' + fmt(hv.decided) + ' decided full-text rows (' + pct(hv.total, hv.decided, 1) + ') have a human check. A second AI model blind-screened ' + D.second_model.rows + ' decided rows and disagreed on ' + D.second_model.conflicts + '. ' + D.borderline + ' included reports carry a borderline-include note.'))),
+      h('div', { class: 'panel' }, h('h3', null, 'Reliability of the AI\'s exclusions'),
+        h('p', null, 'Two other AI models re-read ' + a.reread_excludes + ' exclusions blind; the author adjudicated each disagreement. In the ' + a.sample + ' randomly sampled content-based exclusions, ' + a.reversed_in_sample + ' were reversed.'),
+        (function () {
+          const W_ = 640, H_ = 64, L = 20, R = 20, x = v => L + (W_ - L - R) * v / 0.2;
+          let s = '<svg viewBox="0 0 ' + W_ + ' ' + H_ + '" role="img" aria-label="False-exclusion rate ' + (100 * a.rate).toFixed(1) + ' percent with 95 percent interval ' + (100 * a.rate_lo).toFixed(1) + ' to ' + (100 * a.rate_hi).toFixed(1) + '" style="width:100%;height:auto;display:block">';
+          [0, 0.05, 0.1, 0.15, 0.2].forEach(t => { s += '<line class="gl" x1="' + x(t) + '" x2="' + x(t) + '" y1="14" y2="38"/><text class="ax" x="' + x(t) + '" y="56" text-anchor="middle">' + (100 * t).toFixed(0) + '%</text>'; });
+          s += '<line class="ivl" x1="' + x(a.rate_lo) + '" x2="' + x(a.rate_hi) + '" y1="26" y2="26"/><circle class="ivd" cx="' + x(a.rate) + '" cy="26" r="6"/>';
+          return h('div', { html: s + '</svg>' });
+        })(),
+        h('p', { class: 'cap' }, 'False-exclusion rate ' + (100 * a.rate).toFixed(1) + '% (3 of 62), 95% Wilson interval ' + (100 * a.rate_lo).toFixed(1) + ' to ' + (100 * a.rate_hi).toFixed(1) + '%. Scaled to the ' + fmt(a.pool) + ' content-based exclusions, that is about ' + a.scaled + ' studies (' + a.scaled_lo + ' to ' + a.scaled_hi + ') that may belong in the review.'),
+        h('div', { class: 'does' }, h('div', null, h('b', null, 'This shows'), 'The AI\'s exclusions were mostly upheld on a blind re-read, and the point estimate is low.'), h('div', null, h('b', null, 'This does not show'), 'That the rate is low: the interval is wide, the sample is small, and the narrow eligibility reading was chosen after the disagreement was seen.')))
+    );
+  };
+
+  /* ------------------------------------------------------------------ map */
+  const F = { d: '', m: '', o: '', l: '', u: '', t: '', q: '', c: '', y0: 1950, y1: 2026, text: '', mf: -1, of: -1 };
+  const LIMIT = { n: 20 };
+  function pass(x, skipFlags) {
+    if (F.d && x.d !== F.d) return false; if (F.m && x.m !== F.m) return false; if (F.o && x.o !== F.o) return false; if (F.l && x.l !== F.l) return false;
+    if (F.u && x.u !== F.u) return false; if (F.t && x.t !== F.t) return false; if (F.q && String(x.q) !== F.q) return false; if (F.c && x.c !== F.c) return false;
+    if (x.y && (x.y < F.y0 || x.y > F.y1)) return false; if (!x.y && (F.y0 > 1950 || F.y1 < 2026)) return false;
+    if (F.text) { const q = F.text.toLowerCase(); if (!(x.id.toLowerCase() === q || x.cite.toLowerCase().includes(q))) return false; }
+    if (!skipFlags) { if (F.mf >= 0 && !(x.mb >> F.mf & 1)) return false; if (F.of >= 0 && !(x.ob >> F.of & 1)) return false; }
+    return true;
+  }
+  BUILD.map = function () {
+    const r = $('#tab-map');
+    const sel = (id, label, opts) => h('label', { for: id }, label, h('select', { id, onchange: e => { F[id.replace('f-', '')] = e.target.value; LIMIT.n = 20; drawMap(); } }, h('option', { value: '' }, 'All'), opts.map(o => h('option', { value: o[0] }, o[1]))));
+    const uniq = (k, map) => ranked(count(S, x => x[k])).map(([v, n]) => [v, (map && map[v] ? map[v] : cap1(lab(v))) + ' (' + fmt(n) + ')']);
+    r.append(
+      h('h2', null, 'Evidence map'),
+      h('p', { class: 'lede' }, 'Every included study (' + fmt(N) + ') by design, mechanism, outcome, place and year. Change a filter and every chart below recounts. Click a bar or a grid cell to filter by it.'),
+      h('div', { class: 'panel' },
+        h('div', { class: 'filters' },
+          sel('f-d', 'Design', uniq('d', DESIGN)), sel('f-m', 'Mechanism family', uniq('m', MECHF)), sel('f-o', 'Outcome family', uniq('o', OUTF)),
+          sel('f-l', 'Legal system', uniq('l')), sel('f-u', 'Setting', uniq('u')), sel('f-t', 'Appraisal tool', ranked(count(S, x => x.t)).map(([v, n]) => [v, v + ' (' + fmt(n) + ')'])),
+          sel('f-q', 'Quantitative-eligible', [['1', 'Yes'], ['0', 'No']]),
+          h('label', { for: 'f-y0' }, 'Year from', h('input', { id: 'f-y0', type: 'number', min: '1950', max: '2026', value: '1950', onchange: e => { F.y0 = +e.target.value || 1950; drawMap(); } })),
+          h('label', { for: 'f-y1' }, 'Year to', h('input', { id: 'f-y1', type: 'number', min: '1950', max: '2026', value: '2026', onchange: e => { F.y1 = +e.target.value || 2026; drawMap(); } })),
+          h('label', { for: 'f-text' }, 'Search citation or ID', h('input', { id: 'f-text', type: 'text', placeholder: 'e.g. S404 or Ghana', oninput: e => { F.text = e.target.value.trim(); LIMIT.n = 20; drawMap(); } })),
+          h('div', null, h('button', { class: 'btn', type: 'button', onclick: resetMap }, 'Reset filters'))),
+        h('p', { class: 'count-line', id: 'map-count', 'aria-live': 'polite' })),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'Study design'), h('div', { id: 'm-design' })),
+        h('div', { class: 'panel' }, h('h3', null, 'Publication year'), h('div', { id: 'm-year' }), h('p', { class: 'cap' }, 'First bar: before 2000. Grey bar: 2026 is a partial year (the search closed in September 2026).'))),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'Countries (single-country studies)'), h('div', { id: 'm-country' }), h('p', { class: 'cap', id: 'm-country-cap' })),
+        h('div', { class: 'panel' }, h('h3', null, 'Appraisal tool'), h('div', { id: 'm-tool' }), h('p', { class: 'cap' }, 'Tool follows design. The project\'s own framework is the residual category for designs no published instrument fits.'))),
+      h('div', { class: 'panel' }, h('h3', null, 'Which mechanisms meet which outcomes'),
+        h('p', { class: 'small muted' }, 'Studies coded with both the mechanism (row) and the outcome (column). One study can fall in several cells. The filters above apply, except the mechanism and outcome you click here.'),
+        h('div', { class: 'heat', id: 'm-heat' }),
+        h('p', { class: 'cap' }, 'Darker means more studies. A pale or empty cell is thin evidence in this corpus, not proof that nothing exists.')),
+      h('div', { class: 'panel' }, h('h3', null, 'Studies'), h('div', { class: 'tbl-wrap', id: 'm-list' }), h('div', { style: 'margin-top:10px' }, h('button', { class: 'btn', type: 'button', id: 'm-more', onclick: () => { LIMIT.n += 40; drawList(); } }, 'Show more')))
+    );
+    drawMap();
+  };
+  function resetMap() {
+    Object.assign(F, { d: '', m: '', o: '', l: '', u: '', t: '', q: '', c: '', y0: 1950, y1: 2026, text: '', mf: -1, of: -1 }); LIMIT.n = 20;
+    ['d', 'm', 'o', 'l', 'u', 't', 'q'].forEach(k => { $('#f-' + k).value = ''; }); $('#f-y0').value = 1950; $('#f-y1').value = 2026; $('#f-text').value = ''; drawMap();
+  }
+  function drawMap() {
+    const cur = S.filter(x => pass(x, false));
+    const act = [F.d, F.m, F.o, F.l, F.u, F.t, F.q, F.c, F.text].filter(Boolean).length + (F.mf >= 0 ? 1 : 0) + (F.of >= 0 ? 1 : 0) + ((F.y0 > 1950 || F.y1 < 2026) ? 1 : 0);
+    $('#map-count').textContent = fmt(cur.length) + ' of ' + fmt(N) + ' studies match' + (act ? ' (' + act + ' filter' + (act > 1 ? 's' : '') + ' on' + (F.mf >= 0 ? '; mechanism: ' + D.mech[F.mf].label : '') + (F.of >= 0 ? '; outcome: ' + D.outc[F.of].label : '') + (F.c ? '; country: ' + F.c : '') + ')' : '');
+    // design (counted without the design filter so the user sees the alternatives)
+    const base = f => S.filter(x => passExcept(x, f));
+    const dRows = ranked(count(base('d'), x => x.d)).map(([k, v]) => ({ key: k, label: DESIGN[k] || lab(k), v, on: F.d === k }));
+    $('#m-design').replaceChildren(bars(dRows, { onclick: r => { F.d = F.d === r.key ? '' : r.key; $('#f-d').value = F.d; LIMIT.n = 20; drawMap(); } }));
+    // year
+    const yr = []; const pre = cur.filter(x => x.y && x.y < 2000).length; yr.push({ label: 'before 2000', v: pre, tick: '' });
+    for (let y = 2000; y <= 2026; y++) yr.push({ label: String(y), v: cur.filter(x => x.y === y).length, tick: y % 5 === 0 ? String(y) : '', partial: y === 2026 });
+    $('#m-year').replaceChildren(columns(yr, { aria: 'Studies by publication year' }));
+    // countries
+    const cs = ranked(count(base('c').filter(x => x.c && x.c !== 'Several countries or region'), x => x.c));
+    const multi = cur.filter(x => x.c === 'Several countries or region').length, blank = cur.filter(x => !x.c).length;
+    $('#m-country').replaceChildren(bars(cs.slice(0, 12).map(([k, v]) => ({ key: k, label: k, v, on: F.c === k })), { onclick: r => { F.c = F.c === r.key ? '' : r.key; LIMIT.n = 20; drawMap(); } }));
+    $('#m-country-cap').textContent = cs.length + ' countries in this view; ' + multi + ' studies name several countries or a region and ' + blank + ' name none. Country is free text, bucketed by rule.';
+    // tools
+    const tools = TOOLS.map(t => ({ key: t, label: t, v: cur.filter(x => x.t === t).length, on: F.t === t })).filter(x => x.v || x.on);
+    $('#m-tool').replaceChildren(bars(tools, { max: Math.max(1, ...tools.map(t => t.v)), onclick: r => { F.t = F.t === r.key ? '' : r.key; $('#f-t').value = F.t; LIMIT.n = 20; drawMap(); } }));
+    // heat
+    const ctx = S.filter(x => pass(x, true));
+    const rowsM = D.mech.map((m, i) => ({ i, label: m.label, n: ctx.filter(x => x.mb >> i & 1).length })).filter(m => m.n > 0);
+    const colsO = D.outc.map((o, j) => ({ j, label: o.label, n: ctx.filter(x => x.ob >> j & 1).length })).filter(o => o.n > 0);
+    let mx = 1; const cell = {};
+    rowsM.forEach(m => colsO.forEach(o => { const v = ctx.filter(x => (x.mb >> m.i & 1) && (x.ob >> o.j & 1)).length; cell[m.i + '_' + o.j] = v; if (v > mx) mx = v; }));
+    const tbl = h('table', null, h('thead', null, h('tr', null, h('th', { class: 'rh' }, ''), colsO.map(o => h('th', null, o.label)))),
+      h('tbody', null, rowsM.map(m => h('tr', null, h('th', { class: 'rh' }, m.label), colsO.map(o => {
+        const v = cell[m.i + '_' + o.j]; const f = v / mx; const on = F.mf === m.i && F.of === o.j;
+        const b = h('button', { type: 'button', class: (f > 0.5 ? 'hi ' : '') + (on ? 'on' : ''), style: '--cellbg:' + (v ? 'color-mix(in srgb, var(--accent) ' + Math.round(8 + 82 * Math.sqrt(f)) + '%, var(--surface))' : 'var(--surface2)'), disabled: v === 0, 'aria-label': m.label + ' and ' + o.label + ': ' + v + ' studies', title: m.label + ' × ' + o.label + ': ' + v,
+          onclick: () => { if (on) { F.mf = -1; F.of = -1; } else { F.mf = m.i; F.of = o.j; } LIMIT.n = 20; drawMap(); } }, v || '·');
+        return h('td', null, b);
+      })))));
+    $('#m-heat').replaceChildren(tbl);
+    drawList();
+  }
+  function passExcept(x, key) { const keep = F[key]; F[key] = ''; const ok = pass(x, false); F[key] = keep; return ok; }
+  function drawList() {
+    const cur = S.filter(x => pass(x, false)).sort((a, b) => b.y - a.y || a.id.localeCompare(b.id, undefined, { numeric: true }));
+    const shown = cur.slice(0, LIMIT.n);
+    $('#m-list').replaceChildren(h('table', null,
+      h('thead', null, h('tr', null, ['ID', 'Year', 'Citation (start)', 'Design', 'Mechanism', 'Outcome', 'Tool'].map(x => h('th', null, x)))),
+      h('tbody', null, shown.map(x => h('tr', null, h('td', { class: 'mono' }, x.id), h('td', { class: 'mono' }, x.y || ''), h('td', { style: 'min-width:240px' }, x.cite), h('td', null, DESIGN[x.d] || lab(x.d)), h('td', null, MECHF[x.m] || lab(x.m)), h('td', null, OUTF[x.o] || lab(x.o)), h('td', null, x.t))))));
+    const more = $('#m-more'); more.hidden = cur.length <= LIMIT.n; more.textContent = 'Show more (' + fmt(cur.length - LIMIT.n) + ' left)';
+    if (!cur.length) $('#m-list').replaceChildren(h('p', { class: 'muted' }, 'No study matches these filters. Reset a filter to widen the view.'));
+  }
+
+  /* ------------------------------------------------------------------ quality */
+  BUILD.quality = function () {
+    const r = $('#tab-quality');
+    const designs = ['experimental', 'quasi_experimental', 'observational', 'systematic_review_secondary', 'mixed_methods', 'qualitative', 'doctrinal', 'jurimetric', 'other'];
+    const dEv = designs.map(d => ({ d, rows: S.filter(x => x.d === d) }));
+    const rows = dEv.map(o => h('tr', null, h('td', { style: 'font-weight:700' }, DESIGN[o.d]), h('td', { class: 'r mono' }, fmt(o.rows.length)), TOOLS.map(t => { const n = o.rows.filter(x => x.t === t).length; return h('td', { class: 'r mono' }, n ? fmt(n) : h('span', { class: 'muted' }, '·')); }), h('td', { class: 'r mono' }, o.rows.filter(x => x.k >= 3).length || '·')));
+    const cert = [0, 1, 2, 3, 4].map(k => ({ label: 'Level ' + k, v: S.filter(x => x.k === k).length }));
+    const ro = D.robins, r2 = D.rob2;
+    r.append(
+      h('h2', null, 'Design and appraisal'),
+      h('p', { class: 'lede' }, 'How strong is the evidence base as evidence? Appraisal ratings here are rule-based and grounded in extracted fields; they are not signalling-question reads of each paper.'),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'Appraisal tools'), bars(TOOLS.map(t => ({ label: t, v: D.tools[t] || 0 })), { pct: N }),
+          h('p', { class: 'cap' }, 'The project\'s own Legal Institutional Evidence Appraisal Framework covers ' + pct(D.tools['Legal Framework'], N) + ' of studies. It is not a validated instrument.')),
+        h('div', { class: 'panel' }, h('h3', null, 'Mechanism-certainty level'), bars(cert, { pct: N }),
+          h('p', { class: 'cap' }, 'A 0 to 4 code set by design: level 4 only for randomised trials, level 3 only for RoB 2 and for ROBINS-I rated Low or Moderate, every other design at most 2. ' + (cert[3].v + cert[4].v) + ' studies reach levels 3 or 4.'))),
+      h('div', { class: 'panel' }, h('h3', null, 'Design by appraisal tool'),
+        h('div', { class: 'tbl-wrap' }, h('table', null, h('thead', null, h('tr', null, [h('th', null, 'Design'), h('th', { class: 'r' }, 'Studies'), TOOLS.map(t => h('th', { class: 'r' }, t)), h('th', { class: 'r' }, 'Certainty 3-4')])), h('tbody', null, rows))),
+        h('p', { class: 'cap' }, 'Reading across a row shows which instrument the design received. ' + (dEv[0].rows.length + dEv[1].rows.length) + ' studies are labelled experimental or quasi-experimental, the only designs that can support a causal reading; ' + causal + ' of all studies received a causal-design tool (RoB 2 or ROBINS-I). The gap is studies whose design label and appraisal tool differ: ' + dEv[0].rows.concat(dEv[1].rows).filter(x => x.t !== 'RoB 2' && x.t !== 'ROBINS-I').length + ' labelled experimental or quasi-experimental were appraised with another tool.')),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'Causal-capable designs'),
+          h('p', null, 'ROBINS-I: ' + Object.entries(ro).map(([k, v]) => v + ' ' + k).join(', ') + '. RoB 2: ' + Object.entries(r2).map(([k, v]) => v + ' ' + k).join(', ') + '.'),
+          stack([{ label: 'ROBINS-I Moderate', v: ro.Moderate || 0, color: 'var(--accent)' }, { label: 'ROBINS-I Serious', v: ro.Serious || 0, color: 'var(--unf)' }, { label: 'RoB 2 Some concerns', v: r2['Some concerns'] || 0, color: 'var(--mix)' }]),
+          h('p', { class: 'cap' }, 'No study is rated Low risk of bias on a causal-design tool. The five trials are four distinct trials (two reports describe one DRC trial).')),
+        h('div', { class: 'panel' }, h('h3', null, 'Limits of the appraisal'),
+          h('ul', { class: 'plain' },
+            h('li', null, D.jbi_high + ' of ' + D.tools['JBI Cross-Sectional'] + ' JBI ratings are High concern, which here mostly means sparse extraction, not a poor study.'),
+            h('li', null, D.abstract_only + ' studies were extracted from abstracts only, so their coded fields are a floor.'),
+            h('li', null, 'There is no second extractor. A blind sample of 60 studies is prepared; 24 of its source PDFs are available so far.'),
+            h('li', null, 'Quantitative synthesis is flagged for ' + D.qeligible + ' studies, and ' + D.effect_rows + ' have an extractable effect-size row.')))),
+      h('div', { class: 'does' }, h('div', null, h('b', null, 'This shows'), 'Where the corpus can and cannot support a causal question, by design.'), h('div', null, h('b', null, 'This does not show'), 'The credibility of any single study: ratings are rule-based and unchecked by a second appraiser.'))
+    );
+  };
+
+  /* ------------------------------------------------------------------ swim */
+  const SW = { reading: 'sub', fam: 'all', status: 'all', design: 'all', sel: 'S084' };
+  const COLS = { sub: [['Favourable', 'Favourable'], ['Null', 'Null'], ['Mixed', 'Mixed'], ['Unfavourable', 'Unfavourable']], raw: [['+', 'Positive (+)'], ['null', 'Null'], ['mixed', 'Mixed'], ['-', 'Negative (-)']] };
+  BUILD.swim = function () {
+    const r = $('#tab-swim');
+    const seg = (key, opts) => h('div', { class: 'seg', role: 'group' }, opts.map(([v, t]) => h('button', { type: 'button', 'aria-pressed': String(SW[key] === v), 'data-k': key, 'data-v': v, onclick: e => { SW[key] = v; segSync(); drawSwim(); } }, t)));
+    r.append(
+      h('h2', null, 'Direction of association'),
+      h('p', { class: 'lede' }, 'The ' + W.length + ' studies with an extractable effect estimate, grouped into three thematic families and counted by direction (Synthesis Without Meta-analysis). Each estimate is read twice, because the sign of a coefficient and what it means for households are different things: a higher tariff is worse for households, a higher coverage rate is better.'),
+      h('div', { class: 'panel' },
+        h('div', { class: 'ctl' },
+          h('span', null, h('span', { class: 'cl' }, 'Reading'), seg('reading', [['sub', 'Substantive (for households)'], ['raw', 'Raw sign of the estimate']])),
+          h('span', null, h('span', { class: 'cl' }, 'Family'), seg('fam', [['all', 'All'], ['A', 'A'], ['B', 'B'], ['C', 'C']])),
+          h('span', null, h('span', { class: 'cl' }, 'Inclusion'), seg('status', [['all', 'All'], ['human', 'Human-verified'], ['ai', 'AI-checked only']])),
+          h('span', null, h('span', { class: 'cl' }, 'Design'), seg('design', [['all', 'All'], ['causal', 'Causal-capable only']]))),
+        h('p', { class: 'count-line', id: 'sw-count', 'aria-live': 'polite' }),
+        h('div', { id: 'sw-plot', style: 'margin-top:10px' }),
+        h('div', { class: 'key' },
+          h('span', { class: 'k' }, h('i', { class: 'sw h' }), 'Solid: inclusion verified by the author'),
+          h('span', { class: 'k' }, h('i', { class: 'sw a' }), 'Dashed, marked AI: AI-checked only'),
+          h('span', { class: 'k' }, h('i', { class: 'sw t' }), 'Tall: causal-capable design (RoB 2 or ROBINS-I)'),
+          h('span', { class: 'k' }, h('i', { class: 'sw s' }), 'Short: other design')),
+        h('p', { class: 'cap' }, 'Position carries the direction and the colour repeats it. Switch the reading to see tiles move: S084, S142 and S1122 are negative by raw sign because the reported exposure is the deprived status, but Favourable for recognition once restated. A vote count discards effect size, precision and study size.')),
+      h('div', { class: 'panel detail', id: 'sw-detail', 'aria-live': 'polite' }),
+      h('div', { class: 'panel' }, h('h3', null, 'Where the two readings come apart'), h('div', { class: 'tbl-wrap', id: 'sw-diverge' })),
+      h('div', { class: 'panel' }, h('h3', null, 'All studies in this view'), h('div', { class: 'tbl-wrap', id: 'sw-table' }))
+    );
+    drawSwim();
+  };
+  function segSync() { document.querySelectorAll('#tab-swim .seg button').forEach(b => b.setAttribute('aria-pressed', String(SW[b.dataset.k] === b.dataset.v))); }
+  function swView() { return W.filter(w => (SW.fam === 'all' || w.fam === SW.fam) && (SW.status === 'all' || w.status === SW.status) && (SW.design === 'all' || w.tool === 'RoB 2' || w.tool === 'ROBINS-I')); }
+  function drawSwim() {
+    const view = swView(), key = SW.reading === 'sub' ? 'sub' : 'raw', cols = COLS[SW.reading];
+    const fams = SW.fam === 'all' ? ['A', 'B', 'C'] : [SW.fam];
+    const plot = h('div', null);
+    const head = h('div', { class: 'fam head', style: 'border-top:0' }, h('div', null), cols.map(([v, t]) => h('div', { class: 'ch', style: '--c:' + dirColor(v) }, t)));
+    head.style.borderBottom = '0';
+    plot.append(head);
+    fams.forEach(f => {
+      const all = W.filter(w => w.fam === f), vis = view.filter(w => w.fam === f);
+      const g = h('div', { class: 'fam' }, h('div', { class: 'fh' }, FAMS[f], h('small', null, FAMN[f].split(' · ')[1]), h('small', null, vis.length + ' of ' + all.length + ' shown')));
+      cols.forEach(([v, ct]) => {
+        const col = h('div', null, h('span', { class: 'cin', style: '--c:' + dirColor(v) }, ct)); const items = all.filter(w => w[key] === v);
+        const tiles = h('div', { class: 'tiles' });
+        items.forEach(w => {
+          const on = vis.includes(w); const causalD = w.tool === 'RoB 2' || w.tool === 'ROBINS-I';
+          tiles.append(h('button', { type: 'button', class: 'tile ' + (causalD ? 'tall ' : 'short ') + w.status + (on ? '' : ' off') + (SW.sel === w.id ? ' sel' : ''), style: '--c:' + dirColor(v), title: w.id + ' · ' + w.ay + ' · ' + w.detail, 'aria-label': w.id + ', ' + w.ay + ', ' + (w.status === 'human' ? 'human-verified inclusion' : 'AI-checked only'), onclick: () => { SW.sel = w.id; drawSwim(); } }, w.id));
+        });
+        col.append(items.length ? tiles : h('span', { class: 'empty' }, 'none'));
+        g.append(col);
+      });
+      plot.append(g);
+    });
+    $('#sw-plot').replaceChildren(plot);
+    // counts line
+    const parts = fams.map(f => { const v = view.filter(w => w.fam === f); const fav = v.filter(w => w.sub === 'Favourable').length; return FAMS[f] + ': ' + fav + ' of ' + v.length + ' Favourable' + (v.length ? ' (' + pct(fav, v.length) + ')' : ''); });
+    $('#sw-count').textContent = view.length + ' of ' + W.length + ' studies shown. ' + parts.join('  ·  ') + (SW.reading === 'raw' ? '  (counts here are by substantive direction; the tiles show the raw sign)' : '');
+    // detail
+    const w = W.find(x => x.id === SW.sel) || W[0];
+    const dd = $('#sw-detail');
+    dd.replaceChildren(h('div', { style: 'display:flex;gap:10px;align-items:center;flex-wrap:wrap' }, h('h3', { style: 'margin:0' }, w.id + ' · ' + w.ay), statusChip(w.status), h('span', { class: 'dir', style: '--c:' + dirColor(w.sub) }, w.sub), h('span', { class: 'muted small' }, FAMS[w.fam])),
+      h('p', { class: 'small muted', style: 'margin:6px 0 0' }, w.cite),
+      h('dl', null,
+        h('dt', null, 'Exposure'), h('dd', null, w.ex), h('dt', null, 'Against'), h('dd', null, w.cm), h('dt', null, 'Outcome'), h('dd', null, w.out), h('dt', null, 'Estimate'), h('dd', { class: 'mono small' }, w.est),
+        h('dt', null, 'Raw sign'), h('dd', null, h('span', { class: 'dir', style: '--c:' + dirColor(w.raw) }, w.raw === '+' ? 'Positive' : w.raw === '-' ? 'Negative' : cap1(w.raw)), ' ', h('span', { class: 'muted' }, 'outcome polarity: ' + w.pol + '; exposure ' + w.ori + (w.alt ? '; fully adjusted estimate reads ' + w.alt : ''))),
+        h('dt', null, 'Coding note'), h('dd', null, w.note),
+        h('dt', null, 'Country · sample'), h('dd', null, (w.country || 'n/a') + ' · ' + (w.year || 'n/a') + ' · ' + (w.n || 'sample size not recorded')),
+        h('dt', null, 'Appraisal'), h('dd', null, w.tool + ': ' + w.rob + ' (' + lab(w.design) + ')'),
+        h('dt', null, 'Verification'), h('dd', null, w.detail + '. The effect row was checked against the full text by the AI (' + (w.checked || 'not recorded') + '), not by a human.')));
+    // divergence
+    const dv = W.filter(x => (x.raw === '+' && x.sub === 'Unfavourable') || (x.raw === '-' && x.sub === 'Favourable'));
+    $('#sw-diverge').replaceChildren(h('table', null, h('thead', null, h('tr', null, ['Study', 'Raw sign', 'Substantive', 'Why'].map(x => h('th', null, x)))),
+      h('tbody', null, dv.map(x => h('tr', null, h('td', { class: 'mono' }, x.id), h('td', null, x.raw === '+' ? 'Positive' : 'Negative'), h('td', null, h('span', { class: 'dir', style: '--c:' + dirColor(x.sub) }, x.sub)),
+        h('td', { style: 'min-width:260px' }, x.ori.startsWith('restated') ? 'The reported exposure is a non-recognised status; restated to the recognised pole.' : (x.pol === 'higher = worse' ? 'The outcome is adverse (higher is worse): ' + x.out + '.' : x.note)))))));
+    $('#sw-diverge').append(h('p', { class: 'cap' }, dv.length + ' of ' + W.length + ' studies change category between the two readings, which is why neither alone is reported.'));
+    // table
+    $('#sw-table').replaceChildren(h('table', null, h('thead', null, h('tr', null, ['ID', 'Fam', 'Study', 'Exposure vs comparator', 'Outcome', 'Raw', 'For households', 'Tool', 'Inclusion'].map(x => h('th', null, x)))),
+      h('tbody', null, view.map(x => h('tr', { class: SW.sel === x.id ? 'sel' : '' }, h('td', { class: 'mono' }, h('button', { class: 'btn', type: 'button', style: 'padding:2px 8px', onclick: () => { SW.sel = x.id; drawSwim(); $('#sw-detail').scrollIntoView({ block: 'nearest' }); } }, x.id)), h('td', null, x.fam), h('td', { style: 'min-width:130px' }, x.ay), h('td', { style: 'min-width:260px' }, x.ex + ' vs ' + x.cm), h('td', { style: 'min-width:150px' }, x.out), h('td', { class: 'mono' }, x.raw), h('td', null, h('span', { class: 'dirdot', style: '--c:' + dirColor(x.sub) }), x.sub), h('td', null, x.tool), h('td', null, statusChip(x.status)))))));
+  }
+
+  /* ------------------------------------------------------------------ robust */
+  const RB = { i: 0 };
+  BUILD.robust = function () {
+    const r = $('#tab-robust');
+    r.append(h('h2', null, 'Robustness'),
+      h('p', { class: 'lede' }, 'The conclusion tests were fixed before the numbers were computed: more than half of Family A Favourable; no Family B study Unfavourable or Null; no single direction holding a majority in Family C. Each scenario removes or recodes studies and the tests are re-run.'),
+      h('div', { class: 'panel' }, h('div', { class: 'scen', id: 'rb-chips', role: 'group', 'aria-label': 'Scenarios' }), h('p', { class: 'cap' }, h('span', { class: 'fail' }, '✕'), ' marks a scenario in which at least one pre-stated test fails.'), h('div', { id: 'rb-detail', style: 'margin-top:14px' })),
+      h('div', { class: 'panel' }, h('h3', null, 'All scenarios side by side'), h('div', { class: 'tbl-wrap', id: 'rb-table' })),
+      h('div', { class: 'does' }, h('div', null, h('b', null, 'This shows'), robustShows()), h('div', null, h('b', null, 'This does not show'), 'That the direction coding is right. The scenarios do not test it, nor studies that were never extracted, nor overlap between reports not flagged as linked.')));
+    drawRobust();
+  };
+  function robustShows() {
+    const sc = D.scen, n = k => sc.filter(x => x.tests[k] === 'FAILS').length;
+    const parts = Object.keys(sc[0].tests).map(k => k + (n(k) ? ' fails in ' + n(k) + ' of ' + sc.length : ' holds in every scenario'));
+    return 'Tests: ' + parts.join('; ') + '. The direction counts do not hinge on any single coding judgment or data-quality drop tested here, but the raw-sign test for Family C is not met.';
+  }
+  function drawRobust() {
+    const sc = D.scen, s = sc[RB.i], fails = x => Object.values(x.tests).filter(v => v === 'FAILS').length;
+    $('#rb-chips').replaceChildren(...sc.map((x, i) => h('button', { type: 'button', 'aria-pressed': String(i === RB.i), onclick: () => { RB.i = i; drawRobust(); } }, x.name.split(' ')[0], fails(x) ? h('span', { class: 'f', title: 'a pre-stated test fails' }, '✕') : null)));
+    const sub = (a) => [{ label: 'Favourable', v: a[1], color: 'var(--fav)' }, { label: 'Unfavourable', v: a[2], color: 'var(--unf)' }, { label: 'Null', v: a[3], color: 'var(--nul)' }, { label: 'Mixed', v: a[4], color: 'var(--mix)' }];
+    const box = h('div', null,
+      h('h3', null, s.name),
+      h('p', { class: 'small muted' }, (s.dropped.length ? 'Studies dropped from the families: ' + s.dropped.join(', ') + '. ' : 'No study dropped. ') + (s.recoded.length ? 'Recoded as Null: ' + s.recoded.join(', ') + '.' : '')),
+      h('div', { class: 'grid2' }, ['A', 'B', 'C'].map(f => h('div', null, h('b', null, FAMS[f] + ' · k = ' + s[f][0]), stack(sub(s[f]))))),
+      h('div', { class: 'tbl-wrap' }, h('table', null, h('thead', null, h('tr', null, h('th', null, 'Pre-stated test'), h('th', null, 'Result'))), h('tbody', null, Object.entries(s.tests).map(([k, v]) => h('tr', null, h('td', null, k), h('td', { class: v === 'FAILS' ? 'fail' : 'pass' }, v === 'FAILS' ? '✕ fails' : 'holds')))))));
+    $('#rb-detail').replaceChildren(box);
+    $('#rb-table').replaceChildren(h('table', null, h('thead', null, h('tr', null, ['Scenario', 'A: k · Fav.', 'A share', 'B: k · Fav.', 'C: k · Fav / Unfav / Mixed', 'Tests failing'].map(x => h('th', null, x)))),
+      h('tbody', null, sc.map((x, i) => h('tr', { class: i === RB.i ? 'sel' : '' }, h('td', { style: 'min-width:240px' }, x.name), h('td', { class: 'mono' }, x.A[0] + ' · ' + x.A[1]), h('td', { class: 'mono' }, pct(x.A[1], x.A[0])), h('td', { class: 'mono' }, x.B[0] + ' · ' + x.B[1]), h('td', { class: 'mono' }, x.C[0] + ' · ' + x.C[1] + ' / ' + x.C[2] + ' / ' + x.C[4]), h('td', { class: fails(x) ? 'fail' : 'pass' }, fails(x) ? '✕ ' + fails(x) : 'none'))))));
+  }
+
+  /* ------------------------------------------------------------------ gaps */
+  BUILD.gaps = function () {
+    const r = $('#tab-gaps');
+    const cs = new Map(single);
+    const watch = ['Canada', 'Netherlands', 'Australia', 'Germany', 'France', 'United Kingdom', 'Japan', 'Norway'].map(c => [c, cs.get(c) || 0]);
+    const thin = [];
+    D.mech.forEach((m, i) => D.outc.forEach((o, j) => { if (mflag(i) >= 50 && oflag(j) >= 50) { const v = S.filter(x => (x.mb >> i & 1) && (x.ob >> j & 1)).length; thin.push({ m: m.label, o: o.label, v }); } }));
+    thin.sort((a, b) => a.v - b.v);
+    const exp = S.filter(x => x.d === 'experimental' || x.d === 'quasi_experimental');
+    const expM = ranked(count(exp, x => x.m)).slice(0, 4);
+    r.append(h('h2', null, 'Gaps and next steps'),
+      h('p', { class: 'lede' }, 'What the map leaves thin, what limits trust in it, and what would move the review forward. Gaps describe this retrieved corpus; they are not proof that the world has no such evidence.'),
+      h('div', { class: 'grid2' },
+        h('div', { class: 'panel' }, h('h3', null, 'Geography'),
+          h('p', null, 'The five commonest countries hold ' + pct(top5n, N) + ' of studies. ' + single.filter(x => x[1] <= 2).length + ' of ' + nCountry + ' single-country values have one or two studies.'),
+          bars(watch.map(([k, v]) => ({ label: k, v })), { max: Math.max(...watch.map(x => x[1]), 20) }),
+          h('p', { class: 'cap' }, 'High-coverage welfare states are sparsely represented. Canada\'s studies are mostly on First Nations drinking water; the Netherlands has ' + (cs.get('Netherlands') || 0) + '. Administrative exclusion inside near-universal networks (tariff hardship exemptions, tenant billing, redress) is therefore hard to assess from this evidence.')),
+        h('div', { class: 'panel' }, h('h3', null, 'Thin mechanism-outcome pairs'),
+          h('p', null, 'Among mechanisms and outcomes each coded in at least 50 studies, the pairs with the fewest studies:'),
+          bars(thin.slice(0, 8).map(t => ({ label: t.m + ' × ' + t.o, v: t.v })), { max: Math.max(...thin.map(t => t.v)) }),
+          h('p', { class: 'cap' }, 'Studies labelled experimental or quasi-experimental (' + exp.length + ') are concentrated in: ' + expM.map(([k, v]) => (MECHF[k] || lab(k)) + ' (' + v + ')').join(', ') + '.'))),
+      h('div', { class: 'panel' }, h('h3', null, 'Open items, in the order they would raise confidence'),
+        h('div', { class: 'tbl-wrap' }, h('table', null, h('thead', null, h('tr', null, ['Item', 'What it needs', 'What it would change'].map(x => h('th', null, x)))), h('tbody', null, [
+          ['Verify the AI-checked studies (A30)', 'The author reads the verbatim passages for the ' + W.filter(w => w.status === 'ai').length + ' AI-checked studies, rules include or exclude, and confirms the two direction codings for all ' + W.length + '.', 'Moves the direction counts from AI-coded to human-verified.'],
+          ['Three number corrections (A32)', 'Approve or reject corrections to stored numbers for S037, S470 and S593 that the PDFs do not support.', 'Descriptive fields only; no direction changes.'],
+          ['Second-extract the sample', '60 studies from S001 to S200 against the source papers; 36 source PDFs still to find.', 'Gives an extraction error rate. A later-study sample is needed before any corpus-wide claim.'],
+          ['Finish the human check of screening (A6)', fmt(152) + ' further rows (102 excludes, 50 includes).', 'Bounds the risk of wrongly excluded or included studies.'],
+          ['Reduce the retrieval bias', 'Prioritise the older, unassessed records; targeted searches for universal-network systems.', 'Tests whether the geographic concentration is real.'],
+          ['Register and freeze', 'Upload the preregistration draft to the Open Science Framework; push the release tag.', 'Fixes the record before any further analysis.']
+        ].map(x => h('tr', null, h('td', { style: 'font-weight:700;min-width:200px' }, x[0]), h('td', { style: 'min-width:260px' }, x[1]), h('td', null, x[2]))))))));
+  };
+
+  /* ------------------------------------------------------------------ theme and start */
+  $('#theme').addEventListener('click', () => {
+    const root = document.documentElement; const cur = root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    root.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  });
+  go(location.hash.slice(1) || 'summary');
+})();
+</script>
