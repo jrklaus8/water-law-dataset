@@ -72,6 +72,12 @@ class TestAtlas(unittest.TestCase):
             self.assertEqual(base[f][0], rows[0][f'{f}_k'])
             self.assertEqual(base[f][1], rows[0][f'{f}_favourable'])
 
+    def test_github_pages_copy_is_identical(self):
+        pages = ROOT.parent / 'docs/atlas/index.html'
+        if pages.parent.parent.is_dir():                      # the repository root has a docs/ folder (the GitHub Pages source)
+            self.assertTrue(pages.exists())
+            self.assertEqual(pages.read_text(encoding='utf-8'), self.text)
+
     def test_text_lists_are_complete_and_disjoint(self):
         D, F = self.D, self.F
         inc, exc, una = D['texts']['inc'], D['texts']['exc'], D['texts']['una']

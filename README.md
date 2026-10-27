@@ -12,7 +12,7 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
-### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [AI-Assisted Systematic Review (companion project)](legal-last-mile-systematic-review/README.md)
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 🗺️ [Legal Last Mile Atlas (interactive preliminary results of the systematic review)](https://jrklaus8.github.io/water-law-dataset/atlas/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [AI-Assisted Systematic Review (companion project)](legal-last-mile-systematic-review/README.md)
 
 > **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 

@@ -4,7 +4,7 @@
 
 Every number is computed here from the project databases (current_figures.py, the evidence map, the extraction database, SWIM_CORE_VERIFICATION_TABLE, sensitivity_scenarios, the A16 re-read) and embedded as JSON; the page itself
 only filters and re-counts that data. Nothing is pooled, no GRADE judgment is made, and the page says which figures are human-verified (13 of the 31 SWiM inclusion decisions, 459 of 2,277 full-text decisions) and which are AI-produced.
-The template is code/analysis/evidence_atlas_template.html. Two outputs: the standalone file in 06_outputs/ (wrapped in a document skeleton) and, with --fragment PATH, the bare fragment for publishing as an Artifact.
+The template is code/analysis/evidence_atlas_template.html. Outputs: the standalone file in 06_outputs/ (wrapped in a document skeleton), an identical copy at docs/atlas/index.html in the repository root (for GitHub Pages) when that docs/ folder exists, and, with --fragment PATH, the bare fragment for publishing as an Artifact.
 
 Run from legal-last-mile-systematic-review/:  python3 code/analysis/build_evidence_atlas.py [--fragment PATH]
 """
@@ -26,6 +26,7 @@ csv.field_size_limit(sys.maxsize)
 ROOT = cf.ROOT
 TEMPLATE = Path(__file__).resolve().parent / 'evidence_atlas_template.html'
 OUT = ROOT / '06_outputs/EVIDENCE_ATLAS_INTERACTIVE.html'
+PAGES = ROOT.parent / 'docs/atlas/index.html'   # the same page, served by GitHub Pages at <site>/atlas/ when the repository's docs/ folder is the Pages source
 AS_OF = '2026-10-14'
 
 MECH = [('institutional_fragmentation', 'Institutional fragmentation'), ('discretion_accommodation', 'Discretion and accommodation'), ('fees', 'Fees'), ('service_area', 'Service-area rules'),
@@ -208,6 +209,9 @@ def main():
     frag = render(D)
     page = '<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n</head>\n<body>\n' + frag + '\n</body>\n</html>\n'
     OUT.write_text(page, encoding='utf-8')
+    if PAGES.parent.parent.is_dir():
+        PAGES.parent.mkdir(exist_ok=True)
+        PAGES.write_text(page, encoding='utf-8')
     if a.fragment:
         Path(a.fragment).write_text(frag, encoding='utf-8')
     print(f'wrote {OUT.relative_to(ROOT)} ({len(page) / 1024:.0f} KB; {len(D["studies"])} studies, {len(D["swim"])} SWiM studies, {len(D["scen"])} scenarios)')
