@@ -1,0 +1,46 @@
+# Publishes the Markdown pages in wiki/ to this repository's GitHub wiki.
+#
+# The wiki is a separate git repository (<repo>.wiki.git) that cannot be changed in a pull request, so the pages are
+# kept here, reviewed here, and copied to the wiki after they reach main. Edit wiki/*.md in the repository, not in the
+# wiki's web editor: the next sync overwrites any page that also exists in wiki/. Pages that exist only in the wiki
+# are left alone, and deleting a file from wiki/ does not delete the wiki page.
+name: Publish wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - '.github/workflows/publish-wiki.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-wiki
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Copy wiki/ into the GitHub wiki
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git clone "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" "$RUNNER_TEMP/wiki"
+          cp -R wiki/. "$RUNNER_TEMP/wiki/"
+          cd "$RUNNER_TEMP/wiki"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "The wiki is already up to date."
+            exit 0
+          fi
+          git commit -m "Sync wiki from ${GITHUB_REPOSITORY}@${GITHUB_SHA::7}"
+          git push
