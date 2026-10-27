@@ -6,7 +6,7 @@ from search hit to synthesis, what has already gone wrong and been fixed, and wh
 
 ## 1. Start here (15 minutes)
 
-0. **If you have not seen the project before,** read `START_HERE.md` first (the whole project on one page) and use `GLOSSARY.md` for unfamiliar labels.
+0. **If you have not seen the project before,** read `START_HERE.md` first (the whole project on one page) and use `GLOSSARY.md` for unfamiliar labels. To go straight to attacking it, `00_admin/WEAKNESSES.md` lists the known weak points, each with a test; `00_admin/STUDY_AUDIT_TRAIL.csv` shows what a human has checked for every study; `00_admin/DEVIATIONS_AND_ERRORS.md` lists every departure from the protocol and every error already found.
 
 1. **Read the caveats first:** `README.md` → "Known limitations" (16 numbered items). They are the project's own list of
    what it cannot claim. Then `00_admin/DECISIONS_AND_OPEN_ITEMS.md` for what is still undecided.

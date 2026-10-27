@@ -6,6 +6,10 @@
 |---|---|
 | `CURRENT_FIGURES.md`, `current_figures.json` | Every headline figure, **generated** from the CSV databases by `code/analysis/current_figures.py`. If any document disagrees with this file, this file is right |
 | `DECISIONS_AND_OPEN_ITEMS.md` | The decision log described above |
+| `WEAKNESSES.md`, `WEAKNESS_REGISTER.csv` | **The frank list of the review's weak points**, each with evidence, a way to test or break it and what would resolve it (generated from `code/analysis/weakness_register_source.csv`) |
+| `STUDY_AUDIT_TRAIL.csv`, `.md` | One row per included study: who decided inclusion, extraction depth, risk-of-bias depth, synthesis status (generated) |
+| `AI_USE_LEDGER.csv`, `.md` | Which AI did what at each stage, and what is not archived (generated) |
+| `DEVIATIONS_REGISTER.csv`, `ERRORS_FOUND_REGISTER.csv`, `DEVIATIONS_AND_ERRORS.md` | Every departure from the protocol and every error the project found in itself (hand-maintained data; the page is rendered from them) |
 | `audits/2026-09-28_repository_audit.md` | The project's audit of itself: 16 findings, what was wrong, what was fixed, what stayed open |
 | `RELEASE_0.2.0-interim_2026-10-14.md` | What the interim release contains and what it does not |
 | `preregistration/osf_preregistration_draft.md` | Retrospective registration, prepared and **not yet submitted**; separates what was fixed in writing before searching from the dated changes afterwards |

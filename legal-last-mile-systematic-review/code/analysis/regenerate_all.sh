@@ -4,7 +4,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 for s in current_figures:--write audit_data_quality build_fulltext_request_list audit_sparse_records build_reclassification_proposal build_a16_adjudication_sheet audit_exclusion_basis sensitivity_analysis propose_family_vocabulary propose_design_vocabulary audit_effect_size_families audit_includes_criterion3 build_second_extractor_sample build_missing_fulltext_list sheet_xlsx build_figures \
-         build_preliminary_report build_report_html build_manuscript_pieces build_manuscript_draft build_supporting_texts build_executive_summary build_evidence_atlas build_start_here build_study_audit_trail build_ai_use_ledger build_weakness_register build_deviation_error_registers build_data_manifest; do
+         build_preliminary_report build_report_html build_manuscript_pieces build_manuscript_draft build_supporting_texts build_executive_summary build_study_audit_trail build_ai_use_ledger build_weakness_register build_evidence_atlas build_start_here build_deviation_error_registers build_data_manifest; do
   name="${s%%:*}"; arg=""; [[ "$s" == *:* ]] && arg="${s#*:}"
   python3 "code/analysis/${name}.py" $arg | tail -1
 done

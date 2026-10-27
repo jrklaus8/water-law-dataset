@@ -9,6 +9,8 @@ title carries the words "AI-Assisted" so that no reader has to discover this fro
 
 ## What the AI did, and what a human checked
 
+*Stage-by-stage counts of AI labels, the instruction files that are archived and, frankly, what is not (prompts, model versions, settings) are in `00_admin/AI_USE_LEDGER.md`. For any single study, `00_admin/STUDY_AUDIT_TRAIL.csv` shows what a human has and has not checked.*
+
 | Stage | AI role | Human role | Independently checked by a human |
 |---|---|---|---|
 | Search strategy, exports, deduplication | Wrote and ran scripts for deduplication and audits | Designed searches, ran them in the databases, exported records | Duplicate audits were also run by the AI; not independently re-checked |

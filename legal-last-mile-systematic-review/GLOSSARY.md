@@ -39,6 +39,17 @@ Files, columns and notes in this project use short labels (`A28`, `CK`, `reviewe
 | **Narrow reading of criterion 2** | Criterion 2 (`INCLUSION_EXCLUSION.md`) requires a legal, administrative, institutional, regulatory or governance factor; the researcher adopted a narrow reading (a legal or administrative *access rule or mechanism*) after the independent-model disagreement was seen. It is a disclosed departure, not a change made quietly |
 | **Borderline include** | An included report the researcher kept but flagged because its link to the rule-type mechanism is thin. Flagged in a note on the row; not removed |
 
+## The transparency files
+
+| Term | Meaning |
+|---|---|
+| **Weakness register (`W01` …)** | `00_admin/WEAKNESSES.md`: each known weak point with its evidence, a concrete way to test or break it, and what would resolve it. The severity ratings are the AI's judgment, not an independent reviewer's |
+| **Deviations register (`D01` …)** | `00_admin/DEVIATIONS_REGISTER.csv`: every dated departure from the protocol, with whether it was decided after the results it could affect were visible |
+| **Errors-found register (`E01` …)** | `00_admin/ERRORS_FOUND_REGISTER.csv`: every error the project found in itself, how it was found, its effect and its fix. Not a claim that these are all the errors |
+| **Study audit trail** | `00_admin/STUDY_AUDIT_TRAIL.csv`: one row per included study showing who decided its inclusion and how far extraction, appraisal and synthesis were checked |
+| **AI-use ledger** | `00_admin/AI_USE_LEDGER.md`: which AI tool or model did what at each stage, how many decisions carry its label, and what is not archived (prompts, model versions, settings) |
+| **Data manifest** | `10_reproducibility/DATA_MANIFEST.csv`: size, shape and SHA-256 of every data file, so a reader can confirm they hold the analysed files |
+
 ## Verification tools
 
 | Term | Meaning |

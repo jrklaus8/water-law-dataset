@@ -124,6 +124,18 @@ def texts(F, ed, em):
     return {'inc': inc, 'exc': sorted(exc, key=lambda x: (x[5], x[3].lower())), 'una': sorted(una, key=lambda x: x[3].lower())}
 
 
+def weaknesses():
+    """The weakness register as written to 00_admin/WEAKNESS_REGISTER.csv (read from the file, not imported: that generator imports this module)."""
+    with open(ROOT / '00_admin/WEAKNESS_REGISTER.csv', newline='', encoding='utf-8') as f:
+        rows = list(csv.DictReader(f))
+    def first(t, n=190):
+        s = re.split(r'(?<=[a-z0-9\)])\.\s', t, maxsplit=1)[0].rstrip('.')
+        return s if len(s) <= n else s[:n - 1].rstrip() + '…'
+    order = {'high': 0, 'medium': 1, 'low': 2}
+    return [{'id': r['id'], 'stage': r['stage'], 'sev': r['severity_ai_judgment'], 'text': first(r['weakness']), 'test': first(r['how_to_test_or_break_it'], 170), 'status': r['status']}
+            for r in sorted(rows, key=lambda r: (order[r['severity_ai_judgment']], r['id']))]
+
+
 def gather():
     F = cf.compute()
     ed, em = cf.read('ed'), {r['study_id']: r for r in cf.read('em')}
@@ -190,7 +202,7 @@ def gather():
          'tools': F['tools'], 'robins': F['robins_i_ratings'], 'rob2': F['rob2_ratings'], 'jbi_high': F['jbi_high_concern'], 'abstract_only': F['abstract_only_extractions'],
          'qeligible': F['quantitative_synthesis_eligible'], 'effect_rows': F['effect_size_rows'], 'families': F['effect_size_by_family'], 'borderline': F['borderline_includes'],
          'studies': studies, 'swim': swim, 'scen': scen,
-         'methods': methods(F, ed), 'texts': texts(F, ed, em),
+         'methods': methods(F, ed), 'texts': texts(F, ed, em), 'weak': weaknesses(),
          'unassessed': F['full_text_undecided'], 'distinct_studies': F['distinct_studies_definite_links'], 'direction_confirmed': F['swim_core_direction_ck_confirmed']}
     return D
 

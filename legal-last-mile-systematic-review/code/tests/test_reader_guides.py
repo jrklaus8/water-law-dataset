@@ -40,7 +40,7 @@ class TestReaderGuides(unittest.TestCase):
 
     def test_start_here_names_the_limits(self):
         low = (ROOT / 'START_HERE.md').read_text(encoding='utf-8').lower()
-        for needle in ('preliminary', 'ai-assisted', 'partly human-verified', 'no second extractor', 'not registered before the work was done', 'current_figures.md'):
+        for needle in ('preliminary', 'ai-assisted', 'partly human-verified', 'no second extractor', 'not registered before the work was done', 'current_figures.md', 'weaknesses.md', 'reproduce.md'):
             self.assertIn(needle, low, needle)
 
 

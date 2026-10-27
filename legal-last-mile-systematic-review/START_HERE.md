@@ -68,6 +68,19 @@ Disclosed rather than smoothed over: searching was closed early by decision (SSR
 | **Historical snapshot** | Any file with a date in its name, and older entries in `CHANGELOG.md` | They keep the figures that were true when written. When a document and `00_admin/CURRENT_FIGURES.md` disagree, **`CURRENT_FIGURES.md` is right** |
 | **Not available** | The source PDFs | Many are under publisher copyright; the manifest and hashes of the 31 synthesis papers are in `05_analysis/effect_sizes/SWIM_31_SOURCE_PDF_MANIFEST.csv` |
 
+### The files that are frank about the project itself
+
+These are data as well as documents: each has a CSV for filtering and joining. Four are generated from the databases (and checked by the verifier), two are hand-maintained registers.
+
+| Question | File |
+|---|---|
+| What are the weak points, and how do I test or break them? | [`00_admin/WEAKNESSES.md`](00_admin/WEAKNESSES.md) (data: `WEAKNESS_REGISTER.csv`) |
+| For this one study, what has a human actually checked? | [`00_admin/STUDY_AUDIT_TRAIL.csv`](00_admin/STUDY_AUDIT_TRAIL.md) (one row per included study) |
+| Which AI did what at each stage, and what is not archived? | [`00_admin/AI_USE_LEDGER.md`](00_admin/AI_USE_LEDGER.md) |
+| Where did the project depart from its plan, and which errors did it find in itself? | [`00_admin/DEVIATIONS_AND_ERRORS.md`](00_admin/DEVIATIONS_AND_ERRORS.md) |
+| How far can this be reproduced, and how? | [`10_reproducibility/REPRODUCE.md`](10_reproducibility/REPRODUCE.md) |
+| Are the files I hold the files that were analysed? | [`10_reproducibility/DATA_MANIFEST.csv`](10_reproducibility/DATA_MANIFEST.csv) (SHA-256 of every data file) |
+
 ## 5. Pick a reading path
 
 **Supervisor or examiner (about 30 minutes)**
@@ -77,6 +90,7 @@ Disclosed rather than smoothed over: searching was closed early by decision (SSR
 4. `00_admin/DECISIONS_AND_OPEN_ITEMS.md` — what is still undecided and who decides.
 
 **Auditor or methodologist (about 2 hours)**
+0. `00_admin/WEAKNESSES.md` — pick the weakness you most doubt and run its test.
 1. `AUDITING_GUIDE.md` — how to check the numbers, trace one study from search hit to synthesis, and challenge a result.
 2. `PROTOCOL.md`, `INCLUSION_EXCLUSION.md`, `ANALYSIS_PLAN.md` — what was promised before searching.
 3. Run the verifier. Then pick a study ID from the atlas and follow it through the folders using `AUDITING_GUIDE.md` §3.
