@@ -65,7 +65,7 @@ cp .env.example .env
 
 ### 2. Run a scraper
 
-All scrapers use only the Python standard library (Python 3.8+). No `pip install` needed for scraping.
+The court scrapers use only the Python standard library (Python 3.8+); `pip install` is not needed for them. The one exception is `scrapers/brazil/tjsp_transformation_loader.py`, which converts a hand-coded spreadsheet and needs `pandas` and `openpyxl`.
 
 ```bash
 # Set output directory (or edit .env)
@@ -224,7 +224,7 @@ Also archived at:
 This dataset was built with the assistance of **Claude** (Anthropic) and **Antigravity** (Google DeepMind), which served as AI assistants. Specifically, they assisted with:
 
 - **Scraper development** — writing and debugging the web scrapers for Brazilian state courts (TJDFT, TJRJ, and others), CanLII (Canada), and Rechtspraak.nl (Netherlands), including handling authentication challenges, pagination logic, and anti-scraping measures (Claude)
-- **Data pipeline** — developing the merge, deduplication, and normalization scripts (`merge_national.py`, `merge_all_countries.py`) (Claude)
+- **Data pipeline** — developing the merge, deduplication, and normalization scripts (`merge_national.py`; an earlier `merge_all_countries.py` is not in this repository) (Claude)
 - **Jurimetric coding engine** — designing and implementing the regex-based coding engine (`jurimetric_coding.py`) for all seven variables across four languages (Portuguese, English, Dutch, French) (Claude)
 - **Repository and deposit workflows** — automating deposits to Zenodo, Harvard Dataverse, DANS, and OSF via their respective APIs (Claude)
 - **Quality control** — identifying and filing issues with upstream legal data sources (worldwidelaw/legal-sources issues #74–77) (Claude)
@@ -288,6 +288,24 @@ simplification, in the project's own
 is written as a standalone audit record for anyone continuing or
 reviewing this work, not a summary for display, and is the place to start
 before opening any other file in that folder.
+
+---
+
+## Transparency, audit and contribution documents
+
+Written during an AI-assisted self-audit on 2026-10-27 (not an official university review, certification, ethics approval or legal opinion). Start with the [audit report](docs/audit-report.md): it lists what was checked, what was found and what still needs a decision.
+
+| Document | What it covers |
+|---|---|
+| [`docs/audit-report.md`](docs/audit-report.md) · [`findings-register.csv`](docs/findings-register.csv) | Findings with severity, location, evidence and status; reproducibility and AI-transparency assessments; risk register; outstanding decisions |
+| [`docs/research-protocol.md`](docs/research-protocol.md) | How the dataset was designed, collected, coded and validated, as far as the repository shows |
+| [`docs/data-management.md`](docs/data-management.md) · [`docs/source-register.md`](docs/source-register.md) | Data held, storage, personal data, licences; every source and what is not known about its terms |
+| [`docs/ai-use-and-disclosure.md`](docs/ai-use-and-disclosure.md) | Every AI tool and use the repository records, and what is not recorded |
+| [`docs/reproducibility.md`](docs/reproducibility.md) · [`docs/limitations.md`](docs/limitations.md) | Commands and what to expect; what the work cannot support |
+| [`docs/standards-matrix.md`](docs/standards-matrix.md) · [`docs/release-checklist.md`](docs/release-checklist.md) | Institutional and community requirements with status; what to settle before a release |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md) · [`CHANGELOG.md`](CHANGELOG.md) | How to contribute and report problems; change history |
+
+Run the offline tests with `python3 -m unittest discover -s tests -v`.
 
 ---
 
