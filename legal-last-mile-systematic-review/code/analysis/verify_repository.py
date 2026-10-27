@@ -145,6 +145,8 @@ if _m:
 # The AI-assisted nature of the project must stay visible in the title and the disclosure must exist
 check(text('README.md').lstrip().startswith('# The Legal Last Mile — An AI-Assisted Systematic Review'), 'README.md: H1 no longer carries "AI-Assisted"')
 check('AI-Assisted' in text('CITATION.cff').split('\n')[3], 'CITATION.cff: title no longer carries "AI-Assisted"')
+_cff_need = f"{n:,} included reports ({F['distinct_studies_definite_links']:,} distinct studies)"
+check(_cff_need in ' '.join(text('CITATION.cff').split()), f'CITATION.cff abstract does not quote the current included-report count ({_cff_need!r})')
 check('AI-Assisted' in text('PROTOCOL.md').split('## 2.')[0], 'PROTOCOL.md: working title no longer carries "AI-Assisted"')
 check((ROOT / 'AI_USE_STATEMENT.md').exists(), 'AI_USE_STATEMENT.md is missing')
 _aus = (ROOT / 'AI_USE_STATEMENT.md').read_text(encoding='utf-8')
