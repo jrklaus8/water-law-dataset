@@ -6,6 +6,8 @@ from search hit to synthesis, what has already gone wrong and been fixed, and wh
 
 ## 1. Start here (15 minutes)
 
+0. **If you have not seen the project before,** read `START_HERE.md` first (the whole project on one page) and use `GLOSSARY.md` for unfamiliar labels.
+
 1. **Read the caveats first:** `README.md` → "Known limitations" (16 numbered items). They are the project's own list of
    what it cannot claim. Then `00_admin/DECISIONS_AND_OPEN_ITEMS.md` for what is still undecided.
 2. **Check the numbers yourself:** run, from this folder, `python3 code/analysis/verify_repository.py`. It re-derives every
@@ -23,10 +25,10 @@ from search hit to synthesis, what has already gone wrong and been fixed, and wh
 |---|---|---|
 | Search, deduplication | Researcher (databases, exports) + scripts in `code/search/` | Deduplication audits 2026-09-28 (DOI, title/author) |
 | Title/abstract screening | AI first pass; human second reviewer | Yes, for the 3,665 include-plus-unsure records (99.8% agreement, itself flagged as unusually high — see README); the AI's 22,557 exclusions were **not** human-checked |
-| Full-text screening | AI reviewer (`reviewer_1`) | **Only 200 of the included studies (S001–S200) confirmed by a human `reviewer_2`**; excludes not reviewed |
+| Full-text screening | AI reviewer (`reviewer_1`) | **Part only: 197 includes confirmed by a human `reviewer_2`, and 262 further decisions ruled on by the researcher under `CK`, so 459 of 2,277 decisions (20.2%) are human-verified**; the other decisions, mostly exclusions, were not human-reviewed. Authoritative table: `AI_USE_STATEMENT.md` |
 | Extraction (92 fields) | AI | **None yet** — no second-extractor pass |
 | Risk-of-bias ratings | AI, rule-based batch process from extracted fields | **None yet**; not a signalling-question read of each paper |
-| Synthesis (Phase 11 judgment, SWiM) | AI, from the extracted data | None yet |
+| Synthesis (Phase 11 judgment, SWiM) | AI, from the extracted data; the researcher ruled on which studies stay in the syntheses | The author has not yet confirmed any study's direction coding (open item A30) |
 
 Nothing in this repository should be described as independently verified beyond that table.
 

@@ -74,9 +74,9 @@ Not departed from: the research question, the eligibility *wording*, the codeboo
 |---|---|
 | Records | 34,594 raw; 27,481 after deduplication |
 | Advanced to full text | 3,659; assessed 2,277; never assessed 1,382 |
-| Full-text decisions | **1,078 included reports** and **1,199 excluded** |
-| Distinct studies | **1,076** on the definite same-data links (S294/S366, S097/S098); **1,074** counting the partial-overlap links (S681/S682, S357/S369); the 5 RoB 2 report rows are 4 trials |
-| Extraction | 1,078 rows of 92 fields |
+| Full-text decisions | **1,072 included reports** and **1,205 excluded** |
+| Distinct studies | **1,070** on the definite same-data links (S294/S366, S097/S098); **1,068** counting the partial-overlap links (S681/S682, S357/S369); the 5 RoB 2 report rows are 4 trials |
+| Extraction | 1,072 rows of 92 fields |
 | Effect-size rows | **58**: Family A 16, Family B 5, Family C 16 and 21 reasoned non-fits; **none pooled** |
 | Human involvement | 197 full-text includes confirmed by the researcher (S001–S200 less three the researcher later excluded); a further 262 full-text records adjudicated by the researcher (172 exclusions, 90 inclusions; A6, A16, A19, A22–A26, A28), so 459 of 2,277 full-text decisions (20.2%) carry human verification or adjudication (the AI's own scope check of 18 SWiM core studies is recorded as AI-checked, not as a human confirmation); no human second extractor |
 

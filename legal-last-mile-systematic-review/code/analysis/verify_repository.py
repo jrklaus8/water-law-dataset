@@ -166,6 +166,18 @@ for needle in (f"**{inc_n:,} include / {exc_n:,} exclude**", f"{n:,} studies ext
     EXPECTED.append(('../README.md (repository root)', needle, None))
     check(needle in top_txt, f"../README.md (repository root): expected to contain {needle!r}")
 has('06_outputs/prisma/prisma_flow.md', f"Studies included in systematic review (n = {inc_n:,}, FINAL)")
+# Reader's guide: START_HERE.md's key-figures block is generated; the hand-written current-status documents must quote the current counts (they drifted after the 2026-10-14 scope rulings)
+import build_start_here as bsh  # noqa: E402
+check(bsh.render(text('START_HERE.md')) == text('START_HERE.md'), 'START_HERE.md: the key-figures block is stale (run code/analysis/build_start_here.py)')
+for _doc, _needle in (('00_admin/RELEASE_0.2.0-interim_2026-10-14.md', f"**{inc_n:,} include / {exc_n:,} exclude**"),
+                      ('00_admin/preregistration/osf_preregistration_draft.md', f"**{inc_n:,} included reports** and **{exc_n:,} excluded**"),
+                      ('06_outputs/prisma/prisma_flow.md', f"Studies included in full extraction so far (n = {inc_n:,})"),
+                      ('PRISMA_WORKFLOW.md', f"{inc_n:,} studies extracted by the AI"),
+                      ('PRISMA_WORKFLOW.md', f"Phase 6 is closed at **{inc_n:,} include / {exc_n:,} exclude**"),
+                      ('DATA_DICTIONARY.md', f"integer 0–4 (all {F['extraction_rows']:,} rows"),
+                      ('00_admin/DECISIONS_AND_OPEN_ITEMS.md', f"{F['human_verified_rows']} of {F['full_text_decided']:,} full-text decisions"),
+                      ('AUDITING_GUIDE.md', f"{F['human_verified_rows']} of {F['full_text_decided']:,} decisions")):
+    check(_needle in text(_doc), f"{_doc} does not quote the current figure ({_needle!r})")
 has('06_outputs/prisma/prisma_flow.md', f"E05 no empirical evidence (n = {F['exclusion_by_code']['E05']})")
 has('06_outputs/prisma/prisma_flow.md', f"E08 duplicate (n = {F['exclusion_by_code']['E08']})")
 has('06_outputs/prisma/prisma_flow.md', f"n = {exc_n:,} total")

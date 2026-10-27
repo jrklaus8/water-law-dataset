@@ -158,7 +158,7 @@ Included
     figure will not grow further unless a future researcher makes a new,
     separately-recorded decision to reopen full-text retrieval for some or
     all of the 1,382 never-screened records.]
-  Studies included in full extraction so far (n = 1,080)
+  Studies included in full extraction so far (n = 1,072)
     [03_extraction/extracted_data/extraction_database.csv, S001-S1169 (S227,
     S233, S299 and S399 documented duplicate gaps, see CHANGELOG.md). Fully caught up
     with the full-text include count as of 2026-09-27 -- no outstanding gap.]

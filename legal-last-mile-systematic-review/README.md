@@ -3,6 +3,8 @@
 **Preliminary AI-Assisted Systematic Review and Contingent Meta-Analysis, with Structured
 Quantitative Evidence Synthesis**
 
+> **New here?** Read [`START_HERE.md`](START_HERE.md) (10 minutes: what was done, what to trust, three reading paths) and keep [`GLOSSARY.md`](GLOSSARY.md) open for the project's labels (`A28`, `CK`, "AI-checked"). Every numbered folder has its own `README.md`.
+
 > **AI-assisted.** A large language model (Claude, Anthropic) did most of the screening, extraction, risk-of-bias
 > appraisal and synthesis drafting, under the researcher's direction; a human independently checked only part of it
 > (see the table in [`AI_USE_STATEMENT.md`](AI_USE_STATEMENT.md)). Treat every figure as AI-produced and unverified

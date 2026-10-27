@@ -9,8 +9,8 @@ It is still an **interim, AI-assisted** deposit: nothing in it has been independ
 |---|---|
 | Search | 34,594 raw records, 27,481 after deduplication; closed 2026-09-11 |
 | Title/abstract screening | 3,659 include / 6 exclude |
-| Full-text screening | closed 2026-09-28 by researcher decision; 2,277 of 3,659 assessed: **1,078 include / 1,199 exclude**; 1,382 never assessed |
-| Included studies | **1,078 reports, representing 1,076 distinct studies** on the definite same-data links (1,074 counting the partial-overlap links); the 5 RoB 2 report rows are 4 trials |
+| Full-text screening | closed 2026-09-28 by researcher decision; 2,277 of 3,659 assessed: **1,072 include / 1,205 exclude**; 1,382 never assessed |
+| Included studies | **1,072 reports, representing 1,070 distinct studies** on the definite same-data links (1,068 counting the partial-overlap links); the 5 RoB 2 report rows are 4 trials |
 | Appraisal | every included study has a design-matched tool and a rule-based rating: RoB 2 5, ROBINS-I 57, JBI 129, MMAT 195, CASP 248, AMSTAR 2 18, Legal Institutional Evidence Appraisal Framework 426 (non-validated, project-specific) |
 | Effect sizes | 52 rows (Family A 13, B 3, C 15, and 21 reasoned non-fits, S331 among them); **none pooled** (Phase 11 verdict); three structured (SWiM) syntheses, Family A k = 13, B k = 3, C k = 15, each study coded for the raw sign of its estimate and its substantive direction for households, with a sensitivity analysis |
 | Controlled vocabularies | `mechanism_family` (nine families plus `multiple`), `outcome_family` (four plus `multiple`) and `study_design_class` (eight values plus `other`) adopted 2026-10-14; original labels preserved |
