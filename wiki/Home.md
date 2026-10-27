@@ -44,6 +44,7 @@ Since version 0.3.0 the coding engine separates genuine water-law decisions from
 | Page | Contents |
 |------|----------|
 | [[Systematic Review]] | The AI-assisted systematic review: status, flow, results, verification, limits |
+| [[Auditing and Reproducing]] | The weak points and how to test them, what a human has checked, how far it can be reproduced |
 | [[Dataset Overview]] | Scope, sources and data collection for the court-decisions dataset |
 | [[Jurimetric Coding]] | The coded variables and the v0.3.0 engine |
 | [[Validation]] | Residual audit, precision/recall and the LLM-assisted reproducibility audit |
