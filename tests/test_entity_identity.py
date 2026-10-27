@@ -81,8 +81,15 @@ class EntityTests(unittest.TestCase):
 
     def test_no_unsupported_claims(self):
         person = self.nodes[PERSON_ID]
-        for key in ("jobTitle", "worksFor", "alumniOf", "affiliation", "award", "image"):
+        for key in ("jobTitle", "worksFor", "alumniOf", "award", "image"):
             self.assertNotIn(key, person)
+
+    def test_affiliation_is_separate_entity(self):
+        person = self.nodes[PERSON_ID]
+        org_id = "https://www.eur.nl/en/esl#organization"
+        self.assertEqual(person["affiliation"], [{"@id": org_id}])
+        self.assertEqual(self.nodes[org_id]["@type"], "CollegeOrUniversity")
+        self.assertNotIn("jobTitle", person)
 
     def test_json_roundtrip(self):
         block = ei.render_block(self.data)

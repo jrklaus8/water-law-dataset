@@ -47,7 +47,20 @@ def person_node(data):
             for i in _emit(data["identifiers"])
         ],
     }
+    affiliations = _emit(data.get("affiliations", []))
+    if affiliations:
+        node["affiliation"] = [{"@id": a["@id"]} for a in affiliations]
     return node
+
+
+def affiliation_nodes(data):
+    return [{
+        "@type": "CollegeOrUniversity",
+        "@id": a["@id"],
+        "name": a["name"],
+        "url": a["url"],
+        "parentOrganization": {"@type": "CollegeOrUniversity", "name": a["parentOrganization"]},
+    } for a in _emit(data.get("affiliations", []))]
 
 
 def podcast_node(data):
@@ -95,7 +108,7 @@ def dataset_node(data):
 def build_graph(data=None, full=False):
     """Page graph: person + dataset. full=True adds podcast and authored works."""
     data = data or load()
-    graph = [person_node(data), dataset_node(data)]
+    graph = [person_node(data), dataset_node(data)] + affiliation_nodes(data)
     if full:
         graph += [podcast_node(data)] + work_nodes(data)
     return {"@context": "https://schema.org", "@graph": graph}
