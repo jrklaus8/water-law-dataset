@@ -16,7 +16,7 @@ Ghost thesis claims are absent?
 Mostly no — but the picture is more nuanced than v0.2.x documentation implied.
 The `other_water` residual was dominated by false positives from the broad keyword scrape.
 The v0.3.0 filter reclassifies 67,703 decisions to `not_water_related`, reducing the genuine
-residual from 89.2% → 8.3%. However:
+residual from 69.0% → 8.3%. However:
 
 1. **Reconciliation gap:** The full reconciliation (§2 of the audit) accounts for the ~17,120
    NL decisions that appear in `not_water_related` beyond the vocabulary-audit count — they
@@ -33,7 +33,7 @@ residual from 89.2% → 8.3%. However:
    affirmative finding confirming pre-litigation absorption (see §4 and `METHODS_NOTE_aansluitplicht.md`).
 4. **LLM-assisted reproducibility audit (May 2026):** Independent LLM relabelling of 91
    decisions under explicit decision rules. With the documented *mananciais* rule applied:
-   κ = 0.832 (95% CI [0.718, 0.926]; agreement 90.1%). Binary WATER/NOT_WATER kappa
+   κ = 0.832 (95% CI [0.721, 0.926]; agreement 90.1%). Binary WATER/NOT_WATER kappa
    (exclude-UNCERTAIN) κ = 0.932 (n = 59, 95% CI [0.830, 1.000]). Pre-rule three-label
    baseline κ = 0.568 — gap driven by Brazil stratum protocol ambiguity (19/20 Brazil
    *mananciais* cases), resolved by the documented decision rule. NL strata: 95.5% plain,
@@ -50,6 +50,7 @@ residual from 89.2% → 8.3%. However:
 | `RESIDUAL_AUDIT.md` | Full audit — reconciliation table, NWR purity, *aansluitplicht* confound, precision/recall, thesis robustness |
 | `residual_audit.py` | Reproduces the audit from any coded CSV |
 | `second_coder_protocol.md` | Route B: second-coder kappa protocol + §6 gold-standard precision/recall evaluation |
+| `kappa_sensitivity.py` | Reproduces the four κ specifications of the reproducibility audit (mananciais rule, exclude-UNCERTAIN, coder-1-confident, baseline) into `kappa_results.json` |
 | `kappa_calculator.py` | Cohen's kappa + bootstrap CI + per-category agreement |
 | `transformer_classifier.py` | Route A: XLM-RoBERTa fine-tuning and residual classification |
 | `METHODS_NOTE_aansluitplicht.md` | Standalone methods note: cross-utility lexical confounds in Dutch administrative law |
@@ -59,7 +60,7 @@ residual from 89.2% → 8.3%. However:
 | `coder1_labels.csv` | Clean coder1 label file for kappa input |
 | `coder2_labels_template.csv` | 91-decision template for independent second coder (fill in `coder2_label`, return as `coder2_labels.csv`) |
 | `coder1_kappa.csv` | Coder1 labels formatted for `kappa_calculator.py` (91 matched cases) |
-| `coder2_labels.csv` | Coder2 labels (91 cases) — **κ = 0.734** |
+| `coder2_labels.csv` | Coder2 labels (91 cases) — three-label **κ = 0.568**; **κ = 0.832** with the documented *mananciais* rule (`kappa_results.json`) |
 | `kappa_agreement_detail.csv` | Case-by-case comparison: coder1 vs coder2, agree/disagree flag |
 | `kappa_results.json` | Official kappa output: κ, CI, per-category precision/recall |
 | `precision_recall_results.json` | Per-stratum and population-weighted precision/recall for the NWR filter |
@@ -105,6 +106,8 @@ in Dutch decisions. The revised filter applies a **water core vocabulary check**
 to every decision: any case with no substantive water vocabulary in its title or
 summary is classified as `not_water_related` rather than `other_water`.
 
-This reclassifies 56,488 decisions and reduces the genuine residual from 57,695
-to approximately 1,207. Three rescue patterns were also added for Brazil tariff,
-connection, and pipe-damage cases that the main regex had missed.
+This moves 52,114 decisions to `not_water_related` (50,547 from the old residual and 1,567 from old
+substantive categories), on top of the 15,589 the narrow v0.2.x filter had already set aside, so v0.3.0
+holds 67,703 in that category. The genuine residual falls from 57,695 to 6,904 (8.3%). Three rescue
+patterns were also added for Brazil tariff, connection, and pipe-damage cases that the main regex had
+missed (244 decisions rescued from the old residual). See §2 of `RESIDUAL_AUDIT.md`.

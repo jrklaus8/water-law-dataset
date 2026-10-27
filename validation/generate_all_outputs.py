@@ -149,6 +149,10 @@ kappa_results = {
     "per_category": per_cat,
 }
 
+# Sensitivity specifications reported in RESIDUAL_AUDIT.md section 5.2 (mananciais rule, exclude-UNCERTAIN, ...)
+from kappa_sensitivity import sensitivity_analysis
+kappa_results["sensitivity_analysis"] = sensitivity_analysis(detail_df.to_dict("records"))
+
 with open(BASE / "kappa_results.json", "w", encoding="utf-8") as f:
     json.dump(kappa_results, f, indent=2)
 print(f"kappa = {kappa:.4f}  [{ci_lo:.4f}, {ci_hi:.4f}]  p_o={p_o:.4f}")
