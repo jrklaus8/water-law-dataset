@@ -1,0 +1,10 @@
+# Optional packages for regenerating the Word, figure and spreadsheet outputs.
+# The verifier (code/analysis/verify_repository.py) and every table, register and data check run on the Python standard library alone;
+# without openpyxl it skips one check (the .xlsx sheet sync) and says so.
+# These are the versions the fresh-clone run of 2026-10-27 used (Python 3.11.17, Linux). Newer versions are expected to work; see REPRODUCE.md for what changes byte for byte.
+openpyxl==3.1.5        # sheet_xlsx.py, the xlsx sync check in verify_repository.py
+python-docx==1.2.0     # build_executive_summary.py (the Word executive summary)
+matplotlib==3.11.2     # build_figures.py, build_executive_summary.py (SVG and embedded figures)
+# Also needed by some scripts, not installable with pip:
+#   poppler-utils (pdftotext) for code/analysis/source_text_tools.py, used only when you supply the source PDFs
+#   R with metafor, dplyr, ggplot2 for 08_code/R/ (templates that stop with a message: nothing was poolable)

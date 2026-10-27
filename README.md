@@ -12,7 +12,7 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 **Scope:** 2016–2026 | **Cases collected:** 83,596 decisions across Brazil, Canada, and Netherlands
 
-### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 🗺️ [Legal Last Mile Atlas (interactive preliminary results of the systematic review)](https://jrklaus8.github.io/water-law-dataset/atlas/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf)
+### 📊 [Interactive Dashboard](https://jrklaus8.github.io/water-law-dataset/) · 🗺️ [Legal Last Mile Atlas (interactive preliminary results of the systematic review)](https://jrklaus8.github.io/water-law-dataset/atlas/) · 📄 [Preliminary Research PDF](docs/The_Legal_Last_Mile_Research.pdf) · 📋 [AI-Assisted Systematic Review (companion project)](legal-last-mile-systematic-review/README.md) · 🧭 [Start here for the review](legal-last-mile-systematic-review/START_HERE.md)
 
 > **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
@@ -65,7 +65,7 @@ cp .env.example .env
 
 ### 2. Run a scraper
 
-All scrapers use only the Python standard library (Python 3.8+). No `pip install` needed for scraping.
+The court scrapers use only the Python standard library (Python 3.8+); `pip install` is not needed for them. The one exception is `scrapers/brazil/tjsp_transformation_loader.py`, which converts a hand-coded spreadsheet and needs `pandas` and `openpyxl`.
 
 ```bash
 # Set output directory (or edit .env)
@@ -224,7 +224,7 @@ Also archived at:
 This dataset was built with the assistance of **Claude** (Anthropic) and **Antigravity** (Google DeepMind), which served as AI assistants. Specifically, they assisted with:
 
 - **Scraper development** — writing and debugging the web scrapers for Brazilian state courts (TJDFT, TJRJ, and others), CanLII (Canada), and Rechtspraak.nl (Netherlands), including handling authentication challenges, pagination logic, and anti-scraping measures (Claude)
-- **Data pipeline** — developing the merge, deduplication, and normalization scripts (`merge_national.py`, `merge_all_countries.py`) (Claude)
+- **Data pipeline** — developing the merge, deduplication, and normalization scripts (`merge_national.py`; an earlier `merge_all_countries.py` is not in this repository) (Claude)
 - **Jurimetric coding engine** — designing and implementing the regex-based coding engine (`jurimetric_coding.py`) for all seven variables across four languages (Portuguese, English, Dutch, French) (Claude)
 - **Repository and deposit workflows** — automating deposits to Zenodo, Harvard Dataverse, DANS, and OSF via their respective APIs (Claude)
 - **Quality control** — identifying and filing issues with upstream legal data sources (worldwidelaw/legal-sources issues #74–77) (Claude)
@@ -251,6 +251,61 @@ The Brazil sub-dataset carries outcome coding, but the coding was AI-assisted. A
 ### Canada Coverage
 
 The Ontario sub-dataset (3,218 cases) focuses on reported decisions from CanLII and does not include unreported Environmental Review Tribunal or Ontario Licence Appeal Tribunal decisions, which may carry a disproportionate share of access-to-water disputes.
+
+---
+
+## Companion Project: AI-Assisted Systematic Review
+
+**➡️ [Read the full AI-assisted systematic review here](legal-last-mile-systematic-review/README.md)** · [How AI was used and what a human checked](legal-last-mile-systematic-review/AI_USE_STATEMENT.md)
+
+[`legal-last-mile-systematic-review/`](legal-last-mile-systematic-review/) is a separate, companion research project in this repository: an **AI-assisted** systematic review (most screening, extraction, appraisal and synthesis drafting was done by a large language model under the researcher's direction; see its AI-use statement) (with contingent, restricted meta-analysis) of the *household-level* empirical literature on legal and administrative barriers to water and sanitation access. It is deliberately **not** merged with the judicial dataset above — litigation is a selected pathway, not a representative sample of administrative exclusion, so the two evidence bases are kept separate and only triangulated.
+
+**Status as of 2026-09-28** (both the database search and full-text
+retrieval are now closed by researcher decision — see below):
+
+| Stage | Status |
+|---|---|
+| Search | Closed 2026-09-11; 34,594 raw records → 27,481 unique after deduplication |
+| Title/abstract screening | Complete, double-reviewed: 3,659 include / 6 exclude, zero conflicts |
+| Full-text retrieval/screening | **Closed 2026-09-28** (institutional access to further providers exhausted): 2,277 of 3,659 records actually screened (62.2%) — **1,072 include / 1,205 exclude** (after two duplicate records were merged and S356 excluded on full text, 2026-09-28); 1,382 permanently unretrieved (1,383 at the closure; the PI added two records and returned one on 2026-10-14) |
+| Extraction (92-field codebook) | Fully caught up with the closed screening population: 1,072 studies extracted |
+| Risk-of-bias appraisal | **Complete corpus-wide.** All 1,080 studies carry a correctly design-matched tool; all 1,072 to which one applies carry a completed rating (no study is now tagged NONE) — a disclosed, rule-based batch appraisal, not a signalling-question-level read of every source document |
+| Evidence classification | Caught up with extraction: 225 studies quantitative-synthesis-eligible, 984 qualitative-synthesis-eligible |
+| Quantitative synthesis | 59 effect-size rows extracted (62 at 2026-09-28; the PI's scope rulings of 2026-10-13 and 14 removed five and added two (S1166 and S1169)); **zero currently pooled** — a disclosed, expected result of a review that refuses to manufacture statistical comparability, not stalled work. Corpus-level feasibility judgment and all three structured (SWiM) syntheses are complete: no family clears the bar for meta-analysis |
+
+This is an unusually large and comprehensive AI-assisted systematic review for its
+fields (administrative law, comparative law, sociolegal studies), closed
+on the researcher's own judgment that the corpus is sufficient — not a
+claim of exhaustive retrieval. Every figure above, and every material
+limitation and irregularity behind it — a caught-and-fixed multi-agent
+data-corruption incident, an unusually high 99.8% inter-reviewer
+agreement rate that was flagged and confirmed rather than treated as
+routine, known duplicate-record cases from cross-database DOI-formatting
+drift, a named systemic PDF-delivery-tool failure mode, and the exact
+terms of both phase closures — is documented in full, without
+simplification, in the project's own
+[`README.md`](legal-last-mile-systematic-review/README.md). That document
+is written as a standalone audit record for anyone continuing or
+reviewing this work, not a summary for display, and is the place to start
+before opening any other file in that folder.
+
+---
+
+## Transparency, audit and contribution documents
+
+Written during an AI-assisted self-audit on 2026-10-27 (not an official university review, certification, ethics approval or legal opinion). Start with the [audit report](docs/audit-report.md): it lists what was checked, what was found and what still needs a decision.
+
+| Document | What it covers |
+|---|---|
+| [`docs/audit-report.md`](docs/audit-report.md) · [`findings-register.csv`](docs/findings-register.csv) | Findings with severity, location, evidence and status; reproducibility and AI-transparency assessments; risk register; outstanding decisions |
+| [`docs/research-protocol.md`](docs/research-protocol.md) | How the dataset was designed, collected, coded and validated, as far as the repository shows |
+| [`docs/data-management.md`](docs/data-management.md) · [`docs/source-register.md`](docs/source-register.md) | Data held, storage, personal data, licences; every source and what is not known about its terms |
+| [`docs/ai-use-and-disclosure.md`](docs/ai-use-and-disclosure.md) | Every AI tool and use the repository records, and what is not recorded |
+| [`docs/reproducibility.md`](docs/reproducibility.md) · [`docs/limitations.md`](docs/limitations.md) | Commands and what to expect; what the work cannot support |
+| [`docs/standards-matrix.md`](docs/standards-matrix.md) · [`docs/release-checklist.md`](docs/release-checklist.md) | Institutional and community requirements with status; what to settle before a release |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`SECURITY.md`](SECURITY.md) · [`CHANGELOG.md`](CHANGELOG.md) | How to contribute and report problems; change history |
+
+Run the offline tests with `python3 -m unittest discover -s tests -v`.
 
 ---
 
