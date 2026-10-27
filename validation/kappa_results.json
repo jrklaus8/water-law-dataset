@@ -31,5 +31,59 @@
       "precision": 0.5625,
       "recall": 0.9
     }
-  }
+  },
+  "sensitivity_analysis": [
+    {
+      "specification": "mananciais_rule",
+      "description": "Mananciais rule applied (coder 1 UNCERTAIN -> WATER for Brazil)",
+      "n_cases": 91,
+      "cohen_kappa": 0.8318,
+      "ci_95": [
+        0.7206,
+        0.9257
+      ],
+      "observed_agreement": 0.9011,
+      "n_boot": 5000,
+      "seed": 42
+    },
+    {
+      "specification": "exclude_uncertain",
+      "description": "Exclude UNCERTAIN: neither coder said UNCERTAIN (binary WATER / NOT_WATER)",
+      "n_cases": 59,
+      "cohen_kappa": 0.9321,
+      "ci_95": [
+        0.83,
+        1.0
+      ],
+      "observed_agreement": 0.9661,
+      "n_boot": 5000,
+      "seed": 42
+    },
+    {
+      "specification": "coder1_confident",
+      "description": "Coder 1 confident: coder 1 gave a non-UNCERTAIN label",
+      "n_cases": 63,
+      "cohen_kappa": 0.8208,
+      "ci_95": [
+        0.6847,
+        0.9379
+      ],
+      "observed_agreement": 0.9048,
+      "n_boot": 5000,
+      "seed": 42
+    },
+    {
+      "specification": "baseline",
+      "description": "Three labels, no rule (pre-calibration baseline)",
+      "n_cases": 91,
+      "cohen_kappa": 0.5684,
+      "ci_95": [
+        0.4397,
+        0.6939
+      ],
+      "observed_agreement": 0.7143,
+      "n_boot": 5000,
+      "seed": 42
+    }
+  ]
 }

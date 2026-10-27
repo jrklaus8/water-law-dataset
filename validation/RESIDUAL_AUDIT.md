@@ -10,8 +10,8 @@
 
 ## 0. Reading This Document
 
-This audit was prompted by a peer-review concern: the v0.2.x engine left 74,607 decisions
-(89.2 % of the full corpus) in `other_water`, raising the question of whether the residual
+This audit was prompted by a peer-review concern: the v0.2.x engine left 57,695 decisions
+(69.0 % of the full corpus) in `other_water`, raising the question of whether the residual
 concealed connection-refusal or informal-settlement cases that the Administrative Ghost thesis
 claims are absent. The audit answers that question, applies a corrective filter, and documents
 every material number change. **§1** restates the problem. **§2** is a full reconciliation table
@@ -27,8 +27,15 @@ robustness check with v0.3.0 figures.
 
 The jurimetric coding engine classifies 83,596 decisions across 21 substantive governance
 categories plus one residual labelled `other_water`. Under v0.2.x, that residual contained
-74,607 decisions — 89.2 % of the corpus. Only 8,989 decisions (10.8 %) were classified into
-substantive categories.
+57,695 decisions — 69.0 % of the corpus; a narrow immigration filter had already set aside a
+further 15,589 as `not_water_related`, and 10,312 decisions (12.3 %) were classified into
+substantive categories (see the reconciliation table in §2.1).
+
+> **Correction (2026-10-27).** Earlier drafts of this audit, the v0.3.0 supervisor memo and the
+> dashboard banner quoted the v0.2.x residual as 74,607 decisions (89.2 %) and the substantive
+> categories as 8,989 (10.8 %). Those are v0.3.0 totals — 74,607 = 67,703 `not_water_related` +
+> 6,904 `other_water`, and 8,989 = the v0.3.0 substantive categories — not v0.2.x figures. The §2
+> reconciliation table is the checksum-verified source: v0.2.x `other_water` was 57,695 (69.0 %).
 
 A peer reviewer at JELS, Law and Society Review, or Jurimetrics will ask: what is inside that
 residual? Could it be hiding the connection-refusal or informal-settlement cases that the
@@ -317,7 +324,7 @@ Results are in `validation/kappa_results.json` and `validation/kappa_agreement_d
 | N cases | 91 |
 | Observed agreement (with mananciais rule) | **90.1 %** (82/91) |
 | Cohen's κ (with mananciais rule) | **0.832** |
-| 95 % CI (bootstrap, 5,000 iterations) | [0.718, 0.926] |
+| 95 % CI (bootstrap, 5,000 iterations) | [0.721, 0.926] |
 
 The rule applied: São Paulo *mananciais* watershed-protection cases coded UNCERTAIN by the
 author are recoded as WATER for the purposes of this calibration (see Brazil stratum
@@ -328,21 +335,26 @@ defensible, and resolves a *protocol* ambiguity rather than masking a reliabilit
 
 | Specification | N | κ | 95 % CI | p_o |
 |---|---|---|---|---|
-| **Mananciais rule applied** (C1 UNCERTAIN→WATER for Brazil) | 91 | **0.832** | [0.718, 0.926] | **90.1 %** |
+| **Mananciais rule applied** (C1 UNCERTAIN→WATER for Brazil) | 91 | **0.832** | [0.721, 0.926] | **90.1 %** |
 | Exclude-UNCERTAIN: neither coder said UNCERTAIN (binary WATER/NOT_WATER) | 59 | **0.932** | [0.830, 1.000] | 96.6 % |
-| Coder1-confident: coder1 gave a non-UNCERTAIN label | 63 | **0.821** | [0.686, 0.938] | 90.5 % |
-| Three-label, no rule (pre-calibration baseline) | 91 | 0.568 | [0.436, 0.695] | 71.4 % |
+| Coder1-confident: coder1 gave a non-UNCERTAIN label | 63 | **0.821** | [0.685, 0.938] | 90.5 % |
+| Three-label, no rule (pre-calibration baseline) | 91 | 0.568 | [0.440, 0.694] | 71.4 % |
 
 The binary WATER/NOT_WATER kappa (0.932, n = 59) remains the operationally relevant
 specification for the governance analysis, where UNCERTAIN labels result in exclusion rather
 than classification. All four specifications exceed or approach the 0.75 publication threshold
 once the Brazil calibration is resolved.
 
+These four rows are reproduced by `validation/kappa_sensitivity.py` (percentile bootstrap, 5,000 resamples,
+seed 42) and stored under `sensitivity_analysis` in `kappa_results.json`; `generate_all_outputs.py` regenerates them.
+The primary `ci_95` in `kappa_results.json` for the baseline ([0.4441, 0.6908]) uses 2,000 resamples, which is why it
+differs in the third decimal from the baseline row above.
+
 **Disagreement breakdown (26 total disagreements, pre-rule):**
 
 | Coder1 label | Coder2 label | Count | Interpretation |
 |---|---|---|---|
-| UNCERTAIN | WATER | 19 | Brazil *mananciais* ambiguity — resolved by decision rule |
+| UNCERTAIN | WATER | 19 | 17 Brazil *mananciais* cases (resolved by decision rule) and 2 Netherlands cases |
 | WATER | UNCERTAIN | 3 | LLM coder more cautious on borderline NL cases |
 | NOT_WATER | WATER | 2 | Genuine content disagreements |
 | NOT_WATER | UNCERTAIN | 1 | Borderline NL case |
@@ -358,7 +370,7 @@ once the Brazil calibration is resolved.
 | BR_all | 20 | 5.0 % | 90.0 % |
 
 **Brazil stratum — protocol question resolved by decision rule:** The Brazil stratum showed
-only 5 % pre-rule agreement (1/20 cases). All 19 UNCERTAIN/WATER disagreements involve São
+only 5 % pre-rule agreement (1/20 cases). All 17 Brazilian UNCERTAIN/WATER disagreements involve São
 Paulo state court enforcement of Law 9,866/1997 in *áreas de proteção de mananciais*
 (watershed protection areas) — demolition orders protecting Guarapiranga and Billings reservoir
 catchments. The author coded these as UNCERTAIN because they adjudicate demolition/land-use
@@ -391,7 +403,7 @@ described here is likely sufficient without further work.
 > Reproducibility of the upstream WATER/NOT_WATER classification was assessed by independent
 > LLM-assisted relabelling of a 91-decision stratified sub-sample (Gilardi, Alizadeh and Kubli
 > 2023; Ziems et al. 2024). Under the three-label scheme with the documented *mananciais*
-> decision rule applied, agreement was 90.1 % (Cohen's κ = 0.832, 95 % CI: [0.718, 0.926]).
+> decision rule applied, agreement was 90.1 % (Cohen's κ = 0.832, 95 % CI: [0.721, 0.926]).
 > Excluding cases where either coder expressed uncertainty — the operational specification for
 > downstream analysis — binary WATER/NOT_WATER kappa was κ = 0.932 (n = 59, 95 % CI:
 > [0.830, 1.000]). NOT_WATER precision was 97 %, confirming the filter removes non-water

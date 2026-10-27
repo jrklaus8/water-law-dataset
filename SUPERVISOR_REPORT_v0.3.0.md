@@ -5,6 +5,8 @@
 **Date:** 17 May 2026
 **Re:** Response to peer-review concerns — 69% residual, route A/B validation, revised cross-national statistics
 
+> **Correction note (2026-10-27).** This memo is kept as sent. Its baseline figures are wrong: the v0.2.x `other_water` residual was **57,695 decisions (69.0 %)**, not 74,607 (89.2 %), and 15,589 further decisions were already `not_water_related` under the narrow v0.2.x immigration filter; 10,312 decisions (12.3 %) were in substantive categories, not 8,989 (10.8 %). The figures 74,607 and 8,989 are v0.3.0 totals (`not_water_related` + `other_water`, and substantive categories). So "89.2 % → 8.3 %" should read **69.0 % → 8.3 %**, §3's "74,607 decisions in the v0.2.x residual" should read 57,695, and the "0 (net)" change in the §4.3 table is a fall in substantive categories from 10,312 to 8,989 (1,567 moved to `not_water_related`, 244 rescued from the residual). The checksum-verified reconciliation is §2 of `validation/RESIDUAL_AUDIT.md`. The 97.9 % false-positive share and the thesis conclusions in this memo were not recomputed here.
+
 ---
 
 ## 1. Executive Summary
