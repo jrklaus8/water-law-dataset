@@ -49,12 +49,12 @@ An independent large-language-model coder applied explicit, documented decision 
 
 | Specification | N | Cohen's κ | 95% CI | Agreement |
 |---|---|---|---|---|
-| **Documented *mananciais* rule applied** (headline) | 91 | **0.832** | 0.718–0.926 | 90.1% |
+| **Documented *mananciais* rule applied** (headline) | 91 | **0.832** | 0.721–0.926 | 90.1% |
 | Binary WATER / NOT_WATER, excluding UNCERTAIN | 59 | **0.932** | 0.830–1.000 | 96.6% |
-| Cases where coder 1 gave a non-UNCERTAIN label | 63 | 0.821 | 0.686–0.938 | 90.5% |
-| Three labels, no rule (pre-calibration baseline) | 91 | 0.568 | 0.436–0.695 | 71.4% |
+| Cases where coder 1 gave a non-UNCERTAIN label | 63 | 0.821 | 0.685–0.938 | 90.5% |
+| Three labels, no rule (pre-calibration baseline) | 91 | 0.568 | 0.440–0.694 | 71.4% |
 
-- **Why the baseline is lower.** 19 of the 26 disagreements concern São Paulo *mananciais* (watershed-protection) cases the author had coded UNCERTAIN because they adjudicate demolition and land-use law, while the LLM coder labelled them WATER because they protect drinking-water sources. The documented rule — *mananciais* protection cases count as water law for Legal Last Mile purposes — resolves a protocol ambiguity rather than masking unreliability.
+- **Why the baseline is lower.** 17 of the 26 disagreements concern São Paulo *mananciais* (watershed-protection) cases the author had coded UNCERTAIN because they adjudicate demolition and land-use law, while the LLM coder labelled them WATER because they protect drinking-water sources. The documented rule — *mananciais* protection cases count as water law for Legal Last Mile purposes — resolves a protocol ambiguity rather than masking unreliability.
 - **NOT_WATER precision is 97%** (30 of 31) under every specification, which supports the claim that the filter removes non-water cases correctly.
 - Agreement by stratum (before the rule): Netherlands plain 95.5%, broad water 86.7%, *aansluitplicht* 100%; Brazil 5.0% before the rule and 90.0% after.
 
@@ -71,6 +71,7 @@ An independent large-language-model coder applied explicit, documented decision 
 | `RESIDUAL_AUDIT.md` | Full audit: reconciliation, purity of the not-water bucket, the *aansluitplicht* confound, precision and recall, reproducibility audit |
 | `residual_audit.py` | Reproduces the audit from any coded CSV |
 | `kappa_calculator.py` | Cohen's kappa with bootstrap confidence interval and per-category agreement |
+| `kappa_sensitivity.py` | Reproduces the four specifications in the table above (5,000 bootstrap resamples, seed 42) into `kappa_results.json` |
 | `second_coder_protocol.md` | Second-coder protocol and the gold-standard evaluation |
 | `generate_all_outputs.py` | Regenerates kappa files, the Excel workbook and report data |
 | `kappa_results.json`, `kappa_agreement_detail.csv`, `precision_recall_results.json` | Machine-readable results |

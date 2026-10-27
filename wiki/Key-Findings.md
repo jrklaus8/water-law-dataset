@@ -169,9 +169,9 @@ Full detail and the files behind it are on the [[Validation]] page. In short:
 
 | Specification | N | Cohen's κ | 95% CI |
 |---|---|---|---|
-| Documented *mananciais* rule applied (headline) | 91 | 0.832 | 0.718–0.926 |
+| Documented *mananciais* rule applied (headline) | 91 | 0.832 | 0.721–0.926 |
 | Binary WATER / NOT_WATER, excluding UNCERTAIN | 59 | 0.932 | 0.830–1.000 |
-| Three labels, no rule (pre-calibration baseline) | 91 | 0.568 | 0.436–0.695 |
+| Three labels, no rule (pre-calibration baseline) | 91 | 0.568 | 0.440–0.694 |
 
 NOT_WATER precision is 97%. This validates the upstream water / not-water filter; the downstream 21-category governance scheme is not yet independently validated, and a human bilingual second-coder pass is still recommended. (An earlier figure, κ = 0.734, is superseded.)
 
