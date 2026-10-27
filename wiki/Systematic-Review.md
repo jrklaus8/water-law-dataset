@@ -14,8 +14,9 @@
 |------|-------|
 | **Interactive results (the Atlas)** — results preview, methodology, PRISMA flow, evidence map, appraisal, harvest plot, 10 sensitivity scenarios, gaps, and the full text lists | https://jrklaus8.github.io/water-law-dataset/atlas/ |
 | The review's files (protocol, databases, code, outputs) | Folder `legal-last-mile-systematic-review/` on the branch [`claude/legal-last-mile-review-spec-8ri0zs`](https://github.com/jrklaus8/water-law-dataset/tree/claude/legal-last-mile-review-spec-8ri0zs/legal-last-mile-systematic-review). It is **not on `main` yet**; this link will move when the branch is merged. |
-| Start here if you are auditing | `AI_USE_STATEMENT.md`, then `AUDITING_GUIDE.md`, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`, `00_admin/CURRENT_FIGURES.md` |
-| Re-check the whole repository | `python3 code/analysis/verify_repository.py` (189 checks pass at the time of writing) |
+| **New to the project? Start here** | [`START_HERE.md`](https://github.com/jrklaus8/water-law-dataset/blob/claude/legal-last-mile-review-spec-8ri0zs/legal-last-mile-systematic-review/START_HERE.md): the whole project on one page, what to trust, three reading paths (supervisor, auditor, replicator). [`GLOSSARY.md`](https://github.com/jrklaus8/water-law-dataset/blob/claude/legal-last-mile-review-spec-8ri0zs/legal-last-mile-systematic-review/GLOSSARY.md) explains every label (`A28`, `CK`, "AI-checked"). Each numbered folder has its own `README.md` |
+| If you are auditing | `AI_USE_STATEMENT.md`, then `AUDITING_GUIDE.md`, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`, `00_admin/CURRENT_FIGURES.md` |
+| Re-check the whole repository | `python3 code/analysis/verify_repository.py` (it must report no failed checks) |
 
 The Atlas is generated from the review's databases by `code/analysis/build_evidence_atlas.py`; a test checks that the published page equals the generator's output.
 

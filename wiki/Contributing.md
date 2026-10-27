@@ -21,7 +21,7 @@ The regex patterns in `utils/jurimetric_coding.py` can always be improved:
 Open an issue or submit a PR. All scrapers use only the Python standard library (no `pip install` needed for scraping).
 
 ### Audit or Challenge the Systematic Review
-The review is built to be checked. Start with `AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` in the `legal-last-mile-systematic-review/` folder ([[Systematic Review]]). You can re-run the 189 repository checks with `python3 code/analysis/verify_repository.py`, trace one study from search record to synthesis, or verify the 31 synthesis studies against their source papers using the verification dossier. Corrections to the AI's extraction are especially valuable because no second extractor has checked it.
+The review is built to be checked. Start with `AI_USE_STATEMENT.md` and `AUDITING_GUIDE.md` in the `legal-last-mile-systematic-review/` folder ([[Systematic Review]]). You can re-run the repository checks with `python3 code/analysis/verify_repository.py`, trace one study from search record to synthesis, or verify the 31 synthesis studies against their source papers using the verification dossier. Corrections to the AI's extraction are especially valuable because no second extractor has checked it.
 
 ### Report Data Quality Issues
 If you find systematic errors in the data — wrong dates, duplicate cases, encoding problems — open a [GitHub issue](https://github.com/jrklaus8/water-law-dataset/issues).
