@@ -48,7 +48,7 @@ These figures are rewritten from the databases by `code/analysis/build_start_her
 | 7. Risk of bias | Design-matched instrument chosen and a rating assigned | AI, rule-based from the extracted fields; **no human re-appraisal** | `04_quality/`, `RISK_OF_BIAS.md` |
 | 8. Evidence map | Each study classified by design, mechanism family, outcome and certainty | AI, with controlled vocabularies and researcher rulings | `05_analysis/descriptive/` |
 | 9. Can anything be pooled? | Judged family by family; **nothing met the bar**, so the three families that could be compared by direction went to structured synthesis | AI drafted; researcher approved | `05_analysis/effect_sizes/`, `06_outputs/supplementary/` |
-| 10. Sensitivity analysis | Ten scenarios remove or recode doubtful studies and re-test three conclusions that were fixed in advance | Script | `code/analysis/sensitivity_analysis.py`, the atlas "Robustness" tab |
+| 10. Sensitivity analysis | Ten scenarios remove or recode doubtful studies and re-test three conclusion tests written into the script before the scenarios were run (but after the baseline counts existed) | Script | `code/analysis/sensitivity_analysis.py`, the atlas "Robustness" tab |
 | 11. Audits and corrections | The project audited itself, corrected its own errors in the open, and the researcher adjudicated contested decisions | AI found; researcher ruled | `00_admin/audits/`, `00_admin/DECISIONS_AND_OPEN_ITEMS.md`, `CHANGELOG.md` |
 | 12. Outputs | Interactive atlas, preliminary report, executive summary, manuscript draft | Generated from the databases | `06_outputs/`, `07_manuscript/` |
 

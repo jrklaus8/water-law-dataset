@@ -169,6 +169,12 @@ has('06_outputs/prisma/prisma_flow.md', f"Studies included in systematic review 
 # Reader's guide: START_HERE.md's key-figures block is generated; the hand-written current-status documents must quote the current counts (they drifted after the 2026-10-14 scope rulings)
 import build_start_here as bsh  # noqa: E402
 check(bsh.render(text('START_HERE.md')) == text('START_HERE.md'), 'START_HERE.md: the key-figures block is stale (run code/analysis/build_start_here.py)')
+# Transparency files: each generated file must be exactly what its generator writes from the databases today (the registers cannot go stale)
+import build_study_audit_trail as bsat, build_ai_use_ledger as bal, build_weakness_register as bwr, build_deviation_error_registers as bder, build_data_manifest as bdm  # noqa: E402
+for _name, _pairs in (('STUDY_AUDIT_TRAIL', list(zip((bsat.OUT_CSV, bsat.OUT_MD), bsat.render()))), ('AI_USE_LEDGER', list(zip((bal.OUT_CSV, bal.OUT_MD), bal.render()))),
+                      ('WEAKNESS_REGISTER', list(zip((bwr.OUT_CSV, bwr.OUT_MD), bwr.render()))), ('DEVIATIONS_AND_ERRORS', [(bder.OUT, bder.render())]), ('DATA_MANIFEST', [(bdm.OUT, bdm.render())])):
+    for _path, _want in _pairs:
+        check(_path.read_bytes().decode('utf-8') == _want, f'{_path.relative_to(ROOT)} is stale: run code/analysis/{ {"STUDY_AUDIT_TRAIL": "build_study_audit_trail", "AI_USE_LEDGER": "build_ai_use_ledger", "WEAKNESS_REGISTER": "build_weakness_register", "DEVIATIONS_AND_ERRORS": "build_deviation_error_registers", "DATA_MANIFEST": "build_data_manifest"}[_name] }.py')
 for _doc, _needle in (('00_admin/RELEASE_0.2.0-interim_2026-10-14.md', f"**{inc_n:,} include / {exc_n:,} exclude**"),
                       ('00_admin/preregistration/osf_preregistration_draft.md', f"**{inc_n:,} included reports** and **{exc_n:,} excluded**"),
                       ('06_outputs/prisma/prisma_flow.md', f"Studies included in full extraction so far (n = {inc_n:,})"),
