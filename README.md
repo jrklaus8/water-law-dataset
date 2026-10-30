@@ -73,7 +73,8 @@ export OUTPUT_DIR=./data        # Linux/Mac
 set OUTPUT_DIR=.\data           # Windows
 
 # Run any scraper
-python scrapers/brazil/tjsc_scraper.py
+python scrapers/brazil/tjsc_scraper.py --dry-run --start-year 2024 --end-year 2024   # preview, writes nothing
+python scrapers/brazil/tjsc_scraper.py                                                          # full run
 python scrapers/brazil/tjdft_scraper.py
 python scrapers/netherlands/rechtspraak_scraper.py
 ```

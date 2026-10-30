@@ -25,6 +25,7 @@ classifiers = [
 
 [project.optional-dependencies]
 utils = ["pandas>=2.0", "openpyxl>=3.1", "matplotlib>=3.7"]
+dev = ["pytest>=7.0", "ruff>=0.6"]
 
 [tool.setuptools.package-data]
 "*" = ["*.py"]
@@ -33,6 +34,20 @@ utils = ["pandas>=2.0", "openpyxl>=3.1", "matplotlib>=3.7"]
 where = ["."]
 include = ["scrapers*", "utils*"]
 namespaces = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+# Legacy long lines in the pre-existing header block
+"scrapers/brazil/tjsc_scraper.py" = ["E501"]
 
 [tool.pylint.messages_control]
 disable = ["C0114", "C0115", "C0116", "W0611", "R0914", "R0915"]
