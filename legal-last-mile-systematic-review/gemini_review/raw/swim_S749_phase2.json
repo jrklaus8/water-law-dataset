@@ -1,0 +1,144 @@
+{
+  "study_id": "S749",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "80c40e63f6328ca17408bf63def1f021b26eac4e14211299de975bd6d97f6d20",
+  "input_text_sha256": "5f48a077fca66a9b9c8fd983d2b35820cc47a9389a10ff32d905fb06fea93b40",
+  "prompt_sha256": "ebc42cd46de2a338aa6b0ea679f57dbe6124b4452d8838dd6f1665d3a43c4f4c",
+  "started_at": "2026-11-18T23:07:13.746957+00:00",
+  "completed_at": "2026-11-18T23:08:39.644435+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S749\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S749\",\n  \"record_id\": \"RD4A74FAB9801\",\n  \"confidence\": \"high\",\n  \"country\": \"Brazil\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF p. 1, Abstract\",\n      \"quote\": \"regional agency does not exhibit signiﬁcantly lower tariff levels than unregulated corporations.\"\n    },\n    {\n      \"page\": \"PDF p. 7, Section 5.1\",\n      \"quote\": \"for private management are, on average, 0.3456 R$/m3 greater than\"\n    },\n    {\n      \"page\": \"PDF p. 7, Section 5.1\",\n      \"quote\": \"privately managed WSU corporations do not have higher tariffs\"\n    },\n    {\n      \"page\": \"PDF p. 7, Section 5.1\",\n      \"quote\": \"their coefﬁcients are negative and not signiﬁcant.\"\n    },\n    {\n      \"page\": \"PDF p. 9, Section 5.3\",\n      \"quote\": \"average, 0.2797 R$/m3 higher. These differences can be explained\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Adjusted GEE (Gaussian family, identity link, independent working correlation, robust SEs): Priv beta = +0.2797 R$/m3 (p = 0.026), N = 351 corporation-years across 51 corporations (2005-2012). Unadjusted profitability ratio Ljt/(OPEX + CAPEXd) is 22.1% for privately managed vs. 7.2% for publicly managed corporations (t-test p = 0.000).\",\n      \"exposure_and_reference\": \"Private management dummy (Priv = 1, privately managed business corporation) vs. Public management (Priv = 0, mixed-capital corporation controlled by state or municipal government)\",\n      \"finding_label\": \"H1 Primary (Joint Model): Private vs. public management on joint water and sanitation tariff level (Ljt, overall cluster)\",\n      \"outcome_and_polarity\": \"Joint water supply and sanitation tariff level (Ljt = total annual water and sanitation bills / total annual billed volume in m3, deflated to 2012 R$/m3; sample mean = 2.5731, SD = 0.6681). Higher numerical values mean HIGHER consumer prices per m3 / WORSE household tariff affordability.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 7, PDF p. 9; Section 5.3, PDF p. 9\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Adjusted GEE: Priv beta = +0.3456 R$/m3 (p = 0.011), N = 351 corporation-years. Unadjusted profitability ratio Lwt/(OPEX + CAPEXd) mean = 25% for privately managed vs. 9% for publicly managed corporations (t-test p = 0.000).\",\n      \"exposure_and_reference\": \"Private management dummy (Priv = 1) vs. Public management (Priv = 0)\",\n      \"finding_label\": \"H1 Water Supply Model: Private vs. public management on water supply tariff level (Lwt, overall cluster)\",\n      \"outcome_and_polarity\": \"Water supply tariff level (Lwt = total annual water bills / total annual billed water volume in m3, in 2012 R$/m3; sample mean = 2.6505, SD = 0.7077). Higher numerical values mean HIGHER water tariffs / WORSE household tariff affordability.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 5, PDF p. 8; Section 5.1, PDF p. 7\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Adjusted GEE: Priv beta = +0.1971 R$/m3 (p = 0.159, non-significant; H1 rejected for sanitation), N = 349 corporation-years (excluding 2 Tukey outliers).\",\n      \"exposure_and_reference\": \"Private management dummy (Priv = 1) vs. Public management (Priv = 0)\",\n      \"finding_label\": \"H1 Sanitation Model: Private vs. public management on sanitation tariff level (Lst, overall cluster)\",\n      \"outcome_and_polarity\": \"Sanitation tariff level (Lst = total annual sanitation bills / total annual billed sanitation volume in m3, in 2012 R$/m3; sample mean = 2.3418, SD = 0.6846). Higher numerical values mean HIGHER sanitation tariffs / WORSE household tariff affordability.\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 6, PDF p. 9; Section 5.2, PDF pp. 8-9\"\n    },\n    {\n      \"access_valence\": \"mixed\",\n      \"exact_estimate\": \"Regulated cluster adjusted GEE: Lwt Priv = 0.0240 (p = 0.885, N = 168); Lst Priv = 0.1529 (p = 0.259, N = 167); Ljt Priv = 0.0647 (p = 0.667, N = 168) — all statistically null. Unregulated cluster adjusted GEE: Lwt Priv = +0.3618 R$/m3 (p = 0.011, N = 183); Lst Priv = +0.2906 R$/m3 (p = 0.095, significant only at 10%, N = 182); Ljt Priv = +0.3618 R$/m3 (p = 0.011, N = 183).\",\n      \"exposure_and_reference\": \"Private management dummy (Priv = 1) vs. Public management (Priv = 0), stratified into Regulated cluster vs. Unregulated cluster subsamples\",\n      \"finding_label\": \"H1 Subsample Moderation: Private vs. public management in regulated vs. unregulated utility clusters (Lwt, Lst, Ljt)\",\n      \"outcome_and_polarity\": \"Tariff levels Lwt, Lst, and Ljt in 2012 R$/m3. Higher numerical values mean HIGHER consumer tariffs / WORSE household tariff affordability.\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Tables 5, 6, and 7, PDF pp. 8-9; Sections 5.1-5.4, PDF pp. 7-10\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Overall cluster adjusted GEE (note: Unicode minus signs stripped in PDF table text; prose on PDF pp. 7 and 10 confirms negative signs for RRegA/LRegA in Lwt and LRegA in Ljt): Lwt (N = 351): RRegA = -0.0482 [printed 0.0482](p = 0.656), LRegA = -0.0774 [printed 0.0774](p = 0.580); Lst (N = 349): RRegA magnitude = 0.0856 (p = 0.518), LRegA magnitude = 0.0531 (p = 0.745); Ljt (N = 351): RRegA magnitude = 0.0063 (p = 0.959), LRegA = -0.0889 [printed 0.0889](p = 0.560). Regulated cluster (LRegA vs. RRegA reference): Lwt magnitude = 0.0908 (p = 0.413, N = 168); Lst magnitude = 0.1528 (p = 0.174, N = 167); Ljt magnitude = 0.0467 (p = 0.635, N = 168). H2 rejected in all models.\",\n      \"exposure_and_reference\": \"State/micro-regional regulatory agency (RRegA = 1) and municipal/district regulatory agency (LRegA = 1) vs. Unregulated corporation (reference = 0); in regulated subsample, LRegA = 1 vs. RRegA = 0\",\n      \"finding_label\": \"H2 Primary: Regional/state and local/municipal regulatory agency oversight vs. unregulated corporations (Lwt, Lst, Ljt)\",\n      \"outcome_and_polarity\": \"Tariff levels Lwt, Lst, and Ljt in 2012 R$/m3. Higher numerical values mean HIGHER consumer tariffs / WORSE household tariff affordability.\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Tables 5, 6, and 7, PDF pp. 8-9; Sections 5.1-5.3, PDF pp. 7-10\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Overall cluster adjusted GEE — all null (H3 rejected): Lwt (N = 351): Rrat magnitude = 0.1558 (p = 0.244), Rcap magnitude = 0.1204 (p = 0.404); Lst (N = 349): Rrat magnitude = 0.0306 (p = 0.832), Rcap magnitude = 0.0936 (p = 0.584); Ljt (N = 351): Rrat magnitude = 0.1698 (p = 0.191), Rcap magnitude = 0.0397 (p = 0.786). Within Regulated cluster subsample only: Rrat significantly increases Lwt (+0.3080 R$/m3, p = 0.015, N = 168) and Ljt (+0.2701 R$/m3, p = 0.032, N = 168; null on Lst: 0.0044, p = 0.971, N = 167), while Rcap is null in all regulated models (Lwt p = 0.282; Lst p = 0.895; Ljt p = 0.576).\",\n      \"exposure_and_reference\": \"Rate-of-return regime (Rrat = 1) and price-cap or revenue-cap regime (Rcap = 1) vs. Tariffs negotiated directly with the municipality / no defined economic tariff system (reference = 0)\",\n      \"finding_label\": \"H3 Primary & Regulated Subsample: Rate-of-return (Rrat) and price-cap/revenue-cap (Rcap) regimes vs. municipally negotiated tariffs (Lwt, Lst, Ljt)\",\n      \"outcome_and_polarity\": \"Tariff levels Lwt, Lst, and Ljt in 2012 R$/m3. Higher numerical values mean HIGHER consumer tariffs / WORSE household tariff affordability.\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Tables 5, 6, and 7, PDF pp. 8-9; Sections 5.1-5.3, PDF pp. 7-10\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Overall cluster adjusted GEE: Lwt (N = 351): TwoIBT = +0.3480 R$/m3 (p = 0.010), SinIBT = +0.3410 R$/m3 (p = 0.012); Lst (N = 349): TwoIBT = +0.3075 R$/m3 (p = 0.080, significant at 10%), SinIBT = +0.1913 R$/m3 (p = 0.187, null); Ljt (N = 351): TwoIBT = +0.3726 R$/m3 (p = 0.010), SinIBT = +0.3115 R$/m3 (p = 0.029). Null in regulated cluster (p >= 0.144); positive in unregulated cluster for Lwt and Ljt (TwoIBT = +0.5000, p = 0.002; SinIBT = +0.5373, p = 0.013).\",\n      \"exposure_and_reference\": \"Two-part increasing block tariff (TwoIBT = 1) and single-part increasing block tariff (SinIBT = 1) vs. Two-part uniform volumetric tariff (TwoUVT = 0, reference)\",\n      \"finding_label\": \"Commercial Tariff Structure: Increasing block tariffs (TwoIBT, SinIBT) vs. uniform volumetric tariff (TwoUVT) on tariff levels\",\n      \"outcome_and_polarity\": \"Tariff levels Lwt, Lst, and Ljt in 2012 R$/m3. Higher numerical values mean HIGHER average billed tariff per m3 / WORSE average price affordability.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Tables 5, 6, and 7, PDF pp. 8-9; Sections 5.1-5.3, PDF pp. 8-10\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Overall cluster adjusted GEE — all null: Lwt magnitude = 0.0011 (p = 0.454, N = 351); Lst magnitude = 0.0015 (p = 0.338, N = 349); Ljt magnitude = 0.0010 (p = 0.483, N = 351). Divergent subsample effects (signs confirmed on PDF pp. 8-10): Unregulated cluster positive (higher tariffs): Lwt = +0.0034 (p = 0.020, N = 183), Lst = +0.0046 (p = 0.013, N = 182), Ljt = +0.0034 (p = 0.020, N = 183); Regulated cluster negative (lower tariffs): Lwt = -0.0029 [printed 0.0029](p = 0.130, N = 168), Lst = -0.0041 [printed 0.0041](p = 0.051, N = 167), Ljt = -0.0031 [printed 0.0031](p = 0.089, N = 168).\",\n      \"exposure_and_reference\": \"Percentage of annual capital investments subsidized by government (Psub = subsidized investments / total investments in %, continuous; mean = 19.3573%, SD = 30.5978%)\",\n      \"finding_label\": \"Government Investment Subsidies: Percentage of subsidized investments (Psub) on tariff levels (Lwt, Lst, Ljt)\",\n      \"outcome_and_polarity\": \"Tariff levels Lwt, Lst, and Ljt in 2012 R$/m3. Higher numerical values mean HIGHER consumer tariffs / WORSE household tariff affordability.\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Tables 5, 6, and 7, PDF pp. 8-9; Sections 5.1-5.4, PDF pp. 8-10\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"mixed\",\n  \"headline_raw_sign\": \"mixed\",\n  \"headline_result_summary\": \"Using unbalanced panel GEE regressions of 51 Brazilian water and sanitation business corporations from 2005 to 2012 (N = 351 corporation-years for water Lwt and joint Ljt tariffs; N = 349 for sanitation Lst tariffs), Barbosa and Brusca (2015) test three headline governance hypotheses on average tariff levels (R$/m3 billed, where higher values mean higher consumer prices / worse tariff affordability): (1) Private vs. public management (H1): privately managed corporations charge significantly higher joint tariffs (+0.2797 R$/m3, p = 0.026) and water supply tariffs (+0.3456 R$/m3, p = 0.011) than publicly managed corporations in the overall sample, driven by unregulated corporations (+0.3618 R$/m3, p = 0.011), whereas private-public tariff differences are statistically null for sanitation tariffs overall (+0.1971 R$/m3, p = 0.159) and completely null across all three tariff measures among regulated corporations (Lwt p = 0.885, Lst p = 0.259, Ljt p = 0.667); (2) Regulatory agency oversight (H2): corporations regulated by state/micro-regional (RRegA) or municipal/district (LRegA) agencies do not have significantly different tariff levels from unregulated corporations in any model (all p >= 0.518); and (3) Economic regulatory regimes (H3): rate-of-return (Rrat) and price-cap/revenue-cap (Rcap) regimes show no statistically significant difference in tariffs relative to municipal negotiation in the overall models (all p >= 0.191), although within the regulated subsample Rrat significantly raises water (+0.3080 R$/m3, p = 0.015) and joint (+0.2701 R$/m3, p = 0.032) tariffs. Increasing block tariffs (TwoIBT, SinIBT) are associated with higher average tariffs per m3 than uniform volumetric tariffs, while government capital subsidies (Psub) are null overall.\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. Outcome polarity trap (price vs. access): The dependent variables (Lwt, Lst, Ljt) are average corporate tariff levels (total annual bills divided by billed m3, in 2012 R$/m3). Positive coefficients indicate HIGHER water/sanitation prices (worse consumer affordability), NOT expanded access or coverage. Moreover, the authors explicitly note (PDF p. 4) that they measure aggregate utility tariff revenue per m3 across all customer classes rather than household connection coverage or income-adjusted household affordability. 2. Stripped Unicode minus signs and p-values in parentheses: In the extracted text of Tables 5-7 (PDF pp. 8-9), Equation (1) (p. 7), and Appendix 1 (pp. 11-12), Elsevier's Unicode minus character was dropped during text extraction, making negative coefficients appear positive unless verified against the prose (e.g., PDF p. 7 states RRegA and LRegA coefficients are negative and non-significant; pp. 9-10 state Psub is negative in the regulated cluster). Also, numbers in parentheses in Tables 5-7 are p-values, NOT standard errors. 3. Multi-hypothesis / family-selection sensitivity: Coding direction depends entirely on which governance exposure a review selects: H1 (private management Priv = 1 vs. public = 0) increases Lwt and Ljt tariffs (unfavorable to affordability, though symmetrical if re-oriented to public ownership, and null for sanitation Lst and regulated utilities), whereas H2 (regulatory agency presence/level) and H3 (rate-of-return or price-cap regime) are statistically null across all overall models. 4. Table 7 printing anomalies in original article: Table 7's header mislabels the Ljt model as 'Lst model', and its Unregulated cluster column (N = 183) prints identical parameter estimates to Table 5's Unregulated cluster column for shared variables.\",\n  \"study_design\": \"Longitudinal / unbalanced panel observational econometric study (2005-2012) using Generalized Estimating Equations (GEE) with Gaussian family, identity link, independent working correlation matrix, and robust standard errors\",\n  \"unit_and_sample_size\": \"Unit of analysis: Brazilian water and sanitation utility (WSU) business corporations observed annually (2005-2012). Sample: 51 out of 52 corporate WSUs in Brazil (covering ~73% of national water supply population and ~74% of sanitation services), yielding N = 351 corporation-year observations for water supply (Lwt) and joint (Ljt) tariff models (Regulated cluster N = 168; Unregulated cluster N = 183) and N = 349 observations for the sanitation (Lst) tariff model after removing 2 outliers (Regulated cluster N = 167; Unregulated cluster N = 182).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:43:04.912098+00:00\",\n  \"pdf_sha256\": \"80c40e63f6328ca17408bf63def1f021b26eac4e14211299de975bd6d97f6d20\",\n  \"input_sha256\": \"5f48a077fca66a9b9c8fd983d2b35820cc47a9389a10ff32d905fb06fea93b40\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S749\",\n  \"author_year\": \"Barbosa & Brusca (2015)\",\n  \"family\": \"C\",\n  \"exposure_short\": \"Private ownership of the corporation (Brazil)\",\n  \"comparator_short\": \"public and mixed-capital corporations\",\n  \"outcome_short\": \"water tariff level\",\n  \"outcome_family\": \"affordability\",\n  \"estimate_short\": \"+0.3456 R$/m3\",\n  \"raw_coefficient_sign\": \"+\",\n  \"substantive_direction\": \"Unfavourable\",\n  \"outcome_polarity\": \"higher = worse\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"Private ownership: +0.3456 R$/m3 on the tariff level (higher = worse). Raw sign +, substantive Unfavourable.\",\n  \"rob_tool\": \"JBI Cross-Sectional\",\n  \"rob_rating\": \"Some concern\",\n  \"inclusion_decision_human_verified\": \"N (AI-checked only)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"positive (private ownership associated with HIGHER water tariffs, i.e. lower affordability, relative to public/mixed-capital ownership; overall and unregulated clusters only)\",\n  \"exposure_full\": \"Private (vs. public) ownership of a Brazilian water and sanitation business corporation -- a governance-structure/institutional variable -- tested alongside presence/type of economic regulatory agency (local vs. regional vs. unregulated) and regulatory regime (rate-of-return, price-cap/revenue-cap, vs. municipally-negotiated tariff).\",\n  \"comparator_full\": \"Publicly-owned and mixed-capital Brazilian water/sanitation corporations within the same unbalanced panel, 51 business corporations (22 private, remainder public/mixed-capital), 2005-2012.\",\n  \"estimate_full\": \"Private-ownership (Priv) coefficient +0.3456 R$/m3 on the water-tariff-level model (Lwt), significant in the overall and unregulated clusters; not significant within the regulated-only cluster. Local/regional regulatory-agency coefficients negative but not significant (H2 rejected). Rate-of-return and price-cap/revenue-cap regulatory-regime coefficients not significant relative to municipally-negotiated tariffs (H3 rejected).\",\n  \"ai_scope_check_2026-10-14\": \"passed\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: 5f48a077fca66a9b9c8fd983d2b35820cc47a9389a10ff32d905fb06fea93b40) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=86872, sha256=5f48a077fca66a9b9c8fd983d2b35820cc47a9389a10ff32d905fb06fea93b40]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's extracted estimate (+0.3456 R$/m3, N = 351 across 51 corporations) accurately matches the overall water-supply tariff model (Lwt) in Section 5.1 (PDF p. 7) and Table 5 (PDF p. 8, p = 0.011), though the dossier mislabels the Gaussian GEE model with robust standard errors (PDF pp. 6-7) as GLS and omits the printed p-value. However, coding a single 'Unfavourable' direction for S749 is defensible both ways for three substantive reasons. First, the study tests three co-equal governance hypotheses, and both regulatory agency oversight (H2: RRegA, LRegA) and economic regulatory regimes (H3: Rrat, Rcap) are statistically null across all overall models (Tables 5-7, PDF pp. 8-9, all p >= 0.191), while even private management (H1: Priv) is statistically null for sanitation tariffs overall (Lst = +0.1971 R$/m3, p = 0.159, Table 6, PDF p. 9; H1 rejected on p. 8) and completely null across all three tariff models within regulated corporations (Lwt p = 0.885, Lst p = 0.259, Ljt p = 0.667). Second, public versus private corporate management is a symmetric institutional contrast—H1 on PDF p. 5 is framed as publicly managed corporations charging lower tariffs—so orienting the exposure to public/mixed-capital ownership flips the substantive valence from 'Unfavourable' to 'Favourable'. Third, the dependent variable is aggregate corporate billing revenue per billed cubic meter across domestic, commercial, industrial and agricultural users rather than household connection access or income-adjusted social tariffs, which the authors explicitly note is 'not the concept of accessibility' (PDF p. 4).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 4, Section 4.1",
+        "quote": "In contrast, this paper uses not the concept of accessibility but"
+      },
+      {
+        "page": "PDF p. 7, Section 5.1",
+        "quote": "for private management are, on average, 0.3456 R$/m3 greater than"
+      },
+      {
+        "page": "PDF p. 8, Section 5.2",
+        "quote": "sanitation tariff; therefore, H1 can be rejected. However, in the"
+      },
+      {
+        "page": "PDF p. 1, Abstract",
+        "quote": "the results indicate that the use of the rate of return and price cap/revenue cap regimes do not provide"
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "Stored coefficient +0.3456 R$/m3 and sample size N = 351 corporation-years across 51 corporations (2005-2012) match Section 5.1 (PDF p. 7) and Table 5 (PDF p. 8, Priv = 0.3456 with p = 0.011 in parentheses; sample size on PDF pp. 4, 7, 8). Minor discrepancies in Claude's metadata: (1) the dossier calls the estimator 'Unbalanced panel GLS regression coefficient' whereas the paper estimates Generalized Estimating Equations (GEE) with Gaussian family, identity link, independent working correlation, and robust SEs (PDF pp. 6-7); (2) printed p = 0.011 is omitted from structured precision fields; (3) the comparator note states '51 business corporations (22 private, remainder public/mixed-capital)', whereas 22 private and 30 mixed-capital sum to all 52 corporations before 1 corporation with missing data was excluded (PDF p. 4); and (4) Elsevier's PDF text layer stripped minus signs in Tables 5-7 (e.g., RRegA and LRegA print as 0.0482 and 0.0774 in Table 5, confirmed negative in prose on PDF p. 7).",
+    "polarity_or_orientation_issue": "Two issues affect synthesis coding: (1) Symmetric exposure orientation: H1 compares private corporate management (Priv = 1) against state/municipal mixed-capital public management (Priv = 0), and H1 on PDF p. 5 is explicitly phrased as public management having lower tariffs; re-orienting the Family C governance exposure to public ownership reverses the substantive direction from Unfavourable to Favourable. (2) Indirect price polarity: Lwt (higher = higher average billed R$/m3) aggregates revenue per m3 across all customer classes without accounting for social tariffs or connection coverage (PDF pp. 4, 11), and higher average R$/m3 in the same model also arises from increasing block tariffs (TwoIBT = +0.3480, SinIBT = +0.3410) designed to cross-subsidize low-income households via higher upper-block charges on large consumers (PDF p. 8).",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "borderline_or_indirect_proxy",
+    "specification_multiplicity_flag": true,
+    "study_id": "S749",
+    "substantive_direction_verdict": "defensible_both_ways"
+  }
+}

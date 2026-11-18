@@ -1,0 +1,144 @@
+{
+  "study_id": "S1169",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "f5afff9ee416e1bdb5011ffb4f0ac73494ddaa679d72b88bbf971334c8461ee7",
+  "input_text_sha256": "5f049d1fe53733ec9cc318ad4a64e53841ca9049a5e32a2c3edbef87483bc2d3",
+  "prompt_sha256": "c87c8ff646f01cc77450283ff98a8572ce843f14740f1ccdf0c9079a402c73f8",
+  "started_at": "2026-11-18T23:14:16.716282+00:00",
+  "completed_at": "2026-11-18T23:16:29.236951+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S1169\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S1169\",\n  \"record_id\": \"RBEDB6556B711\",\n  \"confidence\": \"high\",\n  \"country\": \"United States (Texas: Cameron, El Paso, Hidalgo, and Webb border counties)\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF page 2 (Abstract, p. 136)\",\n      \"quote\": \"Where the law does not mandate universal service, poor communities frequently are omitted from drinking water supply networks.\"\n    },\n    {\n      \"page\": \"PDF page 2 (Abstract, p. 136)\",\n      \"quote\": \"The analysis reveals that rate regulation, intended to make water service affordable to all households, is also responsible, and may actually reduce service coverage among the poor.\"\n    },\n    {\n      \"page\": \"PDF page 5, Table 2 footnote f (p. 139)\",\n      \"quote\": \"Rates not regulated, although rates and connection costs can be appealed to TCEQ.\"\n    },\n    {\n      \"page\": \"PDF page 11 (Section V, p. 145)\",\n      \"quote\": \"Thus, relying on a price-regulated supplier to provide service reduces the likelihood of having obtained service through 1996 by 27%. The effect is estimated very precisely.\"\n    },\n    {\n      \"page\": \"PDF page 12 (Section V, p. 146)\",\n      \"quote\": \"Providers' access to this infrastructure subsidy has no statistically significant effect\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Adjusted probit coefficient = -1.1858 (cluster-robust SE = 0.4163, p = 0.004), marginal effect = -0.2718 (-27.2 percentage points); N = 781 colonias, Likelihood ratio index = 0.3464, controlling for ln(popn), income, urban, rurald, percent, datemsr, and violmsr\",\n      \"exposure_and_reference\": \"Price-regulated water supplier (pricereg = 1 for municipal utilities [city-regulated] and counties/general law water districts [TCEQ-regulated]; 20% of sample) vs. rate-unregulated supplier (pricereg = 0 for non-profit water supply corporations [WSCs] and private for-profit suppliers)\",\n      \"finding_label\": \"Model B (Headline): Rate regulation of water service provider (pricereg)\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher numerical value = BETTER household water access)\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 5, PDF page 12 (p. 146); text on PDF page 11 (p. 145)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Adjusted probit coefficient = 0.2162 (cluster-robust SE = 0.2576, p = 0.401), marginal effect = 0.0359; N = 781 colonias\",\n      \"exposure_and_reference\": \"Supplier access to USDA Rural Development low-cost infrastructure loans/grants (rurald = 1 for WSCs, counties, and water districts; 90% of sample) vs. no Rural Development access (rurald = 0 for municipal utilities and private for-profit suppliers)\",\n      \"finding_label\": \"Model B: Supplier access to USDA Rural Development infrastructure subsidies (rurald)\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher = BETTER household water access)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 5, PDF page 12 (p. 146)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Adjusted probit coefficient = -0.3795 (cluster-robust SE = 0.6121, p = 0.535), marginal effect = -0.0487; N = 781 colonias (Table 6 unadjusted proportion served: 0.951 for WSC vs. 0.947 for private for-profit)\",\n      \"exposure_and_reference\": \"Non-profit water supply corporation (providr1 = 1; 75% of sample, unregulated rates) vs. private for-profit water supplier (providr5 = 1, reference category; 2% of sample, unregulated rates)\",\n      \"finding_label\": \"Model A: Non-profit water supply corporation (providr1) vs. private for-profit supplier\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher = BETTER household water access)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 4, PDF page 11 (p. 145); Table 6, PDF page 13 (p. 147)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Adjusted probit coefficient = -1.9433 (cluster-robust SE = 0.9955, p = 0.051), marginal effect = -0.5876; N = 781 colonias (borderline p = 0.051, just above strict p < 0.05 threshold though treated as significant at 95% in author text; Table 6 unadjusted proportion served: 0.590 for municipality vs. 0.947 for private for-profit)\",\n      \"exposure_and_reference\": \"Municipal public water system (providr2 = 1; 8% of sample, city-regulated rates) vs. private for-profit water supplier (providr5 = 1, reference category; 2% of sample)\",\n      \"finding_label\": \"Model A: Municipal public water system (providr2) vs. private for-profit supplier\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher = BETTER household water access)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 4, PDF page 11 (p. 145); Table 6, PDF page 13 (p. 147)\"\n    },\n    {\n      \"access_valence\": \"ambiguous_orientation\",\n      \"exact_estimate\": \"Adjusted probit coefficient = -1.1105 (cluster-robust SE = 0.5276, p = 0.035), marginal effect = -0.2687; N = 781 colonias (Table 6 unadjusted proportion served: 0.646 for county/district vs. 0.947 for private for-profit)\",\n      \"exposure_and_reference\": \"County or general law public water district (providr3 = 1; 12% of sample, TCEQ-regulated rates) vs. private for-profit water supplier (providr5 = 1, reference category; 2% of sample)\",\n      \"finding_label\": \"Model A: County or general law public water district (providr3) vs. private for-profit supplier\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher = BETTER household water access)\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 4, PDF page 11 (p. 145); Table 6, PDF page 13 (p. 147)\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Model A: adjusted probit coefficient = -4.6080 (cluster-robust SE = 1.5237, p = 0.002), marginal effect = -0.4017; Model B: adjusted probit coefficient = -7.5722 (cluster-robust SE = 2.6650, p = 0.004), marginal effect = -0.6943 (-69.4 percentage points); N = 781 colonias\",\n      \"exposure_and_reference\": \"County cited by state for violations / lax enforcement of Model Subdivision Rules (violmsr = 1, Hidalgo County; 75% of sample) vs. counties not cited for MSR violations (violmsr = 0, Cameron, El Paso, and Webb counties). Note inverse coding: violmsr = 1 denotes lax enforcement, so a negative sign implies stronger regulatory enforcement is favorable to access.\",\n      \"finding_label\": \"Models A and B: County cited for lax enforcement / violations of Model Subdivision Rules (violmsr)\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher = BETTER household water access)\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 4, PDF page 11 (p. 145) and Table 5, PDF page 12 (p. 146)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Model A: adjusted probit coefficient = 0.0730 (cluster-robust SE = 0.0939, p = 0.437), marginal effect = 0.0107; Model B: adjusted probit coefficient = -0.2068 (cluster-robust SE = 0.1814, p = 0.254), marginal effect = -0.0305; N = 781 colonias\",\n      \"exposure_and_reference\": \"Months of delay taken by county to pass/adopt the 1989 Model Subdivision Rules (datemsr, continuous: 0 to 4 months, mean = 1.91)\",\n      \"finding_label\": \"Models A and B: County delay in adopting Model Subdivision Rules (datemsr)\",\n      \"outcome_and_polarity\": \"Colonia central drinking water service coverage by 1996 (water96: 1 = colonia served, 0 = unserved; higher = BETTER household water access)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 4, PDF page 11 (p. 145) and Table 5, PDF page 12 (p. 146)\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"unfavorable_to_access\",\n  \"headline_raw_sign\": \"negative\",\n  \"headline_result_summary\": \"In a cross-sectional probit analysis of 781 low-income Texas border colonias as of 1996, water rate regulation (in the absence of a universal service mandate) significantly reduces household access to centralized drinking water networks: colonias located in or near the service territory of a price-regulated public supplier (municipalities, counties, or general law water districts) are 27.2 percentage points less likely to have acquired central water service than colonias served by rate-unregulated providers—primarily non-profit member-owned water supply corporations (WSCs) and small private for-profit suppliers (Model B pricereg probit coefficient = -1.1858, SE = 0.4163, p = 0.004, marginal effect = -0.2718). Descriptive comparisons confirm this is not due to cream-skimming, as WSCs connect 95.1% of nearby colonias despite serving smaller, poorer, and more rural colonias than municipalities (59.0% served) or counties/districts (64.6% served). By contrast, supplier eligibility for generous USDA Rural Development infrastructure grants and low-interest loans has no statistically significant effect on coverage (rurald probit coefficient = 0.2162, p = 0.401). At the county governance level, lax enforcement of state Model Subdivision Rules (violmsr) is strongly negatively associated with water coverage (-40.2 to -69.4 percentage points, p <= 0.004), whereas months of delay in adopting the rules (datemsr) is null.\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. Orientation of rate regulation vs. deregulation: The focal exposure in Model B is price regulation (pricereg = 1 for regulated public providers vs. 0 for unregulated WSCs and for-profits), which has a negative sign (-27.2 percentage points, p = 0.004) on physical network coverage (water96). Rate regulation is therefore UNFAVORABLE to water service coverage in the absence of a universal service mandate; if a coder reframes the exposure as 'pricing flexibility' or 'rate deregulation,' the sign and valence invert to positive / favorable to access. Do not confuse the coverage outcome (water96) with water tariffs/affordability (no household tariff regressions are estimated). 2. Inverse coding and county-saturation of violmsr: violmsr = 1 denotes county VIOLATION / lax enforcement of Model Subdivision Rules (Hidalgo County only), so its negative coefficient (-4.6080 in Model A; -7.5722, ME = -0.6943 in Model B) means stronger regulatory enforcement is favorable to access. However, because the sample spans only 4 counties and includes 3 county-level regressors (percent, datemsr, violmsr), the county-level covariates fully saturate cross-county variation (note in unadjusted Table 1, Hidalgo County actually has only 11.9% unserved—the highest raw coverage—before controlling for colonia population share and WSC prevalence). 3. Endogenous baseline in Model A (providr5): Colonias hire private for-profit suppliers (2% of sample) specifically to obtain service, making providr5 a mechanical reference group rather than a causal test of for-profit privatization; also note providr2 (municipal) has p = 0.051 (just above strict 0.05, though described by the author as significant at 95%). 4. Sample selection note: Text p. 139 cites 81% water coverage (matching Table 1 population figures), while Table 3 reports mean water96 = 0.86 in the N = 781 merged regression sample due to missing OAG demographic data for smaller, less-served colonias.\",\n  \"study_design\": \"Cross-sectional observational econometric study (multivariate probit regressions with heteroskedasticity- and geographic-cluster-robust standard errors)\",\n  \"unit_and_sample_size\": \"Unincorporated border subdivisions (colonias); N = 781 colonias across 4 Texas border counties (total colonia population in sample counties = 267,384 in 1996; sample colonia mean population = 264, range 4 to 5,200)\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:52:54.629611+00:00\",\n  \"pdf_sha256\": \"f5afff9ee416e1bdb5011ffb4f0ac73494ddaa679d72b88bbf971334c8461ee7\",\n  \"input_sha256\": \"5f049d1fe53733ec9cc318ad4a64e53841ca9049a5e32a2c3edbef87483bc2d3\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S1169\",\n  \"author_year\": \"Olmstead (2004)\",\n  \"family\": \"C\",\n  \"exposure_short\": \"Price-regulated water provider (Texas colonias)\",\n  \"comparator_short\": \"unregulated provider\",\n  \"outcome_short\": \"colonia has water service\",\n  \"outcome_family\": \"service_coverage\",\n  \"estimate_short\": \"coef -1.19 (SE 0.42); ME -27 pp\",\n  \"raw_coefficient_sign\": \"-\",\n  \"substantive_direction\": \"Unfavourable\",\n  \"outcome_polarity\": \"higher = better\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"Price-regulated provider: coefficient -1.19, about 27 pp lower probability that a colonia had water service.\",\n  \"rob_tool\": \"JBI Cross-Sectional\",\n  \"rob_rating\": \"Some concern\",\n  \"inclusion_decision_human_verified\": \"Y (CK ruling)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"negative (a price-regulated provider is associated with a lower probability that the colonia had obtained water service)\",\n  \"exposure_full\": \"The colonia's water provider is subject to price (rate) regulation (municipal systems under their own rate-setting, county systems and districts under the state environmental commission), as opposed to providers whose rates are not regulated (non-profit water supply corporations and for-profit suppliers); Texas law does not mandate universal service.\",\n  \"comparator_full\": \"Colonias served, or most likely to be served, by an unregulated provider (mainly non-profit water supply corporations); other provider characteristics held constant (rural-development funding access, income, population, urban status, county enforcement of the model subdivision rules).\",\n  \"estimate_full\": \"Price-regulated provider: coefficient -1.1858 (SE 0.4163, p = 0.004), marginal effect -0.2718, about 27 percentage points lower probability that a colonia had water service by 1996. Access to Rural Development funding 0.2162 (p = 0.401); county cited for lax enforcement of the model subdivision rules -7.5722 (p = 0.004), marginal effect -0.6943; median per capita income +0.1410 (p = 0.001). Model A (provider type against private for-profit): municipal -1.9433 (p = 0.051), district or county -1.1105 (p = 0.035), non-profit corporation -0.3795 (p = 0.535), wells or unknown -2.3819 (p = 0.007). The author reads this as rate regulation, intended to make service affordable, possibly reducing coverage among the poor.\",\n  \"ai_scope_check_2026-10-14\": \"\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: 5f049d1fe53733ec9cc318ad4a64e53841ca9049a5e32a2c3edbef87483bc2d3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61356, sha256=5f049d1fe53733ec9cc318ad4a64e53841ca9049a5e32a2c3edbef87483bc2d3]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's extraction and 'Unfavourable' SWiM coding accurately capture Olmstead's (2004) headline empirical finding in Table 5 (PDF p. 12, p. 146), where reliance on a price-regulated water supplier (pricereg = 1) reduces a colonia's probability of central drinking water connection by 27.2 percentage points (probit coefficient = -1.1858, SE = 0.4163, p = 0.004, marginal effect = -0.2718; N = 781), despite the source PDF lacking an embedded text layer. Nevertheless, three methodological and specification vulnerabilities merit scrutiny in synthesis. First, Model B (Table 5, p. 146) simultaneously tests a second Family C financial policy instrument—provider eligibility for generous USDA Rural Development grants and low-interest loans (rurald)—which is statistically null (coefficient = 0.2162, SE = 0.2576, p = 0.401, ME = 0.0359), alongside county lax enforcement of state Model Subdivision Rules (violmsr = -7.5722, p = 0.004, ME = -0.6943), which implies that stronger regulatory subdivision enforcement is favourable to access (though fully saturated across only four counties by three county-level regressors). Second, as shown in Tables 2 and 3 (pp. 139, 144), pricereg = 1 (mean 0.20) is 100% coextensive with public local-government providers (municipalities 8% and counties/general law water districts 12%), whereas pricereg = 0 pools member-owned non-profit water supply corporations (75%), private for-profits (2%), and colonias with no identified provider (providr4 = 3%, only 4.3% served in Table 6), making rate regulation observationally inseparable from public versus cooperative institutional form (and in disaggregated Model A, Table 4, p. 145, municipal providr2 sits marginally at p = 0.051 while district/county providr3 has p = 0.035). Third, the dependent variable (water96) captures physical network connection as an upper bound without household tariff or water-quality data (p. 148), so the study tests the extensive-margin coverage penalty of rate ceilings lacking a universal service mandate rather than realized tariff affordability among connected poor households.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF page 2 (Abstract, p. 136)",
+        "quote": "The analysis reveals that rate regulation, intended to make water service affordable to all households, is also responsible, and may actually reduce service coverage among the poor."
+      },
+      {
+        "page": "PDF page 11 (Section V, p. 145)",
+        "quote": "Thus, relying on a price-regulated supplier to provide service reduces the likelihood of having obtained service through 1996 by 27%. The effect is estimated very precisely."
+      },
+      {
+        "page": "PDF page 12 (Section V, p. 146)",
+        "quote": "Providers' access to this infrastructure subsidy has no statistically significant effect"
+      },
+      {
+        "page": "PDF page 15 (Section VI, p. 149)",
+        "quote": "In any case, it appears that placing a ceiling on allowable water service charges, in the absence of a requirement to serve poor communities, may be a barrier to service coverage"
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "All regression estimates in Claude's SWiM row and dossier match the printed tables to four decimal places despite the PDF having been read visually as a scan: Table 5 (PDF p. 12, p. 146) reports pricereg = -1.1858 (SE = 0.4163, p = 0.004, marginal effect = -0.2718; rounded accurately in estimate_short to -1.19, SE 0.42, ME -27 pp), rurald = 0.2162 (SE = 0.2576, p = 0.401), violmsr = -7.5722 (SE = 2.6650, p = 0.004, ME = -0.6943), income = 0.1410 (p = 0.001), and N = 781; Table 4 (PDF p. 11, p. 145) reports Model A provider coefficients providr1 = -0.3795 (p = 0.535), providr2 = -1.9433 (p = 0.051), providr3 = -1.1105 (p = 0.035), and providr4 = -2.3819 (p = 0.007). Two minor provenance nuances in the dossier do not affect numerical accuracy: (1) 267,384 residents (Table 1, p. 138) is the total 1996 TWDB colonia population across the four counties (81.1% served), whereas the N = 781 merged TWDB-OAG regression sample has mean population 264 (~206,200 residents) and 86% service coverage (Table 3, p. 144); and (2) the dossier's Adjusted covariate list omits datemsr (months of county delay in adopting the Model Subdivision Rules).",
+    "polarity_or_orientation_issue": "Step-by-step trace holds cleanly as coded: outcome water96 (1 = colonia served by central water system in 1996, 0 = unserved; Table 3, p. 144) has unambiguous 'higher = better' polarity; exposure pricereg (1 = municipal or TCEQ rate-regulated supplier, 0 = unregulated supplier) is coded 'as reported' representing statutory/municipal rate regulation; combining raw negative sign (-1.1858) with higher-is-better outcome yields 'Unfavourable'. Three orientation traps should be noted by synthesizers: (1) reframing the Family C mechanism positively as 'pricing flexibility / cost-reflective connection fees' would invert the sign and substantive direction to 'Favourable'; (2) pricereg = 1 is perfectly collinear with public ownership (municipalities, counties, and general law districts = 20%) versus mostly non-profit member-owned Water Supply Corporations (75%) in pricereg = 0; and (3) secondary covariate violmsr = 1 denotes lax enforcement/violation of subdivision rules, so its negative sign (-7.5722) implies stronger enforcement is favourable to water coverage.",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "fits_cleanly",
+    "specification_multiplicity_flag": true,
+    "study_id": "S1169",
+    "substantive_direction_verdict": "supported"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "study_id": "S142",
+  "record_id": "R0A2F971E2D86",
+  "family": "A",
+  "claude_raw_sign": "-",
+  "claude_substantive_direction": "Favourable",
+  "phase1_blind_raw_sign": "positive",
+  "phase1_blind_access_direction": "unfavorable_to_access",
+  "adversarial_critique": "Claude's extracted IRRs (3.54, 17.8, 1.48, >4.0, and 0.91) and sample size (N = 31,383 block groups) match the printed text verbatim (PDF pp. 1, 5-7), and municipal incorporation vs. unincorporated status fits Family A cleanly, albeit measured ecologically as utility service-area coverage of settled land (>250 parcels/sq mi) rather than household connection surveys. However, Claude committed a double sign-and-polarity inversion: in Equation (1) (PDF p. 9), the negative binomial GLM dependent variable is land area NOT served (Y_ij / A_ij; higher = worse access) with incorporated block groups as referent (PDF p. 7, Fig. 8), so IRRs > 1.0 (3.54, 17.8, 1.48, 2.47, 5.53) represent POSITIVE raw log-rate coefficients (beta > 0), whereas Claude coded raw_coefficient_sign as '-' alongside outcome_polarity = 'higher = better' (a holdover from abstract-only extraction that algebraically cancels out, despite an inconsistent prose sentence on p. 11). Substantive direction is 'defensible_both_ways' because the authors model unincorporated status / municipal underbounding as the exposure—yielding an Unfavourable effect on access that matches Claude's own exposure_short ('Unincorporated municipal status (U.S.)')—and explicitly warn that municipal annexation can impose unaffordable connection fees and higher tariffs on low-income residents (PDF p. 9), whereas Claude restated the contrast to the recognised pole (incorporation vs. unincorporated = 'Favourable') without updating exposure_short or populating alternative_substantive_direction. Furthermore, the authors' preferred disaggregated specifications (Models 6 and 8 of Supplementary Table 6; Fig. 8, PDF pp. 7-8) exhibit subgroup multiplicity across three unincorporated subtypes and two poverty strata: while high-poverty unincorporated communities suffer severe deficits (sewer IRR > 4.0 in Outlying and Island block groups), non-high-poverty Outlying block groups have an opposite-signed, statistically null sewer estimate (IRR = 0.91, PDF pp. 7-8), and Island communities show no significant high-poverty differential for centralized water (PDF p. 8). Finally, the dossier metadata misattributes provenance to 'Abstract; Introduction' rather than Results (pp. 5-8), overlooks the visual 95% CIs plotted in Figure 8 (p. 7), and misdescribes the county/state random intercepts and covariates (high poverty, population density, and rural share; pp. 9-10).",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "page": "PDF Page 5",
+      "quote": "high-poverty block groups, unincorporated status is associated with 3.54"
+    },
+    {
+      "page": "PDF Page 7",
+      "quote": "The referent category for incorporation status is incorporated; thus, all comparisons"
+    },
+    {
+      "page": "PDF Page 7",
+      "quote": "less unsewered areas (IRR = 0.91). Fringe communities also have greater"
+    },
+    {
+      "page": "PDF Page 9",
+      "quote": "variable is land area not served by centralized infrastructure, over the total"
+    }
+  ],
+  "numbers_match_paper": "yes",
+  "numerical_check_note": "All five numerical IRR values in Claude's enriched estimate_full match the main text exactly: among high-poverty (>=20%) block groups, unincorporated vs. incorporated IRR = 3.54 for unsewered area and IRR = 17.8 for area unserved by centralized water (PDF p. 5, citing Supplementary Table 5); among non-high-poverty (<20%) block groups, IRR = 1.48 for unsewered area (PDF p. 6, citing Supplementary Table 5); in preferred disaggregated interactions (Supplementary Table 6, Model 6), IRR > 4.0 for high-poverty Outlying and Island unsewered area and IRR = 0.91 for non-high-poverty Outlying unsewered area (PDF p. 7). Sample size N = 31,383 Census block groups across nine states matches PDF pp. 1-2. Minor dossier metadata issues: (1) numeric SEs/CIs are indeed in online Supplementary Tables 5-6, though visual 95% CIs for Models 6 and 8 appear in Figure 8 (PDF p. 7); (2) legacy dossier provenance cites 'Abstract; Introduction' instead of 'Results' (PDF pp. 5-8); and (3) the models control for high poverty, population density, and percent rural population with county and state random intercepts (PDF pp. 9-10), rather than regional/state fixed-effect indicators and a separate boundary-proximity covariate.",
+  "polarity_or_orientation_issue": "Double inversion in raw sign and outcome polarity plus contestable exposure pole restatement: (1) In Eq. (1) (PDF p. 9), the regression outcome is proportion of block-group community land area NOT served (unsewered / unserved rate Y_ij / A_ij), so true outcome_polarity is 'higher = worse' and reported IRRs > 1 (3.54, 17.8, 1.48, 2.47, 5.53) correspond to raw_coefficient_sign = '+' (ln(IRR) > 0). Claude coded raw_coefficient_sign = '-' and outcome_polarity = 'higher = better' (treating the modeled variable as 'access'), a double error that cancels out in direction. (2) All paper regressions set Incorporated = 0 (referent) and Unincorporated = 1 (exposure), making the modeled effect Unfavourable to access; Claude restated the pole to Incorporated vs. Unincorporated ('Favourable' for recognition) in exposure_orientation/coding_note, but left exposure_short as 'Unincorporated municipal status (U.S.)', comparator_short as 'incorporated block groups', and alternative_substantive_direction blank.",
+  "raw_sign_assessment": "wrong",
+  "scope_and_family_fit": "fits_cleanly",
+  "specification_multiplicity_flag": true,
+  "substantive_direction_verdict": "defensible_both_ways",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "phase1_completed_at": "2026-11-18T22:26:59.908743+00:00",
+  "run_at": "2026-11-18T22:56:09.847405+00:00",
+  "pdf_sha256": "4e5a952f1306c4d02473c3b76199de70d8456777ac254889b076359380694d82",
+  "input_sha256": "db148fd0930f69ca3fd6cfd33fbf1113c377fe2a9cc166b8328a4c714e713165"
+}

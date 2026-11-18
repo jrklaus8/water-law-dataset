@@ -1,0 +1,144 @@
+{
+  "study_id": "S1102",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "a23232d270b07be470e4938aae72fe1ac847780f6fa2cf54d342c87ec3912f97",
+  "input_text_sha256": "6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb",
+  "prompt_sha256": "d50339f05a88b1b441c4b91b9ccebfc03a4a7e9faefa6364604a282cce035782",
+  "started_at": "2026-11-18T23:04:27.396186+00:00",
+  "completed_at": "2026-11-18T23:06:31.094758+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S1102\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S1102\",\n  \"record_id\": \"R76BD2052C008\",\n  \"confidence\": \"high\",\n  \"country\": \"India\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF p. 1 (Abstract)\",\n      \"quote\": \"beneﬁts for the households that participate although these beneﬁts are strongest in regions with\"\n    },\n    {\n      \"page\": \"PDF p. 6 (Section IV)\",\n      \"quote\": \"For this research, a total of 1523 households were surveyed from 45 villages across\"\n    },\n    {\n      \"page\": \"PDF p. 16 (Section VII)\",\n      \"quote\": \"The water improvements index is based upon seven variables measured at the\"\n    },\n    {\n      \"page\": \"PDF p. 18 (Section VII)\",\n      \"quote\": \"that the eﬀect of attending a planning meeting has a positive and signiﬁcant eﬀect on\"\n    },\n    {\n      \"page\": \"PDF p. 19 (Section VII)\",\n      \"quote\": \"Meeting attendance signiﬁcantly leads to water improvements for the poor but not\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Propensity score matching (nearest 5 neighbors with replacement, common-support trimmed, full sample 'All'): Treatment mean = 0.364, Control mean = -0.676 [printed as 70.676 due to minus-sign font encoding], Difference = 1.04, T-statistic = 4.26 (p < 0.01). Exact matched N not reported (full survey N = 1,523; valid capital-contribution N = 1,408; logit/bivariate probit covariate N = 1,158).\",\n      \"exposure_and_reference\": \"Household capital cost contribution: binary = 1 if household contributed cash, labour, or materials towards project capital costs vs. 0 = did not contribute (matched non-participating households).\",\n      \"finding_label\": \"Primary PSM (Full sample): Capital cost contribution -> Water improvements index\",\n      \"outcome_and_polarity\": \"Water improvements index: continuous PCA index of 7 household-level items (changes in distance, collection time, reliability, perceived quality, pressure decrease since start, water adequacy, and perceived access to new source). Higher values = BETTER household water service/access improvement.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 4, PDF p. 18 (p. 488)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Propensity score matching (nearest 5 neighbors with replacement, common-support trimmed, full sample 'All'): Treatment mean = 0.497, Control mean = -0.252 [printed as 70.252], Difference = 0.749, T-statistic = 3.46 (p < 0.01). Exact matched N not reported (valid meeting-attendance N = 1,508; covariate N = 1,158).\",\n      \"exposure_and_reference\": \"Household planning meeting attendance: binary = 1 if anyone from household attended at least one project planning meeting vs. 0 = did not attend (matched non-participating households).\",\n      \"finding_label\": \"Primary PSM (Full sample): Planning meeting attendance -> Water improvements index\",\n      \"outcome_and_polarity\": \"Water improvements index: continuous PCA index of 7 household-level water access/service improvement items. Higher values = BETTER household water service/access improvement.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 4, PDF p. 18 (p. 488)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Propensity score matching (full sample 'All'): Capital cost contribution -> Satisfaction: Treatment = 0.813, Control = 0.458, Difference = 0.355, T-statistic = 8.54 (p < 0.01). Meeting attendance -> Satisfaction: Treatment = 0.790, Control = 0.685, Difference = 0.105, T-statistic = 4.16 (p < 0.01).\",\n      \"exposure_and_reference\": \"Household capital cost contribution (1 vs. 0) and planning meeting attendance (1 vs. 0), each matched against non-participating households.\",\n      \"finding_label\": \"Primary PSM (Full sample): Capital cost contribution and Meeting attendance -> Overall project satisfaction\",\n      \"outcome_and_polarity\": \"Overall household satisfaction with new water system: binary = 1 if 'satisfied' or 'very satisfied', 0 otherwise. Higher values = BETTER perceived service satisfaction.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 4, PDF p. 18 (p. 488)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Regional PSM subsamples for Capital cost contribution -> Water improvements: UP Hills Difference = 0.977 (Treatment 0.698 vs. Control -0.288 [70.288], T-stat = 1.28, ns); N. Karnataka Difference = 0.0799 (0.437 vs. 0.358, T-stat = 0.32, ns); S. Karnataka Difference = 0.302 (-0.0081 [70.0081] vs. -0.310 [70.310], T-stat = 1.02, ns). Capital cost contribution -> Satisfaction: UP Hills Difference = 0.561 (0.890 vs. 0.329, T-stat = 5.14, p < 0.01); N. Karnataka Difference = 0.0722 (0.905 vs. 0.833, T-stat = 1.11, ns); S. Karnataka Difference = 0.0988 (0.753 vs. 0.654, T-stat = 1.63, ns).\",\n      \"exposure_and_reference\": \"Household capital cost contribution (1 vs. 0) within disaggregated regional subsamples (UP Hills, N. Karnataka, S. Karnataka).\",\n      \"finding_label\": \"Regional PSM subsamples: Capital cost contribution -> Water improvements (all regions null) and Satisfaction (positive only in UP Hills)\",\n      \"outcome_and_polarity\": \"Water improvements PCA index and binary Satisfaction (higher values = BETTER water improvements / satisfaction).\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 4, PDF p. 18 (p. 488)\"\n    },\n    {\n      \"access_valence\": \"mixed\",\n      \"exact_estimate\": \"Regional PSM subsamples for Meeting attendance -> Water improvements: UP Hills Difference = 1.40 (Treatment 0.635 vs. Control -0.766 [70.766], T-stat = 2.51, p < 0.05); N. Karnataka Difference = 0.330 (0.766 vs. 0.437, T-stat = 1.78, borderline p < 0.10, ns at p < 0.05); S. Karnataka Difference = 0.219 (-0.0473 [70.0473] vs. -0.267 [70.267], T-stat = 0.70, ns). Meeting attendance -> Satisfaction: UP Hills Difference = 0.309 (0.864 vs. 0.555, T-stat = 2.90, p < 0.01); N. Karnataka Difference = 0.0095 (0.889 vs. 0.879, T-stat = 0.18, ns); S. Karnataka Difference = 0.0273 (0.761 vs. 0.734, T-stat = 0.45, ns).\",\n      \"exposure_and_reference\": \"Household planning meeting attendance (1 vs. 0) within disaggregated regional subsamples (UP Hills, N. Karnataka, S. Karnataka).\",\n      \"finding_label\": \"Regional PSM subsamples: Meeting attendance -> Water improvements and Satisfaction (significant in UP Hills, borderline/null in Karnataka)\",\n      \"outcome_and_polarity\": \"Water improvements PCA index and binary Satisfaction (higher values = BETTER water improvements / satisfaction).\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 4, PDF p. 18 (p. 488)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"PSM stratified by wealth quartile: (1) Capital cost contribution -> Water improvements: Lowest quartile Difference = 0.962 (Treatment -0.1576 [70.1576], Control printed as 70.120 [-1.120], T-stat = 1.93, borderline p < 0.10); Highest quartile Difference = 0.733 (0.5395 vs. -0.1638 [70.1638], T-stat = 1.99, p < 0.05). (2) Meeting attendance -> Water improvements: Lowest quartile Difference = 1.680 (0.3113 vs. -1.369 [71.369], T-stat = 3.92, p < 0.01); Highest quartile Difference = -0.0331 [70.0331] (0.5606 vs. 0.5937, T-stat = -0.09 [70.09], ns). (3) Both participation measures significantly increase Satisfaction in both quartiles (T-stats = 3.53, 4.34, 4.32, 2.55; all p < 0.05).\",\n      \"exposure_and_reference\": \"Household capital cost contribution (1 vs. 0) and meeting attendance (1 vs. 0) stratified by household asset index quartile (lowest wealth quartile vs. highest wealth quartile).\",\n      \"finding_label\": \"Wealth-stratified PSM (Elite capture test): Participation -> Water improvements and Satisfaction for poorest vs. richest quartiles\",\n      \"outcome_and_polarity\": \"Water improvements PCA index and binary Satisfaction (higher values = BETTER water improvements / satisfaction).\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 5, PDF p. 19 (p. 489)\"\n    },\n    {\n      \"access_valence\": \"indirect_or_non_access_outcome\",\n      \"exact_estimate\": \"Survey-weighted bivariate probit (Full sample, N = 1,158, Wald chi2 = 451.54, p = 0.0000, rho = 0.294): (1) Attended planning meeting: 4th wealth quartile beta = 0.409 (t = 2.08, p < 0.05), % literate beta = 0.00894 (t = 4.09, p < 0.01), household size beta = 0.0973 (t = 3.28, p < 0.01), village number of households beta = -0.000501 [70.000501] (t = -3.56 [73.56], p < 0.01), SC/ST beta = 0.0756 (t = 0.49, ns), Southern/Northern/Coastal Karnataka vs. UP Bundelkhand betas = -1.25, -1.25, -1.17 (all p < 0.01). (2) Contributed towards capital costs: 2nd/3rd/4th wealth quartiles betas = 0.301 (t = 2.00), 0.0508 [likely 0.508 given t = 3.07], 0.647 (t = 3.74), % literate beta = 0.00537 (t = 2.68), SC/ST beta = -0.377 [70.377] (t = -2.69 [72.69], p < 0.01), disparity beta = -0.138 [70.138] (t = -2.31 [72.31], p < 0.05), village households beta = -0.00107 [70.00107] (t = -6.53 [76.53], p < 0.01), worse prior water quality beta = 0.0786 (t = 3.71, p < 0.01).\",\n      \"exposure_and_reference\": \"Household socioeconomic/caste traits (wealth quartiles vs. lowest quartile; literacy; SC/ST vs. non-SC/ST), prior water conditions, village inequality/size, and project region (vs. UP Bundelkhand).\",\n      \"finding_label\": \"Determinants of participation (Bivariate probit): Socioeconomic, village, and prior-water predictors of meeting attendance and capital contribution\",\n      \"outcome_and_polarity\": \"Household participation in planning meetings (1 = attended) and capital cost contributions (1 = contributed cash/labour/materials) — governance process outcomes rather than direct water access outcomes.\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 3, PDF pp. 12-14 (pp. 482-484)\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"favorable_to_access\",\n  \"headline_raw_sign\": \"positive\",\n  \"headline_result_summary\": \"Using propensity score matching across rural drinking water projects in 45 Indian villages, household participation—measured both actively via planning meeting attendance and passively via capital cost contribution (cash, labour, or materials)—has a statistically significant positive effect in the full sample on household water service improvements (PCA index difference = +0.749, t = 3.46 for meeting attendance; +1.04, t = 4.26 for capital cost contribution) and overall satisfaction (+0.105, t = 4.16; +0.355, t = 8.54). However, regional disaggregation shows these gains are concentrated in the Uttar Pradesh Hills (where overall participation and NGO capacity-building were strongest) and largely null at p < 0.05 in Northern and Southern Karnataka. Wealth-stratified matching shows no evidence of elite capture: poorest-quartile households gain substantial water service improvements from attending meetings (+1.680, t = 3.92), whereas richest-quartile households show a null water-improvement effect from meeting attendance (-0.0331, t = -0.09).\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. PDF font-encoding glyph substitution: Throughout Tables 3, 4, and 5, Taylor & Francis PDF encoding renders minus signs ('-') as the digit '7' (e.g., Control mean '-0.676' is printed as '70.676', '-1.369' as '71.369', t-score '-2.04' as '72.04'), '<' as '5' ('Signiﬁcance 5 10 per cent'), and '>' as '4' ('Prob 4 w2'). Reading '70.676' literally as +70.676 instead of -0.676 would completely corrupt group means and signs. 2. Author prose typo on PDF p. 18: The text states 'the eﬀect of contributing towards capital cost has a positive and negative eﬀect on both water improvements and satisfaction'—an obvious typographical slip for 'positive and signiﬁcant eﬀect', as confirmed by Table 4 (Difference = +1.04, t = 4.26 and +0.355, t = 8.54) and the Abstract/Discussion. 3. Pooled vs. regional heterogeneity: While all four pooled ('All') PSM estimates in Table 4 are strongly positive (t = 3.46 to 8.54), disaggregated regional estimates for capital cost contribution on water improvements are null in every individual region (UP Hills t = 1.28, N. Karnataka t = 0.32, S. Karnataka t = 1.02), and meeting attendance on water improvements is significant at p < 0.05 only in UP Hills (t = 2.51; borderline t = 1.78 in N. Karnataka; null t = 0.70 in S. Karnataka). 4. Two-stage paper structure: Table 3 models determinants of participation (where SC/ST caste status and village size negatively predict capital contributions, and 'Quality of water before' is coded so higher values = POORER quality), whereas Tables 4-5 model the effects of participation on household water improvements (where higher PCA scores = BETTER water access/service).\",\n  \"study_design\": \"Cross-sectional household survey across 45 randomly selected villages in two World Bank-assisted rural water supply and environmental sanitation projects (surveyed 1999-2000), analyzed using survey-weighted bivariate probit models (determinants of participation) and nearest-5-neighbors propensity score matching with replacement on common support (impacts of participation on household water outcomes).\",\n  \"unit_and_sample_size\": \"Households across 45 villages in Karnataka and Uttar Pradesh, India. Total surveyed N = 1,523 households (valid N = 1,508 for meeting attendance; valid N = 1,408 for capital cost contribution; full-sample bivariate probit N = 1,158 [UP Hills N = 289, S. Karnataka N = 340, N. Karnataka N = 338]; propensity score matching trims low-end propensity scores for common support, exact post-trimming matched N not reported).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:37:17.403350+00:00\",\n  \"pdf_sha256\": \"a23232d270b07be470e4938aae72fe1ac847780f6fa2cf54d342c87ec3912f97\",\n  \"input_sha256\": \"6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S1102\",\n  \"author_year\": \"Prokopy (2009)\",\n  \"family\": \"B\",\n  \"exposure_short\": \"Capital-cost contribution and meeting attendance (India)\",\n  \"comparator_short\": \"non-contributors\",\n  \"outcome_short\": \"water improvements index\",\n  \"outcome_family\": \"water_access\",\n  \"estimate_short\": \"difference 1.04 (t=4.26)\",\n  \"raw_coefficient_sign\": \"+\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = better\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"Capital-cost contribution: water-improvements index difference 1.04 (t = 4.26).\",\n  \"rob_tool\": \"ROBINS-I\",\n  \"rob_rating\": \"Moderate\",\n  \"inclusion_decision_human_verified\": \"Y (CK ruling)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"positive (participation and capital-cost contribution associated with improved water-access outcomes and satisfaction)\",\n  \"exposure_full\": \"Household-level capital-cost contribution and meeting attendance (participatory/administrative engagement) in community-based rural drinking-water project governance, 45 villages, India.\",\n  \"comparator_full\": \"Households within the same villages that did not contribute to capital costs / did not attend project meetings, matched via propensity score on wealth, literacy, household and village size.\",\n  \"estimate_full\": \"Capital cost contribution -> water improvements index: treatment 0.364, control -0.676, difference 1.04 (t=4.26). Capital cost contribution -> household satisfaction: treatment 0.813, control 0.458, difference 0.355 (t=8.54). Meeting attendance -> water improvements index: treatment 0.497, control -0.252, difference 0.749 (t=3.46). Meeting attendance -> satisfaction: treatment 0.790, control 0.685, difference 0.105 (t=4.16). Water improvements index is a composite of change in distance to source, collection time, reliability, quality, pressure, adequacy, and perceived access.\",\n  \"ai_scope_check_2026-10-14\": \"flagged\",\n  \"a28_outcome\": \"include (CK)\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: 6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=72586, sha256=6ad41b7b6f89ebc44e4f15ec586fbcf660e1138ef4a2c4e41b026665ed6f25cb]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's headline SWiM coding (+ / Favourable) accurately captures the pooled propensity-score-matched results in Table 4 (PDF p. 18, p. 488), where both capital-cost contribution (diff = +1.04, t = 4.26) and planning meeting attendance (diff = +0.749, t = 3.46) significantly improve the 7-item household water improvements PCA index (and satisfaction: +0.355, t = 8.54; +0.105, t = 4.16), skillfully decoding the Taylor & Francis PDF font glitch that prints minus signs as '7' ('70.676' = -0.676; '70.252' = -0.252) and looking past the author's prose slip ('positive and negative effect' on PDF p. 18). However, a major subgroup multiplicity caveat applies: when Table 4 is disaggregated by region (PDF p. 18), Claude's selected headline specification (capital-cost contribution -> water improvements) is statistically null in every individual region (UP Hills diff = 0.977, t = 1.28; N. Karnataka diff = 0.0799, t = 0.32; S. Karnataka diff = 0.302, t = 1.02), although all regional point estimates remain positive and meeting attendance remains significantly positive in UP Hills (diff = 1.40, t = 2.51) and among poorest-quartile households in Table 5 (diff = 1.680, t = 3.92, PDF p. 19). Claude's comparator and sample-size descriptions also contain two factual inaccuracies: `comparator_full` claims matching was conducted 'within the same villages' on 'wealth, literacy, household and village size', whereas Section VII (PDF p. 16) matches across the pooled (or regional) sample using all 16 household, pre-project water, and village covariates from Table 1/Table 3, and the dossier's sample size ('45 villages (Uttar Pradesh Hills, North Karnataka, South Karnataka)') omits the household N (1,523 surveyed; 1,158 in the logit covariate model; post-trimming matched N unreported) while conflating the five-region pooled sample (which also includes UP Bundelkhand and Coastal Karnataka, Table 2, PDF p. 10) with the three disaggregated regions. Finally, scope fit is borderline (as flagged under A28): the paper contains zero legal/statutory variation, evaluates self-selected household participation under uniform World Bank project rules (where Karnataka's 10% capital contribution was earmarked for drainage rather than water, PDF p. 5), and shows in Table 3 (PDF pp. 13-14) that SC/ST (beta = -0.377, t = -2.69) and poorer households are significantly less likely to make capital contributions in the first place.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (Abstract)",
+        "quote": "beneﬁts for the households that participate although these beneﬁts are strongest in regions with"
+      },
+      {
+        "page": "PDF p. 16 (Section VII)",
+        "quote": "The water improvements index is based upon seven variables measured at the"
+      },
+      {
+        "page": "PDF p. 18 (Section VII)",
+        "quote": "that the eﬀect of attending a planning meeting has a positive and signiﬁcant eﬀect on"
+      },
+      {
+        "page": "PDF p. 18 (Section VII)",
+        "quote": "UP Hills area but does not impact water improvements for households in any region."
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "All 16 numerical values in `estimate_full` (and `1.04 (t=4.26)` in `estimate_short`) exactly match the 'All' rows of Table 4 (PDF p. 18, p. 488): capital-cost contribution -> water improvements (treatment 0.364, control -0.676 [printed as '70.676' due to Taylor & Francis PDF glyph substitution of '7' for '-'], diff 1.04, t = 4.26), capital-cost contribution -> satisfaction (0.813, 0.458, diff 0.355, t = 8.54), meeting attendance -> water improvements (0.497, -0.252 [printed as '70.252'], diff 0.749, t = 3.46), and meeting attendance -> satisfaction (0.790, 0.685, diff 0.105, t = 4.16). Minor provenance omissions/errors: the dossier omits household sample sizes (N = 1,523 surveyed across 45 villages; N = 1,508 valid for meeting attendance; N = 1,408 valid for capital contribution; N = 1,158 in the propensity-score covariate sample; exact post-common-support-trimming matched N not reported in the paper), lists only 3 of the 5 regions in the 45-village pooled sample (omitting UP Bundelkhand and Coastal Karnataka, Table 2, PDF p. 10), and cites journal pages 471-497 instead of 471-495 (PDF p. 1).",
+    "polarity_or_orientation_issue": "No sign or polarity error in the extracted effect: raw sign is '+' (+1.04, t = 4.26; +0.749, t = 3.46), `water improvements index` has polarity `higher = better` (confirmed by Hypothesis 4 on PDF p. 7 and Tables 4-5 on PDF pp. 18-19, unlike the pre-project covariates `Quality of water before` and `Unreliability of water dry season before` in Tables 1 and 3 where higher = worse), and `exposure_orientation` ('as reported': participating = 1 vs. matched non-participating = 0) aligns with participatory governance in Family B. A minor substantive nuance exists in treating `capital-cost contribution` purely as benign participation rather than a 10% upfront user cost-sharing barrier (which SC/ST and poorer households are significantly less likely to pay in Table 3, PDF p. 13), but active non-monetary participation (`meeting attendance`) yields the same positive direction (+0.749, t = 3.46; poorest quartile +1.680, t = 3.92).",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "borderline_or_indirect_proxy",
+    "specification_multiplicity_flag": true,
+    "study_id": "S1102",
+    "substantive_direction_verdict": "supported"
+  }
+}

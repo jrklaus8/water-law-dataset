@@ -1,0 +1,281 @@
+{
+  "study_id": "S366",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "7b760ca094592ee1b3a0da70067b763e40d45615b149cad9b2336975cf6f93e4",
+  "input_text_sha256": "b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d",
+  "prompt_sha256": "cb8e6042947753fc306a9c0278dd05ea46d864263dc59ca27e92f19245578dc8",
+  "started_at": "2026-11-18T22:30:06.465741+00:00",
+  "completed_at": "2026-11-18T22:33:31.334069+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S366\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S366\n- Record ID: R3BFAF175DBF1\n- Citation: Quattrochi JP, Coville A, Mvukiyehe E, Dohou CJ, Esu F, Cohen B, Bokasola YL, Croke K (2021). Effects of a community-driven water, sanitation and hygiene intervention on water and sanitation infrastructure, access, behaviour, and governance: a cluster-randomised controlled trial in rural Democratic Republic of Congo. BMJ Global Health 6:e005030.\n- DOI: 10.1136/bmjgh-2021-005030\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=59743, sha256=b5056efb58e0d5bf46f76a6dc26e07bae0ef8f20b21b9afd76b77572c705542d]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Democratic Republic of Congo",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 1 (Abstract, Results)",
+        "quote": "There was no significant difference in financial cost of water, school attendance, child health or water storage practices."
+      },
+      {
+        "page": "PDF Page 1 (Abstract, Conclusion)",
+        "quote": "VEA produced large increases in access to and satisfaction with water and sanitation services, in self-reported hygiene and sanitation behaviour, and in measures of water governance."
+      },
+      {
+        "page": "PDF Page 7 (Table 3 footnote)",
+        "quote": "Indices are calculated by rescaling each variable in each index (eg, handwashing) so that higher values imply better outcomes, then standardising relative to the control group, following Kling et al37. Effects are in standard deviation units."
+      },
+      {
+        "page": "PDF Page 7 (Subgroup analyses)",
+        "quote": "We found no evidence of any intervention effects on any of the primary outcomes in subgroup analyses of South Kivu province."
+      },
+      {
+        "page": "PDF Page 9 (Discussion)",
+        "quote": "This programme produced large increases in the percentage of households who use improved water sources and who use improved sanitation facilities, almost doubling access to improved water sources (from 43% to 83%)"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Control mean = 0.43 (N = 732), Intervention mean = 0.83 (N = 580); adjusted ITT = 0.33 (33 percentage points), 95% CI (0.22 to 0.45); linear model controlling for randomisation blocks (province and villages per cluster) with cluster-robust SEs across 121 clusters (N = 1,312 households).",
+        "exposure_and_reference": "Cluster random assignment to Healthy Villages and Schools / Villages et Ecoles Assainis (VEA) community-driven WASH and governance intervention (Tc = 1; 50 clusters, 145 villages) vs. control clusters receiving no VEA intervention (Tc = 0; 71 clusters, 183 villages)",
+        "finding_label": "Primary outcome 1 (powered headline outcome): Household primary water source is JMP-improved",
+        "outcome_and_polarity": "Binary indicator (0/1) that household's self-reported primary drinking water source is improved (piped into dwelling/plot, piped/public tap, tube well/borehole, or protected spring). Higher values = BETTER household water access.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF Page 7 (also Abstract p. 1 and Results p. 6)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Control mean = 0.18 (N = 732), Intervention mean = 0.46 (N = 580); adjusted ITT = 0.26 (26 percentage points), 95% CI (0.14 to 0.37); linear model controlling for randomisation blocks across 121 clusters (N = 1,312 households).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Primary outcome 2: Household primary sanitation facility is JMP-improved",
+        "outcome_and_polarity": "Binary indicator (0/1) that household's self-reported primary defecation site is improved (VIP latrine, pit latrine with slab, composting latrine, or flush/pour-flush to piped sewer, septic tank, or pit latrine). Higher values = BETTER household sanitation access.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF Page 7 (also Abstract p. 1 and Results p. 6)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Control mean = 70.7 min (N = 732), Intervention mean = 61.5 min (N = 580); adjusted ITT = -3.0 min, 95% CI (-19.7 to 13.6); Winsorised at 99th percentile; linear model controlling for randomisation blocks across 121 clusters (N = 1,312 households).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Primary outcome 3: Time spent collecting water (minutes/day)",
+        "outcome_and_polarity": "Total minutes spent collecting water in the day prior to the survey summed across all household members (Winsorised at 99th percentile). Higher numerical values = MORE time spent hauling water = WORSE access / higher time burden (negative coefficient = reduced time burden).",
+        "raw_sign": "null",
+        "table_or_page": "Table 2, PDF Page 7 (also Results pp. 6-7)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Control mean = 37.2 L (N = 732), Intervention mean = 41.5 L (N = 580); adjusted ITT = 2.3 litres, 95% CI (-4.2 to 8.7); Winsorised at 99th percentile; linear model controlling for randomisation blocks across 121 clusters (N = 1,312 households).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Primary outcome 4: Quantity of water collected (litres/day)",
+        "outcome_and_polarity": "Total litres of water collected in the day prior to the survey summed across all household members (Winsorised at 99th percentile). Higher values = MORE water collected = BETTER household water quantity access.",
+        "raw_sign": "null",
+        "table_or_page": "Table 2, PDF Page 7"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Control mean = 0.00 SD (N = 732), Intervention mean = 0.65 SD (N = 580); adjusted ITT = 0.64 SD, 95% CI (0.43 to 0.85); linear model controlling for randomisation blocks across 121 clusters (N = 1,312 households).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Secondary outcome: Household water satisfaction index",
+        "outcome_and_polarity": "Standardised Kling et al. summary index (in control-group SD units) of household satisfaction with water access and satisfaction with water point management, rescaled so higher values = BETTER satisfaction/access.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 3, PDF Page 7"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Control mean = 0.00 SD (N = 732), Intervention mean = 0.14 SD (N = 580); adjusted ITT = 0.13 SD, 95% CI (-0.10 to 0.36); linear model controlling for randomisation blocks across 121 clusters (N = 1,312 households).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Secondary outcome: Financial cost of water index (affordability)",
+        "outcome_and_polarity": "Standardised Kling et al. summary index (in control-group SD units) of household payment for water, explicitly rescaled so that HIGHER numerical values imply BETTER outcomes (i.e. lower financial cost / better affordability).",
+        "raw_sign": "null",
+        "table_or_page": "Table 3, PDF Page 7 (rescaling rule on PDF Pages 5 and 7)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Control mean = 0.00 SD (N = 183 villages), Intervention mean = 0.23 SD (N = 145 villages); adjusted ITT = 0.13 SD, 95% CI (-0.18 to 0.44); village-level linear model controlling for randomisation blocks across 121 clusters (N = 328 villages).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Secondary outcome: Village-level water quality and access index (functional improved water points)",
+        "outcome_and_polarity": "Village-level standardised index (in control-group SD units; described in Methods p. 5 as count of functional improved water points in the village), rescaled so higher values = BETTER village water point availability/quality.",
+        "raw_sign": "null",
+        "table_or_page": "Table 3, PDF Page 7 (and Methods p. 5)"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Control mean = 0.00 SD (N = 183 villages), Intervention mean = 1.33 SD (N = 145 villages); adjusted ITT = 1.33 SD, 95% CI (1.12 to 1.54); village-level linear model controlling for randomisation blocks across 121 clusters (N = 328 villages).",
+        "exposure_and_reference": "Cluster random assignment to VEA community-driven WASH and governance intervention (Tc = 1) vs. control clusters (Tc = 0)",
+        "finding_label": "Secondary outcome: Village-level water governance index",
+        "outcome_and_polarity": "Village-level standardised Kling et al. summary index (reporting on water management, existence/size/gender ratio of WASH committee, water maintenance system, satisfaction with and visits from health zone/area/national administration), rescaled so higher values = BETTER water governance.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 3, PDF Page 7 (and Methods p. 5)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Improved water source ITT by province: Kasai = 0.49 (95% CI 0.32 to 0.67, N=368), Kasai Central = 0.75 (95% CI 0.55 to 0.96, N=324), Kongo Central = 0.24 (95% CI -0.06 to 0.53, N=152, null), South Kivu = 0.06 (95% CI -0.04 to 0.17, N=468, null). Time to collect water (min) ITT: Kasai = +43 min (95% CI 13 to 72, worsened), Kasai Central = -61 min (95% CI -95 to -26, improved), Kongo Central = -19 (95% CI -51 to 13, null), South Kivu = -10 (95% CI -35 to 16, null). Quantity collected (L) ITT: Kasai Central = -13 L (95% CI -23 to -4, worsened), null in other 3 provinces. Improved sanitation ITT: Kongo Central = 0.68 (95% CI 0.52 to 0.85), Kasai Central = 0.74 (95% CI 0.58 to 0.90), null in Kasai (0.14, 95% CI -0.05 to 0.33) and South Kivu (0.01, 95% CI -0.11 to 0.12).",
+        "exposure_and_reference": "Cluster random assignment to VEA intervention (Tc = 1) vs. control (Tc = 0), stratified into separate subgroup regressions by province (controlling for villages per cluster) and by remoteness (<=420 min vs. >420 min to territory capital)",
+        "finding_label": "Subgroup analyses by province and remoteness on the four primary outcomes",
+        "outcome_and_polarity": "Four primary outcomes: Improved water source and Improved sanitation (higher = BETTER); Quantity of water collected in litres (higher = BETTER); Time to collect water in minutes (higher = WORSE time burden). Also by remoteness (Table 5): Improved water ITT = 0.58 (95% CI 0.45 to 0.71) in more remote vs. 0.11 (95% CI 0.01 to 0.21) in less remote; Time to collect water ITT = -25.0 min (95% CI -48.3 to -1.7) in less remote vs. +23.5 min (95% CI -2.5 to 49.5, null) in more remote.",
+        "raw_sign": "mixed",
+        "table_or_page": "Tables 4 and 5, PDF Page 8 (and text pp. 7-8)"
+      }
+    ],
+    "headline_direction_for_household_access": "favorable_to_access",
+    "headline_raw_sign": "positive",
+    "headline_result_summary": "In a cluster-randomised controlled trial across 121 rural clusters (328 surveyed villages; 1,312 households) in four conflict-affected provinces of the Democratic Republic of Congo, the national community-driven Healthy Villages & Schools (VEA) programme—which bundles participatory community mobilisation, formal Health Zone agreements and \"Healthy Village\" certification, elected village WASH committees, and ~US$4,000/village in water and sanitation infrastructure grants—substantially increased household use of an improved primary water source by 33 percentage points (95% CI 22 to 45; 83% vs 43% in controls) and an improved sanitation facility by 26 percentage points (95% CI 14 to 37; 46% vs 18%), while also increasing household water satisfaction (+0.64 SD, 95% CI 0.43 to 0.85) and village-level water governance (+1.33 SD, 95% CI 1.12 to 1.54) at a median 5 months post-intervention. However, pooled intention-to-treat effects were statistically null for daily water collection time (-3.0 min, 95% CI -19.7 to 13.6), daily water quantity collected (+2.3 L, 95% CI -4.2 to 8.7), the financial cost of water index (+0.13 SD, 95% CI -0.10 to 0.36), and the village-level water quality and access index (+0.13 SD, 95% CI -0.18 to 0.44), with marked heterogeneity across provinces (null on all four primary outcomes in South Kivu; increased collection time of +43 min in Kasai vs -61 min in Kasai Central; reduced water quantity of -13 L in Kasai Central).",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. BUNDLED INTERVENTION (CANNOT ISOLATE GOVERNANCE ALONE): VEA combines institutional/governance reforms (formal community-Health Zone agreement, election and training of a village WASH committee, Community Action Plan for Maintenance, and official Chief Medical Officer \"Healthy Village\" certification) with ~US$2,000 for water infrastructure, ~US$2,000 for sanitation infrastructure, and ~US$3,000 for personnel/behaviour-change mobilisation per village. As the authors note (p. 9), the trial estimates the bundled at-scale package and cannot disaggregate governance/participation effects from direct infrastructure subsidies. Additionally, \"water governance\" (+1.33 SD, Table 3) is an OUTCOME of VEA rather than an independent treatment arm. 2. INDEX POLARITY RESCALING TRAP (TABLE 3 vs TABLE 2): All secondary summary indices in Table 3—including \"Financial cost of water\"—were rescaled per Kling et al. (2007) so that HIGHER values always imply BETTER outcomes (p. 5 and Table 3 note p. 7). A careless coder could misread +0.13 SD on \"Financial cost of water\" as higher water cost/worse affordability (and note it is statistically null anyway: 95% CI -0.10 to 0.36). Conversely, in Table 2, \"Time to collect water (min)\" is in raw minutes where HIGHER values mean WORSE time burden (-3.0 min pooled [null]; +43 min in Kasai = statistically significant WORSENING of collection time; -61 min in Kasai Central = significant IMPROVEMENT). 3. CO-PRIMARY & VILLAGE-LEVEL NULLS: Two of the four preregistered primary outcomes (collection time and water quantity collected, Table 2) and the village-level \"Water quality and access\" index (functional improved water points, N=328 villages, ITT = 0.13 SD, 95% CI -0.18 to 0.44, Table 3) are statistically null, despite the +33 pp gain in household-reported improved primary water source. 4. MINOR TEXT DISCREPANCIES: Abstract/p. 3 mention 332 candidate villages in 121 clusters, whereas p. 3 (Randomisation) and p. 6 (Results) clarify that after randomly dropping 7 villages to meet operational targets, the analysed sample is 328 villages (145 treatment, 183 control) and 1,312 households (580 treatment, 732 control) in 121 clusters. Also on p. 7, the parenthetical \"(22% vs 9%)\" after \"9 pp less likely to report no facilities\" swaps control and treatment order relative to the rest of the paragraph (control = 22%, treatment = 9%, matching 22 - 9 = 13 raw / ~9 pp adjusted).",
+    "study_design": "Cluster-randomised controlled trial (cRCT) evaluated via intention-to-treat (ITT) linear regression models controlling for randomisation strata (province and number of villages per cluster) with cluster-robust standard errors, measured at a median of 5 months (151 days) post-intervention.",
+    "study_id": "S366",
+    "unit_and_sample_size": "Randomisation unit: 121 clusters of rural villages (50 treatment clusters containing 145 surveyed villages; 71 control clusters containing 183 surveyed villages; 328 surveyed villages total). Primary analytic unit: 1,312 households (580 intervention, 732 control; 4 households per village; N = 1,260 households for school attendance index). Village-level outcomes (water governance; water quality and access): N = 328 villages (145 intervention, 183 control). Child health index: N = 1,388 children aged 10-59 months (646 intervention, 742 control)."
+  }
+}

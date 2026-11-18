@@ -1,0 +1,263 @@
+{
+  "study_id": "S780",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "77b932892944f3f43c668fcba46772a52d192706b929a242dd3ac1e60a028bce",
+  "input_text_sha256": "a759070bb874e666000e9ee2f558a67644d458c684292682292b6198f99b7b56",
+  "prompt_sha256": "0c469f79db2a329c90e6e49f010a0acbbfbd28d49f189f7dc86152c22e6f70bd",
+  "started_at": "2026-11-18T22:27:00.022157+00:00",
+  "completed_at": "2026-11-18T22:30:04.775028+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S780\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S780\n- Record ID: RE992755C7ABF\n- Citation: Pizzi E (2020). Ethnicity and Government Provision of Drinking Water Infrastructure in Rural China. Asian Survey.\n- DOI: 10.1525/AS.2020.60.4.607\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: a759070bb874e666000e9ee2f558a67644d458c684292682292b6198f99b7b56) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=66466, sha256=a759070bb874e666000e9ee2f558a67644d458c684292682292b6198f99b7b56]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "China",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 2 (p. 608)",
+        "quote": "minority populations receive less government support for drinking water"
+      },
+      {
+        "page": "PDF p. 10 (p. 616)",
+        "quote": "follow-up information on which of its projects succeed in improving access to"
+      },
+      {
+        "page": "PDF p. 15 (p. 621)",
+        "quote": "shows that government allocations disproportionately favor Han areas."
+      },
+      {
+        "page": "PDF p. 16 (p. 622)",
+        "quote": "Thus, autonomy does matter: in autonomous counties, a larger share of"
+      },
+      {
+        "page": "PDF p. 19 (p. 625)",
+        "quote": "In contrast, co-ethnic leadership is not reliably"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "Model 1 (controls only): beta = -83,928.93*** (robust SE = 26,889.73, p < 0.01, R^2 = 0.5441, N = 61 counties). Model 2 (Full Model adding Autonomous County and Share Han Leaders): beta = -75,817.29** (robust SE = 36,428.49, p < 0.05, R^2 = 0.5655, N = 61 counties). Predicted beneficiaries (Table 3, PDF p. 16): 143,687.2 for <18% minority (n = 15), 135,459.9 for 18-80% minority (n = 39), and 96,448.77 for >80% minority (n = 7).",
+        "exposure_and_reference": "Percentage Minority (continuous proportion from 0.01 to 0.98 measuring ethnic-minority share of county population vs. Han majority share; captures discretionary local bureaucratic implementation under the National Rural Drinking Water Safety Project)",
+        "finding_label": "Primary headline model: Ethnic minority population share on drinking water project beneficiaries",
+        "outcome_and_polarity": "Project Beneficiaries: cumulative number of people (villagers and students) benefiting from provincial Ministry of Water Resources (MWR) Safe Drinking Water projects in each county over 2010-2013 (higher numerical values = MORE residents covered by new drinking water infrastructure / BETTER provision)",
+        "raw_sign": "negative",
+        "table_or_page": "Table 2 (Models 1 and 2), PDF p. 15 (p. 621); Table 3, PDF p. 16 (p. 622)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Adjusted OLS Full Model 2 (controlling for Percentage Minority, Share Han Leaders, economic, demographic, and geographic controls, N = 61): Autonomous County beta = -41,810.91 (robust SE = 25,959.55, p >= 0.10, non-significant). Unadjusted descriptive means (Table 1, PDF p. 11, N = 82): Autonomous counties (n = 11) mean = 155,516 beneficiaries vs. Not Autonomous counties (n = 71) mean = 132,519 beneficiaries; Autonomous prefectures (n = 36 counties) mean = 97,437 vs. Not Autonomous prefectures (n = 46 counties) mean = 165,474. Text sensitivity check (PDF p. 18, p. 624): when Percentage Minority is dropped from the regression, Autonomous County becomes negative and statistically significant (exact coefficient not tabulated).",
+        "exposure_and_reference": "Autonomous County (binary indicator: 1 = designated minority autonomous county [11 of 82 counties in Guizhou], 0 = non-autonomous county [71 of 82 counties])",
+        "finding_label": "Institutional main effect: Minority autonomous county status on drinking water project beneficiaries",
+        "outcome_and_polarity": "Project Beneficiaries: cumulative number of residents benefiting from MWR Safe Drinking Water infrastructure projects in each county, 2010-2013 (higher numerical values = BETTER drinking water infrastructure provision)",
+        "raw_sign": "null",
+        "table_or_page": "Table 1, PDF p. 11 (p. 617); Table 2 (Model 2), PDF p. 15 (p. 621); text PDF p. 18 (p. 624)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Model 3 (OLS with controls, N = 61): Percentage Minority = -89,692.21** (robust SE = 33,573.31, p < 0.05); Autonomous County (evaluated at 0% minority, outside autonomous counties' observed 50%-95.7% range) = -236,074.3** (robust SE = 97,292.2, p < 0.05); Minority x Autonomous interaction = +283,665** (robust SE = 134,640.5, p < 0.05). Implied slope of Percentage Minority is negative in non-autonomous counties (-89,692.21) but positive in autonomous counties (+193,972.79); implied net difference for Autonomous vs. Non-Autonomous counties turns positive only when Percentage Minority exceeds 83.2% (-236,074.3 + 283,665 * Minority > 0).",
+        "exposure_and_reference": "Interaction of Percentage Minority (0.01-0.98) x Autonomous County (1 = minority autonomous county vs. 0 = non-autonomous county)",
+        "finding_label": "Institutional moderation model: Interaction between minority share and county autonomous status on project beneficiaries",
+        "outcome_and_polarity": "Project Beneficiaries: cumulative number of residents benefiting from MWR Safe Drinking Water infrastructure projects in each county, 2010-2013 (higher numerical values = BETTER drinking water infrastructure provision)",
+        "raw_sign": "mixed",
+        "table_or_page": "Table 4 (Model 3), PDF p. 17 (p. 623); text PDF p. 16 (p. 622)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Multilevel Model 12 (DV: Project Beneficiaries, N = 61 counties nested in 9 prefectures): Autonomous County = 1,437.54 (robust SE = 24,414.71, non-significant); Autonomous Prefecture = 13,646.72 (robust SE = 40,413.72, non-significant); Share Han Leader = -8,991.84 (robust SE = 19,663.70, non-significant); Percentage Minority = -70,883.79** (robust SE = 34,318.85, p < 0.05). Multilevel Model 13 (DV: Project Funds [in 10,000 RMB], N = 61/9): Autonomous County = -100.94 (robust SE = 1,196.79, non-significant); Autonomous Prefecture = 417.79 (robust SE = 2,009.59, non-significant); Share Han Leader = -460.91 (robust SE = 963.49, non-significant); Percentage Minority = -3,136.75** (robust SE = 1,682.30; printed with ** though z = -1.865, p ~ 0.062).",
+        "exposure_and_reference": "Autonomous County (1 vs. 0) and Autonomous Prefecture (1 = county in one of 3 minority autonomous prefectures vs. 0 = county in one of 6 non-autonomous prefectures), controlling for Percentage Minority and Share Han Leader",
+        "finding_label": "Multilevel models: County and prefectural ethnic autonomy on beneficiaries and project funding",
+        "outcome_and_polarity": "Model 12: Project Beneficiaries (higher = MORE water project beneficiaries / BETTER provision); Model 13: Project Funds in 10,000 RMB (higher = MORE MWR infrastructure funding)",
+        "raw_sign": "null",
+        "table_or_page": "Table A5 (Models 12 and 13), PDF p. 27 (p. 633)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table 2 Model 2 (additive, N = 61): Share Han Leaders = -26,776.74 (robust SE = 31,165.39, non-significant). Table 4 Model 4 (co-ethnic interaction, N = 61): Percentage Minority = -144,309.40** (robust SE = 67,707.75, p < 0.05); Share Han Leaders = -66,679.88 (robust SE = 64,553.50, non-significant); Minority x Share Han Leader = 105,291.60 (robust SE = 105,700.20, non-significant). Text (PDF pp. 12-13, 17) reports alternative codings (minority-only vs. mixed vs. Han-only; governors vs. Party secretaries separately; titular minority leadership) are likewise non-significant.",
+        "exposure_and_reference": "Share Han Leaders (continuous proportion 0 to 1 of county governors and CCP Party secretaries serving 2010-2013 who are ethnically Han vs. ethnic minority) and Minority x Share Han Leader interaction",
+        "finding_label": "Political representation model: Leader ethnicity and co-ethnic leadership on project beneficiaries",
+        "outcome_and_polarity": "Project Beneficiaries: cumulative number of residents benefiting from MWR Safe Drinking Water infrastructure projects in each county, 2010-2013 (higher numerical values = BETTER drinking water infrastructure provision)",
+        "raw_sign": "null",
+        "table_or_page": "Table 2 (Model 2), PDF p. 15 (p. 621); Table 4 (Model 4), PDF p. 17 (p. 623)"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Table A3 Model 5 (controls only, N = 61): Percentage Minority = -4,214.27*** (robust SE = 1,381.24, p < 0.01). Table A3 Model 6 (Full Model, N = 61): Percentage Minority = -3,764.79** (robust SE = 1,853.63, p < 0.05); Autonomous County = -2,173.5* (robust SE = 1,260.45, p < 0.10, non-significant at p < 0.05); Share Han Leader = -1,337.96 (robust SE = 1,547.95, non-significant). Predicted funds (Table 3, PDF p. 16): 7,069.40 (<18% minority), 6,599.36 (18-80% minority), and 4,624.92 (>80% minority) [in 10,000 RMB units].",
+        "exposure_and_reference": "Percentage Minority (0.01-0.98), Autonomous County (1 vs. 0), and Share Han Leader (0-1)",
+        "finding_label": "Secondary fiscal input outcome: MWR drinking water infrastructure funding across counties",
+        "outcome_and_polarity": "Project Funds: cumulative MWR drinking water project spending per county over 2010-2013, scaled in 10,000 RMB (wan yuan) units (higher numerical values = MORE public infrastructure spending; fiscal allocation input rather than direct household access)",
+        "raw_sign": "negative",
+        "table_or_page": "Table A3 (Models 5 and 6), PDF p. 26 (p. 632); Table 3, PDF p. 16 (p. 622)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table A4 Model 5 (without Percentage Minority, N = 61): Diversity = -67,894.58* (robust SE = 39,884.51, p < 0.10, non-significant at p < 0.05). Table A4 Model 6 (controlling for Percentage Minority, N = 61): Diversity = 13,649.85 (robust SE = 52,730.01, non-significant), while Percentage Minority = -91,505.63** (robust SE = 36,770.01, p < 0.05).",
+        "exposure_and_reference": "Ethnic Diversity index (continuous 0.01 to 0.78), tested alone and controlling for Percentage Minority",
+        "finding_label": "Robustness check: Ethnic diversity vs. ethnic minority concentration on project beneficiaries",
+        "outcome_and_polarity": "Project Beneficiaries: cumulative number of residents benefiting from MWR Safe Drinking Water infrastructure projects in each county, 2010-2013 (higher numerical values = BETTER drinking water infrastructure provision)",
+        "raw_sign": "null",
+        "table_or_page": "Table A4 (Models 5 and 6), PDF p. 26 (p. 632); text PDF p. 18 (p. 624)"
+      }
+    ],
+    "headline_direction_for_household_access": "unfavorable_to_access",
+    "headline_raw_sign": "negative",
+    "headline_result_summary": "Analyzing 13,376 Ministry of Water Resources (MWR) National Rural Drinking Water Safety Project investments across Guizhou Province (2010-2013; regression N = 61 counties out of 82 total), Pizzi (2020) finds that local officials' implementation discretion and short-term completion pressures override national pro-minority policy: counties with a higher ethnic-minority population share receive significantly less drinking water infrastructure funding and have significantly fewer project beneficiaries (Table 2 Model 1 beta = -83,928.93, p < 0.01; Full Model 2 beta = -75,817.29, p < 0.05; Multilevel Model 12 beta = -70,883.79, p < 0.05). Crucial nuance for legal/institutional coding: if the focal exposure is instead formal legal Minority Regional Autonomy (Autonomous County or Autonomous Prefecture) or Co-ethnic Leadership (Share Han Leaders), their additive main effects on project beneficiaries are statistically null once minority share and controls are included (Autonomous County beta = -41,810.91, SE = 25,959.55 in Model 2; 1,437.54, SE = 24,414.71 in Multilevel Model 12; Share Han Leaders beta = -26,776.74, SE = 31,165.39), though county autonomy significantly moderates the minority-share slope (Table 4 Model 3: Minority x Autonomous = +283,665, p < 0.05; Autonomous County = -236,074.3, p < 0.05, reversing the negative minority slope within autonomous counties and yielding a positive net autonomy effect only above ~83.2% minority share).",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. CHOICE OF FOCAL EXPOSURE (DISCRETIONARY IMPLEMENTATION / ETHNIC SHARE vs. FORMAL AUTONOMOUS LEGAL STATUS vs. LEADER ETHNICITY): The paper's headline independent variable is Percentage Minority (consistently negative and p < 0.05 across all beneficiary and funding models, demonstrating discretionary implementation disadvantage against minority areas). However, the formal legal/institutional variables tested as 'Alternative Explanations'—Autonomous County, Autonomous Prefecture, and Share Han Leaders—have statistically NULL additive main effects in controlled regressions (Table 2 Model 2; Table A5 Models 12-13), a borderline negative p < 0.10 effect of Autonomous County on funding (-2,173.5*, Table A3 Model 6), a negative significant effect of Autonomous County only when Percentage Minority is omitted (p. 624), and a MIXED/conditional interaction in Table 4 Model 3 (Autonomous County = -236,074.3**, Minority x Autonomous = +283,665**). 2. INTERACTION EXTRAPOLATION TRAP (TABLE 4 MODEL 3): Because all 11 autonomous counties are 50% to 95.7% minority (mean 74.8%), the -236,074.3** constituent coefficient on Autonomous County (at 0% minority) is out-of-sample; conversely, the positive +283,665** interaction does not mean autonomous counties get more beneficiaries across the board—the linear combination (-236,074.3 + 283,665 * Minority) is negative at the autonomous-county mean (74.8%) and only turns positive above 83.2% minority share. 3. OUTCOME IS INFRASTRUCTURE PROJECT BENEFICIARIES / FUNDING, NOT VERIFIED HOUSEHOLD TAP FUNCTIONALITY: The author explicitly notes (pp. 616, 626) that MWR records track cumulative authorized/completed project beneficiaries and funds (with approved-but-uncompleted projects coded as 0, fn. 3), without follow-up household data on whether completed facilities actually succeeded in delivering safe drinking water. 4. PUBLISHED TYPESETTING / UNIT ERRORS IN TABLES: (a) In Table 2 Model 1 (PDF p. 15), the Geographic Controls rows are shifted up by one line so Karst Landform (106,976.40**) is printed on the Total Water Points line, Slope (6,510.96) on the Karst line, and Constant (-99,780.18) duplicated on the Slope line; (b) Funding figures in Tables 1, 3, A2, A3, and A5 are in 10,000 RMB (wan yuan) units (mean 6,671.59 = RMB 66.71 million per p. 616), and text p. 622 mistakenly cites RMB 149,000 vs. 114,000 (confusing beneficiary counts with RMB); (c) multiplication signs ('x') are dropped in Table 4 and Table A4 headers/rows; (d) Table A5 Model 13 prints ** on Percentage Minority (-3,136.75, SE 1,682.30) even though z = -1.865 (p ~ 0.062). 5. LISTWISE DELETION: Descriptive Table 1 uses all N = 82 counties, whereas all regressions use N = 61 due to missing karst and village-count controls.",
+    "study_design": "Cross-sectional county-level observational study (aggregating 13,376 Ministry of Water Resources rural drinking water infrastructure projects authorized in 2010-2013 across Guizhou Province counties, analyzed with OLS regressions with robust standard errors and prefecture-nested multilevel models, supplemented by field visits to >50 villages and interviews)",
+    "study_id": "S780",
+    "unit_and_sample_size": "Counties in Guizhou Province, China: N = 82 total counties in descriptive statistics (aggregating 13,376 MWR drinking water projects from 2010-2013 and CVs of 360 county governors and CCP Party secretaries); N = 61 counties in all multivariable OLS models and N = 61 counties nested in 9 prefectures in multilevel models."
+  }
+}

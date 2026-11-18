@@ -1,0 +1,272 @@
+{
+  "study_id": "S085",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "4a223351f48dee4d889c25cde2b021185f527526a1c2722b93b1dc6b78269ca8",
+  "input_text_sha256": "b30b81b82831a68a41e9e06f0631cbd67b590a5d4a1cb012eb3886a458ebee00",
+  "prompt_sha256": "e4f15d84cafd85e1fbea26c318ddf67377a781d53c3801c486397d3bce07949d",
+  "started_at": "2026-11-18T22:30:06.341697+00:00",
+  "completed_at": "2026-11-18T22:35:07.268436+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S085\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S085\n- Record ID: R9E24EC349D72\n- Citation: Gaikwad N, Thomas A (2026). Getting on the grid: A field experiment on bottom-up political pressure and access to essential public services. American Journal of Political Science, early view.\n- DOI: 10.1111/ajps.70068\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: b30b81b82831a68a41e9e06f0631cbd67b590a5d4a1cb012eb3886a458ebee00) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=182317, sha256=b30b81b82831a68a41e9e06f0631cbd67b590a5d4a1cb012eb3886a458ebee00]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 5 of 77",
+        "quote": "by a statistically significant 19 percentage points, which is about 45% of the control mean."
+      },
+      {
+        "page": "PDF Page 24 of 77",
+        "quote": "of T1 on full formalization when T2 is not present is not statistically significant at conventional"
+      },
+      {
+        "page": "PDF Page 26 of 77",
+        "quote": "formalization by a statistically significant 19 percentage points (p-value=0.001) when T2 is"
+      },
+      {
+        "page": "PDF Page 59 of 77",
+        "quote": "the marginal effect of T1 conditional on T2 in this sample is 26 percentage points and that this effect is"
+      },
+      {
+        "page": "PDF Page 73 of 77",
+        "quote": "formalization ladder in either the overall sample (Column 2) or in the eligible lands sample (Column 4)."
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Table 1 Col 4 (PDF p. 25, unadjusted WLS with block FEs, slum-weighted/clustered, N = 5,251): T1*T2 = 0.22** (SE = 0.10), two-sided nominal p = 0.04; lower-order T1 (when T2=0) = -0.03 (SE = 0.07), T2 (when T1=0) = -0.06 (SE = 0.07); control mean = 0.42, R2 = 0.24. Marginal effect of T1 when T2 = 1 (Figure 6, PDF pp. 25-26) = +0.19 (19 percentage points, p = 0.001, ~45% of control mean). Covariate-adjusted Table S14 Col 4 (PDF p. 71, N = 5,251): T1*T2 = 0.20** (SE = 0.08), two-sided p = 0.04; T1 = -0.02 (SE = 0.06), T2 = -0.06 (SE = 0.06).",
+        "exposure_and_reference": "Joint bureaucratic assistance (T1) and bottom-up political coordination (T2) interaction (T1*T2, and conditional marginal effect of T1 = 1 vs. T1 = 0 when T2 = 1) in the pre-registered Eligible Lands Sample (excluding footpath, forest, and salt pan settlements legally barred from BMC water connections)",
+        "finding_label": "Headline complementarity finding (Hc.2b): T1*T2 interaction on verified municipal water connection at 5-year endline (Eligible Lands Sample)",
+        "outcome_and_polarity": "Formalized: binary indicator (= 1) for having an enumerator-verified metered BMC municipal piped water connection received in the post-intervention period (within past 5 years); higher values = BETTER household water access",
+        "raw_sign": "positive",
+        "table_or_page": "Table 1 Col 4 (PDF p. 25), Figure 6 (PDF p. 26), and Table S14 Col 4 (PDF p. 71)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table 1 Col 2 (PDF p. 25, unadjusted WLS with block FEs, slum-weighted/clustered, N = 6,652): T1*T2 = 0.11 (SE = 0.08), two-sided nominal p = 0.19; lower-order T1 (when T2=0) = -0.04 (SE = 0.06), T2 (when T1=0) = -0.08 (SE = 0.06); control mean = 0.33, R2 = 0.23; marginal effect of T1 when T2 = 1 is not distinguishable from 0 (PDF p. 24, Figure 6 p. 26). Covariate-adjusted Table S14 Col 2 (PDF p. 71, N = 6,652): T1*T2 = 0.05 (SE = 0.07), two-sided p = 0.44; T1 = -0.03 (SE = 0.05), T2 = -0.02 (SE = 0.05).",
+        "exposure_and_reference": "Joint bureaucratic assistance (T1) and political coordination (T2) interaction (T1*T2) in the Full Sample of all 76 slums (including 28 slums on policy-excluded footpath, forest, and salt pan lands)",
+        "finding_label": "Primary full-sample interaction (Hc.2b): T1*T2 on verified municipal water connection at 5-year endline (Full Sample)",
+        "outcome_and_polarity": "Formalized: binary indicator (= 1) for enumerator-verified metered BMC municipal piped water connection received post-intervention; higher values = BETTER household water access",
+        "raw_sign": "null",
+        "table_or_page": "Table 1 Col 2 (PDF p. 25), Figure 6 (PDF p. 26), and Table S14 Col 2 (PDF p. 71)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Full Sample (Table 1 Col 1, PDF p. 25, cluster-weighted/clustered, N = 6,652): T1 = 0.02 (SE = 0.03), one-sided nominal p = 0.26, control mean = 0.43 (covariate-adjusted Table S14 Col 1: 0.01, SE = 0.03, one-sided p = 0.38). Eligible Lands Sample (Table 1 Col 3, PDF p. 25, N = 5,251): T1 = 0.04 (SE = 0.03), one-sided nominal p = 0.08, control mean = 0.54 (covariate-adjusted Table S14 Col 3: 0.04, SE = 0.03, one-sided p = 0.09). When T2 = 0 (Table 1 Cols 2 & 4): T1 = -0.04 (SE = 0.06) in Full Sample and -0.03 (SE = 0.07) in Eligible Lands.",
+        "exposure_and_reference": "Bureaucratic assistance (T1 = 1 vs. T1 = 0), average marginal component effect overall and conditional on no political coordination (T2 = 0)",
+        "finding_label": "Primary main effect of bureaucratic assistance alone (Hc.1b) on verified municipal water connection at 5-year endline",
+        "outcome_and_polarity": "Formalized: binary indicator (= 1) for enumerator-verified metered BMC municipal piped water connection received post-intervention; higher values = BETTER household water access",
+        "raw_sign": "null",
+        "table_or_page": "Table 1 Cols 1-4 (PDF p. 25) and Table S14 Cols 1-4 (PDF p. 71)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table 1 Col 2 (Full Sample, N = 6,652): T2 (when T1 = 0) = -0.08 (SE = 0.06); covariate-adjusted Table S14 Col 2: -0.02 (SE = 0.05). Table 1 Col 4 (Eligible Lands, N = 5,251): T2 (when T1 = 0) = -0.06 (SE = 0.07); covariate-adjusted Table S14 Col 4: -0.06 (SE = 0.06). Authors report (PDF p. 24 & Figure S5 p. 76) that political coordination by itself did not on average significantly increase full formalization in either sample.",
+        "exposure_and_reference": "Political coordination campaign (T2 = 1 vs. T2 = 0) without bureaucratic assistance (T1 = 0) and on average",
+        "finding_label": "Effect of political coordination alone (T2) on verified municipal water connection at 5-year endline",
+        "outcome_and_polarity": "Formalized: binary indicator (= 1) for enumerator-verified metered BMC municipal piped water connection received post-intervention; higher values = BETTER household water access",
+        "raw_sign": "null",
+        "table_or_page": "Table 1 Cols 2 & 4 (PDF p. 25), Table S14 Cols 2 & 4 (PDF p. 71), and Figure S5 (PDF p. 76)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Table S18 (PDF p. 74, unadjusted WLS): Col 1 Full Sample T1 = 0.09 (SE = 0.08, one-sided p = 0.15, N = 6,652); Col 2 Full Sample T1*T2 = 0.27 (SE = 0.24, two-sided p = 0.28; T1 = -0.03, T2 = -0.22, N = 6,652); Col 3 Eligible Lands T1 = 0.11 (SE = 0.09, one-sided p = 0.11, N = 5,251); Col 4 Eligible Lands T1*T2 = 0.34 (SE = 0.29, two-sided p = 0.26; T1 = 0.03, T2 = 0.04, N = 5,251). Conditional marginal effect of T1 when T2 = 1 in Eligible Lands (PDF p. 73, Figure S4 p. 75) = +0.39 points (p = 0.046).",
+        "exposure_and_reference": "Bureaucratic assistance (T1) and T1*T2 interaction in Full Sample and Eligible Lands Sample",
+        "finding_label": "Pre-registered ordinal degree of formalization at endline (Hc.1a and Hc.2a)",
+        "outcome_and_polarity": "Formalization Level: 4-point ordinal scale (0 = no application, 1 = submitted application form, 2 = received P-form, 3 = verified BMC water connection post-intervention); higher values = BETTER progress toward household water access",
+        "raw_sign": "mixed",
+        "table_or_page": "Table S18 (PDF p. 74), text (PDF p. 73), and Figure S4 (PDF p. 75)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Eligible Lands Midline (Table S11, PDF p. 69, N = 5,010): T1 effect on Form Submitted = 0.10*** (SE = 0.03, one-sided p = 0.00, control mean = 0.21); BMC Visit = 0.04*** (SE = 0.01, p = 0.00, control mean = 0.06); P-Form = 0.01 (SE = 0.01, p = 0.27, control mean = 0.04); BMC Connection = -0.02 (SE = 0.02, p = 0.88, control mean = 0.10). Interactive Midline (Table 2, PDF p. 30, N = 5,010): T1*T2 = -0.05 (SE = 0.08, p = 0.57) on Form Submitted, 0.00 (SE = 0.02, p = 0.84) on BMC Visit, and -0.04 (SE = 0.02, p = 0.12) on P-Form. Full Sample Midline (Table S15, PDF p. 71, N = 6,268): T1 = 0.10*** (0.02) on Form Submitted, 0.04*** (0.01) on BMC Visit, 0.01 (0.01, p = 0.15) on P-Form, 0.00 (0.02, p = 0.44) on BMC Connection.",
+        "exposure_and_reference": "Bureaucratic assistance (T1 = 1 vs. T1 = 0) and T1*T2 interaction at 1-year midline survey",
+        "finding_label": "Exploratory midline petitioning-stage vs. short-term water connection outcomes (1 year post-intervention)",
+        "outcome_and_polarity": "Binary indicators for Form Submitted, BMC Visit, P-Form approval, and BMC Connection; higher values = BETTER administrative progress / household water access",
+        "raw_sign": "mixed",
+        "table_or_page": "Figure 7 (PDF p. 28), Table 2 (PDF p. 30), Table S11 (PDF p. 69), and Tables S15-S16 (PDF pp. 71-72)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Table S3 (PDF p. 60, Eligible Lands): Col 1 NOC Required (N = 3,865): T1*T2 = 0.31* (SE = 0.13, two-sided p = 0.051 in text p. 59 / 0.05 in table; T1 = -0.05, T2 = -0.12), conditional marginal effect of T1 given T2 = 1 is +0.26 (p = 0.006, 56% over control mean). Col 2 NOC Not Required (N = 1,386): T1*T2 = 0.19 (SE = 0.19, p = 0.38; T1 = -0.07, T2 = -0.11), conditional marginal effect = +0.12 (p = 0.27). Timing in Eligible Lands (Table S21, PDF p. 77, N = 5,251): T1*T2 = 0.01 (SE = 0.07, p = 0.84) in 2018-2020, 0.16** (SE = 0.07, p = 0.04) in pre-election 2020-2022, and 0.05 (SE = 0.05, p = 0.36) in 2022 or after.",
+        "exposure_and_reference": "Joint T1*T2 intervention stratified by land-authority No Objection Certificate (NOC) requirement and by pre-election timing window (Eligible Lands Sample)",
+        "finding_label": "Exploratory institutional mechanism: NOC land-clearance requirement and pre-election timing",
+        "outcome_and_polarity": "Formalized (binary verified BMC water connection overall and by period received); higher values = BETTER household water access",
+        "raw_sign": "positive",
+        "table_or_page": "Appendix I text (PDF p. 59), Table S3 (PDF p. 60), Figure 8 (PDF p. 34), and Table S21 (PDF p. 77)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table 3 (PDF p. 38): Col 1 Full Sample (N = 6,652): T1orT2*Relies on Broker = 0.14* (SE = 0.08, two-sided nominal p = 0.10; T1 or T2 = -0.05, Relies on broker = -0.07, control mean = 0.34). Col 2 Eligible Lands Sample (N = 5,251): T1orT2*Relies on Broker = 0.14 (SE = 0.09, two-sided nominal p = 0.14; T1 or T2 = -0.00, Relies on broker = -0.04, control mean = 0.42).",
+        "exposure_and_reference": "Assignment to either intervention (T1 or T2) interacted with household baseline reliance on an informal broker/middleman (Hc.7a)",
+        "finding_label": "Pre-registered secondary interaction with baseline reliance on informal brokers (Hc.7a)",
+        "outcome_and_polarity": "Formalized: binary indicator (= 1) for enumerator-verified metered BMC municipal piped water connection received post-intervention; higher values = BETTER household water access",
+        "raw_sign": "null",
+        "table_or_page": "Table 3 (PDF p. 38)"
+      }
+    ],
+    "headline_direction_for_household_access": "mixed",
+    "headline_raw_sign": "mixed",
+    "headline_result_summary": "In a multi-level 2x2 factorial cluster-randomized controlled trial across Mumbai informal settlements (76 slums, 152 analyzed slum clusters, N = 6,652 households at 5-year endline), neither NGO-led bureaucratic facilitation (T1: helping household groups complete and submit online BMC water connection applications) nor bottom-up political coordination (T2: mobilizing collective petitions, delegations, and public pressure on elected officials) alone increased verified municipal piped water connections at endline (T1 main effect: +0.02, p = 0.26 in Full Sample; +0.04, one-sided p = 0.08 in Eligible Lands; T1 when T2=0: -0.04 and -0.03; T2 when T1=0: -0.08 and -0.06). In the full pre-registered sample—which includes 28 slums (36 clusters) on footpath, forest, and salt pan lands legally barred by court orders or municipal policy from receiving connections—even the combined T1*T2 interaction was statistically null (+0.11, SE = 0.08, p = 0.19 unadjusted; +0.05, SE = 0.07, p = 0.44 with covariates). However, in the pre-registered Eligible Lands subsample (48 slums, N = 5,251, where existing law/policy permitted formalization), bureaucratic assistance and political coordination showed strong positive complementarity: the T1*T2 interaction increased verified municipal water connections by +0.22 (SE = 0.10, two-sided p = 0.04; +0.20, SE = 0.08, p = 0.04 with covariates), and T1 conditional on T2 = 1 raised connection rates by +19 percentage points (p = 0.001, ~45% of the 0.42 control mean), driven primarily by settlements requiring multi-agency No Objection Certificates (+26 pp, p = 0.006) during the 2020-2022 pre-election period. At 1-year midline, T1 alone increased application submission (+10 pp, p < 0.01) and engineer visits (+4 pp, p < 0.01) without increasing connections, whereas on the pre-registered endline ordinal formalization scale (0-3) the T1*T2 interaction term itself was null (0.27, p = 0.28 Full; 0.34, p = 0.26 Eligible, though conditional marginal effect T1|T2=1 in Eligible Lands was +0.39, p = 0.046).",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Full Sample vs. Eligible Lands Subsample: Seven of the eight primary pre-registered regression tests across Table 1 (Cols 1-3) and Table S18 (Cols 1-4) are statistically non-significant at p < 0.05. The headline positive complementarity effect on binary Formalized appears only in the Eligible Lands subsample (Table 1 Col 4: T1*T2 = 0.22, p = 0.04; AME of T1|T2=1 = +0.19, p = 0.001), which excludes 28 slums on footpath, forest, and salt pan lands via a July 2019 PAP amendment; in the full 76-slum sample, T1*T2 is null (0.11, p = 0.19 unadjusted; 0.05, p = 0.44 adjusted). 2. Single-arm vs. joint treatment coding: Coding T1 (bureaucratic assistance) or T2 (political mobilization) in isolation yields null effects on endline water connections (and slightly negative non-significant lower-order coefficients, -0.02 to -0.08, when the other arm is 0); positive connection gains require both T1 and T2 together in policy-eligible slums. 3. Raw unclustered means vs. clustered WLS: Appendix Figure S1 (PDF p. 56) displays a raw unclustered p = 0.00 negative difference for 'Just T2' vs. Control in the Full Sample, which disappears once block fixed effects, slum-level weighting, and slum-clustered standard errors are applied (Table 1 Col 2: -0.08, SE = 0.06). 4. Binary Formalized vs. Ordinal Formalization Level: On the pre-registered 0-3 ordinal scale (Table S18), the T1*T2 interaction term is statistically null in both samples (p = 0.28 and p = 0.26), even though the conditional marginal effect of T1 when T2 = 1 in Eligible Lands reaches +0.39 (p = 0.046). 5. Test-sidedness: T1 main-effect p-values in Table 1 Cols 1 & 3 (p = 0.26, p = 0.08) are one-sided, whereas interaction p-values in Cols 2 & 4 (p = 0.19, p = 0.04) are two-sided.",
+    "study_design": "Multi-level 2x2 factorial cluster-randomized controlled trial (field experiment) with block-randomization of 76 slums to Political Coordination (T2) and complete randomization of 152 slum clusters within slums to Bureaucratic Assistance (T1), evaluated via weighted least squares (WLS) regressions with randomization block fixed effects and clustered standard errors at 1-year midline (2019) and 5-year endline (2023).",
+    "study_id": "S085",
+    "unit_and_sample_size": "Households nested within slum clusters (152 analyzed of 153 mapped clusters of 50-200 households) and slums (76 slums in Full Sample; 48 slums / 116 clusters in Eligible Lands Sample after excluding 28 slums / 36 clusters on footpath, forest, and salt pan lands). Endline analytic N = 6,652 households in Full Sample (including 61.5% recontacted baseline respondents plus 2,444 replacement-sample households) and N = 5,251 households in Eligible Lands Sample; Midline analytic N = 6,268 (Full Sample) and N = 5,010 (Eligible Lands Sample)."
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "study_id": "S398",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "bfd40c7e490dc2bf75489cbb340b3dbde5d1aedfad6c2a693f874afe25d03d5f",
+  "input_text_sha256": "55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f",
+  "prompt_sha256": "9d588a4e27998ecd89bd06b736a080f4a6768261f4947179d4fee820cf92ac10",
+  "started_at": "2026-11-18T22:56:09.986373+00:00",
+  "completed_at": "2026-11-18T22:58:33.045493+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S398\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S398\",\n  \"record_id\": \"R2B5A92453E91\",\n  \"confidence\": \"high\",\n  \"country\": \"Brazil\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF Page 5\",\n      \"quote\": \"of about 23 percentage points in the percentage of households with access to sewage\"\n    },\n    {\n      \"page\": \"PDF Page 20\",\n      \"quote\": \"at 10% level of statistical significance) of a positive effect (of 9 percentage points)\"\n    },\n    {\n      \"page\": \"PDF Page 21\",\n      \"quote\": \"of 14 to 17 years to the ZEIS regulation, we got increases of about 23, 16, and 12\"\n    },\n    {\n      \"page\": \"PDF Page 22\",\n      \"quote\": \"to water through the general network and homeowners in 2000 (after 4 to 7 years\"\n    },\n    {\n      \"page\": \"PDF Page 30\",\n      \"quote\": \"of homeowners, access to sewage services, and access to water through a general\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"ZEIS 2000 = 2.178 (SE = 6.323, p >= 0.10); ZEIS 2010 = 15.702** (SE = 7.105, p < 0.05). Adjusted dynamic DiD with controls (schooling, married, density), Time FE, Census Track FE, and District linear trend; SEs clustered at neighborhood (bairro) level; R²-Within = 0.4302; N = 216 observations (18 treated, 54 PSM control census tracks across 1991, 2000, 2010). 1991 baseline mean: 61.7% (SD 26.0) treated vs. 64.9% (SD 25.3) PSM control.\",\n      \"exposure_and_reference\": \"ZEIS implementation in 1993-1996 covering >90% of census track territory interacted with post-treatment year 2000 (4-7 years exposure) and year 2010 (14-17 years exposure) vs. propensity-score-matched non-ZEIS census tracks (reference: pre-intervention 1991 and non-ZEIS PSM controls)\",\n      \"finding_label\": \"Primary dynamic DiD — Piped water network coverage (medium-run 2000 null, long-run 2010 positive)\",\n      \"outcome_and_polarity\": \"Water - public network: percentage of households accessing piped municipal water through the public/general network (0-100%; higher values = BETTER household water access)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 3, Column (4), PDF Page 22 (baseline means in Table 1, PDF Page 18)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Panel A (without District linear trend): ZEIS = 9.107* (SE = 5.073, p < 0.10, R²-Within = 0.3636). Panel B (with District linear trend): ZEIS = 8.086 (SE = 6.336, p >= 0.10, R²-Within = 0.4087). Adjusted pooled DiD with controls, Time FE, and Census Track FE; SEs clustered at neighborhood level; N = 219 observations (19 treated, 54 PSM control census tracks).\",\n      \"exposure_and_reference\": \"ZEIS implementation (dummy = 1 when census track with >90% ZEIS area share is under ZEIS regulation at time t) vs. propensity-score-matched non-ZEIS census tracks\",\n      \"finding_label\": \"Pooled static DiD — Piped water network coverage (borderline p < 0.10 without district trends; null with district trends)\",\n      \"outcome_and_polarity\": \"Water - public network: percentage of households accessing piped municipal water through the public/general network (0-100%; higher values = BETTER household water access)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 2, Panel A Column (4) & Panel B Column (9), PDF Page 21\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Panel A (without District linear trend): ZEIS = 22.161** (SE = 10.254, p < 0.05, R²-Within = 0.5280). Panel B (with District linear trend): ZEIS = 18.970** (SE = 9.187, p < 0.05, R²-Within = 0.5950). Adjusted pooled DiD with controls, Time FE, and Census Track FE; SEs clustered at neighborhood level; N = 219 observations (19 treated, 54 PSM control census tracks). 1991 baseline mean: 9.2% (SD 16.4) treated vs. 10.1% (SD 17.6) PSM control.\",\n      \"exposure_and_reference\": \"ZEIS implementation (dummy = 1 when census track with >90% ZEIS area share is under ZEIS regulation at time t) vs. propensity-score-matched non-ZEIS census tracks\",\n      \"finding_label\": \"Pooled static DiD — Public sewage network coverage (positive at p < 0.05 with and without district trends)\",\n      \"outcome_and_polarity\": \"Sewage - public network: percentage of households accessing sewage services through the public/general network (0-100%; higher values = BETTER household sanitation access)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 2, Panel A Column (5) & Panel B Column (10), PDF Page 21 (baseline means in Table 1, PDF Page 18)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"ZEIS 2000 = 15.471** (SE = 7.292, p < 0.05); ZEIS 2010 = 23.479* (SE = 12.189, p < 0.10). Adjusted dynamic DiD with controls, Time FE, Census Track FE, and District linear trend; SEs clustered at neighborhood level; R²-Within = 0.5347; N = 216 observations (18 treated, 54 PSM control census tracks).\",\n      \"exposure_and_reference\": \"ZEIS implementation in 1993-1996 covering >90% of census track territory interacted with year 2000 (4-7 years exposure) and year 2010 (14-17 years exposure) vs. propensity-score-matched non-ZEIS census tracks\",\n      \"finding_label\": \"Primary dynamic DiD — Public sewage network coverage (positive p < 0.05 in 2000; borderline p < 0.10 in 2010)\",\n      \"outcome_and_polarity\": \"Sewage - public network: percentage of households accessing sewage services through the public/general network (0-100%; higher values = BETTER household sanitation access)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 3, Column (5), PDF Page 22\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Table 2 Panel A Col (2): ZEIS = 0.090 (SE = 0.192, p >= 0.10); Table 2 Panel B Col (7): ZEIS = -0.072 (SE = 0.235, p >= 0.10), N = 219. Table 3 Col (2): ZEIS 2000 = -0.203 (SE = 0.222, p >= 0.10); ZEIS 2010 = -0.133 (SE = 0.263, p >= 0.10), N = 216. 1991 baseline mean: 1.0 (SD 1.0) in both treated and PSM control groups.\",\n      \"exposure_and_reference\": \"ZEIS implementation covering >90% of census track territory vs. propensity-score-matched non-ZEIS census tracks\",\n      \"finding_label\": \"Pooled and dynamic DiD — Mean bathrooms per household (null across all models)\",\n      \"outcome_and_polarity\": \"Bathrooms/Households: mean number of bathrooms per household in the census track (higher values = BETTER indoor sanitation/dwelling facility)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 2 Columns (2) & (7), PDF Page 21; Table 3 Column (2), PDF Page 22\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Slum controls (Table 4 Cols 4-5, N = 306 [18 treated, 84 slum controls]): Water ZEIS 2000 = 4.345 (6.185), ZEIS 2010 = 15.524** (6.984); Sewage ZEIS 2000 = 16.584** (7.384), ZEIS 2010 = 24.511* (12.085). Excluding neighboring controls (Table 5 Cols 4-5, N = 168): Water ZEIS 2000 = -0.579 (3.125), ZEIS 2010 = 16.877** (7.432); Sewage ZEIS 2000 = 17.795** (7.540), ZEIS 2010 = 28.612** (11.493). Adding log household income control (Table 6 Cols 4-5, N = 216): Water ZEIS 2000 = 1.153 (6.539), ZEIS 2010 = 15.354** (7.468); Sewage ZEIS 2000 = 16.463** (7.269), ZEIS 2010 = 23.815* (11.493).\",\n      \"exposure_and_reference\": \"ZEIS implementation in 1993-1996 (>90% area share) interacted with 2000 and 2010 vs. non-ZEIS slum census tracks (Table 4), non-neighboring PSM controls (Table 5), or PSM controls adjusting for log census track mean income (Table 6)\",\n      \"finding_label\": \"Robustness checks — Water and sewage network coverage across slum controls, spillover exclusion, and income adjustment\",\n      \"outcome_and_polarity\": \"Water - public network and Sewage - public network (% of households connected; higher values = BETTER household water and sanitation access)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 4 (PDF Page 24), Table 5 (PDF Page 29), and Table 6 (PDF Page 30)\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"favorable_to_access\",\n  \"headline_raw_sign\": \"positive\",\n  \"headline_result_summary\": \"Using a matched difference-in-differences design across Recife census tracts (1991, 2000, and 2010 censuses), municipal demarcation and land-tenure/urbanistic regularization of low-income settlements as Social Interest Special Zones (ZEIS) significantly increased household access to piped water and public sewage networks, while having null effects on the mean number of bathrooms per household and public garbage collection. Specifically, in dynamic DiD models separating medium-run (2000, 4-7 years) and long-run (2010, 14-17 years) exposure (Table 3), piped water network coverage showed no medium-run effect (+2.178 percentage points, SE 6.323) but a significant long-run increase of +15.702 percentage points (SE 7.105, p < 0.05), while public sewage network coverage increased by +15.471 percentage points in 2000 (SE 7.292, p < 0.05) and +23.479 percentage points in 2010 (SE 12.189, p < 0.10; and +18.970 percentage points, SE 9.187, p < 0.05 in pooled DiD with district trends, Table 2 Panel B).\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. Pooled vs. dynamic horizon sensitivity for piped water: In pooled static DiD (Table 2), Water - public network is only significant at 10% without district trends (9.107*, SE 5.073, Panel A) and statistically null with district trends (8.086, SE 6.336, Panel B) because the medium-run 2000 effect is near zero (2.178, SE 6.323) whereas the long-run 2010 effect (14-17 years post-ZEIS) is +15.702** (SE 7.105, p < 0.05, Table 3). 2. Precision of 2010 sewage estimate: Although the authors emphasize the ~23 percentage point 2010 sewage gain in the abstract and text, in Table 3 Col (5), Table 4 Col (5), and Table 6 Col (5) the 2010 sewage coefficient is only significant at the 10% level (*, p < 0.10), whereas the 2000 sewage coefficient (**15.471, p < 0.05), the pooled Table 2 Panel B sewage coefficient (**18.970, p < 0.05), and the spillover-adjusted Table 5 2010 sewage coefficient (**28.612, p < 0.05) all reach p < 0.05. 3. Network utility vs. indoor dwelling sanitation: While public water and sewerage network connections improved, indoor Bathrooms/Households (dwelling physical structure) and public Garbage collection were consistently null across every table. 4. Minor Table 1 note wording slip: The note under Table 1 (p. 18) refers to utility variables as 'average percentage of homeowners accessing the service', whereas the main text (pp. 3, 5, 11, 17, 20-22) and figure captions (pp. 26-27) consistently define them as the percentage of households accessing the service; also Tables 1-6 label standard errors in regression notes as 'standardized deviation in parenthesis'. 5. Equations (1) and (2) on pp. 11-12 have missing embedded math symbols in the PDF text layer, though variable definitions in surrounding prose and all regression tables are completely intact.\",\n  \"study_design\": \"Quasi-experimental matched Difference-in-Differences (two-way fixed effects panel with Propensity Score Matching and district-specific linear time trends) across 3 decennial census waves (1991, 2000, 2010)\",\n  \"unit_and_sample_size\": \"Temporally compatible census tracts ('census tracks') in the City of Recife, Brazil (universe = 962 tracts across 1991, 2000, and 2010 censuses). Primary baseline pooled DiD sample (Table 2): 73 census tracts (19 treated tracts with >90% area under ZEIS implemented after 1991 + 54 PSM-matched non-ZEIS control tracts) x 3 waves = 219 observations. Primary dynamic DiD sample (Table 3, 1993-1996 cohort): 72 census tracts (18 treated + 54 PSM control) x 3 waves = 216 observations. Slum-control robustness sample (Table 4): 102 census tracts (18 treated + 84 non-ZEIS slum tracts) x 3 waves = 306 observations.\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:29:05.667413+00:00\",\n  \"pdf_sha256\": \"bfd40c7e490dc2bf75489cbb340b3dbde5d1aedfad6c2a693f874afe25d03d5f\",\n  \"input_sha256\": \"55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S398\",\n  \"author_year\": \"dos Santos Nascimento Sobrinho & da Mota Silveira Neto (2025)\",\n  \"family\": \"A\",\n  \"exposure_short\": \"ZEIS zoning designation (Recife)\",\n  \"comparator_short\": \"matched non-ZEIS tracts, DiD\",\n  \"outcome_short\": \"sewage-network access\",\n  \"outcome_family\": \"primary_connection\",\n  \"estimate_short\": \"+23 pp\",\n  \"raw_coefficient_sign\": \"+\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = better\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"ZEIS zoning raised sewage-network access by 23 pp (DiD).\",\n  \"rob_tool\": \"ROBINS-I\",\n  \"rob_rating\": \"Moderate\",\n  \"inclusion_decision_human_verified\": \"Y (CK ruling)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"positive (ZEIS designation associated with increased water/sewage-network access and homeownership)\",\n  \"exposure_full\": \"Household census-tract location within an area designated ZEIS (Zona Especial de Interesse Social / Social Interest Special Zone) in Recife, Brazil -- a legal/institutional zoning-eligibility status conferred under municipal ZEIS legislation (Municipal Land Use Law 14,511/83, PREZEIS Municipal Law 14,947/87, as amended) to areas meeting statutory low-income/informality criteria.\",\n  \"comparator_full\": \"Matched census tracts not subject to ZEIS designation, before/after the intervention (difference-in-differences).\",\n  \"estimate_full\": \"ZEIS designation associated with an approximately 23 percentage-point increase in the share of households with sewage-network access, 14-17 years after implementation (~150% increase over the 1991 baseline level); also significant positive effects on water-network access and homeownership rate; no significant effect on bathrooms per household or garbage-collection access.\",\n  \"ai_scope_check_2026-10-14\": \"\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: 55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=81059, sha256=55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's coding of S398 as Favourable (+) for Family A primary network connection is substantively supported by the paper's matched DiD evidence, yet Claude clearly extracted from prose (PDF pp. 1, 5, 21) without inspecting the regression tables (Tables 1-6, PDF pp. 18-30). First, Claude recorded 'table: none' and 'CI / SE: none' for the '+23 pp' estimate, missing that Table 3 Column (5) (PDF p. 22) prints the exact 2010 sewage-network coefficient as 23.479* with neighborhood-clustered SE = 12.189, which is only statistically significant at the 10% level (t = 1.93, p < 0.10) rather than p < 0.05. Second, Claude misreported the citywide universe of 962 temporally compatible census tracts (PDF p. 14) as the analytic sample size, whereas the Table 3 baseline dynamic DiD uses only 72 matched tracts (18 treated tracts with >90% ZEIS area share implemented in 1993-1996 plus 54 PSM control tracts, N = 216 observations; N = 219 in Table 2). Third, Claude uncritically repeated the authors' prose statement that +23 pp represents '~150% increase over the 1991 baseline' (PDF p. 5), whereas Table 1 Column (1) (PDF p. 18) prints a 1991 treated baseline sewage-network share of 9.2% (making +23.479 pp a +255% gain). Fourth, across outcomes and horizons, piped water network access is null in the pooled DiD with district trends (8.086, SE = 6.336, Table 2 Panel B Col. 9, PDF p. 21) and in 2000 (2.178, SE = 6.323, Table 3 Col. 4, PDF p. 22) before turning positive in 2010 (15.702**, SE = 7.105, p < 0.05), while indoor bathrooms per household is null with slight negative point estimates (-0.072 to -0.203) in every specification. Nevertheless, Favourable holds cleanly because public sewage-network access is positive across every table and reaches p < 0.05 in pooled DiD with and without district trends (18.970** and 22.161**, Table 2), in every 2000 post-treatment specification (15.471** to 17.795**, Tables 3-6), and in 2010 when excluding neighboring controls (28.612**, SE = 11.493, Table 5, PDF p. 29).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 5",
+        "quote": "of about 23 percentage points in the percentage of households with access to sewage"
+      },
+      {
+        "page": "PDF Page 15",
+        "quote": "19 with more than 90% of the territory under the ZEIS intervention."
+      },
+      {
+        "page": "PDF Page 20",
+        "quote": "at 10% level of statistical significance) of a positive effect (of 9 percentage points)"
+      },
+      {
+        "page": "PDF Page 22",
+        "quote": "of households with access to sewage services, no effects of the policy on the access"
+      }
+    ],
+    "numbers_match_paper": "partial_or_rounding_issue",
+    "numerical_check_note": "Claude's '+23 pp' and '~150%' match the authors' rounded prose summary on PDF pp. 5 and 21, but Claude omitted all printed table values, SEs, and analytic sample sizes. In Table 3 Col. (5) (PDF p. 22), the exact 14-17 year dynamic DiD estimate for 'Sewage - public network' is ZEIS 2010 = 23.479* (clustered SE = 12.189, p < 0.10), alongside ZEIS 2000 = 15.471** (SE = 7.292, p < 0.05); pooled DiD in Table 2 (PDF p. 21) prints 22.161** (SE = 10.254, p < 0.05, Panel A Col. 5) and 18.970** (SE = 9.187, p < 0.05, Panel B Col. 10, with district trends). Claude also stored the citywide universe of 962 census tracts (PDF p. 14) instead of the actual matched estimation sample: N = 216 observations (18 treated + 54 PSM control tracts x 3 waves) in Tables 3 and 6, N = 219 (19 treated + 54 control tracts) in Table 2, N = 306 (18 treated + 84 slum control tracts) in Table 4 (PDF p. 24), and N = 168 (18 treated + 38 non-neighboring control tracts) in Table 5 (PDF p. 29). Finally, Table 1 Col. (1) (PDF p. 18) shows a 1991 treated sewage baseline of 9.2% (SD 16.4), so +23.479 pp is arithmetically a +255% increase rather than the authors' prose '~150%', and PDF p. 1 prints DOI 10.1590/0103-6351/8355 whereas the dossier lists 'DOI: none recorded'.",
+    "polarity_or_orientation_issue": "None. Exposure orientation ('as reported') compares census tracts with >90% area designated as ZEIS (formal municipal zoning and land-tenure regularization of low-income informal settlements) against PSM-matched non-ZEIS tracts before and after designation. Outcome polarity ('higher = better') measures the share of census-tract households connected to the public sewage network (0-100%). Combining a positive DiD coefficient (+) with higher-is-better polarity and pro-regularization exposure unambiguously yields a Favourable substantive direction. (Minor source-text quirk: Table 1's footnote on PDF p. 18 loosely describes utility variables as 'average percentage of homeowners accessing the service', whereas the Abstract, main text on pp. 3, 5, 11, 17, 20-22, and Figure 6-7 captions on pp. 26-27 consistently define them as percentage of households accessing the service; polarity is unaffected.)",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "fits_cleanly",
+    "specification_multiplicity_flag": true,
+    "study_id": "S398",
+    "substantive_direction_verdict": "supported"
+  }
+}

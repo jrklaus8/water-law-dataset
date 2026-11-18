@@ -1,0 +1,254 @@
+{
+  "study_id": "S1062",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "85632ea13dd17274f84ebdbee185f09edd83fc820bf047c59a114d09c67efd46",
+  "input_text_sha256": "34d796e71e7c30b14dceaf3472f1e50d21e4922147314c856dbb42c80342469a",
+  "prompt_sha256": "af2066f79a662c262d23b56a75aa8a234eff04f471525282bdafa50efffaa359",
+  "started_at": "2026-11-18T22:44:35.962428+00:00",
+  "completed_at": "2026-11-18T22:47:00.139731+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S1062\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S1062\n- Record ID: R54F56C59F64A\n- Citation: Marson M, Savin I (2015). Ensuring Sustainable Access to Drinking Water in Sub Saharan Africa: Conflict Between Financial and Social Objectives. World Development 76:26-39.\n- DOI: 10.1016/j.worlddev.2015.06.002\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: 34d796e71e7c30b14dceaf3472f1e50d21e4922147314c856dbb42c80342469a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=79863, sha256=34d796e71e7c30b14dceaf3472f1e50d21e4922147314c856dbb42c80342469a]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Sub-Saharan Africa (25 countries in full analytic sample: Benin, Burkina Faso, Central African Republic, Côte d'Ivoire, Democratic Republic of the Congo, Ethiopia, Gabon, Ghana, Guinea, Kenya, Lesotho, Malawi, Mali, Mauritania, Mozambique, Namibia, Niger, Nigeria, Senegal, South Africa, Sudan, Swaziland, Togo, Uganda, and Zambia; 22 countries in models with public expenditure, which exclude Guinea, DRC, and Togo)",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (Summary)",
+        "quote": "we ﬁnd important access increases for relatively low levels of capital cost recovery"
+      },
+      {
+        "page": "PDF p. 6 (Section 4)",
+        "quote": "one: better ﬁnancial results are associated with lower coverage"
+      },
+      {
+        "page": "PDF p. 8 (Section 4)",
+        "quote": "recovery ratio the coverage rates start decreasing in absolute"
+      },
+      {
+        "page": "PDF p. 9 (Section 5)",
+        "quote": "water service coverage, this relationship becomes negative"
+      },
+      {
+        "page": "PDF p. 10 (Note 13)",
+        "quote": "negative values of the cost recovery variable coeﬃcient, corresponding to a"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Table 4 (PDF p. 7), N = 235 obs across 75 utilities (models a, e, f) and N = 225 obs across 72 utilities (models b, c, d, g, h, i), restricted to O&M cost recovery <= 2.0 with cluster-robust SEs (SE values not printed): Linear O&M cost recovery is positive and significant across all 9 models (Pooled OLS a = 34.62***, b = 36.04***, c = 33.27**, d = 30.43**; Fixed Effects e = 23.63**; Random Effects f = 31.47***, g = 34.02***, h = 28.32***, i = 27.52***), while Squared O&M cost recovery is negative and significant across all 9 models (sign confirmed by prose on p. 6 and Maximum cr formula; printed without minus glyph as 14.20***, 13.58***, 12.79**, 11.91**, 10.67**, 13.81***, 14.31***, 12.32***, and 12.16***, respectively). Turning-point Maximum cr = -b/(2a) is 1.22, 1.33, 1.30, 1.28 in Pooled OLS (a-d), 1.11 in FE (e), and 1.14, 1.19, 1.15, 1.13 in RE (f-i). Evaluated at covariate means in focal RE model h (Fig. 2, PDF p. 8), 3-year coverage change becomes positive above cr ≈ 0.83, peaks at cr = 1.15, decelerates above 1.15, and turns negative in absolute terms above cr = 1.47.",
+        "exposure_and_reference": "O&M cost recovery ratio (Total annual operational revenues / Total annual operating costs at year t, continuous ratio restricted to <= 2.0) and Squared O&M cost recovery ratio, capturing utility commercial/tariff cost-recovery performance relative to lower cost-recovery levels and literature benchmarks (1.3 to 2.0).",
+        "finding_label": "Primary headline finding: Nonlinear (inverted-U) effect of utility O&M cost recovery on 3-year change in water coverage (Table 4, models a–i)",
+        "outcome_and_polarity": "Three-year difference in water coverage (percentage-point change from year t to t+3 in the % of population under the utility's nominal responsibility with access to water services via direct connection or public water point; higher numerical values = BETTER household water access expansion).",
+        "raw_sign": "mixed",
+        "table_or_page": "Table 4 (PDF p. 7) and Fig. 1–2 (PDF pp. 8–9)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Table 8 RE Tobit outlier-censored models (PDF p. 13; N = 234/75 utilities in f1, N = 224/72 utilities in g1-i1): O&M cost recovery = +21.64**, +23.70**, +17.88*, +16.71*; Squared O&M cost recovery = -9.45**, -9.91**, -7.59*, -7.18* (minus glyphs omitted in table extraction); Maximum cr = 1.15, 1.20, 1.18, 1.16. Table 9 RE robustness models f2-i2 (PDF p. 14; N = 221 to 235): O&M cost recovery = +23.38** to +34.58***; Squared O&M cost recovery = -10.56*** to -14.94***; Maximum cr = 1.11 to 1.16. Conversely, Note 13 (PDF p. 10) reports that unrestricted linear models including ~20 extreme observations with O&M cost recovery > 2.0 yield a negative linear cost-recovery coefficient, and Table 6 (PDF p. 12, N = 225) shows a non-significant pairwise linear correlation with 3-year coverage change (printed as 0.07, not significant at 95%).",
+        "exposure_and_reference": "O&M cost recovery ratio and Squared O&M cost recovery under outlier-censored panel Tobit (inner fences), alternative controls/subsamples, and unrestricted linear specification (including cr > 2.0).",
+        "finding_label": "Robustness & sensitivity checks on O&M cost recovery (Tables 6, 8, 9 and Note 13)",
+        "outcome_and_polarity": "Three-year difference in water coverage (% points from t to t+3; higher values = BETTER household water access expansion).",
+        "raw_sign": "mixed",
+        "table_or_page": "Note 13 (PDF p. 10), Table 6 (PDF p. 12), Table 8 (PDF p. 13), Table 9 (PDF p. 14)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Table 4 (PDF p. 7, N = 225, 72 utilities): Pooled OLS b = 9.71***, OLS c = 6.79*, OLS d (controlling for ODA) = 5.74 (null), RE g = 13.32***, RE h = 8.24**, RE i = 7.74***. Table 8 RE Tobit (PDF p. 13, N = 224): g1 = 9.22***, h1 = 5.43*, i1 = 5.03*. Table 9 RE robustness (PDF p. 14): % GDP in h3 = 8.19** (N = 225) and in h5 (excluding 3 South African utilities) = 7.19 (null, N = 221); per-capita public water spending in h2 = 1014.24**, h4 = 9.13**, i2 = 1021.94** (N = 225).",
+        "exposure_and_reference": "On-budget Public Expenditure for Water as % of country GDP (2001–05 country-level time-invariant average, excluding off-budget SOE spending) or per capita (in Table 9 models h2, h4, i2).",
+        "finding_label": "Country-level on-budget public fiscal expenditure for water (Tables 4, 8, 9)",
+        "outcome_and_polarity": "Three-year difference in water coverage (% points from t to t+3; higher values = BETTER household water access expansion).",
+        "raw_sign": "positive",
+        "table_or_page": "Table 4 (PDF p. 7), Table 8 (PDF p. 13), Table 9 (PDF p. 14)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table 4 (PDF p. 7, N = 225, 72 utilities): Pooled OLS d = 3.61* (marginally significant at 10% per prose p. 7), RE i = 1.83 (non-significant). Table 8 RE Tobit i1 (PDF p. 13, N = 224) = 1.43 (non-significant). Table 9 RE per-capita ODA i2 (PDF p. 14, N = 225) = 113.28 (non-significant). (Unadjusted pairwise correlation in Table 6 is 0.19*, significant at 95%.)",
+        "exposure_and_reference": "Official Development Assistance (ODA) flows for water supply and sanitation (% of country GDP at year t, or per capita in model i2).",
+        "finding_label": "Official Development Assistance (ODA) for water supply and sanitation (Tables 4, 8, 9)",
+        "outcome_and_polarity": "Three-year difference in water coverage (% points from t to t+3; higher values = BETTER household water access expansion).",
+        "raw_sign": "null",
+        "table_or_page": "Table 4 (PDF p. 7), Table 8 (PDF p. 13), Table 9 (PDF p. 14)"
+      },
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "Prose on PDF p. 7 confirms negative direction ('utilities with high Non Revenue Water rates increase their users' coverage less, but the result is not always significant'); printed in Table 4 without minus glyphs: Pooled OLS a = 0.03, b = 0.13, c = 0.14, d = 0.13 (all non-significant); FE e = 0.21* (i.e. -0.21*); RE f = 0.11 (non-significant), RE g = 0.18** (-0.18**), RE h = 0.20** (-0.20**), RE i = 0.20** (-0.20**). Also significant in RE Tobit Table 8 g1-i1 (-0.13* to -0.16**) and RE Table 9 h2-i2 (-0.17** to -0.20***).",
+        "exposure_and_reference": "Non Revenue Water (NRW, % of net water supplied that is not sold, reflecting pipe technical losses/poor maintenance, legal free water, and illegal connections; higher values = worse maintenance / higher unbilled water).",
+        "finding_label": "Utility Non Revenue Water (%) maintenance/billing loss indicator (Tables 4, 8, 9)",
+        "outcome_and_polarity": "Three-year difference in water coverage (% points from t to t+3; higher values = BETTER household water access expansion).",
+        "raw_sign": "negative",
+        "table_or_page": "Table 4 (PDF p. 7), Table 8 (PDF p. 13), Table 9 (PDF p. 14)"
+      },
+      {
+        "access_valence": "ambiguous_orientation",
+        "exact_estimate": "Table 9 model h4 (PDF p. 14, RE, N = 225, 72 utilities): National utility = 12.85** and Regional utility = 2.41 (non-significant), relative to Municipal utility (omitted reference row 18). Note: Because Unicode minus signs were stripped across all extracted tables in this PDF and the prose (PDF p. 13) does not state the direction of the National utility coefficient, whether 12.85** is +12.85** or -12.85** cannot be verified from the extracted text without guessing.",
+        "exposure_and_reference": "Utility territorial/governance typology dummies: National utility and Regional/state utility vs. Municipal utility (reference category).",
+        "finding_label": "Utility administrative governance level: National and Regional vs. Municipal utility (Table 9, model h4)",
+        "outcome_and_polarity": "Three-year difference in water coverage (% points from t to t+3; higher values = BETTER household water access expansion).",
+        "raw_sign": "non_directional",
+        "table_or_page": "Table 9, model h4 (PDF p. 14)"
+      }
+    ],
+    "headline_direction_for_household_access": "mixed",
+    "headline_raw_sign": "mixed",
+    "headline_result_summary": "Across an unbalanced panel of 75 urban/peri-urban water utilities in 25 Sub-Saharan African countries (1996–2012; N = 225–235 utility-years), utility O&M cost recovery exhibits a statistically significant inverted-U (quadratic) relationship with 3-year growth in household/public-point water coverage across all pooled OLS, fixed-effects, random-effects, and Tobit specifications. Moderate cost recovery up to an estimated turning point of 1.11–1.20 in panel FE/RE models (1.22–1.33 in pooled OLS) increases subsequent water coverage, whereas higher capital-cost-recovery levels (such as standard regulatory benchmarks of 1.3–2.0) reduce coverage gains and—above approximately 1.47 at sample means—lead to absolute declines in water coverage; meanwhile, on-budget public fiscal expenditure for water consistently and significantly increases water coverage growth, whereas ODA has largely null effects in panel random-effects models.",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. NONLINEAR INVERTED-U RELATIONSHIP: Coding only the positive linear term on O&M cost recovery (+23.63** to +36.04***) as uniformly 'favorable to access' would misrepresent the paper's core thesis and empirical finding, which pairs that linear term with a significant negative quadratic term (-10.67** to -14.31***) showing that high cost-recovery targets (>1.11–1.20, and absolute coverage losses >1.47) harm water coverage expansion. Conversely, unrestricted linear models keeping ~20 outlier observations with cr > 2.0 yield a negative linear slope (Note 13, p. 10), and the unadjusted bivariate correlation is null (0.07, Table 6). 2. STRIPPED UNICODE MINUS SIGNS IN PDF TEXT EXTRACTION: Every negative sign (U+2212) in the extracted tables and equations (Tables 4, 5, 6, 8, 9; Eq. 3) was dropped by the PDF text layer (e.g., Initial water coverage, Squared O&M cost recovery, Non Revenue Water, and Min coverage change -81 appear without '-' signs). For all main variables, exact signs are explicitly confirmed by the prose text (pp. 6–8) and the reported turning points Maximum cr = -b/(2a) (e.g., 28.32 / (2 * 12.32) = 1.15 in model h); however, for control dummies never discussed directionally in prose (such as National utility = 12.85** in Table 9 model h4), the sign should not be guessed. 3. INVERTED SIGNIFICANCE-STAR FOOTNOTE IN TABLE 4: The note to Table 4 (p. 7) prints '*, ** and *** stand for 1%, 5%, and 10% significance level, respectively'—a typographical reversal by the authors; the prose (pp. 6–7) and F/chi-squared statistics confirm standard convention where *** = 1% ('strongly significant') and * = 10% ('only marginally significant' for ODA = 3.61*). 4. OUTCOME DEFINITION: Water coverage follows IBNET/MDG binary access within the utility's service area (combining direct household piped connections and public water points) and does not separate household connections from public taps or measure supply continuity/affordability directly.",
+    "study_design": "Observational unbalanced utility-level panel econometric study using lagged explanatory variables (3-year forward change in water coverage from t to t+3 regressed on covariates at t) estimated via Pooled OLS, Utility Fixed Effects, Random Effects, and Random-Effects Panel Tobit (1996–2009 base years with outcomes through 2012).",
+    "study_id": "S1062",
+    "unit_and_sample_size": "Urban and peri-urban water utilities in Sub-Saharan Africa: N = 235 utility-year observations across 75 utilities (25 countries) in models without public expenditure (Table 4 models a, e, f), and N = 225 utility-year observations across 72 utilities (22 countries) in models including public expenditure (Table 4 models b, c, d, g, h, i), restricted to O&M cost recovery <= 2.0 (robustness samples: N = 234 and N = 224 in Tobit outlier models [Table 8]; N = 221 across 69 utilities excluding 3 South African District Municipalities [Table 9 model h5]; nearly half of utilities are in Nigeria [18 utilities, 34 obs], Zambia [10 utilities, 75 obs], and South Africa [8 utilities, 20 obs])."
+  }
+}

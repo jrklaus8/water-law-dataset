@@ -1,0 +1,245 @@
+{
+  "study_id": "S037",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "06fb6783ffcab2e0e1064f5acfd8917477b3612fa3b280a8cfacd7932e9b8bce",
+  "input_text_sha256": "1db67f84dcacee009c21e71be64338a46d82e5380bc873cfa296734e2d5e6cfe",
+  "prompt_sha256": "af6fa62b74239db963004ed7424d026b5329125c8f3d87d02abdbd096e346481",
+  "started_at": "2026-11-18T22:23:38.963604+00:00",
+  "completed_at": "2026-11-18T22:25:52.451990+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S037\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S037\n- Record ID: R6092FE0E5919\n- Citation: Espinoza V, Viers JH (2024). The paradox of production: Surface water supply drives agricultural productivity but not prosperity in California's San Joaquin Valley. PLOS Water 3(6): e0000192.\n- DOI: 10.1371/journal.pwat.0000192\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: 1db67f84dcacee009c21e71be64338a46d82e5380bc873cfa296734e2d5e6cfe) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=71441, sha256=1db67f84dcacee009c21e71be64338a46d82e5380bc873cfa296734e2d5e6cfe]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 8, Section 2.2",
+        "quote": "agencies in the San Joaquin Valley floor (Fig 2, shaded grey) that distribute water for irrigation"
+      },
+      {
+        "page": "PDF Page 9, Section 2.4",
+        "quote": "between the two groups is used to derive the p-value (α = 0.05)."
+      },
+      {
+        "page": "PDF Page 13, Section 3.3",
+        "quote": "this paper compares DACs within irrigation district boundaries (n = 97),"
+      },
+      {
+        "page": "PDF Page 14, Section 3.3",
+        "quote": "as irrigation districts, do not have better socioeconomic and environmental conditions than"
+      },
+      {
+        "page": "PDF Page 17, Section 4",
+        "quote": "reveals that DACs within local government jurisdictions are not significantly better off than"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "null",
+        "exact_estimate": "Unadjusted group means (CalEnviroScreen 4.0 percentile): ID-DAC mean = 83% (n = 97) vs. GDC mean = 79% (n = 56); unpaired two-sample Wilcoxon test p = 0.1363 (alpha = 0.05; total N = 153 DACs; Table 1, PDF Page 13).",
+        "exposure_and_reference": "Disadvantaged communities located within agricultural irrigation district boundaries (ID-DAC, n = 97) vs. disadvantaged communities outside irrigation district boundaries in groundwater-dependent communities (GDC, n = 56).",
+        "finding_label": "Primary community drinking-water outcome: Poor Drinking Water Exposure (%)",
+        "outcome_and_polarity": "Poor Drinking Water Exposure (%) from CalEnviroScreen 4.0 (percentile indicator; HIGHER numerical values mean WORSE household drinking water quality / greater exposure to drinking water contaminants).",
+        "raw_sign": "null",
+        "table_or_page": "Table 1, PDF Page 13 (and Section 3.3, PDF Pages 13-14)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Unadjusted group means (CalEnviroScreen 4.0 percentile): ID-DAC mean = 56% (n = 97) vs. GDC mean = 55% (n = 56); unpaired two-sample Wilcoxon test p = 0.829 (alpha = 0.05; total N = 153 DACs; Table 1, PDF Page 13).",
+        "exposure_and_reference": "Disadvantaged communities located within agricultural irrigation district boundaries (ID-DAC, n = 97) vs. disadvantaged communities outside irrigation district boundaries in groundwater-dependent communities (GDC, n = 56).",
+        "finding_label": "Secondary community water-resource hazard outcome: Threats to Groundwater (%)",
+        "outcome_and_polarity": "Threats to Groundwater (%) from CalEnviroScreen 4.0 (percentile indicator; HIGHER numerical values mean WORSE groundwater hazard / quality threats).",
+        "raw_sign": "null",
+        "table_or_page": "Table 1, PDF Page 13"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Overall DAC Vulnerability (%): ID-DAC mean = 83% vs. GDC mean = 81%, Wilcoxon p = 0.3147; Poverty (%): ID-DAC mean = 83% vs. GDC mean = 84%, p = 0.1166; Median Household Income (2018): ID-DAC mean = $34,276 vs. GDC mean = $36,450, p = 0.7893 (n = 97 ID-DACs, n = 56 GDCs; Table 1, PDF Page 13).",
+        "exposure_and_reference": "Disadvantaged communities located within agricultural irrigation district boundaries (ID-DAC, n = 97) vs. disadvantaged communities outside irrigation district boundaries in groundwater-dependent communities (GDC, n = 56).",
+        "finding_label": "Composite community socioeconomic/vulnerability outcomes: Overall DAC Vulnerability, Poverty, and Household Income",
+        "outcome_and_polarity": "Overall DAC Vulnerability (%) and Poverty (%) (HIGHER = WORSE vulnerability/poverty); Median Household Income in 2018 USD (HIGHER = BETTER socioeconomic status). All non-water socioeconomic comparisons are null.",
+        "raw_sign": "null",
+        "table_or_page": "Table 1, PDF Page 13"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Pollution Exposure (%): ID-DAC mean = 81% vs. GDC mean = 74%, Wilcoxon p = 0.005413; Pesticide Exposure (%): ID-DAC mean = 83% vs. GDC mean = 77%, p = 0.00965; PM2.5 Exposure (%): ID-DAC mean = 92% vs. GDC mean = 92%, p = 0.03291 (n = 97 ID-DACs, n = 56 GDCs; Table 1, PDF Page 13).",
+        "exposure_and_reference": "Disadvantaged communities located within agricultural irrigation district boundaries (ID-DAC, n = 97) vs. disadvantaged communities outside irrigation district boundaries in groundwater-dependent communities (GDC, n = 56).",
+        "finding_label": "Non-water environmental pollution burdens in DACs: Pollution, Pesticide, and PM2.5 Exposure",
+        "outcome_and_polarity": "CalEnviroScreen 4.0 Pollution Exposure (%), Pesticide Exposure (%), and PM2.5 Exposure (%) percentiles (HIGHER numerical values mean WORSE environmental/air/pesticide pollution burden; non-water outcomes).",
+        "raw_sign": "positive",
+        "table_or_page": "Table 1, PDF Page 13"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Descriptive geospatial/cluster statistics (no p-values reported in main text): 60% of irrigation districts with pre-1914 senior water rights have surface water allocations equal to twice crop water demand (up to 3x on eastern side), whereas 86% of all San Joaquin Valley irrigation districts rely on groundwater for irrigation and 12% rely exclusively on groundwater. In cluster analysis, Senior, Secure Nut Growers (SSN, n = 7 older districts) have 31 to 50 ML/Ha surface water allocations and 30% groundwater reliance (vs. 81% in FCC [n = 27], 93% in SCG [n = 14], 100% in CCB, and heavy reliance in GDV), yet DACs inside SSN still average an 86% CalEnviroScreen vulnerability percentile (PDF Pages 1, 11, 14-16).",
+        "exposure_and_reference": "Older irrigation districts formed in the Era of Local Organization (1887-1913) with senior pre-1914 surface water rights vs. younger irrigation districts formed post-1914 (Hydraulic Era 1914-1968, Era of Conflict 1969-2000, Era of Reconciliation 2001-2020) with junior or no surface water rights.",
+        "finding_label": "Agricultural irrigation supply outcome: Surface water allocations and agricultural groundwater dependence across water-rights eras/clusters",
+        "outcome_and_polarity": "Agricultural irrigation district surface water allocation/delivery (ML/Ha; HIGHER = greater agricultural irrigation water supply) and agricultural groundwater dependence (%; LOWER = greater agricultural surface-water security). Explicitly excludes domestic and municipal drinking-water agencies.",
+        "raw_sign": "positive",
+        "table_or_page": "Abstract (PDF Page 1), Sections 3.1-3.2 (PDF Pages 10-12), and Section 3.4 / Fig 5 (PDF Pages 14-16)"
+      }
+    ],
+    "headline_direction_for_household_access": "null",
+    "headline_raw_sign": "null",
+    "headline_result_summary": "In an observational geospatial and cross-sectional comparison of 153 Disadvantaged Communities (DACs) on California's San Joaquin Valley floor, communities located within agricultural irrigation district jurisdictions (ID-DACs, n = 97) do not have better household drinking-water or groundwater conditions than groundwater-dependent communities outside irrigation district boundaries (GDCs, n = 56): unpaired two-sample Wilcoxon tests on CalEnviroScreen 4.0 percentiles find null differences for Poor Drinking Water Exposure (mean 83% in ID-DACs vs. 79% in GDCs, p = 0.1363) and Threats to Groundwater (mean 56% vs. 55%, p = 0.829), while ID-DACs experience significantly worse non-water Pollution Exposure (81% vs. 74%, p = 0.005413) and Pesticide Exposure (83% vs. 77%, p = 0.00965). Separately, descriptive water-budget and cluster analyses of agricultural irrigation districts (explicitly excluding domestic and municipal water agencies) show that older districts with pre-1914 senior water rights hold far larger agricultural surface-water allocations (60% hold twice their crop water demand) and lower agricultural groundwater reliance than post-1914 junior districts, but this agricultural water wealth does not translate into better drinking-water access or lower vulnerability for resident DACs.",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "Four major coding traps exist in this paper: (1) Outcome polarity inversion in Table 1: 'Poor Drinking Water Exposure (%)' and 'Threats to Groundwater (%)' are CalEnviroScreen hazard/exposure percentiles where HIGHER numbers mean WORSE water quality/greater contamination risk, NOT better access; ID-DACs have numerically slightly higher (worse) poor drinking water exposure than GDCs (83% vs. 79%), though statistically non-significant. (2) Over-interpreting non-significant differences: both water-related community indicators in Table 1 are null at alpha = 0.05 (p = 0.1363 and p = 0.829). (3) Conflating agricultural irrigation surface-water allocations with household water access: Section 2.2 explicitly states that the district-level analysis excludes domestic and municipal water agencies and studies only agricultural irrigation supply; the paper's central 'paradox of production' finding is precisely that senior pre-1914 agricultural surface-water rights increase farm irrigation supply without improving community drinking water or vulnerability (DACs in the 'Senior, Secure Nut Growers' cluster still average an 86% CalEnviroScreen vulnerability percentile). (4) Mistaking statistically significant non-water rows in Table 1 (Pollution Exposure p = 0.005413, Pesticide Exposure p = 0.00965, PM2.5 Exposure p = 0.03291, or Population p = 0.003456) for household water-service outcomes.",
+    "study_design": "Cross-sectional geospatial, water-budget, cluster, and two-group observational comparison (unpaired two-sample Wilcoxon rank-sum tests for DAC indicators; descriptive historical-era and k-cluster analyses for irrigation districts).",
+    "study_id": "S037",
+    "unit_and_sample_size": "Community-level comparison: N = 153 Disadvantaged Communities (DAC census places matched to CalEnviroScreen 4.0 census-tract indicators) on the San Joaquin Valley floor, comprising n = 97 DACs inside irrigation district boundaries (ID-DACs) and n = 56 DACs outside irrigation district boundaries in groundwater-dependent communities (GDCs). District-level agricultural water-budget/cluster analysis: irrigation districts across the 8 San Joaquin Valley counties (excluding water conservation, domestic, and municipal water agencies; exact total district count not summed in main text, partial cluster counts reported: SCG = 14, FCC = 27, SSN = 7, plus GDV and CCB)."
+  }
+}

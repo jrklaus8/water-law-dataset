@@ -1,0 +1,144 @@
+{
+  "study_id": "S057",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "a54d0acd82030e0dcd479423cdd279f266e5496c6603b42277420734d6b8f22a",
+  "input_text_sha256": "f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193",
+  "prompt_sha256": "40805f08e2b99036a08e5f576c61bc835c149f909b7616ae96c5b049e65bc77b",
+  "started_at": "2026-11-18T22:53:40.614675+00:00",
+  "completed_at": "2026-11-18T22:54:56.620790+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S057\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S057\",\n  \"record_id\": \"R29C42DF9EAF6\",\n  \"confidence\": \"high\",\n  \"country\": \"Cambodia\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF Page 1 (Abstract)\",\n      \"quote\": \"In a randomized controlled trial, offering subsidies increased the likelihood of successful sales conversions\"\n    },\n    {\n      \"page\": \"PDF Page 1 (Highlights)\",\n      \"quote\": \"The sales closing rate among eligible households in treatment areas was 38% compared to 6% among ineligible treatment households.\"\n    },\n    {\n      \"page\": \"PDF Page 6 (Results)\",\n      \"quote\": \"Among subsidy-qualifying households, offering subsidies increased the village-level latrine purchase rate by 32% (p ¼ 0.00).\"\n    },\n    {\n      \"page\": \"PDF Page 8 (Discussion)\",\n      \"quote\": \"Offering targeted subsidies signiﬁcantly increases the likelihood of a household purchasing a latrine.\"\n    },\n    {\n      \"page\": \"PDF Page 8 (Limitations)\",\n      \"quote\": \"The latrine sales described here refer to orders, not installations.\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Marginal probability = +0.313*** (p = 0.00; 99% confidence level; stated in text as 31 percentage points, p = 0.00); SEs clustered at village level across 30 villages (2,821 unique household sales presentations). Raw closing rate in treatment areas: 38% among subsidy-offered eligible households vs. 6% among ineligible households (p = 0.00).\",\n      \"exposure_and_reference\": \"Household in Treatment village & Eligible / Received 50% latrine price subsidy offer (Yes) vs. Base group: Control village & Not eligible / Received subsidy (No)\",\n      \"finding_label\": \"Primary household-level logistic regression: predicted probability of latrine purchase for subsidy-offered eligible households\",\n      \"outcome_and_polarity\": \"Household latrine purchase (binary indicator of ordering an Easy Latrine or Sky Latrine during sales presentation; higher values = BETTER household sanitation access/uptake)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 1, PDF Page 6\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Treatment & Not eligible (no subsidy): marginal probability = +0.0056 (p = 0.860) vs. Control & Not eligible (Base). Control & Eligible (no subsidy): marginal probability = +0.0132 (p = 0.416) vs. Control & Not eligible (Base). Descriptive purchase rates in control areas: 8% eligible vs. 6% ineligible (p = 0.32); in treatment areas: 6% ineligible. Only 3 of 2,352 non-purchasing households reported waiting on a subsidy.\",\n      \"exposure_and_reference\": \"(a) Treatment village & Not eligible (no subsidy) vs. Control village & Not eligible (Base); and (b) Control village & Eligible (no subsidy, retail price only) vs. Control village & Not eligible (Base)\",\n      \"finding_label\": \"Household-level logistic regression: non-eligible spillover / market distortion check and unsubsidized eligible comparison\",\n      \"outcome_and_polarity\": \"Household latrine purchase (binary indicator of ordering a latrine; higher values = BETTER household sanitation access/uptake)\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 1, PDF Page 6; text on PDF Pages 6-7\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Village-level OLS treatment effect = +23 percentage points higher village-level sales closing rate in treatment vs. control villages (p = 0.00, controlling for village-level climate vulnerability status; N = 30 villages; full table in Supporting Information Table 8). Across all household presentations, 22% led to a sale in treatment areas vs. 7% in control areas (p = 0.00), totaling 326 vs. 111 latrines ordered.\",\n      \"exposure_and_reference\": \"Village-level treatment assignment (50% targeted sanitation subsidies offered to eligible households, 15 villages) vs. Control villages (retail price only, no subsidies offered, 15 villages)\",\n      \"finding_label\": \"Primary village-level OLS regression: overall village latrine sales closing rate\",\n      \"outcome_and_polarity\": \"Village-level latrine sales closing / uptake rate across all approached households without a toilet (continuous proportion; higher values = BETTER community sanitation access/uptake)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"PDF Page 6 (referencing Supporting Information Table 8) and PDF Page 7\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"All subsidy-qualifying households: +32 percentage points increase in village-level latrine purchase rate (p = 0.00; printed as '32 percentage points' on p. 1 and '32% (p = 0.00)' on p. 6). PPI-qualifying (non-IDPoor) subgroup: +37 percentage points increase (p = 0.00). IDPoor-qualifying subgroup: +26 percentage points increase (printed as '26% increase', p = 0.03).\",\n      \"exposure_and_reference\": \"Village-level subsidy treatment offer vs. retail-price control among (a) all subsidy-qualifying households, (b) households qualifying via the Poverty Probability Index (PPI) with climate-adjusted thresholds, and (c) households qualifying via government IDPoor status\",\n      \"finding_label\": \"Village-level OLS regressions by target subgroup: all eligible, PPI-qualifying, and IDPoor-qualifying households\",\n      \"outcome_and_polarity\": \"Village-level latrine sales closing rate within each target subgroup (higher values = BETTER sanitation access/uptake among vulnerable households)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"PDF Page 1 (Abstract) and PDF Page 6\"\n    },\n    {\n      \"access_valence\": \"mixed\",\n      \"exact_estimate\": \"Household-level climate vulnerability moderation: among subsidy-offered households, the increase in purchase probability over baseline (ineligible control) was +10 percentage points larger for households reporting direct climate vulnerability in the past year (p = 0.00); among households not offered subsidies, direct household climate vulnerability had no statistically significant effect. Community-level CVI moderation: village-level interaction regressions showed the impact of offering subsidies was comparable regardless of community climate vulnerability (CVI) status (no significant difference).\",\n      \"exposure_and_reference\": \"Subsidy offer interacted with / stratified by (a) household-level direct climate shock in past year and (b) commune-level Climate Vulnerability Index (CVI) status\",\n      \"finding_label\": \"Climate-vulnerability heterogeneity at household and community levels\",\n      \"outcome_and_polarity\": \"Household predicted probability of latrine purchase and village-level latrine sales closing rate (higher values = BETTER sanitation access/uptake)\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"PDF Pages 6-7\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"favorable_to_access\",\n  \"headline_raw_sign\": \"positive\",\n  \"headline_result_summary\": \"In a 30-village cluster-randomized controlled trial (2,821 unique household sales presentations) in rural Kampong Chhnang province, Cambodia, offering targeted 50% price subsidies (using government IDPoor status plus Poverty Probability Index thresholds adjusted for household and community climate vulnerability) substantially and significantly increased purchases of durable/climate-resilient latrines. Being offered a subsidy increased an eligible household's predicted probability of purchasing a latrine by 31.3 percentage points relative to ineligible control households (Table 1: +0.313, p = 0.00; raw closing rate 38% among subsidy-offered treatment households vs. 6% among ineligible treatment households and 8% among unsubsidized eligible control households). At the village level, offering targeted subsidies increased the overall latrine sales closing rate by 23 percentage points (p = 0.00; 22% vs. 7% across all sales presentations) and increased the village-level purchase rate among subsidy-qualifying households by 32 percentage points (p = 0.00), including +37 percentage points among PPI-qualifying households (p = 0.00) and +26 percentage points among IDPoor households (p = 0.03). Purchase rates among ineligible households did not differ between treatment and control villages (+0.0056, p = 0.860), indicating no market distortion.\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. Percentage vs. percentage-point wording: The authors intermittently write '%' when reporting linear/marginal probability differences in percentage points (e.g., Highlights: 'by 31%', p. 6: 'by 32% (p = 0.00)' and '26% increase', whereas the Abstract and Table 1 text state '32 percentage points', '31 percentage points (0.313)', and '37 percentage points'). Coders must not misread '31%' or '32%' as relative risk increases—they are percentage-point increases (e.g., ~8% to ~38–40%). 2. Reference category in Table 1: In Table 1 (p. 6), the base category for the +0.313 marginal probability is 'Control / Not eligible', not 'Control / Eligible' (+0.0132, p = 0.416); comparing 'Treatment / Eligible' directly to 'Control / Eligible' yields roughly a 30 percentage-point difference (38% vs. 8% raw rates; 32 pp at the village level). 3. Orders vs. installations: As noted in Limitations (pp. 8–9), the outcome variable captures latrine purchase orders during sales presentations rather than verified physical installations (typical iDE order cancellation rates are 10–20% and were not tracked during the 7.5-month pilot). 4. Differential targeting across arms: Subsidy eligibility was higher in treatment villages (51–52%) than control villages (45%, p = 0.00), driven by a 5 percentage-point higher share of IDPoor households identified in treatment villages (p = 0.00) because village authorities helped sales agents locate poor households without toilets more actively when subsidies were available. 5. Supporting Information tables: Full regression tables for the village-level OLS models (e.g., Table 8) and baseline balance checks reside in the online Supporting Information rather than the main 10-page PDF, and Table 1 does not specify in its caption whether the printed marginal probabilities come from the unadjusted base logit or the climate-controlled logit described on p. 5.\",\n  \"study_design\": \"Cluster-randomized controlled trial (village-level random assignment stratified by commune climate vulnerability status) supplemented by 13 qualitative stakeholder interviews and programmatic cost-effectiveness analysis\",\n  \"unit_and_sample_size\": \"30 rural villages (15 treatment, 15 control; 23 designated climate-vulnerable [12 treatment, 11 control]) in Kampong Chhnang province, Tonle Sap Lake region; 2,821 unique household sales presentations to households without a toilet (after dropping 1,598 duplicate follow-up visits), yielding 437 latrine orders (326 treatment, 111 control) and 2,352 non-purchasing household responses; plus 13 qualitative interviews\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:25:52.494010+00:00\",\n  \"pdf_sha256\": \"a54d0acd82030e0dcd479423cdd279f266e5496c6603b42277420734d6b8f22a\",\n  \"input_sha256\": \"f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S057\",\n  \"author_year\": \"Kozole et al. (2023)\",\n  \"family\": \"A\",\n  \"exposure_short\": \"Random offer of a targeted sanitation subsidy to eligible households\",\n  \"comparator_short\": \"ineligible households / not offered\",\n  \"outcome_short\": \"latrine purchase (sales closing)\",\n  \"outcome_family\": \"economic_access\",\n  \"estimate_short\": \"+32 pp; 38% vs 6%\",\n  \"raw_coefficient_sign\": \"+\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = better\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"Offer of the targeted subsidy raised latrine purchase by 32 pp.\",\n  \"rob_tool\": \"RoB 2\",\n  \"rob_rating\": \"Some concerns\",\n  \"inclusion_decision_human_verified\": \"Y (confirmed S001-S200)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"positive (subsidy eligibility increases sanitation-product purchase)\",\n  \"exposure_full\": \"Random offer of a targeted sanitation subsidy to households determined eligible via the Poverty Probability Index for Cambodia and a climate-vulnerability threshold (service/subsidy eligibility mechanism).\",\n  \"comparator_full\": \"Eligible households not offered the subsidy / ineligible households in treatment areas (sales closing rate 6%).\",\n  \"estimate_full\": \"Subsidy offer increased likelihood of climate-resilient latrine purchase by 32 percentage points; sales closing rate 38% (eligible/treatment) vs 6% (ineligible/treatment).\",\n  \"ai_scope_check_2026-10-14\": \"\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46681, sha256=f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's Favourable direction coding is strongly supported across every quantitative specification in the 30-village cluster-RCT, including the village-level OLS effect among subsidy-qualifying households (+32 percentage points, p = 0.00; PDF pp. 1, 6), the overall village sales closing rate (+23 percentage points, p = 0.00; PDF p. 6) and the household-level logistic regression in Table 1 (+0.313 marginal probability, p = 0.00; PDF p. 6). However, Claude's extraction relies solely on the Abstract and Highlights (table: none), omitting printed p-values (p = 0.00) and conflating the experimental +32 percentage point treatment-versus-control regression effect among targeted households with the non-experimental within-treatment comparison of eligible versus ineligible households (38% vs. 6%, whereas unsubsidized eligible control households had an 8% closing rate; PDF p. 6). Claude's exposure_full description also omits government IDPoor registration, even though 56% of qualifying treatment households were eligible via IDPoor rather than the new PPI-climate threshold (+26 percentage points for IDPoor, p = 0.03 vs. +37 percentage points for PPI, p = 0.00; PDF p. 6). Two empirical limitations merit caution: overall subsidy eligibility was higher in treatment than control villages (52% vs. 45%, p = 0.00; PDF p. 7) because village leaders more actively helped sales agents locate IDPoor households when subsidies were available, and the outcome captures latrine purchase orders rather than verified physical installations, where iDE typically experiences 10-20% order cancellation rates (PDF pp. 8-9). Neither limitation threatens the substantive Favourable verdict, as the uptake gain (326 vs. 111 latrines ordered; 22% vs. 7% overall closing rate, p = 0.00; PDF pp. 6-7) far exceeds plausible cancellation or targeting differentials and shows no market distortion among ineligible households (+0.0056, p = 0.860; Table 1, PDF p. 6).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "for climate-resilient latrine products among targeted households by 32 percentage points, indicating effectiveness"
+      },
+      {
+        "page": "PDF Page 1 (Highlights)",
+        "quote": "The sales closing rate among eligible households in treatment areas was 38% compared to 6% among ineligible treatment households."
+      },
+      {
+        "page": "PDF Page 6 (Results)",
+        "quote": "Among subsidy-qualifying households, offering subsidies increased the village-level latrine purchase rate by 32% (p ¼ 0.00)."
+      },
+      {
+        "page": "PDF Page 8 (Limitations)",
+        "quote": "The latrine sales described here refer to orders, not installations. A percentage of all orders typically are not installed"
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "All stored numbers appear verbatim in the paper: +32 percentage points (PDF p. 1 Abstract; printed as '32% (p = 0.00)' on p. 6 for the village-level purchase rate among subsidy-qualifying households), 38% vs. 6% sales closing rate (PDF p. 1 Highlights and p. 6, p = 0.00), 30 villages (15 treatment, 15 control; 23 climate-vulnerable [12 treatment, 11 control]; PDF p. 4) and 2,821 unique sales presentations (PDF p. 4). Minor provenance defects: Claude recorded CI/SE/p as none and 'table: none; unadjusted', overlooking printed p = 0.00 values on p. 6, Table 1's household-level logistic marginal probability (+0.313***, p = 0.00) and the fact that 38% vs. 6% compares eligible vs. ineligible households within treatment villages whereas eligible control households had an 8% closing rate (p. 6).",
+    "polarity_or_orientation_issue": "None affecting direction: raw sign is positive (+), outcome polarity is unambiguously higher = better (purchasing a durable/climate-resilient household latrine among households without a toilet) and exposure orientation is as reported (random village-level offer of a 50% targeted sanitation subsidy). Note only that Claude's comparator blends experimental unoffered eligible control households (8% purchase rate) with non-experimental ineligible treatment households (6% purchase rate), though both comparisons yield virtually identical +30 to +32 percentage point effects.",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "fits_cleanly",
+    "specification_multiplicity_flag": false,
+    "study_id": "S057",
+    "substantive_direction_verdict": "supported"
+  }
+}
