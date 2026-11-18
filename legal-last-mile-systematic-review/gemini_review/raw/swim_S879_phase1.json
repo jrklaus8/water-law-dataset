@@ -1,0 +1,290 @@
+{
+  "study_id": "S879",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "224b5b12312100f200570c43a3f700e2ea0f424ce1a17084b6178c71a3838847",
+  "input_text_sha256": "6c6cd3816be1c7530187e4d9dd53c038b8df37d373a5982a8c3fd9d1c0f9753d",
+  "prompt_sha256": "dc4573183cbbfc893a3979197d69887bd678a22e242fd7fe0dcadf2144375cc3",
+  "started_at": "2026-11-18T22:40:01.065217+00:00",
+  "completed_at": "2026-11-18T22:42:31.617101+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S879\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S879\n- Record ID: R4D81D56EA98B\n- Citation: Coville A, Galiani S, Gertler P, Yoshida S (2025). Financing Municipal Water and Sanitation Services in Nairobi's Informal Settlements. Review of Economics and Statistics.\n- DOI: 10.1162/rest_a_01379\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: 6c6cd3816be1c7530187e4d9dd53c038b8df37d373a5982a8c3fd9d1c0f9753d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=124805, sha256=6c6cd3816be1c7530187e4d9dd53c038b8df37d373a5982a8c3fd9d1c0f9753d]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 2 (Abstract)",
+        "quote": "effect of the engagement, we find large effects of enforcement on payment."
+      },
+      {
+        "page": "PDF p. 2 (Abstract)",
+        "quote": "effect on access to water, perceptions of utility fairness or quality of service delivery"
+      },
+      {
+        "page": "PDF p. 19 (Section 8.2)",
+        "quote": "The likelihood of payment within one month almost quadruples - increasing by 30 percentage points from 11"
+      },
+      {
+        "page": "PDF p. 20 (Section 8.5)",
+        "quote": "the enforcement intervention have statistically indistinguishable piped water and sanitation"
+      },
+      {
+        "page": "PDF p. 21 (Section 8.5)",
+        "quote": "Overall, nine months after the interventions, access to water and sanitation"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "null",
+        "exact_estimate": "ITT coefficient = -0.036 (SE = 0.024, p = 0.135), Control mean = 0.916, N = 600 compounds (settlement fixed effects, street-clustered SEs; Table 7, PDF p. 37).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (targeted, transparent disconnection notices with 14-day payment/hardship-appeal window and follow-through disconnection) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on compound piped water connection (9-month endline)",
+        "outcome_and_polarity": "Compound has a piped water connection (binary indicator, 0-1; higher values = BETTER household water access).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7, PDF p. 37 (and Section 8.5, PDF p. 20)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "ITT coefficient = -0.033 (SE = 0.041, p = 0.423), Control mean = 0.573, N = 591 compounds (Table 7, PDF p. 37).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (disconnection notices and enforcement) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on working piped water connection (9-month endline)",
+        "outcome_and_polarity": "Compound has a working piped water connection (binary indicator, 0-1; higher values = BETTER household water access and functionality).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7, PDF p. 37 (and Section 8.5, PDF p. 20)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "ITT coefficient = -0.014 (SE = 0.019, p = 0.471), Control mean = 0.942, N = 608 compounds (Table 7, PDF p. 37).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (disconnection notices and enforcement) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on pour-flush sanitation connection (9-month endline)",
+        "outcome_and_polarity": "Main toilet facility is a pour-flush system in the compound (binary indicator, 0-1; higher values = BETTER sanitation access).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7, PDF p. 37"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Table 7: ITT coefficient = 0.040 (SE = 0.037, p = 0.286), Control mean = 0.306, N = 589 compounds (note: prose on PDF p. 20 states 4.4 percentage points higher, p = 0.243).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (disconnection notices and enforcement) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on piped water to compound as main water source (9-month endline)",
+        "outcome_and_polarity": "Main source of water is piped water to compound (binary indicator, 0-1; higher values = BETTER household water access).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7, PDF p. 37 (and Section 8.5, PDF p. 20)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Piped water consumption (meter reading): ITT = 2.583 (SE = 20.684, p = 0.901), Control mean = 169.554, N = 474; Time spent fetching water in a week (minutes): ITT = -17.569 (SE = 21.682, p = 0.418), Control mean = 118.187, N = 601 (prose p. 21 cites Control 118 min vs. Treatment 100 min, p = 0.388); Somewhat or very satisfied with main water source: ITT = 0.004 (SE = 0.040, p = 0.924), Control mean = 0.443, N = 608 (Table 7, PDF p. 37).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (disconnection notices and enforcement) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on water consumption, water-fetching time, and water-source satisfaction (9-month endline)",
+        "outcome_and_polarity": "Compound metered piped water consumption (higher = more water use), weekly minutes spent fetching water (higher = WORSE access/higher time burden), and satisfaction with main water source (higher = BETTER perceived water service).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7, PDF p. 37 (and Section 8.5, PDF pp. 20-21)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Household water spending last month (US$): ITT = 0.664 (SE = 1.005, p = 0.509), Control mean = 6.617, N = 334 in Table 7 (prose p. 20-21 cites Control $6.62 vs. Treatment $6.86, p = 0.803). Average monthly rent paid by tenants (water included in 93% of rents, US$): ITT = -1.845 (SE = 2.576, p = 0.474), Control mean = 33.011, N = 395; Property owner increased rent in last 6 months: ITT = 0.036* (SE = 0.021, p = 0.091), Control mean = 0.018, N = 371 (Table 8). Perceived fee affordability: owner ITT = -0.007 (p = 0.863, Control mean = 0.603, N = 536, Table A1); tenant ITT = -0.034 (p = 0.597, Control mean = 0.669, N = 269, Table A2).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (disconnection notices and enforcement) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on household water expenditure, tenant rent pass-through, and perceived affordability (9-month endline)",
+        "outcome_and_polarity": "Monthly household water expenditure in US$ and tenant monthly rent in US$ (higher = WORSE affordability / higher household cost), recent rent increase indicator (higher = WORSE affordability), and perceived fee affordability (higher = BETTER affordability).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7 (PDF p. 37), Table 8 (PDF p. 38), Table A1 (PDF p. 49), Table A2 (PDF p. 50)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Property owner service quality index: ITT = -0.016 SD (SE = 0.079, p = 0.840, N = 589); Tenant service quality index: ITT = 0.086 SD (SE = 0.101, p = 0.395, N = 402); Property owner fairness index: ITT = 0.070 SD (SE = 0.084, p = 0.404, N = 570); Tenant fairness index: ITT = 0.030 SD (SE = 0.107, p = 0.779, N = 357) (Table 7, PDF p. 37).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (disconnection notices and enforcement) vs. disconnection-eligible control compounds exempted from enforcement within treatment clusters.",
+        "finding_label": "Contract enforcement impact on owner and tenant perceptions of service delivery quality and fairness (9-month endline)",
+        "outcome_and_polarity": "Standardized Anderson (2008) indices of perceived utility service delivery quality and fairness (SD units normalized to control mean 0; higher = BETTER perceived quality/fairness).",
+        "raw_sign": "null",
+        "table_or_page": "Table 7, PDF p. 37"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Made >=1 payment: 1-month ITT = 0.300*** (SE = 0.039, p = 0.000, Control mean = 0.110); 9-month ITT = 0.195*** (SE = 0.043, p = 0.000, Control mean = 0.334). Total amount paid (US$): 1-month ITT = 8.783*** (SE = 1.714, p = 0.000, Control mean = 5.026); 9-month ITT = 9.078** (SE = 4.154, p = 0.031, Control mean = 24.722). Proportion of balance paid: 1-month ITT = 0.113*** (SE = 0.025, p = 0.000, Control mean = 0.268); 9-month ITT = 0.078*** (SE = 0.027, p = 0.005, Control mean = 0.300). All models: N = 1,001 compounds across 142 street clusters, settlement fixed effects, street-clustered SEs (Table 5, PDF p. 35). Spillovers on untreated compounds in treatment clusters are null across all 6 columns (e.g., 1-month payment ITT = 0.010, SE = 0.023, p = 0.681, N = 996, Table 6 Panel A, PDF p. 36).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment (327 disconnection-eligible compounds in 73 treatment street clusters) vs. pure control disconnection-eligible compounds (674 compounds in 74 control street clusters).",
+        "finding_label": "Contract enforcement impact on utility revenue collection and loan/bill repayment (1 and 9 months, administrative data)",
+        "outcome_and_polarity": "Property owner payment of utility water/sewer consumption and connection-loan charges (made >=1 payment, total US$ paid, proportion of balance paid; higher = HIGHER utility revenue collection / customer financial compliance, an indirect institutional-finance outcome rather than direct household water access).",
+        "raw_sign": "positive",
+        "table_or_page": "Table 5, PDF p. 35 (and Table 6, PDF p. 36)"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Made >=1 payment: 1-month ITT = -0.005 (SE = 0.018, p = 0.776, Control mean = 0.301); 9-month ITT = -0.002 (SE = 0.019, p = 0.928, Control mean = 0.558). Total amount paid (US$): 1-month ITT = 0.049 (SE = 0.642, p = 0.939, Control mean = 6.958); 9-month ITT = -0.575 (SE = 2.011, p = 0.775, Control mean = 38.343). Proportion of balance paid: 1-month ITT = 0.013 (SE = 0.017, p = 0.436, Control mean = 0.497); 9-month ITT = 0.008 (SE = 0.015, p = 0.616, Control mean = 0.484). All models: N = 2,584 compounds, settlement fixed effects, robust SEs (Table 4, PDF p. 35).",
+        "exposure_and_reference": "Individually randomized face-to-face tenant engagement by utility outreach staff to encourage bottom-up pressure on property owners to pay bills (1,292 assigned; 885 treated) vs. control compounds with tenants receiving only the base awareness campaign (1,292 compounds).",
+        "finding_label": "Tenant face-to-face engagement impact on utility bill/loan payment (1 and 9 months, administrative data)",
+        "outcome_and_polarity": "Property owner payment of utility water/sewer consumption and connection-loan charges (higher = HIGHER utility revenue collection; direct household water access was not surveyed for the engagement experiment).",
+        "raw_sign": "null",
+        "table_or_page": "Table 4, PDF p. 35"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Does compound have rental dwellings: ITT = 0.135*** (SE = 0.038, p = 0.000, Control mean = 0.589, N = 568); Total rent from compound last month (US$): ITT = 23.880** (SE = 10.127, p = 0.019, Control mean = 62.575, N = 525); Number of rental units in compound: ITT = 0.381 (SE = 0.377, p = 0.312, Control mean = 3.290, N = 566); Paying tenants moved out in last 6 months: ITT = -0.059 (SE = 0.053, p = 0.264, Control mean = 0.697, N = 364) (Table 8, PDF p. 38).",
+        "exposure_and_reference": "Randomized contract enforcement for nonpayment vs. disconnection-eligible control compounds within treatment clusters.",
+        "finding_label": "Contract enforcement impact on landlord rental space supply and rental income (9-month endline)",
+        "outcome_and_polarity": "Compound rental activity and landlord monthly rental income (higher = MORE space rented out / higher property owner rental revenue to offset utility bill payments; indirect housing-market adjustment rather than water access).",
+        "raw_sign": "positive",
+        "table_or_page": "Table 8, PDF p. 38 (and Section 8.8, PDF p. 22)"
+      }
+    ],
+    "headline_direction_for_household_access": "null",
+    "headline_raw_sign": "null",
+    "headline_result_summary": "In two randomized field experiments conducted with Nairobi's municipal water and sanitation utility across informal settlements where compounds had received subsidized/loan-financed piped water and sewer connections, systematic contract enforcement for nonpayment (targeted, transparent disconnection notices with hardship-exemption appeals and follow-through disconnection) had no statistically significant effect on any measure of household water or sanitation access, functionality, consumption, quality, or affordability nine months after implementation (piped water connection: -0.036, p = 0.135; working piped connection: -0.033, p = 0.423; pour-flush toilet: -0.014, p = 0.471; piped water as main source: +0.040, p = 0.286; metered consumption: +2.583, p = 0.901; monthly water expenditure: +$0.664, p = 0.509; weekly water-fetching time: -17.569 minutes, p = 0.418; tenant monthly rent: -$1.845, p = 0.474; owner and tenant service quality and fairness indices: all p >= 0.395). Although 96 of 327 targeted compounds were temporarily disconnected during enforcement, most were quickly reconnected upon agreeing to a payment plan, and public kiosks/vendors provided alternative water during interruptions. On utility financial outcomes (an indirect/non-access outcome), contract enforcement sharply increased property owner bill/loan payment likelihood (+30.0 percentage points at 1 month, p < 0.001; +19.5 percentage points at 9 months, p < 0.001) and total payments (+$8.78 at 1 month, p < 0.001; +$9.08 at 9 months, p = 0.031) with zero spillover effects, and landlords offset higher effective fee payments by renting out space on the extensive margin (+13.5 percentage points, p < 0.001) rather than raising tenant rents. A separate individually randomized face-to-face tenant engagement intervention designed to spur bottom-up accountability had a precisely estimated null effect on all payment outcomes (-0.005 at 1 month, p = 0.776; -0.002 at 9 months, p = 0.928).",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Confusing utility revenue collection with household water/sanitation access: The headline positive treatment effects in Table 5 (+0.300***, p < 0.001 on making a payment; +$8.783*** on amount paid) measure utility bill and connection-loan repayment by property owners—not household water or sanitation access. Every direct household access, functionality, consumption, water expenditure, fetching-time, satisfaction, and tenant rent outcome in Tables 7 and 8 is statistically null at 9 months. 2. Misinterpreting disconnection enforcement polarity or non-significant point estimates: Over-interpreting negative point estimates on piped connection (-0.036, p = 0.135) or working connection (-0.033, p = 0.423) as adverse access effects—or over-interpreting +0.040 (p = 0.286) on piped water as main source as favorable—would miscode noise. Contextual nuance: 96 of 327 assigned compounds experienced short-run disconnections in Nov-Dec 2018, but almost all were rapidly reconnected after agreeing to flexible payment plans. 3. Different control groups across tables: Administrative payment ITT regressions (Table 5, N = 1,001) compare treated compounds in treatment clusters (327) to disconnection-eligible compounds in pure control clusters (674) per Equation (2), whereas 9-month endline survey regressions (Tables 7 and 8, N = 334 to 608) compare treated compounds to untreated disconnection-eligible control compounds within enforcement-treatment clusters (322), because pure control clusters were not surveyed at endline (Table 6 Panel A shows no payment spillovers onto within-cluster controls). 4. Minor discrepancies between prose and tables: Section 8.5 (pp. 20-21) cites piped water as main source +4.4 pp (p = 0.243), monthly water spending $6.86 vs. $6.62 (p = 0.803), and fetching time 100 vs. 118 min (p = 0.388), whereas Table 7 prints +0.040 (p = 0.286), +0.664 (p = 0.509), and -17.569 (p = 0.418); likewise Table 7 prints tenant psychological well-being = 0.139 (SE 0.105) vs. Table A6 = 0.077 (SE 0.104). All remain statistically null. 5. Multiple-testing / borderline-p traps and non-experimental tables: In Appendix Table A1, owner perception that 'The water bills are accurate' is +0.113** (p = 0.014), which the authors discount due to multiple testing across 20+ sub-indicators (the overall fairness index is null, p = 0.404). In Table 8, landlord rent increase in last 6 months is borderline (+0.036*, p = 0.091) while tenant rent paid is null (-$1.845, p = 0.474). Finally, the 2014-2018 69% connection subsidy + loan expansion (90% take-up, 137,000 people) is non-experimental background (the planned top-up subsidy RCT was dropped, Appendix A.1), and Table 3 (N = 4,175) reports cross-sectional correlates where receiving water last week predicts bill payment rather than evaluating a governance exposure on access.",
+    "study_design": "Two randomized controlled field experiments (RCTs): (1) an individually randomized trial of face-to-face tenant engagement stratified by informal settlement, and (2) a two-stage street-level cluster-randomized trial (stratified by settlement) of systematic contract enforcement via targeted, transparent disconnection notices and service disconnections for nonpayment, evaluated with administrative utility billing data (1 and 9 months post-intervention) and a 9-month endline survey of property owners and tenants (plus descriptive baseline OLS payment-correlate regressions).",
+    "study_id": "S879",
+    "unit_and_sample_size": "Multi-household residential compounds (utility customer accounts held by property owners) and residing property owners / randomly selected tenant households across Nairobi informal settlements. Engagement RCT (administrative data, Table 4): N = 2,584 compounds with tenants across 6 settlements (1,292 treatment [885 reached], 1,292 control). Contract Enforcement RCT — administrative billing ITT (Table 5): N = 1,001 disconnection-eligible compounds across 142 street clusters in 4 settlements (327 assigned to treatment in 73 treatment clusters [299 notices delivered, 96 disconnected] vs. 674 eligible compounds in 74 pure control clusters; drawn from 3,253 accounts in 147 street clusters); spillover samples (Table 6): N = 996 eligible compounds (144 clusters) and N = 1,930 ineligible compounds (143 clusters). Contract Enforcement RCT — 9-month follow-up survey within enforcement-treatment clusters (Tables 7-8): N = 334 to 608 compounds/owners/tenants (e.g., N = 600 for piped water connection, N = 591 for working connection, N = 608 for pour-flush toilet and water satisfaction, N = 474 for meter reading, N = 334 for water expenditure, N = 357-403 for tenant outcomes, N = 364-568 for rental market outcomes). Observational payment correlates (Table 3): N = 4,164 to 4,175 compounds."
+  }
+}

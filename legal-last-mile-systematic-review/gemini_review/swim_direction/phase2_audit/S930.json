@@ -1,0 +1,41 @@
+{
+  "study_id": "S930",
+  "record_id": "R7DF2A5059A76",
+  "family": "A",
+  "claude_raw_sign": "+",
+  "claude_substantive_direction": "Favourable",
+  "phase1_blind_raw_sign": "mixed",
+  "phase1_blind_access_direction": "mixed",
+  "adversarial_critique": "Table 4 (PDF p. 10, journal p. 89) evaluates two co-primary household WASH outcomes—water coverage and sewerage coverage—across four census periods and two functional forms (level change Δ and rate of change %Δ, 16 WASH specifications total, N = 564 matched municipalities: 418 treated, 146 control), creating substantial outcome and window multiplicity that makes a single-row SWiM direction genuinely defensible both ways. Household water coverage is statistically null in all 8 of 8 specifications (all |t| <= 0.894, including post-reform 1995–2005 Δ = .041, t = .836 and 2000–2010 Δ = .000, t = .006), and even within sewerage coverage, 5 of 8 specifications are statistically null (|t| <= 1.077), including the full 20-year 1990–2010 window (Δ = .04, t = .821; %Δ = .851, t = .285) and the 2000–2010 level change (Δ = .008, t = .371). Conversely, the immediate post-1995-reform decade (1995–2005) shows strongly positive, statistically significant sewerage gains in both levels (Δ = .086***, SE = .034, t = 2.55) and rate of change (%Δ = 9.05***, SE = 2.18, t = 4.15), alongside 2000–2010 sewerage rate of change (%Δ = 3.401***, SE = .871, t = 3.905), which substantiate Claude's Favourable coding for post-reform sanitation if chosen over the null water and full-period models, yet Claude left alternative_substantive_direction blank. In estimate_full, Claude also committed a clear table-reading error by reporting the 1990–2010 water level result as \"ATT = 0.027, p=0.595\", mistaking .595—which in Table 4 (PDF p. 10) is the t-statistic for the adjacent %Δ column (ATT = .17, SE = 0.285, t = .595)—for the p-value of the Δ column (ATT = .027, SE = 0.03, t = .893, two-sided p ≈ 0.37), while mislabelling the relative growth ratio 9.05 (%Δ) as a \"percentage-point ATT\" and not noting that t = 2.55 on .086*** corresponds to two-sided normal p ≈ 0.011 rather than < 0.01. Finally, while the Elsevier PDF text layer strips Unicode minus signs from negative table entries (demonstrated by Table 2 on PDF p. 8 and Table 5 on PDF p. 10), the prose on PDF p. 9 explicitly confirms the positive sign of the starred sewerage ATTs, and the dossier's automated author-mismatch flag is merely an artifact of the split acute accent in \"DI´AZ-CAYEROS\" on PDF p. 1.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "page": "PDF p. 1 (Summary, p. 80)",
+      "quote": "Using a ﬁrst-diﬀerences design we show that these municipalities increase access to electricity, sewerage, and education faster than"
+    },
+    {
+      "page": "PDF p. 9 (Section 5, p. 88)",
+      "quote": "The ATT are small and statistically non-signiﬁcant for the"
+    },
+    {
+      "page": "PDF p. 9 (Section 5, p. 88)",
+      "quote": "in the period immediate after the reform (1995–2005), and a"
+    },
+    {
+      "page": "PDF p. 10 (Table 4, p. 89)",
+      "quote": "Note: Cells report ATT, bootstrapped standard errors (B = 1000) and t-value, respectively."
+    }
+  ],
+  "numbers_match_paper": "partial_or_rounding_issue",
+  "numerical_check_note": "The primary extracted numbers in estimate_short and the dossier match Table 4 (PDF p. 10, journal p. 89): for 1995–2005 sewerage first-difference in levels (Δ), Table 4 prints ATT = .086 ***, bootstrapped SE = .034 (B = 1000), and t = 2.55 over N = 564 common-support municipalities (Treated = 418, Control = 146, out of n = 570 in Table 2 after dropping 6 non-usos observations outside [.027, .997]), and 1995–2005 sewerage rate of change (%Δ) prints ATT = 9.05 ***, SE = 2.18, t = 4.15. However, three numerical/unit discrepancies appear: (1) in estimate_full, Claude reports piped-water \"1990-2010 level ATT = 0.027, p=0.595\", but Table 4 cells stack ATT, SE, and t-value vertically—for Water 1990–2010 Δ (level), ATT = .027, SE = 0.03, and t = .893 (two-sided p ≈ 0.372), whereas .595 is the t-value from the adjacent 1990–2010 %Δ column (ATT = .17, SE = 0.285, t = .595); (2) Claude describes 9.05 as a \"9.05 percentage-point ATT in rate of change\", whereas .086 (8.6 percentage points on a 0–1 proportion scale) is the percentage-point level change and 9.05 is the relative rate of change conditional on initial baseline levels (PDF p. 9); and (3) although Table 4 prints *** (defined as .01) on .086***, the reported t-value of 2.55 (0.086 / 0.034 = 2.53) yields a two-sided normal p-value of ~0.0108 (p < 0.05, borderline 0.01).",
+  "polarity_or_orientation_issue": "None on the extracted specification itself: (1) raw_coefficient_sign (\"+\") is verified by prose on PDF p. 9 (\"strongly positive and very significant change in levels and rate of change in the period immediate after the reform (1995–2005)\"), which is essential to verify because the Elsevier PDF text layer strips minus signs from negative table entries (e.g., Table 2 Distance city and Income, and Table 5 female officeholding); (2) outcome_polarity (\"higher = better\") is unambiguous because Table 4 models changes (Δ) and rates of change (%Δ) in the percentage/share of municipal households with sewerage or water; and (3) exposure_orientation (\"as reported\": legally recognized usos y costumbres indigenous participatory governance = 1 vs. party-governed municipalities = 0) aligns cleanly with Oaxaca's 1995 constitutional recognition reform and Family A. The directional contestability comes from co-primary outcome and time-window multiplicity (Water 0/8 vs. Sewerage 3/8), not from sign, polarity, or orientation inversion.",
+  "raw_sign_assessment": "correct",
+  "scope_and_family_fit": "fits_cleanly",
+  "specification_multiplicity_flag": true,
+  "substantive_direction_verdict": "defensible_both_ways",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "phase1_completed_at": "2026-11-18T22:33:53.576766+00:00",
+  "run_at": "2026-11-18T23:03:13.035593+00:00",
+  "pdf_sha256": "6e66fd075330f6819daae220ed11363aef37e9d9d8ee8821ee4bad856a237995",
+  "input_sha256": "122e93018d26f424399478eeb655a907b8bbec824621eb06166d3b2fe0990c23"
+}

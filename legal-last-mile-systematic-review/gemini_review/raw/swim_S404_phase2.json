@@ -1,0 +1,144 @@
+{
+  "study_id": "S404",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "422900c3138ac65e25618308942fb52c85b4e8e1d6b672f33bef454b10cbed45",
+  "input_text_sha256": "0909ee5aefba30b2f0d3d6eff951f59b33b16ca95a24f87e037309d5b17a8dc5",
+  "prompt_sha256": "061bb5adf02b78e0e6890ea1a6897b6ab98197906d7f12a75c3b20d54bd926ae",
+  "started_at": "2026-11-18T22:56:10.000410+00:00",
+  "completed_at": "2026-11-18T22:57:54.098703+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S404\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S404\",\n  \"record_id\": \"R9B182B30D773\",\n  \"confidence\": \"high\",\n  \"country\": \"Kenya\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF Page 3\",\n      \"quote\": \"The Kenyan water policy framework recognizes WRUAs as the legal, grassroots collective action\"\n    },\n    {\n      \"page\": \"PDF Page 7\",\n      \"quote\": \"line to generate a water poverty dummy where Water poor = 1, and Water non-poor = 0.\"\n    },\n    {\n      \"page\": \"PDF Page 9\",\n      \"quote\": \"With regards to water, members have better access to both domestic and irrigation water,\"\n    },\n    {\n      \"page\": \"PDF Page 16\",\n      \"quote\": \"8%, income poor by about 47%, subjective poor by about 20% and water poor by about 14%.\"\n    },\n    {\n      \"page\": \"PDF Page 13\",\n      \"quote\": \"Holding a title deed had a positive influence on WRUA membership.\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"FIML Endogenous Switching Probit (ESP) model: ATT = -0.140*** (SE = 0.071; z = -1.97, p approx. 0.049 though starred *** by authors); ATU = -0.109*** (SE = 0.066; z = -1.65, p approx. 0.099 though starred *** by authors); N = 652 households (331 WRUA members, 321 non-members); adjusted for household/farm covariates and selection instruments (water conflict, MWS-river, MWS-borehole).\",\n      \"exposure_and_reference\": \"Household membership in a Water Resource Users Association (WRUA = 1) vs. non-membership (WRUA = 0)\",\n      \"finding_label\": \"Primary headline model (ESP ATT and ATU): WRUA membership on household water poverty\",\n      \"outcome_and_polarity\": \"Water poverty binary indicator (1 = water poor, falling below the 40th percentile of the polychoric PCA Water Poverty/Security Index; 0 = water non-poor). Higher values indicate WORSE household water access/security.\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 7, PDF Page 17 (text on PDF Pages 16-17)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"PSM nearest neighbor matching (4 neighbors) ATT = -0.323*** (SE = 0.044, p < 0.01); Inverse Probability Weighting (IPW) ATT = -0.303*** (SE = 0.038, p < 0.01); N = 652 households.\",\n      \"exposure_and_reference\": \"Household membership in a Water Resource Users Association (WRUA = 1) vs. non-membership (WRUA = 0)\",\n      \"finding_label\": \"Robustness treatment-effect models (PSM and IPW): WRUA membership on household water poverty\",\n      \"outcome_and_polarity\": \"Water poverty binary indicator (1 = water poor, <40th percentile of Water Security Index; 0 = water non-poor). Higher values indicate WORSE household water access/security.\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 7, PDF Page 17 (text on PDF Page 16)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Unadjusted two-sample comparisons (N = 652; 331 WRUA members vs. 321 non-members, where printed Mean difference = Non-members minus Members): Water poor: 23.36% (n = 77) vs. 52.34% (n = 168), diff = 0.291*** (t = 8.021); Piped water in compound: 0.828 vs. 0.215, diff = -0.613*** (t = -19.812); Time to domestic water source (minutes): 3.299 vs. 20.436, diff = 17.137*** (t = 12.038); Distance to domestic water source (km): 0.069 vs. 0.690, diff = 0.621*** (t = 11.392); Traditional latrine without roof: 0.060 vs. 0.106, diff = 0.044** (t = 2.111); Irrigation water access: 0.722 vs. 0.240, diff = -0.482*** (t = -14.039).\",\n      \"exposure_and_reference\": \"WRUA members (n = 331) vs. Non-members (n = 321), with difference column computed by authors as Non-members minus WRUA members\",\n      \"finding_label\": \"Unadjusted descriptive comparisons: WRUA membership and direct water/sanitation access indicators\",\n      \"outcome_and_polarity\": \"Multiple direct indicators: piped water in compound and irrigation water access (higher = BETTER access); water poverty, time to domestic water source, distance to domestic water source and unroofed traditional latrine (higher = WORSE access).\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 2, PDF Pages 10-11; Table 3, PDF Page 11\"\n    },\n    {\n      \"access_valence\": \"indirect_or_non_access_outcome\",\n      \"exact_estimate\": \"Consumption poverty: ESP ATT = -0.084*** (SE = 0.006), ESP ATU = -0.058*** (SE = 0.003), PSM ATT = -0.067** (SE = 0.032), IPW ATT = -0.051* (SE = 0.029). Income poverty: ESP ATT = -0.472*** (SE = 0.012), ESP ATU = -0.249*** (SE = 0.011), PSM ATT = -0.079** (SE = 0.039), IPW ATT = -0.102*** (SE = 0.032). Subjective poverty: ESP ATT = -0.197*** (SE = 0.008), ESP ATU = -0.116*** (SE = 0.006), PSM ATT = -0.095** (SE = 0.045), IPW ATT printed as 0.091** (SE = 0.039) in Table 7 (typo missing minus sign; text on PDF Page 16 states IPW reduced subjective poverty by about 9%).\",\n      \"exposure_and_reference\": \"Household membership in a Water Resource Users Association (WRUA = 1) vs. non-membership (WRUA = 0)\",\n      \"finding_label\": \"Non-water household welfare outcomes: WRUA membership on consumption, income and subjective poverty\",\n      \"outcome_and_polarity\": \"Binary indicators for consumption poverty (1 = <KES 39,024/adult equivalent/year), income poverty (1 = <KES 39,024/adult equivalent/year) and subjective Economic Ladder Question poverty (1 = bottom 2 of 6 rungs). Higher values indicate WORSE general welfare (not direct water service access).\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 7, PDF Page 17 (text on PDF Pages 16-17)\"\n    },\n    {\n      \"access_valence\": \"indirect_or_non_access_outcome\",\n      \"exact_estimate\": \"First-stage Probit participation equation: Title coefficient = 0.405*** (SE = 0.139, z = 2.91, p < 0.01), adjusted for age, experience, household composition, gender, education, land size, livestock, occupation, credit, extension, distance to tarmac, improved crops, firewood, electricity, water conflict, MWS-River and MWS-Borehole (N = 652).\",\n      \"exposure_and_reference\": \"Holding a land title deed (Title = 1 vs. 0)\",\n      \"finding_label\": \"Secondary legal covariate (First-stage selection model): Land title deed on WRUA membership\",\n      \"outcome_and_polarity\": \"WRUA membership (1 = member, 0 = non-member). Higher values indicate greater participation in legally recognized community water governance (an institutional participation outcome rather than direct household water access).\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 5, PDF Page 12 (text on PDF Page 13)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Second-stage ESP outcome equations for Water poverty: Title coefficient = 0.160 (SE = 0.188, p > 0.10) among WRUA members; Title coefficient = 0.100 (SE = 0.168, p > 0.10) among non-members (N = 652).\",\n      \"exposure_and_reference\": \"Holding a land title deed (Title = 1 vs. 0) within WRUA member and non-member regimes\",\n      \"finding_label\": \"Secondary legal covariate (Second-stage ESP model): Land title deed on household water poverty\",\n      \"outcome_and_polarity\": \"Water poverty binary indicator (1 = water poor, 0 = water non-poor). Higher values indicate WORSE household water access/security.\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 6, PDF Page 14\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"favorable_to_access\",\n  \"headline_raw_sign\": \"negative\",\n  \"headline_result_summary\": \"Examining 652 rural smallholder farm households in Kenya's Upper Ewaso Ng'iro North Catchment Area, Mwaura et al. (2021) evaluate the impact of membership in legally institutionalized Water Resource Users Associations (WRUAs, recognized under Kenya's Water Act 2002 and Water Act 2016) on multidimensional poverty, including a polychoric PCA-based household Water Poverty Index binary outcome (1 = water poor [<40th percentile of water security], 0 = water non-poor). Across all treatment-effect specifications in Table 7, WRUA membership significantly reduces the probability of household water poverty: the Endogenous Switching Probit (ESP) average treatment effect on the treated (ATT) is -0.140 (SE = 0.071; z = -1.97, p approx. 0.049), the Propensity Score Matching (4-nearest-neighbor) ATT is -0.323 (SE = 0.044, p < 0.01) and the Inverse Probability Weighting (IPW) ATT is -0.303 (SE = 0.038, p < 0.01). Because the outcome is water poverty (higher = worse water security/access), these negative estimates translate into a substantive improvement in household water access/security (favorable_to_access), corroborated by large descriptive advantages for WRUA members in compound piped water coverage (82.8% vs. 21.5%) and shorter domestic water collection time (3.30 vs. 20.44 minutes). As a secondary legal variable, holding a land title deed positively predicts joining a WRUA (probit beta = 0.405, SE = 0.139, p < 0.01) but has no statistically significant direct effect on water poverty within either membership regime (0.160 [SE = 0.188] for members; 0.100 [SE = 0.168] for non-members).\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. Inverse outcome polarity on the primary model: The econometrically modeled water outcome is 'Water poverty' (1 = water poor, 0 = water non-poor), so negative treatment effects (ESP ATT = -0.140, PSM ATT = -0.323, IPW ATT = -0.303) represent reductions in water poverty, i.e., favorable_to_access. Confusing 'Water poverty' with the 'Water security index' from which it is cut off would invert the substantive direction. 2. Reversed subtraction order in descriptive Tables 2 and 3: In Tables 2 and 3 (PDF Pages 10-11), 'Mean difference' is calculated as (Non-members minus WRUA members), even though WRUA members are listed in the first column. Thus WRUA members having 82.8% piped water vs. 21.5% for non-members is printed as Mean difference = -0.613*** (t = -19.812), and lower water poverty among members (23.36% vs. 52.34%) is printed as +0.291*** (t = 8.021). Reading the sign of the 'Mean difference' column without checking the group means would flip the direction. 3. Over-starred significance and typographical errors in hypotheses/tables: On PDF Page 5, the authors state four hypotheses of a 'positive relationship' between poverty and WRUA membership, then on PDF Pages 16-17 write 'We therefore reject all four hypotheses that there is no relationship'. In Table 7 (PDF Page 17), ESP ATT (-0.140, SE = 0.071 -> z = -1.97, p approx. 0.049) and ATU (-0.109, SE = 0.066 -> z = -1.65, p approx. 0.099) on water poverty are both marked '***' (1%) despite having p-values near 0.05 and 0.10 respectively, and IPW ATT on subjective poverty is printed as '0.091**' missing its minus sign (contradicting p. 16 text stating a ~9% reduction). 4. Endogeneity/circularity in the WPI index and exclusion restrictions: Table A2 (PDF Page 22) includes 'Piped water', 'Sanitation facility', 'Owning land', 'Title' and 'Water Conflict' inside the components used to construct the Water Poverty Index, while 'Water conflict', 'MWS-River' and 'MWS-Borehole' are used as exclusion-restriction instruments in the first-stage WRUA selection model (and 'MWS-Piped water' was dropped after failing the falsification test in Table A1). Also, if a coder extracts 'Title' (land title deed) instead of WRUA membership, Title is positive and significant for WRUA participation (Table 5: 0.405***) but null in the second-stage Water poverty outcome equations (Table 6: 0.160 and 0.100).\",\n  \"study_design\": \"Cross-sectional observational household survey (conducted September–December 2019) using multistage sampling, analyzed with a Full Information Maximum Likelihood (FIML) Endogenous Switching Probit (ESP) model alongside Propensity Score Matching (PSM, 4 nearest neighbors) and Inverse Probability Weighting (IPW) treatment-effect estimators\",\n  \"unit_and_sample_size\": \"Rural smallholder farm households across 8 sampled sub-catchments in the Upper Ewaso Ng'iro North Catchment Area; N = 652 households (331 WRUA members and 321 non-members)\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:28:41.378285+00:00\",\n  \"pdf_sha256\": \"422900c3138ac65e25618308942fb52c85b4e8e1d6b672f33bef454b10cbed45\",\n  \"input_sha256\": \"0909ee5aefba30b2f0d3d6eff951f59b33b16ca95a24f87e037309d5b17a8dc5\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S404\",\n  \"author_year\": \"Mwaura et al. (2021)\",\n  \"family\": \"A\",\n  \"exposure_short\": \"WRUA membership (Kenya Water Act)\",\n  \"comparator_short\": \"non-members\",\n  \"outcome_short\": \"water poverty\",\n  \"outcome_family\": \"economic_access\",\n  \"estimate_short\": \"ATT -14% to -32%\",\n  \"raw_coefficient_sign\": \"-\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = worse\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"WRUA membership: ATT -14% to -32% on a water-poverty index (higher = worse). Raw sign -, substantive Favourable.\",\n  \"rob_tool\": \"ROBINS-I\",\n  \"rob_rating\": \"Moderate\",\n  \"inclusion_decision_human_verified\": \"N (AI-checked only)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"WRUA membership reduces water poverty\",\n  \"exposure_full\": \"Household membership in a Water Resource Users' Association (WRUA), a legal collective-action institution established under Kenya's Water Act 2002/2016\",\n  \"comparator_full\": \"Household non-membership in a WRUA (no formal legal water-governance institutional status)\",\n  \"estimate_full\": \"-0.14 to -0.32 (14% to 32% reduction in water poverty), depending on estimator (endogenous switching probit: -14%; inverse probability weighting: -30%; propensity score matching: -32%)\",\n  \"ai_scope_check_2026-10-14\": \"passed\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: 0909ee5aefba30b2f0d3d6eff951f59b33b16ca95a24f87e037309d5b17a8dc5) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=90559, sha256=0909ee5aefba30b2f0d3d6eff951f59b33b16ca95a24f87e037309d5b17a8dc5]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's substantive direction ('Favourable') and raw sign ('-') are empirically supported across all three average treatment effect on the treated (ATT) estimators in Table 7 (PDF p. 17): WRUA membership reduces the binary probability of household water poverty (`Water poor = 1`) by `-0.140` (SE `0.071`) under Endogenous Switching Probit (ESP), `-0.303` (SE `0.038`) under Inverse Probability Weighting (IPW), and `-0.323` (SE `0.044`) under 4-nearest-neighbor Propensity Score Matching (PSM), corroborated by descriptive advantages in compound piped water (`82.8%` vs. `21.5%`) and domestic collection time (`3.30` vs. `20.44` minutes) in Table 2 (PDF p. 10). However, Claude extracted only the rounded prose percentages from PDF p. 16 (`-0.14 to -0.32`) and recorded `SE = none` despite standard errors being printed in Table 7, obscuring that the headline ESP ATT (`-0.140`, SE `0.071`, `z = -1.97`, `p ≈ 0.049`) is only borderline significant at 5% and the ESP ATU (`-0.109`, SE `0.066`, `z = -1.65`, `p ≈ 0.099`) is statistically null at 5% despite both being mislabelled `***` by the authors. Furthermore, the paper's ESP identification suffers from circularity and a failed falsification check in Appendix Tables A1–A2 (PDF p. 22): `Water conflict` strongly predicts water poverty among non-members in Table A1 Model 5 (`0.80`, SE `0.18`, `z = 4.44`, `p < 0.001`, left unstarred by the authors) while simultaneously serving as both an ESP exclusion restriction and an input component of the Water Poverty Index itself. Scope-wise, Claude misclassified the outcome as `economic_access` without checking Table A2 (PDF p. 22), which shows that the polychoric PCA Water Poverty Index is a composite proxy blending direct domestic water/sanitation access and reliability with non-WASH socioeconomic capacity (`Owning land`, `Title`, `Formal Education`, `Credit access`) and agricultural/environmental shocks (irrigation share, drought/flood crop and livestock losses, soil erosion). Finally, if a coder focused on the secondary legal variable `Title` (holding a land title deed), it positively predicts WRUA membership in Table 5 (`0.405***`, SE `0.139`, PDF p. 12) but has a statistically null direct association with water poverty in Table 6 (`0.160`, SE `0.188` for members; `0.100`, SE `0.168` for non-members, PDF p. 14).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 3",
+        "quote": "The Kenyan water policy framework recognizes WRUAs as the legal, grassroots collective action"
+      },
+      {
+        "page": "PDF Page 7",
+        "quote": "line to generate a water poverty dummy where Water poor = 1, and Water non-poor = 0."
+      },
+      {
+        "page": "PDF Page 16",
+        "quote": "8%, income poor by about 47%, subjective poor by about 20% and water poor by about 14%."
+      },
+      {
+        "page": "PDF Page 16",
+        "quote": "poor by about 8%, subjective poor by about 10% and water poor by about 32%. We therefore"
+      }
+    ],
+    "numbers_match_paper": "partial_or_rounding_issue",
+    "numerical_check_note": "Sample size matches exactly (`N = 652` households: `331` WRUA members and `321` non-members; PDF pp. 2, 5, 10). Claude's stored range (`-0.14 to -0.32`, with `-14%` ESP, `-30%` IPW, `-32%` PSM) matches the rounded percentage prose on PDF p. 16, whereas Table 7 (PDF p. 17) prints 3-decimal point estimates and standard errors (`ESP ATT = -0.140`, SE `0.071`; `IPW ATT = -0.303`, SE `0.038`; `PSM ATT = -0.323`, SE `0.044`; plus `ESP ATU = -0.109`, SE `0.066`), and Claude erroneously recorded `CI / SE = none`. Note also that Table 7 over-stars `ESP ATT` (`z = -1.97`, `p ≈ 0.049`) and `ESP ATU` (`z = -1.65`, `p ≈ 0.099`) as `***`, and the dossier header misstates the first author's initial (`Mwaura F` instead of Simon Ng'ang'a Mwaura), omits the printed DOI (`10.1080/23322039.2021.1882763`), and has automated snippet matches pointing to unrelated `/athrho0` numbers (`0.140` and `0.318`) in Table 6 (PDF p. 15) rather than Table 7 (PDF p. 17).",
+    "polarity_or_orientation_issue": "None in Claude's directional coding: `Water poverty` is coded `1 = water poor` (below the 40th percentile of the polychoric PCA water security index) and `0 = water non-poor` (PDF p. 7), so `outcome_polarity = higher = worse` and `exposure_orientation = as reported` (WRUA member vs. non-member) correctly map the negative ATT estimates (`-0.140` to `-0.323`) to `Favourable`. Note, however, that Claude mislabelled `outcome_family` as `economic_access` (apparently misled by the term 'water poverty', which contains no water-tariff or affordability measure in Table A2), and readers of descriptive Tables 2–3 (PDF pp. 10–11) face a subtraction-order trap because `Mean difference` is computed as `Non-members minus WRUA members` despite WRUA members appearing in the first column.",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "borderline_or_indirect_proxy",
+    "specification_multiplicity_flag": false,
+    "study_id": "S404",
+    "substantive_direction_verdict": "supported"
+  }
+}

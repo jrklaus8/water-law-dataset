@@ -1,0 +1,254 @@
+{
+  "study_id": "S539",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "79e36164f955ad0dfc4b6a33d67232e2cbf5aca35745506358909920726ece2c",
+  "input_text_sha256": "3fb8c5789a4aa123cbf6c457faf5d5091e013ff4e3ac3fa026b417a7f387b2ea",
+  "prompt_sha256": "7cba5ce95e14ac64052450538dc5234f54d72443c1654b3e5d6b2ca0e1482dfe",
+  "started_at": "2026-11-18T22:40:01.003460+00:00",
+  "completed_at": "2026-11-18T22:42:21.229183+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S539\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S539\n- Record ID: RA0FB2C52085F\n- Citation: Zhang X, Gonzalez Rivas M, Grant M, Warner ME (2022). \"Water pricing and affordability in the US: public vs. private ownership.\" Water Policy, 24(3), 500-516.\n- DOI: 10.2166/wp.2022.283\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: 3fb8c5789a4aa123cbf6c457faf5d5091e013ff4e3ac3fa026b417a7f387b2ea) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=66554, sha256=3fb8c5789a4aa123cbf6c457faf5d5091e013ff4e3ac3fa026b417a7f387b2ea]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "systems, private ownership is related to higher water prices and less affordability for low-income families."
+      },
+      {
+        "page": "PDF Page 6 (Methods)",
+        "quote": "of their income on water services if the utility is owned by the private sector (4.39% of income) than if it is owned"
+      },
+      {
+        "page": "PDF Page 8 (Results)",
+        "quote": "privately owned water systems, low-income households spend 1.55% more of their income on their water bills."
+      },
+      {
+        "page": "PDF Page 8 (Results)",
+        "quote": "Only six states regulate public systems, but this has no effect on price or affordability."
+      },
+      {
+        "page": "PDF Page 10 (Discussion)",
+        "quote": "lead to an $89 higher annual water bill in NJ and PA. By contrast, our models found that there is no impact of"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "OLS unstandardized Coeff. = 1.55**, standardized coeff. = 0.26**, p < 0.01 (printed in Table 2 footnote as **p , 0.0; standard errors not reported), N = 500, adjusted R2 = 0.45, controlling for PUC regulates public utilities, favorable private regulation (NJ, PA), % occupied houses built before 1940, groundwater source, severe drought %, Gini, poverty rate, ln(service population), % minority, ln(population density), and population growth %.",
+        "exposure_and_reference": "Private sector = 1 (investor-owned private water company, n = 58) vs. 0 = public sector (government-owned [n = 321] and cooperative [n = 121] water systems, total n = 442)",
+        "finding_label": "Headline adjusted OLS: Private ownership on low-income household water bill burden (% of lowest-quintile income)",
+        "outcome_and_polarity": "Percent of household income spent on water services for the lowest quintile of household income (%; sample mean = 3.02%, SD = 1.91). Higher numerical values mean HIGHER financial burden / WORSE water affordability.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF Page 9 (and Results text, PDF Page 8)"
+      },
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "OLS unstandardized Coeff. = 144.04**, standardized coeff. = 0.35**, p < 0.01 (printed in Table 2 footnote as **p , 0.0; standard errors not reported), N = 500, adjusted R2 = 0.32, controlling for the same 11 regulatory, supply, infrastructure-age, and community socioeconomic covariates.",
+        "exposure_and_reference": "Private sector = 1 (investor-owned private water company, n = 58) vs. 0 = public sector (government-owned [n = 321] and cooperative [n = 121], total n = 442)",
+        "finding_label": "Headline adjusted OLS: Private ownership on typical annual household water bill (USD)",
+        "outcome_and_polarity": "Annual water bill in January 2015 USD for 60,000 gallons/year indoor family water use ($, sample mean = $336.54, SD = $132.47). Higher numerical values mean HIGHER water prices / WORSE affordability.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF Page 9 (and Results text, PDF Page 8)"
+      },
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "Unadjusted group means: Private sector mean annual water bill = $501 vs. Public sector mean = $315 (described as significantly higher); Private sector mean lowest-quintile income share spent on water = 4.39% vs. Public sector mean = 2.84%; N = 500 (58 private, 442 public).",
+        "exposure_and_reference": "Private sector (investor-owned, n = 58) vs. Public sector (government-owned [n = 321] + cooperative [n = 121], n = 442)",
+        "finding_label": "Unadjusted bivariate comparison: Private vs. public ownership on annual water bill and low-income water expenditure share",
+        "outcome_and_polarity": "Annual water bill ($) and Percent of household income spent on water services by lowest income quintile (%). Higher numerical values mean HIGHER prices and HIGHER income burden / WORSE affordability.",
+        "raw_sign": "positive",
+        "table_or_page": "Methods text, PDF Page 6"
+      },
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "OLS unstandardized Coeff. = 88.64**, standardized coeff. = 0.17**, p < 0.01 (printed as **p , 0.0; SEs not reported), N = 500, adjusted R2 = 0.32, controlling for Private sector ownership and 10 other covariates.",
+        "exposure_and_reference": "Favorable private regulation = 1 (water system located in New Jersey or Pennsylvania, states with pro-private investor regulation such as DSIC surcharges and fair market value laws; n = 35 systems, sample mean = 0.07) vs. 0 = all other states (n = 465 systems)",
+        "finding_label": "Adjusted OLS: State regulation favorable to private operators (NJ, PA) on annual household water bill (USD)",
+        "outcome_and_polarity": "Annual water bill in USD for 60,000 gallons/year ($). Higher numerical values mean HIGHER water prices / WORSE affordability.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF Page 9 (and Discussion text, PDF Page 10)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "OLS unstandardized Coeff. = 0.46 (no significance stars, p >= 0.05; SEs not reported), standardized coeff. = 0.06, N = 500, adjusted R2 = 0.45, controlling for Private sector ownership and 10 other covariates.",
+        "exposure_and_reference": "Favorable private regulation = 1 (New Jersey or Pennsylvania, n = 35) vs. 0 = all other states (n = 465)",
+        "finding_label": "Adjusted OLS: State regulation favorable to private operators (NJ, PA) on low-income household water bill burden (% of lowest-quintile income)",
+        "outcome_and_polarity": "Percent of household income spent on water services for the lowest quintile of household income (%). Higher numerical values mean HIGHER financial burden / WORSE affordability.",
+        "raw_sign": "null",
+        "table_or_page": "Table 2, PDF Page 9"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Annual water bill model: OLS Coeff. = 36.43, standardized coeff. = 0.06 (p >= 0.05, non-significant). Lowest-quintile income share model: OLS Coeff. = 0.29, standardized coeff. = 0.03 (p >= 0.05, non-significant). N = 500 in both models (text on p. 8 states 'this has no effect on price or affordability').",
+        "exposure_and_reference": "PUC regulates public utilities = 1 (states where Public Utility Commission regulates rates of at least some public water utilities: IN, ME, PA, RI, WV, WI; sample mean = 0.05) vs. 0 = all other states",
+        "finding_label": "Adjusted OLS: State PUC regulation of public utilities on annual water bill and low-income water bill burden",
+        "outcome_and_polarity": "Annual water bill ($) and Percent of household income spent on water services for lowest income quintile (%). Higher numerical values mean WORSE affordability.",
+        "raw_sign": "null",
+        "table_or_page": "Table 2, PDF Page 9 (and Results text, PDF Page 8)"
+      }
+    ],
+    "headline_direction_for_household_access": "unfavorable_to_access",
+    "headline_raw_sign": "positive",
+    "headline_result_summary": "In cross-sectional OLS regressions across the 500 largest US community water systems in 2015, private (investor) ownership (Private sector = 1, n = 58 vs. public [government + cooperative] = 0, n = 442) is associated with significantly higher annual household water bills (+$144.04/year, p < 0.01; unadjusted $501 vs. $315) and a higher percentage of income spent on water by lowest-quintile households (+1.55 percentage points, p < 0.01; unadjusted 4.39% vs. 2.84%), indicating worse household water affordability under private ownership (or equivalently, better affordability under public ownership). State regulatory environments favorable to private investors (NJ and PA) are associated with +$88.64 higher annual water bills (p < 0.01) but have no statistically significant association with lowest-quintile income share (+0.46, p >= 0.05), while state PUC regulation of public utilities has no statistically significant association with either annual bills (36.43) or low-income affordability (0.29).",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Outcome polarity (sign-to-valence trap): Both outcomes—Annual water bill ($) and Percent of household income spent on water services by the lowest income quintile (%)—measure cost/burden where HIGHER numerical values mean WORSE affordability ('less affordability'). Positive raw coefficients (+144.04** and +1.55** for Private sector; +88.64** for Favorable private regulation) therefore correspond to UNFAVORABLE affordability impacts, not improved access. 2. Public vs. private pole symmetry: The regressions code Private sector = 1 (investor-owned, n = 58) vs. 0 = public (combining 321 government-owned and 121 cooperative utilities). Under the authors' coded exposure (privatization / private ownership), the valence is unfavorable_to_access; if a synthesis instead frames the exposure as public ownership (as discussed on p. 9: 'public ownership is related to lower prices'), the valence flips to favorable_to_access. 3. Regulatory heterogeneity across outcomes: 'Favorable private regulation (1 = NJ, PA)' is purely a two-state indicator (not a nationwide statutory measure) and is statistically significant for annual water bill (+88.64**) but null for low-income income share (0.46, p >= 0.05); meanwhile 'PUC regulates public utilities' is null on both outcomes (all 58 private utilities in the sample were already PUC-regulated, so private PUC regulation could not be estimated). 4. PDF font-encoding / missing minus signs in Tables 1-3: The PDF text layer omits minus signs on negative numbers (e.g., Table 2 prints Groundwater as 46.97** and 0.52** and Service population (ln) as 10.96 and 0.20*, whereas prose on pp. 8-9 confirms negative signs/lower bills; Table 2 footnote also prints '**p , 0.0' for p < 0.01, and standard errors/t-stats are omitted). Positive signs on Private sector (+144.04**, +1.55**) and Favorable private regulation (+88.64**) are explicitly verified by the prose ('$144 higher', '1.55% more', '$89 higher'). 5. Simulated standardized bills: Affordability is computed from rate schedules for a fixed 60,000 gal/year indoor consumption divided by city/county ACS lowest-quintile income, excluding wastewater/stormwater charges and household-level assistance program discounts or actual shutoff rates.",
+    "study_design": "Cross-sectional observational study using ordinary least squares (OLS) multivariate regressions and descriptive group comparisons (2015 tariff and 2011-2015 ACS data)",
+    "study_id": "S539",
+    "unit_and_sample_size": "Community water systems matched to city/county socioeconomic data; N = 500 largest community water systems in the US (across 321 counties in 48 states and DC, collectively serving ~140 million people; 58 investor-owned private systems and 442 public systems [321 government-owned, 121 cooperative])"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "study_id": "S470",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "11862f4c64b0b58b21a981e6905c1d9ab967032e4dd1fc7fc8c6363140fca74a",
+  "input_text_sha256": "ea79628734621a84e2d205902dea68288779caefa598320fb877b97303b87e62",
+  "prompt_sha256": "b58608a7a836fbe47e17d6f6c623d08db16960cf0197de2381b200b3b0516306",
+  "started_at": "2026-11-18T23:04:27.413670+00:00",
+  "completed_at": "2026-11-18T23:05:23.533044+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S470\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S470\",\n  \"record_id\": \"RE42F8D320487\",\n  \"confidence\": \"high\",\n  \"country\": \"Brazil\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF Page 1 (Highlights)\",\n      \"quote\": \"Implementation of the social tariff depends on the enforcement of regulatory agencies.\"\n    },\n    {\n      \"page\": \"PDF Page 14 (Section 5.1)\",\n      \"quote\": \"Regarding our entire sample, the average DIST Index was 68.28% before these regulatory\"\n    },\n    {\n      \"page\": \"PDF Page 15 (Section 5.3)\",\n      \"quote\": \"implementation of the policy is about a 19% increase.\"\n    },\n    {\n      \"page\": \"PDF Page 19 (Section 7)\",\n      \"quote\": \"The results of this article suggest that regulation and regulatory enforcement positively affect the implementation\"\n    },\n    {\n      \"page\": \"PDF Page 20 (Section 7)\",\n      \"quote\": \"Therefore, we could not adopt difference-in-differences models.\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Model 1 (controlling for Log(POPU)): beta = 19.2078, SE = 0.8174, p < 0.01 (***), R^2 = 0.3718; Model 2 (controlling for Log(EDUC)): beta = 19.155, SE = 0.8143, p < 0.01 (***), R^2 = 0.3723; Model 3 (controlling for Log(INTE)): beta = 18.819, SE = 0.8101, p < 0.01 (***), R^2 = 0.3716. Balanced random-effects GLS panel with White period robust SEs, controlling for MSF, CUUR, TIME, and macro-region dummies; N = 572 municipalities, 1,144 municipality-year observations (2020–2021). PDF Page 16, Table 5.\",\n      \"exposure_and_reference\": \"REGU: Regulation and regulatory enforcement of the social tariff by state regulator Arsae-MG (State Law No. 23,670/2020, August 2020 economic inspection, Regulation Arsae-MG No. 150/2021 consolidating social tariff rules/publicity/online requests, and periodic inspection regime); coded REGU = 1 in 2021 (post-regulation/enforcement) vs. REGU = 0 in 2020 (pre-regulation/enforcement baseline).\",\n      \"finding_label\": \"Primary econometric models (2020–2021 panel): Effect of regulation and regulatory enforcement (REGU) on social tariff implementation (DIST)\",\n      \"outcome_and_polarity\": \"DIST (Degree of Implementation of the Social Tariff Index, in percentage points 0–100%): ratio of residential customers registered in the ~50%-discounted social tariff in Copasa-MG/Copanor billing databases to low-income network-connected CadÚnico households eligible for the social tariff, capped at 100%. Higher values mean BETTER household water/sanitation affordability/subsidy coverage among network-connected poor households.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 5, PDF Page 16 (text on PDF Page 15)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Statewide mean DIST increased from 68.28% (SD = 24.76%, min = 12.51%, max = 100%) in 2020 (before inspection) to 87.53% (SD = 15.13%, min = 24.22%, max = 100%) in 2021 (after inspection) across N = 572 municipalities (Table 3). Paired Wilcoxon signed-rank test (two-sided asymptotic): 419 positive ranks (73.3%), 48 negative ranks (8.4%), 105 draws (18.4%), Z = -17.557, p = 0.000 (Table 4). All 12 macro-regions also showed statistically significant increases (one-sided exact Wilcoxon p <= 0.004). Municipal count with DIST < 50% fell from 151 (of 581) in 2020 to 17 (of 583) in 2021 (PDF pp. 7–9).\",\n      \"exposure_and_reference\": \"Post-regulation and regulatory inspection period (July 2021 data) vs. pre-regulation/first surprise inspection baseline (May 2020 data).\",\n      \"finding_label\": \"Unadjusted pre-post comparison and paired Wilcoxon signed-rank tests: Statewide and regional DIST Index\",\n      \"outcome_and_polarity\": \"DIST Index (0–100%): percentage of eligible low-income network-connected CadÚnico households enrolled in the social tariff. Higher values mean BETTER household affordability/subsidy coverage.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Tables 3 and 4, PDF Pages 14–15 (text on PDF Pages 7–9, 13–14)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"Model 1 (with Log(POPU)): beta = 0.1345, SE = 0.0059, p < 0.01 (***), R^2 = 0.1990; Model 2 (with Log(EDUC)): beta = 0.1348, SE = 0.0059, p < 0.01 (***), R^2 = 0.1986; Model 3 (with Log(INTE)): beta = 0.1313, SE = 0.0060, p < 0.01 (***), R^2 = 0.1982. Note: DIST is scaled as a 0–1 proportion in Table 6 (corresponding to ~13.1–13.5 percentage points). Balanced random-effects GLS panel with White period robust SEs, controlling for CUUR, TIME, and region dummies (MSF omitted due to missing 2018 data); N = 570 municipalities, 2,280 municipality-year observations (2018–2021). PDF Page 18, Table 6.\",\n      \"exposure_and_reference\": \"REGU: Post-regulation/enforcement year (REGU = 1 in 2021) vs. pre-regulation/enforcement years (REGU = 0 in 2018, 2019, and 2020).\",\n      \"finding_label\": \"Robustness check panel models (2018–2021): Effect of regulation and regulatory enforcement (REGU) on DIST\",\n      \"outcome_and_polarity\": \"DIST Index expressed on a 0–1 proportion scale (0 to 1.00): share of eligible low-income network-connected CadÚnico households enrolled in the social tariff. Higher values mean BETTER household affordability/subsidy coverage.\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 6, PDF Page 18 (text on PDF Page 17)\"\n    },\n    {\n      \"access_valence\": \"null\",\n      \"exact_estimate\": \"Model 1: beta = 0.2410, SE = 1.4160 (not significant, p > 0.10); Model 2: beta = 0.3314, SE = 1.4131 (not significant, p > 0.10); Model 3: beta = 0.2286, SE = 1.3996 (not significant, p > 0.10). Random-effects GLS panel with White period robust SEs, N = 572 municipalities, 1,144 observations (2020–2021). PDF Page 16, Table 5.\",\n      \"exposure_and_reference\": \"MSF: Existence of a Municipal Sanitation Fund (which requires the municipality to establish a Municipal Sanitation Council and a Municipal Sanitation Plan), coded MSF = 1 vs. no Municipal Sanitation Fund (MSF = 0).\",\n      \"finding_label\": \"Secondary municipal governance factor: Municipal Sanitation Fund / Council / Plan (MSF) on DIST\",\n      \"outcome_and_polarity\": \"DIST Index (0–100%): percentage of eligible low-income network-connected CadÚnico households enrolled in the social tariff. Higher values mean BETTER household affordability/subsidy coverage.\",\n      \"raw_sign\": \"null\",\n      \"table_or_page\": \"Table 5, PDF Page 16 (text on PDF Page 15)\"\n    },\n    {\n      \"access_valence\": \"indirect_or_non_access_outcome\",\n      \"exact_estimate\": \"2020–2021 Panel (DIST 0–100%, Table 5, N = 1,144): Model 1 beta = -0.3627, SE = 0.1300, p < 0.01 (***); Model 2 beta = -0.3809, SE = 0.1303, p < 0.01 (***); Model 3 beta = -0.3571, SE = 0.1298, p < 0.01 (***). 2018–2021 Panel (DIST 0–1, Table 6, N = 2,280): Models 1–3 beta = -0.0037, SE = 0.0008, p < 0.01 (***). PDF Pages 16 and 18.\",\n      \"exposure_and_reference\": \"CUUR: CadÚnico update rate (continuous percentage of low-income households in the municipal CadÚnico social registry with registration updated within the last two years).\",\n      \"finding_label\": \"Administrative social-registry control: CadÚnico update rate (CUUR) on relative DIST ratio\",\n      \"outcome_and_polarity\": \"DIST Index (SC_billing_databases / H_CadUnico). Higher DIST generally reflects higher relative social-tariff enrollment among registered eligible households, EXCEPT for CUUR, which directly expands the denominator (H_CadUnico) before utility billing records adjust, creating a mechanical/lag inverse relationship with the ratio even while absolute beneficiary counts may increase (PDF pp. 16–17, 20).\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 5 (PDF Page 16) and Table 6 (PDF Page 18)\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"2020–2021 Panel (DIST 0–100%, Table 5, N = 1,144): Model 1 beta = -0.4745, SE = 0.2142, p < 0.05 (**); Model 2 beta = -0.4781, SE = 0.2180, p < 0.05 (**); Model 3 beta = -0.4632, SE = 0.2074, p < 0.05 (**). 2018–2021 Panel (DIST 0–1, Table 6, N = 2,280): Model 1 beta = -0.005, SE = 0.0027, p < 0.10 (*); Model 2 beta = -0.0051, SE = 0.0028, p < 0.10 (*); Model 3 beta = -0.005, SE = 0.0027, p < 0.10 (*) (attenuated to borderline p < 0.10 significance, null at p < 0.05). PDF Pages 16 and 18.\",\n      \"exposure_and_reference\": \"TIME: Optimal multimodal travel time (in hours) from the municipality to the state capital Belo Horizonte (headquarters of regulator Arsae-MG and utility Copasa-MG). Higher TIME = greater geographic/administrative remoteness from regulatory and utility headquarters.\",\n      \"finding_label\": \"Administrative distance control: Travel time to state capital / regulatory headquarters (TIME) on DIST\",\n      \"outcome_and_polarity\": \"DIST Index (0–100% in Table 5; 0–1 in Table 6): share of eligible low-income network-connected CadÚnico households enrolled in the social tariff. Higher values mean BETTER household affordability/subsidy coverage.\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 5 (PDF Page 16) and Table 6 (PDF Page 18)\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"favorable_to_access\",\n  \"headline_raw_sign\": \"positive\",\n  \"headline_result_summary\": \"Across 572 municipalities served by Copasa-MG in Minas Gerais, Brazil, state regulatory enforcement and new social-tariff regulation by Arsae-MG (an August 2020 surprise economic inspection, State Law No. 23,670/2020, and Regulation Arsae-MG No. 150/2021 establishing annual inspections, publicity standards, and online enrollment, although capping the discounted bracket at <=20 m3/month) was associated with a statistically significant increase in the Degree of Implementation of the Social Tariff (DIST Index). Unadjusted mean DIST rose from 68.28% in 2020 to 87.53% in 2021 (Wilcoxon Z = -17.557, p < 0.001), and adjusted random-effects GLS panel regressions estimated an increase of 18.82 to 19.21 percentage points in 2020–2021 (p < 0.01) and 13.13 to 13.48 percentage points in an extended 2018–2021 robustness panel (p < 0.01). By contrast, local participatory sanitation governance via a Municipal Sanitation Fund/Council/Plan (MSF) had a statistically null effect on social-tariff implementation (0.23 to 0.33 percentage points, p > 0.10).\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. No untreated counterfactual (pre-post indicator only): REGU is simply a post-intervention year dummy (REGU = 1 in 2021 vs. 0 in 2020 or 2018–2020) applied across all Copasa-MG municipalities; the authors explicitly note that difference-in-differences could not be estimated because no comparable untreated utility/regulator data exist, and DIST had temporarily dipped from 76.1% (2018) and 78.3% (2019) to 68.3% (2020) before rising to 87.53% (2021). 2. Dependent variable rescaling between Table 5 and Table 6: Table 5 models DIST in percentage points (0–100, so REGU = 19.2078 means +19.21 pp and CUUR = -0.3627), whereas Table 6 rescales DIST to a 0–1 proportion (so REGU = 0.1345 means +13.45 pp and CUUR = -0.0037 equals -0.37 pp, though the authors mistakenly describe -0.0037 on p. 17 as 'substantially smaller' and 'close to zero' relative to Table 5). 3. Wilcoxon Z-statistic sign: Table 4 reports negative Z-statistics (e.g., Z = -17.557) by standard Wilcoxon convention even though 419 municipalities increased vs. 48 decreased; a careless coder must not misread the negative Z-statistic as a decrease in DIST. 4. Outcome scope and denominator mechanics: DIST measures subsidy enrollment among low-income CadÚnico households who ALREADY have access to the public water supply network (not new physical connections), is right-censored at 100%, does not verify household-by-household ID matching against inclusion errors, and has a mechanical denominator relationship with CUUR (faster municipal CadÚnico updating expands H_CadUnico in the denominator before utility billing updates, producing a negative coefficient on the ratio even if more poor households receive the tariff). 5. Secondary governance null: If coding participatory municipal governance (Municipal Sanitation Fund/Council/Plan, MSF) rather than state regulatory enforcement (REGU), the effect on DIST is completely null. 6. Benefit cap trade-off: Regulation No. 150/2021 restricted the social tariff discount to consumption <=20 m3/month (Figure 2), which the empirical DIST outcome does not evaluate in terms of actual household bills.\",\n  \"study_design\": \"Pre-post balanced longitudinal municipal panel study (2020–2021 primary panel; 2018–2021 robustness panel) without an untreated control group, using paired Wilcoxon signed-rank tests and random-effects GLS panel regressions with White period robust standard errors\",\n  \"unit_and_sample_size\": \"Municipalities in Minas Gerais state served by Copasa-MG (and Copanor): primary balanced panel N = 572 municipalities over 2 years, 2020–2021 (1,144 municipality-year observations, covering >600,000 social-tariff households; 9 municipalities with additional providers excluded from 581); robustness balanced panel N = 570 municipalities over 4 years, 2018–2021 (2,280 municipality-year observations)\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:37:54.262936+00:00\",\n  \"pdf_sha256\": \"11862f4c64b0b58b21a981e6905c1d9ab967032e4dd1fc7fc8c6363140fca74a\",\n  \"input_sha256\": \"ea79628734621a84e2d205902dea68288779caefa598320fb877b97303b87e62\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S470\",\n  \"author_year\": \"Amorim et al. (2025)\",\n  \"family\": \"C\",\n  \"exposure_short\": \"Arsae-MG enforcement norm (Minas Gerais)\",\n  \"comparator_short\": \"same municipalities in 2020\",\n  \"outcome_short\": \"social-tariff implementation\",\n  \"outcome_family\": \"economic_access\",\n  \"estimate_short\": \"+19.2 pp (SE 0.82)\",\n  \"raw_coefficient_sign\": \"+\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = better\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"Arsae-MG enforcement norm: +19.2 pp social-tariff implementation.\",\n  \"rob_tool\": \"ROBINS-I\",\n  \"rob_rating\": \"Moderate\",\n  \"inclusion_decision_human_verified\": \"N (AI-checked only)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"positive (regulatory enforcement associated with higher social-tariff implementation/enrollment)\",\n  \"exposure_full\": \"Post-2021 period in Minas Gerais, Brazil, after Arsae-MG (the state water/sewage economic regulator) introduced a new regulatory norm (Regulation Arsae-MG No. 150/2021) and periodic compliance inspections targeting municipal implementation of an income-eligibility-based water/sewage social tariff.\",\n  \"comparator_full\": \"The same 572 municipalities in the pre-regulatory-enforcement period (2020), before the new norm and inspection regime (panel before/after comparison, no separate control group).\",\n  \"estimate_full\": \"+19.21 percentage points (Model 1, p<0.01), consistent at +19.16 and +18.82 across 2 alternate specifications (Models 2-3); a robustness-check panel retroactively extended to 2018-2021 found a smaller but still significant ~13-13.5 percentage-point effect (0-1 scaled index).\",\n  \"ai_scope_check_2026-10-14\": \"passed\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: ea79628734621a84e2d205902dea68288779caefa598320fb877b97303b87e62) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=80923, sha256=ea79628734621a84e2d205902dea68288779caefa598320fb877b97303b87e62]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's numerical extraction, raw sign (+), outcome polarity (higher = better), and substantive direction (Favourable) accurately reflect the paper's primary finding across all reported specifications: in Table 5 (PDF p. 16), the Arsae-MG regulation/inspection dummy (REGU) increases municipal social-tariff enrollment (DIST Index) by +19.2078 percentage points (SE = 0.8174, p < 0.01) in Model 1, +19.155 (SE = 0.8143) in Model 2, and +18.819 (SE = 0.8101) in Model 3, corroborated by paired Wilcoxon tests (Z = -17.557, p = 0.000; Table 4, PDF p. 15) and the 2018-2021 robustness panel (+0.1313 to +0.1348 on a 0-1 scale, i.e., +13.13 to +13.48 pp, p < 0.01; Table 6, PDF p. 18). Claude also avoided two potential coding traps: the negative Wilcoxon Z-statistic convention in Table 4 and the unannounced rescaling of DIST from 0-100% (Table 5) to a 0-1 proportion (Table 6). Nonetheless, three substantive and methodological vulnerabilities warrant noting for synthesis: first, Table 5 simultaneously tests local participatory sanitation governance via a Municipal Sanitation Fund/Council/Plan (MSF), which has a completely null effect on social-tariff implementation (+0.2286 to +0.3314 pp, SE ~1.40-1.42, p > 0.10; PDF pp. 15-16). Second, REGU is a pure post-2021 dummy with no untreated counterfactual group (PDF p. 13, p. 20), and the +19.2 pp primary estimate is partly inflated by a temporary 2020 dip in mean DIST (68.3% vs. 76.1% in 2018 and 78.3% in 2019; PDF p. 17, fn. 16). Third, DIST is a right-censored aggregate ratio of utility social-tariff accounts to network-connected low-income CadUnico households without individual ID cross-checking against inclusion errors (PDF p. 9, p. 20), and it does not capture potential bill increases for large poor households from Regulation No. 150/2021 newly capping the social-tariff discount at consumption below 20 m3/month (PDF p. 8, Figure 2).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 14 (Section 5.1)",
+        "quote": "Regarding our entire sample, the average DIST Index was 68.28% before these regulatory"
+      },
+      {
+        "page": "PDF Page 15 (Section 5.3)",
+        "quote": "implementation of the policy is about a 19% increase."
+      },
+      {
+        "page": "PDF Page 19 (Section 7)",
+        "quote": "The results of this article suggest that regulation and regulatory enforcement positively affect the implementation"
+      },
+      {
+        "page": "PDF Page 20 (Section 7)",
+        "quote": "data on the implementation of the social tariff. Therefore, we could not adopt difference-in-differences models."
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "All stored estimates, standard errors, and sample sizes match the printed paper accurately (with standard 2-decimal rounding on regression coefficients): Table 5 (PDF p. 16) prints REGU = 19.2078*** (SE 0.8174) for Model 1, 19.155*** (SE 0.8143) for Model 2, and 18.819*** (SE 0.8101) for Model 3 across 572 municipalities and 1,144 observations (2020-2021); Table 6 (PDF p. 18) prints REGU = 0.1345*** (SE 0.0059), 0.1348*** (SE 0.0059), and 0.1313*** (SE 0.0060) on a 0-1 proportion scale (13.13 to 13.48 percentage points, matching Claude's '~13-13.5 percentage-point effect') across 570 municipalities and 2,280 observations (2018-2021). Note also that Exposure in Claude's dossier emphasizes Regulation Arsae-MG No. 150/2021 and periodic inspections, whereas the paper's pre-post window also encompasses State Law No. 23,670 (July 2020) and the August 2020 surprise inspection (PDF pp. 7-8).",
+    "polarity_or_orientation_issue": "None for the extracted exposure (REGU = 1 post-regulation/enforcement in 2021 vs. 0 pre-enforcement in 2020; DIST Index higher = higher share of eligible low-income network-connected households enrolled in ~50%-discounted social tariffs). Claude correctly avoided misreading the negative Wilcoxon Z-statistic (-17.557 in Table 4) and correctly accounted for the 0-1 rescaling of DIST in Table 6.",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "fits_cleanly",
+    "specification_multiplicity_flag": false,
+    "study_id": "S470",
+    "substantive_direction_verdict": "supported"
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "study_id": "S631",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "34432758c58d77f62a6f9509326a7efbdc0d34e14396cc03c3b4fa489facbf87",
+  "input_text_sha256": "dbc3c7a3db84c55977aae8071fec5d4354b6c5c4837422510a6f01bba4952079",
+  "prompt_sha256": "f8167a5200468b0622151c865abf0978e789c0b5b0b0737b5615cf91775bc0e8",
+  "started_at": "2026-11-18T22:40:01.014274+00:00",
+  "completed_at": "2026-11-18T22:41:36.423715+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S631\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S631\n- Record ID: R1CA3290F50A5\n- Citation: Lewis BD (2017). Does local government proliferation improve public service delivery? Evidence from Indonesia. Journal of Urban Affairs 39(8):1047-1065.\n- DOI: 10.1080/07352166.2017.1323544\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: dbc3c7a3db84c55977aae8071fec5d4354b6c5c4837422510a6f01bba4952079) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=72476, sha256=dbc3c7a3db84c55977aae8071fec5d4354b6c5c4837422510a6f01bba4952079]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 8 of 20 (p. 1053)",
+        "quote": "Infrastructure access is the percentage of households in the district with access to protected water"
+      },
+      {
+        "page": "PDF Page 10 of 20 (p. 1055)",
+        "quote": "protected water and sanitation by about 1.35% in the second year of operations. As before, adding"
+      },
+      {
+        "page": "PDF Page 11 of 20 (p. 1056)",
+        "quote": "creation leads to an approximately 1.75% reduction (= −1.35/(1 −0.23)) in household access to water"
+      },
+      {
+        "page": "PDF Page 14 of 20 (p. 1059)",
+        "quote": "school enrollments nor water and sanitation service access differs in any significant manner"
+      },
+      {
+        "page": "PDF Page 15 of 20 (Note 5, p. 1060)",
+        "quote": "5. Protected water as defined by BPS includes piped water, communal tap water, rainwater, spring water, and"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "Lagged new district (1-year lag / 2nd year of operations): coef = −1.351, SE = 0.584, p < 0.05 (**); Lagged service access: coef = 0.227, SE = 0.069, p < 0.01 (***); implied long-run effect β/(1 − γ) = −1.75 percentage points (= −1.35/(1 − 0.23)), p = .023. Two-step difference-GMM with district-clustered SEs, year FEs, district FEs, and time-varying fiscal/demographic/socioeconomic controls; N = 2,693 observations across 336 district groups (20 instruments; AR(2) p = .135; Hansen p = .439).",
+        "exposure_and_reference": "Lagged new district dummy (n_{i,t-1} = 1 one year after a newly split district begins fiscal operations, vs. 0 for original districts—238 never-split plus not-yet-split districts—collapsed to 2001 boundaries)",
+        "finding_label": "Primary headline dynamic GMM model (Original vs. new districts) — Lagged new district & long-run effect on water/sanitation access",
+        "outcome_and_polarity": "Infrastructure access: district mean of % of households with access to protected water and % of households with access to protected sanitation (0–100 scale; higher values = BETTER household water and sanitation access)",
+        "raw_sign": "negative",
+        "table_or_page": "Table 5, PDF Page 11 of 20 (p. 1056) & text on PDF Pages 10–11 (pp. 1055–1056)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "New district (contemporaneous, n_{it}): coef = 0.104, SE = 0.593, not statistically significant (p > 0.10). Two-step difference-GMM with controls, year FEs, and district FEs; N = 2,693 observations across 336 district groups. Deeper lags beyond 1 year are also reported in text (p. 1055) as having no effect.",
+        "exposure_and_reference": "Contemporaneous new district dummy (n_{it} = 1 for all years after a district split becomes operationally effective, vs. 0 for original districts)",
+        "finding_label": "Dynamic GMM model (Original vs. new districts) — Contemporaneous new district effect on water/sanitation access",
+        "outcome_and_polarity": "Infrastructure access: district mean of % of households with protected water and % with protected sanitation (higher values = BETTER household access)",
+        "raw_sign": "null",
+        "table_or_page": "Table 5, PDF Page 11 of 20 (p. 1056)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "New district (contemporaneous): coef = −0.027, SE = 0.649 (non-significant); Lagged new district: coef = −0.987, SE = 0.579, p < 0.10 (*, borderline significant at .10 level, non-significant at conventional p < 0.05). Static generalized DiD (fixed effects) with district FEs, year FEs, district-specific linear time trends, and controls, district-clustered SEs; N = 2,714 observations across 336 district groups, within R² = 0.605.",
+        "exposure_and_reference": "New district (n_{it}) and Lagged new district (n_{i,t-1}) dummies (= 1 post-split operations vs. 0 for original districts)",
+        "finding_label": "Static generalized DiD FE model with district-specific time trends (Original vs. new districts) — Water/sanitation access",
+        "outcome_and_polarity": "Infrastructure access: district mean of % of households with protected water and % with protected sanitation (higher values = BETTER household access)",
+        "raw_sign": "null",
+        "table_or_page": "Table 4, PDF Page 10 of 20 (p. 1055)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "New district (contemporaneous): coef = 0.024, SE = 0.953 (non-significant); Lagged new district: coef = −0.690, SE = 0.769 (non-significant); Lagged service access: coef = 0.382, SE = 0.147, p < 0.05 (**). Two-step difference-GMM with controls, year FEs, and district FEs; N = 733 observations across 98 splitting district groups (20 instruments; AR(2) p = .926; Hansen p = .411).",
+        "exposure_and_reference": "New district (n_{it}) and Lagged new district (n_{i,t-1}) dummies (= 1 post-split operations vs. 0 pre-split years among the 98 districts that split during 2001–2010)",
+        "finding_label": "Dynamic GMM model restricted to ever-splitting districts (Split vs. new districts) — Water/sanitation access",
+        "outcome_and_polarity": "Infrastructure access: district mean of % of households with protected water and % with protected sanitation (higher values = BETTER household access)",
+        "raw_sign": "null",
+        "table_or_page": "Table 5, PDF Page 11 of 20 (p. 1056)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "New district (contemporaneous): coef = −0.162, SE = 0.920 (non-significant); Lagged new district: coef = −0.923, SE = 0.726 (non-significant). Static generalized DiD (fixed effects) with district FEs, year FEs, district-specific linear time trends, and controls; N = 750 observations across 98 splitting district groups, within R² = 0.612.",
+        "exposure_and_reference": "New district (n_{it}) and Lagged new district (n_{i,t-1}) dummies (= 1 post-split operations vs. 0 pre-split years among the 98 districts that split during 2001–2010)",
+        "finding_label": "Static generalized DiD FE model restricted to ever-splitting districts (Split vs. new districts) — Water/sanitation access",
+        "outcome_and_polarity": "Infrastructure access: district mean of % of households with protected water and % with protected sanitation (higher values = BETTER household access)",
+        "raw_sign": "null",
+        "table_or_page": "Table 4, PDF Page 10 of 20 (p. 1055)"
+      },
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "Dynamic GMM with leads (N = 2,693, 336 groups): Second lead new district = −1.051 (SE = 0.800, null), First lead new district = 0.163 (SE = 0.678, null), New district = 0.107 (SE = 0.606, null), Lagged new district = −1.296 (SE = 0.596, p < 0.05, **). Static FE with leads (N = 2,714, 336 groups, within R² = 0.605): Second lead = −0.686 (SE = 0.920, null), First lead = −0.605 (SE = 0.632, null), New district = 0.006 (SE = 0.623, null), Lagged new district = −1.002 (SE = 0.570, p < 0.10, *).",
+        "exposure_and_reference": "New district leads, contemporaneous dummy, and 1-year lag vs. original districts (336 groups)",
+        "finding_label": "Falsification / parallel-trends robustness models with leads (Original vs. new districts) — Water/sanitation access",
+        "outcome_and_polarity": "Infrastructure access: district mean of % of households with protected water and % with protected sanitation (higher values = BETTER household access)",
+        "raw_sign": "negative",
+        "table_or_page": "Table 6, PDF Page 12 of 20 (p. 1057)"
+      }
+    ],
+    "headline_direction_for_household_access": "unfavorable_to_access",
+    "headline_raw_sign": "negative",
+    "headline_result_summary": "Exploiting the timing of local administrative jurisdiction splitting (pemekaran) across Indonesian districts from 2001 to 2010, Lewis (2017) finds that local government proliferation negatively affects household access to protected water and sanitation relative to original districts, contradicting claims that bringing government closer to citizens via smaller jurisdictions improves service delivery. In the author's preferred dynamic difference-GMM specification comparing newly created districts to all original districts (N = 2,693 across 336 district groups, Table 5), lagged new district formation reduces combined household protected water and sanitation access by 1.351 percentage points in the second year of operations (SE = 0.584, p < 0.05), implying a long-run reduction of approximately 1.75 percentage points (p = .023); in the corresponding static FE model with district-specific time trends (N = 2,714, Table 4), the lagged effect is −0.987 percentage points (SE = 0.579, p < 0.10). However, contemporaneous year-1 effects are null across all models, and when the control group is restricted solely to the 98 ever-splitting districts before they split (Split vs. new, N = 750 static / 733 dynamic), neither static nor dynamic estimates show any statistically significant difference in water and sanitation access.",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Exposure orientation / theory-expectation reversal trap: Local government proliferation (splitting districts into smaller subnational units to bring government closer to citizens) is framed by decentralization advocates as a pro-citizen governance reform, yet its empirical impact on household water and sanitation access is negative (unfavorable_to_access). If a synthesis instead defines the desirable pole as jurisdictional consolidation or avoiding administrative fragmentation, the valence would invert; coders must explicitly anchor to the author's coded exposure (New district = 1 post-split vs. 0 unsplit). 2. Comparator-group sensitivity: The negative effect holds only when comparing new districts against the full set of 336 original districts (including 238 never-split districts); when comparing post-split against pre-split observations solely within the 98 splitting districts ('Split vs. new' in Tables 4 and 5), all water/sanitation estimates are statistically null (−0.162 and −0.923 in static FE; 0.024 and −0.690 in dynamic GMM). 3. Lag structure and p-value threshold: In every specification, the contemporaneous 'New district' indicator is near zero and non-significant, and deeper lags beyond 1 year are also reported as null; the effect appears specifically on 'Lagged new district' (second year of operations), where the static FE DiD model with district-specific time trends is only significant at p < 0.10 (−0.987, SE = 0.579*) while the dynamic difference-GMM model (which drops district-specific trends) is significant at p < 0.05 (−1.351, SE = 0.584**; long-run −1.75%, p = .023). 4. Composite outcome definition: 'Infrastructure access' is the unweighted district average of % households with protected water and % households with protected sanitation (from SUSENAS), rather than piped water or sanitation separately.",
+    "study_design": "Longitudinal panel quasi-experimental study (2001–2010) using static generalized difference-in-differences (two-way fixed effects with district-specific linear time trends) and dynamic panel two-step difference-GMM (Arellano-Bond), exploiting plausibly exogenous timing of administrative district splits (including a 2004–2006 central moratorium and parliamentary vetting delays)",
+    "study_id": "S631",
+    "unit_and_sample_size": "Indonesian districts (kabupaten/kota, excluding Jakarta) collapsed into consistent 2001 original district boundaries: 336 original district groups (238 never-split districts and 98 split districts that formed 253 new parent/child districts over 2001–2010). Analytic sample sizes for water/sanitation infrastructure regressions: N = 2,714 district-year observations (static FE) and N = 2,693 district-year observations (dynamic GMM) across 336 district groups in the Original vs. new comparison; N = 750 district-year observations (static FE) and N = 733 district-year observations (dynamic GMM) across 98 district groups in the Split vs. new comparison."
+  }
+}

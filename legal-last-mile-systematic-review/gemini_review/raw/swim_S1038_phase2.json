@@ -1,0 +1,144 @@
+{
+  "study_id": "S1038",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "099ef4a30d60f176330681e4f3349ca5d72251df8e00a6b0b5025063587b3522",
+  "input_text_sha256": "8498ed6b92b7e5ee8974f9ca61aac7035faf82a1a9daf09fa68e02696e7ea099",
+  "prompt_sha256": "92ae5e5bc8028bf9d616a901918349d59f0063ff7fcf13adbbc42101c6e36434",
+  "started_at": "2026-11-18T23:10:59.291926+00:00",
+  "completed_at": "2026-11-18T23:14:16.663353+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S1038\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S1038\",\n  \"record_id\": \"R350FA2E35538\",\n  \"confidence\": \"high\",\n  \"country\": \"United States\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF Page 9 of 12 (p. 237)\",\n      \"quote\": \"locally-regulated utilities, the average welfare loss in Model 1 is 9.6 per cent,\"\n    },\n    {\n      \"page\": \"PDF Page 9 of 12 (p. 237)\",\n      \"quote\": \"utilities, the average welfare loss in Model 1 is 5.2 per cent and in Model 2\"\n    },\n    {\n      \"page\": \"PDF Page 9 of 12 (p. 237)\",\n      \"quote\": \"utilities, the average welfare loss was 4.6 per cent lower in Model 1 and 4.24\"\n    },\n    {\n      \"page\": \"PDF Page 8 of 12, Table 2 (p. 236)\",\n      \"quote\": \"*Statistically discernible at a 1% level in a one-tailed test\"\n    },\n    {\n      \"page\": \"PDF Page 11 of 12, Note 9 (p. 239)\",\n      \"quote\": \"9. Municipally-owned utilities are regulated at the state level in the following states: Maine,\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"indirect_or_non_access_outcome\",\n      \"exact_estimate\": \"State-regulated mean = 5.2% (SE = .818, n = 27) vs. Locally-regulated mean = 9.6% (SE = .583, n = 88); printed Difference = -4.6 percentage points (note: exact difference of printed means 5.2 - 9.6 = -4.4 pp; reported in relative terms on p. 238 as 46 per cent lower); t-ratio = -4.58* (statistically discernible at 1% level in a one-tailed test; unadjusted unweighted two-group mean comparison, N = 115; Table 2, PDF Page 8 of 12 / p. 236).\",\n      \"exposure_and_reference\": \"State-level public utility commission (PUC) rate-structure regulation (n = 27 municipally-owned utilities in 5 states: Maine, Indiana, Montana, West Virginia, and Wisconsin) vs. local regulation by city councils or water commissions (reference group, n = 88 utilities)\",\n      \"finding_label\": \"Table 2, Model 1 (Unweighted): State PUC regulation vs. local regulation on residential monopoly welfare loss (% of annual revenue/bill)\",\n      \"outcome_and_polarity\": \"Deadweight monopoly welfare loss (Harberger triangle W = (1/2)Qe(P - LRMC)^2/P) expressed as a percentage of the residential customer's annual revenue / annual water bill (unweighted utility average). Higher numerical values indicate GREATER allocative deadweight welfare loss and supra-marginal-cost monopoly pricing exaction against residential customers (WORSE residential consumer pricing welfare; an indirect/non-access allocative-efficiency metric rather than direct household water connection, coverage, continuity, quality, or income-based bill affordability).\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 2, PDF Page 8 of 12 (p. 236); text on PDF Pages 9-10 of 12 (pp. 237-238)\"\n    },\n    {\n      \"access_valence\": \"indirect_or_non_access_outcome\",\n      \"exact_estimate\": \"State-regulated bill-weighted mean = 6.15% (SE = 1.35, n = 27) vs. Locally-regulated bill-weighted mean = 10.39% (SE = .786, n = 88; rounded to 10.4% in text on p. 237); printed Difference = -4.24 percentage points (reported in relative terms on p. 238 as 41 per cent lower); t-ratio = -2.71* (statistically discernible at 1% level in a one-tailed test; unadjusted residential-water-bill-weighted two-group mean comparison, N = 115; Table 2, PDF Page 8 of 12 / p. 236).\",\n      \"exposure_and_reference\": \"State-level public utility commission (PUC) rate-structure regulation (n = 27 municipally-owned utilities in 5 states: Maine, Indiana, Montana, West Virginia, and Wisconsin) vs. local regulation by city councils or water commissions (reference group, n = 88 utilities)\",\n      \"finding_label\": \"Table 2, Model 2 (Bill-weighted): State PUC regulation vs. local regulation on residential monopoly welfare loss (% of annual revenue/bill)\",\n      \"outcome_and_polarity\": \"Deadweight monopoly welfare loss expressed as a percentage of the residential customer's annual revenue / annual water bill, weighted across utilities by the relative size of the per-customer residential annual water bill. Higher numerical values indicate GREATER allocative deadweight welfare loss and supra-marginal-cost monopoly pricing exaction against residential customers (WORSE residential consumer pricing welfare; an indirect/non-access allocative-efficiency metric rather than direct household water access or income-based bill affordability).\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 2, PDF Page 8 of 12 (p. 236); text on PDF Pages 9-10 of 12 (pp. 237-238)\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"indirect_or_non_access_outcome\",\n  \"headline_raw_sign\": \"negative\",\n  \"headline_result_summary\": \"Across 115 U.S. municipally-owned water utilities in the 1965 AWWA survey, state public utility commission (PUC) regulation of municipal water rate structures (n = 27 utilities in 5 states) is associated with significantly lower residential deadweight monopoly welfare loss (as a percentage of the residential customer's annual water bill/revenue) than local regulation by city councils or water commissions (n = 88 utilities): 5.2% vs. 9.6% in unweighted Model 1 (printed difference = -4.6 percentage points, t = -4.58, p < 0.01 one-tailed; 46% lower relatively) and 6.15% vs. 10.39% in bill-weighted Model 2 (difference = -4.24 percentage points, t = -2.71, p < 0.01 one-tailed; 41% lower relatively). Substantively, the outcome—Harberger allocative deadweight welfare loss from price exceeding long-run marginal cost among already-connected municipal customers—is an indirect economic-efficiency/pricing-markup metric (indirect_or_non_access_outcome) rather than a direct measure of household water connection, coverage, reliability, or income-share affordability; however, if mapped onto residential tariff/consumer-pricing protection, the negative raw sign corresponds to a favorable effect of state PUC regulation in restraining monopoly pricing exaction against residential water consumers.\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"1. Indirect/non-access outcome vs. household access conflation: Table 2 measures the Harberger deadweight allocative welfare loss triangle (W = (1/2)Qe(P - LRMC)^2/P divided by residential annual revenue P*Q) among already-served municipal residential customers. It does not measure household water connection, coverage, disconnection, continuity, water quality, or household income affordability, nor does the paper separately report group means for residential water price (P) or annual water bills (P*Q); the author explicitly notes 'the low cost of water' ($40-$80 illustrative annual bills), peak demand driven by 'residential lawn sprinkling demand', and unmodeled subsidy costs required if P = LRMC under economies of scale. 2. Inverse polarity / sign-flip trap: Because higher values of monopoly welfare loss (%) mean worse supra-marginal-cost pricing exaction against residential customers, the negative raw difference (-4.6 pp, t = -4.58; -4.24 pp, t = -2.71) means state PUC regulation reduces residential welfare loss (favorable to residential consumers if treated as an affordability/pricing-protection proxy); equating the negative raw sign with an adverse effect flips the conclusion. 3. Exposure pole orientation (state PUC regulation vs. local municipal regulation): Table 2 defines Difference as State-regulated minus Locally-regulated (referred to in Note 23 as 'regulated' vs. 'unregulated' groups). Treating local municipal control/decentralization as the focal exposure flips the raw sign to positive (+4.6 and +4.24 pp, indicating greater monopoly welfare loss under local regulation). 4. Arithmetic discrepancy and percentage-point vs. relative-percent reporting: In Model 1, the printed group means are 5.2% and 9.6% (exact difference = -4.4 pp), whereas Table 2 and p. 237 print -4.6 pp (consistent with t = -4.58 given SEs .818 and .583); additionally, p. 237 reports absolute percentage-point differences (-4.6% and -4.24%), while p. 238 reports relative reductions (46% and 41% lower). 5. Intermediate regressions do not test regulation: Equations [1] (total variable cost, n = 95), [3] (distribution loss, n = 95, where residential volume Qr has coefficient .036, t = 1.17, non-significant), and [6] (total fixed cost, n = 87; note misprint .0157 in Eq. [7] for .01057 from Eq. [6]) are auxiliary cost-imputation steps containing no regulatory variable.\",\n  \"study_design\": \"Observational cross-sectional econometric cost-imputation and two-group mean-comparison study of municipally-owned water utilities using 1965 and 1960 American Water Works Association (AWWA) Survey of Operating Data (OLS regressions to estimate utility-specific long-run marginal cost combined with regional demand elasticities, followed by unadjusted unweighted and bill-weighted two-sample t-tests across regulatory regimes)\",\n  \"unit_and_sample_size\": \"Municipally-owned water utilities (residential customer class aggregates). Primary regulatory comparison (Table 2): N = 115 utilities (n = 88 locally-regulated utilities; n = 27 state-regulated utilities in Maine, Indiana, Montana, West Virginia, and Wisconsin). Intermediate OLS cost/loss estimation samples (Section III): n = 95 utilities for total variable cost (Eq. 1) and distribution system water loss (Eq. 3); n = 87 utilities for total fixed cost (Eq. 6).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:49:08.702008+00:00\",\n  \"pdf_sha256\": \"099ef4a30d60f176330681e4f3349ca5d72251df8e00a6b0b5025063587b3522\",\n  \"input_sha256\": \"8498ed6b92b7e5ee8974f9ca61aac7035faf82a1a9daf09fa68e02696e7ea099\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S1038\",\n  \"author_year\": \"Bruggink (1985)\",\n  \"family\": \"C\",\n  \"exposure_short\": \"State PUC economic regulation of a municipal utility (U.S.; reported contrast)\",\n  \"comparator_short\": \"local-only regulation\",\n  \"outcome_short\": \"monopoly welfare loss, % of residential bill\",\n  \"outcome_family\": \"affordability\",\n  \"estimate_short\": \"5.2% vs 9.6% (difference -4.6 pp)\",\n  \"raw_coefficient_sign\": \"-\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = worse\",\n  \"exposure_orientation\": \"as reported\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"The reported contrast is state-regulated minus locally regulated welfare loss (-4.6 pp; higher = worse), so the exposure is state PUC regulation. effect_sizes.csv carried the opposite pole in its exposure_definition until the author's A26 ruling of 2026-10-14, which swapped exposure and comparator to match.\",\n  \"rob_tool\": \"JBI Cross-Sectional\",\n  \"rob_rating\": \"Low concern\",\n  \"inclusion_decision_human_verified\": \"N (AI-checked only)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"negative (state-level economic regulation associated with lower excess pricing / lower monopoly welfare loss, i.e., improved affordability, relative to local-only regulation)\",\n  \"exposure_full\": \"Residential customers of a municipally-owned water utility subject to state public utility commission (PUC) economic regulation (in the five U.S. states that regulated municipal water rate structures at the state level), United States, 1965 AWWA survey data.\",\n  \"comparator_full\": \"Residential customers of a municipally-owned water utility subject to local-only economic regulation (regulated by city council or water commission, not by a state public utility commission).\",\n  \"estimate_full\": \"Model 1 (unweighted average): locally-regulated 9.6% (SE 0.583, n=88) vs. state-regulated 5.2% (SE 0.818, n=27); difference -4.6 percentage points, t=-4.58 (p<0.01, one-tailed). Model 2 (weighted average): locally-regulated 10.39% (SE 0.786) vs. state-regulated 6.15% (SE 1.35); difference -4.24 percentage points, t=-2.71 (p<0.01, one-tailed).\",\n  \"ai_scope_check_2026-10-14\": \"passed\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: 8498ed6b92b7e5ee8974f9ca61aac7035faf82a1a9daf09fa68e02696e7ea099) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=26123, sha256=8498ed6b92b7e5ee8974f9ca61aac7035faf82a1a9daf09fa68e02696e7ea099]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's Table 2 numbers, negative raw sign, inverse polarity ('higher = worse'), and 'Favourable' direction accurately summarize Bruggink's headline test across both unweighted Model 1 (-4.6 pp, t = -4.58, p < 0.01) and bill-weighted Model 2 (-4.24 pp, t = -2.71, p < 0.01; Table 2, p. 236), after the A26 ruling aligned the exposure pole with state PUC regulation rather than local municipal control. However, coding this study cleanly under 'affordability' ('ai_scope_check_2026-10-14 = passed') glosses over a major construct-validity gap: the outcome is an imputed Harberger allocative deadweight loss triangle (W = (1/2)Qe(P - LRMC)^2/P divided by residential revenue PQ; pp. 231, 236) among already-connected municipal customers, and the paper never reports whether residential water prices (P) or annual bills (PQ, illustrated at $40-$80/year on p. 237) are actually lower in state-regulated utilities. Bruggink explicitly cautions that residential peak capacity demand reflects discretionary 'lawn sprinkling demand' and that setting P = LRMC under economies of scale would require an external subsidy whose economic cost is ignored (p. 238), meaning lower Harberger loss does not automatically translate into household bill affordability. Furthermore, the dossier's effect_sizes.csv falsely labels the estimate 'adjusted' (underpinning an overly generous 'Low concern' JBI cross-sectional risk-of-bias rating): OLS Equations [1], [3], and [6] (pp. 233-235) and Foster and Beattie's Table 1 regional elasticity slopes (Bp, p. 232) only construct the outcome variable, whereas Table 2 is a completely unadjusted two-sample t-test comparing 27 utilities in five states (Maine, Indiana, Montana, West Virginia, Wisconsin; Note 9, p. 239) against 88 utilities elsewhere—mechanically confounding state regulation with lower imputed Midwest demand elasticities (|Bp| = 0.0804 vs. up to 0.2686 in Western regions). Finally, exposure_full and comparator_full misstate the unit of observation as 'Residential customers' when n = 88 and n = 27 are municipally-owned water utilities (residential customer class aggregates).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 9 of 12 (p. 237)",
+        "quote": "locally-regulated utilities, the average welfare loss in Model 1 is 9.6 per cent,"
+      },
+      {
+        "page": "PDF Page 9 of 12 (p. 237)",
+        "quote": "utilities, the average welfare loss was 4.6 per cent lower in Model 1 and 4.24"
+      },
+      {
+        "page": "PDF Page 8 of 12, Table 2 (p. 236)",
+        "quote": "*Statistically discernible at a 1% level in a one-tailed test"
+      },
+      {
+        "page": "PDF Page 10 of 12 (p. 238)",
+        "quote": "This study ignores the economic cost of a subsidy in"
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "All numerical estimates, standard errors, group sample sizes, differences, t-ratios, and significance levels in Claude's SWiM row and dossier match Table 2 (PDF p. 8 / p. 236) and text (pp. 237-238): Model 1 locally-regulated 9.6% (SE .583, n = 88) vs. state-regulated 5.2% (SE .818, n = 27), printed difference -4.6 pp, t = -4.58 (p < 0.01, one-tailed; 46% lower relatively on p. 238); Model 2 locally-regulated 10.39% (SE .786; rounded to 10.4% on p. 237) vs. state-regulated 6.15% (SE 1.35), difference -4.24 pp, t = -2.71 (p < 0.01, one-tailed; 41% lower relatively on p. 238). The dossier's regex check missed 0.818 only because Table 2 omits the leading zero and OCR misread the closing parenthesis as '(.8181' (similarly printing '-2,71*' and 'n - 88' / 'n - 27'). Note that in the source paper itself, 5.2 - 9.6 = -4.4 pp rather than the printed -4.6 pp, though -4.6 / sqrt(0.818^2 + 0.583^2) = -4.58 confirms -4.6 pp is the unrounded difference. Two non-numerical metadata errors appear in the dossier/effect_sizes.csv: (1) n = 88 and n = 27 are municipal utilities (residential class aggregates), not individual residential customers; and (2) Table 2 is an unadjusted two-group t-test, not a covariate-adjusted comparison.",
+    "polarity_or_orientation_issue": "Outcome polarity is correctly coded as 'higher = worse' (larger Harberger monopoly welfare loss % reflects greater supra-marginal-cost pricing distortion), so combining the negative raw difference (-4.6 pp for state-regulated minus locally-regulated utilities) with 'as reported' exposure orientation yields 'Favourable' for state PUC regulation (consistent with Family C regulatory oversight and Note 23's 'regulated' vs. 'unregulated' terminology). As noted in coding_note, orienting the exposure around local municipal autonomy/decentralization (as effect_sizes.csv did prior to the A26 swap) flips the contrast to +4.6 pp ('Unfavourable'). Substantively, equating lower allocative deadweight loss with 'improved affordability' is also tenuous because group tariff/bill levels are unreported and marginal-cost pricing under economies of scale requires unmodeled subsidies (p. 238).",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "borderline_or_indirect_proxy",
+    "specification_multiplicity_flag": false,
+    "study_id": "S1038",
+    "substantive_direction_verdict": "supported"
+  }
+}

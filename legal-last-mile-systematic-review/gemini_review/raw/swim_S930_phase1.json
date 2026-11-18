@@ -1,0 +1,254 @@
+{
+  "study_id": "S930",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "6e66fd075330f6819daae220ed11363aef37e9d9d8ee8821ee4bad856a237995",
+  "input_text_sha256": "122e93018d26f424399478eeb655a907b8bbec824621eb06166d3b2fe0990c23",
+  "prompt_sha256": "dde3e5dc4539a9c23640e850707dab14648cbfa2361d9cf1ac3fc5d9fc9a9c2d",
+  "started_at": "2026-11-18T22:30:05.968364+00:00",
+  "completed_at": "2026-11-18T22:33:53.576766+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S930\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S930\n- Record ID: R7DF2A5059A76\n- Citation: Diaz-Cayeros A, Magaloni B, Ruiz-Euler A (2014). Traditional Governance, Citizen Engagement, and Local Public Goods: Evidence from Mexico. World Development.\n- DOI: 10.1016/j.worlddev.2013.01.008\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: 122e93018d26f424399478eeb655a907b8bbec824621eb06166d3b2fe0990c23) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=84879, sha256=122e93018d26f424399478eeb655a907b8bbec824621eb06166d3b2fe0990c23]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico (State of Oaxaca)",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (Summary)",
+        "quote": "Using a ﬁrst-diﬀerences design we show that these municipalities increase access to electricity, sewerage, and education faster than"
+      },
+      {
+        "page": "PDF p. 4 (Section 2)",
+        "quote": "and faster improvements for sewerage from 2000 to 2010."
+      },
+      {
+        "page": "PDF p. 9 (Section 5)",
+        "quote": "provision of water, both for the change in levels and for the"
+      },
+      {
+        "page": "PDF p. 9 (Section 5)",
+        "quote": "in the period immediate after the reform (1995–2005), and a"
+      },
+      {
+        "page": "PDF p. 10 (Table 4)",
+        "quote": "Treated = 418, Control = 146 (over common support)."
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Kernel propensity-score matching ATT = .086*** (bootstrapped SE = .034, B = 1000; t = 2.55; marked *** in Table 4, p ~ 0.011 < 0.05; N = 564 municipalities over common support: Treated = 418, Control = 146)",
+        "exposure_and_reference": "Traditional indigenous participatory governance legally recognized in 1995 (usos y costumbres, Treated = 418 municipalities) vs. representative political-party governance (parties, Control = 146 municipalities)",
+        "finding_label": "Sewerage coverage — Post-reform first difference in levels (Δ, 1995–2005) [Primary post-reform sanitation specification]",
+        "outcome_and_polarity": "First difference (Δ, change in levels from 1995 to 2005) in the proportion/percentage of municipal households with sewerage; higher values mean BETTER household sanitation access growth",
+        "raw_sign": "positive",
+        "table_or_page": "Table 4, PDF p. 10 (prose discussion PDF p. 9)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Kernel propensity-score matching ATT = 9.05*** (bootstrapped SE = 2.18, B = 1000; t = 4.15, p < 0.01; N = 564 municipalities over common support: Treated = 418, Control = 146)",
+        "exposure_and_reference": "Traditional indigenous participatory governance (usos y costumbres, Treated = 418 municipalities) vs. political-party governance (parties, Control = 146 municipalities)",
+        "finding_label": "Sewerage coverage — Post-reform rate of change (%Δ, 1995–2005)",
+        "outcome_and_polarity": "Rate of change (%Δ, difference in levels conditional on initial value, 1995–2005) in percentage of municipal households with sewerage; higher values mean BETTER/faster household sanitation access growth",
+        "raw_sign": "positive",
+        "table_or_page": "Table 4, PDF p. 10 (prose discussion PDF p. 9)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Kernel propensity-score matching ATT = 3.401*** (bootstrapped SE = .871, B = 1000; t = 3.905, p < 0.01; N = 564 municipalities over common support: Treated = 418, Control = 146)",
+        "exposure_and_reference": "Traditional indigenous participatory governance (usos y costumbres, Treated = 418 municipalities) vs. political-party governance (parties, Control = 146 municipalities)",
+        "finding_label": "Sewerage coverage — Post-reform decade rate of change (%Δ, 2000–2010)",
+        "outcome_and_polarity": "Rate of change (%Δ, 2000–2010) in percentage of municipal households with sewerage; higher values mean BETTER/faster household sanitation access growth",
+        "raw_sign": "positive",
+        "table_or_page": "Table 4, PDF p. 10 (prose discussion PDF pp. 4, 9–10)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Kernel propensity-score matching ATT = .008 (bootstrapped SE = .022, B = 1000; t = .371, p > 0.10, statistically non-significant; N = 564 municipalities: Treated = 418, Control = 146)",
+        "exposure_and_reference": "Traditional indigenous participatory governance (usos y costumbres, Treated = 418 municipalities) vs. political-party governance (parties, Control = 146 municipalities)",
+        "finding_label": "Sewerage coverage — Post-reform decade first difference in levels (Δ, 2000–2010)",
+        "outcome_and_polarity": "First difference (Δ, change in levels from 2000 to 2010) in percentage of municipal households with sewerage; higher values mean BETTER household sanitation access growth",
+        "raw_sign": "null",
+        "table_or_page": "Table 4, PDF p. 10 (prose discussion PDF pp. 9–10)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "All four estimates statistically non-significant (all p > 0.10): 1990–2000 Δ ATT = .037 (SE = .035, t = 1.077); 1990–2000 %Δ ATT = 1.27 (SE = 1.72, t = .74); 1990–2010 Δ ATT = .04 (SE = .049, t = .821); 1990–2010 %Δ ATT = .851 (SE = 2.99, t = .285). Note: Elsevier PDF text extraction strips minus signs on negative numbers, so true signs of unstarred null point estimates cannot be verified from the text layer alone, but all have |t| <= 1.077. N = 564 (Treated = 418, Control = 146).",
+        "exposure_and_reference": "Traditional indigenous participatory governance (usos y costumbres, Treated = 418 municipalities) vs. political-party governance (parties, Control = 146 municipalities)",
+        "finding_label": "Sewerage coverage — Early transition (1990–2000) and full 20-year (1990–2010) windows (Δ and %Δ)",
+        "outcome_and_polarity": "First difference (Δ) and rate of change (%Δ) in percentage of municipal households with sewerage over 1990–2000 and 1990–2010; higher values mean BETTER household sanitation access growth",
+        "raw_sign": "null",
+        "table_or_page": "Table 4, PDF p. 10"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "All eight estimates across four periods and both functional forms are small and statistically non-significant (all p > 0.10, |t| <= 0.894): 1990–2000 Δ ATT = .012 (SE = .022, t = .538), %Δ ATT = .062 (SE = .129, t = .485); 2000–2010 Δ ATT = .000 (SE = .054, t = .006), %Δ ATT = 2.64 (SE = 4.19, t = .63); 1995–2005 Δ ATT = .041 (SE = 0.049, t = .836), %Δ ATT = .417 (SE = 0.466, t = .894); 1990–2010 Δ ATT = .027 (SE = 0.03, t = .893), %Δ ATT = .17 (SE = 0.285, t = .595). (Signs of unstarred null cells may have minus signs stripped in PDF text extraction, but all eight are statistically null.) N = 564 (Treated = 418, Control = 146).",
+        "exposure_and_reference": "Traditional indigenous participatory governance (usos y costumbres, Treated = 418 municipalities) vs. political-party governance (parties, Control = 146 municipalities)",
+        "finding_label": "Water coverage — All four time windows (1990–2000, 2000–2010, 1995–2005, 1990–2010; both Δ and %Δ) [Primary water specifications]",
+        "outcome_and_polarity": "First difference (Δ) and rate of change (%Δ) in percentage of municipal households with water; higher values mean BETTER household water access growth",
+        "raw_sign": "null",
+        "table_or_page": "Table 4, PDF p. 10 (prose discussion PDF p. 9)"
+      }
+    ],
+    "headline_direction_for_household_access": "mixed",
+    "headline_raw_sign": "mixed",
+    "headline_result_summary": "Using kernel propensity-score matching and first-differences across 564 municipalities in Oaxaca, Mexico (418 governed by legally recognized traditional indigenous participatory governance [usos y costumbres] vs. 146 governed by political parties over common support), WASH impacts diverge sharply between water and sanitation and across time horizons: (1) household water coverage shows null effects across all 8 specifications (both level changes Δ and rates of change %Δ in 1990–2000, 2000–2010, 1995–2005, and 1990–2010; all |t| <= 0.894); (2) household sewerage coverage shows strongly positive, statistically significant gains favorable to access immediately after the 1995 reform in 1995–2005 (Δ ATT = .086***, SE = .034, t = 2.55; %Δ ATT = 9.05***, SE = 2.18, t = 4.15) and for the 2000–2010 rate of change (%Δ ATT = 3.401***, SE = .871, t = 3.905), which form the basis of the paper's headline claim that usos municipalities expand sewerage faster, whereas sewerage level change in 2000–2010 (Δ ATT = .008, t = .371) and both Δ and %Δ over 1990–2000 and the full 1990–2010 period (|t| <= 1.077) are statistically null.",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Outcome split (Water vs. Sewerage): The abstract/summary claims usos municipalities increase sewerage faster while omitting water; in Table 4 (PDF p. 10), Water is 0/8 statistically significant (purely null), whereas Sewerage is 3/8 positive and significant (1995–2005 Δ and %Δ, and 2000–2010 %Δ) and 5/8 null (including 2000–2010 Δ and full-period 1990–2010 Δ and %Δ). Thus a synthesis coding water alone gets 'null', coding post-reform sewerage gets 'favorable_to_access', and coding overall WASH or full-table sewerage gets 'mixed'. 2. Elsevier PDF minus-sign stripping bug: The born-digital PDF text layer drops Unicode minus signs (−) throughout tables and notes (demonstrated by Table 2 'Distance city' and 'Income (res.)', Table 4 'Illiteracy' 1990–2000 %Δ, and Table 5 'Female Council Members'/'Female mayors', all confirmed negative in prose). Crucially, the authors' prose (PDF pp. 1, 4, 9–10) explicitly confirms that all three statistically significant Sewerage ATTs (1995–2005 Δ = .086***, 1995–2005 %Δ = 9.05***, 2000–2010 %Δ = 3.401***) are POSITIVE; for unstarred non-significant cells (all |t| <= 1.077), signs cannot be verified from text alone, though all are statistically null. 3. Qualitative water-cut sanction vs. quantitative outcome: Section 3(e) (PDF p. 6) notes ethnographically that community sanctions for refusing mandatory service historically included 'disruption in the supply of water' (gradually abandoned); coders must not confuse this qualitative detail with the quantitative municipal census water-coverage outcome in Table 4. 4. Star threshold quirk: Sewerage 1995–2005 Δ has t = 2.55 (two-sided normal p ~ 0.0108) printed with '***' (defined as .01 in table note), still clearly significant at p < 0.05.",
+    "study_design": "Observational quasi-experimental study combining probit propensity-score kernel matching (bootstrapped SEs, B = 1,000) with panel first-differences (Δ) and rates of change (%Δ) across Mexican census/count waves (1990, 1995, 2000, 2005, 2010) before and after Oaxaca's 1995 constitutional reform recognizing usos y costumbres.",
+    "study_id": "S930",
+    "unit_and_sample_size": "Municipalities in Oaxaca, Mexico. Propensity score probit estimated on n = 570 municipalities (Table 2, PDF p. 8); 6 non-usos municipalities fell outside the common support [.027, .997] and were dropped, yielding primary analytic sample N = 564 municipalities over common support (Treated = 418 usos y costumbres municipalities; Control = 146 party-governed municipalities; Table 3 PDF p. 9 and Table 4 PDF p. 10). Secondary political-participation matching in Table 5 (PDF p. 10) reports Treated = 412, Control = 228; descriptive 2009 citizen survey in Table 1 (PDF p. 6) has n = 362 to 568 respondents (no WASH outcomes)."
+  }
+}

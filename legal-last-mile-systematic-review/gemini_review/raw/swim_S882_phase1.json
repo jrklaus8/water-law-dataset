@@ -1,0 +1,263 @@
+{
+  "study_id": "S882",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "35d54140125beb341a58b72b769fb4bb14f44b6b2f027bad24011705d2e39213",
+  "input_text_sha256": "829e5177fad8727a9b0a9feaf40c26f0514450b5ea832971e364963299bc2392",
+  "prompt_sha256": "d94750ab02db66c9329829403e7c8da8a81a21845dc01cb196757abca438ded5",
+  "started_at": "2026-11-18T22:27:00.059851+00:00",
+  "completed_at": "2026-11-18T22:29:00.429250+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S882\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S882\n- Record ID: R59329720D787\n- Citation: Mason LR (2014). Examining Relationships between Household Resources and Water Security in an Urban Philippine Community. Journal of the Society for Social Work and Research.\n- DOI: 10.1086/678923\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: 829e5177fad8727a9b0a9feaf40c26f0514450b5ea832971e364963299bc2392) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=75409, sha256=829e5177fad8727a9b0a9feaf40c26f0514450b5ea832971e364963299bc2392]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Philippines",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 16 (p. 503)",
+        "quote": "a household having its own BWD metered connection has the"
+      },
+      {
+        "page": "PDF p. 14 (p. 501)",
+        "quote": "report extreme ease in accessing water than households with no BWD connection."
+      },
+      {
+        "page": "PDF p. 15 (p. 502)",
+        "quote": "with a shared/other connection are 2.71 times as likely to have affordable expenses,"
+      },
+      {
+        "page": "PDF p. 16 (p. 503)",
+        "quote": "No associations with homeownership. No statistically signiﬁcant associations"
+      },
+      {
+        "page": "PDF p. 18 (p. 505)",
+        "quote": "must bear an estimated ₱4,000 to ₱8,000 in additional costs for installing pipes"
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Linear regression (multiply imputed, adjusted for financial, physical, social, and demographic controls, clustered by compound with finite population correction; N = 396): Est. = 0.24 (SE = 0.07), p < .01 (**), corresponding to a 27.2% increase in reported liters per capita per day consumption (Table 2, PDF pp. 13-14).",
+        "exposure_and_reference": "Own household metered connection to Baguio Water District municipal utility (BWD connection = Household [43.2%]) vs. no BWD connection (None [25.8%], referent)",
+        "finding_label": "Own household BWD municipal utility connection -> Reported water consumption (primary)",
+        "outcome_and_polarity": "Logged reported household water consumption in liters per capita per day during a typical dry-season week/month (higher numerical values = BETTER household water quantity/consumption)",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF pp. 13-14 (pp. 500-501)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Linear regression (adjusted, N = 396): Est. = 0.35 (SE = 0.13), p < .01 (**), indicating mean PCA cleanliness score is 0.35 SD higher (Table 2, PDF pp. 13-14).",
+        "exposure_and_reference": "Own household metered connection to Baguio Water District municipal utility (BWD connection = Household) vs. no BWD connection (None, referent)",
+        "finding_label": "Own household BWD municipal utility connection -> Perceived water cleanliness (primary)",
+        "outcome_and_polarity": "Perceived cleanliness principal component score across 5 household water uses rated 0 (not clean at all) to 10 (completely clean) (higher numerical values = BETTER perceived water quality/cleanliness)",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF pp. 13-14 (pp. 500-501)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Logistic regression (adjusted, N = 396): Est. = 0.77 (SE = 0.26), OR = 2.16, p < .01 (**) (Table 2, PDF pp. 13-14).",
+        "exposure_and_reference": "Own household metered connection to Baguio Water District municipal utility (BWD connection = Household) vs. no BWD connection (None, referent)",
+        "finding_label": "Own household BWD municipal utility connection -> Perceived ease of water access (primary)",
+        "outcome_and_polarity": "Perceived ease of obtaining water dichotomized as 1 = extremely easy (scores 8-10 on 0-10 scale) vs. 0 = not extremely easy (scores 0-7) (higher numerical values = BETTER ease of access)",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF pp. 13-14 (pp. 500-501)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Logistic regression (adjusted, N = 396): Est. = 1.01 (SE = 0.42), OR = 2.76, p < .05 (*) (Table 2, PDF pp. 13, 15).",
+        "exposure_and_reference": "Own household metered connection to Baguio Water District municipal utility (BWD connection = Household) vs. no BWD connection (None, referent)",
+        "finding_label": "Own household BWD municipal utility connection -> Water affordability (primary)",
+        "outcome_and_polarity": "Water affordability dichotomized as 1 = monthly household water expenses are 10.0% or less of household income vs. 0 = greater than 10.0% of household income (higher numerical values = BETTER household water affordability / lower cost burden)",
+        "raw_sign": "positive",
+        "table_or_page": "Table 2, PDF pp. 13, 15 (pp. 500, 502)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Adjusted regressions (N = 396, Table 2, PDF pp. 13-15): Reported consumption Est. = −0.23 (SE = 0.07), p < .001 (***) (20.8% decrease in L/capita/day); Perceived cleanliness Est. = 0.18 (SE = 0.14), p >= .05 (null); Perceived ease Est. = 0.41 (SE = 0.27), OR = 1.51, p >= .05 (null); Affordability Est. = 1.00 (SE = 0.44), OR = 2.71, p < .05 (*).",
+        "exposure_and_reference": "Shared or other access to a BWD metered connection (BWD connection = Shared/other way [31.1%], e.g., through a neighbor or relative) vs. no BWD connection (None [25.8%], referent)",
+        "finding_label": "Shared/other BWD municipal utility connection -> Four water security outcomes (mixed across outcomes)",
+        "outcome_and_polarity": "Four household water security outcomes (logged consumption L/capita/day, perceived cleanliness PCA score, perceived ease [1 = 8-10], affordability [1 = expenses <= 10.0% of income]; for all four, higher numerical values = BETTER water security/affordability)",
+        "raw_sign": "mixed",
+        "table_or_page": "Table 2, PDF pp. 13-15 (pp. 500-502)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Adjusted regressions (N = 396, Table 2, PDF pp. 13, 16): Reported consumption Est. = 0.09 (SE = 0.07), p >= .05; Perceived cleanliness Est. = 0.20 (SE = 0.12), p >= .05; Perceived ease Est. = −0.07 (SE = 0.23), OR = 0.94, p >= .05; Affordability Est. = −0.26 (SE = 0.46), OR = 0.77, p >= .05.",
+        "exposure_and_reference": "Homeownership status (1 = owns home [55.4%] vs. 0 = does not own home / rents)",
+        "finding_label": "Homeownership (housing tenure) -> Four water security outcomes (all null)",
+        "outcome_and_polarity": "Four household water security outcomes (logged consumption, perceived cleanliness PCA score, perceived ease [1 = extremely easy], affordability [1 = expenses <= 10.0% of income]; higher values = BETTER water security/affordability)",
+        "raw_sign": "null",
+        "table_or_page": "Table 2, PDF pp. 13, 16 (pp. 500, 503)"
+      },
+      {
+        "access_valence": "unfavorable_to_access",
+        "exact_estimate": "Qualitative descriptive findings (n = 18 interviews, no statistical test; PDF pp. 18-19): ₱6,000 utility connection fee + ₱4,000 to ₱8,000 pipe installation cost = ₱10,000 to ₱14,000 ($234 to $327) total upfront cost (vs. ₱15,174 mean monthly income); typical installment plan requires ₱3,000 initial payment + ₱3,000 over 3 months, whereas low-income unconnected interviewees reported affording at most ₱300 to ₱500 ($7 to $12) per month.",
+        "exposure_and_reference": "Upfront BWD utility connection fees, piping costs, case-by-case installment plan terms, and application processing / informal payment barriers (qualitative analysis)",
+        "finding_label": "Utility connection fees, installment terms, and administrative/informal barriers -> Household ability to obtain BWD connection (qualitative)",
+        "outcome_and_polarity": "Ability of low-income households to obtain a formal household BWD metered water connection (barriers exclude low-income households and force reliance on costlier delivery trucks [4x BWD price], purified jugs [11x BWD price], or neighbor resale)",
+        "raw_sign": "non_directional",
+        "table_or_page": "PDF pp. 6, 18-19 (pp. 493, 505-506)"
+      }
+    ],
+    "headline_direction_for_household_access": "favorable_to_access",
+    "headline_raw_sign": "positive",
+    "headline_result_summary": "In a mixed-methods study of 396 randomly sampled households (and 18 in-depth interviews) in Pinget, Baguio City, Philippines, the headline institutional/infrastructure finding is that having an own-household metered connection to the quasi-governmental municipal water utility (Baguio Water District, BWD)—relative to no BWD connection—is positively and significantly associated with all four household water security outcomes: +27.2% higher water consumption (Est. = 0.24, SE = 0.07, p < .01), higher perceived cleanliness (Est. = 0.35, SE = 0.13, p < .01), higher odds of extreme ease of access (OR = 2.16, p < .01), and higher odds of affordable water expenses <=10% of income (OR = 2.76, p < .05). However, shared/other BWD connections show mixed associations (higher affordability OR = 2.71, p < .05, but 20.8% lower consumption Est. = −0.23, p < .001, and null cleanliness and ease), homeownership (tenure) has statistically null associations across all four outcomes, and qualitative interviews identify high upfront connection costs (₱6,000 fee plus ₱4,000–₱8,000 piping = ₱10,000–₱14,000), restrictive case-by-case installment plans, slow bureaucracy, and informal \"under the table\" payment practices as barriers excluding low-income households from connecting.",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Exposure-selection divergence across review families: Depending on which review construct S882 was mapped to, the direction differs sharply: (a) Own-household municipal utility connection (BWD vs. none) is uniformly positive/favorable across all 4 outcomes; (b) Shared/other BWD connection vs. none is mixed (+affordability OR = 2.71, −consumption Est. = −0.23, null cleanliness and ease); (c) Homeownership (property tenure, 1 = yes vs. 0 = no) is completely null across all 4 outcomes (Est. = 0.09, 0.20, −0.07 [OR 0.94], −0.26 [OR 0.77], all p >= .05); and (d) Upfront utility connection fees (₱10,000–₱14,000 combined cost), restrictive installment plans, and informal \"under the table\" application barriers are qualitative findings showing exclusionary/unfavorable barriers to access (not estimated as regression variables). 2. Affordability polarity trap: Affordability is coded 1 = water expenses <= 10.0% of household income and 0 = > 10.0% of income, so positive coefficients / OR > 1 indicate BETTER affordability (lower expenditure share), whereas negative coefficients (e.g., logged tank/drum capacity Est. = −0.61, OR = 0.54, p < .05) indicate WORSE affordability (higher cost burden). 3. Social network reverse-causality/question-wording artifact: Money-borrowing network of 2+ HHs vs. 0 HHs has a negative association with perceived ease (Est. = −0.91, OR = 0.40, p < .05; authors report inverse OR = 2.49 for 0 HHs vs. 2+ HHs), which the author notes reflects water-secure households answering \"zero\" because they never needed to borrow.",
+    "study_design": "Mixed-methods cross-sectional study: stratified random household survey analyzed via multiple linear and logistic regression with multiple imputation (10 datasets), compound-level clustering, and finite population correction, paired with purposive in-depth qualitative interviews",
+    "study_id": "S882",
+    "unit_and_sample_size": "Households (self-identified household water managers) in Pinget neighborhood, Baguio City: N = 396 surveyed households (from 416 eligible sampled out of 1,793 housing units; 95.2% participation rate) and n = 18 purposively sampled qualitative interview participants"
+  }
+}

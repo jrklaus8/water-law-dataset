@@ -1,0 +1,263 @@
+{
+  "study_id": "S1032",
+  "phase": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_blind_reader, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "66af33435710d33447d14948b93a6f47db57dc87de954863d7f40fd0ac49f68b",
+  "input_text_sha256": "deb65ded8b7df081f9bbae24f48a7eeecf986600ee3a333e13458c386bd55688",
+  "prompt_sha256": "e04b270c0c0fdd588158ba442d596be4cbe6731532615b57ae6b5af36ddf7dc5",
+  "started_at": "2026-11-18T22:44:35.938371+00:00",
+  "completed_at": "2026-11-18T22:47:11.679188+00:00",
+  "raw_request": {
+    "type_name": "swim_blind_reader",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_readability",
+        "study_design",
+        "country",
+        "unit_and_sample_size",
+        "headline_result_summary",
+        "headline_raw_sign",
+        "headline_direction_for_household_access",
+        "findings",
+        "specification_or_coding_pitfalls",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_readability": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "unreadable_scan"
+          ]
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "unit_and_sample_size": {
+          "type": "string"
+        },
+        "headline_result_summary": {
+          "type": "string"
+        },
+        "headline_raw_sign": {
+          "type": "string",
+          "enum": [
+            "positive",
+            "negative",
+            "null",
+            "mixed",
+            "non_directional",
+            "cannot_tell"
+          ]
+        },
+        "headline_direction_for_household_access": {
+          "type": "string",
+          "enum": [
+            "favorable_to_access",
+            "unfavorable_to_access",
+            "null",
+            "mixed",
+            "ambiguous_orientation",
+            "indirect_or_non_access_outcome",
+            "cannot_tell"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "finding_label",
+              "table_or_page",
+              "exposure_and_reference",
+              "outcome_and_polarity",
+              "exact_estimate",
+              "raw_sign",
+              "access_valence"
+            ],
+            "properties": {
+              "finding_label": {
+                "type": "string"
+              },
+              "table_or_page": {
+                "type": "string"
+              },
+              "exposure_and_reference": {
+                "type": "string"
+              },
+              "outcome_and_polarity": {
+                "type": "string"
+              },
+              "exact_estimate": {
+                "type": "string"
+              },
+              "raw_sign": {
+                "type": "string",
+                "enum": [
+                  "positive",
+                  "negative",
+                  "null",
+                  "mixed",
+                  "non_directional"
+                ]
+              },
+              "access_valence": {
+                "type": "string",
+                "enum": [
+                  "favorable_to_access",
+                  "unfavorable_to_access",
+                  "null",
+                  "mixed",
+                  "ambiguous_orientation",
+                  "indirect_or_non_access_outcome"
+                ]
+              }
+            }
+          }
+        },
+        "specification_or_coding_pitfalls": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SOURCE-PAPER READING (TASK E PHASE 1) — STUDY S1032\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the source paper text below.\n\n== BIBLIOGRAPHIC METADATA (prior SWiM family, exposure/outcome choice, and direction coding withheld) ==\n- Study ID: S1032\n- Record ID: R309188806D95\n- Citation: Russ LW, Takahashi LM (2013). Exploring the Influence of Participation on Programme Satisfaction: Lessons from the Ahmedabad Slum Networking Project. Urban Studies 50(4):691-708.\n- DOI: 10.1177/0042098012456248\n\n== INSTRUCTIONS ==\nRead the source paper text below from scratch, completely independently of any prior extraction or synthesis coding, and identify:\n1. Study design, country, population / unit of analysis, and primary analytic sample size(s) reported in the paper.\n2. Whether the paper text is readable full text (`\"full text\"`), partial/OCR-limited (`\"partial_or_scan\"`), or unreadable/no text layer (`\"unreadable_scan\"`). If unreadable without text, do NOT guess any results—mark `headline_direction_for_household_access` as `\"cannot_tell\"` and explain why.\n3. The **primary / headline empirical finding(s)** in the paper that examine how a legal, administrative, institutional, regulatory, utility-ownership, tariff/subsidy, land-tenure/recognition, or participation/governance factor relates to water or sanitation service access, connection, coverage, reliability, continuity, quality, or affordability.\n   - List each relevant empirical finding in `findings` (include both the primary/headline specification and any important alternative specifications, outcomes, or adjusted models that show null, attenuated, or opposite-signed results!).\n   - For each finding, state explicitly:\n     * `exposure_and_reference`: exact exposure variable and comparator/reference group as coded by the authors.\n     * `outcome_and_polarity`: exact outcome variable AND whether higher numerical values mean BETTER household access/affordability (e.g., higher piped water coverage) or WORSE household access/affordability (e.g., higher water tariff/bill burden, higher disconnection, higher service failure).\n     * `exact_estimate`: verbatim statistical result (coefficient, OR, RR, DiD estimate, group means, SE/CI/t-stat/p-value, adjusted vs. unadjusted, N, and exact Table/Page).\n     * `raw_sign`: `\"positive\"`, `\"negative\"`, `\"null\"` (statistically non-significant at conventional p < 0.05 unless authors explicitly treat otherwise—note borderline p < 0.10), `\"mixed\"`, or `\"non_directional\"`.\n     * `access_valence`: in substantive household-access terms, does the focal legal/institutional mechanism/intervention correspond to `\"favorable_to_access\"`, `\"unfavorable_to_access\"`, `\"null\"`, `\"mixed\"`, or `\"ambiguous_orientation\"` (e.g., public vs. private ownership or decentralization where \"which pole is the exposure\" is symmetrical)?\n4. Synthesize the overall `headline_result_summary` and `headline_direction_for_household_access` from the paper alone, plus `specification_or_coding_pitfalls` (any traps where a careless coder could flip the sign, confuse utility price with household access, over-interpret a p > 0.05 coefficient, or pick one significant row out of mostly null tables).\n5. `evidence_quotes`: Provide 2 to 5 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero paraphrasing) from `== SOURCE PAPER TEXT ==` with exact PDF page/table locations.\n\n== SOURCE PAPER TEXT (SHA-256: deb65ded8b7df081f9bbae24f48a7eeecf986600ee3a333e13458c386bd55688) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=57929, sha256=deb65ded8b7df081f9bbae24f48a7eeecf986600ee3a333e13458c386bd55688]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 2 (Abstract, p. 691)",
+        "quote": "Survey data collected from participants in the Ahmedabad Slum Networking Project\n(SNP) is analysed to examine the importance of community participation in\nexplaining respondent complaints about the project overall and with the specific\npublic services provided."
+      },
+      {
+        "page": "PDF Page 10 (p. 699)",
+        "quote": "In other\nwords, perceived satisfaction of services\nmay only partially capture actual quality of\nservice provision."
+      },
+      {
+        "page": "PDF Page 12 (p. 700)",
+        "quote": "Of the four variables included in this\nmodel, only attend is statistically significant."
+      },
+      {
+        "page": "PDF Page 14 (p. 703)",
+        "quote": "These results\nsuggest that respondents who are members\nof CBOs with a close partnering relationship\nwith their sponsoring NGO, and/or have the\nability to communicate their needs to either\nthat NGO or to the municipality, are less\nlikely to have complained about the quality\nor quantity of their water services."
+      },
+      {
+        "page": "PDF Page 15 (p. 704)",
+        "quote": "As in the water services model,\nrespondents who report that their CBO has\nfrequently contacted their sponsoring NGO\nto request service assistance (ngo_com) are\nless likely to make negative comments about\ntheir sewerage services than respondents who\ndo not report that their CBO is in frequent\ncontact with the sponsoring NGO."
+      }
+    ],
+    "findings": [
+      {
+        "access_valence": "null",
+        "exact_estimate": "Adjusted logistic regression: Odds Ratio (OR) = 1.44, S.E. = 0.28, statistically non-significant (p >= 0.05; no significance asterisks), N = 277; Model LR chi2(7) = 49.01 (p < 0.001), Pseudo R2 = 0.168 (Table 6, PDF p. 13 / journal p. 702). Note: In the sewerage complaints model (N = 300), attend was excluded (—) because it was not statistically significant in bivariate screening (PDF p. 11 / p. 700).",
+        "exposure_and_reference": "Sustained CBO participation (attend): ordinal frequency of CBO meeting attendance in the past 6 months (0 = None [61.3%], 1 = One to Three [23.3%], 2 = Four to Six [5.7%], 3 = More than Six [9.7%]).",
+        "finding_label": "Sustained CBO meeting attendance on water (and sewerage) quality/quantity complaints",
+        "outcome_and_polarity": "Respondent complains (makes an open-ended negative comment) about poor quality or quantity of water services (binary: 1 = Yes [20.7%], 0 = No [79.3%]). Higher numerical values / OR > 1 indicate MORE complaints (WORSE perceived water service quality/quantity); OR < 1 indicates FEWER complaints (BETTER perceived water service quality/quantity).",
+        "raw_sign": "null",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Pages 11, 14 (pp. 700, 703)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Adjusted logistic regression: Odds Ratio (OR) = 0.60*, S.E. = 0.14, p < 0.05, N = 277 (Table 6, PDF p. 13 / journal p. 702; text PDF p. 14 / p. 703).",
+        "exposure_and_reference": "Frequency of municipal redress contact (amc_com): ordinal frequency with which respondent's CBO approached the municipality (Ahmedabad Municipal Corporation) within the last 12 months to improve community conditions (1 = Never [24.7%], 2 = Sometimes [38.3%], 3 = Regularly [37.0%]).",
+        "finding_label": "CBO contact with municipality for redress on water quality/quantity complaints",
+        "outcome_and_polarity": "Respondent complains about poor quality or quantity of water services (binary: 1 = Yes, 0 = No). Higher values / OR > 1 mean MORE water complaints (WORSE perceived water service); OR < 1 means FEWER water complaints (BETTER perceived water service / fewer reported water problems).",
+        "raw_sign": "negative",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Page 14 (p. 703)"
+      },
+      {
+        "access_valence": "null",
+        "exact_estimate": "Adjusted logistic regression: Odds Ratio (OR) = 1.56, S.E. = 0.42, statistically non-significant (p >= 0.05), N = 300; Model LR chi2(5) = 34.30 (p < 0.001), Pseudo R2 = 0.159 (Table 6, PDF p. 13 / journal p. 702). (Also non-significant for overall SNP quality 'Very Satisfactory': OR = 1.46, S.E. = 0.30, N = 298; whereas binary municipal contact amccntct significantly INCREASES street lighting complaints: OR = 8.33*, S.E. = 6.94, p < 0.05, N = 300.)",
+        "exposure_and_reference": "Frequency of municipal redress contact (amc_com): ordinal frequency with which CBO approached the municipality within the last 12 months to improve community conditions (1 = Never, 2 = Sometimes, 3 = Regularly).",
+        "finding_label": "CBO contact with municipality for redress on sewerage quality/quantity complaints",
+        "outcome_and_polarity": "Respondent complains about poor quality or quantity of sewerage services (binary: 1 = Yes [11.7%], 0 = No [88.3%]). Higher values / OR > 1 mean MORE sewerage complaints (WORSE perceived sewerage service); OR < 1 means FEWER sewerage complaints (BETTER perceived sewerage service).",
+        "raw_sign": "null",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Pages 14–15 (pp. 703–704)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Adjusted logistic regression: Water complaints model (N = 277): OR = 0.56*, S.E. = 0.13, p < 0.05; Sewerage complaints model (N = 300): OR = 0.50**, S.E. = 0.13, p < 0.01 (Table 6, PDF p. 13 / journal p. 702; text PDF pp. 14–15 / pp. 703–704). (Excluded from overall SNP satisfaction model; borderline OR = 0.60, S.E. = 0.16, p = 0.053 for street lighting complaints.)",
+        "exposure_and_reference": "Frequency of NGO redress contact (ngo_com): ordinal frequency with which CBO approached its sponsoring NGO within the last 12 months to improve community conditions (1 = Never [47.3%], 2 = Sometimes [23.0%], 3 = Regularly [29.7%]).",
+        "finding_label": "CBO contact with sponsoring NGO for service assistance on water and sewerage complaints",
+        "outcome_and_polarity": "Respondent complains about poor quality or quantity of water services (1 = Yes, 0 = No; N = 277) and sewerage services (1 = Yes, 0 = No; N = 300). Higher values / OR > 1 mean MORE complaints (WORSE perceived service); OR < 1 means FEWER complaints (BETTER perceived service).",
+        "raw_sign": "negative",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Pages 14–15 (pp. 703–704)"
+      },
+      {
+        "access_valence": "favorable_to_access",
+        "exact_estimate": "Adjusted logistic regression (Water complaints, N = 277): ngo_evl2 OR = 0.15*, S.E. = 0.11, p < 0.05. By contrast, NGO decision-making dominance (d_ngo: NGO makes all major decisions for CBO, Yes = 76.6% vs. No = 23.4%) is null for water complaints (OR = 0.86, S.E. = 0.46, p >= 0.05) and overall SNP satisfaction (OR = 1.02, S.E. = 0.34), and both ngo_evl2 and d_ngo failed bivariate significance screening for sewerage complaints (Table 6, PDF p. 13 / journal p. 702).",
+        "exposure_and_reference": "CBO–NGO data/evaluation partnership (ngo_evl2): binary indicator that respondent's CBO works with an NGO by collecting data or evaluating programmes (1 = Yes [19.4%] vs. 0 = No [80.6%]).",
+        "finding_label": "CBO–NGO evaluation partnership (and NGO decision dominance) on water complaints",
+        "outcome_and_polarity": "Respondent complains about poor quality or quantity of water services (binary: 1 = Yes, 0 = No; N = 277). Higher values / OR > 1 mean MORE water complaints (WORSE perceived water service); OR < 1 means FEWER water complaints (BETTER perceived water service).",
+        "raw_sign": "negative",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Page 14 (p. 703)"
+      },
+      {
+        "access_valence": "indirect_or_non_access_outcome",
+        "exact_estimate": "Adjusted logistic regression: attend OR = 2.27***, S.E. = 0.08, p < 0.001, N = 298; other included covariates non-significant (distance OR = 1.07, S.E. = 0.14; amc_com OR = 1.46, S.E. = 0.30; d_ngo OR = 1.02, S.E. = 0.34); Model LR chi2(4) = 34.27 (p < 0.001), Pseudo R2 = 0.102 (Table 6, PDF p. 13 / journal p. 702; text PDF pp. 11–14 / pp. 700–703).",
+        "exposure_and_reference": "Sustained CBO participation (attend): ordinal frequency of CBO meeting attendance in the past 6 months (0 = None to 3 = More than Six).",
+        "finding_label": "Sustained CBO meeting attendance on overall SNP programme quality satisfaction",
+        "outcome_and_polarity": "Respondent rates overall quality of the Slum Networking Project (snp_qual2) as 'Very Satisfactory' (binary: 1 = 'Very Satisfactory' [74.9%] vs. 0 = 'Satisfactory' [23.1%] or 'Poor' [2.0%]; N = 298). Higher values / OR > 1 mean HIGHER overall subjective programme satisfaction across all bundled physical (water, sewerage, paving, drainage, street lighting, waste, landscaping) and social services.",
+        "raw_sign": "positive",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Pages 9, 11–14 (pp. 698, 700–703)"
+      },
+      {
+        "access_valence": "mixed",
+        "exact_estimate": "Adjusted logistic regressions (Table 6, PDF p. 13 / journal p. 702): Distance in miles from central municipal offices (distance) increases water complaints: OR = 1.44*, S.E. = 0.21, p < 0.05 (N = 277; unfavorable for peripheral slums), null for overall SNP satisfaction (OR = 1.07, S.E. = 0.14). Density of SNP projects per city sub-region (density) reduces sewerage complaints: OR = 0.82***, S.E. = 0.05, p < 0.001 (N = 300; favorable with higher project clustering). Relative neighbourhood expenditure ratio (areawealth) reduces water complaints (OR = 0.07**, S.E. = 0.06, p < 0.01) but is null for sewerage (OR = 4.69, S.E. = 4.47); Gujarati primary language (majority linguistic group) increases sewerage complaints (OR = 4.89**, S.E. = 2.73, p < 0.01).",
+        "exposure_and_reference": "Spatial/institutional and area characteristics: distance in miles from central municipal offices (distance, range 1.3–5.9) and density of SNP projects per city sub-region (density, range 5–15).",
+        "finding_label": "Spatial/institutional project location and clustering (distance to municipal offices and regional SNP project density) on water and sewerage complaints",
+        "outcome_and_polarity": "Respondent complains about poor quality or quantity of water (N = 277) or sewerage (N = 300) services (1 = Yes, 0 = No). Higher values / OR > 1 mean MORE complaints (WORSE perceived service); OR < 1 means FEWER complaints (BETTER perceived service).",
+        "raw_sign": "mixed",
+        "table_or_page": "Table 6, PDF Page 13 (p. 702); text PDF Pages 14–15 (pp. 703–704)"
+      }
+    ],
+    "headline_direction_for_household_access": "mixed",
+    "headline_raw_sign": "mixed",
+    "headline_result_summary": "In cross-sectional logistic regressions of 300 community-based organisation (CBO) leaders and members across 38 upgraded neighbourhoods in the Ahmedabad Slum Networking Project (SNP), the relationship between participatory governance and water/sanitation outcomes is mixed across mechanisms and outcomes (and relies on subjective satisfaction and open-ended service complaints rather than audited physical access). Sustained internal CBO participation (meeting attendance, attend) increases odds of rating overall multi-sector SNP quality as 'Very Satisfactory' (OR = 2.27, p < 0.001, N = 298), but is statistically null for complaints about poor water quality/quantity (OR = 1.44, SE = 0.28, p >= 0.05, N = 277) and excluded due to bivariate non-significance for sewerage complaints (N = 300). Conversely, external institutional redress and NGO linkage variables—specifically CBO frequency of contacting the sponsoring NGO (ngo_com: water OR = 0.56, p < 0.05; sewerage OR = 0.50, p < 0.01), CBO–NGO programme evaluation partnership (ngo_evl2: water OR = 0.15, p < 0.05), and CBO frequency of contacting the municipality (amc_com: water OR = 0.60, p < 0.05)—are associated with significantly lower odds of complaining about water and/or sewerage services, whereas municipal contact is null for sewerage complaints (OR = 1.56, SE = 0.42) and NGO decision dominance (d_ngo) and NGO-rated CBO activity (active3) are null/excluded for both water and sewerage.",
+    "paper_readability": "full text",
+    "specification_or_coding_pitfalls": "1. Outcome polarity inversion & Odds Ratio (< 1 vs. > 1) trap: In Table 6 (p. 702), Model 1 predicts a positive valence outcome (overall SNP quality is 'Very Satisfactory', OR > 1 = higher satisfaction), whereas Models 2–4 predict negative valence outcomes (complaining about poor quality or quantity of water, sewerage, or street lighting, so OR < 1 = negative log-odds = FEWER complaints / more favorable service perception, and OR > 1 = MORE complaints). Moreover, Table 6 prints Odds Ratios rather than log-odds coefficients; a careless coder could mistake OR = 0.56*, 0.60*, 0.15*, or 0.50** for positive coefficients or fail to invert complaint polarity. 2. Divergence between internal participation and external institutional linkages: The title's focal variable—sustained resident participation via CBO meeting attendance (attend)—is null for water complaints (OR = 1.44, SE = 0.28) and bivariate-insignificant/omitted for sewerage complaints, being significant only for composite SNP satisfaction (OR = 2.27***). By contrast, external NGO/municipal contact variables reduce water and (for NGO contact) sewerage complaints, while municipal contact is null for sewerage (OR = 1.56) and sharply increases street lighting complaints (amccntct OR = 8.33*). 3. Subjective complaining vs. physical household access: All sampled neighbourhoods had already received SNP physical upgrading and CBO registration for >= 3 years; there is no non-SNP control group and no physical measurement of water/sanitation connections, continuity, quality, or affordability. The authors explicitly caution (pp. 695, 699, 705) that professed satisfaction and open-ended complaining reflect social desirability and redress agency and only partially capture physical service quality. 4. Bivariate pre-screening omissions & PDF minus-sign glitch: Independent variables were retained in Table 6 only if bivariate-significant and r < 0.4 (p. 700), so '—' cells denote variables dropped for non-significance/collinearity. Also, in Table 6's PDF text layer, negative log-likelihood minus signs render as '2' ('2150.99' for –150.99, etc.; true negative values are confirmed in text on pp. 700, 703, 704). Mentioned 2SLS IV checks are not tabulated.",
+    "study_design": "Cross-sectional stratified random survey (January–June 2009) analyzed with multivariate logistic regression (with untabulated 2SLS instrumental-variable robustness checks noted as yielding similar results)",
+    "study_id": "S1032",
+    "unit_and_sample_size": "Individual community-based organisation (CBO) leaders and members across 38 SNP-registered, NGO-affiliated upgraded slum neighbourhoods in Ahmedabad (320 sampled from ~500 leaders/members in 38 of 52 eligible CBOs; N = 300 completed surveys; analytic N = 298 for overall SNP satisfaction, N = 277 for water complaints, N = 300 for sewerage complaints, N = 300 for street lighting complaints)."
+  }
+}

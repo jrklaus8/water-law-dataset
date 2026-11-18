@@ -1,0 +1,144 @@
+{
+  "study_id": "S1122",
+  "phase": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=swim_adversarial_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "swim_csv_sha256": "a8e0693cf454c4600cd7342cf63d21454b82132d8016d73445f20401baafc015",
+  "dossier_sha256": "8be854984e0c67d2e94b54b7ade2e7b3c676f58c4afa1f82b29164845a6ff30d",
+  "pdf_sha256": "a6ec97a9489680077cb18d751e6d4c80fc72d271a1482a843d8f50f9233c77a8",
+  "input_text_sha256": "d527951b198400a05c8263529e7d463628af1569fe94e04ce5e356e541f334bf",
+  "prompt_sha256": "f8c9519f928599357c234074de9c7b1a1b1bd16979d0bd0281f3100cdc5fa6b0",
+  "started_at": "2026-11-18T23:00:17.196346+00:00",
+  "completed_at": "2026-11-18T23:02:26.228603+00:00",
+  "raw_request": {
+    "type_name": "swim_adversarial_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "numerical_check_note",
+        "raw_sign_assessment",
+        "substantive_direction_verdict",
+        "scope_and_family_fit",
+        "specification_multiplicity_flag",
+        "polarity_or_orientation_issue",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial_or_rounding_issue",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "numerical_check_note": {
+          "type": "string"
+        },
+        "raw_sign_assessment": {
+          "type": "string",
+          "enum": [
+            "correct",
+            "wrong",
+            "ambiguous_multiple_models",
+            "cannot_tell"
+          ]
+        },
+        "substantive_direction_verdict": {
+          "type": "string",
+          "enum": [
+            "supported",
+            "defensible_both_ways",
+            "unsupported",
+            "wrong",
+            "cannot_tell"
+          ]
+        },
+        "scope_and_family_fit": {
+          "type": "string",
+          "enum": [
+            "fits_cleanly",
+            "borderline_or_indirect_proxy",
+            "poor_fit_or_out_of_scope"
+          ]
+        },
+        "specification_multiplicity_flag": {
+          "type": "boolean"
+        },
+        "polarity_or_orientation_issue": {
+          "type": "string"
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "ADVERSARIAL SWiM DIRECTION AUDIT (TASK E PHASE 2) — STUDY S1122\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the materials below.\n\n== 1. LOCKED PHASE 1 BLIND READING (made from the source paper alone BEFORE seeing Claude's coding) ==\n{\n  \"study_id\": \"S1122\",\n  \"record_id\": \"R0327EF4BAA21\",\n  \"confidence\": \"high\",\n  \"country\": \"Burkina Faso\",\n  \"evidence_quotes\": [\n    {\n      \"page\": \"PDF p. 1 (Abstract, p. 1292)\",\n      \"quote\": \"history—particularly residential status—and access to piped water.\"\n    },\n    {\n      \"page\": \"PDF p. 8 (Explanatory Variables, p. 1299)\",\n      \"quote\": \"not possible in non-zoned areas.\"\n    },\n    {\n      \"page\": \"PDF p. 10 (Results, p. 1301)\",\n      \"quote\": \"formal sector having 2.6 times more chances\"\n    },\n    {\n      \"page\": \"PDF p. 11 (Results, p. 1302)\",\n      \"quote\": \"probability of PW access only in the zoned\"\n    },\n    {\n      \"page\": \"PDF p. 13 (Results, p. 1304)\",\n      \"quote\": \"of losing PW as compared with the owners\"\n    }\n  ],\n  \"findings\": [\n    {\n      \"access_valence\": \"mixed\",\n      \"exact_estimate\": \"Model 1a (no zone control, Table 2, PDF p. 11): Renting/co-renting vs. Owner/co-owner HR = 2.56*** (p < 0.001); Mother's/father's residence HR = 0.30** (p < 0.01); Other's residence HR = 1.26 (p >= 0.15). Model 1b with Residence status * Zone of residence interactions (Table 2, PDF p. 11 & Table 4, PDF p. 12): within Zoned periphery, Renting vs. Owner HR = 2.94** (p < 0.01); within Downtown, Renting vs. Owner HR = 0.88 (n.s., p >= 0.15; interaction HR = 0.30**, p < 0.01); within Non-zoned periphery, Renting vs. Owner HR = 0.00*** (p < 0.001). N = 2,134 persons at risk (232 events, 255,057 person-time units).\",\n      \"exposure_and_reference\": \"Residence status (housing tenure, time-varying): Renting/co-renting (and Mother's/father's residence, Other's residence) vs. Owner/co-owner (reference = 1)\",\n      \"finding_label\": \"Primary headline finding (a): Housing tenure (residence status) and gaining first access to piped water (Models 1a and 1b)\",\n      \"outcome_and_polarity\": \"Instantaneous hazard of first transition from a dwelling without piped water to a dwelling with piped water (at least one tap in dwelling, plot, or yard); HIGHER hazard ratio (> 1) means BETTER / faster household piped water access\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 2 (PDF p. 11 / p. 1302) and Table 4 (PDF p. 12 / p. 1303)\"\n    },\n    {\n      \"access_valence\": \"mixed\",\n      \"exact_estimate\": \"Model 2a (no zone control, Table 5, PDF p. 14): Renting/co-renting vs. Owner/co-owner HR = 0.53*** (p < 0.001); Mother's/Father's residence HR = 0.11*** (p < 0.001); Other's residence HR = 0.23*** (p < 0.001). Model 2b with Residence status * Zone of residence interactions (Table 5, PDF p. 14 & Table 7, PDF p. 15): within Zoned periphery, Renting vs. Owner HR = 1.43^d (p < 0.15, n.s. at p < 0.05); within Downtown, Renting vs. Owner HR = 1.67^d (p < 0.15, n.s. at p < 0.05; interaction HR = 1.17, n.s.); within Non-zoned periphery, Renting vs. Owner HR = 6.31** (p < 0.01; interaction HR = 4.42*, p < 0.05). N = 1,226 persons at risk in Table 1 / 1,220 reported in text on PDF p. 12 (294 events, 103,963 person-time units).\",\n      \"exposure_and_reference\": \"Residence status (housing tenure, time-varying): Renting/co-renting (and Mother's/Father's residence, Other's residence) vs. Owner/co-owner (reference = 1)\",\n      \"finding_label\": \"Primary headline finding (b): Housing tenure (residence status) and first loss of piped water — sign reversal when controlling for zone (Models 2a and 2b)\",\n      \"outcome_and_polarity\": \"Instantaneous hazard of first transition from a dwelling with piped water to a dwelling without piped water; HIGHER hazard ratio (> 1) means WORSE sustained household access (higher risk of losing piped water), whereas LOWER hazard ratio (< 1) means BETTER sustained access\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 5 (PDF p. 14 / p. 1305) and Table 7 (PDF p. 15 / p. 1306)\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Model 1b (Table 2, PDF p. 11 & Table 3, PDF p. 12): Non-zoned periphery vs. Zoned periphery (ref = 1) has HR = 0.14*** (p < 0.001) among Owners, HR = 0.00*** (p < 0.001) among Renters, HR = 0.00*** (p < 0.001) in Male's/female's residence, and HR = 0.00*** (p < 0.001) in Other's residence. (Downtown vs. Zoned periphery has HR = 3.12*** among Owners, 0.94 n.s. among Renters, 2.28^d [p < 0.15] in Male's/female's residence, and 1.35 n.s. in Other's residence.) N = 2,134 persons at risk (232 events).\",\n      \"exposure_and_reference\": \"Zone of residence (formal urban zoning/planning status, time-varying): Non-zoned periphery (informal/unallocated settlement) vs. Zoned periphery (reference = 1) (also Downtown vs. Zoned periphery)\",\n      \"finding_label\": \"Urban land zoning / informal settlement status and gaining first access to piped water (Model 1b)\",\n      \"outcome_and_polarity\": \"Instantaneous hazard of first transition from a dwelling without piped water to a dwelling with piped water; HIGHER hazard ratio (> 1) means BETTER household piped water access\",\n      \"raw_sign\": \"negative\",\n      \"table_or_page\": \"Table 2 (PDF p. 11 / p. 1302) and Table 3 (PDF p. 12 / p. 1303)\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"Model 2b (Table 5, PDF p. 14 & Table 6, PDF p. 15): Non-zoned periphery vs. Zoned periphery (ref = 1) has HR = 15.38*** (p < 0.001) among Owners, HR = 68.00*** (p < 0.001) among Renters, HR = 47.60*** (p < 0.001) in Male's/female's residence, and HR = 29.36*** (p < 0.001) in Other's residence. (Downtown vs. Zoned periphery has HR = 0.26*** among Owners, 0.30*** among Renters, 0.32* [p < 0.05] in Male's/female's residence, and 0.35*** among Other's residence.) N = 1,226 persons at risk in Table 1 / 1,220 in text (294 events).\",\n      \"exposure_and_reference\": \"Zone of residence (formal urban zoning/planning status, time-varying): Non-zoned periphery (informal/unallocated settlement) vs. Zoned periphery (reference = 1) (also Downtown vs. Zoned periphery)\",\n      \"finding_label\": \"Urban land zoning / informal settlement status and first loss of piped water (Model 2b)\",\n      \"outcome_and_polarity\": \"Instantaneous hazard of first transition from a dwelling with piped water to a dwelling without piped water; HIGHER hazard ratio (> 1) means WORSE sustained household access (higher risk of losing piped water)\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 5 (PDF p. 14 / p. 1305) and Table 6 (PDF p. 15 / p. 1306)\"\n    },\n    {\n      \"access_valence\": \"favorable_to_access\",\n      \"exact_estimate\": \"First access to piped water (Table 2, PDF p. 11): Formal Sector vs. Informal sector HR = 2.61*** (p < 0.001) in Model 1a and HR = 3.03*** (p < 0.001) in Model 1b (N = 2,134). First loss of piped water (Table 5, PDF p. 14): Formal sector vs. Informal sector HR = 1.04 (n.s.) in Model 2a and HR = 0.78 (n.s.) in Model 2b (N = 1,226 / 1,220).\",\n      \"exposure_and_reference\": \"Type of economic activity (time-varying): Formal sector employment vs. Informal sector employment (reference = 1)\",\n      \"finding_label\": \"Formal vs. informal sector employment and gaining/losing piped water (Models 1a, 1b, 2a, 2b)\",\n      \"outcome_and_polarity\": \"Hazard of first access to piped water (higher HR = BETTER access) in Table 2; hazard of first loss of piped water (higher HR = WORSE access) in Table 5\",\n      \"raw_sign\": \"positive\",\n      \"table_or_page\": \"Table 2 (PDF p. 11 / p. 1302) and Table 5 (PDF p. 14 / p. 1305)\"\n    },\n    {\n      \"access_valence\": \"unfavorable_to_access\",\n      \"exact_estimate\": \"First loss of piped water (Table 5, PDF p. 14, ref = 1990–2000): Model 2a HR = 0.40* (p < 0.05) Before 1970, HR = 0.33*** (p < 0.001) in 1970–1979, HR = 0.56*** (p < 0.001) in 1980–1989; Model 2b HR = 0.49^d (p < 0.15) Before 1970, HR = 0.44** (p < 0.01) in 1970–1979, HR = 0.48*** (p < 0.001) in 1980–1989 (meaning PW loss risk was roughly twice as high in 1990–2000 as in the 1970s–1980s). First access to piped water (Table 2, PDF p. 11, ref = 1990–2000): Model 1a HR = 0.76 (n.s.) Before 1970, 1.41^d (p < 0.15) in 1970–79, 1.12 (n.s.) in 1980–89; Model 1b HR = 0.45* (p < 0.05) Before 1970, 0.98 (n.s.) in 1970–79, 0.99 (n.s.) in 1980–89.\",\n      \"exposure_and_reference\": \"Historical policy period (time-varying): 1990–2000 reference period (under ONEA's post-1985 'shared water management' standpipe-priority policy and 1994 corporatization under private law) vs. earlier decades (Before 1970, 1970–79, 1980–89)\",\n      \"finding_label\": \"Historical/policy period effects on gaining and losing private piped water (Models 1a, 1b, 2a, 2b)\",\n      \"outcome_and_polarity\": \"Hazard of first loss of piped water (higher HR = WORSE access; HR < 1 in earlier decades means 1990–2000 had higher loss risk) and hazard of first access to piped water (higher HR = BETTER access)\",\n      \"raw_sign\": \"mixed\",\n      \"table_or_page\": \"Table 2 (PDF p. 11 / p. 1302) and Table 5 (PDF p. 14 / p. 1305)\"\n    }\n  ],\n  \"headline_direction_for_household_access\": \"mixed\",\n  \"headline_raw_sign\": \"mixed\",\n  \"headline_result_summary\": \"Using retrospective life-history data (EMIUB 2000) and Cox proportional hazard models for individuals in Ouagadougou, Burkina Faso, the study finds a nuanced, zone-contingent relationship between housing tenure (residence status), formal urban zoning, and sustained household piped water (PW) access. On the paper's headline tenure variable (Residence status, with Owner/co-owner as reference), results are substantively mixed across transitions, urban zones, and specifications because households frequently leave equipped rental housing to buy affordable plots in unserviced peripheral/non-zoned areas: tenants are significantly more likely than owners to gain first PW access overall (Model 1a HR = 2.56, p < 0.001) and in the zoned periphery (Model 1b/Table 4 HR = 2.94, p < 0.01), do not differ from owners downtown (HR = 0.88, n.s.), and are less likely than owners to gain PW in the non-zoned periphery (HR = 0.00, p < 0.001). For losing PW, tenants appear at lower risk than owners when zone is omitted (Model 2a HR = 0.53, p < 0.001), but controlling for zone reverses this pattern: tenant vs. owner loss risk is elevated though statistically non-significant at p < 0.05 in downtown (HR = 1.67, p < 0.15) and zoned periphery (HR = 1.43, p < 0.15) and significantly higher for renters in the non-zoned periphery (HR = 6.31, p < 0.01). By contrast, formal urban land zoning (Zone of residence) is unambiguously favorable to access: compared with the zoned periphery, living in the non-zoned (informal/unallocated) periphery sharply reduces the hazard of gaining PW (HR = 0.14, p < 0.001 among owners; 0.00, p < 0.001 among renters) and dramatically increases the hazard of losing PW (HR = 15.38 to 68.00, p < 0.001), as utility connections are not permitted in non-zoned areas. Formal-sector employment increases the hazard of gaining PW (HR = 2.61–3.03, p < 0.001) but is null for losing PW (HR = 1.04 and 0.78, n.s.).\",\n  \"paper_readability\": \"full text\",\n  \"specification_or_coding_pitfalls\": \"Five major coding pitfalls exist in this paper: (1) EXPOSURE SELECTION (HOUSING TENURE VS. URBAN ZONING): Housing tenure (Owner vs. Renter) is the paper's primary headline focus in the Abstract and Discussion and exhibits a genuinely mixed, trade-off pattern, whereas formal urban land zoning (Zoned periphery / Downtown vs. Non-zoned periphery) is consistently and strongly favorable to piped water access (non-zoned periphery is strongly unfavorable). Any synthesis coding must distinguish whether the extracted exposure is individual property ownership/tenure or municipal zoning/land formalization. (2) REFERENCE CATEGORY ORIENTATION FOR TENURE: Owner/co-owner is the omitted reference category (= 1), and Renting/co-renting is the reported dummy. A HR > 1 on Renting in Table 2 (HR = 2.56***) means renting is associated with BETTER first access—and therefore homeownership is associated with WORSE first access. (3) OPPOSITE OUTCOME POLARITY BETWEEN TABLE 2 AND TABLE 5: Table 2 (and Tables 3–4) models first GAIN of piped water (HR > 1 = better access), whereas Table 5 (and Tables 6–7) models first LOSS of piped water (HR > 1 = worse sustained access / faster loss). (4) CONFOUNDING / SIGN REVERSAL BETWEEN MODEL 2a AND MODEL 2b: In Table 5 (first loss of PW), omitting zone of residence (Model 2a) gives Renting HR = 0.53*** (lower loss risk for renters because people move into newly acquired unserviced homes to become owners), whereas adding zone of residence and interactions (Model 2b / Table 7) flips Renting vs. Owner to HR = 1.43 (p < 0.15) in zoned periphery, HR = 1.67 (p < 0.15) downtown, and HR = 6.31** in non-zoned periphery. (5) UNCONVENTIONAL p < 0.15 SUPERSCRIPT ('d'): All tables flag p < 0.15 with superscript 'd' (e.g., Renting HR = 1.43^d in Table 5/7 and 1.67^d in Table 7). The text on PDF p. 14 describes tenants as having 'a greater risk of losing PW' downtown and in the zoned periphery based on Table 7, even though neither estimate reaches conventional p < 0.05 (or even p < 0.10) significance. Note also minor sample-size discrepancy for the loss analysis between Table 1 (1,226 persons at risk) and text on PDF p. 12 (1,220 people).\",\n  \"study_design\": \"Retrospective life-course event history analysis using semi-parametric Cox proportional hazard models with time-varying covariates (from a nationally representative two-stage stratified retrospective survey, EMIUB 2000)\",\n  \"unit_and_sample_size\": \"Individuals aged 15–64 who ever resided in Ouagadougou (total ever at risk = 3,133: 2,839 interviewed in Ouagadougou and 294 interviewed elsewhere in Burkina Faso). Analytic risk sets: First access to piped water N = 2,134 individuals (232 events; 255,057 person-time units); First loss of piped water N = 1,226 individuals in Table 1 / 1,220 reported in text on PDF p. 12 (294 events; 103,963 person-time units); Descriptive residential sequences N = 2,839 individuals interviewed in Ouagadougou.\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-18T22:34:02.805958+00:00\",\n  \"pdf_sha256\": \"a6ec97a9489680077cb18d751e6d4c80fc72d271a1482a843d8f50f9233c77a8\",\n  \"input_sha256\": \"d527951b198400a05c8263529e7d463628af1569fe94e04ce5e356e541f334bf\"\n}\n\n== 2. CLAUDE'S STORED SWiM VERIFICATION TABLE ROW (from SWIM_CORE_VERIFICATION_TABLE_2026-10-14.csv; ck_* columns excluded) ==\n{\n  \"study_id\": \"S1122\",\n  \"author_year\": \"Dos Santos & LeGrand (2013)\",\n  \"family\": \"A\",\n  \"exposure_short\": \"Non-zoned (informal) residence (Ouagadougou)\",\n  \"comparator_short\": \"zoned periphery residents\",\n  \"outcome_short\": \"time to first piped-water access\",\n  \"outcome_family\": \"water_access\",\n  \"estimate_short\": \"HR 0.14***\",\n  \"raw_coefficient_sign\": \"-\",\n  \"substantive_direction\": \"Favourable\",\n  \"outcome_polarity\": \"higher = better\",\n  \"exposure_orientation\": \"restated to the recognised pole\",\n  \"alternative_substantive_direction\": \"\",\n  \"outcome_directness_check\": \"not separately checked\",\n  \"ai_recommendation_for_author\": \"\",\n  \"coding_note\": \"Non-zoned periphery residents: HR 0.14 for first piped-water access (higher hazard = faster access). Restated to zoned vs non-zoned the association is positive: Favourable for recognition.\",\n  \"rob_tool\": \"ROBINS-I\",\n  \"rob_rating\": \"Moderate\",\n  \"inclusion_decision_human_verified\": \"N (AI-checked only)\",\n  \"effect_row_checked_vs_full_text_by_AI\": \"verified\",\n  \"raw_direction_text\": \"negative (non-zoned/informal legal status sharply reduces hazard of gaining piped water access; effect compounded for renters)\",\n  \"exposure_full\": \"Legal/administrative zoning status of residence (zoned vs. non-zoned/spontaneous-settlement land-allocation status) and residence status (owner vs. renter), Ouagadougou, Burkina Faso.\",\n  \"comparator_full\": \"Zoned-periphery residents (reference category) vs. non-zoned-periphery (informal-settlement) residents; owner/co-owner residents (reference) vs. renting/co-renting residents; interaction of tenure status by zone.\",\n  \"estimate_full\": \"Zone of residence (zoned periphery = reference): non-zoned periphery hazard ratio = 0.14*** for first access to piped water (formal connection explicitly described as 'not possible in non-zoned areas'); downtown hazard ratio = 3.12***. Residence status (owner/co-owner = reference): renting/co-renting hazard ratio = 2.56***-2.94**. Interaction terms: renting * non-zoned periphery hazard ratio = 0.00***; other's-residence * non-zoned periphery hazard ratio = 0.00***. Access disparity: 48% of households had piped water access in the city centre vs. 22% in zoned peripheral areas (2000 data).\",\n  \"ai_scope_check_2026-10-14\": \"passed\",\n  \"a28_outcome\": \"\"\n}\n\n== 3. CLAUDE'S STORED DOSSIER ENTRY (from SWIM_31_SOURCE_VERIFICATION_DOSSIER.md) ==\n[DOSSIER_EXCERPT_WITHHELD_IN_RAW_CAPTURE_SEE_SWIM_31_SOURCE_VERIFICATION_DOSSIER_MD]\n\n== 4. ADVERSARIAL AUDIT INSTRUCTIONS ==\nCompare Claude's stored SWiM row and dossier entry against BOTH the Phase 1 blind reading and the full source paper text below:\n1. `numbers_match_paper`: `\"yes\"`, `\"partial_or_rounding_issue\"`, `\"no\"`, or `\"cannot_tell\"` (if scan without text). Explain exact printed numbers vs. stored numbers in `numerical_check_note`.\n2. `raw_sign_assessment`: Is Claude's `raw_coefficient_sign` `\"correct\"`, `\"wrong\"`, `\"ambiguous_multiple_models\"`, or `\"cannot_tell\"`?\n3. `substantive_direction_verdict`: Classify Claude's `substantive_direction` into EXACTLY ONE of:\n   - `\"supported\"`: Numbers, sign, polarity, and substantive direction accurately reflect the paper's primary empirical finding.\n   - `\"defensible_both_ways\"`: Numbers are real, but the substantive direction genuinely depends on a contestable analytic choice (e.g., exposure orientation such as public vs. private / centralization vs. decentralization, outcome polarity, choice among conflicting specifications/outcomes in the same paper, or p > 0.05 / borderline result).\n   - `\"unsupported\"`: The paper's empirical results do not support the directional claim coded (e.g., statistically null primary result coded as directional, cherry-picked minor result against null headline models, or outcome does not measure water/sanitation access/affordability).\n   - `\"wrong\"`: Factual misread, wrong number, inverted sign/polarity, or coding contradicts what the paper actually reports.\n   - `\"cannot_tell\"`: Source PDF has no readable text/OCR to verify.\n4. `scope_and_family_fit`: Assess whether the study's actual exposure and outcome fit its assigned SWiM `family` (`A`, `B`, or `C`) and direct household/community water/sanitation access scope (`\"fits_cleanly\"`, `\"borderline_or_indirect_proxy\"`, `\"poor_fit_or_out_of_scope\"`).\n5. `adversarial_critique`: 3 to 6 crisp, specific sentences citing exact page/table numbers, detailing every vulnerability, alternative specification, polarity trap, or error found (or explaining why the coding holds up if `\"supported\"`).\n6. `evidence_quotes`: 2 to 4 exact, contiguous verbatim substrings (`>= 25` chars, no `...` or paraphrasing) from `== SOURCE PAPER TEXT ==`.\n\n== 5. SOURCE PAPER TEXT (SHA-256: d527951b198400a05c8263529e7d463628af1569fe94e04ce5e356e541f334bf) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60142, sha256=d527951b198400a05c8263529e7d463628af1569fe94e04ce5e356e541f334bf]\n== END SOURCE PAPER TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's `\"Favourable\"` coding is algebraically sound if—and only if—S1122 is indexed on community-level land-allocation/zoning status (`Zone of residence`), where living in an unrecognised non-zoned settlement versus the zoned periphery sharply lowers the hazard of gaining piped water (`HR = 0.14***` among owners and `0.00***` among non-owners in Table 2/3, PDF pp. 11–12) and dramatically raises the hazard of losing piped water (`HR = 15.38***` to `68.00***` in omitted Tables 5–6, PDF pp. 14–15). However, two major vulnerabilities make the study's synthesis direction genuinely `\"defensible_both_ways\"`. First, the authors introduce `zone of residence` as a community infrastructure control where network connection is administratively barred (`\"not possible in non-zoned areas\"`, PDF p. 8 / p. 1299), whereas the paper's headline life-course tenure variable (`Residence status`: `Owner/co-owner` vs. `Renting/co-renting`, which Claude itself co-extracted into `exposure_full` and `estimate_full`) points in the opposite/mixed direction: homeowners gain piped water significantly more slowly than tenants overall (Model 1a Renting `HR = 2.56***`) and in the zoned periphery (Model 1b/Table 4 Renting `HR = 2.94**`; downtown `0.88` n.s.; non-zoned `0.00***`), because acquiring affordable property typically requires moving from equipped rental housing to unserviced peripheral plots (PDF pp. 8, 15–16). Second, Claude completely omitted the co-primary second event-history analysis of piped-water *loss* (Tables 5–7, PDF pp. 14–15), where outcome polarity flips (`HR > 1` = faster loss / worse sustained access) and where homeownership increases unadjusted loss risk (`Renting HR = 0.53***` in Model 2a) before reversing in interacted Model 2b/Table 7 (`Renting HR = 6.31**` in the non-zoned periphery, while downtown `1.67^d` and zoned periphery `1.43^d` only meet `p < 0.15` and are non-significant at `p < 0.05`). Finally, Claude failed to extract numeric sample sizes (`N = 2,134` at risk / `232` events for first access; `N = 1,226` in Table 1 or `1,220` in text / `294` events for first loss) and did not note that `HR = 0.14***` in interacted Model 1b applies specifically to the `Owner/co-owner` reference stratum (Table 3, PDF p. 12).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (Abstract, p. 1292)",
+        "quote": "history—particularly residential status—and access to piped water."
+      },
+      {
+        "page": "PDF p. 8 (Explanatory Variables, p. 1299)",
+        "quote": "To control for the availability of infrastructure in piped water at the community"
+      },
+      {
+        "page": "PDF p. 8 (Explanatory Variables, p. 1299)",
+        "quote": "not possible in non-zoned areas."
+      },
+      {
+        "page": "PDF p. 13 (Results, p. 1304)",
+        "quote": "of losing PW as compared with the owners"
+      }
+    ],
+    "numbers_match_paper": "yes",
+    "numerical_check_note": "All stored numerical estimates in `estimate_short` and `estimate_full` (`HR = 0.14***`, `3.12***`, `2.56***`, `2.94**`, `0.00***`, and descriptive access shares `48%` vs. `22%`) match the printed paper verbatim (Table 2 on PDF p. 11 / p. 1302, Table 3 on PDF p. 12 / p. 1303, and text on PDF p. 8 / p. 1299). Two provenance gaps exist: (1) because Model 1b includes `Residence status * Zone of residence` interactions, `0.14***` and `3.12***` are conditional hazard ratios for `Owner/co-owner` (the reference category of `Residence status`, shown explicitly in Table 3; for renters and other non-owners in non-zoned periphery, `HR = 0.00***`); and (2) the dossier omits numeric sample sizes (Table 1, PDF p. 7 / p. 1298: N = 2,134 persons at risk, 232 events, 255,057 person-time units for first access; N = 1,226 in Table 1 / 1,220 in text on p. 1303, 294 events, 103,963 person-time units for first loss) and omits all estimates from the co-primary piped-water loss models (Tables 5–7, PDF pp. 14–15).",
+    "polarity_or_orientation_issue": "Four orientation/polarity subtleties require care: (1) `outcome_short` says `\"time to first piped-water access\"` while setting `outcome_polarity = \"higher = better\"`; longer waiting time would be worse, whereas the Cox model actually estimates the instantaneous *hazard* of gaining access (`HR > 1` = faster access = better, as noted in `coding_note`). (2) For `Zone of residence`, the model reports `Non-zoned periphery` vs. `Zoned periphery` (`HR = 0.14***`, negative log-hazard), so restating to the recognised/zoned pole (`1 / 0.14 = 7.14`) validly yields `\"Favourable\"`. (3) However, `exposure_full` bundles zoning with `Residence status` (`Owner/co-owner` = ref vs. `Renting/co-renting`), where `HR = 2.56***`–`2.94**` means *renting* has faster access and *ownership* (the higher-tenure pole) is `\"Unfavourable\"` in Model 1a and in the zoned periphery. (4) Omitted Tables 5–7 model *loss* of piped water (`HR > 1` = faster loss = worse sustained access), inverting outcome polarity relative to Tables 2–4.",
+    "raw_sign_assessment": "correct",
+    "scope_and_family_fit": "fits_cleanly",
+    "specification_multiplicity_flag": true,
+    "study_id": "S1122",
+    "substantive_direction_verdict": "defensible_both_ways"
+  }
+}
