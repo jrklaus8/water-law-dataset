@@ -1,0 +1,60 @@
+name: Audit report on the systematic review
+description: Report the result of testing a weakness, a number, or a decision in the Legal Last Mile systematic review (the project wants to be found wrong where it is wrong)
+title: "[audit] "
+labels: ["audit"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. The aim of this project is to be as open as possible about what was done and how far it can be checked, so that weak points are found and better research follows. A failed test is as useful as a passed one.
+        Start from `legal-last-mile-systematic-review/START_HERE.md`; the known weak points are in `00_admin/WEAKNESSES.md`.
+  - type: input
+    id: ids
+    attributes:
+      label: Which register entry, study or record?
+      description: A weakness ID (for example W12), an error or deviation ID (E24, D09), a study ID (S037) or a record ID (R0E4C0CE0DA80).
+      placeholder: "W12, S037"
+    validations:
+      required: true
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: What did your check find?
+      options:
+        - The weakness is real and larger than stated
+        - The weakness is real as stated
+        - The weakness is smaller than stated or does not reproduce
+        - A new weakness not in the register
+        - A wrong number, label or decision in the data
+        - A wrong statement in the documentation
+        - Something I could not check (explain)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What you did
+      description: The steps, with file names and the command or filter you used, so someone else can repeat it. `AUDITING_GUIDE.md` section 3 shows how to trace a study to its source.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What you found
+      description: Counts, page numbers of the source paper, or the differing values. Please quote what the paper prints rather than paraphrase it.
+    validations:
+      required: true
+  - type: textarea
+    id: effect
+    attributes:
+      label: Does it change a finding?
+      description: Which family, count or conclusion would move, if you can tell.
+    validations:
+      required: false
+  - type: checkboxes
+    id: copyright
+    attributes:
+      label: Source material
+      options:
+        - label: I have not pasted whole copyrighted papers; I quoted only the passage needed.
+          required: true
