@@ -5,7 +5,7 @@ Reads only repository files plus a record_id -> Google Drive file id map. Writes
 card pack and a CSV fill-in sheet. The reviewer columns are written BLANK; nothing here
 records a human decision. The AI's own reasoning is placed after the decision boxes.
 """
-import argparse, csv
+import argparse, csv, hashlib, random
 
 EXPOSURE = ['eligibility','burden','discretion_accommodation','enforcement','documentation','tenure','property',
             'planning','zoning','building_permit','service_area','fees','procedural_steps','delay','discretion',
@@ -23,6 +23,8 @@ def main():
     ap.add_argument('--drive-map', required=True)
     ap.add_argument('--out-md', required=True)
     ap.add_argument('--out-csv', required=True)
+    ap.add_argument('--out-blind-csv', required=True, help='input file for a blind second AI: no tier, no AI decision, no extraction, shuffled')
+    ap.add_argument('--seed', type=int, default=20261118)
     a = ap.parse_args()
     q = [r for r in rd('02_screening/full_text/full_text_reviewer_2_priority_queue_2026-09-28.csv') if r['priority_tier'] == '3']
     ext = {r['study_id']: r for r in rd('03_extraction/extracted_data/extraction_database.csv')}
@@ -62,10 +64,24 @@ def main():
         rows.append({'priority_rank': r['priority_rank'], 'study_id': s, 'record_id': rid, 'year': r['year'],
                      'title': r['title'], 'doi': r['doi'], 'paper_link': link,
                      'reviewer_decision (include/exclude/cannot_tell)': '', 'exclusion_code (E01-E12)': '',
-                     'agrees_with_AI (Y/N)': '', 'extraction_matches_paper (Y/N)': '', 'comment': ''})
+                     'agrees_with_AI (Y/N)': '', 'extraction_matches_paper (Y/N)': '', 'comment': '',
+                     'reviewer_initials': '', 'date_decided (YYYY-MM-DD)': '',
+                     'paper_read (full/partial/abstract_only/not_read)': '',
+                     'saw_AI_reasoning_before_deciding (Y/N)': '', 'saw_Gemini_output_before_deciding (Y/N)': '',
+                     'minutes_spent (optional)': ''})
     open(a.out_md, 'w', encoding='utf-8').write('\n'.join(md))
     with open(a.out_csv, 'w', newline='', encoding='utf-8') as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
+    order = list(range(len(rows)))
+    random.Random(a.seed).shuffle(order)
+    blind_fields = ['order', 'record_id', 'title', 'authors', 'year', 'doi', 'paper_link']
+    with open(a.out_blind_csv, 'w', newline='', encoding='utf-8') as f:
+        w = csv.DictWriter(f, fieldnames=blind_fields); w.writeheader()
+        for n, i in enumerate(order, 1):
+            r, src = rows[i], q[i]
+            w.writerow({'order': n, 'record_id': r['record_id'], 'title': r['title'], 'authors': src['authors'],
+                        'year': r['year'], 'doi': r['doi'], 'paper_link': r['paper_link']})
+    print('blind input: shuffled with seed', a.seed, '; sha256', hashlib.sha256(open(a.out_blind_csv, 'rb').read()).hexdigest()[:16])
     print(len(rows), 'cards;', sum(1 for r in rows if r['paper_link']), 'with Drive link')
 
 if __name__ == '__main__':

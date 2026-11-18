@@ -33,6 +33,7 @@ Read these first, in this order (about 40 minutes):
 | `00_admin/WEAKNESSES.md`, `00_admin/AI_USE_LEDGER.md` | Where the review is weakest and who did what |
 | `_reviewer2_codex/AI_USE_AND_TOOLS_DISCLOSURE.md` | How the earlier Codex and Gemini pass was run and logged |
 | `AUDITING_GUIDE.md` | How to trace one study from search hit to synthesis |
+| `00_admin/A6_COMPARISON_PREREGISTRATION_2026-11-18.md` | How your output will be compared, fixed in advance |
 
 ### Key numbers (from `00_admin/CURRENT_FIGURES.md`; recompute, do not copy)
 
@@ -67,14 +68,15 @@ For every task: blind first, evidence-cited, no guessing, outputs to your own fi
 
 ### Task A: Blind full-text screening of the 50 tier-3 includes (do this first)
 
-- **Input:** `A6_TIER3_FILL_IN_SHEET_2026-11-15.csv` and `A6_TIER3_EVIDENCE_CARDS_2026-11-15.md` in `02_screening/full_text/`. These list the 50 records, the paper links (Google Drive, the PI's own copies) and DOIs. **Use only the paper link, DOI and the criteria. Ignore the extraction summary and the "AI reasoning" paragraph on each card until your own verdict is written.** The cards were built for a human; you must not let them anchor you.
+- **Input:** `02_screening/full_text/A6_TIER3_BLIND_INPUT_FOR_SECOND_AI_2026-11-18.csv` and nothing else about these records. It holds only an order number, record ID, title, authors, year, DOI and paper link (Google Drive, the PI's own copies), shuffled with a fixed seed. It deliberately has no tier, no original AI decision, no extraction values and no study ID, so you cannot infer what Claude decided. **Do not open `A6_TIER3_EVIDENCE_CARDS_2026-11-15.md` or `A6_TIER3_FILL_IN_SHEET_2026-11-15.csv`.** The cards were built for the human and contain the AI's extraction and reasoning; opening them breaks blinding and the run is then not blind (log it, section 7). The Drive links were checked against the Drive titles on 2026-11-18 (`A6_TIER3_DRIVE_ID_CHECK_2026-11-18.csv`).
+- **Order and block.** Process the file in the given `order`. Run records 1 to 10 twice with identical settings (the self-consistency check, section 8), then the rest once.
 - **Papers.** 43 of 50 have a Drive copy. The 7 without are S499, S473, S504, S484, S428, S432 and S481. Retrieve the full text through legitimate open access (DOI, publisher OA page, Unpaywall) if you can. If you cannot read the full paper, output `cannot_tell` with `reason: "full text not accessible"`.
 - **Output per record:** the JSON in section 5.1, one file per record.
 - **Success looks like:** a verdict on every readable paper, with page-cited evidence per criterion.
 
 ### Task B: Blind full-text screening of the 102 tier-2 excludes
 
-Same method and output as Task A, on the 102 rows with `priority_tier = 2` in the priority queue. Tier 2 is where the earlier pass found the most disagreement with the original AI (32 of 62 reviewed), so a second model here is the most informative. Some of these records are excludes that rest on the narrow 2026-10-13 reading of criterion 2. State explicitly in `criterion_notes` when a paper passes the plain wording of criterion 2 but not the narrow rule-type reading.
+Same method and output as Task A, on the 102 rows with `priority_tier = 2` in the priority queue. **A blind input file for tier 2 does not exist yet** (it must be generated the same way as the tier-3 file, with no tier, decision or reason columns, and ideally mixed with the tier-3 records so the set's composition does not hint at the original decision). Ask Claude to build it first. Tier 2 is where the earlier pass found the most disagreement with the original AI (32 of 62 reviewed), so a second model here is the most informative. Some of these records are excludes that rest on the narrow 2026-10-13 reading of criterion 2. State explicitly in `criterion_notes` when a paper passes the plain wording of criterion 2 but not the narrow rule-type reading.
 
 ### Task C: Blind second extraction (sample)
 
@@ -142,6 +144,7 @@ Rules that trip models up:
   "study_id": "S647",
   "decision": "include | exclude | cannot_tell",
   "exclusion_code": "E01..E12 or empty",
+  "evidence_quotes": [{"criterion": "c2", "page": "12", "quote": "verbatim sentence from the paper, at least 20 characters"}],
   "criteria": {
     "c1_service_access": "yes | no | unclear",
     "c2_legal_admin_factor": "yes | no | unclear",
@@ -160,11 +163,12 @@ Rules that trip models up:
   "confidence": "high | medium | low",
   "paper_read": "full text | abstract only | not accessible",
   "model": "exact model string",
-  "run_at": "ISO 8601 timestamp"
+  "run_at": "ISO 8601 timestamp",
+  "input_sha256": "SHA-256 of the exact paper text or PDF bytes you were given"
 }
 ```
 
-Save as `gemini_review/screening/<record_id>.json`. Also produce one CSV, `gemini_review/screening/GEMINI_SCREENING_<task>_<date>.csv`, with the columns `record_id, study_id, decision, exclusion_code, confidence, paper_read, rationale`.
+Save as `gemini_review/screening/<record_id>.json`. Every claim that rests on the paper needs an entry in `evidence_quotes`; Claude's script `code/screening/verify_second_ai_quotes.py` checks each one against the paper text. Also produce one CSV, `gemini_review/screening/GEMINI_SCREENING_<task>_<date>.csv`, with the columns `record_id, study_id, decision, exclusion_code, confidence, paper_read, rationale`.
 
 ### 5.2 Extraction and risk-of-bias
 
@@ -211,8 +215,10 @@ If the verifier fails because of a stale generated file, say so in the PR and le
 
 For every run, write `gemini_review/RUN_LOG_<task>_<date>.md` with:
 
-1. The **exact model string** and version (not "Gemini"), the date and time, the interface (CLI, API, app, connector), and the generation settings you control (temperature, thinking or reasoning budget, any tools or web access enabled).
-2. The **full prompt** you used, verbatim, and any system instruction. If you used a template per record, include the template and say how records were substituted.
+1. The **exact model string** and version (not "Gemini"), the date and time, the interface (CLI, API, app, connector), and the generation settings you control (temperature, thinking or reasoning budget, any tools or web access enabled). **Do not rely on your own statement of your model identity.** Take it from the API or tool response metadata (for the Gemini API, the model version field in the response) and save that metadata.
+2. The **full prompt** you used, verbatim, and any system instruction. If you used a template per record, include the template and say how records were substituted. Also record the **SHA-256 of this brief** (`sha256sum 00_admin/GEMINI_HANDOFF_BRIEF_2026-11-17.md`) so the run is tied to the exact instructions in force. If the brief changes later, the hash changes.
+2a. **Raw capture.** Save the raw request and raw response of every call, unedited, under `gemini_review/raw/<record_id>_<run>.json` (API key and any cookies removed). The parsed JSON is derived from these; if they disagree, the raw file is the record. Also save the SHA-256 of every paper file or text you sent, in `input_sha256`.
+2b. **Data-use terms.** Before sending any paper, read the current data-use and training terms for the interface and key tier you are using (free-tier terms for some providers allow inputs to be used to improve products). Record the tier, the terms version or date, and what you decided. If the terms are unclear or allow training on inputs, stop and ask the PI before sending copyrighted papers.
 3. **Which files you were allowed to see** and which you were not. State whether you saw Claude's decisions for any record before deciding, and if you did, which records. Those records are not blind and are flagged.
 4. Counts: records attempted, completed, `cannot_tell`, errors.
 5. Anything that went wrong (quota, timeouts, truncated papers, parse failures).
@@ -223,7 +229,8 @@ The ledger label convention is `Gemini-<exact-model>-<task>-<date>`, for example
 
 ## 8. Quality controls and limits you must respect
 
-- **Verbatim or nothing.** A quotation that does not appear in the paper is a fabrication. Claude will spot-check a sample of your quotes against the PDFs. A failed check on a quote invalidates the batch.
+- **Verbatim or nothing.** A quotation that does not appear in the paper is a fabrication. **Every** quote in `evidence_quotes` is checked automatically against the paper text by `code/screening/verify_second_ai_quotes.py`; the verified share is reported for the batch, and any unverified quote is reported, not repaired. Do not paraphrase inside quotation marks.
+- **Self-consistency.** Records 1 to 10 of the blind input file are run twice with identical settings. Do not look at the first result before the second run. Save both. The flip rate is reported.
 - **No cross-record bleed.** Process one record at a time with a fresh context where you can. If a paper is long and gets truncated, say so in `paper_read` and `confidence`.
 - **Do not agree to be agreeable.** If you later see Claude's reasoning (only allowed after your verdict is saved), do not revise your original file. Add a separate `second_look` note if you changed your mind and why.
 - **Report disagreement and agreement alike** at the batch level; a pattern (for example, you exclude more E05 than the original AI) is a finding.
@@ -241,8 +248,8 @@ The ledger label convention is `Gemini-<exact-model>-<task>-<date>`, for example
 
 ## 9. What the PI does with your output
 
-1. Decides each record from the paper (the evidence cards were built for that). CK's decisions go in the CK fill-in sheets. **Your output is kept out of CK's first pass** so it cannot anchor.
-2. After CK has recorded verdicts, Claude compares three views (original AI, you, CK), reports per-tier agreement, and lists the records where the AIs disagree with each other.
+1. Decides each record from the paper (the evidence cards were built for that), and fills the audit columns (initials, date, how much of the paper was read, whether AI output was seen first). CK's decisions go in the CK fill-in sheets. **Your output is kept out of CK's first pass** so it cannot anchor.
+2. After CK has recorded verdicts, the deterministic script `code/screening/compare_a6_reviews.py` compares three views (original AI, you, CK) exactly as fixed in `00_admin/A6_COMPARISON_PREREGISTRATION_2026-11-18.md`, which was committed before any result existed. Claude writes up the output. There are no thresholds; the output is counts and a list of disagreements.
 3. Only entries CK makes are recorded as human review. Your verdicts and Claude's are labelled AI.
 
 ---
@@ -267,3 +274,6 @@ The ledger label convention is `Gemini-<exact-model>-<task>-<date>`, for example
 - [ ] I know the exact model string I am running and will log it.
 - [ ] I will not open the "AI reasoning" paragraphs or the extraction summaries before writing my verdicts.
 - [ ] I will say `cannot_tell` rather than guess.
+- [ ] I will take my model identity from API metadata, save raw requests and responses, and hash my inputs and this brief.
+- [ ] I have checked the data-use terms for the tier I am using before sending any paper.
+- [ ] I have not opened the evidence cards or the human fill-in sheet.

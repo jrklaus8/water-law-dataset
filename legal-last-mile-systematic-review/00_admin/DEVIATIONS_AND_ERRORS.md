@@ -4,7 +4,7 @@
 
 ## Departures from the protocol
 
-19 dated departures, clarifications and added checks. **4 were decided after the results they could affect were visible and 2 partly so** (column "after seeing results"): those are the ones to look at hardest, because eligibility or grouping decisions made with the effect rows in view can shift a result even when made in good faith. The protocol itself was fixed in writing on 2026-08-22 (commit `d591062`), before any database was searched; the research question, the eligibility wording, the codebook fields and the synthesis decision tree were not rewritten.
+20 dated departures, clarifications and added checks. **4 were decided after the results they could affect were visible and 2 partly so** (column "after seeing results"): those are the ones to look at hardest, because eligibility or grouping decisions made with the effect rows in view can shift a result even when made in good faith. The protocol itself was fixed in writing on 2026-08-22 (commit `d591062`), before any database was searched; the research question, the eligibility wording, the codebook fields and the synthesis decision tree were not rewritten.
 
 | ID | Date | Stage | Departure | Kind | After seeing results | Effect on the evidence base |
 |---|---|---|---|---|---|---|
@@ -27,6 +27,7 @@
 | D17 | 2026-10-14 | Synthesis | A28: six synthesis studies excluded (S1020, S1042, S1057, S1144, S1163, S947), four kept, the DRC trial row moved from S294 to S366; A31 relabelled 18 AI-checked confirmations | Post-hoc rulings on the narrow reading | yes | Family A 16 to 13, B 5 to 3, C 16 to 15; 31 studies in the three families; included reports 1,078 to 1,072 |
 | D18 | 2026-10-14 | Classification | mechanism_certainty normalised to the design-driven scale of the codebook (A27) | Post-hoc recoding; originals preserved | no | Descriptive tables only |
 | D19 | 2026-10-14 | Registration | Protocol not registered before the work; a retrospective OSF registration prepared and not submitted | Execution gap | not applicable | No external timestamp for the protocol |
+| D20 | 2026-11-18 | Full-text screening | Planned blind second-AI (Gemini) check of the 50 tier-3 AI includes and a human check on evidence cards; not in the protocol | Added check (AI versus AI) | no | None yet. AI-versus-AI agreement is not counted as human verification; only entries the PI makes count as human review |
 
 The plan, what was done, the recorded reason, who decided and where it is documented are in `DEVIATIONS_REGISTER.csv`. "After seeing results" is the AI's reading of the dated records.
 
