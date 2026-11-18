@@ -1,0 +1,277 @@
+{
+  "record_id": "RB70B7542FFB9",
+  "order": 21,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "770b5863216b56936f22585150d6948f181cc2da552aa40b9bdb11a1a628baad",
+  "input_text_sha256": "7cf9df94022dd56de85a8bc071e461269a5c1498be44b74270f1ecf238a5407e",
+  "prompt_sha256": "f38e58dcda3d4bd792bffe69a9e0e839b0c5d17b7d0b570639e5edde7ac498c3",
+  "started_at": "2026-11-18T20:33:56.256854+00:00",
+  "completed_at": "2026-11-18T20:35:13.439754+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB70B7542FFB9\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB70B7542FFB9\n- Title: Management practices and corruption risks in water service delivery in Kenya and Ghana\n- Authors: Bellaubi F.; Boehm F.\n- Year: 2018\n- DOI: 10.2166/wp.2018.017\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7cf9df94022dd56de85a8bc071e461269a5c1498be44b74270f1ecf238a5407e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=78018, sha256=7cf9df94022dd56de85a8bc071e461269a5c1498be44b74270f1ecf238a5407e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya and Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household/community water service delivery (WSD) across five case study neighbourhoods in Kenya and Ghana, including piped water supply coverage, continuity, quantity consumed, and affordability.",
+      "c2": "Satisfies both readings. Under the plain wording, the study examines legal, regulatory, institutional, and governance reforms in urban water service delivery in Kenya (Water Act 2002, WASREB, corporatized municipal WSPs) and Ghana (PURC, GWCL, private management contract with AVRL), alongside transparency, accountability, and participation (TAP) governance integrity and principal-agent power asymmetries. Under the narrow 2026-10-13 rule-type mechanism reading, it directly examines utility ownership and regulatory structures governing service provision (corporatization vs. private management contracting, licensing, and regulator oversight/sanctions), tariff and cost-recovery rules (incremental block tariffs penalizing shared connections, flat-rate billing for unmetered households, unregulated secondary provider charges), and customer contract/registration and sanction enforcement rules (one-sided billing enforcement and disconnection authority vs. unredressed utility non-supply).",
+      "c3": "Empirical comparative multiple-case study of five urban water service areas (three in Kenya, two in Ghana) conducted under the TISDA research program, drawing on formal interviews, informal discussions, utility/regulatory documents, participatory TAP integrity and power-asymmetry scoring, and area-based WSDA performance indicators.",
+      "c4": "Reports area-level service access outcomes in Table 6 and accompanying text across all five case study locations: piped water coverage (% population with piped supply as main water source), continuity (uninterrupted hours of supply per day), affordability (% of users restricting water consumption due to cost), quantity consumed (litres per person per day), and perceived water quality.",
+      "c5": "Identifies the study design (comparative qualitative/participatory multiple-case study), population and units of analysis (medium-to-high density low- and middle-income urban neighbourhoods, water utilities, regulators, ministries, and user-provider principal-agent dyads in Mombasa, Kisumu, Nairobi, and Accra; exact interview/household counts are not reported in this article), rule-type institutional/regulatory/tariff exposures, and service access outcomes.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 5",
+        "quote": "The results are presented according to three case studies conducted in Kenya and two in Ghana (Table 1). Case studies in both countries were performed in areas with medium to high population density, including low and middle income families, which are comparable to several other parts of the providers’ service area."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 7",
+        "quote": "Therefore, WSPs are corporate public utilities with a license, given by WASREB and obtained through the WSBs, to provide water and sewerage services within their areas of operation and collect tariffs as specified in their respective Service Provision Agreement (SPA)."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 9",
+        "quote": "Although the tariff varies within the country according to different WSPs, under the human rights’ principles an affordable price needs to be charged for a minimum consumption of 20 liters per person/day. However, many users indicate that they restrict their water use because of cost. This may be partly due to incremental tariffs that punish people who share a connection (Bellaubi & Visscher, 2014)."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 14",
+        "quote": "In Ghana, no contract existed with customers; there was only a registration form for the request for connection and monthly billing against a meter reading."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 12",
+        "quote": "Data collection comprised formal interviews and informal discussions with different public officials and senior utility staff members as well as technicians. Information was cross-checked with users, informal providers, community members and associations, staff from development agencies as well as non-governmental organizations"
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 11",
+        "quote": "When comparing the results of the WSDA by different providers in Kenya, it becomes evident that all the providers had limitations but also that KIWASCO was faring better than the others, especially on quality of water and coverage. Users in Migosi seemed to limit the quantity due to cost and for MOWASCO the quantity was below the minimum needs. The two case studies in Ghana showed similar results concerning coverage and intermittent water supply. Affordability and consumption remained low in both areas."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Post-reform water sector institutional, ownership, regulatory, tariff, and contractual governance rules: corporatized municipality-owned WSPs licensed by WASREB under Kenya's Water Act 2002 vs. state-owned GWCL contracting private operator AVRL regulated by PURC in Ghana; cost-recovery, incremental block, and flat-rate tariff rules; customer agreements/registration and sanction enforcement; and principal-agent rule integrity (TAP scores) and power asymmetries.",
+    "outcome": "Area-level urban water service delivery (WSDA) performance scores across five case study neighbourhoods (piped water coverage, daily hours of supply continuity, affordability measured as consumption restriction due to cost, per-capita water quantity consumed, and perceived water quality), along with institutional corruption risks and management practices.",
+    "paper_read": "full text",
+    "population_and_sample": "Five medium-to-high density, low- and middle-income urban service areas and their utilities/governance actors in Kenya (Old Town/MOWASCO in Mombasa, Migosi/KIWASCO in Kisumu, Kangemi/NCWSC in Nairobi) and Ghana (Madina and Nima/GWCL-AVRL in Accra), including public officials, regulators, utility managers and technicians, informal providers, NGOs, and water users (exact respondent sample sizes not reported).",
+    "rationale": "This empirical comparative multiple-case study examines five urban water service delivery areas in Kenya and Ghana under the TISDA program. It satisfies all systematic review inclusion criteria: it examines urban household/community water service access (c1); analyzes concrete rule-type legal, regulatory, ownership, contractual, enforcement, and tariff mechanisms governing service delivery under both the plain and narrow 2026-10-13 readings of criterion 2 (c2); relies on primary qualitative interviews, document review, participatory TAP rule-integrity and power-asymmetry scoring, and area-level WSDA assessments (c3); reports empirical outcomes for piped water coverage, supply continuity, affordability/consumption restriction due to cost, and per-capita quantity (c4); clearly identifies population, unit of analysis, exposure, outcome, and case-study design (c5); and is written in English (c6). Lack of pooled quantitative effect estimates is a synthesis gate (Criterion 6), not a review-inclusion gate.",
+    "record_id": "RB70B7542FFB9",
+    "study_design": "Comparative qualitative and participatory multiple-case study (five urban neighbourhood/utility case studies across two countries)"
+  }
+}

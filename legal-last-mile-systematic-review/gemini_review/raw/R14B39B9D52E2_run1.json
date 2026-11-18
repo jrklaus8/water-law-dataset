@@ -1,0 +1,272 @@
+{
+  "record_id": "R14B39B9D52E2",
+  "order": 47,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "79162742ad5848b62bacd8940ab4b32e0cf423cebddb08a571587b4b31ee830b",
+  "input_text_sha256": "e447f4bb31a0531bff14eb7f3348bab5d716cee38a39a4f2a443566d52c22ddb",
+  "prompt_sha256": "cf81b81484c3e946c3764445ec3daf65d7666280c405d0d32627837bf716ae02",
+  "started_at": "2026-11-18T21:04:21.996767+00:00",
+  "completed_at": "2026-11-18T21:07:10.546493+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R14B39B9D52E2\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R14B39B9D52E2\n- Title: System Reliability and Water Service Decentralization: Investigating Household Preferences in Nicaragua\n- Authors: Vásquez W.F.; Franceschi D.\n- Year: 2013\n- DOI: 10.1007/s11269-013-0447-4\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: e447f4bb31a0531bff14eb7f3348bab5d716cee38a39a4f2a443566d52c22ddb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=48435, sha256=e447f4bb31a0531bff14eb7f3348bab5d716cee38a39a4f2a443566d52c22ddb]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Nicaragua",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household piped drinking-water supply in León, Nicaragua, focusing on intermittent water supply coping strategies and household valuation of uninterrupted (24 h/day) drinking-water service.",
+      "c2": "Plain wording: YES — investigates household preferences regarding water service governance/decentralization (centralized national utility ENACAL vs. municipal government provision, contextualized by Article 7 of Nicaragua's Law of Municipalities and the 2005-2015 National Water Strategy) and hypothetical monthly service fees in a contingent valuation survey. Narrow 2026-10-13 rule-type reading: NO — all surveyed households reside in León under the same centralized utility (ENACAL), where municipal decentralization has not been implemented; provider identity (ENACAL vs. municipality) and monthly fees appear solely as hypothetical vignettes in a stated-preference survey rather than an enacted or operating rule-type mechanism directly governing household service access.",
+      "c3": "Contains primary quantitative empirical data from an in-person survey of 690 randomly sampled urban households in León, Nicaragua (560 observations in censored logistic regression models and binomial/logit analyses).",
+      "c4": "NO — all analyzed outcomes are stated preferences rather than realized service access outcomes: specifically, (1) hypothetical referendum votes and estimated willingness-to-pay (WTP) for a proposed 24-hour water supply upgrade, and (2) subjective perceptions/preferences choosing between ENACAL and the municipality on institutional attributes (perceived capacity, knowledge, interest, accountability, investment). Current daily hours of water supply (mean 19.77 hours) and current water expenditures are reported only as single-city descriptive background/covariates under ENACAL, not as outcomes evaluated across any legal or governance factor. Comparing hypothetical median WTP to an OECD 3% income benchmark reflects stated demand valuation, not actual tariff unaffordability or exclusion.",
+      "c5": "Population and unit of analysis (urban households/respondents in León, Nicaragua; n = 690 surveyed, n = 560 in regressions), exposure (randomized 2x2 split-sample contingent valuation vignettes varying hypothetical service provider and water quality, plus randomized monthly fee bids), outcome (hypothetical referendum vote / log WTP and stated institutional preference), and study design (cross-sectional contingent valuation survey with split-sample experimental treatments) are clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3, c4",
+        "page": "PDF Page 2",
+        "quote": "The approach used to elicit information on household preferences with regard to improving system reliability is a survey based contingent valuation (CV) method that uses stated preference behavior (i.e. WTP) to gauge support for changes in the provision of publicly provided goods"
+      },
+      {
+        "criterion": "c2, c4",
+        "page": "PDF Page 2",
+        "quote": "To complement the CV analysis, households were also asked to choose between ENACAL and the municipality of León as potential providers of water services"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3",
+        "quote": "The law of municipalities (article 7) assigns the responsibility for providing water services to municipalities, including building, operating, and maintaining water infrastructure. In practice, however, the implementation of decentralization initiatives is in the initial stages, with only 26 (out of 152) municipalities推进"
+      },
+      {
+        "criterion": "c3, c5",
+        "page": "PDF Page 4",
+        "quote": "A stratified random sampling strategy was followed to select a representative sample of urban households from a tax assessment map of León. A total of 690 surveys were completed with the in-person interview process for a response rate of 74 %"
+      },
+      {
+        "criterion": "c1, c2, c4",
+        "page": "PDF Page 5",
+        "quote": "The CV scenario started by presenting the characteristics of the existing water system, followed by an improvement in the water system reliability (no interruptions). The water quality and service provider varied according to the experimental design."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Hypothetical 2x2 split-sample contingent valuation treatments varying proposed water service provider (centralized national utility ENACAL vs. decentralized Municipality of León) and proposed water quality (existing quality vs. safe drinking water), alongside randomly assigned hypothetical monthly fees (C$ 100 to C$ 600) and household covariates including home ownership.",
+    "outcome": "Stated willingness-to-pay (log WTP / median WTP) derived from hypothetical referendum voting for uninterrupted (24 h/day) tap water service, and stated respondent preference choosing between ENACAL and the municipality across perceived institutional characteristics (service quality, local knowledge, interest, capacity, accountability, investment).",
+    "paper_read": "full text",
+    "population_and_sample": "Urban households in León, Nicaragua (unit of analysis: household/respondent; stratified random sample of 690 completed in-person household interviews from a tax assessment map, 74% response rate; 560 observations in WTP regression models).",
+    "rationale": "Exclude as E04 (Wrong outcome). Although the paper addresses urban household drinking-water reliability in León, Nicaragua, and uses a randomized 2x2 contingent valuation vignette comparing centralized (ENACAL) versus municipal governance, its empirical outcomes are exclusively stated preferences — hypothetical referendum votes / willingness-to-pay (WTP) for a proposed 24/7 service upgrade and attitudinal perceptions of institutional competence — rather than realized water access, connection, service availability, reliability, quantity, affordability, or exclusion (c4 = no). Current daily water supply hours and tap-water expenditures are measured only as baseline covariates within a single city served solely by ENACAL. Furthermore, under the narrow 2026-10-13 reading of Criterion 2, decentralization in León is presented only as a hypothetical survey scenario rather than an operating rule-type mechanism directly governing household service access (plain c2 = yes; narrow c2 = no). Note: statistical non-significance of the provider indicator in the pooled WTP model played no role in this exclusion decision.",
+    "record_id": "R14B39B9D52E2",
+    "study_design": "Cross-sectional household contingent valuation (stated-preference) survey with a randomized 2x2 split-sample experimental vignette design, analyzed via censored logistic regression and binomial/logit tests."
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "record_id": "R45B892C461F4",
+  "order": 17,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "1378120d3786d68dd2d17cd9f3c287f3da50c9f1a155421f2b7d6fc2bf67e9a5",
+  "input_text_sha256": "459afeddf3f27bc4242d39f8998942d26b9c6b23574d7a5e750b18134439f222",
+  "prompt_sha256": "651e52b05f071c762bb4336345375b699cb0dca332f3c942219dc3673b9982ef",
+  "started_at": "2026-11-18T20:30:59.518218+00:00",
+  "completed_at": "2026-11-18T20:32:42.525329+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R45B892C461F4\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R45B892C461F4\n- Title: Environmental planning crisis in urban Ghana: Local responses to nature's call\n- Authors: Cobbinah P.B.; Kosoe E.A.; Diawuo F.\n- Year: 2020\n- DOI: 10.1016/j.scitotenv.2019.134898\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 459afeddf3f27bc4242d39f8998942d26b9c6b23574d7a5e750b18134439f222) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=75165, sha256=459afeddf3f27bc4242d39f8998942d26b9c6b23574d7a5e750b18134439f222]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household access to, provision of, and functional availability of in-house toilet facilities, as well as fallback use of public toilets, shared 'perching' toilets, and open defecation in Wa Municipality, Ghana.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type reading. Under the plain wording, the study examines urban planning, legal, regulatory, and institutional governance factors shaping household sanitation provision. Under the narrow 2026-10-13 rule-type reading, the study empirically examines concrete rule-type mechanisms directly governing sanitation access: (1) regulatory enforcement and non-compliance with mandatory residential toilet rules under Ghana's National Building Regulations (L.I. 1630), Local Governance Act (Act 936), and Wa Municipal Assembly Bye-law (2006), including spatial planning enforcement across planned vs. unplanned residential zones and post-permit conversion of toilet spaces into rental rooms; (2) administrative burden and delays in municipal building permit issuance (reported by 4% of landlords as a construction barrier and 46% of tenants as prompting unpermitted development without toilets); and (3) landlord-tenant tenure relations, rent differentials, and municipal rules allocating toilet maintenance versus septic-tank desludging obligations between property owners and tenants.",
+      "c3": "Primary mixed-methods empirical study combining a structured household questionnaire survey of 207 respondents (105 property owners/landlords and 102 tenants across three planning zones, 54% response rate from 384 sampled households) and semi-structured interviews with 8 officials across 5 municipal planning and environmental sanitation agencies, analyzed using chi-square tests, multiple regression, and NVivo 10 thematic coding.",
+      "c4": "Reports empirical sanitation access and availability outcomes at the household/property level, including presence vs. absence of in-house toilets across zones (Table 3), use/perceived benefit of household-level toilets across planned vs. unplanned zones (Table 4), toilets falling out of use due to poor maintenance/desludging disputes (15% of tenants), rental affordability exclusion from houses with toilets, and reliance on open defecation, communal toilets, and shared 'perching' toilets (Figure 2).",
+      "c5": "Population and unit of analysis (households: 105 landlords and 102 tenants across three zones in Wa Municipality, plus 8 municipal agency officials), exposures (regulatory enforcement, building permit delays, planned vs. unplanned zoning, and landlord-tenant tenure/maintenance rules alongside socio-economic and cultural factors), outcomes (in-house toilet availability, use, and coping practices), and cross-sectional mixed-methods case study design are clearly reported.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "The purpose of this article is twofold: first, to analyze the social, economic, institutional and cultural factors inhibiting the provision of household toilet facility in urban Ghana; and second, to assess how urban residents are coping with the absence of in-house toilet facilities, and the urban planning implications."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "The National Building Regulations specifically mandates residential developers to ensure sanitary convenience in their plans. This regulation states that a plan of a new building or extension to an existing building must show adequate and satisfactory provision of in-house toilet facilities such as water closet where water is available or earth closet (Ventilated Improved Pit, Pit Latrine) where there is no constant supply or flow of water."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 21",
+        "quote": "Some tenants (46%) expressed their displeasure with the Wa Municipal Assembly, blaming it for the delay in issuance of building permits which allowed developers to proceed with development prior to permit grant. This situation, according to the respondents, did not motivate property owners to provide a toilet facility in their houses."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 30",
+        "quote": "For example, lack of enforcement of building regulations by planning authorities has provided developers the opportunity to unscrupulously build houses without consideration for toilet facilities."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 13",
+        "quote": "With a total residential housing stock of 9,592 (GSS, 2014), a total of 384 households consisting of landlords and tenants from three zones were selected and involved in the study using structured questionnaires."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 18",
+        "quote": "The study found that the majority (40%) of property owners/landlords without household toilet facility were concentrated in Zone One, comprising unplanned housing units."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Enforcement of mandatory in-house sanitation building regulations and municipal bye-laws (National Building Regulations L.I. 1630, Local Governance Act 936, Wa Municipal Assembly Bye-law 2006), administrative delays in municipal building permit issuance, urban planning zone status (planned vs. unplanned residential zones), and landlord-tenant tenure and maintenance/desludging cost-allocation rules (alongside household socio-economic and cultural factors)",
+    "outcome": "Household availability, provision, and use of in-house toilet facilities across residential planning zones, disuse of existing toilets from maintenance/desludging disputes, rental affordability exclusion from houses with toilets, and fallback reliance on communal toilets, shared 'perching' toilets, and open defecation",
+    "paper_read": "full text",
+    "population_and_sample": "207 household respondents (105 landlords/property owners and 102 tenants randomly sampled from 384 contacted households across three residential zones) and 8 key informant officials from 5 planning and sanitation agencies (TCPD, EPA, WMA, WMD, MEHD) in Wa Municipality, Upper West Region, Ghana",
+    "rationale": "Note on metadata check: The retrieved PDF is the Elsevier Journal Pre-proofs version matching the exact DOI (10.1016/j.scitotenv.2019.134898) and authors (Cobbinah, Kosoe, Diawuo) under its pre-proof title prior to final copyediting. Substantively, the paper satisfies all inclusion criteria (c1-c6). It is an empirical mixed-methods study (N=207 household surveys of landlords and tenants plus 8 municipal official interviews) examining household access to in-house sanitation in Wa Municipality, Ghana. Alongside socio-economic and cultural determinants, it empirically investigates rule-type legal and administrative mechanisms under the 2026-10-13 Criterion 2 clarification, including weak enforcement of mandatory toilet requirements under the National Building Regulations (L.I. 1630) and municipal bye-laws across planned vs. unplanned zones, administrative delays in building permit issuance leading developers to build without toilets, and landlord-tenant tenure and septic-tank desludging/maintenance rules governing functional toilet availability.",
+    "record_id": "R45B892C461F4",
+    "study_design": "Cross-sectional mixed-methods case study (structured household survey and semi-structured institutional interviews)"
+  }
+}

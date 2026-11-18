@@ -1,0 +1,277 @@
+{
+  "record_id": "RB894AA51801F",
+  "order": 50,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "cb4299f220f53c57595639425933159a7bcc60ef3a326dc388b85e515a6193af",
+  "input_text_sha256": "abd7d1914557c7ba48cb702b1350e1c2b0d596645a8a3c5de1e4d75b9af58929",
+  "prompt_sha256": "7cf0fcd2b6e15db3fcf11447ae3ab34fd86a31edc99f3e90f20911d0c1e96613",
+  "started_at": "2026-11-18T21:04:22.008483+00:00",
+  "completed_at": "2026-11-18T21:06:30.453494+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB894AA51801F\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB894AA51801F\n- Title: An appraisal of public water supply and coverage in Mzuzu City, northern Malawi\n- Authors: Wanda E.M.M.; Gulula L.C.; Phiri G.\n- Year: 2012\n- DOI: 10.1016/j.pce.2012.09.010\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: abd7d1914557c7ba48cb702b1350e1c2b0d596645a8a3c5de1e4d75b9af58929) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=20965, sha256=abd7d1914557c7ba48cb702b1350e1c2b0d596645a8a3c5de1e4d75b9af58929]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Malawi",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Yes. Examines household and community public water supply coverage and access in Mzuzu City, northern Malawi, across piped dwelling/yard connections, NRWB community standpipes, boreholes, unprotected wells, and rivers/streams.",
+      "c2": "No under the governing 2026-10-13 clarification. Under the plain wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), the paper could be viewed as borderline/yes in a loose macro-institutional sense because it appraises a statutory public utility (Northern Region Water Board, established under the Waterworks Act No. 17 of 1995) and discusses utility corporate finances (debt service on loans, low general tariff levels, unpaid government institutional arrears, unaccounted-for water, and staffing ratios) alongside coverage gaps in unplanned settlements. Under the narrow 2026-10-13 rule-type mechanism reading, however, Criterion 2 is clearly NO: the Waterworks Act is mentioned only as unanalysed background; poor coverage in unplanned settlements is attributed by NRWB officials to limited physical infrastructure capacity and technical pipe-network management difficulty rather than tenure, documentation, or eligibility rules; and the financial analysis evaluates macro utility balance-sheet losses (loan interest, foreign exchange losses, depreciation revaluation, UFW, and ministry arrears) constraining phased capital expansion rather than tariff rules, cost-recovery rules, administrative burdens, or enforcement mechanisms directly governing household service access.",
+      "c3": "Yes. Contains primary and secondary empirical data from a document review of NRWB annual business plans and reports (2004–2009), GPS field mapping/visits, and face-to-face semi-structured interviews with 420 purposively selected stakeholders in Mzuzu City.",
+      "c4": "Yes. Reports household/community water access and reliability outcomes, including percentage of the studied population using piped water in homes/yards (17%), NRWB community standpipes (51%), boreholes (13.6%), unprotected wells (16.5%), and rivers/streams (1.9%), as well as daily outage duration (>12 hours without water), late-night-only supply, and coping via buying from shallow-well owners (85%) or using streams/rivers due to unaffordability (15%).",
+      "c5": "No. While the setting, mixed-methods descriptive appraisal design, and water coverage/reliability outcomes are identifiable, no eligible rule-type legal, administrative, or regulatory exposure is defined or analytically linked to household access, and the exact unit-of-analysis denominator for the Table 1 coverage percentages relative to the purposively selected mixed stakeholder sample (n = 420) is loosely specified.",
+      "c6": "Yes. Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 4 (Abstract)",
+        "quote": "This study found out that only 17% of the study population has piped water in their dwelling homes and yards. It was also observed that 51% of the population accesses the water from community stand pipes supplied by the NRWB."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 4 (Section 1. Introduction)",
+        "quote": "The Northern Region Water Board (NRWB) was established as a corporate organization under the Waterworks Act Number 17 of 1995 to supply potable water and water borne sanitation services to Mzuzu City and other urban and peri-urban communities in the northern Malawi (NRWB, 2008)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 4 (Section 3.1)",
+        "quote": "It was worrisome to learn from NRWB ofﬁcials that the board had slowed down on new water connections campaigns in these unplanned settlements due to limited capacity of the water infrastructure to supply water and cover such areas."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 4 (Section 3.2)",
+        "quote": "The results of document review process revealed that the tariff were comparably very low and that the NRWB was struggling to meet huge ﬁnance costs as a result of the loans contracted from IDA, ADB and DBSA either through the Government or directly. The interest accrued on these loans was huge and unsustainable and this affected the NRWB’s water supply and coverage."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 4 (Section 2.3)",
+        "quote": "Quantitative data was collected through document review of the annual business plans and the annual reports from the Northern Region Water Board covering a period from 2004 to 2009."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3 of 4 (Section 3.1)",
+        "quote": "It was observed that power outages were serious issues in Mzuzu City because residents sometimes go without electricity at an average of more than 12 h daily. This meant that on average, users go more than 12 h without water supply from NRWB in Mzuzu City."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Utility operational, infrastructural, and corporate financial constraints (limited water infrastructure capacity, ESCOM power blackouts, debt-service and interest burdens on development and commercial loans, unaccounted-for water, unpaid government institutional bills, and staffing ratios); no rule-type legal or administrative mechanism directly governing service access is examined",
+    "outcome": "Public water supply coverage by source (17% piped in dwelling homes/yards, 51% NRWB community standpipes, 13.6% boreholes, 16.5% unprotected wells, 1.9% rivers/streams), access disparities in unplanned settlements, and service reliability/continuity (e.g., >12 hours daily without water and reliance on shallow wells or surface water)",
+    "paper_read": "full text",
+    "population_and_sample": "Mzuzu City residents and public water supply stakeholders in northern Malawi (420 purposively selected interview respondents including NRWB officials, community group leaders, users, and organizations, alongside NRWB corporate records for 2004–2009)",
+    "rationale": "Excluded under E03 (Wrong exposure). Although the paper empirically describes household/community water coverage and service reliability in Mzuzu City, Malawi (satisfying c1, c3, c4, and c6), it does not examine a rule-type legal, administrative, or regulatory mechanism directly governing service access per the 2026-10-13 Criterion 2 clarification. Instead, it appraises physical infrastructure capacity limits, ESCOM electricity blackouts, technical pipe-network management difficulties in unplanned settlements, and macro utility corporate finances (loan interest burdens, foreign-exchange losses, unaccounted-for water, government institutional arrears, and staffing per 1,000 connections).",
+    "record_id": "RB894AA51801F",
+    "study_design": "Mixed-methods descriptive case study / utility appraisal combining document review (2004–2009), GPS mapping and field visits, and face-to-face semi-structured interviews"
+  }
+}

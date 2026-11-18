@@ -1,0 +1,277 @@
+{
+  "record_id": "R33EC8B53721E",
+  "order": 39,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "e1c265731f6fd959c252b3bdacdb2848e351f98f3679235dacba734fe7352e8f",
+  "input_text_sha256": "d8f0604f42c7afaec190c5e16b81c50184492f02f3cd6509917c7b893438340e",
+  "prompt_sha256": "df4eb433abea79b71848fd16ce9c4db68a3e05d6e22242c65f97abb22888caaa",
+  "started_at": "2026-11-18T20:47:29.936018+00:00",
+  "completed_at": "2026-11-18T20:49:58.445348+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R33EC8B53721E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R33EC8B53721E\n- Title: Legitimization of the inclusion of cultural practices in the planning of water and sanitation services for displaced persons\n- Authors: Faure J.C.; Faust K.M.; Kaminsky J.\n- Year: 2019\n- DOI: 10.3390/w11020359\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d8f0604f42c7afaec190c5e16b81c50184492f02f3cd6509917c7b893438340e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=123567, sha256=d8f0604f42c7afaec190c5e16b81c50184492f02f3cd6509917c7b893438340e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Germany",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines the planning and provision of water and sanitation facilities (toilets, showers, sinks), usage support services, and municipal water/wastewater network connections for displaced persons' accommodations in four German cities, though focused on cultural adaptation in design and usage rather than barriers to obtaining service access.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain wording of Criterion 2, this study would satisfy the criterion (plain=yes) because it investigates institutional responses and organizational decision-making across government agencies, municipal utilities, nonprofits, and contractors, with background references to state sanitary facility guidelines, German technical standards, and federal building code changes. Under the narrow 2026-10-13 rule-type mechanism clarification, however, it does not satisfy Criterion 2 (narrow=no): rather than examining a legal, regulatory, or administrative rule directly governing service access (such as eligibility screening, documentation or tenure requirements, tariffs, or access-governing discretion/enforcement), the study examines engineering/architectural project delivery (utility hydraulic calculations using German standards, robust fixtures, sit-down versus squat toilets, bathroom layouts) and behavioural hygiene promotion (educational bathroom signs and house meetings) framed through organizational legitimacy theory.",
+      "c3": "Primary qualitative empirical study based on 28 semi-structured interviews conducted in summer 2016 in four German cities, analyzed in Dedoose using a coding dictionary and inter-coder reliability checks. Qualitative method is fully eligible and plays no role in exclusion.",
+      "c4": "Does not report an outcome of household, individual, or community water or sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion. Displaced persons were not interviewed and water consumption data were unavailable; the reported outcomes are frequencies and ratios of Suchman legitimacy subtypes (48 legitimizing and 27 delegitimizing excerpts) and stakeholder planning/educational decision categories.",
+      "c5": "The study design (qualitative semi-structured interview study), setting (four German cities), sample (28 organizational stakeholders; 75 coded interview excerpts), focal topic, and discursive legitimacy outcomes are clearly reported, although a review-eligible rule-type exposure and resident access outcome are absent per Criteria 2 and 4.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This study seeks to assess the institutional response to international displacement in developed urban contexts through exploring how stakeholders (de)legitimized (i.e., either withheld or attributed legitimacy to) the inclusion of cultural practices in the planning of water and sanitation for displaced persons."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This study is enabled by 28 semi-structured interviews of individuals involved in the accommodation of displaced persons in Germany conducted in 2016. The interview content was qualitatively analyzed to identify the types of decisions made, legitimacy types used to (de)legitimize those decisions, and information used to assess cultural practices."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 (Section 3.5)",
+        "quote": "On the one hand, Table 5 shows that providing education to displaced persons to properly use water and sanitation facilities provided to them was the primary type of decision made when legitimizing the inclusion of cultural practices."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 (Section 3.5)",
+        "quote": "On the other hand, Table 6 shows that the type of decision primarily made when delegitimizing the inclusion of cultural practices was to purposely not adapt the water and wastewater systems and perform calculations using German standards."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 (Section 3.1)",
+        "quote": "Of those 75 excerpts, 48 were coded for a legitimization of this inclusion while 27 were coded for its delegitimization."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 22 (Section 4.4)",
+        "quote": "Additionally, displaced persons were not interviewed as the goal of this study is the assessment of the institutional response of the hosting country."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Inclusion versus non-inclusion of displaced persons' cultural practices in shelter water and sanitation project delivery, fixture design, utility hydraulic calculations, and behavioural hygiene education",
+    "outcome": "Stakeholder discursive legitimization and delegitimization measured by frequencies and ratios of Suchman legitimacy subtypes (pragmatic, moral, and cognitive legitimacy), stakeholder information sources, and planning/education decision categories",
+    "paper_read": "full text",
+    "population_and_sample": "28 organizational stakeholders involved in providing accommodations for displaced persons across four major German cities in summer 2016 (9 water and sanitation utility engineers, 7 nonprofit shelter managers/social workers/monitors, 4 government agency officials, 4 architects, and 4 construction, communication, and real estate staff); 75 coded interview excerpts",
+    "rationale": "Excluded as E03 (Wrong exposure), with Criterion 4 also unmet. Although this qualitative interview study examines water and sanitation planning for displaced persons' housing in four German cities, it fails Criterion 2 under the 2026-10-13 scope clarification because it investigates how engineering, architectural, utility, and shelter-management stakeholders discursively legitimize or delegitimize cultural adaptation in technical project delivery (hydraulic demand calculations using German standards, fixture durability, sit-down vs. squat toilet selection, room layouts) and behavioural hygiene promotion (bathroom signage and house meetings), rather than a rule-type legal, regulatory, or administrative mechanism directly governing service access. In addition, under Criterion 4, displaced persons were not interviewed and no service access, connection, availability, reliability, quantity, affordability, or exclusion outcome was measured; the reported outcomes are counts and ratios of Suchman organizational legitimacy subtypes in stakeholder interviews.",
+    "record_id": "R33EC8B53721E",
+    "study_design": "Qualitative semi-structured interview study"
+  }
+}
