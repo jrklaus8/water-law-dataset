@@ -1,0 +1,277 @@
+{
+  "record_id": "RE26DB8683A1F",
+  "order": 10,
+  "run": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "ae0d4a1747a0ef5dd7bbdea004769f4f804134e0d4ddea776bee2d8cfb1b46a8",
+  "input_text_sha256": "c9f3bfc3510f4a148ca2daa2361809be8975585517feb9da0b2864313927633b",
+  "prompt_sha256": "81434a463690bd43a889c8b5d8fc606da534d508acc4adc2471923eb4770f646",
+  "started_at": "2026-11-18T21:09:31.382462+00:00",
+  "completed_at": "2026-11-18T21:13:38.205461+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RE26DB8683A1F\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RE26DB8683A1F\n- Title: Water wars in detroit: Custodianship and the work of institutional renewal\n- Authors: Montgomery A.W.; Dacin M.T.\n- Year: 2020\n- DOI: 10.5465/AMJ.2017.1098\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: c9f3bfc3510f4a148ca2daa2361809be8975585517feb9da0b2864313927633b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=155528, sha256=c9f3bfc3510f4a148ca2daa2361809be8975585517feb9da0b2864313927633b]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Contextually satisfies c1 in broad domain terms: the case setting is public drinking water and sewerage services in Detroit, Michigan during the 2014-2017 crisis involving 33,000 household water shutoffs and acute affordability challenges, although household service access serves as the contextual crisis setting rather than the primary object of analysis.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading diverge. Under the plain wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), the paper would satisfy c2 because it examines institutional maintenance and renewal of public water services amid municipal bankruptcy, privatization threats, and stakeholder contestation. Under the mandatory narrow 2026-10-13 clarification, however, c2 is 'no': the study empirically analyzes 'institutional custodianship'—the personal motivations, sociological/organizational roles (defender, reinforcer, reifier, replenisher, retooler, exalter), and discursive framing intersections of union operatives, environmental warriors, community converts, and corporate/policy agnostics countering institutional entropy—rather than a rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, documentation/tenure requirements, tariff/cost-recovery rules, discretion/accommodation, enforcement rules, or utility ownership/regulatory rules directly governing access). Actual legal and administrative features of the Detroit crisis (state emergency management, Chapter 9 bankruptcy, the 60-day/$150 arrears disconnection threshold, privatization RFPs, and the GLWA/WRAP restructuring) are treated as unanalysed macro-governance background and external catalysts evoking custodian mobilization rather than being empirically analyzed as mechanisms governing household access.",
+      "c3": "Contains rich primary qualitative empirical evidence: a longitudinal qualitative grounded-theory study drawing on 42 formal semi-structured interviews (averaging 88 minutes), 48 informal interviews, 120+ hours of non-participant observation across 32 events, insider and investigator journals, and extensive archival records.",
+      "c4": "Primary empirical outcomes analyzed are organizational and institutional—specifically custodian emergence, energizing/resourcing role performance, framing intersections, and 'institutional renewal' (retaining public ownership under the Great Lakes Water Authority and sustaining institutional energy/resources)—rather than household or community service access outcomes. Figures on household disconnections (33,000 in 2014; 112,000 through 2018) and the $4.5 million Water Residential Assistance Program (WRAP) backlog are cited from secondary DWSD, media, and NGO reports as crisis background or postscript context rather than empirically evaluated access outcomes.",
+      "c5": "The study clearly reports its longitudinal qualitative grounded-theory design, its sampled population and unit of analysis (42 organizational/community leaders theoretically sampled as institutional custodians; non-custodians were excluded from formal interview analysis), its focal processes (custodial roles and rule-framing intersections), and its outcome construct (institutional renewal), though these constructs do not form an eligible legal-mechanism-to-service-access linkage.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 58",
+        "quote": "We examine the role of custodianship in the renewal of the institution of public water services in Detroit, Michigan. Our longitudinal qualitative study begins prior to the 33,000 household water shutoffs of 2014 and follows this ongoing crisis through 2017."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 58",
+        "quote": "The work of individuals and groups to maintain the institution of public water services provides the context for this study as we ask: Who are institutional custodians and what evokes custodianship?"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 19 of 58",
+        "quote": "As heterogeneous operative, warrior, convert, and agnostic custodians emerged (Figure 2) we focused on their catalysts, characteristics, objectives, and roles (i.e. social positions and behaviors), as presented in Table 5."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 15 of 58",
+        "quote": "Formal-depth interview participants were those we theoretically identified as custodians, namely those proactively working to maintain or preserve institutionalized practices. These participants were leaders, managers, and executives of their organizations or groups who were actively involved in water issues during our study."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 36 of 58",
+        "quote": "The last aspect of our model points to the intent, or intended outcome, of the custodians. We propose that efforts to restore the energy and resources (Scott, 2015) of a neglected and entropic institution is aimed at what we term institutional renewal."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 32 of 58",
+        "quote": "For convert custodians concerned with access and affordability, a $4.5 million fund to assist low-income residents was an important aspect of the GLWA deal. However, with the fund over-subscribed and thousands still on shutoff lists, the water crisis continued well into 2018 (Stafford, 2018)."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Heterogeneous institutional custodianship (catalysts, motivations, energizing and resourcing roles, and discursive framing intersections across operative, warrior, convert, and agnostic custodians)",
+    "outcome": "Institutional renewal of the neglected institution of public water services in Detroit (emergence and intersection of custodial roles/frames and retention of public utility ownership under the Great Lakes Water Authority, with secondary media-cited summary of a $4.5M assistance fund and ongoing shutoffs)",
+    "paper_read": "full text",
+    "population_and_sample": "Institutional custodians active in Detroit water issues (42 formal semi-structured interviews with organizational leaders, managers, union officials, NGO directors, community organizers, water experts, and corporate/city executives: 11 operatives, 9 warriors, 14 converts, and 8 agnostics; plus 48 informal interviews and 32 observed events; unit of analysis: custodial actors and custodian groups)",
+    "rationale": "Excluded under E03 (Wrong exposure), with secondary failure on Criterion 4. Although set in the context of the 2014-2017 Detroit household water shutoffs and public water services crisis (c1=yes) and based on rich longitudinal qualitative interviews and observations (c3=yes), this Academy of Management Journal paper is an organizational institutional-theory study of 'institutional custodianship'—examining who custodians are (operatives, warriors, converts, agnostics), what catalyzes them, and how their energizing/resourcing roles and discursive framings intersect to renew an institution facing entropy. Under the 2026-10-13 Criterion 2 clarification, it does not empirically analyze a rule-type legal, administrative, or regulatory mechanism directly governing household water access (such as the $150/60-day shutoff enforcement rules, WRAP eligibility/documentation burdens, tariff structures, or emergency-manager/GLWA regulatory rules governing access); instead, bankruptcy, privatization bids, shutoffs, and the GLWA/WRAP deal serve as unanalysed macro-governance background or external catalysts evoking custodian mobilization (c2=no). Correspondingly, the sampled population consists exclusively of custodial leaders (non-custodians were excluded from the formal interview sample) and the analyzed empirical outcome is organizational/institutional renewal rather than household service access or disconnection (c4=no).",
+    "record_id": "RE26DB8683A1F",
+    "study_design": "Longitudinal qualitative case study using grounded theory, 42 formal semi-structured interviews, 48 informal interviews, non-participant observation (120+ hours), journals, and archival documents"
+  }
+}

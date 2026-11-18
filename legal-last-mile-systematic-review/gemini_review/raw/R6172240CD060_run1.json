@@ -1,0 +1,277 @@
+{
+  "record_id": "R6172240CD060",
+  "order": 48,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "06930b5845ac35419c077aab945de6386d25ae9c63dbe3e5b3b56e265ea019af",
+  "input_text_sha256": "72f2310426bd9f7cb7b3c2fd674465fd7ff9895a9816b2560609cf8624f52840",
+  "prompt_sha256": "ac82be7e1503faef7dd881de317aa5520975a2aeeda0a6dda56005920eff7614",
+  "started_at": "2026-11-18T21:04:22.000852+00:00",
+  "completed_at": "2026-11-18T21:07:17.985082+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R6172240CD060\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R6172240CD060\n- Title: Can organisation development principles in India's local governments improve governance?\n- Authors: Srivastava, S; Rajadhyaksha, M\n- Year: 2016\n- DOI: 10.5130/cjlg.v0i19.5450\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 72f2310426bd9f7cb7b3c2fd674465fd7ff9895a9816b2560609cf8624f52840) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=68099, sha256=72f2310426bd9f7cb7b3c2fd674465fd7ff9895a9816b2560609cf8624f52840]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "unclear",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Water and sanitation are included among the 13 rural development sectors tracked in the Gram Panchayat Organisation Development (GPOD) intervention (including an illustrative RACI process map for piped drinking water supply on p. 11 and monitoring of household toilet construction/coverage under Nirmal Bharat Abhiyan on pp. 18–19), although household/community water or sanitation service access is only a minor illustrative component within a general local-government capacity-building study.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain wording of Criterion 2, this paper would qualify (plain=yes) because it examines an institutional, administrative, and local-governance intervention in rural village councils (Gram Panchayats) operating under India's 73rd Constitutional Amendment and the Karnataka Panchayat Raj Act 1993. Under the 2026-10-13 rule-type mechanism clarification, however, Criterion 2 is NOT met (narrow=no): the exposure studied is the GPOD change-management and organisational capacity-building framework (shared vision/mission workshops, RACI workflow mapping, informal internal portfolio roles for elected members, PDCA annual planning, and monthly MIS tracking across 13 multi-sector functions) aimed at general organisational efficiency and programme delivery, rather than a rule-type legal, regulatory, or administrative mechanism directly governing water or sanitation service access (such as eligibility screening, administrative burden, documentation/tenure rules, tariff/cost-recovery rules governing household access, street-level discretion, enforcement, or utility regulatory structure). Passing mentions of BPL list ambiguity, VWSC activation, and aggregate water-tax collection against target are descriptive notes and are not empirically analysed in relation to household service access.",
+      "c3": "Contains empirical evidence from a participatory action-research pilot conducted in two Gram Panchayats in Karnataka (2011–2013, followed through 2015), drawing on stakeholder consultations, participatory rural appraisal, RACI process mapping workshops, councillor testimonials, and a pre-post GP Management Information System (GP-MIS), although empirical reporting is largely descriptive process documentation with minimal summary output bullets.",
+      "c4": "Minimally reports one sanitation access-related summary outcome at the GP level (noting that Oorkunte Mittur GP achieved the highest coverage of individual toilets in Mulbagal block in 2013–2014), alongside non-access water outputs (aggregate GP water-tax collection of Rs 1 lakh against a Rs 1.75 lakh target in Dibburhalli GP and chemical contamination testing in 20 villages).",
+      "c5": "The Gram Panchayat unit of analysis (two GPs covering 32 villages and 15,220 residents), the GPOD intervention, and the participatory action-research / pre-post monitoring design are identifiable, but underlying baseline and post-intervention figures for water or sanitation access are not reported in the text (only a single unquantified post-period rank statement on toilet coverage for one GP and nothing on access for the second GP).",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 22",
+        "quote": "GPOD works towards strengthening the panchayat as an organisation in its entirety, rather than by tackling stand-alone components. It includes building a shared vision in the panchayat, mapping and re-engineering key processes, developing accountability and incentive structures, and supporting the village body in developing and implementing its annual plans."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 22",
+        "quote": "The objective of this paper is to explore how organisation development principles can strengthen the functioning of GPs in India."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7 of 22",
+        "quote": "Action research for the GPOD project was situated in two GPs in the state of Karnataka in south India – Oorkunte Mittur in Kolar District and Dibburhalli in Chikkaballapur district, together covering 32 villages and reaching a population of 15,220 citizens."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 17 of 22",
+        "quote": "The baseline covered 51 indicators at the meta-level of the GP across 13 crucial developmental sectors such as agriculture and animal husbandry, primary and secondary education, drinking water, sanitation, and housing among others."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 18 of 22",
+        "quote": "The broad goal of the panchayat is to improve the availability and usage of toilets, and this was operationalised through the Head Amenities I who oversaw sanitation as a function."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 19 of 22",
+        "quote": "Oorkunte Mittur had the highest coverage of individual toilets in the Mulbagal block"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Gram Panchayat Organisation Development (GPOD) framework — a holistic organisation-development and internal capacity-building intervention (vision and mission workshops, RACI process mapping, informal portfolio leadership roles for elected members, PDCA annual planning, and monthly MIS tracking)",
+    "outcome": "GP-level organisational outputs (annual plans, activation of standing/citizen committees, gram and ward sabha participation) and summary multi-sector service delivery outputs across 13 sectors, including one qualitative rank statement on individual toilet coverage in Oorkunte Mittur GP, aggregate GP water-tax collection in Dibburhalli GP, and village chemical water testing",
+    "paper_read": "full text",
+    "population_and_sample": "Two rural Gram Panchayats (village councils) in Karnataka, India: Oorkunte Mittur in Kolar District (13 villages/wards, population 7,482) and Dibburhalli in Chikkaballapur District (19 villages/wards, population 7,738), covering 32 villages and 15,220 citizens in total (action research 2011–2013, tracked through 2015)",
+    "rationale": "Excluded under E03 (Wrong exposure). Although the paper touches illustratively on rural sanitation (individual toilet construction/coverage) and drinking water administration among 13 developmental sectors managed by two Gram Panchayats in Karnataka, India, the intervention examined is a generic organisational development / internal change-management and capacity-building programme (the GPOD framework: visioning, RACI workflow mapping, informal councillor portfolio management, annual planning, and MIS tracking) aimed at strengthening overall village council efficiency. Per the 2026-10-13 Criterion 2 clarification, it does not examine a rule-type legal, regulatory, or administrative mechanism directly governing household or community water or sanitation service access, and water/sanitation access is mentioned only as an unquantified illustrative output bullet rather than empirically analysed in relation to any access rule.",
+    "record_id": "R6172240CD060",
+    "study_design": "Participatory action-research case study with uncontrolled pre-post Management Information System (GP-MIS) monitoring in two Gram Panchayats"
+  }
+}

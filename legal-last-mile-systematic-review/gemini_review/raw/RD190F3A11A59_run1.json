@@ -1,0 +1,272 @@
+{
+  "record_id": "RD190F3A11A59",
+  "order": 12,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "1a9cb240205c6338d1f0039302f66c1a57e1c416b9965bf16eea6e8f6bc56020",
+  "input_text_sha256": "87a4d8cfd13644495310396f2151de366a50c07141618e54b80fb45b6fad4d22",
+  "prompt_sha256": "20e6dfb751c93ee213440b9c5f7498baa8e9897b33c190c7756414065956b128",
+  "started_at": "2026-11-18T20:28:37.971485+00:00",
+  "completed_at": "2026-11-18T20:30:59.467153+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RD190F3A11A59\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RD190F3A11A59\n- Title: Deprivation in slums and child poverty: Study on Kolkata\n- Authors: De I.; Nag T.\n- Year: 2016\n- DOI: 10.1108/IJSE-11-2014-0226\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 87a4d8cfd13644495310396f2151de366a50c07141618e54b80fb45b6fad4d22) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=59745, sha256=87a4d8cfd13644495310396f2151de366a50c07141618e54b80fb45b6fad4d22]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household access to water supply (sufficiency and quality), sanitation (latrine/toilet), and drainage across 541 households in 23 slums of Kolkata.",
+      "c2": "Plain wording: Yes — examines legal, administrative, institutional, and governance factors shaping basic service access, including municipal authorization of slums (notified vs. non-notified status), land title/encroachment (government land, railway land, and Thika Tenancy ownership), decentralized municipal service governance under the 74th Constitutional Amendment and West Bengal Municipal Act 1993, ward electoral competition and fragmentation, political clientelism, and caste/religious discrimination in municipal service delivery. Narrow 2026-10-13 rule-type mechanism reading: Yes — although electoral competition/fragmentation (VOTE, CONTEST, TCONTEST) and clientelism (HFLM) represent local political-economy governance rather than formal utility rules (and KEIP is a project-delivery dummy), the study explicitly operationalizes and empirically estimates settlement legal authorization and land-title/tenure status (non-notified/unauthorized slum NN vs. municipality-authorized notified slum, encroached government land GL, and encroached railway land RL) in cross-tabulations and four ordered probit models of household water, sanitation, and drainage access (IWSD), as well as discriminatory discretion/neglect toward minority and backward-caste households. Legal settlement notification and land-tenure/encroachment status fall directly within the protocol's rule-type mechanism scope (documentation or tenure requirements governing service access).",
+      "c3": "Primary quantitative empirical study based on a stratified cluster and systematic survey of 541 households in 23 slums of Kolkata, analyzed using descriptive statistics and maximum-likelihood ordered probit regressions.",
+      "c4": "Reports household-level outcomes for water supply sufficiency, water quality, access to sanitation (latrine/toilet), physical access to drainage and drain-cleaning frequency, and a composite Index of Water, Sanitation and Drainage (IWSD).",
+      "c5": "Clearly identifies the population and unit of analysis (541 slum households across 23 wards/slums in Kolkata), exposures (type of land title/notification status NN, GL, RL; ward political competition/clientelism; councillor and household social/religious identity), outcomes (water sufficiency, water quality, sanitation access, drainage access, and IWSD), and study design (cross-sectional household survey with ordered probit regression). Note that while the Appendix text detailing the exact weighting formula of IWSD components was omitted in the published PDF leaving Tables AI-AIV, review eligibility does not depend on synthesis-level effect extraction (Criterion 6 note), and both ordered probit estimates for IWSD and descriptive percentages for separate water and sanitation outcomes are reported.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1 of 21",
+        "quote": "The study is based on a survey of 541 sample households selected from 23 slums of Kolkata, India."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 4 of 21",
+        "quote": "In the city certain slums are authorized by municipality. They are known as notified slums. The unauthorized slums are known as non-notified slums. These slums have been developed mainly by encroaching on government or railway land."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 9 of 21",
+        "quote": "The survey results reveal that around 91 percent of the households reside in notified slums and the rest reside in non-notified slums. The dwellings in the non-notified slums are unauthorized, made of kuccha structure and devoid of any sanitation facility."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 10 of 21",
+        "quote": "We have constructed an index of water, sanitation and drainage. It takes into account the availability and quality of water supply, access to sanitation or toilet and access to drainage."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 14 of 21",
+        "quote": "The regression results suggest that irrespective of government or railway land, slums located in non-notified area have significantly lower score."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal slum notification and land-title/tenure status (non-notified/unauthorized slum NN vs. municipality-authorized notified slum; encroached government land GL and railway land RL), alongside ward electoral competition and fragmentation (VOTE, TCONTEST, CONTEST), political clientelism (HFLM), councillor identity/reelection (MC, REELEC), and household caste/religious identity (MUSLIM, SCST)",
+    "outcome": "Household water supply sufficiency, water supply quality, access to sanitation (latrine/toilet), access to drainage and drain-cleaning frequency, and composite Index of Water, Sanitation and Drainage (IWSD)",
+    "paper_read": "full text",
+    "population_and_sample": "541 sample households selected via stratified cluster and systematic sampling from 23 slums (19 notified slums and 4 non-notified slums on government or railway land; 9% of households in non-notified slums) across 23 municipal wards in Kolkata, India (unit of analysis: household)",
+    "rationale": "This empirical household survey (n = 541 households across 23 slums in Kolkata, India) examines household access to water supply, sanitation (latrines), and drainage. In addition to analyzing child poverty, caste/religious disparities, and ward-level electoral competition and clientelism, the study explicitly defines, stratifies, and empirically models municipal legal authorization/notification and land-title status (notified/authorized slums vs. non-notified unauthorized slums encroaching on government land GL and railway land RL) as determinants of household water, sanitation, and drainage access using descriptive statistics and four ordered probit regression models. It therefore satisfies all inclusion criteria, including Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type mechanism scope (tenure and legal settlement-authorization requirements governing service access).",
+    "record_id": "RD190F3A11A59",
+    "study_design": "Cross-sectional household survey (stratified cluster and systematic sampling) with ordered probit regression analysis"
+  }
+}

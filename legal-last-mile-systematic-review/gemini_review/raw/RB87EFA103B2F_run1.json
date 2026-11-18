@@ -1,0 +1,277 @@
+{
+  "record_id": "RB87EFA103B2F",
+  "order": 14,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "3e894692b7ad7a91700717e52b0692f287eaf5acbb433715749f88aceb595d41",
+  "input_text_sha256": "b63163c0316b18f202d5459602beb6e36dcf2673f3ef91a86718f17b3da78dc0",
+  "prompt_sha256": "8d857163dab893e7e8851f39e7d3f22ac16c33a5171e66a62025f21a93cb4ab9",
+  "started_at": "2026-11-18T20:28:38.015774+00:00",
+  "completed_at": "2026-11-18T20:29:45.910147+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB87EFA103B2F\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB87EFA103B2F\n- Title: Reasserting Community: The Social Challenge of Wastewater Management in Panajachel, Guatemala\n- Authors: Ratner, Blake D; Alberto Rivera Gutierrez\n- Year: 2004\n- DOI: 10.17730/humo.63.1.krkvu1q77km1hk8b\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b63163c0316b18f202d5459602beb6e36dcf2673f3ef91a86718f17b3da78dc0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61340, sha256=b63163c0316b18f202d5459602beb6e36dcf2673f3ef91a86718f17b3da78dc0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Guatemala",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and commercial connection to a municipal wastewater collection and treatment system (sewerage service access) as well as historical transition to piped municipal water supply in Panajachel, Guatemala.",
+      "c2": "Satisfies Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain reading, the study examines municipal governance, state administration versus traditional Mayan communal institutions, and stakeholder co-governance of wastewater infrastructure. Under the narrow 2026-10-13 rule-type reading, the study directly analyzes concrete municipal eligibility, documentation/tenure, administrative burden, tariff/cost-recovery, and accommodation rules governing household sewer connections: (1) initial municipal connection rules requiring proof of legal property ownership and clearance of municipal tax arrears, which discouraged connections; (2) revised eligibility rules requiring applicants to be current on water supply and trash collection bills plus a Q75 connection fee; (3) user-fee/tariff cost-recovery structures and proposed progressive differential tariffs between households and tourism businesses; and (4) municipal collective alleyway agreements requiring neighborhood committee formation, collective payment clearance, and resident labor co-production in exchange for municipal piping and alley paving.",
+      "c3": "Empirical qualitative action-research case study conducted between January 2001 and September 2002, drawing on stakeholder interviews, historical interview data, a multi-stakeholder forum in April 2001, and municipal administrative and financial records on sewer connections, fees collected, and operating costs. Per protocol rules, qualitative socio-legal empirical studies are eligible for systematic review inclusion.",
+      "c4": "Reports concrete service access, connection, exclusion, and affordability outcomes: out of roughly 1,400 municipal households, slightly over half were approved for sewage connection and 550 connections were operating by April 2001 (plus 3 of 8 major hotels and 6 of about 40 guesthouses); exclusion/non-connection driven by legal-title requirements, tax/fee arrears rules, and unaffordable connection/user fees relative to low household incomes; and 185 additional families across three densely populated alleyways connecting under the March 2002 collective alley-committee rules.",
+      "c5": "Identifies population and units of analysis (municipality, neighborhoods/alleyways, and roughly 1,400 households plus hotels/guesthouses in Panajachel, Guatemala), exposure (municipal sewer connection documentation/tenure and tax/utility-arrears eligibility rules, connection/user tariffs, and collective alleyway co-production agreements), outcome (household and business sewer connections, fee compliance, and affordability/exclusion), and study design (qualitative action-research case study).",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4",
+        "quote": "The plant is also operating well below its intended capacity because of delays in getting the town’s residents and businesses to connect to the system."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4",
+        "quote": "Initial rules set by the municipality actually discouraged property owners from connecting to the system because they demanded that users demonstrate legal ownership of the property and be up to date with other tax bills. These requirements were subsequently lightened: a user requesting sewage connection need only be current with payments for trash collection and water supply, then pay a connection fee of Q75 (about $9.40)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4",
+        "quote": "Of some 1400 households recorded by the municipal government, slightly more than half had been approved for connection by April 2001, and 550 connections were operating. Three of the 8 major hotels were connected and paying their fees, as were 6 of some 40 guesthouses."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2",
+        "quote": "drew on an existing body of prior interview data in reconstructing the historical context, and held discussions with key persons who had since departed the local scene, including the lead designer of the plant and the town’s former mayor who championed the project."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "Under the new agreement, neighbors must form an alley committee in which all alley residents commit to connect to the sewage system."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7",
+        "quote": "In March 2002, three densely populated alleyways were working with the municipality under this type of agreement to connect 185 additional families to the system."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Municipal sewer connection eligibility and documentation rules (initial requirement to prove legal property ownership and municipal tax clearance; revised requirement to be current on water and trash bills plus a Q75 connection fee), tariff/user-fee cost-recovery schedules, and collective alleyway committee co-production agreements",
+    "outcome": "Household and business connection to the municipal wastewater/sewage system (approvals and operating connections), fee compliance, and affordability/exclusion barriers",
+    "paper_read": "full text",
+    "population_and_sample": "Households (approximately 1,400 recorded by the municipality; 7,339 permanent residents in 1994 census), tourism businesses (8 major hotels and approximately 40 guesthouses), and municipal/NGO/community stakeholders in Panajachel, Lake Atitlán, Guatemala (units of analysis: municipality, neighborhood/alleyway, and household/property)",
+    "rationale": "This empirical action-research case study in Panajachel, Guatemala meets all inclusion criteria (c1-c6). It examines household and commercial connection to a municipal sewage/wastewater system (c1) and directly analyzes rule-type legal and administrative mechanisms governing service access under both the plain and narrow 2026-10-13 Criterion 2 readings—specifically municipal rules requiring proof of legal property ownership and tax clearance to connect, revised utility-payment clearance and Q75 connection-fee rules, user-fee/tariff structures and household affordability burdens, and collective alleyway connection agreements (c2). It draws on primary interviews (2001-2002), stakeholder consultations, and municipal connection/financial data (c3), and reports concrete household and business sewer connection and exclusion outcomes (c4, c5) in English (c6).",
+    "record_id": "RB87EFA103B2F",
+    "study_design": "Qualitative action-research case study (interviews, stakeholder consultations, and municipal administrative data, January 2001-September 2002)"
+  }
+}

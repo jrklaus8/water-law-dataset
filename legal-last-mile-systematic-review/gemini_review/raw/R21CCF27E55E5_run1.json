@@ -1,0 +1,282 @@
+{
+  "record_id": "R21CCF27E55E5",
+  "order": 31,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "ead31feb156495bd6778b4c952a8b1a71aeaaeb410a79ab196c3b33ff88b049e",
+  "input_text_sha256": "31f29c209f3f48a529effd63a13e1f1540f697a5263d7d5bfd1fbfebdb108cb8",
+  "prompt_sha256": "61a76377c6faabbfe8fd107f3b0c806821c68c089128d0712f86a36de45b8867",
+  "started_at": "2026-11-18T20:39:46.656637+00:00",
+  "completed_at": "2026-11-18T20:43:01.689106+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R21CCF27E55E5\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R21CCF27E55E5\n- Title: Water Flowing North of the Border: Export Agriculture and Water Politics in a Rural Community in Baja California\n- Authors: Zlolniski, Christian\n- Year: 2011\n- DOI: 10.1111/j.1548-1360.2011.01112.x\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 31f29c209f3f48a529effd63a13e1f1540f697a5263d7d5bfd1fbfebdb108cb8) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69775, sha256=31f29c209f3f48a529effd63a13e1f1540f697a5263d7d5bfd1fbfebdb108cb8]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines domestic household and settlement-level drinking and household water service access in rural squatter settlements (colonias, including Colonia Arbolitos) in the San Quintin Valley, Baja California, delivered via the state public water utility CESPE (piped water connections and utility water trucks) and private water vendors.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, the study examines national and state water governance, utility management, and regulatory policies (1992 National Water Law decentralization, CNA agricultural regulation, and CESPE urban/domestic water provision). Under the narrow 2026-10-13 rule-type mechanism clarification, rather than treating neoliberalism merely as unanalysed macro-governance background, the paper empirically analyses concrete rule-type mechanisms directly governing domestic water service access: (1) tariff and full cost-recovery rules enacted by CESPE under the 1992 National Water Law (a proposed 300% hike and enacted 115% flat-fee increase from Mex$23 to Mex$53/month, rounded up per federal fee-rounding law, plus phased 50%/50%/40% hikes); (2) mandatory household metering and three-part new-contract charges (connection fee, piping fee, and unsubsidized $227 / Mex$2,500 water meter cost, contrasted with 75% meter subsidies and zero municipal water charges for agricultural wells); (3) administrative rationing/allocation rules (CESPE's uniform quota of five barrels per week per household regardless of family size for trucked water delivery); and (4) weak CNA enforcement of groundwater well-permitting bans and grower capture of statutory watershed councils (COTAS).",
+      "c3": "Empirical qualitative socio-legal / ethnographic field study conducted across the summers of 2005, 2006, and 2009, combining participant observation in two rural settlements and community meetings, semi-structured interviews in 18 farmworker households, interviews with mobilized residents, and key-informant interviews with public officials, water agency heads (CESPE, SAGARPA), and grower association / COTAS representatives. Per protocol safeguards, qualitative socio-legal empirical studies are eligible for the systematic review and mechanism synthesis without quantitative effect estimates.",
+      "c4": "Reports concrete access, connection, continuity, quantity, quality, and affordability outcomes: roughly 40% of colonias lack running water; multi-year delays before piped connection in Colonia Arbolitos; intermittent piped service (e.g., three days a week for a few hours at night); rationing below household need under CESPE's five-barrel weekly quota; household water expenditures of ~14% of farmworker income (Mex$300/month) before piped connection vs. Mex$40/month after connection (with unsubsidized $227 meter fees beyond household means); and degraded water quality (salinity and unfiltered muddy tap water) requiring private purchase of drinking/cooking water.",
+      "c5": "Population and unit of analysis (indigenous Mixtec/Zapotec and mestizo farmworker households and rural colonias in the San Quintin Valley, plus regional water agencies), exposure (CESPE cost-recovery tariffs, connection/piping/meter fees, five-barrel household quota, and asymmetric CNA regulatory enforcement/subsidies under the 1992 National Water Law), outcomes (piped coverage, continuity, quantity, affordability, and reliance on private vendors), and study design (ethnographic case study) are all clearly identifiable.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 24 (p. 569)",
+        "quote": "This study is based on ethnographic research I carried out in the San Quint´ın Valley in the summers of 2005, 2006, and 2009."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 24 (p. 569)",
+        "quote": "I attended community meetings that addressed the chronic shortage of water in these and other colonias—rural squatter settlements where farm laborers built their homes and interviewed residents who have participated in collective mobilizations for water. I also interviewed public ofﬁcials, heads of water agencies, and representatives of growers’ associations to gather their perspectives on the water problems in the region."
+      },
+      {
+        "criterion": "c1, c4",
+        "page": "PDF Page 11 of 24 (p. 575)",
+        "quote": "The agency has only 32 urban wells (some of which are dry), signiﬁcantly fewer than the wells registered for irrigation; about 40 percent of the colonias in the region do not have running water. Some of the oldest squatter settlements waited many years before CESPE built the infrastructure to deliver water, while in the colonias with no running water, residents have to buy it at inﬂated prices from private vendors in water trucks."
+      },
+      {
+        "criterion": "c2, c4",
+        "page": "PDF Page 11 of 24 (p. 575)",
+        "quote": "Responding to the new Mexican water law, state politicians increased the cost of piped water to make the agency ﬁnancially sustainable. At ﬁrst, CESPE proposed an increase of about 300 percent to take effect in 2007, but massive protests by residents, merchants, and small business owners derailed the plan. For residents who did not have meters and paid a ﬂat fee, the cost of water increased 115 percent (from Mex$23 to Mex$53 per month)."
+      },
+      {
+        "criterion": "c2, c4",
+        "page": "PDF Page 11 of 24 (p. 575)",
+        "quote": "To hold residents accountable, CESPE started to install water meters, the installation of which was heavily subsidized for agrarian wells. For households, however, the average cost for installing a meter was $227 (around Mex$2,500), well beyond the limited means of most farm laborer families."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 21 of 24 (Note 13, p. 585)",
+        "quote": "Each new contract came with three separate fees: a connection fee, a piping fee, and the water meter. In contrast, unlike domestic users, growers do not pay the government of the municipality for the use of water."
+      },
+      {
+        "criterion": "c2, c4",
+        "page": "PDF Page 14 of 24 (p. 578)",
+        "quote": "After several years of public pressure, CESPE ﬁnally started to deliver water in its own trucks at a lower price than private vendors. Yet because of its own limited supplies, it set up a quota of ﬁve barrels per week per household, regardless of its size, well below the amount of water most of the families in the colonia used."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Water governance, tariff/cost-recovery, metering/connection-fee, quota, and regulatory enforcement rules under Mexico's 1992 National Water Law—specifically state utility (CESPE) full cost-recovery tariff increases (115% flat-fee hike), three-part new-contract charges (connection, piping, and unsubsidized $227 household meter fees), CESPE's uniform 5-barrel-per-week household trucked-water quota, and asymmetric federal agricultural subsidies and weak CNA groundwater well-permitting enforcement.",
+    "outcome": "Household and settlement-level domestic water service access, including piped running-water connection coverage (~40% of colonias unconnected), service continuity and rationing (intermittent cuts to 3 days/week for a few hours at night; 5-barrel weekly trucked quota vs. 10-barrel household need), affordability and household water expenditure (~14% of income pre-connection vs. Mex$40/month post-connection; unaffordable $227 meter fee; forced reliance on higher-priced private truck vendors), and delivered water quality (salinity and unfiltered mud).",
+    "paper_read": "full text",
+    "population_and_sample": "Indigenous (Mixtec, Zapotec, Triqui) and mestizo farmworker households and rural squatter settlements (colonias, including Colonia Arbolitos) in the San Quintin Valley, Baja California, Mexico, alongside regional water agencies and grower bodies (participant observation in 2 rural settlements and community meetings, semi-structured interviews in 18 households, and interviews with public officials, water agency heads, and grower association representatives across summers 2005, 2006, and 2009).",
+    "rationale": "This English-language ethnographic study satisfies all inclusion criteria (c1–c6) for the systematic review. Based on multi-year fieldwork (2005, 2006, 2009) including 18 semi-structured household interviews, participant observation in two rural colonias, and official/utility interviews in Baja California, Mexico, it examines household and settlement-level domestic water service access provided by the state water utility CESPE. Beyond macro-level political-economy framing, it directly investigates concrete rule-type legal and administrative mechanisms governing domestic service access under the 2026-10-13 Criterion 2 clarification—including CESPE's cost-recovery tariff increases under the 1992 National Water Law, three-part household connection/piping/meter contract fees ($227 unsubsidized meter cost), CESPE's five-barrel-per-week household trucked-water quota rule, and weak CNA enforcement of agricultural well-permitting rules—and documents their effects on household connection, continuity, quantity, and affordability. Per review rules, qualitative socio-legal empirical studies are included for mechanism synthesis regardless of lacking quantitative effect sizes.",
+    "record_id": "R21CCF27E55E5",
+    "study_design": "Qualitative ethnographic case study (participant observation and semi-structured household and key-informant interviews)"
+  }
+}

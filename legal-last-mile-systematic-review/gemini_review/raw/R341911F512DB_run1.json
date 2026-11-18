@@ -1,0 +1,282 @@
+{
+  "record_id": "R341911F512DB",
+  "order": 29,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "pdf_sha256": "cc8cf7af329313e0483c0fb127dc9f28a38d5539bbfafe3770ac2cb299d9af71",
+  "input_text_sha256": "86013f8c57be0117cfa173743fea5ee420c17693c8e43a2f20fa6b818586402a",
+  "prompt_sha256": "e0b3e944c5eb338e00e07deb63c22341d8f9dc134f94263a994f1a999edc2d70",
+  "started_at": "2026-11-18T20:36:02.474774+00:00",
+  "completed_at": "2026-11-18T20:37:36.737583+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R341911F512DB\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R341911F512DB\n- Title: Joint water supply projects in rural Cameroon: Partnership or profiteering? Lessons from the Mautu-Cameroon Development Corporation (CDC) project\n- Authors: Folifac F.; Gaskin S.\n- Year: 2011\n- DOI: 10.2166/ws.2011.061\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n# Inclusion and Exclusion Criteria\n\n## Inclusion criteria\n\nA study should generally satisfy **all** of the following:\n\n1. Examines water or sanitation service access.\n2. Examines a legal, administrative, institutional, regulatory or governance factor.\n   *(Clarification, 2026-10-13: per the A16 scope adjudication of 2026-10-13, logged in\n   `CHANGELOG.md`, criterion 2 follows the protocol's rule-type mechanism scope —\n   eligibility screening, administrative burden, documentation or tenure requirements,\n   tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility\n   ownership or regulatory structure directly governing service access — rather than\n   generic project delivery, behavioural promotion, or unanalysed macro-governance\n   background. The wording above is unchanged; this note records how it is applied to\n   both included and excluded studies. The protocol is an unregistered draft, so no\n   registration is amended; the ruling is to be disclosed in the manuscript methods.)*\n3. Contains empirical evidence or a systematic empirical synthesis.\n4. Reports an outcome relevant to access, connection, service availability,\n   reliability, quantity, affordability or exclusion.\n5. Provides enough information to identify the population, exposure, and outcome.\n6. For quantitative synthesis specifically, provides enough statistical\n   information to extract or calculate an effect estimate (systematic-review\n   inclusion does not require this — see criterion 6 is a synthesis-eligibility\n   gate, not a review-eligibility gate).\n7. Study design is identifiable.\n8. Publication is sufficiently accessible for methodological assessment.\n9. Language: English, Portuguese, and Dutch are eligible without translation.\n10. Other languages may be included if translation is feasible and the study\n    is potentially important — log the translation method and translator in\n    the extraction record's `extraction_note`.\n\n**Results never decide eligibility (clarification, 2026-10-14, open item A18; logged in `CHANGELOG.md`).**\nEligibility for inclusion in the systematic review or quantitative synthesis never depends on the statistical significance, magnitude, or direction of a study's reported effect estimate.\n(Two full-text exclusions had cited a non-significant result next to their real ground; one was re-coded on scope grounds alone, the other had been reversed to an inclusion.\nThe protocol is an unregistered draft, so no registration is amended.)\n\n**Qualitative socio-legal studies are never excluded from the systematic\nreview merely because they cannot enter the meta-analysis.** They may\ncontribute to the mechanism synthesis. Do not silently drop a\nmechanism-relevant qualitative study for lack of a quantitative effect size.\n\n## Exclusion criteria\n\nExclude from the main empirical evidence set:\n\n1. Pure doctrinal commentary without empirical access evidence.\n2. Pure engineering studies without legal, administrative, or governance relevance.\n3. Water-quality studies that do not examine access or governance.\n4. Hydrology studies without relevant governance or access analysis.\n5. Pure infrastructure engineering.\n6. Purely normative human-rights commentary without empirical evidence.\n7. Water-resource studies unrelated to household or community service access.\n8. Industrial water-access studies unless the mechanism is directly relevant.\n9. Duplicate publications (see `REPRODUCIBILITY.md` §\"Duplicate publication policy\").\n10. Conference abstracts without sufficient information.\n11. Studies where exposure or outcome cannot be identified.\n\n## Standardized exclusion codes\n\nUsed in `02_screening/exclusion_log/exclusion_log.csv` and the\n`exclusion_reason` field of `02_screening/title_abstract/screening_database.csv`.\nDo not use \"not relevant\" as a vague, uncoded exclusion reason — every\nexclusion at full-text stage must carry one of these codes plus a one-line\n`exclusion_reason_detail`.\n\n| Code | Meaning |\n|---|---|\n| E01 | Wrong topic |\n| E02 | Wrong population |\n| E03 | Wrong exposure |\n| E04 | Wrong outcome |\n| E05 | No empirical evidence |\n| E06 | Engineering only |\n| E07 | Wrong service |\n| E08 | Duplicate |\n| E09 | Insufficient information |\n| E10 | Inaccessible full text |\n| E11 | Wrong jurisdiction / context |\n| E12 | Wrong study design |\n\n## Scope discipline reminders\n\n- Do not treat drinking-water connection, sewer connection, wastewater\n  collection, sanitation service, utility-account eligibility, water\n  quality, affordability, service continuity, disconnection, and\n  infrastructure availability as interchangeable — record the precise\n  service and outcome studied (`CODEBOOK.md` §5).\n- Do not conflate unit-of-analysis levels (household, individual, property,\n  applicant, settlement, municipality, utility, regulatory institution,\n  judicial decision) — record the unit explicitly.\n- The judicial decisions dataset elsewhere in this repository is not a\n  candidate source of *included studies* for the household-level evidence\n  base; see `PROJECT_SPEC.md` §9.\n\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 86013f8c57be0117cfa173743fea5ee420c17693c8e43a2f20fa6b818586402a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=41647, sha256=86013f8c57be0117cfa173743fea5ee420c17693c8e43a2f20fa6b818586402a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Cameroon",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural community and household access to piped domestic water supply via public standpipes and private yard/house connections in Mautu village, Cameroon.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, the study examines institutional, governance, and regulatory factors in a joint parastatal-community water supply project. Under the narrow 2026-10-13 clarification, while parts of the paper discuss project planning and capacity building, it directly analyses rule-type mechanisms governing service access: (1) the institutional/contractual partnership and resource-sharing terms negotiated solely between the parastatal Cameroon Development Corporation (CDC) and the traditional Chief (allocating 96% of flow to CDC and 4% to Mautu without renegotiation provisions or state regulatory oversight of corporate-community water partnerships); (2) community tariff and cost-recovery rules (free water provision at standpipes and private taps, a one-time 5,000 CFA private connection fee, and irregular ad-hoc repair levies with non-payment); and (3) absence of administrative regulation or inspection of private household connections despite fee collection.",
+      "c3": "Empirical qualitative case study collecting primary data in three phases: 5 key informant interviews, physical inspection of the water network, 25 semi-structured interviews, opportunistic interviews, and 2 town-hall meetings with 176 participants. Per review rules, qualitative empirical socio-legal/governance studies are eligible regardless of lack of quantitative effect sizes.",
+      "c4": "Reports concrete service access, reliability, availability, and exclusion/reversion outcomes: severe low water pressure at peak demand, long waiting times, lack of standpipes in new residential areas, breakdown/closure of public standpipes (3 of 6 missing taps and 1 closed long-term), >30% household private connection uptake, and household reversion to unsafe unprotected springs.",
+      "c5": "Population (Mautu rural community and households in Cameroon, with sample sizes reported for interviews and town-hall meetings), exposure (joint parastatal-community agreement structure, local tariff/cost-recovery rules, and unregulated private connection rules), outcome (standpipe availability/functionality, peak-hour water pressure, waiting times, and reversion to unprotected springs), and study design (three-phase qualitative case study) are all clearly identifiable.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "The case of a joint water supply project between the Mautu rural community and the Cameroon Development Corporation (CDC) is explored to examine an emerging paradigm of partnership by communities in rural Cameroon to foster access to piped domestic water supply."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "During the last phase of data collection, 25 semi-structured interviews, and one town hall meeting were conducted to gather information on the operation and maintenance of the system, and the problems and the solution perceptions."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "The management committee in collaboration with the village council established rules and regulations regarding the operation of the taps and activities near the water source.  To generate income to carry out minor repairs and maintenance (repair/replacement of damaged pipes and taps) by a care-taker, having a basic plumbing knowledge, private connections were charged a one time connection fee (5000CFA, approximately $10 USD)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9",
+        "quote": "As standpipe water is supplied for free and private connections are only charged a connection fee, funds for repairs and maintenance are levied irregularly as needed."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9",
+        "quote": "This is attributed to CDC negotiating only with the chief and not also with the village council and their advisors to decide on the terms of the agreement for joint exploitation of the water source."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9",
+        "quote": "At the time of the meetings three of the six public standpipes had no taps, and one damaged standpipe had remained closed for a long time."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9",
+        "quote": "Due to these problems, children were arriving late to school (after their water fetching duties) and many households had reverted to the use of unprotected springs considered as unsafe compared to the spring that was harnessed for the project (also the flow of several other springs had reduced or dried up)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Joint parastatal-community water supply partnership terms and local governance/tariff rules: bilateral agreement between Cameroon Development Corporation (CDC) and traditional Chief without Village Council consultation or regulatory oversight (allocating 96% vs. 4% of spring flow), free water policy with one-time 5,000 CFA private connection fee and irregular repair levies, and uninspected household connections.",
+    "outcome": "Piped domestic water availability, peak-hour water pressure and reliability, waiting times, standpipe functionality (3 of 6 standpipes without taps and 1 closed), coverage in new neighborhoods, private household connection uptake (>30%), and household reversion to unprotected springs.",
+    "paper_read": "full text",
+    "population_and_sample": "Rural community and households of Mautu village, South West Region, Cameroon (population over 4,000; sample comprising 5 key informant interviews, 25 semi-structured interviews, opportunistic interviews, physical network inspection, and 2 town-hall meetings with 176 participants).",
+    "rationale": "This empirical qualitative case study from rural Cameroon meets all inclusion criteria (c1-c6). It investigates community and household piped water access in Mautu village and links concrete access and reliability outcomes (peak-hour low pressure, non-functional standpipes, lack of network expansion, and reversion to unprotected springs) to rule-type governance and cost-recovery mechanisms: an unregulated joint supply agreement negotiated solely between a parastatal corporation (CDC) and the village Chief that allocated only 4% of spring flow to the community, local cost-recovery rules providing water free of charge alongside a one-time 5,000 CFA connection fee and ad-hoc repair levies, and uninspected private connections. Confidence is medium because the study combines rule-type contractual, tariff, and connection-regulation mechanisms with broader project planning and O&M capacity issues.",
+    "record_id": "R341911F512DB",
+    "study_design": "Qualitative empirical case study (key informant and semi-structured interviews, public town-hall meetings, and physical system inspection)"
+  }
+}
