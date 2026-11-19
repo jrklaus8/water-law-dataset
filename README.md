@@ -42,6 +42,8 @@ water-law-dataset/
 │   ├── merge_national.py           # Merges per-court JSON files into national CSV/XLSX
 │   ├── make_progress_charts.py
 │   ├── jurimetric_coding.py        # Regex-based coding engine (21 categories, 4 languages)
+│   ├── nl_outcome_coding.py        # NL outcome coding pipeline (WIN/LOSS/.../UNCLEAR via regex + LLM fallback)
+│   ├── post_marco_legal_analysis.py# Cross-tab connection_refusal/informal_settlement vs. Lei 14.026/2020 date split
 │   ├── build_report.py             # Generate comparative DOCX report + 6 charts from coded CSV
 │   └── integrate_dissertation.py   # Integrate dataset findings into a DOCX preliminary research
 ├── data/                      # Output directory (gitignored — add your JSON/CSV here)
@@ -241,6 +243,8 @@ All research design decisions, methodological choices, variable definitions, and
 The Netherlands sub-dataset classifies dispute *type* across 21 jurimetric categories but does not carry outcome coding. We know what was litigated; we do not know who won.
 
 This means that claims about whether administrative litigation in the Netherlands *expands* water and sanitation access, *delays* it, or merely *reshuffles* permits among institutional and corporate actors remain inferential. The near-zero connection-refusal litigation finding (8 cases of 68,654) tells us the Dutch Awb absorbs disputes pre-litigation — but it does not tell us whether the small number of cases that do reach the Raad van State are decided in favour of access-seekers or incumbents.
+
+**A ready-to-run path to closing this gap now exists:** `utils/nl_outcome_coding.py` retrieves each decision's full text from the rechtspraak.nl Open Data API, extracts the *Beslissing* (operative conclusion), and classifies it as `WIN`/`LOSS`/`PARTIAL`/`INADMISSIBLE`/`REMAND`/`UNCLEAR` via a validated regex pass (~87% accuracy) with an LLM fallback for the residue (~96% combined). See [`FUTURE_WORK.md`](./FUTURE_WORK.md) Priority 1 for the full methodology and runtime/checkpointing notes (~2 hours for all 68,654 cases).
 
 **Future researchers:** see [`FUTURE_WORK.md`](./FUTURE_WORK.md) for a full methodological roadmap for adding outcome coding to this dataset, including decision-text retrieval via the Dutch rechtspraak.nl API and a validated regex + LLM classification protocol.
 
