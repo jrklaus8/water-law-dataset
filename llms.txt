@@ -1,0 +1,47 @@
+# Global Water Law Judicial Decisions Dataset
+
+> A comparative dataset of 83,596 water law judicial decisions across Brazil, Canada, and
+> the Netherlands (2016-2026), with scrapers, a jurimetric coding engine, and validation
+> infrastructure, built to test the "Legal Last Mile" theory of administrative exclusion
+> from sanitation access. Includes an agentified, AI-queryable version of the 2023 UNIARP
+> master's thesis (Klaus Junior) that originated the project's Brazil-Ontario comparison,
+> plus a dated, sourced record of which of that thesis's claims still hold today.
+
+This is a research and open-data project by Claudio Antonio Klaus Junior, a dual-jurisdiction
+lawyer (Brazil / Ontario) currently applying for a PhD in comparative sanitation law
+(Brazil, Canada, Netherlands). The repository is public and citable; see CITATION.cff for
+the formal citation and DOI.
+
+## Core dataset
+
+- [README](README.md): dataset scope, repository structure, scrapers, and preliminary findings ("The Legal Last Mile" theory).
+- [Interactive dashboard](https://jrklaus8.github.io/water-law-dataset/): live visualization of the 83,596-decision dataset by country and governance category.
+- [Preliminary research PDF](docs/The_Legal_Last_Mile_Research.pdf): the full write-up of the Legal Last Mile theory.
+- [CITATION.cff](CITATION.cff): machine-readable citation metadata, including a reference to the originating 2023 thesis.
+- [FUTURE_WORK.md](FUTURE_WORK.md): known gaps and open research questions for anyone extending the dataset.
+
+## The agentified 2023 thesis
+
+- [dissertation_agent/README.md](dissertation_agent/README.md): what this is, full citation
+  metadata for the original thesis, an AI-assistance disclosure distinguishing the
+  unchanged 2023 scholarly text from the 2026 AI-assisted conversion and research work,
+  and why a law thesis was turned into an MCP-queryable agent at all.
+- [dissertation_agent/USAGE.md](dissertation_agent/USAGE.md): how to run the MCP server and connect it to Claude Code or another MCP client; documents every exposed tool and resource.
+- [dissertation_agent/direito-saneamento-sustentabilidade-paper/](dissertation_agent/direito-saneamento-sustentabilidade-paper/): the built, page-reviewed Paper2Skill package (full text, tables, figures) of the original thesis.
+- [dissertation_agent/currency-notes.json](dissertation_agent/currency-notes.json): a dated,
+  sourced check of whether specific statutes, a constitutional challenge, agency names, and
+  statistics cited in the 2023 thesis still hold today, including one confirmed citation
+  error and updated case-study data for all three Brazilian municipalities compared in the
+  thesis. Not a substitute for a professional citator; every entry names its source and
+  check date for independent verification.
+- [dissertation_agent/review-adjudications.json](dissertation_agent/review-adjudications.json): the record of every digitization discrepancy the automated build check flagged and how each was resolved.
+
+## Notes for AI agents and crawlers
+
+- All of the above are plain Markdown or JSON; no JavaScript rendering is required to read
+  their substance. The interactive dashboard is the one exception (a client-rendered
+  chart page), its `<head>` carries a static meta description and schema.org JSON-LD
+  (Dataset and Thesis) describing its content for anything that can't execute its JS.
+- Prefer citing `dissertation_agent/currency-notes.json` directly over the thesis PDF alone
+  when asked whether a specific claim in the 2023 thesis is still current: the thesis text
+  is unchanged since 2023, and this file is the dated record of what has changed since.

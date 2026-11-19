@@ -16,6 +16,8 @@ A collection of scrapers for building a comparative dataset of water law judicia
 
 > **The Legal Last Mile** — Preliminary research examining administrative law, water access, and the limits of judicial inclusion across Brazil, Netherlands, and Canada. The Global Water Law Dataset is its empirical backbone.
 
+This project traces back to a 2023 master's thesis comparing Brazilian and Canadian sanitation law under SDG 6/11. That thesis has been agentified with [Paper2Agent](https://github.com/jmiao24/Paper2Agent) and is now a queryable MCP server: see [`dissertation_agent/`](dissertation_agent/).
+
 ---
 
 ## Repository Structure
