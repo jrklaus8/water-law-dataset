@@ -1,0 +1,226 @@
+{
+  "study_id": "S175",
+  "order": 60,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "031903a9e7bddd6656a0268e6f1eaa1d1551bf932e93b9a62c4d6bda52c0db8a",
+  "input_text_sha256": "d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0",
+  "prompt_sha256": "3dd78ce044c07bb3b4041825f3560205520a86834b1c8b47b41e8d8fb8270111",
+  "started_at": "2026-11-19T02:06:21.285628+00:00",
+  "completed_at": "2026-11-19T02:07:38.365446+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S175\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S175\n- Record ID: R8DE65838848E\n- Citation string: Bellaubi F, Pahl-Wostl C (2017). Corruption risks, management practices, and performance in water service delivery in Kenya and Ghana: an agent-based model. Ecology and Society 22(2):6.\n- DOI: 10.5751/ES-09205-220206\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61723, sha256=d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "NONE",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable: the study runs a deterministic 12-month computational simulation in NetLogo v4.1.3 using static secondary summary inputs rather than following a cohort or panel of human participants over time.",
+      "confounding": "High concern: the deterministic simulation attributes cross-system differences in water service delivery (WSD) performance solely to principal-agent game equilibria and calibrates a single free parameter C (1.6 in Kenya; 1.8 in Ghana) against country-average performance scores, omitting infrastructural, hydrological, fiscal, tariff, and demographic confounders between Kenyan and Ghanaian urban service areas.",
+      "legal_measurement_quality": "Weak: regulatory and contractual frameworks in Kenya (MWI, WASREB, municipal corporate utilities) and Ghana (MHWW, PURC, GWCL, AVRL management contract) are stylized into dyadic principal-agent links scored on a coarse 3-point ordinal transparency scale (0, 0.5, 1 for written rules) and accountability scale without citing specific statutes, regulations, licenses, or contract provisions.",
+      "measurement_bias": "High concern: governance inputs (transparency, accountability, participation [TAP], and social cost) and WSD performance benchmarks rely on secondary 'participatory scoring' imported from prior reports (GII 2011; TIK 2011; Bellaubi and Visscher 2014) plus 'Bellaubi (personal observation)' (PDF p. 3), with no primary measurement protocols, respondent counts, or inter-rater reliability reported here; additionally, Table 3 (PDF p. 3) swaps the text definitions and unit scales of Continuity and Coverage, and Table 5 (PDF p. 7) states a maximum indicator value of 3 (total 15) despite Table 3 defining 0-2 scales (maximum total 10).",
+      "outcome_measurement_quality": "Weak (secondary coarse benchmark): WSD performance is imported from five previously studied urban neighbourhoods as a 5-indicator ordinal WSDA score (continuity, quality, coverage, affordability, quantity; Tables 3 and 5) containing internal definitional/scale discrepancies between Tables 3 and 5 and collapsed into unweighted country means (23.3% in Kenya; 16.6% in Ghana) to calibrate simulated game payoffs.",
+      "reporting_bias": "Moderate concern: model code and ODD documentation are deposited externally in the CoMSES Computational Model Library (Bellaubi et al. 2014), supporting computational inspectability, but the paper reports no pre-specified analysis/validation plan, no sensitivity analysis to ad hoc payoff equations (e.g., T = 1.5 - accountability; S = (participation / C) - social cost), and calibrates one free parameter per country against a single country-level mean percentage.",
+      "selection_bias": "High concern in secondary empirical inputs (not directly applicable to deterministic simulation mechanics): calibration relies on five pre-existing urban case-study neighbourhoods (Old Town in Mombasa, Migosi in Kisumu, and Kangemi in Nairobi, Kenya; Madina and Nima in Accra, Ghana) from Bellaubi and Visscher (2014), with no sampling frame, site-selection rationale, or household/informant recruitment criteria reported in this article."
+    },
+    "domain_ratings": [],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design — exploratory agent-based simulation model",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "We explore the extent to which corruption and management practices affect the performance of WSD by developing an exploratory agent-based model (ABM) that builds on the principal-agent theory."
+      },
+      {
+        "criterion": "Secondary empirical case-study inputs used to parameterize the ABM",
+        "page": "PDF Page 2 (Research Methodology)",
+        "quote": "The ABM builds on a principal-agent representation for Kenya and Ghana WSD that results from analyzing three case studies in Kenya and two in Ghana"
+      },
+      {
+        "criterion": "Reliance on prior reports and personal observation for TAP and social cost scores",
+        "page": "PDF Page 3 (The principal-agent representation in Kenya and Ghana)",
+        "quote": "The legend describes the service provided by the agent and the return of the principal, the TAP, and social cost scores of the relationship with a brief explanation and the identified corruption risks and management practices based on data from GII (2011), TI Kenya (2011), Bellaubi and Visscher (2014), and Bellaubi (personal observation)."
+      },
+      {
+        "criterion": "Model calibration against secondary WSD case-study performance benchmarks",
+        "page": "PDF Page 9 (Agent-based model (ABM) calibration)",
+        "quote": "The calibration of the model is done comparing the WSD’s performance given by the ABM with the WSD performance measured from the case studies."
+      },
+      {
+        "criterion": "Deterministic explanatory simulation nature of the model",
+        "page": "PDF Page 12 (Overall Discussions and Conclusions)",
+        "quote": "The ABM presented is a deterministic explanatory learning model that aims to explain how corruption risks and management practices affect WSD’s performances in Kenya and Ghana, considering the role of learning and social networks."
+      },
+      {
+        "criterion": "Author-acknowledged structural simplification of actors and network learning",
+        "page": "PDF Page 12 (Overall Discussions and Conclusions)",
+        "quote": "Nevertheless, one of the limitations of the ABM is the simplification of the actors involved in the different WSD levels. This does not allow the social network role and the learning in actors’ behaviors to be fully evaluated."
+      }
+    ],
+    "overall_narrative_summary": "Bellaubi and Pahl-Wostl (2017) present a deterministic, game-theoretic agent-based model (ABM) implemented in NetLogo v4.1.3 to explore how corruption risks (operationalized via transparency, accountability, participation [TAP], and social cost/gain scores) and management practices (opportunistic vs. pragmatic) shape urban water service delivery (WSD) performance in Kenya and Ghana. Because the paper conducts a computational social simulation parameterized and calibrated with pre-existing summary scores from five previously published urban case studies (Bellaubi and Visscher 2014, 2016; GII 2011; TIK 2011) rather than primary empirical data collection, doctrinal/jurimetric legal analysis, or a systematic review, no listed risk-of-bias checklist applies (chosen_tool = NONE). Methodologically, depositing the model's ODD documentation in the CoMSES library (Bellaubi et al. 2014) supports computational transparency. However, substantial evidentiary limitations constrain empirical and causal inference: (1) all TAP, social-cost, and WSDA performance inputs are imported from secondary 'participatory scoring' and 'personal observation' without primary sampling, coding, or reliability details in this text; (2) Table 3 swaps the definitions and measurement units of Continuity and Coverage, and Table 5 cites a maximum indicator score of 3 (total 15) that contradicts Table 3's 0-2 scoring scale; (3) payoff functional forms (e.g., T = 1.5 - accountability; S = (participation / C) - social cost) and sequential move order (agent always moving first, preventing shifting Cd/Dc dynamics at the consumption level; PDF p. 12) are imposed by assumption without structural sensitivity testing; and (4) calibration tunes one free parameter C per country (1.6 in Kenya; 1.8 in Ghana) to match a single unweighted country-mean WSDA score (23.3% across 3 Kenyan sites; 16.6% across 2 Ghanaian sites), providing no independent out-of-sample validation and leaving physical, financial, and hydrological confounders unmodeled.",
+    "overall_rating": "NOT APPLICABLE (design fits no listed tool)",
+    "paper_read": "full text",
+    "study_design_identified": "Deterministic game-theoretic agent-based simulation model (ABM) parameterized and calibrated using secondary summary scores from five previously published urban case studies in Kenya and Ghana",
+    "study_id": "S175",
+    "where_found_summary": "Abstract & Introduction (PDF pp. 1-2); Research Methodology & secondary case-study sourcing (PDF p. 2); Principal-agent TAP, management practice, and WSDA indicator definitions and Kenya/Ghana actor mappings (PDF pp. 2-7, Tables 1-5, Figs. 1-2); NetLogo v4.1.3 ABM specification, payoff equations, and sequential decision/learning rules (PDF pp. 4, 7-8, Figs. 3-4, Table 6); Single principal-agent equilibrium dynamics, calibration of parameter C, and country simulation outputs (PDF pp. 9-12, Figs. 5-10, Table 7); Discussion and model limitations (PDF p. 12).",
+    "why_tool_chosen": "This article develops and runs a deterministic computational simulation—an agent-based model (ABM) in NetLogo v4.1.3 built on game-theoretic payoff matrices and bounded-rational learning equations—parameterized and calibrated against pre-existing aggregate ordinal scores from prior publications (Bellaubi and Visscher 2014, 2016; GII 2011; TIK 2011). It reports no primary empirical human-subjects sampling, survey/cohort data collection, quasi-experimental policy evaluation, primary qualitative fieldwork, mixed-methods primary integration, systematic literature search, or doctrinal/jurimetric analysis of primary legal texts. Under RISK_OF_BIAS.md §1, forcing a primary empirical checklist or the Legal Institutional Evidence Appraisal Framework onto a computational simulation model is inappropriate, so NONE is selected."
+  }
+}

@@ -1,0 +1,269 @@
+{
+  "study_id": "S057",
+  "order": 2,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a54d0acd82030e0dcd479423cdd279f266e5496c6603b42277420734d6b8f22a",
+  "input_text_sha256": "f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193",
+  "prompt_sha256": "d8f92813b7f05292a069e3f873e8972b01e0228d273ce6d8af0af453a33078bb",
+  "started_at": "2026-11-19T01:37:32.277642+00:00",
+  "completed_at": "2026-11-19T01:40:31.953249+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S057\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S057\n- Record ID: R29C42DF9EAF6\n- Citation string: Kozole T, Ross M, Nicoletti C, Rogla J, Ives N, Ali A, Prom R (2023). Impact of targeted subsidies on access to resilient sanitation for climate-vulnerable households in rural Cambodia. Journal of Wat\n- DOI: 10.2166/washdev.2023.039\n- Retrieval status: retrieved_swim_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46681, sha256=f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "RoB 2 (cluster-randomized trials variant)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Some concerns — Immediate sales pitch conversion decisions were recorded on the spot for 2,821 retained household presentations, but 1,598 duplicate-visit responses (including 36 latrine sales) were excluded post hoc to mimic single-visit conditions, village-level non-contact denominators (households without a toilet where no decisionmaker was home) were not reported, and post-order follow-up to actual physical installation was omitted despite typical 10–20% cancellation rates.",
+      "confounding": "Some concerns — Village-level cluster randomization (stratified by commune climate vulnerability) and regression controls for community and household climate vulnerability were used, but post-randomization recruitment differentially enrolled 5 percentage points more IDPoor households in treatment villages than control villages (p = 0.00), introducing potential residual socioeconomic and motivational confounding in village-level uptake regressions and subgroup comparisons.",
+      "legal_measurement_quality": "Moderate / Adequate — Administrative targeting combined official Cambodian state classifications—specifically household IDPoor proxy-means registration and National Council for Sustainable Development commune-level Climate Vulnerability Index (CVI) tiers—with the validated 10-item Cambodia Poverty Probability Index (PPI). However, exact PPI thresholds and CVI score cutoffs were relegated to Supporting Information, household climate shock exposure relied on a single unverified self-report item, and qualitative interviews documented persistent misunderstandings of eligibility rules among sales agents and village leaders.",
+      "measurement_bias": "Some concerns — The outcome measured initial latrine purchase orders recorded at the sales presentation by unblinded, commissioned iDE sales agents rather than verified physical latrine installations (10–20% of orders typically cancel prior to installation and were not tracked). Household-level climate vulnerability was also assessed via a single subjective 1-year recall question during subsidy screening, although 10% M&E spot checks of purchasing households and inspection for bunching at PPI cutoffs mitigated deliberate score manipulation.",
+      "outcome_measurement_quality": "Weak / Some concerns — Although framed around 'access to resilient sanitation', the trial measured only initial purchase orders ('Easy Latrine' or elevated 'Sky Latrine') at the point of pitch, without verifying latrine delivery, construction, order cancellation (typically 10–20%), structural flood performance, or sustained household use.",
+      "reporting_bias": "Some concerns — No trial pre-registration or pre-analysis plan is cited; cluster baseline balance tables, full regression outputs, standard errors, and sensitivity analyses retaining the 1,598 excluded duplicate visits are omitted from the main text (deferred to Supporting Information), and minor numerical inconsistencies appear across pages (51% vs. close to 52% treatment eligibility; 26 vs. 29 repeat-visit subsidized sales).",
+      "selection_bias": "High — Villages (30 clusters) were randomized prior to individual household identification, after which unblinded iDE sales agents worked with village authorities and neighbors to locate households without a toilet when a decisionmaker was home. Incentivized by commissions and subsidy availability, village authorities and sales agents more actively targeted poor households in treatment villages, generating a statistically significant imbalance in overall eligibility (51–52% treatment vs. 45% control, p = 0.00) driven by 5% more IDPoor households in treatment clusters (p = 0.00)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1a",
+        "domain_name": "Randomization process",
+        "justification": "Thirty villages in Kampong Chhnang province were simultaneously assigned 15:15 to treatment and control using a computer random number generator (Stata's randtreat function), stratified across commune-level climate vulnerability status (23 climate-vulnerable villages: 12 treatment, 11 control). Cluster-level balance checks were reported as showing no statistically significant differences across key baseline variables (though the balance table itself resides in Supporting Information rather than the main text).",
+        "rating": "Low",
+        "where_found": "PDF Page 4, Methods — Sampling frame and sample size (Quantitative) & Footnote 15"
+      },
+      {
+        "domain_id": "D1b",
+        "domain_name": "Timing of identification or recruitment of participants within clusters",
+        "justification": "Individual households were not enumerated prior to cluster randomization; instead, during the 7.5-month sales period after villages were randomized, unblinded sales agents relied on village authorities and neighbors to identify and approach households without a toilet when a decisionmaker was home. Qualitative interviews and eligibility data confirmed that village authorities and commissioned sales agents were significantly more inclined to seek out poor households in treatment villages, resulting in 51–52% subsidy eligibility in treatment clusters versus 45% in control clusters (p = 0.00), driven by a 5 percentage point higher share of IDPoor households in treatment areas (p = 0.00). The authors explicitly acknowledge this post-randomization recruitment selection bias in Limitations.",
+        "rating": "High",
+        "where_found": "PDF Page 4 (Data collection procedures); PDF Page 6 (Results); PDF Page 7 (Analysis of market distortion); PDF Page 9 (Limitations — Differences in targeting between treatment areas)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Deviations from intended interventions",
+        "justification": "Blinding of households, sales agents, and local authorities was infeasible given visible 50% price discounts versus retail-price pitches. Qualitative interviews revealed persistent misunderstandings among sales agents and village leaders regarding how PPI and climate thresholds operated even after training. Furthermore, agents made 1,598 repeat household visits (yielding 36 sales, mostly subsidized), which the authors dropped post hoc from the analytic sample (retaining 2,821 first-visit presentations) to mirror single-visit selling conditions. M&E spot checks on ~10% of purchasing households found no willful agent manipulation of PPI scores, moderating but not eliminating concerns.",
+        "rating": "Some concerns",
+        "where_found": "PDF Page 4 (Data collection procedures & Footnote 17); PDF Page 7 (Analysis of market distortion); PDF Page 9 (Recommendations)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Missing outcome data",
+        "justification": "While immediate purchase order decisions were recorded at the time of each retained first-visit sales pitch (n = 2,821), 1,598 repeat-visit records (including 36 sales) were excluded from analysis, village census denominators of unreached households (where no decisionmaker was home) were not reported, and follow-up was terminated before tracking order cancellations and actual latrine installations (which typically experience 10–20% cancellation rates in iDE's experience and could plausibly differ between subsidized poorer buyers and retail buyers).",
+        "rating": "Some concerns",
+        "where_found": "PDF Page 4 (Data collection procedures & Footnote 17); PDF Pages 8–9 (Limitations — Cancelled and noninstalled orders)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Measurement of the outcome",
+        "justification": "Sales conversions were recorded by unblinded, commissioned iDE sales agents and captured initial purchase orders rather than verified physical latrine delivery, installation, or sanitation use. Although ~10% of purchasing households were audited by an M&E officer and LBO order fulfilment is tracked programmatically, failing to measure post-pitch cancellations (typically 10–20%) means initial order counts may inaccurately and potentially differentially represent completed sanitation uptake across arms.",
+        "rating": "Some concerns",
+        "where_found": "PDF Page 4 (Data collection procedures); PDF Pages 8–9 (Limitations — Cancelled and noninstalled orders)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Selection of the reported result",
+        "justification": "No trial registration or pre-analysis plan is reported. Multiple village-level OLS and household-level clustered logistic regression specifications were estimated while relegating nearly all full regression tables, sample sizes, standard errors, and balance checks to Supporting Information. Post-hoc exclusion of 1,598 duplicate visits was conducted without reporting intention-to-treat sensitivity results retaining all visits, and minor discrepancies appear in reported repeat-visit subsidized sales across sections (26 households on p. 7 vs. 29 households on p. 9) and treatment eligibility rates (51% on p. 6 vs. close to 52% on p. 7).",
+        "rating": "Some concerns",
+        "where_found": "PDF Page 3 (Footnote 11); PDF Page 4 (Footnote 17); PDF Pages 5–7 (Data analysis & Results); PDF Page 9 (Recommendations); PDF Page 10 (Data Availability Statement)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D1a — Cluster-level randomization via Stata randtreat",
+        "page": "PDF Page 4, Methods — Sampling frame and sample size (Quantitative)",
+        "quote": "Treatment status was randomly assigned at the village (community) level using Stata’s randtreat function to limit spillover and allow for a robust analysis of potential market distortions occurring as a result of the subsidy (additional details available in Supporting Information)."
+      },
+      {
+        "criterion": "D1b — Post-randomization household identification assisted by local authorities",
+        "page": "PDF Page 4, Methods — Data collection procedures",
+        "quote": "Within each village, the sales team approached every household without a toilet (identiﬁed with the support of local authorities and neighbors, so long as a household decisionmaker was home)."
+      },
+      {
+        "criterion": "D2 / D3 / D5 — Exclusion of 1,598 duplicate household sales visits",
+        "page": "PDF Page 4, Footnote 17",
+        "quote": "A total of 1,598 responses in the original dataset were duplicate visits, of which 36 resulted in a latrine sale. All of these duplicate entries were dropped from the dataset to mirror more realistic selling conditions (in which sales agents would likely only visit each household once)."
+      },
+      {
+        "criterion": "D1b — Differential targeting and post-randomization selection bias in IDPoor recruitment",
+        "page": "PDF Page 9, Limitations — Differences in targeting between treatment areas",
+        "quote": "Statistically signiﬁcant differences in the proportion of IDPoor households within treatment and control groups suggest deliberate targeting. Commissions offered to sales agents and village authorities may have encouraged selection bias."
+      },
+      {
+        "criterion": "D3 / D4 — Outcome measured unverified orders rather than installations, omitting 10–20% cancellations",
+        "page": "PDF Page 8, Limitations — Cancelled and noninstalled orders",
+        "quote": "The latrine sales described here refer to orders, not installations. A percentage of all orders typically are not installed due to customer cancellations. The cancellation rate of sales was not taken into account in this research because the limited duration of the RCT did not allow the team to wait a sufﬁcient amount of time to account for all cancellations occurring after the sales period."
+      },
+      {
+        "criterion": "D2 / Legal measurement quality — Persistent agent misunderstandings of PPI targeting rules",
+        "page": "PDF Page 9, Recommendations",
+        "quote": "Qualitative interviews with sales agents and village leaders revealed persistent misunderstandings about how the tool worked even after training. Many sales agents believed qualiﬁcation was predicated on one factor (namely, the number of household members or ownership of a cell phone) and that this was unfairly excluding certain households."
+      }
+    ],
+    "overall_narrative_summary": "Study S057 (Kozole et al., 2023) is a 30-village cluster-randomized controlled trial (15 treatment, 15 control; 2,821 retained household pitches) in Kampong Chhnang province, Cambodia, evaluating a two-layer climate- and poverty-targeted 50% latrine subsidy (combining government IDPoor status, commune Climate Vulnerability Index tiers, the 10-item Cambodia Poverty Probability Index, and self-reported household climate shocks), supplemented by 13 stakeholder interviews and a programmatic cost-scalability analysis. Appraised under the Cochrane RoB 2 cluster-randomized trials variant, the study is rated High overall risk of bias. While cluster randomization itself used Stata's randtreat stratified by commune climate vulnerability (Low risk in D1a), households were identified and approached after cluster randomization by unblinded, commissioned sales agents assisted by village authorities, leading to deliberate targeting of poor households in subsidy villages and a statistically significant baseline excess of eligible/IDPoor households in treatment clusters (51–52% vs. 45% eligibility, p = 0.00; High risk in D1b). Additional Some concerns arise across D2–D5 due to persistent agent misunderstandings of the PPI rules, post-hoc exclusion of 1,598 repeat household visits (including 36 sales) without sensitivity analyses, measurement of initial purchase orders rather than verified physical latrine installations (omitting typical 10–20% order cancellations), absence of a pre-registered protocol/pre-analysis plan, and deferral of full regression and balance tables to external Supporting Information.",
+    "overall_rating": "High",
+    "paper_read": "full text",
+    "study_design_identified": "Cluster-randomized controlled trial (30 villages in Kampong Chhnang province stratified by commune climate vulnerability and randomized 15:15 to targeted 50% latrine subsidy vs. retail-price sales pitches; N = 2,821 retained household presentations), supplemented by 13 qualitative stakeholder interviews and a pilot cost-scalability analysis",
+    "study_id": "S057",
+    "where_found_summary": "Design & overview: Abstract (p. 1), Introduction & Research Objectives (pp. 2–3). Eligibility operationalization (IDPoor, PPI, commune CVI, household climate recall): Methods (pp. 3–4). Cluster randomization, sample size, qualitative stakeholder sample, field sales procedures, M&E spot checks, and duplicate-visit exclusions: Methods (p. 4 & fns. 15–17). Regression specifications & qualitative coding: Data analysis (pp. 5–6). Uptake, subgroup, and market-distortion findings (including IDPoor eligibility imbalance): Results & Table 1 (pp. 6–8). Order cancellations, single-province scope, post-randomization targeting bias, subjective climate item, and agent PPI misunderstandings: Limitations & Recommendations (pp. 8–10).",
+    "why_tool_chosen": "The primary causal design testing the study's main research questions is a cluster-randomized controlled trial in which 30 rural Cambodian villages were randomized as clusters (via Stata's randtreat) to receive targeted latrine subsidies versus unsubsidized retail sales pitches. Although the study also conducted 13 key-informant interviews (with sales agents, local authorities, and latrine business owners) and a cost analysis to contextualize implementation and scalability, the qualitative component serves as an embedded process check without standalone qualitative findings tables or participant quotations in the main text. Selecting 'RoB 2 (cluster-randomized trials variant)' directly captures the trial's defining cluster-specific methodological risk—Domain 1b (post-randomization identification and differential recruitment of IDPoor households within clusters by unblinded sales agents and village leaders)—alongside cluster randomization, post-hoc repeat-visit exclusions, and proxy order measurement."
+  }
+}

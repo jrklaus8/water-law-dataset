@@ -1,0 +1,283 @@
+{
+  "study_id": "S084",
+  "order": 9,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "fee6deca3f148a1d4051557a68867b1f2f4737ed24bf9cb25d17ce3ea2232d66",
+  "input_text_sha256": "db8abf938639533a0ef848eb87a4aa3353a474bb5a84577973ff4f1a317e4935",
+  "prompt_sha256": "7197ce45221480715e3d509783e1288f75d56d2933abb3e5b3d58f7acaae5b48",
+  "started_at": "2026-11-19T01:40:31.990926+00:00",
+  "completed_at": "2026-11-19T01:42:33.566242+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S084\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S084\n- Record ID: R205DDBDB40FB\n- Citation string: Lubeck-Schricker M, Patil-Deshmukh A, Murthy SL, Chaubey MD, Boomkar B, Shaikh N, Shitole T, Eliasziw M, Subbaraman R (2023). Divided infrastructure: legal exclusion and water inequality in an urban s\n- DOI: 10.1177/09562478221121737\n- Retrieval status: retrieved_swim_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: db8abf938639533a0ef848eb87a4aa3353a474bb5a84577973ff4f1a317e4935) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70329, sha256=db8abf938639533a0ef848eb87a4aa3353a474bb5a84577973ff4f1a317e4935]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low risk / minimal missingness: Of 600 randomly sampled census-enumerated households, 593 (98.8%) provided complete data on key water variables and were retained in the primary analyses (PDF p. 8), though 74 respondents (12.5%; reported as 12 per cent on p. 18) responded 'Unsure' for monthly household income (Table 1, PDF p. 10).",
+      "confounding": "Some concern (moderate risk of residual confounding): Multivariable linear and logistic regressions controlled for household size, monthly per capita household income, and religion (PDF pp. 8–9, 15). However, because only one notified neighbourhood (Matangrushi Nagar) and one adjacent non-notified neighbourhood (Indira Nagar) were sampled, neighbourhood legal status is spatially collinear with unadjusted settlement-level factors noted by the authors, including distance to the main road/river/landfill and historical arrival timing before vs after the 2000 cutoff (PDF pp. 4, 17). Additionally, 12.5% of households had 'Unsure' income modelled as an indicator category (associated with +36.1% LPCD, p = 0.012; Table 3).",
+      "legal_measurement_quality": "Moderate / mixed quality: The statutory and judicial framework (Maharashtra Slum Areas Act of 1971 pre-2000 eligibility cutoff on state/municipal vs central government land, and the December 2014 Bombay High Court order in Pani Haq Samiti) is explained accurately and with strong institutional nuance (PDF pp. 4–5, 17). Empirically, however, exposure status ('notified' vs 'non-notified') was operationalized ecologically at the neighbourhood boundary level using resident 'barefoot researchers' ground knowledge rather than verifying individual household pre-2000 documentation or official municipal boundary records, despite the law conferring notification at the household level and 55.2% of households in the 'non-notified' neighbourhood holding metered electricity (PDF pp. 4, 7, 10, 17).",
+      "measurement_bias": "Low-to-moderate concern: Primary water quantity (LPCD) was measured over two consecutive weeks using a previously validated physical container-enumeration method alongside direct GIS mapping and functional grading of community taps (PDF pp. 7–8). However, weekly container refill counts, water expenditure, collection time, and missed work/school relied on unblinded respondent recall to community-resident enumerators, survey questions did not distinguish piped municipal community taps from brackish borewell taps (Table 2 note b, PDF p. 14), and microbiological water quality was not tested (PDF p. 18).",
+      "outcome_measurement_quality": "Strong for water quantity and tap infrastructure; limited for water quality: Household water consumption (LPCD) was quantified across two consecutive weeks during peak summer scarcity (March–May 2016) by physically counting storage drums/jerry cans, recording standardized capacities, and multiplying by weekly refills—a method with established construct validity in Mumbai slums—and benchmarked against the WHO <=20 LPCD health-risk threshold, complemented by mobile GIS mapping of community taps (PDF pp. 7–8, 11). Microbiological contamination was not measured and community tap survey items conflated municipal piped taps with brackish borewells (PDF pp. 14, 18).",
+      "reporting_bias": "Unclear / no pre-registration reported: No pre-analysis plan or study protocol registration is cited. Primary log-linear and supplementary logistic (<=20 LPCD) regression results are reported transparently and consistently, whereas the GSEM mediation path analysis is explicitly described as exploratory, omits non-significant demographic covariates, and presents a simplified specification alongside mention of an alternative specification explaining up to 50% of the association (PDF pp. 9, 12).",
+      "selection_bias": "Low concern within the two target neighbourhoods, some concern at neighbourhood-cluster level: Within Matangrushi Nagar (1,285 households) and Indira Nagar (918 households), PUKAR conducted a full household census enumeration and selected 600 household codes via a random number generator, achieving 98.8% (593/600) analytic completion (PDF pp. 5, 7–8). However, purposive selection of only two out of Mandala's five neighbourhoods (~8,000 total households) limits broader intra-slum generalizability and creates a two-cluster comparison between exposure groups (PDF pp. 4–5)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Inclusion criteria were clearly defined: all households in two enumerated neighbourhoods of Mandala (Matangrushi Nagar, N = 1,285; Indira Nagar, N = 918) constituted the sampling frame, 600 household codes were randomly selected via a random number generator, and within each selected household an consenting adult aged >18 years who engaged in water collection was interviewed.",
+        "rating": "Yes",
+        "where_found": "Section II.a & Section II.c (PDF pp. 5, 7)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The setting (Mandala slum in Mumbai's M-East ward on Maharashtra state land, surveyed March–May 2016 during summer season), water delivery modes, and sample demographics (housing quality, monthly per capita income, household size, religion, region of origin, sanitation, and electricity access across N = 593 households) are thoroughly documented.",
+        "rating": "Yes",
+        "where_found": "Section I.c, Section II.a–c, Section III.a & Table 1 (PDF pp. 4–7, 9–10)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Under the Maharashtra Slum Areas Act of 1971, notification on state land legally applies at the household level via pre-2000 residence documentation (e.g. voter ID), yet exposure was assigned entirely by neighbourhood location ('Matangrushi Nagar' = notified vs 'Indira Nagar' = non-notified) using resident barefoot researchers' ground knowledge to define boundaries, without documentary verification of household notification status or official municipal gazette maps. Although substantively motivated by how aggregate infrastructure and official perceptions operate, this ecological proxy misclassifies de jure household legal status (e.g. 55.2% of 'non-notified' households had metered electricity).",
+        "rating": "Unclear",
+        "where_found": "Section I.c, Section II.c, Table 1, Table 3 & Section IV (PDF pp. 4–5, 7, 10, 15, 17)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Slum household enumeration and re-identification followed a published, standardized GIS/census mapping protocol developed by PUKAR (Thomson et al., 2014), tap functionality followed explicit 4-tier operational criteria, and high-risk water deprivation was benchmarked using the standard WHO <=20 LPCD threshold.",
+        "rating": "Yes",
+        "where_found": "Section II.c–d (PDF pp. 7–8)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors explicitly identified key socio-demographic confounders—household monthly per capita income, religion (Hindu/Buddhist vs Muslim), and household size—and distinguished confounders from downstream water-delivery mediators; they also discussed historical settlement timing and distance from the main road in the narrative, though those spatial/historical factors could not be separated from the two-neighbourhood indicator.",
+        "rating": "Yes",
+        "where_found": "Section I.c, Section II.d & Section IV (PDF pp. 4–5, 8–9, 17)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "Multivariable linear regression and multivariable logistic regression explicitly adjusted for household size, household monthly per capita income, and religion, while excluding hypothesised water-access mediators from the confounding-adjusted total-effect models and examining mediators separately via GSEM path analysis.",
+        "rating": "Yes",
+        "where_found": "Section II.d & Table 3 (PDF pp. 8–9, 15)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "The primary outcome (household water use in LPCD) was measured across two consecutive weeks to reduce week-to-week variability using a container enumeration technique (counting standardized drums/jerry cans and weekly refills) previously validated for construct validity in Mumbai slums, complemented by GPS/GIS mapping of public taps. Secondary indicators relied on short-recall self-report, survey items did not separate piped community taps from brackish borewell taps, and microbiological quality was not assessed.",
+        "rating": "Yes",
+        "where_found": "Section II.c, Table 2 note b & Section IV (PDF pp. 7–8, 14, 18)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Bivariate comparisons used chi-squared and Wilcoxon tests; right-skewed LPCD data were log-transformed for multivariable linear regression with exponentiated percent-difference estimates and 95% CIs, corroborated by multivariable logistic regression at <=20 LPCD, and explored via GSEM path analysis. Minor limitations include unclustered regression standard errors despite comparing two contiguous neighbourhoods (after applying a 1.5 sampling design effect), modelling 'Unsure' income (12.5%) as a separate category, and inability to compute GSEM post-estimation goodness-of-fit statistics with categorical mediators.",
+        "rating": "Yes",
+        "where_found": "Section II.c–d, Section III.b–c, Table 3 & Section IV (PDF pp. 7–9, 12, 15, 18)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q3 / Legal exposure definition (statutory household-level rule vs neighbourhood operationalization)",
+        "page": "PDF Page 4, Section I.c",
+        "quote": "households must have an official document, such as a voter ID card"
+      },
+      {
+        "criterion": "Q7 / Outcome measurement validity (container enumeration method)",
+        "page": "PDF Page 7, Section II.c",
+        "quote": "container enumeration method shown to have strong construct validity"
+      },
+      {
+        "criterion": "Q7 / Outcome reliability (two-week repeated water quantity measurement)",
+        "page": "PDF Page 8, Section II.c",
+        "quote": "each household’s water use for the preceding week was quantified."
+      },
+      {
+        "criterion": "Q8 / Statistical analysis limitation (exploratory GSEM path model)",
+        "page": "PDF Page 9, Section II.d",
+        "quote": "Post-estimation tests cannot be used with Stata’s GSEM feature."
+      },
+      {
+        "criterion": "Q7 / Secondary indicator measurement limitation (community tap vs borewell conflation)",
+        "page": "PDF Page 14, Table 2 footnote b",
+        "quote": "Community taps in notified and non-notified neighbourhoods varied in the water quality provided."
+      },
+      {
+        "criterion": "Study design classification & causal inference limitation",
+        "page": "PDF Page 18, Section IV",
+        "quote": "Our analyses have a few limitations. First, we used cross-sectional data"
+      }
+    ],
+    "overall_narrative_summary": "This analytical cross-sectional survey of 593 randomly sampled households (out of 600 approached; 98.8% completeness) across two neighbourhoods of the Mandala slum in Mumbai exhibits strong sampling execution within the target neighbourhoods, previously validated two-week physical container enumeration of household water consumption (LPCD), direct GIS mapping of community water tap functionality, and multivariable adjustment for household size, income, and religion. Overall methodological concern is rated as 'Some concern' rather than 'Low concern' for three reasons: (1) legal status ('notified' vs 'non-notified') was operationalized ecologically by neighbourhood boundary using resident researchers' ground knowledge rather than verifying household-level pre-2000 eligibility documents under the Maharashtra Slum Areas Act; (2) comparing a single notified neighbourhood (Matangrushi Nagar) against a single adjacent non-notified neighbourhood (Indira Nagar) leaves neighbourhood legal status spatially collinear with settlement age and proximity to the main road vs river/landfill, without cluster-adjusted inference; and (3) cross-sectional measurement precludes causal identification and omits microbiological water quality testing as well as survey differentiation between piped municipal taps and brackish borewell taps.",
+    "overall_rating": "Some concern",
+    "paper_read": "full text",
+    "study_design_identified": "Analytical cross-sectional household survey (census-enumerated random sample of 593 analysed of 600 surveyed households across one notified and one non-notified slum neighbourhood, paired with GIS tap mapping, multivariable linear/logistic regression, and exploratory GSEM path analysis)",
+    "study_id": "S084",
+    "where_found_summary": "Legal institutional context in Section I.c (PDF pp. 4–5) and Section IV (PDF p. 17); study site, census sampling frame, container enumeration, GIS tap mapping, and statistical methods in Section II.a–d (PDF pp. 5–9); sample characteristics, bivariate water indicators, multivariable regression, and path analysis in Section III.a–c and Tables 1–3 / Figures 2–3 (PDF pp. 9–16); methodological limitations in Section IV (PDF p. 18) and Table 2 footnote b (PDF p. 14).",
+    "why_tool_chosen": "The empirical design is a single-wave quantitative cross-sectional household survey (conducted March–May 2016) comparing water access indicators and log-transformed LPCD across notified and non-notified slum neighbourhoods via multivariable regression and path analysis, without longitudinal follow-up or a quasi-experimental intervention evaluation design, matching the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies."
+  }
+}

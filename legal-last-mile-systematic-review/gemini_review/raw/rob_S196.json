@@ -1,0 +1,318 @@
+{
+  "study_id": "S196",
+  "order": 46,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "44b3ca36157c5f3b037d82c3b60665314d512e05a892ea59b46025f263c05e53",
+  "input_text_sha256": "e8ab228f6f4545138c7ae74fd7f3b0d81badbaf9225e27794f57c8be7e0a3a59",
+  "prompt_sha256": "1028ae1af23d07f009e804e1acf75e595b6aa1b42cf657e2e924e137d40e9cc2",
+  "started_at": "2026-11-19T02:01:46.468891+00:00",
+  "completed_at": "2026-11-19T02:03:59.118432+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S196\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S196\n- Record ID: RAD1230DD5FD1\n- Citation string: de Barcellos AP, Monteiro JI (2019). A acidentada história de três ações civis públicas em matéria de saneamento [The bumpy story of three public civil actions in sanitation]. Revista Publicum 5(1):72\n- DOI: 10.12957/publicum.2019.41924\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: e8ab228f6f4545138c7ae74fd7f3b0d81badbaf9225e27794f57c8be7e0a3a59) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=59860, sha256=e8ab228f6f4545138c7ae74fd7f3b0d81badbaf9225e27794f57c8be7e0a3a59]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low-to-moderate concern (incomplete docket access rather than case drop-out): all three selected lawsuits were tracked from filing (1999 or 2006) through judicial archiving (Aquidauana in June 2012; Santa Maria in December 2012) or ongoing execution (Tubarão through March 2018), but restricted public access to full party filings on the TJMS and TJRS websites created missing documentary evidence during the enforcement phase.",
+      "confounding": "High concern: the descriptive chronicle design lacks unlitigated comparator municipalities and cannot separate the effect of judicial orders from concurrent institutional, political, and financial drivers (e.g., the 2011 30-year SANESUL concession renewal in Aquidauana, 2015 municipalization politics in Santa Maria, environmental licensing via FATMA in Tubarão, and utility investment schedules), making causal assertions—such as claiming Tubarão's 2018 works occurred solely due to the lawsuit—unverified.",
+      "legal_measurement_quality": "Strong: constitutional competencies, federal sanitation and procedural statutes (Law 11.445/2007, Law 7.347/1995, CPC art. 794, I), and case-specific litigation milestones (filing, first-instance sentences, appellate acórdãos, astreintes, prosecutorial motions, and execution/archiving orders) are documented with exact docket numbers, dates, and verbatim judicial excerpts across three courts (TJMS, TJRS, TRF4).",
+      "measurement_bias": "Moderate concern: formal procedural trajectories are directly verified from official court portals, whereas real-world sanitation implementation is assessed via heterogeneous secondary sources (union, municipal, and concessionaire press releases) rather than standardized engineering or household-level data, and in Santa Maria compliance in December 2012 is inferred solely from the docket's archiving entry without independent physical verification.",
+      "outcome_measurement_quality": "Weak-to-moderate: triangulation with local news and concessionaire announcements effectively exposes major gaps between formal judicial compliance and actual sewerage coverage in Aquidauana (15% coverage reported in August 2011 despite judicial extinction declaring full city sewage treatment) and Tubarão (zero implementation by early 2018 and a downscaled Phase 1 network), but relies on unverified secondary announcements and lacks standardized physical service metrics.",
+      "reporting_bias": "Moderate concern: no pre-specified protocol, extraction form, or coding rubric is reported, and the paper synthesizes unpublished 2016 undergraduate research chronicles in a personalized narrative style; however, the authors candidly report null/contrary observations, including Santa Maria's eventual compliance and Barcellos (2014)'s finding of no faster service delivery in litigated cases.",
+      "selection_bias": "High concern: only 3 public civil actions were examined out of the 258 sanitation lawsuits mapped in Barcellos (2014); although described colloquially as random (\"aleatória\"), no randomization procedure or sampling frame is reported, all 3 cases are plaintiff-favorable rulings from Southern and Center-West Brazil studied by a 2016 UERJ undergraduate group, creating substantial risk of convenience or illustrative selection."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Cites Brazilian constitutional and statutory provisions accurately (Constitution arts. 23 and 200, IV; Law 11.445/2007 arts. 8(c) and 9(I)-(II); STF ADI 1842; Law 7.347/1995; Law 4.717/1965; CPC art. 794, I) and identifies each Public Civil Action by exact docket number, court portal, filing/judgment dates, and verbatim excerpts from judicial sentences, appellate acórdãos, and prosecutorial motions.",
+        "rating": "strong",
+        "where_found": "PDF Pages 2-16 (Introdução; Caso 1; Caso 2; Caso 3, journal pp. 73-87)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly delineates municipal sanitation titularity and shared metropolitan competence in Brazilian federalism, and distinguishes state versus federal judicial jurisdiction across the three cases: TJMS (Aquidauana/SANESUL), TJRS (Santa Maria/CORSAN), and TRF4 federal court (multi-municipality Rio Tubarão basin litigation involving the Federal Union, FUNASA, State of Santa Catarina, and Tubarão).",
+        "rating": "strong",
+        "where_found": "PDF Pages 2, 4-5, 9-10, 13-14 (Introdução; Caso 1; Caso 2; Caso 3, journal pp. 73, 75-76, 80-81, 84-85)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Clearly defines the legal-institutional exposure—Public Civil Actions (ações civis públicas) seeking sanitation infrastructure, resulting in judicial condemnation orders with phased deadlines and daily fines (astreintes), followed by formal judgment-enforcement proceedings (cumprimento de sentença)—and tracks each procedural stage chronologically.",
+        "rating": "strong",
+        "where_found": "PDF Pages 4-16 (Introdução; Caso 1; Caso 2; Caso 3, journal pp. 75-87)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Explicitly specifies three case-level outcomes—cognizance-phase duration, execution-phase compliance (whether, how, and in what timeframe court-ordered sanitation works were implemented), and accessibility of enforcement information on court portals—though on-the-ground physical sanitation coverage is tracked via ad hoc proxy reports rather than standardized household or engineering metrics.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4, 7-9, 11-12, 14-16 (Introdução; Caso 1; Caso 2; Caso 3, journal pp. 75, 78-80, 82-83, 85-87)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "States that 3 lawsuits were selected \"randomly\" (\"aleatória\") from the 258 sanitation lawsuits compiled in Barcellos (2014) for study by a 2016 UERJ undergraduate research group as part of a broader follow-up effort, but provides zero detail on the randomization mechanism, eligibility filters, or status of the remaining 255 lawsuits.",
+        "rating": "weak",
+        "where_found": "PDF Pages 3-4 (Introdução, journal pp. 74-75)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "An unverified sample of n = 3 cases (all successful ACPs from Mato Grosso do Sul, Rio Grande do Sul, and Santa Catarina) cannot represent the 258 national cases, and no safeguards against convenience or illustrative selection from the 2016 student reports are documented.",
+        "rating": "weak",
+        "where_found": "PDF Pages 3-4 (Introdução, journal pp. 74-75)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Transparently distinguishes between observable electronic docket entries and inaccessible full case records on the TJMS and TJRS portals, and cross-checks judicial records against external news, union (Sindágua), and utility websites; however, embedded timeline graphics lack full tabular data in text, and Santa Maria's December 2012 compliance is accepted from the docket archiving entry without external physical verification.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 5-16, 19 (Caso 1; Caso 2; Caso 3; Discussão, journal pp. 76-87, 90)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Descriptive three-case procedural chronicle with no unlitigated comparison group or counterfactual identification strategy; the assertion in Case 3 that Tubarão's 2018 works began \"solely by reason of the lawsuit\" is unsubstantiated and tensions with the Discussion's acknowledgment (citing Barcellos 2014) of no evidence that court rulings accelerate sanitation delivery.",
+        "rating": "weak",
+        "where_found": "PDF Pages 15, 17-18 (Caso 3; Discussão, journal pp. 86, 88-89)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Mentions concurrent institutional and financial factors narratively—such as the 2011 30-year SANESUL concession renewal in Aquidauana, 2015 municipalization debates in Santa Maria, FATMA environmental licensing in Tubarão, and municipal funding constraints—but employs no design or analytical strategy to account for their confounding influence on infrastructure execution.",
+        "rating": "weak",
+        "where_found": "PDF Pages 7-9, 11-16, 18-19 (Caso 1; Caso 2; Caso 3; Discussão; Conclusão, journal pp. 78-80, 82-87, 89-90)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides deep institutional analysis of the enforcement bottlenecks in Brazilian public law litigation, documenting third-party prosecutorial incentives (e.g., MPMS moving to extinguish Aquidauana's execution after SANESUL merely filed a draft municipal concession bill), state/private concessionaire dynamics, appellate delays, ineffective daily fines, and court database opacity.",
+        "rating": "strong",
+        "where_found": "PDF Pages 6-19 (Caso 1; Caso 2; Caso 3; Discussão; Conclusão, journal pp. 77-90)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Supplies full case docket numbers, court identifiers (TJMS, TJRS, TRF4), exact procedural dates, and URLs for external utility, municipal, and union news sources, allowing independent verification and longitudinal follow-up of all three lawsuits.",
+        "rating": "strong",
+        "where_found": "PDF Pages 4-16 (Caso 1; Caso 2; Caso 3, journal pp. 75-87)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Explicitly adopts a personalized literary chronicle approach (\"abordagem narrativa em estilo de crônica privilegiando pela pessoalidade\") synthesizing unpublished 2016 UERJ undergraduate group reports without reporting any standardized docket-coding protocol, extraction template, or double-coding check.",
+        "rating": "weak",
+        "where_found": "PDF Pages 4, 10, 14, 20 (Introdução; Caso 2; Caso 3; Referências, journal pp. 75, 81, 85, 91)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Beyond stating the stylistic choice of a personalized chronicle and noting student difficulties accessing online court files, the authors do not examine how building on the first author's prior 2014 study or their roles as public law scholars/practitioners influenced case selection and interpretation.",
+        "rating": "weak",
+        "where_found": "PDF Pages 1, 4, 20 (Cabeçalho; Introdução; Minibiografia, journal pp. 72, 75, 91)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Sampling and case selection (D5/D6)",
+        "page": "PDF Page 4 (Introdução, p. 75)",
+        "quote": "seleção desses três casos foi aleatória já que o presente trabalho se insere em uma pesquisa mais"
+      },
+      {
+        "criterion": "Coding and narrative chronicle method (D12)",
+        "page": "PDF Page 4 (Introdução, p. 75)",
+        "quote": "uma abordagem narrativa em estilo de crônica privilegiando pela pessoalidade na análise"
+      },
+      {
+        "criterion": "Premature judicial extinction vs. real-world outcome in Aquidauana (D7/D10)",
+        "page": "PDF Page 8 (Caso 1, p. 79)",
+        "quote": "do feito, mesmo sem que a empresa tivesse cumprido a obrigação determinada em sentença"
+      },
+      {
+        "criterion": "Unverified causal attribution in Tubarão (D8/D9)",
+        "page": "PDF Page 15 (Caso 3, p. 86)",
+        "quote": "sendo tomadas unicamente em razão da ação judicial, que obrigou o Município a adotar tais"
+      },
+      {
+        "criterion": "Limits of causal inference from litigation (D8)",
+        "page": "PDF Page 18 (Discussão, p. 89)",
+        "quote": "prestação do serviço de forma mais rápida do que ocorreria caso a questão não tivesse sido levada"
+      },
+      {
+        "criterion": "Court portal access limitations and measurement constraints (D7)",
+        "page": "PDF Page 19 (Discussão, p. 90)",
+        "quote": "fato dos sites dos Tribunais de Justiça de MS e RS não disponibilizarem o acesso integral aos autos"
+      }
+    ],
+    "overall_narrative_summary": "This legal-institutional multiple-case docket study tracks the procedural history and post-judgment enforcement (cumprimento de sentença) of three Brazilian Public Civil Actions (ações civis públicas) demanding municipal sewerage infrastructure in Aquidauana (MS), Santa Maria (RS), and Tubarão (SC), drawn from the 258 lawsuits previously mapped in Barcellos (2014). Under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment), the study is strong in legal source accuracy, jurisdictional specificity, procedural exposure definition, institutional context, and docket-level replicability: it documents exact docket numbers, judicial timelines, appellate delays, daily fine orders, and prosecutorial enforcement failures, notably exposing how the Aquidauana proceeding was formally extinguished as \"fulfilled\" in 2011 upon submission of a 30-year concession bill while actual municipal sewage coverage stood at 15%, and how Tubarão lacked sewerage implementation 12 years after filing. However, substantial methodological limitations restrict generalizability and causal inference: the selection of 3 cases from 258 is asserted to be \"random\" without any documented sampling method; docket synthesis relies on unpublished 2016 undergraduate chronicles without a standardized coding rubric; restricted online access to full court files in TJMS and TJRS limited documentary verification (and Santa Maria's 2012 compliance was inferred solely from judicial archiving without external physical audit); and the descriptive design lacks comparator municipalities or controls for concurrent concession renewals, licensing bottlenecks, and municipal politics.",
+    "overall_rating": "Strong legal-institutional docket documentation; high concern for selection, coding, and causal inference (structured non-validated judgment)",
+    "paper_read": "full text",
+    "study_design_identified": "Doctrinal-empirical judicial docket-tracking multiple-case study (narrative procedural chronicle of three Public Civil Actions on municipal sanitation in Brazil, cross-referenced with secondary utility/news records)",
+    "study_id": "S196",
+    "where_found_summary": "Research aims, case selection from Barcellos (2014), and narrative chronicle method are on PDF Pages 1-4 (Resumo, Abstract, Introdução, journal pp. 72-75); individual case chronicles and court portal/news triangulation are in Sections 1-3 on PDF Pages 4-16 (Aquidauana pp. 75-80, Santa Maria pp. 80-84, Tubarão pp. 84-87); comparative institutional synthesis and portal transparency findings are in Discussão and Conclusão on PDF Pages 16-20 (journal pp. 87-91).",
+    "why_tool_chosen": "The study is a legal-institutional and empirical docket-tracking case study prepared by public law scholars analyzing judicial proceedings, court portal records, and concession documents across three sanitation lawsuits, without human-subject interviews/ethnography (making CASP Qualitative Checklist a poor fit for participant recruitment, reflexivity, and ethics items) and without non-litigated comparator units or statistical estimation (ruling out ROBINS-I, JBI checklists, and MMAT). The Legal Institutional Evidence Appraisal Framework directly evaluates its doctrinal accuracy, procedural/exposure operationalization, sampling from the 258-case universe, documentary measurement, and institutional enforcement context."
+  }
+}

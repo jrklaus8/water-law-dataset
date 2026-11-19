@@ -1,0 +1,117 @@
+{
+  "study_id": "S142",
+  "record_id": "R0A2F971E2D86",
+  "order": 5,
+  "retrieval_status": "retrieved_swim_drive_pdf",
+  "paper_read": "full text",
+  "study_design_identified": "Quantitative analytical cross-sectional spatial regression study (multilevel negative binomial GLM across 31,383 Census block groups in nine U.S. states)",
+  "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+  "why_tool_chosen": "The study is a primary quantitative observational cross-sectional analysis relating block-group municipal incorporation status and poverty rates to centralized water and sewer areal coverage at a single cross-section using multilevel negative binomial regression, without a longitudinal panel, before-after design, or quasi-experimental intervention/policy comparator; therefore, the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the exact matching tool per RISK_OF_BIAS.md §1.",
+  "overall_rating": "Some concern",
+  "domain_ratings": [
+    {
+      "domain_id": "Q1",
+      "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+      "justification": "Explicit quantitative and spatial inclusion/exclusion criteria are stated for community grid cells (>250 parcels/sq mi via >5.56 building centroids or >=662 sq m footprint per 240 m cell; excluding zero-population Census blocks, waterbodies, parks, military bases, and polygons <3,035 sq m), utilities (active retail CWS excluding wholesalers; active POTW sewer systems), and ACS poverty reliability (excluding block groups with CV > 40%), although the rationale for selecting the specific nine eastern U.S. states is not explicitly detailed beyond data compilation and representing >25% of the U.S. population.",
+      "rating": "Yes",
+      "where_found": "[PDF Page 2] Introduction; [PDF Pages 10-12, 14] Methods (Data overview; Identifying incorporated and unincorporated communities; Centralized infrastructure coverage; Demographic data)"
+    },
+    {
+      "domain_id": "Q2",
+      "domain_name": "Were the study subjects and the setting described in detail?",
+      "justification": "The 31,383 Census block groups across nine states (Connecticut, Florida, Kentucky, Mississippi, New Jersey, North Carolina, Rhode Island, Texas, and West Virginia) are thoroughly characterized in terms of state annexation/incorporation regimes, population, land area, settlement typologies (Incorporated, Island, Fringe, Outlying), urban/rural distribution, and poverty terciles, with metropolitan case illustrations.",
+      "rating": "Yes",
+      "where_found": "[PDF Pages 2-5] Introduction and Results (Summary statistics, Figs. 1-5); [PDF Pages 10-11, 14] Methods"
+    },
+    {
+      "domain_id": "Q3",
+      "domain_name": "Was the exposure measured in a valid and reliable way?",
+      "justification": "Municipal incorporation status and unincorporated typology (Island, Fringe, Outlying) are systematically derived from official 2010 Census TIGER/Line places, Census of Governments functional/class codes, and Microsoft building footprints, while high poverty (>=20% below Federal poverty line) is restricted to moderate/high-reliability 2008-2012 ACS estimates (CV <= 40%). Minor misclassification risks arise from assigning mixed-jurisdiction block groups via a majority-land-area rule, applying a uniform 1.6 km extraterritorial jurisdiction buffer, and combining 2010 municipal boundaries with 2018 building footprints.",
+      "rating": "Yes",
+      "where_found": "[PDF Pages 10-11, 14] Methods (Identifying incorporated and unincorporated communities; Categorization of unincorporated communities; Demographic data)"
+    },
+    {
+      "domain_id": "Q4",
+      "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+      "justification": "Standard federal administrative and regulatory definitions were applied across all nine states, including Census of Governments municipal classification codes (funcstat and classfp), Census Bureau block group and urban/rural definitions, EPA SDWIS active retail community water systems, Clean Water Act NPDES publicly-owned treatment works, and the >=20% Federal poverty threshold.",
+      "rating": "Yes",
+      "where_found": "[PDF Pages 10-14] Methods"
+    },
+    {
+      "domain_id": "Q5",
+      "domain_name": "Were confounding factors identified?",
+      "justification": "The authors explicitly identify demographic, geographic, environmental, and institutional confounders—including population density, urban/rural population distribution, household poverty, county and state governance/annexation policies, soil and topographic conditions, and historical racial exclusion/municipal underbounding.",
+      "rating": "Yes",
+      "where_found": "[PDF Pages 1-2] Introduction; [PDF Pages 9-11] Methods (Negative binomial regression; Categorization of unincorporated communities)"
+    },
+    {
+      "domain_id": "Q6",
+      "domain_name": "Were strategies to deal with confounding factors stated?",
+      "justification": "Multivariable adjustment for population density, percent rural population, and high poverty, along with county- and state-level random intercepts to account for shared governance and environmental context, are explicitly stated. However, important confounders discussed theoretically—most notably block-group racial/ethnic composition, housing age, and within-county soil/topography—are omitted from the regression models, random intercepts do not guard against regressor-effect correlation, and potential reverse causality from statutory annexation service prerequisites is unaddressed.",
+      "rating": "Yes",
+      "where_found": "[PDF Pages 9-10] Methods (Negative binomial regression)"
+    },
+    {
+      "domain_id": "Q7",
+      "domain_name": "Were the outcomes measured in a valid and reliable way?",
+      "justification": "Although Tier 1 digitized utility boundaries were compiled and expanded via public records requests (covering 96% of CWS and 94% of POTWs), validity and reliability are compromised across substantial subsets by proxy and imputation methods: Tier 2b substitutes municipal boundaries for missing utility service areas (e.g., 28% of MS POTWs), risking differential misclassification mechanically tied to municipal incorporation status; Tier 3 approximates >1/3 of utilities in several states with predicted circular buffers; 3.7% of CWS and ~6% of POTWs lacking physical addresses were excluded (leaving their areas coded as unserved); Florida sewer coverage relied on parcel matching with deterministic imputations for 27% missing water and 7% missing sewer records; and utility/building datasets from ~2018-2021 were overlaid on 2010 block groups without ground-truth validation of approximations.",
+      "rating": "Unclear",
+      "where_found": "[PDF Pages 11-14] Methods (Centralized infrastructure coverage; Service area boundaries: data quality; Approximated service area boundaries; Florida: sewer service coverage)"
+    },
+    {
+      "domain_id": "Q8",
+      "domain_name": "Was appropriate statistical analysis used?",
+      "justification": "Multilevel negative binomial generalized linear models with a log block-group area offset and county/state random intercepts appropriately handle overdispersed areal count/rate data and nested geographic clustering, with incidence rate ratios properly computed for nonlinear poverty-by-incorporation interactions and model fit compared via AIC and Vuong tests. Nevertheless, the authors acknowledge unmodeled fine-scale spatial autocorrelation across contiguous block groups, which may deflate standard errors.",
+      "rating": "Yes",
+      "where_found": "[PDF Pages 6-7] Results (Regression results); [PDF Pages 9-10] Methods (Negative binomial regression)"
+    }
+  ],
+  "cross_tool_domains": {
+    "attrition": "Not applicable (cross-sectional spatial design using secondary data; however, non-trivial missing-data exclusions and imputations occur: >10% of block groups per state on average had low-reliability ACS poverty estimates [CV > 40%] and were excluded, 3.7% of CWS [n = 429] and ~6% of POTWs lacking physical addresses were omitted, and in Florida 27% missing drinking water and 7% missing sewer parcel records required deterministic imputation).",
+    "confounding": "Serious concern (models adjust for population density, percent rural population, high poverty, and county/state random intercepts, but omit racial/ethnic composition despite extensive theoretical discussion of racialized municipal underbounding, as well as housing age and local soil/topography; furthermore, cross-sectional estimates face reverse causality/simultaneity because states such as Florida and Texas mandate water/sewer service provision prior to annexation, and random intercepts assume orthogonality between county/state unobservables and regressors).",
+    "legal_measurement_quality": "Moderate-to-strong (municipal incorporation status is rigorously operationalized using 2010 Census TIGER/Line and Census of Governments functional and class codes [funcstat, classfp], augmented by 240 m building-footprint rasters [>250 parcels/sq mi] to identify unrecognized unincorporated communities and spatial buffers [480 m for Islands, 1.6 km for Fringes approximating extraterritorial jurisdiction], contextualized with state annexation statutes; tempered by majority-land-area aggregation to block groups, a uniform 1.6 km ETJ proxy across states, and pairing 2010 municipal boundaries with 2018 building footprints).",
+    "measurement_bias": "Moderate-to-serious concern (Tier 2b approximates missing utility boundaries using municipal boundaries [e.g., 28% of MS POTWs], risking differential misclassification mechanically correlated with municipal incorporation status; Tier 3 approximates >1/3 of systems in several states as circular buffers from predicted area regressions; unlocated minor utilities are excluded and effectively coded as unserved; Florida relies on parcel-level imputations; and 2010 Census boundaries/demographics are combined with 2018 building footprints and multi-year utility shapefiles, with mixed block groups assigned a single incorporation status by majority area).",
+    "outcome_measurement_quality": "Moderate concern (substantial effort compiled digitized service areas for 96% of active retail CWS and 94% of POTWs across study states, resolving overlapping polygons and EPA SDWIS mailing-address errors; however, reliance on municipal-boundary proxies [Tier 2b], circular radius predictions [Tier 3], parcel-level deterministic imputations in Florida, cross-dataset temporal mismatches, and areal coverage rather than verified household connections introduce heterogeneous measurement error).",
+    "reporting_bias": "Can't tell / Low-to-moderate concern (no pre-registration or pre-analysis plan is reported to rule out selective specification of density/buffer thresholds or covariate sets; however, full results across multiple model specifications with and without county/state random effects and poverty interactions are transparently reported for both sewer and drinking water outcomes, and compiled datasets are deposited in the Harvard Repository).",
+    "selection_bias": "Some concern (within the nine study states, all 31,383 Census block groups meeting explicit settlement-density criteria were systematically included, but the nine eastern U.S. states were purposively selected—limiting generalizability to western states—and block groups with low-reliability ACS poverty estimates [CV > 40%, >10% of block groups per state on average] as well as minor utilities lacking physical locations were excluded)."
+  },
+  "overall_narrative_summary": "Allaire et al. (2024) present an ambitious, large-scale analytical cross-sectional spatial regression study of 31,383 Census block groups across nine eastern U.S. states examining how municipal incorporation status (Incorporated vs. Unincorporated Island, Fringe, and Outlying communities) and high poverty (>=20%) relate to the proportion of community land area unserved by centralized sewer and drinking water systems. Methodological strengths include a transparent geospatial protocol using building footprints to capture unincorporated settlements overlooked by Census Designated Places (69% of unincorporated community land), extensive public-records collection to represent 96% of community water systems and 94% of publicly owned treatment works, careful remediation of EPA SDWIS mailing-address geocoding errors, filtering of unreliable ACS poverty estimates (CV <= 40%), and multilevel negative binomial regression with an area offset and county/state random intercepts. Overall methodological concern is rated as 'Some concern' under the JBI Analytical Cross-Sectional Checklist due to three primary limitations: (1) heterogeneous outcome measurement and potential differential misclassification, notably the use of municipal boundaries as proxies for missing utility service boundaries (Tier 2b, e.g., 28% of Mississippi POTWs, which mechanically aligns measured service boundaries with municipal incorporation status), circular buffer approximations for smaller utilities (Tier 3, >1/3 of systems in several states), omission of unlocated minor utilities, deterministic parcel imputations in Florida, and temporal misalignment across 2010 Census geographies, 2018 building footprints, and multi-year utility records; (2) residual confounding and reverse causality, as regression models omit block-group racial/ethnic composition (despite racialized municipal underbounding being a core theoretical mechanism) and cross-sectional associations cannot separate exclusionary governance from state laws (e.g., in Florida and Texas) requiring water/sewer infrastructure prior to annexation; and (3) unmodeled fine-scale spatial autocorrelation across adjacent block groups and majority-area assignment of mixed-jurisdiction block groups.",
+  "where_found_summary": "Abstract [PDF Page 1]; Introduction [PDF Pages 1-2]; Results (Summary statistics and Regression results) [PDF Pages 4-8]; Methods (Negative binomial regression, Data overview, Identifying and categorizing incorporated/unincorporated communities, Centralized infrastructure coverage, Service area boundary data quality and approximations, Florida sewer coverage, Demographic data) [PDF Pages 9-14].",
+  "evidence_quotes": [
+    {
+      "criterion": "Study design and sample size (Q1, Q2, Q8)",
+      "page": "[PDF Page 1] Abstract",
+      "quote": "A novel dataset informs this analysis, comprised of 31,383 Census block groups"
+    },
+    {
+      "criterion": "Exposure classification at block group level (Q3)",
+      "page": "[PDF Page 10] Methods - Identifying incorporated and unincorporated communities",
+      "quote": "incorporated if its incorporated land area is greater than the unincorporated"
+    },
+    {
+      "criterion": "Confounding adjustment and unmodeled spatial correlation (Q5, Q6, Q8)",
+      "page": "[PDF Page 10] Methods - Negative binomial regression",
+      "quote": "for our data to have more spatial correlation than is accounted for in our"
+    },
+    {
+      "criterion": "Outcome measurement via municipal boundary proxy (Q7)",
+      "page": "[PDF Page 12] Methods - Service area boundaries: data quality",
+      "quote": "match with a municipality name; these are categorized as Tier 2b."
+    },
+    {
+      "criterion": "Outcome measurement via circular buffer approximation (Q7)",
+      "page": "[PDF Page 12] Methods - Service area boundaries: data quality",
+      "quote": "we approximate system areas based on a point location and predicted radius"
+    },
+    {
+      "criterion": "Exclusion of low-reliability ACS poverty block groups (Q1, selection/missingness)",
+      "page": "[PDF Page 14] Methods - Demographic data: census bureau",
+      "quote": "poverty estimates with moderate or high reliability."
+    }
+  ],
+  "confidence": "high",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-19T01:39:28.025765+00:00",
+  "file_sha256": "4e5a952f1306c4d02473c3b76199de70d8456777ac254889b076359380694d82",
+  "input_sha256": "db148fd0930f69ca3fd6cfd33fbf1113c377fe2a9cc166b8328a4c714e713165"
+}

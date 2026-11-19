@@ -1,0 +1,278 @@
+{
+  "study_id": "S192",
+  "order": 24,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "08aedfe1797047106ae1bf2f933a658e080ca53da45c617a2a3f5fa0d397c831",
+  "input_text_sha256": "777777f68b29223729aed8a3f3d9d6de5ef4a26044ec75e8e8c36fa435b5a3d3",
+  "prompt_sha256": "397bc3ade8936ac7cd1ad2d5bbed9ce1c5b0cb0249d221446a69e52c9cd99600",
+  "started_at": "2026-11-19T01:49:14.745675+00:00",
+  "completed_at": "2026-11-19T01:50:51.397926+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S192\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S192\n- Record ID: R63CBCB8C5C0B\n- Citation string: Juliano EFGA, Malheiros TF, Marques RC (2016). O envolvimento de lideranças comunitárias e o cuidado com a saúde, o meio ambiente e o saneamento nas áreas de vulnerabilidade social [The involvement of\n- DOI: 10.1590/1413-81232015213.21862015\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 777777f68b29223729aed8a3f3d9d6de5ef4a26044ec75e8e8c36fa435b5a3d3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=27150, sha256=777777f68b29223729aed8a3f3d9d6de5ef4a26044ec75e8e8c36fa435b5a3d3]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / No information: Although this is a single-wave cross-sectional survey rather than a longitudinal cohort, the paper provides no information on how many community leaders or households were initially sampled/approached, how many refused or were unreachable, or whether there was item-level missingness ([PDF Page 3 of 8], Metodologia e objetivo; [PDF Page 4 of 8], Gráfico 1).",
+      "confounding": "High concern: No confounding factors are identified for analytical adjustment and no design or statistical controls (e.g., multivariable regression, stratification, or cluster-adjusted estimation) are applied; all findings are unadjusted descriptive percentages ([PDF Pages 4-5 of 8], Resultados and Discussão).",
+      "legal_measurement_quality": "Weak / High concern: Legal and institutional exposures—irregular land occupation/tenure risk, utility social tariff registration, and enrollment in CADUNICO/Bolsa Família—are operationalized solely via unvalidated binary (Yes/No) self-reports from community leaders rather than administrative cadastres, tenure records, or utility billing databases, and the authors note likely underreporting of irregular tenure due to fear of confessing land invasion ([PDF Pages 4-5 of 8], Resultados and Discussão).",
+      "measurement_bias": "High concern: Data were collected via an unvalidated questionnaire modified ad hoc into a binary Yes/No test because respondents felt embarrassed about partial literacy; each of the 68 leaders reported as a proxy for roughly 100 households; utility community agents and utility-affiliated researchers were involved in the governance interface being evaluated; and the authors explicitly note respondent fear of admitting land invasion ([PDF Pages 1, 4, 5 of 8]).",
+      "outcome_measurement_quality": "Weak / High concern: Water supply coverage, water billing, trucked/spout water use, open sewage, sewerage connections, flooding, leaks, and household water-conservation behaviors were measured strictly through binary Yes/No leader perceptions without household-level survey verification, utility metering/connection records, or physical/environmental inspections reported in the data ([PDF Pages 4-5 of 8], Gráfico 1, Resultados, and Discussão).",
+      "reporting_bias": "High concern: Gráfico 1 displays 29 numbered items running up to item 47 while omitting 18 intermediate items (05-06, 11, 14, 25-30, 32-35, 39-42) with no explanation; no protocol or pre-analysis plan is cited; raw numerators/denominators are omitted; and prose figures internally contradict both each other and Gráfico 1 (e.g., irregular residence described as a low percentage on p. 5 under Resultados yet 'na sua maioria' under Discussão; CADUNICO reported as not reaching 25% on p. 5 vs. 57% later on p. 5; SUS non-visitation reported as >75% vs. 90% on p. 5).",
+      "selection_bias": "High concern: The Metodologia claims a four-stage stratified cluster/simple random sampling strategy across a universe of 14,079 households, whereas the Discussão states that the 68 respondents were community leaders who participate in monthly utility-community meetings, indicating convenience/institutional-interface recruitment of engaged intermediaries rather than a true probability sample of vulnerable households ([PDF Page 3 of 8], Metodologia e objetivo; [PDF Page 5 of 8], Discussão)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Inclusion and exclusion criteria are not clearly defined. While the authors state that four probabilistic stages (municipality, IBGE census tract, IPVS vulnerability index, and household/individual) were used across a universe of 14,079 households to interview 68 community leaders, they never specify objective eligibility criteria for qualifying as a community leader, which municipalities or settlements in Baixada Santista were eligible, or how probabilistic household selection reconciles with the statement in the Discussion that respondents were leaders attending monthly utility meetings.",
+        "rating": "No",
+        "where_found": "[PDF Page 3 of 8], Metodologia e objetivo; [PDF Page 5 of 8], Discussão"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The setting is identified only generally as subnormal agglomerations in Baixada Santista (São Paulo) without naming the specific municipalities, neighborhoods, recruitment dates, or sample demographics (such as age, sex, tenure duration, or household size), providing only brief narrative remarks in the Discussion about partial literacy, informal entrepreneurship, and 35% formal-economy participation.",
+        "rating": "No",
+        "where_found": "[PDF Page 3 of 8], Metodologia e objetivo; [PDF Page 5 of 8], Resultados and Discussão"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Exposures (residence in an irregular or risk area, social tariff enrollment, CADUNICO/Bolsa Família inclusion, and SUS health-agent visits) were measured via unvalidated binary Yes/No self-report questions modified on the fly due to partial literacy, without administrative verification. The authors explicitly acknowledge likely misclassification on irregular land occupation due to respondents' fear of admitting land invasion, and textual percentages conflict across sections.",
+        "rating": "No",
+        "where_found": "[PDF Page 4 of 8], Resultados and Gráfico 1; [PDF Page 5 of 8], Resultados and Discussão"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "The study references standard official classifications—IBGE subnormal agglomeration census tracts and the Fundação SEADE Índice Paulista de Vulnerabilidade Social (IPVS)—as well as on-site inspections ('vistorias ao local') to identify socially vulnerable areas, but does not report the specific IPVS thresholds used, how site inspections were standardized, or how those objective classifications mapped onto the 68 interviewed leaders.",
+        "rating": "Unclear",
+        "where_found": "[PDF Page 3 of 8], Metodologia e objetivo"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "Although poverty, informal income, and land-tenure irregularity are discussed conceptually as part of a vicious cycle of socio-environmental vulnerability, no confounding variables are identified for empirical or analytical examination of relationships between governance/social-program inclusion and water or sanitation conditions.",
+        "rating": "No",
+        "where_found": "[PDF Page 3 of 8], Resultados; [PDF Pages 4-5 of 8], Resultados and Discussão"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "No design or analytical strategies to control for confounding (such as restriction, matching, stratified cross-tabulations, or multivariable regression) are stated or implemented anywhere in the study.",
+        "rating": "No",
+        "where_found": "[PDF Page 3 of 8], Metodologia e objetivo; [PDF Pages 4-5 of 8], Resultados and Discussão"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "Water supply, billing, open sewage, sewage connections, flooding, leaks, and water-reuse practices were measured solely through unvalidated Yes/No questionnaire items answered by 68 community leaders acting as proxies for ~100 households each, with no household-level validation, utility operational records, or reliability testing, and with 18 numbered items omitted from Gráfico 1 without explanation.",
+        "rating": "No",
+        "where_found": "[PDF Page 4 of 8], Resultados and Gráfico 1; [PDF Page 5 of 8], Discussão"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Analysis is restricted to unadjusted bar-chart percentages (Gráfico 1) and prose proportions without sample counts, confidence intervals, or cluster adjustments. Moreover, the Methods claim an invalid statistical calculation—that interviewing 68 leaders from 14,079 households in a normalized distribution (mean 0, SD 1) covers 96% of cases with a ±1% margin of error—and multiple percentages reported in the text contradict both Gráfico 1 and one another.",
+        "rating": "No",
+        "where_found": "[PDF Page 1 of 8], Resumo/Abstract; [PDF Page 3 of 8], Metodologia e objetivo; [PDF Pages 4-5 of 8], Resultados, Gráfico 1, and Discussão"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Sampling and data collection method (Q1, Q4)",
+        "page": "[PDF Page 3 of 8], Metodologia e objetivo",
+        "quote": "indivíduo, com coleta de dados por entrevistas"
+      },
+      {
+        "criterion": "Flawed margin-of-error / statistical precision claim (Q8)",
+        "page": "[PDF Page 3 of 8], Metodologia e objetivo",
+        "quote": "margem de erro de + ou – 1% da média."
+      },
+      {
+        "criterion": "Outcome and exposure measurement via leader perceptions (Q3, Q7)",
+        "page": "[PDF Page 4 of 8], Resultados / Gráfico 1",
+        "quote": "Avaliação da condição socioambiental da comunidade pelos líderes comunitários"
+      },
+      {
+        "criterion": "Social desirability / fear bias in self-reported irregular tenure (Q3, legal_measurement_quality)",
+        "page": "[PDF Page 5 of 8], Resultados",
+        "quote": "esse nível de respostas a um temor de confessar"
+      },
+      {
+        "criterion": "Ad hoc modification of questionnaire into binary Yes/No test due to partial literacy (Q3, Q7, measurement_bias)",
+        "page": "[PDF Page 5 of 8], Discussão",
+        "quote": "questionários foram modificados para forma de"
+      }
+    ],
+    "overall_narrative_summary": "High methodological concern under the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies (7 'No' ratings: Q1, Q2, Q3, Q5, Q6, Q7, Q8; 1 'Unclear' rating: Q4; no numeric composite score computed). This primary cross-sectional survey of 68 community leaders in socially vulnerable settlements of Baixada Santista (São Paulo, Brazil) exhibits severe risks of selection, measurement, confounding, and reporting bias. First, the sampling account is internally inconsistent: the Metodologia describes a four-stage stratified cluster/simple random sample of 14,079 households with an invalid statistical claim of ±1% margin of error from n=68, whereas the Discussão reveals that respondents were community leaders attending monthly meetings with the water utility's community agents. Second, all legal/programmatic exposures (irregular land occupation, social tariff, CADUNICO, Bolsa Família) and water/sanitation outcomes were measured via unvalidated binary Yes/No items modified ad hoc due to partial literacy, with each leader serving as an unverified proxy for ~100 households and with acknowledged underreporting of irregular occupation out of fear of admitting land invasion. Third, no confounding factors were controlled for, 18 of 47 numbered questionnaire items were omitted from Gráfico 1 without explanation, and key percentages reported in the prose contradict both Gráfico 1 and one another (including irregular residence, CADUNICO enrollment, and SUS agent visits).",
+    "overall_rating": "High concern",
+    "paper_read": "full text",
+    "study_design_identified": "Cross-sectional quantitative questionnaire survey of 68 community leaders in subnormal agglomerations (Baixada Santista, São Paulo, Brazil)",
+    "study_id": "S192",
+    "where_found_summary": "[PDF Page 1 of 8] Resumo/Abstract and author affiliations; [PDF Page 3 of 8] Metodologia e objetivo (sampling frame, IBGE/IPVS stages, n=68 leaders out of 14,079 households, margin-of-error claim, Baixada Santista setting); [PDF Page 4 of 8] Resultados and Gráfico 1 (29 displayed Yes/No items numbered non-consecutively from 01 to 47); [PDF Page 5 of 8] Resultados and Discussão (monthly utility-community meetings, ad hoc modification to Yes/No questionnaire, fear of confessing land invasion, and conflicting percentage summaries).",
+    "why_tool_chosen": "The study's primary empirical component is a single-wave cross-sectional structured Yes/No questionnaire survey of 68 community leaders reporting descriptive percentages on access to water, sanitation, health agents, and social programs, with no experimental randomization (excluding RoB 2), no non-randomized intervention comparator arm or longitudinal pre-post structure (excluding ROBINS-I and JBI Cohort), and no qualitative coding, transcripts, or thematic analysis despite a passing citation to Triviños (excluding CASP Qualitative and MMAT). Per RISK_OF_BIAS.md §1, the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the matching instrument for quantitative cross-sectional surveys without a quasi-experimental design."
+  }
+}

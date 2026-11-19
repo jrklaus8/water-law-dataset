@@ -1,0 +1,276 @@
+{
+  "study_id": "S121",
+  "order": 4,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "800deeafef2e704abd66d0df783606ba87c322ca4ef7e167b28881db2d2fd225",
+  "input_text_sha256": "2f637bee2895f6299be4b005db2ae4bf9eb63d80800124f143779b607535612b",
+  "prompt_sha256": "53116db1e9fc1e3ce6564e881f236e95e2bf899f635c3a2a956edc3147ebb46d",
+  "started_at": "2026-11-19T01:37:32.281665+00:00",
+  "completed_at": "2026-11-19T01:40:03.593974+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S121\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S121\n- Record ID: RCA79A474E34C\n- Citation string: Feler L, Henderson JV (2008). Exclusionary Policies in Urban Development: How Under-Servicing of Migrant Households Affects the Growth and Composition of Brazilian Cities. NBER Working Paper No. 14136\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 2f637bee2895f6299be4b005db2ae4bf9eb63d80800124f143779b607535612b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=103847, sha256=2f637bee2895f6299be4b005db2ae4bf9eb63d80800124f143779b607535612b]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low risk — Municipal splits and recombinations from 1970 to 2000 are harmonized into constant-boundary Minimum Comparable Areas (MCAs) using decennial census universes, with only a handful of localities having fewer than 10 surveyed small houses excluded.",
+      "confounding": "Serious risk — Urban-area fixed effects, lagged covariates, spatial lag/error MLE, and 2SLS/LIML (instrumenting water servicing with porous geology and insolation interactions and housing supply with 1970 census/market-access variables) address major endogeneity, but plausible IV exclusion-restriction violations (geology/rivers affecting private water costs or growth amenities; persistent unobserved locality fundamentals), modest multi-endogenous first-stage strength (partial F ~ 13; F = 6.2 for untitled homes), and spatial weight-matrix sensitivity leave substantial residual confounding risk.",
+      "legal_measurement_quality": "Weak-to-moderate — Although the institutional narrative accurately describes Brazil's 1979 federal 125 sq m minimum lot-size statute, pre-1988 legal bars on municipal infrastructure provision in informal favelas and loteamentos, and 1999/2005 IBGE municipal zoning surveys, the econometric models do not directly code municipal legal rules or utility refusal ordinances over time, relying instead on realized census water connection shares among small houses as an indirect proxy for exclusionary policy.",
+      "measurement_bias": "Serious risk for exposure / Low risk for outcomes — Exclusionary municipal policy is not observed directly and is proxied ecologically by the census share of 1–3 room houses connected to a central water network (which conflates intentional exclusion with capacity backlogs and non-migrant small dwellings), whereas demographic growth and household piped-water connection outcomes come from standardized IBGE Population Censuses.",
+      "outcome_measurement_quality": "Strong — Household counts, household-head educational attainment, central piped water connections, and full servicing (electricity, central water, and central sewerage) are measured consistently across localities from official decennial IBGE Population Censuses (1970, 1980, 1991, 2000), though water quality, service intermittency, and affordability/tariffs are not observed.",
+      "reporting_bias": "Moderate risk (no pre-analysis plan) — No pre-registration or protocol exists for this 2008 NBER working paper, and the text reports specification choices guided by specification tests (including selecting the 1991–2000 growth window over 1980–1991, choosing distance-to-Sao-Paulo and geology/insolation instrument lists based on strength and orthogonality tests, and favoring inverse-density weights where inverse-distance weights were insignificant); additionally, end-of-paper table/figure pages (PDF pp. 39–46, 48, 50) are unextracted in the PDF text.",
+      "selection_bias": "Moderate risk — The main econometric sample includes 351 harmonized MCAs across 55 multi-locality urban areas that were at least 50% urbanized at baseline, avoiding post-treatment selection on outcomes, though restricting to baseline-urbanized localities in multi-locality agglomerations excludes initially rural fringe municipalities (<50% urban at baseline) experiencing rapid informal settlement growth."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "In Section 4 (strategic servicing regressions), identification relies on urban-area fixed effects, 1980 lagged covariates (OLS), and spatial autoregressive/error MLE, because instruments for competitors' servicing (W'b) were unacceptably weak; results are sensitive to spatial weight specification (insignificant with inverse-distance weights) and vulnerable to unobserved intra-metropolitan fiscal or topographic cost differences. In Section 5 (1991–2000 household growth and composition), 2SLS and LIML use porous geology interacted with insolation and 1970 historical census/market-access instruments alongside urban-area fixed effects, but the authors explicitly acknowledge exclusion-restriction concerns (geology and rivers may affect contemporaneous private water costs or local amenities; 1970 historical instruments require broken persistence in locality unobservables) and modest multi-endogenous first-stage strength (partial F around 13 in main models and 6.2 when using untitled houses).",
+        "rating": "Serious",
+        "where_found": "Section 4 (PDF pp. 21–25); Section 5 & 5.1–5.2 (PDF pp. 28–33)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "Units of analysis are harmonized Minimum Comparable Areas (MCAs) constructed from 1970–2000 Brazilian Population Censuses (351 MCAs in 55 multi-locality urban areas with >=50% urban population in the base period, dropping a handful of small localities with <10 surveyed small houses). Conditioning on baseline urbanization (>=50% in 1980 or 1991) avoids conditioning on post-intervention growth, and dropping the 25 most fragmented multi-municipality MCAs leaves results unchanged; however, excluding localities <50% urban at baseline omits initially rural peripheral municipalities undergoing rapid suburban/informal expansion.",
+        "rating": "Moderate",
+        "where_found": "Section 2.1 (PDF pp. 7–8, fn. 6); Section 4.1.1 & 4.1.3 (PDF p. 23 fn. 12, p. 27); Section 5.2.1 (PDF p. 33)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "Although framed around intentional municipal exclusionary policy enabled by pre-1988 legal restrictions on servicing informal settlements (favelas and loteamentos violating the 1979 national 125 sq m minimum lot-size law), the study does not directly measure municipal exclusionary rules or utility denial policies. Instead, it proxies exclusionary policy via the realized 1991 census share of all small houses (1–3 rooms) connected to a central water system. Only 33% of migrants (and 18% of non-migrants) lived in 1–3 room homes in 1991, and low water coverage also reflects non-strategic infrastructure backlogs from rapid prior growth or regional utility constraints. A closer proxy (water connections among untitled owner-occupied homes) lacked 1980 data and yielded weak instruments (partial F = 6.2) and imprecise estimates.",
+        "rating": "Serious",
+        "where_found": "Section 1 (PDF pp. 5–6); Section 2.3–2.4 (PDF pp. 9–13); Section 4.1 (PDF p. 22); Section 5 & 5.2.1 (PDF pp. 29, 33)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "Section 5 estimates the effect of 1991 baseline small-house water servicing (shaped during the pre-1988 non-democratic period) on 1991–2000 locality growth. Following the 1988 Constitution and democratization, national and local governments removed bans on servicing informal settlements, launched widespread slum-upgrading and land-regularization programs, and enacted new municipal minimum lot-size laws (>125 sq m) during the 1990s. These concurrent 1991–2000 policy shifts and upgrading co-interventions are not directly controlled for in the growth regressions.",
+        "rating": "Moderate",
+        "where_found": "Section 2 (PDF pp. 6–7); Section 2.5 (PDF pp. 13–14); Section 4.1.3 (PDF p. 28); Section 5 (PDF pp. 28–29)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "Data are drawn from official decennial Brazilian Population Censuses (1970, 1980, 1991, 2000) harmonized into constant-boundary MCAs across decades, preventing municipal-split attrition, with only a handful of localities with fewer than 10 surveyed small houses omitted to prevent noisy proportions. (Note: end-of-paper table pages, PDF pp. 39–46, 48, 50, were unextracted in the PDF text, though sample construction is thoroughly documented in the prose and footnotes.)",
+        "rating": "Low",
+        "where_found": "Section 2.1 (PDF pp. 7–8, fn. 6); Section 4.1.1 (PDF p. 23, fn. 12)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "Primary outcomes—locality central piped water coverage of small houses in 1991 (Section 4) and 1991–2000 log growth in total urban households and low- vs. high-educated households (Section 5)—are derived from standardized, independently collected decennial IBGE Population Census questionnaires applied uniformly across all Brazilian municipalities.",
+        "rating": "Low",
+        "where_found": "Section 2.1 & 2.4 (PDF pp. 7, 11–13); Section 5 & 5.3 (PDF pp. 28, 33–35)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-analysis plan or pre-registered protocol exists for this 2008 NBER working paper. While the authors transparently report OLS, 2SLS, LIML, counterfactuals (large houses in 1991; small houses in 2000), and unsuccessful/weak robustness checks, the text explicitly notes that choice of the 1991–2000 growth period over 1980–1991, selection between shorter and longer instrument lists and distance-to-Sao-Paulo vs. latitude, and selection of inverse-density spatial weights were guided in part by empirical specification tests (first-stage strength, overidentification/orthogonality tests, and statistical significance).",
+        "rating": "Moderate",
+        "where_found": "Section 4.1.1 (PDF pp. 23–24); Section 5.1.2 & fn. 15 (PDF p. 31); Section 5.2.1 (PDF pp. 32–33)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Legal/institutional mechanism of pre-1988 informal-settlement infrastructure denial",
+        "page": "PDF Page 6, Section 1",
+        "quote": "This gave an opportunistic excuse to deny or limit such provision."
+      },
+      {
+        "criterion": "Primary panel data source across four decennial censuses",
+        "page": "PDF Page 7, Section 2.1",
+        "quote": "We have Brazilian Population Census data for 1970, 1980, 1991 and 2000."
+      },
+      {
+        "criterion": "Proxy operationalization of exclusionary policy via small houses",
+        "page": "PDF Page 12, Section 2.4",
+        "quote": "not service the houses that most migrants and low-educated households are likely to occupy."
+      },
+      {
+        "criterion": "Sensitivity of spatial reaction estimates to weighting matrix choice",
+        "page": "PDF Page 24, Section 4.1.1",
+        "quote": "the choice of W weights, we rely on the inverse density ones suggested by the model."
+      },
+      {
+        "criterion": "Exclusion-restriction concern for geological/insolation instruments",
+        "page": "PDF Page 30, Section 5.1.1",
+        "quote": "An issue is whether these variables meet the exclusion restriction."
+      },
+      {
+        "criterion": "Modest first-stage instrument strength with multiple endogenous variables and urban-area fixed effects",
+        "page": "PDF Page 32, Section 5.2.1",
+        "quote": "this means instruments are not that strong."
+      }
+    ],
+    "overall_narrative_summary": "Feler and Henderson (2008) conduct a non-randomized comparative longitudinal/panel econometric evaluation across 351 urban Minimum Comparable Areas (MCAs) in 55 multi-locality Brazilian urban areas (1970–2000 IBGE Censuses), examining (1) strategic municipal under-provision of central piped water to small (1–3 room) houses in 1991 using urban-area fixed effects, lagged OLS, and spatial lag/error MLE, and (2) the causal effect of 1991 small-house water servicing on 1991–2000 urban household growth and educational composition using 2SLS and LIML instrumental variables (porous geology, insolation interactions, and 1970 historical census/market-access variables). Appraised with ROBINS-I, overall risk of bias is Serious, driven by two Serious-risk domains: D1 (Confounding) and D3 (Classification of interventions). Specifically, deliberate exclusionary policy is not directly measured from municipal ordinances or utility refusal records but is proxied ecologically by census piped-water coverage among all 1–3 room dwellings (which conflates intentional exclusion with rapid-growth infrastructure backlogs); furthermore, in the IV growth regressions, geological and historical 1970 instruments face plausible exclusion-restriction violations and only modest multi-endogenous first-stage strength (partial F ~ 13, dropping to 6.2 when water coverage of untitled homes is used), while spatial reaction-function estimates are sensitive to weight-matrix specification. Strengths include harmonized MCA boundaries preventing municipal-split attrition (Low risk in D5), standardized decennial census outcome measurement (Low risk in D6), and informative falsification checks (1991 large houses and post-democratization 2000 small houses). Note that in the provided PDF text extraction, full prose is available on PDF pp. 1–38 and 47, whereas end-of-paper table/figure pages (PDF pp. 39–46, 48, 50) are blank/unextracted.",
+    "overall_rating": "Serious",
+    "paper_read": "partial_or_scan",
+    "study_design_identified": "Non-randomized comparative longitudinal/panel econometric policy evaluation using spatial reaction-function regressions (lagged OLS and spatial autoregressive/error MLE) and instrumental-variables (2SLS and LIML) regressions with urban-area fixed effects across harmonized Brazilian localities (1970–2000 decennial censuses)",
+    "study_id": "S121",
+    "where_found_summary": "Abstract (PDF p. 2); Section 1 Introduction (PDF pp. 3–6); Section 2 Urbanization and Public Infrastructure in Brazil, Data, Informal Sector, Servicing, and Land-Use Regulations (PDF pp. 6–14); Section 3 Conceptualizing Exclusionary Behavior (PDF pp. 14–20); Section 4 Determinants of Locality Infrastructure Servicing (PDF pp. 20–28); Section 5 Effect of Service Provision on Locality Growth and Population Composition, Instruments, and Results (PDF pp. 28–35); Section 6 Conclusions (PDF pp. 35–36); Appendix A Rent Hedonics prose (PDF p. 47). Note: Table and figure pages at PDF pp. 39–46, 48, and 50 contain only page numbers in text extraction.",
+    "why_tool_chosen": "The study evaluates the determinants and causal population-growth/composition impacts of municipal public water-servicing policy across Brazilian localities over 1980–2000 using comparative panel/longitudinal fixed-effects regressions, spatial reaction models, and 2SLS/LIML instrumental variables. Under RISK_OF_BIAS.md §1, non-randomized comparative longitudinal/panel and instrumental-variables policy evaluations map directly to ROBINS-I."
+  }
+}

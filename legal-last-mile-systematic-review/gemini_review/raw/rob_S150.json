@@ -1,0 +1,346 @@
+{
+  "study_id": "S150",
+  "order": 20,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "17beec22c307d5a40ca9746b253cc3265da3fce64720f409ce75f42e172189a5",
+  "input_text_sha256": "f5395a58823934e4ca68bb8fd213dd6741e5a8cd3cd0089b0f25d247e7ab0e78",
+  "prompt_sha256": "24b4b40094ec276cd116a8852157197d8cc33172dfee74ba8497bb9e0a07a6aa",
+  "started_at": "2026-11-19T01:46:47.486901+00:00",
+  "completed_at": "2026-11-19T01:48:27.381921+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S150\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S150\n- Record ID: R3C7BDCAC160F\n- Citation string: Wardhana YMA, Yoanita E, Sutjiningsih D (2025). Financing Rural Water Utilities: Mitigating Risks to Clean Water Access. Water Conservation & Management 9(3):568-573.\n- DOI: 10.26480/wcm.03.2025.568.573\n- Retrieval status: retrieved_oa_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f5395a58823934e4ca68bb8fd213dd6741e5a8cd3cd0089b0f25d247e7ab0e78) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=47516, sha256=f5395a58823934e4ca68bb8fd213dd6741e5a8cd3cd0089b0f25d247e7ab0e78]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / No information — Cross-sectional AHP questionnaire and stakeholder interview study; although data are reported for the eight RWS meeting purposive eligibility criteria, the paper provides no information on how many individual respondents or institutional informants were invited versus participated or whether any AHP pairwise matrices were excluded for inconsistency or missingness (PDF p. 3, Sections 2.4-2.5).",
+      "confounding": "High concern (not controlled) — Descriptive multi-criteria decision analysis (AHP) and qualitative case study of N = 8 purposively selected RWS in a single subdistrict with no comparator group, causal identification design, or adjustment for confounding contextual variables such as village income, hydrogeological source conditions, utility scale, or prior subsidy history (PDF pp. 3-4, Sections 2.3-3).",
+      "legal_measurement_quality": "Weak — Legal and institutional constraints (specifically the lack of formal legal entity status of community-managed RWS preventing access to formal bank credit and forcing reliance on personal guarantees) emerge only as unquantified narrative assertions from interviews, without citing governing Indonesian legal instruments or systematically coding the legal form/registration status of the eight sampled RWS (PDF pp. 3-4, Section 3).",
+      "measurement_bias": "Moderate to high concern — Quantitative financing priority weights were elicited via standardized Saaty pairwise comparisons in AHP-OS with strong internal consistency (CR = 0.001702 and 0.00482; PDF pp. 3-4, Tables 1-2), but reflect subjective respondent preferences rather than audited financial or operational metrics, while qualitative interview instruments and coding procedures are completely undocumented (PDF p. 3, Sections 2.4-2.5).",
+      "outcome_measurement_quality": "Weak — Water access, service continuity, water quality, and full cost recovery are not empirically measured; the study's quantitative output is subjective stakeholder preference ranking across four financing schemes (community, private, grant, and debt financing), paired with unverified narrative statements about pump/pipeline failures and consensus-based tariffs (PDF pp. 3-4, Section 3).",
+      "reporting_bias": "Moderate concern — No study protocol or pre-registration is reported; top-level criteria and financing-alternative AHP results are presented (Tables 1-2, Figure 1), but sub-criteria pairwise comparison matrices/consistency ratios, questionnaire items, interview guides, participant counts, and verbatim interview evidence are omitted, and Table 1 contains inconsistent decimal formatting (PDF pp. 3-4, Section 3).",
+      "selection_bias": "High concern — Purposive sampling restricted the AHP sample to eight active RWS in Piyungan Subdistrict meeting strict survivorship and performance thresholds (>=5 years operating, primary potable supply, >=50% connection capacity with expansion potential, and prior experience with alternative financial services; PDF p. 3, Section 2.4), systematically excluding defunct or struggling RWS despite interview evidence that several Bantul RWS had ceased operations, while omitting the total RWS sampling frame and respondent roles per utility."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The study clearly states its objective to analyze how social, economic, and environmental criteria interact to determine priority financing mechanisms supporting the long-term sustainability of community-based rural water utilities (RWS) in Piyungan Subdistrict, Bantul Regency.",
+        "rating": "Yes",
+        "where_found": "PDF p. 1 (Abstract); PDF p. 2 (Section 1, final paragraph)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Structured AHP pairwise-comparison questionnaires with eight active RWS entities combined with interviews with RWS stakeholders, the Association of Bantul RWS, and the Village and Community Empowerment Office directly address criteria prioritization and contextual financing barriers.",
+        "rating": "Yes",
+        "where_found": "PDF p. 1 (Abstract); PDF p. 3 (Sections 2.4, 2.5, and 3)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Qualitative interviews with local RWS managers, the district RWS association, and local government empowerment officials are appropriate to uncover institutional, legal, operational, and credit-access constraints underlying financing preferences.",
+        "rating": "Yes",
+        "where_found": "PDF p. 1 (Abstract); PDF p. 3 (Sections 2.4 and 3)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although the paper mentions structured interviews with eight RWS entities and interviews with the Association of Bantul RWS, the Village and Community Empowerment Office, and stakeholders, it provides no interview guide, informant counts, interview duration, recording method, or field note/transcription procedures.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 1 (Abstract); PDF pp. 3-4 (Sections 2.4 and 3)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Section 2.5 specifies only the quantitative AHP-OS mathematical aggregation; no qualitative coding framework, thematic analysis process, or analytical audit trail is described to show how interview findings were derived.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 3 (Sections 2.4, 2.5, and 3)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Qualitative claims regarding RWS ceasing operations due to pump/pipeline repair costs, consensus-based tariffs falling below full cost recovery, lack of legal status, and loans secured by personal guarantees are presented purely as authorial summaries without a single verbatim quote, informant attribution, or documentary table.",
+        "rating": "No",
+        "where_found": "PDF pp. 3-4 (Section 3)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "While the narrative themes align substantively with the study's financing conclusions, the complete omission of qualitative data collection and analytical procedures makes it impossible to verify methodological coherence across qualitative stages.",
+        "rating": "Can't tell",
+        "where_found": "PDF pp. 3-4 (Sections 2.4, 2.5, and 3)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Purposive criterion sampling targeted established (>=5 years), functioning RWS serving >=50% connection capacity with expansion potential and prior experience accessing alternative financial services so respondents had practical knowledge to compare post-construction financing options.",
+        "rating": "Yes",
+        "where_found": "PDF p. 3 (Section 2.4)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative descriptive 4.2: Is the sample representative of the target population under study?",
+        "justification": "Restricting the AHP sample to eight high-functioning, established RWS with prior alternative finance experience in one subdistrict introduces severe survivorship selection bias—excluding failed or struggling utilities that ceased operations—and the paper reports neither the total number of RWS in Piyungan/Bantul nor how many individuals per RWS completed questionnaires.",
+        "rating": "No",
+        "where_found": "PDF p. 3 (Sections 2.3, 2.4, and 3)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative descriptive 4.3: Are the measurements appropriate?",
+        "justification": "The three-tier AHP hierarchy (social, economic, and environmental criteria and sub-criteria grounded in the FIETS framework) and pairwise comparison elicitation via the validated AHP-OS web tool are appropriate for multi-criteria preference ranking.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 2-3 (Sections 2.1, 2.2, and 2.5; Picture 1)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "While Section 2.4 indicates eight RWS met the purposive selection parameters and the Abstract states data were collected with eight RWS entities, the authors do not report the number of individual respondents invited, individual-level participation rates, or whether any incomplete/inconsistent questionnaires were excluded.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 1 (Abstract); PDF p. 3 (Sections 2.4 and 2.5)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Geometric mean aggregation of pairwise comparisons, priority vector calculation, consistency ratios (CR = 0.001702 for main criteria and CR = 0.00482 for alternatives, well under the 0.10 threshold), and group consensus indices (85.8% and 81%) in AHP-OS are appropriate for descriptive AHP prioritization, despite minor decimal formatting errors in Table 1 and omitted sub-criteria matrices.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-4 (Section 2.5; Section 3, Tables 1-2 and Figure 1)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Although Section 2.4 cites Palinkas et al. (2015) on purposeful sampling in mixed-method research and pairs structured interviews with AHP questionnaires, the authors provide no explicit justification for why combining qualitative interviews and quantitative AHP was necessary.",
+        "rating": "No",
+        "where_found": "PDF p. 1 (Abstract); PDF p. 3 (Sections 2.4 and 2.5)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Section 3 integrates quantitative AHP priority weights with qualitative interview insights from RWS managers, the Association of Bantul RWS, and local government officials to explain the rankings and construct a lifecycle-phased financing model (Picture 2).",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-4 (Section 3, Tables 1-2, Figure 1, and Picture 2)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "The integrated discussion coherently explains why community financing leads (62%) while debt ranks last (11.4%)—linking preference weights to community ownership, lack of formal legal entity status, and reliance on personal loan guarantees—to motivate phased grant, community, and blended private/debt financing.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-4 (Section 3 and Section 4)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "The study explicitly addresses the tension between respondents' strong quantitative preference for community financing (62%) and qualitative findings showing that consensus-set community tariffs fail to recover full costs or fund major capital repairs/expansion, proposing blended financing and institutional/legal reforms to resolve this gap.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-4 (Section 3)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "The qualitative component fails core qualitative reporting and substantiation standards (no interview guide, coding method, or verbatim evidence), and the quantitative descriptive component suffers from survivorship selection bias in a tiny purposive sample (N = 8 utilities) and unreported individual respondent counts.",
+        "rating": "No",
+        "where_found": "PDF pp. 3-4 (Sections 2.4, 2.5, and 3)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods primary data collection (structured interviews + questionnaires with 8 RWS)",
+        "page": "PDF Page 1, Abstract",
+        "quote": "questionnaires with eight RWS entities meeting specific performance and"
+      },
+      {
+        "criterion": "Purposive sampling strategy for RWS selection",
+        "page": "PDF Page 3, Section 2.4 Interviews and Questionnaires",
+        "quote": "Purposive sampling approach will be used to determine the RWS to be"
+      },
+      {
+        "criterion": "Sample size of 8 eligible RWS in Piyungan Subdistrict",
+        "page": "PDF Page 3, Section 2.4 Interviews and Questionnaires",
+        "quote": "According to these parameters, there are eight RWS in Piyungan"
+      },
+      {
+        "criterion": "Quantitative AHP pairwise comparison elicitation via AHP-OS",
+        "page": "PDF Page 3, Section 2.5 Analysis Method",
+        "quote": "Questionnaire inputs were carried out through AHP-OS, a web-based AHP"
+      },
+      {
+        "criterion": "Survivorship bias / qualitative interview evidence of failed RWS outside sampled active utilities",
+        "page": "PDF Page 3, Section 3 Result and Discussion",
+        "quote": "have ceased operations due to their inability to fund repairs for pumps and"
+      },
+      {
+        "criterion": "Qualitative institutional/legal finding on lack of RWS legal status limiting external credit",
+        "page": "PDF Page 4, Section 3 Result and Discussion",
+        "quote": "risks: the lack of legal status for most RWS’s and their weak financial"
+      }
+    ],
+    "overall_narrative_summary": "Study S150 (Wardhana et al., 2025) is a convergent primary mixed-methods case study examining post-construction financing preferences for community-based rural water utilities (RWS / SPAM Perdesaan) in Piyungan Subdistrict, Bantul Regency, Indonesia. It combines a quantitative descriptive Analytic Hierarchy Process (AHP) pairwise-comparison questionnaire administered via AHP-OS across eight purposively selected active RWS entities with qualitative interviews involving RWS stakeholders, the Association of Bantul RWS, and the Village and Community Empowerment Office. Appraised under the MMAT (2018), overall methodological concern is high because overall quality cannot exceed the weakest component (5.5 = No). While the AHP component defines clear eligibility criteria (4.1 = Yes), uses literature-grounded FIETS hierarchy measures (4.3 = Yes), and demonstrates high internal consistency (CR = 0.001702 and 0.00482) and consensus (81%-85.8%) (4.5 = Yes), it suffers from pronounced survivorship selection bias by restricting the sample to eight long-standing, relatively successful utilities with prior alternative financing experience while excluding defunct utilities (4.2 = No), and omits individual respondent counts and response rates (4.4 = Can't tell). The qualitative component is substantially weaker: interview guides, informant counts, and qualitative coding procedures are entirely unreported (1.2, 1.3, 1.5 = Can't tell), and substantive claims—including that most RWS lack formal legal status to access bank loans and set tariffs below full cost recovery via community consensus—are asserted without verbatim quotes or systematic empirical documentation (1.4 = No). Although quantitative rankings and qualitative institutional insights are thoughtfully integrated to propose a lifecycle-phased financing strategy (5.2, 5.3, 5.4 = Yes), no methodological rationale for mixed methods is stated (5.1 = No), and neither legal status nor water-access outcomes are objectively measured.",
+    "overall_rating": "High methodological concern (per MMAT 2018 guidance, no numeric score is computed and overall quality cannot exceed the weakest component: qualitative component has 1 No [1.4] and 3 Can't tell [1.2, 1.3, 1.5] due to absent interview/coding protocols and unsubstantiated narrative claims; quantitative descriptive component has 1 No [4.2 survivorship selection bias in N=8 purposive sample] and 1 Can't tell [4.4]; mixed-methods integration has 2 No [5.1 rationale, 5.5 adherence to component quality criteria])",
+    "paper_read": "full text",
+    "study_design_identified": "Convergent mixed-methods case study combining quantitative descriptive Analytic Hierarchy Process (AHP) pairwise-comparison questionnaires (N = 8 purposively sampled rural water utilities) with qualitative stakeholder interviews",
+    "study_id": "S150",
+    "where_found_summary": "Research aims and mixed data collection overview: PDF p. 1 (Abstract) and p. 2 (Section 1). AHP conceptual framework and financing alternatives: PDF pp. 2-3 (Sections 2, 2.1, and 2.2). Study site context (Piyungan Subdistrict, Bantul Regency): PDF p. 3 (Section 2.3). Purposive sampling criteria (N = 8 RWS) and interview/questionnaire design: PDF p. 3 (Section 2.4). AHP-OS pairwise comparison analysis and consistency thresholds: PDF p. 3 (Section 2.5, Picture 1). Quantitative AHP priority results and qualitative stakeholder interview findings on legal status, tariffs, and lifecycle financing: PDF pp. 3-4 (Section 3, Tables 1-2, Figure 1, Picture 2) and p. 4 (Section 4).",
+    "why_tool_chosen": "The study collects and integrates both primary quantitative descriptive data (structured Analytic Hierarchy Process [AHP] pairwise-comparison questionnaires analyzed via geometric mean priority vectors, consistency ratios, and consensus indices across eight RWS entities) and primary qualitative interview data (interviews with RWS entities, the Association of Bantul RWS, and the Village and Community Empowerment Office, explicitly citing Palinkas et al. 2015 on purposeful sampling in mixed-method research). Because there is no intervention/comparator (ruling out ROBINS-I) and no exposure-outcome analytical regression (making JBI Analytical Cross-Sectional ill-fitting), MMAT (Screening S1-S2, Qualitative 1.1-1.5, Quantitative descriptive 4.1-4.5, and Mixed-methods 5.1-5.5) is the exact matching appraisal instrument."
+  }
+}

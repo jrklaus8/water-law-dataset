@@ -1,0 +1,297 @@
+{
+  "study_id": "S157",
+  "order": 38,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d6bff38df699021ca36a141cbb12ace26e76398463c551ad4e6eb978838f1877",
+  "input_text_sha256": "7e64af7d1d8bf1a608b18eebdbb6266415a8bedcd392f60b09551d2225312f30",
+  "prompt_sha256": "7964064c01332ce40bebbec13ec77dc0638f17df3246359efa97f131dd38553b",
+  "started_at": "2026-11-19T01:56:49.620685+00:00",
+  "completed_at": "2026-11-19T01:58:23.355731+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S157\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S157\n- Record ID: R8C49F531C4D5\n- Citation string: Hutete C, Sibanda MMM, Maramura TC (2023). Water Governance and Social Equity in South African Rural Municipalities: A Case Study of A District Municipality in The Eastern Cape Province. Water Conserv\n- DOI: 10.26480/wcm.01.2023.12.18\n- Retrieval status: retrieved_oa_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 7e64af7d1d8bf1a608b18eebdbb6266415a8bedcd392f60b09551d2225312f30) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60264, sha256=7e64af7d1d8bf1a608b18eebdbb6266415a8bedcd392f60b09551d2225312f30]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / No information: single-cross-section qualitative fieldwork with n=20 interviewees and n=14 focus group participants; the paper provides no information on invited stakeholders who declined participation or withdrew during interviews or focus groups.",
+      "confounding": "Not applicable (qualitative case study with no counterfactual or statistical effect estimation): rival explanations for poor rural water access—such as post-2015 regional drought and dispersed rural topography versus municipal incapacity, unimplemented by-laws, and financial mismanagement—are discussed narratively across stakeholder perspectives rather than controlled quantitatively.",
+      "legal_measurement_quality": "Moderate / descriptive only: the paper maps South Africa's constitutional and municipal water-governance framework (Constitution 1996 Bill of Rights and s. 229, National Water Act 36 of 1998, Water Services Act, Municipal Systems Act 32 of 2000, Municipal Structures Act, MFMA 56 of 2003, Division of Revenue Act, Free Basic Water policy, and the local Rural Household Connection Policy), but contains minor statutory citation inaccuracies (e.g., citing the Water Services Act as 'Act No 1997' and the Municipal Structures Act as 'Act No. 117 of 1997') and evaluates legal/policy implementation qualitatively through informant accounts rather than systematic legal or administrative coding.",
+      "measurement_bias": "Moderate concern: triangulating semi-structured interviews, focus groups, field observation, and official municipal/Auditor-General documents enhances credibility, but interview and focus group guides, language/translation protocols, audio-recording/transcription procedures, and researcher reflexivity are unreported, and ad hoc percentages of respondent views are cited without explicit denominators.",
+      "outcome_measurement_quality": "Weak-to-moderate (perceptual/qualitative with secondary administrative figures): water service equity, availability, and reliability are assessed primarily through stakeholder perceptions and unsystematic field observation in one satellite municipality, supplemented by secondary administrative figures quoted by officials or AGSA reports (e.g., 2% O&M expenditure vs. 8% national standard, 27% revenue collection rate, 3-4 water-carting trucks across 23 wards) rather than direct household or physical service measurements.",
+      "reporting_bias": "Moderate concern / Can't tell: no pre-specified qualitative protocol or coding framework is reported, Section 4 omits all details of how thematic analysis was conducted, and quotations plus occasional respondent percentages are reported selectively by theme.",
+      "selection_bias": "Moderate-to-high concern: purposive sampling targeted knowledgeable municipal officials, councillors, satellite heads, an academic, a Water Board representative (n=20), and community members in two focus groups (n=14) within Amathole District Municipality, but exact inclusion criteria, subgroup sample sizes, community recruitment procedures (including potential municipal gatekeeper influence), and refusal rates are not reported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "Both the Abstract and Section 1 explicitly state the research objective—to examine the factors affecting water governance and social equity in a rural district municipality in the Eastern Cape Province, South Africa, and reflect their effects on water service provision—grounded in post-apartheid service inequalities and human rights commitments.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 1] Abstract; Section 1 (Introduction, final paragraph)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "A constructivist qualitative methodology is well suited to exploring stakeholder experiences, perceptions, and context-specific institutional, governance, and socio-economic barriers to equitable rural water provision.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 2-3] Section 4 (Research Methods)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "A descriptive and explanatory qualitative case study of Amathole District Municipality (identified via document citations and Acknowledgments) appropriately combines institutional and community perspectives with documentary records to examine place-based water governance challenges.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 1, 2-3, 6] Abstract; Section 4 (Research Methods); Acknowledgments"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "Purposive sampling of 20 interview participants (top management officials, councillors, local municipality representatives, satellite heads, academia, and a Water Board representative) and 14 community focus group participants aligns broadly with the study aims, but specific selection criteria, participant counts per category, how rural community members were recruited into the two focus groups, and non-response/refusals are not described.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 2-3] Section 4 (Research Methods)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Was the data collected in a way that addressed the research issue?",
+        "justification": "Multi-method data collection—semi-structured interviews (n=20), two focus group discussions (n=14), participant observation via a field tour in one satellite municipality, and secondary document review (IDP, municipal annual reports, Auditor-General reports)—supports source triangulation, but the paper omits interview/focus group guides, language of conduct/translation, recording and transcription procedures, observation protocols, and discussion of data saturation.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 2-3] Section 4 (Research Methods)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "The paper contains no discussion of researcher reflexivity, positionality, potential bias in purposive participant selection or observation, or power dynamics between the researchers, municipal gatekeepers/officials, and rural community members.",
+        "rating": "No",
+        "where_found": "[PDF Pages 2-3] Section 4 (Research Methods)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "The authors report observing participant anonymity and confidentiality, securing gatekeeper permission from the municipality, and obtaining formal ethical approval from the University of Fort Hare Research Ethics Committee, which assessed study risks and harms (though individual informed-consent procedures are not detailed).",
+        "rating": "Yes",
+        "where_found": "[PDF Page 3] Section 4 (Research Methods, final paragraph)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "Section 4 reports no analytical procedure whatsoever (no mention of transcription, coding framework, thematic derivation steps, software, or multiple coders). Section 5 merely states that findings are organized around emergent themes illustrated with verbatim quotes, and occasionally cites respondent percentages (e.g., 60%, 50%, 65%) without clarifying denominators or coding rules, leaving analytical rigor unverifiable despite triangulation with AGSA/IDP documents and brief mention of dissenting views.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 2-5] Section 4 (Research Methods); Section 5 (Results and Discussions)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "Findings are clearly structured across four thematic domains (environmental, institutional capacity/governance, socio-economic, and economic/financial factors), supported by participant quotations from multiple stakeholder roles, corroborated against Auditor-General and municipal planning documents, and synthesized directly against the research objective in the Conclusions.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 3-6] Section 5 (Results and Discussions, §§5.1-5.4); Conclusions"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "The study provides moderately valuable, context-specific empirical documentation of how municipal skills deficits, unimplemented by-laws (such as the Rural Household Connection Policy), aging and vandalized infrastructure, illegal connections, low revenue collection, and grant dependence interact to undermine South Africa's constitutional right to water in rural Eastern Cape municipalities, although thin reporting of recruitment, data collection, and coding procedures limits methodological transparency and transferability.",
+        "rating": "Moderately valuable context-specific case study (narrative assessment per CASP Q10)",
+        "where_found": "[PDF Pages 1, 3-6] Section 1 (Introduction); Section 5 (Results and Discussions); Conclusions"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design and sampling method",
+        "page": "[PDF Page 1] Abstract",
+        "quote": "The study adopted a qualitative case study research design"
+      },
+      {
+        "criterion": "Focus group recruitment and sample size",
+        "page": "[PDF Page 3] Section 4 (Research Methods)",
+        "quote": "The study also engaged in two focus group discussions (n=14)"
+      },
+      {
+        "criterion": "Ethical review and gatekeeper approval",
+        "page": "[PDF Page 3] Section 4 (Research Methods)",
+        "quote": "approval was granted by the University of Fort Hare"
+      },
+      {
+        "criterion": "Analytical reporting limited to emergent themes and verbatim quotes",
+        "page": "[PDF Page 3] Section 5 (Results and Discussions)",
+        "quote": "participants' perceptions, the researchers used verbatim quotes."
+      },
+      {
+        "criterion": "Policy and by-law non-implementation finding",
+        "page": "[PDF Page 3] Section 5.2.1 (Lack of Policy Implementation and Political Interference)",
+        "quote": "Our policy is ok; we have managed to set up good by-laws and regulations."
+      },
+      {
+        "criterion": "Secondary administrative indicator cited in interviews (revenue collection)",
+        "page": "[PDF Page 5] Section 5.4.2 (Municipal Financing: Insufficient Revenues)",
+        "quote": "Our average collection rate is 27% against the National standard"
+      }
+    ],
+    "overall_narrative_summary": "Although labeled 'REVIEW ARTICLE' in the journal header, Study S157 (Hutete et al., 2023; derived from Hutete's 2022 Master's dissertation) is a primary qualitative case study of water governance and social equity in Amathole District Municipality, Eastern Cape Province, South Africa, combining 20 semi-structured interviews, two community focus group discussions (n=14), a field observation tour in one satellite municipality, and documentary review (municipal IDP, annual reports, and Auditor-General reports). Appraised with the CASP Qualitative Checklist, the study demonstrates clear research aims (Q1: Yes), an appropriate qualitative constructivist methodology and case study design (Q2: Yes; Q3: Yes), documented university ethics committee and municipal gatekeeper approval with participant anonymity (Q7: Yes), and clearly structured, multi-perspective thematic findings corroborated by official audit documents (Q9: Yes). However, methodological concern is moderate overall (5 Yes, 3 Can't tell, 1 No on Q1-Q9) because recruitment details and community selection procedures are underspecified (Q4: Can't tell), interview/focus group guides, language/translation, and recording/transcription procedures are omitted (Q5: Can't tell), researcher reflexivity and power relations are entirely unaddressed (Q6: No), and the Methods section provides no explanation of how qualitative data were coded or how occasional respondent percentages were derived (Q8: Can't tell).",
+    "overall_rating": "Moderate methodological concern (5 Yes, 3 Can't tell, 1 No on Q1-Q9)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary qualitative case study (semi-structured interviews, focus group discussions, participant observation, and document analysis)",
+    "study_id": "S157",
+    "where_found_summary": "[PDF Page 1] Abstract and Section 1 (study objective and design overview); [PDF Page 2] Section 3 (constitutional and statutory water governance context) and Section 4 (constructivist paradigm, qualitative case study design, purposive sampling, n=20 interviews); [PDF Page 3] Section 4 (n=14 focus groups, field tour observation, secondary documents, ethics approval) and Section 5 / §§5.1-5.2.1 (thematic presentation and policy implementation findings); [PDF Pages 4-6] §§5.2.2-5.4.3, Conclusions, and Acknowledgments (institutional, socio-economic, and financial findings; identification of Amathole District Municipality Masters dissertation source).",
+    "why_tool_chosen": "Despite the journal banner reading 'REVIEW ARTICLE', Section 4 explicitly reports primary qualitative empirical fieldwork—semi-structured interviews (n=20), two focus group discussions (n=14), participant observation, and documentary triangulation—within an inductive constructivist qualitative case study design. Occasional percentages in Section 5 merely summarize qualitative interviewee agreement rather than constituting a separate quantitative survey component, making the CASP Qualitative Checklist (rather than MMAT or AMSTAR 2) the exact matching instrument under RISK_OF_BIAS.md §1."
+  }
+}
