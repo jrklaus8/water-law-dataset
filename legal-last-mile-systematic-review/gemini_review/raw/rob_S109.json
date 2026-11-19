@@ -1,0 +1,313 @@
+{
+  "study_id": "S109",
+  "order": 54,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "37d975f02ad644aad313d640c98d13637cad2ecb0b0063b94643b9ce7abab481",
+  "input_text_sha256": "7babbb73edc142210353c4e50905c6444a87f77eb28176c3796d39c1293dc90a",
+  "prompt_sha256": "57a3cbfe03587d7ffbefbb941bde4dbf9255db079dcce379551e2a924b067016",
+  "started_at": "2026-11-19T02:03:59.130391+00:00",
+  "completed_at": "2026-11-19T02:06:21.244053+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S109\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S109\n- Record ID: R500A70E3BC4E\n- Citation string: Rocha Neto JM (2022). O desafio do federalismo brasileiro no saneamento básico [The challenge of Brazilian federalism in basic sanitation]. Interações 23(2):441-456.\n- DOI: 10.20435/inter.v23i2.2998\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 7babbb73edc142210353c4e50905c6444a87f77eb28176c3796d39c1293dc90a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=53795, sha256=7babbb73edc142210353c4e50905c6444a87f77eb28176c3796d39c1293dc90a]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell: No longitudinal cohort or panel tracking of units over time; however, substantial unaddressed municipal non-coverage/non-response exists in the cited 2017 municipal sanitation plan survey (3,905 municipalities surveyed out of 5,570 total Brazilian municipalities).",
+      "confounding": "High concern: Structural confounders—municipal population size, rural isolation, low human development, weak local tax bases, and macroeconomic fiscal crisis—are discussed narratively via secondary literature, but no statistical, design-based, or comparative controls isolate federalist legal-institutional effects from socioeconomic determinants.",
+      "legal_measurement_quality": "Adequate: Core constitutional, statutory, and regulatory instruments (1988 Federal Constitution Art. 23, Law 11.445/2007, Law 11.107/2005, EC 95/2016, Portaria 171/2014 PLANSAB, Portaria 141/2005, MP 868/2018, PL 4.162/2019) and federal agency mandates are substantively described, though minor statutory citation slips appear (e.g., 'Lei n. 11.447/2007' on PDF p. 11) and specific decree numbers postponing municipal planning deadlines are omitted in Figura 1 and the reference list.",
+      "measurement_bias": "High concern: Secondary administrative metrics from SNIS (2017), SIGA Brasil/SIGPLAN, and SIOP (2020) are presented in high-level charts without variable codes, budget rubric definitions, price deflation details (nominal vs. real expenditure in Gráfico 4), or data validation; Gráfico 2 labels solid-waste (PNRS) instruments while the text discusses basic sanitation plans, and the author cites Nirazawa and Oliveira (2018) regarding municipal sanitation data unreliability.",
+      "outcome_measurement_quality": "Weak: Outcomes (state-level treated sewage coverage, municipal management instruments, federal program proliferation, and 2015-2019 budget trends) rely on unvalidated secondary administrative aggregates without underlying numerical tables, indicator formulas, or adjustment for incomplete municipal reporting.",
+      "reporting_bias": "High concern: No research protocol, pre-specified indicator set, or systematic search/selection strategy is reported; administrative series, audit findings, and secondary studies are selectively marshaled to support the narrative argument.",
+      "selection_bias": "High concern: Purposive, non-systematic selection of literature, official documents, and descriptive administrative data years (SNIS 2017; SIOP 2015-2019), alongside unexamined municipal coverage gaps (3,905 surveyed vs. 5,570 total municipalities in SNIS)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Accurately identifies and discusses the core constitutional and statutory framework governing Brazilian basic sanitation and federalism (CF/88 Art. 23, Law 11.445/2007, Law 11.107/2005, Portaria 171/2014 PLANSAB, Portaria 141/2005, EC 95/2016, Lei de Responsabilidade Fiscal, MP 868/2018, PL 4.162/2019, and TCU Acórdão 593/2015). Rated adequate rather than strong because of minor citation inaccuracies (e.g., referring to Law 11.445/2007 as 'Lei n. 11.447/2007' on PDF p. 11) and attributing deadline postponements in Figura 1 generically to 'Decretos federais' without citing the specific decree numbers.",
+        "rating": "adequate",
+        "where_found": "[PDF Page 1] Resumo; [PDF Page 5] Section 3; [PDF Page 7] Figura 1; [PDF Pages 10-13] Section 4; [PDF Pages 15-16] Referências"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly delineates the three-tier Brazilian federation (Union, states/Distrito Federal, and municipalities) and specifies exact institutional and demographic jurisdiction rules across federal bodies (Ministério das Cidades for municipalities >50,000 inhabitants, metropolitan regions, RIDEs, and consortia >150,000; FUNASA for municipalities <50,000 inhabitants, quilombos, and rural settlements; Ministério da Saúde for indigenous villages; CODEVASF for São Francisco and Parnaíba basins; and Ministério do Meio Ambiente).",
+        "rating": "strong",
+        "where_found": "[PDF Pages 1-2] Resumo & Section 1; [PDF Pages 6-9] Section 3; [PDF Pages 11-12] Section 4"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Conceptually defines the institutional-legal exposure—decentralized municipal titularity and planning obligations paired with fragmented federal agency mandates and fiscal-borrowing constraints—clearly in qualitative policy terms, though not operationalized as a formal quantitative treatment variable.",
+        "rating": "adequate",
+        "where_found": "[PDF Pages 2-5] Sections 1-2; [PDF Pages 8-12] Sections 3-4"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Identifies concrete sectoral governance and service outcomes (state household sanitation coverage, presence of municipal sanitation/solid-waste plans, councils, and funds, deadline extensions, federal program counts, and federal budget allocations), though Gráfico 2 conflates PNRS solid-waste instruments with basic sanitation planning discussed in the text and precise indicator formulas are omitted.",
+        "rating": "adequate",
+        "where_found": "[PDF Pages 6-9] Section 3 (Gráficos 1-3, Figura 1); [PDF Page 11] Section 4 (Gráfico 4)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "No dedicated methods section defines sampling frames, time horizons, or inclusion rules for literature, official reports, or administrative records; PDF p. 6 cites a 2017 survey of 3,905 municipalities while PDF p. 12 cites 5,570 total municipalities without explaining sample coverage or missingness.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 1-3] Resumo & Section 1; [PDF Page 6] Section 3; [PDF Page 12] Section 4"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Literature, statutes, audit reports, and descriptive charts are selected purposively to illustrate federative asymmetries without a documented search strategy, screening criteria, or safeguards against selective evidence inclusion.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 2-3] Section 1; [PDF Pages 6-13] Sections 3-4"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "While administrative data sources are named (SNIS 2017, SIGA Brasil, SIGPLAN/ME, SIOP 2020), the article does not specify SNIS indicator codes, SIOP budget functions/subfunctions, whether 2015-2019 budget figures are nominal or inflation-adjusted, or how federal sanitation programs were counted.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 6-9] Section 3 (Gráficos 1-3); [PDF Page 11] Section 4 (Gráfico 4); [PDF Pages 13-14] Section 5"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Relies entirely on narrative institutional analysis and univariate/bivariate descriptive administrative summaries without any counterfactual design, comparative control group, or statistical modeling to identify causal effects of federalist legal arrangements on municipal sanitation deficits.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 2-3] Section 1; [PDF Pages 6-13] Sections 3-4"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Major structural confounders—small population size, low local tax capacity, rural isolation, low human development, and national fiscal contraction—are recognized in the narrative text via secondary sources (e.g., IPEA 2010; Mendes 2012), but there is no empirical adjustment or stratification isolating institutional design from socioeconomic capacity.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 3, 5] Section 2; [PDF Pages 7-8] Section 3; [PDF Pages 10-12] Section 4"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides a rich, well-informed institutional account of Brazilian intergovernmental relations, covering FPM transfer dependence, electoral disincentives for high-O&M network investments, overlapping mandates across five federal agencies, TCU oversight pressures, inter-municipal consortia rules, and failed capacity-building efforts (GESPÚBLICA / Núcleo Setorial Saneamento).",
+        "rating": "strong",
+        "where_found": "[PDF Pages 3-5] Section 2; [PDF Pages 6-13] Sections 3-4"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Although underlying federal portals (SNIS, SIOP, SIGA Brasil) are publicly accessible, exact replication is hindered by omitted query dates/parameters (beyond a generic April 1, 2020 access date for SIOP), unspecified budget rubrics, unnumbered federal decrees in Figura 1, and absence of tabular numerical values in the text.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 6-9] Section 3; [PDF Page 11] Section 4; [PDF Page 16] Referências"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No coding protocol or classification criteria are reported for how the author compiled the timeline of federal deadline-extension decrees (Figura 1), categorized federal agencies and sanitation programs (Gráfico 3), or aggregated sanitation budget allocations (Gráfico 4).",
+        "rating": "weak",
+        "where_found": "[PDF Pages 2-3] Section 1; [PDF Pages 7, 9] Section 3; [PDF Page 11] Section 4"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Contains no reflexivity statement addressing the author's institutional perspective or potential interpretive framing bias regarding federal versus municipal responsibility in public policy implementation.",
+        "rating": "weak",
+        "where_found": "[PDF Pages 1-3] Section 1; [PDF Pages 13-16] Section 5 & Sobre o autor"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D5 Sampling transparency / D6 Selection process (narrative review plus consultation of official documents and databases without systematic protocol)",
+        "page": "[PDF Page 2] Section 1 INTRODUÇÃO",
+        "quote": "Para elaboração do arƟ go, foi necessária uma revisão de literatura que apoiou o debate,"
+      },
+      {
+        "criterion": "D4 Outcome definition / D5 Sampling transparency (descriptive SNIS/Ministry of Cities coverage across 3,905 surveyed municipalities)",
+        "page": "[PDF Page 6] Section 3 BRASIL: UM COMPLEXO QUADRO DE ANÁLISE PARA O SANEAMENTO",
+        "quote": "Ministério das Cidades, apontam que apenas 43% dos 3.905 municípios que foram pesquisados"
+      },
+      {
+        "criterion": "D2 Jurisdictional specificity / D10 Institutional context (fragmentation of federal sanitation programs across agency mandates)",
+        "page": "[PDF Page 9] Section 3 BRASIL: UM COMPLEXO QUADRO DE ANÁLISE PARA O SANEAMENTO",
+        "quote": "Essa profusão de programas está mais associada a mandatos institucionais do que"
+      },
+      {
+        "criterion": "D1 Legal source accuracy (discussion of statutory municipal titularity obligations with minor typo citing Law 11.447/2007 instead of 11.445/2007)",
+        "page": "[PDF Page 11] Section 4 QUAL O FUTURO DO SANEAMENTO NO BRASIL?",
+        "quote": "aspectos desaﬁ adores que já estavam na Lei n. 11.447/2007, como os planos, com suas metas"
+      },
+      {
+        "criterion": "D7 Measurement transparency / Outcome measurement limitations (acknowledged data unavailability and reliability limits in Brazilian municipal sanitation indicators)",
+        "page": "[PDF Page 13] Section 5 CONSIDERAÇÕES FINAIS",
+        "quote": "Nirazawa e Oliveira (2018), que apontam esse fator limitante, o qual reúne indisponibilidade de"
+      }
+    ],
+    "overall_narrative_summary": "This article is a doctrinal-institutional and descriptive secondary-data case study examining how Brazil's post-1988 federative architecture, fragmented federal agency mandates, and fiscal-regulatory rules constrain municipal implementation of basic sanitation policy. Appraised under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment), its principal strengths lie in jurisdictional specificity (D2: strong) and institutional contextualization (D10: strong), alongside adequate legal source identification (D1: adequate, noting minor statutory citation typos and unnumbered federal decrees in Figura 1) and conceptual exposure/outcome framing (D3, D4: adequate). Conversely, empirical and methodological transparency is weak across sampling (D5), source/data selection (D6), indicator and budget measurement reporting (D7), causal identification (D8), confounding control (D9), replication potential (D11), coding rules (D12), and researcher reflexivity (D13). Descriptive charts from SNIS (2017), SIGA Brasil/SIGPLAN, and SIOP (2015-2019) illustrate structural disparities and federal fragmentation, but cannot support causal inference separating legal-institutional design from underlying municipal fiscal and socioeconomic constraints.",
+    "overall_rating": "Structured non-validated judgment: High methodological concern for empirical/causal inference (strong institutional and jurisdictional context, adequate legal/conceptual framing, weak sampling, measurement, coding, replication, confounding control, and causal identification)",
+    "paper_read": "full text",
+    "study_design_identified": "Doctrinal-institutional policy case study with narrative literature review, statutory/regulatory analysis, and descriptive secondary federal administrative data synthesis (SNIS, SIGA Brasil/SIGPLAN, SIOP)",
+    "study_id": "S109",
+    "where_found_summary": "Methods statement in Resumo ([PDF Page 1]) and Section 1 Introdução ([PDF Pages 2-3]); theoretical federalism review in Section 2 ([PDF Pages 3-5]); statutory definitions, SNIS 2017 descriptive charts, deadline-postponement flowchart, and federal agency mapping in Section 3 ([PDF Pages 5-10]); fiscal rules, PL 4.162/2019 regulatory analysis, SIOP 2015-2019 budget chart, TCU oversight, and capacity-building discussion in Section 4 ([PDF Pages 10-13]); policy recommendations and data limitation caveats in Section 5 ([PDF Pages 13-15]); legal and secondary references in Referências ([PDF Pages 15-16]).",
+    "why_tool_chosen": "The study is a hybrid legal-institutional and descriptive administrative-data analysis of Brazilian federal sanitation governance—combining constitutional/statutory interpretation (CF/88 Art. 23, Law 11.445/2007, Law 11.107/2005, EC 95/2016, MP 868/2018, PL 4.162/2019) and institutional mapping with descriptive secondary statistics from federal databases (SNIS, SIGA Brasil/SIGPLAN, SIOP). It has no randomized or quasi-experimental intervention comparator (excluding RoB 2 and ROBINS-I), no analytical cross-sectional or cohort statistical model (excluding JBI checklists), no primary qualitative fieldwork (excluding CASP and MMAT), and no systematic review protocol (excluding AMSTAR 2), making the Legal Institutional Evidence Appraisal Framework the exact matching instrument."
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "study_id": "S189",
+  "order": 8,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1d54253730730feac59f4c7b6b6c0a42540ffaea23a44f5fdd0670cfb6679644",
+  "input_text_sha256": "7c1442d193d516ffec538441e0b61adbc0388389d5e6b66b4c13337400930b8e",
+  "prompt_sha256": "953d5b9d829c9b2258388f1c65c1abf0fd08489bfafc004e814d35a76c52569f",
+  "started_at": "2026-11-19T01:40:31.985647+00:00",
+  "completed_at": "2026-11-19T01:43:58.186354+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S189\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S189\n- Record ID: R23930997D036\n- Citation string: Boisson S, Sosai P, Ray S, Routray P, Torondel B, Schmidt W-P, Bhanja B, Clasen T (2014). Promoting latrine construction and use in rural villages practicing open defecation: process evaluation in con\n- DOI: 10.1186/1756-0500-7-486\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 7c1442d193d516ffec538441e0b61adbc0388389d5e6b66b4c13337400930b8e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=54544, sha256=7c1442d193d516ffec538441e0b61adbc0388389d5e6b66b4c13337400930b8e]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Moderate concern / Can't tell for survey non-response: household counts observed for latrine coverage shifted slightly from n=4,699 in March 2012 to n=4,585 in March 2013 (partly reflecting inconsistent joint-family boundary reporting), response/refusal rates for the 10% household (n=807) and VWSC (n=170) surveys are not reported, and village motivator turnover plus local political unrest produced missing process data for 2 to 13 of the 50 intervention villages across specific mobilisation components.",
+      "confounding": "Low-to-moderate concern for the cluster-randomised 50-vs-50 village comparisons of latrine coverage and household awareness (supported by identical 8% baseline toilet access and similar respondent demographics, though randomization mechanics are deferred to the protocol paper [6]); high concern for the secondary within-intervention village-level linear regressions (Table 4, n=50 villages), which are bivariate unadjusted ecological regressions that do not control for implementing NGO, village poverty/caste composition, severe flooding in 13 villages, political unrest, or local sand-price shocks.",
+      "legal_measurement_quality": "Strong-to-adequate programmatic operationalization: the paper accurately details the formal rules of India's Total Sanitation Campaign (TSC) / Nirmal Bharat Abhiyan (NBA)—including BPL vs APL subsidy eligibility, the June 2011 subsidy increase from INR 2,200 to INR 3,200, VWSC composition mandates, Nirmal Gram Puraskar incentives, and election code-of-conduct halts—and directly tracks de facto street-level deviations from formal guidelines (such as extending subsidies to all households to defuse community conflict and omitting participatory triggering).",
+      "measurement_bias": "Low-to-moderate concern for latrine infrastructure status (assessed independently by trained enumerators via direct household inspection every 6–8 weeks using objective structural criteria, though complicated by strategic household over/under-reporting of joint-family counts); moderate-to-high concern for mobilisation fidelity and awareness measures due to unblinded enumerators, reliance on NGO motivator self-reports and incomplete logbooks, retrospective household/VWSC recall, and absence of direct measurement of actual latrine use.",
+      "outcome_measurement_quality": "Adequate for latrine construction coverage and programme awareness, but weak/absent for latrine use: physical latrine completion was rigorously observed using explicit structural criteria (walls >1.5 m, door, unbroken/unblocked pan, functional pan-pipe-pit connection) and awareness was captured via translated and back-translated questionnaires, whereas actual latrine use/open defecation behaviour was not measured despite appearing in the study title.",
+      "reporting_bias": "Moderate concern: the parent cluster-randomised trial was prospectively registered (NCT01214785) with a published protocol [6], and implementation shortfalls and null associations are candidly reported, but no pre-specified analysis plan is cited for the process evaluation's 13 exploratory ecological regressions (Table 4) and qualitative findings are summarized narratively without systematic coding tables or verbatim quotations.",
+      "selection_bias": "Moderate concern: 100 villages in Puri district were selected with government cooperation and randomly allocated 50:50 to intervention and control arms (sequence generation described in [6]), and 10% household (n=807) and VWSC (n=170) subsamples were randomly selected from village lists in Stata 13; however, sample sizes were logistically determined, survey non-response rates are unreported, absent household heads were replaced by any adult/member >16 years present at the visit, and process documentation missed 2 to 13 intervention villages on several mobilisation items."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The Methods section clearly specifies four explicit objectives for the process evaluation: documenting context, documenting intervention delivery, assessing target population exposure, and exploring associations between household exposure to community mobilisation activities and latrine construction.",
+        "rating": "Yes",
+        "where_found": "PDF Page 2 of 12, Methods, paragraph 1"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Data collected across 6 bimonthly field rounds (document review, NGO motivator interviews, census-level household latrine observations in 50 intervention villages, baseline/follow-up coverage checks in all 100 villages, and 10% random household and VWSC surveys) directly address all four objectives.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 2–3 of 12, Methods, paragraphs 2–4"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Combining documentary review of TSC guidelines, NGO activity logs, meeting notes, and stock/contribution registers with repeated semi-structured interviews of implementing NGO staff and village motivators was appropriate to capture implementation fidelity, adaptations, and contextual barriers.",
+        "rating": "Yes",
+        "where_found": "PDF Page 2 of 12, Methods, paragraphs 2–3"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although bimonthly field visits over one year and translation/back-translation of guides into Oriya are reported, the paper provides almost no detail on semi-structured interview protocols, audio-recording or field-note procedures, or qualitative interviews with ordinary villagers, and notes that motivator logbooks varied substantially in completeness.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 2–3 of 12, Methods; PDF Page 11 of 12, Discussion, paragraphs 3–4"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "The Methods section explains quantitative statistical procedures in Stata 13 but provides no description of how qualitative interview notes and documentary records were organised, coded, or thematically analysed.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 3 of 12, Methods, paragraph 2; PDF Pages 4–7 of 12, Results"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Qualitative explanations of implementation bottlenecks (e.g., BPL subsidy disputes, road-project sand shortages, mason attrition, flooding, election halts) align with quantitative patterns, but zero verbatim interview excerpts or structured qualitative evidence tables are presented to substantiate interpretations.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 4–7 of 12, Results; PDF Pages 9–11 of 12, Discussion"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "While field sources and overarching conclusions cohere logically, the complete omission of qualitative analytic procedures and primary qualitative quotations prevents verification of full methodological coherence from raw qualitative data to interpretation.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 2–3 of 12, Methods; PDF Pages 4–11 of 12, Results and Discussion"
+      },
+      {
+        "domain_id": "2.1",
+        "domain_name": "Quantitative randomized 2.1: Is randomization appropriately performed?",
+        "justification": "The paper states that following a baseline survey, 100 villages were randomly allocated into two study arms (50 intervention, 50 control) and cites the published protocol [6], but does not report the random sequence generation or allocation concealment methods within this manuscript. Within villages, 10% survey subsamples were randomly generated in Stata 13.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 2 of 12, Background, paragraph 2; PDF Pages 2–3 of 12, Methods, paragraphs 4–5"
+      },
+      {
+        "domain_id": "2.2",
+        "domain_name": "Quantitative randomized 2.2: Are the groups comparable at baseline?",
+        "justification": "At baseline (October 2010), household toilet access was identical (8%) in intervention and control villages (Figure 1), and surveyed household respondents in the two arms had comparable age (mean 45 vs 41 years) and female representation (61% vs 56%; Table 2).",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 of 12, Results (Latrine construction); PDF Page 6 of 12, Figure 1; PDF Page 8 of 12, Table 2"
+      },
+      {
+        "domain_id": "2.3",
+        "domain_name": "Quantitative randomized 2.3: Are there complete outcome data?",
+        "justification": "Village-wide latrine observations covered n=4,699 households in March 2012 and n=4,585 in March 2013, and 10% surveys included n=807 households and n=170 VWSC members, but exact non-response/refusal rates are omitted, joint-family reporting caused shifting household denominators, and village-level mobilisation records were missing for 2 to 13 of 50 villages.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 4, 6, 7, 8, 10, 11 of 12, Results, Figure 1, Tables 2–3, and Discussion"
+      },
+      {
+        "domain_id": "2.4",
+        "domain_name": "Quantitative randomized 2.4: Are outcome assessors blinded to the intervention provided?",
+        "justification": "Enumerators were not blinded: although separate from implementing NGOs, they visited the 50 intervention villages every 6–8 weeks to interview NGO motivators, review VWSC logs, and inspect visible latrines and wall paintings, and conducted unblinded household awareness interviews.",
+        "rating": "No",
+        "where_found": "PDF Page 2 of 12, Methods, paragraphs 3–4; PDF Page 11 of 12, Discussion, paragraphs 3–4"
+      },
+      {
+        "domain_id": "2.5",
+        "domain_name": "Quantitative randomized 2.5: Did the participants adhere to the assigned intervention?",
+        "justification": "Both delivery fidelity and uptake fell substantially short of plan: completed latrine coverage reached 51% (66% including unfinished/damaged) after one year against a 90% target; participatory PRA/mapping reached virtually no households (0–6% recall); subsidies were expanded from BPL-only to all households; 30% of VWSC members did not know their role; and 49% of control households had heard of the TSC.",
+        "rating": "No",
+        "where_found": "PDF Pages 4, 7, 8, 9, 10 of 12, Results and Discussion, Tables 2–3"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Grounded in Linnan and Steckler's process evaluation framework, the authors justify combining qualitative implementation documentation with quantitative coverage and exposure surveys so trial health outcomes are not misattributed to the TSC intervention as planned rather than as actually delivered.",
+        "rating": "Yes",
+        "where_found": "PDF Page 2 of 12, Background, paragraph 4 and Methods, paragraph 1"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Qualitative findings from NGO staff/motivator interviews and logs are systematically paired with quantitative latrine trajectories and household/VWSC survey results across fidelity, exposure, and contextual barrier analyses.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4–11 of 12, Results and Discussion"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Integration directly explains key empirical patterns, including why household recall of PRA triggering was near zero (motivators skipped mapping or worked with only 2–3 VWSC members) and why BPL and APL latrine coverage differed by only 7% (implementers extended subsidies to all households to resolve conflict).",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4–7 and 9–11 of 12, Results and Discussion"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative results and qualitative findings adequately addressed?",
+        "justification": "The authors explicitly examine discrepancies between NGO-reported activities and household recall (e.g., mapping reported in 37 villages by motivators vs 6% household awareness) as well as household count discrepancies between NGO registers and enumerator censuses caused by strategic joint-family reporting.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 4–7 and 10–11 of 12, Results and Discussion"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Per MMAT standards, methodological quality is constrained by weaknesses in both strands: the qualitative strand omits coding/analytic procedures and verbatim quotes, while the quantitative strand lacks blinding, omits survey response rates, suffers missing village-level logs, and relies on unadjusted bivariate ecological regressions (Table 4) for within-arm associations.",
+        "rating": "No",
+        "where_found": "PDF Pages 2–3 and 11 of 12, Methods, Table 4, and Discussion"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods data collection combining documentation, surveys, observations, and interviews",
+        "page": "PDF Page 1 of 12, Abstract (Methods)",
+        "quote": "observations, and semi-structured interviews with staff from implementing NGOs and community members."
+      },
+      {
+        "criterion": "Random 10% household sampling across all 50 intervention and 50 control trial clusters",
+        "page": "PDF Page 2 of 12, Methods",
+        "quote": "in each of the 50 control and 50 intervention villages"
+      },
+      {
+        "criterion": "Street-level deviation from formal BPL-targeted TSC subsidy eligibility rules",
+        "page": "PDF Page 10 of 12, Discussion",
+        "quote": "TSC subsidies were provided to all households instead of"
+      },
+      {
+        "criterion": "Strategic household denominator misreporting linked to perceived financial incentives or costs",
+        "page": "PDF Page 11 of 12, Discussion",
+        "quote": "they thought they could receive financial benefits or had to"
+      },
+      {
+        "criterion": "Missingness and non-verifiability of village motivator logbooks",
+        "page": "PDF Page 11 of 12, Discussion",
+        "quote": "information was sometimes missing or it was impossible"
+      },
+      {
+        "criterion": "Core mixed-methods finding on implementation gap under formal TSC guidelines",
+        "page": "PDF Page 1 of 12, Abstract (Conclusions)",
+        "quote": "process evaluation highlights important gaps between the TSC guidelines and their implementation on the ground."
+      }
+    ],
+    "overall_narrative_summary": "Boisson et al. (2014) report a mixed-methods process evaluation embedded within a 100-village cluster-randomised controlled trial (50 intervention, 50 control villages) of India's Total Sanitation Campaign (TSC) in Puri district, Orissa. Appraised with the Mixed Methods Appraisal Tool (MMAT 2018; no numeric composite score computed), the study demonstrates strong mixed-methods rationale and integration (5.1–5.4 = Yes), objective longitudinal physical inspection of household latrine construction across six field rounds, random Stata-generated 10% sampling of village household and VWSC lists, and cluster-level statistical comparisons respecting village randomization. However, overall methodological quality cannot exceed its weakest components and warrants moderate-to-high concern: (1) the qualitative component reports no coding or thematic analysis methods and zero verbatim quotations (1.2–1.5 = Can't tell); (2) enumerators could not be blinded (2.4 = No) and relied partly on incomplete NGO motivator logbooks with missing data across 2–13 villages; (3) survey non-response rates are unreported and joint-family boundaries were strategically misreported by households (2.3 = Can't tell); (4) intervention fidelity and uptake fell far short of the 90% target (51% completed latrines, 66% including unfinished/damaged; 2.5 = No), while actual latrine use was not measured; and (5) within-intervention associations between mobilisation awareness and coverage (Table 4) rely on unadjusted bivariate village-level linear regressions vulnerable to ecological confounding.",
+    "overall_rating": "Moderate-to-high methodological concern (narrative MMAT judgment; no numeric score computed — strong physical latrine observation and mixed-methods integration, but constrained by unreported qualitative analysis/quotes, unblinded assessment, incomplete fidelity and logbooks, unreported survey non-response, and unadjusted within-arm ecological regressions)",
+    "paper_read": "full text",
+    "study_design_identified": "Mixed-methods process evaluation embedded within a 100-village cluster-randomised controlled trial (combining documentary review, repeated semi-structured interviews with NGO implementers, longitudinal structured observations of latrine construction, 10% random household and VWSC surveys across randomized arms, and within-intervention village-level linear regressions)",
+    "study_id": "S189",
+    "where_found_summary": "Study design and data collection: Abstract (PDF p. 1) and Methods (PDF pp. 2–3). Institutional/legal TSC rules and implementation fidelity: Results—Context, Intervention, and Fidelity assessment (PDF pp. 3–7, Table 1, Figures 1–2). Quantitative awareness surveys and ecological regressions: Results—Exposure to intervention (PDF pp. 7–11, Tables 2–4). Methodological limitations, denominator misreporting, and missing motivator logs: Discussion (PDF pp. 9–11).",
+    "why_tool_chosen": "The paper is a primary mixed-methods process evaluation that collects, analyses, and integrates both qualitative data (review of TSC/NGO documents and logs plus 6 rounds of semi-structured interviews with NGO staff and village motivators) and quantitative data (direct observations of household latrine construction, a 10% random household awareness survey across 50 cluster-randomised intervention and 50 control villages, a 10% random VWSC survey, and village-level linear regressions). Per RISK_OF_BIAS.md §1, MMAT is the designated tool for mixed-methods primary studies; the Quantitative randomized block (2.1–2.5) was selected to match the primary 50-vs-50 cluster-randomised arm comparisons (Figure 1, Table 2), while unadjusted confounding in the secondary within-intervention ecological regressions (Table 4) is explicitly captured in item 5.5 and the cross-tool confounding domain."
+  }
+}

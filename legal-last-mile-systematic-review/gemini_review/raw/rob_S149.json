@@ -1,0 +1,346 @@
+{
+  "study_id": "S149",
+  "order": 11,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "21b83cba9e1a22bb28c57c22bb99c844ccc59b269ef564d30699c42bc77abb40",
+  "input_text_sha256": "36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9",
+  "prompt_sha256": "69516ceab236b80743dc5e19997776969305daf7f965711e11e07cbc10a98168",
+  "started_at": "2026-11-19T01:43:58.201792+00:00",
+  "completed_at": "2026-11-19T01:46:32.706887+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S149\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S149\n- Record ID: R3B7D3DFF4E72\n- Citation string: Sethy M, Sahoo DM (2026). Gendered inequalities in water sanitation and hygiene access increase time poverty health risks and socioeconomic exclusion in Odisha India. Discover Public Health 23:1269.\n- DOI: 10.1186/s12982-026-02666-8\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52912, sha256=36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Moderate / Can't tell: Overall household survey response rate is reported as 94.3% yielding N = 400 (PDF p. 5, Section 3.1), and MHM analyses specify N = 217 menstruating households (PDF p. 7–8, Section 3.5, Table 6), but item-level missingness and analytic sample sizes for multivariate regressions (Tables 2, 4, 5) and propensity score matched comparisons (Table 8, common support exclusions) are unreported.",
+      "confounding": "High concern: Cross-sectional observational data across only 16 villages cannot rule out reverse causality or village-level institutional endogeneity in Village Water and Sanitation Committee (VWSC) participation; OLS/logistic/probit equations are corrupted in the published text (PDF p. 4, Section 2.5), key sociodemographic controls are absent from displayed logistic outputs (Table 4), and the propensity score matching analysis (Table 8) reports zero matching covariates, algorithm/caliper details, matched sample sizes, or covariate balance diagnostics.",
+      "legal_measurement_quality": "Weak to moderate: Institutional governance and policy exposure (SBM-G, JJM, and women's participation in statutory local VWSCs/Gram Sabhas) are grounded in real administrative structures and operationalized via a 4-component Women's Agency Score (attendance, speaking time, decision influence, leadership; PDF p. 4, Section 2.4c), but the binary treatment threshold for 'active women's participation in VWSCs' in PSM is undefined, statutory/mandate rules of Odisha VWSCs are not doctrinally specified, and household- versus village-level aggregation of agency is unclear.",
+      "measurement_bias": "High concern: Drinking water quality relies solely on sensory perceptions (turbidity, taste, odour, colour) and self-reported treatment without microbiological or chemical testing (PDF p. 3, Section 2.4a; p. 14, Section 4.6, contradicted by an unsubstantiated caption in Fig. 5 claiming 'water quality tests'); diarrhoeal and genitourinary infections are self-reported (30-day recall) without clinical verification; equations defining time poverty and regression specifications are corrupted placeholders in the PDF (p. 3–5); and qualitative measurement lacks interview guides, coding procedures, or empirical quotes.",
+      "outcome_measurement_quality": "Moderate to weak: Structured JMP/NFHS-adapted survey items and multidimensional Alkire–Foster aggregation (GWII) capture multiple WASH dimensions (collection time, toilet functionality based on water/structure/privacy/use, MHM privacy, self-reported 30-day diarrhoea and UTI), and Fig. 3 notes GPS-measured distances, but core water safety and morbidity outcomes rely on subjective sensory perceptions and recall-prone self-reports, and the exact formula for time poverty on PDF p. 3 is unreadable due to corrupted equation typesetting.",
+      "reporting_bias": "High concern: No pre-analysis plan or protocol registration is reported; all mathematical equations (Equa–Equf, IEq1–IEq3 on PDF p. 3–5) appear as broken placeholder strings; PSM covariates, matching specifications, and sample sizes are omitted; SEM, multilevel, Random Forest, and GIS analyses mentioned in Section 2.5 lack full parameter tables; and despite collecting 16 FGDs, 32 KIIs, and participant observations, zero qualitative themes or verbatim quotes are reported.",
+      "selection_bias": "Moderate to high concern: Four districts in Odisha were purposively selected (yielding 68.2% Scheduled Tribe households vs. 22.8% state-wide; PDF p. 2–3, 5), limiting state-level generalizability; within districts, blocks and villages (16 total) were randomly sampled and households selected via systematic random sampling, but the household sampling frame, intra-household respondent selection rule, and qualitative recruitment procedures are undocumented."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "Section 1 clearly states four core research objectives: (i) identifying determinants of gendered WASH outcomes, (ii) developing a multidimensional Gender–WASH Inequality Index (GWII), (iii) examining the mediating/causal role of women's agency in local WASH governance (VWSCs), and (iv) modelling optimal policy resource allocation.",
+        "rating": "Yes",
+        "where_found": "PDF p. 1 (Abstract); PDF p. 2–3 (Section 1 Background); PDF p. 14–15 (Section 5 Conclusion)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Primary household survey data (N = 400 across 16 villages in 4 districts) combined with 16 FGDs, 32 KIIs, and VWSC/Gram Sabha observations allow empirical examination of gendered WASH determinants, multidimensional deprivation, and governance associations, although cross-sectional sensory/self-report data and undocumented qualitative analysis limit strong causal and microbiological claims.",
+        "rating": "Yes",
+        "where_found": "PDF p. 3–4 (Sections 2.1–2.5); PDF p. 14 (Section 4.6 Limitations)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "Using focus group discussions (women-only, men-only, and mixed), key informant interviews with officials and frontline workers, and participant observation of VWSC and Gram Sabha meetings is an appropriate qualitative strategy to investigate gendered social norms, lived MHM/time-use burdens, and tokenistic versus substantive participation in local governance.",
+        "rating": "Yes",
+        "where_found": "PDF p. 3 (Sections 2.1–2.3); PDF p. 4 (Section 2.5)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although the volume and composition of qualitative activities are stated (16 FGDs stratified by gender, 32 KIIs, and meeting observations), the paper omits topic guides, moderator gender/training, language/translation procedures, audio-recording/fieldnote protocols, interview duration, and thematic saturation criteria.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 3 (Sections 2.2–2.3)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "No qualitative data analysis procedure is described anywhere in Section 2 (no mention of transcription, coding, thematic/content analysis, qualitative software, or analyst triangulation), and Section 3 contains no structured qualitative findings subsection, themes, or coding outputs showing how conclusions were derived from raw qualitative data.",
+        "rating": "No",
+        "where_found": "PDF p. 3–4 (Section 2 Data & methods); PDF p. 5–10 (Section 3 Results)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Zero verbatim participant quotes, fieldnote excerpts, or qualitative summary matrices appear anywhere in the manuscript; qualitative claims in Sections 3.7, 4.1, and 4.3 are asserted purely as brief authorial summaries without empirical substantiation.",
+        "rating": "No",
+        "where_found": "PDF p. 9 (Section 3.7); PDF p. 11–13 (Sections 4.1, 4.3)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "Coherence breaks down between data collection and interpretation because an extensive stated qualitative dataset (16 FGDs, 32 KIIs, participant observation) undergoes no documented analytical process and yields no presented primary qualitative evidence in Results.",
+        "rating": "No",
+        "where_found": "PDF p. 3–4 (Sections 2.3, 2.5); PDF p. 9 (Section 3.7); PDF p. 11–13 (Sections 4.1, 4.3)"
+      },
+      {
+        "domain_id": "3.1",
+        "domain_name": "Quantitative non-randomized 3.1: Are the participants representative of the target population?",
+        "justification": "While two blocks per district and two villages per block (16 villages) were randomly chosen and 400 households were selected via systematic random sampling with a 94.3% response rate, the four districts were purposively chosen (resulting in 68.2% Scheduled Tribe households vs. 22.8% across Odisha), and neither the village household listing frame nor the intra-household respondent selection rule is described.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 2 (Section 1); PDF p. 3 (Sections 2.1–2.2); PDF p. 5 (Section 3.1, Table 1)"
+      },
+      {
+        "domain_id": "3.2",
+        "domain_name": "Quantitative non-randomized 3.2: Are measurements appropriate regarding both the outcome and intervention (or exposure)?",
+        "justification": "Key measurements have major validity and reporting flaws: the Water Quality Score relies exclusively on sensory perception (turbidity, taste, odour, colour) and self-reported treatment rather than microbial/chemical testing (contradicted by an unexplained reference to 'water quality tests' in Fig. 5); diarrhoeal and genitourinary illnesses rely on unverified self-report; the time-poverty equation on PDF p. 3 is corrupted/missing; and the binary exposure cutoff defining 'active women's participation in VWSCs' for PSM (Table 8) is never defined.",
+        "rating": "No",
+        "where_found": "PDF p. 3–4 (Section 2.4); PDF p. 6–10 (Tables 3–4, 6, 8; Fig. 5); PDF p. 14 (Section 4.6)"
+      },
+      {
+        "domain_id": "3.3",
+        "domain_name": "Quantitative non-randomized 3.3: Are there complete outcome data?",
+        "justification": "Section 3.1 reports a 94.3% survey response rate yielding N = 400 (and Table 6 reports N = 217 menstruating households), but analytic sample sizes, item-level missing data, and unmatched observations dropped from common support are completely omitted from the OLS, logistic, probit, and PSM regression tables (Tables 2, 4, 5, and 8).",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 5–10 (Section 3.1; Tables 1–8)"
+      },
+      {
+        "domain_id": "3.4",
+        "domain_name": "Quantitative non-randomized 3.4: Are the confounders accounted for in the design and analysis?",
+        "justification": "Confounding is inadequately addressed and reported: all mathematical model specifications on PDF p. 4 are corrupted placeholders; Table 4 omits sociodemographic controls from displayed outputs; the PSM causal analysis (Table 8) compares village-level VWSC participation across only 16 cross-sectional villages without reporting matching covariates, propensity score estimation, caliper/matching method, sample sizes, or covariate balance diagnostics, leaving severe vulnerability to unobserved village-level confounding and reverse causality.",
+        "rating": "No",
+        "where_found": "PDF p. 4 (Section 2.5); PDF p. 6–10 (Tables 2, 4, 5, 8); PDF p. 14 (Section 4.6)"
+      },
+      {
+        "domain_id": "3.5",
+        "domain_name": "Quantitative non-randomized 3.5: During the study period, is the intervention administered (or exposure occurred) as intended?",
+        "justification": "Because data were collected cross-sectionally between January and June 2023 without longitudinal tracking, exposure duration, timing of VWSC activation relative to infrastructure construction, and fidelity of village governance processes over time cannot be verified from the reported data.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 3–4 (Sections 2.1, 2.4–2.5); PDF p. 9–10 (Section 3.7, Table 8)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "The authors articulate a clear rationale for combining econometric survey analysis with qualitative inquiry: quantifying WASH determinants and multidimensional inequality while capturing gendered power dynamics and distinguishing tokenistic committee presence from meaningful participation.",
+        "rating": "Yes",
+        "where_found": "PDF p. 2–3 (Section 1; Section 2.1); PDF p. 4 (Section 2.5)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Despite declaring a convergent parallel mixed-methods design, integration in Results is minimal and asymmetric: quantitative metrics dominate Sections 3.1–3.8, while qualitative findings are reduced to one unquoted sentence in Section 3.7 and brief narrative assertions in Discussion, with no joint displays, systematic triangulation matrix, or documented integration protocol.",
+        "rating": "No",
+        "where_found": "PDF p. 3–4 (Sections 2.1, 2.5); PDF p. 5–13 (Sections 3–4)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Although Sections 3.7, 4.1, and 4.3 offer conceptually plausible interpretations connecting qualitative mechanisms (multiple trips to unreliable sources; women leaders prioritizing maintenance and privacy) to quantitative associations, the complete absence of reported qualitative evidence and integration procedures makes it impossible to verify whether integrated interpretations are empirically grounded.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 9 (Section 3.7); PDF p. 11–13 (Sections 4.1, 4.3)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "No potential divergences, contradictions, or discordant findings between household survey estimates, KIIs with officials, FGDs, and committee observations are examined anywhere in the paper, and internal reporting discrepancies (such as Fig. 5 referencing 'water quality tests' while Sections 2.4a and 4.6 state water quality was purely perceptual) go unaddressed.",
+        "rating": "No",
+        "where_found": "PDF p. 3 (Section 2.4a); PDF p. 9–14 (Sections 3.7, 4; Fig. 5)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Neither component meets core methodological reporting standards of its tradition: the qualitative component omits all analytical/coding methods and primary evidence, while the quantitative component contains corrupted/missing equations, sensory/self-report outcome proxies, and unsubstantiated causal PSM claims across 16 villages with zero reported matching covariates or balance diagnostics.",
+        "rating": "No",
+        "where_found": "PDF p. 3–10 (Sections 2–3); PDF p. 14 (Section 4.6)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design (MMAT selection & 5.1/5.2)",
+        "page": "PDF Page 3, Section 2.1",
+        "quote": "A convergent parallel mixed-methods design was employed between January and June"
+      },
+      {
+        "criterion": "Quantitative sample response rate (MMAT 3.1 & 3.3)",
+        "page": "PDF Page 5, Section 3.1",
+        "quote": "The household survey achieved a high response rate of 94.3%, yielding a final sample"
+      },
+      {
+        "criterion": "Water quality measurement limitation (MMAT 3.2 & measurement bias)",
+        "page": "PDF Page 3, Section 2.4a",
+        "quote": "this score relies on sensory indicators which may not capture invisible"
+      },
+      {
+        "criterion": "Quantitative causal claim via PSM (MMAT 3.4)",
+        "page": "PDF Page 4, Section 2.5",
+        "quote": "Propensity score matching estimated causal effects of women’s participation"
+      },
+      {
+        "criterion": "Summary-only qualitative reporting without quotes (MMAT 1.4 & 5.2)",
+        "page": "PDF Page 9, Section 3.7",
+        "quote": "Qualitative data from focus groups enriched this finding, revealing that the positive"
+      },
+      {
+        "criterion": "Cross-sectional constraint on causal inference (MMAT 3.4 & confounding)",
+        "page": "PDF Page 14, Section 4.6",
+        "quote": "Several limitations warrant consideration. The cross-sectional design constrains causal"
+      }
+    ],
+    "overall_narrative_summary": "Sethy and Sahoo (2026) report a convergent parallel mixed-methods study of gendered WASH inequalities across four purposively selected districts (16 villages, 400 surveyed households, 16 FGDs, 32 KIIs, and VWSC/Gram Sabha observations) in rural Odisha, India, supplemented by an Alkire–Foster Gender–WASH Inequality Index (GWII) and linear-programming budget optimization. Appraised with the Mixed Methods Appraisal Tool (MMAT 2018, using the quantitative non-randomized block 3.1–3.5 alongside qualitative 1.1–1.5 and mixed-methods 5.1–5.5), the study exhibits high methodological concern. While research objectives and the conceptual rationale for mixed-methods inquiry are clear (S1, S2, 1.1, 5.1 = Yes), the qualitative strand reports zero transcription, coding, or thematic analysis procedures and presents not a single verbatim quote or structured qualitative finding (1.3, 1.4, 1.5 = No; 1.2 = Can't tell). In the quantitative strand, all mathematical equations in Section 2 are corrupted typesetting placeholders ('disp lay-eq- Equa' through 'Equf'); drinking water quality and morbidity rely on sensory perceptions and 30-day self-report (with an internal contradiction in Fig. 5's caption claiming 'water quality tests'); analytic sample sizes for regressions/PSM are omitted; and causal claims from Propensity Score Matching on women's VWSC participation across only 16 cross-sectional villages lack any specification of matching covariates, algorithm, common support, or balance diagnostics (3.2, 3.4 = No; 3.1, 3.3, 3.5 = Can't tell). Mixed-methods integration is likewise superficial (5.2, 5.4, 5.5 = No; 5.3 = Can't tell). Per MMAT guidance, overall methodological quality cannot exceed the weakest component and is therefore rated as high methodological concern.",
+    "overall_rating": "High methodological concern (per MMAT 2018 guidance, no numeric composite score is computed and overall quality cannot exceed the weakest component: critical deficiencies exist in both the qualitative strand [no analytical methods or empirical quotes] and the quantitative non-randomized strand [corrupted equations, sensory/self-report proxies, undefined PSM treatment threshold, and omitted PSM covariates/balance across 16 cross-sectional villages], as well as superficial mixed-methods integration)",
+    "paper_read": "full text",
+    "study_design_identified": "Convergent parallel mixed-methods primary study combining a multi-stage cross-sectional household survey (N = 400 households across 16 villages in 4 districts of Odisha, analysed with OLS, logistic/probit regression, multilevel/SEM/Random Forest models, Alkire–Foster multidimensional index construction, propensity score matching on women's VWSC participation, and linear-programming optimization) with qualitative focus group discussions (n = 16), key informant interviews (n = 32), and participant observation",
+    "study_id": "S149",
+    "where_found_summary": "Abstract (PDF p. 1); Section 1 Background (PDF p. 2–3); Section 2 Data & methods, Sections 2.1–2.6 (PDF p. 3–5); Section 3 Results, Sections 3.1–3.8, Tables 1–9, Figs. 1–7 (PDF p. 5–11); Section 4 Discussion & Section 4.6 Limitations (PDF p. 10–14); Section 5 Conclusion & Ethics/Declarations (PDF p. 14–16).",
+    "why_tool_chosen": "Section 2.1–2.3 explicitly specifies and implements a primary convergent parallel mixed-methods design collecting both quantitative household survey data (N = 400) and qualitative empirical data (16 FGDs, 32 KIIs, and participant observation of VWSC/Gram Sabha meetings), with qualitative interpretations invoked alongside quantitative econometric and propensity score matching analyses in Sections 2.5, 3.7, 4.1, and 4.3. MMAT (2018) with the Quantitative non-randomized component (items 3.1–3.5, matching analytical cross-sectional regressions and observational PSM comparisons) is therefore the exact design-matched appraisal instrument under RISK_OF_BIAS.md §1."
+  }
+}

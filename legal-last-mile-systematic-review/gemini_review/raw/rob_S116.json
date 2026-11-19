@@ -1,0 +1,339 @@
+{
+  "study_id": "S116",
+  "order": 16,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d8cf75906350d1eae7a6fc2dd1efe1a0d661d48e5ff70a15ffc357009e230fb6",
+  "input_text_sha256": "46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7",
+  "prompt_sha256": "4f2dac378a3b64fed1712509854bfee327318e8a3766e8f282a3aed21a52d8d4",
+  "started_at": "2026-11-19T01:46:47.481622+00:00",
+  "completed_at": "2026-11-19T01:49:14.728363+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S116\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S116\n- Record ID: RC738D26100A7\n- Citation string: Castleden HE, Hart C, Harper S, Martin D, Cunsolo A, Stefanelli R, Day L, Lauridsen K (2017). Implementing Indigenous and Western Knowledge Systems in Water Research and Management (Part 1): A Systema\n- DOI: 10.18584/iipj.2017.8.4.6\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=95716, sha256=46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "AMSTAR 2",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low concern at the secondary retrieval stage: only 2 of 53 retrieved grey-literature documents were excluded due to inaccessibility (PDF p. 13). Primary-study participant attrition was not evaluated by the review authors.",
+      "confounding": "Not applicable in causal effect-estimation terms (descriptive and thematic realist synthesis without quantitative effect estimates); however, at the synthesis level, lack of study-quality weighting and unadjusted clustering by research group (8 of 14 governance studies came from a single group; PDF p. 16) limit Comparative inference.",
+      "legal_measurement_quality": "Weak to adequate (secondary descriptive coding): Item 20 of the SRR Reporting Tool coded whether included studies acknowledged treaty and Aboriginal rights to clean water (PDF p. 11), and narrative sections summarize treaty absences in British Columbia, northern land-claim framing, co-management arrangements, and UNDRIP (PDF pp. 16-18, 22), without primary doctrinal verification of statutes or treaties.",
+      "measurement_bias": "High concern: data extraction across the 33-question SRR Reporting Tool was divided among three team members by Indigenous context rather than conducted independently in duplicate (PDF p. 7), no inter-rater reliability checks were reported, and no risk-of-bias appraisal of included primary studies was performed.",
+      "outcome_measurement_quality": "Weak (secondary author-claim coding): outcomes were recorded as perceived or author-reported community, policy, governance, cultural, environmental, or health benefits (Table 3 Items 31-33, PDF p. 12), without objective water quality or service metrics; the authors note it was often difficult to discern whether studies produced direct community benefits (PDF p. 21).",
+      "reporting_bias": "High concern: no pre-registered or published review protocol was reported (PDF pp. 4-5); neither a full study-by-study table of the 63 included records nor a list of full-text excluded records is provided; screening flow numbers in text leave 122 of 226 initial database hits unaccounted for (likely unstated deduplication; PDF p. 13); and no conflict-of-interest statement is provided despite co-authors having authored multiple cited/included primary studies (PDF p. 2, pp. 27-35).",
+      "selection_bias": "Moderate to high concern: although three academic search engines and multiple grey-literature sources were searched with dual-reviewer screening for Scopus and Web of Science (PDF p. 5), French-language literature was excluded from a Canadian national review (acknowledged as a key limitation on PDF p. 24), stopping rules were used for Google Scholar and Google searches (PDF p. 5), reference-list hand-searching was not reported, and excluded full-text studies were not listed."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Research questions and inclusion criteria include PICO components",
+        "justification": "Adapted to a non-interventional systematic realist review, the research objectives, eligibility scale (Table 2), reflective screening questions (Box 1), and 33-item extraction tool (Table 3) explicitly define the population/setting (First Nations, Inuit, and Métis/Metis contexts in Canada), phenomenon/exposure of interest (empirical integrative Indigenous and Western knowledge processes in water research and management), implicit comparator (conventional non-integrative Western approaches), and outcomes (integrative water management findings, knowledge implementation, and perceived/actualized community and policy benefits).",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-7, 12 (Methods; Table 2; Box 1; Table 3 Items 31-33)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "[CRITICAL] Explicit statement that review methods were established a priori and deviations justified",
+        "justification": "Although the authors report co-determining inclusion/exclusion criteria and reflective analysis questions with a National Advisory Committee (NAC) and 2014 Water Gathering participants and adding a replicate search through August 2015 on NAC advice, there is no registered or written a priori protocol cited, no pre-specified risk-of-bias plan, and no formal tracking of protocol deviations.",
+        "rating": "No",
+        "where_found": "PDF pp. 4-7 (Methods — Data Collection and Data Analysis)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Explanation of selection of study designs for inclusion in the review",
+        "justification": "The authors justify combining systematic and realist review approaches and explicitly explain restricting inclusion to peer-reviewed and grey-literature documents reporting empirical data on integrative water research or management processes in Canada so they could assess both what was done and why/how processes worked in practice.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-7 (Introduction; Methods — Data Collection; Table 2; Box 1)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "[CRITICAL] Comprehensive literature search strategy",
+        "justification": "Meets Partial Yes criteria: the authors searched three academic databases/engines (Scopus, Web of Science, Google Scholar), provided exact keyword strings (Table 1), consulted a reference librarian and content experts (NAC and Water Gatherings), searched grey literature extensively (Library and Archives Canada, Canadian Public Policy Collection, Government of Canada Publications, Google, and agency websites), and updated the search to August 2015 (within ~26 months of October 2017 publication). Rated Partial Yes rather than Yes because excluding French-language literature in a Canadian review was acknowledged as a limitation rather than methodologically justified (PDF p. 24) and reference-list hand-searching of included studies was not reported.",
+        "rating": "Partial Yes",
+        "where_found": "PDF pp. 4-6, 24 (Methods — Data Collection; Table 1; Limitations)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Study selection performed in duplicate",
+        "justification": "Citations from Scopus and Web of Science underwent two-stage relevance screening (title/abstract followed by full text) by two independent reviewers, with disagreements resolved through full-team consensus meetings and full-text review.",
+        "rating": "Yes",
+        "where_found": "PDF p. 5 (Methods — Data Collection)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Data extraction performed in duplicate",
+        "justification": "Data extraction was not conducted in duplicate; instead, the included literature was divided into four contextual groups (First Nations, Inuit, Métis/Metis, and multi-site contexts) and analyzed across three research team members without reported independent dual coding or inter-rater agreement checks.",
+        "rating": "No",
+        "where_found": "PDF p. 7 (Methods — Data Analysis)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "[CRITICAL] List of excluded studies provided and exclusions justified",
+        "justification": "The text reports aggregate counts of excluded records (e.g., 37 excluded at title/abstract, 64 total peer-reviewed excluded, and 2 grey-literature reports inaccessible), but provides no bibliography or appendix listing the individual full-text excluded studies with study-specific exclusion reasons.",
+        "rating": "No",
+        "where_found": "PDF pp. 13-14 (Findings; Figure 1)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Included studies described in adequate detail",
+        "justification": "The review provides only aggregate descriptive statistics (publication years, author Indigenous self-identification, disciplines, provinces/territories, method frequencies) and narrative thematic examples; it does not include a study-level characteristics table or even a standalone list identifying all 63 included documents and their individual populations, designs, methods, and outcomes.",
+        "rating": "No",
+        "where_found": "PDF pp. 13-21 (Findings)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "[CRITICAL] Satisfactory technique for assessing risk of bias (RoB) in individual included studies",
+        "justification": "Although Variable 30 of the SRR Reporting Tool recorded whether primary authors acknowledged limitations, the review authors applied no risk-of-bias or methodological quality appraisal instrument to evaluate internal validity or bias in the 63 included empirical studies.",
+        "rating": "No",
+        "where_found": "PDF pp. 7-12 (Methods — Data Analysis; Table 3)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "Sources of funding for individual included studies reported",
+        "justification": "Variable 12 of the SRR Reporting Tool extracted funding agencies acknowledged in primary articles, and the Discussion briefly notes a dearth of funding from science and engineering disciplines (PDF p. 22), but funding sources for the individual included studies are never reported in the text or tables.",
+        "rating": "No",
+        "where_found": "PDF p. 9, p. 22 (Table 3 Item 12; Discussion)"
+      },
+      {
+        "domain_id": "Q11",
+        "domain_name": "[CRITICAL] Appropriate methods for statistical combination of results (if meta-analysis performed)",
+        "justification": "No meta-analysis or statistical pooling was performed; the review presents descriptive counts/percentages alongside qualitative realist thematic synthesis.",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "PDF pp. 7, 13-21 (Methods — Data Analysis; Findings)"
+      },
+      {
+        "domain_id": "Q12",
+        "domain_name": "Assessment of potential impact of RoB in individual studies on meta-analysis results",
+        "justification": "No meta-analysis was performed.",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "PDF pp. 7, 13-21 (Methods — Data Analysis; Findings)"
+      },
+      {
+        "domain_id": "Q13",
+        "domain_name": "[CRITICAL] Accounted for RoB in individual studies when interpreting/discussing results",
+        "justification": "Because no study-level risk-of-bias or quality appraisal was performed, the interpretation of findings and policy recommendations does not weight or stratify conclusions by the methodological rigor of the underlying primary studies.",
+        "rating": "No",
+        "where_found": "PDF pp. 20-26 (Findings; Discussion; Recommendations)"
+      },
+      {
+        "domain_id": "Q14",
+        "domain_name": "Satisfactory explanation for and discussion of heterogeneity observed in results",
+        "justification": "Consistent with realist synthesis goals, the authors discuss substantive variation across disciplinary backgrounds (social sciences vs. natural sciences/engineering), regional treaty vs. non-treaty and land-claim contexts (e.g., British Columbia vs. northern territories), research group concentration, and tokenistic 'add-on' vs. community-based co-governance models.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 13, 16-24 (Findings; Discussion)"
+      },
+      {
+        "domain_id": "Q15",
+        "domain_name": "[CRITICAL] Adequate investigation of publication bias and discussion of likely impact (if quantitative synthesis performed)",
+        "justification": "No quantitative synthesis or meta-analysis was conducted (though the authors qualitatively note in Limitations on PDF p. 24 that unpublished community knowledge and documentation were missed by database searches).",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "PDF pp. 7, 24 (Methods; Limitations)"
+      },
+      {
+        "domain_id": "Q16",
+        "domain_name": "Potential sources of conflict of interest reported, including funding received for conducting the review",
+        "justification": "Although project funding from the Canadian Water Network and feedback from its Research Management Committee are acknowledged (PDF p. 2), the paper contains no competing/conflict-of-interest declaration, despite several co-authors having authored primary empirical studies cited within the synthesis.",
+        "rating": "No",
+        "where_found": "PDF p. 2, pp. 27-35 (Acknowledgments; References)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design and synthesis scope",
+        "page": "PDF p. 2 (Abstract)",
+        "quote": "approaches to water research and management identified 279 items of which 63 were relevant inclusions;"
+      },
+      {
+        "criterion": "AMSTAR 2 Q5 (Duplicate study selection)",
+        "page": "PDF p. 5 (Methods — Data Collection)",
+        "quote": "Citations returned from Scopus and Web of Science were screened for relevance using a two-stage"
+      },
+      {
+        "criterion": "AMSTAR 2 Q6 (Non-duplicate data extraction)",
+        "page": "PDF p. 7 (Methods — Data Analysis)",
+        "quote": "For our analysis, the literature was divided into groups (First Nations, Inuit, Métis/Metis, and multi-site"
+      },
+      {
+        "criterion": "AMSTAR 2 Q7/Q8 (Study selection flow and included records)",
+        "page": "PDF p. 13 (Findings)",
+        "quote": "After review, 12 reports and 11 theses and dissertations were also included in the SRR (see Figure 1). In sum, 279 documents were reviewed, and 63 documents were included in our SRR."
+      },
+      {
+        "criterion": "Outcome measurement quality",
+        "page": "PDF p. 21 (Findings — Benefits to the community and beyond)",
+        "quote": "research translated into direct benefits for the community partner."
+      },
+      {
+        "criterion": "AMSTAR 2 Q4 / Selection bias (Language restriction)",
+        "page": "PDF p. 24 (Limitations)",
+        "quote": "been published in English, which is a key limitation to a Canadian-focused review as the country has two"
+      }
+    ],
+    "overall_narrative_summary": "Castleden et al. (2017) report a combined systematic and realist review (SRR) of 63 peer-reviewed and grey-literature documents (out of 279 retrieved records) examining integrative Indigenous and Western knowledge systems in Canadian water research and management. Appraised with AMSTAR 2, overall methodological confidence is Critically Low due to four critical flaws (Q2, Q7, Q9, Q13) alongside four non-critical weaknesses (Q6, Q8, Q10, Q16). Methodological strengths include co-design of eligibility criteria and a detailed 33-item extraction framework with a National Advisory Committee and national Water Gatherings, multi-database academic and grey-literature searches with published search strings, two-stage independent screening for Scopus and Web of Science records, and thoughtful realist discussion of contextual, disciplinary, and treaty/governance variation. However, the review lacked a registered or published a priori protocol (Q2), excluded French-language Canadian scholarship (Q4 Partial Yes), divided data extraction across reviewers rather than extracting in duplicate (Q6), provided neither a list of excluded full-text studies (Q7) nor a study-by-study table or bibliography clearly identifying all 63 included records and their funding sources (Q8, Q10), omitted any risk-of-bias or methodological quality assessment of primary empirical studies and thus could not incorporate study quality into conclusions (Q9, Q13), left database screening counts partially unreconciled in text (226 retrieved vs. 40 included and 64 excluded), and omitted a conflict-of-interest disclosure despite author overlap with cited primary studies (Q16). While AMSTAR 2 is calibrated strictly for interventional reviews, the absence of study-level reporting tables, excluded-study lists, duplicate extraction, and primary-study quality appraisal also represents substantial transparency and bias limitations under realist/qualitative synthesis standards.",
+    "overall_rating": "Critically Low",
+    "paper_read": "full text",
+    "study_design_identified": "Secondary systematic realist review (combined systematic and realist review of peer-reviewed and grey literature)",
+    "study_id": "S116",
+    "where_found_summary": "Study purpose and advisory co-design on PDF pp. 2, 4 (Abstract; Introduction; Methods); search databases, keyword strings, grey-literature strategy, and dual screening on PDF pp. 5-7 (Data Collection; Tables 1-2; Box 1); extraction assignment and 33-item SRR Reporting Tool on PDF pp. 7-12 (Data Analysis; Table 3); screening counts and thematic synthesis on PDF pp. 13-21 (Findings; Figures 1-4; Box 2); synthesis interpretation, French-language exclusion limitation, and funding acknowledgment on PDF pp. 2, 22-26 (Acknowledgments; Discussion; Limitations; Recommendations; Conclusion).",
+    "why_tool_chosen": "The study is a secondary evidence synthesis explicitly designed and executed as a combined systematic and realist review (SRR) featuring structured multi-database and grey-literature search strings, formal inclusion/exclusion criteria, two-stage screening, and standardized 33-item extraction across 63 included studies; under RISK_OF_BIAS.md §1, AMSTAR 2 is the required appraisal instrument for systematic reviews with an explicit systematic search and screening method."
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "study_id": "S198",
+  "order": 47,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d5edec92ca359c72d7723f1a32a9c74349b718238b649cffdbb23e73a191ff13",
+  "input_text_sha256": "d2f691ceed9c1393937d370ee293263276b9be0ee69fd868074682546ac47674",
+  "prompt_sha256": "4188335f23bbcd2f891bdcbd23cd68008046f1b3b6ceba0c1f3aef8a909f70ef",
+  "started_at": "2026-11-19T02:01:46.473082+00:00",
+  "completed_at": "2026-11-19T02:03:46.797660+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S198\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S198\n- Record ID: R9E86C5C2D0CF\n- Citation string: Greene Dobbins E (2019). Human Rights, Sanitation, and Sewers [Derechos humanos, saneamiento y alcantarillado]. Azafea. Revista de Filosofia 21:129-157.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: d2f691ceed9c1393937d370ee293263276b9be0ee69fd868074682546ac47674) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=80712, sha256=d2f691ceed9c1393937d370ee293263276b9be0ee69fd868074682546ac47674]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not assessable / Not applicable: The study is a philosophical-doctrinal essay paired with a single-municipality regulatory case study rather than a longitudinal cohort or participant sample subject to attrition, although missing volume estimates in early municipal sewer-overflow filings are noted (PDF p. 15).",
+      "confounding": "High concern (weak control): Descriptive single-case institutional narrative with no comparator arm or analytical adjustment to separate regulatory laxity from co-occurring structural factors including impermeable Kipling clay soils, severe county poverty and low local tax base, unpermitted industrial BOD/effluent dumping by Southeastern Cheese, and aging collection-pipe infiltration (PDF pp. 11-12, 14, 17-19).",
+      "legal_measurement_quality": "Adequate (mixed): Section 6 anchors regulatory exposure in verifiable primary administrative and judicial records from ADEM eFile (2002 Notice of Violation, 2005 civil complaint, 2008 Consent Decree, 2008 and 2012 NPDES permits AL0063657, 2014 Stop Work Order 14-044-ld, 76 non-compliance citations, and Alabama water quality criteria §335-6-10-.09; PDF pp. 14-18, 20-21), whereas the comparative constitutional claims in Sections 1 and 3 rely on an undocumented unpublished manuscript/analysis by the author (PDF pp. 3, 6) and secondary citation of state code (PDF p. 16).",
+      "measurement_bias": "High concern (weak): Primary empirical outcome data in Uniontown rely on municipal sanitary sewer overflow (SSO) self-reports from a facility with non-functioning flow meters (PDF pp. 14-15, 19) and on the author's own unpublished E. coli water sample counts (PDF p. 16) and personal site observations (PDF p. 14) presented without sampling, chain-of-custody, or microbiological assay protocols.",
+      "outcome_measurement_quality": "Weak: Environmental sanitation outcomes in Uniontown rely on unvalidated, unmetered SSO volume estimates that shifted more than 100-fold across revised self-reports (PDF pp. 14-15, 19) and an undocumented grab-sample E. coli range from unpublished author data (PDF p. 16); county-level hookworm and straight-pipe figures are drawn secondarily from prior studies (PDF pp. 12-13), and no direct human health outcomes are measured in Uniontown.",
+      "reporting_bias": "Moderate-to-high concern (weak): The paper contains no Methods section, search strategy, or pre-specified coding protocol, and several doctrinal and empirical assertions cite unavailable sources including Dobbins unpublished manuscript/analysis (2019), Dobbins personal observations (2016-2018), and Dobbins unpublished data (PDF pp. 3, 6, 14, 16), creating substantial risk of selective evidence presentation.",
+      "selection_bias": "High concern (weak): Alabama's Black Belt counties and the Uniontown wastewater treatment system were purposively selected as an illustrative model of systemic failure (PDF pp. 11, 15) without a defined sampling frame, case-selection protocol, or comparison against non-failing or demographically distinct utilities."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Cites specific primary administrative and judicial enforcement filings with ADEM eFile identifiers (2002 Notice of Violation, 2005 civil summons/complaint cv05-79, 2008 Consent Decree, 2008 and 2012 NPDES Permits AL0063657, 2014 Stop Work Order 14-044-ld), USEPA Region 4's 2013 Diagnostic Evaluation Report, UN General Assembly Resolution 64/292, and national constitutions via the Constitute Project. Rated adequate rather than strong because sweeping claims about Western European and North American constitutions rely on an unavailable '(Dobbins, unpublished manuscript, 2019)' / '(Dobbins, unpublished analysis, 2019)' and Alabama Code §335-6-10-.09 is cited via secondary authors rather than direct statutory/regulatory text.",
+        "rating": "adequate",
+        "where_found": "Section 1 (PDF pp. 2-3); Section 3 (PDF p. 6); Section 4 (PDF pp. 7-8); Section 6 (PDF pp. 14-18); Literature cited (PDF pp. 20-29)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly delineates institutional and legal competence across international soft law (UN declarations and resolutions), European regional water governance (ICPR and EU Water Framework Directive), US federal oversight (Clean Water Act NPDES permitting and USEPA Region 4 diagnostic review), Alabama state agencies (ADEM environmental enforcement and ADPH public health response), and local municipal operations in Uniontown, Perry County across two distinct river watersheds.",
+        "rating": "strong",
+        "where_found": "Section 1 (PDF pp. 2-3); Section 4 (PDF pp. 7-8); Section 5 (PDF pp. 9-11); Section 6 (PDF pp. 11-19)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "In the Section 6 case study, governmental and regulatory failure is concretely described through prolonged non-enforcement of the 2008 three-year Consent Decree, repeated NPDES permit renewals (2008, 2012) despite 76 non-compliance citations, approval of wastewater spray fields on unsuitable low-permeability clay soils, unpoliced industrial BOD/effluent dumping into the polishing pond, and unverified municipal self-reporting. However, no formal a priori operational definition is specified.",
+        "rating": "adequate",
+        "where_found": "Section 6 (PDF pp. 14-19)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Sanitation and environmental contamination outcomes are defined using concrete physical and microbiological metrics—chronic sanitary sewer overflow (SSO) volumes and durations, lagoon inflow relative to design capacity, and surface-water E. coli concentrations (cfu/100 ml) benchmarked against NPDES daily maxima (4,000 cfu/100 ml) and Alabama surface-water standards (3,200 colonies/100 ml)—alongside secondary county-level straight-pipe and hookworm prevalence from published studies. Human health effects in Uniontown itself are framed only as potential risks rather than measured outcomes.",
+        "rating": "adequate",
+        "where_found": "Section 6, Table 1 & Figure 1 (PDF pp. 12-19)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The article has no Methods section and reports no sampling frame, search parameters, or date/inclusion rules for how constitutions were selected in the unpublished constitutional review, how ADEM eFile enforcement and SSO records were queried and collated (2016-2019), or how the March 24, 2018 spray-field overflow water samples were collected.",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF p. 3); Section 3 (PDF p. 6); Section 5 (PDF p. 10); Section 6 (PDF pp. 14-17)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Alabama's Black Belt (Hale, Lowndes, Perry, and Wilcox counties) and the Uniontown municipal sewer system were purposively chosen as emblematic cases of severe poverty, racial disparity, and chronic regulatory collapse ('an exceptional model of systemic failure') without systematic case-selection criteria or comparison to counterfactual utilities.",
+        "rating": "weak",
+        "where_found": "Abstract (PDF p. 1); Section 6 (PDF pp. 11-15)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Primary empirical measurements in Uniontown suffer from severe transparency and validity limitations: SSO discharge volumes are drawn from unverified municipal self-reports at a facility whose inflow/outflow meters did not work (with estimates shifting over 100-fold across revisions), and the reported E. coli counts (7,300 to 11,000 cfu/100 ml) come from 'Dobbins, unpublished data' with zero disclosure of collection procedures, sample count, laboratory accreditation, or microbiological assay protocols.",
+        "rating": "weak",
+        "where_found": "Section 6, Figure 1 & text (PDF pp. 14-16, 19)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Relies entirely on a descriptive, single-jurisdiction historical-regulatory narrative and philosophical argument without a control group, comparative municipality, or quasi-experimental identification strategy capable of isolating the causal effect of regulatory non-enforcement on sanitation or health outcomes.",
+        "rating": "weak",
+        "where_found": "Section 6 (PDF pp. 11-20)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Although the narrative vividly describes multiple co-occurring drivers of Uniontown's sewage crisis—impermeable Kipling series clay soils, acute municipal poverty and eroded tax base, direct industrial waste dumping and excessive BOD loads from Southeastern Cheese, defective engineering design, and ADEM regulatory forbearance—there is no analytical design to disentangle or adjust for these confounded factors.",
+        "rating": "weak",
+        "where_found": "Section 6, Table 1 & text (PDF pp. 11-12, 14, 17-19)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides detailed, multi-layered institutional, engineering, ecological, and socioeconomic contextualization of the Uniontown wastewater failure, tracing how municipal fiscal constraints, consulting engineers (Sentell Engineering; Engineers of the South), industrial users (Southeastern Cheese), state regulators (ADEM, ADPH), federal oversight and grant agencies (USEPA Region 4, USDA, NRCS), and Black Belt soil hydrogeology interacted over a 17-year period (2002-2019).",
+        "rating": "strong",
+        "where_found": "Section 6 (PDF pp. 11-20)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While cited ADEM eFile filenames, NPDES permit numbers, USEPA diagnostic reports, and US Census tables allow partial verification of the public documentary record, full replication is blocked by reliance on multiple unarchived sources: '(Dobbins, unpublished manuscript, 2019)', '(Dobbins, unpublished analysis, 2019)', '(author collated from ADEM data, 2018)', '(Dobbins, personal observations, 2016-2018)', and '(Dobbins, unpublished data)'.",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF p. 3); Section 3 (PDF p. 6); Section 5 (PDF p. 10); Section 6 (PDF pp. 14, 16); Literature cited (PDF pp. 20-29)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No document-coding rubric, data-extraction protocol, or aggregation rules are reported for how constitutional provisions were classified, how the 76 ADEM non-compliance citations (2005-2018) were counted, or how revised SSO reports were converted into the monthly mean emergency overflow trajectory in Figure 1.",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF p. 3); Section 3 (PDF p. 6); Section 6, Figure 1 & text (PDF pp. 14-17)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "The article is framed around a normative political-philosophical argument for water and sanitation as fundamental human rights while incorporating the author's own multi-year field observations (2016-2018) and unpublished environmental water sampling in Uniontown, yet provides no statement of researcher positionality, community/stakeholder relationships, ethical or site-access considerations, or safeguards against advocacy confirmation bias.",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF pp. 2-3); Section 6 (PDF pp. 14, 16, 19-20)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D1 Legal source accuracy / D11 Replication potential (reliance on unpublished constitutional manuscript)",
+        "page": "PDF Page 3, Section 1",
+        "quote": "sanitation (Dobbins, unpublished manuscript, 2019)."
+      },
+      {
+        "criterion": "D13 Researcher reflexivity / D7 Measurement transparency (undocumented personal site observations)",
+        "page": "PDF Page 14, Section 6",
+        "quote": "from the lagoon directly enter the creek (Dobbins, personal observations,"
+      },
+      {
+        "criterion": "D7 Measurement transparency (unmetered facility and unvalidated municipal self-reporting)",
+        "page": "PDF Page 14, Section 6",
+        "quote": "of metering at the facility and the self-reporting without external validation"
+      },
+      {
+        "criterion": "D6 Selection process / D3 Exposure definition (purposive selection of Uniontown and post-consent-decree failure)",
+        "page": "PDF Page 15, Section 6",
+        "quote": "Uniontown is an exceptional model of systemic failure because both the"
+      },
+      {
+        "criterion": "D7 Measurement transparency / D11 Replication potential (unpublished E. coli water-quality data)",
+        "page": "PDF Page 16, Section 6",
+        "quote": "of Escheria coli in 100 ml (cfu/100ml) (Dobbins, unpublished data)."
+      },
+      {
+        "criterion": "D1 Legal source accuracy / D12 Coding transparency (count of ADEM eFile non-compliance citations)",
+        "page": "PDF Page 17, Section 6",
+        "quote": "non-compliance in Uniontown sewer system (ADEM efile)."
+      }
+    ],
+    "overall_narrative_summary": "Greene Dobbins (2019) combines a philosophical and historical essay on the human right to water and sanitation (Sections 1-5) with an empirical regulatory and institutional case study of wastewater governance failure in Alabama's Black Belt, focusing in depth on the municipal sewer lagoon and spray-field system in Uniontown, Perry County (Section 6). Because the paper evaluates primary legal-administrative enforcement records (ADEM Notices of Violation, a 2005 civil complaint, a 2008 judicial/administrative Consent Decree, NPDES permits, a 2014 Stop Work Order, 76 non-compliance citations, USEPA's 2013 Diagnostic Evaluation Report, and municipal engineering filings) alongside collated sanitary sewer overflow (SSO) data and author field observations—without a comparator arm, formal qualitative interview/ethnographic methodology, quantitative survey/cohort design, or systematic literature search—it is appraised under the Legal Institutional Evidence Appraisal Framework. As a structured non-validated judgment, institutional contextualization (D10) and jurisdictional specificity (D2) are strong, and legal-administrative source documentation and exposure/outcome definitions within the Uniontown case study are adequate (D1, D3, D4). However, overall empirical rigor is weak due to the absence of a Methods section or coding/sampling protocol (D5, D12), purposive selection of an extreme failure case without a counterfactual comparator (D6, D8), inability to disentangle regulatory forbearance from severe fiscal, industrial-loading, and clay-soil constraints (D9), reliance on unmetered municipal SSO self-reports and undocumented 'unpublished data' / 'personal observations' by the author for microbiological and field claims (D7, D11), and lack of researcher reflexivity (D13).",
+    "overall_rating": "Structured non-validated judgment: Weak methodological rigor for causal or generalizable inference (strong institutional context and jurisdictional specificity; adequate legal-administrative source documentation, exposure, and outcome definitions in the Uniontown case study; weak sampling, selection, measurement transparency, causal identification, confounding control, replication, coding transparency, and reflexivity)",
+    "paper_read": "full text",
+    "study_design_identified": "Philosophical-doctrinal essay combined with an institutional and regulatory single-case study (Uniontown, Perry County wastewater system and Alabama's Black Belt)",
+    "study_id": "S198",
+    "where_found_summary": "Abstract (PDF p. 1); Sections 1-5 philosophical, physiological, historical, and comparative constitutional/policy narrative (PDF pp. 2-11); Section 6 Alabama Black Belt demographic synthesis (Table 1) and Uniontown, Perry County legal-regulatory wastewater case study including Figure 1 SSO analysis and unpublished E. coli sampling (PDF pp. 11-20); Literature cited (PDF pp. 20-29). Note: the paper has no standalone Methods section.",
+    "why_tool_chosen": "Sections 1-5 present a non-systematic philosophical and historical essay, while Section 6 conducts an empirical institutional and legal-regulatory case study of Uniontown, Alabama using primary administrative enforcement dockets (ADEM eFile violations, 2008 consent decree, NPDES permits, Stop Work Order), USEPA diagnostic filings, engineering reports, collated SSO spill records (Figure 1), and author field observations/water testing. It has no comparator arm (ruling out ROBINS-I), no randomized or observational survey/cohort sample (ruling out RoB 2 and JBI checklists), no formal qualitative interview/ethnographic design (ruling out CASP and MMAT), and no systematic review protocol (ruling out AMSTAR 2), making the Legal Institutional Evidence Appraisal Framework the exact fit rather than NONE."
+  }
+}

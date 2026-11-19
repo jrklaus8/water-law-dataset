@@ -1,0 +1,318 @@
+{
+  "study_id": "S146",
+  "order": 44,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "adf2492b91309833cdabc2f92325b5f8e24d3b76b46fe8c8971ed0fe629f720e",
+  "input_text_sha256": "042fe5441e014626a890aa051a9fbdf3983df8be35133d0c4f543593a9fd640a",
+  "prompt_sha256": "8b0f8bd86332502189d1b3cc68c99002f736d860f8cac9fefde3145f0dc50a10",
+  "started_at": "2026-11-19T01:58:45.461198+00:00",
+  "completed_at": "2026-11-19T02:01:18.402829+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S146\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S146\n- Record ID: R26BBC984E24B\n- Citation string: Xerente VS, Naval LP (2026). Água, saúde e direitos: desafios do abastecimento de água potável e saneamento para comunidades indígenas no Tocantins, Brasil [Water, health, and rights: challenges of dr\n- DOI: 10.5327/Z2176-94782592\n- Retrieval status: retrieved_oa_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 042fe5441e014626a890aa051a9fbdf3983df8be35133d0c4f543593a9fd640a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=47711, sha256=042fe5441e014626a890aa051a9fbdf3983df8be35133d0c4f543593a9fd640a]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / High concern for incomplete administrative coverage: Cross-sectional secondary administrative compilation rather than longitudinal cohort follow-up, but 4 of the 9 ethnic groups in DSEI-Tocantins (~220 individuals) and 1 village in Table 4 (92 vs 93 WSS-only villages in Table 3) are omitted from the analytical tables without explanation (PDF pp. 6, 8).",
+      "confounding": "High risk: Descriptive cross-tabulations of 2017 acute diarrheal disease (ADD) cases across village sanitation categories control for no confounders (e.g., village population density, remoteness, access to health posts/surveillance, age structure, water source quality, or actual treatment functionality), and planned chi-square/t-tests are never reported (PDF pp. 4, 6, 8).",
+      "legal_measurement_quality": "Moderate / Adequate with errors: Core Brazilian constitutional, statutory, and regulatory instruments (Constitution 1988, Law 9,836/1999, Ordinance 254/2002 PNASPI, Law 11,445/2007, Law 12,314/2010, Law 14,026/2020, Ordinance GM/MS 888/2021) are identified, but Table 2 mislabels Ministry of Health Ordinance (Portaria) No. 755/2012 as 'Law Nº. 12,651' (Brazil's Forest Code) and PNASPI compliance is evaluated solely via coarse village infrastructure counts (PDF pp. 4, 6, 9-10).",
+      "measurement_bias": "High risk: Relies on secondary SESAI/SIASI (2019) administrative counts without operational verification of infrastructure functionality or water potability; the authors explicitly note severe differential surveillance under-notification of ADD in unserved villages, and the text conflates the acronym SAA ('Water Supply System' vs 'Alternative Health Actions') and confuses 51 unserved villages with '51 ADD cases' vs 131 in Table 4 (PDF pp. 6, 8).",
+      "outcome_measurement_quality": "Weak: Sanitation coverage (presence of Water Supply Systems and Sanitary Modules) and 2017 ADD case counts come from aggregate 2019 SESAI administrative tables lacking clinical case definitions, potability testing data, infrastructure functionality metrics, and internal numerical consistency between text and tables (PDF pp. 6, 8).",
+      "reporting_bias": "High risk: Methods state that primary quantitative and qualitative village data were collected and analyzed using chi-square tests and t-tests (p<0.05), yet zero primary qualitative data, zero chi-square/t-test statistics or p-values, and no bibliography/extraction table of the 44 PRISMA-screened Scopus studies are reported in Results (PDF pp. 3-4, 6, 8).",
+      "selection_bias": "High risk: Although DSEI-Tocantins is described as covering 11,908 Indigenous residents across 160 villages and 9 ethnic groups, Tables 3 and 4 include only 5 ethnic groups (11,688 residents; 161 villages in Table 3, 160 in Table 4) while excluding Xambioá, Krahô-Kanela, Avá-Canoeiro, and Pankararu without explanation; legislative search selection rules are also unspecified (PDF pp. 4, 6, 8)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The study identifies the primary Brazilian federal statutes, decrees, and health ordinances governing Indigenous health and basic sanitation (1988 Constitution; Law No. 5,371/1967; Decree No. 97,838/1989; Law No. 9,836/1999; Ordinance No. 254/2002 [PNASPI]; Law No. 11,445/2007; Law No. 12,314/2010; Law No. 14,026/2020; Ordinance GM/MS No. 888/2021). However, Table 2 erroneously cites 'Law Nº. 12,651' (2012) as organizing social control in SasiSUS (Law 12,651/2012 is actually Brazil's Forest Code), whereas the References list cites Ministry of Health Portaria No. 755/2012 for that provision, and the References description of Law No. 12,314/2010 mismatches Table 2 and the main text.",
+        "rating": "adequate",
+        "where_found": "PDF p. 4 (Methodology - Policy and legislative review, Table 2); p. 6 (Governance of Sanitation Actions); pp. 9-10 (References)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Jurisdictional boundaries are clearly specified across federal Brazilian health/sanitation agencies (FUNAI, FUNASA, Ministry of Health/SESAI, SasiSUS) and subnational implementation within the Special Indigenous Health District of Tocantins (DSEI-TO), covering demarcated Indigenous lands across 15 municipalities in the state of Tocantins, Brazilian Legal Amazon (noting only a minor decimal-separator typo on p. 3 reporting state area/density).",
+        "rating": "strong",
+        "where_found": "PDF p. 3 (Methodology - Study area); p. 4 (Primary data collection); pp. 6-7 (Governance of Sanitation Actions; Indigenous communities in Tocantins and sanitation, Figure 3)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "At the policy level, exposure is framed around PNASPI (Ordinance No. 254/2002) and SasiSUS sanitation mandates; empirically, villages are grouped into three administrative categories from Brasil (2019): 'With WSS and SM', 'WSS' (or 'Only with WSSs'), and 'Without WSS and without SM'. Operational definitions of system functionality, potability, and treatment continuity are absent, and p. 6 inconsistently expands SAA first as 'Water Supply System (SAA)' and three paragraphs later as 'Alternative Health Actions (SAA)', while equating WSS with 'water treatment plants'.",
+        "rating": "weak",
+        "where_found": "PDF pp. 1-2 (Abstract, Introduction); p. 6 (Indigenous communities in Tocantins and sanitation); p. 8 (Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Outcomes consist of aggregate village/population counts of water supply systems and sanitary modules (Table 3) and reported 2017 cases of acute diarrheal disease (ADD) (Table 4) extracted from SESAI (Brasil, 2019). No clinical/epidemiological case definition for ADD, exposure-time denominator, or water potability metric is defined, and text-table discrepancies occur (p. 6 reports '51 ADD cases' for the group without SAA and SM, conflating the 51 unserved villages with the 131 ADD cases reported in Table 4).",
+        "rating": "weak",
+        "where_found": "PDF p. 6 (Indigenous communities in Tocantins and sanitation); p. 8 (Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The text states DSEI/TO encompasses 11,908 Indigenous individuals across 160 villages and 9 ethnic groups (SIASI, 2019), yet Tables 3 and 4 tabulate only 5 ethnic groups (Javaé, Krahô, Karajá, Xerente, Apinajé) totaling 11,688 individuals and 161 villages (Table 3) or 160 villages (Table 4), omitting 4 named groups (Xambioá, Krahô-Kanela, Avá-Canoeiro, Pankararu) without explanation. Legislative sampling bounds on VHL/government portals are also unreported.",
+        "rating": "weak",
+        "where_found": "PDF pp. 3-4 (Methodology); p. 6 (Indigenous communities in Tocantins and sanitation); p. 8 (Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "While PRISMA screening steps and exclusion counts are reported for the Scopus literature review (n=423 to n=44), the 44 selected papers are not listed in a synthesis table, selection criteria for the 10 legal documents in Table 2 are unspecified, and no justification is given for excluding 4 of the 9 DSEI-TO ethnic groups from Tables 3 and 4 or relying solely on 2017/2019 SESAI data in a 2025/2026 study.",
+        "rating": "weak",
+        "where_found": "PDF pp. 3-4 (Methodology, Tables 1 and 2); pp. 6, 8 (Results and Discussion, Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Although Methods claims primary quantitative and qualitative village data collection and inferential testing, all empirical figures derive from secondary 2019 SESAI/SIASI administrative reports. Moreover, the authors acknowledge severe differential surveillance under-reporting of ADD in villages lacking WSS and SM, which invalidates direct cross-group incidence comparisons.",
+        "rating": "weak",
+        "where_found": "PDF p. 4 (Methodology - Primary data collection; Data treatment); pp. 6, 8 (Indigenous communities in Tocantins and sanitation, Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The study relies on cross-sectional descriptive administrative tabulations from a single report with no temporal baseline, counterfactual comparator, or statistical identification strategy. Unadjusted ADD proportions are paradoxically lowest in villages without WSS and SM (131/1,737 = 7.5%) versus WSS+SM (11.85%) and WSS only (13.49%), reflecting notification bias rather than causal effects.",
+        "rating": "weak",
+        "where_found": "PDF p. 4 (Data treatment); pp. 6, 8 (Indigenous communities in Tocantins and sanitation, Table 4)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "No statistical adjustment or stratification (beyond raw counts for 5 ethnic groups) is performed for geographic isolation, health post proximity, surveillance intensity, demographic age structure, or water quality, and the chi-square and t-tests described in Methods (p. 4) are completely absent from Results.",
+        "rating": "weak",
+        "where_found": "PDF p. 4 (Data treatment); pp. 6, 8 (Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides a detailed, well-grounded institutional account of Brazil's Indigenous health and sanitation governance trajectory, tracing transitions from FUNAI and FUNASA to SESAI and decentralized DSEIs, the tension between standardized state service delivery and PNASPI's principle of differentiated care, and weaknesses in Indigenous social control mechanisms.",
+        "rating": "strong",
+        "where_found": "PDF p. 2 (Introduction); p. 4 (Table 2); p. 6 (Governance of Sanitation Actions); p. 8 (Results and Discussion)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Official Brazilian legislation and the 2019 SESAI report URLs are cited, but replication is hindered by omitted Scopus field tags and search dates, absence of a list of the 44 included review articles, non-existence of the primary/qualitative data and statistical tests mentioned on p. 4, and internal count inconsistencies (160 vs 161 villages; 93 vs 92 WSS villages; 51 vs 131 ADD cases).",
+        "rating": "weak",
+        "where_found": "PDF pp. 3-4 (Methodology, Tables 1-2); pp. 6, 8 (Tables 3-4); pp. 9-10 (References)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Four broad thematic categories are stated for the literature review and three infrastructure tiers are reproduced from SESAI (2019), but no coding protocol, operational definitions for policy compliance, inter-coder agreement statistics, or reconciliation rules for administrative database discrepancies are reported.",
+        "rating": "weak",
+        "where_found": "PDF pp. 3-4 (Study selection and data extraction; Policy and legislative review); p. 8 (Tables 3 and 4)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Despite the first author sharing an ethnonym with one of the studied Tocantins Indigenous peoples (Xerente) and the paper advocating integration of Indigenous cosmologies and participatory governance, the text provides no explicit positionality or reflexivity statement examining the authors' relationship to the communities, DSEI-TO institutions, or analytical framing.",
+        "rating": "not assessable",
+        "where_found": "PDF p. 1 (Author affiliations); p. 3-4 (Methodology); p. 9 (Authors' Contributions)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Literature review screening procedure (D6 Selection process)",
+        "page": "PDF p. 3 (Methodology - Study selection and data extraction)",
+        "quote": "Titles and abstracts were independently screened. Disagreements"
+      },
+      {
+        "criterion": "Legislative review scope (D1 Legal source accuracy / D6 Selection process)",
+        "page": "PDF p. 4 (Methodology - Policy and legislative review)",
+        "quote": "A systematic review of national laws, decrees, ordinances, and public"
+      },
+      {
+        "criterion": "Secondary administrative data source (D7 Measurement transparency)",
+        "page": "PDF p. 4 (Methodology - Primary data collection in indigenous villages)",
+        "quote": "extracted from the Special Secretariat for Indigenous Health (SESAI)"
+      },
+      {
+        "criterion": "Unreported statistical tests promised in Methods (D9 Confounding / Reporting bias)",
+        "page": "PDF p. 4 (Methodology - Data treatment)",
+        "quote": "where applicable, chi-square tests and t-tests for comparisons between"
+      },
+      {
+        "criterion": "Text-table discrepancy in ADD outcome count (D4 Outcome definition / D11 Replication)",
+        "page": "PDF p. 6 (Results and Discussion - Indigenous communities in Tocantins and sanitation)",
+        "quote": "SAA and SM, 51 ADD cases were reported (Brasil, 2019) (Table 4)."
+      },
+      {
+        "criterion": "Surveillance under-notification bias in unserved villages (D7 Measurement transparency / D8 Causal identification)",
+        "page": "PDF p. 8 (Results and Discussion - Indigenous communities in Tocantins and sanitation)",
+        "quote": "appears to suggest a deficiency in notification rather than a lower"
+      }
+    ],
+    "overall_narrative_summary": "Structured non-validated appraisal under the Legal Institutional Evidence Appraisal Framework indicates high methodological concern / weak empirical rigor alongside strong institutional contextualization. Xerente and Naval (2026) combine a PRISMA-framed Scopus literature search (44 included articles, not individually listed), a doctrinal review of 10 Brazilian federal constitutional, statutory, and regulatory norms (Table 2), and descriptive secondary administrative data from SESAI/SIASI (2019) covering Indigenous villages in DSEI-Tocantins (Tables 3-4). While the study offers strong institutional and jurisdictional contextualization (D2, D10) and generally adequate identification of Brazilian sanitation and Indigenous health legislation (D1, though Table 2 mislabels Ministry of Health Portaria No. 755/2012 as Law No. 12,651), its empirical component exhibits substantial weaknesses across exposure and outcome operationalization, sampling, measurement, causal inference, confounding, replication, and reporting (D3-D9, D11-D12). Despite stating in Methods that primary quantitative and qualitative village data were collected and analyzed with chi-square and t-tests (p<0.05), the Results present zero primary qualitative data and zero statistical test results, omit 4 of the 9 DSEI-Tocantins ethnic groups from Tables 3-4 without explanation, contain text-table transcription errors (e.g., reporting 51 ADD cases on p. 6 vs 131 in Table 4, and glossing SAA as 'Alternative Health Actions'), and rely on ADD surveillance data subject to acknowledged under-notification in unserved villages.",
+    "overall_rating": "Structured non-validated judgment: High methodological concern / weak empirical rigor (strong institutional and jurisdictional context, adequate legal source identification with citation errors, weak empirical measurement, sampling, confounding control, and reporting transparency)",
+    "paper_read": "full text",
+    "study_design_identified": "Doctrinal-empirical hybrid policy implementation study combining a PRISMA literature review, a doctrinal review of Brazilian federal water/sanitation/Indigenous health legislation, and descriptive cross-sectional secondary administrative data analysis of Indigenous villages in Tocantins (SESAI/SIASI, 2019)",
+    "study_id": "S146",
+    "where_found_summary": "PDF pp. 1-10: Abstract (p. 1), Introduction (p. 2), Methodology including Study area, Systematic literature review, Policy and legislative review, Primary/secondary SESAI data sources, and Data treatment (pp. 3-4, Tables 1-2), Results and Discussion including Brazilian legal governance and DSEI-Tocantins infrastructure/ADD tabulations (pp. 4-9, Figures 2-3, Tables 3-4), Conclusion and References (pp. 9-10).",
+    "why_tool_chosen": "This study is a doctrinal-empirical hybrid evaluating implementation of Brazil's National Health Care Policy for Indigenous Peoples (PNASPI) and basic sanitation laws in Tocantins by combining a review of 10 national statutes/ordinances and Scopus literature with descriptive secondary administrative tabulations from a 2019 SESAI report. Despite a heading mentioning primary quantitative and qualitative village data collection and a Data treatment paragraph mentioning chi-square and t-tests, the paper contains zero primary qualitative data and zero statistical analyses—ruling out MMAT, CASP, ROBINS-I, and JBI Analytical Cross-Sectional—and is not a standalone secondary systematic review (ruling out AMSTAR 2). The Legal Institutional Evidence Appraisal Framework directly fits this doctrinal-administrative hybrid design."
+  }
+}

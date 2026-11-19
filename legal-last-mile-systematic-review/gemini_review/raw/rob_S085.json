@@ -1,0 +1,269 @@
+{
+  "study_id": "S085",
+  "order": 3,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "4a223351f48dee4d889c25cde2b021185f527526a1c2722b93b1dc6b78269ca8",
+  "input_text_sha256": "b30b81b82831a68a41e9e06f0631cbd67b590a5d4a1cb012eb3886a458ebee00",
+  "prompt_sha256": "80299afcf9237f2ee90dce6dabdcbe2bb81d99d2a1ec0cdd70aa34bbcff63f94",
+  "started_at": "2026-11-19T01:37:32.279915+00:00",
+  "completed_at": "2026-11-19T01:40:12.746132+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S085\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S085\n- Record ID: R9E24EC349D72\n- Citation string: Gaikwad N, Thomas A (2026). Getting on the grid: A field experiment on bottom-up political pressure and access to essential public services. American Journal of Political Science, early view.\n- DOI: 10.1111/ajps.70068\n- Retrieval status: retrieved_swim_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: b30b81b82831a68a41e9e06f0631cbd67b590a5d4a1cb012eb3886a458ebee00) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=182317, sha256=b30b81b82831a68a41e9e06f0631cbd67b590a5d4a1cb012eb3886a458ebee00]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "RoB 2 (cluster-randomized trials variant)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Some concerns (moderate risk): Over the five-year follow-up between the 2018 baseline and 2023 endline surveys, 38.5% of original baseline respondents were lost to follow-up (61.5% recontacted), primarily due to slum demolitions and temporary or permanent migration (PDF p. 22). Attrition regressions in Appendix N (Table S8, PDF p. 67) confirm no statistically significant differential attrition by T1 or T2 in either the full or eligible-lands samples, and 103 respondents from demolished slums were surveyed via phone, but pooling 2,444 post-treatment replacement households relies on within-cluster exchangeability and covariate imputation assumptions.",
+      "confounding": "Low concern for primary experimental estimates; moderate concern for exploratory moderator analyses: Two-stage cluster randomization (greedy covariate-matched block randomization of T2 across 76 slums and complete randomization of T1 across 152 slum clusters) produced good baseline balance across 17 covariates (Appendix M, Tables S6-S7, PDF p. 66), and covariate-adjusted weighted least squares models with block fixed effects confirm the unadjusted estimates (Table S14, PDF p. 71). Exploratory subgroup analyses (e.g., NOC land requirements, corporator partisanship/ethnicity) are observational across clusters and subject to unmeasured settlement-level confounding.",
+      "legal_measurement_quality": "Strong: Legal and administrative eligibility rules were rigorously operationalized using primary judicial and municipal sources—including the 2014 Bombay High Court PIL ruling (Pani Haq Samiti & Ors. v. BMC), the 2015/2017 BMC Hydraulic Engineer's Department water policies, binding 2005 High Court prohibitory orders covering forest and saltpan encroachments, Right to Information responses from the Salt Department, and the 2022 BMC Water for All policy (Appendix F, PDF pp. 54-55)—paired with baseline GPS community mapping and NGO administrative logs classifying all 76 slums across 10 land-owning authorities and No Objection Certificate (NOC) regimes (Appendix I, PDF pp. 58-59).",
+      "measurement_bias": "Low concern for the primary outcome; some concerns for secondary/intermediate outcomes: Primary endline formalization (Formalized) required independent survey enumerators to physically inspect both the household's BMC water pipe and the attached BMC water meter in addition to verifying fee-paying status and post-2018 timing (Appendix B, Table S2, PDF pp. 48-49), minimizing social desirability or observer bias despite unblinded community interventions. However, verifying installation timing (especially for unscreened replacement households), phone interviews for 1.5% of endline respondents from demolished slums, and midline petitioning-stage measures (application submitted, BMC visit, P-form received) relied on unblinded respondent self-report and multi-year recall.",
+      "outcome_measurement_quality": "Strong: The primary water access outcome went beyond household self-report by requiring direct visual verification by enumerators of a physical municipal water pipe and an attached BMC meter (Table S2, PDF pp. 48-49), complemented by granular intermediate administrative milestones along the municipal connection process (application filing, BMC engineer site visit, P-form approval, and verified metered standpost connection).",
+      "reporting_bias": "Some concerns: The authors pre-registered the study on EGAP, transparently report null full-sample estimates alongside statistically significant eligible-lands subsample estimates in the abstract and main tables (Table 1, PDF p. 25; Table S18, PDF p. 74), and clearly label non-pre-registered mechanism and timing tests as exploratory. However, initial EGAP registration occurred in January 2019 after baseline data collection and during intervention delivery, the pivotal July 2019 amendment excluding 28 of 76 slums on forest, footpath, and saltpan lands was filed after intervention completion based on implementation learnings (albeit four years prior to endline data collection), and a February 2024 amendment specifying pooling of the 2,444 replacement households was filed after endline fieldwork concluded without reporting original-panel-only endline estimates (Appendix K, PDF pp. 63-64).",
+      "selection_bias": "Some concerns: Although the 76 study slums were purposively sampled via a pre-baseline mapping exercise, baseline households were selected via random walk with pre-specified eligibility screening prior to randomization (PDF pp. 18-19, 51). One cluster of 153 was dropped in Step 2 randomization, with robustness verified under alternative assignments (Table S17, PDF p. 73). However, 2,444 of the 6,652 endline observations (36.7%) were replacement households recruited via random walk after interventions had concluded, and endline results restricted exclusively to the pre-randomization baseline cohort are not separately reported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1a",
+        "domain_name": "Randomization process",
+        "justification": "Allocation followed a formal two-step cluster-randomization procedure after completion of the community mapping and baseline surveys (Feb-Apr 2018). First, the 76 eligible slums were grouped by cluster count and matched into randomization blocks via a greedy algorithm on baseline covariates, with slums randomized to T2 (political coordination). Second, slum clusters within slums were assigned via complete randomization to T1 (bureaucratic assistance). Baseline balance checks across 17 covariates in both the full and eligible-lands samples (Tables S6-S7) show no systematic imbalances beyond chance expectations (1 variable per arm at p < 0.05), and covariate-adjusted models (Table S14) confirm stability. One cluster of 153 was dropped during Step 2 T1 randomization, and Appendix R (Table S17) demonstrates invariance to coding that cluster as T1=0 or T1=1.",
+        "rating": "Low",
+        "where_found": "Empirical Strategy — Randomization & Internal Validity (PDF pp. 19-22); Appendix C (PDF p. 50); Appendix M, Tables S6-S7 (PDF p. 66); Appendix R, Table S17 (PDF p. 73)"
+      },
+      {
+        "domain_id": "D1b",
+        "domain_name": "Timing of identification or recruitment of participants within clusters",
+        "justification": "Original baseline respondents (N = 6,860-6,863) were recruited and screened in Feb-Apr 2018 prior to cluster randomization and prior to intervention rollout in May 2018. However, due to 38.5% loss to follow-up by the 2023 endline, enumerators recruited a post-intervention replacement sample of 2,444 additional households (36.7% of the 6,652 analyzed endline observations; plus 1,466 replacements at midline) via random walk within clusters long after T1 and T2 had been publicly implemented. Unlike baseline respondents, replacement households were not pre-screened prior to treatment for baseline BMC connection status or recent applications (relying instead on retrospective recall of connection timing in Question C), and the paper does not report sensitivity analyses restricting endline estimates solely to the pre-randomization baseline panel.",
+        "rating": "Some concerns",
+        "where_found": "Empirical Strategy — Sampling and Measurement & Internal Validity (PDF pp. 18-19, 22); Appendix B, Table S2 (PDF pp. 48-49); Appendix D (PDF pp. 51-52); Appendix K (PDF p. 63)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Deviations from intended interventions",
+        "justification": "The authors appropriately estimate intent-to-treat (ITT) effects with randomization-block fixed effects and cluster-adjusted weights/standard errors, and the external research team remained uninvolved in community facing activities. However, T1 (door-to-door facilitation) and T2 (public banners, community rallies, delegations) were necessarily unblinded. Because T1 was randomized across clusters within large multi-cluster slums, within-slum spillover remained possible despite maximizing inter-cluster distance, midline manipulation checks revealed substantial background NGO water assistance in control clusters (39% control mean for NGO visits, Table S10), and Appendix J notes that after first-round interventions in evaluation plots, partner NGOs committed to assist households elsewhere in treated slums, creating potential contamination between the 2019 midline and 2023 endline waves.",
+        "rating": "Some concerns",
+        "where_found": "Empirical Strategy — Sampling, Estimation & Manipulation Checks (PDF pp. 18-23); Appendix D (PDF p. 51); Appendix E.2 fn. 22 (PDF p. 53); Appendix J, Potential Risks #2 (PDF p. 61); Appendix O, Table S10 (PDF p. 68)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Missing outcome data",
+        "justification": "Between the 2018 baseline survey and the 2023 endline survey five years later, 38.5% of baseline participants attrited (only 61.5% were successfully recontacted), driven by slum demolitions and rural migration over the pandemic-extended follow-up. Although attrition regressions in Appendix N (Table S8) show virtually identical attrition rates across T1 and T2 arms in both the full and eligible-lands samples (p = 0.34 to 0.94) and the team tracked 103 respondents from demolished slums by telephone, nearly 40% missingness in the longitudinal cohort—addressed by pooling 2,444 post-treatment replacement households and imputing their missing baseline covariates in adjusted models—introduces some risk of bias if unobserved water-access trajectories of out-migrants differed across clusters.",
+        "rating": "Some concerns",
+        "where_found": "Empirical Strategy — Internal Validity (PDF p. 22); Appendix K (PDF pp. 63-64); Appendix N, Tables S8-S9 (PDF pp. 65, 67)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Measurement of the outcome",
+        "justification": "Surveys were administered by an independent survey firm (MORSEL) separate from the implementing NGOs (YUVA and Pani Haq Samiti). Crucially, the primary endline outcome (Formalized) was not based solely on self-report: enumerators physically inspected and verified the presence of the household's BMC water pipe and an attached BMC water meter (Table S2, Question B), alongside confirming regular fee liability and that the connection was not obtained more than five years prior. Physical verification of infrastructure and meters makes differential measurement error across arms unlikely for the primary outcome, though 1.5% of endline interviews (demolished slums) occurred by phone, replacement households relied on 5-year recall to exclude pre-2018 connections, and secondary/midline petitioning outcomes relied on self-report.",
+        "rating": "Low",
+        "where_found": "Title page fn. (PDF p. 1); Empirical Strategy — Internal Validity (PDF p. 22); Appendix B, Table S2 (PDF pp. 48-49); Appendix J (PDF p. 61)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Selection of the reported result",
+        "justification": "The study demonstrates substantial reporting transparency: it presents null full-sample estimates side-by-side with significant eligible-lands subsample estimates in Table 1 and Figure 6, reports both binary and ordinal formalization outcomes (Table S18), and explicitly flags non-pre-registered mechanism and timing analyses as exploratory. Nevertheless, some concerns arise because (1) the initial EGAP pre-analysis plan was registered in January 2019 after baseline collection and midway through the May 2018-March 2019 interventions; (2) while all primary full-sample interaction tests are null (p = 0.19), the headline finding rests on the eligible-lands subsample excluding 28 of 76 slums (adding saltpan lands to forest and footpath lands) introduced via a July 2019 PAP amendment after intervention completion based on field reports (though four years before endline data collection); and (3) a second amendment in February 2024 (after endline fieldwork concluded in September 2023) specified pooling the 2,444 replacement households without reporting baseline-cohort-only endline estimates.",
+        "rating": "Some concerns",
+        "where_found": "Empirical Strategy — Estimation (PDF pp. 20-22); Experimental Results, Table 1 (PDF pp. 24-25); Appendix C (PDF p. 50); Appendix K & K.1 (PDF pp. 63-64); Appendix S, Table S18 (PDF pp. 73-74)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D1a / Study Design (Two-level cluster randomization of slums and slum clusters)",
+        "page": "PDF Page 51, Appendix D (Study Setting and Sample)",
+        "quote": "While our political coordination intervention (T2) was randomized at the level of the slum, the inclusion of"
+      },
+      {
+        "criterion": "D1b (Post-intervention recruitment of replacement households via random walk)",
+        "page": "PDF Page 52, Appendix D (Study Setting and Sample)",
+        "quote": "enumerators were instructed to select a different household from the same slum cluster using a random walk"
+      },
+      {
+        "criterion": "D2 (Phased NGO commitment to assist remaining households in treated slums after first-round evaluation interventions)",
+        "page": "PDF Page 61, Appendix J (Research Ethics — Potential Risks)",
+        "quote": "our NGO partners committed to work elsewhere in the slum to provide assistance to all households in"
+      },
+      {
+        "criterion": "D3 (Endline attrition of original baseline sample over five-year follow-up)",
+        "page": "PDF Page 22, Section Empirical Strategy — Internal Validity",
+        "quote": "In total, we were able to successfully recontact 61.5 percent of the original"
+      },
+      {
+        "criterion": "D4 (Direct enumerator physical verification of BMC water pipe and attached meter)",
+        "page": "PDF Page 48, Appendix B, Table S2 (Variables description and sources)",
+        "quote": "water coming from that pipe, and the BMC water meter attached"
+      },
+      {
+        "criterion": "D5 (Post-intervention July 2019 pre-analysis plan amendment excluding slums on ineligible lands)",
+        "page": "PDF Page 63, Appendix K (Pre-Analysis Plan)",
+        "quote": "subsequently filed an amendment in July 2019 to the pre-analysis plan to supplement the originally specified"
+      }
+    ],
+    "overall_narrative_summary": "S085 (Gaikwad & Thomas, 2026) is a large, two-level factorial cluster-randomized controlled trial across 76 informal settlements (152 analyzed slum clusters; N = 6,652 endline households) in Mumbai evaluating whether household-level bureaucratic facilitation (T1, cluster-randomized) and collective political mobilization (T2, slum-randomized) increase formalized municipal water connections over a five-year horizon (2018-2023), supplemented by illustrative qualitative interviews in Appendix H. Appraised with the RoB 2 cluster-randomized trials variant, the study is rated as having \"Some concerns\" overall. Major methodological strengths include computer-generated block and cluster randomization with verified baseline balance across 17 covariates (D1a: Low), direct physical verification of municipal water pipes and attached BMC meters by independent survey enumerators for the primary endline outcome (D4: Low), extensive primary legal-doctrinal documentation of High Court orders and BMC land-eligibility rules, and commendable transparency in reporting null full-sample estimates alongside significant eligible-lands subsample estimates. However, four domains raise \"Some concerns\" without reaching high risk: (1) 36.7% of the analyzed endline sample (2,444 households) were replacement households recruited via random walk after interventions had concluded, with no separate reporting of original-panel-only endline estimates (D1b); (2) unblinded community campaigns operated alongside high background NGO activity in control clusters (39%) and phased ethical commitments by partner NGOs to assist non-evaluation areas within slums after initial rollout (D2); (3) 38.5% of original baseline respondents attrited over the five-year window due to slum demolitions and migration, though attrition was well-balanced across arms (D3); and (4) the initial EGAP pre-analysis plan was registered after intervention start, the pivotal 28-slum \"eligible lands\" exclusion (adding saltpan lands) was introduced in a July 2019 post-intervention amendment (albeit four years prior to endline data collection), and replacement-sample pooling was formalized in a February 2024 amendment after endline fieldwork (D5).",
+    "overall_rating": "Some concerns",
+    "paper_read": "full text",
+    "study_design_identified": "Multi-level factorial cluster-randomized controlled trial (76 slums / 152-153 slum clusters in Mumbai randomized to slum-level political coordination and cluster-level bureaucratic assistance, with 1-year midline and 5-year endline household surveys, supplemented by 9 qualitative stakeholder interviews for mechanism illustration)",
+    "study_id": "S085",
+    "where_found_summary": "Experimental Research Design & Empirical Strategy (PDF pp. 15-23); Experimental Results & Mechanisms (PDF pp. 23-34); Appendix B Variable Definitions Table S2 (PDF pp. 48-50); Appendix C Study Timeline (PDF p. 50); Appendix D Study Setting and Sample (PDF pp. 51-52); Appendix E Interventions (PDF pp. 52-54); Appendix F Ineligible Land Types (PDF pp. 54-55); Appendix H Qualitative Insights (PDF pp. 56-58); Appendix I NOCs (PDF pp. 58-61); Appendix J Research Ethics (PDF pp. 59, 61-62); Appendix K Pre-Analysis Plan (PDF pp. 63-64); Appendix M Balance Tests Tables S6-S7 (PDF p. 66); Appendix N Attrition Tests Tables S8-S9 (PDF p. 67); Appendix P-S Robustness & Additional Pre-Registered Analyses (PDF pp. 69-74).",
+    "why_tool_chosen": "The study's primary empirical strategy is a two-stage factorial cluster-randomized controlled trial in which 76 slums were block-randomized to political coordination (T2) and 152 slum clusters within those slums were cluster-randomized to bureaucratic assistance (T1) (PDF pp. 3, 17-20). Under RISK_OF_BIAS.md §1, \"RoB 2 (cluster-randomized trials variant)\" is the exact dedicated checklist for cluster-randomized trials. Although Appendix H includes brief illustrative insights from NGO progress reports and 9 semi-structured stakeholder interviews (6 NGO workers, 2 BMC engineers, 1 corporator) to contextualize mechanisms, the study is framed and executed as a quantitative field experiment rather than an integrated mixed-methods study, making the cluster-RCT RoB 2 variant strictly more appropriate and diagnostic than MMAT."
+  }
+}

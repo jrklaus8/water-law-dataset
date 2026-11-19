@@ -1,0 +1,318 @@
+{
+  "study_id": "S120",
+  "order": 55,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "357e2ab1e8e7818eccaac9d5831cf6032d83ffbaa98a3fcce6943fceeeeaf357",
+  "input_text_sha256": "a0272e9f31c336e04e047295223d4dd9c5cf2e3982e10744301ae2be2147523b",
+  "prompt_sha256": "1a58f40f1bf0d2f347670494963975d56a33383f29d61aae0f30cfc75bbc3f97",
+  "started_at": "2026-11-19T02:03:59.132677+00:00",
+  "completed_at": "2026-11-19T02:05:40.889630+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S120\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S120\n- Record ID: R947DFEA65396\n- Citation string: Jackson SE, Palmer LR (2012). Modernising Water: Articulating Custom in Water Governance in Australia and East Timor. The International Indigenous Policy Journal 3(3).\n- DOI: 10.18584/iipj.2012.3.3.7\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: a0272e9f31c336e04e047295223d4dd9c5cf2e3982e10744301ae2be2147523b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=105248, sha256=a0272e9f31c336e04e047295223d4dd9c5cf2e3982e10744301ae2be2147523b]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable — comparative legal-institutional and policy case study without an empirical participant cohort or panel sample subject to longitudinal attrition.",
+      "confounding": "High concern (uncontrolled) — although historical, hydrological, demographic, and post-conflict contextual factors (e.g., North vs. South water development and colonial dispossession in Australia; Indonesian occupation, infrastructure destruction, poverty, and church opposition in East Timor) are richly described narratively, there is no counterfactual or analytical strategy to separate statutory reform effects from confounding conditions.",
+      "legal_measurement_quality": "Adequate — key statutory, judicial, intergovernmental, and draft legislative instruments in both Australia (Mabo, Native Title Act 1993, 1994 Water Reform Framework, 2004 National Water Initiative paras. 52–54, draft Mataranka Tindal Aquifer Plan) and East Timor (Constitution, 2004 Water Services Decree, 2010 Third Draft National Water Supply Policy, and verbatim provisions of the 2012 Draft Water Resources Law) are situated accurately in institutional context, though several foundational legal sources rely on secondary legal commentary rather than primary legal citations and no systematic legal coding rules are used.",
+      "measurement_bias": "High concern — the paper reports no primary empirical measurement protocol; claims regarding customary water governance and statutory implementation rely on narrative synthesis of secondary literature, donor reports (e.g., ADB evaluations), unpublished manuscripts, and unverified personal communication.",
+      "outcome_measurement_quality": "Weak — water access, governance recognition, and resource sustainability outcomes are assessed narratively through illustrative examples, secondary estimates (e.g., Indigenous-specific entitlements representing <0.01% of Australian water diversions), and anecdotal compliance observations rather than standardized, systematically collected primary outcome indicators.",
+      "reporting_bias": "Moderate-to-high concern (Can't tell) — no pre-specified study protocol, search strategy, or case/evidence selection criteria are reported, creating risk of selective citation of subnational examples and secondary literature aligned with the authors' normative argument.",
+      "selection_bias": "High concern — purposive, undocumented selection of two national jurisdictions and illustrative subnational examples (e.g., Murray-Darling Basin, Katherine/Mataranka, Cape York; Baucau, Oecusse, Dili environs) with no explicit sampling frame or inclusion/exclusion criteria."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The authors accurately describe major statutory, constitutional, judicial, and policy instruments across both jurisdictions—including Australia's Mabo decision, Native Title Act 1993, 1994 Water Reform Framework, 2004 National Water Initiative (paras. 52–54), and draft Mataranka Tindal Aquifer Plan (DNRETAS, 2011), as well as East Timor's Constitution, 2004 Water Services Decree, 2010 Third Draft National Water Supply Policy, and verbatim text from the unpublished 2012 Draft Water Resources Law (Article 2(a), Article 10(2), and six customary-law sub-articles). Rated 'adequate' rather than 'strong' because several foundational statutes and cases are cited via secondary legal scholarship (e.g., Godden 2005; Bartlett 2004; Gardner et al. 2009) rather than primary statutory/case citations, and the parent article number for the six quoted sub-articles on PDF p. 14 is omitted.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 6, 9–15 (Australia; Water Governance and Institutional Reform: Statutory Systems in Australia & Statutory Systems in East Timor)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The analysis maintains clear jurisdictional boundaries between federal and state/territory water law in Australia, contrasts remote northern/central jurisdictions (Northern Territory, Pilbara, Cape York) with fully/over-allocated southern basins (Murray-Darling Basin), and differentiates national constitutional/ministerial water policy in East Timor from district- and community-level customary regimes (e.g., Baucau Plateau karst springs, Oecusse enclave, Viqueque, and Dili environs).",
+        "rating": "strong",
+        "where_found": "PDF Pages 5–18 (Australia; East Timor; Water Governance and Institutional Reform; Discussion)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "The legal-institutional exposure—water sector 'modernisation' via Crown/state vesting, separation of water entitlements from land titles, and market-based water trading in Australia, alongside donor-supported IWRM policy development and conditional statutory recognition of customary law/tara bandu in East Timor—is clearly articulated conceptually and historically, though analyzed as broad reform trajectories rather than formally operationalized variables.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 2–4, 9–15 (Abstract; Introduction; Water Governance and Institutional Reform)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Outcomes such as legal recognition and prioritisation of customary water rights, Indigenous share of formal water entitlements, sustainability of rural/urban water supply management, and local adherence to tara bandu prohibitions are discussed narratively and illustratively without standardized operational definitions or consistent cross-case outcome metrics.",
+        "rating": "weak",
+        "where_found": "PDF Pages 11–18 (Statutory Systems in Australia; Community Strategies; Statutory Systems in East Timor; Discussion)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "While the authors explain that Australia and East Timor represent contrasting stages of water governance modernisation with extant customary systems, there is no sampling frame or transparent rationale explaining how specific subnational basins, communities, policy documents, or secondary evaluations were sampled.",
+        "rating": "weak",
+        "where_found": "PDF Pages 2, 4, 5–16 (Abstract; Introduction; Australia; East Timor; Water Governance and Institutional Reform)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "The paper contains no Methods section and specifies no inclusion/exclusion criteria or systematic selection protocol for the subnational case illustrations (e.g., Wardaman/Katherine, Mataranka, Murray-Darling Basin, Baucau, Oecusse), donor reports, or ethnographic sources synthesized.",
+        "rating": "weak",
+        "where_found": "PDF Pages 2, 4 (Abstract; Introduction — absence of Methods/selection criteria throughout text)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "No primary empirical data collection or measurement procedures are reported in the article (despite an acknowledgment of ARC fieldwork funding for East Timor). Empirical claims rely on secondary literature, donor consultant reports (Schoffel 2006; Costin & Powell 2006), unpublished manuscripts (Palmer, n.d.), and an unelaborated personal communication regarding breached tara bandu prohibitions.",
+        "rating": "weak",
+        "where_found": "PDF Pages 2, 11, 13–16 (Acknowledgments; Statutory Systems in Australia; Statutory Systems & Community Strategies in East Timor)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Causal claims linking statutory/market water reforms and superficial state engagement to Indigenous water marginalisation or weakened customary compliance rest on historical narrative, doctrinal reasoning, and illustrative comparison rather than any formal counterfactual or quasi-experimental causal identification strategy.",
+        "rating": "weak",
+        "where_found": "PDF Pages 9–18 (Water Governance and Institutional Reform; Discussion)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Although the authors narratively note major contextual differences—such as extreme aridity, settler agricultural development, and regional land-ownership disparities in Australia, and Indonesian military occupation, post-1999 infrastructure destruction, severe poverty, and church hostility in East Timor—there is no structured analytical design to disentangle legal-institutional effects from these historical, demographic, and hydrological confounders.",
+        "rating": "weak",
+        "where_found": "PDF Pages 5–8, 12–17 (Australia; East Timor; Water Governance and Institutional Reform; Discussion)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper provides deep, richly detailed institutional, historical, political, and cosmological contextualization of both formal statutory regimes (common law reception, Crown vesting, COAG/NWI market reforms, Native Title, UN/donor IWRM reforms) and customary governance institutions (Dreaming cosmologies, song lines, NAILSMA/Indigenous Rangers in Australia; uma lulik sacred houses, Baucau karst spring irrigation rituals, and tara bandu in East Timor).",
+        "rating": "strong",
+        "where_found": "PDF Pages 4–18 (Customary Systems of Water Governance; Australia; East Timor; Water Governance and Institutional Reform; Discussion)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Independent replication is severely limited by the absence of a documented search, selection, or analytical protocol and by reliance on non-public sources, including a 2012 Draft Water Resources Law 'recently viewed by the authors', an unpublished draft manuscript (Palmer, n.d.), and personal communication (2008).",
+        "rating": "weak",
+        "where_found": "PDF Pages 2, 14, 16, 24–25 (Acknowledgments; Statutory Systems & Community Strategies in East Timor; References)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No legal, documentary, or qualitative coding scheme, operational classification rules, or audit trail are reported; statutory texts, policy drafts, and secondary case materials are interpreted purely through narrative synthesis.",
+        "rating": "weak",
+        "where_found": "PDF Pages 4, 9–18 (Introduction; Water Governance and Institutional Reform; Discussion — no coding protocol reported)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Aside from acknowledging Australian Research Council grants supporting Lisa Palmer's East Timor research, the authors do not discuss their own institutional roles, relationships with Indigenous/Timorese communities, NGOs, or government agencies, or how their normative stance in favour of customary water governance shaped case selection and interpretation.",
+        "rating": "weak",
+        "where_found": "PDF Pages 1–2, 18–19 (Author affiliations; Acknowledgments; Conclusion — absence of reflexivity discussion)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Comparative institutional case-study framing across two jurisdictions",
+        "page": "PDF Page 4 (Introduction)",
+        "quote": "This paper describes the customary water governance systems of two neighbouring countries, Australia and"
+      },
+      {
+        "criterion": "Disclosure of fieldwork funding without a primary methods section",
+        "page": "PDF Page 2 (Acknowledgments)",
+        "quote": "The research and fieldwork carried out by Lisa Palmer in East Timor was supported by Australian Research"
+      },
+      {
+        "criterion": "Secondary quantitative estimate used for Australian water allocation outcome",
+        "page": "PDF Page 11 (Statutory Systems in Australia)",
+        "quote": "Indigenous-specific water entitlements represent less than 0.01 percent of Australian water diversions."
+      },
+      {
+        "criterion": "Reliance on unpublished draft legislation viewed by the authors (legal source & replication)",
+        "page": "PDF Page 14 (Statutory Systems in East Timor)",
+        "quote": "state’s water resources law recently viewed by the authors (Ministry of Infrastructure, 2012)."
+      },
+      {
+        "criterion": "Reliance on personal communication for local governance compliance outcome",
+        "page": "PDF Page 16 (Community Strategies to Maintain Control of Waterscapes)",
+        "quote": "breached or set aside shortly after (D. de Carvalho do Amaral, personal communication, 2008)."
+      },
+      {
+        "criterion": "Core comparative legal-institutional finding on statutory prioritisation of customary uses",
+        "page": "PDF Page 17 (Discussion)",
+        "quote": "even if recognised, local customary water uses are not granted a priority in state systems of allocation."
+      }
+    ],
+    "overall_narrative_summary": "Jackson and Palmer (2012) present a comparative legal-institutional and policy case study examining the interface between statutory water governance reforms ('modernisation') and Indigenous/customary water governance in Australia and East Timor. Because the article has no primary participant recruitment, interview protocol, or systematic literature search—instead combining doctrinal/policy analysis of statutes, intergovernmental agreements, and draft water legislation with published ethnographic and donor-evaluation literature—it is appraised under the Legal Institutional Evidence Appraisal Framework as a structured non-validated judgment (with no numeric score). Methodological strengths lie in its strong jurisdictional specificity (D2) and rich institutional, historical, and cosmological contextualization (D10), supported by adequate legal source accuracy (D1) and exposure characterization (D3), including direct analysis of Australia's Native Title Act 1993, 2004 National Water Initiative, and East Timor's unpublished 2012 Draft Water Resources Law. Conversely, empirical rigour is weak across sampling (D5), case/source selection (D6), outcome definition (D4), measurement transparency (D7), causal identification (D8), treatment of confounding (D9), coding transparency (D12), replication potential (D11), and researcher reflexivity (D13), due to the absence of a documented methodology, reliance on secondary estimates and personal communication, and lack of a counterfactual design.",
+    "overall_rating": "Structured non-validated judgment: Strong institutional contextualization and jurisdictional specificity with adequate legal source accuracy, but weak empirical sampling, measurement, causal identification, coding, and replication transparency",
+    "paper_read": "full text",
+    "study_design_identified": "Comparative legal-institutional and policy case study (doctrinal-ethnographic synthesis comparing statutory water reforms and customary water governance in Australia and East Timor)",
+    "study_id": "S120",
+    "where_found_summary": "Design and comparative scope located in Abstract (PDF Page 2) and Introduction (PDF Pages 3–4); funding disclosure in Acknowledgments (PDF Page 2); customary governance context in 'Customary Systems of Water Governance', 'Australia', and 'East Timor' sections (PDF Pages 4–9); legal, policy, and empirical outcome claims in 'Water Governance and Institutional Reform' subsections for Australia and East Timor (PDF Pages 9–16) and 'Discussion'/'Conclusion' (PDF Pages 16–19); sources in 'References' (PDF Pages 20–27). There is no standalone Methods section.",
+    "why_tool_chosen": "The paper conducts a comparative institutional, legal-policy, and legal-historical case study of statutory water sector reforms and customary water tenure across Australia and East Timor, analyzing primary and secondary legal/policy texts (including the Native Title Act 1993, 2004 National Water Initiative, 2004 East Timor Water Services Decree, and verbatim provisions of East Timor's 2012 Draft Water Resources Law) alongside published ethnographic research and donor evaluations. It fits none of the six conventional empirical checklists: there is no primary qualitative participant recruitment, interview guide, or qualitative data analysis protocol reported for this study (ruling out CASP Qualitative Checklist, despite a brief acknowledgment of ARC grants supporting Palmer's prior East Timor fieldwork), no systematic review search/screening methodology (ruling out AMSTAR 2), and no quantitative or quasi-experimental dataset (ruling out ROBINS-I, JBI, and RoB 2). Accordingly, per RISK_OF_BIAS.md §§1–2, the Legal Institutional Evidence Appraisal Framework is the exact matching instrument."
+  }
+}

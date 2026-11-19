@@ -1,0 +1,318 @@
+{
+  "study_id": "S063",
+  "order": 41,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a44ce921a019850beafdb2c29120053a8248ff3e3a10ace7c6570065058f2356",
+  "input_text_sha256": "e68790640acae8c20795997c6f437434ef6bac6c36627a2c74d99a44bdf8dec7",
+  "prompt_sha256": "30b475ea6c933ce231f83a28ffd863de94b555d27e38519642dd4e6759b9d1d6",
+  "started_at": "2026-11-19T01:58:45.448843+00:00",
+  "completed_at": "2026-11-19T02:01:21.586829+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S063\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S063\n- Record ID: RF043AAD78E8E\n- Citation string: Pastrana-Miranda T, Gonzalez-Caamal MM (2022). Injusticia ambiental y marginacion: la falta de acceso al agua en la Zona Metropolitana del Valle de Mexico. Territorios (46), 1-25.\n- DOI: 10.12804/revistas.urosario.edu.co/territorios/a.9931\n- Retrieval status: retrieved_oa_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: e68790640acae8c20795997c6f437434ef6bac6c36627a2c74d99a44bdf8dec7) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=65637, sha256=e68790640acae8c20795997c6f437434ef6bac6c36627a2c74d99a44bdf8dec7]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable (retrospective historical-institutional narrative, cross-sectional 2015 census map, and 2018-2020 newspaper protest compilation with no longitudinal cohort follow-up, though several cells in Table 1 omit neighborhood or secondary actor data)",
+      "confounding": "High risk / serious concern (causal claims linking territorial marginalization, centre-periphery prioritization, and partisan clientelism to peripheral water scarcity do not empirically adjust for hydrology/topography, rapid unplanned migration onto non-urbanizable land, engineering costs, or municipal fiscal/technical capacity)",
+      "legal_measurement_quality": "Weak (constitutional, statutory, and intergovernmental rules—Art. 4 CPEUM, LGEEPA, 1983 municipalization, irregular land tenure without legal title, 2016 CDMX alcaldía reform, and CAEM vs. SAPASE competencies—are described entirely via secondary literature rather than primary legal texts, misdating LGEEPA to 2014 and omitting the Ley de Aguas Nacionales and CONAGUA's statutory role)",
+      "measurement_bias": "High risk / serious concern (while Figure 2 maps municipal piped-water unavailability from INEGI 2015 Encuesta Intercensal tabulations, exact variable definitions, service intermittency, and water quality are not systematically measured, and Table 1 reports 7 protest episodes without citing primary newspaper sources or verification procedures)",
+      "outcome_measurement_quality": "Weak to moderate (coarse municipal-level lack of piped water in Figure 2 relies on standardized INEGI 2015 intercensal data, but service continuity, tanker-truck dependence, and socio-environmental conflict outcomes in Ecatepec rely on secondary theses and an undocumented 7-event newspaper table)",
+      "reporting_bias": "High risk / serious concern (the paper lacks a standalone Methods section, search protocol, or complete protest inventory, reporting only 7 selected protest episodes from 2018-2020 without disclosing whether non-conforming or non-electoral events were excluded)",
+      "selection_bias": "High risk / serious concern (Ecatepec was purposively selected partly due to the high media visibility of its water protests, and the 7 protest events in Table 1 were compiled via an undocumented newspaper tracking exercise with no stated media sources, search strings, date bounds, or inclusion/exclusion criteria)"
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Although the abstract claims to rely on primary documentary sources, legal and regulatory frameworks (Art. 4 of the Mexican Constitution, LGEEPA, the 1983 municipalization reform, SEDESOL's definition of irregular settlements without legal title, the 2016 CDMX constitutional reform creating alcaldías, and the Estado de México compensation claim over Alto Lerma) are cited exclusively through secondary academic literature rather than primary statutes, decrees, or administrative/judicial filings. On p. 17, the authors refer imprecisely to 'la Ley General del Equilibro Ecológico y la Protección al Ambiente (lgeepa) de 2014' (enacted in 1988, with a typographical error in 'Equilibro'), omit the 2012 human-right-to-water amendment to Art. 4, and omit the Ley de Aguas Nacionales governing federal water concessions.",
+        "rating": "weak",
+        "where_found": "PDF Page 2 (Resumen/Abstract); PDF Page 7 (fn. 3); PDF Pages 17-19 (Relaciones intergubernamentales por el agua)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The study clearly distinguishes the territorial boundaries of the Valley of Mexico hydrological basin versus the Zona Metropolitana del Valle de México (16 DF/CDMX delegaciones/alcaldías, 59 Estado de México municipalities, and 1 Hidalgo municipality) and differentiates federal, state (Comisión del Agua del Estado de México, CAEM), capital (Sistema de Aguas de la Ciudad de México), and municipal (SAPASE in Ecatepec) tiers. However, federal basin-authority competencies (e.g., CONAGUA's statutory jurisdiction over Cutzamala and groundwater concessions) are not specified with legal precision.",
+        "rating": "adequate",
+        "where_found": "PDF Page 6 (fn. 1-2); PDF Pages 14-16 (Organización comunitaria y ciudadanía); PDF Pages 17-19 (Relaciones intergubernamentales por el agua)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Key institutional and socio-territorial exposures—territorial marginalization, concentric peripheral distance from central CDMX (Contours 1-4, Figure 1), irregular land tenure without legal title, incomplete intergovernmental fiscal decentralization (O'Neill's delegation/deconcentration without decentralization), and partisan clientelist water allocation—are defined conceptually, but are not operationalized with consistent, measurable municipal- or neighborhood-level criteria across analytical units.",
+        "rating": "weak",
+        "where_found": "PDF Pages 4-6 (Marco teórico); PDF Page 7 (fn. 3); PDF Page 10 (Figura 1); PDF Pages 13-15; PDF Page 19"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "For the metropolitan descriptive analysis, water deprivation is defined using the 2015 INEGI Encuesta Intercensal percentage of municipal/alcaldía population without piped water availability (mapped into five intervals in Figure 2), supplemented narratively by dwelling-level piped access, reliance on tanker trucks (pipas), aquifer subsidence, and socio-environmental protest episodes in Ecatepec (Table 1). While basic census piped-water lack is clearly bounded, water quality, intermittency, and conflict intensity lack standardized operational definitions.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 9-11 (Distribución del agua en la periferia, Figura 2); PDF Pages 15-16 (Tabla 1)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The article contains no dedicated Methods section. While Figures 1-2 map ZMVM municipalities/alcaldías from the 2015 INEGI Encuesta Intercensal, the exact unit count is not explicitly stated in the text. More critically, for the primary empirical 'seguimiento hemerográfico' of Ecatepec water protests (2018-2020, Table 1), the authors report zero details on which newspapers or databases were searched, search keywords, screening dates, or the total number of candidate articles/events identified.",
+        "rating": "weak",
+        "where_found": "PDF Page 3 (Introducción); PDF Pages 10-12; PDF Pages 15-16 (Tabla 1)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Ecatepec is purposively selected based on its historical expansion, largest municipal population in Estado de México (1.645 million in 2020), territorial size, electoral weight, and explicitly 'lo mediatizadas de sus protestas por el agua' (p. 13). Selecting a single case partly for media salience and presenting 7 protest events from 2018-2020 without formal inclusion/exclusion rules creates high susceptibility to purposive and media-visibility selection bias.",
+        "rating": "weak",
+        "where_found": "PDF Pages 12-13, 15-16 (Organización comunitaria y ciudadanía, Tabla 1)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Beyond citing INEGI (2015) and González (2017) as sources for Figures 1-2, exact census indicator codes and definitions (e.g., in-dwelling vs. on-plot piped water) are not documented. In Table 1 ('Fuente: elaboración propia'), none of the 7 protest rows cites the specific newspaper article, reporter, or documentary record from which event attributes were extracted, and claims about partisan water cuts during elections rely entirely on a secondary thesis (Hernández, 2015).",
+        "rating": "weak",
+        "where_found": "PDF Pages 9-11 (Figura 1, Figura 2); PDF Pages 14-16 (Tabla 1)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The paper asserts causal relationships between centre-periphery prioritization, partisan alternation/clientelism, and peripheral water scarcity using historical narrative, visual inspection of concentric rings (Figures 1-2), and 7 protest episodes in one municipality, without any counterfactual comparator or statistical/quasi-experimental design. Notably, on p. 11 the authors cite González (2017) concluding that housing location is not necessarily a determinant once rapid, unplanned, impoverished growth is considered, yet on pp. 12 and 21 they reassert housing location as a direct determinant of water access.",
+        "rating": "weak",
+        "where_found": "PDF Pages 2-3, 10-12, 14-17, 20-21"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Potential structural, hydrological, and demographic confounders—closed-basin hydrogeology, rapid 1960-1970 migration, informal settlement on terrain unsuitable for urban infrastructure, aging pipe networks, and weak municipal technical/fiscal capacity—are discussed narratively, but there is no empirical or analytical strategy separating political/territorial marginalization and clientelism from physical, demographic, and engineering constraints.",
+        "rating": "weak",
+        "where_found": "PDF Pages 6-11 (Antecedentes; Distribución del agua en la periferia); PDF Pages 13, 18, 20"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper provides rich socio-historical and political-institutional contextualization of Valley of Mexico water governance, tracing hydraulic drainage and inter-basin transfer infrastructure (Nochistongo, Gran Canal, Drenaje Profundo, Lerma, Cutzamala), CTM-PRI corporatism and municipal party alternation in Ecatepec versus uninterrupted PRI rule in Estado de México, operational friction between state CAEM and municipal SAPASE, and the asymmetric constitutional evolution of DF/CDMX vis-à-vis Estado de México.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 6-8 (Antecedentes); PDF Pages 13-19 (Organización comunitaria y ciudadanía; Relaciones intergubernamentales por el agua)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While the secondary INEGI 2015 intercensal tabulations and González (2017) thesis underlying Figures 1-2 are publicly accessible, the primary newspaper tracking component in Table 1 cannot be replicated because the media outlets, search strings, eligibility criteria, and underlying news citations are omitted.",
+        "rating": "weak",
+        "where_found": "PDF Pages 10-12 (Figuras 1-2); PDF Pages 15-16 (Tabla 1); PDF Pages 21-25 (Referencias)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Table 1 classifies 7 protest episodes across seven qualitative fields (date, motive, target authority, protesters' neighborhood, protest venue, other actors involved, and details), but provides no codebook, classification rules, treatment of missing information (several cells are left blank without explanation), or inter-coder verification procedures.",
+        "rating": "weak",
+        "where_found": "PDF Pages 12, 15-16 (Tabla 1)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Although the paper adopts an explicit normative environmental-justice and anti-clientelist perspective and interprets institutional motives and protest dynamics, it includes no discussion of researcher positionality, interpretive assumptions, or how normative commitments may have shaped case and media-event selection.",
+        "rating": "weak",
+        "where_found": "PDF Pages 3-6, 12-21 (absent throughout text)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Stated documentary objective in abstract (D1, D5)",
+        "page": "PDF Page 2, Resumen",
+        "quote": "en escasez y conflictos socioambientales. El objetivo es describir, mediante fuentes"
+      },
+      {
+        "criterion": "Secondary census mapping of municipal piped-water unavailability (D4, D7, outcome_measurement_quality)",
+        "page": "PDF Page 11, Figura 2",
+        "quote": "Fuente: elaboración propia con base en la encuesta Intercensal de vivienda inegi, 2015."
+      },
+      {
+        "criterion": "Case study design based on undocumented newspaper tracking and neoinstitutional analysis (D5, D11, D12)",
+        "page": "PDF Page 12, Organización comunitaria y ciudadanía",
+        "quote": "seguimiento hemerográfico y un análisis"
+      },
+      {
+        "criterion": "Purposive selection of Ecatepec linked to media visibility of water protests (D6, selection_bias)",
+        "page": "PDF Page 13, Organización comunitaria y ciudadanía",
+        "quote": "mediatizadas de sus protestas por el agua"
+      },
+      {
+        "criterion": "Hemerographic protest table lacking primary news citations and selection criteria (D5, D7, D12, reporting_bias)",
+        "page": "PDF Page 15, Tabla 1",
+        "quote": "Tabla 1. Revisión hemerográfica de las protestas por el agua"
+      },
+      {
+        "criterion": "Secondary and imprecise statutory reference in intergovernmental legal analysis (D1, legal_measurement_quality)",
+        "page": "PDF Page 17, Relaciones intergubernamentales por el agua",
+        "quote": "la Ley General del Equilibro Ecológico"
+      }
+    ],
+    "overall_narrative_summary": "Structured non-validated judgment (no numeric composite score computed): Weak overall methodological rigor. Pastrana-Miranda and González-Caamal (2022) present a neoinstitutional historical-documentary analysis and single-municipality case study (Ecatepec) examining how centre-periphery territorial marginalization, intergovernmental centralization, irregular land tenure, and partisan clientelism shape inequitable water distribution in the Metropolitan Zone of the Valley of Mexico (ZMVM). Strengths include informative political-historical contextualization of hydraulic transfers (Lerma and Cutzamala), intergovernmental asymmetries between CDMX, Estado de México (CAEM), and municipal utilities (SAPASE), and descriptive spatial mapping of municipal piped-water unavailability from the 2015 INEGI Encuesta Intercensal (Figures 1-2). However, the article lacks a dedicated Methods section, relies on secondary literature rather than primary statutes or administrative records (despite claiming primary documentary sources in the abstract, and misdating LGEEPA to 2014 while omitting federal CONAGUA statutory rules), purposively selects Ecatepec partly for media visibility, and reports 7 water-protest episodes from 2018-2020 (Table 1) without disclosing newspaper sources, search strategies, inclusion criteria, or coding rules. Causal claims attributing peripheral water scarcity to territorial marginalization and electoral clientelism are not isolated from hydrological, demographic, and unplanned-settlement confounders.",
+    "overall_rating": "Weak overall methodological rigor (structured non-validated judgment; adequate jurisdictional specificity, basic census outcome definition, and institutional context, but weak legal source accuracy, exposure operationalization, sampling/selection transparency, measurement/coding transparency, causal identification, confounding control, replication potential, and reflexivity)",
+    "paper_read": "full text",
+    "study_design_identified": "Neoinstitutional historical-documentary and single-municipality case study combining intergovernmental/legal-institutional analysis, descriptive secondary census mapping (INEGI 2015), and undocumented newspaper protest tracking (Ecatepec, 2018-2020)",
+    "study_id": "S063",
+    "where_found_summary": "No standalone Methods section is present. Study objectives and neoinstitutional documentary framing appear in Resumen/Abstract (PDF p. 2) and Introducción (PDF pp. 3-4); theoretical definitions in Marco teórico (PDF pp. 4-6); historical hydraulic and settlement background in Antecedentes (PDF pp. 6-8); descriptive INEGI 2015 concentric-ring and piped-water maps in Distribución del agua en la periferia (PDF pp. 8-12, Figuras 1-2); the Ecatepec case study and 2018-2020 newspaper protest compilation in Organización comunitaria y ciudadanía (PDF pp. 12-17, Tabla 1 on pp. 15-16); legal and intergovernmental analysis in Relaciones intergubernamentales por el agua (PDF pp. 17-20); and synthesis in Conclusiones (PDF pp. 20-21).",
+    "why_tool_chosen": "The paper has no randomized or quasi-experimental intervention comparator (ruling out RoB 2 and ROBINS-I), performs no analytical cross-sectional or cohort statistical modeling (ruling out JBI checklists), conducts no Systematic Review search (ruling out AMSTAR 2), and involves no primary qualitative fieldwork with human participants or formal mixed-methods integration (making CASP Qualitative and MMAT poor fits). Because it is a neoinstitutional, intergovernmental, and historical-documentary case study combining legal-institutional analysis (1983 municipalization, 2016 CDMX alcaldía reform, CAEM/SAPASE governance, irregular land tenure), descriptive secondary census mapping, and newspaper protest tracking, the Legal Institutional Evidence Appraisal Framework (RISK_OF_BIAS.md §2) directly matches its design."
+  }
+}

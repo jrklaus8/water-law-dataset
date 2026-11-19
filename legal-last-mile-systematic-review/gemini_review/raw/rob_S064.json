@@ -1,0 +1,297 @@
+{
+  "study_id": "S064",
+  "order": 50,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=blind_rob_appraiser, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0f516eadd9d0f17dbfd4c3e5380ba3c402792b3754a6d5664c33dd84abd57d85",
+  "input_text_sha256": "0f731f08dcc0380c4f46b583815a4170343d7327425a91b47ae43059519431e4",
+  "prompt_sha256": "cb449acab85dd0222c1ba49d0e3f56ac9c06022fac9c91cd796dd2090de6654c",
+  "started_at": "2026-11-19T02:01:46.484449+00:00",
+  "completed_at": "2026-11-19T02:03:33.338233+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S064\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S064\n- Record ID: R9F1DCD966DA0\n- Citation string: Ezeudu OB, Ezeudu TS, Ugochukwu UC, Okolo OJ, Ani CD, Ajogu AP, Ajaero CC, Mbakwe UI, Nduji NN (2022). Coping Strategies, Cultural Practices and Policy Implications on Domestic Water Supply in an Eros\n- DOI: 10.3390/resources11080077\n- Retrieval status: retrieved_oa_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 0f731f08dcc0380c4f46b583815a4170343d7327425a91b47ae43059519431e4) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=71577, sha256=0f731f08dcc0380c4f46b583815a4170343d7327425a91b47ae43059519431e4]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / low applicability (single-wave cross-sectional interviews with no longitudinal follow-up, though initial refusal rates among approached households are not reported and subgroup-restricted denominators appear for sacred-stream questions [n = 24 men] and women's water responsibility [n = 77]).",
+      "confounding": "Not applicable / unadjusted (descriptive qualitative case study with no comparator group or statistical adjustment; socioeconomic gradients such as remittance-funded housing and underground storage tank capacity are discussed narratively without controlling for confounders).",
+      "legal_measurement_quality": "Adequate — Communal environmental and water bylaws (mandatory household and junction stormwater ditches 'mgbacha ogwugwu', prohibition of boreholes/wells, mandatory August general assembly inspections and sanctions, and sacred-stream taboos) alongside statutory federal/state/local mandates are triangulated across community leaders, local officials, and community bylaws, though verbatim bylaw texts and formal enforcement records are not presented.",
+      "measurement_bias": "Moderate concern — Triangulation across voice-recorded semi-structured interviews, field observation, and documents strengthens credibility, and trained assistants/interpreters were used, but interview schedules are not provided, gatekeeper introductions via village/clan leaders risk social desirability bias regarding bylaw compliance, and water quality/safety was not objectively tested.",
+      "outcome_measurement_quality": "Moderate to weak — Domestic water sources and coping practices (rainwater harvesting in tanks and erosion ditches, water sharing, stream fetching, and sachet/tanker purchases) are documented through interviews and visual inspection, but closed-ended response percentages lack the underlying questionnaire wording, minor denominator ambiguities occur (e.g., '96%, n = 77' on PDF p. 13), and no physicochemical or microbial water testing was performed.",
+      "reporting_bias": "Moderate concern — Thematic findings are clear, but qualitative depth across 140 interviews is illustrated by only four brief verbatim quotations, closed-ended percentage tabulations have occasional unclear denominators, and raw data/protocols are marked 'Not applicable'.",
+      "selection_bias": "Moderate concern — Purposive quota sampling covered all 7 villages (14 households per village, n = 105) plus 35 leaders and officials, but within-village selection procedures and refusal rates are unreported, recruitment was mediated by village/clan heads who enforce communal sanctions, the requirement of household dependents potentially excluded elderly-only remittance households, fieldwork coincided with the festive return period, and women were excluded from deity-related surface-water questions."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "The authors clearly state the study's goal and relevance: to examine domestic water sources, coping strategies, cultural practices/communal bylaws, and policy implications in Nanka, a rural southeastern Nigerian community experiencing severe gully erosion and landslides.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 1); Section 1 (PDF p. 2); Section 2 (PDF p. 5, Figure 2)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "Qualitative inquiry is well suited to exploring local cultural meanings of water, customary communal erosion bylaws, sacred-stream taboos, and household coping behaviors in a rural setting, as explicitly justified in Section 4.",
+        "rating": "Yes",
+        "where_found": "Section 4 (PDF p. 7)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "The authors justify a multi-source qualitative case study combining an initial reconnaissance visit, semi-structured interviews across four stakeholder tiers (households, community leaders, leaders of thought, and government officials), documentary analysis (including CBO documents and community bylaws), and exploratory field observations.",
+        "rating": "Yes",
+        "where_found": "Sections 4-5, Tables 2-3 (PDF pp. 7-9)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "While the authors explain the rationale for each stakeholder group and stratify 105 households across all 7 villages (14 per village from a clan register of 4,336 households), they misuse a random-sampling precision formula to justify a purposive sample, do not explain how specific households were chosen within each village after introduction by village/clan heads, report no refusal rates, exclude households without dependents despite noting many elderly residents live behind while relatives migrate, and exclude women from sacred-stream taboo questions.",
+        "rating": "Can't tell",
+        "where_found": "Section 3 (PDF p. 6); Section 5, Table 2 (PDF pp. 7-9); Section 6.4 (PDF p. 13)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Was the data collected in a way that addressed the research issue?",
+        "justification": "Data collection procedures are clearly described, including a July 2018 reconnaissance visit, approximately 1-hour voice-recorded semi-structured interviews conducted from September 2018 to January 2019 using trained research assistants and interpreters, documentary review, and field notes/photographs/videos, although the interview guide is not appended and thematic saturation is not discussed.",
+        "rating": "Yes",
+        "where_found": "Section 5, Table 3 (PDF pp. 7-9)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "The authors do not critically examine researcher positionality, potential bias or coercion arising from being introduced to households by village and clan heads who enforce communal water/erosion fines, or how research assistants and interpreters shaped interview responses.",
+        "rating": "No",
+        "where_found": "Sections 4-5 (PDF pp. 7-9)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "Although town-authority permission was obtained and respondent anonymity was maintained by omitting names during interviews, the back matter explicitly declares both Institutional Review Board review and Informed Consent 'Not applicable' despite primary human-subjects interviews with 140 participants, including non-literate rural residents.",
+        "rating": "No",
+        "where_found": "Section 5 (PDF pp. 7-8); Institutional Review Board & Informed Consent Statements (PDF p. 17)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "The authors report transcribing voice-recorded interviews, applying grounded and axial coding around three core questions, and triangulating across interviews, field observations, and documents, but provide no coding framework, inter-coder verification, or negative-case analysis, present only four brief verbatim quotes from 140 interviews, and report closed-ended percentages with occasional unclear denominators (e.g., '96%, n = 77' out of 105 households on PDF p. 13).",
+        "rating": "Can't tell",
+        "where_found": "Section 5 (PDF p. 9); Sections 6-7, Table 4 (PDF pp. 10-13)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "Findings are clearly organized by domestic water sources, communal erosion/water bylaws, water-sharing arrangements, surface water taboos, vendor reliance, and low collective prioritization of water projects, integrating perspectives from residents, traditional leaders, and local government officials alongside policy implications.",
+        "rating": "Yes",
+        "where_found": "Sections 6-10, Table 4 (PDF pp. 10-17)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "Valuable contextual contribution with methodological limitations: the study offers rare empirical insight into how indigenous disaster-mitigation institutions (borehole bans, mandatory stormwater ditching, sacred-stream taboos) reshape rural domestic water access and household coping burdens in erosion-prone southeastern Nigeria, identifying concrete governance and water-quality blind spots for policy and NGOs.",
+        "rating": "Valuable contextual contribution (narrative assessment)",
+        "where_found": "Sections 8-10 (PDF pp. 14-17)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design classification (qualitative methods)",
+        "page": "PDF Page 1, Abstract",
+        "quote": "These factors were investigated through qualitative research methods."
+      },
+      {
+        "criterion": "CASP Q3 & Q5 (Triangulated qualitative data collection sources)",
+        "page": "PDF Page 7, Section 4",
+        "quote": "documented evidence (literature), in-depth interviews, and ﬁeld observation."
+      },
+      {
+        "criterion": "CASP Q4 (Purposive village household sampling)",
+        "page": "PDF Page 8, Section 5",
+        "quote": "each of the seven villages through purposeful sampling, which is a criterion-based selection"
+      },
+      {
+        "criterion": "CASP Q8 (Qualitative transcription and grounded analysis)",
+        "page": "PDF Page 9, Section 5",
+        "quote": "transcribed and analyzed using grounded analysis."
+      },
+      {
+        "criterion": "Legal measurement quality (communal borehole prohibition)",
+        "page": "PDF Page 10, Section 6.2",
+        "quote": "existing communal law that forbids the construction of boreholes or wells."
+      },
+      {
+        "criterion": "CASP Q7 (Absence of formal ethical review statement)",
+        "page": "PDF Page 17, Back Matter",
+        "quote": "Institutional Review Board Statement: Not applicable."
+      }
+    ],
+    "overall_narrative_summary": "This primary qualitative case study investigates domestic water access, household coping strategies, and customary environmental/water bylaws in Nanka, an erosion- and landslide-prone rural community in Anambra State, Nigeria. Appraised with the CASP Qualitative Checklist, the study exhibits moderate methodological concern (2 'No' and 2 'Can't tell' items across Q1-Q9). Strengths include clearly articulated aims, appropriate multi-source qualitative fieldwork (140 semi-structured interviews across households, traditional/community leaders, leaders of thought, and government officials, triangulated with field observations and documentary/bylaw evidence), and coherent findings illuminating how communal erosion-control rules (mandatory stormwater ditches 'mgbacha ogwugwu', bans on boreholes/wells, and sacred-stream taboos) constrain groundwater use and channel households toward rainwater storage, water sharing, stream fetching, and sachet/tanker vendors. Key limitations are the absence of researcher reflexivity despite gatekeeper-mediated access via sanction-enforcing village/clan heads (Q6), declaring IRB approval and informed consent 'Not applicable' for 140 human-subjects interviews (Q7), incomplete reporting of within-village household selection mechanics, refusals, and exclusion of households without dependents (Q4), and thin analytical transparency with only four verbatim quotes and occasional denominator ambiguities in descriptive interview percentages (Q8).",
+    "overall_rating": "Moderate concern (2 No and 2 Can't tell items)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary qualitative case study combining semi-structured interviews (105 households, 25 community leaders, 7 leaders of thought, and 3 government officials), documentary/bylaw review, and exploratory field observation",
+    "study_id": "S064",
+    "where_found_summary": "Abstract (PDF p. 1); Section 3 The Study Area (PDF pp. 6-7); Section 4 Data Collection and Analysis (PDF p. 7); Section 5 Study Design, Tables 2-3 (PDF pp. 7-9); Sections 6-7 Research Findings & Community Awareness, Table 4 (PDF pp. 10-13); Sections 8-10 Discussions, Policy Implications, Conclusions, and Back Matter IRB/Consent Statements (PDF pp. 14-17).",
+    "why_tool_chosen": "The authors explicitly design and justify the investigation as a primary qualitative case study using in-depth semi-structured interviews, documentary analysis, and exploratory field observations analyzed via grounded and axial coding (Sections 4-5, PDF pp. 7-9). Although simple response frequencies/percentages from the 105 semi-structured household interviews are tabulated alongside thematic narratives in Sections 6-7, there is no standalone quantitative survey or statistical analysis component that would warrant MMAT; therefore, the CASP Qualitative Checklist is the matching appraisal instrument."
+  }
+}
