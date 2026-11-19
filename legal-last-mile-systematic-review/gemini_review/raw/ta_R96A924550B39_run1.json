@@ -1,0 +1,190 @@
+{
+  "record_id": "R96A924550B39",
+  "order": 10,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=ta_blind_screener, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "0f20304173d6b0c7c7c35d01379843fd2ad098a6fb805bfc6cbb6d9b0a5f15d0",
+  "prompt_sha256": "da38ef2452dae70015786a58ec78feddc3cf903ccef52b2df554b0d66a68acf3",
+  "started_at": "2026-11-19T19:02:33.590976+00:00",
+  "completed_at": "2026-11-19T19:02:53.860649+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND TITLE/ABSTRACT SCREENING (PHASE 5) — RECORD R96A924550B39\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the title and abstract text provided below.\n\n== BIBLIOGRAPHIC METADATA ==\n- Record ID: R96A924550B39\n- Year: 1981\n- Authors: Matejko, Alexander J\n- DOI: (none)\n- URL: https://www.proquest.com/docview/61101344?accountid=13598&bdid=165489&_bd=bgRtBYhS44Ba3XntS7znOOx2%2BHY%3D\n\n== PHASE 5 TITLE/ABSTRACT SCREENING RULES (`PROTOCOL.md` §6 & `INCLUSION_EXCLUSION.md`) ==\nScreen this record at the Title/Abstract stage against all eligibility criteria:\n1. `c1_service_access`: Household or community water or sanitation service access? (Not pure agricultural irrigation, hydropower, ambient river ecology, flood control, or non-water topics.)\n2. `c2_legal_admin_narrow`: Under the **2026-10-13 narrow rule-type reading**, does the study examine (or plausibly examine on full text) a legal, administrative, regulatory, tenure/documentation, tariff/cost-recovery/subsidy, discretion/accommodation, enforcement/disconnection, or utility-ownership/regulatory-structure mechanism governing service access? (Not generic project delivery, pure behavioural handwashing promotion, or unanalysed macro-governance background.)\n3. `c2_legal_admin_plain`: Under the **literal/plain wording of Criterion 2**, does it examine ANY legal, administrative, institutional, regulatory, or governance factor?\n4. `c3_empirical_or_systematic_review`: Empirical primary evidence (quantitative, qualitative, mixed-methods, socio-legal empirical) OR a systematic empirical synthesis/meta-analysis? (Not a pure commentary, editorial, or doctrinal essay with clearly no empirical data.)\n5. `c4_access_outcome`: An outcome relevant to water/sanitation access, connection, coverage, availability, reliability, continuity, quantity, quality-as-service-access, affordability, or exclusion?\n\nDecision rules at Title/Abstract stage:\n- `\"include\"`: Clearly meets (or strongly appears to meet) all criteria from title + abstract.\n- `\"unsure\"`: Plausibly in scope on water/sanitation service access + legal/administrative/institutional/regulatory mechanism, such that the full text MUST be retrieved to determine eligibility; do NOT prematurely exclude ambiguous socio-legal, informal-settlement, tariff, or utility-governance abstracts!\n- `\"exclude\"` + ONE primary exclusion code (`E01` wrong topic, `E02` wrong population, `E03` wrong exposure, `E04` wrong outcome, `E05` no empirical evidence, `E06` engineering only, `E07` wrong service, `E08` duplicate, `E09` insufficient information, `E11` wrong jurisdiction/context, `E12` wrong study design): Title + abstract clearly fail at least one criterion.\n- Record BOTH `decision` (under the active narrow rule-type Criterion 2 reading) AND `plain_criterion2_decision` (what your Phase 5 call would be under the literal broad Criterion 2 wording).\n- Provide 1 to 3 exact verbatim substrings (`>= 20` characters, zero `...` ellipses, zero paraphrasing) from `== TITLE AND ABSTRACT ==` in `evidence_quotes`.\n\n== TITLE AND ABSTRACT (SHA-256: 0f20304173d6b0c7c7c35d01379843fd2ad098a6fb805bfc6cbb6d9b0a5f15d0) ==\n[COPYRIGHTED_ABSTRACT_WITHHELD_PER_SECTION_6: chars=882, sha256=0f20304173d6b0c7c7c35d01379843fd2ad098a6fb805bfc6cbb6d9b0a5f15d0]\n== END TITLE AND ABSTRACT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "unclear",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "title",
+        "quote": "Alternative Hierarchies: The Anatomy of Bureaucracies and the Perspective of Their Self-Defeat in West and East"
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "abstract",
+        "quote": "Bureaucratic organizations, both in Western state capitalism & in Soviet & Chinese state socialism, have reached the limits of their growth"
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "abstract",
+        "quote": "One way to achieve this is the democratic job reform now taking place in a number of countries, which enables people to organize work on a flexible & small-scale basis apart from traditional bureaucracy."
+      }
+    ],
+    "exclusion_code": "E01",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Excluded under both narrow and plain readings of Criterion 2 because the record is an organizational sociology discussion of bureaucratic hierarchies and democratic job reform with no connection to water or sanitation service access (E01).",
+    "rationale": "The title and abstract examine general bureaucratic organizations, employee motivation and democratic job reform in Western state capitalism and Soviet and Chinese state socialism. The record does not address household or community water or sanitation services or any water/sanitation access outcome, failing Criterion 1 and Criterion 4 (E01: wrong topic).",
+    "record_id": "R96A924550B39"
+  }
+}
