@@ -1,0 +1,277 @@
+{
+  "record_id": "R918B0EF111DE",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b47858b2b0c26b901231a27d4f22855469b8fca280ea3b5e9fcbadb147c991aa",
+  "prompt_sha256": "73b8f91917da8f32323955cafae61cdaaa3a2e032d78f294e0fb18acf6b46f27",
+  "started_at": "2026-11-20T17:11:10.431629+00:00",
+  "completed_at": "2026-11-20T17:12:38.057285+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Canada",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines community drinking water service reliability and safety across on-reserve First Nations community drinking water systems in Ontario, using drinking water advisories (boil water and do-not-consume advisories) as a proxy for reliable access to safe drinking water.",
+      "c2": "Fails BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, no legal, administrative, institutional, regulatory, or governance factor is empirically measured or analyzed: the dataset examines only temporal/seasonal patterns (year, month, season), technical reasons for advisories (equipment malfunction, disinfection residuals, turbidity), and physical/operational water system characteristics (water source, system construction age, population served, and whether primary operator technical training matched treatment plant complexity), while federal/provincial regulatory fragmentation and the Safe Drinking Water for First Nations Act appear solely as narrative commentary in the Introduction and Discussion. Under the narrow 2026-10-13 clarification, operator technical training and plant characteristics are operational/infrastructure capacity factors rather than rule-type mechanisms directly governing service access, and the narrative governance discussion is explicitly excluded as unanalysed macro-governance background.",
+      "c3": "Contains primary quantitative analysis of secondary administrative data (402 drinking water advisories reported by Health Canada from 2004 to 2013 linked to water system characteristics from the 2011 National Assessment of First Nations Water and Wastewater Systems), analyzed using descriptive statistics and Poisson regression models.",
+      "c4": "Reports community-level drinking water service reliability/availability outcomes via drinking water advisory counts (402 advisories affecting 70% of First Nations community water systems in Ontario) and duration (mean 294 days; 118,307 total advisory days; 14% lasting over 1 year).",
+      "c5": "Clearly identifies the population and unit of analysis (158 First Nations community drinking water systems in Ontario and 402 community DWAs issued 2004-2013; private systems excluded), explanatory variables (year, month, season, water source, system age, population served, and primary operator training adequacy), outcome (DWA incidence, type, reason, and duration), and study design (cross-sectional descriptive and count time-series analysis).",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "This paper describes trends and characteristics of drinking water advisories, used as a proxy for reliable access to safe drinking water, among First Nations communities in the province of Ontario."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3",
+        "quote": "A cross-sectional study design was used to describe trends and characteristics of DWAs in First Nations drinking water systems in Ontario issued between 1 January 2004 and 31 December 2013."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5",
+        "quote": "A total of 402 DWAs were issued in First Nations community drinking water systems in Ontario between 1 January 2004 and 31 December 2013. Of these, 13 (3%) were do not consume orders and 389 (97%) were boil water advisories."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "The large majority of advisories were issued in drinking water systems supplied by surface water (78%). Most advisories (85%) occurred in drinking water systems that were constructed more than 10 years ago and in systems serving less than 500 people. Across all 402 DWAs reported, almost half (47%) occurred in drinking water systems where the primary operator did not have adequate training for the treatment system"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10",
+        "quote": "Currently, the management of water and the provision of drinking water is divided between Indigenous and Northern Affairs Canada (INAC), Health Canada, and Environment and Climate Change Canada (Environment Canada prior to 2016) and First Nations communities themselves"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Temporal/seasonal variables (year, month, season) and technical/operational water system characteristics (water source, system age, population served, technical reasons such as equipment malfunction/turbidity, and primary operator training adequacy relative to treatment plant complexity)",
+    "outcome": "Issuance, type (boil water vs. do not consume), seasonality, and duration (in days) of drinking water advisories (DWAs) in community drinking water systems, used as a proxy for reliable access to safe drinking water",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "First Nations community drinking water systems in Ontario, Canada (158 community systems across 126-127 First Nations communities; n = 402 community DWAs issued between 1 January 2004 and 31 December 2013, excluding 39 private-system DWAs)",
+    "rationale": "Exclude under E03 (Wrong exposure). While the paper empirically analyzes drinking water advisories as a proxy for reliable access to safe drinking water across First Nations community water systems in Ontario (2004-2013), its empirical analysis examines only temporal/seasonal patterns, technical failure reasons (equipment malfunction, disinfection residuals, turbidity), and physical/operational system characteristics (surface vs. groundwater source, system age, population served, and operator technical training relative to treatment complexity). Federal/provincial regulatory gaps and institutional fragmentation are discussed only narratively as unanalyzed macro-governance background in the Introduction and Discussion, failing Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type mechanism clarification.",
+    "record_id": "R918B0EF111DE",
+    "study_design": "Cross-sectional descriptive and count time-series study (using descriptive statistics and Poisson regression)"
+  }
+}

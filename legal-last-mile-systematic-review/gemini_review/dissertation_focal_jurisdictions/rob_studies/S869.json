@@ -1,0 +1,110 @@
+{
+  "study_id": "S869",
+  "record_id": "R7FA19A7B8819",
+  "order": 27,
+  "retrieval_status": "retrieved_cached_pdf",
+  "chosen_tool": "ROBINS-I",
+  "confidence": "high",
+  "cross_tool_domains": {
+    "attrition": "Serious concern: Out of roughly 5,570 Brazilian municipalities over the 2013-2020 eight-year window, only 1,159 observations in Table 2 and 1,157 observations in Table 3 are retained after matching IBGE, FINBRA, and SNIS records and log-transforming skewed investment and outcome variables (PDF Page 4), with no missingness diagnostics or comparison of included versus excluded municipalities.",
+    "confounding": "Serious concern: Participation in regional consortia requires city council approval and is driven by fiscal distress and low baseline sewage coverage (reverse causality explicitly acknowledged on PDF Page 6). Although the equation on PDF Page 4 includes unit and year terms, the SPSS general linear model in Table 3 has only 11 degrees of freedom (no municipality fixed effects absorbed), omits municipal fiscal and political confounders, and conditions on contemporaneous water/sewage capital investments (post-treatment/endogenous variables).",
+    "legal_measurement_quality": "Moderate / weak-to-adequate: Section 2.3 (PDF Pages 3-4) accurately describes Brazil's 1988 constitutional decentralization, the 2007 federal sanitation act requiring regional plans and programmatic contracts ratified by city council vote, and the 2020 Sanitation Legal Framework Act, but empirical coding collapses consortium governance into a binary dummy (1 = engaged, 0 = not engaged; PDF Page 4) without capturing entry timing, programmatic contract terms, or whether non-consortium municipalities delegate to state utilities or private concessionaires (and Table 1 on PDF Page 4 is blank in the published PDF).",
+    "measurement_bias": "Moderate concern: Exposure and outcomes come from national administrative registries (IBGE MUNIC, FINBRA, SNIS; PDF Pages 4-5), avoiding investigator-induced differential assessment, but transaction costs are proxied indirectly via capital investment and single- versus dual-service operation, binary cooperation coding ignores institutional heterogeneity, and the logarithmic/probabilistic outcome transformation is imprecisely described (PDF Page 4).",
+    "outcome_measurement_quality": "Moderate / adequate: Total municipal sanitation expenditure and indices of total population served by water and sewage services are sourced from standardized official FINBRA and SNIS administrative databases (PDF Pages 4-5), though provider self-reporting completeness in SNIS varies across smaller municipalities and the authors' log transformation (ranging from -2.00 to 2.00 in Table 2) is opaquely explained.",
+    "reporting_bias": "Serious concern: No pre-analysis plan or study protocol is reported; model specifications diverge across the text and tables (Equation on PDF Page 4 vs. 11-df model in Table 3 vs. unexplained omission of Density in Table 4 on PDF Page 6); and Section 5 Conclusion (PDF Pages 6-7) claims service coverage improved under cooperative agreements despite Section 4 and Tables 3-4 showing lower sewage coverage for cooperating units.",
+    "selection_bias": "Serious concern: Municipalities self-select into regional consortia, and entry into the 1,157-observation analytic sample depends on having complete matched expenditure, coverage, and capital investment records across IBGE, FINBRA, and SNIS (PDF Page 4), alongside prevalent-user inclusion without aligning follow-up to the start of consortium participation."
+  },
+  "domain_ratings": [
+    {
+      "domain_id": "D1",
+      "domain_name": "Bias due to confounding",
+      "justification": "Municipalities self-select into regional sanitation consortia via city council vote, and the authors explicitly note reverse causality whereby low baseline sewage coverage motivates municipalities to join consortia (PDF Page 6). Despite panel notation on PDF Page 4, the estimated SPSS Between-Subjects general linear model reports only 11 degrees of freedom in Table 3 (PDF Page 5), demonstrating that municipality fixed effects were not absorbed. Controls are restricted to population, area, density, and a financial crisis indicator, omitting local fiscal capacity and governance confounders, while conditioning on contemporaneous water and sewage capital investments introduces post-treatment and simultaneity bias.",
+      "rating": "Serious",
+      "where_found": "PDF Pages 3-6 (Sections 2.3, 3, and 4; Tables 2-4)"
+    },
+    {
+      "domain_id": "D2",
+      "domain_name": "Bias in selection of participants into the study",
+      "justification": "From approximately 5,570 Brazilian municipalities observed over 2013-2020, only 1,157 municipality-year observations are included in the regression analysis because selection into the analytic dataset required complete matched records across IBGE MUNIC, FINBRA, and SNIS, particularly scarce transaction-cost/investment indicators (PDF Page 4). In addition, prevalent consortium members are analyzed without aligning start of follow-up to the year of consortium ratification/entry, and stratified bootstrap resampling (1,000 samples by State) reweights only the non-randomly observed complete cases.",
+      "rating": "Serious",
+      "where_found": "PDF Pages 4-5 (Section 3; Tables 2-3)"
+    },
+    {
+      "domain_id": "D3",
+      "domain_name": "Bias in classification of interventions",
+      "justification": "Engagement in regional sanitation consortia is coded as a binary indicator (1 = engaged in consortia, 0 = non-engagement) from official Brazilian municipal/financial statistical sources (PDF Page 4), avoiding retrospective recall bias. However, the paper does not specify exact entry/exit dates, programmatic contract scope, or distinguish among heterogeneous non-consortium delivery arrangements (such as direct municipal provision versus delegation to state sanitation companies or private operators), and Table 1 (expected contractual tools and transaction costs) rendered blank on PDF Page 4.",
+      "rating": "Moderate",
+      "where_found": "PDF Pages 3-4 (Sections 2.3 and 3; Table 1)"
+    },
+    {
+      "domain_id": "D4",
+      "domain_name": "Bias due to deviations from intended interventions",
+      "justification": "Although cooperative units enter programmatic contracts defining asset-specific investments and may face penalties or voluntarily exit consortia (PDF Page 3), the paper provides no empirical information on municipal switching into or out of consortia over 2013-2020 or adherence to contracted obligations, while adjusting directly for contemporaneous capital investments and single- versus dual-service operation in the outcome regressions (PDF Pages 4-5).",
+      "rating": "Moderate",
+      "where_found": "PDF Pages 3-5 (Sections 2.3 and 3)"
+    },
+    {
+      "domain_id": "D5",
+      "domain_name": "Bias due to missing data",
+      "justification": "Data scarcity for transaction-cost proxies (water and sewage equipment/facility investments) and cross-database matching reduced the 2013-2020 national municipal panel to 1,159 observations in Table 2 and 1,157 observations in Table 3 (PDF Pages 4-5), excluding the vast majority of Brazilian municipality-years. Logarithmic transformations of investment and coverage variables also risk dropping zero-investment observations, and no missing-data diagnostics, attrition comparisons, or imputation methods are reported.",
+      "rating": "Serious",
+      "where_found": "PDF Pages 4-5 and 7 (Sections 3 and 5; Tables 2-3)"
+    },
+    {
+      "domain_id": "D6",
+      "domain_name": "Bias in measurement of outcomes",
+      "justification": "Outcomes—total municipal sanitation expenditure and indices of total population served by water and sewage services—are obtained from standardized national administrative databases (FINBRA and SNIS; PDF Pages 4-5), minimizing differential observer bias. Nonetheless, SNIS coverage and investment data rely on annual utility/municipal self-reports of varying administrative quality, and the authors' description of logarithmic/normal-distribution transformation (producing coverage values from -2.00 to 2.00 in Table 2) lacks clarity.",
+      "rating": "Moderate",
+      "where_found": "PDF Pages 4-5 (Section 3; Table 2)"
+    },
+    {
+      "domain_id": "D7",
+      "domain_name": "Bias in selection of the reported result",
+      "justification": "No pre-analysis plan or protocol is cited. Substantial discrepancies exist between the panel model equation written on PDF Page 4, the 11-df Between-Subjects GLM reported in Table 3 (PDF Page 5), and the parameter table in Table 4 (PDF Page 6, which omits Density without explanation). Furthermore, the Conclusion (PDF Pages 6-7) states that service coverage improved for cooperating municipalities despite Section 4 and Tables 3-4 reporting lower sewage coverage under cooperation (M = 52.0 vs. 57.0; Cooperation = 0 coefficient B = .466, p = .007).",
+      "rating": "Serious",
+      "where_found": "PDF Pages 4-7 (Sections 3, 4, and 5; Tables 3-4)"
+    }
+  ],
+  "evidence_quotes": [
+    {
+      "criterion": "Study objective and intervention-comparator framing",
+      "page": "PDF Page 1 (Abstract)",
+      "quote": "cooperative agreements between Brazilian municipalities for water and wastewater provision and service"
+    },
+    {
+      "criterion": "Legal/institutional process of consortium entry and self-selection",
+      "page": "PDF Page 3 (Section 2.3)",
+      "quote": "To engage in cooperation, city councils must vote in favor."
+    },
+    {
+      "criterion": "Longitudinal panel study window",
+      "page": "PDF Page 4 (Section 3)",
+      "quote": "Panel data were used since several variables were examined from 2013"
+    },
+    {
+      "criterion": "Severe sample restriction and missing transaction-cost data",
+      "page": "PDF Page 4 (Section 3)",
+      "quote": "why we ended up with 1157 observations, especially when including"
+    },
+    {
+      "criterion": "Reverse causality / baseline confounding in consortium participation",
+      "page": "PDF Page 6 (Section 4)",
+      "quote": "coverage is a primary driver to engage in cooperation"
+    },
+    {
+      "criterion": "Empirical sewage coverage comparison contrasting with narrative conclusion",
+      "page": "PDF Page 6 (Section 4)",
+      "quote": "sewage services decreased when local government units cooperated"
+    }
+  ],
+  "overall_narrative_summary": "This observational comparative panel study (2013-2020; N = 1,157 municipality-year observations) evaluates the relationship between Brazilian municipalities' participation in formal regional sanitation consortia (versus stand-alone/non-consortium status) and municipal sanitation expenditure, water service coverage, and sewage service coverage, incorporating proxies for asset specificity and contract management complexity. Appraised with ROBINS-I, the overall risk of bias is Serious. Four domains are rated at Serious risk of bias: (D1) confounding, due to non-random self-selection into consortia via city council vote, explicit reverse causality from low baseline sewage coverage, absence of absorbed municipality fixed effects in the 11-df SPSS general linear model despite panel notation, omitted fiscal/political confounders, and conditioning on contemporaneous capital investments; (D2) participant selection and (D5) missing data, because matching IBGE, FINBRA, and SNIS records with scarce investment indicators restricts the national municipal panel to 1,157 complete-case observations without aligning follow-up to consortium entry or assessing missingness bias; and (D7) selective reporting, given specification inconsistencies across Equation 1, Table 3, and Table 4 (where Density is dropped) and narrative claims in the Conclusion that coverage improved under cooperation despite Tables 3-4 and Section 4 reporting lower sewage coverage among cooperating units. Classification of interventions (D3), deviations from intended interventions (D4), and outcome measurement via national FINBRA/SNIS registries (D6) are rated Moderate risk of bias.",
+  "overall_rating": "Serious",
+  "paper_read": "full text",
+  "study_design_identified": "Observational comparative longitudinal/panel study (2013-2020; N = 1,157 Brazilian municipality-year observations) comparing municipalities engaged in regional sanitation consortia against non-cooperating municipalities using a bootstrapped multivariate general linear model.",
+  "where_found_summary": "Institutional background in Section 2.3 (PDF Pages 3-4); data sources, variable definitions, sample size (1,159 / 1,157 observations), and SPSS GLM/bootstrap model specification in Section 3 (PDF Pages 4-5, Table 2); empirical regression outputs and subgroup comparisons in Section 4 (PDF Pages 5-6, Tables 3-4); conclusions and limitations on data scarcity in Section 5 (PDF Pages 6-7).",
+  "why_tool_chosen": "The study empirically evaluates a non-randomized institutional governance intervention—municipal participation in formal regional sanitation consortia (Cooperation = 1) compared against non-participating/stand-alone municipalities (Cooperation = 0)—using longitudinal panel data (2013-2020) on municipal sanitation expenditure and water/sewage population coverage. Under RISK_OF_BIAS.md §1, comparative non-randomized policy/governance evaluations using panel regression with a genuine comparator arm map directly to ROBINS-I.",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T17:23:04.125780+00:00",
+  "file_sha256": "ea0eabe5e2bb5e479ae6163be2fb0fc915de1f9cd27b849f906697c9e86f49f5",
+  "input_sha256": "7005f75578e63979eb9f50598a90c9246d9026ab2ff7b7d385deedb3ef3d03aa"
+}

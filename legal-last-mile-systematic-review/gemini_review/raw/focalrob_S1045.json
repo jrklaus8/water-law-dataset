@@ -1,0 +1,334 @@
+{
+  "study_id": "S1045",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "0c0b649ba20c7c259307ac30f1a96828b732b563187aefa2b78f6e6de89c3dd4",
+  "prompt_sha256": "a793ed294dbcaa50818e204ae91a5aed0babf0cc09da1b4deb66bc19ceb5b3e4",
+  "started_at": "2026-11-20T17:18:00.217432+00:00",
+  "completed_at": "2026-11-20T17:20:15.188702+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "AMSTAR 2",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable at the participant level (secondary literature review), though substantial synthesis-level attrition is present: 185 articles were selected after abstract screening (Table 1, PDF p. 4), yet full-text exclusions are undocumented and Table 1 explicitly notes that among 61 traditional ecological knowledge articles only 'key articles' are included in the results, with roughly 70 peer-reviewed studies ultimately cited in the bibliography.",
+      "confounding": "High concern — As a descriptive thematic scoping review with no risk-of-bias appraisal or quantitative synthesis, the paper summarizes observational associations from primary studies (e.g., municipal indigenous share and piped water coverage, or elevated housing and helminth infection) without evaluating or accounting for socioeconomic, geographic, or institutional confounding in the underlying evidence.",
+      "legal_measurement_quality": "Weak (secondary narrative description only) — International instruments (UNDRIP, ICCPR, ICERD, CRC, UN GA Res. 64/292) and illustrative domestic laws, court rulings, and co-management agreements (Canada Constitution Act 1982 s. 35(1); New Zealand State-Owned Enterprises Act 1986, Resource Management Act 1991 s. 8, Taupo JMA 2008, Waikato River Settlement 2010; Australia Native Title Act 1993 s. 225, National Water Initiative 2004, shared responsibility agreements; US Winters v. United States 1908) are summarized narratively via secondary sources (PDF pp. 6-8) without systematic jurisdictional legal coding.",
+      "measurement_bias": "High concern — Thematic categorization assigned multi-topic articles to a single bucket based on 'what was judged to be the primary perspective presented in their content' (PDF p. 3) without a published coding protocol, duplicate independent coding, or inter-rater reliability testing, and no quality or risk-of-bias assessment of included studies was performed.",
+      "outcome_measurement_quality": "Weak (secondary narrative summary) — Water access, sanitation, hygiene behaviour, and disease burden outcomes are reported narratively across heterogeneous primary studies (PDF pp. 8-9) without standardized outcome extraction, quantitative effect sizes, or evaluation of primary outcome measurement validity.",
+      "reporting_bias": "High concern — No pre-registered protocol or pre-specified synthesis plan exists; no full inventory of the 185 included articles or list of excluded studies is provided; and the authors explicitly restrict synthesis in major subtopics (such as the 61 traditional ecological knowledge papers, Table 1 footnote, PDF p. 4) to 'key articles' without objective selection criteria.",
+      "selection_bias": "High concern — The search was restricted to a single bibliographic database (SciVerse Scopus) using English keyword pairs ('water', 'sanitation', or 'hygiene' paired with 'indigenous', 'ethnic minorities', or 'aboriginal'; PDF p. 3), omitting grey literature databases, regional non-Scopus journals, and reference-list snowballing; screening was not reported as performed in duplicate, and the authors acknowledge (PDF p. 10) that the chosen keywords miss African minority/indigenous populations."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Q1. Did the research questions and inclusion criteria for the review include the components of PICO?",
+        "justification": "The review defines a target population (indigenous peoples and ethnic minorities) and broad thematic domain (water, sanitation, and hygiene; PDF p. 3), but as a broad thematic scoping review it does not specify structured intervention, comparator, or outcome inclusion criteria.",
+        "rating": "No",
+        "where_found": "Introduction & Methodology, pp. 279 (PDF p. 3)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Q2 [CRITICAL]. Did the report of the review contain an explicit statement that the review methods were established prior to the conduct of the review and did the report justify any significant deviations from the protocol?",
+        "justification": "No review protocol, registration, or statement that search, screening, and synthesis methods were established prior to conducting the review is reported anywhere in the paper.",
+        "rating": "No",
+        "where_found": "Methodology, p. 279 (PDF p. 3)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Q3. Did the review authors explain their selection of the study designs for inclusion in the review?",
+        "justification": "The authors state that the review includes 'published peer-reviewed articles' (PDF p. 3) and list topical exclusion themes (a)-(e), but provide no rationale for selecting or excluding specific empirical or doctrinal study designs.",
+        "rating": "No",
+        "where_found": "Methodology, p. 279 (PDF p. 3)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Q4 [CRITICAL]. Did the review authors use a comprehensive literature search strategy?",
+        "justification": "Only a single bibliographic database (SciVerse Scopus) was searched using nine English keyword pairs without date restrictions (PDF p. 3). Because AMSTAR 2 requires searching at least two databases plus additional justification/supplementary search strategies, single-database searching rates 'No'.",
+        "rating": "No",
+        "where_found": "Methodology, Stage (1), p. 279 (PDF p. 3); Discussion, p. 286 (PDF p. 10)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Q5. Did the review authors perform study selection in duplicate?",
+        "justification": "Stage (2) states that 'The abstracts of the 782 papers were reviewed in order to identify the works dealing specifically with water or WaSH and indigenous peoples' (PDF p. 3), without reporting independent duplicate screening or inter-reviewer consensus procedures.",
+        "rating": "No",
+        "where_found": "Methodology, Stage (2), p. 279 (PDF p. 3)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Q6. Did the review authors perform data extraction in duplicate?",
+        "justification": "Stage (3) states that 'The 185 selected articles were then divided into groupings by topic for content review by the authors' (PDF p. 3), indicating division of labour across topics rather than independent duplicate data extraction or verification.",
+        "rating": "No",
+        "where_found": "Methodology, Stage (3), p. 279 (PDF p. 3)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Q7 [CRITICAL]. Did the review authors provide a list of excluded studies and justify the exclusions?",
+        "justification": "While Stage (2) briefly lists five recurring thematic reasons for excluding 597 of the 782 abstracts (PDF p. 3), no list of excluded studies is provided, and full-text or narrative exclusions (including the un-cited subset of the 185 selected papers noted in Table 1, PDF p. 4) are not individually listed or justified.",
+        "rating": "No",
+        "where_found": "Methodology, Stage (2), p. 279 (PDF p. 3); Table 1 footnote, p. 280 (PDF p. 4)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Q8. Did the review authors describe the included studies in adequate detail?",
+        "justification": "Included articles are aggregated only as topic counts in Table 1 (N = 185; PDF p. 4) and selectively cited in narrative prose; there is no study-level table describing populations, jurisdictions, research designs, interventions/exposures, or outcomes for each of the 185 included articles.",
+        "rating": "No",
+        "where_found": "Results & Table 1, pp. 280-285 (PDF pp. 4-9)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Q9 [CRITICAL]. Did the review authors use a satisfactory technique for assessing the risk of bias (RoB) in individual studies that were included in the review?",
+        "justification": "No methodological quality or risk-of-bias appraisal of any of the 185 included articles was conducted or reported.",
+        "rating": "No",
+        "where_found": "Methodology & Results, pp. 279-285 (PDF pp. 3-9)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "Q10. Did the review authors report on the sources of funding for the studies included in the review?",
+        "justification": "The authors report the funding source for their own review in Acknowledgements (PDF p. 12), but do not report funding sources for any of the primary studies included in the review.",
+        "rating": "No",
+        "where_found": "Results & References, pp. 280-293 (PDF pp. 4-17)"
+      },
+      {
+        "domain_id": "Q11",
+        "domain_name": "Q11 [CRITICAL]. If meta-analysis was performed did the review authors use appropriate methods for statistical combination of results?",
+        "justification": "No meta-analysis or quantitative pooling was performed; the review conducts a descriptive thematic synthesis across heterogeneous social, legal, and health literature.",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "Methodology & Results, pp. 279-285 (PDF pp. 3-9)"
+      },
+      {
+        "domain_id": "Q12",
+        "domain_name": "Q12. If meta-analysis was performed, did the review authors assess the potential impact of RoB in individual studies on the results of the meta-analysis or other evidence synthesis?",
+        "justification": "No meta-analysis was performed.",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "Methodology & Results, pp. 279-285 (PDF pp. 3-9)"
+      },
+      {
+        "domain_id": "Q13",
+        "domain_name": "Q13 [CRITICAL]. Did the review authors account for RoB in individual studies when interpreting/ discussing the results of the review?",
+        "justification": "Because individual study risk of bias was never assessed, study-level methodological rigor or bias is not weighed when interpreting findings or formulating policy conclusions (PDF pp. 9-12).",
+        "rating": "No",
+        "where_found": "Discussion & Conclusions, pp. 285-288 (PDF pp. 9-12)"
+      },
+      {
+        "domain_id": "Q14",
+        "domain_name": "Q14. Did the review authors provide a satisfactory explanation for, and discussion of, any heterogeneity observed in the results of the review?",
+        "justification": "Although no quantitative heterogeneity statistics apply, the authors explicitly discuss substantive and geographic variation across the literature, including why findings cluster in high-income settler jurisdictions (US, Canada, Australia, New Zealand) rather than Asia or Africa (PDF pp. 9-10), conceptual contestation over 'indigenous' identity (PDF pp. 2, 10), and contrasting empirical findings where traditional indigenous practices (e.g., elevated housing in Peru) yielded lower helminth infection rates than among non-indigenous settlers despite broader health disparities (PDF p. 9).",
+        "rating": "Yes",
+        "where_found": "Results, p. 285 (PDF p. 9); Discussion, pp. 285-287 (PDF pp. 9-11)"
+      },
+      {
+        "domain_id": "Q15",
+        "domain_name": "Q15 [CRITICAL]. If they performed quantitative synthesis did the review authors carry out an adequate investigation of publication bias (small study bias) and discuss its likely impact on the results of the review?",
+        "justification": "No quantitative synthesis / meta-analysis was performed (though narratively on PDF p. 10 the authors note database/terminology under-coverage of African studies).",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "Methodology & Discussion, pp. 279, 286 (PDF pp. 3, 10)"
+      },
+      {
+        "domain_id": "Q16",
+        "domain_name": "Q16. Did the review authors report any potential sources of conflict of interest, including any funding they received for conducting the review?",
+        "justification": "In Acknowledgements (PDF p. 12), the authors disclose financial support from the Spanish Millennium Development Goals Achievement Fund (MDG-F) and state that findings do not necessarily reflect MDG-F positions, but they provide no explicit declaration regarding personal or institutional competing interests of the authors. Under strict AMSTAR 2 criteria, partial funding disclosure without an explicit author conflict-of-interest statement rates 'No'.",
+        "rating": "No",
+        "where_found": "Acknowledgements, p. 288 (PDF p. 12)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Systematic three-stage review structure (AMSTAR 2 tool selection)",
+        "page": "PDF Page 3 of 17 (p. 279, Methodology)",
+        "quote": "The literature search, classification and review were conducted in three stages."
+      },
+      {
+        "criterion": "Single-database search in SciVerse Scopus (AMSTAR 2 Q4)",
+        "page": "PDF Page 3 of 17 (p. 279, Methodology)",
+        "quote": "This search was carried out in the SciVerse Scopus bibliographic database, the largest"
+      },
+      {
+        "criterion": "Subjective single-topic assignment without duplicate extraction protocol (AMSTAR 2 Q6 / measurement bias)",
+        "page": "PDF Page 3 of 17 (p. 279, Methodology)",
+        "quote": "Articles spanning several topics were grouped according to what was judged"
+      },
+      {
+        "criterion": "Selective narrative synthesis of 'key articles' among included studies (AMSTAR 2 Q7/Q8 / reporting bias)",
+        "page": "PDF Page 4 of 17 (p. 280, Table 1 footnote)",
+        "quote": "For the purpose of this literature review, only key articles in this area are included in"
+      },
+      {
+        "criterion": "Scarcity of sanitation-specific primary studies in synthesis (Outcome measurement / Results)",
+        "page": "PDF Page 9 of 17 (p. 285, Results)",
+        "quote": "Research on sanitation with specific reference to indigenous culture is rare."
+      },
+      {
+        "criterion": "Review funding and sponsor disclaimer without personal COI statement (AMSTAR 2 Q16)",
+        "page": "PDF Page 12 of 17 (p. 288, Acknowledgements)",
+        "quote": "those of the authors and do not necessarily reflect the positions or policies of the MDG-F."
+      }
+    ],
+    "overall_narrative_summary": "Jiménez, Cortobius, and Kjellén (2014) conduct a secondary scoping/thematic literature review of peer-reviewed articles on indigenous peoples and water, sanitation, and hygiene (WaSH), searching SciVerse Scopus with paired keywords (782 records) and screening abstracts down to 185 included articles grouped into six thematic areas (PDF pp. 3-4). Appraised with AMSTAR 2, overall confidence in the review's results is Critically Low due to multiple critical domain flaws: there is no a priori protocol or registration (Q2), the search relied on a single bibliographic database without supplementary grey-literature or reference searches (Q4), excluded studies are not listed individually and a substantial portion of the 185 selected articles—such as non-'key' traditional ecological knowledge papers—are omitted from narrative synthesis without an inventory (Q7, Q8), and no risk-of-bias assessment of included primary studies was performed (Q9) or incorporated into the interpretation of findings (Q13). Study selection and thematic coding were also not reported as performed in duplicate (Q5, Q6). While useful as an exploratory thematic map highlighting the literature's skew toward resource conflicts in high-income settler states over basic WaSH service delivery in low-income settings, its synthesis cannot support high-confidence causal or comparative conclusions.",
+    "overall_rating": "Critically Low",
+    "paper_read": "full text",
+    "study_design_identified": "Secondary scoping / systematic literature review (keyword-pair search in SciVerse Scopus yielding 782 records, abstract screening to 185 included peer-reviewed articles, and six-category thematic narrative synthesis)",
+    "study_id": "S1045",
+    "where_found_summary": "Methodology on p. 279 (PDF p. 3); thematic article counts and inclusion caveat in Table 1 on p. 280 (PDF p. 4); narrative thematic synthesis across culture, conflicts, legislative frameworks, planning/participation, and WaSH on pp. 280-285 (PDF pp. 4-9); geographic/terminological limitations and heterogeneity discussion on pp. 285-287 (PDF pp. 9-11); funding disclosure in Acknowledgements on p. 288 (PDF p. 12).",
+    "why_tool_chosen": "The paper reports an explicit, structured three-stage database search and screening methodology (keyword-pair search in SciVerse Scopus yielding 782 articles, abstract screening with defined exclusion categories yielding 185 articles, and thematic classification in Table 1; p. 279 / PDF p. 3). Under RISK_OF_BIAS.md §1, AMSTAR 2 is the designated tool for systematic reviews and scoping reviews that employ an explicit systematic search and screening process."
+  }
+}

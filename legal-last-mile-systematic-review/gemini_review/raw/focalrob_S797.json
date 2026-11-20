@@ -1,0 +1,287 @@
+{
+  "study_id": "S797",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "e8a93481191ced10508089aea5bb70722d6df62cfecc5b79ef51a3b481c4dd95",
+  "prompt_sha256": "9b5f9b4e8e2b171f5a6732576421a6d0dc6529ce2af084a51d89db9c981393a1",
+  "started_at": "2026-11-20T17:20:49.434827+00:00",
+  "completed_at": "2026-11-20T17:23:02.884073+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell: there is no longitudinal participant cohort (municipality-level IBGE census tables reflect full census enumerations from 1940-2010, while interview non-response or refusals among approached key informants are unreported).",
+      "confounding": "Not applicable in a statistical causal-inference sense (exploratory qualitative case study with no counterfactual estimator); narratively, the authors weigh alternative explanations such as the 2014-2015 Paraíba do Sul drought, climate variability, and rapid peripheral population growth against institutional centralization and political prioritization, though municipal fiscal and administrative determinants are not formally isolated.",
+      "legal_measurement_quality": "Moderate: institutional and legal milestones shaping water governance (1967 Constitution Art. 183; July 1, 1974 state merger complementary law and Lei Complementar nº 20 establishing RMRJ; creation of state utility CEDAE and municipal delegation options; 1999 and 2014 Águas de Niterói private distribution concession/bulk-supply contracts; 2015 ALERJ parliamentary inquiry; and 2017 CEDAE privatization bill #2345/2017) are accurately contextualized historically, but specific statutory/contractual clauses, tariff rules, and municipal delegation agreements are not analyzed doctrinally in detail.",
+      "measurement_bias": "Moderate concern: triangulating IBGE census connection rates and INEA/CEDAE bulk flow capacities (m3/s) with key-informant interviews usefully uncovers severe supply intermittency masked by nominal pipe-connection figures; however, interview instruments and recording/transcription procedures are undocumented, and neighborhood intermittency estimates (e.g., receiving water two days per week) rely on unquantified informant/field accounts because CEDAE publishes no official municipal intermittency metrics.",
+      "outcome_measurement_quality": "Moderate: household piped-network coverage and alternative source reliance (wells/springs, rainwater) are drawn from official IBGE census data (1980, 2010) and bulk production/adduction flows from CEDAE/INEA engineering plans, complemented by qualitative accounts of pressure deficits, cyanobacteria interruptions, and intermittent supply; however, systematic household-level metrics of service continuity, water potability, and affordability are absent, and minor reporting typos occur in text (e.g., missing digits on PDF p. 28).",
+      "reporting_bias": "Moderate concern (Can't tell): no study protocol, interview guide, or systematic coding framework is reported, and qualitative interview material is presented selectively via brief paraphrases and short quotes from a small number of utility/technical informants without systematic reporting of resident interviews mentioned in Section 4.1.",
+      "selection_bias": "Moderate concern: the study purposively examines RMRJ's two main CEDAE-managed networks covering 96.6% of the metropolitan population while excluding four smaller municipalities with local water systems (Guapimirim, Magé, Tanguá, Maricá; 564,155 inhabitants), forfeiting a natural local-system contrast; within the case, recruitment and sampling of key informants and residents over three years of fieldwork are not transparently described, with cited interviews concentrated among CEDAE directors and technical staff."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "The Abstract, Introduction, and Section 2 clearly state the study's objective to examine why socio-spatial inequalities in water supply and sanitation (WSS) in the Rio de Janeiro Metropolitan Region (RMRJ) persist over time, posing two explicit research questions linking service inequalities to centralized socio-technical path-dependence.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 3 of 53] Abstract; [PDF Page 5 of 53] Introduction; [PDF Page 12 of 53] Section 2 (Research Rationale)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "Exploring long-term institutional, political, and socio-technical path-dependence (\"longue durée\") and how engineering paradigms and governance arrangements perpetuate unequal water access is well suited to qualitative inquiry combining documentary history, official descriptive statistics, and key-informant interviews.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 11-13 of 53] Section 2 (Research Rationale)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "The authors explicitly justify an exploratory, diachronic single-case study design structured across past trajectory, present hydrological/technical operation, and future government scenarios, drawing on Yin (2005), Gerring (2004), Flyvbjerg (2006), and Lorrain & Poupeau (2014). Excluding smaller RMRJ municipalities with isolated local systems (PDF p. 13) focuses the analysis on the two main CEDAE systems (96.6% of RMRJ inhabitants), though comparing those excluded local systems could have strengthened conclusions about decentralization.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 11-13 of 53] Section 2 (Research Rationale) and Section 3 opening"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "Section 2 lists broad institutional roles of key informants interviewed (commercial director, supervisor, and local technical staff of CEDAE, plus a river basin organization director) and Section 4.1 mentions testimony of inhabitants and local practitioners, with specific interviews cited in References (Motta 2013; DAE 2014; Nowaski 2015). However, the paper never explains how informants or residents were selected and recruited, the total sample size of interviewees, whether municipal or community actors were systematically included, or whether any approached actors declined.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 12 of 53] Section 2; [PDF Pages 24-26 of 53] Section 4.1; [PDF Pages 38-43 of 53] References"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Was the data collected in a way that addressed the research issue?",
+        "justification": "Although the authors usefully triangulate historical monographs, IBGE/SNIS census and sanitation datasets, state water resource plans (INEA, CEDAE), press reports, and interviews across three years of field research, they provide no information on interview guides/questions, interview settings and duration, audio-recording or transcription procedures, how resident fieldwork testimony was gathered, or data saturation.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 12 of 53] Section 2; [PDF Pages 24-26 of 53] Section 4.1; [PDF Pages 29-31 of 53] Section 5.1"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "The manuscript contains no reflexivity discussion examining the authors' own positioning as urban planning researchers (including prior work within the EU-funded DESAFIO project), their relationship with CEDAE executives and local technicians, or how their theoretical commitment to decentralized socio-technical alternatives may have influenced interview framing and data selection.",
+        "rating": "No",
+        "where_found": "[PDF Pages 11-13 of 53] Section 2; [PDF Page 45 of 53] Acknowledgements (absence of reflexivity throughout)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "No information is provided regarding institutional ethics review, informed consent procedures, or confidentiality/anonymity protocols, even though individual interviewees (e.g., Marcello Barcelos Motta, Marcelo Nowaski) are identified by full name and official title while local DAE technicians are cited collectively.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 11-13 of 53] Section 2; [PDF Pages 25-26 of 53] Section 4.1; [PDF Pages 40, 43 of 53] References"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "While historical, technical, and census materials are woven into a coherent diachronic narrative, the paper reports no formal qualitative analytic procedure (such as thematic coding, document analysis protocol, or systematic triangulation rules for weighing conflicting accounts), relies on a few illustrative informant quotes/paraphrases, and exhibits minor editorial/data slips (e.g., naming four municipalities while calling them 'three smaller municipalities' on PDF p. 13; missing digits in unedited manuscript text on PDF p. 28).",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 11-13 of 53] Section 2; [PDF Pages 24-32 of 53] Sections 4-5"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "Sections 4, 5, and 6 clearly articulate the core empirical and conceptual findings: unequal water access in RMRJ peripheries (Baixada Fluminense, São Gonçalo, Itaboraí) stems not from bulk raw-water scarcity in West RMRJ but from socio-technical path-dependence rooted in 1970s centralization under CEDAE, underinvestment in local distribution reservoirs, core-favoring allocation contracts (such as Águas de Niterói in East RMRJ), and continued preference for supply-side mega-projects (Guandu II, Guapiaçu dam) over loss reduction and decentralized options, while explicitly acknowledging case-study limitations.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 21-38 of 53] Sections 4, 5, and 6 (Discussion and Conclusion)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "Narrative assessment: High substantive value for urban water governance and \"legal last mile\" scholarship in Global South megacities. The study demonstrates that high nominal piped-network census coverage in peripheral municipalities masks severe operational intermittency and pressure failures driven by centralized engineering choices, lack of local storage reservoirs, weak inter-municipal cooperation, and top-down state utility governance, while identifying concrete directions for future research on institutional barriers to decentralization.",
+        "rating": "Valuable empirical and conceptual contribution (narrative assessment)",
+        "where_found": "[PDF Pages 32-38 of 53] Section 6 (Discussion and Conclusion)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Multi-source qualitative case-study data collection (CASP Q2 / Q5)",
+        "page": "[PDF Page 12 of 53], Section 2 (Research Rationale)",
+        "quote": "Drawing upon Lorrain and Poupeau (ibid.), we employed data from multiple sources:"
+      },
+      {
+        "criterion": "Exploratory descriptive case-study design and three-year fieldwork (CASP Q3 / Q5)",
+        "page": "[PDF Page 12 of 53], Section 2 (Research Rationale)",
+        "quote": "We designed our descriptive case study, involving three years of field research, in line"
+      },
+      {
+        "criterion": "Outcome measurement gap in official municipal intermittency data (CASP Q5 / Outcome measurement)",
+        "page": "[PDF Page 25 of 53], Section 4.1 (Water supply in West RMRJ)",
+        "quote": "though CEDAE provides no official quantitative information about intermittent supply"
+      },
+      {
+        "criterion": "Institutional-legal governance context of CEDAE privatization law (Cross-tool legal measurement)",
+        "page": "[PDF Page 37 of 53], Section 6 (Discussion and Conclusion)",
+        "quote": "The municipalities served by CEDAE have not questioned the law."
+      },
+      {
+        "criterion": "Explicit discussion of exploratory case-study limitations (CASP Q9 / Q10)",
+        "page": "[PDF Page 37 of 53], Section 6 (Discussion and Conclusion)",
+        "quote": "The present research has the typical limitations of case studies and exploratory research,"
+      }
+    ],
+    "overall_narrative_summary": "Britto, Maiello, and Quintslr (2018) present an exploratory, diachronic qualitative case study of water supply inequalities in the Rio de Janeiro Metropolitan Region (RMRJ), drawing on three years of field research, key-informant interviews, archival/planning documents, and descriptive IBGE census tabulations (1940-2010). Appraised with the CASP Qualitative Checklist, the study exhibits clear research aims (Q1: Yes), an appropriate qualitative socio-technical approach (Q2: Yes), a well-justified historical-diachronic single-case design (Q3: Yes), clear and well-contextualized findings (Q9: Yes), and substantial conceptual and policy value in showing how nominal network coverage hides severe peripheral supply intermittency shaped by centralized infrastructure path-dependence and institutional governance (Q10). However, methodological reporting of the primary field component raises moderate concerns (4 Can't tell items and 1 No item): informant recruitment and sample composition are not transparently reported (Q4: Can't tell), interview guides, recording/transcription, and resident data-collection procedures are omitted (Q5: Can't tell), researcher reflexivity is absent (Q6: No), ethical review and consent procedures for named interviewees are unreported (Q7: Can't tell), and qualitative coding/analytic procedures are not described (Q8: Can't tell).",
+    "overall_rating": "Moderate concern (4 Can't tell items: Q4, Q5, Q7, Q8; 1 No item: Q6)",
+    "paper_read": "full text",
+    "study_design_identified": "Qualitative diachronic descriptive case study combining three years of field research and key-informant interviews with historical/planning document analysis and descriptive official census/utility statistics",
+    "study_id": "S797",
+    "where_found_summary": "Section 2 Research Rationale ([PDF Pages 11-13 of 53]); Section 3 Historical Perspective ([PDF Pages 13-21 of 53]); Section 4 RMRJ Water Supply System Today ([PDF Pages 21-29 of 53]); Section 5 Future Scenarios ([PDF Pages 29-32 of 53]); Section 6 Discussion and Conclusion ([PDF Pages 32-38 of 53]); References ([PDF Pages 38-45 of 53]); Tables 1-7 ([PDF Pages 50-52 of 53]).",
+    "why_tool_chosen": "Section 2 explicitly frames the investigation as an exploratory, qualitative descriptive single-case study (citing Yin 2005, Flyvbjerg 2006, and Lorrain & Poupeau's 2014 qualitative water-governance guidelines) based on three years of fieldwork, key-informant interviews, and documentary sources, explicitly rejecting quantitative inferential design (\"it is a mistake to evaluate case-study-based research with the technical rigor typical of quantitative methods\"). Because official IBGE census and engineering figures appear solely as descriptive contextual tabulations rather than a primary quantitative analytical component, MMAT and quantitative checklists (ROBINS-I, JBI) do not apply, making the CASP Qualitative Checklist the directly matching instrument for a primary qualitative documentary/field case study."
+  }
+}

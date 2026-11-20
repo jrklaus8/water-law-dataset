@@ -1,0 +1,313 @@
+{
+  "study_id": "S207",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "4e936e0a37fad9211c261f559c7ca1590c1a536eb6c66fbd80964a7199a8ff86",
+  "prompt_sha256": "c85a0f3a503cb39e9bad8416bc43e988dfe860e5dd7e4bf84ab9ca330f7921ec",
+  "started_at": "2026-11-20T17:27:55.711206+00:00",
+  "completed_at": "2026-11-20T17:30:31.442719+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell: No longitudinal cohort is followed; Table 1 notes SNIS 2018 coverage of 5,549 out of 5,570 Brazilian municipalities, whereas non-response in cited secondary regulator surveys (52 agencies in Marques 2020; 31 agencies in ABAR 2019, pp. 77-78) is unexamined.",
+      "confounding": "High concern: Descriptive comparisons of investment and project completion between private and public WSS providers (pp. 84-85) and between WSS and privatized electricity/telecom sectors (Table 4, p. 74) do not control for municipal wealth, urbanization, cream-skimming selection into concessions, hydrological/regional disparities, or capital-intensity differences.",
+      "legal_measurement_quality": "Adequate: Accurately traces Brazil's constitutional municipal WSS ownership, federal vs State water jurisdiction, Law 11.445/2007, Provisional Decrees 844/2018 and 868/2018, and the four statutory pillars and conditional federal-spending enforcement mechanisms of Law 14.026/2020, though specific article-level citations are sparse and p. 71 contains a typographical slip attributing pre-reform unbid public-public contracts to Law 14.026/2020 rather than Law 11.445/2007.",
+      "measurement_bias": "Moderate-to-high concern: National baseline WSS coverage relies on standard SNIS 2018/2019 administrative data, but operational definitions and utility self-reporting limitations are not discussed, subnational regulator distribution data in Table 5 rely on an unpublished internal ANA document (Juliatto 2020, p. 77 fn 12), and a cited 2016 FGV completion-time study (p. 84) lacks full bibliographic details.",
+      "outcome_measurement_quality": "Weak for reform impact / Adequate for pre-reform baseline: Pre-2020 water and sewage coverage (SNIS 2018/2019) and historical sector investment (% GDP and BRL billions) are clearly reported across regions, but post-reform impacts of Law 14.026/2020 are purely prospective expectations written roughly seven months after enactment.",
+      "reporting_bias": "Moderate-to-high concern: No pre-specified empirical protocol or Methods section exists, and all three authors work at ANA (two in ANA's Water and Sanitation Task Force), creating unexamined institutional allegiance risk when appraising a statute that expanded ANA's regulatory oversight mandate, despite candid discussion of implementation challenges.",
+      "selection_bias": "High concern: No systematic sampling or case/literature selection criteria are stated; supporting consultancy studies, private-operator benchmarks, and anecdotal cases (such as Rio de Janeiro's Linha Amarela road concession termination, p. 85) are selected narratively without accounting for endogenous selection of fiscally stronger municipalities into private concessions."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Identifies key federal legislative and executive instruments by number and date (Law 11.445/2007, Provisional Presidential Decrees 844/2018 and 868/2018, Bill 4.162/2019, Law 14.026/2020 sanctioned 15 July 2020 with 17 vetoes, and Presidential Decree 7.217/2010) and enumerates items I-XIII of ANA's statutory standard-guideline mandate. Rated adequate rather than strong because specific article numbers within Law 14.026/2020 are largely omitted and p. 71 erroneously states that 'Law 14.026/2020 allowed these public/public contracts to be signed without going through a bidding process' when describing the pre-2020 Law 11.445/2007 regime.",
+        "rating": "adequate",
+        "where_found": "Introduction (PDF pp. 2-4 / pp. 67-69); Section 1 (PDF pp. 5-6 / pp. 70-71); Section 2.1 (PDF pp. 9-12 / pp. 74-77); Section 3.1 (PDF pp. 14-16 / pp. 79-81); Section 4 (PDF p. 21 / p. 86)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Provides a precise account of Brazil's shared-authority federal architecture: constitutional municipal ownership of WSS across 5,570 municipalities; municipal, inter-municipal, and State regulatory delegation across 72 subnational agencies; federal vs State surface/groundwater domain boundaries (fn 15, p. 79); and why lack of federal jurisdiction over WSS compelled lawmakers to rely on indirect federal 'spending powers' (conditioning federal grants and public bank loans on regionalization and subnational adoption of ANA's non-binding guidelines). Also disaggregates baseline coverage across all five Brazilian macro-regions.",
+        "rating": "strong",
+        "where_found": "Section 1 (PDF pp. 4-8 / pp. 69-73, Tables 1-3); Section 3 & 3.1 (PDF pp. 12-16 / pp. 77-81, Table 5, fn 15); Section 4 (PDF pp. 20-22 / pp. 85-87)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Clearly defines both the pre-reform legal-institutional regime (Law 11.445/2007, unbid municipal-State 'program contracts', and fragmented subnational regulation) and the 2020 statutory reform (Law 14.026/2020 organized around four pillars: ANA regulatory harmonization guidelines, regionalization incentives, contract standardization with universalization clauses, and mandatory competitive bidding plus the 31 March 2022 financial-capacity proof deadline), supplemented by an explicit comparison of ANA's statutory powers against OECD regulatory oversight functions (Table 6). Rated adequate because legal exposure is described solely at the national statutory text level without unit-level operationalization of implementation variation.",
+        "rating": "adequate",
+        "where_found": "Section 1 (PDF pp. 5-7 / pp. 70-72); Section 2.1 (PDF pp. 9-12 / pp. 74-77); Section 3.1 (PDF pp. 14-18 / pp. 79-83, Table 6)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Baseline WSS performance and statutory policy targets are clearly defined using standard administrative metrics: total and urban population served with drinking water and sewage collection/treatment (SNIS 2018/2019), historical WSS investment (% of GDP and BRL billions), six-year project completion rates, municipal WSS plan completion rates, and Law 14.026/2020's 2033 targets (99% drinking water, 90% sewage collection and treatment). However, post-reform effects are strictly prospective/qualitative author assessments rather than observed empirical outcomes, given publication shortly after July 2020 enactment.",
+        "rating": "adequate",
+        "where_found": "Section 1 (PDF pp. 4, 7-8 / pp. 69, 72-73, Tables 2-3); Section 2 (PDF pp. 8-11 / pp. 73-76, Table 4); Section 4 (PDF pp. 19-21 / pp. 84-86)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Although Table 1 specifies SNIS 2018 coverage of 5,549 of Brazil's 5,570 municipalities and Section 3 reports 72 subnational regulators covering 3,785 municipalities, the paper lacks a Methods section and draws opportunistically on secondary surveys and consultancy reports without explaining sampling frames, eligibility, or non-response (e.g., 52 agencies in Marques 2020 and 31 agencies in ABAR 2019 on pp. 77-78, and an uncited 2016 FGV project-completion study on p. 84 with no reported sample size).",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF pp. 6-8 / pp. 71-73, Tables 1-3); Section 3 (PDF pp. 12-13 / pp. 77-78, Table 5); Section 4 (PDF pp. 19-20 / pp. 84-85)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "No explicit selection criteria govern which secondary empirical studies, sectoral benchmarks, or institutional cases are included. Evidence such as Trata Brasil (2017), ABCON (2020), FGV (2016), and the single anecdotal case of Rio de Janeiro's Linha Amarela urban road concession cancellation (p. 85) is assembled narratively to illustrate regulatory and political risks facing private investment, without systematic evaluation of competing empirical perspectives or municipal/civil-society objections raised against the 2018-2020 reform bills.",
+        "rating": "weak",
+        "where_found": "Section 2 (PDF pp. 8-9 / pp. 73-74); Section 3 (PDF pp. 12-13 / pp. 77-78); Section 4 (PDF pp. 19-21 / pp. 84-86); References (PDF p. 23 / p. 88)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Relies on secondary administrative and industry statistics without discussing indicator definitions, utility self-reporting biases in SNIS, or minor internal discrepancies across years (e.g., 'over 35 million' lacking piped drinking water on pp. 66-67 vs 34 million in SNIS 2018 on p. 69 and ~33.2 million implied by SNIS 2019 in Table 2 on p. 72). Table 5 relies on an unpublished internal ANA document (Juliatto 2020, fn 12), and the 2016 FGV study cited on p. 84 lacks any bibliographic citation or measurement documentation.",
+        "rating": "weak",
+        "where_found": "Abstract & Introduction (PDF pp. 1-2 / pp. 66-67); Section 1 (PDF pp. 4, 6-8 / pp. 69, 71-73, Tables 1-3); Section 3 (PDF pp. 12-13 / pp. 77-78, Table 5, fn 12); Section 4 (PDF pp. 19-20 / pp. 84-85)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Contains no counterfactual, longitudinal econometric, or quasi-experimental identification strategy. Attributing low WSS investment and coverage to unbid public-public contracts and regulatory fragmentation—and projecting future gains from Law 14.026/2020—relies entirely on descriptive cross-sector comparisons (Table 4), raw public-vs-private comparisons (pp. 84-85), and ex-ante institutional reasoning written within months of the law's passage.",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF pp. 6-8 / pp. 71-73); Section 2 (PDF pp. 8-9 / pp. 73-74, Table 4); Section 4 (PDF pp. 18-22 / pp. 83-87)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Although the authors note macro-regional poverty and climate differences (North/Amazon and semi-arid Northeast, p. 73) and mention climate, population density, urbanization, and income per capita as contextual factors for future ANA guidelines (p. 81), their empirical comparisons between private operators (21% of national WSS investment across 5.2% of municipalities, p. 85) and public utilities do not adjust for cream-skimming selection of wealthier, denser municipalities into private concessions, nor do comparisons with telecom and electricity adjust for sector-specific capital intensity and sunk network costs.",
+        "rating": "weak",
+        "where_found": "Section 1 (PDF pp. 7-8 / pp. 72-73, Tables 2-3); Section 2 (PDF pp. 8-9 / pp. 73-74, Table 4); Section 3.1 (PDF p. 16 / p. 81); Section 4 (PDF pp. 19-20 / pp. 84-85)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Demonstrates deep operational and historical command of Brazil's WSS institutional landscape: PLANASA and the 1985 dissolution of the National Housing Bank; information asymmetries preventing small municipalities from calculating unamortized reversible asset indemnities owed to State utilities (p. 72); political appointees and overlapping municipal/State regulatory jurisdictions (p. 78); multi-year concession structuring bottlenecks at BNDES and federal PPP units (p. 84); political expropriation risks; State/union resistance to splitting State water companies; and the historical failure of conditional federal funding deadlines under Decree 7.217/2010 postponed four times since 2010 (p. 86).",
+        "rating": "strong",
+        "where_found": "Section 1 (PDF pp. 4-7 / pp. 69-72); Section 2.1 (PDF pp. 10-12 / pp. 75-77); Section 3 & 3.1 (PDF pp. 12-18 / pp. 77-83); Section 4 (PDF pp. 18-22 / pp. 83-87)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While SNIS, PLANSAB, OECD, World Bank, and ABAR sources are publicly identifiable, Table 5's regulatory agency breakdown comes from an inaccessible 'Unpublished Internal Document' at ANA (Juliatto 2020, fn 12), the Marques (2020) consultancy report (fn 13) lacks an access link, the 2016 FGV completion study (p. 84) has no citation at all, and the formal References list on p. 88 lists only two works (with other sources scattered in footnotes). No dataset or analytical protocol is provided.",
+        "rating": "weak",
+        "where_found": "Footnotes 1, 5, 10-14, 17-20 (PDF pp. 2-21 / pp. 67-86); Section 4 (PDF p. 19 / p. 84); References (PDF p. 23 / p. 88)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No formal doctrinal, contractual, or judicial coding is performed; statutory provisions of Law 14.026/2020 and their correspondence with the five OECD regulatory oversight areas (pp. 81-83) are synthesized narratively without a codebook, classification rules, or independent double-coding.",
+        "rating": "not assessable",
+        "where_found": "Entire paper; Section 3.1 OECD functional comparison (PDF pp. 16-18 / pp. 81-83)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "All three authors are officials at Brazil's National Water and Sanitation Agency (ANA), including the Executive Manager and a Specialist on ANA's Water and Sanitation Task Force—the exact federal agency whose expanded regulatory oversight role under Law 14.026/2020 is analyzed. Beyond a standard title-page disclaimer that opinions are the authors' own and do not necessarily reflect official ANA policy (p. 66), there is no reflexive discussion of how insider agency involvement shaped problem diagnosis, framing of subnational regulators' lobbying (pp. 86-87), or support for private participation and federal guideline harmonization.",
+        "rating": "weak",
+        "where_found": "Title page footnote * (PDF p. 1 / p. 66); Section 4 (PDF pp. 21-22 / pp. 86-87); Information about the authors (PDF p. 23 / p. 88)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study scope and ex-ante statutory reform focus (D3, D4, D8)",
+        "page": "PDF Page 1 (p. 66, Abstract)",
+        "quote": "the Brazilian Parliament approved the reform of the WSS sector in July 2020."
+      },
+      {
+        "criterion": "Coverage of secondary SNIS municipal administrative data (D5, D7)",
+        "page": "PDF Page 6 (p. 71, Section 1, Table 1)",
+        "quote": "Source: SNIS 2018 (data from 5,549 municipalities of the 5,570 existing in Brazil)"
+      },
+      {
+        "criterion": "Statutory citation slip attributing pre-2020 unbid program contracts to Law 14.026/2020 instead of Law 11.445/2007 (D1)",
+        "page": "PDF Page 6 (p. 71, Section 1)",
+        "quote": "One critical issue is that Law 14.026/2020 allowed these public/public contracts"
+      },
+      {
+        "criterion": "Reliance on unpublished internal agency documentation for regulator statistics (D7, D11)",
+        "page": "PDF Page 12 (p. 77, Section 3, Footnote 12)",
+        "quote": "Panorama Das Agências Reguladoras No Brasil, ANA, Unpublished Internal Document"
+      },
+      {
+        "criterion": "Jurisdictional specificity and indirect federal enforcement mechanics (D2, D10)",
+        "page": "PDF Page 21 (p. 86, Section 4)",
+        "quote": "As mentioned previously, ANA has no enforcement powers to guarantee that its"
+      },
+      {
+        "criterion": "Author institutional affiliation inside ANA's Water and Sanitation Task Force without methodological reflexivity (D13)",
+        "page": "PDF Page 23 (p. 88, Information about the authors)",
+        "quote": "Executive Manager, Water and Sanitation Task Force, Brazil’s National Water Agency"
+      }
+    ],
+    "overall_narrative_summary": "Motta Nunes, Anderaos, and Marinho de Araujo (2021) present a single-country legal-institutional and historical case study of Brazil's water and sanitation services (WSS) sector, diagnosing structural bottlenecks under PLANASA and Law 11.445/2007 and prospectively evaluating the July 2020 statutory overhaul (Law 14.026/2020) using descriptive secondary statistics (SNIS 2018/2019, national infrastructure investment series, regulator surveys, and an internal ANA census of 72 subnational agencies). Appraised under the Legal Institutional Evidence Appraisal Framework as a structured non-validated judgment, the paper exhibits strong jurisdictional specificity and institutional context—lucidly explaining municipal constitutional service ownership, asymmetric asset-indemnity barriers in public-public 'program contracts', subnational regulatory fragmentation, concession-design bottlenecks, and the indirect federal 'spending power' enforcement mechanism conditioning federal funds on regionalization and adoption of ANA's non-binding guidelines—alongside adequate legal source grounding and exposure/baseline-outcome definitions (marred slightly by a typographical misattribution of pre-2020 unbid contracts to Law 14.026/2020 on p. 71). Conversely, empirical rigor for causal inference is weak: there is no Methods section, no counterfactual identification strategy, no adjustment for confounding or municipal cream-skimming when comparing private and public providers, incomplete sampling and measurement documentation (including reliance on an unpublished internal ANA document and an uncited 2016 FGV study), purely ex-ante speculation regarding post-2020 reform outcomes, and no reflexive discussion of the authors' insider positionality within ANA's Water and Sanitation Task Force beyond a boilerplate disclaimer.",
+    "overall_rating": "Structured non-validated judgment: High risk of bias for causal inference; adequate descriptive legal-institutional case analysis (strong jurisdictional specificity and institutional context, adequate legal source/exposure/baseline outcome description, and weak causal identification, confounding control, sampling/measurement/replication transparency, and researcher reflexivity)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-country legal-institutional and historical case study / doctrinal-policy analysis with descriptive secondary administrative statistics and ex-ante assessment of Brazil's Law 14.026/2020",
+    "study_id": "S207",
+    "where_found_summary": "Absence of formal Methods section confirmed across Table of Contents and full text (PDF pp. 1-23 / pp. 66-88); historical background and SNIS 2018/2019 descriptive statistics in Section 1 (PDF pp. 4-8 / pp. 69-73, Tables 1-3); statutory pillars of Law 14.026/2020 and cross-sector investment series in Section 2 (PDF pp. 8-12 / pp. 73-77, Table 4); subnational regulatory structure, ANA mandates, and OECD regulatory oversight comparison in Section 3 (PDF pp. 12-18 / pp. 77-83, Tables 5-6); prospective implementation critique in Section 4 (PDF pp. 18-22 / pp. 83-87); author ANA Task Force affiliations and disclaimer on PDF pp. 1 and 23 (pp. 66, 88).",
+    "why_tool_chosen": "The paper is not a randomized trial, quasi-experimental/comparative observational evaluation (ROBINS-I), analytical cross-sectional or cohort regression study (JBI), primary qualitative field/interview study (CASP), mixed-methods primary study (MMAT), or systematic review (AMSTAR 2). Rather, it is a doctrinal-empirical hybrid / legal-historical and institutional case study of Brazil's national WSS statutory framework (Law 11.445/2007 and Law 14.026/2020) that marshals descriptive administrative and institutional statistics (SNIS, PLANSAB, ABAR, internal ANA regulator data) to analyze regulatory architecture and implementation incentives—matching the exact scope of the Legal Institutional Evidence Appraisal Framework (RISK_OF_BIAS.md §2)."
+  }
+}

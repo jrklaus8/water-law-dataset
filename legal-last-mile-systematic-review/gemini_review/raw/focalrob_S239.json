@@ -1,0 +1,313 @@
+{
+  "study_id": "S239",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f146bd0b0348534e63cdaaa70ccc655ffb135197ad1d78ff31eb8986ad8a4cf6",
+  "prompt_sha256": "e5827225863bcc1d3208b9edd21042b37ea6d1bb70e5f7b6a8efadfb93e7fc0c",
+  "started_at": "2026-11-20T17:27:55.719303+00:00",
+  "completed_at": "2026-11-20T17:30:17.380709+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable for longitudinal attrition (no panel or cohort follow-up), though 23% item non-response on race/color in 1996-2014 SIM/DataSUS mortality records creates substantial missing-data uncertainty in the mortality numerator (PDF pp. 13-14).",
+      "confounding": "Serious / High concern: Empirical analyses rely exclusively on unadjusted national bivariate percentages and raw counts from separate, unlinked Census and DataSUS tables without age-standardized mortality rates or adjustment/stratification for region, municipality, urban-rural residence, or household income/socioeconomic status (PDF pp. 11-15).",
+      "legal_measurement_quality": "Moderate (narrative-doctrinal framing only): Accurately cites Brazil's 1988 Federal Constitution (arts. 196, 200, 225), Basic Sanitation Law (Law 11.445/2007), Statute of Racial Equality (Law 12.288/2010), and PNSIPN (2013) to establish de jure sanitation and health rights, but institutional/environmental racism and state non-enforcement are conceptualized theoretically and historically rather than operationalized as a measurable legal or regulatory exposure variable (PDF pp. 3, 6-8, 11).",
+      "measurement_bias": "Moderate concern: Self-declared IBGE/SUS race/color categories (combining Black and Mixed into the Black population) and Funasa/Costa et al. DRSAI disease lists are explicitly defined, but 23% missing race identification in DataSUS mortality records, acknowledged SUS disease underreporting, and omitted exact IBGE adequacy thresholds and ICD-10 extraction codes introduce measurement and classification uncertainty (PDF pp. 4, 9, 11-15).",
+      "outcome_measurement_quality": "Moderate / Adequate descriptive administrative indicators: Basic sanitation deficits (water supply, waste collection, sewage disposal/treatment, no household bathroom) and DRSAI deaths/hospitalizations draw on official national 2010 IBGE Census and SIM/SIH DataSUS registries, but outcomes are presented as raw counts and within-deficit racial shares rather than population-standardized incidence/mortality rates, with unstated technical coding cutoffs (PDF pp. 11-15, 22).",
+      "reporting_bias": "Moderate concern: No pre-registration or analysis protocol exists for this exploratory study; selected descriptive indicators (2010 Census sanitation shares, 1996-2014 DRSAI mortality shares, and a single summary count of 2008-2016 hospitalizations without racial comparisons or denominators) are reported without sensitivity analyses for the 23% missing-race death records (PDF pp. 5, 11-15, 23).",
+      "selection_bias": "High concern: Historical and sociological literature was selected via non-systematic exploratory bibliographic research without search terms or inclusion rules (PDF p. 5), and while quantitative tabulations cover full national Census/DataSUS universes, excluding the 23% of 1996-2014 DRSAI deaths lacking race/color data from racial proportion calculations introduces potential differential missingness bias (PDF pp. 13-14)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Accurately cites primary Brazilian constitutional and statutory provisions governing health, environment, basic sanitation, and racial equity—specifically the 1988 Federal Constitution (arts. 196, 200, 225), Law No. 11.445/2007 (Basic Sanitation Law), Law No. 12.288/2010 (Statute of Racial Equality), the 2013 National Policy for Holistic Health of the Black Population (PNSIPN), and the 2001 Durban Declaration—though legal analysis remains high-level and does not dissect specific regulatory or municipal enforcement provisions.",
+        "rating": "adequate",
+        "where_found": "Introduction (PDF p. 3); Institutional racism as a social determinant of health (PDF p. 7); Black population's environmental health in sanitation (PDF p. 11); References (PDF p. 19)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly specifies the national Brazilian legal and public-health jurisdiction (SUS, Funasa, IBGE) and frames its claims at the macro-national scale, while explicitly acknowledging in the Final Considerations that regional, local, and subnormal-cluster variations are not disaggregated here and require future localized research.",
+        "rating": "adequate",
+        "where_found": "Introduction (PDF pp. 3, 5); Black population's environmental health in sanitation (PDF pp. 11-15); Final considerations (PDF p. 18)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Explicitly defines the Black population following IBGE and SUS demographic convention as the sum of self-declared Black and Mixed (pardo) categories (Footnote 2) and defines institutional and environmental racism conceptually via Geledés (2013a), Werneck (2016), and Bullard (2004, 2005); however, state institutional omission or legal non-enforcement is not directly operationalized as an empirical variable distinct from aggregate racial group membership.",
+        "rating": "adequate",
+        "where_found": "Introduction, Footnote 2 (PDF p. 4); Institutional racism as a social determinant of health (PDF p. 6); Environmental racism within the context of environmental sanitation (PDF p. 8)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Clearly defines four household basic sanitation deficit dimensions from the 2010 IBGE Census (water supply, waste collection, sewage treatment/disposal, and absence of a bathroom) and explicitly enumerates the infectious, parasitic, vector-borne, and hygiene-related illnesses classified under Diseases Related to Inadequate Environmental Sanitation (DRSAI) based on Costa et al. (2004), WHO ICD manuals, and Funasa (2015) in Footnotes 9 and 10.",
+        "rating": "strong",
+        "where_found": "Black population's environmental health in sanitation, Footnotes 9-10 and Figures 1-2 (PDF pp. 9, 11-15)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Clearly identifies the national administrative and census universes used—the 2010 IBGE Demographic Census, SIM/DataSUS national mortality records (1996-2014), and SIH/DataSUS hospitalization records (January 2008 to October 2016)—eliminating random sampling error, though exact population denominators and age-specific population counts by race are not reported alongside the numerator totals.",
+        "rating": "adequate",
+        "where_found": "Introduction (PDF p. 5); Black population's environmental health in sanitation (PDF pp. 11-15); References (PDF pp. 19-20)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Literature and historiography were gathered via non-systematic 'exploratory-level bibliographic research according to Gil (2009)' without search strings, databases, or inclusion/exclusion criteria, and in the 1996-2014 DataSUS mortality dataset 23% of the 231,087 DRSAI deaths lacked race/color information and were dropped when computing racial mortality proportions (55% Black vs. 43% white), creating substantial completeness and selection uncertainty despite the author's candid discussion of this missingness.",
+        "rating": "weak",
+        "where_found": "Introduction (PDF p. 5); Black population's environmental health in sanitation (PDF pp. 13-14)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Reports exact counts and racial percentages for 2010 Census sanitation inadequacy (Figure 1) and 1996-2014 DRSAI mortality (Figure 2), lists included DRSAI diseases (Footnote 10), and credits an IBGE/RJ technician for statistical extraction of the Census data; however, exact IBGE variable recodes separating adequate from inadequate sanitation, exact ICD-10 code queries in Tabnet DataSUS, and the arithmetic behind the 'every hour and a half' fatality metric and 'almost 2 million' hospitalizations are not fully detailed.",
+        "rating": "adequate",
+        "where_found": "Black population's environmental health in sanitation, Footnote 10 and Figures 1-2 (PDF pp. 11-15); Acknowledgement (PDF p. 22)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Presents historical narrative synthesis alongside unadjusted cross-sectional national tabulations from separate, unlinked datasets (2010 IBGE Census for sanitation access; 1996-2014 and 2008-2016 DataSUS for DRSAI mortality and hospitalizations); there is no empirical linkage between legal/policy exposure, sanitation deficits, and health outcomes, nor any quasi-experimental or multivariable design to identify causal effects.",
+        "rating": "weak",
+        "where_found": "Introduction (PDF p. 5); Black population's environmental health in sanitation (PDF pp. 11-15); Final considerations (PDF pp. 16-18)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "While the text acknowledges poverty, low income, spatial segregation, and urban/rural disparities, the quantitative analysis relies entirely on unadjusted national proportions and raw death counts without age-standardized mortality rates per 100,000 population or stratification/control for geographic region, municipality, urban-rural status, or socioeconomic position.",
+        "rating": "weak",
+        "where_found": "Institutional racism as a social determinant of health (PDF p. 7); Environmental racism within the context of environmental sanitation (PDF p. 8); Black population's environmental health in sanitation (PDF pp. 11-15)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides thorough historical, socio-political, and institutional analysis tracing the racialized organization of sanitation in Brazil from colonial slave ships and 19th-century urban slavery—where enslaved Black people physically carried waste while lacking sanitation—to contemporary SUS/PNSIPN implementation barriers and racial data omissions in public information systems.",
+        "rating": "strong",
+        "where_found": "Introduction (PDF pp. 3-5); Institutional racism as a social determinant of health (PDF pp. 6-7); Black population's environmental health in sanitation (PDF pp. 9-15); Final considerations (PDF pp. 16-18)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Cites publicly accessible Brazilian repositories (IBGE 2010 Census portal and Tabnet DataSUS SIM/SUS with access dates) and specifies the covered years and disease categories in Footnote 10, allowing approximate macro-level verification, although custom IBGE microdata tabulations (prepared by an IBGE technician) and exact ICD-10 query scripts are not archived beyond the summary figures in the article.",
+        "rating": "adequate",
+        "where_found": "Black population's environmental health in sanitation (PDF pp. 11-15); References (PDF pp. 19-20); Acknowledgement & Data availability (PDF pp. 22-23)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Provides no coding protocol for synthesizing historical/bibliographic sources and no reproducible variable-coding table or query specification for IBGE 2010 Census sanitation adequacy thresholds or DataSUS ICD-10 mortality/hospitalization extractions.",
+        "rating": "weak",
+        "where_found": "Introduction (PDF p. 5); Black population's environmental health in sanitation (PDF pp. 11-15); Acknowledgement & Data availability (PDF pp. 22-23)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Explicitly reflects on the author's lived positionality and personal sanitation deprivation during two years of master's study in Rio de Janeiro (water shortages, poor pressure, overheated tank water, flooding, litter, and vectors) and connects this embodied experience to structural blind spots in Brazilian public health and social science scholarship.",
+        "rating": "strong",
+        "where_found": "Introduction (PDF pp. 4-5); Final considerations (PDF p. 17)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D1 Legal source accuracy — statutory right to sanitation and universalization under Law 11.445/2007",
+        "page": "PDF Page 3 (Introduction, p. 298)",
+        "quote": "well as the universalization of access to basic sanitation, are instituted by law 11.445/2007"
+      },
+      {
+        "criterion": "D6 Selection process / study design — non-systematic exploratory bibliographic method",
+        "page": "PDF Page 5 (Introduction, p. 300)",
+        "quote": "the exploratory-level bibliographic research according to Gil (2009). It encompasses"
+      },
+      {
+        "criterion": "D13 Researcher reflexivity — explicit account of author's lived experience with sanitation precarity",
+        "page": "PDF Page 5 (Introduction, p. 300)",
+        "quote": "problems concerning the lack of sanitation, from poor pressure and lack of water"
+      },
+      {
+        "criterion": "D4/D7 Outcome & measurement — descriptive 2010 IBGE Census racial disparity in water supply access",
+        "page": "PDF Page 11 (Black population's environmental health in sanitation, p. 306)",
+        "quote": "since 61% of the population without access to water supply was Black and only"
+      },
+      {
+        "criterion": "D6/D7 Missing race data in DataSUS DRSAI mortality records (1996-2014)",
+        "page": "PDF Page 13 (Black population's environmental health in sanitation, p. 308)",
+        "quote": "many as 231,087 Brazilians died of DRSAI. Of these deaths, 23% did not have racial"
+      },
+      {
+        "criterion": "D7/D11 Measurement & replication — external IBGE technician conducted statistical extraction of sanitation data",
+        "page": "PDF Page 22 (Acknowledgement, p. 317)",
+        "quote": "for his availability, collaboration, and for conducting and providing the statistical"
+      }
+    ],
+    "overall_narrative_summary": "Study S239 (de Jesus, 2026; English translation of a 2020 Saúde e Sociedade article) is a political-historical and legal-institutional sociological study examining environmental and institutional racism in Brazilian sanitation and environmental health. Methodologically, it combines non-systematic 'exploratory-level bibliographic research' on colonial slavery historiography, Brazilian constitutional/statutory sanitation and racial-equality guarantees (1988 Constitution arts. 196, 200, 225; Law 11.445/2007; Law 12.288/2010; PNSIPN 2013), and institutional racism theory with purely descriptive macro-tabulations of national secondary data from the 2010 IBGE Census (racial shares of populations lacking water supply, waste collection, sewage treatment, and bathrooms) and Tabnet DataSUS (1996-2014 SIM mortality and 2008-2016 SIH hospitalizations for Diseases Related to Inadequate Environmental Sanitation, DRSAI). Under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment), its strengths lie in rich historical-institutional contextualization (D10 strong), explicit researcher reflexivity (D13 strong), and clear conceptual/nosological definitions of sanitation deficits and DRSAI categories (D4 strong), alongside accurate high-level citation of Brazilian statutes (D1 adequate) and national administrative universes (D2, D5, D7, D11 adequate). However, for empirical or causal inference, it has major methodological limitations: bibliographic selection is non-systematic and 23% of 1996-2014 DRSAI death certificates lacked racial identification (D6 weak); Census and DataSUS tabulations are unlinked and unadjusted for age structure, region, urban-rural status, or income/socioeconomic confounding, relying on group shares rather than age-standardized population rates (D8, D9 weak); and exact Census recoding rules and ICD-10 query scripts are not reported (D12 weak).",
+    "overall_rating": "Structured non-validated judgment: Weak for causal/inferential attribution; Adequate for descriptive national disparity documentation and legal-historical institutional contextualization (no numeric composite score)",
+    "paper_read": "full text",
+    "study_design_identified": "Political-historical and legal-institutional sociological case study combining exploratory bibliographic/historical synthesis with descriptive secondary macro-tabulations of national census and public-health administrative data (2010 IBGE Census and 1996-2016 DataSUS)",
+    "study_id": "S239",
+    "where_found_summary": "Abstract (PDF p. 1); Introduction — legal framework, study aims, researcher reflexivity, and exploratory methodological statement (PDF pp. 3-5); Theoretical & legal-policy sections on institutional and environmental racism (PDF pp. 6-9); Historical & quantitative empirical section using 2010 IBGE Census and 1996-2016 DataSUS with Footnotes 9-10 and Figures 1-2 (PDF pp. 9-15); Final considerations — limitations and call for future quantitative/qualitative research (PDF pp. 16-18); References, Acknowledgement, Funding, and Data availability (PDF pp. 19-23).",
+    "why_tool_chosen": "The article integrates a legal-policy and colonial-to-present institutional-historical analysis of Brazil's sanitation and health framework (1988 Constitution, Law 11.445/2007, Law 12.288/2010, PNSIPN 2013) with unlinked, purely descriptive macro-tabulations of national 2010 IBGE Census and DataSUS administrative records. Because it uses non-systematic 'exploratory-level bibliographic research' (ruling out AMSTAR 2), collects no primary qualitative interview/field data (ruling out CASP/MMAT), evaluates no specific policy intervention comparator (ruling out ROBINS-I), and performs no individual-level analytical cross-sectional regression linking exposure and outcome (ruling out JBI Analytical Cross Sectional), the 13-domain Legal Institutional Evidence Appraisal Framework is the most appropriate instrument."
+  }
+}

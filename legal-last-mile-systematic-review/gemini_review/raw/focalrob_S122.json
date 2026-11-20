@@ -1,0 +1,211 @@
+{
+  "study_id": "S122",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "0563f409f138686775386cbe7b4d1d298387143f2068ce335131acc5b30beaf4",
+  "prompt_sha256": "4d79e0e986ed473b29211126af655b9fe0897ef63455c1e61ce93e4caa69361d",
+  "started_at": "2026-11-20T17:30:31.469426+00:00",
+  "completed_at": "2026-11-20T17:32:14.020505+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "cannot_tell",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "cannot_tell",
+      "confounding": "cannot_tell",
+      "legal_measurement_quality": "cannot_tell",
+      "measurement_bias": "cannot_tell",
+      "outcome_measurement_quality": "cannot_tell",
+      "reporting_bias": "cannot_tell",
+      "selection_bias": "cannot_tell"
+    },
+    "domain_ratings": [],
+    "evidence_quotes": [
+      {
+        "criterion": "Document mismatch verification (authors and affiliation of attached PDF)",
+        "page": "[PDF Page 1 of 7], Title/Author Header",
+        "quote": "Water and Sanitation Program Africa, The World Bank Kenya, Hill Park Bld, Nairobi, P.O. Box 30577, Kenya"
+      },
+      {
+        "criterion": "Document mismatch verification (journal citation of attached PDF)",
+        "page": "[PDF Page 1 of 7], Journal Footer",
+        "quote": "Water Science & Technology Vol 51 No 8 pp 51–57 Q 2005 IWA Publishing and the authors"
+      },
+      {
+        "criterion": "Attached PDF scope (World Bank WSP-AF programmatic dissemination and technical assistance work program)",
+        "page": "[PDF Page 1 of 7], Abstract",
+        "quote": "work program to disseminate the best practice in pro-poor service development and to help utilities and"
+      },
+      {
+        "criterion": "Attached PDF design (prospective 3-year institutional action plan rather than completed empirical study)",
+        "page": "[PDF Page 4 of 7], Proposed action plan",
+        "quote": "Based on the above, a series of activities has been designed to address the current gaps in"
+      }
+    ],
+    "overall_narrative_summary": "True full text not accessible due to a retrieval/filing PDF mismatch; no risk-of-bias appraisal of Vargas & Lima (2004) could be performed. Specifically, Study S122 (Record ID R30D282E7C071) cites Vargas MC & Lima RF (2004), 'Concessões privadas de saneamento no Brasil: bom negócio para quem?', Ambiente & Sociedade 7(2), DOI 10.1590/S1414-753X2004000200005. However, the provided 7-page PDF (SHA-256: 0563f409f138686775386cbe7b4d1d298387143f2068ce335131acc5b30beaf4) is an entirely unrelated publication: P. Cross & A. Morel (2005), 'Pro-poor strategies for urban water supply and sanitation services delivery in Africa', Water Science & Technology 51(8):51-57. Because guessing study design or bias domains from a citation/title is prohibited, paper_read is recorded as 'not accessible' and chosen_tool, overall_rating, and all seven cross-tool domains are set to 'cannot_tell'. For reconciliation completeness, if the erroneously attached Cross & Morel (2005) PDF were appraised on its own terms, it is a non-empirical programmatic policy overview and prospective three-year work plan for the World Bank Water and Sanitation Program-Africa (WSP-AF) with no completed primary data collection, no bibliography, and no systematic search, which would map to chosen_tool = 'NONE'.",
+    "overall_rating": "cannot_tell",
+    "paper_read": "not accessible",
+    "study_design_identified": "cannot_tell (full text not accessible: wrong PDF retrieved; attached file is Cross & Morel 2005 in Water Science & Technology rather than Vargas & Lima 2004 in Ambiente & Sociedade)",
+    "study_id": "S122",
+    "where_found_summary": "Document mismatch verified on [PDF Page 1 of 7] (title 'Pro-poor strategies for urban water supply and sanitation services delivery in Africa', authors 'P. Cross and A. Morel', World Bank Kenya affiliation, and footer 'Water Science & Technology Vol 51 No 8 pp 51-57 Q 2005 IWA Publishing'); prospective non-empirical work-plan nature of the misfiled PDF verified on [PDF Page 1 of 7] (Abstract) and [PDF Pages 4-6 of 7] ('Proposed action plan'). Actual text of Vargas & Lima (2004) is absent.",
+    "why_tool_chosen": "Full text of target study S122 (Vargas & Lima 2004, Ambiente & Sociedade 7(2), DOI 10.1590/S1414-753X2004000200005) is not accessible because the retrieved PDF is a misfiled copy of Cross & Morel (2005), Water Science & Technology 51(8):51-57. Per protocol, design and risk of bias must never be guessed from title/citation, requiring chosen_tool = 'cannot_tell' (whereas the misfiled Cross & Morel 2005 text itself is a non-empirical WSP-AF proposed action plan that would fit 'NONE')."
+  }
+}

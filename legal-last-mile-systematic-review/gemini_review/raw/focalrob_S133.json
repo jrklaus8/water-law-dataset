@@ -1,0 +1,313 @@
+{
+  "study_id": "S133",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b5a749e0e6145f4ee6c48855648cd8ff966a11b149d46ffa9ca3a4582e028272",
+  "prompt_sha256": "14467075ff21f95de71a77c2a0a81a6b6ffbfecd0bba616647f76dea0ffc4077",
+  "started_at": "2026-11-20T17:20:49.468134+00:00",
+  "completed_at": "2026-11-20T17:23:29.081939+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Not assessable — The paper is a retrospective institutional case study synthesizing aggregate hydrological and administrative reports rather than following a sampled cohort or panel of individuals or households over time.",
+      "confounding": "High concern — Descriptive single-case study with no counterfactual or analytical strategy to separate extreme meteorological anomaly (the 2013-2015 Southeast drought) from institutional/regulatory governance failures, or to separate concurrent tariff bonuses from network pressure reduction (PDF pp. 2, 4-5, 11).",
+      "legal_measurement_quality": "Weak to moderate — Identifies multi-level water-governance mandates and cites Portaria DAEE No. 1213/2004 (loosely translated as 'Decree No. 1213/2004 DAEE', PDF p. 9), the 2012 Forest Code (PDF p. 11), and Federal Law 9.433/1997 (PDF p. 16), but relies primarily on secondary NGO and news accounts rather than direct doctrinal coding of primary grant resolutions or enforcement filings.",
+      "measurement_bias": "High concern — Operational, demand, and shortage indicators (e.g., 35% MRSP water-shortage prevalence from an unindexed Data Popular survey on PDF p. 9; 20% demand reduction on PDF p. 11; ~37% distribution losses on PDF p. 16) are drawn from secondary agency, NGO, and newspaper sources without primary verification or uniform measurement protocols.",
+      "outcome_measurement_quality": "Weak to moderate — Defines conceptual thresholds for crisis impact onset (exhaustion of Cantareira useful volume on July 11, 2014, PDF p. 5) and rationing versus supply breakdown (>3 days without water, PDF p. 13), alongside aggregate reservoir volumes and population served, but lacks standardized primary or administrative household-level intermittency, pressure, and equity metrics.",
+      "reporting_bias": "High concern — No study protocol, search strategy, or pre-specified analytical plan exists; narrative selection of 'emblematic facts' (PDF p. 9) and two broken local hard-drive citations for SABESP reports (PDF p. 17) prevent independent verification of completeness.",
+      "selection_bias": "High concern — No Methods section, documentary sampling frame, or inclusion/exclusion criteria are reported; regulatory episodes, agency bulletins, NGO critiques, and media articles are purposively selected without systematic screening (PDF pp. 1-16)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The paper identifies relevant Brazilian legal and regulatory instruments—including Portaria DAEE No. 1213/2004 (translated imprecisely in the body text as 'Decree No. 1213/2004 DAEE' on PDF p. 9, though cited accurately as a Portaria in References on PDF p. 17), the 2012 Forest Code (Law 12.651/2012, PDF pp. 11, 17), and the National Water Resources Policy (Law 9.433/1997, listed only in References on PDF p. 16). However, key 2014-2015 regulatory actions (alleged SABESP grant breaches, interstate Paraíba do Sul flow agreements, and ANA's January 2015 authorization) are summarized from secondary NGO and news sources without citing primary administrative resolutions or official legal texts, and two SABESP citations point to inaccessible local C:/ drive file paths (PDF p. 17).",
+        "rating": "weak",
+        "where_found": "PDF pp. 8-12, 15-17 (Sections 4, 5, and References)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Jurisdictional boundaries and hydrographic-administrative overlaps are clearly delineated across the Metropolitan Region of São Paulo (39 municipalities, ~20.28 million residents), the Cantareira System (12 municipalities), the PCJ Basins (92.6% São Paulo, 7.4% Minas Gerais), the Upper Tietê Basin, and the interstate Paraíba do Sul River Basin, explicitly distinguishing federal river jurisdiction (ANA, CEIVAP) from state water management (DAEE, SABESP) across São Paulo, Rio de Janeiro, and Minas Gerais.",
+        "rating": "strong",
+        "where_found": "PDF pp. 3, 6-10, 12 (Sections 1, 3, 4, and 5; Figure 2 and Table 2)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Hydrological drought exposure is operationalized via the 12- and 24-month Standardized Precipitation Index (SPI categories in Table 1 and Figure 1), an explicit crisis-onset threshold when Cantareira's useful volume was exhausted before accessing 'dead volume 1' (July 11, 2014), and a 10% effective-volume preparedness threshold. Institutional governance exposures (delayed crisis recognition, lack of transparency, reactive demand management, electoral interference) are enumerated qualitatively but lack standardized empirical operationalization.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 4-6, 8-10 (Sections 2 and 4; Table 1 and Figure 1)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "The authors explicitly define operational thresholds distinguishing 'rationing' from 'a breakdown in supply' (shortage exceeding three days) and report aggregate supply indicators including Cantareira dead-volume depletion dates, population supplied by Cantareira (9 million down to 6.2 million), aggregate demand reduction (20%, or 69 to 55 m3/s), and survey-reported shortage exposure (35% of MRSP residents). Nonetheless, household-level intermittency duration, pressure-loss geography, and socioeconomic losses are not measured systematically.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 5, 9, 11, 13, 15 (Sections 2, 4, 5, and 6)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The article contains no Methods section and defines no target universe, sampling frame, date bounds, or eligibility criteria for the administrative reports, NGO studies, academic works, and newspaper articles synthesized.",
+        "rating": "weak",
+        "where_found": "PDF pp. 1-16 (entire article; absence of Methods section)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Documentary evidence, political/institutional episodes ('some emblematic facts', PDF p. 9), and utility response measures are assembled purposively without a documented search or screening process, leaving high susceptibility to selective inclusion of illustrative reports.",
+        "rating": "weak",
+        "where_found": "PDF pp. 8-15 (Sections 4 and 5)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Key quantitative claims—such as the Data Popular survey finding that 35% of MRSP inhabitants experienced shortages (cited in text on PDF p. 9 with no entry in References), the 20% demand reduction attributed jointly to tariff bonuses and pressure-reducing valves (PDF p. 11), and network losses 'estimated around 37%' (PDF p. 16)—are cited second-hand from media or institutional summaries without survey methods, calculation formulas, or primary data validation.",
+        "rating": "weak",
+        "where_found": "PDF pp. 4-7, 9, 11, 13, 15-16 (Sections 2-6)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The study is a descriptive single-case narrative of the 2014-2015 São Paulo water crisis with no comparator utility/basin, pre-post statistical model, or counterfactual design capable of isolating the causal contribution of specific legal/institutional failures or policy interventions.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2, 8-16 (Sections 1, 4, 5, and 6)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Although the narrative recognizes concurrent hydrological extremes (2013-2015 precipitation deficit) alongside anthropogenic drivers (urban sprawl in spring areas, 37% distribution losses, delayed conservation campaigns, and electoral politics), it does not analytically separate meteorological severity from institutional decisions or separate simultaneous tariff bonuses from network pressure reduction.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2, 4-5, 8-12 (Sections 1, 2, 4, and 5)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper provides detailed institutional analysis of water governance in the MRSP, explaining SABESP's operational scope and mixed-capital incentives, PCJ and CEIVAP basin-committee governance limits during severe scarcity, tensions between state (DAEE/Government of São Paulo) and federal (ANA) authorities, information asymmetry documented by Artigo 19, and 2014 gubernatorial election pressures.",
+        "rating": "strong",
+        "where_found": "PDF pp. 3, 6-15 (Sections 1, 3, 4, and 5)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Independent replication is hindered by the absence of a documented documentary-selection methodology, missing reference entries for in-text citations (e.g., Data Popular Institute on PDF p. 9; Jacobi 2014 secondary citation on PDF p. 8), year discrepancies (Whately & Cunha 2006 on PDF p. 3 vs. 2007 in References), and two SABESP references pointing to local computer paths ('file:///C:/DISCO%20UTIL/LEANDRO/...', PDF p. 17).",
+        "rating": "weak",
+        "where_found": "PDF pp. 3, 8-9, 16-19 (Sections 1, 4, and References)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "The authors map São Paulo's structural and non-structural crisis measures onto the five UNISDR (2009) disaster risk management stages (prevention, mitigation, preparedness, response, recovery), but provide no explicit classification rules or inter-coder procedure to handle acknowledged overlaps across phases.",
+        "rating": "weak",
+        "where_found": "PDF pp. 10-15 (Section 5)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Three of the five authors are affiliated with CEMADEN (the federal National Center for Monitoring and Natural Disaster Alerts, whose monitoring reports are cited in the analysis on PDF pp. 5 and 9), yet the paper includes no reflexivity discussion addressing how federal disaster-monitoring institutional perspectives may have shaped their evaluation of state-level crisis management.",
+        "rating": "weak",
+        "where_found": "PDF pp. 1, 5, 9, 15-16 (Author footnotes, Sections 2, 4, and 6)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study aim and jurisdictional case focus",
+        "page": "PDF Page 2 (Section 1. Introduction)",
+        "quote": "analyze the water crisis in the Metropolitan Region of São Paulo (MRSP)."
+      },
+      {
+        "criterion": "Operational definition of drought crisis impact onset",
+        "page": "PDF Page 5 (Section 2. Water Crisis)",
+        "quote": "As this study aims to analyze the water crisis under the disaster risk management"
+      },
+      {
+        "criterion": "Legal/regulatory instrument citation (Portaria DAEE 1213/2004)",
+        "page": "PDF Page 9 (Section 4. Water management in the basins that affect the MRSP supply)",
+        "quote": "reduce waste and encourage reusing water, according to Decree No. 1213/2004 DAEE."
+      },
+      {
+        "criterion": "Purposive narrative selection of political/institutional episodes",
+        "page": "PDF Page 9 (Section 4. Water management in the basins that affect the MRSP supply)",
+        "quote": "highlight some emblematic facts that help undertstand the political aspects of the problem:"
+      },
+      {
+        "criterion": "Co-occurring mitigation interventions (tariff bonus and pressure-reducing valves)",
+        "page": "PDF Page 11 (Section 5. Mitigation)",
+        "quote": "customers who decreased their consumption and the use of pressure reducing valves,"
+      },
+      {
+        "criterion": "Operational distinction between rationing and supply breakdown",
+        "page": "PDF Page 13 (Section 5. Response)",
+        "quote": "period of three days sets no rationing, but a breakdown in supply to the affected groups."
+      }
+    ],
+    "overall_narrative_summary": "Soriano et al. (2016) present a single-jurisdiction descriptive institutional and policy case study of the 2014-2015 water supply crisis in the Metropolitan Region of São Paulo (MRSP), evaluating hydrological scarcity, multi-level water governance, and utility interventions through the five-stage UNISDR disaster risk management framework (prevention, mitigation, preparedness, response, and recovery). Appraised under the Legal Institutional Evidence Appraisal Framework (as a structured non-validated judgment), the study's primary strengths lie in its jurisdictional specificity (D2: strong) and rich institutional contextualization (D10: strong) across municipal land-use, basin-committee (PCJ, CEIVAP), state utility/regulator (SABESP, DAEE), and federal/interstate (ANA, Paraíba do Sul) tiers, alongside explicit conceptual thresholds for crisis onset and rationing versus supply breakdown (D3, D4: adequate). However, empirical rigor is substantially limited (weak across D1, D5-D9, D11-D13): the paper lacks a Methods section, documentary search or selection criteria, primary data verification, causal counterfactuals, analytical separation of meteorological drought severity from governance failures or co-occurring interventions (tariff bonuses vs. network pressure reduction), reflexivity regarding the authors' federal agency affiliations, and complete archival citations (including unindexed survey statistics and local C:/ drive URLs).",
+    "overall_rating": "Weak empirical rigor / high methodological concern (structured non-validated judgment)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-case descriptive institutional and policy case study (synthesizing secondary hydrological, administrative, regulatory, NGO, and media sources within a disaster risk management framework; no primary fieldwork, quantitative comparator, or systematic search protocol)",
+    "study_id": "S133",
+    "where_found_summary": "Appraised from the complete 22-page PDF (Ambiente & Sociedade 19(1):21-42, 2016): Section 1 Introduction (PDF pp. 1-3), Section 2 Water Crisis (PDF pp. 3-6, Table 1, Figure 1), Section 3 Characterization of demand and water availability in the MRSP's main basin (PDF pp. 6-8, Table 2, Figure 2), Section 4 Water management in the basins that affect the MRSP supply (PDF pp. 8-10), Section 5 A Water Crisis in the Context of Disaster Risk Management Processes (PDF pp. 10-15), Section 6 Conclusion (PDF pp. 15-16), References (PDF pp. 16-19), and Abstracts (PDF pp. 21-22). Note that the article contains no standalone Methods section.",
+    "why_tool_chosen": "The paper contains no primary empirical qualitative fieldwork (no interviews, focus groups, ethnography, or systematic documentary coding protocol for CASP), no quantitative sample or quasi-experimental/observational comparator design (ruling out RoB 2, ROBINS-I, JBI Cross-Sectional, JBI Cohort, and MMAT), and no systematic literature search or screening protocol (ruling out AMSTAR 2). Instead, it conducts an empirical-institutional single-jurisdiction case study of the 2014-2015 Metropolitan Region of São Paulo water crisis—integrating spatial hydrographic mapping, state drought/reservoir timelines, regulatory grant obligations (Portaria DAEE 1213/2004, ANA/DAEE oversight, Forest Code), interstate river governance, and SABESP operational responses—which directly matches the Legal Institutional Evidence Appraisal Framework for institutional/policy case studies fitting none of the six conventional empirical designs."
+  }
+}

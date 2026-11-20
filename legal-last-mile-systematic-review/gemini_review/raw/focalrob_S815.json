@@ -1,0 +1,313 @@
+{
+  "study_id": "S815",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "5e15494fb7a1629785e785e9551ea869f2d9e7a24a21cc93283357262c02829b",
+  "prompt_sha256": "c315ef2b26c605e8b32d5f319de34ccf611661c9fa61b22429d022554b6cd890",
+  "started_at": "2026-11-20T17:18:00.204996+00:00",
+  "completed_at": "2026-11-20T17:19:33.802967+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable — Non-longitudinal institutional and legal-historical book chapter synthesizing statutory/judicial sources, archival water-licensing summaries, and public consultation submissions rather than following a participant cohort.",
+      "confounding": "High concern — Descriptive legal-historical and institutional case analysis with no counterfactual design or systematic control for hydrological scarcity, watershed demand, treaty status, or community capacity differences across British Columbia First Nations.",
+      "legal_measurement_quality": "Strong — Rigorously and accurately specifies Canadian constitutional division of powers (Constitution Act 1867 s. 91(24); Constitution Act 1982 s. 35), the Indian Act, British Columbia's FITFIR water-licensing rules, the 2014/2016 BC Water Sustainability Act, Canadian duty-to-consult case law, and comparative legal regimes (US Winters doctrine, Haida Reconciliation Protocol, NWT Water Stewardship Strategy).",
+      "measurement_bias": "Moderate-to-high concern — Legal doctrines and specific archival figures are clearly cited, but the chapter provides no primary measurement protocol, archival verification procedure, or qualitative/quantitative coding rubric for how the 34 Indigenous WSA submissions or reserve license records were analyzed, relying instead on external theses and policy reports.",
+      "outcome_measurement_quality": "Weak-to-moderate — Concrete administrative and procedural outcomes are documented for illustrative cases (e.g., Lower Similkameen Indian Band's 61st of 105 license priority ranking, 1969 vs. 1986 Nahumcheen Brook licensing decisions, count of 34 Indigenous WSA submissions, and statutory retention of FITFIR), but physical water security, water quality, and health outcomes are not systematically measured.",
+      "reporting_bias": "Moderate concern — No pre-specified study protocol or systematic reporting structure; illustrative reserve cases and consultation quotes are selectively presented to support the chapter's regulatory-injustice thesis, while fuller empirical methods and analyses are deferred to external project publications (Simms 2014; Joe et al. 2017; Jollymore et al. 2016).",
+      "selection_bias": "High concern — Illustrative reserve examples (Lower Similkameen Indian Band and Penticton Indian Band out of ~1,500 BC reserves) and quoted WSA consultation submissions are purposively chosen without a stated sampling frame or selection criteria, and the 34 Indigenous WSA submissions reflect self-selection into a provincial stakeholder process that other First Nations actively boycotted."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Primary constitutional provisions, statutes, administrative proposals, and judicial decisions are accurately cited and distinguished, including Constitution Act 1867 s. 91(24), Constitution Act 1982 s. 35, Indian Act (1876), BC Water Sustainability Act (passed 2014, in force 2016), MOE (2013) legislative proposal, Canadian Aboriginal rights/consultation jurisprudence (Halfway River 1999, Haida 2004, Taku River 2004, Mikisew Cree 2005, Hupacasath 2005/2008, Tsilhqot'in 2014 SCC 44), and US reserved water rights cases (Winters 1908, Cappaert 1976). Minor bibliographic year discrepancies (e.g., Joe et al. 2016 vs. 2017; Jollymore et al. 2017 vs. 2016) do not affect doctrinal accuracy.",
+        "rating": "strong",
+        "where_found": "PDF pp. 1, 5–14 (Sections 10.1, 10.3–10.5, Notes 1–3 & 7–9, pp. 193, 197–206)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly delineates federal versus provincial jurisdiction over freshwater and Indigenous reserves in Canada, British Columbia's largely unceded/non-treaty landscape, BC's 1871 Confederation entry, the 1876 Joint Federal-Provincial Reserve Commission, the 1920 provincial board ruling invalidating federal Indian water records, and comparative jurisdictional models in the US and Northwest Territories.",
+        "rating": "strong",
+        "where_found": "PDF pp. 1–4, 9–14 (Sections 10.1–10.2, 10.4–10.5, Notes 2–5 & 9, pp. 193–196, 201–206)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Explicitly defines both institutional/regulatory exposures examined: (1) BC's First in Time, First in Right (FITFIR) prior-appropriation water-licensing regime, including pre-1888 statutory exclusion of Indigenous applicants and provincial refusal to recognize federal reserve allotments; and (2) the 2010–2014 BC Water Sustainability Act public engagement process that treated First Nations as ordinary stakeholders rather than constitutional rights-holders.",
+        "rating": "strong",
+        "where_found": "PDF pp. 2–7 (Sections 10.1–10.3, pp. 194–199)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Conceptually defines injustice across two dimensions—water security (access/allocation priority) and governance exclusion—and operationalizes administrative/legislative outcomes in the case discussions (reserve license priority rankings, license grant/denial records, consultation participation counts, and statutory retention of FITFIR in the 2014/2016 WSA), though physical water quality and supply outcomes on reserves are only cited from background national reports rather than directly measured.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 1, 4–7 (Sections 10.1–10.3, pp. 193, 196–199)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "No formal Methods section, sampling frame, or inclusion/exclusion rules are reported in the chapter. Section 10.2 draws illustratively on two bands (Lower Similkameen and Penticton) out of ~1,500 BC reserves, and Section 10.3 references 34 Indigenous WSA submissions without listing the full universe of eligible First Nations or submission selection rules within this text.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2–8 (Sections 10.1–10.3, pp. 194–200)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Case illustrations (Lower Similkameen Indian Band, with whom the authors collaborated on a broader project, and Penticton Indian Band) and quoted WSA consultation letters are purposively selected to exemplify regulatory injustice without explaining how representative they are of BC First Nations; additionally, WSA consultation participants were self-selected while other First Nations boycotted the stakeholder-framed process.",
+        "rating": "weak",
+        "where_found": "PDF pp. 4, 6–8, 12 (Sections 10.2–10.3, Acknowledgements, pp. 196, 198–200, 204)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Specific empirical figures are reported from archival and project sources (e.g., LSIB's 61st of 105 priority rank on the Similkameen River; 1969 refusal of 2,000 gal/day vs. 1986 private license for 150 acre-feet/year plus 1,000 gal/day; 34 Indigenous WSA submissions; 25% of BC water sources having restricted licensing), but no primary data-collection or verification procedures are documented in the chapter itself.",
+        "rating": "weak",
+        "where_found": "PDF pp. 3–7 (Sections 10.2–10.3, pp. 195–199)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Provides a plausible historical-institutional process narrative linking colonial licensing exclusions and stakeholder-style consultation to subordinate First Nations license priority and statutory maintenance of FITFIR, but employs no counterfactual comparison or formal causal identification strategy.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2–7 (Sections 10.2–10.3, pp. 194–199)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Alternative or interacting determinants of water-licensing outcomes and legislative provisions (e.g., local hydrology, watershed population density, agricultural/industrial demand, modern treaty status vs. unceded status) are not systematically assessed beyond briefly noting industry support for retaining FITFIR.",
+        "rating": "weak",
+        "where_found": "PDF pp. 4–7 (Sections 10.2–10.3, pp. 196–199)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides thorough institutional and historical contextualization, detailing settler-colonial reserve creation, federal-provincial bureaucratic conflict over water records, practical barriers to First Nations consultation (short review timelines, lack of funding/capacity, reliance on online portals in remote communities), limits of domestic duty-to-consult doctrine relative to UN FPIC standards, and concrete co-governance precedents (Haida Reconciliation Protocol; NWT Water Stewardship Strategy).",
+        "rating": "strong",
+        "where_found": "PDF pp. 2–12 (Sections 10.2–10.5, pp. 194–204)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Primary legal texts and URLs for cited BC WSA consultation submissions are transparently listed in the References, enabling verification of doctrinal claims and specific quotes, but the absence of documented search, selection, and analytic methods in the chapter (which relies on external theses and policy briefs) prevents full independent replication of the empirical synthesis.",
+        "rating": "weak",
+        "where_found": "PDF pp. 4–8, 14–17 (Sections 10.2–10.3, References, pp. 196–200, 206–209)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Although Section 10.3 summarizes recurring arguments and tone shifts across three phases of Indigenous written submissions on the BC WSA (citing Joe et al. 2016/2017 and Jollymore et al. 2016/2017), this chapter reports no document-coding protocol, thematic definitions, or inter-coder reliability procedures.",
+        "rating": "not assessable",
+        "where_found": "PDF pp. 5–8 (Section 10.3, pp. 197–200)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "The authors state their normative definition of water justice ('from our perspective', p. 193) and acknowledge research ethics approval (#H12-03691) and collaboration with the Lower Similkameen Indian Band Chief, Council, and community members (p. 204), but do not critically reflect on their own positionalities or how community-academic collaboration shaped case selection and interpretation.",
+        "rating": "weak",
+        "where_found": "PDF pp. 1, 12 (Section 10.1, Acknowledgements, pp. 193, 204)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Scope and two dimensions of water injustice examined in the chapter",
+        "page": "PDF Page 1 (Section 10.1, p. 193)",
+        "quote": "This chapter explores two interrelated examples of injustice in access to water for Indigenous"
+      },
+      {
+        "criterion": "Study design framing as two institutional/regulatory case studies in British Columbia",
+        "page": "PDF Page 2 (Section 10.1, p. 194)",
+        "quote": "Columbia’s water governance framework by exploring two short case studies."
+      },
+      {
+        "criterion": "Illustrative archival license priority data for the Lower Similkameen Indian Band under FITFIR",
+        "page": "PDF Page 4 (Section 10.2, p. 196)",
+        "quote": "number of First Nations communities, the LSIB has 61st priority out of 105 licenses on the"
+      },
+      {
+        "criterion": "Limited First Nations participation in the BC Water Sustainability Act consultation process",
+        "page": "PDF Page 6 (Section 10.3, p. 198)",
+        "quote": "The result was that Indigenous participation in the consultation process was limited."
+      },
+      {
+        "criterion": "Opacity in how First Nations consultation submissions influenced legislative outcomes",
+        "page": "PDF Page 7 (Section 10.3, p. 199)",
+        "quote": "From publicly available documents, it is unclear how the Province chose to consider"
+      },
+      {
+        "criterion": "Disclosure of community collaboration and ethics approval without formal reflexivity discussion",
+        "page": "PDF Page 12 (Acknowledgements, p. 204)",
+        "quote": "of the Lower Similkameen Indian Band for collaborating with us as part of this project,"
+      }
+    ],
+    "overall_narrative_summary": "This book chapter is an institutional and legal-historical case study examining regulatory injustice in Indigenous water governance in British Columbia, Canada, through two linked analyses: (1) the historical subordination of First Nations reserve water rights under BC's First in Time, First in Right (FITFIR) prior-appropriation licensing regime, illustrated primarily by archival records for the Lower Similkameen Indian Band and Penticton Indian Band; and (2) procedural and constitutional shortcomings in First Nations engagement during the 2010–2016 modernization of the BC Water Sustainability Act (WSA), drawing on 34 Indigenous consultation submissions. Appraised under the 13-domain Legal Institutional Evidence Appraisal Framework (structured non-validated judgment, without a numeric score), the chapter is strong in legal source accuracy, jurisdictional specificity, exposure definition, and institutional contextualization, and adequate in conceptualizing regulatory/governance outcomes. However, empirical rigor is weak across sampling transparency, case selection, measurement transparency, causal identification, treatment of confounding, replication potential, and researcher reflexivity, and document-coding procedures are not assessable because the chapter contains no Methods section and defers underlying empirical analyses to external theses and working papers (Simms 2014; Joe et al. 2017; Jollymore et al. 2016).",
+    "overall_rating": "Structured non-validated judgment: Strong doctrinal and institutional characterization, weak empirical sampling, measurement, and causal rigor (no numeric composite score)",
+    "paper_read": "full text",
+    "study_design_identified": "Institutional and legal-historical documentary case study (book chapter synthesizing constitutional/statutory doctrine, archival water-licensing records, and public consultation submissions across two British Columbia case studies)",
+    "study_id": "S815",
+    "where_found_summary": "Design framing and aims: Section 10.1 (PDF pp. 1–2, pp. 193–194). Case study 1 (FITFIR licensing history and Lower Similkameen/Penticton reserve water rights): Section 10.2 (PDF pp. 2–5, pp. 194–197). Case study 2 (BC Water Sustainability Act consultation process and 34 Indigenous submissions): Section 10.3 (PDF pp. 5–9, pp. 197–201). Comparative legal reforms and co-governance analysis (Winters doctrine, Haida Reconciliation Protocol, NWT Water Stewardship Strategy): Sections 10.4–10.5 (PDF pp. 9–12, pp. 201–204). Community collaboration and ethics certificate (#H12-03691): Acknowledgements (PDF p. 12, p. 204). Constitutional and judicial endnotes: Notes 1–9 (PDF pp. 12–14, pp. 204–206).",
+    "why_tool_chosen": "The text is a book chapter presenting two legal-historical and institutional case studies of British Columbia water governance (reserve water licensing under FITFIR and First Nations consultation on the BC Water Sustainability Act). It has no Methods section, reports no primary qualitative interview/ethnographic fieldwork procedures (excluding CASP), conducts no quantitative cross-sectional, cohort, trial, or quasi-experimental evaluation (excluding RoB 2, ROBINS-I, JBI checklists, and MMAT), and performs no systematic literature search (excluding AMSTAR 2). Because it combines primary legal/constitutional analysis with documentary and archival case evidence, the 13-domain Legal Institutional Evidence Appraisal Framework is the exact matching tool under RISK_OF_BIAS.md §§1–2."
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "study_id": "S1164",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b1894cea5feecf1bf5b061dbcb86dbaf19d392ef7edf8388bb58a233f21b7c4e",
+  "prompt_sha256": "c7a1b3c5b809de791898657cb869c849f0add0bd4704fe8d6f06f25d4ee12833",
+  "started_at": "2026-11-20T17:15:21.168396+00:00",
+  "completed_at": "2026-11-20T17:16:49.076251+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "NONE",
+    "confidence": "medium",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / not assessable: the accessible portion of this edited volume (PDF pp. 1-74 of 326) consists of front matter and conceptual/narrative synthesis chapters with no longitudinal participant sample or cohort follow-up; pages 75-326 are truncated.",
+      "confounding": "High concern: causal and policy claims linking institutional rules, utility concession contracts, fiscal decentralisation, and peri-urban settlement restrictions to water/sanitation access and poverty outcomes are synthesised narratively from secondary sources without counterfactual comparators, statistical controls, or rival-hypothesis testing in the accessible chapters.",
+      "legal_measurement_quality": "Weak (illustrative secondary description only): legal, contractual, and administrative arrangements—such as non-credible utility concession regulations (Chapter 1.3.2, PDF p. 40), informal dwelling illegality barring formal network connections (Chapter 2.5, PDF pp. 72-73), and Mexico DF's Milpa Alta Zero Growth Pact / 1997 parajes census cutoff (Box 2.2, PDF p. 74)—are summarised conceptually or in short secondary boxes without primary statutory/regulatory citations or systematic coding rules.",
+      "measurement_bias": "High concern: in the accessible chapters (Chapters 1 and partial Chapter 2), exposures and conditions rely on unverified secondary statistics, theoretical constructs, and brief illustrative case summaries rather than standardised primary measurement protocols or validated instruments.",
+      "outcome_measurement_quality": "Weak (secondary narrative indicators only): water and sanitation outcomes in the accessible chapters (network coverage versus reliable supply, unaccounted-for water losses, tariff affordability, and access to public tankers/taps) are discussed conceptually or cited from secondary literature without primary outcome measurement or verification; later empirical chapters (e.g. Chapter 10 listed in Contents) fall within the truncated portion of the PDF (pp. 75-326).",
+      "reporting_bias": "High concern: no pre-specified protocol, systematic search strategy, or structured reporting framework governs which evidence, countries, or case examples are reported in the accessible synthesis chapters, and truncation at PDF p. 74 of 326 prevents inspection of Chapters 3-13.",
+      "selection_bias": "High concern: literature and case vignettes in the accessible chapters are purposively selected to illustrate pedagogical and theoretical arguments (originating from practitioner papers vetted at a UNESCO-IHE summer school/distance-learning course; PDF p. 8, p. 34, p. 60) with no systematic search, sampling frame, or inclusion/exclusion criteria."
+    },
+    "domain_ratings": [],
+    "evidence_quotes": [
+      {
+        "criterion": "Pedagogical edited-volume origin (case chapters developed from summer school vetting rather than a single empirical protocol)",
+        "page": "[PDF Page 8 of 326] (Acknowledgements, p. vii)",
+        "quote": "several of the chapters contained in this book were vetted at a summer school"
+      },
+      {
+        "criterion": "Design classification — collection developed as distance-learning course material rather than primary empirical study or systematic review",
+        "page": "[PDF Page 34 of 326] (Chapter 1, Section 1.1, p. 2)",
+        "quote": "to support a distance-learning course at UNESCO-IHE Institute for Water"
+      },
+      {
+        "criterion": "Non-systematic narrative synthesis nature of Chapter 2 literature base",
+        "page": "[PDF Page 60 of 326] (Chapter 2, Section 2.1, p. 28)",
+        "quote": "The empirical literature that supports the discussion is incipient but fast growing."
+      },
+      {
+        "criterion": "Purposive illustrative selection of case vignettes without systematic review screening criteria",
+        "page": "[PDF Page 60 of 326] (Chapter 2, Section 2.1, p. 28)",
+        "quote": "Thus, the purpose is to highlight a number of case studies selected to aid the process"
+      },
+      {
+        "criterion": "Conceptual description of legal/tenure barriers to peri-urban service provision without primary doctrinal coding",
+        "page": "[PDF Page 73 of 326] (Chapter 2, Section 2.5.2, p. 41)",
+        "quote": "Regulatory frameworks that define peri-urban settlements as illegal or irregular"
+      },
+      {
+        "criterion": "Illustrative secondary case box on administrative water-access cutoff (Zero Growth Pact in Milpa Alta, Mexico DF)",
+        "page": "[PDF Page 74 of 326] (Chapter 2, Section 2.6, Box 2.2, p. 42)",
+        "quote": "agreement between the delegation authorities and the parajes dwellers recorded"
+      }
+    ],
+    "overall_narrative_summary": "Study S1164 (Kurian & McCarney, eds., 2010, Peri-urban Water and Sanitation Services: Policy, Planning and Method) is a 13-chapter edited pedagogical volume originally developed to support a UNESCO-IHE distance-learning and summer school programme for water-sector professionals (PDF p. 8, p. 34). In the provided source text, PDF pages 1-74 of 326 are accessible before truncation (`truncated=true`, mid-Box 2.2 on book p. 42), covering Front Matter, Contents, Lists of Boxes/Figures/Tables, Contributors, Abbreviations, Chapter 1 in full (Kurian, pp. 1-26), and the first half of Chapter 2 (Allen, pp. 27-42). Both accessible chapters are non-systematic conceptual and narrative policy syntheses that weave together New Institutional Economics theory, rural-urban linkage frameworks, secondary aggregate figures, and purposively chosen illustrative case vignettes (such as condominial sewers in Brazil and Mexico City's Zero Growth Pact in Milpa Alta) without a primary empirical Methods section, sampling frame, doctrinal coding protocol, or systematic literature search. Because the record is a whole-book multi-author anthology whose accessible text comprises non-systematic narrative/theoretical essays—and AMSTAR 2 must never be applied to non-systematic reviews while study-level empirical or legal-institutional case-study checklists cannot be forced onto a heterogeneous edited textbook—`NONE` is the appropriate tool selection (`NOT APPLICABLE (design fits no listed tool)`). Across the cross-tool bias dimensions, reliance on purposively selected illustrative examples and unverified secondary assertions creates high risk of selection, measurement, confounding, and reporting bias for causal inference, while legal and water/sanitation outcome constructs are described only narratively in the accessible pages. Confidence is rated medium because PDF pages 75-326 (which per the Table of Contents include disparate chapters such as a Dutch Water Boards overview in Chapter 5 and a village wastewater valuation study in Chapter 10) are truncated from the provided extract.",
+    "overall_rating": "NOT APPLICABLE (design fits no listed tool)",
+    "paper_read": "partial_or_scan",
+    "study_design_identified": "Edited multi-author pedagogical volume / non-systematic narrative and conceptual policy synthesis collection (accessible PDF pp. 1-74 of 326 cover front matter, Chapter 1 theoretical framework essay, and partial Chapter 2 narrative review with illustrative secondary case boxes; pp. 75-326 truncated)",
+    "study_id": "S1164",
+    "where_found_summary": "Front matter, Preface, Acknowledgements, Contents, and Lists of Boxes/Figures/Tables ([PDF Pages 4-32 of 326], pp. v-xxxi); Chapter 1 by M. Kurian ([PDF Pages 33-58 of 326], pp. 1-26, especially Section 1.1 p. 2, Section 1.3.2 p. 8, and Section 1.5 pp. 22-23); and Chapter 2 by A. Allen ([PDF Pages 59-74 of 326], pp. 27-42, especially Section 2.1 p. 28, Section 2.5 pp. 39-41, and Box 2.2 p. 42, where the provided text truncates).",
+    "why_tool_chosen": "S1164 is a whole-volume citation to a 13-chapter edited textbook/anthology developed for a UNESCO-IHE distance-learning course rather than a single empirical study or systematic review. In the accessible PDF extract (pages 1-74 of 326 before truncation), Chapter 1 and partial Chapter 2 are non-systematic conceptual and narrative literature syntheses punctuated by brief secondary case boxes, with no systematic search/screening protocol (ruling out AMSTAR 2), no primary qualitative or quantitative empirical study design (ruling out RoB 2, ROBINS-I, JBI, CASP, and MMAT), and no unified doctrinal-empirical or single-jurisdiction legal-historical case study design (ruling out the Legal Institutional Evidence Appraisal Framework). Per RISK_OF_BIAS.md §1, NONE applies rather than forcing an ill-fitting checklist onto an edited pedagogical collection and non-systematic narrative synthesis."
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "study_id": "S1101",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "1b9378beb6d945ca36e12d9b1daa2bfaea1db6356b529f986b9bf3d18fc1ead5",
+  "prompt_sha256": "0cdd29deb0281e9381e3fd1c9c187b8bcd8a358c16f9a7a6c487ebf17d00ff14",
+  "started_at": "2026-11-20T17:18:00.219625+00:00",
+  "completed_at": "2026-11-20T17:19:45.204783+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell: The paper is a qualitative documentary and informant-informed comparative case narrative with no longitudinal participant cohort and no reported informant non-response or drop-out information.",
+      "confounding": "High concern: Although the narrative describes concurrent contextual shifts in Hermanus (rapid population and tourism growth, 1995 amalgamation of eight communities, an 85% reduction in intergovernmental transfers, and national GEAR fiscal constraints), it attributes household arrears and disconnections to the GHWCP cost-recovery tariff and credit-control regime without any design or analytical strategy to disentangle co-occurring drivers.",
+      "legal_measurement_quality": "Moderate / Weakly operationalized: Identifies key constitutional and municipal governance instruments—South Africa's 1996 Constitution (ss. 24 and 27.1), Canada's 1982 Charter of Rights and Freedoms, Hermanus's 1995 municipal amalgamation and 1996 GHWCP tariff design (income-tiered basic charge, free lifeline supply, 11-step increasing block tariff, and credit control), and Toronto's 2000-2002 CAO feasibility proposal for an arms-length Toronto Water Services Board—but omits exact by-law/ordinance texts, tariff block thresholds, and formal administrative rules for indigent subsidy eligibility.",
+      "measurement_bias": "High concern: No primary data collection instruments, interview guides, or documentary verification protocols are reported; quantitative claims on water demand, revenue surpluses, and household disconnections are imported directly from secondary reports without independent validation.",
+      "outcome_measurement_quality": "Weak (secondary reliance): Reported water outcomes in Hermanus (30% water demand reduction, 20% water revenue surplus, and roughly 60% of Zwelihle residents experiencing water cut-offs) rely entirely on secondary sources (DWAF 1997b; Deedat, Pape and Qotole 2001), while the Toronto case tracks a binary municipal governance outcome (defeat of the proposed arms-length water board in November 2002) without household-level service or affordability metrics.",
+      "reporting_bias": "High concern: In the absence of a study protocol, systematic documentary search, or transparent qualitative coding scheme, evidence from secondary studies, union briefs, and a single named official interview appears selectively marshalled to illustrate the authors' political-ecology critique of neo-liberal water restructuring.",
+      "selection_bias": "High concern / Can't tell: Selection of the two city cases (Hermanus and Toronto) is conceptually justified to contrast post-apartheid and Canadian welfarist water governance, but there is no Methods section explaining how informants, archival correspondence, or documents were sampled, and no direct recruitment of low-income Zwelihle residents or Toronto water consumers is reported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "The authors clearly state their theoretical and empirical objectives: to problematise universalising, US-derived conceptions of environmental justice and to examine how multiscalar environmental justice claims and urban water policies unfold in Hermanus, South Africa, and Toronto, Canada.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 2, p. 209); Introduction (PDF pp. 2-5, pp. 209-212)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "An interpretive qualitative and urban political-ecology approach is appropriate for investigating how perceptions of environmental (in)justice, discursive framings, and political contestations around municipal water governance are socially constructed across spatial scales.",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 2-5, pp. 209-212); Justice Across Borders (PDF pp. 5-6, pp. 212-213)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "The authors provide a conceptual rationale for juxtaposing two contrasting urban water case studies—Hermanus (selected as a nationally touted post-apartheid conservation and block-tariff model) and Toronto (selected as a contested public-sector defence against a proposed arms-length water board)—to test their multiscalar thesis across divergent racial, constitutional, and urban contexts.",
+        "rating": "Yes",
+        "where_found": "Introduction (PDF pp. 4-5, pp. 211-212); Table 1 (PDF p. 5, p. 212)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "The paper lacks a Methods section and gives no explanation of how interview or personal-communication informants were identified or selected (citing one interview with Hermanus's senior income accountant on p. 216 and acknowledging conversations/personal communications with six individuals in Note 10 on p. 223), nor whether affected township residents in Zwelihle were recruited.",
+        "rating": "Can't tell",
+        "where_found": "Hermanus case section (PDF p. 9, p. 216); Note 10 (PDF p. 16, p. 223)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Was the data collected in a way that addressed the research issue?",
+        "justification": "Although the narrative draws on policy White Papers, secondary case reports, union submissions, municipal committee hearing dates, a 1996 town-engineer letter, and at least one official interview, the authors report no procedures for fieldwork, interview conduct, recording/transcription, or systematic documentary collection.",
+        "rating": "Can't tell",
+        "where_found": "Hermanus and Toronto case sections (PDF pp. 7-13, pp. 214-220); Notes and References (PDF pp. 15-18, pp. 222-225)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "The authors articulate an explicit critical political-ecology stance against neo-liberal water restructuring, but never examine their own positionality, field relationships with municipal officials, activists, or personal-communication informants, or how normative commitments shaped evidence selection.",
+        "rating": "No",
+        "where_found": "Whole paper; absence confirmed across Introduction and case study sections (PDF pp. 2-15, pp. 209-222)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "No institutional ethics approval, informed consent procedures, or confidentiality protocols are mentioned anywhere in the article, despite quoting a named municipal official from an interview and naming personal-communication informants.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 2 (author note, p. 209); PDF p. 9 (p. 216); Note 10 (PDF p. 16, p. 223)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "No qualitative coding framework, discourse/documentary analysis method, triangulation rule, or examination of discrepant evidence is described; empirical claims blend unverified secondary statistics with illustrative primary citations in a theoretically driven narrative.",
+        "rating": "No",
+        "where_found": "Hermanus and Toronto case sections (PDF pp. 7-13, pp. 214-220); Conclusion (PDF pp. 13-15, pp. 220-222)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "The comparative synthesis clearly states the study's analytical findings across global, national, regional, local, and household scales (summarised in Tables 1 and 2 and the Conclusion), demonstrating how environmental justice struggles in Hermanus centre on post-apartheid racialised tariff/disconnection inequities while those in Toronto centre on defending welfarist public utility governance.",
+        "rating": "Yes",
+        "where_found": "Table 1 (PDF p. 5, p. 212); Table 2 and Conclusion (PDF pp. 13-15, pp. 220-222)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "Narrative assessment: The article makes a substantial conceptual contribution to urban political ecology by extending environmental justice beyond US toxic-siting frameworks to municipal water pricing, disconnections, and anti-privatisation politics across Global South and Global North contexts; however, its empirical evidentiary value for causal policy evaluation is weak because household disconnection and conservation outcomes rely almost entirely on secondary sources without transparent primary methods.",
+        "rating": "Conceptually valuable for multiscalar EJ theory; weak primary empirical evidence base",
+        "where_found": "Introduction (PDF pp. 2-5, pp. 209-212); Conclusion (PDF pp. 13-15, pp. 220-222)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Comparative case study framing and Hermanus block-tariff selection rationale (Q1, Q3)",
+        "page": "PDF Page 4 (p. 211, Introduction)",
+        "quote": "increasing block tariff structure, which creates an economic incentive to conserve"
+      },
+      {
+        "criterion": "Toronto municipal water governance case framing (Q1, Q3)",
+        "page": "PDF Page 4 (p. 211, Introduction)",
+        "quote": "where a proposal to introduce a new water management board was defeated in"
+      },
+      {
+        "criterion": "Primary informant interview cited without recruitment or interview methods (Q4, Q5, Q7)",
+        "page": "PDF Page 9 (p. 216, Hermanus, Western Cape Province)",
+        "quote": "(Theo Loubser, senior income accountant, interview)"
+      },
+      {
+        "criterion": "Legal/policy operationalization of Hermanus GHWCP tariff design (legal_measurement_quality)",
+        "page": "PDF Page 9 (p. 216, Hermanus, Western Cape Province)",
+        "quote": "keeping with DWAF cost recovery policies, the tariff structure of the GHWCP"
+      },
+      {
+        "criterion": "Reliance on secondary source for household water disconnection outcome in Zwelihle (Q8, outcome_measurement_quality)",
+        "page": "PDF Page 10 (p. 217, Hermanus, Western Cape Province)",
+        "quote": "about 60 per cent of residents were affected (Deedat, Pape and Qotole, 2001)."
+      },
+      {
+        "criterion": "Informal personal communications acknowledged for Canadian case without methodological documentation (Q4, Q5)",
+        "page": "PDF Page 16 (p. 223, Notes, Note 10)",
+        "quote": "conversations and personal communication from Marcia Chandra,"
+      }
+    ],
+    "overall_narrative_summary": "Debbané and Keil (2004) present a comparative urban political-ecology study examining environmental justice and municipal water governance in Hermanus, South Africa, and Toronto, Canada. Appraised with the CASP Qualitative Checklist as a qualitative documentary and field/informant comparative case study, the paper demonstrates high methodological concern (4 Yes, 3 Can't tell, and 2 No items across Q1-Q9). Its aims (Q1), qualitative interpretive approach (Q2), comparative case rationale (Q3), and multiscalar analytical synthesis (Q9) are clearly articulated. However, the article contains no dedicated Methods section: it does not report how interview or personal-communication informants and documentary sources were sampled or collected (Q4, Q5), omits any discussion of researcher reflexivity (Q6) or research ethics (Q7), and lacks a transparent qualitative coding or triangulation procedure (Q8), relying instead on secondary reports (notably DWAF 1997b and Deedat, Pape and Qotole 2001) for key empirical claims regarding water conservation, revenue surpluses, and household water disconnections in Zwelihle.",
+    "overall_rating": "High methodological concern (3 Can't tell and 2 No items across Q1-Q9)",
+    "paper_read": "full text",
+    "study_design_identified": "Comparative qualitative documentary and informant-informed case study (urban political ecology comparative case studies of Hermanus, South Africa, and Toronto, Canada, without a dedicated Methods section)",
+    "study_id": "S1101",
+    "where_found_summary": "Abstract and theoretical/case-selection framing in Introduction (PDF pp. 2-5, pp. 209-212); cross-national comparison in 'Justice Across Borders' and Table 1 (PDF pp. 5-6, pp. 212-213); South Africa and Hermanus GHWCP case narrative including official interview, 1996 engineer correspondence, and secondary outcome citations (PDF pp. 7-11, pp. 214-218); Canada and Toronto Water Services Board struggle narrative (PDF pp. 11-13, pp. 218-220); multiscalar synthesis in Table 2 and Conclusion (PDF pp. 13-15, pp. 220-222); personal-communication disclosure in Note 10 (PDF p. 16, p. 223).",
+    "why_tool_chosen": "The authors explicitly structure the empirical core of the paper around two comparative urban water policy case studies (Hermanus, South Africa, and Toronto, Canada) drawing on qualitative documentary sources (policy White Papers, union submissions, municipal correspondence, public committee hearings), personal communications, and at least one primary informant interview with a municipal official. This places the study within qualitative documentary/field case study research covered by the CASP Qualitative Checklist rather than quantitative/quasi-experimental tools, MMAT, AMSTAR 2, or NONE, while allowing CASP Q4-Q8 to capture the absence of formal methodological reporting."
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "study_id": "S960",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "52045c5623d8f26f8cc26e50a549243ed43aaf89c8923d5fed0b6075a1efce6c",
+  "prompt_sha256": "286752561953b3da36419673941944eb380f01e57d678f1969b5f44b9f17acc9",
+  "started_at": "2026-11-20T17:27:55.702889+00:00",
+  "completed_at": "2026-11-20T17:29:49.557406+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Not assessable (no longitudinal participant or unit panel tracked over time; relies on aggregate national official statistics and narrative statutory-institutional review).",
+      "confounding": "High risk / Weak treatment of confounding (alternative structural explanations such as population growth, rapid urbanization, land tenure informality, municipal planning delays, and fiscal constraints in poorer states are noted on PDF pp. 5-6, Section 5, but subordinated narratively without empirical or comparative control when asserting isomorphic mimicry is the leading cause of reform failure).",
+      "legal_measurement_quality": "Adequate for statutory/institutional mapping, weak for empirical operationalization (core Brazilian constitutional provisions, federal laws, and decrees from 1964-2020 are identified by number and date and mapped across federal, state, intermunicipal, and municipal competences on PDF pp. 2-5, Figs. 1-3, though article-level pinpoints are absent, Section 6 contains two statutory year typos for Laws 14.026 and 11.445 on PDF pp. 6-7, and 'de facto' regulatory governance across 73 agencies is asserted without a transparent coding rubric).",
+      "measurement_bias": "High risk / Weak measurement transparency (neither 'isomorphic mimicry', 'PIR alignment', nor the 'de facto' regulatory performance of the 73 subnational agencies on PDF p. 7, Section 6.3 is operationalized with explicit indicators, coding criteria, or verifiable agency-level data).",
+      "outcome_measurement_quality": "Weak (relies on point-in-time aggregate national secondary statistics from MDR 2019 for 2018 access deficits and IBGE 2020 for subnormal/peri-urban population share on PDF pp. 2, 6, 7, noting official figures exclude much of the peri-urban population and service continuity/quality dimensions without constructing disaggregated or longitudinal outcome measures).",
+      "reporting_bias": "High concern / Can't tell (no protocol, pre-specified evaluation framework, document inventory, or agency-level tabulation of the 73 regulatory agencies is reported, creating substantial risk of selective narrative illustration).",
+      "selection_bias": "High risk / Weak selection transparency (Brazil is purposively examined as a national case study and illustrative programs/examples and observations about 73 regulatory agencies are presented without any documented inclusion/exclusion criteria, document search strategy, or systematic sampling protocol; PDF pp. 2, 5, 7)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Primary Brazilian constitutional, statutory, and executive instruments governing WSS, housing, and land tenure (1988 Constitution, Law 4.380/1964, Law 5.107/1966, Law 5.318/1967, Decree 100/1991, Law 11.124/2005, Law 11.445/2007, Decree 6025/2007, Decree 7.535/2011, Law 13.465/2017, Law 14.026/2020) are cited by instrument number and enactment date. However, specific statutory articles are not pinpointed, and Section 6 introduces two year errors—citing Law no. 14.026 as 'July 15, 2017' (p. 6) instead of 2020, and Law no. 11.445 as 'January 5, 2017' (p. 7) instead of 2007.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 2-7, Sections 2, 3, 4, 5, 6, 6.1, 6.3; Fig. 1 (p. 4)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The study clearly delineates competence across Brazil's three-level federal system, distinguishing municipal WSS service ownership, shared state-municipal authority in metropolitan areas per Supreme Court jurisprudence, federal rural vs. urban jurisdiction split at the 50,000-inhabitant threshold (FUNASA/Ministry of Health vs. Ministry of Cities/MDR), ANA's federal reference-standard role under Law 14.026/2020, and the 73 subnational regulators (25 state, 13 intermunicipal, 34 municipal).",
+        "rating": "strong",
+        "where_found": "PDF pp. 4-6, Sections 4 and 5; Fig. 2 (p. 4) and Fig. 3 (p. 6)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "The paper defines four historical WSS reform waves in Brazil (1968-1986 PLANASA, 1986-2007 democratization/municipalization, Law 11.445/2007, and Law 14.026/2020) and frames its analytical lens around policies, institutions, and regulation (PIR) and de jure vs. de facto 'isomorphic mimicry', though PIR alignment and mimicry remain conceptual constructs without operational thresholds.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 1-3, Sections 1 and 2; PDF pp. 6-7, Sections 6 and 6.1-6.4"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Universal WSS access and reform effectiveness are discussed using aggregate national deficit figures from MDR (2019) for 2018 (16% lacking sustainable water supply, 47% lacking wastewater collection, 54% lacking effluent treatment) and IBGE (2020) peri-urban population estimates (~8%, >16 million), without standardized longitudinal, subnational, or utility-level outcome metrics.",
+        "rating": "weak",
+        "where_found": "PDF p. 2, Section 1; PDF p. 6, Section 6; PDF p. 7, Section 6.4"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Brazil is examined as a national single-country case study, and Section 6.3 refers to the universe of 73 WSS regulatory agencies as of October 2020, but the paper has no Methods section and provides no inventory or sampling frame of laws, policy documents, websites, or agency management reports reviewed.",
+        "rating": "weak",
+        "where_found": "PDF p. 2, Section 1; PDF p. 5, Section 5; PDF p. 7, Section 6.3"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "No inclusion or exclusion criteria or systematic search/selection procedures are reported for choosing the historical policies, subnational institutional examples (e.g., SISAR in Ceara and Piaui), secondary literature, or regulatory examples highlighted to support the authors' thesis.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2-7, Sections 1-6 (absence of selection protocol throughout)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Although Section 6.3 states that weak regulatory governance can be observed by visiting the websites, enabling laws, and management reports of Brazil's 73 regulatory agencies, no empirical criteria, date of review, summary statistics, or agency-by-agency evidence are reported to substantiate the claim that the 'overwhelming majority does not de facto regulate'.",
+        "rating": "weak",
+        "where_found": "PDF p. 7, Section 6.3; PDF pp. 6-7, Sections 6.1-6.4"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The central claim that isomorphic mimicry and PIR misalignment are 'the leading cause of failure' of Brazilian WSS reforms rests entirely on narrative institutional critique and macro-level description, with no counterfactual design, temporal/cross-jurisdictional empirical comparison, or formal test of competing mechanisms.",
+        "rating": "weak",
+        "where_found": "PDF p. 1, Abstract and Section 1; PDF pp. 5-7, Sections 5 and 6"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Alternative determinants of persistent WSS deficits—population growth, rapid urbanization, land tenure informality, slow municipal planning, and inadequate subsidy financing in poorer states—are briefly acknowledged at the end of Section 5, but set aside by assertion rather than controlled or weighed empirically against isomorphic mimicry.",
+        "rating": "weak",
+        "where_found": "PDF pp. 5-6, Section 5; PDF pp. 6-7, Section 6"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The study provides a thorough contextual account of Brazil's institutional architecture, including military-era centralization (BNH, CESBs, PLANASA), post-1988 municipal ownership, urban-rural ministerial fragmentation (MDR vs. FUNASA), financing channels (FGTS, PAC, BNDES, Caixa, IFIs), rural community management (SISAR), and friction between imported UK/Australian discretionary agency models and Brazilian civil-law concession/program contracts.",
+        "rating": "strong",
+        "where_found": "PDF pp. 2-7, Sections 2, 3, 4, 5, and 6.1-6.4"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Because the article lacks a standalone methodology section, document corpus list, agency audit dataset, and evaluation criteria for assessing PIR alignment or de facto regulation across the 73 agencies, an independent researcher could not replicate the empirical classifications.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2-7, Sections 1-6 (no Methods section or data appendix)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No qualitative or doctrinal coding scheme, operational definitions for classifying de jure vs. de facto effectiveness, or coder verification procedures are described anywhere in the paper.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2-7, Sections 1-6; specifically PDF p. 7, Section 6.3"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Apart from a boilerplate competing-interest statement ('The authors declare no conflict of interest'), the authors do not discuss their positionality, prior engagement with Brazilian WSS regulators or policy reforms, or how theoretical commitments to the PIR/isomorphic mimicry framework shaped case interpretation.",
+        "rating": "not assessable",
+        "where_found": "PDF p. 8, Declaration of competing interest (reflexivity otherwise absent)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design framing as a national PIR case study",
+        "page": "PDF Page 2, Section 1",
+        "quote": "In this document, access to WSS in Brazil is analyzed as a case study."
+      },
+      {
+        "criterion": "Outcome measurement via aggregate secondary official statistics",
+        "page": "PDF Page 2, Section 1",
+        "quote": "critical; 54% did not have effluent treatment. These official indicators,"
+      },
+      {
+        "criterion": "Core causal assertion despite alternative structural explanations",
+        "page": "PDF Page 6, Section 5",
+        "quote": "lack of alignment among policies, institutions, and regulation (PIR)."
+      },
+      {
+        "criterion": "Legal source citation error (2017 instead of 2020 for Law no. 14.026)",
+        "page": "PDF Page 6, Section 6",
+        "quote": "should be emphasized that even Law no. 14.026 (July 15, 2017), despite"
+      },
+      {
+        "criterion": "Uncodified observation of 73 regulatory agencies without reported protocol",
+        "page": "PDF Page 7, Section 6.3",
+        "quote": "websites, the laws that created them and the management reports of the"
+      },
+      {
+        "criterion": "Boilerplate competing-interest disclosure with no researcher reflexivity",
+        "page": "PDF Page 8, Declaration of competing interest",
+        "quote": "The authors declare no conflict of interest."
+      }
+    ],
+    "overall_narrative_summary": "Narzetti and Marques (2021) present a national institutional and legal-historical case study of water and sanitation services (WSS) reforms in Brazil (1964-2020), applying the Policies, Institutions, and Regulation (PIR) and 'isomorphic mimicry' frameworks to argue that Brazilian WSS reforms are robust de jure (especially Law no. 11.445/2007) yet ineffective de facto, particularly for rural and informal peri-urban populations. Appraised under the Legal Institutional Evidence Appraisal Framework (as a structured, non-validated qualitative judgment rather than a numeric score), the study demonstrates strong jurisdictional specificity (D2) and institutional contextualization (D10), and adequate legal source identification (D1, marred by lack of article pinpoints and two statutory year typos in Section 6) and conceptual exposure framing (D3). However, empirical and methodological rigor is weak across sampling transparency (D5), selection process (D6), measurement transparency (D7), outcome definition (D4), coding transparency (D12), replication potential (D11), causal identification (D8), and treatment of confounding (D9), with researcher reflexivity not assessable (D13). The paper contains no Methods section, reports no systematic document selection or coding rubric for its claimed inspection of 73 regulatory agencies' laws, websites, and management reports, relies on aggregate cross-sectional secondary coverage statistics (MDR 2019; IBGE 2020), and asserts isomorphic mimicry as the primary cause of WSS access deficits without comparative or counterfactual testing against acknowledged demographic, fiscal, and land-tenure confounders.",
+    "overall_rating": "High concern / weak empirical-methodological rigor (structured non-validated judgment: 2 strong, 2 adequate, 8 weak, 1 not assessable; strong institutional-jurisdictional synthesis but weak measurement, coding, and causal identification)",
+    "paper_read": "full text",
+    "study_design_identified": "Institutional and legal-historical case study / doctrinal-policy analysis of Brazilian water and sanitation sector reforms (single-country narrative institutional analysis drawing on federal legislation, secondary national statistics, and uncodified review of 73 regulatory agencies)",
+    "study_id": "S960",
+    "where_found_summary": "Study framing and aggregate MDR (2019) outcome figures: PDF pp. 1-2 (Abstract, Section 1). Historical reform waves and PIR conceptual framework: PDF pp. 2-3 (Section 2). Statutory, institutional, and regulatory mapping: PDF pp. 3-6 (Sections 3-5, Figs. 1-3). Competing explanations vs. isomorphic mimicry claim: PDF pp. 5-6 (Section 5). Critique of policies, institutions, 73 regulatory agencies, and peri-urban cross-sectoral governance (including statutory year typos and IBGE 2020 data): PDF pp. 6-7 (Sections 6, 6.1-6.4). Policy recommendations and conflict-of-interest statement (absence of standalone Methods section verified across entire text): PDF pp. 7-8 (Section 7, Declaration of competing interest).",
+    "why_tool_chosen": "The article has no standalone Methods section, no randomized or quasi-experimental policy comparator (excluding RoB 2 and ROBINS-I), no cross-sectional or cohort statistical model (excluding JBI checklists), no primary qualitative fieldwork such as interviews, focus groups, or ethnography (making CASP ill-fitting), no mixed-methods integration (excluding MMAT), and no systematic literature search or screening protocol (excluding AMSTAR 2). Because the authors explicitly frame the work as a national institutional and legal-historical case study of Brazil's WSS statutes, ministries, and 73 regulatory agencies (coupled with secondary official statistics and informal inspection of agency laws, websites, and management reports), the Legal Institutional Evidence Appraisal Framework (RISK_OF_BIAS.md §2) is the exact matching instrument."
+  }
+}

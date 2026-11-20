@@ -1,0 +1,341 @@
+{
+  "study_id": "S396",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "e641d84e2f06ec3f0d27c936f012bb4981a70392414f155da74c11d2bae8517b",
+  "prompt_sha256": "b5238153bb658c0affd3d6386dd4de25d8568482344801cea73cc5c140094b49",
+  "started_at": "2026-11-20T17:20:49.397589+00:00",
+  "completed_at": "2026-11-20T17:23:19.722419+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / No information (cross-sectional household field survey with no longitudinal follow-up, but household non-response/refusal rates during tract visits are completely unreported; item non-response of 2.2% to 6.6% is noted only for billing, meter presence, and seasonality items on PDF pp. 11-14).",
+      "confounding": "High concern (the comparison between Jardim Catarina and Mutondo rests on raw descriptive percentages across two purposively selected census tracts with zero design or statistical control for hydraulic/topographic network position, pipe infrastructure age, housing density, household size, or the 2021 utility concession transition from CEDAE to Águas do Rio).",
+      "legal_measurement_quality": "Moderate / contextual only (accurately frames Brazil's Federal Law No. 11,445/2007, Federal Law No. 14,026/2020 with its 2033 universalisation target, UN human right to water norms, municipal/metropolitan sanitation plans, and the 2021 CEDAE-to-Águas do Rio distribution concession on PDF pp. 2-5, and surveys household meter/billing status on PDF pp. 11-14, but does not operationalize a legal/regulatory variable as a formal empirical exposure).",
+      "measurement_bias": "Moderate-to-high concern (all service continuity, water pressure, shortage frequency, pump usage, billing, and water security indicators rely on unvalidated, self-reported household questionnaires and retrospective seasonal recall without published questionnaire wording, standardized scales, or objective physical measurements of line pressure, hours of supply, or water quality).",
+      "outcome_measurement_quality": "Moderate concern (captures policy-relevant multidimensional service delivery indicators masked by binary connection statistics—supply days per week, low pressure, suction/hydraulic pump reliance, storage/alternative sources, billing disputes, and perceived water security—on PDF pp. 9-14, but relies entirely on cross-sectional subjective self-report from Nov-Dec 2021 without standardized water-insecurity scales or physical verification).",
+      "reporting_bias": "Moderate concern (no pre-registered protocol, questionnaire instrument, or qualitative coding framework is reported, and several minor internal tabulation/text discrepancies appear: on PDF p. 9 duplicate text labels appear for 'distribution system and a cistern' and 'distribution system and a shallow well' with different percentages, and on PDF p. 13 the text states 28.2% reported seasonal variations and 21.8% did not know, then immediately refers to 'Among the 50% who reported variations').",
+      "selection_bias": "High concern (non-probabilistic 'typical case' selection of just 2 neighbourhoods out of 91 and 1 IBGE census tract per neighbourhood, explicitly filtered by researcher accessibility and safety on PDF p. 7, relying on outdated 2010 Census tract frames for late-2021 fieldwork, visiting only 4 of 6 streets in the Jardim Catarina tract and 3 of 5 alleys in the Mutondo tract, and reporting no random within-street household selection rule or refusal rate; additionally, 6.6% of surveyed Jardim Catarina households were not connected to the network despite targeting connected areas)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The authors clearly state their research aim and hypothesis: investigating whether households formally connected to the public water supply system in São Gonçalo experience unequal treated water provision across socio-economic strata, producing a second dimension of hydrosocial scarcity invisible in official connection statistics.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 2-3 (Introduction) and PDF Pages 6-7 (Investigating another dimension of hydrosocial scarcity: verification method)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Primary household survey frequencies and qualitative interview/observational data collected across 91 households in two socio-economically contrasting connected neighbourhoods (Jardim Catarina, n=45; Mutondo, n=46) directly examine service continuity, pressure, alternative water sources, pump usage, billing, and lived water insecurity.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 7-14 (Investigating another dimension of hydrosocial scarcity: verification method; The hydrosocial scarcity invisible in official statistics)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "A qualitative political-ecology field investigation is appropriate to uncover lived household adaptations, intra-community conflicts over suction pumps, emotional burdens, and normalization of intermittent supply that official administrative coverage statistics cannot capture.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3-7 (Introduction; Hydrosocial cycles, the circulation of water in urban spaces and hydrosocial scarcity; Verification method)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "In-situ household interviews using semi-structured questionnaires with adult household heads or spouses alongside field observations in November-December 2021 are adequate for an exploratory study of lived water scarcity, although details on interview duration, audio recording, and fieldnote protocols are omitted.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 8-12 (Investigating another dimension of hydrosocial scarcity: verification method; The hydrosocial scarcity invisible in official statistics)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "The paper provides no description of how qualitative interview responses and field observations were recorded, transcribed, coded, or thematically analyzed, nor how illustrative resident quotations were selected, making it impossible to verify systematic analytic derivation.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 6-9 (Investigating another dimension of hydrosocial scarcity: verification method — absence of qualitative analytic/coding procedures)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "Core qualitative interpretations—including 'official water days', suction-pump micro-hierarchies, high electricity burdens, holiday/summer acute shortages, billing resistance, and emotional distress—are substantiated by multiple direct interviewee quotations and field observations (e.g., water trucks, single- vs multi-storey housing).",
+        "rating": "Yes",
+        "where_found": "PDF Pages 10-16 (The hydrosocial scarcity invisible in official statistics; Discussing the second dimension of hydrosocial scarcity)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "While the theoretical framing (urban political ecology and hydrosocial scarcity), household interview data, and substantive interpretation align conceptually, the complete omission of qualitative data analysis/coding methods and researcher reflexivity prevents verifying methodological coherence across the full qualitative chain.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 3-9 and 14-16 (Theoretical framework, Verification method, and Discussion)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative Descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Purposive 'typical case' selection of two connected neighbourhoods at opposite socio-economic extremes of São Gonçalo (Mutondo and Jardim Catarina) using IBGE census-tract and municipal sanitation data, paired with a 25% household sample within one tract per neighbourhood, is relevant for an exploratory descriptive comparison of intramunicipal service inequality.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 7-9 and Table 1 (Investigating another dimension of hydrosocial scarcity: verification method)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative Descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "Sampling is explicitly non-probabilistic ('typical case sampling'), restricted to a single census tract of 178-183 residences in each large neighbourhood (out of 24,781 households in Jardim Catarina and 9,681 in Mutondo), conditioned on researcher accessibility and safety, based on outdated 2010 Census frames for 2021 fieldwork, covering only 4 of 6 streets and 3 of 5 alleys without a reported random within-street selection rule, and including 6.6% unconnected households in Jardim Catarina.",
+        "rating": "No",
+        "where_found": "PDF Pages 7-10 and Table 1 (Verification method; The hydrosocial scarcity invisible in official statistics)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative Descriptive 4.3: Are the measurements appropriate?",
+        "justification": "The semi-structured questionnaire instrument is not provided or pretested/validated, operational definitions for subjective items (such as 'strong' vs 'medium' water pressure or 'feeling secure/insecure') are unreported, and no objective hydraulic or water-quality measurements were collected.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 8-14 (Verification method; The hydrosocial scarcity invisible in official statistics)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative Descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "The authors report only achieved sample sizes (45 households in Jardim Catarina and 46 in Mutondo, representing 25% of residences in each tract) without reporting how many households were approached, absent, or refused participation during November-December 2021 visits.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 8-9 and Table 1 (Verification method — absence of recruitment/refusal counts)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative Descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Quantitative reporting is limited to raw within-tract percentages without confidence intervals, statistical tests of between-neighbourhood differences, or multivariable adjustment, and exhibits internal reporting errors (duplicate supply-combination text labels on PDF p. 9 and conflating 28.2% reporting seasonal variation plus 21.8% 'did not know' as 'Among the 50% who reported variations' on PDF p. 13).",
+        "rating": "No",
+        "where_found": "PDF Pages 9-14 and Figures 3-4 (The hydrosocial scarcity invisible in official statistics)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "Combining quantitative household survey frequencies (to reveal the prevalence of service intermittency hidden behind official network-connection statistics) with qualitative interviews and field observations (to capture household coping mechanisms, pump-induced hierarchies, and emotional impacts) is clearly justified by the exploratory research objective.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 3 and 6-7 (Introduction; Investigating another dimension of hydrosocial scarcity: verification method)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Quantitative survey percentages and qualitative resident narratives/field observations from the two tracts are systematically integrated side-by-side across every substantive theme (supply frequency, pressure and pump use, domestic shortages, seasonality, metering/billing, and perceived security).",
+        "rating": "Yes",
+        "where_found": "PDF Pages 9-16 (The hydrosocial scarcity invisible in official statistics; Discussing the second dimension of hydrosocial scarcity)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Integration yields substantive insights beyond either component alone, demonstrating how formal network connection coexists with severe supply rationing in low-income Jardim Catarina and how capital-dependent coping devices (suction pumps, wells, cisterns) stratify vulnerability within the same neighbourhood.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 14-18 (Discussing the second dimension of hydrosocial scarcity; Final remarks)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "The authors explicitly unpack apparent divergences between quantitative indicators and lived conditions—most notably explaining via qualitative interviews why 34.9% of Jardim Catarina respondents reported feeling water-secure despite pervasive network intermittency (attributing it to private wells, large storage tanks, single-person low demand, or owning a suction pump, conceptualized as a 'false perception of domestic water security').",
+        "rating": "Yes",
+        "where_found": "PDF Pages 12 and 16 (The hydrosocial scarcity invisible in official statistics; Discussing the second dimension of hydrosocial scarcity)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Neither empirical strand fully meets its respective methodological quality standards: the quantitative descriptive component relies on non-probabilistic single-tract sampling, unvalidated self-report items, unreported non-response rates, and descriptive-only statistics with minor tabulation discrepancies, while the qualitative component omits coding/analysis procedures, formal ethics review details, and reflexivity.",
+        "rating": "No",
+        "where_found": "PDF Pages 6-14 (Verification method; The hydrosocial scarcity invisible in official statistics)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods exploratory design classification (S1, 5.1)",
+        "page": "PDF Page 6 (Section: Investigating another dimension of hydrosocial scarcity: verification method)",
+        "quote": "The methodological process, exploratory in nature and combining qualitative and"
+      },
+      {
+        "criterion": "Accessibility and safety filter in non-probabilistic neighbourhood selection (4.2, selection_bias)",
+        "page": "PDF Page 7 (Section: Investigating another dimension of hydrosocial scarcity: verification method)",
+        "quote": "as well as accessible and safe for conducting the field research."
+      },
+      {
+        "criterion": "Single-tract 25% household sample size definition (4.1, 4.2, 4.4)",
+        "page": "PDF Page 8 (Section: Investigating another dimension of hydrosocial scarcity: verification method)",
+        "quote": "The selected samples represented 25% of the total households in each tract"
+      },
+      {
+        "criterion": "Semi-structured household questionnaire and respondent eligibility criteria (1.2, 4.3)",
+        "page": "PDF Page 8 (Section: Investigating another dimension of hydrosocial scarcity: verification method)",
+        "quote": "semi-structured questionnaires administered. Respondents were required to be adults"
+      },
+      {
+        "criterion": "Self-reported household coping equipment prevalence in Jardim Catarina (1.4, outcome_measurement_quality)",
+        "page": "PDF Page 10 (Section: The hydrosocial scarcity invisible in official statistics)",
+        "quote": "71% of households had suction pumps, hydraulic pumps, or both."
+      },
+      {
+        "criterion": "Absence of household water meters in Jardim Catarina (4.3, legal_measurement_quality)",
+        "page": "PDF Page 11 (Section: The hydrosocial scarcity invisible in official statistics)",
+        "quote": "In 84.4% of the households surveyed there were no water meters."
+      }
+    ],
+    "overall_narrative_summary": "Gouveia et al. (2026) conduct an exploratory convergent mixed-methods field study examining intramunicipal 'hydrosocial scarcity' among households formally connected to the public water supply network in São Gonçalo (Rio de Janeiro Metropolitan Region, Brazil), framed against Brazil's universalisation mandate (Laws No. 11,445/2007 and No. 14,026/2020) and the UN human right to water. Using 2010 IBGE Census tract data and municipal sanitation records, the authors purposively selected two contrasting connected neighbourhoods—low-income Jardim Catarina (n=45 households in one census tract) and higher-income Mutondo (n=46 households in one census tract)—and administered semi-structured household questionnaires/interviews alongside field observations in November–December 2021. Appraised with the MMAT (2018) using the Quantitative Descriptive (4.1-4.5) block, the study's main strengths lie in its clear research question, strong rationale for mixing survey frequencies with qualitative resident accounts, effective narrative integration across service dimensions, and explicit exploration of apparent paradoxes (such as pump- or cistern-driven feelings of water security amidst severe network rationing). However, per MMAT 2018 guidance that overall quality cannot exceed the weakest component, there is high-to-moderate methodological concern: (1) sampling is non-probabilistic ('typical case sampling') and restricted to one accessible/safe census tract per neighbourhood (visiting 4 of 6 streets and 3 of 5 alleys) based on 2010 Census frames without reported household selection rules or refusal/non-response rates; (2) the questionnaire instrument is unpublished and unvalidated, relying solely on subjective self-report without physical hydraulic or water-quality verification; (3) quantitative analysis uses raw percentages without inferential tests, confidence intervals, or confounding control, and contains minor text/percentage reporting errors (PDF pp. 9 and 13); and (4) qualitative transcription, coding, thematic analysis, reflexivity, and formal research ethics approval are unreported.",
+    "overall_rating": "High-to-moderate methodological concern (MMAT 2018 narrative judgment, no numeric composite score: strong mixed-methods rationale and integration [5.1-5.4 Yes], but constrained by weaknesses in both empirical strands [5.5 No], including non-probabilistic single-tract sampling [4.2 No], descriptive-only statistics with minor reporting errors [4.5 No], unreported non-response and measurement validation [4.3-4.4 Can't tell], and unreported qualitative coding/analytic procedures [1.3, 1.5 Can't tell])",
+    "paper_read": "full text",
+    "study_design_identified": "Exploratory convergent mixed-methods comparative field study combining a cross-sectional quantitative descriptive household survey (n=91 households across two purposively selected census tracts) with qualitative semi-structured household interviews and in-situ observations",
+    "study_id": "S396",
+    "where_found_summary": "Legal/policy framing and research aims: PDF Pages 2-3 (Introduction) and Page 5 (Hydrosocial scarcity in São Gonçalo/RJ according to official data). Sampling, census-tract selection criteria, and primary data collection methods: PDF Pages 6-9 and Table 1 (Investigating another dimension of hydrosocial scarcity: verification method). Quantitative descriptive survey results and qualitative interview/observational findings: PDF Pages 9-14 and Figures 3-4 (The hydrosocial scarcity invisible in official statistics). Integrated socio-technical synthesis and limitations/policy implications: PDF Pages 14-18 (Discussing the second dimension of hydrosocial scarcity; Final remarks).",
+    "why_tool_chosen": "The study explicitly states that its methodological process was 'combining qualitative and quantitative approaches' (PDF p. 6) and empirically integrates quantitative descriptive household survey distributions (n=91 households across two census tracts; Figures 3-4 and percentage breakdowns of supply frequency, pressure, pumps, meters, billing, and perceived security) with qualitative semi-structured interview narratives and field observations. Because both quantitative descriptive and qualitative primary components are co-present and integrated to answer the research question without a randomized or quasi-experimental/confounder-adjusted analytical design, MMAT (2018) with the Quantitative Descriptive component (items 4.1-4.5) is the exact matching instrument."
+  }
+}

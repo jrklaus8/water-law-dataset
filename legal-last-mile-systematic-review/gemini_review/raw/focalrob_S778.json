@@ -1,0 +1,313 @@
+{
+  "study_id": "S778",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "4332eda6b46b28dbb38f0f0c8cfaa816c48b2f64e2b977ac5304ef429fa5d5e0",
+  "prompt_sha256": "2ffa33058aab7c24010265784c4bcef6d3b9e835b6209ea4c6162f9319bc86ea",
+  "started_at": "2026-11-20T17:27:55.721824+00:00",
+  "completed_at": "2026-11-20T17:30:08.764012+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Not assessable: The paper is not a longitudinal cohort or panel tracking individual units with follow-up attrition; Tables 2 and 4 compare aggregate national municipal distributions in 2000 and 2008 from IBGE's PNSB without reporting total municipality counts, municipal splits/mergers, or missing-data handling (aside from an unexplained dash in Table 3 for North 'Others', PDF p. 5).",
+      "confounding": "High concern (weak): All original empirical comparisons of water supply and sewerage coverage across institutional management models (Tables 3 and 5, PDF pp. 5-6) are unadjusted descriptive cross-tabulations stratified solely by macro-region and urban population, with no statistical adjustment for municipal wealth, city size, fiscal capacity, urbanization history, or prior Planasa investments. The authors themselves note that private utilities in the North serve large, relatively prosperous state capitals such as Manaus and Palmas (PDF p. 4) and that institutional choices stem from political, economic, and cultural factors (PDF p. 8), leaving descriptive coverage differences severely confounded.",
+      "legal_measurement_quality": "Adequate (with classification limitations): The article accurately situates key Brazilian constitutional, statutory, and policy milestones (1891 and 1934 Constitutions, 1971 Planasa, Concessions Law no. 8987 of 1995, Law 11.445 of 2007, and Plansab 2013) within Brazil's federal-state-municipal governance architecture and defines five municipal utility management models via IBGE PNSB categories (Table 2, PDF p. 4). However, legal provisions are summarized narratively rather than analyzed doctrinally clause-by-clause, and the quantitative IBGE categories fail to separate partially privatized mixed-capital state utilities, special-purpose entities (SPEs), and public-private partnerships (PPPs) from wholly public state companies (PDF pp. 1, 4, 7).",
+      "measurement_bias": "Moderate-to-high concern (weak-to-adequate): Underlying counts derive from official Brazilian statistical agency sources (IBGE PNSB 2000 and 2008, 2010 Demographic Census, and National Household Surveys 1972-2012), but the paper lacks a Methods section explaining how 2008 municipality-level provider categories (IBGE 2009) were linked to 2010 Census urban household connection data (IBGE 2011) in Tables 3 and 5, or how multi-provider municipalities were classified. Moreover, as the authors emphasize (PDF pp. 1, 4, 7), classifying open-capital state companies (e.g., Sabesp, Copasa, Sanepar) as 'public' obscures private shareholding and joint-venture SPEs, introducing exposure misclassification into public-versus-private comparisons.",
+      "outcome_measurement_quality": "Adequate for basic urban network access; weak for service quality and rural populations: Urban household access to piped water connections (with internal plumbing) and sewerage networks is measured consistently at the national/macro-regional level using IBGE household survey and census indicators (Figure 1, Tables 3 and 5, PDF pp. 4-6). However, rural populations (which the Abstract notes lack improved sanitation in more than half of cases, PDF p. 1) are excluded from Figure 1 and Tables 3 and 5, and service quality dimensions (continuity, potability, wastewater treatment, leakage, and tariff affordability) are not measured in the national tables.",
+      "reporting_bias": "High concern (weak): There is no pre-specified protocol, formal Methods section, or transparent selection rule for historical episodes (Section 2), prior comparative studies (Section 3, three of four co-authored by Heller/Rezende), or contemporary corporate cases (Section 4). Strong normative claims—such as characterizing state-utility dividend payouts to open-market shareholders as 'foreign exchange fraud' (PDF p. 7)—are interwoven with empirical synthesis without reflexivity or conflict-of-interest disclosures.",
+      "selection_bias": "High concern (weak): Although Tables 2-5 draw on national IBGE censuses and municipal surveys covering Brazilian municipalities and urban households, exact sample denominators and linkage exclusions are omitted, historical and corporate case examples (Sections 2 and 4) and cited subnational studies (Section 3) are selected illustratively without inclusion criteria, and municipal assignment to public versus private utility models is non-random (reflecting historical 'cream-skimming' of profitable large cities and prosperous northern capitals like Manaus and Palmas, PDF pp. 3-4)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The paper accurately identifies major Brazilian constitutional, statutory, and national policy instruments governing WSS—including the 1891 and 1934 Federal Constitutions, the 1919 National Department of Public Health legislation, the 1971 National Sanitation Plan (Planasa), the Concessions Law (Law no. 8987 of 1995), the 1999 Caixa Economica Federal statute change, Law 11.445 of 2007, and the 2013 National Plan for Basic Sanitation (Plansab)—though legal texts are summarized narratively rather than cited and analyzed at the clause or official-gazette level.",
+        "rating": "adequate",
+        "where_found": "Section 1 (PDF p. 1 / p. 137); Section 2 (PDF pp. 2-3 / pp. 138-139); Section 4 (PDF p. 6 / p. 142); Section 5 & References (PDF p. 8 / p. 144)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Jurisdictional boundaries and intergovernmental tiers (federal union, provincial states, and >5,600 municipalities) are clearly delineated throughout the paper, quantitative tables disaggregate all five official Brazilian macro-regions (North, Northeast, Southeast, South, Centre-west), and specific state and municipal utility jurisdictions (e.g., Rio de Janeiro, Recife/Compesa, Belem, Sao Paulo/Sabesp, Minas Gerais/Copasa, Parana/Sanepar, Tocantins/Saneatins, Manaus, Palmas) are precisely identified.",
+        "rating": "strong",
+        "where_found": "Sections 2-4, Tables 2-5 (PDF pp. 2-7 / pp. 138-143)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Table 2 (cross-referenced in Tables 3-5) explicitly defines five municipal WSS institutional management models from IBGE's PNSB: public administration, municipally owned enterprise (autarquias), state-owned basic sanitation company, private company, and others (consortia, associations, and foundations). However, as the authors highlight in Section 4, these administrative categories fail to distinguish wholly public state utilities from mixed-capital state companies with open-market private shareholders, special-purpose entities (SPEs), and public-private partnerships (PPPs).",
+        "rating": "adequate",
+        "where_found": "Section 3, Table 2 footnote (PDF p. 4 / p. 140); Section 4 (PDF pp. 6-7 / pp. 142-143)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Primary quantitative outcomes in Figure 1 and Tables 3 and 5 are clearly defined using IBGE survey/census concepts as the percentage of urban households or urban population served by water supply house connections (with internal plumbing) and sewerage network connections, alongside counts of cities with water/sewerage networks in 1890-1930 (Table 1). However, rural access and service quality (water quality, continuity, sewage treatment, tariffs) are omitted from the national empirical tables and discussed only qualitatively or via brief citations to external subnational studies.",
+        "rating": "adequate",
+        "where_found": "Abstract (PDF p. 1 / p. 137); Table 1 (PDF p. 3 / p. 139); Section 3, Figure 1 & Tables 3 and 5 (PDF pp. 4-6 / pp. 140-142)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The national descriptive tables (Tables 2-5) and trend chart (Figure 1) rely on full-universe or nationally representative official IBGE datasets (PNSB 2000 and 2008, 2010 Demographic Census, and National Household Surveys 1972-2012), providing broad national coverage, though exact cell denominators (number of municipalities and urban residents per category) are omitted. Conversely, no sampling frame is provided for the illustrative historical cases in Section 2, the prior subnational studies reviewed in Section 3, or the corporate/PPP examples in Section 4.",
+        "rating": "adequate",
+        "where_found": "Section 2, Table 1 (PDF pp. 2-3 / pp. 138-139); Section 3, Figure 1 & Tables 2-5 (PDF pp. 4-6 / pp. 140-142); Section 4 (PDF pp. 6-7 / pp. 142-143)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "The article contains no Methods section and states no inclusion/exclusion criteria or systematic search strategy for selecting historical city episodes, comparative empirical literature in Section 3 (where three of the four highlighted studies are co-authored by Heller and/or Rezende), or contemporary privatization/PPP cases in Section 4 (Copasa, Sabesp-Foz do Brasil SPE, Saneatins, Recife Compesa PPP).",
+        "rating": "weak",
+        "where_found": "Whole paper; especially Sections 2-4 (PDF pp. 2-7 / pp. 138-143)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Although IBGE (2001, 2009, 2011) and National Household Surveys (1972-2012) are cited as sources, the paper provides no technical explanation of how municipality-level management models from the 2008 PNSB (IBGE 2009) were linked to 2010 Demographic Census urban population connection rates (IBGE 2011) in Tables 3 and 5, how municipalities with multiple providers or service-specific operators were assigned, how missing cells (such as the dash for North 'Others' in Table 3) were treated, or why Figure 1's axis extends to 2017.",
+        "rating": "weak",
+        "where_found": "Section 3, Figure 1 & Tables 2-5 (PDF pp. 4-6 / pp. 140-142)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "No causal identification design is employed. Claims comparing the performance of municipal autarquias, state companies, direct municipal administration, and private operators—as well as the Conclusion's claim that policy oscillation contributed to Brazil's failure to achieve universal coverage—rest on unadjusted cross-tabulations and historical narrative despite clear endogenous selection ('cream-skimming' of profitable large cities and prosperous state capitals such as Manaus and Palmas).",
+        "rating": "weak",
+        "where_found": "Section 2 (PDF p. 3 / p. 139); Section 3, Tables 3 & 5 (PDF pp. 4-6 / pp. 140-142); Section 5 (PDF pp. 7-8 / pp. 143-144)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "The paper's own empirical tables (Tables 3 and 5) stratify only by macro-region and urban status, applying no statistical controls for municipal income, population size, density, fiscal capacity, topography, or historical federal/state investment. Confounding is acknowledged only qualitatively (e.g., noting private operators' concentration in prosperous northern capitals) and indirectly by summarizing Rezende et al. (2007)'s prior hierarchical regression for 2000.",
+        "rating": "weak",
+        "where_found": "Section 3, Tables 3 & 5 and literature summary (PDF pp. 4-6 / pp. 140-142); Section 5 (PDF p. 8 / p. 144)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Rich historical and political-economy contextualization is a central strength of the study. The authors trace institutional path dependence across five eras from 1850s British concessions through early twentieth-century public health sanitarianism, post-1964 centralization and Planasa state companies, 1990s neoliberalism, and post-2007 capital-market opening, SPEs, and PPPs, explaining fiscal incentives, municipal-state power struggles, and regulatory capacity constraints.",
+        "rating": "strong",
+        "where_found": "Sections 1-5 (PDF pp. 1-8 / pp. 137-144)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While the cited IBGE surveys (PNSB 2000, PNSB 2008, 2010 Census) are publicly accessible Brazilian official statistics, the absence of a Methods section, exact variable definitions, record-linkage rules between the 2008 municipal survey and 2010 population census in Tables 3 and 5, and exact survey years/series for Figure 1 precludes exact computational replication of the reported tables and chart.",
+        "rating": "weak",
+        "where_found": "Section 3, Figure 1 & Tables 2-5 (PDF pp. 4-6 / pp. 140-142); References (PDF pp. 8-9 / pp. 144-145)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No primary legal, archival, or qualitative coding protocol or codebook was conducted or reported; institutional classifications in Tables 2-5 rely directly on pre-existing secondary IBGE PNSB survey categories without independent coding procedures.",
+        "rating": "not assessable",
+        "where_found": "Section 3, Table 2 footnote (PDF p. 4 / p. 140)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "The paper includes no reflexivity, positionality, or conflict-of-interest statement, even though the authors rely heavily on their own prior publications in Section 3 and advance strong value judgments and legal/normative characterizations (such as labelling dividend transfers by partially privatized state utilities to external shareholders as 'foreign exchange fraud' on PDF p. 7 and advocating a specific human-rights public-sector trajectory in Section 5).",
+        "rating": "weak",
+        "where_found": "Section 3 (PDF p. 6 / p. 142); Section 4 (PDF p. 7 / p. 143); Section 5 (PDF p. 8 / p. 144)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D3 Exposure definition / blurring of public-private boundary in state utilities",
+        "page": "PDF Page 1 (Abstract, p. 137)",
+        "quote": "Brazil is seeing a new phenomenon; private capital buys shares in publicly owned water and sewerage"
+      },
+      {
+        "criterion": "D3 Exposure definition / operationalization of IBGE municipal management models",
+        "page": "PDF Page 4 (Section 3, Table 2 footnote, p. 140)",
+        "quote": "Public administration, utility services provided by municipality; municipally owned enterprise, utility company owned by"
+      },
+      {
+        "criterion": "D4 Outcome definition / urban household water connection indicator",
+        "page": "PDF Page 4 (Section 3, p. 140)",
+        "quote": "to full house water connections and internal plumbing."
+      },
+      {
+        "criterion": "D8 & D9 Causal identification and confounding by prosperous capital cities",
+        "page": "PDF Page 4 (Section 3, p. 140)",
+        "quote": "the dominant role of this institutional model in the capital cities"
+      },
+      {
+        "criterion": "D13 Researcher reflexivity / unhedged normative characterization in Section 4",
+        "page": "PDF Page 7 (Section 4, p. 143)",
+        "quote": "to external agents, which amounts to foreign exchange fraud."
+      },
+      {
+        "criterion": "D8 & D10 Institutional path dependence and policy oscillation thesis",
+        "page": "PDF Page 7 (Section 5, p. 143)",
+        "quote": "has oscillated in accordance with historical trends in the sector,"
+      }
+    ],
+    "overall_narrative_summary": "Heller, Rezende, and Cairncross (2014) present a historical-institutional and legal-policy case study of Brazil's water supply and sanitation (WSS) governance ('the public-private pendulum'), pairing a five-era historical narrative (1850s-2013) and contemporary analysis of partial privatization (open-market shareholdings in state utilities, special-purpose entities, and public-private partnerships) with descriptive cross-tabulations of secondary IBGE data (PNSB 2000 and 2008, 2010 Demographic Census, and 1972-2012 National Household Surveys). Appraised under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment, with no numeric composite score), the paper is strong in jurisdictional specificity (D2) and institutional contextualization (D10), and adequate in legal source identification (D1), formal IBGE management-model definitions (D3), urban household connection outcome definitions (D4), and national census/survey coverage (D5). However, empirical rigor for comparative or causal inference is weak: the paper has no Methods section, lacks systematic case or literature selection rules (D6), omits data-linkage rules combining 2008 municipal provider data with 2010 Census household coverage in Tables 3 and 5 (D7, D11), relies on unadjusted descriptive cross-tabulations without causal identification or statistical control for municipal wealth, city size, or historical cream-skimming (D8, D9), misclassifies mixed-capital state companies under official 'public' IBGE categories as the authors themselves note, and lacks researcher reflexivity or conflict-of-interest disclosures despite strong normative advocacy (D13).",
+    "overall_rating": "Structured non-validated judgment: Strong institutional and jurisdictional contextualization, adequate legal/exposure/urban-access definitions, and weak selection, measurement-linkage, causal/confounding, replication, and reflexivity rigor (high risk of bias for causal comparisons across management models)",
+    "paper_read": "full text",
+    "study_design_identified": "Historical-institutional and legal-policy case study of Brazil's water and sanitation sector combined with unadjusted descriptive cross-tabulations of secondary national survey and census data (IBGE PNSB 2000/2008, 2010 Demographic Census, and PNAD 1972-2012); no formal Methods section, econometric/statistical model, or systematic review protocol",
+    "study_id": "S778",
+    "where_found_summary": "PDF pp. 1-9 (journal pp. 137-145): Abstract & Section 1 Introduction (PDF p. 1 / p. 137); Section 2 Brief history & Table 1 (PDF pp. 2-4 / pp. 138-140); Section 3 Swinging between different management models, Figure 1 & Tables 2-5 (PDF pp. 4-6 / pp. 140-142); Section 4 The role of private enterprise (PDF pp. 6-7 / pp. 142-143); Section 5 Conclusion (PDF pp. 7-8 / pp. 143-144); References (PDF pp. 8-9 / pp. 144-145). Note: No standalone Methods section is present in the article.",
+    "why_tool_chosen": "The paper is a national institutional and legal-historical case study of Brazilian water and sanitation governance that integrates constitutional/statutory history (1891 and 1934 Constitutions, 1971 Planasa, Law 8987/1995, Law 11.445/2007, Plansab 2013) with descriptive cross-tabulations of secondary IBGE municipal and census datasets (Tables 2-5, Figure 1). It fits none of the six conventional empirical designs: it is not an RCT (RoB 2), lacks a quasi-experimental or controlled comparative intervention evaluation (ruling out ROBINS-I), conducts no analytical cross-sectional statistical/regression analysis (ruling out JBI Analytical Cross-Sectional), is not a cohort study (JBI Cohort), collects no primary qualitative interview/fieldwork data (ruling out CASP), is not a primary mixed-methods study (MMAT), and has no systematic literature search (ruling out AMSTAR 2). Because it combines legal-institutional historical analysis with empirical secondary IBGE tabulations across institutional models (rather than being a data-free commentary or pure simulation model), the 13-domain Legal Institutional Evidence Appraisal Framework is the exact matching instrument under RISK_OF_BIAS.md §§1-2."
+  }
+}

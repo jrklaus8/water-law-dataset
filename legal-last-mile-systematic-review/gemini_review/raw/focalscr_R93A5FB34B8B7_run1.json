@@ -1,0 +1,251 @@
+{
+  "record_id": "R93A5FB34B8B7",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "",
+  "prompt_sha256": "e906ae597a71b0dc886907ea427e4fc8d4addbc44f7490eebfbc28c8afbd8aa9",
+  "started_at": "2026-11-20T16:19:15.275030+00:00",
+  "completed_at": "2026-11-20T16:19:55.302422+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "not reported",
+    "criteria": {
+      "c1_service_access": "unclear",
+      "c2_legal_admin_factor": "unclear",
+      "c3_empirical": "unclear",
+      "c4_access_outcome": "unclear",
+      "c5_pop_exposure_outcome_design": "unclear",
+      "c6_language": "unclear"
+    },
+    "criterion_notes": {
+      "c1": "Full text is not accessible (retrieval_status: not_accessible); per screening rules, eligibility cannot be guessed from the title or metadata alone, so whether the study examines community or school sanitation service access is unclear.",
+      "c2": "Under BOTH the plain wording of Criterion 2 (any legal, administrative, institutional, regulatory, or governance factor) and the narrow 2026-10-13 rule-type mechanism reading (a rule-type mechanism directly governing service access, such as tariff or cost-recovery rules, eligibility screening, tenure/documentation rules, administrative burden, enforcement, or regulatory/ownership structure rather than generic life-cycle engineering cost modelling or project delivery), Criterion 2 is unclear because the full text is not accessible and no abstract or body text is available to inspect.",
+      "c3": "Full text is not accessible; cannot determine whether the paper reports primary empirical data with an identifiable empirical method or purely hypothetical/engineering life-cycle cost scenarios.",
+      "c4": "Full text is not accessible; cannot verify whether an access-relevant outcome (e.g., affordability, user fees/cost-recovery exclusion, service availability, reliability, or connection) is empirically measured and reported.",
+      "c5": "Full text is not accessible (fails Criterion 8 accessibility for methodological assessment); population, unit of analysis, exposure, outcome, and study design cannot be verified from the paper text.",
+      "c6": "Full text is not accessible; while the record metadata title is in English, the language of the full text cannot be verified directly from the unavailable document."
+    },
+    "decision": "cannot_tell",
+    "evidence_quotes": [],
+    "exclusion_code": "NONE",
+    "exposure": "not reported",
+    "outcome": "not reported",
+    "paper_read": "not accessible",
+    "plain_criterion2_decision": "cannot_tell",
+    "population_and_sample": "not reported",
+    "rationale": "reason: \"full text not accessible\". Record R93A5FB34B8B7 has retrieval_status: not_accessible and no full-text PDF, OA XML, or abstract text is provided. Per mandatory screening rules (zero guessing from title/metadata alone and inaccessible full-text handling), both decision and plain_criterion2_decision are set to cannot_tell with exclusion_code NONE and paper_read \"not accessible\".",
+    "record_id": "R93A5FB34B8B7",
+    "study_design": "not reported"
+  }
+}

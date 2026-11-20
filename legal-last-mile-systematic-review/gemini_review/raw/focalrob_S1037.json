@@ -1,0 +1,221 @@
+{
+  "study_id": "S1037",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "33da7336776ff0e1444caaf66b450aa40f8b956460a360d9f37a3a616063a016",
+  "prompt_sha256": "07232b001a1d392dab9d44c9858693b8f316391f919d56592abe9fa991dd7ad3",
+  "started_at": "2026-11-20T17:27:55.714292+00:00",
+  "completed_at": "2026-11-20T17:29:39.645175+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "NONE",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable (no primary participant sample, cohort, or longitudinal follow-up; the article is a secondary narrative commentary).",
+      "confounding": "High concern / not addressed: the article attributes local environmental and empowerment improvements in two secondary NGO project vignettes to women's leadership without any comparator group, baseline measurement, or consideration of confounding factors such as external university and union facilitation, local hydrology, or concurrent community initiatives (PDF pp. 7-9 / pp. 74-76).",
+      "legal_measurement_quality": "Weak: the article discusses international soft-law instruments—the 1992 Rio Declaration (Principles 1, 10 and 20) and Agenda 21 (Chapter 24)—and inaccurately asserts that they created enforceable legal obligations binding on Brazil (PDF p. 10 / p. 77), while critiquing Brazil's national water policy and local legal implementation without citing or analyzing any specific Brazilian constitutional provision, federal or state water/sanitation statute, or regulatory instrument (PDF pp. 4-5, 9-10 / pp. 71-72, 76-77).",
+      "measurement_bias": "High concern: no primary data collection or standardized measurement instruments were used; empirical claims rely entirely on secondary policy briefs, NGO web summaries (GWA 2006a, 2006b), and conference papers (Almeida and Chalub-Martins 2008; Branco and Almeida 2002) accepted at face value without independent verification (PDF pp. 4-9 / pp. 71-76).",
+      "outcome_measurement_quality": "Weak: water, sanitation, and river-revitalization outcomes are described solely through unquantified secondary assertions—such as 'a considerable improvement in local conditions' (PDF p. 7 / p. 74) and 'succeeded in revitalising the river, and assuring the survival needs of the whole community' (PDF p. 8 / p. 75)—without operational definitions, water-quality or hydrological indicators, household access metrics, or health data.",
+      "reporting_bias": "High concern: no research protocol, search strategy, or case-inclusion criteria are reported; literature and project examples are selectively cited to support a normative advocacy argument for gender mainstreaming in Brazilian water policymaking (PDF pp. 2-10 / pp. 69-77).",
+      "selection_bias": "High concern: the two community examples (Sao Joao D'Alianca and Santa Cruz da Baixa Verde) are purposively selected 'successful case studies' drawn from Gender and Water Alliance (GWA) and conference reports to illustrate effective women-led water management (PDF pp. 3, 7-9 / pp. 70, 74-76), while the author explicitly notes in the Conclusion that such cases 'are not the rule in Brazil' (PDF p. 9 / p. 76), with no sampling frame or examination of unsuccessful or comparator cases."
+    },
+    "domain_ratings": [],
+    "evidence_quotes": [
+      {
+        "criterion": "Absence of domestic statutory analysis; reliance on secondary assertions regarding legal implementation",
+        "page": "[PDF Page 5 of 12] (p. 72, The exclusion of women in water and sanitation provision in Brazil)",
+        "quote": "Gender inequality in accessing water sources is enshrined at the local level, because men in Brazil maintain economic power and also control how laws and regulations are implemented (Almeida and Chalub-Martins 2008)."
+      },
+      {
+        "criterion": "Secondary sourcing and unquantified outcome claims in Case study 1",
+        "page": "[PDF Page 7 of 12] (p. 74, Case study 1)",
+        "quote": "After the implementation of the project, there was a considerable improvement in local conditions. According to the GWA, this was possible because women took leadership roles and, in that capacity, they have been able to promote community mobilisation and awareness (GWA 2006a)."
+      },
+      {
+        "criterion": "Secondary sourcing of Case study 2 from conference literature",
+        "page": "[PDF Page 8 of 12] (p. 75, Case study 2)",
+        "quote": "In this project, a network called the Rural Women Workers mobilised and taught women to adopt sustainable practices in water resources management, without any government support (Branco and Almeida 2002). The project was implemented purely by the efforts of the network, which was largely composed of women."
+      },
+      {
+        "criterion": "Unquantified secondary water-resource outcome claim in Case study 2",
+        "page": "[PDF Page 8 of 12] (p. 75, Case study 2)",
+        "quote": "The project succeeded in revitalising the river, and assuring the survival needs of the whole community (Branco and Almeida 2002)."
+      },
+      {
+        "criterion": "Normative policy commentary without empirical evaluation of legal reforms",
+        "page": "[PDF Page 9 of 12] (p. 76, Conclusion)",
+        "quote": "Legal reforms are necessary to afford equal rights and equal protection to women and men. But policies and programmes aiming to do this are not sufficient, if there is no adequate implementation."
+      },
+      {
+        "criterion": "Inaccurate characterization of non-binding international soft-law declarations as enforceable legal obligations",
+        "page": "[PDF Page 10 of 12] (p. 77, Conclusion)",
+        "quote": "The Rio Declaration on Environment and Development, and Agenda 21, have paved the way by creating enforceable legal obligations that must be observed by all countries, including Brazil."
+      }
+    ],
+    "overall_narrative_summary": "Leite (2010) is a non-systematic narrative policy commentary published in Gender & Development arguing that post-1992 Brazilian water policymaking has neglected gender mainstreaming and women's domestic and leadership roles in water and sanitation governance. No formal risk-of-bias checklist applies (chosen_tool = 'NONE') because the article conducts no primary qualitative or quantitative empirical research, employs no systematic review search or screening methodology, and undertakes no structured doctrinal or primary institutional-legal analysis. Its two illustrative vignettes—the 'Water Women' project in Sao Joao D'Alianca (PDF p. 7 / p. 74) and the Rural Women Workers Network (MMTR-SC) river revitalization initiative in Santa Cruz da Baixa Verde (PDF pp. 8-9 / pp. 75-76)—are brief secondary summaries of an NGO web profile (GWA 2006a) and two conference papers (Almeida and Chalub-Martins 2008; Branco and Almeida 2002). Across cross-tool evidentiary dimensions, the paper exhibits high risk of selection, measurement, confounding, and reporting bias when read as empirical evidence: success cases were purposively chosen to support a normative policy argument, outcomes are reported only as unverified qualitative assertions of improved local conditions and river revitalization, and legal measurement is weak, citing no specific Brazilian water or sanitation statutes while mischaracterizing the non-binding 1992 Rio Declaration and Agenda 21 as creating enforceable legal obligations.",
+    "overall_rating": "NOT APPLICABLE (design fits no listed tool)",
+    "paper_read": "full text",
+    "study_design_identified": "Non-systematic narrative policy essay/commentary with two secondary illustrative case vignettes (no primary empirical data collection and no systematic search)",
+    "study_id": "S1037",
+    "where_found_summary": "Full article inspected across PDF Pages 1-12 (journal pp. 69-79): Abstract and Introduction (PDF pp. 2-3 / pp. 69-70), The Earth Summit (PDF pp. 3-4 / pp. 70-71), The exclusion of women in water and sanitation provision in Brazil (PDF pp. 4-5 / pp. 71-72), Integrating women's empowerment into water provision in Brazil (PDF pp. 5-6 / pp. 72-73), Case study 1 (PDF p. 7 / p. 74), Case study 2 (PDF pp. 8-9 / pp. 75-76), Conclusion and Notes (PDF pp. 9-11 / pp. 76-78), and References (PDF pp. 11-12 / pp. 78-79). No Methods section is present.",
+    "why_tool_chosen": "The paper is a non-systematic narrative policy commentary/essay with no Methods section, no primary qualitative or quantitative data collection (excluding CASP, MMAT, JBI, ROBINS-I, and RoB 2), and no systematic literature search or screening protocol (excluding AMSTAR 2). Its two brief 'case studies' (PDF pp. 7-9 / pp. 74-76) are purely secondary summaries of previously published NGO and conference papers (GWA 2006a; Almeida and Chalub-Martins 2008; Branco and Almeida 2002) even adopting their subtitles, and the paper performs no structured doctrinal-empirical or primary legal-institutional analysis of Brazilian statutes, regulations, or administrative records (excluding the Legal Institutional Evidence Appraisal Framework). Per RISK_OF_BIAS.md §1, 'NONE' is selected rather than forcing an inappropriate empirical or systematic-review checklist."
+  }
+}

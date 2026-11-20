@@ -1,0 +1,272 @@
+{
+  "record_id": "RF18D44C79805",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "8c5d0d9a5139e59a4e94a505c27f7d66ffa2d0692c3bb600a6d246ecd0d644b8",
+  "prompt_sha256": "6885b433ccbb853a4eed81bf2c70ff0ac829056ed72adacec0ced308ac274a92",
+  "started_at": "2026-11-20T16:48:51.431607+00:00",
+  "completed_at": "2026-11-20T16:50:20.985080+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines municipal-level access/coverage rates for water supply (Atend_Agua) and sanitary sewage (Atend_Esgoto), alongside solid waste collection (Atend_RDO), across municipalities in Minas Gerais, Brazil.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 READING. Under the plain wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), this study qualifies (plain=yes) because it empirically tests four dimensions of municipal 'institutional capacity' (financial, technical, operational, and political capacity, including binary indicators for whether the municipality adopted a Municipal Basic Sanitation Plan [PMSB] and Municipal Basic Sanitation Policy [PPSB] pursuant to Law 11.445/2007). Under the narrow 2026-10-13 rule-type mechanism reading, however, it fails (narrow=no): the independent variables measure aggregate municipal/provider fiscal resources per capita (revenues and expenditures), municipal staffing and waste-collection vehicles, technical-staff presence in city hall, and generic municipal sector-plan/policy adoption (1/0), rather than a rule-type mechanism directly governing household or community service access (such as eligibility screening, administrative burden on users/applicants, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership/regulatory structure directly governing access).",
+      "c3": "Quantitative observational cross-sectional study using secondary municipal data from SNIS (2018) and IBGE (2017), applying Exploratory Factor Analysis (n=574 after outlier removal for most variables) and Multiple Linear Regression with White heteroskedasticity-robust standard errors (n=391 municipalities).",
+      "c4": "Reports quantitative municipal service coverage outcomes: total water supply coverage index (Atend_Agua, %), total sanitary sewage coverage index (Atend_Esgoto, %), and regular household solid waste collection coverage rate (Atend_RDO, %).",
+      "c5": "Unit of analysis and population (municipalities in Minas Gerais, Brazil; n=574 in descriptive/exploratory analysis, n=391 in final regressions), exposures (four EFA-derived institutional capacity factor scores from 10 SNIS/IBGE indicators), outcomes (water supply, sanitary sewage, and solid waste coverage percentages), and study design (cross-sectional quantitative regression analysis) are clearly reported.",
+      "c6": "Full text is in Portuguese, which is directly eligible without translation under Criterion 9."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c2",
+        "page": "PDF Page 25 of 32 (p. 456)",
+        "quote": "Este estudo objetivou compreender se há influência entre a capacidade institucional e os indicadores de acesso aos serviços de saneamento básico em Minas Gerais. Para isso, foram consideradas dez variáveis referentes às questões financeiras, presença de corpo técnico da prefeitura atuando no setor de saneamento, o número de veículos e funcionários atuantes e a existência de plano e política de saneamento no município."
+      },
+      {
+        "criterion": "c2_c3",
+        "page": "PDF Page 25 of 32 (p. 456)",
+        "quote": "Com o auxílio de uma Análise Fatorial Exploratória, essas variáveis foram reduzidas a quatro indicadores de capacidade institucional: política, financeira, técnica e operacional, utilizadas como variáveis explicativas para a execução da regressão linear múltipla."
+      },
+      {
+        "criterion": "c1_c4",
+        "page": "PDF Page 18 of 32 (p. 449)",
+        "quote": "Como variável dependente, optou-se pela utilização dos dados acerca do atendimento/cobertura de três dos quatro serviços de saneamento básico, a saber: abastecimento de água, esgotamento sanitário e coleta de resíduos sólidos."
+      },
+      {
+        "criterion": "c4_c5",
+        "page": "PDF Page 19 of 32 (p. 450)",
+        "quote": "Os dados revelaram que, na amostra em questão, há um maior acesso ao abastecimento de água (com uma média de 62% de atendimento) e, em menor grau, do esgotamento sanitário (aproximadamente 42% de atendimento)."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Four municipal institutional capacity factors extracted via principal-components EFA from 10 SNIS (2018) and IBGE (2017) variables: Financial Capacity (per-capita direct/indirect operational revenues, total water/sewage expenditure, personnel expenditure), Technical Capacity (dummies for municipal technical staff in water supply and sanitary sewage), Operational Capacity (urban cleaning/waste employees and vehicles per 10,000 inhabitants), and Political Capacity (binary indicators for existence of a Municipal Basic Sanitation Plan [PMSB] and Municipal Basic Sanitation Policy [PPSB] under Law 11.445/2007).",
+    "outcome": "Municipal service coverage rates (%): total water supply attendance index (Atend_Agua), total sanitary sewage attendance index (Atend_Esgoto), and regular household solid waste collection coverage rate (Atend_RDO).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Municipalities in the state of Minas Gerais, Brazil (574 municipalities retained after outlier removal in exploratory analysis; 391 municipalities with complete data in the final multiple linear regression models).",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 Criterion 2 clarification. While the study empirically examines municipal water supply and sanitary sewage access outcomes across Minas Gerais municipalities (satisfying c1, c3, c4, c5, and c6) and would be included under the plain wording of Criterion 2 because it analyzes municipal 'institutional capacities' and adoption of Municipal Basic Sanitation Plans/Policies, its exposures consist of broad municipal fiscal, staffing, equipment, and macro-planning capacity indicators rather than a rule-type legal, regulatory, or administrative mechanism directly governing service access (such as eligibility screening, user administrative burden, tenure/documentation requirements, tariff/cost-recovery rules, enforcement, discretion, or utility ownership/regulatory structure).",
+    "record_id": "RF18D44C79805",
+    "study_design": "Cross-sectional quantitative observational study using exploratory factor analysis (principal components with varimax rotation) and OLS multiple linear regression with White robust standard errors."
+  }
+}

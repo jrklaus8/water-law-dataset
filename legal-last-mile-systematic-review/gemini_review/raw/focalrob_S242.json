@@ -1,0 +1,308 @@
+{
+  "study_id": "S242",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "135bffa6258118cc0da54fc12499799db7e780351c0e2833872e464ca4efc147",
+  "prompt_sha256": "c2536942fa784f3cf79d094790ae4fc6e4cfb2d73db032d92c5f3aa7ca8376fc",
+  "started_at": "2026-11-20T17:24:51.205483+00:00",
+  "completed_at": "2026-11-20T17:27:12.750874+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Not assessable: Cross-sectional documentary comparison of four executed 2001-2003 municipal agreements with no longitudinal panel follow-up of service outcomes (Table 2 notes partial grant disbursements paid through December 2004, while Belo Horizonte's principal transfer was only scheduled to begin in January 2008).",
+      "confounding": "High concern (weak control): Descriptive N=4 comparison with no design-based or statistical adjustment for large baseline differences in urban scale, existing water/sewerage deficits (e.g., Fortaleza's 75.1% water coverage versus 99.9% in Belo Horizonte and Curitiba), municipal fiscal capacity, CESB shareholding structure, or state-municipal political alignment.",
+      "legal_measurement_quality": "Adequate-to-strong: Primary legal instruments (three municipal concession contracts in Curitiba, Fortaleza and Natal, plus Belo Horizonte's cooperation convênio) are directly analyzed across five substantive regulatory dimensions and four tariff subcategories, with explicit legal nuance regarding convênio status and constitutional titularidade disputes, though exact contract clause/article citations and formal coding rules are omitted.",
+      "measurement_bias": "Moderate concern: Contractual provisions and official SNIS 2003 / IBGE 2000 baseline indicators are systematically tabulated across Tables 1-5, but no coding protocol, dual-reviewer verification, clause-level citations, or data source for post-signing grant-fee execution through December 2004 (Table 2) is provided, and neither author discloses potential institutional bias from working at Ceará's state regulatory agency (ARCE).",
+      "outcome_measurement_quality": "Weak (baseline/targets only): The study does not measure realized post-contract changes in water supply or sanitation performance; Table 1 reports cross-sectional SNIS 2003 coverage and sewage treatment indicators solely as municipal context, while Table 4 reports prospective contractual targets (2003-2033) rather than achieved outcomes.",
+      "reporting_bias": "Moderate concern (Can't tell): No pre-analysis protocol or registered coding scheme exists; all five institutional categories stated in the Methods are reported across the four cases (with Belo Horizonte's absence from Table 4 explicitly explained by its lack of contractual coverage/investment targets), but unstated coding rules and undisclosed ARCE affiliation leave room for selective interpretive emphasis.",
+      "selection_bias": "High concern: Purposive sample of four state-capital renewals selected from an undefined pool of 'available' 2001-2003 contracts specifically to showcase diverse institutional arrangements ('soluções diversas'), mixing three concession contracts with one cooperation convênio (Belo Horizonte) and precluding representative inference across Brazilian CESB renewals."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The authors analyze primary municipal legal instruments signed between 2001 and 2003—cited directly in the References (Curitiba 2001, Belo Horizonte 2002, Natal 2002, Fortaleza 2003)—alongside pending federal sanitation bills (PL 7361/2006 and PL 4147/2001), and explicitly clarify that Belo Horizonte's renewal was legally executed via a cooperation agreement (convênio) treated didactically as a contract while noting unresolved Supreme Federal Court (STF) questions on municipal titularidade.",
+        "rating": "strong",
+        "where_found": "PDF Page 2 (Introdução; Metodologia, p. 354) and PDF Page 8 (Referências, p. 360)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Every contract is anchored to its exact Brazilian state capital, incumbent State Basic Sanitation Company (Copasa/MG, Sanepar/PR, Cagece/CE, Caern/RN), execution year (2001-2003), concession term (25-30 years), and specific municipal or state oversight bodies (Sudecap in Belo Horizonte, state governor tariff homologation in Curitiba, municipal regulator and State of Ceará as interveniente in Fortaleza, and Conselho Municipal de Saneamento Básico plus municipal regulator in Natal).",
+        "rating": "strong",
+        "where_found": "PDF Pages 2-8 (Metodologia and Resultados e Discussão, Tables 1-5, pp. 354-360)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Institutional and contractual governance provisions are clearly decomposed into five analytical categories (grant fee payment, tariffs with four explicit subcategories, coverage and investment targets, regulation/supervision/social control, and user rights), though these clauses serve as descriptive comparative dimensions rather than an exogenous policy treatment variable.",
+        "rating": "adequate",
+        "where_found": "PDF Page 2 (Metodologia, p. 354) and PDF Pages 3-7 (Tables 2-5, pp. 355-359)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "No post-contract empirical service delivery outcomes are operationalized or tracked longitudinally; Table 1 presents cross-sectional 2003 SNIS water/sewerage indicators (A03, E03, I16, I23, I24) only as baseline municipal context, while Table 4 summarizes prospective contractual coverage and investment targets (2003-2033).",
+        "rating": "weak",
+        "where_found": "PDF Pages 2-3 (Resultados e Discussão, Table 1, pp. 354-355) and PDF Page 6 (Table 4, p. 358)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Although three inclusion criteria are stated (diverse institutional solutions, contract renewal with incumbent CESBs, and state capitals during 2001-2003), the authors select only 'among those available' ('dentre os disponíveis') without disclosing the total universe of Brazilian capitals or municipalities that renewed CESB agreements in 2001-2003 or how many contracts were unavailable.",
+        "rating": "weak",
+        "where_found": "PDF Page 2 (Metodologia, p. 354)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Cases were purposively selected on the dependent contractual features—specifically requiring contracts to exhibit diverse solutions ('soluções diversas')—and combine a legal cooperation agreement (convênio in Belo Horizonte) with three formal concession contracts, creating substantial selection bias if interpreted beyond illustrative typology.",
+        "rating": "weak",
+        "where_found": "PDF Page 2 (Metodologia, p. 354)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Table 1 clearly specifies IBGE 2000 Census and SNIS 2003 indicator codes (A03, E03, I16, I23, I24), and Tables 2-5 systematically report financial terms, coverage percentages, and regulatory competencies across cities; however, Table 2 reports actual grant-fee execution paid up to December 2004 ('% pago até dez/04') while attributing the entire table solely to the 2001-2003 concession contracts without naming the administrative/fiscal execution source.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 3-7 (Tables 1-5, pp. 355-359)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "With a descriptive cross-sectional comparison of four purposively chosen contracts and no counterfactual or longitudinal outcome data, the design cannot identify causal effects; nevertheless, the authors make unverified causal inferences—suggesting contractual heterogeneity stems from the lack of a national regulatory benchmark and claiming upfront grant fees paid during mayors' terms 'probably impacted' ('provavelmente repercutiu') contractual water and sewage investment commitments.",
+        "rating": "weak",
+        "where_found": "PDF Page 1 (Resumo/Abstract, p. 353), PDF Page 3 (Pagamento de outorga, p. 355), and PDF Page 8 (Conclusão, p. 360)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "While acknowledging differing operational scales and reporting urban population and baseline SNIS coverage in Table 1, the analysis does not account for confounding differences in baseline infrastructure deficits, municipal fiscal health, CESB corporate governance/shareholding, or state-municipal partisan alignment when comparing contract clauses.",
+        "rating": "weak",
+        "where_found": "PDF Pages 2-3 (Resultados e Discussão, Table 1, pp. 354-355)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper provides thorough, well-grounded institutional analysis of Brazil's sanitation governance trajectory from Planasa (1971) and BNH financial oversight to post-1980s contract expirations, state-municipal titularidade conflicts, electoral timing of upfront grant transfers to mayors, and financial autonomy of regulatory agencies versus direct municipal secretariats.",
+        "rating": "strong",
+        "where_found": "PDF Pages 1-2 (Introdução, pp. 353-354) and PDF Pages 3-8 (Resultados e Discussão; Conclusão, pp. 355-360)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Because the four municipal instruments are public documents explicitly identified by city and year in the References and SNIS 2003 / IBGE 2000 sources are cited with exact indicator codes, external researchers could largely verify the comparative tables, though the absence of contract clause/article numbers and undocumented sources for December 2004 grant-payment execution impede full clause-level replication.",
+        "rating": "adequate",
+        "where_found": "PDF Page 2 (Metodologia, p. 354), PDF Pages 3-7 (Tables 1-5, pp. 355-359), and PDF Page 8 (Referências, p. 360)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Beyond listing five broad categories and four tariff subcategories in the Methods, the study reports no operational coding rubric, decision rules for classifying ambiguous or conditional competencies (such as the binary 'X' entries in Table 5), number of coders, or specific contract article citations.",
+        "rating": "weak",
+        "where_found": "PDF Page 2 (Metodologia, p. 354) and PDF Pages 5 & 7 (Tables 3 & 5, pp. 357 & 359)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Both authors were regulatory officials at Ceará's state utility regulator (ARCE), located in Fortaleza—whose 2003 Cagece concession contract (with the State of Ceará as interveniente) is highlighted most favorably for explicit tariff-revision methodology and earmarked sanitation transfers—yet the paper contains no conflict-of-interest statement or reflexive discussion of institutional positionality.",
+        "rating": "weak",
+        "where_found": "PDF Page 1 (Author affiliations, p. 353) and PDF Page 9 (Correspondence address, p. 361)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D13 Researcher reflexivity (author affiliation with Ceará state regulator ARCE)",
+        "page": "PDF Page 1 (Title/Author block, p. 353)",
+        "quote": "Analista de Regulação da Agência Reguladora de Serviços Públicos do Estado do Ceará - ARCE"
+      },
+      {
+        "criterion": "D8 Causal identification (unverified causal attribution in Abstract)",
+        "page": "PDF Page 1 (Abstract, p. 353)",
+        "quote": "this may result from failure to define a new regulatory benchmark"
+      },
+      {
+        "criterion": "D5/D6 Sampling and selection process (documentary study design)",
+        "page": "PDF Page 2 (Metodologia, p. 354)",
+        "quote": "estudo documental dos contratos"
+      },
+      {
+        "criterion": "D1/D6 Legal source accuracy and selection (Belo Horizonte convênio treated as contract)",
+        "page": "PDF Page 2 (Metodologia, p. 354)",
+        "quote": "neste artigo tal instrumento jurídico"
+      },
+      {
+        "criterion": "D3/D12 Tariff coding and transparency (Table 3 comparative matrix)",
+        "page": "PDF Page 5 (Tabela 3, p. 357)",
+        "quote": "Não é explicitada a periodicidade de tais"
+      }
+    ],
+    "overall_narrative_summary": "Galvão Junior and Monteiro (2006) conduct a comparative legal-institutional documentary analysis of four water and sewerage concession instruments renewed between 2001 and 2003 in Brazilian state capitals (Belo Horizonte, Curitiba, Fortaleza, and Natal) with incumbent State Basic Sanitation Companies (CESBs), supplemented by cross-sectional baseline indicators from the 2000 IBGE Census and 2003 SNIS. Appraised under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment), the study demonstrates strong legal source accuracy, jurisdictional specificity, and institutional contextualization of Brazil's post-Planasa regulatory vacuum, accurately distinguishing Belo Horizonte's cooperation convênio from formal concession contracts and mapping five core regulatory dimensions (grant fees, tariff rules, coverage/investment targets, regulatory competencies, and consumer rights). However, substantial methodological limitations restrict empirical and causal inference: (1) purposive selection of four 'available' state-capital renewals explicitly chosen to exhibit diverse solutions, without reporting the full sampling frame; (2) absence of a documented coding protocol, inter-coder verification, exact contract article citations, or the administrative data source for post-signing grant-fee execution through December 2004 (Table 2); (3) lack of longitudinal post-contract service outcome measurement or control for baseline municipal/utility confounders alongside unverified causal claims linking grant fees and regulatory gaps to investment commitments; and (4) complete absence of reflexivity or conflict-of-interest disclosure despite both authors serving as regulatory officials at Ceará's state regulatory agency (ARCE) while evaluating Fortaleza's contract (in which the State of Ceará was a formal intervening party).",
+    "overall_rating": "Structured non-validated judgment: Moderate-to-high methodological limitations for empirical inference (strong legal source accuracy, jurisdictional specificity and institutional context; adequate exposure/measurement structure and replicability; weak sampling/selection transparency, outcome measurement, causal/confounding control, coding transparency and researcher reflexivity)",
+    "paper_read": "full text",
+    "study_design_identified": "Comparative legal-institutional documentary analysis of four municipal water and sewerage concession contracts/agreements (2001-2003) paired with descriptive cross-sectional baseline statistics",
+    "study_id": "S242",
+    "where_found_summary": "Study design, selection criteria, analytical categories, and convênio caveat on PDF Page 2 (Metodologia, p. 354); baseline municipal/SNIS 2003 context and comparative contractual findings across five institutional categories on PDF Pages 2-8 (Resultados e Discussão, Tables 1-5, pp. 354-360); synthesis on PDF Page 8 (Conclusão, p. 360); primary contract citations on PDF Page 8 (Referências, p. 360); author ARCE affiliations on PDF Pages 1 and 9 (pp. 353, 361).",
+    "why_tool_chosen": "The study is a comparative doctrinal-institutional analysis of four public municipal concession agreements/convênios paired with descriptive baseline administrative tables (IBGE 2000 and SNIS 2003). It involves no randomization (excluding RoB 2), no quasi-experimental intervention comparator or longitudinal outcome evaluation (excluding ROBINS-I and JBI Cohort), no quantitative cross-sectional sample or statistical analysis (excluding JBI Analytical Cross-Sectional), no human-participant fieldwork/interviews (making Legal Institutional Evidence Appraisal Framework much more appropriate than CASP Qualitative), and no systematic literature review search (excluding AMSTAR 2). Per RISK_OF_BIAS.md §§1-2, the 13-domain Legal Institutional Evidence Appraisal Framework directly captures the methodological dimensions of a comparative legal-contractual institutional study."
+  }
+}

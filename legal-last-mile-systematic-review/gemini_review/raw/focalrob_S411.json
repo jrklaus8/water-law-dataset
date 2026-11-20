@@ -1,0 +1,287 @@
+{
+  "study_id": "S411",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "e8507ae5b1803b1eb8ad76b24425ff375f9656e8adb376dca33104fd0aa10995",
+  "prompt_sha256": "416b5ddee1facd5d659cbe1191104b81e459da29a3d7217a09db0d2d1b4b4c4f",
+  "started_at": "2026-11-20T17:15:21.124714+00:00",
+  "completed_at": "2026-11-20T17:16:48.122699+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell: This is a single qualitative case study rather than a longitudinal cohort; interviewee refusal or drop-out rates are not reported (PDF p. 7, Section 3), and the two water board inspection denominators (40 OSSFs at project start vs. 199 OSSFs in November 2019; PDF p. 11, Section 8) reflect incremental expansion of Oosterwold rather than panel tracking of fixed units.",
+      "confounding": "High concern (uncontrolled qualitative case design): As a single-case qualitative study with only a narrative contrast to centralised sewerage in the rest of Almere (PDF p. 12, Section 8), there is no formal counterfactual or statistical control for confounding; the authors qualitatively attribute water quality deterioration jointly to incremental plot selection, project scale, low household water flows, lack of hard water, and improper domestic disposal (PDF pp. 11-13, Sections 8-9).",
+      "legal_measurement_quality": "Strong: Multi-level legal and institutional rules are precisely specified and cited—including the EU Urban Wastewater Directive, Dutch Constitution Articles 21 and 22, Environmental Management Act Sections 4.22 and 10.33, Water Act Section 3.4, Soil Protection Act, Crisis and Recovery Act, municipal sewer plan, land use plan, anterior agreements, and water board discharge permits—and doctrinal interpretations were cross-checked with lawyers during interviews (PDF pp. 7-11, Sections 3, 5, 7).",
+      "measurement_bias": "Moderate concern: Qualitative coding was structured around explicit theoretical and legal categories (Savas's provider/arranger/user roles and EU/Dutch wastewater legislation) and legal interpretations were reviewed by lawyers (PDF p. 7, Section 3), but interview guides are not reproduced, single- vs. multi-coder procedures are unreported, and resident perspectives are synthesised without direct resident quotations.",
+      "outcome_measurement_quality": "Moderate: Wastewater performance is grounded in administrative compliance measurements by the regional water board (28 of 40 OSSFs failing permit standards initially; 33 of 199 failing in November 2019) and a municipal technical report (Centre of Expertise Water Technology 2019) (PDF pp. 11-12, Section 8), which is stronger than purely perceptual self-reports, though exact effluent pollutant concentrations, sampling schedules, and surface-water quality parameters are not reported.",
+      "reporting_bias": "Moderate concern: No pre-registration exists (standard for qualitative planning research), and although 19 key actor interviews and 3 pilot interviews were conducted across residents, lawyers, policymakers, project members, and specialists (PDF p. 7, Section 3), verbatim empirical quotations in Sections 6 and 8 are restricted to \"a project member\" (PDF pp. 10, 12), with no direct resident voices or full breakdown of water board monitoring metrics.",
+      "selection_bias": "Moderate concern / Can't tell: Purposive selection of Oosterwold is well justified as the largest Dutch urban development experimenting with self-organised wastewater management (PDF pp. 2, 6, 10), and all core local policy/contractual documents were included, but recruitment procedures, selection criteria, category counts, and non-response among the 19 semi-structured interviewees are not described (PDF p. 7, Section 3)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Was there a clear statement of the aims of the research?",
+        "justification": "The abstract and Section 1 clearly articulate a twofold aim—understanding the changing government-citizen relationship in self-organised service delivery and exploring how self-organised delivery interacts with environmental legislation—along with an explicit central research question and theoretical/policy rationale.",
+        "rating": "Yes",
+        "where_found": "PDF p. 2 (Abstract) and PDF p. 3 (Section 1, p. 1458)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Is a qualitative methodology appropriate?",
+        "justification": "Investigating how statutory environmental obligations, local planning agreements, and shifting institutional roles (arranger, provider, user) interact in an ongoing urban self-organisation experiment is well suited to qualitative inquiry combining doctrinal legal analysis, document analysis, and semi-structured interviews.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 6-7 (Section 3, pp. 1461-1462)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the research design appropriate to address the aims of the research?",
+        "justification": "The authors explicitly justify a single case study design (citing Yin 2009) of Oosterwold as a critical experimental case challenging the Dutch centralised wastewater regime, triangulating doctrinal legal research, local policy/contractual document analysis, and stakeholder interviews.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 6-7 (Section 3, pp. 1461-1462) and PDF p. 10 (Section 6, p. 1465)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Was the recruitment strategy appropriate to the aims of the research?",
+        "justification": "While the authors note conducting 3 pilot interviews (two residents and the leading project member) and 19 semi-structured interviews with \"knowledgeable or experienced\" actors (residents, lawyers, policymakers, project members, and environmental specialists), they do not explain how interviewees were identified or sampled, the numerical breakdown across stakeholder groups, or whether any invited participants declined.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 7 (Section 3, p. 1462)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Was the data collected in a way that addressed the research issue?",
+        "justification": "Data collection combined three complementary sources: primary EU and Dutch statutes, five named categories of local planning/contractual documents (land use plan, development strategy, anterior agreement, land transfer agreement, water agreement), and 3 unstructured pilot interviews informing a semi-structured interview guide used across 19 transcribed interviews adapted to respondent expertise, supplemented by secondary water board inspection figures.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 6-7 (Section 3, pp. 1461-1462) and PDF pp. 11-12 (Section 8, pp. 1466-1467)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Has the relationship between researcher and participants been adequately considered?",
+        "justification": "Although the authors report having several lawyers review the legal analysis during interviews to \"limit researcher bias and knowledge gaps\", they do not critically discuss the researcher's own positionality, relationship with Oosterwold residents and municipal officials, or how fieldwork interactions may have shaped responses.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 7 (Section 3, p. 1462)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Have ethical issues been taken into consideration?",
+        "justification": "The Methods section notes only that \"During each interview, the researcher ensured the respondents' anonymity\"; there is no mention of informed consent procedures, institutional ethics review/approval, or data security handling.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 7 (Section 3, p. 1462)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was the data analysis sufficiently rigorous?",
+        "justification": "Interviews and documents were transcribed/summarised and deductively coded into European/Dutch legal rules and Savas's provider/arranger/user roles, with triangulation across sources and lawyer verification of legal interpretations. However, coding procedures (e.g. single vs. multiple coders, handling of discrepant views) are sparsely detailed, and empirical voice representation is uneven—all direct interview quotes in Sections 6 and 8 come from \"a project member\", with zero direct quotes from residents or independent specialists.",
+        "rating": "Can't tell",
+        "where_found": "PDF p. 7 (Section 3, p. 1462), PDF p. 10 (Section 6, p. 1465), and PDF p. 12 (Section 8, p. 1467)"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Is there a clear statement of findings?",
+        "justification": "Sections 7-10 present a clear, structured synthesis linking role shifts (resident as arranger, provider, and prosumer of individual OSSF III units) to specific statutory mismatches (unwaived EMA s. 10.33 sewer duty, non-transferable municipal/water board duty of care, and persistent OSSF permit non-compliance of 28/40 initially and 33/199 in November 2019, culminating in discontinuation of new individual OSSFs in spring 2020) while weighing nuances rather than claiming self-organisation inevitably fails.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 10-14 (Sections 7-10, pp. 1465-1469)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research?",
+        "justification": "Narrative assessment: High substantive and policy value. The study bridges urban planning theories of citizen self-organisation with hard environmental law in a neglected infrastructure sector (wastewater), identifies concrete institutional and technical failure mechanisms when incremental plot-level development meets cumulative pollution thresholds, and proposes actionable governance options (e.g. an intermediary arranger monitoring legal compliance, collective scale, or smaller experiments) and future research directions.",
+        "rating": "Valuable contribution (clear theoretical, policy, and future-research implications)",
+        "where_found": "PDF pp. 13-14 (Sections 9-10, pp. 1468-1469)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "CASP Q2/Q3 & Legal Measurement Quality (doctrinal legal component)",
+        "page": "PDF Page 7 (Section 3, p. 1462)",
+        "quote": "The legal analysis was qualitative and classified as doctrinal legal research"
+      },
+      {
+        "criterion": "CASP Q6/Q8 (lawyer cross-checking to limit researcher bias)",
+        "page": "PDF Page 7 (Section 3, p. 1462)",
+        "quote": "bias and knowledge gaps, several lawyers reviewed the analysis during the interviews."
+      },
+      {
+        "criterion": "CASP Q5 (semi-structured interview adaptation)",
+        "page": "PDF Page 7 (Section 3, p. 1462)",
+        "quote": "The interview guide was adapted to the interviewees’ skills and knowledge."
+      },
+      {
+        "criterion": "CASP Q9 & Legal Measurement Quality (absence of provincial waiver under EMA)",
+        "page": "PDF Page 10 (Section 7, p. 1465)",
+        "quote": "the Municipality of Almere did not request a waiver for a sewage system mandate"
+      },
+      {
+        "criterion": "CASP Q9 & Outcome Measurement Quality (water board OSSF compliance measurement)",
+        "page": "PDF Page 11 (Section 8, p. 1466)",
+        "quote": "than one-quarter of OSSFs (33 of 199) still do not meet the requirements, despite the"
+      }
+    ],
+    "overall_narrative_summary": "This primary qualitative case study (van Karnenbeek, Salet, and Majoor 2021) examines citizen self-organised wastewater management in the Oosterwold urban development experiment (Almere, the Netherlands) by triangulating doctrinal legal research, qualitative analysis of municipal planning and contractual documents, 3 pilot interviews, and 19 semi-structured key actor interviews, supplemented by secondary water board compliance counts. Appraised with the CASP Qualitative Checklist, the study exhibits clear research aims, an appropriate and well-justified case study design, multi-source data collection, exceptionally strong specification of European, national, and municipal legal rules (verified with lawyers during interviews), and a lucid, nuanced synthesis of findings (Q1, Q2, Q3, Q5, Q9 = Yes; strong Q10 value). Methodological concerns are moderate (4 'Can't tell' items: Q4, Q6, Q7, Q8), stemming from incomplete reporting of interviewee sampling and stakeholder breakdown, minimal discussion of researcher-participant reflexivity beyond lawyer review of doctrinal analysis, sparse ethics reporting (anonymity noted without consent/ethics review details), and limited transparency in qualitative coding and voice representation (no direct resident quotations appear in the empirical sections, and water quality outcomes rely on summary pass/fail counts from water board inspections rather than primary pollutant measurements).",
+    "overall_rating": "Moderate methodological concern (4 Can't tell items: Q4, Q6, Q7, Q8; 0 No items)",
+    "paper_read": "full text",
+    "study_design_identified": "Primary qualitative single-case study triangulating doctrinal legal research, qualitative policy/contractual document analysis, and semi-structured key actor interviews (3 pilot + 19 semi-structured interviews), contextualised with secondary administrative water-board compliance counts",
+    "study_id": "S411",
+    "where_found_summary": "Research aims and theoretical framework in Abstract and Sections 1-2 (PDF pp. 2-6, pp. 1457-1461); research design, doctrinal legal method, document analysis, and semi-structured interview procedures in Section 3 (PDF pp. 6-7, pp. 1461-1462); Dutch historical and statutory framework in Sections 4-5 (PDF pp. 7-9, pp. 1462-1464); empirical case findings and water board OSSF compliance figures in Sections 6-8 (PDF pp. 9-12, pp. 1464-1467); synthesis and conclusions in Sections 9-10 (PDF pp. 13-14, pp. 1468-1469).",
+    "why_tool_chosen": "Section 3 explicitly frames the empirical investigation as a qualitative single-case study (citing Yin 2009; Bryman 2008; Yanow 2007; Weiss 1995; Dobinson and Johns 2017) combining primary semi-structured interviews (3 pilot + 19 key actor interviews transcribed and qualitatively coded), qualitative document analysis of local agreements/plans, and qualitative doctrinal legal research. Because it is a primary qualitative field/documentary case study rather than a mixed-methods design with primary quantitative analysis (the two water board OSSF failure fractions in Section 8 are cited secondary administrative figures) and fits a standard primary qualitative design (so the fallback Legal Institutional Evidence Appraisal Framework is not needed), the CASP Qualitative Checklist is the exact matching appraisal tool."
+  }
+}
