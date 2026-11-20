@@ -1,0 +1,286 @@
+{
+  "record_id": "RC60181B6DCC6",
+  "order": 126,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "74b7fec24e062bed13a1bdae329ea7a4454c66949331ecedec4077d59b6a3223",
+  "input_text_sha256": "7d62279d25c1b5083459c5fca15e5ad499b6f0fdc12c3628a5eafd939faaefc1",
+  "prompt_sha256": "fa229bd669e3997c35bf34e272adce725f1d6fcb7408dbec2695a61838ea1922",
+  "started_at": "2026-11-20T05:09:04.113238+00:00",
+  "completed_at": "2026-11-20T05:11:44.074032+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RC60181B6DCC6\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RC60181B6DCC6\n- Title: From source to sink\n- Authors: Sharan, Awadhendra\n- Year: 2011\n- DOI: 10.1177/001946461104800305\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7d62279d25c1b5083459c5fca15e5ad499b6f0fdc12c3628a5eafd939faaefc1) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=124871, sha256=7d62279d25c1b5083459c5fca15e5ad499b6f0fdc12c3628a5eafd939faaefc1]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The article is an environmental and scientific history of water purity, pollution narratives, purification technologies, and wastewater sinks in Delhi (1868–1956). Although it incidentally mentions uneven spatial rollout of pipes, private connection counts, and limited Old Delhi sewerage (largely from secondary histories), the author explicitly states that the focus is not on the extent or adequacy of water supply and drainage, but on water impurity, pollution narratives, and technologies of purity.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, the paper discusses colonial sanitary administration, municipal institutions (Delhi Municipal Committee, Joint Water Board), intergovernmental infrastructure financing, a 1913 anti-fouling municipal bye-law, and environmental regulatory concepts (assimilative capacity vs. the precautionary principle), which constitute broad administrative/institutional/regulatory governance factors (albeit directed at water purity and river pollution rather than household service access). Under the active narrow 2026-10-13 rule-type reading, it fails Criterion 2 (no): it does not empirically examine a rule-type legal, administrative, or regulatory mechanism directly governing household or community service access (such as eligibility screening, administrative burden, documentation or tenure rules, tariff or cost-recovery rules, discretion, enforcement, or utility regulatory structure governing access), focusing instead on pollution science, filtration and sewage-treatment project delivery, and macro-colonial governance background. Even under the plain wording of Criterion 2, the study is still excluded (plain_criterion2_decision = exclude) because its core topic and outcomes concern water quality, contamination, and river waste assimilation rather than service access (failing c1, c4, and c5).",
+      "c3": "Draws on primary archival records from the National Archives of India, the Delhi State Archives, and colonial Sanitary Administration and Public Health Reports (1868–1956), alongside historical chemical and bacteriological water-testing reports, though presented as a narrative historical essay without a formal methods section.",
+      "c4": "Primary outcomes examined are chemical and bacteriological water contamination/purity, filtration and sewage-treatment effluent performance, river and subsoil pollution, and waterborne disease outbreaks (cholera, typhoid, enteric fever, and the 1955–1956 jaundice epidemic), rather than household or community service-access outcomes.",
+      "c5": "As a broad 88-year narrative environmental history of water purity and sewage disposal in Delhi without an explicit analytical study design linking a rule-type access exposure to a household or community service-access outcome, population/unit of analysis, access exposure, and access outcome are not identifiable for review extraction.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 (p. 427)",
+        "quote": "with a focus not so much on the extent of water supply and drainage, and its (in)adequacy in the colonial city, as on concerns around the (im)purity of water, narratives of pollution, technologies of purity and the transformations they effected in a colonial context."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 21 (p. 445)",
+        "quote": "The responsibility of the Joint Water Board is to supply water of the required standard of purity to its bulk consumers at the point of supply. Any deterioration in the quality of the water after it leaves the mains and reservoirs under the Board’s control must be the responsibility of the authority controlling the pipe lines and reservoirs through which water subsequently runs."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 34 (p. 458)",
+        "quote": "Delhi’s water, we suggest, was subject to the same play of colonial difference as other schemes of improvement were to be and what emerged in the wake of a century’s efforts at improvement was a city and a capital, adjacent in space but destined towards different futures."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 16 (p. 440)",
+        "quote": "The chemical analysis suggested that well water was ‘unfit for drinking purposes’ while the bacteriological analysis showed Balantidium coli to be present in 5 cc but not in 1 cc of water."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 23 (p. 447)",
+        "quote": "Based on these, what developed in the nineteenth and early twentieth century in colonial India was a fairly global conception of water bodies and their capacities to act as sinks, captured best in the notion of assimilative capacity—the ability of natural waters to absorb, dilute and disperse wastes—that promoted a controlled use of receiving waters as part of waste treatment and disposal structures."
+      },
+      {
+        "criterion": "c5",
+        "page": "PDF Page 35 (p. 459)",
+        "quote": "In its place we witness instead the emergence of a new principle of regulation, relying on anticipation and precaution rather than after-the-fact interventions."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Colonial sanitary science, water filtration and purification technologies, municipal waterworks and sewage-treatment engineering, and pollution governance (1868–1956)",
+    "outcome": "Water purity and contamination (chemical and bacteriological quality), river and subsoil pollution from sullage and sewage, and waterborne disease outbreaks (cholera, typhoid, enteric fever, jaundice)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "City of Delhi (Old Delhi, New Delhi, surrounding villages, and downstream Yamuna and canal areas), 1868–1956, examined via colonial archival files and public health reports (no household or individual sample)",
+    "rationale": "Exclude (E01: Wrong topic). Sharan (2011) is an archival environmental and scientific history of water impurity, chemical and bacteriological testing, filtration and sewage-treatment technologies, contamination in transit, and river waste assimilation ('from source to sink') in colonial and early post-colonial Delhi (1868–1956). As the author explicitly states, the article focuses not on the extent or adequacy of water supply and drainage, but on narratives of pollution, technologies of purity, and wastewater sinks. It neither examines a rule-type legal or administrative mechanism directly governing household/community water or sanitation service access (Criterion 2) nor evaluates an identifiable exposure–outcome relationship on service access (Criteria 1, 4, and 5). Under both the narrow 2026-10-13 reading and the plain wording of Criterion 2, the study is excluded as off-topic water-quality/pollution history.",
+    "record_id": "RC60181B6DCC6",
+    "study_design": "Archival historical narrative / environmental history case study"
+  }
+}

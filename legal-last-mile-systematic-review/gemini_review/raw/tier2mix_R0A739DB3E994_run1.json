@@ -1,0 +1,286 @@
+{
+  "record_id": "R0A739DB3E994",
+  "order": 68,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "e3c269d8adc34f03148df54e0cb437e48f5657619f90b5c84c03b3b1fff5db21",
+  "input_text_sha256": "6874bdec165501edc7f1a3af6a7f969355cd837b7db389bad154ae7bdbc4bfe2",
+  "prompt_sha256": "2f82a09104d3a37a93ff8333beee0714896a4b43a4403a2b6dbd9209859a054c",
+  "started_at": "2026-11-20T04:52:31.402866+00:00",
+  "completed_at": "2026-11-20T04:53:15.576548+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R0A739DB3E994\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R0A739DB3E994\n- Title: Estimation of non-tap water demand in Central American cities\n- Authors: Nauges C.; Strand J.\n- Year: 2007\n- DOI: 10.1016/j.reseneeco.2006.05.002\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 6874bdec165501edc7f1a3af6a7f969355cd837b7db389bad154ae7bdbc4bfe2) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=58633, sha256=6874bdec165501edc7f1a3af6a7f969355cd837b7db389bad154ae7bdbc4bfe2]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "El Salvador; Honduras",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household non-tap ('coping') drinking/domestic water source selection and water consumption among unconnected urban households in three cities in El Salvador and marginal barrios in Tegucigalpa, Honduras.",
+      "c2": "Fails BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, the study does not empirically examine any legal, administrative, institutional, regulatory, or governance factor: while Section 3.1.1 briefly notes in theory that municipal authorities may locate public taps or truck routes and mentions descriptively that the Tegucigalpa sample comes from marginal barrios (unincorporated squatter communities), the authors explicitly avoid modeling municipal or institutional supply decisions and instead estimate a reduced-form household model using only household socioeconomic/property characteristics (income, lot size, constructed area, household size, young children, literacy, electricity) and informal/coping water purchase prices plus monetized household hauling time. Under the narrow 2026-10-13 rule-type reading, no eligibility rule, tenure/documentation requirement, regulated utility tariff or cost-recovery rule, administrative burden, enforcement practice, or utility ownership/regulatory structure governing service access is measured or analyzed; coping prices reflect unregulated vended/non-tap market prices and time costs of hauling.",
+      "c3": "Empirical econometric study analyzing 1995-1997 cross-sectional household survey data from 553 non-tap households in El Salvador and 826 non-tap households in Honduras using a two-step multinomial logit selection model (Lee correction) and OLS log-log demand regressions.",
+      "c4": "Reports household choice among non-tap coping water sources (private tap, public tap, private well, public well, tank trucks) and per household member monthly water consumption quantity (cubic meters per capita per month).",
+      "c5": "Population and unit of analysis (unconnected households in Santa Ana, Sonsonate, and San Miguel, El Salvador, and marginal barrios of Tegucigalpa, Honduras), exposures (total coping water cost = purchase price + monetized hauling time, household income, free-water savings, household/property characteristics), outcomes (coping water source selection and log monthly per-capita water consumption), and study design (cross-sectional observational survey econometrics) are all clearly specified.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1 of 18",
+        "quote": "We study water demand among non-tap households in three cities in El Salvador and in marginal barrios in Tegucigalpa, Honduras, using data from identical household studies in the four cities."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 3 of 18",
+        "quote": "Our utilized data set covers water consumption and related costs for 553 non-tap households in El Salvador and 826 non-tap households in Honduras."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 8 of 18",
+        "quote": "In order to avoid ad hoc speciﬁcations of these functions, we propose to estimate a reduced-form model where households’ choice of each speciﬁed water source is written as a function of households’ characteristics."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 11 of 18",
+        "quote": "We include as explanatory variables household monthly income (in USD, PPP corrected), lot size (in square meters), constructed area (in square meters), number of persons in residence, number of children less than 5 years old, and dummies for electricity availability, and whether the respondent reads and writes."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 13 of 18",
+        "quote": "In what follows, demand is deﬁned as total water consumption (including free water) per capita per month (measured in cubic meters)."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 14 of 18",
+        "quote": "As our primary interest is to compare elasticities of demand with respect to total water cost (hauling cost plus price of water) across coping sources, we allow the parameters of the cost variable to vary across sources."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Source-specific total coping water cost per cubic meter (informal/coping water purchase price plus monetized household hauling time cost), household income, money savings from free water access, and household/property characteristics (lot size, constructed area, household size, children under five, literacy, electricity availability)",
+    "outcome": "Household selection among non-tap coping water sources (private tap, public tap, private well, public well, tank truck) and per household member monthly water consumption (cubic meters per capita per month)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Unconnected (non-tap) urban households surveyed in 1995-1997 in three cities in El Salvador (Santa Ana, Sonsonate, San Miguel; n = 553 total, 321 in multinomial logit and 312 in demand estimation) and in marginal barrios of Tegucigalpa, Honduras (n = 826 total, 733 in demand estimation); unit of analysis: household",
+    "rationale": "Excluded under E03 (Wrong exposure). Although this empirical household survey study examines non-tap coping water source selection and water consumption among unconnected urban households in El Salvador and Honduras (satisfying c1, c3, c4, c5, and c6), it models consumer price and income elasticities of non-tap water demand with respect to coping water purchase prices, monetized hauling time, household income, and demographic/property attributes. It does not measure or analyze any legal, administrative, institutional, regulatory, or governance mechanism (failing Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type mechanism reading).",
+    "record_id": "R0A739DB3E994",
+    "study_design": "Cross-sectional observational household survey econometric study (two-step multinomial logit selection model with Lee bias correction and OLS log-log demand estimation)"
+  }
+}

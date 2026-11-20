@@ -1,0 +1,286 @@
+{
+  "record_id": "R0CC979E7B4D9",
+  "order": 42,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5d125efdc1b0763e4b120d0a2b490e85e8f58cb4caaee23aff63bb80f0f26bfa",
+  "input_text_sha256": "0841d03e07f8e7cb0d08dd8bda15050f6300686c6a0dd84bbff6accb4aaf6ba7",
+  "prompt_sha256": "3c207a3e8e375f81f375b3d2997f1f72a768bd15fe92b84cc761d5b67ecb5289",
+  "started_at": "2026-11-20T04:45:12.152687+00:00",
+  "completed_at": "2026-11-20T04:46:01.905937+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R0CC979E7B4D9\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R0CC979E7B4D9\n- Title: Sites of entitlement: claim, negotiation and struggle in Mumbai\n- Authors: McFarlane, C; Desai, R\n- Year: 2015\n- DOI: 10.1177/0956247815583635\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 0841d03e07f8e7cb0d08dd8bda15050f6300686c6a0dd84bbff6accb4aaf6ba7) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=64135, sha256=0841d03e07f8e7cb0d08dd8bda15050f6300686c6a0dd84bbff6accb4aaf6ba7]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and neighbourhood access to water (shared piped connections, unmetered municipal standposts, wells, water tankers) and sanitation (public, CBO-managed, and private toilet blocks, hanging latrines, and drain cleaning) in two informal settlements in Mumbai.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, it analyses legal, municipal, and community governance of urban water and sanitation. Under the narrow rule-type reading, it directly examines concrete legal and administrative rules governing service access: (1) statutory slum notification requirements under the Maharashtra Slum Areas (Improvement, Clearance and Redevelopment) Act, 1971, governing settlement eligibility for basic amenities; (2) the 1 January 1995 residency cut-off rule and documentary proof requirements for legal municipal water connections; (3) administrative burdens, bureaucratic unresponsiveness, and informal payments/political mediation required even for legally eligible pre-1995 residents in notified settlements to obtain shared MCGM/BMC water connections; (4) municipal enforcement raids cutting off water connections and requiring proof of legality to reconnect; and (5) user-charge/tariff rules, operating-hour restrictions, water shut-offs, and informal lock-and-key access rules governing private, CBO-run, and chawl toilet blocks.",
+      "c3": "Primary qualitative socio-legal/ethnographic empirical study based on nine months of fieldwork in two informal settlements in Mumbai, involving participant observation and repeated interviews with residents, municipal staff, NGOs, and community groups. Qualitative socio-legal studies are explicitly eligible for the systematic review.",
+      "c4": "Reports multiple access outcomes including water connection attainment and disconnection, standpost and tanker water availability and regularity, toilet seat availability across settlements, operating hours/night closures, user-fee affordability, and physical exclusion of specific groups (post-1995 or non-notified residents and daytime garment workers).",
+      "c5": "Clearly identifies population and units of analysis (households/residents and neighbourhoods in two Mumbai informal settlements: non-notified Rafinagar with ~4,000 households and notified Khotwadi with ~2,000 households), rule-type exposures, access/exclusion outcomes, and comparative qualitative ethnographic case study design.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 14",
+        "quote": "The research involved participant observation of different areas in both neighbourhoods, extensive and repeated interviews with a cross-section of people from both neighbourhoods, and interviews with municipal staff, non-governmental organizations, and community groups working on sanitation and water."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 14",
+        "quote": "While most residents in Khotwadi have a degree of secure water access through unmetered municipal standposts, metered group connections and wells, most of Rafinagar’s residents face profound difficulties and incur high expenditures for water and/or time and effort in collecting water."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 14",
+        "quote": "An informal settlement must be notified (declared) as a slum under the Maharashtra Slum Areas (Improvement, Clearance and Redevelopment) Act, 1971, for it to legally qualify for the provision of basic amenities such as water, toilets, streetlights and drainage."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 14",
+        "quote": "For example, water cannot be legally provided to residents who arrived in the neighbourhood after 1 January 1995, meaning that these residents are doubly excluded through both the legality of the space and the time of inhabitation (pre-1995). Residents estimate that only 1,500 out of a total of 4,000 households in Rafinagar can prove pre-1995 residency."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 14",
+        "quote": "Even though Khotwadi is a notified informal settlement and Shobha and her neighbours are pre-1995 residents, obtaining a shared water connection as per the policy of the Municipal Corporation of Greater Mumbai (MCGM or BMC) has been a fraught process. Encounters with unresponsive municipal officials often force residents, even when they are legally entitled to a shared water connection, to approach their representatives for what can also be a long, frustrating process."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8 of 14",
+        "quote": "Both legal and illegal connections were cut during the raids without adequate alternative provision, destabilizing provision previously gained, and Rafinagar was thrown into an even deeper water crisis than before."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Statutory slum notification status (Maharashtra Slum Areas Act, 1971), pre-1 January 1995 residency cut-off and proof requirements for municipal water, municipal administrative hurdles/political mediation and anti-theft disconnection raids, and toilet user-charge/tariff and local access rules (public, CBO, and private blocks).",
+    "outcome": "Household and neighbourhood access to piped shared water connections, standposts, and tanker water; toilet block availability, night-time continuity, user-fee affordability, water disconnection, and exclusion of non-notified/post-1995 residents and garment workers.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Residents and households (as well as municipal staff, NGOs, and community groups) in two informal settlements in Mumbai, India: Rafinagar (unauthorized/non-notified, ~4,000 households) and Khotwadi (authorized/notified, ~2,000 households); units of analysis are residents/households and neighbourhoods.",
+    "rationale": "This nine-month comparative ethnographic study in two Mumbai informal settlements (Rafinagar and Khotwadi) empirically examines how formal legal eligibility rules (slum notification under the 1971 Act and the pre-1995 residency proof cut-off), municipal administrative practices and enforcement raids, and local tariff/access rules for toilet blocks shape household and community access, affordability, continuity, and exclusion in water and sanitation services. It meets all inclusion criteria under both the plain and narrow 2026-10-13 rule-type readings of Criterion 2, and as a qualitative socio-legal empirical study it is eligible for the systematic review's mechanism synthesis.",
+    "record_id": "R0CC979E7B4D9",
+    "study_design": "Comparative qualitative ethnographic study (nine months of participant observation and interviews in two neighbourhoods)"
+  }
+}

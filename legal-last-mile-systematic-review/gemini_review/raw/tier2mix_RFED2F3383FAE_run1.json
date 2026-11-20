@@ -1,0 +1,286 @@
+{
+  "record_id": "RFED2F3383FAE",
+  "order": 18,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "073d1754224bbcc3629c91db82ee5d7a2f130bcee1501d334c24d403cd7e1fb3",
+  "input_text_sha256": "5246c93b01e97b5376ef4de059d149cb72724e0ed661710b75c14814bcf525ee",
+  "prompt_sha256": "15d1e509b71a9b430def81c41e1ae584bd76df0dd16f1ded33e299cfd389ef1f",
+  "started_at": "2026-11-20T04:36:28.913048+00:00",
+  "completed_at": "2026-11-20T04:38:44.476390+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RFED2F3383FAE\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RFED2F3383FAE\n- Title: Assessing disaster vulnerability in an informal settlement of Cape Town, South Africa, through the MOVE framework\n- Authors: Kunguma O.; Awah L.S.; Petersen I.; Lunga W.\n- Year: 2025\n- DOI: 10.3389/fbuil.2025.1693836\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 5246c93b01e97b5376ef4de059d149cb72724e0ed661710b75c14814bcf525ee) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60773, sha256=5246c93b01e97b5376ef4de059d149cb72724e0ed661710b75c14814bcf525ee]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The study examines multi-hazard disaster vulnerability (specifically flooding and shack fires) and disaster risk reduction (DRR) in an informal settlement using the MOVE framework, rather than water or sanitation service access. Drinking-water access is not studied, and sanitation is mentioned only as a single descriptive baseline prevalence (\"94% lacking private sanitation\") alongside unemployment, low income, crowding, waste burning/dumping, and illegal electrical connections to characterize disaster susceptibility.",
+      "c2": "Under the narrow 2026-10-13 rule-type reading, Criterion 2 is not met (no): the paper does not examine any rule-type legal, regulatory, or administrative mechanism directly governing water or sanitation service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariffs/cost recovery, discretion, enforcement, or utility regulatory structure), and explicitly notes on PDF Page 3 that its MOVE framework \"does not fully reflect livelihood-based vulnerabilities like a lack of land tenure.\" Its governance discussion is confined to top-down DRR project delivery and behavioural promotion (flood berms, fire and flood awareness campaigns, early warning systems, re-blocking for emergency response) plus unanalysed macro-governance background (\"insufficient service delivery and exclusionary urban policies\"). Under the plain broad wording of Criterion 2, the study would still be excluded (plain_criterion2_decision: \"exclude\"): although it discusses institutional engagement, mistrust, and participatory governance, those institutional factors are examined in relation to flood and fire DRR interventions rather than water or sanitation service access, and the study's topic and outcomes are disaster vulnerability rather than WASH access.",
+      "c3": "Contains primary empirical data from a structured household survey of 125 randomly selected residents, direct field observations, and guided transect walks in the BM Section of Khayelitsha (described as a mixed-methods design in the Abstract and a qualitative, multi-method design reporting descriptive survey frequencies in Section 3.2).",
+      "c4": "The study's assessed outcomes concern disaster vulnerability to floods and shack fires (50% regularly exposed to flooding, 42% experiencing fire incidents, risky coping practices such as illegal electrical connections and dismantling flood berms, and 70% acknowledging DRR awareness campaigns while remaining sceptical). Although \"94% lacking private sanitation\" is reported descriptively under disaster susceptibility, water or sanitation service access is not evaluated as an outcome of any legal, institutional, or governance factor.",
+      "c5": "For its disaster-vulnerability research questions, the paper identifies the population and unit of analysis (125 randomly sampled residents/households in the BM Section of Khayelitsha), study design (cross-sectional multi-method survey, field observations, and transect walks), and MOVE hazard-vulnerability dimensions, though it does not examine a governance exposure-to-water/sanitation-access outcome relationship.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 12 (Abstract)",
+        "quote": "This study applies the Methods for the Improvement of Vulnerability Assessment in Europe (MOVE) framework to assess the drivers of vulnerability in BM Section and situates findings within comparable evidence from Africa, Asia, and Latin America."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 12 (Abstract)",
+        "quote": "A mixed-methods design was employed, integrating household surveys with 125 randomly selected residents, transect walks, and systematic field observations."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 12 (Section 2)",
+        "quote": "It does not fully reflect livelihood-based vulnerabilities like a lack of land tenure. The framework is limited in its consideration of colonial governance impacts and political drivers."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 7 of 12 (Section 4.2)",
+        "quote": "Infrastructure inadequacies exacerbate vulnerability, with 94% lacking private sanitation and 62% resorting to burning or dumping waste due to the absence of formal waste management."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 12 (Section 4.3)",
+        "quote": "The data collected for this study reveals an interesting paradox, as approximately 70% of residents acknowledge DRR strategies such as fire and flood awareness campaigns. Still, there remains a pervasive scepticism about their effectiveness."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 12 (Section 6.2)",
+        "quote": "This study applied the MOVE framework to examine disaster vulnerability in the BM Section of Khayelitsha and found that risk is multi-dimensional, shaped not only by physical exposure to floods and fires but also by socio-economic precarity, infrastructural deficits, and weak institutional engagement."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Physical proximity to wetland/river flood and shack-fire hazards, socio-economic and infrastructural susceptibility deficits, and top-down municipal disaster risk reduction (DRR) interventions (fire and flood awareness campaigns, flood berms, re-blocking)",
+    "outcome": "Multi-dimensional disaster vulnerability to floods and fires, including hazard experiences, risky coping practices (illegal electrical connections, dismantling flood berms), and community scepticism toward DRR initiatives",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Residents/households of the Barney Molokwane (BM) Section informal settlement in Khayelitsha, Cape Town, South Africa (random sample of 125 residents from an estimated population of 24,000)",
+    "rationale": "Excluded as E01 (Wrong topic). This empirical case study applies the MOVE hazard-vulnerability framework to assess flood and shack-fire disaster vulnerability and disaster risk reduction (DRR) in an informal settlement in Cape Town. It does not examine water supply access, and mentions sanitation only as a single descriptive prevalence indicator (\"94% lacking private sanitation\") under baseline disaster susceptibility rather than studying water or sanitation service access as a topic or outcome. Even if that single descriptive sanitation statistic were treated as touching sanitation access, the paper would also fail Criterion 2 (E03) under both the narrow 2026-10-13 rule-type reading (no legal, regulatory, or administrative rule governing water/sanitation access is analysed; governance content is limited to DRR awareness campaigns, flood berms, re-blocking, and unanalysed macro-governance background) and the plain reading (institutional analysis focuses on flood and fire DRR engagement rather than water or sanitation governance).",
+    "record_id": "RFED2F3383FAE",
+    "study_design": "Cross-sectional mixed-methods / multi-method case study (structured household survey, systematic field observations, and transect walks)"
+  }
+}

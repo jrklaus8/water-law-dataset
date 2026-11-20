@@ -1,0 +1,281 @@
+{
+  "record_id": "R0260D66B3853",
+  "order": 7,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "082475d9a33472019648b64fe99022fde4c0b3b5328cb82dd09ce516f048042c",
+  "input_text_sha256": "dfd23a279f9ea83fd26b6940ff490793e9112bf640bae9ad3cf2db5a3766c145",
+  "prompt_sha256": "0998fc872e7f68c756c1e638753aeedcdaf48f0b9b6c54f1a064b4ee12f256f3",
+  "started_at": "2026-11-20T04:34:17.042412+00:00",
+  "completed_at": "2026-11-20T04:35:31.991563+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R0260D66B3853\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R0260D66B3853\n- Title: Community engaged cumulative risk assessment of exposure to inorganic well water contaminants, crow reservation, Montana\n- Authors: Eggers M.J.; Doyle J.T.; Lefthand M.J.; Young S.L.; Moore-Nall A.L.; Kindness L.; Medicine R.O.; Ford T.E.; Dietrich E.; Parker A.E.; Hoover J.H.; Camper A.K.\n- Year: 2018\n- DOI: 10.3390/ijerph15010076\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: dfd23a279f9ea83fd26b6940ff490793e9112bf640bae9ad3cf2db5a3766c145) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=136771, sha256=dfd23a279f9ea83fd26b6940ff490793e9112bf640bae9ad3cf2db5a3766c145]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking and cooking water from private domestic wells among rural Crow Reservation families, including access to safe and palatable drinking water, household treatment adoption, reliance on hauled and bottled water, and affordability barriers.",
+      "c2": "Fails both the plain wording and the 2026-10-13 narrow rule-type reading of Criterion 2. Under the plain wording, the study does not empirically examine a legal, administrative, institutional, regulatory, or governance factor: its empirical exposure is inorganic contamination of private domestic well water alongside household socioeconomic and environmental health literacy factors. EPA MCLs, SMCLs, Health Advisories, and Reference Doses are used solely as numerical toxicological and palatability benchmarks for risk calculation, while mentions that private wells are federally unregulated, that state laws do not apply on reservation trust lands, and (citing external literature) that limited environmental enforcement and jurisdictional complexity contribute to disparities appear only as unanalysed background context and policy recommendations. Under the 2026-10-13 narrow rule-type reading, no rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, tenure/documentation rules, tariffs, discretion, enforcement actions, or utility regulatory structure) is analysed.",
+      "c3": "Contains primary empirical data from a mixed-methods CBPR study: laboratory water-quality testing of 164 domestic wells, comparison with ~650 historical Indian Health Service well records, a survey of 197 adults across 165 Tribal families, and qualitative interviews with 30 key informants.",
+      "c4": "Reports household safe-water availability, exclusion/avoidance due to contamination and unpalatability, treatment uptake, and affordability outcomes, including percentage of wells unsafe for lifetime consumption (39.2% non-carcinogenic HI > 1.0; 47.4% including arsenic cancer risk), proportion of households drinking/cooking with well water (80%) versus hauling all consumptive water (20%), household water-treatment use (3.3% water softeners, 4% reverse osmosis), reliance on bottled water (53%) or municipal sources (17%), and financial hardship of buying bottled water or treatment equipment.",
+      "c5": "Clearly identifies the population and unit of analysis (rural Crow Reservation households and domestic wells; 164 wells, 165 surveyed families/197 individuals, 30 interviewees), chemical/water-quality exposures, risk and household water-use/coping outcomes, and cross-sectional mixed-methods CBPR study design.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 34 (Abstract)",
+        "quote": "Here, we assessed health risks from consumption of contaminated well water on the Crow Reservation by conducting a community-engaged, cumulative risk assessment. Well water testing, surveys and interviews were used to collect data on contaminant concentrations, water treatment methods, well water consumption, and well and septic system protection and maintenance practices."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 34 (Section 1. Introduction)",
+        "quote": "Although 15% of the US population (49 million people) rely on private wells, the federal government does not regulate home well water quality"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 22 of 34 (Section 5. Conclusions)",
+        "quote": "Additionally, lack of community health education about well maintenance and well water safety, pre-existing health conditions such as diabetes, and limited environmental enforcement increase community vulnerability."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 34 (Section 2.2. Sample Collection and Analysis)",
+        "quote": "One hundred ninety-seven people from 165 Tribal families completed surveys and 164 wells were tested."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 16 of 34 (Section 3.2.2. Coping with Poor Quality Well Water)",
+        "quote": "Despite widespread poor well water quality, almost no one uses water treatment technology. Comparing water quality data with survey data shows that although 77% of all wells tested have unacceptably hard water (above the EPA SMCL), only 3.3% of families had installed a water softener."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Inorganic and microbial contaminants in private domestic well water (uranium, manganese, nitrate, zinc, arsenic, total dissolved solids, sulfate, iron, hardness, coliform/E. coli), alongside household financial constraints and well-stewardship literacy",
+    "outcome": "Cumulative non-carcinogenic (Hazard Index) and carcinogenic health risk benchmarks, EPA MCL/SMCL exceedances, household well-water consumption versus avoidance (water hauling and bottled water purchase), household water-treatment adoption, and financial hardship of obtaining safe water",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Rural Apsaalooke (Crow) Tribal households relying on private domestic wells on the Crow Reservation, Montana (164 domestic wells tested; 197 adult survey respondents from 165 families; 30 key informants interviewed; ~650 historical IHS well records)",
+    "rationale": "Excluded under E03 (Wrong exposure). Although this empirical mixed-methods CBPR study examines rural Crow Reservation households' domestic well water safety, consumption, treatment adoption, water hauling, and financial barriers to safe drinking water, its empirical exposure is natural/anthropogenic inorganic well-water contamination (U, Mn, NO3-, Zn, As, TDS) and household socioeconomic/literacy factors rather than any legal, administrative, institutional, regulatory, or governance factor. Mentions of private wells being unregulated, state laws not applying on trust lands, and cited literature on limited environmental enforcement appear solely as unanalysed background context, failing Criterion 2 under both the plain wording and the 2026-10-13 narrow rule-type reading.",
+    "record_id": "R0260D66B3853",
+    "study_design": "Cross-sectional mixed-methods community-based participatory research (CBPR) cumulative risk assessment combining domestic well water quality testing, secondary well records, household surveys, and qualitative key-informant interviews"
+  }
+}

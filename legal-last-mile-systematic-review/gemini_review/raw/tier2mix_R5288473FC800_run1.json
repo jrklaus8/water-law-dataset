@@ -1,0 +1,281 @@
+{
+  "record_id": "R5288473FC800",
+  "order": 114,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "e7ac66a86979fdb610ddfe944282c69b100c0d968e9bda8d1490d788a4f351c4",
+  "input_text_sha256": "32dd6dac891758fc47f8cf0e01377ebe5622747282fff6da484e27f39ea06020",
+  "prompt_sha256": "93e5a40b74c5c0b466c7c100bd8ccf6cfe82a8bedb02b7a9f2b1c969b572f511",
+  "started_at": "2026-11-20T05:05:52.381544+00:00",
+  "completed_at": "2026-11-20T05:08:11.464651+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R5288473FC800\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R5288473FC800\n- Title: A Multisectoral Approach to Primary Health Care in Fujian, China\n- Authors: Yang H.; Yiheng M.; Qiu X.; Zhang H.; Lin Q.; Guan J.; Clayton S.\n- Year: 1991\n- DOI: 10.1177/109019819101800103\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 32dd6dac891758fc47f8cf0e01377ebe5622747282fff6da484e27f39ea06020) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=28330, sha256=32dd6dac891758fc47f8cf0e01377ebe5622747282fff6da484e27f39ea06020]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "China",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household access to piped running water and adoption/reconstruction of standard-compliant household sanitary latrines (as well as wastewater canal and refuse collection infrastructure) as components of a rural primary health care project in Dahu, Fujian.",
+      "c2": "Passes the plain wording of Criterion 2 ('yes' -> plain_criterion2_decision: 'include'), because the study evaluates a multisectoral local-government institutional arrangement (a 14-member town planning committee, local public financing, a 100-yuan village latrine reconstruction subsidy, and a local ordinance requiring homes to separate the kitchen, toilet, and pigpen and build a toilet behind the house). Fails the narrow 2026-10-13 rule-type reading ('no' -> decision: 'exclude', E03), because the evaluated exposure is an unbundled community primary health care (PHC) and behavioural health-education demonstration project ('Changes before and after Health Education Intervention'): piped water access (unserved share reduced from 16% to 5%) reflects pure physical network extension with no legal or regulatory mechanism, and the brief descriptive mention of a local housing/toilet ordinance and flat hardware construction grant within a village-wide hygiene promotion campaign does not empirically examine any rule-type access mechanism (such as eligibility screening, administrative burden, documentation/tenure requirements, utility tariff/cost-recovery rules, discretion, or enforcement).",
+      "c3": "Contains primary empirical before-and-after evaluation data from a 1989 baseline household visit survey of all homes in the first two target hamlets and a 1-year follow-up evaluation (reporting pre-post percentages in text, although Table 1's cells are omitted in the PDF scan/text).",
+      "c4": "Reports household water and sanitation access outcomes in the two target hamlets: percentage of the population without access to running water (reduced from 16% to 5%), percentage of households with a sanitary latrine conforming to state standards (0% to 15%), and percentage of homes separating kitchen, pigpen, and toilet (7% to 60%).",
+      "c5": "Identifies the population (households/residents in two target hamlets of Dahu Village, Yongan County, Fujian), the bundled exposure (Year-1 multisectoral PHC and health education intervention), the outcomes (running water access and compliant latrine/toilet separation rates), and the study design (uncontrolled pre-post community intervention evaluation), though exact sample sizes for the two hamlets are not reported and individual legal/subsidy components are not separated from health education and construction.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_and_c4",
+        "page": "PDF Page 9 of 11 (p. 25)",
+        "quote": "At the beginning of the project 16% of the population in the two hamlets did not have access to running water. At the end of the project’s first year this figure was reduced to 5% through the extension of the piped water system to all houses except three that are far from the center of the hamlets."
+      },
+      {
+        "criterion": "c1_c2_and_c4",
+        "page": "PDF Page 9 of 11 (p. 25)",
+        "quote": "The percentage of households that have a latrine that conforms to the new standards has risen from 0 to 15%. Reluctance to reconstruct latrines is attributed to the fact that the 100 yuan supplement provided by the village government is estimated to cover less than half the actual cost."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 11 (p. 24)",
+        "quote": "an ordinance was passed that any new homes constructed must meet the requirement of separating the kitchen, toilet, and pigpen. They are also required to have a backyard garden, and a toilet built behind the house according to the above guidelines. Homes built prior to the adoption of the ordinances were given a specified amount of time to make the corrections."
+      },
+      {
+        "criterion": "c2_and_c5",
+        "page": "PDF Page 9 of 11 (p. 25)",
+        "quote": "Table 1. Household Sanitation Practices. Changes before and after Health Education Intervention, Dahu Village, Fujian Province, China"
+      },
+      {
+        "criterion": "c3_and_c5",
+        "page": "PDF Page 4 of 11 (p. 20)",
+        "quote": "A baseline survey was conducted in the first two target hamlets. All homes were visited by a health worker who recorded the practice of various hygienic behaviors."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Multisectoral primary health care (PHC) and health education demonstration program combining community hygiene education, piped water and sewage canal construction, a 100-yuan household latrine reconstruction subsidy, local housing/sanitation ordinances, and clinic upgrades",
+    "outcome": "Percentage of population without access to running water (16% at baseline to 5% at Year 1); percentage of households with a sanitary latrine conforming to new standards (0% to 15%); percentage of homes separating kitchen, pigpen, and toilet (7% to 60%)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households and residents in the first two target hamlets of Dahu Village, Yongan County, Fujian Province, China (total Dahu population is 18,600 across 18 hamlets; all homes in the first two target hamlets were visited at baseline in 1989, exact hamlet sample size not reported)",
+    "rationale": "Excluded as E03 (Wrong exposure) under the 2026-10-13 narrow rule-type reading of Criterion 2, while qualifying as 'include' under the plain broad wording of Criterion 2. The paper reports 1-year pre-post evaluation findings from two rural hamlets in Dahu, Fujian, China, for a multisectoral Primary Health Care (PHC) and health education demonstration project. Although it reports water and sanitation access outcomes (unserved piped-water share falling from 16% to 5% and compliant sanitary latrine coverage rising from 0% to 15%) and passes plain Criterion 2 by describing intersectoral village committee governance, a local housing ordinance on separating toilets from kitchens/pigpens, and a 100-yuan village latrine subsidy, it fails the narrow rule-type Criterion 2 scope: improved water access resulted purely from physical piped-network extension, and sanitation outcomes reflect an unbundled PHC health-education and infrastructure delivery package without empirical analysis of any rule-type mechanism governing service access (such as eligibility screening, administrative burden, tenure/documentation requirements, utility tariff/cost-recovery rules, discretion, or enforcement).",
+    "record_id": "R5288473FC800",
+    "study_design": "Uncontrolled before-and-after (pre-post) community demonstration program evaluation"
+  }
+}

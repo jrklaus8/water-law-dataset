@@ -1,0 +1,281 @@
+{
+  "record_id": "R58CA7A40C336",
+  "order": 16,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "da00fafc3342217efbcb489659a69187583e4ea04792e724ccf31bcf00c8bc3b",
+  "input_text_sha256": "30f4a6f90c9dc5e8b38ba738bf5ed58874a9c9bc495822712296eb4b322656f0",
+  "prompt_sha256": "6fc4a245de784638f58a9e2e47835764ae2cc5b7161dbdcf635b92b2cadf64c1",
+  "started_at": "2026-11-20T04:36:28.908664+00:00",
+  "completed_at": "2026-11-20T04:38:31.084283+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R58CA7A40C336\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R58CA7A40C336\n- Title: How 'Water for All!' policy became hegemonic: The power of the World Bank and its transnational policy networks\n- Authors: Goldman, Michael\n- Year: 2007\n- DOI: 10. 1016/j.geoforum.2005.10.008\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 30f4a6f90c9dc5e8b38ba738bf5ed58874a9c9bc495822712296eb4b322656f0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=90869, sha256=30f4a6f90c9dc5e8b38ba738bf5ed58874a9c9bc495822712296eb4b322656f0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Global / multi-country (illustrative secondary examples from South Africa, Bolivia, Guinea, Ghana and other global South countries)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Touches on household and community water and sanitation service access (municipal privatization, prepaid meters, affordability, and disconnections in the global South) as framing and illustrative examples, although the primary analytical object is global water policy formation.",
+      "c2": "Passes the plain wording of Criterion 2 because it examines governance, institutional, and policy factors (World Bank/IMF structural adjustment and PRSP conditionalities, transnational water policy networks, and public-to-private utility shifts). However, it fails the narrow 2026-10-13 rule-type mechanism reading because its central analytical focus is macro-governance ideology and elite transnational policy networking ('green neoliberalism' and global policy forums such as the WWC, WCW, and WBCSD), rather than investigating how a specific rule-type mechanism directly governs household or community service access (tariff hikes, prepaid meters, and contract redefinitions are cited only in brief secondary vignettes). Even under the plain reading of Criterion 2, the paper is still excluded due to lack of empirical methods/evidence on service access (plain_criterion2_decision = exclude).",
+      "c3": "Critical political-economy essay and narrative policy overview with no reported empirical methodology, no sampling or research design, and no systematic empirical synthesis. Figures on water cutoffs, tariffs, and privatization contracts are cited from secondary NGO, journalistic, and scholarly reports (with only passing footnotes to August 2002 Johannesburg/Orange Farm visit notes and no methodological apparatus), warranting exclusion under E05.",
+      "c4": "The analytical outcome examined by the paper is how neoliberal 'Water for All' privatization policy achieved global discursive hegemony; household water cutoffs, tariff increases, and inactive connections appear only as secondary illustrative anecdotes rather than empirically measured study outcomes.",
+      "c5": "Does not report an identifiable empirical study design, a defined study population or sample, or an operationalized exposure-outcome analysis of service access.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1 of 15",
+        "quote": "Three hundred thousand people in Alex are jammed into just over two square miles of land without access to aﬀordable clean water, electricity, safe housing, or basic sanitation services."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 1 of 15",
+        "quote": "This article explains how this new global water policy became constituted so quickly, dispersed so widely, with such profound institutional eﬀects."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 3 of 15",
+        "quote": "Below, I will explain this notion of green neoliberalism and how it has become the World Bank’s latest development regime over the past two decades"
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 12 of 15",
+        "quote": "Given these realities, it is hard to believe that the shift from public to private providers has increased water access for the poor."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 13 of 15",
+        "quote": "This article focused on the remarkable rise and legitimacy since the mid-1990s of powerful transnational networks promoting global water reform in order to help shed light on the increasingly signiﬁcant phenomenon of this type of elite policy networking"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "World Bank and IMF water privatization campaign, loan conditionalities, and transnational water policy networks (macro-governance discourse)",
+    "outcome": "Global discursive hegemony of neoliberal water privatization policy (with secondary illustrative references to tariff increases and water cutoffs)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Goldman (2007) is a critical political-economy and historical policy essay tracing how the World Bank and elite transnational policy networks (such as the World Water Council, World Commission on Water, WBCSD, and WaterAid) constituted and diffused a global 'green neoliberal' water privatization agenda. It contains no empirical methods section, no defined population or sample, no identifiable empirical study design, and no primary empirical evaluation or systematic synthesis of household or community water/sanitation service access (relying on secondary NGO/media citations and brief unmethodologized footnotes from the 2002 Johannesburg summit). In addition, its core focus is macro-governance and transnational policy-network hegemony rather than a rule-type legal/administrative mechanism governing household service access. Excluded under E05 (no empirical evidence); it would also be excluded under the plain wording of Criterion 2 for failing Criteria 3, 4, and 5.",
+    "record_id": "R58CA7A40C336",
+    "study_design": "Narrative policy and political-economy essay / critical commentary (no empirical study design reported)"
+  }
+}

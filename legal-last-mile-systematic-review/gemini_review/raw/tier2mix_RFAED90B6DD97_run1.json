@@ -1,0 +1,281 @@
+{
+  "record_id": "RFAED90B6DD97",
+  "order": 138,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "dddaadc512d24f024d089aa4185a0a99f837c09b0a749d79453f6eb3eb699bbd",
+  "input_text_sha256": "0d6784bfbb7099443f8f42bb6f7ceafd59d56552a5a8561a1445cdc5f8f803de",
+  "prompt_sha256": "b6d8c41590689b50a6ecfd16ccb29537a13617ca927ef5a140f726d81d294a90",
+  "started_at": "2026-11-20T05:12:42.272999+00:00",
+  "completed_at": "2026-11-20T05:13:26.281922+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RFAED90B6DD97\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RFAED90B6DD97\n- Title: Gender and water management in Mexico\n- Authors: Jorge Alejandro Silva Rodríguez de San Miguel\n- Year: 2018\n- DOI: 10.1108/MEQ-10-2017-0112\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 0d6784bfbb7099443f8f42bb6f7ceafd59d56552a5a8561a1445cdc5f8f803de) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70164, sha256=0d6784bfbb7099443f8f42bb6f7ceafd59d56552a5a8561a1445cdc5f8f803de]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Discusses household and community drinking water and sanitation access in Mexico, particularly disparities affecting women and girls.",
+      "c2": "Passes the plain wording of Criterion 2 because it broadly surveys water governance, institutional representation, constitutional provisions (Articles 2 and 4), the Law of National Waters, Conagua rural programs, and gender mainstreaming in water policy. Fails the narrow 2026-10-13 rule-type mechanism reading because it treats law and governance as broad macro-governance background and policy debate (gender mainstreaming vs. gender-specific project approaches) rather than empirically examining how a specific rule-type mechanism (such as eligibility screening, administrative burden, tenure/documentation rules, tariff rules, enforcement, or regulatory structure) directly governs household or community service access.",
+      "c3": "No primary empirical data and not a systematic empirical synthesis. Classified as a 'General review' ('a sweeping literature review') based on unsystematic searches of JSTOR, EBSCOhost, and organizational websites without search strings, study selection criteria, included-study counts, or empirical synthesis; primary fieldwork and case studies are explicitly deferred to future research. Excluded as E05.",
+      "c4": "Cites background national coverage statistics and secondary narrative claims, but neither measures nor systematically synthesizes empirical service-access outcomes linked to an evaluated legal or administrative exposure.",
+      "c5": "As a non-systematic narrative review and policy overview, there is no primary sample or systematically synthesized study set with a defined unit of analysis, exposure, and measured access outcome.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 17",
+        "quote": "The purpose of this paper is to survey water-governance issues impacting women in Mexico and steps that have been taken to rectify the issues, including factors that impact the success of such ventures."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 17",
+        "quote": "The review finds that though gender has become a primary concern in addressing water management and other environmental issues, debate has occurred as to whether a perspective of gender mainstreaming or gender-specific projects is preferable in addressing this issue."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 17",
+        "quote": "The program promotes participatory diagnostic processes with a gender focus in its rules of operation. It is the only federal water and sanitation program that seeks to institutionalize certain gender criteria."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 17",
+        "quote": "Although a sweeping literature review at this time, future research will complement the extant findings by presenting case studies and fieldwork observations of the plight of Mexican women struggling to access sufficient amounts of water."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 17",
+        "quote": "Therefore, much information used in this review takes the form of observations about water policy and its efficacy in regard to gendered approaches."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Gender mainstreaming and gender-specific approaches in water management and governance",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded under E05 (No empirical evidence). This article is a narrative 'General review' ('a sweeping literature review') and policy overview surveying gender and water management in Mexico using unsystematic searches of JSTOR, EBSCOhost, and organizational websites, with no primary empirical data (explicitly left for future research) and no systematic review methodology (no search strings, eligibility criteria, study counts, or structured synthesis). Additionally, while it satisfies the plain wording of Criterion 2 by discussing broad water governance and gender mainstreaming policies, it fails the narrow 2026-10-13 rule-type reading because it does not examine a specific rule-type mechanism directly governing household or community service access; however, even under the plain reading of Criterion 2 it remains excluded due to the absence of empirical evidence or systematic empirical synthesis.",
+    "record_id": "RFAED90B6DD97",
+    "study_design": "General narrative literature review"
+  }
+}

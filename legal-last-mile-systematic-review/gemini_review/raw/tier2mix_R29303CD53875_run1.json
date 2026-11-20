@@ -1,0 +1,281 @@
+{
+  "record_id": "R29303CD53875",
+  "order": 59,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "3a982799915dc08b8adc09009649446bdd504ff90bc79a44bea1017fec55d767",
+  "input_text_sha256": "a719a0cb78e3de88425d0126100b4db18391f20cc07151fee6e9b352c0a7f573",
+  "prompt_sha256": "f569db15c84b7fe9e5c01acc4814253e0ca962c25caf194872d4b8602fcd9c24",
+  "started_at": "2026-11-20T04:49:00.983212+00:00",
+  "completed_at": "2026-11-20T04:50:14.203452+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R29303CD53875\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R29303CD53875\n- Title: A political ecology of water equity and tourism\n- Authors: Cole, Stroma\n- Year: 2012\n- DOI: 10.1016/j.annals.2012.01.003\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: a719a0cb78e3de88425d0126100b4db18391f20cc07151fee6e9b352c0a7f573) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=65849, sha256=a719a0cb78e3de88425d0126100b4db18391f20cc07151fee6e9b352c0a7f573]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia (Bali)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking and domestic water service access in Bali (piped PDAM water connections, supply intermittency/pressure, household hand-dug and bored wells, and reliance on purchased bottled/refill drinking water).",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain reading, the study examines multi-level water governance, regional autonomy, and institutional fragmentation across 11 government departments. Under the narrow 2026-10-13 rule-type reading, it empirically examines concrete regulatory and administrative mechanisms directly governing service access and allocation: non-enforcement of mandatory commercial groundwater extraction permits and metering, bureaucratic discretion and tariff-classification loopholes (exempting 'warung' and misclassifying commercial resorts as residential 'villas' to pay lower water tariffs), PDAM public-private partnership/part-privatization under Law No. 7 of 2004, Governor Decree No. 16 Year 2009 water tariff hikes and non-payment, and unaffordable household piped-water connection fees and utility waiting lists.",
+      "c3": "Contains primary empirical data from a multi-method qualitative/mixed-methods case study conducted in June-July 2010 in Canggu and Bali (39 interviews and focus groups across government departments, NGOs, businesses, and village communities, plus a survey of 110 tourists), synthesized with secondary local data. Qualitative socio-legal/political-ecology studies are eligible for the systematic review per protocol rules.",
+      "c4": "Reports concrete access outcomes including lack of village piped water connections, severe piped supply intermittency and low pressure ('catching drips all day', two-hour morning flow), seasonal depletion of household hand-dug wells, unaffordability of Rp 1,720,000 connection fees and waiting lists (5,000 households in Denpasar), and forced reliance of poor households on unsafe unlicensed refill water.",
+      "c5": "Population (households/villagers in Canggu and Badung Regency/Denpasar, Bali, alongside 39 multi-stakeholder interviewees/focus groups and 110 surveyed tourists; household/community and institutional units of analysis), exposure (regulatory fragmentation, non-enforcement of groundwater permitting/metering, discretionary tariff/permit exemptions, PDAM commercialization, and connection fee/tariff rules), outcome (household water access, connection, continuity, well availability, and affordability), and study design (multi-method qualitative/mixed-methods empirical case study) are all clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7",
+        "quote": "Between 22nd June and 29th July 2010 thirty nine interviews/focus groups were conducted and 110 tourists were surveyed."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 9",
+        "quote": "Firstly, none of the villagers had piped water, all had wells some had hand dug wells which normally go to a depth of 12 m."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10",
+        "quote": "As they ran businesses they should have a permit for their wells and the water taken should be metered and paid for. In all the facilities researched only one had a metered well and paid for the water used."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 15",
+        "quote": "The cost of household connection to piped water in Badung Regency is Rp 1,720,000 ($185) plus the cost of pipes from the property to the nearest supply. These fees are unaffordable to many farming households (Straus, 2011). Furthermore, in the capital Denpasar PDAM is unable to meet demand with a waiting list of 5000 households (Atmodjo, 2010)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17",
+        "quote": "the part privatization of Bali’s piped water supply has led to increased inequality and restricted access for the poorest sectors of society."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Multi-level regulatory fragmentation (11 departments and Regency autonomy), non-enforcement of commercial groundwater well permitting and metering rules, bureaucratic discretion and tariff-classification loopholes ('warung' exemptions and 'villa' water rate misclassification), PDAM public-private partnership commercialization (Law No. 7 of 2004), water tariff increases (Governor Decree No. 16 Year 2009), and household piped connection fee structures.",
+    "outcome": "Household and community water access, piped water connection, continuity and pressure of piped supply, depletion of household hand-dug wells, connection and tariff affordability, utility waiting lists, and exclusion of poor households into reliance on untreated refill drinking water.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households/villagers and water-tourism stakeholders in Canggu village, Badung Regency, and Denpasar, Bali, Indonesia; primary sample of 39 interviews/focus groups (11 government departments, 4 NGOs, 4 academics, 3 tourism associations, water/beverage companies, hotels, villas, local businesses, 2 community groups, individual villagers, and a subak head) plus a questionnaire survey of 110 tourists (units of analysis: household/community and regulatory/institutional stakeholders).",
+    "rationale": "This empirical multi-method political ecology case study examines household and community water access and equity in Bali, Indonesia. It investigates specific rule-type legal, regulatory, tariff, and utility-governance mechanisms directly affecting household water access—including non-enforcement of groundwater extraction permits and metering, discretionary exemptions and tariff misclassification ('villa' vs. hotel rates), 11-department and Regency-level regulatory fragmentation, PDAM part-privatization/commercialization, and unaffordable household piped connection fees—and links them to household exclusion, intermittent piped supply, dry shallow wells, and reliance on unsafe refill water. It satisfies all inclusion criteria under both the plain and narrow 2026-10-13 readings of Criterion 2.",
+    "record_id": "R29303CD53875",
+    "study_design": "Multi-method empirical case study (semi-structured interviews, community focus groups, and tourist survey)"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "record_id": "RF6E405620386",
+  "order": 10,
+  "run": 2,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "37475c8df6402db56bdf0b425fe2a862a1758593e484c265a669bc31bcc30643",
+  "input_text_sha256": "f49789f84878ca620293c32fc9535e0802f7184ce3b364a9df9c075a84b7676f",
+  "prompt_sha256": "7da93a0dee5073adf03e230ea29234017056bf66c5b57a5dc7a97dedf104fa7c",
+  "started_at": "2026-11-20T05:17:02.366692+00:00",
+  "completed_at": "2026-11-20T05:18:04.418073+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RF6E405620386\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RF6E405620386\n- Title: Rural water asset management practices in Ghana: the gaps and needs\n- Authors: Kumasi T.C.; Agbemor B.D.; Burr P.\n- Year: 2019\n- DOI: 10.1111/wej.12396\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: f49789f84878ca620293c32fc9535e0802f7184ce3b364a9df9c075a84b7676f) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=64871, sha256=f49789f84878ca620293c32fc9535e0802f7184ce3b364a9df9c075a84b7676f]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural and small-town drinking water service access, infrastructure functionality, service reliability, crowding, and daily basic water access (>=20 litres per person per day) in Akatsi (North and South) and East Gonja districts in Ghana.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, it examines decentralized rural water governance under the Community Ownership and Management (COM) model, District Assembly planning/budgeting, and administrative monitoring (DiMES). Under the narrow 2026-10-13 rule-type reading, it directly analyses tariff and cost-recovery rules (comparing monthly levies, volumetric pay-as-you-fetch tariffs, and no-fixed-tariff/post-failure mobilization regimes against borehole functionality and revenue adequacy), statutory/bye-law reserve rules (national model bye-law MLGRDE 2008 requiring WSMTs to deposit >=20% of net monthly revenue into capital accounts), CWSA Facility Management Plan rules, and lack of enforcement of the CWSA Legislative Instrument (2007) governing unplanned donor borehole construction.",
+      "c3": "Mixed-methods empirical study combining reanalysis of a quantitative dataset (371 handpumps and 160 Water and Sanitation Management Teams mapped Nov 2011-Jan 2012) with primary field data collected Feb-Mar 2013 (21 key informant interviews, 7 site visits, 8 focus group discussions, and inspection of financial/administrative records and district budgets).",
+      "c4": "Reports multiple service access outcomes: borehole/handpump and small-town piped system functionality rates (including functionality stratified by tariff regime in Table 2: 74% monthly levy, 69% pay-as-you-fetch, 50% no fixed tariff), reliability (>18 days breakdown/year), basic service level compliance, proportion failing basic access of >=20 L/person/day, and tariff affordability.",
+      "c5": "Population/unit of analysis (rural communities, WSMTs, and 371 handpumps/piped systems in Akatsi and East Gonja districts), exposure (tariff/cost-recovery regimes, bye-law capital reserve and budgeting rules, periodic maintenance, and COM governance/enforcement), outcome (functionality, reliability, basic water access, affordability), and mixed-methods observational case study design are clearly identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5 of 13",
+        "quote": "These factors have had an impact on water consumption with 39% of residents in East Gonja and 49% of residents in Akatsi South and North failing to get basic access of at least 20 litres of water per person per day, according to Adank et al. (2013)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 13",
+        "quote": "According to the national model bye-law, (MLGRDE, 2008) Water and Sanitation Management Teams for small towns are required to make a monthly payment of not less than 20% of their net monthly revenue to their capital account."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 13",
+        "quote": "Two key and interrelated factors are identified: (1) tariff structure implemented by the community; (2) the routine maintenance of the infrastructure."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 13",
+        "quote": "Firstly, we reanalysed existing quantitative datasets on water infrastructure and services for Akatsi South and North and East Gonja Districts."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 13",
+        "quote": "Thirdly, we collected primary data from the two districts in 2013. Data collection included inspection and observation of water facilities, inspection of financial and administrative records (at the district or community/Water and Sanitation Management Team level)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Tariff and cost-recovery rules (monthly levy vs. volumetric pay-as-you-fetch vs. no fixed tariff / post-failure mobilization; compliance with national model bye-law 20% capital account rule and OpEx/CapManEx budgeting), periodic maintenance regimes, and decentralized Community Ownership and Management (COM) regulatory/administrative governance (CWSA guidelines, DiMES monitoring, and enforcement of CWSA Legislative Instrument 2007).",
+    "outcome": "Borehole/handpump and small-town piped scheme functionality rates, service reliability (breakdowns exceeding 18 days/year), CWSA basic service level attainment, share of residents receiving basic access (>=20 L/person/day), and tariff affordability.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Rural communities and small towns in Akatsi (North and South) and East Gonja districts, Ghana: quantitative dataset of 371 handpumps (n = 253 in tariff/maintenance subgroup comparisons) and 160 Water and Sanitation Management Teams (WSMTs), plus 21 semi-structured key informant interviews, 7 site visits, and 8 focus group discussions.",
+    "rationale": "Full-text mixed-methods empirical study in rural Ghana satisfying all inclusion criteria (c1-c6) under both the plain wording and the narrow 2026-10-13 rule-type mechanism scope of Criterion 2. Beyond physical asset maintenance, the study empirically evaluates tariff and cost-recovery rules (comparing monthly levies, pay-as-you-fetch volumetric tariffs, and no-fixed-tariff post-failure collection on handpump functionality in Table 2, plus revenue sufficiency and affordability in Table 1), compliance with the national model bye-law capital reserve requirement, district composite budgeting rules, and enforcement of the CWSA Legislative Instrument (2007) in relation to water point functionality, reliability, and basic household water access.",
+    "record_id": "RF6E405620386",
+    "study_design": "Mixed-methods observational case study (quantitative cross-sectional survey reanalysis combined with qualitative key informant interviews, focus groups, site visits, and administrative/financial record review)"
+  }
+}

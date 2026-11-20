@@ -1,0 +1,281 @@
+{
+  "record_id": "R87C35161C630",
+  "order": 38,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "b4394a2945a9c51765baeac4233dc0cc9ed80c21ae53d394ff40a08586d8001a",
+  "input_text_sha256": "5a217feee39bc5f86b3239d110c6d470a728cedc24bd5e62f2b95a86d6285a59",
+  "prompt_sha256": "2e872b81f4218408e65783a127e32f38ccc6200de58ef099aaf3ec4f997dd0e4",
+  "started_at": "2026-11-20T04:41:21.930657+00:00",
+  "completed_at": "2026-11-20T04:42:25.925631+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R87C35161C630\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R87C35161C630\n- Title: Greening the urban frontier: Race, property, and resettlement in Detroit\n- Authors: Safransky, Sara\n- Year: 2014\n- DOI: 10.1016/j.geoforum.2014.06.003\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 5a217feee39bc5f86b3239d110c6d470a728cedc24bd5e62f2b95a86d6285a59) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=96023, sha256=5a217feee39bc5f86b3239d110c6d470a728cedc24bd5e62f2b95a86d6285a59]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1. The paper examines urban greening, settler colonial imaginaries, property regimes, and vacant land redevelopment in Detroit (focusing on media narratives, the Detroit Future City land-use framework, and the Hantz Woodlands tree farm). Water and sewage are mentioned only incidentally in bundled lists of general municipal services proposed for future withdrawal in high-vacancy zones or in a passing developer quote, with no empirical investigation of household or community water or sanitation service access.",
+      "c2": "Under the plain wording of Criterion 2, the paper does examine legal, administrative, and governance factors in urban land management (such as Market Value Analysis zoning, the Detroit Future City planning framework, the unimplemented 1999 Michigan Urban Homestead Act, and municipal disposition of tax-foreclosed parcels), though these concern land redevelopment rather than water or sanitation services. Under the narrow 2026-10-13 rule-type clarification, Criterion 2 is 'no' because the paper does not analyze any rule-type mechanism directly governing water or sanitation service access (such as utility eligibility rules, documentation/tenure requirements for water connection, tariffs, disconnection enforcement, or water utility governance). Under both the plain and narrow readings of Criterion 2, the overall screening decision is exclude because Criteria 1 and 4 are not met.",
+      "c3": "Satisfies Criterion 3. Contains original qualitative empirical evidence from 17 months of mixed-method fieldwork in Detroit (2010-2012), including participant observation at over 60 meetings, 40 semi-structured interviews, participatory research data (47 interviews, 19 oral histories, and 3 workshops with approximately 150 residents), and media/planning document analysis.",
+      "c4": "Fails Criterion 4. Empirical outcomes reported concern land-use classification, municipal sale of tax-foreclosed land parcels for a private urban forest (Hantz Woodlands), gentrification dynamics, and community contestation over land tenure and commons, with no empirical outcome reported for water or sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion.",
+      "c5": "Fails Criterion 5 for review scope. Although the qualitative mixed-methods case study design and Detroit participant/resident populations are clearly described with respect to urban land greening, no water or sanitation exposure-outcome relationship or service-access unit of analysis can be identified because water and sanitation services are not studied.",
+      "c6": "Satisfies Criterion 6. Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 12",
+        "quote": "This paper examines how settler colonialism articulates with the redevelopment of postindustrial urban landscapes."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 12",
+        "quote": "Over time, traditional public services (water, street lights, transportation, garbage pickup)"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 12",
+        "quote": "Distressed areas, where upwards of 90,000 people lived, were slated for service delivery reduction, disinvestment, and green redevelopment."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 12",
+        "quote": "I engaged in participant observation at over 60 meetings, including planning charettes, city council meetings,"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 12",
+        "quote": "My interview guide for residents, activists, and urban farmers focused on conceptions of property and rights, urban agriculture, and land tenure."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Settler colonial frontier discourses, Market Value Analysis / Detroit Future City green redevelopment planning, and private acquisition of public/tax-foreclosed urban land (not a water or sanitation exposure)",
+    "outcome": "Spatial recoding of neighborhoods as vacant/green infrastructure zones, disposition of 1,900 city parcels to Hantz Woodlands, and community contestation over land tenure (no water or sanitation access outcome reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "City of Detroit, Michigan, USA: qualitative fieldwork (2010-2012) covering >60 public/planning meetings, 40 semi-structured interviews with residents, activists, planners, maintenance workers, urban farmers, and developers, plus participatory project data from 47 interviews, 19 oral histories, and 3 workshops (~150 Detroit residents).",
+    "rationale": "Excluded under E01 (Wrong topic). While this is an empirical qualitative political-ecology study in Detroit, its subject is postindustrial vacant land governance, settler colonial property logics, urban greening, and the Hantz Woodlands urban tree farm. Water and sewage are mentioned only in passing as part of bundled municipal services slated for potential long-term withdrawal in high-vacancy zones, with no empirical analysis of water or sanitation service access (failing c1), no rule-type mechanism governing water/sanitation access (failing narrow c2), and no water or sanitation access outcomes reported (failing c4).",
+    "record_id": "R87C35161C630",
+    "study_design": "Qualitative mixed-methods case study (ethnographic participant observation, semi-structured interviews, community-based participatory workshops/oral histories, and media/policy document analysis)"
+  }
+}

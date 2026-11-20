@@ -1,0 +1,281 @@
+{
+  "record_id": "RACB833F0F26E",
+  "order": 134,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "05910c3a39ef11d25ae3dc5df26a410651d8edc3da5e91b056567dcdb7070c26",
+  "input_text_sha256": "997d225f600ae5f8318f555c564839e730dc9d3e6259942b7fe05768fa6c94ed",
+  "prompt_sha256": "0c3a9b444c8be3ce9ad91772787603674449a795e8eaf36eaabf9bb5ce98cc00",
+  "started_at": "2026-11-20T05:12:42.219755+00:00",
+  "completed_at": "2026-11-20T05:14:47.408864+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RACB833F0F26E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RACB833F0F26E\n- Title: Materiality matters: Revealing how inequities are conceived and sustained in the networked water infrastructure - The case of Lilongwe, Malawi\n- Authors: Tiwale S.\n- Year: 2019\n- DOI: 10.1016/j.geoforum.2019.09.005\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 997d225f600ae5f8318f555c564839e730dc9d3e6259942b7fe05768fa6c94ed) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=81363, sha256=997d225f600ae5f8318f555c564839e730dc9d3e6259942b7fe05768fa6c94ed]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Malawi",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household and community piped water service access (private yard/household connections and public water kiosks managed by Lilongwe Water Board) in Lilongwe, Malawi, focusing on Chikungu, Area 38 in the Southern Zone.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain wording of Criterion 2 ('a legal, administrative, institutional, regulatory or governance factor'), this study qualifies ('yes') because it explicitly investigates formal and informal utility 'institutions' (defined via STS/Geels 2004 as planning priorities, engineering design standards, internal capital budgeting, operational production targets, and pump/valve/maintenance practices) shaping uneven water distribution by Lilongwe Water Board (LWB). Under the active 2026-10-13 narrow rule-type reading, however, it fails ('no' -> E03 Wrong exposure): the mechanisms empirically unpacked in Sections 5.1-5.5 are infrastructure master-plan delays, hydraulic engineering sizing calculations and construction material choices (2.8% population growth assumption, 50% vs 70% reservoir sizing standard, steel panels vs reinforced concrete), piecemeal capital project implementation, physical plant/pump/valve hydraulic operations (a 100,000 m3/day plant production target and informal pump-operator prioritisation conditioned on physical pipe/reservoir capacity), and deferred pipe maintenance bottlenecks. Although frontline operator pumping/valve discretion (Section 5.4) and brief mentions of private pipe-extension connection costs (fn. 8) and donor reluctance in unplanned settlements (Section 5.3) touch adjacent institutional issues, the paper does not empirically examine a rule-type legal, regulatory, or administrative mechanism directly governing household/community service access (such as eligibility screening, administrative burden, documentation/tenure requirements, tariff/cost-recovery rules, legal/administrative accommodation, enforcement, or utility ownership/regulatory structure).",
+      "c3": "Qualitative socio-technical empirical case study based on 2014-2015 fieldwork in Lilongwe, combining 54 semi-structured interviews (with LWB engineers, city planners, distribution supervisors, zone caretakers, pump operators, plumbers, kiosk inspectors, and Area 38 residents), multi-week direct observation of network operations, and document/log analysis (master plans, engineering design reports, daily distribution reports, and plant operator log sheets).",
+      "c4": "Reports access, continuity, reliability, pressure, supply-hour, and quantity outcomes across zones and for Chikungu, Area 38 residents and kiosks, including inter-zone supply disparities (300-800 lpcd in Central Zone vs 20-40 lpcd in Southern low-income areas, citing Tiwale et al., 2018), kiosks failing to yield water for two years after construction, and intermittent midnight/early-morning household tap supply.",
+      "c5": "Identifies the population and units of analysis (primary/secondary water distribution network segments serving Chikungu, Area 38 in Lilongwe, Malawi; LWB staff; public kiosks and residents in Area 38), exposure (socio-technical network materiality and engineering/operational practices across planning, design, implementation, operation, and maintenance), outcomes (water carrying/storage capacity, continuity, supply hours, pressure, and kiosk/tap functionality), and qualitative case-study design.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c4",
+        "page": "PDF Page 5 of 11",
+        "quote": "Conditions of water access experienced by the residents living in the southernmost corner of the city Chikungu, Area 38 are among the worst in the city (see Fig. 3(a)). It is a poor and unplanned area of the city where the majority of the population access water through hand pumps and kiosks managed by LWB. The kiosks function only for a few days in a week with low pressure and unreliable supply hours. Some of the kiosks have failed to deliver water since their erection."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 11",
+        "quote": "The unpacking explains how differentiated water supply provisions are produced within a centralised water supply system of the city by explicitly focusing on materialities of network elements and associated institutions, such as norms, standards, design principles, regulations, standard operating procedures and practices that shape development and use of the networked water infrastructure during planning, designing and implementation and everyday practices of operation and maintenance."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 11",
+        "quote": "The Chikungu case illustrates how engineers selectively manipulate the materialities of the network elements by tweaking the norms and design standards (institutions) to reduce the material dimension of the network."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 9 of 11",
+        "quote": "Moreover, how within the same material network, the practices (institutions) of operation supervisor, pump operator and valve-man controlling the flows determine the conditions of access – pressure, timings of supply, hours of supply and reliability of service."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7 of 11",
+        "quote": "Total 54 semi-structured interviews were conducted during the fieldwork."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Socio-technical materiality of networked water infrastructure elements (service reservoirs, transport mains, pumps, valves) and associated engineering planning, hydraulic sizing/design standards, piecemeal project implementation, plant/pump/valve operation routines, and pipe maintenance practices of Lilongwe Water Board.",
+    "outcome": "Infrastructure storage and flow-carrying capacity and downstream household/kiosk water access conditions in Chikungu, Area 38 (kiosk functionality, supply continuity, hours/timings of supply, water pressure, and zonal lpcd disparities).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Centralised urban water distribution network of Lilongwe, Malawi (specifically the Southern Zone network segment feeding Mwenda and Chikungu service reservoirs serving Chikungu, Area 38), examined via 54 semi-structured interviews with LWB engineers, planners, operators, plumbers, kiosk inspectors, and Area 38 residents plus operational observations and utility reports.",
+    "rationale": "Tiwale (2019) is an empirical qualitative socio-technical case study (54 semi-structured interviews, operational observations, and engineering/operational document analysis) of uneven piped and kiosk water supply in Chikungu, Area 38, Lilongwe, Malawi. Under the plain broad wording of Criterion 2, the study would be included because it examines utility institutional and governance practices shaping service continuity and availability. Under the active 2026-10-13 narrow rule-type reading of Criterion 2, however, it is excluded as E03 (Wrong exposure): what the author terms 'institutions' (following STS/Geels 2004) are infrastructure capital-planning delays, hydraulic engineering sizing assumptions and tank construction standards, piecemeal project delivery, plant/pump/valve hydraulic operating practices, and deferred physical pipe maintenance rather than legal, regulatory, or administrative rule-type mechanisms directly governing household or community service access (such as eligibility rules, tenure/documentation requirements, administrative burden, tariff/cost-recovery rules, legal/administrative accommodation, enforcement, or regulatory/ownership structure). Confidence is medium because informal pump/valve operator rationing and internal plant production targets in Section 5.4 lie near the boundary of operational administrative practices.",
+    "record_id": "RACB833F0F26E",
+    "study_design": "Qualitative socio-technical empirical case study (semi-structured interviews, direct observation of network operations, and engineering/operational document and log analysis)"
+  }
+}

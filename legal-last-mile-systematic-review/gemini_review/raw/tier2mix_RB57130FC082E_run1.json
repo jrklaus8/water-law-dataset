@@ -1,0 +1,281 @@
+{
+  "record_id": "RB57130FC082E",
+  "order": 129,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5f89fa5ad153baaf8ea0e15e271f8d6adb94b9a517aebcbb416747938f070ab4",
+  "input_text_sha256": "09499eba0bd01eb286c74cff9425497928738fbe3e2a49c949b0c0f8fb7b6a6a",
+  "prompt_sha256": "e1b6f50026d08fb9db6d7c8c0223d65abfcafe1364498b4549364c4d27c22763",
+  "started_at": "2026-11-20T05:09:04.126457+00:00",
+  "completed_at": "2026-11-20T05:10:57.859733+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB57130FC082E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB57130FC082E\n- Title: Drowned in an inch of water: how poor regulation has weakened the Italian water reform\n- Authors: Massarutto, Antonio; Ermano, Paolo\n- Year: 2013\n- DOI: 10.1016/j.jup.2012.09.004\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 09499eba0bd01eb286c74cff9425497928738fbe3e2a49c949b0c0f8fb7b6a6a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=86958, sha256=09499eba0bd01eb286c74cff9425497928738fbe3e2a49c949b0c0f8fb7b6a6a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Italy",
+    "criteria": {
+      "c1_service_access": "unclear",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "unclear",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Borderline/tangential: the paper's central focus is utility regulation, concession contracting, investment levels, and operator creditworthiness in the Italian WSS sector rather than household or community service access, although Section 3.3 and Table 2 briefly cite secondary national aggregate indicators for sanitation connection (69% to 76%), irregular supply (15% to 7%), and first-decile water expenditure share (1.4%).",
+      "c2": "Passes the plain wording of Criterion 2 (plain=yes) because it examines legal, institutional, and regulatory governance of Italy's 1994 WSS reform (Law 36/1994, ATOs/AATOs, Conviri, concession contracts, public/PPP/private delegation, and the MTN tariff-setting formula), but fails the narrow 2026-10-13 rule-type reading (narrow=no) because these contractual, ownership, and tariff/cost-recovery rules are analyzed as determinants of operator cash-flow security, capital investment, and access to credit markets rather than as rule-type mechanisms directly governing household or community service access. Note: even under the plain reading of Criterion 2, the paper is still excluded due to lack of primary empirical evidence/methods (c3=no, E05).",
+      "c3": "No primary empirical evidence or systematic empirical synthesis. The paper is a narrative micro-institutional policy analysis and critique grounded in economic contract theory and secondary literature/reports (e.g., Massarutto 2013; OECD 2010b, 2011; Istat/CoNViRI), with no empirical data collection, qualitative fieldwork methods, econometric model, or systematic review protocol.",
+      "c4": "Unclear/secondary only: Section 3.3 and Table 2 reproduce national before/after summary figures from secondary sources on first-decile expenditure share (1.4%), irregular supply (15% to 7% nationally; 30% to 15% in the South), and connection to sanitation (69% to 76%), but the paper conducts no empirical measurement or analysis of household access outcomes, focusing instead on operator financial sustainability, investment curbing, and credit crunch.",
+      "c5": "No identifiable empirical study design, sampling frame, or analytical design linking an exposure to a household or community service access outcome; secondary macro-sector descriptive tallies of 95 ATOs and national reform indicators lack methodological specification.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 12, Abstract",
+        "quote": "Underperformance is not related to the ownership structure of water companies, but rather to poor regulatory design and lack of understanding of the regulatory requirements that are implicit in the management model chosen, namely the concession contract."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 12, Section 1",
+        "quote": "The methodology adopted is based on a micro-institutional analysis of the regulatory structure, according to the economic theory of water service regulation and on the empirical international literature which discusses the outcomes of alternative regulatory schemes."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 6 of 12, Section 3.3",
+        "quote": "The incidence of expenditure for WSS on the ﬁrst decile is currently 1.4%, one of the lowest in the Oecd (Oecd, 2010b, Oecd, 2011). The planned increase will bring this indicator at 1.98% on average, still in the lower range."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 12, Section 3.3",
+        "quote": "A recent survey conducted by Massarutto (2013), may help analyze the relative weight of these alternative possible explanations (Table 2)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 12, Section 4.2",
+        "quote": "The above described regulatory system has been deﬁned as “an incomplete contract dressed up as a gosplan” (Massarutto, 2011): while the (formal) deﬁnition, outlined in the law, describes a procedure based on the detailed ex-ante speciﬁcation of plans and obligations and trivializes regulation as mere veriﬁcation of compliance, its (actual) implementation implies a large number of discretional decisions to be taken, without any clear discipline."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "1994 Italian WSS regulatory reform (compulsory territorial integration into ATOs, concession contracts, public/PPP/private delegation, Conviri/AATO regulators, and the MTN full-cost recovery tariff method)",
+    "outcome": "Macro-sector utility financial sustainability, capital investment, and access to credit (with secondary national summary figures cited for tariff burden on the first decile, irregular supply, and sanitation connection)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Italian water supply and sanitation (WSS) sector across 95 optimal management areas (ATOs) described at the macro-sector level from secondary sources; no primary empirical sample reported",
+    "rationale": "Exclude as E05 (No empirical evidence). Massarutto and Ermano (2013) present a narrative micro-institutional policy critique of Italy's 1994 water and sanitation reform, drawing on economic regulation theory and secondary reports/working papers (e.g., Massarutto 2013; OECD 2010b, 2011; Istat/CoNViRI) without an empirical study design, primary data collection, qualitative socio-legal fieldwork, quantitative estimation, or systematic synthesis method. Moreover, under the 2026-10-13 Criterion 2 clarification, its institutional analysis examines how concession contracts, regulator structure (Conviri/AATOs), and the MTN pricing formula affect utility cash flows, investment levels, and operator creditworthiness rather than rule-type mechanisms directly governing household or community service access; even under the plain Criterion 2 wording, it remains excluded for lack of empirical evidence.",
+    "record_id": "RB57130FC082E",
+    "study_design": "Narrative micro-institutional and regulatory policy analysis / overview (non-empirical)"
+  }
+}

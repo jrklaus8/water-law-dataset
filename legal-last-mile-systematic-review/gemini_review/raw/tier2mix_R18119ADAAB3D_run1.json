@@ -1,0 +1,286 @@
+{
+  "record_id": "R18119ADAAB3D",
+  "order": 139,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "576d249367a2436056d8ff0fd6de6a891ebf8557144442e3b54585ca091db2d3",
+  "input_text_sha256": "662eb424cf13fffcc710d0cc50914ccd23b46242f17261c737924c0d9d57226a",
+  "prompt_sha256": "cbad55caa8e7ba3d7e28d50e5e1595f2323a3eac06a6de326024a5fa23406edf",
+  "started_at": "2026-11-20T05:12:42.290923+00:00",
+  "completed_at": "2026-11-20T05:14:17.019758+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R18119ADAAB3D\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R18119ADAAB3D\n- Title: Sustaining Urban Water and Sanitation in Beira, Mozambique: From Policy to Practice Through Local Perspectives\n- Authors: Santos M.M.; Ferreira A.V.; Lanzinha J.C.G.; Collado B.R.\n- Year: 2025\n- DOI: 10.3390/urbansci9110480\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 662eb424cf13fffcc710d0cc50914ccd23b46242f17261c737924c0d9d57226a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=64910, sha256=662eb424cf13fffcc710d0cc50914ccd23b46242f17261c737924c0d9d57226a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mozambique",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community urban water supply (piped network connections and neighbourhood standpipes) and sanitation service access and delivery in three neighbourhoods of Beira, Mozambique.",
+      "c2": "Passes BOTH the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Under the plain wording, the study examines legal, institutional, regulatory, and governance factors shaping urban WASH delivery in Beira (Water Law, National Water Policy, draft Water and Sanitation Law, inter-agency governance, and community participation). Under the narrow 2026-10-13 clarification, although framed within a five-dimensional sustainability assessment, the study directly empirically examines rule-type mechanisms governing service access and continuity: (1) utility ownership/delegated management and regulatory/statutory mandate allocation across AdRC (operating under delegated management from FIPAG), AIAS, SASB, CRA, and the Beira Municipal Council directly governing repair responsibility and complaint resolution; (2) formal/legal recognition of community water committees governing self-managed standpipes and user-fee reinvestment (formally recognised by FIPAG in Ponta Gêa vs. lacking legal recognition in Chipangara and Macuti); and (3) tariff and cost-recovery rules, including social tariffs that do not cover operational costs, weak payment enforcement, and billing households without piped water delivery.",
+      "c3": "Qualitative empirical socio-legal/governance case study combining a sectoral policy review with primary semi-structured in-person interviews (n = 6: 3 institutional representatives and 3 community leaders) conducted in June–July 2025, analysed via hybrid deductive-inductive thematic coding with verified inter-coder reliability (Cohen's Kappa = 0.81). Qualitative socio-legal studies with identifiable primary data and methods are eligible for the systematic review.",
+      "c4": "Reports qualitative empirical outcomes directly relevant to service availability, connection coverage, continuity/reliability, repair responsiveness, exclusion, and affordability across three neighbourhoods (e.g., over a year without piped water in parts of Chipangara while still receiving bills, week-long outage following pipe bursts forcing reliance on wells and informal vendors, latrine/sewage overflows, and standpipe service stability in Ponta Gêa).",
+      "c5": "Population and unit of analysis (City of Beira focusing on Ponta Gêa, Chipangara, and Macuti neighbourhoods; 6 purposively/snowball-sampled institutional and community interviewees), rule-type institutional/regulatory and tariff exposures, qualitative service access/continuity/affordability outcomes, and qualitative phenomenological study design are all clearly identified.",
+      "c6": "Published in English (field interviews conducted in Portuguese with Sena translation assistance)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 19",
+        "quote": "Against this background, this study investigates the sustainability of urban water and sanitation services in Beira, Mozambique."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 19",
+        "quote": "Respondents consistently emphasised the problem of fragmented and overlapping mandates among AIAS, AdRC, SASB, and the Municipality. While national legislation assigns responsibilities, operational boundaries remain unclear, often leading to duplication or inaction."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 19",
+        "quote": "Institutional actors explained that tariffs remain too low to ensure cost recovery, forcing reliance on cross-subsidies and donor financing."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 19",
+        "quote": "Water committees in Chipangara and Macuti operated with minimal resources and lacked legal recognition, limiting their effectiveness."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 19",
+        "quote": "The research was conducted in Beira, Sofala Province, Mozambique. Fieldwork took place between 10 June and 25 July 2025 and involved interviews with institutional representatives and community leaders from the neighbourhoods of Ponta Gêa, Chipangara, and Macuti."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 19",
+        "quote": "In contrast, Chipangara faces systemic failures: entire units have experienced more than a year without piped water, despite continuing to receive water bills. The infrastructure is old and frequently damaged, and responses to breakdowns are often delayed or absent."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Mozambique's normative, regulatory, and institutional WASH governance framework in Beira, specifically statutory/operational mandate allocation across utilities and agencies (AdRC under FIPAG delegated management, AIAS, SASB, CRA, and Beira Municipal Council), formal/legal recognition of community standpipe committees, and tariff/cost-recovery rules (social tariffs, billing practices, and payment enforcement)",
+    "outcome": "Household and neighbourhood water and sanitation service availability, continuity/reliability (frequency and duration of piped supply disruptions, repair responsiveness, reliance on informal vendors and wells), standpipe operation, and perceived affordability across neighbourhoods",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Urban WASH sector in the City of Beira, Sofala Province, Mozambique, focusing on three neighbourhoods (Ponta Gêa, Chipangara, and Macuti); n = 6 semi-structured interview participants comprising 3 institutional representatives (SASB, AdRC, AIAS) and 3 neighbourhood community leaders",
+    "rationale": "This qualitative phenomenological study (policy review plus 6 semi-structured interviews with utility/agency officials and neighbourhood leaders in Beira, Mozambique) satisfies all inclusion criteria under both the plain and narrow 2026-10-13 readings. Beyond general climate and maintenance themes, it empirically investigates rule-type institutional, regulatory, and tariff mechanisms directly governing household and standpipe service access and continuity: overlapping statutory/operational mandates across delegated utility AdRC (under FIPAG), AIAS, SASB, CRA, and the Municipality that stall breakdown repairs and complaint handling; formal/legal recognition of community committees managing standpipes and user fees (recognised by FIPAG in Ponta Gêa vs. unrecognised in Chipangara and Macuti); and tariff/cost-recovery rules (social tariffs below operational cost, weak payment enforcement, and continued billing during year-long piped water outages). Qualitative socio-legal empirical studies are eligible for the systematic review's mechanism synthesis.",
+    "record_id": "R18119ADAAB3D",
+    "study_design": "Qualitative phenomenological case study combining critical policy review with in-person semi-structured interviews (hybrid deductive-inductive thematic analysis)"
+  }
+}

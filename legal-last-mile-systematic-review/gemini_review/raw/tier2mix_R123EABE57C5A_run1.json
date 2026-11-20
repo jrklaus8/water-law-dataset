@@ -1,0 +1,281 @@
+{
+  "record_id": "R123EABE57C5A",
+  "order": 45,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9dee0e9ae5ea482919acd3a70d9230aec74a2300a8a67c7a06234971cc9ea4e4",
+  "input_text_sha256": "de26b8ce6a5a2d9fc901e8d01bada8bff2cd2a3c6326e065f8eba328fe6f1749",
+  "prompt_sha256": "635a749e7eee53c76f8a6c546b8b03096d3252bd6abd5c1fd3dc46dff56d67e4",
+  "started_at": "2026-11-20T04:45:12.160105+00:00",
+  "completed_at": "2026-11-20T04:46:14.101130+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R123EABE57C5A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R123EABE57C5A\n- Title: Strategies to connect low-income communities with the proposed sewerage network of the dhaka sanitation improvement project, Bangladesh: A qualitative assessment of the perspectives of stakeholders\n- Authors: Alam M.-U.; Sharior F.; Ferdous S.; Ahsan A.; Ahmed T.; Afrin A.; Sarker S.; Akand F.; Archie R.J.; Hasan K.; Renouf R.; Drabble S.; Norman G.; Rahman M.; Tidwell J.B.\n- Year: 2020\n- DOI: 10.3390/ijerph17197201\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: de26b8ce6a5a2d9fc901e8d01bada8bff2cd2a3c6326e065f8eba328fe6f1749) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69617, sha256=de26b8ce6a5a2d9fc901e8d01bada8bff2cd2a3c6326e065f8eba328fe6f1749]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Bangladesh",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community sanitation and sewerage network service access across 16 low-income communities (LICs) in Dhaka under the Dhaka Sanitation Improvement Project (DSIP).",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain reading, it examines utility governance, municipal/DWASA planning, and institutional arrangements for extending sewerage to slums. Under the narrow 2026-10-13 rule-type reading, it directly empirically examines (1) land tenure, lack of legal registration on government/leased land, and eviction notices governing household/landlord sewerage connection and toilet investment (documentation/tenure requirements), (2) tariff, connection-cost-sharing, and subsidy rules (DWASA uniform tariffs, proposed <=2% income fee cap, income-based/area-based/household-size subsidies, EMI/vouchers) (tariff and cost-recovery rules), and (3) mandatory connection and residency enforcement regulations for households within 100 feet of the main sewer line (enforcement/regulatory rules directly governing connection).",
+      "c3": "Primary qualitative empirical study conducted between February 2019 and February 2020 using 9 key informant interviews (DWASA, Dhaka City Corporation, PSTP, ITN-BUET, DSK) and 23 focus group discussions (6-10 participants per FGD) across 16 purposively stratified LICs, analysed via six-phase thematic analysis (open, axial, and selective coding). Per review protocol, qualitative empirical studies of rule-type mechanisms are included in the systematic review.",
+      "c4": "Reports empirical outcomes on current sanitation and sewerage connection status/exclusion across 16 LICs (e.g., lack of main sewer connections, shared vs. private toilets, reluctance to upgrade toilets without legal registration/tenure) as well as willingness to connect and affordability thresholds for connection installation costs and monthly sewerage tariffs (50-500 BDT/month for tenants; 10-20% of installation cost for landlords).",
+      "c5": "Population and units of analysis (landlords, tenants, and CBO leaders in 23 FGDs across 16 LICs in Dhaka South and North City Corporations, plus 9 utility/municipal/NGO key informants), rule-type exposures (unregistered/insecure land tenure, mandatory connection regulations, and tariff/subsidy/cost-sharing rules), outcomes (current sewerage connection/exclusion, willingness to connect/invest, and affordability), and study design (qualitative exploratory KII and FGD study with thematic analysis) are all clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c3",
+        "page": "PDF Page 1 of 18 (Abstract)",
+        "quote": "This study assessed the challenges and opportunities of bringing low-income communities (LICs) under a sewerage connection within the proposed sewerage network plan by 2025. We conducted nine key-informant interviews from DWASA and City Corporation, and 23 focus-group discussions with landlords, tenants, and Community Based Organisations (CBOs) from 16 LICs near the proposed catchment area."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 8 of 18 (Section 3.1)",
+        "quote": "Landlord/homeowner groups from the four study locations out of sixteen mentioned that the land on which they were residing was owned by the government, and it was repeated in 3 FGDs that they did not have legal registration from the government. Therefore, they remained uncertain about the government granting permission to them to live there, and hence were not taking any initiatives to improve their toilets."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 18 (Section 3.3)",
+        "quote": "Three key personnel from DWASA, who are also actively engaged in DSIP, mentioned that households within 100 feet of the proposed main sewerage line would be forced to connect with that sewerage network after imposing regulations by concerned authority (i.e., City Corporation or DWASA). They also added that residents of these areas might need to obey this regulation in order to continue their residency."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 18 (Section 3.4)",
+        "quote": "It has been mentioned in the sewerage master plan that sewerage service fees may be charged up to 2% of the total monthly income of the users based on the services received. Based on all the FGDs, the amount ranges from 50–500 taka monthly."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 14 of 18 (Section 4)",
+        "quote": "Participants from 8 LICs asserted that as they were not permanently settled, they were not willing to renovate the existing toilet facilities or even interested to bear any cost of installing the sewerage connection."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Land tenure and legal registration status (unregistered/illegal settlements on government, leased, or disputed land and eviction notices), mandatory sewer connection residency regulations (within 100 feet of the trunk main), and tariff, connection-fee, and subsidy/cost-recovery rules under DWASA and the Dhaka Sanitation Improvement Project (DSIP).",
+    "outcome": "Current household/community sewerage connection and sanitation access status across 16 LICs, willingness to connect and invest in toilet/sewer infrastructure, and perceived affordability of sewerage installation costs and monthly service charges.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Low-income community (LIC) stakeholders and utility/municipal officials in Dhaka, Bangladesh: 23 focus group discussions (6–10 participants each) with landlords, tenants, and CBO leaders across 16 purposively stratified LICs in Dhaka South and Dhaka North City Corporations, plus 9 key informant interviews with officials from DWASA, Pagla Sewerage Treatment Plant, Dhaka City Corporation, ITN-BUET, and Dushtha Shasthya Kendra (DSK). Units of analysis: LIC settlements, FGD stakeholder groups (landlords, tenants, CBOs), and institutional informants.",
+    "rationale": "Full-text qualitative empirical study examining sewerage network access, exclusion, willingness to connect, and affordability in 16 low-income communities in Dhaka, Bangladesh. It meets all review inclusion criteria (c1–c6), including the narrow 2026-10-13 rule-type reading of Criterion 2, because it empirically investigates how lack of legal land registration/tenure security and eviction notices deter toilet upgrading and sewer connection investment, alongside mandatory connection/residency enforcement rules (within 100 feet of trunk mains) and tariff, connection-cost-sharing, and pro-poor subsidy structures. Qualitative socio-legal/institutional studies with primary empirical data are eligible for systematic review inclusion.",
+    "record_id": "R123EABE57C5A",
+    "study_design": "Qualitative exploratory study using key informant interviews (n = 9) and focus group discussions (n = 23 across 16 low-income communities) with inductive thematic analysis (open, axial, and selective coding)."
+  }
+}

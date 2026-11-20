@@ -1,0 +1,281 @@
+{
+  "record_id": "RE9F82B212206",
+  "order": 127,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "aa3a008bfb7738116e7cf28722de940256f85f7356cabf37a4e2c3033af8d1cc",
+  "input_text_sha256": "577bf0cd15dcbbc52b4e3d43628693e5e807bd48f65edb5757eaaa77551e416a",
+  "prompt_sha256": "bd40b79c6c37f42bf945f26951712346fdbfa3e3a27df0e2dc1c73297e45e051",
+  "started_at": "2026-11-20T05:09:04.115997+00:00",
+  "completed_at": "2026-11-20T05:10:05.948329+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RE9F82B212206\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RE9F82B212206\n- Title: Development and application of a methodology to assess sanitary risks in Maputo, Mozambique\n- Authors: Campos, Luiza C; Ross, Philippa; Nasir, Zaheer A; Taylor, Huw; Parkinson, Jonathan\n- Year: 2015\n- DOI: 10.1177/0956247815595784\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 577bf0cd15dcbbc52b4e3d43628693e5e807bd48f65edb5757eaaa77551e416a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63240, sha256=577bf0cd15dcbbc52b4e3d43628693e5e807bd48f65edb5757eaaa77551e416a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mozambique",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household and community sanitation and water service conditions in two low-income neighbourhoods of Maputo (Chamanculo C and Chamanculo D), including toilet coverage, pit-latrine desludging services, shared latrines, wastewater disposal, solid waste collection, and piped water supply reliability as components of a sanitary risk index.",
+      "c2": "Fails both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Under the plain wording, the study does not empirically examine any legal, administrative, institutional, regulatory, or governance factor: local administration and a partner NGO only assisted logistically with sub-area boundary definition and workshop participant selection, and city sanitation planning by local authorities or utilities is discussed solely as a prospective application of the risk-mapping tool rather than an analysed variable. Under the narrow 2026-10-13 rule-type reading, no rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership/regulatory structure) is studied.",
+      "c3": "Contains primary empirical data from participatory community risk-scoring workshops (20–25 participants per neighbourhood in Chamanculo C and Chamanculo D) and a random-sample validation survey of 160 households in Chamanculo C.",
+      "c4": "Reports indicator-level risk scores (0–100% rescaled from 1–3 traffic-light categories) that summarize community-level toilet coverage, desludging service adequacy, latrine sharing, and piped water supply reliability/maintenance alongside composite sanitary health risk scores.",
+      "c5": "Population, unit of analysis (sub-neighbourhood areas and surveyed households), methodological comparison/indicators, and risk-score outcomes are clearly described within a mixed participatory workshop and cross-sectional household validation survey design, though a legal/governance exposure is absent.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 13, Section IV.a",
+        "quote": "On the other hand, although households receive water from a piped water supply system, it is not considered to be well maintained or to provide a constant supply (low risk) in accordance with the indicators as defined above in Table 1."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5, Section II",
+        "quote": "In place of the microbial indices used in detailed QMRA-based studies, a set of proxy indicators is used as the basis for the quantification of risk. In the methodology, factors that define the physical, environmental and social conditions along with individual susceptibility to disease are all treated as important predictors of illness in a community."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17, Section VI",
+        "quote": "The approach is intended for local authorities, environmental health officers, and utility/service providers to better understand the existing risks in the sanitation chain."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10, Section III.b",
+        "quote": "It consisted of a detailed questionnaire that expanded upon the indicators used for the RPSSRA in the community workshop. Each household survey took approximately 20 minutes to complete. A total of 160 surveys were undertaken using a random sampling method that started at a selected point in the area."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 1, Abstract",
+        "quote": "The methodology described in this paper utilizes local stakeholder knowledge in a participatory process to score sanitation risks, using a framework of indicators that provides a quantitative assessment of the intensity and distribution of risk."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Assessment modality (participatory community workshop scoring via RPSSRA vs. household sanitary survey) and physical, environmental, behavioural, and demographic sanitary risk indicators; no legal, administrative, regulatory, or governance factor examined",
+    "outcome": "Indicator-specific and aggregate sanitary risk scores (0–100%) covering toilet coverage, toilet condition, desludging, wastewater disposal, solid waste, stormwater drainage, settlement density, latrine sharing, water supply, hygiene behaviour, housing condition, children per family, and education, plus percentage divergence between workshop and survey scores",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Residents of two low-income high-density neighbourhoods in Maputo (Chamanculo C, pop. 38,696, and Chamanculo D, pop. 20,236), divided into four sub-areas each; 20–25 workshop participants per neighbourhood and 160 randomly sampled households surveyed in Chamanculo C",
+    "rationale": "Excluded under E03 (Wrong exposure). This empirical study develops and validates the Rapid Participatory Sanitation System Risk Assessment (RPSSRA) methodology in two low-income neighbourhoods of Maputo by comparing participatory workshop risk scores against a 160-household sanitary survey across 14 physical, environmental, behavioural, and socio-demographic indicators. It fails Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type reading because it does not examine any legal, administrative, institutional, regulatory, or governance factor or rule-type mechanism governing water or sanitation service access; municipal planning is mentioned only as an intended downstream use of the risk-mapping tool.",
+    "record_id": "RE9F82B212206",
+    "study_design": "Participatory community risk assessment (workshops) validated against a cross-sectional random-sample household sanitary survey"
+  }
+}

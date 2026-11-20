@@ -1,0 +1,286 @@
+{
+  "record_id": "R0F404B9CB634",
+  "order": 50,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "7928404d9153239612f6e9f21d3041d3126fd112c6e2e514d820ccd4063d4a01",
+  "input_text_sha256": "9507788c73688bd5fcab5473af3adee340f2627bfba96bc49ed93bb98bcdb39d",
+  "prompt_sha256": "d28931880e7eebd4d111eca3a28ff17f9eb957a7d58aa36596d0cb6a6f803e44",
+  "started_at": "2026-11-20T04:45:12.173468+00:00",
+  "completed_at": "2026-11-20T04:46:03.565886+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R0F404B9CB634\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R0F404B9CB634\n- Title: Regulatory mobilization and service delivery at the edge of the regulatory state\n- Authors: Chng N.R.\n- Year: 2012\n- DOI: 10.1111/j.1748-5991.2012.01137.x\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 9507788c73688bd5fcab5473af3adee340f2627bfba96bc49ed93bb98bcdb39d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=65455, sha256=9507788c73688bd5fcab5473af3adee340f2627bfba96bc49ed93bb98bcdb39d]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Philippines",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community potable water service access for urban poor communities in Metro Manila (specifically Taguig), covering mother-meter sub-connections via community-based Peoples' Organizations (POs), small-scale water providers (SSWPs), and direct individual connections with Manila Water.",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain reading, it examines post-privatization water regulatory governance, clientelism, and collective regulatory mobilization. Under the narrow rule-type reading, it directly analyzes formal and informal rule-type mechanisms governing service access: privatization concession exclusivity and third-party licensing rules (Certificate of Public Convenience), easing of land-title documentary requirements and connection fees under Manila Water's Tubig Para Sa Barangay (TPSB) program, bulk and retail tariff rules, local legislative enforcement (Taguig Resolution 172 mandating direct connections), conversion of POs into legal cooperatives, and payment accommodation/disconnection discretion.",
+      "c3": "Qualitative socio-legal empirical case study based on nearly two years of ethnographic fieldwork and interviews with local community organizers in Taguig, Metro Manila. Per protocol rules, qualitative socio-legal empirical studies with identifiable fieldwork methods are eligible for the systematic review and mechanism synthesis.",
+      "c4": "Reports outcomes directly relevant to household/community water connections, service availability, affordability/tariffs (Php 30-35 per unit via POs vs Php 10-12 for direct Manila Water connection), avoidance of service cut-offs via flexible payment arrangements, and expansion of connections (e.g., ~125 member households / ~2,000 residents in Community Water; ~80 POs and ~5,000 households served by remaining POs in Taguig; transition to direct utility connections in 2006).",
+      "c5": "Clearly identifies the population and units of analysis (urban poor communities/households, ~80 community-based water POs in Taguig including Sitio Imelda in Barangay Upper Bicutan, and regulatory/utility institutions in Metro Manila), the legal/regulatory exposures, the water access/connection and tariff outcomes, and the qualitative ethnographic case study design.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 18",
+        "quote": "Based on almost two years of ethnographic ﬁeldwork in the city of Taguig in Metro Manila, the study shows how community organizations for bringing water to the people acted as the contractors of the private utility."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 18",
+        "quote": "Normal documentary requirements (especially land titles) were eased and costly connection fees were reduced."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 9 of 18",
+        "quote": "By 2008, Community Water had around 125 member households, serving almost 2,000 individual residents in Sitio Imelda."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 18",
+        "quote": "Community Water exercised much latitude in allowing members a range of payment means without resorting to cut-offs."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 18",
+        "quote": "They were accused of charging exorbitant tariffs of Php 30–35 compared with Php 10–12 for a direct connection with Manila Water."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 18",
+        "quote": "IPD also helped the POs and water cooperatives to engage with the MWSS-RO directly on issues like bulk tariffs, exclusivity, reticulation standards, and compensation for assets."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Post-privatization water concession regulatory structure and access rules in Metro Manila: concession exclusivity and third-party licensing rules (CPC), easing of land-title documentation and connection fees under TPSB, bulk/retail tariff rules, municipal legislative enforcement (Taguig Resolution 172), PO payment accommodation/non-disconnection discretion, and regulatory mobilization by POs and NGOs.",
+    "outcome": "Household and community piped water connections/service access (mother-meter PO sub-connections vs direct individual utility connections), retail tariff/affordability differentials (Php 30-35 vs Php 10-12), and protection against service cut-offs.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Urban poor residents, households, and community-based Peoples' Organizations (POs) providing water in Taguig, Metro Manila (specifically Sitio Imelda, Barangay Upper Bicutan: 12 POs in Sitio Imelda including Community Water serving ~125 households / ~2,000 residents; ~80 POs across Taguig with remaining POs serving ~5,000 households). Units of analysis: community water organizations (POs), regulatory/utility institutions, and urban poor households/communities.",
+    "rationale": "This socio-legal empirical study based on nearly two years of ethnographic fieldwork and interviews in Taguig, Metro Manila examines how post-privatization regulatory rules and community/NGO 'regulatory mobilization' shaped household and community piped water access for the urban poor. It satisfies all inclusion criteria under both the plain reading and the narrow 2026-10-13 rule-type reading of Criterion 2, directly analyzing concession exclusivity clauses, third-party licensing, easing of land-title documentary requirements and connection fees under the TPSB program, bulk and retail tariff disputes, local council enforcement resolutions, and flexible payment accommodation preventing cut-offs.",
+    "record_id": "R0F404B9CB634",
+    "study_design": "Qualitative ethnographic socio-legal case study (nearly two years of ethnographic fieldwork and interviews)"
+  }
+}

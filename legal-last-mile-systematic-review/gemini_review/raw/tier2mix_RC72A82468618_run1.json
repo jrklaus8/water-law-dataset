@@ -1,0 +1,286 @@
+{
+  "record_id": "RC72A82468618",
+  "order": 145,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "8ce10f6ac2f6fc9bf3b7081558ea97683ad6828f158b7df0fe9e2f6b3e89132d",
+  "input_text_sha256": "0846f85f29f78c3751f2a606b54b313126557e8b80cba8728efe95ed1c3e370e",
+  "prompt_sha256": "ee4609d82271014482e88dc89e677391160f5ea1f773b2a1ac8edf07c1e79e96",
+  "started_at": "2026-11-20T05:14:47.433415+00:00",
+  "completed_at": "2026-11-20T05:17:02.328967+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RC72A82468618\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RC72A82468618\n- Title: Values at the tap: how organizational culture shapes water unaffordability and Environmental justice in U.S. Cities\n- Authors: Ward K.; Srinivasan J.; Alvord D.; Senier L.; Davis M.; Harlan S.L.; Manela R.; Krista S.; Deodhar A.\n- Year: 2026\n- DOI: 10.1080/23251042.2026.2666400\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 0846f85f29f78c3751f2a606b54b313126557e8b80cba8728efe95ed1c3e370e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=72631, sha256=0846f85f29f78c3751f2a606b54b313126557e8b80cba8728efe95ed1c3e370e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water service affordability, billing, customer assistance programs (CAPs), debt relief, and collection/shutoff practices across 11 publicly owned municipal water utilities in Massachusetts and Pennsylvania.",
+      "c2": "Passes BOTH the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2 (with a borderline note on framing). Under the plain wording, it clearly examines municipal utility governance, organizational culture/values, regulatory pressures, and CAP administration. Under the narrow 2026-10-13 rule-type mechanism reading, although the overarching theoretical construct is organizational values (Schwartz human values typology), the empirical analysis directly examines how core rule-type mechanisms govern affordability and access to relief: tariff and cost-recovery rules (ascending block rates, strict rate uniformity, refusal to abate principal charges even on leaks, consultant rate benchmarking, state regulatory agency rate approvals, and Safe Drinking Water Act compliance cost pass-through), street-level discretion and accommodation (waiving interest/fees, flex-pay payment plans, principal debt erasure, ad-hoc hardship grants), eligibility screening and administrative burden in CAPs (differential discounts by senior/low-income status, simplified enrollment, outreach clinics), enforcement (aggressive collections, fines, liens, shutoffs), and perceived municipal legal constraints on differential pricing.",
+      "c3": "Primary qualitative socio-legal empirical study based on 33 semi-structured interviews with 37 utility managers, staff, board members, and municipal officials across 11 cities (2020-2022), analyzed using hybrid inductive-deductive coding in Dedoose. Qualitative socio-legal studies are explicitly eligible for the mechanism synthesis.",
+      "c4": "Reports qualitative utility-level outcomes directly governing household water affordability, accommodation, and exclusion from relief across the 11 cities (categorized into 4 Traditionalist utilities enforcing strict uniform rates and collections without debt forgiveness, 5 Balancer utilities providing ad-hoc fee waivers, payment plans, and small hardship grants, and 2 Benevolence-Led utilities providing targeted status/income-based CAP discounts, debt erasure, and simplified enrollment/outreach). Note that direct household-level bill burden, CAP enrollment demographics, and shutoff counts are not quantitatively measured (acknowledged as a limitation on PDF p. 13).",
+      "c5": "Population/unit of analysis (11 municipal water utilities / cities in MA and PA; 37 interviewees), institutional/rule-type and cultural exposures, utility-level affordability/accommodation outcomes, and qualitative cross-case interview study design are all clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 16",
+        "quote": "We analyze in-depth, semi-structured interviews with managers and key informants from 11 publicly owned water utilities in Massachusetts and Pennsylvania to examine (1) how interviewees invoke environmentality values and prosocial values when discussing water affordability, and (2) whether those values translate into concrete policies that advance distributive, procedural, or recognition justice for customers who cannot afford to pay their bills."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 16",
+        "quote": "For some utilities, uniform rates and strict collection practices reflect a value of disciplinary power, justified through a narrow understanding of fairness that sidesteps recognition of unequal burden and punishes people for unpaid bills."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 16",
+        "quote": "Most utility personnel signaled a willingness to waive interest or fees but were reluctant to forgive the principal charge. In only a few Benevolence-Led utilities would officials erase debt in negotiating a payment plan with a customer."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 16",
+        "quote": "Between 2020 and 2022, we conducted 33 semi-structured interviews with 37 informants across the 11 cities. Using purposive sampling, we identified individuals most likely to hold knowledge of rate-setting and affordability policy:"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 16",
+        "quote": "defend uniform rates as the only just option, invoking tradition, conformity to peer prices, and fiscal security to explain why all customers must pay the same for water and no customer’s debt can be forgiven. Four cities in our sample fell into this category."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 16",
+        "quote": "Utility managers in these places reject the idea that fairness must entail uniformity. They embed procedural justice in their organizations by consulting their most vulnerable customers and the advocates who work with them in designing rate structures and assistance plans."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Organizational value orientations (environmentality and prosocial values) operating through rule-type utility mechanisms: tariff and cost-recovery rules (ascending block rates, uniform rate strictness, state regulatory rate filings, Safe Drinking Water Act compliance cost recovery), street-level discretion and accommodation (fee/interest waivers, flex-pay plans, principal debt abatement), Customer Assistance Program (CAP) eligibility/enrollment rules, perceived legal constraints, and collection enforcement",
+    "outcome": "Utility-level household water affordability policies and practices across 11 cities: adoption vs denial of targeted CAP rate discounts (by low-income/senior status), principal debt forgiveness/abatement, fee/interest waivers, flex-pay plans, and simplified enrollment/outreach versus strict uniform cost recovery and punitive collections",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "11 publicly owned municipal water utilities (cities as unit of analysis) in Massachusetts and Pennsylvania; 33 semi-structured interviews with 37 informants (utility directors, finance managers, customer-service leads, municipal managers/finance officers, water commission/board members, and elected officials)",
+    "rationale": "This qualitative socio-legal empirical study (33 interviews with 37 officials/staff across 11 municipal water utilities in Massachusetts and Pennsylvania) satisfies all inclusion criteria for the systematic review's mechanism synthesis. Although framed around organizational values (Schwartz's typology), it empirically examines concrete rule-type mechanisms under the 2026-10-13 Criterion 2 scope — including tariff and cost-recovery rules (ascending block rates, strict uniform pricing, non-abatement of principal charges even for leaks, consultant benchmarking, and state regulatory rate filings), street-level discretion and accommodation (waiving fees/interest, flex-pay plans, principal debt erasure, hardship grants), CAP eligibility discounts and enrollment outreach, perceived legal constraints on differential rates, and punitive collection enforcement — and links them to utility-level water affordability and relief/exclusion practices across the 11 cities. Confidence is rated medium because the primary explanatory lens is organizational culture/values and outcomes are captured at the utility policy/practice level rather than direct household-level affordability or shutoff rates.",
+    "record_id": "RC72A82468618",
+    "study_design": "Qualitative comparative cross-case study using semi-structured interviews (hybrid inductive-deductive thematic and content analysis)"
+  }
+}

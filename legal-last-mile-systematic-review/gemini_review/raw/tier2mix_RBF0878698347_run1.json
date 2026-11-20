@@ -1,0 +1,281 @@
+{
+  "record_id": "RBF0878698347",
+  "order": 143,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "6738fe03abc93bf64b057d18c8425bbc2c14f9e7dd41f64f81bc175717c9220f",
+  "input_text_sha256": "63bfe8ff19401d86afc3a7a509a2558857933a43de931a375812dc56fc6b30fd",
+  "prompt_sha256": "a27697245bc130bcde14e14c0e6e99d8d0f292984f7c0fef05c1411dd0ba0b2e",
+  "started_at": "2026-11-20T05:14:47.428413+00:00",
+  "completed_at": "2026-11-20T05:15:53.011782+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RBF0878698347\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RBF0878698347\n- Title: AN ECOLOGICAL SYSTEMS APPROACH TO ASSESS THE WELL-BEING OF STREET CHILDREN IN ZIMBABWE: IMPLICATIONS FOR DEVELOPMENTAL SOCIAL WORK PRACTICE\n- Authors: Gunhidzirai C.\n- Year: 2023\n- DOI: 10.15270/59-4-1168\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 63bfe8ff19401d86afc3a7a509a2558857933a43de931a375812dc56fc6b30fd) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56375, sha256=63bfe8ff19401d86afc3a7a509a2558857933a43de931a375812dc56fc6b30fd]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Zimbabwe",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Satisfied descriptively: although the study is a broad developmental social work assessment of street children's holistic well-being, Theme 2 (Physical risks, Table 2 on PDF p. 14) specifically measures and reports street children's access to toilets, bathing facilities, and water.",
+      "c2": "Fails BOTH the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Under the plain wording, the empirical survey examines general living conditions and risks in the street environment (demographics, livelihoods, sleeping locations, food sources, ailments, sanitation access, criminal offences, antisocial behaviour, and school dropout) using univariate frequency distributions; it does not measure or empirically analyse any legal, administrative, institutional, regulatory, or governance factor in relation to water or sanitation access. Background discussion of social welfare programmes (DSD), a passing reference to municipal by-laws prohibiting street vending/begging, and a secondary citation in the Discussion to Maepa (2018) on public-sector corruption and bureaucracy are not empirical analyses of governance factors in this study. Under the narrow 2026-10-13 clarification, no rule-type mechanism directly governing water or sanitation service access (such as eligibility screening, administrative burden, documentation or tenure rules, tariffs, discretion, enforcement, or utility regulatory structure) is examined.",
+      "c3": "Satisfied: primary quantitative empirical study administering a semi-structured survey questionnaire to 202 purposively sampled street children in Harare Metropolitan Province, analysed via descriptive frequency statistics in SPSS.",
+      "c4": "Satisfied: Table 2 (PDF p. 14) reports binary self-reported access outcomes for toilets (71.3% without access), bathing facilities (69.8% without access), and water (65.3% without access) among the 202 surveyed street children.",
+      "c5": "Satisfied for study reporting completeness: the population and unit of analysis (202 individual street children aged 6-18 in Harare), general environmental condition (living/working in the urban street environment), outcomes (including self-reported water and sanitation access), and study design (cross-sectional descriptive survey) are clearly identifiable, though no legal or governance exposure is examined.",
+      "c6": "Satisfied: full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1, c3",
+        "page": "PDF Page 1 of 22",
+        "quote": "Based on survey data of 202 street children who were purposively sampled, the findings revealed that street children lack access to food, education, accommodation, health care and proper sanitation."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 22",
+        "quote": "The goal of this study was to assess the well-being of street children to see if alternative mechanisms and strategies could be implemented by the government of Zimbabwe to enhance the living standards of street children."
+      },
+      {
+        "criterion": "c3, c5",
+        "page": "PDF Page 7 of 22",
+        "quote": "A survey questionnaire was used to gather quantitative data from 202 street children aged between 6 and 18 years who took part in this study."
+      },
+      {
+        "criterion": "c1, c4",
+        "page": "PDF Page 14 of 22",
+        "quote": "Table 2 above reported that 71.3% of street children do not have access to toilets. Furthermore, 69.8% reported not having access to bathing facilities. In addition, 65.3% do not have access to water."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17 of 22",
+        "quote": "These findings are congruent with those of Maepa (2018), who claimed that corruption, lack of efficiency, poor management of finances and bureaucracy in public state entities severely affect street children, who lack access to safe drinking water and public restrooms."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Living or working in the urban street environment (no legal, administrative, institutional, regulatory, or governance factor empirically examined)",
+    "outcome": "Self-reported access (Yes/No) to toilets, bathing facilities, water, and a clean environment (Table 2), alongside broader well-being indicators (livelihoods, accommodation, food access, ailments, criminal offences, antisocial behaviour, and school dropout)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "202 purposively sampled street children aged 6 to 18 years in Harare Metropolitan Province, Zimbabwe (unit of analysis: individual child)",
+    "rationale": "Exclude (E03 - Wrong exposure). Although this quantitative cross-sectional survey of 202 street children in Harare reports descriptive statistics on lack of access to toilets (71.3%), bathing facilities (69.8%), and water (65.3%) as part of a broad social-work assessment of child well-being, it does not empirically examine any legal, administrative, institutional, regulatory, or governance factor governing water or sanitation service access under either the plain wording or the narrow 2026-10-13 rule-type reading of Criterion 2. The study reports univariate frequencies describing street living conditions, and its only link between public-sector bureaucracy/governance and water or restroom access is a secondary citation to Maepa (2018) in the Discussion.",
+    "record_id": "RBF0878698347",
+    "study_design": "Cross-sectional quantitative descriptive survey using a semi-structured questionnaire"
+  }
+}

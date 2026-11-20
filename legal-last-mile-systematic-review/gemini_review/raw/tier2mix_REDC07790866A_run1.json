@@ -1,0 +1,286 @@
+{
+  "record_id": "REDC07790866A",
+  "order": 44,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ea42f83f2c9d5e78dccf0d3cab691d399b64bb06e9da18ead0675ff0c0e6a27c",
+  "input_text_sha256": "d7146000225ceb05d7dcba1f746d57dc8bde248597cbb04a6bb14af265a55be0",
+  "prompt_sha256": "02c1ad2b0a89a54743c5f2b06ef62efff88977443bbbee3bfa8f14278445af64",
+  "started_at": "2026-11-20T04:45:12.158018+00:00",
+  "completed_at": "2026-11-20T04:47:36.746435+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD REDC07790866A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: REDC07790866A\n- Title: Drivers of farmer satisfaction with small-scale irrigation systems\n- Authors: Lopus, S; McCord, P; Gower, D; Evans, T\n- Year: 2017\n- DOI: 10.1016/j.apgeog.2017.10.004\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d7146000225ceb05d7dcba1f746d57dc8bde248597cbb04a6bb14af265a55be0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=54587, sha256=d7146000225ceb05d7dcba1f746d57dc8bde248597cbb04a6bb14af265a55be0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "unclear",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The study focuses on small-scale agricultural irrigation systems ('Drivers of farmer satisfaction with small-scale irrigation systems') serving smallholder farmers in Kenya, though the text notes that these Community Water Projects (CWPs) deliver piped water to households both for household consumption and to maintain or improve agricultural yields. However, all sampled households are already connected CWP members, and household water or sanitation service access itself is not examined as an object of inquiry.",
+      "c2": "Under the narrow 2026-10-13 rule-type reading, Criterion 2 is not met (no): the study's primary exposure is hydrological/physical water delivery (absolute weekly flow, flow percentile relative to peers, and self-reported 5-year flow decline) as a driver of farmer perceptions, rather than a rule-type mechanism governing service access. Although the regressions include CWP-level institutional control variables that reflect rule-type features (conditions to join such as land ownership, membership fees, and chief authorization; cost to become a member; annual cost of membership; and number of monitoring groups), the paper never examines how those rules govern or affect water service access, connection, or flow—they are entered solely as controls in models of drought perception and subjective satisfaction. Under the plain broad wording of Criterion 2, the inclusion of CWP governance and institutional controls touches on institutional/governance factors (so plain Criterion 2 alone could be read as satisfied), but plain_criterion2_decision is still exclude because the study fails Criterion 4 (no water access outcome).",
+      "c3": "Primary quantitative empirical study combining a cross-sectional survey of 750 smallholder farmers across 25 CWPs (May–September 2013), weekly household pipe-flow measurements at a subset of 381 homes (September 2013–January 2014; analytic sample N = 361 descriptive and N = 351 in regressions across 24 CWPs after dropping one storm-damaged CWP), and interpolated precipitation data from 73 weather stations, analyzed using clustered logistic and OLS regressions.",
+      "c4": "No outcome relevant to water or sanitation access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion is analyzed as an outcome. The authors explicitly contrast examining water delivery as an outcome with investigating how water delivery drives other outcomes: piped water flow, frequency, and variability are entered as explanatory variables/controls on the right-hand side, while the only dependent/outcome variables modeled are (1) whether drought is one of the farmer's top two perceived agricultural challenges (binary) and (2) subjective farmer satisfaction with the CWP (1–5 Likert scale).",
+      "c5": "The paper clearly reports the population and household unit of analysis (CWP-member smallholder farming households across 24 CWPs in the Upper Ewaso Ng'iro basin, Kenya), the exposures and controls, the perceptual/attitudinal outcomes, and the observational quantitative study design.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1, Abstract",
+        "quote": "On the semi-arid northwestern slopes of Mount Kenya, irrigation systems structured around Community Water Projects (CWPs) provide households with piped water"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 1, Abstract",
+        "quote": "In this study, we relate respondents' satisfaction with their CWPs to the quantity of water delivered."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 2, Section 1",
+        "quote": "In addition to examining water delivery as an outcome, researchers have also investigated how water delivery itself drives other outcomes, such as farming behaviors."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2, Section 1",
+        "quote": "Our results oﬀer insight into the hydrological drivers underlying Kenyan farmers' opinions and, potentially, into a CWP's ability to improve satisfaction in the face of climate uncertainty."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3, Section 2.3",
+        "quote": "Between September 2013 and January 2014, household pipe ﬂows were recorded once weekly at a subset of 381 homes in the 25 CWPs. We analyze data from only this subset of households, rather than from the full 750-household sample."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5, Section 3.2",
+        "quote": "Satisfaction = Response to question, “Are you satisﬁed with how much water you receive given how much you pay to be a member of the water project?”"
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Absolute weekly household piped water flow (log L/min), weekly water flow percentile relative to other CWP members, and self-reported 5-year decline in water received, alongside household controls (flow frequency, flow variability, precipitation, distance to intake, membership duration, education) and CWP institutional controls (number of connections, joining cost, annual membership cost, CWP age, membership growth, conditions to join, and monitoring groups)",
+    "outcome": "Perceived agricultural drought risk (whether drought was identified among the respondent's top two natural challenges to their agricultural system, binary 0/1) and subjective farmer satisfaction with the CWP water project (1–5 Likert scale)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Smallholder farmer households belonging to Community Water Projects (CWPs) in the Upper Ewaso Ng'iro basin on the northwestern slopes of Mount Kenya (750 surveyed across 25 CWPs; subset of 381 homes monitored weekly for pipe flow; 24 CWPs with N = 361 in descriptive statistics and N = 351 in regressions after dropping one storm-damaged CWP and missing cases)",
+    "rationale": "Excluded primarily for wrong outcome (E04), as well as lacking an analysis of rule-type mechanisms governing service access under Criterion 2. Rather than modeling water service access, connection, availability, reliability, quantity, affordability, or exclusion as an outcome, this study of small-scale irrigation Community Water Projects (CWPs) in Kenya treats household piped water flow (absolute flow, flow relative to peers, and flow relative to past levels) as the primary hydrological predictor—alongside CWP institutional controls (joining fees, annual costs, conditions to join, monitoring groups)—to explain two perceptual/attitudinal outcomes: farmers' agricultural drought risk perceptions and subjective Likert-scale satisfaction with their CWP. No empirical relationship between legal/institutional rules and water access or delivery outcomes is tested, so the study is excluded under both the narrow 2026-10-13 rule-type reading and the plain reading of Criterion 2.",
+    "record_id": "REDC07790866A",
+    "study_design": "Cross-sectional household survey combined with 20-week weekly household pipe-flow measurements and kriged station precipitation data, analyzed with clustered logistic and OLS regressions"
+  }
+}

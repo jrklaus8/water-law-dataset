@@ -1,0 +1,281 @@
+{
+  "record_id": "R5F5D01ACD5FA",
+  "order": 15,
+  "run": 2,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "bc98616eeb5505e31a15ad1c7e43e9166be815edbdca43b7c47cf8cfaf5eb79e",
+  "input_text_sha256": "6a2054dcaf7ee3b6aa8ed00a3090f2d65e050dece66b512c0af0ba6f80c56ce8",
+  "prompt_sha256": "5912be230d8c583867c8e2558d5d29f51c20b61453d3a7a41311c426639056e1",
+  "started_at": "2026-11-20T05:19:04.961568+00:00",
+  "completed_at": "2026-11-20T05:21:15.933843+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R5F5D01ACD5FA\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R5F5D01ACD5FA\n- Title: Water security status and associated challenges in Guwahati city (India)\n- Authors: Hazarika, B; Kar, BK\n- Year: 2024\n- DOI: 10.26565/2410-7360-2024-61-30\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 6a2054dcaf7ee3b6aa8ed00a3090f2d65e050dece66b512c0af0ba6f80c56ce8) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63625, sha256=6a2054dcaf7ee3b6aa8ed00a3090f2d65e050dece66b512c0af0ba6f80c56ce8]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household access to municipal piped water supply systems and public deep tube well schemes (DTWS) in Guwahati city, India, including citywide coverage, supply quantity, continuity, reliability, and household accessibility.",
+      "c2": "Fails under BOTH the narrow 2026-10-13 rule-type reading and the plain wording (when read with empirical exposure requirements). Under the narrow 2026-10-13 clarification, the study does not empirically analyze any rule-type mechanism directly governing service access (eligibility screening, administrative burden, tenure/documentation rules, tariff or cost-recovery rules, discretion/accommodation, enforcement, or regulatory/ownership structure); instead, its empirical analysis compares physical water infrastructure projects/schemes (old vs newly commissioned treatment plants and DTWS, production gaps, pipe leakages/bursts) and spatial/topographic position (distance and slope from service reservoirs across Zones I, II, and III), while brief narrative remarks on illegal connections, booster pumps, a grievance cell, penalties, lack of metering, and municipal funding shortages rely on secondary media reports as unanalysed background. Under the plain wording of Criterion 2, the paper's stated objective and empirical exposures are likewise physical water infrastructures and spatial distance from reservoirs rather than an empirically tested legal, administrative, institutional, regulatory, or governance factor (even if a very loose reading noted the descriptive provider-management remarks or cross-scheme comparisons, no governance exposure is empirically measured or linked to outcomes).",
+      "c3": "Contains primary empirical evidence from a structured survey of 506 households across 25 water supply schemes conducted in 2022-2024, laboratory testing of household tap water samples for physical/chemical parameters, GIS mapping of water supply networks, and secondary institutional data on plant capacity and production.",
+      "c4": "Reports multiple household water access outcomes: overall city population share with access to the urban water system (34%), days of water received per week, daily supply duration and frequency, water quantity per household and per capita (lpcd), tap water quality, coping mechanisms for unreliable supply, and share of households obtaining adequate water.",
+      "c5": "Population and unit of analysis (506 consumer households in Guwahati across Zones I, II, and III under 25 schemes), studied infrastructural/spatial exposure (scheme infrastructure type/age and distance/elevation from service reservoirs), household water security outcomes, and cross-sectional survey design are all clearly identifiable, although no eligible C2 legal/administrative exposure is empirically analyzed.",
+      "c6": "Full text is written in English (with a Ukrainian abstract/summary appended on page 15)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 (Study area)",
+        "quote": "The city has 135 water plants, but only 34% of the city population has access to the urban water system."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This study intends to identify the problems associated with the urban water systems, its challenges in effective supply of water and the resultant water insecurity at households. It examines the water infrastructures in the city since its development in 1930 on a spatio-temporal context. The impact of prevailing water infrastructures on the status of households’ water insecurity has also been assessed."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 (Illegal water connection or water theft)",
+        "quote": "There are many unauthorized connections from water networks of municipal water supply system in Guwahati. This type of water theft frequently goes undetected by water authorities and it has consequent effect on pressure in pipes in the adjacent areas [28]."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "Selection of households from different zones under each scheme was done on the basis of consumers of urban water system and water security status. Water security status at households has been assessed through its components, quantity, quality, reliability and accessibility."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 (Quantity of Water Supplied at households)",
+        "quote": "The households close to the water reservoir get adequate pressure in pipes and therefore receive water more than the national standard (135 lpcd). However, in the middle part and tail end part of the distribution system water availability gradually reduces due to poor pressure in the pipes."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Physical water supply infrastructure characteristics (ageing vs newly commissioned water treatment plants and deep tube well schemes, designed vs actual MLD capacity, pipeline leakages and bursts) and spatial location/elevation relative to service reservoirs (Zones I, II, and III)",
+    "outcome": "Citywide municipal water network coverage (34%); household supply frequency (days/week, times/day, minutes/supply) and water quantity (liters per supply and lpcd); household tap water quality (chlorine, turbidity, iron); household coping strategies for unreliability; and percentage of households obtaining adequate water",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Households connected to urban water supply systems in Guwahati city, Assam, India; n = 506 households purposively sampled across 25 water supply schemes (173 in Zone I near reservoirs, 165 in Zone II mid-distribution, and 168 in Zone III tail-end) plus 9 water treatment plant/DTWS groups",
+    "rationale": "This empirical urban geography study surveys 506 households across 25 water supply schemes in Guwahati, India, and measures relevant household water access outcomes (quantity in lpcd, supply hours/days, reliability/coping strategies, tap water quality, and adequacy). However, it is excluded under E03 (Wrong exposure) because its empirical exposures are physical water infrastructure adequacy (ageing plants, MLD production gaps, pipe leakages/bursts, old vs newly commissioned schemes) and spatial/topographic location relative to service reservoirs (Zones I, II, and III), rather than any legal, regulatory, or administrative rule-type mechanism directly governing service access. Brief narrative remarks on unauthorized connections/booster pumps, a grievance cell, penalties, lack of metering, and municipal funding shortages draw on secondary media reports as unanalysed background and are never empirically measured or linked to household access outcomes; thus the study fails Criterion 2 under both the 2026-10-13 narrow rule-type reading and the plain reading.",
+    "record_id": "R5F5D01ACD5FA",
+    "study_design": "Cross-sectional household survey (purposive sampling stratified by distribution zone and water supply scheme) combined with laboratory water-quality testing, GIS network mapping, and secondary institutional plant capacity data"
+  }
+}

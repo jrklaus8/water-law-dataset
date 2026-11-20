@@ -1,0 +1,276 @@
+{
+  "record_id": "R5D1990E27D97",
+  "order": 27,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0d3f739d273e01beec75e3b51081faf702a83759249fa76d2d5d258be1286b63",
+  "input_text_sha256": "6e9061489e7de8279d3329886aa180947708301dd7a8b228d2a5c48443628e77",
+  "prompt_sha256": "3c45189816c78a1a122f200b7526ec5cf7bdc30f35925ba30ffc1ff6b72b9f6b",
+  "started_at": "2026-11-20T04:38:44.505296+00:00",
+  "completed_at": "2026-11-20T04:39:55.868369+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R5D1990E27D97\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R5D1990E27D97\n- Title: The centrality of water resources to the realization of Sustainable Development Goals (SDG). A review of potentials and constraints on the African continent\n- Authors: Mugagga, F; Nabaasa, BB\n- Year: 2016\n- DOI: 10.1016/j.iswcr.2016.05.004\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 6e9061489e7de8279d3329886aa180947708301dd7a8b228d2a5c48443628e77) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60548, sha256=6e9061489e7de8279d3329886aa180947708301dd7a8b228d2a5c48443628e77]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Africa (continental overview)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "No. The paper is a macro-level thematic overview of natural freshwater resources (lakes, rivers, swamps, aquifers) as drivers of economic sectors across Africa (agriculture, livestock, hydropower, manufacturing, tourism, health, payment for ecosystem services, fisheries, transboundary cooperation and maritime trade), mentioning drinking water and sanitation only in passing via secondary UN reports.",
+      "c2": "No under the narrow 2026-10-13 rule-type reading, and fails overall regardless of reading. Under the plain wording of Criterion 2, the paper briefly discusses macro-institutional natural-resource mechanisms—specifically Payment for Ecosystem Services (PES) credits, transboundary river-basin agreements (such as Nile water-sharing treaties) and generic calls for sound national water policies—which concern macro watershed/resource governance rather than household water or sanitation service governance (even if generously treated as touching institutional factors under the plain wording, the study still fails c1, c3, c4 and c5, so plain_criterion2_decision is exclude). Under the narrow 2026-10-13 clarification, Criterion 2 is clearly not met because no rule-type mechanism directly governing household or community water/sanitation service access (eligibility screening, administrative burden, tenure/documentation rules, tariff/cost-recovery rules, discretion, enforcement or utility regulatory structure) is examined.",
+      "c3": "No. This is a non-systematic narrative review and policy overview synthesizing secondary UN/FAO/UNEP grey reports, websites and literature from 2000–2015 under a conceptual sustainability framework, with no primary empirical data and no systematic empirical synthesis methods (no study eligibility criteria, search flow/counts, extraction or synthesis of empirical studies). Excluded as E05.",
+      "c4": "No. The paper reports no empirical outcome measuring household or community water or sanitation access, connection, availability, continuity, quantity, affordability or exclusion, citing only aggregate background figures from secondary UN reports in passing.",
+      "c5": "No. As a broad continental narrative review of economic sectors, there is no identifiable empirical population/unit of analysis, legal/administrative exposure or measured service-access outcome.",
+      "c6": "Yes. Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2, Section 2. Materials and methods",
+        "quote": "The methodological approach of this study involved extensive review of both peer-reviewed and grey literature published from the year 2000–2015."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5, Section 3.7. Payment for ecosystem services (PES)",
+        "quote": "Water resources can provide the service directly through the water market but also aid other ecosystems in providing their services to the respective markets."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5, Section 3.6. Health",
+        "quote": "UN Water (2008) approximated that 340 million people were lacking access to safe drinking water; and whether water resources will transform the continent through their effect on human health and labour will depend on the commitment of governments to provide safe drinking water to the populations."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 8, Section 4. Conclusion",
+        "quote": "Water resources have been noted to penetrate every interstice of life and to support all sectors of economic growth. However, the way of life in Africa does not reﬂect this kind of wealth in water resources majorly owing to degradation and underutilization of these resources."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "not reported",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded at full text (E05: No empirical evidence; also outside service-access and rule-type mechanism scope). Mugagga and Nabaasa (2016) present a narrative, non-systematic thematic review of secondary reports and online literature on the role of Africa's natural water resources across macro-economic sectors (agriculture, livestock, hydropower, manufacturing, tourism, health, payment for ecosystem services, fisheries, transboundary river cooperation and trade) in achieving the SDGs. It contains no primary empirical data and is not a systematic empirical synthesis, nor does it empirically examine any rule-type legal, administrative or regulatory mechanism governing household or community water or sanitation service access.",
+    "record_id": "R5D1990E27D97",
+    "study_design": "Narrative literature review"
+  }
+}

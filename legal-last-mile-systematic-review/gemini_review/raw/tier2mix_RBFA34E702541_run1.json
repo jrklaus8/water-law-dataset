@@ -1,0 +1,281 @@
+{
+  "record_id": "RBFA34E702541",
+  "order": 61,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "758d46461b4e34482503c6cc2e539f14b302683a6aad470bce66183d7df18066",
+  "input_text_sha256": "f7436f827905bed566d5c1c1851313c8e35c169efb52ec435b5b1f76e77a4107",
+  "prompt_sha256": "8f106721ca427853625dbf41148afa639394d16ab6d9a904e21f06333e5e16b2",
+  "started_at": "2026-11-20T04:52:31.343540+00:00",
+  "completed_at": "2026-11-20T04:55:22.033262+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RBFA34E702541\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RBFA34E702541\n- Title: Community identification moderating the impact of financial incentives in a natural social dilemma: Water conservation\n- Authors: Mark Van Vugt\n- Year: 2001\n- DOI: 10.1177/01461672012711005\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: f7436f827905bed566d5c1c1851313c8e35c169efb52ec435b5b1f76e77a4107) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=58267, sha256=f7436f827905bed566d5c1c1851313c8e35c169efb52ec435b5b1f76e77a4107]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United Kingdom",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (and matches Exclusion Criterion 7: water-resource studies unrelated to household or community service access). The paper investigates voluntary domestic water conservation and restraint of resource demand in a common-pool natural social dilemma among already-connected households in an affluent English town (where all sampled properties already had piped water and meters installed, plus an option after a prior trial to revert to fixed billing), paired with a student laboratory game on harvesting points from a shared resource pool. It does not examine household or community access to water or sanitation services.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, the paper passes Criterion 2 because the field study examines utility tariff structure (variable volumetric metered charges vs. fixed property-value-based charges following a national metering trial), which is a regulatory/institutional pricing factor (alongside psychological community identification). Under the narrow 2026-10-13 rule-type reading, Criterion 2 fails: although variable versus fixed utility billing is a tariff rule in form, here it does not directly govern service access (eligibility, connection, affordability, continuity, or disconnection), and is instead analyzed strictly as a behavioral financial incentive moderated by psychological community identification to curb discretionary summer water overuse (conservation) among affluent connected households. Even under the plain wording of Criterion 2, the overall full-text decision remains exclude (plain_criterion2_decision = exclude) because Criteria 1 and 4 are not met.",
+      "c3": "Satisfies Criterion 3. Reports primary quantitative empirical data from a 9-month longitudinal field study of 278 households in Chandler's Ford, UK (combining monthly utility meter readings from March to November 1997 with mail survey data) and a controlled 2x2x2 factorial laboratory experiment with 77 university undergraduates.",
+      "c4": "Fails Criterion 4. Although the field study measures monthly household water consumption volume (in 1,000 liters per household per month/season), this volume is studied solely as discretionary demand curtailment / environmental conservation (e.g., restraining summer outdoor garden sprinkling and swimming pool use in affluent connected homes, where mean use ranged from ~10,050 to ~21,930 liters/month), and the lab study measures hypothetical point requests (0 to 10) from a common pool. No outcome relevant to service access, connection, service availability, reliability, continuity, basic-needs sufficiency, affordability, or exclusion/disconnection is reported.",
+      "c5": "Satisfies Criterion 5. Population and unit of analysis (278 metered households in Chandler's Ford, UK; 77 undergraduate students at Southampton University), exposures (variable vs. fixed tariff system, community/group identification, and season/resource state), outcomes (monthly household water use in 1,000 liters; common-pool point requests), and study designs (observational longitudinal utility-meter panel with survey; factorial laboratory experiment) are clearly reported.",
+      "c6": "Satisfies Criterion 6. Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 11",
+        "quote": "This research will focus on water conservation as an example of a natural social dilemma. Water shortages are regarded as the biggest resource threat for societies worldwide (OECD, 1998)."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 11",
+        "quote": "This study was conducted in Chandler’s Ford, a relatively affluent town in the Southern part of England in the county of Hampshire."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 11",
+        "quote": "A common example is the installation of domestic water meters, which makes it possible to charge households for the water that they use rather than charging a fixed rate that is independent of actual use."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 11",
+        "quote": "Over a 9-month interval, both consumption and survey data were collected in 278 households in the United Kingdom, 203 of which were on a variable tariff (i.e., charges related to use) and 75 on a fixed tariff (i.e., charges unrelated to use)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 11",
+        "quote": "In the field study, low community identifiers on a fixed tariff showed a strong increase in water use in the summer of 1997 compared to other user groups."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Field study: Utility tariff structure (variable volumetric metered tariff vs. fixed property-value-based tariff) moderated by household community identification across spring, summer, and fall seasons. Laboratory study: Simulated tariff system (variable fee per point vs. fixed standard fee), manipulated university group identification (low vs. high), and common resource pool state (shortage vs. abundance).",
+    "outcome": "Field study: Average monthly domestic water consumption (in 1,000 liters per household per season) as a measure of voluntary water conservation/restraint versus summer overuse. Laboratory study: Number of points (0 to 10) requested by participants from a shared common resource pool.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Field study: 278 metered households (out of 593 sampled; 203 variable tariff, 75 fixed tariff) in Chandler's Ford, Hampshire, England (unit of analysis: household). Laboratory study: 77 psychology honors undergraduates (43 female, 34 male) at the University of Southampton (unit of analysis: individual participant).",
+    "rationale": "Excluded as E01 (Wrong topic; aligns with Exclusion Criterion 7: water-resource studies unrelated to household or community service access). Van Vugt (2001) is a social-psychological study of common-pool natural resource conservation, testing whether psychological community identification moderates financial incentives (variable metered vs. fixed property-value tariffs) in curbing summer water overuse among already-connected households in an affluent UK town, paired with a student laboratory point-harvesting game. It does not examine household or community water or sanitation service access, eligibility, connection, affordability, reliability, basic water sufficiency, or disconnection. Under the plain wording of Criterion 2, the comparison of utility tariff systems satisfies Criterion 2, whereas under the 2026-10-13 narrow reading the tariff variable is studied as a conservation incentive rather than a rule-type mechanism directly governing service access; under both readings the full-text decision is exclude because Criteria 1 and 4 are not satisfied.",
+    "record_id": "RBFA34E702541",
+    "study_design": "Longitudinal observational field study combining 9-month household utility meter records with a cross-sectional mail survey, paired with a 2x2x2 between-participants factorial laboratory experiment"
+  }
+}

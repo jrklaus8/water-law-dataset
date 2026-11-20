@@ -1,0 +1,281 @@
+{
+  "record_id": "R33DFBC17F664",
+  "order": 101,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a8bd2e71876791af4382a9196425409f4de4addb83b1f715fd6b38b2f538a2c2",
+  "input_text_sha256": "f189810e95ac677c7d14496096ec943b429224533ef21e4c7e2ca4a2e638016d",
+  "prompt_sha256": "f30f15e32f8e4c7bb5e4b02cd60c9e6700fb61e1a106cae36a6676c15fc176db",
+  "started_at": "2026-11-20T05:04:29.881532+00:00",
+  "completed_at": "2026-11-20T05:05:52.358007+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R33DFBC17F664\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R33DFBC17F664\n- Title: Systemic Conditions Affecting the Universalisation of Water and Sanitation Services: A Sociological Exploration\n- Authors: Castro, Jose Esteban\n- Year: 2007\n- DOI: 10.1080/17486830701494590\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: f189810e95ac677c7d14496096ec943b429224533ef21e4c7e2ca4a2e638016d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=50560, sha256=f189810e95ac677c7d14496096ec943b429224533ef21e4c7e2ca4a2e638016d]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Global (illustrative secondary examples from sub-Saharan Africa, Europe, England and Wales, Brazil, China, India, Mexico, Bolivia, Israel, USA, and Argentina)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines universalisation of and household/population access to drinking water and sanitation services (WSS), including global MDG coverage trends and water affordability/poverty.",
+      "c2": "Plain wording: YES — discusses institutional, governance, and policy factors in water and sanitation (neoliberal water policy reforms, commercialisation, commodification, privatisation vs public provision, and absence of regulatory frameworks). Narrow 2026-10-13 rule-type reading: NO — explicitly frames its subject as macro-level 'systemic conditions' external to the specific running of WSS and critiques global neoliberal ideology and commodification in general narrative terms rather than empirically examining a specific operational rule-type mechanism governing household access (though even if general mentions of utility privatisation and ability-to-pay principles were credited, the paper still fails c3_empirical).",
+      "c3": "Explicitly published as an 'Overview Article' (narrative sociological exploration and critical policy essay introducing themes in a special issue). Contains no primary empirical data collection, no qualitative or quantitative research methodology, and no systematic empirical synthesis method; relies solely on narrative literature commentary and two descriptive summary tables adapted from WHO-UNICEF (2006). Excluded under E05.",
+      "c4": "Does not report empirical study outcomes from an original investigation or systematic synthesis; only reproduces illustrative secondary aggregate coverage figures from WHO-UNICEF (2006) (Tables 1 and 2) and cites secondary estimates of water debt/water poverty in England and Wales within a narrative essay.",
+      "c5": "Lacks an identifiable empirical study design, analytical sample, and operationalised exposure-outcome analysis because it is a conceptual and policy overview essay.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 16 (Abstract, p. 105)",
+        "quote": "The article examines current global trends in the expansion of water and sanitation services, and discusses the systemic conditions affecting their provision."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 16 (The Systemic Conditions: Mainstream WSS Public Policy, p. 111)",
+        "quote": "In particular, we focus here on two aspects that are core elements of mainstream WSS policy: (a) the reversal of the values of universalism in the access to essential public services, and (b) the attempt to transform the provision of essential public services into a commercial enterprise, and preferably into one that is privately run and profit oriented."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 16 (Conclusions, p. 115)",
+        "quote": "For this reason, the implementation of public policy and management models in WSS must consider the existence of systemic conditions; that is, factors and processes that are mostly external to the specific field and internal logic of essential public services but that often determine the conditions under which these services are organised and delivered."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12 of 16 (Conclusions, p. 115)",
+        "quote": "It is our hypothesis that achieving success in the design and implementation of present and future WSS policies as those required to meet the MDGs can only happen through the amalgamation of a similarly broad and universalistic alliance of social forces that may help to foster a new vision for defending the common good."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 16 (Current Trends, p. 107)",
+        "quote": "As shown in Table 1, predictions based on the interpolation of current trends suggest that not only the MDGs for WSS may not be reached, but actually regions such as sub-Saharan Africa will experience a significant increase in the absolute number of unserved people."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Macro-level systemic conditions (structural social inequalities) and mainstream neoliberal water and sanitation policies (commercialisation, commodification, privatisation)",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "This paper (labeled 'Overview Article' in Journal of Comparative Social Welfare) is a non-empirical sociological essay and critical policy overview examining global trends in water and sanitation universalisation, structural social inequalities, and neoliberal water reforms since the 1980s. Although it addresses water and sanitation access (c1) and discusses governance/policy themes that satisfy the plain wording of Criterion 2 (and treats macro-level systemic conditions and ideological commodification as policy background rather than analysing a concrete rule-type access mechanism under the narrow 2026-10-13 reading), it reports no primary empirical research, no qualitative or quantitative data collection/analysis methods, and no systematic synthesis methodology, citing only secondary WHO-UNICEF summary tables and existing literature. Under both the narrow and plain readings of Criterion 2, it must be excluded as E05 (No empirical evidence).",
+    "record_id": "R33DFBC17F664",
+    "study_design": "Narrative sociological overview / policy commentary essay (non-empirical Overview Article)"
+  }
+}

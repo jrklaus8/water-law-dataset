@@ -1,0 +1,286 @@
+{
+  "record_id": "R33A58A02E5F6",
+  "order": 56,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "dd89760d7e0db0f97c0982b24124d7763b3f3ffd79a52269225a3a09553d6f25",
+  "input_text_sha256": "e8507ae5b1803b1eb8ad76b24425ff375f9656e8adb376dca33104fd0aa10995",
+  "prompt_sha256": "eaeec5c77c3afcc7a385c25962afa60972ecb70b3faa4ada030c73f9ae4ffec9",
+  "started_at": "2026-11-20T04:49:00.968696+00:00",
+  "completed_at": "2026-11-20T04:50:07.928073+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R33A58A02E5F6\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R33A58A02E5F6\n- Title: Wastewater management by citizens: mismatch between legal rules and self-organisation in Oosterwold\n- Authors: van Karnenbeek, L; Salet, W; Majoor, S\n- Year: 2021\n- DOI: 10.1080/09640568.2020.1829572\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: e8507ae5b1803b1eb8ad76b24425ff375f9656e8adb376dca33104fd0aa10995) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=62510, sha256=e8507ae5b1803b1eb8ad76b24425ff375f9656e8adb376dca33104fd0aa10995]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "The Netherlands",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household wastewater/sanitation service delivery and sewer connection access in the Oosterwold urban development (Almere, the Netherlands), where public authorities withheld centralised municipal sewerage and required residents to self-provide onsite sewage facilities (OSSFs) before later mandating municipal sewer connections for non-compliant and future households.",
+      "c2": "Passes BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain reading, it examines EU, national, provincial, and municipal environmental and water governance and legal frameworks. Under the narrow 2026-10-13 reading, it directly analyses concrete rule-type mechanisms governing household sanitation access and service responsibility: the statutory municipal sewer-provision mandate and provincial waiver rule (Section 10.33 of the Dutch Environmental Management Act), experimental regulatory derogations under the Crisis and Recovery Act, mandatory anterior residency agreements requiring plot buyers to self-provide wastewater treatment as a condition of residence, water board discharge permitting rules (requiring Category III OSSFs), compliance inspections/enforcement, pollution vs. sewer cost-recovery levies, and administrative accommodation/reversal restoring municipal sewer connections.",
+      "c3": "Empirical socio-legal case study triangulating doctrinal legal analysis, systematic document analysis of municipal plans, permits, land transfer, anterior, and water agreements, 3 pilot interviews and 19 semi-structured key-actor interviews (residents, lawyers, policymakers, project members, environmental specialists), and administrative water-board OSSF inspection data (n=40 and n=199 OSSFs). Qualitative/case-study empirical socio-legal studies are eligible for systematic review inclusion.",
+      "c4": "Reports concrete outcomes relevant to sanitation service availability, connection, and reliability: initial exclusion from centralised municipal sewer infrastructure, near-universal household installation of individual OSSF III systems (rather than collective networks), high operational/regulatory failure rates of household systems (28 of 40 failing initially; 33 of 199 failing in November 2019) causing water/soil pollution, and the spring 2020 regulatory decision to connect residents with inadequate OSSFs and all future residents to the municipal sewage system.",
+      "c5": "Population/unit of analysis (resident households/plots in Oosterwold, Almere, with 199 inspected household OSSFs and 19 key-actor interviews), exposure (experimental legal/regulatory shift from mandatory municipal sewerage to resident-arranged OSSF provision under anterior agreements, discharge permits, and omitted provincial waiver), outcome (service delivery mode, OSSF failure/non-compliance rates, and eventual municipal sewer connection), and study design (empirical socio-legal case study) are all clearly identifiable.",
+      "c6": "Full text is in English, an eligible language without translation."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 10",
+        "quote": "The public actors in Oosterwold decided not to install a centralised sewage system. Without a sewage system, the public actors enabled citizens to develop the site incrementally."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9",
+        "quote": "Section 10.33 of the EMA imposes a municipal duty to collect and transport wastewater by a sewage system within the municipal territory."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11",
+        "quote": "The public actors obliged residents to sign an anterior agreement in which residents agree to collect, treat and dispose of wastewater, as a prerequisite for residing in Oosterwold."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7",
+        "quote": "Furthermore, 19 key actor interviews served to develop a detailed description of Oosterwold and wastewater management, to cross-check the findings and to identify the experience of the residents and public actors (Weiss 1995)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11",
+        "quote": "At the beginning of the project, one measurement showed that 28 of 40 OSSFs failed to meet these requirements."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12",
+        "quote": "From now on, residents who operate an effective OSSF system may keep it; however, future residents and residents with inadequate OSSFs will be connected to the sewage system."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Experimental legal and regulatory regime governing wastewater service provision in Oosterwold (derogation under the Crisis and Recovery Act, municipal decision not to install centralised sewerage without obtaining a provincial waiver under Section 10.33 of the Environmental Management Act, mandatory anterior residency agreements shifting wastewater provision to residents, water board discharge permits requiring OSSF III units, periodic enforcement inspections, and pollution levies).",
+    "outcome": "Household wastewater service arrangement and sewer connection status (exclusion from centralised sewerage and near-universal adoption of individual OSSF III units rather than collective systems; household OSSF non-compliance/failure rates of 28/40 initially and 33/199 in November 2019 with deteriorating water quality; and the spring 2020 decision to connect non-compliant OSSF households and future residents to the municipal sewage system).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Resident households/plots and public institutional actors in the Oosterwold urban development area, Almere, the Netherlands (3 pilot interviews, 19 semi-structured key-actor interviews, policy/contract documents, and water board monitoring of 40 initial and 199 November 2019 household onsite sewage facilities).",
+    "rationale": "This socio-legal empirical case study satisfies all systematic review inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. It examines household wastewater/sanitation service provision and municipal sewer connection in Oosterwold (Almere, the Netherlands), analysing concrete legal and regulatory rules governing service access and responsibility (the statutory municipal sewer duty and provincial waiver rules under EMA s. 10.33, Crisis and Recovery Act experimental rules, mandatory anterior residency agreements, water board discharge permits, inspections, and levies) using interviews, document analysis, and water board inspection data (28/40 and 33/199 OSSF failures), culminating in mandatory municipal sewer connections for non-compliant and future households.",
+    "record_id": "R33A58A02E5F6",
+    "study_design": "Qualitative/mixed-methods socio-legal empirical case study (combining doctrinal legal analysis, policy/contract document analysis, 3 pilot and 19 semi-structured key-actor interviews, and administrative water-board OSSF compliance monitoring records)"
+  }
+}

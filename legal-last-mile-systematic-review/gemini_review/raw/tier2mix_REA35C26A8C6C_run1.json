@@ -1,0 +1,286 @@
+{
+  "record_id": "REA35C26A8C6C",
+  "order": 112,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "28d5fb42701e0a023fa8c48051d4506f1085b34065135561feff53e83ae804c4",
+  "input_text_sha256": "e77a006bfa334a26269c13efd5d15fab70cfee821e34f1a43f148717db983732",
+  "prompt_sha256": "9391eea5b4b5a7f80ebaedb6add868893a7bf446fbd9e1d0f610f82203a919bc",
+  "started_at": "2026-11-20T05:05:52.378843+00:00",
+  "completed_at": "2026-11-20T05:09:04.065344+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD REA35C26A8C6C\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: REA35C26A8C6C\n- Title: A compliance assessment tool for household pit latrines and cesspits against RS ISO 24521: evidence from Kigali City\n- Authors: Murebwayire M.L.; Nilsson E.; Wali U.G.; Nhapi I.\n- Year: 2026\n- DOI: 10.3389/fpubh.2026.1795680\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: e77a006bfa334a26269c13efd5d15fab70cfee821e34f1a43f148717db983732) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=149937, sha256=e77a006bfa334a26269c13efd5d15fab70cfee821e34f1a43f148717db983732]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Rwanda",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household onsite sanitation services (pit latrines and cesspits) in Kigali City, covering SDG 6.2 safely managed sanitation compliance, shared versus unshared household toilet access, affordability, and physical accessibility for fecal sludge emptying services (restricted to households that already had a pit latrine or cesspit).",
+      "c2": "Passes the plain/literal wording of Criterion 2, but fails the active 2026-10-13 narrow rule-type mechanism reading (plain_criterion2_decision = include; narrow decision = exclude, E03). Under the plain wording, the study references and measures regulatory/institutional elements: compliance against national standard RS ISO 24521 and RURA fecal sludge management guidelines, whether authorities ever conducted a sanitary inspection, respondent awareness of toilet construction regulations, master-planned (new) versus old settlements, and owner versus tenant housing tenure. Under the narrow 2026-10-13 rule-type reading, no legal, administrative, or regulatory rule-type mechanism directly governing service access is empirically examined: (1) all surveyed households already had a pit latrine or cesspit, and RS ISO 24521 is operationalized by the authors as a 26-item technical/hygienic facility quality scoring rubric (dependent variable) rather than a rule governing service eligibility or access; (2) house tenure (owning vs. renting) and Ubudehe wealth categories are standard household socio-demographic covariates, not legal documentation/tenure requirements or tariff/cost-recovery rules; (3) sanitary inspections by authorities and knowledge of construction regulations are sub-indicators embedded inside the environmental and sustainability compliance scores (and dropped in the refined tool as regards inspections) rather than analyzed as enforcement mechanisms governing service access; and (4) landlord accountability rules, subsidies, and stronger enforcement appear only as respondent/author policy recommendations.",
+      "c3": "Contains primary quantitative empirical evidence from a cross-sectional household survey, structured sanitation facility inspection, and direct observation of 903 households in Gasabo District, Kigali, analyzed using descriptive statistics, Generalized Linear Mixed Models (GLMM), and Rao-Scott adjusted Chi-square tests.",
+      "c4": "Reports outcomes relevant to sanitation service access, availability, and affordability alongside structural/hygienic containment indicators, specifically unshared household facility status (37.4% for pit latrines, 92.5% for cesspits), facility affordability, emptying frequency and accessibility for emptying services, and overall safely managed compliance with RS ISO 24521 objectives.",
+      "c5": "Clearly identifies the population and unit of analysis (903 households/onsite facilities with pit latrines or cesspits in five sectors of Gasabo District), exposures (household socio-demographic/housing covariates and physical pit attributes), outcomes (binary full compliance and 26 indicator-level compliance measures), and cross-sectional survey/inspection study design.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "This study developed and tested an assessment tool to evaluate the compliance of households’ pit latrines and cesspits against RS ISO 24521 and identify factors associated with compliance."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 10",
+        "quote": "Included households were only surveyed if they had a pit latrine or a cesspit."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 11",
+        "quote": "The survey achieved a response rate of 93%, with 903 valid responses included in the analysis. Of these, 436 were households using pit latrines (48%), and 467 were households using cesspits (52%)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11",
+        "quote": "The demographic characteristics used as fixed effects in the GLMM are detailed in Table 1, and include Wealth of household, Residential type, Type of settlement, House tenure, Presence of piped water, and Age of the pit."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 16",
+        "quote": "Sharing facilities was also significantly associated with house tenure, where shared pit latrines were more likely to be found among tenants in compounds and low-income households than in wealthier households, owning or living in single-family houses. This finding suggests the likelihood of reduced access to sanitation among households living in compounds and those who are tenants."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 26",
+        "quote": "Among pit latrine users, 3.9% recommended regulating the responsibilities of landlords regarding sanitation services. This recommendation stems from challenges in delineating accountability for the operation and maintenance of shared latrines, including emptying, cleaning, and structural upkeep; issues that were closely linked to facility sharing, house tenure, and the physical condition of the pit latrine."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Household socio-demographic and housing characteristics (Ubudehe wealth category, multi-household compound vs. single-family residential type, new master-plan vs. old settlement type, renting vs. owning house tenure, piped water in compound, pit age) and technical pit characteristics (sharing, pit condition, depth, emptying frequency, lining)",
+    "outcome": "Compliance of household pit latrines and cesspits with four RS ISO 24521 standard objectives (Protection of Public Health, Meeting Needs and Expectations of Users, Sustainability, Protection of Environment) and 26 constituent indicators including unshared sanitation status, affordability, user satisfaction, safety, and emptying service accessibility and frequency",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "903 households using pit latrines (n = 436) or cesspits (n = 467) across five purposively selected sectors (Gisozi, Ndera, Rusororo, Kacyiru, Kimironko) of Gasabo District, Kigali City, out of 969 sampled households (unit of analysis: household / onsite sanitation facility)",
+    "rationale": "Excluded under E03 (Wrong exposure) on the active 2026-10-13 narrow rule-type reading of Criterion 2. Although this cross-sectional empirical survey of 903 households in Kigali examines household onsite sanitation outcomes (including unshared latrine access, affordability, emptying service accessibility, and compliance with RS ISO 24521), it only surveys households that already possess a pit latrine or cesspit and operationalizes RS ISO 24521 as a technical/hygienic facility quality scoring tool (dependent variable) modeled against household socio-demographic, housing occupancy (renting vs. owning), and physical pit characteristics. It does not empirically examine a legal, administrative, or regulatory rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure requirements to obtain service, tariff/cost-recovery rules, discretion, or regulatory enforcement governing access). Under the broad plain wording of Criterion 2, it would be included because it assesses compliance with a national regulatory/technical standard and measures sanitary inspections, regulatory awareness, master-plan settlement status, and housing tenure.",
+    "record_id": "REA35C26A8C6C",
+    "study_design": "Cross-sectional household survey, sanitation facility inspection, and direct observation analyzed with Generalized Linear Mixed Models (GLMM) and Rao-Scott adjusted Chi-square tests"
+  }
+}

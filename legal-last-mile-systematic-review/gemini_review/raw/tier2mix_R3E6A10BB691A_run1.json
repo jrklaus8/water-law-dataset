@@ -1,0 +1,276 @@
+{
+  "record_id": "R3E6A10BB691A",
+  "order": 111,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "21d74bba53dd9ccdde242e9c19ee4a4792452d0a8344f550935bceeaa395f62f",
+  "input_text_sha256": "b95317548a908b22868cea1676fdfd4c8b47ec6da8d5856f82a27b095e2ffef3",
+  "prompt_sha256": "4960102eb99bea54cafc9b23315a6b6a81eb6ad2aa1ea829959c2597bed91dea",
+  "started_at": "2026-11-20T05:05:52.372996+00:00",
+  "completed_at": "2026-11-20T05:06:44.800776+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R3E6A10BB691A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R3E6A10BB691A\n- Title: Effect of governance models on enhancing water service delivery\n- Authors: Herrala M.E.; Haapasalo H.J.O.\n- Year: 2012\n- DOI: 10.1108/09513551211252396\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b95317548a908b22868cea1676fdfd4c8b47ec6da8d5856f82a27b095e2ffef3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=54693, sha256=b95317548a908b22868cea1676fdfd4c8b47ec6da8d5856f82a27b095e2ffef3]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Finland",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access; focuses entirely on internal corporate governance, accounting, tax liability, procurement, decision-making autonomy, and institutional financing of Finnish waterworks.",
+      "c2": "Plain wording: YES — examines three public utility governance and legal-ownership models in Finland (municipal unit under the Municipality Act, municipal-owned enterprise, and municipal-owned company under the Limited-liability Companies Act, alongside procurement and cost-recovery statutes). Narrow 2026-10-13 rule-type reading: NO — although utility ownership structure can qualify when directly governing service access, here the governance models are analysed solely as internal corporate/financial management structures (bookkeeping separation, tax treatment, procurement compliance, board autonomy, and institutional investor access) rather than rule-type mechanisms directly governing household or community service access. Even under the plain wording of Criterion 2, the study is excluded because it fails Criteria 1 and 4.",
+      "c3": "Contains primary qualitative empirical evidence from semi-structured interviews with 9 managers across 11 Finnish waterworks (plus FIWA and local authority representatives) and an online questionnaire of FIWA member waterworks managers (38 of 278 responding, 13.7% response rate), analysed via SWOT frameworks.",
+      "c4": "Reports no outcome relevant to household or community service access, connection, availability, reliability, continuity, quantity, affordability, or exclusion. Evaluated outcomes are internal organizational and financial attributes: business orientation, bookkeeping accuracy, financial/operational transparency, tax liability, municipal political interference in board decisions, and opportunities for institutional investors.",
+      "c5": "Unit of analysis (Finnish water and sewage utilities), exposure (MU, MOE, and MOC public governance models), qualitative managerial/financial outcomes, and descriptive qualitative interview/survey SWOT design are clearly identifiable, though the outcomes fall outside review scope.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 2 of 20 (Abstract)",
+        "quote": "According to this study, restructuring appears to increase business orientation, improve accuracy in bookkeeping and, in some cases, increase transparency. The selection of the right governance model also provides opportunities for institutional investors."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 3 of 20 (Research process)",
+        "quote": "The objective of this research is to study the three most common public governance models used in the Finnish water sector and evaluate how they affect the performance of waterworks."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 4 of 20 (Research process)",
+        "quote": "The main source of empirical data were semi-structured interviews. The interviewees were selected among Finnish waterworks’ managers to represent the current state of the waterworks, different governance models and the water sector as well as possible."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 14 of 20 (Conclusions)",
+        "quote": "According to the results of this research, restructuring waterworks from MUs into MOEs and MOCs appears to increase business orientation, improve accuracy in bookkeeping and, in the case of MOEs, increase transparency."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Three Finnish public utility ownership and governance models: municipal unit (MU), municipal-owned enterprise (MOE), and municipal-owned company (MOC)",
+    "outcome": "Internal organizational and financial management attributes of waterworks (business orientation, bookkeeping accuracy, transparency of financial/operational information, tax treatment, political interference in board decision-making, and institutional investor financing opportunities)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Finnish public water and sewage utilities (semi-structured interviews with 9 managers in 11 waterworks plus representatives of FIWA and Finnish Local and Regional Authorities; online questionnaire with 38 responses from 278 FIWA member waterworks managers)",
+    "rationale": "Excluded under E04 (Wrong outcome). While this qualitative empirical study examines public utility ownership and governance models in the Finnish water and sewage sector (MU, MOE, and MOC), it evaluates only internal corporate, accounting, and financial management attributes—specifically bookkeeping separation and accuracy, public disclosure/transparency, corporate tax treatment, municipal political influence over board decisions, business orientation, and opportunities for institutional investors. It does not examine household or community water or sanitation service access (c1 = no) and reports no outcome relevant to service access, connection, availability, reliability, continuity, quantity, affordability, or exclusion (c4 = no). Accordingly, the paper is excluded under both the narrow 2026-10-13 rule-type reading and the plain wording of Criterion 2.",
+    "record_id": "R3E6A10BB691A",
+    "study_design": "Descriptive qualitative study using semi-structured interviews, an online manager questionnaire, and SWOT analysis"
+  }
+}
