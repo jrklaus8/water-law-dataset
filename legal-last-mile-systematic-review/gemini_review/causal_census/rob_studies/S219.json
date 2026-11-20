@@ -1,0 +1,110 @@
+{
+  "study_id": "S219",
+  "record_id": "RAADC767776C7",
+  "order": 25,
+  "retrieval_status": "retrieved_drive_pdf",
+  "chosen_tool": "ROBINS-I",
+  "confidence": "high",
+  "cross_tool_domains": {
+    "attrition": "Serious risk: The dataset is an unbalanced panel (N = 1,142 total observations; N = 983 in Table 3 regressions, losing ~14% of observations due to missing SNIS sewage coverage data), post-entry tariff resolutions could not be located for all subsequent years, and multi-year gaps where contacted regulatory agencies did not respond were imputed as 0% nominal tariff adjustments without sensitivity checks (PDF pp. 10-13, pp. 133-136).",
+    "confounding": "Serious risk: Municipal and state elections in Brazil occur on fixed nationwide 4-year schedules across all municipalities simultaneously, yet the panel regressions omit general calendar-year fixed effects (controlling only for a 2020 COVID-19 dummy, post-July 2020 Novo Marco dummy, municipal GDP, population, water/sewage coverage, ordinary contract revisions, utility ownership, and agency jurisdiction). Nationwide macroeconomic or IPCA inflation shocks in specific calendar years remain confounded with election years, and contemporaneous water/sewage coverage is included as a regressor despite theoretical endogeneity.",
+    "legal_measurement_quality": "Adequate with notable limitations: The authors compiled primary administrative tariff resolutions from 88 ANA-recognized subnational regulatory agencies (46 municipal, 26 state, 16 intermunicipal), coded ordinary contract equilibrium revisions (Revisão), distinguished municipal titularidade and agency jurisdiction, and included an indicator for the July 2020 Novo Marco do Saneamento (PDF pp. 10-14, pp. 133-137). However, statutory precision is limited, exact intra-year tariff adjustment dates relative to October elections are not distinguished, text descriptions contain coding typos (PDF p. 12, p. 135), and unconfirmed multi-year gaps in agency resolutions were assumed to represent 0% adjustments.",
+    "measurement_bias": "Serious risk: When online normative resolutions had gaps exceeding one year and regulatory agencies did not reply to inquiries, nominal tariff adjustments were assumed to be 0% (PDF p. 10, p. 133), conflating missing administrative records with real tariff erosion once deflated by IPCA. Additionally, the text misstates the municipal election dummy definition (PDF p. 12, p. 135), Table 1 prints an impossible negative maximum (-0,661) for nominal adjustments (PDF p. 11, p. 134), Table 3 duplicates the eleicoes_municipais row label (PDF p. 13, p. 136), and the Hausman test p-value (0.003) is misinterpreted in the prose as failing to reject the null hypothesis (PDF p. 13, p. 136).",
+    "outcome_measurement_quality": "Weak / Serious concern: Although the study's title and theoretical model focus on social welfare and sanitation network expansion, no physical water/sewage access, service quality, or welfare outcome is evaluated as a dependent variable in Section 4 (SNIS water and sewage coverage ratios AG001 and ES001 are used only as right-hand-side controls). The sole empirical dependent variable is an intermediate regulatory pricing measure (real tariff variation, Variação_real), which is vulnerable to misclassification from imputing 0% nominal changes whenever contacted agencies failed to respond about missing resolutions.",
+    "reporting_bias": "No information on pre-specification, with incomplete reporting Concerns: No pre-registration or pre-analysis plan exists. Although Pooled OLS, Fixed Effects, and Random Effects estimates are shown together in Table 3 (PDF p. 13, p. 136), coefficient estimates for the full vector of control variables (municipal GDP, population, contract revisions, Novo Marco dummy, 2020 pandemic dummy, state ownership, agency jurisdiction) are omitted from Table 3, one election regressor is mislabeled, and empirical tests of actual system expansion are absent despite SNIS coverage panel data being collected.",
+    "selection_bias": "Serious risk: Inclusion in the unbalanced panel required being regulated by one of the 88 ANA-recognized subnational agencies with online normative resolutions and having enacted at least one tariff adjustment between 2002 and 2021 (starting from the oldest located adjustment). As the authors explicitly note (PDF p. 14, p. 137), municipalities that enacted zero tariff adjustments over the entire study period—potentially those subject to the highest political interference—are completely excluded from the sample, inducing sample selection directly related to the regulatory outcome."
+  },
+  "domain_ratings": [
+    {
+      "domain_id": "D1",
+      "domain_name": "Bias due to confounding",
+      "justification": "In Brazil, municipal elections and state/general elections occur on fixed nationwide 4-year calendars simultaneously across all jurisdictions. Because the panel specifications (Pooled OLS, Fixed Effects, Random Effects) do not include general year fixed effects—controlling only for municipal GDP, population, contemporaneous water/sewage coverage, ordinary contract revisions, state ownership, agency scope, a 2020 COVID-19 dummy, and a post-July 2020 Novo Marco dummy—any nationwide macroeconomic, financing, or IPCA inflation shocks coinciding with election years are unseparated from the electoral cycle indicators (and IPCA directly enters the dependent variable Variação_real). Contemporaneous coverage rates (atend_agua, atend_esgoto) are also included as regressors despite theoretical reverse/simultaneous causation with tariff setting.",
+      "rating": "Serious",
+      "where_found": "Section 4 & Section 4.1, PDF pp. 10-13 (journal pp. 133-136), Table 3"
+    },
+    {
+      "domain_id": "D2",
+      "domain_name": "Bias in selection of participants into the study",
+      "justification": "Entry into the unbalanced panel began at the oldest tariff adjustment resolution located online for each regulated utility among the 88 ANA-recognized subnational agencies. Crucially, as the authors themselves acknowledge in Section 4.2, only municipalities that carried out at least one tariff adjustment during 2002–2021 appear in the dataset, excluding municipalities with zero adjustments over the entire period (where political interference may be strongest). Conditioning sample inclusion and panel entry on observed tariff adjustments selects participants directly on the outcome/regulatory regime.",
+      "rating": "Serious",
+      "where_found": "Section 4, Section 4.2 & Section 5, PDF pp. 10, 14-15 (journal pp. 133, 137-138)"
+    },
+    {
+      "domain_id": "D3",
+      "domain_name": "Bias in classification of interventions",
+      "justification": "Statutory municipal and state election years in Brazil are objective calendar events, which limits recall bias. However, the paper does not distinguish whether annual tariff adjustments occurred before or after the October election within an election year, misstates the coding of the municipal election dummy in the text on PDF p. 12 ('atribui o valor 1 em anos de eleições estaduais e 0 nos demais anos'), and prints 'eleicoes_municipais' twice in Table 3 without clearly labeling the state election row.",
+      "rating": "Moderate",
+      "where_found": "Section 4.1, PDF pp. 11-13 (journal pp. 134-136), Tables 2-3"
+    },
+    {
+      "domain_id": "D4",
+      "domain_name": "Bias due to deviations from intended interventions",
+      "justification": "As an observational evaluation of electoral cycles, experimental protocol deviations do not apply, but major co-interventions affecting tariff adjustments occurred during the panel—most notably 2020 (simultaneously a Brazilian municipal election year, the onset of COVID-19 tariff moratoria, and the July 2020 enactment of the Novo Marco do Saneamento) as well as periodic ordinary contract revisions. The authors partially accounted for these via dummy variables for 2020, post-July 2020, and ordinary contract revisions ('Revisão'), leaving moderate residual risk from time-varying co-interventions.",
+      "rating": "Moderate",
+      "where_found": "Section 4 & Section 4.1, PDF pp. 10, 12 (journal pp. 133, 135)"
+    },
+    {
+      "domain_id": "D5",
+      "domain_name": "Bias due to missing data",
+      "justification": "The panel is unbalanced because post-entry resolutions could not be located for all subsequent years for regulated utilities. Where intervals between located adjustments exceeded one year and regulatory agencies failed to answer inquiries, the authors imputed a 0% nominal adjustment ('assumiu-se que a tarifa não foi reajustada, ou seja, o percentual registrado na base foi de 0%'), without sensitivity analysis. In addition, missing SNIS sewage coverage reduces the regression sample from 1,142 observations (Table 1) to 983 observations (Table 3, ~14% loss) via unexamined listwise deletion.",
+      "rating": "Serious",
+      "where_found": "Section 4 & Section 4.1, PDF pp. 10-11, 13 (journal pp. 133-134, 136), Tables 1 & 3"
+    },
+    {
+      "domain_id": "D6",
+      "domain_name": "Bias in measurement of outcomes",
+      "justification": "The empirical dependent variable is real tariff variation ('Variação_real'), derived from agency normative resolutions deflated by IPCA rather than a direct measure of system expansion or welfare. Because missing multi-year resolution intervals with agency non-response were coded as 0% nominal adjustments, archival incompleteness and non-response directly fabricate negative real tariff variations equal to -IPCA. Table 1 also exhibits data quality/reporting anomalies, such as reporting a maximum nominal 'Reajuste' of '-0,661' alongside a mean of '0,06'.",
+      "rating": "Serious",
+      "where_found": "Section 4 & Section 4.1, PDF pp. 10-12 (journal pp. 133-135), Table 1"
+    },
+    {
+      "domain_id": "D7",
+      "domain_name": "Bias in selection of the reported result",
+      "justification": "No pre-registration, protocol, or pre-analysis plan is reported to verify whether the regression specifications, functional form of 'Variação_real', or omission of an empirical model for network expansion were specified ex ante. Notably, Table 3 reports Pooled, Fixed Effects, and Random Effects side by side, but omits all coefficient estimates for the control vector x, duplicates the 'eleicoes_municipais' label, and the text on PDF p. 13 misstates the Hausman test decision rule ('p-valor obtido no cálculo do teste foi de 0,003, ou seja, não rejeita-se a hipótese nula'). Per ROBINS-I guidance when no pre-analysis plan exists, rated 'No information'.",
+      "rating": "No information",
+      "where_found": "Section 4.1, PDF pp. 12-13 (journal pp. 135-136), Table 3"
+    }
+  ],
+  "evidence_quotes": [
+    {
+      "criterion": "Legal/regulatory sampling frame (ANA-recognized subnational agencies)",
+      "page": "PDF Page 10 of 19 (Section 4, p. 133)",
+      "quote": "A Agência Nacional de Águas e Saneamento Básico (ANA), reconhece 88 agências infranacionais"
+    },
+    {
+      "criterion": "Unbalanced longitudinal panel structure",
+      "page": "PDF Page 10 of 19 (Section 4, p. 133)",
+      "quote": "Observa-se que o painel construído não constitui um painel balanceado."
+    },
+    {
+      "criterion": "Missing data / outcome measurement imputation of 0% tariff adjustment on agency non-response",
+      "page": "PDF Page 10 of 19 (Section 4, p. 133)",
+      "quote": "em que não foi obtida nenhuma resposta, assumiu-se que a tarifa não foi reajustada"
+    },
+    {
+      "criterion": "Exposure coding misstatement in text for municipal election dummy",
+      "page": "PDF Page 12 of 19 (Section 4.1, p. 135)",
+      "quote": "foi criada uma variável dummy para a realização de eleições municipais, que atribui o valor 1"
+    },
+    {
+      "criterion": "Statistical reporting contradiction in Hausman test interpretation",
+      "page": "PDF Page 13 of 19 (Section 4.1, p. 136)",
+      "quote": "O p-valor obtido no cálculo do teste foi de 0,003, ou seja, não rejeita-se a hipótese"
+    },
+    {
+      "criterion": "Explicit sample selection bias excluding municipalities with zero tariff adjustments",
+      "page": "PDF Page 14 of 19 (Section 4.2, p. 137)",
+      "quote": "pois não realizaram nenhum reajuste ao longo dos anos estudados."
+    }
+  ],
+  "overall_narrative_summary": "Aquino and Ledo (2023) combine a stylized two-period game-theoretic model of regulatory price-setting under electoral incentives (Section 3) with an unbalanced municipal/utility panel econometric analysis across 88 ANA-recognized subnational sanitation regulatory agencies in Brazil from 2002 to 2021 (Section 4; N = 1,142 total observations, N = 983 in regressions). Appraised with ROBINS-I for its comparative longitudinal panel evaluation of municipal and state election years on real regulated tariff adjustments (Variação_real), the empirical component is at Serious overall risk of bias. First, there is serious selection bias (D2): utilities enter the panel at their oldest located online adjustment resolution, and municipalities that enacted zero tariff adjustments over the entire 2002–2021 period—which the authors explicitly note may reflect the most severe political interference—are completely excluded. Second, there is serious confounding risk (D1): because Brazilian municipal and state elections occur on fixed nationwide 4-year calendars across all municipalities simultaneously and the regressions omit general calendar-year fixed effects, nationwide macroeconomic and IPCA inflation shocks in election years are not separated from electoral cycle effects. Third, missing data and outcome measurement carry serious risk of bias (D5, D6): ~14% of observations are dropped in regressions due to missing SNIS sewage coverage, post-entry resolutions were not found for all years, and multi-year gaps where contacted agencies did not reply were imputed as 0% nominal adjustments (automatically generating negative real tariff changes). Finally, empirical reporting exhibits multiple editorial/technical errors—including a misstated dummy definition (p. 135), a negative maximum (-0,661) in Table 1 (p. 134), duplicated row labels and omitted control estimates in Table 3 (p. 136), a contradictory Hausman test explanation (p. 136), and no direct empirical test of physical network expansion as an outcome.",
+  "overall_rating": "Serious",
+  "paper_read": "full text",
+  "study_design_identified": "Two-period microeconomic game-theoretic model coupled with a non-randomized comparative longitudinal panel econometric study (unbalanced panel, 2002–2021, Pooled OLS, Fixed Effects, and Random Effects, N = 983 regression observations)",
+  "where_found_summary": "Structured Abstract (PDF pp. 1-2, pp. 124-125); Section 3 Modelo Teórico (PDF pp. 5-10, pp. 128-133) and Apêndice A (PDF pp. 17-19, pp. 140-142); Section 4 Dados e Evidência Empírica, including Sections 4.1-4.2 and Tables 1-3 (PDF pp. 10-14, pp. 133-137); Section 5 Considerações Finais (PDF pp. 14-15, pp. 137-138).",
+  "why_tool_chosen": "While Section 3 develops a formal two-period microeconomic model, Section 4 conducts an empirical comparative longitudinal panel evaluation (2002–2021) using Pooled OLS, Fixed Effects, and Random Effects to estimate the effect of municipal and state election years (vs. non-election years) and regulatory features on real sanitation tariff adjustments across Brazilian municipalities. Under RISK_OF_BIAS.md §1, a non-randomized comparative longitudinal/panel evaluation of an institutional/political exposure with an explicit comparator maps to ROBINS-I.",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T05:06:35.196453+00:00",
+  "file_sha256": "8783d900ff636b75875e7e0f715f9ffa9faf22e1434b3fd98cdd254a4622c847",
+  "input_sha256": "a6eb1f133fee665d1db54c8fc6cc8051ddbaca4a1fda3f0e2a1081e2352f062c"
+}

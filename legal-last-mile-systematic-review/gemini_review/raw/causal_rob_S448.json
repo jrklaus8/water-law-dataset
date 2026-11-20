@@ -1,0 +1,274 @@
+{
+  "study_id": "S448",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5c94f2d97ee7356b3ec765add7a1502824d9809cf20cf84fac71365ff39c5962",
+  "input_text_sha256": "f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0",
+  "prompt_sha256": "b927422ad8c3fe36bccdd860de15519cb83f5f2dfa2eea117bba23fb56d12ea4",
+  "started_at": "2026-11-20T05:07:36.097435+00:00",
+  "completed_at": "2026-11-20T05:10:11.454142+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S448\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S448\n- Record ID: RBDA703859BEA\n- Citation string: Ribeiro FW, de Aquino Cabral AC, dos Santos SM, Guimaraes DB (2026). Does cooperation pay off over time? Evidence from water and wastewater services. Utilities Policy.\n- DOI: 10.1016/j.jup.2026.102306\n- Retrieval status: retrieved_cached_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=71095, sha256=f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Serious concern (missing data / complete-case panel restriction): Requiring non-missing MUNIC and SNIS observations across all five years (2015-2019) excludes 76.6% of Brazilian municipalities that directly provide WWS, with no missing-data diagnostics, attrition comparisons, or reweighting.",
+      "confounding": "Serious concern: Municipality and year fixed effects absorb time-invariant municipal heterogeneity and common macro shocks, but time-varying municipal confounders (local fiscal stress, electoral/managerial shifts, targeted state/federal infrastructure transfers) are unmeasured; only log population is retained (GDP per capita was dropped), and in a 5-year panel where 54 of 71 treated municipalities were already in IMC at baseline, cooperation duration (IMCd) is confounded with differential municipal time trends.",
+      "legal_measurement_quality": "Moderate / adequate administrative proxy: Participation in intermunicipal cooperation via public consortia (IMC binary indicator) and years of participation (IMCd) are drawn from IBGE's official MUNIC municipal survey (2015-2019), accurately capturing formal horizontal consortium membership, but treating public consortia as a uniform indicator without coding consortium legal bylaws, contractual scope, regulatory oversight, or operational vs. planning functions.",
+      "measurement_bias": "Moderate concern: Exposure (MUNIC) and outcomes (SNIS) come from standardized national administrative surveys rather than researcher-collected subjective ratings, but SNIS utility indicators are self-reported by local providers, and improvements in metering or accounting under consortium maturation could systematically alter measured water loss ratios (QUA) and operational revenue/expense ratios (FIN).",
+      "outcome_measurement_quality": "Moderate / standard sector indicators with proxy limitations: Financial balance (FIN, operational revenue to total service expense), water coverage (WC), and wastewater coverage (WWC) follow standard SNIS definitions, while service quality (QUA) relies solely on the inverted water-loss volume ratio ((produced - consumed)/produced), omitting potability, continuity/intermittency, and wastewater treatment quality, and remaining vulnerable to uncalibrated macrometering/micrometering in smaller municipalities.",
+      "reporting_bias": "No information (unregistered observational study with minor specification-selection concern): No pre-analysis plan or study protocol is reported; preliminary regressions including GDP per capita and regional controls are mentioned as not altering substantive results (p. 4) without being tabulated, and several highlighted fixed-effects findings rely on 10% significance (p < 0.10), though FE, RE, and Mundlak CRE models are transparently reported side-by-side across all four outcomes (Tables 3-6).",
+      "selection_bias": "Serious concern: Inclusion is restricted to a complete-case balanced panel of 344 municipalities representing only 23.4% of Brazilian municipalities that directly provide WWS (6.2% of all municipalities), likely selecting higher-capacity providers; moreover, 54 of 71 IMC municipalities entered cooperation before the 2015 baseline (mean IMCd = 6.92 years), introducing prevalent-user / survivorship bias when estimating duration effects because early-exiting consortia prior to 2015 are unobserved."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "Baseline two-way fixed-effects models (municipality and year fixed effects) and Mundlak correlated random-effects specifications account for time-invariant municipal heterogeneity and common annual shocks, and include log population (lnPOP). However, participation in public consortia is voluntary (p. 3), and time-varying municipal confounders—such as local fiscal crises, political/electoral transitions, managerial capacity shifts, and targeted federal/state sanitation grants—are unadjusted (GDP per capita was tested in preliminary specifications and dropped; p. 4). Crucially, because 54 of the 71 IMC municipalities participated throughout 2015-2019, IMCd increases by +1 per year for those already-treated units, confounding duration effects with differential linear time trends of early-adopting municipalities. The authors explicitly caution that estimates represent conditional relationships rather than definitive causal effects (p. 5).",
+        "rating": "Serious",
+        "where_found": "[PDF Page 3 of 9] Section 2; [PDF Page 4 of 9] Section 3.1-3.2; [PDF Page 5 of 9] Section 3.2 & Section 4; [PDF Page 6-7 of 9] Tables 3-6"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "Start of follow-up (2015) does not coincide with start of intervention for most treated units: of the 71 IMC municipalities in the balanced panel, 54 were prevalent participants already in cooperative arrangements before 2015 (mean IMCd = 6.92 years, SD = 5.50; Table 2) and only 17 joined during 2015-2019 (p. 5). Evaluating whether cooperation duration pays off using prevalent survivors introduces survivorship/prevalent-user selection bias, as municipalities whose cooperative arrangements failed or dissolved prior to 2015 are excluded. Additionally, conditioning sample entry on five consecutive years of complete MUNIC and SNIS reporting retains only 23.4% of direct-provision municipalities (p. 4), likely over-representing administratively stronger providers.",
+        "rating": "Serious",
+        "where_found": "[PDF Page 4 of 9] Section 3.1 & Table 2; [PDF Page 5 of 9] Section 3.2"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "Participation in horizontal intermunicipal cooperation (IMC, binary) and duration of participation in years (IMCd) are constructed from official IBGE Municipal Basic Information Survey (MUNIC) records for 2015-2019 (Table 1, pp. 3-4), avoiding retrospective recall bias tied to outcomes. Nevertheless, binary and duration coding aggregates potentially heterogeneous public consortia without distinguishing contractual scope, shared functions (e.g., joint procurement/regulation vs. direct operations), or multiservice vs. single-service structures (p. 3, p. 8).",
+        "rating": "Moderate",
+        "where_found": "[PDF Page 3 of 9] Section 3.1 & Table 1; [PDF Page 4 of 9] Section 3.1; [PDF Page 8 of 9] Section 6"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "The study evaluates routine municipal participation in public consortia under real-world governance conditions rather than an experimental protocol, with annual IMC status tracked across 2015-2019 (only 17 municipalities switched into IMC during the window; p. 5) and no researcher-induced co-interventions.",
+        "rating": "Low",
+        "where_found": "[PDF Page 4 of 9] Section 3.1; [PDF Page 5 of 9] Section 3.2"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "To construct a balanced five-year panel (1,720 observations across 344 municipalities), the authors restricted the sample strictly to local WWS providers with complete data on all variables across 2015-2019, retaining only 23.4% of Brazilian municipalities that directly provide WWS (and 6.2% of all 5,570 municipalities; p. 4). Excluding 76.6% of the target direct-provision population due to missing SNIS/MUNIC records—without missingness diagnostics, comparison of excluded vs. included providers, or weighting/imputation—creates serious risk of selection/missing-data bias, as SNIS reporting completeness correlates with utility institutional capacity and performance.",
+        "rating": "Serious",
+        "where_found": "[PDF Page 4 of 9] Section 3.1 & Table 2"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "All four outcomes (FIN, WC, WWC, QUA) derive from standardized national SNIS definitions (Table 1, p. 3; p. 4) collected independently of this study. However, SNIS figures are self-reported by municipal utilities without independent audit, and QUA (inverted water-loss ratio based on produced vs. consumed water volumes) is acknowledged as an imperfect proxy (p. 8) that is sensitive to metering coverage and accounting upgrades—changes that may themselves evolve as consortia mature over time.",
+        "rating": "Moderate",
+        "where_found": "[PDF Page 3 of 9] Section 3.1 & Table 1; [PDF Page 4 of 9] Section 3.1; [PDF Page 8 of 9] Section 6"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-analysis plan or registered study protocol is reported, so pre-specification of outcomes, functional forms, and covariates cannot be verified ('No information' per protocol standard). In the paper text, the authors transparently report fixed-effects, random-effects, and Mundlak correlated random-effects models across all four outcomes (Tables 3-6), though preliminary models including GDP per capita and regional controls are noted as yielding similar results without being tabulated (p. 4), and several key fixed-effects coefficients (IMC on FIN; IMCd on WWC and QUA) are only marginally significant at the 10% level.",
+        "rating": "No information",
+        "where_found": "[PDF Page 4 of 9] Section 3.1; [PDF Page 5-7 of 9] Section 4 & Tables 3-6"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Baseline panel estimator and robustness models",
+        "page": "[PDF Page 1 of 9] Abstract",
+        "quote": "regression models, using fixed-effects specifications as the baseline and random-effects"
+      },
+      {
+        "criterion": "Complete-case sample size and restriction to providers with full data",
+        "page": "[PDF Page 4 of 9] Section 3.1",
+        "quote": "344 municipalities (local WWS providers) with available data for"
+      },
+      {
+        "criterion": "Unreported preliminary covariate specifications",
+        "page": "[PDF Page 4 of 9] Section 3.1",
+        "quote": "specifications also considered Gross Domestic Product per capita and"
+      },
+      {
+        "criterion": "Prevalent IMC participants vs. limited within-panel switchers",
+        "page": "[PDF Page 5 of 9] Section 3.2",
+        "quote": "participated in IMC during the study period, and only 17 changed their"
+      },
+      {
+        "criterion": "Authors' acknowledgment of non-causal conditional estimates",
+        "page": "[PDF Page 5 of 9] Section 4",
+        "quote": "evidence of conditional relationships rather than definitive causal"
+      },
+      {
+        "criterion": "Short five-year observation window limitation",
+        "page": "[PDF Page 8 of 9] Section 6",
+        "quote": "Second, the study is restricted to a five-year panel due to data"
+      }
+    ],
+    "overall_narrative_summary": "Study S448 (Ribeiro et al., 2026) is a non-randomized comparative longitudinal panel study evaluating the association between intermunicipal cooperation (IMC via public consortia) and municipal water and wastewater service (WWS) performance in Brazil over 2015-2019 (344 direct-provision municipalities; N = 1,720). Appraised with ROBINS-I, the overall risk of bias is Serious. Methodological strengths include the use of two-way fixed effects (municipality and year fixed effects) alongside random-effects and Mundlak correlated random-effects specifications, municipality-clustered standard errors, and standardized national datasets (IBGE MUNIC and SNIS) across four performance dimensions (financial balance, water coverage, wastewater coverage, and inverted water-loss quality). However, three domains carry Serious risk of bias: (1) Confounding (D1), as voluntary consortium participation and linear cooperation duration (IMCd) are vulnerable to unmeasured time-varying municipal fiscal, political, and investment shocks and differential pre-trends among the 54 already-treated municipalities (only lnPOP and year dummies are controlled); (2) Selection of participants (D2), due to prevalent-user/survivorship bias (54 of 71 IMC municipalities entered cooperation prior to 2015, with only 17 switchers during 2015-2019) and conditioning on uninterrupted 5-year reporting; and (3) Missing data (D5), as complete-case balanced-panel construction excludes 76.6% of Brazilian municipalities that directly provide WWS without missingness diagnostics or reweighting. Classification of interventions (D3) and outcome measurement (D6) present Moderate risk due to coarse consortium coding and self-reported SNIS metering/accounting proxies, Deviations from intended interventions (D4) is Low, and Selection of the reported result (D7) is rated No information in the absence of a pre-analysis plan.",
+    "overall_rating": "Serious",
+    "paper_read": "full text",
+    "study_design_identified": "Comparative longitudinal panel study (5-year balanced municipal panel, 2015-2019, N = 1,720 across 344 Brazilian municipalities directly providing WWS, estimated via two-way fixed-effects, random-effects, and Mundlak correlated random-effects regressions)",
+    "study_id": "S448",
+    "where_found_summary": "Study design, data sources (IBGE MUNIC and SNIS, 2015-2019), variable definitions, and sample inclusion/attrition (344 of ~1,470 direct-provision municipalities; 23.4%) are reported in Abstract ([PDF Page 1 of 9]) and Section 3.1 & Tables 1-2 ([PDF Page 3-4 of 9]). Econometric specifications (two-way FE, RE, Mundlak CRE), identification limits (71 IMC participants, only 17 switchers), and clustered inference are detailed in Section 3.2 ([PDF Page 4-5 of 9]). Empirical estimates and causal caveats appear in Section 4 & Tables 3-6 ([PDF Page 5-7 of 9]), and study limitations (secondary data, 5-year window, proxy quality indicator) are discussed in Section 6 ([PDF Page 8 of 9]).",
+    "why_tool_chosen": "The study evaluates a public governance arrangement/policy intervention—municipal participation in horizontal intermunicipal cooperation (public consortia) and cooperation duration—using longitudinal panel regression models (two-way fixed effects, random effects, and Mundlak correlated random effects) comparing participating vs. non-participating Brazilian municipalities directly providing WWS over 2015-2019. Under RISK_OF_BIAS.md §1, comparative longitudinal/panel policy evaluations with a non-randomized comparator arm map directly to ROBINS-I."
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "study_id": "S890",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9dd02da59c6b004e62e985118525349418903d2f49b3b76e2a684e29724dbe73",
+  "input_text_sha256": "858c6e42d6cf175238c037c6572010e787515ce9c659731193adccb40499eb68",
+  "prompt_sha256": "b0ee939e2278c9408fcbedbc2182842472cfeb2b1d1a841c8a52f325eaf82a86",
+  "started_at": "2026-11-20T05:01:32.731307+00:00",
+  "completed_at": "2026-11-20T05:03:27.046067+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S890\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S890\n- Record ID: RB96E8D94B2BD\n- Citation string: Aleixo B, Rezende S, Pena JL, Zapata G, Heller L (2016). Human Right in Perspective: Inequalities in Access to Water in a Rural Community of the Brazilian Northeast. Ambiente & Sociedade.\n- DOI: 10.1590/1809-4422ASOC150125R1V1912016\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 858c6e42d6cf175238c037c6572010e787515ce9c659731193adccb40499eb68) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56099, sha256=858c6e42d6cf175238c037c6572010e787515ce9c659731193adccb40499eb68]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "High concern (item missingness): Although cross-sectional with no longitudinal attrition, per capita water consumption excluded 39 of 232 surveyed households (n = 193 analyzed, 16.8% exclusion; misstated due to an arithmetic typo as '93 of the 232' in Note ii, PDF p. 16) because households could not estimate volumes from at least one water source—likely non-random missingness linked to unmetered hosepipe or surface-water abstraction.",
+      "confounding": "High concern: Macro- and micro-contextual determinants (income, schooling, sex, skin color, seasonality) are discussed conceptually (PDF pp. 7, 15), but the primary Cristais survey analysis presents only univariate distributions and one unadjusted bivariate breakdown of water expenditure share by total household income bracket (Figure 3, PDF p. 14), with zero adjustment for confounders such as household size, spatial distance to collective cisterns/canal, or occupation.",
+      "legal_measurement_quality": "Adequate (descriptive/normative operationalization): Accurately cites Brazilian Sanitation Act No. 11.445/2007, PLANSAB, Water Resources Act No. 9.433/1997, Ministry of Health Portaria No. 2914/2011, ARCE/CAGECE social and regular tariffs, and UN 2010 Human Right to Water resolutions (PDF pp. 1, 4, 6, 10-11, 14, 16-17) to define piped WSS absence and benchmark affordability/accessibility; however, legal-institutional exclusion from the Integration Canal is documented contextually at the community level rather than measured as a household-level legal exposure variable.",
+      "measurement_bias": "High concern: Both socioeconomic stratifiers (household income) and water access outcomes (weekly water volume by source, collection trip time, payments to carroceiros) were obtained via self-reported household head questionnaires without independent volumetric metering, receipt verification, or timed observation (PDF pp. 3-4, 12-14), and water quality/pollution claims relied on resident perceptions rather than physicochemical or microbiological testing (PDF p. 11).",
+      "outcome_measurement_quality": "Weak / High concern: Conceptual operationalization is strong—capturing multidimensional Human Right to Water quantity, physical accessibility, and economic accessibility against Howard & Bartram (2003), JMP, and UNDP (2006) benchmarks (PDF pp. 4, 12-14)—but empirical measurement relies entirely on recall-based self-report, omits objective water-quality testing, and excludes 16.8% of surveyed households unable to quantify volumes from all sources (Note ii, PDF p. 16).",
+      "reporting_bias": "Some concern: No pre-analysis plan or protocol registration is reported. Notably, PDF p. 5 notes that Cristais was selected for pre/post evaluation alongside a nearby control community with an operating WSS 'to test our hypothesis', yet no control-community data are reported in this article; additionally, Note ii (PDF p. 16) contains an arithmetic discrepancy ('reduced to 193 because 93 of the 232 households... were excluded', whereas 232 - 193 = 39).",
+      "selection_bias": "Some concern: Surveying all consenting household heads in Cristais (232 questionnaires, PDF p. 3) mitigates within-community random sampling error, but the total number of eligible households in the community and refusal/non-contact counts are not reported, and the community itself was purposively selected because it lacked a WSS and was scheduled to receive a DESAFIO project intervention (PDF p. 5)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Inclusion criteria were defined as all households in the rural community of Cristais (Ceara) whose heads of household consented to participate between May and July 2014, resulting in 232 administered questionnaires; however, the total household denominator and refusal rate are not stated.",
+        "rating": "Yes",
+        "where_found": "PDF p. 3 (Section 1 Introduction); PDF p. 21 (Abstract)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The geographical, infrastructural, hydro-environmental, and socioeconomic setting of Cristais (straddling Highway BR-116 across Cascavel, Ocara, Beberibe, and Morada Nova near the Pirangi River and Eixao das Aguas Integration Canal) and household head demographics (income <1 minimum wage, illiteracy, occupation) are thoroughly described.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-5 (Section 1); PDF pp. 9-10 (Section 2.2); PDF pp. 11-12 (Section 3)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Within-community exposures/stratifiers—specifically household income brackets in multiples of the legal minimum wage (Note vii) and reliance on informal water sources/carters—were collected through an unvalidated self-report household questionnaire without reported reliability testing or independent verification.",
+        "rating": "Unclear",
+        "where_found": "PDF pp. 3-4 (Section 1); PDF pp. 13-14 (Section 3); PDF p. 17 (Note vii)"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Absence of a formal piped Water Supply System (WSS) and water access deprivation were classified using explicit statutory and international criteria: Brazilian Act No. 11.445/2007 and Portaria No. 2914/2011 for WSS, WHO/UNICEF JMP improved/unimproved source categories, Howard & Bartram (2003) volume and collection-time thresholds, and the UNDP (2006) 3% income affordability threshold.",
+        "rating": "Yes",
+        "where_found": "PDF p. 4 (Section 1); PDF pp. 10-13 (Sections 2.3 & 3); PDF p. 16 (Notes i & iii)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "While macro-level socioeconomic and demographic determinants (income, schooling, sex, skin color) and dry-season scarcity are discussed conceptually, specific confounders of within-community empirical relationships (e.g., household size confounding total household income brackets and per capita consumption, or household distance to public cisterns/canal) are not systematically identified for the Cristais dataset.",
+        "rating": "Unclear",
+        "where_found": "PDF p. 7 (Section 2.1); PDF pp. 13-15 (Section 3 & Section 4)"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "No design or analytical strategies (such as multivariable regression, standardization for household size, or multi-way stratification) were stated or applied to control for confounding in the Cristais household survey.",
+        "rating": "No",
+        "where_found": "PDF pp. 3-4 (Section 1); PDF pp. 11-15 (Section 3)"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "Daily per capita water volume, collection trip time, and water expenditures relied solely on self-reported recall without volumetric metering or timed observation; 39 of 232 households (n = 193 analyzed; misstated as 93 excluded in Note ii) could not estimate volumes from at least one source and were dropped, and no objective water-quality testing was performed.",
+        "rating": "No",
+        "where_found": "PDF pp. 3-4 (Section 1); PDF pp. 11-14 (Section 3); PDF p. 16 (Note ii)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Analysis is restricted to descriptive percentages and a single unadjusted bivariate chart of expenditure share by household income bracket (Figure 3), with no confidence intervals, hypothesis tests, multivariable adjustment, sensitivity checks for the 16.8% excluded consumption observations, or analysis of the mentioned comparator community; Note ii also contains a subtraction error (232 - 193 = 39, reported as 93).",
+        "rating": "No",
+        "where_found": "PDF p. 5 (Section 1); PDF pp. 12-14 (Section 3); PDF p. 16 (Note ii)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q1 / Selection & data collection design",
+        "page": "PDF p. 3 (Section 1 Introduction)",
+        "quote": "in the community, whose heads of households were willing to participate in the survey,"
+      },
+      {
+        "criterion": "Q1-Q2 / Sample size and survey period",
+        "page": "PDF p. 3 (Section 1 Introduction)",
+        "quote": "and by direct observation. 232 questionnaires were administered in the period from May"
+      },
+      {
+        "criterion": "Reporting bias / Unreported comparator community mentioned in design context",
+        "page": "PDF p. 5 (Section 1 Introduction)",
+        "quote": "characteristics but, which already had a WSS in operation, and could serve as a control"
+      },
+      {
+        "criterion": "Q7 / Attrition & missingness on water volume outcome (part 1)",
+        "page": "PDF p. 16 (Note ii)",
+        "quote": "The number of cases analyzed with relation to per capita consumption was reduced to 193 because 93 of the 232"
+      },
+      {
+        "criterion": "Q7 / Self-report measurement limitation & exclusion reason (part 2)",
+        "page": "PDF p. 16 (Note ii)",
+        "quote": "households declared that they were unable to measure the volume of at least one of the sources they used and so they"
+      },
+      {
+        "criterion": "Q4 / Legal measurement & statutory definition of WSS",
+        "page": "PDF p. 16 (Note iii)",
+        "quote": "In the ambit of the Sanitation Act nº 11.445/2007 and edict nº 2914/2011, which set out provisions regarding the"
+      }
+    ],
+    "overall_narrative_summary": "High concern (JBI narrative judgment; no numeric composite score computed). Aleixo et al. (2016) report a primary cross-sectional household survey (n = 232 questionnaires administered May-July 2014) examining intra-community inequalities in water quantity, physical accessibility, and affordability in Cristais, a rural community in Ceara, Brazil lacking a formal piped Water Supply System (WSS), contextualized with secondary 2010 IBGE Census data. Methodological strengths include a community-wide census approach targeting all willing household heads, rich institutional and hydro-geographical contextualization (including exclusion from the nearby Eixao das Aguas Integration Canal), and clear normative benchmarking against Brazilian Sanitation Act No. 11.445/2007, UN Human Right to Water dimensions, Howard & Bartram (2003), and UNDP (2006) affordability thresholds (Q1, Q2, Q4 rated Yes). However, major risks of bias arise from unvalidated recall-based self-reporting of water consumption, trip duration, and informal carter expenditures without volumetric metering or water-quality testing (Q7 = No); non-random analytical exclusion of 16.8% of surveyed households (193 of 232 analyzed, misreported as '93 of the 232' excluded in Note ii) that could not estimate volumes from at least one water source; absence of total eligible household and refusal counts; and purely descriptive/unadjusted bivariate statistics with zero control for confounding factors such as household size or spatial proximity to sources (Q6 = No, Q8 = No), alongside non-reporting of a nearby control community mentioned in the project design.",
+    "overall_rating": "High concern",
+    "paper_read": "full text",
+    "study_design_identified": "Quantitative cross-sectional household survey (community-level census of 232 consenting household heads in Cristais, Ceara, supplemented by secondary 2010 IBGE Census tabulations and direct field observation)",
+    "study_id": "S890",
+    "where_found_summary": "Methods, sampling, and outcome definitions are reported in Section 1 Introduction (PDF pp. 3-5) and Notes i-viii (PDF pp. 16-17); legal/institutional context and secondary IBGE 2010 Census comparisons are in Section 2 (PDF pp. 5-11); primary Cristais cross-sectional survey results are in Section 3 (PDF pp. 11-15) and Section 4 (PDF pp. 15-16), with English/Portuguese/Spanish abstracts on PDF pp. 21-22 (note: Tables 1-3 and Figures 1-3 are embedded images in the PDF, while full prose and key subgroup figures are reported in text).",
+    "why_tool_chosen": "The primary empirical study in this paper is a single-wave quantitative cross-sectional household questionnaire survey (232 households in Cristais, May-July 2014) analyzing descriptive distributions and bivariate socioeconomic inequalities in water access without an active intervention or analyzed comparator arm. Although PDF p. 5 notes that Cristais was chosen as part of the broader DESAFIO project for future before-and-after evaluation and mentions a nearby control community with a WSS, this paper reports only baseline cross-sectional data from Cristais alone (ruling out ROBINS-I), and contains no formal qualitative interview/coding methodology beyond brief contextual observation (ruling out CASP and MMAT). Thus, the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the exact matching tool."
+  }
+}

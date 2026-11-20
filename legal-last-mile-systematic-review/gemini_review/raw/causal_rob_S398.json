@@ -1,0 +1,269 @@
+{
+  "study_id": "S398",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "bfd40c7e490dc2bf75489cbb340b3dbde5d1aedfad6c2a693f874afe25d03d5f",
+  "input_text_sha256": "55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f",
+  "prompt_sha256": "7b6bce791a34a2072eb4e801ac01ebf51c2996279ba55f8b24139488c9878e97",
+  "started_at": "2026-11-20T05:01:32.744955+00:00",
+  "completed_at": "2026-11-20T05:04:01.421002+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S398\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S398\n- Record ID: R2B5A92453E91\n- Citation string: dos Santos Nascimento Sobrinho A, da Mota Silveira Neto R (2025). Urban policy for poor areas and housing quality: An evaluation of the implementation of the Social Interest Special Zones (ZEIS) in Brazil. Nova Economia 35(3):e8355.\n- DOI: 10.1590/0103-6351/8355\n- Retrieval status: retrieved_cached_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=81059, sha256=55e54970ef31c309c5980305fe7fd9f4aa9a15f84240691cbab0ef3d1e87405f]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low risk (at census-tract unit of analysis): Universal decennial IBGE Demographic Census tabulations yield a complete balanced panel across 1991, 2000 and 2010 in all primary specifications (73 tracts / 219 observations in Table 2; 72 tracts / 216 observations in Tables 3 and 6; 102 tracts / 306 observations in Table 4), although household-level in- and out-migration within tracts over the 19-year window is unobserved and Table 5 exhibits a minor unexplained discrepancy between treated tract counts across columns (18 vs 19).",
+      "confounding": "Serious risk: ZEIS designation was non-random and required municipal legislation and household mapping resources; only one pre-intervention census wave (1991) is available so pre-treatment parallel trends cannot be empirically tested; unobserved time-varying confounders (such as community political mobilization or concurrent localized public investments) and compositional residential sorting across decennial censuses cannot be ruled out; and regressions condition on time-varying post-treatment tract covariates (density, literacy, marital status and, in Table 6, income).",
+      "legal_measurement_quality": "Adequate-to-strong: The study accurately cites the municipal statutory framework (Recife Laws 14,511/1983, 14,947/1987 PREZEIS, 16,113/1995, 16,176/1996 and Master Plan Law 02/2021) and Federal Law 10,257/2001, and geocodes official municipal PLHIS implementation dates and GIS shapefiles onto census tracts; however, exposure measures statutory spatial demarcation share rather than verified parcel-level tenure regularization (usucapiao or CDRU) or actual PREZEIS infrastructure disbursements.",
+      "measurement_bias": "Low-to-moderate risk: Both legal exposure (municipal PLHIS records and GIS shapefiles) and housing/utility outcomes (IBGE Demographic Censuses for 1991, 2000 and 2010) derive from standardized official sources independent of the evaluation, preventing differential observer bias, but spatial harmonization of census tracts creates partial-overlap boundary mismatch for ZEIS exposure and outcomes rely on household self-reports to census enumerators.",
+      "outcome_measurement_quality": "Adequate: Access to piped water via the general public network and access to sewage collection via the general public network (alongside homeownership, bathrooms per household and garbage collection) are measured consistently across 1991, 2000 and 2010 using universal IBGE Demographic Census tract data; limitations include reliance on household self-reports without physical service-quality verification (such as continuity, potability or wastewater treatment), spatial boundary harmonization across 962 to 1,854 census tracts and a minor wording slip in Table 1's note describing utility shares as percentages of homeowners rather than households.",
+      "reporting_bias": "No information (no pre-analysis plan): No pre-registered protocol or pre-analysis plan exists to verify pre-specification of the five housing quality outcomes, PSM covariates or the >90% spatial overlap baseline threshold, although the authors transparently report null findings (bathrooms per household and garbage collection) and extensive sensitivity checks across 50% to 100% ZEIS area cutoffs and alternative control groups.",
+      "selection_bias": "Moderate risk: The authors appropriately exclude 381 prevalent ZEIS tracts treated between 1983 and 1991 (due to incompatible 1980 tract data), but restrict the primary treated sample from 132 post-1991 ZEIS tracts to the 19 tracts (18 in dynamic models) with >90% territorial ZEIS coverage matched to 54 PSM control tracts estimated on the >50% coverage group; robustness checks across 50%-100% cutoffs and 84 slum control tracts confirm stability, though household compositional sorting across tracts over 1991-2010 cannot be excluded."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "ZEIS demarcation was non-random, requiring specific municipal legislation and administrative mapping resources (p. 8). Crucially, incompatible pre-1991 census tract boundaries leave only a single pre-intervention wave (1991), making it impossible to test pre-treatment parallel trends via event-study or placebo tests (p. 12). Although the authors combine 1991 baseline propensity score matching with census-tract fixed effects, year fixed effects and district linear trends, unobserved time-varying confounders (e.g. community political organization or concurrent municipal/state infrastructure targeting) and residential sorting across repeated census-tract cross-sections over 19 years cannot be ruled out, and models adjust for post-treatment time-varying covariates (2000 and 2010 density, literacy, marital status and income) that could be affected by treatment.",
+        "rating": "Serious",
+        "where_found": "Section 2 (PDF p. 8); Section 3.1 (PDF pp. 10-13); Section 3.2 (PDF pp. 15-18, Footnote 12); Section 5.2 (PDF pp. 28-30)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "From 962 harmonized Recife census tracts, the authors exclude 381 tracts already treated in 1983-1991 (appropriate prevalent-user exclusion given unavailable 1980 tract data). However, among the 132 tracts newly treated in 1991-2010, the baseline specification restricts treated units to 19 tracts (18 in dynamic models after dropping one 2007-treated tract) with >90% area under ZEIS, while matching 54 controls via PSM estimated on the 37 tracts with >50% ZEIS share (p. 17, Footnote 12), and 6 control tracts subsequently received ZEIS between 2010 and 2020 (p. 14). Selection is anchored to 1991 baseline attributes and statutory timing rather than post-treatment outcomes, and sensitivity analyses across 50%-100% ZEIS shares and 84 slum controls show consistent estimates (pp. 23-27), warranting Moderate rather than Serious risk.",
+        "rating": "Moderate",
+        "where_found": "Section 3.2 (PDF pp. 14-19); Section 4 (PDF p. 20); Section 5.1 (PDF pp. 23-27, Table 4, Figures 5-7)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "ZEIS locations and enactment years were obtained from official municipal records (Plano Local de Habitacao de Interesse Social - PLHIS) and GIS shapefiles prior to outcome measurement (p. 13). However, because Recife does not track individual ZEIS households and outcomes are observed at harmonized census-tract level, ZEIS polygons do not align perfectly with census-tract boundaries, leaving up to 10% non-ZEIS territory in baseline treated tracts (>90% threshold) and up to 50% in sensitivity samples (pp. 14-16), creating minor spatial exposure misclassification.",
+        "rating": "Moderate",
+        "where_found": "Section 3.1 (PDF p. 12); Section 3.2 (PDF pp. 13-16, Figures 2-3)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "Evaluating the policy effect of ZEIS enactment, the authors explicitly test for geographic spillovers onto neighboring untreated tracts by excluding control tracts in the 4 neighborhoods containing both treated and control units (Section 5.2, Table 5, pp. 28-29), finding unchanged results. Nevertheless, over the 19-year follow-up (1991-2010), the paper lacks data on potentially unbalanced co-interventions (other federal, state or utility upgrading programs) and on heterogeneity in actual administrative execution of PREZEIS investments across demarcated zones.",
+        "rating": "Moderate",
+        "where_found": "Section 2 (PDF pp. 7-8); Section 5.2 (PDF pp. 28-29, Table 5)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "Outcome and covariate series are constructed from universal decennial IBGE Demographic Census records harmonized into 962 census tracts covering the entire municipality of Recife across 1991, 2000 and 2010 (p. 14, Footnote 10). All primary panel regressions are completely balanced with zero tract attrition (73 tracts x 3 waves = 219 observations in Table 2; 72 tracts x 3 waves = 216 observations in Tables 3 and 6; 102 tracts x 3 waves = 306 observations in Table 4), with only a minor unexplained reporting discrepancy in the Table 5 spillover robustness check (where treated counts alternate between 18 and 19 across columns and 16 rather than 3 control tracts appear excluded relative to Table 3) and no household-level tracking of residential mobility.",
+        "rating": "Low",
+        "where_found": "Section 3.2 (PDF pp. 13-14, Footnote 10); Section 4 (PDF pp. 21-22, Tables 2-3); Section 5.1 (PDF p. 24, Table 4); Section 5.2 (PDF pp. 28-30, Tables 5-6)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "The five housing quality outcomes (homeownership, bathrooms per household, public garbage collection, piped water via general network and sewage via general network) come from standardized national IBGE Demographic Census enumerations in 1991, 2000 and 2010 (pp. 11, 13-14). Data collection was uniform across treated and untreated census tracts and independent of the municipal ZEIS evaluation, so systematic differential measurement bias is unlikely, notwithstanding reliance on household self-reports to census interviewers and areal harmonization across changing tract boundaries (962 tracts in 1991, 1,212 in 2000 and 1,854 in 2010).",
+        "rating": "Low",
+        "where_found": "Section 3.1 (PDF p. 11); Section 3.2 (PDF pp. 13-14, Footnote 10; p. 18, Table 1 notes)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-analysis plan or study protocol exists to verify whether the five outcome indicators, baseline >90% spatial overlap threshold, propensity score matching model or econometric specifications were pre-specified prior to estimation. Accordingly, per ROBINS-I guidance when no protocol exists, this domain is rated No information, while noting favorably that the authors report null outcomes (bathrooms per household and garbage collection) alongside positive findings and present extensive sensitivity analyses across ZEIS share cutoffs (50%-100%), alternative control groups, district trends, spillover exclusions and income controls.",
+        "rating": "No information",
+        "where_found": "Section 3.1 (PDF pp. 10-13); Section 4 (PDF pp. 20-22, Tables 2-3); Section 5 (PDF pp. 23-30, Tables 4-6, Figures 5-7)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D1 Confounding - non-random legislative and administrative selection into ZEIS",
+        "page": "PDF Page 8, Section 2",
+        "quote": "The process of demarcating an area as ZEIS demands a specific municipal law"
+      },
+      {
+        "criterion": "D1 Confounding - inability to test pre-intervention parallel trends prior to 1991",
+        "page": "PDF Page 12, Section 3.1",
+        "quote": "we have no data for investigating this hypothesis"
+      },
+      {
+        "criterion": "D3 Classification of interventions - geocoding municipal ZEIS boundaries onto census tracts",
+        "page": "PDF Page 13, Section 3.2",
+        "quote": "the location and area of ZEIS is used for geocoding the locations of the ZEIS"
+      },
+      {
+        "criterion": "D2 Selection of participants - baseline sample restriction to >90% ZEIS territorial share",
+        "page": "PDF Page 15, Section 3.2",
+        "quote": "19 with more than 90% of the territory under the ZEIS intervention."
+      },
+      {
+        "criterion": "D6 Measurement of outcomes - five census-tract housing and infrastructure outcome measures",
+        "page": "PDF Page 11, Section 3.1",
+        "quote": "We use five different housing quality indicators for our dependent variable:"
+      }
+    ],
+    "overall_narrative_summary": "This study evaluates the impact of Recife's pioneering Social Interest Special Zones (ZEIS) urban land-use regulation on low-income housing quality and utility access between 1991 and 2010 using a propensity-score-matched panel difference-in-differences (PSM-DiD) design across temporally harmonized IBGE Demographic Census tracts. Appraised with ROBINS-I, the study has an overall Serious risk of bias, driven primarily by Domain 1 (confounding): ZEIS designation required dedicated municipal legislation and mapping resources, incompatible pre-1991 tract boundaries leave only a single pre-treatment wave (1991) so parallel pre-trends cannot be empirically tested, repeated census-tract cross-sections over 19 years cannot rule out residential sorting or unmeasured time-varying political/infrastructure confounders, and regressions control for post-treatment time-varying covariates. Selection of census tracts into the >90% ZEIS overlap sample (D2), spatial boundary mismatch from aggregating ZEIS polygons onto census tracts (D3), and potential unmeasured co-interventions (D4) pose Moderate risk, whereas tract-level missing data (D5) and standardized national census outcome measurement (D6) pose Low risk, and Domain 7 is rated No information due to the absence of a pre-analysis plan despite thorough sensitivity checks across alternative thresholds (50%-100%), slum control groups and spillover exclusions.",
+    "overall_rating": "Serious",
+    "paper_read": "full text",
+    "study_design_identified": "Quasi-experimental longitudinal difference-in-differences combined with baseline propensity score matching (PSM-DiD) across harmonized decennial census tracts (1991, 2000, 2010)",
+    "study_id": "S398",
+    "where_found_summary": "Institutional and statutory context in Section 2 (PDF pp. 5-10); econometric DiD specifications and identification assumptions in Section 3.1 (PDF pp. 10-13); PLHIS/shapefile exposure geocoding, IBGE Demographic Census harmonization (1991, 2000, 2010), sample restrictions and PSM baseline balance in Section 3.2 (PDF pp. 13-19, Table 1, Figures 2-4); main pooled and dynamic DiD results in Section 4 (PDF pp. 20-23, Tables 2-3); robustness checks for slum controls, 50%-100% ZEIS coverage shares, spatial spillovers and household income controls in Section 5 (PDF pp. 23-30, Tables 4-6, Figures 5-7).",
+    "why_tool_chosen": "The study evaluates a non-randomized municipal legal/zoning intervention (implementation of Social Interest Special Zones, ZEIS) using a comparative quasi-experimental panel difference-in-differences design matched via baseline propensity score matching (PSM-DiD) across treated and untreated census tracts in Recife (1991, 2000 and 2010). Under RISK_OF_BIAS.md §1, ROBINS-I is the designated instrument for non-randomized policy/intervention evaluations with a genuine comparator group."
+  }
+}

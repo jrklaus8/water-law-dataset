@@ -1,0 +1,274 @@
+{
+  "study_id": "S1083",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9c4e7ec5fc9f02b8a2b7ba3b3cf35a3b450ab0df54fa48c9adf25d3a228be9f5",
+  "input_text_sha256": "b0fd6ae3d091606021efd31f9202f988fe9820997643ceec498cec57d67d77fb",
+  "prompt_sha256": "64e99f0c1d6750fa1cf711dd338112f8c2e1fd7bcecd4645ac2ba20c40a1fac3",
+  "started_at": "2026-11-20T05:01:32.756640+00:00",
+  "completed_at": "2026-11-20T05:04:33.942293+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1083\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1083\n- Record ID: R14C9B7372CC7\n- Citation string: Badri R, Joshi P (2018). Significance of Granular Real Time Data for studying ground realities, addressing gaps in governance, and for measuring impact. IEEE PuneCon 2018.\n- DOI: 10.1109/PUNECON.2018.8745386\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: b0fd6ae3d091606021efd31f9202f988fe9820997643ceec498cec57d67d77fb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=21289, sha256=b0fd6ae3d091606021efd31f9202f988fe9820997643ceec498cec57d67d77fb]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Moderate concern: The Abstract (PDF p. 1) reports 2,414 pre-intervention respondents and 2,306 post-intervention respondents across 463 households, whereas Table 1 (PDF p. 3) reports 2,263 total individuals across those 463 households (a 6.3% reduction from pre-intervention), and Pimpri-Chinchwad house-size percentages in Table 3 (PDF p. 5) sum to only 90.0% (39.4% + 29.8% + 20.8%). No explanation or attrition analysis is provided, and it is unclear whether households failing to complete toilet construction were dropped prior to follow-up.",
+      "confounding": "Critical concern: The primary internal impact assessment (n = 463 households across 4 cities, PDF pp. 3-6) uses an uncontrolled pre-post (before-after) design interviewed 6 months apart with no concurrent untreated comparison group and zero statistical adjustment for household socioeconomic status, tenure security, house quality, or secular time trends such as the concurrent national Swachh Bharat Mission (PDF p. 2). A briefly cited third-party 1-year pre-post case-control study (n = 386, PDF p. 3) omits all details on control selection, baseline balance, and confounding adjustment.",
+      "legal_measurement_quality": "Weak / descriptive only: National sanitation policy (Swachh Bharat Mission) and municipal governance partnerships with Urban Local Bodies (ULBs) across four Maharashtra cities, along with slum tenure insecurity, are described qualitatively as institutional context (PDF pp. 1-2, 7), including ULB validation of GIS infrastructure maps (PDF p. 2), but no legal, regulatory, tenure, or subsidy exposure variable is formally coded or empirically analyzed.",
+      "measurement_bias": "Serious concern: Interviews were conducted internally by the implementing NGO's own monitoring and evaluation field team among unblinded beneficiaries who received free construction materials from Shelter Associates (PDF pp. 3, 5, 7), creating severe social desirability and interviewer bias (e.g., 99% reported satisfaction, PDF p. 5). Only female household members were interviewed (PDF p. 3), meaning male open-defecation/CTB usage rates (Table 2, PDF p. 4) rely on female proxy reporting, and UTI symptoms and night-time food/liquid restrictions (PDF pp. 3, 7) rely on unvalidated self-report.",
+      "outcome_measurement_quality": "Weak / high risk of bias: Sanitation usage (household toilet vs. Community Toilet Block use), construction/modification spending, program satisfaction, night-time dietary restriction, and urinary tract infection symptoms were captured via unvalidated questionnaires administered by implementing NGO staff 6 months after baseline, without independent structured observation of toilet use, clinical verification of health outcomes, or direct interviewing of male household members.",
+      "reporting_bias": "Serious concern: No pre-registered protocol or analysis plan is reported. Although seven outcome domains are listed for the 463-household internal study (PDF pp. 3-4), numeric pre-post data are presented only for CTB usage (Table 2, PDF p. 4), while health/UTI symptoms, safety, privacy, personal hygiene, and community cleanliness are summarized only narratively (PDF p. 7) without point estimates, confidence intervals, or test statistics (apart from an unsupported claim of non-significance at the 5% level on PDF p. 4).",
+      "selection_bias": "Serious concern: The internal study sampled 463 families ('15% sample size of the total households where toilets are provided', PDF p. 3) without specifying whether sampling was random or convenience-based. Crucially, sampling conditioned solely on OHOT program adopters who opted into cost-sharing and received toilets, introducing severe selection bias when used to refute claims that slum families are unwilling to construct household toilets or hesitant to share costs (Myths 2 and 3, PDF pp. 4-6). Control selection in the briefly cited 386-household external study (PDF p. 3) is entirely unreported."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "The primary empirical evaluation (463 households across Kolhapur, Navi-Mumbai, Pimpri-Chinchwad, and Pune, June 2016-June 2018) is an uncontrolled pre-post household survey conducted 6 months apart with no untreated concurrent comparator arm and zero statistical control for confounders (income, tenure status, baseline motivation) or concurrent secular trends such as India's Swachh Bharat Mission (explicitly noted as raising awareness since 2014 on PDF p. 2). Under ROBINS-I guidance, single-group pre-post designs without secular-trend or covariate control carry Critical risk of bias. Although a third-party 1-year 'pre-post case-control study' (n = 386) is briefly summarized on PDF p. 3, zero information is provided on how controls were chosen or whether any confounding adjustment was performed.",
+        "rating": "Critical",
+        "where_found": "PDF p. 2 (PROBLEM); PDF p. 3 (IMPACT ASSESSMENT STUDY); PDF p. 4 (Table 2)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "Shelter Associates states that it conducts pre- and post-intervention assessments across a 15% sample of households where toilets are provided (463 families across 4 cities), without reporting the sampling frame, selection mechanism (random vs. convenience), or non-response rate. Moreover, restricting the sample exclusively to OHOT beneficiaries who opted into the cost-sharing program and built toilets introduces severe post-uptake selection bias for evaluating household readiness to build toilets and willingness to adopt cost-sharing (Myths 2 and 3). Participant selection for the external 386-household study is also unreported.",
+        "rating": "Serious",
+        "where_found": "PDF p. 3 (IMPACT ASSESSMENT STUDY, Table 1); PDF pp. 4-6 (Myths 2 and 3)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "Receipt of the Shelter Associates 'One Home-One Toilet' (OHOT) intervention package (doorstep delivery of phased construction materials alongside GIS/Kobo Collect household tracking and ULB partnership) is an objective physical intervention recorded contemporaneously in SA's monitoring database, making misclassification of pre- vs. post-intervention toilet facilitation in the 463-household sample unlikely.",
+        "rating": "Low",
+        "where_found": "PDF pp. 2-3 (INTRODUCTION TO SHELTER ASSOCIATES; IMPACT ASSESSMENT STUDY); PDF p. 5 (Myth 3)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "Fidelity to the behavioural and governance components of OHOT (community workshops, focus groups, and women's sanitation committees) is not tracked across the 463 households. Substantively, Table 4 (PDF p. 6) shows that 52.5% of OHOT beneficiaries simultaneously undertook broader house modifications/upgrades averaging Rs. 23,500 (including kutcha-to-pucca conversions), and concurrent Swachh Bharat Mission campaigns/subsidies operated in the background (PDF p. 2); these unbalanced co-interventions could independently affect hygiene, safety, and health perceptions.",
+        "rating": "Moderate",
+        "where_found": "PDF pp. 2-3 (INTRODUCTION TO SHELTER ASSOCIATES); PDF p. 6 (Myth 3, Table 4)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "The Abstract (PDF p. 1) reports 2,414 respondents in the pre-intervention survey and 2,306 respondents in the post-intervention survey across 463 households, whereas Table 1 (PDF p. 3) reports 2,263 total individuals across the 463 households (6.3% fewer than pre-intervention). In addition, Pimpri-Chinchwad house-size categories in Table 3 (PDF p. 5) sum to 90.0% (39.4% + 29.8% + 20.8%), leaving 10.0% unaccounted for. No explanation of individual attrition, missing item responses, or incomplete-construction dropouts is provided.",
+        "rating": "Moderate",
+        "where_found": "PDF p. 1 (ABSTRACT); PDF p. 3 (Table 1); PDF p. 5 (Table 3)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "Outcomes were collected internally by Shelter Associates' own M&E field staff interviewing unblinded beneficiaries who had received free toilet construction materials from SA (PDF pp. 3, 5, 7), creating severe social desirability and assessor bias (reflected in 99% reported program satisfaction, PDF p. 5). Furthermore, only female household members were interviewed (PDF p. 3), meaning reported male toilet and CTB usage rates (Table 2, PDF p. 4) rely entirely on proxy reports by female family members, and UTI symptom reductions (PDF pp. 3, 7) rely on unvalidated self-report rather than clinical assessment.",
+        "rating": "Serious",
+        "where_found": "PDF p. 3 (IMPACT ASSESSMENT STUDY); PDF p. 4 (Table 2); PDF p. 5 (Myth 3); PDF p. 7 (CONCLUSION; ACKNOWLEDGMENT)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-registration or statistical analysis plan is mentioned. Although seven study parameter domains are listed for the 463-household assessment (PDF pp. 3-4), numeric pre-post tables are presented only for CTB usage (Table 2), while health/UTI symptoms, safety, privacy, hygiene, and community cleanliness are summarized purely narratively on PDF p. 7 without sample proportions, test statistics, or p-values (and the gender comparison on PDF p. 4 asserts 'no significant difference... at 5% level of significance' without reporting the statistical test or exact p-value). Only six cherry-picked headline percentages are reported from the external 386-household study.",
+        "rating": "Serious",
+        "where_found": "PDF pp. 3-4 (IMPACT ASSESSMENT STUDY, Table 2); PDF p. 7 (CONCLUSION)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Pre- vs. post-intervention individual respondent attrition/discrepancy (D5 Missing data)",
+        "page": "PDF Page 1, ABSTRACT",
+        "quote": "involved 2,414 respondents in the pre-intervention survey while 2,306"
+      },
+      {
+        "criterion": "Briefly reported external controlled pre-post evaluation lacking methodological detail (Study design / D1 Confounding)",
+        "page": "PDF Page 3, IMPACT ASSESSMENT STUDY",
+        "quote": "The evaluation study was a pre-post case-control study over the period of 1 year and"
+      },
+      {
+        "criterion": "Sampling restricted to 15% of intervention beneficiary households without sampling procedure details (D2 Selection bias)",
+        "page": "PDF Page 3, IMPACT ASSESSMENT STUDY",
+        "quote": "assessment across 15% sample size of the total households where toilets are provided."
+      },
+      {
+        "criterion": "Internal NGO-led pre-post evaluation design (D1 Confounding / D6 Outcome measurement)",
+        "page": "PDF Page 3, IMPACT ASSESSMENT STUDY",
+        "quote": "From June 2016 to June 2018, the impact assessment was carried out internally to determine the impact of SAs"
+      },
+      {
+        "criterion": "Female-only interviews used to measure all household members' sanitation behavior including male usage (D6 Outcome measurement)",
+        "page": "PDF Page 3, IMPACT ASSESSMENT STUDY",
+        "quote": "The females of the households were interviewed and the interviews"
+      },
+      {
+        "criterion": "Unblinded NGO beneficiary satisfaction reporting vulnerable to social desirability bias (D6 Outcome measurement)",
+        "page": "PDF Page 5, IMPACT ASSESSMENT STUDY (Myth 3)",
+        "quote": "Our study reveals that 99% households have expressed their satisfaction about having chosen the OHOT model"
+      }
+    ],
+    "overall_narrative_summary": "Badri and Joshi (2018) present an empirical impact assessment of Shelter Associates' 'One Home-One Toilet' (OHOT) urban slum household sanitation delivery model implemented in partnership with Urban Local Bodies across four Maharashtra cities (Kolhapur, Navi-Mumbai, Pimpri-Chinchwad, and Pune). The primary empirical component is an internal two-wave pre-post household survey of 463 beneficiary families interviewed 6 months apart (June 2016-June 2018), supplemented by six headline summary bullets from an external 1-year 'pre-post case-control study' of 386 households conducted by the Gokhale Institute of Politics & Economics. Appraised with ROBINS-I, the study is at Critical overall risk of bias. First, the primary 463-household evaluation lacks an untreated concurrent control group and performs zero statistical adjustment for household socioeconomic confounders or secular trends (such as concurrent Swachh Bharat Mission campaigns), while omitting all control-selection and adjustment details for the external 386-household study (D1: Critical). Second, sampling an unspecified 15% subset solely among OHOT cost-sharing adopters introduces severe selection bias when drawing conclusions about slum households' general readiness to construct toilets or willingness to share costs (D2: Serious). Third, unblinded data collection by the implementing NGO's own field team, interviewing only female household members (proxy-reporting male open defecation/CTB use) and relying on unvalidated self-report for UTI symptoms and program satisfaction, creates Serious outcome measurement bias (D6: Serious). Finally, unexplained respondent count discrepancies (2,414 pre-intervention vs. 2,306 post-intervention in the Abstract vs. 2,263 in Table 1, plus a 90.0% column sum in Table 3; D5: Moderate), concurrent housing upgrades by 52.5% of households (D4: Moderate), and selective narrative reporting of most stated outcome domains without test statistics or protocols (D7: Serious) further limit causal inference.",
+    "overall_rating": "Critical",
+    "paper_read": "full text",
+    "study_design_identified": "Non-randomized pre-post (before-after) household survey impact evaluation of an NGO-municipal cost-sharing sanitation intervention (n = 463 beneficiary households across 4 cities interviewed 6 months apart), alongside brief secondary summary findings from a 1-year pre-post case-control evaluation (n = 386 households).",
+    "study_id": "S1083",
+    "where_found_summary": "Study design, sampling, and outcomes are reported in ABSTRACT (PDF p. 1) and IMPACT ASSESSMENT STUDY including Tables 1-4 (PDF pp. 3-6); intervention components and Swachh Bharat Mission / ULB institutional context are described in PROBLEM and INTRODUCTION TO SHELTER ASSOCIATES (PDF pp. 1-3); narrative health/UTI conclusions and internal M&E team data-collection roles are reported in CONCLUSION and ACKNOWLEDGMENT (PDF p. 7).",
+    "why_tool_chosen": "Selected ROBINS-I because the paper is explicitly a quantitative non-randomized impact evaluation of a defined household sanitation intervention ('One Home-One Toilet' [OHOT]) comparing pre-intervention and 6-month post-intervention survey waves across 463 households in four cities (and additionally reporting results from a 386-household pre-post case-control evaluation). It is longitudinal (two-wave pre-post) rather than a static cross-sectional survey (ruling out JBI Analytical Cross-Sectional), not randomized (ruling out RoB 2), purely quantitative in its reported empirical data (ruling out CASP and MMAT), and ROBINS-I directly captures the Critical confounding risk arising from the lack of an untreated comparator arm in the primary 463-household pre-post analysis."
+  }
+}

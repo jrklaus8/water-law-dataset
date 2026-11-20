@@ -1,0 +1,274 @@
+{
+  "study_id": "S1072",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "82e2fb1027ad817d95f0525508de201546fec76a9d12ba218b17cd12688d080c",
+  "input_text_sha256": "9af3b629e33d3f0bf571e8eacff954388b372358e26e8529f95939fe92085957",
+  "prompt_sha256": "abc510ddd2c677d480cafd5d02a4b91f7312bf994b12d648aaf260cea3a6f0ca",
+  "started_at": "2026-11-20T05:04:35.465292+00:00",
+  "completed_at": "2026-11-20T05:07:09.471332+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S1072\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S1072\n- Record ID: R5FAEF4C373E7\n- Citation string: Shandra CL, Shandra JM, London B (2012). The International Monetary Fund, Structural Adjustment, and Infant Mortality: A Cross-National Analysis of Sub-Saharan Africa. Journal of Poverty 16(2):194-219.\n- DOI: 10.1080/10875549.2012.667059\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 9af3b629e33d3f0bf571e8eacff954388b372358e26e8529f95939fe92085957) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=73565, sha256=9af3b629e33d3f0bf571e8eacff954388b372358e26e8529f95939fe92085957]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Serious concern: Out of 124 to 128 potential country-year observations across the 31 to 32 Sub-Saharan African countries over four five-year waves (1990, 1995, 2000, 2005), only 70 country-years (average 2.3 waves per country) are retained (~44% to 45% panel attrition/missingness within included countries, and >60% missingness across all Sub-Saharan African states), with no missing-data diagnostics or sensitivity analyses.",
+      "confounding": "Serious concern: Two-way fixed effects account for time-invariant country heterogeneity and common period shocks, but major time-varying confounders (notably armed conflict/civil war, droughts/famines, and acute macroeconomic crises driving both IMF borrowing and infant mortality) and simultaneity are uncontrolled; the instrumental-variable replication omits the identity of the excluded instruments, first-stage F-statistics, and exclusion-restriction justification, while Baron-and-Kenny models condition on contemporaneous post-treatment mediators.",
+      "legal_measurement_quality": "Weak: IMF structural adjustment is operationalized solely as logged annual per-capita disbursements received across four distinct IMF facilities (Standby, Extended Fund Facility, Structural Adjustment Facility, and Enhanced Structural Adjustment Facility) from the IMF Lending Arrangements Database, without coding concrete legal or policy conditionalities (such as water/sanitation privatization mandates, public-sector wage-bill ceilings, or health/water user fees), domestic legal implementation, or borrower compliance.",
+      "measurement_bias": "Moderate concern: Variables come from standardized secondary international compilations (World Bank World Development Indicators and IMF Lending Arrangements Database), preventing researcher-driven differential coding bias, but single-year per-capita IMF loan disbursements coarsely proxy structural adjustment reforms, WDI infant mortality series in Sub-Saharan Africa rely heavily on demographic interpolation, and improved water and sanitation are averaged into a coarse composite covariate.",
+      "outcome_measurement_quality": "Moderate-to-weak: The sole modeled dependent variable is national infant mortality rate per 1,000 live births from World Bank WDI (demographic/survey-interpolated estimates at 5-year intervals); access to improved water and sanitation is never modeled as a dependent variable, merges water and sanitation coverage into an unweighted average, and explicitly does not measure safe drinking water quality or basic sanitation functionality.",
+      "reporting_bias": "Serious concern: No pre-analysis plan exists; first-stage IV specifications, excluded instruments, descriptive statistics, bivariate correlations, and random-effects estimates are completely withheld; all significance tests use one-tailed p-values (including p < 0.10); internal discrepancies appear across text and tables (30 vs. 32 vs. 31 countries; equation numbering mismatches; Discussion claiming IMF coefficients are significant in every equation despite null results in Equations 1.9, 2.10, 2.5, and 2.6); and mediation via water/sanitation is claimed without estimating the exposure-to-mediator regression.",
+      "selection_bias": "Serious concern: Complete-case selection restricts the sample to 70 country-year observations across 31 countries (inconsistently reported as 30 in the Abstract, 32 in the Sample list, and 31 in Tables 1 and 2) out of roughly 48 Sub-Saharan African nations across 1990-2005, systematically excluding conflict-affected or data-poor states and observing prevalent IMF borrowers mid-program without aligning start of exposure and follow-up."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "Country and period fixed effects control for time-invariant national characteristics and common regional time shocks. However, severe time-varying confounding remains unaddressed: acute balance-of-payments crises, droughts/famines, and armed conflicts in Sub-Saharan Africa during 1990-2005 (e.g., Rwanda, Burundi, Angola, Sudan, Ethiopia, Eritrea) simultaneously affect IMF borrowing and infant mortality, and contemporaneous measurement of loan disbursements and mortality introduces simultaneity/reverse-causality risk. Although Table 2 estimates two-way fixed effects instrumental-variable regressions to address nonrandom selection into IMF lending, the authors never identify the excluded instrument(s), omit all first-stage estimates and weak-instrument diagnostics, and provide no exclusion-restriction defense. Progressive conditioning on contemporaneous post-treatment mediators (GDP, debt service, health/water indicators) also risks overcontrol/collider bias.",
+        "rating": "Serious",
+        "where_found": "PDF Pages 10-16, 20-22 (Method, pp. 201-207; Findings & Table 2, pp. 211-213; Note 1, PDF Page 25, p. 216)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "Out of roughly 48 Sub-Saharan African countries, only 30-32 countries are included (inconsistently stated as 30 in the Abstract, 32 in the Sample section, and 31 in Tables 1 and 2), yielding just 70 country-year observations based strictly on complete data availability in 1990, 1995, 2000, and 2005. Data completeness in Sub-Saharan Africa during this period is strongly related to institutional stability and absence of severe conflict, which are associated with both IMF lending arrangements and infant mortality. Furthermore, panel entry cuts across ongoing structural adjustment histories (prevalent exposure) rather than capturing incident program initiation.",
+        "rating": "Serious",
+        "where_found": "PDF Page 3 (Abstract, p. 194); PDF Page 11 (Dependent Variable, p. 202); PDF Page 16 (Sample, p. 207); PDF Pages 18 & 22 (Tables 1 & 2, pp. 209, 213)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "IMF structural adjustment exposure is drawn from historical administrative records (IMF Lending Arrangements Database), avoiding retrospective outcome-driven misclassification. However, summing per-capita money received in a single year across four heterogeneous IMF facilities (Standby, Extended Fund Facility, Structural Adjustment Facility, and Enhanced Structural Adjustment Facility) is a coarse proxy that does not distinguish actual policy conditionalities (e.g., water/health privatization, user fees, wage-bill caps), implementation/waivers, or cumulative multi-year program exposure between 5-year waves.",
+        "rating": "Moderate",
+        "where_found": "PDF Page 11 (Independent Variables: International Monetary Fund Structural Adjustment, p. 202)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "Concurrent macroeconomic and institutional co-interventions—such as World Bank structural adjustment lending, HIPC debt-relief initiatives, bilateral health/water aid, and domestic policy shifts—co-occur with IMF lending and are not disaggregated from IMF loan volume. In addition, the Baron-and-Kenny models condition directly on contemporaneous post-intervention variables without formal path/mediation modeling of direct versus indirect effects.",
+        "rating": "Moderate",
+        "where_found": "PDF Pages 14-16, 16-22 (Independent Variables & Findings, pp. 205-213)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "Even among the 31 (or 32) listed nations across four waves (124 to 128 potential country-years), only 70 country-year observations are analyzed (an average of 2.3 out of 4 waves per country, representing ~44%-45% missing observations within listed countries, plus complete omission of ~16-17 other Sub-Saharan African nations). Country counts vary inexplicably across the Abstract (30), Sample list (32), and Tables 1-2 (31). No missing-data mechanism assessment, comparison of observed versus missing country-years, or multiple imputation/sensitivity testing is reported.",
+        "rating": "Serious",
+        "where_found": "PDF Page 3 (Abstract, p. 194); PDF Page 11 (p. 202); PDF Page 16 (Sample, p. 207); PDF Pages 18 & 22 (Tables 1 & 2, pp. 209, 213)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "Infant mortality per 1,000 live births is obtained from the World Bank World Development Indicators database independently of exposure coding, limiting differential observer bias. However, 5-year WDI infant mortality series across Sub-Saharan Africa in 1990-2005 rely substantially on survey interpolation and demographic modeling of uneven underlying quality. For water and sanitation specifically, access to an improved water and sanitation source is entered only as a composite explanatory covariate (never estimated as an outcome of IMF lending) and explicitly does not capture drinking-water safety or basic sanitation quality.",
+        "rating": "Moderate",
+        "where_found": "PDF Pages 11-13 (Dependent Variable & Access to Improved Water and Sanitation, pp. 202-204)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-registration or analysis protocol exists. Essential empirical outputs are omitted 'for sake of space', including the entire first-stage IV specification, the identity and F-statistics of the excluded instruments in Table 2, descriptive statistics, bivariate correlations, and random-effects models. All tests use one-tailed p-values (including #p < 0.10), lowering significance thresholds. Multiple reporting inconsistencies occur: equation descriptions on p. 207 (1.1-1.5) do not match Table 1 columns (1.1-1.9, 2.10) or text on pp. 210-211; SE for water/sanitation drops anomalously from .089 to .005 in Equation (2.10); the Discussion falsely asserts IMF structural adjustment is 'positive and significant in every equation of Tables 1 and 2' despite null results in Equations (1.9), (2.10), (2.5), and (2.6); and mediation via water/sanitation is claimed solely from slight coefficient attenuation without ever estimating whether IMF lending predicts water/sanitation access.",
+        "rating": "Serious",
+        "where_found": "PDF Page 11 (p. 202); PDF Pages 16-23 (Findings, Tables 1-2, Discussion, pp. 207-214; Notes 2-4, PDF Page 25, p. 216)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D3 / Legal measurement quality (IMF exposure operationalization)",
+        "page": "PDF Page 11 (Method - Independent Variables, p. 202)",
+        "quote": "The main independent variable in the analysis is amount of money received"
+      },
+      {
+        "criterion": "D6 / Outcome & WASH measurement limitation",
+        "page": "PDF Page 12 (Method - Access to Improved Water and Sanitation, p. 203)",
+        "quote": "It is important to note that these variables to not measure access to “safe”"
+      },
+      {
+        "criterion": "D7 / Omitted descriptive statistics and correlations",
+        "page": "PDF Page 11 (Method - Dependent Variable, p. 202)",
+        "quote": "descriptive statistics and bivariate correlations for the variables used in the"
+      },
+      {
+        "criterion": "D2 & D5 / Sample count inconsistency across text and tables",
+        "page": "PDF Page 16 (Method - Sample, p. 207)",
+        "quote": "The following 32 Sub-Saharan African nations are used in the analysis:"
+      },
+      {
+        "criterion": "D1 & D7 / Unreported first-stage IV specification and diagnostics",
+        "page": "PDF Page 20 (Findings, p. 211)",
+        "quote": "We do not report the estimates of the ﬁrst stage for sake of space, but they"
+      },
+      {
+        "criterion": "D7 / Internal contradiction between Discussion text and Tables 1-2",
+        "page": "PDF Page 23 (Discussion and Conclusion, p. 214)",
+        "quote": "variable are positive and signiﬁcant in every equation of Tables 1 and 2."
+      }
+    ],
+    "overall_narrative_summary": "This cross-national unbalanced panel study evaluates the effect of International Monetary Fund (IMF) structural adjustment lending on infant mortality across Sub-Saharan Africa in 1990, 1995, 2000, and 2005 (N = 70 country-year observations) using two-way fixed effects OLS and two-way fixed effects instrumental-variable (IV) regressions, appraised under ROBINS-I as having Serious overall risk of bias. While country and period fixed effects account for time-invariant national heterogeneity and common regional shocks, four ROBINS-I domains are rated at Serious risk of bias: (1) Confounding (D1): critical time-varying confounders such as armed conflicts, droughts, and acute macroeconomic crises are omitted, exposure and mortality are measured contemporaneously without lags, and the IV replication completely omits the identity of the excluded instruments, first-stage F-statistics, and exclusion-restriction justification; (2) Selection (D2) and (3) Missing data (D5): complete-case restriction leaves only 70 country-years (average 2.3 of 4 waves) across an inconsistently reported 30 (Abstract), 32 (Sample text), or 31 (Tables 1-2) countries out of ~48 Sub-Saharan African states, without missing-data diagnostics; and (4) Selective reporting / analytical transparency (D7): descriptive statistics and all first-stage IV results are withheld, one-tailed tests (including p < 0.10) are used throughout, text-table discrepancies appear (including claiming IMF lending is significant in every equation despite null results in Equations 1.9, 2.10, 2.5, and 2.6), and partial mediation via 'access to an improved water and sanitation source' is inferred solely from minor IMF coefficient attenuation without ever estimating the effect of IMF lending on water/sanitation access (which is moreover non-significant in the IV models). Legal/policy measurement is coarse (logged annual per-capita IMF loan disbursements without conditionality coding), and water/sanitation is only included as a combined improved-access covariate rather than a directly modeled outcome.",
+    "overall_rating": "Serious",
+    "paper_read": "full text",
+    "study_design_identified": "Comparative cross-national longitudinal (unbalanced panel) evaluation across 30-32 Sub-Saharan African nations at four five-year waves (1990, 1995, 2000, 2005; N = 70 country-year observations) using two-way fixed effects OLS and two-way fixed effects instrumental-variable (IV) regression models.",
+    "study_id": "S1072",
+    "where_found_summary": "Abstract (PDF Page 3, p. 194); Method, Dependent Variable, Independent Variables, and Sample (PDF Pages 10-16, pp. 201-207); Findings and Tables 1-2 (PDF Pages 16-23, pp. 207-214); Discussion and Conclusion (PDF Pages 23-25, pp. 214-216); Notes 1-4 (PDF Page 25, p. 216).",
+    "why_tool_chosen": "Per RISK_OF_BIAS.md §1, ROBINS-I applies to non-randomized studies of policy/institutional interventions with comparative longitudinal/panel designs and/or instrumental-variable (IV) estimation. S1072 evaluates a macroeconomic/legal policy exposure (IMF structural adjustment lending arrangements) across countries and over time using two-way fixed effects panel regressions and two-way fixed effects IV regressions."
+  }
+}

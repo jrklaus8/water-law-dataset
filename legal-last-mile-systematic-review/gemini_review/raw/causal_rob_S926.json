@@ -1,0 +1,311 @@
+{
+  "study_id": "S926",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "441b39dc154dfe222eb25071d1684ca1ad8dd54fbb6704719905ceb24b5dffbf",
+  "input_text_sha256": "dd9655e7c0b5e701438e5040fd3722fa25d6b28f9dd5a0f0e360ed95d0387463",
+  "prompt_sha256": "bebcdec1c100bdba9cb9abd27351c671e1791e9de0509adb6220ad3aed9095e2",
+  "started_at": "2026-11-20T05:11:34.272038+00:00",
+  "completed_at": "2026-11-20T05:13:58.161149+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S926\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S926\n- Record ID: R8132FFEC58AA\n- Citation string: Vijay D, Ghosh D (2018). The Sabar Shouchagar Project (toilets for everyone): making Nadia District the first open-defecation-free district in India. Emerald Emerging Markets Case Studies.\n- DOI: 10.1108/EEMCS-01-2018-0009\n- Retrieval status: retrieved_cached_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: dd9655e7c0b5e701438e5040fd3722fa25d6b28f9dd5a0f0e360ed95d0387463) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46113, sha256=dd9655e7c0b5e701438e5040fd3722fa25d6b28f9dd5a0f0e360ed95d0387463]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not assessable / No information: No longitudinal participant cohort is tracked by the authors, and sample attrition, non-response, or missing data in the cited 2013 baseline survey and 2015 third-party validation surveys are not reported.",
+      "confounding": "High concern / Weak: Single-district before-after narrative (Nadia District, 2013-2015) with no comparison district, no statistical adjustment, and no separation of project leadership effects from concurrent national/state sanitation funding, demographic/economic differences across blocks, or bundled multi-agency co-interventions.",
+      "legal_measurement_quality": "Moderate-to-weak: Richly describes administrative hierarchies and institutional convergence across statutory/national schemes (MGNREGA, NRLM, NBA, SSA, ICDS), Gram Panchayats, and village Para Najardari monitoring committees, but cites zero statutory provisions, rules, formal government orders, or budgetary circulars, and carries a teaching-case confidentiality disclaimer.",
+      "measurement_bias": "High concern / Weak: Baseline open defecation and post-campaign toilet coverage (60% to 97%) and usage (57% to 99.8%) are cited from secondary administrative and UNICEF/partner reports without operational definitions or survey instruments in the text (and Exhibits 3, 5, and 6 on PDF pp. 14-16 are non-extracted figure graphics); signed household ODF declarations and neighborhood volunteer monitoring of 'violators'/'defaulters' create strong social desirability and administrative reporting biases, while child health improvements are asserted without clinical metrics.",
+      "outcome_measurement_quality": "Weak: Relies on secondary summary figures (0.35 million toilets constructed, >336,000 families reached, 97% coverage, 99.8% usage among ages 4+) whose underlying survey protocols and Exhibit 5-6 graphics are absent from the text, alongside unquantified claims of reduced sanitation-related child disease.",
+      "reporting_bias": "High concern / Weak: Published as an educational management teaching case with no research protocol and an explicit disclaimer that names, financial, and recognizable details may be disguised; selectively emphasizes award-winning successes without systematic reporting of coercion complaints, construction quality failures, post-2015 usage slippage, or block-level heterogeneity.",
+      "selection_bias": "High concern / Weak: Purposive single-case selection of Nadia District after it won the 2015 UN Public Services Award and was declared India's first ODF district; narrative relies on illustrative examples and a single quoted protagonist (District Magistrate P.B. Salim) with no informant sampling criteria and no reported sampling methodology for cited surveys."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Names major Indian statutory and administrative schemes—Mahatma Gandhi National Rural Employment Guarantee Act (MGNREGA), National Rural Livelihood Mission (NRLM), Nirmal Bharat Abhiyan (NBA), Sarva Shiksha Abhiyan, Integrated Child Development Services (ICDS), and Gram Panchayats—with general portal URLs in Notes 6-11, but cites zero statutory sections, rules, formal administrative orders, or inter-departmental convergence circulars, and includes a publisher disclaimer that names, financial, and recognizable information may be disguised for educational purposes.",
+        "rating": "weak",
+        "where_found": "PDF p. 2 (Disclaimer, article p. 1); PDF pp. 6-7 ('Co-ordination between government and non-government agencies', article pp. 5-6); PDF p. 11 (Notes 6-11, article p. 10)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly specifies the jurisdiction, administrative tiers, demographic scale, and timeframe: Nadia District in West Bengal, India (~5.2 million residents across ~1 million rural and urban households, organized into blocks, Gram Panchayats, and 6,620 ICDS catchment areas of 200-250 households each) from the July/October 2013 launch to the April 2015 Open Defecation Free declaration.",
+        "rating": "strong",
+        "where_found": "PDF p. 2 ('Introduction', article p. 1); PDF pp. 5-7 ('Conceptualizing the Sabar Shouchagar Project' and 'Co-ordination between government and non-government agencies', article pp. 4-6); PDF p. 10 ('Nadia an open-defecation-free zone', article p. 9)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Concretely describes the multi-pronged Sabar Shouchagar administrative campaign: 2013 baseline survey, 6,620 ICDS catchment zones, convergence of MGNREGA/NRLM/NBA/SSA resources, IEC pledges and school mobilization, expansion from 9 to 107 women's SHG-run rural sanitary marts, two mason training centers, signed household ODF declarations, real-time web tracking, and village Para Najardari monitoring committees; however, exact household subsidy formulas, technical latrine standards, and formal enforcement rules are omitted.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 5-10 ('Conceptualizing the Sabar Shouchagar Project' through 'Community ownership', article pp. 4-9)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Reports headline metrics—0.35 million sanitation facilities built (plus 4,240 schools and 6,620 ICDS centers), >336,000 families gaining sanitary toilet access, coverage rising from 60% to 97%, usage rising from 57% to 99.8% among persons aged 4+, and vague qualitative claims of fewer child sanitation-related illnesses—without defining technical criteria for a 'sanitary' toilet, ODF verification thresholds, or clinical health indicators (and Exhibits 5-6 on PDF pp. 15-16 appear only as unextracted figure captions).",
+        "rating": "weak",
+        "where_found": "PDF p. 2 ('Introduction', article p. 1); PDF p. 8 ('Expansion, social mobilization and program progress', article p. 7); PDF p. 10 ('Nadia an open-defecation-free zone', article p. 9); PDF pp. 15-16 (Exhibits 5-6, article pp. 14-15)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Provides no research sampling strategy, informant list, or document selection protocol for the case narrative itself, and reports no sample sizes, sampling frames, or response rates in the prose for either the 2013 district baseline survey or the post-campaign UNICEF, HIJLI Inspiration, and civil society validation studies.",
+        "rating": "weak",
+        "where_found": "PDF p. 4 ('The Nadia story', article p. 3); PDF p. 5 ('Conceptualizing the Sabar Shouchagar Project', article p. 4); PDF p. 10 ('Nadia an open-defecation-free zone', article p. 9); PDF pp. 15-16 (Exhibits 5-6, article pp. 14-15)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Nadia District was purposively selected as an exemplar pedagogical case after winning the 2015 UN Public Services Award and achieving India's first district-wide ODF declaration, and only District Magistrate P.B. Salim is directly quoted, creating pronounced survivorship and celebratory selection bias.",
+        "rating": "weak",
+        "where_found": "PDF p. 2 ('Introduction', article p. 1); PDF pp. 4-5 ('The Nadia story' and 'PB Salim – the people’s collector', article pp. 3-4)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Data collection instruments and verification procedures behind the baseline survey, real-time web tracking, and 99.8% adoption validation are not detailed in text (Exhibits 3, 5, and 6 on PDF pp. 14-16 are non-extracted figure images, and a citation to Lehne et al., 2016 on PDF p. 10 misattributes survey findings to a political-corruption working paper). Mandatory household ODF declarations and neighborhood surveillance of 'defaulters' also create unexamined social desirability and reporting bias.",
+        "rating": "weak",
+        "where_found": "PDF pp. 5, 9-11 ('Conceptualizing the Sabar Shouchagar Project', 'Community ownership', 'Nadia an open-defecation-free zone', Notes and References, article pp. 4, 8-10); PDF pp. 14-16 (Exhibits 3, 5, 6, article pp. 13-15)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Relies solely on an uncontrolled single-district narrative before-after comparison (2013-2015) with no comparator districts, no statistical counterfactual, and no mechanism to disentangle Sabar Shouchagar management practices from national sanitation funding, administrative fund-access leverage over Panchayats, or community peer pressure.",
+        "rating": "weak",
+        "where_found": "PDF pp. 8-10 ('Expansion, social mobilization and program progress', 'A persistent challenge', and 'Nadia an open-defecation-free zone', article pp. 7-9); PDF p. 14 (Exhibit 3, article p. 13)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Although state-level background conditions (high population density, hand-pump water reliance, low prior West Bengal health and IEC expenditure) are noted descriptively, there is no design or analytical control for concurrent national/state policy changes, economic trends, seasonality in diarrheal disease, or baseline inter-block variation.",
+        "rating": "weak",
+        "where_found": "PDF p. 4 ('The Nadia story', article p. 3); PDF p. 10 ('Nadia an open-defecation-free zone', article p. 9)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides detailed analysis of the local administrative and political-economy environment: District Magistrate competing duties and short two-year tenure cycles, alignment of bureaucrats (Block Development Officers, ICDS workers) with elected Panchayati Raj representatives (Gram Panchayats, Zilla Sabadhipati), perverse incentives favoring village road construction kickbacks over sanitation, supply bottlenecks in sanitary marts and skilled masons, and mobilization of women's SHGs, schools, medical practitioners, and religious leaders.",
+        "rating": "strong",
+        "where_found": "PDF pp. 4-11 ('The Nadia story' through 'The road ahead', article pp. 3-10)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Lacks any Methods section, interview guide, archival source list, or survey questionnaire; relies on several unarchived project URLs (sabarshouchagar.in) and embedded image exhibits (Exhibits 1-6) whose contents are not reported in prose, alongside an educational-case confidentiality disclaimer.",
+        "rating": "weak",
+        "where_found": "PDF p. 2 (Disclaimer, article p. 1); PDF p. 11 (Notes 6-15, article p. 10); PDF pp. 13-16 (Exhibits 1-6, article pp. 12-15)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No qualitative thematic coding, documentary coding protocol, or quantitative variable construction is performed or described in this pedagogical case study.",
+        "rating": "not assessable",
+        "where_found": "Whole text (PDF pp. 2-12, article pp. 1-11; no Methods or coding section present)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Contains no discussion of the authors' access to or relationship with District Magistrate P.B. Salim and district officials, data verification procedures, or how protagonist-centered teaching-case conventions may encourage an uncritical view of administrative leverage and neighborhood surveillance.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2, 4-5, 8-11 ('Introduction', 'PB Salim – the people’s collector', 'A persistent challenge', 'The road ahead', article pp. 1, 3-4, 7-10)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D3 / D5 — Administrative baseline survey and scale of baseline open defecation",
+        "page": "PDF Page 5 (Conceptualizing the Sabar Shouchagar Project, article p. 4)",
+        "quote": "In 2013, the district administration began by conducting a baseline survey,"
+      },
+      {
+        "criterion": "D2 / D3 — Jurisdictional operationalization via 6,620 ICDS catchment areas",
+        "page": "PDF Page 6 (Co-ordination between government and non-government agencies, article p. 5)",
+        "quote": "Thus, the district was divided into 6,620 catchment areas for this purpose."
+      },
+      {
+        "criterion": "D10 — Political-economy alignment and administrative control over Panchayat funds",
+        "page": "PDF Page 9 (Building a loose coalition, article p. 8)",
+        "quote": "because they did not want to be on the wrong side of the district administration that"
+      },
+      {
+        "criterion": "D3 / D7 — Neighborhood volunteer compliance surveillance (Para Najardari Committee)",
+        "page": "PDF Page 9 (Community ownership, article p. 8)",
+        "quote": "Finally, a Para Najardari Committee (Neighborhood Monitoring Committee) was created"
+      },
+      {
+        "criterion": "D4 / D7 / D8 — Reported sanitation coverage and UNICEF ODF validation claim",
+        "page": "PDF Page 10 (Nadia an open-defecation-free zone, article p. 9)",
+        "quote": "Complete elimination of open defecation practice, as validated by the UNICEF study."
+      }
+    ],
+    "overall_narrative_summary": "Vijay and Ghosh (2018) present a pedagogical public-administration case study (published in Emerald Emerging Markets Case Studies with an educational-use disclaimer and no research Methods section) examining the Sabar Shouchagar ('Toilets for Everyone') campaign in Nadia District, West Bengal, India (2013-2015). Appraised under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment), the paper's chief strength lies in its rich institutional and jurisdictional description (D2, D10 strong; D3 adequate): it traces how the District Magistrate's office coordinated national/state statutory and administrative programs (MGNREGA, NRLM, NBA, SSA, ICDS), aligned elected Gram Panchayats and the Zilla Sabadhipati despite competing political incentives (such as road-contract kickbacks), expanded local supply chains (from 9 to 107 women's SHG-run rural sanitary marts plus two mason training centers), and instituted household ODF declarations and Para Najardari neighborhood monitoring committees across 6,620 catchment areas. However, as empirical causal or evaluative evidence, the study has major methodological weaknesses (D1, D4-D9, D11, D13 weak; D12 not assessable): it purposively selects an award-winning single district with no comparator arm, omits any primary sampling, interview, or documentary methodology, cites zero statutory provisions or administrative orders, and relies on secondary summary figures (coverage rising from 60% to 97%; toilet usage rising from 57% to 99.8%) whose underlying survey protocols are unreported in the prose (and Exhibits 1-6 on PDF pp. 13-16 appear only as unextracted figure captions in the cached text) while social desirability and administrative reporting pressures remain unexamined.",
+    "overall_rating": "High methodological concern / Weak empirical rigor (structured non-validated judgment: 2 strong, 1 adequate, 9 weak, 1 not assessable across 13 domains)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-district public-administration teaching case / institutional implementation case study (descriptive narrative case history citing secondary administrative and third-party validation statistics and one informant quote, with no research Methods section or comparator arm)",
+    "study_id": "S926",
+    "where_found_summary": "Full prose text, endnotes, and references read across PDF pp. 1-12 and 17 (article pp. 1-11): Publisher cover (PDF p. 1), Title/Disclaimer/Introduction/Background (PDF pp. 2-4, article pp. 1-3), Nadia context and protagonist profile (PDF pp. 4-5, article pp. 3-4), Sabar Shouchagar program design, inter-agency convergence, IEC mobilization, supply-chain expansion, coalition challenges, and neighborhood monitoring (PDF pp. 5-10, article pp. 4-9), ODF outcomes and discussion questions (PDF pp. 10-11, article pp. 9-10), Notes and References (PDF pp. 11-12, article pp. 10-11). Note: Exhibits 1-6 (Figures E1-E6 on PDF pp. 13-16, article pp. 12-15) are embedded graphics whose captions are present in text but internal image contents are not extracted.",
+    "why_tool_chosen": "S926 is a single-district institutional/public-administration case history of sanitation governance and statutory scheme convergence in Nadia District, India, published as an educational case study in Emerald Emerging Markets Case Studies. ROBINS-I does not apply because it is a single-case history with no comparator arm. CASP Qualitative Checklist is ill-suited because the paper contains no research aims, qualitative sampling, interview protocol, ethical statement, or qualitative data analysis—instead ending with pedagogical discussion questions for management students. Unlike pure mathematical simulations or non-empirical commentaries (NONE), the paper documents a concrete single-jurisdiction institutional implementation episode citing baseline and validation metrics, making the 13-domain Legal Institutional Evidence Appraisal Framework the most appropriate instrument to transparently evaluate both its rich institutional context and its severe empirical/methodological limitations."
+  }
+}

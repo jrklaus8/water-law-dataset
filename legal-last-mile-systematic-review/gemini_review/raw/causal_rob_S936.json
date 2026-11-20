@@ -1,0 +1,281 @@
+{
+  "study_id": "S936",
+  "task": "causal_census_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "b6043bdc49a78c1de4e903f10a4d58682660e8b64f50e3cbde024a40e08cde03",
+  "input_text_sha256": "5829852d78c4922b0745be07d0a30306478d8c773665a6d015e29a0a6b548628",
+  "prompt_sha256": "c725634c6f03f2cf92d440960f75f9db7cc007df80c64633c2144c9c7055a78b",
+  "started_at": "2026-11-20T04:57:54.762020+00:00",
+  "completed_at": "2026-11-20T04:59:59.903244+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S936\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S936\n- Record ID: R82B3655E82D0\n- Citation string: Blase MG, Green PR, Matson A (1973). Selected Impacts of Public Water Supply Districts on Firms, Households and Communities. Journal of the Community Development Society.\n- DOI: 10.1080/15575330.1973.10877512\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 5829852d78c4922b0745be07d0a30306478d8c773665a6d015e29a0a6b548628) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=22057, sha256=5829852d78c4922b0745be07d0a30306478d8c773665a6d015e29a0a6b548628]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "High concern: Survey non-response was 35% in both districts (211 of 317 families responded in Boone County PWSD No. 5; 448 of 700 responded in Barton County PWSD No. 1), and item non-response was severe on key outcomes—45% of Boone respondents did not answer the land-price question, and only 66 of 448 Barton respondents estimated a percentage land-value increase. Prior residents who moved out before the survey were also unobservable.",
+      "confounding": "High concern: Although the authors explicitly identify major confounders—including an 18-month longer operating duration in Boone County PWSD No. 5, higher household income and younger household heads in Boone County, and concurrent regional pull factors (transportation, communications, schools, natural gas, and non-farm employment)—no untreated control communities/households were surveyed and no multivariable or statistical adjustment was performed.",
+      "legal_measurement_quality": "Weak: Missouri's 1935 PWSD enabling statute, Regional Planning Commission construction authorization (described as largely a formality), and post-1961 Farmers Home Administration loan financing are noted only as institutional background. While district membership itself is administratively defined via district rolls, legal-institutional rules, rate structures, and service-boundary provisions are not systematically operationalized or coded.",
+      "measurement_bias": "High concern: Pre- and post-district water consumption, hauled and pumped water unit costs, migration motives, home improvement expenditures, and land value appreciation were all measured via retrospective respondent recall and subjective estimation on a single mail questionnaire, without independent verification from district meter/billing records or bona fide real estate sales registries.",
+      "outcome_measurement_quality": "Weak: Quantitative water use (monthly gallons), water unit prices, facility expenditure totals, and land price changes rely entirely on unvalidated self-reports with high item missingness, inconsistent subgroup denominators across districts, and zero dispersion metrics (no standard deviations or confidence intervals).",
+      "reporting_bias": "Some concern: No pre-analysis protocol or copy of the mail questionnaire is provided, and outcome reporting is asymmetric across districts—for instance, the exact count of respondents making home improvements is reported for Boone County (25 respondents averaging $1,126) but omitted for Barton County ('a number of respondents' averaging $672), and subgroup comparisons lack sample sizes and variance estimates.",
+      "selection_bias": "High concern: Two out of 88 operational Missouri PWSDs were purposively selected as illustrative rural-urban fringe and agricultural cases without random sampling or untreated comparison areas. Within those two districts, the 65% mail return rate (35% non-response) is acknowledged by the authors as likely reflecting respondents' positive valuation of district water services, indicating probable pro-intervention response bias, compounded by post-service in-migrants (40% in Boone, 25% in Barton) entering the sample."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "At the household level, inclusion was clearly defined as a census mail survey sent to all enrolled members of two Missouri Public Water Supply Districts: Boone County PWSD No. 5 (317 families) and Barton County PWSD No. 1 (700 families). At the district level, the two PWSDs were purposively chosen from 88 operational Missouri districts to represent a rural-urban fringe area and a predominantly farming area.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-4 (journal pp. 95-96, Footnote 2 and 'Overview of Districts Studied')"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The paper provides detailed descriptions of both settings and respondent samples, including county geography and proximity to urban centers, service initiation dates (April 1967 and October 1968), total families served (317 and 700), distribution pipe mileage (38 and >190 miles), capital investment ($373,000 and >$1,000,000), respondent counts (211 and 448), farm/non-farm residence shares, 1969 mean family income (>$9,000 and $7,602), and mean household head age (47.5 and 54 years).",
+        "rating": "Yes",
+        "where_found": "PDF pp. 4-5 (journal pp. 96-97, 'Rural-Urban Fringe District', 'Agricultural District', and 'Comparison of Districts')"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "Exposure to public district water supply and district setting (rural-urban fringe Boone County PWSD No. 5 vs. agricultural Barton County PWSD No. 1) was established directly from administrative PWSD membership rolls used to mail the questionnaires, with known institutional start dates for water delivery.",
+        "rating": "Yes",
+        "where_found": "PDF pp. 3-4 (journal pp. 95-96, Footnote 2 and 'Overview of Districts Studied')"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "While enrolment as a PWSD member was determined objectively from district rolls, the residential and farm classifications used throughout the comparative analysis (commercial farm, part-time farm, retirement farm, rural non-farm residence, small town) were self-reported on the mail questionnaire with no objective acreage, income, or municipal boundary definitions reported.",
+        "rating": "Unclear",
+        "where_found": "PDF pp. 4-8 (journal pp. 96-100, 'Overview of Districts Studied' and district impact sections)"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors explicitly identify several important confounders: Boone County PWSD No. 5 had operated 18 months longer than Barton County PWSD No. 1; households differed substantially in income ($1,500 gap), head age (7-year gap), and family size; and rural-urban population growth and land appreciation were concurrently influenced by non-farm employment, natural gas availability, and improvements in transportation, communication, and schools.",
+        "rating": "Yes",
+        "where_found": "PDF p. 5 (journal p. 97, 'Comparison of Districts' and Footnote 4); PDF p. 8 (journal p. 100, 'Comparative Impacts'); PDF p. 9 (journal p. 101, 'Conclusions')"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "Other than issuing narrative caveats to interpret comparisons cautiously, stratifying descriptive means by district and farm/non-farm property category, and informally citing statewide USDA ERS average farm real estate appreciation (23% and 13.1%), no design or analytical strategies (e.g., untreated control areas, matching, standardization, or multivariable regression) were stated or implemented to control for confounding.",
+        "rating": "No",
+        "where_found": "PDF pp. 5-8 (journal pp. 97-100, 'Comparison of Districts', 'Impacts Registered in the Rural-Urban Fringe District', 'Impacts in the Agricultural District', and 'Comparative Impacts')"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "All outcomes—retrospective pre-district vs. post-district monthly water consumption and unit costs, migration decisions, household improvement spending, and per-acre land value changes—relied solely on unverified self-reports in a single mail survey. As Footnote 5 explicitly notes, land price figures were subjective respondent estimates rather than verified bona fide sales, with 45% item non-response in Boone County.",
+        "rating": "No",
+        "where_found": "PDF pp. 5-8 (journal pp. 97-100, especially PDF p. 6 / journal p. 98, Footnote 5)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Analysis is restricted to unweighted descriptive percentages and arithmetic means without standard deviations, confidence intervals, hypothesis tests, multivariable adjustment for identified confounders and unequal exposure durations, or sensitivity/weighting adjustments for 35% unit non-response and 45%+ item non-response.",
+        "rating": "No",
+        "where_found": "PDF pp. 4-8 (journal pp. 96-100, entire empirical results sections)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q1/Q3/selection_bias — Mail questionnaire census of members in both districts",
+        "page": "PDF Page 3 (journal p. 95, Footnote 2)",
+        "quote": "Data were obtained via mail questionnaires sent to all members in both"
+      },
+      {
+        "criterion": "Attrition / selection_bias — 65% survey return rate interpreted as positive valuation",
+        "page": "PDF Page 3 (journal p. 95, Footnote 2)",
+        "quote": "The fact that 65 percent of the members in each district returned"
+      },
+      {
+        "criterion": "Q5/confounding — Unequal operating duration between the two compared districts",
+        "page": "PDF Page 5 (journal p. 97, Comparison of Districts)",
+        "quote": "in operation 18 months longer than the rural district."
+      },
+      {
+        "criterion": "Q5/confounding — Co-occurring infrastructure and amenity pull factors in rural-urban area",
+        "page": "PDF Page 5 (journal p. 97, Footnote 4)",
+        "quote": "gas also made rural living more attractive in the area."
+      },
+      {
+        "criterion": "Q7/attrition — High item missingness on self-reported land value question",
+        "page": "PDF Page 6 (journal p. 98, Footnote 5)",
+        "quote": "caution in light of the fact that 45% of the respondents did not answer"
+      },
+      {
+        "criterion": "Q7/measurement_bias — Land price changes based on subjective respondent estimates rather than verified sales",
+        "page": "PDF Page 6 (journal p. 98, Footnote 5)",
+        "quote": "themselves, rather than reflect changes verified by bona fide sales."
+      }
+    ],
+    "overall_narrative_summary": "This cross-sectional comparative mail survey of members in two purposively selected Missouri Public Water Supply Districts—Boone County PWSD No. 5 (rural-urban fringe, n=211 respondents of 317 families) and Barton County PWSD No. 1 (agricultural, n=448 respondents of 700 families)—carries High methodological concern under the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies. While household-level sample inclusion (census of district rolls), administrative exposure to PWSD service, and setting/demographic characteristics are clearly described (Q1, Q2, Q3 = Yes) and key confounders such as unequal operating duration (18 months longer in Boone County), income/age differences, and concurrent regional attractions are candidly acknowledged (Q5 = Yes), the study lacks objective operational definitions for its farm/residence sub-classifications (Q4 = Unclear), employs no design or statistical controls for confounding and includes no untreated comparison group (Q6 = No), relies entirely on unverified retrospective self-reports and subjective land-value estimates rather than utility meter logs or bona fide property sales (Q7 = No), and presents only unadjusted descriptive means/percentages with zero inferential statistics despite 35% unit non-response and 45%+ item non-response on land values (Q8 = No).",
+    "overall_rating": "High concern",
+    "paper_read": "full text",
+    "study_design_identified": "Cross-sectional comparative mail survey of members in two purposively selected Public Water Supply Districts (with retrospective self-reported pre/post comparisons and no untreated control group)",
+    "study_id": "S936",
+    "where_found_summary": "Study design and mail survey response rates: PDF p. 3 (journal p. 95, Footnote 2) and PDF p. 4 (journal p. 96, 'Overview of Districts Studied'). District settings, sample sizes, and demographics: PDF pp. 4-5 (journal pp. 96-97). Confounders and operating-duration caveats: PDF p. 5 (journal p. 97, text and Footnote 4) and PDF p. 8 (journal p. 100, 'Comparative Impacts'). Empirical results and self-reported outcome limitations: PDF pp. 5-8 (journal pp. 97-100, including PDF p. 6 / journal p. 98, Footnote 5). Institutional background: PDF p. 3 (journal p. 95, 'Historical Backdrop' and Footnote 1).",
+    "why_tool_chosen": "The empirical data come from a single-wave quantitative mail questionnaire sent to members of two Missouri Public Water Supply Districts (Boone County PWSD No. 5 and Barton County PWSD No. 1), comparing descriptive means and percentages across district types (rural-urban fringe vs. agricultural) and residential/farm property subgroups. Because both surveyed districts received the PWSD intervention and there is no untreated control arm or quasi-experimental longitudinal/before-after identification strategy, ROBINS-I does not apply; the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the exact matching instrument."
+  }
+}
