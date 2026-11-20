@@ -1,0 +1,277 @@
+{
+  "record_id": "R6667931A0DBB",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "121100bc126861538558514bdff2e92232509487d5c7a4d905fe5dc49158ad2b",
+  "prompt_sha256": "a8e03b2ffe34fcd4e04bad317cb28332c7a2a1620998699d7817fe6802c13df1",
+  "started_at": "2026-11-20T17:20:49.455142+00:00",
+  "completed_at": "2026-11-20T17:22:37.800166+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Burkina Faso",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and neighborhood drinking-water service access (autonomous water stations, private household connections, standpipes, and off-grid mini-networks vs lack of centralized ONEA network service) in two precarious unallotted neighborhoods (Goundrin and Boassa) of Ouagadougou.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type reading (borderline-positive on the narrow reading because the overarching conceptual framing centers on grassroots 'bottom-up innovations' and 'contextual experts', and the Boassa case largely describes NGO-supported participatory infrastructure management). Under the plain wording, it clearly examines decentralized/off-grid water governance, ONEA delegation contracts, and public/associative/informal institutional interactions. Under the narrow 2026-10-13 rule-type reading, it also qualifies because the empirical fieldwork directly examines rule-type mechanisms governing water access: (1) land-tenure and non-subdivision ('unallotted' / 'non loti') status without legal recognition of occupation, which bars direct ONEA utility service and led municipal authorities in District 10 to refuse approval for water infrastructure pending future subdivision; (2) administrative authorization, political discretion, and accommodation (Ministerial order for ONEA pumping tests bypassing municipal refusal; municipal authorization dossier plus Ministry of the Environment site inspection/EIA enabling a private borehole operator to connect 420 households; implicit State authorization without institutional recognition); and (3) regulatory structure and lack of tariff/connection-fee regulation of informal private operators (connection fees increasing from 40,000 to 75,000 CFA francs and clandestine connections inside ONEA-delegated zones).",
+      "c3": "Contains primary qualitative socio-anthropological empirical evidence from comparative fieldwork in Goundrin and Boassa: exploratory visits in 2022 followed by 19 semi-directive in-depth interviews in January-February 2023 (6 informal operators, 2 formal ONEA delegates, 1 association, and 10 households) and direct observation. Per protocol safeguards, qualitative socio-legal/governance studies are eligible without quantitative effect sizes.",
+      "c4": "Reports concrete water-access outcomes at neighborhood, operator, and household levels, including installation of autonomous water stations and private home connections (e.g., 420 household subscribers on the Faso Nooma borehole), service continuity/protection against ONEA water cuts via dual formal-informal subscriptions, and connection affordability (connection fees rising from 40,000 to 75,000 CFA francs).",
+      "c5": "Population and unit of analysis (precarious unallotted neighborhoods Goundrin and Boassa in Ouagadougou; N=19 interviewees across informal operators, ONEA delegates, Yaam Solidarite association, and households; settlement, operator, and household levels), legal/institutional exposure, water-access outcomes, and qualitative comparative case-study design are all clearly identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c2",
+        "page": "PDF Page 4 of 13",
+        "quote": "with no legal recognition of occupation, where the public operator - the Office national de l’eau et de l’assainissement (ONEA) - does not directly provide water service."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 13",
+        "quote": "In-depth interviews were conducted in January and February 2023, following repeated exploratory visits in 2022."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 13",
+        "quote": "Initially, approaches to the mayor of District 10 to obtain approval for the installation of these infrastructures were unsuccessful. The city authorities were of the opinion that the peri-urban neighborhoods would soon be subdivided, so there was no need to install “informal” water points there. However, the Minister ordered ONEA’s General Manager to send a team to Y.O.’s home to carry out pumping tests."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 10 of 13",
+        "quote": "Then we went to the Ministry of the Environment so that government officials could come and inspect the site and carry out an environmental impact study. That’s how we managed to get the connections into the homes, and today we have 420 subscribers."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 11 of 13",
+        "quote": "It therefore appears that the State implicitly supports these bottom-up innovations, by authorizing them, without however recognizing them institutionally, as they are out of step with public policies that consider the non-housed as territories without legal existence. As for informal private operators, the state does not appear to be regulating their practices at present, which can lead to profit-seeking logics that run counter to greater social and territorial justice."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal non-recognition of land tenure ('unallotted' / 'non loti' settlement status barring direct ONEA public network provision), municipal permit refusal vs ministerial discretion/accommodation and administrative authorization (District 10 authorization dossier and Ministry of the Environment site inspection/EIA), and institutional/regulatory structure of unregulated informal private off-grid operators vs formal ONEA-delegated mini-networks and associative management.",
+    "outcome": "Household drinking-water access and private home connections (autonomous water stations and private borehole networks reaching e.g. 420 household subscribers), service continuity/protection against ONEA water cuts through dual subscriptions, and connection fee affordability (fees rising from 40,000 to 75,000 CFA francs under unregulated commercial diffusion).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Precarious unallotted ('non loti') neighborhoods of Goundrin (Sector 43, District 10) and Boassa (Sector 32, District 7) in Ouagadougou, Burkina Faso; qualitative sample of N = 19 interviewees (6 informal water operators, 2 formal ONEA water delegates, 1 association [Yaam Solidarite], and 10 households); units of analysis: settlement/neighborhood, water operator/association, and household.",
+    "rationale": "Qualitative comparative case study (19 semi-directive interviews plus direct observation in 2022-2023) examining off-grid drinking-water access in two unallotted ('non loti') neighborhoods of Ouagadougou, Burkina Faso. Although framed conceptually around 'bottom-up innovations' and 'contextual experts' (with the Boassa case centering largely on NGO-supported participatory management), the empirical analysis directly investigates rule-type legal, administrative, and regulatory mechanisms governing household water access under both the plain wording and the narrow 2026-10-13 reading of Criterion 2: tenure/non-subdivision rules barring direct ONEA service and motivating municipal refusal of water-point approvals, Ministerial discretion overriding town-hall constraints, municipal dossier and environmental inspection requirements for authorizing private borehole home connections (420 subscribers), clandestine connections in ONEA-delegated service areas, and implicit State authorization without price/practice regulation (with connection fees rising from 40,000 to 75,000 CFA francs). Eligible as a mechanism-relevant qualitative empirical study.",
+    "record_id": "R6667931A0DBB",
+    "study_design": "Qualitative comparative case study (socio-anthropological fieldwork using semi-directive interviews and direct observation)"
+  }
+}

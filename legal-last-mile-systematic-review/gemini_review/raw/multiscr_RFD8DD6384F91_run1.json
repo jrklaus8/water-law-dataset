@@ -1,0 +1,277 @@
+{
+  "record_id": "RFD8DD6384F91",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "78e9de2ab665d2246b846981381dbf7969cf6023d9ac55d1d9e7b4b386a1ef82",
+  "prompt_sha256": "2ec9d2901343509edab81db1c37026f6985343ce8ec749c500ab5bd0ba69e4d2",
+  "started_at": "2026-11-20T17:32:56.900729+00:00",
+  "completed_at": "2026-11-20T17:34:26.106146+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Colombia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines residential water (acueducto) and sewerage (alcantarillado) public utility service access across Colombian municipalities, measuring subscriber counts and proxy municipal coverage.",
+      "c2": "Passes the plain wording of Criterion 2 (plain_criterion2_decision = 'include') because municipal cadastral updating (Law 1450 of 2011), property tax administration, and intergovernmental fiscal transfers (SGP under Laws 715 and 1176) are legal, administrative, and local institutional-capacity factors. Fails the active 2026-10-13 narrow rule-type reading of Criterion 2 (c2_legal_admin_factor = 'no') because municipal cadastral updating is examined as a municipal fiscal-extraction and territorial-information state-capacity instrument (updating property valuations to increase property tax revenue and inform central-to-local infrastructure transfers), NOT a rule-type mechanism directly governing household or community service access (such as tenure/documentation requirements for household connection, eligibility screening, user administrative burden, tariff or cost-recovery rules, discretion, enforcement, or utility ownership/regulatory structure directly governing service access).",
+      "c3": "Quantitative empirical study analyzing official administrative municipal datasets (IGAC, DNP, SSPD/SUI, INS) for up to 53 Colombian municipalities across 5-year pre- and post-cadastral-update windows using Shapiro-Wilk tests and Robust Paired Samples T-Tests.",
+      "c4": "Reports municipal-level service access outcomes: number of aqueduct (drinking water) subscribers, proxy aqueduct coverage (subscribers divided by cadastral parcels), number of sewerage subscribers, and proxy sewerage coverage, alongside water quality risk (IRCA). Statistical significance or null findings play no role in eligibility.",
+      "c5": "Clearly identifies the unit of analysis and sample (53 municipalities in Caldas, Quindío, and Risaralda, Colombia; n = 33 municipalities with complete SUI data for water and sewerage subscribers and coverage), exposure (municipal cadastral updating), outcomes, and pre-post paired observational design.",
+      "c6": "Full text is in Spanish with English, Portuguese, Spanish, and French abstracts; assessment and translation directly from the provided Spanish full text are feasible per Criterion 10."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "This paper analyzes cadastral updating and its impact on the strengthening of local institutional capacities, from the point of view of property tax collection for the provision of home public utilities of water and sewerage."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "En segundo lugar, en la variable impuesto predial, se observa que este mide la capacidad recaudatoria de un municipio y representa un probable aumento producto de la actualización catastral que determina los avalúos catastrales."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7",
+        "quote": "La unidad de análisis comprende los 53 municipios de los departamentos de Caldas, Quindío y Risaralda, como se muestra en la Figura 1; las observaciones se realizan en dos períodos que abarcan cinco años para cada periodo, divididos a partir del año de la actualización catastral."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4",
+        "quote": "¿Hay diferencias en el número de suscriptores de los servicios de acueducto y alcantarillado con la actualización del catastro? ¿Hay cambios en la cobertura de los servicios de acueducto y alcantarillado con la actualización catastral?"
+      },
+      {
+        "criterion": "c5",
+        "page": "PDF Page 11",
+        "quote": "En quinto lugar, se tomó una muestra de 33 de los 38 municipios; Marmato, Norcasia, Pensilvania, Pueblo Rico y Córdoba no pudieron ser analizados por falta de datos. Se contrastó la información del número de suscriptores y la cobertura del servicio de acueducto antes y después de la actualización;"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Municipal cadastral updating (actualización catastral) as a local institutional and fiscal capacity instrument (comparing 5-year pre-update vs. 5-year post-update periods)",
+    "outcome": "Number of residential aqueduct (water) and sewerage subscribers, proxy aqueduct and sewerage coverage (subscribers divided by cadastral parcels), Water Quality Risk Index (IRCA), municipal property tax revenue (total and per capita), and SGP water and sanitation intergovernmental transfers",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "53 municipalities in the departments of Caldas, Quindío, and Risaralda, Colombia (unit of analysis: municipality; n = 53 for property tax, n = 52 for SGP transfers, n = 33 for aqueduct and sewerage subscribers and coverage, n = 42 for IRCA water quality)",
+    "rationale": "This empirical pre-post study of Colombian municipalities examines residential water (acueducto) and sewerage (alcantarillado) subscriber counts and proxy coverage before and after municipal cadastral updating (c1=yes, c3=yes, c4=yes, c5=yes, c6=yes). Under the plain wording of Criterion 2, it would be included because cadastral updating and municipal fiscal administration are institutional/administrative governance factors (plain_criterion2_decision='include'). However, under the active 2026-10-13 narrow rule-type reading of Criterion 2, it is excluded as E03 (Wrong exposure) because municipal cadastral updating is studied as a macro/municipal fiscal-revenue and state-capacity tool (raising property valuations for property tax collection and central-to-local infrastructure transfers) rather than a rule-type mechanism directly governing household or community service access (it does not examine tenure/documentation requirements for household connection, eligibility screening, user administrative burden, tariff rules, discretion, enforcement, or utility regulatory structure). Statistical significance and direction of findings played no part in this decision.",
+    "record_id": "RFD8DD6384F91",
+    "study_design": "Observational pre-post longitudinal municipal study using robust paired-samples t-tests across 5-year windows before and after cadastral updating"
+  }
+}

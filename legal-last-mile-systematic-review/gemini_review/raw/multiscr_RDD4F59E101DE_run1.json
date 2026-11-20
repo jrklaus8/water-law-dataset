@@ -1,0 +1,282 @@
+{
+  "record_id": "RDD4F59E101DE",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "15de7de47e49a4a17cadd43a42cfcacc538179ab894429f121fa4170bd373566",
+  "prompt_sha256": "2b452d494e7ce6b5857842496313e40ca3ad06daab2223d87538ae4996c2b65a",
+  "started_at": "2026-11-20T17:30:09.686473+00:00",
+  "completed_at": "2026-11-20T17:32:14.641284+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "UK, Czech Republic, Italy, Germany, Switzerland, France, Portugal, and Norway (8 European countries)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1. The paper examines internal water utility operational, management, and strategic decision-making processes for physical water pipe network rehabilitation (renewal and life-extension of ageing pipes) to inform a computer-aided decision support system (CARE-W), not household or community water or sanitation service access.",
+      "c2": "Plain vs. narrow Criterion 2 assessment: Under the plain/broad wording of Criterion 2, the study arguably touches on institutional, administrative, contractual, and regulatory factors (e.g., compulsory pipe-rehabilitation targets, municipal owner vs. public/private utility manager responsibilities under management contracts, and internal budgeting procedures), although overall plain_criterion2_decision is still 'exclude' because the paper fails Criteria 1 and 4. Under the active 2026-10-13 narrow rule-type reading, the paper fails Criterion 2 ('no'): it does not examine any rule-type mechanism directly governing household or community service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules governing access, discretion or accommodation, enforcement, or utility ownership/regulatory structure directly governing service access), focusing instead on internal utility asset-management decision procedures for pipe rehabilitation and DSS design.",
+      "c3": "Satisfies Criterion 3. Contains empirical primary data from a questionnaire survey of 14 European water utility management organisations conducted between December 2002 and February 2003 (with dialog between end-users and project partners) and 5 interview-based utility case studies.",
+      "c4": "Fails Criterion 4. Although utilities mention regulatory levels for service interruptions/pressure and customer complaints among generic planning goals for pipe rehabilitation, the paper measures and reports no outcomes on household or community access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion. Its outputs are purely descriptive typologies of internal pipe-rehabilitation decision-making processes.",
+      "c5": "Fails Criterion 5 for review PICO. While the organisational sample (14 European utilities; 5 case-study utilities, including Strasbourg) and descriptive survey/case-study design are identifiable, the study explicitly aims only to describe internal pipe-rehabilitation decision processes rather than assess any service-access exposure or household/community access outcome.",
+      "c6": "Satisfies Criterion 6. The retrieved full text is in English (Water Science & Technology: Water Supply, 2005, 5(2), 23-30, 'Rehabilitation of water networks: analysis of the decision making processes', by the same four authors in 2005 on the CARE-W WP3 study; note the bibliographic metadata lists a variant English/French title and swaps the 2nd/3rd author order)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "The European Project CARE-W (Computer Aided Rehabilitation of Water Networks), which is supported by the European Commission, has created and tested a prototype of decision support system for the rehabilitation of water pipes. Inside the project, the present operational decision making processes have been analysed in 14 water utilities."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2",
+        "quote": "The end-user survey was performed from December 2002 to February 2003. The 14 end-users considered in this survey are the organisations in charge of managing the water services in following cities or areas:"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4",
+        "quote": "They addressed among other issues: the existence of formal decision processes, involved parties, regulatory and contractual frameworks for rehabilitation, budgets, and the description of the three types of decision situations."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5",
+        "quote": "The vast majority of surveyed utilities cover rehabilitation expenses only from the water bills, whether these expenses being investment or operation costs."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 1",
+        "quote": "The aim of this study was to describe the real processes, not to compare or assess them, which would make no sense."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 6",
+        "quote": "The levels of documentation of the decision processes are very different from one end-user to another."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "not reported (descriptive organisational analysis of internal utility decision-making structures, regulatory/contractual frameworks, budgeting rules, and road-works coordination for physical pipe network rehabilitation; no service-access exposure tested)",
+    "outcome": "Descriptive characteristics and typology of utility pipe-rehabilitation decision-making processes (planning/programming horizons, budget-setting rules, centralisation, formalisation, information flows, confrontation, and decision support system needs); no household or community service access outcome reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "14 European water utility management organisations ('end-users') in Bristol (UK), Brno (Czech Republic), Codigoro, Ferrara, and Reggio Emilia (Italy), Dresden and Stuttgart (Germany), Lausanne (Switzerland), Lyon and Roubaix Tourcoing (France), Montijo and Oeiras Amadora (Portugal), and Oslo and Trondheim (Norway), plus 5 detailed interview-based case studies (Lausanne, Lyon urban area, Montijo, Oeiras-Amadora, and Strasbourg urban area)",
+    "rationale": "Excluded as E01 (Wrong topic). Based on the retrieved 2005 English full text in Water Science & Technology: Water Supply by the same four authors reporting the CARE-W WP3 study (noting the metadata carries a bilingual English/French variant title and swaps the 2nd and 3rd authors), the paper investigates internal water utility decision-making processes for physical pipe network rehabilitation (long-term planning, annual programming, urgent pipe interventions, budgeting, and road-works coordination) to design a computer-aided decision support system (CARE-W) across 14 European utilities. It does not examine household or community water or sanitation service access (failing c1), does not analyse a rule-type legal/administrative mechanism governing service access under the 2026-10-13 Criterion 2 scope (failing c2), and reports no service access, connection, continuity, reliability, or affordability outcomes (failing c4). Under the plain wording of Criterion 2, the decision would still be 'exclude' due to failing Criteria 1 and 4.",
+    "record_id": "RDD4F59E101DE",
+    "study_design": "Cross-sectional utility survey (14 utilities) and comparative qualitative case studies (5 utilities)"
+  }
+}

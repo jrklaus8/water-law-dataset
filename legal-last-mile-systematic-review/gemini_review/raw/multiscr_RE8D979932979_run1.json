@@ -1,0 +1,277 @@
+{
+  "record_id": "RE8D979932979",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "c5863b03c1c91a3584a6393aab650aa821ea9e1b6f8ec68a34291c108d453641",
+  "prompt_sha256": "0d30e6a2dc7648269c9348278b940963b7e70d0df8163fc85afbec33c66c6b99",
+  "started_at": "2026-11-20T17:14:21.471519+00:00",
+  "completed_at": "2026-11-20T17:15:15.495588+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1 (and matches Exclusion Criterion 7: water-resource studies unrelated to household or community service access). Although the paper notes as statutory background that 12-14 million South Africans lack potable water and that the 1998 National Water Act includes basic human needs (25 L/person/day) in the statutory Reserve, it explicitly sets aside the human Reserve component as uncontroversial and focuses entirely on fluvial hydrosystem management and the ecological Reserve in the Orange River basin.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, this paper would pass Criterion 2 (plain=yes) because it examines a legal, institutional, and regulatory framework — South Africa's National Water Act 36 of 1998, specifically the statutory Reserve (sections 16-18), nationalization of water resources, and allocation powers between the central Department of Water Affairs and Forestry (DWAF) and Catchment Management Agencies (CMAs). Under the narrow 2026-10-13 rule-type clarification, it fails Criterion 2 (narrow=no) because the legal mechanism analyzed is environmental instream flow regulation and bulk river-basin water resource allocation rather than a rule-type mechanism directly governing household or community water/sanitation service access (basic human needs and free basic water are mentioned only briefly as unanalysed policy background). Note that even under the plain reading of Criterion 2, the overall study decision remains exclude because the paper fails Criteria 1 and 4.",
+      "c3": "Contains empirical geographical and hydrological case-study evidence for the Orange River basin (catchment D73/D73F), combining DWAF hydrological flow records, the April 2001 preliminary Reserve assessment, April-May 2001 flood hydrographs, field observations of fluvial reed growth, and water-balance simulations (Table 1), though none of this empirical evidence measures household or community service access.",
+      "c4": "Fails Criterion 4. Reported outcomes are ecological Reserve flow volumes (Mm3/year), river discharge and flood peaks (m3/s), fluvial ecological impacts (blackfly proliferation and reed bed growth), and bulk basin water balances remaining for the Lower Orange CMA, Namibia, irrigation, and inter-basin transfers. No household or community water or sanitation access, connection, availability, reliability, quantity, affordability, or exclusion outcome is measured.",
+      "c5": "Fails Criterion 5 for review-eligible constructs: the unit of analysis is a fluvial hydrosystem / river basin (the Orange River and catchment D73/D73F), with no household or community study population or service-access outcome.",
+      "c6": "Full text is in French with an English abstract. Per Criterion 10, direct reading and translation assessment from the provided French full text by the bilingual AI screener is straightforward and feasible; the study is substantively ineligible on Criteria 1, 2 (narrow), 4, and 5."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 11 (Abstract)",
+        "quote": "This paper investigates the practical problems of the implementation and enforcement of the Reserve in highly variable and substantially modified hydrosystems."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 11 (La Reserve, p. 23)",
+        "quote": "Si le calcul de la partie humaine de la Reserve ne présente pas de difficultés particulières, et ne soulève pas de débats majeurs, étant donné la faible importance des volumes utilisés, le calcul de la part écologique de la Reserve pose en revanche de grandes difficultés dans le contexte sud-africain."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 11 (La politisation de l'environnement, p. 28)",
+        "quote": "La Reserve met en question le fonctionnement général de la loi. Celle-ci, étant donné son rôle central, déterminera en effet la part laissée à la gestion de l’Agence de bassin, et par conséquent l’eau disponible pour l’agriculture, principale activité le long de l’Orange."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 9 of 11 (Quel environnement défendre ?, p. 28)",
+        "quote": "L’étude sur le terrain montre que cette crue n’a eu aucun effet sur les roseaux, mais qu’au contraire, elle a favorisé leur croissance en déposant localement des sables et des limons sur les bancs de galets."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 11 (La politisation de l'environnement, p. 30)",
+        "quote": "L’exemple du fleuve Orange montre les limites et les dangers portés par une approche trop quantitative de la Reserve."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Implementation and quantitative calculation of the statutory ecological Reserve under South Africa's National Water Act 36 of 1998 in the Orange River basin",
+    "outcome": "Instream ecological Reserve volumes (Mm3/year), river flow regimes and flood peaks, fluvial ecological conditions (blackfly proliferation and reed bed growth), and bulk basin water balances available to the Lower Orange Catchment Management Agency, irrigation, Namibia, and inter-basin transfers",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Orange River fluvial hydrosystem in South Africa, specifically the middle/lower Orange basin (catchments D73 and D73F)",
+    "rationale": "Exclude as E01 (Wrong topic — water-resource and fluvial environmental management study unrelated to household or community water/sanitation service access, per Exclusion Criterion 7). While Blanchon (2003) briefly notes apartheid-era inequalities in potable water access and the 25 L/person/day basic human needs component of the statutory Reserve as background to South Africa's 1998 National Water Act, the paper explicitly sets aside the human Reserve calculation and examines the hydrological, ecological, and bulk basin-allocation challenges of defining and enforcing the environmental Reserve in the Orange River basin. It neither analyzes a rule-type mechanism governing household/community service access (failing narrow Criterion 2) nor reports any household or community service access outcome (failing Criteria 1 and 4; thus also excluded under the plain Criterion 2 reading).",
+    "record_id": "RE8D979932979",
+    "study_design": "Geographical and hydrological case study with secondary flow data, field observation, and basin water-balance simulation"
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "record_id": "R7AC977C0F191",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "8b4c15496f3122bf967ea2fc480f4aed27fadb9a95987548c74c04b4ebc5dfcc",
+  "prompt_sha256": "acdb73d2d589acdaa313515f3376ce6638317743720dd75ba7cf5437f63c9874",
+  "started_at": "2026-11-20T17:32:56.896917+00:00",
+  "completed_at": "2026-11-20T17:34:12.300645+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking water supply access (piped water connections and intermittent supply schedules) as well as municipal sewerage/drainage coverage across urban neighborhoods and rural municipal agencies in Huajuapan de León, Oaxaca, Mexico.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, it examines local institutional and legal water governance ('governance from below' via Independent Water Systems [SIAs] vs. the municipal water utility SAPAHUA and Mexico's Ley de Aguas Nacionales [LAN]). Under the narrow 2026-10-13 rule-type reading, it empirically analyzes concrete rule-type mechanisms directly governing service access: (1) utility ownership and regulatory structure (community-owned, self-regulated SIAs operating under written and customary operational rules and Conagua concessions without formal recognition in the LAN, versus transfer of control to the municipal utility SAPAHUA); (2) tariff and cost-recovery rules (flat monthly household tariffs vs. metered tiered pricing in Colonia del Maestro, plus extraordinary community assessments and tequios to cover pumping electricity deficits); (3) enforcement constraints on disconnection (non-paying users invoking the human right to water, preventing SIAs from cutting off service); and (4) land-tenure and jurisdictional service boundaries in peri-urban communal agrarian lands managed clandestinely as private property.",
+      "c3": "Qualitative comparative empirical study of four SIA case studies (two urban, two rural) using the Governance Analytical Framework (MAG), based on 20 in-depth key-informant interviews with water committee authorities, community actors, and municipal/SAPAHUA officials, triangulated with municipal utility and census records. Per protocol safeguards, qualitative socio-legal empirical studies are included for mechanism synthesis even without quantitative effect sizes.",
+      "c4": "Reports multiple concrete service-access outcomes: household piped connection and sewerage counts, municipal coverage shares (70% SAPAHUA across 88 localities, 23% SIAs across 38 localities, 27 localities without continuous supply), service continuity/intermittency schedules (days and hours per week), monthly tariff levels and cost-recovery shortfalls, non-disconnection of non-paying households, exclusion/unserved peripheral growth by SIAs, and lower water quantity and quality following transfer of SIA control to the municipal operator.",
+      "c5": "Population and units of analysis (four SIA localities serving 1,200 to 5,200 inhabitants each, household connections, 20 key informants, and 153 municipal localities), exposure (community SIA ownership, internal operational/tariff/enforcement rules, and lack of LAN recognition vs. municipal utility control), outcomes (coverage, connection counts, continuity, tariffs, quantity/quality), and study design (qualitative multiple-case study) are all clearly identified.",
+      "c6": "Full text is in Spanish with an English abstract. Eligible under Inclusion Criterion 10 because translation from the clean, machine-readable Spanish full text is directly feasible and the study provides substantive empirical socio-legal evidence on community vs. municipal utility governance and access rules (translation method: bilingual/AI full-text reading, to be logged in extraction_note)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 53 (Abstract)",
+        "quote": "Using a qualitative methodology, four cases were studied with a total of twenty in-depth interviews with representatives of citizen committees and municipal authorities in charge of water management."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 53 (Introducción)",
+        "quote": "sistemas independientes de agua (SIAs), que son organizaciones sociales que suministran el servicio de agua a través de una red de infraestructura hídrica local autogestionada, y que se han provisto de normas operativas internas para su gestión. No obstante, estas instituciones locales no tienen reconocimiento en la normatividad hídrica nacional."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 31 of 53 (Procesos de gobernanza local)",
+        "quote": "Por su parte, la Colonia del Maestro instaló medidores dentro de las viviendas que suministra, y establece una tarifa mínima para cierta cantidad; si el usuario utiliza de más, paga más caro el abastecimiento del agua."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 33 of 53 (Sostenimiento económico y operativo del sistema)",
+        "quote": "Esta situación se debe a que también existen usuarios que no pagan el servicio de agua; algunos se amparan en el derecho humano al agua, por lo cual los SIAs se ven impedidos para cortarles el servicio."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 39 of 53 (Defensa del agua)",
+        "quote": "De acuerdo con la investigación de campo y datos del Sistema Administrador de Agua Potable y Alcantarillado de la Ciudad de Huajuapan de León (SAPAHUA, 2018), el gobierno municipal abastece a 88 localidades y los SIAs a 38, por lo que existen 27 localidades sin suministro continuo de agua."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 40 of 53 (Defensa del agua)",
+        "quote": "En entrevistas con exintegrantes de los comités de agua de San Mateo y San Diego se evidenció que esta situación ya sucedió en sus localidades, donde entregaron el control de su SIA al gobierno municipal, y la cantidad y calidad del agua que reciben ahora es inferior a lo que les abastecía su propio sistema."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Community-owned and user-regulated Independent Water Systems (SIAs) operating under written and customary local rules, tariff/cost-recovery rules (flat fees, metered block tariffs, extraordinary assessments, tequios), human-right-to-water non-disconnection constraints, and non-recognition under the Ley de Aguas Nacionales (LAN), compared with municipal utility (SAPAHUA) ownership/control and peri-urban agrarian tenure boundaries.",
+    "outcome": "Household piped drinking-water connections and municipal coverage shares, intermittent supply continuity (days and hours per week), monthly household tariffs and system cost recovery, inability to disconnect non-paying users, peripheral coverage limits, and water quantity and perceived quality.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Four Independent Water Systems (SIAs) in Huajuapan de León, Oaxaca, Mexico—two urban (Fraccionamiento Jardines del Sur, 1,200 inhabitants/146 piped dwellings; Colonia del Maestro, 5,200 inhabitants/651 piped dwellings) and two rural municipal agencies (Santa María Xochixtlapilco, 4,100 inhabitants/446 piped dwellings; Santa Teresa, 4,000 inhabitants/847 piped dwellings, 1,100 registered connections)—sampled via 20 in-depth key-informant interviews (16 SIA informants and 4 municipal/SAPAHUA officials) plus municipal data covering 153 localities (77,547 inhabitants).",
+    "rationale": "This qualitative socio-legal multiple-case study meets all review inclusion criteria. It empirically investigates household and community drinking-water access across four Independent Water Systems (SIAs) and the municipal utility (SAPAHUA) in Huajuapan de León, Oaxaca, Mexico, using 20 in-depth interviews and institutional records. Under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2, it examines concrete institutional and regulatory mechanisms directly governing service access: community vs. municipal utility ownership/regulatory control, lack of formal recognition under the Ley de Aguas Nacionales, local tariff and cost-recovery rules (flat vs. metered tiered tariffs and extraordinary community contributions), non-disconnection of non-paying users invoking the human right to water, operational rationing rules, and peri-urban agrarian land-tenure/jurisdictional boundaries. Although written in Spanish (with an English abstract), full-text translation is directly feasible under Criterion 10, and qualitative empirical studies are retained for mechanism synthesis.",
+    "record_id": "R7AC977C0F191",
+    "study_design": "Qualitative comparative multiple-case study (4 cases; 20 in-depth key-informant interviews triangulated with municipal and census records, analyzed via the Governance Analytical Framework)"
+  }
+}
