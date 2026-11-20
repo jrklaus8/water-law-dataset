@@ -1,0 +1,178 @@
+{
+  "study_id": "S593",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "613ac8236ca8d5c7e7f5d3268cd675d4c1cf3e3c5e1a08f67b9f25a811014953",
+  "prompt_sha256": "188e65669654f261cbead6036bd8743fd99edaf8c8ca4d8c55f2e97a49131aee",
+  "started_at": "2026-11-20T16:24:55.271544+00:00",
+  "completed_at": "2026-11-20T16:26:54.117979+00:00",
+  "raw_request": {
+    "type_name": "blind_taxonomy_classifier",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "primary_mechanism_family",
+        "assigned_mechanism_label_with_multiple",
+        "all_applicable_mechanisms",
+        "primary_outcome_family",
+        "assigned_outcome_label_with_multiple",
+        "study_design_class",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "primary_mechanism_family": {
+          "type": "string",
+          "enum": [
+            "eligibility_status_documentation",
+            "procedural_burden",
+            "fees_tariffs_subsidies",
+            "discretion_accommodation",
+            "enforcement_sanctions",
+            "review_redress",
+            "regulatory_model_ownership",
+            "institutional_structure_coordination",
+            "participation_assistance",
+            "NONE_NO_RULE_MECHANISM",
+            "cannot_tell"
+          ]
+        },
+        "assigned_mechanism_label_with_multiple": {
+          "type": "string",
+          "enum": [
+            "eligibility_status_documentation",
+            "procedural_burden",
+            "fees_tariffs_subsidies",
+            "discretion_accommodation",
+            "enforcement_sanctions",
+            "review_redress",
+            "regulatory_model_ownership",
+            "institutional_structure_coordination",
+            "participation_assistance",
+            "NONE_NO_RULE_MECHANISM",
+            "cannot_tell",
+            "multiple"
+          ]
+        },
+        "all_applicable_mechanisms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "primary_outcome_family": {
+          "type": "string",
+          "enum": [
+            "primary_connection",
+            "effective_access",
+            "economic_access",
+            "administrative_outcome",
+            "NONE_NO_ACCESS_OUTCOME",
+            "cannot_tell"
+          ]
+        },
+        "assigned_outcome_label_with_multiple": {
+          "type": "string",
+          "enum": [
+            "primary_connection",
+            "effective_access",
+            "economic_access",
+            "administrative_outcome",
+            "NONE_NO_ACCESS_OUTCOME",
+            "cannot_tell",
+            "multiple"
+          ]
+        },
+        "study_design_class": {
+          "type": "string",
+          "enum": [
+            "experimental",
+            "quasi_experimental",
+            "observational",
+            "mixed_methods",
+            "qualitative",
+            "doctrinal",
+            "jurimetric",
+            "systematic_review_secondary",
+            "other",
+            "cannot_tell"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "all_applicable_mechanisms": [
+      "institutional_structure_coordination",
+      "fees_tariffs_subsidies",
+      "regulatory_model_ownership"
+    ],
+    "assigned_mechanism_label_with_multiple": "institutional_structure_coordination",
+    "assigned_outcome_label_with_multiple": "multiple",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "average unit price, rates of recovering costs from water price, revenue water ratio, water supply rate, number of employees, and"
+      },
+      {
+        "page": "1",
+        "quote": "Among them, the level of inequality in the average unit price was the highest."
+      },
+      {
+        "page": "1",
+        "quote": "정(+)의 영향을, 1인당 지방세 부담액은 부(-)의 영향을, 시/군 여부는 고객만족도를 제외한 5가지 계수에 부(-)의 영향을 끼치는 것으로 나타났다."
+      }
+    ],
+    "paper_read": "full text",
+    "primary_mechanism_family": "institutional_structure_coordination",
+    "primary_outcome_family": "economic_access",
+    "rationale": "This observational panel/repeated cross-sectional study analyzes official statistics for 152 decentralized municipal water utilities (si and gun local governments) in South Korea across 2010, 2016, and 2021 using Coulter's coefficient of inequity and Tobit/OLS regressions. On the mechanism side, the central empirical exposures tested in Hypotheses 2-4 are local jurisdictional structure (administrative district tier: city 'si' vs. county 'gun') and decentralized municipal fiscal structure (degree of financial independence and per-capita local tax burden), placing primary_mechanism_family and assigned_mechanism_label_with_multiple in institutional_structure_coordination. Utility governance models (private consignment/delegated management and local public enterprise corporatization status, regulatory_model_ownership) are included as non-focal control variables, while municipal water tariff and cost-recovery rules (fees_tariffs_subsidies) are evaluated descriptively for equity adjustments and policy reform. On the outcome side, six water service equity indicators spanning economic_access (average unit water price), primary_connection (water supply coverage rate), effective_access (customer complaints/satisfaction and revenue water ratio), and administrative_outcome (cost-recovery rate and staffing) are analyzed in parallel across all models (assigned_outcome_label_with_multiple = 'multiple'), with average unit price inequity highlighted as the most severe and focal disparity (primary_outcome_family = 'economic_access').",
+    "study_design_class": "observational",
+    "study_id": "S593"
+  }
+}

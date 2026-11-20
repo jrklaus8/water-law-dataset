@@ -1,0 +1,179 @@
+{
+  "study_id": "S937",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "6e21ca2e6dca56cf5abbad1b19f3a64a12cec83a31abd3a2cb0070c42aa695ea",
+  "prompt_sha256": "7fcc97249854bd8380c35aeee56de8c11e29088edacf5d33b70931420434f92a",
+  "started_at": "2026-11-20T16:19:20.153733+00:00",
+  "completed_at": "2026-11-20T16:20:58.622061+00:00",
+  "raw_request": {
+    "type_name": "blind_taxonomy_classifier",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "primary_mechanism_family",
+        "assigned_mechanism_label_with_multiple",
+        "all_applicable_mechanisms",
+        "primary_outcome_family",
+        "assigned_outcome_label_with_multiple",
+        "study_design_class",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "primary_mechanism_family": {
+          "type": "string",
+          "enum": [
+            "eligibility_status_documentation",
+            "procedural_burden",
+            "fees_tariffs_subsidies",
+            "discretion_accommodation",
+            "enforcement_sanctions",
+            "review_redress",
+            "regulatory_model_ownership",
+            "institutional_structure_coordination",
+            "participation_assistance",
+            "NONE_NO_RULE_MECHANISM",
+            "cannot_tell"
+          ]
+        },
+        "assigned_mechanism_label_with_multiple": {
+          "type": "string",
+          "enum": [
+            "eligibility_status_documentation",
+            "procedural_burden",
+            "fees_tariffs_subsidies",
+            "discretion_accommodation",
+            "enforcement_sanctions",
+            "review_redress",
+            "regulatory_model_ownership",
+            "institutional_structure_coordination",
+            "participation_assistance",
+            "NONE_NO_RULE_MECHANISM",
+            "cannot_tell",
+            "multiple"
+          ]
+        },
+        "all_applicable_mechanisms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "primary_outcome_family": {
+          "type": "string",
+          "enum": [
+            "primary_connection",
+            "effective_access",
+            "economic_access",
+            "administrative_outcome",
+            "NONE_NO_ACCESS_OUTCOME",
+            "cannot_tell"
+          ]
+        },
+        "assigned_outcome_label_with_multiple": {
+          "type": "string",
+          "enum": [
+            "primary_connection",
+            "effective_access",
+            "economic_access",
+            "administrative_outcome",
+            "NONE_NO_ACCESS_OUTCOME",
+            "cannot_tell",
+            "multiple"
+          ]
+        },
+        "study_design_class": {
+          "type": "string",
+          "enum": [
+            "experimental",
+            "quasi_experimental",
+            "observational",
+            "mixed_methods",
+            "qualitative",
+            "doctrinal",
+            "jurimetric",
+            "systematic_review_secondary",
+            "other",
+            "cannot_tell"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "all_applicable_mechanisms": [
+      "fees_tariffs_subsidies",
+      "enforcement_sanctions",
+      "institutional_structure_coordination",
+      "regulatory_model_ownership"
+    ],
+    "assigned_mechanism_label_with_multiple": "fees_tariffs_subsidies",
+    "assigned_outcome_label_with_multiple": "primary_connection",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "opportunity to observe an ex-ante regulatory impact assessment (RIA) as a policy tool in Brazil."
+      },
+      {
+        "page": "3",
+        "quote": "mainly through the design of tariff mechanisms that are"
+      },
+      {
+        "page": "1",
+        "quote": "reduce the households not connected to wastewater services by 75% and for that they should incur"
+      }
+    ],
+    "paper_read": "full text",
+    "primary_mechanism_family": "fees_tariffs_subsidies",
+    "primary_outcome_family": "primary_connection",
+    "rationale": "This full-text paper conducts an ex-ante Regulatory Impact Assessment (RIA) using Multiple Criteria Decision Analysis (M-MACBETH), stakeholder focus-group/survey elicitation, and cost-benefit analysis for the state water/wastewater regulator of Minas Gerais (ARSAE) across four municipalities (Belo Horizonte, Betim, Contagem, and Ribeirao das Neves). Because ARSAE lacks municipal legal authority to inspect households or directly enforce mandatory sewer connection statutes, its primary actionable and quantitatively modeled regulatory lever is tariff and cost-recovery/subsidy design (CEc1: average tariffs covering capex/opex to finance connection diffusion while addressing user resistance to higher tariffs), making fees_tariffs_subsidies the dominant primary mechanism alongside contextual discussion of mandatory-connection enforcement (enforcement_sanctions), state-regulator vs municipal mandate division (institutional_structure_coordination), and independent regulatory agency governance via RIA (regulatory_model_ownership). The focal access outcome evaluated across the four policy alternatives (100%, 75%, 50%, and 0% gap reduction) is physical household connection to the public wastewater network (CSo1: number of non-connected households), classified as primary_connection. Because the empirical exercise evaluates hypothetical prospective policy scenarios via ex-ante MCDA and cost-benefit decision modeling rather than observing post-intervention outcomes, study_design_class is classified as other.",
+    "study_design_class": "other",
+    "study_id": "S937"
+  }
+}

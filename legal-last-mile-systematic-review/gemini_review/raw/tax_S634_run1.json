@@ -1,0 +1,179 @@
+{
+  "study_id": "S634",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f131c7392f5880d7ed3841b941daea199c9724ec8adae468ea0db68415350e45",
+  "prompt_sha256": "1172d8047474b621510597bbd831121ebe1be78abd547950ef73a549df751ec2",
+  "started_at": "2026-11-20T16:19:20.160123+00:00",
+  "completed_at": "2026-11-20T16:21:05.923973+00:00",
+  "raw_request": {
+    "type_name": "blind_taxonomy_classifier",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "primary_mechanism_family",
+        "assigned_mechanism_label_with_multiple",
+        "all_applicable_mechanisms",
+        "primary_outcome_family",
+        "assigned_outcome_label_with_multiple",
+        "study_design_class",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "primary_mechanism_family": {
+          "type": "string",
+          "enum": [
+            "eligibility_status_documentation",
+            "procedural_burden",
+            "fees_tariffs_subsidies",
+            "discretion_accommodation",
+            "enforcement_sanctions",
+            "review_redress",
+            "regulatory_model_ownership",
+            "institutional_structure_coordination",
+            "participation_assistance",
+            "NONE_NO_RULE_MECHANISM",
+            "cannot_tell"
+          ]
+        },
+        "assigned_mechanism_label_with_multiple": {
+          "type": "string",
+          "enum": [
+            "eligibility_status_documentation",
+            "procedural_burden",
+            "fees_tariffs_subsidies",
+            "discretion_accommodation",
+            "enforcement_sanctions",
+            "review_redress",
+            "regulatory_model_ownership",
+            "institutional_structure_coordination",
+            "participation_assistance",
+            "NONE_NO_RULE_MECHANISM",
+            "cannot_tell",
+            "multiple"
+          ]
+        },
+        "all_applicable_mechanisms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "primary_outcome_family": {
+          "type": "string",
+          "enum": [
+            "primary_connection",
+            "effective_access",
+            "economic_access",
+            "administrative_outcome",
+            "NONE_NO_ACCESS_OUTCOME",
+            "cannot_tell"
+          ]
+        },
+        "assigned_outcome_label_with_multiple": {
+          "type": "string",
+          "enum": [
+            "primary_connection",
+            "effective_access",
+            "economic_access",
+            "administrative_outcome",
+            "NONE_NO_ACCESS_OUTCOME",
+            "cannot_tell",
+            "multiple"
+          ]
+        },
+        "study_design_class": {
+          "type": "string",
+          "enum": [
+            "experimental",
+            "quasi_experimental",
+            "observational",
+            "mixed_methods",
+            "qualitative",
+            "doctrinal",
+            "jurimetric",
+            "systematic_review_secondary",
+            "other",
+            "cannot_tell"
+          ]
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "all_applicable_mechanisms": [
+      "eligibility_status_documentation",
+      "fees_tariffs_subsidies",
+      "enforcement_sanctions",
+      "institutional_structure_coordination"
+    ],
+    "assigned_mechanism_label_with_multiple": "multiple",
+    "assigned_outcome_label_with_multiple": "multiple",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "5",
+        "quote": "The study adopted multiple techniques in collecting data: the use of questionnaire survey, participant observation, secondary sources and rapid appraisal using a Geographic Information System (GIS) to map environmental risks."
+      },
+      {
+        "page": "10",
+        "quote": "Further in principle, Ghana Water Company will not connect households without secure tenure to their reservoirs, as this entails the risk of not recouping or recovering such investment should the communities be evicted."
+      },
+      {
+        "page": "6",
+        "quote": "it was observed that most residents in the low-income research localities have to pay for water usage at every moment."
+      }
+    ],
+    "paper_read": "full text",
+    "primary_mechanism_family": "eligibility_status_documentation",
+    "primary_outcome_family": "primary_connection",
+    "rationale": "This mixed-methods study combines a stratified random survey of 520 households across high- and low-income neighborhoods in Accra, 20 key-stakeholder interviews, focus group discussions, field observations, municipal expenditure records, and GIS spatial mapping of cholera cases. Multiple legal and governance mechanisms are co-central to explaining disparities in water and sanitation access (`assigned_mechanism_label_with_multiple` = 'multiple'): (1) `eligibility_status_documentation` (the primary utility/municipal exclusion rule: Ghana Water Company refuses to connect households lacking secure land tenure due to eviction/cost-recovery risk, and municipal authorities exclude 'illegal' settlements like Agbogbloshie for fear of legitimizing tenure), (2) `fees_tariffs_subsidies` (pay-as-you-go water standpipe and public toilet fees, cost-recovery constraints, and AMA's failed 2010 tiered fee-based waste registration scheme), (3) `enforcement_sanctions` (the High Court ban outlawing pan latrines—which drove clandestine night-soil dumping into drains—and the 'one house, one toilet' mandate), and (4) `institutional_structure_coordination` (decentralization without fiscal transfers and shortfalls between planned and actual municipal sanitation expenditure). On outcomes (`assigned_outcome_label_with_multiple` = 'multiple'), the survey primarily tabulates household piped-water and in-house toilet coverage (`primary_connection`, Table 1 and Fig. 3) alongside co-central assessments of service continuity, water contamination, and public toilet condition/distance (`effective_access`), household water/sanitation affordability (`economic_access`), and municipal budget execution (`administrative_outcome`), linking these deficits to cholera incidence.",
+    "study_design_class": "mixed_methods",
+    "study_id": "S634"
+  }
+}
