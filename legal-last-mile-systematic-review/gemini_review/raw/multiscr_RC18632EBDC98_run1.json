@@ -1,0 +1,277 @@
+{
+  "record_id": "RC18632EBDC98",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "9e9ef8ec364c1b87260fe8e05a7abf581900b2cb73b789bbf4310d3d704a3a19",
+  "prompt_sha256": "53278cf9beee15645cca7da4ad4d9f8bc6a6c0e2bef6ce4e0c5cc5e85147425e",
+  "started_at": "2026-11-20T17:20:49.444565+00:00",
+  "completed_at": "2026-11-20T17:22:24.377022+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "El Salvador",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water service access in the municipality of Las Vueltas, Chalatenango, El Salvador, including household connection via own pipe versus neighbor's pipe or surface/spring sources, service provider type (ADESCOS vs. municipality), supply adequacy, cost perception, and water quality.",
+      "c2": "Passes the plain broad wording of Criterion 2 (plain_criterion2_decision = include) because it examines community water governance and decentralized self-management through community development associations (ADESCOS), local water boards, and the municipality. However, it fails the active 2026-10-13 narrow rule-type reading (c2_legal_admin_factor = no) because it does not empirically analyze any rule-type legal, administrative, or regulatory mechanism directly governing service access (such as eligibility screening, administrative burden, tenure or documentation requirements, tariff or cost-recovery rules, enforcement/disconnection, or ownership/regulatory rules governing who obtains access). National privatization and decentralization reforms are presented only as secondary macro-governance background, while the primary empirical analysis compares 2008 vs. 2017 (and urban vs. rural) user perceptions of water quality, household treatment, infrastructure maintenance, and general satisfaction within a self-managed system.",
+      "c3": "Contains primary empirical data from an ethnographic mixed-methods study using key-informant interviews and repeated cross-sectional simple random household questionnaires conducted in 2008 (n = 170) and 2017 (n = 126).",
+      "c4": "Reports outcomes directly relevant to service access, availability, and affordability perceptions, including household piped water coverage (increasing from 85.9% in 2008 to 92.1% in 2017), perceived adequacy and abundance of water supply, and perceived adequacy of service cost, alongside perceived water quality.",
+      "c5": "Clearly identifies the population and unit of analysis (households/adult residents in urban and rural cantones/caseríos of Las Vueltas), the study's comparison/context (2008 vs. 2017 and urban vs. rural areas under community self-management), the access and quality perception outcomes, and the study design (ethnographic mixed-methods with repeated cross-sectional probability surveys).",
+      "c6": "Full text is in Spanish with an English abstract; per Criterion 10, direct assessment and translation from the Spanish full text by the screener is feasible and all sections were evaluated in full."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 17",
+        "quote": "En Las Vueltas, este acceso al líquido se realiza de diversas formas. La mayor parte de los hogares lo tiene por medio de tubería propia, lo que ha aumentado de un 85.9 a un 92.1% en el periodo estudiado."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "The results indicate that the improving in the quality of water service coverage is proportional to the perception about the increment in public investment; so, in the improvement of water systems. However, the quality of the liquid distributed, both in urban and rural centers, has been declining."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 18",
+        "quote": "Este proceso de organización, en cuanto a principal proveedor de servicio se refiere, se derivó hacia un proceso gestionado por las ADESCOS y juntas de agua; por su parte, la alcaldía devino de ser el ente regulador a ser un observador del proceso."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12",
+        "quote": "El método utilizado para la selección de muestra fue aleatorio simple sin reemplazo. Se encuestó a 10% de los hogares del municipio. En 2017, la población encuestada comprendió un universo mayor (537 personas) a diferencia de 2008 (351 personas). La muestra para el primer año fue de 170 personas y para el segundo, de 126 personas."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 22",
+        "quote": "Por su parte, en cuanto a la opinión de las personas sobre lo adecuado del servicio de abastecimiento de agua, se observa una mejora significativa en esta percepción, ya que en 2008, 63.5% indica que éste es adecuado, y en 2017 tal porcentaje aumenta a 86.9%."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Evolution of a decentralized community self-managed drinking water system (operated primarily by ADESCOS/local water boards and secondarily by the municipality) between 2008 and 2017 across urban and rural areas (no specific legal or administrative rule-type mechanism examined)",
+    "outcome": "Household drinking water access source (own pipe connection, neighbor's pipe, river/spring), perceived adequacy and abundance of water supply, perceived adequacy of service cost and pipe maintenance, perceived drinking water quality, household potabilization practices, and self-reported waterborne illness",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households/adult water users in six cantones and caseríos (Sicahuite, La Ceiba, La Laguna, Las Vueltas, Los Naranjos, and San José de la Montaña) of the municipality of Las Vueltas, Chalatenango, El Salvador; simple random sample without replacement of 10% of municipal households: n = 170 respondents in 2008 (universe of 351) and n = 126 respondents in 2017 (universe of 537)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 rule-type clarification of Criterion 2. Although this Spanish-language empirical study reports household piped-water access, supply adequacy perceptions, and cost perceptions from random household surveys in 2008 and 2017 in Las Vueltas, El Salvador—and would qualify under the broad plain wording of Criterion 2 because it describes decentralized community water management via ADESCOS—it does not examine any rule-type legal, administrative, or regulatory mechanism directly governing service access (e.g., eligibility rules, administrative burden, tenure/documentation requirements, tariff/cost-recovery rules, enforcement, or regulatory/ownership rules governing access). National water-sector decentralization is treated as macro-governance background, while the empirical analysis focuses on temporal and urban-rural differences in user perceptions of water quality, potabilization practices, infrastructure maintenance, and general service satisfaction.",
+    "record_id": "RC18632EBDC98",
+    "study_design": "Mixed-methods ethnographic study with repeated cross-sectional household surveys (2008 and 2017) and key-informant interviews"
+  }
+}

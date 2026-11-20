@@ -1,0 +1,277 @@
+{
+  "record_id": "R4B40A3139B39",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "714c28141d2be81636154b3e99bcbe82b3c20066fe592e42276149d46ce00f36",
+  "prompt_sha256": "83057ef6fd892ddef0698676db2d8e3d5591eb56fcdddbd621f10d9b02688259",
+  "started_at": "2026-11-20T17:11:20.091511+00:00",
+  "completed_at": "2026-11-20T17:12:44.375642+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines water supply (abastecimento de água), sanitation/sewerage (esgotamento sanitário), and toilet availability (existência de banheiro) in rural public elementary schools in Brazil (institutional/community-facility level rather than household connections).",
+      "c2": "Fails BOTH the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Under the plain wording, the study does not empirically measure or analyze any legal, administrative, institutional, regulatory, or governance variable; its independent variables (Quadro 1) are geographic macroregion, municipal population size, rural population percentage, municipal income HDI, school enrollment size, student approval/repetition/dropout rates, and territorial location category (settlement, Indigenous land, quilombola, or traditional community). Programs such as Funasa's Programa Água na Escola, PDDE, and PAR are mentioned only as background context or post-hoc discussion commentary rather than measured exposures. Under the narrow 2026-10-13 clarification, no rule-type mechanism directly governing water or sanitation service access (such as eligibility screening, administrative burden, documentation or tenure rules, tariff or cost-recovery rules, discretion, enforcement, or utility/regulatory structure) is examined.",
+      "c3": "Quantitative empirical study analyzing microdata from the 2011 and 2023 Censo Escolar da Educação Básica (Inep), IBGE Demographic Censuses (2010 and 2022), and Atlas do Desenvolvimento Humano no Brasil using spatial mapping, cross-tabulations, chi-square tests, and binomial logistic regression.",
+      "c4": "Reports binary school-level service availability/exclusion outcomes: complete absence of water supply, complete absence of a sanitation system, and absence of a bathroom in 2011 and 2023.",
+      "c5": "Population and unit of analysis (active rural public elementary schools in Brazil linked to the same municipality in 2011 and 2023 across 3,424 municipalities), exposures (school and municipal sociodemographic, territorial, size, and academic-performance variables), outcomes (absence of water supply, sanitation, and bathroom), and study design (comparative cross-sectional analysis with binomial logistic regression) are all clearly specified.",
+      "c6": "Full text is in Portuguese, which is directly eligible without translation under Criterion 9."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PMC13143279 - Introdução",
+        "quote": "No contexto deste estudo, WASH é representado por três dimensões: o abastecimento de água, o saneamento, entendido neste estudo em consonância com a literatura internacional como esgotamento sanitário, e a existência de banheiro, indicadores que refletem diretamente as condições de infraestrutura escolar."
+      },
+      {
+        "criterion": "c2",
+        "page": "PMC13143279 - Tratamento estatístico",
+        "quote": "Para avaliar a evolução, retrocesso ou estagnação dessas condições, foram construídas tabelas cruzadas relacionando as variáveis sanitárias às características escolares e municipais."
+      },
+      {
+        "criterion": "c2",
+        "page": "PMC13143279 - Discussão",
+        "quote": "As maiores razões de chance concentraram-se em escolas localizadas na Região Norte, em terras indígenas e com turmas muito pequenas (até 10 alunos), sugerindo que fatores como localização remota e baixo número de matrículas seguem associados a menores condições de investimento em infraestrutura sanitária."
+      },
+      {
+        "criterion": "c3",
+        "page": "PMC13143279 - Tratamento estatístico",
+        "quote": "Em seguida, aplicou-se a regressão logística binomial para estimar os determinantes da ausência de WASH nos dois anos analisados."
+      },
+      {
+        "criterion": "c4",
+        "page": "PMC13143279 - Variáveis analisadas",
+        "quote": "No caso do abastecimento de água, a categoria “Sim” indica que a escola não possui nenhuma fonte de água, ou seja, está totalmente desprovida de acesso à água. Da mesma forma, para saneamento, “Sim” significa que não há nenhum tipo de sistema de saneamento disponível. Já a variável banheiro segue lógica inversa: “Não” indica que a escola não possui banheiro."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "School-level characteristics (differentiated territorial location: settlement area, Indigenous land, quilombola community, traditional peoples' territory; enrollment size; student approval, repetition, and dropout rates) and municipal-level characteristics (macroregion, population size, percent rural population, and municipal HDI-income)",
+    "outcome": "Absence of school water supply, absence of school sanitation (sewerage) system, and absence of school bathroom facilities in 2011 and 2023",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Brazilian rural public elementary schools (escolas públicas rurais de Ensino Fundamental) active and linked to the same municipality in 2011 and 2023 across 3,424 municipalities (total national universe reported as 56,544 rural public elementary schools in 2011 and 34,406 in 2023; unit of analysis: school)",
+    "rationale": "Exclude under E03 (Wrong exposure). Although this Portuguese-language empirical study examines the absence of water supply, sanitation, and bathrooms across Brazilian rural public elementary schools in 2011 and 2023 using Censo Escolar, IBGE Census, and AtlasBR data, its explanatory variables are purely geographic, demographic, socioeconomic, enrollment-size, territorial-location, and student-performance correlates. It does not empirically measure or test any legal, administrative, regulatory, or governance factor—neither under the plain wording of Criterion 2 nor under the 2026-10-13 narrow rule-type mechanism reading (federal programs such as PDDE and Funasa's Programa Água na Escola are discussed only as unmeasured background/post-hoc context).",
+    "record_id": "R4B40A3139B39",
+    "study_design": "Comparative cross-sectional quantitative study (2011 and 2023 secondary census microdata analyzed via descriptive spatial mapping, chi-square tests, and binomial logistic regression)"
+  }
+}

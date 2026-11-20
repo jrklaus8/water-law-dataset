@@ -1,0 +1,282 @@
+{
+  "record_id": "RF55ED6768D89",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "c08b9441d3d8709b77338e20302e8505a8710bed339fc09347d02794656bb2c8",
+  "prompt_sha256": "0681acb2f43c2f4f15c2f857a8beb5c8512c55202be339cc5c7984b9b9c37480",
+  "started_at": "2026-11-20T17:11:20.106961+00:00",
+  "completed_at": "2026-11-20T17:13:39.699462+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking water access, historical lack of water and drainage networks, current intermittent/deficient piped water supply, reliance on water trucks (pipas) and bottled/purified water, and domestic greywater reuse in Mesa Colorada, Zapopan, Jalisco, alongside metropolitan wastewater treatment.",
+      "c2": "Passes the plain wording of Criterion 2 but FAILS the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, the study examines urban water governance and state/municipal infrastructure planning—specifically how metropolitan water management (SIAPA and state/federal authorities) sited the Agua Prieta wastewater treatment megaproject in a marginalized peripheral neighborhood ('sacrifice zone') while failing to ensure reliable drinking water. Under the narrow 2026-10-13 clarification, however, the studied exposure is megaproject siting, environmental pollution (odor/noise), and macro socio-urban segregation rather than a rule-type legal, regulatory, or administrative mechanism directly governing service access. Although p. 91 briefly notes as historical background that unregularized ejidal land sales in the 1980s were used by the municipal government to justify not providing basic public services (and p. 93 notes that lack of title documentation excludes families from housing-improvement social programs, while pp. 89-90 and 96 mention SIAPA tariffs and the 2012 constitutional right to water as macro/normative context), none of these rule-type mechanisms are empirically analyzed in the archival or interview data, and residents today report intermittent water despite having infrastructure and paying for service.",
+      "c3": "Empirical qualitative historical-ethnographic case study combining archival review of the local newspaper El Informador (1981-2014), census/IIEG demographic statistics, field observations/visits, and open-ended semi-structured interviews conducted in 2023-2024 with women residing near the Agua Prieta plant for over 30 years.",
+      "c4": "Reports qualitative and descriptive household water access outcomes in Mesa Colorada, including historical lack of piped water and drainage, ongoing intermittent/insufficient piped water despite infrastructure and payment, purified/bottled water expenditures exceeding 10% of household income, and multi-cycle domestic greywater reuse (in addition to odor and noise impacts from the plant).",
+      "c5": "Population (residents/women of the peripheral neighborhood of Mesa Colorada, Zapopan, Jalisco; 4 named interviewees plus exploratory fieldwork), exposure (installation and operation of the Agua Prieta wastewater treatment megaproject in a socio-spatially segregated 'sacrifice zone'), outcome (socio-environmental degradation and persistent household water scarcity/coping practices), and study design (qualitative archival and interview case study) are clearly identifiable.",
+      "c6": "Full text is in Spanish (with English, Spanish, and Portuguese abstracts); per Criterion 10, Spanish is eligible as direct translation/assessment from the provided full text is completely feasible."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 19 (p. 86)",
+        "quote": "while residents in Mesa Colorada lack safe, affordable, and adequate access to drinking water, wastewater from a large portion of the city is treated just meters from their homes."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 19 (p. 85)",
+        "quote": "This article examines how, why, and at what social expense megaprojects like the Agua Prieta plant in Mesa Colorada, a peripheral neighborhood of the municipality of Zapopan (Jalisco, Mexico), have been developed since 1989."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 19 (p. 90)",
+        "quote": "El proceso de la investigación se centró en las dimensiones social, política, urbana y ambiental, siendo estas una combinación analítica que permite abordar tanto los discursos justificantes de las grandes obras de tratamiento de aguas para las metrópolis como los costos socioambientales que se producen al distribuir de manera inequitativa los servicios socioambientales y los servicios públicos."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 19 (p. 91)",
+        "quote": "Tales colonias eran parte de terrenos ejidales, en su mayoría terrenos de cultivo, por ello, no contaban con servicios públicos básicos al momento de fundarse. Sin embargo, no hubo intentos para regularizar estas compraventas, y este argumento fue una de las justificaciones que durante mucho tiempo utilizó el gobierno municipal para no dotarlas de servicios públicos básicos."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 19 (p. 85)",
+        "quote": "Los datos presentados en este artículo se obtuvieron mediante una revisión de prensa local y entrevistas con mujeres que habitan las viviendas más próximas a la planta. Se decidió trabajar con este grupo ya que el desabasto de agua afecta su cotidianidad. Además, se efectuaron visitas a dichas viviendas y recorridos de campo."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12 of 19 (p. 96)",
+        "quote": "En lo que respecta al servicio de abastecimiento de agua potable, este no ha sido resuelto, las personas no cuentan con agua en cantidad suficiente, segura y asequible en sus viviendas"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Installation and operation of the Agua Prieta wastewater treatment and hydroelectric megaproject in a socio-spatially segregated peripheral neighborhood ('sacrifice zone') of metropolitan Guadalajara.",
+    "outcome": "Environmental degradation (odor and noise pollution) and persistent household drinking water scarcity, intermittency despite infrastructure and payment, high expenditure (>10% of income) on purified/truck water, and domestic greywater reuse.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Residents of Mesa Colorada (approx. 19,887-20,000 inhabitants in 2,200 dwellings), Zapopan, Jalisco, Mexico; qualitative interviews with 4 women (Ana, Paz, Lupita, Rosa) living near the Agua Prieta plant for >30 years plus exploratory field visits and archival review of local newspaper El Informador (1981-2014).",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 narrow rule-type clarification of Criterion 2. While the article empirically documents household drinking water scarcity, intermittency, affordability burdens, and water-reuse coping strategies in Mesa Colorada (c1, c3, c4 met), its studied exposure is the siting and socio-environmental impacts (odor, noise, territorial stigmatization) of a metropolitan wastewater treatment megaproject (Agua Prieta WWTP) within a broader 'sacrifice zone' / urban-metabolism critique. Passing mentions of 1980s unregularized ejidal sales justifying municipal non-provision of services (p. 91), lack of title deeds excluding families from housing-improvement programs (p. 93), SIAPA's metropolitan water management (pp. 89-90), and Mexico's 2012 constitutional right to water (p. 96) serve only as unanalysed historical or macro-governance background rather than an empirically investigated rule-type mechanism governing household water or sanitation access. Under the plain broad governance wording of Criterion 2, the paper would be included.",
+    "record_id": "RF55ED6768D89",
+    "study_design": "Qualitative historical and ethnographic case study (local newspaper archival review, census/IIEG descriptive statistics, field observation, and open-ended semi-structured interviews)"
+  }
+}

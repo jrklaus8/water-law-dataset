@@ -1,0 +1,282 @@
+{
+  "record_id": "RDF44B378C1AE",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "9f8bc618fafd8467125faafa7c358743165b86e60259be0f4ee2b3f95b86de02",
+  "prompt_sha256": "0afa397f36a43dd1fc8500e1f313cd1c98f7da31e2b11b936765d343fd104a57",
+  "started_at": "2026-11-20T17:27:16.035283+00:00",
+  "completed_at": "2026-11-20T17:28:23.635818+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household drinking-water supply access in Tijuana, Mexico, comparing formal piped utility connections (CESPT) with alternative tanker-truck ('pipa') delivery in informal settlements (and also notes lack of sewerage/drainage in those settlements).",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Plain reading: analyzes institutional, legal, and regulatory water management by the state utility (CESPT) and federal/state agencies. Narrow rule-type reading: directly examines (1) the legal land-tenure requirement enforced by CESPT as a condition for providing direct piped water connections, which excludes irregular settlements from the network, and (2) the tariff and concession regulatory structure governing bulk water supply points ('garzas' regulated under federal CONAGUA well concessions or state Ley de Ingresos tariffs) versus the legally unregulated resale prices charged by tanker operators ('piperos') to excluded households, as well as high residential tariffs and pressure reducers.",
+      "c3": "Mixed-methods empirical study analyzing primary institutional data from CESPT annual management indicators (1991-2009) and the 2009 CESPT customer registry (547,011 total accounts; 495,684 active residential accounts; 346,979 mapped in GIS), combined with field observations and 34 semi-structured interviews (20 water-sector officials, 10 irregular-settlement households using tanker water, 2 tanker operators, and 2 'garza' concessionaires).",
+      "c4": "Reports household access/exclusion from piped connections, affordability/unit water prices ($12.18-$12.19/m3 for networked CESPT residential users vs. $100/m3 for irregular-settlement tanker users in 2010, an eightfold cost differential), and domestic water consumption quantity (47 L/person/day for the bottom 50.63% of networked accounts vs. 8 L/person/day in irregular settlements).",
+      "c5": "Clearly identifies the population and units of analysis (residential utility accounts across Tijuana and interviewed households in irregular settlements in Valle Redondo), the legal/regulatory exposure (land-tenure requirement for network connection and unregulated tanker resale pricing above regulated 'garza' tariffs), the access/quantity/affordability outcomes, and a mixed-methods socio-spatial and qualitative case-study design.",
+      "c6": "Full text is in Spanish with an English title and abstract. Eligible under Criterion 10 because translation from the provided Spanish full text is directly feasible and the study provides important, direct empirical evidence on land-tenure eligibility rules and tariff/resale regulation governing household water access, quantity, and affordability (translation details to be logged in extraction_note at extraction)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 14 (Abstract)",
+        "quote": "Therefore, we analyze the mechanisms of institutional water supply and other alternatives used by informal settlements in the city. A comparison of the costs paid by the common user with those paid by users with supply problems revealed that the latter pays a price eight times higher."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 14 (INTRODUCCIÓN, p. 35)",
+        "quote": "legal de la tierra —la CESPT la demanda para poder brindar el servicio— el organismo tiene como medida paliativa la venta a puntos de abasto de agua potable denominados “garzas”, pozos o tomas de agua desde donde las empresas operadoras de carros cisterna, o “pipas”, se aprovisionan de agua y la distribuyen en zonas irregulares."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 14 (CONTEXTUALIZACIÓN DE LA PROBLEMÁTICA DEL AGUA, p. 39)",
+        "quote": "la Ley de Ingresos que estipula las tarifas de la CESPT a los concesionarios, el precio de venta cobrado a los usuarios irregulares no se rige legalmente por este procedimiento pues los operadores incrementan el costo."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7 of 14 (LAS HERRAMIENTAS METODOLÓGICAS UTILIZADAS, p. 40)",
+        "quote": "todos eran habitantes ubicados en las colonias conocidas como El Niño, Ojo de Agua y Maclovio Rojas, áreas donde se mezclan predios legalizados e irregulares, que acceden al agua a través del servicio de las “pipas”"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 14 (C) EL ABASTECIMIENTO EN ZONAS IRREGULARES, p. 43)",
+        "quote": "un usuario conectado al servicio paga para un rango de consumo mínimo de 0 a 5 m3 $12,18 por cada m3; en contraste, un usuario de zona irregular paga $100 por el mismo volumen."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 14 (C) EL ABASTECIMIENTO EN ZONAS IRREGULARES, p. 43)",
+        "quote": "Siguiendo los datos de hacinamiento de los asentamientos, 4,13 miembros por vivienda —según la composición familiar de los entrevistados—, y con una compra mensual promedio de solo 1 m3 por vivienda, la dotación es de 8 lit/hab-día para esta población, volumen que tiene implicaciones sanitarias de elevado riesgo, más aún si se considera que en estos asentamientos se carece de sistema de drenaje."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal land-tenure requirement enforced by the state water utility (CESPT) for direct piped network connection, alongside regulated bulk-supply ('garza') concessions/tariffs under the Ley de Ingresos and legally unregulated resale pricing by private tanker-truck ('pipa') operators in irregular settlements",
+    "outcome": "Exclusion from formal piped water connections, household water unit cost/affordability ($12.18-$12.19/m3 for networked users vs. $100/m3 for irregular-settlement tanker users in 2010), and per-capita domestic water consumption quantity (47 L/person/day for 50.63% of networked residential accounts vs. 8 L/person/day in irregular settlements)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Residential drinking-water consumers in Tijuana, Baja California, Mexico: 495,684 active residential accounts in the 2009 CESPT registry (346,979 mapped in GIS; annual utility indicators 1991-2009) and 34 semi-structured interview participants (20 water-sector officials, 10 irregular-settlement households buying tanker water in El Niño, Ojo de Agua, and Maclovio Rojas in Valle Redondo, 2 tanker drivers, and 2 'garza' concession owners)",
+    "rationale": "This mixed-methods empirical study in Tijuana, Mexico directly examines how a rule-type legal/administrative barrier—CESPT's requirement of legal land tenure to grant formal piped water connections—excludes households in irregular settlements from network supply and channels them into an alternative bulk-water ('garza') and tanker-truck ('pipa') supply chain in which final resale tariffs are legally unregulated. Using 2009 CESPT registry data (495,684 active residential accounts), GIS mapping, and 34 semi-structured interviews, the authors document both severe price penalties ($100/m3 vs. $12.18-$12.19/m3, eight times higher) and acute consumption reductions (8 L/person/day in irregular settlements vs. 47 L/person/day among low-consumption networked accounts). Although published in Spanish (with an English abstract), translation from the provided full text is feasible and the study is directly mechanism-relevant under Criterion 10, warranting inclusion under both the narrow 2026-10-13 rule-type reading and the plain reading of Criterion 2.",
+    "record_id": "RDF44B378C1AE",
+    "study_design": "Mixed-methods empirical study combining socio-spatial GIS analysis of utility administrative billing/consumption records with qualitative field observations and semi-structured interviews"
+  }
+}

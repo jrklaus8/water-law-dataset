@@ -1,0 +1,277 @@
+{
+  "record_id": "RF043AAD78E8E",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "e68790640acae8c20795997c6f437434ef6bac6c36627a2c74d99a44bdf8dec7",
+  "prompt_sha256": "f8a1c6590f40f1f0aa96cd386d2474add40e6e52c7e4255e3f8a4bb90fde05b2",
+  "started_at": "2026-11-20T17:27:16.038463+00:00",
+  "completed_at": "2026-11-20T17:30:09.666660+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and municipal access to piped drinking water inside dwellings (acceso al agua potable dentro de las viviendas / disponibilidad de agua entubada) and reliance on water tanker trucks (pipas) in the Metropolitan Zone of the Valley of Mexico (ZMVM) and the peripheral municipality of Ecatepec.",
+      "c2": "Passes the plain wording of Criterion 2 (yes -> include), because it discusses water governance (gobernanza del agua), asymmetric intergovernmental water allocation and incomplete municipal decentralization between the Federal Government, Mexico City (CDMX), and the State of Mexico, as well as partisan electoral clientelism involving state and municipal water agencies (CAEM and SAPASE). Fails the narrow 2026-10-13 rule-type mechanism reading (no -> exclude, E03), because it does not empirically examine any rule-type legal, administrative, or regulatory mechanism directly governing household or community service access (such as eligibility screening, administrative burden, documentation or land-tenure rules, tariff/cost-recovery rules, formal administrative discretion/accommodation, enforcement/disconnection rules, or utility regulatory structure directly governing connection/access). Instead, its spatial data compare concentric geographic rings (territorial marginalization between center and periphery), and its governance discussion treats federalism, municipalization, and partisan clientelism/protests at a macro-political narrative level.",
+      "c3": "Contains descriptive empirical evidence, albeit methodologically thin: municipal/alcaldia-level mapping of 2015 INEGI Intercensal Survey piped-water non-availability across concentric rings of the ZMVM (Figures 1-2) and a descriptive case study of Ecatepec compiling a 7-event hemerographic tracking table of water protests during 2018-2020 electoral junctures (Table 1), alongside documentary and secondary literature synthesis.",
+      "c4": "Reports municipal/alcaldia percentages of population without piped water availability in dwellings from the 2015 INEGI Intercensal Survey (Figure 2; <40% coverage in at least 15 peripheral State of Mexico municipalities vs. >=98% in the central region), household reliance on tanker trucks (pipas), and water supply interruptions prompting protests in Ecatepec.",
+      "c5": "Population and units of analysis (76 municipalities/alcaldias of the ZMVM totaling 20,892,724 inhabitants in Figures 1-2; municipality of Ecatepec with 1.645 million inhabitants and 7 protest events in Table 1), the paper's analyzed exposure (territorial peripheralization across concentric urban rings and macro-political clientelist/intergovernmental governance), outcomes (lack of piped water in dwellings and supply interruptions/protests), and descriptive case-study design are identifiable from the text, though the exposure fails narrow Criterion 2.",
+      "c6": "Full text is in Spanish with trilingual Spanish, English, and Portuguese title, abstract, and keywords; direct translation and methodological assessment from the provided Spanish full text are feasible per Criterion 10 (logged here as direct AI screener reading/translation of Spanish text)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 9 of 25",
+        "quote": "La población que carece de agua tiene que abastecerse principalmente por medio del sistema de pipas, de otras viviendas y, en menor medida, recurren a recolección de agua de lluvia, pozos, lagos y llave comunitaria (inegi, 2015)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 25",
+        "quote": "The objective is to describe, by primary documentary sources, how territory influences the water distribution while analyzing the governmental and citizen intervention for improving this situation."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 of 25",
+        "quote": "El segundo factor es el fenómeno del clientelismo, con el cual la ciudadanía está expuesta al condicionamiento de programas sociales, dádivas o recursos —como el agua— a cambio de su voto o participación."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12 of 25",
+        "quote": "Con el fin de vislumbrar estos factores, se hace el estudio de caso de las protestas por la escasez de agua en el municipio de Ecatepec, con base en un seguimiento hemerográfico y un análisis neoinstitucional apoyado en las teorías del conflicto."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 21 of 25",
+        "quote": "Entre más lejos se esté de la principal zona de desarrollo económico y social, menor será la cobertura de agua potable en las viviendas. La marginación de la periferia se puede observar en el abastecimiento de agua: los sistemas creados para apoyar la escasez en la ciudad se alimentan de los recursos hídricos del Estado de México, aun cuando las evidencias apuntan a que municipios de la entidad en cuestión son los más afectados por la falta de agua."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Territorial marginalization / center-periphery urban location (concentric metropolitan rings, Contornos 1-4 vs. Región Central) and macro-political water governance (asymmetric intergovernmental relations between Federal Government, CDMX, and Estado de México, incomplete municipal decentralization, and partisan electoral clientelism)",
+    "outcome": "Lack of household piped drinking-water availability at the municipality/alcaldía level (share of population without piped water in dwellings from INEGI 2015; reliance on pipas) and community water-supply interruptions/protests in Ecatepec (2018-2020)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Metropolitan Zone of the Valley of Mexico (ZMVM: 16 Distrito Federal/CDMX boroughs, 59 Estado de México municipalities, and 1 Hidalgo municipality; 20,892,724 inhabitants) analyzed at the municipality/alcaldía level (2015 INEGI Intercensal Survey), plus a case study of Ecatepec, Estado de México (1.645 million inhabitants; 7 newspaper-reported water protests from 2018 to 2020)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 Criterion 2 clarification. While the study examines piped drinking-water access disparities across the Metropolitan Zone of the Valley of Mexico (mapping 2015 INEGI Intercensal Survey data) and tracks 2018-2020 water-scarcity protests in Ecatepec, its analyzed exposures are spatial/territorial peripheralization (concentric urban rings from central CDMX to peripheral Estado de México municipalities) and macro-political water governance (historical centralization vs. municipalization, partisan intergovernmental tensions, and electoral clientelism). It does not empirically examine a rule-type legal, administrative, or regulatory mechanism directly governing household or community service access (such as eligibility rules, tenure/documentation requirements, administrative burdens, tariffs, enforcement/disconnection rules, or utility regulatory rules). Under the literal/plain broad wording of Criterion 2, it would be included as a descriptive water-governance case study.",
+    "record_id": "RF043AAD78E8E",
+    "study_design": "Descriptive case study combining secondary census mapping (2015 INEGI Intercensal Survey), historical-institutional documentary review, and hemerographic tracking of water protests (2018-2020)"
+  }
+}

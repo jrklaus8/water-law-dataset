@@ -1,0 +1,282 @@
+{
+  "record_id": "RD874B0BA92F5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "6cf6f465b926523269b794e3702c17a5d7a22954941a379d26586367ecc570cf",
+  "prompt_sha256": "a9183fe6e00f2c7cb18dd5b678eba594a4dc84cb79a8f23e968e424366dc6846",
+  "started_at": "2026-11-20T17:23:56.951258+00:00",
+  "completed_at": "2026-11-20T17:27:16.007085+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water and sewerage/sanitation service access, supply intermittency (tandeo), storage adaptations, and dependence on purchased tanker-truck water among residents of Cabo San Lucas, Baja California Sur, Mexico.",
+      "c2": "Passes the plain wording of Criterion 2 (plain_criterion2_decision = include) but fails the narrow 2026-10-13 rule-type reading (decision = exclude, E03). Plain reading: YES — examines Mexican constitutional and statutory human-right-to-water provisions (Article 4 of the Constitution, Ley de Aguas Nacionales Article 4, Ley General de Aguas 2025) and 847 administrative national-water concessions registered in CONAGUA's Public Registry of Water Rights (REPDA), alongside citizen perceptions of public water governance. Narrow 2026-10-13 rule-type reading: NO — the legal/administrative data analyzed concern upstream bulk raw-water extraction concessions from national waters/aquifers in REPDA (allocated to the municipal utility OOMSAPAS, agricultural ejidos, private individuals, and tourism/real-estate firms) and statutory sector-priority rules for bulk water abstraction, rather than a last-mile rule-type mechanism directly governing household or community service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion/accommodation, service-level enforcement/disconnection, or utility regulatory rules governing household connection or rationing). At the household service level, why 18.3% lack piped water, why 24.3% lack sewerage, and why OOMSAPAS's >41 million m3/year in bulk concessions do not translate into regular household supply are attributed only to unanalysed management inefficiency and lack of transparency.",
+      "c3": "Mixed-methods empirical case study combining a structured presencial digital survey of 317 adult economically active residents of Cabo San Lucas (May-September 2025) with quantitative and socio-legal documentary analysis of 847 national water concession records in CONAGUA's REPDA database (cut-off June 25, 2025).",
+      "c4": "Reports household service-access and continuity outcomes: piped drinking-water service in the home (81.7% yes, 18.3% no), sewerage/sanitation service (75.7% yes, 24.3% no), supply frequency (3.5% daily, 12% weekly, 25.6% every 15 days, 51.7% every 20 days or longer, 7.3% never), ever running out of domestic water (94%), housing storage adaptations (78.2%), and reliance on purchasing water from tanker trucks/pipas (90.9%).",
+      "c5": "Population and unit of analysis (317 surveyed adult economically active residents/households in Cabo San Lucas from N = 135,805 economically active residents, plus 847 municipal REPDA concession titles in Los Cabos), studied governance exposure (upstream REPDA water-extraction concession regime and perceived municipal human-right-to-water governance), household service-access outcomes, and cross-sectional mixed-methods case-study design are identifiable.",
+      "c6": "Full text is in Spanish with an English title and abstract; eligible under Inclusion Criterion 10 because direct reading and translation from the provided Spanish full text is feasible."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 25",
+        "quote": "Methodologically, a mixed approach was used, combining surveys of 317 residents with a documentary review of 847 national water concessions registered in the Public Registry of Water Rights."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 25",
+        "quote": "En 2023 y 2025, el artículo 4, de la Ley de Aguas Nacionales, fue reformado, para establecer que la autoridad y administración en materia de aguas nacionales corresponde al Ejecutivo Federal y que cualquier autorización, permiso, concesión, asignación o prórroga que se otorgue conforme a la presente ley debe priorizar el consumo humano y doméstico del agua, y en caso de que exista riesgo de disponibilidad de agua para consumo humano y doméstico, se disminuirá o cancelará el volumen de agua concesionada (Ley de Aguas Nacionales, 1992/2025)."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 8 of 25",
+        "quote": "Al cuestionarlos respecto a si cuentan con servicio de agua potable en su hogar el 81.7% dijo que sí y un 18.3% respondió negativamente. A continuación, se les interrogó respecto a si cuentan con el servicio de alcantarillado o saneamiento, el 75.7% manifestó que sí, mientras que un 24.3% no lo tiene."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8 of 25",
+        "quote": "Se le preguntó con respecto a cada cuánto tiempo reciben el suministro de agua potable en su hogar, solo el 3.5% manifiesta que a diario, el 7.3% que nunca, el 12% una vez por semana, el 25.6% cada 15 días, el 51.7% cada 20 días o en ocasiones más tiempo."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 25",
+        "quote": "Al preguntarles si se han visto en la necesidad de comprar agua en pipas para hacer frente a sus necesidades cotidianas para su uso personal y doméstico, el 90.9% responde que sí y el 9.1% no."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 20 of 25",
+        "quote": "Sin embargo, pese a esta magnitud, los habitantes de Cabo San Lucas reportan un suministro intermitente, donde más de la mitad recibe agua cada veinte días o más. Ello sugiere que los volúmenes concesionados al operador público no necesariamente se traducen en disponibilidad efectiva para la población, lo que plantea un problema de eficiencia y transparencia en la gestión."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Upstream national water-extraction concession regime in CONAGUA's Public Registry of Water Rights (REPDA) under the Ley de Aguas Nacionales / Ley General de Aguas (sectoral distribution of bulk extraction volumes and statutory domestic-use priority) and resident perceptions of public human-right-to-water management.",
+    "outcome": "Household drinking-water service connection (81.7%), sewerage/sanitation connection (75.7%), piped supply frequency/intermittency (51.7% receiving water every 20 days or more; 3.5% daily), running out of domestic water (94%), storage adaptations (78.2%), and purchasing tanker-truck water (90.9%).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Economically active adult residents of Cabo San Lucas, Baja California Sur, Mexico (random survey sample n = 317 out of 135,805 economically active inhabitants / 202,694 total population; household/individual unit for survey) and 847 national water extraction concessions registered in REPDA for the municipality of Los Cabos (concession/holder unit for documentary review).",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 narrow rule-type reading of Criterion 2, while qualifying as include under the plain wording of Criterion 2. The study empirically documents household water and sanitation service access, severe supply intermittency, and tanker-truck dependence among 317 residents of Cabo San Lucas, alongside an inventory of 847 bulk water-extraction concessions in CONAGUA's REPDA registry. However, the legal/administrative factor analyzed is upstream bulk raw-water resource licensing (aquifer/national-water extraction volumes across public, ejido, individual, and tourism/real-estate holders and statutory priority rules for bulk water concessions), while last-mile municipal service governance (connection eligibility, tenure/documentation rules, tariffs, rationing rules, or disconnections by OOMSAPAS) is not examined beyond general references to management inefficiency and citizen perceptions.",
+    "record_id": "RD874B0BA92F5",
+    "study_design": "Cross-sectional mixed-methods descriptive case study (structured resident survey combined with quantitative and socio-legal documentary analysis of administrative water-concession registry records)"
+  }
+}
