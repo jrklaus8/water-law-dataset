@@ -1,0 +1,277 @@
+{
+  "record_id": "R1C6169322694",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "407116d4bec6fff75a90a9a7a0786ba7689e4993a2147279165f700e7bffef52",
+  "prompt_sha256": "3afc788be818a1bac57da8598ae27cfb11a12b3c27f8ef84aa8ada039f7faea6",
+  "started_at": "2026-11-20T17:20:58.650633+00:00",
+  "completed_at": "2026-11-20T17:22:01.011250+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban municipal drinking-water service access in India, including household piped connections, unconnected poor households in informal settlements, connection charges, and affordability.",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, it discusses municipal water pricing, institutional reform, privatization, and independent regulation. Under the narrow 2026-10-13 reading, it directly focuses on rule-type mechanisms governing household water access, including tariff and cost-recovery structures (fixed charges, property-tax-linked water taxes restricted to registered properties, uniform volumetric charges, increasing block tariffs, two-part tariffs), connection charges, and means-tested subsidy eligibility screening. However, the paper is excluded overall because it fails Criterion 3 (no empirical evidence).",
+      "c3": "Fails Criterion 3: this conference paper is a non-empirical narrative policy overview and reform commentary with no empirical methodology, no primary data collection, no original secondary data analysis, and no systematic review method. Section 2 merely cites illustrative descriptive figures from prior WSP-SA/NIUA policy papers (e.g., Nagari 2001; Brocklehurst et al. 2002; Raghupathi & Foster 2002), and Section 3 proposes future utility data collection and consumer surveys that policymakers may conduct.",
+      "c4": "No original or synthesized empirical access outcome is measured or evaluated; household connection gaps, connection charges, and affordability burdens are only referenced narratively from secondary policy papers.",
+      "c5": "Lacks an empirical study design, sample, and measurable exposure-outcome analysis; the paper is a normative policy and tariff-reform overview proposing data items for future municipal surveys.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5, Section 2.5",
+        "quote": "Substantial number of poor Indian population (about 50%) are not even connected to the water supply system and therefore are not receiving any subsidy."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1, Abstract",
+        "quote": "This paper examines the existing tariff models in India, their relevance and problems. It was found that none of the tariff structure could satisfy all the design objectives (cost recovery, economic efficiency, equity, affordability etc.)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4, Section 2.4.1",
+        "quote": "Fixed charging based on water tax can only be levied on registered properties leaving an estimated 60 to 70% outside the tax net and thus resulting in very poor cost recovery (Nagari, 2001)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7, Section 3.3",
+        "quote": "It was found that major obstacle for the poor households in getting connection to water supply systems is substantial connection charges. For example in Guntur, Andhra Pradesh, it is Rs. 12,000 for domestic consumers and upto Rs. 42,000 for commercial connections (Nagari, 2001)."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6, Section 3.2",
+        "quote": "Tariff structure shall attempt to satisfy all the design objectives to the maximum possible extent. For this purpose consumer survey may be performed in order to get the following information:"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Urban municipal water tariff structures, connection charges, property-tax water levies, and subsidy/regulatory reform (discussed narratively only)",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded under E05 (No empirical evidence). Although the paper addresses urban household water access in India (c1=yes) and discusses core rule-type tariff, connection-charge, property-registration, and subsidy-targeting mechanisms satisfying both the plain and narrow 2026-10-13 readings of Criterion 2 (c2=yes), it is a pure conference policy overview and reform commentary. It presents no primary data, no original secondary data analysis, no empirical methodology, and no systematic review protocol—relying solely on brief narrative citations to prior policy reports while proposing future consumer and utility surveys.",
+    "record_id": "R1C6169322694",
+    "study_design": "Non-empirical narrative policy overview / commentary"
+  }
+}

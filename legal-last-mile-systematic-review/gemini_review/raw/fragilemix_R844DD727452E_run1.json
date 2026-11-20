@@ -1,0 +1,282 @@
+{
+  "record_id": "R844DD727452E",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82",
+  "prompt_sha256": "8bfc88664bcbfbd24c6956d9667429c4044a7c826057a0b38dd2df67677bd6b0",
+  "started_at": "2026-11-20T17:16:48.216691+00:00",
+  "completed_at": "2026-11-20T17:18:45.205320+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Nicaragua",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water service access and service levels in rural communities in San Sebastián de Yalí municipality, Nicaragua, comparing households served by community-controlled water supply systems (CAPS) and excluded households relying on self-provision.",
+      "c2": "Passes the literal/plain broad wording of Criterion 2 (plain_criterion2_decision = include) but fails the active 2026-10-13 narrow rule-type reading (c2_legal_admin_factor = no -> exclude, E03). Under the plain wording, the study compares service-level indicators across institutional modes of provision — non-state Community-Based Organizations (CAPS, formally delegated rural water provision under Nicaraguan law) versus informal household self-provision — and tests a human-rights-based monitoring methodology for the Municipal Water and Sanitation Unit (UMAS). Under the narrow 2026-10-13 rule-type reading, however, no rule-type mechanism governing service access (eligibility screening, administrative burden, tenure/documentation requirements, tariff/cost-recovery rules, CAPS legal registration under Law 722, discretion, or enforcement) is empirically examined. Rather, being served by CAPS versus self-providing simply stratifies households with community-system access from those excluded within the same communities to test an exact binomial stratified sampling and composite-indicator methodology, and the authors explicitly state on pp. 2-3 that the work is not focused on investigating inequality and discrimination causes while treating national water legislation as unanalysed background.",
+      "c3": "Contains primary empirical data from a 2012 field study in San Sebastián de Yalí municipality, presenting results for 5 rural communities (census of N = 296 households; stratified random sample of n = 107 polled households: 62 served by CAPS and 45 self-provision) combined with microbiological water-point/system audits for faecal coliforms and survey cost accounting.",
+      "c4": "Reports household drinking-water service outcomes across five normative dimensions: availability (sufficient quantity in lpd, perceived sufficiency, service continuity in hours/day and days/month, seasonal reliability), physical accessibility (proximity/time spent and path security), quality/safety (faecal coliforms CFU/100 ml), perceived affordability, and perceived acceptability, alongside intra-community exclusion from CAPS systems.",
+      "c5": "Population and unit of analysis (households in 5 rural communities, N = 296 census, n = 107 surveyed), analytical subgroup comparison (CAPS-served vs. informal self-provision households), service-level outcomes, and study design (cross-sectional stratified household survey and water quality audit) are all clearly identifiable, though the analytical exposure is not an eligible rule-type mechanism under Criterion 2.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 19",
+        "quote": "Thus, despite data were collected in all 74 communities of SSY municipality, results presented herein focus on a case study of five communities with 296 households (154 served by CAPS and 149 not served by CAPS)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 19",
+        "quote": "As it was mentioned before, the study focuses on conceptual and methodological issues to measure disparities in access to water."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 19",
+        "quote": "Survey team generates a census of the households from community distinguishing two subgroups depending on the type of water service provider: i. Non-State Community Based Organizations, ii. Self-provision (informal)"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 19",
+        "quote": "Special attention was paid to the idea of measuring access to water based on service level concept while considering the human right normative content (availability, physical accessibility, affordability, acceptability, and quality)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 19",
+        "quote": "Figure 3 shows the importance of disaggregating data into the two types of families described before, i.e. those served by the community-controlled water supply systems and those excluded."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 19",
+        "quote": "Availability and quality are the main shortcomings in communities studied while it seems that physical accessibility is by and large adequate. The low value for availability is mainly due to the poor continuity and seasonality of the supply."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Stratification by water service provider subgroup (households served by non-state Community-Based Organizations [CAPS] vs. unserved households relying on informal self-provision) to field-test a stratified sampling and human-right-to-water indicator methodology; no rule-type legal, administrative, or regulatory mechanism governing access is empirically analysed",
+    "outcome": "Composite indicators (0 to 1 scale) measuring five human-right-to-water normative criteria: availability (quantity, perceived sufficiency, continuity, reliability), physical accessibility (collection time/proximity, path security), water quality/safety (faecal coliforms CFU/100 ml), perceived affordability, and perceived organoleptic acceptability",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households in 5 rural communities in San Sebastián de Yalí (SSY) municipality, Jinotega department, Nicaragua: census population N = 296 households (154 CAPS-served and 142 self-provision in Table 3/4; p. 3 text states 154 and 149), stratified random sample of n = 107 polled households (62 served by CAPS and 45 self-provision)",
+    "rationale": "Exclude under E03 (Wrong exposure). Although the study collects primary household survey and water-quality data on rural drinking-water access and service levels in Nicaragua (satisfying c1, c3, c4, c5, and c6), its empirical focus is developing and testing a stratified small-population survey sampling design and composite indicators based on the normative dimensions of the human right to water. Under the active 2026-10-13 narrow reading of Criterion 2, it does not examine any rule-type legal, administrative, or regulatory mechanism governing service access (such as eligibility rules, tenure/documentation requirements, tariff/cost-recovery rules, CAPS legal registration under Law 722, discretion, or enforcement); instead, it stratifies already-served CAPS households versus excluded/self-providing households and explicitly disclaims investigating the causes of inequality or exclusion, while referencing national water legislation only as background. Under the literal/plain broad wording of Criterion 2, comparing institutional CBO/CAPS service provision against informal self-provision within municipal human-rights monitoring would qualify as examining an institutional/governance factor (plain_criterion2_decision = include).",
+    "record_id": "R844DD727452E",
+    "study_design": "Cross-sectional stratified household survey and water-point microbiological quality audit (methodological case study of 5 rural communities)"
+  }
+}

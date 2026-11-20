@@ -1,0 +1,277 @@
+{
+  "record_id": "R03C00C7DDAD7",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b1b3f538af227eef62cbec015785dc436a23ac244ba9ab67c446c8b4b534e038",
+  "prompt_sha256": "e4f542bffb29897a15c1c963e64b425b0cee1143ae9cd17c07594798067a932f",
+  "started_at": "2026-11-20T17:16:48.276275+00:00",
+  "completed_at": "2026-11-20T17:18:05.545722+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails C1: The paper examines utility- and system-level hazard and climate resilience of municipal water supply, wastewater, and stormwater management in Seattle (e.g., watershed protection, sewage overflow control, stormwater runoff, infrastructure planning, and organizational adaptation), rather than household or community water or sanitation service access.",
+      "c2": "Passes plain wording of C2, fails narrow 2026-10-13 rule-type reading of C2: Under the plain broad wording, the paper examines legal, regulatory, policy, and institutional factors (e.g., Clean Water Act, NPDES permits, Safe Water Act, Stormwater Code, SPU plans, and North's formal/informal institutional rules). However, under the 2026-10-13 clarification, none of the analysed factors is a rule-type mechanism directly governing household or community service access (such as eligibility screening, administrative burden, documentation/tenure rules, access-governing tariff/cost-recovery rules, disconnection/enforcement, or accommodation); instead, they are macro-level environmental quality regulations, watershed/infrastructure plans, and general organizational mindsets. Note: even under the plain C2 wording, the study remains excluded because it fails C1 and C4.",
+      "c3": "Passes C3: Contains primary empirical data from individual semi-structured interviews conducted in 2018 with 12 local water professionals in Seattle, including structured policy-ranking exercises and thematic coding of open-ended responses alongside policy/literature analysis.",
+      "c4": "Fails C4: Reported empirical outcomes consist solely of professionals' point-based rankings of which historical steps and current policies enable system resilience, plus thematic counts/lists of 75 perceived future challenges and 99 suggestions for resilience. No empirical outcome measuring household or community access, connection, service availability, reliability/continuity, quantity, affordability, or exclusion is reported (affordability and rate public opinion appear only as unanalysed passing mentions among future resilience challenges).",
+      "c5": "Passes C5: The case setting (Seattle water supply, wastewater, and stormwater utilities), respondent sample (12 local water professionals; unit of analysis at the utility/policy and respondent level), evaluated policy compilations, ranking/thematic outcomes, and qualitative/mixed case-study interview design are clearly identifiable.",
+      "c6": "Passes C6: Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 28",
+        "quote": "Our objective for this paper is to identify the type of policies local water professionals consider important for building and enhancing resilience in water services in Seattle."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 28",
+        "quote": "The selected policies included laws, rules, regulations, programs, and plans that directly related to providing water services and water quality, as well as specific policy choices such as collaborations and a decision to purchase watershed land to secure the water source."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 24 of 28",
+        "quote": "Overall, the results indicate that the important policies enabling resilient water services in Seattle are not a single type and design but a mix of laws and regulations, programs and plans, and specific policy choices that take place at all levels of governance, although mostly at the local level."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 28",
+        "quote": "Based on a literature review and semi-structured interviews among twelve selected local water professionals, this paper a) defines development steps and policies that have led to the current situation; b) explores key policies that are important to the resilience of Seattle’s water services; and c) examines challenges in and recommendations for improving resilience in the future."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 28",
+        "quote": "This section presents the results from the interviews. We begin with the results of ranking the importance of past development steps (section 4.1), advancing then to the importance of present policies (section 4.2). Finally, we present the future-oriented results from the open-ended questions about challenges in advancing the resilience of water services in Seattle and suggestions for improvement (section 4.3)."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Historical development steps, current environmental/planning policies and regulations (e.g., watershed land purchase, SPU water system plans, Clean Water Act, NPDES, Combined Sewer Overflow programs, Stormwater Code), and informal institutional rules (mindsets and habits)",
+    "outcome": "Water professionals' importance rankings of past and current policies enabling system resilience, and thematic categorization of 75 perceived challenges and 99 suggestions for advancing future resilience",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Municipal water supply, wastewater, and stormwater services in Seattle, Washington, USA; semi-structured interviews with 12 selected local water professionals",
+    "rationale": "Excluded as E01 (Wrong topic; also fails C2 narrow and C4). Using semi-structured interviews with 12 Seattle water professionals, this paper investigates which historical milestones, macro-level environmental/planning policies (e.g., watershed land acquisition, Clean Water Act, NPDES, Combined Sewer Overflow programs, SPU water system plans), and organizational mindsets enable long-term climate/hazard resilience of municipal water supply, wastewater, and stormwater systems. It does not examine household or community water/sanitation service access (C1), does not analyse a rule-type legal or administrative mechanism governing service access under the 2026-10-13 C2 clarification (though it passes plain C2), and reports only professional policy-importance rankings and perceived resilience challenges/suggestions rather than any service access, connection, reliability, or affordability outcome (C4). Consequently, it is excluded under both the narrow and plain readings of Criterion 2.",
+    "record_id": "R03C00C7DDAD7",
+    "study_design": "Qualitative/mixed-methods case study combining literature review, policy analysis, and semi-structured interviews with structured policy-ranking exercises"
+  }
+}
