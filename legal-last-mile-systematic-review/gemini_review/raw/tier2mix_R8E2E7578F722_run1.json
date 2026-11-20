@@ -1,0 +1,281 @@
+{
+  "record_id": "R8E2E7578F722",
+  "order": 122,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "8409f210e03f10348be177e61e6584a0a55b686b1d15ba81b968cb268079da1e",
+  "input_text_sha256": "158f943c9f5ac9c6c5a444fd9e3a51c61762e9f68c8c75e7dc565d76703d1451",
+  "prompt_sha256": "895dadbc4ba27105539c3071b93614b7f045d8bae028930c8b8957b1ad95801a",
+  "started_at": "2026-11-20T05:09:04.094604+00:00",
+  "completed_at": "2026-11-20T05:10:31.330914+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R8E2E7578F722\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R8E2E7578F722\n- Title: Water Commodification and Decommodification Narratives: Pricing and Policy Debates from Johannesburg to Kyoto to Cancun and Back\n- Authors: Bond, Patrick\n- Year: 2004\n- DOI: 10.1080/1045575032000188957\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 158f943c9f5ac9c6c5a444fd9e3a51c61762e9f68c8c75e7dc565d76703d1451) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61096, sha256=158f943c9f5ac9c6c5a444fd9e3a51c61762e9f68c8c75e7dc565d76703d1451]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa and global / multi-country (narrative discussion of Johannesburg, Kyoto, Cancun, Evian, and Third World privatization sites)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "no",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The essay discusses household and community water and sanitation service access, particularly municipal water disconnections, free basic water lifeline supplies, prepaid water meters, rural water schemes, and pit-latrine installation in South Africa alongside global debates.",
+      "c2": "Plain wording: Yes — discusses legal, administrative, institutional, and governance debates over water commodification, privatization/public-private partnerships, municipal tariffs, credit control, and the constitutional right to water. Narrow 2026-10-13 rule-type reading: Yes — discusses rule-type mechanisms directly governing household service access, including tariff and cost-recovery rules (the 6,000 liters/household/month free lifeline block with steep convex upper tariff blocks, $100 co-payments for pit latrines, prepaid water meters, and disconnection enforcement) and municipal utility privatization contracts. Both readings of Criterion 2 are satisfied; exclusion is due to Criterion 3 (E05).",
+      "c3": "No — published explicitly as an 'ESSAY' and described in its conclusion as a 'review of the discourses surrounding global and local water apartheid,' the paper is a political-economy and policy commentary narrating debates from the 2002 Johannesburg WSSD, 2003 Kyoto World Water Forum, and 2003 Cancun WTO ministerial. It contains no empirical research design, methods section, sampling frame, or systematic empirical synthesis, relying on speeches, press statements, media reports, a summary table of activist grievances/demands (with only a brief footnote noting August 2002 interviews with Caucus members and no methodological details), and passing citation of secondary national disconnection figures. Excluded as E05.",
+      "c4": "Discusses relevant service access outcomes—including municipal water disconnections (citing secondary Project Viability and HSRC figures), unaffordability, self-disconnection under prepaid meters, and low pit-latrine uptake—but only as secondary/anecdotal points within a policy commentary rather than outcomes measured in an empirical study.",
+      "c5": "No — because the article is a non-empirical policy and discourse essay, there is no identifiable empirical study design, analytical sample, or structured unit of analysis linking an exposure to an outcome.",
+      "c6": "Yes — full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 8",
+        "quote": "many civic groups also protested intensifying municipal water cut-offs, with especially ﬁerce demonstrations in the townships of Gauteng (Soweto, Alexandra, Thembisa, KwaThema)"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14",
+        "quote": "(In most locales, the revised July 2001 water tariffs that followed the African National Congress promise of free water in the December 2000 municipal elections, had a very small free lifeline block – 6000 liters per household per month – followed by a very steep-rising and convex curve such that the next consumption block became unaffordable, leading to even higher rates of water disconnections in many settings.)"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 13",
+        "quote": "(DWAF traditionally charged $100 or more as part-payment for installation of pit latrines, which is more than a monthly pension payout for low-income households, so only a few tens of thousands were actually constructed prior to the W$$D.)"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 20",
+        "quote": "That report listed 83,000 net water disconnections, in recording people who over a three-month period could not reconnect their services once they were cut off"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 21",
+        "quote": "This article’s review of the discourses surrounding global and local water apartheid reveals not only high-stakes passion"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Water commodification, municipal water privatization/public-private partnerships, convex block tariffs, pit-latrine co-payments, pre-paid water meters, and disconnection credit-control policies (discussed narratively)",
+    "outcome": "Household water disconnections, unaffordability, and water/sanitation service access (discussed via secondary reports and media accounts)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded under E05 (No empirical evidence). Although the article addresses household water and sanitation access (c1) and rule-type pricing/cost-recovery and privatization mechanisms (tariff blocks, pit-latrine co-payments, prepaid meters, disconnections; c2 under both plain and narrow readings), it is explicitly an essay ('ESSAY', PDF Page 3) offering a narrative political-economy commentary and discourse review of international water summits and South African water policy debates without an empirical study design, primary data analysis, or systematic empirical synthesis (c3=no, c5=no).",
+    "record_id": "R8E2E7578F722",
+    "study_design": "Essay / narrative policy and discourse commentary (no empirical study design reported)"
+  }
+}

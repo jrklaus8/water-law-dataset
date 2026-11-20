@@ -1,0 +1,281 @@
+{
+  "record_id": "R124041F5DF16",
+  "order": 14,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d0f435c54a0833e6e869100738824b7de37483375935d3c990a9d26d079dc5c0",
+  "input_text_sha256": "2c57387d08f42b8dc54f53900e1a449921bf226b8bc01c9a24a6bdb1efae3ca3",
+  "prompt_sha256": "9f18d1749ba6e7e01ca93912453a567c77b3a2b55fe52122245c89b84222642f",
+  "started_at": "2026-11-20T04:36:28.897478+00:00",
+  "completed_at": "2026-11-20T04:37:27.593421+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R124041F5DF16\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R124041F5DF16\n- Title: Social construction of hydropolitics: The geographical scales of water and security in the Indus Basin\n- Authors: Mustafa, D\n- Year: 2007\n- DOI: 10.1111/j.1931-0846.2007.tb00408.x\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 2c57387d08f42b8dc54f53900e1a449921bf226b8bc01c9a24a6bdb1efae3ca3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60991, sha256=2c57387d08f42b8dc54f53900e1a449921bf226b8bc01c9a24a6bdb1efae3ca3]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Pakistan and India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Most of the article examines basin-wide and interprovincial river allocation, large dam projects, and agricultural irrigation in the Indus Basin, which fall outside household/community WASH service access; however, a brief subsection on local-scale hydropolitics in Karachi (PDF pp. 13-14, pp. 495-496) explicitly discusses urban domestic drinking water supply access in low-income neighborhoods.",
+      "c2": "Passes the plain wording of Criterion 2 (plain = yes) because it discusses municipal and provincial water governance failures in Karachi as well as interprovincial water treaties/accords and colonial irrigation legislation (Canal and Drainage Act of 1873). Fails the narrow 2026-10-13 rule-type reading of Criterion 2 (narrow = no) because for household/community domestic water supply in Karachi, governance is treated only as unanalysed macro-governance failure, infrastructure underinvestment, corruption, and informal tanker markets rather than a specific rule-type legal or administrative mechanism (such as eligibility criteria, tenure/documentation rules, tariff rules, or disconnection enforcement) directly governing service access, while specific allocation rules discussed elsewhere in the paper (e.g., warabandi rotational scheduling and the Canal and Drainage Act of 1873) concern agricultural irrigation rather than domestic WASH access. Under both readings, the overall full-text decision is exclude due to the absence of empirical evidence (c3 = no).",
+      "c3": "No primary empirical data, no empirical study design, and not a systematic empirical synthesis. The paper is a theoretical/conceptual essay and narrative overview of secondary literature and the author's prior publications aimed at defining a future research agenda on subnational hydropolitics and security (exclude under E05).",
+      "c4": "Does not report original empirical outcome measurements or systematic synthesis estimates on household or community water/sanitation access; secondary statistics on Karachi water supply shortfalls and relative vendor prices (e.g., WSP-SA 1999; Ahmed and Sohail 2003) are cited only illustratively in a narrative review.",
+      "c5": "As a non-empirical narrative overview and research-agenda essay, it has no identifiable empirical study sample, exposure contrast, or measured outcome analysis.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 19 (p. 485)",
+        "quote": "This article defines a research agenda in the Indus Basin, in the hope that it will provide a road map for future research to address some of these questions."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 13 of 19 (p. 495)",
+        "quote": "In the context of Karachi, then, lack of access to clean drinking water is indicative of the failure of governance on many other fronts"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 14 of 19 (p. 496)",
+        "quote": "More qualitative and theoretically driven research on the urban geography of Karachi, with governance and hydropolitics as the key foci, may help elucidate the social context within which hydropolitics are constructed and experienced, with potential consequences for security."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 of 19 (p. 496)",
+        "quote": "In the irrigation sector, my local-level research documents the role of social power in influencing access to irrigation water and in vulnerability to flood hazard in the Khanewal District of Punjab Province"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 15 of 19 (p. 497)",
+        "quote": "Second, the issue of access to water is intricately tied up with the issue of responsive governance, as I described in the Karachi example."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Subnational water governance, engineering megaprojects, interprovincial water-allocation accords, and social power relations (discussed narratively)",
+    "outcome": "Subnational water conflict, political instability, irrigation water distribution, and urban drinking water scarcity (reviewed narratively from secondary sources)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "not reported",
+    "rationale": "Excluded as E05 (No empirical evidence). Mustafa (2007) is a conceptual essay and narrative literature review setting out a future research agenda on subnational hydropolitics and security in the Indus Basin, without primary empirical data, an empirical methodology, or a systematic synthesis design. In addition, the bulk of the article addresses transboundary/interprovincial river apportionment, dam controversies, and agricultural irrigation, while its brief 3-paragraph discussion of domestic water supply in Karachi (pp. 495-496) cites secondary literature on broad macro-governance failure, infrastructure underinvestment, and corruption rather than empirically evaluating a rule-type legal or administrative mechanism governing household WASH access.",
+    "record_id": "R124041F5DF16",
+    "study_design": "Narrative literature review and conceptual research-agenda essay (non-empirical)"
+  }
+}

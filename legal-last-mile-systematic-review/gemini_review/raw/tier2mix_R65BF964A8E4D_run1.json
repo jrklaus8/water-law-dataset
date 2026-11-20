@@ -1,0 +1,286 @@
+{
+  "record_id": "R65BF964A8E4D",
+  "order": 53,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "439c65cd18f4c407b56f397bafcd4bae72d59f9cfb579b2c7f80ba649441a955",
+  "input_text_sha256": "5830e7c03afae5188e7af0479872ef87fc6dde9c88c48e869e9c779bc2132f26",
+  "prompt_sha256": "b160be23e68ef3c25d110f8592c4f85bb935695cceadcd385caba2ba68c46c31",
+  "started_at": "2026-11-20T04:49:00.956087+00:00",
+  "completed_at": "2026-11-20T04:51:35.521623+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R65BF964A8E4D\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R65BF964A8E4D\n- Title: Changing Household Water Rights in Rural Northern Ghana\n- Authors: Eguavoen, Irit\n- Year: 2008\n- DOI: 10.1057/palgrave.development.1100462\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 5830e7c03afae5188e7af0479872ef87fc6dde9c88c48e869e9c779bc2132f26) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=12117, sha256=5830e7c03afae5188e7af0479872ef87fc6dde9c88c48e869e9c779bc2132f26]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water service access via hand-pump fitted boreholes, hand-dug wells, and unimproved water sources in rural northern Ghana.",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Plain reading: examines national drinking water policy (NCWSP), project laws and by-laws, customary local water rights, and pump-community governance. Narrow 2026-10-13 rule-type reading: directly examines concrete legal and administrative rules governing household water access, including (1) eligibility and cost-recovery rules (the mandatory 5% upfront community capital contribution of two Mio Cedis / approx. US$210 paid to the district to qualify for a pump, plus higher post-hoc buy-in entrance fees when wealthier households pay the contribution on behalf of neighbours, and maintenance water fees), (2) formal registration and membership rules under project law restricting pump use rights to registered members at their place of residence, and (3) local discretion and accommodation (exempting vulnerable houses from entrance and water fees and creating a hierarchy of use rights limiting water quantities and usage for non-members).",
+      "c3": "Contains qualitative socio-legal empirical evidence from the author's 2004-2006 local-level investigation in a Nankan settlement of northern Ghana (citing Eguavoen, 2007), documenting de facto household and pump-community practices versus de jure NCWSP project rules. Note that because this is a concise 4-page journal article, specific data-collection instruments (e.g., interview or observation counts) are not reported in the text.",
+      "c4": "Reports direct household and community water access outcomes: failure to qualify or delays of up to three years in obtaining an NCWSP borehole pump due to the upfront payment requirement, exclusion or higher buy-in fees for non-contributing houses, full access for exempted vulnerable houses, seasonal fallback to river water or carrying water to market due to lack of use rights at non-member pumps, and restricted water quantities and uses for non-members.",
+      "c5": "Identifies the population and units of analysis (households/houses, water user groups, and pump communities in a rural Nankan settlement in the Upper East Region of northern Ghana, 2004-2006), the legal/institutional exposures under NCWSP, and household water access outcomes, within an identifiable qualitative socio-legal case-study design (though exact sample size and field instruments are not reported in this brief article).",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1",
+        "quote": "the creation of the Community Water and Sanitation Agency (CWSA) as well as a number of project laws and by-laws, a demand-driven application procedure, the payment of 5 percent capital cost towards construction"
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 2",
+        "quote": "In a rather homogenous Nankan settlement of northern Ghana (2004^2006), I investigated how far the NCWSP policy travelled to the local level and what implications it had on the local water rights (Eguavoen, 2007)."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 2",
+        "quote": "Differently, the pump communities of the NCWSP are based on formal registration and membership of users. Boundaries are strictly drawn between those who belong and those who do not."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 3",
+        "quote": "Some water users failed to qualify for NCWSP; others spent up to three years before the required amount could be collected."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3",
+        "quote": "Many pump communities completely exempt a number of most vulnerable houses from both entrance and water fees. Such houses enjoy full access."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 3",
+        "quote": "Some people carry water to the market because they have no use rights to the pump over there."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Ghana National Community Water and Sanitation Program (NCWSP) institutional and project-law rules: mandatory 5% upfront community capital contribution (two Mio Cedis / approx. US$210 submitted to the district to qualify), formal registration and resident membership in pump communities, higher buy-in entrance fees when wealthier households fund upfront contributions, maintenance water fees, and local fee exemptions and non-member use hierarchies.",
+    "outcome": "Household qualification for and access to hand-pump boreholes (failure to qualify or delays of up to three years due to upfront cost barriers), exclusion or higher buy-in costs for non-member households, full pump access for fee-exempt vulnerable houses, seasonal shifts to unimproved river water and carrying water to market due to lack of use rights at other pumps, and restricted water quantities and usages for non-members.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households (houses), water user groups, and borehole pump communities in a rural Nankan settlement in northern Ghana (Upper East Region), studied 2004-2006 (exact sample size not reported).",
+    "rationale": "This 4-page qualitative socio-legal article reports empirical findings from the author's 2004-2006 field investigation in a rural Nankan settlement of northern Ghana (citing Eguavoen, 2007) examining how Ghana's National Community Water and Sanitation Program (NCWSP) rules altered local household water rights and access. It satisfies both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2 by analyzing specific formal eligibility, cost-recovery, registration/membership, and accommodation rules—including the two Mio Cedis (5%) upfront capital contribution required to qualify, formal pump-community membership boundaries, buy-in entrance fees, exemptions for vulnerable houses, and quantity/usage limits for non-members—and linking them to concrete household access, delay, exclusion, and source-substitution outcomes. Although specific data-collection instruments and sample counts are not detailed in this short article, the empirical field investigation, population, rule-type exposures, and access outcomes are clearly identifiable, and qualitative socio-legal empirical studies are eligible for the mechanism synthesis.",
+    "record_id": "R65BF964A8E4D",
+    "study_design": "Qualitative socio-legal case study (2004-2006 local field investigation; specific data-collection methods not reported)"
+  }
+}

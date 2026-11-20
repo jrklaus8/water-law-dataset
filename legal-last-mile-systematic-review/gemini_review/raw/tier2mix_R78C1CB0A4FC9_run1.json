@@ -1,0 +1,291 @@
+{
+  "record_id": "R78C1CB0A4FC9",
+  "order": 140,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "63e5aaa5f47f3668e8e6d60f7b0c84812bef769ab403b0593cea36f266d8d2a6",
+  "input_text_sha256": "46f211a83444e51e7b6584e5f56a9c0e19bdb6906ab735cc67e5b7cfa3d7c1e4",
+  "prompt_sha256": "d44605b4ee99ef8652a935a103a4d8e4661f41f8b6728e88b19af5784ca83007",
+  "started_at": "2026-11-20T05:12:42.303162+00:00",
+  "completed_at": "2026-11-20T05:14:42.732525+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R78C1CB0A4FC9\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R78C1CB0A4FC9\n- Title: Indigenous struggles and water policies in contemporary New Caledonia\n- Authors: Trepied, Benoit\n- Year: 2012\n- DOI: 10.1080/13504630.2012.673876\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 46f211a83444e51e7b6584e5f56a9c0e19bdb6906ab735cc67e5b7cfa3d7c1e4) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=58368, sha256=46f211a83444e51e7b6584e5f56a9c0e19bdb6906ab735cc67e5b7cfa3d7c1e4]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "New Caledonia (France)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines a municipal piped drinking-water conveyance project (Adduction d'eau potable Grombaou) intended to supply drought-affected Kanak villages (Noeli, Tiaoue, and Poindah) as well as complaints over three unserved houses in lower Neami.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the literal plain wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), this study would qualify (plain_criterion2_decision = 'include') because it examines local municipal water governance and an institutional conflict/negotiation between the elected Municipality Council and the customary Council of Elders within New Caledonia's post-Noumea Agreement decolonization framework. Under the active 2026-10-13 rule-type mechanism clarification, however, Criterion 2 is 'no': the paper does not study a rule-type mechanism directly governing household or community service access (eligibility screening, administrative burden, documentation/tenure requirements for service connection, tariff or cost-recovery rules governing user access, administrative discretion/accommodation, enforcement, or utility ownership/regulatory structure). Instead, it analyzes political and indigenous contestation around generic capital-works project delivery/staging (2000-2004 vs. 2005-2009 Development Contracts) and rejected tribal demands for bulk water extraction royalties as a window onto political cleavages within Kanak nationalism (exclude as E03).",
+      "c3": "Contains primary qualitative empirical evidence from ethnographic fieldwork in Kone (2002-2004), including participant observation of internal Municipality Council deliberations (7 June 2004) and the tribal-municipal negotiation meeting in Neami (19 July 2004), informal interviews, and text analysis of the 7 June 2004 protest letter.",
+      "c4": "Descriptively reports community- and household-level water service availability and connection status within the ethnographic narrative: dry-season water shortages in lower-altitude villages, three unserved houses in lower Neami deferred to the 2005-2009 Development Contract, withdrawal of the pipeline obstruction threat, and inauguration of piped water delivery from Grombaou to Poindah, Tiaoue, and Noeli (although the author's primary analytical focus is political legitimacy rather than water access evaluation).",
+      "c5": "Identifies the population and units of analysis (Kanak tribes/villages and municipal/customary actors in the commune of Kone), the qualitative ethnographic case study design, the political-institutional negotiation process, and descriptive village water delivery outcomes, though an eligible rule-type legal/administrative exposure is absent under narrow Criterion 2.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 (Water policies and customary claims in the commune of Kone)",
+        "quote": "The ethnography provided here details a political conflict concerning a water conveyance project, which occurred in June and July 2004."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 7 (Water policies and customary claims in the commune of Kone)",
+        "quote": "as such they face drought during the dry season. Their water conveyance systems frequently lack water as rivers are drained"
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 11 (The reaction of the Municipality Council)",
+        "quote": "Because there are three houses on the lower part of the tribe that are not served by water"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 (Threat of obstruction: a letter from the Council of Elders of Neami)",
+        "quote": "For that reason, we demand royalties from the municipal tariff on water. Indeed, it deals with the same logic as sand or rocks that are taken from rivers by enterprises for construction needs."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 (In the name of custom)",
+        "quote": "As the balance of power between elected and customary representatives had still not been settled by law"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10 (The reaction of the Municipality Council)",
+        "quote": "At that time, my day-to-day presence was fully accepted by the Palika municipal team during most formal and informal meetings: thanks to this ethnographic position, I was able to observe their reaction to the protest of the Council of Elders"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 15 (Negotiation in Neami: the reply of the mayor)",
+        "quote": "In any case, they withdrew their threat of obstruction. A few weeks later, the pipe was inaugurated and the inhabitants of Poindah, Tiaoue´ and Noe´li finally received water from Grombaou."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Political-institutional conflict and negotiation between elected municipal authorities and customary tribal elders over municipal water pipeline construction/staging (2000-2004 vs. 2005-2009 Development Contracts) and customary resource royalty demands (not a rule-type mechanism governing service access)",
+    "outcome": "Withdrawal of pipeline construction blockade threat and inauguration of piped drinking water supply from Grombaou to the tribes of Poindah, Tiaoue, and Noeli (with connection of three unserved houses in lower Neami deferred to the 2005-2009 Development Contract), alongside negotiation of rival electoral vs. customary political legitimacies",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Kanak tribes/villages (Neami, Noeli, Tiaoue, Poindah) and municipal councillors and customary elders in the commune of Kone, Northern Province, New Caledonia (ethnographic observation of 5 municipal officials on 7 June 2004 and ~20 Neami residents plus 10 municipal staff on 19 July 2004)",
+    "rationale": "This political anthropology article uses a local dispute over the construction and routing of a municipal drinking-water pipeline (AEP Grombaou) in Kone, New Caledonia, to examine emerging ideological cleavages between pro-independence FLNKS elected officials and customary/'indigenous' Kanak activists. While the ethnography touches on community water supply delivery and passes the literal broad wording of Criterion 2 (institutional/governance conflict between municipal and customary authorities, hence plain_criterion2_decision = 'include'), it fails the active 2026-10-13 rule-type mechanism scope of Criterion 2. The study examines political mobilization around phased public-works infrastructure delivery (2000-2004 vs. 2005-2009 Development Contracts) and rejected tribal demands for bulk resource extraction royalties rather than any legal, administrative, or regulatory rule-type mechanism directly governing household or community service access (excluded as E03, Wrong exposure).",
+    "record_id": "R78C1CB0A4FC9",
+    "study_design": "Qualitative ethnographic case study (participant observation and document analysis, 2002-2004)"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "record_id": "R1EA55CF56B9D",
+  "order": 54,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "66f4db1772e649220051eb7e5629c333379a1a6326f054e0074130b41852419d",
+  "input_text_sha256": "2639504923b94d24fd0d834dc90a9cbbacb9fb78281716c76e0aefd44329dd04",
+  "prompt_sha256": "d6e898cb4c1d469e441a4d77cc1c484dfe9edd73385312921e813da4fc35d5a5",
+  "started_at": "2026-11-20T04:49:00.960098+00:00",
+  "completed_at": "2026-11-20T04:52:18.167252+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R1EA55CF56B9D\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R1EA55CF56B9D\n- Title: Private and social enterprise roles in water, sanitation and hygiene for the poor: A systematic review\n- Authors: Gero A.; Carrard N.; Murta J.; Willetts J.\n- Year: 2014\n- DOI: 10.2166/washdev.2014.003\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 2639504923b94d24fd0d834dc90a9cbbacb9fb78281716c76e0aefd44329dd04) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=65363, sha256=2639504923b94d24fd0d834dc90a9cbbacb9fb78281716c76e0aefd44329dd04]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Multiple low- and lower-middle-income countries across Africa, Asia, Latin America, and the Pacific (including Bangladesh, Benin, Bolivia, Cambodia, Ethiopia, Ghana, Guinea, India, Indonesia, Kenya, Madagascar, Malawi, Mozambique, Papua New Guinea, Paraguay, Peru, Rwanda, Senegal, Tanzania, Timor-Leste, Uganda, and Vietnam)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines water and sanitation service access for poor urban and rural households and communities in low- and lower-middle-income countries.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2, though borderline in scope breadth. Under the plain wording, the review clearly examines institutional, governance, policy, and regulatory factors (private and social enterprise roles, public-private partnerships, civil society interfaces, decentralisation, and regulation). Under the narrow 2026-10-13 reading, substantial portions of the review cover sanitation marketing, supply-chain viability, and CSO capacity building (which alone would be out-of-scope commercial/behavioural promotion or project delivery), but the review also explicitly synthesizes empirical evidence on multiple rule-type mechanisms directly governing poor households' service access: (1) provider ownership, contracting, and regulatory structures (for-profit private operators vs. social enterprises, rural piped-water PPPs, municipal-utility delegated management models, legalisation/formalisation of informal providers, licensing/taxes, accreditation, neighbourhood regulatory decentralisation, and enforcement fines on illegal dumping); (2) tariff, connection-fee, cost-recovery, and subsidy rules (high connection fees preventing poor households from connecting or locking them in, cost-recovery water tariffs pricing out poor rural households, and hardware/community or output-based connection subsidies); and (3) pricing discretion/accommodation (flexible pricing structures and instalment/credit payment schemes for poor customers).",
+      "c3": "Systematic empirical synthesis following ODI/DFID systematic review methodology: defined search strategy across databases, websites, journals, and sector networks (4,211 initial records screened to 164 mapped documents and 82 reviewed in detail), explicit inclusion criteria, structured rigour appraisal, and qualitative synthesis of predominantly primary empirical studies. Criterion 3 explicitly includes a systematic empirical synthesis.",
+      "c4": "Reports synthesized outcomes directly relevant to poor households' access, connection, affordability, and exclusion, including non-prioritisation of poor customers by profit-seeking operators, inability to afford connection fees or rural water tariffs leading poor households to rely on unsafe alternative water supplies, customer lock-in from high connection fees, and improved poor access under delegated management models or flexible pricing/instalment arrangements.",
+      "c5": "Population (poor households/communities and small-scale WASH enterprises in LMICs; unit of analysis: synthesis of 164 mapped / 82 detailed studies covering household/community access and enterprise-level operations), exposure (private/social enterprise delivery and ownership models, PPP/delegated management contracting, formalisation/regulation, and tariff/connection-fee/subsidy rules), outcome (household WASH access, affordability, and exclusion), and study design (systematic review / qualitative empirical synthesis) are clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 15",
+        "quote": "Micro, small and medium private and social enterprises are emerging as important players in the water, sanitation and hygiene sector. This paper provides a systematic review of literature on this topic. It assesses the current evidence base in three areas: factors affecting success of enterprise engagement; outcomes for the poor as a result of enterprise engagement; and lastly, how civil society organisations are engaging to support enterprise development."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 15",
+        "quote": "The dominant type of study was found to be ‘primary empirical work’ with many such studies demonstrating strong rigour (see Figure 2)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 15",
+        "quote": "‘Legalization of the informal market and decentralization of certain regulatory activities to the neighbourhood level are important steps in the efforts to improve service delivery to the urban poor’."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 15",
+        "quote": "Evidence suggests that outcomes for poor households who cannot afford connections or the water tariffs include drawing on unsafe alternative water supplies"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 15",
+        "quote": "Delegated management models, where small-scale operators are contracted by municipal water utilities, have shown to provide an approach to allow access to water (and sanitation) services for the urban poor"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Private and social enterprise WASH service-delivery and ownership models (small-scale private operators, social enterprises, rural PPPs, municipal delegated management models, formalised vs. informal providers) and associated tariff, connection-fee, cost-recovery, subsidy, and regulatory mechanisms",
+    "outcome": "Household and community water and sanitation access and affordability for the poor (customer inclusion vs. exclusion/non-prioritisation, ability to afford connection fees and tariffs, customer lock-in, reliance on unsafe alternative water supplies), alongside enterprise business viability",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Poor urban and rural households and communities, alongside micro, small, and medium private and social WASH enterprises/operators in low- and lower-middle-income countries; systematic review mapping 164 documents (from 4,211 search hits) and synthesizing 82 documents in detail (2008-2013)",
+    "rationale": "This 2014 paper matches the record metadata and is a full-text systematic empirical synthesis (eligible under Criterion 3) examining private and social enterprise roles in water and sanitation services for the poor across low- and lower-middle-income countries. Although a substantial share of the reviewed literature concerns enterprise viability, sanitation marketing, and CSO capacity building, the review explicitly synthesizes empirical evidence on rule-type mechanisms under the 2026-10-13 Criterion 2 clarification: private/social operator ownership, rural water PPPs, and municipal-utility delegated management models; formalisation, licensing, accreditation, and neighbourhood-level regulation of informal providers; and connection fees, cost-recovery tariffs, flexible/instalment pricing accommodations, and subsidies directly governing poor households' water and sanitation access, affordability, and exclusion. All inclusion criteria (c1-c6) are met for systematic-review inclusion (noting Criterion 6 is a quantitative-synthesis gate, not a review-eligibility gate). Confidence is rated medium because the review blends in-scope ownership, regulatory, and tariff/connection-fee mechanisms with broader sanitation-marketing and supply-chain enterprise themes.",
+    "record_id": "R1EA55CF56B9D",
+    "study_design": "Systematic review (qualitative thematic synthesis of 164 mapped and 82 reviewed academic and grey literature documents, predominantly primary empirical studies)"
+  }
+}

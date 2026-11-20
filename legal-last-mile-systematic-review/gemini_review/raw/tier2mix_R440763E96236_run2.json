@@ -1,0 +1,281 @@
+{
+  "record_id": "R440763E96236",
+  "order": 8,
+  "run": 2,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "dc159686316e61c2db8bb1e01b3e3c468ef34b7e76c83916ae7e2e1e658f0bdb",
+  "input_text_sha256": "affc95f6e60b789051d270283f92e92927aba56249d5037d7c755b3e81d3168e",
+  "prompt_sha256": "2f9afb781bb15f4e03dd364b51374e75fa317bead759e443c344679f988dc897",
+  "started_at": "2026-11-20T05:17:02.362464+00:00",
+  "completed_at": "2026-11-20T05:18:34.881480+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R440763E96236\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R440763E96236\n- Title: Water Values in a Ghanaian Small-Scale Gold Mining Community\n- Authors: Long, Rachel; Renne, Elisha; Robins, Thomas; Wilson, Mark; Pelig-Ba, Kenneth; Rajaee, Mozhgon; Yee, Allison; Koomson, Elizabeth; Sharp, Codi; Lu, Jing; Basu, Niladri\n- Year: 2013\n- DOI: 10.17730/humo.72.3.n060516488mwk236\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: affc95f6e60b789051d270283f92e92927aba56249d5037d7c755b3e81d3168e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63287, sha256=affc95f6e60b789051d270283f92e92927aba56249d5037d7c755b3e81d3168e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking and domestic water access, water procurement strategies, informal vendor water distribution, and lack of sanitation infrastructure in Kejetia, a small-scale gold mining community in northeastern Ghana.",
+      "c2": "Passes the plain wording of Criterion 2 (plain_criterion2_decision = include) but fails the narrow 2026-10-13 rule-type mechanism reading (decision = exclude). Under the plain/literal wording ('legal, administrative, institutional, regulatory or governance factor'), the paper addresses local governance and informal institutional arrangements shaping water access, including local government neglect and lack of political representation in transient mining concessions versus established villages (Gorogo), informal vendor price-fixing meetings, informal access/labor rules at Micky's streambed well and a private Chinese mine pump ('Chinese borehole'), and community water-protection etiquette prohibitions. Under the active 2026-10-13 clarification, however, Criterion 2 requires a rule-type legal, administrative, or utility regulatory mechanism directly governing service access (eligibility screening, administrative burden, documentation or tenure requirements, formal tariff/cost-recovery rules, discretion/accommodation, enforcement, or utility ownership/regulatory structure). Here, the authors explicitly state that 'government oversight over water access and use does not exist in Kejetia,' local government neglect serves only as unanalysed macro-governance background explaining the absence of public boreholes, and the empirical investigation focuses on sociocultural/sensory valuations of water, informal vending practices, and heavy-metal contamination from artisanal gold mining rather than a legal or administrative rule-type mechanism.",
+      "c3": "Contains primary mixed-methods empirical data collected in 2010-2011: a cluster-sampled survey of 54 households, open-ended interviews with 20 water-trade actors (vendors, bathhouse operators, pito brewers) and 5 community women, participant observation of water collection, and laboratory trace-metal and coliform testing of water samples from Kejetia and a control village (Gorogo).",
+      "c4": "Reports concrete household water access outcomes, including household water source shares (69.8% surface water and 30.2% sachet water for main drinking water; 77.8% purchasing water from vendors; 0% main borehole reliance), collection time (>70% of households taking 30 or more minutes to obtain drinking water), vendor basin prices (median 5 pesewas; vendor-reported 20 to 50 pesewas per 34-liter basin), and complete absence of pit latrines or indoor plumbing.",
+      "c5": "Population and unit of analysis (households and water-trade workers in Kejetia), empirical study exposures (small-scale gold mining environment, seasonal source conditions, and local sensory/cultural valuations of water), access and water-quality outcomes, and cross-sectional mixed-methods study design are all clearly identifiable; however, the exposure studied is not an eligible rule-type legal/administrative mechanism under Criterion 2.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 (p. 199, Abstract)",
+        "quote": "In this paper, values associated with water—sociocultural, economic, and chemical—in a small-scale gold mining community in northeastern Ghana are considered."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 (p. 202, Local Water Values)",
+        "quote": "Indeed, one might say that government oversight over water access and use does not exist in Kejetia."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 (p. 202, Methods)",
+        "quote": "One adult member of each of the 54 households surveyed answered questions on water sources, procurement, and consumption."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5 (p. 203, Life-Giving Value: Water Sources, Availability, and Uses)",
+        "quote": "The majority of households we surveyed in Kejetia (77.8 percent) obtain at least some of their water from water vendors. Over half (55.6 percent) of households exclusively purchase water from vendors."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 (p. 205, Other water sources)",
+        "quote": "Obtaining water in Kejetia also takes more time than other parts of Ghana. Over 70 percent of households surveyed in Kejetia take 30 or more minutes to obtain drinking water"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Artisanal small-scale gold mining environment, seasonal water source availability, and sociocultural/sensory water valuations (with absence of local government water provision and informal community/vendor practices as context)",
+    "outcome": "Household drinking and domestic water source shares, reliance on and prices paid to informal water vendors, water collection time (>=30 minutes), absence of boreholes and latrines, and trace-metal and coliform contamination of water sources",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households and water-trade workers in Kejetia, a small-scale gold mining community in Talensi District, Upper East Region, Ghana (54 cluster-sampled households surveyed; 20 water vendors, bathhouse operators, and pito brewers plus 5 community women interviewed; water samples from Kejetia and control village Gorogo)",
+    "rationale": "Excluded under E03 (Wrong exposure). This mixed-methods anthropological and environmental health study empirically examines household water procurement, vendor reliance, pricing, collection time, and heavy-metal water contamination in a Ghanaian artisanal gold mining community (satisfying C1, C3, C4, C5, and C6). While it would pass a broad literal reading of Criterion 2 because it discusses local government neglect/political disenfranchisement of transient mining settlements and informal community water-collection and vendor pricing practices, it fails the active 2026-10-13 rule-type mechanism scope of Criterion 2: government water oversight does not exist in the study site (serving only as unanalysed macro-governance background), and the study analyses sociocultural water valuations, informal vending practices, and mining-related chemical contamination rather than a legal, administrative, or utility regulatory rule-type mechanism governing service access.",
+    "record_id": "R440763E96236",
+    "study_design": "Cross-sectional mixed-methods study (cluster household survey, qualitative open-ended interviews, participant observation, and environmental water quality testing)"
+  }
+}

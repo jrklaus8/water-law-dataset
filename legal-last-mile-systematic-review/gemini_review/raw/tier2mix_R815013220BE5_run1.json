@@ -1,0 +1,281 @@
+{
+  "record_id": "R815013220BE5",
+  "order": 117,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "fbc31358fe007b02eb694887ce90aef788d5ddeed60be280cce51b59b861fba9",
+  "input_text_sha256": "ed09d912e3cb72bbdaaa69b07ad5dec4d325cd07190e1a80095b1b72713087cb",
+  "prompt_sha256": "794543eb8d31efb7b5fa29c2398a05e4f47da9da160c35c6cf40966e4ad0e7e2",
+  "started_at": "2026-11-20T05:05:52.389508+00:00",
+  "completed_at": "2026-11-20T05:07:30.233569+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R815013220BE5\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R815013220BE5\n- Title: The Municipal Drinking Water Database\n- Authors: Hughes S.; Kirchhoff C.J.; Conedera K.; Friedman M.\n- Year: 2023\n- DOI: 10.1371/journal.pwat.0000081\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: ed09d912e3cb72bbdaaa69b07ad5dec4d325cd07190e1a80095b1b72713087cb) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=45152, sha256=ed09d912e3cb72bbdaaa69b07ad5dec4d325cd07190e1a80095b1b72713087cb]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access. The article introduces and describes the Municipal Drinking Water Database (MDWD), which links municipal-level public finance accounts, Census demographics, 2016 presidential vote share, city staffing and form of government, climate moisture, water source, and Safe Drinking Water Act (SDWA) health-based water quality violations for municipally owned community water systems.",
+      "c2": "Under the plain wording of Criterion 2, the database compiles broad institutional and regulatory variables (restricting the dataset to municipally owned community water systems, coding a binary mayor-led vs. council form-of-government variable, tracking municipal revenues/expenditures and staffing, and summing annual SDWA health-based violations), though these are presented only as descriptive summaries of a new data resource rather than tested as governance determinants of access; even if treated as touching governance under the plain reading, the paper still fails Criteria 1, 4, and 5 so plain_criterion2_decision is exclude. Under the narrow 2026-10-13 rule-type mechanism reading, Criterion 2 is clearly not met (no): municipal utility ownership is a constant sample-inclusion filter (non-municipal and special-district systems are excluded rather than compared), mayor-led form of government is unanalysed macro-governance background reported only as a univariate descriptive statistic, and no rule-type mechanism directly governing service access (such as eligibility screening, documentation/tenure rules, administrative burden, tariff or cost-recovery rules, disconnection/enforcement, or regulatory rules governing access) is examined.",
+      "c3": "Compiles a secondary longitudinal unbalanced panel dataset (1997–2018) across 2,219 U.S. municipalities and reports quantitative descriptive statistics and illustrative temporal and regional patterns.",
+      "c4": "Reports no outcome measuring water or sanitation service access, connection, coverage, availability, reliability, continuity, quantity, household affordability, or disconnection/exclusion. The drinking-water system metrics in the database and illustrative analyses are limited to aggregate municipal water utility expenditures and revenues and annual counts of health-based SDWA water-quality violations (MCL, MRDL, and treatment-technique violations).",
+      "c5": "Although the municipality-level population (2,219 contiguous U.S. municipalities) and database linkage methods are clearly documented, this is a data-resource description paper presenting univariate summaries, spending trends, and an illustrative plot of regional climate moisture against per-capita water utility spending, with no identifiable study design testing a legal/governance exposure on a service-access outcome.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "The unit of analysis in the MDWD is the municipality, and it includes 2,219 municipalities with 10,000 or more residents in the year 2000."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12",
+        "quote": "The MDWD also focuses exclusively on municipally owned and operated drinking water systems, and takes a conservative approach to identifying these (see Methods below)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10",
+        "quote": "For form of government we include a binary measure of the institutional structure of the city government: whether or not it is a mayor-led city government."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 6",
+        "quote": "All violations from a single year for each CWS were summed to create a value for total annual drinking water system violations."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12",
+        "quote": "For example, comparing drinking water spending per capita across regions of the country shows a potential relationship between regional climate and spending on drinking water systems: in 2017, regions with lower climate moisture scores (e.g., EPA regions 8 and 9) tended to spend more per capita on their drinking water systems (Fig 7)."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "not reported (database compiles municipal finances, mayor-led vs. council form of government, municipal FTEs, demographics, 2016 Democratic vote share, water source, and Climate Moisture Index; illustrative bivariate comparison examines regional Climate Moisture Index)",
+    "outcome": "Aggregate municipal water utility spending and revenue, general municipal fiscal indicators, and annual count of Safe Drinking Water Act (SDWA) health-based water quality violations (no household or community service-access outcome reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "2,219 U.S. municipalities in the 48 contiguous states with at least 10,000 residents in the 2000 Census that own and operate a community water system serving at least 8,000 people (collectively serving approximately 139 million residents), tracked from 1997 to 2018 (unit of analysis: municipality)",
+    "rationale": "Excluded (E04: Wrong outcome). This article is a data-resource description introducing the Municipal Drinking Water Database (MDWD) for 2,219 U.S. municipalities with municipally owned community water systems (1997–2018). Neither the compiled database variables nor the illustrative descriptive analyses measure household or community water service access, connection, availability, reliability, continuity, quantity, household tariff affordability, or disconnection/exclusion (failing Criteria 1 and 4); instead, the drinking-water metrics are limited to aggregate municipal utility revenues/expenditures and Safe Drinking Water Act health-based water quality violations. It also fails Criterion 2 under the 2026-10-13 rule-type mechanism clarification (municipal ownership is a fixed sample-selection criterion with no comparison group, and mayor-vs.-council form of government is unanalysed macro-governance background) and Criterion 5 (descriptive database overview with no governance-exposure to access-outcome analysis), so it is excluded under both the narrow and plain readings of Criterion 2.",
+    "record_id": "R815013220BE5",
+    "study_design": "Database construction and description paper (unbalanced longitudinal panel dataset, 1997–2018, with illustrative descriptive statistics)"
+  }
+}

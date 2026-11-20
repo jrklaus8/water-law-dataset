@@ -1,0 +1,291 @@
+{
+  "record_id": "R8FA145CC6D69",
+  "order": 144,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a56c2ac603d63fb4f3f524796e8ea6dc7b5240a0e8793fad8f7b941d50349175",
+  "input_text_sha256": "f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d",
+  "prompt_sha256": "f29b12bbc1f736903a92e496980888a2af0ee1c588ffd7efc868ec279a8f283a",
+  "started_at": "2026-11-20T05:14:47.430411+00:00",
+  "completed_at": "2026-11-20T05:16:49.662169+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R8FA145CC6D69\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R8FA145CC6D69\n- Title: Spatio-temporal patterns of domestic water distribution, consumption and sufficiency: Neighbourhood inequalities in Nairobi, Kenya\n- Authors: Mutono N.; Wright J.; Mutembei H.; Thumbi S.M.\n- Year: 2022\n- DOI: 10.1016/j.habitatint.2021.102476\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69875, sha256=f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household/community domestic piped water distribution, per capita monthly water consumption, water sufficiency (>1,500 L/capita/month), water connection types (in-house connections, shared yard taps, water kiosks), and weekly supply hours across residential itineraries in Nairobi, Kenya.",
+      "c2": "Fails under the active 2026-10-13 narrow rule-type reading, though passes (borderline) under the literal/plain broad wording of Criterion 2 (plain_criterion2_decision = include, narrow decision = exclude). Under the plain broad wording ('legal, administrative, institutional, regulatory or governance factor'), the paper empirically examines the municipal utility's (NCWSC's) administrative water rationing schedules across residential categories (2016-2018, Table 3), municipal land-use/distribution planning categories (1985 vs 2018, Table 2), and utility non-revenue water losses. Under the 2026-10-13 narrow rule-type clarification, however, no rule-type mechanism directly governing service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion/accommodation, enforcement, or utility ownership/regulatory structure) is empirically analysed as an exposure: NCWSC's residential classification is explicitly used and validated as a proxy for neighbourhood socio-economic status alongside satellite-derived settlement age and population count in the regression model; weekly rationing hours reflect operational drought supply management rather than legal/regulatory eligibility or tariff rules; security of tenure is used only in a descriptive cross-tabulation (Table 1A) to validate the socio-economic proxy; static 2015-2018 tariffs and unenforced kiosk retail rates are described only as study-setting context; and governance appears only as a general policy recommendation.",
+      "c3": "Quantitative empirical spatio-temporal study analysing NCWSC utility billing/consumption records (2008-2018 across 2,380 residential itineraries), reservoir production/non-revenue water (2016-2018), rationing schedules (2016-2018), WorldPop population grids, Global Human Settlement Landsat built-up layers, and 2012-2013 Kenya State of the Cities Baseline Survey data (n = 1,137 households) using QGIS spatial queries and negative binomial linear mixed-effects models.",
+      "c4": "Reports monthly per capita piped water consumption (L/capita/month), water sufficiency (>1,500 L/capita/month), weekly hours/days of water supply under rationing programs, primary water connection modes across residential classes, and non-revenue water losses.",
+      "c5": "Clearly identifies the unit of analysis and population (2,380 residential utility itineraries averaging ~700 residents each in Nairobi County, plus 1,137 KSCBS households in 7 sublocations), exposures (residential socio-economic category R1-R4, built-settlement age, itinerary population size, and descriptive weekly rationing hours), outcomes (per capita monthly water consumption and >1,500 L/capita/month sufficiency), and study design (ecological spatio-temporal panel study with negative binomial mixed-effects regression).",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3, Section 1",
+        "quote": "Given the paucity of studies at the city scale of changing inequalities in water access, the objectives of this study are therefore to examine inter-neighbourhood variation in sufficiency of domestic water consumed in relation to neighbourhood type and age, and how these data have changed over time."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5, Section 2.3",
+        "quote": "Since small area statistics at sublocation level are unavailable for either the 2009 or 2019 Kenyan population census, we used the utility’s residential classification to examine neighbourhood inequalities in monthly water consumption over time. To evaluate the classification as a proxy for the socio-economic status of different neighbourhoods"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5, Section 2.1.3",
+        "quote": "For water supplied to shared taps in yards/compounds and to water kiosks, the recommended retail price was $0.49 and $0.19 per 1000 L respectively. However, the water kiosks were privately owned and NCWSC was only able to recommend but not enforce the water rates."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8, Section 3.3",
+        "quote": "Comprehensive data on water rationing was available for the period 2016 to 2018. From these data, low-income areas recorded the highest number of hours receiving water while middle-income areas had the least number of hours."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5, Section 2.3",
+        "quote": "In addition, we carried out a negative binomial linear mixed-effects model (with year as a random effect) to determine if there were differences in the monthly per capita water consumption among the four residential categories over the study period, the yearly population in the itinerary, age of the residential neighbourhood"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9, Section 3.3.1",
+        "quote": "We used the per capita monthly consumption to determine if there were significant differences in water sufficiency among the residential categories and the age of the residential neighbourhoods."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12, Section 5",
+        "quote": "Finally, good governance that aims to minimise water losses and socio-inequalities is required. There should be deliberate prioritisation of water supply and infrastructure development in low-income areas, both in newer and older neighbourhoods, and densely populated areas, reduction in the non-revenue water and making safe water accessible and affordable to all."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Residential neighbourhood socio-economic classification (NCWSC classes R1 high-income, R2 middle-income, R3 middle/low-income, R4 low-income, explicitly used as a proxy for neighbourhood socio-economic status), built-settlement age (five periods from pre-1975 to post-2014), itinerary population count, and descriptive weekly utility water rationing hours (2016-2018)",
+    "outcome": "Monthly per capita domestic piped water consumption (litres/capita/month), water sufficiency (>1,500 L/capita/month), weekly hours/days of rationed water supply, primary water connection mode, and city-wide non-revenue water loss",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "2,380 residential water distribution itineraries (geographical billing units averaging ~700 people each; total Nairobi residential population increasing from ~3.0 million in 2008 to ~4.2 million in 2018) in Nairobi County, Kenya, plus 1,137 household respondents across 7 Nairobi sublocations from the 2012-2013 Kenya State of the Cities Baseline Survey",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 Criterion 2 clarification. While the study empirically examines household/itinerary-level piped water consumption and sufficiency in Nairobi from 2008 to 2018 (satisfying C1, C3, C4, C5, and C6), its analytical exposures are socio-economic and spatial-demographic factors: the utility's residential classification (explicitly validated against household survey data as a proxy for neighbourhood socio-economic status), Landsat-derived neighbourhood settlement age, and itinerary population count, alongside descriptive operational data on weekly water rationing hours and non-revenue water losses. It does not empirically evaluate a rule-type legal, administrative, or regulatory mechanism directly governing service access (such as eligibility screening, documentation or tenure rules, administrative burden, tariff/cost-recovery rules, enforcement, discretion, or utility ownership/regulatory structure); tariffs, unenforced kiosk rates, and tenure are mentioned only as background context or SES proxy validation, and governance is invoked only as a general policy recommendation. Under the broad literal wording of Criterion 2, the descriptive analysis of NCWSC's administrative rationing schedules and municipal residential planning categories would support inclusion (plain_criterion2_decision = include).",
+    "record_id": "R8FA145CC6D69",
+    "study_design": "Ecological spatio-temporal longitudinal panel study (2008-2018) combining utility billing and rationing records, gridded population and satellite settlement layers, household survey cross-tabulation, and negative binomial linear mixed-effects regression"
+  }
+}

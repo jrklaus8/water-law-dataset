@@ -1,0 +1,286 @@
+{
+  "record_id": "RB92B79E3CA1D",
+  "order": 39,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1134f1d6067e05d763f26a1cc18016a5bb192464a12345330ebcdd625cd495c5",
+  "input_text_sha256": "8c260506f0435e76b55bf83745fe6f55a6b0ebb0637d0fb4af199ffc0a8439a9",
+  "prompt_sha256": "e3edc6cb76892912023efdfd31e332edbec841515afa7060db507a63f72afb1c",
+  "started_at": "2026-11-20T04:41:21.939018+00:00",
+  "completed_at": "2026-11-20T04:45:12.137349+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB92B79E3CA1D\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB92B79E3CA1D\n- Title: Sanitation potpourri: Criteria for planning mix of sanitation systems for citywide inclusive sanitation\n- Authors: Mitra A.; Narayan A.S.; Lüthi C.\n- Year: 2022\n- DOI: 10.1177/23998083221091568\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 8c260506f0435e76b55bf83745fe6f55a6b0ebb0637d0fb4af199ffc0a8439a9) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70866, sha256=8c260506f0435e76b55bf83745fe6f55a6b0ebb0637d0fb4af199ffc0a8439a9]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Broadly addresses urban sanitation systems (sewered sewerage and non-sewered faecal sludge management) under the Citywide Inclusive Sanitation (CWIS) framework in Chennai, reporting citywide safely managed sanitation/excreta shares and sewer connection expansion as context, though the primary analytical focus is municipal multi-criteria technology selection at the ward level.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the literal/plain broad wording of Criterion 2, the study examines institutional and governance factors in Chennai's sanitation sector via a Social Network Analysis of municipal and state agencies (GCC, CMWSSB, TNSCB), expert-identified governance barriers to non-sewered sanitation uptake (poor inter-agency coordination, lack of political will, weak monitoring/accountability and effluent quality enforcement, systemic corruption, and a 2006 building mandate for decentralized treatment in >20,000 sqm residential buildings), and institutional planning criteria (level of decentralised management, O&M demands, user awareness); however, even under the plain wording of Criterion 2, the overall study decision remains exclude because Criteria 4 and 5 fail (no empirical household/community service-access outcome is analysed in relation to those factors). Under the active narrow 2026-10-13 rule-type reading, Criterion 2 is 'no': the study develops a multi-criteria technology-planning catalogue and maps broad stakeholder networks and macro-governance/implementation barriers rather than empirically examining a rule-type legal, administrative, or regulatory mechanism directly governing household or community service access. Passing descriptive mentions of CMWSSB's 'Azhaithal Inaippu' 10-instalment sewer connection fee scheme (p. 6) and the Manual Scavenging Act 2011 debate over container-based sanitation (p. 5) are unanalysed background context.",
+      "c3": "Empirical mixed-methods single-city case study (2020-2021) combining 13 remote key-informant interviews with 11 sanitation experts, Social Network Analysis of 35 stakeholders using a Power-Interest Matrix and Gephi, a desk- and interview-based update of Chennai's Faecal Waste Flow Diagram (SFD), and an illustrative multi-criteria scoring application to Sholinganallur ward.",
+      "c4": "No empirical household or community service-access outcome is evaluated in relation to an exposure. The study's analytical outputs are expert importance weights (1-10 scale) for 14 technology-planning criteria, theoretical ward-level technology feasibility scores (95.5 for sewered vs. 80.1 for non-sewered systems in Sholinganallur, where actual household sanitation access is unavailable and assumed), stakeholder network centrality, and counts of perceived barriers to municipal adoption of non-sewered technology; the SFD update only provides descriptive citywide background on safely vs. unsafely managed faecal waste flows.",
+      "c5": "While the mixed-methods case-study design is identifiable, the paper does not measure an empirical population-exposure-outcome relationship linking a legal/governance mechanism to household or community sanitation access, and ward-level sanitation coverage in the Sholinganallur test case is explicitly unmeasured and assumed.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c3",
+        "page": "PDF Page 1 of 21",
+        "quote": "The mega-city of Chennai is chosen as a case study, and mixed methods including a Faecal Waste Flow diagram (SFD), Social Network Analysis (SNA) and interviews are applied. This study then presents a set of 14 contextually relevant criteria for the implementation of sewered and non-sewered technologies in the city."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 3 of 21",
+        "quote": "Therefore, this paper aims to address this gap through the formulation of a criteria catalogue highlighting the 14 relevant criteria as part of a decision-aiding tool to implement a mix of technologies in a mega-city of India."
+      },
+      {
+        "criterion": "c1_c2",
+        "page": "PDF Page 6 of 21",
+        "quote": "Similarly, an innovative scheme ‘Azhaithal Inaippu’, that is, ‘Call for Connections’, was started to connect the last mile of residents in areas where sewers exist, and so far, 90,000 connections were made through this scheme. Additionally, the scheme allows the residents to pay the connection fee in 10 instalments in 5 years following the connection, thereby making it affordable."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 21",
+        "quote": "From Figure 1, it can be seen that the most relevant stakeholders in the sanitation sector of Chennai are the GCC (Greater Chennai Corporation), CMWSSB (Chennai Metro Water Supply and Sewage Board) and TNSCB (Tamil Nadu Slum Clearance Board)."
+      },
+      {
+        "criterion": "c4_c5",
+        "page": "PDF Page 8 of 21",
+        "quote": "This catalogue only presents the factors to consider when making the decision on the type of sanitation system for the given area."
+      },
+      {
+        "criterion": "c4_c5",
+        "page": "PDF Page 9 of 21",
+        "quote": "A ward-level SFD or other documentation presenting the sanitation landscape of Sholinganallur is presently unavailable in the literature; thus, the study assumes a fair majority of inhabitants are presently availing sewered technologies to meet their sanitation needs."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "14 physical, technical, institutional, and financial planning criteria for selecting sewered versus non-sewered sanitation technologies, alongside stakeholder network structure and general political/institutional drivers and barriers to municipal adoption of non-sewered sanitation",
+    "outcome": "Expert-elicited importance weights (1-10 scale) for 14 sanitation planning criteria, theoretical ward-level technology feasibility scores (95.5 for sewered vs. 80.1 for non-sewered systems in Sholinganallur), stakeholder network centrality, perceived drivers/barriers to implementing non-sewered technologies, and descriptive citywide safely managed faecal waste share (65% in 2021)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "City of Chennai, Tamil Nadu, India (citywide SFD update; Social Network Analysis of 35 sanitation sector stakeholders; 13 remote key-informant interviews with 11 state, city, international organization, and academic experts; illustrative ward-level test in Sholinganallur ward, population 698,544)",
+    "rationale": "Excluded (E03 - Wrong exposure; also fails C4/C5 on access outcome). This mixed-methods study formulates and weights a 14-criteria decision-aiding catalogue (physical, technical, institutional, and financial indicators) for municipal planners to select between sewered and non-sewered sanitation technologies in Chennai, supplemented by a citywide Faecal Waste Flow Diagram (SFD) update, stakeholder Social Network Analysis, and expert-identified drivers/barriers to scaling non-sewered sanitation. Under the 2026-10-13 narrow rule-type reading of Criterion 2, it does not empirically examine any legal, administrative, or regulatory rule-type mechanism governing household or community service access (a two-sentence background mention of CMWSSB's 'Azhaithal Inaippu' 10-instalment sewer connection fee scheme on p. 6 is purely descriptive context). Even under the plain wording of Criterion 2—which the study's institutional stakeholder mapping and governance barrier analysis would satisfy—the paper remains excluded because its empirical outcomes are planning-criteria weights, stakeholder centrality, municipal technology-adoption barriers, and theoretical ward technology suitability scores (using assumed ward coverage) rather than household or community service-access outcomes.",
+    "record_id": "RB92B79E3CA1D",
+    "study_design": "Mixed-methods single-city case study combining a desk- and interview-based Faecal Waste Flow Diagram (SFD) update, Social Network Analysis (SNA), 13 key-informant interviews with 11 sanitation experts, and illustrative ward-level multi-criteria scoring"
+  }
+}

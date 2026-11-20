@@ -1,0 +1,286 @@
+{
+  "record_id": "R9B1CE08B1B44",
+  "order": 34,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a61b84a9337c28c3a94cb8ef5041fe72903f658f37026e2296a6dad37a32f060",
+  "input_text_sha256": "481b6e2df34d43cdb7acca6c55c071e008aac519ae408b0af2bee3da06bd2b62",
+  "prompt_sha256": "134fd41ec6b86f210ad2e2c30e8dc651a7b3061ad786d94ccde0577989c4dd0e",
+  "started_at": "2026-11-20T04:41:21.916317+00:00",
+  "completed_at": "2026-11-20T04:44:09.442702+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R9B1CE08B1B44\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R9B1CE08B1B44\n- Title: Drinking Water in the Southern Extreme of Gran Chaco: The Consolidation of a Hydrosocial Palimpsest, 1930-1960; [Agua Potable en el Extremo Sur del Gran Chaco la Consolidacion de un Palimpsesto Hidrosocial, 1930-1960]\n- Authors: Garnero G.\n- Year: 2024\n- DOI: 10.32991/2237-2717.2024v14i2.p162-201\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 481b6e2df34d43cdb7acca6c55c071e008aac519ae408b0af2bee3da06bd2b62) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=116156, sha256=481b6e2df34d43cdb7acca6c55c071e008aac519ae408b0af2bee3da06bd2b62]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Argentina",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines community/settlement and household drinking-water service access (piped drinking-water networks, public taps, shallow bucket wells, cisterns and irrigation ditches) across urban towns and rural lowlands in the southern Gran Chaco (1930-1960).",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type reading (though borderline in framing as an environmental/hydrosocial history). Plain wording: clearly satisfied by examining federal, provincial and municipal water legislation, public utilities (OSN and provincial DGH) and inter-jurisdictional water governance. Narrow 2026-10-13 rule-type reading: satisfied because the paper concretely analyzes rule-type mechanisms directly governing settlement-level drinking-water access, including (1) statutory population-size eligibility screening under National Law No. 10.988/10.998 (>3,000 inhabitants plus hygiene exceptions, under which Villa Dolores qualified whereas neighboring San Pedro applied despite failing the population requirement and remained unserved), (2) tariff and cost-recovery reform under National Law No. 12.140 (1935) reducing water tariffs so financially constrained municipalities could join OSN without prohibitive tariffs, (3) utility ownership structure and expropriation (provincial expropriation of private waterworks in Mina Clavero in 1929 and transfer of municipal systems to federal public enterprise OSN; provincial DGH regulation under Cordoba Law No. 3732 and Decree No. 26.819), and (4) intergovernmental contracting/administrative rules (bilateral convenios requiring provincial legislative ratification, shared land expropriation resolved by municipal referendum, and public-domain water allocation rules overriding municipal monopoly claims against Cura Brochero).",
+      "c3": "Qualitative archival/historical empirical case study drawing on primary documentary sources (municipal archives of Villa Dolores and Mina Clavero council minutes, Cordoba legislative session diaries and provincial decrees, OSN engineering/water-quality survey reports across 1,200 localities, and 1914, 1947 and 1960 national census data).",
+      "c4": "Reports settlement- and community-level outcomes on piped drinking-water service availability/connection (reaching nearly 80% of the regional urban population by 1960), service continuity/reliability (multi-hour and multi-day supply cuts, pressure drops, pump failures, loss of downstream seasonal flows after dam construction), potability/water quality, and spatial exclusion of smaller lowland settlements (e.g., San Pedro, Candelaria, Ulapes, Conlara, Lafinur).",
+      "c5": "Population and unit of analysis (municipalities/settlements and residents in the southern Gran Chaco basins across Cordoba, San Luis and La Rioja), exposure (federal/provincial public-utility ownership, statutory population eligibility thresholds, tariff-reduction legislation and intergovernmental convenios), outcome (piped water infrastructure availability, service continuity, quality and inter-settlement exclusion), and study design (archival historical case study) are all clearly identifiable.",
+      "c6": "Full text is in Spanish with an English title and abstract (PDF Page 40). Per Criterion 10, Spanish is eligible because translation from the provided full text is straightforward and feasible and the study is substantively relevant to legal/institutional water-access mechanisms (translation method and translator to be logged in extraction_note at extraction)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 40 of 40",
+        "quote": "Although incomplete, this process heightened conflicts and notable inequalities between benefited areas and those that barely experienced changes in access to drinking water."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 40",
+        "quote": "el congreso de la Nación sancionó la ley Nº 10.988 por la que autorizaba el estudio y construcción de obras de aguas corrientes para todos los pueblos de más de tres mil habitantes."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 40",
+        "quote": "En 1935, dados los elevados gastos que supuso para la economía de las localidades lo estipulado por la ley Nº 10.988, se sancionó la ley Nº 12.140 que permitía en las localidades una rebaja considerable en las tarifas aprobadas para el cobro de los servicios de agua."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 25 of 40",
+        "quote": "En la localidad cercana de San Pedro, la noticia sobre el servicio para Villa Dolores llevó al municipio a solicitar la inclusión en el régimen nacional de Obras Sanitarias de la Nación (OSN), a pesar de no cumplir con los requisitos de población establecidos por las leyes Nº10.998 y Nº12.140."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 40",
+        "quote": "Mediante un análisis historiográfico de fuentes primarias y secundarias, que incluye documentos oficiales, registros demográficos y leyes pertinentes, investigaciones científicas y cartografía se contribuye al entendimiento profundo de la historia ambiental del Gran Chaco."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 32 of 40",
+        "quote": "El resultado al finalizar el período fue que casi el 80% de la población urbana del sistema gozaba de un suministro de aguas corrientes obtenidas enteramente de las aguas superficiales del río de Los Sauces y arroyos de la costa."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "State utility ownership and legal-regulatory regime governing drinking-water provision: federal Obras Sanitarias de la Nación (OSN) takeover and investment under Law No. 10.988/10.998 (>3,000-inhabitant settlement eligibility threshold and municipal-provincial-federal convenios) and Law No. 12.140 (tariff/cost-recovery reduction), provincial hydraulic directorates (Córdoba DGH under Law No. 3732 and Decree No. 26.819), expropriation of private waterworks, and public-good water-rights rulings.",
+    "outcome": "Settlement/community drinking-water service availability and piped network coverage (aguas corrientes vs. bucket wells, cisterns and irrigation ditches), service continuity (cuts and pressure drops), water quality/potability, and exclusion of smaller lowland towns (e.g., San Pedro, Candelaria, Ulapes, Conlara, Lafinur).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Urban municipalities and rural settlements (unit of analysis: settlement/municipality) across the Conlara, Los Sauces, Quines and western Sierra Grande basins in the southern Gran Chaco (provinces of Córdoba, San Luis and La Rioja, Argentina), 1930-1960.",
+    "rationale": "Archival environmental-history case study examining drinking-water access across settlements in Argentina's southern Gran Chaco (1930-1960). Although framed broadly around hydrosocial modernization, it empirically analyzes concrete rule-type legal, ownership, eligibility and tariff mechanisms governing service access at the settlement/municipality level — specifically statutory population-size eligibility cutoffs (>3,000 inhabitants under Law No. 10.988/10.998, excluding smaller applicants such as San Pedro), tariff-reduction rules (Law No. 12.140 overcoming prohibitive municipal cost-recovery tariffs), expropriation of private waterworks, municipal-to-federal utility transfers to OSN via legislatively ratified convenios, and public-domain water-allocation rulings — alongside primary archival and census evidence on piped water coverage (~80% of regional urban population) and persistent rural/lowland exclusion. Eligible in Spanish under Criterion 10 as full-text translation is feasible.",
+    "record_id": "R9B1CE08B1B44",
+    "study_design": "Qualitative archival historical case study (environmental/hydrosocial history using primary municipal, legislative, executive, technical and census records)"
+  }
+}

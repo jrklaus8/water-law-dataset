@@ -1,0 +1,286 @@
+{
+  "record_id": "RF6A57AF91895",
+  "order": 123,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "3029087ad7ed683f5a0cd276162752ccc5c20acfcf4cf10945cf22c2b0578472",
+  "input_text_sha256": "8c4dccd0f95414822f987cd001a3f2cc2552c8876f274062d78dc742c1c9ea15",
+  "prompt_sha256": "01183117b9d6ba58bd085617dd0f9c44079bc67a636cae2e23cfd9d126f04809",
+  "started_at": "2026-11-20T05:09:04.099114+00:00",
+  "completed_at": "2026-11-20T05:11:12.957275+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RF6A57AF91895\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RF6A57AF91895\n- Title: Community-based water resource management in North-west Cameroon: the role of potable water supply in community development\n- Authors: Tantoh, HB; Simatele, D\n- Year: 2017\n- DOI: 10.1080/03736245.2016.1208589\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 8c4dccd0f95414822f987cd001a3f2cc2552c8876f274062d78dc742c1c9ea15) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69808, sha256=8c4dccd0f95414822f987cd001a3f2cc2552c8876f274062d78dc742c1c9ea15]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Cameroon",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural potable water supply and community-based pipe-borne water schemes across six rural communities in North-west Cameroon.",
+      "c2": "Passes the plain wording of Criterion 2, which would include broad institutional or governance factors (community-based water resource management [CBWRM], CBOs, Village Development Associations, Water Management Committees, and state-community decentralization), so plain_criterion2_decision is 'include'. However, it fails the narrow 2026-10-13 rule-type reading of Criterion 2: the paper focuses on generic participatory project delivery, grassroots solidarity in mobilizing self-help community development projects, and broad macro-governance/decentralization rhetoric rather than empirically analyzing a rule-type mechanism directly governing service access (such as eligibility rules, tenure/documentation requirements, administrative burden, enforcement, regulatory structure, or tariff/cost-recovery rules as determinants of household access, affordability, or exclusion). Passing mentions of the 1998 water law (via secondary citation) and flat capital levies/maintenance fees serve only as unanalysed background or illustrations of community participation in building village schemes.",
+      "c3": "Combines a narrative literature review (61 selected articles/reports on CBNRM in sub-Saharan Africa) with primary qualitative empirical data from a March 2015 pilot study in six rural communities (interviews with 7 national ministry officials and 6 regional officials, preliminary discussions with 5 community leaders, informal conversations with 10 randomly selected households, and focus group discussions with women and youth).",
+      "c4": "Reports qualitative community- and household-level accounts of water shortages, long walking distances to poor-quality water sources, and the establishment/realization of community pipe-borne water projects (alongside secondary WHO/UNICEF JMP rural access figures), although the main analytical focus is community participation and community development.",
+      "c5": "Population and unit of analysis (six rural communities—Tugi, Zang-Tabi, Baicham, Muloin, Njimkang, and Ngarum—in Mbengwi, Njinikom, and Ndu municipalities, with official, leader, household, and focus-group respondents), exposure (participatory CBWRM through CBOs, VDAs, and WMCs), qualitative outcomes, and qualitative pilot case-study design are identifiable.",
+      "c6": "English language full text."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 12",
+        "quote": "It is within this context that CBWRM has been identified as one of the approaches through which sustainable access and use of potable water resources and CD in rural communities of North-western Cameroon is promoted."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "This paper examines the role of community-based water resource management in community development in Cameroon."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14",
+        "quote": "In addition, women were levied 500 FCFA (US1$) and men 1000 FCFA (US2$) for the realization of the water systems while maintenance fees were based on the gravity of the problem in the various localities."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "A pilot survey was also conducted between the 2 of March 2015 to the 16 March, 2015 in Mbengwi, Njinikom and Ndu Municipalities (see Figure 1). From these three municipalities, two rural communities were randomly selected giving a total of six study sites: Tugi, Zang-Tabi, Baicham, Muloin, Njimkang and Ngarum, respectively."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6",
+        "quote": "The purpose of these interviews was to assess the institutional and policy frameworks that exist in the management of potable water in Cameroon and how this affects CD. Finally, preliminary discussions with five community leaders identified through key informants were conducted. In addition to these discussions, informal conversations with 10 households who were randomly selected were carried out with the aim of having an idea of how the community relate to water issues and CD."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 14",
+        "quote": "Because of the long distances that we have to walk as women to get water which is even not of good quality, we have now formed a woman’s community group with the aim of helping members of the community to realise the village water project."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Community-based water resource management (CBWRM) and grassroots participation in self-help water project mobilization via CBOs, Village Development Associations (VDAs), and Water Management Committees (WMCs)",
+    "outcome": "Community development, grassroots participation, and qualitative accounts of village water project realization, water shortages, and walking distances to water sources",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Six rural communities (Tugi, Zang-Tabi, Baicham, Muloin, Njimkang, and Ngarum) across Mbengwi, Njinikom, and Ndu municipalities in North-west Cameroon; pilot sample of 7 national ministry officials, 6 regional officials, 5 community leaders, 10 randomly selected households, and focus group participants (women and youth)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 Criterion 2 clarification. While the paper discusses rural potable water supply in North-west Cameroon using a literature review and a two-week qualitative pilot study, its exposure is generic participatory community-based natural resource management (CBNRM/CBWRM), grassroots self-help project mobilization, and broad decentralization/community-development background rather than a rule-type legal, administrative, regulatory, or tariff mechanism directly governing service access. Brief references to the 1998 water law and community construction levies/maintenance fees are descriptive background for community solidarity rather than empirically analyzed rules governing household water access, affordability, or exclusion. Under the broader plain wording of Criterion 2, it would be included as a qualitative empirical study of community water governance.",
+    "record_id": "RF6A57AF91895",
+    "study_design": "Literature review combined with a qualitative participatory pilot study (key-informant interviews, informal household conversations, and focus group discussions)"
+  }
+}

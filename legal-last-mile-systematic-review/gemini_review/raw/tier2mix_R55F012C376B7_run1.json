@@ -1,0 +1,286 @@
+{
+  "record_id": "R55F012C376B7",
+  "order": 75,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f6a325ca2fdac8f94896823d5085105888bf6570d0fc33a3674e0474cd0855d5",
+  "input_text_sha256": "8841f511efd9a6782f68fd1a73d82b27a1e970956897c94531c732dadc80b9b5",
+  "prompt_sha256": "6704e9ad44588e3c1e9c5bc453f48e27303afae2e412e8373ed3cbfcecee2bfa",
+  "started_at": "2026-11-20T04:56:05.864189+00:00",
+  "completed_at": "2026-11-20T04:57:20.922903+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R55F012C376B7\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R55F012C376B7\n- Title: Perform or wither: role of water users' associations in municipalities of Nepal\n- Authors: Singh, Sreoshi; Shrestha, Krity; Hamal, Menaka; Anjal Prakash\n- Year: 2020\n- DOI: 10.2166/wp.2019.051\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 8841f511efd9a6782f68fd1a73d82b27a1e970956897c94531c732dadc80b9b5) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63940, sha256=8841f511efd9a6782f68fd1a73d82b27a1e970956897c94531c732dadc80b9b5]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Nepal",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water service access across core urban and peri-urban wards in two municipalities of Nepal (Tansen and Damauli).",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, the study analyses the legal, institutional, and governance performance of community-managed Drinking Water Users' Associations (DWUAs) and water cooperatives under Nepal's Water Resource Act 1992, Drinking Water Regulation 1998, and Local Self Governance Act 1999. Under the narrow 2026-10-13 clarification, while much of the narrative addresses general WUA management, source maintenance, and corruption in pump repairs, the paper also empirically examines specific rule-type mechanisms directly governing household service access: (1) utility ownership and regulatory structure (autonomous statutory DWUAs/cooperatives operating under their own constitutions independently of municipal regulatory scrutiny); (2) tariff and connection-charge rules without pro-poor subsidies (NPR 50,000 / USD 440 upfront fee for a new tap connection, forcing agrarian/poor households to pool funds for shared taps, plus volumetric tariff hikes from NPR 20 to NPR 80 per 6,000 litres); (3) administrative rationing, moratoria on new tap applications (no new taps registered in Tansen since 1994; authorities refusing applications), and 11-year waiting queues in Bartung WUA alongside discretionary/corrupt queue-jumping for applicants paying double (NPR 100,000 / USD 880); and (4) registration rules requiring taps to be registered in male counterparts' names, barring women from association membership.",
+      "c3": "Contains primary mixed-methods empirical evidence from a 2016-17 survey of 350 households (142 in Tansen and 208 in Damauli), supplemented by focus group discussions and key informant discussions.",
+      "c4": "Reports multiple service-access outcomes at the household and municipal levels: access to municipal piped water supply (92.4% in Tansen vs 60.2% in Damauli), private vs shared tap connections, connection wait times (up to 11 years), supply duration and seasonal continuity, per capita consumption (41.42 lpcd in Tansen vs 65.9 lpcd in Damauli), affordability, and reliance on springs or private water tankers (with rented and peri-urban households excluded from tanker water by affordability constraints).",
+      "c5": "Clearly identifies the population and units of analysis (households and DWUAs/cooperatives in Tansen and Damauli municipalities, n = 350 surveyed households), exposure (DWUA/cooperative governance, regulatory autonomy, connection fees, application moratoria/queues, tariffs, and tap registration rules), outcomes, and study design (comparative mixed-methods case study).",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 17",
+        "quote": "This paper focuses on the role of water user groups in providing access to drinking water in two urban locations in Nepal."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 17",
+        "quote": "They are regulated by the Drinking Water Regulation 1998 which defines a water supplier as a WUA and/or licensee holding a licence for the operation of a water supply system."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 17",
+        "quote": "In households of the Bartung committee, for example, application for a new tap connection (costing NPR 50,000 (USD 440)) requires a long wait time to get one"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 13 of 17",
+        "quote": "Women, who are solely responsible for collecting and managing water in most of the households, are barred from the associations, as the tap is generally registered in the name of their male counterpart."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 17",
+        "quote": "Household level data were collected from 350 households across the two towns (208 in Damauli and 142 in Tansen)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 17",
+        "quote": "Piped water supply from the municipality is available only to 60% of surveyed households in the core urban wards of Damauli with the duration of supply being around one and half hours in almost 63% of households (see Tables 3 and 4)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Utility ownership, regulatory structure, and access rules of community-managed Drinking Water Users' Associations (DWUAs) and water cooperatives (autonomous statutory governance under the Drinking Water Regulation 1998 without municipal scrutiny, moratoria on new tap applications, NPR 50,000 connection fees without subsidies, 11-year waiting queues versus NPR 100,000 expedited connection payments, volumetric tariff increases, and male-counterpart tap registration rules)",
+    "outcome": "Household access to municipal piped drinking water and private vs shared tap connections, waiting time for connection, supply duration and seasonal continuity, per capita water consumption (lpcd), affordability, and coping reliance on springs or private tankers",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Urban and peri-urban households and Drinking Water Users' Associations/cooperatives in Tansen and Damauli (Vyas) municipalities, Nepal; primary survey of 350 households (142 in Tansen and 208 in Damauli) plus focus group discussions and key informant interviews",
+    "rationale": "This comparative mixed-methods empirical study of 350 households and qualitative focus group discussions in two Nepalese municipalities (Tansen and Damauli) meets all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Beyond general operational management, it directly examines utility ownership and regulatory structure (statutory DWUAs/cooperatives operating autonomously without municipal oversight) alongside concrete rule-type access barriers: freezes on new tap applications, high upfront connection charges (NPR 50,000) without pro-poor subsidies forcing shared-tap pooling, 11-year connection queues bypassed by informal double payments (NPR 100,000), tariff increases, and male-name tap registration rules excluding women, linked to empirical outcomes on piped connection access, supply duration, continuity, consumption (lpcd), and affordability.",
+    "record_id": "R55F012C376B7",
+    "study_design": "Comparative mixed-methods case study (cross-sectional survey of 350 households combined with focus group discussions and key informant discussions)"
+  }
+}

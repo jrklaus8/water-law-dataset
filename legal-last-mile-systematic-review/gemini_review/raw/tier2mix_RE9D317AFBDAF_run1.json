@@ -1,0 +1,281 @@
+{
+  "record_id": "RE9D317AFBDAF",
+  "order": 51,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "06681aa4fe4ff7b15c34ae19d88ca8582ecc730f505191b13570c5cf51bb2ddc",
+  "input_text_sha256": "a2c4bb56a8b93cb70f39b646b58397a2aaa02c9a052c38648ab7ab2b5c950fea",
+  "prompt_sha256": "c6f6e18036f6d068cc390d4d0cc937fc9b79aeddabb42e0dbc6af952aa1afc59",
+  "started_at": "2026-11-20T04:49:00.948500+00:00",
+  "completed_at": "2026-11-20T04:50:53.404609+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RE9D317AFBDAF\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RE9D317AFBDAF\n- Title: Model of Sustainable Drinking Water Governance at Tirta Kualo Regional Drinking Water Corporate in Tanjungbalai City, Indonesia\n- Authors: Lubis R.P.; Subhilhar; Harahap R.H.; Zuska F.\n- Year: 2022\n- DOI: 10.18280/ijsdp.170809\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: a2c4bb56a8b93cb70f39b646b58397a2aaa02c9a052c38648ab7ab2b5c950fea) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=25005, sha256=a2c4bb56a8b93cb70f39b646b58397a2aaa02c9a052c38648ab7ab2b5c950fea]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines municipal piped drinking water supply and household service coverage provided by PDAM Tirta Kualo across Tanjungbalai City.",
+      "c2": "Passes the plain/literal broad wording of Criterion 2 because it examines internal utility administration and 'drinking water supply governance' across PDAM Tirta Kualo's five working units as well as alignment with the Tanjungbalai City spatial plan (2013-2033). However, it fails the narrow 2026-10-13 rule-type mechanism reading of Criterion 2: 'governance' here consists of generic operational, technical, and human-resource issues (leaking pipes, damaged or missing water meters, lack of laboratory testing, low HR capacity, unpaid staff salaries), hydrological supply-demand calculations, and spatial land-use planning. Although Table 2 briefly notes in single diagnostic sentences that the utility is not at full cost recovery and has undetected illegal connections, the paper does not examine any tariff or cost-recovery rule, eligibility or tenure requirement, administrative burden, enforcement policy, or regulatory/ownership rule governing household service access.",
+      "c3": "Reports descriptive empirical data from PDAM Tirta Kualo administrative records (district-level customer connections and service coverage in Table 1; water meter conditions across 15,115 connections in Table 3) and qualitative interview findings from the utility's five working units (Table 2), alongside hydrological capacity and demand projections.",
+      "c4": "Reports district-level and citywide piped drinking water connection coverage (23,320 house connections serving 116,600 of 169,367 inhabitants, or 68.86% in Table 1; 71.37% cited in Section 1), water loss rate (36.86%), and projected water supply demand.",
+      "c5": "At the utility and district case-study level, the population/unit of analysis (PDAM Tirta Kualo and its 5 coverage areas / 6 districts in Tanjungbalai City), broad operational governance conditions, descriptive connection coverage outcomes, and mixed-methods descriptive case-study design are identifiable. Note that Section 2.1 mentions household heads who have been customers for over 10 years as respondents, but neither household sample sizes nor household survey results are reported, and no rule-type legal/governance exposure is linked to access outcomes.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "The analysis shows that based on the area of Tanjungbalai city around 60.62 km2 with population 169.367 inhabitants and coverage services of PDAM Tirta Kualo in 2019 was only 68.86%."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3",
+        "quote": "The governance of sustainable drinking water supply in PDAM Tirta Kualo using governance principle based on the problems that exist in each working unit as presented in Table 2 and Table 3."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5",
+        "quote": "The sustainable water supply governance model designed to build improvement in the quality of infrastructures and human resources such as upgrading human resources, installing water meter to all customers, adding new water treatment plans in services area 5 and build free drinking water installation in open space area."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3",
+        "quote": "The respondence of the research are head of the family that already costumers for more than 10 years in all 5 coverage services areas of Tirta Kualo."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3",
+        "quote": "The total population in 2017 was 169.367 people, while the number of customers or house connections in 2017 was 23.320 customers."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Internal utility operational/management conditions across 5 working units of PDAM Tirta Kualo (infrastructure maintenance, water meter condition, human resource capacity, SOP compliance) and municipal spatial planning (2013-2033); no rule-type legal, regulatory, or administrative mechanism governing access is examined",
+    "outcome": "Piped drinking water service coverage / house connections across 5 service areas (68.86% citywide in Table 1; 71.37% in text; 23,320 customer connections), water loss rate (36.86%), and projected water demand (liters/second)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "PDAM Tirta Kualo regional drinking water corporate and its 5 service coverage areas (6 districts; 169,367 inhabitants and 23,320 customer connections) in Tanjungbalai City, Indonesia; qualitative interviews with 5 utility working units (sample size not reported) and household customer respondents (>10 years tenure) mentioned in Methods (sample size and results not reported)",
+    "rationale": "Excluded under E03 (wrong exposure) per the 2026-10-13 Criterion 2 clarification. Although titled as a study of 'sustainable drinking water governance' and reporting municipal piped water coverage (68.86%), the empirical analysis consists of raw water capacity and population demand projections, a descriptive inventory of internal operational/technical/HR problems across PDAM Tirta Kualo's five working units (old pipes, broken/missing meters, low HR quality, lack of lab testing), and a normative upgrade model aligned with the municipal spatial plan. It does not examine any rule-type legal, administrative, or regulatory mechanism (such as eligibility rules, tenure/documentation requirements, administrative burdens, tariff/cost-recovery rules, enforcement, or regulatory/ownership structure) governing household service access. Under the plain broad wording of Criterion 2, it would be included as a descriptive mixed-methods case study of utility governance and service coverage.",
+    "record_id": "RE9D317AFBDAF",
+    "study_design": "Mixed-methods descriptive case study (hydrological/demand projection, secondary utility administrative statistics, and interviews with utility working units)"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "record_id": "R29856BE0CB68",
+  "order": 31,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0376b3496e8b81234c9a64cea9978527a25783e08b48ce24bd696d34a791a44a",
+  "input_text_sha256": "7c1ff1bff36d460e501432eea57ef3c0dd07c136390c223eb5896d76713eff55",
+  "prompt_sha256": "e4c29f2dc76c0afc9f27cade6375eca16691c44ff6510569dd965b7d39e82fbc",
+  "started_at": "2026-11-20T04:41:21.909692+00:00",
+  "completed_at": "2026-11-20T04:43:14.796097+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R29856BE0CB68\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R29856BE0CB68\n- Title: Willingness to Pay and Willingness to Accept Compensation for Changes in Urban Water Customer Service Standards\n- Authors: Hatton MacDonald D.; Morrison M.D.; Barnes M.B.\n- Year: 2010\n- DOI: 10.1007/s11269-010-9599-7\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7c1ff1bff36d460e501432eea57ef3c0dd07c136390c223eb5896d76713eff55) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=42673, sha256=7c1ff1bff36d460e501432eea57ef3c0dd07c136390c223eb5896d76713eff55]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Australia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household potable water customer service standards focusing on supply interruptions and reliability attributes (duration and frequency of outages, notification, and temporary alternative water supply) in Adelaide, Australia.",
+      "c2": "Fails the narrow 2026-10-13 rule-type reading of Criterion 2: the paper does not empirically examine an enacted legal, administrative, regulatory, or tariff rule governing household water access; regulatory General Service Level Agreements and consumer vs. utility property rights are discussed only as conceptual background motivating a methodological comparison of willingness-to-pay (WTP) and willingness-to-accept-compensation (WTAC) elicitation formats, and the authors explicitly note they did not examine WTP for Guaranteed Service Levels. Under the plain broad wording of Criterion 2, even if the hypothetical customer-service-standard property-rights and bill-rebate vs. rate-increase treatments were viewed as touching on a regulatory or institutional factor (borderline plain=yes/unclear, narrow=no), the full-text decision under the plain wording remains exclude because Criterion 4 is also not satisfied.",
+      "c3": "Contains primary quantitative empirical data from a drop-off/pick-up stated-preference discrete choice survey of 669 households in Adelaide, estimated using multinomial probit models.",
+      "c4": "Does not report an empirical outcome of actual water access, connection, availability, reliability, quantity, affordability, or exclusion. Reliability (interruption duration and frequency) and bill rebates/increases are exogenously assigned hypothetical choice-card attributes, while the measured outcomes are stated choice shares and derived implicit marginal prices (WTP and WTAC valuation estimates in dollars). Descriptive baseline experience of prior supply interruptions (61%) is reported only as a sample summary statistic with no exposure analysis.",
+      "c5": "Population and unit of analysis (households in Adelaide, N=669 respondents across 1,321 WTAC and 1,111 WTP choice observations), experimental exposure/attributes, stated-preference valuation outcomes, and discrete choice experiment study design are all clearly reported.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 14",
+        "quote": "In this paper, we explore the use of choice modelling for obtaining implicit prices for attributes associated with changes in the reliability of household water services."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 14",
+        "quote": "In this paper, we use choice modelling to derive estimates of willingness to accept compensation for declines in service level quality as well as estimates of willingness to pay for improvements in service level quality."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 14",
+        "quote": "While this study has estimated the community’s willingness to accept compensation for declines in service levels, it has not examined the community’s willingness to pay for Guaranteed Service Levels."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 14",
+        "quote": "A total of 835 randomly drawn households from the sampling frame were contacted to fill out the survey and 669 were completed in total."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 14",
+        "quote": "One of the purposes of this paper is to estimate willingness to accept compensation and willingness to pay for variations in customer service standards. In this case we are interested in the point estimates or the implicit price for the various attributes of service that enter the multinomial probit models."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Between-subject stated-preference survey framing (willingness to accept compensation via once-off water bill rebates vs. willingness to pay via annual water bill increases) and experimentally varied hypothetical service-interruption attributes (duration, frequency, notification communication, alternative water supply, and rebate/rate-increase amount)",
+    "outcome": "Stated choice probabilities across hypothetical service-standard packages and derived implicit marginal prices (willingness to pay and willingness to accept compensation in dollars) for water supply interruption attributes",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Urban households in Adelaide, South Australia, sampled from streets with three or more water supply interruptions in a two-year period (835 households contacted; 669 completed surveys: 332 willingness-to-accept compensation surveys and 337 willingness-to-pay surveys)",
+    "rationale": "Excluded (E04, Wrong outcome; also fails Criterion 2 under the 2026-10-13 narrow rule-type reading). This is an environmental/resource economics non-market valuation study using a stated-preference discrete choice experiment in Adelaide, Australia, to compare household willingness to pay (WTP) and willingness to accept compensation (WTAC) for hypothetical changes in urban water supply interruption attributes. Service reliability (outage duration and frequency) and bill rebates/rate increases are exogenously varied hypothetical attributes on survey choice cards rather than observed outcomes or enacted legal/regulatory interventions, and the reported empirical outcomes are stated choices and implicit marginal prices ($ WTP and $ WTAC) rather than actual household water access, connection, reliability, affordability, or exclusion. General Service Level Agreements and property rights serve only as conceptual framing, so the study is excluded under both the narrow and plain readings of Criterion 2.",
+    "record_id": "R29856BE0CB68",
+    "study_design": "Cross-sectional stated-preference discrete choice experiment (choice modelling survey analysed with multinomial probit models)"
+  }
+}

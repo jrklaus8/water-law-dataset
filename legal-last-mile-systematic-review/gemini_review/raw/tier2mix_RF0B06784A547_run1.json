@@ -1,0 +1,281 @@
+{
+  "record_id": "RF0B06784A547",
+  "order": 36,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "7f9610c8b9565f1032aa8d8370458d2f8eec82e0ea637eccb88aca41fc4d934e",
+  "input_text_sha256": "785581d584305cb1569af4c69fb589e3c6e33276b05d0957f9cd3e2cbb14c84a",
+  "prompt_sha256": "2de8c6981becad7f457ebb263daa81cd8dc2ee5b36b517304685b87b66ac6f6d",
+  "started_at": "2026-11-20T04:41:21.921241+00:00",
+  "completed_at": "2026-11-20T04:43:14.149812+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RF0B06784A547\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RF0B06784A547\n- Title: Spatial transformation and Chinese environmental governance innovation from an urban political ecology perspective: An analysis of Shenzhen’s evolving waterscape\n- Authors: Wang Y.; Man C.; Xu A.; Shi Q.\n- Year: 2022\n- DOI: 10.18306/dlkxjz.2022.09.016\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 785581d584305cb1569af4c69fb589e3c6e33276b05d0957f9cd3e2cbb14c84a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=42280, sha256=785581d584305cb1569af4c69fb589e3c6e33276b05d0957f9cd3e2cbb14c84a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "China",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "No. The paper examines the macro urban political ecology of Shenzhen's 'waterscape' (ecological spaces comprising rivers, lakes, shorelines, and waterfront 'blue belt' greenways) and city-water relations from 1979 to 2020, rather than household or community drinking-water or sanitation service access (Exclusion Criterion 7).",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain broad wording of Criterion 2, this study WOULD satisfy Criterion 2 in isolation because it discusses municipal water and environmental governance institutions and policies (including the 1994 Shenzhen SEZ Water Resources Administration Regulations, sewage fee adjustments, the PPP joint venture with Veolia and subsequent re-nationalization of Shenzhen Water Group, and the River Chief System); however, the overall plain_criterion2_decision is still 'exclude' because Criteria 1 and 4 fail. Under the narrow 2026-10-13 rule-type reading, Criterion 2 is 'no': these governance reforms and utility ownership shifts are analyzed only as macro state-capital-nature processes driving commodification, de-commodification, river ecological restoration, and waterfront spatial transformation, not as rule-type mechanisms directly governing household or community water or sanitation service access.",
+      "c3": "Yes. Using qualitative process tracing combined with descriptive longitudinal secondary data (1979-2020) from Shenzhen Statistical Yearbooks, Shenzhen Water Resources Bulletins, Shenzhen Environmental Status Bulletins, government policy documents, and corporate reports, the study empirically traces three phases of Shenzhen's city-water evolution.",
+      "c4": "No. Reported outcomes are river and offshore marine surface water quality grades (Table 1), aggregate municipal water consumption by sector and aggregate city-wide wastewater discharge/treatment capacity (Figure 2), and kilometers of waterfront recreational greenways ('blue belts' / 碧道) constructed. Public 'access' in Stage 3 refers to citizen access to waterfront ecological spaces/greenways, not household or community water supply or sanitation connections, reliability, affordability, or exclusion.",
+      "c5": "No. Although the study design (process-tracing single-city case study of Shenzhen, 1979-2020) and city/waterscape unit of analysis are identifiable, there is no identifiable household or community service-access population, rule-type access exposure, or water/sanitation service-access outcome.",
+      "c6": "Yes (per Criterion 10). The full text is in Chinese with an English title and abstract (PDF Page 15); direct reading/translation from the provided Chinese full text is feasible and was performed during screening."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 15",
+        "quote": "Using the waterscape of Shenzhen City as an example, this study adopted an urban political ecology perspective to illustrate how Shenzhen's waterscape has evolved in the past four decades and how the underlying power structure has (re)produced such waterscape changes."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 15",
+        "quote": "Rather, it re-intervened in the provision of ecological services and, to a great extent, de-commodified water for sustainable economic development."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 15",
+        "quote": "Based on the approach of process tracing, this study identified three main time periods, during which urban waterscape in Shenzhen demonstrated distinctive features."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6",
+        "quote": "注：数据来源于深圳市水资源公报(2000—2020年)、深圳市环境状况公报(2000—2020年)。"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 15",
+        "quote": "The construction of \"blue belts\" that gives the public access to all urbanites and the discursive reframing of water that restructures the city's political and economic agenda have re- commodified water in a way that may boost Shenzhen's long-term economic development and competitiveness."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Phased shifts in state-capital-nature power relations and municipal environmental/water governance in Shenzhen (water resource commodification and abstraction/sewage fee policies, PPP marketization and subsequent re-nationalization of Shenzhen Water Group, River Chief System, pollution remediation investment, and 'Blue Belt' waterfront planning)",
+    "outcome": "Transformation of Shenzhen's urban waterscape, river and offshore marine water quality grades (2000-2020), aggregate city-level sectoral water abstraction and wastewater discharge/treatment rates, and construction of public waterfront ecological greenways ('blue belts' / 碧道)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Shenzhen Municipality urban waterscape, including 14-15 major rivers, eastern and western offshore marine areas, and aggregate municipal water sector (1979-2020)",
+    "rationale": "Excluded as E01 (Wrong topic). Based on the full Chinese text and English abstract, this urban political ecology case study traces 40+ years of macro city-water ('waterscape') transformation, river/marine water pollution remediation, and public waterfront greenway ('blue belt' / 碧道) construction in Shenzhen. Although it mentions municipal water institutions, sewage fees, and the PPP-to-state-owned restructuring of Shenzhen Water Group as part of its macro state-capital-nature narrative, it does not examine household or community drinking-water or sanitation service access, connections, reliability, affordability, or exclusion, and 'public access' in the third phase refers solely to public recreational/ecological waterfront spaces. Under both the narrow 2026-10-13 rule-type reading and the plain broad reading of Criterion 2, the study is excluded because Criteria 1 and 4 are not met.",
+    "record_id": "RF0B06784A547",
+    "study_design": "Qualitative historical case study (process tracing) with descriptive longitudinal secondary municipal statistics"
+  }
+}

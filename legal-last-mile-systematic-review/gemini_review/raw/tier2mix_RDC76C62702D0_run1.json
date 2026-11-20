@@ -1,0 +1,286 @@
+{
+  "record_id": "RDC76C62702D0",
+  "order": 62,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "00b6e2b6e0fbf04e71272591bed0e62003378835c880aa8b8942e500f0a25a1f",
+  "input_text_sha256": "67354c5740f1f77407f9266530e78a3c7dc138a6c164ab2b7643fbc456369b0e",
+  "prompt_sha256": "d22295f3eb39e2d86aec0eb9074841deafd4886c08d2301aaa0ab98f30fb9380",
+  "started_at": "2026-11-20T04:52:31.350184+00:00",
+  "completed_at": "2026-11-20T04:56:05.822527+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RDC76C62702D0\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RDC76C62702D0\n- Title: Toward a comprehensive explanatory model of reliance on alternatives to the tap: Evidence from California's retail water stores\n- Authors: Pierce G.; Lai L.\n- Year: 2019\n- DOI: 10.2166/wh.2019.289\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 67354c5740f1f77407f9266530e78a3c7dc138a6c164ab2b7643fbc456369b0e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=37435, sha256=67354c5740f1f77407f9266530e78a3c7dc138a6c164ab2b7643fbc456369b0e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States (California)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "No. Rather than examining household or community access to water or sanitation services, the study models commercial retail water store prevalence in urbanized California census tracts that are already served by publicly regulated community water systems (tracts lacking water system boundary shapefiles were excluded). The authors explicitly contrast LMIC water vending—driven by public systems' failure to provide accessible, safe, reliable water—with urban California, where retail water stores reflect consumer tap-water mistrust and avoidance.",
+      "c2": "No under the active 2026-10-13 narrow rule-type mechanism reading (borderline/yes on the literal plain wording, though still excluded overall on C1/C4). Plain wording reading: Under the broad literal wording ('legal, administrative, institutional, regulatory or governance factor'), the study arguably touches regulatory and institutional variables because its regression includes Safe Drinking Water Act (SDWA) primary MCL violation counts, non-mandatory secondary SMCL exceedance percentages, and water-system dummy variables ('Private system', 'Municipal system'), alongside narrative discussion of SMCL regulatory thresholds. Narrow 2026-10-13 rule-type reading: Fails Criterion 2 because none of the analyzed exposures is a rule-type mechanism directly governing service access. Primary MCL violations and SMCL exceedances are used strictly as proxies for physical and aesthetic (taste, odor, color) water contamination driving consumer perception; 'Private system' and 'Municipal system' are unanalyzed background control dummies in Table 2 (never discussed in the prose) regressed against commercial retail store counts rather than utility ownership rules governing household service access; and 'Foreign-born non-citizen' tract share is an ACS demographic indicator used to proxy cultural/home-country tap-water mistrust rather than citizenship or documentation eligibility rules. (Even under the plain reading of Criterion 2, the overall decision remains 'exclude' because C1 and C4 are not met.)",
+      "c3": "Yes. Quantitative cross-sectional ecological analysis combining 2015 California Department of Public Health geolocation data for 1,200 retail water stores across California census tracts (n = 7,020 analyzed tracts), 2010–2014 SWRCB primary violation and Water Quality Monitoring secondary exceedance records, SDWIS water system attributes, and 2011–2015 ACS 5-year socioeconomic estimates, estimated via zero-inflated negative binomial regression.",
+      "c4": "No. The sole empirical outcome is the number of CDPH-registered commercial retail water stores per capita in a census tract, used as an ecological proxy for consumer reliance on tap water alternatives (tap-water mistrust/avoidance). It does not measure water or sanitation service access, connection, utility service availability, reliability, continuity, water quantity, affordability, or service exclusion.",
+      "c5": "Yes. Unit of analysis and sample (7,020 urbanized California census tracts within community water system boundaries), exposures (primary MCL violations, secondary SMCL exceedances, system characteristics, and tract demographics), outcome (retail water stores per capita), and study design (cross-sectional spatial econometric zero-inflated negative binomial model) are clearly reported.",
+      "c6": "Yes. Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "We model retail water store locations as a proxy for reliance on tap water alternatives in urbanized neighborhoods across California."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "the presence and endurance of vendors in urban LMIC areas are attributed to the ubiquitous failure of publicly regulated water systems to provide accessible, safe, reliable water to urban residents."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3",
+        "quote": "Using the CDPH data, we model neighborhood retail water store prevalence in urban California as a function of both the observed primary and secondary water quality of the system serving the neighborhood"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5",
+        "quote": "Tracts with higher proportions of foreign-born residents have more water stores per capita than those that do not"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3",
+        "quote": "We merged this dataset with tract-level indicators of socioeconomic status from the 2011–2015 American Community Survey (ACS) 5-Year Estimates."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7",
+        "quote": "We conclude that more persuasive and targeted efforts will be necessary to help alleviate mistrust of tap water quality where it is unmerited, and thus to reduce unnecessary reliance on alternative drinking water sources such as retail water stores."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Community water system primary health violations (SDWA MCL violations, 2010–2014) and secondary contaminant test exceedance percentages (SMCLs for manganese, iron, odor, fluoride, and copper, 2010–2014); water system characteristics (private system, municipal system, system size); and census-tract socioeconomic and demographic indicators (median household income, high school graduation percentage, Hispanic and Black percentages, foreign-born non-citizen and naturalized percentages, total population, and population density)",
+    "outcome": "Number of registered commercial retail water stores per capita per census tract (used as a proxy for neighborhood reliance on tap water alternatives / tap-water avoidance)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Urbanized census tracts (neighborhoods) in California served by publicly regulated community water systems with boundary shapefiles (7,020 census tracts analyzed out of approximately 8,000 total tracts, encompassing 1,200 registered retail water stores in 2015; 925 non-zero tract observations)",
+    "rationale": "Excluded (E04: Wrong outcome; also fails C1 and narrow C2). This empirical spatial econometric study models the per-capita count of commercial retail water stores across 7,020 urbanized California census tracts already served by community water systems as an ecological proxy for consumer tap-water mistrust and avoidance. It does not report an outcome measuring household or community water service access, connection, utility service availability, reliability, continuity, quantity, affordability, or exclusion (failing C1 and C4). In addition, under the 2026-10-13 narrow reading of Criterion 2, it does not examine a rule-type legal or administrative mechanism governing service access: SDWA primary MCL violations and secondary SMCL exceedances are used as proxies for physical/organoleptic water contamination affecting consumer perception, private/municipal system dummies are unanalyzed background covariates in Table 2, and foreign-born non-citizen share reflects immigrant home-country perception rather than legal/documentation eligibility rules. Even under the plain broad wording of Criterion 2, the study remains excluded because it lacks a service-access outcome.",
+    "record_id": "RDC76C62702D0",
+    "study_design": "Cross-sectional ecological spatial econometric study (zero-inflated negative binomial regression)"
+  }
+}

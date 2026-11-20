@@ -1,0 +1,286 @@
+{
+  "record_id": "R86610BDFBD5E",
+  "order": 103,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "94613a9aa92cda43b8aa66567cf0ee5d4d758ca9e70c56e74cd7967f445e28ee",
+  "input_text_sha256": "d5a4f5072e95744b4f93c838b439d883cb4cc36deb286e993d9f832791e18433",
+  "prompt_sha256": "68eb125be429b1de9035f7caa8d219e714fc3a07697f7d396b7749a5b60ad3d2",
+  "started_at": "2026-11-20T05:04:29.892575+00:00",
+  "completed_at": "2026-11-20T05:05:51.639433+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R86610BDFBD5E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R86610BDFBD5E\n- Title: Negotiating marginalities: right to water in Delhi\n- Authors: Roy D.\n- Year: 2013\n- DOI: 10.1080/1573062X.2012.709254\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d5a4f5072e95744b4f93c838b439d883cb4cc36deb286e993d9f832791e18433) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=42016, sha256=d5a4f5072e95744b4f93c838b439d883cb4cc36deb286e993d9f832791e18433]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community access to potable water and sanitation services in urban Delhi, specifically within Kathputli Colony (piped connections, public standposts, borewells, water tankers, private vendors, and MCD paid community toilets).",
+      "c2": "Both the plain wording and the narrow 2026-10-13 rule-type mechanism reading are satisfied (plain=yes, narrow=yes). Under the plain reading, the study examines state governance, constitutional right-to-water norms (Article 21), and municipal politics of slum water provision. Under the narrow 2026-10-13 rule-type reading, it directly examines how tenure insecurity, legal recognition/notification status under Section 3 of the Slum Areas (Improvement and Clearance) Act, 1956 (with pending relocation/in-situ redevelopment), utility refusal to extend formal connections for fear of legitimising slum occupancy, exclusion from 'regular customer' legal eligibility with the Delhi Jal Board (leaving residents dependent on discretionary/exceptional supply, MLA-arranged borewells, or discontinued tankers, while criminalising self-help main tapping), and user fees/closing hours at MCD community toilets directly govern and restrict household water and sanitation access.",
+      "c3": "Contains primary qualitative/socio-legal empirical case-study evidence from fieldwork in Kathputli Colony conducted from March to July 2010, comprising on-site interviews with slum residents and senior Delhi Jal Board officials, field observations, and a questionnaire survey (Note 2, p. 103), although exact sample sizes and survey tabulations are not reported. Per INCLUSION_EXCLUSION.md, qualitative socio-legal empirical studies are eligible for mechanism synthesis even without quantitative effect sizes.",
+      "c4": "Reports concrete settlement- and household-level service access outcomes in Kathputli Colony, including absence of piped drinking water in Kathputli Basti (~2,500 households), dry public standposts and MCD pipes, limited borewell hard-water supply (3–4 hours/day for ~100 of 300 first-lane households), 2–3 hour summer queues at an external tap, water purchases from vendors at Rs. 5 per 1-litre can, termination of DJB tanker deliveries, informal household connections via punctured mains in Bihari Camp, and avoidance of paid MCD toilets in favour of open drains.",
+      "c5": "Identifies the population and units of analysis (households/residents and sub-camps within Kathputli Colony, Shadipur, Delhi, plus DJB utility officials), the legal/administrative exposures (tenure/relocation status, exclusion from regular DJB customer status, discretionary supply/tanker withdrawal, and MCD toilet fees/hours), the water and sanitation access outcomes, and an identifiable qualitative case-study design, though exact interview/survey respondent counts are not reported.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "The absence of legal recognition of these settlements and the corresponding lack of tenure rights of inhabitants can be a major hurdle in the way of securing access to an improved water supply."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "National and local authorities are reluctant to extend water and sanitation services to people living in slums, claiming that connecting these communities will ‘legitimise’ their presence where they are not supposed to be."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5",
+        "quote": "They are provided access to water, not as a part of government policies, but on exceptional grounds, such that, they are not ‘regular customers’ having legal rights."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "However, the residents of Bihari Camp remain exceptions, not being regular customers of DJB, and the access to clean water for them remains a ‘claim’ not a ‘right’"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 8",
+        "quote": "On-site interview and questionnaire survey, Kathputli Colony, March 2010–July 2010."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5",
+        "quote": "Kathputli Basti, which has approximately 2500 households, has no drinking water pipeline and the few public water standposts mostly remain dry due to illegal tapping, among other reasons."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal and administrative barriers to formal service access in informal/notified slums: lack of tenure rights and pending relocation/redevelopment under Section 3 of the Slum Areas (Improvement and Clearance) Act, 1956; municipal/utility refusal to extend formal connections so as not to legitimise occupation; exclusion from 'regular customer' legal status with the Delhi Jal Board (resulting in discretionary/exceptional supply, discontinued water tankers, and illegality of self-help main tapping); and user fees (Re. 1 for women, Rs. 2 for men) and early closing hours (7–10 pm) at the MCD community toilet complex",
+    "outcome": "Household and sub-settlement drinking water and sanitation access in Kathputli Colony: lack of drinking water pipelines, dry standposts and dry MCD connections, intermittent borewell hard water (3–4 hours/day for ~100 of 300 households in the first lane), 2–3 hour summer queueing at an outside tap, reliance on private water vendors (Rs. 5 per 1-litre can), cessation of DJB tanker deliveries, informal household connections from punctured mains in Bihari Camp, and low usage of paid MCD toilets / open defecation",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households and residents of Kathputli Colony, a legally notified slum in Shadipur, Delhi (~2,500 households in Kathputli Basti and surrounding camps such as Bihari Basti and Marathi Basti), and Delhi Jal Board (DJB) officials; exact interview and questionnaire sample size not reported",
+    "rationale": "This qualitative socio-legal case study examines drinking water and sanitation access in Kathputli Colony, Delhi, based on primary fieldwork conducted from March to July 2010 (on-site interviews with residents and DJB officials and a questionnaire survey). It satisfies all inclusion criteria under both the plain and narrow 2026-10-13 readings of Criterion 2 because it analyses rule-type legal and administrative mechanisms governing slum service access—specifically lack of tenure rights, notification and pending relocation under the Slum Areas (Improvement and Clearance) Act 1956, denial of 'regular customer' utility eligibility by the Delhi Jal Board (confining residents to discretionary/exceptional supply and criminalising informal connections), and user fees/hours at MCD toilets—and documents resulting household/community water and sanitation access, exclusion, and coping outcomes. Confidence is medium because methodological reporting of the March–July 2010 survey and interviews is brief (no respondent count reported) and much of the discussion centres on residents' negotiation strategies alongside the formal legal/administrative barriers.",
+    "record_id": "R86610BDFBD5E",
+    "study_design": "Qualitative socio-legal case study (fieldwork with on-site interviews and questionnaire survey, March–July 2010)"
+  }
+}

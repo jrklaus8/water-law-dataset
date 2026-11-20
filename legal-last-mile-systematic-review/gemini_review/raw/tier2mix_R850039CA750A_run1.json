@@ -1,0 +1,281 @@
+{
+  "record_id": "R850039CA750A",
+  "order": 81,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "06198dce0ff9b69923b9294e61994ff1f7d40707ff5fa64bc04baeb6093e9906",
+  "input_text_sha256": "d786c8eb7db4cfb9e97bcd1466cc5705b8c0d333c54700b8b4a2a5c92e8556ff",
+  "prompt_sha256": "420feddbea5b2a73688e8eb1b2ea3a9e3f079e7a71cfac35841e4db7d58ab21a",
+  "started_at": "2026-11-20T04:58:38.445053+00:00",
+  "completed_at": "2026-11-20T05:00:57.200650+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R850039CA750A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R850039CA750A\n- Title: Sustainable development, water resources management and women's empowerment: the Wanaraniya Water Project in Sri Lanka\n- Authors: Aladuwaka, Seela; Momsen, Janet\n- Year: 2010\n- DOI: 10.1080/13552071003600026\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d786c8eb7db4cfb9e97bcd1466cc5705b8c0d333c54700b8b4a2a5c92e8556ff) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46831, sha256=d786c8eb7db4cfb9e97bcd1466cc5705b8c0d333c54700b8b4a2a5c92e8556ff]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Sri Lanka",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water access (piped gravity-fed water connections to individual houses) and secondary improvements in household sanitation (septic toilets) through the Wanaraniya Water Project in rural Sri Lanka.",
+      "c2": "Passes the plain wording of Criterion 2 (plain = yes) because it examines community-based institutional governance and management of a village water supply by a registered grassroots women's organisation (Vishaka Women's Society). Fails the narrow 2026-10-13 rule-type reading (narrow = no): per the A16 scope clarification, Criterion 2 requires an analysed rule-type mechanism directly governing service access rather than generic project delivery. The study's primary exposure and analytical focus is women-led participatory project delivery (grassroots mobilisation, NGO technical assistance, and micro-loan/lottery financing to construct and operate a village pipeline) and its impacts on women's empowerment, livelihoods, education, and health. Although the narrative incidentally mentions operational rules—a Rs 1,000 initial connection down-payment, higher connection fees and self-laid pipes for later connections, a society constitution requiring villager consent to increase monthly charges, warnings of disconnection against male sabotage, and refusal of local politicians' patronage requests or Pradeshiya Sabha takeover—these are descriptive background details of project implementation and maintenance rather than an empirical evaluation of a rule-type mechanism governing access or exclusion.",
+      "c3": "Contains primary qualitative empirical evidence from an ethnographic field study (key informant interviews, focus-group interviews, informal interviews, and field observations) supplemented by descriptive household administrative data from the Rattota District Secretariat Division (2008) and 2007 village field data.",
+      "c4": "Reports village household access and connection outcomes—147 initial household piped water connections expanding to 189 households with tap water (out of 283 households in the GN division) and 240 households with septic toilets—alongside primary focus outcomes on women's empowerment, livelihoods, education, and health.",
+      "c5": "Population and unit of analysis (283 households / 964 residents in Wanaraniya Gramasewa Niladhari Division, Rattota, Matale District, Sri Lanka, and 136 members of the Vishaka Women's Society), exposure (participatory women-led community water project implementation and management), outcomes (household tap-water/toilet coverage and women's empowerment/livelihoods), and study design (qualitative ethnographic case study) are clearly identifiable.",
+      "c6": "Full text is in English, an eligible language without translation."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "The Wanaraniya Water Project pipes water 6.5km from its source to individual houses in the village, saving women daily time and effort."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "The project is founded on commitments to community participation and the adoption of local knowledge. It was initiated by women, and has been operated and managed by them for the last six years. This study argues that the project can serve as a model for better planning of water management, and focuses on the unique strategies and innovative methods that have been used. In particular, it shows the impact of involvement in the project on women’s empowerment."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12",
+        "quote": "The women said that they cannot just increase the charges because, according to the constitution made by the women themselves, they have to discuss changes with the villagers and get their consent. Since most villagers are poor, increasing charges is not an easy solution. However, they have found an alternative way to deal with costs by charging increased payments for new water connections as a temporary solution."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4",
+        "quote": "The methodology used in this research took an ethnographic approach. Primary data were collected using several qualitative methods including key informant interviews, focus-group interviews, field observation and informal interviews."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7",
+        "quote": "After seven months of work, the dam was completed, the pipeline laid and connected to individual houses in February 2002. Initially, the project provided water to 147 houses in the village. Later, as other households in the village wanted a water connection, they were given it at a higher rate, as they had not paid the original down-payment."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Participatory, women-led grassroots water project delivery and community management by the Vishaka Women's Society (including NGO technical assistance and micro-loan/lottery fundraising to build a 6.5 km village water pipeline)",
+    "outcome": "Household piped tap-water connections (147 initial houses; 189 of 283 households using tap water) and septic toilet adoption (240 of 283 households), alongside primary focus outcomes of women's empowerment, income-generating livelihoods, girls' education, and health/hygiene",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Wanaraniya Gramasewa Niladhari Division in Rattota, Matale District, Sri Lanka (283 households; 964 residents: 485 female and 479 male; 136 members of the Vishaka Women's Society); qualitative interviews, focus groups, and field observations with village women, men, youth, society leaders, and local officials",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 narrow rule-type reading of Criterion 2. This ethnographic case study evaluates a grassroots, women-led participatory rural water supply project (the Wanaraniya Water Project) and how community participation in building and operating the scheme empowered women and improved village health, sanitation, education, and livelihoods. Under the plain wording of Criterion 2, community-based governance by a registered women's society qualifies as an institutional/governance factor and the paper would be included. Under the 2026-10-13 scope clarification, however, generic participatory project delivery is outside scope; although the text descriptively notes operational details (a Rs 1,000 initial connection down-payment, higher fees for subsequent connections, a society constitution requiring community consent for tariff increases, disconnection warnings against saboteurs, and refusal of political patronage requests), it does not empirically analyse these rule-type mechanisms as determinants of household service access or exclusion.",
+    "record_id": "R850039CA750A",
+    "study_design": "Qualitative ethnographic case study supplemented with descriptive local administrative statistics"
+  }
+}

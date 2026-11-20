@@ -1,0 +1,281 @@
+{
+  "record_id": "R9B9A3A5EC38A",
+  "order": 94,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "c0b2f8df2523c91c146258fad61e57f0987c5ea6c3da0aa908a9113a6aac9a3f",
+  "input_text_sha256": "422db47947f9fdd00356b4f43dbdd3176ad1ad3dd008234f4aa616a0e93b9e5a",
+  "prompt_sha256": "b8ad993b1a6d04bd18f09ff87bea9df54edcca8c6e781639e3924ade45a242c5",
+  "started_at": "2026-11-20T05:01:17.550690+00:00",
+  "completed_at": "2026-11-20T05:02:28.638872+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R9B9A3A5EC38A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R9B9A3A5EC38A\n- Title: Wastewater Discharge Standards in the Evolving Context of Urban Sustainability–The Case of India\n- Authors: Schellenberg, Tatjana; Subramanian, Vrishali; Ganeshan, Ganapathy; Tompkins, David; Pradeep, Rohini\n- Year: 2020\n- DOI: 10.3389/fenvs.2020.00030\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 422db47947f9fdd00356b4f43dbdd3176ad1ad3dd008234f4aa616a0e93b9e5a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=119478, sha256=422db47947f9fdd00356b4f43dbdd3176ad1ad3dd008234f4aa616a0e93b9e5a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India (with international regulatory comparisons including the European Union, Ireland, France, Tanzania, Ecuador, and Jordan)",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "unclear",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community water or sanitation service access. The paper focuses on environmental pollution control regulations—specifically effluent discharge standards for municipal sewage treatment plants (STPs) and water quality standards for treated wastewater reuse (such as agricultural irrigation and urban/industrial non-potable reuse).",
+      "c2": "Passes the plain wording of Criterion 2 (yes under plain wording) because it examines statutory, regulatory, and judicial instruments governing wastewater management in India (including the Water Act 1974, Environment Protection Act 1986, MoEF&CC STP discharge notifications, CPCB norms, National Green Tribunal orders, Karnataka's Urban Wastewater Reuse Policy, and international frameworks). However, it fails the narrow 2026-10-13 rule-type reading (no under active reading) because these regulations set chemical and microbiological effluent discharge and reuse limits for STPs to control river pollution and guide resource recovery, rather than rule-type mechanisms directly governing household or community water or sanitation service access (such as eligibility screening, administrative burden, tenure/documentation rules, consumer tariffs, or disconnection). Even under the plain reading of Criterion 2, the overall decision remains exclude because Criteria 1, 4, and 5 are not met.",
+      "c3": "Published as a Policy and Practice Review combining a review of governmental regulations and secondary CPCB reports with anonymous qualitative interviews of governmental officials, sectoral experts, and technology providers; however, no sample size, interview protocol, or systematic qualitative coding method is reported, and the Author's Note states that no primary data from the qualitative interviews are presented.",
+      "c4": "Reports regulatory effluent parameter thresholds (BOD, COD, TSS, pH, nutrients, fecal coliforms), secondary STP technology removal performance and capital cost per MLD, and narrative discussion of STP retrofitting and compliance challenges; reports no empirical outcome measuring household or community service access, connection, availability, reliability, continuity, quantity, affordability, or exclusion.",
+      "c5": "No household or community population, service-access outcome, or empirical sample size is reported; the unit of discussion is national/state STP effluent regulation and anonymous informant perspectives without presented primary data.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1 of 23 (Abstract)",
+        "quote": "This policy review informs on wastewater discharge (and related) standards for sewage treatment plants within the context of present-day India."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3 of 23 (Introduction)",
+        "quote": "In this paper, the outputs of a broader evidence review based on Indian policies and regulations and complementary interviews with governmental institutions, sectoral experts, and technology providers in India are combined to analyze and understand pollution control measures and approaches that focus on municipal domestic sewage treatment and wastewater reuse."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3 of 23 (Methodology)",
+        "quote": "All historically applicable wastewater discharge standards for STPs in India were considered for the assessment."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 20 of 23 (Author's Note)",
+        "quote": "Interviewees have requested strict anonymity and that no data from qualitative interviews to be presented that can be traced to individuals and institutions. Hence only insights have been presented."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 16 of 23 (International Comparison of Standards for Wastewater Reuse)",
+        "quote": "By comparison, the implementation of just one set of standards for both discharge to inland water and use on land in India is regressive with international practice and discourages nutrient recycling."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Wastewater effluent discharge standards and treated wastewater reuse regulations for sewage treatment plants (MoEF&CC notifications, CPCB guidelines, and National Green Tribunal orders)",
+    "outcome": "Permissible STP effluent and reuse water quality parameters (BOD, COD, TSS, nutrients, pH, fecal coliforms), secondary STP technology cost/performance comparisons, and narrative stakeholder perspectives on regulatory feasibility (no household or community service access outcome reported)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "National and state STP effluent regulatory frameworks in India (plus international regulatory comparators); anonymous governmental officials, sectoral experts, and technology providers interviewed (sample size not reported)",
+    "rationale": "Excluded (E01 - Wrong topic). This Policy and Practice Review examines environmental pollution control regulations—specifically effluent discharge limits for municipal sewage treatment plants (STPs) and water quality standards for treated wastewater reuse (primarily agricultural irrigation)—in India alongside international comparisons. It does not examine household or community water or sanitation service access (c1 = no), does not examine a rule-type legal/administrative mechanism governing household or community service access under the 2026-10-13 Criterion 2 scope (c2 = no; though it discusses environmental regulatory standards under plain wording, plain_criterion2_decision is still exclude due to failing c1, c4, and c5), presents only narrative policy review and unattributed informant insights with interview data withheld (c3 = unclear), and reports no empirical service-access outcome (c4 = no).",
+    "record_id": "R9B9A3A5EC38A",
+    "study_design": "Policy and practice review (regulatory document review supplemented by unattributed qualitative informant insights)"
+  }
+}

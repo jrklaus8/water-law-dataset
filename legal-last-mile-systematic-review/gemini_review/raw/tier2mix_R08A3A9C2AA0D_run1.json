@@ -1,0 +1,281 @@
+{
+  "record_id": "R08A3A9C2AA0D",
+  "order": 26,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1d3331032ecbdfa9fba3c2305b743e186c29e8da1f9ca1532fe5a87debc92d03",
+  "input_text_sha256": "ad54aac667fc93153b1a090a8c79ad6729b3d353ee86e83ae07df62d816562be",
+  "prompt_sha256": "10a4e17df819e2c465c9af865522cbe3c8dd4c39aaf6357917f7be18409bd7fa",
+  "started_at": "2026-11-20T04:38:44.503121+00:00",
+  "completed_at": "2026-11-20T04:40:34.596574+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R08A3A9C2AA0D\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R08A3A9C2AA0D\n- Title: Evaluating Water and Sanitation Projects: Lessons from Imo State, Nigeria\n- Authors: Imo State Evaluation Team\n- Year: 1989\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: ad54aac667fc93153b1a090a8c79ad6729b3d353ee86e83ae07df62d816562be) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=43010, sha256=ad54aac667fc93153b1a090a8c79ad6729b3d353ee86e83ae07df62d816562be]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Nigeria",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural household drinking water supply and sanitation service access through the Imo State Drinking Water Supply and Sanitation Project (boreholes with handpumps, rainwater/traditional sources, and ventilated improved pit latrines).",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading diverge. Under the literal/plain broad wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), this paper would pass (plain_criterion2_decision = 'include') because it discusses institutional and administrative aspects of project implementation, including community involvement in decision-making, volunteer village-based worker (VBW) institutional arrangements/remuneration, and household financial contributions and material subsidies for VIP latrines. Under the active 2026-10-13 narrow clarification, however, Criterion 2 is 'no': the study is a quasi-experimental health and facility-use evaluation of generic rural WASH project delivery (borehole installation and VIP latrine promotion) and behavioural hygiene promotion rather than an empirical analysis of a rule-type legal, regulatory, or administrative mechanism directly governing service access (such as eligibility screening, tenure/documentation rules, tariff/cost-recovery schedules, enforcement, or utility regulatory structure). Notes that households contributed to latrine material costs and later received subsidies are descriptive implementation observations, not an evaluated rule-type exposure.",
+      "c3": "Contains primary quantitative empirical evidence from a 3.5-year quasi-experimental evaluation (1983-1986) using longitudinal surveys, twice-yearly cross-sectional household surveys, water collection sub-studies, and water quality testing across three intervention and two control villages.",
+      "c4": "Reports multiple direct service access outcomes alongside health outcomes: household use of improved borehole water (96% in the final dry season survey), exclusive borehole use by distance and borehole-to-population ratio, dry-season water collection time savings (median 6 hours/day pre-intervention to 45 minutes post-intervention), domestic water quantity (~12 litres per capita per day), and VIP latrine ownership/use (46% of intervention households, with lower ownership among poorer households due to cost).",
+      "c5": "Clearly identifies the population and units of analysis (households and individuals in three intervention villages [~850 households, ~5,000 persons] and two control villages [~420 households, ~2,300 persons] in Ohaozara LGA, Imo State), the intervention/exposure (pilot WASH project package and distance to boreholes), the access and health outcomes, and the quasi-experimental study design.",
+      "c6": "Published in English in Health Policy and Planning."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 10",
+        "quote": "An evaluation of the health impact was an integral part of the project's implementation and was based on a quasi-experimental design with two control villages."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 10",
+        "quote": "These were water supply use (type, quality, quantity), latrine use, and related health and hygiene behaviour."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 10",
+        "quote": "Households were required to make some financial contribution to the costs of materials. A survey on a sample of households revealed that the high cost was one of the main reasons for not having a VIP latrine and indeed wealthier households were more likely to own one."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3 of 10",
+        "quote": "By the end of the study period, 46% of households in the intervention area were using VIP latrines, with a corresponding decrease in the use of traditional facilities."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 10",
+        "quote": "Water usage was heavily influenced both by the distance from the household to the borehole and by the borehole-to-population ratio. Distance affects travel times and the ratio affects queuing times."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Pilot rural water supply, sanitation, and hygiene project delivery (installation of boreholes with handpumps, promotion and subsidized construction of ventilated improved pit latrines with household financial contributions, village-based worker hygiene education, and community involvement), plus physical distance to boreholes and borehole-to-population ratio",
+    "outcome": "Household borehole water use (96% in final dry season), dry-season water collection time savings (median 6 hours/day to 45 minutes), per capita water quantity (~12 litres/capita/day), household VIP latrine use (46% by end of study), and health outcomes (dracunculiasis, diarrhoea, and child wasting/stunting)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Rural households and residents in Ohaozara local government area, Imo State, southeast Nigeria: approximately 850 households (about 5,000 persons) in three intervention villages and 420 households (about 2,300 persons) in two control villages",
+    "rationale": "Full text matches record metadata. Although this 3.5-year quasi-experimental study in rural Imo State, Nigeria empirically measures household drinking-water and sanitation access outcomes (borehole uptake, collection time, per capita water use, and VIP latrine use), its evaluated exposure is generic rural WASH project delivery (borehole drilling, VIP latrine construction/promotion, and volunteer village-based worker hygiene education) and physical distance/queuing rather than a legal, regulatory, or administrative rule-type mechanism governing service access. Under the 2026-10-13 Criterion 2 clarification, generic project delivery and behavioural promotion are out of scope, so the paper is excluded under E03 (Wrong exposure), whereas under the plain broad wording of Criterion 2 its discussion of community involvement, VBW institutional delivery, and household material cost-sharing/subsidies would have qualified for inclusion.",
+    "record_id": "R08A3A9C2AA0D",
+    "study_design": "Quasi-experimental pre-, peri-, and post-intervention evaluation using longitudinal and repeated cross-sectional household surveys across three intervention villages and two control villages over 3.5 years"
+  }
+}

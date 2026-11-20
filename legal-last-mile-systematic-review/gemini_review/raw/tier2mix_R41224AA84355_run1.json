@@ -1,0 +1,281 @@
+{
+  "record_id": "R41224AA84355",
+  "order": 109,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "6c269214a391255e81daa897f9f61a0d8e8872aced78d6bffe5f70d418745c60",
+  "input_text_sha256": "00dd970a9834f4d2850bda63845b194d0769f02df0632ae1220b425302d99ce2",
+  "prompt_sha256": "a153d4a3a3431c89a20e28f22f78e9f108ec860d2aac5125ef22d1c04da67627",
+  "started_at": "2026-11-20T05:04:29.908783+00:00",
+  "completed_at": "2026-11-20T05:05:28.392741+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R41224AA84355\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R41224AA84355\n- Title: Dreaming of toilets: Using photovoice to explore knowledge, attitudes and practices around water-health linkages in rural Kenya\n- Authors: Bisung E.; Elliott S.J.; Abudho B.; Schuster-Wallace C.J.; Karanja D.M.\n- Year: 2015\n- DOI: 10.1016/j.healthplace.2014.12.007\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 00dd970a9834f4d2850bda63845b194d0769f02df0632ae1220b425302d99ce2) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46115, sha256=00dd970a9834f4d2850bda63845b194d0769f02df0632ae1220b425302d99ce2]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water and sanitation service access in Usoma, a rural lakeshore community near Kisumu, Kenya, including lack of piped/safe water, reliance on lake water and distant taps/vendors, open defecation, and inadequate pit latrines.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain literal wording of Criterion 2 ('a legal, administrative, institutional, regulatory or governance factor'), the paper passes because it empirically examines community governance institutions (village elders/chiefs, barazas, leadership trust, community-based groups such as UWASH) and perceived local government neglect and unequal resource distribution constraining water and sanitation collective action. Under the active 2026-10-13 narrow rule-type reading, however, it fails (c2 = no): the empirical investigation focuses on knowledge, attitudes, and practices (KAP), community mobilization/social capital, and broad socioeconomic/macro-governance background (unemployment, low income, power asymmetries with construction firms, and general feelings of municipal neglect). It does not empirically analyse any specific legal, regulatory, or administrative rule-type mechanism directly governing service access (such as eligibility rules, documentation/tenure requirements, formal tariff/cost-recovery rules, administrative burden, enforcement rules, or utility regulatory structure; the brief mention of LVSWSB and KIWASCO's pro-poor model in the Discussion is secondary background cited to Maoulidi, 2010).",
+      "c3": "Contains primary qualitative empirical data collected via participatory photovoice with 8 women (June-August 2013), comprising participant photography, 32 individual photo-elicitation interviews (60-90 minutes per photo), and a follow-up group discussion analysed thematically in NVivo 10.",
+      "c4": "Reports qualitative evidence on community and household water and sanitation access, safe water availability, vendor water affordability (20 Kenyan shillings per 20-litre jerry can), open defecation, and toilet construction barriers.",
+      "c5": "Population (women in Usoma, Western Kenya; individual/community level), study exposures (ecological conditions, KAP, community collective action, and broad structural factors like unemployment and perceived marginalisation), outcomes (water/sanitation practices and access challenges), and study design (participatory photovoice qualitative study) are all clearly identifiable, though the exposure is outside the review's rule-type legal/administrative scope.",
+      "c6": "Full text is written in English (interviews conducted in DhoLuo and translated into English by the research team)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 8",
+        "quote": "Though located by the second largest freshwater lake in the world, the community had no access to safe water at the time of this study. The nearest safe water source was a tap located about 3 kms away on the premises of a Coca-Cola bottling plant."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 8",
+        "quote": "If the administration was fair to provide us with water most of our problems will be solved. Sometime we need to talk about the way we have been cheated and neglected over the years (Betty)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 8",
+        "quote": "We have a water and sanitation committee that is trying to mobilise people to solve these problems, but the problem is how to raise capital to either build public toilets or help people construct their own toilets."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 8",
+        "quote": "The study was undertaken between June and August, 2013. Eight women participated in the study over the entire period."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5 of 8",
+        "quote": "Considering the level of unemployment and incomes in the community, it is very unlikely households can afford to buy the required quantities from vendors."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Ecological setting (proximity to Lake Victoria, sand harvesting, industrial pollution), community collective action (women's groups, barazas, village elders/leadership trust), and broad structural factors (unemployment, low incomes, power relations, and perceived local government neglect/marginalisation)",
+    "outcome": "Household and community water and sanitation practices and access challenges (reliance on unsafe lake water, vendor water affordability constraints, open defecation, pit latrine conditions, and barriers to communal toilet/borehole construction)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Women in Usoma, a rural lakeshore community (~3,000 residents) 15 km from Kisumu in Western Kenya; snowball sample of 8 women (ages 22-54) completing 32 photo-elicitation interviews and 1 group discussion (unit of analysis: individual and community)",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 rule-type clarification of Criterion 2. While this qualitative photovoice study examines household/community water and sanitation access and affordability in rural Kenya (c1=yes, c3=yes, c4=yes), its empirical focus is on knowledge, attitudes, practices, community collective action/mobilisation, unemployment/poverty, and general perceptions of municipal neglect rather than a legal, administrative, or regulatory rule-type mechanism directly governing service access. (Under the plain broad wording of Criterion 2, it would be included because it examines community governance institutions and perceived institutional/government marginalisation.)",
+    "record_id": "R41224AA84355",
+    "study_design": "Qualitative participatory action research using photovoice (individual photo-elicitation interviews and group discussion)"
+  }
+}

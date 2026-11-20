@@ -1,0 +1,286 @@
+{
+  "record_id": "R23C975B9CAD2",
+  "order": 137,
+  "run": 1,
+  "task": "tier2_mixed_blind_fulltext_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "e75c17481f9424f216610ed475fe4784e36d2bc5042abaf3972cf5934e1a9739",
+  "input_text_sha256": "16752609a31f5ad14acae6ba45a67a05b5fa7aa9b00d56686c1497a830263ab6",
+  "prompt_sha256": "91ae3e691a169538ac4bf10d55eafeebdd331ed40598beb8aa63bcb63bf91de6",
+  "started_at": "2026-11-20T05:12:42.251982+00:00",
+  "completed_at": "2026-11-20T05:14:00.059871+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R23C975B9CAD2\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R23C975B9CAD2\n- Title: Politics, centralisation and service delivery in urban Zimbabwe\n- Authors: Muchadenyika D.; Williams J.J.\n- Year: 2018\n- DOI: 10.1080/03057070.2018.1500748\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 16752609a31f5ad14acae6ba45a67a05b5fa7aa9b00d56686c1497a830263ab6) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=84407, sha256=16752609a31f5ad14acae6ba45a67a05b5fa7aa9b00d56686c1497a830263ab6]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Zimbabwe",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban household and municipal water and sanitation service access and delivery across Zimbabwean cities (including Harare, Bulawayo, Mutare, Masvingo, Epworth and Ruwa), alongside a parallel case study on vehicle licensing.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, it examines legal, administrative, institutional and governance centralisation of urban water and sanitation. Under the narrow 2026-10-13 reading, rather than unanalysed macro-governance background or generic project delivery, it directly examines utility ownership and statutory/regulatory structure governing service access: specifically, the 9 May 2005 ministerial directive transferring municipal water and sanitation utilities and infrastructure at zero cost to a central parastatal (ZINWA, under the ZINWA Act) in contravention of Sections 168 and 183 of the Urban Councils Act, Bulawayo's retention of municipal utility ownership, the split regulatory structure assigning water production/supply to ZINWA while leaving retail water billing with local authorities, bulk water tariff hikes and ministerial debt-cancellation orders, inter-jurisdictional connection-approval rules (refusal by Harare and Ruwa councils to recognise a ZINWA-approved water connection for Rockview Park after the 1 February 2009 reversal), and the 2009 decentralisation directive returning utility operations to urban councils.",
+      "c3": "Qualitative socio-legal and institutional empirical case study based on 30 primary key-informant interviews (5 from central government ministries, 6 from local authorities, 5 from urban social movements, 3 from political parties, 6 from NGOs and international development agencies, and 5 from consultants, practising planners and research institutes) combined with official parliamentary, budget and Auditor-General reports. Per protocol rules, qualitative socio-legal studies with identifiable empirical data are eligible for systematic review inclusion even without a quantitative effect size for meta-analysis.",
+      "c4": "Reports multiple water and sanitation access outcomes for urban residents: service reliability and continuity (erratic supply, pipe bursts, severe rationing to two days per week in Harare suburbs, residents going days/months/years without running water and resorting to boreholes and shallow wells, raw sewage overflows), potable water access and daily supply volume before and after the 2009 handover in Harare, affordability/tariffs (tenfold increase in water charges, retaliatory bulk tariff pass-throughs, unpaid bills), and non-recognition of approved water connections (Rockview Park).",
+      "c5": "Population/unit of analysis (urban local authorities/utilities and urban residents in Zimbabwean cities, informed by 30 key-informant interviews and municipal/national records), exposure (centralisation of urban water and sanitation utility ownership and regulatory governance in ZINWA via the 2005 ministerial directive and subsequent 2009 return to municipal control), outcome (water supply continuity, rationing, potable water access, tariff increases and connection recognition) and study design (qualitative empirical case study) are all clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 22 (Abstract, p. 833)",
+        "quote": "In particular, the article focuses on how urban politics is manifested in the transfer of water and sanitation and vehicle licensing functions from local authorities to government-run entities."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 22 (Introduction, p. 835)",
+        "quote": "The article is based on 30 interviews conducted with mayors and councillors, administrative heads of city departments, local government professionals (within and outside government ministries and departments, international development agencies, community-based organisations and civil society organisations) and representatives of political parties and research institutes."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 22 (Centralisation of Water and Sanitation, p. 839)",
+        "quote": "Prior to the government of Zimbabwe’s 9 May 2005 directive, urban local authorities were responsible for the delivery of water and sanitation services. However, the aforementioned directive compelled all urban local authorities to transfer water and sanitation functions to one government entity – ZINWA."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 22 (Centralisation of Water and Sanitation, p. 840)",
+        "quote": "Nevertheless, the Urban Councils Act was not changed, as it was only a policy directive from central government. In other words, according to Section 168 (powers of council in regard to sewerage and drainage) and Section 183 (powers of council in relation to water supply) of the Urban Councils Act, urban councils are still mandated to provide water and sanitation services in their areas of jurisdiction."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12 of 22 (Water, Sanitation and Urban Residents, p. 843)",
+        "quote": "Frequent bursting of water pipes was driven by a lack of maintenance skills, knowledge and experience on the part of the new authority. In many suburbs, such as Crowborough, Glen Norah and Glen View (Harare), water became severely rationed and used to be provided on two days per week."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13 of 22 (Water, Sanitation and Urban Residents, p. 844)",
+        "quote": "On 9 September 2008, ZINWA approved the water connection of Rockview Park to the Ruwa main. In 2009 ZINWA handed over water supply services to local authorities. City of Harare and Ruwa refused to recognise the connection of the project to the Ruwa main, arguing that ZINWA made an error: it should have consulted the two councils prior to granting the connection"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Centralisation of urban water and sanitation utility ownership, mandate and regulatory structure from municipal councils to the national parastatal ZINWA via the 9 May 2005 ministerial directive (contravening Sections 168 and 183 of the Urban Councils Act, splitting water production/supply from municipal retail billing, altering bulk/retail tariffs and ministerial debt-scrapping directives, and creating inter-authority connection-approval conflicts) and the 1 February 2009 reversal back to local authorities.",
+    "outcome": "Urban household and municipal water and sanitation service continuity and reliability (erratic supply, severe rationing to two days per week, prolonged lack of running water, reliance on shallow wells/boreholes, raw sewage overflows), potable water access and volume supplied, tariff affordability (tenfold charge increases and bulk tariff pass-through), and recognition of water main connections.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Urban local authorities and urban residents in Zimbabwe (Harare, Bulawayo, Mutare, Masvingo, Epworth, Ruwa and small towns); primary empirical sample of 30 key-informant interviews (5 central government ministry officials, 6 local authority officials, 5 urban social movement representatives, 3 political party representatives, 6 NGO/international agency staff, and 5 consultants/planners/researchers) supplemented by parliamentary and Auditor-General reports.",
+    "rationale": "Full-text qualitative socio-legal/institutional empirical study matching record metadata (Muchadenyika & Williams 2018, DOI 10.1080/03057070.2018.1500748). Although half of the paper examines vehicle licensing (ZINARA), pages 838–844 specifically examine urban water and sanitation service access in Zimbabwe under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. It empirically analyses utility ownership and regulatory structure directly governing service access—specifically the extra-statutory 9 May 2005 ministerial directive transferring municipal water and sewerage utilities to the state parastatal ZINWA against Sections 168 and 183 of the Urban Councils Act, Bulawayo's retention of municipal ownership, the split regulatory mandate between ZINWA production/supply and municipal billing, tariff hikes and ministerial bill-scrapping orders, jurisdictional refusal to recognise a ZINWA-approved housing water connection after the 2009 handover, and resulting household water rationing, continuity collapse, potable water access changes and affordability impacts, supported by 30 primary interviews and official audit/parliamentary evidence.",
+    "record_id": "R23C975B9CAD2",
+    "study_design": "Qualitative empirical case study (30 key-informant interviews combined with legal, policy and official documentary analysis)"
+  }
+}
