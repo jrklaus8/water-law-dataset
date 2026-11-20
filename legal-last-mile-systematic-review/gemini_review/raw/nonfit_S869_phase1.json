@@ -1,0 +1,143 @@
+{
+  "study_id": "S869",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ea0eabe5e2bb5e479ae6163be2fb0fc915de1f9cd27b849f906697c9e86f49f5",
+  "input_text_sha256": "7005f75578e63979eb9f50598a90c9246d9026ab2ff7b7d385deedb3ef3d03aa",
+  "prompt_sha256": "46c66e3d61194236080b915f5340d9749b3581107735dbdc39621cbd6c3d4426",
+  "started_at": "2026-11-20T00:59:02.097432+00:00",
+  "completed_at": "2026-11-20T01:03:30.049857+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S869\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S869\n- Record ID: R7FA19A7B8819\n- Citation: Silvestre HC, Marques RC, Dollery B, Correia AM (2022). Regional consortia and transaction costs for sanitation services in Brazil. Utilities Policy.\n- DOI: 10.1016/j.jup.2022.101408\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 7005f75578e63979eb9f50598a90c9246d9026ab2ff7b7d385deedb3ef3d03aa) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=57251, sha256=7005f75578e63979eb9f50598a90c9246d9026ab2ff7b7d385deedb3ef3d03aa]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "1. NARROW CRITERION 2 (borderline_governance_or_proxy): The primary institutional exposure is municipal membership in a regional public sanitation consortium (`Cooperation`, coded 1 = engaged in consortia, 0 = stand-alone / non-engaged), which in Brazil requires city council approval and a formal statutory `program contract` delegating planning, regulation, auditing, and/or delivery of water and wastewater services to a supra-regional public entity (under the 2007 Federal Sanitation Guidelines and 2020 Sanitation Legal Framework Act). This tests a municipal/intermunicipal administrative-contractual delivery structure rather than a direct household-facing legal access rule (e.g., tenure rule, connection mandate, tariff subsidy, or disconnection protection), making `borderline_governance_or_proxy` appropriate. Importantly, the paper's 'transaction cost' variables are proxies rather than legal rules: `Asset specificity` is operationalized as log capital expenditure on equipment/facilities (`Investment water` and `Investment sewage` in R$), which would fail narrow Criterion 2 (`E03`, infrastructure spending) if extracted as the focal exposure, while `Contract management` simply codes whether the municipality operates water only (1) vs both water and wastewater (2).\n\n2. CRITERION 4 (yes_household_or_service_access): Two of the three co-primary outcomes—`Water coverage (log)` (Y2) and `Sewage coverage (log)` (Y3)—measure the SNIS index of total municipal population served by water delivery and sewage services (log10-transformed), directly capturing community/population water and sanitation service coverage. By contrast, the first outcome (`Total expenditure (log)`, Y1) measures municipal sanitation spending as owner and would fail Criterion 4 if extracted alone.\n\n3. SWiM FAMILY CLASSIFICATION (Family C): Conceptually, testing regional public consortium delegation (`Cooperation = 1`) versus stand-alone municipal provision (`Cooperation = 0`) on municipal water and sewage coverage belongs in `Family C` (ownership, regulation, institutional capacity, administrative structure—specifically intermunicipal administrative/contractual structure for utility delivery). However, two severe econometric traps in Table 4 (PDF p. 6) must be noted when extracting or synthesizing effect direction: (a) under `Estimation`, the number outside parentheses is the p-value and the number inside parentheses is the B coefficient, and SPSS indicator coding reports `Cooperation = 0` (non-cooperation) relative to `Cooperation = 1` (consortium)—so `B = 0.466` (p = 0.007) on sewage coverage and `B = 0.064` (p = 0.240) on water coverage mean LOWER coverage in cooperating municipalities (`Cooperation = 1` vs `0`: B = -0.466 and B = -0.064), matching the descriptive means for sewage coverage (M = 52.0 cooperating vs M = 57.0 non-cooperating; p. 6), largely driven by selection/reverse causality where small, low-coverage municipalities join consortia; and (b) the regression includes three uncentered interaction terms (`Cooperation * invest water`, `Cooperation * invest sewage`, `Cooperation * contract management`), so the `Cooperation = 0` main-effect term is a conditional intercept shift at zero log-investment rather than an unconditional marginal effect, while the interaction `Cooperation = 0 * invest sewage` (`B = -0.081`, p = 0.021) indicates that sewage capital investment translates more strongly into sewage coverage under consortia (`Cooperation = 1` slope `B = 0.123`, p = 0.001) than under non-cooperation.",
+    "candidate_swim_family_blind": "Family C",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "yes_household_or_service_access",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 (consortium approval and contracting mechanism)",
+        "page": "PDF p. 3",
+        "quote": "To engage in cooperation, city councils must vote in favor."
+      },
+      {
+        "criterion": "Criterion 2 (exposure coding)",
+        "page": "PDF p. 4",
+        "quote": "it takes a value of 1 for engagement in consortia"
+      },
+      {
+        "criterion": "Criterion 4 (service coverage outcome)",
+        "page": "PDF p. 4",
+        "quote": "includes the index of the total population served by sewage services for each"
+      },
+      {
+        "criterion": "Headline direction on sewage coverage",
+        "page": "PDF p. 6",
+        "quote": "sewage services decreased when local government units cooperated"
+      }
+    ],
+    "headline_estimate_summary": "Multivariate GLM with state-stratified bootstrapping (1,000 samples, robust SEs, N = 1,157 municipality-year observations; Tables 3–4, PDF pp. 5–6). NOTE TWO TABLE 4 TRAPS: (1) under 'Estimation', numbers outside parentheses are p-values and numbers inside parentheses are B coefficients; (2) SPSS sets Cooperation = 1 (consortium) as the reference and prints Cooperation = 0 (non-cooperating / stand-alone) alongside uncentered interactions. Primary estimates for Cooperation = 0 (vs Cooperation = 1): (a) Water coverage (log10 population served index): B = 0.064, SE = 0.056, 95% CI [-0.040, 0.177], p = 0.240 (omnibus F = 0.468, p = 0.494; Table 3 p. 5)—i.e., consortium membership has a non-significant negative conditional difference (B = -0.064); (b) Sewage coverage (log10 population served index): B = 0.466, SE = 0.179, 95% CI [0.101, 0.815], p = 0.007 (omnibus F = 4.938, p = 0.026)—i.e., consortium membership is associated with LOWER sewage coverage (B = -0.466; raw group means M = 52.0 cooperating vs M = 57.0 non-cooperating, PDF p. 6); (c) Total sanitation expenditure (log10, non-access fiscal outcome): B = 0.404, SE = 0.232, 95% CI [-0.040, 0.858], p = 0.073 (omnibus F = 4.497, p = 0.034). Significant interactions for Cooperation = 0 * Investment sewage: Water coverage B = -0.022 (SE = 0.011, 95% CI [-0.043, 0.001], p = 0.049; omnibus F = 1.758, p = 0.185) and Sewage coverage B = -0.081 (SE = 0.034, 95% CI [-0.154, -0.017], p = 0.021; omnibus F = 4.778, p = 0.029), meaning sewage investment increases coverage more steeply under consortia (reference slope B = 0.123, SE = 0.029, 95% CI [0.067, 0.181], p = 0.001). Contract management complexity (water+wastewater vs water only) main effect: Water coverage B = -0.005 (SE = 0.008, 95% CI [-0.022, 0.013], p = 0.558); Sewage coverage B = 0.075 (SE = 0.032, 95% CI [0.012, 0.138], p = 0.014). Covariates: log investment in water, log investment in sewage, contract management, three Cooperation interactions, log population, log area, log density (in Table 3; omitted in Table 4), and financial crisis/year control.",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Observational municipal panel study in Brazil (2013–2020) using official municipal and sanitation datasets (IBGE MUNIC, FINBRA, and SNIS), estimated via a multivariate general linear model (GLM) with fixed effects, robust standard errors, and state-stratified bootstrapping (1,000 bootstrap samples) in SPSS v26. Unit of analysis: Brazilian municipality-year (local government unit as service owner). Analytic sample size: N = 1,157 municipality-year observations in regressions (PDF p. 4 text & Table 3, p. 5; Table 2 descriptive statistics on p. 4 reports N = 1,159). Note: Table 1 on PDF p. 4 is an unextracted image/graphic, while all prose and statistical tables (Tables 2–4) are complete.",
+    "study_id": "S869"
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "study_id": "S636",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d95cdf9885a3f3bd4487424dc0f6a431da110be4fb8efd2d99939628fe525bf3",
+  "input_text_sha256": "bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01",
+  "prompt_sha256": "8f581759fcf000025e18242109b00b24be8355b921213c8eb9fc62bcacadebed",
+  "started_at": "2026-11-19T19:21:48.866320+00:00",
+  "completed_at": "2026-11-19T19:24:27.166200+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S636\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S636\n- Record ID: R2DA99A1B268E\n- Citation: Lewis BD (2014). Indonesian Intergovernmental Performance Grants: An Empirical Assessment of Impact. Bulletin of Indonesian Economic Studies 50(3):415-433.\n- DOI: 10.1080/00074918.2014.980378\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56087, sha256=bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "Lewis (2014) evaluates two pilot output-based intergovernmental performance grants in Indonesia: P2D2 (DAK Reimbursement, 2011–12, N = 218 pooled kabupaten/kota-year observations across 67 PSM-matched pairs) and Water Hibah (WH, 2010–11, N = 105 pooled kabupaten/kota-year observations across 34 PSM-matched pairs). Only the Water Hibah analysis measures a Criterion 4 household water access outcome—log of new operational PDAM household piped water connections per 1,000 people (Tables 8–10; P2D2 measures aggregate local capital spending across all sectors because water/sanitation spending could not be disaggregated, Footnote 5, p. 418, and WH Tables 5–7 measure an institutional/fiscal intermediate outcome, local government equity investment in PDAMs).\n\nOn Criterion 2, Water Hibah is a borderline fiscal-governance exposure (`borderline_governance_or_proxy`) warranting PI scope scrutiny against `E03` (financial/capital subsidy without a household-facing legal rule): WH is an AusAID-backed Ministry of Finance output-based intergovernmental grant rule requiring local governments to make upfront matching equity investments in their municipal water utilities (PDAMs) and disbursing Rp 2–3 million per independently verified operational connection (~45% of connection cost). While this embodies formal intergovernmental conditional-transfer and verification rules, its mechanism is fundamentally a capital-financing subsidy, and Footnote 6 notes data do not allow testing whether connections actually reached poor households (the stated pro-poor targeting rule).\n\nClassifying S636 as `none_nonfit` (outside SWiM Families A, B, and C) is strongly justified on both substantive and econometric grounds:\n1. Over-control for the causal mediator in all binary-program connection models: By program design, WH increases household connections *by inducing local government equity investment in PDAMs* (Table 7: +739.1 constant-2000 Rp/capita, z = 3.20). However, Lewis never estimates the total (reduced-form) effect of WH participation on household connections. Every connection model (Tables 8–10) includes PDAM equity investment per capita alongside the WH dummy, leaving only the mediator-blocked direct effect of WH participation holding investment fixed—which is statistically non-significant in the author's preferred endogenous specifications (Table 8: beta = 0.3816, t = 1.58; Table 10: beta = 0.2892, t = 1.04). Moreover, the IV endogenous specification uses on/off-Java location and year dummies as excluded instruments for transfers/investment, which plausibly violate the exclusion restriction for water connection growth.\n2. Continuous fiscal-expenditure scaling: The statistically significant predictors in Tables 8 and 10 (`Investment per capita` beta = 0.0002, t = 2.30; `Hibah financed investments per capita` beta = 0.0004, t = 1.71) are capital-spending semi-elasticities per constant-2000 Rupiah per capita rather than legal/institutional rule effects. If a total binary WH program estimate were nevertheless forced into a SWiM family, its closest substantive neighbours would be Family B (conditional external financial/grant support) or Family C (intergovernmental administrative performance-contracting incentives), but `none_nonfit` is more rigorous given the fiscal-subsidy mechanism and mediator-adjusted specification.",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "yes_household_or_service_access",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 (Water Hibah equity-investment mechanism)",
+        "page": "PDF p. 4 (journal p. 417)",
+        "quote": "the PDAM then uses the invested funds to create household water connections."
+      },
+      {
+        "criterion": "Criterion 2 (Output verification and grant disbursement rule)",
+        "page": "PDF p. 4 (journal p. 417)",
+        "quote": "the water connections have been verified as operational, the Ministry of Finance"
+      },
+      {
+        "criterion": "Criterion 4 (Household water connections outcome definition)",
+        "page": "PDF p. 15 (journal p. 428, Table 8)",
+        "quote": "Note: The dependent variable is the log of number of new household connections per 1,000 people."
+      },
+      {
+        "criterion": "Econometric mediation / headline finding interpretation",
+        "page": "PDF p. 16 (journal p. 429)",
+        "quote": "for the creation of connections is local government equity investment in PDAMs,"
+      }
+    ],
+    "headline_estimate_summary": "Water Hibah (WH) household piped water connections models (Outcome: log of number of new household water connections per 1,000 people; N = 105 pooled kabupaten/kota-year observations across 2010–11; covariates: log population, % urban, % poor, lagged % population with access to water, log GRDP per capita; fiscal inputs in constant-2000 Rp per capita; robust/bootstrapped t-statistics; SEs and CIs not printed):\n- Table 8 (PDF p. 15 / p. 428), Preferred Endogenous-Investment IV Model (R2 = 0.413): WH program participation dummy beta = 0.3816 (t = 1.58, ns, implied SE = 0.2415; positive sign = more new household connections, but conditioned on predicted PDAM equity investment); Predicted PDAM equity investment per capita beta = 0.0002 (t = 2.30, p < 0.05; implied unit cost = Rp 4.3M/connection in 2010–11 prices). Exogenous OLS comparison (R2 = 0.472): WH dummy beta = 0.4915 (t = 2.77, p < 0.05, implied SE = 0.1774); Investment per capita beta = 0.0001 (t = 4.07, p < 0.05; implied unit cost = Rp 6.3M/connection).\n- Table 9 (PDF p. 15 / p. 428, interaction test, N = 105): Endogenous model WH dummy beta = 0.5523 (t = 1.90, printed with ** though two-sided p ~ 0.06), Investments per capita beta = 0.0005 (t = 1.75, p < 0.10), WH dummy x investments per capita beta = -0.0002 (t = -0.99, ns; exogenous interaction beta = 0.0000, t = 0.15, ns).\n- Table 10 (PDF p. 17 / p. 430, disaggregating funding source, N = 105; note table footnote mislabels DV as equity investment): Endogenous model Treatment dummy beta = 0.2892 (t = 1.04, ns), Hibah-financed investments per capita beta = 0.0004 (t = 1.71, p < 0.10; Rp 2.5M/connection), Other revenue-financed investments per capita beta = 0.0001 (t = 1.69, p < 0.10; Rp 6.9M/connection). Exogenous model: Treatment dummy beta = 0.3034 (t = 1.62, ns), Hibah-financed investments per capita beta = 0.0003 (t = 6.16, p < 0.05; Rp 2.9M/connection), Other revenue-financed investments per capita beta = 0.0001 (t = 3.42, p < 0.05; Rp 8.2M/connection).\n- Intermediate & non-water outcomes: WH hurdle model for per-capita PDAM equity investment (Table 7, PDF p. 14 / p. 427, N = 105/73) yields WH dummy = +739.1 constant-2000 Rp/capita or Rp 2,141 in 2010–11 prices (z = 3.20, p < 0.05, endogenous) and Hibah per capita = 0.815 (z = 2.50, p < 0.05). P2D2 aggregate all-sector capital spending (Tables 3–4, PDF pp. 10, 12, N = 218) yields P2D2 dummy = -0.058 (t = -0.86, ns) alone, and P2D2 x log DAK per capita = +0.216 (t = 2.43, p < 0.05).",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Quasi-experimental (\"doubly robust\") propensity score matching (1:1 nearest-neighbour without replacement) combined with pooled cross-sectional OLS, two-part hurdle, and instrumental-variables (bootstrapped SE) regressions in Indonesia, using local governments (kabupaten and kota) and their municipal water utilities (PDAMs) as the unit of analysis. Two pilot programs are analysed: (1) Water Hibah (2010–11): 35 treatment local governments matched on 2008–09 baseline covariates to 35 control local governments (from 65 slated for 2013 entry), with 1 treatment unit dropped off common support = 34 treatment and 34 control local governments, yielding N = 105 pooled local government-year observations (N = 73 positive-investment observations in Table 6 hurdle stage 2); and (2) P2D2 / DAK Reimbursement (2011–12, all-sector capital spending): two-stage PSM matching 5 treatment to 5 control provinces and 68 treatment to 68 control local governments (1 dropped off common support = 67 matched pairs), yielding N = 218 pooled local government-year observations in regressions (Tables 3–4).",
+    "study_id": "S636"
+  }
+}

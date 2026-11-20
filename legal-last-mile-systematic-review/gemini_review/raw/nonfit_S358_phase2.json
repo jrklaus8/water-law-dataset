@@ -1,0 +1,127 @@
+{
+  "study_id": "S358",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ff9377d55ada61b0c2ab6d99a083315c153881c539011109e1d90e16f453ee67",
+  "input_text_sha256": "b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903",
+  "prompt_sha256": "1ccb92eed24406b599d06a4d09ca8829ea32402143958323d9e58bcf0494caae",
+  "started_at": "2026-11-20T01:06:32.735474+00:00",
+  "completed_at": "2026-11-20T01:08:09.995967+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S358\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S358\",\n  \"record_id\": \"R17B1B3A7B266\",\n  \"order\": 4,\n  \"blind_rationale\": \"Blind reading of the full text confirms that S358 (Williams et al., 2025) does not belong in SWiM Families A, B or C (`none_nonfit`) and warrants a Criterion 4 scope flag (`E04` hydrological/environmental resource state). First, although the authors use the label \\\"access\\\" in their conceptual \\\"trivalent framework\\\" to describe predictor variables (GMA Active Management Area vs Non-Designated Area status, Tribal vs State SDWA primacy, CWS vs exempt private Domestic Well Area status, and Census demographics), the actual dependent variable in the Abstract and all four regression tables (Tables 2, 3, A1 and A2) is physical subbasin aquifer water-level decline/change (`ft/year` from ADWR index wells over 2001–2020 and 2011–2020). Aquifer water-table depletion is an environmental water-resource quantity outcome (`E04`), not household or community drinking-water access, connection, coverage, service continuity or affordability. Second, groundwater level stability cannot even serve as a monotonic proxy for safe drinking-water access in this study because rising/stabilizing groundwater levels mobilize contaminants and significantly increase both arsenic and nitrate detection and MCL exceedances (`OR = 1.01` and `OR = 1.05`, `p < 0.001`, p. 15). Third, while Section 3.5 (p. 15) briefly mentions un-tabulated models predicting regulatory `MCLExceeded` from Non-Designated Area (`NDA`) status, no standard errors or CIs are reported, the dataset pools EPA CWS compliance samples with USGS/ADEQ private/ambient groundwater observations, and the effects run in opposite directions across contaminants (`OR = 1.11, p = 0.004` for arsenic vs `OR = 0.48, p < 0.001` for nitrate). Fourth, the paper exhibits severe internal statistical reporting anomalies: Table 2 mislabels exponentiated odds ratios `exp(est.)` as \\\"Log Odds\\\"; Table 3 models a continuous water-level response yet still exponentiates linear coefficients into astronomical \\\"Log Odds\\\" values (e.g. `6.27E+39` for arsenic and `3305.44` for Tribal primacy) with reversed signs relative to Table 2; and Tables A1–A2 copy the continuous-model coefficients from Table 3 while mislabeling the response footnote as a binary decline variable (`1 = decline`), with tiny standard errors indicating regressions were estimated at the water-sample level (`27,334` arsenic / `47,783` nitrate records) rather than across the `1,881` service areas without clustering adjustments documented. If an exposure-only classification were forced, GMA/SDWA regulatory oversight and CWS regulation would map closest to Family C (or Tribal sovereignty to Family A), but `none_nonfit` (and PI review under `E04`) is clearly required because no household/service access outcome is estimated.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"no_fails_c4_e04_or_e07\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Headline regulatory estimate in Abstract (PDF p. 1)\",\n      \"page\": \"PDF p. 1\",\n      \"quote\": \"reduces groundwater decline risk (OR = 0.62, p < 0.001), whereas state–primacy areas show\"\n    },\n    {\n      \"criterion\": \"Unit of analysis and supply-type breakdown (PDF p. 8)\",\n      \"page\": \"PDF p. 8\",\n      \"quote\": \"service areas, 55.3% were designated as CWS and 44.7% were designated as DWAs.\"\n    },\n    {\n      \"criterion\": \"Criterion 4 primary outcome definition in Table 2 (PDF p. 16)\",\n      \"page\": \"PDF p. 16\",\n      \"quote\": \"Response Variable: mean annual rate of water level decline over 20 yrs and 10 yrs −binary variable, 1 = decline.\"\n    },\n    {\n      \"criterion\": \"Secondary un-tabulated MCL exceedance association in Section 3.5 (PDF p. 15)\",\n      \"page\": \"PDF p. 15\",\n      \"quote\": \"differing associations: positive for arsenic (Estimate = 0.101, p = 0.004, OR = 1.11) and\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Primary tabulated models (Table 2, PDF p. 16) estimate multivariate logistic regressions of binary subbasin groundwater level (GWL) decline (1 = decline over 20 years [2001–2020] and 10 years [2011–2020]) on regulatory/policy and binary water-quality predictors (note: Table 2 mislabels the Odds Ratio column exp(est.) as 'Log Odds'): (1) SDWA Primacy (Tribal vs State): in the Arsenic model, 20-yr GWL decline est. = -0.484, SE = 0.008, Statistic = -57.086, p < 0.001, OR = 0.62 (Abstract headline); 10-yr est. = -0.367, SE = 0.009, Statistic = -40.059, p < 0.001, OR = 0.69; in the Nitrate model, 20-yr est. = -0.173, SE = 0.017, Statistic = -10.289, p < 0.001, OR = 0.84; 10-yr est. = -0.112, SE = 0.02, Statistic = -5.725, p < 0.001, OR = 0.89. (2) GMA Designation (Non-Designated Area [NDA] vs designated AMA/INA): in the Arsenic model, 20-yr GWL decline est. = 0.431, SE = 0.008, Statistic = 51.122, p < 0.001, OR = 1.54; 10-yr est. = 0.418, SE = 0.009, Statistic = 45.877, p < 0.001, OR = 1.52; in the Nitrate model, 20-yr est. = 0.300, SE = 0.007, Statistic = 43.109, p < 0.001, OR = 1.35; 10-yr est. = 0.178, SE = 0.008, Statistic = 22.100, p < 0.001, OR = 1.20. (3) Supply Type (unregulated Domestic Well Area [DWA] vs SDWA-regulated Community Water System [CWS]): Nitrate model 20-yr est. = 0.033, SE = 0.006, Statistic = 5.758, p < 0.001, OR = 1.03 (10-yr est. = 0.014, SE = 0.007, p = 0.029, OR = 1.01); Arsenic model 20-yr est. = 0.014, SE = 0.007, p = 0.058, OR = 1.01 (10-yr est. = -0.024, SE = 0.008, p = 0.003, OR = 0.98). Continuous GWL models (Table 3, PDF p. 17; Tables A1–A2, PDF pp. 25–26, controlling for aquifer type, contaminant concentration, demographics, housing and interactions) show reversed signs and improperly exponentiated linear coefficients (e.g. 20-yr NDA est. = -5.989 [SE = 0.286] and -10.46 [SE = 0.330], p < 0.001; Tribal Primacy est. = 6.621 [SE = 0.684] and 8.103 [SE = 0.330], p < 0.001; % Black est. = 0.698, SE = 0.03, p < 0.001, OR = 2.01). Secondary text-only estimates (Section 3.5, PDF p. 15, no SEs reported) regress MCL exceedance on NDA status: arsenic MCL exceedance Estimate = 0.101, p = 0.004, OR = 1.11; nitrate MCL exceedance Estimate = -0.733, p < 0.001, OR = 0.48.\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Observational spatiotemporal ecological study in Arizona, USA, across N = 1,881 mapped groundwater-supplied drinking water service areas (55.3% SDWA-regulated Community Water Systems [CWS] and 44.7% unregulated private Domestic Well Areas [DWAs]), linked to ADWR subbasin index-well groundwater level change rates over 20-year (2001–2020) and 10-year (2011–2020) periods and 27,334 arsenic and 47,783 nitrate monitoring observations (1998–2019; 97.8% of arsenic and 54.5% of nitrate observations imputed below MDL). Standard errors in Tables 2, 3, A1 and A2 (e.g. SE = 0.006–0.009) indicate regressions were fit at the contaminant-observation level rather than N = 1,881 service areas.\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:17:23.702197+00:00\",\n  \"file_sha256\": \"ff9377d55ada61b0c2ab6d99a083315c153881c539011109e1d90e16f453ee67\",\n  \"input_sha256\": \"b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S358\",\n  \"outcome_family\": \"effective_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Tribal oversight/primacy regulatory jurisdiction over groundwater management, vs. state-primacy regulatory jurisdiction, across 1,881 groundwater-supplied drinking water service areas in Arizona.\",\n  \"comparator_definition\": \"State-primacy regulatory jurisdiction areas.\",\n  \"effect_measure\": \"multivariate regression, adjusted odds ratio (OR)\",\n  \"effect_estimate\": \"Tribal oversight significantly reduced groundwater decline risk (OR=0.62, p<0.001), while state-primacy areas showed mixed effects on the same outcome. (The study also reports real ORs for racial/ethnic population composition -- OR=2.01 for higher-Black-population communities, OR=0.92 for Hispanic/Latino communities, both p<0.001 -- but per the same reasoning that excluded S135 from this file, population demographic composition is not itself a legal/institutional exposure, so Tribal-oversight jurisdiction is recorded here as the primary effect instead.)\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"1,881 groundwater-supplied drinking water service areas\",\n  \"direction\": \"negative/protective (Tribal oversight jurisdiction associated with lower odds of groundwater decline)\",\n  \"adjusted\": \"adjusted (multivariate regression controlling for race/ethnicity, gender composition, age 65+, household/family structure, institutional/migrant-worker housing, designated-management-area status)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S358; source Williams et al. 2025, Water 17(7):1097. Tribal oversight/primacy is a genuine jurisdictional legal-recognition variable (which government has regulatory authority) directly analogous to PROJECT_SPEC.md S8 Family A's 'legal recognition and access' framing, though it operates at the level of environmental/water-resource regulatory authority rather than household tenure or service-eligibility status as in S084/S085/S142 -- flagged as a looser fit than those three, not a like-for-like replication. A26 ruling 2026-10-14 by CK: moved from Family A to the reasoned non-fits; the outcome is groundwater decline and contamination risk at the level of 1,881 groundwater-supplied service areas (aquifer availability), not household connection, access or service quality.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md section 2 decision tree and PROJECT_SPEC.md section 8: reasoned non-fit, no family assigned (A26 ruling 2026-10-14 by CK, formerly Family A): the outcome is groundwater decline and contamination risk at the level of 1,881 groundwater-supplied service areas (aquifer availability), not household connection, access or service quality, so it does not match Family A, B or C. It is a single study with this exposure (Tribal oversight against state primacy) and this outcome, so pooling is not possible.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=109828, sha256=b4541bd9699e62db4465b869579a5ca5b9e5341eefa935b91c5f52b1e151f903]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Adversarial audit of S358 (Williams et al., 2025) identifies both material extraction/specification discrepancies in `effect_sizes.csv` (indicating Abstract-only extraction) and a clear scope inconsistency under the CK A24/A26/A28 eligibility standard (`E04`).\n\n1. Extraction & Statistical Discrepancies in `effect_sizes.csv`: While the stored point estimates (`OR = 0.62, p < 0.001` for Tribal primacy; `OR = 2.01` for % Black and `OR = 0.92` for % Hispanic/Latino, `p < 0.001`) match the Abstract (PDF p. 1), the stored row leaves `standard_error`, `lower_CI` and `upper_CI` blank even though Table 2 (PDF p. 16) prints the exact regression coefficient and standard error (`est. = −0.484, SE = 0.008, Statistic = −57.086`, derivable 95% CI `[0.61, 0.63]`). Worse, `adjusted` falsely claims that `OR = 0.62` controls for race/ethnicity, gender, age 65+, household/family structure and institutional/migrant-worker housing. Inspection of the regression tables shows that `OR = 0.62` comes from the 20-year binary Arsenic + Water Policy model in Table 2 (controlling only for binary arsenic detection/exceedance, GMA NDA status, karst aquifer and DWA supply type; in the parallel Nitrate model in Table 2, Tribal primacy is `OR = 0.84`, not `0.62`), whereas `OR = 2.01` and `OR = 0.92` come from the separate continuous-nitrate specification in Table 3 / Table A1 (PDF pp. 17, 25), where `SDWA Primacy (Tribal)` has reversed positive linear estimates (`6.621, SE = 0.684` and `8.103, SE = 0.330`). Moreover, `exposure_definition` conflates federal Safe Drinking Water Act public-system oversight (`SDWA Primacy (Tribal)`) with groundwater withdrawal regulation (`GMA Designation (NDA)`), `outcome_family` mislabels physical subbasin water-table depletion as `effective_access`, and `sample_size` cites the `1,881` mapped service areas without noting that the regressions were estimated on unclustered water-quality sample datasets (`27,334` arsenic and `47,783` nitrate observations, PDF p. 9), producing severely deflated standard errors (`SE = 0.006–0.009`).\n\n2. Internal Reporting Defects in the Source Paper: Williams et al. (2025) mislabel exponentiated odds ratios `exp(est.)` as `Log Odds` in Table 2; exponentiate continuous linear water-level coefficients (`ft/year`) in Table 3 into meaningless `Log Odds` values (`6.27E+39` for arsenic, `3305.44` and `751.01` for Tribal primacy) with unexplained sign reversals relative to Table 2; and copy Table 3's continuous-model slopes into Tables A1–A2 while mislabeling the response footnote as a binary decline variable (`1 = decline`).\n\n3. Non-Fit Verdict vs Review Scope Eligibility (`E04`): Conditional on keeping S358 in the review, CK's A26 decision to remove it from Family A (`reasoned non-fit`) would be fully justified because no SWiM family pools physical aquifer water-table elevation (`ft/year`). However, that very A26 rationale (`the outcome is groundwater decline and contamination risk at the level of 1,881 groundwater-supplied service areas (aquifer availability), not household connection, access or service quality`) establishes that S358 fails Criterion 4 (`E04` hydrological/environmental resource state). Although the authors apply the conceptual label `access` to regulatory and Census predictors, all four regression tables model subbasin ADWR index-well water-level change—which is not even a monotonic proxy for safe drinking water because rising/stabilizing water levels mobilize arsenic and nitrate (`OR = 1.01` and `1.05, p < 0.001`, PDF p. 15). Nor can the un-tabulated text mentions of `MCLExceeded` (PDF p. 15) rescue eligibility: no Tribal-primacy point estimate or SE is reported for `MCLExceeded`, and the underlying contamination dataset mixes EPA CWS compliance records with USGS/ADEQ private/ambient groundwater samples (`97.8%` of arsenic below MDL). Under the same CK scope standard that excluded non-household outcomes (e.g. `S1121`), S358 should be flagged for PI exclusion under `E04`, rendering SWiM family assignment moot.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Headline Tribal primacy estimate in Abstract (PDF p. 1)",
+        "page": "PDF p. 1",
+        "quote": "reduces groundwater decline risk (OR = 0.62, p < 0.001), whereas state–primacy areas show"
+      },
+      {
+        "criterion": "Physical aquifer water-level change outcome from ADWR index wells (PDF p. 8)",
+        "page": "PDF p. 8",
+        "quote": "evaluated using rates of water level change as proxies for available quantities. Groundwater"
+      },
+      {
+        "criterion": "Sample-level observation counts underlying regression standard errors (PDF p. 9)",
+        "page": "PDF p. 9",
+        "quote": "The dataset encompasses 27,334 arsenic observations and 47,783 nitrate"
+      },
+      {
+        "criterion": "Table 2 primary dependent variable definition (PDF p. 16)",
+        "page": "PDF p. 16",
+        "quote": "Response Variable: mean annual rate of water level decline over 20 yrs and 10 yrs −binary variable, 1 = decline."
+      }
+    ],
+    "nonfit_classification_verdict": "moot_study_appears_ineligible",
+    "number_verification_detail": "Discrepancies found between `effect_sizes.csv` and the full text (indicating Abstract-only extraction): (1) Point estimates `OR=0.62, p<0.001` (Tribal primacy), `OR=2.01, p<0.001` (% Black) and `OR=0.92, p<0.001` (% Hispanic/Latino) match the Abstract (PDF p. 1), Table 2 (PDF p. 16) and Table A1 (PDF p. 25), and `1,881` matches the mapped service-area count (PDF pp. 1, 8). (2) Omitted SE and derivable CI: `standard_error`, `lower_CI` and `upper_CI` are left blank in `effect_sizes.csv`, whereas Table 2 (PDF p. 16, 20-Year GWL Arsenic binary model) explicitly prints `est. = −0.484`, `Std Error = 0.008`, `Statistic = −57.086`, `p < 0.001`, `OR = 0.62` (mislabeled `Log Odds` in the table header; `exp(−0.484) = 0.616`, 95% CI `[0.61, 0.63]`). In the companion 20-Year GWL Nitrate binary model in Table 2, `SDWA Primacy (Tribal)` is `OR = 0.84` (`est. = −0.173, SE = 0.017`), and 10-Year ORs are `0.69` (Arsenic) and `0.89` (Nitrate). (3) Conflated covariate adjustment (`adjusted` field): `effect_sizes.csv` states that `OR = 0.62` came from a multivariate regression controlling for race/ethnicity, gender, age 65+, household/family structure, institutional/migrant-worker housing and designated-management-area status. In reality, Table 2's `OR = 0.62` model includes ONLY binary arsenic (`Detect`, `MCL Exceeded`) and four policy/hydrogeology indicators (`GMA Designation (NDA)`, `SDWA Primacy (Tribal)`, `Aquifer Type (Karst)`, `Supply Type (DWA)`), whereas the demographic/housing ORs (`2.01` for Black, `0.92` for Hispanic/Latino) come from Table 3 / Table A1 (PDF pp. 17, 25, 20-Year continuous Nitrate model), where `SDWA Primacy (Tribal)` has a reversed positive linear slope `est. = 6.621, SE = 0.684` (improperly exponentiated as `751.01`, and `8.103, SE = 0.330` / `3305.44` in the Arsenic model). (4) Effective sample size: while `1,881` service areas were mapped, the tiny SEs (`0.006–0.009`) show regressions were fit at the contaminant-sample level (`27,334` arsenic and `47,783` nitrate observations, PDF p. 9) rather than `N = 1,881` service areas. (5) Exposure/outcome misdescription: `SDWA Primacy (Tribal)` is Safe Drinking Water Act public-water-system primacy rather than GMA groundwater withdrawal jurisdiction, and `outcome_family = effective_access` contradicts the physical subbasin aquifer decline dependent variable.",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+    "study_id": "S358"
+  }
+}

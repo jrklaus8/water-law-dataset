@@ -1,0 +1,127 @@
+{
+  "study_id": "S1140",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d54181db76617159b7c1847ac0f4fca0d1562135a062e6b9017577b13ad33bdb",
+  "input_text_sha256": "b7b09c537765e8a9e94dfff877180f840b12b48ba65b505659ed4116135ee861",
+  "prompt_sha256": "c03fe110d0074fe98469bd63d59a0ff4b6105dbe0c323e29d84ad128fa42ea91",
+  "started_at": "2026-11-20T01:13:58.949706+00:00",
+  "completed_at": "2026-11-20T01:15:42.441570+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S1140\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S1140\",\n  \"record_id\": \"R102EBEF65059\",\n  \"order\": 19,\n  \"blind_rationale\": \"1. SWiM Family Non-Fit Rationale (`none_nonfit`): Although the focal network exposures—ties to external partner organizations (`Number of partners`), two-step bridging ties (`Indirect reach`), and overlapping co-partner cliques (`Subgroup cohesion among partners`)—are thematically adjacent to SWiM Family B (external support, participation, and trust), excluding S1140 from Families A, B, and C as a reasoned non-fit is strongly justified because the dependent variable does not measure water or sanitation service access, coverage, continuity, quality, or affordability. Instead, it is a binary indicator of pre-construction competitive grant approval (`1` = secured RWSSP funding during the FY 2006/2007 planning phase; `0` = unfunded) prior to the development, implementation, and post-implementation phases. Synthesizing pre-construction grant-application win odds alongside realized household or community water service access outcomes in Family B would conflate upstream grant-seeking success with actual service delivery.\\n\\n2. Scope Audit — Narrow Criterion 2 (`no_fails_narrow_c2_e03`) and Criterion 4 (`no_fails_c4_e04_or_e07`): S1140 should also be flagged for PI scope review on both criteria. First, under narrow Criterion 2 (`E03`), all 125 applicant communities face the exact same RWSSP institutional and regulatory rules; the three tested hypotheses examine informal, self-organizing ego-network topology metrics (count of organizations contacted quarterly or more, count of communities within two organizational steps, and percentage of copartner project overlap) without disaggregating regulatory contacts from banking, NGO, or partisan contacts (PDF p. 21, journal p. 327). Formal RWSSP grant-ranking criteria (expected household time savings, % marginalized villagers eligible for a 50% matching-cash subsidy, km distance to a bank eligible for a 50% transport subsidy, and beneficiary count) enter only as continuous community/proposal control variables rather than direct rule-intervention tests. Second, under Criterion 4 (`E04`), the author explicitly notes that the study examines only the planning phase and uses grant funding approval as the sole performance metric, leaving project implementation and actual water delivery unmeasured (PDF p. 21, journal p. 327).\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"no_fails_c4_e04_or_e07\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Study design and sample (N = 125 applicant communities in 2007)\",\n      \"page\": \"PDF p. 4 (journal p. 310)\",\n      \"quote\": \"from 125 communities that applied to RWSSP for funding in 2007.\"\n    },\n    {\n      \"criterion\": \"Criterion 2 (undifferentiated informal network ties rather than a legal/regulatory rule)\",\n      \"page\": \"PDF p. 21 (journal p. 327)\",\n      \"quote\": \"This study also did not disaggregate the types of resource exchanges\"\n    },\n    {\n      \"criterion\": \"Criterion 4 (planning-phase funding approval outcome rather than service access)\",\n      \"page\": \"PDF p. 21 (journal p. 327)\",\n      \"quote\": \"the planning phase of the projects, using funding success as the only measure of\"\n    },\n    {\n      \"criterion\": \"Headline estimate (effect of number of partners on funding probability)\",\n      \"page\": \"PDF p. 15 (journal p. 321)\",\n      \"quote\": \"probability of funding success rises to 0.38 and 0.99, respectively.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Table 3 (PDF p. 16, journal p. 322), Full Model maximum-likelihood logit regression predicting binary RWSSP grant funding approval in FY 2006/2007 (1 = funded [66/125], 0 = unfunded [59/125]; N = 125 communities; Huber-White robust SEs clustered across 37 UCINET hierarchical network clusters; Pseudo R2 = 0.43, Wald chi2 = 120.25, p < .01; no 95% CIs printed): (1) Number of partners (count of organizations contacted >= quarterly, range 1-16, mean 6.6, SD 3.16): log odds = 0.55, SE = 0.10, p < .01 (predicted funding probability rises from 0.02 at 1 partner with 0 reach to 0.38 at 7 partners and 0.99 at 16 partners, holding covariates at means, PDF p. 15); (2) Indirect reach (count of other communities within 2 organizational steps, range 0-38, mean 12.08, SD 11.09): log odds = 0.06, SE = 0.03, p < .05 (predicted probability at 1 partner rises from 0.02 at 0 reach to 0.044 at 12 and 0.31 at 38, PDF p. 16); (3) Subgroup cohesion among partners (mean % of copartners sharing projects, range 0-100, mean 15.86, SD 15.97): log odds = 0.02, SE = 0.01, p < .05 (predicted probability rises from 0.43 at 0% to 0.51 at 16% and 0.86 at 100%, PDF p. 16). Adjusted for RWSSP proposal-criteria controls and district dummies (vs Kavre; note PDF font renders minus signs as leading '2'): Time saving (hours/household) = 0.43 (SE = 0.15, p < .01), Social inclusion (% marginalized villagers) = 0.008 (SE printed as 0.0006, ns [likely typo for 0.006; Control-Only model = 0.002, SE = 0.007, ns]), Remoteness (km to bank) = -0.08 (SE = 0.04, p < .05), Project size (beneficiaries) = -0.001 (SE = 0.0009, p < .05), Makwanpur = 2.24 (SE = 0.75, p < .01), Sindhuli = -1.30 (SE = 0.49, p < .01), Sindhupalchowk = 1.39 (SE = 0.68, p < .05), Dhading = 1.75 (SE = 0.73, p < .05), Constant = -4.71 (SE = 1.03).\",\n  \"narrow_criterion2_rule_present\": \"no_fails_narrow_c2_e03\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Cross-sectional observational network study combining retrospective on-site interviews of Water Supply and Sanitation User Committee (WSUC) officers (conducted July-October 2007) with Rural Water Supply and Sanitation Program (RWSSP) administrative records in Nepal. Unit of analysis: rural village community applying for a gravity-flow drinking water supply project in FY 2006/2007 across 5 districts in Nepal's Central Development Region (Kavre, Makwanpur, Sindhuli, Sindhupalchowk, and Dhading). Analytic sample: N = 125 applicant communities (exhaustive census of all 66 funded and 59 unfunded gravity-flow project applications in the 5 selected districts, representing ~74% of CDR projects and ~18% of RWSSP projects nationwide; average 683.90 beneficiaries per project).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-20T01:03:16.170062+00:00\",\n  \"file_sha256\": \"d54181db76617159b7c1847ac0f4fca0d1562135a062e6b9017577b13ad33bdb\",\n  \"input_sha256\": \"b7b09c537765e8a9e94dfff877180f840b12b48ba65b505659ed4116135ee861\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S1140\",\n  \"outcome_family\": \"service_coverage\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Village communities' self-organized network capital in applying for Rural Water Supply and Sanitation Program (RWSSP) infrastructure funding, Nepal: (1) number of organizational partners, (2) indirect bridging reach to other communities via partners, (3) subgroup cohesion among partners.\",\n  \"comparator_definition\": \"Communities with fewer partners, less indirect reach, and lower partner cohesion, holding other covariates at their means.\",\n  \"effect_measure\": \"Logistic regression, log odds / predicted probability\",\n  \"effect_estimate\": \"Number of partners: log odds 0.55*** (SE 0.10); predicted funding-success probability rises from 0.02 (1 partner) to 0.38 (7 partners, mean) to 0.99 (16 partners, maximum). Indirect reach: probability rises from 0.02 (0 reach) to 0.044 (12, mean) to 0.31 (38, maximum). Subgroup cohesion: probability rises from 0.43 (0, minimum) to 0.51 (16, average) to 0.86 (100, maximum). Remote communities significantly less likely to be funded.\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"0.10 (number of partners); Hubert-White robust, clustered (UCINET hierarchical clustering, 37 clusters)\",\n  \"sample_size\": \"RWSSP applicant communities, Nepal\",\n  \"direction\": \"positive (greater network capital -- partners, reach, cohesion -- increases probability of securing water/sanitation infrastructure funding)\",\n  \"adjusted\": \"adjusted (controls for project size, remoteness, time savings, social inclusion, regional dummies)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S1140; source Shrestha 2013, Journal of Public Administration Research and Theory, Table 3 and Figure 2. Family B (administrative assistance/access): logistic-regression estimates with robust clustered standard errors directly isolating a network-capital/bureaucratic-assistance institutional mechanism's effect on communities' success in securing water/sanitation infrastructure program funding. A29 ruling 2026-10-14 by CK: moved from Family B to the reasoned non-fits; the outcome is whether a village community in Nepal secured Rural Water Supply and Sanitation Program (RWSSP) infrastructure funding (the log odds of funding success rise by 0.55 with each organisational partner), a community-level application outcome, not household connection, access or service quality.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md section 2 decision tree and PROJECT_SPEC.md section 8: reasoned non-fit, no family assigned (A29 ruling 2026-10-14 by CK, formerly Family B): the outcome is whether a village community in Nepal secured Rural Water Supply and Sanitation Program (RWSSP) infrastructure funding (the log odds of funding success rise by 0.55 with each organisational partner), a community-level application outcome, not household connection, access or service quality, so it does not match Family A, B or C. It is a single study with this exposure (self-organised network capital) and this outcome, so pooling is not possible.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: b7b09c537765e8a9e94dfff877180f840b12b48ba65b505659ed4116135ee861) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=84494, sha256=b7b09c537765e8a9e94dfff877180f840b12b48ba65b505659ed4116135ee861]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Scope & Eligibility Audit (`likely_ineligible_flag_e03_e04_e05_e07` / `moot_study_appears_ineligible`): Applying the exact 2026-10-13 / 2026-10-14 CK scope standard from A24/A26/A28—under which non-legal sociological exposures such as social trust (S1144) were excluded under E03 and upstream administrative approval outcomes such as building permits (S1121) were excluded under E04—S1140 fails both narrow Criterion 2 (E03) and Criterion 4 (E04) and should be flagged for PI removal from the 1,072-study corpus. First, on Criterion 2 (E03), all 125 applicant communities face the exact same RWSSP institutional and regulatory rules; the three focal hypotheses test informal, self-organized network/social capital metrics (count of external partner organizations contacted quarterly or more, two-step indirect reach to other communities, and copartner project-overlap cohesion, explicitly grounded in Granovetter 1973, Coleman 1988, Burt 1992/2000, and Putnam 2000). Although regulatory offices are among several possible contact types alongside banks, NGOs, and political parties, Shrestha explicitly notes on PDF p. 21 (journal p. 327) that the network tie count does not disaggregate regulatory exchanges from financial, technical, or partisan contacts, while formal RWSSP subsidy/ranking rules (% marginalized villagers eligible for a 50% cash-match subsidy, km distance to a bank for the 50% transport subsidy, expected time savings, and beneficiary count) enter solely as non-focal control variables. Second, on Criterion 4 (E04), as CK's own A29 ruling recognized, the binary dependent variable (1 = secured FY 2006/2007 RWSSP project funding, 0 = unfunded) captures competitive proposal approval at the end of the pre-construction planning phase—prior to the development, implementation, and post-implementation phases (PDF p. 5, p. 21)—and measures zero realized household or community water connection, service coverage, quality, continuity, or affordability.\n\n2. Non-Fit Audit & Internal Database Inconsistency: Because S1140 appears scope-ineligible under E03 and E04, its SWiM family placement is substantively moot (`moot_study_appears_ineligible`). However, conditional on the PI retaining S1140 in the review, CK's A29 ruling moving the study out of Family B into `reasoned non-fit` would be fully justified: pooling pre-construction grant-application win probabilities with realized household water/sanitation access outcomes in Family B would conflate upstream grant-seeking network capital with actual last-mile service delivery. Notably, `effect_sizes.csv` retains an internal coding contradiction from before A29: `outcome_family` is still coded as `\"service_coverage\"` even though `exclusion_from_pooling_reason` explicitly states that the outcome is `\"a community-level application outcome, not household connection, access or service quality\"`.\n\n3. Statistical Extraction Audit (`no_discrepancy_found`): While the headline Table 3 point estimate (`0.55***`), SE (`0.10`), cluster count (`37`), and predicted-probability sequences (`0.02 -> 0.38 -> 0.99`, `0.02 -> 0.044 -> 0.31`, and `0.43 -> 0.51 -> 0.86`) match the paper, `effect_sizes.csv` omits the numeric sample size `N = 125` (66 funded, 59 unfunded) from `sample_size` (storing only `\"RWSSP applicant communities, Nepal\"`), omits the Table 3 log-odds coefficients and SEs for the second and third focal exposures (`Indirect reach`: log odds `0.06**`, SE `0.03`; `Subgroup cohesion`: log odds `0.02**`, SE `0.01`), and inaccurately states in `comparator_definition` that covariates are held at their means for all comparisons when both the `0.02` 1-partner baseline and the entire `Indirect reach` probability sequence (`0.02`, `0.044`, `0.31`) hold `Number of partners = 1` (minimum) rather than its mean of `6.6` (rounded to `7` in text).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Sample size N = 125 applicant communities (omitted as a number from effect_sizes.csv sample_size)",
+        "page": "PDF p. 4 (journal p. 310)",
+        "quote": "from 125 communities that applied to RWSSP for funding in 2007."
+      },
+      {
+        "criterion": "Headline predicted probabilities for Number of partners",
+        "page": "PDF p. 15 (journal p. 321)",
+        "quote": "probability of funding success rises to 0.38 and 0.99, respectively."
+      },
+      {
+        "criterion": "Criterion 4 failure (E04: planning-phase grant approval rather than water service access)",
+        "page": "PDF p. 21 (journal p. 327)",
+        "quote": "the planning phase of the projects, using funding success as the only measure of"
+      },
+      {
+        "criterion": "Criterion 2 failure (E03: undifferentiated informal network ties rather than a legal/regulatory rule)",
+        "page": "PDF p. 21 (journal p. 327)",
+        "quote": "This study also did not disaggregate the types of resource exchanges"
+      }
+    ],
+    "nonfit_classification_verdict": "moot_study_appears_ineligible",
+    "number_verification_detail": "Verified against Shrestha (2013, JPART 23:307-329; Advance Access May 10, 2012), Tables 1 and 3 (PDF pp. 11, 15-16; journal pp. 317, 321-322):\n- Exact matches: Table 3 Full Model log odds for `Number of partners` = `0.55***` (`p < .01`), SE = `0.10`, Huber-White robust SEs (spelled `Hubert-White` in both paper and CSV) clustered across `37` UCINET hierarchical clusters (PDF p. 15 fn. 10). Predicted funding probabilities match text on PDF pp. 15-16: `Number of partners` rises from `0.02` (at 1 partner, 0 indirect reach) to `0.38` (at 7 partners; exact Table 1 mean is `6.6`, SD `3.16`, rounded to `7` by author on p. 15) to `0.99` (at 16 partners, max); `Indirect reach` rises from `0.02` (0 reach) to `0.044` (12, rounded from Table 1 mean `12.08`) to `0.31` (38, max); `Subgroup cohesion among partners` rises from `0.43` (0, min) to `0.51` (16, rounded from Table 1 mean `15.86`) to `0.86` (100, max). Qualitative note on remoteness matches Table 3 (`Remoteness of the community` log odds = `-0.08**`, SE = `0.04`, `p < .05`, rendered as `20.08**` due to PDF minus-sign glyph).\n- Discrepancies / omissions in `effect_sizes.csv`: (1) `sample_size` stores only `\"RWSSP applicant communities, Nepal\"` and omits the exact numeric sample size `N = 125` (66 funded, 59 unfunded; printed on PDF pp. 4, 10, 11, and Table 3 p. 16 `N (number of cases) = 125`); (2) `effect_estimate` and `standard_error` report predicted probabilities for `Indirect reach` and `Subgroup cohesion` but omit their Table 3 log-odds point estimates and SEs (`Indirect reach`: log odds = `0.06**`, SE = `0.03`, `p < .05`; `Subgroup cohesion among partners`: log odds = `0.02**`, SE = `0.01`, `p < .05`); (3) `comparator_definition` states `\"holding other covariates at their means\"`, whereas PDF pp. 15-16 specify that the `0.02` probability for 1 partner holds `Indirect reach = 0` (minimum, not mean `12.08`) and the entire `Indirect reach` predicted-probability series (`0.02`, `0.044`, `0.31`) holds `Number of partners = 1` (minimum, isolated community, not mean `6.6`).",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+    "study_id": "S1140"
+  }
+}

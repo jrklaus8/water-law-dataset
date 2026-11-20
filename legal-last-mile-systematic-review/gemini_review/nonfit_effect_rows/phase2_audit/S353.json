@@ -1,0 +1,37 @@
+{
+  "study_id": "S353",
+  "record_id": "R928138B31379",
+  "order": 3,
+  "adversarial_critique": "1. SCOPE & ELIGIBILITY AUDIT (E03 / E05 UNDER A24/A26/A28 STANDARD): Marcillo, Krometis, and Krometis (2021) is an ecological environmental-justice geospatial study asking whether SDWA violation counts across N = 662 geocoded Virginia community water systems (CWSs) vary by zip-code racial/ethnic composition, rurality, and Census homeownership (explicitly used solely as an area-level wealth/SES proxy because 2000 zip-code Census files lacked income and education, p. 4). As Claude's own `effect_estimate` note concedes in referencing excluded study S135, the paper's primary headline exposure (%Black on Health-Based [HB] violations, OR = 1.031) fails narrow Criterion 2 because population demographic composition is not a legal or administrative exposure (E03). To salvage an institutional row under the one-effect-per-study rule, `effect_sizes.csv` extracted a system-level control covariate—binary utility ownership (`Operation: Private` vs. `Public`)—predicting Monitoring & Reporting (`MR`) violations (OR = 1.899). Under the strict 2026-10-13/14 CK standard (`A24/A26/A28`, which excluded non-legal exposures and non-household administrative outcomes like building permits in S1121), this row still fails both narrow Criterion 2 (`E03`) and Criterion 4 (`E05`): (a) on Criterion 2, binary private vs. public utility ownership is a macro provider-ownership attribute, not a last-mile legal/administrative rule governing household service access (the authors themselves caution on p. 7 that the binary public/private indicator does not capture institutional governance differences); and (b) on Criterion 4, `MR` violations measure a utility's administrative failure to test water or file monitoring reports with the state/EPA primacy agency (p. 3)—a regulator-facing utility paperwork/testing compliance count, not household water connection, continuity, affordability, or tap water quality. Moreover, unconnected private-well households and historical boundary/redlining exclusions from CWS service are omitted by design (pp. 3, 8).\n\n2. OUTCOME-CHOICE & DIRECTION AUDIT IF RETAINED: Coding `MR` paperwork/reporting violations under `outcome_family = effective_access` conflates administrative reporting non-compliance with safe drinking-water delivery; the paper's actual water-quality compliance outcome is `HB` violations (MCL/MRDL/treatment-technique breaches), for which `Private vs. Public` ownership was statistically null (OR = 1.425, 95% CI: 0.837, 2.428; Table 1, p. 6). Furthermore, `direction = positive` in `effect_sizes.csv` reflects the raw regression sign (`OR > 1`, more violations) rather than improved household access (higher MR violation odds = worse utility regulatory compliance).\n\n3. NON-FIT VERDICT CONDITIONAL ON RETENTION: Because the study appears likely ineligible (`E03`/`E05`), family assignment is moot (`moot_study_appears_ineligible`). However, if the PI elects to retain S353 as a borderline regulatory-regime study, leaving `synthesis_family` blank (`reasoned non-fit`) is fully justified: provider ownership structure (`Private` vs. `Public` CWS) predicting SDWA regulator reporting violations does not fit Family A (household property/tenure recognition), Family B (bureaucratic assistance/facilitation), or Family C (household-facing administrative/documentation/fee barriers).",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Criterion 4 (MR outcome is utility testing/reporting compliance to regulator, not household access)",
+      "page": "3",
+      "quote": "designate a CWS failure to monitor treatment, test water quality, and/or report"
+    },
+    {
+      "criterion": "Criterion 2 (Homeownership used solely as Census wealth/SES proxy)",
+      "page": "4",
+      "quote": "and homeownership, which is an established socioeconomic status"
+    },
+    {
+      "criterion": "Exact numerical match for stored effect (Private vs. Public MR violations OR and 95% CI)",
+      "page": "5",
+      "quote": "95% CI = 1.455, 2.478), corresponding to an elevated likelihood of incurring a MR violation"
+    },
+    {
+      "criterion": "Criterion 2 (Binary public/private CWS indicator does not capture governance rules)",
+      "page": "7",
+      "quote": "distinction examined in this study and previous work does not examine the impacts of"
+    }
+  ],
+  "nonfit_classification_verdict": "moot_study_appears_ineligible",
+  "number_verification_detail": "All numerical statistics in `effect_sizes.csv` match the source PDF exactly: Private vs. Public CWS ownership on Monitoring & Reporting (MR) violations OR = 1.899, 95% CI [1.455, 2.478], corresponding to '90%' higher likelihood (Section 3.1, p. 5; Table 1, p. 6); %Black on Health-Based (HB) violations OR = 1.031, 95% CI [1.018, 1.045] per 1-percentage-point increase (Section 3.2 & Table 1, p. 6); analytic sample N = 662 geocoded CWSs across n = 886 zip codes over 2006–2016 (Section 2.1–2.2, pp. 2–4, Figure 1); SE and exact p-values are not printed in the paper (significance threshold p < 0.05) and SE is appropriately left blank. Two minor descriptive inaccuracies appear in `effect_sizes.csv` metadata: (1) `adjusted` lists `source` and `race/ethnicity` among the covariates in the MR model, whereas LASSO dropped `Source`, `%Hispanic or Latino` (the sole ethnicity variable), `%Black`, and `%Asian` from the final MR specification while retaining `%American Indian or Alaska Native`, `%Native Hawaii or Pacific Islander`, and the `%Homeownership x %Native Hawaii or Pacific Islander` interaction (Section 2.4, p. 5; Table 1, p. 6); and (2) `effect_measure` repeats the authors' own terminology ('adjusted odds ratio (OR)') for exponentiated negative-binomial regression coefficients on active-year-normalized violation counts, which are technically incidence/rate ratios. Raw `OR = 1.899 > 1` indicates MORE MR violations (worse administrative compliance) under private ownership.",
+  "numbers_match_paper": "yes",
+  "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:08:03.387824+00:00",
+  "file_sha256": "6e0ec6580b30338c8a003f04566db36c31b88079f66177ddeedc77f309b37608",
+  "input_sha256": "41abaef62eee1bd88981482d01ee425215ff26b8c69db830913714b5dfe2f080"
+}

@@ -1,0 +1,37 @@
+{
+  "study_id": "S606",
+  "record_id": "RF8C06439B2CA",
+  "order": 13,
+  "adversarial_critique": "1. Non-fit classification (`justified_nonfit`): CK's A26 ruling (2026-10-14) moving S606 out of Family C to reasoned non-fits is completely justified. Conceptually, China's `hukou` registration institution relates to legal residency status (adjacent to Family A, not Family C), not utility governance or decentralized service delivery. Empirically, however, neither the ecological city-level predictor (`Temporary residents (%)`) nor the outcome (bulk municipal wastewater treatment plant capacity/throughput per 10,000 persons) is construct-compatible with Family A household or settlement legal-recognition/tenure effects on household WASH access. Note on directionality: the raw sign is negative (beta = -0.00164), meaning a higher share of legally unrecognized temporary migrants is associated with lower per-capita wastewater plant capacity (substantively, legal exclusion harms infrastructure supply).\n\n2. Review eligibility & hidden scope vulnerabilities (`borderline_flag_for_pi` for E03/E04): Unlike excluded studies with wholly non-WASH outcomes (e.g., building permits S1121) or wholly non-legal exposures (e.g., social trust S1144, watershed engineering S1020), S606 retains a borderline link to municipal sanitation infrastructure (wastewater treatment) and an official public-security registration category (`hukou` vs. temporary resident registration), explaining why CK kept it as a reasoned non-fit in A26. However, full-text audit reveals that Claude's stored row materially overstated scope fit on both criteria:\n   - Narrow Criterion 2 (`E03` risk): Claude's provenance note calls this \"A clean legal/administrative-status exposure (hukou household registration)\", omitting that the authors deliberately restricted the panel to 2008-2014 to avoid China's 2014 national `hukou` policy reform (p. 784) and measured zero city-level variation in `hukou` eligibility rules or quotas. Instead, the predictor is aggregate city demographic composition (`Temporary residents (%)`), which the authors acknowledge in their limitations (p. 790) cannot isolate planning/governance mechanisms.\n   - Criterion 4 (`E04` risk & mislabeled `outcome_family`): Claude coded `outcome_family = \"service_coverage\"` and mingled non-WASH municipal solid-waste capacity (tons/day) and public green space into `effect_estimate` and `standard_error`. In the paper, the two WASH-related metrics measure back-end municipal sewage treatment plant capacity and treated volume per 10,000 population, and the authors explicitly concede (p. 785) that limited information precludes ascertaining whether the local population directly benefits from pollutant treatment plant construction. Furthermore, because total urban population (permanent + temporary) enters the denominator of per-capita plant capacity, inflows of temporary migrants mechanically dilute per-capita capacity unless capital-intensive plant construction immediately keeps pace. If retained, the PI should reclassify `outcome_family` away from household `service_coverage` and strip non-WASH solid-waste figures from the primary effect fields; under a strict household-access and rule-variation reading, S606 is a strong candidate for E03/E04 exclusion.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Criterion 2 scope risk: 2008-2014 window deliberately excludes the 2014 hukou policy reform",
+      "page": "PDF p. 5 (p. 784)",
+      "quote": "to 2014. Centering on this particular period of time helps minimize the intervening eﬀect attributable to a"
+    },
+    {
+      "criterion": "Criterion 2 exposure proxy: city-level share of temporary residents rather than hukou rule variation",
+      "page": "PDF p. 6 (p. 785)",
+      "quote": "The percent of temporary resident population in a given city is used as the proxy to represent"
+    },
+    {
+      "criterion": "Criterion 4 scope risk: inability to verify direct population benefit from pollution treatment plants",
+      "page": "PDF p. 6 (p. 785)",
+      "quote": "beneﬁts from the construction of pollutant treatment facilities, we conclude that this is a plausible case."
+    },
+    {
+      "criterion": "Headline estimate verification (Table 3 Models 2 and 4 substantive translation)",
+      "page": "PDF p. 9 (p. 788)",
+      "quote": "residential registration in a given city is associated with a reduction of 16.4 m3/day/10,000 persons and"
+    }
+  ],
+  "nonfit_classification_verdict": "justified_nonfit",
+  "number_verification_detail": "All numeric values reported in `effect_sizes.csv` match Table 3 and journal p. 788 (PDF p. 9) of Zhou & Liang (2021) exactly:\n- Wastewater treatment capacity (Table 3, Model 2; units: 10,000 m3/day per 10,000 persons): beta = -0.00164, clustered SE = 0.000529, p < 0.01 (t = -3.10), translated on p. 788 as -16.4 m3/day/10,000 persons and 2,460 m3/day needed for an average city of ~1.5 million residents.\n- Solid waste treatment capacity (Table 3, Model 4; non-WASH outcome; units: tons/day per 10,000 persons): beta = -0.0897, clustered SE = 0.0268, p < 0.01, translated on p. 788 as 13.455 tons/day for an average city of ~1.5 million.\n- Other Table 3 outcomes: Quantity of wastewater treated (Model 3) beta = -0.326, SE = 0.169, p < 0.10 (-3,260 m3/year/10,000 persons); Quantity of solid waste treated (Model 5) beta = -0.00136, SE = 0.000732, p < 0.10 (-13.6 tons/year/10,000 persons); Public green space (Model 1) beta = 0.00594, SE = 0.0212, non-significant. Claude reports Models 3 and 5 qualitatively as significant negative associations (p<0.1) without printing their point estimates/SEs, which matches Table 3.\n- CIs: Left blank in `effect_sizes.csv`, matching the paper (which reports clustered SEs and p-value stars rather than CIs).\n- Sample size: Stored as \"290 cities; 1,577-1,769 city-year observations across 5 outcome models (2008-2014)\". The overall panel dataset covers 290 prefectural cities (pp. 784, 789) and total observations across Models 1-5 span exactly 1,577 (Model 4) to 1,769 (Model 1). Minor nuance: due to missingness, Table 3 analytic city counts are 283 cities (N = 1,730) for wastewater treatment capacity, 282 cities (N = 1,737) for quantity of wastewater treated, 283 cities (N = 1,769) for green space, and 276 cities (N = 1,577 and 1,589) for solid waste.\n- Covariates & specification: Stored adjustment list matches Table 3 (logged population density, logged GRP per capita, high school/college enrollment %, unemployment rate %, logged municipal government spending per capita, city FE, year FE, city-clustered SEs). Minor wording note in `comparator_definition`: two-way city and year FE models identify off within-city variation over time (absorbing time-invariant across-city variation), though Table A5 in the appendix separately estimates 2008-2014 cross-city changes.",
+  "numbers_match_paper": "yes",
+  "review_eligibility_flag": "borderline_flag_for_pi",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:13:58.805389+00:00",
+  "file_sha256": "12918094f0a101dec3977912cec3b29559aba1f7524f1ff73bcee8361fa93b8f",
+  "input_sha256": "d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957"
+}

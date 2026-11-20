@@ -1,0 +1,143 @@
+{
+  "study_id": "S590",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "06d8a75b9601a14baeee0da2f09d06443ca22973b8eca8eb6af17ea1bfb1f3bc",
+  "input_text_sha256": "2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58",
+  "prompt_sha256": "7e3440bcf7cb77b7ee611ac6cc653d9d4d267c972acf5d709bd0d118d38013e3",
+  "started_at": "2026-11-19T19:21:48.845327+00:00",
+  "completed_at": "2026-11-19T19:24:12.615124+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S590\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S590\n- Record ID: R052039CCB61E\n- Citation: Brown JC (1989). Public Reform for Private Gain? The Case of Investments in Sanitary Infrastructure: Germany, 1880-1887. Urban Studies 26:2-12.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=49722, sha256=2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "1. SWiM Family Fit Assessment (`none_nonfit`): Excluding S590 from SWiM Families A, B, and C as a reasoned non-fit is strongly justified. In the primary logit regressions (Table 3, PDF p. 10 / journal p. 11), the key focal regressor `SKEW` is a continuous measure of local income inequality (the 1883/84 ratio of progressive income taxes to class taxes), interacted with province indicators (`SKEW-HOLSTEIN`, `SKEW-HANNOVER`, `SKEW-WESTPHALIA`) to test how 19th-century Prussian municipal suffrage rules (the plutocratic Three Class System in Rhineland and Westphalia vs equal-vote tax-restricted franchises in Hannover and Holstein) weighted elite industrialist preferences in town councils. Pooling `SKEW` or its provincial slope interactions into Family A (legal status, tenure, recognition, governance arrangements) or Family C (utility ownership, regulation, administrative capacity) would be methodologically invalid on three grounds: (a) the estimated coefficient measures the marginal effect of income-tax skewness (`SKEW`) rather than a direct legal/regulatory treatment indicator; (b) substantively and directionally, the mechanism tested is plutocratic voter disenfranchisement/vote-weighting favouring wealthy factory owners over middle-income homeowners (`Three Class System`), so a positive sign reflects elite capture accelerating municipal infrastructure spending rather than legal recognition, tenure security, or participatory governance expanding last-mile access for underserved households; and (c) the dependent variable is a binary city-level capital investment decision (`building a waterworks` in 1880-1887) rather than household connection or service access.\n\n2. Narrow Criterion 2 & Criterion 4 Scope Verification (Flag for PI Scope Review):\n- Narrow Criterion 2 (`borderline_governance_or_proxy`): The paper examines a formal statutory electoral rule — municipal franchise law (`Gemeindewahlrecht` / the Prussian Three Class System reserving one-third of town council seats to each third of direct tax payments) — which gives it a genuine legal-institutional governance dimension rather than a purely biophysical exposure. However, general municipal suffrage law is not a water/sanitation sector rule governing household last-mile access (such as tenure rules, tariffs, disconnection protections, utility regulation, or service mandates), and econometrically it is operationalized through an income-inequality fiscal proxy (`SKEW` x province interactions).\n- Criterion 4 (`borderline_institutional_or_compliance_outcome`): The regression outcome in Table 3 is whether a municipality decided to construct a waterworks between 1880 and 1887 (`1` = built waterworks, `0` = did not build). While constructing a town's first waterworks is a prerequisite for community piped water availability, it is an upstream municipal capital-investment decision (`E04`-adjacent infrastructure investment) rather than a direct measure of household connection, coverage share, reliability, water quality, or affordability (descriptive cross-national sewer/water coverage, cost-to-wage burdens in Table 1, and typhoid trends in Figure 1 are background context, not regression outcomes). Additionally, the historical 1880-1887 nineteenth-century Prussian setting should be noted if historical studies are subject to temporal scope screening.",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "borderline_institutional_or_compliance_outcome",
+    "evidence_quotes": [
+      {
+        "criterion": "Narrow Criterion 2 (Three Class System municipal franchise rule)",
+        "page": "PDF p. 6 (journal p. 7)",
+        "quote": "The Three Class System typically reserved one-third of the seats on the town council to those voters paying the top one-third of progressive state and local taxes"
+      },
+      {
+        "criterion": "Narrow Criterion 2 (SKEW income-to-class tax ratio proxy for elite voting influence)",
+        "page": "PDF p. 9 (journal p. 10)",
+        "quote": "Holding the average income in a community constant, the more skewed the income distribution was toward higher-income groups, the greater the potential influence of the highest-income voter"
+      },
+      {
+        "criterion": "Criterion 4 (municipal sanitary infrastructure investment decision outcome)",
+        "page": "PDF p. 9 (journal p. 10)",
+        "quote": "model permits two tests of the hypothesis that the distribution of net benefits was crucial for the decision of towns to invest in sanitary infrastructure"
+      },
+      {
+        "criterion": "Headline statistical specification (Table 3 logit analysis of SKEW across provinces)",
+        "page": "PDF p. 9 (journal p. 10)",
+        "quote": "Column four includes the outcome of the logit analysis for the sample without allowing the influence of SKEW to vary across provinces."
+      }
+    ],
+    "headline_estimate_summary": "Logit discrete-choice models of whether a Prussian city built a municipal waterworks during 1880-1887 (1 = built [n = 50], 0 = did not build [n = 194]; total N = 244 cities across Rhineland, Westphalia, Hannover, and Holstein), adjusting for instrumental-variable predicted per capita capacity cost (COST, estimated via Box-Cox regression on n = 106 cities), population density (DENSITY), 1866-1867 cholera mortality (CHOLERA), per capita class tax ability-to-pay (CLASS TAX), and steel employment per 1,000 residents (STEEL EMPLOYMENT) (Table 3, PDF p. 10 / journal p. 11; asymptotic t-statistics in parentheses; no SEs, CIs, or exact p-values printed):\n1. Restricted pooled logit (Table 3, Col. 4; Log-likelihood = -103.04, Pseudo-R2 = 0.258): SKEW (1883/84 ratio of progressive income taxes to class taxes, mean = 1.23, SD = 0.88) logit coefficient = 0.457 (asymptotic t = 1.98; implied SE approx. 0.231, two-sided p approx. 0.048).\n2. Unrestricted logit allowing SKEW effects to vary by provincial electoral regime (Table 3, Col. 5; Log-likelihood = -88.025, Pseudo-R2 = 0.387):\n   - SKEW (Rhineland, Three Class System): beta = 0.948 (asymptotic t = 2.84), +1 SD predicted probability responsiveness = +0.175.\n   - SKEW-WESTPHALIA (Three Class System): reported coefficient = 0.14 (asymptotic t = 2.80), +1 SD responsiveness = +0.02.\n   - SKEW-HANNOVER (equal-vote restricted franchise): reported coefficient = -0.18 (asymptotic t = 2.40), +1 SD responsiveness = -0.05.\n   - SKEW-HOLSTEIN (equal-vote restricted franchise): reported coefficient = -4.85 (asymptotic t = 1.36), +1 SD responsiveness = -0.19.\n   - Likelihood-ratio test of province political-structure invariance (Col. 4 vs Col. 5, PDF p. 9 & fn. 31): test statistic = -30.0 (chi-squared = 30.03, df = 3, 'significant at all conventional levels', p < 0.001).\n   - Other Col. 5 covariates: CONSTANT = 2.24 (t = 2.99); COST = -9.54 (t = 2.38, responsiveness = -0.22); DENSITY = 0.008 (t = 0.62, responsiveness = 0.02); CHOLERA = 38.7 (t = 1.14, responsiveness = 0.035); CLASS TAX = 0.687 (t = 1.06, responsiveness = 0.047); STEEL EMPLOYMENT = 0.032 (t = 1.78, responsiveness = 0.053).\n3. Counterfactual predicted probabilities of building a waterworks across electoral regimes (Table 4, PDF p. 11 / journal p. 12): For average building cities in Rhineland, predicted probability is 0.54 under Rhineland (Three Class) coefficients, 0.23 under Westphalia, 0.15 under Hannover (equal-vote), and 0 under Holstein; for Westphalia builders, 0.51 (Rhineland), 0.25 (Westphalia), 0.17 (Hannover), and 0 (Holstein); for Hannover non-builders, 0.27 (Rhineland) vs 0.09 (Hannover); for Holstein non-builders, 0.16 (Rhineland) vs 0 (Holstein).",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Historical cross-sectional / observational discrete-choice (logit) study of municipal waterworks adoption in Germany (four northwestern Prussian provinces: Rhineland, Westphalia, Hannover, and Holstein) over the eight-year period 1880-1887. Unit of analysis: municipality / city. Primary analytic sample: N = 244 Prussian cities (50 cities building a waterworks and 194 cities not building during 1880-1887; Table 3, PDF p. 10), using 1883/84 municipal tax data, 1882 county-level steel employment, 1866-1867 cholera mortality, and an auxiliary Box-Cox instrumental-variable cost equation estimated on n = 106 cities (PDF p. 8, fn. 26).",
+    "study_id": "S590"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "study_id": "S636",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d95cdf9885a3f3bd4487424dc0f6a431da110be4fb8efd2d99939628fe525bf3",
+  "input_text_sha256": "bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01",
+  "prompt_sha256": "2f783d2c2e89b6aa2d344a055a9a37df176dddb0154c001bab5eadbbcd9b15de",
+  "started_at": "2026-11-20T01:10:33.128104+00:00",
+  "completed_at": "2026-11-20T01:12:15.209682+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S636\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S636\",\n  \"record_id\": \"R2DA99A1B268E\",\n  \"order\": 14,\n  \"blind_rationale\": \"Lewis (2014) evaluates two pilot output-based intergovernmental performance grants in Indonesia: P2D2 (DAK Reimbursement, 2011–12, N = 218 pooled kabupaten/kota-year observations across 67 PSM-matched pairs) and Water Hibah (WH, 2010–11, N = 105 pooled kabupaten/kota-year observations across 34 PSM-matched pairs). Only the Water Hibah analysis measures a Criterion 4 household water access outcome—log of new operational PDAM household piped water connections per 1,000 people (Tables 8–10; P2D2 measures aggregate local capital spending across all sectors because water/sanitation spending could not be disaggregated, Footnote 5, p. 418, and WH Tables 5–7 measure an institutional/fiscal intermediate outcome, local government equity investment in PDAMs).\\n\\nOn Criterion 2, Water Hibah is a borderline fiscal-governance exposure (`borderline_governance_or_proxy`) warranting PI scope scrutiny against `E03` (financial/capital subsidy without a household-facing legal rule): WH is an AusAID-backed Ministry of Finance output-based intergovernmental grant rule requiring local governments to make upfront matching equity investments in their municipal water utilities (PDAMs) and disbursing Rp 2–3 million per independently verified operational connection (~45% of connection cost). While this embodies formal intergovernmental conditional-transfer and verification rules, its mechanism is fundamentally a capital-financing subsidy, and Footnote 6 notes data do not allow testing whether connections actually reached poor households (the stated pro-poor targeting rule).\\n\\nClassifying S636 as `none_nonfit` (outside SWiM Families A, B, and C) is strongly justified on both substantive and econometric grounds:\\n1. Over-control for the causal mediator in all binary-program connection models: By program design, WH increases household connections *by inducing local government equity investment in PDAMs* (Table 7: +739.1 constant-2000 Rp/capita, z = 3.20). However, Lewis never estimates the total (reduced-form) effect of WH participation on household connections. Every connection model (Tables 8–10) includes PDAM equity investment per capita alongside the WH dummy, leaving only the mediator-blocked direct effect of WH participation holding investment fixed—which is statistically non-significant in the author's preferred endogenous specifications (Table 8: beta = 0.3816, t = 1.58; Table 10: beta = 0.2892, t = 1.04). Moreover, the IV endogenous specification uses on/off-Java location and year dummies as excluded instruments for transfers/investment, which plausibly violate the exclusion restriction for water connection growth.\\n2. Continuous fiscal-expenditure scaling: The statistically significant predictors in Tables 8 and 10 (`Investment per capita` beta = 0.0002, t = 2.30; `Hibah financed investments per capita` beta = 0.0004, t = 1.71) are capital-spending semi-elasticities per constant-2000 Rupiah per capita rather than legal/institutional rule effects. If a total binary WH program estimate were nevertheless forced into a SWiM family, its closest substantive neighbours would be Family B (conditional external financial/grant support) or Family C (intergovernmental administrative performance-contracting incentives), but `none_nonfit` is more rigorous given the fiscal-subsidy mechanism and mediator-adjusted specification.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"yes_household_or_service_access\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Criterion 2 (Water Hibah equity-investment mechanism)\",\n      \"page\": \"PDF p. 4 (journal p. 417)\",\n      \"quote\": \"the PDAM then uses the invested funds to create household water connections.\"\n    },\n    {\n      \"criterion\": \"Criterion 2 (Output verification and grant disbursement rule)\",\n      \"page\": \"PDF p. 4 (journal p. 417)\",\n      \"quote\": \"the water connections have been verified as operational, the Ministry of Finance\"\n    },\n    {\n      \"criterion\": \"Criterion 4 (Household water connections outcome definition)\",\n      \"page\": \"PDF p. 15 (journal p. 428, Table 8)\",\n      \"quote\": \"Note: The dependent variable is the log of number of new household connections per 1,000 people.\"\n    },\n    {\n      \"criterion\": \"Econometric mediation / headline finding interpretation\",\n      \"page\": \"PDF p. 16 (journal p. 429)\",\n      \"quote\": \"for the creation of connections is local government equity investment in PDAMs,\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Water Hibah (WH) household piped water connections models (Outcome: log of number of new household water connections per 1,000 people; N = 105 pooled kabupaten/kota-year observations across 2010–11; covariates: log population, % urban, % poor, lagged % population with access to water, log GRDP per capita; fiscal inputs in constant-2000 Rp per capita; robust/bootstrapped t-statistics; SEs and CIs not printed):\\n- Table 8 (PDF p. 15 / p. 428), Preferred Endogenous-Investment IV Model (R2 = 0.413): WH program participation dummy beta = 0.3816 (t = 1.58, ns, implied SE = 0.2415; positive sign = more new household connections, but conditioned on predicted PDAM equity investment); Predicted PDAM equity investment per capita beta = 0.0002 (t = 2.30, p < 0.05; implied unit cost = Rp 4.3M/connection in 2010–11 prices). Exogenous OLS comparison (R2 = 0.472): WH dummy beta = 0.4915 (t = 2.77, p < 0.05, implied SE = 0.1774); Investment per capita beta = 0.0001 (t = 4.07, p < 0.05; implied unit cost = Rp 6.3M/connection).\\n- Table 9 (PDF p. 15 / p. 428, interaction test, N = 105): Endogenous model WH dummy beta = 0.5523 (t = 1.90, printed with ** though two-sided p ~ 0.06), Investments per capita beta = 0.0005 (t = 1.75, p < 0.10), WH dummy x investments per capita beta = -0.0002 (t = -0.99, ns; exogenous interaction beta = 0.0000, t = 0.15, ns).\\n- Table 10 (PDF p. 17 / p. 430, disaggregating funding source, N = 105; note table footnote mislabels DV as equity investment): Endogenous model Treatment dummy beta = 0.2892 (t = 1.04, ns), Hibah-financed investments per capita beta = 0.0004 (t = 1.71, p < 0.10; Rp 2.5M/connection), Other revenue-financed investments per capita beta = 0.0001 (t = 1.69, p < 0.10; Rp 6.9M/connection). Exogenous model: Treatment dummy beta = 0.3034 (t = 1.62, ns), Hibah-financed investments per capita beta = 0.0003 (t = 6.16, p < 0.05; Rp 2.9M/connection), Other revenue-financed investments per capita beta = 0.0001 (t = 3.42, p < 0.05; Rp 8.2M/connection).\\n- Intermediate & non-water outcomes: WH hurdle model for per-capita PDAM equity investment (Table 7, PDF p. 14 / p. 427, N = 105/73) yields WH dummy = +739.1 constant-2000 Rp/capita or Rp 2,141 in 2010–11 prices (z = 3.20, p < 0.05, endogenous) and Hibah per capita = 0.815 (z = 2.50, p < 0.05). P2D2 aggregate all-sector capital spending (Tables 3–4, PDF pp. 10, 12, N = 218) yields P2D2 dummy = -0.058 (t = -0.86, ns) alone, and P2D2 x log DAK per capita = +0.216 (t = 2.43, p < 0.05).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Quasi-experimental (\\\"doubly robust\\\") propensity score matching (1:1 nearest-neighbour without replacement) combined with pooled cross-sectional OLS, two-part hurdle, and instrumental-variables (bootstrapped SE) regressions in Indonesia, using local governments (kabupaten and kota) and their municipal water utilities (PDAMs) as the unit of analysis. Two pilot programs are analysed: (1) Water Hibah (2010–11): 35 treatment local governments matched on 2008–09 baseline covariates to 35 control local governments (from 65 slated for 2013 entry), with 1 treatment unit dropped off common support = 34 treatment and 34 control local governments, yielding N = 105 pooled local government-year observations (N = 73 positive-investment observations in Table 6 hurdle stage 2); and (2) P2D2 / DAK Reimbursement (2011–12, all-sector capital spending): two-stage PSM matching 5 treatment to 5 control provinces and 68 treatment to 68 control local governments (1 dropped off common support = 67 matched pairs), yielding N = 218 pooled local government-year observations in regressions (Tables 3–4).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:24:27.166200+00:00\",\n  \"file_sha256\": \"d95cdf9885a3f3bd4487424dc0f6a431da110be4fb8efd2d99939628fe525bf3\",\n  \"input_sha256\": \"bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S636\",\n  \"outcome_family\": \"service_coverage\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Participation in Indonesia's Water Hibah (WH) intergovernmental performance-grant program -- a fiscal/administrative mechanism under which a kabupaten/kota (local government) makes an equity investment in its PDAM (local water enterprise), which the PDAM uses to establish household water connections for the poor, triggering a Ministry of Finance transfer (Rp 2 million per connection for the first 1,000, Rp 3 million thereafter) once connections are verified operational.\",\n  \"comparator_definition\": \"Matched control kabupaten/kota not participating in the Water Hibah program in 2010-2011, drawn via one-to-one nearest-neighbour propensity-score matching from a pool of 65 local governments subsequently added to the program in 2013.\",\n  \"effect_measure\": \"Propensity-score-matched treatment/control OLS regression and hurdle-model regression (probit selection equation plus conditional linear regression, bootstrapped standard errors, endogenous-transfer instrumentation)\",\n  \"effect_estimate\": \"WH program participation increases per capita PDAM equity investment by Rp 739 in constant 2000 terms (Rp 2,141 in 2010-11 terms), coefficient 739.1, z=3.20, p<0.05. WH-financed investment per capita is a significant positive determinant of new household water connections per 1,000 persons: coefficient 0.0003 (t=6.16, investment treated as exogenous) / 0.0004 (t=1.71, investment treated as endogenous), both significant at conventional levels. Estimated marginal cost of a WH-financed connection is Rp 2.5-2.9 million versus Rp 6.9-8.2 million for a connection financed from other local-government revenue sources -- a statistically significant difference in cost-efficiency. The WH program-participation dummy itself is not significant once WH-financed investment is separately specified, indicating the grant's effect on connections operates through the financed-investment channel rather than participation per se.\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"35 treatment + 35 control kabupaten/kota (34 after common-support trimming); 105 pooled local-government-year observations, 2010-2011\",\n  \"direction\": \"positive (Water Hibah program participation and grant-financed investment associated with HIGHER household water connections, relative to non-participating matched local governments)\",\n  \"adjusted\": \"adjusted (log of other revenues per capita, log population, percentage of population urban, percentage of population poor, lagged percentage of population with access to water, log gross regional domestic product per capita; propensity-score-matched treatment/control sample; on/off-Java and year instruments for the endogenous WH-transfer specification)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S636; source Lewis 2014, Bulletin of Indonesian Economic Studies 50(3):415-433, Tables 5-10. A clean fiscal/administrative-grant exposure (Water Hibah performance-grant program and grant-financed PDAM equity investment) tested by a well-identified quasi-experimental design (one-to-one nearest-neighbour propensity-score matching with documented bias-reduction statistics, endogenous-transfer instrumentation) against a directly measured household-level water-connection outcome, with statistically significant coefficients and an explicit cost-efficiency comparison.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md S2 -- single quantitative study using an Indonesia-specific intergovernmental fiscal-transfer/performance-grant exposure and a household water-connection outcome; the exposure (a fiscal grant conditioning PDAM equity investment) does not cleanly match PROJECT_SPEC.md S8's Family A (legal recognition/tenure/eligibility), Family B (bureaucratic assistance/procedural simplification), or Family C (legal/administrative barriers) definitions, and no other quantitative study in the corpus shares this specific fiscal-grant operationalization, so pooling is not yet possible or meaningful.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56087, sha256=bc3c82ca501921e5c1537eccdd6c2f3d5037df329dc49b2d4eedbfb646de9a01]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Numerical & Packaging Audit: Every printed number in Claude's `effect_sizes.csv` row matches Lewis (2014) verbatim across pp. 417, 420, 425, 427 (Table 7), 429, and 430 (Table 10). However, the `effect_estimate` cell packages a multi-stage composite rather than a single clean treatment effect: it combines (a) a two-part hurdle-model marginal effect on an institutional/fiscal intermediate input (`739.1` constant-2000 Rp/capita PDAM equity investment, `z = 3.20`, Table 7), (b) per-Rupiah capital-spending semi-elasticities on household connections (`0.0003, t = 6.16` exogenous; `0.0004, t = 1.71` endogenous, Table 10), and (c) derived marginal unit costs (`Rp 2.5-2.9M` vs `Rp 6.9-8.2M`). Three reporting nuances warrant note: (i) the Table 10 outcome is the *log* of new household connections per 1,000 persons (Claude's prose omits `log`, likely echoing p. 429 prose and Table 10's own misprinted footnote that erroneously labels the DV as equity investment); (ii) the preferred endogenous slope `0.0004 (t = 1.71)` is only marginally significant at `* p < 0.10`, not `p < 0.05`; and (iii) Claude's `provenance_note` praises the endogenous-transfer instrumentation as \"well-identified\", whereas the excluded instruments (an on/off-Java location dummy and a year dummy, p. 424) very plausibly violate the exclusion restriction with respect to municipal utility connection growth.\n\n2. Justification of SWiM Non-Fit (`justified_nonfit`): Leaving `synthesis_family` blank is strongly justified even under broadened A21 family labels. First, Lewis never estimates the total (reduced-form) effect of Water Hibah program participation on household water connections: every connection regression (Tables 8-10) conditions on PDAM equity investment per capita—the exact causal mediator through which WH operates—rendering the binary WH dummy a mediator-blocked direct residual (`0.3816, t = 1.58` in Table 8 endogenous; `0.2892, t = 1.04` in Table 10 endogenous). Second, the statistically significant Table 10 predictors are continuous fiscal-expenditure slopes per constant-2000 Rupiah per capita rather than legal/institutional rule effects. Third, substantively, an intergovernmental performance grant reimbursing municipal utility capital outlays does not cleanly fit Family A (legal recognition/tenure/eligibility), Family B (household-facing bureaucratic/procedural facilitation), or Family C (legal/administrative barriers).\n\n3. Review Scope / Eligibility (`borderline_flag_for_pi`): While Criterion 4 is clearly met in Tables 8-10 (`log of number of new household connections per 1,000 people`; note P2D2 in Tables 3-4 and WH Tables 5-7 do not measure household access), S636 is a textbook borderline Criterion 2 case warranting PI review against `E03` (financial/capital subsidy without a legal/administrative access rule). Water Hibah reimburses ~45% of connection capital costs (`Rp 2-3 million` per connection, p. 417, p. 431) without altering household tenure, customer eligibility law, documentation hurdles, or disconnection rules, and Footnote 6 (p. 418) notes data cannot verify whether connections reached poor households. Conversely, because WH codifies formal Ministry of Finance intergovernmental conditional-transfer, mandatory municipal matching-equity, and independent operational-verification rules, it sits right on the boundary between an `E03` capital grant and an administrative service-delivery governance rule.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 (Water Hibah municipal equity-investment mechanism)",
+        "page": "PDF p. 4 (journal p. 417)",
+        "quote": "the PDAM then uses the invested funds to create household water connections."
+      },
+      {
+        "criterion": "Criterion 2 (Operational verification and Ministry of Finance disbursement rule)",
+        "page": "PDF p. 4 (journal p. 417)",
+        "quote": "the water connections have been verified as operational, the Ministry of Finance"
+      },
+      {
+        "criterion": "Criterion 4 (Household piped water connections outcome definition)",
+        "page": "PDF p. 15 (journal p. 428, Table 8)",
+        "quote": "Note: The dependent variable is the log of number of new household connections per 1,000 people."
+      },
+      {
+        "criterion": "Econometric mediation / over-control of binary program effect by PDAM investment",
+        "page": "PDF p. 16 (journal p. 429)",
+        "quote": "for the creation of connections is local government equity investment in PDAMs,"
+      }
+    ],
+    "nonfit_classification_verdict": "justified_nonfit",
+    "number_verification_detail": "Every printed statistic in `effect_sizes.csv` matches Lewis (2014) exactly: (1) Grant schedule: Rp 2 million/connection for first 1,000 and Rp 3 million thereafter (p. 417); (2) Sample & PSM: 35 treatment matched to 35 controls from 65 local governments slated for 2013 entry, 1 treatment unit dropped off common support leaving 34 matched pairs (p. 420), and N = 105 pooled local-government-year observations across 2010-11 in Table 1 (p. 419), Table 5 (p. 426), and Tables 8-10 (pp. 428, 430) [note: conditional hurdle stage 2 in Table 6 has N = 73 non-zero investment observations, unmentioned in `effect_sizes.csv`]; (3) Equity investment hurdle total effect (Table 7, p. 427 & p. 425 text): endogenous WH dummy = 739.1 constant-2000 Rp/capita (rounded to Rp 739 in prose, equivalent to Rp 2,141 in 2010-11 prices), z = 3.20, p < 0.05; (4) Household connections model (Table 10, p. 430): Hibah-financed investments per capita = 0.0003 (t = 6.16, ** p < 0.05) exogenous and 0.0004 (t = 1.71, * p < 0.10) endogenous; non-significant treatment dummy (numeric values omitted by Claude) = 0.3034 (t = 1.62) exogenous and 0.2892 (t = 1.04) endogenous [and in Table 8, p. 428: WH dummy = 0.4915, t = 2.77 exogenous; 0.3816, t = 1.58 endogenous]; (5) Implied marginal unit costs (p. 429): Rp 2.5M (endogenous) to Rp 2.9M (exogenous) for WH-financed connections vs Rp 6.9M (endogenous) to Rp 8.2M (exogenous) for other revenue-financed connections, difference statistically significant; (6) SEs and CIs are blank in `effect_sizes.csv` because Lewis prints only coefficients and robust/bootstrapped t- or z-statistics. Minor nuances: Claude's prose describes the Table 10 DV without specifying the natural log transformation (`log of number of new household connections per 1,000 people`, Tables 8-9; note Table 10's printed footnote erroneously repeats Table 6's equity-investment DV label); `t = 1.71` is significant at p < 0.10 (`*`) rather than p < 0.05; and the `adjusted` field pools covariates across Tables 5-6 (`log of other revenues per capita`) and Tables 8-10 (where `log of other revenues per capita` is omitted or replaced by `other revenue-financed investments per capita`).",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S636"
+  }
+}

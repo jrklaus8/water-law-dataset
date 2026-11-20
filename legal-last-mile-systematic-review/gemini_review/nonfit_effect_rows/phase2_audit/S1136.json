@@ -1,0 +1,37 @@
+{
+  "study_id": "S1136",
+  "record_id": "R111EFC29F4F6",
+  "order": 18,
+  "adversarial_critique": "(1) Numerical accuracy audit (`no_discrepancy_found` = discrepancy found): Claude's `effect_sizes.csv` row contains three material extraction errors. First, in Table 5 (p. 694) for `GP head's village`, Claude scrambled three of the four outcome labels: the paper prints `Road has drain` = `0.053***` (SE `0.015`), `Road is paved` = `0.028*` (SE `0.016`), `Road is moderately clean` = `0.037**` (SE `0.015`), and `No garbage on road` = `0.060***` (SE `0.018`), whereas Claude reported `road paved 0.053***, has drain 0.037**, moderately clean 0.028*`. Second, in Table 6 (p. 696) for `Politician road`, Claude swapped two outcomes: the paper prints `Road paved` = `0.052*` (SE `0.021`) and `Road is moderately clean` = `0.055***` (SE `0.016`), whereas Claude reported `paved 0.055***, moderately clean 0.052*`. Third, Claude misread the superscript footnote callout `6` in `527^6 villages` (p. 689) as `5,276 villages/wards` (201 GPs with at most 3 villages or 6 Kerala wards sampled yields 527 villages/wards, with Note 6's state breakdown summing to 506), and reported the Table 3 descriptive road count (`10,408`) rather than the actual regression sample sizes (`N = 8,398` to `8,452` and `2,038` in Table 5; `N = 9,971` to `10,026` and `2,244` in Table 6), while also omitting all printed numerical colony-clustered SEs. (2) SWiM non-fit vs. review eligibility (`moot_study_appears_ineligible` / `likely_ineligible_flag_e03_e04_e05_e07`): Conditional on inclusion, CK's A29 decision to remove S1136 from Family C into `reasoned non-fit` was substantively sound because residential political patronage (`GP head's village`, `Politician road`) and village road conditions do not fit Family A, B, or C. However, applying CK's A24/A26/A28 scope standard makes family assignment moot because S1136 fails both Criterion 4 (`E04`) and narrow Criterion 2 (`E03`). As CK's own A29 note concedes, the outcomes in Tables 5-6 (`Road has drain`, `Road is paved`, `Road is moderately clean`, `No garbage on road`, `Road has unclogged drain`) measure public village road paving, street sweeping, and roadside drainage rather than household water or sanitation connection, access, or service quality (and Note 11 explicitly confirms private household toilets under the Total Sanitation Campaign were not evaluated, while Table 4 measures only GP officials' task awareness). Likewise, on Criterion 2 (`E03`), although Section II discusses the 1992 PRI Constitutional Amendment and state public health laws, all state/district/block legal variation is swept out by block fixed effects (Tables 4-5) and village fixed effects (Table 6), and statutory GP presidency reservation is an unreported control; the tested exposures are de facto residential political capture and caste residential sorting rather than a legal or administrative rule governing household access.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Sample size error verification (Note 6 confirming ~506/527 villages/wards rather than 5,276)",
+      "page": "PDF p. 15 (journal p. 698, Note 6)",
+      "quote": "6. The state-wise break up is AP: 69 villages, KA: 182 villages, KE: 126 wards; TN 129 villages."
+    },
+    {
+      "criterion": "Criterion 4 road-level public infrastructure and cleanliness outcomes rather than household WASH access",
+      "page": "PDF p. 7 (journal p. 690)",
+      "quote": "In the distribution regressions our dependent variables are the road-level sanitation outcomes"
+    },
+    {
+      "criterion": "Criterion 2 political capture exposure via politician residence rather than a legal or regulatory rule",
+      "page": "PDF p. 14 (journal p. 697)",
+      "quote": "allocated overwhelmingly to those with political clout: infrastructure is better in the"
+    },
+    {
+      "criterion": "Criterion 4 explicit confirmation that private household toilets were not evaluated",
+      "page": "PDF p. 16 (journal p. 699, Note 11)",
+      "quote": "build private toilets via the Total Sanitation Campaign. The impact of this is still unknown."
+    }
+  ],
+  "nonfit_classification_verdict": "moot_study_appears_ineligible",
+  "number_verification_detail": "Multiple discrepancies found between `effect_sizes.csv` and the PDF: (1) Table 5 (PDF p. 11 / p. 694) `GP head's village` coefficients are misassigned across outcomes in `effect_sizes.csv`: the paper reports `Road has drain` = 0.053*** (SE 0.015, N = 8,452), `Road is paved` = 0.028* (SE 0.016, N = 8,452), `Road is moderately clean` = 0.037** (SE 0.015, N = 8,398), `No garbage on road` = 0.060*** (SE 0.018, N = 8,407), and `Road has unclogged drain (cond)` = -0.017 (SE 0.024, NS, N = 2,038; printed as `70.017` due to Routledge minus-sign glyph encoding), whereas Claude stored `road paved 0.053***, has drain 0.037**, moderately clean 0.028*, no garbage 0.060***`. (2) Table 6 (PDF p. 13 / p. 696) `Politician road` coefficients swap two outcomes: the paper reports `Road has drain` = 0.078*** (SE 0.020, N = 10,026), `Road paved` = 0.052* (SE 0.021, N = 10,026), and `Road is moderately clean` = 0.055*** (SE 0.016, N = 9,971), whereas Claude stored `paved 0.055***, moderately clean 0.052*` (`SC/ST road` matches on `Road paved` = -0.051** [SE 0.016] and `No garbage on road` = -0.032* [SE 0.013]). (3) Sample size `5,276 villages/wards` in `effect_sizes.csv` is a PDF superscript-footnote misread of `527^6 villages` on PDF p. 6 / p. 689 (201 GPs were sampled, and Note 6 gives state totals of 69 + 182 + 126 + 129 = 506 villages/wards); moreover, `10,408 roads` is the Table 3 descriptive total rather than the analytic regression Ns (8,398-8,452 and 2,038 in Table 5; 9,971-10,026 and 2,244 in Table 6). (4) Exact colony-clustered SEs are printed in parentheses in Tables 5-6 for every coefficient, whereas `effect_sizes.csv` stores only `\"clustered at colony level\"`; CIs and exact p-values are legitimately absent from the paper.",
+  "numbers_match_paper": "no_discrepancy_found",
+  "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:15:21.095903+00:00",
+  "file_sha256": "c43a68c4fd89e12154e9e8d7673e79c433987c520074d9a4bd2f858c2cd4a84c",
+  "input_sha256": "fd79f3959fb6d3aedeb66a4acee7ea842b331c457119c51a2ae8b3b07291c601"
+}

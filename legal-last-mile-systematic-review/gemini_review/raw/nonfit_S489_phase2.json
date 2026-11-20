@@ -1,0 +1,127 @@
+{
+  "study_id": "S489",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "25a5a30b39018971e17b0308e5ce861447d94b18e7de3e15010612eaa0aca9fd",
+  "input_text_sha256": "7baee4df2175a0b8609b7397b39e258b2feb271919bd95bab7b9629576a0d8e8",
+  "prompt_sha256": "213150c9f79f70fdd3f2897a8c3a9a7837b8e5cc3bfdaa539e6a7149ca4864be",
+  "started_at": "2026-11-20T01:08:49.849621+00:00",
+  "completed_at": "2026-11-20T01:10:20.320336+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S489\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S489\",\n  \"record_id\": \"R77DEA3810C24\",\n  \"order\": 10,\n  \"blind_rationale\": \"1. SWiM Family Classification (`none_nonfit`): Excluding S489 from SWiM Families A, B, and C as a reasoned non-fit is strongly justified. In both multivariate logistic regression models (Table 2, PDF p. 8), the dependent variables measure institutional adoption/uptake behavior—household stated `Intent to contract` (Model 1, N = 1,215) and waterpoint user-group `Contract commitment` (signing an annual maintenance contract and paying USD 10/month mobile fees to FundiFix Ltd in 2016; Model 2, N = 254)—rather than realized household or community water service access, functionality, continuity, quality, or affordability. Crucially, 112 waterpoints non-functional for over one year were excluded by design because only already-functioning waterpoints were eligible to contract the service provider (PDF pp. 4–5). Moreover, service-delivery attributes (concern that water is unreliable, electrical conductivity < 1500 uS, pH > 7, distance to next handpump, and concern that water supply is costly) are placed on the right-hand side as predictors of contracting behavior rather than estimated as outcomes of an institutional rule. Consequently, no estimate from Table 2 can be directionally harmonized with household water-access outcomes in Families A, B, or C.\\n\\n2. Narrow Criterion 2 Assessment (`borderline_governance_or_proxy`): The paper frames its primary institutional comparison around Douglasian cultural-theory \\\"management cultures\\\" (`Individualist` private ownership and `Bureaucratic` school/clinic/religious management vs `Community` management) alongside informal local waterpoint fee and sanctioning rules (`Regular payments`, `Club` fulfilling >=6 of 10 physical/financial/social rules, `Rules made by majority decision`, `Exclusion for not observing rules`, `Penalties for non-payment`, and `In favor of free water for vulnerable`). While pre-existing tariff collection (`Regular payments`), non-payment penalties, exclusion rules, and private/public/community ownership represent concrete local operational/tariff rules, they are informal waterpoint-level routines/governance proxies in an explicitly exploratory, non-causal specification, whereas formal statutory/administrative reforms (Kenya's devolution and Water Act 2016) are discussed only qualitatively in Section 5.3.\\n\\n3. Criterion 4 Assessment (`borderline_institutional_or_compliance_outcome` / flag for E04/E07 review): Because the tested econometric outcomes (`Intent to contract` and `Contract commitment` to a professional maintenance provider) capture upstream institutional contracting/payment commitment among already-functioning waterpoints rather than realized household water access, coverage, or reliability (and pre-MSP vs free-trial repair downtime of 27 days vs <3 days is reported only descriptively from prior work), the study sits at best on the institutional/behavioral uptake borderline for Criterion 4 and warrants PI verification against E04/E07 if non-access institutional adoption outcomes are excluded.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"borderline_institutional_or_compliance_outcome\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Research question and behavioral contracting outcome\",\n      \"page\": \"1\",\n      \"quote\": \"The predictors of behavior change of rural water users to commit to the new service provider include\"\n    },\n    {\n      \"criterion\": \"Exploratory non-causal study design\",\n      \"page\": \"2\",\n      \"quote\": \"The study is of exploratory and non-causal nature.\"\n    },\n    {\n      \"criterion\": \"Sample restriction excluding non-functional waterpoints and household N\",\n      \"page\": \"5\",\n      \"quote\": \"(as only functioning waterpoints can contract the service\"\n    },\n    {\n      \"criterion\": \"Null difference across management cultures in contract commitment\",\n      \"page\": \"8\",\n      \"quote\": \"contractually commit to professional services than the others.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Multivariate logistic regressions in Table 2 (PDF p. 8) adjusting for 33–35 organizational, socio-economic, operational, water-use, alternative-source, and performance covariates:\\n(1) Model 1 (Household level; DV = stated `Intent to contract` MSP among non-contracted functional waterpoints; N = 1,215 households clustered across 190 handpump groups; Pseudo R2 = 0.1641, Wald chi2 = 52.56, p < 0.05): `Management` w.r.t. `Community` -> `Individualist` OR = 0.762 (robust SE = 0.400, p = 0.605), `Bureaucratic` OR = 1.270 (robust SE = 0.672, p = 0.651); `Regular payments` OR = 2.662 (robust SE = 1.114, p = 0.019); `In favor of free water for vulnerable` OR = 0.537 (robust SE = 0.120, p = 0.005); `Concern that water supply is costly` OR = 0.532 (robust SE = 0.138, p = 0.015); `Handpump water for drinking` OR = 2.446 (robust SE = 1.062, p = 0.039); `Distance to next handpump` OR = 1.901 (robust SE = 0.617, p = 0.048); `Club` OR = 0.900 (SE = 0.373, p = 0.800); `Rules made by majority decision` OR = 0.609 (SE = 0.312, p = 0.333); `Women on committee` OR = 1.333 (SE = 0.509, p = 0.451); `Exclusion for not observing rules` OR = 0.388 (SE = 0.275, p = 0.181); `Penalties for non-payment` OR = 0.745 (SE = 0.183, p = 0.232).\\n(2) Model 2 (Handpump user-group level; DV = actual `Contract commitment` in Jan–Dec 2016; N = 254 functional handpumps; Pseudo R2 = 0.3025, Wald chi2 = 69.23, p < 0.001): `Management` w.r.t. `Community` -> `Individualist` OR = 1.549 (robust SE = 1.037, p = 0.513), `Bureaucratic` OR = 0.886 (robust SE = 0.720, p = 0.881); `Regular payments` OR = 3.149 (robust SE = 1.645, p = 0.028); `Distance to MSP office` OR = 0.852 (robust SE = 0.036, p = 0.000); `Electrical conductivity < 1500 uS` OR = 4.367 (robust SE = 2.799, p = 0.021); `Household grows crops` OR = 6.913 (robust SE = 6.863, p = 0.051); `pH > 7` OR = 2.941 (robust SE = 1.698, p = 0.062); `Women on committee` OR = 2.474 (robust SE = 1.217, p = 0.066); `Concern that water is unreliable` OR = 6.747 (robust SE = 7.392, p = 0.081); `Club` OR = 2.244 (robust SE = 1.049, p = 0.084); `Exclusion for not observing rules` OR = 1.519 (SE = 0.999, p = 0.524); `Penalties for non-payment` OR = 1.565 (SE = 0.692, p = 0.311).\\n(3) Descriptive uptake (Section 4.1, PDF p. 5; Fig. 3, p. 6): 22% of 300 active WDT handpumps signed contracts in year 1 (24% community, 16% individualist/private, 13% bureaucratic); Table 3 (PDF p. 9) reports unadjusted cross-culture mean differences in predictors.\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Exploratory, non-causal observational cross-sectional analysis of multi-wave survey, water-quality, smart-sensor, and service-provider administrative data in rural Kwale County, Kenya (anchored on a 2013 census of 571 Afridev handpumps, excluding 112 waterpoints non-functional >1 year). Primary analytic samples: Model 1 analyzes N = 1,215 households clustered around 190 functional, non-contracting handpumps (Wave 3 survey, Sept–Nov 2016); Model 2 analyzes N = 254 functional sensor-fitted handpump user groups (Wave 2 household means, March–May 2015, linked to Jan–Dec 2016 contracting records).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:21:29.936435+00:00\",\n  \"file_sha256\": \"25a5a30b39018971e17b0308e5ce861447d94b18e7de3e15010612eaa0aca9fd\",\n  \"input_sha256\": \"7baee4df2175a0b8609b7397b39e258b2feb271919bd95bab7b9629576a0d8e8\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S489\",\n  \"outcome_family\": \"economic_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Rural Kenyan households (Kwale County) who perceive their existing water supply as costly, among 1,215 households at 190 waterpoints not yet contracted with a professional maintenance service provider.\",\n  \"comparator_definition\": \"Households at the same waterpoints who do not consider their existing water supply costly.\",\n  \"effect_measure\": \"Odds ratio (multivariate logistic regression, robust SE clustered by waterpoint), dependent variable = intent to contract a professional maintenance service provider (Model 1)\",\n  \"effect_estimate\": \"OR=0.532 (p=0.015) -- households who consider their current water supply costly have roughly half the odds of intending to contract the paid professional maintenance service.\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"0.138\",\n  \"sample_size\": \"1,215 households across 190 waterpoints (Kwale County, Kenya)\",\n  \"direction\": \"negative (perceived cost of existing water supply associated with lower likelihood of committing to a new paid maintenance contract)\",\n  \"adjusted\": \"TRUE (multivariate logistic regression adjusting for organizational, socio-economic, operational, use and alternative-source covariates)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S489; source Koehler, Thomson, Goodall, Katuva & Hope 2021, World Development 140:105231, Table 2 (Model 1, 'Concern that water supply is costly' row). A related variable in the same model, 'In favor of free water for vulnerable' (OR=0.537, SE=0.120, p=0.005), shows a similarly-sized effect in the same direction but is not recorded as the primary effect per CODEBOOK.md S12's one-prespecified-effect-per-study default, since the cost-concern variable is the more direct burden/affordability measure.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md §2 -- re-examined 2026-09-28 (see S434's note for the batch context). This study's exposure is a household's own perception that its existing water supply is costly, predicting intent to contract a paid maintenance service -- a household-level attitude/perception variable, not a legal recognition, administrative-assistance, or administrative-barrier exposure as PROJECT_SPEC.md §8 defines Family A/B/C. synthesis_family is left blank as a reasoned non-fit; single study for this exposure-comparator regardless.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 7baee4df2175a0b8609b7397b39e258b2feb271919bd95bab7b9629576a0d8e8) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=91421, sha256=7baee4df2175a0b8609b7397b39e258b2feb271919bd95bab7b9629576a0d8e8]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Numerical & Metric Audit (`numbers_match_paper = \"yes\"`): Every number stored in `effect_sizes.csv` matches Table 2 (PDF p. 8) and Section 3.3 (PDF p. 5) verbatim: Model 1 (`DV: Intent to contract`), row `Concern that water supply is costly`, prints `OR = 0.532*`, `robust SE = 0.138` (clustered across 190 handpump groups), `p = 0.015`, `N = 1,215` households (with `lower_CI` and `upper_CI` appropriately blank because Table 2 omits confidence intervals), and the secondary covariate noted in `provenance_note` (`In favor of free water for vulnerable`) matches `OR = 0.537**`, `SE = 0.120`, `p = 0.005`. One technical caveat worth recording is that `0.138` is Stata's delta-method SE on the exponentiated Odds Ratio scale (`SE(OR) = OR * SE(ln OR)`), corresponding to `SE(ln OR) ≈ 0.259`, though since the row is unpooled no meta-analytic transformation error propagates.\n\n2. Non-Fit vs Scope Eligibility Audit (`moot_study_appears_ineligible` / `likely_ineligible_flag_e03_e04_e05_e07`): Conditional on keeping S489 in the review, excluding it from SWiM Families A, B, and C is completely justified—no estimate in Table 2 measures household water access in response to a legal recognition, administrative assistance, or administrative barrier exposure. However, applying the `2026-10-13 / 2026-10-14` `CK` scope standard from `A24/A26/A28` (which removed non-legal attitudinal exposures like `S1144` and non-household institutional outcomes like `S1121`) reveals that pooling classification is moot because S489 fails multiple core inclusion criteria:\n   - **Criterion 4 Failure (`E04`) & Mislabelled `outcome_family`:** `effect_sizes.csv` codes `outcome_family = \"economic_access\"`, yet affordability (`Concern that water supply is costly`) is on the *right-hand side* as a predictor, whereas the dependent variables in both regressions—household stated `Intent to contract` (Model 1, `N = 1,215`) and user-group `Contract commitment` to pay USD 10/month to FundiFix Ltd (Model 2, `N = 254`)—measure upstream commercial/institutional opt-in behavior, not realized household water access, functionality, reliability, quality, or affordability. Crucially, all 112 waterpoints non-functional for over one year (39% of the 571 handpump census) were excluded by design because only *already-functioning* waterpoints could contract the maintenance provider (PDF pp. 4–5), and the 27-day to <3-day downtime reduction from the 2015 free trial is cited only descriptively from prior work (PDF pp. 3, 5).\n   - **Narrow Criterion 2 Failure (`E03`):** As Claude's own `exclusion_from_pooling_reason` concedes, the extracted exposure (`Concern that water supply is costly`) is a subjective household attitude/perception, not a legal or administrative rule. Even if replaced by Table 2's organizational variables (Douglasian cultural-theory `Management` types, `Regular payments`, `Club`, `Exclusion for not observing rules`, or `Penalties for non-payment`), those represent informal local waterpoint governance routines/worldviews, while formal statutory reforms (Kenya's devolution and the Water Act 2016) are discussed purely qualitatively in Section 5.3 (PDF p. 11).\n   - **Design / Evaluative Scope (`E05` / `E07`):** The authors explicitly declare that `\"The study is of exploratory and non-causal nature\"` (PDF p. 2), entering ~34 organizational, socio-economic, and environmental covariates simultaneously into cross-sectional logits to screen behavioral correlates of service-provider sign-up.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Behavioral contracting predictors rather than realized water access outcome (Criterion 4 / E04)",
+        "page": "1",
+        "quote": "The predictors of behavior change of rural water users to commit to the new service provider include"
+      },
+      {
+        "criterion": "Explicitly exploratory non-causal study design (Criterion 3 / E05)",
+        "page": "2",
+        "quote": "The study is of exploratory and non-causal nature."
+      },
+      {
+        "criterion": "Exclusion of non-functional waterpoints by design (Criterion 4 / E04)",
+        "page": "5",
+        "quote": "point (as only functioning waterpoints can contract the service"
+      },
+      {
+        "criterion": "Subjective cost perception exposure predicting stated contracting intent (Criterion 2 & 4 / E03 & E04)",
+        "page": "7",
+        "quote": "level perception of the costliness of the previous maintenance tariff"
+      }
+    ],
+    "nonfit_classification_verdict": "moot_study_appears_ineligible",
+    "number_verification_detail": "Exact match verified against Table 2 (PDF p. 8) and Section 3.3 (PDF p. 5). In Table 2, Model 1 (`DV: Intent to contract`, `N = 1215` at household level with robust SE adjusted for `190` clusters along handpump group, `Pseudo R2 = 0.1641`), the row `Concern that water supply is costly` reports `Odds Ratio = 0.532*`, `robust SE = 0.138`, `P-value = 0.015`. Confidence intervals are not printed in Table 2, matching the blank `lower_CI` and `upper_CI` fields in `effect_sizes.csv`. The secondary Model 1 covariate cited in `provenance_note` (`In favor of free water for vulnerable`) likewise matches Table 2 (`OR = 0.537**`, `robust SE = 0.120`, `P-value = 0.005`). Technical scale note: `0.138` is Stata's delta-method robust SE on the OR scale (`ln(0.532) = -0.6311`, `z = -2.432` for `p = 0.015`, `SE(ln OR) = 0.2595`, `0.532 * 0.2595 = 0.138`), not `SE(ln OR)`.",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+    "study_id": "S489"
+  }
+}

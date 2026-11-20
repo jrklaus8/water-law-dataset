@@ -1,0 +1,143 @@
+{
+  "study_id": "S149",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "21b83cba9e1a22bb28c57c22bb99c844ccc59b269ef564d30699c42bc77abb40",
+  "input_text_sha256": "36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9",
+  "prompt_sha256": "182ba48aa79c16a43e359f4f4a1edd692385508e17d41e0113dc4f88062c5cef",
+  "started_at": "2026-11-19T19:14:39.007992+00:00",
+  "completed_at": "2026-11-19T19:16:30.054297+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S149\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S149\n- Record ID: R3B7D3DFF4E72\n- Citation: Sethy M, Sahoo DM (2026). Gendered inequalities in water sanitation and hygiene access increase time poverty health risks and socioeconomic exclusion in Odisha India. Discover Public Health 23:1269.\n- DOI: 10.1186/s12982-026-02666-8\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52912, sha256=36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "Blind reading of the full text (Sethy & Sahoo 2026, Discover Public Health) shows that the paper's central governance-to-WASH causal claim (Objective 3; Section 3.7, p. 9; Table 8, p. 10) estimates the Average Treatment Effect on the Treated (ATT) of active/meaningful women's participation in Village Water and Sanitation Committees (VWSCs) using propensity score matching across N = 400 rural households in 16 villages of Odisha, India, supplemented by a probit marginal effect for `VWSC awareness campaign` on consistent toilet usage (Table 5, p. 8).\n\n1. SWiM Family Classification (`Family B` vs `none_nonfit`): Substantively, active women's participation in community VWSCs and VWSC awareness campaigns acting on water source functionality (+24.8%), household toilet usage (+19.3% in PSM; +15.8 percentage points in probit), and daily water collection time (-31.4 min) map directly onto SWiM `Family B` (assistance, participation, trust, external support), or secondarily `Family A` if local committee governance arrangements are grouped there. Excluding S149 as `none_nonfit` would ONLY be justified on one of three grounds: (a) if the extracted row in `effect_sizes.csv` captured the multidimensional Gender-WASH Inequality Index (GWII, r = -0.52, p. 9) or diarrhoeal/water-borne illness (Table 4 / Table 8) rather than a direct WASH access/functionality outcome; (b) if narrow Criterion 2 strictly excludes de facto participatory agency/attendance when no formal legal/administrative rule varies; or (c) on data-integrity grounds given severe internal reporting anomalies.\n\n2. Narrow Criterion 2 Assessment (`borderline_governance_or_proxy` / potential `E03` flag): Although VWSCs are institutional local governance bodies under India's Jal Jeevan Mission (JJM) and Swachh Bharat Mission-Gramin (SBM-G), the empirical exposure is not a legal, statutory, tariff, tenure, enforcement, or administrative rule (indeed, mandating 50% women's representation in VWSCs is proposed only as a future policy recommendation in Section 4.5b, p. 14). Instead, the paper measures a behavioural/participatory composite `Women's Agency Score (0-10)` (meeting attendance 20%, speaking time 30%, influence over decisions 30%, leadership roles 20%; p. 4) binarized at an unspecified threshold into village-level active VWSC participation, plus `VWSC awareness campaign` exposure. This is a borderline governance/participation proxy rather than a formal legal rule mechanism, warranting PI review for consistency with other Family B community-participation studies versus `E03` exclusion.\n\n3. Criterion 4 Assessment (`yes_household_or_service_access` for functionality/usage/time; `E04` if health/GWII extracted): Table 8 and Table 5 directly measure household/community WASH service access outcomes—water source functionality, consistent toilet usage, and daily water collection time burden. However, co-reported outcomes in Tables 3, 4, 6, 7, and 8 (diarrhoea/water-borne illness, UTI/reproductive infections, MHM absenteeism, and the composite GWII index combining health, voice, privacy, and time) fail Criterion 4 (`E04`) if used as the primary extracted outcome.\n\n4. Statistical & Reporting Quality Red Flags: (i) Severe internal outcome-label contradiction: Table 8 (p. 10) and Section 3.7 (p. 9) report ATT = +24.8% (SE = 5.2, t = 4.77, p < 0.001, 95% CI [14.6%, 35.0%]) for `Water Source Functionality` alongside +19.3% for `Toilet Usage Rate`, whereas the Abstract (p. 1) and Conclusion Objective III (p. 15) state that VWSC participation `improved toilet functionality by 24.8%`. (ii) All mathematical equations in Section 2.4-2.6 (pp. 3-5) failed to render in the published PDF (`disp lay-eq- Equa`, `inli ne-eq-IEq1`, etc.). (iii) Table 8 reports village-level VWSC treatment across only 16 villages (N = 400 households) without specifying matching covariates, propensity model, common support, caliper, balance diagnostics, agency cutoff, or cluster-robust inference for 16 villages.",
+    "candidate_swim_family_blind": "Family B",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "yes_household_or_service_access",
+    "evidence_quotes": [
+      {
+        "criterion": "Study design and analytic sample size (N = 400 rural households)",
+        "page": "PDF p. 5",
+        "quote": "The household survey achieved a high response rate of 94.3%, yielding a final sample"
+      },
+      {
+        "criterion": "Narrow Criterion 2 exposure definition (participatory agency index in VWSCs rather than formal legal rule)",
+        "page": "PDF p. 4",
+        "quote": "Women’s Agency Score (0–10): A composite index capturing meeting attendance"
+      },
+      {
+        "criterion": "Headline PSM estimate and internal label contradiction (reported as toilet functionality in Abstract vs water source functionality in Table 8)",
+        "page": "PDF p. 1",
+        "quote": "VWSCs improved toilet functionality by 24.8%, reduced water collection time by"
+      },
+      {
+        "criterion": "Headline PSM estimate for WASH service access outcomes in Results Section 3.7 and Table 8",
+        "page": "PDF p. 9",
+        "quote": "These villages exhibited 24.8% higher water source"
+      }
+    ],
+    "headline_estimate_summary": "1) Primary Governance/Participation Estimates — Propensity Score Matching (Table 8, PDF p. 10; text Section 3.7, PDF p. 9; N = 400 households across 16 villages; active/meaningful women's VWSC participation vs non-active villages; matching covariates, cutoff on 0-10 Women's Agency Score, and clustering adjustment not reported):\n- Water Source Functionality [NOTE: labelled 'toilet functionality' in Abstract p. 1 and Conclusion p. 15]: ATT = +24.8%, SE = 5.2, t = 4.77, p < 0.001, 95% CI [14.6%, 35.0%] (beneficial access direction).\n- Toilet Usage Rate: ATT = +19.3%, SE = 4.7, t = 4.11, p < 0.001, 95% CI [10.1%, 28.5%] (beneficial access direction).\n- Water Collection Time: ATT = -31.4 min/day, SE = 8.6, t = -3.65, p < 0.001, 95% CI [-48.3, -14.5] (raw negative sign = beneficial reduction in daily collection burden).\n- Non-C4 health/hygiene PSM outcomes in Table 8 (p. 10): Diarrhoea Incidence ATT = -12.7%, SE = 3.8, t = -3.34, p = 0.001, 95% CI [-20.2%, -5.2%]; MHM Constraints ATT = -18.2%, SE = 4.9, t = -3.71, p < 0.001, 95% CI [-27.8%, -8.6%].\n\n2) Secondary Governance/Support Estimate — Probit Model for Consistent Toilet Usage (Table 5, PDF p. 8, N = 400, adjusted for water available at toilet, adequate privacy, regular maintenance, female education >= 8 years, and wealth index quintile):\n- VWSC awareness campaign -> Consistent Toilet Usage: Marginal Effect dy/dx = 0.158 (+15.8 percentage points), Delta-method SE = 0.047, z = 3.36, p = 0.001, 95% CI [0.066, 0.250].\n\n3) Other Non-Governance or Non-C4 Estimates:\n- Bivariate correlation between Women's Agency Score and composite Gender-WASH Inequality Index (GWII, overall M0 = 0.357, Table 7, p. 9): r = -0.52 (Section 3.7, PDF p. 9; no SE/p-value printed).\n- Logistic regression for Water-borne Illness (Table 4, PDF p. 7, N = 400, adjusted for poor water quality, non-functional toilet, inconsistent handwashing, child <5 years, MHM constraints, household wealth): Low Women's Agency Score Adjusted OR = 1.62, 95% CI [1.07-2.46], p = 0.023, Marginal Effect = +10.4%; Non-functional Toilet Adjusted OR = 3.21, 95% CI [2.10-4.92], p < 0.001.\n- OLS regression for Water Collection Time Poverty (Table 2, PDF p. 6, N = 400, R^2 = 0.714, Adj R^2 = 0.702, adjusted for female education, wealth quintile, household size, Gajapati district): Distance to Source (km) B = 4.82, Robust SE = 0.67, t = 7.19, p < 0.001, 95% CI [3.50, 6.14], Std. B = 0.62; Handpump vs Piped B = 3.15, Robust SE = 0.89, t = 3.54, p < 0.001, 95% CI [1.40, 4.90]; Unprotected vs Piped B = 7.42, Robust SE = 1.25, t = 5.94, p < 0.001, 95% CI [4.96, 9.88].",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Cross-sectional convergent parallel mixed-methods study conducted January–June 2023 across 4 purposively selected districts of rural Odisha, India (Mayurbhanj, Ganjam, Keonjhar, Gajapati), using multi-stage sampling (2 randomly selected blocks per district, 2 villages per block = 16 villages; systematic random sampling of 25 households per village). Primary quantitative analytic sample: N = 400 rural households (100 per district; 94.3% response rate), with N = 217 households for menstrual hygiene management (MHM) sub-analyses and 16 villages for village-level VWSC participation comparisons; complemented by 16 focus group discussions and 32 key informant interviews.",
+    "study_id": "S149"
+  }
+}

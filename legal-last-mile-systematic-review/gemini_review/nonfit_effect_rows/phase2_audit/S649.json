@@ -1,0 +1,37 @@
+{
+  "study_id": "S649",
+  "record_id": "RAFD43FB2362E",
+  "order": 15,
+  "adversarial_critique": "1. NUMERICAL AUDIT: Every point estimate, standard error, p-value, and sample size in Claude's stored `effect_sizes.csv` row matches Tables 3, 4, and 5 of González Rivas (2012) to the exact printed decimal (`-0.0310`, SE `0.0126`, `p=0.014` [printed `0.0140`], `N=2,372` in Table 3; `-0.003`, SE `0.001`, `p=0.005`, `N=2,342` in Table 4; `0.5713`, SE `0.2437`, `p=0.019` [printed `0.0190`], and indigenous `-0.0305`, `p=0.017` [printed `0.0170`], `N=2,342` in Table 5; no 95% CIs are reported in the paper). Two minor specification omissions in Claude's row text should be noted if retained: (a) all continuous predictors in all three equations (and the dependent variable in Table 4) are natural-log transformed (`ln indigenous`, `ln transferspc`, etc.), which is omitted from `exposure_definition` and `effect_estimate`; and (b) `standard_error` omits the `0.0127` robust SE corresponding to the `-0.0305` indigenous-share coefficient in Table 5.\n\n2. ADVERSARIAL SCOPE CRITIQUE (CRITERION 2 & CRITERION 4): Claude's `exposure_definition` and `provenance_note` over-legalize the empirical exposure by framing it as 'operating under the constitutionally assigned (Article 115) municipal responsibility for water-service provision.' In the source paper (p. 35), Article 115 is invoked solely to justify using the municipality as the unit of analysis because ALL Mexican municipalities share that constitutional assignment; Article 115 does not vary across observations and is never tested. Nor does the paper test indigenous legal autonomy (*usos y costumbres*), land/water tenure, utility ownership, or any statutory transfer-allocation rule. Instead: (i) the key independent variable (`indigenous`) is strictly a census ethnolinguistic composition measure (logged 2000 population share speaking an indigenous language), which is a pure sociodemographic disparity predictor failing narrow Criterion 2 (`E03`); (ii) `ln transferspc` aggregates cumulative 2000–2005 *Aportaciones Federales* across health, education, infrastructure, and other programmes in constant 2002 pesos, representing a macro multi-sector public-expenditure input rather than a legal/administrative rule governing household water access (`E03`); and (iii) the bundled `-0.003` coefficient from Table 4 predicts per-capita fiscal transfers as the dependent variable rather than a household WASH outcome (`E04` for that sub-estimate, even though Tables 3 and 5 satisfy Criterion 4 via municipal share of households with an in-dwelling piped water connection). Under the `2026-10-13 / 2026-10-14` `CK` scope standard applied in `A24/A26/A28`, S649 should be flagged for PI review as likely ineligible (`E03`).\n\n3. NON-FIT VERDICT: Pooling classification is moot if S649 is excluded under `E03`. Even if the PI elects to retain S649 as a borderline fiscal-federalism mechanism study, leaving `synthesis_family` blank (`reasoned non-fit`) is strictly justified: ethnolinguistic population share is not formal legal recognition/tenure (Family A), aggregate multi-sector federal block grants to municipal governments are not household/community administrative assistance or participation (Family B), and neither predictor measures regulatory enforcement, privatization, or administrative barriers/capacity (Family C).",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "Criterion 2 (Article 115 is invariant unit-of-analysis background, not a tested exposure)",
+      "page": "PDF p. 6 (p. 35)",
+      "quote": "manage their own water services, as stipulated in Article 115 of the Mexican constitution"
+    },
+    {
+      "criterion": "Criterion 2 (key predictor is census ethnolinguistic share, failing narrow Criterion 2 E03)",
+      "page": "PDF p. 7 (p. 36)",
+      "quote": "by the share of municipal population that speaks an indigenous language. This was the key"
+    },
+    {
+      "criterion": "Criterion 2 (fiscal variable aggregates multi-sector health, education, and infrastructure expenditure)",
+      "page": "PDF p. 8 (p. 37)",
+      "quote": "a set of transfers that included ones for infrastructure as well as for heath, education, and other"
+    },
+    {
+      "criterion": "Criterion 4 (Tables 3 and 5 outcome is household in-dwelling piped water network connection)",
+      "page": "PDF p. 12 (p. 41, Note 1)",
+      "quote": "Households’ direct access to piped water refers to households having a connection to the water"
+    }
+  ],
+  "nonfit_classification_verdict": "moot_study_appears_ineligible",
+  "number_verification_detail": "Exact match across all three models: Table 3 (PDF p. 9 / p. 38, GLM logit link, N=2,372) ln indigenous = -0.0310, robust SE = 0.0126, z = -2.4500, p = 0.0140; Table 4 (PDF p. 10 / p. 39, OLS predicting ln per-capita transfers, N=2,342) ln indigenous = -0.003, SE = 0.001, t = -2.800, p = 0.005; Table 5 (PDF p. 11 / p. 40, GLM logit link, N=2,342) ln Transfers pc = 0.5713, robust SE = 0.2437, z = 2.3400, p = 0.0190, and ln indigenous = -0.0305, robust SE = 0.0127 (this 4th SE is omitted in standard_error), z = -2.4000, p = 0.0170. No 95% CIs are printed in the source paper. Covariates (ln 2000 water coverage, ln density, ln 1999 income, ln migration, queen-contiguity population-weighted spatial lag, state dummies, plus ln 2000 presidential vote share in Table 4) match the text and tables; note only that predictors (and Table 4's outcome) are natural-logged.",
+  "numbers_match_paper": "yes",
+  "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:11:26.750950+00:00",
+  "file_sha256": "e828797f9ae642d3974cf208347820a1d29f7935682d057c5d4c4a5034187516",
+  "input_sha256": "39d52968de3348b7cf28b300555ea7582bc6d91e2a4b7fd7e5fdd9eef881ed7e"
+}

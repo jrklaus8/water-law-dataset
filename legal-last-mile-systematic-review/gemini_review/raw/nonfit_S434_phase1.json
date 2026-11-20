@@ -1,0 +1,143 @@
+{
+  "study_id": "S434",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "babad1a11de5e6b4c2c3391e8c464eef9a56465e30450a69d1ea3aa5f02d2674",
+  "input_text_sha256": "5f0394e85c2881f66e343e4a59ff40d7849fa22f0eb28a849cc63f8c8de06d00",
+  "prompt_sha256": "f31e68b2a8515498630af4b195ad2b75147f1403ee6bbad40d47fb521ceb587d",
+  "started_at": "2026-11-19T19:18:12.490415+00:00",
+  "completed_at": "2026-11-19T19:20:58.609535+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S434\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S434\n- Record ID: RC67C02D0F671\n- Citation: Frempong RB, Stadelmann D, Thiam DR (2025). How do current and past mining activities affect water security, health, and economic opportunities? Applied Economic Perspectives and Policy.\n- DOI: 10.1002/aepp.13510\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 5f0394e85c2881f66e343e4a59ff40d7849fa22f0eb28a849cc63f8c8de06d00) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=56573, sha256=5f0394e85c2881f66e343e4a59ff40d7849fa22f0eb28a849cc63f8c8de06d00]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "Blind reading of Frempong, Stadelmann, and Thiam (2025) shows that the study's primary causal analysis investigates an extractive-industry geographic exposure—the count of active and inactive registered commercial mines within 0–50 km and 50–100 km of a household (instrumented with USGS nonfuel mineral deposits)—rather than any legal, regulatory, tenure, tariff, ownership, or administrative service-access rule. While Outcome 1 ('Household gone without clean water' in the past 12 months, binary 0/1, mean 0.36) clearly satisfies Criterion 4 as a household water security/access-continuity measure (note raw sign inversion: 1 = water deprivation, so negative coefficients indicate improved household water security), the headline mining-proximity estimates (Table 2: -0.036, SE 0.005 within 50 km and +0.005, SE 0.002 within 50–100 km; Table 3: -0.027, SE 0.005 for active mines and +0.072, SE 0.117 for inactive mines) fail narrow Criterion 2 (E03) and belong to no SWiM institutional family ('none_nonfit'). In a secondary OLS extension (Figure 1 and Table 4), the authors construct regional average Afrobarometer perception scores for local councillor corruption, tax official corruption, and local government disapproval, and interact councillor corruption with active/inactive mines. Any mining × corruption interaction term (Table 4: printed 0.035, SE 0.004, with conflicting verbal sign descriptions across pp. 597–598 due to stripped minus signs in Wiley's table text layer) is structurally a cross-sector moderation slope ('none_nonfit'). Even if evaluated on the uninstrumented main effect of regional perceived local councillor corruption (+0.106, SE 0.005 in Table 4; +0.10 in Figure 1), the exposure is a broad subjective public-opinion corruption proxy rather than a concrete legal or administrative rule governing WASH service delivery ('borderline_governance_or_proxy', warranting PI scope review under narrow C2 / E03, though if other general perception-based corruption scores were retained in Family A or C, consistency of excluding vs. pooling that main effect should be checked).",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "yes_household_or_service_access",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 (primary mining exposure)",
+        "page": "PDF p. 3 (p. 588)",
+        "quote": "We also compare the results for active mines with those for inactive mines."
+      },
+      {
+        "criterion": "Criterion 4 (household water deprivation outcome)",
+        "page": "PDF p. 6 (p. 591)",
+        "quote": "The incidence of perceived water poverty/insecurity is about 36% in the sample."
+      },
+      {
+        "criterion": "Criterion 2 (secondary local governance proxy)",
+        "page": "PDF p. 11 (p. 596)",
+        "quote": "We construct a set of indicators to ascertain the quality of local government."
+      },
+      {
+        "criterion": "Headline governance estimate on water insecurity",
+        "page": "PDF p. 11 (p. 596)",
+        "quote": "local councillors is associated with about 0.10 higher probability of water insecurity"
+      }
+    ],
+    "headline_estimate_summary": "Outcome: binary 'Household gone without clean water' in past 12 months (1 = water insecurity/deprivation, 0 = never lacked clean water; mean = 0.36; note raw negative sign = improved water access). N = 142,838 households, adjusted for country & year FEs, respondent age, sex, secondary education, employment, urban dummy, piped water, electricity, clinic, and market (robust SEs; note Wiley PDF table text omits unicode minus signs, verified against prose and Figure 1). (1) Headline 2SLS IV (USGS mineral deposit counts 0–50 km & 50–100 km as IVs; Table 2, Col. 1, PDF p. 9 / p. 594): All active mines within 50 km = -0.036*** (SE = 0.005, p < 0.01; improves water security by 3.6 pp per mine); All active mines within 50–100 km = +0.005*** (SE = 0.002, p < 0.01; worsens water security; KP Wald F = 13.044). (2) Active vs. inactive 2SLS IV within 50 km (Table 3, Col. 1, PDF p. 10 / p. 595): Active mines within 50 km = -0.027*** (SE = 0.005, p < 0.01); Inactive mines within 50 km = +0.072 (SE = 0.117, ns; KP Wald F = 7.716). (3) Local governance OLS LPM estimates (Figure 1, PDF p. 11 / p. 596 & Table 4, Col. 1, PDF p. 12 / p. 597, R2 = 0.069): Regional Corruption (local councillors, 1–4 scale) = +0.106*** (SE = 0.005, p < 0.01; +0.10*** in Fig. 1; worsens water security); Corruption (tax officials) = +0.13*** (Fig. 1); Disapprove local government = +0.05*** (Fig. 1). In Table 4 moderation, Active mines (50 km) * Corruption (local councillors) prints as 0.035*** (SE = 0.004, p < 0.01) and Non-active (50 km) * Corruption prints as 0.040** (SE = 0.013, p < 0.05), with conflicting prose sign interpretations on pp. 597 vs. 598.",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Repeated cross-sectional georeferenced household survey merged with spatial mining records (2SLS instrumental-variable linear probability models using USGS nonfuel mineral deposits within 0–50 km and 50–100 km as instruments for mining counts, plus uninstrumented OLS LPM governance and moderation models with country and year fixed effects); 28 African countries (Afrobarometer Rounds 3–6, 2005–2015, merged with 435 World Bank Africa-PowerMining sites); unit of analysis is the household/respondent; primary analytic sample N = 142,838 households.",
+    "study_id": "S434"
+  }
+}

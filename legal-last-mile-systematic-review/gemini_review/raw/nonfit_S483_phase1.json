@@ -1,0 +1,143 @@
+{
+  "study_id": "S483",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a56c2ac603d63fb4f3f524796e8ea6dc7b5240a0e8793fad8f7b941d50349175",
+  "input_text_sha256": "f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d",
+  "prompt_sha256": "2ea0d2c0dfe718ddfb6399e444ec73a0905d8b7173f7b11b937283a33a46973c",
+  "started_at": "2026-11-19T19:18:12.718553+00:00",
+  "completed_at": "2026-11-19T19:21:48.633876+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S483\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S483\n- Record ID: R8FA145CC6D69\n- Citation: Mutono N., Wright J., Mutembei H., Thumbi S.M. (2022). Spatio-temporal patterns of domestic water distribution, consumption and sufficiency: Neighbourhood inequalities in Nairobi, Kenya. Habitat International.\n- DOI: 10.1016/j.habitatint.2021.102476\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69875, sha256=f9e62bd4edb869737111113b843e313fd52abe2cfcf08a6f713608c42d84ee7d]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "Blind reading of Mutono et al. (2022) confirms that excluding S483 from SWiM Families A, B, and C (`none_nonfit`) is fully justified, and further flags the study as borderline `E03` for PI scope review under narrow Criterion 2. Specifically: (1) Criterion 4 is clearly satisfied (`yes_household_or_service_access`), as the primary outcome is monthly domestic piped water consumption per capita (and water sufficiency >= 1500 L/capita/month) across 2,380 residential utility billing itineraries in Nairobi from 2008 to 2018, supplemented by weekly supply hours under rationing (Table 3). (2) However, under narrow Criterion 2 (`borderline_governance_or_proxy`), the primary multivariable negative binomial mixed-effects model (Table 4, PDF p. 10) tests NCWSC's four-tier residential classification (High-income R1, Middle-income R2, Middle/low-income R3 vs. Low-income R4), built-settlement age (GHS-Built land-cover conversion era), their interaction, and itinerary population count. Although R1–R4 originated in municipal land-use master plans (1973/1979/2014) and NCWSC's 1985 water distribution plan—with R4 encompassing low-income housing and unauthorised shanty dwellings, and NCWSC organizing weekly water rationing schedules by R1–R4 (Table 3)—the authors explicitly operationalize and validate R1–R4 via KSCBS household cross-tabulations (Table 1A, n = 1,137) as a proxy for neighbourhood socio-economic status because census small-area SES statistics were unavailable. Neither land tenure security (Table 1A: 85% in R1 vs. 48% in R4), water rationing hours (Table 3: descriptively higher in R4 at 78 h/week vs. 59 h/week in R1, opposite to the consumption gradient), nor kiosk tariff non-enforcement (Section 2.1.3) is statistically tested as an independent rule exposure predicting water consumption or sufficiency. (3) Consequently, pooling Table 4's residential income-tier Rate Ratios (RR = 5.78 for high-income vs. low-income areas) into Family A (tenure/recognition) or Family C (utility regulation/administrative capacity) would conflate socio-economic wealth, housing density, in-house plumbing, and private tank storage with a legal or regulatory rule effect. Two internal reporting discrepancies in the source paper are also noted: first, Table 4 models continuous/count monthly per capita water consumption (Rate Ratios = 5.78, 3.80, 1.65), whereas the Abstract and Section 3.3.1 text misdescribe those exact Rate Ratios and CIs as the relative likelihood of achieving the binary >= 1500 L/capita/month sufficiency threshold; second, in Table 4, 'Built up before 1975' prints RR = 0.54 with a narrow CI of 0.53–0.56 alongside an inconsistent p-value of 0.425.",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "yes_household_or_service_access",
+    "evidence_quotes": [
+      {
+        "criterion": "Study design, unit of analysis, and Criterion 4 water consumption/sufficiency outcome",
+        "page": "2",
+        "quote": "domestic water consumption per capita for 2380 itineraries (areas with an average population of 700) in relation"
+      },
+      {
+        "criterion": "Criterion 2 residential land-use classification definition including informal dwellings",
+        "page": "4",
+        "quote": "income housing and unauthorised shanty dwellings"
+      },
+      {
+        "criterion": "Criterion 2 operationalization of utility residential classes as a socio-economic status proxy",
+        "page": "5",
+        "quote": "a proxy for the socio-economic status of different neighbourhoods"
+      },
+      {
+        "criterion": "Headline quantitative finding on residential inequality in water sufficiency",
+        "page": "2",
+        "quote": "were six and four times more likely to receive the recommended 1500 L per capita per month respectively."
+      }
+    ],
+    "headline_estimate_summary": "Multivariable negative binomial linear mixed-effects model (year as random effect; adjusting for residential category, built-settlement age, residential category x built-settlement age interaction, and annual itinerary population count; no SEs reported) of monthly per capita domestic piped water consumption across N = 2,380 residential itineraries in Nairobi (2008–2018; Table 4, PDF p. 10 / journal p. 9): vs. Low-income areas (R4, n = 252, reference), Rate Ratio (RR) = 5.78 (95% CI: 5.34–6.25, p < 0.001) in High-income areas (R1, n = 534), RR = 3.80 (95% CI: 3.52–4.10, p < 0.001) in Middle-income areas (R2, n = 772), and RR = 1.65 (95% CI: 1.53–1.79, p < 0.001) in Middle/low-income areas (R3, n = 822) [note: Abstract and p. 9 text round these RRs to 6x, 4x, and 2x and misstate them as likelihood of >= 1500 L/capita/month water sufficiency]. Built-settlement age (vs. built up after 2014, n = 218): before 1975 RR = 0.54 (CI: 0.53–0.56, printed p = 0.425), 1975–1990 RR = 0.62 (CI: 0.60–0.65, p < 0.001), 1990–2000 RR = 0.87 (CI: 0.85–0.89, p < 0.001), 2000–2014 RR = 0.96 (CI: 0.94–0.99, p < 0.001); Population count RR = 0.85 (CI: 0.71–0.93, p < 0.001); plus age-by-residential-category interaction RRs in Table 4. Descriptive statistics (PDF pp. 8–10, Tables 3 & 1A): mean monthly consumption = 13,087 L (R1, 7% <1500 L/cap/mo), 6,240 L (R2, 12% insufficient), 1,697 L (R3, 36% insufficient), and 827 L (R4, 60% insufficient); average weekly supply under rationing (Oct 2016–Dec 2018) = 59 h (R1), 50 h (R2), 65 h (R3), and 78 h (R4); non-revenue water (Nov 2016–May 2018) = 29% (3.5 billion L/month).",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Spatio-temporal ecological panel analysis (2008–2018 monthly utility billing records, plus 1985 vs. 2018 land-use/network comparison, Oct 2016–Dec 2018 rationing schedules, and Nov 2016–May 2018 reservoir metering) in Nairobi, Kenya. Unit of analysis: Nairobi City Water and Sewerage Company (NCWSC) geographical billing 'itineraries' (average population ~700 people). Analytic sample: N = 2,380 residential itineraries (out of 2,538 georeferenced itineraries after excluding 554 unlocated itineraries and 158 non-residential itineraries from ~3,000 total itineraries). Supplemental cross-sectional validation sample: N = 1,137 households across 7 Nairobi sublocations from the 2012–2013 Kenya State of the Cities Baseline Survey (KSCBS; Table 1A: R1 n = 60, R2 n = 170, R3 n = 161, R4 n = 746).",
+    "study_id": "S483"
+  }
+}

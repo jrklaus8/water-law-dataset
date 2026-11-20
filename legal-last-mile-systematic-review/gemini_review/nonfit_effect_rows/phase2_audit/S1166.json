@@ -1,0 +1,37 @@
+{
+  "study_id": "S1166",
+  "record_id": "R69F53378C8F2",
+  "order": 20,
+  "adversarial_critique": "1. Statistical Accuracy & Provenance Slip: Every numerical figure in Claude's `effect_sizes.csv` row matches Jiang and Zheng (2014) exactly, including the headline Table 8 Column 4 `PSP majority` (corrective recoding) estimate on `Domestic water supply population (log)` (beta = 0.046, SE = 0.026, p < 0.10, ~4.6% increase, N = 814), all secondary Table 8 estimates across Columns 1-4 (N = 814 and N = 1,752), the 27 corrective recodings (p. 179), and the panel dimensions (208 utilities in 192 cities, 1998-2007, p. 161). However, `provenance_note` contains a factual measurement error: it claims the domestic service population is \"derived from industrial-survey variables,\" whereas Section V.D (p. 181) and Table A1 (p. 186 / PDF p. 32) explicitly state that water service variables are not collected in the NBS Industrial Firm Surveys and are instead merged from the China City Statistical Yearbooks, with domestic user counts imputed by dividing city urban domestic water supply by urban domestic water use per capita. In addition, `adjusted` omits year fixed effects (`lambda_t`), which are included alongside utility fixed effects in Equations (1)-(2) (pp. 171-174), and `provenance_note` cites Table 8 as pp. 183-184 when Table 8 is on p. 184 (discussed on p. 181).\n\n2. Non-Fit Classification Critique (`questionable_could_fit_family_ABC`): Leaving `included_in_pooled_estimate = FALSE` is statistically sound because the outcome is an aggregate log city-level imputed user count rather than a household connection proportion. However, leaving `synthesis_family` blank (`reasoned non-fit`) for SWiM narrative synthesis rests on two questionable premises in `exclusion_from_pooling_reason`: (a) it relies on the superseded pre-A21 narrow label for Family C (\"C (legal/administrative barriers)\") to argue that an \"ownership and regulatory-structure variable\" does not fit A/B/C, whereas under the A21 broadening Family C encompasses utility ownership, regulatory structure, and institutional governance (matching my blind Phase 1 assignment to Family C); and (b) it is internally self-contradictory to invoke \"the S749/S795/S869 precedent\" (three other utility privatization/PSP studies in the review) while simultaneously asserting in the same sentence that S1166 is a \"single study with this exposure-comparator.\" Either the PSP/ownership cluster (S749/S795/S869/S1166) belongs in broadened Family C or its intentional carve-out from A21's broadened Family C needs an updated, non-obsolete rule.\n\n3. Scope & Eligibility Assessment (`eligible_keep_included`): Under Criterion 2 and Criterion 4, S1166 is near the outer boundary of utility-level governance studies—(i) China lacked comprehensive national water privatization legislation (p. 164) and PSP is coded strictly from corporate equity shares, leaving BOT/TOT concessions in the state-owned comparator group (p. 165), and (ii) 12 of the 15 outcomes (Tables 5-7) are corporate financial/efficiency ratios that fail Criterion 4, while Table 8's `Domestic water supply population (log)` is an aggregate city-year imputed user count (conditional on log city population) that the authors themselves treat as speculative/conjectural (pp. 181, 185). Nonetheless, nationwide legal opening of municipal water utilities to majority private ownership (enabled by the 2001 State Planning Committee guidelines and 2002/2004 Ministry of Construction Circular No. 272 and Decree No. 126, p. 163) paired with municipal domestic water service population coverage (controlling for total city population) satisfies Criterion 2 and Criterion 4 on the same footing as sibling PSP studies (S749/S795/S869) and aligns with the PI's A16 inclusion adjudication of 2026-10-13. Notably, Claude also correctly distinguished raw sign from substantive access direction on the two water volume outcomes (`Urban water supply (log)` and `Urban domestic water supply (log)`), noting that negative volume coefficients plausibly reflect reduced pipeline leakage rather than reduced household consumption.",
+  "confidence": "high",
+  "evidence_quotes": [
+    {
+      "criterion": "headline_estimate_verification",
+      "page": "PDF p. 27 (journal p. 181)",
+      "quote": "water service population as opposed to state-owned utilities."
+    },
+    {
+      "criterion": "criterion4_city_yearbook_imputation_vs_provenance_note",
+      "page": "PDF p. 27 (journal p. 181)",
+      "quote": "Surveys, the China City Statistical Yearbooks contain variables on total water"
+    },
+    {
+      "criterion": "criterion2_equity_coding_caveat_bot_tot",
+      "page": "PDF p. 11 (journal p. 165)",
+      "quote": "original ownership and is still observed as state owned."
+    },
+    {
+      "criterion": "direction_and_conjectural_coverage_interpretation",
+      "page": "PDF p. 31 (journal p. 185)",
+      "quote": "users leads us to speculate that PSP utilities reduce water leakage and expand"
+    }
+  ],
+  "nonfit_classification_verdict": "questionable_could_fit_family_ABC",
+  "number_verification_detail": "All printed statistical values in `effect_sizes.csv` match Jiang & Zheng (2014) exactly: Table 8 (PDF p. 30 / journal p. 184) Col 4 `Domestic water supply population (log)` for `PSP majority` (corrective recoding) = 0.046* (SE = 0.026, p < 0.10, N = 814, ~4.6% increase cited on p. 181) and `PSP minority` = 0.015 (SE = 0.038); Col 1 `PSP` (original) = 0.026 (SE = 0.025); Col 2 `PSP` (corrective) = 0.037 (SE = 0.026); Col 3 `PSP majority` (original) = 0.032 (SE = 0.026) and `PSP minority` (original) = 0.006 (SE = 0.034). Secondary volume rows in Table 8 also match exactly: `Urban domestic water supply (log)` (N = 814) `PSP majority` = -0.071* (SE = 0.038, p < 0.10) original and -0.062 (SE = 0.047) corrective; `Urban water supply (log)` (N = 1,752) `PSP majority` = -0.040 (SE = 0.030) original and -0.055 (SE = 0.035) corrective. Sample counts (208 utilities in 192 cities, 1998-2007, p. 161; 27 corrective recodings, p. 179) also match. Two non-numeric metadata inaccuracies are noted: (1) `provenance_note` mistakenly states that domestic service population is \"derived from industrial-survey variables,\" whereas p. 181 and Table A1 (p. 186) state it comes from China City Statistical Yearbooks (imputed from urban domestic water supply divided by domestic water use per capita); (2) `adjusted` omits year fixed effects (`lambda_t` in Eqs. 1-2, pp. 171-174), and the paper itself has a minor boundary wording discrepancy between p. 162 (`> 50%` nonstate capital for PSP majority) and Table A1 p. 186 (`state capital share <= 50%`, i.e., `>= 50%` nonstate capital).",
+  "numbers_match_paper": "yes",
+  "review_eligibility_flag": "eligible_keep_included",
+  "model": "gemini-4-carbon-medium (Antigravity session inherit)",
+  "run_at": "2026-11-20T01:16:16.569331+00:00",
+  "file_sha256": "da2f0444ec01da2bc4b464b1586676a8974b94d952afad1fbde48d4f599ab2de",
+  "input_sha256": "1579f2b99e94a81f6767f225dee41ff00f74a5f3c75c3c7fa8fdd6fd82264d42"
+}

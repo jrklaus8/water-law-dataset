@@ -1,0 +1,127 @@
+{
+  "study_id": "S448",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5c94f2d97ee7356b3ec765add7a1502824d9809cf20cf84fac71365ff39c5962",
+  "input_text_sha256": "f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0",
+  "prompt_sha256": "08591f8dbe6d5386accef198f26b2d9328ae7ca37789a8b1b24d04762d6c35fb",
+  "started_at": "2026-11-20T01:08:49.809507+00:00",
+  "completed_at": "2026-11-20T01:10:33.095111+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S448\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S448\",\n  \"record_id\": \"RBDA703859BEA\",\n  \"order\": 8,\n  \"blind_rationale\": \"1. SWiM Family Classification (Family C vs Family A / none_nonfit): On a blind reading, the paper's core water/sanitation access estimates (Tables 4 and 5) belong in SWiM Family C (ownership, regulation, institutional capacity, administrative structure)—or secondarily Family A if cooperative local-government arrangements are grouped under governance arrangements. Specifically, the paper evaluates municipal participation in horizontal intermunicipal cooperation (IMC, implemented in Brazil via formal public consortia) and the duration of cooperation (IMCd, theorized as organizational learning and institutional maturation) among municipalities that directly provide water and wastewater services (WWS). Excluding this study as `none_nonfit` would be inconsistent with keeping other utility administrative-structure, decentralization, corporatization, or institutional-capacity rows in Family C, UNLESS (a) Family C is strictly restricted to ownership delegation/privatization and formal regulatory agency oversight (since the sample explicitly excludes municipalities that delegated provision to state or private utilities), (b) the extracted row is `IMCd` (years of cooperation conditional on `IMC` in the same regression, which captures a temporal maturation slope rather than presence vs absence of an administrative rule/structure), or (c) the extracted row is `FIN` (revenue-to-expense ratio) or `QUA` (inverse water-loss ratio) rather than `WC` or `WWC`.\\n\\n2. Narrow Criterion 2 Assessment (`borderline_governance_or_proxy`): While public consortia in Brazil rest on formal inter-municipal administrative agreements, the tested exposures (`IMC` binary participation and `IMCd` years of participation from the IBGE MUNIC survey) do not test a specific legal, regulatory, tenure, tariff, disconnection, or enforcement rule governing household last-mile access. All 344 sampled municipalities retain direct municipal WWS provision (having not delegated provision to state-owned or private utilities), and the authors explicitly note in the Limitations (PDF p. 8) that secondary MUNIC/SNIS indicators do not capture specific governance designs, contractual features, or regulatory environments. Moreover, in the baseline two-way fixed-effects model, `IMC` is identified off only 17 switching municipalities (and is statistically null for both `WC` and `WWC`), while `IMCd` is entered simultaneously with `IMC` and captures linear within-consortium time/maturation trends. Flagging as `borderline_governance_or_proxy` for PI scope check is warranted.\\n\\n3. Criterion 4 Assessment (`yes_household_or_service_access`): Two of the four outcomes—water coverage (`WC`, served population / total municipal population, %) and wastewater coverage (`WWC`, served population / total municipal population, %)—directly measure municipal-level population access/coverage for water and sanitation services (`yes_household_or_service_access`). By contrast, `FIN` (operational revenue / total service expense, %) is a purely institutional/financial balance metric (fails C4), and `QUA` (inverse of volumetric distribution water losses, %) is a utility technical/operational efficiency indicator rather than household drinking-water quality or access. Substantively, binary `IMC` participation shows null baseline FE associations with both water coverage (−0.094 pp, SE 0.920) and wastewater coverage (−2.311 pp, SE 2.189), whereas each additional year of IMC duration (`IMCd`) is positively associated with water coverage (+0.570 pp/year, p < 0.05) and wastewater coverage (+0.880 pp/year, p < 0.10), alongside deteriorating water-loss performance (`QUA` −0.940 pp/year, p < 0.10).\",\n  \"candidate_swim_family_blind\": \"Family C\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"yes_household_or_service_access\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Headline finding (IMC participation vs duration)\",\n      \"page\": \"PDF p. 1\",\n      \"quote\": \"participation in IMC per se is not associated with improvements in financial outcomes or service coverage\"\n    },\n    {\n      \"criterion\": \"Study design and within-municipality identification sample\",\n      \"page\": \"PDF p. 5\",\n      \"quote\": \"participated in IMC during the study period, and only 17 changed their\"\n    },\n    {\n      \"criterion\": \"Criterion 4 (Water coverage baseline FE result)\",\n      \"page\": \"PDF p. 6\",\n      \"quote\": \"positively associated with WC and statistically significant at the 5%\"\n    },\n    {\n      \"criterion\": \"Criterion 2 (Broad IMC indicator without contractual or regulatory rules)\",\n      \"page\": \"PDF p. 8\",\n      \"quote\": \"examine how specific governance designs, contractual features,\"\n    }\n  ],\n  \"headline_estimate_summary\": \"In a balanced 5-year panel (2015–2019; N = 1,720 municipality-year observations across 344 Brazilian municipalities directly providing WWS) adjusting simultaneously for IMC participation (binary: 1 vs 0), IMC duration (IMCd, years), log population (lnPOP), municipality fixed effects, and year fixed effects with municipality-clustered robust SEs (no 95% CIs or exact p-values printed): (1) Water coverage (WC, % served population, Table 4, PDF p. 6, baseline OLS FE preferred by Mundlak test = 27.850, p < 0.01): IMC binary participation β = −0.094 (SE = 0.920, p >= 0.10, unfavorable raw sign, null); IMCd duration β = +0.570** (SE = 0.283, p < 0.05, favorable access direction: +0.570 percentage points per additional year of cooperation; FGLS RE β = +0.325*, SE = 0.196, p < 0.10). (2) Wastewater coverage (WWC, % served population, Table 5, PDF p. 6, baseline OLS FE preferred by Mundlak test = 18.460, p < 0.01): IMC binary participation β = −2.311 (SE = 2.189, p >= 0.10, null); IMCd duration β = +0.880* (SE = 0.485, p < 0.10, favorable access direction: +0.880 percentage points per year; FGLS RE β = +0.569, SE = 0.375, ns). (3) Non-access / operational outcomes: Service quality / inverse water-loss index (QUA, %, higher = lower water losses, Table 6, PDF p. 7): baseline FE IMC β = +4.929 (SE = 3.219, ns) and IMCd β = −0.940* (SE = 0.528, p < 0.10, unfavorable deterioration over time); admissible FGLS RE (Mundlak = 3.180, ns) IMC β = +4.560** (SE = 2.281, p < 0.05) and IMCd β = −0.577** (SE = 0.268, p < 0.05). Financial outcome (FIN, operational revenue/expense %, Table 3, PDF p. 6): baseline FE IMC β = −7.253* (SE = 3.721, p < 0.10) and IMCd β = +1.685 (SE = 1.081, ns); FGLS RE IMC β = −3.286 (SE = 3.761, ns) and IMCd β = +0.995* (SE = 0.550, p < 0.10).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Balanced 5-year panel data regression study (2015–2019) in Brazil using municipality- and year-fixed-effects OLS (within) models as the baseline specification, with FGLS random-effects and Mundlak correlated random-effects models as robustness checks and municipality-clustered robust standard errors. Unit of analysis: municipality (restricted to municipalities that directly provide water and wastewater services without delegating to state-owned or private utilities). Sample size: N = 1,720 municipality-year observations across 344 municipalities (308 observations with IMC participation across 71 municipalities, of which 17 switched into IMC during 2015–2019; 1,412 observations without IMC).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:20:57.714855+00:00\",\n  \"file_sha256\": \"5c94f2d97ee7356b3ec765add7a1502824d9809cf20cf84fac71365ff39c5962\",\n  \"input_sha256\": \"f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S448\",\n  \"outcome_family\": \"effective_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Brazilian municipality's participation in an intermunicipal cooperation (IMC) arrangement for water and wastewater services (WWS), a formal local-government governance arrangement.\",\n  \"comparator_definition\": \"The same municipality in years without IMC participation (panel fixed-effects within-municipality comparison).\",\n  \"effect_measure\": \"panel-data fixed-effects regression coefficient\",\n  \"effect_estimate\": \"IMC participation is associated with a financial-performance index (FIN) approximately 7.3 points lower than the same municipality in non-participating years (coefficient=-7.253, SE=3.721, significant at the 10% level). Separately, IMC participation duration is associated with a positive effect on wastewater coverage (~+0.88 points/year, 10% level) but a negative effect on service quality/water losses (QUA index, ~-0.58 to -0.94 points/year across specifications), while IMC participation itself (random-effects model) is positively associated with QUA (~+4.6 points, 5% level).\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"3.721\",\n  \"sample_size\": \"panel of Brazilian municipalities directly providing WWS (exact N not located in the retrieved excerpt)\",\n  \"direction\": \"negative (IMC participation associated with lower financial-performance index; mixed/non-monotonic effects on coverage and quality dimensions)\",\n  \"adjusted\": \"TRUE (panel fixed-effects controlling for ln(population); random-effects and correlated-random-effects specifications as robustness checks, Mundlak-test-guided)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S448; source Ribeiro et al. 2026, Utilities Policy, Table 3 (FIN), Table 5 (WWC), Table 6 (QUA). The financial-outcomes (FIN) coefficient is recorded as the primary effect here because it is the only one of the four performance dimensions with a fully reported coefficient and standard error in the retrieved excerpt; the coverage/quality findings are recorded narratively in the effect_estimate field for completeness but their exact standard errors were not located in the retrieved text.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md §2 -- re-examined 2026-09-28 (see S434's note for the batch context). This study's exposure -- a Brazilian municipality's participation in a formal intermunicipal cooperation (IMC) arrangement for water/wastewater services -- is the same exposure category already excluded for S869 (Brazilian intermunicipal sanitation-consortium cooperation, also under Brazil's constitutional decentralisation framework: 'this institutional-cooperation-arrangement exposure does not cleanly map to Family A/B/C'). S448 is if anything a cleaner non-fit than S869: its primary recorded effect (the financial-performance index, FIN) is not itself a water/sanitation access or coverage outcome at all, whereas S869's outcome was at least a directly measured service-coverage figure. synthesis_family is left blank as a reasoned non-fit, consistent with the S869 precedent; single study for this exposure-comparator regardless.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=71095, sha256=f6c5362c564bda0e10770114dad583af267f7a9d35b553e0e0206de65e6965f0]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Truncated-Excerpt Extraction Defect in `effect_sizes.csv` (Wrong Primary Outcome & Missing Statistics): Claude's `provenance_note` reveals that S448 was originally extracted from an incomplete text excerpt. Because Tables 4–6 and the sample description were missing from that excerpt, Claude recorded the financial-performance index (`FIN`, operational revenue / total service expense %, Table 3: IMC FE beta = -7.253, SE = 3.721, p < 0.10) as the primary effect row under `outcome_family = \"effective_access\"`, left `sample_size` as `\"exact N not located\"`, omitted Water Coverage (`WC`, Table 4) altogether, and omitted the exact standard errors for Wastewater Coverage (`WWC`, Table 5) and Service Quality (`QUA`, Table 6). In the full PDF, `FIN` is not a household/service access outcome at all, whereas complete baseline two-way fixed-effects regressions (with `N = 1,720` municipality-year observations across `344` municipalities, 2015–2019) are printed for both true coverage outcomes: Water Coverage (`WC`, Table 4, PDF p. 6: `IMC` beta = -0.094, SE = 0.920, ns; `IMCd` duration beta = +0.570**, SE = 0.283, p < 0.05) and Wastewater Coverage (`WWC`, Table 5, PDF p. 6: `IMC` beta = -2.311, SE = 2.189, ns; `IMCd` duration beta = +0.880*, SE = 0.485, p < 0.10). Moreover, Claude's `adjusted` field omits that binary `IMC` and continuous duration `IMCd` are included simultaneously in the same regression alongside `lnPOP`, municipality fixed effects, and year fixed effects (so `IMC` estimates an initial entry jump off just 17 switching municipalities conditional on `IMCd`, while `IMCd` estimates a linear per-year maturation slope).\n\n2. Critique of `exclusion_from_pooling_reason` (`questionable_could_fit_family_ABC`): Two of Claude's three arguments for `none_nonfit` collapse once the full text is read. First, Claude argued that `\"S448 is if anything a cleaner non-fit than S869: its primary recorded effect (the financial-performance index, FIN) is not itself a water/sanitation access or coverage outcome at all\"`—which is purely an artifact of Claude missing Table 4 (`WC`) and Table 5 (`WWC`). Second, Claude claimed S448 is a `\"single study for this exposure-comparator regardless\"` in the very same sentence that cites `S869` as evaluating the exact same exposure category (Brazilian intermunicipal sanitation-consortium cooperation) on service coverage! Together, S448 and S869 form at least a two-study cluster on Brazilian public sanitation consortia with service-coverage outcomes. Under the broadened A21 SWiM taxonomy, formal public consortia among municipal WWS providers plausibly map to Family C (utility administrative structure / shared institutional capacity) or Family A (decentralized / inter-municipal local governance arrangements), unless Family C is strictly restricted to ownership delegation (private/state vs direct municipal provision) and formal regulatory agency oversight.\n\n3. Narrow Criterion 2 & Criterion 4 Scope Assessment (`borderline_flag_for_pi`): On Criterion 4, the currently stored `FIN` estimate fails C4 outright, whereas `WC` (Table 4) and `WWC` (Table 5) clearly satisfy C4 (`%` municipal population served with water and wastewater). On narrow Criterion 2 (`2026-10-13 / 2026-10-14` CK standard), S448 is genuinely borderline and warrants PI confirmation (together with S869): Brazilian public consortia are formal inter-municipal public-law administrative entities/contracts (not informal social trust like S1144 or physical engineering like S1020), yet all 344 sampled municipalities retained direct municipal WWS provision without ownership delegation (PDF p. 4), `IMCd` measures linear organizational learning/maturation over time rather than a legal rule, and the authors explicitly note (PDF p. 8) that their secondary MUNIC/SNIS indicators do not capture specific governance designs, contractual features, or regulatory environments. If kept in the review, `effect_sizes.csv` must be corrected to replace `FIN` with the Table 4 (`WC`) and Table 5 (`WWC`) estimates and `N = 1,720` (`344` municipalities).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Sample size N = 1,720 and clustering/FE specification omitted from stored row",
+        "page": "PDF p. 6",
+        "quote": "Notes: N = 1720. Coefficients are reported with robust standard errors clustered"
+      },
+      {
+        "criterion": "Within-municipality FE identification of binary IMC from only 17 switchers across 344 municipalities",
+        "page": "PDF p. 5",
+        "quote": "participated in IMC during the study period, and only 17 changed their"
+      },
+      {
+        "criterion": "Criterion 4 Water Coverage (WC, Table 4) positive IMCd finding missed in stored row",
+        "page": "PDF p. 6",
+        "quote": "positively associated with WC and statistically significant at the 5%"
+      },
+      {
+        "criterion": "Criterion 2 limitation: broad IMC indicator lacks specific contractual or regulatory rules",
+        "page": "PDF p. 8",
+        "quote": "examine how specific governance designs, contractual features,"
+      }
+    ],
+    "nonfit_classification_verdict": "questionable_could_fit_family_ABC",
+    "number_verification_detail": "Although the individual numbers Claude transcribed from its partial excerpt match the paper (Table 3 FIN baseline FE IMC beta = -7.253*, SE = 3.721, p < 0.10; narrative WWC IMCd ~ +0.88 at 10% [exact Table 5 FE beta = 0.880*, SE = 0.485]; narrative QUA IMCd ~ -0.58 to -0.94 [exact Table 6 RE beta = -0.577**, SE = 0.268 and FE beta = -0.940*, SE = 0.528]; narrative QUA RE IMC ~ +4.6 at 5% [exact Table 6 RE beta = 4.560**, SE = 2.281]), there are major omissions and specification gaps caused by truncated-excerpt extraction: (1) Exact sample size is explicitly printed in the PDF (p. 4, Table 2, and Notes to Tables 3–6 on pp. 6–7) as N = 1,720 municipality-year observations across 344 municipalities over 5 years (2015–2019; 308 observations with IMC across 71 municipalities, 17 switchers; 1,412 observations without IMC), whereas `sample_size` states exact N was not located. (2) Contrary to `provenance_note` claiming FIN was the only dimension with a reported coefficient and SE, full coefficients and municipality-clustered robust SEs are printed for all four outcomes, including Water Coverage (Table 4, PDF p. 6, completely omitted by Claude: FE IMC beta = -0.094, SE = 0.920, ns; FE IMCd beta = 0.570**, SE = 0.283, p < 0.05; RE IMC beta = -0.542, SE = 0.955; RE IMCd beta = 0.325*, SE = 0.196) and Wastewater Coverage (Table 5, PDF p. 6: FE IMC beta = -2.311, SE = 2.189, ns; FE IMCd beta = 0.880*, SE = 0.485, p < 0.10; RE IMC beta = -3.140, SE = 2.136; RE IMCd beta = 0.569, SE = 0.375). (3) `adjusted` omits that IMC (binary), IMCd (years of cooperation), lnPOP, municipality fixed effects, and year fixed effects are all estimated simultaneously in the baseline model (no 95% CIs or exact p-values are printed in the paper, only 10%/5%/1% stars). (4) Substantive direction: the stored primary row (-7.253 on FIN) is a financial revenue-to-expense ratio rather than household access; for actual service coverage, binary IMC entry is statistically null with negative raw signs (-0.094 pp for WC; -2.311 pp for WWC), whereas cooperation duration IMCd has a favorable positive association (+0.570 pp/yr for WC, p < 0.05; +0.880 pp/yr for WWC, p < 0.10).",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S448"
+  }
+}

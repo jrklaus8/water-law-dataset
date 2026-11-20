@@ -1,0 +1,127 @@
+{
+  "study_id": "S795",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "aff0920571faed1de58440db29b6138f8594dc27d7396ed68a900c47bc2b25b0",
+  "input_text_sha256": "c606f2a26ea7587f1fd6233308ad6738a01aba01a86c2faff5157113956dccd1",
+  "prompt_sha256": "2ff44c0532756ee457989bd3f0cde1ce037451b659170970f38b8907ab0f5710",
+  "started_at": "2026-11-20T01:13:58.877495+00:00",
+  "completed_at": "2026-11-20T01:15:41.655501+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S795\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S795\",\n  \"record_id\": \"RDAD1B5F3B10E\",\n  \"order\": 16,\n  \"blind_rationale\": \"This study directly evaluates the household-level service-access impact of urban water utility privatization in Bolivia (the 1997 30-year private concession to Aguas del Illimani S.A. in La Paz and El Alto, regulated by SISAB with contractual in-house connection mandates, 5-year expansion targets, and regulated tariffs/connection fees) compared against non-privatized municipal public provision (Cochabamba) and cooperative provision (Santa Cruz de la Sierra). Narrow Criterion 2 is clearly met (`yes_rule_mechanism`) because utility ownership/concession regime and regulatory contract rules directly govern service expansion and connection terms. Criterion 4 is clearly met (`yes_household_or_service_access`) because the primary econometric outcome is a household-level binary indicator for piped water access inside the dwelling/yard from the utility network (supplemented by descriptive coverage, equity concentration indices, and household water affordability at the >3% income threshold). Under SWiM taxonomy, private concession vs. public/cooperative utility ownership belongs squarely in `Family C` (ownership, regulation, institutional capacity, administrative structure), with clear directionality (positive long-run 1996–2005 probit DID marginal effects of +0.077 and +0.075 on piped water access, p < 0.01; null short-run 1996–2001 effect of 0.025, SE = 0.025). Note: PDF text extraction drops minus signs on negative numbers in tables (e.g., Cochabamba's coverage drop and baseline dummies in Table 12), but the prose on p. 2574 (PDF p. 11) explicitly confirms that the `Effect` interaction coefficient in 1996–2005 is positive, while the short-run 1996–2001 `Effect` is statistically insignificant.\",\n  \"candidate_swim_family_blind\": \"Family C\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"yes_household_or_service_access\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Criterion 2 (Privatization / Concession Exposure)\",\n      \"page\": \"p. 2564 (PDF p. 1)\",\n      \"quote\": \"This paper investigates the impact of water service privatization in Bolivia.\"\n    },\n    {\n      \"criterion\": \"Criterion 2 (DID Policy Shock)\",\n      \"page\": \"p. 2568 (PDF p. 5)\",\n      \"quote\": \"the water utility privatization is the policy shock.\"\n    },\n    {\n      \"criterion\": \"Criterion 4 (Household Piped Water Access Outcome)\",\n      \"page\": \"p. 2568 (PDF p. 5)\",\n      \"quote\": \"where water is a dummy for household access to piped water;\"\n    },\n    {\n      \"criterion\": \"Headline Estimate (Table 12 Probit DID Marginal Effects)\",\n      \"page\": \"p. 2574 (PDF p. 11)\",\n      \"quote\": \"Notes: Marginal values reported. Since each of the cities is either classiﬁed as “privatized” or “not-privatized”\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Primary econometric estimate (Table 12, p. 2574 / PDF p. 11; probit DID reporting marginal effects of `Effect = post * privatized` on household piped water access): Long-run 1996 vs. 2005: (1) controlling for log per capita income (`lnY capita`) and city dummies: marginal effect = +0.077, SE = 0.016, p < 0.01 (***), N = 2,917 households (weighted pop. = 1,476,802; F(6, 2911) = 35.44); (2) controlling for dwelling wealth (`Rooms`, `Electricity`, `Wall`) and city dummies: marginal effect = +0.075, SE = 0.015, p < 0.01 (***), N = 2,945 households (weighted pop. = 1,487,615; F(8, 2937) = 31.23). Short-run 1996 vs. 2001: (1) controlling for `lnY capita` and city dummies: marginal effect = 0.025 (sign ambiguous due to PDF minus-sign stripping, |t| = 1.00), SE = 0.025, not statistically significant, N = 3,240 (F(6, 3234) = 30.41); (2) controlling for dwelling wealth and city dummies: marginal effect = 0.025, SE = 0.025, not statistically significant, N = 3,277 (F(8, 3269) = 32.84). Descriptive 1996–2005 piped-water coverage changes (Tables 5–6, pp. 2569–2570 / PDF pp. 6–7): La Paz total 87.9% to 96.6% (poorest quintile QI: +12.8 pp, p < 0.05), El Alto total 76.2% to 87.8% (QI: +30.3 pp, p < 0.05), Cochabamba total 76.5% to 61.8% (QI: -37.4 pp, p < 0.05; minus sign stripped in PDF Table 6), Santa Cruz total 95.5% to 95.6% (QI: 0.0 pp, ns). Affordability (Table 11, p. 2574 / PDF p. 11, share of connected QI households spending >3% of income on water, 2001 to 2005): La Paz 34.8% to 42.1%, El Alto 25.6% to 15.1%, Cochabamba 63.9% to 23.2%, Santa Cruz 78.4% to 73.1%.\",\n  \"narrow_criterion2_rule_present\": \"yes_rule_mechanism\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Repeated cross-sectional difference-in-differences (probit DID reporting marginal effects, plus descriptive Welch t-tests, Kakwani achievement indices, concentration indices, and expenditure/affordability comparisons) in urban Bolivia across 4 cities: La Paz and El Alto (privatized via 1997 concession) vs. Santa Cruz de la Sierra (cooperative) and Cochabamba (municipal public utility). Unit of analysis: household, drawn from 4 INE household surveys: 1992 (N = 3,169), 1996 (N = 2,138), 2001 (N = 1,197), and 2005 (N = 807). Primary probit DID analytic sample sizes (Table 12): N = 3,240 and N = 3,277 households (1996 & 2001); N = 2,917 and N = 2,945 households (1996 & 2005).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-20T01:02:13.230381+00:00\",\n  \"file_sha256\": \"aff0920571faed1de58440db29b6138f8594dc27d7396ed68a900c47bc2b25b0\",\n  \"input_sha256\": \"c606f2a26ea7587f1fd6233308ad6738a01aba01a86c2faff5157113956dccd1\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S795\",\n  \"outcome_family\": \"water_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Household residence in a city where the water utility was privatized (La Paz, El Alto), modeled via probit difference-in-differences interaction (post-privatization period x privatized-city dummy) -- i.e. water-utility ownership/regulatory-structure change as the institutional mechanism.\",\n  \"comparator_definition\": \"Households in comparison cities where the utility was not privatized: cooperative-managed Santa Cruz de la Sierra and publicly-managed Cochabamba.\",\n  \"effect_measure\": \"probit difference-in-differences regression coefficient (interaction term), controlling for household wealth and city fixed effects\",\n  \"effect_estimate\": \"Effect (privatization x post-period) coefficient on household piped-water-access probability, 1996-2005: 0.077 (SE 0.016), p<0.01 and 0.075 (SE 0.015), p<0.01 across two model specifications -- both statistically significant. The shorter-run 1996-2001 effect was not significant (0.025, SE 0.025).\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"0.016\",\n  \"sample_size\": \"household panel, 4 cities, 1996/2001/2005 (Instituto Nacional de Estadistica de Bolivia surveys)\",\n  \"direction\": \"positive (statistically significant, 1996-2005 period); not significant in the shorter 1996-2001 period\",\n  \"adjusted\": \"adjusted (household wealth proxies: electricity, rooms, wall material; city fixed effects)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S795; source Hailu, Osorio & Tsukada 2012, World Development, Table 12 (regression results, 1996-2005 columns). Genuine quasi-experimental probit DiD estimate directly isolating water-utility privatization (an ownership/regulatory-structure legal-institutional mechanism) as the exposure, exploiting the differential timing/location of privatization across four Bolivian cities for identification.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md S2 decision tree -- single study defining this exact exposure-comparator (water-utility privatization via DiD across 4 Bolivian cities); no other study yet shares this specific operationalization of ownership/regulatory-structure change, so pooling is not yet possible or meaningful (too few independent studies in this family, per PROJECT_SPEC.md S8 guidance). Consistent with the S749 Barbosa & Brusca precedent, synthesis_family is left blank as this ownership/regulatory-structure exposure does not cleanly map to Family A/B/C.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: c606f2a26ea7587f1fd6233308ad6738a01aba01a86c2faff5157113956dccd1) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=68651, sha256=c606f2a26ea7587f1fd6233308ad6738a01aba01a86c2faff5157113956dccd1]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. SCOPE & ELIGIBILITY (KEEP INCLUDED): Under the strict 2026-10-13 / 2026-10-14 CK scope standard (A24/A26/A28), S795 (Hailu, Osorio, & Tsukada 2012) clearly satisfies all inclusion criteria. Narrow Criterion 2 is met because the exposure is a formal legal-institutional utility governance and concession regime: the July 1997 30-year private concession contract granted to Aguas del Illimani S.A. (AISA) in La Paz and El Alto under Bolivia's sectoral regulatory statutes (Ley 1600 SIRESE, the 1997 Reglamento de Concessiones Art. 14, and Ley 2029 / Ley 2066 establishing regulator SISAB), which legally mandated in-house connections, eliminated communal standpipes, set 5-year connection expansion quotas (78,252 new connections including 71,752 in El Alto/Laderas), capped connection fees, and regulated 5-year tariff adjustments, compared against consumer-cooperative utility governance (Santa Cruz de la Sierra) and municipal public provision (Cochabamba). Criterion 4 is squarely met because the primary econometric outcome (`water` in Eqn. 2 / Table 12) is a household-level binary indicator for piped water connection inside the dwelling or yard from the utility network, complemented by quintile coverage, concentration indices, and household water affordability (>3% income threshold).\n\n2. SWiM NON-FIT CRITIQUE (QUESTIONABLE — FITS FAMILY C): Leaving `synthesis_family` blank as a `reasoned non-fit` is methodologically questionable and reflects a conflation between (a) quantitative meta-analytic pooling (`included_in_pooled_estimate = FALSE`) and (b) SWiM vote-counting / direction-of-effect synthesis family membership (`synthesis_family`). Claude argues that because no other study uses this exact 4-city Bolivian DiD operationalization, pooling is not possible and therefore `synthesis_family` should be left blank. However, SWiM Families A, B, and C exist precisely to synthesize directional evidence when exposure-comparator operationalizations are too heterogeneous to meta-analyze. Under the A21 broad family definitions, private concession ownership and SISAB regulatory contracting vs. public/cooperative utility ownership map directly onto `Family C` (ownership, regulation, institutional capacity, and administrative structure), with a clear positive household-access direction over the 1996-2005 period (+7.7 and +7.5 percentage points on piped-water access probability, p < 0.01).\n\n3. NUMERIC & METADATA AUDIT: While all point estimates (0.077, 0.075, 0.025), standard errors (0.016, 0.015, 0.025), and p-values (p < 0.01 for 1996-2005; non-significant for 1996-2001) match Table 12 (p. 2574) exactly, Claude's row has three extraction errors: (i) `sample_size` omits the exact analytic household sample sizes printed in Table 12 (N = 2,917 for the 0.077/0.016 model; N = 2,945 for the 0.075/0.015 model; N = 3,240 and N = 3,277 for the 1996-2001 models) and falsely describes four repeated cross-sectional INE household surveys (Table 2, p. 2566) as a `household panel`; (ii) `standard_error = 0.016` (from the 1996-2005 column controlling for log per capita income `lnY capita`, N = 2,917) is mismatched with `adjusted`, which lists `electricity, rooms, wall material` (the covariates from the adjacent 0.075 / SE 0.015 column, N = 2,945); and (iii) `effect_measure` labels the estimates raw probit regression coefficients rather than probit marginal effects (`Marginal values reported`, Table 12 Notes).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Criterion 2 (Privatization / Concession Exposure)",
+        "page": "p. 2564 (PDF p. 1)",
+        "quote": "This paper investigates the impact of water service privatization in Bolivia."
+      },
+      {
+        "criterion": "Criterion 2 & 3 (DID Policy Shock)",
+        "page": "p. 2568 (PDF p. 5)",
+        "quote": "the water utility privatization is the policy shock."
+      },
+      {
+        "criterion": "Criterion 4 (Household Piped Water Access Outcome)",
+        "page": "p. 2568 (PDF p. 5)",
+        "quote": "where water is a dummy for household access to piped water;"
+      },
+      {
+        "criterion": "Econometric Specification (Table 12 Probit Marginal Effects)",
+        "page": "p. 2574 (PDF p. 11)",
+        "quote": "Notes: Marginal values reported. Since each of the cities is either classiﬁed as “privatized” or “not-privatized”"
+      }
+    ],
+    "nonfit_classification_verdict": "questionable_could_fit_family_ABC",
+    "number_verification_detail": "Point estimates, SEs, and significance levels in `effect_estimate` match Table 12 (p. 2574 / PDF p. 11) exactly: for 1996 and 2005, `Effect` = 0.077 (SE 0.016, p < 0.01 `***`) in column 3 and 0.075 (SE 0.015, p < 0.01 `***`) in column 4; for 1996 and 2001, `Effect` = 0.025 (SE 0.025, not significant) in both columns 1 and 2 (note: PDF font encoding strips minus signs in tables, e.g., Table 6 Cochabamba and Table 9 El Alto, so the sign of the null 0.025 short-run estimate is ambiguous in the table, whereas prose on p. 2574 explicitly confirms `The positive coefficient for effect` in 1996-2005). Confidence intervals are not printed in the paper (`lower_CI` and `upper_CI` appropriately blank). However, three discrepancies are flagged: (1) `sample_size` omits the exact analytic sample sizes printed at the bottom of Table 12 (`Number of obs.: 2,917` [weighted pop. 1,476,802] for the 0.077/0.016 model; `Number of obs: 2,945` [weighted pop. 1,487,615] for the 0.075/0.015 model; `3,240` and `3,277` for the 1996-2001 models; plus wave-specific cross-sectional Ns in Table 2: 2,138 in 1996, 1,197 in 2001, 807 in 2005) and inaccurately calls repeated cross-sectional INE surveys a `household panel`; (2) `standard_error` stores `0.016` (from the `lnY capita` + city-dummy specification, 0.077) while `adjusted` cites `electricity, rooms, wall material` (which belong to the 0.075, SE = 0.015 specification); and (3) `effect_measure` calls the estimate a `probit difference-in-differences regression coefficient`, whereas Table 12 Notes explicitly state `Marginal values reported` (marginal effects on household piped-water probability).",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "eligible_keep_included",
+    "study_id": "S795"
+  }
+}

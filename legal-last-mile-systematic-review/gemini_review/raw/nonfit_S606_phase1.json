@@ -1,0 +1,143 @@
+{
+  "study_id": "S606",
+  "phase": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "12918094f0a101dec3977912cec3b29559aba1f7524f1ff73bcee8361fa93b8f",
+  "input_text_sha256": "d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957",
+  "prompt_sha256": "7ed1ac7c844ced70240d2e5c969a5b1ac61d87500c286db1f68633e4cc2d7218",
+  "started_at": "2026-11-19T19:21:48.854810+00:00",
+  "completed_at": "2026-11-19T19:23:46.803988+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_and_sample",
+        "headline_estimate_summary",
+        "narrow_criterion2_rule_present",
+        "criterion4_household_access_outcome",
+        "candidate_swim_family_blind",
+        "blind_rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_and_sample": {
+          "type": "string"
+        },
+        "headline_estimate_summary": {
+          "type": "string"
+        },
+        "narrow_criterion2_rule_present": {
+          "type": "string",
+          "enum": [
+            "yes_rule_mechanism",
+            "borderline_governance_or_proxy",
+            "no_fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "criterion4_household_access_outcome": {
+          "type": "string",
+          "enum": [
+            "yes_household_or_service_access",
+            "borderline_institutional_or_compliance_outcome",
+            "no_fails_c4_e04_or_e07",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family_blind": {
+          "type": "string",
+          "enum": [
+            "Family A",
+            "Family B",
+            "Family C",
+            "none_nonfit",
+            "cannot_tell"
+          ]
+        },
+        "blind_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 1 BLIND SOURCE-PAPER READING (TASK J) — STUDY S606\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE PAPER FULL TEXT ==` below.\n\n== BIBLIOGRAPHIC HEADER (prior effect_sizes.csv extraction and family/non-fit rationale withheld) ==\n- Study ID: S606\n- Record ID: RF8C06439B2CA\n- Citation: Zhou S, Liang J (2021). Migrant workers and environmental amenities and infrastructure in urban China: from the lens of environmental justice. Journal of Environmental Policy & Planning 23(6):781-795.\n- DOI: 10.1080/1523908X.2021.1920379\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `headline_estimate_summary = \"cannot_tell (full text not accessible)\"`, `narrow_criterion2_rule_present = \"cannot_tell\"`, `criterion4_household_access_outcome = \"cannot_tell\"`, `candidate_swim_family_blind = \"cannot_tell\"`, and `evidence_quotes = []`.\n2. Otherwise, read the full text completely blindly and determine:\n   - `study_design_and_sample`: exact design, country, unit of analysis, and primary analytic sample size(s) N.\n   - `headline_estimate_summary`: exact primary quantitative estimate(s) reported in the paper (exposure, comparator/reference, outcome, point estimate, SE, CI, p-value, covariates/adjustment, exact table & PDF page).\n   - `narrow_criterion2_rule_present`: Does the paper's tested exposure actually examine a legal/administrative/regulatory/tenure/tariff/discretion/enforcement/ownership rule governing service access (`\"yes_rule_mechanism\"`, `\"borderline_governance_or_proxy\"`, or `\"no_fails_narrow_c2_e03\"`)?\n   - `criterion4_household_access_outcome`: Does the paper's tested outcome actually measure household/community water or sanitation service access, connection, coverage, reliability, continuity, quality-as-access, or affordability (`\"yes_household_or_service_access\"`, `\"borderline_institutional_or_compliance_outcome\"`, or `\"no_fails_c4_e04_or_e07\"`)?\n   - `candidate_swim_family_blind`: Based solely on the paper, does its primary exposure-outcome estimate belong in SWiM `Family A` (legal status, tenure, recognition, governance arrangements), `Family B` (assistance, participation, trust, external support), `Family C` (ownership, regulation, institutional capacity, administrative structure), or `\"none_nonfit\"` (explain why)?\n   - Provide 2 to 4 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=68420, sha256=d15764815ac288eba833bbe7252ec6eb12e6ca2ff896878964be6a9494b52957]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "blind_rationale": "Blind reading of Zhou & Liang (2021) indicates that this study belongs in `none_nonfit` (with a clear conceptual link to Family A on legal residency recognition that fails on construct and unit/outcome alignment, warranting scope flags on both narrow Criterion 2 and Criterion 4):\n\n1. Exposure / Narrow Criterion 2 (`borderline_governance_or_proxy`): Conceptually, the study frames inequality through China's household registration (`hukou`) legal institution, under which residents lacking local permanent `hukou` are excluded from municipal public-service obligations and urban planning accountability. Empirically, however, the study deliberately restricts its panel to 2008–2014 to avoid the 2014 national `hukou` policy reform and does not measure city-level variation in `hukou` rules, eligibility thresholds, or legal entitlements. Instead, the tested independent variable is the ecological demographic share of temporary residents (`Temporary residents (%)` registered with public security authorities as living >1 year away from their permanent address). As the authors acknowledge in their limitations (p. 790), the design tests city-level migrant demographic composition rather than a direct legal/administrative rule intervention.\n\n2. Outcome / Criterion 4 (`borderline_institutional_or_compliance_outcome`): Among the five dependent variables in Table 3, three are non-WASH (`Public green space`, `Solid waste treatment capacity`, `Quantity of solid waste treated`) and two relate to municipal sewage/wastewater infrastructure (`Wastewater treatment capacity` in 10,000 m3/day per 10,000 persons and `Quantity of wastewater treated` in 10,000 m3/year per 10,000 persons). Neither wastewater metric measures household sanitation access, sewer connection, toilet coverage, water supply access, continuity, quality-as-access, or affordability. The authors explicitly note (p. 785) that limited information precludes ascertaining whether the local population directly benefits from pollutant treatment plant construction. Moreover, because total urban population (permanent + temporary) enters the denominator of both the predictor and the per-capita plant-capacity outcome, inflows of temporary migrants mechanically dilute per-capita municipal plant capacity unless plant expansion immediately keeps pace.\n\n3. SWiM Family placement (`none_nonfit`): Although `hukou` non-recognition is thematically adjacent to Family A (legal status, tenure, recognition), pooling an ecological city-wide migrant-share regression on bulk municipal wastewater treatment plant capacity/throughput with household or settlement legal-recognition/tenure effects on household WASH service access would be construct-invalid. Note on sign/direction: the raw coefficients on `Temporary residents (%)` are negative (-0.00164 and -0.326), meaning a higher share of legally unrecognized temporary migrants is associated with lower per-capita municipal wastewater treatment capacity/volume (substantively, legal `hukou` exclusion harms infrastructure provision, or permanent legal recognition aligns positively with infrastructure supply).",
+    "candidate_swim_family_blind": "none_nonfit",
+    "confidence": "high",
+    "criterion4_household_access_outcome": "borderline_institutional_or_compliance_outcome",
+    "evidence_quotes": [
+      {
+        "criterion": "Study design and sample",
+        "page": "PDF p. 10 (p. 789)",
+        "quote": "Using a panel dataset on 290 prefectural cities from 2008 to 2014, this analysis largely"
+      },
+      {
+        "criterion": "Criterion 2 (Exposure / legal residency proxy)",
+        "page": "PDF p. 6 (p. 785)",
+        "quote": "The percent of temporary resident population in a given city is used as the proxy to represent"
+      },
+      {
+        "criterion": "Criterion 4 (Outcome definition: municipal wastewater treatment plant capacity/volume)",
+        "page": "PDF p. 6 (p. 785)",
+        "quote": "wastewater treatment plants (10,000 m3/day) per 10,000 persons and the total quantity of wastewater treated"
+      },
+      {
+        "criterion": "Headline estimate (Wastewater treatment capacity, Table 3 Model 2)",
+        "page": "PDF p. 9 (p. 788)",
+        "quote": "residential registration in a given city is associated with a reduction of 16.4 m3/day/10,000 persons"
+      }
+    ],
+    "headline_estimate_summary": "Two-way fixed-effects panel regressions (Table 3, PDF p. 9 / journal p. 788) testing the continuous exposure `Temporary residents (%)` (share of urban district population without permanent `hukou` registration; 1-percentage-point increase): (1) Model 2 — `Wastewater treatment capacity` (10,000 m3/day per 10,000 persons): beta = -0.00164, clustered SE = 0.000529, p < 0.01 (t = -3.10, approx. 95% CI [-0.00268, -0.00060]), equivalent to -16.4 m3/day per 10,000 persons per 1-percentage-point increase in temporary residents (N = 1,730 city-years, 283 cities, R2 = 0.065); (2) Model 3 — `Quantity of wastewater treated` (10,000 m3/year per 10,000 persons): beta = -0.326, clustered SE = 0.169, p < 0.10 (t = -1.93, approx. 95% CI [-0.657, +0.005]), equivalent to -3,260 m3/year per 10,000 persons (N = 1,737 city-years, 282 cities, R2 = 0.181). Non-WASH outcomes in Table 3: Public green space beta = 0.00594 (SE = 0.0212, NS, N = 1,769); Solid waste treatment capacity beta = -0.0897 (SE = 0.0268, p < 0.01, N = 1,577); Quantity of solid waste treated beta = -0.00136 (SE = 0.000732, p < 0.10, N = 1,589). All models adjust for logged population density, logged GRP per capita, high school/college enrollment (%), registered unemployment rate (%), logged municipal government spending per capita, city fixed effects, and year fixed effects, with city-clustered SEs. Raw negative sign means greater share without permanent `hukou` reduces per-capita wastewater infrastructure (substantively pro-recognition / harmful effect of legal exclusion).",
+    "narrow_criterion2_rule_present": "borderline_governance_or_proxy",
+    "paper_read": "full text",
+    "study_design_and_sample": "Longitudinal two-way fixed-effects (city and year FE) panel regression study in urban China using prefecture-level city-year panel data from 2008 to 2014 (dataset covering 290 prefectural cities; analytic samples in Table 3: N = 1,730 city-years across 283 cities for wastewater treatment capacity; N = 1,737 city-years across 282 cities for quantity of wastewater treated; N = 1,769 across 283 cities for public green space; N = 1,577 and N = 1,589 across 276 cities for solid waste models).",
+    "study_id": "S606"
+  }
+}

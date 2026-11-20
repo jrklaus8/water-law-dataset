@@ -1,0 +1,127 @@
+{
+  "study_id": "S590",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "06d8a75b9601a14baeee0da2f09d06443ca22973b8eca8eb6af17ea1bfb1f3bc",
+  "input_text_sha256": "2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58",
+  "prompt_sha256": "45596b45afdd0a09c8be0d42874d67f6a1eb04bea7249af43fd0cc192be260fc",
+  "started_at": "2026-11-20T01:10:33.119549+00:00",
+  "completed_at": "2026-11-20T01:12:15.291634+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S590\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S590\",\n  \"record_id\": \"R052039CCB61E\",\n  \"order\": 12,\n  \"blind_rationale\": \"1. SWiM Family Fit Assessment (`none_nonfit`): Excluding S590 from SWiM Families A, B, and C as a reasoned non-fit is strongly justified. In the primary logit regressions (Table 3, PDF p. 10 / journal p. 11), the key focal regressor `SKEW` is a continuous measure of local income inequality (the 1883/84 ratio of progressive income taxes to class taxes), interacted with province indicators (`SKEW-HOLSTEIN`, `SKEW-HANNOVER`, `SKEW-WESTPHALIA`) to test how 19th-century Prussian municipal suffrage rules (the plutocratic Three Class System in Rhineland and Westphalia vs equal-vote tax-restricted franchises in Hannover and Holstein) weighted elite industrialist preferences in town councils. Pooling `SKEW` or its provincial slope interactions into Family A (legal status, tenure, recognition, governance arrangements) or Family C (utility ownership, regulation, administrative capacity) would be methodologically invalid on three grounds: (a) the estimated coefficient measures the marginal effect of income-tax skewness (`SKEW`) rather than a direct legal/regulatory treatment indicator; (b) substantively and directionally, the mechanism tested is plutocratic voter disenfranchisement/vote-weighting favouring wealthy factory owners over middle-income homeowners (`Three Class System`), so a positive sign reflects elite capture accelerating municipal infrastructure spending rather than legal recognition, tenure security, or participatory governance expanding last-mile access for underserved households; and (c) the dependent variable is a binary city-level capital investment decision (`building a waterworks` in 1880-1887) rather than household connection or service access.\\n\\n2. Narrow Criterion 2 & Criterion 4 Scope Verification (Flag for PI Scope Review):\\n- Narrow Criterion 2 (`borderline_governance_or_proxy`): The paper examines a formal statutory electoral rule — municipal franchise law (`Gemeindewahlrecht` / the Prussian Three Class System reserving one-third of town council seats to each third of direct tax payments) — which gives it a genuine legal-institutional governance dimension rather than a purely biophysical exposure. However, general municipal suffrage law is not a water/sanitation sector rule governing household last-mile access (such as tenure rules, tariffs, disconnection protections, utility regulation, or service mandates), and econometrically it is operationalized through an income-inequality fiscal proxy (`SKEW` x province interactions).\\n- Criterion 4 (`borderline_institutional_or_compliance_outcome`): The regression outcome in Table 3 is whether a municipality decided to construct a waterworks between 1880 and 1887 (`1` = built waterworks, `0` = did not build). While constructing a town's first waterworks is a prerequisite for community piped water availability, it is an upstream municipal capital-investment decision (`E04`-adjacent infrastructure investment) rather than a direct measure of household connection, coverage share, reliability, water quality, or affordability (descriptive cross-national sewer/water coverage, cost-to-wage burdens in Table 1, and typhoid trends in Figure 1 are background context, not regression outcomes). Additionally, the historical 1880-1887 nineteenth-century Prussian setting should be noted if historical studies are subject to temporal scope screening.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"borderline_institutional_or_compliance_outcome\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Narrow Criterion 2 (Three Class System municipal franchise rule)\",\n      \"page\": \"PDF p. 6 (journal p. 7)\",\n      \"quote\": \"The Three Class System typically reserved one-third of the seats on the town council to those voters paying the top one-third of progressive state and local taxes\"\n    },\n    {\n      \"criterion\": \"Narrow Criterion 2 (SKEW income-to-class tax ratio proxy for elite voting influence)\",\n      \"page\": \"PDF p. 9 (journal p. 10)\",\n      \"quote\": \"Holding the average income in a community constant, the more skewed the income distribution was toward higher-income groups, the greater the potential influence of the highest-income voter\"\n    },\n    {\n      \"criterion\": \"Criterion 4 (municipal sanitary infrastructure investment decision outcome)\",\n      \"page\": \"PDF p. 9 (journal p. 10)\",\n      \"quote\": \"model permits two tests of the hypothesis that the distribution of net benefits was crucial for the decision of towns to invest in sanitary infrastructure\"\n    },\n    {\n      \"criterion\": \"Headline statistical specification (Table 3 logit analysis of SKEW across provinces)\",\n      \"page\": \"PDF p. 9 (journal p. 10)\",\n      \"quote\": \"Column four includes the outcome of the logit analysis for the sample without allowing the influence of SKEW to vary across provinces.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Logit discrete-choice models of whether a Prussian city built a municipal waterworks during 1880-1887 (1 = built [n = 50], 0 = did not build [n = 194]; total N = 244 cities across Rhineland, Westphalia, Hannover, and Holstein), adjusting for instrumental-variable predicted per capita capacity cost (COST, estimated via Box-Cox regression on n = 106 cities), population density (DENSITY), 1866-1867 cholera mortality (CHOLERA), per capita class tax ability-to-pay (CLASS TAX), and steel employment per 1,000 residents (STEEL EMPLOYMENT) (Table 3, PDF p. 10 / journal p. 11; asymptotic t-statistics in parentheses; no SEs, CIs, or exact p-values printed):\\n1. Restricted pooled logit (Table 3, Col. 4; Log-likelihood = -103.04, Pseudo-R2 = 0.258): SKEW (1883/84 ratio of progressive income taxes to class taxes, mean = 1.23, SD = 0.88) logit coefficient = 0.457 (asymptotic t = 1.98; implied SE approx. 0.231, two-sided p approx. 0.048).\\n2. Unrestricted logit allowing SKEW effects to vary by provincial electoral regime (Table 3, Col. 5; Log-likelihood = -88.025, Pseudo-R2 = 0.387):\\n   - SKEW (Rhineland, Three Class System): beta = 0.948 (asymptotic t = 2.84), +1 SD predicted probability responsiveness = +0.175.\\n   - SKEW-WESTPHALIA (Three Class System): reported coefficient = 0.14 (asymptotic t = 2.80), +1 SD responsiveness = +0.02.\\n   - SKEW-HANNOVER (equal-vote restricted franchise): reported coefficient = -0.18 (asymptotic t = 2.40), +1 SD responsiveness = -0.05.\\n   - SKEW-HOLSTEIN (equal-vote restricted franchise): reported coefficient = -4.85 (asymptotic t = 1.36), +1 SD responsiveness = -0.19.\\n   - Likelihood-ratio test of province political-structure invariance (Col. 4 vs Col. 5, PDF p. 9 & fn. 31): test statistic = -30.0 (chi-squared = 30.03, df = 3, 'significant at all conventional levels', p < 0.001).\\n   - Other Col. 5 covariates: CONSTANT = 2.24 (t = 2.99); COST = -9.54 (t = 2.38, responsiveness = -0.22); DENSITY = 0.008 (t = 0.62, responsiveness = 0.02); CHOLERA = 38.7 (t = 1.14, responsiveness = 0.035); CLASS TAX = 0.687 (t = 1.06, responsiveness = 0.047); STEEL EMPLOYMENT = 0.032 (t = 1.78, responsiveness = 0.053).\\n3. Counterfactual predicted probabilities of building a waterworks across electoral regimes (Table 4, PDF p. 11 / journal p. 12): For average building cities in Rhineland, predicted probability is 0.54 under Rhineland (Three Class) coefficients, 0.23 under Westphalia, 0.15 under Hannover (equal-vote), and 0 under Holstein; for Westphalia builders, 0.51 (Rhineland), 0.25 (Westphalia), 0.17 (Hannover), and 0 (Holstein); for Hannover non-builders, 0.27 (Rhineland) vs 0.09 (Hannover); for Holstein non-builders, 0.16 (Rhineland) vs 0 (Holstein).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Historical cross-sectional / observational discrete-choice (logit) study of municipal waterworks adoption in Germany (four northwestern Prussian provinces: Rhineland, Westphalia, Hannover, and Holstein) over the eight-year period 1880-1887. Unit of analysis: municipality / city. Primary analytic sample: N = 244 Prussian cities (50 cities building a waterworks and 194 cities not building during 1880-1887; Table 3, PDF p. 10), using 1883/84 municipal tax data, 1882 county-level steel employment, 1866-1867 cholera mortality, and an auxiliary Box-Cox instrumental-variable cost equation estimated on n = 106 cities (PDF p. 8, fn. 26).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:24:12.615124+00:00\",\n  \"file_sha256\": \"06d8a75b9601a14baeee0da2f09d06443ca22973b8eca8eb6af17ea1bfb1f3bc\",\n  \"input_sha256\": \"2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S590\",\n  \"outcome_family\": \"primary_connection\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Degree to which a Prussian city's local franchise/voting-rights system concentrated political power among the wealthiest taxpayers (the tax-weighted 'Three Class System', in force in the Rhineland and Westphalia) versus a more equal, tax-based franchise (Hannover and Holstein), 1880-1887.\",\n  \"comparator_definition\": \"Cities under the more equal-franchise systems of Hannover and Holstein, and within-province variation in the skewness of the local income/tax distribution (SKEW variable).\",\n  \"effect_measure\": \"Logit regression coefficient and predicted-probability responsiveness, with counterfactual provincial coefficient-swap simulations\",\n  \"effect_estimate\": \"SKEW (income/tax-payment skew) coefficient 0.457 in the Three-Class-System provinces (responsiveness 0.175); likelihood-ratio test rejects the null that franchise structure did not matter (test statistic -30.0, 3 df, significant at all conventional levels). Counterfactual: imposing Hannover's (equal-franchise) coefficients on Westphalian towns lowers their average predicted probability of building a waterworks by about one-third; imposing Holstein's coefficients reduces it to zero; conversely, imposing Rhineland's (Three-Class-System) coefficients on non-building towns in Hannover/Holstein substantially raises predicted probability.\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"244 cities (50 building, 194 not building waterworks during 1880-1887)\",\n  \"direction\": \"positive (greater concentration of local political power among wealthy taxpayers/property owners associated with a higher probability of a city investing in waterworks infrastructure)\",\n  \"adjusted\": \"adjusted (instrumented cost per capita; controls for community ability to pay, cholera mortality, population density, and industrial/steel employment)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S590; source Brown 1989, Urban Studies 26:2-12, Tables 3-4. One of the strongest quasi-experimental designs for a legal-institutional exposure in the corpus, exploiting genuine cross-province variation in 19th-century Prussian municipal franchise law. A26 ruling 2026-10-14 by CK: moved from Family C to the reasoned non-fits; the outcome is whether a 19th-century Prussian city decided to build waterworks (municipal capital investment; SKEW coefficient 0.457), not household connection, access or service quality.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md section 2 decision tree and PROJECT_SPEC.md section 8: reasoned non-fit, no family assigned (A26 ruling 2026-10-14 by CK, formerly Family C): the outcome is whether a 19th-century Prussian city decided to build waterworks (municipal capital investment; SKEW coefficient 0.457), not household connection, access or service quality, so it does not match Family A, B or C. It is a single study with this exposure (the franchise structure) and this outcome, so pooling is not possible.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=49722, sha256=2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Numerical & Specification Conflation Discrepancy: Claude's stored row (`effect_estimate`, `provenance_note`, and `exclusion_from_pooling_reason`) misreports `\"SKEW (income/tax-payment skew) coefficient 0.457 in the Three-Class-System provinces (responsiveness 0.175)\"`. In Table 3 (PDF p. 10 / journal p. 11) and the accompanying text (PDF p. 9 / journal p. 10), `0.457` (asymptotic `t = 1.98`) is the restricted pooled logit coefficient in Column 4 estimated across ALL FOUR provinces (`\"without allowing the influence of SKEW to vary across provinces\"`, i.e., pooling Three-Class-System Rhineland and Westphalia together with equal-franchise Hannover and Holstein). In Column 5—the unrestricted model that actually separates the electoral regimes—the `SKEW` coefficient for the Rhineland (Three-Class-System baseline) is `0.948` (asymptotic `t = 2.84`) and `SKEW-WESTPHALIA` is `0.14` (`t = 2.80`), compared with `-0.18` (`t = 2.40`) for `SKEW-HANNOVER` and `-4.85` (`t = 1.36`) for `SKEW-HOLSTEIN`. Moreover, the `+1 SD` predicted-probability responsiveness of `0.175` in Column 6 belongs to Column 5's Rhineland estimate (`0.948`), not Column 4's pooled estimate (`0.457`). Claude also omits the printed asymptotic t-statistics from which SEs can be derived (`0.457 / 1.98 = 0.231`; `0.948 / 2.84 = 0.334`) and leaves `outcome_family = \"primary_connection\"` in the CSV row in direct contradiction to its own provenance note.\n\n2. SWiM Non-Fit Verdict (`justified_nonfit`): Conditional on S590 remaining in the review, excluding it from Families A, B, and C as a reasoned non-fit is unequivocally justified. Even under the broadened A21 titles for Family A (legal status, tenure, recognition, governance) and Family C (utility ownership, regulation, administrative capacity), pooling S590 would be invalid on three grounds: (a) the estimated regression parameter is the slope of a continuous local income-tax skewness ratio (`SKEW`) rather than a binary or institutional treatment indicator; (b) directionally, a positive sign reflects plutocratic vote-weighting (`Three Class System`) empowering wealthy industrialists over middle-income homeowners to approve capital spending, which is substantively opposite to legal empowerment, tenure recognition, or consumer protection for underserved households; and (c) the dependent variable is a city-level capital investment decision (`building a waterworks`) rather than household service access.\n\n3. Review Scope & Eligibility Consistency (`borderline_flag_for_pi`): S590 exhibits an internal scope tension with CK's `2026-10-13 / 2026-10-14` (`A24/A26/A28`) rulings that warrants PI confirmation. Unlike clearly non-legal exposures excluded in `A24/A28` (e.g., watershed engineering `S1020`, social trust `S1144`), S590 does study a genuine statutory governance rule—19th-century Prussian municipal franchise law (`Gemeindewahlrecht`)—and CK explicitly inspected S590 in `A26` (`2026-10-14`) and retained it as a non-fit. However, CK's own `A26` rationale concedes that `\"the outcome is whether a 19th-century Prussian city decided to build waterworks (municipal capital investment...), not household connection, access or service quality\"`. Under strict Criterion 4 (`E04`, upstream municipal capital investment rather than household connection, reliability, quality, or affordability—analogous to excluding municipal building permits `S1121`), as well as narrow Criterion 2 (general municipal suffrage law rather than a WASH sector access rule, proxied by fiscal inequality in 1880-1887 Prussia), S590 is borderline and should be flagged for PI consistency review (and at minimum `outcome_family` should not be coded `\"primary_connection\"`, and `0.457` vs `0.948` must be corrected).",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Table 3 Column 4 vs Column 5 specification discrepancy",
+        "page": "PDF p. 9 (journal p. 10)",
+        "quote": "Column four includes the outcome of the logit analysis for the sample without allowing the influence of SKEW to vary across provinces."
+      },
+      {
+        "criterion": "Narrow Criterion 2 (Prussian Three Class System municipal franchise rule)",
+        "page": "PDF p. 6 (journal p. 7)",
+        "quote": "The Three Class System typically reserved one-third of the seats on the town council to those voters paying the top one-third of progressive state and local taxes"
+      },
+      {
+        "criterion": "Narrow Criterion 2 (SKEW income-skewness proxy for wealthiest voter influence)",
+        "page": "PDF p. 9 (journal p. 10)",
+        "quote": "Holding the average income in a community constant, the more skewed the income distribution was toward higher-income groups, the greater the potential influence of the highest-income voter"
+      },
+      {
+        "criterion": "Criterion 4 (upstream municipal decision to construct a waterworks)",
+        "page": "PDF p. 8 (journal p. 9)",
+        "quote": "Despite efforts by the state government to prod cities into improving their water supply, the decision to construct a waterworks was primarily that of the city"
+      }
+    ],
+    "nonfit_classification_verdict": "justified_nonfit",
+    "number_verification_detail": "Discrepancy found in `effect_estimate` (repeated in `provenance_note` and `exclusion_from_pooling_reason`): Claude reports `\"SKEW (income/tax-payment skew) coefficient 0.457 in the Three-Class-System provinces (responsiveness 0.175)\"`. Per PDF p. 9 and Table 3 (PDF p. 10 / journal p. 11), `.457` (asymptotic `t = 1.98`) is the Column 4 restricted logit coefficient pooled across ALL FOUR provinces (`\"without allowing the influence of SKEW to vary across provinces\"`, `Log-likelihood = -103.04`, `Pseudo-R2 = .258`), NOT the estimate in the Three-Class-System provinces. In Column 5 (unrestricted model allowing provincial variation, `Log-likelihood = -88.025`, `Pseudo-R2 = .387`), the `SKEW` coefficient in Rhineland (Three-Class-System reference province) is `.948` (`t = 2.84`), and `SKEW-WESTPHALIA` (Three-Class-System) is `.14` (`t = 2.80`), while `SKEW-HANNOVER` is `-.18` (`t = 2.40`) and `SKEW-HOLSTEIN` is `-4.85` (`t = 1.36`). Moreover, `Responsiveness = 0.175` (Table 3, Col. 6) corresponds to Column 5's `.948`, not Column 4's `.457`. Asymptotic t-statistics are printed in parentheses in Table 3 (implying `SE ≈ 0.231` for `.457` and `SE ≈ 0.334` for `.948`), whereas SEs and CIs are not printed directly (left blank in CSV). All other stored statistics match the paper: `N = 244` cities (`50` building, `194` not building in Table 3), likelihood-ratio test statistic `-30.0` with `3 df` (`\"significant at all conventional levels\"`, PDF p. 9 & fn. 31), counterfactual simulations in Table 4 (PDF pp. 10-11: Hannover coefficients lower Westphalia builders' predicted probability from `.25` to `.17`, `\"by about one-third\"`, and Holstein coefficients reduce it to `0`; Rhineland coefficients raise non-builders from `.09` to `.27` in Hannover and `0` to `.16` in Holstein), and covariates (`COST` instrumented via Box-Cox on `n = 106` cities, `DENSITY`, `CHOLERA`, `CLASS TAX`, `STEEL EMPLOYMENT`).",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S590"
+  }
+}

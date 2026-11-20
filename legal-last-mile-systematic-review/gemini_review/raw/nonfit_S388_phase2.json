@@ -1,0 +1,127 @@
+{
+  "study_id": "S388",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "08ae064939260e93e8be278ddf169763f1aa7d49f314e84ef60bab3c947ca249",
+  "input_text_sha256": "55dbc51630e6f9ce20b84983bf5438fca2138cc0fff94b73046a80465d8e66b3",
+  "prompt_sha256": "232d8cb18a2809f3a10c86684b860af6f34283eb9b0584b26f85406f36d727f1",
+  "started_at": "2026-11-20T01:06:32.749727+00:00",
+  "completed_at": "2026-11-20T01:08:21.478598+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S388\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S388\",\n  \"record_id\": \"R897B0E5CB3C7\",\n  \"order\": 5,\n  \"blind_rationale\": \"Blind reading of Li, McManus, & Cronk (2025) shows a cross-sectional analysis of N = 11,065 rural/community Afridev hand-pump water points in Liberia (2017 national WASH water-point census) examining operational, technical, management, and fee-collection determinants of binary pump functionality. On Narrow Criterion 2, the study sits on the governance/tariff boundary ('borderline_governance_or_proxy'): its headline governance predictor ('Maintainer': Local [lumping NGO, community, local group, and private owner], Institutional [school, health facilities, other], and WASH Committee vs. No Management) captures operational O&M management structure rather than a formal legal or statutory rule, while a secondary predictor ('Payment Status': volumetric fee, flat rate, or post-breakdown collection vs. free water, with 30% [2,539] imputed missingness) measures local user-fee/tariff rules primarily as an O&M financing mechanism alongside physical/technical predictors (damage status, repair time, mechanic/toolkit availability, and spare-parts distance). On Criterion 4, binary hand-pump functionality ('Yes—Functional [in use or not in use]' vs. 'No—Broken down') directly measures community water-point service reliability/operational availability in a setting where 39% of the population relies on hand pumps ('yes_household_or_service_access'), although the unit of analysis is the physical water point rather than the household and 'functional (but not in use)' is coded as functional. For SWiM classification, the primary management-regime estimates (Institutional aOR = 2.893, Local aOR = 3.733, WASH Committee aOR = 2.426 vs. No Management) and technical-capacity estimate (mechanic with toolkit aOR = 1.246) map most closely to Family C (ownership, regulation, institutional capacity, administrative structure), though lumping private owners, NGOs, and community groups into 'Local' blurs pure ownership/administrative lines; conversely, if the review extracted the user-fee/tariff contrasts ('By Volume vs. Free' aOR = 0.886; 'Flat rate vs. Free' aOR = 0.847; 'After a system breakdown vs. Free' aOR = 1.336), tariff/cost-recovery modalities do not fit cleanly into Families A, B, or C unless Family C encompasses tariff rules, which would explain a reasoned non-fit if tariff structure rather than management regime was the target row. Notably, the paper also contains multiple text-vs-table reporting discrepancies (e.g., p. 9 claims no payment category was significant while citing p = 0.011 for post-breakdown payment in Table 5; p. 7 cites unadjusted OR/CI values while discussing adjusted results; Table 5 mislabels 'Always Water vs. Seasonal' as 'Seasonal vs. Year-Around').\",\n  \"candidate_swim_family_blind\": \"Family C\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"yes_household_or_service_access\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Narrow Criterion 2 (management structure definition and lumped categories)\",\n      \"page\": \"3\",\n      \"quote\": \"Notes: For the Maintainer variable: Local includes NGO, community, local group, and private owner.\"\n    },\n    {\n      \"criterion\": \"Analytic sample size N\",\n      \"page\": \"6\",\n      \"quote\": \"A total of 11, 065 water points were included in the analysis.\"\n    },\n    {\n      \"criterion\": \"Narrow Criterion 2 (water point payment / tariff rules and text-vs-table discrepancy)\",\n      \"page\": \"9\",\n      \"quote\": \"methods (by volume, flat rate, or after a breakdown) showed significant odds ratios for\"\n    },\n    {\n      \"criterion\": \"SWiM Family C (institutional vs community volunteer management capacity)\",\n      \"page\": \"13\",\n      \"quote\": \"actors were more likely to remain functional than those managed by community volunteers.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Multivariable logistic regression (N = 11,065 Afridev hand pumps; Functional = 9,089, Non-functional = 1,976; Table 5, PDF p. 8; mutually adjusted for water point maintenance, repair time, mechanic & toolkit availability, damage status, payment status, water availability, and spare-parts supplier distance): (1) Water point maintenance (ref: No Management): Local vs. No Management aOR = 3.733 (Wald 95% CI: 2.993–4.657, p < 0.0001; unadjusted OR = 4.730, 95% CI: 3.950–5.665); Institutional vs. No Management aOR = 2.893 (95% CI: 2.349–3.562, p < 0.0001; unadjusted OR = 3.274, 95% CI: 2.770–3.869); WASH Committee vs. No Management aOR = 2.426 (95% CI: 1.946–3.026, p < 0.0001; unadjusted OR = 2.657, 95% CI: 2.248–3.140). (2) Payment Status (ref: Free): By Volume vs. Free aOR = 0.886 (95% CI: 0.552–1.421, p = 0.614; unadjusted OR = 1.294, p = 0.195); Flat rate vs. Free aOR = 0.847 (95% CI: 0.634–1.133, p = 0.263; unadjusted OR = 0.848, p = 0.177); After a system breakdown vs. Free aOR = 1.336 (95% CI: 1.066–1.673, p = 0.011; unadjusted OR = 1.084, p = 0.408). (3) Mechanic & toolkit availability (ref: no mechanic): Mechanic with toolkit aOR = 1.246 (95% CI: 1.084–1.431, p = 0.002); Mechanic without toolkit aOR = 0.896 (95% CI: 0.726–1.106, p = 0.307). (4) Bayesian Network scenario simulation (PDF pp. 10–11): 'most ideal' (Local management, repair <1 week, mechanic with toolkit; P = 77.7%) vs. 'least ideal' (No Management, repair >1 year, no mechanic; P = 45.5%) yielded Posterior Odds Ratio (POR) = 4.19 (no SEs reported; Wald 95% CIs reported in Table 5).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Cross-sectional observational study of national water-point census data (2017 WASH-Liberia survey across all 15 counties in Liberia; 20,205 mapped water points, restricted to improved water points equipped with Afridev hand pumps). Unit of analysis: individual Afridev hand-pump water point. Primary analytic sample: N = 11,065 Afridev hand pumps (9,089 functional and 1,976 non-functional), analyzed via univariable/multivariable logistic regression (with hot-deck Approximated Bayesian Bootstrap single imputation for missing values) and Bayesian network modeling (80% training / 20% testing split).\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:16:47.160228+00:00\",\n  \"file_sha256\": \"08ae064939260e93e8be278ddf169763f1aa7d49f314e84ef60bab3c947ca249\",\n  \"input_sha256\": \"55dbc51630e6f9ce20b84983bf5438fca2138cc0fff94b73046a80465d8e66b3\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S388\",\n  \"outcome_family\": \"effective_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Water point maintained by a local authority (institutional/governance management arrangement), vs. water point with no management arrangement at all.\",\n  \"comparator_definition\": \"Water points with No Management (no institutional/governance body responsible for maintenance).\",\n  \"effect_measure\": \"adjusted odds ratio (multivariable logistic regression)\",\n  \"effect_estimate\": \"Local management vs No Management: adjusted OR = 3.733 for water-point functionality.\",\n  \"lower_CI\": \"2.993\",\n  \"upper_CI\": \"4.657\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"11,065 Afridev hand pumps, Liberia\",\n  \"direction\": \"positive (institutional/local management associated with higher odds of functionality)\",\n  \"adjusted\": \"adjusted (multivariable logistic regression controlling for repair time, mechanic/toolkit availability, payment status, water availability, spare-parts-supplier distance, damage status, county)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S388; source Li, McManus & Cronk 2025, Sustainability 17(19):8928, Table 5. Genuine institutional/governance-management exposure (who is responsible for a water point's maintenance) vs. a real comparator (no management), with a locatable adjusted OR and 95% CI from a large administrative census (n=11,065). synthesis_family left blank rather than forced into Family A/B/C: the exposure is institutional management CAPACITY/responsibility-assignment, not quite legal recognition/tenure (Family A), application-process bureaucratic assistance (Family B), or a barrier restricting access (Family C) -- a real judgment call, not a mechanical fit, so left for a human/manuscript-stage decision rather than guessed. Two further comparator categories (Institutional vs No Management, adjusted OR=2.893, 95% CI 2.349-3.562; WASH Committee vs No Management, adjusted OR=2.426, 95% CI 1.946-3.026) are available in the source but not used as the primary effect here, per CODEBOOK.md S12's one-prespecified-effect-per-study default -- Local vs No Management was selected as the strongest and most policy-emphasized of the three (highlighted first in the paper's own abstract).\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md S2 decision tree -- single study defining this exact exposure-comparator (local-authority management vs no management for Liberian hand pumps); no other included study yet shares this operationalization, so pooling is not yet possible or meaningful.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 55dbc51630e6f9ce20b84983bf5438fca2138cc0fff94b73046a80465d8e66b3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=58445, sha256=55dbc51630e6f9ce20b84983bf5438fca2138cc0fff94b73046a80465d8e66b3]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "1. Numeric accuracy vs. substantive mischaracterization: Every printed statistic in Claude's stored row matches Table 5 (p. 8) and Section 3.1 (p. 6) verbatim (Local vs. No Management aOR = 3.733, Wald 95% CI 2.993–4.657, p < 0.0001; N = 11,065 Afridev hand pumps [9,089 functional, 1,976 non-functional]; Institutional aOR = 2.893 [2.349–3.562]; WASH Committee aOR = 2.426 [1.946–3.026]). However, two non-numeric extraction errors distort the row's substantive meaning: (a) Claude defines the exposure as water points maintained by 'a local authority' (following loose prose on pp. 6–7 and 10), whereas Table 1's variable definition note (p. 3) explicitly states that 'Local includes NGO, community, local group, and private owner'—making 'Local' a heterogeneous non-state/private/community catch-all rather than local government authority (and making 'Institutional vs. No Management' [schools, health facilities, other] or 'WASH Committee vs. No Management' cleaner governance contrasts); and (b) Claude claims the multivariable logistic regression controls for 'county', whereas County is only a node in the Bayesian Network (Figure 3, p. 10; Table 6, p. 12) and is not included in the multivariable logistic regression model (Table 1, p. 3; Table 5, p. 8). In addition, Table 5 adjusts for 'Damage Status' (explicitly labeled a 'Mediator' in Table 1) and 'Time it took to repair', inducing post-treatment mediator over-adjustment (attenuating the Local OR from 4.730 unadjusted to 3.733 adjusted), and relies on single hot-deck imputation for up to 30% missingness (2,539 entries in payment status) without multiple-imputation variance correction. The source paper itself also exhibits multiple text-vs-table errors (e.g., p. 7 cites unadjusted OR/CIs while discussing Table 5; p. 9 asserts no payment method was significant while citing p = 0.011 for post-breakdown payment; Table 5 mislabels 'Always Water vs. Seasonal' as 'Seasonal vs. Year-Around').\n\n2. Questionable SWiM non-fit classification: Conditional on the study remaining included, leaving `synthesis_family` blank is questionable and inconsistent with Family C as broadly retitled under A21 (ownership, regulation, institutional capacity, and administrative/management structure). Claude's `provenance_note` explicitly reveals a taxonomic slip: it rejected Family C by misdefining Family C as 'a barrier restricting access (Family C)' rather than institutional/regulatory/management capacity, while acknowledging the exposure IS 'institutional management CAPACITY/responsibility-assignment'. Furthermore, `exclusion_from_pooling_reason` conflates quantitative meta-analytic pooling (`included_in_pooled_estimate = FALSE` because only one study uses this exact Liberian hand-pump operationalization) with SWiM narrative/vote-counting family membership (`synthesis_family`), which is designed specifically to synthesize direction of effect across non-identical institutional exposures.\n\n3. Borderline review eligibility for PI scope check: Under the strict 2026-10-13/14 CK narrow Criterion 2 standard, S388 sits on the O&M engineering vs. administrative governance boundary and should be flagged as borderline for PI review. Its extracted predictor ('Who is maintaining the water point (routine repairs)?') evaluates operational O&M repair responsibility alongside hardware damage, mechanic toolkits, repair turnaround time, and spare-parts travel time—not a formal statute, legal mandate, tenure rule, or administrative eligibility rule—and its unit of analysis is the physical Afridev pump rather than the household, coding 'Yes—Functional (but not in use)' as functional.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Exposure misdefinition ('Local' lumps NGO, community, local group, and private owner rather than 'local authority') and Narrow Criterion 2 O&M boundary",
+        "page": "3",
+        "quote": "Notes: For the Maintainer variable: Local includes NGO, community, local group, and private owner."
+      },
+      {
+        "criterion": "Exact analytic sample size N in multivariable logistic regression",
+        "page": "6",
+        "quote": "A total of 11, 065 water points were included in the analysis."
+      },
+      {
+        "criterion": "Source paper text-vs-table reporting discrepancy on user-fee/payment status p-values",
+        "page": "9",
+        "quote": "predicting water point functionality, with p-values of 0.64, 0.26, and 0.011, respectively"
+      },
+      {
+        "criterion": "SWiM Family C alignment (institutional management capacity vs. community volunteer WASH committees)",
+        "page": "13",
+        "quote": "actors were more likely to remain functional than those managed by community volunteers."
+      }
+    ],
+    "nonfit_classification_verdict": "questionable_could_fit_family_ABC",
+    "number_verification_detail": "All numeric values in `effect_sizes.csv` match the source PDF exactly: primary adjusted OR = 3.733 and Wald 95% CI = 2.993–4.657 (p < 0.0001; unadjusted OR = 4.730, 95% CI 3.950–5.665) for `Local vs No Management` in Table 5 (p. 8); `standard_error` is appropriately blank because Table 5 reports Wald 95% CIs without SEs; analytic sample size N = 11,065 Afridev hand pumps matches the Abstract (p. 1), Section 3.1 (p. 6, printed as `11, 065`), Section 4 (p. 12), and Table 4's sum (9,089 functional + 1,976 non-functional = 11,065, p. 7); and the secondary adjusted estimates cited in `provenance_note` match Table 5 verbatim (`Institutional vs No Management` aOR = 2.893, 95% CI 2.349–3.562; `WASH Committee vs No Management` aOR = 2.426, 95% CI 1.946–3.026). Two non-numeric discrepancies exist in the row metadata: (1) `adjusted` lists `county` as a multivariable logistic regression covariate, but `County` is absent from Table 1 (p. 3) and Table 5 (p. 8) and enters only the Bayesian Network model (Figure 3, p. 10; Table 6, p. 12); and (2) `exposure_definition` describes `Local` as `maintained by a local authority`, whereas Table 1's note (p. 3) defines `Local` as `NGO, community, local group, and private owner`.",
+    "numbers_match_paper": "yes",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S388"
+  }
+}

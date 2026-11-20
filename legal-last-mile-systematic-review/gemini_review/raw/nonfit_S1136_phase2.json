@@ -1,0 +1,127 @@
+{
+  "study_id": "S1136",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "c43a68c4fd89e12154e9e8d7673e79c433987c520074d9a4bd2f858c2cd4a84c",
+  "input_text_sha256": "fd79f3959fb6d3aedeb66a4acee7ea842b331c457119c51a2ae8b3b07291c601",
+  "prompt_sha256": "e8f684a2c51c80e47a94ed74e5a713006694b1c0fe0ae7bc9caf962ec9d05767",
+  "started_at": "2026-11-20T01:13:58.910725+00:00",
+  "completed_at": "2026-11-20T01:15:21.095903+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S1136\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S1136\",\n  \"record_id\": \"R111EFC29F4F6\",\n  \"order\": 18,\n  \"blind_rationale\": \"(1) SWiM Family fit (`none_nonfit`): The paper's headline empirical tests examine political elite capture via politician residential location (`GP head's village` in Table 5; `Politician road` in Table 6) and social-group residential sorting (`SC/ST road`, `Mixed caste road`, `Muslim road` vs upper-caste roads in Table 6), alongside demographic/literacy predictors of Gram Panchayat (GP) task-responsibility awareness (Table 4). Political patronage based on where an elected village politician lives and residential caste stratification do not correspond to SWiM Family A (formal legal status, land tenure, legal recognition, or formal governance rules), Family B (external assistance, citizen participation, or trust interventions), or Family C (public/private ownership, regulatory enforcement, or utility institutional capacity). Two secondary covariates touch adjacent family concepts—`Oligarchy` (informal concentration of village governance power, conceptually adjacent to Family A) and `GP HQ in village` (administrative seat location within a multi-village GP, conceptually adjacent to Family C administrative structure)—but `Oligarchy` suffers a publisher typesetting defect in Table 5 (missing point estimates, reported in text p. 695 as making no difference) and `GP HQ in village` is statistically null across all four road-sanitation outcomes in Table 5 (significant only for non-WASH road paving, +0.047**, SE 0.021, and Table 4 awareness of water-tank cleaning, +0.127***, SE 0.047). Excluding this study from Families A, B, and C as `none_nonfit` is therefore substantively justified. (2) Scope check for Narrow Criterion 2 (`borderline_governance_or_proxy`, flag for `E03` review): Although Section II discusses the 1992 Constitutional Amendment (PRI Act) sanitation mandate and Tamil Nadu's Public Health Act / Panchayats Act 1994, no legal or regulatory rule is empirically tested in the reported regressions: state/district legal differences are absorbed by block fixed effects (Tables 4–5) and village fixed effects (Table 6), while statutory GP presidency reservation (for women or SC/ST/backward castes) is included only as an unreported control variable. The tested exposures (`GP head's village`, `Politician road`, `GP HQ in village`, `Oligarchy`) are de facto political-capture and administrative-seat proxies rather than legal rules governing access. (3) Scope check for Criterion 4 (`borderline_institutional_or_compliance_outcome`, flag for `E04` review): No household drinking-water or toilet/latrine access outcome is measured (Note 11 explicitly notes private toilets under the Total Sanitation Campaign were not evaluated). Table 4 measures GP members' institutional role awareness (failing C4), `Road is paved` measures transport infrastructure (failing C4), and the remaining outcomes in Tables 5–6 (`Road has drain`, `Road is moderately clean`, `No garbage on road`, `Road has unclogged drain`) measure GP performance in public street-sweeping and roadside stormwater/wastewater drainage along village roads rather than household water or sanitation service access.\",\n  \"candidate_swim_family_blind\": \"none_nonfit\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"borderline_institutional_or_compliance_outcome\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Headline political capture finding (Abstract)\",\n      \"page\": \"PDF p. 2 (journal p. 685)\",\n      \"quote\": \"Local politicians tend to capture sanitary infrastructure and cleaning services for themselves,\"\n    },\n    {\n      \"criterion\": \"Criterion 2 regulatory context (not directly tested due to block/village fixed effects)\",\n      \"page\": \"PDF p. 5 (journal p. 688)\",\n      \"quote\": \"Yet Indian states typically lack uniform and updated public health regulations\"\n    },\n    {\n      \"criterion\": \"Study design and road-level unit of observation\",\n      \"page\": \"PDF p. 7 (journal p. 690)\",\n      \"quote\": \"Hence, the unit of observation is the road. We use multivariate linear\"\n    },\n    {\n      \"criterion\": \"Criterion 4 scope note confirming household toilets were not evaluated\",\n      \"page\": \"PDF p. 16 (journal p. 699, Note 11)\",\n      \"quote\": \"build private toilets via the Total Sanitation Campaign. The impact of this is still unknown.\"\n    }\n  ],\n  \"headline_estimate_summary\": \"Linear probability models (OLS) with clustered SEs; no 95% CIs or exact p-values are printed (only star thresholds; note also that Taylor & Francis font encoding renders minus signs as leading '7' in raw text extraction of Tables 4-6, verified against text). (1) Inter-village political capture (Table 5, PDF p. 11 / p. 694; block FE, colony-clustered SEs, controlling for unreported GP reservation status, fraction landless, number of castes, GP head age/education/wealth/experience, and road characteristics): `GP head's village` (vs non-head village in same block) predicts `Road has drain` b = +0.053*** (SE 0.015, p < 0.01, N = 8,452), `Road is paved` b = +0.028* (SE 0.016, p < 0.10, N = 8,452), `Road is moderately clean` b = +0.037** (SE 0.015, p < 0.05, N = 8,398), `No garbage on road` b = +0.060*** (SE 0.018, p < 0.01, N = 8,407), and `Road has unclogged drain (cond)` b = -0.017 (SE 0.024, NS, N = 2,038). In the same Table 5, `GP HQ in village` is null on all sanitation outcomes (`Road has drain` +0.022 [SE 0.021], `Road is moderately clean` -0.027 [SE 0.018], `No garbage on road` -0.021 [SE 0.023], `Road has unclogged drain` +0.004 [SE 0.031]) and positive only for `Road is paved` (+0.047**, SE 0.021); `Oligarchy` has a printing defect in Table 5 (two parenthesized rows, no stars; text p. 695 states no difference). (2) Intra-village political capture & social exclusion (Table 6, PDF p. 13 / p. 696; village FE, colony-clustered SEs; note footnote says *10%/**5%/***1% but t-ratios match *5%/**1%/***0.1%): `Politician road` (politician lives on road vs other roads in same village) predicts `Road has drain` b = +0.078*** (SE 0.020, N = 10,026), `Road paved` b = +0.052* (SE 0.021, N = 10,026), `Road is moderately clean` b = +0.055*** (SE 0.016, N = 9,971), `No garbage on road` b = -0.006 (SE 0.018, NS, N = 9,976), and `Road with unclogged drain (cond)` b = +0.003 (SE 0.020, NS, N = 2,244). `SC/ST road` (vs upper-caste road) predicts `Road has drain` +0.015 (SE 0.015), `Road paved` -0.051** (SE 0.016), `Road is moderately clean` +0.001 (SE 0.014), `No garbage on road` -0.032* (SE 0.013), and `Road with unclogged drain` -0.025 (SE 0.023). (3) GP responsibility awareness (Table 4, PDF p. 10 / p. 693; village-level LPM with block FE, GP-clustered SEs, N = 323 to 437): `GP head's village` is null across all 7 tasks; `GP HQ in village` predicts higher awareness only for `Cleaning drinking water tanks` (+0.127***, SE 0.047, N = 372); `Oligarchy` predicts lower awareness of `Spraying for mosquitoes` (-0.340**, SE 0.168, N = 425) and `Cleaning drinking water tanks` (-0.467*, SE 0.238, N = 372) but higher awareness of `Road cleaning` (+0.378**, SE 0.183, N = 437).\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Cross-sectional multi-stage observational survey and direct field-investigator road observation study in rural South India (4 states: Andhra Pradesh, Karnataka, Kerala, Tamil Nadu; purposively sampled districts/blocks, random sampling of 201 Gram Panchayats and 527 villages/wards [Note 6 state breakdown sums to 506], and 10,408 mapped village roads), combining 2003 GP member interviews and direct road observations with 2002 village census/participatory appraisal data. Analytic sample sizes: Table 4 village-level awareness LPMs N = 323 to 437 villages; Table 5 inter-village road-level LPMs (block fixed effects) N = 8,452 roads (`Road has drain`, `Road is paved`), N = 8,398 (`Road is moderately clean`), N = 8,407 (`No garbage on road`), and N = 2,038 conditional roads with drains (`Road has unclogged drain`); Table 6 intra-village road-level LPMs (village fixed effects) N = 10,026 (`Road has drain`, `Road paved`), N = 9,971 (`Road is moderately clean`), N = 9,976 (`No garbage on road`), and N = 2,244 conditional roads with drains.\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-20T01:04:32.240682+00:00\",\n  \"file_sha256\": \"c43a68c4fd89e12154e9e8d7673e79c433987c520074d9a4bd2f858c2cd4a84c\",\n  \"input_sha256\": \"fd79f3959fb6d3aedeb66a4acee7ea842b331c457119c51a2ae8b3b07291c601\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S1136\",\n  \"outcome_family\": \"sanitation_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Political capture of village sanitation infrastructure: residing in the Gram Panchayat head's village, or on a road where a politician resides, vs. other village roads; road inhabited predominantly by Scheduled Castes/Tribes vs. upper-caste road; 5,276 villages/wards, 10,408 roads, 4 South Indian states.\",\n  \"comparator_definition\": \"Roads/villages without these political-capture or caste characteristics, within the same block/village (fixed effects).\",\n  \"effect_measure\": \"Linear probability model coefficients, village/block fixed effects\",\n  \"effect_estimate\": \"GP head's village: road paved 0.053***, has drain 0.037**, moderately clean 0.028*, no garbage 0.060***. Politician road: has drain 0.078***, paved 0.055***, moderately clean 0.052*. SC/ST road (vs. upper-caste road): paved -0.051**, no garbage -0.032*. Oligarchic village structure and upper-caste land-ownership share show no significant infrastructure disadvantage/advantage across most outcomes.\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"clustered at colony level\",\n  \"sample_size\": \"5,276 villages/wards; 10,408 roads (South India)\",\n  \"direction\": \"positive (political proximity increases sanitation-infrastructure provision; SC/ST residence decreases it)\",\n  \"adjusted\": \"adjusted (village/block fixed effects, caste, road-length, institution controls)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S1136; source Ban, Das Gupta & Rao 2010, Journal of Development Studies, Tables 5-6. Family C (administrative/legal barriers/access inequality): linear-probability-model estimates with village- and block-level fixed effects directly isolating political capture of a constitutionally mandated local-government sanitation function as a mechanism producing differential sanitation-infrastructure access. A29 ruling 2026-10-14 by CK: moved from Family C to the reasoned non-fits; the outcome is the state of village roads (paved road, drain, cleanliness and garbage across 10,408 roads in South India), road-level public sanitation infrastructure, not household connection, access or service quality.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md section 2 decision tree and PROJECT_SPEC.md section 8: reasoned non-fit, no family assigned (A29 ruling 2026-10-14 by CK, formerly Family C): the outcome is the state of village roads (paved road, drain, cleanliness and garbage across 10,408 roads in South India), road-level public sanitation infrastructure, not household connection, access or service quality, so it does not match Family A, B or C. It is a single study with this exposure (political capture of a mandated local-government function) and this outcome, so pooling is not possible.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: fd79f3959fb6d3aedeb66a4acee7ea842b331c457119c51a2ae8b3b07291c601) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=51924, sha256=fd79f3959fb6d3aedeb66a4acee7ea842b331c457119c51a2ae8b3b07291c601]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "(1) Numerical accuracy audit (`no_discrepancy_found` = discrepancy found): Claude's `effect_sizes.csv` row contains three material extraction errors. First, in Table 5 (p. 694) for `GP head's village`, Claude scrambled three of the four outcome labels: the paper prints `Road has drain` = `0.053***` (SE `0.015`), `Road is paved` = `0.028*` (SE `0.016`), `Road is moderately clean` = `0.037**` (SE `0.015`), and `No garbage on road` = `0.060***` (SE `0.018`), whereas Claude reported `road paved 0.053***, has drain 0.037**, moderately clean 0.028*`. Second, in Table 6 (p. 696) for `Politician road`, Claude swapped two outcomes: the paper prints `Road paved` = `0.052*` (SE `0.021`) and `Road is moderately clean` = `0.055***` (SE `0.016`), whereas Claude reported `paved 0.055***, moderately clean 0.052*`. Third, Claude misread the superscript footnote callout `6` in `527^6 villages` (p. 689) as `5,276 villages/wards` (201 GPs with at most 3 villages or 6 Kerala wards sampled yields 527 villages/wards, with Note 6's state breakdown summing to 506), and reported the Table 3 descriptive road count (`10,408`) rather than the actual regression sample sizes (`N = 8,398` to `8,452` and `2,038` in Table 5; `N = 9,971` to `10,026` and `2,244` in Table 6), while also omitting all printed numerical colony-clustered SEs. (2) SWiM non-fit vs. review eligibility (`moot_study_appears_ineligible` / `likely_ineligible_flag_e03_e04_e05_e07`): Conditional on inclusion, CK's A29 decision to remove S1136 from Family C into `reasoned non-fit` was substantively sound because residential political patronage (`GP head's village`, `Politician road`) and village road conditions do not fit Family A, B, or C. However, applying CK's A24/A26/A28 scope standard makes family assignment moot because S1136 fails both Criterion 4 (`E04`) and narrow Criterion 2 (`E03`). As CK's own A29 note concedes, the outcomes in Tables 5-6 (`Road has drain`, `Road is paved`, `Road is moderately clean`, `No garbage on road`, `Road has unclogged drain`) measure public village road paving, street sweeping, and roadside drainage rather than household water or sanitation connection, access, or service quality (and Note 11 explicitly confirms private household toilets under the Total Sanitation Campaign were not evaluated, while Table 4 measures only GP officials' task awareness). Likewise, on Criterion 2 (`E03`), although Section II discusses the 1992 PRI Constitutional Amendment and state public health laws, all state/district/block legal variation is swept out by block fixed effects (Tables 4-5) and village fixed effects (Table 6), and statutory GP presidency reservation is an unreported control; the tested exposures are de facto residential political capture and caste residential sorting rather than a legal or administrative rule governing household access.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Sample size error verification (Note 6 confirming ~506/527 villages/wards rather than 5,276)",
+        "page": "PDF p. 15 (journal p. 698, Note 6)",
+        "quote": "6. The state-wise break up is AP: 69 villages, KA: 182 villages, KE: 126 wards; TN 129 villages."
+      },
+      {
+        "criterion": "Criterion 4 road-level public infrastructure and cleanliness outcomes rather than household WASH access",
+        "page": "PDF p. 7 (journal p. 690)",
+        "quote": "In the distribution regressions our dependent variables are the road-level sanitation outcomes"
+      },
+      {
+        "criterion": "Criterion 2 political capture exposure via politician residence rather than a legal or regulatory rule",
+        "page": "PDF p. 14 (journal p. 697)",
+        "quote": "allocated overwhelmingly to those with political clout: infrastructure is better in the"
+      },
+      {
+        "criterion": "Criterion 4 explicit confirmation that private household toilets were not evaluated",
+        "page": "PDF p. 16 (journal p. 699, Note 11)",
+        "quote": "build private toilets via the Total Sanitation Campaign. The impact of this is still unknown."
+      }
+    ],
+    "nonfit_classification_verdict": "moot_study_appears_ineligible",
+    "number_verification_detail": "Multiple discrepancies found between `effect_sizes.csv` and the PDF: (1) Table 5 (PDF p. 11 / p. 694) `GP head's village` coefficients are misassigned across outcomes in `effect_sizes.csv`: the paper reports `Road has drain` = 0.053*** (SE 0.015, N = 8,452), `Road is paved` = 0.028* (SE 0.016, N = 8,452), `Road is moderately clean` = 0.037** (SE 0.015, N = 8,398), `No garbage on road` = 0.060*** (SE 0.018, N = 8,407), and `Road has unclogged drain (cond)` = -0.017 (SE 0.024, NS, N = 2,038; printed as `70.017` due to Routledge minus-sign glyph encoding), whereas Claude stored `road paved 0.053***, has drain 0.037**, moderately clean 0.028*, no garbage 0.060***`. (2) Table 6 (PDF p. 13 / p. 696) `Politician road` coefficients swap two outcomes: the paper reports `Road has drain` = 0.078*** (SE 0.020, N = 10,026), `Road paved` = 0.052* (SE 0.021, N = 10,026), and `Road is moderately clean` = 0.055*** (SE 0.016, N = 9,971), whereas Claude stored `paved 0.055***, moderately clean 0.052*` (`SC/ST road` matches on `Road paved` = -0.051** [SE 0.016] and `No garbage on road` = -0.032* [SE 0.013]). (3) Sample size `5,276 villages/wards` in `effect_sizes.csv` is a PDF superscript-footnote misread of `527^6 villages` on PDF p. 6 / p. 689 (201 GPs were sampled, and Note 6 gives state totals of 69 + 182 + 126 + 129 = 506 villages/wards); moreover, `10,408 roads` is the Table 3 descriptive total rather than the analytic regression Ns (8,398-8,452 and 2,038 in Table 5; 9,971-10,026 and 2,244 in Table 6). (4) Exact colony-clustered SEs are printed in parentheses in Tables 5-6 for every coefficient, whereas `effect_sizes.csv` stores only `\"clustered at colony level\"`; CIs and exact p-values are legitimately absent from the paper.",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "likely_ineligible_flag_e03_e04_e05_e07",
+    "study_id": "S1136"
+  }
+}

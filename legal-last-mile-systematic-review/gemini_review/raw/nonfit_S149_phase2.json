@@ -1,0 +1,127 @@
+{
+  "study_id": "S149",
+  "phase": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "21b83cba9e1a22bb28c57c22bb99c844ccc59b269ef564d30699c42bc77abb40",
+  "input_text_sha256": "36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9",
+  "prompt_sha256": "8cff4480e84e1b7d999b104302f8e7cd8d3ae6c5a0591cad56c58244a1bdb78f",
+  "started_at": "2026-11-20T01:06:32.679584+00:00",
+  "completed_at": "2026-11-20T01:08:49.722086+00:00",
+  "raw_request": {
+    "type_name": "nonfit_effect_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "numbers_match_paper",
+        "number_verification_detail",
+        "nonfit_classification_verdict",
+        "review_eligibility_flag",
+        "adversarial_critique",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "numbers_match_paper": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "minor_rounding_or_derived",
+            "no_discrepancy_found",
+            "cannot_tell"
+          ]
+        },
+        "number_verification_detail": {
+          "type": "string"
+        },
+        "nonfit_classification_verdict": {
+          "type": "string",
+          "enum": [
+            "justified_nonfit",
+            "questionable_could_fit_family_ABC",
+            "moot_study_appears_ineligible",
+            "cannot_tell"
+          ]
+        },
+        "review_eligibility_flag": {
+          "type": "string",
+          "enum": [
+            "eligible_keep_included",
+            "borderline_flag_for_pi",
+            "likely_ineligible_flag_e03_e04_e05_e07",
+            "cannot_tell"
+          ]
+        },
+        "adversarial_critique": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "PHASE 2 ADVERSARIAL AUDIT OF REASONED NON-FIT EFFECT ROW (TASK J) — STUDY S149\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`.\n\n== YOUR LOCKED PHASE 1 BLIND READING ==\n{\n  \"study_id\": \"S149\",\n  \"record_id\": \"R3B7D3DFF4E72\",\n  \"order\": 1,\n  \"blind_rationale\": \"Blind reading of the full text (Sethy & Sahoo 2026, Discover Public Health) shows that the paper's central governance-to-WASH causal claim (Objective 3; Section 3.7, p. 9; Table 8, p. 10) estimates the Average Treatment Effect on the Treated (ATT) of active/meaningful women's participation in Village Water and Sanitation Committees (VWSCs) using propensity score matching across N = 400 rural households in 16 villages of Odisha, India, supplemented by a probit marginal effect for `VWSC awareness campaign` on consistent toilet usage (Table 5, p. 8).\\n\\n1. SWiM Family Classification (`Family B` vs `none_nonfit`): Substantively, active women's participation in community VWSCs and VWSC awareness campaigns acting on water source functionality (+24.8%), household toilet usage (+19.3% in PSM; +15.8 percentage points in probit), and daily water collection time (-31.4 min) map directly onto SWiM `Family B` (assistance, participation, trust, external support), or secondarily `Family A` if local committee governance arrangements are grouped there. Excluding S149 as `none_nonfit` would ONLY be justified on one of three grounds: (a) if the extracted row in `effect_sizes.csv` captured the multidimensional Gender-WASH Inequality Index (GWII, r = -0.52, p. 9) or diarrhoeal/water-borne illness (Table 4 / Table 8) rather than a direct WASH access/functionality outcome; (b) if narrow Criterion 2 strictly excludes de facto participatory agency/attendance when no formal legal/administrative rule varies; or (c) on data-integrity grounds given severe internal reporting anomalies.\\n\\n2. Narrow Criterion 2 Assessment (`borderline_governance_or_proxy` / potential `E03` flag): Although VWSCs are institutional local governance bodies under India's Jal Jeevan Mission (JJM) and Swachh Bharat Mission-Gramin (SBM-G), the empirical exposure is not a legal, statutory, tariff, tenure, enforcement, or administrative rule (indeed, mandating 50% women's representation in VWSCs is proposed only as a future policy recommendation in Section 4.5b, p. 14). Instead, the paper measures a behavioural/participatory composite `Women's Agency Score (0-10)` (meeting attendance 20%, speaking time 30%, influence over decisions 30%, leadership roles 20%; p. 4) binarized at an unspecified threshold into village-level active VWSC participation, plus `VWSC awareness campaign` exposure. This is a borderline governance/participation proxy rather than a formal legal rule mechanism, warranting PI review for consistency with other Family B community-participation studies versus `E03` exclusion.\\n\\n3. Criterion 4 Assessment (`yes_household_or_service_access` for functionality/usage/time; `E04` if health/GWII extracted): Table 8 and Table 5 directly measure household/community WASH service access outcomes—water source functionality, consistent toilet usage, and daily water collection time burden. However, co-reported outcomes in Tables 3, 4, 6, 7, and 8 (diarrhoea/water-borne illness, UTI/reproductive infections, MHM absenteeism, and the composite GWII index combining health, voice, privacy, and time) fail Criterion 4 (`E04`) if used as the primary extracted outcome.\\n\\n4. Statistical & Reporting Quality Red Flags: (i) Severe internal outcome-label contradiction: Table 8 (p. 10) and Section 3.7 (p. 9) report ATT = +24.8% (SE = 5.2, t = 4.77, p < 0.001, 95% CI [14.6%, 35.0%]) for `Water Source Functionality` alongside +19.3% for `Toilet Usage Rate`, whereas the Abstract (p. 1) and Conclusion Objective III (p. 15) state that VWSC participation `improved toilet functionality by 24.8%`. (ii) All mathematical equations in Section 2.4-2.6 (pp. 3-5) failed to render in the published PDF (`disp lay-eq- Equa`, `inli ne-eq-IEq1`, etc.). (iii) Table 8 reports village-level VWSC treatment across only 16 villages (N = 400 households) without specifying matching covariates, propensity model, common support, caliper, balance diagnostics, agency cutoff, or cluster-robust inference for 16 villages.\",\n  \"candidate_swim_family_blind\": \"Family B\",\n  \"confidence\": \"high\",\n  \"criterion4_household_access_outcome\": \"yes_household_or_service_access\",\n  \"evidence_quotes\": [\n    {\n      \"criterion\": \"Study design and analytic sample size (N = 400 rural households)\",\n      \"page\": \"PDF p. 5\",\n      \"quote\": \"The household survey achieved a high response rate of 94.3%, yielding a final sample\"\n    },\n    {\n      \"criterion\": \"Narrow Criterion 2 exposure definition (participatory agency index in VWSCs rather than formal legal rule)\",\n      \"page\": \"PDF p. 4\",\n      \"quote\": \"Women’s Agency Score (0–10): A composite index capturing meeting attendance\"\n    },\n    {\n      \"criterion\": \"Headline PSM estimate and internal label contradiction (reported as toilet functionality in Abstract vs water source functionality in Table 8)\",\n      \"page\": \"PDF p. 1\",\n      \"quote\": \"VWSCs improved toilet functionality by 24.8%, reduced water collection time by\"\n    },\n    {\n      \"criterion\": \"Headline PSM estimate for WASH service access outcomes in Results Section 3.7 and Table 8\",\n      \"page\": \"PDF p. 9\",\n      \"quote\": \"These villages exhibited 24.8% higher water source\"\n    }\n  ],\n  \"headline_estimate_summary\": \"1) Primary Governance/Participation Estimates — Propensity Score Matching (Table 8, PDF p. 10; text Section 3.7, PDF p. 9; N = 400 households across 16 villages; active/meaningful women's VWSC participation vs non-active villages; matching covariates, cutoff on 0-10 Women's Agency Score, and clustering adjustment not reported):\\n- Water Source Functionality [NOTE: labelled 'toilet functionality' in Abstract p. 1 and Conclusion p. 15]: ATT = +24.8%, SE = 5.2, t = 4.77, p < 0.001, 95% CI [14.6%, 35.0%] (beneficial access direction).\\n- Toilet Usage Rate: ATT = +19.3%, SE = 4.7, t = 4.11, p < 0.001, 95% CI [10.1%, 28.5%] (beneficial access direction).\\n- Water Collection Time: ATT = -31.4 min/day, SE = 8.6, t = -3.65, p < 0.001, 95% CI [-48.3, -14.5] (raw negative sign = beneficial reduction in daily collection burden).\\n- Non-C4 health/hygiene PSM outcomes in Table 8 (p. 10): Diarrhoea Incidence ATT = -12.7%, SE = 3.8, t = -3.34, p = 0.001, 95% CI [-20.2%, -5.2%]; MHM Constraints ATT = -18.2%, SE = 4.9, t = -3.71, p < 0.001, 95% CI [-27.8%, -8.6%].\\n\\n2) Secondary Governance/Support Estimate — Probit Model for Consistent Toilet Usage (Table 5, PDF p. 8, N = 400, adjusted for water available at toilet, adequate privacy, regular maintenance, female education >= 8 years, and wealth index quintile):\\n- VWSC awareness campaign -> Consistent Toilet Usage: Marginal Effect dy/dx = 0.158 (+15.8 percentage points), Delta-method SE = 0.047, z = 3.36, p = 0.001, 95% CI [0.066, 0.250].\\n\\n3) Other Non-Governance or Non-C4 Estimates:\\n- Bivariate correlation between Women's Agency Score and composite Gender-WASH Inequality Index (GWII, overall M0 = 0.357, Table 7, p. 9): r = -0.52 (Section 3.7, PDF p. 9; no SE/p-value printed).\\n- Logistic regression for Water-borne Illness (Table 4, PDF p. 7, N = 400, adjusted for poor water quality, non-functional toilet, inconsistent handwashing, child <5 years, MHM constraints, household wealth): Low Women's Agency Score Adjusted OR = 1.62, 95% CI [1.07-2.46], p = 0.023, Marginal Effect = +10.4%; Non-functional Toilet Adjusted OR = 3.21, 95% CI [2.10-4.92], p < 0.001.\\n- OLS regression for Water Collection Time Poverty (Table 2, PDF p. 6, N = 400, R^2 = 0.714, Adj R^2 = 0.702, adjusted for female education, wealth quintile, household size, Gajapati district): Distance to Source (km) B = 4.82, Robust SE = 0.67, t = 7.19, p < 0.001, 95% CI [3.50, 6.14], Std. B = 0.62; Handpump vs Piped B = 3.15, Robust SE = 0.89, t = 3.54, p < 0.001, 95% CI [1.40, 4.90]; Unprotected vs Piped B = 7.42, Robust SE = 1.25, t = 5.94, p < 0.001, 95% CI [4.96, 9.88].\",\n  \"narrow_criterion2_rule_present\": \"borderline_governance_or_proxy\",\n  \"paper_read\": \"full text\",\n  \"study_design_and_sample\": \"Cross-sectional convergent parallel mixed-methods study conducted January–June 2023 across 4 purposively selected districts of rural Odisha, India (Mayurbhanj, Ganjam, Keonjhar, Gajapati), using multi-stage sampling (2 randomly selected blocks per district, 2 villages per block = 16 villages; systematic random sampling of 25 households per village). Primary quantitative analytic sample: N = 400 rural households (100 per district; 94.3% response rate), with N = 217 households for menstrual hygiene management (MHM) sub-analyses and 16 villages for village-level VWSC participation comparisons; complemented by 16 focus group discussions and 32 key informant interviews.\",\n  \"model\": \"gemini-4-carbon-medium (Antigravity session inherit)\",\n  \"run_at\": \"2026-11-19T19:16:30.054297+00:00\",\n  \"file_sha256\": \"21b83cba9e1a22bb28c57c22bb99c844ccc59b269ef564d30699c42bc77abb40\",\n  \"input_sha256\": \"36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9\"\n}\n\n== CLAUDE'S STORED ROW IN `effect_sizes.csv` (synthesis_family = blank / reasoned non-fit) ==\n{\n  \"study_id\": \"S149\",\n  \"outcome_family\": \"effective_access\",\n  \"synthesis_family\": \"\",\n  \"exposure_definition\": \"Women's meaningful participation in Village Water and Sanitation Committees (VWSC) governance (participation vs. non-participation), propensity-score-matched.\",\n  \"comparator_definition\": \"Non-participating households/women (PSM-matched comparison group).\",\n  \"effect_measure\": \"propensity score matching (PSM)-estimated average treatment effect\",\n  \"effect_estimate\": \"VWSC participation improved toilet functionality by 24.8%, reduced water-collection time by 31.4 minutes, and lowered illness incidence by 12.7% (PSM-estimated); distance to water source was the strongest predictor of time burden (beta=0.62, p<0.001).\",\n  \"lower_CI\": \"\",\n  \"upper_CI\": \"\",\n  \"standard_error\": \"\",\n  \"sample_size\": \"400 households\",\n  \"direction\": \"positive (participation improves access-related outcomes)\",\n  \"adjusted\": \"adjusted (PSM-estimated causal effects)\",\n  \"evidence_status\": \"OBSERVED\",\n  \"provenance_note\": \"extraction_database.csv S149; source Sethy & Sahoo 2026, Discover Public Health. Participation in local water-governance committees is a citizen-side accommodation/participation mechanism, distinct from Family B's provider-side \\\"bureaucratic assistance\\\" (which describes officials helping applicants navigate procedure, not citizens participating in local governance bodies) -- does not cleanly match Family A, B, or C's exposure definitions as written in PROJECT_SPEC.md S8.\",\n  \"included_in_pooled_estimate\": \"FALSE\",\n  \"exclusion_from_pooling_reason\": \"ANALYSIS_PLAN.md S2 -- exposure (community-governance participation) does not match any of the three existing synthesis families' definitions; recorded here as a pooling-candidate flag rather than assigned a family, per DATA_DICTIONARY.md's allowance for \\\"a newly identified family\\\" -- no new family has been formally defined in 05_analysis/meta_analysis/ yet, so this single study does not justify creating one.\"\n}\n\n== ADVERSARIAL AUDIT INSTRUCTIONS ==\n1. If `paper_read` is `\"not accessible\"`, set `numbers_match_paper = \"cannot_tell\"`, `nonfit_classification_verdict = \"cannot_tell\"`, `review_eligibility_flag = \"cannot_tell\"`, and explain that full text was not accessible.\n2. Otherwise, compare Claude's stored `effect_sizes.csv` row AND `exclusion_from_pooling_reason` against the source paper text below:\n   - `numbers_match_paper`: Do EVERY stored point estimate, CI, SE, p-value, and sample size N in `effect_sizes.csv` match the exact numbers printed in the PDF (`\"yes\"`, `\"minor_rounding_or_derived\"`, `\"no_discrepancy_found\"`)? Detail any discrepancy!\n   - `nonfit_classification_verdict`: Is leaving `synthesis_family` blank (`reasoned non-fit`) `\"justified_nonfit\"`, `\"questionable_could_fit_family_ABC\"` (given how broadly Families A, B, and C were retitled under A21), or `\"moot_study_appears_ineligible\"`?\n   - `review_eligibility_flag`: Applying the exact same `2026-10-13 / 2026-10-14` `CK` scope standard used in `A24/A26/A28` (where studies with non-legal exposures like watershed engineering `S1020`, social trust `S1144`, or non-household outcomes like building permits `S1121` were excluded from the `1,072` review altogether!), should this study stay included (`\"eligible_keep_included\"`), be flagged as borderline (`\"borderline_flag_for_pi\"`), or be flagged as likely failing narrow Criterion 2 / Criterion 4 / Criterion 3 (`\"likely_ineligible_flag_e03_e04_e05_e07\"`)?\n   - Provide 2 to 4 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52912, sha256=36bf0bf6fb5e4d81b20345c48f84481a57737a5d9fa5663c7f0ce908070f49c9]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "adversarial_critique": "Claude's stored row for S149 fails adversarial audit on three independent fronts: (1) obvious abstract-only numerical extraction that omits explicitly printed SEs/95% CIs and propagates an internal outcome-label swap in the paper; (2) an obsolete `reasoned non-fit` justification that contradicts the A21 synthesis-family definitions; and (3) unflagged Criterion 2 scope and data-integrity red flags requiring PI review.\n\n1. Abstract-Only Extraction & Outcome Mislabelling: Claude copied the multi-outcome prose summary straight from the Abstract (p. 1) into `effect_estimate` and left `lower_CI`, `upper_CI`, and `standard_error` completely blank, despite Table 8 (p. 10) printing exact SEs, t-statistics, p-values, and 95% CIs for every PSM outcome. Worse, because Claude did not cross-check Results Section 3.7 (p. 9) or Table 8 (p. 10), Claude uncritically repeated the Abstract's claim that VWSC participation `\"improved toilet functionality by 24.8%\"`, whereas Section 3.7 and Table 8 explicitly report `+24.8%` (SE = 5.2, 95% CI [14.6%, 35.0%]) for **Water Source Functionality** and `+19.3%` (SE = 4.7, 95% CI [10.1%, 28.5%]) for **Toilet Usage Rate** (with no \"toilet functionality\" row in Table 8 at all). Claude also bundled a non-governance physical-geography covariate (`distance to water source`, standardized beta = 0.62 from Table 2, p. 6) and a non-Criterion 4 health outcome (`illness incidence` -12.7%) into the same string, while overlooking Table 5's (p. 8) probit marginal effect for `VWSC awareness campaign` on consistent toilet usage (+15.8 percentage points, SE = 0.047, 95% CI [0.066, 0.250]).\n\n2. Flawed `Reasoned Non-Fit` Rationale (`questionable_could_fit_family_ABC`): Claude's `provenance_note` justifies leaving `synthesis_family` blank by citing `PROJECT_SPEC.md S8`'s narrow pre-A21 framing of Family B as strictly `\"provider-side 'bureaucratic assistance' (which describes officials helping applicants navigate procedure, not citizens participating in local governance bodies)\"`. Under A21, however, Family B was explicitly broadened to encompass community participation, outreach/assistance, and trust mechanisms (and Family A covers local governance arrangements). Even on Claude's own narrow provider-outreach framing, Table 5 (p. 8) directly estimates committee-led outreach (`VWSC awareness campaign` -> +15.8 pp consistent toilet usage). Thus, if S149 remains included in the review, excluding it from Family B as a `reasoned non-fit` is inconsistent with A21.\n\n3. Narrow Criterion 2 Scope & Study-Integrity Flags (`borderline_flag_for_pi`): Applying the `2026-10-13 / 2026-10-14` CK narrow Criterion 2 standard (`A24/A26/A28`), S149 sits on a sharp eligibility knife-edge (`E03` risk). While VWSCs are formal decentralized local governance committees under India's Jal Jeevan Mission and Swachh Bharat Mission-Gramin, no legal rule, statutory mandate, gender quota, tariff, or administrative eligibility rule varies across the 16 sampled villages in Odisha (mandating 50% women's representation in VWSCs is proposed only as a future policy recommendation in Section 4.5b, p. 14). Instead, the empirical exposure is a behavioural/empowerment composite (`Women's Agency Score 0-10`: attendance 20%, speaking time 30%, decision influence 30%, leadership 20%; p. 4) binarized at an unstated cutoff. Moreover, the paper exhibits severe reporting/validity defects: every mathematical equation in Sections 2.4-2.6 (pp. 3-5) failed to render in the published PDF (`disp lay-eq- Equa`, `inli ne-eq-IEq1`), the PSM analysis treats village-level VWSC participation across just 16 villages (400 households) without reporting the propensity model, matched N, balance diagnostics, or village-cluster inference, and the Abstract/Conclusion contradict Table 8 on which WASH facility improved by 24.8%. The PI should determine whether de facto VWSC participation / awareness campaigns pass narrow Criterion 2 (in which case S149 belongs in Family B with corrected Table 8/Table 5 statistics) or fail under `E03`/quality screening.",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "criterion": "Abstract claim copied by Claude attributing +24.8% to toilet functionality",
+        "page": "PDF p. 1",
+        "quote": "VWSCs improved toilet functionality by 24.8%, reduced water collection time by"
+      },
+      {
+        "criterion": "Results Section 3.7 and Table 8 attributing +24.8% to water source functionality and +19.3% to toilet usage across villages",
+        "page": "PDF p. 9",
+        "quote": "These villages exhibited 24.8% higher water source"
+      },
+      {
+        "criterion": "Exposure operationalized as a composite behavioural agency index rather than a formal legal rule",
+        "page": "PDF p. 4",
+        "quote": "(20%), speaking time (30%), influence over decisions (30%), and leadership roles (20%)"
+      },
+      {
+        "criterion": "Formal 50% VWSC gender quota appears only as a future policy recommendation rather than an evaluated rule",
+        "page": "PDF p. 14",
+        "quote": "mandate at least 50% women’s representation in VWSCs, with provisions for"
+      }
+    ],
+    "nonfit_classification_verdict": "questionable_could_fit_family_ABC",
+    "number_verification_detail": "Multiple substantive discrepancies exist between Claude's stored `effect_sizes.csv` row (extracted solely from the Abstract on p. 1) and the full-text statistical tables:\n1. Omitted Printed Precision Statistics (`lower_CI`, `upper_CI`, `standard_error` all left blank `\"\"`): Table 8 (PDF p. 10) explicitly prints SEs, t-statistics, p-values, and 95% CIs for every PSM outcome:\n   - Water Source Functionality: ATT = +24.8%, Std. Error = 5.2, t-stat = 4.77, p < 0.001, 95% CI [14.6%, 35.0%].\n   - Toilet Usage Rate (omitted completely by Claude): ATT = +19.3%, Std. Error = 4.7, t-stat = 4.11, p < 0.001, 95% CI [10.1%, 28.5%].\n   - Water Collection Time: ATT = -31.4 min, Std. Error = 8.6, t-stat = -3.65, p < 0.001, 95% CI [-48.3, -14.5] (raw negative sign = beneficial time reduction).\n   - Diarrhoea Incidence (non-C4 health outcome): ATT = -12.7%, Std. Error = 3.8, t-stat = -3.34, p = 0.001, 95% CI [-20.2%, -5.2%].\n2. Severe Outcome-Label Contradiction (+24.8% mislabelled): Claude recorded `\"VWSC participation improved toilet functionality by 24.8%\"` from the Abstract (p. 1; repeated in Conclusion p. 15). However, Results Section 3.7 (p. 9) and Table 8 (p. 10) report +24.8% for `Water Source Functionality`, whereas the sanitation outcome in Table 8 is `Toilet Usage Rate` (+19.3%); there is no `toilet functionality` row in Table 8.\n3. Bundled Non-Governance Predictor & Missing Unstandardized Stats: Claude appended `distance to water source (beta=0.62, p<0.001)`, which is the standardized beta (`Std. Β = 0.62`) for physical distance (km) in the OLS time-poverty regression (Table 2, p. 6; unstandardized B = 4.82, Robust SE = 0.67, t = 7.19, 95% CI [3.50, 6.14]), not a governance treatment effect.\n4. Omitted Committee Outreach Estimate: Claude missed Table 5 (p. 8), where `VWSC awareness campaign` increases `Consistent Toilet Usage` by dy/dx = 0.158 (+15.8 percentage points; Delta-method SE = 0.047, z = 3.36, p = 0.001, 95% CI [0.066, 0.250]).\n5. Sample Size & Unit-of-Assignment Ambiguity: Stored `sample_size = \"400 households\"` matches total surveyed households (N = 400 across 16 villages, 25/village; pp. 3, 5) and `comparator_definition` states `\"Non-participating households/women\"`, whereas Section 3.7 (p. 9) defines treatment at the village level (`\"villages with active women's participation in VWSCs\"`, only 16 villages total) and the paper never reports the post-matching sample size or cluster adjustment.",
+    "numbers_match_paper": "no_discrepancy_found",
+    "review_eligibility_flag": "borderline_flag_for_pi",
+    "study_id": "S149"
+  }
+}
