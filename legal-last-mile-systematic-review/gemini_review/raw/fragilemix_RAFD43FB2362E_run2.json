@@ -1,0 +1,277 @@
+{
+  "record_id": "RAFD43FB2362E",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "39d52968de3348b7cf28b300555ea7582bc6d91e2a4b7fd7e5fdd9eef881ed7e",
+  "prompt_sha256": "7fc05772c8d6722f7b0185ac70916642c89df384c1c9543f61b99518bb43e018",
+  "started_at": "2026-11-20T17:30:25.081347+00:00",
+  "completed_at": "2026-11-20T17:31:06.200381+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household piped water service coverage across Mexican municipalities (share of households connected to the piped water network inside the dwelling).",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 RULE-TYPE READING. Under the plain wording of Criterion 2 ('Examines a legal, administrative, institutional, regulatory or governance factor'), this study qualifies (yes) because it empirically examines intergovernmental fiscal governance—specifically per capita cumulative federal transfers to municipalities (Aportaciones Federales) and presidential electoral patronage—as institutional/governance determinants of municipal piped water expansion. Under the narrow 2026-10-13 rule-type clarification, however, it fails (no -> E03): the exposures analysed are municipal indigenous population share, electoral vote share, and aggregate per capita federal fiscal transfers across infrastructure, health, education, and other programmes, which represent macro-fiscal and political-economy resource allocation for infrastructure expansion rather than a legal or administrative rule-type mechanism directly governing household or community service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff/cost-recovery rules, connection discretion/accommodation, enforcement, or utility ownership/regulatory structure). Article 115 of the Mexican constitution and 1990s decentralisation/privatisation rules are mentioned only as background context, not empirically analysed.",
+      "c3": "Quantitative econometric study analysing 2,342 to 2,372 Mexican municipalities using INEGI 1999 economic census, 2000 population census, 2005 population survey, and Public Finances data via GLM (logit link) and OLS regressions with spatial lags and state dummies.",
+      "c4": "Reports municipal-level share of households with direct access to piped water (connection to the water network inside the dwelling) in 2005.",
+      "c5": "Population and unit of analysis (Mexican municipalities, N = 2,372 in Model 1; N = 2,342 in Models 2 and 3), exposures (indigenous population share, per capita cumulative federal transfers 2000-2005, presidential vote share), outcome (2005 municipal share of households with in-dwelling piped water connection), and observational econometric regression design are clearly specified.",
+      "c6": "Full text is in English (with multilingual abstracts)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "The present article identiﬁes the different factors that contribute to the unequal access to piped water across Mexican municipalities for the period 2000–2005, using regression analyses."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6",
+        "quote": "I will provide evidence that having a larger indigenous population systematically reduces the per capita transfers municipalities receive from the federal government, which are the primary source of funding for piped water expansion."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "It should be noted that this indicator aggregated a set of transfers that included ones for infrastructure as well as for heath, education, and other programmes"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 9",
+        "quote": "I estimated them using a generalised linear model (GLM) with a logit link function, specifying that the dependent variable was bounded between 0 and 1."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12",
+        "quote": "Households’ direct access to piped water refers to households having a connection to the water network inside the dwelling."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Municipal share of indigenous-language speakers (2000), cumulative per capita federal fiscal transfers to municipalities (Aportaciones Federales, 2000-2005), and 2000 presidential vote share (alongside population density, per capita income, and international migration).",
+    "outcome": "Municipal share of households with direct access to piped water (connection to the water network inside the dwelling) in 2005, and per capita cumulative federal transfers (2000-2005) as an intermediate outcome.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Mexican municipalities (unit of analysis: municipality; N = 2,372 municipalities in Model 1 and N = 2,342 municipalities in Models 2 and 3, out of 2,454 municipalities nationally).",
+    "rationale": "This empirical econometric study examines why Mexican municipalities with larger indigenous populations had worse progress in household piped water coverage between 2000 and 2005, testing whether aggregate per capita federal fiscal transfers (Aportaciones Federales) and electoral patronage mediate the disparity. While it satisfies c1, c3, c4, c5, and c6 and would be included under the plain broad wording of Criterion 2 (as an analysis of intergovernmental fiscal governance and political patronage), it is excluded as E03 (Wrong exposure) under the active 2026-10-13 narrow rule-type reading of Criterion 2 because it analyses macro-fiscal intergovernmental budget transfers (aggregated across infrastructure, health, education, and other programmes), ethnic demographics, and electoral clientelism rather than a rule-type legal, administrative, or regulatory mechanism directly governing service access.",
+    "record_id": "RAFD43FB2362E",
+    "study_design": "Observational quantitative municipal-level econometric study (generalised linear models with logit link and ordinary least squares regressions with spatial lag and state fixed effects, 2000-2005)."
+  }
+}

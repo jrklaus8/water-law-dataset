@@ -1,0 +1,282 @@
+{
+  "record_id": "RE931F223C4B0",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "55ced7d25aadf163694351375af99243938b80009700b1d19601f91d6582bb4e",
+  "prompt_sha256": "ebd8649d6b9b45dbf156aba66b5b8e611b4e68cc22399b4ade98c90af7f6b24b",
+  "started_at": "2026-11-20T17:11:18.918902+00:00",
+  "completed_at": "2026-11-20T17:13:13.576124+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Uganda",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Yes. The paper examines access to water supply and sanitation services (alongside solid waste management) across urban areas, small towns, and rural areas in Uganda.",
+      "c2": "Passes plain Criterion 2 wording (plain_criterion2_decision = include) but FAILS the narrow 2026-10-13 rule-type reading (decision = exclude, E03). Under the plain wording, the study examines legal, institutional, regulatory, and governance factors—specifically Uganda's national policies and statutes (Table 3), ministries/utilities/local government mandates and coordination committees (Tables 1–2), decentralization, and national government/development partner financing. Under the narrow 2026-10-13 clarification, however, this constitutes macro-governance background, inter-ministerial coordination, and aggregate sector financing (comparing >80% funding share for water vs ~5% for sanitation and ~10% for SWM, and rating broad statutes/institutions 1–5 on sector presence) rather than an analysis of a rule-type mechanism directly governing household or community service access (such as eligibility screening, administrative burden, tenure/documentation requirements, tariff or cost-recovery rules, discretion/accommodation, enforcement rules, or utility ownership/regulatory rules directly governing access).",
+      "c3": "Yes. Uses a mixed-methods empirical design combining a PRISMA-guided document review (385 records screened down to 65 key policy/sector documents and institutional performance reports) with primary qualitative data from 10 semi-structured key informant interviews analyzed in Atlas.ti, plus compiled sector funding and access time-series data.",
+      "c4": "Yes. Reports national percentage access to water supply and sanitation services over time in Uganda (Figure 3) as well as national coverage rates (79% improved water access and 23% safely managed sanitation) and urban/small-town/rural service disparities.",
+      "c5": "Yes. Population/unit of analysis (Uganda's national water, sanitation, and SWM sector; N = 65 reviewed policy/performance documents and N = 10 expert key informants), macro-level exposure (national government and development partner policy frameworks, institutional structures, and sector funding allocations), outcome (national percentage access to water, sanitation, and SWM services and sector delivery performance), and study design (mixed-methods document review and qualitative key informant interviews) are identifiable, although the exposure falls outside the narrow Criterion 2 rule-type scope.",
+      "c6": "Yes. Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This study reviews the status of access to water supply, sanitation, and solid waste management (SWM) services in Uganda, examining the influence of national government policies, institutional frameworks, and financing mechanisms."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 (Section 3.3)",
+        "quote": "A score of 5 indicates a maximal contribution with strong mandates, whereas a score of 1 denotes minimal impact. These ratings provide a clear picture of the areas that require policy revision."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 (Section 4)",
+        "quote": "Severe funding disparities impact the delivery of water supply, sanitation, and SWM services. Unequal resource allocation, where water supply dominates funding whereas sanitation and SWM remain underfunded, exacerbates service delivery gaps, particularly amid rapid urbanization."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 (Section 2)",
+        "quote": "These experts came from MWE, the private sector, NGOs, and DPs. Interviews involved semistructured questions, allowing flexibility to probe deeper into specific themes. Conducted through phone calls, permission was granted to record. The recordings were transcribed, and results were analyzed using Atlas ti."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3 (Section 1.5)",
+        "quote": "Uganda's National Water Policy (1999) has facilitated improved water access to 79%, provided by the NWSC in large urban centers and umbrella authorities in small towns (NPA 2024). The National Sanitation Guidelines (2018) on sewage has led to 23% of safely managed sanitation provided by the Ministry of Health, Ministry of Water and Environment, and NWSC (Tumwebaze et al. 2023)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 (Figure 3)",
+        "quote": "Percentage access to water, sanitation, and SWM services in relation to population growth rates (source: World bank, AfDB, MWE, UNICEF, JICA, and KCCA)."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Macro-level national government and development partner policy frameworks, inter-institutional mandates/coordination, and sector-wide funding allocations across water, sanitation, and solid waste management",
+    "outcome": "National percentage access to water supply, sanitation, and solid waste management services over time and sector-level service delivery performance in Uganda",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Uganda national water, sanitation, and solid waste management sector (1990–2023), analyzed via 65 reviewed policy/institutional documents (from 385 identified) and 10 purposefully selected expert key informant interviews from MWE, private sector, NGOs, and development partners",
+    "rationale": "Excluded under E03 (Wrong exposure) per the 2026-10-13 rule-type clarification of Criterion 2. Although the paper empirically reviews Uganda's water and sanitation sector (combining 65 policy/performance documents, 10 key informant interviews, and national funding/access statistics) and would be included under the plain broad wording of Criterion 2, its exposure is macro-level sector governance—specifically inter-ministerial coordination, broad 1–5 ratings of statutory/institutional presence across water, sanitation, and SWM, and aggregate donor/budgetary allocation imbalances (>80% to water vs ~5% sanitation and ~10% SWM)—rather than a rule-type legal, administrative, or regulatory mechanism directly governing household or community service access.",
+    "record_id": "RE931F223C4B0",
+    "study_design": "Mixed-methods study combining a PRISMA-guided systematic document review (n = 65 documents), qualitative semi-structured key informant interviews (n = 10 experts), and descriptive analysis of secondary sector funding and coverage data"
+  }
+}

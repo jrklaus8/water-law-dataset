@@ -1,0 +1,282 @@
+{
+  "record_id": "RD601DD13E14F",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "30edc745899c072169d2cc77f69cd90d0fbd25d7c1fa92e12bb074f8c8d176a2",
+  "prompt_sha256": "bd99ffad83174e2a089a049c16828f1e2d42249d795daf07950ae6f870deb2bd",
+  "started_at": "2026-11-20T17:20:58.675284+00:00",
+  "completed_at": "2026-11-20T17:23:05.895695+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Discusses urban household and community water supply and sanitation access in Indian cities under JNNURM and in Delhi slums and resettlement colonies, alongside drinking-water contamination and health service distribution.",
+      "c2": "Passes the plain wording of Criterion 2 because it discusses urban water governance, JNNURM municipal reforms, slum eviction/resettlement policies, and utility supply norms. Fails the narrow 2026-10-13 rule-type reading because its governance focus is a macro-level critique of urban renewal and investment policies (JNNURM funding allocations and GDP-oriented growth) serving as unanalysed background to secondary water-contamination summaries; although the narrative briefly mentions rule-type elements (possession of property ownership papers, user charges, 10-year resettlement plot licences, and reduced Delhi Jal Board lpcd norms), none of these mechanisms is empirically operationalised or analysed. Even under the plain reading of Criterion 2, the paper is still excluded as E05 for lacking primary empirical evidence or a systematic synthesis.",
+      "c3": "Published explicitly in the journal's 'Commentary' section (PDF Page 1) with no methods section, no reference list, and no primary empirical analysis or systematic synthesis. It combines narrative policy critique of JNNURM guidelines with brief secondary summaries of previously released Hazards Centre water-quality/health reports (2005–2006, 2010, and 2012, focusing on potability, faecal coliform, fluoride, arsenic, and landfill health complaints) and passing one-sentence mentions of 1998 and 2002 surveys without sampling or methodological details. Excluded as E05.",
+      "c4": "Mentions secondary access and quantity figures in the narrative (such as City Development Plan slum water-supply coverage gaps and per-capita supply in lpcd from a 1998 survey), although its main data charts (Figures 4–9) report drinking-water contamination/potability and self-reported health symptoms rather than service access.",
+      "c5": "As a narrative commentary without a methods section or research design, it does not provide an identifiable study design, sampling frame, or analytical linkage connecting a specific legal/administrative exposure to a household or community service-access outcome.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 10 (p. 296)",
+        "quote": "their City Development Plans indicate that all of them have large slum populations of 1–20 lakhs, and the majority are currently unable to provide access to water supply to more than half the slum population."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 10 (p. 294)",
+        "quote": "This is, in turn, related to the pattern of water governance emerging in urban areas, and the major determinant is the policy package that drives urban renewal."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 10 (p. 295)",
+        "quote": "property rights, the eventual access mechanism is controlled by the possession of papers that prove ownership—something that most urban poor do not possess."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 10 (p. 302)",
+        "quote": "The social determinants of health in urban areas are clearly rooted in the investment policies that are driving processes of ‘urban renewal’ and ‘economic growth’."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5 of 10 (p. 297)",
+        "quote": "Surveys conducted by us in 1998 have revealed that actual supply is as low 33 lpcd in the poorer settlements, and as high as 400 lpcd in the affluent areas."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7 of 10 (p. 299)",
+        "quote": "Following the above study, we carried out a study in 2009, to focus on the quality of water in surface water sources, hand pumps, bore wells, and tankers, as well as Ranney wells and piped water supply at the nearest point to the water treatment plants (Figures 6–9) all over Delhi."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Macro-level urban renewal and investment policies under JNNURM (with unanalysed narrative remarks on ULB reforms, user charges, PPPs, property ownership papers, slum eviction/resettlement onto 10-year licence plots, and utility lpcd norms)",
+    "outcome": "Secondary narrative assertions regarding slum water supply access and per-capita supply (lpcd), alongside secondary summaries of drinking-water potability/contamination (faecal coliform, bacterial colony count, fluoride, arsenic) and health complaints",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Urban populations, slums, and resettlement colonies in India (63 JNNURM cities and Delhi); cites secondary summaries from prior Hazards Centre reports (77 water samples in 2005, 15 groundwater samples in 2008, 53 water samples in 2009) and unquantified 1998/2002 surveys",
+    "rationale": "This article is published as a 'Commentary' in Social Change (43(2): 293–302) and is a narrative policy essay rather than an empirical study or systematic empirical synthesis (E05). It critiques India's Jawaharlal Nehru National Urban Renewal Mission (JNNURM) and Delhi's slum-eviction/resettlement trajectory at a macro-policy level while reproducing summary figures from government websites and earlier Hazards Centre NGO reports (2005–2006, 2010, and 2012) that tested water contamination (potability, faecal coliform, bacterial counts, fluoride, arsenic) and resident health symptoms, plus passing one-sentence mentions of 1998/2002 lpcd surveys with no reported methods, sampling frame, or study design. Additionally, under the narrow 2026-10-13 reading of Criterion 2, brief narrative references to property ownership papers, user charges, resettlement plot licences, and reduced utility lpcd norms remain unanalysed within a broader macro-governance critique rather than constituting an empirically examined rule-type access mechanism; under both the narrow and plain readings of Criterion 2, the paper is excluded as E05 due to the absence of primary empirical methods/evidence.",
+    "record_id": "RD601DD13E14F",
+    "study_design": "Commentary / narrative policy overview citing secondary NGO reports and government website data (no empirical study design)"
+  }
+}

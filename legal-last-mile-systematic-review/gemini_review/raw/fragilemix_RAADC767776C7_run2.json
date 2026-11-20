@@ -1,0 +1,277 @@
+{
+  "record_id": "RAADC767776C7",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "a6eb1f133fee665d1db54c8fc6cc8051ddbaca4a1fda3f0e2a1081e2352f062c",
+  "prompt_sha256": "cd3e5b4dafbd8e048640ee431d6de254ebdee1d0776e4aa40f86805f2bd64211",
+  "started_at": "2026-11-20T17:30:25.094616+00:00",
+  "completed_at": "2026-11-20T17:33:48.171975+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The paper addresses Brazil's water and sanitation sector (abastecimento de água and esgotamento sanitário), models network coverage expansion toward universalization in a stylized theoretical model (Section 3), and includes municipal SNIS water and sewage coverage rates in its dataset (Section 4), though coverage is used empirically only as an explanatory variable rather than an outcome.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain wording of Criterion 2 ('legal, administrative, institutional, regulatory or governance factor'), the paper WOULD pass Criterion 2 (plain = yes) because political interference and electoral cycles affecting subnational sanitation regulatory agencies' tariff-setting decisions are institutional/regulatory governance factors (even so, the paper still fails Criterion 4, so plain_criterion2_decision = 'exclude'). Under the narrow 2026-10-13 clarification, the paper FAILS Criterion 2 (narrow = no) because the empirical exposure tested is macro-political electoral cycles (municipal and state election-year dummies eleicoes_municipais and eleicoes_estaduais capturing political business cycle interference in regulatory price adjustments), rather than a rule-type legal or administrative mechanism directly governing household or community service access. Although tariff/cost-recovery rules and expansion targets appear in the stylized theoretical model (Section 3), in the empirical study (Section 4) real tariff adjustment is the dependent variable rather than an access-governing exposure, and sector dummies (contract revision, Novo Marco, state ownership) are merely unreported controls in a tariff-adjustment regression.",
+      "c3": "Contains an empirical econometric analysis (Section 4) using an unbalanced municipality-year panel dataset (2002–2021; 1,142 descriptive observations, N = 983 in Pooled OLS, Fixed Effects, and Random Effects regressions) across 88 subnational sanitation regulatory agencies, alongside a mathematical theoretical model (Section 3). However, the system-expansion results in Section 3 are purely theoretical derivations, and empirical data in Section 4 test only regulatory tariff adjustments.",
+      "c4": "Fails Criterion 4: the sole empirical outcome reported (Tables 2 and 3, Section 4) is Variação_real, the annual inflation-adjusted percentage tariff readjustment authorized by subnational regulatory agencies (operationalized by the authors as a proxy for maintaining utility investment capacity), not an outcome measuring household or community water/sanitation access, connection, network expansion, availability, reliability, continuity, quantity, household affordability/bill burden, or exclusion. Network expansion (n2) is analyzed solely in the theoretical model (Section 3), while municipal water and sewage coverage rates (atend_agua and atend_esgoto) enter the empirical regressions only as right-hand-side explanatory variables predicting Variação_real.",
+      "c5": "For the empirical tariff-adjustment analysis, the unit of analysis and population (Brazilian municipalities regulated by subnational sanitation agencies, 2002–2021, N = 983 in regressions), exposure (municipal and state election-year dummies), dependent variable (annual real tariff adjustment Variação_real), and study design (unbalanced panel econometrics: Pooled OLS, FE, RE) are clearly identifiable, though no empirical service-access outcome is estimated.",
+      "c6": "Full text is in Portuguese (with English and Portuguese structured abstracts), which is directly eligible without translation under Criterion 9."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 19",
+        "quote": "Diante da baixa taxa de cobertura de água e esgoto observada em parcela significante dos municípios do Brasil e da incapacidade do Estado em atrair investimentos suficientes para o setor propõe-se aqui entender por que mecanismos essa ineficiência pode ser gerada pela interferência de ciclos políticos sobre o processo de decisão regulatória."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 19",
+        "quote": "Hipótese 1 Em anos eleitorais, o grau de interferência dos políticos (σ) é mais alto sobre a atividade das agências reguladoras. Como resultado, as tarifas praticadas diminuem, em termos reais."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10 of 19",
+        "quote": "Com o objetivo de testar algumas das predições que podem ser obtidas do modelo, foi construída uma base de dados contendo informações sobre os reajustes anuais aplicados no Brasil no setor de saneamento (para os serviços de água, esgoto ou ambos) entre 2002 e 2021."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 2 of 19",
+        "quote": "Conclusions: The findings indicate that municipal election cycles are negatively associated with prices set by regulators."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 15 of 19",
+        "quote": "Foi construído um painel com informações a respeito dos reajustes praticados por agências reguladoras de saneamento em diversos municípios brasileiros."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Municipal and state election-year cycles (dummy variables eleicoes_municipais and eleicoes_estaduais capturing political interference in subnational regulatory agencies), with municipal water and sewage coverage rates (atend_agua, atend_esgoto), municipal GDP, population, COVID-19 dummy, contract revision dummy, post-July 2020 Novo Marco dummy, and state-ownership dummy included as explanatory/control variables",
+    "outcome": "Annual real tariff adjustment percentage set by subnational sanitation regulatory agencies (Variação_real, nominal percentage readjustment deflated by IPCA); sanitation network expansion (n2) is derived only in the stylized theoretical model and is not empirically measured as an outcome",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Brazilian municipalities regulated by 88 subnational sanitation regulatory agencies (46 municipal, 26 state, 16 intermunicipal) between 2002 and 2021 (1,142 total observations in descriptive statistics; N = 983 municipality-year observations in panel regressions)",
+    "rationale": "Excluded primarily as E04 (Wrong outcome), while also failing the narrow 2026-10-13 rule-type scope of Criterion 2. Although the title and stylized two-period theoretical model (Section 3) analyze sanitation network expansion (n2) under price-cap regulation and political interference, the empirical panel study (Section 4, N = 983 municipality-year observations across subnational Brazilian sanitation regulators, 2002–2021) tests only whether municipal and state election years reduce annual real percentage tariff adjustments authorized by regulators (Variação_real, framed as utility revenue/investment capacity). No empirical outcome measuring household or community water/sanitation access, connection, expansion, service availability, reliability, quantity, household affordability, or exclusion is estimated; municipal water and sewage coverage rates (atend_agua, atend_esgoto) enter solely as right-hand-side predictors of tariff adjustments. In addition, the empirical exposure tested (municipal and state election-year dummies) represents macro-political electoral cycle interference in regulatory pricing rather than a rule-type legal/administrative mechanism directly governing service access under the 2026-10-13 Criterion 2 clarification. Even under the plain wording of Criterion 2 (where regulatory/political interference counts as a governance factor), the paper remains excluded for lacking an empirical access outcome.",
+    "record_id": "RAADC767776C7",
+    "study_design": "Stylized two-period theoretical regulatory model combined with an unbalanced panel econometric study (pooled OLS, fixed effects, and random effects)"
+  }
+}
