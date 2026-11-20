@@ -1,0 +1,344 @@
+{
+  "study_id": "S944",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1f9f1c59455cc28d6e7566a54c7089b692ed0a941dc12c6d3f7c0a563c89fac3",
+  "input_text_sha256": "60354dc58061de0b055ad2037abf99025065beee9b974a8f9dcf827fdf4715d0",
+  "prompt_sha256": "99e3a61411e961767c5679752b1cab09309ce779e7219a44b8a6e5dc1814bc0c",
+  "started_at": "2026-11-20T02:01:01.850004+00:00",
+  "completed_at": "2026-11-20T02:03:22.998499+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S944\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S944\n- Record ID: R75F551BE4748\n- Citation string: Johnson JH Jr, Parnell A, Joyner AM, Christman CJ, Marsh B (2004). Racial Apartheid in a Small North Carolina Town. Review of Black Political Economy.\n- DOI: 10.1007/s12114-004-1007-6\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 60354dc58061de0b055ad2037abf99025065beee9b974a8f9dcf827fdf4715d0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=44699, sha256=60354dc58061de0b055ad2037abf99025065beee9b974a8f9dcf827fdf4715d0]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / substantial missingness for household sanitation condition: Cross-sectional Census and municipal GIS boundary/sewer layers have full administrative coverage (aside from unexplained 'no data' polygons in Figures 2-4), but household-level septic failure data suffer from severe non-participation because African American homeowners were reluctant to allow a systematic survey of septic system function out of fear of property condemnation ([PDF Page 13]).",
+      "confounding": "High concern: The empirical analysis relies on descriptive spatial overlays and narrative episodes without statistical or engineering adjustment for potential confounders such as topography, soil percolation, lot density, distance to trunk lines, developer-installed infrastructure financing, or municipal capital cost differentials (e.g., the cited $720,000 estimate for a lift station and force main in White Level vs. $268,000 on South Third Street, [PDF Pages 12-13]), although stark adjacent disparities (West End contiguous to the sewer treatment plant; White Level across from Club at Mill Creek) provide strong contextual evidence.",
+      "legal_measurement_quality": "Adequate spatial and documentary grounding with weak coding transparency: Municipal legal mechanisms—corporate boundaries, Extraterritorial Jurisdiction (ETJ), satellite annexation, industrial rezonings (R-20 to M1, M-2), and Water Quality Critical Area (WQCA / Balance of Watershed) overlays—are accurately described, mapped from public GIS files, and linked to dated Mebane City Council minutes (1991-2002), but statutory citations rely on secondary summaries and no systematic coding protocol across all municipal zoning/annexation actions is presented ([PDF Pages 7-10]).",
+      "measurement_bias": "Moderate concern: Spatial boundaries, sewer line locations (Piedmont Triad Council of Governments), bypass alignments (NCDOT), and demographic indicators (2000 Census) draw on objective public records, but GIS processing methods are undocumented—including an apparent misdescription of 'block-level race data' as extracted from Census 2000 Summary File 3 ([PDF Page 10]), unstated neighborhood polygon definitions, and an undocumented calculation that 87% of lost bypass property lies in African American and low-income areas ([PDF Page 15])—while septic failure relies on secondary/anecdotal reports.",
+      "outcome_measurement_quality": "Mixed (strong spatial network presence, weak primary sanitation/health measurement): Municipal sewer access is directly measured via geo-coded sewer line maps overlaid on neighborhood boundaries and Census racial composition ([PDF Pages 10-11], Figure 3), whereas septic tank failure and microbial water contamination are not measured through systematic primary data collection by the authors, relying instead on qualitative reports and a brief summary of a secondary 2002 EPA surface-water study (rounds of 7, 5, and 5 samples) ([PDF Pages 11-13]).",
+      "reporting_bias": "Moderate-to-high concern: The article contains no standalone Methods section, pre-specified protocol, or systematic inventory of all council annexation, rezoning, and utility decisions; qualitative 'participant observation' and 'content analysis of town council deliberations' ([PDF Page 1]) are asserted without reporting sampling frames, coding rules, or systematic treatment of counter-examples.",
+      "selection_bias": "High concern for purposive case and documentary selection: Mebane, NC is a purposively selected single-town case with active environmental justice complaints (WERA 1999 Title VI complaint, [PDF Page 17]); while GIS layers cover the entire town and ETJ, qualitative cases, council minutes, and personal communications are selectively chosen to illustrate exclusionary practices without a complete universe of municipal land-use petitions."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The paper clearly states its empirical objective: to examine and illustrate how municipal land-use regulations, Extraterritorial Jurisdiction (ETJ) boundaries, exclusionary zoning, denial of sewer service, and proposed highway re-routing disenfranchise and harm historic African American neighborhoods in Mebane, North Carolina.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Page 4], CRITICAL BACKGROUND"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Combining Census 2000 demographic data, geo-coded municipal/ETJ boundary and sewer line GIS layers, NCDOT bypass alignments, and Mebane City Council minutes allows the authors to document spatial exclusion from annexation/sewerage alongside the municipal decisions producing those patterns.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 5-16], Figures 1-4 and DISCRIMINATORY TACTICS"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "A qualitative case-study component drawing on city council minutes, public hearing records, planning memoranda, and participant observation is appropriate for investigating municipal decision-making processes, hearing restrictions, and regulatory application in land-use and sewer extension disputes.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 7-15], DISCRIMINATORY TACTICS"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "Although the authors report using participant observation, content analysis of town council deliberations, dated council minutes (1991-2002), community meeting records, and personal communications, there is no Methods section describing observation dates/settings, the full date range or selection criteria for council minutes, interview protocols, or how documentary evidence was systematically gathered.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 7-15], DISCRIMINATORY TACTICS; [PDF Pages 18-19], REFERENCES"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "Specific institutional events (1991 Buckhorn/Perry Hill rezoning, 1998 satellite annexation hearing rules, 1993 Mill Creek WQCA removal, 1997 White Level sewer petitions) are supported by dated council minutes, but the paper provides no content-analysis coding framework showing how all council deliberations were analyzed, and some claims rely on unverified secondary accounts (e.g., what officials 'reportedly told' a landowner).",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 7-15], DISCRIMINATORY TACTICS (especially [PDF Page 10], Water Quality Critical Area)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "While disparate land-use and infrastructure outcomes are well-illustrated, strong causal attributions of subjective motive and intent ('institutionalized discriminatory intent', 'conscious denial', 'clearly the goal here was to force the African American landowner to sell', 'In all likelihood, the real reason') extend beyond what is directly verifiable from the cited documentary excerpts without systematic evaluation of competing fiscal or planning explanations.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Page 10], Water Quality Critical Area; [PDF Page 15], Highway Re-Routing"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "Because the paper omits any methodological account of how participant observation and 'a content analysis of town council deliberations' were conducted, coded, and linked to the narrative case vignettes, full methodological coherence across collection, analysis, and interpretation cannot be verified.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 7-16], DISCRIMINATORY TACTICS and CONCLUSIONS"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Within the purposively chosen Mebane case study, full spatial coverage of the municipality and its Extraterritorial Jurisdiction using 2000 Census data and complete administrative GIS layers (city limits, ETJ, sewer network, proposed NC 119 bypass paths) is directly relevant to assessing neighborhood-level spatial disparities.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 4-6], THE CASE STUDY CONTEXT; [PDF Pages 10-14], Figures 2-4"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "For the target population of Mebane and its surrounding ETJ communities, the study uses complete Census 2000 enumeration/summary files and full municipal/regional GIS infrastructure layers rather than a convenience subsample (while explicitly acknowledging in the Conclusions that Mebane itself is a single small-town case rather than a national probability sample).",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 4-6], THE CASE STUDY CONTEXT; [PDF Page 10], Denial of Sewer Service; [PDF Page 16], CONCLUSIONS"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative descriptive 4.3: Are the measurements appropriate?",
+        "justification": "Census 2000 racial composition, median family income, and homeownership indicators paired with official geo-coded corporate limits, ETJ boundaries, Piedmont Triad Council of Governments sewer lines, and NCDOT proposed bypass alignments are appropriate spatial measures of municipal underbounding and sewer line distribution.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 4-6], THE CASE STUDY CONTEXT; [PDF Pages 10-11], Denial of Sewer Service and Figure 3; [PDF Pages 13-14], Highway Re-Routing and Figure 4"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "Administrative GIS layers and Census data have complete jurisdictional coverage except for unexplained 'no data' polygons on Figures 2-4, but primary household-level sanitation data could not be systematically collected because African American homeowners were reluctant to allow a systematic survey of septic system function out of fear of forced property condemnation.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Pages 6, 11, 14], Figures 2-4; [PDF Page 13], Denial of Sewer Service"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Descriptive GIS mapping clearly visualizes spatial exclusion, but technical spatial-analytic procedures are undocumented: the text states 'block-level race data were extracted from Census 2000 Summary File 3' (whereas SF3 is sample data released at block-group/tract rather than block level), historical neighborhood boundary definitions are not specified, the calculation that 87% of lost bypass property falls in African American and low-income areas is unexplained, and no spatial-statistical controls for cost/density/distance are performed.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 10], Denial of Sewer Service; [PDF Pages 14-15], Highway Re-Routing; [PDF Page 16], CONCLUSIONS"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "The authors provide a clear substantive rationale: because boundary manipulation and underground sewer denial 'are not visible to the naked eye or immediately apparent on the physical landscape', GIS mapping of Census and infrastructure data must be combined with qualitative documentary and observational evidence of council deliberations to link spatial disparities to institutional actions.",
+        "rating": "Yes",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 15-16], CONCLUSIONS"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Across all substantive sections (ETJ/annexation, zoning/WQCA overlays, sewer service denial, and NC 119 bypass routing), quantitative GIS maps and Census demographics (Figures 1-4) are directly integrated with qualitative council minutes, hearing accounts, and planning documents.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 7-15], DISCRIMINATORY TACTICS and Figures 2-4"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "Integrating spatial overlays with historical municipal records coherently demonstrates the institutional mechanism of municipal underbounding—retaining African American neighborhoods inside Mebane's regulatory ETJ while excluding them from corporate annexation, voting rights, and municipal sewer lines.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 7-16], DISCRIMINATORY TACTICS and CONCLUSIONS"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "Although the authors mention certain complicating details in passing (such as an annexed 132-acre parcel that also lacked sewer extension after five years, differing engineering cost estimates of $720,000 vs. $268,000, and zero microbial contamination during drought vs. exceedances after rain in the secondary EPA study), they do not systematically analyze discrepant cases or test competing non-racial explanations.",
+        "rating": "Can't tell",
+        "where_found": "[PDF Page 8], Satellite Annexation; [PDF Pages 12-13], Denial of Sewer Service"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Neither empirical strand satisfies standard methodological reporting criteria for its tradition: the paper lacks a dedicated Methods section, omits qualitative sampling, participant-observation, content-analysis coding, and researcher reflexivity disclosures, and omits quantitative GIS processing rules, boundary definitions, calculation denominators (such as the 87% property-loss statistic), and spatial/cost controls.",
+        "rating": "No",
+        "where_found": "[PDF Page 1], INTRODUCTION; [PDF Pages 10-16], Denial of Sewer Service, Highway Re-Routing, and CONCLUSIONS"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Mixed-methods case study design combining GIS Census analysis and public records",
+        "page": "[PDF Page 1], INTRODUCTION",
+        "quote": "the Mebane situation are based on a Geographic Information Systems"
+      },
+      {
+        "criterion": "Qualitative participant observation and content analysis asserted without detailed protocol",
+        "page": "[PDF Page 1], INTRODUCTION",
+        "quote": "a content analysis of town council deliberations."
+      },
+      {
+        "criterion": "Legal/institutional exposure: ETJ inclusion paired with total exclusion from municipal annexation",
+        "page": "[PDF Page 7], DISCRIMINATORY TACTICS - Racial Gerrymandering",
+        "quote": "the ETJ, none of them have been annexed into the city"
+      },
+      {
+        "criterion": "Quantitative GIS data source description (reporting block-level race data from Census 2000 SF3)",
+        "page": "[PDF Page 10], DISCRIMINATORY TACTICS - Denial of Sewer Service",
+        "quote": "level race data were extracted from Census 2000 Summary File 3"
+      },
+      {
+        "criterion": "Outcome missingness / nonresponse in household septic system assessment due to condemnation fear",
+        "page": "[PDF Page 13], DISCRIMINATORY TACTICS - Denial of Sewer Service",
+        "quote": "have been reluctant to allow a systematic survey of their septic system"
+      },
+      {
+        "criterion": "Spatial integration of Census demographics and geo-coded zoning/sewer records",
+        "page": "[PDF Page 16], CONCLUSIONS",
+        "quote": "GIS-based spatial analysis and mapping techniques."
+      }
+    ],
+    "overall_narrative_summary": "Johnson et al. (2004) present a single-town mixed-methods case study of Mebane, North Carolina, integrating descriptive GIS spatial mapping of 2000 Census demographics, municipal/Extraterritorial Jurisdiction (ETJ) boundaries, sewer lines, and proposed NC 119 bypass corridors with qualitative participant observation, city council minutes (1991-2002), and personal communications. Appraised with the MMAT (Qualitative 1.1-1.5, Quantitative descriptive 4.1-4.5, and Mixed Methods 5.1-5.5), the study's core strength is its compelling spatial-institutional integration (5.1-5.3 rated Yes): superimposing geo-coded corporate limits, ETJ boundaries, and sewer infrastructure onto neighborhood racial composition vividly demonstrates municipal underbounding, whereby historic African American neighborhoods (West End, White Level, Buckhorn/Perry Hill) are regulated under Mebane's ETJ while excluded from annexation, municipal voting rights, and sewer service—even adjacent to the town's wastewater treatment plant and upscale White subdivisions. However, per MMAT 2018 guidance that overall methodological quality cannot exceed the weakest component, the study raises high methodological concern (5.5 rated No; 1.2-1.5, 4.4-4.5, and 5.4 rated Can't tell). The article contains no standalone Methods section; it provides no sampling frame, observation schedule, coding protocol, or reflexivity statement for its qualitative 'participant observation' and 'content analysis of town council deliberations'; it omits technical GIS documentation (including attributing 'block-level race data' to Census 2000 Summary File 3 and leaving the 87% bypass property-loss calculation unexplained); it lacks primary household septic survey data because residents feared property condemnation (relying instead on a brief summary of a secondary 2002 EPA water-sampling report); and it makes strong causal claims of discriminatory intent without formal statistical or engineering controls for infrastructure cost, density, or topography.",
+    "overall_rating": "High methodological concern (weakest-component limitation: Mixed Methods 5.5 rated No, with four Can't tell ratings in Qualitative 1.2-1.5, two Can't tell ratings in Quantitative descriptive 4.4-4.5, and one Can't tell rating in Mixed Methods 5.4; no numeric score computed per MMAT 2018 guidance)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-town mixed-methods case study combining quantitative descriptive GIS spatial analysis (2000 Census demographics and geo-coded municipal/ETJ, zoning, sewer, and highway records) with qualitative participant observation and documentary content analysis of town council deliberations",
+    "study_id": "S944",
+    "where_found_summary": "Methodological overview in INTRODUCTION ([PDF Page 1]) and CONCLUSIONS ([PDF Page 16]); demographic and spatial data sources in THE CASE STUDY CONTEXT ([PDF Pages 4-6], Figures 1-2), Denial of Sewer Service ([PDF Pages 10-13], Figure 3), and Highway Re-Routing ([PDF Pages 13-15], Figure 4); qualitative municipal documentary evidence in DISCRIMINATORY TACTICS ([PDF Pages 7-15]), NOTE 1 ([PDF Page 17]), and REFERENCES ([PDF Pages 17-19]). No standalone Methods section is present.",
+    "why_tool_chosen": "The authors explicitly employ a mixed-methods primary case study design ('a case study approach and a mix of quantitative and qualitative research methods', [PDF Page 1]) that integrates quantitative descriptive GIS spatial mapping of 2000 Census data and geo-coded public infrastructure/boundary files with qualitative participant observation and content analysis of town council deliberations and planning records. MMAT (using Qualitative 1.1-1.5, Quantitative descriptive 4.1-4.5, and Mixed Methods 5.1-5.5) is therefore the exact matching instrument. ROBINS-I is inappropriate because this is a single-town case history with no quasi-experimental intervention comparator arm, and the Legal Institutional Evidence Appraisal Framework applies only when a study fits none of the conventional empirical designs."
+  }
+}

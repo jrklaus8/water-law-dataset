@@ -1,0 +1,316 @@
+{
+  "study_id": "S660",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a2f2717ac72a25b9c4f14cead5b21faf5772d5323c6668511280eb6aec8116c3",
+  "input_text_sha256": "e84b8060c69bd353dff0321ac43f6c1a6f27c946ad2d11499f941a494b132b67",
+  "prompt_sha256": "6c30d963db7e1d540dda14a14f348e54c991ae9ee5af3b4304495610b6378799",
+  "started_at": "2026-11-20T02:03:23.028898+00:00",
+  "completed_at": "2026-11-20T02:06:10.348432+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S660\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S660\n- Record ID: R371D7DD278E0\n- Citation string: Graham C (2006). The politics of necessity: electricity and water in Great Britain. Journal of Consumer Policy 29:435-448.\n- DOI: 10.1007/s10603-006-9020-3\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: e84b8060c69bd353dff0321ac43f6c1a6f27c946ad2d11499f941a494b132b67) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=51937, sha256=e84b8060c69bd353dff0321ac43f6c1a6f27c946ad2d11499f941a494b132b67]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable (institutional and legal-historical case study synthesizing statutes, case law, and aggregate secondary administrative reports rather than tracking an empirical participant cohort).",
+      "confounding": "High concern: although the author explicitly discusses major concurrent confounders in prose—including cheap world oil prices until 2004, European Community environmental capital mandates, abolition of domestic rates, technological substitution of pre-payment meters for formal disconnections, poor housing stock, and targeted welfare benefits—no counterfactual comparison or analytical adjustment separates regulatory/statutory effects from macro-economic shocks.",
+      "legal_measurement_quality": "Strong: primary UK statutes (Water Act 1989, Electricity Act 1989 s. 3A as amended, Water Industry Act 1999, Utilities Act 2000, Water Act 2003), regulatory licence enforcement structures, Vulnerable Groups Regulations, and the High Court judicial review ruling in R v Director General of Water Services ex parte Oldham Borough Council (1998) are accurately specified with explicit territorial boundaries across England, Wales, Scotland, and Northern Ireland.",
+      "measurement_bias": "Moderate-to-high concern: empirical outcomes (water and energy disconnections, real-terms price changes, Vulnerable Groups Regulations take-up, self-disconnection, and fuel poverty counts) are cited selectively from secondary administrative and NGO reports, several point figures lack bibliographic source entries or methodological denominators, pre-payment self-disconnection goes unrecorded in official disconnection series, and fuel poverty trends reflect technical changes in official definitions.",
+      "outcome_measurement_quality": "Weak-to-adequate: concrete administrative indicators (formal disconnections, real water price increases, Vulnerable Groups Regulations application counts, and the >10%-of-income UK fuel poverty metric) are referenced, but complete time series, denominators, measurement error assessments, and a standardized quantitative threshold for water poverty/affordability are absent.",
+      "reporting_bias": "Moderate-to-high concern: there is no pre-specified research protocol or systematic evidence selection framework, and quantitative data points (such as selected baseline/peak disconnection years) are cited narratively without comprehensive tabular reporting across the 1990–2006 period.",
+      "selection_bias": "High concern: the two sector case studies (paying for water and fuel poverty) and supporting secondary reports are selected purposively to illustrate an interpretivist argument without transparent inclusion/exclusion criteria, and no comparative analysis is conducted against non-privatised UK jurisdictions (such as Scottish water) despite acknowledging their distinct legal arrangements."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Accurately cites and interprets primary UK legislation (Electricity Act 1989 s. 3A as amended with verbatim statutory text, Water Act 1989, Water Industry Act 1999, Utilities Act 2000, Water Act 2003, Human Rights Act 1998), High Court judicial review authority (R v Director General of Water Services ex parte Oldham Borough Council, 20 February 1998), Hansard written answers (257 HC Debs 1054-1055), Vulnerable Groups Regulations, and parliamentary select committee and regulatory consultation papers, with only minor omission of specific section numbers for the Water Industry Act 1999.",
+        "rating": "strong",
+        "where_found": "PDF pp. 3-9, 12-14 (pp. 437-443, 446-448; Footnotes 2-5; References)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Explicitly defines the territorial scope of the legal regimes at the outset—clarifying that electricity covers England, Wales, and Scotland while water covers only England and Wales, with distinct regimes in Scotland for water and Northern Ireland for both sectors—and notes sub-national variations in fuel poverty definitions and regional water affordability pressures.",
+        "rating": "strong",
+        "where_found": "PDF p. 1 Footnote 1 (p. 435); PDF pp. 7, 9, 10, 13 (pp. 441, 443, 444, 447)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Clearly traces the institutional and legal shifts across two post-privatisation eras (1984-1997 market-surrogate regulation vs. post-1997 Labour 'mixed' approach), including licence-based regulation, commercial billing and Budget Payment Units (BPUs), the 1998 Oldham judicial review decision, the Water Industry Act 1999 statutory ban on domestic water disconnections and water-limiting devices, and the Utilities Act 2000 re-casting of regulator duties; however, exposures are examined as broad historical policy bundles rather than isolated empirical treatments.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 3-9, 11-12 (pp. 437-443, 445-446; 'Privatisation and after: an overview' and 'Paying for water')"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Defines concrete policy metrics where available—such as official UK 'Fuel Poverty' (>10% of household income spent on fuel), formal utility disconnections for debt, real-terms tariff changes, Vulnerable Groups Regulations take-up, and pre-payment meter 'self-disconnection'—though the overarching outcome ('material position of disadvantaged consumers' / 'social citizenship') and 'water poverty' remain broadly interpretive without a uniform quantitative threshold.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 1-2, 6-12 (pp. 435-436, 440-446; 'Paying for water' and 'Paying for fuel')"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "States a thematic rationale for focusing on two case studies ('paying for water and fuel poverty'), but specifies no sampling frame, search strategy, or temporal/documentary coverage rules for the secondary statistics, charity reports, and regulatory consultations cited.",
+        "rating": "weak",
+        "where_found": "PDF p. 2 (p. 436) and PDF p. 6 (p. 440)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Secondary empirical reports, parliamentary committee evidence, and NGO campaigns (e.g., Barnardos, Save the Children, PUAF) are selected narratively to illustrate policy trajectories without explicit inclusion criteria or safeguards against selective citation.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2-12 (pp. 436-446)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Relies on isolated secondary point estimates—such as water disconnections rising from ~8,000 (1989-1990) to ~21,000 (1991-1992), Vulnerable Groups Regulations take-up of 1.4% and 7,693/9,217 applications, and Q3 2005 Ofgem self-disconnection of ~25%—several of which lack formal bibliographic entries or underlying denominators, while explicitly noting that pre-payment self-disconnection goes unrecorded in official statistics and fuel poverty counts were affected by definitional changes.",
+        "rating": "weak",
+        "where_found": "PDF pp. 6-7, 9-12 (pp. 440-441, 443-446)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Evaluates the impact of privatisation, independent regulation, judicial review, and post-1997 legislation solely through historical narrative process-tracing and descriptive before/after statistics, without a counterfactual comparator jurisdiction (e.g., Scottish public water) or quasi-experimental design.",
+        "rating": "weak",
+        "where_found": "PDF pp. 1-2, 6-13 (pp. 435-436, 440-447; Abstract, Introduction, and Conclusions)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Explicitly identifies key confounding forces in the narrative—including low world oil prices until 2004, European Community water quality investment mandates, abolition of domestic property rates, electronic pre-payment meter adoption, energy-inefficient housing stock, and welfare transfers—but conducts no empirical decomposition or control to separate regulatory effects from these concurrent shocks.",
+        "rating": "weak",
+        "where_found": "PDF pp. 2, 6, 10-12 (pp. 436, 440, 444-446)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides rich institutional analysis of how Treasury External Financing Limits, post-privatisation licence modification and Competition Commission referral rules, Ofwat/Ofgem administrative culture, local authority council-housing billing, grassroots anti-metering coalitions, municipal judicial review litigation, company water charities, and non-contractual statutory water supply interacted in practice.",
+        "rating": "strong",
+        "where_found": "PDF pp. 2-9, 11-13 (pp. 436-443, 445-447)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Primary legal authorities and HMSO/departmental reports are traceable, but there is no replicable literature search or data extraction protocol, and several empirical statistics in the text (e.g., 1989-1992 water disconnections, 2003-2005 Ofwat application counts, and Q3 2005 Ofgem self-disconnection figures) lack complete source citations in the reference list.",
+        "rating": "weak",
+        "where_found": "PDF pp. 6-14 (pp. 440-448; text citations and References)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Not assessable because the study performs narrative doctrinal and policy synthesis rather than systematic qualitative or quantitative coding of legal texts, cases, or empirical records.",
+        "rating": "not assessable",
+        "where_found": "PDF pp. 1-14 (pp. 435-448; no coding protocol applicable or used)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Briefly invokes an 'interpretivist approach' emphasizing contingency and multiple sites of governance (citing Bevir & Trentmann, 2004), but offers no reflexive discussion of the author's normative assumptions, disciplinary standpoint, or relationship to UK consumer/regulatory policy bodies.",
+        "rating": "weak",
+        "where_found": "PDF p. 2 (p. 436) and PDF p. 13 (p. 447)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D2 Jurisdictional specificity",
+        "page": "PDF Page 1 (p. 435, Footnote 1)",
+        "quote": "The provisions for the supply of water in Scotland are different from England and Wales."
+      },
+      {
+        "criterion": "D5 Sampling transparency / case study framing",
+        "page": "PDF Page 6 (p. 440, Privatisation and after: an overview)",
+        "quote": "two case studies, namely paying for water and fuel poverty"
+      },
+      {
+        "criterion": "D1 Legal source accuracy (judicial review of pre-payment water devices)",
+        "page": "PDF Page 7 (p. 441, Footnote 4)",
+        "quote": "R v Director General of Water Services ex parte Oldham Borough Council 20 February 1998."
+      },
+      {
+        "criterion": "D7 Measurement transparency (secondary disconnection statistics)",
+        "page": "PDF Page 7 (p. 441, Paying for water)",
+        "quote": "around 8,000 in 1989–1990 to a peak of around 21,000 in 1991–1992."
+      },
+      {
+        "criterion": "D9 Treatment of confounding (narrative acknowledgment of oil price contingency)",
+        "page": "PDF Page 2 (p. 436, Introduction)",
+        "quote": "this has just been contingent, depending on relatively cheap world prices for oil"
+      },
+      {
+        "criterion": "D7 Measurement transparency (self-disconnection prevalence)",
+        "page": "PDF Page 11 (p. 445, Paying for fuel)",
+        "quote": "households with pre-payment meters report self-disconnection."
+      }
+    ],
+    "overall_narrative_summary": "Structured non-validated judgment (Legal Institutional Evidence Appraisal Framework; no numeric composite score): Graham (2006) is a legal-historical and institutional policy case study examining how utility privatisation (1989-1990), independent regulation (Ofwat, Offer/Ofgas/Ofgem), judicial review, and post-1997 statutory reforms shaped low-income household access to water and electricity in Great Britain. Methodologically, its primary strengths lie in legal source accuracy (D1: strong), jurisdictional specificity distinguishing England and Wales water law from Scotland and Northern Ireland (D2: strong), and rich institutional contextualization of the 'last mile' of domestic water billing, metering on council estates, municipal judicial review against Budget Payment Units (R v Director General of Water Services ex parte Oldham Borough Council, 1998), and the resulting statutory ban on domestic water disconnections and water-limiting devices under the Water Industry Act 1999 (D10: strong). Conversely, as a source of causal empirical evidence on consumer welfare outcomes, the study exhibits substantial limitations: secondary reports and isolated administrative statistics are selected narratively without a transparent search or sampling protocol (D5, D6: weak), several empirical figures lack complete bibliographic citations or denominators while pre-payment meter 'self-disconnection' goes unrecorded in official disconnection statistics (D7, D11: weak), and the central claim that privatisation and regulation did not worsen disadvantaged consumers' material position rests on descriptive historical comparison without counterfactual identification or empirical control for acknowledged macro-level confounders such as world oil prices, European Community capital mandates, and welfare transfers (D8, D9: weak).",
+    "overall_rating": "Structured non-validated judgment: Strong legal-doctrinal accuracy and institutional contextualization, but weak empirical causal identification, sampling, and measurement transparency",
+    "paper_read": "full text",
+    "study_design_identified": "Legal-historical and institutional policy case study (doctrinal-empirical synthesis of UK electricity and water privatisation, statutory/regulatory reforms, judicial review, and secondary administrative statistics across two sector case studies)",
+    "study_id": "S660",
+    "where_found_summary": "Design framing and jurisdictional scope on PDF pp. 1-2 (pp. 435-436, including Footnote 1); historical and statutory overview on PDF pp. 2-6 (pp. 436-440); 'Paying for water' case study (water metering, disconnections, R v Director General of Water Services ex parte Oldham Borough Council [1998], Water Industry Act 1999 ban on disconnections/BPUs, and Vulnerable Groups Regulations take-up) on PDF pp. 6-9 (pp. 440-443); 'Paying for fuel' case study (fuel poverty, pre-payment meters, and self-disconnection) on PDF pp. 9-12 (pp. 443-446); synthesis and legal access conclusions on PDF pp. 12-13 (pp. 446-447); References on PDF pp. 13-14 (pp. 447-448).",
+    "why_tool_chosen": "The paper collects no primary qualitative interview/ethnographic data (ruling out CASP and MMAT), implements no systematic literature search or screening protocol (ruling out AMSTAR 2), and conducts no primary survey, cohort, experimental, or quasi-experimental econometric analysis with a comparator arm (ruling out RoB 2, ROBINS-I, and JBI checklists). Instead, written by a legal scholar, it combines doctrinal analysis of British utility statutes, regulatory licences, and High Court judicial review with two institutional/legal-historical case studies ('paying for water' and 'fuel poverty') drawing on secondary official and NGO statistics, matching the Legal Institutional Evidence Appraisal Framework in RISK_OF_BIAS.md §§1-2."
+  }
+}

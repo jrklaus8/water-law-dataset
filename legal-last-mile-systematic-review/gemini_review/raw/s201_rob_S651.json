@@ -1,0 +1,316 @@
+{
+  "study_id": "S651",
+  "task": "s201_s1169_blind_rob",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "cfbc8ef044584ee35450a56ab722d088ced9577b567b44245d7bc7a932cd6622",
+  "input_text_sha256": "1e2d8ef01e691577becc31f26b0ea688cf7d7f09fa2311e041160491bdc9fa6e",
+  "prompt_sha256": "2247bfb5b768c1adc632621dcca6e26fbf400bdfed79d41beb898b69d3e2ccfe",
+  "started_at": "2026-11-20T01:53:40.484756+00:00",
+  "completed_at": "2026-11-20T01:56:45.150637+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SECOND RISK-OF-BIAS APPRAISAL (TASK D) — STUDY S651\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Work ONLY from `== SOURCE PAPER FULL TEXT ==` below.\n\n== RECORD HEADER ==\n- Study ID: S651\n- Record ID: RE4E5A4029D2D\n- Citation string: Obeng-Odoom F (2012). Beyond access to water. Development in Practice 22:1135-1146.\n- DOI: 10.1080/09614524.2012.714744\n- Retrieval status: retrieved_drive_pdf\n\n== APPRAISAL INSTRUCTIONS (GEMINI_HANDOFF_BRIEF §3 Task D; RISK_OF_BIAS.md §§1-2; APPRAISAL_FORM.md; CODEBOOK.md §8) ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or the paper text below says `[FULL TEXT NOT ACCESSIBLE]`), you MUST set `paper_read = \"not accessible\"`, `study_design_identified = \"cannot_tell (full text not accessible)\"`, `chosen_tool = \"cannot_tell\"`, `why_tool_chosen = \"full text not accessible\"`, `overall_rating = \"cannot_tell\"`, `domain_ratings = []`, all 7 `cross_tool_domains` fields to `\"cannot_tell\"`, `overall_narrative_summary = \"Full text not accessible; no risk-of-bias appraisal performed.\"`, `where_found_summary = \"not accessible\"`, and `evidence_quotes = []`. NEVER guess study design or bias ratings from citation/title!\n\n2. STEP 1 — INDEPENDENT DESIGN CLASSIFICATION & TOOL SELECTION (`RISK_OF_BIAS.md` §1):\n   Classify the study's actual design from its Methods section, then select the matching appraisal tool:\n   - `\"RoB 2 (parallel-trial variant)\"`: Individually randomized controlled trial. Rate all 5 domains (`D1` Randomization process; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"RoB 2 (cluster-randomized trials variant)\"`: Cluster-randomized trial (villages, compounds, neighbourhoods, schools, utilities randomized as clusters). Rate all 6 domains (`D1a` Randomization process; `D1b` Timing of identification or recruitment of participants within clusters; `D2` Deviations from intended interventions; `D3` Missing outcome data; `D4` Measurement of the outcome; `D5` Selection of the reported result) as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`, and overall rating as `\"Low\"`, `\"Some concerns\"`, or `\"High\"`.\n   - `\"ROBINS-I\"`: Non-randomized study of an intervention / policy with a genuine comparator (DiD, IV, RDD, PSM, ITS, controlled before-after, comparative longitudinal/panel evaluation). Rate all 7 domains (`D1` Bias due to confounding; `D2` Bias in selection of participants into the study; `D3` Bias in classification of interventions; `D4` Bias due to deviations from intended interventions; `D5` Bias due to missing data; `D6` Bias in measurement of outcomes; `D7` Bias in selection of the reported result — note `No information` honestly if no pre-analysis plan/protocol exists) as `\"Low\"`, `\"Moderate\"`, `\"Serious\"`, `\"Critical\"`, or `\"No information\"`, and overall rating in the same vocabulary. Do NOT assign single-case histories with no comparator arm to ROBINS-I!\n   - `\"JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies\"`: Quantitative cross-sectional survey / observational regression without a quasi-experimental intervention structure. Rate all 8 items (`Q1` Inclusion criteria in sample clearly defined; `Q2` Study subjects and setting described in detail; `Q3` Exposure measured validly and reliably; `Q4` Objective, standard criteria used for measurement of condition; `Q5` Confounding factors identified; `Q6` Strategies to deal with confounding factors stated; `Q7` Outcomes measured validly and reliably; `Q8` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`. Provide overall narrative judgment (`\"Low concern\"`, `\"Some concern\"`, or `\"High concern\"` — no numeric score).\n   - `\"JBI Critical Appraisal Checklist for Cohort Studies\"`: Observational comparative cohort design (not framed as a ROBINS-I intervention). Rate all 11 items (`Q1` Similar groups from same population; `Q2` Exposures measured similarly; `Q3` Exposure measured validly/reliably; `Q4` Confounding factors identified; `Q5` Strategies to deal with confounding stated; `Q6` Participants free of outcome at start; `Q7` Outcomes measured validly/reliably; `Q8` Follow-up time reported and sufficient; `Q9` Follow-up complete or loss explored; `Q10` Strategies to address incomplete follow-up utilized; `Q11` Appropriate statistical analysis used) as `\"Yes\"`, `\"No\"`, `\"Unclear\"`, or `\"Not applicable\"`, plus narrative overall judgment (`\"Low concern\"`, `\"Some concern\"`, `\"High concern\"`).\n   - `\"CASP Qualitative Checklist\"`: Primary qualitative study (interviews, ethnography, focus groups, qualitative documentary/field case study). Rate all 10 items (`Q1` Clear statement of aims; `Q2` Qualitative methodology appropriate; `Q3` Research design appropriate to address aims; `Q4` Recruitment strategy appropriate to aims; `Q5` Data collected in a way that addressed research issue; `Q6` Relationship between researcher and participants adequately considered [reflexivity]; `Q7` Ethical issues considered; `Q8` Data analysis sufficiently rigorous; `Q9` Clear statement of findings; `Q10` How valuable is the research [narrative assessment]). Rate Q1-Q9 `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`, and Q10 narratively; give narrative `overall_rating` (e.g. `\"Low methodological concern\"`, `\"Moderate concern (X Can't tell / No items)\"`, `\"High methodological concern\"` — no numeric score).\n   - `\"MMAT (Mixed Methods Appraisal Tool)\"`: Genuine mixed-methods primary study combining qualitative AND quantitative empirical components (do NOT assign purely quantitative or purely qualitative studies to MMAT). Rate Screening `S1`-`S2`, Qualitative `1.1`-`1.5`, the matching Quantitative 5-item block (`2.1`-`2.5` randomized, `3.1`-`3.5` non-randomized, or `4.1`-`4.5` descriptive), AND Mixed-Methods integration `5.1`-`5.5` (`5.1` adequate rationale for mixed methods; `5.2` components effectively integrated; `5.3` outputs of integration adequately interpreted; `5.4` divergences/inconsistencies adequately addressed; `5.5` components adhere to quality criteria of each tradition) as `\"Yes\"`, `\"No\"`, or `\"Can't tell\"`. Per MMAT 2018 rules, NEVER compute a numeric score; provide a concise criterion-grounded narrative `overall_rating` noting that overall quality cannot exceed the weakest component.\n   - `\"AMSTAR 2\"`: Secondary systematic review, meta-analysis, or scoping review with an explicit systematic search/screening method (NEVER apply AMSTAR 2 to non-systematic narrative literature reviews!). Rate all 16 items `Q1`-`Q16` (explicitly marking critical domains `Q2`, `Q4`, `Q7`, `Q9`, `Q11`, `Q13`, `Q15`) as `\"Yes\"`, `\"Partial Yes\"` (where applicable), `\"No\"`, or `\"Not applicable (no meta-analysis)\"`, and apply AMSTAR 2 overall confidence (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - `\"Legal Institutional Evidence Appraisal Framework\"`: Doctrinal-empirical hybrid, jurimetric analysis, or institutional/legal-historical case study that fits NONE of the six conventional designs above. Rate all 13 narrative domains (`D1` Legal source accuracy; `D2` Jurisdictional specificity; `D3` Exposure definition; `D4` Outcome definition; `D5` Sampling transparency; `D6` Selection process; `D7` Measurement transparency; `D8` Causal identification; `D9` Treatment of confounding; `D10` Institutional context; `D11` Replication potential; `D12` Coding transparency; `D13` Researcher reflexivity) as `\"strong\"`, `\"adequate\"`, `\"weak\"`, or `\"not assessable\"`. Explicitly frame `overall_rating` as a structured non-validated judgment (NEVER a numeric composite score!).\n   - `\"NONE\"`: Use when the study fits NONE of the listed instruments (e.g., pure mathematical/simulation optimization model with no empirical sample, or non-systematic narrative essay/review with no primary empirical method and no systematic search). Set `overall_rating = \"NOT APPLICABLE (design fits no listed tool)\"`, explain clearly in `why_tool_chosen` and `overall_narrative_summary` rather than forcing an inappropriate checklist, and still fill the 7 `cross_tool_domains` honestly from the paper!\n\n3. STEP 2 — CROSS-TOOL SUMMARY DOMAINS (`CODEBOOK.md` §8) & VERBATIM QUOTES:\n   - Populate `selection_bias`, `measurement_bias`, `confounding`, `attrition`, `reporting_bias`, `legal_measurement_quality` (how rigorously the legal/administrative/institutional rule or exposure was operationalized), and `outcome_measurement_quality` (how rigorously the water/sanitation outcome was measured).\n   - Provide 3 to 6 exact, contiguous verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed edits, zero paraphrasing) from `== SOURCE PAPER FULL TEXT ==` in `evidence_quotes` with exact PDF page/section citations.\n\n== SOURCE PAPER FULL TEXT (SHA-256: 1e2d8ef01e691577becc31f26b0ea688cf7d7f09fa2311e041160491bdc9fa6e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=45419, sha256=1e2d8ef01e691577becc31f26b0ea688cf7d7f09fa2311e041160491bdc9fa6e]\n== END SOURCE PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not assessable — Secondary single-country institutional case study synthesizing published cross-sectional surveys, scientific water-quality studies, and historical accounts with no primary cohort or participant follow-up.",
+      "confounding": "High concern — Mentions historical infrastructure decay and debt from the 1970s-1980s, rapid urbanisation (from ~30% to >40% between 1990 and 2008), population/tourism/industrial demand growth, and bi-directional neighbourhood-income poverty, but uses no analytical or empirical strategy to disentangle these confounders from commercialisation or the 2005-2011 AVRL management contract.",
+      "legal_measurement_quality": "Weak to moderate — Clearly maps PPP contractual forms (Table 1) and institutional restructuring (GWSC to GWCL in 1998, CWSA rural decoupling, PURC creation in 1997, AVRL management contract 2005-2011, GUWCL in 2011), but relies on secondary accounts rather than primary legal/contractual instruments, inconsistently cites the PURC enabling statute as both Act 538 (1997) and Act 578 on the same page (PDF Page 9, p. 1142), and conflates the implemented management contract with affermage in the concluding critique (PDF Page 9, p. 1142).",
+      "measurement_bias": "Moderate to high concern — Establishes a clear multidimensional distinction between wide coverage and deep access (quality, reliability, cost, equitable distribution) using cited secondary metrics, but relies uncritically on heterogeneous secondary sources (including operator web pages, unpublished theses, and news portals) without auditing primary measurement validity or sample denominators.",
+      "outcome_measurement_quality": "Moderate — Strong conceptual disaggregation of urban water outcomes across MDG coverage, microbial/chemical contamination, continuity and per-capita daily volume (litres/day), official tariff versus tanker-market pricing and household expenditure shares, and wealth-quintile/neighbourhood connection equity, but entirely dependent on secondary studies whose primary measurement procedures and sampling frames are not verified.",
+      "reporting_bias": "High concern — No pre-specified protocol, literature search strategy, or source-inclusion rules; narrative assembly of secondary statistics and illustrative examples creates substantial risk of selective reporting aligned with the paper's critique of market-oriented water reform.",
+      "selection_bias": "High concern — Purposive choice of Ghana as an illustrative national case is explicitly justified, but there is no documented search strategy or selection protocol governing which secondary surveys, scientific studies, dissertations, and media reports within Ghana were included or excluded."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Cites the Public Utilities Regulatory Commission Act, Act 538, 1997, PURC (2005) Urban Water Tariff Policy, National Urban Policy (2010), and UN General Comment No. 15 (2002), but exhibits internal legal/institutional inaccuracies: on PDF Page 9 (p. 1142) it cites Act 538, 1997 and four sentences later refers to the same statutory mandate as Act 578 without explanation; it also documents on PDF Page 6 (p. 1139) that Ghana abandoned affermage for a management contract with AVRL, yet on PDF Page 9 (p. 1142) repeatedly describes Ghana's implemented PPP with AVRL as affermage. Relies primarily on secondary literature rather than primary statutory or contractual texts.",
+        "rating": "weak",
+        "where_found": "PDF Pages 5-7 (pp. 1138-1140) and PDF Page 9 (p. 1142), Modern history of urban water provision in Ghana; Access to water; Lessons, implications, and concluding remarks"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly defines Ghana as the national legal and policy jurisdiction, specifies the 1998 institutional decoupling between urban water provision (GWCL/AVRL/GUWCL) and rural/small-town water provision (Ministry of Local Government and Rural Development and CWSA), and identifies specific urban centres and low-income neighbourhoods (Accra including Sukura, Sabon Zongo, Old Fadama, Avenor, and James Town; Kumasi including Ayigya and Anloga; Sekondi-Takoradi including New Takoradi and Kwesimintsim; Cape Coast/Central Region; Tamale).",
+        "rating": "strong",
+        "where_found": "PDF Pages 3-8 (pp. 1136-1141), Introduction; Modern history of urban water provision in Ghana; Access to water"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Systematically contrasts six PPP contractual arrangements in Table 1 (service contract, management contract, lease/affermage, concession, BOOT, divestiture) across asset ownership, capital investment, tariff revenue recipient, operator compensation, and duration, and traces institutional transitions from GWSC (1957) through ERP commercialisation (1983-1993), GWCL corporatisation (1998), the AVRL management contract (November 2005-June 2011), and GUWCL (2011). Rated adequate rather than strong because specific contractual clauses/performance targets of the AVRL contract are not detailed from primary documents and p. 1142 conflates the management contract with affermage.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4-6 (pp. 1137-1139, including Table 1) and PDF Page 9 (p. 1142), Modern history of urban water provision in Ghana; Lessons, implications, and concluding remarks"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Explicitly defines and contrasts wide access (MDG Goal 7 target 7c improved water source coverage, defined in Note 2 via NDPC 2010) against four well-delineated dimensions of deep access: water quality (E. coli, faecal, chemical, and heavy-metal contamination relative to WHO thresholds), reliability/sufficiency (intermittency and litres per person per day), affordability/cost (official PURC tariff versus secondary tanker/van market prices and household income shares), and distributional equity (piped connection rates across income brackets, wealth quintiles, and low-income neighbourhoods).",
+        "rating": "strong",
+        "where_found": "PDF Page 2 (p. 1135, Abstract), PDF Pages 6-8 (pp. 1139-1141, Access to water), and PDF Page 10 (p. 1143, Note 2)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Contains no Methods section, no primary sampling frame, and no search strategy or eligibility criteria explaining how secondary surveys, scientific water-quality studies, unpublished dissertations, and news articles were identified and selected. Sample sizes, sampling designs, and survey dates of several cited secondary studies are omitted.",
+        "rating": "weak",
+        "where_found": "PDF Page 3 (p. 1136, Introduction) and PDF Pages 6-8 (pp. 1139-1141, Access to water)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Purposive selection of Ghana as a critical national case (high reported MDG urban water coverage alongside domestic contestation) is transparently motivated, but within-case selection of secondary empirical studies, NGO working papers, and media reports is narrative and unsystematic, creating substantial risk of confirmation bias.",
+        "rating": "weak",
+        "where_found": "PDF Page 3 (p. 1136, Introduction) and PDF Pages 6-8 (pp. 1139-1141, Access to water)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Reports specific quantitative indicators with source attributions (e.g., NDPC 2010 urban coverage 86% to 93%; AVRL 2010 billed volumes and revenues; Kuma et al. 2010 Kumasi per-capita supply dropping from 66 to 39 litres/day; World Bank 2010 Accra Citizens' Report Card reliability and income-bracket connection shares; GSS 2007 quintile inside-pipe rates of 43% vs 18.5%; ~12x tanker price multiple; 9% and 15% household water expenditure shares). However, underlying primary measurement methods and data quality of heterogeneous secondary sources (including news items and operator webpages) are not critically appraised.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 6-8 (pp. 1139-1141, Access to water) and PDF Page 10 (p. 1143, Note 2)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Draws causal conclusions attributing social harms and deep-access failures to water privatisation/commercialisation (e.g., p. 1141 on social consequences resulting from privatisation; p. 1142 on private-sector failure), despite acknowledging on p. 1142 that counterfactual validity is difficult to ascertain. Uses descriptive historical narrative and cross-sectional or descriptive time-trend secondary statistics without a comparator or causal identification design.",
+        "rating": "weak",
+        "where_found": "PDF Pages 6-9 (pp. 1139-1142, Access to water; Lessons, implications, and concluding remarks)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Notes pre-reform GWSC infrastructure deterioration and debt in the 1970s-1980s, rapid urban population growth, tourism and industrial demand, production inefficiencies, and bi-directional circular causation between neighbourhood and people poverty, but performs no empirical or analytical adjustment to separate these confounding pressures from the effects of PPP governance.",
+        "rating": "weak",
+        "where_found": "PDF Page 4 (p. 1137), PDF Page 6 (p. 1139), and PDF Pages 7-8 (pp. 1140-1141), Modern history of urban water provision in Ghana; Access to water"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides rich historical and political-economy contextualisation spanning post-1957 public monopoly (GWSC), 1983-1993 Economic Recovery Programme structural adjustment, donor pressures (World Bank, IMF, DFID, CIDA), civil society coalition resistance (NCAP, People's Dialogue, Ghana Homeless People's Federation), urban-rural administrative decoupling (GWCL vs CWSA/MLGRD), regulatory governance and information asymmetries among PURC, GWCL, and AVRL, and the 2011 transition to GUWCL.",
+        "rating": "strong",
+        "where_found": "PDF Pages 4-6 (pp. 1137-1139) and PDF Pages 9-10 (pp. 1142-1143), Modern history of urban water provision in Ghana; Lessons, implications, and concluding remarks"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While published reports and articles are cited in the bibliography, the absence of a documented search/selection protocol and reliance on several unpublished theses, conference papers, press conferences, and ephemeral web/news URLs (e.g., AVRL 2010, Bagbin 2010, Benson 2008, Essel 2010) limit independent replication of the evidence synthesis.",
+        "rating": "weak",
+        "where_found": "PDF Pages 6-13 (pp. 1139-1146, Access to water; References)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No primary qualitative, archival, or doctrinal coding scheme was conducted or reported in this secondary institutional case study.",
+        "rating": "not assessable",
+        "where_found": "Not reported in full text (PDF Pages 1-13, pp. 1135-1146)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Although the author's normative political-economy stance (advocating a human-right water-for-life framework and public-people partnerships over market extension) is explicit in the discussion, there is no methodological reflexivity statement examining how theoretical commitments influenced case framing, source selection, or interpretation of competing evidence.",
+        "rating": "weak",
+        "where_found": "PDF Pages 8-10 (pp. 1141-1143, Lessons, implications, and concluding remarks) and PDF Page 13 (p. 1146, The author)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study purpose and single-country institutional case study framing",
+        "page": "PDF Page 3 (p. 1136, Introduction)",
+        "quote": "The purpose of this paper is to study the Ghana case more closely"
+      },
+      {
+        "criterion": "Reliance on secondary historical narrative rather than primary archival/empirical design",
+        "page": "PDF Page 4 (p. 1137, Modern history of urban water provision in Ghana)",
+        "quote": "a panoramic view of the evolution in water management in Ghana from 1957 to date."
+      },
+      {
+        "criterion": "Documentation of shift from affermage to management contract (2005-2011)",
+        "page": "PDF Page 6 (p. 1139, Modern history of urban water provision in Ghana)",
+        "quote": "concessions, abandoned affermage, and opted for a management contract."
+      },
+      {
+        "criterion": "Conceptual distinction between wide coverage and multidimensional deep access outcomes",
+        "page": "PDF Page 6 (p. 1139, Access to water)",
+        "quote": "Beyond the “wide” meaning of “access to water”, there are also “deep” meanings of access"
+      },
+      {
+        "criterion": "Citation of PURC statutory mandate under Act 538, 1997",
+        "page": "PDF Page 9 (p. 1142, Lessons, implications, and concluding remarks)",
+        "quote": "The role of PURC, as captured in the Public Utilities Regulatory Commission Act, Act 538,"
+      },
+      {
+        "criterion": "Internal inconsistency referring to Ghana's implemented contract as affermage in concluding analysis",
+        "page": "PDF Page 9 (p. 1142, Lessons, implications, and concluding remarks)",
+        "quote": "was contracted on an affermage basis were mainly structural."
+      }
+    ],
+    "overall_narrative_summary": "Obeng-Odoom (2012) is a single-country political-economy and institutional-historical case study of urban water governance in Ghana (1957-2011) that synthesizes secondary histories, official statistics, scientific water-quality studies, and statutory/regulatory provisions without primary fieldwork, a comparator arm, or a systematic review search protocol. Appraised under the Legal Institutional Evidence Appraisal Framework (as a structured non-validated judgment rather than a numeric score), the paper demonstrates strong jurisdictional specificity (D2), strong conceptual outcome definition distinguishing MDG coverage (\"wide access\") from quality, reliability, affordability, and distributional equity (\"deep access\") (D4), and strong political-economy institutional contextualisation of GWSC/GWCL restructuring, donor conditionality, civil society contestation, CWSA decoupling, and PURC-GWCL-AVRL regulatory asymmetries (D10), alongside adequate PPP exposure classification (D3) and secondary metric reporting (D7). However, methodological rigour for empirical and causal inference is severely constrained by the absence of a documented literature search or source-selection protocol (D5, D6, D11), lack of counterfactual causal identification or confounding adjustment separating the 2005-2011 AVRL management contract from long-standing infrastructure deficits and rapid urban growth (D8, D9), absence of methodological reflexivity (D13), and weak legal/institutional citation precision on p. 1142—where the PURC statute is cited first as Act 538 (1997) and four sentences later as Act 578, and where AVRL's arrangement is repeatedly referred to as affermage despite p. 1139 documenting that affermage was abandoned in favour of a management contract (D1).",
+    "overall_rating": "Structured non-validated judgment: High methodological concern for causal/empirical inference (strong conceptual outcome framing, jurisdictional specificity, and institutional context; adequate exposure classification and secondary measurement reporting; weak legal citation precision, sampling/selection transparency, causal identification, confounding control, replication potential, and reflexivity; coding not assessable)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-country institutional and political-economy historical case study synthesizing secondary survey, water-quality, and statutory/regulatory sources (no primary empirical data collection or systematic literature search)",
+    "study_id": "S651",
+    "where_found_summary": "Case framing and aims on PDF Page 3 (p. 1136, Introduction); institutional and PPP history on PDF Pages 4-6 (pp. 1137-1139, Modern history of urban water provision in Ghana, including Table 1); secondary empirical synthesis on coverage, quality, reliability, cost, and equity on PDF Pages 6-8 (pp. 1139-1141, Access to water) and Note 2 on PDF Page 10 (p. 1143); statutory discussion of PURC (Act 538 / Act 578) and policy conclusions on PDF Pages 8-10 (pp. 1141-1143, Lessons, implications, and concluding remarks); bibliography and author note on PDF Pages 10-13 (pp. 1143-1146). No dedicated Methods section is present.",
+    "why_tool_chosen": "The paper explicitly frames itself as a single-country institutional-historical case study of urban water governance and access in Ghana (1957-2011), tracing public utility restructuring (GWSC to GWCL), PPP contract selection (AVRL 2005-2011 management contract), and statutory regulation (PURC Act 538, 1997) alongside secondary empirical evidence. It fits none of the six conventional empirical checklists: there is no randomization (RoB 2), no comparator arm or quasi-experimental design (single-case histories without a comparator cannot be assigned to ROBINS-I), no primary cross-sectional or cohort dataset analysed (JBI), no primary qualitative fieldwork/interviews (CASP/MMAT), and no systematic search protocol (AMSTAR 2 is prohibited for non-systematic narrative reviews). The Legal Institutional Evidence Appraisal Framework directly matches this institutional/legal-historical case study design while capturing its secondary-source selection, confounding, and statutory accuracy limitations."
+  }
+}
