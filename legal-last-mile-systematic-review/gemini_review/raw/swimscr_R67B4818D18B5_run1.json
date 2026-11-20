@@ -1,0 +1,282 @@
+{
+  "record_id": "R67B4818D18B5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "71ec7cb3a31753edbdf389eac546ff85d56dd7a1daf34f2dcc7cebd3d409963e",
+  "prompt_sha256": "20a019093c7d6ee19e2236bac2a87ea34299fdf21b786fc3d45bfa3a97d1e9ee",
+  "started_at": "2026-11-20T16:50:40.443374+00:00",
+  "completed_at": "2026-11-20T16:52:34.217237+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Bangladesh",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The study examines urban sprawl, land-cover change, and broad urban sustainability challenges in peri-urban Dhaka (1991-2019). Water and sanitation are mentioned only in brief, passing descriptive remarks alongside farmland loss, industrial pollution, solid waste, muddy roads, schools, and healthcare, rather than being substantively examined as household or community service access.",
+      "c2": "Under the plain wording of Criterion 2, the paper makes broad background references to a lack of urban development control regulations, poor application of land protection policies, and rural council areas recently declared municipalities, which touch loosely on macro-level urban planning governance in relation to sprawl, though no governance factor is empirically analysed in relation to water or sanitation access (so plain_criterion2_decision is also exclude). Under the narrow 2026-10-13 rule-type reading, Criterion 2 is clearly not met (no): the paper does not examine any rule-type mechanism directly governing water or sanitation service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership/regulatory structure), offering only unanalysed macro-governance and general land-use planning background.",
+      "c3": "Contains empirical evidence from remote-sensing supervised classification (KNN) and FRAGSTATS spatial metrics of Landsat imagery (1991, 2001, 2011, and 2019), supplemented by visual observation of >200 locations, photographic analysis, and 120 semi-structured interviews across 19 sprawled areas.",
+      "c4": "Empirically measured outcomes are land-cover class changes, landscape fragmentation/infill spatial metrics, and urban densification. No household or community water or sanitation service access outcome is systematically measured or analysed beyond passing narrative observations that sprawled settlements lack piped water coverage and drainage/sanitation.",
+      "c5": "While the remote-sensing spatial unit (1,134 sq km peri-urban Dhaka) and land-cover metrics are clear, the study does not provide an identifiable household/community sample, interviewee composition or sampling design for the 120 interviews, or an identifiable governance exposure and water/sanitation access outcome.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This article combines quantitative and qualitative methods to investigate sustainability concerns that have arisen because of irregular and rapid sprawling in Dhaka."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 9 (Methodology for Recognizing Sustainability of Sprawling)",
+        "quote": "Alongside with quantitative measures, this study also employed 120 semi-structured interviews, photographic analysis and visual observation of more than 200 locations of 19 sprawling areas to identify the physical and socio-economic forces determining and shaping different forms of urban sprawl in the city outskirts."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 16 (The Forces)",
+        "quote": "The sectoral approach of land use plan-making failed to provide an adequate regulatory mechanism to manage peri-urban growth because of the spontaneous and sporadic growth of industries outside the designated industrial zones, resulting spatial growth in all directions, most prominently along the significant transport spines."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 17 (Impacts)",
+        "quote": "This loss of water bodies also has limited their access to safe water as settlements in the sprawled areas are not well covered by piped water connections."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 20 (Unhealthy Built Environment Affecting Livability and Equity)",
+        "quote": "Initially being a part of rural councils, most of these industrial clusters and settlements have transformed without following any planning regulations."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 20 (Unhealthy Built Environment Affecting Livability and Equity)",
+        "quote": "With limited interventions and unplanned and spontaneous change, narrow, muddy and filthy inner roads impede everyday life and absence of drainage means sanitation is abysmal (Figure 11)."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Rapid, unplanned urban sprawl and peri-urban industrialization driven by economic opportunities, transport infrastructure, population growth/in-migration, low land costs, and weak land-use development control",
+    "outcome": "Land-cover change (1991-2019), spatial sprawl patterns (infill, fragmentation, ribbon, and leapfrog development; neighbourhood densification), and broad qualitative environmental and livability impacts in peri-urban Dhaka",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "1,134 sq km peri-urban outskirts of Dhaka (between Dhaka city boundary and old DMDP boundary), plus field observations at >200 locations and 120 semi-structured interviews across 19 sprawling areas (interviewee characteristics and sampling frame not reported)",
+    "rationale": "Excluded as E01 (Wrong topic). Full-text review shows this is an urban sprawl and remote-sensing land-cover transformation study of peri-urban Dhaka (1991-2019) rather than a study of household or community water or sanitation service access (c1=no, c4=no). Water and sanitation receive only passing, unmeasured descriptive mentions among broad urban livability and environmental degradation issues (loss of farmland and water bodies, air/noise pollution, solid waste, muddy roads). Furthermore, the paper examines no rule-type legal, administrative, regulatory, or governance mechanism governing water or sanitation service access under the 2026-10-13 Criterion 2 scope (c2=no), referencing only unanalysed macro-level land-use planning and development-control background; even under the plain wording of Criterion 2, the paper fails full-text eligibility because it neither analyses a governance factor in relation to water/sanitation access nor provides identifiable population, exposure, and outcome data for water/sanitation service access (c5=no).",
+    "record_id": "R67B4818D18B5",
+    "study_design": "Mixed-methods urban land-cover and sprawl study combining multi-temporal Landsat remote-sensing classification (KNN) and spatial metrics (1991-2019) with field visual observation (>200 locations), photographic analysis, and 120 semi-structured interviews across 19 sprawled areas"
+  }
+}

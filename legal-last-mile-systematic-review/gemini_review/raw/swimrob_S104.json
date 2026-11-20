@@ -1,0 +1,278 @@
+{
+  "study_id": "S104",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "b32411b2b88afab02169ab66860bd4a13cb37dbdcd562937cc40a4e57f803346",
+  "prompt_sha256": "71d7debfa875f8df0e963c3024a4ea26a20205b555869505e0acacdf08dfe576",
+  "started_at": "2026-11-20T17:03:01.400168+00:00",
+  "completed_at": "2026-11-20T17:05:33.378544+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low concern (cross-sectional design with no longitudinal follow-up; item non-response and exclusions were minimal and transparently documented in Fig 2 and Table 1: 47 households in 2 clusters lacked GPS coordinates, 46 of 3,093 eligible urban piped-water households [1.5%] answered 'don't know' on water continuity, and 66 households missing home ownership were retained as a 'No information' category).",
+      "confounding": "Some concern (multilevel logistic regression adjusted for household covariates, interview season, cluster wealth, and provider fixed effects or regional GDP per capita, while retaining piped connection type as an a priori control; however, cross-sectional observational associations are vulnerable to residual confounding from unmeasured variables explicitly noted by the authors—such as household water storage tank ownership, 'voice', water collector gender, and blue water scarcity—and backward elimination at p = 0.05 was used for model selection).",
+      "legal_measurement_quality": "Some concern / adequate at macro-institutional level but coarse at local level (incorporates official annual performance indicators from Zambia's statutory regulator NWASCO alongside IBNET utility benchmarking across all 11 licensed commercial Water and Sewerage Companies, mapped to provider coverage areas; however, regulatory metrics rely on unverified utility self-reports, lack sub-provincial coverage shapefiles or intra-provider disaggregation, omit small-scale/informal/rural schemes, and do not capture statutory enforcement or tariff rules).",
+      "measurement_bias": "Some concern (household water availability relied on 2-week self-reported recall of outages lasting at least one full day, risking recall error, omission of sub-day outages, and missed daytime outages among absent respondents; provider and regulator metrics [hrs/day, LPCD, non-revenue water] lacked independent verification and clear operational definitions of service hours; urban DHS cluster coordinates were randomly displaced up to 2 km; and 2010 DHS urban/rural classifications conflicted with 2015 GHSL settlement layers).",
+      "outcome_measurement_quality": "Some concern (uses a standardized 2018 DHS-7 survey item capturing at least one full day of unavailable water from the main piped source in the prior fortnight, complemented descriptively by NWASCO/IBNET annual average hrs/day and LPCD against the WHO 50 LPCD benchmark; however, the binary recall outcome misses sub-24-hour intermittency, water pressure/safety, and longer-term household continuity, lacks physical sensor/meter validation, and is not directly commensurate with annual utility averages).",
+      "reporting_bias": "Some concern / no pre-analysis plan information (no pre-registered protocol or analysis plan is reported; backward elimination at p = 0.05 was paired with highlighting marginally significant p < 0.1 associations in the Abstract and text, and Table 1 contains a p-value reporting typo [p = 0.93 for Provider chi-square = 245.87, df = 10], though public datasets and supplementary replication code/tables are openly provided).",
+      "selection_bias": "Some concern (uses a nationally representative, stratified two-stage 2018 Zambia DHS sample for urban and peri-urban piped-water users with a clear exclusion flowchart [n = 3,047 across 177 clusters]; however, all rural clusters [8,117 households, including 16% of national piped-water users] were excluded because NWASCO/IBNET only cover urban commercial utilities, dated 2010 census urban/rural frames may have excluded newly urbanised peri-urban settlements, small-scale non-WSC providers are unrepresented in regulator data, and multilevel models were unweighted)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Were the criteria for inclusion in the sample clearly defined?",
+        "justification": "Both country-level eligibility criteria (systematic audit of 54 African Union member states for contemporaneous user, utility, and regulator water availability data amenable to spatial linkage) and household-level inclusion/exclusion criteria within the 2018 Zambia DHS (urban/peri-urban clusters with valid GPS coordinates, drinking piped water, and known fortnightly continuity response, yielding n = 3,047 households across 177 clusters) are explicitly defined and illustrated in flowcharts (Fig 1 and Fig 2).",
+        "rating": "Yes",
+        "where_found": "Materials and methods — Study country selection & Household inclusion criteria and data integration, [PDF Pages 3–7 of 26], Fig 1 & Fig 2"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Were the study subjects and the setting described in detail?",
+        "justification": "The geographical, hydrological, and institutional setting of urban and peri-urban Zambia (11 commercial Water and Sewerage Companies regulated by statutory body NWASCO, serving over six million people across 91 towns), the 2018 DHS sampling timeframe (July 2018–January 2019), and detailed socio-demographic, water connection, and neighbourhood characteristics of the 3,047 sampled households across 177 clusters are thoroughly reported.",
+        "rating": "Yes",
+        "where_found": "Materials and methods — Study site & Data sources and availability metrics, [PDF Page 5 of 26]; Results — Table 1 & Table 2, [PDF Pages 10–12 of 26]"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Was the exposure measured in a valid and reliable way?",
+        "justification": "While household socio-demographic covariates derive from standardized DHS questionnaires, key provider/regulator operational exposures (IBNET and NWASCO hrs/day, LPCD, and non-revenue water) rely on utility self-reports that lack independent verification and have unclear operational definitions of service hours. In addition, contextual exposures rely on indirect or temporally mismatched proxies, including 2015 provincial GDP per capita interpolated to provider areas (reflecting industry/head-office location rather than resident wealth), cluster maximum residency length as a proxy for infrastructure age/social cohesion, 2 km displaced DHS cluster coordinates, and inconsistent urban/rural definitions between the 2010 census frame and 2015 GHSL data.",
+        "rating": "Unclear",
+        "where_found": "Materials and methods — Data sources and availability metrics & Outcome and explanatory variables, [PDF Pages 5, 7–8 of 26]; Discussion — Limitations affecting Zambia study & Implications for international monitoring, [PDF Pages 18–19 of 26]"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Were objective, standard criteria used for measurement of the condition?",
+        "justification": "Standardized international survey and benchmarking definitions were applied (DHS-7 piped water source and fortnightly interruption criteria, NWASCO/IBNET utility indicators, and the WHO 50 LPCD benchmark), but classification of both urban piped-water eligibility and intermittent supply status relied on household self-reports, unverified utility reporting, and a 2010 census urban/rural classification that exhibited discrepancies with GHSL satellite settlement classifications rather than objective physical verification.",
+        "rating": "Unclear",
+        "where_found": "Materials and methods — Data sources and availability metrics & Household inclusion criteria and data integration, [PDF Pages 5–7 of 26]; Discussion — Limitations affecting Zambia study, [PDF Pages 17–18 of 26]"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Were confounding factors identified?",
+        "justification": "The authors explicitly identified potential confounding and contextual factors across three levels—household (type of piped connection, wealth index, interview month/season, native language as ethnicity proxy, household size, home ownership), neighbourhood cluster (degree of and change in urbanisation, neighbourhood wealth, maximum length of residency), and provider (GDP per capita, non-revenue water, LPCD/service hours)—and transparently noted unmeasured confounders (storage tank ownership, 'voice', collector gender, blue water scarcity) in the Discussion.",
+        "rating": "Yes",
+        "where_found": "Materials and methods — Outcome and explanatory variables, [PDF Pages 7–8 of 26]; Discussion — Limitations affecting Zambia study, [PDF Page 18 of 26]"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Were strategies to deal with confounding factors stated?",
+        "justification": "Multivariable adjustment strategies were explicitly stated and implemented via two-level logistic regression models accounting for household clustering, provider-level dummy fixed effects (Model 1) or provider-level covariates and interactions (Model 2), seasonal interview controls, multicollinearity screening between 2017 IBNET and 2018 NWASCO metrics, and forced retention of piped service type as an a priori control variable (though unmeasured confounders such as household storage tanks could not be adjusted for due to lack of DHS data).",
+        "rating": "Yes",
+        "where_found": "Materials and methods — Statistical analysis, [PDF Pages 8–9 of 26]; Results — Multi-level logistic regression, Table 4, [PDF Pages 14–15 of 26]"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Were the outcomes measured in a valid and reliable way?",
+        "justification": "The primary outcome ('user reported availability of piped water', defined as reporting at least one full day without water from the main source in the preceding two weeks) uses a standardized DHS-7 question, but no physical flow/sensor validation was conducted and the authors note susceptibility to 2-week recall bias, inability to capture sub-24-hour outages or longer-term intermittency, and missed daytime outages among respondents away from home.",
+        "rating": "Unclear",
+        "where_found": "Materials and methods — Data sources and availability metrics & Outcome and explanatory variables, [PDF Pages 5, 7 of 26]; Discussion — Limitations affecting Zambia study, [PDF Pages 17–18 of 26]"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Was appropriate statistical analysis used?",
+        "justification": "Descriptive and bivariate analyses incorporated DHS sampling weights and complex survey design, clustering was formally evaluated via variance-components models, multicollinearity between regulator and utility metrics was addressed, and two-level random-intercept logistic regression with provider dummy variables (appropriate given only 11 PCAs) was used. Caveats include omitting survey weights in multilevel models (due to unavailable cluster-level DHS weights), relying on backward elimination at p = 0.05 while interpreting p < 0.1 coefficients in text, and a typographical p-value error for Provider in Table 1 (chi-square = 245.87, df = 10 reported as p = 0.93).",
+        "rating": "Yes",
+        "where_found": "Materials and methods — Statistical analysis, [PDF Pages 8–9 of 26]; Results — Table 1, Table 2 & Table 4, [PDF Pages 11–12, 14–15 of 26]"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Exclusion of rural population and scope of statutory regulator data (Q1 / Selection bias)",
+        "page": "[PDF Page 6 of 26], Materials and methods — Household inclusion criteria and data integration",
+        "quote": "regulator data from NWASCO do not cover rural areas [43]."
+      },
+      {
+        "criterion": "Covariate selection via backward elimination and retention of control variable (Q6 / Q8 / Confounding)",
+        "page": "[PDF Page 9 of 26], Materials and methods — Statistical analysis",
+        "quote": "with a significance threshold of p = 0.05 was used for both models and type of piped service"
+      },
+      {
+        "criterion": "Omission of sampling weights in multilevel regression models (Q8 / Selection bias)",
+        "page": "[PDF Page 9 of 26], Materials and methods — Statistical analysis",
+        "quote": "Survey weights were not used in the multilevel models, since the DHS only make weights"
+      },
+      {
+        "criterion": "Outcome measurement error from unobserved short-duration outages and recall (Q7 / Measurement bias)",
+        "page": "[PDF Page 18 of 26], Discussion — Limitations affecting Zambia study",
+        "quote": "spend more time away from their homes may be unaware of short duration outages."
+      },
+      {
+        "criterion": "Spatial and definitional mismatches across datasets (Q3 / Q4 / Selection & Measurement bias)",
+        "page": "[PDF Page 18 of 26], Discussion — Limitations affecting Zambia study",
+        "quote": "Between datasets, definitional differences existed in the classification of urban/rural areas"
+      },
+      {
+        "criterion": "Ambiguity in utility/regulator service-hour operational definitions (Q3 / Legal & Measurement quality)",
+        "page": "[PDF Page 19 of 26], Discussion — Implications for international monitoring",
+        "quote": "Definitions of provider-reported average service hours requires further clarity."
+      }
+    ],
+    "overall_narrative_summary": "Overall methodological judgment: Some concern (JBI Analytical Cross-Sectional Studies checklist: 5 'Yes' [Q1, Q2, Q5, Q6, Q8], 3 'Unclear' [Q3, Q4, Q7], 0 'No'). Thomas-Possee et al. (2024) present a well-documented cross-sectional spatial linkage of nationally representative 2018 Zambia Demographic and Health Survey urban/peri-urban piped-water households (n = 3,047 in 177 clusters) with 2017 IBNET utility data and 2018 NWASCO statutory regulator data across all 11 commercial Water and Sewerage Companies. Strengths include transparent multi-stage country and household eligibility flowcharts, low item missingness, explicit identification of multi-scale confounders, multicollinearity diagnostics, and two-level logistic regression accounting for cluster random effects and provider fixed effects, alongside open data and code links. Methodological concerns center on measurement and selection limitations inherent to the secondary data sources: household intermittency relies on unvalidated 2-week recall of full-day outages (missing sub-24-hour outages and daytime outages when respondents are away); utility and regulator performance metrics rely on unverified provider self-reports with unclear operational definitions of service hours; rural piped-water users (16% of national piped users) and small-scale non-commercial schemes are excluded, compounded by mismatches between the 2010 DHS urban/rural sampling frame and 2015 GHSL settlement data; key coping confounders such as household storage tanks were unmeasured; and multilevel models omitted survey weights and used backward elimination (p = 0.05) while highlighting marginally significant (p < 0.1) associations.",
+    "overall_rating": "Some concern",
+    "paper_read": "full text",
+    "study_design_identified": "Analytical cross-sectional study (spatial integration and two-level multilevel logistic regression of 2018 Zambia Demographic and Health Survey urban/peri-urban household data [n = 3,047 across 177 clusters] linked to 2017 IBNET water utility and 2018 NWASCO statutory regulator performance data across 11 commercial Water and Sewerage Companies)",
+    "study_id": "S104",
+    "where_found_summary": "Abstract & Data Availability Statement ([PDF Pages 1–2 of 26]); Materials and methods — Study country selection, Study site, Data sources and availability metrics, Household inclusion criteria and data integration, Outcome and explanatory variables, Statistical analysis ([PDF Pages 3–9 of 26], Fig 1 & Fig 2); Results — Bivariate analysis, Inequalities, and Multi-level logistic regression ([PDF Pages 9–16 of 26], Tables 1–4); Discussion — Limitations affecting Zambia study, Barriers to methodological transferability, and Implications for international monitoring ([PDF Pages 17–19 of 26]).",
+    "why_tool_chosen": "The empirical design in the Methods section is a quantitative observational cross-sectional analysis of secondary household survey data spatially linked to contemporaneous utility and statutory regulator indicators to estimate socioeconomic, neighbourhood, and provider risk factors for piped water intermittency. There is no randomized assignment and no quasi-experimental intervention or policy comparator over time (ruling out RoB 2, ROBINS-I, and JBI Cohort), no qualitative component (ruling out CASP and MMAT), and it is a primary quantitative analysis rather than a systematic review (ruling out AMSTAR 2); therefore, the JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies is the exact matching instrument."
+  }
+}

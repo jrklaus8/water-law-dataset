@@ -1,0 +1,121 @@
+{
+  "study_id": "S384",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f940ae2d3bffb1ff795337e2cadecb5acd6b8d02740d9914c6077f91f3c2cf90",
+  "prompt_sha256": "3196e7535e8b0261f815bfe134179716e5b14dd4e3dd43726b173315d3ffac62",
+  "started_at": "2026-11-20T17:14:06.812123+00:00",
+  "completed_at": "2026-11-20T17:16:54.369587+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (p. 889)",
+        "quote": "Article history: Received 20 March 2025, Reviewed 23 May 2025, Accepted for publication 02 June 2025"
+      },
+      {
+        "page": "PDF p. 1 (p. 889)",
+        "quote": "Key determinants include lack of toilet access (β = 0.52, p < 0.001), high construction costs (β = 0.41, p < 0.001), weak sanitation law enforcement"
+      },
+      {
+        "page": "PDF p. 14 (p. 902)",
+        "quote": "to be a key factor (β = 0.47, p = 0.002) in sustaining open"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Table 7 regression on open defecation (N = 500, PDF p. 13 / journal p. 901; no SE, 95% CI, t-stat, R2, or model form printed): Poor enforcement of sanitation laws β = 0.47 (p = 0.002); Lack of toilets β = 0.52 (p < 0.001); High cost of construction β = 0.41 (p < 0.001); Cultural beliefs β = 0.34 (p = 0.012); Low income β = 0.29 (p = 0.045). PCA diagnostics (PDF p. 5 / journal p. 893): KMO = 0.78, Bartlett's test p < 0.001.",
+    "publication_year_note": "Volume 25, Issue 2 – June, 2025 printed in page headers and citation block ('The Nigerian Health Journal 2025; 25(2): 889 – 906'); Article history: Received 20 March 2025, Reviewed 23 May 2025, Accepted for publication 02 June 2025 (PDF p. 1 / journal p. 889).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The paper reports inferential statistics (PCA with Bartlett's test p < 0.001 and a Table 7 regression model on N = 500 survey respondents across six South-West Nigerian states), including a coefficient for 'Poor enforcement of sanitation laws' (β = 0.47, p = 0.002) predicting open defecation. However, the tested exposure-outcome pair fails narrow Criterion 2, Criterion 4, and directional-contrast requirements for SWiM synthesis: (1) Criterion 2 failure — data come solely from a 20-item cross-sectional respondent perception questionnaire ('perceptions of government policies', p. 893) with no institutional, statutory, or geographic measure of actual sanitation-law enforcement; indeed, 'Poor enforcement of sanitation laws' does not appear among the 14 survey variables listed in Table 4 (p. 897), leaving its operationalization and scale undefined; (2) Criterion 4 failure — Table 7 models self-reported behavioural open defecation while placing 'Lack of toilets' (β = 0.52, p < 0.001) on the predictor side rather than testing whether any legal, regulatory, or subsidy rule changes household/community toilet or sanitation service access (and policy-relevant items such as 'No government support' [20.0%, Table 11], willingness to pay [Table 12], and preference for toilet subsidies [41.3%, Table 13] are descriptive univariate percentages only); and (3) reporting/data-integrity red flags — Table 7 omits regression type, variable coding, SEs, and CIs; Table 5 is cited on p. 898 but omitted; Tables 1 and 8–12 display discrete-uniform category counts (e.g., 26.2% divorced, 25.2% single, 24.4% married, 24.2% widowed; spherical noise cloud in Fig. 9); Tables 2 and 13 print percentages impossible for integer denominators of N = 500 or state subsamples; and the first author's surname alternates between 'Ayanlola' and 'Ayanlowo'. (If treated as eligible despite these failures, the closest topical bucket would be Family C, regulatory enforcement, but under strict Criterion 2/4 auditing it is out of scope.)",
+    "study_id": "S384",
+    "verified_publication_year": "2025"
+  }
+}

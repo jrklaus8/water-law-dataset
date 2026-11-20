@@ -1,0 +1,108 @@
+{
+  "study_id": "S288",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "",
+  "prompt_sha256": "5ff4c9cd59cae580e33591ed3374f67da98f9add48a39226c55da27d80d9838c",
+  "started_at": "2026-11-20T17:10:44.918476+00:00",
+  "completed_at": "2026-11-20T17:11:01.807873+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [],
+    "paper_read": "not accessible",
+    "printed_headline_estimate": "none",
+    "publication_year_note": "Full text not accessible; publication year cannot be verified from source PDF/XML.",
+    "quant_verdict": "cannot_tell",
+    "rationale": "The paper full text is marked [FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF OR OA XML COULD BE RETRIEVED]. Under strict isolation rules, publication year, inferential quantitative eligibility and SWiM family cannot be determined without guessing.",
+    "study_id": "S288",
+    "verified_publication_year": "cannot_tell"
+  }
+}

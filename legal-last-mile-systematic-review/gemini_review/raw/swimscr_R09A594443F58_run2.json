@@ -1,0 +1,282 @@
+{
+  "record_id": "R09A594443F58",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "49947384503fcd916191ceb081267644386a1f654c24e97238157bf5fd37162b",
+  "prompt_sha256": "a012102064ad1954d41b614c7583146691e40b258133cb9c7d9cd9a3dc4bba9b",
+  "started_at": "2026-11-20T16:54:23.417212+00:00",
+  "completed_at": "2026-11-20T16:57:31.704610+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "United States",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines residential drinking water rate-setting politics across large US community water utilities (serving 40,000+ residents) as a test of redistributive pricing theory, rather than examining household or community access to water or sanitation services. Sewer pricing is explicitly excluded from the empirical analysis.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain wording of Criterion 2, this study passes (yes) because alongside local income inequality it examines institutional, regulatory, and ownership factors—specifically local government utility ownership (legislative rate-setting by municipal councils or special district boards) versus private investor-owned utility ownership regulated by state Public Utilities Commissions (PUCs) under cost-of-service rules. Under the narrow 2026-10-13 rule-type reading, Criterion 2 is not met (no): the primary independent variable of theoretical interest (service-area income inequality, measured as the mean-to-median income ratio) is a socioeconomic condition rather than a legal or administrative rule, and while utility ownership and PUC cost-of-service regulation are rule-type institutional structures in principle, here they are analyzed only as determinants/moderators of tariff-schedule progressivity (a policy-design output) rather than as mechanisms directly governing household service access. Even under the plain wording of Criterion 2, the study is still excluded overall because it fails Criteria 1 and 4 (no service-access or household affordability outcome).",
+      "c3": "Contains primary quantitative empirical evidence using an original 2019 cross-sectional dataset of residential water rate schedules for 1,189 US community water systems (N = 1,183 in OLS regressions with robust standard errors) matched to census-tract demographic/income data and NOAA drought data.",
+      "c4": "Fails Criterion 4 (E04 Wrong outcome): The sole dependent variable analyzed is the Unit Price Ratio (UPR), defined as the ratio of the average unit price per gallon at high discretionary monthly volumes (30,000 gallons, and 12,000 to 60,000 gallons) divided by the average unit price per gallon at 6,000 gallons. UPR measures the structural progressivity of a utility's tariff schedule (a policy/rate-design output), not household water service access, connection, availability, reliability, consumption quantity, disconnection/exclusion, or actual household water affordability (e.g., expenditure share of income or basic bill burden). The authors explicitly note they lack customer-level income and consumption microdata to model specific impacts on households, and note in Endnote 7 that utilities with regressive declining-block schedules actually have the lowest average unit prices.",
+      "c5": "Clearly identifies the unit of analysis and sample (1,189 US community water utilities serving >=40,000 people; N = 1,183 in contiguous-US OLS models), exposures (mean-to-median income ratio, private investor-owned vs. local government ownership, and their interaction), outcome (Unit Price Ratio of residential water tariffs), and cross-sectional observational study design.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 23",
+        "quote": "Analysis of pricing in US water utilities affirms that local income inequality correlates with the progressivity of water prices for local government utilities in ways that are consistent with the political logic of redistributive policy."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 23",
+        "quote": "Broadly, however, water pricing in the United States follows one of two rate-setting processes, depending on whether a utility is government-owned or investor-owned. Under either government or investor ownership, final price schedules are matters of public policy."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 23",
+        "quote": "Investor-owned utilities must set prices according to the cost of service principle, which limits prices to the actual cost of providing service, plus a fixed return on the utility's capital investment."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10 of 23",
+        "quote": "Our sample consists of the 1189 utilities that serve at least 40,000 residents according to SDWIS. 134 of these utilities are investor-owned, with prices set by state PUCs; the remaining 1055 utilities are owned and operated by local governments that set their own prices."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 23",
+        "quote": "An ideal measure of progressivity for purposes of understanding the redistributive effects of utility rates would employ customer-level data on income and water use for each utility, which would allow us to model specific redistributive impacts of various rate structures on specific customers at specific incomes. No such data are currently available for a significant number of utilities."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 23",
+        "quote": "In the absence of such microdata, the dependent variable in the present analysis is the progressivity of water prices, which we measure as the ratio of the average unit price of water at basic consumption levels to the average unit price of water at high volumes."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Local income inequality (service-area mean-to-median household income ratio, and Gini coefficient in robustness checks), utility ownership/regulatory structure (private investor-owned regulated by state Public Utilities Commissions vs. local government-owned), and their interaction",
+    "outcome": "Progressivity of residential drinking water rate structures, measured by the Unit Price Ratio (UPR): ratio of the average total price per gallon at high monthly volumes (30,000 gallons/month in main models, and 12,000 to 60,000 gallons/month in 6,000-gallon increments) divided by the average total price per gallon at 6,000 gallons/month",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "US community drinking water utilities serving at least 40,000 residents from EPA SDWIS (1,189 sampled utilities—1,055 local government-owned and 134 investor-owned—with N = 1,183 utilities in contiguous-US regression analyses, serving ~58% of US water utility customers)",
+    "rationale": "Excluded under E04 (Wrong outcome). This cross-sectional empirical political-economy study tests Cukierman and Meltzer's redistributive taxation model on 2019 residential water pricing across 1,183 large US community water utilities. Although it examines public versus PUC-regulated investor-owned utility ownership alongside local income inequality and motivates progressive rate design via affordability concerns, its sole empirical outcome is the Unit Price Ratio (ratio of unit water price at 30,000 gallons/month—or 12,000 to 60,000 gallons/month—to unit price at 6,000 gallons/month). That dependent variable measures tariff-schedule progressivity (a policy/rate-design output) rather than household water service access, connection, availability, reliability, consumption quantity, disconnection/exclusion, or actual household water affordability. Consequently, it fails Criteria 4 and 1 (and fails the narrow 2026-10-13 Criterion 2 requirement of a rule-type mechanism directly governing service access, though it would also be excluded under the plain Criterion 2 reading due to lacking an eligible access/affordability outcome).",
+    "record_id": "R09A594443F58",
+    "study_design": "Cross-sectional observational quantitative study (OLS regression models with robust standard errors at the utility level)"
+  }
+}
