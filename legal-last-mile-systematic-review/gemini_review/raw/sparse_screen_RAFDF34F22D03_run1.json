@@ -1,0 +1,281 @@
+{
+  "record_id": "RAFDF34F22D03",
+  "study_id": "S158",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "c51b66c9bc166e02c7421b678fcf27eee1945b55bb2876a29e683d725eb994c6",
+  "input_text_sha256": "3262a3869859f2f2b3bd91255d95c7f625f1250dc2307f51c770b9b9943d7eb9",
+  "prompt_sha256": "c033e9cbaa95ffefe9d5c1449ec3dfafed670a9cb866274ea8a3852553c47f33",
+  "started_at": "2026-11-20T02:48:44.742539+00:00",
+  "completed_at": "2026-11-20T02:53:25.357935+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RAFDF34F22D03\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RAFDF34F22D03\n- Title: Business-As-usual and fantasy planning ? an analysis of equity within climate adaptation planning for sanitation in Nairobi\n- Authors: Hyde-Smith L.K.; Ddiba D.; Dickin S.; Kiogora D.; Mdee A.L.; Reinfelder V.; Roel\n- Year: 2025\n- DOI: 10.1371/journal.pone.0339272\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 3262a3869859f2f2b3bd91255d95c7f625f1250dc2307f51c770b9b9943d7eb9) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=107803, sha256=3262a3869859f2f2b3bd91255d95c7f625f1250dc2307f51c770b9b9943d7eb9]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community urban sanitation service access and distributive inequalities across eight socio-technical sanitation regimes in Nairobi (sewered household toilets, sewered shared toilets, emptied onsite tanks, container-based shared toilets, unemptied/unsafely managed household and shared toilets, public toilets, and coping/open defecation).",
+      "c2": "Plain wording: Yes — conducts a deductive NVivo review of national and county constitutional, statutory, regulatory, planning, and investment frameworks governing Nairobi's sanitation sector and climate adaptation. Narrow 2026-10-13 rule-type reading: Borderline yes — although the overarching framing centres on climate adaptation mainstreaming and master-plan sewerage capital investment ('fantasy planning' vs 'business-as-usual'), the empirical policy/legal analysis directly examines rule-type mechanisms governing service access, including utility regulatory structure and statutory service mandates (Water Act, CIDP, NIUPLAN, and NCWSC's sewerage-only mandate excluding non-sewered regimes from public provision; WASREB excluding its Pro-poor Service Assessment from core utility performance ranking metrics), tariff/levy and cost-recovery rules (WASREB's unimplemented sanitation levy guidelines, cost-recovery/commercialisation incentives deterring low-income and non-sewered service, and lack of public subsidy contracts for container-based sanitation), and regulatory accommodation in urban planning (suspension of conventional planning regulations in the Mukuru Special Planning Area).",
+      "c3": "Mixed-methods empirical case study combining geospatial mapping and WorldPop 100x100m gridded population analysis (2022 baseline and 2030 ArcGIS time-series spatial forecast) with deductive qualitative content coding (NVivo) of primary national and county laws, regulatory guidelines, strategic plans, and donor/government budgets, validated with sector stakeholders.",
+      "c4": "Reports current (2022) and projected (2030) spatial and population access/exclusion across sanitation service regimes in Nairobi (4.56M residents in 2022, with <1/3 in adequate household regimes, ~40% in unsafe/inadequate regimes, and stagnant 50% sewer coverage; 6.13M projected in 2030 with rising numbers in inadequate/coping regimes), plus climate-hazard disruption to toilet and sewer access.",
+      "c5": "Population and units of analysis (Nairobi City County residents across spatial sub-areas/100m grid cells and eight sanitation regimes; national and county legal/planning instruments), exposure (sewer-centric statutory, regulatory, cost-recovery, and planning/investment frameworks and climate adaptation policies), outcome (population and spatial distribution across sanitation access regimes in 2022 and 2030), and study design (mixed-methods geospatial + deductive qualitative document analysis case study) are clearly identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 9",
+        "quote": "Our estimates show that less than a third of the population in Nairobi is provided with a ‘good’ sanitation service from an individual and neighbourhood perspective (as constituted by the HT/RT or HT/SEWER regimes)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 15",
+        "quote": "predominantly overlooks non-sewered sanitation service regimes. This omission effectively excludes populations for whom a connection to the sewer system is not attainable in the near future"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 15",
+        "quote": "In 2018, the national water sector regulator WASREB introduced a ‘Pro-poor’ Service Assessment in the annual utility reporting"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 16",
+        "quote": "In the absence of structured public finance for adequate sanitation service provision outside the sewered sanitation service regimes, the strong focus on cost-recovery conflicts with the public health benefits of adequate sanitation and has been identified as a major hindrance in promoting citywide sanitation"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "To estimate the number of people served by each type of sanitation system, we overlaid the shapefiles with updated gridded population data for 2022"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "To gauge the current trajectory of climate adaptation and sanitation, we conducted a comprehensive document review of relevant (national and county-level) laws, policies, strategies, and planning documents that are likely to shape future"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 19",
+        "quote": "Still, our spatial analysis and policy review support the plausibility that by 2030, more Nairobi residents will rely on sanitation services that neither provide a good service from the individual perspective nor protect public health within the direct proximity nor are resilient to climate change impacts, particularly urban flooding (Table 5)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "National and county sanitation and climate-adaptation legal, regulatory, planning, and public-finance frameworks in Nairobi (including statutory/utility sewerage-only mandates under the Water Act, CIDP, NIUPLAN, and NCWSC Strategic Plan excluding non-sewered sanitation; WASREB pro-poor regulatory reporting and unimplemented sanitation levy guidelines; cost-recovery/commercialisation orientation; and Mukuru Special Planning Area planning-rule accommodation).",
+    "outcome": "Spatial and population distribution of household and community access to eight sanitation service regimes across Nairobi in 2022 and projected to 2030 (including sewered household/shared connections, emptied tanks, container-based sanitation, unsafely managed onsite toilets, public toilets, and coping/lack of toilet access, alongside citywide sewer coverage and climate-related loss of access).",
+    "paper_read": "full text",
+    "population_and_sample": "Urban population of Nairobi City County, Kenya (approx. 4,560,000 residents in 2022 baseline and 6,130,000 projected in 2030 across 100x100m WorldPop grid cells and residential land-use sub-areas), alongside reviewed national and county sanitation and climate legal, regulatory, planning, and investment documents.",
+    "rationale": "This mixed-methods empirical study maps sanitation service access and exclusion across Nairobi (2022 baseline and 2030 projection) and uses deductive NVivo coding to evaluate national and county legal, regulatory, planning, and investment frameworks. While its overarching framing focuses on climate adaptation planning and infrastructure investment ('fantasy planning' vs 'business-as-usual' sewerage expansion), its qualitative socio-legal and policy analysis directly examines rule-type mechanisms under Criterion 2—including statutory and utility mandates excluding non-sewered sanitation regimes from public provision, WASREB regulatory ranking and sanitation levy rules, cost-recovery/commercialisation barriers to serving low-income unsewered areas, and planning-rule accommodation in the Mukuru Special Planning Area—and links this sewer-centric governance trajectory to citywide sanitation access and exclusion outcomes. Per protocol safeguards, mechanism-relevant qualitative/mixed-methods socio-legal studies are included even without a household-level econometric effect estimate; confidence is set to medium given the borderline macro-planning framing.",
+    "record_id": "RAFDF34F22D03",
+    "study_design": "Mixed-methods empirical case study combining geospatial and gridded population raster analysis (2022 baseline mapping and 2030 time-series spatial forecasting) with deductive qualitative policy/legal document content analysis (NVivo) and stakeholder validation."
+  }
+}

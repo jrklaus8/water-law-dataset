@@ -1,0 +1,271 @@
+{
+  "record_id": "R3CA682AC9215",
+  "study_id": "S151",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9889f5001d17d2069b90c6dcae25d82529bbe68b9bf2423f07507522013c2f6f",
+  "input_text_sha256": "297c1e25d3b9d442dcea3c9aaf0220aa13297c4fa2a629b8d0c5c575dd0339c8",
+  "prompt_sha256": "7094cc3b5cd4de3c2196075ca3590ee56dbb5227778d248ad89b9500594bef73",
+  "started_at": "2026-11-20T03:38:21.815464+00:00",
+  "completed_at": "2026-11-20T03:40:26.755165+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R3CA682AC9215\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R3CA682AC9215\n- Title: No One Left Behind? Barriers to Urban Inclusion for Harijan Communities in Bangladesh under SDG 2030\n- Authors: Chandra B.; Jain P.; Parasar A.\n- Year: 2026\n- DOI: 10.1007/s42413-026-00301-7\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 297c1e25d3b9d442dcea3c9aaf0220aa13297c4fa2a629b8d0c5c575dd0339c8) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=40595, sha256=297c1e25d3b9d442dcea3c9aaf0220aa13297c4fa2a629b8d0c5c575dd0339c8]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Bangladesh",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Yes. Although most mentions of 'sanitation' in the paper refer to municipal sanitation labor (sweeping/cleaning jobs), the paper also examines household water and sanitation service conditions in Ganakatuli Sweeper Colony, reporting household piped/clean water access (35% vs. 85% national average) and shared sanitation facilities (85% living in crowded one-room dwellings with shared sanitation facilities).",
+      "c2": "No. Under the plain wording of Criterion 2, the paper broadly discusses institutional, legal, and governance themes—specifically constitutional equality gaps under Articles 27 and 28, general neglect of Harijan colonies in urban planning (unfulfilled 2018 housing rehabilitation promises and ignored requests for a boundary wall), circumvention of an 80% Harijan quota in municipal sanitation employment, and municipal payroll deductions for generic utilities without issuing official utility bills in residents' names. However, even under the plain reading, those institutional mechanisms are analyzed in relation to sanitation employment, housing/security, school enrollment, and passport police verification rather than household water or sanitation service access. Under the narrow 2026-10-13 clarification (requiring a rule-type mechanism—eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership/regulatory structure—directly governing water or sanitation service access, rather than generic project delivery or unanalysed macro-governance background), Criterion 2 is clearly not met: the 35% piped water access rate and 85% shared sanitation rate are presented solely as descriptive colony-level SDG living-condition deficits attributed to broad caste marginalization and unanalysed macro-governance/urban-planning neglect, while the municipal payroll utility-deduction practice (not issuing individual utility bills) is analyzed only as creating a documentation barrier to passport verification, not as governing water or sanitation access.",
+      "c3": "Yes. Contains primary empirical evidence from a six-month mixed-methods field study (March–August 2023) in Ganakatuli Sweeper Colony, Dhaka, combining structured household surveys, in-depth interviews (n=30), focus group discussions, and participant observation.",
+      "c4": "Yes. Reports descriptive colony-level access outcomes: 35% of households have piped/clean water access (a 50 percentage-point deficit compared to the 85% national average) and 85% live in one-room dwellings with shared sanitation facilities.",
+      "c5": "Yes. The study identifies the population and unit of analysis (households and residents in Ganakatuli Sweeper Colony, Dhaka), broad exposure (caste/religious status and socio-spatial institutional neglect of a sweeper colony), descriptive outcomes (including piped water access and shared sanitation alongside income, literacy, housing space, and employment), and a mixed-methods case-study design. Note internal reporting inconsistencies in sample counts (text states n=150 household surveys and 3 or 5 FGDs, whereas Tables 1–2 report n=1,494 households / 8,867 individuals) and that piped water access (35%) is reported only as a single colony-wide figure without linkage to any water-specific legal or administrative rule.",
+      "c6": "Yes. Full text is in English (note: retrieved PDF is the 2025 Research Square preprint version, DOI 10.21203/rs.3.rs-6596476/v1, matching the record title and core authors)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 15",
+        "quote": "In the study, findings show that only 35% of Harijan households have access to clean water, while 85% live in crowded one-room dwellings with shared sanitation facilities, with rooms measuring 10 x 10 feet."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 15",
+        "quote": "The research findings reveal three interconnected barriers to inclusion: (i) institutionalized job discrimination (based on temporary wages) in the municipal/corporation sanitation sector, (ii) the deliberate neglect of Harijan settlements in urban planning, which is evident in the research, and (iii) social exclusion that perpetuates poverty across generations."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 15",
+        "quote": "Although the city corporation deducts payments for utilities from worker salaries directly, residents were never issued official utility bills in their names. As a result there is little documentation, which makes it difficult to go through formal processes, such as applying for a passport, as police verification often requires proof of being a utility holder."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 15",
+        "quote": "Based on a six-month mixed-methods field study (March-August 2023), the study included household surveys (n=150), in-depth interviews (n=30), focus group discussions, participant observation and case study to reveal patterns of exclusion related to housing, water access, employment, and education."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 15",
+        "quote": "Water access remains inadequate. Only 35% of households have piped water access, compared to the national average of 85%"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Caste-based socio-spatial marginalization, occupational discrimination in municipal sanitation employment, and general institutional/urban-planning neglect (no rule-type mechanism governing water or sanitation service access)",
+    "outcome": "Descriptive colony-level household piped water access (35% vs. 85% national average; 50% water access deficit) and shared sanitation facilities (85% living in one-room dwellings with shared sanitation), alongside income, literacy, school dropout, housing space, and sanitation-sector employment",
+    "paper_read": "full text",
+    "population_and_sample": "Households and residents (Hindu Harijans and Muslim Cleaners) in Ganakatuli Sweeper Colony, Dhaka, Bangladesh; text reports n=150 household surveys, n=30 in-depth interviews, and 3 (or 5) focus group discussions, while Tables 1-2 report n=1,494 households (8,867 individuals)",
+    "rationale": "Excluded under E03 (Wrong exposure). The retrieved full text (the Research Square preprint of the matching paper) empirically documents living and working conditions in Ganakatuli Sweeper Colony in Dhaka, including descriptive statistics that 35% of households have piped/clean water access and 85% share sanitation facilities. However, it fails Criterion 2 under the 2026-10-13 clarification because it does not examine any rule-type legal, administrative, regulatory, eligibility, tenure, or tariff mechanism directly governing household or community water or sanitation service access. Most analysis of 'sanitation' concerns employment discrimination and quota circumvention in municipal sweeper jobs; water and sanitation access deficits are treated solely as descriptive SDG indicators reflecting broad caste marginalization and unanalysed macro-governance/urban-planning neglect, while the lack of individual utility bills (despite municipal salary deductions) is examined only as a documentation barrier to passport police verification rather than a mechanism governing water or sanitation service access.",
+    "record_id": "R3CA682AC9215",
+    "study_design": "Mixed-methods cross-sectional case study (household survey, in-depth interviews, focus group discussions, and participant observation)"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "record_id": "RFBA8D18DE6E5",
+  "study_id": "S112",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "b5a64b8e680ee0894477e5783306b5b758f530d36c315c804df3ba251eed41cf",
+  "input_text_sha256": "43c86cf25be1f62cab9275fcbd94d89b5fbd859fc140f147583c2ffd27378c72",
+  "prompt_sha256": "7ba2536d59e85e60cea993b712d7af4880ab25ff93362624cfc5aedddecedcd3",
+  "started_at": "2026-11-20T03:41:34.418982+00:00",
+  "completed_at": "2026-11-20T03:43:19.868966+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RFBA8D18DE6E5\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RFBA8D18DE6E5\n- Title: ¿Agua que no has de beber? Acceso al agua potable e intermediarios en asentamientos informales del Conurbano Bonaerense (1983-2015)\n- Authors: Patricio Bruno Besana; Soledad Fernández Bouzo\n- Year: 2020\n- DOI: 10.15446/rcdg.v29n1.72621\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 43c86cf25be1f62cab9275fcbd94d89b5fbd859fc140f147583c2ffd27378c72) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=88376, sha256=43c86cf25be1f62cab9275fcbd94d89b5fbd859fc140f147583c2ffd27378c72]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Argentina",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and settlement-level access to piped drinking water networks (servicio de agua potable de red) in informal settlements (asentamientos informales) of the Conurbano Bonaerense in the Buenos Aires Metropolitan Region (RMBA), Argentina (1983-2015).",
+      "c2": "Satisfies Criterion 2 under BOTH the plain wording and the narrow 2026-10-13 rule-type reading. Plain wording: examines institutional, regulatory, administrative, and governance factors shaping piped water access in informal settlements. Narrow 2026-10-13 rule-type reading: directly analyzes rule-type mechanisms governing service access, including (1) utility ownership and regulatory structure across public OSN (1983-1993), private concession AASA with regulator ETOSS (1993-2006, including universal-coverage concession rules, tariff/ability-to-pay segmentation, and the 1997-1999 renegotiated Mecanismo Participativo de Gestión), and re-nationalized public AySA (2006-2015); (2) differentiated institutional routing and administrative/co-production burdens imposed on informal settlements vs. formal neighborhoods (requiring informal-settlement residents to supply trenching/installation labor or form 16-member workfare cooperatives under Pro-agua, MPG, and Agua + Trabajo rather than receiving full utility-executed connections); (3) municipal and broker discretion in selecting neighborhoods and contracting cooperatives; and (4) informal land tenure and municipal cadastral non-legalization barriers (impeding individual utility billing and leaving unlegalized settlements mapped as river in municipal cadastres).",
+      "c3": "Empirical qualitative socio-legal and political-ethnographic study combining ethnographic fieldwork in the Santa María informal settlement (2011-2015), semi-structured interviews with utility and regulatory officials, local political brokers, cooperative members, and residents (conducted 2011-2017), analysis of public/program documents, and descriptive coverage statistics. Per protocol rules, qualitative empirical studies are fully eligible for systematic review inclusion and mechanism synthesis.",
+      "c4": "Reports concrete water access and service-quality outcomes at regional/program and settlement levels: formal piped-water coverage disparities (approx. 78% served in RMBA vs. 12% formal connections in informal settlements; 99 completed Agua + Trabajo modules installing 408 km of network for an estimated 165,294 residents vs. 484 unfinished modules and >3,300,000 residents incorporated in formal neighborhoods) as well as settlement-level network extension, pipe breakages, service interruptions/cutoffs, low water pressure, and contamination in Santa María.",
+      "c5": "Population and unit of analysis (informal-settlement residents/households and informal settlements in the Conurbano Bonaerense, RMBA, Argentina, with an in-depth settlement-level case study of Santa María), exposure (utility ownership/regulatory regimes and differentiated co-production, cooperative-contracting, tenure/cadastral, and political-intermediation rules governing network extension), outcome (piped water connection/extension, coverage, continuity, pressure, and reliability), and study design (ethnographic case study with semi-structured interviews, document analysis, and descriptive statistics) are all clearly identifiable.",
+      "c6": "Full text is in Spanish (with Spanish, English, and Portuguese abstracts). Under Criterion 10, studies in other languages are eligible when translation is feasible and the study is potentially important; translation from the complete 19-page Spanish PDF text is directly feasible, and the translation method and translator should be logged in the extraction record's extraction_note."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 5 of 19",
+        "quote": "En suma, este trabajo analiza las formas en que acceden al agua potable de red quienes residen en asentamientos informales del Conurbano Bonaerense desde el retorno de la democracia (1983) hasta 2015."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 19",
+        "quote": "Varios factores conspiran contra la prestación de dichos servicios en asentamientos de la periferia: 1) el carácter informal de la tenencia de la tierra —que hace más difícil que quienes residen allí reciban la factura de un servicio a su nombre—"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 19",
+        "quote": "en los barrios formales las obras ingresaban a los municipios por medio de las direcciones de obras públicas y en los asentamientos lo hacían mediante las direcciones de desarrollo social (Catenazzi 2009)."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5 of 19",
+        "quote": "entrevistas semiestructuradas a funcionarios públicos e informantes clave, análisis de documentos públicos y de estadística descriptiva, entre otros"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 of 19",
+        "quote": "Efectivamente, según los datos que aporta la página web de aysa, hacia fines de 2015 solo 99 módulos del a+t habían sido finalizados, esto equivale a 408 kilómetros de redes instaladas que brindan el servicio a un estimado de 165.294 personas (aysa 2017)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 15 of 19",
+        "quote": "Al día de hoy, las conexiones de agua en Santa María siguen sufriendo numerosas dificultades y los cortes de agua o la baja presión son problemas frecuentes."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Utility ownership and regulatory regimes (public OSN, privatized concession AASA with regulator ETOSS, and re-nationalized public AySA) and differentiated institutional rules governing piped-water extension in unlegalized informal settlements (informal tenure/cadastral non-legalization, routing through social programs Pro-agua, MPG, and Agua + Trabajo workfare cooperatives, resident labor/co-production burdens, and municipal/broker discretion).",
+    "outcome": "Piped drinking water network access and formal vs. informal/co-produced connection rates, partial/incomplete network extension, service continuity (frequent cutoffs/interruptions), water pressure, pipe ruptures, and water contamination.",
+    "paper_read": "full text",
+    "population_and_sample": "Informal settlements and residents in the Conurbano Bonaerense (periphery of the Buenos Aires Metropolitan Region, RMBA, Argentina), featuring an ethnographic case study of the Santa María informal settlement (fieldwork 2011-2015) and semi-structured interviews with public/utility/regulatory officials, political brokers, cooperative workers, and residents (exact total interview N not reported).",
+    "rationale": "This empirical qualitative socio-legal and ethnographic study (with descriptive utility/survey statistics) examines household and settlement-level piped drinking water access in informal settlements of Greater Buenos Aires (1983-2015). It directly analyzes rule-type legal, regulatory, and administrative mechanisms under both plain and narrow 2026-10-13 readings of Criterion 2—including public vs. privatized vs. re-nationalized utility ownership and concession structures (OSN, AASA/ETOSS, AySA), informal land tenure and municipal cadastral non-legalization barriers, municipal contracting discretion, and differentiated co-production/workfare rules (Pro-agua, MPG, Agua + Trabajo) that shift labor and intermediation burdens onto informal-settlement residents—and links these mechanisms to concrete network-connection, coverage, continuity, and water-pressure outcomes. Full text is in Spanish (with English and Portuguese abstracts) and is eligible under Criterion 10 as translation is directly feasible.",
+    "record_id": "RFBA8D18DE6E5",
+    "study_design": "Qualitative ethnographic case study combined with semi-structured key-informant interviews, document analysis, and descriptive secondary statistics (historical period 1983-2015; fieldwork 2011-2015 and interviews through 2017)."
+  }
+}

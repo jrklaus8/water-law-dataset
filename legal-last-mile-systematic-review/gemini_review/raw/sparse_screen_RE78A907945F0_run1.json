@@ -1,0 +1,271 @@
+{
+  "record_id": "RE78A907945F0",
+  "study_id": "S166",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f940c749445d13b75e31eea296c9719dea564893e8a3e155813c27c836840e26",
+  "input_text_sha256": "625f345bc44f7ecc9058372a975ec9944739f3c12c453d4d02e621ce7cc9e7f4",
+  "prompt_sha256": "5154edc2c841dfd4c436dea96023c3c35c9ce6eaa7661f9016b7a56a715efe69",
+  "started_at": "2026-11-20T03:43:20.773090+00:00",
+  "completed_at": "2026-11-20T03:44:00.680934+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RE78A907945F0\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RE78A907945F0\n- Title: A Comprehensive Framework for Water Affordability Analysis\n- Authors: Fagundes T.S.; Marques R.C.; Malheiros T.F.\n- Year: 2025\n- DOI: 10.1007/s11269-024-04076-4\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 625f345bc44f7ecc9058372a975ec9944739f3c12c453d4d02e621ce7cc9e7f4) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63353, sha256=625f345bc44f7ecc9058372a975ec9944739f3c12c453d4d02e621ce7cc9e7f4]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and municipal water supply and sanitation (WSS) service coverage, tariff affordability, access to water social tariff programs, and connection fee burdens in Brazil.",
+      "c2": "Satisfies both the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism clarification: under the plain wording, it analyzes WSS tariff regulation, social assistance targeting, and state-owned/capital utility pricing structures; under the narrow rule-type reading, it directly evaluates tariff and cost-recovery schedules, social tariff discounts (comparing affordability with vs. without social tariffs), eligibility/take-up gaps in social tariff programs relative to CADÚnico low-income eligibility, and upfront utility connection fee rules governing household connection access.",
+      "c3": "Contains a quantitative empirical case study of Brazil across 4,052 municipalities served by state-owned WSS utilities (plus state capitals), combining secondary administrative and survey data from SNIS (2021/2022), IBGE Census 2022, PNADC 2023, CADÚnico (September 2023), and October 2023 utility tariff and connection fee schedules.",
+      "c4": "Reports outcomes directly relevant to WSS coverage rates (SNIS IN055 and IN056), conventional and poorer-household WSS affordability ratios (with and without social tariffs), percentage of eligible low-income households accessing social tariffs, and connection fee burden as a share of monthly household income.",
+      "c5": "Population and unit of analysis (4,052 Brazilian municipalities and state-level population/household income groups within state-owned and capital WSS utility areas), rule-type exposures (tariff structures, social tariff discounts/eligibility rules, and initial WSS connection fees), outcomes (coverage, affordability ratios, social tariff take-up, connection fee burden), and cross-sectional quantitative design are all clearly identifiable. Note that whether effect estimates can be pooled quantitatively is a Criterion 6 synthesis-eligibility gate rather than a systematic-review inclusion gate.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 30 (Abstract)",
+        "quote": "This paper proposes a broader affordability analysis framework, considering six main dimensions, coverage rates, conventional affordability ratio, poverty condition of the community, affordability ratio for poorer households, access to water social programs, and connection fee burden."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 of 30 (Section 3.2.4)",
+        "quote": "Despite the different rules the state’s WSS companies applied to their social tariff programs, the affordability ratio for poorer households considered the income as 1/2 minimum wage and the WSS tariff with and without discount applied by each utility for social tariff."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 15 of 30 (Section 3.2.5)",
+        "quote": "This paper compared the number of urban low-income families in each state (earning ½ minimum wage or less in September 2023, from CADÚnico) with the number of households accessing social tariffs users, data from SNIS."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12 of 30 (Section 3.1)",
+        "quote": "Therefore, the sample encompasses all the cities where those state-owned companies provide water supply and/or sanitation services, reaching 4052 municipalities, representing 72.8% of Brazilian cities, 78.9% of the total population for water supply services, and 60.1% of wastewater collection and/or treatment"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 20 of 30 (Section 3.3.6)",
+        "quote": "Figure 9 displays the percentage of cities in Brazil that would spend more than 5, 10, 20, 30, 50, and 100% of their monthly income on WSS connection fees, payable to utilities."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Utility WSS tariff schedules, social tariff discounts and eligibility/access rules, and upfront water and wastewater connection fee schedules across Brazilian state-owned and state-capital WSS providers.",
+    "outcome": "Water supply and sanitation coverage rates (SNIS IN055, IN056), household WSS affordability ratios (conventional and poorer-household ratios with vs. without social tariffs), social tariff access (%) among eligible low-income families, and connection fee burden (% of monthly household income).",
+    "paper_read": "full text",
+    "population_and_sample": "Households and populations across 4,052 Brazilian municipalities (72.8% of Brazilian cities) served by state-owned WSS companies and state-capital utilities, aggregated at municipal and state levels across average-wage and low-income (<= 1/2 minimum wage in CADÚnico and 60% of average state wage) household groups.",
+    "rationale": "The study satisfies all systematic-review inclusion criteria (c1-c6). Alongside proposing an analytical framework, Section 3 conducts an empirical cross-sectional quantitative analysis of 4,052 Brazilian municipalities using SNIS, IBGE Census/PNADC, CADÚnico, and utility tariff schedules. It directly examines rule-type mechanisms under Criterion 2 (tariff structures, social tariff discounts and eligibility/take-up gaps, and initial connection fee schedules) and reports household/municipal WSS coverage, affordability ratios with and without social tariffs, social tariff access rates among eligible poor families, and connection fee burdens.",
+    "record_id": "RE78A907945F0",
+    "study_design": "Cross-sectional quantitative empirical analysis (multi-utility municipal/state secondary administrative, survey, and tariff-schedule study)"
+  }
+}

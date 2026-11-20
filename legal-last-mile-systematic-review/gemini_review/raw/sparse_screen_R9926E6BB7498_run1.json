@@ -1,0 +1,281 @@
+{
+  "record_id": "R9926E6BB7498",
+  "study_id": "S911",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "5df00317e114fb62808b9253e572468c4453653c7f8d225e95ce2545f51e9616",
+  "input_text_sha256": "8b0433af15a970c848cfb92ad7fd35136338ca5e6ac37f8900f3ed3fb20b7df6",
+  "prompt_sha256": "d4ddb37186d1ab85506c0e7f704eaee7db8e92bf6b59fcb8afc14513110466f3",
+  "started_at": "2026-11-20T02:53:25.447751+00:00",
+  "completed_at": "2026-11-20T03:35:53.987772+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R9926E6BB7498\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R9926E6BB7498\n- Title: Strategic assessment of groundwater resource exploitation using DPSIR framework in Guwahati city, India\n- Authors: Hazarika N.; Nitivattananon V.\n- Year: 2016\n- DOI: 10.1016/j.habitatint.2015.10.003\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 8b0433af15a970c848cfb92ad7fd35136338ca5e6ac37f8900f3ed3fb20b7df6) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52323, sha256=8b0433af15a970c848cfb92ad7fd35136338ca5e6ac37f8900f3ed3fb20b7df6]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines domestic water accessibility among urban households lacking piped municipal water in Guwahati city, India, covering household reliance on private groundwater wells, private water vendors, and distant municipal wells.",
+      "c2": "Plain wording = yes; narrow 2026-10-13 rule-type reading = no. Under the plain wording of Criterion 2, the paper discusses weak groundwater governance as a DPSIR driver (land-tied groundwater rights under the Indian Easements Act 1882, federal-state jurisdictional overlap, non-implementation of the Assam Groundwater Control and Regulation Act 2012, and non-enforcement of well-construction and green-belt land-use rules) and recommends water-use fees and electricity tariffs. Under the 2026-10-13 rule-type mechanism clarification, however, it does not examine a rule-type mechanism directly governing water service access: municipal piped-water unavailability (27% coverage) is treated purely as physical supply capacity shortage and infrastructure construction, weak groundwater governance operates only as unvarying city-wide macro-governance background for common-pool aquifer depletion (100% of surveyed households uniformly reported no well regulation or fees), observed cross-ward variation in household water scarcity reflects hydrogeomorphological recharge zones and urbanization, and water-use fees and energy tariffs are purely prospective policy proposals (illustrated only with secondary data from rural Mexico) rather than empirically evaluated rules in Guwahati.",
+      "c3": "Contains primary empirical data from a questionnaire survey of 150 urban households across three municipal wards (50 per ward), supplemented by expert consultations and secondary hydrogeological, census, and remote-sensing records analyzed qualitatively in a DPSIR framework.",
+      "c4": "Reports household-level water access outcomes including daily groundwater consumption volume, self-reported 5-year groundwater level decline, reliance on expensive private water vendors ($4 per 1000 L) or distant municipal wells, affordability constraints, and classification as water-poor (12% of Ward 35 respondents living >1 km from safe year-round supply and/or spending >5% of income on water).",
+      "c5": "Population and unit of analysis (150 unserved urban households in three wards), cross-sectional survey / DPSIR case-study design, environmental and hydrogeological pressures, and household water outcomes are identifiable, although no rule-type legal or administrative mechanism directly governing service access is empirically evaluated as an exposure.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 11, Section 1",
+        "quote": "Inaccessibility of the urban households to water, issues of water affordability and emergence of water poor has been found to be the repercussions of groundwater over-exploitation."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 11, Section 3",
+        "quote": "primary data were collected by means of expert consultation and household survey in which 150 households were interviewed from three chosen locations."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 11, Section 4.4",
+        "quote": "The groundwater right still comes under the Land right according to the Indian Easements Act,1882, with no regulation or restriction over the quantity of groundwater that should be drawn or the kind of well structure that should be built depending on land condition or groundwater development feasibility."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 11, Section 5.2",
+        "quote": "Of the 150 households interviewed, 100% of the respondents stated that there is no regulation and that they constructed wells on their own will without seeking permission from any authority, without paying any form of fee to any of the regulatory bodies and without following simple guidelines of keeping a minimum distance from the next closest well as there is no monitoring."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 11, Section 8.2.a",
+        "quote": "This form of response can be used to be included in the Assam groundwater control and regulation Act, 2012, which has been developed and not implemented yet"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5 of 11, Table 1",
+        "quote": "84% of the households in the ward no. 35 answered to have been dependent on private vendors for daily water usage."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 9 of 11, Section 7.3",
+        "quote": "The data on household survey suggest that these people fetch water from a distant well provided by municipality. Also there are illegal incidences where people consume water from unauthorized sources, such as some get the supplied water and sell it off for higher prices without the knowledge or permission of the authority."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Urbanization, population growth, land-cover change, hydrogeomorphological recharge zones, municipal piped-water capacity shortfall, and city-wide absence of groundwater abstraction regulation (DPSIR drivers and pressures; water-use fees and pumping electricity tariffs are discussed only as prospective policy recommendations)",
+    "outcome": "Household domestic water source reliance (private dug/drilled wells, private vendors, distant municipal well), daily groundwater volume used, perceived 5-year groundwater level decline, water affordability, and emergence of water-poor households",
+    "paper_read": "full text",
+    "population_and_sample": "Urban households without access to piped surface water in Guwahati city, Assam, India; n = 150 households surveyed across three municipal wards (50 households each in Ward Nos. 02, 35, and 57; unit of analysis: household)",
+    "rationale": "Full text matches record metadata. Although the study empirically surveys 150 urban households on domestic water availability, vendor reliance, and affordability (satisfying c1, c3, c4, c5, and c6), it is excluded as E03 (Wrong exposure) because it fails Criterion 2 under the 2026-10-13 rule-type mechanism scope. The study is a strategic environmental DPSIR assessment of urban aquifer over-exploitation rather than an empirical study of legal or administrative rules directly governing water service access: municipal piped-water unavailability is treated solely as an infrastructure capacity deficit, weak groundwater governance serves as unvarying city-wide macro-governance background for common-pool resource depletion (with cross-ward household differences driven by hydrogeological recharge conditions), and the discussed water-use fees and electricity tariffs are prospective policy recommendations rather than empirically studied exposures in Guwahati.",
+    "record_id": "R9926E6BB7498",
+    "study_design": "Cross-sectional household questionnaire survey (n = 150 households across 3 wards) combined with expert consultations and secondary hydrogeological/remote-sensing data in a qualitative DPSIR case study"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "record_id": "R29C42DF9EAF6",
+  "study_id": "S057",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a54d0acd82030e0dcd479423cdd279f266e5496c6603b42277420734d6b8f22a",
+  "input_text_sha256": "f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193",
+  "prompt_sha256": "bc92276523bb6455c85630b25aff7b908ace5d8dd7ce807fe263249999686891",
+  "started_at": "2026-11-20T03:35:54.345842+00:00",
+  "completed_at": "2026-11-20T03:37:14.845923+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R29C42DF9EAF6\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R29C42DF9EAF6\n- Title: Impact of targeted subsidies on access to resilient sanitation for climate-vulnerable households in rural Cambodia\n- Authors: Kozole T.; Ross M.; Nicoletti C.; Rogla J.; Ives N.; Ali A.; Prom R.\n- Year: 2023\n- DOI: 10.2166/washdev.2023.039\n- Retrieval status: retrieved_cached_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=46681, sha256=f4649cb314450959b2dfb9f246daa511a92ae2f5cdfb86fd7a894d66859de193]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Cambodia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household access to safe, climate-resilient on-site sanitation infrastructure (purchase/order of Easy Latrine or elevated Sky Latrine) among rural households without a toilet in Kampong Chhnang province, Cambodia.",
+      "c2": "Satisfies Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain reading, it examines an administrative and institutional subsidy-targeting and eligibility-assessment mechanism incorporating Cambodia's government IDPoor social-protection poverty classification, commune-level Climate Vulnerability Index (CVI) designations from the National Council for Sustainable Development, and local village authority involvement. Under the narrow 2026-10-13 rule-type reading, although implemented by an NGO (iDE) within market-based sanitation delivery rather than as a statutory mandate, the study directly designs, tests, and disaggregates a formal eligibility-screening and targeted-pricing rule (comparing government IDPoor eligibility against a three-threshold Poverty Probability Index [PPI] proxy means test calibrated to climate vulnerability, alongside frontline screener misinterpretation of exclusion rules, village-leader targeting bias, threshold gaming/manipulation checks, and verification burden), squarely fitting 'eligibility screening' and targeted cost-recovery/subsidy rules governing service access.",
+      "c3": "Mixed-methods empirical study combining a 30-village cluster randomized controlled trial (2,821 unique household sales presentations analyzed via village-level OLS and clustered household-level logistic regressions), 13 qualitative key-stakeholder interviews (latrine business owners, local government representatives, and sales agents) analyzed in ATLAS.ti, and programmatic cost/scalability analysis.",
+      "c4": "Reports household-level latrine purchase (binary order/sales conversion for climate-resilient Easy Latrine or Sky Latrine) and village-level latrine sales closing rates across eligible and ineligible groups, directly measuring affordability-mediated sanitation acquisition and exclusion (noting as a limitation that orders rather than completed installations were tracked).",
+      "c5": "Clearly identifies population and units of analysis (rural households without an existing toilet across 30 villages in Kampong Chhnang province, analyzed at both household [n = 2,821 presentations] and village [n = 30 clusters] levels, plus n = 13 qualitative stakeholder interviews), exposure (village-level randomized offer of a 50% targeted latrine price subsidy governed by IDPoor and climate-adjusted PPI eligibility screening thresholds vs. full retail price, and comparison across IDPoor vs. PPI eligibility pathways), outcome (latrine purchase/order conversion), and study design (mixed-methods cluster RCT).",
+      "c6": "Full text is written in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3",
+        "quote": "In treatment areas, eligible households were offered the option to purchase a latrine with a subsidy, while households in control areas could only purchase at retail price."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "This research sought to build upon a previously used subsidy mechanism that relied upon the existing IDPoor mechanism, a Cambodian government poverty classiﬁcation, for targeting."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3",
+        "quote": "Determining an individual household’s eligibility to receive a subsidy required comparing their overall PPI score to the threshold that aligned with their household and community-level climate vulnerability."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9",
+        "quote": "Many sales agents believed qualiﬁcation was predicated on one factor (namely, the number of household members or ownership of a cell phone) and that this was unfairly excluding certain households."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4",
+        "quote": "Field implementation lasted 7.5 months (20 January 2022–31 August 2022) and included 2,821 sales presentations across 30 villages in Kampong Chhnang province."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 6",
+        "quote": "In treatment areas, the sales closing rate among households who were offered a subsidy was 38%, compared to 6% among ineligible households"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Targeted 50% latrine price subsidy governed by a two-layer eligibility screening rule combining Cambodia's government IDPoor poverty classification, commune-level Climate Vulnerability Index (CVI) scores, household climate-shock history, and three Poverty Probability Index (PPI) cutoff thresholds (assigned at the village cluster level vs. retail-price-only control villages, and compared across IDPoor vs. PPI eligibility pathways)",
+    "outcome": "Household latrine purchase (order/sales conversion for concrete-lined Easy Latrine or elevated Sky Latrine) and village-level latrine sales closing rate, alongside eligibility/exclusion rates and market distortion indicators",
+    "paper_read": "full text",
+    "population_and_sample": "Rural households without a toilet in Kampong Chhnang province (Tonle Sap Lake region), Cambodia: 2,821 unique household sales presentations across 30 villages (15 treatment, 15 control; analyzed at household and village cluster levels), plus 13 in-depth qualitative interviews with latrine business owners, local government representatives, and sales agents",
+    "rationale": "This English-language mixed-methods cluster RCT in rural Cambodia meets all inclusion criteria (c1–c6). It examines household access to climate-resilient on-site sanitation (c1) and reports empirical quantitative and qualitative evidence on household latrine purchase/order rates and village sales closing rates (c3, c4, c5). On Criterion 2, both the plain wording and the narrow 2026-10-13 rule-type mechanism reading are satisfied: rather than evaluating generic project delivery alone, the study designs, tests, and disaggregates a formal eligibility-screening and targeted-subsidy pricing rule that integrates Cambodia's official IDPoor social-protection poverty registry and National Council for Sustainable Development commune CVI classifications with climate-adjusted PPI proxy-means-test cutoff thresholds, and explicitly analyzes differential uptake across IDPoor vs. PPI screening rules, village-authority targeting, frontline agent misinterpretation of eligibility rules, threshold manipulation checks, and verification burden.",
+    "record_id": "R29C42DF9EAF6",
+    "study_design": "Mixed-methods cluster randomized controlled trial (30 villages) with qualitative key-informant interviews and programmatic cost analysis"
+  }
+}

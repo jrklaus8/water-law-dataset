@@ -1,0 +1,276 @@
+{
+  "record_id": "RE39C57FE50BB",
+  "study_id": "S114",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "abea38a867819cd49f84f8ec40db0bfea29cf1cbe48923ed721c3613ca1c425d",
+  "input_text_sha256": "e09ddf2bcbcf787f643b35b2d83c0f1e8216a60b331e4eb31e8c23eb301ecea5",
+  "prompt_sha256": "6809c7f5319dd64ee9ba1ffb20fbb8a7fceb543bdbab3b4151b85c0b75603735",
+  "started_at": "2026-11-20T03:35:54.259787+00:00",
+  "completed_at": "2026-11-20T03:38:17.046559+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RE39C57FE50BB\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RE39C57FE50BB\n- Title: Understanding governance in the implementation of rainwater systems in the Amazon – Belem\n- Authors: Pedro Pablo Cardoso Castro; Ravena, Nirvia; Mendes, Ronaldo\n- Year: 2020\n- DOI: 10.1108/MEQ-03-2019-0061\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: e09ddf2bcbcf787f643b35b2d83c0f1e8216a60b331e4eb31e8c23eb301ecea5) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=83027, sha256=e09ddf2bcbcf787f643b35b2d83c0f1e8216a60b331e4eb31e8c23eb301ecea5]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "unclear",
+      "c5_pop_exposure_outcome_design": "unclear",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Yes. The paper examines the implementation of rooftop rainwater harvesting (RTRWH) water supply systems intended to provide clean drinking water to riverside island communities and households in Belém, Pará, Brazil, where public water supply is largely absent or non-potable.",
+      "c2": "Plain wording: Yes — the study examines governance in the implementation of community rainwater systems, focusing on stakeholder network centrality, institutional overlap, interagency brokerage for federal project funding, and community collective-action challenges in maintaining shared systems. Narrow 2026-10-13 rule-type reading: No — the paper analyzes multi-stakeholder project delivery and technology-niche implementation ('Strategic Niche Management' and stakeholder influence on 'water infrastructure planning') for subsidized off-grid rainwater harvesting installations rather than a rule-type legal, regulatory, or administrative mechanism directly governing service access (such as eligibility screening, household administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, frontline discretion or accommodation in granting service access, enforcement, or utility ownership/regulatory rules governing access). Although the authors invoke 'street-level bureaucracies' and 'regulatory capture,' they apply those terms to regional agencies, NGOs, and a university competing as intermediaries for federal project budgets rather than administrative rules governing household access.",
+      "c3": "Yes. The paper reports primary empirical research conducted in 2016 using a two-stage exploratory design combining 6 semi-structured expert interviews and ethnographic observations across 16 municipalities involving 40 user families, analyzed with Social Network Analysis (UCINET degree and betweenness centrality) and qualitative framework analysis (Strategic Niche Management and Safe-and-SuRe).",
+      "c4": "Unclear. The primary empirical outputs are stakeholder and issue network centrality rankings in RTRWH infrastructure planning (with Figures 1–3 missing as '[INSERT FIGURE ... HERE]' placeholders in this accepted-manuscript PDF) and qualitative accounts of project-delivery tensions (funding competition, education/maintenance gaps, interagency relationships, intra-community conflict, and lack of post-delivery monitoring). System non-use or abandonment ('failure / abandonment of several installed units') is mentioned only briefly in one interview quote and the Safe-and-SuRe summary table rather than systematically assessed as a household or community water-access outcome.",
+      "c5": "Unclear. While the exploratory case-study/SNA design and data sources (6 experts, 16 municipalities, 40 user families; 14 Belém stakeholder nodes) are stated, Figures 1–3 reporting the quantitative SNA results are omitted as placeholders in the accepted manuscript, and the study does not operationalize a rule-type governance exposure linked to a household or community service-access outcome.",
+      "c6": "Yes. The full text is written in English, an eligible review language."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 4 of 37 (Page 2 of 35)",
+        "quote": "In response to these challenges, rainwater has been explored as an appropriate solution for the provision of clean water to rural communities in the Amazon basin."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 37 (Page 8 of 35)",
+        "quote": "To identify stakeholders, the respondents were asked to 1) mention all stakeholders and issues that may influence or are affected by the implementation of water infrastructure - rainwater systems. 2) Quantify the influence of each stakeholder exerts on water infrastructure planning"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 15 of 37 (Page 13 of 35)",
+        "quote": "In the current implementation lead by UFPA, note the brokerage from SEASTER, AMAE, and CARITAS, evidenced by their intermediation in the network “connecting” funding agencies and recipient communities."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10 of 37 (Page 8 of 35)",
+        "quote": "The methodological design followed a two-stage explorative research process where stakeholders were identified and classified based on an iterative process that drew on a combination of methods (e.g. 6 expert opinions - semi-structured interviews in English and Portuguese; ethnographic observations in 16 municipalities involving 40 user families)"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12 of 37 (Page 10 of 35)",
+        "quote": "The following figure (figure 1) reflects the results of the use of SNA for the mapping of issues and stakeholders related with the adoption of rainwater systems in Belem; where the values of centrality (degree) for UFPA, Residents, CARITAS, AMAE highlight the relevance of these stakeholders in the implementation of RTRWH."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 36 of 37 (Page 34 of 35)",
+        "quote": "Social learning process hindered; uncovered expectations in terms of number of units implemented; failure / abandonment of several installed units;"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Stakeholder network structure (degree and betweenness centrality), interagency funding brokerage, and technology-niche governance in the project implementation of rooftop rainwater harvesting (RTRWH) systems",
+    "outcome": "Stakeholder and issue centrality in water infrastructure planning/implementation (SNA figures omitted as placeholders in the accepted manuscript) and qualitative implementation challenges including funding competition, maintenance training gaps, and failure/abandonment of some installed units",
+    "paper_read": "full text",
+    "population_and_sample": "6 regional experts (semi-structured interviews) and ethnographic observations in 16 municipalities involving 40 user families; SNA network of 14 stakeholder groups and 5 implementation issues in Belém, Pará, Brazil",
+    "rationale": "Exclude under E03 (Wrong exposure). Although the paper examines community rainwater harvesting systems in Belém, Brazil (c1=yes) using empirical interviews, observations, and Social Network Analysis (c3=yes), it studies multi-stakeholder project delivery, interagency grant-funding brokerage, and Strategic Niche Management in implementing subsidized rainwater infrastructure rather than a rule-type legal, regulatory, or administrative mechanism directly governing household or community service access per the 2026-10-13 Criterion 2 clarification (plain=yes, narrow=no).",
+    "record_id": "RE39C57FE50BB",
+    "study_design": "Exploratory qualitative case study and Social Network Analysis (SNA) based on semi-structured expert interviews and ethnographic observations"
+  }
+}

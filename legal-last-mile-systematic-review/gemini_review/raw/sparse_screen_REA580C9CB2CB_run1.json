@@ -1,0 +1,271 @@
+{
+  "record_id": "REA580C9CB2CB",
+  "study_id": "S170",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "4330a5701b276b1869aab959fea630c10b1629ef712f308fa9ad552809c41f0d",
+  "input_text_sha256": "b3529caac1e2ac4cae4efaaa5f69ea16fe4161e84f80e9f0714ff7eb9bd6ceca",
+  "prompt_sha256": "8cb351e29eb0aae5a498ad049dc9fea825745ad85c9107b18e804034e097da20",
+  "started_at": "2026-11-20T02:44:16.434465+00:00",
+  "completed_at": "2026-11-20T02:45:32.522696+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD REA580C9CB2CB\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: REA580C9CB2CB\n- Title: Constraints and solutions for groundwater development, supply and governance in urban areas in Kenya; [肯尼亚城市地区地下水开发、供水和管理的限制条件和解决办法]; [Contr\n- Authors: Olago D.O.\n- Year: 2019\n- DOI: 10.1007/s10040-018-1895-y\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b3529caac1e2ac4cae4efaaa5f69ea16fe4161e84f80e9f0714ff7eb9bd6ceca) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=106777, sha256=b3529caac1e2ac4cae4efaaa5f69ea16fe4161e84f80e9f0714ff7eb9bd6ceca]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban domestic water supply sources and water access disparities across five Kenyan towns (Kisumu, Nakuru, Lodwar, Wajir, and Msambweni), alongside groundwater hydrogeology and water quality.",
+      "c2": "Plain wording: Yes — the report reviews national water legislation and strategies (Water Act 2002, Water Act 2016, NWRMS, NWSS, National Water Master Plan 2030) and five County Integrated Development Plans (CIDPs) regarding groundwater governance and management. Narrow 2026-10-13 rule-type reading: No — the paper examines macro-level groundwater resource governance, aquifer characterisation gaps, institutional planning coordination, and strategic development plans, and proposes a high-level conceptual planning framework, rather than examining a rule-type mechanism directly governing household or community water service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership/regulatory structure directly governing service access).",
+      "c3": "Contains descriptive empirical data compilation from hydrogeological fieldwork (geological mapping, geophysical surveys, and consolidated water quality measurements), recalculated 2009 Kenya Census water-source proportions for five towns, and a qualitative critical review of national water strategies and five county development plans, though it does not empirically test a governance-to-access relationship.",
+      "c4": "Reports descriptive town-level proportions of residents relying on piped water, boreholes, shallow wells, springs, surface water, and water vendors (Table 4), as well as secondary data on per capita daily water consumption and nonrevenue water (Table 5).",
+      "c5": "Although urban populations and descriptive water-source distributions are reported from the 2009 census, the paper does not identify or evaluate an empirical relationship between a specific legal/administrative exposure and household or community service access outcomes; the hydrogeological, census, and policy-review components are synthesized only into a conceptual planning framework.",
+      "c6": "Published in English in Hydrogeology Journal."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 20 (Abstract)",
+        "quote": "The status of aquifer knowledge, water access disparities, competing uses, and risks was evaluated from critical literature reviews and data compilation, fieldwork, and analysis of indicator datasets from the Kenya 2009 census."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5 of 20 (Water access disparities)",
+        "quote": "Data on the sources of water used in the various towns of interest was obtained and compiled from the joint Kenya National Bureau of Standards and the Society for International Development – East Africa county reports that were published in the year 2013, and based on the Kenya Census of 2009, which is therefore used as the base year in this report."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11 of 20 (Water access disparities)",
+        "quote": "In Kisumu, only the high-income class exceeds the basic water requirement of 60 L/day, while on the lower end are the generally poor informal settlement residents who have a mean per capita daily water use of 22.5 L (Wagah et al. 2010)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 13 of 20 (Challenges and gaps)",
+        "quote": "Three issues stand out from analysis of national versus county policies, plans and strategies with respect to water, and groundwater in particular: (1) the translation of national policies and strategies into county contexts, (2) lack of expert advice or capacity in water for the formulation of County Integrated Development Plans (CIDPs), and (3) lack of structures and capacity to collect county water data that would be aggregated and assessed at the national level."
+      },
+      {
+        "criterion": "c5",
+        "page": "PDF Page 17 of 20 (Conclusions)",
+        "quote": "A flexible, scalable and transferrable holistic governance and management framework has been developed to guide the formulation of governance and management systems that work effectively and that ensure sustainability."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Macro-level national and county groundwater resource governance and strategic planning documents (Water Act 2002 and 2016, NWRMS, NWSS, National Water Master Plan 2030, and County Integrated Development Plans); no rule-type mechanism directly governing household or community service access",
+    "outcome": "Descriptive town-level shares of population using different water sources (piped into dwelling, piped, borehole, protected/unprotected shallow well and spring, surface water, water vendor) from the 2009 census and secondary per capita daily water use and nonrevenue water figures",
+    "paper_read": "full text",
+    "population_and_sample": "Urban and peri-urban populations in five Kenyan towns derived from the 2009 Kenya Census (Kisumu, n = 439,009; Nakuru, n = 298,254; Lodwar, n = 54,549; Wajir, n = 51,729; Msambweni, n = 22,633), their regional aquifer systems, and associated national and county water policy/strategy documents",
+    "rationale": "Excluded under E03 (Wrong exposure). While the report describes urban water supply sources from the 2009 Kenya Census across five Kenyan towns alongside aquifer hydrogeology and water quality, its governance component is a macro-level strategic policy and planning review (assessing alignment among the Water Act 2002/2016, National Water Master Plan 2030, NWRMS/NWSS, and County Integrated Development Plans regarding groundwater resource characterisation, sustainable yield estimates, and institutional planning capacity) culminating in a high-level conceptual planning framework. Under the 2026-10-13 Criterion 2 clarification, it does not examine a rule-type legal, administrative, or regulatory mechanism directly governing household or community water service access, nor does it empirically link any such mechanism to an access outcome.",
+    "record_id": "REA580C9CB2CB",
+    "study_design": "Multi-town case-study synthesis report combining hydrogeological fieldwork and literature review, descriptive secondary 2009 census tabulation, and narrative policy/plan review"
+  }
+}

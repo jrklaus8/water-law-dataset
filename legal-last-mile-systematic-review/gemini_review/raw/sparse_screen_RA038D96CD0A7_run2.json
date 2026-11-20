@@ -1,0 +1,276 @@
+{
+  "record_id": "RA038D96CD0A7",
+  "study_id": "S107",
+  "run": 2,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9dc9c6ae9ab079b301f198e1e7e9128041fbcf11cc4e16a22f0879f7ec9e37a0",
+  "input_text_sha256": "8ed2de3e6a3be6e2089d10820a066c4df51a1389cfef1b296d178d894531c683",
+  "prompt_sha256": "0555a3b0ea5b9d3f3bce5538bd300f988c7cb06935befe621b425e0109776623",
+  "started_at": "2026-11-20T03:46:05.014157+00:00",
+  "completed_at": "2026-11-20T03:47:06.013078+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA038D96CD0A7\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA038D96CD0A7\n- Title: Water service provision and social equity in a South African rural district municipality\n- Authors: Hutete, Clarity; Sibanda, Modeni M\n- Year: 2022\n- DOI: 10.4102/apsdpr.v10i1.641\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 8ed2de3e6a3be6e2089d10820a066c4df51a1389cfef1b296d178d894531c683) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70185, sha256=8ed2de3e6a3be6e2089d10820a066c4df51a1389cfef1b296d178d894531c683]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community access to drinking water services (and reports municipal sanitation coverage statistics) across rural and urban communities in Amathole District Municipality.",
+      "c2": "Under the plain wording of Criterion 2, this paper would qualify (plain=yes) because it examines municipal water governance and procedural fairness, including stakeholder participation in Integrated Development Plan (IDP) processes, ward councillor accountability, financial audit performance, and intergovernmental coordination between district and local municipalities. Under the mandatory narrow 2026-10-13 rule-type reading, however, it fails (narrow=no): the empirical analysis does not examine any rule-type legal, administrative, or regulatory mechanism directly governing service access (such as eligibility screening, indigent registration, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, frontline discretion/accommodation, disconnection/enforcement, or utility ownership/regulatory rules governing access). Instead, it evaluates generic municipal infrastructure project delivery (boreholes, dams, standpipes, water carting, access roads for maintenance) and broad participatory governance/accountability background.",
+      "c3": "Contains original qualitative empirical data from two focus group discussions with community members (n = 14), semi-structured interviews with municipal and water sector officials (n = 20), participant observation, and secondary municipal IDP/audit records.",
+      "c4": "Reports qualitative and descriptive secondary outcomes on household/community water access disparities, reliance on rivers and rainwater harvesting, intermittent water supply, inconsistent water tanker deliveries, and non-functioning rural boreholes and schemes.",
+      "c5": "Identifies the population and sample (communities and water governance officials in Amathole District Municipality, Eastern Cape, n = 34, plus municipal-level secondary data), the broad governance/project-delivery exposure studied, water access/reliability outcomes, and an exploratory qualitative case study design.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "A purposeful sample of 34 (n = 34) participants was selected, based on participants’ knowledge and experience as end-users and stakeholders in the district municipality’s water governance."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 6",
+        "quote": "In determining access equity, the study established that a significant number of residents in the district municipality still lack access to safe drinking water and proper sanitation."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8",
+        "quote": "Findings indicate that intermittent water supply in Amathole District Municipality is unreliable and unpredictable. Inconsistencies in the water provision interventions adversely affect municipal residents on the margins."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "We have embarked on several interventions including drilling boreholes, constructing dams, and refurbishing water treatment plants and water carting to communities that do not have the infrastructure."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9",
+        "quote": "The researchers examined stakeholder participation and adherence to governance principles of openness and accountability, as these are key tools used to ensure procedural fairness."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11",
+        "quote": "Nonetheless, the study also revealed gaps in procedural fairness, emanating from limited transparency, accountability, and limited voice and involvement of stakeholders, mainly in disadvantaged and marginalised rural communities."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Broad municipal water governance and social equity dimensions (IDP public participation roadshows, municipal transparency/audit accountability, intergovernmental project coordination, and rural infrastructure/water-carting interventions), with no specific rule-type legal or administrative access mechanism examined.",
+    "outcome": "Rural-urban disparities in household/community water service access, intermittent water supply, inconsistent water tanker filling, and reliance on untreated surface water or rainwater harvesting.",
+    "paper_read": "full text",
+    "population_and_sample": "Amathole District Municipality (Eastern Cape Province, South Africa); purposeful sample of n = 34 participants (14 community members in two focus group discussions and 20 municipal/Water Board officials and councillors in semi-structured interviews), supplemented by municipal IDP records.",
+    "rationale": "Excluded under E03 (Wrong exposure). Although this qualitative case study empirically examines rural-urban disparities in municipal water service access and reliability in South Africa (satisfying c1, c3, c4, c5, and c6), it fails Criterion 2 under the 2026-10-13 rule-type scope clarification. Rather than analyzing a rule-type legal, regulatory, or administrative mechanism governing household or community access (e.g., tariff or Free Basic Water eligibility rules, documentation/tenure requirements, administrative burdens, enforcement, or regulatory structure governing access), the study assesses generic municipal infrastructure delivery (borehole drilling, water carting, O&M, road access for construction) and broad public administration governance principles (IDP consultation formalities, councillor responsiveness, and municipal audit accountability).",
+    "record_id": "RA038D96CD0A7",
+    "study_design": "Exploratory qualitative case study (focus group discussions, semi-structured interviews, participant observation, and document review)"
+  }
+}

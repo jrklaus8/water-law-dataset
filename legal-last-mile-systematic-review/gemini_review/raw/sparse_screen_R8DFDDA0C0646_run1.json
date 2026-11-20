@@ -1,0 +1,276 @@
+{
+  "record_id": "R8DFDDA0C0646",
+  "study_id": "S118",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9cfb804e288e83a0dbc930d2eaa5d7b85f56428deaf9c8a7d8ce7fdbfa93c93d",
+  "input_text_sha256": "2ec1fda52318169f5301acd2d9052571d1616ed616e79cd71299f8877ccbc888",
+  "prompt_sha256": "29b756ce595754f8cfe7b9f70515924c9574580377894a3058e3cb213fa779b8",
+  "started_at": "2026-11-20T03:35:54.376072+00:00",
+  "completed_at": "2026-11-20T03:37:09.658980+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R8DFDDA0C0646\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R8DFDDA0C0646\n- Title: Adapting Generic Models through Bricolage: Elite Capture of Water Users Associations in Peri-urban Lilongwe\n- Authors: Rusca, Maria; Schwartz, Klaas; Hadzovic, Lejla; Ahlers, Rhodante\n- Year: 2015\n- DOI: 10.1057/ejdr.2014.58\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 2ec1fda52318169f5301acd2d9052571d1616ed616e79cd71299f8877ccbc888) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60377, sha256=2ec1fda52318169f5301acd2d9052571d1616ed616e79cd71299f8877ccbc888]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Malawi",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines drinking-water service provision and access via communal water kiosks in peri-urban low-income areas (LIAs) of Lilongwe, Malawi.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type reading. Under the plain wording, it examines institutional, legal, regulatory, and governance arrangements for urban water kiosks (Water Users Associations registered as legal cooperative entities, Lilongwe Water Board's Kiosk Management Unit, service contracts, WUA constitutions/policies, and state-backed traditional chiefs). Under the narrow 2026-10-13 rule-type reading, it directly analyzes rule-type mechanisms governing service access: utility disconnection/rationing rules (<200 m3/month viability threshold and arrears enforcement), delegated regulatory/contractual ownership and management structure (formalized cooperative societies bound by service contracts with LWB's KMU), full cost-recovery and historical arrears-repayment tariff rules (coupled with elite honoraria policies that pass overhead and debt directly into retail kiosk tariffs), traditional chief discretion over land and governance, and bureaucratic utility procurement procedures delaying repairs.",
+      "c3": "Empirical qualitative/mixed-methods socio-legal case study drawing on primary fieldwork across two waves (Nov 2008–Feb 2009 and Nov 2013–Jan 2014), comprising 48 semi-structured interviews, focus group discussions, semi-structured questionnaires with 30 households, and institutional/tariff document analysis.",
+      "c4": "Reports concrete outcomes on affordability/retail water tariffs at kiosks (consumer price rising from MK 125/m3 to MK 300/m3, with the bulk-to-retail price ratio growing from 1:2.15 to 1:3.29), reversal of planned disconnection of 40% of kiosks (restoring water flow), and service availability/continuity (repairs taking up to 3 months, abandoned kiosks where repair costs were deemed unviable, shortages lasting 2–3 days, and supply limited to 2 days per week in some areas).",
+      "c5": "Identifies population and unit of analysis (low-income peri-urban communities/WUAs across 6 targeted areas in Lilongwe and kiosk-using households; n=48 interviews, FGDs, and n=30 household questionnaires), exposure (formalized WUA delegated management model, full cost-recovery and arrears-repayment tariff rules, utility procurement procedures, and elite capture/institutional bricolage), outcome (kiosk water tariffs/affordability, disconnection avoidance/kiosk abandonment, and service continuity), and study design (empirical qualitative/mixed-methods case study).",
+      "c6": "Published in English (with bilingual English/French abstract)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 7 of 16",
+        "quote": "In areas where consumption rates were below 200 m3/month and, as such, were considered ﬁnancially unviable, the Water Board planned to disconnect the kiosks. Implementing this measure would have meant closing 40 per cent of the operational kiosks. WaterAid Malawi’s intervention was targeted at reversing the rationing and kiosk disconnection policy."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 9 of 16",
+        "quote": "The WUAs are responsible for providing services at the kiosk, collecting revenues from the consumers and paying the bill, including actual consumption and a portion of the arrears, to the Water Board (Area 50 Service contract, Article 7.3; see Figure 2: The WUA Model)."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 2 of 16",
+        "quote": "Fieldwork for developing the case study was undertaken from November 2008 to February 2009 and from November 2013 to January 2014. Forty-eight semi-structured interviews were held with representatives of WaterAid (both at the headquarters in London and at the ofﬁce of the Country Programme in Malawi), as well as WUAs representatives and key informants involved in or knowledgeable about the WUAs."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 2 of 16",
+        "quote": "Opinions of local consumers were gathered through semi-structured questionnaires with 30 households in the area beneﬁting from the project."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 12 of 16",
+        "quote": "In 2014, the ratio of the price of the bulk water (MK 91/m3) and the ﬁnal price to consumers (MK 300/m3) had grown from 1:2.15 to 1:3.29. The high price charged at the kiosks to consumers is the result of a number of factors. As the WUA has to follow the principles of cost-recovery and proﬁt-making, all costs associated with the incorporation of the local elite in the WUA and the repayment of arrears automatically translate into higher prices at the kiosks."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 12 of 16",
+        "quote": "Last, despite the increase in price, the WUAs were hardly able to ensure improved service provision to their consumers: asset maintenance and continuity of the service remain of poor quality. In case of breakage, a response from the Lilongwe Water Board may take up to 3 months. The complex bureaucratic procedures adopted by the utility for the procurement of goods further slow down the simplest repair. Some kiosks have been abandoned because LBW considered the costs of repairing them too high and therefore not viable."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Delegated urban kiosk governance and regulatory structure (Water Users Associations registered as legal cooperative entities under service contracts with Lilongwe Water Board's Kiosk Management Unit), full cost-recovery and historical arrears-repayment tariff rules, elite-capture overhead policies via institutional bricolage, and bureaucratic utility procurement procedures.",
+    "outcome": "Communal water kiosk affordability/retail tariffs (price rising from MK 125/m3 in 2008–2009 to MK 300/m3 in 2014; bulk-to-retail markup ratio rising from 1:2.15 to 1:3.29), reversal of planned disconnection of 40% of kiosks, and service availability/continuity (repair delays up to 3 months, abandoned kiosks, 2–3 day shortages, and supply restricted to 2 days per week in some areas).",
+    "paper_read": "full text",
+    "population_and_sample": "Low-income peri-urban communities and Water Users Associations (6 targeted communities including Chinsapo, Mtandire/Mtsiliza, Kauma, Area 50, Mgona and Chimutu III) and kiosk consumer households in Lilongwe, Malawi; 48 semi-structured interviews, focus group discussions, and 30 household semi-structured questionnaires (units of analysis: WUA/community organization and consumer household).",
+    "rationale": "Empirical socio-legal case study in peri-urban Lilongwe, Malawi examining how delegated utility regulatory/contractual governance (formalized Water Users Associations under Kiosk Management Unit service contracts), full cost-recovery and arrears-repayment tariff rules, WUA internal honoraria/benefit policies captured by traditional elites, and bureaucratic utility procurement procedures affect household water kiosk affordability (retail tariff markups), disconnection/abandonment of kiosks, and continuity of water supply. Satisfies all inclusion criteria (c1–c6), including both plain and narrow rule-type readings of c2; eligible for systematic review mechanism synthesis as an empirical socio-legal study.",
+    "record_id": "R8DFDDA0C0646",
+    "study_design": "Qualitative / mixed-methods empirical socio-legal case study (48 semi-structured interviews, focus group discussions, 30 household semi-structured questionnaires, and institutional/financial document analysis across 2008–2009 and 2013–2014)."
+  }
+}

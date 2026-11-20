@@ -1,0 +1,276 @@
+{
+  "record_id": "RA20148E13D2F",
+  "study_id": "S115",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "16a77e5d897c66e12c697a0332bfcb1cf02857becde4e0a997238b58e17d7179",
+  "input_text_sha256": "e392aefa6e0310937d1fce73f12a33d73c30a1a5646658e06c2d8d2eddc56b32",
+  "prompt_sha256": "7a706e1bf289561284bce031c1a1b760006eac7638bc33f11fc06ebd04f2deab",
+  "started_at": "2026-11-20T03:38:21.807214+00:00",
+  "completed_at": "2026-11-20T03:39:42.745815+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA20148E13D2F\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA20148E13D2F\n- Title: The 2016 Water Crisis in San Andres Island: An Opportunity for Change?\n- Authors: Velásquez, Carolina\n- Year: 2020\n- DOI: 10.15446/cp.v15n29.86373\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: e392aefa6e0310937d1fce73f12a33d73c30a1a5646658e06c2d8d2eddc56b32) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=100527, sha256=e392aefa6e0310937d1fce73f12a33d73c30a1a5646658e06c2d8d2eddc56b32]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Colombia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water service access on San Andres Island, Colombia, covering piped aqueduct coverage, delivery frequency, emergency water-truck rationing, and household cistern/well reliance across Raizal and non-Raizal neighborhoods.",
+      "c2": "Plain wording: Yes — examines legal, institutional, contractual, and governance factors in the 2016 San Andres water crisis, including the State of Public Calamity decrees (Decreto 0170 of 2016 and Decreto 0340 of 2017 under Ley 1523 of 2012) and the private utility operation contract with Proactiva/Veolia. Narrow 2026-10-13 rule-type reading: Yes — although framed theoretically around crisis sense-making and critical of technocratic desalination delivery, the study empirically examines rule-type utility ownership/contractual and administrative allocation mechanisms directly governing household service access: specifically, the 15-year concession contract with Proactiva/Veolia (and its 2018 extension 'Otro Si No. 9') establishing differentiated supply frequency rules (24-hour supply in the northern tourist zone vs. once every 20 days in poor/Raizal sectors) and strict subscriber-only service boundaries during and after the crisis, as well as discretionary emergency rationing rules (1,500-2,000 liters per family divided between subscribers and non-subscribers).",
+      "c3": "Primary qualitative empirical study based on 79 face-to-face semi-structured interviews conducted in two waves (34 in August 2016 and 45 in November 2018) with affected Raizal and non-Raizal residents, local government and emergency officials, environmental regulator personnel (CORALINA), private utility (Veolia) staff, water-truck operators, and hotel maintenance supervisors, analyzed with inductive/deductive manual thematic coding alongside official decrees and technical plans.",
+      "c4": "Reports household and neighborhood water access outcomes, including piped aqueduct coverage, frequency/continuity of water delivery (24h/day in the north vs. once every 20 days or once per month, and 1-4 months without piped water in southern/hilly neighborhoods), rationed emergency water-truck allocations, exclusion of non-subscribers from new desalination supply, and lack of improvement in household access between 2016 and 2018.",
+      "c5": "Identifies population and units of analysis (households/residents in Raizal and non-Raizal neighborhoods and local water-governance institutions on San Andres Island; n = 79 interviewees across two waves), exposure (private utility concession contract rules/extension with Proactiva/Veolia and emergency Public Calamity administrative response/rationing), outcome (household water access, continuity/frequency of supply, and persistence of shortages from 2016 to 2018), and study design (two-wave qualitative case study).",
+      "c6": "Full text is written in English (with Spanish abstract/metadata)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 37",
+        "quote": "This study analyzed the crisis response and explored, in the short term, whether there was a change in access to water. In August 2016 were conducted 34 semi-structured interviews and 45 in November 2018."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 37",
+        "quote": "The local government and Veolia signed an operation-contract on September 8, 2005, for a term of 15 years (Ministerio del Medio Ambiente, 2010). After the agreement was signed, the contract became the central core of water policy on the island."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 37",
+        "quote": "The distribution was 24 hours a day for the north part of the island and only once every 20 days for the other sectors of the island (Proactiva, 2005), where mostly the poor and the Raizals are located."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 23 of 37",
+        "quote": "At the end of 2018, the local governor signed an amendment to the water agreement with Veolia, “Otro Si No. 9”, in which it was stated that the company would continue being the water operator in the island for another 15 years, and the plant has to be operated by the company."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 13 of 37",
+        "quote": "All data were collected and recorded in face-to-face interviews with people affected; two semi-structured interview guides were used"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 18 of 37",
+        "quote": "The majority of the participants located in the hilly and south part of the island manifested having the same water problem in 2018 as in 2016."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Private water utility concession contract and 15-year extension ('Otro Si No. 9') with Proactiva/Veolia (establishing differentiated supply schedules and subscriber vs. non-subscriber service boundaries) alongside the local government's State of Public Calamity (Decreto 0170 of 2016 / Decreto 0340 of 2017) administrative crisis response and rationing rules.",
+    "outcome": "Household and neighborhood drinking-water service access, piped water delivery frequency/continuity, emergency water-truck rationing, exclusion of non-subscribers from piped desalination benefits, and persistence of household water shortages between 2016 and 2018.",
+    "paper_read": "full text",
+    "population_and_sample": "Residents of Raizal and non-Raizal neighborhoods, public/emergency officials, environmental agency staff, private water utility (Veolia) staff, water-truck operators, and hotel maintenance supervisors on San Andres Island, Colombia (n = 79 semi-structured interviews: 34 in August 2016 and 45 in November 2018; crisis affected >14,000 residents; household/neighborhood and institutional units of analysis).",
+    "rationale": "This English-language empirical qualitative case study (79 semi-structured interviews in 2016 and 2018) examines household drinking-water access on San Andres Island, Colombia. Although framed around crisis sense-making, it empirically analyzes rule-type legal/institutional mechanisms directly governing household service access under both the plain and narrow 2026-10-13 Criterion 2 readings: specifically, the private utility concession contract with Proactiva/Veolia (and its 2018 15-year extension 'Otro Si No. 9') that codified differentiated delivery schedules (24 hours/day in northern tourist areas vs. once every 20 days in poor/Raizal areas) and restricted utility water delivery and new desalination supply to formal subscribers, as well as discretionary emergency rationing rules under the State of Public Calamity decrees. Per review safeguards, qualitative socio-legal studies with identifiable population, exposure, access outcomes, and design are included for mechanism synthesis.",
+    "record_id": "RA20148E13D2F",
+    "study_design": "Qualitative two-wave case study using semi-structured interviews (August 2016 and November 2018) and document analysis"
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "record_id": "RFD8DD6384F91",
+  "study_id": "S169",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "26fad4e5a3cd6bfc0921f9b123433819a75f8512965e7dae586374cebb7c5461",
+  "input_text_sha256": "78e9de2ab665d2246b846981381dbf7969cf6023d9ac55d1d9e7b4b386a1ef82",
+  "prompt_sha256": "9a559d8c2d61359276d7fc5ed1bef81fab92858a40ac2fcbaf2a8af6a385def7",
+  "started_at": "2026-11-20T02:53:25.437770+00:00",
+  "completed_at": "2026-11-20T02:55:25.896255+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RFD8DD6384F91\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RFD8DD6384F91\n- Title: Cadastral updating and local institutional capacities: property tax and public utilities; [Mise à jour cadastrale et capacités institutionne\n- Authors: Pulgarín-Franco J.-A.\n- Year: 2024\n- DOI: 10.15446/bitacora.v34n1.111741\n- Retrieval status: retrieved_cached_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 78e9de2ab665d2246b846981381dbf7969cf6023d9ac55d1d9e7b4b386a1ef82) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=67304, sha256=78e9de2ab665d2246b846981381dbf7969cf6023d9ac55d1d9e7b4b386a1ef82]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Colombia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines municipal domestic water (acueducto) and sewerage (alcantarillado) service access—specifically subscriber counts and municipal property coverage—across municipalities in Caldas, Quindío, and Risaralda, Colombia.",
+      "c2": "Plain wording: YES — examines an administrative, institutional, and fiscal-governance instrument, namely municipal cadastral updating (actualización catastral under Art. 24 of Ley 1450 de 2011) and associated local fiscal capacity via property tax collection (impuesto predial) and intergovernmental transfers (SGP under Ley 1176 de 2007). Narrow 2026-10-13 rule-type reading: NO — does not examine a rule-type mechanism directly governing household or community service access (such as eligibility screening, administrative burden, documentation or tenure requirements to obtain a utility connection, tariff or cost-recovery rules, discretion/accommodation, enforcement, or utility ownership/regulatory structure directly governing access). Instead, cadastral updating is analyzed as a macro-level municipal state-capacity and property-tax extraction tool to fund local public infrastructure and compute aggregate coverage denominators. Per A18, statistical significance or null findings play no role in this judgment.",
+      "c3": "Contains primary quantitative empirical analysis of longitudinal administrative datasets (IGAC, DNP, SSPD-SUI, INS) across up to 53 municipalities using robust paired-samples t-tests comparing 5-year pre- and post-update periods.",
+      "c4": "Reports municipal-level outcomes directly relevant to service access and connection: number of subscribers (suscriptores) and proxy service coverage (cobertura = subscribers divided by cadastral properties) for domestic water (acueducto) and sewerage (alcantarillado), alongside drinking-water quality risk (IRCA).",
+      "c5": "Clearly identifies the unit of analysis and sample (53 municipalities in Caldas, Quindío, and Risaralda, with 33 municipalities analyzed for water and sewerage subscribers/coverage), exposure (year of municipal cadastral update), outcomes (property tax revenue, SGP transfers, water/sewerage subscribers and coverage, IRCA), and study design (quantitative before-and-after comparison over two 5-year windows using robust paired-samples t-tests).",
+      "c6": "Full text is in Spanish (with English, Portuguese, Spanish, and French abstracts); translation/assessment from the provided Spanish full text is directly feasible per Criterion 10."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 (Abstract)",
+        "quote": "This paper analyzes cadastral updating and its impact on the strengthening of local institutional capacities, from the point of view of property tax collection for the provision of home public utilities of water and sewerage."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 (Introducción)",
+        "quote": "¿Hay diferencias en el número de suscriptores de los servicios de acueducto y alcantarillado con la actualización del catastro? ¿Hay cambios en la cobertura de los servicios de acueducto y alcantarillado con la actualización catastral?"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7 (Metodología y Datos)",
+        "quote": "La unidad de análisis comprende los 53 municipios de los departamentos de Caldas, Quindío y Risaralda, como se muestra en la Figura 1; las observaciones se realizan en dos períodos que abarcan cinco años para cada periodo, divididos a partir del año de la actualización catastral."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 (Resultados)",
+        "quote": "En segundo lugar, en la variable impuesto predial, se observa que este mide la capacidad recaudatoria de un municipio y representa un probable aumento producto de la actualización catastral que determina los avalúos catastrales."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17 (Conclusiones)",
+        "quote": "y aprovechar el potencial recaudatorio del predial es una condición necesaria que permitiría al municipio, en conjunto con el SGP, realizar las inversiones para construir y desplegar la infraestructura"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Municipal cadastral updating (actualización catastral; timing of municipal urban/rural property cadastre update) as a local institutional and fiscal-capacity instrument",
+    "outcome": "Municipal property tax collection (total and per capita), SGP drinking-water and sanitation intergovernmental transfers, water (acueducto) and sewerage (alcantarillado) subscriber counts and proxy coverage (subscribers per cadastral property), and Water Quality Risk Index (IRCA)",
+    "paper_read": "full text",
+    "population_and_sample": "53 municipalities in the departments of Caldas, Quindío, and Risaralda, Colombia (33 municipalities analyzed for water and sewerage subscribers and coverage; 52 for SGP transfers; 42 for IRCA water quality), observed across two 5-year periods pre- and post-cadastral update within 2000-2020",
+    "rationale": "Exclude under E03 (Wrong exposure). The retrieved Spanish full text matches the record metadata (Pulgarín-Franco, 2024, DOI 10.15446/bitacora.v34n1.111741) and empirically evaluates municipal water (acueducto) and sewerage (alcantarillado) subscriber counts and coverage before and after municipal cadastral updating across Colombian municipalities (meeting c1, c3, c4, c5, and c6). However, under the 2026-10-13 Criterion 2 clarification, the exposure—periodic municipal cadastral updating examined as a local state-capacity and property-tax revenue extraction tool (impuesto predial) alongside intergovernmental transfers (SGP) to finance public infrastructure—is a municipal public-finance/macro-capacity factor rather than a rule-type mechanism directly governing household or community service access (such as tenure/documentation prerequisites for utility connection, eligibility screening, tariff/cost-recovery rules, enforcement, or utility regulatory structure). Statistical significance of reported results played no part in this decision.",
+    "record_id": "RFD8DD6384F91",
+    "study_design": "Quantitative before-and-after municipal comparison using robust paired-samples t-tests across 5-year pre- and post-cadastral-update periods"
+  }
+}

@@ -1,0 +1,276 @@
+{
+  "record_id": "RC9714BB70FA1",
+  "study_id": "S163",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "8966848c2c4b9b1d9e8e16d7b26b1b5efb8231c2a402052c9b96524befd7bede",
+  "input_text_sha256": "35412a95f6390af219123d450c610f34ec2e9cd6df7592db882d0c86c4ba5a93",
+  "prompt_sha256": "1f9a9e563e56d2fbc15d5e5ebecaef0dfbab8bc09c4842133410408b30ec0258",
+  "started_at": "2026-11-20T02:45:43.892547+00:00",
+  "completed_at": "2026-11-20T02:47:03.479258+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RC9714BB70FA1\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RC9714BB70FA1\n- Title: Navigating rights and responsibilities: Water and sanitation access for informal vendors in Brazil\n- Authors: Moreira F.D.; Heller L.; Rezende S.\n- Year: 2025\n- DOI: 10.1016/j.jup.2025.102051\n- Retrieval status: retrieved_cached_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 35412a95f6390af219123d450c610f34ec2e9cd6df7592db882d0c86c4ba5a93) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=63539, sha256=35412a95f6390af219123d450c610f34ec2e9cd6df7592db882d0c86c4ba5a93]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines community/public drinking water and sanitation service access (public toilets, public drinking fountains, emergency water points, and commercial pay-per-use toilets) for informal street vendors working in downtown Juiz de Fora, Brazil.",
+      "c2": "Satisfies Criterion 2 under BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, it analyzes municipal, state, and federal legal, institutional, regulatory, and governance frameworks for urban water and sanitation provision. Under the narrow 2026-10-13 rule-type reading, it directly examines concrete legal and administrative rules governing service access and exclusion: (1) statutory service-boundary and eligibility definitions restricting universalization to 'occupied households' (Federal Law No. 11.445/2007) and defining water/sewage services only up to 'building connections' (Municipal Law No. 14.290/2020), thereby excluding public spaces and informal street vendors; (2) utility ownership and corporate-mandate rules under the State-Owned Companies Law (Law No. 13.303/2016) and CESAMA's 2021 Bylaws, under which the municipal utility deemed direct operation of public toilets incompatible with its legal mandate; (3) administrative burden from public procurement/tendering rules delaying facility repairs and maintenance; and (4) permitting, heritage-visibility, and land-ownership authorization rules (plus administrative discretion in operating the Alma Lavada toilet without SESMAUR authorization).",
+      "c3": "Qualitative socio-legal empirical study (focused ethnography conducted 2021-2023) combining field observation, legal/policy document analysis, and semi-structured interviews with 24 informal street vendors and 6 municipal/utility managers, analyzed via double-coded qualitative content analysis (agreement >80%, Krippendorff's alpha >0.8).",
+      "c4": "Reports empirical outcomes directly relevant to service availability, institutional exclusion, physical and temporal accessibility, continuity/maintenance, and affordability, including two-year closure of the main downtown public toilet, delayed and daytime-limited operation of a container toilet, exclusion of street vendors from municipal service plans, reliance on informal favors with shops, paying ~US$0.50 per use at private commercial toilets, and going all day without toilet access.",
+      "c5": "Clearly identifies the population and unit of analysis (24 interviewed informal street vendors out of ~459 in downtown Juiz de Fora, plus 6 public managers across SEPUR, CESAMA, SESMAUR, and SEDH; individual worker and municipal/utility institutional levels), legal/administrative exposures, water/sanitation access outcomes, and study design (focused ethnography with semi-structured interviews and qualitative content analysis).",
+      "c6": "Full text is written in English (with interview quotes translated by the authors from Brazilian Portuguese, which is also an eligible language)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 10 (Abstract)",
+        "quote": "The objective of this study was to identify and discuss the challenges rooted in policy gaps, institutional fragmentation, and sociopolitical exclusion related to the provision of water and sanitation in public spaces."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 10 (Section 3.2.1)",
+        "quote": "From the definition of services, it can be inferred that they apply only to facilities located within buildings, such as housing, workplaces, schools, or health centers, excluding services in public spaces."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 10 (Section 3.2.1)",
+        "quote": "According to one of SEDH’s managers, the initial plan was for CESAMA to operate the services directly. However, this was ultimately deemed incompatible with the company’s institutional mandate"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 10 (Section 3.2.2)",
+        "quote": "For instance, a formal tender is needed to replace the shower resistance or contract a laundry service for towels. While these procedures ensure transparency, accountability, and proper use of public resources, they can become a constraint, especially when the cost and time of the process outweigh the value of the service needed."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 10 (Section 2)",
+        "quote": "Semi-structured interviews with 24 street vendors in the central area were performed. To maintain anonymity, codes were used to replace the names of the interviewees."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 10 (Section 3.3)",
+        "quote": "However, some interviewees reported that they have no intention or are unable to achieve a level of relationship with formal vendors, having to walk to supermarkets, fast food chains, or shopping malls, most of which charge a fee for toilet use."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal, regulatory, and administrative rules governing public water and sanitation provision: statutory definitions limiting universalization and service scope to occupied households and building connections (Federal Law No. 11.445/2007; Municipal Law No. 14.290/2020), state-owned utility mandate restrictions (Law No. 13.303/2016 and CESAMA Bylaws), public procurement/bidding requirements for maintenance, urban heritage and land-ownership permitting rules, and cross-sectoral institutional fragmentation.",
+    "outcome": "Availability, institutional exclusion, accessibility, continuity/maintenance, and affordability of public drinking water and toilet/sanitation services for informal street vendors (closure/absence of municipal public toilets and fountains, >1-year operational delays, restricted operating hours, reliance on informal shop arrangements or ~US$0.50 pay-per-use commercial toilets, and daytime toilet withholding).",
+    "paper_read": "full text",
+    "population_and_sample": "Informal street vendors working in downtown Juiz de Fora, Minas Gerais, Brazil (n = 24 semi-structured interviewees from an estimated 459 informal street workers / 123 fixed spots) and municipal public managers (n = 6 across SEPUR, CESAMA, SESMAUR, and SEDH); unit of analysis: individual street workers and municipal/utility institutions.",
+    "rationale": "This qualitative socio-legal empirical study (focused ethnography in Juiz de Fora, Brazil, n = 24 informal street vendors and n = 6 public/utility managers) satisfies all inclusion criteria (c1-c6). It examines community/public water and sanitation service access (drinking fountains and toilets) and directly analyzes rule-type legal and administrative mechanisms under the 2026-10-13 Criterion 2 scope—specifically how statutory household/building-connection service boundaries (Federal Law 11.445/2007; Municipal Law 14.290/2020), state-owned utility corporate mandate limits (Law 13.303/2016; CESAMA Bylaws), procurement/tendering burdens, and heritage/land-ownership permitting barriers exclude informal street workers from public water and sanitation provision, forcing reliance on commercial pay toilets or informal favors. Per protocol safeguards, qualitative socio-legal studies with identifiable empirical methods are included for mechanism synthesis regardless of lacking quantitative effect sizes.",
+    "record_id": "RC9714BB70FA1",
+    "study_design": "Qualitative empirical study (focused ethnography with semi-structured interviews, field observation, legal/policy document analysis, and double-coded qualitative content analysis)"
+  }
+}

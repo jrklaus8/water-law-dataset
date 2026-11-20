@@ -1,0 +1,271 @@
+{
+  "record_id": "R87405E7AEC7F",
+  "study_id": "S184",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "4594d9694a6f205983393b25ac32120123b44002c545cc9086c39457f7adaeba",
+  "input_text_sha256": "83ed3a6afa3af64455754bd27f08433b5518bddd8c6fefcfcd5fd2e067665a17",
+  "prompt_sha256": "2f74b4a129264ea06b86ddad0d00bc9102afee4200cbb83622ca467a339512c2",
+  "started_at": "2026-11-20T03:38:21.818229+00:00",
+  "completed_at": "2026-11-20T03:41:34.393608+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R87405E7AEC7F\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R87405E7AEC7F\n- Title: Infrastructural Violence: Five Axes of Inequities in Water Supply in Delhi, India\n- Authors: Kumar A.; Singh N.; Cooper S.; Mdee A.; Singhal S.\n- Year: 2021\n- DOI: 10.3389/frwa.2021.727368\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 83ed3a6afa3af64455754bd27f08433b5518bddd8c6fefcfcd5fd2e067665a17) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=87635, sha256=83ed3a6afa3af64455754bd27f08433b5518bddd8c6fefcfcd5fd2e067665a17]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "no",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and settlement-level drinking water supply access in Delhi, India, including piped water network connections, reliance on water tankers and bottled canisters, per capita supply quantities (LPCD), supply hours, and exclusion of slums and unauthorized colonies.",
+      "c2": "Satisfies Criterion 2 under BOTH the plain wording and the narrow 2026-10-13 rule-type clarification. Plain reading: examines water legislation, municipal master plans, inter-agency institutional coordination (DDA and DJB), privatization/PPP arrangements, and water pricing. Narrow 2026-10-13 rule-type reading: directly examines concrete legal and regulatory rules governing service access, notably Section 9(1a) of the Delhi Jal Board Act 1998 prohibiting piped water supply to premises built in contravention of law (non-notified slums and unauthorized settlements) alongside discretionary political/judicial tanker accommodations, PPP service-area boundaries excluding adjacent slum settlements, differential per-capita and supply-duration regulatory norms in Delhi Master Plans (1981, 2001, 2021), and tariff/canister pricing structures.",
+      "c3": "No empirical methodology or primary data (E05). Although published under an Original Research header, the 16-page article contains no Methods/Methodology section, no primary qualitative or quantitative data collection (aside from a single unattributed conversational remark on p. 8 that DJB officers told the authors Dwarka was built without consulting DJB, with no interview protocol, sample, or qualitative method reported), and is not a systematic empirical synthesis. Instead, it presents a historical, conceptual, and policy narrative overview applying Rodgers and O'Neill's concept of infrastructural violence across Mughal, colonial, and post-colonial Delhi using secondary literature, statutory/master-plan texts, newspaper reports, and descriptive tables/maps compiled from published government and audit documents (CAG 2013, Economic Survey of Delhi 2018-19, NCRPB 1999, DJB 2016).",
+      "c4": "Discusses secondary descriptive water-access outcomes from government/audit reports, including household non-connection to the DJB piped network (24.8% in 2011-12), tanker water availability (3.82 LPCD vs. 172 LPCD norm), spatial exclusion of slum settlements from the Mehrauli/Vasant Vihar 24x7 PPP area, multi-year absence of piped water in DDA sub-cities (Dwarka, Narela), spatial disparities in LPCD and supply hours, and canister vs. piped water unit prices.",
+      "c5": "While the general population setting (Delhi residents and informal settlements), governance mechanisms, and secondary access indicators are discussed narratively across multiple historical eras and spatial scales, the paper lacks an identifiable empirical study design, sampling frame, data-collection protocol, or empirical analytical method linking exposure to outcome at a consistent unit of analysis.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 16",
+        "quote": "Using the concept of infrastructural violence, this paper exposes how past and present governance of water has resulted in unequal distribution of supply across the city to exclude vulnerable communities from accessing drinking water."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 16",
+        "quote": "Through a historical and structured analysis, we aim to make a contribution to the theme of infrastructural violence by providing examples of how the relationships of hierarchy and power manifest to create inequitable access."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 16",
+        "quote": "during 2011–12 period 24.8% of the households in Delhi were not connected to the DJB’s water supply network. A majority of these households were part of the unauthorized colonies and Jhuggi Jhopari clusters situated on the periphery of the city."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 16",
+        "quote": "Provisions of the DJB Act 1998 clearly marginalize and exclude a large proportion of citizens living in Delhi from accessing water from the network (see Table 2). So, it can be argued that the water provisioning statute is exclusionary."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 16",
+        "quote": "Corporate vendors sell 1 kl of water in canisters to the poor at the steep rate of Rs. 2,600 (Delhi Jal Board, 2015), which is 236 times higher than water supplied through the network."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Five axes of water governance and infrastructural exclusion in Delhi: statutory legal exclusion of unauthorized/non-notified settlements under Section 9(1a) of the Delhi Jal Board Act 1998, water commodification (20-L canisters) and 24x7 PPP privatization, lack of coordination between DDA and DJB, differential water supply standards in Delhi Master Plans (1981, 2001, 2021), and over-estimation of aggregate water supply",
+    "outcome": "Secondary descriptive indicators of drinking water access, piped network connection, reliance on tankers and 20-L canisters, per capita supply (LPCD), hours of daily supply, spatial exclusion from 24x7 PPP service areas, and unit water prices",
+    "paper_read": "full text",
+    "population_and_sample": "Residents of Delhi, India, particularly marginalized populations in informal settlements, slums (Jhuggi Jhopari clusters), unauthorized colonies, and peripheral sub-cities (secondary aggregate population figures cited from government reports; no primary sample)",
+    "rationale": "Full text matches metadata (Kumar et al., 2021, Frontiers in Water, doi: 10.3389/frwa.2021.727368). The paper clearly addresses drinking water service access in Delhi (c1=yes) and examines specific rule-type legal, planning, and regulatory mechanisms governing access—such as Section 9(1a) of the Delhi Jal Board Act 1998 barring piped supply to illegally constructed premises, Master Plan supply standards, PPP service-boundary exclusions, and canister/piped pricing—satisfying both the plain and narrow 2026-10-13 readings of Criterion 2 (c2=yes), while citing secondary access outcomes (c4=yes). However, the article contains no Methods section, no identifiable empirical research design, and no primary data collection, nor is it a systematic empirical synthesis; rather, it is a historical, conceptual, and policy narrative overview applying the theoretical lens of infrastructural violence to secondary literature, statutory/planning documents, and published government reports (c3=no, c5=no). Per review rules, policy/historical narrative overviews with no empirical method and no primary data are excluded as E05. Confidence is medium only because the journal classifies the article as Original Research and the authors compile illustrative tables and maps from official planning and audit documents.",
+    "record_id": "R87405E7AEC7F",
+    "study_design": "not reported"
+  }
+}

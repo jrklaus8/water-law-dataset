@@ -1,0 +1,276 @@
+{
+  "record_id": "RF56178B6FB26",
+  "study_id": "S183",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "212bec9638648ea2403d0baebc7039d92a8241bdc64cb1a4fc1a58c94793228a",
+  "input_text_sha256": "da388dac5d278979b067e8dd0e50fc8cbd8a886b30839923604d678c2fda4a97",
+  "prompt_sha256": "46b6e054de6cb54aacf1bce12c2674d304dd842e3734964c56e25d115e015862",
+  "started_at": "2026-11-20T03:35:54.317181+00:00",
+  "completed_at": "2026-11-20T03:38:21.771311+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RF56178B6FB26\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RF56178B6FB26\n- Title: What drives the urban water regime? An analysis of water governance arrangements in Hyderabad, India\n- Authors: Nastar M.\n- Year: 2014\n- DOI: 10.5751/ES-06570-190257\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: da388dac5d278979b067e8dd0e50fc8cbd8a886b30839923604d678c2fda4a97) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61405, sha256=da388dac5d278979b067e8dd0e50fc8cbd8a886b30839923604d678c2fda4a97]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Yes. Examines urban household and slum-dweller access to piped water supply services in Hyderabad, India, including network connectivity, intermittent supply, reliance on tankers/vendors, and affordability.",
+      "c2": "Yes under both readings. Plain wording: Examines legal, administrative, institutional, and governance arrangements in Hyderabad's urban water sector (the 74th Constitutional Amendment Act decentralization, National Water Policy, HMWSSB organizational reforms, and donor-driven cost-recovery/PPP policies). Narrow 2026-10-13 rule-type reading: Although framed within a macro Multi-Level Perspective (landscape-regime-niche) transition analysis, the paper explicitly analyzes concrete rule-type mechanisms governing household access and affordability: (1) tariff and cost-recovery rules, specifically increasing block tariffs (IBT) calculated per connection that push low-income households sharing a connection into unsubsidized upper blocks, metered-connection requirements that exclude poor households from 70-80% of subsidies, and full-cost recovery tariff hikes; (2) administrative connection-application and customer-service mechanisms (Single Window Cell for new water/sewer connection applications and Metro Customer Care) whose focus on registered consumers excludes unrecorded slum dwellers; and (3) utility regulatory/governance structure (semiautonomous HMWSSB board, 74th CAA municipal delegation, and withdrawal of the 50% Neeru-Meeru rainwater-harvesting subsidy).",
+      "c3": "Yes. Qualitative empirical case study combining primary fieldwork in January 2011 (15 structured open-ended in-depth interviews, narrative walks, and in situ observation across three Hyderabad slum areas), primary document analysis (water policies, municipal City Development Plans, memoranda, and minutes of meetings), and triangulation with secondary household surveys (Raghavendra 2006, n=550; Davis et al. 2008, n=919). Primary interview findings are synthesized narratively rather than reported as standalone quantitative estimates, which remains eligible for qualitative mechanism synthesis.",
+      "c4": "Yes. Reports outcomes on household water connectivity/coverage (95% citywide, 90% in slums, ~40% working meters), supply continuity/reliability (a few hours on alternate days in low-income areas), affordability/pricing (higher per-kiloliter charges under increasing block tariffs for shared connections, 2 to 20 times higher unit prices from tankers/vendors, and ~4% vs 0.7% income share spent on water), and exclusion of unregistered slum households from utility reforms and subsidies.",
+      "c5": "Yes. Population and unit of analysis (urban and slum households in Hyderabad, alongside city/utility regime institutions HMWSSB and GHMC), exposure (urban water governance reforms and tariff/administrative rules), outcome (household water connection, continuity, affordability, and exclusion), and study design (qualitative empirical case study using MLP triangulation) are all identifiable.",
+      "c6": "Yes. Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 10 (Abstract)",
+        "quote": "Based on a multi-level perspective in transition studies, this study explores the major interplay between actors in the urban water regime and analyzes how that influences access to water among the urban poor."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 10 (Methodology)",
+        "quote": "In January 2011, I conducted two weeks of intensive fieldwork in disadvantaged urban areas of Hyderabad and carried out 15 in-depth interviews with residents of the three slum areas of Jagadgirigutta in Quthbullahpur, Fathenagar in Kukatpall, and Secunderabad Division in Begumpet towns."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 10 (Methodology)",
+        "quote": "The data analysis was based on information about water connectivity, sufficiency of supply, water filtering devices, water pressure, frequency of water availability, and affordability of price, as well as the incidence of water-related diseases and predicaments in the household."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 10 (The managerial aspect)",
+        "quote": "Although these initiatives have increased the ability of users to interact with the HMWSSB effectively, they are too focused on registered consumers (Joshi 2007). This excludes the urban poor in slum areas who are neither recorded consumers nor are served by providers."
+      },
+      {
+        "criterion": "c2_and_c4",
+        "page": "PDF Page 5 of 10 (The social aspect)",
+        "quote": "Secondly, in low-income areas the water connection is often shared among a group of households, making the water bills much higher than single household usage since the calculation is made on the basis of increasing block tariff (HMWSSB 2008)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 3 of 10 (The Urban Water Regime in Hyderabad)",
+        "quote": "In spite of these figures, water access is intermittent, and in low-income areas, water is supplied for just a few hours on alternate days (George et al. 2009, McKenzie and Ray 2009)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Urban water governance arrangements and rule-type utility/tariff mechanisms in Hyderabad: 74th Constitutional Amendment Act decentralization, HMWSSB semiautonomous reforms (Single Window Cell connection-application system, Metro Customer Care, Citizen's Charter focused on registered consumers), increasing block tariff (IBT) and metered-connection subsidy rules, full-cost recovery policies, and withdrawal of rainwater-harvesting subsidies.",
+    "outcome": "Household water service access, network connectivity, intermittency/continuity of supply (hours on alternate days), water affordability and unit price paid (shared-connection block tariff burden, vendor prices, income share), and exclusion of unregistered slum dwellers.",
+    "paper_read": "full text",
+    "population_and_sample": "Urban residents and low-income/slum households in Hyderabad, Andhra Pradesh, India (primary qualitative sample of 15 residents interviewed across three slum areas—Jagadgirigutta, Fathenagar, and Secunderabad Division—triangulated with policy/municipal documents and secondary Hyderabad household surveys of n=550 and n=919 households; regime-level institutions HMWSSB and GHMC).",
+    "rationale": "Nastar (2014) is an empirical qualitative case study of urban water governance and household water access among the urban poor in Hyderabad, India. It satisfies all review-inclusion criteria (c1-c6): it examines household/slum piped water access, intermittency, and affordability (c1, c4); analyzes concrete rule-type mechanisms under both the plain and narrow 2026-10-13 readings of Criterion 2—including increasing block tariff rules penalizing shared connections, metered-connection subsidy eligibility, full-cost recovery pricing, Single Window Cell/Metro Customer Care administrative reforms restricted to registered consumers, and semiautonomous utility structure (c2); and employs identifiable empirical case-study methods combining 15 primary slum-resident interviews, narrative walks, in situ observation, document analysis, and secondary household survey data (c3, c5) in English (c6). Confidence is rated medium because the overarching framing is a macro Multi-Level Perspective regime analysis and empirical findings synthesize primary fieldwork narratively alongside cited secondary studies rather than reporting standalone quantitative estimates from the 15 interviews, though qualitative studies remain eligible for the systematic review's mechanism synthesis.",
+    "record_id": "RF56178B6FB26",
+    "study_design": "Qualitative empirical case study (Multi-Level Perspective analysis triangulating primary structured open-ended interviews, narrative walks, in situ observation, document analysis, and secondary survey data)"
+  }
+}

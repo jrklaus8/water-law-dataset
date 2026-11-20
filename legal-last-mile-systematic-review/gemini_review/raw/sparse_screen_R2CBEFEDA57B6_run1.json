@@ -1,0 +1,266 @@
+{
+  "record_id": "R2CBEFEDA57B6",
+  "study_id": "S117",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "bad1b8b5f6500ef61a342012d97719bb7f5436c80e9d456f92c2c61909062b6e",
+  "input_text_sha256": "97ec1eda0a00e2b74ca9c7c931cb30283c7b0312722eacfd6da60781b507c59d",
+  "prompt_sha256": "767682da3a62b71b88d0fa651f6226cf9f88dc330f7611a3e5ff1a6cea86ab4f",
+  "started_at": "2026-11-20T03:43:20.701253+00:00",
+  "completed_at": "2026-11-20T03:44:16.358671+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R2CBEFEDA57B6\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R2CBEFEDA57B6\n- Title: A Comparative Analysis of the Public and Private Water Supply and Sanitation Service Providers' Work in Brazil\n- Authors: Pinheiro, Fernando Antonio Perrone; Savoia, José Roberto Ferreira; de Angelo, Cl\n- Year: 2016\n- DOI: 10.15728/bbr.2016.13.1.6\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 97ec1eda0a00e2b74ca9c7c931cb30283c7b0312722eacfd6da60781b507c59d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=59785, sha256=97ec1eda0a00e2b74ca9c7c931cb30283c7b0312722eacfd6da60781b507c59d]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household/municipal water supply and sanitary sewage service access (total water service index IN055, sewage collection index IN015, sewage treatment indices IN016 and IN046, and practiced water and sewage tariffs IN004) across Brazilian municipalities/service providers.",
+      "c2": "Satisfies both readings of Criterion 2. Plain wording: examines institutional, legal, regulatory, and governance arrangements—specifically the legal nature and public vs. private/mixed-capital ownership and concession/PPP management of water and sanitation service providers under Law 11.445/2007, as well as tariff-setting and regulatory productivity-sharing (Factor X). Narrow 2026-10-13 rule-type reading: directly examines 'utility ownership or regulatory structure directly governing service access' (comparing direct public administration, regional authorities, public companies, private concessionaires, social organizations, and mixed-capital utilities on service coverage and universalization) as well as 'tariff or cost-recovery rules' (practiced tariffs IN004 and cost/productivity pass-through into tariffs across utility legal forms).",
+      "c3": "Quantitative empirical analysis of National Sanitation Information System (SNIS) data covering up to 1,203 water supply and sewage service providers in Brazil (2000–2010), using Kolmogorov-Smirnov tests, Kruskal-Wallis non-parametric tests on 2010 levels and 2005–2010 access changes, and unbalanced fixed-effects static panel regressions (2000, 2005, and 2010).",
+      "c4": "Reports service access and tariff outcomes by provider legal nature, including the total water service index (IN055) and sewage collection index (IN015) in 2010, the 2005–2010 change in water service and sewage collection coverage, sewage treatment indices (IN016, IN046), and average practiced water and sewage tariffs (IN004).",
+      "c5": "Population/unit of analysis (SNIS water and sewage service providers/municipalities in Brazil; n=217 in 2000, n=422 in 2005, n=1,203 in 2010), exposure (legal nature/ownership and management model of the utility, plus cost/productivity indices interacted with ownership dummies), outcomes (water and sewage coverage indices IN055/IN015, sewage treatment IN016/IN046, and average tariff IN004), and study design (observational comparative cross-sectional/change analysis and fixed-effects static panel regression) are all clearly specified.",
+      "c6": "Full text is written in English, an eligible language without translation."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2",
+        "quote": "For this end, we used a database of 1.203 providers of these services in Brazil between 2000 and 2010, this data coming from the SNIS (National Sanitation Information System)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "The regression on topic 4 aims to verify the correlation between tariff and productivity indexes, according to the legal nature of the service provider."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 13",
+        "quote": "In the spirit of Law 11.445 / 2007 to ensure the population access to the services of sanitation, it is justified to assess whether private service providers have shown higher performance in relation to public providers in achieving this goal."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 14",
+        "quote": "Growth in access to services will be measured by comparing the 2005 figures with those measured for 2010."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal nature and ownership/management structure of water supply and sanitation service providers (private company/concession vs. direct public administration, regional authority, public company, social organization, mixed-capital company with private management, and mixed-capital company with public management), including interaction with cost/productivity indices in tariff pass-through analysis",
+    "outcome": "Total water service coverage index (IN055), sewage collection coverage index (IN015), sewage treatment indices (IN016, IN046) in 2010 and 2005–2010 evolution in access, and average practiced water and sewage tariff (IN004)",
+    "paper_read": "full text",
+    "population_and_sample": "Water supply and sanitary sewage service providers / municipalities in Brazil recorded in the National Sanitation Information System (SNIS) from 2000 to 2010 (217 records in 2000, 422 in 2005, and 1,203 service providers in 2010; unit of analysis: service provider / municipality-year)",
+    "rationale": "This empirical study satisfies all inclusion criteria (c1–c6). Using SNIS administrative data on up to 1,203 Brazilian water and sanitation service providers (2000–2010), it evaluates how utility ownership and legal governance structure (private concessionaires vs. public administration, regional authorities, public enterprises, and mixed-capital utilities) affect water supply coverage (IN055), sewage collection coverage (IN015), 2005–2010 universalization gains, and practiced water/sewage tariffs and cost pass-through (IN004). Utility ownership/concession structure directly governing service access and tariff/cost-recovery rules squarely fit both the plain wording and the 2026-10-13 rule-type clarification of Criterion 2.",
+    "record_id": "R2CBEFEDA57B6",
+    "study_design": "Quantitative observational comparative study using cross-sectional and 2005–2010 difference comparisons (Kruskal-Wallis tests) and unbalanced static fixed-effects panel regressions (2000, 2005, 2010)"
+  }
+}

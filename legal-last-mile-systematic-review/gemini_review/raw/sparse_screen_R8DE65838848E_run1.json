@@ -1,0 +1,271 @@
+{
+  "record_id": "R8DE65838848E",
+  "study_id": "S175",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "031903a9e7bddd6656a0268e6f1eaa1d1551bf932e93b9a62c4d6bda52c0db8a",
+  "input_text_sha256": "d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0",
+  "prompt_sha256": "ae3637fcfcfc4715da7934612e55b647993bc1e7b00312931ac113b0d9034890",
+  "started_at": "2026-11-20T02:45:43.898374+00:00",
+  "completed_at": "2026-11-20T02:48:44.721300+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R8DE65838848E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R8DE65838848E\n- Title: Corruption risks, management practices, and performance in water service delivery in Kenya and Ghana: An agent-based model\n- Authors: Bellaubi F.; Pahl-Wostl C.\n- Year: 2017\n- DOI: 10.5751/ES-09205-220206\n- Retrieval status: retrieved_cached_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61723, sha256=d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya and Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Addresses urban water service delivery (WSD) in five utility service areas in Kenya (Old Town in Mombasa, Migosi in Kisumu, Kangemi in Nairobi) and Ghana (Madina and Nima in Accra).",
+      "c2": "Plain wording: Yes — examines water governance, institutional integrity (transparency of written rules, accountability/control mechanisms, participation), corruption risks, opportunistic vs. pragmatic management practices, and public corporate utility (Kenya) vs. private sector participation (Ghana) arrangements. Narrow 2026-10-13 rule-type reading: No — rather than analyzing a specific legal or administrative rule-type mechanism directly governing household service access (such as eligibility screening, tenure/documentation rules, tariff rules, administrative burden, or disconnection/enforcement rules), the paper models abstract behavioural corruption risks, social-network reciprocity ties, and opportunistic vs. pragmatic management across principal-agent game dyads (assigning both countries identical pragmatic/free-riding parameters at the utility-user interface).",
+      "c3": "No new empirical evidence or empirical analysis is conducted. The study builds and runs a deterministic exploratory agent-based simulation model (ABM) in NetLogo based on 2x2 game-theoretic social dilemmas (Prisoner's Dilemma, Snow Drift, Stag Hunt). Previously published aggregate scores from Bellaubi and Visscher (2014, 2016), GII (2011), and TIK (2011) are imported solely to parameterize and calibrate a model constant (C), with no primary data collection or empirical methodology reported.",
+      "c4": "Although Table 5 reprints secondary area-level benchmark scores (continuity, quality, coverage, affordability, and quantity; with continuity and coverage definitions transposed in Table 3) from Bellaubi and Visscher (2014) to calibrate the model, the analytical outcome generated and evaluated by this paper's ABM is simulated game-theoretic principal-agent payoffs summed across ministry, regulator, municipality/agency, utility, and user dyads (Table 7), not an empirically measured water access outcome.",
+      "c5": "Study design is identifiable as a computational agent-based simulation rather than an empirical study, but for the underlying empirical case studies no household/respondent population or sample sizes or sampling procedures are reported, and Figures 1 and 2 (containing the dyad-specific TAP and social cost input scores) are absent from the text beyond captions. In the ABM itself, all users in each country are collapsed into a single representative actor node.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 14",
+        "quote": "We explore the extent to which corruption and management practices affect the performance of WSD by developing an exploratory agent-based model (ABM) that builds on the principal-agent theory."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 14",
+        "quote": "The ABM builds on a principal-agent representation for Kenya and Ghana WSD that results from analyzing three case studies in Kenya and two in Ghana, carried out as a part of Transparency International’s “Transparency and Integrity in Service Delivery in Africa Program” (Bellaubi and Visscher 2014)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 14",
+        "quote": "In Kenya and Ghana, the relationship between water companies (agents) and users (principals) is characterized by low TAP and balance of power between the agent and the principal resulting in pragmatic management."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 14",
+        "quote": "The total performance of WSD is measured as the sum of the different payoffs obtained by all the actors involved as the result of the transactions among all of them."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12 of 14",
+        "quote": "The ABM presented is a deterministic explanatory learning model that aims to explain how corruption risks and management practices affect WSD’s performances in Kenya and Ghana, considering the role of learning and social networks."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Simulated corruption risks, integrity parameters (transparency, accountability, participation, and social reciprocity costs/gains), and opportunistic versus pragmatic management practices in principal-agent relationships under public utility (Kenya) and private sector participation (Ghana) water governance",
+    "outcome": "Simulated principal-agent game-theoretic strategies (cooperation/defection equilibria) and summed actor payoffs representing system-level water service delivery (WSD) performance, calibrated against secondary case-study WSDA benchmark scores",
+    "paper_read": "full text",
+    "population_and_sample": "Stylized actor nodes in a NetLogo agent-based model (ministry, regulator, municipality/water agency, water utility/operator, and a single users node) calibrated to five previously published urban case-study areas in Kenya (Old Town, Migosi, Kangemi) and Ghana (Madina, Nima); empirical household/respondent sample sizes are not reported",
+    "rationale": "Excluded under E05 (No empirical evidence). This article presents a deterministic computational simulation — an exploratory agent-based model (ABM) in NetLogo simulating 2x2 game-theoretic social dilemmas (Prisoner's Dilemma, Snow Drift, Stag Hunt) among stylized sector actors. It conducts no primary empirical data collection or empirical analysis, importing aggregate summary scores from previously published case studies (Bellaubi and Visscher 2014, 2016; GII 2011; TIK 2011) solely to calibrate a model constant (C) and reporting simulated principal-agent game strategies and payoffs rather than empirical household service access outcomes. Additionally, under the narrow 2026-10-13 Criterion 2 clarification, it models broad corruption risks, social-tie reciprocity, and opportunistic versus pragmatic management rather than a specific legal or administrative rule-type mechanism directly governing household water access, and does not report the underlying household population or sample.",
+    "record_id": "R8DE65838848E",
+    "study_design": "Computational simulation: deterministic exploratory agent-based model (ABM) calibrated with secondary case-study summary scores"
+  }
+}

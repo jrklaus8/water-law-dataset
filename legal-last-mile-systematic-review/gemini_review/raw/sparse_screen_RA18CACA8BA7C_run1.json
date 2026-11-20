@@ -1,0 +1,276 @@
+{
+  "record_id": "RA18CACA8BA7C",
+  "study_id": "S464",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "a64e1087a0bd319b18a23103573204f91726a7ce623a089f8ac3fa90d676ec2a",
+  "input_text_sha256": "b0ca56d987f1479c1292139fbe63758b7e40c697ea26f434082ccf424db12952",
+  "prompt_sha256": "6429abca34a33aaf58a01d27f2f2b7f1c4f0c514a4d813d8246a26660372f4d1",
+  "started_at": "2026-11-20T02:45:43.878049+00:00",
+  "completed_at": "2026-11-20T02:47:03.107978+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA18CACA8BA7C\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA18CACA8BA7C\n- Title: Historical legacies and contemporary mismanagement aggravated the 2015-2020 drought impacts in Qwaqwa, South Africa\n- Authors: Terzi S.; Delves J.L.; Clark V.R.; Belle J.; Otomo P.V.; Schneiderbauer S.\n- Year: 2026\n- DOI: 10.1016/j.ijdrr.2026.106311\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b0ca56d987f1479c1292139fbe63758b7e40c697ea26f434082ccf424db12952) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=84536, sha256=b0ca56d987f1479c1292139fbe63758b7e40c697ea26f434082ccf424db12952]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community water supply and service access in Qwaqwa (Maluti-a-Phofung Municipality), including municipal piped water, emergency water tanker delivery, and communal/private boreholes during the 2015-2020 drought.",
+      "c2": "Under the plain wording of Criterion 2, this paper would qualify ('yes') because it examines institutional and governance factors contributing to water scarcity, including municipal financial mismanagement, corruption in emergency tanker procurement, historical apartheid legacies, and uncoordinated dual governance between traditional chiefs and municipal spatial planners. Under the narrow 2026-10-13 rule-type clarification, however, Criterion 2 is not met ('no'): the paper conducts a broad disaster-risk forensic analysis (Pressure and Release framework and Causal Loop Diagram) of biophysical hazards, electricity load shedding, infrastructure decay, technical capacity deficits, general municipal corruption/procurement mismanagement, emergency relief delivery failures, and uncoordinated physical house siting over pipelines, rather than analysing a specific legal, regulatory, or administrative rule-type mechanism directly governing household/community water service access (such as eligibility screening, administrative burden, tenure/documentation requirements for utility access, tariff or cost-recovery rules, enforcement, discretion/accommodation, or utility ownership/regulatory structure directly governing service access).",
+      "c3": "Contains primary qualitative data (31 semi-structured individual and group interviews conducted in March 2022) combined with desk research and quantitative time-series analysis of precipitation (SPI), electricity load shedding, census population, dam storage, and estimated per capita water supply.",
+      "c4": "Reports community and household water availability, quantity, and reliability outcomes, including estimated per capita water supply dropping from 106 l/capita/day in 2001 to 15 l/capita/day in 2016, dam storage depletion, piped service disruptions, and reliance on private or municipal water tankers and boreholes.",
+      "c5": "Population and units of analysis (Qwaqwa area/Maluti-a-Phofung Municipality and 31 interviewed stakeholders/residents), exposure (compound drought hazard, load shedding, infrastructure decay, and macro-governance/management failures), outcome (per capita water availability and qualitative service reliability/access), and mixed-methods forensic case study design are clearly identifiable.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1, Abstract",
+        "quote": "Overall, the study demonstrates that drought impacts in Qwaqwa are shaped by the interaction of climatic hazard with long-standing social, institutional and infrastructural vulnerabilities."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4, Section 3.1",
+        "quote": "This scoping phase included desk research into the historical, social and political contexts of the research area, and included data collection from 31 participants from a range of stakeholder groups through semi-structured individual and group interviews"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7, Section 4.2.3",
+        "quote": "Among the accusations against the municipality are the mismanagement and misappropriation of finances, which includes money provided by the Department of Water and Sanitation (DWS) earmarked for improvement of water delivery infrastructure."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8, Section 4.2.4",
+        "quote": "It was repeatedly stated during our interviews (Ac008, Ac009, Wu18, Wu19, Pr027, Ct028, Ta030) that it is always the chief who grants permission for the construction of houses and allocates a plot of land for construction. However, this has led to many residential constructions unknowingly built on top of water infrastructure pipes, which thereby become inaccessible."
+      },
+      {
+        "criterion": "c1_and_c4",
+        "page": "PDF Page 8, Section 4.2.5",
+        "quote": "Several interviews (IIAc004, SSIAc005, SSIAc006, SSIAc009, FGAg011, SSIAg016, SSIWu018, SSIPr026, IICt029) mentioned the need to pay for water delivery during the drought due to the lack of reliability of municipal water delivery, especially in rural areas."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10, Section 4.3.3",
+        "quote": "The per capita water supply drastically decreased from 106 l/capita per day in 2001 to the minimum value of 15 l/capita per day in 2016 (Fig. 5, bottom panel)."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Compound climatic and socio-hydrological drought vulnerability drivers (2015-2020 precipitation deficits, national electricity load shedding, historical apartheid legacies, municipal financial mismanagement and corruption in emergency tanker procurement, technical skill shortages, aging/leaking pipes, and uncoordinated spatial land allocation between traditional authorities and local government)",
+    "outcome": "Community and household water availability, supply quantity, and delivery reliability, including estimated per capita water supply (l/capita/day), reservoir storage levels, piped supply interruptions, and reliance on emergency or private water tankers and boreholes",
+    "paper_read": "full text",
+    "population_and_sample": "Qwaqwa area in Maluti-a-Phofung Local Municipality, Free State Province, South Africa (area/municipality-level secondary time-series data and 31 purposively/snowball-sampled stakeholder interviewees in March 2022)",
+    "rationale": "Excluded under E03 (Wrong exposure). While this empirical mixed-methods forensic disaster study examines community and household water supply availability and reliability during the 2015-2020 drought in Qwaqwa, South Africa (meeting c1, c3, c4, c5, and c6), it fails Criterion 2 under the 2026-10-13 narrow rule-type scope clarification. Rather than examining a specific legal, regulatory, or administrative rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure requirements for utility connection, tariff or cost-recovery rules, enforcement, discretion, or utility ownership/regulatory structure governing access), the study examines broad disaster-vulnerability drivers including precipitation deficits, national electricity load shedding, infrastructure decay and leakage, historical apartheid legacies, general municipal corruption and procurement mismanagement in emergency tanker relief, technical skill shortages, and uncoordinated physical house siting over pipelines.",
+    "record_id": "RA18CACA8BA7C",
+    "study_design": "Retrospective mixed-methods forensic case study combining semi-structured interviews, desk research, quantitative time-series/indicator analysis, the Pressure and Release (PAR) framework, and a Causal Loop Diagram (CLD)"
+  }
+}
