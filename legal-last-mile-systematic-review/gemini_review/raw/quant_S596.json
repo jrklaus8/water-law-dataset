@@ -1,0 +1,125 @@
+{
+  "study_id": "S596",
+  "order": 10,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "534f575737d321c3729b3c4d613991ebe62f87697f5eab34590907be0b3979df",
+  "input_text_sha256": "22cd5d7af0a1034b6d6186474219e491caa038b3995a37de9a7af94f7ff448f0",
+  "prompt_sha256": "e674f13fa45140002142f09497417b3503086c84c54e8bdfcee0001e1371dfd5",
+  "started_at": "2026-11-20T04:34:19.564577+00:00",
+  "completed_at": "2026-11-20T04:35:08.074033+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S596\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S596 (Record ID: R238F15C4814B)\n- Citation: Kashem S.; Tahsin N.; Subah Z.; Murshed S.B.; Nowreen S.; Mondal M.S. — Assessing the right to water of the urban poor in Dhaka city\n- DOI: 10.1007/s10708-022-10804-3\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 22cd5d7af0a1034b6d6186474219e491caa038b3995a37de9a7af94f7ff448f0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=96637, sha256=22cd5d7af0a1034b6d6186474219e491caa038b3995a37de9a7af94f7ff448f0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Accepted: 23 November 2022 / Published online: 1 December 2022"
+      },
+      {
+        "page": "9",
+        "quote": "multi-criteria assessment called principal component"
+      },
+      {
+        "page": "10",
+        "quote": "there is no legal water connection, water is supplied"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "Primary journal volume/issue year is 2023 (GeoJournal (2023) 88:3183-3204); published online 1 December 2022 (copyright 2022).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "Full text read (22 pages). Although the paper substantively compares two Dhaka slums with legalized DWASA water connections (Korail and Baganbari) against one frequently evicted slum relying on informal/illegal private vendors (Tejgaon) using a stratified household survey (N = 150, 50 per slum) alongside FGDs, IDIs and KIIs, all empirical comparisons of water prices, water expenditure shares, per-capita consumption (lpcd), open defecation rates (Table 3, p. 11), pair-wise problem rankings (Table 4, p. 11) and PCA-weighted composite Water Security Index scores (WSI = 6.2, 2.8 and 3.4; Fig. 3, p. 14) are strictly descriptive without any inferential statistical tests, regression estimates, standard errors, confidence intervals, t-statistics, chi-square statistics or p-values (the only other quantitative metrics are goodness-of-fit bias-correction statistics PBIAS, NSE, MAE and RMSE for regional climate temperature downscaling in Table 5, p. 16). Flagging this study as eligible for inferential quantitative synthesis is therefore overstated.",
+    "study_id": "S596",
+    "verified_publication_year": "2023"
+  }
+}

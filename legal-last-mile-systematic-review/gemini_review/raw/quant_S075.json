@@ -1,0 +1,125 @@
+{
+  "study_id": "S075",
+  "order": 11,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "93e6724fea17de72b1c287f00eedd563742416efce26b51198a28c734377985d",
+  "input_text_sha256": "082f4832e1c1052af2518f1e3085a58c039fd7da927835c2f12a7b7dbcc896f3",
+  "prompt_sha256": "d881fa8ba658f6054955a4fef09668c8e62fad5dfe32f6eb307b1f0d5ac8226f",
+  "started_at": "2026-11-20T04:35:24.718718+00:00",
+  "completed_at": "2026-11-20T04:36:33.376481+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S075\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S075 (Record ID: R746445B4F65D)\n- Citation: Armstrong A.; Hope R.; Koehler J. — Piped water revenue and investment strategies in rural Africa\n- DOI: 10.1088/2634-4505/ac61f8\n- Retrieval status: retrieved_oa_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 082f4832e1c1052af2518f1e3085a58c039fd7da927835c2f12a7b7dbcc896f3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=84445, sha256=082f4832e1c1052af2518f1e3085a58c039fd7da927835c2f12a7b7dbcc896f3]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 7 (p. 6)",
+        "quote": "continuous response variable from volumetric revenue ($/m3) because the records follow a right-skewed"
+      },
+      {
+        "page": "PDF p. 13 (p. 12)",
+        "quote": "payments are not associated with greater revenue rates than conventional payment approaches at equivalent"
+      },
+      {
+        "page": "PDF p. 16 (p. 15)",
+        "quote": "Third, accurate data on number of water users over time are not consistently available."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "GEE models of log-transformed operator volumetric revenue ($/m3) (Table 5, PDF p. 13 / printed p. 12; >3,900 monthly records from 5 operators in Ghana, Rwanda, and Uganda; Archetype 1 Multi-country N = 1,680 off-premises + 2,094 on-premises revenue-month records): Tariff level beta = 0.470 (SE = 0.0319, 95% CI [0.407, 0.532], P < 0.001); On premises connections interaction beta = -0.034 (SE = 0.0429, 95% CI [-0.118, 0.050], P = 0.429); Prepaid credit interaction beta = -0.075 (SE = 0.0691, 95% CI [-0.210, 0.061], P = 0.279); Archetype 4 Public Prepaid credit interaction beta = -0.166 (SE = 0.0418, 95% CI [-0.248, -0.084], P < 0.001). Also one-way ANOVA/t-tests on log volumetric revenue across service areas and operators (Table 2, PDF p. 9, P < 0.001) and one-way ANOVA on population density (PDF p. 8, p > 0.05). Water volume dispensed (m3/wp/mo, Tables 3-4) is reported descriptively only.",
+    "publication_year_note": "Published 28 June 2022 in Environ. Res.: Infrastruct. Sustain. Volume 2 (2022), article 035003 (received 8 December 2021, revised 14 March 2022, accepted 29 March 2022).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The study conducts inferential quantitative analyses—generalised estimating equation (GEE) regressions (Table 5, PDF p. 13) and one-way ANOVA / Student's t-tests (Table 2, PDF p. 9)—testing how tariff levels, connection type (on- vs. off-premises), and payment modality (prepaid credit vs. pay-as-you-fetch / monthly billing) relate to log-transformed volumetric operator revenue ($/m3). However, all inferential models fail Criterion 4 because the tested outcome is an operator financial revenue-collection metric (revenue collected per cubic metre dispensed, explicitly normalised to remove differences in user counts and consumption rates) rather than a household or community water service access outcome (connection, coverage, availability, reliability, continuity, per-capita quantity, affordability, or exclusion). Aggregate water volume dispensed per waterpoint (Tables 3-4) is reported only with descriptive statistics without inferential tests, and the authors note that lack of user population data prevents analysing service area penetration, per-capita water usage, actual end-user prices paid, or service reliability.",
+    "study_id": "S075",
+    "verified_publication_year": "2022"
+  }
+}

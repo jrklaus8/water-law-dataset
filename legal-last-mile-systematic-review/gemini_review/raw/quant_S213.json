@@ -1,0 +1,121 @@
+{
+  "study_id": "S213",
+  "order": 14,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1dc87edb809857e0df6cf1e6ab17fe4b5f2951b0fff67d3d011ded5a4fc4b986",
+  "input_text_sha256": "80b567e0658fc459d1be7796a6a1374d928a9426bbe6ef632350e509e0a3fec5",
+  "prompt_sha256": "98104a9184ea0586b05175be4120ee8631bd319489abbfa1ff9d6f9e79c83f25",
+  "started_at": "2026-11-20T04:35:24.723467+00:00",
+  "completed_at": "2026-11-20T04:35:50.037906+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S213\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S213 (Record ID: R774BC8E6F153)\n- Citation: Zziwa Nimanya C. — Improving governance in the water sector through social accountability, communication and transparency\n- DOI: 10.4314/ijbcs.v15i7.4S\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 80b567e0658fc459d1be7796a6a1374d928a9426bbe6ef632350e509e0a3fec5) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=80059, sha256=80b567e0658fc459d1be7796a6a1374d928a9426bbe6ef632350e509e0a3fec5]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Programme Manager, Bombay First (Bombay City Policy Research Foundation)"
+      },
+      {
+        "page": "1",
+        "quote": "International Journal of Regulation and Governance"
+      }
+    ],
+    "paper_read": "not accessible",
+    "printed_headline_estimate": "none",
+    "publication_year_note": "Mismatched PDF retrieved: the attached 35-page text is Ramakrishna Nallathiga, 'Reforming water sector governance and institutions for improving efficiency: the case of Mumbai', International Journal of Regulation and Governance 6(1): 99-133 (no explicit publication year printed in headers; latest access date in references is 24 April 2006), rather than Study S213 (Zziwa Nimanya C., DOI 10.4314/ijbcs.v15i7.4S). Per strict audit instructions for a mismatched paper, verified_publication_year is set to cannot_tell.",
+    "quant_verdict": "cannot_tell",
+    "rationale": "The provided PDF is a document-retrieval mismatch and does not correspond to Study S213 (Zziwa Nimanya C., 'Improving governance in the water sector through social accountability, communication and transparency', DOI: 10.4314/ijbcs.v15i7.4S). Instead, the attached 35-page full text is Ramakrishna Nallathiga, 'Reforming water sector governance and institutions for improving efficiency: the case of Mumbai', published in International Journal of Regulation and Governance 6(1): 99-133 (which is itself a purely descriptive and qualitative institutional reform case study of Mumbai with secondary descriptive tables and no inferential statistics). Per System Instruction 2, because the full text is a mismatched paper and the true S213 text is not present, quant_verdict and verified_publication_year are set to 'cannot_tell' and candidate_swim_family to 'NONE'.",
+    "study_id": "S213",
+    "verified_publication_year": "cannot_tell"
+  }
+}

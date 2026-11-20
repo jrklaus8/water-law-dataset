@@ -1,0 +1,125 @@
+{
+  "study_id": "S1085",
+  "order": 72,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "db7ae7d46670613122be3c2479073963da3a92190a9d4f330ea5618b76c15fed",
+  "input_text_sha256": "e8ddb36d0c76d000b43dd7f8772a62e815980b2ef88ade403ca95017373ae3aa",
+  "prompt_sha256": "c7b6c0692d73c91fb1f8adc727838a7c14ed74d78db818e34a929a31c500ad20",
+  "started_at": "2026-11-20T04:48:03.494885+00:00",
+  "completed_at": "2026-11-20T04:48:52.265049+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S1085\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S1085 (Record ID: R13014C89A7C9)\n- Citation: Tigabu A.D.; Nicholson C.F.; Collick A.S.; Steenhuis T.S. — Determinants of household participation in the management of rural water supply systems: A case from Ethiopia\n- DOI: 10.2166/wp.2013.160\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: e8ddb36d0c76d000b43dd7f8772a62e815980b2ef88ade403ca95017373ae3aa) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=57017, sha256=e8ddb36d0c76d000b43dd7f8772a62e815980b2ef88ade403ca95017373ae3aa]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF p. 1 (p. 985)",
+        "quote": "A survey was carried out involving 16 water supply systems and 160 households within the Achefer"
+      },
+      {
+        "page": "PDF p. 10 (p. 994)",
+        "quote": "Table 4. Tobit estimates of the determinants of cash and labour contributions by households for water supply system"
+      },
+      {
+        "page": "PDF p. 13 (p. 997)",
+        "quote": "implementation phase significantly increases cash and labour contributions (ETB 0.37 per month and"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Tobit regressions of voluntary 3-month household O&M cash (CASHCONT, ETB) and labour (LABORCONT, days) contributions (N = 160 surveyed households across 16 systems; uncensored N = 140 for cash [chi2 = 72.03, Pseudo R2 = 0.12] and N = 135 for labour [chi2 = 76.22, Pseudo R2 = 0.15]; Table 4, PDF p. 10 / p. 994; marginal effects in Table 5, PDF p. 13 / p. 997; SEs not printed): Participation in project design/implementation (DPARDPIMP): cash beta = 0.45 (p < 0.01), dy/dx = 0.37 ETB/month; labour beta = 0.18 (p < 0.05), dy/dx = 0.13 days/month. Health-promoter advocacy (ADVOCACY): cash beta = 0.12 (ns), dy/dx = 0.10; labour beta = 0.32 (p < 0.01), dy/dx = 0.22 days/month. Trust in WUCs (TOWUCs): cash beta = 0.19 (p < 0.10), dy/dx = 0.16; labour beta = -0.05 (ns), dy/dx = -0.03. Household income (INCOME, per ETB 1,000): cash beta = 0.03 (p < 0.10), dy/dx = 0.03; labour beta = 0.04 (p < 0.01), dy/dx = 0.03. No household or community water access/service outcome is estimated.",
+    "publication_year_note": "Published in Water Policy Vol. 15 (2013), pp. 985-1000 (© IWA Publishing 2013; PDF p. 1); received 17 October 2012, accepted 4 March 2013, available online 24 July 2013 (PDF p. 16). Both issue year and online-first year are 2013.",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "Full text (17 PDF pages) is accessible and reports inferential Tobit regressions (Table 4, p. 994; Table 5, p. 997; N = 160 households across 16 rural water systems in Achefer, Ethiopia). However, the study fails Criterion 4 (and narrow Criterion 2) for SWiM synthesis: the sole dependent variables in the econometric models are households' voluntary cash contributions (CASHCONT, in ETB) and voluntary labour contributions (LABORCONT, in days) over the preceding 3 months toward system protection and maintenance (described by the authors as willingness-to-pay cash and willingness-to-contribute labour). No household or community water supply service access outcome (such as connection, coverage, functionality/reliability, continuity, quantity, water quality, or affordability/exclusion) is analysed as a dependent variable (subjective water satisfaction WASATS and perceived source safety PSOWS enter only as explanatory covariates predicting O&M contributions and are statistically insignificant). Moreover, the main significant predictors (self-rated degree of participation during NGO project design/implementation, health-promoter advocacy, household income, and trust in WUCs) are participatory project-delivery, attitudinal, and socioeconomic factors rather than a rule-type legal/administrative/tariff/tenure exposure tested on service access.",
+    "study_id": "S1085",
+    "verified_publication_year": "2013"
+  }
+}

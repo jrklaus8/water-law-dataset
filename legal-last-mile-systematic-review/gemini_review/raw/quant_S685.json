@@ -1,0 +1,125 @@
+{
+  "study_id": "S685",
+  "order": 52,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "208371977ae04766518e2ccd8b97c1b795e4b8f85fc4a6a536077b9c29ff4e92",
+  "input_text_sha256": "4cf0db134ed0ecc8e96e03a1b8c1764436170def88556513024ae443f5504d47",
+  "prompt_sha256": "17ce63558afbe00b2c557deb4c1a3e78e1e3fff4e95e94303bf2f52dd5ce4bc7",
+  "started_at": "2026-11-20T04:41:56.491210+00:00",
+  "completed_at": "2026-11-20T04:42:44.259697+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S685\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S685 (Record ID: R0AFB571151F8)\n- Citation: Sawchuk, Lawrence A; Burke, Stacie D; Padiak, Janet — A Matter of Privilege: Infant Mortality in the Garrison Town of Gibraltar, 1870-1899\n- DOI: 10.1177/036319902236626\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 4cf0db134ed0ecc8e96e03a1b8c1764436170def88556513024ae443f5504d47) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=99675, sha256=4cf0db134ed0ecc8e96e03a1b8c1764436170def88556513024ae443f5504d47]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "6",
+        "quote": "(Kolmogorov-Smirnov two-sample test [KS] = 0.730, n = 15, p = .66)."
+      },
+      {
+        "page": "6",
+        "quote": "military and civilian communities (KS = 1.461, n = 15, p = .028), with military infants"
+      },
+      {
+        "page": "14",
+        "quote": "distilled water was available free of charge only to the military and their families"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Phase I (1870-1884) annual infant mortality rate (IMR): civilian = 171.6 vs military = 156.5 per 1,000 live births, Kolmogorov-Smirnov two-sample test KS = 0.730, n = 15 years, p = .66 (secular trend Spearman rs = .557, df = 13, p = .031); Phase II (1885-1899) IMR: civilian = 160.4 vs military = 124.2 per 1,000 live births, KS = 1.461, n = 15 years, p = .028 (Spearman rs = -.207, df = 13, p = .459) (PDF p. 6 / journal p. 404; underlying counts in Note 29, PDF p. 27 / journal p. 425).",
+    "publication_year_note": "Printed on PDF p. 1 as Journal of Family History, Vol. 27 No. 4, October 2002, pp. 399-429 (2002 Sage Publications); no separate online-first date is printed.",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The full text reports inferential statistics—specifically Kolmogorov-Smirnov two-sample tests and Spearman rank correlations on 15-year annual series comparing military and civilian populations in Phase I (1870-1884) and Phase II (1885-1899)—so it is not purely descriptive. However, the sole outcome tested inferentially is the infant mortality rate (deaths under age one per 1,000 live births), which is a downstream health/mortality indicator rather than a Criterion 4 household or community water/sanitation service access outcome. All data on differential water/sanitation governance and access—such as military daily gallon rations, systematic military tank inspections, Governor Adye's prohibition on imported Spanish well water, free condenser water for military families versus a price of six gallons per penny for civilians, and 1878 civilian patio shares with cisterns (39.9%), wells (29%), or neither (40%)—are presented strictly as descriptive historical figures without inferential statistical tests on a water or sanitation access outcome.",
+    "study_id": "S685",
+    "verified_publication_year": "2002"
+  }
+}

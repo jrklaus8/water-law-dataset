@@ -1,0 +1,125 @@
+{
+  "study_id": "S387",
+  "order": 35,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "4011897df09fc84304c92705617170c16b4c657c92cbc8f5dd91351278977ce7",
+  "input_text_sha256": "107a26d779030c296a17a1b2898ddbf5ddb036d5730eb2f5c0829ab3d7309e68",
+  "prompt_sha256": "e1cbac921a04b1f7869c53196b52d2f634f007975ef803b0e0be18b922835338",
+  "started_at": "2026-11-20T04:39:07.840736+00:00",
+  "completed_at": "2026-11-20T04:39:50.980177+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S387\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S387 (Record ID: RB334FC53A1A9)\n- Citation: Glavanits J.; Fényes Z. — Beyond “Potty Parity”: Public Toilets, Gendered Time Costs, and Institutional Accountability in Everyday Mobility\n- DOI: 10.3390/laws15030055\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 107a26d779030c296a17a1b2898ddbf5ddb036d5730eb2f5c0829ab3d7309e68) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70747, sha256=107a26d779030c296a17a1b2898ddbf5ddb036d5730eb2f5c0829ab3d7309e68]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "7",
+        "quote": "SE = 0.281, t = −3.28, p = 0.002; β = −0.358), indicating that women reported lower"
+      },
+      {
+        "page": "7",
+        "quote": "(b = 0.382, SE = 0.156, t = 2.45, p = 0.016; β = 0.293), while gender and age group were not"
+      },
+      {
+        "page": "9",
+        "quote": "121.25 s (131 s during peak break periods). Female usage times ranged from 73 to 231 s,"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Welch's one-way ANOVA by gender (N = 97: 27 men, 70 women; Table 2, p. 7): perceived safety F(1, 43.7) = 13.89, p < 0.001; lack of nappy-changing facilities F(1, 59.2) = 6.33, p = 0.015; importance of unisex toilets F(1, 72.4) = 18.30, p < 0.001; agreement more women's toilets needed F(1, 35.1) = 17.06, p < 0.001. OLS regressions (N = 90, p. 7): gender -> need more women's toilets b = -0.920, SE = 0.281, t = -3.28, p = 0.002 (R2 = 0.238); SUM Experience -> SUM Satisfaction b = 0.382, SE = 0.156, t = 2.45, p = 0.016 (R2 = 0.135); bootstrap mediation of age on SUM Satisfaction via SUM Experience indirect effect = -0.237, SE = 0.095, 95% CI [-0.439, -0.071], p = 0.012 (p. 8). Restroom dwell-time observations (N = 56: 24 men, 32 women; p. 9) report descriptive means only (121.25 s vs. 136.63 s) without inferential tests.",
+    "publication_year_note": "Published 13 June 2026 in Laws 2026, Volume 15, Issue 3, Article 55 (Received: 6 February 2026; Revised: 19 May 2026; Accepted: 26 May 2026).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The paper reports inferential statistics (Welch's one-way ANOVAs on N = 97 survey respondents, plus OLS regressions, bivariate correlations, and a bootstrap mediation model on N = 90), alongside purely descriptive restroom use-time observations (24 men, 32 women). However, none of the inferential models empirically test a rule-type legal, regulatory, building-code, tariff, ownership, or administrative exposure (narrow Criterion 2). Instead, all tested predictors are individual respondent demographics (gender, age group) or a composite of self-reported adverse restroom experiences predicting attitudinal ratings and perceived safety/satisfaction. While the article doctrinally compares international building-code approaches and proposes a tripartite regulatory accountability matrix, no legal or institutional rule varies empirically in the quantitative analyses, making it out of scope for SWiM synthesis.",
+    "study_id": "S387",
+    "verified_publication_year": "2026"
+  }
+}

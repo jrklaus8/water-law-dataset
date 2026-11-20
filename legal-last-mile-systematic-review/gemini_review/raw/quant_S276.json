@@ -1,0 +1,125 @@
+{
+  "study_id": "S276",
+  "order": 63,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "036155d7005991e7a131bc19465c1bb94291703287d53950948d3c368a4e7c60",
+  "input_text_sha256": "557fcdd212756f0609449aecd88a83e7912d0f213b7e01748a011c0565dcdb46",
+  "prompt_sha256": "d04794f14fd71e2d6f4ec3940635579e86556b389ae05853654e870ace8de494",
+  "started_at": "2026-11-20T04:45:30.181763+00:00",
+  "completed_at": "2026-11-20T04:46:22.384634+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S276\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S276 (Record ID: R01E96F824BA3)\n- Citation: Moncaleano, DCC; Pande, S; Haeffner, M; Sánchez, JPR; Rietveld, L — Inefficiencies in water supply and perceptions of water use in peri-urban and rural water supply systems: case study in Cali and Restrepo, Colombia\n- DOI: 10.3389/frwa.2024.1389648\n- Retrieval status: retrieved_oa_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 557fcdd212756f0609449aecd88a83e7912d0f213b7e01748a011c0565dcdb46) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=89776, sha256=557fcdd212756f0609449aecd88a83e7912d0f213b7e01748a011c0565dcdb46]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "5",
+        "quote": "and erroneous data, the final sample size was 965 households."
+      },
+      {
+        "page": "10",
+        "quote": "(p-value <0.05), indicating that household level perceptions of water"
+      },
+      {
+        "page": "13",
+        "quote": "SEC factors accounted for only 10% of the variance, a result"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "One-way ANOVA on perceived household indoor water use: peri-urban mean 263 lpcd vs. rural mean 206 lpcd (27% higher, p < 0.05, N = 965 households across 8 WSSs; PDF p. 10 & Fig. 6 p. 12); regression of perceived water use on SEC factors (household size, education, age, occupation) and binary peri-urban/rural zone: R^2 = 10% (household size, education, and zone significant, exact coefficients in unprinted Appendix 2; PDF p. 13).",
+    "publication_year_note": "Published 14 November 2024 in Frontiers in Water, Volume 6, Article 1389648 (received 21 February 2024; accepted 30 September 2024; copyright 2024).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "Full text (17 pages) is accessible and reports inferential statistics (one-way ANOVA with post-hoc comparisons, pairwise correlations with Holm adjustment, and a multiple regression summarized from Appendix 2 on N = 965 households across 8 community water supply systems in Cali and Restrepo, Colombia). However, none of the inferential tests evaluates a narrow Criterion 2 legal, tenure, tariff, administrative, regulatory, or ownership exposure. All 8 studied systems are formal community Water Users' Associations (WUAs), and the inferential analyses test only socio-economic/demographic household characteristics (household size, education, age, occupation) and spatial location/system IDs (peri-urban vs. rural zone defined by distance from Cali) against self-reported perceived indoor water use habits (estimated from self-reported fixture use durations and literature flow rates, assuming shower use even during intermittent supply). Institutional/regulatory attributes such as Water Use Efficiency Program (WUEP) adoption, WUA staffing, and billing are reported only descriptively across the 8 systems in Tables 2-3 without inferential testing. Thus, the study falls under inferential_non_swim_or_out_of_scope.",
+    "study_id": "S276",
+    "verified_publication_year": "2024"
+  }
+}

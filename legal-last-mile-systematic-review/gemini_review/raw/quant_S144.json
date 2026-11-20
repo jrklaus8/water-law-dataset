@@ -1,0 +1,125 @@
+{
+  "study_id": "S144",
+  "order": 31,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "683c7d7e914e05958b7a36f5cbe047ba1587c2df97da8ea32bee6a8bd12cb2fb",
+  "input_text_sha256": "4fd0891d5157297afc35a52f647e6e12d6f2d45e042e080f0412409699593bd3",
+  "prompt_sha256": "ab5431b325952fdc3b0de0b43d27bee5d3e538c98d2be215f649a991c6cb3422",
+  "started_at": "2026-11-20T04:39:07.829700+00:00",
+  "completed_at": "2026-11-20T04:39:56.298516+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S144\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S144 (Record ID: R1BE593077522)\n- Citation: Mbana Z.; Sinthumule N.I. — What is there to drink? Water (in)justice in the democratic South Africa\n- DOI: 10.3389/frwa.2024.1354477\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 4fd0891d5157297afc35a52f647e6e12d6f2d45e042e080f0412409699593bd3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=74847, sha256=4fd0891d5157297afc35a52f647e6e12d6f2d45e042e080f0412409699593bd3]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 4",
+        "quote": "Chi-square (X2) tests were applied to compare observed results"
+      },
+      {
+        "page": "PDF Page 5",
+        "quote": "Enqabeni village (X2 = 300; df = 2; p < 0.0001) used more than"
+      },
+      {
+        "page": "PDF Page 9",
+        "quote": "water services have not yet been implemented, at least in Enqabeni"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Univariate one-sample goodness-of-fit chi-square tests within individual villages only (total N = 336 households: Enqabeni n = 205, Madiba n = 131; PDF Page 5): Madiba water source (70% open water bodies vs 30% community borehole), X2 = 21, df = 1, p < 0.0001; daily water use >45 L in Madiba (78%), X2 = 122, df = 2, p < 0.0001, and Enqabeni (90%), X2 = 300, df = 2, p < 0.0001; water transport method in Enqabeni, X2 = 125, df = 2, p < 0.0001, and Madiba, X2 = 61, df = 2, p < 0.0001. No exposure-outcome inferential contrast is reported.",
+    "publication_year_note": "Published 21 February 2024 in Frontiers in Water, Vol. 6, Article 1354477 (received 12 December 2023; accepted 05 February 2024; copyright 2024).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "Although the study reports SPSS chi-square (X2) statistics and p-values on PDF Page 5 (N = 336 households across Enqabeni, n = 205, and Madiba, n = 131), every inferential test is a univariate one-sample goodness-of-fit test comparing observed category proportions against equal expected frequencies within a single village (respondent age, employment, income source, water source type in Madiba, daily water volume category, and water transport mode). No bivariate or multivariable statistical test links any legal, constitutional, municipal-governance, assistance, or corruption exposure (Criterion 2) to household or community water access (Criterion 4); institutional, infrastructural, and corruption barriers (PDF Pages 6-10) are reported exclusively via descriptive frequencies (e.g., 100% uniform agreement) and qualitative thematic content analysis. Thus there is no SWiM-eligible exposure-outcome contrast.",
+    "study_id": "S144",
+    "verified_publication_year": "2024"
+  }
+}

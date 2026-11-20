@@ -1,0 +1,125 @@
+{
+  "study_id": "S368",
+  "order": 4,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9c6d02f63beef042835ef12eb17d441edeeedd8ea343495f62fca941bd5eb6f3",
+  "input_text_sha256": "61f4febce4181fc5a437bbf7f56b056b79ddf9508224106092148c4487f34b87",
+  "prompt_sha256": "f4540123d9466ae085509cb789a8a9a94f085b64c81c7f413752ad7d9fdf8d32",
+  "started_at": "2026-11-20T04:34:19.542680+00:00",
+  "completed_at": "2026-11-20T04:35:02.930720+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S368\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S368 (Record ID: R835B5C80B84D)\n- Citation: Makalela, Kagiso; Molepo, John — The Impact of COVID-19 Pandemic on Service Delivery: An Empirical Analysis of Lepelle-Nkumpi Local Municipality\n- DOI: 10.36369/2616-9045/2024/v14i1a4\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 61f4febce4181fc5a437bbf7f56b056b79ddf9508224106092148c4487f34b87) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=58625, sha256=61f4febce4181fc5a437bbf7f56b056b79ddf9508224106092148c4487f34b87]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "PDF Page 6",
+        "quote": "manifestation of unplanned disasters such as pandemics, earthquakes, plagues, and floods."
+      },
+      {
+        "page": "PDF Page 10",
+        "quote": "and sanitation service provision was (0.1149). The study revealed a positive coefficient"
+      },
+      {
+        "page": "PDF Page 13",
+        "quote": "The findings revealed a negative coefficient correction -(0.1194). The implication"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "COVID-19 perception vs. sanitation service provision perception: Pearson chi-square p <= 0.001, r = 0.1149 (Table 2, PDF p. 10, N = 449); COVID-19 perception vs. water service provision perception: Pearson chi-square p <= 0.014, r = -0.1194 (Table 5, PDF pp. 12-13, N = 449); COVID-19 perception vs. need for governance change: Pearson chi-square p <= 0.001 (Table 8, PDF p. 15, N = 449).",
+    "publication_year_note": "The printed journal issue header on every page (PDF pp. 1-19) states 'African Journal of Governance and Development | Volume 14 Issue 1 • July • 2025' (verified publication year 2025). Note that the DOI string printed on PDF p. 1 ('https://doi.org/10.36369/2616-9045/2024/v14i1a4') contains '2024', while Tables 1-8 cite 'Survey Data (2024)' and PDF p. 17 cites a source dated '10 December 2024'.",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "Although the study reports inferential bivariate Pearson chi-square p-values and correlation coefficients (r) across N = 449 surveyed households in Lepelle-Nkumpi Local Municipality, no tested exposure-outcome pair satisfies SWiM eligibility. Tables 2 and 5 cross-tabulate respondents' 5-point Likert perceptions of 'COVID-19' against their Likert perceptions of municipal sanitation provision (p <= 0.001, r = 0.1149) and water provision (p <= 0.014, r = -0.1194). This fails narrow Criterion 2 because the tested exposure ('COVID-19' pandemic shock/perception in a single cross-sectional survey within one municipality) is an exogenous public-health disaster rather than variation in a rule-type legal, tenure, tariff, regulatory, administrative, or ownership mechanism. Conversely, Tables 6-8 ('Financial resources', 'ICT', and respondent opinion on 'the need for municipal governance to change') test bivariate associations with 'COVID-19' rather than a household water or sanitation service access outcome (failing both Criterion 2 and Criterion 4).",
+    "study_id": "S368",
+    "verified_publication_year": "2025"
+  }
+}

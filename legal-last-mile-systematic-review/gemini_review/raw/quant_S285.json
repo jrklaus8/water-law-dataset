@@ -1,0 +1,125 @@
+{
+  "study_id": "S285",
+  "order": 53,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f06f9d9a98db69d2ca4cec73ba484c02b0c3f321cb4ec7eff0aba5f5654ced7c",
+  "input_text_sha256": "f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82",
+  "prompt_sha256": "702cb8e2d5a63275a8d90b35c323bc8e5338c21ffa02c55bfc3e8405e09d93eb",
+  "started_at": "2026-11-20T04:41:56.496932+00:00",
+  "completed_at": "2026-11-20T04:42:42.429215+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S285\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S285 (Record ID: R844DD727452E)\n- Citation: Flores Baquero, O; Jiménez Fdez De Palencia, A; Pérez Foguet, A — Measuring disparities in access to water based on the normative content of the human right\n- DOI: 10.1007/s11205-015-0976-8\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61704, sha256=f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "3",
+        "quote": "results presented herein focus on a case study of five communities with 296 households (154 served by CAPS"
+      },
+      {
+        "page": "6",
+        "quote": "composite indicators are beyond the scope of this article."
+      },
+      {
+        "page": "9",
+        "quote": "managed by CAPS, the distribution of results is 0%, 82% and 18% respectively."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "The cached 19-page PDF is an unformatted author manuscript/postprint with no journal header, volume/issue, copyright line, or publication year printed anywhere on the document. The latest dates printed in the reference list are 'accepted on 22 December 2014' (p. 16) and URL access dates of '02 January 2015' and '11 February 2015' (pp. 17, 19).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "This methodological case study in San Sebastián de Yalí, Nicaragua develops a stratified household sampling protocol (households served by CAPS community water committees vs. informal self-provision; n = 107 polled out of N = 296 households across 5 rural communities) and 0-to-1 composite indicators across five human-right-to-water dimensions. While finite-population Clopper-Pearson binomial error bounds are used ex ante to set target sample sizes (alpha = 0.90, e < 0.20; overall sample e = 0.11-0.13, pp. 7-8), the empirical comparison of CAPS-served vs. self-provided households reports only unquantified graphical spider charts (Figures 2-4) and descriptive faecal-coliform percentages (64%, 20% and 16% for self-provided vs. 0%, 82% and 18% for CAPS-served, p. 9), with zero inferential tests, regression models, standard errors, confidence intervals on group contrasts, or p-values, and explicitly states that uncertainty analysis of the composite indicators is beyond the scope of the article (p. 6).",
+    "study_id": "S285",
+    "verified_publication_year": "cannot_tell"
+  }
+}

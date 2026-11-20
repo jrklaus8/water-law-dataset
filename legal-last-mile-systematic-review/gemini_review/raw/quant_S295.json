@@ -1,0 +1,125 @@
+{
+  "study_id": "S295",
+  "order": 32,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "d28dc4aa19e1465ab9332b3137c13bde8faec37071e79a9a456cc21da0beb38d",
+  "input_text_sha256": "a8db3e6883a5dd8af9c66d4cc3166c8af20e487337ddc4aa5b2cd5e8889886b8",
+  "prompt_sha256": "c2de12117a15474d458fcd5b93170ca790222b608743c90ba6e74e6ef5148e72",
+  "started_at": "2026-11-20T04:39:07.833364+00:00",
+  "completed_at": "2026-11-20T04:39:51.492544+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S295\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S295 (Record ID: RA13F19846E9D)\n- Citation: Tótola L.A.; Bastos R.K.X. — Overview of Social Tariffs in Basic Sanitation in Brazil: Operationalizing the Benefit in Different Water and Sewage Service Delivery Models; [Panorama da Tarifa Social no Saneamento Básico no Brasil: Operacionalização do Benefício em Diferentes Modelos de Prestação de Serviços de Água e Esgotos]\n- DOI: 10.1590/2175-3369.017.e20240258\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: a8db3e6883a5dd8af9c66d4cc3166c8af20e487337ddc4aa5b2cd5e8889886b8) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60651, sha256=a8db3e6883a5dd8af9c66d4cc3166c8af20e487337ddc4aa5b2cd5e8889886b8]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "C",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "3",
+        "quote": "Artigo Científico • urbe, Rev. Bras. Gest. Urbana 17 • 2025 • https://"
+      },
+      {
+        "page": "17",
+        "quote": "significativa (p-valor = 0,018) e apresentam correlação negativa"
+      },
+      {
+        "page": "17",
+        "quote": "moderada (ρ = -0,521). Sendo assim, há indícios de que quanto"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Spearman rank correlation rho = -0.521, p = 0.018 (printed as ρ = -0,521; p-valor = 0,018), N = 24 regional water/sanitation service providers offering social tariffs (summed from 4+6+5+3+4+2 providers using 1 to 6 criteria; PDF pp. 16-17, Section 4.3 & Figure 6), testing number of social-tariff eligibility criteria against % of CadÚnico low-income families (with water network access) receiving the social tariff. (All public-vs-private ownership contrasts in Tables 2-3 and Figures 2-4, 7-8 are descriptive only without inferential tests.)",
+    "publication_year_note": "Primary journal volume/issue year ('Data do Fascículo' and 'Como citar', PDF pp. 3, 22, 27) is 2025 (urbe. Revista Brasileira de Gestão Urbana, v. 17, e20240258, 2025; received 20 Oct 2024, accepted 02 Jul 2025). SciELO collection posting date ('Publicação nesta coleção', PDF p. 27) is 12 Jan 2026, and the e-locator carries submission-year prefix e20240258.",
+    "quant_verdict": "inferential_with_swim_eligible_effect",
+    "rationale": "Although the paper's comparisons of public vs. private ownership and regional vs. local service delivery models (Sections 3.1, 4.2, 4.4; Tables 2-3) are explicitly descriptive percentages, medians, and means without hypothesis tests or uncertainty estimates, Sections 2.3 (p. 9) and 4.3 (pp. 16-17) report a statistically significant inferential Spearman rank correlation (ρ = -0.521, p = 0.018, N = 24 regional utilities) linking a narrow rule-type tariff/administrative-hurdle exposure—the number of cumulative eligibility criteria required for social-tariff enrollment—to a household water economic-access/exclusion outcome—the percentage of low-income CadÚnico-registered families with piped water access who actually receive the social water tariff. Higher administrative/eligibility criteria counts significantly reduce low-income beneficiary coverage, fitting SWiM Family C (tariffs, regulation, and administrative rules).",
+    "study_id": "S295",
+    "verified_publication_year": "2025"
+  }
+}

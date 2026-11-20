@@ -1,0 +1,125 @@
+{
+  "study_id": "S146",
+  "order": 27,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "adf2492b91309833cdabc2f92325b5f8e24d3b76b46fe8c8971ed0fe629f720e",
+  "input_text_sha256": "042fe5441e014626a890aa051a9fbdf3983df8be35133d0c4f543593a9fd640a",
+  "prompt_sha256": "d0087b2b4d138455d6190f4b92dd37198b6b86b07829319b1c7450b9a678c14e",
+  "started_at": "2026-11-20T04:36:33.417805+00:00",
+  "completed_at": "2026-11-20T04:37:14.063009+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S146\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S146 (Record ID: R26BBC984E24B)\n- Citation: Xerente V.S.; Naval L.P. — Water, health, and rights: challenges of drinking water and sanitation for indigenous communities in Tocantins, Brazil; [Água, saúde e direitos: desafios do abastecimento de água potável e saneamento para comunidades indígenas no Tocantins, Brasil]\n- DOI: 10.5327/Z2176-94782592\n- Retrieval status: retrieved_cached_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 042fe5441e014626a890aa051a9fbdf3983df8be35133d0c4f543593a9fd640a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=47711, sha256=042fe5441e014626a890aa051a9fbdf3983df8be35133d0c4f543593a9fd640a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Revista Brasileira de Ciências Ambientais (RBCIAMB) | v.61 | e2592 | 2026"
+      },
+      {
+        "page": "4",
+        "quote": "where applicable, chi-square tests and t-tests for comparisons between"
+      },
+      {
+        "page": "6",
+        "quote": "93 (58%) have water treatment plants without sanitary modules, and"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "none (descriptive/qualitative only)",
+    "publication_year_note": "Printed header on all pages states Revista Brasileira de Ciências Ambientais (RBCIAMB) | v.61 | e2592 | 2026 (Received on: 05/13/2025; Accepted on: 11/05/2025; no separate online-first year printed).",
+    "quant_verdict": "descriptive_only_flag_overstated",
+    "rationale": "The study combines a qualitative literature review (n = 44 studies), a doctrinal review of Brazilian water/Indigenous health legislation (Table 2), and descriptive secondary administrative tabulations from SESAI/SIASI (2019) covering Indigenous villages in Tocantins (Tables 3 and 4). Although the Methodology ('Data treatment', p. 4) states that chi-square tests and t-tests (p < 0.05) were used 'where applicable', zero inferential test statistics, p-values, standard errors, or confidence intervals are reported anywhere in the Results, tables, or text. Only descriptive counts and percentages of sanitation infrastructure coverage (17 [10.6%] villages with WSS and sanitary modules, 93 [58%] with WSS only, and 51 [31.8%] without either) and acute diarrheal disease cases are reported, with no empirical hypothesis test or quantitative contrast across a legal/governance exposure.",
+    "study_id": "S146",
+    "verified_publication_year": "2026"
+  }
+}

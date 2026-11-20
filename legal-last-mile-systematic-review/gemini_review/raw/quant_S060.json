@@ -1,0 +1,125 @@
+{
+  "study_id": "S060",
+  "order": 13,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0a887c41109476cd6a2ed944e23afbea140b50f7fe8ccf5524cb21a4d507114e",
+  "input_text_sha256": "1ca6fab52962a6479fb72382e43e345d523533599bd66b80e10d9a31f57e9ac8",
+  "prompt_sha256": "34bde68503ce14f20585a7acefbd42b9f5cba069d02c2526f96276018ac1afc7",
+  "started_at": "2026-11-20T04:35:24.722386+00:00",
+  "completed_at": "2026-11-20T04:36:07.899878+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S060\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S060 (Record ID: R1297067D6EE3)\n- Citation: Muyukani P.W.; Muthama N.J.; Mutune M J. — Integration and implementation of rainwater harvesting technologies in development programs, planning and budgeting in Matungulu Sub-County, Machakos County, Kenya\n- DOI: 10.37425/eajsti.v4i.734\n- Retrieval status: retrieved_oa_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 1ca6fab52962a6479fb72382e43e345d523533599bd66b80e10d9a31f57e9ac8) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=38822, sha256=1ca6fab52962a6479fb72382e43e345d523533599bd66b80e10d9a31f57e9ac8]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "NONE",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "of RHT had a positive and significant effect on household livelihoods (β= 0.755, t=22.351, p=0.000<0.05)."
+      },
+      {
+        "page": "6",
+        "quote": "a. Dependent Variable: Impact on Household Livelihoods"
+      },
+      {
+        "page": "8",
+        "quote": "Table 2. Correlation Analysis for WHT and Impact on Household Livelihood"
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Simple linear regression of Impact on Household Livelihoods on Integration of RHT in County Development Agenda: unstandardized B = 0.611 (SE = 0.027), standardized Beta = 0.755, t = 22.351, p = 0.000, R^2 = 0.570, F(1, 377) = 499.577, N = 379 (PDF p. 5 Table 6; pp. 9-10 Tables 3-5); Pearson r for Water Harvesting Technologies and Impact on Household Livelihood: r = 0.703, p = 0.000, N = 379 (PDF p. 8 Table 2).",
+    "publication_year_note": "Printed as Vol. 4 (Special Issue): August 2023, with Received: 26/06/2023, Accepted: 06/07/2023, Published: 09/08/23 (PDF p. 1).",
+    "quant_verdict": "inferential_non_swim_or_out_of_scope",
+    "rationale": "The study reports inferential Pearson correlations, ANOVA, and simple linear regression on a survey of N = 379 households in Matungulu Sub-County, Kenya, but fails SWiM eligibility on both Criterion 4 and narrow Criterion 2. In every inferential test (Tables 2-6, pp. 5, 8-10), the dependent variable is a composite score of general 'Impact on Household Livelihoods' rather than a household or community water/sanitation service access outcome (connection, coverage, availability, reliability, continuity, quantity, or affordability). Furthermore, the predictor ('Integration of RHT in County Development Agenda') is a respondent Likert-scale perception score of county programmatic extension/project activities (farmer training, water pan/dam excavation, group funding, awareness creation, and tank provision) rather than an empirical contrast across a rule-type legal, regulatory, tenure, or tariff mechanism, while all household RHT adoption/financing breakdowns (Figures 2-5, Table 1) are purely descriptive percentages and means.",
+    "study_id": "S060",
+    "verified_publication_year": "2023"
+  }
+}

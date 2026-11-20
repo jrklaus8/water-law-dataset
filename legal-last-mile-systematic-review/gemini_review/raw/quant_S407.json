@@ -1,0 +1,125 @@
+{
+  "study_id": "S407",
+  "order": 24,
+  "task": "quant_flag_and_year_fulltext_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "405c0ea6e959dfca33a791662dd608b08e4fb63b11bf791bd13c4c17fe0d20ef",
+  "input_text_sha256": "7ba271d1d2bbdd6cbdb9721123903dd5cdd28289767c93eb87f7ccc71fc6d0b9",
+  "prompt_sha256": "960785fac1c19f4a4be32bccc3f3556c65f90e8275aaf874e8a9a2226fdf8a97",
+  "started_at": "2026-11-20T04:36:33.403025+00:00",
+  "completed_at": "2026-11-20T04:39:07.820642+00:00",
+  "raw_request": {
+    "type_name": "quant_flag_and_year_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "verified_publication_year",
+        "publication_year_note",
+        "quant_verdict",
+        "candidate_swim_family",
+        "printed_headline_estimate",
+        "rationale",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "verified_publication_year": {
+          "type": "string"
+        },
+        "publication_year_note": {
+          "type": "string"
+        },
+        "quant_verdict": {
+          "type": "string",
+          "enum": [
+            "inferential_with_swim_eligible_effect",
+            "inferential_non_swim_or_out_of_scope",
+            "descriptive_only_flag_overstated",
+            "cannot_tell"
+          ]
+        },
+        "candidate_swim_family": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "NONE"
+          ]
+        },
+        "printed_headline_estimate": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT QUANTITATIVE-SYNTHESIS ELIGIBILITY, OMITTED SWiM EFFECT, & PUBLICATION-YEAR AUDIT — STUDY S407\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the paper text below.\n\n== BIBLIOGRAPHIC HEADER (stored year and flags withheld) ==\n- Study ID: S407 (Record ID: RCB5C36AC5A54)\n- Citation: Archibong, B — Historical origins of persistent inequality in Nigeria\n- DOI: 10.1080/13600818.2017.1416072\n- Retrieval status: retrieved_drive_pdf\n\n== AUDIT QUESTIONS (answer strictly from the source paper alone) ==\n1. `verified_publication_year`: What is the exact publication year printed on this paper? (If both an online-first date and a journal volume/issue year appear on the PDF, state the primary issue/volume year in `verified_publication_year` and record both dates in `publication_year_note`; if the full text is inaccessible, output `\"cannot_tell\"`.)\n2. `quant_verdict`:\n   - `\"inferential_with_swim_eligible_effect\"`: The paper empirically reports at least one inferential quantitative estimate (regression coefficient, OR, RR, DiD, IV, RD, correlation r, or two-group contrast with SE, CI, t-stat, chi-square, or p-value) testing a **narrow rule-type legal/administrative/tenure/tariff/discretion/enforcement/ownership-regulation mechanism** (`2026-10-13` Criterion 2 clarification) on a **household or community water/sanitation service access outcome** (Criterion 4: connection, coverage, availability, reliability, continuity, quantity, affordability, or exclusion), fitting one of the three SWiM families (`Family A`: legal status/tenure/recognition/governance-arrangement; `Family B`: assistance/participation/external-support; `Family C`: ownership/tariffs/regulation/institutional-capacity/administrative-structure).\n   - `\"inferential_non_swim_or_out_of_scope\"`: The paper reports inferential statistics (regression, ANOVA, chi-square, correlation, etc.), BUT the tested exposure-outcome pair fails narrow Criterion 2 (e.g., generic engineering/project delivery, climate/demographic predictors only) or fails Criterion 4 (e.g., ambient aquifer depth, utility financial ratio, willingness-to-pay only) or has no directionally interpretable access contrast.\n   - `\"descriptive_only_flag_overstated\"`: The paper reports ONLY descriptive percentages/counts/tables without inferential hypothesis tests or uncertainty measures, OR is purely qualitative/doctrinal/simulation — meaning flagging `quantitative_synthesis_eligible = TRUE` is overstated.\n   - `\"cannot_tell\"`: Full text is `[FULL TEXT NOT ACCESSIBLE...]` or truncated before methods/results.\n3. `candidate_swim_family`: `\"A\"`, `\"B\"`, `\"C\"`, or `\"NONE\"` (only `\"A\"`, `\"B\"`, or `\"C\"` when `quant_verdict == \"inferential_with_swim_eligible_effect\"`).\n4. `printed_headline_estimate`: Exact printed estimate(s), uncertainty (`SE`, `95% CI`, `t`, `p`), sample size `N`, and exact PDF page/table location (or `\"none\"` if descriptive/inaccessible).\n5. `evidence_quotes`: 1 to 3 exact verbatim substrings (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== PAPER FULL TEXT ==` (empty `[]` if inaccessible).\n\n== PAPER FULL TEXT (SHA-256: 7ba271d1d2bbdd6cbdb9721123903dd5cdd28289767c93eb87f7ccc71fc6d0b9) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=86503, sha256=7ba271d1d2bbdd6cbdb9721123903dd5cdd28289767c93eb87f7ccc71fc6d0b9]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "candidate_swim_family": "C",
+    "confidence": "high",
+    "evidence_quotes": [
+      {
+        "page": "1",
+        "quote": "Published online: 03 Jan 2018."
+      },
+      {
+        "page": "16",
+        "quote": "Table 4. Reduced form estimates showing heterogeneous effects of precolonial centralization on access to federally administered"
+      },
+      {
+        "page": "18",
+        "quote": "quality, and locally administered services (improved pit latrines) and federally administered services (power, grid)."
+      }
+    ],
+    "paper_read": "full text",
+    "printed_headline_estimate": "Table 4 (PDF p. 16 / p. 339, OLS, N = 631 LGA-ethnic state units, ethnicity-clustered SEs): Flush toilet access on precolonial Centralization = 0.039 (SE = 0.019, p < 0.05, col. 3); in col. 4, Centralization = 0.059 (SE = 0.026, p < 0.05), Supermajority muslim = -0.042 (SE = 0.030, NS), and Cent x S.Mus (indirect-rule hegemonization / 1976 Local Government Reform Law noncompliance) = -0.055 (SE = 0.029, p < 0.10). Table 5 (PDF p. 17 / p. 340, N = 631): null Centralization effects on locally administered Latrine (0.008, SE = 0.045, col. 2), Piped water (0.014, SE = 0.037, col. 4), and Tubewell water (0.079, SE = 0.060, col. 6). Table 7 (PDF p. 18 / p. 341, LGA-level OLS, N = 135-160 LGAs in Table 3; exact N omitted in Table 7): Pit Latrine access on Local government health standards = 0.170 (SE = 0.054, p < 0.01), Local government cleaning = 0.132 (SE = 0.048, p < 0.01), Local government marketplace = 0.183 (SE = 0.058, p < 0.01), Trust in local governing council = 0.127 (SE = 0.072, p < 0.10); Flush Toilet access = -0.141 (SE = 0.050, p < 0.01), -0.124 (SE = 0.049, p < 0.05), -0.193 (SE = 0.044, p < 0.01), and -0.214 (SE = 0.052, p < 0.01), respectively; Piped Water = 0.013 (SE = 0.040) to 0.030 (SE = 0.036), all NS.",
+    "publication_year_note": "Both the online-first date ('Published online: 03 Jan 2018', PDF p. 1) and the journal volume/issue year ('2018, VOL. 46, NO. 3, 325-347', PDF pp. 1-2; copyright 2018) are 2018; only the DOI string (10.1080/13600818.2017.1416072) contains 2017.",
+    "quant_verdict": "inferential_with_swim_eligible_effect",
+    "rationale": "Full text (24 pages) empirically estimates OLS regressions with robust/clustered standard errors linking intergovernmental administrative structure, local government institutional capacity, and historical indirect-rule/statutory governance arrangements to household water and sanitation access (DHS 1990-2013). Specifically: (1) Table 7 (PDF p. 18) tests LGA institutional/regulatory capacity (maintaining restaurant health standards, community cleaning, marketplace maintenance, and council trust) on locally administered Pit Latrine and Piped Water access versus federally administered Flush Toilet access, finding positive significant effects on Pit Latrine access (beta = 0.127* to 0.183***), null effects on Piped Water, and negative effects on Flush Toilet access (Family C: institutional-capacity/administrative-structure); and (2) Tables 4-5 (PDF pp. 16-17, N = 631 LGA-ethnic state partitions) test precolonial political centralization and indirect-rule hegemonization/noncompliance with the 1976 Local Government Reform Law (Cent x S.Mus) across federally administered Flush toilets (beta = 0.059**, interaction = -0.055*) versus locally administered Latrines, Piped water, and Tubewells (all null), bridging Family C (federal vs. LGA administrative structure) and Family A (indirect-rule vs. statutory governance arrangement).",
+    "study_id": "S407",
+    "verified_publication_year": "2018"
+  }
+}
