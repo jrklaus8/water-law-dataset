@@ -1,0 +1,286 @@
+{
+  "record_id": "RA750DF244239",
+  "order": 38,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "708cfa4d84d180a1c9f57d950960baf279641c458bade0ff48c506ff69dfbd35",
+  "input_text_sha256": "d3d9001d3be65be325d176d1dcc99b8c44a8a654c624c01c40d3f962bb12ca94",
+  "prompt_sha256": "cd33ddcab4da1966f0fadb5653fe837f6bd0212e7a6f05a0c3f2615a92acaec1",
+  "started_at": "2026-11-20T16:20:28.680049+00:00",
+  "completed_at": "2026-11-20T16:23:29.231254+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA750DF244239\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA750DF244239\n- Title: Opening Up the Water Poverty Index-Co-Producing Knowledge on the Capacity for Community Water Management Using the Water Prosperity Index\n- Authors: Jonsson, Anna C; Wilk, Julie\n- Year: 2014\n- DOI: 10.1080/08941920.2013.861553\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: d3d9001d3be65be325d176d1dcc99b8c44a8a654c624c01c40d3f962bb12ca94) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=53139, sha256=d3d9001d3be65be325d176d1dcc99b8c44a8a654c624c01c40d3f962bb12ca94]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Does not examine household or community drinking-water or sanitation service access as its object of study. Instead, the paper is a methodological participatory-research study focused on opening up the 'Capacity' component of the Water Poverty Index (WPI) into a Water Prosperity Index (WPI+) for general community water management (primarily agricultural canal irrigation via a Water Users Association, alongside micro-credit Self-Help Groups, education, and health/wealth indicators). Other WPI components, including Access, are explicitly deferred to a separate publication (Wilk and Jonsson, 2013), with hand pumps and sanitation appearing only tangentially as items in a perceived-responsibility voting exercise (Table 2).",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain/literal broad wording of Criterion 2 ('institutional... or governance factor'), the paper passes Criterion 2 because it examines local 'institutional capacity' and governance linkages—specifically NGO-supported Water Users Associations (for irrigation) and Self-Help Groups, social capital, and divergences in perceived problem-solving responsibilities between community members and district government officials (even so, the full-text study would still be excluded under plain_criterion2_decision because it is an index-construction study lacking a household/community water or sanitation service-access outcome). Under the active 2026-10-13 narrow rule-type reading, the paper fails Criterion 2 ('no'): it examines participatory indicator co-production, soft adaptive/learning capacities, and general perceptions of organizational strength and responsibility rather than any rule-type legal, administrative, or regulatory mechanism directly governing water or sanitation service access (such as eligibility screening, tenure or documentation rules, tariffs or cost-recovery rules, enforcement, or utility regulatory structure).",
+      "c3": "Contains primary empirical fieldwork (participatory qualitative and quantitative data from 4 field trips, 16 participatory workshops, ~40 informal interviews, household/community surveys, and district/Panchayat statistics collected between 2006 and 2009).",
+      "c4": "Does not report a household or community water or sanitation service-access, connection, availability, continuity, quantity, affordability, or exclusion outcome. Its empirical outputs are co-produced indicator scores for the Capacity component comparing the expert WPI and participatory WPI+ (Table 3: child mortality, durable goods/land ownership, healthcare adequacy, self-confidence, problem-solving responsibility divergence, WUA/SHG membership, social capital, rural literacy, primary school enrolment, and education adequacy), while only noting in passing that the aggregate WPI+ had higher values for Access and Use than the WPI (with Figure 1's graphic absent in the postprint and Access indicators reported in Wilk and Jonsson, 2013) and that lack of safe sanitation remained unaddressed by community collective action.",
+      "c5": "While the study population (~100 households in a rural village and hamlet in Vidisha district, Madhya Pradesh) and participatory case-study design are identifiable, an eligible rule-type legal/institutional exposure and a water or sanitation service-access outcome cannot be identified because the study compares composite index methodologies (WPI vs. WPI+ capacity indicators).",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 6 of 30",
+        "quote": "The overall aim of this paper is to open up the Water Poverty Index with a special focus on the capacity to manage water in a robust way. This is done through a process of participatory research and by transforming the Water Poverty Index into a Water Prosperity Index using a local community in Central India as example."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 12 of 30",
+        "quote": "The remaining factors relate to other WPI components and are further discussed by Wilk and Jonsson, 2013."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 30",
+        "quote": "For exploring capacity, three exercises were particularly useful: one to identify and rank factors that determine the “well-being” of the community, one to investigate community members’ “self-confidence”, and lastly, one to explore “problem solving” capacity and perceived responsibilities of individual community members with respect to those of government officials."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 13 of 30",
+        "quote": "This section explores the institutional capacity of the local community in terms of the emergence of local collective solutions to common problems and linkages between community-district government management institutions."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 8 of 30",
+        "quote": "Between 2006 and 2009, four field trips were undertaken and altogether 16 workshops arranged."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 18 of 30",
+        "quote": "The WPI+ was based on 43 indicators and the WPI on 22. While WPI and WPI+ index totals were similar (67 and 64) a closer look into the components, sub-components and indicators revealed major differences."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Participatory co-production methodology ('opening up' the Water Poverty Index into a Water Prosperity Index) and soft community capacity factors (NGO-initiated irrigation Water Users Association and micro-credit Self-Help Groups, adult/formal learning, self-confidence, and perceived community vs. government problem-solving responsibilities)",
+    "outcome": "Constructed and compared Capacity component indicator values in the WPI vs. WPI+ (health and wealth, institutional capacity, and systems for learning indicators in Table 3)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Rural community of approximately 100 households (comprising a multi-caste Village and a scheduled-caste Hamlet) in Vidisha district, Madhya Pradesh, India; 16 participatory workshops, ~40 informal interviews with villagers, local NGO staff, and district government officials, plus local surveys",
+    "rationale": "Excluded as E01 (Wrong topic; also fails c2 and c4). This empirical participatory-research study investigates how to 'open up' and modify the Capacity component of the Water Poverty Index (WPI) into a community co-produced Water Prosperity Index (WPI+) in a rural village in Madhya Pradesh, India. Rather than examining household or community drinking-water or sanitation service access (explicitly noting that other WPI components including Access are examined in a separate paper, Wilk and Jonsson 2013, while community collective action here centered largely on agricultural irrigation via a Water Users Association and women's micro-credit Self-Help Groups), the paper focuses on constructing and comparing composite Capacity indicators (child mortality, land ownership, healthcare adequacy, self-confidence, perceived responsibility divergence, WUA/SHG membership, social capital, literacy, and school quality). Furthermore, under the 2026-10-13 narrow rule-type reading of Criterion 2, no legal, administrative, or regulatory rule-type mechanism governing service access is analysed, and even under the plain broad wording of Criterion 2 the study remains excluded because it reports index-construction comparisons rather than water or sanitation service-access outcomes.",
+    "record_id": "RA750DF244239",
+    "study_design": "Participatory qualitative and mixed-methods single-community case study (16 Participatory Poverty Assessment workshops, ~40 informal interviews, local surveys, and secondary district/Panchayat statistics, 2006–2009)"
+  }
+}

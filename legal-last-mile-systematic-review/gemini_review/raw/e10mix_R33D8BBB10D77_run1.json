@@ -1,0 +1,281 @@
+{
+  "record_id": "R33D8BBB10D77",
+  "order": 108,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "94833dc6b344d274a4020ca95653b44dd8cfda509c459ffd4f8ea4bad69ac36b",
+  "input_text_sha256": "3420805a9b8d7bd407cb12f6d3eabcc238bbe7820fd1ae44fddae4bfbf3d7f44",
+  "prompt_sha256": "f13be6759915129cef65a1462146ef91cd24e10be14c385a768401f9f98662df",
+  "started_at": "2026-11-20T16:57:05.358393+00:00",
+  "completed_at": "2026-11-20T16:58:45.809784+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R33D8BBB10D77\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R33D8BBB10D77\n- Title: Investigating the implementation of Indonesian regulation in drinking water supply system\n- Authors: Suminar L.; Werdiningtyas R.; Kusumastuti\n- Year: 2021\n- DOI: 10.1088/1755-1315/916/1/012002\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 3420805a9b8d7bd407cb12f6d3eabcc238bbe7820fd1ae44fddae4bfbf3d7f44) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=25448, sha256=3420805a9b8d7bd407cb12f6d3eabcc238bbe7820fd1ae44fddae4bfbf3d7f44]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Although topically situated in Indonesia's drinking water supply sector, the paper does not examine actual household or community water or sanitation service access; it only inventories statutory actors and formal tasks written in national and ministerial regulations.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under the plain wording of Criterion 2, this study would pass (plain=yes) because it examines Indonesian laws, government/ministerial regulations, and institutional responsibilities in the drinking water supply system. Under the narrow 2026-10-13 rule-type reading, however, it fails (narrow=no): the paper conducts a broad macro-governance inventory mapping 21 actor categories to 19 general statutory tasks (such as guideline making, coaching, training, facilitation, master planning, construction, and unanalysed task labels like license approval and fare determination) rather than examining how a specific rule-type mechanism directly governs household or community service access. Even under the plain wording of Criterion 2, the paper is still excluded because it lacks empirical evidence and reports no service access outcome.",
+      "c3": "Purely a desktop doctrinal/document study coding the text of Indonesian laws and regulations from peraturan.go.id in NVivo (158 water-related laws/regulations narrowed to 7 drinking water supply regulations). As the authors explicitly state in the Conclusion, the study only examines laws and regulations on paper and does not empirically investigate real-world implementation or practices (Exclusion Criterion 1 / E05).",
+      "c4": "Reports no empirical outcome relevant to water access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion. The reported results consist solely of a list of 7 regulations and a table of 21 statutory actors and 19 formal tasks, while mentions of service 'blank spot areas' and reliability gaps in the Discussion are unmeasured commentary.",
+      "c5": "The unit of analysis is statutory/regulatory text (7 Indonesian regulations), with no household, community, settlement, or utility sample and no identifiable empirical exposure-outcome relationship for service access.",
+      "c6": "The full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3, Section 1 Introduction",
+        "quote": "This study aims to identify the actors who may contribute to the drinking water supply system in Indonesia. In addition, it also elucidates the tasks of each actor in accordance with what is stated in the Laws and regulations on drinking water supply in Indonesia."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4, Section 3.1 Results",
+        "quote": "Based on the extraction, there are seven regulatory documents in Indonesia regarding the drinking water supply system:"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3, Section 2.1 Data source",
+        "quote": "We used the Laws and regulations on drinking water supply as the data sources in this study to serve as the primary statutory instruments that govern the provision of drinking water supply in Indonesia. We focused on the actors stated in the Laws and regulation and their duties and responsibilities."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7, Section 3.1.1 Discussion",
+        "quote": "The results show that the instruments for drinking water supply are in a prominent position than instruments for its distribution. Only 3 of 19 instruments are identified for drinking water distribution: guideline, standard operational procedure, and master plan."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 8, Section 4 Conclusion",
+        "quote": "One limitation of this study is that it only focuses on the study of Laws and regulation– document study. It would be preferable if further research could be conducted to analyze the practices."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Statutory actor and task provisions in 7 Indonesian drinking water supply regulations (no empirical exposure measured)",
+    "outcome": "not reported",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Indonesian statutory and regulatory documents from peraturan.go.id (158 laws and regulations with 'air (water)' in the title, narrowed to 7 drinking water supply system regulations); no household, community, or utility sample",
+    "rationale": "Excluded under E05 (No empirical evidence). Despite 'implementation' in the title, the paper is strictly a doctrinal/statutory document study that codes 7 Indonesian drinking water supply regulations in NVivo to catalogue formal actors (21 categories) and statutory duties/instruments (19 tasks, such as guidelines, master plans, coaching, and licensing). As the authors note in the Conclusion, it focuses solely on laws and regulations on paper without examining empirical implementation practices, and it reports no empirical household or community water access outcome (also failing c1, c2 narrow rule-type scope, c4, and c5).",
+    "record_id": "R33D8BBB10D77",
+    "study_design": "Statutory/regulatory document content analysis (doctrinal mapping in NVivo)"
+  }
+}

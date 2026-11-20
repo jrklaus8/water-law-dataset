@@ -1,0 +1,286 @@
+{
+  "record_id": "RB7F715055BA9",
+  "order": 157,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "9ec02d3a4508ea2fe7249f3ddf0a58779f47240135b1088684429083bbaf1bf4",
+  "input_text_sha256": "767db5762fa7c7849e7397d22c99c2f4cf0ac9c29c9e0a9103d5ab95a9571731",
+  "prompt_sha256": "48e73fe88c8a9e8d5a1b57e6817138a7f5b7f48b5a60c1be7e2a82d5b5577736",
+  "started_at": "2026-11-20T17:13:01.165450+00:00",
+  "completed_at": "2026-11-20T17:14:36.454839+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB7F715055BA9\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB7F715055BA9\n- Title: Flesh and bones: Working with the grain to improve community management of water\n- Authors: Whaley L.; Cleaver F.; Mwathunga E.\n- Year: 2021\n- DOI: 10.1016/j.worlddev.2020.105286\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 767db5762fa7c7849e7397d22c99c2f4cf0ac9c29c9e0a9103d5ab95a9571731) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=104824, sha256=767db5762fa7c7849e7397d22c99c2f4cf0ac9c29c9e0a9103d5ab95a9571731]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Ethiopia, Malawi, and Uganda",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural communal drinking-water supply (handpump boreholes and community waterpoints) and household/community water access, management, and use in Ethiopia, Malawi, and Uganda.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Under the plain wording, the study centrally investigates community-based water governance institutions (Waterpoint Committees, iddirs, village chiefs, LC1 chairpersons, kebele officials) and national decentralisation/WASH policy frameworks. Under the narrow 2026-10-13 rule-type reading, although the overarching framing ('working with the grain' / institutional bricolage) and Figure 2 emphasize the organizational form of water management arrangements, the empirical analysis directly examines rule-type mechanisms governing service access: local service-provider governance/ownership structure (state-mandated committees vs chiefs, iddirs, and private caretakers with boreholes on their compounds), tariff and cost-recovery rules (stringent user fees, seasonal payment rules), discretion and accommodation (free water exemptions for the poorest vs priority for higher-paying commercial resellers), enforcement sanctions (fines and physically locking boreholes to enforce rules or meeting attendance), and religious exclusion rules.",
+      "c3": "Contains primary qualitative empirical evidence from a multi-country study: a 2-day qualitative social survey of 150 community waterpoints across 12 districts in Ethiopia, Malawi, and Uganda (300 fieldwork days, ~500 documents), a yearlong longitudinal study of 12 communities in Malawi and Uganda with 30 participant diary keepers, national political economy analyses (16-21 stakeholder interviews per country), and district sustainability assessments. Qualitative socio-legal empirical studies are eligible for the systematic review's mechanism synthesis without quantitative effect estimates.",
+      "c4": "While quantitative waterpoint functionality data from Phase 1 are published elsewhere and Figure 2 reports the organizational composition of water management arrangements, Phases 2 and 3 empirically report qualitative outcomes directly relevant to household/community access, affordability, service continuity, and exclusion: pricing out of poorer community members under stringent user-fee regimes, preferential access for commercial water sellers, free-water accommodations for the poorest households, coercive denial/restriction of access via borehole locking, exclusion of people of particular faiths, and reciprocal inter-village waterpoint access during breakdowns.",
+      "c5": "Population and units of analysis (rural communities, communal waterpoints/WMAs, and community water users across Ethiopia, Malawi, and Uganda), governance/rule-type exposures, qualitative access/exclusion outcomes, and multi-phase qualitative study design are clearly identified.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c3",
+        "page": "PDF Page 2 (Abstract)",
+        "quote": "We examine water management arrangements by undertaking an in-depth social survey of 150 communities in the three countries. We also undertake yearlong studies in 12 communities in Malawi and Uganda involving 30 diary keepers."
+      },
+      {
+        "criterion": "c1_c3",
+        "page": "PDF Page 6 (Section 3.1)",
+        "quote": "we tracked community members’ day-to-day experiences of managing, accessing, and using water."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 11 (Section 4.5)",
+        "quote": "For example, in one longitudinal case study the ﬁnancial incentive of a powerful individual to maintain the waterpoint in good working order coupled with a stringent user fee system that the poorer members of the community could not afford. In other cases, users who pay a higher fee, for example those who then proﬁt from selling the water they draw, are favoured over regular water users."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 11 (Box 2)",
+        "quote": "Beyond locking the borehole so that it is only used during the daytime, the chairperson locks it to enforce decisions or to make people attend meetings."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 11 (Box 2)",
+        "quote": "He instructs the chairperson not to overcharge people and to let the poorest community members take water for free."
+      },
+      {
+        "criterion": "c2_c4",
+        "page": "PDF Page 12 (Section 5.4)",
+        "quote": "Among these principles, we observe patriarchal tendencies that relegate the decision-making power of women vis-à-vis men, or the exclusion of people of particular faiths."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Community-based water governance and rule-type access mechanisms: state-mandated Waterpoint Committees (WPCs) versus hybrid/informal local management structures (Ethiopian iddirs and kebele officials, Malawian village chiefs, Ugandan LC1 chairpersons, and personalised borehole caretakers), including user-fee/cost-recovery rules, seasonal payment schedules, discretionary fee exemptions for the poor, coercive rule enforcement (fines and physical borehole locking), and exclusionary social/religious norms",
+    "outcome": "Qualitative community and household rural water access, affordability, continuity, and exclusion outcomes (affordability exclusion of poorer households under stringent user fees, preferential access for higher-paying commercial water vendors, fee exemptions enabling free access for the poorest, coercive restriction of access via borehole locking, faith-based exclusion, and reciprocal inter-village waterpoint access during breakdowns), alongside the organizational form and capacity of water management arrangements",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Rural communities and communal groundwater waterpoints (handpump boreholes/wells) and their water management arrangements: 150 community waterpoints across 12 districts (4 per country in Ethiopia, Malawi, and Uganda) in Phase 2, plus 12 rural communities in 4 districts of Malawi and Uganda with 30 community diary keepers over one year in Phase 3, alongside 16-21 sector interviews per country for national political economy analyses and district sustainability workshops",
+    "rationale": "Include (medium confidence). This multi-country qualitative socio-legal/institutional study of rural communal water supply in Ethiopia, Malawi, and Uganda (150 surveyed communities plus 12 yearlong diary-study communities) satisfies all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Although its overarching theoretical focus is on 'working with the grain' and the organizational composition of community water management arrangements (leaving quantitative Phase 1 functionality data to a companion paper), its empirical findings directly document rule-type governance mechanisms governing service access—local service-provider ownership/management structure (formal WPCs vs chiefs, iddirs, and private caretakers), user-fee/cost-recovery rules, seasonal fee enforcement, discretionary fee exemptions for the poorest, coercive borehole locking, and religious exclusion—and report qualitative outcomes on household affordability, access restrictions, exclusion, and reciprocal backup access during breakdowns. Per protocol, qualitative socio-legal empirical studies with clear mechanism and access/exclusion evidence are included for the mechanism synthesis.",
+    "record_id": "RB7F715055BA9",
+    "study_design": "Multi-country qualitative extensive-intensive empirical study (in-depth qualitative social survey of 150 communities, yearlong longitudinal diary and fieldwork study in 12 communities, country-level political economy analyses, and district sustainability assessments)"
+  }
+}

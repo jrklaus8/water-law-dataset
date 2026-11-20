@@ -1,0 +1,286 @@
+{
+  "record_id": "R35F0F34842AB",
+  "order": 130,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "fb49a8ab0b74a11e96af7d49d55dbcdf2c9d84c9debd25721adf506db2428c54",
+  "input_text_sha256": "777b202d6fc9c4360fe511fc4aec1a369a224f477b1c7752a00f6dafcfe020ba",
+  "prompt_sha256": "a93003761ed0b9353d61a694bc488c676e5f79c3a3d90e2b0dd4c2c59aca048d",
+  "started_at": "2026-11-20T17:02:44.847969+00:00",
+  "completed_at": "2026-11-20T17:04:37.510363+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R35F0F34842AB\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R35F0F34842AB\n- Title: Policy and regulatory context for self-supplied drinking water services in two cities in Indonesia: Priorities for managing risks\n- Authors: Priadi C.R.; Suleeman E.; Darmajanti L.; Putri G.L.; Genter F.; Foster T.; Willetts J.\n- Year: 2024\n- DOI: 10.1016/j.envdev.2023.100940\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 777b202d6fc9c4360fe511fc4aec1a369a224f477b1c7752a00f6dafcfe020ba) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=64711, sha256=777b202d6fc9c4360fe511fc4aec1a369a224f477b1c7752a00f6dafcfe020ba]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking water service access via urban groundwater self-supply and public piped water (PDAM) in Bekasi City and Metro City, Indonesia.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, the paper analyses Indonesia's legal, regulatory, and institutional framework for urban self-supplied drinking water. Under the narrow 2026-10-13 rule-type reading, it directly examines statutory and regulatory rules governing service access: groundwater extraction and well-digging permit requirements and household exemptions (Article 45 of Water Law No. 17/2019; Government Regulation No. 121/2015; West Java Regulation No. 1/2017 Art. 32; Lampung Regulation No. 5/2019), land-ownership rules enabling permit-free groundwater access on privately owned land, enforcement of technical well standards via building permits (IMB), and regulatory/tariff rules distinguishing regulated public piped water (minimum service standards, tariffs, and bureaucratic rules on pipe expansion) from unregulated self-supply.",
+      "c3": "Qualitative socio-legal case study combining systematic review of 54 national and regional legal/regulatory/standard documents with primary empirical data from 29 in-depth stakeholder interviews across two cities (13 local government officials, 12 households, 2 well diggers, 1 well driller, and 1 refill water seller).",
+      "c4": "Reports qualitative empirical outcomes on household drinking water access (unlimited de facto groundwater access without permits on owned land), availability/quantity (groundwater depletion requiring households to lower pumps and dig deeper wells), continuity and service choice (preference for self-supply over interrupted, fee-based PDAM piped supply; delayed piped network expansion), and affordability (unregulated well construction costs and financial burden of complementary bottled/refill water versus regulated piped tariffs).",
+      "c5": "Population and sample (two Indonesian cities; 54 legal/policy texts and 29 stakeholder interviews across LGOs, households, and informal providers), regulatory exposure, service-access outcomes, and comparative case-study design are clearly identified. Units of analysis span regulatory instruments/institutions, municipalities, and households.",
+      "c6": "Published in English (with primary interviews conducted in Bahasa Indonesia and translated into English by the study authors)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 11 (Section 2.1)",
+        "quote": "This study focused on two urban cities in Indonesia, Bekasi City (West Java Province) and Metro City (Lampung Province). Bekasi and Metro were selected as study locations as both cities have a high number of self-supply groundwater users (87% for Bekasi and 100% for Metro)"
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 11 (Section 2.2)",
+        "quote": "The study included 29 stakeholder interviews to gain insight to the practical implementation of existing policies and regulation consisting of 6 and 7 LGOs from water-related institutions in Bekasi and Metro respectively, 1 refill water seller, 2 informal well diggers, 1 informal well driller and 6 households of each city."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 11 (Section 3.2)",
+        "quote": "Article 45 of Water Law states that a permit is not needed for daily use when it does not disturb the natural condition of the water source, and it is not intended for large group use requiring a large quantity defined as groundwater extracted from boreholes with a diameter of more than 5 cm or more than 25 m3/month/household."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 11 (Section 3.2)",
+        "quote": "In general, there seems to be agreement that households are not required to hold permits to access groundwater on land that they own, which increases institutional risk because CG and LG who are mandated to regulate water sources are unlikely to be able to control groundwater use."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 11 (Section 3.1)",
+        "quote": "Due to the groundwater depletion, some households need to lower their water pump and the well digger reported the need to dig deeper to get water."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 11 (Section 3.5)",
+        "quote": "Interrupted services and monthly fees for public water supply contrasted with ease of groundwater access and positively-perceived groundwater quality. These differences are key reasons why households prefer groundwater self-supply over public water supply."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Legal and regulatory rules governing household groundwater self-supply versus public piped water services, including statutory permit exemptions for daily household groundwater use, property/land-ownership entitlements allowing permit-free well extraction on owned land, weak enforcement of building permits (IMB) and well construction standards, and unregulated self-supply costs versus regulated piped utility tariffs and service standards.",
+    "outcome": "Household drinking water access, availability/quantity (depletion requiring deeper wells and lowered pumps), service continuity, affordability (unregulated self-supply construction and refill/bottled water costs versus monthly PDAM piped tariffs), and household choice between groundwater self-supply and public piped water.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Urban households, informal water service providers, and local government institutions in Bekasi City (West Java) and Metro City (Lampung), Indonesia; 54 legal, regulatory, and technical standard documents (33 national, 18 regional, 3 national standards) and 29 stakeholder interviews (13 local government officials, 12 households, 2 informal well diggers, 1 informal well driller, and 1 refill water seller). Units of analysis: regulatory instruments/institutions, municipalities, and households.",
+    "rationale": "Include. This qualitative socio-legal comparative case study examines household drinking water service access in two Indonesian cities (c1) and analyses concrete rule-type legal and regulatory mechanisms directly governing access—including groundwater licensing and household permit exemptions, private land-ownership entitlements to extract groundwater without permits, building-permit enforcement of construction standards, and tariff/service-standard regulation of piped water versus unregulated self-supply (satisfying both plain and narrow 2026-10-13 Criterion 2 readings, c2). It presents primary empirical evidence from 29 stakeholder interviews alongside a review of 54 legal/regulatory documents (c3), reports qualitative outcomes on household groundwater access, water availability/quantity, continuity, piped-vs-self-supply choice, and affordability (c4), clearly identifies population, exposure, outcome, and case-study design (c5), and is written in English (c6). Per protocol safeguards, qualitative socio-legal empirical studies are eligible for the systematic review and mechanism synthesis without needing quantitative effect estimates.",
+    "record_id": "R35F0F34842AB",
+    "study_design": "Qualitative socio-legal comparative case study (systematic legal/regulatory document review combined with 29 in-depth stakeholder interviews)"
+  }
+}

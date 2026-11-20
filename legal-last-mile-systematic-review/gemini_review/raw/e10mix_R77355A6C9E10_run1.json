@@ -1,0 +1,281 @@
+{
+  "record_id": "R77355A6C9E10",
+  "order": 29,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "861bd8950c9fce051c18894df6393cbd148a0766b61d5160bcb0ac04e94f9369",
+  "input_text_sha256": "df3ccd1c5f5600e3492bc370ed3606339a6cee7cf5b079004488c8174c01a9a5",
+  "prompt_sha256": "55c152a9618be42498f461516e9f7d54fa95de08b872152fc974ad9e7bbf2507",
+  "started_at": "2026-11-20T16:19:27.195629+00:00",
+  "completed_at": "2026-11-20T16:20:28.057769+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R77355A6C9E10\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R77355A6C9E10\n- Title: Rural self-empowerment: the case of small water supply management in Northwest, Cameroon\n- Authors: Tantoh H.B.; McKay T.J.M.\n- Year: 2020\n- DOI: 10.1007/s10708-018-9952-6\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: df3ccd1c5f5600e3492bc370ed3606339a6cee7cf5b079004488c8174c01a9a5) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=49533, sha256=df3ccd1c5f5600e3492bc370ed3606339a6cee7cf5b079004488c8174c01a9a5]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Cameroon",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household drinking-water service access (private yard/premises piped connections, communal stand taps, and reliance on streams/springs) across six rural villages in Northwest Cameroon.",
+      "c2": "Satisfies BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading of Criterion 2. Under the plain wording, it examines community-based water management (CBWM), water management committees (WMCs), customary governance by village chiefs, and rural exclusion by urban-only state utilities (CAMWATER and CDE). Under the narrow 2026-10-13 reading, it directly examines rule-type mechanisms governing household water access: WMC-determined upfront cash eligibility requirements for private connections, mandatory gender- and age-differentiated capital contribution rules, differentiated monthly maintenance tariffs ($2/month for private connections vs. $1/month for communal stand taps), customary enforcement sanctions by village chiefs (heavy fines and denial of funeral rite authorizations for non-contributors), and supply termination or relegation to communal standpipes due to inability to pay.",
+      "c3": "Contains primary empirical survey data from structured questionnaires administered to 108 household heads across six villages in three rural districts (18 households per village, sampled from a list of 180 households).",
+      "c4": "Reports household connection type (34% private connection vs. 66% communal taps, plus unimproved streams/springs), daily water consumption (35.6 l/c/d for private connections vs. 24.7 l/c/d for communal taps), collection distance (average 350 m) and time (average 71.6 min/day), affordability barriers (71 households unable to afford connection fees; 54% unable to regularly pay the $1 monthly fee), and supply termination.",
+      "c5": "Population and unit of analysis (108 rural households across six villages in Mbengwi, Njinikom, and Ndu districts), exposure (CBWM/WMC tariff, upfront connection-fee eligibility, and enforcement rules), outcome (connection status, daily per-capita consumption, collection time/distance, affordability, and disconnection), and cross-sectional survey case-study design are all clearly identifiable. Note: review inclusion does not require a comparative quantitative effect size (Criterion 6 is a meta-analysis gate only).",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "As a result, some 34% of households now have a private water connection, while 66% use communal taps. Despite this, some still relied on streams, springs and wells."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 7 (Research methodology)",
+        "quote": "An adaptive sequential procedure was used to establish a population list of 180 households from the study area. A 60% margin error was later employed to pull a sample. This gave rise to 108 probable households (with 18 questionnaires conducted in each village)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 (Results)",
+        "quote": "Those with private connections pay two USDs and those using communal stand taps pay one USD per month. An upfront amount determined by the WMCs was required to be eligible for private connection. The upfront cash requirement meant that the majority of those who had private taps installed were those with permanent jobs and steady sources of income."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10 (Discussion)",
+        "quote": "Results reveal that 71 households using communal taps could not afford the connection fees and 54% were unable to regularly contribute the monthly one USD connection fee."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 (Discussion)",
+        "quote": "this study shows that in some cases very poor people may be denied the right to water due to their inability to pay."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Community-based water management (CBWM) and water management committee (WMC) governance and cost-recovery rules, including upfront cash eligibility requirements for private connections, mandatory project contributions ($1-$4 USD), monthly maintenance fees ($2 USD private vs. $1 USD communal), customary chiefdom fines/sanctions, and disconnection for non-payment.",
+    "outcome": "Household piped water access and connection type (private connection at premises vs. public stand tap vs. streams/springs), daily water consumption (litres per capita per day), water collection distance and time, affordability, and supply termination/exclusion.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Rural households (household heads) in six villages (Njimkang, Ngarum, Muloin, Baicham, Tugi, and Zang-Tabi) across three rural districts (Mbengwi, Njinikom, and Ndu) in Northwest Cameroon; N = 108 households sampled (18 per village) from a population list of 180 households.",
+    "rationale": "Full-text empirical study of 108 rural households across six villages in Northwest Cameroon examining how community-based water management (CBWM) institutions and rule-type cost-recovery mechanisms (WMC upfront connection-fee eligibility rules, monthly tariffs, customary sanctions by village chiefs, and disconnection for non-payment) govern household access to private piped connections versus communal standpipes, water consumption volumes, collection time/distance, and financial exclusion. Satisfies all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2.",
+    "record_id": "R77355A6C9E10",
+    "study_design": "Cross-sectional household survey / multi-village empirical case study (structured questionnaires administered to 108 household heads across six purposefully selected villages)"
+  }
+}

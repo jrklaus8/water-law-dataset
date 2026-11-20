@@ -1,0 +1,291 @@
+{
+  "record_id": "R35ED6959E89F",
+  "order": 107,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "96138fd246acb2876ca26d01b466ac2c7be0a31fd4141b2465d291d67b9cb613",
+  "input_text_sha256": "456d1e69e4cafa60ad41c5ef97523a28e4e56ad26e75f3dbbce9cef5edb50cfd",
+  "prompt_sha256": "38051c1e399d630134a676bae114621450628e75327df9df79c74174d11cad25",
+  "started_at": "2026-11-20T16:57:05.354797+00:00",
+  "completed_at": "2026-11-20T16:59:22.860482+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R35ED6959E89F\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R35ED6959E89F\n- Title: Maximizing the impact of mining investment in water infrastructure for local communities\n- Authors: Admiraal R.; Sequeira A.R.; McHenry M.P.; Doepel D.\n- Year: 2017\n- DOI: 10.1016/j.exis.2017.01.014\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 456d1e69e4cafa60ad41c5ef97523a28e4e56ad26e75f3dbbce9cef5edb50cfd) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=73535, sha256=456d1e69e4cafa60ad41c5ef97523a28e4e56ad26e75f3dbbce9cef5edb50cfd]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Mozambique",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water service access (yard taps, public water kiosks/standpipes, boreholes, and unprotected wells) in small towns in Nampula Province, Mozambique, primarily Ribáuè (with comparisons to Liúpo and Nampula city).",
+      "c2": "Plain wording: YES — examines governance, institutional, regulatory, and contractual arrangements for small-town water delivery under Mozambique's Delegated Management Framework (DMF). Narrow 2026-10-13 rule-type reading: YES (borderline due to guideline framing and bundled physical rehabilitation/marketing components, but meets narrow scope) — empirically examines (1) utility ownership, private lease contracting, and regulatory structure directly governing service access (public infrastructure ownership by AIAS, a 5-year private operator lease contract, local regulatory oversight by CORAL under CRA, contractual allocation of yard-tap vs standpipe construction, and contractual network-expansion obligations of 500 m main and 1,000 m distribution pipe whose lack of spatial targeting left poorer town outskirts unserved relative to the town center) and (2) tariff and cost-recovery rules directly governing access and affordability (piped tariff affordability relative to household income and WTP in Ribáuè vs Liúpo, volumetric kiosk pricing of 0.50 MZN per 20 L bucket vs flat monthly borehole fees of 5-25 MZN shaping source choice, and annual renegotiation/increase of yard-tap connection charges).",
+      "c3": "Contains original primary empirical evidence from mixed-methods fieldwork conducted in November 2014 and June-July 2015 (with ethics approvals MU 2013/184 and Mozambican Ministry of Health 307/CNBS/14), including household surveys (compared against September 2012 NAMWASH baseline survey data), surveys of water points and 20 borehole water committees, operator revenue/connection/arrears records, and semi-structured key-informant interviews in Ribáuè and Nampula city.",
+      "c4": "Reports multiple service-access outcomes: pre/post changes in primary household water source use (nearly 50% reduction in unprotected well use, piped water uptake, and increase in revenue-generating water point use from 39.22% to 63.64%), new yard-tap connection uptake (nearly doubled at 17 new connections/month) vs low kiosk usage (2.5% of revenue), tariff affordability and supported water quantity (20 L/capita/day at ~4% of median income in Ribáuè vs 8 L/capita/day in Liúpo), household arrears (7.67%), repair continuity (3 major repairs resolved in 3 days or less), and spatial exclusion of town outskirts.",
+      "c5": "Population and unit of analysis (households, water points/borehole committees, and utility/regulatory actors in Ribáuè, Liúpo, and Nampula city, Mozambique), exposure (NAMWASH piped-water rehabilitation governed by Mozambique's DMF public-ownership/private-lease/local-regulator contract, tariff and connection-fee rules, and network-expansion clauses), outcome (water source switching, connection uptake, affordability, arrears, repair continuity, and spatial coverage), and study design (mixed-methods case study combining pre/post and cross-town household surveys with key-informant interviews) are identifiable. Exact household survey sample sizes are not reported in this text, which affects quantitative synthesis (Criterion 6) rather than systematic-review eligibility.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 11",
+        "quote": "The goal of NAMWASH was to implement Mozambique’s delegated management framework (DMF) for water supply and sanitation in these towns and establish a model for best practice that could be used in similar towns (UNICEF Mozambique, 2014)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11",
+        "quote": "Using Mozambique’s DMF, water infrastructure is owned by AIAS, operated by a private partner under a leasing arrangement, and regulated by the Water Regulatory Council (CRA). Ultimately, piped water was delivered to Ribáuè in the form of 10 public water points (in the form of water kiosks) and 170 yard taps."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 12",
+        "quote": "consisting of household surveys, surveys of water points, surveys of public sanitation facilities (including schools, health centers, and public markets), semi-structured interviews of key informants in Ribáuè and Nampula city, and follow-up interviews in June and July 2015."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 16",
+        "quote": "uptake of yard taps has nearly doubled since completion of NAMWASH with an average of 17 new connections per month, and yard taps have comprised 63% of water revenue. Additionally, only 7.67% of households (and no businesses or public institutions) were in arrears as of July 2015"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 19",
+        "quote": "Water tariffs and yard tap installation costs can be renegotiated on an annual basis, allowing for some degree of flexibility in regard to both consumer demand and operator costs. For example, after the first year of operation, it was agreed to increase the cost of yard tap installations, as the cost to the consumer turned out to be less than the actual cost to the operator."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 23",
+        "quote": "It shows an almost 50% reduction in the use of unprotected wells with a slight increase in the usage of boreholes and significant uptake of piped water. The use of revenue-generating water points is estimated to have increased from 39.22% (33.20%, 45.25%) to 63.64% (59.40%, 67.88%)"
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 25",
+        "quote": "However, these contractual agreements do not clearly spell out where expansion should occur or provide clear timelines, technical specifications, or cost implications, and decisions in regard to this appear to be largely driven by impromptu discussions among the operator, AIAS, and the local council."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Mozambique's Delegated Management Framework (DMF) for small-town water supply (public ownership by AIAS, 5-year private operator lease contract, local regulatory oversight by CORAL/CRA), tariff and yard-tap installation fee rules, and contractual network-expansion obligations implemented alongside NAMWASH piped-water rehabilitation in Ribáuè.",
+    "outcome": "Household primary water point usage (shift from unprotected wells to piped water and boreholes; use of revenue-generating water points), yard-tap connection uptake vs water kiosk use, tariff affordability and supported per-capita consumption relative to household income/WTP, household payment arrears, repair turnaround times, and spatial service coverage (town center vs outskirts).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households in Ribáuè (pop. 26,000), Liúpo, and Nampula city in Nampula Province, Mozambique (surveyed in September 2012 baseline and November 2014 follow-up; exact household N not reported, 95% CIs reported), 20 borehole water committees in Ribáuè, and key informants from AIAS, CORAL, the private water operator, and local authorities (interviewed November 2014 and June-July 2015).",
+    "rationale": "Although framed around practice guidelines for mining-impacted communities and bundling physical gravity-fed pipe rehabilitation and marketing with institutional reform in its pre/post comparison, the paper reports original mixed-methods empirical fieldwork from NAMWASH in Ribáuè, Mozambique. It directly examines rule-type mechanisms under both the plain and narrow 2026-10-13 readings of Criterion 2: (1) tariff and cost-recovery rules (piped tariff affordability vs household income/WTP in Ribáuè and Liúpo, volumetric kiosk pricing vs flat monthly borehole fees driving low kiosk use vs rapid yard-tap connection growth, and annual renegotiation of yard-tap installation charges) and (2) utility ownership, private lease contracting, and regulatory structure under Mozambique's Delegated Management Framework (AIAS asset ownership, 5-year private lease, CORAL oversight, and contractual expansion terms that omit spatial equity mandates and leave town outskirts underserved). All review-eligibility criteria (c1-c6) are satisfied; lack of isolated causal identification and unstated household sample N affect only quantitative meta-analysis pooling (Criterion 6), not systematic-review inclusion.",
+    "record_id": "R35ED6959E89F",
+    "study_design": "Mixed-methods case study (repeated cross-sectional pre/post household surveys, cross-town household WTP/income surveys, water-point and borehole-committee surveys, operator administrative records, and semi-structured key-informant interviews)"
+  }
+}

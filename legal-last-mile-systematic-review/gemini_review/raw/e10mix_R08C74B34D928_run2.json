@@ -1,0 +1,281 @@
+{
+  "record_id": "R08C74B34D928",
+  "order": 22,
+  "run": 2,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "00b123c8be8a07d8314fa4c6970ae21d2bcbd2dde4ac509f7c600846fd026e16",
+  "input_text_sha256": "b773b9f427d4f2106ceda731b316220e4a16c87fe6d846190ce4a3552b7e9948",
+  "prompt_sha256": "4ed6eff2b6a4f278693d7bd98f58862b9cff8cdd90cb5b3dd947b0611e499284",
+  "started_at": "2026-11-20T17:19:56.796862+00:00",
+  "completed_at": "2026-11-20T17:20:56.464724+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R08C74B34D928\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R08C74B34D928\n- Title: Urban water resilience in Hindu Kush Himalaya: issues, challenges and way forward\n- Authors: Singh, Vishal; Pandey, Anvita\n- Year: 2020\n- DOI: 10.2166/wp.2019.329\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b773b9f427d4f2106ceda731b316220e4a16c87fe6d846190ce4a3552b7e9948) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=45553, sha256=b773b9f427d4f2106ceda731b316220e4a16c87fe6d846190ce4a3552b7e9948]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Multi-country Hindu Kush Himalaya region (India, Nepal, China, Pakistan, Afghanistan, Bhutan)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban drinking water supply, municipal demand-supply deficits, inequitable distribution, and sanitation/sewerage challenges across towns and cities in the Hindu Kush Himalaya (HKH) region.",
+      "c2": "Under the plain wording of Criterion 2, the paper broadly touches on governance, institutional, and regulatory themes (such as fragmented municipal departments, un-enforced municipal bye-laws on groundwater abstraction, and artificially low water pricing), though only as descriptive commentary and policy recommendations rather than an analysed exposure. Under the narrow 2026-10-13 rule-type reading, Criterion 2 is 'no': governance is discussed only as unanalysed macro-governance background and high-level policy recommendations (e.g., springshed conservation, citizen science, institutional coordination, metering) rather than examining how a specific rule-type mechanism directly governs household or community service access. Regardless, even if Criterion 2 were treated as met under the plain wording, the full-text decision remains 'exclude' because the paper contains no empirical evidence (fails c3 and c5).",
+      "c3": "No empirical evidence or systematic empirical synthesis. The article is a three-part narrative policy overview and commentary summarizing secondary statistics from published reports and news sources across HKH cities, followed by 12 general policy recommendations, with no empirical research design, no primary data collection, and no systematic review methodology. Excluded under E05.",
+      "c4": "Reports secondary descriptive figures from cited literature relevant to urban water supply availability, coverage, continuity, and informal tanker costs (e.g., MLD supply vs. demand in Table 1, less than 20% population served by AUWSSC in Kabul, 2 hours of daily supply in Dharamshala), though not as empirically analysed study outcomes.",
+      "c5": "Fails to identify an empirical study design, analytical sample, or testable exposure-outcome relationship; cities are described narratively using illustrative secondary figures.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2",
+        "quote": "In order to build a holistic perspective, the paper is divided into three parts: the first part focuses on major urban centres and their water issues, followed by key issues and main challenges and issues facing urban water governance across selected case studies. We conclude with a number of recommendations concerning future strategies and actions that need to be taken to strengthen urban climate resilience in the region."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 6",
+        "quote": "Data from 2013 indicate that, currently, Afghanistan Urban Water Supply and Sewerage Company (AUWSSC) is able to provide 15 Lpcd of water, which is only able to supply less than 20% of its population (Mukherjee et al., 2006)."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10",
+        "quote": "The poor and vulnerable are left at the mercy of government supply which is also not equitably distributed. Inequity in water distribution is a prominent issue across the cities and towns of the HKH."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10",
+        "quote": "Ground water abstraction policies exist in municipal bye-laws in many cases, however they are seldom followed (Quetta, Kabul, Dehradun, Haldwani), and illegal borewells and overexploitation of groundwater resources remains a problem."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10",
+        "quote": "Institutional capacities and urban governance mechanisms to manage water are generally low and poor. Moreover, multiple institutions/departments are involved in supply, management and maintenance of infrastructure related to water, which work in silos"
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "not reported",
+    "outcome": "Secondary descriptive city-level water supply and demand figures (MLD), share of population supplied, daily hours of supply, and informal tanker reliance compiled from existing literature",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Selected cities and towns in the Hindu Kush Himalaya region discussed narratively from secondary sources (including Kabul, Quetta, Shimla, Mussoorie, Nainital, Almora, Dharamshala, Gangtok, Kathmandu, Pokhara, Baglung, Xining, Thimphu and Puentsholing); no empirical sample",
+    "rationale": "Excluded under E05 (No empirical evidence). Singh & Pandey (2020) is a narrative policy overview and commentary on urban water resilience in the Hindu Kush Himalaya region. While it discusses municipal water supply deficits (c1, c4) and mentions broad water governance weaknesses, un-enforced groundwater bye-laws, and low water pricing in its narrative recommendations, it conducts no primary empirical data collection, employs no empirical or socio-legal methodology, and is not a systematic empirical synthesis (c3 = no, c5 = no). Moreover, under the 2026-10-13 narrow rule-type reading of Criterion 2, it provides only unanalysed macro-governance background and high-level policy prescriptions rather than analysing a rule-type mechanism governing service access (c2 = no). Even under the plain wording of Criterion 2, the study is excluded for lack of empirical evidence.",
+    "record_id": "R08C74B34D928",
+    "study_design": "Narrative policy overview / commentary (non-empirical)"
+  }
+}

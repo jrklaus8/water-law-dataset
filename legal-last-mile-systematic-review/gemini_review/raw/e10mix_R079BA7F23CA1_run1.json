@@ -1,0 +1,281 @@
+{
+  "record_id": "R079BA7F23CA1",
+  "order": 144,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "f8c8ce7cc0de09a90d468a190ff52f45d7b7524f1db958857c9481ab8826cdb9",
+  "input_text_sha256": "4329195111dbe7e33b2a75f1316f80d1f45adcc615027e13ebb4f2457b8b727f",
+  "prompt_sha256": "771241b0bfbf897a8a1459d96544ea87082eae7b54478397108783401a37a27c",
+  "started_at": "2026-11-20T17:11:49.885627+00:00",
+  "completed_at": "2026-11-20T17:13:01.140967+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R079BA7F23CA1\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R079BA7F23CA1\n- Title: Assessing urban water security: Case study Jakarta\n- Authors: Tarigan S.D.; Mahera S.\n- Year: 2020\n- DOI: 10.1088/1755-1315/477/1/012012\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 4329195111dbe7e33b2a75f1316f80d1f45adcc615027e13ebb4f2457b8b727f) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=24944, sha256=4329195111dbe7e33b2a75f1316f80d1f45adcc615027e13ebb4f2457b8b727f]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia (with secondary comparison to Bangkok, Thailand)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines city-level domestic water service access in Jakarta as one of five dimensions ('Domestic water security') of an urban Water Security Index, reporting PDAM Jakarta water service customer coverage (%) and per-capita water consumption (l/c/d) for 2014-2018, alongside city-wide wastewater treatment ratio (%).",
+      "c2": "Fails the narrow 2026-10-13 rule-type reading: the paper does not examine any rule-type legal, administrative, regulatory, or institutional mechanism governing service access (such as eligibility rules, tenure/documentation requirements, administrative burden, tariff/cost-recovery rules, discretion, enforcement, or utility ownership/regulatory structure). Its 'Governance and Management' index sub-dimension consists solely of three aggregate technical/fiscal metrics: pipe leakage ratio (%), ratio of treated to total wastewater (%), and municipal water management budget per capita (USD/cap). Under the plain/broad wording of Criterion 2, although Section 4.5 is nominally titled 'Governance and Management' and reports per-capita water management budget alongside leakage and wastewater treatment ratios, these are unanalysed city-wide technical and macro-budget sub-scores averaged into a composite index rather than a governance factor examined in relation to service access; even if the nominal governance sub-dimension were treated as loosely touching plain Criterion 2, the full-text decision under plain Criterion 2 remains 'exclude' because no governance exposure is linked to or analyzed against service access (failing Criterion 5).",
+      "c3": "Uses secondary empirical administrative and statistical data for Jakarta (from PDAM Jakarta 2014-2018, BPS 2016, Ministry of Environment and Forestry/KLHK, and PPID Jakarta 2013-2016) to score indicators and calculate a city-scale Water Security Index, which is descriptively compared against published AIT scores for Bangkok.",
+      "c4": "Reports city-level domestic water service coverage ('Percentage of Water Service Customer' / 'Water Service Coverage (%)', rising from 45.62% in 2014 to 80.00% in 2018) and average water consumption (130 l/c/d) in Table 2.",
+      "c5": "Although the city-scale unit of analysis (Jakarta) and descriptive composite-index study design are identifiable, there is no identifiable exposure-outcome analytical structure linking a governance or legal factor to water service access; all five dimensions (domestic, economic, environmental, flood disaster, and governance/management) are simply scored 1-5 and averaged with equal weights into a single composite Water Security Index.",
+      "c6": "Full text is written in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 (Section 2. Purpose)",
+        "quote": "The aim of this study is to calculate water security index at the city scale using Jakarta as case study and to compare the index with another selected city in ASEAN region."
+      },
+      {
+        "criterion": "c1, c4",
+        "page": "PDF Page 4 (Section 4.1. Domestic Water Security)",
+        "quote": "Water supply and access can be represented by percentage of water service customer and water consumption per capita. The data of percentage of water service customer and water consumption per capita in Jakarta is displayed in the Table 2."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 (Section 4.5. Governance and Management)",
+        "quote": "One of variable that be measured to represent the goverment and management dimension is the ratio of leakage in water supply. The more leakage ratio in water supply, the less water supply management of the goverment."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 (Section 4.5. Governance and Management)",
+        "quote": "Beside the leakage in water supply in Jakarta, governance and management in water security is also measured by budget for water management and the ratio of water reuse to total wastewater."
+      },
+      {
+        "criterion": "c5",
+        "page": "PDF Page 7 (Section 4.6. Water Security Index in Jakarta)",
+        "quote": "Each indicator is given score to uncover the index of water security in Jakarta and the score is combined for all indicators."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "not reported (no legal, administrative, or governance exposure analyzed in relation to service access; composite index sub-dimension 'Governance and Management' comprises pipe leakage ratio, ratio of treated to total wastewater, and per-capita water management budget)",
+    "outcome": "City-scale composite Water Security Index (1-5 score) and component indicator scores, including PDAM water service coverage (%) and per-capita water consumption (l/c/d)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "City of Jakarta aggregate population (10,197,066 to 10,749,240 residents across 2014-2018 administrative records), with descriptive city-level comparison to Bangkok",
+    "rationale": "Excluded under E03 (Wrong exposure). This paper calculates a descriptive city-scale Water Security Index (WSI) for Jakarta across five equally weighted dimensions (domestic, economic, environmental, water-related disaster, and governance/management) and compares the aggregate score to Bangkok. While 'Domestic water security' reports city-wide PDAM water service coverage (%) and per-capita water consumption (l/c/d), the paper examines no legal, administrative, regulatory, or rule-type governance mechanism governing service access. Its 'Governance and Management' sub-dimension consists solely of pipe leakage ratio (%), ratio of treated to total wastewater (%), and municipal water management budget per capita (USD/cap), scored in parallel with the other sub-indices and averaged without any analysis of how governance rules or institutions shape household or community service access.",
+    "record_id": "R079BA7F23CA1",
+    "study_design": "Descriptive city-scale composite index case study (DPSIR-based Water Security Index using secondary administrative data)"
+  }
+}

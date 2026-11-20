@@ -1,0 +1,281 @@
+{
+  "record_id": "R999C3CB53A0C",
+  "order": 109,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "47914021aabac4c81d6adbce783ecbf830503afca763e0fec0af722da9309905",
+  "input_text_sha256": "2af68dfe95a620cf560d664b0cd83b1aec1dab07ab1b213db84fbd3c513ae551",
+  "prompt_sha256": "ca227a43046c8675c7a18c6d625a7307ca8ada46a8b47acbecd6999411f509d2",
+  "started_at": "2026-11-20T16:57:05.362136+00:00",
+  "completed_at": "2026-11-20T16:59:24.966370+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R999C3CB53A0C\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R999C3CB53A0C\n- Title: Urban Development Programmes in India: A Critique of JnNURM\n- Authors: Kundu D.\n- Year: 2014\n- DOI: 10.1177/0049085714548546\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 2af68dfe95a620cf560d664b0cd83b1aec1dab07ab1b213db84fbd3c513ae551) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=47468, sha256=2af68dfe95a620cf560d664b0cd83b1aec1dab07ab1b213db84fbd3c513ae551]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "No. Although water supply and sewerage account for roughly 60 per cent of sanctioned JnNURM Urban Infrastructure Governance funds, the paper examines intergovernmental capital-grant allocations, project approvals/completions and municipal reform milestones across multiple urban infrastructure sectors (roads, drainage, solid waste, water supply, sewerage) rather than household or community water or sanitation service access.",
+      "c2": "Plain wording: Yes — under the literal broad wording of Criterion 2, the paper examines legal, administrative, institutional and governance factors, specifically JnNURM's 23 state and municipal reforms (74th Constitutional Amendment decentralisation, property tax, double-entry accounting, e-governance, and 100 per cent O&M user-charge cost recovery milestones) as well as grant conditionalities requiring City Development Plans (CDPs), Detailed Project Reports (DPRs) and matching funds. Narrow 2026-10-13 rule-type reading: No — the paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading because it evaluates macro-governance reform compliance checklists and intergovernmental project-financing capacity across municipalities rather than how a rule-type mechanism (such as tariff rules, tenure/documentation requirements, or administrative burden) directly governs household or community water or sanitation service access. Even under the plain Criterion 2 reading, the study is excluded because it fails Criteria 1 and 4.",
+      "c3": "Yes (minimally). While structured as a policy critique without a primary data collection or causal inference design, the paper compiles and analyses secondary quantitative administrative monitoring data from the Ministry of Urban Development / JnNURM portal (Tables 1–8) covering reform scores, city milestone counts, sectoral project/fund shares, per-capita grant disbursements and completion rates across Indian states and cities.",
+      "c4": "No. Reported outcomes are limited to state- and municipality-level administrative and fiscal metrics: percentage compliance with 23 reform milestones, number of cities collecting 100 per cent of O&M costs, sectoral shares of sanctioned projects and released central funds, project completion percentages and the share of towns/urban population located in jurisdictions receiving JnNURM funds. The author explicitly notes that there is no impact assessment and no measurement of service delivery outcomes.",
+      "c5": "No. The unit of analysis is states and Urban Local Bodies (65 mission cities and non-mission towns) tracked via aggregate administrative monitoring tables; there is no identifiable household or community service-access outcome or empirical study design linking a governance mechanism to water or sanitation access.",
+      "c6": "Yes. The full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 18",
+        "quote": "This article analyses the present urban development policies with a focus on the extent of equity in the delivery of basic services especially in the context of effectiveness of the programme of Jawaharlal Nehru National Urban Renewal Mission (JnNURM)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 18",
+        "quote": "The small towns and poorer states could take little advantage of this programme because of their limited capacity to understand and implement reforms and prepare city development plans and detailed project reports which were contingent for qualifying for funds."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 18",
+        "quote": "Also, cities have started levying water charges to recover part of the O&M cost but not to the extent of 100 per cent as stipulated for implementation of reforms. Only 23 cities have been able to do so."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 10 of 18",
+        "quote": "An analysis of the sector-wise distribution of funds released during 2005–14 (Table 5) reveals that water supply and sewerage together attracted 60 per cent of the funds released in the mission cities followed by roads and flyover which accounts for 22 per cent."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 12 of 18",
+        "quote": "There is no impact assessment where the projects are completed. Service level benchmarks and standardised outcomes to be achieved by these projects are not included in the plan. Also, no means of assessing or measuring performance of service delivery figures in the policy."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Jawaharlal Nehru National Urban Renewal Mission (JnNURM) intergovernmental infrastructure grant conditionalities (City Development Plans, Detailed Project Reports, matching funds) and 23 state and Urban Local Body governance reforms",
+    "outcome": "State-level reform achievement scores, counts of cities meeting municipal reform milestones (including 100% O&M cost recovery), sectoral shares of sanctioned projects and central grant disbursements, per-capita funds released, project completion rates, and share of towns/urban population in jurisdictions receiving JnNURM grants",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "31 Indian states/union territories and 65 JnNURM mission cities (178 Urban Local Bodies within mission urban agglomerations, including detailed breakdown of 7 megacities) plus non-mission towns",
+    "rationale": "Excluded (E04: Wrong outcome; also fails c1 and narrow c2). This article is a macro-level policy critique of India's Jawaharlal Nehru National Urban Renewal Mission (JnNURM) using secondary Ministry of Urban Development monitoring data across states and cities (Tables 1–8). Although water supply and sewerage represent roughly 60 per cent of UIG infrastructure grant disbursements and one municipal reform checklist item tracks whether cities recover 100 per cent of water O&M costs, the paper measures only intergovernmental grant allocations, project approval/completion counts, and municipal/state reform compliance scores. As the author explicitly states on page 626 (PDF page 12), JnNURM includes no impact assessments or measurements of service delivery performance, so no household or community water or sanitation access, connection, availability, reliability, quantity, affordability, or exclusion outcome is reported. Moreover, under the 2026-10-13 Criterion 2 clarification, the paper examines intergovernmental capital-project grant conditionalities and macro-municipal governance reforms rather than a rule-type mechanism directly governing household/community service access (and remains excluded under the plain Criterion 2 wording because no service-access outcome is examined).",
+    "record_id": "R999C3CB53A0C",
+    "study_design": "Descriptive policy evaluation using secondary administrative programme monitoring data"
+  }
+}

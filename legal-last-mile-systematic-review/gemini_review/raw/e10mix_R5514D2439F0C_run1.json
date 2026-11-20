@@ -1,0 +1,286 @@
+{
+  "record_id": "R5514D2439F0C",
+  "order": 134,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ce05837eeaae59ddf85c4fd4ae5b7e142a0d3a13daa8b8db2b9aa7630563b1e3",
+  "input_text_sha256": "ce759e7ada71043f4db00ab5da9479a48cd426f6bf82f01a0d27d55d2e865223",
+  "prompt_sha256": "56ddbdfad43380e3ad48f29115d57ce62a735076c5cde46da182faba98f83c2e",
+  "started_at": "2026-11-20T17:06:36.536002+00:00",
+  "completed_at": "2026-11-20T17:11:49.837087+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R5514D2439F0C\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R5514D2439F0C\n- Title: Managing Urban Water Demand in Neoliberal Northern Mexico\n- Authors: Walsh, Casey\n- Year: 2011\n- DOI: 10.17730/humo.70.1.5675v706667047l2\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: ce759e7ada71043f4db00ab5da9479a48cd426f6bf82f01a0d27d55d2e865223) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=48954, sha256=ce759e7ada71043f4db00ab5da9479a48cd426f6bf82f01a0d27d55d2e865223]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Mexico",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Touches urban household water service delivery in Matamoros, Tamaulipas as institutional context (describing deficient municipal infrastructure, water truck delivery and communal taps in informal peripheral settlements, household metering, and occasional non-payment cutoffs or repair shutoffs), although the study's central topic is post-access urban water demand reduction and conservation education rather than service access itself.",
+      "c2": "PASSES PLAIN WORDING / FAILS NARROW 2026-10-13 READING. Under the literal/plain broad wording of Criterion 2, the paper examines an institutional and governance factor: neoliberal municipal water governance and the Junta de Agua y Drenaje's (JAD) Programa Cultura del Agua (PCA), including school-based water-waste surveillance ('Water Detectives Club') backed by municipal fines for wasting water. Under the active 2026-10-13 clarification, however, Criterion 2 is NOT met ('no'): the empirically investigated intervention (PCA) is a media- and school-based behavioural/cultural conservation promotion program (cartoon mascots, slogans, website games, classroom lessons, and reporting water waste), rather than a rule-type mechanism directly governing household service access. Brief descriptions of Mexico's constitutional water-rights protection, JAD's metering rollout, debt amnesty, and non-payment cutoffs (pp. 56-57) serve only as unanalysed background framing why JAD turned to cultural/educational promotion, and the Water Detectives fine schedule targets water waste rather than service access eligibility or connection. Even under the plain wording of Criterion 2, plain_criterion2_decision remains 'exclude' because the paper also fails Criterion 4 (no empirical service-access outcome).",
+      "c3": "Contains primary qualitative ethnographic evidence collected in Matamoros between 2004 and 2008 (interviews with the JAD director, PCA director, and media designer, plus August-September 2007 classroom observations of preschool and fifth/sixth-grade PCA visits), alongside secondary descriptive statistics from JAD's 2006 telephone awareness survey and website analytics.",
+      "c4": "Does not report an empirical outcome relevant to household water access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion. The empirically reported outcomes of the PCA are promotional media reach/brand recognition (88% telephone survey familiarity with JAD's logo and cartoon characters; 30,000 website visits; >500 t-shirts distributed) and qualitative classroom attitudes and social tensions/distrust between schoolchildren, parents/neighbors, and PCA promoters over peer surveillance of water waste. Background mentions of metering coverage (~50% by 2005), isolated non-payment cutoffs, and children's classroom remarks about repair shutoffs and smelly/dirty tap water are contextual/anecdotal and not evaluated as outcomes of a legal or administrative mechanism.",
+      "c5": "For the ethnographic conservation-program case study actually conducted, the study design (ethnographic fieldwork with interviews, classroom observation, and secondary utility survey metrics), setting/participants (JAD/PCA staff and Matamoros schoolchildren/residents), intervention (PCA media and school conservation campaign), and cultural/awareness outcomes are identifiable, though exact sample sizes for interviews, classrooms, and the JAD telephone survey are not reported.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c2",
+        "page": "PDF Page 1 of 9",
+        "quote": "In northern Mexico, this decentralized management of water is accompanied by educational programs designed to create a “water culture” based on shared environmental and economic values and surveillance of water use by schoolchildren. This article explores the quotidian dynamics of one such water culture program and locates these dynamics within larger processes of neoliberal water governance."
+      },
+      {
+        "criterion": "c1_c2",
+        "page": "PDF Page 3 of 9",
+        "quote": "This, of course, was quite in line with a general trend in decentralizing costs, but it placed the JAD in the difficult position of extracting money from users who, by law, cannot be denied the service. After decades of neglect and rapid population growth, the urban water infrastructure was deficient, and users were reluctant to pay for what they considered poor service. Homes in new and informally settled neighborhoods on the outskirts of the city often had to be delivered water by truck."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 9",
+        "quote": "From its conception, it has been a program that works through the public schools to teach children to value, monitor, and enforce water efficiency, and it was formally recognized by the local branch of the federal Secretary of Public Education in 1999."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 9",
+        "quote": "The basic concept behind the Water Detectives Club is that the JAD gives the authority to the children to monitor and report water waste to the JAD."
+      },
+      {
+        "criterion": "c3_c4",
+        "page": "PDF Page 5 of 9",
+        "quote": "The JAD hired a private company to carry out a monthly survey in Matamoros to gauge the level of “market penetration” achieved. By the middle of 2006, 88 percent of the people surveyed by telephone in Matamoros were familiar with the logo and characters representing the JAD and knew that it was responsible for water service in the city."
+      },
+      {
+        "criterion": "c3_c4",
+        "page": "PDF Page 6 of 9",
+        "quote": "But in difference to other measures, the “Club Detectives de Agua” placed the children of Matamoros on the side of the JAD and against their parents and neighbors. In classroom visits conducted in August of 2007, I noticed that both students and JAD promoters understood this delicate situation, but could not easily resolve it."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Programa Cultura del Agua (PCA), a municipal water utility educational and media conservation campaign using cartoon mascots, website games, classroom presentations, and a children's 'Water Detectives Club' for reporting water waste, framed within neoliberal urban water demand management",
+    "outcome": "Public familiarity and media reach of JAD's conservation campaign (88% logo/character awareness, 30,000 website visits) and classroom discourse, cultural attitudes, and social tensions/distrust among schoolchildren, parents/neighbors, and utility promoters over water-waste surveillance and cost recovery",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Municipal water utility (Junta de Agua y Drenaje, JAD) and Programa Cultura del Agua (PCA) staff/promoters (director, graphic designer, 6 school promoters) and preschool to sixth-grade public-school students and teachers in Matamoros, Tamaulipas, Mexico (exact interview, classroom, and secondary JAD telephone-survey sample sizes not reported)",
+    "rationale": "Exclude as E03 (Wrong exposure), with secondary failure on Criterion 4 (no empirical service-access outcome). Walsh (2011) conducts an ethnographic study of the Programa Cultura del Agua (PCA) run by the municipal utility (JAD) in Matamoros, Mexico. Under the 2026-10-13 Criterion 2 clarification, the studied exposure—a media and public-school water-conservation campaign using cartoon mascots ('Supergótico'), video games, classroom lessons, and a children's 'Water Detectives Club' to report water waste—is behavioural/cultural conservation promotion situated against unanalysed neoliberal governance and utility cost-recovery background, rather than an empirically analysed rule-type mechanism directly governing household water service access. Brief mentions of constitutional protections against service denial, metering, debt amnesty, peripheral water supply, and non-payment cutoffs are descriptive background rather than studied mechanisms. Furthermore, even under the plain broad wording of Criterion 2 (plain_criterion2_decision = 'exclude'), the study fails Criterion 4 because its empirical outcomes are campaign brand recognition and classroom social tensions around reporting water waste, not household water access, connection, availability, reliability, quantity, affordability, or exclusion.",
+    "record_id": "R5514D2439F0C",
+    "study_design": "Ethnographic case study (qualitative interviews and classroom observations in 2004-2008, supplemented by secondary utility telephone survey and website usage statistics)"
+  }
+}

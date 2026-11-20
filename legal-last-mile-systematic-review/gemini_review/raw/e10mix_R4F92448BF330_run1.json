@@ -1,0 +1,286 @@
+{
+  "record_id": "R4F92448BF330",
+  "order": 10,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "13667691942a887c8bfdf6d4e98e4665b05a7b1c5d35fe889f998c5a7bb3e6c4",
+  "input_text_sha256": "fe2cab41fd01f83f3bd8fbac1327fc35cd8c257176eb38089e325542bdb851f7",
+  "prompt_sha256": "893c4f1717c63a6f556f9dd0c2b71bc0839396bd83fdc06ae2fe82fe49efdf2d",
+  "started_at": "2026-11-20T16:11:45.694009+00:00",
+  "completed_at": "2026-11-20T16:14:03.239362+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R4F92448BF330\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R4F92448BF330\n- Title: Sewer misconnection: Recommendations for increasing sewer connections in low-income urban communities in Dhaka, Bangladesh\n- Authors: Alam M.-U.; Rahat M.A.; Eayashen M.; Nawaz S.; Neeher N.; Tabassum K.F.; Evans B.; Hutchings P.\n- Year: 2026\n- DOI: 10.1016/j.ijheh.2025.114707\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: fe2cab41fd01f83f3bd8fbac1327fc35cd8c257176eb38089e325542bdb851f7) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=74615, sha256=fe2cab41fd01f83f3bd8fbac1327fc35cd8c257176eb38089e325542bdb851f7]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Bangladesh",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household-level sanitation service access, specifically connection versus non-connection (and misconnection to storm/surface drains) to the Dhaka Water Supply and Sewerage Authority (DWASA) foul-water sewer network in urban Dhaka.",
+      "c2": "Plain reading: Yes — directly examines administrative, institutional, financial/tariff, and legal/regulatory barriers to sewer connection alongside psychosocial determinants. Narrow 2026-10-13 rule-type reading: Yes (borderline due to RANAS behavioural framing, but passes on primary empirical rule-type mechanisms). Although the paper structures its intervention recommendations around the psychological RANAS framework and Behaviour Change Techniques (BCTs), its primary quantitative survey (N = 384) and qualitative IDIs/FGDs directly measure and analyse concrete rule-type mechanisms governing sewer access: (1) administrative burden in DWASA connection and maintenance application procedures (complicated administrative processes, bureaucratic delays, lack of procedural guidance, written applications and office visits to DWASA ignored, and procedural knowledge/confidence), (2) tariff and cost-recovery rules (high upfront DWASA connection fees relative to city corporation drains and mandatory monthly DWASA sewer billing imposed even on unconnected households in sewered zones, Table 1 p = 0.0002 and qualitative findings), (3) municipal approval and legal barriers ('No approval from city corporation' in Table 2 and 'Legal issues' obstructing connection in Table 3; non-significance does not affect eligibility per A18), and (4) utility/municipal institutional structure (jurisdictional responsibility-shifting between DWASA and the city corporation).",
+      "c3": "Primary mixed-methods empirical study conducted between October 2023 and November 2024 combining a stratified survey of 384 household/building owners (192 connected, 192 not-connected) with 10 in-depth interviews and 2 focus group discussions.",
+      "c4": "Reports verified household connection status to the DWASA foul-water sewer network (connected vs. not-connected / misconnected to open or city corporation drains) as well as household satisfaction with wastewater service access.",
+      "c5": "Clearly identifies the population and unit of analysis (building/household owners in 10 Dhaka neighbourhoods across 5 DWASA MODS zones, N = 384 survey respondents plus 10 IDIs and 2 FGDs), exposures (RANAS psychosocial factors alongside administrative connection burden, DWASA sewer billing and connection-fee rules, city corporation approval/legal issues, and institutional fragmentation), outcome (confirmed DWASA sewer connection vs. non-connection), and study design (cross-sectional mixed-methods comparative study).",
+      "c6": "Full text is written in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1",
+        "quote": "This mixed-method cross-sectional study aimed to develop targeted, evidence-based interventions to increase sewer connections in urban communities. We surveyed 384 households and conducted 10 in-depth interviews and two focus group discussions across five DWASA zones."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "In order to ensure equitable representation of households with DWASA sewer connections and those with city corporations or open drainage, 384 households were enrolled through stratified matching, the details were described in earlier research (Alam et al., 2025). During visits, trained enumerators confirmed the type of connection in each household."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1",
+        "quote": "Qualitative findings revealed widespread dissatisfaction with dysfunctional drainage systems, high connection costs, inadequate maintenance support from DWASA, and bureaucratic delays as significant barriers. These results highlight a complex interplay of psychological, financial, and administrative challenges limiting sewer uptake."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "We wrote to them (DWASA). We gave them applications requesting maintenance. We went to their offices for support. However, they just told us it was not solely their responsibility (indicating the involvement of the city corporation)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8",
+        "quote": "DWASA bill is already burdening us, but we are not getting any service. I am connected to city corporation’s drain. And the cost of connecting new households to the sewer is also higher than connecting to city corporation drain. That fee should be reduced also"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4",
+        "quote": "Respondents were split equally into connected to sewer (n = 192) and not-connected to sewer (n = 192)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Administrative connection procedures and bureaucratic delays, DWASA tariff/billing and new-connection fee rules (including monthly sewer billing of unconnected households and high upfront connection fees), city corporation approval and legal barriers, institutional responsibility division between DWASA and the city corporation, and RANAS psychosocial determinants",
+    "outcome": "Household connection to the DWASA foul-water sewer network versus non-connection (use of city corporation or open drainage / sewer misconnection) and satisfaction with current wastewater access",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Household/building owners (landlords) across 10 neighbourhoods in five DWASA Maintenance, Operation, Distribution, and Services (MODS) zones in Dhaka, Bangladesh: 384 surveyed households (192 connected to DWASA sewer, 192 not-connected to sewer) plus 10 in-depth interviews and 2 focus group discussions (6-10 male participants each) with unconnected landlords",
+    "rationale": "This mixed-methods cross-sectional study in Dhaka, Bangladesh satisfies all inclusion criteria under both the plain and narrow 2026-10-13 rule-type readings of Criterion 2. Although its intervention design uses the psychosocial RANAS framework and Behaviour Change Techniques, the primary empirical investigation (N = 384 stratified household survey plus 10 IDIs and 2 FGDs with landlords) directly examines concrete rule-type mechanisms governing household sewer connection: administrative burden and bureaucratic delays in DWASA connection/maintenance application procedures, utility tariff and cost-recovery rules (mandatory monthly DWASA sewer billing of unconnected households alongside high upfront connection fees), municipal approval and legal issues (Tables 2 and 3), and institutional responsibility-shifting between DWASA and the city corporation. Per the protocol safeguards, qualitative socio-legal/administrative evidence and statistically non-significant quantitative comparisons (e.g., legal issues and city corporation approval) remain eligible.",
+    "record_id": "R4F92448BF330",
+    "study_design": "Cross-sectional mixed-methods comparative study (stratified household survey, in-depth interviews, and focus group discussions)"
+  }
+}

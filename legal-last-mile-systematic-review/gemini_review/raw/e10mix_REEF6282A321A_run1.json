@@ -1,0 +1,281 @@
+{
+  "record_id": "REEF6282A321A",
+  "order": 126,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "ee966aeb9a47e70d9d44fa710075b8c516158bd49adef3edd0bacfa7c9a79826",
+  "input_text_sha256": "949ff714ac3911d6c16212529e00b97777320997a4467175b7f964242b2a7714",
+  "prompt_sha256": "204e5689173f1770cf73ffb7a248c3b4b46255ae4822077330cce6a2d94249be",
+  "started_at": "2026-11-20T17:02:44.802106+00:00",
+  "completed_at": "2026-11-20T17:04:32.876125+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD REEF6282A321A\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: REEF6282A321A\n- Title: The implication of water accessibility challenges to urban water governance in Morogoro municipality, Tanzania\n- Authors: Kabote S.J.\n- Year: 2024\n- DOI: 10.1016/j.heliyon.2024.e28194\n- Retrieval status: retrieved_oa_xml\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 949ff714ac3911d6c16212529e00b97777320997a4467175b7f964242b2a7714) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=38329, sha256=949ff714ac3911d6c16212529e00b97777320997a4467175b7f964242b2a7714]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Tanzania",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household domestic drinking water service access and public piped water connection across urban (Mazimbu) and peri-urban (Kingolwira) wards in Morogoro Municipality, Tanzania.",
+      "c2": "Passes BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, the study examines urban water governance, policy-legal frameworks (NAWAPO 2002, Water Supply and Sanitation Act No. 5 of 2019), and utility management by MORUWASA. Under the narrow 2026-10-13 rule-type reading, it empirically examines concrete rule-type mechanisms directly governing last-mile service access: (1) tariff and cost-recovery/cost-sharing rules, specifically MORUWASA's cost-sharing connection rule (utility positions main pipes 100-150 m away while households must pay TZS 300,000-450,000 for lateral pipes, labour, and connection materials, plus client responsibility for lateral pipe maintenance), regulated volumetric tariffs (TZS 1,600/m3 under the MORUWASA tariff adjustment order of 2019), and lack of price regulation over neighbour/vendor water resale (TZS 100-500 per 20 L); and (2) administrative burden, specifically MORUWASA bureaucracy in connecting households to the public piped network (tested across urban vs. peri-urban wards, p = 0.004).",
+      "c3": "Contains primary mixed-methods empirical evidence from a cross-sectional survey of 90 randomly sampled households (45 urban, 45 peri-urban) analyzed with descriptive statistics and Mann-Whitney U tests, combined with 3 key informant interviews analyzed via content analysis.",
+      "c4": "Reports multiple service access outcomes: water access in the previous 7 days (80% accessed, 20% unserved), connection to the public piped water system (nearly 69%), use of improved sources (94.4%) vs. tank carts (5.6% in peri-urban ward), intermittent continuity, and tariff/connection affordability barriers (34 of 45 peri-urban households unable to afford charges, urban vs. peri-urban p = 0.000).",
+      "c5": "Population and unit of analysis (households in Mazimbu and Kingolwira wards, Morogoro Municipality, n = 90 households plus n = 3 key informants), exposures (urban vs. peri-urban location, MORUWASA cost-sharing connection/maintenance rules, tariff and resale pricing, and utility connection bureaucracy), outcomes (7-day access, piped connection, affordability, accessibility challenge scores), and study design (cross-sectional mixed-methods survey and key informant study) are clearly identified. Note that XML retrieval omits rendered tables/figures, which may limit raw cell extraction for meta-analysis (Criterion 6 synthesis gate), but full prose supports systematic review inclusion.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PMC PMC10965817 - Water supply and accessibility in the previous seven days",
+        "quote": "Nearly 69% of the respondents were connected to the public piped water system and therefore accessed water supply from the public water supply infrastructures (Fig. 4)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PMC PMC10965817 - Water accessibility challenges",
+        "quote": "In the views of the key informants, bigger pipes were positioned by MORUWASA up to about 100 or 150 m away from a household, households paid for the cost of small pipes from where MORUWASA ended to the household. The key informants showed that the households paid between TZS 300,000 and 450,000 to get connected to the public piped water infrastructures. This includes cost for the pipes and everything required for the connection. There was also a question of the water supply authority being bureaucratic to get households connected to the public water system more so in the peri-urban areas at p = 0.004 (Table 4)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PMC PMC10965817 - Water supply and accessibility in the previous seven days",
+        "quote": "Data from key informants showed that households connected to the public piped water system paid TZS 1600 per unit of water equivalent to 1000 L of water or TZS 1600 per cubic metre. This charge was in line with MORUWASA tariff adjustment order of 2019 [42]. In addition, the key informants noted that some households in the peri-urban ward purchased water from neighbours who were connected to the public piped water system. The price of water ranged from TZS 100 to 500 per 20 L of water, and so was very expensive compared to water charges collected by MORUWASA from households connected direct to the public piped water system."
+      },
+      {
+        "criterion": "c3",
+        "page": "PMC PMC10965817 - Research design, sampling and data collection techniques",
+        "quote": "Forty-five (45) households were randomly selected from urban and peri-urban areas, making a total sample size of 90 households."
+      },
+      {
+        "criterion": "c4",
+        "page": "PMC PMC10965817 - Water supply and accessibility in the previous seven days",
+        "quote": "The study shows that water was accessible to 80% of the households in the previous seven days from date of the interview (Fig. 3). However, this does not mean continuous water supply per day in the study area. Exactly 20% of the respondents did not access water in the previous seven days more so in the peri-urban ward (Fig. 3)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Urban water governance, tariff/cost-recovery rules, and administrative burden under Morogoro Water Supply and Sanitation Authority (MORUWASA): specifically the cost-sharing connection and lateral maintenance rules (requiring households to fund small pipes and installation of TZS 300,000-450,000 from mains 100-150 m away), regulated volumetric tariffs (TZS 1,600/m3 under the 2019 tariff order) vs. unregulated neighbour/vendor resale prices (TZS 100-500 per 20 L), and administrative bureaucracy in connecting households across urban and peri-urban wards.",
+    "outcome": "Household domestic water accessibility in the past 7 days (80% accessed, 20% unserved), public piped water network connection (69%), reliance on improved vs. tank-cart/neighbour sources, service intermittency, affordability of water and connection charges (34/45 peri-urban households reporting unaffordability; urban vs. peri-urban p = 0.000), perceived bureaucratic connection barriers (p = 0.004), and composite water accessibility challenge scores (Mann-Whitney U p = 0.000).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Households in Morogoro Municipality, Tanzania: 90 randomly selected households (45 in urban Mazimbu Ward and 45 in peri-urban Kingolwira Ward) surveyed in May-June 2023, plus 3 key informants (1 from MORUWASA and 1 from each ward).",
+    "rationale": "This mixed-methods empirical study satisfies all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Using a survey of 90 urban and peri-urban households and 3 key informant interviews in Morogoro Municipality, Tanzania, it directly examines rule-type governance mechanisms governing last-mile piped water access—specifically MORUWASA's cost-sharing rule requiring households to pay TZS 300,000-450,000 for lateral pipes and installation beyond 100-150 m mains (as well as lateral maintenance), volumetric tariffs under the 2019 tariff adjustment order vs. unregulated neighbour resale pricing, and utility administrative bureaucracy in processing household connections—and links them to household piped connection, 7-day water access, intermittency, and affordability outcomes.",
+    "record_id": "REEF6282A321A",
+    "study_design": "Cross-sectional mixed-methods study (household survey n = 90 using descriptive statistics and Mann-Whitney U tests, combined with qualitative key informant interviews n = 3 analyzed via content analysis)"
+  }
+}

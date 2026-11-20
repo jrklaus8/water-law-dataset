@@ -1,0 +1,286 @@
+{
+  "record_id": "R94AFFF58AD88",
+  "order": 166,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "95aa1ccac3cb49402a0798fba7052ae90e5e9ed0813ebed2d3ed8a7a8fd6c5d0",
+  "input_text_sha256": "90a37fd850151284cbc2bfc0d5068278558bf9fd2a94eba6f43d92ab26e81001",
+  "prompt_sha256": "9a45d928442f6e58dea3f95689e721f40a49e2022c1a9777ad3718311e408a58",
+  "started_at": "2026-11-20T17:14:36.475593+00:00",
+  "completed_at": "2026-11-20T17:19:56.760974+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R94AFFF58AD88\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R94AFFF58AD88\n- Title: A critical assessment of the incomplete contracts theory for private participation in public services: The case of the water sector in Ghana\n- Authors: Dagdeviren H.; Robertson S.A.\n- Year: 2013\n- DOI: 10.1093/cje/bet007\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 90a37fd850151284cbc2bfc0d5068278558bf9fd2a94eba6f43d92ab26e81001) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=79536, sha256=90a37fd850151284cbc2bfc0d5068278558bf9fd2a94eba6f43d92ab26e81001]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban water service provision in Ghana under public-private restructuring and a five-year management contract (2006-2011), addressing urban piped supply and residential connections, daily water production compliance across 84 urban systems, and household water affordability across metered connections, unmetered connections, and public standpipes.",
+      "c2": "Plain wording: Clearly satisfied (yes), as the paper analyses an institutional, contractual, and regulatory governance arrangement—private sector participation via the 2006-2011 GWCL-AVRL management contract and urban water tariff regulation. Narrow 2026-10-13 rule-type reading: Also satisfied (yes, though borderline). On the borderline side, the paper's overarching aim is to critique Incomplete Contracts Theory, and the management contract itself primarily regulated internal utility operational KPIs (NRW, chemical/power use, financial reporting) while GWCL retained capital investment responsibility and PURC set tariffs. However, the paper empirically analyses two rule-type mechanisms within the narrow scope: (1) utility ownership and contractual enforcement rules governing urban water supply (privatisation restructuring separating urban water from rural/sanitation; contractual daily production capacity standards across 84 systems, penalty/snag-item loopholes, and operator control of the Revenue Collection Account starving GWCL capital investment for network extension), and (2) tariff and cost-recovery rules (a 105% cumulative tariff hike under the contract period and PURC's metered block tariffs, unmetered flat monthly charges, and public standpipe rates linked to household affordability in Table 3). Both plain and narrow readings therefore yield include.",
+      "c3": "Contains empirical evidence from a single-country institutional case study combining primary interviews with former and current senior GWCL managers, clause-by-clause analysis of the 2005 Management Contract and unpublished technical audit reports (Fichtner 2007, 2010; SEC 2011; Aquanet 2009), GWCL longitudinal KPIs (2003-2010), WHO/UNICEF JMP connection data, and original affordability calculations combining 2008 Ghana Living Standards Survey (GLSS) income data with PURC tariff schedules.",
+      "c4": "Reports multiple relevant outcomes: household water affordability (share of minimum required water consumption of 25 L/person/day in household income in 2008 by income quintile across metered, unmetered, and standpipe tariffs vs. the 3% benchmark in Table 3; plus 105% cumulative tariff increase), urban piped supply and residential connection coverage (declining from 41% in 1990 to 33% in 2010), daily water production capacity compliance (only 24 of 84 urban systems meeting the >=90% capacity or 100% demand requirement), and treated/distributed water quality compliance.",
+      "c5": "Population and units of analysis (utility/system level: GWCL/AVRL and 84 urban water systems in Ghana; household level: urban income quintiles in GLSS 2008), exposures (2006-2011 private management contract governance rules and PURC urban tariff structure), outcomes (affordability ratios, urban piped connection rate, production capacity compliance, operational KPIs), and case-study design are identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 8 of 33 (Section 3.1)",
+        "quote": "Following the protracted and controversial development of the PSP programme, a management contract was finalised and commenced in 2006 with Vitens of the Netherlands and Rand Water of South Africa, under the moniker Aqua Vitens Rand Limited (AVRL)."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 9 of 33 (Section 3.1)",
+        "quote": "There were notable improvements in revenue generation, billing and collection in the post contract period largely because of a cumulative tariff rise of 105% after the introduction of the management contract."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 9 of 33 (Section 3.1)",
+        "quote": "Proportion of urban population with piped supply and residential connections, for which GWCL and later AVRL were responsible, declined from 41 per cent 1990 to 33 percent in 2010 (UNICEF and WHO 2012)."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 14 of 33 (Section 4.1)",
+        "quote": "We asked this question to the former and current senior managers of the Ghana Water Company, the grantor of the management contract, and broadly received two types of responses."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 20 of 33 (Section 4.3)",
+        "quote": "Utilising the widely cited 3 per cent benchmark ratio of household water expenditure to income for the assessment of the affordability of water tariffs (Sawkins and Dickie 2005, UNDP 2006), it is clear that the cost of minimum water consumption for the 20 percent of the households at the bottom of income distribution was unaffordable even for those using public standpipes."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 32 of 33 (Table 2)",
+        "quote": "Capacity utilisation declined from 2009. Of the 84 systems, only 24 complied with contractual requirements. No 'corrective or preventive maintenance' was carried out in distribution or production."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Private sector participation via the five-year urban water management contract (2006-2011) between GWCL and AVRL (including contractual performance baselines, snag-item penalty exemptions, non-reporting loopholes, and operator control of cash accounts) and PURC urban water tariff rules (metered volumetric block tariffs, unmetered flat monthly charges, public standpipe rates, and 105% cumulative tariff increases)",
+    "outcome": "Household water tariff affordability (ratio of minimum water consumption cost at 25 L/capita/day to household income in 2008 across lowest vs. highest urban income quintiles), urban piped supply and residential connection coverage (1990-2010), treatment plant daily production availability compliance across 84 urban water systems, water quality compliance, and utility operational KPIs (NRW, bill collection rate, unit costs)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Ghana urban water sector: Ghana Water Company Limited (GWCL) and Aqua Vitens Rand Limited (AVRL) across 84 urban water systems (2003-2010 KPIs and 2006-2011 contract audits), interviewed former and current senior GWCL managers, and urban households by income quintile in the 2008 Ghana Living Standards Survey (GLSS)",
+    "rationale": "This paper uses an empirical case study of Ghana's urban water sector (focusing on the 2006-2011 GWCL-AVRL management contract and urban water tariff affordability) to critique Incomplete Contracts Theory on public versus private ownership. Although borderline in focus because its primary theoretical target is inter-party contract hold-up and many evaluated contract targets are internal utility operational KPIs (while GWCL retained capital investment responsibility), the study meets all inclusion criteria under both the plain and narrow 2026-10-13 readings of Criterion 2. Specifically, it empirically examines utility ownership/contractual enforcement mechanisms (including enforceable daily production standards across 84 urban systems, penalty/snag-item loopholes, and cash-account rules depriving GWCL of investment transfers) as well as regulated tariff and cost-recovery rules (a 105% tariff hike and PURC metered block, unmetered flat-rate, and standpipe tariffs analysed with 2008 GLSS household income data in Table 3), and reports relevant outcomes on household affordability, urban piped connection coverage, and daily supply production compliance. Confidence is medium due to the primarily theoretical framing and secondary role of household-level access outcomes relative to utility-level operational KPIs.",
+    "record_id": "R94AFFF58AD88",
+    "study_design": "Single-country institutional case study (mixed qualitative and descriptive quantitative analysis using contract documents, technical audit reports, key-informant interviews with senior utility managers, utility KPI series, and household survey/tariff affordability calculations)"
+  }
+}

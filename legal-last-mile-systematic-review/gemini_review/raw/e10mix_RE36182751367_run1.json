@@ -1,0 +1,286 @@
+{
+  "record_id": "RE36182751367",
+  "order": 127,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "44ba4a035fa6f44d8b8a24393c30fd58262b65a3101c00eed476d8b8bf829922",
+  "input_text_sha256": "377d962951ba5f6fe17741ff295b8f203eb75a620ef457c090085eecc371252b",
+  "prompt_sha256": "8c094ec312401d269006975e86f89cf9318258f163a9be39a0b69f4831ab40ae",
+  "started_at": "2026-11-20T17:02:44.815376+00:00",
+  "completed_at": "2026-11-20T17:05:00.251117+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RE36182751367\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RE36182751367\n- Title: Evaluation of Post-Construction Communal Wastewater Treatment Plants (WWTPs) in Sleman District, Special Region of Yogyakarta\n- Authors: Yulianto A.; Pramudita A.F.; Wantoputri N.I.; Rahmawati S.\n- Year: 2021\n- DOI: 10.1088/1755-1315/933/1/012019\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 377d962951ba5f6fe17741ff295b8f203eb75a620ef457c090085eecc371252b) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=22518, sha256=377d962951ba5f6fe17741ff295b8f203eb75a620ef457c090085eecc371252b]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Indonesia",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "No. Although the abstract and introduction mention national sanitation access targets as policy motivation for building communal wastewater treatment plants (WWTPs), the empirical study itself evaluates post-construction internal plant administration and O&M management across 13 already-built communal WWTPs rather than household or community sanitation service access.",
+      "c2": "Narrow 2026-10-13 rule-type reading: No. The study compares four government communal WWTP procurement/funding programs (Community-Based Sanitation, USRI, Special Allocation Funds, and Community-Based Environmental Sanitation, which differ in funding mechanism/source) and scores internal plant-committee administration (committee size/meetings, public reporting, keeping plant records, having O&M SOPs, and administrator understanding of O&M tasks). This represents generic infrastructure project delivery and internal community-facility O&M management rather than a rule-type legal, regulatory, or administrative mechanism governing household/community service access (note that 'management documentation' refers to administrators keeping plant records for government reporting, not user documentation/tenure requirements, and cost collection is scored solely on whether the administrator understood the task). Plain wording of Criterion 2: Yes in a broad sense, because the study explicitly examines institutional aspects of communal WWTP administrators and government procurement programs as an evaluative outcome/grouping; however, plain_criterion2_decision remains 'exclude' because institutional/management performance is the dependent variable rather than an exposure linked to a household or community service-access outcome (failing Criteria 1 and 4).",
+      "c3": "Yes. Primary empirical field evaluation interviewing 13 communal WWTP administrators (one per WWTP) using a 30-question structured instrument and interval scoring analysis.",
+      "c4": "No. The reported outcomes are composite administrator institutional and task-understanding scores (range 16 to 27, categorized into Optimal vs. Less performance) and descriptive physical O&M problems (clogged piping and odours, with a background note that all 13 sampled plants are operating). No outcome measuring household or community access, sewer connection, population coverage, service continuity/reliability to users, quantity, affordability, or exclusion is reported.",
+      "c5": "Yes. The unit of analysis and sample (13 communal WWTPs / 13 plant administrators in Sleman District), grouping exposure (four communal WWTP procurement programs), outcome (administrator institutional and management performance score), and cross-sectional evaluation design are clearly identifiable.",
+      "c6": "Yes. Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 8",
+        "quote": "Therefore, this study evaluated thirteen Communal WWTPs in Sleman District after construction was carried out. The aspects reviewed in this study were the administrator institutional and the management's performance using the scoring method."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 8",
+        "quote": "In principle, all WWTP Communal procurement programs are the same in terms of concepts and principles. The difference between the Communal WWTP procurement program is in the mechanism and source of funding."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3 of 8",
+        "quote": "This post-construction evaluation aims to analyze whether the Communal WWTP is running well based on the institutional aspects of the administrator and the management performance."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 8",
+        "quote": "The data collection was done by interviewing the thirteen Communal WWTP administrators. One administrator was interviewed for each WWTP, so there were thirteen respondents in this study."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 5 of 8",
+        "quote": "Based on the results of interviews, thirteen communal WWTPs are still operating and functioning. The most common problems experienced by almost all communal WWTPs were clogged piping and odours."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 8",
+        "quote": "From Table 4, based on institutional aspects and management performance, only Ambarketawang WWTP got the less performance category while the others got the optimal category."
+      }
+    ],
+    "exclusion_code": "E04",
+    "exposure": "Type of government communal WWTP procurement/funding program (Community-Based Sanitation, Urban Sanitation Rural Infrastructure [USRI], Special Allocation Funds, and Community-Based Environmental Sanitation)",
+    "outcome": "Composite post-construction score (range 9-27) combining administrator institutional aspects (management structure, reporting to the public, keeping plant documentation, existence of maintenance SOPs) and administrator understanding of main tasks (collecting/managing O&M costs, improving service quality, operating WWTP, damage responsibility, health education), plus descriptive O&M problems (clogged piping and odours)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "13 post-construction communal wastewater treatment plants (WWTPs) across four procurement programs in Sleman District, Special Region of Yogyakarta, Indonesia; 1 administrator interviewed per WWTP (13 respondents total)",
+    "rationale": "Excluded (E04 - Wrong outcome; also fails C1 and narrow C2). This empirical post-construction evaluation interviews 13 communal WWTP administrators across four government sanitation procurement programs in Sleman District, Indonesia. Rather than measuring household or community sanitation service access, connections, availability, reliability, affordability, or exclusion, its dependent variable is a composite score of internal plant-administrator institutional organization (committee activity, public reporting, plant record-keeping, O&M SOPs) and administrator knowledge of O&M tasks, alongside descriptive mention of clogged pipes and odours. In addition, under the 2026-10-13 narrow Criterion 2 clarification, comparing government infrastructure procurement/funding delivery programs and internal O&M committee practices constitutes generic project delivery/O&M management rather than a rule-type legal or administrative mechanism directly governing service access. Even under the plain wording of Criterion 2, the study remains excluded because it reports no service-access outcome.",
+    "record_id": "RE36182751367",
+    "study_design": "Cross-sectional post-construction evaluation using structured interviews and quantitative interval scoring"
+  }
+}

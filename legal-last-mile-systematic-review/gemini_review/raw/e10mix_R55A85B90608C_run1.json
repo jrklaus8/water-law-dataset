@@ -1,0 +1,281 @@
+{
+  "record_id": "R55A85B90608C",
+  "order": 75,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "db33e6776b2699ab0bcd6bef438b39bd0ebe9da79b9e2690566c8ee0e15f0010",
+  "input_text_sha256": "b736089a03d8d27aaaf6050671eeaefd32b26c585dcce5fa521ddab31881af9a",
+  "prompt_sha256": "eef22a1e68b34b77df1d11adca89a3d6adcf895e2f156d4f5b5a028286808fe3",
+  "started_at": "2026-11-20T16:50:52.582185+00:00",
+  "completed_at": "2026-11-20T16:53:19.620889+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R55A85B90608C\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R55A85B90608C\n- Title: Disparities in drinking water services: Private well dependence and public supply inequities in Western Sweden\n- Authors: Gärtner N.; Lindhe A.\n- Year: 2026\n- DOI: 10.1016/j.envadv.2026.100692\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: b736089a03d8d27aaaf6050671eeaefd32b26c585dcce5fa521ddab31881af9a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=60897, sha256=b736089a03d8d27aaaf6050671eeaefd32b26c585dcce5fa521ddab31881af9a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Sweden",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking water service access across 13 municipalities in the extended Gothenburg region of Western Sweden, comparing municipal drinking water supply (MDWS) coverage versus reliance on private domestic wells, as well as municipal water fees, pipe breaks, and water quality indicators.",
+      "c2": "Fails Criterion 2 under BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, the study does not empirically examine a legal, administrative, institutional, regulatory, or governance factor as an exposure: its independent variables are socio-economic and demographic indicators (income, education, age, employment status, sex, and country of birth) correlated with service outcomes (supply type, water quality test compliance, water fees, and pipe breaks), while all 12 municipal waterworks operate under the same municipal ownership and national regulatory regime. Mentions of the Drinking Water Ordinance (LIVSFS 2022:12) exempting small private wells, municipal cost-recovery principles, and potential testing subsidies appear only as descriptive background or policy discussion. Under the narrow 2026-10-13 clarification, no rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, tenure/documentation rules, tariff or connection-fee rules tested as barriers to access, enforcement, or regulatory/ownership structure) is analysed; water fees and connection status are treated solely as outcome metrics across socio-economic strata, and non-connection in rural areas is attributed to low population density, distance to networks, and residential lifestyle preferences.",
+      "c3": "Contains primary quantitative geospatial and statistical analysis combining municipality-supplied GIS water service-area boundaries, Geological Survey of Sweden (SGU) well records, Statistics Sweden small-area socio-economic data, and Swedish Water and Wastewater Association (VASS) utility indicators using Pearson chi-square tests, Cramer's V, Spearman rank correlations, Mann-Whitney U tests, and Cohen's d.",
+      "c4": "Reports multiple drinking-water access and service outcomes: connection to municipal drinking water supply versus reliance on untreated private wells, single-family and multi-family connection fees, volumetric water/wastewater fees, annual water costs, network and service-line pipe breaks, pressure/quality complaints, and microbial/chemical water quality test results.",
+      "c5": "Population, unit of analysis (demographic statistical areas of 700-2,700 inhabitants and municipalities across 13 municipalities, ~1.05 million residents), socio-economic exposure variables, service outcomes, and cross-sectional geospatial/ecological study design are clearly reported; however, the exposure studied is socio-demographic status rather than an eligible legal/governance mechanism.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c2_c4",
+        "page": "PDF Page 3 of 11 (Section 1)",
+        "quote": "The overall aim of this paper is to analyse socio-economic disparities in the supply of drinking water in Sweden by using a case study region. To identify disparities, we assess whether indicators of (environmental) justice (including income, age, education, employment status, gender, and place of birth) correlate with (a) the type of water supply (private well or municipal drinking water supply), (b) the quality of the drinking water, (c) the price of water, and (d) the experienced pipe breaks."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 4 of 11 (Section 2)",
+        "quote": "The reason why 10% of the households are not connected to the MDWS is the low population density of some areas and the distance to the distribution system managed by the MDWS. Private wells used for drinking water supply are exclusively located in rural areas."
+      },
+      {
+        "criterion": "c3_c5",
+        "page": "PDF Page 5 of 11 (Section 3.2.1)",
+        "quote": "Using data obtained directly from municipalities, we mapped the exact boundaries of areas connected to the municipal drinking water supply (MDWS). All remaining built-up areas, not covered by the MDWS polygons, were assumed to rely on self-supplied water via private wells."
+      },
+      {
+        "criterion": "c1_c4",
+        "page": "PDF Page 6 of 11 (Section 4.1)",
+        "quote": "We estimate that nearly 880 000 people are supplied with municipal drinking water in the Gothenburg region, and approximately 176 000 people are private well users."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 11 (Section 5.2)",
+        "quote": "One explanation may be the structure of the Swedish water sector itself, where utilities operate under similar regulatory frameworks and cost-recovery principles"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Area-level socio-economic and demographic characteristics (income, education, age, employment status, sex, and country of birth)",
+    "outcome": "Drinking water supply type (municipal drinking water connection vs. private domestic well reliance) and municipal VASS utility indicators (connection fees, volumetric and annual fees, network and service-line pipe breaks, pressure/quality complaints, and chemical/microbial/odor water quality test outcomes)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Approximately 1.05 million residents (~880,000 municipally supplied and ~176,000 private well users) across small demographic statistical areas (700-2,700 inhabitants) in 13 municipalities of the extended Gothenburg region, South-West Sweden",
+    "rationale": "Excluded under E03 (Wrong exposure). While the paper empirically examines household drinking water service access, connection vs. private-well self-supply, tariffs, pipe breaks, and water quality across 13 Swedish municipalities, its explanatory variables are purely socio-economic and demographic indicators (income, education, age, employment status, gender, and country of birth). It does not empirically examine any legal, administrative, regulatory, or governance factor—nor any rule-type mechanism governing service access under the 2026-10-13 Criterion 2 clarification (regulatory exemptions for private wells and Swedish cost-recovery principles are discussed only as unanalysed background context, and tariff levels are treated solely as descriptive service outcomes correlated with neighbourhood income).",
+    "record_id": "R55A85B90608C",
+    "study_design": "Cross-sectional geospatial and ecological correlation/comparative study"
+  }
+}

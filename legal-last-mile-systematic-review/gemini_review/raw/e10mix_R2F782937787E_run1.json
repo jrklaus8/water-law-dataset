@@ -1,0 +1,281 @@
+{
+  "record_id": "R2F782937787E",
+  "order": 55,
+  "run": 1,
+  "task": "e10_inaccessible_exclusions_blind_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "04b39a77248805ebb7ef7a67d00ffc67419e7f6f6cdebdac0dd52f19caafa2d8",
+  "input_text_sha256": "ba445ed2480d194e0efaca8d4420e60e2ae138414130783e08f7c91172539399",
+  "prompt_sha256": "d1793837e77b70c86c1504214316b84821baa24fb0d440f8825287365c5e6deb",
+  "started_at": "2026-11-20T16:25:15.710034+00:00",
+  "completed_at": "2026-11-20T16:26:39.914018+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R2F782937787E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R2F782937787E\n- Title: Policy insights on user charges from a rural water supply project: A counter-intuitive view from South India\n- Authors: Vibhu N.; James A.J.\n- Year: 2010\n- DOI: 10.1080/07900627.2010.491973\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: ba445ed2480d194e0efaca8d4420e60e2ae138414130783e08f7c91172539399) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=51632, sha256=ba445ed2480d194e0efaca8d4420e60e2ae138414130783e08f7c91172539399]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural piped drinking water supply service access (house service connections and public stand posts/fountains) across village panchayats and households in Tamil Nadu, India.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Plain reading: examines water governance, institutional change management, and user-charge/cost-recovery policy rules in rural water supply. Narrow 2026-10-13 rule-type reading: directly evaluates tariff and cost-recovery rules—specifically, randomly assigned user-charge revenue generation targets fixed at 0%, 25%, and 100% of operation and maintenance (O&M) costs alongside a mandatory state Rs30 monthly house connection tariff order and local panchayat public-standpost tariff rules. Null/counter-intuitive statistical findings on the 100% target do not affect eligibility.",
+      "c3": "Empirical cluster-randomized field experiment initiated in November 2005 across 145 village panchayats, evaluated in February–March 2006 across 105 village panchayats and 1,234 surveyed households (n=1,217 in household analytical tables) plus village register and overhead tank flow-meter records.",
+      "c4": "Reports direct service-access outcomes including daily per capita water quantity consumed (litres per person per day, lpcd, Table 8) and household perceptions of piped water supply availability ('inadequate', 'just adequate', 'more than adequate', Table 11), alongside tariff payment, voluntary public-fountain tariff adoption, O&M cost recovery, and user satisfaction.",
+      "c5": "Clearly identifies both units of analysis (village panchayat and household levels), sample sizes, the randomized cost-recovery rule exposure (0%, 25%, and 100% O&M user-charge collection targets), service-access outcomes (lpcd water consumption and perceived water availability), and the cluster-randomized experimental design.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3 of 19",
+        "quote": "A randomization experiment was initiated in November 2005 with the 145 village panchayats being randomly assigned user charge based revenue generation targets ﬁxed at 0%, 25% and 100% of operation and maintenance costs."
+      },
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 4 of 19",
+        "quote": "The objective was to assess the extent to which assigning targets for user charge based revenue affected three key parameters in service delivery: (1) the amount of water used at household level; (2) the amount of water pumped through the system; and (3) the extent of operation and maintenance cost recovery."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 4 of 19",
+        "quote": "The assessment was carried out in 1,234 households in 105 village panchayats from February to March 2006."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 8 of 19",
+        "quote": "For the period from November 2005 to February 2006, the water used per person per day decreased the most in village panchayats with 0% revenue targets, but increased for village panchayats in the other groups (Table 8)."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 8 of 19",
+        "quote": "A majority of surveyed households in all three sets of village panchayats reported being satisﬁed with the availability of water from their piped water supply system. While around 71–73% felt the water supply was ‘just adequate’, around 20–25% felt it was ‘inadequate’ and a small proportion felt that the supply was more than adequate (Table 11)."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Randomly assigned user-charge revenue collection targets (0%, 25%, vs. 100% of operation and maintenance costs) for rural piped water schemes under a state mandatory monthly house-connection tariff order (Rs30/month) and engineer-led change management initiative.",
+    "outcome": "Per capita daily piped water consumption (litres per person per day, lpcd, from overhead tank flow-meter readings), household perceived piped water availability (inadequate, just adequate, more than adequate), household tariff payment, voluntary public-fountain tariff imposition, O&M cost recovery, and user satisfaction with water supply functioning.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Rural village panchayats and households in Tamil Nadu, India (145 village panchayats randomized; 100–105 village panchayats across 26 districts and 1,234 surveyed households [n=1,217 in household tables] assessed).",
+    "rationale": "This study satisfies all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. It reports a cluster-randomized experiment in rural Tamil Nadu, India examining tariff and O&M cost-recovery rules (randomly assigned 0%, 25%, and 100% O&M user-charge collection targets alongside mandatory house connection tariffs) and measures both village-level per capita piped water quantity (lpcd) and household-level perceived piped water availability across 105 village panchayats and over 1,200 households. Per the A18 safeguard, the null/counter-intuitive finding that higher cost-recovery targets did not outperform the 0% target group has no bearing on eligibility.",
+    "record_id": "R2F782937787E",
+    "study_design": "Cluster-randomized field experiment (village panchayat-level randomization) with household survey and administrative/flow-meter data (November 2005 – March 2006)"
+  }
+}
