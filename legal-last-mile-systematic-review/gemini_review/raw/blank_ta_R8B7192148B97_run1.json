@@ -1,0 +1,190 @@
+{
+  "record_id": "R8B7192148B97",
+  "order": 12,
+  "run": 1,
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=ta_blind_screener_v2, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "7e73f1b1e285a7bbc62efea0dc3e40f99b8dec6507a8e32b411d246d2caf6365",
+  "prompt_sha256": "9db7a3553cc0491fb6908d17480ad1f5a2b45c0f4e43037cc71217906aaacdde",
+  "started_at": "2026-11-20T03:34:10.850248+00:00",
+  "completed_at": "2026-11-20T03:36:54.580278+00:00",
+  "raw_request": {
+    "type_name": "ta_blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "plain_criterion2_decision",
+        "exclusion_code",
+        "criteria",
+        "rationale",
+        "plain_vs_narrow_note",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "unsure",
+            "exclude"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E11",
+            "E12"
+          ]
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_narrow",
+            "c2_legal_admin_plain",
+            "c3_empirical_or_systematic_review",
+            "c4_access_outcome"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_narrow": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_plain": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical_or_systematic_review": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "plain_vs_narrow_note": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND TITLE/ABSTRACT SCREENING (PHASE 5) — RECORD R8B7192148B97\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the title and abstract text provided below.\n\n== BIBLIOGRAPHIC METADATA ==\n- Record ID: R8B7192148B97\n- Year: 2025\n- Authors: Apio, Thiam, Dinar\n- DOI: 10.1007/s11269-024-04000-w\n- URL: https://link.springer.com/article/10.1007/s11269-024-04000-w\n\n== PHASE 5 TITLE/ABSTRACT SCREENING RULES (`PROTOCOL.md` §6 & `INCLUSION_EXCLUSION.md`) ==\nScreen this record at the Title/Abstract stage against all eligibility criteria:\n1. `c1_service_access`: Household or community water or sanitation service access? (Not pure agricultural irrigation, hydropower, ambient river ecology, flood control, or non-water topics.)\n2. `c2_legal_admin_narrow`: Under the **2026-10-13 narrow rule-type reading**, does the study examine (or plausibly examine on full text) a legal, administrative, regulatory, tenure/documentation, tariff/cost-recovery/subsidy, discretion/accommodation, enforcement/disconnection, or utility-ownership/regulatory-structure mechanism governing service access? (Not generic project delivery, pure behavioural handwashing promotion, or unanalysed macro-governance background.)\n3. `c2_legal_admin_plain`: Under the **literal/plain wording of Criterion 2**, does it examine ANY legal, administrative, institutional, regulatory, or governance factor?\n4. `c3_empirical_or_systematic_review`: Empirical primary evidence (quantitative, qualitative, mixed-methods, socio-legal empirical) OR a systematic empirical synthesis/meta-analysis? (Not a pure commentary, editorial, or doctrinal essay with clearly no empirical data.)\n5. `c4_access_outcome`: An outcome relevant to water/sanitation access, connection, coverage, availability, reliability, continuity, quantity, quality-as-service-access, affordability, or exclusion?\n\nDecision rules at Title/Abstract stage:\n- `\"include\"`: Clearly meets (or strongly appears to meet) all criteria from title + abstract.\n- `\"unsure\"`: Plausibly in scope on water/sanitation service access + legal/administrative/institutional/regulatory mechanism, such that the full text MUST be retrieved to determine eligibility; do NOT prematurely exclude ambiguous socio-legal, informal-settlement, tariff, or utility-governance abstracts!\n- `\"exclude\"` + ONE primary exclusion code (`E01` wrong topic, `E02` wrong population, `E03` wrong exposure, `E04` wrong outcome, `E05` no empirical evidence, `E06` engineering only, `E07` wrong service, `E08` duplicate, `E09` insufficient information, `E11` wrong jurisdiction/context, `E12` wrong study design): Title + abstract clearly fail at least one criterion.\n- Record BOTH `decision` (under the active narrow rule-type Criterion 2 reading) AND `plain_criterion2_decision` (what your Phase 5 call would be under the literal broad Criterion 2 wording).\n- Provide 1 to 3 exact verbatim substrings (`>= 20` characters, zero `...` ellipses, zero paraphrasing) from `== TITLE AND ABSTRACT ==` in `evidence_quotes`.\n\n== TITLE AND ABSTRACT (SHA-256: 7e73f1b1e285a7bbc62efea0dc3e40f99b8dec6507a8e32b411d246d2caf6365) ==\n[COPYRIGHTED_ABSTRACT_WITHHELD_PER_SECTION_6: chars=1598, sha256=7e73f1b1e285a7bbc62efea0dc3e40f99b8dec6507a8e32b411d246d2caf6365]\n== END TITLE AND ABSTRACT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_narrow": "no",
+      "c2_legal_admin_plain": "yes",
+      "c3_empirical_or_systematic_review": "yes",
+      "c4_access_outcome": "no"
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "title",
+        "quote": "A Meta-Analysis of Water Institutions and Their Performance: Implications for Water Resource Management"
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "abstract",
+        "quote": "This pioneering study synthesizes and quantifies the overall water institution-performance effect using data extracted from 23 original studies."
+      },
+      {
+        "criterion": "c2_legal_admin_plain",
+        "page": "abstract",
+        "quote": "strengthening of water laws, policies, and administration to lower transaction costs in the water space."
+      }
+    ],
+    "exclusion_code": "E07",
+    "plain_criterion2_decision": "exclude",
+    "plain_vs_narrow_note": "Under the literal/plain Criterion 2 wording, the study qualifies on exposure (c2_legal_admin_plain = yes) because it analyses macro water institutions, water laws, policies, and administration; under the narrow reading (c2_legal_admin_narrow = no), it examines aggregate macro-institutional WRM indices and transaction costs rather than concrete legal or administrative mechanisms governing household/community service access. Under both readings, however, the record is excluded because it concerns macro Water Resource Management rather than household or community water/sanitation service access (C1) and synthesizes generic institutional performance rather than service access outcomes (C4).",
+    "rationale": "This meta-regression synthesizes 23 studies in the institutional economics of macro Water Resource Management (WRM), estimating an aggregate 'water institution-performance effect' (including primary studies that use aspects of water law and policy themselves to capture performance) aimed at lowering transaction costs in WRM. Neither the title nor the abstract addresses household or community drinking water or sanitation service delivery (failing C1, E07) or disaggregates household/community water or sanitation access, connection, coverage, reliability, quality, or affordability outcomes (failing C4).",
+    "record_id": "R8B7192148B97"
+  }
+}
