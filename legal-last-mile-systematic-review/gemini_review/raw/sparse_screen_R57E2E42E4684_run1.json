@@ -1,0 +1,271 @@
+{
+  "record_id": "R57E2E42E4684",
+  "study_id": "S108",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "49e914d2b52b3e4b7d8d8e07289c39267d28d30d34d74826ec0be87febe2ad02",
+  "input_text_sha256": "0c64626fe5ea8ce6aab1a400839918491991ff5f925cd46e80997fada6f0d8a0",
+  "prompt_sha256": "045e1f35a6305465dc4640293f68c0f2421445f78379b545b2435787a292f57e",
+  "started_at": "2026-11-20T02:53:25.444966+00:00",
+  "completed_at": "2026-11-20T02:54:19.177553+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R57E2E42E4684\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R57E2E42E4684\n- Title: Caring for the indigent urban population in South Africa: A case study of the eThekwini municipality\n- Authors: Pillay, Brandon; Mutereko, Sybert\n- Year: 2022\n- DOI: 10.4102/apsdpr.v10i1.593\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 0c64626fe5ea8ce6aab1a400839918491991ff5f925cd46e80997fada6f0d8a0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=52070, sha256=0c64626fe5ea8ce6aab1a400839918491991ff5f925cd46e80997fada6f0d8a0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines municipal delivery of free basic services to poor urban households in eThekwini Metropolitan Municipality, explicitly covering free basic water (6 kL per month) and basic sanitation/refuse removal alongside electricity.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type mechanism reading: under the plain wording, it examines municipal indigent policy governance and administrative implementation; under the narrow 2026-10-13 reading, it directly analyses rule-type mechanisms governing service access and tariff subsidies, including eligibility screening, property-value thresholds (R250,000 extended to R500,000), income means-testing (ZAR 1,500/month), income documentation barriers (lack of formal payslips for informal-sector workers), 24-month beneficiary review rules, and administrative maintenance/discretion in the municipal indigent register.",
+      "c3": "Primary qualitative empirical case study collecting semi-structured in-depth interviews from 11 purposively selected municipal employees across five eThekwini departments (including Water Services) supplemented by document review, transcribed verbatim and analysed via thematic/content analysis.",
+      "c4": "Reports qualitative outcomes on access to subsidized/free basic water (6 kL/month) and municipal services, affordability relief, and administrative exclusion or mis-targeting of poor households (including exclusion of informal workers without payslips, households near property-value cutoffs, and politically unconnected poor households due to register maintenance failures and corruption). Qualitative socio-legal/administrative empirical studies are eligible without quantitative effect sizes.",
+      "c5": "Population and unit of analysis (municipal indigent-policy administration in eThekwini Metropolitan Municipality affecting urban indigent households; n = 11 interviewed municipal officials across five units), exposure (indigent policy eligibility criteria, means test, property-value thresholds, documentation requirements, and register administration), outcome (access to/exclusion from free basic water and municipal service subsidies), and study design (qualitative case study) are all clearly identifiable.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 9",
+        "quote": "The study adopted a qualitative data approach where a semi-structured interview was used to collect data from 11 purposively selected employees from five departments of eThekwini municipality."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 6 of 9",
+        "quote": "For example, when you talk about water, we use the threshold of a property value if your property value is R250 000 and below you qualify automatically for free basic water up to 6 kL per month, but with the new policy that threshold has been extended to R500 000 but obviously, there are certain criteria you have to meet."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 9",
+        "quote": "The previous policy was based on the rateable property, which specifically was based on the value of the property. The current policy that is in its early stages of execution seeks to identify and select beneficiaries based on both a property value and a means test."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 9",
+        "quote": "This study found that given the poor maintenance of the indigent register, it usually attracts nepotism and corruption in terms of the selection of indigents, and in most cases, if the poor household is not politically connected with a person of influence, that household may not benefit."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 8 of 9",
+        "quote": "However, the complexity encountered with regard to identifying beneficiaries as many poor households do not have proper payslips to determine their level of income as they have informal jobs."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Municipal indigent policy rules and administrative implementation, including property-value thresholds (R250,000 extended to R500,000), household income means testing (ZAR 1,500/month), formal income documentation (payslips), 24-month re-verification rules, fragmented departmental execution, and indigent register maintenance.",
+    "outcome": "Household qualification for, affordability subsidy receipt of, and administrative exclusion from free basic municipal services, specifically including free basic water (up to 6 kL/month) and basic sanitation/solid waste collection.",
+    "paper_read": "full text",
+    "population_and_sample": "Urban indigent households and municipal service delivery administration in eThekwini Metropolitan Municipality, KwaZulu-Natal, South Africa; qualitative interview sample of n = 11 purposively selected municipal employees across five units (3 deputy city managers, 2 Water Services staff, 2 Electricity Customer Services and Revenue Protection staff, 2 Finance – Revenue Services staff, and 2 Strategy Office staff; p. 4 also contains a parenthetical reference to n = 55 roles, while Abstract and Data collection procedures confirm 11 in-depth interviews conducted).",
+    "rationale": "This empirical qualitative case study of eThekwini Metropolitan Municipality in South Africa satisfies all systematic-review inclusion criteria (c1–c6). It examines household access to free basic water (6 kL/month) and basic sanitation/municipal services (c1) as governed by concrete legal-administrative rule mechanisms—eligibility screening, property-value tariff thresholds, income means tests, payslip documentation requirements, 24-month review rules, and indigent register administration—satisfying both the plain and narrow 2026-10-13 readings of Criterion 2 (c2). It presents primary qualitative empirical data from 11 semi-structured interviews with municipal officials including Water Services staff (c3), reports access, affordability-subsidy, and administrative-exclusion outcomes (c4), identifies population, exposure, outcome, and qualitative case-study design (c5), and is written in English (c6). Per review rules, qualitative socio-legal/administrative studies are included in the systematic review for mechanism synthesis even without quantitative effect estimates.",
+    "record_id": "R57E2E42E4684",
+    "study_design": "Qualitative case study (semi-structured in-depth interviews and document review with thematic and content analysis)"
+  }
+}

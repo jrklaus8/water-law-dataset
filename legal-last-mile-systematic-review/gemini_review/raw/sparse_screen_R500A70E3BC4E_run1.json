@@ -1,0 +1,276 @@
+{
+  "record_id": "R500A70E3BC4E",
+  "study_id": "S109",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "37d975f02ad644aad313d640c98d13637cad2ecb0b0063b94643b9ce7abab481",
+  "input_text_sha256": "7babbb73edc142210353c4e50905c6444a87f77eb28176c3796d39c1293dc90a",
+  "prompt_sha256": "b506a40ee6029810239821226f5e151281a675ade90a5907f9ba22a9eed011b9",
+  "started_at": "2026-11-20T02:53:25.412597+00:00",
+  "completed_at": "2026-11-20T02:54:45.813550+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R500A70E3BC4E\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R500A70E3BC4E\n- Title: O desafio do federalismo brasileiro no saneamento básico\n- Authors: Neto, João Mendes Rocha\n- Year: 2022\n- DOI: 10.20435/inter.v23i2.2998\n- Retrieval status: retrieved_cached_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7babbb73edc142210353c4e50905c6444a87f77eb28176c3796d39c1293dc90a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=53795, sha256=7babbb73edc142210353c4e50905c6444a87f77eb28176c3796d39c1293dc90a]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "no",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "no",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines basic sanitation policy (water supply and sewage collection/treatment networks) and household sanitation access deficits in Brazilian municipalities, particularly small cities.",
+      "c2": "Plain wording: YES — examines legal, institutional, and governance arrangements in Brazilian sanitation (Art. 23 of the 1988 Constitution, Law 11.445/2007, Law 11.107/2005 on public consortia, PL 4.162/2019, fiscal rules, and federal agency mandates). Narrow 2026-10-13 rule-type reading: NO — treats federalism, municipal technical/fiscal capacity asymmetries, and fragmentation of federal ministerial programs and budgets as macro-governance policy background rather than analyzing a rule-type mechanism directly governing household or community service access (references to municipal titularity and concession incentives in PL 4.162/2019 are brief, non-empirical legislative commentary).",
+      "c3": "Non-empirical narrative literature review and policy/legislative essay supported only by official documents, statutes, and four descriptive background charts from secondary government databases (SNIS 2017, SIGA Brasil, SIOP 2020); contains no primary data, no qualitative or quantitative empirical methodology, and no systematic synthesis method (exclude as E05).",
+      "c4": "Does not analyze a service-access outcome in an empirical design; cites a single descriptive secondary chart of state-level percentages of households with treated sewage (SNIS 2017) as background framing alongside administrative indicators (municipal sanitation plans, number of federal agencies with sanitation programs, and federal budget execution).",
+      "c5": "Because the article is a narrative policy essay rather than an empirical study, there is no identifiable empirical study design, analytical sample, or evaluated exposure-outcome relationship.",
+      "c6": "Published in Portuguese (with Portuguese, English, and Spanish abstracts), which is directly eligible under Criterion 9."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 16",
+        "quote": "Esses são alguns aspectos encontrados no arranjo federaƟ vo do setor de saneamento, que implicam a falta de acesso de parte considerável da população do país a esse serviço, notadamente nas menores cidades."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2 of 16",
+        "quote": "Nesse senƟ do, o presente arƟ go propõe um debate que ultrapassa a esfera nacional, procurando idenƟ ﬁ car essas fragilidades dos agentes responsáveis pelo saneamento básico na escala local, pensando em uma perspecƟ va de arƟ culação horizontal e verƟ cal, como fatores que inibem a parƟ cipação das municipalidades para alcance efeƟ vo das metas relaƟ vas ao saneamento básico no país."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 9 of 16",
+        "quote": "Dessa forma, veriﬁ ca-se uma questão de ordem estrutural para a consecução dos resultados em uma políƟ ca de saneamento básico, fragmentação de capacidades e recursos, além de uma concorrência com os mandatos precípuos de cada um dos órgãos, o que coloca o tema em disƟ ntas posições na agenda de prioridades."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 16",
+        "quote": "Para elaboração do arƟ go, foi necessária uma revisão de literatura que apoiou o debate, bem como consultas a documentos oﬁ ciais (relatórios e legislação), os quais contribuíram para evidenciar a problemáƟ ca."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 16",
+        "quote": "O trabalho se estrutura a parƟ r de uma revisão de literatura que procura englobar aspectos relacionados à assimetria que marca a implementação de políƟ cas públicas, sem perder de vista o debate do saneamento como condição para garanƟ r o bem-estar dos indivíduos."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 6 of 16",
+        "quote": "Percebe-se que apenas cinco Unidades da Federação têm mais de 50% dos domicílios com esgotamento sanitário tratado (Distrito Federal, Minas Gerais, Paraná, Rio de Janeiro e São Paulo), ﬁ cando todos os demais abaixo desse percentual, sendo que em quatro desses estados a rede nem sequer alcança 10% dos domicílios."
+      }
+    ],
+    "exclusion_code": "E05",
+    "exposure": "Macro-level Brazilian federalist governance architecture, intergovernmental decentralization asymmetries, federal institutional/budgetary fragmentation, and national sanitation legislation (CF/1988 Art. 23, Law 11.445/2007, Law 11.107/2005, PL 4.162/2019)",
+    "outcome": "No empirically analyzed service-access outcome (cites secondary descriptive SNIS 2017 state-level household treated-sewage coverage as background context alongside municipal planning-instrument prevalence, federal agency counts, and federal budget trends)",
+    "paper_read": "full text",
+    "population_and_sample": "Brazilian municipalities and federal sanitation sector institutions (narrative macro-policy overview citing aggregate secondary statistics from SNIS 2017, SIGA Brasil, and SIOP; no empirical sample)",
+    "rationale": "Excluded under E05 (No empirical evidence). Rocha Neto (2022) is a narrative policy essay and literature/legislative overview examining how asymmetries in Brazilian federalism, municipal technical and fiscal weakness, and institutional fragmentation across federal ministries hinder the implementation of national basic sanitation policy. Although it illustrates the policy context with four descriptive charts drawn from secondary government portals (SNIS 2017 state sewage coverage and municipal plan prevalence, SIGA Brasil federal agency counts, and SIOP 2015-2019 federal budget execution), it conducts no primary quantitative, qualitative, or socio-legal empirical research, applies no empirical research design linking an exposure to an access outcome, and is not a systematic empirical synthesis. Additionally, under the 2026-10-13 Criterion 2 clarification, its focus is macro-governance intergovernmental policy background rather than an empirically analyzed rule-type mechanism directly governing household or community service access.",
+    "record_id": "R500A70E3BC4E",
+    "study_design": "Narrative literature review and policy overview (non-empirical essay)"
+  }
+}

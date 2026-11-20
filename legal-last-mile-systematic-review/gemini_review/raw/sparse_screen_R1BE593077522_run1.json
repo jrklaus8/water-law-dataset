@@ -1,0 +1,271 @@
+{
+  "record_id": "R1BE593077522",
+  "study_id": "S144",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "683c7d7e914e05958b7a36f5cbe047ba1587c2df97da8ea32bee6a8bd12cb2fb",
+  "input_text_sha256": "4fd0891d5157297afc35a52f647e6e12d6f2d45e042e080f0412409699593bd3",
+  "prompt_sha256": "8918176923daf1d7f4db703c08613495255d1655f64a538093319bd0717b62b6",
+  "started_at": "2026-11-20T03:41:34.487314+00:00",
+  "completed_at": "2026-11-20T03:42:36.452671+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R1BE593077522\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R1BE593077522\n- Title: What is there to drink? Water (in)justice in the democratic South Africa\n- Authors: Mbana Z.; Sinthumule N.I.\n- Year: 2024\n- DOI: 10.3389/frwa.2024.1354477\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 4fd0891d5157297afc35a52f647e6e12d6f2d45e042e080f0412409699593bd3) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=74847, sha256=4fd0891d5157297afc35a52f647e6e12d6f2d45e042e080f0412409699593bd3]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community drinking-water service access in two rural villages (Enqabeni and Madiba) in the Eastern Cape Province, South Africa.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain wording of Criterion 2, the study touches on institutional and governance factors broadly by discussing post-apartheid constitutional/policy promises, municipal budget shortfalls for water projects, failure to build or repair village water infrastructure, and perceived municipal/traditional-leader corruption in project funds and COVID-19 rainwater tank distribution. However, under the 2026-10-13 rule-type mechanism clarification, Criterion 2 is NOT met because the study does not examine any rule-type legal, administrative, or regulatory mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, administrative discretion/accommodation, enforcement, or utility ownership/regulatory structure). Instead, its empirical focus is on generic rural infrastructure non-delivery/maintenance failure, municipal capital budget constraints, project corruption, and macro-level post-apartheid governance background.",
+      "c3": "Contains primary mixed-methods empirical evidence from a systematic random sample questionnaire survey of 336 rural households, semi-structured interviews with municipal officials, ward councilors, and traditional leaders, and field observations.",
+      "c4": "Reports concrete household access outcomes, including 100% reliance on untreated open water bodies in Enqabeni and 70% in Madiba (with 30% using an unpumped borehole and non-functional community taps since 2016), collection distances exceeding 5 km, and supplemental weekly water-truck rationing.",
+      "c5": "Population and unit of analysis (households and local informants in two villages), general infrastructural/institutional barriers, access outcomes, and cross-sectional mixed-methods design are identifiable, though no rule-type legal or administrative exposure is analysed.",
+      "c6": "Published in English (survey instruments translated to IsiXhosa for fieldwork and transcribed into English)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This study aims to understand sources of drinking water, how water is accessed by local communities, and determine the barriers associated with access to potable water and management in the rural villages of Madiba and Enqabeni."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 4 (Sampling procedure)",
+        "quote": "Following this guideline, in Enqabeni which has 2,048 households, a sample of 205 households was selected whereas in Madiba with 1,307 households, a sample of 131 households was chosen (95% conﬁdence level; 5% margin of error)."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 5 (Water sources, transportation, and consumption)",
+        "quote": "When asked about their main source of water, all the respondents (100%; n = 205) in Enqabeni village indicated that they obtained water from open water bodies (rivers, wetlands, streams, springs and ponds)."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 9 (Institutional challenges)",
+        "quote": "When an oﬃcial from the municipality was asked why communities do not have access to safe drinking water in democratic South Africa, it was indicated that budget planning and allocation of funds are not balanced by the authorities. It was stated by an oﬃcial that the municipality receives less than half of the budget requested for water and sanitation."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 9 (Corruption and mismanagement of funds)",
+        "quote": "Corruption and mismanagement of funds have also emerged as challenges aﬀecting water service delivery in the study area. When respondents asked if corruption is contributing to poor water service delivery, all the respondents in Enqabeni said yes."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Historical apartheid infrastructural neglect, municipal budget shortfalls for rural water project implementation and tap/borehole maintenance, and perceived corruption/mismanagement of municipal funds and rainwater tank distribution",
+    "outcome": "Household drinking-water sources (reliance on untreated open water bodies vs. unpumped community borehole or vendor water), lack of functional tap water, collection travel distance (>5 km), transport mode, and daily consumption quantity",
+    "paper_read": "full text",
+    "population_and_sample": "336 systematically sampled rural households in Enqabeni (n = 205 of 2,048 households) and Madiba (n = 131 of 1,307 households) villages in Winnie Madikizela-Mandela Local Municipality, Alfred Nzo District Municipality, Eastern Cape Province, plus purposively sampled municipal officials, ward councilors, and traditional leaders",
+    "rationale": "Exclude under E03 (Wrong exposure). While this mixed-methods empirical study examines rural household drinking-water access in two South African villages (meeting c1, c3, c4, c5, c6), it fails Criterion 2 under the 2026-10-13 rule-type mechanism scope clarification. Rather than analysing a legal, administrative, or regulatory rule-type mechanism governing service access (e.g., eligibility rules, documentation/tenure requirements, administrative burden, tariffs/cost-recovery rules, enforcement, or regulatory/ownership structure), the paper investigates generic rural infrastructure absence and non-repair, municipal capital budget shortfalls, perceived corruption in project funds and rainwater tank distribution, and broad macro-governance background regarding the unfulfilled post-apartheid constitutional right to water.",
+    "record_id": "R1BE593077522",
+    "study_design": "Cross-sectional mixed-methods case study (systematic random sample household survey, semi-structured key-informant interviews, and field observations)"
+  }
+}

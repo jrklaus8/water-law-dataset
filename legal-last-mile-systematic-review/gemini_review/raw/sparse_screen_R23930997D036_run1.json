@@ -1,0 +1,276 @@
+{
+  "record_id": "R23930997D036",
+  "study_id": "S189",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "1d54253730730feac59f4c7b6b6c0a42540ffaea23a44f5fdd0670cfb6679644",
+  "input_text_sha256": "7c1442d193d516ffec538441e0b61adbc0388389d5e6b66b4c13337400930b8e",
+  "prompt_sha256": "73e1e5224a12027ea0d8a55270ec572662c74d5682d0f2fd28e9dc63cf94d1a9",
+  "started_at": "2026-11-20T03:41:34.518166+00:00",
+  "completed_at": "2026-11-20T03:42:59.876147+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R23930997D036\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R23930997D036\n- Title: Promoting latrine construction and use in rural villages practicing open defecation: Process evaluation in connection with a randomised cont\n- Authors: Boisson S.; Sosai P.; Ray S.; Routray P.; Torondel B.; Schmidt W.-P.; Bhanja B.;\n- Year: 2014\n- DOI: 10.1186/1756-0500-7-486\n- Retrieval status: retrieved_cached_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7c1442d193d516ffec538441e0b61adbc0388389d5e6b66b4c13337400930b8e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=54544, sha256=7c1442d193d516ffec538441e0b61adbc0388389d5e6b66b4c13337400930b8e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household sanitation service access, specifically construction and coverage of household pour-flush latrines across 100 rural villages practicing open defecation in Puri district, Orissa, India.",
+      "c2": "Plain wording vs. narrow 2026-10-13 reading: Under the plain wording of Criterion 2, this study is borderline because it evaluates implementation fidelity of a government rural sanitation programme (India's Total Sanitation Campaign, TSC) implemented with NGOs and Village Water and Sanitation Committees (VWSCs), and descriptively notes BPL/APL subsidy targeting rules and an election code-of-conduct pause as implementation context. Under the narrow 2026-10-13 rule-type mechanism clarification, however, Criterion 2 is clearly NOT met (no): the study's evaluated exposure is generic NGO project delivery and behavioural promotion/community mobilisation (awareness of and participation in PRA walks/mapping, wall paintings, school rallies, adolescent girls groups, door-to-door motivator visits, and VWSC mobilisation meetings). It does not empirically analyse eligibility screening, documentation/tenure requirements, administrative burden, tariff/cost-recovery rules, enforcement, or regulatory structure governing access; notably, implementers bypassed BPL eligibility screening by extending hardware subsidies to all households in intervention villages.",
+      "c3": "Mixed-methods empirical process evaluation embedded within a 100-village cluster-randomised controlled trial, using six rounds of direct household latrine observations, cross-sectional surveys of households (n = 807) and VWSC members (n = 170), NGO record reviews, and semi-structured interviews.",
+      "c4": "Reports household- and village-level sanitation access outcomes, specifically observed household latrine coverage (completed pour-flush latrines and latrines under construction) over 12 to 24 months post-implementation.",
+      "c5": "Population and units of analysis (households, VWSC members, and villages across 50 intervention and 50 control villages in Puri district, Orissa), exposure (NGO-delivered TSC latrine subsidy/hardware delivery and community mobilisation/IEC activities), outcome (observed household/village latrine coverage and mobilisation awareness), and study design (mixed-methods process evaluation alongside a cluster-RCT) are all clearly identified. Statistical significance of reported associations played no role in this assessment.",
+      "c6": "Full text is in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1",
+        "quote": "The percentage of households with a latrine (completed or under construction) increased from 8% at baseline to 66% one year after the start of the intervention in March 2012."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 2",
+        "quote": "The key objectives of this evaluation were to 1) provide information on the context in which the intervention was implemented 2) document how the intervention was delivered 3) assess exposure to the intervention among the target population, and 4) explore associations between household exposure to community mobilisation activities and construction of latrines."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "Provision of financial assistance to some but not all households was a frequent source of tensions between the NGOs and communities."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7",
+        "quote": "implementers decided to provide a subsidy to all households in intervention villages to prevent delays in the implementation."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1",
+        "quote": "Process evaluation data were collected through review of key documentation, quantitative surveys, direct observations, and semi-structured interviews with staff from implementing NGOs and community members."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4",
+        "quote": "In March 2012, a year after implementation, 66% of households in intervention villages were observed to have a completed latrine or one under construction."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "NGO-delivered Total Sanitation Campaign (TSC) intervention comprising universalised latrine hardware subsidies/construction logistics and community mobilisation/behavioural promotion activities (VWSC formation, PRA mapping/transect walks, door-to-door motivator visits, wall paintings, school rallies, and adolescent girls groups)",
+    "outcome": "Household latrine construction status and village-level latrine coverage (completed or under construction), alongside household and VWSC member awareness of and participation in mobilisation activities",
+    "paper_read": "full text",
+    "population_and_sample": "Rural households and Village Water and Sanitation Committee (VWSC) members in 100 villages (50 intervention, 50 control) in seven blocks of Puri district, Orissa, India (latrine observations: n = 4,699 households in March 2012 and n = 4,585 in March 2013; household survey: n = 807 [408 intervention, 399 control]; VWSC member survey: n = 170; village-level regressions: n = 50 intervention villages)",
+    "rationale": "Excluded under E03 (Wrong exposure). While the paper empirically measures household sanitation access (latrine construction and village coverage) within a cluster-randomised trial in rural Orissa, India, its focus and analysed exposure are generic NGO project delivery and behavioural promotion/community mobilisation (IEC activities, motivator home visits, school rallies, wall paintings, PRA exercises, and NGO-facilitated village committees) rather than a rule-type legal, administrative, institutional, or regulatory mechanism governing service access per the 2026-10-13 Criterion 2 clarification. Implementers bypassed BPL eligibility screening by giving subsidies to all intervention households, and no rule-type barrier or mechanism is empirically evaluated as an exposure. Statistical significance/null mobilisation associations had no bearing on this decision.",
+    "record_id": "R23930997D036",
+    "study_design": "Mixed-methods process evaluation conducted alongside a cluster-randomised controlled trial (longitudinal direct observations, cross-sectional household and VWSC surveys, document review, and semi-structured interviews)"
+  }
+}

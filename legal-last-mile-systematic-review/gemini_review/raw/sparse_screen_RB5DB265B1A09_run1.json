@@ -1,0 +1,266 @@
+{
+  "record_id": "RB5DB265B1A09",
+  "study_id": "S365",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "6d11d1ba6bdbcc8c2bf795e7bec929540a2e3e966a852f3a24ca69104a4968dc",
+  "input_text_sha256": "c2240c0e6d5616d3bcc1e6fc1d76b79501d4054820ba292f6e2415e0310c375e",
+  "prompt_sha256": "62cb6026c3588dcc5c76612e1ab643fe79e8398e35e45b9bb51edf00eaa95759",
+  "started_at": "2026-11-20T03:41:34.534977+00:00",
+  "completed_at": "2026-11-20T03:42:30.018648+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RB5DB265B1A09\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RB5DB265B1A09\n- Title: Assessing the sustainability of urban water supply systems in Shillong, India\n- Authors: Kharmylliem B.; Kipgen N.\n- Year: 2021\n- DOI: 10.1163/15691497-12341594\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: c2240c0e6d5616d3bcc1e6fc1d76b79501d4054820ba292f6e2415e0310c375e) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=4777, sha256=c2240c0e6d5616d3bcc1e6fc1d76b79501d4054820ba292f6e2415e0310c375e]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "India",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "unclear",
+      "c3_empirical": "unclear",
+      "c4_access_outcome": "unclear",
+      "c5_pop_exposure_outcome_design": "unclear",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "The abstract and opening introduction explicitly examine domestic urban water supply systems and household/locality water accessibility and distribution in non-municipal areas of Shillong, India.",
+      "c2": "Under the plain wording of Criterion 2, the abstract and introduction indicate that the paper examines formal (municipal) and informal (non-municipal, dorbar shnong) local institutional water governance, which points toward yes under broad institutional/governance wording. Under the narrow 2026-10-13 rule-type mechanism reading, municipal versus non-municipal institutional/regulatory governance of domestic water distribution could potentially qualify if the study analyzes specific institutional structure, eligibility/locality rules, tariffs, discretion, or allocation rules directly governing access rather than generic governance background; however, because the retrieved PDF is only a 2-page publisher preview (pp. 251-252 of 251-277) cutting off mid-sentence in Section 1, Criterion 2 cannot be verified from the available text.",
+      "c3": "Unclear because only pages 251-252 of a 27-page article (pp. 251-277) are present in the retrieved PDF, cutting off mid-sentence in the Introduction before any methods or empirical data are presented.",
+      "c4": "The abstract states that the article uses indicators of quantity, quality, accessibility, and reliability and examines domestic water distribution and inequity, but actual outcome measures and results are missing from the truncated 2-page preview.",
+      "c5": "Study design, sampling, unit of analysis, operationalized exposure, and reported outcomes cannot be verified because pages 253-277 are absent from the retrieved 2-page preview PDF.",
+      "c6": "The text is in English."
+    },
+    "decision": "cannot_tell",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 2 (p. 252 header)",
+        "quote": "Perspectives on Global Development and Technology 20 (2021) 251–277"
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 2 (Abstract, p. 251)",
+        "quote": "This article examines urban water supply systems by using indicators such as quantity, quality, accessibility, and reliability."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 2 (Abstract, p. 251)",
+        "quote": "The article underscores the complementarity between water distribution and water governance rendered by the local institutions."
+      },
+      {
+        "criterion": "c5",
+        "page": "PDF Page 2 of 2 (Section 1 Introduction, p. 252)",
+        "quote": "The study focuses on water (in)equity in terms of domestic water distribution and accessibility and water governance in selected localities (non-municipal) of"
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Formal (municipal) and informal (non-municipal, dorbar shnong) local institutional water governance (specific mechanisms not reported in 2-page preview)",
+    "outcome": "Domestic water quantity, quality, accessibility, reliability, and distribution equity (mentioned in abstract; specific measures not reported in 2-page preview)",
+    "paper_read": "not accessible",
+    "population_and_sample": "Selected non-municipal localities in Shillong city, India (sample and unit of analysis not reported in 2-page preview)",
+    "rationale": "reason: \"full text not accessible\". Although the retrieved PDF matches the record metadata (Kharmylliem & Kipgen 2021, DOI 10.1163/15691497-12341594), it is only a 2-page Brill publisher preview (pp. 251-252 of 251-277) containing the abstract and the first four paragraphs of Section 1 (Introduction), truncating mid-sentence at the bottom of page 252. The abstract suggests potentially relevant content on urban domestic water access and municipal versus non-municipal (dorbar shnong) institutional water governance in Shillong, India, but methods, empirical evidence, study design, and whether a narrow rule-type mechanism governing access is analyzed cannot be determined without pages 253-277.",
+    "record_id": "RB5DB265B1A09",
+    "study_design": "not reported"
+  }
+}

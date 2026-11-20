@@ -1,0 +1,276 @@
+{
+  "record_id": "R5C53283B5508",
+  "study_id": "S098",
+  "run": 2,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "db2b4200fa9dedd82faf3e252741029b13fc2b4edbe5e8128287c090c457a06b",
+  "input_text_sha256": "e82bc497597f7d054ff732886e0739e653d5dafea0ac5b8273d159879eb2f01c",
+  "prompt_sha256": "fde1b05a68aa8893359be9303190bd0b5650f5641186ee0585bd740451a2cace",
+  "started_at": "2026-11-20T03:43:20.859254+00:00",
+  "completed_at": "2026-11-20T03:44:36.720235+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R5C53283B5508\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R5C53283B5508\n- Title: A Gendered Mitigation to Exclusion in the On-Site Sanitation in George Compound in Lusaka Zambia: A Hermeneutic Phenomenological Approach\n- Authors: Mwale, James; Kanyamuna, Vincent; Moose, John; Simui, Francis\n- Year: 2025\n- DOI: 10.47772/ijriss.2025.91100579\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: e82bc497597f7d054ff732886e0739e653d5dafea0ac5b8273d159879eb2f01c) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70883, sha256=e82bc497597f7d054ff732886e0739e653d5dafea0ac5b8273d159879eb2f01c]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Zambia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household on-site sanitation service access and usability (and complementary water supply for toilet use) in George Compound, a peri-urban settlement in Lusaka, Zambia.",
+      "c2": "Plain wording vs. narrow 2026-10-13 rule-type reading: Under a broad plain reading, the paper touches loosely on governance and institutional context—summarizing national sanitation regulatory gaps (NWASCO, ZEMA, and the Water and Sanitation Act No. 28 of 1997) in the background, and briefly mentioning community committee leadership, awareness of sanitation laws vs. inspection, upfront toilet payment constraints, LWSC billing complaints, and absentee landlords in stakeholder interviews. Even on a plain reading, however, its actual empirical focus is cultural gender norms, pit latrine construction depth, and lifelong education/mindset change rather than a legal or administrative factor. Under the narrow 2026-10-13 rule-type mechanism reading, Criterion 2 is clearly NO: the study does not empirically analyse any rule-type mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure rules, tariff/cost-recovery rules, discretion, or regulatory enforcement). The statutory/regulatory overview on page 4 is unanalysed macro-governance background from secondary reports (and page 14 explicitly notes that the on-site sanitation statutory instrument is still under development for future study), while the empirical themes examine generic project delivery (shallow pit design, community participation) and behavioural/educational promotion (school curricula, cultural socialisation, and rights awareness).",
+      "c3": "Empirical qualitative study collecting primary data via in-depth interviews and key informant interviews with 29 purposively sampled participants in George Compound, analysed using reflexive thematic analysis. Qualitative design is fully eligible and not a ground for exclusion.",
+      "c4": "Reports qualitative household sanitation access, usability, and exclusion outcomes, including long queues at shared latrines, reliance on neighbours' toilets, rapid filling of shallow project-built pits, upfront capital barriers to toilet construction, and erratic water supply for toilet use.",
+      "c5": "Population and unit of analysis (beneficiaries and institutional stakeholders in George Compound, Lusaka), qualitative phenomenological/case-study design, and perceived sanitation challenges are identifiable, although the exposure studied is gendered project implementation, pit design, and behavioural/educational promotion rather than an eligible legal/administrative rule.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_c3",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "The researcher analysed data using a reflexive thematic analysis was used to analyse in-depth and key informant interviews with beneficiaries, local committees, regulatory bodies, and the Lusaka Water Supply and Sanitation Company."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 (Section 3.3.3)",
+        "quote": "Therefore, the researcher determined sample size after conducting interviews with 29 Participants (10 Males and 15 women) and 4 key informants."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 (Study Findings)",
+        "quote": "The presentation of the study findings sought to answer the question on, stakeholders gendered perceived mitigation measures for on site sanitation challenges in George Compound, Lusaka, Zambia."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 (Section 5.2)",
+        "quote": "Behavioural change, household-level hygiene practices, and community engagement are therefore essential complements to formal enforcement mechanisms."
+      },
+      {
+        "criterion": "c1_c4",
+        "page": "PDF Page 13 (Conclusion and Recommendations)",
+        "quote": "The second objective revealed that prior to the construction of new toilets, beneficiaries faced significant sanitation challenges, largely due to multiple users leading to long waits."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14 (Section 6.4)",
+        "quote": "Future studies should explore the implementation and effectiveness of the statutory instrument on on-site sanitation, which is currently under development."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Gendered socio-cultural norms, intra-household and community participation in project delivery, shallow pit latrine design, and educational/behavioural sensitisation in household on-site sanitation project implementation",
+    "outcome": "Qualitative lived experiences of gendered exclusion in sanitation decision-making and household on-site sanitation access and usability challenges (shared latrine queues, reliance on neighbours' toilets, rapid pit filling, and inadequate water supply in toilets)",
+    "paper_read": "full text",
+    "population_and_sample": "Beneficiaries of household sanitation programmes and institutional/community stakeholders (Ward Development Committee, Water and Sanitation Committee, Lusaka City Council, ZEMA, NWASCO, and LWSC) in George Compound, Lusaka; purposive sample of 29 participants (reported as 10 males, 15 women, and 4 key informants)",
+    "rationale": "Excluded under E03 (Wrong exposure). Although this qualitative empirical study examines household on-site sanitation access and gendered exclusion in peri-urban Lusaka (satisfying c1, c3, c4, c5, and c6), it fails Criterion 2 under the 2026-10-13 rule-type mechanism scope. Its empirical analysis centres on generic project delivery (shallow pit construction design, women's participation in community groups, intra-household gender roles) and behavioural/educational promotion (school curricula, cultural socialisation, mindset change, and general rights awareness). Discussion of Zambia's statutory/regulatory framework (NWASCO, ZEMA, 1997 Act) is unanalysed macro-governance background from secondary reports—with the paper explicitly noting that the on-site sanitation statutory instrument remains under development—and isolated single-quote mentions of flexible payment plans, LWSC billing, or absentee landlords are passing stakeholder suggestions rather than an empirical examination of a legal, regulatory, tariff, or tenure rule governing service access.",
+    "record_id": "R5C53283B5508",
+    "study_design": "Qualitative interpretive/hermeneutic phenomenological and exploratory case study using in-depth interviews, key informant interviews, and reflexive thematic analysis"
+  }
+}

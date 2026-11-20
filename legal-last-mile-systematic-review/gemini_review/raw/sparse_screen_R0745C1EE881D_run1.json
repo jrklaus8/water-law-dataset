@@ -1,0 +1,276 @@
+{
+  "record_id": "R0745C1EE881D",
+  "study_id": "S100",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "e876337e2e413b171dfd046fdc8ffec117a2d9554f904452e7528b0dce0ad7d4",
+  "input_text_sha256": "7cd575a849b2d3c44ec6a5b4c153472324f8f1df2994c7afebdfd17639ba94cf",
+  "prompt_sha256": "da2bd19ecaecda522c6ab45f62cc57e8130eafccf0399b3ad6fd707dfe7e249d",
+  "started_at": "2026-11-20T02:48:44.749989+00:00",
+  "completed_at": "2026-11-20T02:50:26.647129+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R0745C1EE881D\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R0745C1EE881D\n- Title: Gender-inclusive governance in rural water management in Ghana\n- Authors: Abubakari, Mohammed Awal\n- Year: 2025\n- DOI: 10.1007/s43832-025-00253-7\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 7cd575a849b2d3c44ec6a5b4c153472324f8f1df2994c7afebdfd17639ba94cf) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=87373, sha256=7cd575a849b2d3c44ec6a5b4c153472324f8f1df2994c7afebdfd17639ba94cf]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Ghana",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines community-level rural drinking-water service access via handpump boreholes across five rural communities in Wa West District, Ghana.",
+      "c2": "Satisfies both readings of Criterion 2. Under the plain wording, the study examines local water governance institutions (Water and Sanitation Management Teams, WSMTs), community operational regulations, and women's participation in rule-making. Under the narrow 2026-10-13 rule-type mechanism reading, Research Question (a) and Section 5.1-5.3 directly examine concrete rule-type mechanisms governing drinking-water access: daily operating-hour/rationing rules (locking boreholes from 7:00-7:30 p.m. to 6:00 a.m. and upon early signs of malfunction), user and water-use restrictions (prohibiting children from pumping, prohibiting borehole water for brick molding, prohibiting cooking pots at water points), tariff/cost-recovery rules and ability-to-pay accommodation (event-driven repair contributions of GH₵ 1-7 for men and GH₵ 2 for women in certain communities, set by consensus according to household financial strength), and enforcement sanctions (GH₵ 100 fines, compulsory cleaning, and temporary exclusion of repeat violators from fetching water), alongside how gender-inclusive WSMT governance formulates and monitors these rules.",
+      "c3": "Primary empirical qualitative single-case study conducted in January-February 2025 across five rural communities in Wa West District using five focus group discussions with 37 purposively sampled WSMT members (18 men, 19 women), direct field observation with photographic documentation, and manual inductive thematic analysis.",
+      "c4": "Reports qualitative outcomes relevant to drinking-water access, service availability, reliability/continuity, waiting time, affordability, and exclusion: frequent borehole breakdowns and functionality preservation, non-compliance with child-pumping bans observed in the field, dry-season crowding with multi-hour waits without getting water, restricted night-time/emergency service availability due to overnight locking, affordability of ad hoc repair levies, and temporary exclusion of repeat rule violators from fetching water.",
+      "c5": "Population and sample (37 WSMT members in 5 rural communities in Wa West District, Ghana; community/WSMT and household user levels), exposure (local borehole governance rules, fee/enforcement mechanisms, and gender-inclusive WSMT rule-making), outcomes (qualitative borehole functionality, hours of availability, waiting/crowding, exclusion of violators, and fee burden), and study design (qualitative single-case study with FGDs and observation) are clearly identified. Lacks quantitative effect estimates for meta-analysis, which is a synthesis gate rather than a review-inclusion gate per Criterion 6 and the qualitative socio-legal safeguard.",
+      "c6": "Full text is published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 12",
+        "quote": "During dry seasons, the boreholes are always crowded, and due to that people spend several hours without getting water to fetch."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12",
+        "quote": "The study revealed that maintenance payments are not made on a regular basis. Rather, community members are required to contribute funds only when the borehole breaks down or shows signs of malfunction. These contributions are mobilized by the WSMTs to ensure timely repairs."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 14",
+        "quote": "In these meetings, both male and female members of the WSMTs were allowed to participate and share their ideas and opinions on the best ways to govern the community’s boreholes. There were no restrictions on participation, ensuring that everyone had a voice."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1",
+        "quote": "Five communities (Ga, Dorimon, Zanko, Vieri, and Naaha) were selected based on accessibility, borehole presence, and active Water and Sanitation Management Teams (WSMTs). The study involved 37 community-level participants selected through purposive sampling."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 13",
+        "quote": "However, in some communities such as Dorimon, Vieri and Ga, it is discovered that violators who repeatedly violate these regulations are restricted from fetching water for a specific period."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11",
+        "quote": "revealed that children still operate these boreholes, which means that the rules in place to govern these boreholes are not functioning."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Community-level borehole operational, rationing, cost-recovery, and enforcement rules (overnight and preventive borehole locking, event-driven repair fee contributions, prohibitions on child pumping, construction water use, and metal cooking pots, monetary fines, and temporary bans on fetching water) and gender-inclusive rule formulation by Water and Sanitation Management Teams (WSMTs)",
+    "outcome": "Qualitative drinking-water borehole functionality and reliability, hours of service availability under overnight locking, dry-season crowding and waiting times, affordability of ad hoc repair contributions, rule compliance, and temporary exclusion of repeat violators from fetching water",
+    "paper_read": "full text",
+    "population_and_sample": "Five rural communities (Ga, Dorimon, Zanko, Vieri, and Naaha) in Wa West District, Upper West Region, Ghana; 37 purposively sampled Water and Sanitation Management Team (WSMT) members (18 male, 19 female) across 5 focus group discussions, plus direct field observations of borehole use (units of analysis: community/WSMT and rural borehole users)",
+    "rationale": "This primary qualitative empirical study in rural Ghana meets all review inclusion criteria (c1-c6). It examines rural community drinking-water access via handpump boreholes (c1) and directly investigates rule-type governance mechanisms under both the plain and narrow 2026-10-13 readings of Criterion 2 — including WSMT rule formulation, overnight locking/rationing rules, event-driven maintenance fee rules and ability-to-pay discretion, use/user eligibility restrictions, and enforcement sanctions including fines and temporary exclusion from fetching water (c2). It uses primary focus group discussions (n = 37 across 5 communities) and direct field observations (c3), reports qualitative outcomes on service availability, borehole reliability/breakdowns, crowding, fee affordability, and user exclusion (c4), and clearly specifies population, exposure, outcome, and design in English (c5, c6). Per the protocol safeguard on qualitative socio-legal studies, lack of a quantitative effect estimate precludes meta-analysis pooling but not systematic-review inclusion for mechanism synthesis.",
+    "record_id": "R0745C1EE881D",
+    "study_design": "Qualitative single-case study using focus group discussions, direct field observations, and manual inductive thematic analysis"
+  }
+}

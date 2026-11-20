@@ -1,0 +1,276 @@
+{
+  "record_id": "RAE15E6363DF0",
+  "study_id": "S177",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "e57f7592efb7aa1de9de0620368350a391ff2a3a1947c7c3e9a2b41debd19d56",
+  "input_text_sha256": "42b6cd8820b458c05bea8cea966a5a8b0f5bd8a3128bd06d4f759cac708519d2",
+  "prompt_sha256": "1a1b6bef558920b9bb9d76606263de3bb23098d160223e0f6bd06eddae9d6641",
+  "started_at": "2026-11-20T03:41:34.449473+00:00",
+  "completed_at": "2026-11-20T03:42:26.783709+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RAE15E6363DF0\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RAE15E6363DF0\n- Title: Policy implementation considerations for basic services: A South African urban sanitation case\n- Authors: Taing L.\n- Year: 2019\n- DOI: 10.17159/wsa/2019.v45.i4.7533\n- Retrieval status: retrieved_drive_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 42b6cd8820b458c05bea8cea966a5a8b0f5bd8a3128bd06d4f759cac708519d2) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=68494, sha256=42b6cd8820b458c05bea8cea966a5a8b0f5bd8a3128bd06d4f759cac708519d2]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "South Africa",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines urban sanitation service access and shared/communal toilet provision in informal settlements in the City of Cape Town (CoCT), South Africa.",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, it analyses legal, administrative, institutional, regulatory, and governance factors shaping Free Basic Sanitation (FBSan) implementation. Under the narrow 2026-10-13 reading, it examines concrete rule-type mechanisms directly governing sanitation access and reliability: lifeline tariff/subsidy and cost-recovery rules (what is covered for free vs consumer O&M responsibility, inability to use housing grants in informal areas, local cross-subsidies), administrative burden in indigent eligibility screening (leading CoCT to provide free services universally in informal settlements), legal land-tenure/occupied-land restrictions rendering waterborne sewerage illegal/infeasible alongside the constitutional mandate to provide access irrespective of tenancy, official discretion constrained by personal liability rules for fruitless and wasteful expenditure under the 1999 Public Finance Management Act, ambiguous regulatory standards defining basic sanitation, and lack of SAHRC regulatory enforcement authority.",
+      "c3": "Longitudinal qualitative/mixed-methods socio-legal case study drawing on primary semi-structured interviews (with 4 national policymakers in 2015 plus residents, municipal officials, activists, and academics from 2010 to 2013), 9 months of participant observation in three CoCT municipal offices (2010-2012) and an ablution block in BM Section informal settlement (2012-2013), and secondary document review (1994-2014). Qualitative socio-legal empirical studies are eligible for the systematic review.",
+      "c4": "Reports qualitative empirical outcomes on sanitation access, service availability, functionality, and reliability in informal settlements, including failure to meet universal household sanitation targets, reliance on communal container-based toilets (~1 toilet per 5 households) and buckets, facility disrepair/dysfunction under community self-help O&M rules, and improved service reliability following CoCT's shift to municipal janitorial O&M services.",
+      "c5": "Clearly identifies population and units of analysis (informal settlement residents/communities, including BM Section, and municipal/national policy actors in the City of Cape Town Municipality), rule-type legal/administrative exposures, sanitation access/reliability outcomes, and an identifiable longitudinal qualitative/mixed-methods case study design.",
+      "c6": "Published in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 11",
+        "quote": "An assessment of national policy and implementation in South Africa’s second largest city (Cape Town) indicated that irreconcilable differences between municipal officials, residents and advocates’ interpretations of broadly-framed national policy, as well as policy gaps specific to servicing informal settlements and providing shared sanitation, contributed to the municipality’s failure to achieve policy objectives."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 11",
+        "quote": "The author interviewed 4 national policymakers in April 2015, and conducted semi-structured interviews with residents, municipal officials, activists and academics involved in policy design, implementation and advocacy from March 2010 to August 2013."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 2 of 11",
+        "quote": "The author also collected data as a participant observer in three CoCT offices for 9 months from March 2010 to September 2012, and at an ablution block in BM Section informal settlement from November 2012 to August 2013."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 11",
+        "quote": "Recognising that waterborne services were costly and often infeasible and/or illegal to install in densely-structured settlements situated on occupied land, officials gave residents the following options: either household VIP, a supposedly ‘improved’ private household black bucket, or communal access to container-based alternatives at approximately 1 toilet per 5 households."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 5 of 11",
+        "quote": "CoCT (2001 p. 11) additionally provided free water and sanitation to all residents due to the challenge of establishing eligibility criteria for indigent households."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 7 of 11",
+        "quote": "Infrastructure dysfunction throughout informal settlements, however, prompted CoCT to identify a new policy and approach that improved service reliability."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Free Basic Sanitation (FBSan) legal, tariff/subsidy, and administrative implementation rules—including lifeline subsidy vs on-site O&M cost-sharing rules, indigent eligibility screening rules, occupied-land legal restrictions on waterborne sewerage alongside constitutional non-tenure access mandates, ambiguous statutory/regulatory basic sanitation definitions, Public Finance Management Act accountability constraints on official discretion, and weak national/SAHRC regulatory enforcement.",
+    "outcome": "Household and communal sanitation service access, service/technology availability (container-based communal toilets at ~1:5 ratio vs household buckets or sewerage, failure to achieve universal household toilet access), facility disrepair/dysfunction under community self-help rules, and improved service reliability under municipal janitorial O&M provision.",
+    "paper_read": "full text",
+    "population_and_sample": "Urban informal settlement residents/communities (including BM Section informal settlement) and municipal/national sanitation policy and implementation actors in the City of Cape Town Municipality, South Africa (4 national policymakers interviewed in April 2015; semi-structured interviews with residents, municipal officials, activists and academics 2010–2013; participant observation across three CoCT offices for 9 months and BM Section ablution block/flush toilets 2010–2013; desktop document review 1994–2014).",
+    "rationale": "This empirical longitudinal socio-legal policy implementation case study in Cape Town, South Africa satisfies all inclusion criteria (c1–c6). It examines urban informal settlement sanitation access and reliability (c1, c4) using primary interviews, participant observation, and document analysis (c3, c5, c6). It directly analyses rule-type legal, tariff/subsidy, tenure, administrative discretion, and regulatory enforcement mechanisms governing sanitation service access and reliability (c2 under both plain and 2026-10-13 narrow readings). Qualitative socio-legal empirical studies are explicitly included in the systematic review for mechanism synthesis.",
+    "record_id": "RAE15E6363DF0",
+    "study_design": "Longitudinal qualitative/mixed-methods policy implementation case study (semi-structured interviews, participant observation, and desktop document review)"
+  }
+}

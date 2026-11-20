@@ -1,0 +1,276 @@
+{
+  "record_id": "RFE66A4DA8153",
+  "study_id": "S101",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "b80c3bfaa7a9859c1e546245e71bd8e453d832426d6275fcf4113137c0e644f3",
+  "input_text_sha256": "1b6abc909d26f0a2485acb44326fdc443a544b3607babdaa3e13a02f19a6b2d0",
+  "prompt_sha256": "d90313d66745b889720fcba4885d1e2a0214a69a93049aca2cc676570423ced9",
+  "started_at": "2026-11-20T02:45:43.884512+00:00",
+  "completed_at": "2026-11-20T02:46:59.218798+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RFE66A4DA8153\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RFE66A4DA8153\n- Title: Concretizing the Right to Water: Engaging Infrastructurally Powerful Actors in Nairobi\n- Authors: Jeppesen, Maja\n- Year: 2025\n- DOI: 10.1017/asr.2025.46\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 1b6abc909d26f0a2485acb44326fdc443a544b3607babdaa3e13a02f19a6b2d0) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=69744, sha256=1b6abc909d26f0a2485acb44326fdc443a544b3607babdaa3e13a02f19a6b2d0]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and estate-level domestic piped water service access, reliability, pressure, rationing, and coping via supplementary water sources in Nairobi housing estates (Canaan Estate and four estates in Langata).",
+      "c2": "Satisfies both the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, it examines constitutional water rights, corporatized utility governance (Nairobi Water and WASREB), formalization under slum upgrading (KENSUP), and everyday institutional governance of urban water distribution. Under the narrow 2026-10-13 rule-type reading, it empirically analyzes concrete administrative and street-level rule-type mechanisms directly governing service access: (1) formal utility grid recognition vs. administrative classification between Nairobi Water's formal and 'Informal Region' offices, creating administrative burden and complaint deflection due to Canaan's ambiguous formality status; (2) street-level discretion, accommodation, and rationing/valve operation by utility staff and management (including discretionary water-truck dispatch, selective leak repair, and off-the-record main-line connections bypassing rationed distribution pipes); (3) weak enforcement against unauthorized pipe tapping/diversion; and (4) formal cost-recovery and monthly billing/service-fee rules (1,000 KES monthly estate fee covering utility water and borehole sewage charges) compared with informal kiosk purchasing.",
+      "c3": "Primary qualitative socio-legal empirical study based on 12 months of multi-sited ethnographic fieldwork in Nairobi (November 2021 to March 2024), employing semi-structured interviews, focus groups, participant observation with Nairobi Water field and office employees, and analysis of a resident estate WhatsApp group.",
+      "c4": "Reports empirical outcomes on realized piped water access, supply frequency and continuity (e.g., dry taps, water flowing only enough to cover two days of needs, six-week outages, low pressure failing to reach upper floors or fill storage tanks), flush-toilet usability, and reliance on costly or laborious alternative water sources (carrying kiosk water up stairs, buying tanker water).",
+      "c5": "Population/unit of analysis (residents, households, and estate committees in Canaan slum-upgrading estate and four middle-class Langata estates in Nairobi, plus Nairobi Water staff), exposure (formal legal/utility connection, formal vs. informal administrative jurisdiction and complaint burden, street-level utility discretion/enforcement, and monthly billing structure), outcome (realized household/estate water supply continuity, pressure, and access), and study design (multi-sited ethnographic qualitative study) are all clearly identified. Qualitative socio-legal studies are eligible for the systematic review without quantitative effect estimates.",
+      "c6": "Full text is written in English (with English, French, and Portuguese abstracts), which is directly eligible without translation."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 21 (p. 253)",
+        "quote": "An unreliable and sparse water supply in Nairobi’s piped grid means that a formal water connection does not always equal access to water."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 21 (p. 254)",
+        "quote": "The study is based on twelve months of ethnographic fieldwork conducted in Nairobi between November 2021 and March 2024. I have employed ethnographic methods such as semi-structured interviews, focus groups, and participant observation."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 21 (p. 262)",
+        "quote": "Although Canaan is officially a formal area, Nathaniel was told by this office to go to the office for the “Informal Region” in charge of informalized areas like Kibera, from where he was sent back again. In this way, the resident committee of Canaan has been unsuccessful in mobilizing the right people to establish their water claims, and the ambiguity of their formality status makes it easier for the officials to deflect Nathaniel’s complaints."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 12 of 21 (p. 263)",
+        "quote": "The most valuable relationships to mobilize in order to receive water seem to be with those who can manipulate the grid, such as plumbers and water service provider employees with knowledge of the valve system."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 16 of 21 (p. 267)",
+        "quote": "Already, only half of the residents are paying the monthly 1000 KES service fee, which is supposed to cover expenses such as the water bill to Nairobi Water (which also includes a sewage charge for the borehole), waste management, security, and so on."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8 of 21 (p. 259)",
+        "quote": "The residents explained that when the water comes, there is only enough to cover their needs for two days, meaning they will need to buy water from the water kiosks in Kibera, similarly to what they did before moving—only now they have to carry the water longer distances and up the stairs to their apartments."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Formal constitutional/utility water recognition and piped grid connection under slum upgrading (KENSUP), utility administrative division between formal and 'Informal Region' offices (creating complaint deflection and administrative burden), street-level utility discretion and enforcement (valve rationing, leak repair, unauthorized main-line connections, discretionary tanker dispatch), and monthly cost-recovery/service-fee billing rules.",
+    "outcome": "Realized ('concretized') household and estate domestic water access, supply continuity/frequency (days with water vs. multi-week outages and dry taps), water pressure (ability to reach upper-floor apartments, flush toilets, and fill tanks), and reliance on supplementary kiosk or tanker water.",
+    "paper_read": "full text",
+    "population_and_sample": "Residents, households, and estate management committees in Canaan Estate (a formal KENSUP slum-upgrading apartment complex bordering Kibera) and four middle-class estates in Langata (including Ngei 2, Akiba, and Southlands), as well as field and office employees of Nairobi Water and Sewerage Company in Nairobi, Kenya (12 months of fieldwork, November 2021–March 2024; exact total interview N not reported).",
+    "rationale": "This English-language qualitative socio-legal ethnography examines why constitutional water rights and formal piped utility connections fail to translate into actualized household water access in Nairobi, comparing a formal slum-upgrading estate (Canaan) with neighboring middle-class estates (Langata). It satisfies all inclusion criteria, including Criterion 2 under both the plain wording and the narrow 2026-10-13 rule-type mechanism scope, by empirically tracing administrative burden and jurisdictional deflection between Nairobi Water's formal and 'Informal Region' offices, street-level discretion and accommodation by utility managers, valve operators, and plumbers, non-enforcement against pipe diversion/unauthorized main-line connections, and monthly billing/cost-recovery rules directly shaping water supply continuity and exclusion. Per protocol rules, qualitative socio-legal studies with identifiable empirical methods and mechanisms are included for mechanism synthesis regardless of lacking quantitative effect estimates.",
+    "record_id": "RFE66A4DA8153",
+    "study_design": "Qualitative multi-sited ethnographic study (semi-structured interviews, focus groups, participant observation, and resident WhatsApp group analysis)"
+  }
+}

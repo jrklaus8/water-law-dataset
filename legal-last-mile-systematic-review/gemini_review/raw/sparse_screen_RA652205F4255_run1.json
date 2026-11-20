@@ -1,0 +1,276 @@
+{
+  "record_id": "RA652205F4255",
+  "study_id": "S153",
+  "run": 1,
+  "task": "sparse_records_blind_screening",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "876694992755994be84e979601950640a99b11c43414a1b17218613e22a5afc2",
+  "input_text_sha256": "9ec1a28a4d2ca15ab447ac005d5561ad2b528ecf982223cd266126411adbe134",
+  "prompt_sha256": "f368dba18e1b9c916b905183ca20ef53856b2efbfd533c4c51079defc901c5c4",
+  "started_at": "2026-11-20T03:41:34.538468+00:00",
+  "completed_at": "2026-11-20T03:42:25.301973+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD RA652205F4255\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: RA652205F4255\n- Title: Container-based sanitation in Nairobi’s Mukuru: roles, power, challenges and strategies\n- Authors: Chumo I.; Karani C.; Riungu J.; Kirimi L.M.\n- Year: 2025\n- DOI: 10.3389/fpubh.2025.1674329\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`.\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: 9ec1a28a4d2ca15ab447ac005d5561ad2b528ecf982223cd266126411adbe134) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=68365, sha256=9ec1a28a4d2ca15ab447ac005d5561ad2b528ecf982223cd266126411adbe134]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Kenya",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household and community sanitation service access (container-based sanitation, public toilets, pit latrines and simplified sewer networks) in the Mukuru Kwa Reuben informal settlement in Nairobi, Kenya.",
+      "c2": "Satisfies Criterion 2 under BOTH the plain wording and the narrow 2026-10-13 rule-type mechanism reading. Plain wording: investigates formal and informal governance, institutional fragmentation across ministries, regulatory standards, land tenure, cartel control and municipal financing in urban sanitation. Narrow 2026-10-13 rule-type reading: empirically examines concrete rule-type mechanisms directly governing sanitation access, including (1) utility mandate and regulatory structure (government utilities lacking a clear obligation to serve informal settlements, absence of regulatory standards for off-grid containment/emptying, and statutory/policy definitions equating sanitation with sewerage), (2) land tenure and documentation/title-deed barriers (bureaucracies of acquiring title deeds, unmet land tenure limiting toilet construction and leading to demolition of CBS facilities on unowned land during road expansion) and (3) tariff, user-fee and cost-recovery rules (pay-as-you-go user fees of 3-5 KES per use, monthly CBS charges of 850 KES/month and 5,000 KES simplified-sewer connection fees creating economic barriers to household access).",
+      "c3": "Primary qualitative empirical study collecting original data via 25 in-depth interviews and researcher observations (September 2021 to February 2022), analyzed with framework analysis in NVivo 12 with inter-coder agreement testing. Per review safeguards, qualitative socio-legal/governance empirical studies are eligible for the systematic review and mechanism synthesis.",
+      "c4": "Reports qualitative outcomes on household and community sanitation access, spatial service availability (serving residents far from main roads), emptying reliability, affordability burdens/exclusion under user-fee and connection-fee rules, and loss of access from facility demolitions and cartel price-setting.",
+      "c5": "Population and sample (n=25 purposively sampled participants in Mukuru Kwa Reuben, Nairobi: 10 community members, 10 landlords/structure owners, 1 senior chief and 4 sanitation ministry officials; household/settlement actor level), exposures (utility mandate/regulatory structure, land tenure/title-deed rules, tariff/user-fee models and informal cartel governance), outcomes (sanitation access, affordability, reliability and adoption) and study design (qualitative in-depth interview and observation study using framework analysis) are all clearly reported.",
+      "c6": "Published in English (interviews translated from Swahili to English by the study authors)."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 1 of 11",
+        "quote": "This qualitative study aimed to explore the intricate factors surrounding the implementation of CBS in an urban slum, specifically investigating the technology’s operational roles, the influence of existing power structures, the key challenges encountered, and viable strategies for enhancing its adoption within an informal settlement in Nairobi, Kenya."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3 of 11",
+        "quote": "Twenty-five (25) participants comprising 10 community members, 10 landlords/ structure owners (availability in the informal settlements), one local chief and four ministry officials working the sanitation sector were sampled for participation."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 6 of 11",
+        "quote": "Government utilities underprovided the sanitation services, partly because they do not have a clear obligation to serve informal settlements and because of the fluid and rapidly urbanizing cities."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 7 of 11",
+        "quote": "Others include bureaucracies of acquiring title deeds, and sometimes cultural norms which disassociate people from their responsibility of ensuring safe excreta management. Unmet land tenure in the informal settlements affected sanitation innovations in informal settlements."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8 of 11",
+        "quote": "Consequently, access depended heavily on a user-fee model, creating an economic barrier. This burden was particularly acute for those relying on “pay-as-you-go” systems, which were found to be technically more expensive than other models."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8 of 11",
+        "quote": "They are required to pay 5,000 (Kenya shillings) connection fee. We are not prepared for this. Who will provide the toilet infrastructure? 5,000 is a lot of money for connection."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Formal and informal sanitation governance and rule-type mechanisms: utility service mandates and regulatory definitions/standards for off-grid sanitation, land tenure and title-deed bureaucracies, tariff/user-fee and sewer connection-fee structures, and informal cartel control/zoning",
+    "outcome": "Household and community access to container-based and off-grid sanitation services, spatial service availability, emptying reliability, affordability/cost burden and exclusion",
+    "paper_read": "full text",
+    "population_and_sample": "Residents, landlords/structure owners, local chief and sanitation ministry officials in Mukuru Kwa Reuben informal settlement, Nairobi, Kenya (N = 25 in-depth interviews: 10 community members, 10 landlords/structure owners, 1 senior chief, 4 ministry officials)",
+    "rationale": "This qualitative empirical study (25 in-depth interviews and observations in Mukuru Kwa Reuben, Nairobi) meets all inclusion criteria (c1-c6). Beyond broader power and coordination dynamics, it empirically examines multiple rule-type mechanisms under the 2026-10-13 Criterion 2 scope clarification—including absence of a utility legal obligation to serve informal settlements, regulatory definitions restricting funding to networked sewerage, land-tenure and title-deed bureaucracies (including demolition of CBS toilets on unowned land), and regressive user-fee/tariff and connection-fee rules—and links them directly to household sanitation access, reliability, affordability and exclusion. Qualitative empirical studies are eligible for systematic-review mechanism synthesis even without quantitative effect sizes.",
+    "record_id": "RA652205F4255",
+    "study_design": "Qualitative study using in-depth interviews and researcher observations with framework analysis"
+  }
+}
