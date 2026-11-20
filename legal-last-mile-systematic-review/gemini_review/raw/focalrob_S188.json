@@ -1,0 +1,313 @@
+{
+  "study_id": "S188",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "bfec00b96f9e92c67b0f82a71bca59b5cab032447e2f1375465f9e3a4ce1a938",
+  "prompt_sha256": "ba921531a98ffca90e093944c3c4413d817919ca1a1c04c123950a88b14d6ec5",
+  "started_at": "2026-11-20T17:24:51.214332+00:00",
+  "completed_at": "2026-11-20T17:27:04.502567+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low concern / largely not applicable: the study analyzes federal administrative budget and loan registries rather than a longitudinal cohort of participants, though Table 1 transparently notes that 2.7% of post-2004 Caixa (FGTS) contracts lacked municipality names and were excluded from the municipal size distribution (PDF Page 10, p. 441).",
+      "confounding": "High concern (weak control): although the narrative discusses competing political-economic, fiscal and administrative influences (macroeconomic primary-surplus targets, historical Planasa path dependence, municipal technical capacity and parliamentary amendments), the empirical analysis relies solely on univariate/bivariate descriptive shares without multivariate adjustment, stratification or counterfactual control.",
+      "legal_measurement_quality": "Adequate (macro-institutional level): key federal statutes and administrative financing rules—including Lei n. 11.445/2007, Lei n. 11.079/2004 (PPPs), Constitutional PPA/LOA budgetary instruments, parliamentary budget amendments, FGTS Curatorial Council guidelines and Conselho Monetário Nacional (CMN) municipal debt limits—are accurately situated in institutional context, but specific legal rules and creditworthiness cutoffs are discussed narratively rather than coded or measured at the municipal level.",
+      "measurement_bias": "Moderate concern: federal financial commitments, contracts and disbursements are drawn from official administrative systems (Sigplan-MPOG, Siga Brasil, Caixa/FGTS and BNDES/FAT via SNSA) and deflated to 2009 BRL via FGV IGP-DI, but operational rules separating direct sanitation actions from sanitation-related actions and raw municipal denominators per HDI/population stratum are not reported in the article.",
+      "outcome_measurement_quality": "Weak-to-adequate: fiscal outputs (committed/contracted vs. disbursed federal funds across regions, sanitation subsectors and municipal population/HDI/GDP brackets) are clearly tracked from administrative records, whereas physical water and sanitation access and potability deficits (IBGE 2010 Census, PNAD 2008 and SISAGUA 2007; PDF Pages 3-4) serve only as static background descriptions rather than measured municipal outcomes linked to investments.",
+      "reporting_bias": "Moderate concern: no pre-analysis protocol exists, and unexplained discrepancies appear across sections regarding the empirical observation window—Abstract/Introduction state 2004-2009 (PDF Pages 1-3), Methodology states 2003-2010 overall and 2004-2008 for FGTS-Caixa and FAT-BNDES (PDF Page 6), while Results report 1996-2009 (Fig. 1), 2005-2009 (Figs. 2-3) and 2004-2009 for Caixa (Figs. 4-7, Table 1), with municipal disaggregation reported for Caixa but omitted for BNDES.",
+      "selection_bias": "Moderate concern: using universe-level federal budgetary and credit registries avoids convenience sampling bias, and the 2.7% missing-municipality exclusion in Caixa contracts is disclosed (PDF Page 10, p. 441); however, selection rules for specific Sigplan/Siga Brasil budget action codes and the shifting year windows across analyses are not transparently justified."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The paper accurately identifies core federal statutory, constitutional and financial-regulatory instruments shaping Brazilian sanitation policy—including the Constitutional Plano Plurianual (PPA), Lei Orçamentária Anual (LOA), Lei n. 11.445/2007 (National Basic Sanitation Law), Lei n. 11.079/2004 (Public-Private Partnerships), FGTS Curatorial Council guidelines and Conselho Monetário Nacional (CMN) municipal indebtedness limits—though specific statutory articles and administrative resolution numbers are not cited granularly.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 2, 6, 7-9, 13 (Introdução, p. 433; Metodologia, p. 437; Resultados, pp. 438-440; Discussão, p. 444)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Jurisdictional scope and institutional competence are clearly delineated across the Brazilian federation: federal executive and financial entities (Ministério das Cidades, Secretaria Nacional de Saneamento Ambiental, Caixa Econômica Federal, BNDES and federal parliamentary budget amendments), Brazil's five macro-regions (Norte, Nordeste, Sudeste, Sul and Centro-Oeste) and 570 funded municipalities stratified by population size, GDP per capita and HDI.",
+        "rating": "strong",
+        "where_found": "PDF Pages 2-4, 6-11 (Introdução, p. 433; O défict de saneamento básico no Brasil, pp. 434-435; Metodologia, p. 437; Resultados, pp. 438-442)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "The institutional financing exposures—non-onerous federal budget transfers (OGU via LOA/PPA and parliamentary amendments) versus onerous credit lines (FGTS-Caixa Saneamento para Todos and FAT-BNDES) and their contrasting technical/financial eligibility requirements—are clearly differentiated conceptually, although exact administrative credit-scoring or debt-ceiling thresholds are described narratively rather than operationalized quantitatively.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4-8 (O financiamento do saneamento básico no Brasil, pp. 435-437; Metodologia, p. 437; Resultados, pp. 438-439)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Fiscal allocation outcomes clearly distinguish budgeted/committed/contracted amounts from actually disbursed funds (deflated by FGV IGP-DI to 2009 BRL) across sanitation subsectors (water supply, sewerage, stormwater drainage, solid waste and institutional development) and municipal profiles; however, service-deficit indicators (IBGE, PNAD and SISAGUA) are reported only as static background context rather than linked longitudinally to funded municipalities.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 3-4, 6-11 (O défict de saneamento básico no Brasil, pp. 434-435; Metodologia, p. 437; Resultados, pp. 437-442)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The study relies on administrative universe registries from Sigplan-MPOG, Siga Brasil and SNSA/Ministério das Cidades contract databases and transparently reports in Table 1 that 570 municipalities remained after excluding 2.7% of post-2004 Caixa contracts lacking municipal names; however, stated study periods vary inconsistently across Abstract (2004-2009), Methodology (2003-2010 and 2004-2008) and Results (1996-2009, 2005-2009 and 2004-2009).",
+        "rating": "adequate",
+        "where_found": "PDF Pages 1, 6, 7-10 (Resumo, p. 432; Metodologia, p. 437; Resultados, Figuras 1-5 and Tabela 1, pp. 438-441)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Using comprehensive federal budget execution and development-bank contract records avoids arbitrary case selection, and missing municipal identifiers (2.7%) in Caixa contracts are explicitly noted; nevertheless, the exact inclusion rules used to select budget action codes in Sigplan/Siga Brasil and to omit municipal-level BNDES breakdowns from the Results are not fully explained in the article.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 6, 8-10 (Metodologia, p. 437; Resultados, pp. 439-441)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Extracted variables, price-deflation index (IGP-DI/FGV to 2009) and municipal stratification cutoffs (population tiers, 2006 GDP per capita relative to national mean and HDI classes) are stated, but most figures and tables report secondary percentages from an external report (Brasil, 2010 apud Borja, 2011) without providing underlying national municipal denominators for each HDI or GDP stratum.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 6-11 (Metodologia, p. 437; Resultados, Figuras 1-7 and Tabela 1, pp. 438-442)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The design is purely descriptive and historical-interpretive, comparing aggregate temporal trends (FHC vs. Lula administrations; post-2007 PAC) and regional/municipal shares of federal contracts against descriptive national deficit profiles without any counterfactual comparator or quasi-experimental strategy to identify causal effects of Law 11.445/2007 or financing eligibility rules.",
+        "rating": "weak",
+        "where_found": "PDF Pages 6-14 (Metodologia, p. 437; Resultados, pp. 437-442; Discussão, pp. 443-445)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Competing structural, fiscal and administrative explanations (macroeconomic adjustment, municipal project-preparation capacity, CMN debt limits, Planasa institutional inertia and parliamentary pork-barrel amendments) are discussed qualitatively, but no statistical adjustment, multivariate model or formal stratified comparison is performed.",
+        "rating": "weak",
+        "where_found": "PDF Pages 7-14 (Resultados, pp. 438-442; Discussão, pp. 443-445)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The article provides thorough institutional and political-economic analysis of Brazil's sanitation governance architecture, tracing the 2003 creation of the Ministry of Cities, SNSA and Council of Cities, coalition shifts across Lula's first and second terms, parliamentary amendment dynamics (58% of non-onerous commitments in 2005; 37.6% in 2009), FGTS/FAT fiduciary rules and private concession trends.",
+        "rating": "strong",
+        "where_found": "PDF Pages 2-5, 7-14 (Introdução, pp. 433-434; O financiamento do saneamento básico no Brasil, pp. 435-437; Resultados, pp. 437-442; Discussão, pp. 443-445)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "While Sigplan-MPOG, Siga Brasil and IBGE sources are named, the FGTS-Caixa and FAT-BNDES contract spreadsheets were supplied internally by SNSA/Ministério das Cidades (Brasil, 2010), exact budget action codes are omitted, time periods conflict between Methodology and Results and empirical outputs largely summarize an external monograph (Borja, 2011), preventing standalone replication from the article text.",
+        "rating": "weak",
+        "where_found": "PDF Pages 6-11, 15 (Metodologia, p. 437; Resultados, pp. 438-442; Referências, p. 446)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "Although Methodology notes assembling databases from Sigplan, Siga Brasil and SNSA spreadsheets and generating geoprocessed cartograms, the article supplies no coding protocol, no operational criteria separating direct sanitation actions from sanitation-related actions and no verification or error-checking procedures.",
+        "rating": "weak",
+        "where_found": "PDF Pages 6, 8, 10-11 (Metodologia, p. 437; Resultados, p. 439, pp. 441-442)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "The author adopts an explicit Marxian political-economy standpoint (contrasting sanitation as a social right against capitalist commodification) and notes in Footnote 1 that the Ministério das Cidades funded the underlying Panorama do Saneamento Básico no Brasil study, yet offers no reflexive discussion of how funding from the evaluated ministry or normative theoretical commitments shaped analytical framing and interpretation.",
+        "rating": "weak",
+        "where_found": "PDF Pages 1-3, 12-14 (Footnote 1, p. 432; Introdução, pp. 433-434; Discussão, pp. 443-445)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Funding disclosure and link to Ministry of Cities Panorama study (D13 Researcher reflexivity)",
+        "page": "PDF Page 1 (Footnote 1, p. 432)",
+        "quote": "Apoio financeiro do Ministério das Cidades no âmbito do estudo"
+      },
+      {
+        "criterion": "Administrative budget data extraction from Sigplan (D5 Sampling transparency / D7 Measurement transparency)",
+        "page": "PDF Page 6 (Metodologia, p. 437)",
+        "quote": "Coleta de dados e informações do Sigplan."
+      },
+      {
+        "criterion": "Creditworthiness and debt-limit gatekeeping rules for onerous loans (D1 Legal source accuracy / D3 Exposure definition)",
+        "page": "PDF Page 7 (Resultados, p. 438)",
+        "quote": "Os tomadores de empréstimos devem atender aos"
+      },
+      {
+        "criterion": "Parliamentary budget amendments vs. Law 11.445/2007 principles (D1 Legal source accuracy / D10 Institutional context)",
+        "page": "PDF Page 9 (Resultados, p. 440)",
+        "quote": "maior adesão aos princípios da Lei no 11.445/2007."
+      },
+      {
+        "criterion": "Mismatch between Caixa eligibility/allocation and municipal service deficits (D4 Outcome definition / D8 Causal identification)",
+        "page": "PDF Page 10 (Resultados, p. 441)",
+        "quote": "recursos da Caixa não dialogam com os déficits dos"
+      },
+      {
+        "criterion": "Exclusion of 2.7% of post-2004 Caixa contracts missing municipality names (D5 Sampling transparency / D6 Selection process)",
+        "page": "PDF Page 10 (Tabela 1 footnote, p. 441)",
+        "quote": "Foram excluídas as informações que não tinham os nomes dos municípios"
+      }
+    ],
+    "overall_narrative_summary": "Borja (2014) is an institutional-legal policy case study and descriptive public-finance analysis examining Brazil's federal basic sanitation policy and investment trajectory (focused primarily on 2003-2010, with historical budget comparisons from 1996-2009) under the Ministry of Cities and Law 11.445/2007. Although the author describes the study as 'quali-quantitativa' (PDF Page 6, p. 437), there is no primary qualitative empirical data collection (such as interviews, focus groups or systematic documentary coding) and no quasi-experimental comparator or statistical regression model; instead, the paper combines macro-institutional and political-economy analysis of statutory and budgetary rules with descriptive tabulations and maps of federal OGU, FGTS-Caixa and FAT-BNDES sanitation allocations largely synthesized from the author's Ministry of Cities Panorama report (Borja, 2011). Assessed under the Legal Institutional Evidence Appraisal Framework (as a structured non-validated judgment with no numeric composite score), the study demonstrates strong jurisdictional specificity (D2) and institutional contextualization (D10), alongside adequate legal source accuracy (D1), financing exposure and fiscal outcome definitions (D3, D4) and administrative registry coverage (D5-D7, including disclosure of 2.7% missing municipal identifiers in Caixa contracts). However, causal identification (D8), confounding control (D9), standalone replication potential (D11), coding transparency for budget classifications and shifting year windows (D12) and researcher reflexivity regarding Ministry of Cities funding and normative positioning (D13) are weak, limiting the study to descriptive evidence of distributive misalignment between federal financing rules and regional/municipal sanitation deficits.",
+    "overall_rating": "Adequate institutional-contextual and descriptive budgetary evidence, but weak causal identification, coding transparency and replication rigor (structured non-validated judgment; no numeric composite score)",
+    "paper_read": "full text",
+    "study_design_identified": "Institutional and legal-political policy case study combined with descriptive administrative/budgetary analysis (synthesizing federal budget execution and credit contract registries from Sigplan-MPOG, Siga Brasil, FGTS-Caixa and FAT-BNDES across Brazilian regions and municipalities)",
+    "study_id": "S188",
+    "where_found_summary": "Design and data sources in Resumo (PDF Page 1, p. 432) and Metodologia (PDF Page 6, p. 437); background deficit statistics from IBGE/PNAD/SISAGUA in 'O défict de saneamento básico no Brasil' (PDF Pages 3-4, pp. 434-435); financing rules in 'O financiamento do saneamento básico no Brasil' (PDF Pages 4-6, pp. 435-437); descriptive empirical findings, figures, maps and Table 1 exclusion note in Resultados (PDF Pages 6-11, pp. 437-442); legal-institutional and political-economy interpretation in Discussão and Conclusão (PDF Pages 12-14, pp. 443-445); funding note in Footnote 1 (PDF Page 1, p. 432).",
+    "why_tool_chosen": "Despite the author's label 'de base quali-quantitativa' (PDF Page 6), the Metodologia involves only descriptive extraction and mapping of federal budgetary and loan registries paired with macro-political/legal institutional commentary—there is no primary qualitative empirical component (excluding CASP and MMAT), no statistical hypothesis-testing or cross-sectional regression model (excluding JBI Analytical Cross-Sectional), no cohort follow-up of service outcomes (excluding JBI Cohort), no quasi-experimental intervention comparator (excluding ROBINS-I) and no systematic literature search (excluding AMSTAR 2). The Legal Institutional Evidence Appraisal Framework best fits this hybrid institutional/legal-historical policy analysis and descriptive administrative finance study."
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "study_id": "S920",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "0318540bebe277dc613fa5f78177a68fe5209d76a7135531e562df6f25eaeb48",
+  "prompt_sha256": "a14f932fd1a4904a0f9a38bd19e2c69f0371c3b47522d87cce4eac1ee2c74880",
+  "started_at": "2026-11-20T17:20:49.390588+00:00",
+  "completed_at": "2026-11-20T17:24:51.169316+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "ROBINS-I",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Moderate concern: In PNSB, 188/5,507 municipalities (3.4%) in 2000 and 133/5,564 (2.4%) in 2008 have missing supplier data (Table 2, p. 6), municipalities with 2000-2008 boundary splits are excluded (p. 5), and listwise deletion on covariates reduces the 1,175 project municipalities (Table 1) to 1,008 municipalities (1,899 panel observations) in the matched DiD regressions (Table 4, p. 8). A Nijman-Verbeek selection test on 1990-2000 municipal splits shows no significant attrition bias (Table 5 col. 7, pp. 9-10).",
+      "confounding": "Moderate concern: Two-way fixed effects (DiD) absorb time-invariant municipal unobserved heterogeneity and multinomial probit kernel matching balances baseline 2000 covariates below 20% standardized bias (Figure 1, p. 8; Table 11, pp. 20-21), supported by parallel 1990-2000 pre-trends (Table 5 col. 6) and an intra-municipal urban access placebo test (Table 5 col. 2). Residual risks stem from unmeasured time-varying community/state shocks over 2000-2010 (including bundled donor/state financing and technical assistance in Northeast umbrella schemes such as CENTRAL, SISAR/KfW and PROSAR) and inclusion of concurrent 2000-2008/2010 change variables in the preferred propensity-score specification (Table 10 cols. 7-9, pp. 20-22).",
+      "legal_measurement_quality": "Adequate with notable coarseness: Municipal water governance/institutional form (water user association concession/management vs. local government/municipal firm provision vs. regional state company CESB) is identified from national administrative survey records (PNSB 2000 and 2008) at the sub-municipal district level (p. 5, Table 2, Table 7). However, the binary municipal indicator pools WUA-only municipalities with mixed WUA-plus-local-government municipalities (Footnote 9, p. 13), omits exact project start dates within 2000-2008 and provider changes during 2008-2010, and infers user participation from provider legal status rather than direct project-level governance rules (pp. 3-4, 11-12).",
+      "measurement_bias": "Low concern for the outcome, moderate concern for exposure classification: Household access to piped water on premises from a general network is measured uniformly across all municipalities via independent IBGE Demographic Censuses in 2000 and 2010 (pp. 4-5, Table 1). Exposure classification via PNSB (2000, 2008) is administrative and independent of 2010 Census enumeration, but suffers from municipal-level aggregation, pooling of co-occurring WUA and local government systems into +assoc, and a two-year lag between the 2008 exposure wave and 2010 Census outcome (pp. 4-6, 13, 16).",
+      "outcome_measurement_quality": "Adequate for connection coverage, limited for service quality: Census-derived share of rural households connected on premises to a general piped water network is objective, standardized nationwide and policy-relevant (pp. 3-4). However, as the author explicitly notes (p. 4), municipal census aggregates do not capture water quality, potability, service continuity/duration, physical system functionality or intra-community distributional equity.",
+      "reporting_bias": "No information on pre-registration (no pre-analysis plan or study protocol is cited or registered). Within the published paper, reporting is transparent across unweighted and kernel-weighted DiD models, alternative clustering levels (municipality vs. state UF, candidly noting reduced significance under UF clustering in Table 12 col. 4, p. 22-23), urban placebo, regional interactions and pre-trend checks (Tables 4-6, 10-12).",
+      "selection_bias": "Moderate concern: The study covers the national universe of Brazilian municipalities from IBGE Census and PNSB records, avoiding volunteer sampling bias, and also reports full-sample estimates including 3,717 no-change municipalities (Table 12, p. 22). However, excluding municipalities that split between 2000 and 2008, dropping ~14% of project municipalities due to missing matching covariates (from 1,175 in Table 1 to 1,008 in Table 4), and unknown intervention start times across 2000-2008 introduce moderate selection/alignment concerns."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Bias due to confounding",
+        "justification": "In the absence of a natural experiment (p. 2), the study combines municipal fixed effects (2000-2010 DiD) with multinomial probit propensity-score kernel matching, reducing standardized biases on baseline covariates below 20% (Figure 1, p. 8; Table 11, pp. 20-21). Parallel pre-trends hold for 1990-2000 (Table 5 col. 6, pp. 9-10) and an urban piped-water placebo check shows null effects (Table 5 col. 2, p. 9), ruling out municipal-wide governance trends. Nevertheless, residual unobserved time-varying confounding at the rural community or state level cannot be fully excluded (e.g., bundled international donor/state technical support and financing in CENTRAL, SISAR/KfW and PROSAR), and the preferred propensity-score model (Table 10 cols. 7-9, pp. 19-22) conditions on concurrent 2000-2008/2010 changes (main-supplier switches and first differences in population density and administrative spending), although unweighted and alternative-weight specifications yield consistent estimates (p. 22; Table 12).",
+        "rating": "Moderate",
+        "where_found": "PDF pp. 2, 5, 7-10, 19-23 (Sections 1, 3, 4(b), 5; Figure 1; Tables 3-5, 10-12; Appendix A.4-A.5)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Bias in selection of participants into the study",
+        "justification": "The study draws on national administrative and census records of Brazilian municipalities (PNSB 2000/2008 and IBGE Censuses 2000/2010) rather than convenience sampling, and full-sample regressions including 3,717 no-change municipalities (N = 5,389 municipalities, Table 12, p. 22) confirm the matched project-municipality comparisons. Moderate risk remains because follow-up begins in 2000 while project initiation occurs at unobserved points during 2000-2008, and municipalities that split between 2000 and 2008 are excluded from the panel (p. 5), though a Nijman-Verbeek test on 1990-2000 municipal splits detects no structural selection bias (Table 5 col. 7, pp. 9-10).",
+        "rating": "Moderate",
+        "where_found": "PDF pp. 4-6, 8-10, 22 (Sections 2, 4(a), 5; Tables 1, 2, 4, 5, 12)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Bias in classification of interventions",
+        "justification": "Intervention status (+assoc vs. +loc) is derived objectively from PNSB 2000 and 2008 district-level supplier records prior to the 2010 Census outcome. However, three classification limitations create moderate risk: (1) municipalities where both WUA and local government rural systems operated (Main + loc + assoc, rising from 53 in 2000 to 256 in 2008; Table 2, p. 6) are pooled into the +assoc treatment indicator in the main weighted analysis (Footnote 9, p. 13; Table 7, p. 16), though an untabulated sensitivity check treating them separately reportedly yields similar results; (2) PNSB does not capture exact implementation year within 2000-2008, scale of rural household coverage, or new systems built during 2008-2010 prior to the 2010 Census (p. 4); and (3) participatory vs. non-participatory governance is proxied by provider legal form rather than direct project-level measurement of user participation (pp. 3-4, 11-12).",
+        "rating": "Moderate",
+        "where_found": "PDF pp. 3-6, 11-13, 16 (Sections 2, 4(a), 6; Note 9; Tables 2, 7)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Bias due to deviations from intended interventions",
+        "justification": "In Northeast Brazil, many WUA systems were implemented under state and international-donor umbrella programs (CENTRAL in Bahia, KfW-financed SISAR in Ceara, PROSAR in Piaui, and CAERN trunk-line connections in Rio Grande do Norte; Section 2, p. 3) that bundled ongoing technical assistance, organizational blueprints and external capital subsidies alongside community management, and mixed municipalities experienced co-occurring local government projects. Regional interaction tests mitigate concern that Northeast umbrella programs alone explain the effect, as WUA systems in the South (where umbrella programs were rare) still show a significant positive effect (+0.0773**, Table 5 col. 3, p. 9), and concurrent cistern/desalination programs (p. 4) did not supply general-network piped water.",
+        "rating": "Moderate",
+        "where_found": "PDF pp. 3-4, 6, 9, 13 (Sections 2, 5; Table 2, Table 5 col. 3; Notes 5, 9)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Bias due to missing data",
+        "justification": "Missingness in PNSB supplier status is relatively low (188/5,507 municipalities [3.4%] in 2000 and 133/5,564 [2.4%] in 2008; Table 2, p. 6). However, listwise deletion on covariates and matching support reduces the 1,175 project municipalities in Table 1 (592 +loc and 583 +assoc) to 1,008 municipalities and an unbalanced 1,899 municipality-year observations in the primary matched DiD models (Table 4, p. 8; see also Table 10 dropping from 4,866 to 4,666 municipalities when rural/urban covariates are added, pp. 19-20). No multiple imputation is performed, though a Nijman-Verbeek test for split-municipality panel attrition finds no significant bias (Table 5 col. 7, pp. 9-10).",
+        "rating": "Moderate",
+        "where_found": "PDF pp. 4, 6, 8-10, 19-20 (Sections 4(a), 5; Tables 1, 2, 4, 5, 10)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Bias in measurement of outcomes",
+        "justification": "The outcome—municipal rural share of households with piped drinking water on premises from the general network—is measured identically across treatment and comparator municipalities using the 2000 and 2010 IBGE Demographic Censuses (pp. 3-5, Table 1, Table 7). Census data collection is independent of PNSB supplier classification and unaffected by study hypotheses, making differential outcome measurement error unlikely (though outcome scope is restricted to connection rates rather than water quality or service continuity, p. 4).",
+        "rating": "Low",
+        "where_found": "PDF pp. 3-5, 16 (Sections 2, 3, 4(a); Table 1, Table 7)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Bias in selection of the reported result",
+        "justification": "No pre-registered study protocol or pre-analysis plan is cited or mentioned in the article (several details refer to an unpublished working paper in Notes 1, 7, 10 and Appendix A.4). Per ROBINS-I guidance when no pre-analysis plan exists, No information is recorded honestly; within the published text, extensive sensitivity analyses—unweighted vs. kernel-weighted DiD, municipal vs. state (UF) clustering, bootstrapped errors, urban placebo, regional and main-supplier interactions, and 1990-2000 pre-trends—are transparently presented (Tables 4-6, 10-12).",
+        "rating": "No information",
+        "where_found": "PDF pp. 8-13, 19-23 (Sections 5, 6; Notes 1, 7, 10, 13; Tables 4-6, 10-12)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "DiD and propensity-score kernel matching design to address endogeneity",
+        "page": "PDF Page 1, Summary",
+        "quote": "quantitative analysis is based on a diﬀerence-in-diﬀerence estimator in combination with kernel matching to overcome the endogeneity"
+      },
+      {
+        "criterion": "Role of scoping semi-structured interviews in informing project-choice analysis",
+        "page": "PDF Page 1, Summary",
+        "quote": "The interviews highlight the political economy behind infrastructure expansion in rural Brazil."
+      },
+      {
+        "criterion": "Census piped water access outcome measurement across 2000 and 2010",
+        "page": "PDF Page 4, Table 1 Notes",
+        "quote": "The table shows mean values of access rates to piped drinking water in the year 2000 (A1) and average increases in access rates during 2000–10 (A2)."
+      },
+      {
+        "criterion": "Outcome scope limited to connection access rates rather than quality or continuity",
+        "page": "PDF Page 4, Section 2",
+        "quote": "the focus is thus only on increases in access rates."
+      },
+      {
+        "criterion": "Pre-treatment parallel trends test (1990-2000)",
+        "page": "PDF Page 9, Table 5 Notes",
+        "quote": "Columns 5–7 test whether the treatment municipalities behave diﬀerently already in the decade before (1990–2000)."
+      },
+      {
+        "criterion": "Nijman-Verbeek selection/attrition test for split municipalities",
+        "page": "PDF Page 9, Table 5 Notes",
+        "quote": "Column 7 implements a test for selection bias using a dummy for municipalities that split during 1990–2000, st1."
+      }
+    ],
+    "overall_narrative_summary": "Barde (2017) conducts a municipal-level panel difference-in-differences (DiD) evaluation combined with multinomial probit propensity-score kernel matching across rural Brazil (2000-2010) to test whether small-scale piped water systems implemented and operated by community water user associations (WUAs) expand household piped-water access more than systems implemented and operated by local governments. Methodological strengths include nationwide administrative and census coverage, effective covariate balancing (<20% standardized bias; Figure 1, Table 11), an intra-municipal urban piped-water placebo test ruling out municipality-wide governance shocks (Table 5 col. 2), verification of parallel 1990-2000 pre-treatment trends (Table 5 col. 6), a Nijman-Verbeek test for split-municipality attrition (Table 5 col. 7), and regional disaggregation confirming positive WUA effects in Southern Brazil where donor umbrella programs were rare (Table 5 col. 3). Overall ROBINS-I risk of bias is rated Moderate (with No information on D7 due to the absence of a pre-analysis plan). Key limitations preventing a Low rating are: (1) non-randomized project selection over an eight-year window without an exogenous natural experiment, alongside bundled state/donor technical and financial support in Northeast umbrella schemes (CENTRAL, SISAR/KfW, PROSAR) and inclusion of concurrent 2000-2008/2010 change variables in the preferred propensity-score specification (D1/D4); (2) coarse municipal-level exposure coding from PNSB 2000 and 2008 waves that pools mixed WUA-plus-local-government municipalities into +assoc, omits exact project timing within 2000-2008, and leaves 2008-2010 provider changes unobserved before the 2010 Census (D3); (3) ~14% listwise covariate attrition among project municipalities in matched models (D2/D5); and (4) outcome measurement restricted to household network connection rates without water quality or service reliability data.",
+    "overall_rating": "Moderate",
+    "paper_read": "full text",
+    "study_design_identified": "Quasi-experimental panel difference-in-differences (DiD) combined with multinomial probit propensity-score kernel matching (municipal panel 2000-2010), informed by 36 scoping semi-structured telephone interviews",
+    "study_id": "S920",
+    "where_found_summary": "Identification strategy in Section 3 (PDF p. 5) and Appendix A.4-A.5 (pp. 21-23); PNSB/Census data, provider counts, and scoping telephone interviews in Section 2 (pp. 3-4), Section 4 (pp. 5-7), Appendix A.1-A.3 (pp. 15-18), and Tables 1-3, 7-11; primary matched DiD, robustness/placebo/pre-trend/selection checks, and accountability channel interactions in Sections 5-6 (pp. 7-12) and Tables 4-6, 12.",
+    "why_tool_chosen": "ROBINS-I is the exact matching instrument under RISK_OF_BIAS.md §1 because the study's inferential core is a non-randomized policy/governance impact evaluation with an active comparator (small-scale rural piped water systems implemented and managed by water user associations vs. local governments, plus a no-change municipal baseline) estimated via two-period panel difference-in-differences combined with multinomial propensity-score kernel matching. Although Section 4(b) and Appendix A.1 report 36 retrospective semi-structured phone interviews conducted in 2013-2014, ROBINS-I is chosen over MMAT because the author explicitly frames those interviews as auxiliary background ('the anecdotal evidence provided by sector experts in the interviews, which informed this study', PDF p. 12) used to select covariates for the propensity-score probit rather than as a standalone qualitative research component with formal qualitative coding or analysis."
+  }
+}

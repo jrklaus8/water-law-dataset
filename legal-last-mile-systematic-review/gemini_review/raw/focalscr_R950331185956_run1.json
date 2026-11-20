@@ -1,0 +1,277 @@
+{
+  "record_id": "R950331185956",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f146bd0b0348534e63cdaaa70ccc655ffb135197ad1d78ff31eb8986ad8a4cf6",
+  "prompt_sha256": "4f5f20b915b3bd710394d20a8339e351f9c0697fe2fb4420c3238493db8f3483",
+  "started_at": "2026-11-20T16:17:07.482318+00:00",
+  "completed_at": "2026-11-20T16:18:51.110385+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household/population access to basic sanitation services in Brazil, specifically water supply, solid waste collection, sewage treatment/disposal, and presence of a bathroom in the home (PDF pp. 11-12, Figure 1).",
+      "c2": "Fails Criterion 2 (E03 Wrong exposure). Under the active 2026-10-13 narrow rule-type reading, the study does not examine any rule-type legal, administrative, or regulatory mechanism directly governing service access (such as eligibility screening, administrative burden, documentation or tenure requirements, tariff/cost-recovery rules, discretion, enforcement, or utility ownership/regulatory structure); citations to the 1988 Constitution, Law 11.445/2007, Law 12.288/2010, and the PNSIPN (2013), as well as macro-historical discussion of State negligence and institutional/environmental racism, serve only as unanalysed macro-governance background. Under the plain/literal broad wording of Criterion 2 ('Examines a legal, administrative, institutional, regulatory or governance factor'), although the paper conceptually frames racial disparities around 'institutional racism' and State policy omission, its empirical analysis only stratifies national Census and DataSUS outcomes by demographic color/race (Black vs. white) without measuring or qualitatively tracing any identifiable institutional or governance factor (as the author notes on p. 18, further research is needed to uncover the mechanisms of institutional racism); thus even under the plain wording it is excluded for lacking an empirical governance exposure.",
+      "c3": "Combines exploratory bibliographic/historical research with descriptive quantitative analysis of secondary national data from the 2010 IBGE Demographic Census and Ministry of Health Tabnet DataSUS / SIM records (1996-2014 mortality and 2008-2016 hospitalizations).",
+      "c4": "Reports population proportions and absolute counts without access to water supply, waste collection, sewage treatment/disposal, and a household bathroom by color/race in 2010 (PDF pp. 11-12, Figure 1), alongside morbidity and mortality from diseases related to inadequate environmental sanitation (DRSAI) (PDF pp. 13-15, Figure 2).",
+      "c5": "Population (Brazilian population at the individual level disaggregated by self-declared color/race into Black [Black + Mixed] and white), empirical stratifier/exposure (demographic color/race, which falls outside Criterion 2), sanitation-inadequacy and DRSAI outcomes, and study design (exploratory bibliographic review with descriptive cross-sectional/ecological secondary data analysis) are identifiable.",
+      "c6": "Full text is written in English (an English translation/republication of a 2020 Portuguese article in Saúde e Sociedade, with abstracts in English, Spanish, and Portuguese)."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 11",
+        "quote": "However, there is an overrepresentation of the Black population in unsanitary housing conditions, since 61% of the population without access to water supply was Black and only 37% was white; 67% of the population without access to waste collection was Black and only 30% was white; 58% of the population without access to sewage treatment was Black and 40% was white; and 76% of the population without a bathroom was Black and only 20% was white."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 11",
+        "quote": "In absolute terms, this means that in Brazil, in 2010, there were 21,532,754 Black people whose water supply came from wells, springs, water trucks, rainwater harvesting, rivers, ponds, lakes, streams, or other sources."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 5",
+        "quote": "In addition, I analyze current data on access to sanitation and morbidity/mortality due to diseases related to inadequate environmental sanitation by color/race, based on databases of the IBGE’s 2010 Census and of Tabnet DataSUS, from SUS."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 3",
+        "quote": "Meanwhile, the right to sanitation and environmental health, as well as the universalization of access to basic sanitation, are instituted by law 11.445/2007 (Brasil, 2007), known as the basic sanitation law for establishing the sector’s guidelines."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 17",
+        "quote": "That is because, by neglecting the racial variable as a factor of inequality and a criterion for allocating public policies, racial inequalities remain unmeasured, thereby unaddressed, perpetuating and rendering invisible the colonial continuum of production and reproduction of institutional racism in its various facets."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Self-declared color/race (Black [sum of Black and Mixed] vs. white population) in empirical tabulations; macro-historical framing of colonial continuity, State negligence, and institutional/environmental racism",
+    "outcome": "Inadequate basic sanitation access in 2010 (lack of water supply, lack of solid waste collection, lack of sewage treatment/disposal, and absence of a household bathroom) and morbidity/mortality from diseases related to inadequate environmental sanitation (DRSAI, 1996-2016)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Brazilian national population disaggregated by self-declared color/race (Black vs. white individuals) in the 2010 IBGE Demographic Census and 1996-2016 Ministry of Health Tabnet DataSUS (SIM/hospitalization) records (e.g., 231,087 total DRSAI deaths in 1996-2014, including 97,897 Black deaths)",
+    "rationale": "Exclude under E03 (Wrong exposure). While the paper reports national descriptive statistics from the 2010 IBGE Census on racial disparities in household water supply, waste collection, sewage disposal, and bathroom availability (alongside DataSUS morbidity/mortality from sanitation-related diseases), its empirical exposure/stratifier is demographic color/race (Black vs. white) rather than a legal, administrative, institutional, regulatory, or governance factor. Under the 2026-10-13 Criterion 2 clarification, references to the 1988 Constitution, Law 11.445/2007, Law 12.288/2010, PNSIPN (2013), and macro-sociological concepts of State negligence and institutional/environmental racism act purely as historical-theoretical framing and unanalysed macro-governance background rather than a rule-type mechanism governing service access; even under the plain wording of Criterion 2, no institutional or governance variable is empirically operationalized. (Note: Footnote 1 on PDF p. 1 also records that this 2026 article is an English translation/republication of a 2020 article in Saúde e Sociedade, v. 29, n. 2, e180519.)",
+    "record_id": "R950331185956",
+    "study_design": "Exploratory bibliographic/historical review combined with descriptive secondary quantitative analysis of national census (IBGE 2010) and health administrative (DataSUS 1996-2016) data"
+  }
+}

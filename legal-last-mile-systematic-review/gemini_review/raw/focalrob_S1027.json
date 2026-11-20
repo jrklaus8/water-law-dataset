@@ -1,0 +1,308 @@
+{
+  "study_id": "S1027",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "2eca6075710f4030290083a8ffd3ddc72b31cf445a2b597459a3f6a5a6bc74e1",
+  "prompt_sha256": "81dd2665ef3e80c458ff767c74cfe68ed1a1fb4605c14d1141e45529b9c86f4a",
+  "started_at": "2026-11-20T17:18:00.213535+00:00",
+  "completed_at": "2026-11-20T17:20:31.298893+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / Can't tell — No longitudinal cohort or panel sample is followed; focus group participation/refusal rates and completeness of cited administrative water-system audits are not reported.",
+      "confounding": "High risk / Serious concern — Although historical colonization, geographic remoteness, source-water pollution, poverty, education, funding formulas and regulatory gaps are discussed conceptually (PDF Pages 12–16), there is no empirical design or analytical strategy to isolate or adjust for confounding factors.",
+      "legal_measurement_quality": "Weak to moderate — Federal administrative arrangements (AANDC, Health Canada and Environment Canada roles, annual contribution agreements, 80/20 operating-cost split and policy debates over Bills S-11 and S-8) are richly contextualized, but legal claims rely on secondary summaries/FAQs rather than primary statutory or bill texts and misattribute federal responsibility over Indians and reserve lands to section 35 of the Constitution Act, 1982 rather than section 91(24) of the Constitution Act, 1867 (PDF Page 4, fn. 4).",
+      "measurement_bias": "High risk / Serious concern — No focus group protocol, interview guide, recording/transcription procedure or qualitative coding method is reported for primary participant quotes (PDF Pages 10–11), and secondary water-risk and funding statistics are drawn uncritically from government, advocacy and newspaper sources.",
+      "outcome_measurement_quality": "Weak — The authors do not directly measure water quality, access or health outcomes, relying instead on aggregate secondary counts (Health Canada Drinking Water Advisories, Auditor General/AANDC medium-to-high risk system proportions and EKOS survey perceptions) alongside unverified participant anecdotes and a purely conceptual outcome ('sustainable development' in Figure 1, PDF Page 16).",
+      "reporting_bias": "High risk / Serious concern — Without a pre-specified study protocol, sampling frame or systematic thematic summary, the article presents seven brief focus group excerpts selected to illustrate 'several key sentiments' (PDF Pages 10–11) and narratively selected policy documents, creating high risk of selective reporting.",
+      "selection_bias": "High risk / Serious concern — Focus groups conducted in northern First Nations communities are introduced without disclosing community selection criteria, number of communities or groups, sample size or participant recruitment procedures (PDF Pages 2, 10–11), and policy documents are selected narratively without a systematic search strategy."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "The article accurately outlines the absence of provincial drinking water regulation on federal First Nations reserves and summarizes policy debates around Bill S-11 (2010) and Bill S-8 (2012). However, it relies heavily on secondary parliamentary briefs, departmental FAQs and news reports (Simeone 2010; Simeone & Troniak 2012; AANDC 2012; Canadian Press 2012) without citing primary bills or statutes in the References, and contains a constitutional error in Footnote 4 (PDF Page 4) stating that federal responsibility for Indians and reserve lands is outlined in section 35 of the Constitution Act, 1982 (which recognizes Aboriginal and treaty rights) rather than section 91(24) of the Constitution Act, 1867.",
+        "rating": "weak",
+        "where_found": "PDF Page 4 (fn. 1, fn. 4), PDF Pages 6–9, PDF Pages 17–18, PDF Pages 22–26 (References)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The paper distinguishes federal responsibility for First Nations reserves in Canada (noting Health Canada's verification role south of 60 degrees latitude) from provincial/territorial off-reserve water regulation, and includes a brief comparative overview of US federal tribal regulation under the Safe Drinking Water Act and EPA PWSS primacy (PDF Pages 4, 11). However, it occasionally conflates First Nations, Inuit and broader Aboriginal populations (PDF Pages 3–4, fn. 1 & 3) and never specifies the province(s), treaty regions or communities where its northern First Nations focus groups were conducted (PDF Pages 10–11).",
+        "rating": "adequate",
+        "where_found": "PDF Pages 3–4 (fn. 1, 3, 4), PDF Pages 10–11, PDF Pages 17–18"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Institutional, legal and historical exposures—colonial reserve creation, absence of binding federal drinking-water regulations, annual AANDC contribution agreements, the 80/20 operating and maintenance cost-sharing rule, and deficits in physical, human and social capital—are described narratively and conceptually (PDF Pages 4, 7, 12–19) without standardized empirical operationalization.",
+        "rating": "weak",
+        "where_found": "PDF Pages 4–9, PDF Pages 12–19 (Figure 1 on PDF Page 16)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Safe drinking water and wastewater outcomes are discussed via secondary aggregate indicators (Health Canada Drinking Water Advisories, AANDC/Auditor General medium- and high-risk system classifications, and EKOS perceived water safety ratings) and modeled abstractly as 'sustainable development' in Figure 1 (PDF Page 16), with no primary operationalized outcome definition or community-level linkage to the focus group sites.",
+        "rating": "weak",
+        "where_found": "PDF Pages 3, 5, 7–10, PDF Pages 16–17 (Figure 1)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Although the authors draw on primary focus groups conducted with residents of northern First Nations communities (funded by a May 2009 SSHRC grant, PDF Pages 2, 10), they omit all sampling information: total number of focus groups (beyond labels 'Focus group 1' and 'Focus group 2'), number of communities, sample size, participant demographics and dates of fieldwork are completely unreported, as is any search strategy for policy documents.",
+        "rating": "weak",
+        "where_found": "PDF Page 2 (Abstract, Acknowledgments), PDF Pages 10–11"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "The manuscript contains no Methods section and provides zero description of how northern First Nations communities or focus group participants were recruited or selected, or how specific participant quotes ('T', 'G', 'C', 'R', Focus group 1 & 2 participants) and secondary reports were chosen for inclusion.",
+        "rating": "weak",
+        "where_found": "PDF Pages 10–11 (absence of Methods section across PDF Pages 3–21)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "No focus group moderator guide, question wording, audio-recording/transcription procedures or verification steps are reported for the qualitative fieldwork (PDF Pages 10–11). Secondary statistics—such as advocacy claims that only 50% of allocated O&M funds reach communities (PDF Page 18, fn. 24)—are cited without transparent underlying measurement auditing.",
+        "rating": "weak",
+        "where_found": "PDF Pages 10–11, PDF Page 18 (fn. 24)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "The authors posit a conceptual feedback model linking human, physical and social capital through community capacity to sustainable development and safe water management (Figure 1, PDF Pages 15–17), alongside historical and institutional arguments, without any empirical causal identification design, counterfactual comparison or systematic process-tracing protocol.",
+        "rating": "weak",
+        "where_found": "PDF Pages 12–20 (especially Figure 1 on PDF Page 16)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "While the narrative recognizes multiple co-occurring determinants of unsafe water—colonial land allocation, remoteness, groundwater/surface-water pollution, poverty, low high-school completion and infrastructure installation quality (PDF Pages 11–16)—it employs no empirical design or analytical controls to disentangle these factors from regulatory or funding-formula effects.",
+        "rating": "weak",
+        "where_found": "PDF Pages 12–16, PDF Pages 18–19"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper offers detailed, well-informed institutional analysis of Canada's fragmented federal governance of reserve drinking water across AANDC, Health Canada and Environment Canada, the practical fiscal and planning pathologies of annual contribution agreements and the 80/20 O&M cost split, band council–resident communication gaps, Circuit Rider operator training and AFN contestation over Bills S-11 and S-8.",
+        "rating": "strong",
+        "where_found": "PDF Pages 4–11, PDF Pages 17–20"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "The primary focus group component is non-replicable due to complete omission of site selection, recruitment, sample size, instruments and analysis procedures (PDF Pages 10–11), and parts of the policy narrative rely on unarchived personal communications (PDF Page 3, fn. 2), transient web pages and a newspaper article interviewing the lead author himself (PDF Page 13).",
+        "rating": "weak",
+        "where_found": "PDF Page 3 (fn. 2), PDF Pages 10–11, PDF Page 13, PDF Pages 22–27"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "The authors state only that 'We identified several key sentiments' from the focus groups (PDF Page 10), providing no information on qualitative coding schemes, thematic analysis procedures, software, number of coders or handling of divergent participant perspectives.",
+        "rating": "weak",
+        "where_found": "PDF Pages 10–11"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "No statement of researcher positionality, community-based participatory governance, Indigenous research ethics (e.g., OCAP principles or REB approval) or reflexivity is reported; notably, on PDF Page 13 the text cites a newspaper journalist's interview with lead author Jerry White as third-party supporting evidence without reflexive discussion.",
+        "rating": "weak",
+        "where_found": "PDF Pages 2, 10–11, 13"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "D10 Institutional context / division of federal funding and First Nations delivery responsibility",
+        "page": "PDF Page 4 (journal p. 2), section 'Government of Canada'",
+        "quote": "The government’s position is that they provide funding, while the First Nations is responsible for delivery."
+      },
+      {
+        "criterion": "D5/D12 Focus group empirical component and absence of coding/sampling methodology",
+        "page": "PDF Page 10 (journal p. 8), section 'Other Aboriginal organizations and communities'",
+        "quote": "We identified several key sentiments."
+      },
+      {
+        "criterion": "D7/D12 Illustrative reporting of focus group claims on water infrastructure quality",
+        "page": "PDF Page 11 (journal p. 9), section 'Other Aboriginal organizations and communities'",
+        "quote": "The work on water systems that is done is not always top quality."
+      },
+      {
+        "criterion": "D1/D8 Critique of statutory regulation alone without community capacity building",
+        "page": "PDF Page 17 (journal p. 15), section 'Legislative and regulatory frameworks'",
+        "quote": "There has always been a focus on legislated regulation as the means of resolving water issues on reserve."
+      },
+      {
+        "criterion": "D3/D10 Institutional critique of annual AANDC contribution agreements",
+        "page": "PDF Page 19 (journal p. 17), section 'Capital and operating funding'",
+        "quote": "There are many concerns that stakeholders and regulators have with annual contribution agreements."
+      }
+    ],
+    "overall_narrative_summary": "White, Murphy and Spence (2012) present an institutional, legal-historical and policy analysis of safe drinking water governance on First Nations reserves in Canada, supplemented by secondary government/advocacy statistics, a brief US comparison and seven illustrative excerpts from author-conducted focus groups in northern First Nations communities (PDF Pages 10–11). Appraised under the Legal Institutional Evidence Appraisal Framework (as a structured non-validated judgment), the study's principal strength is its rich institutional contextualization (D10: strong) of fragmented federal oversight across AANDC, Health Canada and Environment Canada, the fiscal and planning dysfunctions of annual contribution agreements and the 80/20 operating-cost split, and Indigenous governance critiques of Bills S-11 and S-8. Conversely, empirical and methodological rigor is weak across nearly all other domains: the article contains no Methods section, omitting all sampling, community selection, sample size, recruitment, interview guide, ethics and qualitative coding details for its focus groups (D5, D6, D7, D11, D12, D13: weak); relies on secondary summaries rather than primary legislative texts while misattributing federal jurisdiction over Indians and reserves to section 35 of the Constitution Act, 1982 rather than section 91(24) of the Constitution Act, 1867 (D1: weak); and offers a purely conceptual capital-to-capacity model (Figure 1) without operationalized exposure/outcome measures or causal/confounding controls (D3, D4, D8, D9: weak).",
+    "overall_rating": "High methodological concern / Weak empirical rigor (structured non-validated judgment)",
+    "paper_read": "full text",
+    "study_design_identified": "Institutional and legal-historical policy analysis with embedded, methodologically unreported illustrative focus groups (doctrinal-empirical policy hybrid)",
+    "study_id": "S1027",
+    "where_found_summary": "No standalone Methods section is present. Research grant sponsorship and focus group use are noted in the Abstract and Acknowledgments (PDF Page 2); federal regulatory and funding institutions, Auditor General reports, Senate Committee findings and AFN critiques of Bills S-11/S-8 are reviewed on PDF Pages 4–10; author-conducted focus group excerpts appear on PDF Pages 10–11; US tribal water regulation is summarized on PDF Pages 11–12; historical-colonial analysis and the conceptual Community Capacity / Sustainable Development model (Figure 1) appear on PDF Pages 12–17; and regulatory, funding and governance policy analyses appear on PDF Pages 17–21.",
+    "why_tool_chosen": "Although the paper briefly quotes focus groups conducted by the authors with northern First Nations residents (PDF Pages 2, 10–11), it lacks any qualitative Methods section and is overwhelmingly structured as an institutional, legal-historical and regulatory policy case study examining Canada's on-reserve drinking water regulatory vacuum, federal contribution agreements, Expert Panel legislative options and Bills S-11 and S-8 alongside secondary government audit and survey statistics. Because it combines primary qualitative excerpts with doctrinal/regulatory and institutional analysis—fitting neither a systematic review (AMSTAR 2), a quantitative observational/quasi-experimental design, a pure non-empirical essay (NONE), nor a conventional standalone qualitative field study (CASP)—the Legal Institutional Evidence Appraisal Framework best captures both its legal-institutional analysis and the severe reporting gaps in its embedded empirical fieldwork."
+  }
+}

@@ -1,0 +1,313 @@
+{
+  "study_id": "S171",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "d9ed4b307991a9667864267a80e2836df0e95345a9cbfb58ce2dc080c85d5985",
+  "prompt_sha256": "15a6bc272e8f204b82558403e15ec46dd186f5d2912690e60a3769b012417655",
+  "started_at": "2026-11-20T17:27:55.700195+00:00",
+  "completed_at": "2026-11-20T17:29:49.029437+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable to individual participant follow-up; however, administrative follow-up of contract execution is incomplete—only contracts signed between 2007 and 2012 are included for a 2007–2014 study window, and project cancellation, delay, or physical completion rates are not reported despite listing contract-monitoring portals in the Methods (PDF Pages 4–5).",
+      "confounding": "High concern: the empirical component relies solely on descriptive frequency distributions across municipal population, baseline coverage, GDP per capita, and Gini brackets without multivariate adjustment or stratification for correlated structural factors—such as whether the state utility Embasa holds the municipal concession (a key determinant of appearing in SEDUR's state-managed portfolio), urbanization, or municipal capacity to submit grant proposals—while drawing broad causal-political conclusions (PDF Pages 5, 7–11).",
+      "legal_measurement_quality": "Strong doctrinal grounding in Brazilian constitutional and statutory law (1988 Federal Constitution, Lei nº 11.079/2004, Lei nº 11.445/2007, Lei nº 12.305/2010, and Plansab/PNSB 2013), paired with adequate-to-weak empirical operationalization that evaluates statutory principles of universalization and integrality indirectly through aggregate subsector budget shares and binary municipal contract presence rather than contract-level legal coding (PDF Pages 3–4, 7–11).",
+      "measurement_bias": "Moderate concern: municipal socioeconomic indicators come from IBGE (2010), but PAC contract and financial figures depend on unpublished internal SEDUR spreadsheets (Bahia, 2015) and multiple federal portals that report conflicting numbers even within the same government sphere (explicitly acknowledged in Footnote 2, PDF Page 9; e.g., R$ 0.91 billion stated for PAC 2 Bahia vs. subsector figures summing to R$ 1,017.08 million), with no documented reconciliation rule, and municipal treatment in cross-tabulations is reduced to a binary indicator ('at least one intervention') regardless of per-capita investment size.",
+      "outcome_measurement_quality": "Weak for actual sanitation service realization, adequate for planned allocative distribution: the study does not measure completed infrastructure, household connections gained, or changes in water/sanitation coverage over time, measuring only administrative contemplation by PAC 1/2 contracts and planned subsector funding shares cross-referenced against static 2010 baseline coverage deficits (PDF Pages 4–5, 7–10).",
+      "reporting_bias": "Moderate concern: the Methods section specifies analysis of municipal HDI (IDH) as well as financial execution performance, funding sources, and financial institutions (PDF Pages 4–5), yet the Results section omits IDH tabulations, actual disbursement/execution rates, and financial-institution breakdowns, reporting primarily planned subsector shares and binary municipality coverage across population, GDP per capita, and Gini brackets.",
+      "selection_bias": "Moderate-to-high concern: although all 417 municipalities of Bahia are included in state-wide denominators, the contract universe is restricted to 109 contracts signed between 2007 and 2012 under Bahia state government management via SEDUR, Embasa, and Conder (PDF Page 5), omitting PAC 2 contracts signed in 2013–2014 and federal PAC funds transferred directly to autonomous municipalities (e.g., municipal SAAE utilities via Funasa or Caixa), which could understate coverage in smaller non-Embasa municipalities."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Primary Brazilian legal and policy instruments are accurately cited and characterized, including the 1988 Federal Constitution (Brasil, 1988), the federal PPP statute (Lei Federal nº 11.079/2004), the National Basic Sanitation Law (Lei nº 11.445/2007), the National Solid Waste Policy (Lei nº 12.305/2010), and the National Basic Sanitation Plan (PNSB/Plansab, 2013), alongside official PAC balance reports and e-SIC FOIA disclosures.",
+        "rating": "strong",
+        "where_found": "PDF Pages 3–4, 6–8, 11–12 (Introdução; O direito social ao saneamento básico; Resultados e discussão; Referências)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "The institutional, administrative, and territorial scope is precisely specified: the State of Bahia (all 417 municipalities) and state-managed PAC Saneamento interventions executed under SEDUR, Embasa, and Conder with federal resources from MCidades and Funasa across PAC 1 (2007–2010) and PAC 2 (2011–2014).",
+        "rating": "strong",
+        "where_found": "PDF Pages 4–5, 7–10 (Metodologia; O PAC 1 saneamento - Bahia; O PAC 2 saneamento - Bahia)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Programmatic exposure is defined as municipal contemplation by at least one state-managed PAC Saneamento contract (109 contracts signed 2007–2012) and subsector investment allocation (water supply, sewerage, solid waste, stormwater). However, collapsing municipal participation into a binary variable ('com pelo menos um tipo de intervenção') masks large variations in per-capita contract value and excludes direct federal-municipal contracts outside SEDUR.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4–5, 7–9 (Metodologia; O PAC 1 saneamento - Bahia; O PAC 2 saneamento - Bahia; Tabela 1)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Within its stated objective of evaluating investment prioritization rather than downstream health or post-project coverage gains, allocative outcomes (percentage of funds by sanitation component and share of municipalities reached by deficit, population, GDP per capita, and Gini brackets) are clearly defined, though promised financial-performance/execution metrics and IDH indicators from the Methods are not reported in the Results.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4–5, 7–10 (Metodologia; Resultados e discussão; Tabela 1; Figuras 1–4)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "The authors transparently state the three inclusion criteria yielding 109 state-managed contracts signed 2007–2012 and analyze all 417 Bahian municipalities, but do not quantify what proportion of total PAC Saneamento investments in Bahia occurred outside SEDUR/Embasa/Conder (e.g., direct municipal agreements with Funasa or MCidades) or in 2013–2014 signings.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4–5, 8–9 (Metodologia; Tabela 1)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "The census of 109 contracts follows explicit administrative rules (SEDUR/Embasa/Conder management, MCidades/Funasa funding, 2007–2012 signature window), but truncating contract signatures at 2012 while evaluating PAC 2 (2011–2014) and excluding municipal-direct pleitos introduces potential selection bias against autonomous municipal sanitation providers.",
+        "rating": "adequate",
+        "where_found": "PDF Pages 4–5, 8–9 (Metodologia; O PAC 2 saneamento - Bahia)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Sources for socioeconomic and contract data are named (IBGE 2010 Census, Plansab 2013, SISMOC, SIURB, Siga Brasil, SISPAC, SICONV, Portal da Transparência, and unpublished SEDUR spreadsheets), and Footnote 2 candidly flags inconsistencies across federal PAC disclosures; however, the paper does not explain how conflicting figures were reconciled (e.g., PAC 2 Bahia total stated as R$ 0.91 billion on PDF Page 9 while water and sewerage components immediately below sum to R$ 1,017.08 million).",
+        "rating": "adequate",
+        "where_found": "PDF Pages 5, 7–10 (Metodologia; Resultados e discussão; Footnote 2)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Empirical analysis is purely descriptive (univariate/bivariate frequency distributions), with no counterfactual design or statistical modeling; nevertheless, the narrative makes strong causal claims attributing allocative patterns to neo-developmentalist class interests and São Francisco transposition politics without testing institutional or technical determinants of contract allocation.",
+        "rating": "weak",
+        "where_found": "PDF Pages 5–11 (Metodologia; Resultados e discussão; Conclusão)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "No statistical adjustment, standardization, or multi-way stratification is used to account for strong collinearity among municipal population size, GDP per capita, Gini index, river-basin location, municipal grant-writing capacity, and whether state utility Embasa operates in a given municipality.",
+        "rating": "weak",
+        "where_found": "PDF Pages 5, 7–11 (Metodologia; Resultados e discussão; Conclusão)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "The paper offers thorough historical and institutional analysis of Brazilian sanitation governance—from PLANASA's centralism in the 1970s to post-2003 Ministry of Cities reforms, Lei 11.445/2007, Bahia's Programa Água para Todos (PAT), state implementing agencies (SEDUR, Embasa, Conder), and São Francisco river-basin compensatory commitments.",
+        "rating": "strong",
+        "where_found": "PDF Pages 2–9 (Introdução; Algumas considerações sobre o princípio da universalização; Resultados e discussão)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Key municipal contract classifications and investment totals depend on unpublished internal state-agency spreadsheets ('Bahia. (2015). Planilhas de Acompanhamento do PAC 1 e PAC 2... Não Publicado') and specific FOIA requests (Brasil, 2015a; 2015b), without a published contract list or replication dataset.",
+        "rating": "weak",
+        "where_found": "PDF Pages 5, 8–12 (Metodologia; Tabela 1; Figuras 1–4; Referências)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "The Methods section states only that variables were placed in an electronic spreadsheet and categorized in some moments to express variability, without specifying rules for multi-municipality contracts, reconciliation of conflicting federal portals, or rationale for unequal GDP per capita category widths in Figures 1 and 3.",
+        "rating": "weak",
+        "where_found": "PDF Pages 5, 8–10 (Metodologia; Figuras 1–4)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "The lead author is affiliated directly with SEDUR's Directorate of Solid Waste and Urban Stormwater Management—the exact state secretariat whose PAC contracts form the dataset and whose solid-waste/stormwater subsectors are critiqued as underfunded—yet the article includes no positionality statement, conflict-of-interest disclosure, or reflection on insider institutional perspective.",
+        "rating": "weak",
+        "where_found": "PDF Pages 1, 5, 7–11 (Author affiliations; Metodologia; Conclusão)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Overall study design (documentary research and secondary data analysis)",
+        "page": "PDF Page 1 (Resumo, p. 173)",
+        "quote": "A metodologia envolveu pesquisa documental e análise de dados secundários."
+      },
+      {
+        "criterion": "D13 Researcher reflexivity (lead author insider affiliation at SEDUR)",
+        "page": "PDF Page 1 (Author affiliations, p. 173)",
+        "quote": "Secretaria de Desenvolvimento Urbano do Estado da Bahia (SEDUR), Superintendência de Planejamento e Gestão"
+      },
+      {
+        "criterion": "D5/D6 Sampling and contract selection window (2007–2012 signings)",
+        "page": "PDF Page 5 (Metodologia, p. 177)",
+        "quote": "contratos assinados entre os anos de 2007 e 2012"
+      },
+      {
+        "criterion": "D8/D12 Descriptive frequency-distribution analysis and ad-hoc categorization",
+        "page": "PDF Page 5 (Metodologia, p. 177)",
+        "quote": "com a realização da distribuição de frequências"
+      },
+      {
+        "criterion": "D7 Measurement transparency (inconsistencies in official federal PAC data)",
+        "page": "PDF Page 9 (Footnote 2, p. 181)",
+        "quote": "Cabe ressaltar a fragilidade do programa quanto à divulgação"
+      },
+      {
+        "criterion": "D11 Replication potential (reliance on unpublished internal SEDUR spreadsheets)",
+        "page": "PDF Page 11 (Referências, p. 183)",
+        "quote": "Bahia. (2015). Planilhas de Acompanhamento do PAC 1 e"
+      }
+    ],
+    "overall_narrative_summary": "Cunha and Borja (2018) present a doctrinal-institutional policy evaluation paired with a descriptive administrative case study of federal Growth Acceleration Program (PAC 1 and PAC 2) basic sanitation investments in the State of Bahia (2007–2014). Appraised under the Legal Institutional Evidence Appraisal Framework (structured non-validated judgment), the study demonstrates strong legal source accuracy and rich institutional contextualization—grounding its critique in the 1988 Federal Constitution, Lei nº 11.445/2007, Lei nº 11.079/2004, Lei nº 12.305/2010, and Plansab (2013)—and clearly specifies its state-level jurisdictional boundaries across Bahia's 417 municipalities. However, its empirical rigour is limited by several methodological weaknesses: (1) the contract universe is restricted to 109 state-managed contracts signed between 2007 and 2012 under SEDUR, Embasa, and Conder, potentially omitting 2013–2014 PAC 2 signings and federal PAC funds transferred directly to autonomous municipalities; (2) core contract data rely on unpublished internal SEDUR spreadsheets alongside conflicting federal portals without documented reconciliation or coding rules, and internal figures show unexplained discrepancies (e.g., R$ 0.91 billion reported for PAC 2 Bahia overall versus R$ 1,017.08 million across water and sewerage components); (3) promised analyses of municipal HDI and financial execution/disbursement performance do not appear in the Results; (4) bivariate frequency tabulations lack multivariate control for confounding institutional factors such as Embasa's municipal concession footprint; and (5) there is no reflexivity discussion regarding the lead author's role within SEDUR.",
+    "overall_rating": "Structured non-validated judgment: Moderate-to-weak empirical quality (strong legal source accuracy and institutional context; adequate jurisdictional/sampling/measurement specification; weak causal identification, confounding control, coding/replication transparency, and reflexivity)",
+    "paper_read": "full text",
+    "study_design_identified": "Doctrinal-institutional policy analysis combined with a descriptive administrative/documentary case study using secondary contract registries and municipal census indicators (PAC Saneamento in Bahia, 2007–2014)",
+    "study_id": "S171",
+    "where_found_summary": "Resumo (PDF Page 1, p. 173); Introdução & theoretical-legal sections (PDF Pages 2–4, pp. 174–176); Metodologia (PDF Pages 4–5, pp. 176–177); Resultados e discussão including Tabela 1, Figuras 1–4, and Footnote 2 (PDF Pages 5–10, pp. 177–182); Conclusão & Referências (PDF Pages 10–13, pp. 182–185).",
+    "why_tool_chosen": "The study combines a legal-institutional critique of Brazil's PAC Saneamento against constitutional and statutory principles (1988 Constitution, Lei nº 11.445/2007, Plansab) with descriptive frequency tabulations of 109 state-managed administrative contracts across Bahia's 417 municipalities. It is not a randomized trial (RoB 2), does not estimate causal effects of an intervention on health or coverage outcomes using a counterfactual comparator (ROBINS-I), performs no analytical cross-sectional hypothesis testing or regression modeling (JBI Cross-Sectional), conducts no primary qualitative interviews/fieldwork (CASP/MMAT), and is not a systematic literature review (AMSTAR 2). Accordingly, the 13-domain Legal Institutional Evidence Appraisal Framework is the exact matching instrument under RISK_OF_BIAS.md §§1–2."
+  }
+}

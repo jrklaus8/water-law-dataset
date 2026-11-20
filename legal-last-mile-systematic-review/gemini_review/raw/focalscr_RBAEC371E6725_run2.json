@@ -1,0 +1,272 @@
+{
+  "record_id": "RBAEC371E6725",
+  "run": 2,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "eff68898034c895c46dc1b193397a6bf69e0e177a531e50cdf265671963d09e9",
+  "prompt_sha256": "ce448fd06f37fcb8e3002f06998d8b7f93e66c96c129563914e4557a9fb0faa3",
+  "started_at": "2026-11-20T17:11:10.458376+00:00",
+  "completed_at": "2026-11-20T17:12:24.870281+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Global (154 countries)",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines rural household sanitation conditions (unimproved facilities/open defecation, improved facilities, and sewer or septic connections) across 154 countries using WHO/UNICEF JMP data, forecasting coverage trends to 2030 as a driver of mortality.",
+      "c2": "Fails BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Although 'Lacking Sanitation Governance' appears in the title and 'sanitation governance' or national programs (e.g. Clean Water Act, Toilet Revolution) are mentioned rhetorically as policy recommendations, the empirical modeling includes zero governance, legal, administrative, institutional, or regulatory variables—only demographic structure, population size, baseline diarrheal mortality, SDI, and sanitation coverage prevalence.",
+      "c3": "Quantitative secondary-data epidemiological modeling study integrating Comparable Risk Assessment, Bayesian age-period-cohort (BAPC) models, ARIMA time-series forecasting, and decomposition analysis using GBD 2021 and WHO data (2000-2030).",
+      "c4": "The primary evaluated outcome is health burden—Deaths Attributable to Unsafe Sanitation in Rural areas (DAUSRs) and age-standardized diarrheal mortality rates—where unsafe sanitation coverage is modeled as the exposure (forecasted only via univariate ARIMA from its own historical values rather than as an outcome of any governance or policy exposure).",
+      "c5": "Population (rural populations across 154 countries, stratified by age groups, WHO regions, and World Bank/SDI income groups), exposures/drivers (unsafe rural sanitation prevalence, population size, age structure, diarrheal mortality rates), outcome (DAUSRs / age-standardized death rates), and study design (global burden-of-disease risk assessment, time-series forecasting, and decomposition analysis) are clearly identifiable.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c3",
+        "page": "PDF Page 1 of 10",
+        "quote": "Therefore, this study estimated the global DAUSRs from 2000 to 2030, using data from the Global Burden of Disease (GBD) and the World Health Organization (WHO)."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 1 of 10",
+        "quote": "This outcome highlights the need for better rural sanitation governance to provide for demographic shifts, such as aging and declining fertility rates, which are key drivers of DAUSRs."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 10",
+        "quote": "Exposure to unsafe sanitation was defined based on the type of toilet used in rural households. Sanitation facilities were categorized into three distinct types: unimproved, improved, and those connected to sewerage or septic systems"
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4 of 10",
+        "quote": "In this decomposition analysis, we incrementally introduced variations in the age structure, population, rural sanitation facility prevalence, and disease mortality rates to calculate the number of deaths attributable to unsafe rural sanitation facilities, ultimately obtaining the contribution of each factor to the DAUSRs."
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Unsafe rural sanitation facility prevalence (unimproved, improved, sewer/septic connection), population size, age structure (aging and under-5 share), and diarrheal mortality rates",
+    "outcome": "Deaths Attributable to Unsafe Sanitation in Rural areas (DAUSRs) and age-standardized diarrheal mortality rates (with univariate ARIMA projections of sanitation coverage proportions)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Rural populations across 154 countries globally from 2000 to 2030 (country-year/age-group level data from GBD 2021 and WHO)",
+    "rationale": "Excluded (E03 - Wrong exposure; also primary outcome is diarrheal mortality rather than service access). Despite referencing 'Lacking Sanitation Governance' in the title and making general policy recommendations in the discussion, the study empirically models only demographic factors (population growth, aging, fertility/under-5 share), baseline diarrheal mortality rates, and rural sanitation coverage prevalence to estimate and decompose global Deaths Attributable to Unsafe Sanitation in Rural areas (DAUSRs). No legal, administrative, institutional, regulatory, or governance factor is measured or analyzed under either the plain wording or the narrow 2026-10-13 rule-type reading of Criterion 2.",
+    "record_id": "RBAEC371E6725",
+    "study_design": "Quantitative epidemiological modeling, time-series forecasting (BAPC and ARIMA), Comparable Risk Assessment, and decomposition analysis using global secondary data"
+  }
+}

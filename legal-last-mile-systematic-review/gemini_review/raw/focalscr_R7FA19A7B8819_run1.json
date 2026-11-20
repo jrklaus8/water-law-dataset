@@ -1,0 +1,282 @@
+{
+  "record_id": "R7FA19A7B8819",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "7005f75578e63979eb9f50598a90c9246d9026ab2ff7b7d385deedb3ef3d03aa",
+  "prompt_sha256": "12ef2199d0a64d8db0f6f696f8ee2bc33882ac14339096855bf03cea85937445",
+  "started_at": "2026-11-20T16:24:10.371773+00:00",
+  "completed_at": "2026-11-20T16:26:09.501084+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines municipal water delivery and sewage collection/treatment service coverage (index of total population served) in Brazil.",
+      "c2": "Plain wording: Yes — examines institutional, administrative, contractual, and governance arrangements for municipal sanitation provision (intermunicipal public consortia via city-council-approved programmatic contracts, contract management complexity, and asset-specificity transaction costs). Narrow 2026-10-13 rule-type reading: Yes (borderline) — formal delegation of municipal service ownership, planning, regulation, auditing, and delivery responsibilities to a regional consortium through a statutory program contract (under Brazil's 2007 and 2020 federal sanitation frameworks) falls within 'utility ownership or regulatory structure directly governing service access' rather than generic project delivery, behavioural promotion, or unanalysed macro-governance background, as consortium participation and contract scope are directly modelled as exposures predicting water and sewage coverage; however, it sits near the boundary because the mechanism operates at the municipal/inter-municipal utility governance and contracting level rather than household-level eligibility rules.",
+      "c3": "Empirical quantitative panel study (2013-2020) of Brazilian municipalities (N=1,159 in descriptive statistics; N=1,157 in regressions) using official data from IBGE, FINBRA, and SNIS, estimated via a multivariate general linear model with fixed effects and state-stratified bootstrapping.",
+      "c4": "Reports municipal water service coverage (log index of total population served by water services) and sewage service coverage (log index of total population served by sewage services), alongside total municipal sanitation expenditure.",
+      "c5": "Population and unit of analysis (Brazilian local government units/municipalities, 2013-2020, N=1,157-1,159 municipality-year observations), exposure (intermunicipal consortium engagement dummy, contract management scope across water vs. water+wastewater, and water/sewage asset-specificity investment, plus interactions), outcome (water coverage, sewage coverage, and total sanitation expenditure), and study design (observational panel regression) are all identifiable.",
+      "c6": "Published in English, which is eligible without translation."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 1 (Abstract)",
+        "quote": "This paper addresses this gap in the empirical literature by examining the relationship between cooperative agreements between Brazilian municipalities for water and wastewater provision and service coverage in the light of transaction costs."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3 (Section 2.3)",
+        "quote": "Under these cooperative arrangements, the planning of services, their regulation, auditing and even delivery can be contracted between cooperating units. In order to stimulate service provision at the regional scale, cooperating partners can transfer their decision-making powers and service provision responsibilities to other entities."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 3 (Section 2.3)",
+        "quote": "A program contract is required to define what is being contracted, and it can include any of these dimensions of service provision."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 4 (Section 3)",
+        "quote": "Panel data were used since several variables were examined from 2013 to 2020."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 4 (Section 3)",
+        "quote": "the service for water coverage, measured by the index of the total population served by water services for each local government unit i and Y3 includes the index of the total population served by sewage services for each local government unit i (see Table 2)."
+      },
+      {
+        "criterion": "c5_pop_exposure_outcome_design",
+        "page": "PDF Page 4 (Section 3)",
+        "quote": "Local governments engaged and not engaged in consortia agreements for water and wastewater services were included."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "Engagement of local governments (as service owners) in regional intermunicipal sanitation consortia under formal city-council-approved programmatic contracts (binary indicator: 1 = engaged in consortia, 0 = stand-alone/non-engaged), contract management complexity (water delivery only vs. combined water delivery and wastewater collection/treatment), asset-specificity investments in water and sewage (log R$), and cooperation-by-transaction-cost interactions.",
+    "outcome": "Municipal water coverage (log index of total population served by water services), municipal sewage coverage (log index of total population served by sewage services), and total municipal sanitation expenditure (log R$).",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Brazilian municipalities (local government units as sanitation service owners), panel data from 2013 to 2020 with N = 1,159 observations in descriptive statistics (Table 2) and N = 1,157 observations in bootstrapped regression models (Table 3), drawn from IBGE, FINBRA, and SNIS official statistics.",
+    "rationale": "Full text retrieved and verified to match metadata (Silvestre et al., 2022, Utilities Policy). The study empirically evaluates how formal intermunicipal public consortia (established via city-council-approved statutory program contracts that delegate planning, regulation, auditing, and delivery of municipal water and wastewater services) and associated contractual/transaction-cost structures affect municipal water and sewage population coverage in Brazil (2013-2020 panel, N=1,157). It satisfies all eligibility criteria (c1-c6): under both the plain wording of Criterion 2 and the 2026-10-13 narrow rule-type clarification, formal utility ownership/delegation and regulatory contracting structures (consortia vs. standalone municipal provision) directly analysed against population water and sanitation service coverage are eligible, though confidence is rated medium because the institutional mechanism operates at the municipal utility-governance and contracting level rather than household-level administrative rules.",
+    "record_id": "R7FA19A7B8819",
+    "study_design": "Observational panel data study (2013-2020) using a multivariate general linear model with fixed effects and state-stratified bootstrapping (1,000 samples)."
+  }
+}

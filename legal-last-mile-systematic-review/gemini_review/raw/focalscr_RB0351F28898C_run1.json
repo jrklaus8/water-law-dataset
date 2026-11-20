@@ -1,0 +1,277 @@
+{
+  "record_id": "RB0351F28898C",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "d9ed4b307991a9667864267a80e2836df0e95345a9cbfb58ce2dc080c85d5985",
+  "prompt_sha256": "1722420b57cc58f1a7814a1d15a92c08a3bcc1fe29076023140df67d39a4fb5e",
+  "started_at": "2026-11-20T17:05:57.126477+00:00",
+  "completed_at": "2026-11-20T17:10:28.979631+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines basic sanitation universalization challenges in Bahia, Brazil, incorporating municipal baseline drinking-water and sewerage coverage deficits (from the 2010 Census/Plansab) to evaluate federal sanitation investment targeting.",
+      "c2": "Passes the plain wording of Criterion 2 because it examines an institutional/governance policy instrument—the federal Growth Acceleration Program (PAC 1 and PAC 2 Saneamento) and its alignment with the principles of Brazil's National Basic Sanitation Law (Lei nº 11.445/2007). However, it FAILS the narrow 2026-10-13 rule-type mechanism reading: PAC Saneamento is evaluated as a macro-economic capital investment and public-works stimulus program ('neodesenvolvimentismo' infrastructure financing), and the authors explicitly report that no identifiable prioritization or eligibility rules governed municipal selection. It does not analyze any rule-type mechanism directly governing household or community service access (such as user eligibility screening, administrative burden, documentation/tenure rules, tariffs/cost recovery, discretion, enforcement, or utility regulatory structure governing access). Note that plain_criterion2_decision also remains 'exclude' because the study fails Criterion 4 (no service-access outcome is measured).",
+      "c3": "Contains empirical quantitative descriptive analysis of secondary administrative data (109 Sedur-managed PAC contracts signed 2007-2012 and PAC 1/2 monitoring records for 2007-2014) cross-tabulated with 2010 IBGE Census and Plansab indicators across Bahia's 417 municipalities, alongside documentary policy analysis.",
+      "c4": "Fails Criterion 4: the outcomes reported are strictly budgetary/program-targeting outputs—specifically the share of PAC funds allocated by subsector (water supply, sewerage, solid waste, stormwater) and whether a municipality received at least one PAC sanitation contract ('municípios contemplados/atendidos') across static 2010 population, GDP per capita, Gini, and deficit tiers. The authors explicitly state that evaluations of the program's effectiveness in achieving universalization of access had not yet been conducted, and no household or community access, connection, availability, reliability, quantity, affordability, or service-exclusion outcome is measured.",
+      "c5": "The unit of analysis (417 municipalities in Bahia and 109 PAC contracts), the policy intervention examined (PAC 1 and PAC 2 Saneamento investment allocation), the measured outputs (subsector funding shares and municipal receipt of contracts), and the descriptive documentary/secondary-data study design are clearly identifiable.",
+      "c6": "Full text is in Portuguese, which is directly eligible without translation under Criterion 9."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 3 of 13 (p. 175)",
+        "quote": "Mas, até o momento, não foram realizadas avaliações sobre a efetividade do programa quanto às metas da universalização. Assim, neste estudo, busca-se estudar o PAC Saneamento na Bahia com o objetivo de analisar a sua concepção e priorização de investimentos em relação aos desafios da universalização do acesso aos serviços públicos de saneamento básico nesse Estado."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 4 of 13 (p. 176)",
+        "quote": "A investigação envolveu uma pesquisa documental sobre a concepção, as diretrizes e os investimentos PAC Saneamento e o estudo dos contratos firmados na Bahia. Fez-se também um estudo sobre as características dos municípios contemplados pelo programa, por meio de um conjunto de indicadores relacionados à cobertura dos serviços, ao PIB per capita, ao IDH, à população do município, entre outros."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10 of 13 (p. 182)",
+        "quote": "A concepção do PAC envolveu um conjunto de medidas legislativas, administrativas e de políticas de investimento, visando estimular o crescimento da economia do país, destinando recursos a áreas prioritárias de infraestrutura (logística, energia, transportes, habitação e saneamento, entre outras), sendo o setor energético o mais beneficiado."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 13 (p. 183)",
+        "quote": "Pela análise dos documentos oficiais do governo, não foi possível identificar os critérios utilizados para a priorização dos investimentos em relação aos municípios contemplados e às componentes do saneamento básico, exceto para os municípios situados na bacia hidrográfica do São Francisco, alvos de ações compensatórias em virtude do projeto de integração do rio São Francisco."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 8 of 13 (p. 180)",
+        "quote": "Os dados revelam que 30% (125) dos municípios do Estado da Bahia foram contemplados pelo PAC 1 em, pelo menos, um tipo de intervenção de saneamento básico. Considerando o número de municípios atendidos por cada faixa populacional, constatou-se que a proporção de atendimento foi maior nos municípios de maior porte populacional"
+      }
+    ],
+    "exclusion_code": "E03",
+    "exposure": "Federal Growth Acceleration Program (PAC 1 and PAC 2 Saneamento, 2007-2014) public infrastructure investment program and intergovernmental funding prioritization",
+    "outcome": "Allocation of PAC financial investments across sanitation subsectors and municipal selection into receiving at least one PAC sanitation contract across Bahia's 417 municipalities (stratified by 2010 baseline deficit, population, GDP per capita, and Gini index)",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "417 municipalities in the State of Bahia, Brazil, and 109 PAC Saneamento contracts signed between 2007 and 2012 (within PAC 1 and PAC 2, 2007-2014) managed by Sedur/Embasa/Conder",
+    "rationale": "Excluded as E03 (Wrong exposure), with concurrent failure of Criterion 4 (Wrong outcome). Cunha & Borja (2018) conduct a documentary and descriptive secondary-data analysis of Brazil's Growth Acceleration Program (PAC 1 and PAC 2 Saneamento, 2007-2014) in the State of Bahia across 417 municipalities and 109 state-managed contracts. Under the 2026-10-13 Criterion 2 clarification, PAC Saneamento is a macro-economic public-works/infrastructure capital investment program ('neodesenvolvimentismo'), not a rule-type legal or administrative mechanism directly governing household or community service access; indeed, the authors find no identifiable formal criteria governing investment prioritization. In addition, the study fails Criterion 4 (so plain_criterion2_decision is also 'exclude'): rather than measuring household or community water/sanitation access, connections, reliability, or affordability, it measures only subsector budget shares and whether municipalities received at least one PAC contract across static 2010 baseline census indicators, explicitly noting that program effectiveness in achieving universalization had not yet been evaluated.",
+    "record_id": "RB0351F28898C",
+    "study_design": "Descriptive policy evaluation using documentary research and cross-sectional secondary administrative and census data"
+  }
+}

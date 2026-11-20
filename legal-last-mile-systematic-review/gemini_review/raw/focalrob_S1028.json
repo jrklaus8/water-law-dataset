@@ -1,0 +1,313 @@
+{
+  "study_id": "S1028",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "f4576e89cb06339b0c1075d61585e0bbf9c1da26b302ce447fc4fde7f94226c9",
+  "prompt_sha256": "045c62eb97048d4a615bdb7785654657f9fc74cc2e550d90220cfcde3502f73f",
+  "started_at": "2026-11-20T17:18:00.215560+00:00",
+  "completed_at": "2026-11-20T17:20:49.332531+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "Legal Institutional Evidence Appraisal Framework",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable: retrospective institutional and documentary single-case study of a completed Public Inquiry and historical water contamination event with no longitudinal participant cohort (though PDF p. 6 notes that long-term clinical sequelae of E. coli / HUS will not be known for decades).",
+      "confounding": "Moderate-to-high concern: as a single-case socio-legal narrative without a comparative counterfactual jurisdiction, the effect of post-1995 deregulation cannot be formally isolated from co-occurring physical and local operational factors, although the author transparently documents major confounders including the 1-in-30-years rainfall (134 mm over 8-12 May 2000), cattle manure near shallow Well 5 on fractured bedrock, 1978 grandfathering of Well 5 under the 1994 ODWO, and 20 years of PUC operator falsification and under-chlorination predating the 1995 government (PDF pp. 6-9, 14).",
+      "legal_measurement_quality": "Adequate-to-strong: concretely traces the legal and administrative rules governing Ontario municipal water safety—including 1978 grandfathering under the 1994 Ontario Drinking Water Objectives, the March 1987 Chlorination Bulletin (0.5 mg/L residual after 15 minutes), conversion of adverse-test notification into a non-binding guideline upon 1996 laboratory privatization, MoE inspection and Director's Order powers, Public Inquiries Act / Order in Council procedures, and enactment of the Safe Drinking Water Act 2002—though formal statutory/regulatory citations (section and Ontario Regulation numbers) are omitted in favour of citations to the O'Connor Report and newspapers (PDF pp. 6-10, 20-21).",
+      "measurement_bias": "Moderate concern: factual chronology, regulatory failures, and health outcomes rest on extensively cross-examined Public Inquiry findings and subpoenaed government records, whereas the author's socio-legal claims regarding counter-hegemonic 'resistance', privileging of scientific over fact witnesses, and Canadian anti-American nationalism rely on interpretive reading without a standardized coding protocol (PDF pp. 6-17, 20).",
+      "outcome_measurement_quality": "Adequate (secondary official inquiry data): drinking water contamination and health outcomes (E. coli O157:H7 entering Well 5; 7 deaths, 2,321 illnesses, 1,346 treated, 65 hospitalized, 27 Hemolytic Uremic Syndrome cases, Boil Water Advisory from 21 May to 5 December 2000, and an estimated 300-400 additional illnesses linked to absent mandatory laboratory notification) as well as post-Inquiry legislative/budgetary reforms are drawn directly from the official O'Connor Report rather than independently measured by the author (PDF pp. 6, 8, 20).",
+      "reporting_bias": "Moderate concern / Can't tell: no pre-specified research protocol or systematic qualitative audit trail is reported, creating potential for selective quotation from nine months of Inquiry transcripts (114 witnesses, >3,000 exhibit documents) to reinforce the author's critical thesis, partially mitigated by specific hearing-date and page citations to publicly archived verbatim transcripts and explicit discussion of Provincial Counsel's counter-arguments and the liberal limits of the O'Connor Report (PDF pp. 10-14, 18-21).",
+      "selection_bias": "High concern / Serious risk: purposive selection of a single high-profile regulatory disaster (Walkerton, Ontario), and illustrative within-case selection of Public Inquiry hearing transcripts, cross-examinations, and media accounts with no reported sampling frame or inclusion/exclusion criteria (PDF pp. 4, 10-14, 20)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "D1",
+        "domain_name": "Legal source accuracy",
+        "justification": "Accurately cites the official Walkerton Inquiry Report Part One (O'Connor, 2002) with exact page numbers, verbatim Public Inquiry hearing transcripts with specific dates and transcript pages, and key instruments (Public Inquiries Act, Order in Council, 1994 Ontario Drinking Water Objectives, 1987 Chlorination Bulletin, Regulatory Impact and Competitiveness Test, Safe Drinking Water Act 2002). Rated adequate rather than strong because statutes and regulations are referenced narratively or via secondary sources/newspapers without formal statutory chapter, section, or regulation numbers (e.g., citing newspapers for the Safe Drinking Water Act on PDF p. 8 and referring loosely to the 'Energy Commission Act' on PDF p. 19).",
+        "rating": "adequate",
+        "where_found": "PDF pp. 6-13, 19-21 (pp. 270-277, 283-285, Notes 7, 9, 12, 14, 20)"
+      },
+      {
+        "domain_id": "D2",
+        "domain_name": "Jurisdictional specificity",
+        "justification": "Clearly specifies and distinguishes municipal governance (Walkerton Public Utilities Commission and local Medical Officer of Health), regional/provincial administrative authority (Owen Sound District Office and Toronto leadership of the Ontario Ministry of the Environment, Cabinet, and Red Tape Commission), provincial statutory inquiry powers, and Canadian federal-provincial fiscal transfer context under the British North America Act of 1867.",
+        "rating": "strong",
+        "where_found": "PDF pp. 4-10, 15-17, 20, 22 (pp. 268-274, 279-281, Notes 16, 38)"
+      },
+      {
+        "domain_id": "D3",
+        "domain_name": "Exposure definition",
+        "justification": "Concretely delineates both the regulatory/institutional exposure—Ontario's post-1995 'Common Sense Revolution' downsizing of the MoE (staff reduced from 2065 to 1374, operating budget cut from $282M to $174M, water protection designated a 'non-core program', 1996 privatization of water testing labs with adverse-result notification downgraded to a guideline, operator training subsidy cuts, and voluntary compliance replacing Director's Orders)—and the Inquiry's legal/scientific framing of resistance, though broader macro-concepts ('neo-liberalism', 'resistance') remain interpretive.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 4-14, 20 (pp. 268-278, Notes 12-15)"
+      },
+      {
+        "domain_id": "D4",
+        "domain_name": "Outcome definition",
+        "justification": "Clearly specifies both physical/public health outcomes from official Inquiry findings (E. coli O157:H7 contamination of Well 5, 7 deaths, 2,321 illnesses, 1,346 treated, 65 hospitalized, 27 HUS cases, Boil Water Advisory from 21 May to 5 December 2000, and 300-400 additional illnesses linked to absent mandatory lab reporting) and institutional/legal outcomes (binding ODWO and Chlorination Bulletin rules, mandatory reporting and corrective action, $800M commitment, acceptance of 93 recommendations, and enactment of the Safe Drinking Water Act on 11 December 2002).",
+        "rating": "adequate",
+        "where_found": "PDF pp. 6, 8, 18-20 (pp. 270, 272, 282-284, Note 15)"
+      },
+      {
+        "domain_id": "D5",
+        "domain_name": "Sampling transparency",
+        "justification": "Although the paper reports the overall scale of the Walkerton Inquiry record (9 months of hearings, 114 witnesses, 24 commissioned Issue Papers, 50,000 MoE documents examined, >3,000 documents across 447 exhibits, and full online transcripts) and states in Note 9 that it draws on O'Connor (2002: 1-38) supplemented by newspaper reports and hearing testimony, it contains no Methods section explaining how specific hearing days, witnesses, or media texts were sampled from that vast corpus.",
+        "rating": "weak",
+        "where_found": "PDF pp. 4, 10, 13-14, 20 (pp. 268, 274, 277-278, Notes 7, 9)"
+      },
+      {
+        "domain_id": "D6",
+        "domain_name": "Selection process",
+        "justification": "Walkerton is selected purposively as a high-profile disaster case to theorize counter-hegemonic resistance, and within-case selection of cross-examination exchanges and counsel submissions is illustrative, with no explicit inclusion/exclusion rules or systematic screening procedure to prevent selective choice of supportive testimony (though Snider also summarizes how Inquiry Counsel themselves gated witness and document selection prior to public hearings).",
+        "rating": "weak",
+        "where_found": "PDF pp. 1-5, 10-14, 20 (pp. 265-269, 274-278, Notes 7, 9)"
+      },
+      {
+        "domain_id": "D7",
+        "domain_name": "Measurement transparency",
+        "justification": "Aside from tallying witness credentials in the science section (31 scientist witnesses out of 114: 21 natural science PhDs and 10 MDs, excluding government scientists appearing as fact witnesses; PDF p. 14 & Note 31), analytical claims about legal interrogation strategies, scientific authority, and nationalist resonance rely on unstandardized narrative interpretation rather than transparent operational rules.",
+        "rating": "weak",
+        "where_found": "PDF pp. 10-17, 21 (pp. 274-281, Notes 30-31)"
+      },
+      {
+        "domain_id": "D8",
+        "domain_name": "Causal identification",
+        "justification": "Relies on within-case historical process tracing and the O'Connor Inquiry's forensic/administrative attribution rather than a comparative counterfactual design (with only a brief contrast in the Conclusion to the 1995 Ontario Commission on Systemic Racism in the Criminal Justice System to note that not all Public Inquiries achieve policy impact).",
+        "rating": "weak",
+        "where_found": "PDF pp. 6-9, 14-19 (pp. 270-273, 278-283)"
+      },
+      {
+        "domain_id": "D9",
+        "domain_name": "Treatment of confounding",
+        "justification": "Explicitly documents multiple alternative and interacting causes of the Walkerton outbreak alongside post-1995 deregulation—including extreme rainfall (134 mm on 8-12 May, a 1-in-30-years event), cattle manure near shallow Well 5 on fractured bedrock, 1978 grandfathering of Well 5 from 1994 continuous monitoring rules, and 20 years of improper operating procedures and falsified records by Stan and Frank Koebel—as well as contextual moderators of public reaction (victim demographics, recent memory of cuts, media framing), though without formal comparative control.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 6-9, 14, 18, 20 (pp. 270-273, 278, 282, Notes 10, 12, 15)"
+      },
+      {
+        "domain_id": "D10",
+        "domain_name": "Institutional context",
+        "justification": "Provides detailed, multi-layered institutional analysis of small-town PUC oversight, regional MoE inspection practices (advance notice, unacted-upon 1995 and 1998 inspection deficiencies, staff attrition under the F80 early retirement scheme, rejection of Inspector Zillinger's recommendation for a Director's Order), Cabinet/Red Tape Commission regulatory hurdles, and the procedural architecture of the Public Inquiry (standing, public funding for intervenor counsel, document subpoenas, and examination of fact vs. expert witnesses).",
+        "rating": "strong",
+        "where_found": "PDF pp. 6-14, 20-21 (pp. 270-278, Notes 16, 20-27)"
+      },
+      {
+        "domain_id": "D11",
+        "domain_name": "Replication potential",
+        "justification": "Cites publicly accessible primary legal records—the published O'Connor Report (2002) by page number and verbatim Walkerton Inquiry transcripts (available at www.walkertoninquiry.com) by exact hearing date and page—enabling independent verification of quoted evidence, although the lack of a documented sampling and coding protocol precludes exact analytic replication.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 6-14, 20, 24 (pp. 270-278, Notes 7, 9; References)"
+      },
+      {
+        "domain_id": "D12",
+        "domain_name": "Coding transparency",
+        "justification": "No documentary coding framework, thematic codebook, inter-coder check, or systematic qualitative data-analysis procedure is described for analyzing the Public Inquiry transcripts, exhibits, or media sources.",
+        "rating": "weak",
+        "where_found": "PDF pp. 1-22 (entire text; absence of Methods/coding protocol)"
+      },
+      {
+        "domain_id": "D13",
+        "domain_name": "Researcher reflexivity",
+        "justification": "Explicitly foregrounds the author's critical criminological and Foucauldian governmentality perspective and normative critique of neo-liberal deregulation and water privatization, while also critically interrogating the modernist truth claims of law and science and noting the liberal (non-radical) limits of the O'Connor Report; however, it does not reflect on how the author's normative stance influenced selection of hearing excerpts.",
+        "rating": "adequate",
+        "where_found": "PDF pp. 1-5, 13-14, 18-19, 21-22 (pp. 265-269, 277-278, 282-283, Notes 3, 17, 32, 39)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Outcome definition (D4) / Outcome measurement quality",
+        "page": "PDF p. 6 (p. 270, The Events at Walkerton - What Happened?)",
+        "quote": "In all 2321 people became ill: 1346 were treated, 65 hospitalized"
+      },
+      {
+        "criterion": "Exposure definition (D3) / Institutional context (D10)",
+        "page": "PDF p. 7 (p. 271, The Events at Walkerton - What Happened?)",
+        "quote": "Water protection was designated a ‘non-core program’ (p. 272)."
+      },
+      {
+        "criterion": "Legal source accuracy (D1) / Legal measurement quality",
+        "page": "PDF p. 8 (p. 272, The O'Connor Report)",
+        "quote": "Regulation must never again become a ‘last resort’"
+      },
+      {
+        "criterion": "Selection process (D6) / Institutional context (D10)",
+        "page": "PDF p. 10 (p. 274, Framing Resistance - The Role of Law)",
+        "quote": "All of these decisions preceded the public phase of the Inquiry"
+      },
+      {
+        "criterion": "Measurement transparency (D7) / Discourse analysis of science witnesses",
+        "page": "PDF p. 14 (p. 278, The Role of Science)",
+        "quote": "They did not work at generating reasonable doubt."
+      },
+      {
+        "criterion": "Sampling transparency (D5) / Primary documentary focus",
+        "page": "PDF p. 20 (p. 284, Note 7)",
+        "quote": "This Report is the focus of this article."
+      }
+    ],
+    "overall_narrative_summary": "Snider (2004) is a single-case socio-legal and institutional-historical case study examining the May 2000 E. coli drinking water disaster in Walkerton, Ontario (7 deaths, 2,321 illnesses), the subsequent nine-month Walkerton Public Inquiry (2000-2001), and the resulting O'Connor Report (2002) and Safe Drinking Water Act (2002). Appraised under the Legal Institutional Evidence Appraisal Framework (as a structured non-validated judgment), the study's core strengths lie in its jurisdictional specificity (D2: strong) and deep institutional contextualization (D10: strong) of municipal PUC operations, Ministry of the Environment budget/staff cuts, laboratory privatization without mandatory adverse-result reporting, non-enforcement of inspection deficiencies, and the procedural mechanics of the Public Inquiry. Legal source accuracy, exposure/outcome definitions, treatment of co-occurring physical and local operational confounders (extreme rainfall, fractured bedrock, 1978 well grandfathering, 20 years of operator misconduct), source verifiability via dated Inquiry transcripts, and theoretical reflexivity are adequate (D1, D3, D4, D9, D11, D13). However, the article lacks a formal Methods section, offering weak sampling transparency (D5), case/excerpt selection rules (D6), operational measurement transparency (D7), formal causal identification (D8), and documentary coding transparency (D12).",
+    "overall_rating": "Moderate concern / Adequate institutional-historical evidence with weak methodological transparency (structured non-validated judgment)",
+    "paper_read": "full text",
+    "study_design_identified": "Single-case socio-legal and institutional-historical case study (documentary analysis of the Walkerton Public Inquiry transcripts, the O'Connor Report, and Ontario drinking water regulatory reforms)",
+    "study_id": "S1028",
+    "where_found_summary": "Theoretical framing and overview of the Inquiry in Abstract and Introduction (PDF pp. 1-5 / pp. 265-269); factual, operational, and regulatory chronology in 'The Events at Walkerton - What Happened?' (PDF pp. 5-8 / pp. 269-272); summary of findings and statutory reforms in 'The O'Connor Report' (PDF pp. 8-9 / pp. 272-273); analysis of Inquiry procedures, subpoenaed evidence, witness examination, and socio-political context in 'Framing Resistance' (PDF pp. 10-17 / pp. 274-281); synthesis and limitations in 'Conclusion' (PDF pp. 17-19 / pp. 281-283); documentary source notes in Notes 7, 9, 10, 12-16, 20-31 (PDF pp. 19-22 / pp. 283-286).",
+    "why_tool_chosen": "Snider (2004) conducts an institutional and legal-historical single-case study of the Walkerton E. coli disaster and Public Inquiry based on official Inquiry reports, online verbatim hearing transcripts, subpoenaed administrative records, and media/historical sources. It fits none of the six conventional empirical checklists: it has no comparator arm for ROBINS-I, no quantitative cross-sectional or cohort dataset for JBI, no systematic review protocol for AMSTAR 2, and no primary qualitative human-participant recruitment/fieldwork (interviews, focus groups, ethnography) suited to CASP, yet it performs substantive empirical documentary analysis of legal and regulatory institutions rather than pure commentary (NONE). The 13-domain Legal Institutional Evidence Appraisal Framework is therefore the exact matching instrument."
+  }
+}

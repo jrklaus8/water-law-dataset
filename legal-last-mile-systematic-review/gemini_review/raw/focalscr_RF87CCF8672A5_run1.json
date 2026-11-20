@@ -1,0 +1,277 @@
+{
+  "record_id": "RF87CCF8672A5",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "270dd1a19ddb1cbafb038ad1d71e57b4ca9e000e74d57e1eb2df60ff79219917",
+  "prompt_sha256": "187c0e3e18e1d08bf5d89dce032735f717124fa262d76866ffca9375eb1bb20b",
+  "started_at": "2026-11-20T16:28:08.434121+00:00",
+  "completed_at": "2026-11-20T16:30:44.053312+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Canada",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1. The study examines Cree spiritual worldview, Indigenous science, cultural relationships with natural surface water bodies (rivers, lakes, creeks, muskegs, and wetlands), industrial environmental pollution, and historical colonial assimilation policies rather than household or community water or sanitation service access (aside from a single passing sentence quoting an Elder noting that the government funds reserve water treatment plants).",
+      "c2": "Passes the plain broad wording of Criterion 2 only insofar as it discusses macro-historical legal and policy frameworks (the Indian Act, Residential School policies, treaties, Canada's 1987 Federal Water Policy, and Indigenous inclusion in broad water-resource policy), but fails the narrow 2026-10-13 rule-type mechanism reading of Criterion 2 ('no'). It does not examine any rule-type legal, regulatory, or administrative mechanism directly governing household or community water or sanitation service access (such as eligibility screening, administrative burden, tenure/documentation rules, tariffs, enforcement, or utility regulatory structure). Because Criteria 1 and 4 also fail, plain_criterion2_decision remains 'exclude'.",
+      "c3": "Satisfies Criterion 3. Reports primary qualitative empirical data from a three-year Indigenous-methodology study ('The Sacred Relationship'), comprising Teaching Circles, two Sharing Circles, four Reconciliation Circles, and 33 semi-structured interviews (over 100 hours of video-recorded, transcribed data analyzed thematically).",
+      "c4": "Fails Criterion 4. Reported outcomes focus on spiritual/cultural disconnectedness from natural water bodies, intergenerational despair (pomewin/pometasiwin), disruption of traditional ceremonies and medicine harvesting, and perceived industrial pollution/depletion of rivers, lakes, creeks, and fish, rather than household or community water or sanitation service access, connection, availability, reliability, quantity, affordability, or exclusion.",
+      "c5": "Satisfies Criterion 5 within its own qualitative research scope: participants (Cree, Blackfoot, Dene, and Stoney Elders, leaders, scientists, and knowledge keepers plus non-Aboriginal leaders and Western scientists in Alberta; individual and collective circle levels), qualitative circle/interview thematic design, historical colonial policy and industrial pollution exposures, and cultural/worldview outcomes are identifiable, though none pertain to household/community water or sanitation service access.",
+      "c6": "Published in English."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 24",
+        "quote": "The purpose of this discussion is to describe the worldview and sacred relationship of the Cree people in Alberta, as well as how colonial policy has created despair (pomewin) in Aboriginal communities and a state of disconnectedness from the water."
+      },
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2 of 24",
+        "quote": "The goals of the project were three-fold: to describe the Aboriginal People of Alberta’s sacred relationship with water, to articulate the Indigenous science practices of Aboriginal people, and to find common ground between Western and Indigenous science."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 6 of 24",
+        "quote": "Thirty-three interviews were conducted between July 2009 and May 2012. The individuals included Aboriginal people from across Alberta (Cree, Blackfoot, Dene, and Stoney Elders, leaders, scientists, and knowledge keepers) and non-Aboriginal leaders and Western scientists."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 11 of 24",
+        "quote": "This section of the discussion will focus on the fourth dimension of internal colonization and how legislation and policies have caused chaos in many Aboriginal communities across Canada and, for the Cree, a disruption of the teaching of wahkohtowin."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 17 of 24",
+        "quote": "Pometasiwin, a result of policies and laws that have damaged essential human relationships (including the loss of the sacred relationship between the people and the water) manifests itself as hopelessness, helplessness, powerlessness, and voicelessness."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Historical Canadian colonial assimilation legislation and policies (the Indian Act and Residential School Policy) and industrial oil/resource development affecting surface waters in Alberta",
+    "outcome": "Disruption of Cree interconnected worldview (wahkohtowin), feelings of despair and voicelessness (pomewin/pometasiwin), and loss of traditional cultural, spiritual, fishing, and medicine-harvesting relationships with natural surface waters",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "Aboriginal (Cree, Blackfoot, Dene, and Stoney) Elders, leaders, scientists, and knowledge keepers, and non-Aboriginal leaders and Western scientists across Alberta, Canada (33 interviews plus Teaching Circles, two Sharing Circles, and four Reconciliation Circles; >100 hours transcribed)",
+    "rationale": "Excluded (E01: Wrong topic; see Exclusion Criterion 7, water-resource studies unrelated to household or community service access). Although empirically grounded in qualitative interviews and Indigenous teaching/sharing circles in Alberta, Canada, the paper investigates Cree spiritual worldviews, Indigenous science, historical colonial assimilation policies (the Indian Act and Residential Schools), and environmental degradation of natural lakes, rivers, and wetlands rather than household or community water or sanitation service access, rule-type service-access governance mechanisms, or service-access outcomes.",
+    "record_id": "RF87CCF8672A5",
+    "study_design": "Qualitative Indigenous-methodology study using semi-structured interviews, Teaching Circles, Sharing Circles, and Reconciliation Circles with thematic analysis"
+  }
+}

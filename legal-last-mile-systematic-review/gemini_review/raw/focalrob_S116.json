@@ -1,0 +1,334 @@
+{
+  "study_id": "S116",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "46df07719efcdca5d81907a081c1e65d4e5520461c00437acf743820ddb2c5f7",
+  "prompt_sha256": "609c8a73f65bc1ca7e7b2b4531ddd1b8624a752fb3ce1673e748ab37cec99834",
+  "started_at": "2026-11-20T17:15:21.172131+00:00",
+  "completed_at": "2026-11-20T17:17:25.849438+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "AMSTAR 2",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Low-to-moderate concern (secondary review retrieval loss): Only 2 grey-literature reports were excluded due to full-text inaccessibility ([PDF Page 13] Findings), although 122 of the 226 retrieved peer-reviewed database records are not explicitly accounted for (e.g., as duplicates removed) between initial retrieval (226) and the 104 screened peer-reviewed records (40 included + 64 excluded) reported in text and Figure 1 ([PDF Pages 13-14]).",
+      "confounding": "High concern / Not assessed: Because this is a descriptive and thematic systematic realist review that performed no individual-study risk-of-bias appraisal (AMSTAR 2 Q9, Q13) and no quantitative synthesis, confounding within the 63 primary empirical and grey-literature studies (such as community capacity, funding, or broader institutional reforms driving reported water/governance outcomes) was neither assessed nor accounted for.",
+      "legal_measurement_quality": "Weak-to-moderate: Legal and institutional variables were captured only through high-level descriptive coding in the SRR Reporting Tool—specifically Item 20 asking whether primary articles acknowledged treaty and Aboriginal rights to clean water ([PDF Page 11] Table 3) and thematic summaries of co-management and governance ([PDF Pages 16-21])—without primary doctrinal verification of statutes, treaties, land claim agreements, or enforceable water regulations.",
+      "measurement_bias": "High concern: Data extraction across the 33-question SRR Reporting Tool was divided among three research team members by Indigenous group/context rather than conducted in duplicate or verified for inter-rater agreement ([PDF Page 7] Methods — Data Analysis), and no formal risk-of-bias or methodological rigour assessment of the 63 included studies was performed ([PDF Pages 7-12] Table 3).",
+      "outcome_measurement_quality": "Weak: Water management, governance, health, and community outcomes were synthesized solely from primary authors' narrative claims and perceived or actualized benefits via Items 31-33 of Table 3 ([PDF Page 12]), without study-level outcome tables or independent verification; the review authors themselves note that it was often difficult to discern whether reported research translated into direct community benefits ([PDF Page 21]).",
+      "reporting_bias": "High concern: No pre-registered or formal written protocol with deviation tracking was reported (AMSTAR 2 Q2); no study-by-study characteristics table or bibliography distinguishing the 63 included documents from background citations was published (Q8); excluded full-text studies were not listed (Q7); individual study funding sources extracted under Table 3 Item 12 were omitted from the findings (Q10); and no author conflict-of-interest statement was provided despite review co-authors authoring cited primary studies in the field (Q16).",
+      "selection_bias": "Moderate-to-high concern: Peer-reviewed database citations (Scopus and Web of Science) underwent two-stage duplicate independent screening ([PDF Page 5]), and grey literature was searched across multiple repositories, but French-language literature was excluded in bilingual Canada without methodological justification ([PDF Page 5], [PDF Page 24]), reference lists of included studies were not hand-searched, excluded studies were not listed ([PDF Pages 13-14]), and Google Scholar/grey-literature duplicate screening procedures were not clearly specified."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Did the research questions and inclusion criteria for the review include the components of PICO?",
+        "justification": "Adapted to a non-clinical realist review using Context-Mechanism-Outcome structure, the eligibility criteria and research questions explicitly define the Population/Context (Indigenous peoples—First Nations, Inuit, and Métis/Metis—and water contexts in Canada), Phenomenon/Exposure of interest (empirical integrative Indigenous and Western knowledge processes in water research and management), and Outcomes (implementation of Indigenous knowledge, integrated water management findings, and perceived/actualized community, policy, governance, and health benefits), where a clinical comparator group is not applicable.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 4-7] Methods (Table 2, Box 1, Data Analysis bullets); [PDF Pages 8-12] Table 3 (Items 13-33)"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "[CRITICAL] Did the report of the review contain an explicit statement that the review methods were established prior to the conduct of the review and did the report justify any significant deviations from the protocol?",
+        "justification": "Although the authors co-determined inclusion criteria and reflective questions with a National Advisory Committee (NAC) and at a 2014 Water Gathering and later added a replicate search up to August 2015 at the NAC's direction, there is no registered or published written protocol (e.g., PROSPERO), no pre-specified risk-of-bias assessment plan, and no formal reporting of protocol deviations.",
+        "rating": "No",
+        "where_found": "[PDF Pages 4-5] Methods — Data Collection"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Did the review authors explain their selection of the study designs for inclusion in the review?",
+        "justification": "The authors explain that despite a proliferation of case studies and empirical research, no systematic review had examined what approaches work, why, and how; accordingly, they restricted eligibility to documents reporting empirical data (across peer-reviewed articles, theses, and grey-literature reports) to evaluate how integrative processes functioned in practice using a combined systematic and realist review strategy.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 4-7] Introduction, Methods, Table 2, and Box 1"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "[CRITICAL] Did the review authors use a comprehensive literature search strategy?",
+        "justification": "The authors searched three electronic academic databases/engines (Scopus, Web of Science, Google Scholar) plus grey-literature repositories (Library and Archives Canada, Canadian Public Policy Collection, Government of Canada Publications, Google, and agency websites), provided exact search strings (Table 1), and consulted a reference librarian, NAC, and Water Gathering experts. However, they restricted the search to English (1979-2015) without methodological justification—acknowledging on PDF Page 24 that excluding French was a key limitation in bilingual Canada—and did not report searching the reference lists/bibliographies of included studies, precluding a full 'Yes'.",
+        "rating": "Partial Yes",
+        "where_found": "[PDF Pages 5-6] Methods — Data Collection & Table 1; [PDF Page 24] Limitations"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Did the review authors perform study selection in duplicate?",
+        "justification": "Citations from Scopus and Web of Science underwent a two-stage screening process (title/abstract followed by full-text screening) conducted by two independent reviewers, with disagreements resolved through team consensus meetings (though duplicate procedures for Google Scholar and grey-literature web scans are less explicitly detailed).",
+        "rating": "Yes",
+        "where_found": "[PDF Page 5] Methods — Data Collection"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Did the review authors perform data extraction in duplicate?",
+        "justification": "Rather than independent duplicate extraction or checking inter-rater agreement on a sample, the 63 included documents were partitioned into thematic/Indigenous context groups (First Nations, Inuit, Métis/Metis, and multi-site contexts) and analysed across three team members.",
+        "rating": "No",
+        "where_found": "[PDF Page 7] Methods — Data Analysis"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "[CRITICAL] Did the review authors provide a list of excluded studies and justify the exclusions?",
+        "justification": "The authors report only aggregate counts of excluded documents in text and Figure 1 (64 peer-reviewed articles, 28 grey-literature reports including 2 inaccessible, and 2 theses excluded) without providing a bibliography of full-text excluded studies or study-specific exclusion reasons, and leave an unexplained gap between 226 retrieved academic citations and the 104 screened citations (40 included + 64 excluded) accounted for in text.",
+        "rating": "No",
+        "where_found": "[PDF Pages 13-14] Findings & Figure 1"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Did the review authors describe the included studies in adequate detail?",
+        "justification": "Included studies are summarized only via aggregate descriptive charts (publication year, Indigenous first-authorship, discipline) and narrative thematic examples; there is no study-by-study table detailing each of the 63 included studies' populations, settings, methods, integrative mechanisms, or outcomes, nor even a complete list identifying which 63 references in the bibliography constituted the included sample.",
+        "rating": "No",
+        "where_found": "[PDF Pages 13-21] Findings & Figures 2-4; [PDF Pages 27-35] References"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "[CRITICAL] Did the review authors use a satisfactory technique for assessing the risk of bias (RoB) in individual studies that were included in the review?",
+        "justification": "No risk-of-bias, critical appraisal, or realist methodological rigour assessment tool was applied to the 63 included studies; Item 30 of the SRR Reporting Tool merely recorded whether primary authors themselves acknowledged study limitations.",
+        "rating": "No",
+        "where_found": "[PDF Pages 7-12] Methods — Data Analysis & Table 3 (Item 30)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "Did the review authors report on the sources of funding for the studies included in the review?",
+        "justification": "Although Item 12 of the SRR Reporting Tool ('Funding agency') collected funding acknowledgements from included documents, the review does not report the funding sources of individual included studies, offering only a passing aggregate remark in the Discussion about scarce funding from natural sciences and engineering.",
+        "rating": "No",
+        "where_found": "[PDF Page 9] Table 3 (Item 12); [PDF Page 22] Discussion"
+      },
+      {
+        "domain_id": "Q11",
+        "domain_name": "[CRITICAL] If meta-analysis was performed did the review authors use appropriate methods for statistical combination of results?",
+        "justification": "No meta-analysis or quantitative pooling was performed; the review conducted a descriptive and thematic realist synthesis of predominantly qualitative, case-study, and grey-literature documents.",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "[PDF Pages 7, 13-21] Methods — Data Analysis & Findings"
+      },
+      {
+        "domain_id": "Q12",
+        "domain_name": "If meta-analysis was performed, did the review authors assess the potential impact of RoB in individual studies on the results of the meta-analysis or other evidence synthesis?",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "[PDF Pages 7, 13-21] Methods — Data Analysis & Findings"
+      },
+      {
+        "domain_id": "Q13",
+        "domain_name": "[CRITICAL] Did the review authors account for RoB in individual studies when interpreting/ discussing the results of the review?",
+        "justification": "Because no risk-of-bias or methodological quality assessment of individual included studies was undertaken, the Discussion and Recommendations synthesize claims across peer-reviewed articles, student theses, and grey-literature reports without stratifying, weighting, or qualifying conclusions by primary study quality.",
+        "rating": "No",
+        "where_found": "[PDF Pages 20-25] Findings, Discussion, Limitations, and Recommendations"
+      },
+      {
+        "domain_id": "Q14",
+        "domain_name": "Did the review authors provide a satisfactory explanation for, and discussion of, any heterogeneity observed in the results of the review?",
+        "justification": "Consistent with its realist review design, the paper extensively examines contextual, regional (e.g., treaty vs. unceded British Columbia vs. northern land-claim territories), disciplinary (social sciences vs. engineering/natural sciences), and relational sources of variation across included studies.",
+        "rating": "Yes",
+        "where_found": "[PDF Pages 16-24] Findings & Discussion"
+      },
+      {
+        "domain_id": "Q15",
+        "domain_name": "[CRITICAL] If they performed quantitative synthesis did the review authors carry out an adequate investigation of publication bias (small study bias) and discuss its likely impact on the results of the review?",
+        "justification": "No quantitative synthesis or meta-analysis was performed (though qualitatively the authors note in Limitations on PDF Page 24 that substantial community and unwritten Indigenous water knowledge is absent from published databases).",
+        "rating": "Not applicable (no meta-analysis)",
+        "where_found": "[PDF Page 24] Limitations"
+      },
+      {
+        "domain_id": "Q16",
+        "domain_name": "Did the review authors report any potential sources of conflict of interest, including any funding they received for conducting the review?",
+        "justification": "While the authors disclose funding and ongoing feedback from the Canadian Water Network and its Research Management Committee ([PDF Pages 2, 4]), the article contains no competing-interests/conflict-of-interest declaration and does not address potential self-review bias despite several review co-authors (e.g., Castleden, Harper, Martin) authoring cited Canadian Indigenous water studies.",
+        "rating": "No",
+        "where_found": "[PDF Page 2] Acknowledgments; [PDF Page 4] Methods; [PDF Pages 28-31] References"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Study selection totals (AMSTAR 2 Q7, Q8)",
+        "page": "[PDF Page 13] Findings",
+        "quote": "In sum, 279 documents were reviewed, and 63 documents were included in our SRR."
+      },
+      {
+        "criterion": "Duplicate screening of academic databases (AMSTAR 2 Q5)",
+        "page": "[PDF Page 5] Methods — Data Collection",
+        "quote": "process by two independent reviewers from our team: first, titles and abstracts were screened for"
+      },
+      {
+        "criterion": "Non-duplicate partitioned data extraction (AMSTAR 2 Q6)",
+        "page": "[PDF Page 7] Methods — Data Analysis",
+        "quote": "For our analysis, the literature was divided into groups (First Nations, Inuit, Métis/Metis, and multi-site"
+      },
+      {
+        "criterion": "Unjustified English-only restriction in bilingual Canada (AMSTAR 2 Q4)",
+        "page": "[PDF Page 24] Limitations",
+        "quote": "official languages, English and French, and French was excluded."
+      },
+      {
+        "criterion": "Unverified community outcomes in included studies (AMSTAR 2 Q8, Outcome measurement quality)",
+        "page": "[PDF Page 21] Findings — Benefits to the community and beyond",
+        "quote": "research translated into direct benefits for the community partner."
+      },
+      {
+        "criterion": "Review funding disclosure without COI declaration (AMSTAR 2 Q16)",
+        "page": "[PDF Page 2] Acknowledgments",
+        "quote": "The authors would also like to thank the Canadian Water Network for"
+      }
+    ],
+    "overall_narrative_summary": "Study S116 (Castleden et al., 2017) is a secondary systematic realist review synthesizing 63 peer-reviewed and grey-literature documents (published 2000–2015 from a 1979–2015 search) on integrative Indigenous and Western knowledge approaches to water research and management in Canada. Appraised with AMSTAR 2, overall confidence in the review's results is Critically Low due to four critical flaws (Q2, Q7, Q9, Q13) alongside four non-critical weaknesses (Q6, Q8, Q10, Q16). Methodological strengths include co-design of eligibility criteria and extraction questions with a National Advisory Committee of Indigenous knowledge holders and Western water experts and a national Water Gathering, searching three academic databases/engines plus multiple Canadian grey-literature repositories with librarian-refined search strings (Table 1; Q4 = Partial Yes), two-stage duplicate independent screening of Scopus and Web of Science records (Q5 = Yes), and rich realist discussion of regional, treaty, and disciplinary heterogeneity (Q14 = Yes). However, the review lacked a pre-registered written protocol with deviation tracking (Q2 = No); restricted eligibility to English in bilingual Canada without methodological justification (Q4 = Partial Yes); partitioned data extraction across three team members rather than extracting in duplicate (Q6 = No); omitted both a list of excluded full-text studies (Q7 = No, with an unexplained numerical gap between 226 retrieved academic citations and 104 screened records) and any study-by-study table or complete bibliography identifying the 63 included documents (Q8 = No); conducted no risk-of-bias or methodological rigour appraisal of included studies (Q9 = No) and therefore could not account for primary study quality in synthesis (Q13 = No); did not report individual study funding sources despite extracting them (Q10 = No); and omitted a conflict-of-interest declaration despite review co-authors authoring primary studies in the field (Q16 = No).",
+    "overall_rating": "Critically Low",
+    "paper_read": "full text",
+    "study_design_identified": "Secondary systematic realist review (systematic peer-reviewed and grey-literature search, two-stage relevance screening, and 33-item structured realist synthesis of 63 empirical documents)",
+    "study_id": "S116",
+    "where_found_summary": "Methods, search strategy, screening, and 33-item SRR Reporting Tool: [PDF Pages 4-12] (Tables 1-3, Box 1); Study selection flow and descriptive/thematic synthesis: [PDF Pages 13-21] (Figures 1-4, Box 2); Discussion, Limitations, Recommendations, and Conclusion: [PDF Pages 22-26]; Acknowledgments: [PDF Page 2]; References: [PDF Pages 27-35].",
+    "why_tool_chosen": "S116 is a secondary systematic review (specifically a combined systematic and realist review) employing an explicit multi-database and grey-literature search strategy with documented keyword strings (Table 1), structured inclusion/exclusion criteria (Table 2, Box 1), duplicate independent screening, and a study flow diagram (Figure 1). Per RISK_OF_BIAS.md §1, AMSTAR 2 is the mandatory instrument for secondary systematic reviews and scoping/realist reviews with an explicit systematic search and screening method."
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "study_id": "S450",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "eff68898034c895c46dc1b193397a6bf69e0e177a531e50cdf265671963d09e9",
+  "prompt_sha256": "0366e5a74bd42806408b7aedc803621d52a7469fc37f66f9e12de9b794065575",
+  "started_at": "2026-11-20T17:30:31.473470+00:00",
+  "completed_at": "2026-11-20T17:31:47.624381+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "NONE",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Some concern (country-level panel missingness): Individual participant attrition is not applicable to aggregate secondary country-year modeling, but 50 of 204 GBD countries (and 16 of 170 WHO sanitation-reporting countries) were dropped during preprocessing due to missing data and outliers without reporting which countries were excluded or conducting sensitivity analyses (PDF Page 3, Section 2.2).",
+      "confounding": "High concern (uncontrolled ecological and structural confounding): Rather than empirically estimating confounder-adjusted effects, the study imports fixed, time- and age-invariant relative risks from GBD 2021 into a deterministic Comparative Risk Assessment formula and decomposes aggregate trends (PDF Pages 2-4, Sections 2.2-2.3; PDF Page 8, Section 3.4). Although SDI is briefly mentioned as a linear regression fixed effect (PDF Page 2, Section 2.2), no regression equation or confounder-adjusted estimates are presented, leaving rural-urban disparities in water quality, hygiene, healthcare access, and subnational poverty unseparated.",
+      "legal_measurement_quality": "Not assessable / Weak (no legal or governance exposure operationalized): Despite referencing 'Lacking Sanitation Governance' in the title and briefly naming policies such as the US Clean Water Act and China's 'Toilet Revolution' in the discussion (PDF Page 8, Section 3.4), the study measures zero legal, regulatory, institutional, or governance variables. Exposure is strictly physical household toilet type from WHO/JMP secondary data (PDF Page 3, Section 2.2).",
+      "measurement_bias": "High concern: Both sanitation coverage and mortality inputs rely on modeled secondary aggregates (WHO/JMP and GBD 2021), and the authors explicitly note two major structural assumptions: (1) constant relative risks linking unsafe sanitation to diarrheal mortality across countries, age groups, and time (2000-2030), and (2) congruence between national population age structures and rural population age structures due to lacking rural age-distribution data (PDF Page 8, Section 3.4), despite rural aging outpacing urban areas.",
+      "outcome_measurement_quality": "Moderate-to-weak (modeled ecological attribution and forecasting): Deaths Attributable to Unsafe Sanitation in Rural areas (DAUSRs) are not directly observed rural vital-registration counts; they are mathematically derived via Comparative Risk Assessment from GBD 2021 national diarrheal mortality rates, national age structures, and WHO/JMP rural toilet-category shares for 2000-2020, and extrapolated to 2030 via BAPC and ARIMA time-series forecasts (PDF Pages 2-4, Sections 2.2-2.4).",
+      "reporting_bias": "Moderate concern: No pre-specified protocol or analysis plan is reported; key ARIMA (p,d,q) specifications, BAPC priors, and validation metrics are omitted from the main text (deferred to Supporting Information Table S1), and several internal reporting errors appear in the manuscript (e.g., Table 1 labels historical data as 2010-2020 whereas text states 2000-2020 on PDF Pages 2-3; unit misprints such as '488,073 ... thousand' for India on PDF Page 6 and '65.9 million, 59.5 million' vs. '59.5 thousand' on PDF Page 7; and Figure 5's caption mislabeling sanitation conditions as 'air quality' on PDF Page 7).",
+      "selection_bias": "High concern: Starting from 204 countries in GBD 2021 and 170 countries in the WHO Inequality Monitor database, the authors excluded countries with 'outlier data and missing data issues' to retain 154 countries (PDF Page 3, Section 2.2), without defining outlier criteria or listing excluded jurisdictions, creating substantial risk of systematically omitting conflict-affected or data-scarce low-income countries with severe rural sanitation deficits."
+    },
+    "domain_ratings": [],
+    "evidence_quotes": [
+      {
+        "criterion": "Study design and mathematical modeling framework",
+        "page": "PDF Page 2, Section 2 (Materials and Methods)",
+        "quote": "This study integrates Comparable Risk Assessment (CRA), BAPC"
+      },
+      {
+        "criterion": "Country selection and exclusion of missing/outlier countries",
+        "page": "PDF Page 3, Section 2.2 (Indicator Selection and Data Sources)",
+        "quote": "excluding countries with outlier data and missing data"
+      },
+      {
+        "criterion": "Final analytic sample of countries modeled",
+        "page": "PDF Page 3, Section 2.2 (Indicator Selection and Data Sources)",
+        "quote": "Ultimately, the DAUSRs were estimated for 154 countries."
+      },
+      {
+        "criterion": "Forecasting model specification for mortality rates",
+        "page": "PDF Page 4, Section 2.4 (Statistical Method)",
+        "quote": "We employed the BAPC model to predict disease mortality rates"
+      },
+      {
+        "criterion": "Constant relative risk modeling assumption",
+        "page": "PDF Page 8, Section 3.4 (Measures and Limitations)",
+        "quote": "First, we assumed a constant relative risk estimate"
+      },
+      {
+        "criterion": "Missing rural age-structure data assumption",
+        "page": "PDF Page 8, Section 3.4 (Measures and Limitations)",
+        "quote": "Second, we lacked historical data on the age structure of"
+      }
+    ],
+    "overall_narrative_summary": "Wang et al. (2025) conduct a global secondary burden-of-disease simulation, time-series forecasting, and demographic decomposition study estimating Deaths Attributable to Unsafe Sanitation in Rural areas (DAUSRs) across 154 countries from 2000 to 2030. Because the study combines deterministic Comparative Risk Assessment (CRA) formulas using pre-existing GBD 2021 relative risks and WHO/JMP sanitation coverage estimates with BAPC/ARIMA projections and multiplicative decomposition—without any primary empirical sample, quasi-experimental policy/intervention comparator, observational exposure-outcome estimation, systematic literature search, or empirical coding of legal/governance rules—none of the standard risk-of-bias checklists apply (chosen_tool = NONE). Methodologically, while the global decomposition framework usefully illustrates how rural population aging offsets mortality declines, inferential validity is constrained by (1) undocumented exclusion of 50 GBD / 16 WHO countries for missing or outlier data, (2) reliance on national rather than rural-specific age distributions and diarrheal mortality rates, (3) assuming time- and space-invariant GBD relative risks from 2000 to 2030, (4) absence of any empirical measurement of sanitation law or governance despite the paper's title, and (5) noticeable internal reporting inconsistencies in text and figure captions (e.g., unit errors and mislabeling sanitation as 'air quality' in Figure 5).",
+    "overall_rating": "NOT APPLICABLE (design fits no listed tool)",
+    "paper_read": "full text",
+    "study_design_identified": "Global secondary burden-of-disease modeling, time-series forecasting, and demographic decomposition study (Comparative Risk Assessment, Bayesian age-period-cohort [BAPC] modeling, ARIMA forecasting, and decomposition analysis of GBD 2021 and WHO country-level aggregates)",
+    "study_id": "S450",
+    "where_found_summary": "Study design, data sources, country exclusions, and mathematical modeling equations in Section 2 (Materials and Methods, PDF Pages 2-4, Table 1, Equations 1-8); empirical projections and decomposition outputs in Section 3.1-3.3 (PDF Pages 4-8, Figures 2-5); policy remarks and modeling assumptions/limitations in Section 3.4 (PDF Page 8).",
+    "why_tool_chosen": "This study is a secondary mathematical/epidemiological simulation, time-series forecasting (BAPC and ARIMA), and accounting decomposition study built on aggregate GBD 2021 and WHO/JMP outputs. It has no randomized or non-randomized policy/intervention comparator (ruling out RoB 2 and ROBINS-I), does not empirically estimate cross-sectional or cohort exposure-outcome associations in a participant sample (ruling out JBI Analytical Cross-Sectional and Cohort checklists, as relative risks are imported as fixed inputs from GBD 2021), collects no qualitative data (ruling out CASP and MMAT), is not a systematic review (ruling out AMSTAR 2), and performs no doctrinal, jurimetric, or institutional case-study analysis of laws or governance (ruling out the Legal Institutional Evidence Appraisal Framework). Per RISK_OF_BIAS.md §1, NONE is selected rather than forcing an ill-fitting checklist."
+  }
+}

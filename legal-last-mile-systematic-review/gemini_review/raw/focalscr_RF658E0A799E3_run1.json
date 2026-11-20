@@ -1,0 +1,277 @@
+{
+  "record_id": "RF658E0A799E3",
+  "run": 1,
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "420b97e48465cabbeab149e29b7dc1af9cce39e74b4190282c29a7d0a91d4784",
+  "prompt_sha256": "22462aae60a3c0f875fbc3da8145e3dba7130bd605730406fce68d7e4a4b9329",
+  "started_at": "2026-11-20T16:57:41.470078+00:00",
+  "completed_at": "2026-11-20T16:59:17.337844+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Brazil",
+    "criteria": {
+      "c1_service_access": "no",
+      "c2_legal_admin_factor": "no",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "no",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Fails Criterion 1. Although municipal drinking-water and sewage coverage deficits in Maceio are cited as background context and two of 34 candidate ESG items mention progressive social tariffs (S03) and diversity/access plans (S08), the study itself examines stakeholder prioritization of organizational ESG strategies to enhance public utility ESG maturity, not household or community water or sanitation service access.",
+      "c2": "Under the plain broad wording of Criterion 2, the paper arguably touches on institutional and governance factors (it evaluates 10 utility governance strategies, public-private partnerships, stakeholder engagement, and fiscal/budgetary constraints in a state-owned sanitation utility, so plain reading could be treated as borderline yes, though overall study eligibility remains exclude due to failing c1 and c4). Under the active 2026-10-13 narrow rule-type reading, Criterion 2 is clearly no: the study does not empirically analyze how any legal, regulatory, tariff, eligibility, documentation, enforcement, or ownership rule operates to govern household or community service access; items like progressive social tariffs (S03) and green PPPs (G01) are merely hypothetical options rated on a Likert scale for organizational ESG maturity.",
+      "c3": "Satisfies Criterion 3. Contains primary empirical data from a self-administered Likert survey / adapted Nominal Group Technique (NGT) conducted with 54 stakeholders (11 researchers, 11 utility professionals, and 32 service users) in Maceio, Brazil.",
+      "c4": "Fails Criterion 4. The only empirical outcomes reported are unweighted and weighted mean Likert agreement/prioritization scores (1-5 scale) reflecting stakeholder perceptions of whether 34 candidate ESG strategies would enhance organizational maturity in operations and service delivery. No empirical outcome measuring household or community water/sanitation access, connection, availability, reliability, continuity, quantity, affordability, or exclusion is reported.",
+      "c5": "Satisfies Criterion 5 with respect to the study's own design: the respondent sample and unit of analysis (54 individual stakeholders grouped into researchers, utility professionals, and service users), comparison variables, Likert ranking outcomes, and adapted NGT mixed-methods design are clearly reported (though the exposure and outcome do not fall within the review's service-access scope).",
+      "c6": "Published in English, an eligible language without translation."
+    },
+    "decision": "exclude",
+    "evidence_quotes": [
+      {
+        "criterion": "c1",
+        "page": "PDF Page 2",
+        "quote": "This study is the first to apply the Nominal Group Technique (NGT) to prioritize ESG strategies in a public sanitation utility under fiscal constraints. By doing so, it contributes to bridging the gap between ESG conceptual frameworks and practical decision-making."
+      },
+      {
+        "criterion": "c2",
+        "page": "PDF Page 10",
+        "quote": "Service users placed greater emphasis on progressive tariffs (S03) and inclusion policies (S02), reflecting concerns with affordability and access (Panagopoulos and Tzionas, 2023)."
+      },
+      {
+        "criterion": "c3",
+        "page": "PDF Page 3",
+        "quote": "This research adopts a mixed-methods design (qualitative and quantitative), based on an exploratory and descriptive study."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 4",
+        "quote": "Therefore, results reflect the aggregation and comparison of individual judgments rather than a formal consensus-building process."
+      },
+      {
+        "criterion": "c4",
+        "page": "PDF Page 10",
+        "quote": "Although this study does not directly measure ESG maturity levels, the prioritization of strategies provides important insights into how sanitation utilities can progress along a maturity trajectory."
+      }
+    ],
+    "exclusion_code": "E01",
+    "exposure": "Stakeholder group membership (researchers, utility professionals at CASAL, and service users) and expert qualification/experience weighting in evaluating 34 candidate ESG strategies under utility fiscal constraints",
+    "outcome": "Unweighted and weighted mean Likert-scale priority scores (1 to 5 agreement scale) rating perceived effectiveness of 34 ESG strategies for enhancing utility ESG maturity in operations and service delivery",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "exclude",
+    "population_and_sample": "54 stakeholders in Maceio, Alagoas, Brazil: 11 researchers (g1), 11 public utility professionals at Companhia de Saneamento de Alagoas - CASAL (g2), and 32 sanitation service users (g3); unit of analysis is individual stakeholder evaluations aggregated by group",
+    "rationale": "Excluded as E01 (Wrong topic; also fails c2 under the narrow rule-type scope and c4 on outcome). The paper uses an adapted Nominal Group Technique survey (N = 54) in Maceio, Brazil to rank 34 candidate Environmental, Social, and Governance (ESG) strategies for advancing organizational ESG maturity in a state-owned utility under fiscal constraints. It does not examine household or community water/sanitation service access (c1 = no), does not empirically test a rule-type legal, regulatory, or administrative mechanism governing access (c2 = no; items like progressive social tariffs are only hypothetical strategies rated by respondents), and reports only Likert-scale strategy priority scores rather than any actual access, connection, reliability, affordability, or exclusion outcome (c4 = no). Even under the plain broad wording of Criterion 2, the study remains excluded because it fails Criteria 1 and 4.",
+    "record_id": "RF658E0A799E3",
+    "study_design": "Exploratory descriptive mixed-methods cross-sectional survey using an adapted Nominal Group Technique (NGT)"
+  }
+}

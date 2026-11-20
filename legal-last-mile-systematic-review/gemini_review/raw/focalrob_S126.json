@@ -1,0 +1,341 @@
+{
+  "study_id": "S126",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "5b59e5ef676bc2960ca8b9f1aac627c60fc9f87db0de7b6977a5136aa27f03d5",
+  "prompt_sha256": "04ca7458da0a763ec672f3b7e0d70bc2ba8d55e7888d78b48943fb71525855e5",
+  "started_at": "2026-11-20T17:15:21.175165+00:00",
+  "completed_at": "2026-11-20T17:16:24.105011+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "MMAT (Mixed Methods Appraisal Tool)",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Not applicable / High nonresponse concern (cross-sectional design with no longitudinal follow-up, so panel attrition does not apply; however, unit nonresponse in Ontario [only 8 of 45 listed / 28 reachable communities interviewed] and unreported conference denominator plus item missingness in B.C. pose substantial nonresponse bias).",
+      "confounding": "High concern / Uncontrolled (purely descriptive qualitative and univariate survey tabulations with no comparator group and no multivariable adjustment for community remoteness/zone, system size/class, band revenue base, or operator tenure).",
+      "legal_measurement_quality": "Moderate / Indirect descriptive contextualization (cites federal policy context including Bill S-8 [Safe Drinking Water for First Nations Act], the AANDC 80:20 operation-and-maintenance funding formula, and Isaac v. British Columbia [Workers' Compensation Board] [1994] narratively, while empirically measuring operator certification levels and perceived Band Council governance/budget practices solely via operator self-report without independent verification of band bylaws, AANDC funding agreements, or provincial certification registries).",
+      "measurement_bias": "High concern (reliance on unvalidated self-report survey items and non-audio-recorded interviewer notes; no psychometric validation or pre-testing reported; 3 B.C. respondents checked both satisfied and unsatisfied on the job satisfaction question; Figures 3 and 5 omit category axis labels in the published PDF; and salary category counts on PDF p. 7 sum to 99 [50 + 16 + 33] despite N = 79 respondents).",
+      "outcome_measurement_quality": "Moderate-to-low concern for subjective perceptions, High concern for objective system/workforce outcomes (workforce outcomes—job satisfaction, retention history, hours, pay, certification adequacy, and operational challenges—are self-reported by operators without administrative payroll/certification verification, and no physical or microbiological drinking water quality parameters are directly measured).",
+      "reporting_bias": "Moderate concern (no pre-registration or survey instrument appendix; category axis labels are missing from published Figures 3 and 5 [PDF pp. 9, 13]; salary subgroup counts on PDF p. 7 do not sum to the sample total [50 + 16 + 33 = 99 vs. N = 79]; and Ontario interviews mention 'community leaders' in Methods [PDF p. 4] without reporting leader counts or distinct findings).",
+      "selection_bias": "High concern (Ontario qualitative sample had severe recruitment loss—45 communities listed, 28 reached/confirmed, and only 8 agreed to interviews [18% of list; 29% of confirmed], with non-participation linked to fear of repercussions and restricted to accessible southern Ontario 'best case' communities; B.C. quantitative sample [n = 79] used convenience sampling at an 'Operational Excellence' conference, excluding operators whose communities lacked funds or band support to attend and reporting no conference attendance denominator)."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "S1",
+        "domain_name": "Screening S1: Are there clear research questions?",
+        "justification": "The study clearly states its objective to investigate operator training, retention, and job satisfaction among First Nations drinking water system operators in Ontario and British Columbia.",
+        "rating": "Yes",
+        "where_found": "Abstract (PDF p. 2); Introduction / Methods transition (PDF p. 4)"
+      },
+      {
+        "domain_id": "S2",
+        "domain_name": "Screening S2: Do the collected data allow to address the research questions?",
+        "justification": "Semi-structured interviews in Ontario (n = 8 communities) and structured questionnaires in British Columbia (n = 79 operators) directly collect primary data on certification, working conditions, compensation, job satisfaction, retention, and governance/funding challenges.",
+        "rating": "Yes",
+        "where_found": "Methods (PDF pp. 4-6); Results (PDF pp. 6-13)"
+      },
+      {
+        "domain_id": "1.1",
+        "domain_name": "Qualitative 1.1: Is the qualitative approach appropriate to answer the research question?",
+        "justification": "An exploratory qualitative approach using semi-structured interviews was appropriate to uncover institutional, political, and day-to-day operational challenges affecting First Nations water operators and to inform subsequent survey construction.",
+        "rating": "Yes",
+        "where_found": "Methods: Semi-Structured Interviews in Ontario First Nations Communities (PDF pp. 4-6)"
+      },
+      {
+        "domain_id": "1.2",
+        "domain_name": "Qualitative 1.2: Are the qualitative data collection methods adequate to address the research question?",
+        "justification": "In-person and telephone semi-structured interviews covering defined themes were appropriate, and recording responses on paper questionnaires rather than audio tape was ethically justified because participants feared repercussions. However, the interview guide, interview duration, and role/number of 'community leaders' mentioned on PDF p. 4 (versus 'eight operators' on PDF p. 5) are not fully specified.",
+        "rating": "Yes",
+        "where_found": "Methods: Semi-Structured Interviews in Ontario First Nations Communities (PDF pp. 4-5)"
+      },
+      {
+        "domain_id": "1.3",
+        "domain_name": "Qualitative 1.3: Are the findings adequately derived from the data?",
+        "justification": "The analytic procedure is described in a single sentence ('responses were coded and classified during data analysis and key quotes were retained'), with no description of the coding process, codebook, number of coders, or thematic analysis method, and no raw verbatim quotes from Ontario interviews are presented to show how themes were derived from hand-written notes.",
+        "rating": "Can't tell",
+        "where_found": "Methods (PDF p. 5); Results: Ontario First Nations (PDF pp. 6-7)"
+      },
+      {
+        "domain_id": "1.4",
+        "domain_name": "Qualitative 1.4: Is the interpretation of results sufficiently substantiated by data?",
+        "justification": "While B.C. open-ended survey snippets are tabulated in Tables 2 and 3, the qualitative Ontario findings and institutional interpretations in the Discussion (e.g., refusal to approve chlorine purchase, user-fee diversion, family relationships with Band Council) rely on unquoted interviewer summaries without verbatim quotations or participant identifiers to verify evidentiary grounding.",
+        "rating": "Can't tell",
+        "where_found": "Results: Ontario First Nations (PDF pp. 6-7); Discussion (PDF pp. 14-16)"
+      },
+      {
+        "domain_id": "1.5",
+        "domain_name": "Qualitative 1.5: Is there coherence between qualitative data sources, collection, analysis and interpretation?",
+        "justification": "There is clear logical alignment between the research aim, interviews with First Nations water operators, thematic focus on certification/retention/funding/Band Council relations, and the resulting policy interpretations and B.C. survey design.",
+        "rating": "Yes",
+        "where_found": "Methods (PDF pp. 4-6); Results (PDF pp. 6-7); Discussion (PDF pp. 14-16)"
+      },
+      {
+        "domain_id": "4.1",
+        "domain_name": "Quantitative Descriptive 4.1: Is the sampling strategy relevant to address the research question?",
+        "justification": "Distributing questionnaires at the 7th Annual BC First Nation Water and Wastewater Operational Excellence Conference reached 79 First Nations water operators across interior, coastal, and island communities—a pragmatic strategy to access a geographically dispersed workforce.",
+        "rating": "Yes",
+        "where_found": "Methods: Structured Interviews with Operators from British Columbia (B.C.) First Nations Communities (PDF p. 5)"
+      },
+      {
+        "domain_id": "4.2",
+        "domain_name": "Quantitative Descriptive 4.2: Is the sample representative of the target population?",
+        "justification": "Although the authors assert belief that the 79 respondents (~40% of B.C. operators assuming one per community) are representative, convenience sampling at an 'Operational Excellence Conference and Interactive Trade Show' systematically selects for operators with travel funding, training access, or administrative support, and no demographic or geographic comparison to the provincial operator population is provided (nor is it verified that each respondent came from a distinct community).",
+        "rating": "No",
+        "where_found": "Methods (PDF p. 5)"
+      },
+      {
+        "domain_id": "4.3",
+        "domain_name": "Quantitative Descriptive 4.3: Are the measurements appropriate?",
+        "justification": "The closed-answer survey was newly constructed from Ontario interview feedback without reported pilot testing or validity/reliability checks. Measurement and reporting flaws are evident: 3 respondents checked both 'satisfied' and 'unsatisfied' on the job satisfaction item (PDF p. 10), salary counts on PDF p. 7 do not sum to N = 79 (50 + 16 + 33 = 99), and horizontal category labels are missing from Figures 3 and 5 (PDF pp. 9, 13).",
+        "rating": "Can't tell",
+        "where_found": "Methods (PDF p. 5); Results (PDF pp. 7-13)"
+      },
+      {
+        "domain_id": "4.4",
+        "domain_name": "Quantitative Descriptive 4.4: Is the risk of nonresponse bias low?",
+        "justification": "The total number of operators attending the B.C. conference or invited to complete the survey is not reported, making the unit response rate unknown; item nonresponse also occurred on key items (e.g., 8 blank on job satisfaction, 9 blank on years of experience, unreported/misprinted non-disclosure count on salary). In the linked Ontario recruitment, 17 of 45 communities could not be reached/confirmed and 20 of 28 confirmed communities declined or did not return calls.",
+        "rating": "No",
+        "where_found": "Methods (PDF p. 5); Results (PDF pp. 7, 10)"
+      },
+      {
+        "domain_id": "4.5",
+        "domain_name": "Quantitative Descriptive 4.5: Is the statistical analysis appropriate to answer the research question?",
+        "justification": "Simple descriptive frequency tabulations and percentages in Microsoft Excel match the descriptive exploratory objective, though minor arithmetic/reporting errors appear in the text and figures (e.g., salary counts totaling 99 for 79 respondents on PDF p. 7 and missing x-axis category labels in Figures 3 and 5).",
+        "rating": "Yes",
+        "where_found": "Methods (PDF p. 6); Results (PDF pp. 7-13)"
+      },
+      {
+        "domain_id": "5.1",
+        "domain_name": "Mixed Methods 5.1: Is there an adequate rationale for using a mixed methods design to address the research question?",
+        "justification": "An exploratory sequential rationale is clearly articulated: qualitative interviews in a small sample of Ontario communities explored key operator issues and generated grounded items for a structured quantitative survey of a larger B.C. operator sample, allowing broader cross-provincial comparison.",
+        "rating": "Yes",
+        "where_found": "Methods (PDF pp. 5-6)"
+      },
+      {
+        "domain_id": "5.2",
+        "domain_name": "Mixed Methods 5.2: Are the different components of the study effectively integrated to answer the research question?",
+        "justification": "Integration occurs both methodologically through instrument development (Ontario qualitative findings directly shaped the B.C. structured questionnaire, including the operator challenges checklist) and interpretively in the Discussion and Conclusions comparing Ontario and B.C. patterns.",
+        "rating": "Yes",
+        "where_found": "Methods (PDF pp. 5-6); Results (PDF p. 10); Discussion and Conclusions (PDF pp. 14-17)"
+      },
+      {
+        "domain_id": "5.3",
+        "domain_name": "Mixed Methods 5.3: Are the outputs of the integration of qualitative and quantitative components adequately interpreted?",
+        "justification": "The Discussion meaningfully combines B.C. survey prevalence data on certification deficits, low pay, and perceived challenges with qualitative Ontario accounts of AANDC's 80:20 funding split, Band Council budget control, and local hiring practices to formulate policy recommendations.",
+        "rating": "Yes",
+        "where_found": "Discussion (PDF pp. 10, 14-16); Conclusions (PDF p. 17)"
+      },
+      {
+        "domain_id": "5.4",
+        "domain_name": "Mixed Methods 5.4: Are divergences and inconsistencies between quantitative and qualitative results adequately addressed?",
+        "justification": "Substantial contrasts between the two components—such as 100% certification and 35-40 hr/week full-time employment in the 8 Ontario communities versus 58% adequate certification and 50% working 0-19 hr/week in B.C.—are reported separately, and Conclusions (PDF p. 17) briefly note Ontario sites were relatively affluent/accessible 'best case' systems, but divergences are not systematically reconciled against differences in provincial governance, system size, or sampling frames.",
+        "rating": "Can't tell",
+        "where_found": "Results (PDF pp. 6-8); Discussion (PDF pp. 10, 14); Conclusions (PDF p. 17)"
+      },
+      {
+        "domain_id": "5.5",
+        "domain_name": "Mixed Methods 5.5: Do the different components of the study adhere to the quality criteria of each tradition of the methods involved?",
+        "justification": "Per MMAT 2018 criteria, methodological quality is compromised in both components: the qualitative strand lacks transparent coding procedures and verbatim Ontario quotations (alongside 8/45 recruitment), while the quantitative descriptive strand relies on a non-representative conference convenience sample with an unreported response rate, unvalidated items, missing figure labels, and a salary tally discrepancy.",
+        "rating": "No",
+        "where_found": "Methods (PDF pp. 4-6); Results (PDF pp. 6-13)"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Ontario recruitment attrition and non-participation (Selection bias / MMAT 4.4)",
+        "page": "PDF Page 5 (Methods)",
+        "quote": "From this list of 28 communities, water treatment plant operators were contacted directly to"
+      },
+      {
+        "criterion": "Qualitative data recording and coding summary (MMAT 1.2 / 1.3)",
+        "page": "PDF Page 5 (Methods)",
+        "quote": "Interview responses were recorded on paper questionnaires by the interviewer. Both open and closed"
+      },
+      {
+        "criterion": "Context for non-recorded interviews and selection/response sensitivity (MMAT 1.2 / Selection bias)",
+        "page": "PDF Page 5 (Methods)",
+        "quote": "who agreed to participate in the study feared that they could face repercussions for speaking with us and"
+      },
+      {
+        "criterion": "Conference convenience sampling for B.C. survey (MMAT 4.1 / 4.2)",
+        "page": "PDF Page 5 (Methods)",
+        "quote": "new surveys were distributed to Water Treatment Plant Operators in B.C. at the 7th Annual BC First"
+      },
+      {
+        "criterion": "Quantitative reporting/tally inconsistency: 50 + 16 + 33 = 99 > N = 79 (MMAT 4.3 / Reporting bias)",
+        "page": "PDF Page 7 (Results)",
+        "quote": "Only 16 reported making greater than $40,000 per year, and the remaining operators (n = 33)"
+      },
+      {
+        "criterion": "Questionnaire item ambiguity on job satisfaction (MMAT 4.3 / Measurement bias)",
+        "page": "PDF Page 10 (Results)",
+        "quote": "3 indicated that they were both satisfied and unsatisfied (they checked both answers)."
+      }
+    ],
+    "overall_narrative_summary": "Murphy et al. (2015) report an exploratory sequential mixed-methods study of drinking water system operators in Canadian First Nations communities, combining semi-structured qualitative interviews in 8 southern Ontario First Nations communities (March–August 2014) with a subsequent closed-ended descriptive survey of 79 First Nations water operators at an annual conference in British Columbia (October 2014). Under the MMAT (2018), the study demonstrates strong mixed-methods rationale and integration (5.1–5.3 = Yes): findings from the exploratory Ontario interviews directly informed the B.C. questionnaire, and both components are coherently synthesized to illuminate how the federal AANDC 80:20 operation-and-maintenance funding split, Band Council budget control, and compensation disparities affect operator certification and retention. However, per MMAT guidance that overall quality cannot exceed the weakest component, the study carries substantial methodological concerns (5.5 = No). In the qualitative strand, recruitment suffered severe selection loss (only 8 of 45 listed / 28 reachable southern Ontario communities agreed to participate, partly due to operators' fear of repercussions), interviews were hand-recorded on paper without audio recording, analytic coding is described in a single sentence without transparent thematic procedures, and Ontario findings are reported without verbatim quotes (1.3, 1.4 = Can't tell). In the quantitative descriptive strand, the B.C. sample relied on convenience sampling at an 'Operational Excellence' conference that likely under-sampled operators from communities lacking training/travel support (4.2 = No), the total conference denominator and survey response rate were not reported (4.4 = No), the unvalidated questionnaire yielded ambiguous responses (e.g., 3 respondents checking both satisfied and unsatisfied; 4.3 = Can't tell), and minor reporting defects appear in the published results (salary counts of 50 + 16 + 33 = 99 exceeding N = 79 on PDF p. 7, and missing category axis labels on Figures 3 and 5).",
+    "overall_rating": "High methodological concern (per MMAT 2018 criterion-grounded narrative judgment, no numeric composite score: screening S1-S2 and integration items 5.1-5.3 are met, but overall quality is constrained by weaknesses in both empirical strands—4.2, 4.4, and 5.5 rated 'No' and 1.3, 1.4, 4.3, and 5.4 rated 'Can't tell')",
+    "paper_read": "full text",
+    "study_design_identified": "Exploratory sequential mixed-methods primary study (qualitative semi-structured interviews in 8 southern Ontario First Nations communities followed by a quantitative descriptive survey of 79 First Nations drinking water operators in British Columbia)",
+    "study_id": "S126",
+    "where_found_summary": "Abstract (PDF p. 2); Introduction (PDF pp. 3-4); Methods: Semi-Structured Interviews in Ontario First Nations Communities & Structured Interviews with Operators from B.C. First Nations Communities (PDF pp. 4-6); Results: Ontario First Nations & B.C. First Nations, Tables 2-3, Figures 1-6 (PDF pp. 6-13); Discussion (PDF pp. 10, 14-16); Conclusions (PDF p. 17).",
+    "why_tool_chosen": "The Methods section explicitly combines two primary empirical components in an exploratory sequential design: (1) semi-structured interviews in 8 Ontario First Nations communities analyzed qualitatively ('a predominantly qualitative analysis of the findings is presented'), which were used to develop (2) a structured, closed-answer survey of 79 First Nations operators in British Columbia analyzed via descriptive statistics ('A descriptive quantitative analysis of the results from the B.C. surveys is presented'). Because it integrates qualitative and quantitative descriptive primary components within a single study, the MMAT (Mixed Methods Appraisal Tool, 2018) with Qualitative (1.1-1.5), Quantitative Descriptive (4.1-4.5), and Mixed Methods (5.1-5.5) blocks is the exact matching instrument."
+  }
+}

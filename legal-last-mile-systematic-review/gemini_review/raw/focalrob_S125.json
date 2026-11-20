@@ -1,0 +1,292 @@
+{
+  "study_id": "S125",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_text_sha256": "38a526510700674e2b23b47aaf87bc6a36471df63ed7ad50fd3b3c59d1167cad",
+  "prompt_sha256": "774fe6deee89c63f4d2b2ab631ef1843b3358dba84e4914d1694bac174d09e88",
+  "started_at": "2026-11-20T17:30:31.455288+00:00",
+  "completed_at": "2026-11-20T17:32:31.043906+00:00",
+  "raw_request": {
+    "type_name": "blind_rob_appraiser",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "study_design_identified",
+        "chosen_tool",
+        "why_tool_chosen",
+        "overall_rating",
+        "domain_ratings",
+        "cross_tool_domains",
+        "overall_narrative_summary",
+        "where_found_summary",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "study_design_identified": {
+          "type": "string"
+        },
+        "chosen_tool": {
+          "type": "string",
+          "enum": [
+            "RoB 2 (parallel-trial variant)",
+            "RoB 2 (cluster-randomized trials variant)",
+            "ROBINS-I",
+            "JBI Critical Appraisal Checklist for Analytical Cross Sectional Studies",
+            "JBI Critical Appraisal Checklist for Cohort Studies",
+            "CASP Qualitative Checklist",
+            "MMAT (Mixed Methods Appraisal Tool)",
+            "AMSTAR 2",
+            "Legal Institutional Evidence Appraisal Framework",
+            "NONE",
+            "cannot_tell"
+          ]
+        },
+        "why_tool_chosen": {
+          "type": "string"
+        },
+        "overall_rating": {
+          "type": "string"
+        },
+        "domain_ratings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "domain_id",
+              "domain_name",
+              "rating",
+              "where_found",
+              "justification"
+            ],
+            "properties": {
+              "domain_id": {
+                "type": "string"
+              },
+              "domain_name": {
+                "type": "string"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "where_found": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "cross_tool_domains": {
+          "type": "object",
+          "required": [
+            "selection_bias",
+            "measurement_bias",
+            "confounding",
+            "attrition",
+            "reporting_bias",
+            "legal_measurement_quality",
+            "outcome_measurement_quality"
+          ],
+          "properties": {
+            "selection_bias": {
+              "type": "string"
+            },
+            "measurement_bias": {
+              "type": "string"
+            },
+            "confounding": {
+              "type": "string"
+            },
+            "attrition": {
+              "type": "string"
+            },
+            "reporting_bias": {
+              "type": "string"
+            },
+            "legal_measurement_quality": {
+              "type": "string"
+            },
+            "outcome_measurement_quality": {
+              "type": "string"
+            }
+          }
+        },
+        "overall_narrative_summary": {
+          "type": "string"
+        },
+        "where_found_summary": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    }
+  },
+  "raw_response": {
+    "chosen_tool": "CASP Qualitative Checklist",
+    "confidence": "high",
+    "cross_tool_domains": {
+      "attrition": "Can't tell / Not applicable: Fieldwork was conducted across 18 rural localities between 2002 and 2009 without a tracked longitudinal participant cohort; non-participation or drop-out in community meetings and interviews is not reported.",
+      "confounding": "Not directly applicable (qualitative ethnographic study without quantitative causal identification): Design purposefully spans three contrasting biomes, water-availability regimes, and land-tenure systems (São Francisco, Jequitinhonha, Serra da Mantiqueira) to examine whether customary common-water norms persist across ecological contexts, but socio-historical and institutional influences are interpreted narratively rather than statistically controlled.",
+      "legal_measurement_quality": "Mixed (strong for customary norms, weak for formal state law): Customary water-sharing norms, usufruct servitudes retained after land sales, property/domain gradients (family springs, community streams, public rivers, private impoundments), and social/moral sanctions are richly operationalized from primary fieldwork (PDF pp. 8-15). Formal statutory and administrative law—such as Brazil's Lei das Águas, Instituto Estadual de Florestas policing/fines, and charcoal deforestation licensing—is discussed broadly without statutory citations, permit provisions, or documentary verification (PDF pp. 13, 15).",
+      "measurement_bias": "Moderate concern: Triangulation across environmental/land-use observation guides, open-ended household interviews, and collective community meetings strengthens qualitative validity (PDF p. 4), but audio-recording/transcription procedures, interview counts, analytic coding methods, and researcher reflexivity regarding union/NGO/church intermediaries are unreported.",
+      "outcome_measurement_quality": "Moderate (qualitative and perceptual only): Water quality, availability, and governance outcomes are captured through emic folk taxonomies (living/running vs. dead/stagnant; small spring vs. large river waters) and narrative case accounts (e.g., 26 springs fenced and revegetated over five years in Alto Jequitinhonha; livelihood trade-offs in Rio dos Cochos, PDF p. 13), with no hydrological, microbiological, or quantitative household water-access measurements.",
+      "reporting_bias": "Moderate concern: Findings are coherently organized and illustrated with verbatim informant excerpts across all three regions, but no pre-specified protocol or qualitative coding audit trail is described, dissenting intra-community perspectives are not systematically analyzed, and the contents of Quadro 1 (PDF p. 2) and Quadro 2 (PDF p. 12) were not rendered in the extracted PDF text.",
+      "selection_bias": "Moderate concern: Purposive selection of 18 communities across three contrasting regions and explicit household diversity criteria (age, family composition, land access, farm size, residence duration, water availability, spatial location, kinship, religion) are described (PDF pp. 2, 4), but recruitment relied on rural unions, NGOs, parishes, and social movements as gatekeepers, total sample size and refusal rates are unreported in prose, and Quadro 1 is absent from the text layer."
+    },
+    "domain_ratings": [
+      {
+        "domain_id": "Q1",
+        "domain_name": "Clear statement of the aims of the research",
+        "justification": "The authors explicitly state three clear research aims: analyzing how rural populations construct the notion of water as a common good, investigating the cultural and material foundations of that conception, and assessing the impacts of centralized water management on local community water governance amid tensions with privatization.",
+        "rating": "Yes",
+        "where_found": "PDF Page 2 (p. 78, 'População rural e água') and PDF Page 18 (p. 94, 'Resumo')"
+      },
+      {
+        "domain_id": "Q2",
+        "domain_name": "Qualitative methodology appropriate",
+        "justification": "A qualitative, ethnographic approach is directly appropriate for investigating unwritten customary norms, moral economies ('ética das águas'), folk classifications of water quality, and lived perceptions of conflict with state water and environmental regulation.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 2-4 (pp. 78-80, 'A pesquisa') and PDF Pages 8-14 (pp. 84-90)"
+      },
+      {
+        "domain_id": "Q3",
+        "domain_name": "Research design appropriate to address the aims of the research",
+        "justification": "The authors justify a multi-site comparative field design (2002-2009) across 18 rural communities/bairros rurais in three environmentally and hydrologically contrasting regions of Minas Gerais (São Francisco, Jequitinhonha, and Serra da Mantiqueira), grounding their choice of the rural community/bairro as the social and territorial unit of analysis in established Brazilian rural sociology and anthropology literature.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 2-4 (pp. 78-80, 'A pesquisa')"
+      },
+      {
+        "domain_id": "Q4",
+        "domain_name": "Recruitment strategy appropriate to the aims of the research",
+        "justification": "The paper explains how the 18 communities were selected via exploratory regional surveys with rural workers' unions, NGOs, religious bodies, associations, and social movements, and lists explicit purposive heterogeneity criteria for selecting interviewed farming households (age, family composition, land access, farm size, length of residence, main activity, water availability, spatial distribution, kinship, and religion). However, exact household interview counts and non-participation are not stated in the prose (and Quadro 1 was not rendered in the PDF text extraction).",
+        "rating": "Yes",
+        "where_found": "PDF Page 2 (p. 78, 'A pesquisa') and PDF Page 4 (p. 80, 'A pesquisa')"
+      },
+      {
+        "domain_id": "Q5",
+        "domain_name": "Data collected in a way that addressed the research issue",
+        "justification": "While the authors describe using two research guides (one for environmental, land-sharing, and cropping observation; another open-ended interview guide on family, community, land, and water) plus collective community meetings, they do not report how interviews and meetings were recorded (e.g., audio-taping vs. field notes), the number or duration of interviews, whether guides were modified during fieldwork, or whether thematic saturation was reached.",
+        "rating": "Can't tell",
+        "where_found": "PDF Page 4 (p. 80, 'A pesquisa')"
+      },
+      {
+        "domain_id": "Q6",
+        "domain_name": "Relationship between researcher and participants adequately considered (reflexivity)",
+        "justification": "Although field access and project support involved local unions, Caritas, parish organizations, and an alternative agriculture NGO (Footnote i, p. 77; p. 80; p. 89), the authors do not critically examine their own positionality, researcher-participant power relations, or how institutional gatekeepers and advocacy partners may have shaped participant selection and responses.",
+        "rating": "No",
+        "where_found": "PDF Page 1 (p. 77, Footnote i) and PDF Page 4 (p. 80, 'A pesquisa')"
+      },
+      {
+        "domain_id": "Q7",
+        "domain_name": "Ethical issues taken into consideration",
+        "justification": "The authors explicitly report holding prior meetings in the studied localities to request families' consent, clarify the study's objectives and methods, and establish how research results would be returned to the communities; informant quotes are presented using first names only or generic regional descriptors. Formal institutional ethics committee review is not mentioned, though substantive community consent and reciprocity procedures are documented.",
+        "rating": "Yes",
+        "where_found": "PDF Page 4 (p. 80, 'A pesquisa') and PDF Pages 8-14 (pp. 84-90)"
+      },
+      {
+        "domain_id": "Q8",
+        "domain_name": "Data analysis sufficiently rigorous",
+        "justification": "The interpretive synthesis is conceptually coherent and supported by cross-regional ethnographic descriptions and informant quotations, but the paper provides no explicit account of the qualitative analysis procedure—such as how field notes/transcripts were coded, how the analytical categories in Quadro 2 were derived, how multiple researchers reconciled interpretations, or how contradictory cases were handled.",
+        "rating": "Can't tell",
+        "where_found": "PDF Pages 4, 8-15 (pp. 80, 84-91; 'A pesquisa', 'A água como bem comum', 'Gestão comunitária das águas')"
+      },
+      {
+        "domain_id": "Q9",
+        "domain_name": "Clear statement of findings",
+        "justification": "Findings are clearly articulated and synthesized around four pillars of community water governance: water as a gift of nature and common patrimony, an ethic of shared use and reciprocity, customary rules differentiating access and intensity of use, and concentric gradients of control (family spring, community stream, public river, private impoundment) alongside tensions with statutory water and environmental enforcement.",
+        "rating": "Yes",
+        "where_found": "PDF Pages 8-15 (pp. 84-91, especially 'Gestão comunitária das águas' on p. 90 and 'A lei e o costume' on p. 91)"
+      },
+      {
+        "domain_id": "Q10",
+        "domain_name": "How valuable is the research",
+        "justification": "Narrative assessment: High substantive value for understanding informal 'last-mile' water governance in rural Brazil. The study demonstrates how customary property and usufruct norms regulate drinking-water springs and explains why top-down statutory enforcement (such as state forestry policing or centralized economic framing under Brazil's Water Law) can generate resistance or inequitable conservation burdens unless aligned with local common-pool norms, as illustrated by the NGO-supported community fencing of 26 springs in Alto Jequitinhonha.",
+        "rating": "High substantive value (narrative assessment)",
+        "where_found": "PDF Pages 13-15 (pp. 89-91, 'A água mediada', 'Gestão comunitária das águas', 'A lei e o costume')"
+      }
+    ],
+    "evidence_quotes": [
+      {
+        "criterion": "Q1 Clear statement of research aims",
+        "page": "PDF Page 2 (p. 78, População rural e água)",
+        "quote": "Este artigo tem por objetivos analisar a noção da água com bem comum construída"
+      },
+      {
+        "criterion": "Q3 Multi-site longitudinal qualitative field design (2002-2009)",
+        "page": "PDF Page 2 (p. 78, A pesquisa)",
+        "quote": "Esse estudo é fruto de pesquisa realizada entre 2002 e 2009 em comunidades"
+      },
+      {
+        "criterion": "Q4 Purposive household sampling criteria",
+        "page": "PDF Page 4 (p. 80, A pesquisa)",
+        "quote": "As entrevistas foram feitas com famílias de lavradores diferenciadas por critérios"
+      },
+      {
+        "criterion": "Q7 Community consent and result-return meetings",
+        "page": "PDF Page 4 (p. 80, A pesquisa)",
+        "quote": "Nas localidades pesquisadas foram organizadas reuniões para solicitar consentimento"
+      },
+      {
+        "criterion": "Q5 Data collection instruments (observation and open interview guides)",
+        "page": "PDF Page 4 (p. 80, A pesquisa)",
+        "quote": "Foram usados dois roteiros de pesquisa: um para observação do ambiente, partilha"
+      },
+      {
+        "criterion": "Q10 / Legal-customary comparison in Alto Jequitinhonha spring conservation",
+        "page": "PDF Page 13 (p. 89, A água mediada)",
+        "quote": "Por um lado, o Instituto Estadual de Florestas impunha a conservação de mananciais"
+      }
+    ],
+    "overall_narrative_summary": "Galizoni and Ribeiro (2011) present a multi-site qualitative ethnographic study conducted between 2002 and 2009 across 18 rural communities in three environmentally distinct regions of Minas Gerais (São Francisco valley, Jequitinhonha valley, and Serra da Mantiqueira). Appraised with the CASP Qualitative Checklist, the study has clear aims (Q1: Yes), an appropriate qualitative and comparative territorial design grounded in rural sociological theory (Q2: Yes; Q3: Yes), explicit purposive household selection criteria (Q4: Yes), documented community consent and feedback meetings (Q7: Yes), and a coherent, valuable synthesis of customary water-sharing norms, folk water-quality classifications, and friction with state water/forestry regulation (Q9: Yes; Q10: High value). Methodological concerns are moderate overall (2 'Can't tell' items and 1 'No' item): data collection mechanics such as interview counts, recording/transcription procedures, and saturation are not reported (Q5: Can't tell; Quadro 1 and Quadro 2 were also not rendered in the PDF text layer), researcher reflexivity regarding union/NGO/church gatekeepers and partner organizations is absent (Q6: No), and qualitative coding and analytical verification procedures are not described (Q8: Can't tell).",
+    "overall_rating": "Moderate concern (2 Can't tell, 1 No items)",
+    "paper_read": "full text",
+    "study_design_identified": "Multi-site qualitative ethnographic field study (open-ended household interviews, environmental/land-use observation, and community meetings across 18 rural communities in three regions of Minas Gerais, 2002-2009)",
+    "study_id": "S125",
+    "where_found_summary": "Study aims on PDF Page 2 (p. 78) and Page 18 (p. 94, Resumo); study design, regional site descriptions, sampling criteria, consent meetings, and data collection instruments in 'A pesquisa' on PDF Pages 2-4 (pp. 78-80; note that embedded tables Quadro 1 on PDF Page 2 and Quadro 2 on PDF Page 12 were omitted in text extraction, while all 18 pages of prose are intact); theoretical framework on PDF Pages 4-8 (pp. 80-84); empirical qualitative findings and legal-customary analysis on PDF Pages 8-15 (pp. 84-91).",
+    "why_tool_chosen": "The study collects and analyzes primary qualitative fieldwork data (open-ended interviews with farming families, environmental/land observation guides, and community meetings across 18 rural localities) with no quantitative statistical component, matching the CASP Qualitative Checklist under RISK_OF_BIAS.md §1."
+  }
+}
