@@ -1,0 +1,400 @@
+{
+  "study_id": "S537",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "c3725f8492a5fb103f4acdb7e8f21567cbdae9b0e74af2126b6ff4c4780b863f",
+  "input_text_sha256": "4fd1b0f82a11a863b84c9ed9ad0ab71f8de6c62f1c9782aec2f9eb3b8f3b5eda",
+  "prompt_sha256": "e00366cbf7f8e4e262a3ea1772e002d5389210b494f70cf665a9d22315c13e52",
+  "started_at": "2026-11-20T01:05:17.839776+00:00",
+  "completed_at": "2026-11-20T01:07:48.739453+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S537\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S537\n- Record ID: REA101C40B5BB\n- Citation: Alam MU, Rahat MA, Nawaz S, Neeher N, Tabassum KF, Upoma TA, Kamal A, Evans B, Hutchings P (2025). \"Behaviour change interventions to promote household connectivity to sewer: a scoping review.\" Global Health Action, 18(1), 2476335.\n- DOI: 10.1080/16549716.2025.2476335\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 4fd1b0f82a11a863b84c9ed9ad0ab71f8de6c62f1c9782aec2f9eb3b8f3b5eda) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=70808, sha256=4fd1b0f82a11a863b84c9ed9ad0ab71f8de6c62f1c9782aec2f9eb3b8f3b5eda]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Research questions and eligibility criteria specify Population (urban and rural households globally), Intervention (behaviour change interventions including indirect connection subsidies, promotion, education, and community engagement for off-site sewers), and Outcome (change in household sewer connections), but no Comparator group is specified.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "Authors state a review protocol was developed in January 2023 specifying research questions, inclusion/exclusion criteria, and data sources (Supplementary Table S1), but there is no prospective protocol registration, no statement that risk-of-bias/critical-appraisal and synthesis plans were pre-specified in the protocol, and no reporting on protocol deviations.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Authors state they included journal articles and institutional/technical reports and excluded review articles, but provide no methodological justification for selecting uncontrolled project reports/case studies or excluding/including specific empirical study designs.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Authors searched four bibliographic databases (PubMed, Cochrane, Scopus, ProQuest via Hinari), consulted a librarian, searched grey literature (Google, Google Scholar, World Bank, WSUP, Practical Action, WaterAid) and reference lists, and provided search terms (Supplementary Table 3), but restricted inclusion to English-language publications without justification, failing AMSTAR 2 Q4 language-restriction criteria.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Three reviewers (MUA, AR, SN) screened titles/abstracts, re-checked excluded records, and screened full texts in duplicate with disagreements resolved by discussion and third-reviewer approval.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Authors report that two reviewers extracted data on each theme under guidance of MUA (and list seven contributors building the data matrix), but do not explicitly confirm independent duplicate extraction per study with a consensus procedure or agreement check.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "Figure 2 reports aggregate exclusion reasons for the 22 excluded full-text articles, and no list of excluded studies is printed in the article; the text refers to 'supplementary Table 3' for exclusion reasons, which conflicts with p. 5 identifying Supplementary Table 3 as the search strategy table.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Tables 1 and 2 and narrative summaries describe country/city settings, target population sizes, intervention packages, project costs, timeframes, and connection outcomes, though study designs and baseline/comparator details are sparsely characterized (mostly labelled simply 'Primary' project overviews).",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "Authors adapted an 8-item JBI Critical Appraisal Checklist for Case Reports (reporting clarity, history, demographics, lessons), which assesses descriptive reporting completeness rather than risk of bias in non-randomized intervention studies (omitting confounding, selection bias, secular/concurrent mandates, and selective outcome reporting).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Table 2 reports programme capital/implementation budgets for several sewerage projects, but the review does not report the funding sources of all individual included primary studies/reports.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No meta-analysis or statistical pooling was performed; results were synthesized narratively and displayed descriptively in Figure 4.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Although Limitations briefly notes the absence of RCTs across the 11 cases, the Discussion does not incorporate study-level quality/risk-of-bias ratings when interpreting effectiveness claims (and never identifies in the text which study scored 'poor quality' [3.50] on critical appraisal).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Authors discuss contextual drivers of variation in connection uptake across cases, including São Paulo's water crisis (19% uptake despite free connections), household cost burdens in Pakistan and Tamil Nadu, and socio-economic/geographic differences.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis/meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "Authors explicitly report no potential conflicts of interest and disclose funding from EPSRC (Water-WISER CDT, EP/S022066/1) and the University of Leeds Crucible programme.",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "PubMed, Cochrane, Scopus, and ProQuest (through Hinari); grey literature via Google, Google Scholar (first 300 results), and websites of the World Bank, WSUP, Practical Action, and WaterAid, plus reference list checking",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_self_description",
+        "page": "PDF p. 3 (journal p. 2)",
+        "quote": "The aim of this scoping review was to summarise the available evidence for the effectiveness of behaviour change interventions in promoting better household connectivity to sewers."
+      },
+      {
+        "criterion": "databases_searched",
+        "page": "PDF p. 4 (journal p. 3)",
+        "quote": "Two reviewers (AR and SN), under the guidance of MUA developed a search strategy and independently searched PubMed, Cochrane, Scopus, and ProQuest through Hinari databases for peer-reviewed literature published from 1 January 1980 to 31 December 2022."
+      },
+      {
+        "criterion": "included_studies_count_reported",
+        "page": "PDF p. 6 (journal p. 5)",
+        "quote": "Among those case studies, five met the inclusion criteria of this review [9] and were included as five distinct studies. The selection process is summarised in Figure 2. The studies are summarised in Table 2."
+      },
+      {
+        "criterion": "narrow_criterion2_fit",
+        "page": "PDF p. 12 (journal p. 11)",
+        "quote": "The state government created Law 7307 of 1998 to mandate households to connect to sewerage"
+      },
+      {
+        "criterion": "methodological_limitations",
+        "page": "PDF p. 17 (journal p. 16)",
+        "quote": "Inferences drawn from our review are limited to only eleven cases, with no RCT, and no study has checked the effectiveness of any particular intervention on the uptake of household sewer connectivity."
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "10.4136/ambi-agua.2419",
+        "first_author_surname": "Sachet",
+        "title_or_topic": "Sustainability analysis of new household connections to the municipal sewage collection network in Paraná (Connect to the Network, Paraná, Brazil)",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 9), Results (p. 7, 15), Ref [30]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kennedy-Walker",
+        "title_or_topic": "Connecting the unconnected: approaches for getting households to connect to sewerage networks — Case study: Espírito Santo, Brazil",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 9), Results (p. 6, 7, 8, 15), Ref [9]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kennedy-Walker",
+        "title_or_topic": "Connecting the unconnected: approaches for getting households to connect to sewerage networks — Case study: Colombia (Connect-with-water program)",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 9), Results (p. 6, 7, 8, 15-16), Ref [9]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kennedy-Walker",
+        "title_or_topic": "Connecting the unconnected: approaches for getting households to connect to sewerage networks — Case study: Guayaquil, Ecuador",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 10), Results (p. 6, 7, 15, 16), Ref [9]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kennedy-Walker",
+        "title_or_topic": "Connecting the unconnected: approaches for getting households to connect to sewerage networks — Case study: São Paulo, Brazil (Se liga na rede)",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 10), Results (p. 6, 7, 8), Ref [9]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Kennedy-Walker",
+        "title_or_topic": "Connecting the unconnected: approaches for getting households to connect to sewerage networks — Case study: Tamil Nadu, India (TNUDP III)",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 11), Results (p. 6, 15), Ref [9]",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Advani",
+        "title_or_topic": "Implementation completion and results report (Nairobi Output-Based Aid sewer connection program, Kenya)",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 12), Results (p. 8, 15, 16), Ref [37]",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Melo",
+        "title_or_topic": "The experience of condominial water and sewerage systems in Brazil. Case studies from Brasılia, Salvador and Parauapebas (Bahia Azul, Salvador, Brazil)",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 12), Results (p. 7, 8, 15, 16), Ref [20]",
+        "year": "2005"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Foster",
+        "title_or_topic": "Condominial water and sewerage systems - costs of implementation of the model: an economic and financial evaluation of El alto Pilot project in Bolivia",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 13), Results (p. 7, 15), Ref [28]",
+        "year": "2001"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Chauvot de Beauchêne",
+        "title_or_topic": "Output-based aid: extending water and sanitation services to the poor in periurban Morocco",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 14), Results (p. 7-8, 8, 15-16), Ref [31]",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Robinson",
+        "title_or_topic": "Lessons learned from Bangladesh, India, and Pakistan - scaling-up rural sanitation in South Asia (Lodhran Pilot Project, Pakistan; cited in Tables 1-2 as 'Rural, S.U., 2005' and Refs [29]/[38])",
+        "where_in_review": "Table 1 (p. 8), Table 2 (p. 14), Results (p. 6, 15), Refs [29] & [38]",
+        "year": "2005"
+      }
+    ],
+    "included_studies_count_reported": 11,
+    "included_studies_list_completeness": "complete_inline_table_or_list",
+    "methodological_notes": "1. Review design & AMSTAR 2 fit: Although framed and reported as a PRISMA-ScR scoping review, the review poses an intervention-effectiveness question ('effectiveness of behaviour change interventions in increasing the uptake of sewer connections'), executes dual screening with a PRISMA flow diagram, and conducts formal critical appraisal (adapted JBI Case Reports checklist), making it a scoping/effectiveness hybrid ('borderline_scoping_realist_or_hybrid'). Under AMSTAR 2 it rates 'Critically Low' due to lack of a pre-registered protocol (Q2), unjustified English-only restriction (Q4), absence of an inline individual excluded-studies list and conflicting table numbering for Supplementary Table 3 (Q7), use of a descriptive case-report checklist rather than a true NRSI risk-of-bias tool covering confounding/selection bias (Q9), and causal-style effectiveness conclusions drawn from uncontrolled project reports without weighting by RoB (Q13). 2. Narrow Criterion 2 fit ('borderline_narrow_c2'): The review explicitly targets 'last-mile' household sewer connectivity, operationalizing 'behaviour change interventions' broadly to include indirect subsidies/connection-fee waivers and Output-Based Aid, while Table 2 also documents statutory/regulatory connection mandates (e.g., Bahia Law 7307 of 1998, São Paulo 2002 connection mandate, Tamil Nadu 100-meter mandatory connection rule, contractor-resident agreements in Ecuador). However, legal/regulatory/tenure rules were not the primary eligibility criterion (the Abstract explicitly contrasts behaviour change against legal barriers), making narrow Criterion 2 borderline. 3. Primary-study double-counting & bibliographic audit: Although the review reports n = 11 included studies, these derive from only 7 unique source documents (only 1 peer-reviewed journal article, Sachet & Bilotta 2020 [30], and 6 institutional/World Bank reports). Five of the 11 included studies are country/city case studies extracted from a single World Bank secondary report (Kennedy-Walker et al., 2020 [9] — itself a flagship 'Connecting the Unconnected' synthesis likely in the Legal Last Mile corpus!). Additionally, the Pakistan Lodhran Pilot Project report is cited twice in the bibliography ([29] Robinson 2005 and [38] World Bank 2005) and mangled in Tables 1-2 as 'Rural, S.U., 2005. Sanitation in South Asia', Sachet (2020) is abbreviated 'MadC S' in Ref [30], and Figure 4 mislabels El Alto, Bolivia as 'Guayaquil, Bolivia'.",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "scoping review (following PRISMA-ScR guidelines, with adapted JBI critical appraisal)",
+    "study_id": "S537"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "study_id": "S418",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "0e332e01597222be61e77aa3cb90b00696044f361ec76c05e5438931787546d6",
+  "input_text_sha256": "bb0a17cf14db16a3e1336c969a83582d9c05b1875673528d5dfbabafdc8112a1",
+  "prompt_sha256": "debad26526ab28c679a721bbe914440fc0d075f88502ecff34353413e72e560b",
+  "started_at": "2026-11-20T00:59:02.097432+00:00",
+  "completed_at": "2026-11-20T01:03:44.756395+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S418\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S418\n- Record ID: R79E038D49B1A\n- Citation: Brown J, Acey CS, Anthonj C, Barrington DJ, Beal CD, Capone D, Cumming O, Pullen Fedinick K, MacDonald Gibson J, Hicks B, Kozubik M, Lakatosova N, Linden KG, Love NG, Mattos KJ, Murphy HM, Winkler IT (2023). The effects of racism, social exclusion, and discrimination on achieving universal safe water and sanitation in high-income countries. Lancet Global Health 11:e606-e614.\n- DOI: 10.1016/S2214-109X(23)00006-9\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: bb0a17cf14db16a3e1336c969a83582d9c05b1875673528d5dfbabafdc8112a1) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=61961, sha256=bb0a17cf14db16a3e1336c969a83582d9c05b1875673528d5dfbabafdc8112a1]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "inappropriate_not_systematic",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "No structured PICO research question or explicit study inclusion/exclusion criteria are stated; the paper is a thematic Lancet Global Health policy Review describing systemic racism, financing, property-tenure barriers, and disease burden in HICs.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No prior protocol, PROSPERO registration, or pre-established review methodology is mentioned, nor are protocol deviations discussed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "No study-design eligibility criteria or rationale for selecting specific empirical designs are provided; the authors draw broadly on academic literature, key reports, government documents, UN resolutions, and collective author experience.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "The 'Search strategy and selection criteria' box reports searching three databases (PubMed, Web of Science, and Scopus) with no date or language restrictions and refers to search terms in the online appendix (pp 1-3), plus key reports, government documents, and UN resolutions, satisfying Partial Yes criteria, though search dates, registry searches, and systematic bibliography screening are not reported.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "No formal title/abstract or full-text screening process or duplicate study selection is reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "No structured data extraction form or duplicate data extraction process is reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "No PRISMA flow diagram, screening counts, list of excluded full-text studies, or reasons for exclusion are reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "There is no Results section or Characteristics of Included Studies table describing individual study designs, sample sizes, comparators, settings, and outcomes systematically; evidence is cited illustratively in narrative prose and five short regional/population panels.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "No risk-of-bias or methodological quality assessment tool was applied to any cited primary studies.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Funding sources of the individual studies cited in the review are not reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No meta-analysis or quantitative pooling of study results was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis or quantitative synthesis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Because study-level risk of bias was never assessed, the authors do not systematically account for individual primary-study risk of bias when interpreting findings (beyond noting general methodological assumptions in global burden of disease estimates).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "No structured study-level synthesis or formal investigation of heterogeneity across primary study estimates was conducted, although contextual differences across HIC populations and settings are discussed narratively.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis was performed, so publication/small-study bias was not evaluated.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "A detailed 'Declaration of interests' section (p. e612) discloses each author's grants, advisory roles, honoraria, and royalties, and explicitly states that no authors received financial support for producing the manuscript.",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "PubMed, Web of Science, and Scopus (supplemented by key reports, government documents, UN resolutions, and authors' collective experience)",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_and_databases",
+        "page": "Page 7 (e612)",
+        "quote": "Scopus using the search terms given in the appendix (pp 1–3)."
+      },
+      {
+        "criterion": "eligibility_restrictions",
+        "page": "Page 7 (e612)",
+        "quote": "There were no date or language restrictions."
+      },
+      {
+        "criterion": "narrow_criterion2_tenure_and_ability_to_pay",
+        "page": "Page 1 (e606)",
+        "quote": "gender, ability to pay, citizenship status, disability, land tenure, or property rights."
+      },
+      {
+        "criterion": "narrow_criterion2_tariff_full_cost_pricing",
+        "page": "Page 3 (e608)",
+        "quote": "Full-cost pricing is now the norm in many HICs,"
+      },
+      {
+        "criterion": "amstar2_q16_competing_interests",
+        "page": "Page 7 (e612)",
+        "quote": "All other authors declare no competing interests."
+      }
+    ],
+    "included_primary_studies": [],
+    "included_studies_count_reported": 0,
+    "included_studies_list_completeness": "none_printed",
+    "methodological_notes": "S418 (Brown et al., 2023) is a Lancet Global Health thematic/policy 'Review' equipped with a standard 4-sentence Lancet 'Search strategy and selection criteria' box (searching PubMed, Web of Science, and Scopus with search terms in online appendix pp 1-3, no date/language restrictions, plus key reports, government documents, UN resolutions, and the authors' collective field experience). Substantively, it strongly satisfies narrow Criterion 2 (passes_narrow_c2): dedicated sections and panels examine racial municipal underbounding and annexation law (Panel 1), full-cost recovery tariff rules, involuntary water shutoffs/disconnections for unpaid bills, customer assistance programmes, and privatisation (pp. e608-e610), policies tying WASH provision to formal property ownership and housing tenure, eviction of informal Roma settlements lacking formal property rights (Panel 2), and ordinances criminalising septic non-compliance and public urination/defecation (pp. e608-e609). Methodologically, however, it is a narrative review rather than a systematic synthesis (amstar2_fit = inappropriate_not_systematic; AMSTAR 2 = Critically Low with critical flaws on Q2, Q7, Q9, and Q13): there is no protocol, no eligibility criteria, no screening process or PRISMA flow, no Results section, no study count, and no risk-of-bias appraisal. Because zero primary studies were formally selected into an included-studies sample (included_studies_count_reported = 0; none_printed), included_primary_studies is empty; the 91 narrative references mix UN documents, secondary reviews (e.g., Anthonj 2020, Guo 2019, Meehan 2020, Wutich 2022, Wolf 2018), commentaries, and illustrative empirical studies (e.g., Lockhart 2020 and Hunter 2021 in Panel 1; Rosa 2019 in Panel 2; Ares 2017 in Panel 3; Hall 2019 and Jackson 2019 in Panel 4; Hermans 2017 and Dhesi 2018 in Panel 5; and Filcak 2018, Mack 2017, Pierce 2020, Gibson 2020, and MacDonald Gibson 2022 in the text; Refs 71 and 74 also duplicate Murray et al. 2020).",
+    "narrow_criterion2_fit": "passes_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "narrative review with database search (Lancet Global Health Review)",
+    "study_id": "S418"
+  }
+}

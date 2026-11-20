@@ -1,0 +1,554 @@
+{
+  "study_id": "S350",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "479695c3d8134135b8272d77dd46b87cba7611b761a7071097f44c8e253438ba",
+  "input_text_sha256": "b912713926a99462fa0ab43e5d25bb0771af5fefee23628747152b3d04c33c1a",
+  "prompt_sha256": "ee6dd69f9c31ca4dc144e283ce5ea484abf5abeeae0ecc58cb5f485936213456",
+  "started_at": "2026-11-19T19:19:05.150422+00:00",
+  "completed_at": "2026-11-19T19:23:07.903005+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S350\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S350\n- Record ID: R4E8580BFF1F9\n- Citation: Abdulhadi R, Bailey A, Van Noorloos F (2024). Access inequalities to WASH and housing in slums in low- and middle-income countries (LMICs): A scoping review. Glob Public Health 19(1):2369099.\n- DOI: 10.1080/17441692.2024.2369099\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: b912713926a99462fa0ab43e5d25bb0771af5fefee23628747152b3d04c33c1a) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=87162, sha256=b912713926a99462fa0ab43e5d25bb0771af5fefee23628747152b3d04c33c1a]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Explicitly used the PICOC framework (Section 2.1, pp. 5-6) defining Population (slum dwellers), Intervention/Exposure (access to housing and WASH services), Outcomes (experiences around access inequalities), and Context (urban/peri-urban slums in LMICs in Latin America, Sub-Saharan Africa, and South Asia).",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "Authors state that a JBI scoping review protocol exists in online Appendix 1, but explicitly report it was not pre-registered ('was not registered to accommodate the potential evolution of the topic', p. 5) and no risk-of-bias assessment plan was included.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Explicitly justified including qualitative and mixed-methods designs and excluding strictly quantitative studies (p. 7) to capture power dynamics and lived experiences and avoid national survey averages masking vulnerable slum populations.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Searched three databases (PubMed, Scopus, Web of Science) in November 2022 with synonym lists and search strings in Appendices 2-3 and stated reasons for English-only and peer-reviewed-only limits (pp. 5-7), meeting Partial Yes, but explicitly excluded grey literature and did not report reference-list checking, registry searches, or expert consultation.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Two reviewers independently screened the 102 deduplicated titles/abstracts in Rayyan, but full-text eligibility screening of the 57 remaining articles was performed by only one reviewer without duplicate verification or kappa agreement testing (p. 7).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Data extraction for the 33 included studies was performed by a single author in Excel without duplicate extraction or independent verification reported (p. 7).",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "24 articles were excluded at full-text screening (p. 7), but no list of excluded full-text studies with study-specific exclusion reasons is provided in the article or cited appendices (and Figure 1 renders as blank whitespace on PDF p. 8).",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Narrative text describes settings, populations, and substantive barriers, and online Appendix 4 extracts author, year, geographical focus, focus domain, study population, barriers, consequences, and recommendations (p. 7), though detailed study designs, sample sizes, and study timeframes are not reported inline.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "Consistent with standard JBI scoping review conventions, no risk-of-bias or methodological quality appraisal of the 33 included qualitative and mixed-methods primary studies was conducted.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Sources of funding for the 33 included primary studies were not extracted or reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No meta-analysis was conducted; strictly quantitative studies were excluded by design and synthesis was qualitative/thematic.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Because no critical appraisal or risk-of-bias assessment of included studies was performed, study quality/risk of bias was not accounted for when interpreting and discussing review findings.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Authors substantively discuss contextual, regional, settlement-level, socio-economic, and intersectional social-identity heterogeneity across the included studies in both Results and Discussion.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis or meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "Explicitly reports no potential conflict of interest and discloses funding from Utrecht University via the UU Mosaic fund PhD grant (PDF p. 18).",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "PubMed, Scopus, and Web of Science (searched November 2022)",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_and_protocol",
+        "page": "PDF p. 5 (article p. 3)",
+        "quote": "for this study was developed in accordance with the JBI methodology for scoping reviews"
+      },
+      {
+        "criterion": "databases_searched",
+        "page": "PDF p. 5 (article p. 3)",
+        "quote": "A systematic search of published articles was carried out in PubMed, Scopus and Web of Science"
+      },
+      {
+        "criterion": "study_design_eligibility",
+        "page": "PDF p. 7 (article p. 5)",
+        "quote": "The scope of the review was intentionally directed towards studies employing either a qualitative"
+      },
+      {
+        "criterion": "single_reviewer_fulltext_screening",
+        "page": "PDF p. 7 (article p. 5)",
+        "quote": "records were evaluated for eligibility by one reviewer, resulting in the exclusion of 24 records."
+      },
+      {
+        "criterion": "included_count_and_criterion2_tenure",
+        "page": "PDF p. 9 (article p. 7)",
+        "quote": "legal land tenure hampers both residents and local authorities to invest in permanent services"
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "10.1016/j.socscimed.2022.115394",
+        "first_author_surname": "Adams",
+        "title_or_topic": "Water journeys: Household water insecurity, health risks, and embodiment in slums and informal settlements",
+        "where_in_review": "Results Sections 3.3.1, 3.3.5, 3.4.4 & References (PDF pp. 10, 13, 14, 18)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1016/j.desal.2008.05.030",
+        "first_author_surname": "Ali",
+        "title_or_topic": "Integrated approaches to promoting sanitation: A case study of Faridpur, Bangladesh",
+        "where_in_review": "Results Sections 3.2, 3.3.4, 3.4.2 & References (PDF pp. 9, 12, 14, 18)",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "10.1371/journal.pone.0262643",
+        "first_author_surname": "Ashraf",
+        "title_or_topic": "Social beliefs and women's role in sanitation decision making in Bihar, India: An exploratory mixed method study",
+        "where_in_review": "Results Sections 3.3.2, 3.3.3 & References (PDF pp. 11, 12, 19)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1111/j.1477-8947.2007.00153.x",
+        "first_author_surname": "Baruah",
+        "title_or_topic": "Assessment of public-private-NGO partnerships: Water and sanitation services in slums",
+        "where_in_review": "Results Sections 3.2, 3.3.4 & References (PDF pp. 9, 12, 13, 19)",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "10.1080/09614524.2020.1836128",
+        "first_author_surname": "Biswas",
+        "title_or_topic": "Navigating the city's waterscape: Gendering everyday dynamics of water access from multiple sources",
+        "where_in_review": "Results Sections 3.3.1, 3.3.2, 3.3.4, 3.3.5, 3.4.4 & References (PDF pp. 10-14, 19)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "10.1111/1468-2427.13003",
+        "first_author_surname": "Butcher",
+        "title_or_topic": "Differentiated citizenship: The everyday politics of the urban poor in Kathmandu, Nepal",
+        "where_in_review": "Results Sections 3.2, 3.3.2 & References (PDF pp. 9, 11, 19)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "10.1177/0971521518811174",
+        "first_author_surname": "Chakravarthy",
+        "title_or_topic": "Does menstrual hygiene management in urban slums need a different lens? Challenges faced by women and girls in Jaipur and Delhi",
+        "where_in_review": "Results Sections 3.3.1-3.3.3, 3.3.5, 3.4.3, 3.5 & References (PDF pp. 10-15, 19)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.1016/j.respol.2019.103841",
+        "first_author_surname": "Cherunya",
+        "title_or_topic": "Anchoring innovations in oscillating domestic spaces: Why sanitation service offerings fail in informal settlements",
+        "where_in_review": "Results Sections 3.2, 3.3.1-3.3.4, 3.4.4 & References (PDF pp. 9-12, 14, 19)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "10.2166/washdev.2022.060",
+        "first_author_surname": "Chowdhury",
+        "title_or_topic": "WASH and MHM experiences of disabled females living in Dhaka slums of Bangladesh",
+        "where_in_review": "Results Sections 3.3.1, 3.3.3, 3.4.2 & References (PDF pp. 10, 12, 14, 19)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1093/heapro/dau100",
+        "first_author_surname": "Corburn",
+        "title_or_topic": "Informal settlements and a relational view of health in Nairobi, Kenya: Sanitation, gender and dignity (Corburn & Karanja)",
+        "where_in_review": "Results Sections 3.3.2, 3.4.1, 3.4.3 & References (PDF pp. 11, 13, 14, 19)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1155/2015/209505",
+        "first_author_surname": "Corburn",
+        "title_or_topic": "Slum sanitation and the social determinants of women's health in Nairobi, Kenya (Corburn & Hildebrand)",
+        "where_in_review": "Results Sections 3.3.1, 3.3.3, 3.4.1-3.4.3, 3.5 & References (PDF pp. 10, 12-15, 19)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.2166/washdev.2018.011",
+        "first_author_surname": "Das",
+        "title_or_topic": "Sanitation for all: A Panglossian perspective?",
+        "where_in_review": "Results Sections 3.3.3, 3.4.1 & References (PDF pp. 12, 13, 19)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.2166/washdev.2019.025",
+        "first_author_surname": "Foggitt",
+        "title_or_topic": "Experiences of shared sanitation - towards a better understanding of access, exclusion and 'toilet mobility' in low-income urban areas",
+        "where_in_review": "Results Sections 3.2, 3.3.1, 3.3.2, 3.4.1, 3.4.4, 3.5 & References (PDF pp. 9-11, 13-15, 19)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.1371/journal.pone.0193613",
+        "first_author_surname": "Helgegren",
+        "title_or_topic": "Importance of triggers and veto-barriers for the implementation of sanitation in informal peri-urban settlements - The case of Cochabamba, Bolivia",
+        "where_in_review": "Results Section 3.3.2 & References (PDF pp. 11, 19)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.3390/ijerph17030890",
+        "first_author_surname": "Kangmennaang",
+        "title_or_topic": "'We Are drinking diseases': Perception of water insecurity and emotional distress in urban slums in Accra, Ghana",
+        "where_in_review": "Results Sections 3.3.2, 3.3.5, 3.4.1, 3.5 & References (PDF pp. 11, 13, 15, 20)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "10.1186/1471-2458-14-1",
+        "first_author_surname": "Kwiringira",
+        "title_or_topic": "Shared latrine design, maintenance, and nighttime access in Kampala slums, Uganda (printed Reference list has corrupted BMC Public Health 14:1 title/DOI 'A review of life expectancy and infant mortality estimations for Australian Aboriginal people')",
+        "where_in_review": "Results Sections 3.3.1, 3.4.1 & References (PDF pp. 10, 13, 20)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1016/j.habitatint.2015.03.003",
+        "first_author_surname": "Muchadenyika",
+        "title_or_topic": "Slum upgrading and inclusive municipal governance in Harare, Zimbabwe: New perspectives for the urban poor",
+        "where_in_review": "Results Sections 3.3.4, 3.4.2, 3.5 & References (PDF pp. 12, 14, 15, 20)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.1007/s10708-019-10088-0",
+        "first_author_surname": "Nagpal",
+        "title_or_topic": "Missing basics: A study on sanitation and women's health in urban slums in Lucknow, India",
+        "where_in_review": "Results Sections 3.3.1, 3.3.2, 3.4.1, 3.4.2 & References (PDF pp. 10, 11, 13, 14, 20)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "10.2166/washdev.2022.061",
+        "first_author_surname": "Nowreen",
+        "title_or_topic": "A participatory SWOT analysis on water, sanitation, and hygiene management of disabled females in Dhaka slums of Bangladesh",
+        "where_in_review": "Results Sections 3.3.1, 3.3.3, 3.3.5, 3.4.3, 3.5 & References (PDF pp. 10, 12-15, 20)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.2166/washdev.2014.029",
+        "first_author_surname": "Okurut",
+        "title_or_topic": "Access to improved sanitation facilities in low-income informal settlements of East African cities",
+        "where_in_review": "Results Sections 3.3.1, 3.4.1 & References (PDF pp. 10, 13, 20)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.1016/j.geoforum.2021.05.011",
+        "first_author_surname": "Panchang",
+        "title_or_topic": "Beyond toilet decisions: Tracing sanitation journeys among women in informal housing in India",
+        "where_in_review": "Results Sections 3.2, 3.3.1, 3.3.2, 3.3.4, 3.4.1, 3.4.4, 3.5 & References (PDF pp. 9-15, 21)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "10.1177/0956247815595918",
+        "first_author_surname": "Peprah",
+        "title_or_topic": "Public toilets and their customers in low-income Accra, Ghana",
+        "where_in_review": "Results Sections 3.3.1, 3.4.1 & References (PDF pp. 10, 13, 21)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.3329/jhpn.v27i4.3403",
+        "first_author_surname": "Rashid",
+        "title_or_topic": "Strategies to reduce exclusion among populations living in urban slum settlements in Bangladesh",
+        "where_in_review": "Results Sections 3.2, 3.3.1, 3.3.4, 3.3.5, 3.4.1, 3.4.2 & References (PDF pp. 9, 10, 12-14, 21)",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "10.3390/urbansci2010022",
+        "first_author_surname": "Richmond",
+        "title_or_topic": "Urban informality and vulnerability: A case study in Kampala, Uganda",
+        "where_in_review": "Results Sections 3.2, 3.4.1 & References (PDF pp. 9, 13, 21)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Rodina",
+        "title_or_topic": "Water services, lived citizenship, and notions of the state in marginalised urban spaces: The case of Khayelitsha, South Africa",
+        "where_in_review": "Results Sections 3.2, 3.3.4 & References (PDF pp. 9, 12, 21)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "10.1016/j.socscimed.2015.06.031",
+        "first_author_surname": "Sahoo",
+        "title_or_topic": "Sanitation-related psychosocial stress: A grounded theory study of women across the life-course in Odisha, India",
+        "where_in_review": "Results Sections 3.3.1, 3.3.3, 3.4.3 & References (PDF pp. 10, 12, 14, 21)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.1007/s11524-007-9177-3",
+        "first_author_surname": "Sheuya",
+        "title_or_topic": "The design of housing and shelter programs: The social and environmental determinants of inequalities",
+        "where_in_review": "Results Sections 3.3.1, 3.3.3-3.3.5, 3.4.1, 3.5 & References (PDF pp. 10, 12-15, 21)",
+        "year": "2007"
+      },
+      {
+        "doi_if_printed": "10.3390/w14010073",
+        "first_author_surname": "Singh",
+        "title_or_topic": "The right to water, Law and municipal practice: Case studies from India (Singh, A.)",
+        "where_in_review": "Results Sections 3.2, 3.3.4, 3.3.5, 3.5 & References (PDF pp. 9, 12, 13, 15, 21)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1371/journal.pone.0133241",
+        "first_author_surname": "Subbaraman",
+        "title_or_topic": "Multidimensional measurement of household water poverty in a Mumbai slum: Looking beyond water quality",
+        "where_in_review": "Results Sections 3.3.4, 3.4.1, 3.4.2, 3.5 & References (PDF pp. 12-15, 21)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "10.1016/j.jum.2018.03.002",
+        "first_author_surname": "Uddin",
+        "title_or_topic": "Assessing urban sustainability of slum settlements in Bangladesh: Evidence from Chittagong city",
+        "where_in_review": "Results Sections 3.1, 3.3.1, 3.3.4, 3.3.5, 3.4.1, 3.5 & References (PDF pp. 8, 10, 12-15, 21)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.4269/ajtmh.21-0654",
+        "first_author_surname": "Vu",
+        "title_or_topic": "'Someone should be there to take care of It': A case study of users' views of managed shared sanitation facilities in Jharkhand, India",
+        "where_in_review": "Results Sections 3.2, 3.3.1, 3.3.3, 3.3.4, 3.4.1, 3.4.3 & References (PDF pp. 9, 10, 12-14, 22)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1007/s12132-021-09421-z",
+        "first_author_surname": "Wiltgen Georgi",
+        "title_or_topic": "Gendered infrastructural citizenship: Shared sanitation facilities in quarry road west informal settlement, Durban, South Africa",
+        "where_in_review": "Results Sections 3.2, 3.3.1, 3.3.2, 3.4.3, 3.5 & References (PDF pp. 9-11, 14, 15, 22)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "10.1177/0013916518782577",
+        "first_author_surname": "Winter",
+        "title_or_topic": "Neighborhood disorganization and women's sanitation utilization practices in Mathare Valley, Kenya",
+        "where_in_review": "Results Sections 3.3.1, 3.4.4, 3.5 & References (PDF pp. 10, 14, 15, 22)",
+        "year": "2019"
+      }
+    ],
+    "included_studies_count_reported": 33,
+    "included_studies_list_completeness": "partial_inline_citations_only",
+    "methodological_notes": "1. Review Design & Scope: Self-described JBI scoping review (Peters et al., 2020) synthesizing qualitative and mixed-methods peer-reviewed journal articles (2000-2022, English) on access inequalities to WASH and housing in urban/peri-urban slums in Latin America, Sub-Saharan Africa, and South Asia. Strictly quantitative studies and grey literature were excluded by design. Narrow Criterion 2 is rated borderline_narrow_c2 because legal/tenure/regulatory mechanisms (settlement legal status, land tenure security, landlord-tenant agreements, housing formalisation, eviction risk, and pay-per-use toilet pricing) are substantively synthesized in Sections 3.2, 3.3.3, and 3.3.4, but constitute one strand within a broader lived-experience scoping review where many included studies examine MHM stigma, gender roles, or physical latrine conditions rather than legal/institutional rules. 2. AMSTAR 2 Fit & Quality: AMSTAR 2 is a borderline fit for a JBI scoping review that neither aims to pool effect sizes nor conducts risk-of-bias appraisal. Under AMSTAR 2, confidence is Critically Low due to multiple critical flaws: unregistered protocol without RoB plan (Q2), no list of the 24 excluded full-text articles (Q7; note also Figure 1 PRISMA graphic renders blank on PDF p. 8), no RoB appraisal (Q9), and no consideration of RoB in synthesis (Q13), alongside single-reviewer full-text screening (Q5) and single-author data extraction (Q6). 3. Primary-Study Extraction & Bibliographic Audit: Appendices 1-4 (including the formal Appendix 4 data extraction table) are external online supplements not printed in the PDF, so included_studies_list_completeness is partial_inline_citations_only. However, auditing all empirical citations across Results Section 3 (excluding the external conceptual comparison Rigon, 2022 in 3.1 and the UN-Habitat grey-literature discussion paper Singh, S. D. et al., 2022 in 3.4.1) yields exactly 33 unique peer-reviewed journal articles (2000-2022), matching the reported N = 33 count 1-for-1. Note two reference-manager metadata corruptions in the published Reference list (PDF p. 20): both Kwiringira et al. (2014, BMC Public Health 14) and Munn et al. (2018, BMC Med Res Methodol 18) had their titles and DOIs overwritten with Article #1 of their respective BMC volumes.",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "scoping review",
+    "study_id": "S350"
+  }
+}

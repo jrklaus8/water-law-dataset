@@ -1,0 +1,379 @@
+{
+  "study_id": "S344",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "c163ba86d6889930e348bf444f50b05c3d5d33239d10fbf177c815661f4e5b89",
+  "input_text_sha256": "fe54908720b62cf37d671e9132c5166fc71b065a06f62e89a9e40a41b9acad6c",
+  "prompt_sha256": "018f61e6eac956c621e71c5e231e48e5961935cb450d30efc1046adea2069788",
+  "started_at": "2026-11-19T19:19:05.145942+00:00",
+  "completed_at": "2026-11-19T19:21:08.758246+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S344\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S344\n- Record ID: RA74F4B51903E\n- Citation: Hendraputra A (2026). From privatization to a governance predicament: A systematic review of Jakarta's water governance, business models, and sustainability. SHS Web Conf 227:01001.\n- DOI: 10.1051/shsconf/202622701001\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: fe54908720b62cf37d671e9132c5166fc71b065a06f62e89a9e40a41b9acad6c) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=37974, sha256=fe54908720b62cf37d671e9132c5166fc71b065a06f62e89a9e40a41b9acad6c]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Research questions (RQ1–RQ3) and Table 2 eligibility criteria define geographic location (Jakarta) and broad thematic scope (clean water challenges or solutions) rather than PICO components (population, intervention, comparator, outcome).",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "No prior written or registered review protocol (e.g. PROSPERO or OSF) is reported, nor are protocol deviations discussed.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "Table 2 restricts publication venues to peer-reviewed journal articles and conference proceedings (excluding purely hydrological studies without management/social links), without explaining or justifying specific empirical study designs for inclusion.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Only a single search engine (Google Scholar) was searched for 2010–2024 alongside backward reference-list snowballing; fewer than two bibliographic databases were searched and grey literature was excluded.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Single-author review; study screening and selection were performed by one individual without duplicate independent screening.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Single-author review; data extraction and thematic coding were performed by one author alone without duplicate independent extraction.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "No list of excluded full-text studies with study-specific reasons for exclusion is provided.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "Table 3 reports only aggregate study counts and percentages across two categorical variables (publication period and primary focus) for the claimed n=31 studies; no individual study-level characteristics table is provided, and over two-thirds of the claimed 31 studies do not even appear in the 14-item reference list.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "No risk-of-bias or methodological quality appraisal tool was applied to any included study.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Sources of funding for the included primary studies were not reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative meta-analysis was conducted; synthesis was strictly qualitative thematic analysis.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis or risk-of-bias assessment was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Risk of bias and methodological quality of individual primary studies were neither assessed nor accounted for when interpreting thematic findings.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "Although pre-2010 and post-2010 themes are contrasted narratively, empirical or methodological heterogeneity across individual studies is neither systematically reported nor explained.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis was conducted, so statistical publication-bias testing is not applicable (though the author briefly notes omitting NGO/government grey literature as a limitation).",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "In the Acknowledgements (p. 12), the author explicitly declares that no specific funding was received, the work was conducted independently, and views expressed do not reflect official Bappenas government policy.",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "Google Scholar only (English and Indonesian, Jan 1, 2010 – Dec 31, 2024), supplemented by manual backward reference-list snowballing for pre-2010 foundational studies",
+    "evidence_quotes": [
+      {
+        "criterion": "Search strategy (single database / search engine)",
+        "page": "Page 4",
+        "quote": "this review utilized Google Scholar as the primary search engine."
+      },
+      {
+        "criterion": "Reported included primary studies count (n=31)",
+        "page": "Page 5",
+        "quote": "into the analysis. In total, 31 studies form the evidence base for this review."
+      },
+      {
+        "criterion": "Single-author conduct without duplicate screening/extraction",
+        "page": "Page 6",
+        "quote": "To ensure rigor and minimize potential bias in this single-author review, a detailed coding"
+      },
+      {
+        "criterion": "Narrow Criterion 2 legal/contractual/governance focus",
+        "page": "Page 7",
+        "quote": "explicitly traced back to the design of the original PPP contracts."
+      },
+      {
+        "criterion": "Database replicability limitation acknowledged by author",
+        "page": "Page 11",
+        "quote": "primary search relied on Google Scholar. Despite its broad indexing, it lacks the systematic"
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Marin",
+        "title_or_topic": "Public-Private Partnerships for Urban Water Utilities",
+        "where_in_review": "Section 3.1.1 (p. 6), Section 3.1.2 Themes 2 & 3 (p. 7), Section 3.2.1 (p. 8); Ref [4]",
+        "year": "2009"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.1007/s11069-011-9866-9",
+        "first_author_surname": "Abidin",
+        "title_or_topic": "Land subsidence of Jakarta (Indonesia) and its relation with urban development",
+        "where_in_review": "Table 1 (p. 2), Section 3.1.2 Theme 1 (p. 6); Ref [7]",
+        "year": "2011"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.1016/j.cities.2011.07.003",
+        "first_author_surname": "Hudalah",
+        "title_or_topic": "Beyond property: Industrial estates and post-suburban transformation in Jakarta Metropolitan Region",
+        "where_in_review": "Section 3.1.2 Theme 3 (p. 7), Section 3.2.1 (p. 9); Ref [6]",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.1016/j.rse.2012.10.015",
+        "first_author_surname": "Chaussard",
+        "title_or_topic": "Sinking cities in Indonesia: ALOS PALSAR detects rapid subsidence due to groundwater and gas extraction",
+        "where_in_review": "Section 3.1.2 Theme 1 (p. 6); Ref [8]",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.1088/1755-1315/940/1/012022",
+        "first_author_surname": "Purba",
+        "title_or_topic": "Inclusive Development Approach to Urban Water Services in Jakarta",
+        "where_in_review": "Table 1 (p. 2), Section 3.1.2 Theme 2 (p. 7), Section 3.1.3 Theme 1 (p. 8); Ref [9]",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.1088/1755-1315/1109/1/012051",
+        "first_author_surname": "Aprilia",
+        "title_or_topic": "Water quality status based on Pollution Index and Water Quality Index of Ciliwung River, DKI Jakarta Province",
+        "where_in_review": "Table 1 (p. 2), Section 3.1.2 Theme 1 (p. 7); Ref [10]",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.2166/h2oj.2022.076",
+        "first_author_surname": "Ardhianie",
+        "title_or_topic": "Jakarta water supply provision strategy based on supply and demand analysis",
+        "where_in_review": "Section 3.1.2 Theme 3 (p. 7), Section 3.1.3 Theme 2 (p. 8), Section 3.2.1 (p. 9); Ref [13]",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "https://doi.org/10.1016/j.geoforum.2023.103920",
+        "first_author_surname": "Marwa",
+        "title_or_topic": "Situating the urban poor in informal settlement within Jakarta’s water governance shift to remunicipalisation",
+        "where_in_review": "Section 3.1.2 Theme 4 (p. 7), Section 3.2.1 (p. 9); Ref [14]",
+        "year": "2024"
+      }
+    ],
+    "included_studies_count_reported": 31,
+    "included_studies_list_completeness": "partial_inline_citations_only",
+    "methodological_notes": "1. Scope & Criterion 2/3 Assessment: Substantively, S344 squarely addresses narrow Criterion 2 by examining legal, contractual, and regulatory rules governing urban water access in Jakarta—specifically the 1998–2023 Public-Private Partnership (PPP) concession contracts, the 2023 remunicipalization handover to public utility PAM JAYA, regulatory failure to enforce groundwater extraction bans, tariff governance, and informal settlement exclusion. Methodologically (Criterion 3), although self-described as a 'systematic literature review' (and 'hybrid systematic and backward-searching review') with search terms, Table 2 eligibility criteria, and a PRISMA diagram, it functions as a critically flawed qualitative/scoping-style thematic narrative rather than a rigorous systematic synthesis. 2. Severe Reporting Discrepancy on Included Studies: The paper claims n=31 included studies (27 contemporary 2010–2024 studies from Google Scholar plus 4 pre-2010 foundational studies from backward snowballing; p. 5 & Table 3), yet provides no study-by-study characteristics table or appendix, and the entire References list (p. 13) contains only 14 entries total. Of those 14 references, only 8 ([4], [6], [7], [8], [9], [10], [13], [14]) are cited in Section 3 Results/Discussion as synthesized studies; 3 others ([3] Fulazzaky 2014, [5] World Bank 2006, [11] Takagi et al. 2016) appear only in Section 1 Introduction or Table 1 illustrative indicators, and 3 ([1], [2], [12]) are general urban or methodological citations. Consequently, at least 20–23 of the claimed 31 included studies are completely unidentifiable and uncited. 3. Additional Editorial/Methodological Red Flags: Single-author screening and coding without protocol registration or risk-of-bias assessment; reliance solely on Google Scholar; duplicate section headings in Section 1.1/1.3, 4.1/4.2, and 4.2.1/4.2.2; and unedited prompt/placeholder prose printed beneath Figure 1 ('The diagram would show...').",
+    "narrow_criterion2_fit": "passes_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "systematic review / systematic literature review (self-described as a hybrid systematic and backward-searching review using thematic analysis)",
+    "study_id": "S344"
+  }
+}

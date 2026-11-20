@@ -1,0 +1,1212 @@
+{
+  "study_id": "S027",
+  "interface": "Antigravity run_workflow isolated single-use subagent (type_name=amstar2_fulltext_auditor, model=inherit)",
+  "session_model_ui_label": "Gemini 4 Carbon (Medium)",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "bc225ec9fbfc75f8690da120fddc94b24a050d7fa2cc54afd1afaf13f4b8f4ff",
+  "input_text_sha256": "6ec956970c3fae0eae918b9044fb5fa4db983f8d77e32a282d5d78efe0abcd66",
+  "prompt_sha256": "885e8285ad71a18d39a1a939491b13d31722932d3d0b28e3d25f498ca59c5db9",
+  "started_at": "2026-11-19T19:14:36.918496+00:00",
+  "completed_at": "2026-11-19T19:19:05.023403+00:00",
+  "raw_request": {
+    "type_name": "amstar2_fulltext_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "study_id",
+        "paper_read",
+        "review_design_self_description",
+        "databases_searched",
+        "narrow_criterion2_fit",
+        "amstar2_fit",
+        "amstar2_overall_confidence",
+        "amstar2_items",
+        "included_studies_count_reported",
+        "included_studies_list_completeness",
+        "included_primary_studies",
+        "methodological_notes",
+        "evidence_quotes",
+        "confidence"
+      ],
+      "properties": {
+        "study_id": {
+          "type": "string"
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "partial_or_scan",
+            "not accessible"
+          ]
+        },
+        "review_design_self_description": {
+          "type": "string"
+        },
+        "databases_searched": {
+          "type": "string"
+        },
+        "narrow_criterion2_fit": {
+          "type": "string",
+          "enum": [
+            "passes_narrow_c2",
+            "borderline_narrow_c2",
+            "fails_narrow_c2_e03",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_fit": {
+          "type": "string",
+          "enum": [
+            "appropriate_systematic_or_meta",
+            "borderline_scoping_realist_or_hybrid",
+            "inappropriate_not_systematic",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_overall_confidence": {
+          "type": "string",
+          "enum": [
+            "High",
+            "Moderate",
+            "Low",
+            "Critically Low",
+            "cannot_tell"
+          ]
+        },
+        "amstar2_items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "item_id",
+              "is_critical",
+              "rating",
+              "justification"
+            ],
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "is_critical": {
+                "type": "boolean"
+              },
+              "rating": {
+                "type": "string"
+              },
+              "justification": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "included_studies_count_reported": {
+          "type": "integer"
+        },
+        "included_studies_list_completeness": {
+          "type": "string",
+          "enum": [
+            "complete_inline_table_or_list",
+            "partial_inline_citations_only",
+            "none_printed",
+            "not_accessible"
+          ]
+        },
+        "included_primary_studies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "first_author_surname",
+              "year",
+              "title_or_topic",
+              "doi_if_printed",
+              "where_in_review"
+            ],
+            "properties": {
+              "first_author_surname": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "title_or_topic": {
+                "type": "string"
+              },
+              "doi_if_printed": {
+                "type": "string"
+              },
+              "where_in_review": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "methodological_notes": {
+          "type": "string"
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT AUDIT OF SECONDARY REVIEW (TASK I — AMSTAR 2 & PRIMARY-STUDY OVERLAP) — STUDY S027\n\nREMINDER: Do NOT call read_file, view_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY `== SOURCE REVIEW FULL TEXT ==` below.\n\n== REVIEW HEADER ==\n- Study ID: S027\n- Record ID: R8F18065526A5\n- Citation: Fanaian S, Manero A, Nguyen N-M, Grafton RQ (2025) Beyond a Decade of Water Justice: Review, Directions, and Pathways to Achieve “Water for All”. WIREs Water\n- DOI: 10.1002/wat2.70043\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. ACCESSIBILITY GATE:\n   - If `Retrieval status` is `not_accessible` (or text says `[FULL TEXT NOT ACCESSIBLE]`), set `paper_read = \"not accessible\"`, `review_design_self_description = \"cannot_tell\"`, `amstar2_fit = \"cannot_tell\"`, `amstar2_overall_confidence = \"cannot_tell\"`, `included_studies_count_reported = -1`, `included_studies_list_completeness = \"not_accessible\"`, `included_primary_studies = []`, `amstar2_items = []`, and `evidence_quotes = []`.\n2. IF FULL TEXT IS READABLE:\n   - **Methodological & Scope Check:**\n     * State how the review describes itself (`systematic review`, `meta-analysis`, `scoping review`, `realist review`, `integrative review`, `narrative review with database search`, etc.), which databases were searched, whether explicit eligibility criteria and a selection flow diagram are reported, and whether the review genuinely satisfies narrow Criterion 2 (examines legal/administrative/regulatory/tenure/tariff/ownership rules governing WASH access) and Criterion 3 (systematic empirical synthesis).\n     * Rate `amstar2_fit`: `\"appropriate_systematic_or_meta\"`, `\"borderline_scoping_realist_or_hybrid\"`, or `\"inappropriate_not_systematic\"`.\n     * Score all 16 official `AMSTAR 2` items (`Q1`–`Q16`, noting critical items `Q2, Q4, Q7, Q9, Q11, Q13, Q15`) and determine `amstar2_overall_confidence` (`\"High\"`, `\"Moderate\"`, `\"Low\"`, `\"Critically Low\"`).\n   - **Primary-Study Extraction (CRITICAL FOR DOUBLE-COUNTING AUDIT):**\n     * Distinguish **included primary studies** (the actual sample of studies synthesized/tabulated in the review's Results / Characteristics of Included Studies table / Appendix) from general background citations in the Introduction!\n     * Record `included_studies_count_reported` (integer count reported by the authors, e.g., `33`, or `0` if unstated).\n     * Record `included_studies_list_completeness`: `\"complete_inline_table_or_list\"` (every included study is listed in the PDF tables/text/appendix), `\"partial_inline_citations_only\"` (full table is in an external supplement or unprinted, so only primary studies named in Results/tables are extractable), or `\"none_printed\"`.\n     * Populate `included_primary_studies` with EVERY included primary study identifiable in the review's tables, appendices, or Results synthesis (up to 120 entries: `first_author_surname`, `year`, `title_or_topic`, `doi_if_printed`, `where_in_review`).\n   - Provide 3 to 5 exact verbatim substrings (`>= 25` chars, zero `...` ellipses) in `evidence_quotes`.\n\n== SOURCE REVIEW FULL TEXT (SHA-256: 6ec956970c3fae0eae918b9044fb5fa4db983f8d77e32a282d5d78efe0abcd66) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=112462, sha256=6ec956970c3fae0eae918b9044fb5fa4db983f8d77e32a282d5d78efe0abcd66]\n== END SOURCE REVIEW FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "amstar2_fit": "borderline_scoping_realist_or_hybrid",
+    "amstar2_items": [
+      {
+        "is_critical": false,
+        "item_id": "Q1",
+        "justification": "Research questions and eligibility criteria do not follow PICO components; instead, the review poses four broad conceptual and thematic mapping questions regarding the meaning of water justice, its relationship to SDG 6, geographic/thematic concentrations, and proposed solutions.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q2",
+        "justification": "The authors cite a protocol published in the Australian National University Open Repository (Fanaian 2024) documenting selection criteria and coding rules and describe iterative pilot refinement on 20 articles plus a post-protocol March 2024 follow-up search for 2023 papers, but the protocol was published in 2024 after/during screening of the 2012–2022 corpus and lacked a pre-specified risk-of-bias or quantitative synthesis plan.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q3",
+        "justification": "The review pooled peer-reviewed journal articles, book chapters, and secondary reviews (both theoretical essays and empirical case studies) while excluding gray literature and monographs, without providing a methodological justification for combining these heterogeneous publication types.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q4",
+        "justification": "Six databases (Scopus, Web of Science, Science Direct, Springer, JSTOR Constellate, and Google Scholar) were searched with reported search terms (\"water justice\" OR \"water equity\") and discussed restrictions (English-only, 2012–2023), satisfying Partial Yes, but the narrow two-phrase query excluded related terms (\"human right to water\", \"water access\") and omitted gray literature, reference-list chasing, and trial/study registries.",
+        "rating": "Partial Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q5",
+        "justification": "Three co-authors manually screened titles and abstracts with discrepancies resolved via peer validation and expert input, and full-text exclusion decisions during coding were cross-checked by three researchers and expert input.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q6",
+        "justification": "Although the deductive coding framework was piloted on 20 articles and two researchers \"collaborated on the full-text review and literature coding,\" independent duplicate data extraction with consensus or inter-rater reliability verification across the 470 included records is not demonstrated.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q7",
+        "justification": "Aggregate counts and reasons for the 72 full-text exclusions are reported in Section 2.4 (insufficient engagement n=28, duplicates n=7, gray literature n=2, unavailability n=35), and Figure 1 renders as a blank image in the PDF, with no bibliographic list of excluded full-text studies provided.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q8",
+        "justification": "No study-by-study characteristics table (detailing populations, interventions/exposures, methods, outcomes, and settings of the 470 included publications) is provided in the article text, and the Data Availability Statement notes no dataset is shared; Supporting Information Annex Tables 1–5 contain aggregate country counts, SDG keyword mappings, solution theme terms, and justice definitions rather than individual study profiles.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q9",
+        "justification": "No risk-of-bias or critical appraisal tool was applied to evaluate the methodological quality of any of the 470 included publications.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q10",
+        "justification": "Sources of funding for the 470 individual publications included in the review were neither extracted nor reported.",
+        "rating": "No"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q11",
+        "justification": "No quantitative meta-analysis was performed; synthesis relied on deductive qualitative coding and descriptive bibliometric/thematic counts.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q12",
+        "justification": "No meta-analysis was performed.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q13",
+        "justification": "Because study-level risk of bias or empirical rigor was never assessed, methodological quality was not accounted for in interpreting findings, aside from a brief caveat that many proposed solutions in the literature are untested recommendations.",
+        "rating": "No"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q14",
+        "justification": "The authors extensively examine and explain conceptual, geographic (Global South vs. Global North), scalar (local, national, transboundary, global), and temporal (2012–2014, 2015–2019, 2020–2023) heterogeneity across the reviewed scholarship.",
+        "rating": "Yes"
+      },
+      {
+        "is_critical": true,
+        "item_id": "Q15",
+        "justification": "No quantitative synthesis or meta-analysis was conducted.",
+        "rating": "No meta-analysis conducted"
+      },
+      {
+        "is_critical": false,
+        "item_id": "Q16",
+        "justification": "Funding sources (Hilda John Endowment at ANU, ARC Laureate Fellowship FL190100164, and IWMI support) and a declaration of no conflicts of interest are explicitly reported.",
+        "rating": "Yes"
+      }
+    ],
+    "amstar2_overall_confidence": "Critically Low",
+    "confidence": "high",
+    "databases_searched": "Scopus, Web of Science, Science Direct, Springer, JSTOR (Constellate), and Google Scholar (Jan 2012–Dec 2023; English only; search string: \"water justice\" OR \"water equity\")",
+    "evidence_quotes": [
+      {
+        "criterion": "review_design_and_sample_size",
+        "page": "1",
+        "quote": "We systematically review and synthesize insights from 470 peer-reviewed studies to examine the evolution"
+      },
+      {
+        "criterion": "databases_searched",
+        "page": "3",
+        "quote": "six academic databases: Scopus, Web of Science, Science Direct,"
+      },
+      {
+        "criterion": "search_restriction_and_scope",
+        "page": "3",
+        "quote": "focus our review on “water justice” OR “water equity” was made"
+      },
+      {
+        "criterion": "synthesis_method",
+        "page": "4",
+        "quote": "All 542 articles were coded using a deductive framework."
+      },
+      {
+        "criterion": "included_studies_count",
+        "page": "4",
+        "quote": "The final dataset included 470 publications."
+      }
+    ],
+    "included_primary_studies": [
+      {
+        "doi_if_printed": "10.1177/22779760231170530",
+        "first_author_surname": "Abazeed",
+        "title_or_topic": "Heterogeneity of Water Justice and the Question of Nile Solidarity",
+        "where_in_review": "Results 3.1 (p. 7), 3.3 (p. 10)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Aleixo",
+        "title_or_topic": "Infrastructure Is a Necessary but Insufficient Condition to Eliminate Inequalities in Access to Water: Research of a Rural Community Intervention in Northeast Brazil",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Allaire",
+        "title_or_topic": "Disparities in Drinking Water Compliance: Implications for Incorporating Equity Into Regulatory Practices",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Ansloos",
+        "title_or_topic": "Is Suicide a Water Justice Issue? Investigating Long-Term Drinking Water Advisories and Suicide in First Nations in Canada",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Awan",
+        "title_or_topic": "A Methodology to Estimate Equity of Canal Water and Groundwater Use at Different Spatial and Temporal Scales: A Geo-Informatics Approach",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Babuna",
+        "title_or_topic": "Modeling Water Inequality and Water Security: The Role of Water Governance",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Bae",
+        "title_or_topic": "Another Injustice? Socio-Spatial Disparity of Drinking Water Information Dissemination Rule Violation in the United States",
+        "where_in_review": "Results 3.2 (p. 8), 3.3 (p. 8), Discussion 4.2 (p. 13)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Bae",
+        "title_or_topic": "Drinking Water Injustice: Racial Disparity in Regulatory Enforcement of Safe Drinking Water Act Violations",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Bain",
+        "title_or_topic": "Rural: Urban Inequalities in Post 2015 Targets and Indicators for Drinking-Water",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Baldwin",
+        "title_or_topic": "Justice in Water Resource Management",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Bates",
+        "title_or_topic": "A Tale of Two Rivers–Baaka and Martuwarra, Australia: Shared Voices and Art Towards Water Justice",
+        "where_in_review": "Results 3.1 (p. 6), 3.3 (p. 10)",
+        "year": "2024"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Becken",
+        "title_or_topic": "Water Equity–Contrasting Tourism Water Use With That of the Local Community",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Benson",
+        "title_or_topic": "Pan-Africanism, Feminism and Popular Education in the Struggle Against Water Grabbing in Africa: An Interview With Coumba Toure",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Boelens",
+        "title_or_topic": "The Shotgun Marriage: Water Security, Cultural Politics, and Forced Engagements Between Official and Local Rights Frameworks",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "10.1017/9781316831847.001",
+        "first_author_surname": "Boelens",
+        "title_or_topic": "Introduction: The Multiple Challenges and Layers of Water Justice Struggles",
+        "where_in_review": "Results 3.1 (pp. 5, 7)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Boelens",
+        "title_or_topic": "Water Justice: Blatant Grabbing Practices, Subtle Recognition Politics and the Struggles for Fair Water Worlds",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Boelens",
+        "title_or_topic": "Riverhood: Political Ecologies of Socionature Commoning and Translocal Struggles for Water Justice",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (pp. 10, 12)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Bustamante",
+        "title_or_topic": "Seeing Through the Concept of Water as a Human Right in Bolivia",
+        "where_in_review": "Results 3.1 (p. 5)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Byrne",
+        "title_or_topic": "Water Scarcity in Developing Regions",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Cairns",
+        "title_or_topic": "Caring About Water in Camden, New Jersey: Social Reproduction Against Slow Violence",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Carrera",
+        "title_or_topic": "Troubling Heroes: Reframing the Environmental Justice Contributions of the Flint Water Crisis",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Clark",
+        "title_or_topic": "Water Justice Struggles as a Process of Commoning",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Cleaver",
+        "title_or_topic": "Everyday Water Injustice and Water Justice",
+        "where_in_review": "Results 3.3 (p. 10)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Cole",
+        "title_or_topic": "A Political Ecology of Water Equity and Tourism: A Case Study From Bali",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Cuadrado-Quesada",
+        "title_or_topic": "The Need for co-Evolution of Groundwater Law and Community Practices for Groundwater Justice and Sustainability: Insights From Maharashtra, India",
+        "where_in_review": "Results 3.1 (pp. 6–7)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Deng",
+        "title_or_topic": "Multi-Objective Optimization of Water Resources Allocation in Han River Basin (China) Integrating Efficiency, Equity and Sustainability",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1080/24694452.2018.1530587",
+        "first_author_surname": "Dietz",
+        "title_or_topic": "Plumbing Poverty: Mapping Hot Spots of Racial and Geographic Inequality in U.S. Household Water Insecurity",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (pp. 11–12)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Diver",
+        "title_or_topic": "Networked Sovereignty: Polycentric Water Governance and Indigenous Self-Determination in the Klamath Basin",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Dixit",
+        "title_or_topic": "Rivers and Social Justice: Adopting an Ethical Approach to River Basin Management in India",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Dobbin",
+        "title_or_topic": "Drivers of (In) Equity in Collaborative Environmental Governance",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Dosu",
+        "title_or_topic": "Barriers to Drinking Water Security in Rural Ghana: The Vulnerability of People With Disabilities",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Dwipayanti",
+        "title_or_topic": "Inclusive WASH and Sustainable Tourism in Labuan Bajo, Indonesia: Needs and Opportunities",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Eaves",
+        "title_or_topic": "Analysis of the Novel NCWELL Database Highlights Two Decades of Co-Occurrence of Toxic Metals in North Carolina Private Well Water: Public Health and Environmental Justice Implications",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Enqvist",
+        "title_or_topic": "Informality and Water Justice: Community Perspectives on Water Issues in Cape Town's Low-Income Neighbourhoods",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Favre",
+        "title_or_topic": "Water Pricing in Tunisia: Can an Original Rate Structure Achieve Multiple Objectives?",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Flores Fernández",
+        "title_or_topic": "Water or Mineral Resource? Legal Interpretations and Hydrosocial Configurations of Lithium Mining in Chile",
+        "where_in_review": "Results 3.3 (pp. 8, 10)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "10.33112/nm.18.2.6",
+        "first_author_surname": "Fusco",
+        "title_or_topic": "In Dubio Pro Natura: Environmental Constitutionalism and the Rights of Indigenous Peoples in the Arctic",
+        "where_in_review": "Results 3.1 (p. 5)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "García",
+        "title_or_topic": "Collaboration and Conflict in Complex Water Governance Systems Across a Development Gradient",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gazzeh",
+        "title_or_topic": "Regional Disparity in Access to Basic Public Services in Saudi Arabia: A Sustainability Challenge",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gerlak",
+        "title_or_topic": "An Intersectional Approach to Water Equity in the US",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Goff",
+        "title_or_topic": "Visionary Evaluation: Approaching Aboriginal Ontological Equity in Water Management Evaluation",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "10.1016/j.polgeo.2023.102975",
+        "first_author_surname": "Gorostiza",
+        "title_or_topic": "Where Have All the Sediments Gone? Reservoir Silting and Sedimentary Justice in the Lower Ebro River",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gostin",
+        "title_or_topic": "Politics and Public Health: The Flint Drinking Water Crisis",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "10.1080/07900627.2021.1952855",
+        "first_author_surname": "Grafton",
+        "title_or_topic": "Bending Towards Water Justice: Pathways for Truth, Reconciliation, Inclusion and Transformative Actions",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Greenberg",
+        "title_or_topic": "Delivering Fresh Water: Critical Infrastructure, Environmental Justice, and Flint, Michigan",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Gupta",
+        "title_or_topic": "Sharing Our Water: Inclusive Development and Glocal Water Justice in the Anthropocene",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Hartwig",
+        "title_or_topic": "Water Colonialism and Indigenous Water Justice in South-Eastern Australia",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Jepson",
+        "title_or_topic": "Advancing Human Capabilities for Water Security: A Relational Approach",
+        "where_in_review": "Results 3.3 (p. 10)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "10.1017/9781316831847",
+        "first_author_surname": "Johnston",
+        "title_or_topic": "Large-Scale Dam Development and Counter Movements: Water Justice Struggles Around Guatemala's Chixoy Dam",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.1080/13549839.2013.870542",
+        "first_author_surname": "Joy",
+        "title_or_topic": "Re-Politicising Water Governance: Exploring Water re-Allocations in Terms of Justice",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1515/auk-2014-0209",
+        "first_author_surname": "Kalhof",
+        "title_or_topic": "Water Justice: A Multilayer Term and Its Role in Cooperation",
+        "where_in_review": "Results 3.1 (p. 5)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1016/j.geoforum.2018.07.013",
+        "first_author_surname": "Karunananthan",
+        "title_or_topic": "Can the Human Right to Water Disrupt Neoliberal Water Policies in the Era of Corporate Policy-Making?",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Keeler",
+        "title_or_topic": "Advancing Water Equity Demands New Approaches to Sustainability Science",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Keremane",
+        "title_or_topic": "The Emotional Connection to Urban Water Through the Lens of the Water Customer",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Knudson",
+        "title_or_topic": "Just Water Transitions at the End of Sugar in Maui, Hawai",
+        "where_in_review": "Results 3.3 (p. 8)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Koff",
+        "title_or_topic": "Cross-Border Environmental Peace as the Interaction of Regional Norms and Local Power: Lessons from Cross-Regional Analysis of Water Security Debates",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lee",
+        "title_or_topic": "Turning Participation Into Power: A Water Justice Case Study",
+        "where_in_review": "Results 3.1 (p. 6), 3.2 (p. 8)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lubeck-Schricker",
+        "title_or_topic": "Divided Infrastructure: Legal Exclusion and Water Inequality in an Urban Slum in Mumbai, India",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Luh",
+        "title_or_topic": "Equity in Water and Sanitation: Developing an Index to Measure Progressive Realization of the Human Right",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lukasiewicz",
+        "title_or_topic": "Is the Environment Getting Its Fair Share? An Analysis of the Australian Water Reform Process Using a Social Justice Framework",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Luo",
+        "title_or_topic": "Just Commons: Governance of Irrigation Water in World Heritage Rice Terraces, Southwest China",
+        "where_in_review": "Results 3.1 (pp. 6–7), 3.3 (pp. 8, 10), 3.4 (p. 12)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Lynch",
+        "title_or_topic": "Vulnerabilities, Competition and Rights in a Context of Climate Change Toward Equitable Water Governance in Peru's Rio Santa Valley",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "10.30827/revpaz.v9i2.5320",
+        "first_author_surname": "Maganda",
+        "title_or_topic": "Analyzing the Dynamics of Inter-State Water Peace: A Study of the Huitzilapan-Xalapa Water Transfers",
+        "where_in_review": "Results 3.1 (p. 6), 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Marchand",
+        "title_or_topic": "From Water Injustice to the Coproduction of a New Hydrosocial Territory: Working-Class Inhabitants and University Activists Creating Alternatives in Mexico City",
+        "where_in_review": "Results 3.1 (p. 7), 3.4 (p. 12)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Martinez-Alier",
+        "title_or_topic": "Between Activism and Science: Grassroots Concepts for Sustainability Coined by Environmental Justice Organizations",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1177/25148486221086481",
+        "first_author_surname": "Mawani",
+        "title_or_topic": "“Making Do”: Religious Segregation and Everyday Water Struggles",
+        "where_in_review": "Results 3.1 (p. 6), 3.3 (pp. 8, 10)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "McGregor",
+        "title_or_topic": "Mino-Mnaamodzawin: Achieving Indigenous Environmental Justice in Canada",
+        "where_in_review": "Results 3.3 (p. 10)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Meehan",
+        "title_or_topic": "Water Rights and Wrongs: Illegality and Informal Use in Mexico and the US",
+        "where_in_review": "Results 3.3 (p. 8)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Méndez-Barrientos",
+        "title_or_topic": "Race, Citizenship, and Belonging in the Pursuit of Water and Climate Justice in California",
+        "where_in_review": "Results 3.1 (pp. 6–7), Discussion 4.2 (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Middleton",
+        "title_or_topic": "Reciprocity in Practice: The Hydropolitics of Equitable and Reasonable Utilization in the Lancang-Mekong Basin",
+        "where_in_review": "Results 3.3 (p. 10)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Mitra",
+        "title_or_topic": "Contesting Institutional Narratives and Core Assumptions About Detroit's Mass Water Shutoffs: Collaborative Writing for Water Justice",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Moody",
+        "title_or_topic": "Water Shutoffs During COVID-19 and Black Lives: Case Study Detroit",
+        "where_in_review": "Results 3.2 (p. 8), 3.3 (p. 8)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1016/j.geoforum.2013.03.003",
+        "first_author_surname": "Movik",
+        "title_or_topic": "A Fair Share? Perceptions of Justice in South Africa's Water Allocation Reform Policy",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Murray",
+        "title_or_topic": "Workshopping Water Justice: Linking Struggles From the Cape Flats to the Rest of the Continent",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Narain",
+        "title_or_topic": "Whose Land? Whose Water? Water Rights, Equity and Justice in a Peri-Urban Context",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Neal",
+        "title_or_topic": "Why Justice Matters in Water Governance: Some Ideas for a ‘Water Justice Framework’",
+        "where_in_review": "Results 3.1 (p. 5)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "10.1080/07900627.2021.1882406",
+        "first_author_surname": "Nikolakis",
+        "title_or_topic": "Law Versus Justice: The Strategic Aboriginal Water Reserve in the Northern Territory, Australia",
+        "where_in_review": "Results 3.1 (pp. 6–7), 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pacheco-Vega",
+        "title_or_topic": "Human Right to Water and Bottled Water Consumption: Governing at the Intersection of Water Justice, Rights and Ethics",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pannu",
+        "title_or_topic": "Drinking Water and Exclusion: A Case Study From California's Central Valley",
+        "where_in_review": "Results 3.3 (p. 8), 3.4 (p. 11)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pannu",
+        "title_or_topic": "Bridging the Sage Drinking Water Gap for California's Rural Poor",
+        "where_in_review": "Results 3.3 (p. 8)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Parsons",
+        "title_or_topic": "A History of the Settler-Colonial Freshwater Impure-Ment: Water Pollution and the Creation of Multiple Environmental Injustices Along the Waipa River",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 12)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pavón",
+        "title_or_topic": "What Governance? The Role of Public and Private Stakeholders in Water Supply Management in Mediterranean Coastal Tourist Destinations: The Case of the Costa Brava",
+        "where_in_review": "Results 3.4 (p. 12), Discussion 4.2 (p. 13)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.1111/anti.12097",
+        "first_author_surname": "Perera",
+        "title_or_topic": "Engaged Universals and Community Economies: The (Human) Right to Water in Colombia",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Perreault",
+        "title_or_topic": "Conclusions: Struggles for Justice in a Changing Water World",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Pokharel",
+        "title_or_topic": "Water Security in Urban Water Governance: A Case Study of Dhulikhel Municipality, Kavrepalanchowk, Nepal",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "10.3389/frwa.2023.1061010",
+        "first_author_surname": "Pool",
+        "title_or_topic": "Advancing Water Justice Through a Tribally-Driven Partnership: Designing Sustainable Rainwater Harvesting Systems in the Yukon–Kuskokwim Delta of Alaska",
+        "where_in_review": "Results 3.1 (p. 7), 3.3 (p. 10)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Preston",
+        "title_or_topic": "The Judicial Contribution to Water Justice: The Australian Experience",
+        "where_in_review": "Results 3.1 (pp. 5–6), 3.4 (p. 11)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.3390/w13030278",
+        "first_author_surname": "Prieto",
+        "title_or_topic": "Equity vs. Efficiency and the Human Right to Water",
+        "where_in_review": "Results 3.1 (pp. 6–7)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Radonic",
+        "title_or_topic": "When Governing Urban Waters Differently: Five Tenets for Socio-Environmental Justice in Urban Climate Adaptation Interventions",
+        "where_in_review": "Results 3.1 (p. 6), Discussion 4.2 (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Ribeiro",
+        "title_or_topic": "Water Security and Interstate Conflict and Cooperation",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2014"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Romano",
+        "title_or_topic": "From Water Insecurity to Water Injustice: How Tourism Produces Environmental Injustice Along Nicaragua's “Emerald Coast”",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Roque",
+        "title_or_topic": "Justice and Injustice in “Modular, Adaptive and Decentralized”(MAD) Water Systems",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 12)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "10.1017/9781316831847.014",
+        "first_author_surname": "Rusca",
+        "title_or_topic": "Sanitation Justice?: The Multiple Dimensions of Urban Sanitation Inequalities",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "10.1089/env.2016.0011",
+        "first_author_surname": "Salinsky",
+        "title_or_topic": "Comparing the 2014–2016 Flint Water Crisis to the 1993 Milwaukee Cryptosporidium Outbreak",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Schur",
+        "title_or_topic": "Potable or Affordable? A Comparative Study of Household Water Security Within a Transboundary Aquifer Along the U.S.-Mexico Border",
+        "where_in_review": "Results 3.2 (p. 8), 3.3 (p. 10)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Shuai",
+        "title_or_topic": "Robust Optimization With Equity and Efficiency Framework for Basin-Wide Water Resources Planning",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Sinha",
+        "title_or_topic": "Tourism and Inequality in Per Capita Water Availability: Is the Linkage Sustainable?",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Smith",
+        "title_or_topic": "Developing an Ecumenical Framework for Water Justice",
+        "where_in_review": "Results 3.1 (p. 6), 3.4 (p. 11)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Spronk",
+        "title_or_topic": "Struggles for Water Justice in Latin America: Public and ‘Social-Public’ Alternatives",
+        "where_in_review": "Results 3.2 (p. 8), Discussion 4.2 (p. 13)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Spronk",
+        "title_or_topic": "Covid-19 and Structural Inequalities: Class, Gender, Race and Water Justice",
+        "where_in_review": "Results 3.3 (p. 8), 3.4 (p. 12)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Stewart",
+        "title_or_topic": "Water Justice Delayed Is Justice Denied: An Examination of the California State Water Resources Control Board's Mandatory Consolidation Authority",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Suhardiman",
+        "title_or_topic": "The Salween River as a Transboundary Commons: Fragmented Collective Action, Hybrid Governance and Power",
+        "where_in_review": "Results 3.3 (p. 10)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "10.1080/02508060.2018.1458272",
+        "first_author_surname": "Sultana",
+        "title_or_topic": "Water Justice: Why It Matters and How to Achieve It",
+        "where_in_review": "Results 3.1 (pp. 5, 7), 3.3 (p. 8)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Syme",
+        "title_or_topic": "Justice and Equity in Watershed Development in Andhra Pradesh",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Tiwari",
+        "title_or_topic": "Inequality, Sufficiency and Sustainability of Urban Drinking Water in Uttar Pradesh",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Torres-Salinas",
+        "title_or_topic": "Forestry Development, Water Scarcity, and the Mapuche Protest for Environmental Justice in Chile",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Ulloa",
+        "title_or_topic": "The Rights of the Wayúu People and Water in the Context of Mining in La Guajira, Colombia: Demands of Relational Water Justice",
+        "where_in_review": "Discussion 4.2 reviewed trends (p. 13)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "van den Berge",
+        "title_or_topic": "Water Justice and Europe's Right2Water Movement",
+        "where_in_review": "Results 3.1 (p. 7), Discussion 4.2 (p. 13)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "van den Berge",
+        "title_or_topic": "Social Movements in Defense of Public Water Services: The Case of Spain",
+        "where_in_review": "Results 3.1 (p. 6), Discussion 4.2 (p. 13)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Vanderwarker",
+        "title_or_topic": "Water and Environmental Justice",
+        "where_in_review": "Results 3.1 (p. 5)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Velasco",
+        "title_or_topic": "Injustice and Organisation in Anchicayá, Colombia: An Environmental Legal Case in a Hydropower Watershed",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2016"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Velasquez",
+        "title_or_topic": "Desalination and the Reproduction of Water Injustices in the San Andrés Island Water Crisis",
+        "where_in_review": "Results 3.1 (pp. 6–7)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "10.1017/9781316831847",
+        "first_author_surname": "Vos",
+        "title_or_topic": "Neoliberal Water Governmentalities, Virtual Water Trade, and Contestations",
+        "where_in_review": "Results 3.1 (p. 6)",
+        "year": "2018"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Walnycki",
+        "title_or_topic": "Rights on the Edge of the City: Realizing of the Right to Water in Informal Settlements in Bolivia",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wang",
+        "title_or_topic": "Virtual Water Management and the Water–Energy Nexus: A Case Study of Three Mid-Atlantic States",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2015"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wang",
+        "title_or_topic": "Does Economic Growth Help Reduce Inequality of Water Consumption? Insight From Evolution and Drivers of Inequality in Water Consumption in China",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Williams",
+        "title_or_topic": "Unconventional Waters: A Critical Understanding of Desalination and Wastewater Reuse",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2023"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wilson",
+        "title_or_topic": "Querying Water Co-Governance: Yukon First Nations and Water Governance in the Context of Modern Land Claim Agreements",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2020"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wrisdale",
+        "title_or_topic": "Factors That Impact on Access to Water and Sanitation for Older Adults and People With Disability in Rural South Africa: An Occupational Justice Perspective",
+        "where_in_review": "Results 3.1 (p. 5)",
+        "year": "2017"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Wutich",
+        "title_or_topic": "Shared Cultural Norms for Justice in Water Institutions: Results From Fiji, Ecuador, Paraguay, New Zealand, and the US",
+        "where_in_review": "Results 3.4 (p. 11)",
+        "year": "2012"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Xu",
+        "title_or_topic": "Intergenerational Equity Based Optimal Water Allocation for Sustainable Development: A Case Study on the Upper Reaches of Minjiang River, China",
+        "where_in_review": "Results 3.1 (p. 5), 3.2 (p. 8)",
+        "year": "2019"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Yalew",
+        "title_or_topic": "Distributive Justice and Sustainability Goals in Transboundary Rivers: Case of the Nile Basin",
+        "where_in_review": "Results 3.3 (p. 10)",
+        "year": "2021"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Yang",
+        "title_or_topic": "Water Safety and Inequality in Access to Drinking-Water Between Rich and Poor Households",
+        "where_in_review": "Results 3.2 (p. 8)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Zeitoun",
+        "title_or_topic": "Global Environmental Justice and International Transboundary Waters: An Initial Exploration",
+        "where_in_review": "Results 3.2 (p. 8), 3.3 (p. 10)",
+        "year": "2013"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Zhang",
+        "title_or_topic": "Water Pricing and Affordability in the US: Public vs. Private Ownership",
+        "where_in_review": "Results 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "",
+        "first_author_surname": "Zhang",
+        "title_or_topic": "Water Shutoff Moratoria Lowered COVID-19 Infection and Death Across US States",
+        "where_in_review": "Results 3.2 (p. 8), 3.4 (p. 12)",
+        "year": "2022"
+      },
+      {
+        "doi_if_printed": "10.1080/02508060.2014.891168",
+        "first_author_surname": "Zwarteveen",
+        "title_or_topic": "Defining, Researching and Struggling for Water Justice: Some Conceptual Building Blocks for Research and Action",
+        "where_in_review": "Results 3.1 (pp. 5, 7), 3.4 (p. 11)",
+        "year": "2014"
+      }
+    ],
+    "included_studies_count_reported": 470,
+    "included_studies_list_completeness": "partial_inline_citations_only",
+    "methodological_notes": "Fanaian et al. (2025) is classified under WIREs Water's \"SYSTEMATIC REVIEW\" rubric and follows PRISMA 2020 screening mechanics across six databases (2299 records -> 1935 deduplicated abstracts -> 542 full texts -> 470 included publications; protocol published in ANU Open Repository as Fanaian 2024). Methodologically, however, it functions as a broad systematic scoping/thematic mapping review rather than an empirical effectiveness review: (1) its search string was strictly limited to \"water justice\" OR \"water equity\" and explicitly excluded studies framed solely around \"human right to water\" or \"water access\"; (2) its 470-item corpus pools primary empirical studies alongside theoretical essays, edited-volume chapters, and other secondary reviews (e.g., De Guzman et al. 2023; Leonard et al. 2023; Schmidt 2023; Zuniga-Teran et al. 2021; Rusca and Cleaver 2022; Gupta et al. 2022a/b — omitted from included_primary_studies above to avoid review-on-review conflation); (3) no individual study table or bibliography of the 470 included records is printed in the PDF or shared as open data (\"Data sharing is not applicable\"), and Annex Tables 1–5 in Supporting Information contain only thematic/country aggregations; and (4) no risk-of-bias appraisal was conducted, yielding Critically Low confidence under AMSTAR 2 (critical flaws on Q7, Q9, and Q13). Narrow Criterion 2 is borderline because a substantive subset of synthesized primary studies examines legal, regulatory, tariff, shutoff, ownership, and slum-tenure WASH rules (e.g., Bae et al. 2023 on SDWA enforcement; Stewart 2022 on mandatory consolidation; Lubeck-Schricker et al. 2023 on legal exclusion in Mumbai slums; Zhang et al. 2022a/b on public vs. private water pricing and shutoff moratoria), whereas the overall corpus spans river basins, irrigation, hydropower, lithium mining, tourism, and non-empirical theory.",
+    "narrow_criterion2_fit": "borderline_narrow_c2",
+    "paper_read": "full text",
+    "review_design_self_description": "systematic review (PRISMA 2020 deductive qualitative and bibliometric thematic review of 470 journal articles, book chapters, and reviews)",
+    "study_id": "S027"
+  }
+}
