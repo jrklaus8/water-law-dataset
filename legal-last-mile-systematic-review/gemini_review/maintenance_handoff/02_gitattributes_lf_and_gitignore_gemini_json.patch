@@ -1,0 +1,22 @@
+diff --git a/.gitattributes b/.gitattributes
+new file mode 100644
+--- /dev/null
++++ b/.gitattributes
+@@ -0,0 +1,6 @@
++# Enforce LF line endings across text/data files so DATA_MANIFEST.csv SHA-256 checks pass on Windows
++* text=auto eol=lf
++*.pdf binary
++*.png binary
++*.jpg binary
++*.docx binary
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore
++++ b/.gitignore
+@@ -105,3 +105,7 @@
+ 
+ # Audit findings register (docs/audit-report.md refers to it) - tracked despite the *.csv exclusion above
+ !docs/findings-register.csv
++# Allow tracked JSON audit artifacts inside gemini_review/ per GEMINI_HANDOFF_BRIEF §5 & §7
++!legal-last-mile-systematic-review/gemini_review/
++!legal-last-mile-systematic-review/gemini_review/**
++!legal-last-mile-systematic-review/gemini_review/**/*.json
