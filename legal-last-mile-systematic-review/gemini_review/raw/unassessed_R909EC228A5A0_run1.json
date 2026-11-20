@@ -1,0 +1,291 @@
+{
+  "record_id": "R909EC228A5A0",
+  "order": 62,
+  "run": 1,
+  "task": "unassessed_phase6_empirical_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "file_sha256": "7f1c678cdc1c5991a8bcc7f58d43f0ae82d3db2b6b69a78e505fcae916970c90",
+  "input_text_sha256": "af19eaba695ec0cf110595ea9612d36d3d414c1b5504e29b907bc0f2629d465d",
+  "prompt_sha256": "815cb564af37d447ffd1afe434690c3d13d9aca79f7a3419c63c32300848ba85",
+  "started_at": "2026-11-20T04:39:47.458728+00:00",
+  "completed_at": "2026-11-20T04:41:09.785373+00:00",
+  "raw_request": {
+    "type_name": "blind_screener_v2",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "record_id",
+        "decision",
+        "exclusion_code",
+        "evidence_quotes",
+        "criteria",
+        "criterion_notes",
+        "study_design",
+        "country",
+        "population_and_sample",
+        "exposure",
+        "outcome",
+        "rationale",
+        "confidence",
+        "paper_read",
+        "plain_criterion2_decision"
+      ],
+      "properties": {
+        "record_id": {
+          "type": "string"
+        },
+        "decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        },
+        "exclusion_code": {
+          "type": "string",
+          "enum": [
+            "NONE",
+            "E01",
+            "E02",
+            "E03",
+            "E04",
+            "E05",
+            "E06",
+            "E07",
+            "E08",
+            "E09",
+            "E10",
+            "E11",
+            "E12"
+          ]
+        },
+        "evidence_quotes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "criterion",
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "criterion": {
+                "type": "string"
+              },
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "criteria": {
+          "type": "object",
+          "required": [
+            "c1_service_access",
+            "c2_legal_admin_factor",
+            "c3_empirical",
+            "c4_access_outcome",
+            "c5_pop_exposure_outcome_design",
+            "c6_language"
+          ],
+          "properties": {
+            "c1_service_access": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c2_legal_admin_factor": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c3_empirical": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c4_access_outcome": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c5_pop_exposure_outcome_design": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            },
+            "c6_language": {
+              "type": "string",
+              "enum": [
+                "yes",
+                "no",
+                "unclear"
+              ]
+            }
+          }
+        },
+        "criterion_notes": {
+          "type": "object",
+          "required": [
+            "c1",
+            "c2",
+            "c3",
+            "c4",
+            "c5",
+            "c6"
+          ],
+          "properties": {
+            "c1": {
+              "type": "string"
+            },
+            "c2": {
+              "type": "string"
+            },
+            "c3": {
+              "type": "string"
+            },
+            "c4": {
+              "type": "string"
+            },
+            "c5": {
+              "type": "string"
+            },
+            "c6": {
+              "type": "string"
+            }
+          }
+        },
+        "study_design": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "population_and_sample": {
+          "type": "string"
+        },
+        "exposure": {
+          "type": "string"
+        },
+        "outcome": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        },
+        "paper_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "plain_criterion2_decision": {
+          "type": "string",
+          "enum": [
+            "include",
+            "exclude",
+            "cannot_tell"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND FULL-TEXT SCREENING — RECORD R909EC228A5A0\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Reading workspace files is strictly prohibited and breaks blinding. Evaluate ONLY the text below.\n\n== RECORD METADATA (from blind shuffled input; study_id and prior decisions withheld) ==\n- Record ID: R909EC228A5A0\n- Title: Performance Assessment for Increasing Connection Rates of Private Water Supply Operators in Cambodia\n- Authors: Phea S.; Kazama S.; Takizawa S.\n- Year: 2022\n- DOI: 10.3390/w14152369\n- Retrieval status: retrieved_oa_pdf\n\n== INCLUSION AND EXCLUSION CRITERIA (verbatim from INCLUSION_EXCLUSION.md) ==\n[INCLUSION_EXCLUSION_MD_VERBATIM]\n\n== SCREENING CHECKLIST & RULES (apply in order) ==\n1. c1_service_access: Does the paper examine household or community water or sanitation SERVICE ACCESS?\n2. c2_legal_admin_factor: Does it examine a legal, administrative, institutional, regulatory, or governance factor, read per the 2026-10-13 clarification as a RULE-TYPE MECHANISM that directly governs service access (eligibility screening, administrative burden, documentation or tenure requirements, tariff or cost-recovery rules, discretion or accommodation, enforcement, or utility ownership or regulatory structure directly governing service access) — NOT generic project delivery, behavioural promotion, or unanalysed macro-governance background?\n   - IMPORTANT: In `criterion_notes.c2`, state explicitly how BOTH the plain wording of criterion 2 and the narrow 2026-10-13 rule-type reading apply (especially if borderline or if plain=yes but narrow=no).\n3. c3_empirical: Does it contain EMPIRICAL evidence (quantitative, qualitative, mixed-methods, socio-legal empirical, or empirical case study with identifiable data/methods) or a SYSTEMATIC empirical synthesis? A policy overview, doctrinal commentary, essay, or narrative overview with no empirical method and no primary data is NOT enough -> exclude with code `E05`.\n4. c4_access_outcome: Does it report an OUTCOME relevant to access, connection, service availability, reliability, continuity, quantity, affordability, or exclusion?\n5. c5_pop_exposure_outcome_design: Does it provide enough information to identify POPULATION (and unit of analysis), EXPOSURE, and OUTCOME, with an identifiable STUDY DESIGN?\n6. c6_language: Is the language English, Portuguese, or Dutch (or another language where translation from the provided full text is feasible and explicitly noted in `criterion_notes.c6` per Criterion 10)?\n\nAdditional mandatory rules:\n- Results (statistical significance, effect size, direction) NEVER decide eligibility.\n- Qualitative socio-legal empirical studies are NEVER excluded merely because they cannot be pooled quantitatively.\n- Check that the retrieved paper actually matches the Record Metadata (title/authors/DOI). If the retrieved PDF/text is clearly a DIFFERENT paper from the metadata, set `decision` to `\"cannot_tell\"`, `paper_mention_mismatch` in `rationale`, and flag `\"WRONG_PAPER_MISMATCH\"` at the start of `rationale`.\n- If `retrieval_status` is `not_accessible`, or if the text below is only an abstract, landing page, table of contents, or unreadable scan without full text, output `decision: \"cannot_tell\"`, `exclusion_code: \"NONE\"`, `paper_read: \"not accessible\"` (or `\"abstract only\"`), and explain why in `rationale` (including `reason: \"full text not accessible\"` when inaccessible).\n- `decision` must be `\"include\"`, `\"exclude\"`, or `\"cannot_tell\"` under the active 2026-10-13 narrow rule-type reading of Criterion 2.\n- `plain_criterion2_decision` must record what your full-text decision (`\"include\"`, `\"exclude\"`, or `\"cannot_tell\"`) would be under the literal/plain broad wording of Criterion 2 (per GEMINI_HANDOFF_BRIEF §3 Task B, state explicitly in `criterion_notes.c2` whenever a paper passes the plain wording of Criterion 2 but fails the narrow rule-type reading!).\n- If `decision == \"exclude\"`, `exclusion_code` MUST be the single best code from `E01`..`E12`. Otherwise `exclusion_code` MUST be `\"NONE\"`.\n- `evidence_quotes`: Provide verbatim quotes from the `== PAPER FULL TEXT ==` section below supporting your criterion judgments (at least 2 to 5 quotes when full text is readable, covering c1, c2, c3, c4). EVERY quote MUST be an exact, contiguous, character-for-character substring of `== PAPER FULL TEXT ==`, at least 25 characters long, with NO ellipses (`...`), NO bracketed insertions, and NO paraphrasing. Copy exact words from the text and give the exact PDF page number (from `=== [PDF Page X of N] ===`) or section header in `page`.\n- Write `\"not reported\"` for `study_design`, `country`, `population_and_sample`, `exposure`, or `outcome` if the paper does not state it (never infer from outside knowledge).\n\n== PAPER FULL TEXT (SHA-256: af19eaba695ec0cf110595ea9612d36d3d414c1b5504e29b907bc0f2629d465d) ==\n[COPYRIGHTED_PAPER_FULL_TEXT_WITHHELD_PER_SECTION_6: chars=57909, sha256=af19eaba695ec0cf110595ea9612d36d3d414c1b5504e29b907bc0f2629d465d]\n== END PAPER FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "country": "Cambodia",
+    "criteria": {
+      "c1_service_access": "yes",
+      "c2_legal_admin_factor": "yes",
+      "c3_empirical": "yes",
+      "c4_access_outcome": "yes",
+      "c5_pop_exposure_outcome_design": "yes",
+      "c6_language": "yes"
+    },
+    "criterion_notes": {
+      "c1": "Examines household connection to and consumption of piped drinking water supplied by licensed private water supply operators (PWSOs) in peri-urban/rural districts of Cambodia.",
+      "c2": "Satisfies BOTH the plain wording of Criterion 2 and the narrow 2026-10-13 rule-type mechanism reading. Under the plain wording, it examines regulatory, institutional, and tariff governance of private water supply operators (PWSOs) overseen by Cambodia's Ministry of Industry, Science, Technology & Innovation (MISTI). Under the narrow 2026-10-13 rule-type reading, it directly analyzes two in-scope rule-type mechanisms governing household water access: (1) tariff, connection-fee, and cost-recovery rules (MISTI's regulated ceiling of 60 USD/connection and 0.57 USD/m3, the studied PWSOs' application of a flat 0.50 USD/m3 tariff rather than the standard three-block tariff, customer-borne extra charges for service pipes and meters, and operator cost-recovery operating ratios of 21.8-46.8%); and (2) utility ownership and licensing/regulatory rules (MISTI 20-year PWSO licenses, certificates of operation, compliance with MISTI minimum technical guidelines, and the scale/boundaries of mandated licensed service areas).",
+      "c3": "Contains primary empirical evidence combining MISTI regulatory/inspection records (31 technical inspection reports from 2019-2020 and PWSO production/business reports from 2016-2020), PWSO owner questionnaires, physical network/meter inspections and tap water testing (75 meters/taps) paired with EPANET 2.2 hydraulic/chlorine modeling, and a random household survey of 109 homes (75 connected and 34 non-connected) analyzed via Kruskal-Wallis tests and multiple log-linear regression.",
+      "c4": "Reports multiple service-access outcomes at both utility and household levels: PWSO connection rates (10.6%, 53.9%, and 77.8%), household connection vs. non-connection status, per-capita and monthly piped water consumption (LPCD and m3/connection), affordability (connection expenditure and monthly water bills as a share of household income across income quintiles, and willingness to pay vs. regulated connection fees and tariffs), and service continuity, pressure, and water quality.",
+      "c5": "Clearly identifies both units of analysis and samples (3 licensed PWSOs in Koh Kong, Kampong Cham, and Kampong Thom provinces; plus 109 randomly sampled connected [n=75] and non-connected [n=34] households in two PWSO service areas), the regulatory/tariff exposures, the connection/consumption/affordability outcomes, and the cross-sectional mixed-methods observational study design.",
+      "c6": "Full text is in English."
+    },
+    "decision": "include",
+    "evidence_quotes": [
+      {
+        "criterion": "c1_service_access",
+        "page": "PDF Page 2 of 20",
+        "quote": "This study aimed to find the reasons for low connection rates of PWSOs in Cambodia and to propose way(s) to increase the connection rates of PWSOs."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 4 of 20",
+        "quote": "The water tariff committee of MISTI regulates the connection fees and water tariffs below 60 USD/connection (240,000 Cambodian Riel (KHR)/connection) and 0.57 USD/m3 (2300 KHR/m3) for PWSOs."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 4 of 20",
+        "quote": "However, the three PWSOs in this study do not have a block water tariff; they apply a flat rate water tariff at 0.50 USD/m3 (2000 KHR/m3), irrespective of the amount of water consumption."
+      },
+      {
+        "criterion": "c3_empirical",
+        "page": "PDF Page 4 of 20",
+        "quote": "In addition, the production and business water supply reports submitted from the PWSOs to MISTI between 2016 and 2020 were used for calculating the coverage areas, connection rates, per capita piped water consumption, electricity consumption, NRW, and operation and maintenance expenditure."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 13 of 20",
+        "quote": "The expenditure for connection was slightly higher than the connection fee (60 USD/connection or 240,000 KHR/connection) because of the need to pay extra for pipes and water meters."
+      },
+      {
+        "criterion": "c4_access_outcome",
+        "page": "PDF Page 15 of 20",
+        "quote": "Therefore, the current level of water tariffs causes access inequality for the low- and lowest-income households, compared to the middle- or higher-income households."
+      },
+      {
+        "criterion": "c2_legal_admin_factor",
+        "page": "PDF Page 16 of 20",
+        "quote": "Therefore, it is important to examine the scale of service areas proposed by the PWSOs when licenses are issued by the MISTI."
+      }
+    ],
+    "exclusion_code": "NONE",
+    "exposure": "MISTI-regulated PWSO tariff, connection-fee, and cost-recovery rules (60 USD/connection cap plus customer-borne pipe/meter costs, flat 0.50 USD/m3 water tariff vs. three-block schedule, and PWSO operating ratios of 21.8-46.8%) as well as PWSO licensing rules (scale of mandated licensed service areas and compliance with MISTI minimum technical requirements).",
+    "outcome": "PWSO piped-water connection rates (10.6%, 53.9%, and 77.8%), household connection vs. non-connection status, per-capita and monthly piped water consumption (LPCD and m3/connection), affordability burden (% of monthly income spent on connection and water tariffs across income quintiles and willingness to pay relative to regulated charges), and service continuity/pressure/quality.",
+    "paper_read": "full text",
+    "plain_criterion2_decision": "include",
+    "population_and_sample": "Utility level: 3 MISTI-licensed private water supply operators (PWSOs: KC in Koh Kong Province, KM in Kampong Cham Province, and NN in Kampong Thom Province, covering 9,342, 3,620, and 3,864 total homes in their licensed service areas, alongside 31 MISTI technical inspection reports). Household level: 109 randomly selected households (75 connected and 34 non-connected homes) surveyed in KM and NN service areas in August-September 2021.",
+    "rationale": "This empirical study in Cambodia meets all inclusion criteria under both the plain wording and the narrow 2026-10-13 rule-type reading of Criterion 2. Beyond testing physical network performance (pressure, turbidity, residual chlorine, and EPANET modeling) to rule out service-quality explanations for non-connection, it empirically evaluates MISTI-regulated connection-fee and flat-rate water-tariff rules, customer-borne pipe/meter connection charges, PWSO cost-recovery operating ratios, and MISTI-licensed service-area boundaries across three licensed private operators and 109 connected and non-connected households, demonstrating how regulated connection charges, flat tariffs, and oversized licensed service areas restrict household piped-water connection and low-income consumption.",
+    "record_id": "R909EC228A5A0",
+    "study_design": "Cross-sectional observational study combining comparative utility case studies (regulatory/financial records, physical inspections, owner surveys, and EPANET hydraulic simulation) with a random household survey of connected and non-connected homes."
+  }
+}
