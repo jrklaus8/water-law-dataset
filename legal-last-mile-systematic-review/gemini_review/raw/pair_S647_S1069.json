@@ -1,0 +1,177 @@
+{
+  "pair_key": "S647_S1069",
+  "order": 31,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "6aac41a2728f5312a3ad406e0d8fbe417dacb6ff08b91ad11521c19e09f95e9c",
+  "input_sha256_b": "a957e86b249a321764a9c6aab79e0427c4fb4aaf384fb8586907671adce992e5",
+  "prompt_sha256": "303ee89cc5c21f5ed5765c20aa555c80cb353c57e59792b4e9ac0afabda90343",
+  "started_at": "2026-11-20T03:34:26.681056+00:00",
+  "completed_at": "2026-11-20T03:36:08.234664+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S647_S1069\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S647 (Record ID: R0299C96CF472)\n- Citation: Bond P (2013). Water rights, commons and advocacy narratives. South African Journal on Human Rights 29:125-143.\n- DOI: 10.1080/19962126.2013.11865068\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1069 (Record ID: R5C1AE58C70FF)\n- Citation: Bond P (2012). South African People Power since the mid-1980s: two steps forward, one back. Third World Quarterly 33(2):243-264.\n- DOI: 10.1080/01436597.2012.666011\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 6aac41a2728f5312a3ad406e0d8fbe417dacb6ff08b91ad11521c19e09f95e9c) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=61986, sha256=6aac41a2728f5312a3ad406e0d8fbe417dacb6ff08b91ad11521c19e09f95e9c]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: a957e86b249a321764a9c6aab79e0427c4fb4aaf384fb8586907671adce992e5) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=77942, sha256=a957e86b249a321764a9c6aab79e0427c4fb4aaf384fb8586907671adce992e5]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF p. 2 (p. 125)",
+        "quote": "in Johannesburg led five Sowetans to sue the city to increase water supply and cease"
+      },
+      {
+        "page": "PDF p. 5 (p. 128)",
+        "quote": "people disconnected each year due to inability to pay by 2003."
+      },
+      {
+        "page": "PDF p. 8 (p. 131)",
+        "quote": "were disconnecting more than 20,000 households per month from power"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF p. 7 (p. 248)",
+        "quote": "By 1990 some 80 civics were active in the region stretching from the coal"
+      },
+      {
+        "page": "PDF p. 13 (p. 254)",
+        "quote": "intense civil society contestation once Eskom began disconnecting the"
+      },
+      {
+        "page": "PDF p. 20 (p. 260)",
+        "quote": "of water and 50 kWh of electricity per household per month—were provided,"
+      }
+    ],
+    "overlap_rationale": "Both Study A (Bond 2013, SAJHR) and Study B (Bond 2012, Third World Quarterly) are single-authored qualitative political-economy and legal-policy case-study essays by Patrick Bond rather than primary microdata surveys, and they have distinct overarching scopes: Study A critiques human-rights versus 'commons' advocacy narratives through the 2001-2009 Johannesburg/Soweto (Phiri) water commercialisation and Mazibuko v City of Johannesburg litigation alongside 2000-2012 global Climate Justice summits, whereas Study B traces urban township 'people power' across South Africa from the mid-1980s anti-apartheid civic movement (rent and bond boycotts, ACO, CAST, SANCO) to late-1990s/2000s struggles over Soweto electricity (SECC/Eskom disconnections and R1.4 billion arrears write-off), Orange Farm water meters, HIV treatment, and 2005-2011 Gatherings Act protests. However, for post-2000 municipal service delivery, both papers examine the same Johannesburg Free Basic Water tariff case (the 2001 6,000 litres/month free block with a steeply convex second block, Suez, APF, and 20,000 households/month disconnections) and cite the same underlying secondary empirical statistics (1.5 million people disconnected from water annually and the 1997/98-2004 Durban real water price doubling reducing consumption among the poorest third of residents), creating partial overlap in case-study and secondary empirical evidence.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S647_S1069",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Qualitative legal-political case study and secondary-data synthesis (no primary survey N) focused on Johannesburg and Phiri, Soweto (2001-2009), examining Suez's 2001-2006 Johannesburg Water management contract, Free Basic Water block tariffs (6 kl/month in 2001; 10 kl/month indigent policy in 2008), prepayment water meters, and the Mazibuko v City of Johannesburg litigation (2008 High Court, 2009 SCA, October 2009 Constitutional Court), supplemented by secondary figures on Durban tariff elasticity (1997-2004, Bailey & Buckley 2005), national water disconnections (1.5 million/year by 2003, Muller 2004), SAPS service delivery protests (2009-2012, >800/year), HSRC polls (2003-2011), and global Climate Justice conferences (2000-2012).",
+    "study_b_sample_and_data": "Macro-historical qualitative political-economy synthesis and secondary-data review (no primary survey N) of urban township social movements in South Africa from the mid-1980s to 2011 (centring on Soweto, Alexandra, Vaal, East Rand, Orange Farm, and Durban), covering 1984-1994 civic associations and rent/bond boycotts (~80 regional civics in 1990), post-1994 demobilisation, 2001-2003 Soweto Electricity Crisis Committee campaigns against Eskom disconnections (20,000 households/month; R1.4bn arrears cancelled in 2003), 2001-2003 Johannesburg/Orange Farm water tariff and prepaid meter conflicts, secondary statistics from Statistics SA (1995-2002), SALDRU (1993-2008), Bond & Dugard 2008 on Durban water consumption (1998-2004) and 1.5 million/year water disconnections, and Police Gatherings Act protest counts (>8,000/year since 2005).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

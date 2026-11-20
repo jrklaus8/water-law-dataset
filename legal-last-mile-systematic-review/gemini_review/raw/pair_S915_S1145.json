@@ -1,0 +1,177 @@
+{
+  "pair_key": "S915_S1145",
+  "order": 38,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "3529cf1070b572be4403d2a62f350903a2dd7cb5fbda09e6fd1328cb63ac7081",
+  "input_sha256_b": "567efd938d2e2625a2163ff8b7a3c5dd2f0050730b576ea2ddc1b774bba31b12",
+  "prompt_sha256": "d5253f48a75896a53752481e27d4e0003b599285c4b22397db08dbbe6d1b9835",
+  "started_at": "2026-11-20T03:36:08.317689+00:00",
+  "completed_at": "2026-11-20T03:39:13.405604+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S915_S1145\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S915 (Record ID: R934020F5D9E0)\n- Citation: Gopakumar G (2014). Experiments and Counter-Experiments in the Urban Laboratory of Water-Supply Partnerships in India. International Journal of Urban and Regional Research.\n- DOI: 10.1111/1468-2427.12076\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1145 (Record ID: R0DF9468FC154)\n- Citation: Gopakumar G (2012). Transforming Urban Water Supplies in India: The role of reform and partnerships in globalization. Routledge Contemporary South Asia Series. London: Routledge.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 3529cf1070b572be4403d2a62f350903a2dd7cb5fbda09e6fd1328cb63ac7081) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=75826, sha256=3529cf1070b572be4403d2a62f350903a2dd7cb5fbda09e6fd1328cb63ac7081]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 567efd938d2e2625a2163ff8b7a3c5dd2f0050730b576ea2ddc1b774bba31b12) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=81318, sha256=567efd938d2e2625a2163ff8b7a3c5dd2f0050730b576ea2ddc1b774bba31b12]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "medium",
+    "evidence_quotes_a": [
+      {
+        "page": "393 (PDF p. 1)",
+        "quote": "This research was supported by an NSF Dissertation Improvement Grant (No. SES-0620894)"
+      },
+      {
+        "page": "403 (PDF p. 11)",
+        "quote": "partnership in the Koramangala slum cluster"
+      },
+      {
+        "page": "403 (PDF p. 11)",
+        "quote": "Interview with ENG1, Assistant Engineer, BWSSB, 21 June 2006."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "xi (PDF p. 12)",
+        "quote": "This book began as a PhD dissertation, and thus owes much to the unique social"
+      },
+      {
+        "page": "xiv (PDF p. 15)",
+        "quote": "Koramangala Slum Development Committee"
+      },
+      {
+        "page": "6 (PDF p. 23)",
+        "quote": "Chapter 5 examines three cases of water supply"
+      }
+    ],
+    "overlap_rationale": "Study A (Gopakumar 2014, IJURR) and Study B (Gopakumar 2012, Routledge monograph) share nested qualitative dissertation fieldwork on the Bengaluru (Koramangala slum cluster) water-supply partnership, whereas Study B additionally covers Chennai and Kochi. Specifically, Study A acknowledges NSF Dissertation Improvement Grant SES-0620894 (alongside a 2011 FRQSC write-up grant), cites semi-structured interviews and a focus group conducted in June–July 2006, and examines the 2004 BWSSB–SDU–NGO–slum partnership in Bengaluru's Koramangala slum cluster involving BWSSB Assistant Engineers (AE), the Social Development Unit (SDU), the Koramangala Slum Development Committee, WATSAN committees, and the Karnataka Slum Dwellers Federation (KKNSS), while citing Gopakumar (2012). Study B explicitly states in its Acknowledgments that the book began as Gopakumar's PhD dissertation at Rensselaer Polytechnic Institute, outlines in Chapter 1 a comparative investigation of national-to-state policy transmission (Chapter 3), urban water supply regimes in Bengaluru, Chennai, and Kochi (Chapter 4), and three water supply partnership cases—one each in Bengaluru, Chennai, and Kochi (Chapter 5)—and lists in its Abbreviations the exact Bengaluru Koramangala case organizations from Study A (BWSSB, AE, SDU, KSDC [Koramangala Slum Development Committee], KKNSS, WATSAN, NBR [Natkal Balancing Reservoir], and NTU [new trade union]). Thus, Study A re-theorizes the Bengaluru partnership component of the multi-city dissertation fieldwork using an STS 'urban laboratory' and 'archipelagos/tendrils' framework, creating partial sample overlap on the Bengaluru case. Confidence is rated medium rather than high because the retrieved 34-page PDF for Study B contains only the front matter, Chapter 1 (pp. 1–6), and References (pp. 142–152), omitting Chapters 2–6 (pp. 7–141), so exact interview sample sizes in Table 2.1 and direct quote-by-quote overlap in Chapter 5 cannot be inspected verbatim.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S915_S1145",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Single-city qualitative case study of a pilot urban water-supply partnership launched in 2004 in the Koramangala slum cluster (LR Nagara, Shastri Nagara, Ambedkar Nagara, and Rajendra Nagara) in Bengaluru, Karnataka, India, involving the Bangalore Water Supply and Sewerage Board (BWSSB), its Social Development Unit (SDU), participating NGOs, Koramangala Slum Development Committee, WATSAN committees, and Karnataka Slum Dwellers Federation (KKNSS). Supported by NSF Dissertation Improvement Grant No. SES-0620894 and FRQSC Grant 2011-NP-140665. Empirical data comprise in-depth semi-structured interviews and a focus group conducted in June–July 2006 (exact total N not reported; footnotes cite junior BWSSB Assistant Engineers ENG1 and ENG2, NGO staff NGO1–NGO3, a WATSAN committee member, and a 29 July 2006 slum resident focus group).",
+    "study_b_sample_and_data": "Comparative qualitative monograph derived from the author's PhD dissertation at Rensselaer Polytechnic Institute examining water supply reform policy transmission across three Indian states (Karnataka, Tamil Nadu, and Kerala), urban water supply regimes, and three public–private water supply partnership cases—one each in Bengaluru (Bangalore), Chennai, and Kochi. Note on text completeness: the retrieved 34-page PDF contains front matter, Contents, List of Illustrations, Preface, Acknowledgments, Abbreviations, Chapter 1 (pp. 1–6), and References (pp. 142–152), but omits Chapters 2–6 (pp. 7–141). Consequently, exact interview counts and dates in Table 2.1 ('Details of interviews conducted at research sites', p. 12) and the empirical text of Chapter 5 (pp. 82–117) cannot be verified directly, although the Abbreviations list confirms inclusion of the exact Bengaluru Koramangala partnership actors (BWSSB, SDU, KSDC, KKNSS, WATSAN) alongside Chennai (CMWSSB, TWAD Board) and Kochi (KWA, VKSS, VWSC) cases.",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

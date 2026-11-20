@@ -1,0 +1,177 @@
+{
+  "pair_key": "S666_S981",
+  "order": 11,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "5fb0def47fcc7112c2ddb3100ff771f3f7e2cd364d5000ae789e8eb4f5dd4cc8",
+  "input_sha256_b": "d04885f5d04fa35ec141b4f175da743362e8b7e41b351d1ffb22476d965b09c5",
+  "prompt_sha256": "1cdd75c9100f8e173af38bd32aee160714adb31725cc267b764572a362fc0315",
+  "started_at": "2026-11-20T02:52:58.653151+00:00",
+  "completed_at": "2026-11-20T02:54:15.440748+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S666_S981\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S666 (Record ID: RC8B757CEFEBF)\n- Citation: Seneviratne LW (2000). Challenges to urban water management in Sri Lanka. International Journal of Water Resources Development 16:131-141.\n- DOI: 10.1080/07900620048617\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S981 (Record ID: R420211B3E670)\n- Citation: Molinos-Senante M (2018). Urban Water Management. Chapter 9 in Donoso G (ed), Water Policy in Chile, Global Issues in Water Policy 21. Springer.\n- DOI: 10.1007/978-3-319-76702-4_9\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 5fb0def47fcc7112c2ddb3100ff771f3f7e2cd364d5000ae789e8eb4f5dd4cc8) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=30380, sha256=5fb0def47fcc7112c2ddb3100ff771f3f7e2cd364d5000ae789e8eb4f5dd4cc8]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: d04885f5d04fa35ec141b4f175da743362e8b7e41b351d1ffb22476d965b09c5) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=46221, sha256=d04885f5d04fa35ec141b4f175da743362e8b7e41b351d1ffb22476d965b09c5]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 6 of 12 (p. 135)",
+        "quote": "Table 1. Existing water availability and projected demands for Greater Colombo"
+      },
+      {
+        "page": "PDF Page 7 of 12 (p. 136)",
+        "quote": "Table 3. Status of water supply by hours served in 1997"
+      },
+      {
+        "page": "PDF Page 11 of 12 (p. 140)",
+        "quote": "Only 20% are fortunate enough to get a 24-hour supply."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "PDF Page 2 of 20 (p. 132)",
+        "quote": "Currently, these large coverages are provided by 28 main water companies which"
+      },
+      {
+        "page": "PDF Page 15 of 20 (p. 145)",
+        "quote": "percentages of NRW larger than 20%. In 2015, the average NRW was 33.6%."
+      },
+      {
+        "page": "PDF Page 16 of 20 (p. 146)",
+        "quote": "In 2001, the Decree 90/00 was adopted which regulates wastewater treatment."
+      }
+    ],
+    "overlap_rationale": "Both full texts are complete and match their respective citations. Study A (Seneviratne 2000) examines urban water supply, sanitation, tariff cross-subsidization, and public utility performance in Sri Lanka (focusing on Greater Colombo, Kandy, Galle, Jaffna, Puttalam, and 275 water supply schemes across 24 Sri Lankan districts using 1985–1998 sector reports). Study B (Molinos-Senante 2018) is a book chapter analyzing legal reforms, utility privatization, hypothetical efficient-company tariff regulation, and service quality benchmarking across 28 urban water and sanitation companies in Chile regulated by the Superintendencia de Servicios Sanitarios (SISS) using 1998–2015 administrative data. The two studies have different authors, continents, decades, institutional settings, and underlying data sources (likely flagged as a candidate pair only because both titles feature 'Urban Water Management' and both start on page 131).",
+    "pair_classification": "unrelated_distinct_studies",
+    "pair_key": "S666_S981",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "no",
+    "study_a_sample_and_data": "Sector-wide policy and institutional review of urban water supply and sanitation in Sri Lanka (urban population 3.8 million in 1998, with emphasis on Greater Colombo, Kandy, Galle, Jaffna, and Puttalam), drawing on 1985–1998 government and donor reports (NWSDB, Presidential Task Force 1995, OECF/JICA 1997, ADB 1998) covering 275 water supply schemes across 24 districts in 1997, projected Colombo water demand (1995–2020), capital investment scenarios, and NWSDB rising-block tariffs.",
+    "study_b_sample_and_data": "National regulatory and sector performance review of urban water and sanitation services in Chile (16,812,391 urban residents served by 28 main private and concessionary water companies, plus 278 wastewater treatment systems), synthesizing administrative and benchmarking data from the national regulator Superintendencia de Servicios Sanitarios (SISS) spanning 1998–2015 (principally 2007–2015 quality indicators, tariffs, Casen-targeted household subsidies, and non-revenue water).",
+    "synthesis_double_counting_risk": "none_distinct_samples"
+  }
+}

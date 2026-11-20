@@ -1,0 +1,177 @@
+{
+  "pair_key": "S826_S1074",
+  "order": 23,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "99ffeff2e0f71d614d1b98f3f163d6ee877b64542cc4de5e534f8829256d9f27",
+  "input_sha256_b": "1fd2e3907d243f25b5fc18b4c44e1a48d2b2b18a559c0272281ac48f6e129a3f",
+  "prompt_sha256": "e4c47c3a19466152845c33f817205fe3e5bf26400de84951c4863374264c9906",
+  "started_at": "2026-11-20T02:54:36.154221+00:00",
+  "completed_at": "2026-11-20T02:55:26.125819+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S826_S1074\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S826 (Record ID: R7D0B0BE35E0D)\n- Citation: Anand N (2011). PRESSURE: The PoliTechnics of Water Supply in Mumbai. Cultural Anthropology.\n- DOI: 10.1111/j.1548-1360.2011.01111.x\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1074 (Record ID: R653891430501)\n- Citation: Anand N (2012). Municipal disconnect: On abject water and its urban infrastructures. Ethnography 13(4):487-509.\n- DOI: 10.1177/1466138111435743\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 99ffeff2e0f71d614d1b98f3f163d6ee877b64542cc4de5e534f8829256d9f27) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=63421, sha256=99ffeff2e0f71d614d1b98f3f163d6ee877b64542cc4de5e534f8829256d9f27]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 1fd2e3907d243f25b5fc18b4c44e1a48d2b2b18a559c0272281ac48f6e129a3f) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=73194, sha256=1fd2e3907d243f25b5fc18b4c44e1a48d2b2b18a559c0272281ac48f6e129a3f]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "2",
+        "quote": "Based on 22 months of ethnographic ﬁeldwork between a settlement in"
+      },
+      {
+        "page": "12",
+        "quote": "Premnagar is one of Jogeshwari’s older settlements. Approximately 40 years"
+      },
+      {
+        "page": "19",
+        "quote": "for supporting ﬁeldwork for this project between 2007 and 2010."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "2",
+        "quote": "Based on 22 months of ﬁeldwork conducted in Mumbai between 2007 and 2010,"
+      },
+      {
+        "page": "3",
+        "quote": "produced in Premnagar, a Muslim settlement in northern Mumbai. Over the last"
+      },
+      {
+        "page": "17",
+        "quote": "Having confronted water diﬃculties and a leaky system for some time now, residents"
+      }
+    ],
+    "overlap_rationale": "Both Study A (Anand 2011) and Study B (Anand 2012) are companion ethnographic articles written by Nikhil Anand drawing on the exact same 22-month ethnographic fieldwork conducted in Mumbai between 2007 and 2010, supported by the identical four funders (Stanford University, Social Science Research Council, Wenner-Gren Foundation, and National Science Foundation). Both papers investigate the same Jogeshwari settlements in northern Mumbai—specifically Premnagar, Meghwadi, and Banjrekar Wadi—alongside the same Municipal Corporation of Greater Mumbai (BMC) water supply department and ward offices. While Study A frames the broader technopolitics of 'hydraulic citizenship' and water pressure across Marathi-Hindu settlements and Muslim-majority Premnagar (highlighting the January 1995 cutoff rule, application documentation, councilor patronage, illegal connections, booster pumps, and revitalized wells), Study B explicitly cites Anand (2011) three times and zooms in on Premnagar's 'municipal disconnect' and abjection through the interactions of residents, plumbers, and BMC engineers. Both articles analyze the same legal/administrative barriers, infrastructure failures, informal/illegal tapping, booster pump usage, and return to subterranean bore wells, including shared testimony from the 2008 resident documentary 'Pyasa Premnagar' (Shaikh 2008) and near-verbatim passages describing Premnagar's return to neighborhood wells. Treating them as independent empirical studies in synthesis would double-count the same fieldwork site and sample.",
+    "pair_classification": "same_sample_companion_reports",
+    "pair_key": "S826_S1074",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "yes",
+    "study_a_sample_and_data": "22 months of ethnographic fieldwork (2007–2010) in northern Mumbai settlements in Jogeshwari (Premnagar, Meghwadi, and Banjrekar Wadi) and BMC water supply department headquarters and ward offices; qualitative interviews and participant observation with settlers (e.g., Rane), party workers/councilors (e.g., Surve), hydraulic/maintenance engineers (e.g., Patkar, Kerkar), plus the resident documentary film Pyasa Premnagar (Shaikh 2008). No fixed quantitative N reported.",
+    "study_b_sample_and_data": "22 months of ethnographic fieldwork (2007–2010) in northern Mumbai settlements in Jogeshwari (focusing on Premnagar in comparison with Meghwadi and Banjrekar Wadi) and BMC water department ward offices; qualitative interviews and participant observation with Premnagar residents (e.g., Asif, Salim), licensed/informal plumbers (e.g., Rafiq-bhai, Abdul, Ahmed), and municipal water engineers (e.g., Rane, Gupte), plus the resident documentary film Pyasa Premnagar (Shaikh 2008). No fixed quantitative N reported.",
+    "synthesis_double_counting_risk": "high_exact_or_same_sample"
+  }
+}

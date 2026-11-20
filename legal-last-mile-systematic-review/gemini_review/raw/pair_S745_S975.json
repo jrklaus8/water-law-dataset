@@ -1,0 +1,177 @@
+{
+  "pair_key": "S745_S975",
+  "order": 18,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "28192d58fddcfd9d9703dcc7b10fb5dc2d0b4f79b0340234999542371d61386f",
+  "input_sha256_b": "db4c36274c5678988ad01453ae2bfe8a796f413eaed893b60f709daa44b989ec",
+  "prompt_sha256": "f5a7b466fdcd6ffd65bd332b1641c21fd5a469cafe73e29b2384b643782b285f",
+  "started_at": "2026-11-20T02:54:36.046745+00:00",
+  "completed_at": "2026-11-20T02:55:25.534283+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S745_S975\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S745 (Record ID: RD60E8645D88B)\n- Citation: Gorostiza S, March H, Sauri D (2013). Servicing Customers in Revolutionary Times: The Experience of the Collectivized Barcelona Water Company during the Spanish Civil War. Antipode 45(4).\n- DOI: 10.1111/j.1467-8330.2012.01013.x\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S975 (Record ID: RA580E8237E5A)\n- Citation: March H, Sauri D (2013). The unintended consequences of ecological modernization: debt-induced reconfiguration of the water cycle in Barcelona. Environment and Planning A.\n- DOI: 10.1068/a45380\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 28192d58fddcfd9d9703dcc7b10fb5dc2d0b4f79b0340234999542371d61386f) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=64331, sha256=28192d58fddcfd9d9703dcc7b10fb5dc2d0b4f79b0340234999542371d61386f]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: db4c36274c5678988ad01453ae2bfe8a796f413eaed893b60f709daa44b989ec) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=70680, sha256=db4c36274c5678988ad01453ae2bfe8a796f413eaed893b60f709daa44b989ec]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "4",
+        "quote": "Our research has been based on a partial access to SGAB archives, which permitted"
+      },
+      {
+        "page": "4",
+        "quote": "have been used as ancillary sources. Moreover, two interviews were conducted with"
+      },
+      {
+        "page": "9",
+        "quote": "On 24 July 1936, the SGAB became seized by its workers and soon thereafter"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "2",
+        "quote": "budgets of the ACA and on ATLL policy reports, Catalan official budgets, statistic databases,"
+      },
+      {
+        "page": "8",
+        "quote": "Actually, the statement is undisputed: by the end of 2010 the ACA had accumulated"
+      },
+      {
+        "page": "16",
+        "quote": "This research was partially funded by the Spanish CICYT under grant number"
+      }
+    ],
+    "overlap_rationale": "Both full texts are accessible and share two co-authors (Hug March and David Saurí), a broader geographical setting (Barcelona/Catalonia, Spain), and funding from the same Spanish CICYT grant (CSO2009-12772-C03-01 / CSO2009-12772-03-01). However, they investigate completely distinct historical eras, institutional actors, and empirical datasets with zero sample overlap. Study A (Gorostiza, March & Saurí 2013) is a historical archival study of the retail utility Sociedad General de Aguas de Barcelona (SGAB) under worker collectivization during the Spanish Civil War (1936–1939), drawing on 1936–1940 company correspondence (12 archival boxes, ~8,000 documents), 1930s press clippings, municipal proceedings, and two interviews with retired SGAB workers. Study B (March & Saurí 2013) is a contemporary political-economic and fiscal study of regional water governance in Metropolitan Barcelona and Catalonia (primarily 2000–2012), analyzing how EU environmental directives and regional water-tax financing drove public debt at the Catalan Water Agency (ACA) and bulk supplier Aigües Ter-Llobregat (ATLL), leading to the 2011–2012 private leasing tender of ATLL, using 2000–2011 Catalan/ACA budgets, ATLL policy reports, statistical series, and 2011–2012 press reports.",
+    "pair_classification": "distinct_samples_same_programme_or_author",
+    "pair_key": "S745_S975",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "no",
+    "study_a_sample_and_data": "Historical archival case study of the collectivized Barcelona Water Company (Sociedad General de Aguas de Barcelona, SGAB) in Barcelona, Spain during the Spanish Civil War (1936–1939). Primary data comprise SGAB archival correspondence from 1936–1940 (12 boxes, ~8,000 documents), SGAB annual reports (1936–1939), Barcelona City Council and Generalitat official proceedings/decrees (1930–1938), 1930s press clippings (La Vanguardia, Solidaridad Obrera, Luz y Fuerza), and N = 2 interviews with retired SGAB workers conducted in 2009 and 2011.",
+    "study_b_sample_and_data": "Contemporary institutional and fiscal case study of the regional water cycle in Metropolitan Barcelona and the Inland Basins of Catalonia, Spain (focusing on 1999–2012, with wastewater plant series 1973–2009 and budget/debt/tariff series 2000–2012). Units of analysis are regional public water agencies—Agència Catalana de l'Aigua (ACA) and bulk supplier Aigües Ter-Llobregat (ATLL)—analyzed via ACA annual budgets and reports (2000–2011), ATLL policy reports, Catalan government budgets and decrees, statistical databases, and 2011–2012 newspaper and trade-union/official statements.",
+    "synthesis_double_counting_risk": "none_distinct_samples"
+  }
+}

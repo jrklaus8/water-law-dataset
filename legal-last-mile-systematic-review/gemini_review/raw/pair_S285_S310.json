@@ -1,0 +1,164 @@
+{
+  "pair_key": "S285_S310",
+  "order": 6,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82",
+  "input_sha256_b": "",
+  "prompt_sha256": "dbffd14e61a663d348e95ea994aa47be6b92493a664f360b19ba2124ab1c0563",
+  "started_at": "2026-11-20T02:50:47.838533+00:00",
+  "completed_at": "2026-11-20T02:51:26.390907+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S285_S310\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S285 (Record ID: R844DD727452E)\n- Citation: Flores O, Jiménez A, Pérez-Foguet A (2015/2016). Measuring disparities in access to water based on the normative content of the human right. Social Indicators Research 127(2):741-759.\n- DOI: 10.1007/s11205-015-0976-8\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S310 (Record ID: RD670D26F90FB)\n- Citation: Flores O, Jiménez Fernández de Palencia A, Pérez-Foguet A (2013). Monitoring access to water in rural areas based on the human right to water framework: a local level case study in Nicaragua. International Journal of Water Resources Development 29(4):1-16.\n- DOI: (none)\n- Retrieval status: not_accessible\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=61704, sha256=f235b2c318baaa1b758814003c91b232023fae18cff1a5d6629c643eb093cf82]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "3",
+        "quote": "results presented herein focus on a case study of five communities with 296 households (154 served by CAPS"
+      },
+      {
+        "page": "6",
+        "quote": "considered are based on Flores et al (2013) work where the most relevant decisions about indicators and index"
+      },
+      {
+        "page": "12",
+        "quote": "municipality which has been executed during 41 days in 2012. Cost for field data collection"
+      }
+    ],
+    "evidence_quotes_b": [],
+    "overlap_rationale": "Study A (S285) has a readable full text reporting a 2012 fieldwork campaign in San Sebastián de Yalí municipality (Jinotega department, northern Nicaragua), where data were collected across all 74 rural communities over 41 days and analyzed in detail for a stratified subsample of 5 communities (N = 107 polled households out of 296 total households, split between CAPS-served and self-provision subgroups, combined with faecal coliform water-point/system audits). Study A cites Study B (Flores et al., 2013, International Journal of Water Resources Development 29(4):605-621) as prior work from which its human-right-to-water indicators were adapted and enhanced (\"enhanced for this case study\"). However, Study B (S310) has no accessible full text ([FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]). Without Study B's full text, we cannot verify which Nicaraguan municipality or communities Study B examined, when its fieldwork occurred, its sample size (N), or whether any underlying household or water-point observations overlap with Study A's 2012 San Sebastián de Yalí dataset.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S285_S310",
+    "paper_a_read": "full text",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "San Sebastián de Yalí (SSY) municipality, Jinotega department, northern Nicaragua; fieldwork conducted over 41 days in 2012 across all 74 rural communities (22,500 residents), with empirical analysis focused on 5 illustrative communities (Communities A–E) containing 296 census households (Table 3: 154 served by CAPS and 142 self-provision; text p. 3 states 154 and 149) and N = 107 polled households (62 CAPS-served, 45 self-provision) via stratified random household surveys plus faecal coliform audits of water points/systems.",
+    "study_b_sample_and_data": "Full text not accessible ([FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]). Metadata and Study A's reference list identify it as Flores, Jiménez & Pérez-Foguet (2013), a local-level rural water access case study in Nicaragua published in International Journal of Water Resources Development 29(4):605-621, but its exact locality, data collection dates, sampling frame, and sample size (N) cannot be verified.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

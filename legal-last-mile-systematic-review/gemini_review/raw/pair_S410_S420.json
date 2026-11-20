@@ -1,0 +1,164 @@
+{
+  "pair_key": "S410_S420",
+  "order": 27,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "ded87a1d2ed8edd932f1a73e7c6dc6491be3ebe6cb3984edb158c114c1f8b284",
+  "input_sha256_b": "",
+  "prompt_sha256": "7af70440bc4455847facecbb6e16598f5cd71691ea3d3086e2f56606fc34cc03",
+  "started_at": "2026-11-20T03:34:26.657300+00:00",
+  "completed_at": "2026-11-20T03:34:55.852334+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S410_S420\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S410 (Record ID: R035F525B6A10)\n- Citation: Helgegren I, McConville J, Landaeta G, Rauch S (2020). Importance of internal factors for community-managed water and wastewater systems in Cochabamba, Bolivia. International Journal of Water Resources Development 36(6):1031-1053.\n- DOI: 10.1080/07900627.2019.1616536\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S420 (Record ID: R08D69073936F)\n- Citation: Helgegren I (2020). Understanding the Roles of Stakeholders in the Water and Sanitation Sector: Implementation and Operation of Water Supply and Sanitation Systems in the Kanata Metropolitan Region, Bolivia. PhD thesis, Chalmers University of Technology.\n- DOI: (none)\n- Retrieval status: not_accessible\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: ded87a1d2ed8edd932f1a73e7c6dc6491be3ebe6cb3984edb158c114c1f8b284) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=78506, sha256=ded87a1d2ed8edd932f1a73e7c6dc6491be3ebe6cb3984edb158c114c1f8b284]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 5 of 24",
+        "quote": "Three distinct CBOs in the metropolitan area of Cochabamba"
+      },
+      {
+        "page": "PDF Page 8 of 24",
+        "quote": "In total, 69 formally arranged interviews were performed"
+      },
+      {
+        "page": "PDF Page 9 of 24",
+        "quote": "all the sites in the beginning of 2018. She performed in total nine semi-structured"
+      }
+    ],
+    "evidence_quotes_b": [],
+    "overlap_rationale": "Study A (S410) has a complete, readable 24-page full text (Helgegren et al., 2020, International Journal of Water Resources Development), whereas Study B (S420, Helgegren 2020 PhD thesis at Chalmers University of Technology) is marked [FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]. Can be verified from Study A's full text and metadata: both works share the same first/sole author (Ida Helgegren at Chalmers University of Technology), publication year (2020), and general topical/geographic area (water and sanitation systems in metropolitan Cochabamba / Kanata Metropolitan Region, Bolivia; Swedish compilation PhD theses at Chalmers commonly incorporate journal articles such as S410 alongside additional studies). Cannot be verified without Study B's full text: whether Study B is a compilation thesis that reprints or synthesizes Study A verbatim, whether Study B includes additional empirical fieldwork or distinct stakeholder samples beyond the three CBO case studies in Study A, or the exact sample overlap and double-counting risk. Following strict isolation and missing-full-text audit rules, pair_classification, same_underlying_data, and synthesis_double_counting_risk are set to cannot_tell.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S410_S420",
+    "paper_a_read": "full text",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Qualitative ethnographic and theory-building multiple case study of three neighbourhoods and their community-based organizations (CBOs) in the metropolitan area of Cochabamba, Bolivia: Site A in Sacaba (297 households; service cooperative, initially a water committee), Site B in Quillacollo (215 households; OTB, initially a water committee), and Site C in Cercado (339 households; junta vecinal). Primary data were collected during 5 months in 2013 and 2 months in 2014 via observations, spontaneous ethnographic interviews, and 69 formally arranged audio-recorded interviews with 47 distinct informants (CBO leaders, members, and 3 cooperative employees at Site A), supplemented in early 2018 by 9 semi-structured follow-up interviews (3 per site).",
+    "study_b_sample_and_data": "Full text not accessible ([FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]). Metadata identifies Study B as Ida Helgegren's 2020 PhD thesis at Chalmers University of Technology on water supply and sanitation systems in the Kanata Metropolitan Region (Cochabamba), Bolivia, but specific samples, datasets, fieldwork dates, and whether it is a monograph or article-compilation thesis cannot be verified without the full text.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

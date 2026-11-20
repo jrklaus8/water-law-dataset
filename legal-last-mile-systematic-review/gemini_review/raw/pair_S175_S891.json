@@ -1,0 +1,177 @@
+{
+  "pair_key": "S175_S891",
+  "order": 2,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0",
+  "input_sha256_b": "7cf9df94022dd56de85a8bc071e461269a5c1498be44b74270f1ecf238a5407e",
+  "prompt_sha256": "7bdaa89699cdc47e6b0c43f6ca13996fbd7d1c412d0eeda544b20aa0061f58ad",
+  "started_at": "2026-11-20T02:50:47.768460+00:00",
+  "completed_at": "2026-11-20T02:51:57.778524+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S175_S891\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S175 (Record ID: R8DE65838848E)\n- Citation: Bellaubi F, Pahl-Wostl C (2017). Corruption risks, management practices, and performance in water service delivery in Kenya and Ghana: an agent-based model. Ecology and Society 22(2):6.\n- DOI: 10.5751/ES-09205-220206\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S891 (Record ID: RB70B7542FFB9)\n- Citation: Bellaubi F, Boehm F (2018). Management practices and corruption risks in water service delivery in Kenya and Ghana. Water Policy.\n- DOI: 10.2166/wp.2018.017\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=61723, sha256=d5e15a961e5e01087eb8c2bfcaafec386e57f63f5bfcb06ba388e25239e258c0]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 7cf9df94022dd56de85a8bc071e461269a5c1498be44b74270f1ecf238a5407e) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=78018, sha256=7cf9df94022dd56de85a8bc071e461269a5c1498be44b74270f1ecf238a5407e]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "1",
+        "quote": "Based on empirical research from case studies in Kenya and Ghana, the different actors involved in WSD are"
+      },
+      {
+        "page": "3",
+        "quote": "Ghana, the case studies were carried out in Nima and Madina"
+      },
+      {
+        "page": "7",
+        "quote": "Table 5. Performance score in Kenya case study locations following a water service delivery approach (WSDA)."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "3",
+        "quote": "two in Ghana, as a part of Transparency International’s Transparency and Integrity in Service Delivery"
+      },
+      {
+        "page": "11",
+        "quote": "Table 6. Performance score in Kenya and Ghana case study locations following a WSDA."
+      },
+      {
+        "page": "20",
+        "quote": "Another interesting possibility to explore these complex links is the use of agent based modeling"
+      }
+    ],
+    "overlap_rationale": "Both full texts are complete and readable, and they are companion reports built on the exact same underlying five-site empirical dataset from Transparency International's Transparency and Integrity in Service Delivery in Africa (TISDA) program (citing GII 2011, TI Kenya 2011, and Bellaubi & Visscher 2014, 2016). Both papers examine the exact same three urban neighborhoods/utilities in Kenya—Old Town in Mombasa (MOWASCO), Migosi in Kisumu (KIWASCO) and Kangemi in Nairobi (NCWSC)—and the exact same two urban neighborhoods in Accra, Ghana—Madina and Nima (GWCL/AVRL). They reproduce the same empirical tables and findings: the main WSD actor-role matrix (Study A Table 4 vs Study B Table 5), the participatory Transparency, Accountability and Participation (TAP) scoring rubric and principal-agent relationship scores (Study A Table 1 and Figs. 1–2 vs Study B Tables 7–8), the Water Service Delivery Approach (WSDA) performance scores across the five sites (identical site totals of 3, 4, 3, 2 and 3 out of 15 in Study A Table 5 and Study B Table 6, with Continuity and Coverage row labels transposed in Study A), and the resulting corruption-risk and opportunistic/pragmatic management classifications across policy/regulation, provision and consumption levels (Study A Table 7 vs Study B Table 9). Study A explicitly cites Study B in manuscript form ('F. Bellaubi and F. Boehm 2016, unpublished manuscript', pp. 3, 12), while Study B (p. 20) points directly to agent-based modeling as the follow-on exploration. Analytically, Study B provides the qualitative institutional 'water control' and governability analysis of the five case studies, whereas Study A uses the same empirical TAP, power-asymmetry and WSDA performance scores to parameterize and calibrate a deterministic 12-month NetLogo 4.1.3 agent-based model; however, any synthesis extracting empirical WSD performance, TAP scores, corruption risks or management practices from both papers would double-count the identical five-case-study sample.",
+    "pair_classification": "same_sample_companion_reports",
+    "pair_key": "S175_S891",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "yes",
+    "study_a_sample_and_data": "Empirical input and calibration data from 5 urban water service delivery case studies conducted under Transparency International's TISDA program (GII 2011; TIK 2011; Bellaubi & Visscher 2014, 2016): 3 in Kenya—Old Town/Mombasa (MOWASCO), Migosi/Kisumu (KIWASCO) and Kangemi/Nairobi (NCWSC)—and 2 in Accra, Ghana—Madina and Nima (GWCL/AVRL). Participatory TAP (transparency, accountability, participation) scores, power/social-cost scores and WSDA user-end performance scores (totals 3, 4, 3, 2 and 3 out of 15) are used to parameterize and calibrate a deterministic 12-step monthly Agent-Based Model (NetLogo 4.1.3) simulating principal-agent game-theoretic social dilemmas across policy/regulation, provision and consumption levels.",
+    "study_b_sample_and_data": "Qualitative institutional, power-asymmetry and governability ('water control') analysis of the exact same 5 urban water service delivery case studies from Transparency International's TISDA program (GII 2011; TI Kenya 2011; Bellaubi & Visscher 2014, 2016): 3 in Kenya—Old Town/Mombasa (MOWASCO), Migosi/Kisumu (KIWASCO) and Kangemi/Nairobi (NCWSC)—and 2 in Accra, Ghana—Madina and Nima (GWCL/AVRL). Data derive from formal interviews and informal discussions with public officials, utility managers and technicians, cross-checked with users, informal providers, community groups, donor/NGO staff and internal utility/regulatory documents, summarized via participatory TAP scores (0, 0.5, 1) and WSDA performance scores (totals 3, 4, 3, 2 and 3 out of 15).",
+    "synthesis_double_counting_risk": "high_exact_or_same_sample"
+  }
+}

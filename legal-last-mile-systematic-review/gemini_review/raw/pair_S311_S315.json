@@ -1,0 +1,164 @@
+{
+  "pair_key": "S311_S315",
+  "order": 7,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "813201e62de665c314dc9fff656898b5f46e32bb6aa9311a515226f2f3473464",
+  "input_sha256_b": "",
+  "prompt_sha256": "6751a1fe44af35eb803a710b80d1e25d93020adeef0bcfb2311863e1de094423",
+  "started_at": "2026-11-20T02:50:47.848510+00:00",
+  "completed_at": "2026-11-20T02:51:29.335507+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S311_S315\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S311 (Record ID: RA3CD9A9DD268)\n- Citation: Jiménez Fernández de Palencia A, Pérez Foguet A (2011). Implementing pro-poor policies in a decentralized context: the case of the Rural Water Supply and Sanitation Program in Tanzania. Sustainability Science 6(1):37-49.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S315 (Record ID: RC3292682EBA1)\n- Citation: Jiménez A, Pérez-Foguet A (2010). Building the role of local government authorities towards the achievement of the human right to water in rural Tanzania. Natural Resources Forum 34(2):93-105.\n- DOI: (none)\n- Retrieval status: not_accessible\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 813201e62de665c314dc9fff656898b5f46e32bb6aa9311a515226f2f3473464) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=59112, sha256=813201e62de665c314dc9fff656898b5f46e32bb6aa9311a515226f2f3473464]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 2",
+        "quote": "in four rural districts (Kigoma rural, Same, Iramba"
+      },
+      {
+        "page": "PDF Page 2",
+        "quote": "Interviews were also held with random selected villagers."
+      },
+      {
+        "page": "PDF Page 9",
+        "quote": "Table 7 Analysis of RWSSP-selected projects by ward compared with district coverage"
+      }
+    ],
+    "evidence_quotes_b": [],
+    "overlap_rationale": "Study A (S311) has a complete, readable full text examining resource allocation in Tanzania's Rural Water Supply and Sanitation Program (RWSSP) using national ministry interviews/documents, district budget allocation data, an analysis of 40 first-phase RWSSP projects (10 per district), and fieldwork conducted between July 2008 and August 2009 in four rural districts (Iramba, Nzega, Kigoma Rural and Same, with deeper ward/village fieldwork in Same and Nzega). Study A explicitly cites Study B as 'Jime´nez and Pe´rez-Foguet 2010b' on PDF pages 11 and 12 when discussing processes needed for village-level water information to influence Local Government Authority (LGA) priorities, indicating that both papers stem from the same authors' research programme on rural water governance in Tanzania. However, Study B (S315) has no accessible full text ('[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]'). Without Study B's full text, we cannot verify its exact districts, fieldwork dates, respondent groups, sample size, or empirical tables, and therefore cannot determine whether S311 and S315 analyze the exact same fieldwork sample, partially overlapping district/mapping data, or distinct samples.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S311_S315",
+    "paper_a_read": "full text",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Multi-level qualitative and administrative study of Tanzania's Rural Water Supply and Sanitation Program (RWSSP) combining Ministry of Water and PMO-RALG official interviews and national budget/coverage records (across 132 districts) with fieldwork conducted between July 2008 and August 2009 in 4 rural districts (Iramba, Nzega, Kigoma Rural and Same). Includes interviews with District Water Engineers and District Planning Officers, evaluation of 40 Phase 1 RWSSP village projects (10 per district), in-depth fieldwork in 4 wards across 2 districts (Mwakashanhala and Itobo in Nzega; Myamba and Hedaru in Same) involving ward/village/subvillage leaders, government officers, village plans and randomly selected villagers, plus brief interviews with ward officers in 50% of Same wards selected randomly.",
+    "study_b_sample_and_data": "Full text not accessible. Citation metadata indicates a 2010 Natural Resources Forum article (34(2):93-105) by the same authors on Local Government Authorities and the human right to water in rural Tanzania, but the specific districts, fieldwork dates, sample size (N), respondent groups and empirical datasets cannot be verified.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

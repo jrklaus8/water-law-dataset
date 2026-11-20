@@ -1,0 +1,177 @@
+{
+  "pair_key": "S1000_S1001",
+  "order": 1,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "be832c70c6b255f1a24fc0937913d7774a92fbcaa244c41da07fcf26adc7d2ce",
+  "input_sha256_b": "be7fc7689e7654d3aaf0b40587c7a8ff3729aa73c56064de8c25572c709e6928",
+  "prompt_sha256": "5e53c37a26fdf2cb1e53fd3edb98827ae6cc1b705ad13e7ed476f09b1dd0800e",
+  "started_at": "2026-11-20T02:50:47.748462+00:00",
+  "completed_at": "2026-11-20T02:52:58.547771+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S1000_S1001\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S1000 (Record ID: R2E4979185A18)\n- Citation: Bakker K, Kooy M, Shofiani NE, Martijn E-J (2008). Governance Failure: Rethinking the Institutional Dimensions of Urban Water Supply to Poor Households. World Development.\n- DOI: 10.1016/j.worlddev.2007.09.015\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S1001 (Record ID: RAF43F1049CAC)\n- Citation: Kooy M, Bakker K (2008). Splintered networks: The colonial and contemporary waters of Jakarta. Geoforum.\n- DOI: 10.1016/j.geoforum.2008.07.012\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: be832c70c6b255f1a24fc0937913d7774a92fbcaa244c41da07fcf26adc7d2ce) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=109312, sha256=be832c70c6b255f1a24fc0937913d7774a92fbcaa244c41da07fcf26adc7d2ce]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: be7fc7689e7654d3aaf0b40587c7a8ff3729aa73c56064de8c25572c709e6928) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=117357, sha256=be7fc7689e7654d3aaf0b40587c7a8ff3729aa73c56064de8c25572c709e6928]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "14",
+        "quote": "Source: survey by authors of 110 households in six Jakarta neighborhoods (2005)."
+      },
+      {
+        "page": "18",
+        "quote": "over an 18-month period from 2004 to 2005."
+      },
+      {
+        "page": "19",
+        "quote": "37,067, were supplied with 84 L/s (Eggink, 1930)."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "1",
+        "quote": "Drawing on archival and interview data, the paper demonstrates"
+      },
+      {
+        "page": "8",
+        "quote": "In 1929, 6926 kampong households were supplied with 24 L/s, while 10,392"
+      },
+      {
+        "page": "11",
+        "quote": "40% of the potential volumes of treated water (JICA, 1997)."
+      }
+    ],
+    "overlap_rationale": "Both Study A (Bakker, Kooy, Shofiani, & Martijn, 2008, World Development) and Study B (Kooy & Bakker, 2008, Geoforum) draw from the same 2001-2005 Jakarta urban water research programme led by Bakker and Kooy and share substantial underlying archival, regulatory, and key-informant interview data, but differ in whether they include the 2005 quantitative household survey. Specifically, both papers analyze the exact same colonial archival records on Batavia (including the 1920 spring-water dual design standard of 140 L/day for 90% of European households vs 65 L/day for 33% of native residents, and the 1929 Eggink statistics of 6,926 kampung households receiving 24 L/s vs 10,392 European households receiving 84 L/s) and the same postcolonial historical and utility records on PAM Jaya and post-1998 private sector participation (including the 1950s-1960s Pejompongan I and II 3,000 L/s expansion along Jalan Thamrin-Sudirman, Hotel Indonesia, the Asian Games Complex, and Kebayoran Baru while excluding informal kampungs, and the 1965-1990 threefold treatment capacity increase delivering 40% of potential volume to under one-quarter of Jakarta's population). However, Study A additionally reports primary quantitative and qualitative results from a 2005 stratified random survey of N = 110 poor households across 11 kelurahan in six Jakarta neighborhoods (examining land tenure certificates, connection fees, transaction costs, and water expenditures) alongside PAM Jaya/BPS GIS network-density mapping, whereas Study B (pages 1-11 of 16 visible prior to byte truncation) relies on the archival and interview corpus to construct a detailed 1870-1998 historical genealogy of colonial and postcolonial governmentality. Because the archival and interview datasets overlap directly while the N = 110 household survey is unique to Study A, this pair represents partial sample/data overlap with moderate synthesis double-counting risk for city- and utility-level institutional/legal findings.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S1000_S1001",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Jakarta, Indonesia (DKI Jakarta municipal utility PAM Jaya and 1998 private concessionaires Ondeo/Lyonnaise des Eaux and Thames Water). Mixed-methods dataset collected between 2001 and 2005 comprising: (1) a 2005 multi-stage stratified random household survey of N = 110 female respondents in poor households across 11 kelurahan (Kamal Muara, Penjaringan [Marlina & Gedong Kompa; Rawa Bebek], Pegangsaan Dua, Semanan, Kampung Melayu, Rawa Terate, Jati, Kampung Tengah, Kebon Melati, and Gunung Sahari Selatan) in six Jakarta neighborhoods; (2) >60 interviews in 2001, 2004, and 2005 with water managers, government officials, donors, and NGOs; (3) Dutch colonial archival research at KITLV (Leiden) and KIT (Amsterdam) in 2003; and (4) utility/regulatory reports (1998-2005) and GIS mapping of PAM Jaya tertiary network coverage against BPS census poverty data.",
+    "study_b_sample_and_data": "Batavia/Jakarta, Indonesia (colonial artesian and spring-water municipal systems, postcolonial Ministry of Public Works and PAM Jaya, and post-1998 private concessionaires). Historical-institutional case study (pages 1-11 of 16 present before byte truncation) drawing on colonial and postcolonial archival records (1870s-1990s), PAM Jaya/JICA/JWSRB documents, 2005 North Jakarta fieldwork observations, and key-informant interviews from Kooy and Bakker's Jakarta water research programme; does not deploy the N = 110 household survey tables reported in Study A.",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

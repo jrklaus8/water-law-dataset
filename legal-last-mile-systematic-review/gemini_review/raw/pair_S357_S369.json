@@ -1,0 +1,177 @@
+{
+  "pair_key": "S357_S369",
+  "order": 20,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "ab9791c2b286764fd92c1b82ba990073499482af1d11a02d01af552e520e3eb7",
+  "input_sha256_b": "e8934e346a5f97b93d4a2c379c79c8b7e5bf63856f87b44a13a3625f34fdf3ae",
+  "prompt_sha256": "15be21039a2657728f56e69027f07fb4ab5ad7798843f3b128db5bae931de635",
+  "started_at": "2026-11-20T02:54:36.105755+00:00",
+  "completed_at": "2026-11-20T03:33:52.316288+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S357_S369\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S357 (Record ID: R4699865C8B65)\n- Citation: Hove J, D'Ambruoso L, Twine R, Mabetha D, van der Merwe M, Mtungwa I, Khoza S, Kahn K, Witter S (2021). Developing stakeholder participation to address lack of safe water as a community health concern in a rural province in South Africa. Global Health Action 14(1):1973715.\n- DOI: 10.1080/16549716.2021.1973715\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S369 (Record ID: R812E3C486FA8)\n- Citation: Hove J, D'Ambruoso L, Mabetha D, van der Merwe M, Byass P, Kahn K, Khosa S, Witter S, Twine R (2019). 'Water is life': developing community participation for clean water in rural South Africa. BMJ Global Health 4:e001377.\n- DOI: 10.1136/bmjgh-2018-001377\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: ab9791c2b286764fd92c1b82ba990073499482af1d11a02d01af552e520e3eb7) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=63591, sha256=ab9791c2b286764fd92c1b82ba990073499482af1d11a02d01af552e520e3eb7]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: e8934e346a5f97b93d4a2c379c79c8b7e5bf63856f87b44a13a3625f34fdf3ae) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=69987, sha256=e8934e346a5f97b93d4a2c379c79c8b7e5bf63856f87b44a13a3625f34fdf3ae]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "3",
+        "quote": "each were held once a week from June to September"
+      },
+      {
+        "page": "3",
+        "quote": "Results from this stage, published elsewhere [36,37], were organised into"
+      },
+      {
+        "page": "4",
+        "quote": "a local action plan from September to October 2018."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "1",
+        "quote": "reports on lack of clean, safe water, which was nominated"
+      },
+      {
+        "page": "1",
+        "quote": "additional participants were recruited (n=8). We then held"
+      },
+      {
+        "page": "3",
+        "quote": "reports on PAR with community stakeholders as part of"
+      }
+    ],
+    "overlap_rationale": "Both full texts report sequential, nested stages of the same Verbal Autopsy with Participatory Action Research (VAPAR) cycle on lack of safe water in the Agincourt Health and Socio-Demographic Surveillance System (HDSS), Bushbuckridge Local Municipality, Mpumalanga, South Africa. Study B (Hove et al., 2019) reports Stage 1 alone: 8 weekly community PAR and Photovoice workshops (June–September 2017) with 16 community stakeholders in the village that nominated clean water (8 initial participants plus 8 newly recruited women of reproductive age, within a 3-village cohort of 48 community participants). Study A (Hove et al., 2021) reports the full multi-stage process: it explicitly incorporates Stage 1 (tabulating the 8 community workshops with N=52 including 4 researchers in Table 1, citing Study B as reference [37] as the prior publication of Stage 1 results, and summarizing those Stage 1 community findings alongside 2014/15 Agincourt VA mortality data in its Results), and then extends the empirical data to 3 multisectoral analysis workshops in January–March 2018 (n=18, 17, 18) and 2 district-level action-planning workshops in September–October 2018 (n=19, 20) involving provincial/district government departments, NGOs, researchers, and a subset of the Stage 1 community stakeholders. Because Study B's sample and qualitative outputs form Stage 1 of Study A while Study A adds five 2018 multisectoral workshops with additional government/NGO actors, there is partial sample and data overlap.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S357_S369",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Agincourt HDSS, Bushbuckridge Local Municipality, Mpumalanga, South Africa (VAPAR programme). Three-stage qualitative PAR design: Stage 1 (June–September 2017, 8 community workshops with 16 community co-researchers in the water-nominating village / 48 community participants + 4 researchers = 52 across 3 villages, combined with 2014/15 Agincourt VA mortality data); Stage 2 (January–March 2018, 3 multisectoral analysis workshops in Mbombela/Agincourt with n=18, 17, and 18 community, MDoH, other provincial/district government, and researcher participants); and Stage 3 (September–October 2018, 2 local action-planning workshops at Agincourt HDSS offices with n=19 and 20 community, government, water agency, NGO, and researcher stakeholders).",
+    "study_b_sample_and_data": "Agincourt HDSS, Bushbuckridge Local Municipality, Mpumalanga, South Africa (VAPAR programme). Stage 1 community PAR and Photovoice study (8 weekly consensus-building workshops; dates reported in Study A as June–September 2017) across 3 villages (24 initial + 24 newly recruited = 48 community participants aged >=18), focusing on the 1 village ('Village A') that nominated lack of clean, safe water (n=8 original community stakeholders + n=8 newly recruited women of reproductive age = 16 community co-researchers).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

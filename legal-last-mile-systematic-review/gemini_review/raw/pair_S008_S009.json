@@ -1,0 +1,151 @@
+{
+  "pair_key": "S008_S009",
+  "order": 19,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "",
+  "input_sha256_b": "",
+  "prompt_sha256": "71d58eb373360e32a20ff82dbf618127f067d52cbea5733cb0657ddec24fee3c",
+  "started_at": "2026-11-20T02:54:36.047803+00:00",
+  "completed_at": "2026-11-20T02:54:51.713753+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S008_S009\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S008 (Record ID: RC848E4BF3E91)\n- Citation: Koros JK, Juuti PS, Juuti RP, Mutie J (2026) Accelerating Safe Water and Sanitation Access in Urban Periphery and Low-Income Areas: The Case of Kenya. Public Works Management & Policy 31(2):172-199\n- DOI: 10.1177/1087724X251356460\n- Retrieval status: not_accessible\n\n== STUDY B METADATA ==\n- Study ID: S009 (Record ID: R0A9643F7E2EC)\n- Citation: Koros JK, Juuti PS, Juuti RP, Asokan SM (2026) Exploring Kenya’s Small-Scale Water Services for a More Sustainable Future. Public Works Management & Policy\n- DOI: 10.1177/1087724X261447370\n- Retrieval status: not_accessible\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [],
+    "evidence_quotes_b": [],
+    "overlap_rationale": "Neither Study A (S008) nor Study B (S009) has an accessible full text or abstract in the prompt (both are marked '[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]'). From metadata alone, it can be verified that both papers share three authors (Koros JK, Juuti PS and Juuti RP), appear in Public Works Management & Policy in 2026 under distinct DOIs (10.1177/1087724X251356460 and 10.1177/1087724X261447370) with different fourth co-authors (Mutie J vs Asokan SM), and both address water services in Kenya. Without readable full texts, however, exact study sites, data collection dates, sampling frames, sample sizes (N), respondent groups, and analytical datasets cannot be verified, making it impossible to determine whether the two studies share underlying empirical data.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S008_S009",
+    "paper_a_read": "not accessible",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Not verifiable — full text not accessible. Metadata indicates a 2026 study by Koros, Juuti, Juuti and Mutie on safe water and sanitation access in urban periphery and low-income areas in Kenya.",
+    "study_b_sample_and_data": "Not verifiable — full text not accessible. Metadata indicates a 2026 study by Koros, Juuti, Juuti and Asokan on small-scale water services in Kenya.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

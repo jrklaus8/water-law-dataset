@@ -1,0 +1,164 @@
+{
+  "pair_key": "S309_S676",
+  "order": 25,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "",
+  "input_sha256_b": "60261609dcface9d85f2cec98a82e782da6a8a0a4b447aff02dad24f307041e6",
+  "prompt_sha256": "5704c8d175da1689e91d2be1d2297fd2ad42f0f9870793925e83abff574e77a7",
+  "started_at": "2026-11-20T03:34:26.649038+00:00",
+  "completed_at": "2026-11-20T03:34:53.532295+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S309_S676\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S309 (Record ID: RB877CA5A448E)\n- Citation: Hernandez MI, Manuel-Navarrete D, Lerner AM, Siqueiros JA (2023). Making informal water distribution work: collective agency and self-organization in informal areas of Xochimilco, Mexico City. International Journal of the Commons.\n- DOI: (none)\n- Retrieval status: not_accessible\n\n== STUDY B METADATA ==\n- Study ID: S676 (Record ID: R8645861E4624)\n- Citation: Hernandez Aguilar B, Lerner AM, Manuel-Navarrete D, Siqueiros-Garcia JM (2021). Persisting narratives undermine potential water scarcity solutions for informal areas of Mexico City: the case of two settlements in Xochimilco. Water International 46:919-937.\n- DOI: 10.1080/02508060.2021.1923179\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 60261609dcface9d85f2cec98a82e782da6a8a0a4b447aff02dad24f307041e6) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=61636, sha256=60261609dcface9d85f2cec98a82e782da6a8a0a4b447aff02dad24f307041e6]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [],
+    "evidence_quotes_b": [
+      {
+        "page": "7",
+        "quote": "This is the case of the two analysed communities, Amplicación Tizilclipa and San José"
+      },
+      {
+        "page": "8",
+        "quote": "conducted semi-structured interviews with 27 key informants, including community"
+      },
+      {
+        "page": "8",
+        "quote": "The questionnaire was conducted with a total of 41 residents, 20 from"
+      }
+    ],
+    "overlap_rationale": "Study A (S309: Hernandez, Manuel-Navarrete, Lerner & Siqueiros 2023, International Journal of the Commons) has no accessible full text in the audit packet ([FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]). Study B (S676: Hernández Aguilar, Lerner, Manuel-Navarrete & Siqueiros-García 2021, Water International) has a complete, readable 20-page full text examining water supply narratives in two informal settlements in Xochimilco, Mexico City (Amplicación Tizilclipa and San José Obrero) based on 27 semi-structured key-informant interviews (2017–2019) and 41 resident questionnaires (2018–2019). Although the citation metadata of Study A shares the same core research team (Hernández, Manuel-Navarrete, Lerner and Siqueiros) and general geographic setting (informal areas of Xochimilco, Mexico City), it cannot be verified without Study A's full text whether S309 analyses the exact same 2017–2019 fieldwork sample in Amplicación Tizilclipa and San José Obrero, a partially overlapping sample, or distinct data collection. Per strict audit rules, pair_classification, same_underlying_data, and synthesis_double_counting_risk are set to cannot_tell.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S309_S676",
+    "paper_a_read": "not accessible",
+    "paper_b_read": "full text",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Full text not accessible ([FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]). From metadata alone, S309 is a 2023 International Journal of the Commons article on informal water distribution, collective agency and self-organization in informal areas of Xochimilco, Mexico City; specific settlements, fieldwork dates, sample size (N) and empirical methods cannot be verified.",
+    "study_b_sample_and_data": "Two informal settlements in the southern Conservation Zone of Xochimilco municipality, Mexico City (Amplicación Tizilclipa and San José Obrero). Data collected in 2017 (semi-structured interviews with government officials) and 2018–2019 (community leaders and residents), comprising N = 27 key-informant semi-structured interviews (17 community/parada leaders, 5 local Alcaldía government officials/piperos, and 3 Mexico City government officials from SACMEX, CORENA and SEDEMA) plus N = 41 resident questionnaires (20 in San José Obrero and 21 in Amplicación Tizilclipa), coded in MAXQDA 2018.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

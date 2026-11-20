@@ -1,0 +1,177 @@
+{
+  "pair_key": "S761_S763",
+  "order": 5,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "7f2fcdec0ad4dd619bb54708ac0848253ee314be37f851cd8896830d23526773",
+  "input_sha256_b": "19e10435eeccc76da70c0760b311a4671a82ebe24458505c9bda8842f573ecea",
+  "prompt_sha256": "1a25869d46afb3b4c0dd864c42ff278af84ed1a94ed475a5a6fc79e648a9e244",
+  "started_at": "2026-11-20T02:50:47.821132+00:00",
+  "completed_at": "2026-11-20T02:51:57.744680+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S761_S763\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S761 (Record ID: RF816C47AF660)\n- Citation: Nzengya DM (2018). Improving water service to the urban poor through delegated management: Lessons from the city of Kisumu, Kenya. Development Policy Review 36(6).\n- DOI: 10.1111/dpr.12361\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S763 (Record ID: RF6B313F45217)\n- Citation: Nzengya DM (2015). Exploring the challenges and opportunities for master operators and water kiosks under Delegated Management Model (DMM): A study in Lake Victoria region, Kenya. Cities.\n- DOI: 10.1016/j.cities.2015.04.005\n- Retrieval status: retrieved_cached_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 7f2fcdec0ad4dd619bb54708ac0848253ee314be37f851cd8896830d23526773) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=45641, sha256=7f2fcdec0ad4dd619bb54708ac0848253ee314be37f851cd8896830d23526773]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 19e10435eeccc76da70c0760b311a4671a82ebe24458505c9bda8842f573ecea) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=56484, sha256=19e10435eeccc76da70c0760b311a4671a82ebe24458505c9bda8842f573ecea]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "4",
+        "quote": "Data from kiosk operators and households were collected during May–June 2013."
+      },
+      {
+        "page": "4",
+        "quote": "discussed in another article (Nzengya, 2015)."
+      },
+      {
+        "page": "6",
+        "quote": "per kiosk was statistically significant, F (2, 100) = 3.63, p < 0.05."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "4",
+        "quote": "Findings about kiosk customers’ satisfaction with DMM services;"
+      },
+      {
+        "page": "4",
+        "quote": "KIWASCO’s list of individual water-kiosk operators was used as"
+      },
+      {
+        "page": "4",
+        "quote": "a sampling frame. A random sample of 103 operators was"
+      }
+    ],
+    "overlap_rationale": "Both full texts are readable companion articles by Daniel M. Nzengya arising from the exact same May–June 2013 fieldwork project in three informal settlements in Kisumu, Kenya (Nyalenda A and Nyalenda B under KIWASCO's Delegated Management Model [DMM], compared against Manyatta B as a non-DMM control slum), conducted with the same three undergraduate research assistants and IRB approvals, and explicitly cross-referencing each other. The two papers primarily divide the study's respondent groups—Study B (2015) focuses on the supply side (interviews with N = 103 individual water-kiosk operators [47 Nyalenda A, 26 Nyalenda B, 30 Manyatta B; df = 2, 100] and N = 8 master-operator key informants), whereas Study A (2017/2018) focuses on the demand/user side (interviews with N = 294 adult water-kiosk customers sampled at those kiosks [109 Nyalenda A, 107 Nyalenda B, 78 Manyatta B; df = 2, 291] plus N = 46 microbiological water samples). However, the samples partially overlap rather than being completely disjoint: Study A Section 3.1 directly analyzes and reports kiosk-level observations and operator interview data from the N = 103 kiosk operator sample (queuing customers F(2, 100) = 3.63, containers F(2, 100) = 1.1, and operator-reported daily operating hours [11.6 h] and disruption hours [3.3 h]), and the 294 customers in Study A are nested within the same sampled KIWASCO kiosks evaluated in Study B on parallel outcomes (20-litre jerrican price and service disruption/reliability).",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S761_S763",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "May–June 2013 fieldwork in Kisumu, Kenya comparing two DMM slums (Nyalenda A and Nyalenda B) with a non-DMM control slum (Manyatta B), using KIWASCO's list of individual water-kiosk providers as the sampling frame. Primary sample comprises N = 294 adult water-kiosk customers (109 Nyalenda A, 107 Nyalenda B, 78 Manyatta B; ANOVA df = 2, 291) interviewed at randomly sampled kiosks (text states 90 kiosks: 44 Nyalenda A, 28 Nyalenda B, 25 Manyatta B), supplemented by N = 46 water samples tested for total coliforms and E. coli (8 kiosks, 4 vendors, 12 wells/springs, 22 households) plus kiosk-level observations and operator interview responses on operating/disruption hours from the N = 103 kiosk sample (ANOVA df = 2, 100 in Section 3.1).",
+    "study_b_sample_and_data": "May–June 2013 fieldwork in the same three Kisumu slums (Nyalenda A and Nyalenda B with DMM vs Manyatta B control), using KIWASCO's list of individual water-kiosk operators as the sampling frame. Primary sample comprises face-to-face interviews and kiosk observations with N = 103 randomly sampled water-kiosk operators (47 Nyalenda A, 26 Nyalenda B, 30 Manyatta B; ANOVA df = 2, 100) plus in-depth key informant interviews with N = 8 master operators (representing all 5 group and 3 individual master operators in Nyalenda A and B).",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

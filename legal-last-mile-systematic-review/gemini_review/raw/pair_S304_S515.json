@@ -1,0 +1,164 @@
+{
+  "pair_key": "S304_S515",
+  "order": 26,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "805784ed73c7b24e6bbe6a22308787e4227c28e0fdf0ee71b156acaf61f30f82",
+  "input_sha256_b": "",
+  "prompt_sha256": "88df749084e24a2b5037f17e1742a5f53863dd744bb1a1d0f0da39e1d2d12ec8",
+  "started_at": "2026-11-20T03:34:26.652294+00:00",
+  "completed_at": "2026-11-20T03:34:58.387367+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S304_S515\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S304 (Record ID: R8BC4869D7A4E)\n- Citation: Ioris AA (2012). The persistent water problems of Lima, Peru: Neoliberalism, institutional failures and social inequalities. Singapore Journal of Tropical Geography 33(3):335-350.\n- DOI: 10.1111/sjtg.12001\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S515 (Record ID: RF464DBEDC353)\n- Citation: Ioris A.A.R. (2012). The geography of multiple scarcities: Urban development and water problems in Lima, Peru. Geoforum 43(4):612-622.\n- DOI: 10.1016/j.geoforum.2011.12.005\n- Retrieval status: not_accessible\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 805784ed73c7b24e6bbe6a22308787e4227c28e0fdf0ee71b156acaf61f30f82) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=58502, sha256=805784ed73c7b24e6bbe6a22308787e4227c28e0fdf0ee71b156acaf61f30f82]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: none) ==\n[FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "PDF Page 5",
+        "quote": "fieldtrip that took place between March and June 2009 and included the review of policy"
+      },
+      {
+        "page": "PDF Page 6",
+        "quote": "attendance of public events related to water services, as well as interviews with local"
+      },
+      {
+        "page": "PDF Page 6",
+        "quote": "residents, regulators, policy-makers and representatives of multilateral agencies."
+      }
+    ],
+    "evidence_quotes_b": [],
+    "overlap_rationale": "Study A (Ioris 2012, Singapore Journal of Tropical Geography) is readable in full text (author's peer-reviewed manuscript) and reports a qualitative institutional case study of water governance and neoliberal reforms in Lima, Peru, drawing on a March–June 2009 research fieldtrip (policy/archival review at SEDAPAL, SUNASS and the National Library, visits to peripheral communities including Pachacútec, attendance at public events and interviews with local residents, regulators, policy-makers and multilateral agency representatives). Study B (Ioris 2012, Geoforum) is marked [FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]. While the shared author, publication year and Lima water-sector focus suggest potential overlap with the March–June 2009 fieldwork, it is impossible to verify from full texts whether Study B uses the exact same interview/fieldwork sample, a partial subset or distinct data.",
+    "pair_classification": "cannot_tell_missing_full_text",
+    "pair_key": "S304_S515",
+    "paper_a_read": "full text",
+    "paper_b_read": "not accessible",
+    "same_underlying_data": "cannot_tell",
+    "study_a_sample_and_data": "Qualitative case study of water governance, institutional reforms and public utility performance (SEDAPAL and regulator SUNASS) in Lima, Peru (1990s–2000s). Primary data come from a research fieldtrip conducted between March and June 2009 comprising archival and policy document review (SEDAPAL, SUNASS, National Library), visits to peripheral barriada communities (e.g. Pachacútec in the North Cone), observation of public events and interviews with local residents, regulators, policy-makers and multilateral agency representatives (exact interview sample size N not reported), combined with secondary utility/official statistics (SEDAPAL 2005, 2008; INEI; ICOM 2001).",
+    "study_b_sample_and_data": "Full text not accessible ([FULL TEXT NOT ACCESSIBLE — NO VERIFIED FULL-TEXT PDF COULD BE RETRIEVED]). Citation metadata identifies a 2012 Geoforum article by A.A.R. Ioris on urban development and water problems in Lima, Peru, but fieldwork dates, sampling frame, sample size (N) and empirical data sources cannot be verified.",
+    "synthesis_double_counting_risk": "cannot_tell"
+  }
+}

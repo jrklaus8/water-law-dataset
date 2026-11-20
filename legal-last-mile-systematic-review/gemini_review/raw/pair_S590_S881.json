@@ -1,0 +1,177 @@
+{
+  "pair_key": "S590_S881",
+  "order": 16,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58",
+  "input_sha256_b": "0d82a7a9a1a12abe82ae57aeeb3f715cf749506517a5dcaa5dc44cf82a7123be",
+  "prompt_sha256": "cd7cd3bd1419f50507b853b7cedb365608cb18fc06d6c8a4e954da4590013f44",
+  "started_at": "2026-11-20T02:52:58.717848+00:00",
+  "completed_at": "2026-11-20T02:54:14.549608+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S590_S881\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S590 (Record ID: R052039CCB61E)\n- Citation: Brown JC (1989). Public Reform for Private Gain? The Case of Investments in Sanitary Infrastructure: Germany, 1880-1887. Urban Studies 26:2-12.\n- DOI: (none)\n- Retrieval status: retrieved_cached_pdf\n\n== STUDY B METADATA ==\n- Study ID: S881 (Record ID: RA420CEEC7E34)\n- Citation: Brown JC (1987). Reforming the Urban Environment: Sanitation, Housing, and Government Intervention in Germany, 1870-1910 (dissertation summary). The Journal of Economic History.\n- DOI: (none)\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=49722, sha256=2ddc9d289cbe731b7e4d21f914232ec914e18a241541ad81892d8dc321b4de58]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 0d82a7a9a1a12abe82ae57aeeb3f715cf749506517a5dcaa5dc44cf82a7123be) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=11359, sha256=0d82a7a9a1a12abe82ae57aeeb3f715cf749506517a5dcaa5dc44cf82a7123be]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "7",
+        "quote": "industrial demand, cost, and voter incomes in prompting the diffusion of waterworks in the Rhine Province of Prussia ; J. Brown,"
+      },
+      {
+        "page": "8",
+        "quote": "cities of the provinces of the Rhineland, Westphalia,"
+      },
+      {
+        "page": "11",
+        "quote": "Cities building waterworks during period 1880-1887 ."
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "2",
+        "quote": "census in the Swiss industrial city of Basel in 1889 had survived several house-cleanings"
+      },
+      {
+        "page": "3",
+        "quote": "The study of the diffusion of waterworks develops a median voter model of city"
+      },
+      {
+        "page": "3",
+        "quote": "of unique features of local political representation in Prussia to identify the median"
+      }
+    ],
+    "overlap_rationale": "Both full texts are readable and authored by John C. Brown as part of the same research programme originating in his 1987 University of Michigan PhD dissertation (explicitly cited in Study A, footnote 23). Study B is the published 3-page Journal of Economic History dissertation summary covering Germany (and Basel) from 1870 to 1910, comprising two distinct empirical components: (1) a hedonic rent and housing demand analysis of N = 600 apartments from the 1889 housing census in Basel, Switzerland (absent from Study A), and (2) a simultaneous-equation median-voter analysis of municipal waterworks diffusion in Prussian cities under the Three-Class franchise system from the post-1867 cholera period onward. Study A (Urban Studies, 1989) expands and adapts that Prussian waterworks diffusion dataset and political-representation framework to compare Three-Class provinces (Rhineland, Westphalia) against restricted-equal-franchise provinces (Hannover, Holstein) across N = 244 northwestern Prussian cities (50 building, 194 not building) during 1880-1887, supplemented by cross-national comparisons of typhoid mortality (1877-1910) and municipal water/sewer burdens ca. 1906-1912 in Germany, Great Britain, France, and the United States. Thus, the Prussian (especially Rhenish) municipal waterworks diffusion data and Three-Class electoral analysis partially overlap, while each study also contains substantial non-overlapping data and scope.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S590_S881",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Logit and Box-Cox instrumental-variable cost analysis of municipal waterworks adoption across N = 244 cities (50 building, 194 not building; cost IV estimated on n = 106) in four northwestern Prussian provinces (Rhineland, Westphalia, Hannover, and Holstein) during 1880-1887, combining Grahn (1898) waterworks data, 1883/84 Prussian municipal class/income tax data (Herrfurth & von Tzschappe 1884), 1882 county steel employment, and 1866-1867 cholera mortality records, alongside cross-national descriptive comparisons of typhoid mortality (1877-1910) and municipal sanitary infrastructure expenses ca. 1906-1912 in German and U.S. cities.",
+    "study_b_sample_and_data": "Published 3-page summary of Brown's 1987 PhD dissertation covering urban housing and sanitation reform in Germany (1870-1910) across two empirical datasets: (1) hedonic rent, market-segmentation (Chow test), and household housing/sanitation demand models estimated on a sample of N = 600 apartments from the 1889 cantonal housing census of Basel, Switzerland; and (2) a simultaneous-equation median-voter model of municipal waterworks diffusion across Prussian cities from the post-1867 cholera era onward using Prussian tax-weighted electoral representation, capacity costs, median voter income, and industrial water demand.",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

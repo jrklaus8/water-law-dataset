@@ -1,0 +1,177 @@
+{
+  "pair_key": "S912_S959",
+  "order": 33,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "b4a4f3b2b65e8c2b1048a2c915067a2e2a9c0a960f7e90b61d32822bdd0e15af",
+  "input_sha256_b": "00f6dfddf6438bd845fc2f815c9bc9d36bf5f795d228637d788bce735054eb3b",
+  "prompt_sha256": "29372ba01020e44202462746d9eb3360828ad32f5a6c19cea57907c3448e62f9",
+  "started_at": "2026-11-20T03:36:08.290547+00:00",
+  "completed_at": "2026-11-20T03:37:25.895757+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S912_S959\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S912 (Record ID: R98EE7A8CD53B)\n- Citation: Hossain S (2012). The production of space in the negotiation of water and electricity supply in a bosti of Dhaka. Habitat International.\n- DOI: 10.1016/j.habitatint.2011.04.010\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S959 (Record ID: R567A3B014963)\n- Citation: Hossain S (2011). The informal practice of appropriation and social control - experience from a bosti in Dhaka. Environment and Urbanization.\n- DOI: 10.1177/0956247811418734\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: b4a4f3b2b65e8c2b1048a2c915067a2e2a9c0a960f7e90b61d32822bdd0e15af) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=61379, sha256=b4a4f3b2b65e8c2b1048a2c915067a2e2a9c0a960f7e90b61d32822bdd0e15af]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: 00f6dfddf6438bd845fc2f815c9bc9d36bf5f795d228637d788bce735054eb3b) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=73644, sha256=00f6dfddf6438bd845fc2f815c9bc9d36bf5f795d228637d788bce735054eb3b]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "2",
+        "quote": "months between 2008 and 2010. Overnight stays at a rented house"
+      },
+      {
+        "page": "3",
+        "quote": "20 key informant interviews, a Venn-diagram exercise and a series"
+      },
+      {
+        "page": "4",
+        "quote": "main daily market place for more than 15,000 families living in the"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "4",
+        "quote": "rented room in Boshoti for the empirical study period, enjoying regular"
+      },
+      {
+        "page": "4",
+        "quote": "empirical investigation was carried out for a total of about nine months"
+      },
+      {
+        "page": "11",
+        "quote": "bazaar committee got DWASA approval for a water connection under this"
+      }
+    ],
+    "overlap_rationale": "Both papers are readable full texts by Shahadat Hossain originating from the same DFG-funded doctoral research project ('The Struggle for Urban Livelihoods and the Quest for a Functional City') at TU Dortmund and studying the exact same large inner-city bosti on government land in Dhaka (unnamed in Study A, >15,000 families; pseudonymized as 'Boshoti' in Study B, ~100,000 inhabitants; Study B explicitly cross-references Study A in endnote 25). Both papers rely on ethnographic residence in a rented room in the settlement and overlapping interviews with bazaar association leaders, water vendors, room owners, tenants, CBO members, NGO field staff, two elected ward commissioners and DWASA staff, and both recount the 2003 shop-owner overthrow of local mastaan (musclemen) in the bazaar, the creation of the bazaar committee, its acquisition of the settlement's sole officially approved DWASA water connection used to shield illegal lines and water price markups of 10 to 15 times the official DWASA rate. However, the underlying sample overlap is partial (nested longitudinal expansion) rather than identical: Study A reports interim fieldwork covering seven months between 2008 and 2010 focused specifically on the bazaar association (committee/somiti) and its regulation of bazaar water and DESCO electricity supply, whereas Study B reports completed doctoral fieldwork covering roughly nine months across four years (2008 to 2011, plus 2012 eviction observations) and expands beyond the bazaar committee to examine settlement-wide informal land allocation/transactions, roughly 50 water vendors across Boshoti and NGO/donor water initiatives (BOSC/UNICEF tube wells and the 2009-2010 DSK-DWASA-ADB network extension), without examining electricity supply.",
+    "pair_classification": "partial_sample_overlap",
+    "pair_key": "S912_S959",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "partial",
+    "study_a_sample_and_data": "Qualitative ethnographic case study of a local bazaar association (Bazaar Management Committee / bazaar somiti) in an inner-city bosti on 0.23 km2 of government land in Dhaka (>15,000 families, ~400 bazaar shops), conducted over 7 months between 2008 and 2010 via overnight stays in a rented house, observation, a Venn-diagram exercise, 20 key informant interviews, interviews with 8 committee/somiti leaders, the water-vending family, 20 water users (10 room owners and 10 tenants), 2 ward commissioners, the ruling-party ward president, DWASA and DESCO field staff, 5 CBO members and 3 NGO field staff.",
+    "study_b_sample_and_data": "Qualitative grounded-theory ethnographic study of the same inner-city bosti on government land in Dhaka (pseudonym 'Boshoti', ~100,000 inhabitants), conducted over ~9 months across four years (2008-2011, with brief February and April 2012 eviction observations) while living in a rented room in the settlement, using theoretical sampling, observation of salish disputes and unstructured interviews with inhabitants, local water vendors (~50 operating in Boshoti), CBO/BOSC members, local association and political party leaders, 2 ward commissioners, NGO field staff (including DSK) and DWASA officials.",
+    "synthesis_double_counting_risk": "moderate_partial_sample_overlap"
+  }
+}

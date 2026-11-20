@@ -1,0 +1,173 @@
+{
+  "pair_key": "S794_S803",
+  "order": 22,
+  "task": "corpus_duplicate_and_sample_overlap_audit",
+  "brief_sha256": "988b522f9d5f86c167fc913e5976cb448274fc2e6d526e0733f7c1f1baf31303",
+  "input_sha256_a": "92bfae798a2605293bd67bfbb6aa5ed4c060131a831d4cdd5d666ebe1abec31d",
+  "input_sha256_b": "c1df4d3701c37fcead473414d18c86967647e337bb78f120f1f3ca8e0e34d017",
+  "prompt_sha256": "82f079c738652e9d44c94f16539553dbfde6ddf57b101e6547870b9af09a9f98",
+  "started_at": "2026-11-20T02:54:36.136989+00:00",
+  "completed_at": "2026-11-20T02:55:18.368407+00:00",
+  "raw_request": {
+    "type_name": "duplicate_pair_auditor",
+    "model": "inherit",
+    "schema": {
+      "type": "object",
+      "required": [
+        "pair_key",
+        "paper_a_read",
+        "paper_b_read",
+        "pair_classification",
+        "same_underlying_data",
+        "synthesis_double_counting_risk",
+        "study_a_sample_and_data",
+        "study_b_sample_and_data",
+        "overlap_rationale",
+        "evidence_quotes_a",
+        "evidence_quotes_b",
+        "confidence"
+      ],
+      "properties": {
+        "pair_key": {
+          "type": "string"
+        },
+        "paper_a_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "paper_b_read": {
+          "type": "string",
+          "enum": [
+            "full text",
+            "abstract only",
+            "not accessible"
+          ]
+        },
+        "pair_classification": {
+          "type": "string",
+          "enum": [
+            "exact_duplicate_or_translation",
+            "same_sample_companion_reports",
+            "partial_sample_overlap",
+            "distinct_samples_same_programme_or_author",
+            "unrelated_distinct_studies",
+            "cannot_tell_missing_full_text"
+          ]
+        },
+        "same_underlying_data": {
+          "type": "string",
+          "enum": [
+            "yes",
+            "partial",
+            "no",
+            "cannot_tell"
+          ]
+        },
+        "synthesis_double_counting_risk": {
+          "type": "string",
+          "enum": [
+            "high_exact_or_same_sample",
+            "moderate_partial_sample_overlap",
+            "low_distinct_outcomes_or_designs",
+            "none_distinct_samples",
+            "cannot_tell"
+          ]
+        },
+        "study_a_sample_and_data": {
+          "type": "string"
+        },
+        "study_b_sample_and_data": {
+          "type": "string"
+        },
+        "overlap_rationale": {
+          "type": "string"
+        },
+        "evidence_quotes_a": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "evidence_quotes_b": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "page",
+              "quote"
+            ],
+            "properties": {
+              "page": {
+                "type": "string"
+              },
+              "quote": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "high",
+            "medium",
+            "low"
+          ]
+        }
+      }
+    },
+    "prompt_copyright_redacted": "BLIND SIDE-BY-SIDE FULL-TEXT DUPLICATE & SHARED-SAMPLE AUDIT — PAIR S794_S803\n\nREMINDER: Do NOT call read_file, grep_search, find_by_name, list_dir, search_web, or ANY tool other than `finish`. Evaluate ONLY the two paper texts and citations below.\n\n== STUDY A METADATA ==\n- Study ID: S794 (Record ID: RDB3CF0A8AAED)\n- Citation: Vasquez WF (2015). Willingness to pay and willingness to work for improvements of municipal and community-managed water services. Water Resources Research.\n- DOI: 10.1002/2014WR015913\n- Retrieval status: retrieved_drive_pdf\n\n== STUDY B METADATA ==\n- Study ID: S803 (Record ID: RD0D63BD0DF34)\n- Citation: Vasquez WF (2011). Municipal water services in Guatemala: exploring official perceptions. Water Policy.\n- DOI: 10.2166/wp.2010.211\n- Retrieval status: retrieved_drive_pdf\n\n== INSTRUCTIONS ==\n1. Verify first whether BOTH Study A and Study B have readable full texts matching their metadata. If either Study A or Study B is `[FULL TEXT NOT ACCESSIBLE...]` (or is only an abstract/landing page or clearly a mismatched paper), you MUST set `pair_classification` to `\"cannot_tell_missing_full_text\"`, `same_underlying_data` to `\"cannot_tell\"`, and `synthesis_double_counting_risk` to `\"cannot_tell\"`, stating what can and cannot be verified without guessing.\n2. When both full texts are readable, compare Study A and Study B directly on:\n   - Exact geography / municipalities / utilities / villages / neighborhoods studied\n   - Data collection dates, survey wave, census/utility database vintage, or trial/fieldwork dates\n   - Sample size (`N`), unit of analysis, respondent group (e.g., households vs officials vs utilities), and analytical design\n   - Whether one paper is a translation, reprint, working-paper version, or duplicate of the other (`exact_duplicate_or_translation`), OR two distinct papers analyzing the exact same underlying dataset/trial/fieldwork sample (`same_sample_companion_reports`), OR partially overlapping samples such as nested utility subsets (`partial_sample_overlap`), OR genuinely distinct datasets/samples by the same author/programme (`distinct_samples_same_programme_or_author`), OR unrelated studies (`unrelated_distinct_studies`).\n3. Provide 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses, zero bracketed changes) from `== STUDY A FULL TEXT ==` in `evidence_quotes_a` (empty array `[]` if Study A is inaccessible) and 1 to 3 exact verbatim quotes (`>= 25` chars, zero `...` ellipses) from `== STUDY B FULL TEXT ==` in `evidence_quotes_b` (empty array `[]` if Study B is inaccessible).\n\n== STUDY A FULL TEXT (SHA-256: 92bfae798a2605293bd67bfbb6aa5ed4c060131a831d4cdd5d666ebe1abec31d) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=66847, sha256=92bfae798a2605293bd67bfbb6aa5ed4c060131a831d4cdd5d666ebe1abec31d]\n== END STUDY A FULL TEXT ==\n\n== STUDY B FULL TEXT (SHA-256: c1df4d3701c37fcead473414d18c86967647e337bb78f120f1f3ca8e0e34d017) ==\n[COPYRIGHTED_TEXT_WITHHELD: chars=51054, sha256=c1df4d3701c37fcead473414d18c86967647e337bb78f120f1f3ca8e0e34d017]\n== END STUDY B FULL TEXT ==\n"
+  },
+  "raw_response": {
+    "confidence": "high",
+    "evidence_quotes_a": [
+      {
+        "page": "3",
+        "quote": "to a random sample of 500 households in June–August 2012. It is estimated that San Lorenzo has more"
+      },
+      {
+        "page": "4",
+        "quote": "Out of the 500 households interviewed, 37.2% received water from the municipal system and the rest"
+      }
+    ],
+    "evidence_quotes_b": [
+      {
+        "page": "5",
+        "quote": "The data used in this study were gathered through document analysis and one-to-one interviews with"
+      },
+      {
+        "page": "5",
+        "quote": "direcdy associated with the provision of drinking water was interviewed in June and Jtoly 2008."
+      },
+      {
+        "page": "5",
+        "quote": "Nine of these officers were involved in providing drinking water at the municipal level. The other"
+      }
+    ],
+    "overlap_rationale": "Both papers are authored by William F. Vásquez (Fairfield University) on drinking water governance and service quality in Guatemala, and Study A cites Study B (Vasquez, 2011) for institutional context, but the two studies use completely distinct empirical samples, respondent populations, fieldwork periods, and research designs. Study A analyzes quantitative contingent valuation survey data collected in June–August 2012 from a random sample of 500 households in San Lorenzo, San Marcos (177 municipal-system households and 260 community-managed water system households in the econometric models). Study B analyzes qualitative semi-structured interviews conducted in June–July 2008 with a purposeful sample of 12 government officials (9 municipal water officers across high- and low-altitude cities and 3 national-level water policy officers), supplemented by official document analysis. There is no shared underlying sample or double-counting risk.",
+    "pair_classification": "distinct_samples_same_programme_or_author",
+    "pair_key": "S794_S803",
+    "paper_a_read": "full text",
+    "paper_b_read": "full text",
+    "same_underlying_data": "no",
+    "study_a_sample_and_data": "Quantitative in-person household contingent valuation (CV) survey conducted in June–August 2012 (following focus groups and a 30-household pilot) with a random sample of N = 500 households in the town of San Lorenzo, San Marcos, Guatemala (37.2% served by the municipal water system and 62.8% served by 10 rural community-based water organizations [CBWOs]; econometric estimation samples of N = 177 municipal households and N = 260 communal households using bivariate probit and univariate probit models of willingness to pay and willingness to work).",
+    "study_b_sample_and_data": "Qualitative semi-structured one-to-one interviews conducted in June–July 2008 with a purposeful sample of N = 12 Guatemalan government officers directly involved in drinking water provision (9 municipal-level officers across multiple municipalities and 3 national-level policy officers), complemented by content analysis of official and technical water-sector documents.",
+    "synthesis_double_counting_risk": "none_distinct_samples"
+  }
+}
